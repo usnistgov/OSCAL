@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<system xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog 
+        file:../../../../xsd/nist/sp800-53/2.0/control-catalog.xsd">
+    <id>FedRAMP-Low-System</id>
+    <name>Fed RAMP Low system</name>
+    <version>1</version>
+    <summary>TBD</summary>
+    <base>
+        <layer-ref id="SP800-53" version="4" type="catalog" 
+            URI="../../../../xm/nist/sp800-53/2.0/sp800-53-controls-catalog.xml" />        
+        <layer-ref id="FedRAMP-Low" version="4" type="catalog" 
+            URI="../../../../xm/nist/sp800-53/2.0/FedRAMP-low-overlay.xm" />        
+    </base>
+    <meta>
+        <property name="origination" type="xsd:string">
+            <enumeration>
+                <value>Service Provider Corporate</value>
+                <value>Service Provider System Specific</value>
+                <value>Service Provider Hybrid</value>
+                <value>Configured by Customer</value>
+                <value>Provided by Customer</value>
+                <value>Shared</value>
+                <value>Inherited from pre-existing Provisional Authorization</value>
+            </enumeration>
+        </property>
+        <property name="implementation-detail" >
+            <property name="description" type="xhtml:xhtml.div.type" />
+            <property name="statement" type="statementType" />
+        </property>
+    
+        <item>
+            <property name="origination" minOccurs="0" maxOccurs="1" />
+            <property name="implementation-detail" minOccurs="1" maxOccurs="1" />
+        </item>
+        <tailor>
+            <property name="implementation-detail" minOccurs="0" maxOccurs="1" />
+        </tailor>
+    </meta>
+    <items>
+        <item>
+            <type>control-system</type>
+            <id>AC-1</id>
+            <link rel="layer">FedRAMP-Low</link>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <id>TBD2</id>
+                    <properties>
+                        <origination>Service Provider Hybrid</origination>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-2</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <id>TBD2</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>AC-2 ACCOUNT MANAGEMENT</description>
+                            <statement>
+                                <number>AC-2a.</number>
+                                <description>Types of system accounts will be USER, with read only privileges, and ADMINISTRATOR, with read and write privileges.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2b.</number>
+                                <description>System owners are responsible for managing all system accounts.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2c.</number>
+                                <description>System accounts will be created in a need to know basis.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2d.</number>
+                                <description>All user and administrator accounts and their corresponding privileges will be specifically approved by the system owner.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2e.</number>
+                                <description>Users will request accounts by contacting the system owner for their authorization and approval.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2f.</number>
+                                <description>After system owner authorization and approval, system administrators will create, modify, disable, and remove system accounts.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2g.</number>
+                                <description>System audit logs will be reviewing daily by the system administrators for unusual or inappropriate user activity and system will be reviewed daily for any unauthorized accounts.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2h.</number>
+                                <description>System owners will be notified when user accounts are no longer required, when users are terminated or are transferred, or when the user roles are changed.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2i.</number>
+                                <description>System administrators will create system accounts and will provide system access after the system owner authorizes and approves access and identifies roles and privileges for the user.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2j.</number>
+                                <description>All system accounts will be reviewed semi-annually.</description>
+                            </statement>
+                            <statement>                           
+                                <number>AC-2k.</number>
+                                <description>Per organizational policy, shared or group accounts are not permitted.</description>
+                            </statement>
+                        </implementation-detail>                        
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-2(1)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>All system account requests will be sent to the system owner by e-mail. System owner will send an e-mail account creation/deletion/modification authorization e-mail to the system administrators.</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-2(2)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>System will be configured to disable/delete temporary or emergency accounts 12 hours after creation.</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-2(3)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>System accounts will be disabled after 30 days of inactivity.</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-2(4)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>System audit logs will be configured to capture account creation, modification, enabling, disabling, and removal.  System will generate and send an e-mail to the system owner when these events occur.</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        
+        <item>
+            <type>control-system</type>
+            <id>AC-3</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <id>TBD2</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>                        
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (1)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            here's some implementation detail
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (2)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (3)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (4)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (5)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (6)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (7)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (8)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (9)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-3 (10)</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>AC-4</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <id>TBD2</id>
+                    <properties>
+                        <origination>Service Provider Hybrid</origination>
+                        <implementation-detail>
+                            <description>here's some implementation detail</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>CA-2</id>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <properties>
+                        <implementation-detail>
+                            <statement>
+                                <number>CA-2a.</number>
+                                <description>Security assessment plan has been developed and approved by management showing: security controls and enhancements to be assessed, assessment procedures, and assessment team and their roles and responsibilities.</description>
+                            </statement>
+                            <statement>
+                                <number>CA-2b.</number>
+                                <description>Security controls have been assessed for effectiveness.</description>
+                            </statement>
+                            <statement>
+                                <number>CA-2c.</number>
+                                <description>Security Assessment Report has been developed showing results of the assessment.</description>
+                            </statement>
+                            <statement>
+                                <number>CA-2d.</number>
+                                <description>Security Assessment Report has been provided to the system owner and the authorizing official.</description>
+                            </statement>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+        <item>
+            <type>control-system</type>
+            <id>CA-2 (1)</id>
+            <tailoring>
+                <tailor>
+                    <id>tbd</id>
+                    <properties>
+                        <origination>Service Provider Hybrid</origination>
+                        <implementation-detail>
+                            <description>Assessors are independent of the system owner and division where the system resides.</description>
+                        </implementation-detail>
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+    </items>
+</system>

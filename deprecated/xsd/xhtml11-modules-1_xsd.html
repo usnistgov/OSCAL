@@ -1,0 +1,1651 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for xhtml11-modules-1.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_xhtml11-modules-1.xsd', 
+				'properties_xhtml.version.attrib_version');
+var usedByBoxes= new Array('usedBy_xhtml.version.attrib_version', 
+				'usedBy_xhtml.img.attlist', 
+				'usedBy_xhtml.area.attlist', 
+				'usedBy_xhtml.a.attlist', 
+				'usedBy_xhtml.body.attlist', 
+				'usedBy_xhtml.version.attrib');
+var sourceBoxes= new Array('source_xhtml.version.attrib_version', 
+				'source_xhtml.img.attlist', 
+				'source_xhtml.area.attlist', 
+				'source_xhtml.a.attlist', 
+				'source_xhtml.body.attlist', 
+				'source_xhtml.version.attrib');
+var diagramBoxes= new Array('diagram_xhtml.img.attlist', 
+				'diagram_xhtml.area.attlist', 
+				'diagram_xhtml.a.attlist', 
+				'diagram_xhtml.body.attlist', 
+				'diagram_xhtml.version.attrib');
+var annotationBoxes= new Array('annotations_xhtml11-modules-1.xsd', 
+				'annotations_xhtml.version.attrib');
+var attributesBoxes= new Array('attributes_xhtml.img.attlist', 
+				'attributes_xhtml.area.attlist', 
+				'attributes_xhtml.a.attlist', 
+				'attributes_xhtml.body.attlist', 
+				'attributes_xhtml.version.attrib');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, attributesBoxes);" class="control" /></span><span class="globalControlName">Attributes </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="xhtml11-modules-1.xsd"></a><div class="componentTitle">Included schema <span class="qname">xhtml11-modules-1.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_xhtml11-modules-1.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_xhtml11-modules-1.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_xhtml11-modules-1.xsd" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">This schema includes all modules for XHTML1.1 Document Type.</span><span class="tI">
+</span><span class="tT">$Id: xhtml11-modules-1.xsd,v 1.10 2009/02/03 15:14:49 ahby Exp $</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                              <div class="annotation">
+                                 <p><a href="xhtml-copyright-1.xsd">xhtml-copyright-1.xsd</a></p>
+                              </div>
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">This schema includes all modules (and redefinitions)</span><span class="tI">
+</span><span class="tT">     for XHTML1.1 Document Type.</span><span class="tI">
+</span><span class="tT">     XHTML1.1 Document Type includes the following Modules</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">       XHTML Core modules (Required for XHTML Family Conformance)</span><span class="tI">
+</span><span class="tT">            +  text</span><span class="tI">
+</span><span class="tT">            +  hypertext</span><span class="tI">
+</span><span class="tT">            +  lists</span><span class="tI">
+</span><span class="tT">            +  structure</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">       Other XHTML modules</span><span class="tI">
+</span><span class="tT">            +  Bdo</span><span class="tI">
+</span><span class="tT">            +  Image</span><span class="tI">
+</span><span class="tT">            +  Tables</span><span class="tI">
+</span><span class="tT">            +  Client side image maps</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_xhtml11-modules-1.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_xhtml11-modules-1.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_xhtml11-modules-1.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.version.attrib_version"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="xhtml11-modules-1_xsd.html#xhtml.version.attrib" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-modules-1.xsd')">xhtml.version.attrib</a></b> / @version</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="xhtml-datatypes-1_xsd.html#CDATA" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">CDATA</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_xhtml.version.attrib_version" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_xhtml.version.attrib_version');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_xhtml.version.attrib_version" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">fixed</td>
+                                    <td><b>-//W3C//DTD XHTML 1.1//EN</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.version.attrib_version" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.version.attrib_version');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.version.attrib_version" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute Group </td>
+                                    <td><b><a href="xhtml11-modules-1_xsd.html#xhtml.version.attrib" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-modules-1.xsd')">xhtml.version.attrib</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.version.attrib_version" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.version.attrib_version');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.version.attrib_version" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"version"</span><span class="tAN"> type=</span><span class="tAV">"xh11d:CDATA"</span><span class="tAN"> fixed=</span><span class="tAV">"-//W3C//DTD XHTML 1.1//EN"</span><span class="tEl">/&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.img.attlist"></a><div class="componentTitle">Redefines Attribute Group <b><a href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">xhtml.img.attlist</a></b></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.img.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.img.attlist');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.img.attlist" style="display:block"><img alt="Diagram" border="0" src="img/xhtml11-modules-1_xsd_Attribute_Group_xhtml_img_attlist.jpeg" usemap="#xhtml11-modules-1_xsd_Attribute_Group_xhtml_img_attlist" /><map name="xhtml11-modules-1_xsd_Attribute_Group_xhtml_img_attlist" id="xhtml11-modules-1_xsd_Attribute_Group_xhtml_img_attlist">
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Common.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Common.attrib" coords="187,47,357,73" />
+                                 <area alt="xhtml-image-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.img.attlist_src" href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_src" coords="184,88,252,112" />
+                                 <area alt="xhtml-image-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.img.attlist_alt" href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_alt" coords="184,122,252,146" />
+                                 <area alt="xhtml-image-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.img.attlist_longdesc" href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_longdesc" coords="184,156,281,180" />
+                                 <area alt="xhtml-image-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.img.attlist_name" href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_name" coords="184,190,261,214" />
+                                 <area alt="xhtml-image-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.img.attlist_height" href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_height" coords="184,224,266,248" />
+                                 <area alt="xhtml-image-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.img.attlist_width" href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_width" coords="184,258,261,282" />
+                                 <area alt="xhtml-image-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.img.attlist" href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist" coords="173,3,315,29" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#xhtml.img.csim.attlist_usemap" href="xhtml-csismap-1_xsd.html#xhtml.img.csim.attlist_usemap" coords="184,373,274,397" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#xhtml.img.csim.attlist" href="xhtml-csismap-1_xsd.html#xhtml.img.csim.attlist" coords="173,332,343,358" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.img.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.img.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.img.attlist" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-image-1_xsd.html#xhtml.img.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">xhtml.img.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.img.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.img.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.img.attlist" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_alt" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">alt</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Text" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Text</a></b></td>
+                                    <td></td>
+                                    <td>required</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_height" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">height</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Length" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Length</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_longdesc" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">longdesc</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#URI" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">URI</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_name" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">name</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#CDATA" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">CDATA</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_src" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">src</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#URI" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">URI</a></b></td>
+                                    <td></td>
+                                    <td>required</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#xhtml.img.csim.attlist_usemap" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">usemap</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#URIREF" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">URIREF</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-image-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.img.attlist_width" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-image-1.xsd')">width</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Length" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Length</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.img.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.img.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.img.attlist" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"xhtml.img.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.img.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Original Image Attributes (in Image Module)</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:attributeGroup&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.img.csim.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Redefinition by Client Side Image Map Module</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:attributeGroup&gt;</span><span class="tI">
+  </span><span class="tC">&lt;!--
+            &lt;xs:attributeGroup ref="xhtml.img.ssimap.attlist"&gt;
+                &lt;xs:annotation&gt;
+                    &lt;xs:documentation&gt;
+                Redefinition by Server Side Image Module
+             &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+            &lt;/xs:attributeGroup&gt;
+--&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.area.attlist"></a><div class="componentTitle">Redefines Attribute Group <b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">xhtml.area.attlist</a></b></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.area.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.area.attlist');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.area.attlist" style="display:block"><img alt="Diagram" border="0" src="img/xhtml11-modules-1_xsd_Attribute_Group_xhtml_area_attlist.jpeg" usemap="#xhtml11-modules-1_xsd_Attribute_Group_xhtml_area_attlist" /><map name="xhtml11-modules-1_xsd_Attribute_Group_xhtml_area_attlist" id="xhtml11-modules-1_xsd_Attribute_Group_xhtml_area_attlist">
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Common.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Common.attrib" coords="190,47,360,73" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist_href" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_href" coords="187,88,257,112" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist_shape" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_shape" coords="187,122,267,146" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist_coords" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_coords" coords="187,156,273,180" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist_nohref" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_nohref" coords="187,190,271,214" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist_alt" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_alt" coords="187,224,255,248" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist_tabindex" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_tabindex" coords="187,258,282,282" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist_accesskey" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_accesskey" coords="187,292,289,316" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.area.attlist" href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist" coords="176,3,321,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.area.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.area.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.area.attlist" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-csismap-1_xsd.html#xhtml.area.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">xhtml.area.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.area.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.area.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.area.attlist" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="10%">Default</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_accesskey" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">accesskey</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Character" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Character</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_alt" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">alt</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Text" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Text</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>required</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_coords" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">coords</a></b></td>
+                                    <td><b><a href="xhtml-csismap-1_xsd.html#xhtml.Coords.Datatype" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">xhtml.Coords.Datatype</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_href" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">href</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#URI" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">URI</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_nohref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">nohref</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_shape" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">shape</a></b></td>
+                                    <td><b><a href="xhtml-csismap-1_xsd.html#xhtml.Shape.Datatype" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">xhtml.Shape.Datatype</a></b></td>
+                                    <td></td>
+                                    <td>rect</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.area.attlist_tabindex" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">tabindex</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Number" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Number</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.area.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.area.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.area.attlist" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"xhtml.area.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.area.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Original Area Attributes (in CSI Module)</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:attributeGroup&gt;</span><span class="tI">
+  </span><span class="tC">&lt;!--
+            &lt;xs:attributeGroup ref="xhtml.area.events.attlist"&gt;
+                &lt;xs:annotation&gt;
+                    &lt;xs:documentation&gt;
+                Redefinition by Events Attribute Module
+             &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+            &lt;/xs:attributeGroup&gt;
+            &lt;xs:attributeGroup ref="xhtml.area.target.attlist"&gt;
+                &lt;xs:annotation&gt;
+                    &lt;xs:documentation&gt;
+                Target Module - Area Attribute Additions
+             &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+            &lt;/xs:attributeGroup&gt;
+--&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.a.attlist"></a><div class="componentTitle">Redefines Attribute Group <b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">xhtml.a.attlist</a></b></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.a.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.a.attlist');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.a.attlist" style="display:block"><img alt="Diagram" border="0" src="img/xhtml11-modules-1_xsd_Attribute_Group_xhtml_a_attlist.jpeg" usemap="#xhtml11-modules-1_xsd_Attribute_Group_xhtml_a_attlist" /><map name="xhtml11-modules-1_xsd_Attribute_Group_xhtml_a_attlist" id="xhtml11-modules-1_xsd_Attribute_Group_xhtml_a_attlist">
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Common.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Common.attrib" coords="173,47,343,73" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_href" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_href" coords="170,88,240,112" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_charset" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_charset" coords="170,122,258,146" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_type" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_type" coords="170,156,241,180" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_hreflang" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_hreflang" coords="170,190,263,214" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_rel" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_rel" coords="170,224,238,248" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_rev" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_rev" coords="170,258,238,282" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_accesskey" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_accesskey" coords="170,292,272,316" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist_tabindex" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_tabindex" coords="170,326,265,350" />
+                                 <area alt="xhtml-hypertext-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.a.attlist" href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist" coords="159,3,287,29" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#xhtml.a.csim.attlist_shape" href="xhtml-csismap-1_xsd.html#xhtml.a.csim.attlist_shape" coords="170,411,250,435" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#xhtml.a.csim.attlist_coords" href="xhtml-csismap-1_xsd.html#xhtml.a.csim.attlist_coords" coords="170,445,256,469" />
+                                 <area alt="xhtml-csismap-1_xsd.tmp#xhtml.a.csim.attlist" href="xhtml-csismap-1_xsd.html#xhtml.a.csim.attlist" coords="159,370,315,396" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.a.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.a.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.a.attlist" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-hypertext-1_xsd.html#xhtml.a.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">xhtml.a.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.a.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.a.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.a.attlist" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="10%">Default</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_accesskey" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">accesskey</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Character" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Character</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_charset" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">charset</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Charset" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Charset</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#xhtml.a.csim.attlist_coords" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">coords</a></b></td>
+                                    <td><b><a href="xhtml-csismap-1_xsd.html#xhtml.Coords.Datatype" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">xhtml.Coords.Datatype</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_href" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">href</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#URI" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">URI</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_hreflang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">hreflang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_rel" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">rel</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LinkTypes" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LinkTypes</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_rev" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">rev</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LinkTypes" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LinkTypes</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-csismap-1_xsd.html#xhtml.a.csim.attlist_shape" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">shape</a></b></td>
+                                    <td><b><a href="xhtml-csismap-1_xsd.html#xhtml.Shape.Datatype" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-csismap-1.xsd')">xhtml.Shape.Datatype</a></b></td>
+                                    <td></td>
+                                    <td>rect</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_tabindex" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">tabindex</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#Number" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">Number</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-hypertext-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.a.attlist_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-hypertext-1.xsd')">type</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#ContentType" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">ContentType</a></b></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.a.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.a.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.a.attlist" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"xhtml.a.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.a.attlist"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.a.csim.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Redefinition by Client Side Image Map Module</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:attributeGroup&gt;</span><span class="tI">
+  </span><span class="tC">&lt;!--
+            &lt;xs:attributeGroup ref="xhtml.a.events.attlist"&gt;
+                &lt;xs:annotation&gt;
+                    &lt;xs:documentation&gt;
+              Redefinition by XHTML Event Attribute Module
+            &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+            &lt;/xs:attributeGroup&gt;
+            &lt;xs:attributeGroup ref="xhtml.a.target.attlist"&gt;
+                &lt;xs:annotation&gt;
+                    &lt;xs:documentation&gt;
+              Target Module - A Attribute Additions
+            &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+            &lt;/xs:attributeGroup&gt;
+--&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.body.attlist"></a><div class="componentTitle">Redefines Attribute Group <b><a href="xhtml-struct-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.body.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-struct-1.xsd')">xhtml.body.attlist</a></b></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.body.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.body.attlist');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.body.attlist" style="display:block"><img alt="Diagram" border="0" src="img/xhtml11-modules-1_xsd_Attribute_Group_xhtml_body_attlist.jpeg" usemap="#xhtml11-modules-1_xsd_Attribute_Group_xhtml_body_attlist" /><map name="xhtml11-modules-1_xsd_Attribute_Group_xhtml_body_attlist" id="xhtml11-modules-1_xsd_Attribute_Group_xhtml_body_attlist">
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Common.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Common.attrib" coords="194,47,364,73" />
+                                 <area alt="xhtml-struct-1_xsd.tmp#http___www.w3.org_1999_xhtml_xhtml.body.attlist" href="xhtml-struct-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.body.attlist" coords="180,3,329,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.body.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.body.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.body.attlist" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-struct-1_xsd.html#xhtml.body.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-struct-1.xsd')">xhtml.body.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.body.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.body.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.body.attlist" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.body.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.body.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.body.attlist" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"xhtml.body.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.body.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Original Body Attlist</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:attributeGroup&gt;</span><span class="tI">
+  </span><span class="tC">&lt;!--
+            &lt;xs:attributeGroup ref="xhtml.body.events.attlist"&gt;
+                &lt;xs:annotation&gt;
+                    &lt;xs:documentation&gt;
+              Redefinition by XHTML Event Attribute Module
+            &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+            &lt;/xs:attributeGroup&gt;
+--&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.version.attrib"></a><div class="componentTitle">Redefines Attribute Group <b><a href="xhtml-struct-1_xsd.html#http___www.w3.org_1999_xhtml_xhtml.version.attrib" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-struct-1.xsd')">xhtml.version.attrib</a></b></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_xhtml.version.attrib" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_xhtml.version.attrib');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_xhtml.version.attrib" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">Redefinition by the XHTML11 Markup (for value of version attr)</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.version.attrib" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.version.attrib');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.version.attrib" style="display:block"><img alt="Diagram" border="0" src="img/xhtml11-modules-1_xsd_Attribute_Group_xhtml_version_attrib.jpeg" usemap="#xhtml11-modules-1_xsd_Attribute_Group_xhtml_version_attrib" /><map name="xhtml11-modules-1_xsd_Attribute_Group_xhtml_version_attrib" id="xhtml11-modules-1_xsd_Attribute_Group_xhtml_version_attrib">
+                                 <area alt="xhtml11-modules-1_xsd.tmp#xhtml.version.attrib_version" href="xhtml11-modules-1_xsd.html#xhtml.version.attrib_version" coords="209,1,297,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.version.attrib" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.version.attrib');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.version.attrib" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute Group </td>
+                                    <td><b><a href="xhtml-struct-1_xsd.html#xhtml.html.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-struct-1.xsd')">xhtml.html.attlist</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.version.attrib" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.version.attrib');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.version.attrib" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="5%">Use</th>
+                                       <th></th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-modules-1_xsd.html#xhtml.version.attrib_version" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-modules-1.xsd')">version</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#CDATA" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">CDATA</a></b></td>
+                                    <td>-//W3C//DTD XHTML 1.1//EN</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.version.attrib" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.version.attrib');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.version.attrib" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"xhtml.version.attrib"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Redefinition by the XHTML11 Markup (for value of version attr)</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"version"</span><span class="tAN"> type=</span><span class="tAV">"xh11d:CDATA"</span><span class="tAN"> fixed=</span><span class="tAV">"-//W3C//DTD XHTML 1.1//EN"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor Trial Edition.
+         </div>
+      </div><script type="text/javascript">
+         <!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>

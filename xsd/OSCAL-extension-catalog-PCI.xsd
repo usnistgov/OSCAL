@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:common="http://oscal.nist.gov/schema/common"
+    elementFormDefault="qualified" targetNamespace="http://oscal.nist.gov/schema/extension-catalog-PCI">
+
+    <xs:import namespace="http://oscal.nist.gov/schema/common" schemaLocation="OSCAL-common.xsd"></xs:import>
+
+    <!-- 
+    using extension 800-53 as base
+    family tag moved to this extension from OSCAL common schema
+    <xs:element name="family" type="xs:string"/>
+    <xs:element name="priority" type="xs:string"/>
+        -->
+
+    <xs:element name="guidance">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <!-- description also captures notes, bullets, and examples -->
+                <!--
+                <xs:element name="note" type="xs:string" minOccurs="0"/>
+                <xs:element name="paragraph" type="xs:string" minOccurs="0"/>
+                <xs:element name="bullet" type="xs:string" minOccurs="0"/>
+                -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

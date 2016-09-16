@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog 
+        file:../../../../xsd/nist/sp800-53/2.0/control-catalog.xsd">
+    <id>SP800-53A</id>
+    <name>SP 800-53A rev 4</name>
+    <version>4</version>
+    <summary>TBD</summary>
+    <meta>
+        <property name="potential-assessment">
+            <property name="method" type="xsd:string" minOccurs="1" maxOccurs="1">
+                <enumeration>
+                    <value>Examine</value>
+                    <value>Interview</value>
+                    <value>Test</value>
+                </enumeration>            
+            </property>
+            <property name="object" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </property>
+        <property name="potential-assessments">
+            <property-ref name="potential-assessment" minOccurs="1" maxOccurs="unbounded"/>
+        </property>
+        <item>
+            <property name="potential-assessments" minOccurs="0" maxOccurs="1"/>
+        </item>
+    </meta>        
+    <items>
+        <item>
+            <type>objective</type>
+            <id>AC-1</id>
+            <statement>
+                <description>Determine if the organization:</description>
+                <statement>
+                    <number>AC-1(a)(1)</number>
+                    <statement>
+                        <number>AC-1(a)(1) [1]</number>
+                        <description>develops and documents an access control policy that addresses:</description>
+                        <statement>
+                            <number>AC-1(a)(1)[1][a]</number>
+                            <description>purpose;</description>
+                        </statement>
+                        <statement>
+                            <number>AC-1(a)(1)[1][b]</number>
+                            <description>scope;</description>
+                        </statement>
+                        <statement>
+                            <number>AC-1(a)(1)[1][c]</number>
+                            <description>roles;</description>
+                        </statement>
+                        <statement>
+                            <number>AC-1(a)(1)[1][d]</number>
+                            <description>responsibilities;</description>
+                        </statement>
+                        <statement>
+                            <number>AC-1(a)(1)[1][e]</number>
+                            <description>management commitment;</description>
+                        </statement>
+                        <statement>
+                            <number>AC-1(a)(1)[1][f]</number>
+                            <description>coordination among organizational entities;</description>
+                        </statement>
+                        <statement>
+                            <number>AC-1(a)(1)[1][g]</number>
+                            <description>compliance;</description>
+                        </statement>
+                    </statement>
+                    <statement>
+                        <number>AC-1(a)(1)[2]</number>
+                        <description>defines personnel or roles to whom the access control policy are 
+                            to be disseminated;</description>
+                    </statement>
+                    <statement>
+                        <number>AC-1(a)(1)[3]</number>
+                        <description>disseminates the access control policy to organization-defined 
+                            personnel or roles;</description>
+                    </statement>
+                </statement>
+                <statement>
+                    <number>AC-1(a)(2)</number>
+                    <statement>
+                        <number>AC-1(a)(2)[1]</number>
+                        <description>develops and documents procedures to facilitate the 
+                            implementation of the access control policy and associated 
+                            access control controls;</description>
+                    </statement>
+                    <statement>
+                        <number>AC-1(a)(2)[2]</number>
+                        <description>defines personnel or roles to whom the procedures are to be 
+                            disseminated;</description>
+                    </statement>
+                    <statement>
+                        <number>AC-1(a)(2)[3]</number>
+                        <description>disseminates the procedures to organization-defined personnel 
+                            or roles;</description>
+                    </statement>
+                </statement>
+                <statement>
+                    <number>AC-1(b)(1)</number>
+                    <statement>
+                        <number>AC-1(b)(1)[1]</number>
+                        <description>defines the frequency to review and update the current access 
+                            control policy;</description>
+                    </statement>
+                    <statement>
+                        <number>AC-1(b)(1)[2]</number>
+                        <description>reviews and updates the current access control policy with the 
+                            organization-defined frequency;</description>
+                    </statement>
+                </statement>
+                <statement>
+                    <number>AC-1(b)(2)</number>
+                    <statement>
+                        <number>AC-1(b)(2)[1]</number>
+                        <description>defines the frequency to review and update the current access 
+                            control procedures; and </description>
+                    </statement>
+                    <statement>
+                        <number>AC-1(b)(2)[2]</number>
+                        <description>reviews and updates the current access control procedures with 
+                            the organization-defined frequency.</description>
+                    </statement>
+                </statement>
+            </statement>
+            <properties>
+                <potential-assessments>
+                    <potential-assessment method="Examine">
+                        <object>Access control policy and procedures; other relevant documents or records</object>
+                    </potential-assessment>
+                    <potential-assessment method="Interview">
+                        <object>Organizational personnel with access control responsibilities; organizational 
+                            personnel with information security responsibilities</object>
+                    </potential-assessment>
+                </potential-assessments>
+            </properties>
+        </item>
+        <item status="withdrawn">
+            <type>objective</type>
+            <id>AC-3 (1)</id>
+            <statement>
+                <description>Incorporated into AC-6</description>
+            </statement>
+        </item>
+        <item>
+            <type>objective</type>
+            <id>CA-2 (1)</id>
+            <statement>
+                <description>Determine if the organization:</description>
+                <statement>
+                    <number>CA-2(1)[1]</number>                
+                    <description>defines the level of independence to be employed to conduct security control 
+                        assessments; and</description>
+                </statement>
+                <statement>
+                    <number>CA-2(1)[2]</number>                
+                    <description>employs assessors or assessment teams with the organization-defined level of 
+                        independence to conduct security control assessments.</description>
+                </statement>
+            </statement>
+            <properties>
+                <potential-assessments>
+                    <potential-assessment method="Examine">
+                        <object>Security assessment and authorization policy; procedures addressing security 
+                            assessments; security authorization package (including security plan, security assessment 
+                            plan, security assessment report, plan of action and milestones, authorization statement); 
+                            other relevant documents or record</object>
+                    </potential-assessment>
+                    <potential-assessment method="Interview">
+                        <object>Organizational personnel with security assessment responsibilities;
+                            organizational personnel with information security responsibilities</object>
+                    </potential-assessment>
+                </potential-assessments>
+            </properties>
+        </item>
+    </items>
+</catalog>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    elementFormDefault="qualified" targetNamespace="http://oscal.nist.gov/schema/common">
+    
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="https://www.w3.org/2009/01/xml.xsd">
+        <xs:annotation>
+            <xs:documentation>Import general XML schema.</xs:documentation>
+        </xs:annotation>
+    </xs:import>
+    
+    <xs:element name="family" type="xs:string"/>
+    
+    <xs:complexType name="linkType">
+        <xs:simpleContent>
+            <xs:extension base="xs:token">
+                <xs:attribute name="rel" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="parent"/>
+                            <xs:enumeration value="related"/>
+                            <xs:enumeration value="layer"/>
+                            <xs:enumeration value="reference"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="href" type="xs:string" use="optional"/>
+                <xs:attribute ref="xml:lang"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>
