@@ -1,6 +1,6 @@
 # User Story:
 
-As a OSCAL {stakeholder}, I ... describe the problem that needs to be solved.
+As an OSCAL {stakeholder}, I ... describe the problem that needs to be solved.
 
 ## Goals:
 

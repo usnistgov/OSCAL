@@ -2,9 +2,10 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
   >
   
-<!-- For validating oscal-oscal.xml against the schema (XSD) it purportedly describes.
+<!-- For validating oscal-oscal.xml against the schemas (XSD) it purportedly describes.
   
   * Are all elements in the schema matched by components (via their prop[@class='tag']?
   * Are all component[@class='element-description'] matched by elements declared in the schema?
@@ -19,27 +20,37 @@
     -->
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
+  <sch:ns uri="http://www.w3.org/2001/XMLSchema"  prefix="xs" />
   
-  <sch:let name="schema-files" value="'../../schema/xml/XSD/oscal-core-interim.xsd', '../../schema/xml/XSD/oscal-profile-interim.xsd'"/>
-  <sch:let name="schemas" value="document($schema-files)"/>
+  <sch:let name="schema-files" value="distinct-values(//oscal:prop[@class='xsd'])"/>
+  <sch:let name="schemas" value="document($schema-files,/)"/>
   
-  <sch:let name="element-declarations"  value="$schemas//xsd:element[exists(@name)]"/>
-  <sch:let name="element-documentation" value="//oscal:component[@class='element-description']"/>
+  <!--'../../schema/xml/XSD/oscal-catalog.xsd',
+  '../../schema/xml/XSD/oscal-declarations.xsd',
+  '../../schema/xml/XSD/oscal-profile.xsd'-->
+  
+  <sch:let name="declarations"  value="$schemas//(xsd:element[exists(@name)] | xsd:attribute[exists(@name)])"/>
+  <sch:let name="documentation" value="//oscal:component[@class=('element-description','attribute-description')]"/>
   
   <sch:pattern>
     <sch:rule context="/*">
-      <!--<sch:report test="true()"><sch:value-of select="count($element-declarations)"/></sch:report>-->
-      <sch:let name="undocumented-declarations" value="$element-declarations[not(@name=$element-documentation/oscal:prop[@class='tag'])]"/>
+      <sch:let name="undocumented-declarations" value="$declarations[not(@name=$documentation/oscal:prop[@class='tag'])]"/>
       <sch:assert test="empty($undocumented-declarations)">
         Schemas <sch:value-of select="$schema-files"/> declare/s 
-        <sch:value-of select="if (count($undocumented-declarations) eq 1) then 'this element, which is' else 'these elements, which are' "/>
-        undocumented: <sch:value-of select="string-join($undocumented-declarations/@name, ', ')"/>
+        <sch:value-of select="if (count($undocumented-declarations) eq 1) then 'this element or attribute, which is' else 'these elements/attributes, which are' "/>
+        undocumented: <sch:value-of select="string-join($undocumented-declarations/@name/concat('''',.,''''), ', ')"/>
       </sch:assert>
     </sch:rule>
     
     <sch:rule context="oscal:component[@class='element-description']">
       <sch:let name="gi" value="oscal:prop[@class='tag']"/>
-      <sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <xsl:value-of separator=", " select="$schema-files"/></sch:assert>
+      <sch:let name="xsd" value="ancestor::oscal:group/oscal:prop[@class='xsd']"/>
+      <sch:let name="extra-declarations" value="document($xsd,/)//xs:element[@name=$gi]"/>
+      <sch:assert test="empty($xsd) or exists($extra-declarations)">Element declaration not found in schema '<sch:value-of select="$xsd"/>'</sch:assert>
+      <sch:assert test="count(//oscal:component[@class='element-description'][oscal:prop[@class='tag']=$gi]) = 1">Competing element description for '<sch:value-of select="$gi"/>'</sch:assert>
+      <!--<sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <xsl:value-of separator=", " select="$schema-files"/></sch:assert>
+      <!-\-<sch:report test="true()"><sch:value-of select="$gi"/>: <sch:value-of select="$xsd"/>: <sch:value-of select="count(document($xsd,/))"/></sch:report>-\->
+      <sch:report test="exists($extra-declarations)">... but it is declared in the called schema ...</sch:report>-->
     </sch:rule>
     
     <sch:rule context="oscal:part[@class='description']">

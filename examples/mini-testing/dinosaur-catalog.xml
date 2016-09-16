@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <?xml-model href="../../schema/xml/Schematron/oscal-links.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../../schema/xml/RNC/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
@@ -31,7 +31,7 @@
             <control id="allosaur">
                 <title>Allosaurus</title>
               <param id="scary"><desc>List anything scary about this dinosaur</desc>
-                <hint>teeth, claws, tail for example</hint></param>
+                <label>teeth, claws, tail for example</label></param>
               <prop class="trans">Other Lizard</prop>
               <part class="desc" id="allosaur-desc"><p>Vicious predator, ancestor of more vicious predators.</p></part>
             </control>

@@ -34,9 +34,13 @@ Here are the current definitions for each component. As the project progresses, 
  * *Implementation*: Defines how each profile item is implemented for a given system component. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.
  * *Assessment*: Describes how the system assessment is to be performed.
  * *Assessment Results*: Records the findings of the assessment.
+ 
+OSCAL will also integrate with:  
  * *Metrics*: Defines metrics and measurements for understanding the effectiveness of the system’s security. 
  * *Mechanism*: Describes methods used to monitor the system’s current security state (e.g., Security Content Automation Protocol (SCAP)). 
  
+These are the current definitions for each component. As the project progresses, these definitions may evolve. They are included here to indicate the overall body of work for OSCAL and not the finalized details of each component.  
+
 ## OSCAL users
 
 The initial OSCAL work encompasses the catalog and profile components. There are several types of users who should benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:

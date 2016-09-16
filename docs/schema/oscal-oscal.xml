@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="oscal-docs-html.xsl"?>
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css" title="Straight" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
-<?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../../schema/xml/RNC/oscal-worksheet.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Straight" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
+<?xml-model type="application/xml" href="oscal-docs.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!--<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+<?xml-model href="../../schema/xml/RNC/oscal-experimental.rnc" type="application/relax-ng-compact-syntax"?>
 <worksheet xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>Document model and tagging specification - OSCAL: The Open Security Controls Assessment
     Language</title>
@@ -37,29 +37,32 @@
       application. (Or the target application could learn to consume OSCAL.) Only some parts of
       HTML, however, make their way into OSCAL, which is designed to address its own
       requirements.</p>
+    <p>In future, OSCAL features (elements in the XML models) may be split across two or more
+      namespaces.</p>
   </section>
   <section>
     <title>OSCAL organization</title>
-    <p>OSCAL catalogs are built out of controls. By analogy, OSCAL <q>frameworks</q> and
-        <q>worksheets</q> are constructed out of components, which may map to (correspond with)
-      controls in a catalog.</p>
-    <p>Both controls (in a catalog) and components (more generally) are like rows in a spreadsheet,
-      with cells in the row designated for carrying labeled (and sometimes structured) information.
-      To accommodate this, OSCAL is a lightweight and free-form <q>documentary</q> format, which
-      includes semantic <q>islands</q> of structured information. These are semantic not only
-      because they are addressable in principle, but more importantly because their organizations
-      and values may be known before processing occurs, at least with respect to certain operations
-      and relations, and even (at the most general level) before operations are designed and
-      deployed. When encoded in OSCAL, control catalogs and the documents that make reference to
-      them become <q>actionable</q> even at granular levels.</p>
+    <p>OSCAL catalogs are built out of controls. Experimental forms of OSCAL have other structures
+      analogous to controls, but by and large they will eventually make reference to controls.</p>
+    <p>Controls can be thought of as structured information objects aligned with one another, like
+      rows in a spreadsheet, with cells in the row designated for carrying labeled (and sometimes
+      structured) fields or items of information. To accommodate this, OSCAL provides a lightweight
+      and free-form <q>documentary</q> format, which includes semantic <q>islands</q> of structured
+      (tagged) data. When deployed regularly and systematically (or assumed to be so), these become
+        <q>semantic</q> not only because they are addressable in principle, but more importantly
+      because their organizations and values may be known before processing occurs, at least with
+      respect to certain operations and relations, and even (at the most general level) before
+      operations are designed and deployed. When encoded in OSCAL, control catalogs and the
+      documents that make reference to them become <q>actionable</q> even at granular levels.</p>
     <p>At the broadest level, <q>control objects</q> in OSCAL include controls, subcontrols, parts
-      of controls or subcontrols, and control groups. Each OSCAL application or application domain
-      will determine for itself how these correspond to entities or <q>controls</q>, formal processes, procedures, and so forth, within that domain.</p>
+      of controls or subcontrols, and control groups. (Also as mentioned, at other layers and in
+      other forms there may be other analogues going by other names.) Each OSCAL application or
+      application domain will determine for itself how these correspond to entities or
+        <q>controls</q>, formal processes, procedures, and so forth, within that domain.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>group</code>,
-        <code>control</code>, <code>subcontrol</code>, <code>component</code>, and
-      <code>part</code>. OSCAL can support organizations of information (in both catalogs and
-      nominal <q>frameworks</q>) with arbitrary granularity, as any of these objects may be used
+        <code>control</code>, <code>subcontrol</code>, and <code>part</code>. OSCAL can support
+      organizations of information with arbitrary granularity, as any of these objects may be used
       consistently to carry regular sets of properties, with names and value spaces that may be
       known in advance or discovered dynamically.</p>
   </section>
@@ -73,51 +76,18 @@
       customization per instance - that is, each one will be a one-off conversion.</p>
   </section>
   <group>
-    <title>Controls, components and their contents</title>
+    <title>Controls and their contents</title>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and the
-      structured information (loosely <q>objects</q>, represented as valid XML elements). These
-      contents will include both structured contents (using element types as described here) and
-      relatively uncontrolled or free-form contents (described elsewhere as <a
-        href="oscal-oscal.xml#prose">prose</a>).</p>
+      structured information they represent or contain (loosely <q>objects</q>, represented as valid
+      XML elements). These contents will include both structured contents (using element types as
+      described here) and (within those) relatively uncontrolled or free-form contents (described
+      elsewhere as <a href="oscal-oscal.xml#prose">prose</a>).</p>
     <component class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
       <part class="description">
         <p>A (canonical) control catalog: a structured set of security controls</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">framework</prop>
-      <prop class="full_name">Framework</prop>
-      <part class="description">
-        <p>A collection of components for formal reference into and among control catalogs</p>
-      </part>
-      <part class="remarks">
-        <p>This element represents a collection of structured data objects (<q>components</q>, see
-            <code>component</code>) that present information in ways organized to facilitate
-          coordinated access (both manual and automated) both with one another and with controls
-          documented in control catalogs. This is a suitable element for representing, not a control
-          catalog, but an overlay or customization that has its own organization, making
-          many-to-many links across catalogs, their profiles, and other canonical reference
-          documents. (A customization that does not reorganize, but only selects from and configures
-          a control, can be a <code>profile</code>.)</p>
-        <p>Despite their very different roles in the system (catalogs for canonical collections of
-          controls, frameworks for most anything else), components inside frameworks and controls
-          inside catalogs have the same kinds of content objects subject to similar kinds of
-          restrictions. With respect to their internals, that is, they are closely aligned, which
-          simplifies processing of information across the boundaries between them.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">worksheet</prop>
-      <prop class="full_name">Worksheet</prop>
-      <part class="description">
-        <p>An arbitrary, working collection of components</p>
-      </part>
-      <part class="remarks">
-        <p>Functionally this element is an alias of <code>framework</code>. But it is expected to be
-          used for much more ad-hoc collections of components than formalized (much less published)
-          frameworks.</p>
       </part>
     </component>
     <component class="element-description">
@@ -128,27 +98,7 @@
       </part>
       <part class="remarks">
         <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
-          either (formally) <code>subcontrol</code> or (informally) <code>part</code>.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">component</prop>
-      <prop class="full_name">Framework component</prop>
-      <part class="description">
-        <p>Within a framework, a structured information object typically referencing one or more
-          security controls</p>
-      </part>
-      <part class="remarks">
-        <p>Components may be grouped using <code>group</code> and be further divided into parts.
-          They may also contain components (recursively), although this may not generally be
-          advisable.</p>
-        <p>In a spreadsheet format, components will frequently be analogous to rows; ideally their
-          child elements (properties, links and other structured contents) will map directly to
-          cells.</p>
-        <p>In a direct mapping from catalog to framework formats, both <code>control</code> and
-            <code>subcontrol</code> may be regarded as <q>components</q> of their <q>frameworks</q>
-          (catalogs) in the general sense; however components in use are not likely to be much like
-          the controls they reference.</p>
+            <code>part</code> or extended using <code>subcontrol</code>.</p>
       </part>
     </component>
     <component class="element-description">
@@ -186,20 +136,13 @@
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
           robustness of such queries can be ensured by appropriate property declarations (as
-          singletons and as identifiers); cf <code>property</code> in the declarations model (which
-          also supports other constraints over property values).</p>
+          singletons and as identifiers); cf <code>declare-prop</code> in the declarations model
+          (which also supports other constraints over property values).</p>
         <p>Properties permit the deployment and management of arbitrary controlled values, with and
           among control objects (controls and parts and extensions), for any purpose useful to an
           application or implementation of those controls. Typically and routinely, properties will
           be used to sort, select, order, and arrange controls or relate them to one another or to
           class hierarchies, taxonomies, or external authorities.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">param</prop>
-      <prop class="full_name">Parameter</prop>
-      <part class="description">
-        <p>A parameter setting, to be propagated to points of insertion</p>
       </part>
     </component>
     <component class="element-description">
@@ -215,11 +158,16 @@
           these values as bindings (and thereby getting open-ended extensibility).</p>
         <p>An assigned class may frequently provide for a header in display, such that
             <code>part[@class='objectives']</code> is displayed under a header <em>Objectives</em>,
-          etc. Unlike groups, controls, or subcontrols, however, they may not have <code>title</code>
-          element children (they are not <q>first class objects</q> in this sense). Thus, in OSCAL
-          if the components of your controls have their own titles, they are something else; to
-          accommodate data like this, consider using a property (e.g.,
-            <code>prop[@class='part-title']</code> as an escape hatch.</p>
+          etc. Parts may also however have their own titles (<code>title</code> elements).</p>
+        <p>Generally speaking, <code>part</code> elements will be of two kinds. Many parts are
+          logical partitions or sections for prose; these may be called <q>statements</q> and may be
+          expected to have simple prose contents, even just one paragraph. Other parts may be more
+          formally constructed out of properties (<code>prop</code> elements) and/or their own
+          parts. Such structured objects (sometimes called <q>features</q>) may, at the extreme,
+          function virtually as control extensions or subcontrol-like objects (<q>enhancements</q>).
+          Since the composition of parts can be constrained using OSCAL declarations (of the items
+          or components to be given in a part or in this type of part), their use for encoding
+            <q>objects</q> of arbitrary complexity within controls, is effectively open-ended.</p>
       </part>
     </component>
     <component class="element-description">
@@ -234,17 +182,80 @@
       </part>
       
     </component>
+    <component class="attribute-description">
+      <prop class="tag">rel</prop>
+      <prop class="full_name">Relation</prop>
+      <part class="description">
+        <p>The stipulated relation of a link to its target or vice versa</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">id</prop>
+      <prop class="full_name">ID / identifier</prop>
+      <part class="description"><p>A value on @id unique within local document scope, i.e. across a given catalog or representation of catalog contents (controls).</p></part>
+      <part class="remarks">
+        <p>No mechanism is proposed to ensure that <code>@id</code> values do not collide across different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">href</prop>
+      <prop class="full_name">hypertext reference</prop>
+      <part class="description"><p>A link to a document or document fragment (actual, nominal or projected)</p></part>
+      <part class="remarks"><p>Note in particular that <code>@href</code> targets include elements (locations) in representations of documents that exist only by virtue of dynamic
+        application, such as (for example) the results of profile resolution.</p></part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">class</prop>
+      <prop class="full_name">Class</prop>
+      <part class="description"><p>Nominal semantic binding(s) for any element (whitespace-separated list of name tokens)</p></part>
+      <part class="remarks">
+        <p>Overloading this attribute with more than one value is permitted, but not recommended.</p>
+      </part>
+    </component>
   </group>
   <group>
     <title>Functional elements</title>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
+    
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
       semantic traversal.</p>
+    <component class="element-description">
+      <prop class="tag">param</prop>
+      <prop class="full_name">Parameter</prop>
+      <part class="description">
+        <p>A parameter setting, to be propagated to points of insertion</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">label</prop>
+      <prop class="full_name">Parameter label</prop>
+      <part class="description">
+        <p>A placeholder for a missing value, in display</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">desc</prop>
+      <prop class="full_name">Parameter description</prop>
+      <part class="description">
+        <p>Indicates and explains the purpose and use of a parameter</p>
+      </part>
+    </component>
     <component class="element-description">
       <prop class="tag">insert</prop>
       <prop class="full_name">Parameter insertion</prop>
       <part class="description">
         <p>A <q>call</q> (reference) to a parameter for dynamic content transclusion</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">param-id</prop>
+      <prop class="full_name">Parameter ID</prop>
+      <part class="description"><p>Applicable parameter</p></part>
+      <part class="remarks">
+        <p>Identifies the parameter element target (<code>param</code>) that governs content
+          insertion at this location (when on an <code>insert</code>), or to which a parameter
+          setting applies (when on a <code>set-param</code>).</p>
       </part>
     </component>
     <component class="element-description">
@@ -262,11 +273,281 @@
           legacy content.</p>
       </part>
     </component>
-    <!--<control class="element-description"><prop class="tag">select</prop><prop class="full_name">Selection</prop><part class="description"><p>A selection requiring designation via parameter (tbd)</p></part></control>-->
-    <!--<control class="element-description"><prop class="tag">choice</prop><prop class="full_name">Choice</prop><part class="description"><p>A choice of values, to be designated via parameter (tbd)</p></part></control>-->
+    </group>
+  <group>
+    <title>Structural elements</title>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
+    <component class="element-description">
+      <prop class="tag">section</prop>
+      <prop class="full_name">Section</prop>
+      <part class="description">
+        <p>A partition within a catalog or section (prose text not controls)</p>
+      </part>
+      <part class="remarks">
+        <p>Echoes HTML5 <code>section</code>. May contain controls (<code>control</code>) or groups
+          of controls (<code>group</code>).</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">group</prop>
+      <prop class="full_name">Group</prop>
+      <part class="description">
+        <p>A set of related controls or groups (of controls or groups)</p>
+      </part>
+      <part class="remarks">
+        <p>In addition to controls or groups, groups may be titled and may have their own
+          properties, statements, parameter settings, and references, subject to declaration. In
+          this respect they are like controls, subcontrols or parts, but their properties apply to
+          the entire group and must be acquired in processing via inheritance.</p>
+        <p>Unlike sections (<code>section</code> elements), groups may not contain arbitrary prose
+          (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped
+          (no <code>@class</code>) and therefore unconstrained by declarations.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">title</prop>
+      <prop class="full_name">Title</prop>
+      <part class="description">
+        <p>A fallback for display and navigation, exclusive of more specific properties</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">references</prop>
+      <prop class="full_name">References</prop>
+      <part class="description">
+        <p>A group of reference descriptions</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">ref</prop>
+      <prop class="full_name">Reference</prop>
+      <part class="description">
+        <p>A reference, with one or more citations to standards, related documents, or other
+          resources</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">std</prop>
+      <prop class="full_name">Standard</prop>
+      <part class="description">
+        <p>Citation of a formal published standard</p>
+      </part>
+      <part class="remarks">
+        <p>Echoes the NISO JATS (and NISO STS) <code>std</code> element</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">citation</prop>
+      <prop class="full_name">Citation</prop>
+      <part class="description">
+        <p>Citation of a resource</p>
+      </part>
+      <part class="remarks">
+        <p>Echoes the NISO JATS (and NISO STS) <code>mixed-citation</code> element.</p>
+        <p>For references to standards, <code>std</code> may be preferred.</p>
+      </part>
+    </component>
+  </group>
+  <group id="prose">
+    <title>Prose</title>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
+    <p>Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where
+      they will ordinarily be relegated to the control's partitions or statements
+      (<code>part</code>s). OSCAL prose elements echo HTML semantics, although they are deliberately
+      and specifically a narrow subset of HTML element types. This is intended to be the bare
+      minimum of stripped down text as is appropriate for control documentation. Graphics, diagrams,
+      and tables are all out of scope for OSCAL (although arbitrary feature sets can always be
+      modeled in OSCAL as nested parts).</p>
+    <p>Among prose elements, <code>p</code> elements in particular are of interest in that they may
+      be constrained by declarations like other contents of controls (or components) – although this
+      may not often be as useful as imposing constraints over properties and parts. Frequently, a
+      part organization will be used to assign prose to specific known <q>sections</q> or
+        <q>enhancements</q> of a control (modeled as <code>part</code> or
+      <code>subcontrol</code>).</p>
+    <component class="element-description">
+      <prop class="tag">p</prop>
+      <prop class="full_name">Paragraph</prop>
+      <part class="description">
+        <p>Running text: a paragraph or paragraph fragment</p>
+      </part>
+      <part class="remarks">
+        <p>This element echoes HTML <code>p</code>. As in HTML, it is not limited to indicating
+          complete or discrete (compositional or logical) paragraphs, but can be used for any text
+          set off on its own line.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">pre</prop>
+      <prop class="full_name">Preformatted text</prop>
+      <part class="description">
+        <p>Retains whitespace in display</p>
+      </part>
+      <part class="remarks">
+        <p>Echoes HTML <code>pre</code>.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">ol</prop>
+      <prop class="full_name">Ordered List</prop>
+      <part class="description">
+        <p>Appears with numbering in ordinal position</p>
+      </part>
+      <part class="remarks">
+        <p>Although this echoes HTML <code>ol</code>, renditional aspects of this element are not
+          offered by OSCAL. How lists are to be numbered is left to implementations; it
+          is likely that specific control catalogs will have their own schemes.</p>
+        <p>At present there is no support for <q>continued lists</q>, as we have not seen any in
+          documents in scope for analysis.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">ul</prop>
+      <prop class="full_name">Unordered list</prop>
+      <part class="description">
+        <p>A series of items kept in order but without indicators of sequence; likely bulleted</p>
+      </part>
+      <part class="remarks">
+        <p>As in HTML, <q>unordered</q> does not indicate that the order of contained list items is
+          not respected, only that they are not displayed with any notation indicating their order:
+          that is, bullets, not numbers.</p>
+        <p>Note that when sequences or lists appear, it may be as common in OSCAL to list (and
+          control) them as sequences of properties or paragraphs, perhaps grouped in parts or
+          subcontrols. This is very much a display element, convenient when what we have is really
+          prose, not highly organized or <q>semantic</q>.</p>
+        <p>OSCAL has (as of yet) no <q>simple</q> or unadorned list element; it is suggested that an
+            <code>@class</code> added to <code>ul</code> should be rendered as such in any
+          application that wants it.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">li</prop>
+      <prop class="full_name">List item</prop>
+      <part class="description">
+        <p>An item demarcated with a bullet or numerator</p>
+      </part>
+      <part class="remarks">
+        <p>OSCAL uses a lightweight HTML-like approach to lists, in which list items are
+          unstructured (mixed content) except for permitting sublists directly, without separation
+          from other text. The expectation is that items in lists will not need further internal
+            (<q>paragraph</q>) demarcation.</p>
+        <p>Lists that are really (brief) subsections may be expressed as (nested, unclassed)
+            <code>part</code> elements. Generally speaking, structured feature sets (in the form of
+          parts with regular property sets), are more likely to be easily addressable than
+          lists.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">em</prop>
+      <prop class="full_name">Emphasis</prop>
+      <part class="description">
+        <p>Rhetorical emphasis as typically indicated by a font shift</p>
+      </part>
+      <part class="remarks">
+        <p>In display, this element can be expected to <q>toggle</q>, i.e. provide for italics when
+          appearing within roman text, but roman when appearing within italic text.</p>
+        <p>Particular semantics (indicating types of emphasis for finer resolution in display or
+          retrieval) may be provided via <code>@class</code>.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">i</prop>
+      <prop class="full_name">Italics</prop>
+      <part class="description">
+        <p>Typographical shift to italics</p>
+      </part>
+      <part class="remarks">
+        <p>An implementation may toggle, i.e., display contents using a roman face when the
+          surrounding text is already italic.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">b</prop>
+      <prop class="full_name">Bold</prop>
+      <part class="description">
+        <p>Typographical shift to bold</p>
+      </part>
+      <part class="remarks">
+        <p>In display, when the surrounding text is already bold, an implementation may indicate
+            <q>bold</q> by means of double-bold or some other typographical distinction.</p>
+        <p>As of yet, OSCAL does not support underlining directly (no <code>u</code> element or
+          designated property, which makes underlining, like color and strikethrough, a feature exploitable
+          (with less ambiguity) at the application level.</p>
+        <p>In ordinary use, <code>b</code> and <code>i</code> should perhaps be deprecated in favor
+          of more <q>semantic</q> elements such as <code>em</code>, <code>code</code> or even <code>span></code>
+          especially with <code>@class</code> attributes.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">a</prop>
+      <prop class="full_name">Anchor</prop>
+      <part class="description">
+        <p>An HTML-style anchor (inline linking element)</p>
+      </part>
+      <part class="remarks">
+        <p>As in HTML, the link target is indicated by <code>@href</code>, with a '#' prefix for an
+          internal cross-reference matching an <code>@id</code> elsewhere in the document.</p>
+        <p>Anchors without <code>@href</code> are not invalid to the OSCAL schema (base validation),
+          but may be reported by a Schematron. An application may promote the contents of an
+            <code>a</code> element, when a valid URI, to serve as the link target if
+            <code>@href</code> is missing or not a URI.</p>
+        <p>As in HTML, <code>a</code> appears inline (in mixed content), while <code>link</code> is
+          a <q>paragraph-level</q> link (that appears next to paragraphs or components in a
+          control).</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">q</prop>
+      <prop class="full_name">Quoted text</prop>
+      <part class="description">
+        <p>An inline segment to appear within quotation marks</p>
+      </part>
+      <part class="remarks">
+        <p>This element is intended for use producing <q>smart quotes</q> around short phrases, not
+          for extended quotations. Ordinarily it has no special semantics other than to provide
+          quotation marks in display.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">code</prop>
+      <prop class="full_name">Code</prop>
+      <part class="description">
+        <p>Inline code</p>
+      </part>
+      <part class="remarks">
+        <p>Strictly, this element should identify formal code or code fragments. Like anything else,
+          it may be <q>enhanced</q> using its class.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">sup</prop>
+      <prop class="full_name">Superscript</prop>
+      <part class="description">
+        <p>Superscripted text</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">sub</prop>
+      <prop class="full_name">Subscript</prop>
+      <part class="description">
+        <p>Subscripted text</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">span</prop>
+      <prop class="full_name">Span</prop>
+      <part class="description">
+        <p>Generic inline container</p>
+      </part>
+      <part class="remarks">
+        <p>As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
+        <p>The OSCAL declarations model does not presently support validating properties of
+          arbitrary spans. But it might. Please share your requirements.</p>
+      </part>
+    </component>
   </group>
   <group>
     <title>Declarations elements</title>
+    <prop class="xsd">../../schema/xml/oscal-declarations.xsd</prop>
     <p>By declaring constraints on information associated with controls such as their properties
         (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
       and operators can validate the composition and consistency of available controls. Over and
@@ -279,7 +560,7 @@
       The extent and degree to which declarations are used to impose order on controls is up to the
       application and its methods. By no means are declarations necessary; but they serve as an aid
       in modeling and in communicating expectations.</p>
-    <p>OSCAL declarations are enforced by a Schematron; the core schema stipulates this  model (and
+    <p>OSCAL declarations are enforced by a Schematron; the core schema stipulates this model (and
       tagging used to control it, i.e. a tag interface) but does not enforce any of the constraints
       so declared. Developers should take note that these constraints are all readily testable in
       XPath.</p>
@@ -293,8 +574,8 @@
         <p>The OSCAL validation model supports not only validation against a formal schema
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
-          or catalog type within which they appear. Constraints described in these declarations, and
-          bound via assignments of <code>@class</code> (for information within controls or
+          or catalog type within which controls appear. Constraints described in these declarations,
+          and bound via assignments of <code>@class</code> (for information within controls or
           components) and <code>@context</code> (indicating control, subcontrol, component or part
           wherein the given object may appear), enable automated checking for consistency of
           controls, subcontrols, components and their parts, specific to the types or kinds of
@@ -305,8 +586,8 @@
       <prop class="tag">declare-prop</prop>
       <prop class="full_name">Property declaration</prop>
       <part class="description">
-      <p>Constraints applicable to a class or classes of <code>prop</code> elements (properties) in
-          context</p>
+        <p>Constraints applicable to a class or classes of <code>prop</code> elements (properties)
+          in context</p>
       </part>
       <part class="remarks">
         <p>The class of properties, in context, to which the constraints apply, is indicated on the
@@ -353,7 +634,6 @@
           running prose), whereas parameters cannot be injected into properties by definition (since
           they are required to be stable per control object).</p>
       </part>
-      
     </component>
     <component class="element-description">
       <prop class="tag">declare-part</prop>
@@ -372,6 +652,15 @@
       <prop class="full_name">Link declaration</prop>
       <part class="description">
         <p>Indicates constraints to be imposed on links in context</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">context</prop>
+      <prop class="full_name">Declaration context</prop>
+      <part class="description">
+        <p>Identifies the type (marked class) of <code>control</code>, <code>subcontrol</code>,
+            <code>group</code> or <code>part</code> which a declared control item (such as a
+            <code>part</code>, <code>prop</code> or <code>link</code>) is expected to appear.</p>
       </part>
     </component>
     <component class="element-description">
@@ -445,7 +734,6 @@
           is taken to satisfy the requirement.</p>
       </part>
     </component>
-    <!--<control class="element-description"><prop class="tag">xdm-datatype</prop><prop class="full_name">XDM datatype lexical constraint</prop><part class="description"><p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter (<code>param</code>) must be castable to the given XDM datatype</p></part><part class="remarks"><p>TBD.</p><p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An even more general functionality would be an xpath-satisfies that would support arbitrary XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le 10.00</code></p></part></control>-->
     <component class="element-description">
       <prop class="tag">value</prop>
       <prop class="full_name">Value constraint</prop>
@@ -488,9 +776,7 @@
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
           include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
-        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
-      
     </component>
     <component class="element-description">
       <prop class="tag">inherit</prop>
@@ -516,278 +802,27 @@
           object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
           class). By default, <code>inherit</code> indicates a property value should match an
           ancestor's property with the same <code>@class</code> (the most usual case).</p>
-        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
     </component>
-    <component class="element-description">
-      <prop class="tag">desc</prop>
-      <prop class="full_name">Parameter description</prop>
+    <component class="attribute-description">
+      <prop class="tag">from</prop>
+      <prop class="full_name">Alternative property (class) from which to inherit</prop>
       <part class="description">
-        <p>Indicates and explains the purpose and use of a parameter</p>
-      </part>
-    </component>
-    
-  </group>
-  <group>
-    <title>Structural elements</title>
-    <component class="element-description">
-      <prop class="tag">section</prop>
-      <prop class="full_name">Section</prop>
-      <part class="description">
-        <p>For partitioning a catalog, collection, or section therein</p>
+        <p>When used, this element indicates a class for a property value to be considered for
+          inheritance.</p>
       </part>
       <part class="remarks">
-        <p>Echoes HTML5 <code>section</code>. May contain controls (<code>control</code>) or groups
-          of controls (<code>group</code>).</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">group</prop>
-      <prop class="full_name">Group</prop>
-      <part class="description">
-        <p>Related controls or groups (of controls or groups)</p>
-      </part>
-      <part class="remarks">
-        <p>In addition to controls or groups, groups may be titled and may have their own
-          properties, statements, parameter settings, and references, subject to declaration. In this
-          respect they are like controls, subcontrols or parts, but their properties apply to the
-          entire group and must be acquired in processing via inheritance.</p>
-        <p>Unlike sections (<code>section</code> elements), groups may not contain arbitrary prose
-          (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped
-          (no <code>@class</code>) and therefore unconstrained by declarations.</p>
-      </part>
-      
-    </component>
-    <component class="element-description">
-      <prop class="tag">title</prop>
-      <prop class="full_name">Title</prop>
-      <part class="description">
-        <p>A fallback for display and navigation, exclusive of more specific properties</p>
-      </part>
-      
-    </component>
-    <component class="element-description">
-      <prop class="tag">references</prop>
-      <prop class="full_name">References</prop>
-      <part class="description">
-        <p>A group of reference descriptions</p>
-      </part>
-      
-    </component>
-    <component class="element-description">
-      <prop class="tag">ref</prop>
-      <prop class="full_name">Reference</prop>
-      <part class="description">
-        <p>A reference, with one or more citations to standards, related documents, or other
-          resources</p>
-      </part>
-      
-    </component>
-    <component class="element-description">
-      <prop class="tag">std</prop>
-      <prop class="full_name">Standard</prop>
-      <part class="description">
-        <p>Citation of a formal published standard</p>
-      </part>
-      <part class="remarks">
-        <p>Echoes the NISO JATS (and NISO STS) <code>std</code> element</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">citation</prop>
-      <prop class="full_name">Citation</prop>
-      <part class="description">
-        <p>Citation of a resource</p>
-      </part>
-      <part class="remarks">
-        <p>Echoes the NISO JATS (and NISO STS) <code>mixed-citation</code> element.</p>
-        <p>For references to standards, <code>std</code> may be preferred.</p>
-      </part>
-    </component>
-  </group>
-  <group id="prose">
-    <title>Prose</title>
-    <p>Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level.
-      OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a
-      narrow subset of HTML element types. This is intended to be the bare minimum of stripped down
-      text as is appropriate for control documentation. Graphics, diagrams, and tables are all out
-      of scope for OSCAL (although arbitrary feature sets can always be modeled as nested
-      parts).</p>
-    <p>Among prose elements, <code>p</code> elements in particular are of interest in that they may
-      be constrained by declarations like other contents of controls (or components) – although this
-      may not often be as useful as imposing constraints over properties and parts. Frequently, a
-      part organization will be used to assign prose to specific known <q>sections</q> or
-        <q>enhancements</q> of a control (modeled as <code>part</code> or
-      <code>subcontrol</code>).</p>
-    <component class="element-description">
-      <prop class="tag">p</prop>
-      <prop class="full_name">Paragraph</prop>
-      <part class="description">
-        <p>Running text: a paragraph or paragraph fragment</p>
-      </part>
-      <part class="remarks">
-        <p>This element echoes HTML <code>p</code>. As in HTML, it is not limited to indicating
-          complete or discrete (compositional or logical) paragraphs, but can be used for any text
-          set off on its own line.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">pre</prop>
-      <prop class="full_name">Preformatted text</prop>
-      <part class="description">
-        <p>Retains whitespace in display</p>
-      </part>
-      <part class="remarks">
-        <p>Echoes HTML <code>pre</code>.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">ol</prop>
-      <prop class="full_name">Ordered List</prop>
-      <part class="description">
-        <p>Appears with numbering in ordinal position</p>
-      </part>
-      <part class="remarks">
-        <p>Although this echoes HTML <code>ol</code>, renditional aspects of this element are not
-          offered by OSCAL. How lists are to be numbered is left to implementations; it
-          is likely that specific control catalogs will have their own schemes.</p>
-        <p>At present there is no support for <q>continued lists</q>, as we have not seen any in
-          documents in scope for analysis.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">ul</prop>
-      <prop class="full_name">Unordered list</prop>
-      <part class="description">
-        <p>A series of items kept in order but without indicators of sequence; likely bulleted</p>
-      </part>
-      <part class="remarks">
-        <p>As in HTML, <q>unordered</q> does not indicate that the order of contained list items is
-          not respected, only that they are not displayed with any notation indicating their order:
-          that is, bullets, not numbers.</p>
-        <p>Note that when sequences or lists appear, it may be as common in OSCAL to list (and
-          control) them as sequences of properties or paragraphs, perhaps grouped in parts or
-          subcontrols. This is very much a display element, convenient when what we have is really
-          prose, not highly organized or <q>semantic</q>.</p>
-        <p>OSCAL has (as of yet) no <q>simple</q> or unadorned list element; it is suggested that an
-            <code>@class</code> added to <code>ul</code> should be rendered as such in any
-          application that wants it.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">li</prop>
-      <prop class="full_name">List item</prop>
-      <part class="description">
-        <p>An item demarcated with a bullet or numerator</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">em</prop>
-      <prop class="full_name">Emphasis</prop>
-      <part class="description">
-        <p>Rhetorical emphasis as typically indicated by a font shift</p>
-      </part>
-      <part class="remarks">
-        <p>In display, this element can be expected to <q>toggle</q>, i.e. provide for italics when
-          appearing within roman text, but roman when appearing within italic text.</p>
-        <p>Particular semantics (indicating types of emphasis for finer resolution in display or
-          retrieval) may be provided via <code>@class</code>.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">i</prop>
-      <prop class="full_name">Italics</prop>
-      <part class="description">
-        <p>Typographical shift to italics</p>
-      </part>
-      <part class="remarks">
-        <p>An implementation may toggle, i.e., display contents using a roman face when the
-          surrounding text is already italic.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">b</prop>
-      <prop class="full_name">Bold</prop>
-      <part class="description">
-        <p>Typographical shift to bold</p>
-      </part>
-      <part class="remarks">
-        <p>In display, when the surrounding text is already bold, an implementation may indicate
-            <q>bold</q> by means of double-bold or some other typographical distinction.</p>
-        <p>As of yet, OSCAL does not support underlining directly (no <code>u</code> element or
-          designated property</p>
-        <p>). Even <code>b</code> and <code>i</code> should be regarded as escape hatches, and
-          marked with classes when possible.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">a</prop>
-      <prop class="full_name">Anchor</prop>
-      <part class="description">
-        <p>An HTML-style anchor (inline linking element)</p>
-      </part>
-      <part class="remarks">
-        <p>As in HTML, the link target is indicated by <code>@href</code>, with a '#' prefix for an
-          internal cross-reference matching an <code>@id</code> elsewhere in the document.</p>
-        <p>Anchors without <code>@href</code> are not invalid to the OSCAL schema (base validation),
-          but may be reported by a Schematron. An application may promote the contents of an
-            <code>a</code> element, when a valid URI, to serve as the link target if
-            <code>@href</code> is missing or not a URI.</p>
-        <p>As in HTML, <code>a</code> appears inline (in mixed content), while <code>link</code> is
-          a <q>paragraph-level</q> link (that appears next to paragraphs or components in a
-          control).</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">q</prop>
-      <prop class="full_name">Quoted text</prop>
-      <part class="description">
-        <p>An inline segment to appear within quotation marks</p>
-      </part>
-      <part class="remarks">
-        <p>For practical purposes, this is a cosmetic element with no special semantics other than
-          to provide quotation marks in display.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">code</prop>
-      <prop class="full_name">Code</prop>
-      <part class="description">
-        <p>Inline code</p>
-      </part>
-      <part class="remarks">
-        <p>Strictly, this element should identify formal code or code fragments. Like anything else,
-          it may be <q>enhanced</q> using its class.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">sup</prop>
-      <prop class="full_name">Superscript</prop>
-      <part class="description">
-        <p>Superscripted text</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">sub</prop>
-      <prop class="full_name">Subscript</prop>
-      <part class="description">
-        <p>Subscripted text</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">span</prop>
-      <prop class="full_name">Span</prop>
-      <part class="description">
-        <p>Generic inline container</p>
-      </part>
-      <part class="remarks">
-        <p>As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
-        <p>The OSCAL declarations model does not presently support validating properties of
-          arbitrary spans. But it might. Please share your requirements.</p>
+        <p>If this attribute is ommitted, the target class is considered the same as the calling
+          (inheriting) property. Sometimes, however, a property may wish to inherit a value from a
+          property with a different class assignment (i.e. a differently-named property). In these
+          cases, use this attribute.</p>
+        <p>An example of this attribute in use appears in the declarations model for a COBIT5
+          mockup.</p>
       </part>
     </component>
   </group><group id="profiling">
     <title>Profiling</title>
+    <prop class="xsd">../../schema/xml/oscal-profile.xsd</prop>
     <p>By means of its profiling functionality, OSCAL provides ways of specifying and documenting
       configurations or <q>overlays</q> of catalog, as <b>profile</b> documents. Although they may
       contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct
@@ -795,6 +830,7 @@
     <p>Roughly speaking, a profile document is a specification of a <em>selection</em> of controls
       and subcontrols from a catalog, along with a series of <em>operations</em> over those controls
       and their use.</p>
+    <p>The profiling model is also documented with examples in profile semantics documentation.</p>
     <component class="element-description">
       <prop class="tag">profile</prop>
       <prop class="full_name">Profile</prop>
@@ -802,12 +838,54 @@
         <p>In reference to a catalog (or other resource such as profile or framework), a selection
           and configuration of controls, maintained separately</p>
       </part>
+      <part class="remarks">
+        <p>An OSCAL document that describes a selection with possible modification of multiple
+          controls from multiple catalogs. It provides mechanisms by which controls may be selected
+            (<code>import</code>), merged or (re)structured (<code>merge</code>), and emended
+            (<code>modify</code>). OSCAL profiles may select subsets of control sets, set parameter
+          values for them in application, and even qualify the representation of controls and
+          subcontrols as given in and by a catalog. They may also serve as sources for further
+          modification in and by other profiles, that import them.</p>
+      </part>
     </component>
     <component class="element-description">
       <prop class="tag">import</prop>
       <prop class="full_name">Import resource</prop>
       <part class="description">
         <p>Designating a catalog, profile or other resource for controls</p>
+      </part>
+      <part class="remarks">
+        <p>An <code>import</code> indicates a source whose controls are to be included (referenced
+          and modified) in a profile. This source will either be a catalog whose controls are given
+            (<q>by value</q>), or a profile with its own control imports. In the latter case,
+          profiles are expected to be resolved recursively.</p>
+        <p>The contents of the <code>import</code> element indicate which controls and subcontrols
+          from the source, will be included. Controls and subcontrols may be either selected (using
+          an <code>include</code> element) or de-selected (using an <code>exclude</code> element)
+          from the source catalog or profile.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">merge</prop>
+      <prop class="full_name">Merge controls</prop>
+      <part class="description">
+        <p>Merge controls in resolution</p>
+      </part>
+      <part class="remarks">
+        <p>Indicates (by its presence) that controls included in a profile via different and
+          multiple import pathways, are to be merged in resolution. Element contents of the
+            <code>merge</code> can be used to <q>reorder</q> or <q>restructure</q> controls (that
+          is, indicate their order and/or structure in resolution).</p>
+        <p>Implicitly, a merge statement is also a filter: controls that are included in a profile,
+          but not included (implicitly or explicitly) in the scope of a merge statement, will not be
+          merged into (will be dropped) in the resulting resolution.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">modify</prop>
+      <prop class="full_name">Modify controls</prop>
+      <part class="description">
+        <p>Set parameters or emend controls in resolution</p>
       </part>
     </component>
     <component class="element-description">
@@ -889,11 +967,63 @@
           them.</p>
       </part>
     </component>
+    <component class="attribute-description">
+      <prop class="tag">control-id</prop>
+      <prop class="full_name">Control Identifier</prop>
+      <part class="description">
+        <p>control-id</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">subcontrol-id</prop>
+      <prop class="full_name">Subcontrol Identifier</prop>
+      <part class="description">
+        <p>subcontrol-id</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">match</prop>
+      <prop class="full_name">Match controls and subcontrols by identifier</prop>
+      <part class="description">
+        <p>Select controls by (regular expression) match on ID</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">pattern</prop>
+      <prop class="full_name">Match ID with pattern (regular expression)</prop>
+      <part class="description">
+        <p>A regular expression to be matched against an ID value for purposes of control
+          selection</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">order</prop>
+      <prop class="full_name">Control (re)order</prop>
+      <part class="description">
+        <p>When matching multiple controls, what order to use in emitting them: <code>keep</code>,
+            <code>ascending</code>(alphabetically by ID) or <code>descending</code> (alphabetically
+          by ID)</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">with-subcontrols</prop>
+      <prop class="full_name">Include subcontrols with controls</prop>
+      <part class="description">
+        <p>Say <q>yes</q> to include subcontrols with their controls</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">with-control</prop>
+      <prop class="full_name">Include controls with subcontrols</prop>
+      <part class="description">
+        <p>with-control</p>
+      </part>
+    </component>
     <component class="element-description">
       <prop class="tag">set-param</prop>
       <prop class="full_name">Parameter setting</prop>
       <part class="description">
-        <p>Set a parameter's value and even override its description</p>
+        <p>Set a parameter's value or rewrite its label or description</p>
       </part>
       <part class="remarks">
         <p><code>@param-id</code> indicates the parameter (within the scope of the referenced
@@ -912,12 +1042,14 @@
           resolved</p>
       </part>
       <part class="remarks">
-        <p>Use <code>@targets</code> to indicate the classes of elements (typically
-            <code>part</code> or <code>prop</code> elements) to erase or remove from a control, when
-          a catalog is resolved.</p>
+        <p>Use <code>@control-id</code> or <code>@subcontrol-id</code> to indicate the scope of
+          alteration.</p>
         <p>It is an error for two <code>alter</code> elements to apply to the same control or
           subcontrol. In practice, multiple alterations can be applied (together), but it creates
           confusion.</p>
+        <p>At present, no provision is made for altering many controls at once (for example, to
+          systematically remove properties or add global properties); extending this element to
+          match multiple targets could provide for this.</p>
       </part>
     </component>
     <component class="element-description">
@@ -936,6 +1068,30 @@
             <code>add</code> to add it back again with changes.</p>
       </part>
     </component>
+    <component class="attribute-description">
+      <prop class="tag">class-ref</prop>
+      <prop class="full_name">Select by class</prop>
+      <part class="description">
+        <p>Classes of items within controls or subcontrols in scope for removal</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">id-ref</prop>
+      <prop class="full_name">Reference by ID</prop>
+      <part class="description">
+        <p>ID values on items within controls or subcontrols in scope for removal</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">item-name</prop>
+      <prop class="full_name">Item name</prop>
+      <part class="description">
+        <p>The (element) name of an item within controls or subcontrols in scope for removal</p>
+      </part>
+      <part class="remarks">
+        <p>To select the <code>title</code> element use the value <q>title</q> etc.</p>
+      </part>
+    </component>
     <component class="element-description">
       <prop class="tag">add</prop>
       <prop class="full_name">Addition</prop>
@@ -943,6 +1099,143 @@
         <p>Element contents to be added to a control or subcontrols, in resolution</p>
       </part>
     </component>
+    
+    <component class="element-description">
+      <prop class="tag">combine</prop>
+      <prop class="full_name">Combination rule</prop>
+      <part class="description">
+        <p>Whether and how to combine multiple (competing) versions of the same control</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">method</prop>
+      <prop class="full_name">Control combination method</prop>
+      <part class="description">
+        <p>The method to be used when combining controls or subcontrols in resolving a profile</p>
+      </part>
+      <part class="remarks">
+        <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to
+          do with clashing invocations (multiple competing versions of a control or a subcontrol).
+          This setting permits a profile designer to apply a rule for the resolution of such cases.
+          In a well-designed profile, such collisions would ordinarily be avoided; but this setting
+          can be useful for defining what to do when it occurs.</p>
+        <p>Three values are recognized: <q>use-first</q>, <q>merge</q> or <q>keep</q>. The latter
+          two may produce invalid/broken results in some cases (where upstream profiles compete over
+          control contents). In a profile with no collisions, the three values all have the same
+          results.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">as-is</prop>
+      <prop class="full_name">Structure as-is; retain source structure</prop>
+      <part class="description">
+        <p>Structure the controls in resolution as they are structured in their source catalogs</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">custom</prop>
+      <prop class="full_name">Customized structure for controls</prop>
+      <part class="description">
+        <p>Frame a structure wherein represented controls will be embedded in resolution</p>
+      </part>
+      <part class="remarks">
+        <p>This element represents a custom arrangement or organization of controls in the
+          resolution of a catalog. While <code>as-is</code> provides for a restitution of a control
+          set's organization (in one or more source catalogs), this element permits the definition
+          of an entirely different structure.</p>
+        <p>Unlike groups within catalogs, <code>group</code> elements inside <code>custom</code>
+          contain references to controls to be included in the group (in resolution) - or more such
+          groups.</p>
+      </part>
+    </component>
+    
+    
+  </group>
+  <group>
+    <title>Attributes</title>
+    <component class="attribute-description">
+      <prop class="tag">position</prop>
+      <prop class="full_name">Placement position</prop>
+      <part class="description">
+        <p>The position of insertion when adding to control contents (in alteration)</p>
+      </part>
+    </component>
+  </group>
+  <group>
+    <title>Experimental elements</title>
+    <prop class="rnc">../../schema/xml/RNC/oscal-catalog.rnc</prop>
+    <component class="element-description">
+      <prop class="tag">framework</prop>
+      <prop class="full_name">Framework</prop>
+      <part class="description">
+        <p>A collection of components for formal reference into and among control catalogs</p>
+      </part>
+      <part class="remarks">
+        <p>This element represents a collection of structured data objects (<q>components</q>, see
+            <code>component</code>) that present information in ways organized to facilitate
+          coordinated access (both manual and automated) both with one another and with controls
+          documented in control catalogs. This is a suitable element for representing, not a control
+          catalog, but an overlay or customization that has its own organization, making
+          many-to-many links across catalogs, their profiles, and other canonical reference
+          documents. (A customization that does not reorganize, but only selects from and configures
+          a control, can be a <code>profile</code>.)</p>
+        <p>Despite their very different roles in the system (catalogs for canonical collections of
+          controls, frameworks for most anything else), components inside frameworks and controls
+          inside catalogs have the same kinds of content objects subject to similar kinds of
+          restrictions. With respect to their internals, that is, they are closely aligned, which
+          simplifies processing of information across the boundaries between them.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">worksheet</prop>
+      <prop class="full_name">Worksheet</prop>
+      <part class="description">
+        <p>An arbitrary, working collection of components</p>
+      </part>
+      <part class="remarks">
+        <p>Functionally this element is an alias of <code>framework</code>. But it is expected to be
+          used for much more ad-hoc collections of components than formalized (much less published)
+          frameworks.</p>
+      </part>
+    </component>
+    
+    <component class="element-description">
+      <prop class="tag">component</prop>
+      <prop class="full_name">Framework component</prop>
+      <part class="description">
+        <p>Within a framework, a structured information object typically referencing one or more
+          security controls</p>
+      </part>
+      <part class="remarks">
+        <p>Components may be grouped using <code>group</code> and be further divided into parts.
+          They may also contain components (recursively), although this may not generally be
+          advisable.</p>
+        <p>In a spreadsheet format, components will frequently be analogous to rows; ideally their
+          child elements (properties, links and other structured contents) will map directly to
+          cells.</p>
+        <p>In a direct mapping from catalog to framework formats, both <code>control</code> and
+            <code>subcontrol</code> may be regarded as <q>components</q> of their <q>frameworks</q>
+          (catalogs) in the general sense; however components in use are not likely to be much like
+          the controls they reference.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">xdm-datatype</prop>
+      <prop class="full_name">XDM datatype lexical constraint</prop>
+      <part class="description">
+        <p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter
+            (<code>param</code>) must be castable to the given XDM datatype</p>
+      </part>
+      <part class="remarks">
+        <p>TBD. Another alternative is to permit arbitrary XPath (cast to Boolean), which would encompass this and more.</p>
+        <p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An
+          even more general functionality would be an xpath-satisfies that would support arbitrary
+          XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt
+            xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le
+            10.00</code></p>
+      </part>
+    </component>
+    
   </group>
   <group>
     <title>Constraints outside the core schema</title>
@@ -953,12 +1246,22 @@
     <component class="general-constraint">
       <title>Order of items inside controls</title>
       <part class="description">
-        <p>Within a control, properties, parts, parameters and prose contents may appear in any
-          order</p>
+        <p>The schema does not enforce any particular order among the element contents of controls,
+          except that title elements must appear first. Applications may accordingly re-sequence
+          contents of controls and subcontrols. Since such re-ordering is inimical to prose or any
+          linguistic representation that depends on sequencing, <q>islands of prose</q> are expected
+          in OSCAL to appear not directly within controls or subcontrols, but rather within their
+          components. These components themselves should be typed and labeled clearly enough to
+          support arbitrary re-ordering.</p>
+        <p>A particular application or <q>flavor</q> of OSCAL might impose tighter constraints on
+          the contents of controls or subcontrols, or of designated types (classes) of controls and
+          subcontrols.</p>
       </part>
       <part class="remarks">
-        <p>This is for maximum flexibility in OSCAL. OSCAL leaves it to its applications and
-          implementations to enforce ordering.</p>
+        <p>This is for maximum flexibility in OSCAL, in particular when it comes to mapping between
+          XML representations and object representations (such as JSON) whose object types (such as
+          maps) do not respect analogous constraints on cardinality (frequency and order) as XML
+          does. OSCAL leaves it to its applications and implementations to enforce ordering.</p>
         <p>Note that parameters in particular are "floating values" and may appear almost anywhere,
           in OSCAL that is otherwise unconstrained. It is not an error for a parameter value to be
           inserted into a document at a point before the parameter itself has been declared; absent
@@ -973,13 +1276,13 @@
       </part>
     </component>
     <component class="general-constraint">
-      <title>Interdicted @class assignments</title>
+      <title>Reserved @class assignments</title>
       <part class="description">
         <p>No control, component, object within a control, framework component or group can have a
           class assignment that overlaps with an element name in OSCAL</p>
       </part>
       <part class="remarks">
-        <p>Interdicted names: <code>control</code>, <code>subcontrol</code>, <code>component</code>
+        <p>Forbidden names include (at last check): <code>control</code>, <code>subcontrol</code>, <code>component</code>, 
           <code>group</code>, <code>part</code>, <code>prop</code>,<code>param</code>, or
             <code>title</code>. Using the <code>title</code> element for nominal titles is better
           than using a property.</p>

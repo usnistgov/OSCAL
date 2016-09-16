@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <?xml-model href="../../schema/xml/RNC/oscal-profile.rnc" type="application/relax-ng-compact-syntax"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-6f5ad460-f150-4af5-b08a-9a969e2acadd">
 

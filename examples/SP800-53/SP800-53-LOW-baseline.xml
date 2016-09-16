@@ -130,5 +130,9 @@
          <call control-id="si.4"/>
          <call control-id="si.5"/>
          <call control-id="si.12"/>
-      </include></import>
+      </include>
+   </import>
+   <merge>
+      <as-is/>
+   </merge>
 </profile>

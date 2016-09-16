@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns="http://www.w3.org/2005/xpath-functions">
+   <map key="profile">
+      <string key="document-type">profile</string>
+      <array key="imports">
+    
+      
+      
+    
+    
+  
+    
+      
+      
+    
+    
+  </array>
+    
+
+    
+    
+    
+      <array key="param-settings">
+         <map>
+            <string key="param-id">scary</string>
+            <string key="value">claws, tail, huge jackhammer jaws with sharp teeth</string>
+         </map>
+      </array>
+      <array key="alterations">
+         <map>
+            <string key="control-id">allosaur</string>
+            <array key="removals">
+               <string key="class-ref">trans</string>
+               <string key="id-ref">allosaur-desc</string>
+               <string key="item-name">title</string>
+               <string key="item-name">prop</string>
+               <string key="class-ref">trans</string>
+            </array>
+            <array key="additions">
+               <map>
+                  <string key="position">ending</string>
+                  <array key="parts">
+                     <map>
+                        <string key="class">new</string>
+                     </map>
+                  </array>
+               </map>
+            </array>
+         </map>
+      </array>
+   </map>
+</map>

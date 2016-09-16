@@ -17,11 +17,13 @@ Note that internally, applications may permit documents to be temporarily invali
 XML schemas:
 
 
+`oscal-catalog.xsd` | Reference copy of the OSCAL schema. Any OSCAL document except profiles will be valid to this schema. This (machine-generated) copy of the maintenance schema has element descriptors (embedded documentation) injected into it for use by tools.
+
 `oscal-profile.xsd` | Reference copy of the entry schema for OSCAL **profile** documents.
 
-`oscal-core.xsd` | Reference copy of the OSCAL schema. Any OSCAL document except profiles will be valid to this schema. This (machine-generated) copy of the maintenance schema has element descriptors (embedded documentation) injected into it for use by tools.
+`oscal-declarations.xsd` | Permits having a standalone (independent) XML document artificact for OSCAL declarations, which other documents (especially catalogs) can make reference to, instead of including inline. OSCAL declarations permit the specification of constraints to be enforced over control contents as represented in OSCAL.
 
-`xml.xsd` | component for XML namespace required by the foregoing.
+`xml.xsd` | component for XML namespace required by the foregoing (due to permission of top-level attributes for XSD support).
 
 Also in this subdirectory:
 

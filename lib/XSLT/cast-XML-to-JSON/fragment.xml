@@ -1,0 +1,19 @@
+<JSON>
+    <class>assessment</class>
+    <prose>&lt;p class=&quot;object&quot;&gt;Security awareness and training
+        policy&lt;/p&gt;</prose>
+    <prose>&lt;p class=&quot;object&quot;&gt;procedures addressing security awareness training
+        implementation&lt;/p&gt;</prose>
+    <prose>&lt;p class=&quot;object&quot;&gt;appropriate codes of federal
+        regulations&lt;/p&gt;</prose>
+    <prose>&lt;p class=&quot;object&quot;&gt;security awareness training
+        curriculum&lt;/p&gt;</prose>
+    <prose>&lt;p class=&quot;object&quot;&gt;security awareness training materials&lt;/p&gt;</prose>
+    <prose>&lt;p class=&quot;object&quot;&gt;security plan&lt;/p&gt;</prose>
+    <prose>&lt;p class=&quot;object&quot;&gt;training records&lt;/p&gt;</prose>
+    <prose>&lt;p class=&quot;object&quot;&gt;other relevant documents or records&lt;/p&gt;</prose>
+    <props>
+        <class>method</class>
+        <value>EXAMINE</value>
+    </props>
+</JSON>

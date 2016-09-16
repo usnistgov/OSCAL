@@ -1,0 +1,64 @@
+default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
+
+start = declarations
+
+# declarations includes declarations for control types, parameters (names/types),
+# authorities (source data for transclusion etc. etc.)
+
+declarations = ( element declarations { attribute href { text }?, decls } )
+
+decls = (parameter_decl | property_decl | part_decl | para_decl | link_decl)*
+
+# parameter declarations expose names and default values for parameters within the control type
+# XXX not implemented: for now, parameters are declared implicitly (i.e. in use)
+# We can add this (w/ support for it) when we wish to constrain them at the OSCAL layer
+parameter_decl = empty
+# parameter_decl =
+# element declare-param { requiredClass, contextAttr, singleton?, desc, \default? }
+
+# property may contain only id, only regex, both id and regex, or (sequence of) values
+property_decl =
+  element declare-prop { attribute class { text }, contextAttr,
+    singleton?, required?, identifier?,
+    ( regex | calc* | value* )
+  }
+
+# part declaration
+# add 'purpose', 'guidance' etc.
+part_decl =
+  element declare-part { attribute class { text }, contextAttr, singleton?, required? }
+
+# paragraph declaration
+para_decl =
+  element declare-p { attribute class { text }, contextAttr, singleton?, required? }
+
+# link declaration
+link_decl =
+ element declare-link { relAttr, contextAttr, singleton?, required? }
+
+identifier = element identifier { empty }
+
+singleton = element singleton { empty }
+
+required =  element required { empty }
+
+# on 'property and possibly 'parameter',
+# element limit { requiredClass, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
+
+regex = element regex { text }
+
+value = element value { text }
+
+calc = element calc { attribute xml:space { 'preserve' }?, ( \inherit | autonum | text )* }
+
+# empty element because it represents a value to be calculated
+\inherit = element inherit { attribute from { text }? }
+
+# this time the text content gives the format of the calculated number
+autonum = element autonum { text }
+
+
+contextAttr = attribute context { text }
+
+
+relAttr = attribute rel { text }?
