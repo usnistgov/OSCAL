@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<overlay xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog file:/C:/home/puipui/work/oscal/src/main/resources/xsd/nist/sp800-53/2.0/control-catalog.xsd">
+    <id>SP800-53-Low</id>
+    <name>SP 800-53 rev 4 Low baseline</name>
+    <version>4</version>
+    <summary>Low baseline of SP 800-53 rev 4 controls</summary>
+    <base>
+        <catalog-ref id="SP800-53" version="4" />        
+    </base>
+    <baseline-impact>Low</baseline-impact>
+    <controls>
+        <control>
+            <number>AC-1</number>
+            <title>ACCESS CONTROL POLICY AND PROCEDURES</title>
+            <tailoring>
+                <tailor>
+                    <id>none</id>
+                    <rationale change="supplemented">simply listed</rationale>
+                </tailor>
+            </tailoring>
+        </control>
+        <control>
+            <number>AC-2</number>
+            <title>ACCOUNT MANAGEMENT</title>
+            <tailoring>
+                <tailor>
+                    <id>none</id>
+                    <rationale change="supplemented">simply listed</rationale>
+                </tailor>
+            </tailoring>            
+        </control>
+        <!-- and so on, list all controls from low; use transf to generate it -->
+    </controls>
+</overlay>
