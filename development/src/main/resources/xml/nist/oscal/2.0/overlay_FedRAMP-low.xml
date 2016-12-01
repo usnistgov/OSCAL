@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<overlay xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog 
+        file:../../../../xsd/nist/oscal/2.0/OSCAL.xsd">
+    <id>FedRAMP-Low</id>
+    <name>Fed RAMP Low overlay</name>
+    <version>1</version>
+    <summary>TBD</summary>
+    <base>
+        <layer-ref id="SP800-53" version="4" type="catalog" 
+            URI="../../../../xml/nist/oscal/2.0/catalog_controls_sp800-53.xml" />                
+        <layer-ref id="SP800-53-Low" version="4" type="catalog" 
+            URI="../../../../xml/nist/oscal/2.0/overlay_baseline-low_sp800-53.xml" />        
+    </base>
+    <!-- <baseline-impact>Low</baseline-impact> -->  
+    <!-- all controls from the overlays defined in base above are automatically included unless modified below -->
+    <!-- additional controls may be added from catalogs -->
+    <meta>
+        <property name="supplemental-guidance" type="xhtml:xhtml.div.type"/>
+        <property name="implementation-guidance" type="xhtml:xhtml.div.type"/>
+        <tailor>
+            <property name="supplemental-guidance" minOccurs="0" maxOccurs="1" />
+            <property name="implementation-guidance" minOccurs="0" maxOccurs="1" />
+        </tailor>
+    </meta>
+    <items>
+        <item>
+            <type>control-overlay</type>
+            <id>CA-2</id>
+            <link rel="parent">SP800-53#CA-2</link>
+            <parameter>
+                <name>CA-2b</name>
+                <description>at least annually.</description>
+            </parameter>
+        </item>
+        <item>
+            <!-- the next properties specify that this overlay adds ("supplements") the CA-2 (1) control from the
+                "layer" SP800-53; if one looks in the <base> above the layer with ID "SP800-53" points to the SP800-53 catalog;
+                so the paid: <id>, <link rel="layer"> specify a control in a catalog, overlay, etc;
+            -->
+            <type>control-overlay</type>
+            <id>CA-2 (1)</id>
+            <link rel="parent">#CA-2</link>
+            <link rel="parent">SP800-53#CA-2 (1)</link>
+            <rationale change="supplemented">added from Moderate baseline of the SP800-53 catalog.</rationale>
+        </item>
+        <!-- add each objective from the objectives catalog here, 
+            or would one assume that all the objectives corresponding to controls in base overlays are included? 
+            For now, I am listing each objective but the assumption would simplify things; one would list here
+            an objective only if more tailoring is needed.
+        -->
+        <item>
+            <type>objective</type>
+            <id>AC-1</id>
+            <link rel="layer">SP800-53A</link>
+            <rationale change="supplemented" />
+        </item>
+        <!-- add more objectives here -->
+        
+        <!-- corresponding objective to the control supplemented from the moderate baseline -->
+        <item>
+            <type>objective</type>
+            <id>CA-2 (1)</id>
+            <link rel="layer">SP800-53A</link>
+            <rationale change="supplemented">added from Moderate baseline of the SP800-53A catalog.</rationale>
+        </item>
+    </items>
+</overlay>

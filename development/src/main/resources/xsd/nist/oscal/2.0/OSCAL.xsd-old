@@ -50,8 +50,10 @@
                 <xsd:extension base="layerType">
                     <xsd:sequence>
                         <xsd:element maxOccurs="1" minOccurs="1" name="base" type="baseType"/>
+                        <!--
                         <xsd:element maxOccurs="1" minOccurs="1" name="baseline-impact"
                             type="baselineImpactType"/>
+                        -->
                         <xsd:element maxOccurs="1" minOccurs="0" name="meta" type="metaType"/>
                         <xsd:element maxOccurs="1" minOccurs="0" name="controls">
                             <xsd:complexType>
@@ -191,6 +193,38 @@
                     <xsd:documentation>The title of the control.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="parent">
+                <xsd:annotation>
+                    <xsd:documentation>Unique identifier of the parent control if this control is in fact an extension.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:token">
+                            <xsd:attribute name="type" use="required">
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:enumeration value="family"/>
+                                        <xsd:enumeration value="control"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:attribute>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="statement">
+                <xsd:annotation>
+                    <xsd:documentation>The body of the control, also known as the control section, provides a concise statement of the specific security capabilities needed to protect a particular aspect of an information system.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="description"
+                            type="xhtml:xhtml.div.type"/>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="statement"
+                            type="controlStatementType"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
             <xsd:element maxOccurs="1" minOccurs="0" name="properties">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -231,12 +265,23 @@
                     For example, CP-9 is the ninth control in the Contingency Planning (CP) family.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="layer-ref" type="xsd:token"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="title" type="xsd:string">
                 <xsd:annotation>
                     <xsd:documentation>The title of the control.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element name="tailoring">
+            <xsd:element maxOccurs="1" minOccurs="0" name="rationale" type="rationaleType">
+                <xsd:annotation>
+                    <xsd:documentation>The explanation/rationale for the scope</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="related" type="relatedType">
+                <xsd:annotation>
+                    <xsd:documentation>The control associated with this scope and its association/relation type.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="tailoring" maxOccurs="1" minOccurs="0">
                 <xsd:complexType>
                     <xsd:sequence>
                         <xsd:element name="tailor" type="overlayControlTailoringType"/>
@@ -244,7 +289,6 @@
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
-        <xsd:attribute name="number" type="xsd:token"/>
         <xsd:attribute name="status" type="statusType" use="optional"/>
     </xsd:complexType>
     <xsd:complexType name="overlayObjectiveType">
@@ -268,7 +312,6 @@
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
-        <xsd:attribute name="number" type="xsd:token"/>
         <xsd:attribute name="status" type="statusType" use="optional"/>
     </xsd:complexType>
     <xsd:complexType name="systemControlType">
@@ -279,7 +322,8 @@
                     For example, CP-9 is the ninth control in the Contingency Planning (CP) family.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
-            <xsd:element maxOccurs="1" minOccurs="0" name="name" type="xsd:string">
+            <xsd:element maxOccurs="1" minOccurs="0" name="layer-ref" type="xsd:token"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="title" type="xsd:string">
                 <xsd:annotation>
                     <xsd:documentation>The title of the control.</xsd:documentation>
                 </xsd:annotation>
@@ -292,7 +336,33 @@
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
-        <xsd:attribute name="number" type="xsd:token"/>
+        <xsd:attribute name="status" type="statusType" use="optional"/>
+    </xsd:complexType>
+    <xsd:complexType name="layerControlType">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="number" type="xsd:token">
+                <xsd:annotation>
+                    <xsd:documentation>Unique identifier of the control, consists of a two-character family identifier plus the control number within the family.
+                    For example, CP-9 is the ninth control in the Contingency Planning (CP) family.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="layer-ref" type="xsd:token"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="title" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The title of the control.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="rationale" type="rationaleType">
+                <xsd:annotation>
+                    <xsd:documentation>The explanation/rationale for the scope</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="related" type="relatedType">
+                <xsd:annotation>
+                    <xsd:documentation>The control associated with this scope and its association/relation type.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
         <xsd:attribute name="status" type="statusType" use="optional"/>
     </xsd:complexType>
     <xsd:complexType name="layerType">
@@ -367,16 +437,19 @@ laws, Executive Orders, directives, instructions, regulations, policies, or stan
     </xsd:complexType>
     <xsd:complexType name="baseType">
         <xsd:sequence>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="catalog-ref">
-                <xsd:complexType>
-                    <xsd:attribute name="id" type="xsd:token" use="required"/>
-                    <xsd:attribute name="version" type="xsd:string"/>
-                </xsd:complexType>
-            </xsd:element>
             <xsd:element maxOccurs="unbounded" name="layer-ref" minOccurs="0">
                 <xsd:complexType>
                     <xsd:attribute name="id" type="xsd:token" use="required"/>
+                    <xsd:attribute name="version" type="xsd:string"/>
                     <xsd:attribute name="URI" type="xsd:anyURI" use="required"/>
+                    <xsd:attribute name="type" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="catalog"/>
+                                <xsd:enumeration value="overlay"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
                 </xsd:complexType>
             </xsd:element>
         </xsd:sequence>
@@ -421,6 +494,22 @@ laws, Executive Orders, directives, instructions, regulations, policies, or stan
             </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
+    <xsd:complexType name="controlStatementType">
+        <xsd:annotation>
+            <xsd:documentation>The representation of a control statement.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="number" type="xsd:token">
+                <xsd:annotation>
+                    <xsd:documentation>Unique identifier of the control statement, a concatenation of the Control Number, and any enclosing Control Enhancements and/or statements in which the statement is along with the specific list item for this statment appended.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="assignment" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="description" type="xhtml:xhtml.div.type"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="statement"
+                type="controlStatementType"/>
+        </xsd:sequence>
+    </xsd:complexType>
     <xsd:complexType name="tailoringType">
         <xsd:annotation>
             <xsd:documentation xml:lang="en-US">Tailoring type: contains the type of tailoring (add, modify, delete)</xsd:documentation>
@@ -429,16 +518,6 @@ laws, Executive Orders, directives, instructions, regulations, policies, or stan
             <xsd:element maxOccurs="unbounded" minOccurs="1" name="id" type="xsd:token">
                 <xsd:annotation>
                     <xsd:documentation>The machine usable identifier for a scope</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element maxOccurs="1" minOccurs="0" name="rationale" type="rationaleType">
-                <xsd:annotation>
-                    <xsd:documentation>The explanation/rationale for the scope</xsd:documentation>
-                </xsd:annotation>
-            </xsd:element>
-            <xsd:element maxOccurs="unbounded" minOccurs="0" name="related" type="relatedType">
-                <xsd:annotation>
-                    <xsd:documentation>The control associated with this scope and its association/relation type.</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
             <xsd:element maxOccurs="1" minOccurs="0" name="properties">
