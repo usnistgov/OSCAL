@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:common="http://oscal.nist.gov/schema/common"
+    xmlns:xsd="http://oscal.nist.gov/schema/core"
+    elementFormDefault="qualified" targetNamespace="http://oscal.nist.gov/schema/OSCAL-extension-system-implementation"> 
+
+    <xs:import namespace="http://oscal.nist.gov/schema/common" schemaLocation="OSCAL-common.xsd"></xs:import>
+    <xs:import namespace="http://oscal.nist.gov/schema/core" schemaLocation="OSCAL-core.xsd"></xs:import>
+    
+	 <!-- xmlns:swid="http://standards.iso.org/iso/19770/-2/2015/schema.xsd"  -->
+    <!-- OSCAL-extension-system-implementation.xsd -->
+    
+    <!-- a system comprises a suite of components -->
+     <xs:element name="componentType">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="xsd:layerItemType">
+                    <xs:sequence>
+                        <!-- <xsd:element maxOccurs="1" minOccurs="1" name="base" type="baseType"/>  -->
+                        <xs:element maxOccurs="1" minOccurs="0" name="cpe-identifier" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="swid-identifier" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="impact" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="level" type="xs:string"/>
+                        <xs:element maxOccurs="1" minOccurs="0" name="serviceLayer" type="xs:string"/>
+                        <!-- <xsd:element minOccurs="0" name="contact" type="actor"/>  -->
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- actor element essential for capturing system description that includes human activity ; including SLAs -->
+    <xs:element name="actor" >
+                <xs:annotation>
+                    <xs:documentation>Actor(s) as persons or organizations, their roles, and their contact information.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+                        <xs:element minOccurs="0" name="role" type="xs:string">
+                            <!-- possible restriction of roles allowed by actors -->
+                            <!--  <xs:restriction base="xs:string">
+	                           <xs:enumeration value="owner"/>
+	                           <xs:enumeration value="security-representative"/>
+	                           <xs:enumeration value="authorizing-official"/>
+	                           <xs:enumeration value="service-provider"/>
+	                           <xs:enumeration value="broker"/>
+	                           <xs:enumeration value="technical-broker"/>
+	                           <xs:enumeration value="auditor"/>
+	                           <xs:enumeration value="consumer"/>
+	                           <xs:enumeration value="carrier"/>
+	                           <xs:enumeration value="other"/>
+                        	</xs:restriction> 
+                        	-->
+                        </xs:element>
+                        <xs:element minOccurs="0" name="contact-info" type="xs:string"/>
+                        <xs:element minOccurs="0" name="description" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+    </xs:element>
+    
+        
+</xs:schema>
