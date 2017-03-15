@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:common="http://oscal.nist.gov/schema/common"
+    elementFormDefault="qualified" 
+    targetNamespace="http://oscal.nist.gov/schema/extension-catalog-800-53"> 
+
+    <xs:import namespace="http://oscal.nist.gov/schema/common" schemaLocation="OSCAL-common.xsd"></xs:import>
+
+    <!-- 
+    family tag moved to this extension from OSCAL common schema
+    -->
+    <xs:element name="family" type="xs:string"/>
+    <xs:element name="priority" type="xs:string"/>
+    <xs:element name="supplemental-guidance">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="related" type="xs:token" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="link" type="common:linkType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="withdrawn">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="incorporated-into" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- 
+    <xs:complexType name="linkType">
+        <xs:simpleContent>
+            <xs:extension base="xs:token">
+                <xs:attribute name="rel" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="parent"/>
+                            <xs:enumeration value="related"/>
+                            <xs:enumeration value="layer"/>
+                            <xs:enumeration value="reference"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="href" type="xs:string" use="optional"/>
+                <xs:attribute ref="xml:lang"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    -->
+    
+</xs:schema>
