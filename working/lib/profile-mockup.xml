@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://scap.nist.gov/schema/oscal">
+  <invoke href="OSCAL.xml">
+    <include> <!--(all | call+) --> 
+      <all/>
+    </include>
+    <!--<exclude> <!-\-(call+) -\-> 
+      <call key="baseline-impact">HIGH</call>
+    </exclude>-->
+  </invoke>
+  <!--<mod context="control">
+    <call key="number">AC01</call>
+    <remove>
+    </remove>
+    <add>
+    </add>
+    <patch>
+    </patch>
+  </mod>-->
+</profile>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
+<?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<declarations xmlns="http://scap.nist.gov/schema/oscal">
+  <property role="number" context="control-category">
+    <required/>
+    <regex>\d\d?</regex>
+  </property>
+  <property role="number" context="clause">
+    <required/>
+    <value><inherit/><autonum>.1</autonum></value>
+  </property>
+  <statement role="objective" context="clause">
+    <required/>
+  </statement>
+  <property role="number" context="iso-27002">
+    <required/>
+    <value><inherit/><autonum>.1</autonum></value>
+  </property>
+  <statement role="guidance" context="control"/>
+  <statement role="information" context="control"/>
+</declarations>
