@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog 
+        file:../../../../xsd/nist/sp800-53/2.0/control-catalog.xsd">
+    <id>IPDR2</id>
+    <name>IPDR2</name>
+    <version>2</version>
+    <summary>TBD</summary>
+    <meta>
+        <property name="family" type="xsd:string"/>
+        <!--
+        <property name="statement">
+            <property name="number" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <property name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <property-ref name="statement" minOccurs="0" maxOccurs="unbounded" />
+        </property>
+        -->
+        <property name="supplemental-guidance">
+            <property name="description" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <property name="related" type="xsd:token" minOccurs="0" maxOccurs="unbounded"/>
+        </property>
+        <property name="withdrawn">
+            <property name="incorporated-into" minOccurs="1" maxOccurs="unbounded" />
+        </property>
+        <!--
+        <property name="control-enhancement">
+            <property name="number" type="xsd:token" minOccurs="1" maxOccurs="1"/>
+            <property name="title" type="xsd:token" minOccurs="1" maxOccurs="1"/>
+            <property-ref name="statement" minOccurs="0" maxOccurs="unbounded" />
+            <property-ref name="supplemental-guidance" minOccurs="0" maxOccurs="unbounded" />
+            <property-ref name="control-enhancement" minOccurs="0" maxOccurs="unbounded" />
+        </property>
+        <property name="control-enhancements">
+            <property-ref name="control-enhancement" minOccurs="1" maxOccurs="unbounded" />
+        </property>
+        -->
+        
+        <!--
+        <property name="parameter">
+            <property name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <property name="unit" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <property name="value" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </property>
+        -->
+        <item>
+            <property name="family" minOccurs="1" maxOccurs="1" />
+            <property name="priority" minOccurs="1" maxOccurs="1" />
+            <property name="supplemental-guidance" minOccurs="1" maxOccurs="1" />
+            <property name="withdrawn" minOccurs="0" maxOccurs="1" />
+            <!-- <property name="parameter" minOccurs="0" maxOccurs="unbounded" /> -->
+        </item>
+    </meta>
+
+    <items>
+        <item>
+            <type>requirement</type>
+            <id>Identify</id>
+            <title>Identify</title>
+            <statement>
+                <description>???</description>
+            </statement>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM</id>
+            <title>Asset Management</title>
+            <statement>
+                <description>The data, personnel, ...</description>
+            </statement>
+            <link rel="parent">#Identify</link>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM1</id>
+            <title>???</title>
+            <link rel="parent">#ID.AM</link>
+        </item>
+        <item>
+            <type>control-enhancement</type>
+            <id>AC-2(1)</id>
+            <title>AUTOMATED SYSTEM ACCOUNT MANAGEMENT</title>
+            <statement>
+                <description>The organization employs automated mechanisms to support the management of information system accounts.</description>
+            </statement>
+            <link rel="parent" href="#AC-2"/>
+            <properties>
+                <supplemental-guidance>
+                    <description>The use of automated mechanisms can include, for example: using email or text messaging to automatically notify account managers when users are terminated or transferred; using the information system to monitor account usage; and using telephonic notification to report atypical system account usage.</description>
+                </supplemental-guidance>                
+            </properties>
+        </item>
+    </items>
+</catalog>
