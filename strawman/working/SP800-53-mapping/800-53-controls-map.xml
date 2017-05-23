@@ -240,7 +240,11 @@
          <VALUE>P0</VALUE>
          <VALUE>P3</VALUE>
       </prp>
-      <nb flag="description">
+     <!--<prp name="baseline-impact">
+       <VALUE>HIGH</VALUE>
+       <VALUE>MODERATE</VALUE>
+     </prp>-->
+     <nb flag="description">
          <p/>
          <list/>
       </nb>
@@ -283,8 +287,5 @@
             </prp>
          </control>
       </group>
-      <prp name="baseline-impact">
-         <VALUE>HIGH</VALUE>
-      </prp>
    </control>
 </control-set>

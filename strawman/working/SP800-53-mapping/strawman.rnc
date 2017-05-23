@@ -6,7 +6,7 @@ control =
     prp*,
     element title { text }?,
     (group
-     | nb
+     | stmt
      | prp
      )*
   }
@@ -17,15 +17,15 @@ prp =
     text
   }
 
-nb =
-  element nb {
-    attribute flag { xsd:NCName },
-    prp*, (nb | group)*,
+stmt =
+  element stmt {
+    attribute name { xsd:NCName },
+    prp*, (stmt | group)*,
     ((\list | p)*
      | element point { text }*)
   }
        
-group = element group { control+ | prp+ | nb+ | std+ }
+group = element group { control+ | prp+ | stmt+ | std+ }
 # on group, not(nb/@flag != nb/@flag) 
 
 std =  element std {

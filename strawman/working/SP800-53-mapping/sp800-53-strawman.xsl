@@ -38,9 +38,9 @@
   </xsl:template>
   
   <xsl:template match="control-class | family | number">
-    <prp name="{name()}">
+    <prop name="{name()}">
       <xsl:apply-templates/>
-    </prp>
+    </prop>
   </xsl:template>
   
   <!--<xsl:template match="family">
@@ -59,19 +59,19 @@
   </xsl:template>
   
   <xsl:template match="description | supplemental-guidance | objective | decision">
-    <nb flag="{name()}">
+    <stmt name="{name()}">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </nb>
+    </stmt>
   </xsl:template>
   
   <xsl:template match="potential-assessment">
-    <nb flag="{name()}">
+    <stmt name="{name()}">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <group>
       <xsl:apply-templates/>
       </group>
-    </nb>
+    </stmt>
   </xsl:template>
   
   <xsl:template match="control-enhancement">
@@ -82,19 +82,19 @@
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
-    <prp name="{name()}"><xsl:value-of select="."/></prp>
+    <prop name="{name()}"><xsl:value-of select="."/></prop>
   </xsl:template>
   
   <xsl:template match="object">
-    <prp name="object">
+    <prop name="object">
       <xsl:apply-templates/>
-    </prp>
+    </prop>
   </xsl:template>
   
   <xsl:template match="priority | baseline-impact">
-    <prp name="{name()}">
+    <prop name="{name()}">
       <xsl:apply-templates/>
-    </prp>  
+    </prop>  
   </xsl:template>
 
   <xsl:template match="reference">
