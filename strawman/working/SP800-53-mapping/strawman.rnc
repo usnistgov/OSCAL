@@ -3,6 +3,7 @@ default namespace = "http://scap.nist.gov/schema/oscal"
 start = element control-set { control+ }
 control =
   element control {
+    attribute id { xsd:ID }?,
     prop*,
     element title { text }?,
     ( prop | stmt | group )*
@@ -17,7 +18,6 @@ prop =
 stmt =
   element stmt {
     attribute name { xsd:NCName },
-    (prop | stmt | group)*,
     ((\list | p)*) }
        
 group = element group { control+ | prop+ | stmt+ | std+ }

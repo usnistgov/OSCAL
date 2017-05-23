@@ -1,6 +1,6 @@
 * { display: block } 
 
-control-set { }
+control-set { max-width: 48em }
 
 control { padding: 0.5em; margin: 0.5em; border: medium double black }
 
@@ -13,7 +13,8 @@ prop { display: inline-block; background-color: pink; border: thin outset pink;
 
 title { font-size: 150%; font-weight: bold }
 
-stmt { padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
+stmt { -oxy-foldable: true; 
+padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
 
 stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: attr(name) ' ' oxy_textfield(
