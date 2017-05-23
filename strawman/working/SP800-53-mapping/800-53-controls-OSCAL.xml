@@ -7,7 +7,7 @@
    <control>
       <prop name="control-class">Technical</prop>
       <prop name="family">Access Control</prop>
-      <prop name="numberX">AC-1</prop>
+      <prop name="number">AC-1</prop>
       <title>Access Control Policy and Procedures</title>
       <prop name="priority">P1</prop>
       <stmt name="description">
@@ -576,7 +576,7 @@
       <prop name="number">AC-10</prop>
       <title>Concurrent Session Control</title>
       <prop name="priority">P2</prop>
-      <prop name="baseline-impact">HIGH</prop>
+      <!--<prop name="baseline-impact">HIGH</prop>-->
       <stmt name="description">
          <p>The information system limits the number of concurrent sessions for each system account to [<italic>Assignment: organization-defined number</italic>].</p>
       </stmt>

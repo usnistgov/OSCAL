@@ -15,7 +15,10 @@
   
   <xsl:output indent="yes"/>
   <xsl:template match="feed:controls">
-    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="test.css"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="oscal.css"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="strawman.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
+    
     <xsl:text>&#xA;</xsl:text>
     <control-set>
       <xsl:namespace name="xlink">https://www.w3.org/TR/xlink/</xsl:namespace>

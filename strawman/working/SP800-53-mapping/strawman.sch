@@ -6,13 +6,13 @@
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
   <sch:pattern>
-    <sch:rule context="oscal:group/oscal:prp">
-      <sch:report test="@name != ../oscal:prp/@name">
-        Group member name variance: <sch:value-of select="@name"/> could be <sch:value-of select="distinct-values(../oscal:prp/@name)"/>
+    <sch:rule context="oscal:group/oscal:prop">
+      <sch:report test="@name != ../oscal:prop/@name">
+        Group member name variance: <sch:value-of select="@name"/> could be <sch:value-of select="distinct-values(../oscal:prop/@name)"/>
       </sch:report>
     </sch:rule>
-    <sch:rule context="oscal:prp">
-      <sch:report test="@name = (../oscal:prp except .)/@name">
+    <sch:rule context="oscal:prop">
+      <sch:report test="@name = (../oscal:prop except .)/@name">
         Property name <sch:value-of select="@name"/> duplicated in this <sch:value-of select="name(..)"/>.
       </sch:report>
     </sch:rule>
@@ -33,17 +33,17 @@
   <sch:pattern>
     <sch:rule context="/oscal:control-set/oscal:control">
       <sch:let name="here"           value="."/>
-      <sch:let name="property-names" value="$catalog/oscal:control/oscal:prp/@name"/>
-      <sch:let name="missing-props"  value="$property-names[not(.=$here/oscal:prp/@name)]"/>
+      <sch:let name="property-names" value="$catalog/oscal:control/oscal:prop/@name"/>
+      <sch:let name="missing-props"  value="$property-names[not(.=$here/oscal:prop/@name)]"/>
       
       <sch:assert test="empty($missing-props)">
         Can't find property/ies (child::prp) with @name <sch:value-of select="string-join($missing-props,', ')"/>
       </sch:assert>
     </sch:rule>
 
-    <sch:rule context="/oscal:control-set/oscal:control/oscal:prp">
+    <sch:rule context="/oscal:control-set/oscal:control/oscal:prop">
       <sch:let name="here"           value="."/>
-      <sch:let name="catalog-entry" value="$catalog/oscal:control/oscal:prp[@name=$here/@name]"/>
+      <sch:let name="catalog-entry" value="$catalog/oscal:control/oscal:prop[@name=$here/@name]"/>
       <sch:report test="empty($catalog-entry)">
         prp[@name='<sch:value-of select="$here/@name"/>'] isn't recognized in a top-level control.
       </sch:report>

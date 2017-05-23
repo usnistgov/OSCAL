@@ -3,16 +3,13 @@ default namespace = "http://scap.nist.gov/schema/oscal"
 start = element control-set { control+ }
 control =
   element control {
-    prp*,
+    prop*,
     element title { text }?,
-    (group
-     | stmt
-     | prp
-     )*
+    ( prop | stmt | group )*
   }
 
-prp =
-  element prp {
+prop =
+  element prop {
     attribute name { xsd:NCName },
     text
   }
@@ -20,12 +17,10 @@ prp =
 stmt =
   element stmt {
     attribute name { xsd:NCName },
-    prp*, (stmt | group)*,
-    ((\list | p)*
-     | element point { text }*)
-  }
+    (prop | stmt | group)*,
+    ((\list | p)*) }
        
-group = element group { control+ | prp+ | stmt+ | std+ }
+group = element group { control+ | prop+ | stmt+ | std+ }
 # on group, not(nb/@flag != nb/@flag) 
 
 std =  element std {

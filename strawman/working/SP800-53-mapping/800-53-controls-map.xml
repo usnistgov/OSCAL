@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <control-set xmlns="http://scap.nist.gov/schema/oscal">
    <control>
-      <prp name="control-class">
+      <prop name="control-class">
          <VALUE>Technical</VALUE>
          <VALUE>Operational</VALUE>
          <VALUE>Management</VALUE>
-      </prp>
-      <prp name="family">
+      </prop>
+      <prop name="family">
          <VALUE>Access Control</VALUE>
          <VALUE>Awareness and Training</VALUE>
          <VALUE>Audit and Accountability</VALUE>
@@ -25,8 +25,8 @@
          <VALUE>System and Services Acquisition</VALUE>
          <VALUE>System and Communications Protection</VALUE>
          <VALUE>System and Information Integrity</VALUE>
-      </prp>
-      <prp name="number">
+      </prop>
+      <prop name="number">
          <VALUE>AC-1</VALUE>
          <VALUE>AC-2</VALUE>
          <VALUE>AC-3</VALUE>
@@ -232,29 +232,29 @@
          <VALUE>SI-11</VALUE>
          <VALUE>SI-12</VALUE>
          <VALUE>SI-13</VALUE>
-      </prp>
+      </prop>
       <title/>
-      <prp name="priority">
+      <prop name="priority">
          <VALUE>P1</VALUE>
          <VALUE>P2</VALUE>
          <VALUE>P0</VALUE>
          <VALUE>P3</VALUE>
-      </prp>
+      </prop>
      <!--<prp name="baseline-impact">
        <VALUE>HIGH</VALUE>
        <VALUE>MODERATE</VALUE>
      </prp>-->
-     <nb flag="description">
+     <stmt name="description">
          <p/>
          <list/>
-      </nb>
-      <nb flag="supplemental-guidance">
+      </stmt>
+      <stmt name="supplemental-guidance">
          <p/>
-      </nb>
+      </stmt>
       <group>
          <std/>
          <control>
-            <prp name="sequence">
+            <prop name="sequence">
                <VALUE>1</VALUE>
                <VALUE>2</VALUE>
                <VALUE>3</VALUE>
@@ -273,18 +273,18 @@
                <VALUE>16</VALUE>
                <VALUE>17</VALUE>
                <VALUE>18</VALUE>
-            </prp>
-            <nb flag="description">
+            </prop>
+            <stmt name="description">
                <p/>
                <list/>
-            </nb>
-            <nb flag="supplemental-guidance">
+            </stmt>
+            <stmt name="supplemental-guidance">
                <p/>
-            </nb>
-            <prp name="baseline-impact">
+            </stmt>
+            <prop name="baseline-impact">
                <VALUE>HIGH</VALUE>
                <VALUE>MODERATE</VALUE>
-            </prp>
+            </prop>
          </control>
       </group>
    </control>
