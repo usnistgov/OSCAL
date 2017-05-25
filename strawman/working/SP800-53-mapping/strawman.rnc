@@ -12,7 +12,7 @@ control =
 prop =
   element prop {
     attribute name { xsd:NCName },
-    text
+    whatnot
   }
 
 stmt =
@@ -30,7 +30,7 @@ std =  element std {
 
 p =
   element p {
-    whatnot+
+    whatnot
   }
 
 \list =
@@ -39,4 +39,4 @@ p =
     element list-item { (p | \list)* }+
   }
 
-whatnot = (text | element italic { text })
+whatnot = (text | element italic { text })*

@@ -1,0 +1,12 @@
+@import 'oscal.css';
+
+prop:before { content: oxy_textfield(
+          edit, '@name',
+          columns, 10); }
+
+stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+          content: attr(name) ' ' oxy_textfield(
+          edit, '@name',
+          columns, 20);
+ }
+

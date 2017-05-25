@@ -37,12 +37,12 @@
       <sch:let name="missing-props"  value="$property-names[not(.=$here/oscal:prop/@name)]"/>
       
       <sch:assert test="empty($missing-props)">
-        Can't find property/ies (child::prp) with @name <sch:value-of select="string-join($missing-props,', ')"/>
+        Can't find property/ies (child::prop) with @name <sch:value-of select="string-join($missing-props,', ')"/>
       </sch:assert>
     </sch:rule>
 
     <sch:rule context="/oscal:control-set/oscal:control/oscal:prop">
-      <sch:let name="here"           value="."/>
+      <sch:let name="here"          value="."/>
       <sch:let name="catalog-entry" value="$catalog/oscal:control/oscal:prop[@name=$here/@name]"/>
       <sch:report test="empty($catalog-entry)">
         prp[@name='<sch:value-of select="$here/@name"/>'] isn't recognized in a top-level control.

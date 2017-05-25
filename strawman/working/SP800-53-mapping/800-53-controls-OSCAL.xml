@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="oscal.css"?>
 <?xml-model href="strawman.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="oscal-sp800-53.css" title="OSCAL SP800-53" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="oscal-ui.css" title="Property edit" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="oscal.css" title="Simple" alternate="yes"?>
 <control-set xmlns="http://scap.nist.gov/schema/oscal"
              xmlns:xlink="https://www.w3.org/TR/xlink/">
    <control>
@@ -11,16 +13,20 @@
       <title>Access Control Policy and Procedures</title>
       <prop name="priority">P1</prop>
       <stmt name="description">
-         <p>The organization develops, disseminates, and reviews/updates [<italic>Assignment: organization-defined frequency</italic>]:</p>
-         <list list-type="ordered">
-            <list-item>
-               <p>A formal, documented access control policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and</p>
-            </list-item>
-            <list-item>
-               <p>Formal, documented procedures to facilitate the implementation of the access control policy and associated access controls.</p>
-            </list-item>
-         </list>
-      </stmt>
+      <p>The organization develops, disseminates, and reviews/updates [<italic>Assignment:
+          organization-defined frequency</italic>]:</p>
+      <list list-type="ordered">
+        <list-item>
+          <p>A formal, documented access control policy that addresses purpose, scope, roles,
+            responsibilities, management commitment, coordination among organizational entities, and
+            compliance; and</p>
+        </list-item>
+        <list-item>
+          <p>Formal, documented procedures to facilitate the implementation of the access control
+            policy and associated access controls.</p>
+        </list-item>
+      </list>
+    </stmt>
       <stmt name="supplemental-guidance">
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the access control family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The access control policy can be included as part of the general information security policy for the organization. Access control procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the access control policy. Related control: PM-9.</p>
       </stmt>
@@ -30,122 +36,152 @@
       </group>
    </control>
    <control>
-      <prop name="control-class">Technical</prop>
-      <prop name="family">Access Control</prop>
-      <prop name="number">AC-2</prop>
-      <title>Account Management</title>
-      <prop name="priority">P1</prop>
-      <stmt name="description">
-         <p>The organization manages information system accounts, including:</p>
-         <list list-type="ordered">
+    <prop name="control-class">Technical</prop>
+    <prop name="family">Access Control</prop>
+    <prop name="number">AC-2</prop>
+    <title>Account Management</title>
+    <prop name="priority">P1</prop>
+    <stmt name="description">
+      <p>The organization manages information system accounts, including:</p>
+      <list list-type="ordered">
+        <list-item>
+          <p>Identifying account types (i.e., individual, group, system, application,
+            guest/anonymous, and temporary);</p>
+        </list-item>
+        <list-item>
+          <p>Establishing conditions for group membership;</p>
+        </list-item>
+        <list-item>
+          <p>Identifying authorized users of the information system and specifying access
+            privileges;</p>
+        </list-item>
+        <list-item>
+          <p>Requiring appropriate approvals for requests to establish accounts;</p>
+        </list-item>
+        <list-item>
+          <p>Establishing, activating, modifying, disabling, and removing accounts;</p>
+        </list-item>
+        <list-item>
+          <p>Specifically authorizing and monitoring the use of guest/anonymous and temporary
+            accounts;</p>
+        </list-item>
+        <list-item>
+          <p>Notifying account managers when temporary accounts are no longer required and when
+            information system users are terminated, transferred, or information system usage or
+            need-to-know/need-to-share changes;</p>
+        </list-item>
+        <list-item>
+          <p>Deactivating: (i) temporary accounts that are no longer required; and (ii) accounts of
+            terminated or transferred users;</p>
+        </list-item>
+        <list-item>
+          <p>Granting access to the system based on: (i) a valid access authorization; (ii) intended
+            system usage; and (iii) other attributes as required by the organization or associated
+            missions/business functions; and</p>
+        </list-item>
+        <list-item>
+          <p>Reviewing accounts [<italic>Assignment: organization-defined frequency</italic>].</p>
+        </list-item>
+      </list>
+    </stmt>
+    <stmt name="supplemental-guidance">
+      <p>The identification of authorized users of the information system and the specification of
+        access privileges is consistent with the requirements in other security controls in the
+        security plan. Users requiring administrative privileges on information system accounts
+        receive additional scrutiny by organizational officials responsible for approving such
+        accounts and privileged access. Related controls: AC-3, AC-4, AC-5, AC-6, AC-10, AC-17,
+        AC-19, AC-20, AU-9, IA-4, IA-5, CM-5, CM-6, MA-3, MA-4, MA-5, SA-7, SC-13, SI-9.</p>
+    </stmt>
+    <group>
+      <control>
+        <prop name="sequence">1</prop>
+        <stmt name="description">
+          <p>The organization employs automated mechanisms to support the management of information
+            system accounts.</p>
+        </stmt>
+      </control>
+      <control>
+        <prop name="sequence">2</prop>
+        <stmt name="description">
+          <p>The information system automatically terminates temporary and emergency accounts after
+              [<italic>Assignment: organization-defined time period for each type of
+              account</italic>].</p>
+        </stmt>
+      </control>
+      <control>
+        <prop name="sequence">3</prop>
+        <stmt name="description">
+          <p>The information system automatically disables inactive accounts after
+              [<italic>Assignment: organization-defined time period</italic>].</p>
+        </stmt>
+      </control>
+      <control>
+        <prop name="sequence">4</prop>
+        <stmt name="description">
+          <p>The information system automatically audits account creation, modification, disabling,
+            and termination actions and notifies, as required, appropriate individuals.</p>
+        </stmt>
+      </control>
+      <control>
+        <prop name="sequence">5</prop>
+        <stmt name="description">
+          <p>The organization:</p>
+          <list list-type="ordered">
             <list-item>
-               <p>Identifying account types (i.e., individual, group, system, application, guest/anonymous, and temporary);</p>
+              <p>Requires that users log out when [<italic>Assignment: organization defined
+                  time-period of expected inactivity and/or description of when to log
+                out</italic>];</p>
             </list-item>
             <list-item>
-               <p>Establishing conditions for group membership;</p>
+              <p>Determines normal time-of-day and duration usage for information system accounts;
+              </p>
             </list-item>
             <list-item>
-               <p>Identifying authorized users of the information system and specifying access privileges;</p>
+              <p>Monitors for atypical usage of information system accounts; and</p>
             </list-item>
             <list-item>
-               <p>Requiring appropriate approvals for requests to establish accounts;</p>
+              <p>Reports atypical usage to designated organizational officials.</p>
+            </list-item>
+          </list>
+        </stmt>
+      </control>
+      <control>
+        <prop name="sequence">6</prop>
+        <stmt name="description">
+          <p>The information system dynamically manages user privileges and associated access
+            authorizations.</p>
+        </stmt>
+        <stmt name="supplemental-guidance">
+          <p>In contrast to conventional access control approaches which employ static information
+            system accounts and predefined sets of user privileges, many service-oriented
+            architecture implementations rely on run time access control decisions facilitated by
+            dynamic privilege management. While user identities remain relatively constant over
+            time, user privileges may change more frequently based on the ongoing mission/business
+            requirements and operational needs of the organization.</p>
+        </stmt>
+      </control>
+      <control>
+        <prop name="sequence">7</prop>
+        <stmt name="description">
+          <p>The organization:</p>
+          <list list-type="ordered">
+            <list-item>
+              <p>Establishes and administers privileged user accounts in accordance with a
+                role-based access scheme that organizes information system and network privileges
+                into roles; and</p>
             </list-item>
             <list-item>
-               <p>Establishing, activating, modifying, disabling, and removing accounts;</p>
+              <p>Tracks and monitors privileged role assignments.</p>
             </list-item>
-            <list-item>
-               <p>Specifically authorizing and monitoring the use of guest/anonymous and temporary accounts;</p>
-            </list-item>
-            <list-item>
-               <p>Notifying account managers when temporary accounts are no longer required and when information system users are terminated, transferred, or information system usage or need-to-know/need-to-share changes;</p>
-            </list-item>
-            <list-item>
-               <p>Deactivating: (i) temporary accounts that are no longer required; and (ii) accounts of terminated or transferred users;</p>
-            </list-item>
-            <list-item>
-               <p>Granting access to the system based on: (i) a valid access authorization; (ii) intended system usage; and (iii) other attributes as required by the organization or associated missions/business functions; and</p>
-            </list-item>
-            <list-item>
-               <p>Reviewing accounts [<italic>Assignment: organization-defined frequency</italic>].</p>
-            </list-item>
-         </list>
-      </stmt>
-      <stmt name="supplemental-guidance">
-         <p>The identification of authorized users of the information system and the specification of access privileges is consistent with the requirements in other security controls in the security plan. Users requiring administrative privileges on information system accounts receive additional scrutiny by organizational officials responsible for approving such accounts and privileged access. Related controls: AC-3, AC-4, AC-5, AC-6, AC-10, AC-17, AC-19, AC-20, AU-9, IA-4, IA-5, CM-5, CM-6, MA-3, MA-4, MA-5, SA-7, SC-13, SI-9.</p>
-      </stmt>
-      <group>
-         <control>
-            <prop name="sequence">1</prop>
-            <stmt name="description">
-               <p>The organization employs automated mechanisms to support the management of information system accounts.</p>
-            </stmt>
-         </control>
-         <control>
-            <prop name="sequence">2</prop>
-            <stmt name="description">
-               <p>The information system automatically terminates temporary and emergency accounts after [<italic>Assignment: organization-defined time period for each type of account</italic>].</p>
-            </stmt>
-         </control>
-         <control>
-            <prop name="sequence">3</prop>
-            <stmt name="description">
-               <p>The information system automatically disables inactive accounts after [<italic>Assignment: organization-defined time period</italic>].</p>
-            </stmt>
-         </control>
-         <control>
-            <prop name="sequence">4</prop>
-            <stmt name="description">
-               <p>The information system automatically audits account creation, modification, disabling, and termination actions and notifies, as required, appropriate individuals.</p>
-            </stmt>
-         </control>
-         <control>
-            <prop name="sequence">5</prop>
-            <stmt name="description">
-               <p>The organization:</p>
-               <list list-type="ordered">
-                  <list-item>
-                     <p>Requires that users log out when [<italic>Assignment: organization defined time-period of expected inactivity and/or description of when to log out</italic>];</p>
-                  </list-item>
-                  <list-item>
-                     <p>Determines normal time-of-day and duration usage for information system accounts;     </p>
-                  </list-item>
-                  <list-item>
-                     <p>Monitors for atypical usage of information system accounts; and</p>
-                  </list-item>
-                  <list-item>
-                     <p>Reports atypical usage to designated organizational officials.</p>
-                  </list-item>
-               </list>
-            </stmt>
-         </control>
-         <control>
-            <prop name="sequence">6</prop>
-            <stmt name="description">
-               <p>The information system dynamically manages user privileges and associated access authorizations.</p>
-            </stmt>
-            <stmt name="supplemental-guidance">
-               <p>In contrast to conventional access control approaches which employ static information system accounts and predefined sets of user privileges, many service-oriented architecture implementations rely on run time access control decisions facilitated by dynamic privilege management. While user identities remain relatively constant over time, user privileges may change more frequently based on the ongoing mission/business requirements and operational needs of the organization.</p>
-            </stmt>
-         </control>
-         <control>
-            <prop name="sequence">7</prop>
-            <stmt name="description">
-               <p>The organization:</p>
-               <list list-type="ordered">
-                  <list-item>
-                     <p>Establishes and administers privileged user accounts in accordance with a role-based access scheme that organizes information system and network privileges into roles; and</p>
-                  </list-item>
-                  <list-item>
-                     <p>Tracks and monitors privileged role assignments.</p>
-                  </list-item>
-               </list>
-            </stmt>
-            <stmt name="supplemental-guidance">
-               <p>Privileged roles include, for example, key management, network and system administration, database administration, web administration.</p>
-            </stmt>
-         </control>
-      </group>
-   </control>
+          </list>
+        </stmt>
+        <stmt name="supplemental-guidance">
+          <p>Privileged roles include, for example, key management, network and system
+            administration, database administration, web administration.</p>
+        </stmt>
+      </control>
+    </group>
+  </control>
    <control>
       <prop name="control-class">Technical</prop>
       <prop name="family">Access Control</prop>

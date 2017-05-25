@@ -1,0 +1,5 @@
+@import 'oscal.css';
+
+stmt[name=description] { background-color: lightblue }
+
+stmt[name=supplemental-guidance] { background-color: lightsteelblue }
