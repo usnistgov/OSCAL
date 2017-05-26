@@ -1,6 +1,6 @@
 * { display: block } 
 
-control-set { max-width: 48em }
+catalog { max-width: 48em }
 
 control { padding: 0.5em; margin: 0.5em; border: medium double black }
 

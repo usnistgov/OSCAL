@@ -2,7 +2,7 @@
 <?xml-model href="strawman.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="oscal.css"?>
-<control-set xmlns="http://scap.nist.gov/schema/oscal" xmlns:xlink="https://www.w3.org/TR/xlink/">
+<catalog xmlns="http://scap.nist.gov/schema/oscal" xmlns:xlink="https://www.w3.org/TR/xlink/">
   <control>
     <prp name="number">AC-1</prp>
     <title>Access Control Policy and Procedures</title>
@@ -35152,4 +35152,4 @@
       </nb>
     </group>
   </control>
-</control-set>
+</catalog>

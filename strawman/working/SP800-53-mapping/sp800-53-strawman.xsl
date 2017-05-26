@@ -20,10 +20,10 @@
     <xsl:processing-instruction name="xml-model">href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
     
     <xsl:text>&#xA;</xsl:text>
-    <control-set>
+    <catalog>
       <xsl:namespace name="xlink">https://www.w3.org/TR/xlink/</xsl:namespace>
       <xsl:apply-templates/>
-    </control-set>
+    </catalog>
   </xsl:template>
   
   <xsl:template match="feed:control">

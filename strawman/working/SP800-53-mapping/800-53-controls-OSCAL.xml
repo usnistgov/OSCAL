@@ -4,7 +4,7 @@
 <?xml-stylesheet type="text/css" href="oscal-sp800-53.css" title="OSCAL SP800-53" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="oscal-ui.css" title="Property edit" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="oscal.css" title="Simple" alternate="yes"?>
-<control-set xmlns="http://scap.nist.gov/schema/oscal"
+<catalog xmlns="http://scap.nist.gov/schema/oscal"
              xmlns:xlink="https://www.w3.org/TR/xlink/">
    <control>
       <prop name="control-class">Technical</prop>
@@ -8207,4 +8207,4 @@
          </control>
       </group>
    </control>
-</control-set>
+</catalog>

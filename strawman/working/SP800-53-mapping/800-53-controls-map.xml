@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<control-set xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns="http://scap.nist.gov/schema/oscal">
    <control>
       <prop name="control-class">
          <VALUE>Technical</VALUE>
@@ -288,4 +288,4 @@
          </control>
       </group>
    </control>
-</control-set>
+</catalog>

@@ -28,10 +28,10 @@
     </sch:rule>
   </sch:pattern>
   
-  <sch:let name="catalog" value="document('800-53-controls-map.xml')/oscal:control-set"/>
+  <sch:let name="catalog" value="document('800-53-controls-map.xml')/oscal:catalog"/>
   
   <sch:pattern>
-    <sch:rule context="/oscal:control-set/oscal:control">
+    <sch:rule context="/oscal:catalog/oscal:control">
       <sch:let name="here"           value="."/>
       <sch:let name="property-names" value="$catalog/oscal:control/oscal:prop/@name"/>
       <sch:let name="missing-props"  value="$property-names[not(.=$here/oscal:prop/@name)]"/>
@@ -41,7 +41,7 @@
       </sch:assert>
     </sch:rule>
 
-    <sch:rule context="/oscal:control-set/oscal:control/oscal:prop">
+    <sch:rule context="/oscal:catalog/oscal:control/oscal:prop">
       <sch:let name="here"          value="."/>
       <sch:let name="catalog-entry" value="$catalog/oscal:control/oscal:prop[@name=$here/@name]"/>
       <sch:report test="empty($catalog-entry)">

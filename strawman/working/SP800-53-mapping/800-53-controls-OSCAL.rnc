@@ -1,6 +1,6 @@
 default namespace = "http://scap.nist.gov/schema/oscal"
 
-start = element control-set { control+ }
+start = element catalog { control+ }
 control =
   element control {
     (element group {
