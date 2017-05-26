@@ -19,11 +19,17 @@
   </xsl:template>
   
   <xsl:template name="descend">
+    <xsl:param name="parents" select="."/>
     <xsl:param name="children" select="*"/>
-    <xsl:for-each-group select="$children" group-by="string-join((name(.),@flag,@name),'-')">
+    <xsl:for-each-group select="$children" group-by="string-join((name(.),@name),'-')">
+      <xsl:variable name="ubiquitous" select="empty($parents except current-group()/..)"/>
         <xsl:element name="{name(.)}">
+          <xsl:if test="$ubiquitous and not(name(.)=('p','list'))">
+            <xsl:attribute name="GIVEN">ALWAYS</xsl:attribute>
+          </xsl:if>
           <xsl:copy-of select="@name | @flag"/>
           <xsl:call-template name="descend">
+            <xsl:with-param name="parents" select="current-group()"/>
             <xsl:with-param name="children"
               select="current-group()[not(self::p|self::list)]/*"/>
           </xsl:call-template>
