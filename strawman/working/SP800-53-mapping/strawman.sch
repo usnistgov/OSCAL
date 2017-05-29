@@ -31,26 +31,31 @@
   <sch:let name="catalog" value="document('800-53-controls-map.xml')/oscal:catalog"/>
   
   <sch:pattern>
-    <sch:rule context="/oscal:catalog/oscal:control">
-      <sch:let name="here"           value="."/>
-      <sch:let name="property-names" value="$catalog/oscal:control/oscal:prop/@name"/>
-      <sch:let name="missing-props"  value="$property-names[not(.=$here/oscal:prop/@name)]"/>
-      
-      <sch:assert test="empty($missing-props)">
-        Can't find property/ies (child::prop) with @name <sch:value-of select="string-join($missing-props,', ')"/>
-      </sch:assert>
-    </sch:rule>
-
-    <sch:rule context="/oscal:catalog/oscal:control/oscal:prop">
+    <sch:rule context="oscal:p//* | oscal:list//*"/>
+    <sch:rule context="/oscal:catalog//*">
       <sch:let name="here"          value="."/>
-      <sch:let name="catalog-entry" value="$catalog/oscal:control/oscal:prop[@name=$here/@name]"/>
-      <sch:report test="empty($catalog-entry)">
-        prp[@name='<sch:value-of select="$here/@name"/>'] isn't recognized in a top-level control.
-      </sch:report>
-      <sch:report test="exists($catalog-entry) and not(. = $catalog-entry/oscal:VALUE)">
+      <sch:let name="catalog-entry" value="key('element-by-signature',oscal:signature(.),$catalog)"/>
+      <sch:assert test="exists($catalog-entry)">
+        Element with signature '<sch:value-of select="oscal:signature(.)"/>' isn't recognized.
+      </sch:assert>
+      <!--<sch:report test="exists($catalog-entry) and not(. = $catalog-entry/oscal:VALUE)">
         <sch:value-of select="."/> isn't recognized for prp[@name='<sch:value-of select="$here/@name"/>']
-      </sch:report>
+      </sch:report>-->
     </sch:rule>
 
   </sch:pattern>
+  
+  <xsl:key name="element-by-signature" match="*" use="oscal:signature(.)"/>
+  
+  <xsl:function name="oscal:signature" as="xs:string">
+    <xsl:param name="who" as="element()"/>
+    <!-- writing a little XPath -->
+    <xsl:value-of>
+    <xsl:for-each select="$who/ancestor-or-self::*[ancestor::oscal:catalog]">
+      <xsl:if test="position() gt 1">/</xsl:if>
+      <xsl:value-of select="name(.)"/>
+      <xsl:for-each select="@name">[@name='<xsl:value-of select="."/>']</xsl:for-each>
+    </xsl:for-each>
+    </xsl:value-of>
+  </xsl:function>
 </sch:schema>

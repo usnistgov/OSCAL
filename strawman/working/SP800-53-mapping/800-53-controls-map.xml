@@ -1,250 +1,246 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
-   <control>
-      <prop name="control-class">
-         <VALUE>Technical</VALUE>
-         <VALUE>Operational</VALUE>
-         <VALUE>Management</VALUE>
+   <control GIVEN="ALWAYS">
+      <prop GIVEN="ALWAYS" name="control-class">
+         <VALUE xmlns="">Technical</VALUE>
+         <VALUE xmlns="">Operational</VALUE>
+         <VALUE xmlns="">Management</VALUE>
       </prop>
-      <prop name="family">
-         <VALUE>Access Control</VALUE>
-         <VALUE>Awareness and Training</VALUE>
-         <VALUE>Audit and Accountability</VALUE>
-         <VALUE>Security Assessment and Authorization</VALUE>
-         <VALUE>Configuration Management</VALUE>
-         <VALUE>Contingency Planning</VALUE>
-         <VALUE>Identification and Authentication</VALUE>
-         <VALUE>Incident Response</VALUE>
-         <VALUE>Maintenance</VALUE>
-         <VALUE>Media Protection</VALUE>
-         <VALUE>Physical and Environmental Protection</VALUE>
-         <VALUE>Planning</VALUE>
-         <VALUE>Program Management</VALUE>
-         <VALUE>Personnel Security</VALUE>
-         <VALUE>Risk Assessment</VALUE>
-         <VALUE>System and Services Acquisition</VALUE>
-         <VALUE>System and Communications Protection</VALUE>
-         <VALUE>System and Information Integrity</VALUE>
+      <prop GIVEN="ALWAYS" name="family">
+         <VALUE xmlns="">Access Control</VALUE>
+         <VALUE xmlns="">Awareness and Training</VALUE>
+         <VALUE xmlns="">Audit and Accountability</VALUE>
+         <VALUE xmlns="">Security Assessment and Authorization</VALUE>
+         <VALUE xmlns="">Configuration Management</VALUE>
+         <VALUE xmlns="">Contingency Planning</VALUE>
+         <VALUE xmlns="">Identification and Authentication</VALUE>
+         <VALUE xmlns="">Incident Response</VALUE>
+         <VALUE xmlns="">Maintenance</VALUE>
+         <VALUE xmlns="">Media Protection</VALUE>
+         <VALUE xmlns="">Physical and Environmental Protection</VALUE>
+         <VALUE xmlns="">Planning</VALUE>
+         <VALUE xmlns="">Program Management</VALUE>
+         <VALUE xmlns="">Personnel Security</VALUE>
+         <VALUE xmlns="">Risk Assessment</VALUE>
+         <VALUE xmlns="">System and Services Acquisition</VALUE>
+         <VALUE xmlns="">System and Communications Protection</VALUE>
+         <VALUE xmlns="">System and Information Integrity</VALUE>
       </prop>
-      <prop name="number">
-         <VALUE>AC-1</VALUE>
-         <VALUE>AC-2</VALUE>
-         <VALUE>AC-3</VALUE>
-         <VALUE>AC-4</VALUE>
-         <VALUE>AC-5</VALUE>
-         <VALUE>AC-6</VALUE>
-         <VALUE>AC-7</VALUE>
-         <VALUE>AC-8</VALUE>
-         <VALUE>AC-9</VALUE>
-         <VALUE>AC-10</VALUE>
-         <VALUE>AC-11</VALUE>
-         <VALUE>AC-12</VALUE>
-         <VALUE>AC-13</VALUE>
-         <VALUE>AC-14</VALUE>
-         <VALUE>AC-15</VALUE>
-         <VALUE>AC-16</VALUE>
-         <VALUE>AC-17</VALUE>
-         <VALUE>AC-18</VALUE>
-         <VALUE>AC-19</VALUE>
-         <VALUE>AC-20</VALUE>
-         <VALUE>AC-21</VALUE>
-         <VALUE>AC-22</VALUE>
-         <VALUE>AT-1</VALUE>
-         <VALUE>AT-2</VALUE>
-         <VALUE>AT-3</VALUE>
-         <VALUE>AT-4</VALUE>
-         <VALUE>AT-5</VALUE>
-         <VALUE>AU-1</VALUE>
-         <VALUE>AU-2</VALUE>
-         <VALUE>AU-3</VALUE>
-         <VALUE>AU-4</VALUE>
-         <VALUE>AU-5</VALUE>
-         <VALUE>AU-6</VALUE>
-         <VALUE>AU-7</VALUE>
-         <VALUE>AU-8</VALUE>
-         <VALUE>AU-9</VALUE>
-         <VALUE>AU-10</VALUE>
-         <VALUE>AU-11</VALUE>
-         <VALUE>AU-12</VALUE>
-         <VALUE>AU-13</VALUE>
-         <VALUE>AU-14</VALUE>
-         <VALUE>CA-1</VALUE>
-         <VALUE>CA-2</VALUE>
-         <VALUE>CA-3</VALUE>
-         <VALUE>CA-4</VALUE>
-         <VALUE>CA-5</VALUE>
-         <VALUE>CA-6</VALUE>
-         <VALUE>CA-7</VALUE>
-         <VALUE>CM-1</VALUE>
-         <VALUE>CM-2</VALUE>
-         <VALUE>CM-3</VALUE>
-         <VALUE>CM-4</VALUE>
-         <VALUE>CM-5</VALUE>
-         <VALUE>CM-6</VALUE>
-         <VALUE>CM-7</VALUE>
-         <VALUE>CM-8</VALUE>
-         <VALUE>CM-9</VALUE>
-         <VALUE>CP-1</VALUE>
-         <VALUE>CP-2</VALUE>
-         <VALUE>CP-3</VALUE>
-         <VALUE>CP-4</VALUE>
-         <VALUE>CP-5</VALUE>
-         <VALUE>CP-6</VALUE>
-         <VALUE>CP-7</VALUE>
-         <VALUE>CP-8</VALUE>
-         <VALUE>CP-9</VALUE>
-         <VALUE>CP-10</VALUE>
-         <VALUE>IA-1</VALUE>
-         <VALUE>IA-2</VALUE>
-         <VALUE>IA-3</VALUE>
-         <VALUE>IA-4</VALUE>
-         <VALUE>IA-5</VALUE>
-         <VALUE>IA-6</VALUE>
-         <VALUE>IA-7</VALUE>
-         <VALUE>IA-8</VALUE>
-         <VALUE>IR-1</VALUE>
-         <VALUE>IR-2</VALUE>
-         <VALUE>IR-3</VALUE>
-         <VALUE>IR-4</VALUE>
-         <VALUE>IR-5</VALUE>
-         <VALUE>IR-6</VALUE>
-         <VALUE>IR-7</VALUE>
-         <VALUE>IR-8</VALUE>
-         <VALUE>MA-1</VALUE>
-         <VALUE>MA-2</VALUE>
-         <VALUE>MA-3</VALUE>
-         <VALUE>MA-4</VALUE>
-         <VALUE>MA-5</VALUE>
-         <VALUE>MA-6</VALUE>
-         <VALUE>MP-1</VALUE>
-         <VALUE>MP-2</VALUE>
-         <VALUE>MP-3</VALUE>
-         <VALUE>MP-4</VALUE>
-         <VALUE>MP-5</VALUE>
-         <VALUE>MP-6</VALUE>
-         <VALUE>PE-1</VALUE>
-         <VALUE>PE-2</VALUE>
-         <VALUE>PE-3</VALUE>
-         <VALUE>PE-4</VALUE>
-         <VALUE>PE-5</VALUE>
-         <VALUE>PE-6</VALUE>
-         <VALUE>PE-7</VALUE>
-         <VALUE>PE-8</VALUE>
-         <VALUE>PE-9</VALUE>
-         <VALUE>PE-10</VALUE>
-         <VALUE>PE-11</VALUE>
-         <VALUE>PE-12</VALUE>
-         <VALUE>PE-13</VALUE>
-         <VALUE>PE-14</VALUE>
-         <VALUE>PE-15</VALUE>
-         <VALUE>PE-16</VALUE>
-         <VALUE>PE-17</VALUE>
-         <VALUE>PE-18</VALUE>
-         <VALUE>PE-19</VALUE>
-         <VALUE>PL-1</VALUE>
-         <VALUE>PL-2</VALUE>
-         <VALUE>PL-3</VALUE>
-         <VALUE>PL-4</VALUE>
-         <VALUE>PL-5</VALUE>
-         <VALUE>PL-6</VALUE>
-         <VALUE>PM-1</VALUE>
-         <VALUE>PM-2</VALUE>
-         <VALUE>PM-3</VALUE>
-         <VALUE>PM-4</VALUE>
-         <VALUE>PM-5</VALUE>
-         <VALUE>PM-6</VALUE>
-         <VALUE>PM-7</VALUE>
-         <VALUE>PM-8</VALUE>
-         <VALUE>PM-9</VALUE>
-         <VALUE>PM-10</VALUE>
-         <VALUE>PM-11</VALUE>
-         <VALUE>PS-1</VALUE>
-         <VALUE>PS-2</VALUE>
-         <VALUE>PS-3</VALUE>
-         <VALUE>PS-4</VALUE>
-         <VALUE>PS-5</VALUE>
-         <VALUE>PS-6</VALUE>
-         <VALUE>PS-7</VALUE>
-         <VALUE>PS-8</VALUE>
-         <VALUE>RA-1</VALUE>
-         <VALUE>RA-2</VALUE>
-         <VALUE>RA-3</VALUE>
-         <VALUE>RA-4</VALUE>
-         <VALUE>RA-5</VALUE>
-         <VALUE>SA-1</VALUE>
-         <VALUE>SA-2</VALUE>
-         <VALUE>SA-3</VALUE>
-         <VALUE>SA-4</VALUE>
-         <VALUE>SA-5</VALUE>
-         <VALUE>SA-6</VALUE>
-         <VALUE>SA-7</VALUE>
-         <VALUE>SA-8</VALUE>
-         <VALUE>SA-9</VALUE>
-         <VALUE>SA-10</VALUE>
-         <VALUE>SA-11</VALUE>
-         <VALUE>SA-12</VALUE>
-         <VALUE>SA-13</VALUE>
-         <VALUE>SA-14</VALUE>
-         <VALUE>SC-1</VALUE>
-         <VALUE>SC-2</VALUE>
-         <VALUE>SC-3</VALUE>
-         <VALUE>SC-4</VALUE>
-         <VALUE>SC-5</VALUE>
-         <VALUE>SC-6</VALUE>
-         <VALUE>SC-7</VALUE>
-         <VALUE>SC-8</VALUE>
-         <VALUE>SC-9</VALUE>
-         <VALUE>SC-10</VALUE>
-         <VALUE>SC-11</VALUE>
-         <VALUE>SC-12</VALUE>
-         <VALUE>SC-13</VALUE>
-         <VALUE>SC-14</VALUE>
-         <VALUE>SC-15</VALUE>
-         <VALUE>SC-16</VALUE>
-         <VALUE>SC-17</VALUE>
-         <VALUE>SC-18</VALUE>
-         <VALUE>SC-19</VALUE>
-         <VALUE>SC-20</VALUE>
-         <VALUE>SC-21</VALUE>
-         <VALUE>SC-22</VALUE>
-         <VALUE>SC-23</VALUE>
-         <VALUE>SC-24</VALUE>
-         <VALUE>SC-25</VALUE>
-         <VALUE>SC-26</VALUE>
-         <VALUE>SC-27</VALUE>
-         <VALUE>SC-28</VALUE>
-         <VALUE>SC-29</VALUE>
-         <VALUE>SC-30</VALUE>
-         <VALUE>SC-31</VALUE>
-         <VALUE>SC-32</VALUE>
-         <VALUE>SC-33</VALUE>
-         <VALUE>SC-34</VALUE>
-         <VALUE>SI-1</VALUE>
-         <VALUE>SI-2</VALUE>
-         <VALUE>SI-3</VALUE>
-         <VALUE>SI-4</VALUE>
-         <VALUE>SI-5</VALUE>
-         <VALUE>SI-6</VALUE>
-         <VALUE>SI-7</VALUE>
-         <VALUE>SI-8</VALUE>
-         <VALUE>SI-9</VALUE>
-         <VALUE>SI-10</VALUE>
-         <VALUE>SI-11</VALUE>
-         <VALUE>SI-12</VALUE>
-         <VALUE>SI-13</VALUE>
+      <prop GIVEN="ALWAYS" name="number">
+         <VALUE xmlns="">AC-1</VALUE>
+         <VALUE xmlns="">AC-2</VALUE>
+         <VALUE xmlns="">AC-3</VALUE>
+         <VALUE xmlns="">AC-4</VALUE>
+         <VALUE xmlns="">AC-5</VALUE>
+         <VALUE xmlns="">AC-6</VALUE>
+         <VALUE xmlns="">AC-7</VALUE>
+         <VALUE xmlns="">AC-8</VALUE>
+         <VALUE xmlns="">AC-9</VALUE>
+         <VALUE xmlns="">AC-10</VALUE>
+         <VALUE xmlns="">AC-11</VALUE>
+         <VALUE xmlns="">AC-12</VALUE>
+         <VALUE xmlns="">AC-13</VALUE>
+         <VALUE xmlns="">AC-14</VALUE>
+         <VALUE xmlns="">AC-15</VALUE>
+         <VALUE xmlns="">AC-16</VALUE>
+         <VALUE xmlns="">AC-17</VALUE>
+         <VALUE xmlns="">AC-18</VALUE>
+         <VALUE xmlns="">AC-19</VALUE>
+         <VALUE xmlns="">AC-20</VALUE>
+         <VALUE xmlns="">AC-21</VALUE>
+         <VALUE xmlns="">AC-22</VALUE>
+         <VALUE xmlns="">AT-1</VALUE>
+         <VALUE xmlns="">AT-2</VALUE>
+         <VALUE xmlns="">AT-3</VALUE>
+         <VALUE xmlns="">AT-4</VALUE>
+         <VALUE xmlns="">AT-5</VALUE>
+         <VALUE xmlns="">AU-1</VALUE>
+         <VALUE xmlns="">AU-2</VALUE>
+         <VALUE xmlns="">AU-3</VALUE>
+         <VALUE xmlns="">AU-4</VALUE>
+         <VALUE xmlns="">AU-5</VALUE>
+         <VALUE xmlns="">AU-6</VALUE>
+         <VALUE xmlns="">AU-7</VALUE>
+         <VALUE xmlns="">AU-8</VALUE>
+         <VALUE xmlns="">AU-9</VALUE>
+         <VALUE xmlns="">AU-10</VALUE>
+         <VALUE xmlns="">AU-11</VALUE>
+         <VALUE xmlns="">AU-12</VALUE>
+         <VALUE xmlns="">AU-13</VALUE>
+         <VALUE xmlns="">AU-14</VALUE>
+         <VALUE xmlns="">CA-1</VALUE>
+         <VALUE xmlns="">CA-2</VALUE>
+         <VALUE xmlns="">CA-3</VALUE>
+         <VALUE xmlns="">CA-4</VALUE>
+         <VALUE xmlns="">CA-5</VALUE>
+         <VALUE xmlns="">CA-6</VALUE>
+         <VALUE xmlns="">CA-7</VALUE>
+         <VALUE xmlns="">CM-1</VALUE>
+         <VALUE xmlns="">CM-2</VALUE>
+         <VALUE xmlns="">CM-3</VALUE>
+         <VALUE xmlns="">CM-4</VALUE>
+         <VALUE xmlns="">CM-5</VALUE>
+         <VALUE xmlns="">CM-6</VALUE>
+         <VALUE xmlns="">CM-7</VALUE>
+         <VALUE xmlns="">CM-8</VALUE>
+         <VALUE xmlns="">CM-9</VALUE>
+         <VALUE xmlns="">CP-1</VALUE>
+         <VALUE xmlns="">CP-2</VALUE>
+         <VALUE xmlns="">CP-3</VALUE>
+         <VALUE xmlns="">CP-4</VALUE>
+         <VALUE xmlns="">CP-5</VALUE>
+         <VALUE xmlns="">CP-6</VALUE>
+         <VALUE xmlns="">CP-7</VALUE>
+         <VALUE xmlns="">CP-8</VALUE>
+         <VALUE xmlns="">CP-9</VALUE>
+         <VALUE xmlns="">CP-10</VALUE>
+         <VALUE xmlns="">IA-1</VALUE>
+         <VALUE xmlns="">IA-2</VALUE>
+         <VALUE xmlns="">IA-3</VALUE>
+         <VALUE xmlns="">IA-4</VALUE>
+         <VALUE xmlns="">IA-5</VALUE>
+         <VALUE xmlns="">IA-6</VALUE>
+         <VALUE xmlns="">IA-7</VALUE>
+         <VALUE xmlns="">IA-8</VALUE>
+         <VALUE xmlns="">IR-1</VALUE>
+         <VALUE xmlns="">IR-2</VALUE>
+         <VALUE xmlns="">IR-3</VALUE>
+         <VALUE xmlns="">IR-4</VALUE>
+         <VALUE xmlns="">IR-5</VALUE>
+         <VALUE xmlns="">IR-6</VALUE>
+         <VALUE xmlns="">IR-7</VALUE>
+         <VALUE xmlns="">IR-8</VALUE>
+         <VALUE xmlns="">MA-1</VALUE>
+         <VALUE xmlns="">MA-2</VALUE>
+         <VALUE xmlns="">MA-3</VALUE>
+         <VALUE xmlns="">MA-4</VALUE>
+         <VALUE xmlns="">MA-5</VALUE>
+         <VALUE xmlns="">MA-6</VALUE>
+         <VALUE xmlns="">MP-1</VALUE>
+         <VALUE xmlns="">MP-2</VALUE>
+         <VALUE xmlns="">MP-3</VALUE>
+         <VALUE xmlns="">MP-4</VALUE>
+         <VALUE xmlns="">MP-5</VALUE>
+         <VALUE xmlns="">MP-6</VALUE>
+         <VALUE xmlns="">PE-1</VALUE>
+         <VALUE xmlns="">PE-2</VALUE>
+         <VALUE xmlns="">PE-3</VALUE>
+         <VALUE xmlns="">PE-4</VALUE>
+         <VALUE xmlns="">PE-5</VALUE>
+         <VALUE xmlns="">PE-6</VALUE>
+         <VALUE xmlns="">PE-7</VALUE>
+         <VALUE xmlns="">PE-8</VALUE>
+         <VALUE xmlns="">PE-9</VALUE>
+         <VALUE xmlns="">PE-10</VALUE>
+         <VALUE xmlns="">PE-11</VALUE>
+         <VALUE xmlns="">PE-12</VALUE>
+         <VALUE xmlns="">PE-13</VALUE>
+         <VALUE xmlns="">PE-14</VALUE>
+         <VALUE xmlns="">PE-15</VALUE>
+         <VALUE xmlns="">PE-16</VALUE>
+         <VALUE xmlns="">PE-17</VALUE>
+         <VALUE xmlns="">PE-18</VALUE>
+         <VALUE xmlns="">PE-19</VALUE>
+         <VALUE xmlns="">PL-1</VALUE>
+         <VALUE xmlns="">PL-2</VALUE>
+         <VALUE xmlns="">PL-3</VALUE>
+         <VALUE xmlns="">PL-4</VALUE>
+         <VALUE xmlns="">PL-5</VALUE>
+         <VALUE xmlns="">PL-6</VALUE>
+         <VALUE xmlns="">PM-1</VALUE>
+         <VALUE xmlns="">PM-2</VALUE>
+         <VALUE xmlns="">PM-3</VALUE>
+         <VALUE xmlns="">PM-4</VALUE>
+         <VALUE xmlns="">PM-5</VALUE>
+         <VALUE xmlns="">PM-6</VALUE>
+         <VALUE xmlns="">PM-7</VALUE>
+         <VALUE xmlns="">PM-8</VALUE>
+         <VALUE xmlns="">PM-9</VALUE>
+         <VALUE xmlns="">PM-10</VALUE>
+         <VALUE xmlns="">PM-11</VALUE>
+         <VALUE xmlns="">PS-1</VALUE>
+         <VALUE xmlns="">PS-2</VALUE>
+         <VALUE xmlns="">PS-3</VALUE>
+         <VALUE xmlns="">PS-4</VALUE>
+         <VALUE xmlns="">PS-5</VALUE>
+         <VALUE xmlns="">PS-6</VALUE>
+         <VALUE xmlns="">PS-7</VALUE>
+         <VALUE xmlns="">PS-8</VALUE>
+         <VALUE xmlns="">RA-1</VALUE>
+         <VALUE xmlns="">RA-2</VALUE>
+         <VALUE xmlns="">RA-3</VALUE>
+         <VALUE xmlns="">RA-4</VALUE>
+         <VALUE xmlns="">RA-5</VALUE>
+         <VALUE xmlns="">SA-1</VALUE>
+         <VALUE xmlns="">SA-2</VALUE>
+         <VALUE xmlns="">SA-3</VALUE>
+         <VALUE xmlns="">SA-4</VALUE>
+         <VALUE xmlns="">SA-5</VALUE>
+         <VALUE xmlns="">SA-6</VALUE>
+         <VALUE xmlns="">SA-7</VALUE>
+         <VALUE xmlns="">SA-8</VALUE>
+         <VALUE xmlns="">SA-9</VALUE>
+         <VALUE xmlns="">SA-10</VALUE>
+         <VALUE xmlns="">SA-11</VALUE>
+         <VALUE xmlns="">SA-12</VALUE>
+         <VALUE xmlns="">SA-13</VALUE>
+         <VALUE xmlns="">SA-14</VALUE>
+         <VALUE xmlns="">SC-1</VALUE>
+         <VALUE xmlns="">SC-2</VALUE>
+         <VALUE xmlns="">SC-3</VALUE>
+         <VALUE xmlns="">SC-4</VALUE>
+         <VALUE xmlns="">SC-5</VALUE>
+         <VALUE xmlns="">SC-6</VALUE>
+         <VALUE xmlns="">SC-7</VALUE>
+         <VALUE xmlns="">SC-8</VALUE>
+         <VALUE xmlns="">SC-9</VALUE>
+         <VALUE xmlns="">SC-10</VALUE>
+         <VALUE xmlns="">SC-11</VALUE>
+         <VALUE xmlns="">SC-12</VALUE>
+         <VALUE xmlns="">SC-13</VALUE>
+         <VALUE xmlns="">SC-14</VALUE>
+         <VALUE xmlns="">SC-15</VALUE>
+         <VALUE xmlns="">SC-16</VALUE>
+         <VALUE xmlns="">SC-17</VALUE>
+         <VALUE xmlns="">SC-18</VALUE>
+         <VALUE xmlns="">SC-19</VALUE>
+         <VALUE xmlns="">SC-20</VALUE>
+         <VALUE xmlns="">SC-21</VALUE>
+         <VALUE xmlns="">SC-22</VALUE>
+         <VALUE xmlns="">SC-23</VALUE>
+         <VALUE xmlns="">SC-24</VALUE>
+         <VALUE xmlns="">SC-25</VALUE>
+         <VALUE xmlns="">SC-26</VALUE>
+         <VALUE xmlns="">SC-27</VALUE>
+         <VALUE xmlns="">SC-28</VALUE>
+         <VALUE xmlns="">SC-29</VALUE>
+         <VALUE xmlns="">SC-30</VALUE>
+         <VALUE xmlns="">SC-31</VALUE>
+         <VALUE xmlns="">SC-32</VALUE>
+         <VALUE xmlns="">SC-33</VALUE>
+         <VALUE xmlns="">SC-34</VALUE>
+         <VALUE xmlns="">SI-1</VALUE>
+         <VALUE xmlns="">SI-2</VALUE>
+         <VALUE xmlns="">SI-3</VALUE>
+         <VALUE xmlns="">SI-4</VALUE>
+         <VALUE xmlns="">SI-5</VALUE>
+         <VALUE xmlns="">SI-6</VALUE>
+         <VALUE xmlns="">SI-7</VALUE>
+         <VALUE xmlns="">SI-8</VALUE>
+         <VALUE xmlns="">SI-9</VALUE>
+         <VALUE xmlns="">SI-10</VALUE>
+         <VALUE xmlns="">SI-11</VALUE>
+         <VALUE xmlns="">SI-12</VALUE>
+         <VALUE xmlns="">SI-13</VALUE>
       </prop>
-      <title/>
+      <title GIVEN="ALWAYS"/>
       <prop name="priority">
-         <VALUE>P1</VALUE>
-         <VALUE>P2</VALUE>
-         <VALUE>P0</VALUE>
-         <VALUE>P3</VALUE>
+         <VALUE xmlns="">P1</VALUE>
+         <VALUE xmlns="">P2</VALUE>
+         <VALUE xmlns="">P0</VALUE>
+         <VALUE xmlns="">P3</VALUE>
       </prop>
-     <!--<prp name="baseline-impact">
-       <VALUE>HIGH</VALUE>
-       <VALUE>MODERATE</VALUE>
-     </prp>-->
-     <stmt name="description">
+      <stmt GIVEN="ALWAYS" name="description">
          <p/>
          <list/>
       </stmt>
@@ -254,27 +250,27 @@
       <group>
          <std/>
          <control>
-            <prop name="sequence">
-               <VALUE>1</VALUE>
-               <VALUE>2</VALUE>
-               <VALUE>3</VALUE>
-               <VALUE>4</VALUE>
-               <VALUE>5</VALUE>
-               <VALUE>6</VALUE>
-               <VALUE>7</VALUE>
-               <VALUE>8</VALUE>
-               <VALUE>9</VALUE>
-               <VALUE>10</VALUE>
-               <VALUE>11</VALUE>
-               <VALUE>12</VALUE>
-               <VALUE>13</VALUE>
-               <VALUE>14</VALUE>
-               <VALUE>15</VALUE>
-               <VALUE>16</VALUE>
-               <VALUE>17</VALUE>
-               <VALUE>18</VALUE>
+            <prop GIVEN="ALWAYS" name="sequence">
+               <VALUE xmlns="">1</VALUE>
+               <VALUE xmlns="">2</VALUE>
+               <VALUE xmlns="">3</VALUE>
+               <VALUE xmlns="">4</VALUE>
+               <VALUE xmlns="">5</VALUE>
+               <VALUE xmlns="">6</VALUE>
+               <VALUE xmlns="">7</VALUE>
+               <VALUE xmlns="">8</VALUE>
+               <VALUE xmlns="">9</VALUE>
+               <VALUE xmlns="">10</VALUE>
+               <VALUE xmlns="">11</VALUE>
+               <VALUE xmlns="">12</VALUE>
+               <VALUE xmlns="">13</VALUE>
+               <VALUE xmlns="">14</VALUE>
+               <VALUE xmlns="">15</VALUE>
+               <VALUE xmlns="">16</VALUE>
+               <VALUE xmlns="">17</VALUE>
+               <VALUE xmlns="">18</VALUE>
             </prop>
-            <stmt name="description">
+            <stmt GIVEN="ALWAYS" name="description">
                <p/>
                <list/>
             </stmt>
@@ -282,10 +278,13 @@
                <p/>
             </stmt>
             <prop name="baseline-impact">
-               <VALUE>HIGH</VALUE>
-               <VALUE>MODERATE</VALUE>
+               <VALUE xmlns="">HIGH</VALUE>
+               <VALUE xmlns="">MODERATE</VALUE>
             </prop>
          </control>
       </group>
+      <prop name="baseline-impact">
+         <VALUE xmlns="">HIGH</VALUE>
+      </prop>
    </control>
 </catalog>

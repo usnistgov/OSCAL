@@ -663,8 +663,8 @@
    </control>
    <control>
       <prop name="control-class">Technical</prop>
-      <prop name="family">Access Control</prop>
-      <prop name="number">AC-13</prop>
+     <prop name="family">Access Control</prop>
+     <prop name="number">AC-13</prop>
       <title>Supervision and Review Access Control</title>
       <stmt name="description">
          <p>[<italic>Withdrawn: Incorporated into AC-2 and AU-6</italic>].</p>

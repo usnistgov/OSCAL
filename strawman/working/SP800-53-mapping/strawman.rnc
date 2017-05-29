@@ -1,6 +1,15 @@
 default namespace = "http://scap.nist.gov/schema/oscal"
 
-start = element catalog { control+ }
+
+start = element catalog { declare, authorize, control+ }
+
+# have initial sections
+# declare   - declares local parameters and settings
+# authorize - declares bindings to authorities (e.g. sources for transclusion/comparison)
+
+declare   = empty
+authorize = empty
+
 control =
   element control {
     attribute id { xsd:ID }?,
@@ -14,14 +23,18 @@ prop =
     attribute name { xsd:NCName },
     whatnot
   }
+# on prop, not(@name = ../(prop|stmt)/@name)
 
 stmt =
   element stmt {
     attribute name { xsd:NCName },
-    ((\list | p)*) }
-       
-group = element group { control+ | prop+ | stmt+ | std+ }
-# on group, not(nb/@flag != nb/@flag) 
+    prose }
+# on stmt, not(@name = ../(prop|stmt)/@name)
+
+prose = (\list | p)*
+
+group = element group { control+ | prop+ | std+ }
+# on group, not(*/@name != */@name)
 
 std =  element std {
          attribute href { xsd:anyURI },

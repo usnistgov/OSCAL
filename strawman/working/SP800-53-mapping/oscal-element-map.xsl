@@ -13,7 +13,7 @@
   
   
   <xsl:template match="/*">
-    <xsl:element name="{name(.)}">
+    <xsl:element name="{name(.)}" namespace="{namespace-uri(.)}">
       <xsl:call-template name="descend"/>
     </xsl:element>
   </xsl:template>
@@ -23,7 +23,7 @@
     <xsl:param name="children" select="*"/>
     <xsl:for-each-group select="$children" group-by="string-join((name(.),@name),'-')">
       <xsl:variable name="ubiquitous" select="empty($parents except current-group()/..)"/>
-        <xsl:element name="{name(.)}">
+        <xsl:element name="{name(.)}" namespace="{namespace-uri(/*)}">
           <xsl:if test="$ubiquitous and not(name(.)=('p','list'))">
             <xsl:attribute name="GIVEN">ALWAYS</xsl:attribute>
           </xsl:if>
