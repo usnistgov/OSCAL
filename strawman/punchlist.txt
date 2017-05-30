@@ -1,0 +1,12 @@
+Issues / questions ISO 27001/2 analysis
+
+* Information capture options
+
+  Scrape (PDF), EPUB, or STS?
+  (Note that we can use mocked up or obfuscated data for demo)
+
+* Walkthrough? Would love to learn what team has learned about ISO 27001
+
+* Surrounding materials (intro/front matter etc etc) - out of scope?
+
+* Discussion of NISO STS (alignment)

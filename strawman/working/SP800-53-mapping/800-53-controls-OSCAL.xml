@@ -31,8 +31,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the access control family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The access control policy can be included as part of the general information security policy for the organization. Access control procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the access control policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -649,7 +649,7 @@
          </control>
       </group>
       <group>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-16.pdf">OMB Memorandum 06-16</std>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-16.pdf">OMB Memorandum 06-16</std></ref>
       </group>
    </control>
    <control>
@@ -860,11 +860,11 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-113/SP800-113.pdf">NIST 800-113</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-114/SP800-114.pdf">NIST 800-114</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-121/SP800-121.pdf">NIST 800-121</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-46-rev1/sp800-46r1.pdf">NIST 800-46</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-113/SP800-113.pdf">NIST 800-113</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-114/SP800-114.pdf">NIST 800-114</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-121/SP800-121.pdf">NIST 800-121</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-46-rev1/sp800-46r1.pdf">NIST 800-46</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std></ref>
       </group>
    </control>
    <control>
@@ -938,10 +938,10 @@
          </control>
       </group>
       <group>
-         <std href="http://www.dtic.mil/whs/directives/corres/pdf/855201p.pdf">DOD Instruction 8552.01</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-48-rev1/SP800-48r1.pdf">NIST 800-48</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-94/SP800-94.pdf">NIST 800-94</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-97/SP800-97.pdf">NIST 800-97</std>
+         <ref><std href="http://www.dtic.mil/whs/directives/corres/pdf/855201p.pdf">DOD Instruction 8552.01</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-48-rev1/SP800-48r1.pdf">NIST 800-48</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-94/SP800-94.pdf">NIST 800-94</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-97/SP800-97.pdf">NIST 800-97</std></ref>
       </group>
    </control>
    <control>
@@ -1022,8 +1022,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-114/SP800-114.pdf">NIST 800-114</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-124/SP800-124.pdf">NIST 800-124</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-114/SP800-114.pdf">NIST 800-114</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-124/SP800-124.pdf">NIST 800-124</std></ref>
       </group>
    </control>
    <control>
@@ -1073,7 +1073,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
       </group>
    </control>
    <control>
@@ -1156,10 +1156,10 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the security awareness and training family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The security awareness and training policy can be included as part of the general information security policy for the organization. Security awareness and training procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the security awareness and training policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std></ref>
       </group>
    </control>
    <control>
@@ -1186,8 +1186,8 @@
          </control>
       </group>
       <group>
-         <std href="http://edocket.access.gpo.gov/cfr_2007/janqtr/pdf/5cfr930.301.pdf">5 C.F.R. 930.301</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std>
+         <ref><std href="http://edocket.access.gpo.gov/cfr_2007/janqtr/pdf/5cfr930.301.pdf">5 C.F.R. 930.301</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std></ref>
       </group>
    </control>
    <control>
@@ -1223,9 +1223,9 @@
          </control>
       </group>
       <group>
-         <std href="http://edocket.access.gpo.gov/cfr_2007/janqtr/pdf/5cfr930.301.pdf">5 C.F.R. 930.301</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std>
+         <ref><std href="http://edocket.access.gpo.gov/cfr_2007/janqtr/pdf/5cfr930.301.pdf">5 C.F.R. 930.301</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std></ref>
       </group>
    </control>
    <control>
@@ -1286,8 +1286,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the audit and accountability family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The audit and accountability policy can be included as part of the general information security policy for the organization. Audit and accountability procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the audit and accountability policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -1346,8 +1346,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-92/SP800-92.pdf">NIST 800-92</std>
-         <std href="http://CSRC.NIST.GOV/PCIG/CIG.HTML">Web Resource CSRC.NIST.GOV/PCIG/CIG.HTML</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-92/SP800-92.pdf">NIST 800-92</std></ref>
+         <ref><std href="http://CSRC.NIST.GOV/PCIG/CIG.HTML">Web Resource CSRC.NIST.GOV/PCIG/CIG.HTML</std></ref>
       </group>
    </control>
    <control>
@@ -1810,10 +1810,10 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the security assessment and authorization family. The policies and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The security assessment/authorization policies can be included as part of the general information security policy for the organization. Security assessment/authorization procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the security assessment and authorization policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std></ref>
       </group>
    </control>
    <control>
@@ -1877,10 +1877,10 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST 800-115</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST 800-115</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std></ref>
       </group>
    </control>
    <control>
@@ -1927,8 +1927,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-47/sp800-47.pdf">NIST Special Publication 800-47</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-47/sp800-47.pdf">NIST Special Publication 800-47</std></ref>
       </group>
    </control>
    <control>
@@ -1969,8 +1969,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std>
-         <std href="https://www.fismacenter.com/m02-01.pdf">OMB Memorandum 02-01</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std></ref>
+         <ref><std href="https://www.fismacenter.com/m02-01.pdf">OMB Memorandum 02-01</std></ref>
       </group>
    </control>
    <control>
@@ -1997,8 +1997,8 @@
          <p>Security authorization is the official management decision, conveyed through the authorization decision document, given by a senior organizational official or executive (i.e., authorizing official) to authorize operation of an information system and to explicitly accept the risk to organizational operations and assets, individuals, other organizations, and the Nation based on the implementation of an agreed-upon set of security controls. Authorizing officials typically have budgetary oversight for information systems or are responsible for the mission or business operations supported by the systems. Security authorization is an inherently federal responsibility and therefore, authorizing officials must be federal employees. Through the security authorization process, authorizing officials are accountable for the security risks associated with information system operations. Accordingly, authorizing officials are in management positions with a level of authority commensurate with understanding and accepting such information system-related security risks. Through the employment of a comprehensive continuous monitoring process, the critical information contained in the authorization package (i.e., the security plan (including risk assessment), the security assessment report, and the plan of action and milestones) is updated on an ongoing basis, providing the authorizing official and the information system owner with an up-to-date status of the security state of the information system. To reduce the administrative cost of security reauthorization, the authorizing official uses the results of the continuous monitoring process to the maximum extent possible as the basis for rendering a reauthorization decision. OMB policy requires that federal information systems are reauthorized at least every three years or when there is a significant change to the system. The organization defines what constitutes a significant change to the information system. Related controls: CA-2, CA-7, PM-9, PM-10.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std>
-         <std href="http://www.whitehouse.gov/omb/circulars_a130_a130trans4">OMB Circular A-130</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std></ref>
+         <ref><std href="http://www.whitehouse.gov/omb/circulars_a130_a130trans4">OMB Circular A-130</std></ref>
       </group>
    </control>
    <control>
@@ -2048,9 +2048,9 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std>
-         <std href="http://www.us-cert.gov/cas/alerts">US-CERT Technical Cyber Security Alerts</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std></ref>
+         <ref><std href="http://www.us-cert.gov/cas/alerts">US-CERT Technical Cyber Security Alerts</std></ref>
       </group>
    </control>
    <control>
@@ -2074,8 +2074,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the configuration management family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The configuration management policy can be included as part of the general information security policy for the organization. Configuration management procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the configuration management policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -2163,7 +2163,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std></ref>
       </group>
    </control>
    <control>
@@ -2252,7 +2252,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std></ref>
       </group>
    </control>
    <control>
@@ -2286,7 +2286,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std></ref>
       </group>
    </control>
    <control>
@@ -2424,13 +2424,13 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-70-rev1/sp800-70r1.pdf">NIST 800-70</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf">OMB Memorandum 07-11</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf">OMB Memorandum 07-18</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf">OMB Memorandum 08-22</std>
-         <std href="http://NVD.NIST.GOV">Web Resource NVD.NIST.GOV</std>
-         <std href="http://WWW.NSA.GOV">Web Resource WWW.NSA.GOV</std>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-70-rev1/sp800-70r1.pdf">NIST 800-70</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf">OMB Memorandum 07-11</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf">OMB Memorandum 07-18</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf">OMB Memorandum 08-22</std></ref>
+         <ref><std href="http://NVD.NIST.GOV">Web Resource NVD.NIST.GOV</std></ref>
+         <ref><std href="http://WWW.NSA.GOV">Web Resource WWW.NSA.GOV</std></ref>
       </group>
    </control>
    <control>
@@ -2561,7 +2561,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std></ref>
       </group>
    </control>
    <control>
@@ -2599,7 +2599,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST 800-128</std></ref>
       </group>
    </control>
    <control>
@@ -2623,10 +2623,10 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the contingency planning family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The contingency planning policy can be included as part of the general information security policy for the organization. Contingency planning procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the contingency planning policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive 1</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
+         <ref><std href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive 1</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
       </group>
    </control>
    <control>
@@ -2726,8 +2726,8 @@
          </control>
       </group>
       <group>
-         <std href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive 1</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
+         <ref><std href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive 1</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
       </group>
    </control>
    <control>
@@ -2758,8 +2758,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std></ref>
       </group>
    </control>
    <control>
@@ -2817,9 +2817,9 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-84/SP800-84.pdf">NIST 800-84</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-84/SP800-84.pdf">NIST 800-84</std></ref>
       </group>
    </control>
    <control>
@@ -2871,7 +2871,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
       </group>
    </control>
    <control>
@@ -2931,7 +2931,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
       </group>
    </control>
    <control>
@@ -2983,8 +2983,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
-         <std href="http://TSP.NCS.GOV">Web Resource TSP.NCS.GOV</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
+         <ref><std href="http://TSP.NCS.GOV">Web Resource TSP.NCS.GOV</std></ref>
       </group>
    </control>
    <control>
@@ -3054,7 +3054,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
       </group>
    </control>
    <control>
@@ -3118,7 +3118,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-34-rev1/sp800-34-rev1_errata-Nov11-2010.pdf">NIST 800-34</std></ref>
       </group>
    </control>
    <control>
@@ -3142,13 +3142,13 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the identification and authentication family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The identification and authentication policy can be included as part of the general information security policy for the organization. Identification and authentication procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the identification and authentication policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std></ref>
       </group>
    </control>
    <control>
@@ -3237,13 +3237,13 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std>
-         <std href="http://www.fas.org/irp/offdocs/nspd/hspd-12.html">HSPD 12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std></ref>
+         <ref><std href="http://www.fas.org/irp/offdocs/nspd/hspd-12.html">HSPD 12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</std></ref>
       </group>
    </control>
    <control>
@@ -3356,10 +3356,10 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std></ref>
       </group>
    </control>
    <control>
@@ -3497,12 +3497,12 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</std></ref>
       </group>
    </control>
    <control>
@@ -3531,8 +3531,8 @@
          <p>None.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
-         <std href="http://CSRC.NIST.GOV/CRYPTVAL">Web Resource CSRC.NIST.GOV/CRYPTVAL</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std></ref>
+         <ref><std href="http://CSRC.NIST.GOV/CRYPTVAL">Web Resource CSRC.NIST.GOV/CRYPTVAL</std></ref>
       </group>
    </control>
    <control>
@@ -3548,9 +3548,9 @@
          <p>Non-organizational users include all information system users other than organizational users explicitly covered by IA-2. Users are uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization in accordance with AC-14. In accordance with the E-Authentication E-Government initiative, authentication of non-organizational users accessing federal information systems may be required to protect federal, proprietary, or privacy-related information (with exceptions noted for national security systems). Accordingly, a risk assessment is used in determining the authentication needs of the organization. Scalability, practicality, and security are simultaneously considered in balancing the need to ensure ease of use for access to federal information and information systems with the need to protect and adequately mitigate risk to organizational operations, organizational assets, individuals, other organizations, and the Nation. Identification and authentication requirements for information system access by organizational users are described in IA-2. Related controls: AC-14, AC-17, AC-18, MA-4.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</std>
-         <std href="http://WWW.CIO.GOV/EAUTHENTICATION">Web Resource WWW.CIO.GOV/EAUTHENTICATION</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</std></ref>
+         <ref><std href="http://WWW.CIO.GOV/EAUTHENTICATION">Web Resource WWW.CIO.GOV/EAUTHENTICATION</std></ref>
       </group>
    </control>
    <control>
@@ -3574,10 +3574,10 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the incident response family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The incident response policy can be included as part of the general information security policy for the organization. Incident response procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the incident response policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-83/SP800-83.pdf">NIST 800-83</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-83/SP800-83.pdf">NIST 800-83</std></ref>
       </group>
    </control>
    <control>
@@ -3617,8 +3617,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-50/NIST-SP800-50.pdf">NIST 800-50</std></ref>
       </group>
    </control>
    <control>
@@ -3646,8 +3646,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST 800-115</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-84/SP800-84.pdf">NIST 800-84</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST 800-115</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-84/SP800-84.pdf">NIST 800-84</std></ref>
       </group>
    </control>
    <control>
@@ -3715,7 +3715,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std></ref>
       </group>
    </control>
    <control>
@@ -3743,7 +3743,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std></ref>
       </group>
    </control>
    <control>
@@ -3781,7 +3781,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std></ref>
       </group>
    </control>
    <control>
@@ -3882,7 +3882,7 @@
          <p>It is important that organizations have a formal, focused, and coordinated approach to responding to incidents. The organizations mission, strategies, and goals for incident response help determine the structure of its incident response capability.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std></ref>
       </group>
    </control>
    <control>
@@ -3906,8 +3906,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the system maintenance family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The information system maintenance policy can be included as part of the general information security policy for the organization. System maintenance procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the system maintenance policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -4020,7 +4020,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_rev1.pdf">NIST 800-88</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_rev1.pdf">NIST 800-88</std></ref>
       </group>
    </control>
    <control>
@@ -4125,12 +4125,12 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/groups/STM/cmvp/documents/CNSS15FS.pdf">CNSS 15</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">FIPS 197</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_rev1.pdf">NIST 800-88</std>
+         <ref><std href="http://csrc.nist.gov/groups/STM/cmvp/documents/CNSS15FS.pdf">CNSS 15</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">FIPS 197</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_rev1.pdf">NIST 800-88</std></ref>
       </group>
    </control>
    <control>
@@ -4236,8 +4236,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the media protection family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The media protection policy can be included as part of the general information security policy for the organization. Media protection procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the media protection policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -4270,8 +4270,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-111/SP800-111.pdf">NIST 800-111</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-111/SP800-111.pdf">NIST 800-111</std></ref>
       </group>
    </control>
    <control>
@@ -4295,7 +4295,7 @@
          <p>The term marking is used when referring to the application or use of human-readable security attributes. The term labeling is used when referring to the application or use of security attributes with regard to internal data structures within the information system (see AC-16, Security Attributes). Removable information system media includes both digital media (e.g., diskettes, magnetic tapes, external/removable hard drives, flash/thumb drives, compact disks, digital video disks) and non-digital media (e.g., paper, microfilm). An organizational assessment of risk guides the selection of media requiring marking. Marking is generally not required for media containing information determined by the organization to be in the public domain or to be publicly releasable. Some organizations, however, may require markings for public information indicating that the information is publicly releasable. Organizations may extend the scope of this control to include information system output devices containing organizational information, including, for example, monitors and printers. Marking of removable media and information system output is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
       </group>
    </control>
    <control>
@@ -4332,10 +4332,10 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-111/SP800-111.pdf">NIST 800-111</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST 800-56</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">NIST 800-57</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-111/SP800-111.pdf">NIST 800-111</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST 800-56</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">NIST 800-57</std></ref>
       </group>
    </control>
    <control>
@@ -4399,8 +4399,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std></ref>
       </group>
    </control>
    <control>
@@ -4468,10 +4468,10 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_rev1.pdf">NIST 800-88</std>
-         <std href="http://WWW.NSA.GOV/IA/GUIDANCE/MEDIA_DESTRUCTION_GUIDANCE/INDEX.SHTML">Web Resource WWW.NSA.GOV/IA/GUIDANCE/MEDIA_DESTRUCTION_GUIDANCE/INDEX.SHTML</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_rev1.pdf">NIST 800-88</std></ref>
+         <ref><std href="http://WWW.NSA.GOV/IA/GUIDANCE/MEDIA_DESTRUCTION_GUIDANCE/INDEX.SHTML">Web Resource WWW.NSA.GOV/IA/GUIDANCE/MEDIA_DESTRUCTION_GUIDANCE/INDEX.SHTML</std></ref>
       </group>
    </control>
    <control>
@@ -4495,8 +4495,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the physical and environmental protection family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The physical and environmental protection policy can be included as part of the general information security policy for the organization. Physical and environmental protection procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the physical and environmental protection policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -4630,12 +4630,12 @@
          </control>
       </group>
       <group>
-         <std href="http://www.fas.org/irp/offdocs/dcid6-9.htm">DCID 6/9</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std>
-         <std href="http://www.dni.gov/electronic_reading_room/ICD_704.pdf">ICD 704</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std>
+         <ref><std href="http://www.fas.org/irp/offdocs/dcid6-9.htm">DCID 6/9</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std></ref>
+         <ref><std href="http://www.dni.gov/electronic_reading_room/ICD_704.pdf">ICD 704</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std></ref>
       </group>
    </control>
    <control>
@@ -4651,7 +4651,7 @@
          <p>Physical protections applied to information system distribution and transmission lines help prevent accidental damage, disruption, and physical tampering. Additionally, physical protections are necessary to help prevent eavesdropping or in transit modification of unencrypted transmissions. Protective measures to control physical access to information system distribution and transmission lines include: (i) locked wiring closets; (ii) disconnected or locked spare jacks; and/or (iii) protection of cabling by conduit or cable trays. Related control: PE-2.</p>
       </stmt>
       <group>
-         <std href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI 7003</std>
+         <ref><std href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI 7003</std></ref>
       </group>
    </control>
    <control>
@@ -5014,7 +5014,7 @@
          <p>Alternate work sites may include, for example, government facilities or private residences of employees. The organization may define different sets of security controls for specific alternate work sites or types of sites.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-46-rev1/sp800-46r1.pdf">NIST 800-46</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-46-rev1/sp800-46r1.pdf">NIST 800-46</std></ref>
       </group>
    </control>
    <control>
@@ -5065,7 +5065,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
       </group>
    </control>
    <control>
@@ -5089,9 +5089,9 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the security planning family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The security planning policy addresses the overall policy requirements for confidentiality, integrity, and availability and can be included as part of the general information security policy for the organization. Security planning procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the security planning policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf">NIST 800-18</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf">NIST 800-18</std></ref>
       </group>
    </control>
    <control>
@@ -5163,7 +5163,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf">NIST 800-18</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf">NIST 800-18</std></ref>
       </group>
    </control>
    <control>
@@ -5204,7 +5204,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf">NIST 800-18</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf">NIST 800-18</std></ref>
       </group>
    </control>
    <control>
@@ -5220,7 +5220,7 @@
          <p>None.</p>
       </stmt>
       <group>
-         <std href="http://www.fincen.gov/foia/files/egovactprivacyrequirements.pdf">OMB Memorandum 03-22</std>
+         <ref><std href="http://www.fincen.gov/foia/files/egovactprivacyrequirements.pdf">OMB Memorandum 03-22</std></ref>
       </group>
    </control>
    <control>
@@ -5311,8 +5311,8 @@
          <p>The plan of action and milestones is a key document in the information security program and is subject to federal reporting requirements established by OMB. The plan of action and milestones updates are based on the findings from security control assessments, security impact analyses, and continuous monitoring activities. OMB FISMA reporting guidance contains instructions regarding organizational plans of action and milestones. Related control: CA-5.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std>
-         <std href="https://www.fismacenter.com/m02-01.pdf">OMB Memorandum 02-01</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std></ref>
+         <ref><std href="https://www.fismacenter.com/m02-01.pdf">OMB Memorandum 02-01</std></ref>
       </group>
    </control>
    <control>
@@ -5341,7 +5341,7 @@
          <p>Measures of performance are outcome-based metrics used by an organization to measure the effectiveness or efficiency of the information security program and the security controls employed in support of the program.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-55-Rev1/SP800-55-rev1.pdf">NIST 800-55</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-55-Rev1/SP800-55-rev1.pdf">NIST 800-55</std></ref>
       </group>
    </control>
    <control>
@@ -5357,8 +5357,8 @@
          <p>The enterprise architecture developed by the organization is aligned with the Federal Enterprise Architecture. The integration of information security requirements and associated security controls into the organizations enterprise architecture helps to ensure that security considerations are addressed by organizations early in the system development life cycle and are directly and explicitly related to the organizations mission/business processes. This also embeds into the enterprise architecture, an integral security architecture consistent with organizational risk management and information security strategies. Security requirements and control integration are most effectively accomplished through the application of the Risk Management Framework and supporting security standards and guidelines. The Federal Segment Architecture Methodology provides guidance on integrating information security requirements and security controls into enterprise architectures. Related controls: PL-2, PM-11, RA-2.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std>
-         <std href="http://WWW.FSAM.GOV">Web Resource WWW.FSAM.GOV</std>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std></ref>
+         <ref><std href="http://WWW.FSAM.GOV">Web Resource WWW.FSAM.GOV</std></ref>
       </group>
    </control>
    <control>
@@ -5374,7 +5374,7 @@
          <p>The requirement and guidance for defining critical infrastructure and key resources and for preparing an associated critical infrastructure protection plan are found in applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Related controls: PM-1, PM-9, PM-11, RA-3.</p>
       </stmt>
       <group>
-         <std href="http://www.fas.org/irp/offdocs/nspd/hspd-7.html">HSPD 7</std>
+         <ref><std href="http://www.fas.org/irp/offdocs/nspd/hspd-7.html">HSPD 7</std></ref>
       </group>
    </control>
    <control>
@@ -5398,8 +5398,8 @@
          <p>An organization-wide risk management strategy includes, for example, an unambiguous expression of the risk tolerance for the organization, acceptable risk assessment methodologies, risk mitigation strategies, a process for consistently evaluating risk across the organization with respect to the organizations risk tolerance, and approaches for monitoring risk over time. The use of a risk executive function can facilitate consistent, organization-wide application of the risk management strategy. The organization-wide risk management strategy can be informed by risk-related inputs from other sources both internal and external to the organization to ensure the strategy is both broad-based and comprehensive. Related control: RA-3.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std></ref>
       </group>
    </control>
    <control>
@@ -5426,8 +5426,8 @@
          <p>The security authorization process for information systems requires the implementation of the Risk Management Framework and the employment of associated security standards and guidelines. Specific roles within the risk management process include a designated authorizing official for each organizational information system. Related control: CA-6.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf">NIST 800-37</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std></ref>
       </group>
    </control>
    <control>
@@ -5451,8 +5451,8 @@
          <p>Information protection needs are technology-independent, required capabilities to counter threats to organizations, individuals, or the Nation through the compromise of information (i.e., loss of confidentiality, integrity, or availability). Information protection needs are derived from the mission/business needs defined by the organization, the mission/business processes selected to meet the stated needs, and the organizational risk management strategy. Information protection needs determine the required security controls for the organization and the associated information systems supporting the mission/business processes. Inherent in defining an organizations information protection needs is an understanding of the level of adverse impact that could result if a compromise of information occurs. The security categorization process is used to make such potential impact determinations. Mission/business process definitions and associated information protection requirements are documented by the organization in accordance with organizational policy and procedure. Related controls: PM-7, PM-8, RA-2.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std></ref>
       </group>
    </control>
    <control>
@@ -5476,8 +5476,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the personnel security family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The personnel security policy can be included as part of the general information security policy for the organization. Personnel security procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the personnel security policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -5504,7 +5504,7 @@
          <p>Position risk designations are consistent with Office of Personnel Management policy and guidance. The screening criteria include explicit information security role appointment requirements (e.g., training, security clearance).</p>
       </stmt>
       <group>
-         <std href="http://edocket.access.gpo.gov/cfr_2002/janqtr/pdf/5cfr731.106.pdf">5 C.F.R. 731.106</std>
+         <ref><std href="http://edocket.access.gpo.gov/cfr_2002/janqtr/pdf/5cfr731.106.pdf">5 C.F.R. 731.106</std></ref>
       </group>
    </control>
    <control>
@@ -5545,13 +5545,13 @@
          </control>
       </group>
       <group>
-         <std href="http://edocket.access.gpo.gov/cfr_2002/janqtr/pdf/5cfr731.106.pdf">5 C.F.R. 731.106</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://www.dni.gov/electronic_reading_room/ICD_704.pdf">ICD 704</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std>
+         <ref><std href="http://edocket.access.gpo.gov/cfr_2002/janqtr/pdf/5cfr731.106.pdf">5 C.F.R. 731.106</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS 201</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://www.dni.gov/electronic_reading_room/ICD_704.pdf">ICD 704</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-73-3/sp800-73-3_PART1_piv-card-applic-namespace-date-model-rep.pdf">NIST 800-73</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-76-1/SP800-76-1_012407.pdf">NIST 800-76</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-78-2/sp800-78-2.pdf">NIST 800-78</std></ref>
       </group>
    </control>
    <control>
@@ -5678,7 +5678,7 @@
          <p>Third-party providers include, for example, service bureaus, contractors, and other organizations providing information system development, information technology services, outsourced applications, and network and security management. The organization explicitly includes personnel security requirements in acquisition-related documents.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-35/NIST-SP800-35.pdf">NIST 800-35</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-35/NIST-SP800-35.pdf">NIST 800-35</std></ref>
       </group>
    </control>
    <control>
@@ -5715,9 +5715,9 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the risk assessment family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The risk assessment policy can be included as part of the general information security policy for the organization. Risk assessment procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the risk assessment policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std></ref>
       </group>
    </control>
    <control>
@@ -5744,10 +5744,10 @@
          <p>A clearly defined authorization boundary is a prerequisite for an effective security categorization. Security categorization describes the potential adverse impacts to organizational operations, organizational assets, and individuals should the information and information system be comprised through a loss of confidentiality, integrity, or availability. The organization conducts the security categorization process as an organization-wide activity with the involvement of the chief information officer, senior information security officer, information system owner, mission owners, and information owners/stewards. The organization also considers potential adverse impacts to other organizations and, in accordance with the USA PATRIOT Act of 2001 and Homeland Security Presidential Directives, potential national-level adverse impacts in categorizing the information system. The security categorization process facilitates the creation of an inventory of information assets, and in conjunction with CM-8, a mapping to the information system components where the information is processed, stored, and transmitted. Related controls: CM-8, MP-4, SC-7.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std>
-         <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-39">NIST 800-39</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std></ref>
       </group>
    </control>
    <control>
@@ -5778,7 +5778,7 @@
          <p>Risk assessments (either formal or informal) can be conducted by organizations at various steps in the Risk Management Framework including: information system categorization; security control selection; security control implementation; security control assessment; information system authorization; and security control monitoring. RA-3 is a noteworthy security control in that the control must be partially implemented prior to the implementation of other controls in order to complete the first two steps in the Risk Management Framework. Risk assessments can play an important role in the security control selection process during the application of tailoring guidance for security control baselines and when considering supplementing the tailored baselines with additional security controls or control enhancements.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-30/sp800-30.pdf">NIST 800-30</std></ref>
       </group>
    </control>
    <control>
@@ -5904,11 +5904,11 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST 800-115</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST 800-40</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-70-rev1/sp800-70r1.pdf">NIST 800-70</std>
-         <std href="http://CWE.MITRE.ORG">Web Resource CWE.MITRE.ORG</std>
-         <std href="http://NVD.NIST.GOV">Web Resource NVD.NIST.GOV</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST 800-115</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST 800-40</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-70-rev1/sp800-70r1.pdf">NIST 800-70</std></ref>
+         <ref><std href="http://CWE.MITRE.ORG">Web Resource CWE.MITRE.ORG</std></ref>
+         <ref><std href="http://NVD.NIST.GOV">Web Resource NVD.NIST.GOV</std></ref>
       </group>
    </control>
    <control>
@@ -5932,8 +5932,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the system and services acquisition family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The system and services acquisition policy can be included as part of the general information security policy for the organization. System and services acquisition procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the system and services acquisition policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -5960,7 +5960,7 @@
          <p>Related controls: PM-3, PM-11.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-65/SP-800-65-Final.pdf">NIST 800-65</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-65/SP-800-65-Final.pdf">NIST 800-65</std></ref>
       </group>
    </control>
    <control>
@@ -5987,7 +5987,7 @@
          <p>Related control: PM-7.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-64-Rev2/SP800-64-Revision2.pdf">NIST 800-64</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-64-Rev2/SP800-64-Revision2.pdf">NIST 800-64</std></ref>
       </group>
    </control>
    <control>
@@ -6078,14 +6078,14 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
-         <std href="http://www.isosecuritysolutions.com/ISOIEC-15408.html">ISO/IEC 15408</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-23/sp800-23.pdf">NIST 800-23</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-35/NIST-SP800-35.pdf">NIST 800-35</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-36/NIST-SP800-36.pdf">NIST 800-36</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-64-Rev2/SP800-64-Revision2.pdf">NIST 800-64</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-70-rev1/sp800-70r1.pdf">NIST 800-70</std>
-         <std href="http://WWW.NIAP-CCEVS.ORG">Web Resource WWW.NIAP-CCEVS.ORG</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std></ref>
+         <ref><std href="http://www.isosecuritysolutions.com/ISOIEC-15408.html">ISO/IEC 15408</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-23/sp800-23.pdf">NIST 800-23</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-35/NIST-SP800-35.pdf">NIST 800-35</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-36/NIST-SP800-36.pdf">NIST 800-36</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-64-Rev2/SP800-64-Revision2.pdf">NIST 800-64</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-70-rev1/sp800-70r1.pdf">NIST 800-70</std></ref>
+         <ref><std href="http://WWW.NIAP-CCEVS.ORG">Web Resource WWW.NIAP-CCEVS.ORG</std></ref>
       </group>
    </control>
    <control>
@@ -6244,7 +6244,7 @@
          <p>The application of security engineering principles is primarily targeted at new development information systems or systems undergoing major upgrades and is integrated into the system development life cycle. For legacy information systems, the organization applies security engineering principles to system upgrades and modifications to the extent feasible, given the current state of the hardware, software, and firmware within the system. Examples of security engineering principles include, for example: (i) developing layered protections; (ii) establishing sound security policy, architecture, and controls as the foundation for design; (iii) incorporating security into the system development life cycle; (iv) delineating physical and logical security boundaries; (v) ensuring system developers and integrators are trained on how to develop secure software; (vi) tailoring security controls to meet organizational and operational needs; and (vii) reducing risk to acceptable levels, thus enabling informed risk management decisions.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-27A/SP800-27-RevA.pdf">NIST 800-27</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-27A/SP800-27-RevA.pdf">NIST 800-27</std></ref>
       </group>
    </control>
    <control>
@@ -6290,7 +6290,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-35/NIST-SP800-35.pdf">NIST 800-35</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-35/NIST-SP800-35.pdf">NIST 800-35</std></ref>
       </group>
    </control>
    <control>
@@ -6477,12 +6477,12 @@
          <p>Explicit trustworthiness decisions highlight situations where achieving the information system resilience and security capability necessary to withstand cyber attacks from adversaries with certain threat capabilities may require adjusting the risk management strategy, the design of mission/business processes with regard to automation, the selection and implementation rigor of management and operational protections, or the selection of information technology components with higher levels of trustworthiness. Trustworthiness may be defined on a component-by-component, subsystem-by-subsystem, or function-by-function basis. It is noted, however, that typically functions, subsystems, and components are highly interrelated, making separation by trustworthiness perhaps problematic and at a minimum, something that likely requires careful attention in order to achieve practically useful results. Related controls: RA-2, SA-4, SA-8, SC-3.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf">FIPS 200</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-53-Rev3/sp800-53-rev3-final_updated-errata_05-01-2010.pdf">NIST 800-53</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-64-Rev2/SP800-64-Revision2.pdf">NIST 800-64</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf">FIPS 200</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-53-Rev3/sp800-53-rev3-final_updated-errata_05-01-2010.pdf">NIST 800-53</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-53A-rev1/sp800-53A-rev1-final.pdf">NIST 800-53A</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf">NIST 800-60</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-64-Rev2/SP800-64-Revision2.pdf">NIST 800-64</std></ref>
       </group>
    </control>
    <control>
@@ -6546,8 +6546,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the system and communications protection family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The system and communications protection policy can be included as part of the general information security policy for the organization. System and communications protection procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the system and communications protection policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -6877,9 +6877,9 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-41-Rev1/sp800-41-rev1.pdf">NIST 800-41</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-41-Rev1/sp800-41-rev1.pdf">NIST 800-41</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std></ref>
       </group>
    </control>
    <control>
@@ -6915,13 +6915,13 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">FIPS 197</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-113/SP800-113.pdf">NIST 800-113</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-52/SP800-52.pdf">NIST 800-52</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std>
-         <std href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI 7003</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">FIPS 197</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-113/SP800-113.pdf">NIST 800-113</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-52/SP800-52.pdf">NIST 800-52</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std></ref>
+         <ref><std href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI 7003</std></ref>
       </group>
    </control>
    <control>
@@ -6957,13 +6957,13 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/groups/STM/cmvp/documents/CNSS15FS.pdf">CNSS 15</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
-         <std href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">FIPS 197</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-113/SP800-113.pdf">NIST 800-113</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-52/SP800-52.pdf">NIST 800-52</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std>
-         <std href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI 7003</std>
+         <ref><std href="http://csrc.nist.gov/groups/STM/cmvp/documents/CNSS15FS.pdf">CNSS 15</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">FIPS 197</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-113/SP800-113.pdf">NIST 800-113</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-52/SP800-52.pdf">NIST 800-52</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std></ref>
+         <ref><std href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI 7003</std></ref>
       </group>
    </control>
    <control>
@@ -7038,8 +7038,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST 800-56</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">NIST 800-57</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST 800-56</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">NIST 800-57</std></ref>
       </group>
    </control>
    <control>
@@ -7081,9 +7081,9 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
-         <std href="http://CSRC.NIST.GOV/CRYPTVAL">Web Resource CSRC.NIST.GOV/CRYPTVAL</std>
-         <std href="http://WWW.CNSS.GOV">Web Resource WWW.CNSS.GOV</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std></ref>
+         <ref><std href="http://CSRC.NIST.GOV/CRYPTVAL">Web Resource CSRC.NIST.GOV/CRYPTVAL</std></ref>
+         <ref><std href="http://WWW.CNSS.GOV">Web Resource WWW.CNSS.GOV</std></ref>
       </group>
    </control>
    <control>
@@ -7177,9 +7177,9 @@
          <p>For user certificates, each organization attains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice. This control focuses on certificates with a visibility external to the information system and does not include certificates related to internal system operations, for example, application-specific time services.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-32/sp800-32.pdf">NIST 800-32</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2005/m05-24.pdf">OMB Memorandum 05-24</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-32/sp800-32.pdf">NIST 800-32</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf">NIST 800-63</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2005/m05-24.pdf">OMB Memorandum 05-24</std></ref>
       </group>
    </control>
    <control>
@@ -7238,8 +7238,8 @@
          </control>
       </group>
       <group>
-         <std href="http://www.dtic.mil/whs/directives/corres/pdf/855201p.pdf">DOD Instruction 8552.01</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-28-ver2/SP800-28v2.pdf">NIST 800-28</std>
+         <ref><std href="http://www.dtic.mil/whs/directives/corres/pdf/855201p.pdf">DOD Instruction 8552.01</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-28-ver2/SP800-28v2.pdf">NIST 800-28</std></ref>
       </group>
    </control>
    <control>
@@ -7263,7 +7263,7 @@
          <p>None.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-58/SP800-58-final.pdf">NIST 800-58</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-58/SP800-58-final.pdf">NIST 800-58</std></ref>
       </group>
    </control>
    <control>
@@ -7290,8 +7290,8 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std>
-         <std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2008/m08-23.pdf">OMB Memorandum 08-23</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std></ref>
+         <ref><std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2008/m08-23.pdf">OMB Memorandum 08-23</std></ref>
       </group>
    </control>
    <control>
@@ -7319,7 +7319,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std></ref>
       </group>
    </control>
    <control>
@@ -7335,7 +7335,7 @@
          <p>A domain name system (DNS) server is an example of an information system that provides name/address resolution service. To eliminate single points of failure and to enhance redundancy, there are typically at least two authoritative domain name system (DNS) servers, one configured as primary and the other as secondary. Additionally, the two servers are commonly located in two different network subnets and geographically separated (i.e., not located in the same physical facility). With regard to role separation, DNS servers with an internal role, only process name/address resolution requests from within the organization (i.e., internal clients). DNS servers with an external role only process name/address resolution information requests from clients external to the organization (i.e., on the external networks including the Internet). The set of clients that can access an authoritative DNS server in a particular role is specified by the organization (e.g., by address ranges, explicit lists).</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST 800-81</std></ref>
       </group>
    </control>
    <control>
@@ -7380,9 +7380,9 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-52/SP800-52.pdf">NIST 800-52</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-95/SP800-95.pdf">NIST 800-95</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-52/SP800-52.pdf">NIST 800-52</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-77/sp800-77.pdf">NIST 800-77</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-95/SP800-95.pdf">NIST 800-95</std></ref>
       </group>
    </control>
    <control>
@@ -7470,9 +7470,9 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-111/SP800-111.pdf">NIST 800-111</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST 800-56</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">NIST 800-57</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-111/SP800-111.pdf">NIST 800-111</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-56A/SP800-56A_Revision1_Mar08-2007.pdf">NIST 800-56</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf">NIST 800-57</std></ref>
       </group>
    </control>
    <control>
@@ -7552,7 +7552,7 @@
          <p>Information system partitioning is a part of a defense-in-depth protection strategy. An organizational assessment of risk guides the partitioning of information system components into separate physical domains (or environments). The security categorization also guides the selection of appropriate candidates for domain partitioning. Managed interfaces restrict or prohibit network access and information flow among partitioned information system components. Related controls: AC-4, SC-7.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std>
+         <ref><std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS Publication 199</std></ref>
       </group>
    </control>
    <control>
@@ -7630,8 +7630,8 @@
          <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the system and information integrity family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The system and information integrity policy can be included as part of the general information security policy for the organization. System and information integrity procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the system and information integrity policy. Related control: PM-9.</p>
       </stmt>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std></ref>
       </group>
    </control>
    <control>
@@ -7688,7 +7688,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST 800-40</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST 800-40</std></ref>
       </group>
    </control>
    <control>
@@ -7756,7 +7756,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-83/SP800-83.pdf">NIST 800-83</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-83/SP800-83.pdf">NIST 800-83</std></ref>
       </group>
    </control>
    <control>
@@ -7925,10 +7925,10 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-83/SP800-83.pdf">NIST 800-83</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-92/SP800-92.pdf">NIST 800-92</std>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-94/SP800-94.pdf">NIST 800-94</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST 800-61</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-83/SP800-83.pdf">NIST 800-83</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-92/SP800-92.pdf">NIST 800-92</std></ref>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-94/SP800-94.pdf">NIST 800-94</std></ref>
       </group>
    </control>
    <control>
@@ -7967,7 +7967,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST 800-40</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST 800-40</std></ref>
       </group>
    </control>
    <control>
@@ -8083,7 +8083,7 @@
          </control>
       </group>
       <group>
-         <std href="http://csrc.nist.gov/publications/nistpubs/800-45-version2/SP800-45v2.pdf">NIST 800-45</std>
+         <ref><std href="http://csrc.nist.gov/publications/nistpubs/800-45-version2/SP800-45v2.pdf">NIST 800-45</std></ref>
       </group>
    </control>
    <control>

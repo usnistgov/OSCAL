@@ -1,6 +1,5 @@
 default namespace = "http://scap.nist.gov/schema/oscal"
 
-
 start = element catalog { declare, authorize, control+ }
 
 # have initial sections
@@ -33,8 +32,11 @@ stmt =
 
 prose = (\list | p)*
 
-group = element group { control+ | prop+ | std+ }
-# on group, not(*/@name != */@name)
+group = element group { control+ | prop+ | ref+ }
+# on group, not(*/@name != */@name) ie all names must be the same
+
+ref = element ref { std }
+# add mixed-content
 
 std =  element std {
          attribute href { xsd:anyURI },

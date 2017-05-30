@@ -3,6 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
 
   xpath-default-namespace="http://scap.nist.gov/schema/oscal"
+  xmlns="http://scap.nist.gov/schema/oscal"
   exclude-result-prefixes="xs"
   version="2.0">
   
