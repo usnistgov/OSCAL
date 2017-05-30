@@ -1,3 +1,5 @@
 .DS_Store
-sources/ISO/*.epub
+
+# Proprietary files not to be propagated
+strawman/sources/ISO/*.epub
 
