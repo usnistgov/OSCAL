@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
 <?xml-model href="../lib/strawman.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>ISO/IEC 27002</title>
    <catalog type="control-category">
-      <prop name="number">5	</prop>
+      <prop name="number">5</prop>
       <title>Information security policies</title>
       <catalog type="clause">
-         <prop name="number">5.1	</prop>
+         <prop name="number">5.1</prop>
          <title>Management direction for information security</title>
          <stmt name="objective">
             <p>To provide management direction and support for information security in accordance with business requirements and relevant laws and regulations.</p>
@@ -16,7 +15,7 @@
          <control type="iso-27002">
             <prop name="category">Information security policies</prop>
             <prop name="clause">Management direction for information security</prop>
-            <prop name="number">5.1.1	</prop>
+            <prop name="number">5.1.1</prop>
             <title>Policies for information security</title>
             <desc>
                <p>A set of policies for information security should be defined, approved by management, published and communicated to employees and relevant external parties.</p>
@@ -69,7 +68,7 @@
          <control type="iso-27002">
             <prop name="category">Information security policies</prop>
             <prop name="clause">Management direction for information security</prop>
-            <prop name="number">5.1.2	</prop>
+            <prop name="number">5.1.2</prop>
             <title>Review of the policies for information security</title>
             <desc>
                <p>The policies for information security should be reviewed at planned intervals or if significant changes occur to ensure their continuing suitability, adequacy and effectiveness.</p>
@@ -83,10 +82,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">6	</prop>
+      <prop name="number">6</prop>
       <title>Organization of information security</title>
       <catalog type="clause">
-         <prop name="number">6.1	</prop>
+         <prop name="number">6.1</prop>
          <title>Internal organization</title>
          <stmt name="objective">
             <p>To establish a management framework to initiate and control the implementation and operation of information security within the organization.</p>
@@ -94,7 +93,7 @@
          <control type="iso-27002">
             <prop name="category">Organization of information security</prop>
             <prop name="clause">Internal organization</prop>
-            <prop name="number">6.1.1	</prop>
+            <prop name="number">6.1.1</prop>
             <title>Information security roles and responsibilities</title>
             <desc>
                <p>All information security responsibilities should be defined and allocated.</p>
@@ -119,7 +118,7 @@
          <control type="iso-27002">
             <prop name="category">Organization of information security</prop>
             <prop name="clause">Internal organization</prop>
-            <prop name="number">6.1.2	</prop>
+            <prop name="number">6.1.2</prop>
             <title>Segregation of duties</title>
             <desc>
                <p>Conflicting duties and areas of responsibility should be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organization’s assets.</p>
@@ -135,7 +134,7 @@
          <control type="iso-27002">
             <prop name="category">Organization of information security</prop>
             <prop name="clause">Internal organization</prop>
-            <prop name="number">6.1.3	</prop>
+            <prop name="number">6.1.3</prop>
             <title>Contact with authorities</title>
             <desc>
                <p>Appropriate contacts with relevant authorities should be maintained.</p>
@@ -151,7 +150,7 @@
          <control type="iso-27002">
             <prop name="category">Organization of information security</prop>
             <prop name="clause">Internal organization</prop>
-            <prop name="number">6.1.4	</prop>
+            <prop name="number">6.1.4</prop>
             <title>Contact with special interest groups</title>
             <desc>
                <p>Appropriate contacts with special interest groups or other specialist security forums and professional associations should be maintained.</p>
@@ -174,7 +173,7 @@
          <control type="iso-27002">
             <prop name="category">Organization of information security</prop>
             <prop name="clause">Internal organization</prop>
-            <prop name="number">6.1.5	</prop>
+            <prop name="number">6.1.5</prop>
             <title>Information security in project management</title>
             <desc>
                <p>Information security should be addressed in project management, regardless of the type of the project.</p>
@@ -191,7 +190,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">6.2	</prop>
+         <prop name="number">6.2</prop>
          <title>Mobile devices and teleworking</title>
          <stmt name="objective">
             <p>To ensure the security of teleworking and use of mobile devices.</p>
@@ -199,7 +198,7 @@
          <control type="iso-27002">
             <prop name="category">Organization of information security</prop>
             <prop name="clause">Mobile devices and teleworking</prop>
-            <prop name="number">6.2.1	</prop>
+            <prop name="number">6.2.1</prop>
             <title>Mobile device policy</title>
             <desc>
                <p>A policy and supporting security measures should be adopted to manage the risks introduced by using mobile devices.</p>
@@ -241,7 +240,7 @@
          <control type="iso-27002">
             <prop name="category">Organization of information security</prop>
             <prop name="clause">Mobile devices and teleworking</prop>
-            <prop name="number">6.2.2	</prop>
+            <prop name="number">6.2.2</prop>
             <title>Teleworking</title>
             <desc>
                <p>A policy and supporting security measures should be implemented to protect information accessed, processed or stored at teleworking sites.</p>
@@ -281,10 +280,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">7	</prop>
+      <prop name="number">7</prop>
       <title>Human resource security</title>
       <catalog type="clause">
-         <prop name="number">7.1	</prop>
+         <prop name="number">7.1</prop>
          <title>Prior to employment</title>
          <stmt name="objective">
             <p>To ensure that employees and contractors understand their responsibilities and are suitable for the roles for which they are considered.</p>
@@ -292,7 +291,7 @@
          <control type="iso-27002">
             <prop name="category">Human resource security</prop>
             <prop name="clause">Prior to employment</prop>
-            <prop name="number">7.1.1	</prop>
+            <prop name="number">7.1.1</prop>
             <title>Screening</title>
             <desc>
                <p>Background verification checks on all candidates for employment should be carried out in accordance with relevant laws, regulations and ethics and should be proportional to the business requirements, the classification of the information to be accessed and the perceived risks.</p>
@@ -320,7 +319,7 @@
          <control type="iso-27002">
             <prop name="category">Human resource security</prop>
             <prop name="clause">Prior to employment</prop>
-            <prop name="number">7.1.2	</prop>
+            <prop name="number">7.1.2</prop>
             <title>Terms and conditions of employment</title>
             <desc>
                <p>The contractual agreements with employees and contractors should state their and the organization’s responsibilities for information security.</p>
@@ -344,7 +343,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">7.2	</prop>
+         <prop name="number">7.2</prop>
          <title>During employment</title>
          <stmt name="objective">
             <p>To ensure that employees and contractors are aware of and fulfil their information security responsibilities.</p>
@@ -352,7 +351,7 @@
          <control type="iso-27002">
             <prop name="category">Human resource security</prop>
             <prop name="clause">During employment</prop>
-            <prop name="number">7.2.1	</prop>
+            <prop name="number">7.2.1</prop>
             <title>Management responsibilities</title>
             <desc>
                <p>Management should require all employees and contractors to apply information security in accordance with the established policies and procedures of the organization.</p>
@@ -378,7 +377,7 @@
          <control type="iso-27002">
             <prop name="category">Human resource security</prop>
             <prop name="clause">During employment</prop>
-            <prop name="number">7.2.2	</prop>
+            <prop name="number">7.2.2</prop>
             <title>Information security awareness, education and training</title>
             <desc>
                <p>All employees of the organization and, where relevant, contractors should receive appropriate awareness education and training and regular updates in organizational policies and procedures, as relevant for their job function.</p>
@@ -408,7 +407,7 @@
          <control type="iso-27002">
             <prop name="category">Human resource security</prop>
             <prop name="clause">During employment</prop>
-            <prop name="number">7.2.3	</prop>
+            <prop name="number">7.2.3</prop>
             <title>Disciplinary process</title>
             <desc>
                <p>There should be a formal and communicated disciplinary process in place to take action against employees who have committed an information security breach.</p>
@@ -424,7 +423,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">7.3	</prop>
+         <prop name="number">7.3</prop>
          <title>Termination and change of employment</title>
          <stmt name="objective">
             <p>To protect the organization’s interests as part of the process of changing or terminating employment.</p>
@@ -432,7 +431,7 @@
          <control type="iso-27002">
             <prop name="category">Human resource security</prop>
             <prop name="clause">Termination and change of employment</prop>
-            <prop name="number">7.3.1	</prop>
+            <prop name="number">7.3.1</prop>
             <title>Termination or change of employment responsibilities</title>
             <desc>
                <p>Information security responsibilities and duties that remain valid after termination or change of employment should be defined, communicated to the employee or contractor and enforced.</p>
@@ -450,10 +449,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">8	</prop>
+      <prop name="number">8</prop>
       <title>Asset management</title>
       <catalog type="clause">
-         <prop name="number">8.1	</prop>
+         <prop name="number">8.1</prop>
          <title>Responsibility for assets</title>
          <stmt name="objective">
             <p>To identify organizational assets and define appropriate protection responsibilities.</p>
@@ -461,7 +460,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Responsibility for assets</prop>
-            <prop name="number">8.1.1	</prop>
+            <prop name="number">8.1.1</prop>
             <title>Inventory of assets</title>
             <desc>
                <p>Assets associated with information and information processing facilities should be identified and an inventory of these assets should be drawn up and maintained.</p>
@@ -479,7 +478,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Responsibility for assets</prop>
-            <prop name="number">8.1.2	</prop>
+            <prop name="number">8.1.2</prop>
             <title>Ownership of assets</title>
             <desc>
                <p>Assets maintained in the inventory should be owned.</p>
@@ -504,7 +503,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Responsibility for assets</prop>
-            <prop name="number">8.1.3	</prop>
+            <prop name="number">8.1.3</prop>
             <title>Acceptable use of assets</title>
             <desc>
                <p>Rules for the acceptable use of information and of assets associated with information and information processing facilities should be identified, documented and implemented.</p>
@@ -516,7 +515,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Responsibility for assets</prop>
-            <prop name="number">8.1.4	</prop>
+            <prop name="number">8.1.4</prop>
             <title>Return of assets</title>
             <desc>
                <p>All employees and external party users should return all of the organizational assets in their possession upon termination of their employment, contract or agreement.</p>
@@ -530,7 +529,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">8.2	</prop>
+         <prop name="number">8.2</prop>
          <title>Information classification</title>
          <stmt name="objective">
             <p>To ensure that information receives an appropriate level of protection in accordance with its importance to the organization.</p>
@@ -538,7 +537,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Information classification</prop>
-            <prop name="number">8.2.1	</prop>
+            <prop name="number">8.2.1</prop>
             <title>Classification of information</title>
             <desc>
                <p>Information should be classified in terms of legal requirements, value, criticality and sensitivity to unauthorised disclosure or modification.</p>
@@ -566,7 +565,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Information classification</prop>
-            <prop name="number">8.2.2	</prop>
+            <prop name="number">8.2.2</prop>
             <title>Labelling of information</title>
             <desc>
                <p>An appropriate set of procedures for information labelling should be developed and implemented in accordance with the information classification scheme adopted by the organization.</p>
@@ -582,7 +581,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Information classification</prop>
-            <prop name="number">8.2.3	</prop>
+            <prop name="number">8.2.3</prop>
             <title>Handling of assets</title>
             <desc>
                <p>Procedures for handling assets should be developed and implemented in accordance with the information classification scheme adopted by the organization.</p>
@@ -603,7 +602,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">8.3	</prop>
+         <prop name="number">8.3</prop>
          <title>Media handling</title>
          <stmt name="objective">
             <p>To prevent unauthorized disclosure, modification, removal or destruction of information stored on media.</p>
@@ -611,7 +610,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Media handling</prop>
-            <prop name="number">8.3.1	</prop>
+            <prop name="number">8.3.1</prop>
             <title>Management of removable media</title>
             <desc>
                <p>Procedures should be implemented for the management of removable media in accordance with the classification scheme adopted by the organization.</p>
@@ -635,7 +634,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Media handling</prop>
-            <prop name="number">8.3.2	</prop>
+            <prop name="number">8.3.2</prop>
             <title>Disposal of media</title>
             <desc>
                <p>Media should be disposed of securely when no longer required, using formal procedures.</p>
@@ -658,7 +657,7 @@
          <control type="iso-27002">
             <prop name="category">Asset management</prop>
             <prop name="clause">Media handling</prop>
-            <prop name="number">8.3.3	</prop>
+            <prop name="number">8.3.3</prop>
             <title>Physical media transfer</title>
             <desc>
                <p>Media containing information should be protected against unauthorized access, misuse or corruption during transportation.</p>
@@ -681,10 +680,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">9	</prop>
+      <prop name="number">9</prop>
       <title>Access control</title>
       <catalog type="clause">
-         <prop name="number">9.1	</prop>
+         <prop name="number">9.1</prop>
          <title>Business requirements of access control</title>
          <stmt name="objective">
             <p>To limit access to information and information processing facilities.</p>
@@ -692,7 +691,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">Business requirements of access control</prop>
-            <prop name="number">9.1.1	</prop>
+            <prop name="number">9.1.1</prop>
             <title>Access control policy</title>
             <desc>
                <p>An access control policy should be established, documented and reviewed based on business and information security requirements.</p>
@@ -735,7 +734,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">Business requirements of access control</prop>
-            <prop name="number">9.1.2	</prop>
+            <prop name="number">9.1.2</prop>
             <title>Access to networks and network services</title>
             <desc>
                <p>Users should only be provided with access to the network and network services that they have been specifically authorized to use.</p>
@@ -758,7 +757,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">9.2	</prop>
+         <prop name="number">9.2</prop>
          <title>User access management</title>
          <stmt name="objective">
             <p>To ensure authorized user access and to prevent unauthorized access to systems and services.</p>
@@ -766,7 +765,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">User access management</prop>
-            <prop name="number">9.2.1	</prop>
+            <prop name="number">9.2.1</prop>
             <title>User registration and de-registration</title>
             <desc>
                <p>A formal user registration and de-registration process should be implemented to enable assignment of access rights.</p>
@@ -791,7 +790,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">User access management</prop>
-            <prop name="number">9.2.2	</prop>
+            <prop name="number">9.2.2</prop>
             <title>User access provisioning</title>
             <desc>
                <p>A formal user access provisioning process should be implemented to assign or revoke access rights for all user types to all systems and services.</p>
@@ -815,7 +814,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">User access management</prop>
-            <prop name="number">9.2.3	</prop>
+            <prop name="number">9.2.3</prop>
             <title>Management of privileged access rights</title>
             <desc>
                <p>The allocation and use of privileged access rights should be restricted and controlled.</p>
@@ -840,7 +839,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">User access management</prop>
-            <prop name="number">9.2.4	</prop>
+            <prop name="number">9.2.4</prop>
             <title>Management of secret authentication information of users</title>
             <desc>
                <p>The allocation of secret authentication information should be controlled through a formal management process.</p>
@@ -864,7 +863,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">User access management</prop>
-            <prop name="number">9.2.5	</prop>
+            <prop name="number">9.2.5</prop>
             <title>Review of user access rights</title>
             <desc>
                <p>Asset owners should review users’ access rights at regular intervals.</p>
@@ -886,7 +885,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">User access management</prop>
-            <prop name="number">9.2.6	</prop>
+            <prop name="number">9.2.6</prop>
             <title>Removal or adjustment of access rights</title>
             <desc>
                <p>The access rights of all employees and external party users to information and information processing facilities should be removed upon termination of their employment, contract or agreement, or adjusted upon change.</p>
@@ -907,7 +906,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">9.3	</prop>
+         <prop name="number">9.3</prop>
          <title>User responsibilities</title>
          <stmt name="objective">
             <p>To make users accountable for safeguarding their authentication information.</p>
@@ -915,7 +914,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">User responsibilities</prop>
-            <prop name="number">9.3.1	</prop>
+            <prop name="number">9.3.1</prop>
             <title>Use of secret authentication information</title>
             <desc>
                <p>Users should be required to follow the organization’s practices in the use of secret authentication information.</p>
@@ -945,7 +944,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">9.4	</prop>
+         <prop name="number">9.4</prop>
          <title>System and application access control</title>
          <stmt name="objective">
             <p>To prevent unauthorized access to systems and applications.</p>
@@ -953,7 +952,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">System and application access control</prop>
-            <prop name="number">9.4.1	</prop>
+            <prop name="number">9.4.1</prop>
             <title>Information access restriction</title>
             <desc>
                <p>Access to information and application system functions should be restricted in accordance with the access control policy.</p>
@@ -974,7 +973,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">System and application access control</prop>
-            <prop name="number">9.4.2	</prop>
+            <prop name="number">9.4.2</prop>
             <title>Secure log-on procedures</title>
             <desc>
                <p>Where required by the access control policy, access to systems and applications should be controlled by a secure log-on procedure.</p>
@@ -1010,7 +1009,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">System and application access control</prop>
-            <prop name="number">9.4.3	</prop>
+            <prop name="number">9.4.3</prop>
             <title>Password management system</title>
             <desc>
                <p>Password management systems should be interactive and should ensure quality passwords.</p>
@@ -1036,7 +1035,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">System and application access control</prop>
-            <prop name="number">9.4.4	</prop>
+            <prop name="number">9.4.4</prop>
             <title>Use of privileged utility programs</title>
             <desc>
                <p>The use of utility programs that might be capable of overriding system and application controls should be restricted and tightly controlled.</p>
@@ -1062,7 +1061,7 @@
          <control type="iso-27002">
             <prop name="category">Access control</prop>
             <prop name="clause">System and application access control</prop>
-            <prop name="number">9.4.5	</prop>
+            <prop name="number">9.4.5</prop>
             <title>Access control to program source code</title>
             <desc>
                <p>Access to program source code should be restricted.</p>
@@ -1084,10 +1083,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">10	</prop>
+      <prop name="number">10</prop>
       <title>Cryptography</title>
       <catalog type="clause">
-         <prop name="number">10.1	</prop>
+         <prop name="number">10.1</prop>
          <title>Cryptographic controls</title>
          <stmt name="objective">
             <p>To ensure proper and effective use of cryptography to protect the confidentiality, authenticity and/or integrity of information.</p>
@@ -1095,7 +1094,7 @@
          <control type="iso-27002">
             <prop name="category">Cryptography</prop>
             <prop name="clause">Cryptographic controls</prop>
-            <prop name="number">10.1.1	</prop>
+            <prop name="number">10.1.1</prop>
             <title>Policy on the use of cryptographic controls</title>
             <desc>
                <p>A policy on the use of cryptographic controls for protection of information should be developed and implemented.</p>
@@ -1133,7 +1132,7 @@
          <control type="iso-27002">
             <prop name="category">Cryptography</prop>
             <prop name="clause">Cryptographic controls</prop>
-            <prop name="number">10.1.2	</prop>
+            <prop name="number">10.1.2</prop>
             <title>Key management</title>
             <desc>
                <p>A policy on the use, protection and lifetime of cryptographic keys should be developed and implemented through their whole lifecycle.</p>
@@ -1168,10 +1167,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">11	</prop>
+      <prop name="number">11</prop>
       <title>Physical and environmental security</title>
       <catalog type="clause">
-         <prop name="number">11.1	</prop>
+         <prop name="number">11.1</prop>
          <title>Secure areas</title>
          <stmt name="objective">
             <p>To prevent unauthorized physical access, damage and interference to the organization’s information and information processing facilities.</p>
@@ -1179,7 +1178,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Secure areas</prop>
-            <prop name="number">11.1.1	</prop>
+            <prop name="number">11.1.1</prop>
             <title>Physical security perimeter</title>
             <desc>
                <p>Security perimeters should be defined and used to protect areas that contain either sensitive or critical information and information processing facilities.</p>
@@ -1205,7 +1204,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Secure areas</prop>
-            <prop name="number">11.1.2	</prop>
+            <prop name="number">11.1.2</prop>
             <title>Physical entry controls</title>
             <desc>
                <p>Secure areas should be protected by appropriate entry controls to ensure that only authorized personnel are allowed access.</p>
@@ -1225,7 +1224,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Secure areas</prop>
-            <prop name="number">11.1.3	</prop>
+            <prop name="number">11.1.3</prop>
             <title>Securing offices, rooms and facilities</title>
             <desc>
                <p>Physical security for offices, rooms and facilities should be designed and applied.</p>
@@ -1243,7 +1242,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Secure areas</prop>
-            <prop name="number">11.1.4	</prop>
+            <prop name="number">11.1.4</prop>
             <title>Protecting against external and environmental threats</title>
             <desc>
                <p>Physical protection against natural disasters, malicious attack or accidents should be designed and applied.</p>
@@ -1255,7 +1254,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Secure areas</prop>
-            <prop name="number">11.1.5	</prop>
+            <prop name="number">11.1.5</prop>
             <title>Working in secure areas</title>
             <desc>
                <p>Procedures for working in secure areas should be designed and applied.</p>
@@ -1274,7 +1273,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Secure areas</prop>
-            <prop name="number">11.1.6	</prop>
+            <prop name="number">11.1.6</prop>
             <title>Delivery and loading areas</title>
             <desc>
                <p>Access points such as delivery and loading areas and other points where unauthorized persons could enter the premises should be controlled and, if possible, isolated from information processing facilities to avoid unauthorized access.</p>
@@ -1294,7 +1293,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">11.2	</prop>
+         <prop name="number">11.2</prop>
          <title>Equipment</title>
          <stmt name="objective">
             <p>To prevent loss, damage, theft or compromise of assets and interruption to the organization’s operations.</p>
@@ -1302,7 +1301,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.1	</prop>
+            <prop name="number">11.2.1</prop>
             <title>Equipment siting and protection</title>
             <desc>
                <p>Equipment should be sited and protected to reduce the risks from environmental threats and hazards, and opportunities for unauthorized access.</p>
@@ -1326,7 +1325,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.2	</prop>
+            <prop name="number">11.2.2</prop>
             <title>Supporting utilities</title>
             <desc>
                <p>Equipment should be protected from power failures and other disruptions caused by failures in supporting utilities.</p>
@@ -1349,7 +1348,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.3	</prop>
+            <prop name="number">11.2.3</prop>
             <title>Cabling security</title>
             <desc>
                <p>Power and telecommunications cabling carrying data or supporting information services should be protected from interception, interference or damage.</p>
@@ -1372,7 +1371,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.4	</prop>
+            <prop name="number">11.2.4</prop>
             <title>Equipment maintenance</title>
             <desc>
                <p>Equipment should be correctly maintained to ensure its continued availability and integrity.</p>
@@ -1392,7 +1391,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.5	</prop>
+            <prop name="number">11.2.5</prop>
             <title>Removal of assets</title>
             <desc>
                <p>Equipment, information or software should not be taken off-site without prior authorization.</p>
@@ -1413,7 +1412,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.6	</prop>
+            <prop name="number">11.2.6</prop>
             <title>Security of equipment and assets off-premises</title>
             <desc>
                <p>Security should be applied to off-site assets taking into account the different risks of working outside the organization’s premises.</p>
@@ -1438,7 +1437,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.7	</prop>
+            <prop name="number">11.2.7</prop>
             <title>Secure disposal or re-use of equipment</title>
             <desc>
                <p>All items of equipment containing storage media should be verified to ensure that any sensitive data and licensed software has been removed or securely overwritten prior to disposal or re-use.</p>
@@ -1462,7 +1461,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.8	</prop>
+            <prop name="number">11.2.8</prop>
             <title>Unattended user equipment</title>
             <desc>
                <p>Users should ensure that unattended equipment has appropriate protection.</p>
@@ -1479,7 +1478,7 @@
          <control type="iso-27002">
             <prop name="category">Physical and environmental security</prop>
             <prop name="clause">Equipment</prop>
-            <prop name="number">11.2.9	</prop>
+            <prop name="number">11.2.9</prop>
             <title>Clear desk and clear screen policy</title>
             <desc>
                <p>A clear desk policy for papers and removable storage media and a clear screen policy for information processing facilities should be adopted.</p>
@@ -1501,10 +1500,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">12	</prop>
+      <prop name="number">12</prop>
       <title>Operations security</title>
       <catalog type="clause">
-         <prop name="number">12.1	</prop>
+         <prop name="number">12.1</prop>
          <title>Operational procedures and responsibilities</title>
          <stmt name="objective">
             <p>To ensure correct and secure operations of information processing facilities.</p>
@@ -1512,7 +1511,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Operational procedures and responsibilities</prop>
-            <prop name="number">12.1.1	</prop>
+            <prop name="number">12.1.1</prop>
             <title>Documented operating procedures</title>
             <desc>
                <p>Operating procedures should be documented and made available to all users who need them.</p>
@@ -1538,7 +1537,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Operational procedures and responsibilities</prop>
-            <prop name="number">12.1.2	</prop>
+            <prop name="number">12.1.2</prop>
             <title>Change management</title>
             <desc>
                <p>Changes to the organization, business processes, information processing facilities and systems that affect information security should be controlled.</p>
@@ -1564,7 +1563,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Operational procedures and responsibilities</prop>
-            <prop name="number">12.1.3	</prop>
+            <prop name="number">12.1.3</prop>
             <title>Capacity management</title>
             <desc>
                <p>The use of resources should be monitored, tuned and projections made of future capacity requirements to ensure the required system performance.</p>
@@ -1590,7 +1589,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Operational procedures and responsibilities</prop>
-            <prop name="number">12.1.4	</prop>
+            <prop name="number">12.1.4</prop>
             <title>Separation of development, testing and operational environments</title>
             <desc>
                <p>Development, testing, and operational environments should be separated to reduce the risks of unauthorized access or changes to the operational environment.</p>
@@ -1616,7 +1615,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">12.2	</prop>
+         <prop name="number">12.2</prop>
          <title>Protection from malware</title>
          <stmt name="objective">
             <p>To ensure that information and information processing facilities are protected against malware.</p>
@@ -1624,7 +1623,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Protection from malware</prop>
-            <prop name="number">12.2.1	</prop>
+            <prop name="number">12.2.1</prop>
             <title>Controls against malware</title>
             <desc>
                <p>Detection, prevention and recovery controls to protect against malware should be implemented, combined with appropriate user awareness.</p>
@@ -1660,7 +1659,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">12.3	</prop>
+         <prop name="number">12.3</prop>
          <title>Backup</title>
          <stmt name="objective">
             <p>To protect against loss of data.</p>
@@ -1668,7 +1667,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Backup</prop>
-            <prop name="number">12.3.1	</prop>
+            <prop name="number">12.3.1</prop>
             <title>Information backup</title>
             <desc>
                <p>Backup copies of information, software and system images should be taken and tested regularly in accordance with an agreed backup policy.</p>
@@ -1693,7 +1692,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">12.4	</prop>
+         <prop name="number">12.4</prop>
          <title>Logging and monitoring</title>
          <stmt name="objective">
             <p>To record events and generate evidence.</p>
@@ -1701,7 +1700,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Logging and monitoring</prop>
-            <prop name="number">12.4.1	</prop>
+            <prop name="number">12.4.1</prop>
             <title>Event logging</title>
             <desc>
                <p>Event logs recording user activities, exceptions, faults and information security events should be produced, kept and regularly reviewed.</p>
@@ -1734,7 +1733,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Logging and monitoring</prop>
-            <prop name="number">12.4.2	</prop>
+            <prop name="number">12.4.2</prop>
             <title>Protection of log information</title>
             <desc>
                <p>Logging facilities and log information should be protected against tampering and unauthorized access.</p>
@@ -1756,7 +1755,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Logging and monitoring</prop>
-            <prop name="number">12.4.3	</prop>
+            <prop name="number">12.4.3</prop>
             <title>Administrator and operator logs</title>
             <desc>
                <p>System administrator and system operator activities should be logged and the logs protected and regularly reviewed.</p>
@@ -1771,7 +1770,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Logging and monitoring</prop>
-            <prop name="number">12.4.4	</prop>
+            <prop name="number">12.4.4</prop>
             <title>Clock synchronisation</title>
             <desc>
                <p>The clocks of all relevant information processing systems within an organization or security domain should be synchronised to a single reference time source.</p>
@@ -1786,7 +1785,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">12.5	</prop>
+         <prop name="number">12.5</prop>
          <title>Control of operational software</title>
          <stmt name="objective">
             <p>To ensure the integrity of operational systems.</p>
@@ -1794,7 +1793,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Control of operational software</prop>
-            <prop name="number">12.5.1	</prop>
+            <prop name="number">12.5.1</prop>
             <title>Installation of software on operational systems</title>
             <desc>
                <p>Procedures should be implemented to control the installation of software on operational systems.</p>
@@ -1819,7 +1818,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">12.6	</prop>
+         <prop name="number">12.6</prop>
          <title>Technical vulnerability management</title>
          <stmt name="objective">
             <p>To prevent exploitation of technical vulnerabilities.</p>
@@ -1827,7 +1826,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Technical vulnerability management</prop>
-            <prop name="number">12.6.1	</prop>
+            <prop name="number">12.6.1</prop>
             <title>Management of technical vulnerabilities</title>
             <desc>
                <p>Information about technical vulnerabilities of information systems being used should be obtained in a timely fashion, the organization’s exposure to such vulnerabilities evaluated and appropriate measures taken to address the associated risk.</p>
@@ -1865,7 +1864,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Technical vulnerability management</prop>
-            <prop name="number">12.6.2	</prop>
+            <prop name="number">12.6.2</prop>
             <title>Restrictions on software installation</title>
             <desc>
                <p>Rules governing the installation of software by users should be established and implemented.</p>
@@ -1880,7 +1879,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">12.7	</prop>
+         <prop name="number">12.7</prop>
          <title>Information systems audit considerations</title>
          <stmt name="objective">
             <p>To minimise the impact of audit activities on operational systems.</p>
@@ -1888,7 +1887,7 @@
          <control type="iso-27002">
             <prop name="category">Operations security</prop>
             <prop name="clause">Information systems audit considerations</prop>
-            <prop name="number">12.7.1	</prop>
+            <prop name="number">12.7.1</prop>
             <title>Information systems audit controls</title>
             <desc>
                <p>Audit requirements and activities involving verification of operational systems should be carefully planned and agreed to minimize disruptions to business processes.</p>
@@ -1909,10 +1908,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">13	</prop>
+      <prop name="number">13</prop>
       <title>Communications security</title>
       <catalog type="clause">
-         <prop name="number">13.1	</prop>
+         <prop name="number">13.1</prop>
          <title>Network security management</title>
          <stmt name="objective">
             <p>To ensure the protection of information in networks and its supporting information processing facilities.</p>
@@ -1920,7 +1919,7 @@
          <control type="iso-27002">
             <prop name="category">Communications security</prop>
             <prop name="clause">Network security management</prop>
-            <prop name="number">13.1.1	</prop>
+            <prop name="number">13.1.1</prop>
             <title>Network controls</title>
             <desc>
                <p>Networks should be managed and controlled to protect information in systems and applications.</p>
@@ -1944,7 +1943,7 @@
          <control type="iso-27002">
             <prop name="category">Communications security</prop>
             <prop name="clause">Network security management</prop>
-            <prop name="number">13.1.2	</prop>
+            <prop name="number">13.1.2</prop>
             <title>Security of network services</title>
             <desc>
                <p>Security mechanisms, service levels and management requirements of all network services should be identified and included in network services agreements, whether these services are provided in-house or outsourced.</p>
@@ -1966,7 +1965,7 @@
          <control type="iso-27002">
             <prop name="category">Communications security</prop>
             <prop name="clause">Network security management</prop>
-            <prop name="number">13.1.3	</prop>
+            <prop name="number">13.1.3</prop>
             <title>Segregation in networks</title>
             <desc>
                <p>Groups of information services, users and information systems should be segregated on networks.</p>
@@ -1983,7 +1982,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">13.2	</prop>
+         <prop name="number">13.2</prop>
          <title>Information transfer</title>
          <stmt name="objective">
             <p>To maintain the security of information transferred within an organization and with any external entity.</p>
@@ -1991,7 +1990,7 @@
          <control type="iso-27002">
             <prop name="category">Communications security</prop>
             <prop name="clause">Information transfer</prop>
-            <prop name="number">13.2.1	</prop>
+            <prop name="number">13.2.1</prop>
             <title>Information transfer policies and procedures</title>
             <desc>
                <p>Formal transfer policies, procedures and controls should be in place to protect the transfer of information through the use of all types of communication facilities.</p>
@@ -2028,7 +2027,7 @@
          <control type="iso-27002">
             <prop name="category">Communications security</prop>
             <prop name="clause">Information transfer</prop>
-            <prop name="number">13.2.2	</prop>
+            <prop name="number">13.2.2</prop>
             <title>Agreements on information transfer</title>
             <desc>
                <p>Agreements should address the secure transfer of business information between the organization and external parties.</p>
@@ -2058,7 +2057,7 @@
          <control type="iso-27002">
             <prop name="category">Communications security</prop>
             <prop name="clause">Information transfer</prop>
-            <prop name="number">13.2.3	</prop>
+            <prop name="number">13.2.3</prop>
             <title>Electronic messaging</title>
             <desc>
                <p>Information involved in electronic messaging should be appropriately protected.</p>
@@ -2081,7 +2080,7 @@
          <control type="iso-27002">
             <prop name="category">Communications security</prop>
             <prop name="clause">Information transfer</prop>
-            <prop name="number">13.2.4	</prop>
+            <prop name="number">13.2.4</prop>
             <title>Confidentiality or non-disclosure agreements</title>
             <desc>
                <p>Requirements for confidentiality or non-disclosure agreements reflecting the organization’s needs for the protection of information should be identified, regularly reviewed and documented.</p>
@@ -2112,10 +2111,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">14	</prop>
+      <prop name="number">14</prop>
       <title>System acquisition, development and maintenance</title>
       <catalog type="clause">
-         <prop name="number">14.1	</prop>
+         <prop name="number">14.1</prop>
          <title>Security requirements of information systems</title>
          <stmt name="objective">
             <p>To ensure that information security is an integral part of information systems across the entire lifecycle. This also includes the requirements for information systems which provide services over public networks.</p>
@@ -2123,7 +2122,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security requirements of information systems</prop>
-            <prop name="number">14.1.1	</prop>
+            <prop name="number">14.1.1</prop>
             <title>Information security requirements analysis and specification</title>
             <desc>
                <p>The information security related requirements should be included in the requirements for new information systems or enhancements to existing information systems.</p>
@@ -2153,7 +2152,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security requirements of information systems</prop>
-            <prop name="number">14.1.2	</prop>
+            <prop name="number">14.1.2</prop>
             <title>Securing application services on public networks</title>
             <desc>
                <p>Information involved in application services passing over public networks should be protected from fraudulent activity, contract dispute and unauthorized disclosure and modification.</p>
@@ -2187,7 +2186,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security requirements of information systems</prop>
-            <prop name="number">14.1.3	</prop>
+            <prop name="number">14.1.3</prop>
             <title>Protecting application services transactions</title>
             <desc>
                <p>Information involved in application service transactions should be protected to prevent incomplete transmission, mis-routing, unauthorized message alteration, unauthorized disclosure, unauthorized message duplication or replay.</p>
@@ -2215,7 +2214,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">14.2	</prop>
+         <prop name="number">14.2</prop>
          <title>Security in development and support processes</title>
          <stmt name="objective">
             <p>To ensure that information security is designed and implemented within the development lifecycle of information systems.</p>
@@ -2223,7 +2222,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.1	</prop>
+            <prop name="number">14.2.1</prop>
             <title>Secure development policy</title>
             <desc>
                <p>Rules for the development of software and systems should be established and applied to developments within the organization.</p>
@@ -2254,7 +2253,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.2	</prop>
+            <prop name="number">14.2.2</prop>
             <title>System change control procedures</title>
             <desc>
                <p>Changes to systems within the development lifecycle should be controlled by the use of formal change control procedures.</p>
@@ -2287,7 +2286,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.3	</prop>
+            <prop name="number">14.2.3</prop>
             <title>Technical review of applications after operating platform changes</title>
             <desc>
                <p>When operating platforms are changed, business critical applications should be reviewed and tested to ensure there is no adverse impact on organizational operations or security.</p>
@@ -2307,7 +2306,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.4	</prop>
+            <prop name="number">14.2.4</prop>
             <title>Restrictions on changes to software packages</title>
             <desc>
                <p>Modifications to software packages should be discouraged, limited to necessary changes and all changes should be strictly controlled.</p>
@@ -2327,7 +2326,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.5	</prop>
+            <prop name="number">14.2.5</prop>
             <title>Secure system engineering principles</title>
             <desc>
                <p>Principles for engineering secure systems should be established, documented, maintained and applied to any information system implementation efforts.</p>
@@ -2344,7 +2343,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.6	</prop>
+            <prop name="number">14.2.6</prop>
             <title>Secure development environment</title>
             <desc>
                <p>Organizations should establish and appropriately protect secure development environments for system development and integration efforts that cover the entire system development lifecycle.</p>
@@ -2370,7 +2369,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.7	</prop>
+            <prop name="number">14.2.7</prop>
             <title>Outsourced development</title>
             <desc>
                <p>The organization should supervise and monitor the activity of outsourced system development.</p>
@@ -2397,7 +2396,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.8	</prop>
+            <prop name="number">14.2.8</prop>
             <title>System security testing</title>
             <desc>
                <p>Testing of security functionality should be carried out during development.</p>
@@ -2409,7 +2408,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Security in development and support processes</prop>
-            <prop name="number">14.2.9	</prop>
+            <prop name="number">14.2.9</prop>
             <title>System acceptance testing</title>
             <desc>
                <p>Acceptance testing programs and related criteria should be established for new information systems, upgrades and new versions.</p>
@@ -2421,7 +2420,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">14.3	</prop>
+         <prop name="number">14.3</prop>
          <title>Test data</title>
          <stmt name="objective">
             <p>To ensure the protection of data used for testing.</p>
@@ -2429,7 +2428,7 @@
          <control type="iso-27002">
             <prop name="category">System acquisition, development and maintenance</prop>
             <prop name="clause">Test data</prop>
-            <prop name="number">14.3.1	</prop>
+            <prop name="number">14.3.1</prop>
             <title>Protection of test data</title>
             <desc>
                <p>Test data should be selected carefully, protected and controlled.</p>
@@ -2451,10 +2450,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">15	</prop>
+      <prop name="number">15</prop>
       <title>Supplier relationships</title>
       <catalog type="clause">
-         <prop name="number">15.1	</prop>
+         <prop name="number">15.1</prop>
          <title>Information security in supplier relationships</title>
          <stmt name="objective">
             <p>To ensure protection of the organization’s assets that is accessible by suppliers.</p>
@@ -2462,7 +2461,7 @@
          <control type="iso-27002">
             <prop name="category">Supplier relationships</prop>
             <prop name="clause">Information security in supplier relationships</prop>
-            <prop name="number">15.1.1	</prop>
+            <prop name="number">15.1.1</prop>
             <title>Information security policy for supplier relationships</title>
             <desc>
                <p>Information security requirements for mitigating the risks associated with supplier’s access to the organization’s assets should be agreed with the supplier and documented.</p>
@@ -2492,7 +2491,7 @@
          <control type="iso-27002">
             <prop name="category">Supplier relationships</prop>
             <prop name="clause">Information security in supplier relationships</prop>
-            <prop name="number">15.1.2	</prop>
+            <prop name="number">15.1.2</prop>
             <title>Addressing security within supplier agreements</title>
             <desc>
                <p>All relevant information security requirements should be established and agreed with each supplier that may access, process, store, communicate, or provide IT infrastructure components for, the organization’s information.</p>
@@ -2527,7 +2526,7 @@
          <control type="iso-27002">
             <prop name="category">Supplier relationships</prop>
             <prop name="clause">Information security in supplier relationships</prop>
-            <prop name="number">15.1.3	</prop>
+            <prop name="number">15.1.3</prop>
             <title>Information and communication technology supply chain</title>
             <desc>
                <p>Agreements with suppliers should include requirements to address the information security risks associated with information and communications technology services and product supply chain.</p>
@@ -2554,7 +2553,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">15.2	</prop>
+         <prop name="number">15.2</prop>
          <title>Supplier service delivery management</title>
          <stmt name="objective">
             <p>To maintain an agreed level of information security and service delivery in line with supplier agreements.</p>
@@ -2562,7 +2561,7 @@
          <control type="iso-27002">
             <prop name="category">Supplier relationships</prop>
             <prop name="clause">Supplier service delivery management</prop>
-            <prop name="number">15.2.1	</prop>
+            <prop name="number">15.2.1</prop>
             <title>Monitoring and review of supplier services</title>
             <desc>
                <p>Organizations should regularly monitor, review and audit supplier service delivery.</p>
@@ -2587,7 +2586,7 @@
          <control type="iso-27002">
             <prop name="category">Supplier relationships</prop>
             <prop name="clause">Supplier service delivery management</prop>
-            <prop name="number">15.2.2	</prop>
+            <prop name="number">15.2.2</prop>
             <title>Managing changes to supplier services</title>
             <desc>
                <p>Changes to the provision of services by suppliers, including maintaining and improving existing information security policies, procedures and controls, should be managed, taking account of the criticality of business information, systems and processes involved and re-assessment of risks.</p>
@@ -2619,10 +2618,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">16	</prop>
+      <prop name="number">16</prop>
       <title>Information security incident management</title>
       <catalog type="clause">
-         <prop name="number">16.1	</prop>
+         <prop name="number">16.1</prop>
          <title>Management of information security incidents and improvements</title>
          <stmt name="objective">
             <p>To ensure a consistent and effective approach to the management of information security incidents, including communication on security events and weaknesses.</p>
@@ -2630,7 +2629,7 @@
          <control type="iso-27002">
             <prop name="category">Information security incident management</prop>
             <prop name="clause">Management of information security incidents and improvements</prop>
-            <prop name="number">16.1.1	</prop>
+            <prop name="number">16.1.1</prop>
             <title>Responsibilities and procedures</title>
             <desc>
                <p>Management responsibilities and procedures should be established to ensure a quick, effective and orderly response to information security incidents.</p>
@@ -2671,7 +2670,7 @@
          <control type="iso-27002">
             <prop name="category">Information security incident management</prop>
             <prop name="clause">Management of information security incidents and improvements</prop>
-            <prop name="number">16.1.2	</prop>
+            <prop name="number">16.1.2</prop>
             <title>Reporting information security events</title>
             <desc>
                <p>Information security events should be reported through appropriate management channels as quickly as possible.</p>
@@ -2697,7 +2696,7 @@
          <control type="iso-27002">
             <prop name="category">Information security incident management</prop>
             <prop name="clause">Management of information security incidents and improvements</prop>
-            <prop name="number">16.1.3	</prop>
+            <prop name="number">16.1.3</prop>
             <title>Reporting information security weaknesses</title>
             <desc>
                <p>Employees and contractors using the organization’s information systems and services should be required to note and report any observed or suspected information security weaknesses in systems or services.</p>
@@ -2712,7 +2711,7 @@
          <control type="iso-27002">
             <prop name="category">Information security incident management</prop>
             <prop name="clause">Management of information security incidents and improvements</prop>
-            <prop name="number">16.1.4	</prop>
+            <prop name="number">16.1.4</prop>
             <title>Assessment of and decision on information security events</title>
             <desc>
                <p>Information security events should be assessed and it should be decided if they are to be classified as information security incidents.</p>
@@ -2726,7 +2725,7 @@
          <control type="iso-27002">
             <prop name="category">Information security incident management</prop>
             <prop name="clause">Management of information security incidents and improvements</prop>
-            <prop name="number">16.1.5	</prop>
+            <prop name="number">16.1.5</prop>
             <title>Response to information security incidents</title>
             <desc>
                <p>Information security incidents should be responded to in accordance with the documented procedures.</p>
@@ -2752,7 +2751,7 @@
          <control type="iso-27002">
             <prop name="category">Information security incident management</prop>
             <prop name="clause">Management of information security incidents and improvements</prop>
-            <prop name="number">16.1.6	</prop>
+            <prop name="number">16.1.6</prop>
             <title>Learning from information security incidents</title>
             <desc>
                <p>Knowledge gained from analysing and resolving information security incidents should be used to reduce the likelihood or impact of future incidents.</p>
@@ -2768,7 +2767,7 @@
          <control type="iso-27002">
             <prop name="category">Information security incident management</prop>
             <prop name="clause">Management of information security incidents and improvements</prop>
-            <prop name="number">16.1.7	</prop>
+            <prop name="number">16.1.7</prop>
             <title>Collection of evidence</title>
             <desc>
                <p>The organization should define and apply procedures for the identification, collection, acquisition and preservation of information, which can serve as evidence.</p>
@@ -2797,10 +2796,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">17	</prop>
+      <prop name="number">17</prop>
       <title>Information security aspects of business continuity management</title>
       <catalog type="clause">
-         <prop name="number">17.1	</prop>
+         <prop name="number">17.1</prop>
          <title>Information security continuity</title>
          <stmt name="objective">
             <p>Information security continuity should be embedded in the organization’s business continuity management systems.</p>
@@ -2808,7 +2807,7 @@
          <control type="iso-27002">
             <prop name="category">Information security aspects of business continuity management</prop>
             <prop name="clause">Information security continuity</prop>
-            <prop name="number">17.1.1	</prop>
+            <prop name="number">17.1.1</prop>
             <title>Planning information security continuity</title>
             <desc>
                <p>The organization should determine its requirements for information security and the continuity of information security management in adverse situations, e.g. during a crisis or disaster.</p>
@@ -2825,7 +2824,7 @@
          <control type="iso-27002">
             <prop name="category">Information security aspects of business continuity management</prop>
             <prop name="clause">Information security continuity</prop>
-            <prop name="number">17.1.2	</prop>
+            <prop name="number">17.1.2</prop>
             <title>Implementing information security continuity</title>
             <desc>
                <p>The organization should establish, document, implement and maintain processes, procedures and controls to ensure the required level of continuity for information security during an adverse situation.</p>
@@ -2852,7 +2851,7 @@
          <control type="iso-27002">
             <prop name="category">Information security aspects of business continuity management</prop>
             <prop name="clause">Information security continuity</prop>
-            <prop name="number">17.1.3	</prop>
+            <prop name="number">17.1.3</prop>
             <title>Verify, review and evaluate information security continuity</title>
             <desc>
                <p>The organization should verify the established and implemented information security continuity controls at regular intervals in order to ensure that they are valid and effective during adverse situations.</p>
@@ -2871,7 +2870,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">17.2	</prop>
+         <prop name="number">17.2</prop>
          <title>Redundancies</title>
          <stmt name="objective">
             <p>To ensure availability of information processing facilities.</p>
@@ -2879,7 +2878,7 @@
          <control type="iso-27002">
             <prop name="category">Information security aspects of business continuity management</prop>
             <prop name="clause">Redundancies</prop>
-            <prop name="number">17.2.1	</prop>
+            <prop name="number">17.2.1</prop>
             <title>Availability of information processing facilities</title>
             <desc>
                <p>Information processing facilities should be implemented with redundancy sufficient to meet availability requirements.</p>
@@ -2895,10 +2894,10 @@
       </catalog>
    </catalog>
    <catalog type="control-category">
-      <prop name="number">18	</prop>
+      <prop name="number">18</prop>
       <title>Compliance</title>
       <catalog type="clause">
-         <prop name="number">18.1	</prop>
+         <prop name="number">18.1</prop>
          <title>Compliance with legal and contractual requirements</title>
          <stmt name="objective">
             <p>To avoid breaches of legal, statutory, regulatory or contractual obligations related to information security and of any security requirements.</p>
@@ -2906,7 +2905,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Compliance with legal and contractual requirements</prop>
-            <prop name="number">18.1.1	</prop>
+            <prop name="number">18.1.1</prop>
             <title>Identification of applicable legislation and contractual requirements</title>
             <desc>
                <p>All relevant legislative statutory, regulatory, contractual requirements and the organization’s approach to meet these requirements should be explicitly identified, documented and kept up to date for each information system and the organization.</p>
@@ -2919,7 +2918,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Compliance with legal and contractual requirements</prop>
-            <prop name="number">18.1.2	</prop>
+            <prop name="number">18.1.2</prop>
             <title>Intellectual property rights</title>
             <desc>
                <p>Appropriate procedures should be implemented to ensure compliance with legislative, regulatory and contractual requirements related to intellectual property rights and use of proprietary software products.</p>
@@ -2950,7 +2949,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Compliance with legal and contractual requirements</prop>
-            <prop name="number">18.1.3	</prop>
+            <prop name="number">18.1.3</prop>
             <title>Protection of records</title>
             <desc>
                <p>Records should be protected from loss, destruction, falsification, unauthorized access and unauthorized release, in accordance with legislatory, regulatory, contractual and business requirements.</p>
@@ -2976,7 +2975,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Compliance with legal and contractual requirements</prop>
-            <prop name="number">18.1.4	</prop>
+            <prop name="number">18.1.4</prop>
             <title>Privacy and protection of personally identifiable information</title>
             <desc>
                <p>Privacy and protection of personally identifiable information should be ensured as required in relevant legislation and regulation where applicable.</p>
@@ -2992,7 +2991,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Compliance with legal and contractual requirements</prop>
-            <prop name="number">18.1.5	</prop>
+            <prop name="number">18.1.5</prop>
             <title>Regulation of cryptographic controls</title>
             <desc>
                <p>Cryptographic controls should be used in compliance with all relevant agreements, legislation and regulations.</p>
@@ -3010,7 +3009,7 @@
          </control>
       </catalog>
       <catalog type="clause">
-         <prop name="number">18.2	</prop>
+         <prop name="number">18.2</prop>
          <title>Information security reviews</title>
          <stmt name="objective">
             <p>To ensure that information security is implemented and operated in accordance with the organizational policies and procedures.</p>
@@ -3018,7 +3017,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Information security reviews</prop>
-            <prop name="number">18.2.1	</prop>
+            <prop name="number">18.2.1</prop>
             <title>Independent review of information security</title>
             <desc>
                <p>The organization’s approach to managing information security and its implementation (i.e. control objectives, controls, policies, processes and procedures for information security) should be reviewed independently at planned intervals or when significant changes occur.</p>
@@ -3036,7 +3035,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Information security reviews</prop>
-            <prop name="number">18.2.2	</prop>
+            <prop name="number">18.2.2</prop>
             <title>Compliance with security policies and standards</title>
             <desc>
                <p>Managers should regularly review the compliance of information processing and procedures within their area of responsibility with the appropriate security policies, standards and any other security requirements.</p>
@@ -3059,7 +3058,7 @@
          <control type="iso-27002">
             <prop name="category">Compliance</prop>
             <prop name="clause">Information security reviews</prop>
-            <prop name="number">18.2.3	</prop>
+            <prop name="number">18.2.3</prop>
             <title>Technical compliance review</title>
             <desc>
                <p>Information systems should be regularly reviewed for compliance with the organization’s information security policies and standards.</p>

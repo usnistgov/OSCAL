@@ -15,7 +15,7 @@
   <xsl:template match="/">
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
     <xsl:processing-instruction name="xml-model">href="../lib/strawman.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
+    <!--<xsl:processing-instruction name="xml-model">href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
     
     <xsl:text>&#xA;</xsl:text>
     <catalog>
@@ -130,7 +130,7 @@
     <xsl:analyze-string select="." regex="^[\d\s\.]+">
       <xsl:matching-substring>
         <prop name="number">
-          <xsl:value-of select="."/>
+          <xsl:value-of select="normalize-space(.)"/>
         </prop>
       </xsl:matching-substring>
       <xsl:non-matching-substring>
