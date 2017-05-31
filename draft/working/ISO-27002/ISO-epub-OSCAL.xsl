@@ -50,10 +50,10 @@
           <xsl:for-each-group select="$controls" group-starting-with="h3">
             <control type="iso-27002">
               <prop name="category">
-                <xsl:value-of select="$category-head/replace(normalize-space(),'^[\d\. ]+','')"/>
+                <xsl:value-of select="$category-head/replace(normalize-space(),'^[\d\s\.]+','')"/>
               </prop>
               <prop name="clause">
-                <xsl:value-of select="$clause-head/replace(normalize-space(),'^[\d\. ]+','')"/>
+                <xsl:value-of select="$clause-head/replace(normalize-space(),'^[\d\s\.]+','')"/>
               </prop>
               <xsl:variable name="head" select="current-group()/self::h3"/>
               <xsl:apply-templates select="$head"/>
@@ -127,7 +127,7 @@
     </xsl:template>
     
   <xsl:template match="h1 | h2 | h3" mode="#all">
-    <xsl:analyze-string select="." regex="^[\d\. ]+">
+    <xsl:analyze-string select="." regex="^[\d\s\.]+">
       <xsl:matching-substring>
         <prop name="number">
           <xsl:value-of select="."/>

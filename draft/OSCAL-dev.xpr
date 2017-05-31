@@ -10,6 +10,21 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/ISO-27002/ISO-epub-OSCAL.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>ISO 27702 EPUB to OSCAL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/SP800-53-mapping/sp800-53-strawman.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -170,7 +185,7 @@
                                     <String>${currentFileURL}</String>
                                 </field>
                                 <field name="inputXMLURL">
-                                    <String>${pdu}/working/ISO/Untitled-43.html</String>
+                                    <String>${pdu}/working/ISO-27002/Untitled-43.html</String>
                                 </field>
                                 <field name="defaultScenario">
                                     <Boolean>false</Boolean>
