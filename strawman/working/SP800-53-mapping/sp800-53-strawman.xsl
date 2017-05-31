@@ -14,15 +14,21 @@
   <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement"/>
   
   <xsl:output indent="yes"/>
+  
   <xsl:template match="feed:controls">
-    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="strawman.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="../lib/strawman.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <!--<xsl:processing-instruction name="xml-model">href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
     
     <xsl:text>&#xA;</xsl:text>
     <catalog>
-      <xsl:namespace name="xlink">https://www.w3.org/TR/xlink/</xsl:namespace>
-      <xsl:apply-templates/>
+      <title>NIST SP800-53</title>
+      <xsl:for-each-group select="feed:control" group-by="family">
+        <catalog>
+          <title><xsl:value-of select="current-grouping-key()"/></title>
+          <xsl:apply-templates select="current-group()"/>
+        </catalog>
+      </xsl:for-each-group>
     </catalog>
   </xsl:template>
   
@@ -40,7 +46,10 @@
     </xsl:element>
   </xsl:template>
   
-  <xsl:template match="control-class | family | number">
+  <!-- Accounted for by 'div' grouping. -->
+  <xsl:template match="family"/>
+  
+  <xsl:template match="control-class | number">
     <prop name="{name()}">
       <xsl:apply-templates/>
     </prop>
@@ -61,7 +70,14 @@
     </group>
   </xsl:template>
   
-  <xsl:template match="description | supplemental-guidance | objective | decision">
+  <xsl:template match="description">
+    <desc>
+      <xsl:apply-templates select="@*" mode="asElement"/>
+      <xsl:apply-templates/>
+    </desc>
+  </xsl:template>
+  
+  <xsl:template match="supplemental-guidance | objective | decision">
     <stmt name="{name()}">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
@@ -101,11 +117,14 @@
   </xsl:template>
 
   <xsl:template match="reference">
-    <std><!-- NISO STS -->
-      <xsl:apply-templates select="@href"/>
-      <!--<xsl:comment> or STS &lt;std> ... </xsl:comment>-->
-      <xsl:apply-templates/>
-    </std>
+    <ref>
+      <std>
+        <!-- NISO STS -->
+        <xsl:apply-templates select="@href"/>
+        <!--<xsl:comment> or STS &lt;std> ... </xsl:comment>-->
+        <xsl:apply-templates/>
+      </std>
+    </ref>
   </xsl:template>
   
   <xsl:template match="@href">
@@ -131,7 +150,7 @@
     </p>
   </xsl:template>
   
-  <xsl:template match="html:ol">
+  <!--<xsl:template match="html:ol">
     <list list-type="ordered">
       <xsl:apply-templates/>
     </list>
@@ -141,21 +160,27 @@
   <xsl:template match="html:li">
     <list-item>
       <p>
-        <!--<xsl:copy-of select="@class"/>-->
+        <!-\-<xsl:copy-of select="@class"/>-\->
         <xsl:apply-templates select="node() except html:ol"/>
       </p>
-      <!-- safe since in the input, nested html lists are always at the ends of their items. -->
+      <!-\- safe since in the input, nested html lists are always at the ends of their items. -\->
       <xsl:apply-templates select="html:ol"/>
     </list-item>
   </xsl:template>
 
-  <!-- Sorry ... -->
+  <!-\- Sorry ... -\->
   <xsl:template match="html:em">
     <italic>
       <xsl:apply-templates/>
     </italic>
-  </xsl:template>
+  </xsl:template>-->
   
+  <xsl:template match="html:*">
+    <xsl:element name="{local-name()}">
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="*">
     <xsl:message>
       <xsl:value-of select="name()"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="18.1">
+<project version="19.0">
     <meta>
         <filters directoryPatterns="" filePatterns="OSCAL-dev.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="18.1" xml:space="preserve">
+            <serialized version="19.0" xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
                         <String>scenario.associations</String>
@@ -25,17 +25,30 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>Working/SP800-53-mapping/sp800-53-strawman.xsl</String>
+                                    <String>working/ISO/ISO-epub-OSCAL.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>800-53A-objectives to OSCAL</String>
-                                        <String>800-53-controls to OSCAL</String>
+                                        <String>ISO 27702 EPUB to OSCAL</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>Working/SP800-53-mapping/sp800-53-strawman.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>800-53-controls to OSCAL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
                                         <String>XML</String>
                                     </list>
                                 </field>
@@ -68,10 +81,10 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>${pdu}/Working/SP800-53-mapping/sp800-53-strawman.xsl</String>
+                                    <String>${pdu}/working/SP800-53-mapping/sp800-53-strawman.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
-                                    <String>${pdu}/Sources/800-53/800-53-controls.xml</String>
+                                    <String>${pdu}/sources/800-53/800-53-controls.xml</String>
                                 </field>
                                 <field name="defaultScenario">
                                     <Boolean>false</Boolean>
@@ -89,10 +102,10 @@
                                     <Boolean>false</Boolean>
                                 </field>
                                 <field name="outputFile">
-                                    <File>${pd}/Working/SP800-53-mapping/800-53-controls-OSCAL.xml</File>
+                                    <File>${pd}/working/SP800-53-mapping/800-53-controls-OSCAL.xml</File>
                                 </field>
                                 <field name="outputResource">
-                                    <String>${pd}/Working/SP800-53-mapping/800-53-controls-OSCAL.xml</String>
+                                    <String>${pd}/working/SP800-53-mapping/800-53-controls-OSCAL.xml</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
@@ -136,7 +149,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>800-53A-objectives to OSCAL</String>
+                                    <String>ISO 27702 EPUB to OSCAL</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -154,10 +167,10 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>${pdu}/Working/SP800-53-mapping/sp800-53-strawman.xsl</String>
+                                    <String>${currentFileURL}</String>
                                 </field>
                                 <field name="inputXMLURL">
-                                    <String>${pdu}/Sources/800-53/800-53A-objectives.xml</String>
+                                    <String>${pdu}/working/ISO/Untitled-43.html</String>
                                 </field>
                                 <field name="defaultScenario">
                                     <Boolean>false</Boolean>
@@ -175,10 +188,10 @@
                                     <Boolean>false</Boolean>
                                 </field>
                                 <field name="outputFile">
-                                    <File>${pd}/Working/SP800-53-mapping/800-53A-objectives-OSCAL.xml</File>
+                                    <File>iso-27002-OSCAL.xml</File>
                                 </field>
                                 <field name="outputResource">
-                                    <String>${pd}/Working/SP800-53-mapping/800-53A-objectives-OSCAL.xml</String>
+                                    <String>iso-27002-OSCAL.xml</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>

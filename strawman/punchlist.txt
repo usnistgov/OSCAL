@@ -1,12 +1,21 @@
 Issues / questions ISO 27001/2 analysis
 
-* Information capture options
+x Information capture options (we'll start with EPUB)
+  David inquiring re: ISO STS option
 
-  Scrape (PDF), EPUB, or STS?
-  (Note that we can use mocked up or obfuscated data for demo)
+x Surrounding materials (intro/front matter etc etc) - out of scope? (yes, for now: DW)
 
-* Walkthrough? Would love to learn what team has learned about ISO 27001
+x 'description' will be normative - every control must have this element
+x add control/@type
+x so 'control' has at least (title, description)
+x map ISO stuff in!
+x We need some sort of (nested) div structure for document structure
+  e.g. clause, family
 
-* Surrounding materials (intro/front matter etc etc) - out of scope?
+o 'preamble' section including declarations
+   including constraints on properties
+     (make these OSCAL controls?)
 
-* Discussion of NISO STS (alignment)
+o merge 'implementation' sections from 800-53A into draft control
+
+

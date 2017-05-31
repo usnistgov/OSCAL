@@ -10,3 +10,4 @@ stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           columns, 20);
  }
 
+desc:before { content: 'description' }
