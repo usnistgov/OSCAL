@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<declarations>
+  
+  <control-spec type="control">
+    <required-prop name="boo">
+      <regex>(AB|YZ)\d{2}</regex>
+    </required-prop>
+    <optional-prop name="yowza">
+      <value>1</value>
+      <value>two</value>
+      <value>Trois</value>
+    </optional-prop>
+    <required-stmt name="ferreal"/>
+    <optional-stmt name="nada"/>
+    
+  </control-spec>
+</declarations>

@@ -24,10 +24,10 @@
     <catalog>
       <title>NIST SP800-53</title>
       <xsl:for-each-group select="feed:control" group-by="family">
-        <catalog>
+        <group type="family">
           <title><xsl:value-of select="current-grouping-key()"/></title>
           <xsl:apply-templates select="current-group()"/>
-        </catalog>
+        </group>
       </xsl:for-each-group>
     </catalog>
   </xsl:template>
@@ -63,11 +63,29 @@
     <xsl:attribute name="no"><xsl:value-of select="."/></xsl:attribute>
   </xsl:template>-->
   
-  <xsl:template match="descriptions | decisions | objectives | potential-assessments | references | control-enhancements">
+  <xsl:template match="descriptions | decisions | objectives | potential-assessments">
+    <xsl:message>
+      <xsl:text>Matched </xsl:text>
+      <xsl:value-of select="local-name()"/>
+    </xsl:message>
     <group>
       <!--<xsl:apply-templates select="." mode="group-label"/>-->
       <xsl:apply-templates/>
     </group>
+  </xsl:template>
+  
+  <xsl:template match="references">
+    <references>
+      <!--<xsl:apply-templates select="." mode="group-label"/>-->
+      <xsl:apply-templates/>
+    </references>
+  </xsl:template>
+  
+  <xsl:template match="control-enhancements">
+    <extensions>
+      <!--<xsl:apply-templates select="." mode="group-label"/>-->
+      <xsl:apply-templates/>
+    </extensions>
   </xsl:template>
   
   <xsl:template match="description">

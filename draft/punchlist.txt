@@ -12,10 +12,54 @@ x map ISO stuff in!
 x We need some sort of (nested) div structure for document structure
   e.g. clause, family
 
+o merge 'implementation' sections from 800-53A (PDF!) into draft control
+
+x rename nested catalog as 'group' (DW)
+
+o xrefs and linking! -
+  o xref for internal links?
+  o 'a' for external links?
+
+o induction of implicit cross-references from SP800-53?
+  e.g. inside supplemental guidance
+
+
+o pull in more data from PDFs e.g. in 800-53 control enhancements
+  Maybe do all of section AC (account controls)
+o presentational XSLT (PDF?) for cross-checking / proofing
+
+o "Media Protection" section (passim!)
+
+o Define an ID assignment protocol and add IDs?
+
 o 'preamble' section including declarations
    including constraints on properties
-     (make these OSCAL controls?)
 
-o merge 'implementation' sections from 800-53A into draft control
+What sorts of things do we need to validate at the level of a control?
+  Properties and statements that (may|must) appear
+  Lexical form of properties
+    * enumerated list
+    * regex
+    * numbering semantics (xsl:number?)
+    * referential integrity (co-occurrence constraints)
+      e.g. if in section "Access Control" then ID must start 'AC' ...
 
+
+o remove sequence, clause, control-group properties (or anything so redundant)
+
+  Model must enable auto-production of Schematron per profile?
+
+Any different for control enhancements?
+o model OSCAL map? for Schematron validation
+
+o rendering XSLT to make a pretty page display (or PDF?)
+
+GOALS for next checkpoint
+o Complete and valid mappings for both sources
+o CSS for oXygen display
+o functioning RNC and Schematron
+???
+
+o first cut at XSD?
+o embed documentation (and stage documentation pipeline?)
 

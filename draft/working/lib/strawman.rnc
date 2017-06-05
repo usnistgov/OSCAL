@@ -8,22 +8,24 @@ start = catalog
 #             (enumerated values for properties, regexes and what not)
 # also declares bindings to authorities (e.g. sources for transclusion/comparison)?
 
-catalog = element catalog {
-  idAttr, typeAttr,
-  prop*, title, prop*, stmt*, (catalog* | control*), section* }
+catalog = element catalog { title, declarations?, section*, (group+ | control+), section*, references? }
 
-section = element div {   idAttr, typeAttr,
-  title, prose, section* }
+declarations = empty
+
+group = element group {
+  idAttr, typeAttr,
+  prop*, title, prop*, stmt*, (group* | control*), section*, references? }
+
+section = element div { idAttr, typeAttr,
+  title, prose, section*, references? }
 
 control =
   element control {
-    idAttr,
-    typeAttr,
-    prop*,
-    title?,
-    prop*,
-    desc,
-    ( prop | stmt | group )*
+    idAttr, typeAttr,
+    prop*, title?, prop*,
+    desc, stmt*,
+    extensions?,
+    references?
   }
 
 title = element title { text }
@@ -48,14 +50,23 @@ stmt =
 
 prose = (ol | p)*
 
-group = element group { control+ | prop+ | ref+ }
+# cluster = element cluster { control+ | prop+ | ref+ }
 # on group, not(*/@name != */@name) ie all names must be the same
 
-ref = element ref { std }
+extensions = element extensions { control+ }
+
+references = element references { ref+ }
+
+ref = element ref { idAttr, (std | citation)* }
 # add mixed-citation or equivalent
 
 std =  element std {
-         attribute href { xsd:anyURI },
+         attribute href { xsd:anyURI }?,
+         whatnot
+  }
+
+citation =  element citation {
+         attribute href { xsd:anyURI }?,
          whatnot
   }
 

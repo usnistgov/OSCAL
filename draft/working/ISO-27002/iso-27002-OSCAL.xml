@@ -3,10 +3,10 @@
 <?xml-model href="../lib/strawman.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>ISO/IEC 27002</title>
-   <catalog type="control-category">
+   <group type="control-category">
       <prop name="number">5</prop>
       <title>Information security policies</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">5.1</prop>
          <title>Management direction for information security</title>
          <stmt name="objective">
@@ -79,12 +79,12 @@
                <p>Management approval for a revised policy should be obtained.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">6</prop>
       <title>Organization of information security</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">6.1</prop>
          <title>Internal organization</title>
          <stmt name="objective">
@@ -188,8 +188,8 @@
                <p>Information security implications should be addressed and reviewed regularly in all projects. Responsibilities for information security should be defined and allocated to specified roles defined in the project management methods.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">6.2</prop>
          <title>Mobile devices and teleworking</title>
          <stmt name="objective">
@@ -277,12 +277,12 @@
                <p>Teleworking refers to all forms of work outside of the office, including non-traditional work environments, such as those referred to as “telecommuting”, “flexible workplace”, “remote work” and “virtual work” environments.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">7</prop>
       <title>Human resource security</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">7.1</prop>
          <title>Prior to employment</title>
          <stmt name="objective">
@@ -341,8 +341,8 @@
                <p>A code of conduct may be used to state the employee’s or contractor’s information security responsibilities regarding confidentiality, data protection, ethics, appropriate use of the organization’s equipment and facilities, as well as reputable practices expected by the organization. An external party, with which a contractor is associated, can be required to enter into contractual arrangements on behalf of the contracted individual.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">7.2</prop>
          <title>During employment</title>
          <stmt name="objective">
@@ -421,8 +421,8 @@
                <p>The disciplinary process can also become a motivation or an incentive if positive sanctions are defined for remarkable behaviour with regards to information security.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">7.3</prop>
          <title>Termination and change of employment</title>
          <stmt name="objective">
@@ -446,12 +446,12 @@
                <p>It may be necessary to inform employees, customers or contractors of changes to personnel and operating arrangements.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">8</prop>
       <title>Asset management</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">8.1</prop>
          <title>Responsibility for assets</title>
          <stmt name="objective">
@@ -527,8 +527,8 @@
                <p>During the notice period of termination, the organization should control unauthorized copying of relevant information (e.g. intellectual property) by terminated employees and contractors.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">8.2</prop>
          <title>Information classification</title>
          <stmt name="objective">
@@ -600,8 +600,8 @@
                <p>Agreements with other organizations that include information sharing should include procedures to identify the classification of that information and to interpret the classification labels from other organizations.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">8.3</prop>
          <title>Media handling</title>
          <stmt name="objective">
@@ -677,12 +677,12 @@
                <p>When confidential information on media is not encrypted, additional physical protection of the media should be considered.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">9</prop>
       <title>Access control</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">9.1</prop>
          <title>Business requirements of access control</title>
          <stmt name="objective">
@@ -755,8 +755,8 @@
                <p>Unauthorized and insecure connections to network services can affect the whole organization. This control is particularly important for network connections to sensitive or critical business applications or to users in high-risk locations, e.g. public or external areas that are outside the organization’s information security management and control.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">9.2</prop>
          <title>User access management</title>
          <stmt name="objective">
@@ -904,8 +904,8 @@
                <p>In cases of management-initiated termination, disgruntled employees or external party users can deliberately corrupt information or sabotage information processing facilities. In cases of persons resigning or being dismissed, they may be tempted to collect information for future use.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">9.3</prop>
          <title>User responsibilities</title>
          <stmt name="objective">
@@ -942,8 +942,8 @@
                <p>Provision of Single Sign On (SSO) or other secret authentication information management tools reduces the amount of secret authentication information that users are required to protect and thus can increase the effectiveness of this control. However, these tools can also increase the impact of disclosure of secret authentication information.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">9.4</prop>
          <title>System and application access control</title>
          <stmt name="objective">
@@ -1080,12 +1080,12 @@
                <p>If the program source code is intended to be published, additional controls to help getting assurance on its integrity (e.g. digital signature) should be considered.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">10</prop>
       <title>Cryptography</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">10.1</prop>
          <title>Cryptographic controls</title>
          <stmt name="objective">
@@ -1164,12 +1164,12 @@
                <p>Cryptographic techniques can also be used to protect cryptographic keys. Procedures may need to be considered for handling legal requests for access to cryptographic keys, e.g. encrypted information can be required to be made available in an unencrypted form as evidence in a court case.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">11</prop>
       <title>Physical and environmental security</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">11.1</prop>
          <title>Secure areas</title>
          <stmt name="objective">
@@ -1291,8 +1291,8 @@
                </ol>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">11.2</prop>
          <title>Equipment</title>
          <stmt name="objective">
@@ -1497,12 +1497,12 @@
                <p>Consider the use of printers with PIN code function, so the originators are the only ones who can get their print-outs and only when standing next to the printer.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">12</prop>
       <title>Operations security</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">12.1</prop>
          <title>Operational procedures and responsibilities</title>
          <stmt name="objective">
@@ -1613,8 +1613,8 @@
                <p>Development and testing personnel also pose a threat to the confidentiality of operational information. Development and testing activities may cause unintended changes to software or information if they share the same computing environment. Separating development, testing and operational environments is therefore desirable to reduce the risk of accidental change or unauthorized access to operational software and business data (see <xref>14.3</xref> for the protection of test data).</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">12.2</prop>
          <title>Protection from malware</title>
          <stmt name="objective">
@@ -1657,8 +1657,8 @@
                <p>Use of malware detection and repair software alone as a malware control is not usually adequate and commonly needs to be accompanied by operating procedures that prevent introduction of malware.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">12.3</prop>
          <title>Backup</title>
          <stmt name="objective">
@@ -1690,8 +1690,8 @@
                <p>The retention period for essential business information should be determined, taking into account any requirement for archive copies to be permanently retained.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">12.4</prop>
          <title>Logging and monitoring</title>
          <stmt name="objective">
@@ -1783,8 +1783,8 @@
                <p>The correct setting of computer clocks is important to ensure the accuracy of audit logs, which may be required for investigations or as evidence in legal or disciplinary cases. Inaccurate audit logs may hinder such investigations and damage the credibility of such evidence. A clock linked to a radio time broadcast from a national atomic clock can be used as the master clock for logging systems. A network time protocol can be used to keep all of the servers in synchronisation with the master clock.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">12.5</prop>
          <title>Control of operational software</title>
          <stmt name="objective">
@@ -1816,8 +1816,8 @@
                <p>Computer software may rely on externally supplied software and modules, which should be monitored and controlled to avoid unauthorized changes, which could introduce security weaknesses.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">12.6</prop>
          <title>Technical vulnerability management</title>
          <stmt name="objective">
@@ -1877,8 +1877,8 @@
                <p>Uncontrolled installation of software on computing devices can lead to introducing vulnerabilities and then to information leakage, loss of integrity or other information security incidents, or to violation of intellectual property rights.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">12.7</prop>
          <title>Information systems audit considerations</title>
          <stmt name="objective">
@@ -1905,12 +1905,12 @@
                </ol>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">13</prop>
       <title>Communications security</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">13.1</prop>
          <title>Network security management</title>
          <stmt name="objective">
@@ -1980,8 +1980,8 @@
                <p>Networks often extend beyond organizational boundaries, as business partnerships are formed that require the interconnection or sharing of information processing and networking facilities. Such extensions can increase the risk of unauthorized access to the organization’s information systems that use the network, some of which require protection from other network users because of their sensitivity or criticality.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">13.2</prop>
          <title>Information transfer</title>
          <stmt name="objective">
@@ -2108,12 +2108,12 @@
                <p>There may be a need for an organization to use different forms of confidentiality or non-disclosure agreements in different circumstances.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">14</prop>
       <title>System acquisition, development and maintenance</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">14.1</prop>
          <title>Security requirements of information systems</title>
          <stmt name="objective">
@@ -2212,8 +2212,8 @@
                <p>Transactions may need to comply with legal and regulatory requirements in the jurisdiction which the transaction is generated from, processed via, completed at or stored in.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">14.2</prop>
          <title>Security in development and support processes</title>
          <stmt name="objective">
@@ -2418,8 +2418,8 @@
                <p>Testing should be performed in a realistic test environment to ensure that the system will not introduce vulnerabilities to the organization’s environment and that the tests are reliable.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">14.3</prop>
          <title>Test data</title>
          <stmt name="objective">
@@ -2447,12 +2447,12 @@
                <p>System and acceptance testing usually requires substantial volumes of test data that are as close as possible to operational data.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">15</prop>
       <title>Supplier relationships</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">15.1</prop>
          <title>Information security in supplier relationships</title>
          <stmt name="objective">
@@ -2551,8 +2551,8 @@
                <p>Information and communication technology supply chain as addressed here includes cloud computing services.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">15.2</prop>
          <title>Supplier service delivery management</title>
          <stmt name="objective">
@@ -2615,12 +2615,12 @@
                </ol>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">16</prop>
       <title>Information security incident management</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">16.1</prop>
          <title>Management of information security incidents and improvements</title>
          <stmt name="objective">
@@ -2793,12 +2793,12 @@
                <p>ISO/IEC 27037[<xref>24</xref>] provides guidelines for identification, collection, acquisition and preservation of digital evidence.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">17</prop>
       <title>Information security aspects of business continuity management</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">17.1</prop>
          <title>Information security continuity</title>
          <stmt name="objective">
@@ -2868,8 +2868,8 @@
                <p>The verification of information security continuity controls is different from general information security testing and verification and should be performed outside the testing of changes. If possible, it is preferable to integrate verification of information security continuity controls with the organization’s business continuity or disaster recovery tests.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">17.2</prop>
          <title>Redundancies</title>
          <stmt name="objective">
@@ -2891,12 +2891,12 @@
                <p>The implementation of redundancies can introduce risks to the integrity or confidentiality of information and information systems, which need to be considered when designing information systems.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <catalog type="control-category">
+      </group>
+   </group>
+   <group type="control-category">
       <prop name="number">18</prop>
       <title>Compliance</title>
-      <catalog type="clause">
+      <group type="clause">
          <prop name="number">18.1</prop>
          <title>Compliance with legal and contractual requirements</title>
          <stmt name="objective">
@@ -3007,8 +3007,8 @@
                <p>Legal advice should be sought to ensure compliance with relevant legislation and regulations. Before encrypted information or cryptographic controls are moved across jurisdictional borders, legal advice should also be taken.</p>
             </stmt>
          </control>
-      </catalog>
-      <catalog type="clause">
+      </group>
+      <group type="clause">
          <prop name="number">18.2</prop>
          <title>Information security reviews</title>
          <stmt name="objective">
@@ -3075,37 +3075,95 @@
                <p>ISO/IEC TR 27008[<xref>13</xref>] provides specific guidance regarding technical compliance reviews.</p>
             </stmt>
          </control>
-      </catalog>
-   </catalog>
-   <div type="bibliography">
+      </group>
+   </group>
+   <group type="control-category">
       <title>Bibliography</title>
-      <p id="Reference-ref_1">ISO/IEC Directives, Part 2[1]	ISO/IEC Directives, Part 2</p>
-      <p id="Reference-ref_2">ISO/IEC 11770-1, Information technology Security techniques — Key management — Part 1: Framework[2]	ISO/IEC 11770-1, Information technology Security techniques — Key management — Part 1: Framework</p>
-      <p id="Reference-ref_3">ISO/IEC 11770-2, Information technology — Security techniques — Key management — Part 2: Mechanisms using symmetric techniques[3]	ISO/IEC 11770-2, Information technology — Security techniques — Key management — Part 2: Mechanisms using symmetric techniques</p>
-      <p id="Reference-ref_4">ISO/IEC 11770-3, Information technology — Security techniques — Key management — Part 3: Mechanisms using asymmetric techniques[4]	ISO/IEC 11770-3, Information technology — Security techniques — Key management — Part 3: Mechanisms using asymmetric techniques</p>
-      <p id="Reference-ref_5">ISO 15489-1, Information and documentation — Records management — Part 1: General[5]	ISO 15489-1, Information and documentation — Records management — Part 1: General</p>
-      <p id="Reference-ref_6">ISO/IEC 20000-1, Information technology — Service management — Part 1: Service management system requirements[6]	ISO/IEC 20000-1, Information technology — Service management — Part 1: Service management system requirements</p>
-      <p id="Reference-ref_7">ISO/IEC 20000-2,1Information technology — Service management — Part 2: Guidance on the application of service management systems[7]	ISO/IEC 20000-2,<xref>1</xref>Information technology — Service management — Part 2: Guidance on the application of service management systems</p>
-      <p id="Reference-ref_8">ISO 22301, Societal security — Business continuity management systems — Requirements[8]	ISO 22301, Societal security — Business continuity management systems — Requirements</p>
-      <p id="Reference-ref_9">ISO 22313, Societal security — Business continuity management systems — Guidance[9]	ISO 22313, Societal security — Business continuity management systems — Guidance</p>
-      <p id="Reference-ref_10">ISO/IEC 27001, Information technology — Security techniques — Information security management systems — Requirements[10]	ISO/IEC 27001, Information technology — Security techniques — Information security management systems — Requirements</p>
-      <p id="Reference-ref_11">ISO/IEC 27005, Information technology — Security techniques — Information security risk management[11]	ISO/IEC 27005, Information technology — Security techniques — Information security risk management</p>
-      <p id="Reference-ref_12">ISO/IEC 27007, Information technology — Security techniques — Guidelines for information security management systems auditing[12]	ISO/IEC 27007, Information technology — Security techniques — Guidelines for information security management systems auditing</p>
-      <p id="Reference-ref_13">ISO/IEC TR 27008, Information technology — Security techniques — Guidelines for auditors on information security controls[13]	ISO/IEC TR 27008, Information technology — Security techniques — Guidelines for auditors on information security controls</p>
-      <p id="Reference-ref_14">ISO/IEC 27031, Information technology — Security techniques — Guidelines for information and communication technology readiness for business continuity[14]	ISO/IEC 27031, Information technology — Security techniques — Guidelines for information and communication technology readiness for business continuity</p>
-      <p id="Reference-ref_15">ISO/IEC 27033-1, Information technology — Security techniques — Network security — Part 1: Overview and concepts[15]	ISO/IEC 27033-1, Information technology — Security techniques — Network security — Part 1: Overview and concepts</p>
-      <p id="Reference-ref_16">ISO/IEC 27033-2, Information technology — Security techniques — Network security — Part 2: Guidelines for the design and implementation of network security[16]	ISO/IEC 27033-2, Information technology — Security techniques — Network security — Part 2: Guidelines for the design and implementation of network security</p>
-      <p id="Reference-ref_17">ISO/IEC 27033-3, Information technology — Security techniques — Network security — Part 3: Reference networking scenarios — Threats, design techniques and control issues[17]	ISO/IEC 27033-3, Information technology — Security techniques — Network security — Part 3: Reference networking scenarios — Threats, design techniques and control issues</p>
-      <p id="Reference-ref_18">ISO/IEC 27033-4, Information technology — Security techniques — Network security — Part 4: Securing communications between networks using security gateways[18]	ISO/IEC 27033-4, Information technology — Security techniques — Network security — Part 4: Securing communications between networks using security gateways</p>
-      <p id="Reference-ref_19">ISO/IEC 27033-5, Information technology — Security techniques — Network security — Part 5: Securing communications across networks using Virtual Private Network (VPNs)[19]	ISO/IEC 27033-5, Information technology — Security techniques — Network security — Part 5: Securing communications across networks using Virtual Private Network (VPNs)</p>
-      <p id="Reference-ref_20">ISO/IEC 27035, Information technology — Security techniques — Information security incident management[20]	ISO/IEC 27035, Information technology — Security techniques — Information security incident management</p>
-      <p id="Reference-ref_21">ISO/IEC 27036-1, Information technology — Security techniques — Information security for supplier relationships — Part 1: Overview and concepts[21]	ISO/IEC 27036-1, Information technology — Security techniques — Information security for supplier relationships — Part 1: Overview and concepts</p>
-      <p id="Reference-ref_22">ISO/IEC 27036-2, Information technology — Security techniques — Information security for supplier relationships — Part 2: Common requirements[22]	ISO/IEC 27036-2, Information technology — Security techniques — Information security for supplier relationships — Part 2: Common requirements</p>
-      <p id="Reference-ref_23">ISO/IEC 27036-3, Information technology — Security techniques — Information security for supplier relationships — Part 3: Guidelines for ICT supply chain security[23]	ISO/IEC 27036-3, Information technology — Security techniques — Information security for supplier relationships — Part 3: Guidelines for ICT supply chain security</p>
-      <p id="Reference-ref_24">ISO/IEC 27037, Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence[24]	ISO/IEC 27037, Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence</p>
-      <p id="Reference-ref_25">ISO/IEC 29100, Information technology — Security techniques — Privacy framework[25]	ISO/IEC 29100, Information technology — Security techniques — Privacy framework</p>
-      <p id="Reference-ref_26">ISO/IEC 29101, Information technology — Security techniques — Privacy architecture framework[26]	ISO/IEC 29101, Information technology — Security techniques — Privacy architecture framework</p>
-      <p id="Reference-ref_27">ISO 31000, Risk management — Principles and guidelines[27]	ISO 31000, Risk management — Principles and guidelines</p>
-      <p id="footnote-34404-1">1)   ISO/IEC 20000-2:2005 has been cancelled and replaced by ISO/IEC 20000-2:2012, Information technology — Service management — Part 2: Guidance on the application of service management systems.<xref>1</xref>)   ISO/IEC 20000-2:2005 has been cancelled and replaced by ISO/IEC 20000-2:2012, Information technology — Service management — Part 2: Guidance on the application of service management systems.</p>
-   </div>
+   </group>
+   <references>
+      <ref id="Reference-ref_1">
+         <citation>ISO/IEC Directives, Part 2[1]	ISO/IEC Directives, Part 2</citation>
+      </ref>
+      <ref id="Reference-ref_2">
+         <citation>ISO/IEC 11770-1, Information technology Security techniques — Key management — Part 1: Framework[2]	ISO/IEC 11770-1, Information technology Security techniques — Key management — Part 1: Framework</citation>
+      </ref>
+      <ref id="Reference-ref_3">
+         <citation>ISO/IEC 11770-2, Information technology — Security techniques — Key management — Part 2: Mechanisms using symmetric techniques[3]	ISO/IEC 11770-2, Information technology — Security techniques — Key management — Part 2: Mechanisms using symmetric techniques</citation>
+      </ref>
+      <ref id="Reference-ref_4">
+         <citation>ISO/IEC 11770-3, Information technology — Security techniques — Key management — Part 3: Mechanisms using asymmetric techniques[4]	ISO/IEC 11770-3, Information technology — Security techniques — Key management — Part 3: Mechanisms using asymmetric techniques</citation>
+      </ref>
+      <ref id="Reference-ref_5">
+         <citation>ISO 15489-1, Information and documentation — Records management — Part 1: General[5]	ISO 15489-1, Information and documentation — Records management — Part 1: General</citation>
+      </ref>
+      <ref id="Reference-ref_6">
+         <citation>ISO/IEC 20000-1, Information technology — Service management — Part 1: Service management system requirements[6]	ISO/IEC 20000-1, Information technology — Service management — Part 1: Service management system requirements</citation>
+      </ref>
+      <ref id="Reference-ref_7">
+         <citation>ISO/IEC 20000-2,1Information technology — Service management — Part 2: Guidance on the application of service management systems[7]	ISO/IEC 20000-2,<xref>1</xref>Information technology — Service management — Part 2: Guidance on the application of service management systems</citation>
+      </ref>
+      <ref id="Reference-ref_8">
+         <citation>ISO 22301, Societal security — Business continuity management systems — Requirements[8]	ISO 22301, Societal security — Business continuity management systems — Requirements</citation>
+      </ref>
+      <ref id="Reference-ref_9">
+         <citation>ISO 22313, Societal security — Business continuity management systems — Guidance[9]	ISO 22313, Societal security — Business continuity management systems — Guidance</citation>
+      </ref>
+      <ref id="Reference-ref_10">
+         <citation>ISO/IEC 27001, Information technology — Security techniques — Information security management systems — Requirements[10]	ISO/IEC 27001, Information technology — Security techniques — Information security management systems — Requirements</citation>
+      </ref>
+      <ref id="Reference-ref_11">
+         <citation>ISO/IEC 27005, Information technology — Security techniques — Information security risk management[11]	ISO/IEC 27005, Information technology — Security techniques — Information security risk management</citation>
+      </ref>
+      <ref id="Reference-ref_12">
+         <citation>ISO/IEC 27007, Information technology — Security techniques — Guidelines for information security management systems auditing[12]	ISO/IEC 27007, Information technology — Security techniques — Guidelines for information security management systems auditing</citation>
+      </ref>
+      <ref id="Reference-ref_13">
+         <citation>ISO/IEC TR 27008, Information technology — Security techniques — Guidelines for auditors on information security controls[13]	ISO/IEC TR 27008, Information technology — Security techniques — Guidelines for auditors on information security controls</citation>
+      </ref>
+      <ref id="Reference-ref_14">
+         <citation>ISO/IEC 27031, Information technology — Security techniques — Guidelines for information and communication technology readiness for business continuity[14]	ISO/IEC 27031, Information technology — Security techniques — Guidelines for information and communication technology readiness for business continuity</citation>
+      </ref>
+      <ref id="Reference-ref_15">
+         <citation>ISO/IEC 27033-1, Information technology — Security techniques — Network security — Part 1: Overview and concepts[15]	ISO/IEC 27033-1, Information technology — Security techniques — Network security — Part 1: Overview and concepts</citation>
+      </ref>
+      <ref id="Reference-ref_16">
+         <citation>ISO/IEC 27033-2, Information technology — Security techniques — Network security — Part 2: Guidelines for the design and implementation of network security[16]	ISO/IEC 27033-2, Information technology — Security techniques — Network security — Part 2: Guidelines for the design and implementation of network security</citation>
+      </ref>
+      <ref id="Reference-ref_17">
+         <citation>ISO/IEC 27033-3, Information technology — Security techniques — Network security — Part 3: Reference networking scenarios — Threats, design techniques and control issues[17]	ISO/IEC 27033-3, Information technology — Security techniques — Network security — Part 3: Reference networking scenarios — Threats, design techniques and control issues</citation>
+      </ref>
+      <ref id="Reference-ref_18">
+         <citation>ISO/IEC 27033-4, Information technology — Security techniques — Network security — Part 4: Securing communications between networks using security gateways[18]	ISO/IEC 27033-4, Information technology — Security techniques — Network security — Part 4: Securing communications between networks using security gateways</citation>
+      </ref>
+      <ref id="Reference-ref_19">
+         <citation>ISO/IEC 27033-5, Information technology — Security techniques — Network security — Part 5: Securing communications across networks using Virtual Private Network (VPNs)[19]	ISO/IEC 27033-5, Information technology — Security techniques — Network security — Part 5: Securing communications across networks using Virtual Private Network (VPNs)</citation>
+      </ref>
+      <ref id="Reference-ref_20">
+         <citation>ISO/IEC 27035, Information technology — Security techniques — Information security incident management[20]	ISO/IEC 27035, Information technology — Security techniques — Information security incident management</citation>
+      </ref>
+      <ref id="Reference-ref_21">
+         <citation>ISO/IEC 27036-1, Information technology — Security techniques — Information security for supplier relationships — Part 1: Overview and concepts[21]	ISO/IEC 27036-1, Information technology — Security techniques — Information security for supplier relationships — Part 1: Overview and concepts</citation>
+      </ref>
+      <ref id="Reference-ref_22">
+         <citation>ISO/IEC 27036-2, Information technology — Security techniques — Information security for supplier relationships — Part 2: Common requirements[22]	ISO/IEC 27036-2, Information technology — Security techniques — Information security for supplier relationships — Part 2: Common requirements</citation>
+      </ref>
+      <ref id="Reference-ref_23">
+         <citation>ISO/IEC 27036-3, Information technology — Security techniques — Information security for supplier relationships — Part 3: Guidelines for ICT supply chain security[23]	ISO/IEC 27036-3, Information technology — Security techniques — Information security for supplier relationships — Part 3: Guidelines for ICT supply chain security</citation>
+      </ref>
+      <ref id="Reference-ref_24">
+         <citation>ISO/IEC 27037, Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence[24]	ISO/IEC 27037, Information technology — Security techniques — Guidelines for identification, collection, acquisition and preservation of digital evidence</citation>
+      </ref>
+      <ref id="Reference-ref_25">
+         <citation>ISO/IEC 29100, Information technology — Security techniques — Privacy framework[25]	ISO/IEC 29100, Information technology — Security techniques — Privacy framework</citation>
+      </ref>
+      <ref id="Reference-ref_26">
+         <citation>ISO/IEC 29101, Information technology — Security techniques — Privacy architecture framework[26]	ISO/IEC 29101, Information technology — Security techniques — Privacy architecture framework</citation>
+      </ref>
+      <ref id="Reference-ref_27">
+         <citation>ISO 31000, Risk management — Principles and guidelines[27]	ISO 31000, Risk management — Principles and guidelines</citation>
+      </ref>
+      <ref id="footnote-34404-1">
+         <citation>1)   ISO/IEC 20000-2:2005 has been cancelled and replaced by ISO/IEC 20000-2:2012, Information technology — Service management — Part 2: Guidance on the application of service management systems.<xref>1</xref>)   ISO/IEC 20000-2:2005 has been cancelled and replaced by ISO/IEC 20000-2:2012, Information technology — Service management — Part 2: Guidance on the application of service management systems.</citation>
+      </ref>
+   </references>
 </catalog>

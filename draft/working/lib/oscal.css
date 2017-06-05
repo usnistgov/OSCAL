@@ -2,8 +2,11 @@
 
 catalog { max-width: 48em }
 
-catalog, div { padding: 0.5em; margin: 0.5em; border: thin solid black;
-          -oxy-foldable: true; -oxy-not-foldable-child: title }
+group, div, references, extensions
+  { padding: 0.5em; margin: 0.5em; border: thin solid black;
+    -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+references:before { content: "References"; font-size: 120%; font-weight: bold }
 
 control { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
@@ -15,8 +18,8 @@ prop { display: inline-block; background-color: pink; border: thin outset pink;
 
 title { font-weight: bold }
 catalog > title { font-size: 150% }
-catalog > catalog > title { font-size: 130% }
-catalog > catalog > catalog > title { font-size: 120% }
+group > title { font-size: 130% }
+group > group > title { font-size: 120% }
 
 control > title { font-size: 110% }
 
@@ -54,12 +57,15 @@ li, list-item { display: list-item; margin-top: 0.5em }
 li > p, list-item > p { margin-top: 0.5em }
 
 
-std:before {
+std[href]:before, citation[href]:before {
     content: 
         oxy_urlChooser(        
         edit, "@href",
         columns 53);
 }
-std { color: darkred; font-weight: bold }
+
+std, citation { margin-top: 0.5em }
+std      { color: darkred }
+citation { color: purple }
 
 xref { display: inline; color: blue }

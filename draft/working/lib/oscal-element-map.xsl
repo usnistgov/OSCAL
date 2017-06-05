@@ -32,7 +32,7 @@
           <xsl:call-template name="descend">
             <xsl:with-param name="parents" select="current-group()"/>
             <xsl:with-param name="children"
-              select="current-group()[not(self::p|self::list)]/*"/>
+              select="current-group()[not(self::p|self::ol)]/*"/>
           </xsl:call-template>
           <xsl:if test="exists(current-group()/(@name|@flag)) and exists(text()[matches(.,'\S')])">
             <xsl:for-each-group select="current-group()" group-by="normalize-space()">
