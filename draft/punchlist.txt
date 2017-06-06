@@ -42,13 +42,16 @@ o inside runtime:
   o parameter value assignments
   o semantic associations
     (e.g. formal mappings between control properties)
-  o expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
   
 inside declarations:
-  control-spec
-  parameter-spec
-  authority-spec (binding to external resource or copy)
-  
+  control-spec { @name, control-label?, parameter-spec*, statement-spec*, authority* )
+    o expansion for run-in label?
+      (so you can say to promote prop[@name='number'] into the control title for display)
+  parameter-spec including lexical contraints
+  statement-spec
+    o expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
+  o authority (binding to external resource or copy)
+  o Schematron for all this stuff!  
   
 What sorts of things do we need to validate at the level of a control?
   Properties and statements that (may|must) appear

@@ -23,7 +23,7 @@
   </xsl:template>
 
   <xsl:template match="catalog">
-    <fo:page-sequence master-reference="simple">
+    <fo:page-sequence master-reference="simple" font-family="serif">
       <fo:static-content flow-name="header">
         <fo:block text-align="right" font-size="9pt">
           <xsl:apply-templates select="title"/>
@@ -44,25 +44,25 @@
   </xsl:template>
 
   <xsl:template match="title">
-    <fo:block font-size="16pt" font-weight="bold">
+    <fo:block font-size="16pt" font-weight="bold" keep-with-next="always">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
   
   <xsl:template match="group/title">
-    <fo:block font-size="14pt" font-weight="bold" font-style="italic">
+    <fo:block font-size="14pt" font-weight="bold" font-style="italic" keep-with-next="always">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
   
   <xsl:template match="group/group/title" priority="2">
-    <fo:block font-size="12pt" font-weight="bold">
+    <fo:block font-size="12pt" font-weight="bold" keep-with-next="always">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
   
   <xsl:template match="control/title">
-    <fo:block font-size="14pt" font-family="sans-serif" font-weight="bold" font-style="italic">
+    <fo:block font-size="14pt" font-family="sans-serif" font-weight="bold" font-style="italic" keep-with-next="always">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
