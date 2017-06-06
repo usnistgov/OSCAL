@@ -10,6 +10,21 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/SP800-53/800-53-controls-OSCAL.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL simple PDF</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/ISO-27002/iso-27002-OSCAL.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -41,6 +56,21 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>working/SP800-53/sp800-53-to-oscal.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>800-53-controls to OSCAL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>sources/800-53/800-53-controls.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>

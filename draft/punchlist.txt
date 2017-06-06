@@ -66,6 +66,10 @@ o remove sequence, clause, control-group properties (or anything so redundant)
 
   Model must enable auto-production of Schematron per profile?
 
+OOO what have we done so far?
+     including screen shot
+o Run Trang and debug XSD (ugh)
+
 Any different for control enhancements?
 o model OSCAL map? for Schematron validation
 
