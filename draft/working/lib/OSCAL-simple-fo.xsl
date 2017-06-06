@@ -3,9 +3,8 @@
 <!-- NOT YET AN OSCAL XSL! 2017-06-06 -->
 
 <xsl:stylesheet version="2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
-  <xsl:output method="xml" indent="yes"/>
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xpath-default-namespace="http://scap.nist.gov/schema/oscal">
 
   <xsl:template match="/">
     <fo:root>
@@ -19,15 +18,15 @@
         </fo:simple-page-master>
       </fo:layout-master-set>
 
-      <xsl:apply-templates select="paper"/>
+      <xsl:apply-templates select="catalog"/>
     </fo:root>
   </xsl:template>
 
-  <xsl:template match="paper">
+  <xsl:template match="catalog">
     <fo:page-sequence master-reference="simple">
       <fo:static-content flow-name="header">
         <fo:block text-align="right" font-size="9pt">
-          <xsl:apply-templates select="author | date"/>
+          <xsl:apply-templates select="title"/>
           <fo:block>
             <xsl:text>page </xsl:text>
             <fo:page-number/>
@@ -39,14 +38,7 @@
           border-width="0.5pt" border-bottom-style="solid"/>
       </fo:static-content>
       <fo:flow flow-name="content">
-        <fo:block font-family="sans-serif">
-          <xsl:apply-templates select="title"/>
-        </fo:block>
-        <fo:block space-before="20pt" font-family="serif" font-size="11pt"
-          line-height="13pt" line-height-shift-adjustment="disregard-shifts"
-          start-indent="2em" end-indent="2em">
-          <xsl:apply-templates select="paragraph"/>
-        </fo:block>
+        <xsl:apply-templates/>
       </fo:flow>
     </fo:page-sequence>
   </xsl:template>
@@ -56,32 +48,39 @@
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
+  
+  <xsl:template match="group/title">
+    <fo:block font-size="14pt" font-weight="bold" font-style="italic">
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
+  <xsl:template match="group/group/title" priority="2">
+    <fo:block font-size="12pt" font-weight="bold">
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
+  <xsl:template match="control/title">
+    <fo:block font-size="14pt" font-family="sans-serif" font-weight="bold" font-style="italic">
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
 
-  <xsl:template match="author | date">
-    <fo:block>
+  <xsl:template match="p">
+    <fo:block space-before="0.5em">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
 
-  <xsl:template match="paragraph">
-    <fo:block text-indent="2em">
-      <xsl:apply-templates/>
-    </fo:block>
-  </xsl:template>
-
-  <xsl:template match="mention">
+  <!--<xsl:template match="mention">
     <fo:inline font-weight="bold">
       <xsl:apply-templates/>
     </fo:inline>
-  </xsl:template>
+  </xsl:template>-->
 
-  <xsl:template match="stress">
-    <fo:inline font-style="italic">
-      <xsl:apply-templates/>
-    </fo:inline>
-  </xsl:template>
-
-  <xsl:template match="note">
+  <!--<xsl:template match="note">
     <fo:footnote>
       <fo:inline baseline-shift="super" font-size="65%">
         <xsl:number level="any"/>
@@ -94,6 +93,116 @@
         </fo:block>
       </fo:footnote-body>
     </fo:footnote>
+  </xsl:template>-->
+
+  <xsl:template match="control">
+    <fo:block space-before="1em" padding="0.5em" border-style="thin">
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
+  <xsl:template match="prop">
+    <fo:block font-family="sans-serif" space-before="0.5m" font-size="80%">
+      <fo:inline font-weight="bold">
+        <xsl:apply-templates select="@name"/>
+      <xsl:text>: </xsl:text>
+      </fo:inline>
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
+  <xsl:template match="desc">
+    <fo:block space-before="1em">
+      <xsl:apply-templates/>
+    </fo:block>
   </xsl:template>
 
+  <xsl:template match="stmt">
+    <fo:block space-before="1em">
+      <xsl:apply-templates select="." mode="label"/>
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+
+  <xsl:template match="stmt" mode="label">
+    <fo:block font-size="12pt" font-family="sans-serif">
+      <xsl:apply-templates select="@name"/>
+    </fo:block>
+  </xsl:template>
+  
+  
+  <xsl:template match="references">
+    <fo:block space-before="1em">
+      <fo:block font-size="12pt" font-family="sans-serif">References</fo:block>
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
+  
+  <xsl:template match="ol">
+    <fo:list-block provisional-distance-between-starts="2em"
+      provisional-label-separation="1em"  space-before="0.5em">
+      <xsl:apply-templates/>
+    </fo:list-block>
+  </xsl:template>
+  
+  <xsl:template match="li">
+    <fo:list-item space-before="0.5em">
+      <xsl:apply-templates select="." mode="item-no"/>
+      <fo:list-item-body start-indent="body-start()">
+        <fo:block>
+          <xsl:apply-templates/>
+        </fo:block>
+      </fo:list-item-body>
+    </fo:list-item>
+  </xsl:template>
+  
+  <xsl:template match="li" mode="item-no">
+    <fo:list-item-label end-indent="label-end()">
+      <fo:block>
+        <xsl:number format="a"/>
+        <xsl:text>.</xsl:text>
+      </fo:block>
+    </fo:list-item-label>
+  </xsl:template>
+  
+  <xsl:template match="li//li" mode="item-no">
+    <fo:list-item-label end-indent="label-end()">
+      <fo:block>
+        <xsl:number format="1"/>
+      </fo:block>
+    </fo:list-item-label>
+  </xsl:template>
+  
+  <xsl:template match="em | i">
+    <fo:inline font-style="italic">
+      <xsl:apply-templates/>
+    </fo:inline>
+  </xsl:template>
+  
+  
+  <xsl:template match="ref">
+      <xsl:apply-templates/>
+  </xsl:template>
+
+  <xsl:template match="std | citation">
+    <fo:block padding-left="3em" text-indent="-3em">
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
+  <xsl:template match="extensions">
+    <fo:block space-before="1em">
+      <fo:block font-size="12pt" font-family="sans-serif">Extensions</fo:block>
+      <xsl:apply-templates/>
+    </fo:block>
+  </xsl:template>
+  
+  <xsl:template match="xref">
+    <fo:inline font-style="italic">
+      <xsl:apply-templates/>
+    </fo:inline>
+  </xsl:template>
+
+  
 </xsl:stylesheet>

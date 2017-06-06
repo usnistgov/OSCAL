@@ -39,10 +39,11 @@ o implement PDF production pipeline
 o implement XSLT 1.0 (client side) runtime resolution/display
 
 o inside runtime:
-  parameter value assignments
-  semantic associations
+  o parameter value assignments
+  o semantic associations
     (e.g. formal mappings between control properties)
-
+  o expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
+  
 inside declarations:
   control-spec
   parameter-spec
