@@ -1,6 +1,7 @@
 default namespace = "http://scap.nist.gov/schema/oscal"
 
-start = catalog
+# We can have a catalog, or we can have only declarations for catalogs
+start = (catalog | declarations)
 
 # start = element oscal-catalog { declarations, catalog } 
 # have initial sections
@@ -10,7 +11,16 @@ start = catalog
 
 catalog = element catalog { title, declarations?, section*, (group+ | control+), section*, references? }
 
-declarations = empty
+# do we want a 'runtime' element for runtime bindings? such as parameters
+
+# declarations includes declarations for control types, parameters (names/types),
+# authorities (source data for transclusion etc. etc.)
+declarations = ( element declarations { attribute href { text } |
+  ( control-spec*, param-spec*, authority* ) } )
+
+control-spec = empty
+param-spec   = empty
+authority    = empty
 
 group = element group {
   idAttr, typeAttr,
