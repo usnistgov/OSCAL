@@ -2,6 +2,35 @@
 
 catalog { max-width: 48em }
 
+declarations { font-family: sans-serif; font-size: 80%;
+   padding: 0.5em; margin: 0.5em; border: thin solid black; background-color: gainsboro;
+    -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+
+declarations:before { font-weight: bold; content: "Declarations" } 
+
+control-spec, optional, required
+  { padding: 0.5em; margin: 0.5em; border: thin dotted black;
+    -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+required:before { content: "Required: "; font-style: italic }
+optional:before { content: "Optional: "; font-style: italic }
+
+value  { display: inline-block; background-color: ivory; border: thin outset pink;
+  margin: 2px; padding: 2px; font-weight: bold; font-size: 80% }
+
+regex { display: inline; font-family: monospace }
+regex:before  { content: "matching (regex) "; font-family: sans-serif  }
+
+control-spec:before { font-weight: bold; content: "control type " attr(type) } 
+
+property:before  { content: '(property) "' attr(name) '" '  }
+statement:before  { content: '(statement) "' attr(name) '" ' }
+
+property { background-color: pink; margin-top: 0.5em }
+statement { background-color: cornsilk; margin-top: 0.5em }
+statement title { margin-left: 2em }
+
 group, div, references, extensions
   { padding: 0.5em; margin: 0.5em; border: thin solid black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
@@ -12,7 +41,6 @@ control { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 prop:before { content: attr(name) ': ' }
-
 prop { display: inline-block; background-color: pink; border: thin outset pink;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 

@@ -12,16 +12,21 @@ x map ISO stuff in!
 x We need some sort of (nested) div structure for document structure
   e.g. clause, family
 
-o merge 'implementation' sections from 800-53A (PDF!) into draft control
-
 x rename nested catalog as 'group' (DW)
+
+===
+
+o merge 'implementation' sections from 800-53A (PDF!) into draft control
 
 o xrefs and linking! -
   o xref for internal links?
   o 'a' for external links?
+  o model them first, then worry about conversion
 
 o induction of implicit cross-references from SP800-53?
   e.g. inside supplemental guidance
+
+o Implement parameters w/ parameter declarations
 
 o pull in more data from PDFs e.g. in 800-53 control enhancements
   Maybe do all of section AC (account controls)
@@ -32,43 +37,65 @@ o "Media Protection" section (passim!)
 o Define an ID assignment protocol and add IDs?
 
 o 'preamble' section including declarations
-     control-spec (describing the structure of a control)
-     param-spec (naming permissible/recognized parameters)
-     authority (referencing external authorities / sources)
-o implement PDF production pipeline
+    x control-spec (describing the structure of a control)
+    o param-spec (naming permissible/recognized parameters)
+    o authority (referencing external authorities / sources)
+x implement PDF production pipeline
 o implement XSLT 1.0 (client side) runtime resolution/display
 
 o inside runtime:
   o parameter value assignments
-  o semantic associations
+  o semantic associations / merge-map?
     (e.g. formal mappings between control properties)
   
 inside declarations:
-  control-spec { @name, control-label?, parameter-spec*, statement-spec*, authority* )
+  control-spec { @type, control-label?, parameter-spec*, statement-spec*, authority* )
     o expansion for run-in label?
       (so you can say to promote prop[@name='number'] into the control title for display)
   parameter-spec including lexical contraints
   statement-spec
-    o expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
+    x expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
   o authority (binding to external resource or copy)
+      stipulates local handle (@id) 
+
+o Also declarations of properties/statements on groups (again by type)
+
+
+Anything called @id must be lexically unique in document scope!
+Combined with /*/@id (document @id) should be unique across a document collection
+
+
+What I've done Wed 7/7
+  Migrated RNC to RNG/XSD; analyzed docs pipeline
+  Implemented mockup of new declarations framework for control properties
+    Including Schematron implementation, RNC
+
   o Schematron for all this stuff!  
   
 What sorts of things do we need to validate at the level of a control?
   Properties and statements that (may|must) appear
   Lexical form of properties
-    * enumerated list
-    * regex
+    x enumerated list
+    x regex
     * numbering semantics (xsl:number?)
     * referential integrity (co-occurrence constraints)
       e.g. if in section "Access Control" then ID must start 'AC' ...
 
-o remove sequence, clause, control-group properties (or anything so redundant)
+o XSLT to rip catalog declarations from a catalog
+oXygen Author CSS
+pull-downs for properties and statement types inside various controls (e.g.)
+
+oXygen macros, boilerplate and auto-insert
+  e.g. parameter names by reference to declarations
+
+x remove sequence, clause, control-group properties (or anything so redundant)
 
   Model must enable auto-production of Schematron per profile?
 
 OOO what have we done so far?
-     including screen shot
-o Run Trang and debug XSD (ugh)
+     including screen shots
+
+x Run Trang and debug XSD (yay!)
 
 Any different for control enhancements?
 o model OSCAL map? for Schematron validation
