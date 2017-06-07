@@ -17,7 +17,7 @@
   
   <xsl:template match="feed:controls">
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/strawman.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="../lib/oscal-catalog.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <!--<xsl:processing-instruction name="xml-model">href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
     
     <xsl:text>&#xA;</xsl:text>
@@ -34,16 +34,15 @@
   
   <xsl:template match="feed:control">
     <control>
-      <xsl:variable name="toAttrs" select="(control-class | family | number)[false()]"/>
-      <xsl:apply-templates select="$toAttrs"/>
-      <xsl:apply-templates select="* except $toAttrs"/>
+      <xsl:apply-templates select="title"/>
+      <xsl:apply-templates select="* except title"/>
     </control>
   </xsl:template>
   
   <xsl:template match="title">
-    <xsl:element name="{name()}">
+    <title>
       <xsl:apply-templates/>
-    </xsl:element>
+    </title>
   </xsl:template>
   
   <!-- Accounted for by 'div' grouping. -->
@@ -113,8 +112,9 @@
   
   <xsl:template match="control-enhancement">
     <control>
-      <xsl:apply-templates select="@*" mode="asElement"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="title"/>
+      <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
+      <xsl:apply-templates select="* except title"/>
     </control>
   </xsl:template>
   
@@ -200,7 +200,7 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="*">
-    <xsl:message>
+    <xsl:message terminate="yes">
       <xsl:value-of select="name()"/>
       <xsl:text> NOT MATCHED </xsl:text>
     </xsl:message>

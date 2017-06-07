@@ -11,7 +11,7 @@
 
   <xsl:template match="/">
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/strawman.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="../lib/oscal-catalog.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <!--<xsl:processing-instruction name="xml-model">href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
 
     <xsl:text>&#xA;</xsl:text>
@@ -30,11 +30,12 @@
 
   <xsl:template match="div[@class = 'MainContent']">
     <xsl:variable name="after-intro" select="h1[@id = 'toc_marker-9']/(. | following-sibling::*)"/>
-    <xsl:variable name="in-bibliography" select="h1[@id = 'toc_marker-58']/following-sibling::*"/>
+    <xsl:variable name="in-bibliography" select="h1[@id = 'toc_marker-58']/(.|following-sibling::*)"/>
     <xsl:for-each-group select="$after-intro except $in-bibliography" group-starting-with="h1">
       <xsl:variable name="category-head" select="current-group()/self::h1"/>
       <group type="control-category">
-        <xsl:apply-templates select="$category-head"/>
+        <xsl:apply-templates select="$category-head" mode="no-num"/>
+        <xsl:apply-templates select="$category-head" mode="num"/>
         <xsl:for-each-group select="current-group() except $category-head" group-starting-with="h2">
           <xsl:variable name="clause-head" select="current-group()/self::h2"/>
           <group type="clause">
@@ -43,19 +44,24 @@
               select="$first-control-head | current-group()[. >> $first-control-head]"/>
 
             <!-- Before the controls comes a title and a statement -->
-            <xsl:apply-templates select="current-group() except $controls"/>
-
+            
+            <xsl:apply-templates select="$clause-head" mode="no-num"/>
+            <xsl:apply-templates select="$clause-head" mode="num"/>
+            
+            <xsl:apply-templates select="current-group() except ($clause-head|$controls)"/>
+            
             <xsl:for-each-group select="$controls" group-starting-with="h3">
               <control type="iso-27002">
-                <prop name="category">
+<!--                <prop name="category">
                   <xsl:value-of select="$category-head/replace(normalize-space(), '^[\d\s\.]+', '')"
                   />
                 </prop>
                 <prop name="clause">
                   <xsl:value-of select="$clause-head/replace(normalize-space(), '^[\d\s\.]+', '')"/>
-                </prop>
+                </prop>-->
                 <xsl:variable name="head" select="current-group()/self::h3"/>
-                <xsl:apply-templates select="$head"/>
+                <xsl:apply-templates select="$head" mode="no-num"/>
+                <xsl:apply-templates select="$head" mode="num"/>
                 <xsl:for-each-group select="current-group() except $head"
                   group-starting-with="p[normalize-space(.) = $statement-headers]">
                   <xsl:variable name="statement-head"
@@ -130,21 +136,27 @@
   </xsl:template>
 
   <xsl:template match="h1 | h2 | h3" mode="#all">
-    <xsl:analyze-string select="." regex="^[\d\s\.]+">
-      <xsl:matching-substring>
-        <prop name="number">
-          <xsl:value-of select="normalize-space(.)"/>
-        </prop>
-      </xsl:matching-substring>
-      <xsl:non-matching-substring>
-        <title>
-          <xsl:value-of select="."/>
-        </title>
-      </xsl:non-matching-substring>
-    </xsl:analyze-string>
+    <title>
+      <xsl:apply-templates/>
+    </title>
   </xsl:template>
-
-
+  
+  <!-- title will be implicit with 'references' wrapper -->
+  <xsl:template match="h1" mode="bibliography" priority="5"/>
+  
+  <xsl:template match="h1 | h2 | h3" mode="no-num" priority="5">
+    <title>
+      <xsl:value-of select="replace(.,'^[\d\s\.]+','')"/>
+    </title>
+  </xsl:template>
+  
+  <xsl:template match="h1 | h2 | h3" mode="num" priority="5">
+    <prop name="number">
+      <xsl:value-of select="replace(.,'[^\d\s\.].*$','')"/>
+    </prop>
+  </xsl:template>
+  
+ 
   <xsl:template match="p[starts-with(., 'Objective:')]">
     <stmt name="objective">
       <p>

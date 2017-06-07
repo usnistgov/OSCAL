@@ -18,13 +18,33 @@ catalog = element catalog { title, declarations?, section*, (group+ | control+),
 declarations = ( element declarations { attribute href { text } |
   ( control-spec*, param-spec*, authority* ) } )
 
-control-spec = empty
-param-spec   = empty
+control-spec = element control-spec {
+        typeAttr,
+        element required { (property*, statement*) }?,
+        element optional { (property*, statement*) }?
+      }+
+
+property =
+  element property {
+    attribute name { xsd:NCName },
+    (element regex { text }
+     | element value { text }+)?
+  }
+  
+statement =
+  element statement {
+    attribute name { xsd:NCName },
+    title
+  }
+
+param-spec   = element parameter {
+  attribute name { text }, title?, element value { text }? }
+
 authority    = empty
 
 group = element group {
   idAttr, typeAttr,
-  prop*, title, prop*, stmt*, (group* | control*), section*, references? }
+  title, prop*, stmt*, (group* | control*), section*, references? }
 
 section = element div { idAttr, typeAttr,
   title, prose, section*, references? }
@@ -32,7 +52,7 @@ section = element div { idAttr, typeAttr,
 control =
   element control {
     idAttr, typeAttr,
-    prop*, title?, prop*,
+    title?, prop*,
     desc, stmt*,
     extensions?,
     references?
