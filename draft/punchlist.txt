@@ -60,6 +60,7 @@ inside declarations:
 
 o Also declarations of properties/statements on groups (again by type)
 
+modeling 'selections' via XML containment <select><alternative></></>
 
 Anything called @id must be lexically unique in document scope!
 Combined with /*/@id (document @id) should be unique across a document collection

@@ -1,5 +1,35 @@
 @import 'oscal.css';
 
+value, regex, statement > title {   display: block; margin-left: 2em; visibility: -oxy-collapse-text }
+
+property:before { content:
+  oxy_label(text, "property ", styles, "font-weight:bold")
+  oxy_label(text, "named ")
+  oxy_textfield(edit, '@name', columns, 12) 
+ }
+
+value:before { content:
+  oxy_label(text, "value ", styles, "font-weight:normal")
+  oxy_textfield(edit, '#text', columns, 20) 
+ }
+
+regex:before { content:
+  oxy_label(text, "matching (regex) ", styles, "font-weight:normal")
+  oxy_textfield(edit, '#text', columns, 50) 
+ }
+
+statement:before { content:
+  oxy_label(text, "statement ", styles, "font-weight:bold")
+  oxy_label(text, "named ")
+  oxy_textfield(edit, '@name', columns, 20) 
+ }
+
+
+statement > title:before { content:
+  oxy_label(text, "titled ", styles, "font-weight:normal")
+  oxy_textfield(edit, '#text', columns, 50) 
+ }
+
 prop:before { content: oxy_textfield(
           edit, '@name',
           columns, 10); }
@@ -9,5 +39,3 @@ stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           edit, '@name',
           columns, 20);
  }
-
-desc:before { content: 'description' }

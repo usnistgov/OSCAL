@@ -6,12 +6,18 @@ declarations { font-family: sans-serif; font-size: 80%;
    padding: 0.5em; margin: 0.5em; border: thin solid black; background-color: gainsboro;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-
 declarations:before { font-weight: bold; content: "Declarations" } 
 
-control-spec, optional, required
-  { padding: 0.5em; margin: 0.5em; border: thin dotted black;
+control-spec, optional, required, property, statement
+  { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+control-spec { background-color: lightsteelblue }
+property  {  border: thin outset pink } 
+statement {  border: thin outset blue } 
+
+required { background-color: lightcoral }
+optional { background-color: khaki }
 
 required:before { content: "Required: "; font-style: italic }
 optional:before { content: "Optional: "; font-style: italic }
@@ -19,7 +25,7 @@ optional:before { content: "Optional: "; font-style: italic }
 value  { display: inline-block; background-color: ivory; border: thin outset pink;
   margin: 2px; padding: 2px; font-weight: bold; font-size: 80% }
 
-regex { display: inline; font-family: monospace }
+regex { display: inline; font-family: monospace; font-size: 90%; white-space: nowrap }
 regex:before  { content: "matching (regex) "; font-family: sans-serif  }
 
 control-spec:before { font-weight: bold; content: "control type " attr(type) } 
@@ -29,6 +35,7 @@ statement:before  { content: '(statement) "' attr(name) '" ' }
 
 property { background-color: pink; margin-top: 0.5em }
 statement { background-color: cornsilk; margin-top: 0.5em }
+statement title:before { content: '(titled) '; font-weight: normal }
 statement title { margin-left: 2em }
 
 group, div, references, extensions

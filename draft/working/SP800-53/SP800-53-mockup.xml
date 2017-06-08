@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Straight" alternate="yes"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="oscal-basic.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>NIST SP800-53</title>
   <declarations>
@@ -13,7 +14,7 @@
           <value>Management</value>
         </property>
         <property name="number">
-          <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)-\d+$</regex>
+          <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)\-\d+$</regex>
         </property>
         <statement name="supplemental-guidance">
           <title>Supplemental guidance</title>
@@ -28,7 +29,6 @@
         </property>
       </optional>
     </control-spec>
-    <!-- The 'null' control expects a title and permits a desc, but no properties or statements. -->
     <control-spec type="SP800-53-enhancement">
       <optional>
         <property name="baseline-impact">

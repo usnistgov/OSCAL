@@ -34,10 +34,21 @@
   <sch:pattern>
     <sch:rule context="oscal:p//* | oscal:list//*"/>
     
-    <sch:rule context="oscal:prop | oscal:stmt">
+    
+    <sch:rule context="oscal:control">
       <sch:let name="here"          value="."/>
       <sch:let name="catalog-entry" value="key('control-spec',oscal:signature(.),$declarations)"/>
       <sch:assert test="exists($catalog-entry)">
+        <sch:name/> not recognized; signature '<sch:value-of select="oscal:signature(.)"/>'
+      </sch:assert>
+    </sch:rule>
+    
+    <sch:rule context="oscal:prop | oscal:stmt">
+      <sch:let name="here"          value="."/>
+      <sch:let name="catalog-entry" value="key('control-spec',oscal:signature(.),$declarations)"/>
+      <sch:let name="controlled"    value="parent::control[1]/key('control-spec',oscal:signature(.),$declarations)"/>
+      <!-- If the control lookup fails, the test is silenced -->
+      <sch:assert test="exists($catalog-entry) or empty($controlled)">
         <sch:name/> can't be named '<sch:value-of select="@name"/>' (no such <sch:name/> known in control of type '<sch:value-of select="ancestor::oscal:control[1]/@type"/>'
       </sch:assert>
       
@@ -60,7 +71,7 @@
   </sch:pattern>
   
   <xsl:key name="control-spec"
-    match="oscal:declarations//oscal:property | oscal:declarations//oscal:statement"
+    match="oscal:declarations/oscal:control-spec | oscal:declarations//oscal:property | oscal:declarations//oscal:statement"
     use="oscal:signature(.)"/>
   
   <!-- For a property or statement in a control ( prop | stmt) ,
@@ -69,7 +80,7 @@
   <xsl:function name="oscal:signature" as="xs:string?">
     <xsl:param name="who" as="element()"/>
     <xsl:sequence select="string-join(($who/
-      (ancestor::oscal:control-spec | ancestor::oscal:control[1])/@type,$who/@name),'-')"/>
+      (ancestor-or-self::oscal:control-spec | ancestor-or-self::oscal:control[1])/@type,$who/@name),'-')"/>
   </xsl:function>
   
 <!-- Our validation function, 'okay()', returns true for any property whose value conforms to specifications given in the document declarations
