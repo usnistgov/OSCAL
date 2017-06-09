@@ -51,8 +51,8 @@
       <prop name="number">AC-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented access control policy that addresses purpose, scope, roles,
             responsibilities, management commitment, coordination among organizational entities, and
@@ -109,7 +109,7 @@
           <li>Granting access to the system based on: (i) a valid access authorization; (ii)
             intended system usage; and (iii) other attributes as required by the organization or
             associated missions/business functions; and</li>
-          <li>Reviewing accounts [<em>Assignment: organization-defined frequency</em>].</li>
+          <li>Reviewing accounts [<assign>Assignment: organization-defined frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -130,14 +130,14 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system automatically terminates temporary and emergency accounts
-              after [<em>Assignment: organization-defined time period for each type of
-              account</em>].</p>
+              after [<assign>Assignment: organization-defined time period for each type of
+              account</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system automatically disables inactive accounts after
-                [<em>Assignment: organization-defined time period</em>].</p>
+                [<assign>Assignment: organization-defined time period</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -151,8 +151,8 @@
           <desc>
             <p>The organization:</p>
             <ol>
-              <li>Requires that users log out when [<em>Assignment: organization defined time-period
-                  of expected inactivity and/or description of when to log out</em>];</li>
+              <li>Requires that users log out when [<assign>Assignment: organization defined time-period
+                  of expected inactivity and/or description of when to log out</assign>];</li>
               <li>Determines normal time-of-day and duration usage for information system accounts; </li>
               <li>Monitors for atypical usage of information system accounts; and</li>
               <li>Reports atypical usage to designated organizational officials.</li>
@@ -226,8 +226,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system enforces dual authorization, based on organizational policies
-              and procedures for [<em>Assignment: organization-defined privileged
-              commands</em>].</p>
+              and procedures for [<assign>Assignment: organization-defined privileged
+              commands</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Dual authorization mechanisms require two forms of approval to execute. The
@@ -237,9 +237,9 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system enforces [<em>Assignment: organization-defined
-                nondiscretionary access control policies</em>] over [<em>Assignment:
-                organization-defined set of users and resources</em>] where the policy rule set for
+            <p>The information system enforces [<assign>Assignment: organization-defined
+                nondiscretionary access control policies</assign>] over [<assign>Assignment:
+                organization-defined set of users and resources</assign>] where the policy rule set for
               each policy specifies:</p>
             <ol>
               <li>Access control information (i.e., attributes) employed by the policy rule set
@@ -285,8 +285,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system prevents access to [<em>Assignment: organization-defined
-                security-relevant information</em>] except during secure, nonoperable system
+            <p>The information system prevents access to [<assign>Assignment: organization-defined
+                security-relevant information</assign>] except during secure, nonoperable system
               states.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -303,8 +303,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization encrypts or stores off-line in a secure location [<em>Assignment:
-                organization-defined user and/or system information</em>].</p>
+            <p>The organization encrypts or stores off-line in a secure location [<assign>Assignment:
+                organization-defined user and/or system information</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>The use of encryption by the organization reduces the probability of unauthorized
@@ -382,8 +382,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system enforces [<em>Assignment: organization-defined limitations on
-                the embedding of data types within other data types</em>].</p>
+            <p>The information system enforces [<assign>Assignment: organization-defined limitations on
+                the embedding of data types within other data types</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -393,14 +393,14 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system enforces [<em>Assignment: organization-defined one-way
-                flows</em>] using hardware mechanisms.</p>
+            <p>The information system enforces [<assign>Assignment: organization-defined one-way
+                flows</assign>] using hardware mechanisms.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system enforces information flow control using [<em>Assignment:
-                organization-defined security policy filters</em>] as a basis for flow control
+            <p>The information system enforces information flow control using [<assign>Assignment:
+                organization-defined security policy filters</assign>] as a basis for flow control
               decisions.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -419,22 +419,22 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system enforces the use of human review for [<em>Assignment:
-                organization-defined security policy filters</em>] when the system is not capable of
+            <p>The information system enforces the use of human review for [<assign>Assignment:
+                organization-defined security policy filters</assign>] when the system is not capable of
               making an information flow control decision.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system provides the capability for a privileged administrator to
-              enable/disable [<em>Assignment: organization-defined security policy
-              filters</em>].</p>
+              enable/disable [<assign>Assignment: organization-defined security policy
+              filters</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system provides the capability for a privileged administrator to
-              configure [<em>Assignment: organization-defined security policy filters</em>] to
+              configure [<assign>Assignment: organization-defined security policy filters</assign>] to
               support different security policies.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -474,8 +474,8 @@
           <desc>
             <p>The information system, when transferring information between different security
               domains, implements policy filters that constrain data structure and content to
-                [<em>Assignment: organization-defined information security policy
-              requirements</em>].</p>
+                [<assign>Assignment: organization-defined information security policy
+              requirements</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Constraining file lengths, allowed enumerations, character sets, schemas, and other
@@ -592,9 +592,9 @@
       <extensions>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization explicitly authorizes access to [<em>Assignment:
+            <p>The organization explicitly authorizes access to [<assign>Assignment:
                 organization-defined list of security functions (deployed in hardware, software, and
-                firmware) and security-relevant information</em>].</p>
+                firmware) and security-relevant information</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Establishing system accounts, configuring access authorizations (i.e., permissions,
@@ -608,8 +608,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization requires that users of information system accounts, or roles, with
-              access to [<em>Assignment: organization-defined list of security functions or
-                security-relevant information</em>], use non-privileged accounts, or roles, when
+              access to [<assign>Assignment: organization-defined list of security functions or
+                security-relevant information</assign>], use non-privileged accounts, or roles, when
               accessing other system functions, and if feasible, audits any use of privileged
               accounts, or roles, for such functions.</p>
           </desc>
@@ -627,8 +627,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization authorizes network access to [<em>Assignment: organization-defined
-                privileged commands</em>] only for compelling operational needs and documents the
+            <p>The organization authorizes network access to [<assign>Assignment: organization-defined
+                privileged commands</assign>] only for compelling operational needs and documents the
               rationale for such access in the security plan for the information system.</p>
           </desc>
         </control>
@@ -681,15 +681,17 @@
       <desc>
         <p>The information system:</p>
         <ol>
-          <li>Enforces a limit of [<em>Assignment: organization-defined number</em>] consecutive
-            invalid login attempts by a user during a [<em>Assignment: organization-defined time
-              period</em>]; and</li>
-          <li>Automatically [<select><choice>Selection: locks the account/node for an </choice></select>[<em>Assignment:
-              organization-defined time period</em>]<em>; locks the account/node until released by
-              an administrator; delays next login prompt according to </em>[<em>Assignment:
-              organization-defined delay algorithm</em>]] when the maximum number of unsuccessful
-            attempts is exceeded. The control applies regardless of whether the login occurs via a
-            local or network connection.</li>
+          <li>Enforces a limit of [<assign>Assignment: organization-defined number</assign>] consecutive
+            invalid login attempts by a user during a [<assign>Assignment: organization-defined time
+              period</assign>]; and</li>
+          <li>Automatically [<select>
+              <choice>Selection: locks the account/node for an [<assign>Assignment:
+                  organization-defined time period</assign>];</choice>
+              <choice> locks the account/node until released by an administrator;</choice>
+              <choice> delays next login prompt according to [<assign>Assignment:
+                  organization-defined delay algorithm</assign>]</choice>
+            </select>] when the maximum number of unsuccessful attempts is exceeded. The control
+            applies regardless of whether the login occurs via a local or network connection.</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -712,8 +714,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system provides additional protection for mobile devices accessed via
-              login by purging information from the device after [<em>Assignment:
-                organization-defined number</em>] consecutive, unsuccessful login attempts to the
+              login by purging information from the device after [<assign>Assignment:
+                organization-defined number</assign>] consecutive, unsuccessful login attempts to the
               device.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -785,15 +787,15 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system notifies the user of the number of [<select><choice>Selection: successful
-                logins/accesses; unsuccessful login/access attempts; both</choice></select>] during
-                [<em>Assignment: organization-defined time period</em>].</p>
+                logins/accesses;</choice><choice> unsuccessful login/access attempts;</choice><choice> both</choice></select>] during
+                [<assign>Assignment: organization-defined time period</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system notifies the user of [<em>Assignment: organization-defined set
-                of security-related changes to the users account</em>] during [<em>Assignment:
-                organization-defined time period</em>].</p>
+            <p>The information system notifies the user of [<assign>Assignment: organization-defined set
+                of security-related changes to the users account</assign>] during [<assign>Assignment:
+                organization-defined time period</assign>].</p>
           </desc>
         </control>
       </extensions>
@@ -806,7 +808,7 @@
       <prop name="baseline-impact">HIGH</prop>
       <desc>
         <p>The information system limits the number of concurrent sessions for each system account
-          to [<em>Assignment: organization-defined number</em>].</p>
+          to [<assign>Assignment: organization-defined number</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>The organization may define the maximum number of concurrent sessions for an information
@@ -824,7 +826,7 @@
         <p>The information system:</p>
         <ol>
           <li>Prevents further access to the system by initiating a session lock after
-              [<em>Assignment: organization-defined time period</em>] of inactivity or upon
+              [<assign>Assignment: organization-defined time period</assign>] of inactivity or upon
             receiving a request from a user; and</li>
           <li>Retains the session lock until the user reestablishes access using established
             identification and authentication procedures.</li>
@@ -924,8 +926,8 @@
       <prop name="number">AC-16</prop>
       <prop name="priority">P0</prop>
       <desc>
-        <p>The information system supports and maintains the binding of [<em>Assignment:
-            organization-defined security attributes</em>] to information in storage, in process,
+        <p>The information system supports and maintains the binding of [<assign>Assignment:
+            organization-defined security attributes</assign>] to information in storage, in process,
           and in transmission.</p>
       </desc>
       <stmt name="supplemental-guidance">
@@ -978,10 +980,10 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system displays security attributes in human-readable form on each
-              object output from the system to system output devices to identify [<em>Assignment:
+              object output from the system to system output devices to identify [<assign>Assignment:
                 organization-identified set of special dissemination, handling, or distribution
-                instructions</em>] using [<em>Assignment: organization-identified human readable,
-                standard naming conventions</em>].</p>
+                instructions</assign>] using [<assign>Assignment: organization-identified human readable,
+                standard naming conventions</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Objects output from the information system include, for example, pages, screens, or
@@ -1071,7 +1073,7 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization monitors for unauthorized remote connections to the information
-              system [<em>Assignment: organization-defined frequency</em>], and takes appropriate
+              system [<assign>Assignment: organization-defined frequency</assign>], and takes appropriate
               action if an unauthorized connection is discovered.</p>
           </desc>
         </control>
@@ -1083,10 +1085,10 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization ensures that remote sessions for accessing [<em>Assignment:
+            <p>The organization ensures that remote sessions for accessing [<assign>Assignment:
                 organization-defined list of security functions and security-relevant
-                information</em>] employ [<em>Assignment: organization-defined additional security
-                measures</em>] and are audited.</p>
+                information</assign>] employ [<assign>Assignment: organization-defined additional security
+                measures</assign>] and are audited.</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Additional security measures are typically above and beyond standard bulk or session
@@ -1096,8 +1098,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization disables [<em>Assignment: organization-defined networking protocols
-                within the information system deemed to be nonsecure</em>] except for explicitly
+            <p>The organization disables [<assign>Assignment: organization-defined networking protocols
+                within the information system deemed to be nonsecure</assign>] except for explicitly
               identified components in support of specific operational requirements.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -1167,8 +1169,8 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization monitors for unauthorized wireless connections to the information
-              system, including scanning for unauthorized wireless access points [<em>Assignment:
-                organization-defined frequency</em>], and takes appropriate action if an
+              system, including scanning for unauthorized wireless access points [<assign>Assignment:
+                organization-defined frequency</assign>], and takes appropriate action if an
               unauthorized connection is discovered.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -1248,8 +1250,8 @@
           <li>Issues specially configured mobile devices to individuals traveling to locations that
             the organization deems to be of significant risk in accordance with organizational
             policies and procedures; and</li>
-          <li>Applies [<em>Assignment: organization-defined inspection and preventative
-              measures</em>] to mobile devices returning from locations that the organization deems
+          <li>Applies [<assign>Assignment: organization-defined inspection and preventative
+              measures</assign>] to mobile devices returning from locations that the organization deems
             to be of significant risk in accordance with organizational policies and
             procedures.</li>
         </ol>
@@ -1324,7 +1326,7 @@
             <p>- Use of internal or external modems or wireless interfaces within the mobile devices
               is prohibited; and </p>
             <p>- Mobile devices and the information stored on those devices are subject to random
-              reviews/inspections by [<em>Assignment: organization-defined security officials</em>],
+              reviews/inspections by [<assign>Assignment: organization-defined security officials</assign>],
               and if classified information is found, the incident handling policy is followed.</p>
           </desc>
         </control>
@@ -1439,10 +1441,10 @@
         <ol>
           <li>Facilitates information sharing by enabling authorized users to determine whether
             access authorizations assigned to the sharing partner match the access restrictions on
-            the information for [<em>Assignment: organization-defined information sharing
-              circumstances where user discretion is required</em>]; and</li>
-          <li>Employs [<em>Assignment: list of organization-defined information sharing
-              circumstances and automated mechanisms or manual processes required</em>] to assist
+            the information for [<assign>Assignment: organization-defined information sharing
+              circumstances where user discretion is required</assign>]; and</li>
+          <li>Employs [<assign>Assignment: list of organization-defined information sharing
+              circumstances and automated mechanisms or manual processes required</assign>] to assist
             users in making information sharing/collaboration decisions.</li>
         </ol>
       </desc>
@@ -1479,7 +1481,7 @@
           <li>Reviews the proposed content of publicly accessible information for nonpublic
             information prior to posting onto the organizational information system;</li>
           <li>Reviews the content on the publicly accessible organizational information system for
-            nonpublic information [<em>Assignment: organization-defined frequency</em>]; and</li>
+            nonpublic information [<assign>Assignment: organization-defined frequency</assign>]; and</li>
           <li>Removes nonpublic information from the publicly accessible organizational information
             system, if discovered.</li>
         </ol>
@@ -1504,8 +1506,8 @@
       <prop name="number">AT-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented security awareness and training policy that addresses purpose,
             scope, roles, responsibilities, management commitment, coordination among organizational
@@ -1554,8 +1556,8 @@
       <desc>
         <p>The organization provides basic security awareness training to all information system
           users (including managers, senior executives, and contractors) as part of initial training
-          for new users, when required by system changes, and [<em>Assignment: organization-defined
-            frequency</em>] thereafter.</p>
+          for new users, when required by system changes, and [<assign>Assignment: organization-defined
+            frequency</assign>] thereafter.</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>The organization determines the appropriate content of security awareness training and
@@ -1601,7 +1603,7 @@
       <desc>
         <p>The organization provides role-based security-related training: (i) before authorizing
           access to the system or performing assigned duties; (ii) when required by system changes;
-          and (iii) [<em>Assignment: organization-defined frequency</em>] thereafter.</p>
+          and (iii) [<assign>Assignment: organization-defined frequency</assign>] thereafter.</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>The organization determines the appropriate content of security training based on
@@ -1621,8 +1623,8 @@
       <extensions>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization provides employees with initial and [<em>Assignment:
-                organization-defined frequency</em>] training in the employment and operation of
+            <p>The organization provides employees with initial and [<assign>Assignment:
+                organization-defined frequency</assign>] training in the employment and operation of
               environmental controls.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -1633,8 +1635,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization provides employees with initial and [<em>Assignment:
-                organization-defined frequency</em>] training in the employment and operation of
+            <p>The organization provides employees with initial and [<assign>Assignment:
+                organization-defined frequency</assign>] training in the employment and operation of
               physical security controls.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -1669,8 +1671,8 @@
           <li>Documents and monitors individual information system security training activities
             including basic security awareness training and specific information system security
             training; and</li>
-          <li>Retains individual training records for [<em>Assignment: organization-defined time
-              period</em>].</li>
+          <li>Retains individual training records for [<assign>Assignment: organization-defined time
+              period</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -1715,8 +1717,8 @@
       <prop name="number">AU-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented audit and accountability policy that addresses purpose, scope,
             roles, responsibilities, management commitment, coordination among organizational
@@ -1758,18 +1760,18 @@
         <p>The organization:</p>
         <ol>
           <li>Determines, based on a risk assessment and mission/business needs, that the
-            information system must be capable of auditing the following events: [<em>Assignment:
-              organization-defined list of auditable events</em>];</li>
+            information system must be capable of auditing the following events: [<assign>Assignment:
+              organization-defined list of auditable events</assign>];</li>
           <li>Coordinates the security audit function with other organizational entities requiring
             audit-related information to enhance mutual support and to help guide the selection of
             auditable events;</li>
           <li>Provides a rationale for why the list of auditable events are deemed to be adequate to
             support after-the-fact investigations of security incidents; and</li>
           <li>Determines, based on current threat information and ongoing assessment of risk, that
-            the following events are to be audited within the information system: [<em>Assignment:
+            the following events are to be audited within the information system: [<assign>Assignment:
               organization-defined subset of the auditable events defined in AU-2 a. to be audited
               along with the frequency of (or situation requiring) auditing for each identified
-              event</em>].</li>
+              event</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -1800,8 +1802,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization reviews and updates the list of auditable events [<em>Assignment:
-                organization-defined frequency</em>].</p>
+            <p>The organization reviews and updates the list of auditable events [<assign>Assignment:
+                organization-defined frequency</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>The list of auditable events is defined in AU-2.</p>
@@ -1845,8 +1847,8 @@
       <extensions>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system includes [<em>Assignment: organization-defined additional,
-                more detailed information</em>] in the audit records for audit events identified by
+            <p>The information system includes [<assign>Assignment: organization-defined additional,
+                more detailed information</assign>] in the audit records for audit events identified by
               type, location, or subject.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -1859,7 +1861,7 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization centrally manages the content of audit records generated by
-                [<em>Assignment: organization-defined information system components</em>].</p>
+                [<assign>Assignment: organization-defined information system components</assign>].</p>
           </desc>
         </control>
       </extensions>
@@ -1889,9 +1891,9 @@
         <ol>
           <li>Alerts designated organizational officials in the event of an audit processing
             failure; and</li>
-          <li>Takes the following additional actions: [<em>Assignment: organization-defined actions
+          <li>Takes the following additional actions: [<assign>Assignment: organization-defined actions
               to be taken (e.g., shut down information system, overwrite oldest audit records, stop
-              generating audit records)</em>].</li>
+              generating audit records)</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -1904,7 +1906,7 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The information system provides a warning when allocated audit record storage volume
-              reaches [<em>Assignment: organization-defined percentage</em>] of maximum audit record
+              reaches [<assign>Assignment: organization-defined percentage</assign>] of maximum audit record
               storage capacity.</p>
           </desc>
         </control>
@@ -1912,14 +1914,14 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The information system provides a real-time alert when the following audit failure
-              events occur: [<em>Assignment: organization-defined audit failure events requiring
-                real-time alerts</em>].</p>
+              events occur: [<assign>Assignment: organization-defined audit failure events requiring
+                real-time alerts</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system enforces configurable traffic volume thresholds representing
-              auditing capacity for network traffic and [<select><choice>Selection: rejects or delays</choice></select>]
+              auditing capacity for network traffic and [<select><choice>Selection: rejects</choice><choice> or delays</choice></select>]
               network traffic above those thresholds.</p>
           </desc>
         </control>
@@ -1939,8 +1941,8 @@
       <desc>
         <p>The organization:</p>
         <ol>
-          <li>Reviews and analyzes information system audit records [<em>Assignment:
-              organization-defined frequency</em>] for indications of inappropriate or unusual
+          <li>Reviews and analyzes information system audit records [<assign>Assignment:
+              organization-defined frequency</assign>] for indications of inappropriate or unusual
             activity, and reports findings to designated organizational officials; and</li>
           <li>Adjusts the level of audit review, analysis, and reporting within the information
             system when there is a change in risk to organizational operations, organizational
@@ -2074,8 +2076,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system synchronizes internal information system clocks
-                [<em>Assignment: organization-defined frequency</em>] with [<em>Assignment:
-                organization-defined authoritative time source</em>].</p>
+                [<assign>Assignment: organization-defined frequency</assign>] with [<assign>Assignment:
+                organization-defined authoritative time source</assign>].</p>
           </desc>
         </control>
       </extensions>
@@ -2103,8 +2105,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system backs up audit records [<em>Assignment: organization-defined
-                frequency</em>] onto a different system or media than the system being audited.</p>
+            <p>The information system backs up audit records [<assign>Assignment: organization-defined
+                frequency</assign>] onto a different system or media than the system being audited.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -2218,7 +2220,7 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization employs [<select><choice>Selection: FIPS-validated; NSA-approved</choice></select>]
+            <p>The organization employs [<select><choice>Selection: FIPS-validated;</choice><choice> NSA-approved</choice></select>]
               cryptography to implement digital signatures.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -2233,8 +2235,8 @@
       <prop name="number">AU-11</prop>
       <prop name="priority">P3</prop>
       <desc>
-        <p>The organization retains audit records for [<em>Assignment: organization-defined time
-            period consistent with records retention policy</em>] to provide support for
+        <p>The organization retains audit records for [<assign>Assignment: organization-defined time
+            period consistent with records retention policy</assign>] to provide support for
           after-the-fact investigations of security incidents and to meet regulatory and
           organizational information retention requirements.</p>
       </desc>
@@ -2258,8 +2260,8 @@
         <p>The information system:</p>
         <ol>
           <li>Provides audit record generation capability for the list of auditable events defined
-            in AU-2 at [<em>Assignment: organization-defined information system
-            components</em>];</li>
+            in AU-2 at [<assign>Assignment: organization-defined information system
+            components</assign>];</li>
           <li>Allows designated organizational personnel to select which auditable events are to be
             audited by specific components of the system; and</li>
           <li>Generates audit records for the list of audited events defined in AU-2 with the
@@ -2277,11 +2279,11 @@
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The information system compiles audit records from [<em>Assignment:
-                organization-defined information system components</em>] into a system-wide (logical
-              or physical) audit trail that is time-correlated to within [<em>Assignment:
+            <p>The information system compiles audit records from [<assign>Assignment:
+                organization-defined information system components</assign>] into a system-wide (logical
+              or physical) audit trail that is time-correlated to within [<assign>Assignment:
                 organization-defined level of tolerance for relationship between time stamps of
-                individual records in the audit trail</em>].</p>
+                individual records in the audit trail</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>The audit trail is time-correlated if the time stamp in the individual audit records
@@ -2314,8 +2316,8 @@
       <prop name="priority">P0</prop>
       <desc>
         <p>The organization monitors open source information for evidence of unauthorized
-          exfiltration or disclosure of organizational information [<em>Assignment:
-            organization-defined frequency</em>].</p>
+          exfiltration or disclosure of organizational information [<assign>Assignment:
+            organization-defined frequency</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>None.</p>
@@ -2356,8 +2358,8 @@
       <prop name="number">CA-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>Formal, documented security assessment and authorization policies that address
             purpose, scope, roles, responsibilities, management commitment, coordination among
@@ -2417,8 +2419,8 @@
                 responsibilities;</li>
             </ol>
           </li>
-          <li>Assesses the security controls in the information system [<em>Assignment:
-              organization-defined frequency</em>] to determine the extent to which the controls are
+          <li>Assesses the security controls in the information system [<assign>Assignment:
+              organization-defined frequency</assign>] to determine the extent to which the controls are
             implemented correctly, operating as intended, and producing the desired outcome with
             respect to meeting the security requirements for the system;</li>
           <li>Produces a security assessment report that documents the results of the assessment;
@@ -2499,11 +2501,17 @@
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The organization includes as part of security control assessments, [<em>Assignment:
-                organization-defined frequency</em>], [<select><choice>Selection: announced; unannounced</choice></select>],
-                [<select><choice>Selection: in-depth monitoring; malicious user testing; penetration testing;
-                red team exercises; </choice></select>[<em>Assignment: organization-defined other forms of
-                security testing</em>]].</p>
+            <p>The organization includes as part of security control assessments,
+                [<assign>Assignment: organization-defined frequency</assign>], [<select>
+                <choice>Selection: announced;</choice>
+                <choice> unannounced</choice>
+              </select>], [<select>
+                <choice>Selection: in-depth monitoring;</choice>
+                <choice> malicious user testing;</choice>
+                <choice> penetration testing; red team exercises;</choice>
+                <choice>[<assign>Assignment: organization-defined other forms of security
+                    testing</assign>]] </choice>
+              </select>.</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Penetration testing exercises both physical and technical security controls. A
@@ -2656,8 +2664,8 @@
             organizations planned remedial actions to correct weaknesses or deficiencies noted
             during the assessment of the security controls and to reduce or eliminate known
             vulnerabilities in the system; and</li>
-          <li>Updates existing plan of action and milestones [<em>Assignment: organization-defined
-              frequency</em>] based on the findings from security controls assessments, security
+          <li>Updates existing plan of action and milestones [<assign>Assignment: organization-defined
+              frequency</assign>] based on the findings from security controls assessments, security
             impact analyses, and continuous monitoring activities.</li>
         </ol>
       </desc>
@@ -2697,8 +2705,8 @@
             the information system;</li>
           <li>Ensures that the authorizing official authorizes the information system for processing
             before commencing operations; and</li>
-          <li>Updates the security authorization [<em>Assignment: organization-defined
-              frequency</em>].</li>
+          <li>Updates the security authorization [<assign>Assignment: organization-defined
+              frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -2754,7 +2762,7 @@
           <li>Ongoing security control assessments in accordance with the organizational continuous
             monitoring strategy; and</li>
           <li>Reporting the security state of the information system to appropriate organizational
-            officials [<em>Assignment: organization-defined frequency</em>].</li>
+            officials [<assign>Assignment: organization-defined frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -2789,11 +2797,18 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization plans, schedules, and conducts assessments [<em>Assignment:
-                organization-defined frequency</em>], [<select><choice>Selection: announced; unannounced</choice></select>],
-                [<select><choice>Selection: in-depth monitoring; malicious user testing; penetration testing;
-                red team exercises; </choice></select>[<em>Assignment: organization-defined other forms of
-                security assessment</em>]] to ensure compliance with all vulnerability mitigation
+            <p>The organization plans, schedules, and conducts assessments [<assign>Assignment:
+                organization-defined frequency</assign>], [<select>
+                <choice>Selection: announced;</choice>
+                <choice> unannounced</choice>
+              </select>], [<select>
+                <choice>Selection: in-depth monitoring;</choice>
+                <choice> malicious user testing;</choice>
+                <choice> penetration testing;</choice>
+                <choice> red team exercises;</choice>
+                <choice> [<assign>Assignment: organization-defined other forms of security
+                assessment</assign>]]</choice>
+              </select> to ensure compliance with all vulnerability mitigation
               procedures.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -2832,8 +2847,8 @@
       <prop name="number">CM-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented configuration management policy that addresses purpose, scope,
             roles, responsibilities, management commitment, coordination among organizational
@@ -2894,8 +2909,8 @@
             <p>The organization reviews and updates the baseline configuration of the information
               system:</p>
             <ol>
-              <li>[<em>Assignment: organization-defined frequency</em>];</li>
-              <li>When required due to [<em>Assignment organization-defined circumstances</em>];
+              <li>[<assign>Assignment: organization-defined frequency</assign>];</li>
+              <li>When required due to [<assign>Assignment organization-defined circumstances</assign>];
                 and</li>
               <li>As an integral part of information system component installations and
                 upgrades.</li>
@@ -2930,8 +2945,8 @@
           <desc>
             <p>The organization:</p>
             <ol>
-              <li>Develops and maintains [<em>Assignment: organization-defined list of software
-                  programs not authorized to execute on the information system</em>]; and</li>
+              <li>Develops and maintains [<assign>Assignment: organization-defined list of software
+                  programs not authorized to execute on the information system</assign>]; and</li>
               <li>Employs an allow-all, deny-by-exception authorization policy to identify software
                 allowed to execute on the information system.</li>
             </ol>
@@ -2942,8 +2957,8 @@
           <desc>
             <p>The organization:</p>
             <ol>
-              <li>Develops and maintains [<em>Assignment: organization-defined list of software
-                  programs authorized to execute on the information system</em>]; and</li>
+              <li>Develops and maintains [<assign>Assignment: organization-defined list of software
+                  programs authorized to execute on the information system</assign>]; and</li>
               <li>Employs a deny-all, permit-by-exception authorization policy to identify software
                 allowed to execute on the information system.</li>
             </ol>
@@ -2982,10 +2997,10 @@
           <li>Audits activities associated with configuration-controlled changes to the system;
             and</li>
           <li>Coordinates and provides oversight for configuration change control activities through
-              [<em>Assignment: organization-defined configuration change control element (e.g.,
-              committee, board</em>] that convenes [<select><choice>Selection: (one or more):
-              </choice></select>[<em>Assignment: organization-defined frequency</em>]<em>; </em>[<em>Assignment:
-              organization-defined configuration change conditions</em>]].</li>
+              [<assign>Assignment: organization-defined configuration change control element (e.g.,
+              committee, board</assign>] that convenes [<select><choice>Selection: (one or more):
+                [<assign>Assignment: organization-defined frequency</assign>];</choice><choice> [<assign>Assignment:
+                  organization-defined configuration change conditions</assign>]]</choice></select>.</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -3010,8 +3025,8 @@
             <ol>
               <li>Document proposed changes to the information system;</li>
               <li>Notify designated approval authorities;</li>
-              <li>Highlight approvals that have not been received by [<em>Assignment:
-                  organization-defined time period</em>];</li>
+              <li>Highlight approvals that have not been received by [<assign>Assignment:
+                  organization-defined time period</assign>];</li>
               <li>Inhibit change until designated approvals are received; and</li>
               <li>Document completed changes to the information system.</li>
             </ol>
@@ -3049,8 +3064,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization requires an information security representative to be a member of
-              the [<em>Assignment: organization-defined configuration change control element (e.g.,
-                committee, board)</em>].</p>
+              the [<assign>Assignment: organization-defined configuration change control element (e.g.,
+                committee, board)</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Information security representatives can include, for example, information system
@@ -3160,16 +3175,16 @@
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The organization conducts audits of information system changes [<em>Assignment:
-                organization-defined frequency</em>] and when indications so warrant to determine
+            <p>The organization conducts audits of information system changes [<assign>Assignment:
+                organization-defined frequency</assign>] and when indications so warrant to determine
               whether unauthorized changes have occurred.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The information system prevents the installation of [<em>Assignment:
-                organization-defined critical software programs</em>] that are not signed with a
+            <p>The information system prevents the installation of [<assign>Assignment:
+                organization-defined critical software programs</assign>] that are not signed with a
               certificate that is recognized and approved by the organization.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -3179,9 +3194,9 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization enforces a two-person rule for changes to [<em>Assignment:
+            <p>The organization enforces a two-person rule for changes to [<assign>Assignment:
                 organization-defined information system components and system-level
-              information</em>].</p>
+              information</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -3192,7 +3207,7 @@
                 software, and firmware components and system information directly within a
                 production environment; and</li>
               <li>Reviews and reevaluates information system developer/integrator privileges
-                  [<em>Assignment: organization-defined frequency</em>].</li>
+                  [<assign>Assignment: organization-defined frequency</assign>].</li>
             </ol>
           </desc>
         </control>
@@ -3204,8 +3219,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system automatically implements [<em>Assignment: organization-defined
-                safeguards and countermeasures</em>] if security functions (or mechanisms) are
+            <p>The information system automatically implements [<assign>Assignment: organization-defined
+                safeguards and countermeasures</assign>] if security functions (or mechanisms) are
               changed inappropriately.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -3227,8 +3242,8 @@
         <p>The organization:</p>
         <ol>
           <li>Establishes and documents mandatory configuration settings for information technology
-            products employed within the information system using [<em>Assignment:
-              organization-defined security configuration checklists</em>] that reflect the most
+            products employed within the information system using [<assign>Assignment:
+              organization-defined security configuration checklists</assign>] that reflect the most
             restrictive mode consistent with operational requirements;</li>
           <li>Implements the configuration settings;</li>
           <li>Identifies, documents, and approves exceptions from the mandatory configuration
@@ -3272,7 +3287,7 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization employs automated mechanisms to respond to unauthorized changes to
-                [<em>Assignment: organization-defined configuration settings</em>].</p>
+                [<assign>Assignment: organization-defined configuration settings</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Responses to unauthorized changes to configuration settings can include, for example,
@@ -3340,8 +3355,8 @@
       <desc>
         <p>The organization configures the information system to provide only essential capabilities
           and specifically prohibits or restricts the use of the following functions, ports,
-          protocols, and/or services: [<em>Assignment: organization-defined list of prohibited or
-            restricted functions, ports, protocols, and/or services</em>].</p>
+          protocols, and/or services: [<assign>Assignment: organization-defined list of prohibited or
+            restricted functions, ports, protocols, and/or services</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>Information systems are capable of providing a wide variety of functions and services.
@@ -3367,8 +3382,8 @@
       <extensions>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization reviews the information system [<em>Assignment: organization-defined
-                frequency</em>] to identify and eliminate unnecessary functions, ports, protocols,
+            <p>The organization reviews the information system [<assign>Assignment: organization-defined
+                frequency</assign>] to identify and eliminate unnecessary functions, ports, protocols,
               and/or services.</p>
           </desc>
         </control>
@@ -3376,8 +3391,8 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization employs automated mechanisms to prevent program execution in
-              accordance with [<select><choice>Selection (one or more): list of authorized software programs;
-                list of unauthorized software programs; rules authorizing the terms and conditions
+              accordance with [<select><choice>Selection (one or more): list of authorized software programs;</choice><choice>
+                list of unauthorized software programs;</choice><choice> rules authorizing the terms and conditions
                 of software program usage</choice></select>].</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -3386,8 +3401,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization ensures compliance with [<em>Assignment: organization-defined
-                registration requirements for ports, protocols, and services</em>].</p>
+            <p>The organization ensures compliance with [<assign>Assignment: organization-defined
+                registration requirements for ports, protocols, and services</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Organizations use the registration process to manage, track, and provide oversight
@@ -3408,8 +3423,8 @@
           <li>Accurately reflects the current information system;</li>
           <li>Is consistent with the authorization boundary of the information system;</li>
           <li>Is at the level of granularity deemed necessary for tracking and reporting;</li>
-          <li>Includes [<em>Assignment: organization-defined information deemed necessary to achieve
-              effective property accountability</em>]; and</li>
+          <li>Includes [<assign>Assignment: organization-defined information deemed necessary to achieve
+              effective property accountability</assign>]; and</li>
           <li>Is available for review and audit by designated organizational officials.</li>
         </ol>
       </desc>
@@ -3448,7 +3463,7 @@
           <desc>
             <p>The organization:</p>
             <ol>
-              <li>Employs automated mechanisms [<em>Assignment: organization-defined frequency</em>]
+              <li>Employs automated mechanisms [<assign>Assignment: organization-defined frequency</assign>]
                 to detect the addition of unauthorized components/devices into the information
                 system; and</li>
               <li>Disables network access by such components/devices or notifies designated
@@ -3469,8 +3484,8 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization includes in property accountability information for information
-              system components, a means for identifying by [<select><choice>Selection (one or more): name;
-                position; role</choice></select>] individuals responsible for administering those components.</p>
+              system components, a means for identifying by [<select><choice>Selection (one or more): name;</choice><choice>
+                position;</choice><choice> role</choice></select>] individuals responsible for administering those components.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -3567,8 +3582,8 @@
       <prop name="number">CP-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented contingency planning policy that addresses purpose, scope, roles,
             responsibilities, management commitment, coordination among organizational entities, and
@@ -3631,18 +3646,18 @@
               <li>Is reviewed and approved by designated officials within the organization;</li>
             </ol>
           </li>
-          <li>Distributes copies of the contingency plan to [<em>Assignment: organization-defined
+          <li>Distributes copies of the contingency plan to [<assign>Assignment: organization-defined
               list of key contingency personnel (identified by name and/or by role) and
-              organizational elements</em>];</li>
+              organizational elements</assign>];</li>
           <li>Coordinates contingency planning activities with incident handling activities;</li>
-          <li>Reviews the contingency plan for the information system [<em>Assignment:
-              organization-defined frequency</em>];</li>
+          <li>Reviews the contingency plan for the information system [<assign>Assignment:
+              organization-defined frequency</assign>];</li>
           <li>Revises the contingency plan to address changes to the organization, information
             system, or environment of operation and problems encountered during contingency plan
             implementation, execution, or testing; and</li>
-          <li>Communicates contingency plan changes to [<em>Assignment: organization-defined list of
+          <li>Communicates contingency plan changes to [<assign>Assignment: organization-defined list of
               key contingency personnel (identified by name and/or by role) and organizational
-              elements</em>].</li>
+              elements</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -3684,14 +3699,14 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization plans for the resumption of essential missions and business
-              functions within [<em>Assignment: organization-defined time period</em>] of
+              functions within [<assign>Assignment: organization-defined time period</assign>] of
               contingency plan activation.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization plans for the full resumption of missions and business functions
-              within [<em>Assignment: organization-defined time period</em>] of contingency plan
+              within [<assign>Assignment: organization-defined time period</assign>] of contingency plan
               activation.</p>
           </desc>
         </control>
@@ -3731,8 +3746,8 @@
       <prop name="priority">P2</prop>
       <desc>
         <p>The organization trains personnel in their contingency roles and responsibilities with
-          respect to the information system and provides refresher training [<em>Assignment:
-            organization-defined frequency</em>].</p>
+          respect to the information system and provides refresher training [<assign>Assignment:
+            organization-defined frequency</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>None.</p>
@@ -3771,8 +3786,8 @@
         <p>The organization:</p>
         <ol>
           <li>Tests and/or exercises the contingency plan for the information system
-              [<em>Assignment: organization-defined frequency</em>] using [<em>Assignment:
-              organization-defined tests and/or exercises</em>] to determine the plans effectiveness
+              [<assign>Assignment: organization-defined frequency</assign>] using [<assign>Assignment:
+              organization-defined tests and/or exercises</assign>] to determine the plans effectiveness
             and the organizations readiness to execute the plan; and</li>
           <li>Reviews the contingency plan test/exercise results and initiates corrective
             actions.</li>
@@ -3910,8 +3925,8 @@
         <ol>
           <li>Establishes an alternate processing site including necessary agreements to permit the
             resumption of information system operations for essential missions and business
-            functions within [<em>Assignment: organization-defined time period consistent with
-              recovery time objectives</em>] when the primary processing capabilities are
+            functions within [<assign>Assignment: organization-defined time period consistent with
+              recovery time objectives</assign>] when the primary processing capabilities are
             unavailable; and</li>
           <li>Ensures that equipment and supplies required to resume operations are available at the
             alternate site or contracts are in place to support delivery to the site in time to
@@ -3976,8 +3991,8 @@
       <desc>
         <p>The organization establishes alternate telecommunications services including necessary
           agreements to permit the resumption of information system operations for essential
-          missions and business functions within [<em>Assignment: organization-defined time
-            period</em>] when the primary telecommunications capabilities are unavailable.</p>
+          missions and business functions within [<assign>Assignment: organization-defined time
+            period</assign>] when the primary telecommunications capabilities are unavailable.</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>Related control: CP-2.</p>
@@ -4039,14 +4054,14 @@
         <p>The organization:</p>
         <ol>
           <li>Conducts backups of user-level information contained in the information system
-              [<em>Assignment: organization-defined frequency consistent with recovery time and
-              recovery point objectives</em>];</li>
+              [<assign>Assignment: organization-defined frequency consistent with recovery time and
+              recovery point objectives</assign>];</li>
           <li>Conducts backups of system-level information contained in the information system
-              [<em>Assignment: organization-defined frequency consistent with recovery time and
-              recovery point objectives</em>];</li>
+              [<assign>Assignment: organization-defined frequency consistent with recovery time and
+              recovery point objectives</assign>];</li>
           <li>Conducts backups of information system documentation including security-related
-            documentation [<em>Assignment: organization-defined frequency consistent with recovery
-              time and recovery point objectives</em>]; and</li>
+            documentation [<assign>Assignment: organization-defined frequency consistent with recovery
+              time and recovery point objectives</assign>]; and</li>
           <li>Protects the confidentiality and integrity of backup information at the storage
             location.</li>
         </ol>
@@ -4062,8 +4077,8 @@
       <extensions>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization tests backup information [<em>Assignment: organization-defined
-                frequency</em>] to verify media reliability and information integrity.</p>
+            <p>The organization tests backup information [<assign>Assignment: organization-defined
+                frequency</assign>] to verify media reliability and information integrity.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -4090,8 +4105,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization transfers information system backup information to the alternate
-              storage site [<em>Assignment: organization-defined time period and transfer rate
-                consistent with the recovery time and recovery point objectives</em>].</p>
+              storage site [<assign>Assignment: organization-defined time period and transfer rate
+                consistent with the recovery time and recovery point objectives</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -4152,25 +4167,27 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization provides compensating security controls for [<em>Assignment:
+            <p>The organization provides compensating security controls for [<assign>Assignment:
                 organization-defined circumstances that can inhibit recovery and reconstitution to a
-                known state</em>].</p>
+                known state</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization provides the capability to reimage information system components
-              within [<em>Assignment: organization-defined restoration time-periods</em>] from
+              within [<assign>Assignment: organization-defined restoration time-periods</assign>] from
               configuration-controlled and integrity-protected disk images representing a secure,
               operational state for the components.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization provides [<select><choice>Selection: real-time; near-real-time</choice></select>]
-                [<em>Assignment: organization-defined failover capability for the information
-                system</em>].</p>
+            <p>The organization provides [<select>
+                <choice>Selection: real-time;</choice>
+                <choice> near-real-time</choice>
+              </select>] [<assign>Assignment: organization-defined failover capability for the
+                information system</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Examples of failover capability are incorporating mirrored information system
@@ -4207,8 +4224,8 @@
       <prop name="number">IA-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented identification and authentication policy that addresses purpose,
             scope, roles, responsibilities, management commitment, coordination among organizational
@@ -4357,8 +4374,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system uses [<em>Assignment: organization-defined replay-resistant
-                authentication mechanisms</em>] for network access to privileged accounts.</p>
+            <p>The information system uses [<assign>Assignment: organization-defined replay-resistant
+                authentication mechanisms</assign>] for network access to privileged accounts.</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>An authentication process resists replay attacks if it is impractical to achieve a
@@ -4371,8 +4388,8 @@
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The information system uses [<em>Assignment: organization-defined replay-resistant
-                authentication mechanisms</em>] for network access to non-privileged accounts.</p>
+            <p>The information system uses [<assign>Assignment: organization-defined replay-resistant
+                authentication mechanisms</assign>] for network access to non-privileged accounts.</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>An authentication process resists replay attacks if it is impractical to achieve a
@@ -4420,8 +4437,8 @@
       <prop name="number">IA-3</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The information system uniquely identifies and authenticates [<em>Assignment:
-            organization-defined list of specific and/or types of devices</em>] before establishing
+        <p>The information system uniquely identifies and authenticates [<assign>Assignment:
+            organization-defined list of specific and/or types of devices</assign>] before establishing
           a connection.</p>
       </desc>
       <stmt name="supplemental-guidance">
@@ -4480,10 +4497,10 @@
           <li>Selecting an identifier that uniquely identifies an individual or device;</li>
           <li>Assigning the user identifier to the intended party or the device identifier to the
             intended device;</li>
-          <li>Preventing reuse of user or device identifiers for [<em>Assignment:
-              organization-defined time period</em>]; and</li>
-          <li>Disabling the user identifier after [<em>Assignment: organization-defined time period
-              of inactivity</em>].</li>
+          <li>Preventing reuse of user or device identifiers for [<assign>Assignment:
+              organization-defined time period</assign>]; and</li>
+          <li>Disabling the user identifier after [<assign>Assignment: organization-defined time period
+              of inactivity</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -4526,8 +4543,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization manages user identifiers by uniquely identifying the user as
-                [<em>Assignment: organization-defined characteristic identifying user
-              status</em>].</p>
+                [<assign>Assignment: organization-defined characteristic identifying user
+              status</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Characteristics identifying user status include, for example, contractors and foreign
@@ -4590,8 +4607,8 @@
           <li>Changing default content of authenticators upon information system installation;</li>
           <li>Establishing minimum and maximum lifetime restrictions and reuse conditions for
             authenticators (if appropriate);</li>
-          <li>Changing/refreshing authenticators [<em>Assignment: organization-defined time period
-              by authenticator type</em>];</li>
+          <li>Changing/refreshing authenticators [<assign>Assignment: organization-defined time period
+              by authenticator type</assign>];</li>
           <li>Protecting authenticator content from unauthorized disclosure and modification;
             and</li>
           <li>Requiring users to take, and having devices implement, specific measures to safeguard
@@ -4627,17 +4644,17 @@
           <desc>
             <p>The information system, for password-based authentication:</p>
             <ol>
-              <li>Enforces minimum password complexity of [<em>Assignment: organization-defined
+              <li>Enforces minimum password complexity of [<assign>Assignment: organization-defined
                   requirements for case sensitivity, number of characters, mix of upper-case
                   letters, lower-case letters, numbers, and special characters, including minimum
-                  requirements for each type</em>];</li>
-              <li>Enforces at least a [<em>Assignment: organization-defined number of changed
-                  characters</em>] when new passwords are created;</li>
+                  requirements for each type</assign>];</li>
+              <li>Enforces at least a [<assign>Assignment: organization-defined number of changed
+                  characters</assign>] when new passwords are created;</li>
               <li>Encrypts passwords in storage and in transmission;</li>
-              <li>Enforces password minimum and maximum lifetime restrictions of [<em>Assignment:
-                  organization-defined numbers for lifetime minimum, lifetime maximum</em>];
+              <li>Enforces password minimum and maximum lifetime restrictions of [<assign>Assignment:
+                  organization-defined numbers for lifetime minimum, lifetime maximum</assign>];
                 and</li>
-              <li>Prohibits password reuse for [<em>Assignment: organization-defined number</em>]
+              <li>Prohibits password reuse for [<assign>Assignment: organization-defined number</assign>]
                 generations.</li>
             </ol>
           </desc>
@@ -4667,8 +4684,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization requires that the registration process to receive [<em>Assignment:
-                organization-defined types of and/or specific authenticators</em>] be carried out in
+            <p>The organization requires that the registration process to receive [<assign>Assignment:
+                organization-defined types of and/or specific authenticators</assign>] be carried out in
               person before a designated registration authority with authorization by a designated
               organizational official (e.g., a supervisor).</p>
           </desc>
@@ -4719,7 +4736,7 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization takes [<em>Assignment: organization-defined measures</em>] to manage
+            <p>The organization takes [<assign>Assignment: organization-defined measures</assign>] to manage
               the risk of compromise due to individuals having accounts on multiple information
               systems.</p>
           </desc>
@@ -4850,8 +4867,8 @@
       <prop name="number">IR-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented incident response policy that addresses purpose, scope, roles,
             responsibilities, management commitment, coordination among organizational entities, and
@@ -4901,8 +4918,8 @@
         <ol>
           <li>Trains personnel in their incident response roles and responsibilities with respect to
             the information system; and</li>
-          <li>Provides refresher training [<em>Assignment: organization-defined
-            frequency</em>].</li>
+          <li>Provides refresher training [<assign>Assignment: organization-defined
+            frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -4942,8 +4959,8 @@
       <prop name="priority">P2</prop>
       <desc>
         <p>The organization tests and/or exercises the incident response capability for the
-          information system [<em>Assignment: organization-defined frequency</em>] using
-            [<em>Assignment: organization-defined tests and/or exercises</em>] to determine the
+          information system [<assign>Assignment: organization-defined frequency</assign>] using
+            [<assign>Assignment: organization-defined tests and/or exercises</assign>] to determine the
           incident response effectiveness and documents the results.</p>
       </desc>
       <stmt name="supplemental-guidance">
@@ -5046,7 +5063,7 @@
           <desc>
             <p>The organization implements a configurable capability to automatically disable the
               information system if any of the following security violations are detected:
-                [<em>Assignment: organization-defined list of security violations</em>].</p>
+                [<assign>Assignment: organization-defined list of security violations</assign>].</p>
           </desc>
         </control>
       </extensions>
@@ -5104,8 +5121,8 @@
         <p>The organization:</p>
         <ol>
           <li>Requires personnel to report suspected security incidents to the organizational
-            incident response capability within [<em>Assignment: organization-defined
-              time-period</em>]; and</li>
+            incident response capability within [<assign>Assignment: organization-defined
+              time-period</assign>]; and</li>
           <li>Reports security incident information to designated authorities.</li>
         </ol>
       </desc>
@@ -5217,16 +5234,16 @@
               <li>Is reviewed and approved by designated officials within the organization;</li>
             </ol>
           </li>
-          <li>Distributes copies of the incident response plan to [<em>Assignment:
+          <li>Distributes copies of the incident response plan to [<assign>Assignment:
               organization-defined list of incident response personnel (identified by name and/or by
-              role) and organizational elements</em>];</li>
-          <li>Reviews the incident response plan [<em>Assignment: organization-defined
-              frequency</em>];</li>
+              role) and organizational elements</assign>];</li>
+          <li>Reviews the incident response plan [<assign>Assignment: organization-defined
+              frequency</assign>];</li>
           <li>Revises the incident response plan to address system/organizational changes or
             problems encountered during plan implementation, execution, or testing; and</li>
-          <li>Communicates incident response plan changes to [<em>Assignment: organization-defined
+          <li>Communicates incident response plan changes to [<assign>Assignment: organization-defined
               list of incident response personnel (identified by name and/or by role) and
-              organizational elements</em>].</li>
+              organizational elements</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -5250,8 +5267,8 @@
       <prop name="number">MA-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented information system maintenance policy that addresses purpose,
             scope, roles, responsibilities, management commitment, coordination among organizational
@@ -5480,7 +5497,7 @@
           <desc>
             <p>The organization requires that:</p>
             <ol>
-              <li>Maintenance personnel notify [<em>Assignment: organization-defined personnel</em>]
+              <li>Maintenance personnel notify [<assign>Assignment: organization-defined personnel</assign>]
                 when non-local maintenance is planned (i.e., date/time); and</li>
               <li>A designated organizational official with specific information
                 security/information system knowledge approves the non-local maintenance.</li>
@@ -5618,10 +5635,10 @@
       <prop name="number">MA-6</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization obtains maintenance support and/or spare parts for [<em>Assignment:
+        <p>The organization obtains maintenance support and/or spare parts for [<assign>Assignment:
             organization-defined list of security-critical information system components and/or key
-            information technology components</em>] within [<em>Assignment: organization-defined
-            time period</em>] of failure.</p>
+            information technology components</assign>] within [<assign>Assignment: organization-defined
+            time period</assign>] of failure.</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>The organization specifies those information system components that, when not
@@ -5641,8 +5658,8 @@
       <prop name="number">MP-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented media protection policy that addresses purpose, scope, roles,
             responsibilities, management commitment, coordination among organizational entities, and
@@ -5680,10 +5697,10 @@
       <prop name="number">MP-2</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization restricts access to [<em>Assignment: organization-defined types of
-            digital and non-digital media</em>] to [<em>Assignment: organization-defined list of
-            authorized individuals</em>] using [<em>Assignment: organization-defined security
-            measures</em>].</p>
+        <p>The organization restricts access to [<assign>Assignment: organization-defined types of
+            digital and non-digital media</assign>] to [<assign>Assignment: organization-defined list of
+            authorized individuals</assign>] using [<assign>Assignment: organization-defined security
+            measures</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>Information system media includes both digital media (e.g., diskettes, magnetic tapes,
@@ -5743,9 +5760,9 @@
             information system media and information system output indicating the distribution
             limitations, handling caveats, and applicable security markings (if any) of the
             information; and</li>
-          <li>Exempts [<em>Assignment: organization-defined list of removable media types</em>] from
-            marking as long as the exempted items remain within [<em>Assignment:
-              organization-defined controlled areas</em>].</li>
+          <li>Exempts [<assign>Assignment: organization-defined list of removable media types</assign>] from
+            marking as long as the exempted items remain within [<assign>Assignment:
+              organization-defined controlled areas</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -5780,10 +5797,10 @@
       <desc>
         <p>The organization:</p>
         <ol>
-          <li>Physically controls and securely stores [<em>Assignment: organization-defined types of
-              digital and non-digital media</em>] within [<em>Assignment: organization-defined
-              controlled areas</em>] using [<em>Assignment: organization-defined security
-              measures</em>];</li>
+          <li>Physically controls and securely stores [<assign>Assignment: organization-defined types of
+              digital and non-digital media</assign>] within [<assign>Assignment: organization-defined
+              controlled areas</assign>] using [<assign>Assignment: organization-defined security
+              measures</assign>];</li>
           <li>Protects information system media until the media are destroyed or sanitized using
             approved equipment, techniques, and procedures</li>
         </ol>
@@ -5857,9 +5874,9 @@
       <desc>
         <p>The organization:</p>
         <ol>
-          <li>Protects and controls [<em>Assignment: organization-defined types of digital and
-              non-digital media</em>] during transport outside of controlled areas using
-              [<em>Assignment: organization-defined security measures</em>];</li>
+          <li>Protects and controls [<assign>Assignment: organization-defined types of digital and
+              non-digital media</assign>] during transport outside of controlled areas using
+              [<assign>Assignment: organization-defined security measures</assign>];</li>
           <li>Maintains accountability for information system media during transport outside of
             controlled areas; and</li>
           <li>Restricts the activities associated with transport of such media to authorized
@@ -5988,7 +6005,7 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization tests sanitization equipment and procedures to verify correct
-              performance [<em>Assignment: organization-defined frequency</em>].</p>
+              performance [<assign>Assignment: organization-defined frequency</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -5996,8 +6013,8 @@
           <desc>
             <p>The organization sanitizes portable, removable storage devices prior to connecting
               such devices to the information system under the following circumstances:
-                [<em>Assignment: organization-defined list of circumstances requiring sanitization
-                of portable, removable storage devices</em>].</p>
+                [<assign>Assignment: organization-defined list of circumstances requiring sanitization
+                of portable, removable storage devices</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Portable, removable storage devices (e.g., thumb drives, flash drives, external
@@ -6061,8 +6078,8 @@
       <prop name="number">PE-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented physical and environmental protection policy that addresses
             purpose, scope, roles, responsibilities, management commitment, coordination among
@@ -6109,8 +6126,8 @@
             where the information system resides (except for those areas within the facility
             officially designated as publicly accessible);</li>
           <li>Issues authorization credentials;</li>
-          <li>Reviews and approves the access list and authorization credentials [<em>Assignment:
-              organization-defined frequency</em>], removing from the access list personnel no
+          <li>Reviews and approves the access list and authorization credentials [<assign>Assignment:
+              organization-defined frequency</assign>], removing from the access list personnel no
             longer requiring access.</li>
         </ol>
       </desc>
@@ -6162,9 +6179,9 @@
           <li>Controls access to areas officially designated as publicly accessible in accordance
             with the organizations assessment of risk;</li>
           <li>Secures keys, combinations, and other physical access devices;</li>
-          <li>Inventories physical access devices [<em>Assignment: organization-defined
-              frequency</em>]; and</li>
-          <li>Changes combinations and keys [<em>Assignment: organization-defined frequency</em>]
+          <li>Inventories physical access devices [<assign>Assignment: organization-defined
+              frequency</assign>]; and</li>
+          <li>Changes combinations and keys [<assign>Assignment: organization-defined frequency</assign>]
             and when keys are lost, combinations are compromised, or individuals are transferred or
             terminated.</li>
         </ol>
@@ -6216,8 +6233,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization uses lockable physical casings to protect [<em>Assignment:
-                organization-defined information system components</em>] from unauthorized physical
+            <p>The organization uses lockable physical casings to protect [<assign>Assignment:
+                organization-defined information system components</assign>] from unauthorized physical
               access.</p>
           </desc>
         </control>
@@ -6229,8 +6246,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization employs a penetration testing process that includes [<em>Assignment:
-                organization-defined frequency</em>], unannounced attempts to bypass or circumvent
+            <p>The organization employs a penetration testing process that includes [<assign>Assignment:
+                organization-defined frequency</assign>], unannounced attempts to bypass or circumvent
               security controls associated with physical access points to the facility.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -6312,7 +6329,7 @@
         <ol>
           <li>Monitors physical access to the information system to detect and respond to physical
             security incidents;</li>
-          <li>Reviews physical access logs [<em>Assignment: organization-defined frequency</em>];
+          <li>Reviews physical access logs [<assign>Assignment: organization-defined frequency</assign>];
             and</li>
           <li>Coordinates results of reviews and investigations with the organizations incident
             response capability.</li>
@@ -6378,8 +6395,8 @@
           <li>Maintains visitor access records to the facility where the information system resides
             (except for those areas within the facility officially designated as publicly
             accessible); and</li>
-          <li>Reviews visitor access records [<em>Assignment: organization-defined
-            frequency</em>].</li>
+          <li>Reviews visitor access records [<assign>Assignment: organization-defined
+            frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -6426,8 +6443,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization employs automatic voltage controls for [<em>Assignment:
-                organization-defined list of critical information system components</em>].</p>
+            <p>The organization employs automatic voltage controls for [<assign>Assignment:
+                organization-defined list of critical information system components</assign>].</p>
           </desc>
         </control>
       </extensions>
@@ -6442,8 +6459,8 @@
         <ol>
           <li>Provides the capability of shutting off power to the information system or individual
             system components in emergency situations;</li>
-          <li>Places emergency shutoff switches or devices in [<em>Assignment: organization-defined
-              location by information system or system component</em>] to facilitate safe and easy
+          <li>Places emergency shutoff switches or devices in [<assign>Assignment: organization-defined
+              location by information system or system component</assign>] to facilitate safe and easy
             access for personnel; and</li>
           <li>Protects emergency power shutoff capability from unauthorized activation.</li>
         </ol>
@@ -6559,8 +6576,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization ensures that the facility undergoes [<em>Assignment:
-                organization-defined frequency</em>] fire marshal inspections and promptly resolves
+            <p>The organization ensures that the facility undergoes [<assign>Assignment:
+                organization-defined frequency</assign>] fire marshal inspections and promptly resolves
               identified deficiencies.</p>
           </desc>
         </control>
@@ -6575,10 +6592,10 @@
         <p>The organization:</p>
         <ol>
           <li>Maintains temperature and humidity levels within the facility where the information
-            system resides at [<em>Assignment: organization-defined acceptable levels</em>];
+            system resides at [<assign>Assignment: organization-defined acceptable levels</assign>];
             and</li>
-          <li>Monitors temperature and humidity levels [<em>Assignment: organization-defined
-              frequency</em>].</li>
+          <li>Monitors temperature and humidity levels [<assign>Assignment: organization-defined
+              frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -6632,8 +6649,8 @@
       <prop name="number">PE-16</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization authorizes, monitors, and controls [<em>Assignment: organization-defined
-            types of information system components</em>] entering and exiting the facility and
+        <p>The organization authorizes, monitors, and controls [<assign>Assignment: organization-defined
+            types of information system components</assign>] entering and exiting the facility and
           maintains records of those items.</p>
       </desc>
       <stmt name="supplemental-guidance">
@@ -6650,8 +6667,8 @@
       <desc>
         <p>The organization:</p>
         <ol>
-          <li>Employs [<em>Assignment: organization-defined management, operational, and technical
-              information system security controls</em>] at alternate work sites;</li>
+          <li>Employs [<assign>Assignment: organization-defined management, operational, and technical
+              information system security controls</assign>] at alternate work sites;</li>
           <li>Assesses as feasible, the effectiveness of security controls at alternate work sites;
             and</li>
           <li>Provides a means for employees to communicate with information security personnel in
@@ -6749,8 +6766,8 @@
       <prop name="number">PL-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented security planning policy that addresses purpose, scope, roles,
             responsibilities, management commitment, coordination among organizational entities, and
@@ -6806,8 +6823,8 @@
             requirements including a rationale for the tailoring and supplementation decisions; and
             - Is reviewed and approved by the authorizing official or designated representative
             prior to plan implementation;</li>
-          <li>Reviews the security plan for the information system [<em>Assignment:
-              organization-defined frequency</em>]; and</li>
+          <li>Reviews the security plan for the information system [<assign>Assignment:
+              organization-defined frequency</assign>]; and</li>
           <li>Updates the plan to address changes to the information system/environment of operation
             or problems identified during plan implementation or security control assessments.</li>
         </ol>
@@ -6830,8 +6847,8 @@
                 system architecture; (iii) the security authorization schedule; and (iv) the
                 security categorization and associated factors considered in determining the
                 categorization; and</li>
-              <li>Reviews and updates the CONOPS [<em>Assignment: organization-defined
-                  frequency</em>].</li>
+              <li>Reviews and updates the CONOPS [<assign>Assignment: organization-defined
+                  frequency</assign>].</li>
             </ol>
           </desc>
           <stmt name="supplemental-guidance">
@@ -6977,8 +6994,8 @@
             responsibility and accountability for the risk being incurred to organizational
             operations (including mission, functions, image, and reputation), organizational assets,
             individuals, other organizations, and the Nation;</li>
-          <li>Reviews the organization-wide information security program plan [<em>Assignment:
-              organization-defined frequency</em>]; and</li>
+          <li>Reviews the organization-wide information security program plan [<assign>Assignment:
+              organization-defined frequency</assign>]; and</li>
           <li>Revises the plan to address organizational changes and problems identified during plan
             implementation or security control assessments.</li>
         </ol>
@@ -7287,8 +7304,8 @@
       <prop name="number">PS-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented personnel security policy that addresses purpose, scope, roles,
             responsibilities, management commitment, coordination among organizational entities, and
@@ -7331,8 +7348,8 @@
         <ol>
           <li>Assigns a risk designation to all positions;</li>
           <li>Establishes screening criteria for individuals filling those positions; and</li>
-          <li>Reviews and revises position risk designations [<em>Assignment: organization-defined
-              frequency</em>].</li>
+          <li>Reviews and revises position risk designations [<assign>Assignment: organization-defined
+              frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -7356,9 +7373,9 @@
         <p>The organization:</p>
         <ol>
           <li>Screens individuals prior to authorizing access to the information system; and</li>
-          <li>Rescreens individuals according to [<em>Assignment: organization-defined list of
+          <li>Rescreens individuals according to [<assign>Assignment: organization-defined list of
               conditions requiring rescreening and, where re-screening is so indicated, the
-              frequency of such rescreening</em>].</li>
+              frequency of such rescreening</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -7457,9 +7474,9 @@
       <desc>
         <p>The organization reviews logical and physical access authorizations to information
           systems/facilities when personnel are reassigned or transferred to other positions within
-          the organization and initiates [<em>Assignment: organization-defined transfer or
-            reassignment actions</em>] within [<em>Assignment: organization-defined time period
-            following the formal transfer action</em>].</p>
+          the organization and initiates [<assign>Assignment: organization-defined transfer or
+            reassignment actions</assign>] within [<assign>Assignment: organization-defined time period
+            following the formal transfer action</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>This control applies when the reassignment or transfer of an employee is permanent or of
@@ -7485,8 +7502,8 @@
           <li>Ensures that individuals requiring access to organizational information and
             information systems sign appropriate access agreements prior to being granted access;
             and</li>
-          <li>Reviews/updates the access agreements [<em>Assignment: organization-defined
-              frequency</em>].</li>
+          <li>Reviews/updates the access agreements [<assign>Assignment: organization-defined
+              frequency</assign>].</li>
         </ol>
       </desc>
       <stmt name="supplemental-guidance">
@@ -7588,8 +7605,8 @@
       <prop name="number">RA-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented risk assessment policy that addresses purpose, scope, roles,
             responsibilities, management commitment, coordination among organizational entities, and
@@ -7687,11 +7704,14 @@
           <li>Conducts an assessment of risk, including the likelihood and magnitude of harm, from
             the unauthorized access, use, disclosure, disruption, modification, or destruction of
             the information system and the information it processes, stores, or transmits;</li>
-          <li>Documents risk assessment results in [<select><choice>Selection: security plan; risk assessment
-              report; </choice></select>[<em>Assignment: organization-defined document</em>]];</li>
-          <li>Reviews risk assessment results [<em>Assignment: organization-defined frequency</em>];
+          <li>Documents risk assessment results in [<select>
+              <choice>Selection: security plan;</choice>
+              <choice> risk assessment report;</choice>
+              <choice> [<assign>Assignment: organization-defined document</assign>]]</choice>
+            </select>;</li>
+          <li>Reviews risk assessment results [<assign>Assignment: organization-defined frequency</assign>];
             and</li>
-          <li>Updates the risk assessment [<em>Assignment: organization-defined frequency</em>] or
+          <li>Updates the risk assessment [<assign>Assignment: organization-defined frequency</assign>] or
             whenever there are significant changes to the information system or environment of
             operation (including the identification of new threats and vulnerabilities), or other
             conditions that may impact the security state of the system.</li>
@@ -7747,8 +7767,8 @@
         <p>The organization:</p>
         <ol>
           <li>Scans for vulnerabilities in the information system and hosted applications
-              [<em>Assignment: organization-defined frequency and/or randomly in accordance with
-              organization-defined process</em>] and when new vulnerabilities potentially affecting
+              [<assign>Assignment: organization-defined frequency and/or randomly in accordance with
+              organization-defined process</assign>] and when new vulnerabilities potentially affecting
             the system/applications are identified and reported;</li>
           <li>Employs vulnerability scanning tools and techniques that promote interoperability
             among tools and automate parts of the vulnerability management process by using
@@ -7760,8 +7780,8 @@
           </li>
           <li>Analyzes vulnerability scan reports and results from security control
             assessments;</li>
-          <li>Remediates legitimate vulnerabilities [<em>Assignment: organization-defined response
-              times</em>] in accordance with an organizational assessment of risk; and</li>
+          <li>Remediates legitimate vulnerabilities [<assign>Assignment: organization-defined response
+              times</assign>] in accordance with an organizational assessment of risk; and</li>
           <li>Shares information obtained from the vulnerability scanning process and security
             control assessments with designated personnel throughout the organization to help
             eliminate similar vulnerabilities in other information systems (i.e., systemic
@@ -7794,7 +7814,7 @@
           <prop name="baseline-impact">HIGH</prop>
           <desc>
             <p>The organization updates the list of information system vulnerabilities scanned
-                [<em>Assignment: organization-defined frequency</em>] or when new vulnerabilities
+                [<assign>Assignment: organization-defined frequency</assign>] or when new vulnerabilities
               are identified and reported.</p>
           </desc>
         </control>
@@ -7816,8 +7836,8 @@
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The organization includes privileged access authorization to [<em>Assignment:
-                organization-identified information system components</em>] for selected
+            <p>The organization includes privileged access authorization to [<assign>Assignment:
+                organization-identified information system components</assign>] for selected
               vulnerability scanning activities to facilitate more thorough scanning.</p>
           </desc>
         </control>
@@ -7830,8 +7850,8 @@
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The organization employs automated mechanisms [<em>Assignment: organization-defined
-                frequency</em>] to detect the presence of unauthorized software on organizational
+            <p>The organization employs automated mechanisms [<assign>Assignment: organization-defined
+                frequency</assign>] to detect the presence of unauthorized software on organizational
               information systems and notify designated organizational officials.</p>
           </desc>
         </control>
@@ -7890,8 +7910,8 @@
       <prop name="number">SA-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented system and services acquisition policy that includes information
             security considerations and that addresses purpose, scope, roles, responsibilities,
@@ -8350,8 +8370,8 @@
               <li>Conducts an organizational assessment of risk prior to the acquisition or
                 outsourcing of dedicated information security services; and</li>
               <li>Ensures that the acquisition or outsourcing of dedicated information security
-                services is approved by [<em>Assignment: organization-defined senior organizational
-                  official</em>].</li>
+                services is approved by [<assign>Assignment: organization-defined senior organizational
+                  official</assign>].</li>
             </ol>
           </desc>
           <stmt name="supplemental-guidance">
@@ -8464,8 +8484,8 @@
       <prop name="priority">P1</prop>
       <prop name="baseline-impact">HIGH</prop>
       <desc>
-        <p>The organization protects against supply chain threats by employing: [<em>Assignment:
-            organization-defined list of measures to protect against supply chain threats</em>] as
+        <p>The organization protects against supply chain threats by employing: [<assign>Assignment:
+            organization-defined list of measures to protect against supply chain threats</assign>] as
           part of a comprehensive, defense-in-breadth information security strategy.</p>
       </desc>
       <stmt name="supplemental-guidance">
@@ -8564,8 +8584,8 @@
       <prop name="priority">P1</prop>
       <prop name="baseline-impact">HIGH</prop>
       <desc>
-        <p>The organization requires that the information system meets [<em>Assignment:
-            organization-defined level of trustworthiness</em>].</p>
+        <p>The organization requires that the information system meets [<assign>Assignment:
+            organization-defined level of trustworthiness</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>The intent of this control is to ensure that organizations recognize the importance of
@@ -8651,8 +8671,8 @@
       <desc>
         <p>The organization:</p>
         <ol>
-          <li>Determines [<em>Assignment: organization-defined list of critical information system
-              components that require re-implementation</em>]; and</li>
+          <li>Determines [<assign>Assignment: organization-defined list of critical information system
+              components that require re-implementation</assign>]; and</li>
           <li>Re-implements or custom develops such information system components.</li>
         </ol>
       </desc>
@@ -8669,7 +8689,7 @@
             <ol>
               <li>Identifies information system components for which alternative sourcing is not
                 viable; and</li>
-              <li>Employs [<em>Assignment: organization-defined measures</em>] to ensure that
+              <li>Employs [<assign>Assignment: organization-defined measures</assign>] to ensure that
                 critical security controls for the information system components are not
                 compromised.</li>
             </ol>
@@ -8691,8 +8711,8 @@
       <prop name="number">SC-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented system and communications protection policy that addresses
             purpose, scope, roles, responsibilities, management commitment, coordination among
@@ -8861,8 +8881,8 @@
       <prop name="priority">P1</prop>
       <desc>
         <p>The information system protects against or limits the effects of the following types of
-          denial of service attacks: [<em>Assignment: organization-defined list of types of denial
-            of service attacks or reference to source for current list</em>].</p>
+          denial of service attacks: [<assign>Assignment: organization-defined list of types of denial
+            of service attacks or reference to source for current list</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>A variety of technologies exist to limit, or in some cases, eliminate the effects of
@@ -8974,8 +8994,8 @@
                 of the information being transmitted;</li>
               <li>Documents each exception to the traffic flow policy with a supporting
                 mission/business need and duration of that need;</li>
-              <li>Reviews exceptions to the traffic flow policy [<em>Assignment:
-                  organization-defined frequency</em>]; and</li>
+              <li>Reviews exceptions to the traffic flow policy [<assign>Assignment:
+                  organization-defined frequency</assign>]; and</li>
               <li>Removes traffic flow policy exceptions that are no longer supported by an explicit
                 mission/business need.</li>
             </ol>
@@ -9019,9 +9039,9 @@
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
-            <p>The information system routes [<em>Assignment: organization-defined internal
-                communications traffic</em>] to [<em>Assignment: organization-defined external
-                networks</em>] through authenticated proxy servers within the managed interfaces of
+            <p>The information system routes [<assign>Assignment: organization-defined internal
+                communications traffic</assign>] to [<assign>Assignment: organization-defined external
+                networks</assign>] through authenticated proxy servers within the managed interfaces of
               boundary protection devices.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -9086,8 +9106,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization isolates [<em>Assignment: organization defined key information
-                security tools, mechanisms, and support components</em>] from other internal
+            <p>The organization isolates [<assign>Assignment: organization defined key information
+                security tools, mechanisms, and support components</assign>] from other internal
               information system components via physically separate subnets with managed interfaces
               to other portions of the system.</p>
           </desc>
@@ -9095,8 +9115,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization protects against unauthorized physical connections across the
-              boundary protections implemented at [<em>Assignment: organization-defined list of
-                managed interfaces</em>].</p>
+              boundary protections implemented at [<assign>Assignment: organization-defined list of
+                managed interfaces</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Information systems operating at different security categories may routinely share
@@ -9268,8 +9288,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs cryptographic mechanisms to prevent unauthorized disclosure
-              of information during transmission unless otherwise protected by [<em>Assignment:
-                organization-defined alternative physical measures</em>].</p>
+              of information during transmission unless otherwise protected by [<assign>Assignment:
+                organization-defined alternative physical measures</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Alternative physical protection measures include, for example, protected distribution
@@ -9322,8 +9342,8 @@
       <prop name="priority">P2</prop>
       <desc>
         <p>The information system terminates the network connection associated with a communications
-          session at the end of the session or after [<em>Assignment: organization-defined time
-            period</em>] of inactivity.</p>
+          session at the end of the session or after [<assign>Assignment: organization-defined time
+            period</assign>] of inactivity.</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>This control applies to both internal and external networks. Terminating network
@@ -9342,9 +9362,9 @@
       <prop name="priority">P0</prop>
       <desc>
         <p>The information system establishes a trusted communications path between the user and the
-          following security functions of the system: [<em>Assignment: organization-defined security
+          following security functions of the system: [<assign>Assignment: organization-defined security
             functions to include at a minimum, information system authentication and
-            reauthentication</em>].</p>
+            reauthentication</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>A trusted path is employed for high-confidence connections between the security functions
@@ -9378,7 +9398,7 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization produces, controls, and distributes symmetric cryptographic keys
-              using [<select><choice>Selection: NIST-approved, NSA-approved</choice></select>] key management technology and
+              using [<select><choice>Selection: NIST-approved,</choice><choice> NSA-approved</choice></select>] key management technology and
               processes.</p>
           </desc>
         </control>
@@ -9450,7 +9470,7 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization employs [<select><choice>Selection: FIPS-validated; NSA-approved</choice></select>]
+            <p>The organization employs [<select><choice>Selection: FIPS-validated;</choice><choice> NSA-approved</choice></select>]
               cryptography to implement digital signatures.</p>
           </desc>
         </control>
@@ -9491,8 +9511,8 @@
         <p>The information system:</p>
         <ol>
           <li>Prohibits remote activation of collaborative computing devices with the following
-            exceptions: [<em>Assignment: organization-defined exceptions where remote activation is
-              to be allowed</em>]; and</li>
+            exceptions: [<assign>Assignment: organization-defined exceptions where remote activation is
+              to be allowed</assign>]; and</li>
           <li>Provides an explicit indication of use to users physically present at the
             devices.</li>
         </ol>
@@ -9523,7 +9543,7 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization disables or removes collaborative computing devices from information
-              systems in [<em>Assignment: organization-defined secure work areas</em>].</p>
+              systems in [<assign>Assignment: organization-defined secure work areas</assign>].</p>
           </desc>
         </control>
       </extensions>
@@ -9556,8 +9576,8 @@
       <prop name="number">SC-17</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization issues public key certificates under an [<em>Assignment:
-            organization-defined certificate policy</em>] or obtains public key certificates under
+        <p>The organization issues public key certificates under an [<assign>Assignment:
+            organization-defined certificate policy</assign>] or obtains public key certificates under
           an appropriate certificate policy from an approved service provider.</p>
       </desc>
       <stmt name="supplemental-guidance">
@@ -9625,8 +9645,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization ensures the acquisition, development, and/or use of mobile code to
-              be deployed in information systems meets [<em>Assignment: organization-defined mobile
-                code requirements</em>].</p>
+              be deployed in information systems meets [<assign>Assignment: organization-defined mobile
+                code requirements</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -9638,8 +9658,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system prevents the automatic execution of mobile code in
-                [<em>Assignment: organization-defined software applications</em>] and requires
-                [<em>Assignment: organization-defined actions</em>] prior to executing the code.</p>
+                [<assign>Assignment: organization-defined software applications</assign>] and requires
+                [<assign>Assignment: organization-defined actions</assign>] prior to executing the code.</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Actions required before executing mobile code, include, for example, prompting users
@@ -9835,8 +9855,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system generates unique session identifiers with [<em>Assignment:
-                organization-defined randomness requirements</em>].</p>
+            <p>The information system generates unique session identifiers with [<assign>Assignment:
+                organization-defined randomness requirements</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Employing the concept of randomness in the generation of unique session identifiers
@@ -9867,9 +9887,9 @@
       <prop name="priority">P1</prop>
       <prop name="baseline-impact">HIGH</prop>
       <desc>
-        <p>The information system fails to a [<em>Assignment: organization-defined known-state</em>]
-          for [<em>Assignment: organization-defined types of failures</em>] preserving
-            [<em>Assignment: organization-defined system state information</em>] in failure.</p>
+        <p>The information system fails to a [<assign>Assignment: organization-defined known-state</assign>]
+          for [<assign>Assignment: organization-defined types of failures</assign>] preserving
+            [<assign>Assignment: organization-defined system state information</assign>] in failure.</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>Failure in a known state can address safety or security in accordance with the
@@ -9930,8 +9950,8 @@
       <prop name="number">SC-27</prop>
       <prop name="priority">P0</prop>
       <desc>
-        <p>The information system includes: [<em>Assignment: organization-defined operating
-            system-independent applications</em>].</p>
+        <p>The information system includes: [<assign>Assignment: organization-defined operating
+            system-independent applications</assign>].</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>Operating system-independent applications are applications that can run on multiple
@@ -10020,8 +10040,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs virtualization techniques to support the deployment of a
-              diversity of operating systems and applications that are changed [<em>Assignment:
-                organization-defined frequency</em>].</p>
+              diversity of operating systems and applications that are changed [<assign>Assignment:
+                organization-defined frequency</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>While frequent changes to operating systems and applications pose configuration
@@ -10114,12 +10134,12 @@
       <prop name="number">SC-34</prop>
       <prop name="priority">P0</prop>
       <desc>
-        <p>The information system at [<em>Assignment: organization-defined information system
-            components</em>]:</p>
+        <p>The information system at [<assign>Assignment: organization-defined information system
+            components</assign>]:</p>
         <ol>
           <li>Loads and executes the operating environment from hardware-enforced, read-only media;
             and</li>
-          <li>Loads and executes [<em>Assignment: organization-defined applications</em>] from
+          <li>Loads and executes [<assign>Assignment: organization-defined applications</assign>] from
             hardware-enforced, read-only media.</li>
         </ol>
       </desc>
@@ -10133,8 +10153,8 @@
       <extensions>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization employs [<em>Assignment: organization-defined information system
-                components</em>] with no writeable storage that is persistent across component
+            <p>The organization employs [<assign>Assignment: organization-defined information system
+                components</assign>] with no writeable storage that is persistent across component
               restart or power on/off.</p>
           </desc>
           <stmt name="supplemental-guidance">
@@ -10168,8 +10188,8 @@
       <prop name="number">SI-1</prop>
       <prop name="priority">P1</prop>
       <desc>
-        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
-            organization-defined frequency</em>]:</p>
+        <p>The organization develops, disseminates, and reviews/updates [<assign>Assignment:
+            organization-defined frequency</assign>]:</p>
         <ol>
           <li>A formal, documented system and information integrity policy that addresses purpose,
             scope, roles, responsibilities, management commitment, coordination among organizational
@@ -10251,22 +10271,22 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization employs automated mechanisms [<em>Assignment: organization-defined
-                frequency</em>] to determine the state of information system components with regard
+            <p>The organization employs automated mechanisms [<assign>Assignment: organization-defined
+                frequency</assign>] to determine the state of information system components with regard
               to flaw remediation.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization measures the time between flaw identification and flaw remediation,
-              comparing with [<em>Assignment: organization-defined benchmarks</em>].</p>
+              comparing with [<assign>Assignment: organization-defined benchmarks</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated patch management tools to facilitate flaw
-              remediation to [<em>Assignment: organization-defined information system
-                components</em>].</p>
+              remediation to [<assign>Assignment: organization-defined information system
+                components</assign>].</p>
           </desc>
         </control>
       </extensions>
@@ -10294,11 +10314,15 @@
             whenever new releases are available in accordance with organizational configuration
             management policy and procedures;</li>
           <li>Configures malicious code protection mechanisms to: - Perform periodic scans of the
-            information system [<em>Assignment: organization-defined frequency</em>] and real-time
+            information system [<assign>Assignment: organization-defined frequency</assign>] and real-time
             scans of files from external sources as the files are downloaded, opened, or executed in
-            accordance with organizational security policy; and - [<select><choice>Selection (one or more):
-              block malicious code; quarantine malicious code; send alert to administrator;
-              </choice></select>[<em>Assignment: organization-defined action</em>]] in response to malicious code
+            accordance with organizational security policy; and - [
+            <select>
+              <choice>Selection (one or more): block malicious code;</choice>
+              <choice> quarantine malicious code;</choice>
+              <choice> send alert to administrator; </choice>
+              <choice>[<assign>Assignment: organization-defined action</assign>]]</choice>
+            </select> in response to malicious code
             detection; and</li>
           <li>Addresses the receipt of false positives during malicious code detection and
             eradication and the resulting potential impact on the availability of the information
@@ -10355,8 +10379,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization tests malicious code protection mechanisms [<em>Assignment:
-                organization-defined frequency</em>] by introducing a known benign, non-spreading
+            <p>The organization tests malicious code protection mechanisms [<assign>Assignment:
+                organization-defined frequency</assign>] by introducing a known benign, non-spreading
               test case into the information system and subsequently verifying that both detection
               of the test case and associated incident reporting occur, as required.</p>
           </desc>
@@ -10377,8 +10401,8 @@
       <desc>
         <p>The organization:</p>
         <ol>
-          <li>Monitors events on the information system in accordance with [<em>Assignment:
-              organization-defined monitoring objectives</em>] and detects information system
+          <li>Monitors events on the information system in accordance with [<assign>Assignment:
+              organization-defined monitoring objectives</assign>] and detects information system
             attacks;</li>
           <li>Identifies unauthorized use of the information system;</li>
           <li>Deploys monitoring devices: (i) strategically within the information system to collect
@@ -10451,8 +10475,8 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system provides near real-time alerts when the following indications
-              of compromise or potential compromise occur: [<em>Assignment: organization-defined
-                list of compromise indicators</em>].</p>
+              of compromise or potential compromise occur: [<assign>Assignment: organization-defined
+                list of compromise indicators</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>Alerts may be generated, depending on the organization-defined list of indicators,
@@ -10469,10 +10493,10 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system notifies [<em>Assignment: organization-defined list of
-                incident response personnel (identified by name and/or by role)</em>] of suspicious
-              events and takes [<em>Assignment: organization-defined list of least-disruptive
-                actions to terminate suspicious events</em>].</p>
+            <p>The information system notifies [<assign>Assignment: organization-defined list of
+                incident response personnel (identified by name and/or by role)</assign>] of suspicious
+              events and takes [<assign>Assignment: organization-defined list of least-disruptive
+                actions to terminate suspicious events</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>The least-disruptive actions may include initiating a request for human response.</p>
@@ -10486,8 +10510,8 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization tests/exercises intrusion-monitoring tools [<em>Assignment:
-                organization-defined time-period</em>].</p>
+            <p>The organization tests/exercises intrusion-monitoring tools [<assign>Assignment:
+                organization-defined time-period</assign>].</p>
           </desc>
           <stmt name="supplemental-guidance">
             <p>The frequency of testing/exercises is dependent upon the type and method of
@@ -10522,8 +10546,8 @@
           <desc>
             <p>The organization employs automated mechanisms to alert security personnel of the
               following inappropriate or unusual activities with security implications:
-                [<em>Assignment: organization-defined list of inappropriate or unusual activities
-                that trigger alerts</em>].</p>
+                [<assign>Assignment: organization-defined list of inappropriate or unusual activities
+                that trigger alerts</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -10533,9 +10557,9 @@
               <li>Analyzes communications traffic/event patterns for the information system;</li>
               <li>Develops profiles representing common traffic patterns and/or events; and</li>
               <li>Uses the traffic/event profiles in tuning system-monitoring devices to reduce the
-                number of false positives to [<em>Assignment: organization-defined measure of false
-                  positives</em>] and the number of false negatives to [<em>Assignment:
-                  organization-defined measure of false negatives</em>].</li>
+                number of false positives to [<assign>Assignment: organization-defined measure of false
+                  positives</assign>] and the number of false negatives to [<assign>Assignment:
+                  organization-defined measure of false negatives</assign>].</li>
             </ol>
           </desc>
         </control>
@@ -10601,8 +10625,8 @@
             designated external organizations on an ongoing basis;</li>
           <li>Generates internal security alerts, advisories, and directives as deemed
             necessary;</li>
-          <li>Disseminates security alerts, advisories, and directives to [<em>Assignment:
-              organization-defined list of personnel (identified by name and/or by role)</em>];
+          <li>Disseminates security alerts, advisories, and directives to [<assign>Assignment:
+              organization-defined list of personnel (identified by name and/or by role)</assign>];
             and</li>
           <li>Implements security directives in accordance with established time frames, or notifies
             the issuing organization of the degree of noncompliance.</li>
@@ -10641,13 +10665,19 @@
       <prop name="priority">P1</prop>
       <prop name="baseline-impact">HIGH</prop>
       <desc>
-        <p>The information system verifies the correct operation of security functions
-            [<select><choice>Selection (one or more): </choice></select>[<em>Assignment: organization-defined system
-            transitional states</em>]<em>; upon command by user with appropriate privilege;
-            periodically every </em>[<em>Assignment: organization-defined time-period</em>]] and
-            [<select><choice>Selection (one or more): notifies system administrator; shuts the system down;
-            restarts the system; </choice></select>[<em>Assignment: organization-defined alternative
-            action(s)</em>]] when anomalies are discovered.</p>
+        <p>The information system verifies the correct operation of security functions [<select>
+            <choice>Selection (one or more): [<assign>Assignment: organization-defined system
+                transitional states</assign>];</choice>
+            <choice> upon command by user with appropriate privilege;</choice>
+            <choice> periodically every [<assign>Assignment: organization-defined
+                time-period</assign>]</choice>
+          </select>] and [<select>
+            <choice>Selection (one or more): notifies system administrator;</choice>
+            <choice> shuts the system down;</choice>
+            <choice> restarts the system;</choice>
+            <choice>[<assign>Assignment: organization-defined alternative
+              action(s)</assign>]</choice>
+          </select>] when anomalies are discovered.</p>
       </desc>
       <stmt name="supplemental-guidance">
         <p>The need to verify security functionality applies to all security functions. For those
@@ -10701,7 +10731,7 @@
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization reassesses the integrity of software and information by performing
-                [<em>Assignment: organization-defined frequency</em>] integrity scans of the
+                [<assign>Assignment: organization-defined frequency</assign>] integrity scans of the
               information system.</p>
           </desc>
         </control>
@@ -10719,9 +10749,9 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The organization requires use of tamper-evident packaging for [<em>Assignment:
-                organization-defined information system components</em>] during [<select><choice>Selection:
-                transportation from vendor to operational site; during operation; both</choice></select>].</p>
+            <p>The organization requires use of tamper-evident packaging for [<assign>Assignment:
+                organization-defined information system components</assign>] during [<select><choice>Selection:
+                transportation from vendor to operational site;</choice><choice> during operation;</choice><choice> both</choice></select>].</p>
           </desc>
         </control>
       </extensions>
@@ -10811,8 +10841,8 @@
         <ol>
           <li>Identifies potentially security-relevant error conditions;</li>
           <li>Generates error messages that provide information necessary for corrective actions
-            without revealing [<em>Assignment: organization-defined sensitive or potentially harmful
-              information</em>] in error logs and administrative messages that could be exploited by
+            without revealing [<assign>Assignment: organization-defined sensitive or potentially harmful
+              information</assign>] in error logs and administrative messages that could be exploited by
             adversaries; and</li>
           <li>Reveals error messages only to authorized personnel.</li>
         </ol>
@@ -10851,7 +10881,7 @@
         <p>The organization:</p>
         <ol>
           <li>Protects the information system from harm by considering mean time to failure for
-              [<em>Assignment: organization-defined list of information system components</em>] in
+              [<assign>Assignment: organization-defined list of information system components</assign>] in
             specific environments of operation; and</li>
           <li>Provides substitute information system components, when needed, and a mechanism to
             exchange active and standby roles of the components.</li>
@@ -10872,22 +10902,22 @@
           <desc>
             <p>The organization takes the information system component out of service by
               transferring component responsibilities to a substitute component no later than
-                [<em>Assignment: organization-defined fraction or percentage</em>] of mean time to
+                [<assign>Assignment: organization-defined fraction or percentage</assign>] of mean time to
               failure.</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization does not allow a process to execute without supervision for more
-              than [<em>Assignment: organization-defined time period</em>].</p>
+              than [<assign>Assignment: organization-defined time period</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization manually initiates a transfer between active and standby information
-              system components at least once per [<em>Assignment: organization-defined
-                frequency</em>] if the mean time to failure exceeds [<em>Assignment:
-                organization-defined time period</em>].</p>
+              system components at least once per [<assign>Assignment: organization-defined
+                frequency</assign>] if the mean time to failure exceeds [<assign>Assignment:
+                organization-defined time period</assign>].</p>
           </desc>
         </control>
         <control type="SP800-53-enhancement">
@@ -10895,10 +10925,10 @@
             <p>The organization, if an information system component failure is detected:</p>
             <ol>
               <li>Ensures that the standby information system component successfully and
-                transparently assumes its role within [<em>Assignment: organization-defined time
-                  period</em>]; and</li>
-              <li>[<select><choice>Selection (one or more): activates </choice></select>[<em>Assignment: organization-defined
-                  alarm</em>]<em>; automatically shuts down the information system</em>].</li>
+                transparently assumes its role within [<assign>Assignment: organization-defined time
+                  period</assign>]; and</li>
+              <li>[<select><choice>Selection (one or more): activates[<assign>Assignment: organization-defined
+                  alarm</assign>];</choice><choice> automatically shuts down the information system]</choice></select>.</li>
             </ol>
           </desc>
           <stmt name="supplemental-guidance">

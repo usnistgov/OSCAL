@@ -41,6 +41,11 @@
       <sch:assert test="exists($catalog-entry)">
         <sch:name/> not recognized; signature '<sch:value-of select="oscal:signature(.)"/>'
       </sch:assert>
+      <sch:let name="requirements" value="$catalog-entry/oscal:required/*"/>
+      <sch:let name="missing"      value="$requirements[not(@name=$here/*/@name)]"/>
+      <sch:assert test="empty($catalog-entry) or empty($missing)">
+        <sch:value-of select="@type"/> control is missing <sch:value-of select="string-join($missing/@name,', ')"/>
+      </sch:assert>
     </sch:rule>
     
     <sch:rule context="oscal:prop | oscal:stmt">
@@ -63,12 +68,19 @@
         '<sch:value-of select="."/>' is not permitted as a value for property <sch:value-of select="@name"/>: expected to match 
         regular expression '<sch:value-of select="$regex-requirement"/>'</sch:assert>
       
+      <sch:let name="id-requirement" value="$catalog-entry/oscal:identifier"/>
+      <sch:assert test="empty($catalog-entry) or empty($id-requirement) or empty(key('prop-by-value',normalize-space(.)) except .)">
+        (prop) <sch:value-of select="@name"/> '<sch:value-of select="."/>' appears more than once within the document.</sch:assert>
+      
       <!--<sch:report test="exists($catalog-entry) and not(. = $catalog-entry/oscal:VALUE)">
         <sch:value-of select="."/> isn't recognized for prp[@name='<sch:value-of select="$here/@name"/>']
       </sch:report>-->
     </sch:rule>
 
   </sch:pattern>
+  
+  <xsl:key name="prop-by-value" match="oscal:prop" use="normalize-space(.)"/>
+  
   
   <xsl:key name="control-spec"
     match="oscal:declarations/oscal:control-spec | oscal:declarations//oscal:property | oscal:declarations//oscal:statement"

@@ -23,6 +23,47 @@
     <xsl:text>&#xA;</xsl:text>
     <catalog>
       <title>NIST SP800-53</title>
+      
+      <declarations>
+        <control-spec type="SP800-53">
+          <required>
+            <property name="control-class">
+              <value>Technical</value>
+              <value>Operational</value>
+              <value>Management</value>
+            </property>
+            <property name="number">
+              <identifier/>
+              <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)\-\d+$</regex>
+            </property>
+          </required>
+          <optional>
+            <property name="priority">
+              <regex>P[0-3]</regex>
+            </property>
+            <property name="baseline-impact">
+              <value>MODERATE</value><value>HIGH</value>
+            </property>
+            <statement name="supplemental-guidance">
+              <title>Supplemental guidance</title>
+            </statement>
+          </optional>
+        </control-spec>
+        <control-spec type="SP800-53-enhancement">
+          <!--<required><property name="number"><id/></property></required>-->
+          <optional>
+            <property name="baseline-impact">
+              <value>MODERATE</value><value>HIGH</value>
+            </property>
+            <statement name="supplemental-guidance">
+              <title>Supplemental guidance</title>
+            </statement>
+          </optional>
+        </control-spec>
+        
+      </declarations>
+      
+      
       <xsl:for-each-group select="feed:control" group-by="family">
         <group type="family">
           <title><xsl:value-of select="current-grouping-key()"/></title>

@@ -1,6 +1,7 @@
 @import 'oscal.css';
 
-value, regex, statement > title {   display: block; margin-left: 2em; visibility: -oxy-collapse-text }
+value, identifier, regex, statement > title { 
+  display: block; margin-left: 2em; visibility: -oxy-collapse-text }
 
 property:before { content:
   oxy_label(text, "property ", styles, "font-weight:bold")

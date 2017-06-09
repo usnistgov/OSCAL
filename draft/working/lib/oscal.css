@@ -12,11 +12,11 @@ control-spec, optional, required, property, statement
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-control-spec { background-color: lightsteelblue }
+control-spec { background-color: lemonchiffon }
 property  {  border: thin outset pink } 
 statement {  border: thin outset blue } 
 
-required { background-color: lightcoral }
+required { background-color: lightsteelblue; color: black }
 optional { background-color: khaki }
 
 required:before { content: "Required: "; font-style: italic }
@@ -33,8 +33,8 @@ control-spec:before { font-weight: bold; content: "control type " attr(type) }
 property:before  { content: '(property) "' attr(name) '" '  }
 statement:before  { content: '(statement) "' attr(name) '" ' }
 
-property { background-color: pink; margin-top: 0.5em }
-statement { background-color: cornsilk; margin-top: 0.5em }
+property { background-color: pink; margin-top: 0.5em; color: black }
+statement { background-color: cornsilk; margin-top: 0.5em; color: black }
 statement title:before { content: '(titled) '; font-weight: normal }
 statement title { margin-left: 2em }
 
@@ -50,6 +50,10 @@ control { padding: 0.5em; margin: 0.5em; border: medium double black;
 prop:before { content: attr(name) ': ' }
 prop { display: inline-block; background-color: pink; border: thin outset pink;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+
+identifier:before { content: "is an identifier"
+ }
 
 title { font-weight: bold }
 catalog > title { font-size: 150% }
@@ -104,3 +108,11 @@ std      { color: darkred }
 citation { color: purple }
 
 xref { display: inline; color: blue }
+
+withdrawn { display: inline; font-style: italic }
+
+assign { display: inline; font-family: sans-serif; background-color: white;
+  font-size: 80%; font-style: italic; border: thin solid pink }
+
+select { display: inline }
+choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }

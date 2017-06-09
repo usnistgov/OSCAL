@@ -24,11 +24,12 @@ control-spec = element control-spec {
         element optional { (property*, statement*) }?
       }+
 
+# property may contain only id, only regex, both id and regex, or (sequence of) values
 property =
   element property {
     attribute name { xsd:NCName },
-    (element regex { text }
-     | element value { text }+)?
+    ((element identifier    { empty }?, element regex { text }? ) |
+       element value { text }* )
   }
   
 statement =
@@ -113,4 +114,19 @@ idAttr   = attribute id { xsd:ID }?
 typeAttr = attribute type { text }?
 
 # html!
-whatnot = (ol | text | element em { text } | element xref { text } )*
+whatnot = (
+  semantical | ol | inlines | text )*
+
+inlines = (  element em { text } | element xref { text } )
+# not html!
+semantical = ( withdrawn | assign | select )
+
+withdrawn = element withdrawn { (inlines | text)* }
+
+assign = element assign { attribute name { text }?,
+  (inlines | text)* }
+
+select = element select {
+  element choice { (assign | inlines | text)* }* }
+
+

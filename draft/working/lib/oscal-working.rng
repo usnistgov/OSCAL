@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://scap.nist.gov/schema/oscal" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- We can have a catalog, or we can have only declarations for catalogs -->
+  <start>
+    <choice>
+      <ref name="catalog"/>
+      <ref name="declarations"/>
+    </choice>
+  </start>
+  <!--
+    start = element oscal-catalog { declarations, catalog } 
+    have initial sections
+    declare   - declares local parameters and settings including constraints on controls
+                (enumerated values for properties, regexes and what not)
+    also declares bindings to authorities (e.g. sources for transclusion/comparison)?
+  -->
+  <define name="catalog">
+    <element name="catalog">
+      <ref name="title"/>
+      <optional>
+        <ref name="declarations"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="section"/>
+      </zeroOrMore>
+      <choice>
+        <oneOrMore>
+          <ref name="group"/>
+        </oneOrMore>
+        <oneOrMore>
+          <ref name="control"/>
+        </oneOrMore>
+      </choice>
+      <zeroOrMore>
+        <ref name="section"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="references"/>
+      </optional>
+    </element>
+  </define>
+  <!-- do we want a 'runtime' element for runtime bindings? such as parameters -->
+  <!--
+    declarations includes declarations for control types, parameters (names/types),
+    authorities (source data for transclusion etc. etc.)
+  -->
+  <define name="declarations">
+    <element name="declarations">
+      <choice>
+        <attribute name="href"/>
+        <group>
+          <zeroOrMore>
+            <ref name="control-spec"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="param-spec"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="authority"/>
+          </zeroOrMore>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="control-spec">
+    <oneOrMore>
+      <element name="control-spec">
+        <ref name="typeAttr"/>
+        <optional>
+          <element name="required">
+            <zeroOrMore>
+              <ref name="property"/>
+            </zeroOrMore>
+            <zeroOrMore>
+              <ref name="statement"/>
+            </zeroOrMore>
+          </element>
+        </optional>
+        <optional>
+          <element name="optional">
+            <zeroOrMore>
+              <ref name="property"/>
+            </zeroOrMore>
+            <zeroOrMore>
+              <ref name="statement"/>
+            </zeroOrMore>
+          </element>
+        </optional>
+      </element>
+    </oneOrMore>
+  </define>
+  <!-- property may contain only id, only regex, both id and regex, or (sequence of) values -->
+  <define name="property">
+    <element name="property">
+      <attribute name="name">
+        <data type="NCName"/>
+      </attribute>
+      <optional>
+        <choice>
+          <choice>
+            <group>
+              <optional>
+                <element name="id">
+                  <empty/>
+                </element>
+              </optional>
+              <element name="regex">
+                <text/>
+              </element>
+            </group>
+            <element name="id">
+              <empty/>
+            </element>
+          </choice>
+          <oneOrMore>
+            <element name="value">
+              <text/>
+            </element>
+          </oneOrMore>
+        </choice>
+      </optional>
+    </element>
+  </define>
+  <define name="statement">
+    <element name="statement">
+      <attribute name="name">
+        <data type="NCName"/>
+      </attribute>
+      <ref name="title"/>
+    </element>
+  </define>
+  <define name="param-spec">
+    <element name="parameter">
+      <attribute name="name"/>
+      <optional>
+        <ref name="title"/>
+      </optional>
+      <optional>
+        <element name="value">
+          <text/>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="authority">
+    <empty/>
+  </define>
+  <define name="group">
+    <element name="group">
+      <ref name="idAttr"/>
+      <ref name="typeAttr"/>
+      <ref name="title"/>
+      <zeroOrMore>
+        <ref name="prop"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="stmt"/>
+      </zeroOrMore>
+      <choice>
+        <zeroOrMore>
+          <ref name="group"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="control"/>
+        </zeroOrMore>
+      </choice>
+      <zeroOrMore>
+        <ref name="section"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="references"/>
+      </optional>
+    </element>
+  </define>
+  <define name="section">
+    <element name="div">
+      <ref name="idAttr"/>
+      <ref name="typeAttr"/>
+      <ref name="title"/>
+      <ref name="prose"/>
+      <zeroOrMore>
+        <ref name="section"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="references"/>
+      </optional>
+    </element>
+  </define>
+  <define name="control">
+    <element name="control">
+      <ref name="idAttr"/>
+      <ref name="typeAttr"/>
+      <optional>
+        <ref name="title"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="prop"/>
+      </zeroOrMore>
+      <ref name="desc"/>
+      <zeroOrMore>
+        <ref name="stmt"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="extensions"/>
+      </optional>
+      <optional>
+        <ref name="references"/>
+      </optional>
+    </element>
+  </define>
+  <define name="title">
+    <element name="title">
+      <text/>
+    </element>
+  </define>
+  <define name="prop">
+    <element name="prop">
+      <attribute name="name">
+        <data type="NCName"/>
+      </attribute>
+      <ref name="whatnot"/>
+    </element>
+  </define>
+  <!-- on prop, not(@name = ../(prop|stmt)/@name) -->
+  <define name="desc">
+    <element name="desc">
+      <ref name="prose"/>
+    </element>
+  </define>
+  <!--
+    stmt is a bit of controlled prose: its title is implicit in its name
+    e.g. stmt[@name='objectives'] might be displayed with title "Objectives:"
+  -->
+  <define name="stmt">
+    <element name="stmt">
+      <attribute name="name">
+        <data type="NCName"/>
+      </attribute>
+      <ref name="prose"/>
+    </element>
+  </define>
+  <!-- on stmt, not(@name = ../(prop|stmt)/@name) -->
+  <define name="prose">
+    <zeroOrMore>
+      <choice>
+        <ref name="ol"/>
+        <ref name="p"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <!--
+    cluster = element cluster { control+ | prop+ | ref+ }
+    on group, not(*/@name != */@name) ie all names must be the same
+  -->
+  <define name="extensions">
+    <element name="extensions">
+      <oneOrMore>
+        <ref name="control"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="references">
+    <element name="references">
+      <oneOrMore>
+        <ref name="ref"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="ref">
+    <element name="ref">
+      <ref name="idAttr"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="std"/>
+          <ref name="citation"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- add mixed-citation or equivalent -->
+  <define name="std">
+    <element name="std">
+      <optional>
+        <attribute name="href">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+      <ref name="whatnot"/>
+    </element>
+  </define>
+  <define name="citation">
+    <element name="citation">
+      <optional>
+        <attribute name="href">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+      <ref name="whatnot"/>
+    </element>
+  </define>
+  <define name="p">
+    <element name="p">
+      <ref name="idAttr"/>
+      <ref name="whatnot"/>
+    </element>
+  </define>
+  <define name="ol">
+    <element name="ol">
+      <oneOrMore>
+        <element name="li">
+          <ref name="whatnot"/>
+        </element>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="idAttr">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="typeAttr">
+    <optional>
+      <attribute name="type"/>
+    </optional>
+  </define>
+  <!-- html! -->
+  <define name="whatnot">
+    <zeroOrMore>
+      <choice>
+        <ref name="ol"/>
+        <text/>
+        <element name="em">
+          <text/>
+        </element>
+        <element name="xref">
+          <text/>
+        </element>
+      </choice>
+    </zeroOrMore>
+  </define>
+</grammar>
