@@ -107,12 +107,16 @@ std, citation { margin-top: 0.5em }
 std      { color: darkred }
 citation { color: purple }
 
+em { font-style: italic; display: inline }
 xref { display: inline; color: blue }
 
 withdrawn { display: inline; font-style: italic }
 
 assign { display: inline; font-family: sans-serif; background-color: white;
   font-size: 80%; font-style: italic; border: thin solid pink }
+
+assign:before { content: "Assignment: "; font-style: normal; font-size: 80%; font-weight: bold  }
+select:before { content: "Selection: "; font-style: normal; font-size: 80%; font-weight: bold  }
 
 select { display: inline }
 choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }

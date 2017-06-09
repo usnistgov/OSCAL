@@ -117,16 +117,19 @@ typeAttr = attribute type { text }?
 whatnot = (
   semantical | ol | inlines | text )*
 
-inlines = (  element em { text } | element xref { text } )
+inlines = (  element em { text } | element xref { attribute href { text }?, text } )
+
 # not html!
 semantical = ( withdrawn | assign | select )
 
+# A placeholder status report typically with a cross-reference
 withdrawn = element withdrawn { (inlines | text)* }
 
+# A value to be assigned by responder
 assign = element assign { attribute name { text }?,
   (inlines | text)* }
 
+# A selection to be made by responder
 select = element select {
   element choice { (assign | inlines | text)* }* }
-
 
