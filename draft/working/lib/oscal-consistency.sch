@@ -6,14 +6,10 @@
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
   <sch:pattern>
-    <sch:rule context="oscal:prop">
-      <sch:report test="@name = (../oscal:prop except .)/@name">
-        Property name <sch:value-of select="@name"/> duplicated in this <sch:value-of select="name(..)"/>.
-      </sch:report>
-    </sch:rule>
-    <sch:rule context="oscal:stmt">
-      <sch:report test="@name = (../(oscal:stmt | oscal:group/oscal:stmt) except .)/@name">
-        NB '<sch:value-of select="@name"/>' duplicated in this <sch:value-of select="name(..)"/>.
+    <sch:rule context="oscal:prop | oscal:stmt | oscal:param | oscal:choice">
+      <sch:let name="here" value="."/>
+      <sch:report test="@name = (../* except $here)/@name">
+        More than one '<sch:value-of select="@name"/>' (<sch:value-of select="string-join(distinct-values(../*[@name=$here/@name]/name()),', ')"/>) appears in this <sch:value-of select="name(..)"/>.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -23,12 +19,12 @@
   
   <sch:pattern>
 <!--  Contraints over declarations - very important!  -->
-    <sch:rule context="oscal:control-spec//oscal:property | oscal:control-spec//oscal:statement">
+    <sch:rule context="oscal:control-spec//oscal:property | oscal:control-spec//oscal:statement | oscal:declarations//oscal:parameter">
       <sch:let name="name" value="@name"/><!-- sorry bout that :-> -->
-      <sch:let name="named-alike" value="ancestor::oscal:control-spec//(oscal:property | oscal:statement)[@name=$name]"/>
+      <sch:let name="named-alike" value="
+        (ancestor::oscal:declarations | ancestor-or-self::oscal:control-spec)/(*/oscal:property | */oscal:statement | oscal:parameter)[@name=$name]"/>
       <sch:assert test="empty($named-alike except .)"><sch:name/>/@name '<sch:value-of select="$name"/>' is not unique within this control</sch:assert>
     </sch:rule>
-    
   </sch:pattern>
   
   <sch:pattern>
@@ -37,8 +33,8 @@
     
     <sch:rule context="oscal:control">
       <sch:let name="here"          value="."/>
-      <sch:let name="catalog-entry" value="key('control-spec',oscal:signature(.),$declarations)"/>
-      <sch:assert test="exists($catalog-entry)">
+      <sch:let name="catalog-entry" value="$declarations/key('control-spec',oscal:signature($here),.)"/>
+      <sch:assert test="exists($catalog-entry) or empty($declarations)">
         <sch:name/> not recognized; signature '<sch:value-of select="oscal:signature(.)"/>'
       </sch:assert>
       <sch:let name="requirements" value="$catalog-entry/oscal:required/*"/>
@@ -50,8 +46,8 @@
     
     <sch:rule context="oscal:prop | oscal:stmt">
       <sch:let name="here"          value="."/>
-      <sch:let name="catalog-entry" value="key('control-spec',oscal:signature(.),$declarations)"/>
-      <sch:let name="controlled"    value="parent::control[1]/key('control-spec',oscal:signature(.),$declarations)"/>
+      <sch:let name="catalog-entry" value="$declarations/key('control-spec',oscal:signature($here),.)"/>
+      <sch:let name="controlled"    value="$declarations/key('control-spec',oscal:signature($here/parent::control[1]),.)"/>
       <!-- If the control lookup fails, the test is silenced -->
       <sch:assert test="exists($catalog-entry) or empty($controlled)">
         <sch:name/> can't be named '<sch:value-of select="@name"/>' (no such <sch:name/> known in control of type '<sch:value-of select="ancestor::oscal:control[1]/@type"/>'

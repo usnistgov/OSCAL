@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Straight" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
+<catalog xmlns="http://scap.nist.gov/schema/oscal">
+  <title>OSCAL: the Open Security Controls Assessment Language</title>
+  <!--<declarations></declarations>-->
+  <div>
+    <title>What is OSCAL</title>
+    <div>
+      <title>A language for describing security controls</title>
+      <!--<p>We do not define <q>security control</q> except within the narrow context of OSCAL, and OSCAL does not stipulate whether what it describes has anything to do with <q>security</q> or <q>controls</q>. In OSCAL terms, a control is a unit of structured (encoded) information that takes a particular form. (In this OSCAL is comparable to an HTML microformat, except with the extra benefits of tools and a validation model.) As such, OSCAL structures follow regular patterns which can be exploited by an OSCAL-aware processor. OSCAL, however, is entirely general as to what these structures are, what they represent, how they are managed or verified, etc. etc. We expect and anticipate building OSCAL applications within the domain of security controls and Security Controls Assessment; but that is not the only potential application of OSCAL.</p>-->
+    </div>
+    <div>
+      <title>XML platform</title>
+      <p>OSCAL as described here assumes XML and its related technologies, as is exemplified (for
+        example) by the prevalence of XPath in these definitions. However, this platform is regarded
+        as an expediency, inasmuch as XML and (in particular) XML-based document production and
+        maintenance workflows, is well suited to this modeling domain, while its toolkit is mature
+        enough to enable rapid buildout and experimentation. Over a longer term it is our intention
+        to explore other serialization strategies for OSCAL.</p>
+    </div>
+    <div>
+      <title>OSCAL elements</title>
+      <p>Determine the element population of an OSCAL document (set) bmo
+          <code>distinct-values(//*/node-name())</code></p>
+        <p>Valid OSCAL documents will not contain elements not described in this specification.
+        While OSCAL may be mixed with other tag sets, or extended, neither of these applications is
+        addressed in any way by this document. This document provides only bare-bones information
+        about the OSCAL <q>core</q>.</p>
+      <p>OSCAL uses the XML namespace <xref>http://scap.nist.gov/schema/oscal</xref>.</p>
+    
+    </div>
+    
+  </div>
+  <group>
+    <title>OSCAL tag set</title>
+    <control>
+      <prop name="tag">&lt;prop></prop>
+      <prop name="full_name">Property</prop>
+      <desc>
+        <p>A value with a name, as assigned to a control or set of controls.</p>
+      </desc>
+      <stmt name="remarks">
+        <p>Like statements (<code>prop</code>) and parameters (<code>param</code>), properties are
+            <q>named things</q>, and as such are expected to be unique within their controls, such
+          that a query for a particular property (or other named thing) on a particular control will
+          never return more than one thing by that name.</p>
+        <p>Properties are the <q>bread and butter</q> of OSCAL; they enable the deployment and
+          management of arbitrary controlled values, with and among control objects
+          (<q>controls</q>), for any purpose useful to an application or implementation of those
+          controls. Typically and routinely, properties they will be used to sort, select, order and
+          arrange controls or relate them to one another or to class hierarchies, taxonomies or
+          external authorities.</p>
+        <p>Unlike statements, properties may not be assigned dynamic contents (OSCAL
+            <code>assign</code> or <code>select</code>). Within properties, inline markup may be
+          respected for display, but will be wiped or flattened (aka <q>value normalization</q>) for
+          purposes of value comparison and cross-checking. The permissible values and lexical forms
+          of (the text content of) properties may be constrained by their declarations as described
+          under the <code>property</code>
+          <q>Property Declaration</q> element.</p>
+        <p>Properties may be displayed with either or both their <code>@name</code>, or a property
+          title as given in a corresponding <code>property</code> declaration, or both.</p>
+        <p>As with statements, OSCAL can offer no warrant or assurance that properties are correctly
+          or even meaningfully assigned.</p>
+      </stmt>
+    </control>
+    <control>
+      <prop name="tag">&lt;stmt></prop>
+      <prop name="full_name">Statement</prop>
+      <desc>
+        <p>A block of prose; a claim, assertion, accounting or specification applicable to a control
+          or set of controls, for the purpose indicated by its <code>@name</code>.</p>
+      </desc>
+      <stmt name="remarks">
+        <p>Like properties (<code>prop</code>) and parameters (param), statements are <q>named
+            things</q>, and as such are expected to be unique within their controls, such that a
+          query for a particular statement (or other named thing) on a particular control will never
+          return more than one thing by that name. Some OSCAL implementations may also permit
+          anonymous statements, which will not follow the <q>unique naming</q> rule.</p>
+        <p>A statement is typically displayed with a heading proper to its type or function, as
+          indicated by its <code>@name</code>. So that a <code>stmt[@name='objectives']</code> is
+          displayed under a header <em>Objectives</em>, etc.</p>
+        <p>Statements are the <q>stuff</q> of an OSCAL catalog or controls profile.</p>
+        <p>This element may be formally valid, without its contents or representations being
+          correct, complete, veracious or even intelligible.</p>
+      </stmt>
+    </control>
+  </group>
+  <group>
+    <title>Structural constraints</title>
+    <stmt>
+      <p>Over and above what is validable with a grammar (in Level 0), there is a small set of
+        constraints governing usage. Validations enforcing them can be implemented via Schematron or
+        another process capable of static analysis of the data.</p>
+    </stmt>
+    <control>
+      <title>Names must be distinct among sibling elements</title>
+      <desc>
+        <p><code>@name</code> (the value of the 'name' attribute) must be distinct among sibling
+          properties (<code>prop</code> elements) and statements (<code>stmt</code> elements), that
+          is, properties and statements assigned to the same control. Within a control, no two (or
+          more) statements (<code>stmt</code>), properties (<code>prop</code>) or parameter
+          assignments (<code>param</code>) have the same name. Anonymous statements are exempted
+          from this requirement: a control or group may have any number of anonymous statements, as
+          long as names are not used more than once.</p>
+      </desc>
+      <stmt name="remarks">
+        <p>Within a family, there should be only a single <q>Jane</q> or <q>Juanito</q>. There can
+          be as many Juanitos as there are families (or this case, controls), but each family may
+          have only one.</p>
+        <p>The basic model of OSCAL is intended to ensure the addressability of controls by means of
+          arbitrary properties associated with those controls. If a control is defined as a thing
+          with properties (and statements and other things), requiring that properties and
+          statements always be specific to their controls (or, be <em>singular</em>), eases
+          retrievability. Because we have this rule, we can always be sure that property (or
+          statement) X on control Y means <q>Y is/has X</q>, not only <q>Y is/has X among other
+            possibilities</q>.</p>
+        <p>This rule is enforced via Schematron; the test is <code>not(@name = (../* except
+            .)/@name)</code></p>
+        <p>Note the constraint governs siblings, not all descendants of a control. Sub controls
+          within a control may have their own (properly-named) statements and properties.</p>
+      </stmt>
+    </control>
+    <control>
+      <title>Within a control, properties, statements and parameters may occur in any order.</title>
+      <desc>
+        <p>This specification does not govern how or whether an implementation may respect the order
+          of properties and statements given within a control type. Among properties, statements and
+          parameters (that is, named things) within a control, the uniqueness of their names ensures
+          that a canonical order can be restored at any time.</p>
+      </desc>
+    </control>
+  </group>
+  <group>
+    <title>Profiling and profile constraints</title>
+    <div>
+      <title>Customization layers</title>
+      <p>Like many tag languages and machine-readable syntaxes, OSCAL is intended to be extended and
+        customized. Unlike most other formats, however, OSCAL's extension mechanism includes a set
+        of features, supported natively in the language, for extension by the simplest possible
+        mechanism, without requiring modification of any schemas, using a simple, native set of
+        declarations for controls.</p>
+      <p>OSCAL's validation model consists of several layers. At base is schema validation, which
+        ensures that all tags in use are recognized as OSCAL tagging and that their arrangement in
+        the document (with regard to both structure, and certain <q>semantic</q> relations) is
+        consistent with regular usage of OSCAL. In a second layer, other relationships can be tested
+        and rules enforced, over and above what a schema imposes. Implemented in Schematron or any
+        technology with analogous capabilities, such as second layer is more flexible and
+        configurable than the base layer.</p>
+      <p>In a third layer, an OSCAL document is validated to constraints it declares for itself,
+        that is locally in its own declarations. (Call this a <q>consistency check</q> rather than
+        validation, for clarity.) Such a validation may be useful to an OSCAL implementation, which
+        can take advantage of contracts implicit in such validation to provide functionalities;
+        OSCAL itself does not provide such functionality, but only the hooks – and the mechanism by
+        which users and developers can easily create and manage new control types.</p>
+    </div>
+  </group>
+</catalog>

@@ -16,6 +16,16 @@ x rename nested catalog as 'group' (DW)
 
 ===
 
+Since last check in:
+  implemented declarations/control-spec w/ property, statement declarations
+    schema, Schematron (implementation), test data
+  tagged assign, select, withdraw elements in SP800-53 data
+  CSS for same
+  More CSS and schema enhancements
+  Testing XSD pathway including docs
+  Documentation (oscal-oscal.xml)
+  Extended to inline <code>, <q>
+
 o merge 'implementation' sections from 800-53A (PDF!) into draft control
 
 o xrefs and linking! -
@@ -23,10 +33,11 @@ o xrefs and linking! -
   o 'a' for external links?
   o model them first, then worry about conversion
 
-o induction of implicit cross-references from SP800-53?
+x induction of implicit cross-references from SP800-53?
   e.g. inside supplemental guidance
 
-o Implement parameters w/ parameter declarations
+x Implement parameters
+   w/ parameter declarations?
 
 o pull in more data from PDFs e.g. in 800-53 control enhancements
   Maybe do all of section AC (account controls)
@@ -34,7 +45,22 @@ o presentational XSLT (PDF?) for cross-checking / proofing
 
 o "Media Protection" section (passim!)
 
+XSLT
+  implement bells and whistles
+    e.g. headers (titles) for statements, properties
+    runins for numbering
+  filtered views e.g. all assignments, selections
+
 o Define an ID assignment protocol and add IDs?
+    implement as refactoring XSLT?
+    taking numbering format as runtime parameter?!
+
+Implement 'assign' checking as Schematron (specific to catalog / control types)
+  checks against normative versions in the background!?
+Implement 'select' checking as detecting any select without selected/
+  select/selected/choice
+  select/available/choice
+
 
 o 'preamble' section including declarations
     x control-spec (describing the structure of a control)
@@ -43,20 +69,47 @@ o 'preamble' section including declarations
 x implement PDF production pipeline
 o implement XSLT 1.0 (client side) runtime resolution/display
 
-o inside runtime:
+LAYERED VALIDATION MODEL
+  0. element grammar
+  1. OSCAL constraints (what makes a control catalog in OSCAL terms)
+  2. OSCAL customization constraints (profile-level)
+  3. implicit/runtime/'culture' constraints (implementation-level)
+
+All of these can be demonstrated in a prototype/PoC
+
+
+Runtime declarations?
   o parameter value assignments
   o semantic associations / merge-map?
     (e.g. formal mappings between control properties)
+
   
 inside declarations:
-  control-spec { @type, control-label?, parameter-spec*, statement-spec*, authority* )
+  x control-spec { @type, parameter-spec*, statement-spec*, authority* )
     o expansion for run-in label?
       (so you can say to promote prop[@name='number'] into the control title for display)
-  parameter-spec including lexical contraints
+    x add prop/runin <runin/> to <id/><regex/><value/> indicating run-in display of property
+    x also added title as alternative
+  parameter including lexical contraints
   statement-spec
     x expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
   o authority (binding to external resource or copy)
       stipulates local handle (@id) 
+
+NEXT UP
+  o Make CSS filtering down to select/choice and assign values?
+
+  o Make XSLT running (various) substitutions
+  o Another XSLT produces a set of declarations from a group of controls (adapt from mapper)
+
+Every profile is based on a catalog or multiple catalogs. A catalog is indeed (in one respect) nothing more than a "standalone" profile, that is, a profile that makes reference to no catalog but itself. We distinguish a catalog from a profile in use mainly because we hope we don't have to start from scratch; we generally base our work on earlier work or at least make reference to it - hence we are less interested in making a new catalog from scratch, than in creating a profile of (documenting a relation with) a catalog provided as a reference. Nonetheless, catalogs and profiles are made from the same stuff: the difference is in how we are using it.
+
+We expect to have standard catalogs, so we don't have to produce them from scratch -- whereas we also expect we need to be able to do our own thing, hence the need for profiling.
+
+With respect to content models, catalogs and profiles are isomorphic except wrt the presence of element 'authority'. One way to produce a profile (a 'null' profile ready for editing) of a given catalog, is to rename 'catalog' to 'profile' and add 'authority' pointing to the original catalog. (There are better ways to do this but it works.)
+
+Hence, in schema validation, 'catalog' and 'profile' are synonymous, with their difference in application asserted in Schematron.
+
 
 o Also declarations of properties/statements on groups (again by type)
 

@@ -68,10 +68,10 @@ padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: ligh
 stmt { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
 
-desc:before { font-weight: bold; color: darkgreen; font-family: sans-serif;
+desc:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 'Description' }
 
-stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+stmt:before { font-weight: bold; color:  darkgreen; font-family: sans-serif;
           content: attr(name) }
 
 /* SP800-53 */
@@ -81,6 +81,7 @@ stmt[name=supplemental-guidance]:before { content: "Supplemental guidance" }
 stmt[name=objective]:before { content: "Objective" }
 stmt[name=implementation-guidance]:before { content: "Implementation guidance" }
 stmt[name=other-information]:before { content: "Other information" }
+stmt[name=remarks]:before { content: "Remarks" }
 
 
 
@@ -103,6 +104,16 @@ std[href]:before, citation[href]:before {
         columns 53);
 }
 
+q { display: inline;
+    
+  quotes: "“" "”" "‘" "’";
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
 std, citation { margin-top: 0.5em }
 std      { color: darkred }
 citation { color: purple }
@@ -111,6 +122,8 @@ em { font-style: italic; display: inline }
 xref { display: inline; color: blue }
 
 withdrawn { display: inline; font-style: italic }
+
+code { display: inline; font-family: monospace; font-size: 90% }
 
 assign { display: inline; font-family: sans-serif; background-color: white;
   font-size: 80%; font-style: italic; border: thin solid pink }

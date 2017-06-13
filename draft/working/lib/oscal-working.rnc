@@ -15,37 +15,42 @@ catalog = element catalog { title, declarations?, section*, (group+ | control+),
 
 # declarations includes declarations for control types, parameters (names/types),
 # authorities (source data for transclusion etc. etc.)
-declarations = ( element declarations { attribute href { text } |
-  ( control-spec*, param-spec*, authority* ) } )
+declarations = ( element declarations { attribute href { text }?,
+  ( authority*, parameter*, control-spec* ) } )
 
 control-spec = element control-spec {
         typeAttr,
-        element required { (property*, statement*) }?,
-        element optional { (property*, statement*) }?
+        element required { (parameter*, property*, statement*) }?,
+        element optional { (parameter*, property*, statement*) }?
       }+
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property =
   element property {
-    attribute name { xsd:NCName },
-    ((element identifier    { empty }?, element regex { text }? ) |
-       element value { text }* )
+    nameAttr,
+    ( ( title | element runin { empty } )?,
+      ((element identifier    { empty }?, regex? ) |
+        value* ) )
   }
+  
+regex = element regex { text }
+value = element value { text }
   
 statement =
   element statement {
-    attribute name { xsd:NCName },
+    nameAttr,
     title
   }
 
-param-spec   = element parameter {
-  attribute name { text }, title?, element value { text }? }
+# parameter declarations expose names and default values for parameters within the control type
+parameter   = element parameter {
+  nameAttr, title?, (regex | value | choice+)? }
 
 authority    = empty
 
 group = element group {
   idAttr, typeAttr,
-  title, prop*, stmt*, (group* | control*), section*, references? }
+  title, param*, prop*, stmt*, (group* | control*), section*, references? }
 
 section = element div { idAttr, typeAttr,
   title, prose, section*, references? }
@@ -53,20 +58,28 @@ section = element div { idAttr, typeAttr,
 control =
   element control {
     idAttr, typeAttr,
-    title?, prop*,
+    title?, param*, prop*,
     desc, stmt*,
     extensions?,
     references?
   }
 
-title = element title { text }
+title = element title { (text | q)* }
+
+# param is like its declaration, but simpler
+# permits bindings to assign and select elements w/in controls
+# i.e. local override of a default assignment in a parameter declaration
+# or on-the-fly declaration of new parameters for a control
+# (since params are not currently required to be declared
+
+param   = element param { nameAttr, title?, (value | choice+)? }
 
 prop =
   element prop {
-    attribute name { xsd:NCName },
+    nameAttr,
     whatnot
   }
-# on prop, not(@name = ../(prop|stmt)/@name)
+# on prop, not(@name = ../(* except current())/@name)
 
 desc = element desc { prose }
 
@@ -75,7 +88,7 @@ desc = element desc { prose }
 
 stmt =
   element stmt {
-    attribute name { xsd:NCName },
+    nameAttr?,
     prose }
 # on stmt, not(@name = ../(prop|stmt)/@name)
 
@@ -93,12 +106,12 @@ ref = element ref { idAttr, (std | citation)* }
 
 std =  element std {
          attribute href { xsd:anyURI }?,
-         whatnot
+         mix
   }
 
 citation =  element citation {
          attribute href { xsd:anyURI }?,
-         whatnot
+         mix
   }
 
 p =
@@ -113,11 +126,21 @@ idAttr   = attribute id { xsd:ID }?
 
 typeAttr = attribute type { text }?
 
+nameAttr = attribute name { xsd:NCName }
+
 # html!
 whatnot = (
-  semantical | ol | inlines | text )*
+  semantical | ol | mix )*
 
-inlines = (  element em { text } | element xref { attribute href { text }?, text } )
+mix = (inlines | text)*
+
+inlines = (  q | code | element em { text } | element xref { attribute href { text }?, text } )
+
+q = element q { text }
+
+
+# A bit of code (perhaps capable of evaluation in the correct context)
+code = element code { attribute type { text }?, mix }
 
 # not html!
 semantical = ( withdrawn | assign | select )
@@ -125,11 +148,12 @@ semantical = ( withdrawn | assign | select )
 # A placeholder status report typically with a cross-reference
 withdrawn = element withdrawn { (inlines | text)* }
 
-# A value to be assigned by responder
-assign = element assign { attribute name { text }?,
-  (inlines | text)* }
+# A value to be assigned by responder, possibly via a param (parameter) or parameter declaration
+assign = element assign { nameAttr?, mix }
 
 # A selection to be made by responder
-select = element select {
-  element choice { (assign | inlines | text)* }* }
+select = element select { nameAttr?, choice* }
 
+# Within a selection, a choice
+# unlike 'value', choice may have inline stuff as well as 'assign' elements
+choice = element choice { nameAttr?, (assign | mix)* }

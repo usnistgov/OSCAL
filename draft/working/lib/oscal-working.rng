@@ -95,30 +95,38 @@
       <attribute name="name">
         <data type="NCName"/>
       </attribute>
-      <optional>
-        <choice>
+      <group>
+        <optional>
           <choice>
-            <group>
-              <optional>
-                <element name="id">
-                  <empty/>
-                </element>
-              </optional>
-              <element name="regex">
-                <text/>
-              </element>
-            </group>
-            <element name="id">
+            <ref name="title"/>
+            <element name="runin">
               <empty/>
             </element>
           </choice>
-          <oneOrMore>
-            <element name="value">
-              <text/>
-            </element>
-          </oneOrMore>
+        </optional>
+        <choice>
+          <group>
+            <optional>
+              <element name="identifier">
+                <empty/>
+              </element>
+            </optional>
+            <optional>
+              <element name="regex">
+                <text/>
+              </element>
+            </optional>
+          </group>
+          <zeroOrMore>
+            <ref name="value"/>
+          </zeroOrMore>
         </choice>
-      </optional>
+      </group>
+    </element>
+  </define>
+  <define name="value">
+    <element name="value">
+      <text/>
     </element>
   </define>
   <define name="statement">
@@ -136,9 +144,12 @@
         <ref name="title"/>
       </optional>
       <optional>
-        <element name="value">
-          <text/>
-        </element>
+        <choice>
+          <ref name="value"/>
+          <oneOrMore>
+            <ref name="choice"/>
+          </oneOrMore>
+        </choice>
       </optional>
     </element>
   </define>
@@ -149,6 +160,9 @@
     <element name="group">
       <ref name="idAttr"/>
       <ref name="typeAttr"/>
+      <zeroOrMore>
+        <ref name="param-spec"/>
+      </zeroOrMore>
       <ref name="title"/>
       <zeroOrMore>
         <ref name="prop"/>
@@ -190,6 +204,9 @@
     <element name="control">
       <ref name="idAttr"/>
       <ref name="typeAttr"/>
+      <zeroOrMore>
+        <ref name="param-spec"/>
+      </zeroOrMore>
       <optional>
         <ref name="title"/>
       </optional>
@@ -210,7 +227,12 @@
   </define>
   <define name="title">
     <element name="title">
-      <text/>
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="q"/>
+        </choice>
+      </zeroOrMore>
     </element>
   </define>
   <define name="prop">
@@ -233,9 +255,11 @@
   -->
   <define name="stmt">
     <element name="stmt">
-      <attribute name="name">
-        <data type="NCName"/>
-      </attribute>
+      <optional>
+        <attribute name="name">
+          <data type="NCName"/>
+        </attribute>
+      </optional>
       <ref name="prose"/>
     </element>
   </define>
@@ -329,15 +353,98 @@
   <define name="whatnot">
     <zeroOrMore>
       <choice>
+        <ref name="semantical"/>
         <ref name="ol"/>
+        <ref name="inlines"/>
         <text/>
-        <element name="em">
-          <text/>
-        </element>
-        <element name="xref">
-          <text/>
-        </element>
       </choice>
     </zeroOrMore>
+  </define>
+  <define name="inlines">
+    <choice>
+      <ref name="q"/>
+      <ref name="code"/>
+      <element name="em">
+        <text/>
+      </element>
+      <element name="xref">
+        <optional>
+          <attribute name="href"/>
+        </optional>
+        <text/>
+      </element>
+    </choice>
+  </define>
+  <define name="q">
+    <element name="q">
+      <text/>
+    </element>
+  </define>
+  <!-- not html! -->
+  <define name="semantical">
+    <choice>
+      <ref name="withdrawn"/>
+      <ref name="assign"/>
+      <ref name="select"/>
+    </choice>
+  </define>
+  <!-- A placeholder status report typically with a cross-reference -->
+  <define name="withdrawn">
+    <element name="withdrawn">
+      <zeroOrMore>
+        <choice>
+          <ref name="inlines"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- A value to be assigned by responder -->
+  <define name="assign">
+    <element name="assign">
+      <optional>
+        <attribute name="name"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="inlines"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- A bit of code (perhaps capable of evaluation in the correct context) -->
+  <define name="code">
+    <element name="code">
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <zeroOrMore>
+        <choice>
+          <ref name="inlines"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- A selection to be made by responder -->
+  <define name="select">
+    <element name="select">
+      <zeroOrMore>
+        <ref name="choice"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!-- Within a selection, a choice -->
+  <define name="choice">
+    <element name="choice">
+      <zeroOrMore>
+        <choice>
+          <ref name="assign"/>
+          <ref name="inlines"/>
+          <text/>
+        </choice>
+      </zeroOrMore>
+    </element>
   </define>
 </grammar>

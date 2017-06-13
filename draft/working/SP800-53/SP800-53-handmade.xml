@@ -4,7 +4,7 @@
 <?xml-model href="oscal-basic.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
-  <title>NIST SP800-53</title>
+  <title>NIST SP800-53 Handmade OSCAL</title>
   <declarations>
     <control-spec type="SP800-53">
       <required>
@@ -784,7 +784,7 @@
         </control>
         <control type="SP800-53-enhancement">
           <desc>
-            <p>The information system notifies the user of the number of <select><choice>successful logins/accesses;</choice><choice> unsuccessful login/access attempts;</choice><choice> both</choice></select> during
+            <p>The information system notifies the user of the number of <select><choice>successful logins/accesses;</choice><choice>unsuccessful login/access attempts;</choice><choice>both</choice></select> during
                 <assign>organization-defined time period</assign>.</p>
           </desc>
         </control>
