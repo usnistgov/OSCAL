@@ -129,7 +129,9 @@
         <p>This specification does not govern how or whether an implementation may respect the order
           of properties and statements given within a control type. Among properties, statements and
           parameters (that is, named things) within a control, the uniqueness of their names ensures
-          that a canonical order can be restored at any time.</p>
+          that a canonical order can be restored at any time. An order may be imposed locally (for
+          example, by a schema that requires all properties to appear before all statements), but
+          this is for its convenience not because an order is mandated.</p>
       </desc>
     </control>
   </group>

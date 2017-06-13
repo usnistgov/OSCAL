@@ -9,7 +9,7 @@
     <sch:rule context="oscal:prop | oscal:stmt | oscal:param | oscal:choice">
       <sch:let name="here" value="."/>
       <sch:report test="@name = (../* except $here)/@name">
-        More than one '<sch:value-of select="@name"/>' (<sch:value-of select="string-join(distinct-values(../*[@name=$here/@name]/name()),', ')"/>) appears in this <sch:value-of select="name(..)"/>.
+        More than one '<sch:value-of select="@name"/>' (<sch:value-of select="string-join(distinct-values(../*[@name=$here/@name]/name(.)),', ')"/>) appears in this <sch:value-of select="name(..)"/>.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -47,7 +47,7 @@
     <sch:rule context="oscal:prop | oscal:stmt">
       <sch:let name="here"          value="."/>
       <sch:let name="catalog-entry" value="$declarations/key('control-spec',oscal:signature($here),.)"/>
-      <sch:let name="controlled"    value="$declarations/key('control-spec',oscal:signature($here/parent::control[1]),.)"/>
+      <sch:let name="controlled"    value="$declarations/key('control-spec',oscal:signature($here/parent::oscal:control[1]),.)"/>
       <!-- If the control lookup fails, the test is silenced -->
       <sch:assert test="exists($catalog-entry) or empty($controlled)">
         <sch:name/> can't be named '<sch:value-of select="@name"/>' (no such <sch:name/> known in control of type '<sch:value-of select="ancestor::oscal:control[1]/@type"/>'
