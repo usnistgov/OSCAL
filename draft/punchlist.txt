@@ -39,6 +39,8 @@ x induction of implicit cross-references from SP800-53?
 x Implement parameters
    w/ parameter declarations?
 
+o As of 
+
 o pull in more data from PDFs e.g. in 800-53 control enhancements
   Maybe do all of section AC (account controls)
 o presentational XSLT (PDF?) for cross-checking / proofing

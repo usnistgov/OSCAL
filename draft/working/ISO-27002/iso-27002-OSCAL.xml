@@ -3,7 +3,7 @@
 <?xml-model href="../lib/oscal-working.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
-   <title>ISO/IEC 27002</title>
+  <title>ISO/IEC 27002</title>
   <declarations xmlns="http://scap.nist.gov/schema/oscal">
     <control-spec type="iso-27002">
       <required>

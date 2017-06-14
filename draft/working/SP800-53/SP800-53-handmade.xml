@@ -867,7 +867,8 @@
       <prop name="control-class">Technical</prop>
       <prop name="number">AC-13</prop>
       <desc>
-        <p>[<withdrawn>Withdrawn: Incorporated into <xref href="#AC-2">AC-2</xref> and <xref href="#AU-6">AU-6</xref></withdrawn>].</p>
+        <p>[<withdrawn>Withdrawn: Incorporated into <xref href="#AC-2">AC-2</xref> and <xref
+              href="#AU-6">AU-6</xref></withdrawn>].</p>
       </desc>
     </control>
     <control type="SP800-53">

@@ -26,10 +26,9 @@
       <sch:assert test="empty($named-alike except .)"><sch:name/>/@name '<sch:value-of select="$name"/>' is not unique within this control</sch:assert>
     </sch:rule>
   </sch:pattern>
-  
+
   <sch:pattern>
     <sch:rule context="oscal:p//* | oscal:list//*"/>
-    
     
     <sch:rule context="oscal:control">
       <sch:let name="here"          value="."/>
@@ -77,7 +76,7 @@
   </sch:pattern>
   
   <xsl:key name="prop-by-value" match="oscal:prop" use="normalize-space(.)"/>
-  
+
   <xsl:key name="control-spec"
     match="oscal:declarations/oscal:control-spec | oscal:declarations//oscal:property | oscal:declarations//oscal:statement"
     use="oscal:signature(.)"/>
