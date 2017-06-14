@@ -74,11 +74,11 @@
           or set of controls, for the purpose indicated by its <code>@name</code>.</p>
       </desc>
       <stmt name="remarks">
-        <p>Like properties (<code>prop</code>) and parameters (param), statements are <q>named
-            things</q>, and as such are expected to be unique within their controls, such that a
-          query for a particular statement (or other named thing) on a particular control will never
-          return more than one thing by that name. Some OSCAL implementations may also permit
-          anonymous statements, which will not follow the <q>unique naming</q> rule.</p>
+        <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), statements are
+            <q>named things</q>, and as such are expected to be unique within their controls, such
+          that a query for a particular statement (or other named thing) on a particular control
+          will never return more than one thing by that name. Some OSCAL implementations may also
+          permit anonymous statements, which will not follow the <q>unique naming</q> rule.</p>
         <p>A statement is typically displayed with a heading proper to its type or function, as
           indicated by its <code>@name</code>. So that a <code>stmt[@name='objectives']</code> is
           displayed under a header <em>Objectives</em>, etc.</p>

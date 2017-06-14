@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
-<?xml-model href="../lib/oscal-catalog.rnc" type="application/relax-ng-compact-syntax"?>
-<catalog xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://scap.nist.gov/schema/oscal ../lib/oscal-catalog.xsd"
+ xmlns="http://scap.nist.gov/schema/oscal">
    <title>ISO/IEC 27002</title>
    <group type="control-category">
       <title>Information security policies</title>
