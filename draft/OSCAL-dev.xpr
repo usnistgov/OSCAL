@@ -10,16 +10,31 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/ISO-27002/ISO-epub-to-OSCAL.xsl</String>
+                                    <String>working/SP800-53/SP800-53-handmade.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>ISO 27702 EPUB to OSCAL</String>
+                                        <String>OSCAL simple XSLT (open)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>XML</String>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/lib/make-xslt.xq</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run XQuery</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XQUERY</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -40,22 +55,22 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/lib/utility.xq</String>
+                                    <String>working/ISO-27002/ISO-epub-to-OSCAL.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Run XQuery</String>
+                                        <String>ISO 27702 EPUB to OSCAL</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>XQUERY</String>
+                                        <String>XML</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/lib/make-xslt.xq</String>
+                                    <String>working/lib/utility.xq</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -259,6 +274,92 @@
                                 </field>
                                 <field name="xslTransformer">
                                     <String>Saxon-EE</String>
+                                </field>
+                                <field name="extensionURLs">
+                                    <String-array/>
+                                </field>
+                            </scenario>
+                            <scenario>
+                                <field name="advancedOptionsMap">
+                                    <null/>
+                                </field>
+                                <field name="name">
+                                    <String>OSCAL simple XSLT (open)</String>
+                                </field>
+                                <field name="baseURL">
+                                    <String></String>
+                                </field>
+                                <field name="footerURL">
+                                    <String></String>
+                                </field>
+                                <field name="fOPMethod">
+                                    <String>pdf</String>
+                                </field>
+                                <field name="fOProcessorName">
+                                    <String>Apache FOP</String>
+                                </field>
+                                <field name="headerURL">
+                                    <String></String>
+                                </field>
+                                <field name="inputXSLURL">
+                                    <String>${pdu}/working/lib/oscal-basic-display.xsl</String>
+                                </field>
+                                <field name="inputXMLURL">
+                                    <String>${currentFileURL}</String>
+                                </field>
+                                <field name="defaultScenario">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="isFOPPerforming">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="type">
+                                    <String>XSL</String>
+                                </field>
+                                <field name="saveAs">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="openInBrowser">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="outputFile">
+                                    <File>${cfn}.html</File>
+                                </field>
+                                <field name="outputResource">
+                                    <String>${cfn}.html</String>
+                                </field>
+                                <field name="openOtherLocationInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="locationToOpenInBrowserURL">
+                                    <null/>
+                                </field>
+                                <field name="openInEditor">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInHTMLPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInXMLPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInSVGPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInResultSetPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="useXSLTInput">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="xsltParams">
+                                    <list/>
+                                </field>
+                                <field name="cascadingStylesheets">
+                                    <String-array/>
+                                </field>
+                                <field name="xslTransformer">
+                                    <String>Saxon6.5.5</String>
                                 </field>
                                 <field name="extensionURLs">
                                     <String-array/>

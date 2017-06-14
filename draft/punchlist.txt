@@ -77,7 +77,6 @@ LAYERED VALIDATION MODEL
 
 All of these can be demonstrated in a prototype/PoC
 
-
 Runtime declarations?
   o parameter value assignments
   o semantic associations / merge-map?
@@ -96,11 +95,13 @@ inside declarations:
   o authority (binding to external resource or copy)
       stipulates local handle (@id) 
 
+
 NEXT UP
   o Make CSS filtering down to select/choice and assign values?
 
   o Make XSLT running (various) substitutions
-  o Another XSLT produces a set of declarations from a group of controls (adapt from mapper)
+  x Another XSLT produces a set of declarations from a group of controls (adapt from mapper)
+    x also produced declarations for ISO20002
 
 Every profile is based on a catalog or multiple catalogs. A catalog is indeed (in one respect) nothing more than a "standalone" profile, that is, a profile that makes reference to no catalog but itself. We distinguish a catalog from a profile in use mainly because we hope we don't have to start from scratch; we generally base our work on earlier work or at least make reference to it - hence we are less interested in making a new catalog from scratch, than in creating a profile of (documenting a relation with) a catalog provided as a reference. Nonetheless, catalogs and profiles are made from the same stuff: the difference is in how we are using it.
 
@@ -135,7 +136,7 @@ What sorts of things do we need to validate at the level of a control?
     * referential integrity (co-occurrence constraints)
       e.g. if in section "Access Control" then ID must start 'AC' ...
 
-o XSLT to rip catalog declarations from a catalog
+x XSLT to rip catalog declarations from a catalog
 oXygen Author CSS
 pull-downs for properties and statement types inside various controls (e.g.)
 
@@ -146,15 +147,14 @@ x remove sequence, clause, control-group properties (or anything so redundant)
 
   Model must enable auto-production of Schematron per profile?
 
-OOO what have we done so far?
-     including screen shots
-
 x Run Trang and debug XSD (yay!)
 
-Any different for control enhancements?
-o model OSCAL map? for Schematron validation
-
 o rendering XSLT to make a pretty page display (or PDF?)
+
+Thurs Jun 15
+  Review parameters design w/ David
+  Question re: declarations for group (not control) properties and statements?
+    (Flat, or nested?)
 
 GOALS for next checkpoint
 o Complete and valid mappings for both sources

@@ -3,24 +3,48 @@
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Straight" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
+<?xml-stylesheet type="text/xsl" href="oscal-basic-display.xsl"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>OSCAL: the Open Security Controls Assessment Language</title>
   <declarations xmlns="http://scap.nist.gov/schema/oscal">
     <control-spec type="element-description">
       <required>
         <property name="tag">
-          <regex>&lt;\x\c*&gt;</regex>
+          <runin/>
+          <regex>^&lt;\i\c*&gt;$</regex>
         </property>
-        <property name="full_name"/>
-        <statement name="remarks"><title>Remarks</title></statement>
+        <property name="full_name">
+          <title>Formal name</title>
+        </property>
+        <statement name="remarks">
+          <title>Remarks</title>
+        </statement>
       </required>
       <optional/>
+    </control-spec>
+    <control-spec type="validation-rule">
+      <optional>
+        <statement name="remarks">
+          <title>Remarks</title>
+        </statement>
+      </optional>
     </control-spec>
   </declarations>  <!--<declarations></declarations>-->
   <div>
     <title>What is OSCAL</title>
     <div>
       <title>A language for describing security controls</title>
+      <p>Language designers will recognize OSCAL as an application of XML that replicates, in
+        miniature, some of XML's own features, except at a higher level of abstraction. Instead of
+        allowing (and requiring) the creation of new tags altogether, OSCAL offers the capability of
+        mapping arbitrary structured information sets into relatively simple <q>control objects</q>
+        that are nonetheless validable and sufficiently processible to be responsive to query and
+        analysis. In this, OSCAL seeks to offer a peculiar balance between predictability, and
+        open-endedness, such that while (open-endedness) it is capable of describing new and novel
+        types of control assessment information, it remains (predictability) processible and
+        discoverable. OSCAL achieves this balance by sticking to a tight set of rules with respect
+        to its own semantics, while at the same time offering users and developers the flexibility
+        to extend and augment control types at need.</p>
       <!--<p>We do not define <q>security control</q> except within the narrow context of OSCAL, and OSCAL does not stipulate whether what it describes has anything to do with <q>security</q> or <q>controls</q>. In OSCAL terms, a control is a unit of structured (encoded) information that takes a particular form. (In this OSCAL is comparable to an HTML microformat, except with the extra benefits of tools and a validation model.) As such, OSCAL structures follow regular patterns which can be exploited by an OSCAL-aware processor. OSCAL, however, is entirely general as to what these structures are, what they represent, how they are managed or verified, etc. etc. We expect and anticipate building OSCAL applications within the domain of security controls and Security Controls Assessment; but that is not the only potential application of OSCAL.</p>-->
     </div>
     <div>
@@ -63,7 +87,7 @@
         <p>Properties are the <q>bread and butter</q> of OSCAL; they enable the deployment and
           management of arbitrary controlled values, with and among control objects
           (<q>controls</q>), for any purpose useful to an application or implementation of those
-          controls. Typically and routinely, properties they will be used to sort, select, order and
+          controls. Typically and routinely, properties will be used to sort, select, order and
           arrange controls or relate them to one another or to class hierarchies, taxonomies or
           external authorities.</p>
         <p>Unlike statements, properties may not be assigned dynamic contents (OSCAL
@@ -87,11 +111,11 @@
           or set of controls, for the purpose indicated by its <code>@name</code>.</p>
       </desc>
       <stmt name="remarks">
-        <p>Like properties (<code>prop</code>) and parameters (param), statements are <q>named
-            things</q>, and as such are expected to be unique within their controls, such that a
-          query for a particular statement (or other named thing) on a particular control will never
-          return more than one thing by that name. Some OSCAL implementations may also permit
-          anonymous statements, which will not follow the <q>unique naming</q> rule.</p>
+        <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), statements are
+            <q>named things</q>, and as such are expected to be unique within their controls, such
+          that a query for a particular statement (or other named thing) on a particular control
+          will never return more than one thing by that name. Some OSCAL implementations may also
+          permit anonymous statements, which will not follow the <q>unique naming</q> rule.</p>
         <p>A statement is typically displayed with a heading proper to its type or function, as
           indicated by its <code>@name</code>. So that a <code>stmt[@name='objectives']</code> is
           displayed under a header <em>Objectives</em>, etc.</p>
@@ -108,7 +132,7 @@
         constraints governing usage. Validations enforcing them can be implemented via Schematron or
         another process capable of static analysis of the data.</p>
     </stmt>
-    <control>
+    <control type="validation-rule">
       <title>Names must be distinct among sibling elements</title>
       <desc>
         <p><code>@name</code> (the value of the 'name' attribute) must be distinct among sibling
@@ -136,7 +160,7 @@
           within a control may have their own (properly-named) statements and properties.</p>
       </stmt>
     </control>
-    <control>
+    <control type="validation-rule">
       <title>Within a control, properties, statements and parameters may occur in any order.</title>
       <desc>
         <p>This specification does not govern how or whether an implementation may respect the order

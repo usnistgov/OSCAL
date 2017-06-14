@@ -3,6 +3,7 @@
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="../lib/oscal-basic-display.xsl"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>NIST SP800-53 Handmade OSCAL</title>
   <declarations>
@@ -41,7 +42,6 @@
         </statement>
       </optional>
     </control-spec>
-    
   </declarations>
   <group type="family">
     <title>Access Control</title>
@@ -686,8 +686,8 @@
           <li>Automatically <select>
               <choice>locks the account/node for an <assign>organization-defined time
                   period</assign>;</choice>
-              <choice> locks the account/node until released by an administrator;</choice>
-              <choice> delays next login prompt according to <assign>organization-defined delay
+              <choice>locks the account/node until released by an administrator;</choice>
+              <choice>delays next login prompt according to <assign>organization-defined delay
                   algorithm</assign></choice>
             </select> when the maximum number of unsuccessful attempts is exceeded. The control
             applies regardless of whether the login occurs via a local or network connection.</li>

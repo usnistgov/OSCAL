@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  version="1.0"
+  xmlns:oscal="http://scap.nist.gov/schema/oscal">
+  
+  <xsl:template match="/">
+    <html>
+      <head>
+        <xsl:apply-templates select="descendant::oscal:title[1]" mode="title"/>
+        <style type="text/css">
+
+.control { margin:1em; padding: 1em; border: thin dotted black }
+.control > *:first-child { margin-top: 0em }
+
+h3 { font-size: 120% }
+
+div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
+
+section h3     { font-size: 160% }
+section h3     { font-size: 140% }
+div h3         { font-size: 130% }
+div div h3     { font-size: 120% }
+div div div h3 { font-size: 110% }
+
+.subst { color: darkred; font-weight: bold; border: thin solid pink; padding: 0.1em }
+        
+      </style>
+      </head>
+      <body>
+        <xsl:apply-templates/>
+      </body>
+    </html>
+  </xsl:template>
+  
+  <xsl:template match="oscal:catalog">
+    <x class="catalog">
+      <xsl:apply-templates/>
+    </x>
+  </xsl:template>
+  
+  <xsl:template match="oscal:title">
+    <h2 class="title">
+      <xsl:apply-templates/>
+    </h2>
+  </xsl:template>
+  
+  <xsl:template match="oscal:declarations"/>
+    
+    <xsl:template match="oscal:title" mode="title">
+      <xsl:value-of select="."/>
+    </xsl:template>
+    
+  <!--<xsl:template match="oscal:declarations">
+    <x class="declarations">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  <xsl:template match="oscal:control-spec">
+    <x class="control-spec">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  <xsl:template match="oscal:required">
+    <x class="required">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  <xsl:template match="oscal:property">
+    <x class="property">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  <xsl:template match="oscal:value">
+    <x class="value">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  <xsl:template match="oscal:identifier">
+    <x class="identifier">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  <xsl:template match="oscal:regex">
+    <x class="regex">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  
+  <xsl:template match="oscal:optional">
+    <x class="optional">
+      <apply-templates/>
+    </x>
+  </xsl:template>
+  
+  <xsl:template match="oscal:statement">
+    <div class="statement">
+      <apply-templates/>
+    </div>
+  </xsl:template>-->
+  
+  <xsl:template match="oscal:group">
+    <section class="group">
+      <xsl:apply-templates/>
+    </section>
+  </xsl:template>
+  
+  <xsl:key name="declarations" match="oscal:control-spec" use="@type"/>
+  
+  <xsl:key name="declarations" match="oscal:property | oscal:statement | oscal:parameter"
+    use="concat(ancestor::oscal:control-spec/@type,'#',@name)"/>
+  
+  <xsl:key name="assignment"  match="oscal:param" use="@name"/>
+  
+  <xsl:template match="oscal:control">
+    <div class="control">
+      <xsl:variable name="runins"
+        select="key('declarations',@type)/*/oscal:property/oscal:runin"/>
+      <xsl:call-template name="make-title">
+        <xsl:with-param name="runins" select="$runins"/>
+      </xsl:call-template>
+      
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  
+  <!-- Picked up in parent -->
+  <xsl:template match="oscal:control/oscal:title"/>
+  
+  <xsl:template name="make-title">
+    <xsl:param name="runins" select="/.."/>
+    <h3>
+      <xsl:apply-templates select="oscal:prop[@name=$runins/../@name]" mode="run-in"/>
+      <xsl:for-each select="oscal:title">
+        <xsl:apply-templates/>
+      </xsl:for-each>
+    </h3>
+  </xsl:template>
+  
+  <xsl:template match="oscal:prop" mode="run-in">
+    
+    <span class="run-in subst">
+      <xsl:apply-templates/>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+      
+  <xsl:template match="oscal:prop">
+    <!-- If a run-in, gets picked up for the title. -->
+    <xsl:variable name="declaration" select="key('declarations',concat(parent::oscal:control/@type,'#',@name))"/>
+    <xsl:if test="not( $declaration/oscal:runin )">
+      <p class="prop">
+        <xsl:for-each select="$declaration/oscal:title">
+          <span class="subst">
+            <xsl:apply-templates/>
+          </span>
+        </xsl:for-each>
+        
+        <xsl:for-each select="@name[not($declaration/oscal:title)]">
+        <xsl:value-of select="."/>
+        </xsl:for-each>
+        <xsl:text>: </xsl:text>
+        <xsl:apply-templates/>
+      </p>
+    </xsl:if>
+  </xsl:template>
+  
+  <xsl:template match="oscal:desc">
+    <div class="desc">
+      <h4 class="description-head">Description</h4>
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  
+  <xsl:template match="oscal:p">
+    <p class="p">
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="oscal:assign">
+    <xsl:variable name="name"/>
+    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[@name=$name]"/>
+    <span class="assign">
+      <xsl:for-each select="$closest-param">
+        <span class="subst">
+          <xsl:apply-templates/>
+        </span>
+      </xsl:for-each>
+      <xsl:if test="not($closest-param)">
+        <xsl:apply-templates/>
+      </xsl:if>
+    </span>
+  </xsl:template>
+
+  <xsl:template match="oscal:ol">
+    <ol class="ol">
+      <xsl:apply-templates/>
+    </ol>
+  </xsl:template>
+  <xsl:template match="oscal:li">
+    <li class="li">
+      <xsl:apply-templates/>
+    </li>
+  </xsl:template>
+  
+  <xsl:template match="oscal:stmt">
+    <xsl:variable name="declaration" select="key('declarations',concat(parent::oscal:control/@type,'#',@name))"/>
+    
+    <div class="stmt">
+      <xsl:apply-templates select="$declaration/oscal:title"/>
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+
+  <xsl:template match="oscal:statement/oscal:title">
+    <h4 class="stmt-head subst">
+      <xsl:apply-templates/>
+    </h4>
+  </xsl:template>
+  
+  <xsl:template match="oscal:xref">
+    <a class="xref">
+      <xsl:copy-of select="@href"/>
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
+  <xsl:template match="oscal:references">
+    <section class="references">
+      <xsl:apply-templates/>
+    </section>
+  </xsl:template>
+  <xsl:template match="oscal:ref">
+    <div class="ref">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="oscal:std">
+    <p class="std">
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  <xsl:template match="oscal:extensions">
+    <div class="extensions">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="oscal:withdrawn">
+    <span class="withdrawn">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+  <xsl:template match="oscal:em">
+    <em class="em">
+      <xsl:apply-templates/>
+    </em>
+  </xsl:template>
+  <xsl:template match="oscal:select">
+    <div class="select">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="oscal:choice">
+    <p class="choice">
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  <xsl:template match="oscal:citation">
+    <p class="citation">
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  <xsl:template match="oscal:div">
+    <section class="div">
+      <xsl:apply-templates/>
+    </section>
+  </xsl:template>
+  <xsl:template match="oscal:code">
+    <code class="code">
+      <xsl:apply-templates/>
+    </code>
+  </xsl:template>
+  <xsl:template match="oscal:q">
+    <q class="q">
+      <xsl:apply-templates/>
+    </q>
+  </xsl:template>
+  
+  <xsl:template match="@name | @type">
+    <span class="{local-name()}">
+      <xsl:value-of select="."/>
+    </span>
+  </xsl:template>
+  
+</xsl:stylesheet>

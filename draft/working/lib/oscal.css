@@ -17,7 +17,7 @@ property  {  border: thin outset pink }
 statement {  border: thin outset blue } 
 
 required { background-color: lightsteelblue; color: black }
-optional { background-color: khaki }
+optional { background-color: lavender }
 
 required:before { content: "Required: "; font-style: italic }
 optional:before { content: "Optional: "; font-style: italic }
@@ -25,7 +25,9 @@ optional:before { content: "Optional: "; font-style: italic }
 value  { display: inline-block; background-color: ivory; border: thin outset pink;
   margin: 2px; padding: 2px; font-weight: bold; font-size: 80% }
 
-regex { display: inline; font-family: monospace; font-size: 90%; white-space: nowrap }
+regex { display: inline; font-family: monospace; font-size: 90%; white-space: nowrap;
+  background-color: ivory; border: thin outset green }
+  
 regex:before  { content: "matching (regex) "; font-family: sans-serif  }
 
 control-spec:before { font-weight: bold; content: "control type " attr(type) } 
@@ -55,7 +57,7 @@ prop { display: inline-block; background-color: pink; border: thin outset pink;
 identifier:before { content: "is an identifier"
  }
 
-title { font-weight: bold }
+title { font-weight: bold; font-family: sans-serif }
 catalog > title { font-size: 150% }
 group > title { font-size: 130% }
 group > group > title { font-size: 120% }

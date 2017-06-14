@@ -9,7 +9,7 @@
     <sch:rule context="oscal:prop | oscal:stmt | oscal:param | oscal:choice">
       <sch:let name="here" value="."/>
       <sch:report test="@name = (../* except $here)/@name">
-        More than one '<sch:value-of select="@name"/>' (<sch:value-of select="string-join(distinct-values(../*[@name=$here/@name]/name(.)),', ')"/>) appears in this <sch:value-of select="name(..)"/>.
+        More than one '<sch:value-of select="@name"/>' (<!--<sch:value-of select="string-join(distinct-values(../*[@name=$here/@name]/name(.)),', ')"/>-->) appears in this <sch:value-of select="name(..)"/>.
       </sch:report>
     </sch:rule>
   </sch:pattern>
@@ -44,7 +44,8 @@
       </sch:assert>
     </sch:rule>
     
-    <sch:rule context="oscal:prop | oscal:stmt">
+    <!-- Not yet validating properties against declarations in/for groups. -->
+    <sch:rule context="oscal:control/oscal:prop | oscal:control/oscal:stmt">
       <sch:let name="here"          value="."/>
       <sch:let name="catalog-entry" value="$declarations/key('control-spec',oscal:signature($here),.)"/>
       <sch:let name="controlled"    value="$declarations/key('control-spec',oscal:signature($here/parent::oscal:control[1]),.)"/>
@@ -76,7 +77,6 @@
   </sch:pattern>
   
   <xsl:key name="prop-by-value" match="oscal:prop" use="normalize-space(.)"/>
-  
   
   <xsl:key name="control-spec"
     match="oscal:declarations/oscal:control-spec | oscal:declarations//oscal:property | oscal:declarations//oscal:statement"
