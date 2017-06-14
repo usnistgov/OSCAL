@@ -23,8 +23,9 @@ div div h3     { font-size: 120% }
 div div div h3 { font-size: 110% }
 
 .param { font-style: italic }
-.assign, .select { background-color: lemonchiffon }
-.subst { border: thin solid black; padding: 0.1em }
+.assign, .choice { border: thin solid black; padding: 0.1em }
+
+.subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
 
 .param .em { font-style: roman }
 

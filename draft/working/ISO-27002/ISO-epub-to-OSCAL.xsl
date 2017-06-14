@@ -17,6 +17,21 @@
     <xsl:text>&#xA;</xsl:text>
     <catalog>
       <title>ISO/IEC 27002</title>
+      
+      <declarations>
+        <control-spec type="iso-27002">
+          <required>
+            <property name="number">
+              <regex>^\d+\.\d+\.\d+$</regex>
+            </property>
+          </required>
+          <optional>
+            <statement name="implementation-guidance"><title>Implementation guidance</title></statement>
+            <statement name="other-information"><title>Further information</title></statement>
+          </optional>
+        </control-spec>
+      </declarations>
+      
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
     </catalog>
 
