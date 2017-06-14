@@ -24,6 +24,11 @@ control-spec = element control-spec {
         element optional { (parameter*, property*, statement*) }?
       }+
 
+
+# parameter declarations expose names and default values for parameters within the control type
+parameter   = element parameter {
+  nameAttr, title?, (regex | value | choice+)? }
+
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property =
   element property {
@@ -35,16 +40,12 @@ property =
   
 regex = element regex { text }
 value = element value { text }
-  
+
 statement =
   element statement {
     nameAttr,
     title
   }
-
-# parameter declarations expose names and default values for parameters within the control type
-parameter   = element parameter {
-  nameAttr, title?, (regex | value | choice+)? }
 
 authority    = empty
 
@@ -72,7 +73,7 @@ title = element title { (text | q)* }
 # or on-the-fly declaration of new parameters for a control
 # (since params are not currently required to be declared
 
-param   = element param { nameAttr, title?, (value | choice+)? }
+param   = element param { nameAttr, mix }
 
 prop =
   element prop {

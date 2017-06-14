@@ -5,14 +5,20 @@
   xpath-default-namespace="http://scap.nist.gov/schema/oscal"
   xmlns="http://scap.nist.gov/schema/oscal"
   exclude-result-prefixes="xs"
-  version="2.0">
+  version="3.0">
   
 <!-- Produces a set of declarations for properties and statements
      found in an OSCAL document. -->
   
   <xsl:output indent="yes"/>
   
+  <xsl:mode on-no-match="shallow-copy"/>
   
+  <xsl:template match="node() | @*">
+    <xsl:copy>
+      <xsl:apply-templates select="node() | @*"/>
+    </xsl:copy>
+  </xsl:template>
   
   <xsl:template match="/*">
     <declarations>
@@ -20,7 +26,7 @@
       <control-spec type="{current-grouping-key()}">
         <xsl:variable name="who" select="current-group()"/>
         <required>
-          <xsl:for-each-group select="$who/(prop,stmt[matches(@name,'\S')])" group-by="@name">
+          <xsl:for-each-group select="$who/prop, $who/stmt[matches(@name,'\S')]" group-by="@name">
             <xsl:if test="count(current-group()) = count($who)">
               <xsl:call-template name="declaration"/><!--
                 <xsl:with-param select="current-group()"/>
@@ -30,8 +36,16 @@
         </required>
         <optional>
           <!-- again for the others -->
-          <xsl:for-each-group select="$who/(prop,stmt[matches(@name,'\S')])" group-by="@name">
-            <xsl:if test="not(count(current-group()) = count($who))">
+          <xsl:for-each select="$who//(assign|select)">
+            <parameter name="{@name}">
+              <title>
+                <xsl:value-of select="normalize-space(.)"/>
+              </title>
+              <xsl:apply-templates select="." mode="parameter"/>
+            </parameter>
+          </xsl:for-each>
+          <xsl:for-each-group select="$who/prop, $who/stmt[matches(@name,'\S')]" group-by="@name">
+              <xsl:if test="not(count(current-group()) = count($who))">
               <xsl:call-template name="declaration"/><!--
                 <xsl:with-param select="current-group()"/>
               </xsl:call-template>-->
@@ -41,6 +55,14 @@
       </control-spec>
     </xsl:for-each-group>
     </declarations>
+  </xsl:template>
+  
+  <xsl:template match="assign" mode="parameter">
+    <value>AT LEAST ONCE EVERY FULL MOON</value>
+  </xsl:template>
+  
+  <xsl:template match="choice" mode="parameter">
+    <xsl:copy>MOON</xsl:copy>
   </xsl:template>
   
   <xsl:template name="declaration">
@@ -54,6 +76,7 @@
       </xsl:for-each>
     </xsl:element>
   </xsl:template>
+  
   
   
 </xsl:stylesheet>

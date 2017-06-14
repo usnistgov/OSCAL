@@ -6,7 +6,7 @@
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
   <sch:pattern>
-    <sch:rule context="oscal:prop | oscal:stmt | oscal:param | oscal:choice">
+    <sch:rule context="oscal:prop | oscal:stmt | oscal:param | oscal:assign | oscal:select">
       <sch:let name="here" value="."/>
       <sch:report test="@name = (../* except $here)/@name">
         More than one '<sch:value-of select="@name"/>' (<!--<sch:value-of select="string-join(distinct-values(../*[@name=$here/@name]/name(.)),', ')"/>-->) appears in this <sch:value-of select="name(..)"/>.
@@ -18,11 +18,11 @@
   <sch:let name="declarations" value="/oscal:catalog/oscal:declarations/(.[exists(*)],document(@href))[1]"/>
   
   <sch:pattern>
-<!--  Contraints over declarations - very important!  -->
+<!--  Constraints over declarations - very important!  -->
     <sch:rule context="oscal:control-spec//oscal:property | oscal:control-spec//oscal:statement | oscal:declarations//oscal:parameter">
       <sch:let name="name" value="@name"/><!-- sorry bout that :-> -->
       <sch:let name="named-alike" value="
-        (ancestor::oscal:declarations | ancestor-or-self::oscal:control-spec)/(*/oscal:property | */oscal:statement | oscal:parameter)[@name=$name]"/>
+        (ancestor-or-self::oscal:control-spec)/(*/oscal:property | */oscal:statement | */oscal:parameter)[@name=$name]"/>
       <sch:assert test="empty($named-alike except .)"><sch:name/>/@name '<sch:value-of select="$name"/>' is not unique within this control</sch:assert>
     </sch:rule>
   </sch:pattern>
@@ -90,22 +90,5 @@
       (ancestor-or-self::oscal:control-spec | ancestor-or-self::oscal:control[1])/@type,$who/@name),'-')"/>
   </xsl:function>
   
-<!-- Our validation function, 'okay()', returns true for any property whose value conforms to specifications given in the document declarations
-     for properties of its name within its control type.
-     -->
-  
-    
-    
-    
-    <!--<xsl:function name="oscal:okay" as="xs:boolean">
-      <xsl:param name="who" as="element()"/>
-    <!-\- writing a little XPath -\->
-    <xsl:value-of>
-    <xsl:for-each select="$who/ancestor-or-self::*[ancestor::oscal:catalog]">
-      <xsl:if test="position() gt 1">/</xsl:if>
-      <xsl:value-of select="name(.)"/>
-      <xsl:for-each select="@name">[@name='<xsl:value-of select="."/>']</xsl:for-each>
-    </xsl:for-each>
-    </xsl:value-of>
-  </xsl:function>-->
+
 </sch:schema>

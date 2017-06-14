@@ -22,9 +22,13 @@ div h3         { font-size: 130% }
 div div h3     { font-size: 120% }
 div div div h3 { font-size: 110% }
 
-.subst { color: darkred; font-weight: bold; border: thin solid pink; padding: 0.1em }
-        
-      </style>
+.param { font-style: italic }
+.assign, .select { background-color: lemonchiffon }
+.subst { border: thin solid black; padding: 0.1em }
+
+.param .em { font-style: roman }
+
+        </style>
       </head>
       <body>
         <xsl:apply-templates/>
@@ -113,6 +117,7 @@ div div div h3 { font-size: 110% }
   
   <xsl:template match="oscal:control">
     <div class="control">
+      <xsl:copy-of select="@id"/>
       <xsl:variable name="runins"
         select="key('declarations',@type)/*/oscal:property/oscal:runin"/>
       <xsl:call-template name="make-title">
@@ -137,13 +142,31 @@ div div div h3 { font-size: 110% }
   </xsl:template>
   
   <xsl:template match="oscal:prop" mode="run-in">
-    
     <span class="run-in subst">
       <xsl:apply-templates/>
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
       
+  <xsl:template match="oscal:param">
+    <xsl:variable name="declaration" select="key('declarations',concat(ancestor::oscal:control[1]/@type,'#',@name))"/>
+    
+      <p class="param">
+        <xsl:for-each select="$declaration/oscal:title">
+          <span class="subst">
+            <xsl:apply-templates/>
+          </span>
+        </xsl:for-each>
+        
+        <xsl:for-each select="@name[not($declaration/oscal:title)]">
+          <xsl:value-of select="."/>
+        </xsl:for-each>
+        <xsl:text>: </xsl:text>
+        <xsl:apply-templates/>
+      </p>
+    
+  </xsl:template>
+  
   <xsl:template match="oscal:prop">
     <!-- If a run-in, gets picked up for the title. -->
     <xsl:variable name="declaration" select="key('declarations',concat(parent::oscal:control/@type,'#',@name))"/>
@@ -156,7 +179,7 @@ div div div h3 { font-size: 110% }
         </xsl:for-each>
         
         <xsl:for-each select="@name[not($declaration/oscal:title)]">
-        <xsl:value-of select="."/>
+          <xsl:value-of select="."/>
         </xsl:for-each>
         <xsl:text>: </xsl:text>
         <xsl:apply-templates/>
@@ -166,7 +189,7 @@ div div div h3 { font-size: 110% }
   
   <xsl:template match="oscal:desc">
     <div class="desc">
-      <h4 class="description-head">Description</h4>
+      <h4 class="description-head">Control</h4>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
@@ -178,16 +201,24 @@ div div div h3 { font-size: 110% }
   </xsl:template>
 
   <xsl:template match="oscal:assign">
-    <xsl:variable name="name"/>
-    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[@name=$name]"/>
-    <span class="assign">
+    <xsl:variable name="name" select="@name"/>
+    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[@name=$name][last()]"/>
+    <xsl:variable name="declaration" select="key('declarations',concat(ancestor::oscal:control[1]/@type,'#',@name))"/>
+      <span class="assign">
       <xsl:for-each select="$closest-param">
         <span class="subst">
           <xsl:apply-templates/>
         </span>
       </xsl:for-each>
       <xsl:if test="not($closest-param)">
-        <xsl:apply-templates/>
+        <xsl:for-each select="$declaration/oscal:value">
+          <span class="subst">
+            <xsl:apply-templates/>
+          </span>
+        </xsl:for-each>
+        <xsl:if test="not($declaration/oscal:value)">
+          <xsl:apply-templates/>
+        </xsl:if>
       </xsl:if>
     </span>
   </xsl:template>

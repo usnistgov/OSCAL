@@ -8,16 +8,18 @@ declarations { font-family: sans-serif; font-size: 80%;
 
 declarations:before { font-weight: bold; content: "Declarations" } 
 
-control-spec, optional, required, property, statement
+control-spec, optional, required, property, statement, parameter
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 control-spec { background-color: lemonchiffon }
 property  {  border: thin outset pink } 
 statement {  border: thin outset blue } 
+parameter {  border: thin dotted purple } 
 
-required { background-color: lightsteelblue; color: black }
-optional { background-color: lavender }
+required  { background-color: lightsteelblue; color: black }
+optional  { background-color: lavender }
+parameter { background-color: lavenderblush }
 
 required:before { content: "Required: "; font-style: italic }
 optional:before { content: "Optional: "; font-style: italic }
@@ -32,8 +34,11 @@ regex:before  { content: "matching (regex) "; font-family: sans-serif  }
 
 control-spec:before { font-weight: bold; content: "control type " attr(type) } 
 
+parameter:before  { content: '(parameter) "' attr(name) '" '  }
 property:before  { content: '(property) "' attr(name) '" '  }
 statement:before  { content: '(statement) "' attr(name) '" ' }
+
+runin:before  { content: 'display with title'  }
 
 property { background-color: pink; margin-top: 0.5em; color: black }
 statement { background-color: cornsilk; margin-top: 0.5em; color: black }
@@ -48,6 +53,10 @@ references:before { content: "References"; font-size: 120%; font-weight: bold }
 
 control { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+param:before { content: attr(name) ': ' }
+param { display: inline-block; background-color: darkseagreen; border: thin outset darkgreen;
+  margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 prop:before { content: attr(name) ': ' }
 prop { display: inline-block; background-color: pink; border: thin outset pink;

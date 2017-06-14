@@ -28,18 +28,19 @@ Since last check in:
 
 o merge 'implementation' sections from 800-53A (PDF!) into draft control
 
-o xrefs and linking! -
-  o xref for internal links?
-  o 'a' for external links?
-  o model them first, then worry about conversion
-
+x xrefs and linking
+  We are linking using a simple web-friendly notation. An href is a URL,
+  adopting the # notation for internal (id) references.
+  Note that @id is subject to rewrite by an application! so a robust
+    linking mechanism under OSCAL would rely on controlled properties
+    not (solely) on href plus they could be cross-checked against each other
+    (binding+lock mechanism for linking)
+  
 x induction of implicit cross-references from SP800-53?
   e.g. inside supplemental guidance
 
 x Implement parameters
    w/ parameter declarations?
-
-o As of 
 
 o pull in more data from PDFs e.g. in 800-53 control enhancements
   Maybe do all of section AC (account controls)
@@ -48,14 +49,14 @@ o presentational XSLT (PDF?) for cross-checking / proofing
 o "Media Protection" section (passim!)
 
 XSLT
-  implement bells and whistles
-    e.g. headers (titles) for statements, properties
-    runins for numbering
+  x implement bells and whistles
+    x e.g. headers (titles) for statements, properties
+    x runins for numbering
   filtered views e.g. all assignments, selections
 
-o Define an ID assignment protocol and add IDs?
-    implement as refactoring XSLT?
-    taking numbering format as runtime parameter?!
+x Define an ID assignment protocol and add IDs?
+    o implement as refactoring XSLT?
+      taking numbering format as runtime parameter?!
 
 Implement 'assign' checking as Schematron (specific to catalog / control types)
   checks against normative versions in the background!?
@@ -63,10 +64,9 @@ Implement 'select' checking as detecting any select without selected/
   select/selected/choice
   select/available/choice
 
-
 o 'preamble' section including declarations
     x control-spec (describing the structure of a control)
-    o param-spec (naming permissible/recognized parameters)
+    x param-spec (naming permissible/recognized parameters)
     o authority (referencing external authorities / sources)
 x implement PDF production pipeline
 o implement XSLT 1.0 (client side) runtime resolution/display
