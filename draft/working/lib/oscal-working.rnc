@@ -28,6 +28,7 @@ control-spec = element control-spec {
 # parameter declarations expose names and default values for parameters within the control type
 parameter   = element parameter {
   nameAttr, title?, (regex | value | choice+)? }
+# upper-bound, lower-bound, (w/ inclusive/exclusive etc.)
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property =

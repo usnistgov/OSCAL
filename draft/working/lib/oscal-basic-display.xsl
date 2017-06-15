@@ -12,6 +12,7 @@
 .control { margin:1em; padding: 1em; border: thin dotted black }
 .control > *:first-child { margin-top: 0em }
 
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif }
 h3 { font-size: 120% }
 
 div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
@@ -54,7 +55,7 @@ div div div h3 { font-size: 110% }
     <xsl:template match="oscal:title" mode="title">
       <xsl:value-of select="."/>
     </xsl:template>
-    
+
   <!--<xsl:template match="oscal:declarations">
     <x class="declarations">
       <apply-templates/>

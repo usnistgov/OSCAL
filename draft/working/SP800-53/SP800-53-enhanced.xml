@@ -54,9 +54,9 @@
   </declarations>
   <group type="family">
     <title>Access Control</title>
+    <!--<param name="AccessControlUpdateFrequency">really really often</param>-->
     <control type="SP800-53" id="ac-1">
       <title>Access Control Policy and Procedures</title>
-      <param name="AccessControlUpdateFrequency">really really often</param>
       <prop name="control-class">Technical</prop>
       <prop name="number">AC-1</prop>
       <prop name="priority">P1</prop>

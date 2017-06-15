@@ -158,6 +158,20 @@ o CSS for oXygen display
 o functioning RNC and Schematron
 ???
 
-o first cut at XSD?
+x first cut at XSD?
 o embed documentation (and stage documentation pipeline?)
 
+o validate (properties and paramters?) upper-bound, lower-bound, (w/ inclusive/exclusive etc.)
+o enforce uniqueness of param/@name (or @id?)
+o refactor declarations
+   properties and statements at the top
+   distinguish between validation and substitution rules
+Change @name to @type and remove control/@type
+Model control enhancements inside controls?
+  (Flag to indicate its an enhancement?)
+
+o consider the mapping to unify 800-53 and ISO 27002?
+o prototype profiling mechanism
+     Assume operator has a list of controls to include
+        (including enhancements with containing controls)
+     Also demo producing a profile by selection (e.g. baseline-impact)

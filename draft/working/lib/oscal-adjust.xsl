@@ -6,6 +6,9 @@
   xpath-default-namespace="http://scap.nist.gov/schema/oscal"
   version="3.0">
   
+<!-- For tweaking OSCAL documents
+     (Add ids, normalize values?) -->
+  
   <xsl:mode on-no-match="shallow-copy"/>
   
   <xsl:template match="control[prop/@name='number']">

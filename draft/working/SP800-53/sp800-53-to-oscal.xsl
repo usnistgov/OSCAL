@@ -104,10 +104,10 @@
   </xsl:template>-->
   
   <xsl:template match="descriptions | decisions | objectives | potential-assessments">
-    <xsl:message>
+    <!--<xsl:message>
       <xsl:text>Matched </xsl:text>
       <xsl:value-of select="local-name()"/>
-    </xsl:message>
+    </xsl:message>-->
     <group>
       <!--<xsl:apply-templates select="." mode="group-label"/>-->
       <xsl:apply-templates/>
@@ -240,6 +240,7 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
+  
   <xsl:template match="*">
     <xsl:message terminate="yes">
       <xsl:value-of select="name()"/>
