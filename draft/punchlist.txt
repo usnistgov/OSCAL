@@ -69,7 +69,7 @@ o 'preamble' section including declarations
     x param-spec (naming permissible/recognized parameters)
     o authority (referencing external authorities / sources)
 x implement PDF production pipeline
-o implement XSLT 1.0 (client side) runtime resolution/display
+x implement XSLT 1.0 (client side) runtime resolution/display
 
 LAYERED VALIDATION MODEL
   0. element grammar
@@ -80,19 +80,19 @@ LAYERED VALIDATION MODEL
 All of these can be demonstrated in a prototype/PoC
 
 Runtime declarations?
-  o parameter value assignments
+  x parameter value assignments
   o semantic associations / merge-map?
     (e.g. formal mappings between control properties)
 
   
 inside declarations:
   x control-spec { @type, parameter-spec*, statement-spec*, authority* )
-    o expansion for run-in label?
+    x expansion for run-in label?
       (so you can say to promote prop[@name='number'] into the control title for display)
     x add prop/runin <runin/> to <id/><regex/><value/> indicating run-in display of property
     x also added title as alternative
-  parameter including lexical contraints
-  statement-spec
+  x parameter including lexical contraints
+  x statement-spec
     x expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
   o authority (binding to external resource or copy)
       stipulates local handle (@id) 
@@ -101,7 +101,7 @@ inside declarations:
 NEXT UP
   o Make CSS filtering down to select/choice and assign values?
 
-  o Make XSLT running (various) substitutions
+  x Make XSLT running (various) substitutions
   x Another XSLT produces a set of declarations from a group of controls (adapt from mapper)
     x also produced declarations for ISO20002
 
@@ -122,13 +122,6 @@ Anything called @id must be lexically unique in document scope!
 Combined with /*/@id (document @id) should be unique across a document collection
 
 
-What I've done Wed 7/7
-  Migrated RNC to RNG/XSD; analyzed docs pipeline
-  Implemented mockup of new declarations framework for control properties
-    Including Schematron implementation, RNC
-
-  o Schematron for all this stuff!  
-  
 What sorts of things do we need to validate at the level of a control?
   Properties and statements that (may|must) appear
   Lexical form of properties
@@ -157,6 +150,7 @@ Thurs Jun 15
   Review parameters design w/ David
   Question re: declarations for group (not control) properties and statements?
     (Flat, or nested?)
+  Check on progress e.g SP800-53A
 
 GOALS for next checkpoint
 o Complete and valid mappings for both sources
