@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
+<?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<declarations xmlns="http://scap.nist.gov/schema/oscal">
+  <property handle="number" where="control-category">
+    <required/>
+    <regex>\d\d?</regex>
+    <!--<autonum>1</autonum> auto numbering needs to manage scope, starting point ... -->
+    <!--<limit type="not-less-than">5</limit>
+    <limit type="not-more-than">12</limit>-->
+  </property>
+  <property handle="number" where="clause">
+    <required/>
+    <!--<value>5.1</value> ... <value>18.2</value>-->
+  </property>
+  <statement handle="objective" where="clause">
+    <required/>
+  </statement>
+  <property handle="number" where="iso-27002">
+    <required/>
+    <!--<value>5.1.1</value> ...
+      <value>18.2.3</value>-->
+  </property>
+  <statement handle="implementation-guidance" where="control"/>
+  <statement handle="other-information" where="control"/>
+</declarations>

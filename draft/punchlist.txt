@@ -113,7 +113,6 @@ With respect to content models, catalogs and profiles are isomorphic except wrt 
 
 Hence, in schema validation, 'catalog' and 'profile' are synonymous, with their difference in application asserted in Schematron.
 
-
 o Also declarations of properties/statements on groups (again by type)
 
 modeling 'selections' via XML containment <select><alternative></></>
@@ -165,7 +164,7 @@ o validate (properties and paramters?) upper-bound, lower-bound, (w/ inclusive/e
 o enforce uniqueness of param/@name (or @id?)
 o refactor declarations
    properties and statements at the top
-   distinguish between validation and substitution rules
+   distinguish between validation and substitution rules?
 Change @name to @type and remove control/@type
 Model control enhancements inside controls?
   (Flag to indicate its an enhancement?)
@@ -175,3 +174,21 @@ o prototype profiling mechanism
      Assume operator has a list of controls to include
         (including enhancements with containing controls)
      Also demo producing a profile by selection (e.g. baseline-impact)
+     
+What I did Friday
+  Met Dave 1 hour
+  wrote plannign email 1 hr
+  from 2pm - 5:30 (3 hrs)
+  Turned declarations structure upside down
+    all declarations are now at top level
+    matching happens by stipulating '@where' w/ match to either @type or local-name()
+    (e.g. 'control' or 'group')
+  Renamed @name to @handle everywhere
+  Built plumbing to support retrieval w/ new declarations matching
+  Ripped out 'display' features of declarations (we'll move this to a different layer)
+  Updated SP800-53 and ISO 27002 samples to new schema
+    (declarations and content)
+
+Next up - finish mapping samples and XSLT pipelines for samples to date
+Then turn to 800-53A
+Also, update XSLTs and CSSs ...

@@ -6,43 +6,6 @@
 <?xml-stylesheet type="text/xsl" href="../lib/oscal-basic-display.xsl"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>NIST SP800-53 Handmade OSCAL</title>
-  <declarations>
-    <control-spec type="SP800-53">
-      <required>
-        <property name="control-class">
-          <value>Technical</value>
-          <value>Operational</value>
-          <value>Management</value>
-        </property>
-        <property name="number">
-          <identifier/>
-          <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)\-\d+$</regex>
-        </property>
-      </required>
-      <optional>
-        <property name="priority">
-          <regex>P[0-3]</regex>
-        </property>
-        <property name="baseline-impact">
-          <value>MODERATE</value><value>HIGH</value>
-        </property>
-        <statement name="supplemental-guidance">
-          <title>Supplemental guidance</title>
-        </statement>
-      </optional>
-    </control-spec>
-    <control-spec type="SP800-53-enhancement">
-      <!--<required><property name="number"><id/></property></required>-->
-      <optional>
-        <property name="baseline-impact">
-          <value>MODERATE</value><value>HIGH</value>
-        </property>
-        <statement name="supplemental-guidance">
-          <title>Supplemental guidance</title>
-        </statement>
-      </optional>
-    </control-spec>
-  </declarations>
   <group type="family">
     <title>Access Control</title>
     <control type="SP800-53">
@@ -120,7 +83,7 @@
           accounts and privileged access. Related controls: <xref href="#AC-3">AC-3</xref>, <xref href="#AC-4">AC-4</xref>, <xref href="#AC-5">AC-5</xref>, <xref href="#AC-6">AC-6</xref>, <xref href="#AC-10">AC-10</xref>, <xref href="#AC-17">AC-17</xref>,
           <xref href="#AC-19">AC-19</xref>, <xref href="#AC-20">AC-20</xref>, <xref href="#AU-9">AU-9</xref>, <xref href="#IA-4">IA-4</xref>, <xref href="#IA-5">IA-5</xref>, <xref href="#CM-5">CM-5</xref>, <xref href="#CM-6">CM-6</xref>, <xref href="#MA-3">MA-3</xref>, <xref href="#MA-4">MA-4</xref>, <xref href="#MA-5">MA-5</xref>, <xref href="#SA-7">SA-7</xref>, <xref href="#SC-13">SC-13</xref>, <xref href="#SI-9">SI-9</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated mechanisms to support the management of
@@ -188,7 +151,7 @@
               administration, database administration, web administration.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Access Enforcement</title>
@@ -217,7 +180,7 @@
           other security controls. Related controls: <xref href="#AC-2">AC-2</xref>, <xref href="#AC-4">AC-4</xref>, <xref href="#AC-5">AC-5</xref>, <xref href="#AC-6">AC-6</xref>, <xref href="#AC-16">AC-16</xref>, <xref href="#AC-17">AC-17</xref>, <xref href="#AC-18">AC-18</xref>,
           <xref href="#AC-19">AC-19</xref>, <xref href="#AC-20">AC-20</xref>, <xref href="#AC-21">AC-21</xref>, <xref href="#AC-22">AC-22</xref>, <xref href="#AU-9">AU-9</xref>, <xref href="#CM-5">CM-5</xref>, <xref href="#CM-6">CM-6</xref>, <xref href="#MA-3">MA-3</xref>, <xref href="#MA-4">MA-4</xref>, <xref href="#MA-5">MA-5</xref>, <xref href="#SA-7">SA-7</xref>, <xref href="#SC-13">SC-13</xref>, <xref href="#SI-9">SI-9</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>[<withdrawn>Withdrawn: Incorporated into <xref href="#AC-6">AC-6</xref></withdrawn>].</p>
@@ -312,7 +275,7 @@
               of individuals gaining unauthorized access via a network. Related control: <xref href="#MP-4">MP-4</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Information Flow Enforcement</title>
@@ -344,7 +307,7 @@
           implemented by <xref href="#AC-4">AC-4</xref> are configured to enforce authorizations determined by other security
           controls. Related controls: <xref href="#AC-17">AC-17</xref>, <xref href="#AC-19">AC-19</xref>, <xref href="#AC-21">AC-21</xref>, <xref href="#CM-7">CM-7</xref>, <xref href="#SA-8">SA-8</xref>, <xref href="#SC-2">SC-2</xref>, <xref href="#SC-5">SC-5</xref>, <xref href="#SC-7">SC-7</xref>, <xref href="#SC-18">SC-18</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system enforces information flow control using explicit security
@@ -541,7 +504,7 @@
               receiving, or disseminating information.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Separation of Duties</title>
@@ -588,7 +551,7 @@
           assets, individuals, other organizations, and the Nation. Related controls: <xref href="#AC-2">AC-2</xref>, <xref href="#AC-3">AC-3</xref>,
           <xref href="#CM-7">CM-7</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization explicitly authorizes access to <assign>organization-defined list of
@@ -670,7 +633,7 @@
               necessary.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Unsuccessful Login Attempts</title>
@@ -703,7 +666,7 @@
           control applies to all accesses other than those accesses explicitly identified and
           documented by the organization in <xref href="#AC-14">AC-14</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system automatically locks the account/node until released by an
@@ -726,7 +689,7 @@
               the mobile device resets the unsuccessful login count to zero.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>System Use Notification</title>
@@ -775,7 +738,7 @@
           general accesses to information systems that occur in other types of architectural
           configurations (e.g., service oriented architectures).</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system notifies the user, upon successful logon/access, of the number
@@ -795,7 +758,7 @@
                 <assign>organization-defined time period</assign>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Concurrent Session Control</title>
@@ -838,7 +801,7 @@
           information system, for example, if the organization requires users to log out at the end
           of the workday.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system session lock mechanism, when activated on a device with a
@@ -846,7 +809,7 @@
               what was previously visible on the screen.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-16.pdf"
@@ -900,7 +863,7 @@
           not being repeated, but rather to situations where identification and/or authentication
           have not yet occurred. Related control: <xref href="#CP-2">CP-2</xref>, <xref href="#IA-2">IA-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization permits actions to be performed without identification and
@@ -908,7 +871,7 @@
               objectives.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Automated Marking</title>
@@ -940,7 +903,7 @@
           privileges, nationality, affiliation as contractor). Related controls: <xref href="#AC-3">AC-3</xref>, <xref href="#AC-4">AC-4</xref>, <xref href="#SC-16">SC-16</xref>,
           <xref href="#MP-3">MP-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system dynamically reconfigures security attributes in accordance
@@ -990,7 +953,7 @@
               digital assistants.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Remote Access</title>
@@ -1026,7 +989,7 @@
           remote connections is accomplished by control <xref href="#AC-3">AC-3</xref>. Related controls: <xref href="#AC-3">AC-3</xref>, <xref href="#AC-18">AC-18</xref>, <xref href="#AC-20">AC-20</xref>,
           <xref href="#IA-2">IA-2</xref>, <xref href="#IA-3">IA-3</xref>, <xref href="#IA-8">IA-8</xref>, <xref href="#MA-4">MA-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated mechanisms to facilitate the monitoring and
@@ -1107,7 +1070,7 @@
               protocols.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-113/SP800-113.pdf">NIST
@@ -1152,7 +1115,7 @@
           situations, wireless signals may radiate beyond the confines and control of
           organization-controlled facilities. Related controls: <xref href="#AC-3">AC-3</xref>, <xref href="#IA-2">IA-2</xref>, <xref href="#IA-3">IA-3</xref>, <xref href="#IA-8">IA-8</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system protects wireless access to the system using authentication
@@ -1207,7 +1170,7 @@
               configuring the wireless access such that it is point to point in nature.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://www.dtic.mil/whs/directives/corres/pdf/855201p.pdf">DOD Instruction
@@ -1281,7 +1244,7 @@
           information residing on mobile devices is covered in the media protection family. Related
           controls: <xref href="#MP-4">MP-4</xref>, <xref href="#MP-5">MP-5</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization restricts the use of writable, removable media in organizational
@@ -1328,7 +1291,7 @@
               and if classified information is found, the incident handling policy is followed.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-114/SP800-114.pdf">NIST
@@ -1394,7 +1357,7 @@
           requirements enforced by <xref href="#PL-4">PL-4</xref>, and session establishment rules enforced by <xref href="#AC-17">AC-17</xref>. Related
           controls: <xref href="#AC-3">AC-3</xref>, <xref href="#AC-17">AC-17</xref>, <xref href="#PL-4">PL-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization permits authorized individuals to use an external information system
@@ -1421,7 +1384,7 @@
               devices may be used.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -1454,7 +1417,7 @@
           be defined at the individual, group, or organization level and information may be defined
           by specific content, type, or security categorization. Related control: <xref href="#AC-3">AC-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system employs automated mechanisms to enable authorized users to
@@ -1462,7 +1425,7 @@
               and access restrictions on information to be shared.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Publicly Accessible Content</title>
@@ -1569,7 +1532,7 @@
           advisories/notices from senior organizational officials, displaying logon screen messages,
           and conducting information security awareness events.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization includes practical exercises in security awareness training that
@@ -1581,7 +1544,7 @@
               opening malicious email attachments or invoking malicious web links.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://edocket.access.gpo.gov/cfr_2007/janqtr/pdf/5cfr930.301.pdf">5 C.F.R.
@@ -1618,7 +1581,7 @@
           context of the organizations information security program. Related controls: <xref href="#AT-2">AT-2</xref>,
           <xref href="#SA-3">SA-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization provides employees with initial and <assign>organization-defined
@@ -1643,7 +1606,7 @@
               (deployment and operating procedures).</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://edocket.access.gpo.gov/cfr_2007/janqtr/pdf/5cfr930.301.pdf">5 C.F.R.
@@ -1787,7 +1750,7 @@
           capability and can facilitate the identification of root causes to problems. Related
           control: <xref href="#AU-3">AU-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>[<withdrawn>Withdrawn: Incorporated into <xref href="#AU-12">AU-12</xref></withdrawn>].</p>
@@ -1813,7 +1776,7 @@
               be audited by the information system.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-92/SP800-92.pdf">NIST
@@ -1842,7 +1805,7 @@
           identifiers, event descriptions, success/fail indications, filenames involved, and access
           control or flow control rules invoked. Related controls: <xref href="#AU-2">AU-2</xref>, <xref href="#AU-8">AU-8</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system includes <assign>organization-defined additional,
@@ -1862,7 +1825,7 @@
                 <assign>organization-defined information system components</assign>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Audit Storage Capacity</title>
@@ -1899,7 +1862,7 @@
           audit capturing mechanisms, and audit storage capacity being reached or exceeded. Related
           control: <xref href="#AU-4">AU-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -1929,7 +1892,7 @@
               unless an alternative audit capability exists.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Audit Review, Analysis, and Reporting</title>
@@ -1951,7 +1914,7 @@
       <stmt name="supplemental-guidance">
         <p>Related control: <xref href="#AU-7">AU-7</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -2031,7 +1994,7 @@
               analysis of privileged functions executed.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Audit Reduction and Report Generation</title>
@@ -2047,14 +2010,14 @@
           investigations of security incidents. Audit reduction and reporting tools do not alter
           original audit records. Related control: <xref href="#AU-6">AU-6</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system provides the capability to automatically process audit records
               for events of interest based on selectable event criteria.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Time Stamps</title>
@@ -2070,7 +2033,7 @@
           be expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean
           Time (GMT), or local time with an offset from UTC. Related control: <xref href="#AU-3">AU-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system synchronizes internal information system clocks
@@ -2078,7 +2041,7 @@
                 authoritative time source</assign>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Protection of Audit Information</title>
@@ -2094,7 +2057,7 @@
           audit reports) needed to successfully audit information system activity. Related controls:
           <xref href="#AC-3">AC-3</xref>, <xref href="#AC-6">AC-6</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system produces audit records on hardware-enforced, write-once
@@ -2140,7 +2103,7 @@
               that cannot be modified (e.g., write-once recording devices).</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Non-repudiation</title>
@@ -2164,7 +2127,7 @@
           Non-repudiation services are obtained by employing various techniques or mechanisms (e.g.,
           digital signatures, digital message receipts).</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system associates the identity of the information producer with the
@@ -2225,7 +2188,7 @@
             <p>Related control: <xref href="#SC-13">SC-13</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Audit Record Retention</title>
@@ -2273,7 +2236,7 @@
           capable of generating audit records (i.e., auditable events). Related controls: <xref href="#AU-2">AU-2</xref>,
           <xref href="#AU-3">AU-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -2305,7 +2268,7 @@
               standardized format when compiling the system-wide audit trail.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Monitoring for Information Disclosure</title>
@@ -2339,13 +2302,13 @@
           legal counsel in accordance with applicable federal laws, Executive Orders, directives,
           policies, or regulations.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system initiates session audits at system start-up.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
   </group>
   <group type="family">
@@ -2464,7 +2427,7 @@
           regulatory agencies) are outside the scope of this control. Related controls: <xref href="#CA-6">CA-6</xref>, <xref href="#CA-7">CA-7</xref>,
           <xref href="#PM-9">PM-9</xref>, <xref href="#SA-11">SA-11</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs an independent assessor or assessment team to conduct an
@@ -2540,7 +2503,7 @@
               <xref href="#SI-2">SI-2</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -2602,7 +2565,7 @@
           systems sharing the same networks. Information systems may be identified and authenticated
           as devices in accordance with <xref href="#IA-3">IA-3</xref>. Related controls: <xref href="#AC-4">AC-4</xref>, <xref href="#IA-3">IA-3</xref>, <xref href="#SC-7">SC-7</xref>, <xref href="#SA-9">SA-9</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization prohibits the direct connection of an unclassified, national
@@ -2630,7 +2593,7 @@
               information system to the external network consistent with <xref href="#AC-4">AC-4</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -2672,7 +2635,7 @@
           and is subject to federal reporting requirements established by OMB. Related control:
           <xref href="#PM-4">PM-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated mechanisms to help ensure that the plan of action
@@ -2680,7 +2643,7 @@
               available.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf"
@@ -2778,7 +2741,7 @@
           accordance with the security categorization of the information system. Related controls:
           <xref href="#CA-2">CA-2</xref>, <xref href="#CA-5">CA-5</xref>, <xref href="#CA-6">CA-6</xref>, <xref href="#CM-3">CM-3</xref>, <xref href="#CM-4">CM-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs an independent assessor or assessment team to monitor the
@@ -2818,7 +2781,7 @@
               testing. Related control: <xref href="#CA-2">CA-2</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-37-rev1/sp800-37-rev1-final.pdf"
@@ -2900,7 +2863,7 @@
           over time. The baseline configuration of the information system is consistent with the
           organizations enterprise architecture. Related controls: <xref href="#CM-3">CM-3</xref>, <xref href="#CM-6">CM-6</xref>, <xref href="#CM-8">CM-8</xref>, <xref href="#CM-9">CM-9</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization reviews and updates the baseline configuration of the information
@@ -2969,7 +2932,7 @@
               configuration.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST
@@ -3012,7 +2975,7 @@
           and after a change is made to the information system and the auditing activities required
           to implement the change. Related controls: <xref href="#CM-4">CM-4</xref>, <xref href="#CM-5">CM-5</xref>, <xref href="#CM-6">CM-6</xref>, <xref href="#SI-2">SI-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -3069,7 +3032,7 @@
               element defined by the organization in <xref href="#CM-3">CM-3</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST
@@ -3101,7 +3064,7 @@
           categorization of the information system. Related controls: <xref href="#CA-2">CA-2</xref>, <xref href="#CA-7">CA-7</xref>, <xref href="#CM-3">CM-3</xref>, <xref href="#CM-9">CM-9</xref>,
           <xref href="#SI-2">SI-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -3121,7 +3084,7 @@
             <p>Changes include information system upgrades and modifications.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST
@@ -3159,7 +3122,7 @@
           system, auditing changes, and retaining and review records of changes. Related controls:
           <xref href="#AC-3">AC-3</xref>, <xref href="#AC-6">AC-6</xref>, <xref href="#PE-3">PE-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -3226,7 +3189,7 @@
               unauthorized modification to a critical security file occurs.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Configuration Settings</title>
@@ -3270,7 +3233,7 @@
           control configuration settings. OMB establishes federal policy on configuration
           requirements for federal information systems. Related controls: <xref href="#CM-2">CM-2</xref>, <xref href="#CM-3">CM-3</xref>, <xref href="#SI-4">SI-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -3309,7 +3272,7 @@
               checklists), prior to being introduced into a production environment.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST
@@ -3374,7 +3337,7 @@
           prevent the use of prohibited functions, ports, protocols, and services. Related control:
           <xref href="#RA-5">RA-5</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization reviews the information system <assign>organization-defined
@@ -3404,7 +3367,7 @@
               for information systems and implemented functionality.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Information System Component Inventory</title>
@@ -3430,7 +3393,7 @@
           system/component owner, and for a networked component/device, the machine name and network
           address. Related controls: <xref href="#CM-2">CM-2</xref>, <xref href="#CM-6">CM-6</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization updates the inventory of information system components as an
@@ -3505,7 +3468,7 @@
               <xref href="#CM-6">CM-6</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST
@@ -3548,7 +3511,7 @@
           personnel that would conduct an impact analysis prior to the implementation of any changes
           to the system. Related control: <xref href="#SA-10">SA-10</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization assigns responsibility for developing the configuration management
@@ -3560,7 +3523,7 @@
               may be tasked with developing the configuration management process.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/PubsDrafts.html#SP-800-128">NIST
@@ -3670,7 +3633,7 @@
           solely for when the system is under attack. Related controls: <xref href="#AC-14">AC-14</xref>, <xref href="#CP-6">CP-6</xref>, <xref href="#CP-7">CP-7</xref>, <xref href="#CP-8">CP-8</xref>,
           <xref href="#IR-4">IR-4</xref>, <xref href="#PM-8">PM-8</xref>, <xref href="#PM-11">PM-11</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization coordinates contingency plan development with organizational
@@ -3721,7 +3684,7 @@
               processing and/or storage sites.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive
@@ -3747,7 +3710,7 @@
       <stmt name="supplemental-guidance">
         <p>None.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -3761,7 +3724,7 @@
               realistic training environment.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std>
@@ -3795,7 +3758,7 @@
           effects on organizational operations and assets (e.g., reduction in mission capability)
           and individuals arising due to contingency operations in accordance with the plan.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization coordinates contingency plan testing and/or exercises with
@@ -3833,7 +3796,7 @@
             <p>Related controls: <xref href="#CP-10">CP-10</xref>, <xref href="#SC-24">SC-24</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -3870,7 +3833,7 @@
       <stmt name="supplemental-guidance">
         <p>Related controls: <xref href="#CP-2">CP-2</xref>, <xref href="#CP-9">CP-9</xref>, <xref href="#MP-4">MP-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization identifies an alternate storage site that is separated from the
@@ -3901,7 +3864,7 @@
               access to retrieve backup information.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std
@@ -3931,7 +3894,7 @@
       <stmt name="supplemental-guidance">
         <p>Related control: <xref href="#CP-2">CP-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization identifies an alternate processing site that is separated from the
@@ -3969,7 +3932,7 @@
               security measures equivalent to that of the primary site</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std
@@ -3992,7 +3955,7 @@
       <stmt name="supplemental-guidance">
         <p>Related control: <xref href="#CP-2">CP-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization:</p>
@@ -4028,7 +3991,7 @@
               to have contingency plans.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std
@@ -4069,7 +4032,7 @@
           encryption for protecting backup information. The protection of system backup information
           while in transit is beyond the scope of this control. Related controls: <xref href="#CP-6">CP-6</xref>, <xref href="#MP-4">MP-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization tests backup information <assign>organization-defined
@@ -4111,7 +4074,7 @@
               disruption to the operation.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std
@@ -4143,7 +4106,7 @@
           capabilities employed by the organization can be a combination of automated mechanisms and
           manual procedures. Related controls: <xref href="#CA-2">CA-2</xref>, <xref href="#CA-6">CA-6</xref>, <xref href="#CA-7">CA-7</xref>, <xref href="#SC-24">SC-24</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>[<withdrawn>Withdrawn: Incorporated into <xref href="#CP-4">CP-4</xref></withdrawn>].</p>
@@ -4202,7 +4165,7 @@
               system software are examples of backup and restoration software.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std
@@ -4317,7 +4280,7 @@
           provide increased information security for the organization. Related controls: <xref href="#AC-14">AC-14</xref>,
           <xref href="#AC-17">AC-17</xref>, <xref href="#AC-18">AC-18</xref>, <xref href="#IA-4">IA-4</xref>, <xref href="#IA-5">IA-5</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system uses multifactor authentication for network access to
@@ -4395,7 +4358,7 @@
               authenticators.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS
@@ -4447,7 +4410,7 @@
           local and/or wide area networks. The required strength of the device authentication
           mechanism is determined by the security categorization of the information system.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system authenticates devices before establishing remote and wireless
@@ -4477,7 +4440,7 @@
               obtain leases for IP addresses from DHCP servers.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Identifier Management</title>
@@ -4509,7 +4472,7 @@
           in a physical security control database accessed by a badge reader system for access to
           the information system). Related control: <xref href="#AC-2">AC-2</xref>, <xref href="#IA-2">IA-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization prohibits the use of information system account identifiers as
@@ -4561,7 +4524,7 @@
               authorities to validate identities and related credentials are essential.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS
@@ -4634,7 +4597,7 @@
           Device authenticators include, for example, certificates and passwords. Related controls:
           <xref href="#AC-2">AC-2</xref>, <xref href="#IA-2">IA-2</xref>, <xref href="#PL-4">PL-4</xref>, <xref href="#PS-6">PS-6</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system, for password-based authentication:</p>
@@ -4745,7 +4708,7 @@
               or (iv) including some form of one-time passwords on all systems.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips201-1/FIPS-201-1-chng1.pdf">FIPS
@@ -4921,7 +4884,7 @@
         <p>Incident response training includes user training in the identification and reporting of
           suspicious activities, both from external and internal sources. Related control: <xref href="#AT-3">AT-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -4936,7 +4899,7 @@
               realistic training environment.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-16/800-16.pdf">NIST 800-16</std>
@@ -4961,7 +4924,7 @@
       <stmt name="supplemental-guidance">
         <p>None.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -4976,7 +4939,7 @@
               <xref href="#AT-2">AT-2</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST
@@ -5011,7 +4974,7 @@
           user/administrator reports. Related controls: <xref href="#AU-6">AU-6</xref>, <xref href="#CP-2">CP-2</xref>, <xref href="#IR-2">IR-2</xref>, <xref href="#IR-3">IR-3</xref>, <xref href="#PE-6">PE-6</xref>, <xref href="#SC-5">SC-5</xref>, <xref href="#SC-7">SC-7</xref>,
           <xref href="#SI-3">SI-3</xref>, <xref href="#SI-4">SI-4</xref>, <xref href="#SI-7">SI-7</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated mechanisms to support the incident handling
@@ -5061,7 +5024,7 @@
                 <assign>organization-defined list of security violations</assign>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST
@@ -5085,7 +5048,7 @@
           reports, incident response teams, audit monitoring, network monitoring, physical access
           monitoring, and user/administrator reports.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -5099,7 +5062,7 @@
               databases of incidents. Related controls: <xref href="#AU-6">AU-6</xref>, <xref href="#AU-7">AU-7</xref>, <xref href="#SI-4">SI-4</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST
@@ -5133,7 +5096,7 @@
           frames designated in the US-CERT Concept of Operations for Federal Cyber Security Incident
           Handling. Related controls: <xref href="#IR-4">IR-4</xref>, <xref href="#IR-5">IR-5</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated mechanisms to assist in the reporting of security
@@ -5147,7 +5110,7 @@
               organizational officials.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST
@@ -5170,7 +5133,7 @@
           include a help desk or an assistance group and access to forensics services, when
           required. Related controls: <xref href="#IR-4">IR-4</xref>, <xref href="#IR-6">IR-6</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated mechanisms to increase the availability of
@@ -5203,7 +5166,7 @@
               activity within organizational information systems and networks.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Incident Response Plan</title>
@@ -5322,7 +5285,7 @@
         <p>The control is intended to address the information security aspects of the organizations
           information system maintenance program. Related controls: <xref href="#MP-6">MP-6</xref>, <xref href="#SI-2">SI-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization maintains maintenance records for the information system that
@@ -5346,7 +5309,7 @@
               completed.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Maintenance Tools</title>
@@ -5367,7 +5330,7 @@
           monitoring port of an Ethernet switch) are not covered by this control. Related control:
           <xref href="#MP-6">MP-6</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization inspects all maintenance tools carried into a facility by
@@ -5403,7 +5366,7 @@
               tools to authorized personnel only.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_rev1.pdf">NIST
@@ -5444,7 +5407,7 @@
           accomplished in part, by other controls. Related controls: <xref href="#AC-2">AC-2</xref>, <xref href="#AC-3">AC-3</xref>, <xref href="#AC-6">AC-6</xref>, <xref href="#AC-17">AC-17</xref>, <xref href="#AU-2">AU-2</xref>,
           <xref href="#AU-3">AU-3</xref>, <xref href="#IA-2">IA-2</xref>, <xref href="#IA-8">IA-8</xref>, <xref href="#MA-5">MA-5</xref>, <xref href="#MP-6">MP-6</xref>, <xref href="#SC-7">SC-7</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization audits non-local maintenance and diagnostic sessions and designated
@@ -5511,7 +5474,7 @@
               non-local maintenance and diagnostic sessions.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/groups/STM/cmvp/documents/CNSS15FS.pdf">CNSS 15</std>
@@ -5561,7 +5524,7 @@
           these individuals. Temporary credentials may be for one-time use or for a very limited
           time period. Related controls: <xref href="#IA-8">IA-8</xref>, <xref href="#MA-5">MA-5</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization maintains procedures for the use of maintenance personnel that lack
@@ -5622,7 +5585,7 @@
             </ol>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Timely Maintenance</title>
@@ -5713,7 +5676,7 @@
           these situations, it is assumed that the physical access controls where the media resides
           provide adequate protection. Related controls: <xref href="#MP-4">MP-4</xref>, <xref href="#PE-3">PE-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automated mechanisms to restrict access to media storage
@@ -5731,7 +5694,7 @@
               to information on portable digital media.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -5829,7 +5792,7 @@
           information. The strength of mechanisms is commensurate with the classification and
           sensitivity of the information. Related controls: <xref href="#AC-3">AC-3</xref>, <xref href="#AC-19">AC-19</xref>, <xref href="#CP-6">CP-6</xref>, <xref href="#CP-9">CP-9</xref>, <xref href="#MP-2">MP-2</xref>, <xref href="#PE-3">PE-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs cryptographic mechanisms to protect information in
@@ -5839,7 +5802,7 @@
             <p>Related control: <xref href="#SC-13">SC-13</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -5906,7 +5869,7 @@
           may include individuals from outside the organization (e.g., U.S. Postal Service or a
           commercial transport or delivery service). Related controls: <xref href="#AC-19">AC-19</xref>, <xref href="#CP-9">CP-9</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>[<withdrawn>Withdrawn: Incorporated into <xref href="#MP-5">MP-5</xref></withdrawn>].</p>
@@ -5950,7 +5913,7 @@
               control: <xref href="#MP-4">MP-4</xref>. Related controls: <xref href="#MP-2">MP-2</xref>; <xref href="#SC-13">SC-13</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -5988,7 +5951,7 @@
           to have no adverse impact on the organization or individuals if released for reuse or
           disposal.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -6044,7 +6007,7 @@
             <p>The organization destroys information system media that cannot be sanitized.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -6130,7 +6093,7 @@
         <p>Authorization credentials include, for example, badges, identification cards, and smart
           cards. Related control: <xref href="#PE-3">PE-3</xref>, <xref href="#PE-4">PE-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization authorizes physical access to the facility where the information
@@ -6154,7 +6117,7 @@
               clearances and access authorizations.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Physical Access Control</title>
@@ -6190,7 +6153,7 @@
           as publicly accessible with access to such devices being safeguarded. Related controls:
           <xref href="#MP-2">MP-2</xref>, <xref href="#MP-4">MP-4</xref>, <xref href="#PE-2">PE-2</xref></p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -6250,7 +6213,7 @@
             <p>Related control: <xref href="#CA-2">CA-2</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://www.fas.org/irp/offdocs/dcid6-9.htm">DCID 6/9</std>
@@ -6336,7 +6299,7 @@
           security violations or suspicious physical access activities, are part of the
           organizations incident response capability.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization monitors real-time physical intrusion alarms and surveillance
@@ -6350,7 +6313,7 @@
               initiate designated response actions.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Visitor Control</title>
@@ -6366,7 +6329,7 @@
         <p>Individuals (to include organizational employees, contract personnel, and others) with
           permanent authorization credentials for the facility are not considered visitors.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization escorts visitors and monitors visitor activity, when required.</p>
@@ -6378,7 +6341,7 @@
               facility.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Access Records</title>
@@ -6400,7 +6363,7 @@
           signature of the visitor, form(s) of identification, date of access, time of entry and
           departure, purpose of visit, and name/organization of person visited.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -6415,7 +6378,7 @@
               authorized individuals.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Power Equipment and Power Cabling</title>
@@ -6431,7 +6394,7 @@
           requirements fulfilled by another organizational entity other than the information
           security program. Organizations avoid duplicating actions already covered.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs redundant and parallel power cabling paths.</p>
@@ -6443,7 +6406,7 @@
                 list of critical information system components</assign>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Emergency Shutoff</title>
@@ -6465,13 +6428,13 @@
         <p>This control applies to facilities containing concentrations of information system
           resources, for example, data centers, server rooms, and mainframe computer rooms.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>[<withdrawn>Withdrawn: Incorporated into <xref href="#PE-10">PE-10</xref></withdrawn>].</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Emergency Power</title>
@@ -6488,7 +6451,7 @@
           requirements fulfilled by another organizational entity other than the information
           security program. Organizations avoid duplicating actions already covered.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -6507,7 +6470,7 @@
               automatically activated.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Emergency Lighting</title>
@@ -6524,14 +6487,14 @@
           requirements fulfilled by another organizational entity other than the information
           security program. Organizations avoid duplicating actions already covered.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization provides emergency lighting for all areas within the facility
               supporting essential missions and business functions.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Fire Protection</title>
@@ -6549,7 +6512,7 @@
           another organizational entity other than the information security program. Organizations
           avoid duplicating actions already covered.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs fire detection devices/systems for the information system
@@ -6577,7 +6540,7 @@
               deficiencies.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Temperature and Humidity Controls</title>
@@ -6599,7 +6562,7 @@
           requirements fulfilled by another organizational entity other than the information
           security program. Organizations avoid duplicating actions already covered.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs automatic temperature and humidity controls in the facility
@@ -6612,7 +6575,7 @@
               or notification of changes potentially harmful to personnel or equipment.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Water Damage Protection</title>
@@ -6629,7 +6592,7 @@
           requirements fulfilled by another organizational entity other than the information
           security program. Organizations avoid duplicating actions already covered.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -6637,7 +6600,7 @@
               protect the information system from water damage in the event of a water leak.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Delivery and Removal</title>
@@ -6707,7 +6670,7 @@
           the information security program. Organizations avoid duplicating actions already
           covered.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -6717,7 +6680,7 @@
               strategy.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Information Leakage</title>
@@ -6734,7 +6697,7 @@
           countermeasures employed to protect the information system against information leakage due
           to electromagnetic signals emanations.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization ensures that information system components, associated data
@@ -6745,7 +6708,7 @@
             </ol>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -6833,7 +6796,7 @@
           individuals, other organizations, and the Nation if the plan is implemented as intended.
           Related controls: <xref href="#PM-1">PM-1</xref>, <xref href="#PM-7">PM-7</xref>, <xref href="#PM-8">PM-8</xref>, <xref href="#PM-9">PM-9</xref>, <xref href="#PM-11">PM-11</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization:</p>
@@ -6875,7 +6838,7 @@
               Accountability Act.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf"
@@ -6913,7 +6876,7 @@
           users and rules that apply to general users. Electronic signatures are acceptable for use
           in acknowledging rules of behavior. Related control: <xref href="#PS-6">PS-6</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization includes in the rules of behavior, explicit restrictions on the use
@@ -6921,7 +6884,7 @@
               information system account information.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-18-Rev1/sp800-18-Rev1-final.pdf"
@@ -7381,7 +7344,7 @@
           rescreening conditions and frequencies for personnel accessing the information system
           based on the type of information processed, stored, or transmitted by the system.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization ensures that every user accessing an information system processing,
@@ -7402,7 +7365,7 @@
               (SCI).</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://edocket.access.gpo.gov/cfr_2002/janqtr/pdf/5cfr731.106.pdf">5 C.F.R.
@@ -7511,7 +7474,7 @@
           agreements unless specifically prohibited by organizational policy. Related control:
           <xref href="#PL-4">PL-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization ensures that access to information with special protection measures
@@ -7547,7 +7510,7 @@
               policies, regulations, standards, and guidance.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Third-party Personnel Security</title>
@@ -7799,7 +7762,7 @@
           security control assessments such as red team exercises are another source of potential
           vulnerabilities for which to scan. Related controls: <xref href="#CA-2">CA-2</xref>, <xref href="#CM-6">CM-6</xref>, <xref href="#RA-3">RA-3</xref>, <xref href="#SI-2">SI-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs vulnerability scanning tools that include the capability to
@@ -7875,7 +7838,7 @@
               scenario.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-115/SP800-115.pdf">NIST
@@ -8027,7 +7990,7 @@
           guidance. FISMA reporting instructions provide guidance on configuration requirements for
           federal information systems.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization requires in acquisition documents that vendors/contractors provide
@@ -8104,7 +8067,7 @@
             </ol>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
@@ -8174,7 +8137,7 @@
           information system documentation if such documentation is essential to the effective
           implementation and/or operation of security controls.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization obtains, protects as required, and makes available to authorized
@@ -8223,7 +8186,7 @@
               testing.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Software Usage Restrictions</title>
@@ -8246,7 +8209,7 @@
         <p>Tracking systems can include, for example, simple spreadsheets or fully automated,
           specialized applications depending on the needs of the organization.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization:</p>
@@ -8267,7 +8230,7 @@
               organization.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>User-installed Software</title>
@@ -8358,7 +8321,7 @@
           for each required security control, describe measurable outcomes, and identify remedies
           and response requirements for any identified instance of noncompliance.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization:</p>
@@ -8376,7 +8339,7 @@
               firewalls, or key management services.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-35/NIST-SP800-35.pdf">NIST
@@ -8403,7 +8366,7 @@
       <stmt name="supplemental-guidance">
         <p>Related controls: <xref href="#CM-3">CM-3</xref>, <xref href="#CM-4">CM-4</xref>, <xref href="#CM-9">CM-9</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization requires that information system developers/integrators provide an
@@ -8424,7 +8387,7 @@
               changes to the system.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Developer Security Testing</title>
@@ -8449,7 +8412,7 @@
           developer testing. Test results may be used in support of the security authorization
           process for the delivered information system. Related control: <xref href="#CA-2">CA-2</xref>, <xref href="#SI-2">SI-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization requires that information system developers/integrators employ code
@@ -8471,7 +8434,7 @@
               independent verification and validation agent.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Supply Chain Protection</title>
@@ -8494,7 +8457,7 @@
           each phase of the life cycle and the use of complementary, mutually reinforcing strategies
           to mitigate risk.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization purchases all anticipated information system components and spares
@@ -8572,7 +8535,7 @@
               technology products.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Trustworthiness</title>
@@ -8679,7 +8642,7 @@
           organization finds unacceptable. The organization re-implements or custom develops such
           components to satisfy requirements for high assurance. Related controls: <xref href="#SA-12">SA-12</xref>, <xref href="#SA-13">SA-13</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization:</p>
@@ -8697,7 +8660,7 @@
               deletion of system and application files.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
   </group>
   <group type="family">
@@ -8764,7 +8727,7 @@
           information system resources. This may include isolating the administrative interface on a
           different domain and with additional access controls.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system prevents the presentation of information system
@@ -8779,7 +8742,7 @@
               a session with administrator privileges.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Security Function Isolation</title>
@@ -8797,7 +8760,7 @@
           security functions. The information system maintains a separate execution domain (e.g.,
           address space) for each executing process. Related control: <xref href="#SA-13">SA-13</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system implements underlying hardware separation mechanisms to
@@ -8834,7 +8797,7 @@
               on the functionality or correctness of higher layers.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Information In Shared Resources</title>
@@ -8858,7 +8821,7 @@
           violation of information flow restrictions; or (iii) components in the information system
           for which there is only a single user/role.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system does not share resources that are used to interface with
@@ -8869,7 +8832,7 @@
               interface cards.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Denial of Service Protection</title>
@@ -8889,7 +8852,7 @@
           combined with service redundancy may reduce the susceptibility to some denial of service
           attacks. Related control: <xref href="#SC-7">SC-7</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system restricts the ability of users to launch denial of service
@@ -8902,7 +8865,7 @@
               limit the effects of information flooding types of denial of service attacks.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Resource Priority</title>
@@ -8952,7 +8915,7 @@
           occurs, the organization either implements appropriate compensating security controls or
           explicitly accepts the additional risk. Related controls: <xref href="#AC-4">AC-4</xref>, <xref href="#IR-4">IR-4</xref>, <xref href="#SC-5">SC-5</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization physically allocates publicly accessible information system
@@ -9179,7 +9142,7 @@
               nor can a failure permit unauthorized information release.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips199/FIPS-PUB-199-final.pdf">FIPS
@@ -9213,7 +9176,7 @@
           vehicles, the organization either implements appropriate compensating security controls or
           explicitly accepts the additional risk. Related controls: <xref href="#AC-17">AC-17</xref>, <xref href="#PE-4">PE-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs cryptographic mechanisms to recognize changes to information
@@ -9234,7 +9197,7 @@
               protocol transformation points, compromising the integrity of the information.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
@@ -9281,7 +9244,7 @@
           vehicles, the organization either implements appropriate compensating security controls or
           explicitly accepts the additional risk. Related controls: <xref href="#AC-17">AC-17</xref>, <xref href="#PE-4">PE-4</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs cryptographic mechanisms to prevent unauthorized disclosure
@@ -9304,7 +9267,7 @@
               information.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/groups/STM/cmvp/documents/CNSS15FS.pdf">CNSS 15</std>
@@ -9384,7 +9347,7 @@
           management provides protections to maintain the availability of the information in the
           event of the loss of cryptographic keys by users.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -9418,7 +9381,7 @@
               protect the user's private key.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std
@@ -9445,7 +9408,7 @@
       <stmt name="supplemental-guidance">
         <p>None.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs, at a minimum, FIPS-validated cryptography to protect
@@ -9471,7 +9434,7 @@
               cryptography to implement digital signatures.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf">FIPS 140-2</std>
@@ -9519,7 +9482,7 @@
           and microphones. Explicit indication of use includes, for example, signals to users when
           collaborative computing devices are activated</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system provides physical disconnect of collaborative computing
@@ -9543,7 +9506,7 @@
               systems in <assign>organization-defined secure work areas</assign>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Transmission of Security Attributes</title>
@@ -9558,14 +9521,14 @@
         <p>Security attributes may be explicitly or implicitly associated with the information
           contained within the information system. Related control: <xref href="#AC-16">AC-16</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system validates the integrity of security attributes exchanged
               between systems.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Public Key Infrastructure Certificates</title>
@@ -9627,7 +9590,7 @@
           acquisition, or introduction of unacceptable mobile code within the information
           system.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system implements detection and inspection mechanisms to identify
@@ -9663,7 +9626,7 @@
               prior to opening electronic mail attachments.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://www.dtic.mil/whs/directives/corres/pdf/855201p.pdf">DOD Instruction
@@ -9720,7 +9683,7 @@
           the authenticity and integrity of response data. The DNS security controls are consistent
           with, and referenced from, OMB Memorandum 08-23.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system, when operating as part of a distributed, hierarchical
@@ -9733,7 +9696,7 @@
               use of delegation signer (DS) resource records in the DNS.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST
@@ -9764,7 +9727,7 @@
           addresses provide other means to enable clients to verify the authenticity and integrity
           of response data.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system performs data origin authentication and data integrity
@@ -9775,7 +9738,7 @@
             <p>Local clients include, for example, DNS stub resolvers.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-81r1/sp-800-81r1.pdf">NIST
@@ -9831,7 +9794,7 @@
           control is only implemented where deemed necessary by the organization (e.g., sessions in
           service-oriented architectures providing web-based services).</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system invalidates session identifiers upon user logout or other
@@ -9861,7 +9824,7 @@
               identifiers.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-52/SP800-52.pdf">NIST
@@ -9928,7 +9891,7 @@
       <stmt name="supplemental-guidance">
         <p>None.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system includes components that proactively seek to identify
@@ -9939,7 +9902,7 @@
               referred to as client honeypots or honey clients.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Operating System-independent Applications</title>
@@ -9976,7 +9939,7 @@
           information likely requiring protection. Organizations may choose to employ different
           mechanisms to achieve confidentiality and integrity protections, as appropriate.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs cryptographic mechanisms to prevent unauthorized disclosure
@@ -9984,7 +9947,7 @@
               physical measures.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-111/SP800-111.pdf">NIST
@@ -10033,7 +9996,7 @@
           systems, potentially reducing the likelihood of successful attacks without the cost of
           having multiple platforms.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs virtualization techniques to support the deployment of a
@@ -10055,7 +10018,7 @@
               techniques.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Covert Channel Analysis</title>
@@ -10077,14 +10040,14 @@
           case of multilevel secure (MLS) systems, multiple security level (MSL) systems, and cross
           domain systems.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization tests a subset of the vendor-identified covert channel avenues to
               determine if they are exploitable.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Information System Partitioning</title>
@@ -10147,7 +10110,7 @@
           include, for example, CD-R/DVD-R disk drives. Use of non-modifiable storage ensures the
           integrity of the software program from the point of creation of the read-only image.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization employs <assign>organization-defined information system
@@ -10174,7 +10137,7 @@
               <xref href="#CM-9">CM-9</xref>, <xref href="#MP-2">MP-2</xref>, <xref href="#MP-4">MP-4</xref>, <xref href="#MP-5">MP-5</xref>, <xref href="#SA-12">SA-12</xref>, <xref href="#SC-28">SC-28</xref>, <xref href="#SI-3">SI-3</xref>, and <xref href="#SI-7">SI-7</xref>.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
   </group>
   <group type="family">
@@ -10254,7 +10217,7 @@
           guidance and Information Assurance Vulnerability Alerts have been accomplished. Related
           controls: <xref href="#CA-2">CA-2</xref>, <xref href="#CA-7">CA-7</xref>, <xref href="#CM-3">CM-3</xref>, <xref href="#MA-2">MA-2</xref>, <xref href="#IR-4">IR-4</xref>, <xref href="#RA-5">RA-5</xref>, <xref href="#SA-11">SA-11</xref>, <xref href="#SI-11">SI-11</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -10286,7 +10249,7 @@
                 components</assign>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST
@@ -10344,7 +10307,7 @@
           control, and monitoring practices to help ensure that software does not perform functions
           other than those intended. Related controls: <xref href="#SA-4">SA-4</xref>, <xref href="#SA-8">SA-8</xref>, <xref href="#SA-12">SA-12</xref>, <xref href="#SA-13">SA-13</xref>, <xref href="#SI-4">SI-4</xref>, <xref href="#SI-7">SI-7</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization centrally manages malicious code protection mechanisms.</p>
@@ -10383,7 +10346,7 @@
               required.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-83/SP800-83.pdf">NIST
@@ -10435,7 +10398,7 @@
           organizational HTTP proxies, when use of such proxies is required. Related controls: <xref href="#AC-4">AC-4</xref>,
           <xref href="#AC-8">AC-8</xref>, <xref href="#AC-17">AC-17</xref>, <xref href="#AU-2">AU-2</xref>, <xref href="#AU-6">AU-6</xref>, <xref href="#SI-3">SI-3</xref>, <xref href="#SI-7">SI-7</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization interconnects and configures individual intrusion detection tools
@@ -10591,7 +10554,7 @@
               employed to carry out the attacks.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-61-rev1/SP800-61rev1.pdf">NIST
@@ -10640,7 +10603,7 @@
           organizations, and the Nation should the directives not be implemented in a timely
           manner.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -10648,7 +10611,7 @@
               information available throughout the organization as needed.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-40-Ver2/SP800-40v2.pdf">NIST
@@ -10684,7 +10647,7 @@
           performing the verification as required. Information system transitional states include,
           for example, startup, restart, shutdown, and abort.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The information system provides notification of failed automated security tests.</p>
@@ -10707,7 +10670,7 @@
               and information systems security officers.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Software and Information Integrity</title>
@@ -10725,7 +10688,7 @@
           hashes) and uses tools to automatically monitor the integrity of the information system
           and the applications it hosts.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization reassesses the integrity of software and information by performing
@@ -10755,7 +10718,7 @@
               </select>.</p>
           </desc>
         </control>
-      </extensions>
+      </group>
     </control>
     <control type="SP800-53">
       <title>Spam Protection</title>
@@ -10779,7 +10742,7 @@
           servers, web servers, proxy servers, and remote-access servers. Related controls: <xref href="#SC-5">SC-5</xref>,
           <xref href="#SI-3">SI-3</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <prop name="baseline-impact">HIGH</prop>
           <desc>
@@ -10792,7 +10755,7 @@
               signature definitions).</p>
           </desc>
         </control>
-      </extensions>
+      </group>
       <references>
         <ref>
           <std href="http://csrc.nist.gov/publications/nistpubs/800-45-version2/SP800-45v2.pdf">NIST
@@ -10898,7 +10861,7 @@
           available at all times except where a failure recovery is in progress or for maintenance
           reasons. Related control: <xref href="#CP-2">CP-2</xref>.</p>
       </stmt>
-      <extensions>
+      <group>
         <control type="SP800-53-enhancement">
           <desc>
             <p>The organization takes the information system component out of service by
@@ -10937,7 +10900,7 @@
               component failure.</p>
           </stmt>
         </control>
-      </extensions>
+      </group>
     </control>
   </group>
 </catalog>

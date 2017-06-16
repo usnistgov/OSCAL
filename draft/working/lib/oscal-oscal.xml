@@ -6,32 +6,7 @@
 <?xml-stylesheet type="text/xsl" href="oscal-basic-display.xsl"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>OSCAL: the Open Security Controls Assessment Language</title>
-  <declarations xmlns="http://scap.nist.gov/schema/oscal">
-    <control-spec type="element-description">
-      <required>
-        <property name="tag">
-          <runin/>
-          <identifier/>
-          <regex>^&lt;\i\c*&gt;$</regex>
-        </property>
-        <property name="full_name">
-          <title>Formal name</title>
-        </property>
-      </required>
-      <optional>
-        <statement name="remarks">
-          <title>Remarks</title>
-        </statement>
-      </optional>
-    </control-spec>
-    <control-spec type="validation-rule">
-      <optional>
-        <statement name="remarks">
-          <title>Remarks</title>
-        </statement>
-      </optional>
-    </control-spec>
-  </declarations>  <!--<declarations></declarations>-->
+    <!--<declarations></declarations>-->
   <div>
     <title>What is OSCAL</title>
     <div>

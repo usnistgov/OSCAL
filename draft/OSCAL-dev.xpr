@@ -645,6 +645,40 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/ISO-27002/iso-27002-OSCAL.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL Schematron</String>
+                                        <String>OSCAL working RNC</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/800-53-controls-OSCAL.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL working RNC</String>
+                                        <String>OSCAL Schematron</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/SP800-53/SP800-53-mockup.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -677,26 +711,67 @@
                                     </list>
                                 </field>
                             </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/800-53-controls-OSCAL.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
                         </scenarioAssociation-array>
                     </entry>
                     <entry>
                         <String>validation.scenarios</String>
                         <validationScenario-array>
+                            <validationScenario>
+                                <field name="pairs">
+                                    <list>
+                                        <validationUnit>
+                                            <field name="validationType">
+                                                <validationUnitType>
+                                                    <field name="validationInputType">
+                                                        <String>text/xml</String>
+                                                    </field>
+                                                </validationUnitType>
+                                            </field>
+                                            <field name="url">
+                                                <String>${currentFileURL}</String>
+                                            </field>
+                                            <field name="validationEngine">
+                                                <validationEngine>
+                                                    <field name="engineType">
+                                                        <String>&lt;Default engine></String>
+                                                    </field>
+                                                    <field name="allowsAutomaticValidation">
+                                                        <Boolean>true</Boolean>
+                                                    </field>
+                                                </validationEngine>
+                                            </field>
+                                            <field name="allowAutomaticValidation">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                            <field name="extensions">
+                                                <null/>
+                                            </field>
+                                            <field name="validationSchema">
+                                                <validationUnitSchema>
+                                                    <field name="dtdSchemaPublicID">
+                                                        <null/>
+                                                    </field>
+                                                    <field name="schematronPhase">
+                                                        <null/>
+                                                    </field>
+                                                    <field name="type">
+                                                        <Integer>7</Integer>
+                                                    </field>
+                                                    <field name="uri">
+                                                        <String>${pdu}/working/lib/oscal-consistency.sch</String>
+                                                    </field>
+                                                </validationUnitSchema>
+                                            </field>
+                                        </validationUnit>
+                                    </list>
+                                </field>
+                                <field name="type">
+                                    <String>Validation_scenario</String>
+                                </field>
+                                <field name="name">
+                                    <String>OSCAL Schematron</String>
+                                </field>
+                            </validationScenario>
                             <validationScenario>
                                 <field name="pairs">
                                     <list>
@@ -807,62 +882,6 @@
                                 </field>
                                 <field name="name">
                                     <String>OSCAL working RNC</String>
-                                </field>
-                            </validationScenario>
-                            <validationScenario>
-                                <field name="pairs">
-                                    <list>
-                                        <validationUnit>
-                                            <field name="validationType">
-                                                <validationUnitType>
-                                                    <field name="validationInputType">
-                                                        <String>text/xml</String>
-                                                    </field>
-                                                </validationUnitType>
-                                            </field>
-                                            <field name="url">
-                                                <String>${currentFileURL}</String>
-                                            </field>
-                                            <field name="validationEngine">
-                                                <validationEngine>
-                                                    <field name="engineType">
-                                                        <String>&lt;Default engine></String>
-                                                    </field>
-                                                    <field name="allowsAutomaticValidation">
-                                                        <Boolean>true</Boolean>
-                                                    </field>
-                                                </validationEngine>
-                                            </field>
-                                            <field name="allowAutomaticValidation">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                            <field name="extensions">
-                                                <null/>
-                                            </field>
-                                            <field name="validationSchema">
-                                                <validationUnitSchema>
-                                                    <field name="dtdSchemaPublicID">
-                                                        <null/>
-                                                    </field>
-                                                    <field name="schematronPhase">
-                                                        <null/>
-                                                    </field>
-                                                    <field name="type">
-                                                        <Integer>7</Integer>
-                                                    </field>
-                                                    <field name="uri">
-                                                        <String>${pdu}/working/lib/oscal-consistency.sch</String>
-                                                    </field>
-                                                </validationUnitSchema>
-                                            </field>
-                                        </validationUnit>
-                                    </list>
-                                </field>
-                                <field name="type">
-                                    <String>Validation_scenario</String>
-                                </field>
-                                <field name="name">
-                                    <String>OSCAL Schematron</String>
                                 </field>
                             </validationScenario>
                         </validationScenario-array>

@@ -25,41 +25,37 @@
       <title>NIST SP800-53</title>
       
       <declarations>
-        <control-spec type="SP800-53">
-          <required>
-            <property name="control-class">
+        
+        <property handle="control-class" where="SP800-53">
+              <required/>
               <value>Technical</value>
               <value>Operational</value>
               <value>Management</value>
             </property>
-            <property name="number">
+        <property handle="number" where="SP800-53">
+              <required/>
               <identifier/>
               <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)\-\d+$</regex>
             </property>
-          </required>
-          <optional>
-            <property name="priority">
+        <property handle="priority" where="SP800-53">
               <regex>P[0-3]</regex>
             </property>
-            <property name="baseline-impact">
+        <property handle="baseline-impact" where="SP800-53">
               <value>MODERATE</value><value>HIGH</value>
             </property>
-            <statement name="supplemental-guidance">
+        <!--<statement name="supplemental-guidance" where="SP800-53"/>
               <title>Supplemental guidance</title>
-            </statement>
-          </optional>
-        </control-spec>
-        <control-spec type="SP800-53-enhancement">
+            </statement>-->
+        <!-- statement types to be supported? 
+        'purpose' ("Objective"), 'guidance' ("Supplemental Guidance"), 'decision'
+        
+        -->
+        
           <!--<required><property name="number"><id/></property></required>-->
-          <optional>
-            <property name="baseline-impact">
+        <property handle="baseline-impact" where="SP800-53-enhancement">
               <value>MODERATE</value><value>HIGH</value>
             </property>
-            <statement name="supplemental-guidance">
-              <title>Supplemental guidance</title>
-            </statement>
-          </optional>
-        </control-spec>
+        
         
       </declarations>
       
@@ -74,7 +70,7 @@
   </xsl:template>
   
   <xsl:template match="feed:control">
-    <control>
+    <control type="SP800-53">
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="* except title"/>
     </control>
@@ -90,7 +86,7 @@
   <xsl:template match="family"/>
   
   <xsl:template match="control-class | number">
-    <prop name="{name()}">
+    <prop handle="{name()}">
       <xsl:apply-templates/>
     </prop>
   </xsl:template>
@@ -108,7 +104,7 @@
       <xsl:text>Matched </xsl:text>
       <xsl:value-of select="local-name()"/>
     </xsl:message>-->
-    <group>
+    <group type="{ local-name(.) }">
       <!--<xsl:apply-templates select="." mode="group-label"/>-->
       <xsl:apply-templates/>
     </group>
@@ -122,10 +118,10 @@
   </xsl:template>
   
   <xsl:template match="control-enhancements">
-    <extensions>
+    <group type="control-enhancements">
       <!--<xsl:apply-templates select="." mode="group-label"/>-->
       <xsl:apply-templates/>
-    </extensions>
+    </group>
   </xsl:template>
   
   <xsl:template match="description">
@@ -135,24 +131,38 @@
     </desc>
   </xsl:template>
   
-  <xsl:template match="supplemental-guidance | objective | decision">
-    <stmt name="{name()}">
+  <xsl:template match="objective">
+    <purpose>
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </stmt>
+    </purpose>
   </xsl:template>
   
-  <xsl:template match="potential-assessment">
-    <stmt name="{name()}">
+  <xsl:template match="supplemental-guidance">
+    <guidance>
+      <xsl:apply-templates select="@*" mode="asElement"/>
+      <xsl:apply-templates/>
+    </guidance>
+  </xsl:template>
+  
+  <xsl:template match="decision">
+    <decision>
+      <xsl:apply-templates select="@*" mode="asElement"/>
+      <xsl:apply-templates/>
+    </decision>
+  </xsl:template>
+  
+  <!--<xsl:template match="potential-assessment">
+    <stmt type="{name()}">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <group>
       <xsl:apply-templates/>
       </group>
     </stmt>
-  </xsl:template>
+  </xsl:template>-->
   
   <xsl:template match="control-enhancement">
-    <control>
+    <control type="SP800-53-enhancement">
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <xsl:apply-templates select="* except title"/>
@@ -160,17 +170,17 @@
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
-    <prop name="{name()}"><xsl:value-of select="."/></prop>
+    <prop handle="{name()}"><xsl:value-of select="."/></prop>
   </xsl:template>
   
   <xsl:template match="object">
-    <prop name="object">
+    <prop handle="object">
       <xsl:apply-templates/>
     </prop>
   </xsl:template>
   
   <xsl:template match="priority | baseline-impact">
-    <prop name="{name()}">
+    <prop handle="{name()}">
       <xsl:apply-templates/>
     </prop>  
   </xsl:template>

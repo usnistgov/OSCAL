@@ -8,7 +8,7 @@ declarations { font-family: sans-serif; font-size: 80%;
 
 declarations:before { font-weight: bold; content: "Declarations" } 
 
-control-spec, optional, required, property, statement, parameter
+control-spec, optional, property, statement, parameter
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
@@ -17,12 +17,10 @@ property  {  border: thin outset pink }
 statement {  border: thin outset blue } 
 parameter {  border: thin dotted purple } 
 
-required  { background-color: lightsteelblue; color: black }
-optional  { background-color: lavender }
 parameter { background-color: lavenderblush }
 
-required:before { content: "Required: "; font-style: italic }
-optional:before { content: "Optional: "; font-style: italic }
+required:before { content: "Required"; font-weight: bold }
+optional:before { content: "Optional"; font-weight: bold }
 
 value  { display: inline-block; background-color: ivory; border: thin outset pink;
   margin: 2px; padding: 2px; font-weight: bold; font-size: 80% }

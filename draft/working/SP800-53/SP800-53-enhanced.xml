@@ -6,7 +6,7 @@
 <?xml-stylesheet type="text/xsl" href="../lib/oscal-basic-display.xsl"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>NIST SP800-53 Handmade OSCAL</title>
-  <declarations>
+  <!--<declarations>
     <control-spec type="SP800-53">
       <required>
         <property name="control-class">
@@ -40,7 +40,7 @@
       </optional>
     </control-spec>
     <control-spec type="SP800-53-enhancement">
-      <!--<required><property name="number"><id/></property></required>-->
+      <!-\-<required><property name="number"><id/></property></required>-\->
       <optional>
       <property name="baseline-impact">
           <title>Baseline impact</title>
@@ -51,7 +51,7 @@
         </statement>
       </optional>
     </control-spec>
-  </declarations>
+  </declarations>-->
   <group type="family">
     <title>Access Control</title>
     <!--<param name="AccessControlUpdateFrequency">really really often</param>-->
