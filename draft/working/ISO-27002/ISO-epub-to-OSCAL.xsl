@@ -19,17 +19,27 @@
       <title>ISO/IEC 27002</title>
       
       <declarations>
-        <control-spec type="iso-27002">
-          <required>
-            <property name="number">
-              <regex>^\d+\.\d+\.\d+$</regex>
-            </property>
-          </required>
-          <optional>
-            <statement name="implementation-guidance"><title>Implementation guidance</title></statement>
-            <statement name="other-information"><title>Further information</title></statement>
-          </optional>
-        </control-spec>
+        <property handle="number" where="control-category">
+          <required/>
+          <regex>\d\d?</regex>
+          <!--<autonum>1</autonum> auto numbering needs to manage scope, starting point ... -->
+          <!--<limit type="not-less-than">5</limit>
+    <limit type="not-more-than">12</limit>-->
+        </property>
+        <property handle="number" where="clause">
+          <required/>
+          <!--<value>5.1</value> ... <value>18.2</value>-->
+        </property>
+        <statement handle="objective" where="clause">
+          <required/>
+        </statement>
+        <property handle="number" where="iso-27002">
+          <required/>
+          <!--<value>5.1.1</value> ...
+      <value>18.2.3</value>-->
+        </property>
+        <statement handle="implementation-guidance" where="control"/>
+        <statement handle="other-information" where="control"/>
       </declarations>
       
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
@@ -91,7 +101,7 @@
                       </desc>
                     </xsl:when>
                     <xsl:otherwise>
-                      <stmt name="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
+                      <stmt handle="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
@@ -166,14 +176,14 @@
   </xsl:template>
   
   <xsl:template match="h1 | h2 | h3" mode="num" priority="5">
-    <prop name="number">
+    <prop handle="number">
       <xsl:value-of select="replace(.,'[^\d\s\.].*$','')"/>
     </prop>
   </xsl:template>
   
  
   <xsl:template match="p[starts-with(., 'Objective:')]">
-    <stmt name="objective">
+    <stmt handle="objective">
       <p>
         <xsl:apply-templates mode="tune">
           <xsl:with-param name="trim" tunnel="yes" as="xs:string">Objective: </xsl:with-param>

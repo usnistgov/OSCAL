@@ -22,12 +22,12 @@
       <sch:report test="true"><sch:value-of select="oscal:declares(.)"/></sch:report>
     </sch:rule>
     
-    <sch:rule context="oscal:assign | oscal:select">
-    </sch:rule>
-    <sch:rule context="oscal:title">
-    </sch:rule>
+    <sch:rule context="oscal:assign | oscal:select"/>
     
-    <sch:rule context="oscal:control/*">
+    <sch:rule context="oscal:title"/>
+    <sch:rule context="oscal:group | oscal:control"/>
+    
+    <sch:rule context="oscal:control/* | oscal:group/*">
       <sch:let name="me" value="."/>
       <!-- <sch:report test="oscal:match-token($me) = (../* except $me)/oscal:match-token(.)">
         More than one '<sch:value-of select="@handle"/>' appears in this <sch:value-of select="name(..)"/> (<sch:value-of select="oscal:match-token(..)"/>).
