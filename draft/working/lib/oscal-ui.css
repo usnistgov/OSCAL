@@ -5,14 +5,12 @@ value, identifier, regex, declarations title {
 
 property:before { content:
   oxy_label(text, "property ", styles, "font-weight:bold")
-  oxy_label(text, "named ")
-  oxy_textfield(edit, '@name', columns, 12) 
+  oxy_textfield(edit, '@role', columns, 12) 
  }
 
 parameter:before { content:
   oxy_label(text, "parameter ", styles, "font-weight:bold")
-  oxy_label(text, "named ")
-  oxy_textfield(edit, '@name', columns, 30) 
+  oxy_textfield(edit, '@role', columns, 30) 
  }
 
 value:before { content:
@@ -27,8 +25,7 @@ regex:before { content:
 
 statement:before { content:
   oxy_label(text, "statement ", styles, "font-weight:bold")
-  oxy_label(text, "named ")
-  oxy_textfield(edit, '@name', columns, 20) 
+  oxy_textfield(edit, '@role', columns, 20) 
  }
 
 
@@ -39,15 +36,15 @@ declarations title:before { content:
 
 assign:before,
 param:before { content: oxy_textfield(
-          edit, '@name',
+          edit, '@role',
           columns, 30); }
 
 prop:before { content: oxy_textfield(
-          edit, '@name',
+          edit, '@role',
           columns, 10); }
 
 stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
-          content: attr(name) ' ' oxy_textfield(
-          edit, '@name',
+          content: attr(role) ' ' oxy_textfield(
+          edit, '@role',
           columns, 20);
  }

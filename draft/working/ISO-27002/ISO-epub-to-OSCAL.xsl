@@ -93,12 +93,12 @@
                     select="current-group()[normalize-space(.) = $statement-headers]"/>
                   <xsl:choose>
                     <xsl:when test="$statement-head = 'Control'">
-                      <desc>
+                      <description>
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </desc>
+                      </description>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Implementation guidance'">
                       <guidance>

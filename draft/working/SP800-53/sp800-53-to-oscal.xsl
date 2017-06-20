@@ -125,10 +125,10 @@
   </xsl:template>
   
   <xsl:template match="description">
-    <desc>
+    <description>
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </desc>
+    </description>
   </xsl:template>
   
   <xsl:template match="objective">
@@ -148,9 +148,9 @@
   <xsl:template match="decision">
     <control type="decision">
       <xsl:apply-templates select="@*" mode="asElement"/>
-      <desc>
+      <description>
         <xsl:apply-templates/>
-      </desc>
+      </description>
     </control>
   </xsl:template>
   
@@ -180,11 +180,11 @@
   <xsl:template match="potential-assessment">
     <control type="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
-      <desc>
+      <description>
         <ul>
         <xsl:apply-templates/>
         </ul>
-      </desc>
+      </description>
     </control>
   </xsl:template>
   

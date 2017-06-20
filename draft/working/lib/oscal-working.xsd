@@ -30,53 +30,37 @@
   -->
   <xs:element name="declarations">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:parameter"/>
-        <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal:control-spec"/>
-      </xs:sequence>
-      <xs:attribute name="href"/>
+      <xs:complexContent>
+        <xs:extension base="oscal:decls">
+          <xs:attribute name="href"/>
+        </xs:extension>
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:group name="control-spec">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" ref="oscal:control-spec"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="control-spec">
+  <xs:complexType name="decls">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="oscal:parameter"/>
+      <xs:element ref="oscal:property"/>
+      <xs:element ref="oscal:statement"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- parameter declarations expose names and default values for parameters within the control type -->
+  <xs:element name="parameter">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:required"/>
-        <xs:element minOccurs="0" ref="oscal:optional"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="oscal:typeAttr"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="required">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:parameter"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:property"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:statement"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="optional">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:parameter"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:property"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:statement"/>
-      </xs:sequence>
+      <xs:choice minOccurs="0">
+        <xs:element ref="oscal:regex"/>
+        <xs:element ref="oscal:value"/>
+        <xs:element maxOccurs="unbounded" ref="oscal:choice"/>
+      </xs:choice>
+      <xs:attributeGroup ref="oscal:nameAttr"/>
+      <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
   </xs:element>
   <!-- property may contain only id, only regex, both id and regex, or (sequence of) values -->
   <xs:element name="property">
     <xs:complexType>
       <xs:sequence>
-        <xs:choice minOccurs="0">
-          <xs:element ref="oscal:title"/>
-          <xs:element ref="oscal:runin"/>
-        </xs:choice>
+        <xs:element minOccurs="0" ref="oscal:required"/>
         <xs:choice>
           <xs:sequence>
             <xs:element minOccurs="0" ref="oscal:identifier"/>
@@ -86,45 +70,38 @@
         </xs:choice>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:nameAttr"/>
+      <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
-  </xs:element>
-  <xs:element name="runin">
-    <xs:complexType/>
   </xs:element>
   <xs:element name="identifier">
     <xs:complexType/>
   </xs:element>
+  <!--
+    on 'property and possibly 'parameter',
+    element limit { nameAttr, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
+  -->
   <xs:element name="regex" type="xs:string"/>
   <xs:element name="value" type="xs:string"/>
+  <!-- element autonum { text } -->
   <xs:element name="statement">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="oscal:title"/>
+        <xs:element minOccurs="0" ref="oscal:required"/>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:nameAttr"/>
+      <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
   </xs:element>
-  <!-- parameter declarations expose names and default values for parameters within the control type -->
-  <xs:element name="parameter">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:choice minOccurs="0">
-          <xs:element ref="oscal:regex"/>
-          <xs:element ref="oscal:value"/>
-          <xs:element maxOccurs="unbounded" ref="oscal:choice"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attributeGroup ref="oscal:nameAttr"/>
-    </xs:complexType>
+  <xs:element name="required">
+    <xs:complexType/>
   </xs:element>
+  <!-- now for elements themselves -->
   <xs:element name="group">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="oscal:title"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:param"/>
+        <xs:element minOccurs="0" ref="oscal:title"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:prop"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:stmt"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:anyKindofStatement"/>
         <xs:choice>
           <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:group"/>
           <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:control"/>
@@ -152,11 +129,10 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:param"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:prop"/>
-        <xs:element ref="oscal:desc"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:stmt"/>
-        <xs:element minOccurs="0" ref="oscal:extensions"/>
+        <xs:element minOccurs="0" ref="oscal:desc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:anyKindofStatement"/>
+        <xs:group minOccurs="0" ref="oscal:extensions"/>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:idAttr"/>
@@ -177,18 +153,7 @@
     or on-the-fly declaration of new parameters for a control
     (since params are not currently required to be declared
   -->
-  <xs:element name="param">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:choice minOccurs="0">
-          <xs:element ref="oscal:value"/>
-          <xs:element maxOccurs="unbounded" ref="oscal:choice"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attributeGroup ref="oscal:nameAttr"/>
-    </xs:complexType>
-  </xs:element>
+  <!-- element param { nameAttr, mix } -->
   <xs:element name="prop">
     <xs:complexType>
       <xs:complexContent>
@@ -208,16 +173,47 @@
     stmt is a bit of controlled prose: its title is implicit in its name
     e.g. stmt[@name='objectives'] might be displayed with title "Objectives:"
   -->
-  <xs:element name="stmt">
+  <xs:element name="anyKindofStatement" abstract="true"/>
+  <xs:element name="stmt" substitutionGroup="oscal:anyKindofStatement">
     <xs:complexType>
       <xs:group ref="oscal:prose"/>
-      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attributeGroup ref="oscal:nameAttr"/>
     </xs:complexType>
   </xs:element>
-  <!-- on stmt, not(@name = ../(prop|stmt)/@name) -->
+  <!-- syntax sugar for stmt[@role='purpose'] for "Objective/s" etc. -->
+  <xs:element name="purpose" substitutionGroup="oscal:anyKindofStatement">
+    <xs:complexType>
+      <xs:group ref="oscal:prose"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- syntax sugar for stmt[@role='guidance'] for "Supplemental Guidance" etc. -->
+  <xs:element name="guidance" substitutionGroup="oscal:anyKindofStatement">
+    <xs:complexType>
+      <xs:group ref="oscal:prose"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- syntax sugar for stmt[@role='decision'] -->
+  <xs:element name="decision" substitutionGroup="oscal:anyKindofStatement">
+    <xs:complexType>
+      <xs:group ref="oscal:prose"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- syntax sugar for stmt[@role='information'], other-info, etc. -->
+  <xs:element name="information" substitutionGroup="oscal:anyKindofStatement">
+    <xs:complexType>
+      <xs:group ref="oscal:prose"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- syntax sugar for stmt[@role='remarks'] -->
+  <xs:element name="remarks" substitutionGroup="oscal:anyKindofStatement">
+    <xs:complexType>
+      <xs:group ref="oscal:prose"/>
+    </xs:complexType>
+  </xs:element>
   <xs:group name="prose">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:ul"/>
         <xs:element ref="oscal:ol"/>
         <xs:element ref="oscal:p"/>
       </xs:choice>
@@ -227,13 +223,11 @@
     cluster = element cluster { control+ | prop+ | ref+ }
     on group, not(*/@name != */@name) ie all names must be the same
   -->
-  <xs:element name="extensions">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="oscal:control"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+  <xs:group name="extensions">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="oscal:group"/>
+    </xs:sequence>
+  </xs:group>
   <xs:element name="references">
     <xs:complexType>
       <xs:sequence>
@@ -280,15 +274,26 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="li" type="oscal:whatnot"/>
+  <xs:element name="ul">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="oscal:li"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:attributeGroup name="idAttr">
     <xs:attribute name="id" type="xs:ID"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="nameAttr">
+    <xs:attribute name="role"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="typeAttr">
     <xs:attribute name="type"/>
   </xs:attributeGroup>
-  <xs:attributeGroup name="nameAttr">
-    <xs:attribute name="name" use="required" type="xs:NCName"/>
+  <xs:attributeGroup name="contextAttr">
+    <xs:attribute name="where" use="required"/>
   </xs:attributeGroup>
+  <!-- nameAttr = attribute name { xsd:NCName } -->
   <!-- html! -->
   <xs:complexType name="whatnot" mixed="true">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -331,7 +336,7 @@
   <xs:element name="assign" substitutionGroup="oscal:semantical">
     <xs:complexType mixed="true">
       <xs:group ref="oscal:mix"/>
-      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attributeGroup ref="oscal:paramAttr"/>
     </xs:complexType>
   </xs:element>
   <!-- A selection to be made by responder -->
@@ -340,7 +345,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:choice"/>
       </xs:sequence>
-      <xs:attribute name="name" type="xs:NCName"/>
+      <xs:attributeGroup ref="oscal:paramAttr"/>
     </xs:complexType>
   </xs:element>
   <!--
@@ -353,7 +358,9 @@
         <xs:element ref="oscal:assign"/>
         <xs:group ref="oscal:mix"/>
       </xs:choice>
-      <xs:attribute name="name" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
+  <xs:attributeGroup name="paramAttr">
+    <xs:attribute name="use-param"/>
+  </xs:attributeGroup>
 </xs:schema>

@@ -18,7 +18,7 @@ parameter {  border: thin dotted purple }
 
 parameter { background-color: lavenderblush }
 
-required:before { content: "Required"; font-weight: bold }
+required:before { content: "required"; font-weight: bold }
 optional:before { content: "Optional"; font-weight: bold }
 
 value  { display: inline-block; background-color: ivory; border: thin outset pink;
@@ -33,11 +33,9 @@ regex:before  { content: "matching (regex) "; font-family: sans-serif  }
 identifier:before { content: "is an identifier"
  }
 
-parameter:before  { content: '(parameter) "' attr(role) '" '  }
-property:before  { content: '(property) "' attr(role) '" '  }
-statement:before  { content: '(statement) "' attr(role) '" ' }
-
-runin:before  { content: 'display with title'  }
+parameter:before  { content: '(parameter) "' attr(role) '" on ' attr(where) ' '  }
+property:before  { content: '(property) "' attr(role) '" on ' attr(where) ' '  }
+statement:before  { content: '(statement) "' attr(role) '" on ' attr(where) ' '}
 
 property { background-color: pink; margin-top: 0.5em; color: black }
 statement { background-color: cornsilk; margin-top: 0.5em; color: black }
@@ -75,7 +73,7 @@ control:before { background-color: #FFE5B4;
 
 control > title { font-size: 110% }
 
-desc { -oxy-foldable: true; 
+description { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: lightsteelblue }
 
 stmt, purpose, guidance, remarks, information { -oxy-foldable: true; 
@@ -84,7 +82,7 @@ padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: corn
 purpose, guidance, remarks, information { border: thin outset grey }
 
 
-desc:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+description:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 'Description' }
 
 stmt:before { font-weight: bold; color:  darkgreen; font-family: sans-serif;

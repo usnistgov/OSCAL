@@ -32,9 +32,9 @@
          <control type="iso-27002">
             <title>Policies for information security</title>
             <prop role="number">5.1.1</prop>
-            <desc>
+            <description>
                <p>A set of policies for information security should be defined, approved by management, published and communicated to employees and relevant external parties.</p>
-            </desc>
+            </description>
             <guidance>
                <p>At the highest level, organizations should define an “information security policy” which is approved by management and which sets out the organization’s approach to managing its information security objectives.</p>
                <p>Information security policies should address requirements created by:</p>
@@ -83,9 +83,9 @@
          <control type="iso-27002">
             <title>Review of the policies for information security</title>
             <prop role="number">5.1.2</prop>
-            <desc>
+            <description>
                <p>The policies for information security should be reviewed at planned intervals or if significant changes occur to ensure their continuing suitability, adequacy and effectiveness.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Each policy should have an owner who has approved management responsibility for the development, review and evaluation of the policies. The review should include assessing opportunities for improvement of the organization’s policies and approach to managing information security in response to changes to the organizational environment, business circumstances, legal conditions or technical environment.</p>
                <p>The review of policies for information security should take the results of management reviews into account.</p>
@@ -106,9 +106,9 @@
          <control type="iso-27002">
             <title>Information security roles and responsibilities</title>
             <prop role="number">6.1.1</prop>
-            <desc>
+            <description>
                <p>All information security responsibilities should be defined and allocated.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Allocation of information security responsibilities should be done in accordance with the information security policies (see <xref>5.1.1</xref>). Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined.</p>
                <p>Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed.</p>
@@ -129,9 +129,9 @@
          <control type="iso-27002">
             <title>Segregation of duties</title>
             <prop role="number">6.1.2</prop>
-            <desc>
+            <description>
                <p>Conflicting duties and areas of responsibility should be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organization’s assets.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Care should be taken that no single person can access, modify or use assets without authorization or detection. The initiation of an event should be separated from its authorization. The possibility of collusion should be considered in designing the controls.</p>
                <p>Small organizations may find segregation of duties difficult to achieve, but the principle should be applied as far as is possible and practicable. Whenever it is difficult to segregate, other controls such as monitoring of activities, audit trails and management supervision should be considered.</p>
@@ -143,9 +143,9 @@
          <control type="iso-27002">
             <title>Contact with authorities</title>
             <prop role="number">6.1.3</prop>
-            <desc>
+            <description>
                <p>Appropriate contacts with relevant authorities should be maintained.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Organizations should have procedures in place that specify when and by whom authorities (e.g. law enforcement, regulatory bodies, supervisory authorities) should be contacted and how identified information security incidents should be reported in a timely manner (e.g. if it is suspected that laws may have been broken).</p>
             </guidance>
@@ -157,9 +157,9 @@
          <control type="iso-27002">
             <title>Contact with special interest groups</title>
             <prop role="number">6.1.4</prop>
-            <desc>
+            <description>
                <p>Appropriate contacts with special interest groups or other specialist security forums and professional associations should be maintained.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Membership in special interest groups or forums should be considered as a means to:</p>
                <ol>
@@ -178,9 +178,9 @@
          <control type="iso-27002">
             <title>Information security in project management</title>
             <prop role="number">6.1.5</prop>
-            <desc>
+            <description>
                <p>Information security should be addressed in project management, regardless of the type of the project.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Information security should be integrated into the organization’s project management method(s) to ensure that information security risks are identified and addressed as part of a project. This applies generally to any project regardless of its character, e.g. a project for a core business process, IT, facility management and other supporting processes. The project management methods in use should require that:</p>
                <ol>
@@ -201,9 +201,9 @@
          <control type="iso-27002">
             <title>Mobile device policy</title>
             <prop role="number">6.2.1</prop>
-            <desc>
+            <description>
                <p>A policy and supporting security measures should be adopted to manage the risks introduced by using mobile devices.</p>
-            </desc>
+            </description>
             <guidance>
                <p>When using mobile devices, special care should be taken to ensure that business information is not compromised. The mobile device policy should take into account the risks of working with mobile devices in unprotected environments.</p>
                <p>The mobile device policy should consider:</p>
@@ -241,9 +241,9 @@
          <control type="iso-27002">
             <title>Teleworking</title>
             <prop role="number">6.2.2</prop>
-            <desc>
+            <description>
                <p>A policy and supporting security measures should be implemented to protect information accessed, processed or stored at teleworking sites.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Organizations allowing teleworking activities should issue a policy that defines the conditions and restrictions for using teleworking. Where deemed applicable and allowed by law, the following matters should be considered:</p>
                <ol>
@@ -290,9 +290,9 @@
          <control type="iso-27002">
             <title>Screening</title>
             <prop role="number">7.1.1</prop>
-            <desc>
+            <description>
                <p>Background verification checks on all candidates for employment should be carried out in accordance with relevant laws, regulations and ethics and should be proportional to the business requirements, the classification of the information to be accessed and the perceived risks.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Verification should take into account all relevant privacy, protection of personally identifiable information and employment based legislation, and should, where permitted, include the following:</p>
                <ol>
@@ -316,9 +316,9 @@
          <control type="iso-27002">
             <title>Terms and conditions of employment</title>
             <prop role="number">7.1.2</prop>
-            <desc>
+            <description>
                <p>The contractual agreements with employees and contractors should state their and the organization’s responsibilities for information security.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The contractual obligations for employees or contractors should reflect the organization’s policies for information security in addition to clarifying and stating:</p>
                <ol>
@@ -346,9 +346,9 @@
          <control type="iso-27002">
             <title>Management responsibilities</title>
             <prop role="number">7.2.1</prop>
-            <desc>
+            <description>
                <p>Management should require all employees and contractors to apply information security in accordance with the established policies and procedures of the organization.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Management responsibilities should include ensuring that employees and contractors:</p>
                <ol>
@@ -370,9 +370,9 @@
          <control type="iso-27002">
             <title>Information security awareness, education and training</title>
             <prop role="number">7.2.2</prop>
-            <desc>
+            <description>
                <p>All employees of the organization and, where relevant, contractors should receive appropriate awareness education and training and regular updates in organizational policies and procedures, as relevant for their job function.</p>
-            </desc>
+            </description>
             <guidance>
                <p>An information security awareness programme should aim to make employees and, where relevant, contractors aware of their responsibilities for information security and the means by which those responsibilities are discharged.</p>
                <p>An information security awareness programme should be established in line with the organization’s information security policies and relevant procedures, taking into consideration the organization’s information to be protected and the controls that have been implemented to protect the information. The awareness programme should include a number of awareness-raising activities such as campaigns (e.g. an “information security day”) and issuing booklets or newsletters.</p>
@@ -398,9 +398,9 @@
          <control type="iso-27002">
             <title>Disciplinary process</title>
             <prop role="number">7.2.3</prop>
-            <desc>
+            <description>
                <p>There should be a formal and communicated disciplinary process in place to take action against employees who have committed an information security breach.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The disciplinary process should not be commenced without prior verification that an information security breach has occurred (see <xref>16.1.7</xref>).</p>
                <p>The formal disciplinary process should ensure correct and fair treatment for employees who are suspected of committing breaches of information security. The formal disciplinary process should provide for a graduated response that takes into consideration factors such as the nature and gravity of the breach and its impact on business, whether or not this is a first or repeat offence, whether or not the violator was properly trained, relevant legislation, business contracts and other factors as required.</p>
@@ -420,9 +420,9 @@
          <control type="iso-27002">
             <title>Termination or change of employment responsibilities</title>
             <prop role="number">7.3.1</prop>
-            <desc>
+            <description>
                <p>Information security responsibilities and duties that remain valid after termination or change of employment should be defined, communicated to the employee or contractor and enforced.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The communication of termination responsibilities should include on-going information security requirements and legal responsibilities and, where appropriate, responsibilities contained within any confidentiality agreement (see <xref>13.2.4</xref>) and the terms and conditions of employment (see <xref>7.1.2</xref>) continuing for a defined period after the end of the employee’s or contractor’s employment.</p>
                <p>Responsibilities and duties still valid after termination of employment should be contained in the employee’s or contractor’s terms and conditions of employment (see <xref>7.1.2</xref>).</p>
@@ -447,9 +447,9 @@
          <control type="iso-27002">
             <title>Inventory of assets</title>
             <prop role="number">8.1.1</prop>
-            <desc>
+            <description>
                <p>Assets associated with information and information processing facilities should be identified and an inventory of these assets should be drawn up and maintained.</p>
-            </desc>
+            </description>
             <guidance>
                <p>An organization should identify assets relevant in the lifecycle of information and document their importance. The lifecycle of information should include creation, processing, storage, transmission, deletion and destruction. Documentation should be maintained in dedicated or existing inventories as appropriate.</p>
                <p>The asset inventory should be accurate, up to date, consistent and aligned with other inventories.</p>
@@ -463,9 +463,9 @@
          <control type="iso-27002">
             <title>Ownership of assets</title>
             <prop role="number">8.1.2</prop>
-            <desc>
+            <description>
                <p>Assets maintained in the inventory should be owned.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Individuals as well as other entities having approved management responsibility for the asset lifecycle qualify to be assigned as asset owners.</p>
                <p>A process to ensure timely assignment of asset ownership is usually implemented. Ownership should be assigned when assets are created or when assets are transferred to the organization. The asset owner should be responsible for the proper management of an asset over the whole asset lifecycle.</p>
@@ -486,9 +486,9 @@
          <control type="iso-27002">
             <title>Acceptable use of assets</title>
             <prop role="number">8.1.3</prop>
-            <desc>
+            <description>
                <p>Rules for the acceptable use of information and of assets associated with information and information processing facilities should be identified, documented and implemented.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Employees and external party users using or having access to the organization’s assets should be made aware of the information security requirements of the organization’s assets associated with information and information processing facilities and resources. They should be responsible for their use of any information processing resources and of any such use carried out under their responsibility.</p>
             </guidance>
@@ -496,9 +496,9 @@
          <control type="iso-27002">
             <title>Return of assets</title>
             <prop role="number">8.1.4</prop>
-            <desc>
+            <description>
                <p>All employees and external party users should return all of the organizational assets in their possession upon termination of their employment, contract or agreement.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The termination process should be formalized to include the return of all previously issued physical and electronic assets owned by or entrusted to the organization.</p>
                <p>In cases where an employee or external party user purchases the organization’s equipment or uses their own personal equipment, procedures should be followed to ensure that all relevant information is transferred to the organization and securely erased from the equipment (see <xref>11.2.7</xref>).</p>
@@ -516,9 +516,9 @@
          <control type="iso-27002">
             <title>Classification of information</title>
             <prop role="number">8.2.1</prop>
-            <desc>
+            <description>
                <p>Information should be classified in terms of legal requirements, value, criticality and sensitivity to unauthorised disclosure or modification.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Classifications and associated protective controls for information should take account of business needs for sharing or restricting information, as well as legal requirements. Assets other than information can also be classified in conformance with classification of information which is stored in, processed by or otherwise handled or protected by the asset.</p>
                <p>Owners of information assets should be accountable for their classification.</p>
@@ -542,12 +542,12 @@
          <control type="iso-27002">
             <title>Labelling of information</title>
             <prop role="number">8.2.2</prop>
-            <desc>
+            <description>
                <p>An appropriate set of procedures for information labelling should be developed and implemented in accordance with the information classification scheme adopted by the organization.</p>
                <p>“Implementation guidance”</p>
                <p>Procedures for information labelling need to cover information and its related assets in physical and electronic formats. The labelling should reflect the classification scheme established in <xref>8.2.1</xref>. The labels should be easily recognizable. The procedures should give guidance on where and how labels are attached in consideration of how the information is accessed or the assets are handled depending on the types of media. The procedures can define cases where labelling is omitted, e.g. labelling of non-confidential information to reduce workloads. Employees and contractors should be made aware of labelling procedures.</p>
                <p>Output from systems containing information that is classified as being sensitive or critical should carry an appropriate classification label.</p>
-            </desc>
+            </description>
             <information>
                <p>Labelling of classified information is a key requirement for information sharing arrangements. Physical labels and metadata are a common form of labelling.</p>
                <p>Labelling of information and its related assets can sometimes have negative effects. Classified assets are easier to identify and accordingly to steal by insiders or external attackers.</p>
@@ -556,9 +556,9 @@
          <control type="iso-27002">
             <title>Handling of assets</title>
             <prop role="number">8.2.3</prop>
-            <desc>
+            <description>
                <p>Procedures for handling assets should be developed and implemented in accordance with the information classification scheme adopted by the organization.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Procedures should be drawn up for handling, processing, storing and communicating information consistent with its classification (see <xref>8.2.1</xref>).</p>
                <p>The following items should be considered:</p>
@@ -583,9 +583,9 @@
          <control type="iso-27002">
             <title>Management of removable media</title>
             <prop role="number">8.3.1</prop>
-            <desc>
+            <description>
                <p>Procedures should be implemented for the management of removable media in accordance with the classification scheme adopted by the organization.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines for the management of removable media should be considered:</p>
                <ol>
@@ -605,9 +605,9 @@
          <control type="iso-27002">
             <title>Disposal of media</title>
             <prop role="number">8.3.2</prop>
-            <desc>
+            <description>
                <p>Media should be disposed of securely when no longer required, using formal procedures.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Formal procedures for the secure disposal of media should be established to minimize the risk of confidential information leakage to unauthorized persons. The procedures for secure disposal of media containing confidential information should be proportional to the sensitivity of that information. The following items should be considered:</p>
                <ol>
@@ -626,9 +626,9 @@
          <control type="iso-27002">
             <title>Physical media transfer</title>
             <prop role="number">8.3.3</prop>
-            <desc>
+            <description>
                <p>Media containing information should be protected against unauthorized access, misuse or corruption during transportation.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered to protect media containing information being transported:</p>
                <ol>
@@ -658,9 +658,9 @@
          <control type="iso-27002">
             <title>Access control policy</title>
             <prop role="number">9.1.1</prop>
-            <desc>
+            <description>
                <p>An access control policy should be established, documented and reviewed based on business and information security requirements.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks.</p>
                <p>Access controls are both logical and physical (see <xref>Clause 11</xref>) and these should be considered together. Users and service providers should be given a clear statement of the business requirements to be met by access controls.</p>
@@ -699,9 +699,9 @@
          <control type="iso-27002">
             <title>Access to networks and network services</title>
             <prop role="number">9.1.2</prop>
-            <desc>
+            <description>
                <p>Users should only be provided with access to the network and network services that they have been specifically authorized to use.</p>
-            </desc>
+            </description>
             <guidance>
                <p>A policy should be formulated concerning the use of networks and network services. This policy should cover:</p>
                <ol>
@@ -728,9 +728,9 @@
          <control type="iso-27002">
             <title>User registration and de-registration</title>
             <prop role="number">9.2.1</prop>
-            <desc>
+            <description>
                <p>A formal user registration and de-registration process should be implemented to enable assignment of access rights.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The process for managing user IDs should include:</p>
                <ol>
@@ -751,9 +751,9 @@
          <control type="iso-27002">
             <title>User access provisioning</title>
             <prop role="number">9.2.2</prop>
-            <desc>
+            <description>
                <p>A formal user access provisioning process should be implemented to assign or revoke access rights for all user types to all systems and services.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The provisioning process for assigning or revoking access rights granted to user IDs should include:</p>
                <ol>
@@ -773,9 +773,9 @@
          <control type="iso-27002">
             <title>Management of privileged access rights</title>
             <prop role="number">9.2.3</prop>
-            <desc>
+            <description>
                <p>The allocation and use of privileged access rights should be restricted and controlled.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The allocation of privileged access rights should be controlled through a formal authorization process in accordance with the relevant access control policy (see control <xref>9.1.1</xref>). The following steps should be considered:</p>
                <ol>
@@ -796,9 +796,9 @@
          <control type="iso-27002">
             <title>Management of secret authentication information of users</title>
             <prop role="number">9.2.4</prop>
-            <desc>
+            <description>
                <p>The allocation of secret authentication information should be controlled through a formal management process.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The process should include the following requirements:</p>
                <ol>
@@ -818,9 +818,9 @@
          <control type="iso-27002">
             <title>Review of user access rights</title>
             <prop role="number">9.2.5</prop>
-            <desc>
+            <description>
                <p>Asset owners should review users’ access rights at regular intervals.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The review of access rights should consider the following:</p>
                <ol>
@@ -838,9 +838,9 @@
          <control type="iso-27002">
             <title>Removal or adjustment of access rights</title>
             <prop role="number">9.2.6</prop>
-            <desc>
+            <description>
                <p>The access rights of all employees and external party users to information and information processing facilities should be removed upon termination of their employment, contract or agreement, or adjusted upon change.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Upon termination, the access rights of an individual to information and assets associated with information processing facilities and services should be removed or suspended. This will determine whether it is necessary to remove access rights. Changes of employment should be reflected in removal of all access rights that were not approved for the new employment. The access rights that should be removed or adjusted include those of physical and logical access. Removal or adjustment can be done by removal, revocation or replacement of keys, identification cards, information processing facilities or subscriptions. Any documentation that identifies access rights of employees and contractors should reflect the removal or adjustment of access rights. If a departing employee or external party user has known passwords for user IDs remaining active, these should be changed upon termination or change of employment, contract or agreement.</p>
                <p>Access rights for information and assets associated with information processing facilities should be reduced or removed before the employment terminates or changes, depending on the evaluation of risk factors such as:</p>
@@ -865,9 +865,9 @@
          <control type="iso-27002">
             <title>Use of secret authentication information</title>
             <prop role="number">9.3.1</prop>
-            <desc>
+            <description>
                <p>Users should be required to follow the organization’s practices in the use of secret authentication information.</p>
-            </desc>
+            </description>
             <guidance>
                <p>All users should be advised to:</p>
                <ol>
@@ -901,9 +901,9 @@
          <control type="iso-27002">
             <title>Information access restriction</title>
             <prop role="number">9.4.1</prop>
-            <desc>
+            <description>
                <p>Access to information and application system functions should be restricted in accordance with the access control policy.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Restrictions to access should be based on individual business application requirements and in accordance with the defined access control policy.</p>
                <p>The following should be considered in order to support access restriction requirements:</p>
@@ -920,9 +920,9 @@
          <control type="iso-27002">
             <title>Secure log-on procedures</title>
             <prop role="number">9.4.2</prop>
-            <desc>
+            <description>
                <p>Where required by the access control policy, access to systems and applications should be controlled by a secure log-on procedure.</p>
-            </desc>
+            </description>
             <guidance>
                <p>A suitable authentication technique should be chosen to substantiate the claimed identity of a user.</p>
                <p>Where strong authentication and identity verification is required, authentication methods alternative to passwords, such as cryptographic means, smart cards, tokens or biometric means, should be used.</p>
@@ -954,9 +954,9 @@
          <control type="iso-27002">
             <title>Password management system</title>
             <prop role="number">9.4.3</prop>
-            <desc>
+            <description>
                <p>Password management systems should be interactive and should ensure quality passwords.</p>
-            </desc>
+            </description>
             <guidance>
                <p>A password management system should:</p>
                <ol>
@@ -978,9 +978,9 @@
          <control type="iso-27002">
             <title>Use of privileged utility programs</title>
             <prop role="number">9.4.4</prop>
-            <desc>
+            <description>
                <p>The use of utility programs that might be capable of overriding system and application controls should be restricted and tightly controlled.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines for the use of utility programs that might be capable of overriding system and application controls should be considered:</p>
                <ol>
@@ -1002,9 +1002,9 @@
          <control type="iso-27002">
             <title>Access control to program source code</title>
             <prop role="number">9.4.5</prop>
-            <desc>
+            <description>
                <p>Access to program source code should be restricted.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Access to program source code and associated items (such as designs, specifications, verification plans and validation plans) should be strictly controlled, in order to prevent the introduction of unauthorized functionality and to avoid unintentional changes as well as to maintain the confidentiality of valuable intellectual property. For program source code, this can be achieved by controlled central storage of such code, preferably in program source libraries. The following guidelines should then be considered to control access to such program source libraries in order to reduce the potential for corruption of computer programs:</p>
                <ol>
@@ -1033,9 +1033,9 @@
          <control type="iso-27002">
             <title>Policy on the use of cryptographic controls</title>
             <prop role="number">10.1.1</prop>
-            <desc>
+            <description>
                <p>A policy on the use of cryptographic controls for protection of information should be developed and implemented.</p>
-            </desc>
+            </description>
             <guidance>
                <p>When developing a cryptographic policy the following should be considered:</p>
                <ol>
@@ -1069,9 +1069,9 @@
          <control type="iso-27002">
             <title>Key management</title>
             <prop role="number">10.1.2</prop>
-            <desc>
+            <description>
                <p>A policy on the use, protection and lifetime of cryptographic keys should be developed and implemented through their whole lifecycle.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The policy should include requirements for managing cryptographic keys though their whole lifecycle including generating, storing, archiving, retrieving, distributing, retiring and destroying keys.</p>
                <p>Cryptographic algorithms, key lengths and usage practices should be selected according to best practice. Appropriate key management requires secure processes for generating, storing, archiving, retrieving, distributing, retiring and destroying cryptographic keys.</p>
@@ -1113,9 +1113,9 @@
          <control type="iso-27002">
             <title>Physical security perimeter</title>
             <prop role="number">11.1.1</prop>
-            <desc>
+            <description>
                <p>Security perimeters should be defined and used to protect areas that contain either sensitive or critical information and information processing facilities.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered and implemented where appropriate for physical security perimeters:</p>
                <ol>
@@ -1137,9 +1137,9 @@
          <control type="iso-27002">
             <title>Physical entry controls</title>
             <prop role="number">11.1.2</prop>
-            <desc>
+            <description>
                <p>Secure areas should be protected by appropriate entry controls to ensure that only authorized personnel are allowed access.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered:</p>
                <ol>
@@ -1155,9 +1155,9 @@
          <control type="iso-27002">
             <title>Securing offices, rooms and facilities</title>
             <prop role="number">11.1.3</prop>
-            <desc>
+            <description>
                <p>Physical security for offices, rooms and facilities should be designed and applied.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered to secure offices, rooms and facilities:</p>
                <ol>
@@ -1171,9 +1171,9 @@
          <control type="iso-27002">
             <title>Protecting against external and environmental threats</title>
             <prop role="number">11.1.4</prop>
-            <desc>
+            <description>
                <p>Physical protection against natural disasters, malicious attack or accidents should be designed and applied.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Specialist advice should be obtained on how to avoid damage from fire, flood, earthquake, explosion, civil unrest and other forms of natural or man-made disaster.</p>
             </guidance>
@@ -1181,9 +1181,9 @@
          <control type="iso-27002">
             <title>Working in secure areas</title>
             <prop role="number">11.1.5</prop>
-            <desc>
+            <description>
                <p>Procedures for working in secure areas should be designed and applied.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered:</p>
                <ol>
@@ -1198,9 +1198,9 @@
          <control type="iso-27002">
             <title>Delivery and loading areas</title>
             <prop role="number">11.1.6</prop>
-            <desc>
+            <description>
                <p>Access points such as delivery and loading areas and other points where unauthorized persons could enter the premises should be controlled and, if possible, isolated from information processing facilities to avoid unauthorized access.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered:</p>
                <ol>
@@ -1224,9 +1224,9 @@
          <control type="iso-27002">
             <title>Equipment siting and protection</title>
             <prop role="number">11.2.1</prop>
-            <desc>
+            <description>
                <p>Equipment should be sited and protected to reduce the risks from environmental threats and hazards, and opportunities for unauthorized access.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered to protect equipment:</p>
                <ol>
@@ -1246,9 +1246,9 @@
          <control type="iso-27002">
             <title>Supporting utilities</title>
             <prop role="number">11.2.2</prop>
-            <desc>
+            <description>
                <p>Equipment should be protected from power failures and other disruptions caused by failures in supporting utilities.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Supporting utilities (e.g. electricity, telecommunications, water supply, gas, sewage, ventilation and air conditioning) should:</p>
                <ol>
@@ -1267,9 +1267,9 @@
          <control type="iso-27002">
             <title>Cabling security</title>
             <prop role="number">11.2.3</prop>
-            <desc>
+            <description>
                <p>Power and telecommunications cabling carrying data or supporting information services should be protected from interception, interference or damage.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines for cabling security should be considered:</p>
                <ol>
@@ -1288,9 +1288,9 @@
          <control type="iso-27002">
             <title>Equipment maintenance</title>
             <prop role="number">11.2.4</prop>
-            <desc>
+            <description>
                <p>Equipment should be correctly maintained to ensure its continued availability and integrity.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines for equipment maintenance should be considered:</p>
                <ol>
@@ -1306,9 +1306,9 @@
          <control type="iso-27002">
             <title>Removal of assets</title>
             <prop role="number">11.2.5</prop>
-            <desc>
+            <description>
                <p>Equipment, information or software should not be taken off-site without prior authorization.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered:</p>
                <ol>
@@ -1325,9 +1325,9 @@
          <control type="iso-27002">
             <title>Security of equipment and assets off-premises</title>
             <prop role="number">11.2.6</prop>
-            <desc>
+            <description>
                <p>Security should be applied to off-site assets taking into account the different risks of working outside the organization’s premises.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The use of any information storing and processing equipment outside the organization’s premises should be authorized by management. This applies to equipment owned by the organization and that equipment owned privately and used on behalf of the organization.</p>
                <p>The following guidelines should be considered for the protection of off-site equipment:</p>
@@ -1348,9 +1348,9 @@
          <control type="iso-27002">
             <title>Secure disposal or re-use of equipment</title>
             <prop role="number">11.2.7</prop>
-            <desc>
+            <description>
                <p>All items of equipment containing storage media should be verified to ensure that any sensitive data and licensed software has been removed or securely overwritten prior to disposal or re-use.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Equipment should be verified to ensure whether or not storage media is contained prior to disposal or re-use.</p>
                <p>Storage media containing confidential or copyrighted information should be physically destroyed or the information should be destroyed, deleted or overwritten using techniques to make the original information non-retrievable rather than using the standard delete or format function.</p>
@@ -1370,9 +1370,9 @@
          <control type="iso-27002">
             <title>Unattended user equipment</title>
             <prop role="number">11.2.8</prop>
-            <desc>
+            <description>
                <p>Users should ensure that unattended equipment has appropriate protection.</p>
-            </desc>
+            </description>
             <guidance>
                <p>All users should be made aware of the security requirements and procedures for protecting unattended equipment, as well as their responsibilities for implementing such protection. Users should be advised to:</p>
                <ol>
@@ -1385,9 +1385,9 @@
          <control type="iso-27002">
             <title>Clear desk and clear screen policy</title>
             <prop role="number">11.2.9</prop>
-            <desc>
+            <description>
                <p>A clear desk policy for papers and removable storage media and a clear screen policy for information processing facilities should be adopted.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The clear desk and clear screen policy should take into account the information classifications (see <xref>8.2</xref>), legal and contractual requirements (see <xref>18.1</xref>) and the corresponding risks and cultural aspects of the organization. The following guidelines should be considered:</p>
                <ol>
@@ -1416,9 +1416,9 @@
          <control type="iso-27002">
             <title>Documented operating procedures</title>
             <prop role="number">12.1.1</prop>
-            <desc>
+            <description>
                <p>Operating procedures should be documented and made available to all users who need them.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Documented procedures should be prepared for operational activities associated with information processing and communication facilities, such as computer start-up and close-down procedures, backup, equipment maintenance, media handling, computer room and mail handling management and safety.</p>
                <p>The operating procedures should specify the operational instructions, including:</p>
@@ -1440,9 +1440,9 @@
          <control type="iso-27002">
             <title>Change management</title>
             <prop role="number">12.1.2</prop>
-            <desc>
+            <description>
                <p>Changes to the organization, business processes, information processing facilities and systems that affect information security should be controlled.</p>
-            </desc>
+            </description>
             <guidance>
                <p>In particular, the following items should be considered:</p>
                <ol>
@@ -1464,9 +1464,9 @@
          <control type="iso-27002">
             <title>Capacity management</title>
             <prop role="number">12.1.3</prop>
-            <desc>
+            <description>
                <p>The use of resources should be monitored, tuned and projections made of future capacity requirements to ensure the required system performance.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Capacity requirements should be identified, taking into account the business criticality of the concerned system. System tuning and monitoring should be applied to ensure and, where necessary, improve the availability and efficiency of systems. Detective controls should be put in place to indicate problems in due time. Projections of future capacity requirements should take account of new business and system requirements and current and projected trends in the organization’s information processing capabilities.</p>
                <p>Particular attention needs to be paid to any resources with long procurement lead times or high costs; therefore managers should monitor the utilization of key system resources. They should identify trends in usage, particularly in relation to business applications or information systems management tools.</p>
@@ -1488,9 +1488,9 @@
          <control type="iso-27002">
             <title>Separation of development, testing and operational environments</title>
             <prop role="number">12.1.4</prop>
-            <desc>
+            <description>
                <p>Development, testing, and operational environments should be separated to reduce the risks of unauthorized access or changes to the operational environment.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The level of separation between operational, testing, and development environments that is necessary to prevent operational problems should be identified and implemented.</p>
                <p>The following items should be considered:</p>
@@ -1520,9 +1520,9 @@
          <control type="iso-27002">
             <title>Controls against malware</title>
             <prop role="number">12.2.1</prop>
-            <desc>
+            <description>
                <p>Detection, prevention and recovery controls to protect against malware should be implemented, combined with appropriate user awareness.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Protection against malware should be based on malware detection and repair software, information security awareness and appropriate system access and change management controls. The following guidance should be considered:</p>
                <ol>
@@ -1562,9 +1562,9 @@
          <control type="iso-27002">
             <title>Information backup</title>
             <prop role="number">12.3.1</prop>
-            <desc>
+            <description>
                <p>Backup copies of information, software and system images should be taken and tested regularly in accordance with an agreed backup policy.</p>
-            </desc>
+            </description>
             <guidance>
                <p>A backup policy should be established to define the organization’s requirements for backup of information, software and systems.</p>
                <p>The backup policy should define the retention and protection requirements.</p>
@@ -1593,9 +1593,9 @@
          <control type="iso-27002">
             <title>Event logging</title>
             <prop role="number">12.4.1</prop>
-            <desc>
+            <description>
                <p>Event logs recording user activities, exceptions, faults and information security events should be produced, kept and regularly reviewed.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Event logs should include, when relevant:</p>
                <ol>
@@ -1624,9 +1624,9 @@
          <control type="iso-27002">
             <title>Protection of log information</title>
             <prop role="number">12.4.2</prop>
-            <desc>
+            <description>
                <p>Logging facilities and log information should be protected against tampering and unauthorized access.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Controls should aim to protect against unauthorized changes to log information and operational problems with the logging facility including:</p>
                <ol>
@@ -1644,9 +1644,9 @@
          <control type="iso-27002">
             <title>Administrator and operator logs</title>
             <prop role="number">12.4.3</prop>
-            <desc>
+            <description>
                <p>System administrator and system operator activities should be logged and the logs protected and regularly reviewed.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Privileged user account holders may be able to manipulate the logs on information processing facilities under their direct control, therefore it is necessary to protect and review the logs to maintain accountability for the privileged users.</p>
             </guidance>
@@ -1657,9 +1657,9 @@
          <control type="iso-27002">
             <title>Clock synchronisation</title>
             <prop role="number">12.4.4</prop>
-            <desc>
+            <description>
                <p>The clocks of all relevant information processing systems within an organization or security domain should be synchronised to a single reference time source.</p>
-            </desc>
+            </description>
             <guidance>
                <p>External and internal requirements for time representation, synchronisation and accuracy should be documented. Such requirements can be legal, regulatory, contractual requirements, standards compliance or requirements for internal monitoring. A standard reference time for use within the organization should be defined.</p>
                <p>The organization’s approach to obtaining a reference time from external source(s) and how to synchronise internal clocks reliably should be documented and implemented.</p>
@@ -1678,9 +1678,9 @@
          <control type="iso-27002">
             <title>Installation of software on operational systems</title>
             <prop role="number">12.5.1</prop>
-            <desc>
+            <description>
                <p>Procedures should be implemented to control the installation of software on operational systems.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered to control changes of software on operational systems:</p>
                <ol>
@@ -1709,9 +1709,9 @@
          <control type="iso-27002">
             <title>Management of technical vulnerabilities</title>
             <prop role="number">12.6.1</prop>
-            <desc>
+            <description>
                <p>Information about technical vulnerabilities of information systems being used should be obtained in a timely fashion, the organization’s exposure to such vulnerabilities evaluated and appropriate measures taken to address the associated risk.</p>
-            </desc>
+            </description>
             <guidance>
                <p>A current and complete inventory of assets (see <xref>Clause 8</xref>) is a prerequisite for effective technical vulnerability management. Specific information needed to support technical vulnerability management includes the software vendor, version numbers, current state of deployment (e.g. what software is installed on what systems) and the person(s) within the organization responsible for the software.</p>
                <p>Appropriate and timely action should be taken in response to the identification of potential technical vulnerabilities. The following guidance should be followed to establish an effective management process for technical vulnerabilities:</p>
@@ -1745,9 +1745,9 @@
          <control type="iso-27002">
             <title>Restrictions on software installation</title>
             <prop role="number">12.6.2</prop>
-            <desc>
+            <description>
                <p>Rules governing the installation of software by users should be established and implemented.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The organization should define and enforce strict policy on which types of software users may install.</p>
                <p>The principle of least privilege should be applied. If granted certain privileges, users may have the ability to install software. The organization should identify what types of software installations are permitted (e.g. updates and security patches to existing software) and what types of installations are prohibited (e.g. software that is only for personal use and software whose pedigree with regard to being potentially malicious is unknown or suspect). These privileges should be granted having regard to the roles of the users concerned.</p>
@@ -1766,9 +1766,9 @@
          <control type="iso-27002">
             <title>Information systems audit controls</title>
             <prop role="number">12.7.1</prop>
-            <desc>
+            <description>
                <p>Audit requirements and activities involving verification of operational systems should be carefully planned and agreed to minimize disruptions to business processes.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be observed:</p>
                <ol>
@@ -1796,9 +1796,9 @@
          <control type="iso-27002">
             <title>Network controls</title>
             <prop role="number">13.1.1</prop>
-            <desc>
+            <description>
                <p>Networks should be managed and controlled to protect information in systems and applications.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Controls should be implemented to ensure the security of information in networks and the protection of connected services from unauthorized access. In particular, the following items should be considered:</p>
                <ol>
@@ -1818,9 +1818,9 @@
          <control type="iso-27002">
             <title>Security of network services</title>
             <prop role="number">13.1.2</prop>
-            <desc>
+            <description>
                <p>Security mechanisms, service levels and management requirements of all network services should be identified and included in network services agreements, whether these services are provided in-house or outsourced.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The ability of the network service provider to manage agreed services in a secure way should be determined and regularly monitored, and the right to audit should be agreed.</p>
                <p>The security arrangements necessary for particular services, such as security features, service levels and management requirements, should be identified. The organization should ensure that network service providers implement these measures.</p>
@@ -1838,9 +1838,9 @@
          <control type="iso-27002">
             <title>Segregation in networks</title>
             <prop role="number">13.1.3</prop>
-            <desc>
+            <description>
                <p>Groups of information services, users and information systems should be segregated on networks.</p>
-            </desc>
+            </description>
             <guidance>
                <p>One method of managing the security of large networks is to divide them into separate network domains. The domains can be chosen based on trust levels (e.g. public access domain, desktop domain, server domain), along organizational units (e.g. human resources, finance, marketing) or some combination (e.g. server domain connecting to multiple organizational units). The segregation can be done using either physically different networks or by using different logical networks (e.g.virtual private networking).</p>
                <p>The perimeter of each domain should be well defined. Access between network domains is allowed, but should be controlled at the perimeter using a gateway (e.g. firewall, filtering router). The criteria for segregation of networks into domains, and the access allowed through the gateways, should be based on an assessment of the security requirements of each domain. The assessment should be in accordance with the access control policy (see <xref>9.1.1</xref>), access requirements, value and classification of information processed and also take account of the relative cost and performance impact of incorporating suitable gateway technology.</p>
@@ -1861,9 +1861,9 @@
          <control type="iso-27002">
             <title>Information transfer policies and procedures</title>
             <prop role="number">13.2.1</prop>
-            <desc>
+            <description>
                <p>Formal transfer policies, procedures and controls should be in place to protect the transfer of information through the use of all types of communication facilities.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The procedures and controls to be followed when using communication facilities for information transfer should consider the following items:</p>
                <ol>
@@ -1896,9 +1896,9 @@
          <control type="iso-27002">
             <title>Agreements on information transfer</title>
             <prop role="number">13.2.2</prop>
-            <desc>
+            <description>
                <p>Agreements should address the secure transfer of business information between the organization and external parties.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Information transfer agreements should incorporate the following:</p>
                <ol>
@@ -1924,9 +1924,9 @@
          <control type="iso-27002">
             <title>Electronic messaging</title>
             <prop role="number">13.2.3</prop>
-            <desc>
+            <description>
                <p>Information involved in electronic messaging should be appropriately protected.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Information security considerations for electronic messaging should include the following:</p>
                <ol>
@@ -1945,9 +1945,9 @@
          <control type="iso-27002">
             <title>Confidentiality or non-disclosure agreements</title>
             <prop role="number">13.2.4</prop>
-            <desc>
+            <description>
                <p>Requirements for confidentiality or non-disclosure agreements reflecting the organization’s needs for the protection of information should be identified, regularly reviewed and documented.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Confidentiality or non-disclosure agreements should address the requirement to protect confidential information using legally enforceable terms. Confidentiality or non-disclosure agreements are applicable to external parties or employees of the organization. Elements should be selected or added in consideration of the type of the other party and its permissible access or handling of confidential information. To identify requirements for confidentiality or non-disclosure agreements, the following elements should be considered:</p>
                <ol>
@@ -1985,9 +1985,9 @@
          <control type="iso-27002">
             <title>Information security requirements analysis and specification</title>
             <prop role="number">14.1.1</prop>
-            <desc>
+            <description>
                <p>The information security related requirements should be included in the requirements for new information systems or enhancements to existing information systems.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Information security requirements should be identified using various methods such as deriving compliance requirements from policies and regulations, threat modelling, incident reviews, or use of vulnerability thresholds. Results of the identification should be documented and reviewed by all stakeholders.</p>
                <p>Information security requirements and controls should reflect the business value of the information involved (see <xref>8.2</xref>) and the potential negative business impact which might result from lack of adequate security.</p>
@@ -2013,9 +2013,9 @@
          <control type="iso-27002">
             <title>Securing application services on public networks</title>
             <prop role="number">14.1.2</prop>
-            <desc>
+            <description>
                <p>Information involved in application services passing over public networks should be protected from fraudulent activity, contract dispute and unauthorized disclosure and modification.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Information security considerations for application services passing over public networks should include the following:</p>
                <ol>
@@ -2045,9 +2045,9 @@
          <control type="iso-27002">
             <title>Protecting application services transactions</title>
             <prop role="number">14.1.3</prop>
-            <desc>
+            <description>
                <p>Information involved in application service transactions should be protected to prevent incomplete transmission, mis-routing, unauthorized message alteration, unauthorized disclosure, unauthorized message duplication or replay.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Information security considerations for application service transactions should include the following:</p>
                <ol>
@@ -2079,9 +2079,9 @@
          <control type="iso-27002">
             <title>Secure development policy</title>
             <prop role="number">14.2.1</prop>
-            <desc>
+            <description>
                <p>Rules for the development of software and systems should be established and applied to developments within the organization.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Secure development is a requirement to build up a secure service, architecture, software and system. Within a secure development policy, the following aspects should be put under consideration:</p>
                <ol>
@@ -2108,9 +2108,9 @@
          <control type="iso-27002">
             <title>System change control procedures</title>
             <prop role="number">14.2.2</prop>
-            <desc>
+            <description>
                <p>Changes to systems within the development lifecycle should be controlled by the use of formal change control procedures.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Formal change control procedures should be documented and enforced to ensure the integrity of system, applications and products, from the early design stages through all subsequent maintenance efforts. Introduction of new systems and major changes to existing systems should follow a formal process of documentation, specification, testing, quality control and managed implementation.</p>
                <p>This process should include a risk assessment, analysis of the impacts of changes and specification of security controls needed. This process should also ensure that existing security and control procedures are not compromised, that support programmers are given access only to those parts of the system necessary for their work and that formal agreement and approval for any change is obtained.</p>
@@ -2139,9 +2139,9 @@
          <control type="iso-27002">
             <title>Technical review of applications after operating platform changes</title>
             <prop role="number">14.2.3</prop>
-            <desc>
+            <description>
                <p>When operating platforms are changed, business critical applications should be reviewed and tested to ensure there is no adverse impact on organizational operations or security.</p>
-            </desc>
+            </description>
             <guidance>
                <p>This process should cover:</p>
                <ol>
@@ -2157,9 +2157,9 @@
          <control type="iso-27002">
             <title>Restrictions on changes to software packages</title>
             <prop role="number">14.2.4</prop>
-            <desc>
+            <description>
                <p>Modifications to software packages should be discouraged, limited to necessary changes and all changes should be strictly controlled.</p>
-            </desc>
+            </description>
             <guidance>
                <p>As far as possible and practicable, vendor-supplied software packages should be used without modification. Where a software package needs to be modified the following points should be considered:</p>
                <ol>
@@ -2175,9 +2175,9 @@
          <control type="iso-27002">
             <title>Secure system engineering principles</title>
             <prop role="number">14.2.5</prop>
-            <desc>
+            <description>
                <p>Principles for engineering secure systems should be established, documented, maintained and applied to any information system implementation efforts.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Secure information system engineering procedures based on security engineering principles should be established, documented and applied to in-house information system engineering activities. Security should be designed into all architecture layers (business, data, applications and technology) balancing the need for information security with the need for accessibility. New technology should be analysed for security risks and the design should be reviewed against known attack patterns.</p>
                <p>These principles and the established engineering procedures should be regularly reviewed to ensure that they are effectively contributing to enhanced standards of security within the engineering process. They should also be regularly reviewed to ensure that they remain up-to-date in terms of combating any new potential threats and in remaining applicable to advances in the technologies and solutions being applied.</p>
@@ -2190,9 +2190,9 @@
          <control type="iso-27002">
             <title>Secure development environment</title>
             <prop role="number">14.2.6</prop>
-            <desc>
+            <description>
                <p>Organizations should establish and appropriately protect secure development environments for system development and integration efforts that cover the entire system development lifecycle.</p>
-            </desc>
+            </description>
             <guidance>
                <p>A secure development environment includes people, processes and technology associated with system development and integration.</p>
                <p>Organizations should assess risks associated with individual system development efforts and establish secure development environments for specific system development efforts, considering:</p>
@@ -2214,7 +2214,7 @@
          <control type="iso-27002">
             <title>Outsourced development</title>
             <prop role="number">14.2.7</prop>
-            <desc>
+            <description>
                <p>The organization should supervise and monitor the activity of outsourced system development.</p>
                <p>Implementation guidance:</p>
                <p>Where system development is outsourced, the following points should be considered across the organization’s entire external supply chain:</p>
@@ -2231,7 +2231,7 @@
                   <li>effective documentation of the build environment used to create deliverables;</li>
                   <li>the organization remains responsible for compliance with applicable laws and control efficiency verification.</li>
                </ol>
-            </desc>
+            </description>
             <information>
                <p>Further information on supplier relationships can be found in ISO/IEC 27036.[<xref>21</xref>][<xref>22</xref>][<xref>23</xref>]</p>
             </information>
@@ -2239,9 +2239,9 @@
          <control type="iso-27002">
             <title>System security testing</title>
             <prop role="number">14.2.8</prop>
-            <desc>
+            <description>
                <p>Testing of security functionality should be carried out during development.</p>
-            </desc>
+            </description>
             <guidance>
                <p>New and updated systems require thorough testing and verification during the development processes, including the preparation of a detailed schedule of activities and test inputs and expected outputs under a range of conditions. For in-house developments, such tests should initially be performed by the development team. Independent acceptance testing should then be undertaken (both for in-house and for outsourced developments) to ensure that the system works as expected and only as expected (see <xref>14.1.1</xref> and 14.1.9). The extent of testing should be in proportion to the importance and nature of the system.</p>
             </guidance>
@@ -2249,9 +2249,9 @@
          <control type="iso-27002">
             <title>System acceptance testing</title>
             <prop role="number">14.2.9</prop>
-            <desc>
+            <description>
                <p>Acceptance testing programs and related criteria should be established for new information systems, upgrades and new versions.</p>
-            </desc>
+            </description>
             <guidance>
                <p>System acceptance testing should include testing of information security requirements (see <xref>14.1.1</xref> and <xref>14.1.2</xref>) and adherence to secure system development practices (see <xref>14.2.1</xref>). The testing should also be conducted on received components and integrated systems. Organizations can leverage automated tools, such as code analysis tools or vulnerability scanners, and should verify the remediation of security-related defects.</p>
                <p>Testing should be performed in a realistic test environment to ensure that the system will not introduce vulnerabilities to the organization’s environment and that the tests are reliable.</p>
@@ -2267,9 +2267,9 @@
          <control type="iso-27002">
             <title>Protection of test data</title>
             <prop role="number">14.3.1</prop>
-            <desc>
+            <description>
                <p>Test data should be selected carefully, protected and controlled.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The use of operational data containing personally identifiable information or any other confidential information for testing purposes should be avoided. If personally identifiable information or otherwise confidential information is used for testing purposes, all sensitive details and content should be protected by removal or modification (see ISO/IEC 29101[<xref>26</xref>]).</p>
                <p>The following guidelines should be applied to protect operational data, when used for testing purposes:</p>
@@ -2298,9 +2298,9 @@
          <control type="iso-27002">
             <title>Information security policy for supplier relationships</title>
             <prop role="number">15.1.1</prop>
-            <desc>
+            <description>
                <p>Information security requirements for mitigating the risks associated with supplier’s access to the organization’s assets should be agreed with the supplier and documented.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The organization should identify and mandate information security controls to specifically address supplier access to the organization’s information in a policy. These controls should address processes and procedures to be implemented by the organization, as well as those processes and procedures that the organization should require the supplier to implement, including:</p>
                <ol>
@@ -2326,9 +2326,9 @@
          <control type="iso-27002">
             <title>Addressing security within supplier agreements</title>
             <prop role="number">15.1.2</prop>
-            <desc>
+            <description>
                <p>All relevant information security requirements should be established and agreed with each supplier that may access, process, store, communicate, or provide IT infrastructure components for, the organization’s information.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Supplier agreements should be established and documented to ensure that there is no misunderstanding between the organization and the supplier regarding both parties’ obligations to fulfil relevant information security requirements.</p>
                <p>The following terms should be considered for inclusion in the agreements in order to satisfy the identified information security requirements:</p>
@@ -2359,9 +2359,9 @@
          <control type="iso-27002">
             <title>Information and communication technology supply chain</title>
             <prop role="number">15.1.3</prop>
-            <desc>
+            <description>
                <p>Agreements with suppliers should include requirements to address the information security risks associated with information and communications technology services and product supply chain.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following topics should be considered for inclusion in supplier agreements concerning supply chain security:</p>
                <ol>
@@ -2392,9 +2392,9 @@
          <control type="iso-27002">
             <title>Monitoring and review of supplier services</title>
             <prop role="number">15.2.1</prop>
-            <desc>
+            <description>
                <p>Organizations should regularly monitor, review and audit supplier service delivery.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Monitoring and review of supplier services should ensure that the information security terms and conditions of the agreements are being adhered to and that information security incidents and problems are managed properly.</p>
                <p>This should involve a service management relationship process between the organization and the supplier to:</p>
@@ -2415,9 +2415,9 @@
          <control type="iso-27002">
             <title>Managing changes to supplier services</title>
             <prop role="number">15.2.2</prop>
-            <desc>
+            <description>
                <p>Changes to the provision of services by suppliers, including maintaining and improving existing information security policies, procedures and controls, should be managed, taking account of the criticality of business information, systems and processes involved and re-assessment of risks.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following aspects should be taken into consideration:</p>
                <ol>
@@ -2456,9 +2456,9 @@
          <control type="iso-27002">
             <title>Responsibilities and procedures</title>
             <prop role="number">16.1.1</prop>
-            <desc>
+            <description>
                <p>Management responsibilities and procedures should be established to ensure a quick, effective and orderly response to information security incidents.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines for management responsibilities and procedures with regard to information security incident management should be considered:</p>
                <ol>
@@ -2495,9 +2495,9 @@
          <control type="iso-27002">
             <title>Reporting information security events</title>
             <prop role="number">16.1.2</prop>
-            <desc>
+            <description>
                <p>Information security events should be reported through appropriate management channels as quickly as possible.</p>
-            </desc>
+            </description>
             <guidance>
                <p>All employees and contractors should be made aware of their responsibility to report information security events as quickly as possible. They should also be aware of the procedure for reporting information security events and the point of contact to which the events should be reported.</p>
                <p>Situations to be considered for information security event reporting include:</p>
@@ -2519,9 +2519,9 @@
          <control type="iso-27002">
             <title>Reporting information security weaknesses</title>
             <prop role="number">16.1.3</prop>
-            <desc>
+            <description>
                <p>Employees and contractors using the organization’s information systems and services should be required to note and report any observed or suspected information security weaknesses in systems or services.</p>
-            </desc>
+            </description>
             <guidance>
                <p>All employees and contractors should report these matters to the point of contact as quickly as possible in order to prevent information security incidents. The reporting mechanism should be as easy, accessible and available as possible.</p>
             </guidance>
@@ -2532,9 +2532,9 @@
          <control type="iso-27002">
             <title>Assessment of and decision on information security events</title>
             <prop role="number">16.1.4</prop>
-            <desc>
+            <description>
                <p>Information security events should be assessed and it should be decided if they are to be classified as information security incidents.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The point of contact should assess each information security event using the agreed information security event and incident classification scale and decide whether the event should be classified as an information security incident. Classification and prioritization of incidents can help to identify the impact and extent of an incident.</p>
                <p>In cases where the organization has an information security incident response team (ISIRT), the assessment and decision can be forwarded to the ISIRT for confirmation or reassessment.</p>
@@ -2544,9 +2544,9 @@
          <control type="iso-27002">
             <title>Response to information security incidents</title>
             <prop role="number">16.1.5</prop>
-            <desc>
+            <description>
                <p>Information security incidents should be responded to in accordance with the documented procedures.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Information security incidents should be responded to by a nominated point of contact and other relevant persons of the organization or external parties (see <xref>16.1.1</xref>).</p>
                <p>The response should include the following:</p>
@@ -2568,9 +2568,9 @@
          <control type="iso-27002">
             <title>Learning from information security incidents</title>
             <prop role="number">16.1.6</prop>
-            <desc>
+            <description>
                <p>Knowledge gained from analysing and resolving information security incidents should be used to reduce the likelihood or impact of future incidents.</p>
-            </desc>
+            </description>
             <guidance>
                <p>There should be mechanisms in place to enable the types, volumes and costs of information security incidents to be quantified and monitored. The information gained from the evaluation of information security incidents should be used to identify recurring or high impact incidents.</p>
             </guidance>
@@ -2582,9 +2582,9 @@
          <control type="iso-27002">
             <title>Collection of evidence</title>
             <prop role="number">16.1.7</prop>
-            <desc>
+            <description>
                <p>The organization should define and apply procedures for the identification, collection, acquisition and preservation of information, which can serve as evidence.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Internal procedures should be developed and followed when dealing with evidence for the purposes of disciplinary and legal action.</p>
                <p>In general, these procedures for evidence should provide processes of identification, collection, acquisition and preservation of evidence in accordance with different types of media, devices and status of devices, e.g. powered on or off. The procedures should take account of:</p>
@@ -2620,9 +2620,9 @@
          <control type="iso-27002">
             <title>Planning information security continuity</title>
             <prop role="number">17.1.1</prop>
-            <desc>
+            <description>
                <p>The organization should determine its requirements for information security and the continuity of information security management in adverse situations, e.g. during a crisis or disaster.</p>
-            </desc>
+            </description>
             <guidance>
                <p>An organization should determine whether the continuity of information security is captured within the business continuity management process or within the disaster recovery management process. Information security requirements should be determined when planning for business continuity and disaster recovery.</p>
                <p>In the absence of formal business continuity and disaster recovery planning, information security management should assume that information security requirements remain the same in adverse situations, compared to normal operational conditions. Alternatively, an organization could perform a business impact analysis for information security aspects to determine the information security requirements applicable to adverse situations.</p>
@@ -2635,9 +2635,9 @@
          <control type="iso-27002">
             <title>Implementing information security continuity</title>
             <prop role="number">17.1.2</prop>
-            <desc>
+            <description>
                <p>The organization should establish, document, implement and maintain processes, procedures and controls to ensure the required level of continuity for information security during an adverse situation.</p>
-            </desc>
+            </description>
             <guidance>
                <p>An organization should ensure that:</p>
                <ol>
@@ -2660,7 +2660,7 @@
          <control type="iso-27002">
             <title>Verify, review and evaluate information security continuity</title>
             <prop role="number">17.1.3</prop>
-            <desc>
+            <description>
                <p>The organization should verify the established and implemented information security continuity controls at regular intervals in order to ensure that they are valid and effective during adverse situations.</p>
                <p>“Implementation guidance”</p>
                <p>Organizational, technical, procedural and process changes, whether in an operational or continuity context, can lead to changes in information security continuity requirements. In such cases, the continuity of processes, procedures and controls for information security should be reviewed against these changed requirements.</p>
@@ -2670,7 +2670,7 @@
                   <li>exercising and testing the knowledge and routine to operate information security continuity processes, procedures and controls to ensure that their performance is consistent with the information security continuity objectives;</li>
                   <li>reviewing the validity and effectiveness of information security continuity measures when information systems, information security processes, procedures and controls or business continuity management/disaster recovery management processes and solutions change.</li>
                </ol>
-            </desc>
+            </description>
             <information>
                <p>The verification of information security continuity controls is different from general information security testing and verification and should be performed outside the testing of changes. If possible, it is preferable to integrate verification of information security continuity controls with the organization’s business continuity or disaster recovery tests.</p>
             </information>
@@ -2685,9 +2685,9 @@
          <control type="iso-27002">
             <title>Availability of information processing facilities</title>
             <prop role="number">17.2.1</prop>
-            <desc>
+            <description>
                <p>Information processing facilities should be implemented with redundancy sufficient to meet availability requirements.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Organizations should identify business requirements for the availability of information systems. Where the availability cannot be guaranteed using the existing systems architecture, redundant components or architectures should be considered.</p>
                <p>Where applicable, redundant information systems should be tested to ensure the failover from one component to another component works as intended.</p>
@@ -2710,9 +2710,9 @@
          <control type="iso-27002">
             <title>Identification of applicable legislation and contractual requirements</title>
             <prop role="number">18.1.1</prop>
-            <desc>
+            <description>
                <p>All relevant legislative statutory, regulatory, contractual requirements and the organization’s approach to meet these requirements should be explicitly identified, documented and kept up to date for each information system and the organization.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The specific controls and individual responsibilities to meet these requirements should also be defined and documented.</p>
                <p>Managers should identify all legislation applicable to their organization in order to meet the requirements for their type of business. If the organization conducts business in other countries, managers should consider compliance in all relevant countries.</p>
@@ -2721,9 +2721,9 @@
          <control type="iso-27002">
             <title>Intellectual property rights</title>
             <prop role="number">18.1.2</prop>
-            <desc>
+            <description>
                <p>Appropriate procedures should be implemented to ensure compliance with legislative, regulatory and contractual requirements related to intellectual property rights and use of proprietary software products.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following guidelines should be considered to protect any material that may be considered intellectual property:</p>
                <ol>
@@ -2750,9 +2750,9 @@
          <control type="iso-27002">
             <title>Protection of records</title>
             <prop role="number">18.1.3</prop>
-            <desc>
+            <description>
                <p>Records should be protected from loss, destruction, falsification, unauthorized access and unauthorized release, in accordance with legislatory, regulatory, contractual and business requirements.</p>
-            </desc>
+            </description>
             <guidance>
                <p>When deciding upon protection of specific organizational records, their corresponding classification based on the organization’s classification scheme, should be considered. Records should be categorised into record types, e.g. accounting records, database records, transaction logs, audit logs and operational procedures, each with details of retention periods and type of allowable storage media, e.g. paper, microfiche, magnetic, optical. Any related cryptographic keys and programs associated with encrypted archives or digital signatures (see <xref>Clause 10</xref>), should also be stored to enable decryption of the records for the length of time the records are retained.</p>
                <p>Consideration should be given to the possibility of deterioration of media used for storage of records. Storage and handling procedures should be implemented in accordance with manufacturer’s recommendations.</p>
@@ -2774,9 +2774,9 @@
          <control type="iso-27002">
             <title>Privacy and protection of personally identifiable information</title>
             <prop role="number">18.1.4</prop>
-            <desc>
+            <description>
                <p>Privacy and protection of personally identifiable information should be ensured as required in relevant legislation and regulation where applicable.</p>
-            </desc>
+            </description>
             <guidance>
                <p>An organization’s data policy for privacy and protection of personally identifiable information should be developed and implemented. This policy should be communicated to all persons involved in the processing of personally identifiable information.</p>
                <p>Compliance with this policy and all relevant legislation and regulations concerning the protection of the privacy of people and the protection of personally identifiable information requires appropriate management structure and control. Often this is best achieved by the appointment of a person responsible, such as a privacy officer, who should provide guidance to managers, users and service providers on their individual responsibilities and the specific procedures that should be followed. Responsibility for handling personally identifiable information and ensuring awareness of the privacy principles should be dealt with in accordance with relevant legislation and regulations. Appropriate technical and organizational measures to protect personally identifiable information should be implemented.</p>
@@ -2788,9 +2788,9 @@
          <control type="iso-27002">
             <title>Regulation of cryptographic controls</title>
             <prop role="number">18.1.5</prop>
-            <desc>
+            <description>
                <p>Cryptographic controls should be used in compliance with all relevant agreements, legislation and regulations.</p>
-            </desc>
+            </description>
             <guidance>
                <p>The following items should be considered for compliance with the relevant agreements, laws and regulations:</p>
                <ol>
@@ -2812,9 +2812,9 @@
          <control type="iso-27002">
             <title>Independent review of information security</title>
             <prop role="number">18.2.1</prop>
-            <desc>
+            <description>
                <p>The organization’s approach to managing information security and its implementation (i.e. control objectives, controls, policies, processes and procedures for information security) should be reviewed independently at planned intervals or when significant changes occur.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Management should initiate the independent review. Such an independent review is necessary to ensure the continuing suitability, adequacy and effectiveness of the organization’s approach to managing information security. The review should include assessing opportunities for improvement and the need for changes to the approach to security, including the policy and control objectives.</p>
                <p>Such a review should be carried out by individuals independent of the area under review, e.g. the internal audit function, an independent manager or an external party organization specializing in such reviews. Individuals carrying out these reviews should have the appropriate skills and experience.</p>
@@ -2828,9 +2828,9 @@
          <control type="iso-27002">
             <title>Compliance with security policies and standards</title>
             <prop role="number">18.2.2</prop>
-            <desc>
+            <description>
                <p>Managers should regularly review the compliance of information processing and procedures within their area of responsibility with the appropriate security policies, standards and any other security requirements.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Managers should identify how to review that information security requirements defined in policies, standards and other applicable regulations are met. Automatic measurement and reporting tools should be considered for efficient regular review.</p>
                <p>If any non-compliance is found as a result of the review, managers should:</p>
@@ -2849,9 +2849,9 @@
          <control type="iso-27002">
             <title>Technical compliance review</title>
             <prop role="number">18.2.3</prop>
-            <desc>
+            <description>
                <p>Information systems should be regularly reviewed for compliance with the organization’s information security policies and standards.</p>
-            </desc>
+            </description>
             <guidance>
                <p>Technical compliance should be reviewed preferably with the assistance of automated tools, which generate technical reports for subsequent interpretation by a technical specialist. Alternatively, manual reviews (supported by appropriate software tools, if necessary) by an experienced system engineer could be performed.</p>
                <p>If penetration tests or vulnerability assessments are used, caution should be exercised as such activities could lead to a compromise of the security of the system. Such tests should be planned, documented and repeatable.</p>

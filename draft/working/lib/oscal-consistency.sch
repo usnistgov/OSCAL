@@ -9,7 +9,8 @@
    
   
 <!-- Declarations are the contents of local declarations, if present, or the document at href if locally empty.  -->
-  <sch:let name="declarations" value="/oscal:catalog/oscal:declarations/(.[exists(*)],document(@href))[1]"/>
+  <sch:let name="declarations"
+    value="/oscal:catalog/ ( oscal:declarations[empty(@href)], document(@href) )[1]"/>
   
   <sch:pattern>
     <sch:rule context="*[exists(@type)]">
@@ -20,6 +21,10 @@
   </sch:pattern>
   
   <sch:pattern>
+    
+    <sch:rule context="oscal:catalog">
+      <sch:assert test="exists(oscal:declarations)" role="warning">No declarations found (properties will not be checked).</sch:assert>
+    </sch:rule>
     
 <!--  Constraints over declarations - very important!  -->
     <sch:rule context="oscal:property | oscal:statement | oscal:parameter">
@@ -33,7 +38,21 @@
     <sch:rule context="oscal:assign | oscal:select"/>
     
     <sch:rule context="oscal:title"/>
-    <sch:rule context="oscal:group | oscal:control"/>
+    <sch:rule context="oscal:group | oscal:control">
+      <xsl:variable name="here" select="."/>
+      <xsl:variable name="ilk"  select="@type/string(.),local-name(..)"/>
+      <sch:let name="applicable" value="$declarations/key('declarations-by-match',$ilk,.)"/>
+      <!--<sch:assert role="warning" test="exists($applicable)">No declarations apply to this <sch:name/></sch:assert>-->
+      <sch:let name="required-property-declarations" value="$applicable[exists(oscal:required)]/self::oscal:property"/>
+      <sch:let name="required-property-roles" value="$required-property-declarations/@role/string(.)"/>
+      <sch:let name="missing-properties" value="$required-property-roles[not(. = $here/oscal:prop/@role)]"/>
+      
+      <sch:let name="required-statement-declarations" value="$applicable[exists(oscal:required)]/self::oscal:statement"/>
+      <sch:let name="required-statement-roles" value="$required-statement-declarations/(@role/string(.),local-name(.))[1]"/>
+      <sch:assert test="empty($required-property-declarations) or empty($missing-properties)">Required property/ies is/are not found for <sch:name/>;
+        we expect <xsl:value-of select="for $m in $missing-properties return concat('''',$m,'''')" separator=", "/></sch:assert>
+       
+    </sch:rule>
     
     <sch:rule context="oscal:control/* | oscal:group/*">
       <sch:let name="me" value="."/>
@@ -50,8 +69,8 @@
       
       <!-- Only properties, statements and parameters with roles must also be declared;
            other declarations come for free. -->
-      <sch:let name="matching-declarations" value="key('declarations',$signatures,$declarations)"/>
-      <sch:assert test="empty(@role) or exists($matching-declarations)">No declaration found for <sch:name/> '<sch:value-of select="@role"/>' in this location</sch:assert>
+      <sch:let name="matching-declarations" value="$declarations/key('declarations-by-role',$signatures,.)"/>
+      <sch:assert test="empty(@role) or empty($declarations) or exists($matching-declarations)">No declaration found for <sch:name/> '<sch:value-of select="@role"/>' in this location</sch:assert>
       
       <sch:let name="regex-requirements" value="$matching-declarations/oscal:regex"/>
       <sch:assert test="empty($regex-requirements) or (every $r in ($regex-requirements) satisfies matches(.,$r))">
@@ -77,47 +96,14 @@
   
   <sch:pattern>
     <sch:rule context="oscal:p//* | oscal:list//*"/>
-    
-   
-    
-    <!-- Not yet validating properties against declarations in/for groups. -->
-    <!--<sch:rule context="oscal:control/oscal:prop | oscal:control/oscal:stmt">
-      <sch:let name="me"          value="."/>
-      
-      
-      <sch:let name="catalog-entry" value="$declarations/key('declarations',oscal:signature($me),.)"/>
-      <sch:let name="controlled"    value="$declarations/key('control-spec',oscal:signature($me/parent::oscal:control[1]),.)"/>
-      <!-\- If the control lookup fails, the test is silenced -\->
-      <sch:assert test="exists($catalog-entry) or empty($controlled)">
-        <sch:name/> can't be named '<sch:value-of select="@name"/>' (no such <sch:name/> known in control of type '<sch:value-of select="ancestor::oscal:control[1]/@type"/>'
-      </sch:assert>
-      
-      <sch:let name="is-enumerated" value="exists($catalog-entry/oscal:value)"/>
-      <sch:assert test="empty($catalog-entry) or not($is-enumerated) or (. = $catalog-entry/oscal:value)">
-        '<sch:value-of select="."/>' is not permitted as a value for (<sch:name/>) <sch:value-of select="@name"/>: try
-        <sch:value-of select="string-join($catalog-entry/oscal:value,', ')"/>
-      </sch:assert>
-      
-      <!-\-<sch:let name="regex-requirement" value="$catalog-entry/oscal:regex"/>
-      <sch:assert test="empty($catalog-entry) or empty($regex-requirement) or matches(.,$regex-requirement)">
-        '<sch:value-of select="."/>' is not permitted as a value for property <sch:value-of select="@name"/>: expected to match 
-        regular expression '<sch:value-of select="$regex-requirement"/>'</sch:assert>
-      -\->
-      <sch:let name="id-requirement" value="$catalog-entry/oscal:identifier"/>
-      <sch:assert test="empty($catalog-entry) or empty($id-requirement) or empty(key('prop-by-value',normalize-space(.)) except .)">
-        (prop) <sch:value-of select="@name"/> '<sch:value-of select="."/>' appears more than once within the document.</sch:assert>
-      
-      <!-\-<sch:report test="exists($catalog-entry) and not(. = $catalog-entry/oscal:VALUE)">
-        <sch:value-of select="."/> isn't recognized for prp[@name='<sch:value-of select="$me/@name"/>']
-      </sch:report>-\->
-    </sch:rule>
--->
-  </sch:pattern>
+   </sch:pattern>
   
   
   <xsl:variable name="source" select="/"/>
   
-  <xsl:key name="declarations" match="oscal:declarations/*" use="oscal:declares(.)"/>
+  <xsl:key name="declarations-by-role" match="oscal:declarations/*" use="oscal:declares(.)"/>
+  
+  <xsl:key name="declarations-by-match" match="oscal:declarations/*" use="tokenize(normalize-space(@where),'\s+')"/>
   
   <xsl:function name="oscal:declares" as="xs:string*">
     <xsl:param name="d" as="element()"/>
