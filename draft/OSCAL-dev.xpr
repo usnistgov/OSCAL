@@ -10,6 +10,51 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/SP800-53/800-53A-controls-OSCAL.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>800-53A-controls to OSCAL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/sp800-53-to-oscal.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>800-53A-controls to OSCAL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/800-53-controls-OSCAL.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL simple PDF</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/ISO-27002/ISO-epub-to-OSCAL.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -40,36 +85,6 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/800-53-controls-OSCAL.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL simple PDF</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XSL</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/sp800-53-to-oscal.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>800-53-controls to OSCAL</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>working/lib/make-xslt.xq</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -85,7 +100,7 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/SP800-53-enhanced.xml</String>
+                                    <String>working/SP800-53/SP800-53-handmade.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -100,7 +115,7 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/SP800-53-handmade.xml</String>
+                                    <String>working/SP800-53/SP800-53-enhanced.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -130,21 +145,6 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>sources/800-53/800-53-controls.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>800-53-controls to OSCAL</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>working/ISO-27002/ISO-epub-OSCAL.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -160,41 +160,11 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53-mapping/sp800-53-strawman.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>800-53-controls to OSCAL</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>working/ISO/ISO-epub-OSCAL.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
                                         <String>ISO 27702 EPUB to OSCAL</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>Working/SP800-53-mapping/sp800-53-strawman.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>800-53-controls to OSCAL</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -385,7 +355,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>800-53-controls to OSCAL</String>
+                                    <String>800-53A-controls to OSCAL</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -406,7 +376,7 @@
                                     <String>${pdu}/working/SP800-53/sp800-53-to-oscal.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
-                                    <String>${pdu}/sources/800-53/800-53-controls.xml</String>
+                                    <String>${pdu}/sources/800-53/800-53-800-53A-controls-and-objectives.xml</String>
                                 </field>
                                 <field name="defaultScenario">
                                     <Boolean>false</Boolean>
@@ -424,10 +394,10 @@
                                     <Boolean>false</Boolean>
                                 </field>
                                 <field name="outputFile">
-                                    <File>${pd}/working/SP800-53/800-53-controls-OSCAL.xml</File>
+                                    <File>${pd}/working/SP800-53/800-53A-controls-OSCAL.xml</File>
                                 </field>
                                 <field name="outputResource">
-                                    <String>${pd}/working/SP800-53/800-53-controls-OSCAL.xml</String>
+                                    <String>${pd}/working/SP800-53/800-53A-controls-OSCAL.xml</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
@@ -643,23 +613,6 @@
                     <entry>
                         <String>validation.scenario.associations</String>
                         <scenarioAssociation-array>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/ISO-27002/iso-27002-OSCAL.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
-                                        <String>OSCAL Schematron</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>working/SP800-53/800-53-controls-OSCAL.xml</String>

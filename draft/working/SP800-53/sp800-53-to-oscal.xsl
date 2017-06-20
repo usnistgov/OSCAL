@@ -17,7 +17,7 @@
   
   <xsl:template match="feed:controls">
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/oscal-catalog.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <!--<xsl:processing-instruction name="xml-model">href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
     
     <xsl:text>&#xA;</xsl:text>
@@ -26,21 +26,21 @@
       
       <declarations>
         
-        <property handle="control-class" where="SP800-53">
+        <property role="control-class" where="SP800-53">
               <required/>
               <value>Technical</value>
               <value>Operational</value>
               <value>Management</value>
             </property>
-        <property handle="number" where="SP800-53">
+        <property role="number" where="SP800-53">
               <required/>
               <identifier/>
               <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)\-\d+$</regex>
             </property>
-        <property handle="priority" where="SP800-53">
+        <property role="priority" where="SP800-53">
               <regex>P[0-3]</regex>
             </property>
-        <property handle="baseline-impact" where="SP800-53">
+        <property role="baseline-impact" where="SP800-53">
               <value>MODERATE</value><value>HIGH</value>
             </property>
         <!--<statement name="supplemental-guidance" where="SP800-53"/>
@@ -52,7 +52,7 @@
         -->
         
           <!--<required><property name="number"><id/></property></required>-->
-        <property handle="baseline-impact" where="SP800-53-enhancement">
+        <property role="baseline-impact" where="SP800-53-enhancement">
               <value>MODERATE</value><value>HIGH</value>
             </property>
         
@@ -86,7 +86,7 @@
   <xsl:template match="family"/>
   
   <xsl:template match="control-class | number">
-    <prop handle="{name()}">
+    <prop role="{name()}">
       <xsl:apply-templates/>
     </prop>
   </xsl:template>
@@ -132,10 +132,10 @@
   </xsl:template>
   
   <xsl:template match="objective">
-    <purpose>
+    <control type="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </purpose>
+    </control>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
@@ -146,10 +146,12 @@
   </xsl:template>
   
   <xsl:template match="decision">
-    <decision>
+    <control type="decision">
       <xsl:apply-templates select="@*" mode="asElement"/>
-      <xsl:apply-templates/>
-    </decision>
+      <desc>
+        <xsl:apply-templates/>
+      </desc>
+    </control>
   </xsl:template>
   
   <!--<xsl:template match="potential-assessment">
@@ -170,17 +172,30 @@
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
-    <prop handle="{name()}"><xsl:value-of select="."/></prop>
+    <prop role="{name()}"><xsl:value-of select="."/></prop>
+  </xsl:template>
+  
+  <xsl:template match="@sequence" mode="asElement"/>
+  
+  <xsl:template match="potential-assessment">
+    <control type="assessment">
+      <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
+      <desc>
+        <ul>
+        <xsl:apply-templates/>
+        </ul>
+      </desc>
+    </control>
   </xsl:template>
   
   <xsl:template match="object">
-    <prop handle="object">
+    <li>
       <xsl:apply-templates/>
-    </prop>
+    </li>
   </xsl:template>
   
   <xsl:template match="priority | baseline-impact">
-    <prop handle="{name()}">
+    <prop role="{name()}">
       <xsl:apply-templates/>
     </prop>  
   </xsl:template>
@@ -252,7 +267,7 @@
   </xsl:template>
   
   <xsl:template match="*">
-    <xsl:message terminate="yes">
+    <xsl:message terminate="no">
       <xsl:value-of select="name()"/>
       <xsl:text> NOT MATCHED </xsl:text>
     </xsl:message>

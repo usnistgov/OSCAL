@@ -11,7 +11,7 @@
 
   <xsl:template match="/">
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/oscal-catalog.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <!--<xsl:processing-instruction name="xml-model">href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
 
     <xsl:text>&#xA;</xsl:text>
@@ -19,27 +19,27 @@
       <title>ISO/IEC 27002</title>
       
       <declarations>
-        <property handle="number" where="control-category">
+        <property role="number" where="control-category">
           <required/>
           <regex>\d\d?</regex>
           <!--<autonum>1</autonum> auto numbering needs to manage scope, starting point ... -->
           <!--<limit type="not-less-than">5</limit>
     <limit type="not-more-than">12</limit>-->
         </property>
-        <property handle="number" where="clause">
+        <property role="number" where="clause">
           <required/>
           <!--<value>5.1</value> ... <value>18.2</value>-->
         </property>
-        <statement handle="objective" where="clause">
+        <statement role="objective" where="clause">
           <required/>
         </statement>
-        <property handle="number" where="iso-27002">
+        <property role="number" where="iso-27002">
           <required/>
           <!--<value>5.1.1</value> ...
       <value>18.2.3</value>-->
         </property>
-        <statement handle="implementation-guidance" where="control"/>
-        <statement handle="other-information" where="control"/>
+        <statement role="implementation-guidance" where="control"/>
+        <statement role="other-information" where="control"/>
       </declarations>
       
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
@@ -100,8 +100,24 @@
                         </xsl:call-template>
                       </desc>
                     </xsl:when>
+                    <xsl:when test="$statement-head = 'Implementation guidance'">
+                      <guidance>
+                        <xsl:call-template name="structure-lines">
+                          <xsl:with-param name="lines"
+                            select="current-group() except $statement-head"/>
+                        </xsl:call-template>
+                      </guidance>
+                    </xsl:when>
+                    <xsl:when test="$statement-head = 'Other information'">
+                      <information>
+                        <xsl:call-template name="structure-lines">
+                          <xsl:with-param name="lines"
+                            select="current-group() except $statement-head"/>
+                        </xsl:call-template>
+                      </information>
+                    </xsl:when>
                     <xsl:otherwise>
-                      <stmt handle="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
+                      <stmt role="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
@@ -176,14 +192,14 @@
   </xsl:template>
   
   <xsl:template match="h1 | h2 | h3" mode="num" priority="5">
-    <prop handle="number">
-      <xsl:value-of select="replace(.,'[^\d\s\.].*$','')"/>
+    <prop role="number">
+      <xsl:value-of select="replace(.,'[^\d\.].*$','')"/>
     </prop>
   </xsl:template>
   
  
   <xsl:template match="p[starts-with(., 'Objective:')]">
-    <stmt handle="objective">
+    <stmt role="objective">
       <p>
         <xsl:apply-templates mode="tune">
           <xsl:with-param name="trim" tunnel="yes" as="xs:string">Objective: </xsl:with-param>

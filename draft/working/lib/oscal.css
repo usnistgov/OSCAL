@@ -12,7 +12,6 @@ control-spec, optional, property, statement, parameter
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-control-spec { background-color: lemonchiffon }
 property  {  border: thin outset pink } 
 statement {  border: thin outset blue } 
 parameter {  border: thin dotted purple } 
@@ -30,11 +29,13 @@ regex { display: inline; font-family: monospace; font-size: 90%; white-space: no
   
 regex:before  { content: "matching (regex) "; font-family: sans-serif  }
 
-control-spec:before { font-weight: bold; content: "control type " attr(type) } 
 
-parameter:before  { content: '(parameter) "' attr(name) '" '  }
-property:before  { content: '(property) "' attr(name) '" '  }
-statement:before  { content: '(statement) "' attr(name) '" ' }
+identifier:before { content: "is an identifier"
+ }
+
+parameter:before  { content: '(parameter) "' attr(role) '" '  }
+property:before  { content: '(property) "' attr(role) '" '  }
+statement:before  { content: '(statement) "' attr(role) '" ' }
 
 runin:before  { content: 'display with title'  }
 
@@ -52,45 +53,51 @@ references:before { content: "References"; font-size: 120%; font-weight: bold }
 control { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-param:before { content: attr(name) ': ' }
+param:before { content: attr(role) ': ' }
 param { display: inline-block; background-color: darkseagreen; border: thin outset darkgreen;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-prop:before { content: attr(name) ': ' }
-prop { display: inline-block; background-color: pink; border: thin outset pink;
+prop:before { content: attr(role) ': ' }
+prop, control:before, group:before { display: inline-block; background-color: pink; border: thin outset pink;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-
-identifier:before { content: "is an identifier"
- }
 
 title { font-weight: bold; font-family: sans-serif }
 catalog > title { font-size: 150% }
 group > title { font-size: 130% }
 group > group > title { font-size: 120% }
 
+group:before { background-color: #FFE5B4; 
+  content: 'group / ' attr(type); font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+control:before { background-color: #FFE5B4; 
+  content: 'control / ' attr(type); font-weight: bold; font-family: sans-serif; font-size: 80% }
+
 control > title { font-size: 110% }
 
 desc { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: lightsteelblue }
 
-stmt { -oxy-foldable: true; 
+stmt, purpose, guidance, remarks, information { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
+
+purpose, guidance, remarks, information { border: thin outset grey }
+
 
 desc:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 'Description' }
 
 stmt:before { font-weight: bold; color:  darkgreen; font-family: sans-serif;
-          content: attr(name) }
+          content: attr(role) }
 
 /* SP800-53 */
-stmt[name=supplemental-guidance]:before { content: "Supplemental guidance" }
+stmt[role=supplemental-guidance]:before { content: "Supplemental guidance" }
 
 /* ISO 27002 */
-stmt[name=objective]:before { content: "Objective" }
-stmt[name=implementation-guidance]:before { content: "Implementation guidance" }
-stmt[name=other-information]:before { content: "Other information" }
-stmt[name=remarks]:before { content: "Remarks" }
+purpose:before,stmt[role=purpose]:before { content: "Purpose/s"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+guidance:before,[role=guidance]:before { content: "Guidance"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+information:before,stmt[role=information]:before { content: "Other information"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+remarks:before,stmt[role=remarks]:before { content: "Remarks"; font-weight: bold; color: midnightblue; font-family: sans-serif }
 
 
 

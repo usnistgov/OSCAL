@@ -56,7 +56,7 @@ control =
   element control {
     idAttr, typeAttr,
     title?, param*, prop*,
-    desc, anyKindofStatement*,
+    desc?, anyKindofStatement*,
     extensions?,
     references?
   }
@@ -83,30 +83,41 @@ desc = element desc { prose }
 # stmt is a bit of controlled prose: its title is implicit in its name
 # e.g. stmt[@name='objectives'] might be displayed with title "Objectives:"
 
-anyKindofStatement = ( stmt | purpose | guidance | decision )
+anyKindofStatement = ( stmt | purpose | guidance | decision | information | remarks)
 
 stmt =
   element stmt {
     nameAttr?,
     prose }
 
-# syntax sugar for stmt[@handle='purpose'] for "Objective/s" etc.
+# syntax sugar for stmt[@role='purpose'] for "Objective/s" etc.
 purpose =
   element purpose {
     prose }
 
-# syntax sugar for stmt[@handle='guidance'] for "Supplemental Guidance" etc.
+# syntax sugar for stmt[@role='guidance'] for "Supplemental Guidance" etc.
 guidance =
   element guidance {
     prose }
 
-# syntax sugar for stmt[@handle='decision']
+# syntax sugar for stmt[@role='decision']
 decision =
   element decision {
     prose }
 
+# syntax sugar for stmt[@role='information'], other-info, etc.
+information =
+  element information {
+    prose }
 
-prose = (ol | p)*
+
+# syntax sugar for stmt[@role='remarks']
+remarks =
+  element remarks {
+    prose }
+
+
+prose = ( ul | ol | p )*
 
 # cluster = element cluster { control+ | prop+ | ref+ }
 # on group, not(*/@name != */@name) ie all names must be the same
@@ -136,9 +147,14 @@ ol =
     element li { whatnot }+
   }
 
+ul =
+  element ul {
+    element li { whatnot }+
+  }
+
 idAttr      = attribute id { xsd:ID }?
 
-nameAttr    = attribute handle { text }?
+nameAttr    = attribute role { text }?
 
 typeAttr    = attribute type { text }?
 
