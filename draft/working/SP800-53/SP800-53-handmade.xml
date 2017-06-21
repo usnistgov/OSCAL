@@ -9,25 +9,25 @@
   <title>NIST SP800-53 Handmade OSCAL</title>
   <declarations>
     
-    <property role="control-class" where="SP800-53">
+    <property role="control-class" context="SP800-53">
       <required/>
       <value>Technical</value>
       <value>Operational</value>
       <value>Management</value>
     </property>
-    <property role="number" where="SP800-53">
+    <property role="number" context="SP800-53">
       <required/>
       <identifier/>
       <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)\-\d+$</regex>
     </property>
-    <property role="priority" where="SP800-53">
+    <property role="priority" context="SP800-53">
       <regex>P[0-3]</regex>
     </property>
-    <property role="baseline-impact" where="SP800-53">
+    <property role="baseline-impact" context="SP800-53">
       <value>MODERATE</value>
       <value>HIGH</value>
     </property>
-    <property role="baseline-impact" where="SP800-53-enhancement">
+    <property role="baseline-impact" context="SP800-53-enhancement">
       <value>MODERATE</value>
       <value>HIGH</value>
     </property>
@@ -141,7 +141,7 @@
           <description>
             <p>The organization:</p>
             <ol>
-              <li>Requires that users log out when <assign>organization defined time-period of
+              <li>Requires that users log out when <assign >organization defined time-period of
                   expected inactivity and/or description of when to log out</assign>;</li>
               <li>Determines normal time-of-day and duration usage for information system accounts; </li>
               <li>Monitors for atypical usage of information system accounts; and</li>

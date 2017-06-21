@@ -24,40 +24,8 @@
     <catalog>
       <title>NIST SP800-53</title>
       
-      <declarations>
-        
-        <property role="control-class" where="SP800-53">
-              <required/>
-              <value>Technical</value>
-              <value>Operational</value>
-              <value>Management</value>
-            </property>
-        <property role="number" where="SP800-53">
-              <required/>
-              <identifier/>
-              <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)\-\d+$</regex>
-            </property>
-        <property role="priority" where="SP800-53">
-              <regex>P[0-3]</regex>
-            </property>
-        <property role="baseline-impact" where="SP800-53">
-              <value>MODERATE</value><value>HIGH</value>
-            </property>
-        <!--<statement name="supplemental-guidance" where="SP800-53"/>
-              <title>Supplemental guidance</title>
-            </statement>-->
-        <!-- statement types to be supported? 
-        'purpose' ("Objective"), 'guidance' ("Supplemental Guidance"), 'decision'
-        
-        -->
-        
-          <!--<required><property name="number"><id/></property></required>-->
-        <property role="baseline-impact" where="SP800-53-enhancement">
-              <value>MODERATE</value><value>HIGH</value>
-            </property>
-        
-        
-      </declarations>
+      <declarations href="SP800-53A-declarations.xml"/>
+      
       
       
       <xsl:for-each-group select="feed:control" group-by="family">

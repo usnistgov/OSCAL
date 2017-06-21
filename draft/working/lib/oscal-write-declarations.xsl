@@ -29,7 +29,7 @@
   
   <xsl:template match="/*">
     <declarations>
-    <xsl:for-each-group select="//control | //group" group-by="(@type,local-name())[1]">
+    <xsl:for-each-group select="//control | //group" group-by="@type">
       <xsl:variable name="who" select="current-group()"/>
       <xsl:variable name="control-type" select="current-grouping-key()"/>
       <!--<xsl:for-each select="$who//(assign|select)">
@@ -43,10 +43,11 @@
         <!--<control-spec type="{$control-type}"
           match="{string-join(ancestor-or-self::control/name(.),'//')}">-->
         
-          <xsl:for-each-group select="$who/prop, $who/stmt[matches(@name,'\S')]" group-by="@name">
+      <xsl:for-each-group select="$who/(* except (control|title|group|description))" group-by="(@role[matches(.,'\S')],local-name(.))[1]">
             <xsl:variable name="always" select="count(current-group()) = count($who)"/>
-            <xsl:element name="{if (self::prop) then 'property' else 'statement'}">
-              <xsl:copy-of select="@name"/>
+            
+        <xsl:element name="{if (self::prop) then 'property' else 'statement'}">
+              <xsl:attribute name="role" select="current-grouping-key()"/>
               <xsl:attribute name="context" select="(../@type,name(..))[1]"/>
               <xsl:if test="$always"><required/></xsl:if>
               <!-- only for values -->

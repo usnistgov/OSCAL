@@ -127,6 +127,7 @@ What sorts of things do we need to validate at the level of a control?
     x enumerated list
     x regex
     * numbering semantics (xsl:number?)
+         value/inherit, value/number as dynamic substitution values
     * referential integrity (co-occurrence constraints)
       e.g. if in section "Access Control" then ID must start 'AC' ...
 

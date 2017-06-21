@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<declarations xmlns="http://scap.nist.gov/schema/oscal">
+   <property  role="control-class" context="SP800-53">
+      <required/>
+      <value>Technical</value>
+      <value>Operational</value>
+      <value>Management</value>
+   </property>
+   <property  role="priority" context="SP800-53">
+      <value>P1</value>
+      <value>P2</value>
+      <value>P0</value>
+      <value>P3</value>
+   </property>
+   <statement role="guidance" context="SP800-53"/>
+   <property  role="number"   context="SP800-53">
+       <required/>
+     <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
+  </property>
+   <property role="baseline-impact" context="SP800-53">
+      <value>HIGH</value>
+   </property>
+
+  <property  role="number" context="SP800-53-enhancement">
+    <!--<required/>-->
+    <value><inherit from="number"/><autonum format="(1)"/></value>
+  </property>
+  
+  <property  role="name" context="objective">
+    <!--<required/>-->
+    <!--<value><inherit from="number"/><autonum format=".1"/></value>-->
+  </property>
+  
+  <property  role="name" context="decision">
+      <required/>
+      <value><inherit from="name"/> <autonum format="(i)"/></value>
+   </property>
+   <property  role="method" context="assessment">
+      <required/>
+      <value>EXAMINE</value>
+      <value>INTERVIEW</value>
+      <value>TEST</value>
+   </property>
+   <statement role="guidance" context="SP800-53-enhancement"/>
+   <property  role="baseline-impact" context="SP800-53-enhancement">
+      <value>HIGH</value>
+      <value>MODERATE</value>
+   </property>
+</declarations>

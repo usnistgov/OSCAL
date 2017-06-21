@@ -5,13 +5,13 @@
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/xsl" href="../lib/oscal-basic-display.xsl"?>
 <declarations xmlns="http://scap.nist.gov/schema/oscal">
-   <property name="control-class" context="SP800-53">
+   <property context="SP800-53" role="control-class">
       <required/>
       <value>Technical</value>
       <value>Operational</value>
       <value>Management</value>
    </property>
-   <property name="number" context="SP800-53">
+   <property context="SP800-53" role="number">
       <required/>
       <value>AC-1</value>
       <value>AC-2</value>
@@ -219,19 +219,19 @@
       <value>SI-12</value>
       <value>SI-13</value>
    </property>
-   <property name="priority" context="SP800-53">
+   <property context="SP800-53" role="priority">
       <value>P1</value>
       <value>P2</value>
       <value>P0</value>
       <value>P3</value>
    </property>
-   <property name="baseline-impact" context="SP800-53">
+   <property context="SP800-53" role="baseline-impact">
       <value>HIGH</value>
    </property>
-   <statement name="supplemental-guidance" context="SP800-53"/>
-   <property name="baseline-impact" context="SP800-53-enhancement">
+   <statement context="SP800-53" role="supplemental-guidance"/>
+   <property context="SP800-53-enhancement" role="baseline-impact">
       <value>HIGH</value>
       <value>MODERATE</value>
    </property>
-   <statement name="supplemental-guidance" context="SP800-53-enhancement"/>
+   <statement context="SP800-53-enhancement" role="supplemental-guidance"/>
 </declarations>
