@@ -1,6 +1,11 @@
 @import 'oscal.css';
 
-value, identifier, regex, declarations title { 
+declarations:before { content:
+  "Declarations "
+  oxy_textfield(edit, '@href', columns, 30) 
+ }
+
+value, identifier, regex, inherit, autonum { 
   display: block; margin-left: 2em; visibility: -oxy-collapse-text }
 
 property:before { content:
@@ -28,23 +33,26 @@ statement:before { content:
   oxy_textfield(edit, '@role', columns, 20) 
  }
 
-
-declarations title:before { content:
-  oxy_label(text, "titled ", styles, "font-weight:normal")
-  oxy_textfield(edit, '#text', columns, 30) 
- }
-
 assign:before,
 param:before { content: oxy_textfield(
           edit, '@role',
           columns, 30); }
+
+
+control:before { content: 'control: ' oxy_textfield(
+          edit, '@type',
+          columns, 10); }
 
 prop:before { content: oxy_textfield(
           edit, '@role',
           columns, 10); }
 
 stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
-          content: attr(role) ' ' oxy_textfield(
-          edit, '@role',
-          columns, 20);
- }
+          content: 
+           oxy_capitalize(attr(role)) ' '
+            oxy_combobox( 
+              edit, '@role',
+              editable, true,
+              values, 'purpose, guidance, information, remarks',
+              labels, 'Objectives, Guidance, Information, Remarks' )
+}

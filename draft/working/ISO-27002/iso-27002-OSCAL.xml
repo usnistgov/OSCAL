@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Regular view" alternate="yes"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="../lib/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Form view" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>ISO/IEC 27002</title>
    <declarations>
@@ -11,12 +12,14 @@
       </property>
       <property role="number" context="clause">
          <required/>
+        <value><inherit/><autonum format=".1"/></value>
       </property>
       <statement role="objective" context="clause">
          <required/>
       </statement>
       <property role="number" context="iso-27002">
          <required/>
+      <value><inherit/><autonum format=".1"/></value>
       </property>
       <statement role="guidance" context="control"/>
       <statement role="information" context="control"/>
@@ -25,75 +28,103 @@
       <title>Information security policies</title>
       <prop role="number">5</prop>
       <group type="clause">
-         <title>Management direction for information security</title>
-         <prop role="number">5.1</prop>
-         <stmt role="objective">
-            <p>To provide management direction and support for information security in accordance with business requirements and relevant laws and regulations.</p>
-         </stmt>
-         <control type="iso-27002">
-            <title>Policies for information security</title>
-            <prop role="number">5.1.1</prop>
-            <desc>
-               <p>A set of policies for information security should be defined, approved by management, published and communicated to employees and relevant external parties.</p>
-            </desc>
-            <stmt role="guidance">
-               <p>At the highest level, organizations should define an “information security policy” which is approved by management and which sets out the organization’s approach to managing its information security objectives.</p>
-               <p>Information security policies should address requirements created by:</p>
-               <ol>
-                  <li>business strategy;</li>
-                  <li>regulations, legislation and contracts;</li>
-                  <li>the current and projected information security threat environment.</li>
-               </ol>
-               <p>The information security policy should contain statements concerning:</p>
-               <ol>
-                  <li>definition of information security, objectives and principles to guide all activities relating to information security;</li>
-                  <li>assignment of general and specific responsibilities for information security management to defined roles;</li>
-                  <li>processes for handling deviations and exceptions.</li>
-               </ol>
-               <p>At a lower level, the information security policy should be supported by topic-specific policies, which further mandate the implementation of information security controls and are typically structured to address the needs of certain target groups within an organization or to cover certain topics.</p>
-               <p>Examples of such policy topics include:</p>
-               <ol>
-                  <li>access control (see <xref>Clause 9</xref>);</li>
-                  <li>information classification (and handling) (see <xref>8.2</xref>);</li>
-                  <li>physical and environmental security (see <xref>Clause 11</xref>);</li>
-                  <li>end user oriented topics such as:<ol>
-                        <li>acceptable use of assets (see <xref>8.1.3</xref>);</li>
-                        <li>clear desk and clear screen (see <xref>11.2.9</xref>);</li>
-                        <li>information transfer (see <xref>13.2.1</xref>);</li>
-                        <li>mobile devices and teleworking (see <xref>6.2</xref>);</li>
-                        <li>restrictions on software installations and use (see <xref>12.6.2</xref>);</li>
-                     </ol>
-                  </li>
-                  <li>backup (see <xref>12.3</xref>);</li>
-                  <li>information transfer (see <xref>13.2</xref>);</li>
-                  <li>protection from malware (see <xref>12.2</xref>);</li>
-                  <li>management of technical vulnerabilities (see <xref>12.6.1</xref>);</li>
-                  <li>cryptographic controls (see <xref>Clause 10</xref>);</li>
-                  <li>communications security (see <xref>Clause 13</xref>);</li>
-                  <li>privacy and protection of personally identifiable information (see <xref>18.1.4</xref>);</li>
-                  <li>supplier relationships (see <xref>Clause 15</xref>).</li>
-               </ol>
-               <p>These policies should be communicated to employees and relevant external parties in a form that is relevant, accessible and understandable to the intended reader, e.g. in the context of an “information security awareness, education and training programme” (see <xref>7.2.2</xref>).</p>
-            </stmt>
-            <stmt role="information">
-               <p>The need for internal policies for information security varies across organizations. Internal policies are especially useful in larger and more complex organizations where those defining and approving the expected levels of control are segregated from those implementing the controls or in situations where a policy applies to many different people or functions in the organization. Policies for information security can be issued in a single “information security policy” document or as a set of individual but related documents.</p>
-               <p>If any of the information security policies are distributed outside the organization, care should be taken not to disclose confidential information.</p>
-               <p>Some organizations use other terms for these policy documents, such as “Standards”, “Directives” or “Rules”.</p>
-            </stmt>
-         </control>
-         <control type="iso-27002">
-            <title>Review of the policies for information security</title>
-            <prop role="number">5.1.2</prop>
-            <desc>
-               <p>The policies for information security should be reviewed at planned intervals or if significant changes occur to ensure their continuing suitability, adequacy and effectiveness.</p>
-            </desc>
-            <stmt role="guidance">
-               <p>Each policy should have an owner who has approved management responsibility for the development, review and evaluation of the policies. The review should include assessing opportunities for improvement of the organization’s policies and approach to managing information security in response to changes to the organizational environment, business circumstances, legal conditions or technical environment.</p>
-               <p>The review of policies for information security should take the results of management reviews into account.</p>
-               <p>Management approval for a revised policy should be obtained.</p>
-            </stmt>
-         </control>
-      </group>
+      <title>Management direction for information security</title>
+      <prop role="number">5.1</prop>
+      <stmt role="objective">
+        <p>To provide management direction and support for information security in accordance with
+          business requirements and relevant laws and regulations.</p>
+      </stmt>
+      <control type="iso-27002">
+        <title>Policies for information security</title>
+        <prop role="number">5.1.1</prop>
+        <desc>
+          <p>A set of policies for information security should be defined, approved by management,
+            published and communicated to employees and relevant external parties.</p>
+        </desc>
+        <stmt role="guidance">
+          <p>At the highest level, organizations should define an “information security policy”
+            which is approved by management and which sets out the organization’s approach to
+            managing its information security objectives.</p>
+          <p>Information security policies should address requirements created by:</p>
+          <ol>
+            <li>business strategy;</li>
+            <li>regulations, legislation and contracts;</li>
+            <li>the current and projected information security threat environment.</li>
+          </ol>
+          <p>The information security policy should contain statements concerning:</p>
+          <ol>
+            <li>definition of information security, objectives and principles to guide all
+              activities relating to information security;</li>
+            <li>assignment of general and specific responsibilities for information security
+              management to defined roles;</li>
+            <li>processes for handling deviations and exceptions.</li>
+          </ol>
+          <p>At a lower level, the information security policy should be supported by topic-specific
+            policies, which further mandate the implementation of information security controls and
+            are typically structured to address the needs of certain target groups within an
+            organization or to cover certain topics.</p>
+          <p>Examples of such policy topics include:</p>
+          <ol>
+            <li>access control (see <xref>Clause 9</xref>);</li>
+            <li>information classification (and handling) (see <xref>8.2</xref>);</li>
+            <li>physical and environmental security (see <xref>Clause 11</xref>);</li>
+            <li>end user oriented topics such as:<ol>
+                <li>acceptable use of assets (see <xref>8.1.3</xref>);</li>
+                <li>clear desk and clear screen (see <xref>11.2.9</xref>);</li>
+                <li>information transfer (see <xref>13.2.1</xref>);</li>
+                <li>mobile devices and teleworking (see <xref>6.2</xref>);</li>
+                <li>restrictions on software installations and use (see <xref>12.6.2</xref>);</li>
+              </ol>
+            </li>
+            <li>backup (see <xref>12.3</xref>);</li>
+            <li>information transfer (see <xref>13.2</xref>);</li>
+            <li>protection from malware (see <xref>12.2</xref>);</li>
+            <li>management of technical vulnerabilities (see <xref>12.6.1</xref>);</li>
+            <li>cryptographic controls (see <xref>Clause 10</xref>);</li>
+            <li>communications security (see <xref>Clause 13</xref>);</li>
+            <li>privacy and protection of personally identifiable information (see
+                <xref>18.1.4</xref>);</li>
+            <li>supplier relationships (see <xref>Clause 15</xref>).</li>
+          </ol>
+          <p>These policies should be communicated to employees and relevant external parties in a
+            form that is relevant, accessible and understandable to the intended reader, e.g. in the
+            context of an “information security awareness, education and training programme” (see
+              <xref>7.2.2</xref>).</p>
+        </stmt>
+        <stmt role="information">
+          <p>The need for internal policies for information security varies across organizations.
+            Internal policies are especially useful in larger and more complex organizations where
+            those defining and approving the expected levels of control are segregated from those
+            implementing the controls or in situations where a policy applies to many different
+            people or functions in the organization. Policies for information security can be issued
+            in a single “information security policy” document or as a set of individual but related
+            documents.</p>
+          <p>If any of the information security policies are distributed outside the organization,
+            care should be taken not to disclose confidential information.</p>
+          <p>Some organizations use other terms for these policy documents, such as “Standards”,
+            “Directives” or “Rules”.</p>
+        </stmt>
+      </control>
+      <control type="iso-27002">
+        <title>Review of the policies for information security</title>
+        <prop role="number">5.1.2</prop>
+        <desc>
+          <p>The policies for information security should be reviewed at planned intervals or if
+            significant changes occur to ensure their continuing suitability, adequacy and
+            effectiveness.</p>
+        </desc>
+        <stmt role="guidance">
+          <p>Each policy should have an owner who has approved management responsibility for the
+            development, review and evaluation of the policies. The review should include assessing
+            opportunities for improvement of the organization’s policies and approach to managing
+            information security in response to changes to the organizational environment, business
+            circumstances, legal conditions or technical environment.</p>
+          <p>The review of policies for information security should take the results of management
+            reviews into account.</p>
+          <p>Management approval for a revised policy should be obtained.</p>
+        </stmt>
+      </control>
+    </group>
    </group>
    <group type="control-category">
       <title>Organization of information security</title>
@@ -651,75 +682,110 @@
       <title>Access control</title>
       <prop role="number">9</prop>
       <group type="clause">
-         <title>Business requirements of access control</title>
-         <prop role="number">9.1</prop>
-         <stmt role="objective">
-            <p>To limit access to information and information processing facilities.</p>
-         </stmt>
-         <control type="iso-27002">
-            <title>Access control policy</title>
-            <prop role="number">9.1.1</prop>
-            <desc>
-               <p>An access control policy should be established, documented and reviewed based on business and information security requirements.</p>
-            </desc>
-            <stmt role="guidance">
-               <p>Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks.</p>
-               <p>Access controls are both logical and physical (see <xref>Clause 11</xref>) and these should be considered together. Users and service providers should be given a clear statement of the business requirements to be met by access controls.</p>
-               <p>The policy should take account of the following:</p>
-               <ol>
-                  <li>security requirements of business applications;</li>
-                  <li>policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information (see <xref>8.2</xref>);</li>
-                  <li>consistency between the access rights and information classification policies of systems and networks;</li>
-                  <li>relevant legislation and any contractual obligations regarding limitation of access to data or services (see <xref>18.1</xref>);</li>
-                  <li>management of access rights in a distributed and networked environment which recognizes all types of connections available;</li>
-                  <li>segregation of access control roles, e.g. access request, access authorization, access administration;</li>
-                  <li>requirements for formal authorization of access requests (see <xref>9.2.1</xref> and <xref>9.2.2</xref>);</li>
-                  <li>requirements for periodic review of access rights (see <xref>9.2.5</xref>);</li>
-                  <li>removal of access rights (see <xref>9.2.6</xref>);</li>
-                  <li>archiving of records of all significant events concerning the use and management of user identities and secret authentication information;</li>
-                  <li>roles with privileged access (see <xref>9.2.3</xref>).</li>
-               </ol>
-            </stmt>
-            <stmt role="information">
-               <p>Care should be taken when specifying access control rules to consider:</p>
-               <ol>
-                  <li>establishing rules based on the premise “Everything is generally forbidden unless expressly permitted” rather than the weaker rule “Everything is generally permitted unless expressly forbidden”;</li>
-                  <li>changes in information labels (see <xref>8.2.2</xref>) that are initiated automatically by information processing facilities and those initiated at the discretion of a user;</li>
-                  <li>changes in user permissions that are initiated automatically by the information system and those initiated by an administrator;</li>
-                  <li>rules which require specific approval before enactment and those which do not.</li>
-               </ol>
-               <p>Access control rules should be supported by formal procedures (see <xref>9.2</xref>, <xref>9.3</xref>, <xref>9.4</xref>) and defined responsibilities (see <xref>6.1.1</xref>, <xref>9.3</xref>).</p>
-               <p>Role based access control is an approach used successfully by many organisations to link access rights with business roles.</p>
-               <p>Two of the frequent principles directing the access control policy are:</p>
-               <ol>
-                  <li>Need-to-know: you are only granted access to the information you need to perform your tasks (different tasks/roles mean different need-to-know and hence different access profile);</li>
-                  <li>Need-to-use: you are only granted access to the information processing facilities (IT equipment, applications, procedures, rooms) you need to perform your task/job/role.</li>
-               </ol>
-            </stmt>
-         </control>
-         <control type="iso-27002">
-            <title>Access to networks and network services</title>
-            <prop role="number">9.1.2</prop>
-            <desc>
-               <p>Users should only be provided with access to the network and network services that they have been specifically authorized to use.</p>
-            </desc>
-            <stmt role="guidance">
-               <p>A policy should be formulated concerning the use of networks and network services. This policy should cover:</p>
-               <ol>
-                  <li>the networks and network services which are allowed to be accessed;</li>
-                  <li>authorization procedures for determining who is allowed to access which networks and networked services;</li>
-                  <li>management controls and procedures to protect access to network connections and network services;</li>
-                  <li>the means used to access networks and network services (e.g. use of VPN or wireless network);</li>
-                  <li>user authentication requirements for accessing various network services;</li>
-                  <li>monitoring of the use of network services.</li>
-               </ol>
-               <p>The policy on the use of network services should be consistent with the organization’s access control policy (see <xref>9.1.1</xref>).</p>
-            </stmt>
-            <stmt role="information">
-               <p>Unauthorized and insecure connections to network services can affect the whole organization. This control is particularly important for network connections to sensitive or critical business applications or to users in high-risk locations, e.g. public or external areas that are outside the organization’s information security management and control.</p>
-            </stmt>
-         </control>
-      </group>
+      <title>Business requirements of access control</title>
+      <prop role="number">9.1</prop>
+      <stmt role="objective">
+        <p>To limit access to information and information processing facilities.</p>
+      </stmt>
+      <control type="iso-27002">
+        <title>Access control policy</title>
+        <prop role="number">9.1.1</prop>
+        <desc>
+          <p>An access control policy should be established, documented and reviewed based on
+            business and information security requirements.</p>
+        </desc>
+        <stmt role="guidance">
+          <p>Asset owners should determine appropriate access control rules, access rights and
+            restrictions for specific user roles towards their assets, with the amount of detail and
+            the strictness of the controls reflecting the associated information security risks.</p>
+          <p>Access controls are both logical and physical (see <xref>Clause 11</xref>) and these
+            should be considered together. Users and service providers should be given a clear
+            statement of the business requirements to be met by access controls.</p>
+          <p>The policy should take account of the following:</p>
+          <ol>
+            <li>security requirements of business applications;</li>
+            <li>policies for information dissemination and authorization, e.g. the need-to-know
+              principle and information security levels and classification of information (see
+                <xref>8.2</xref>);</li>
+            <li>consistency between the access rights and information classification policies of
+              systems and networks;</li>
+            <li>relevant legislation and any contractual obligations regarding limitation of access
+              to data or services (see <xref>18.1</xref>);</li>
+            <li>management of access rights in a distributed and networked environment which
+              recognizes all types of connections available;</li>
+            <li>segregation of access control roles, e.g. access request, access authorization,
+              access administration;</li>
+            <li>requirements for formal authorization of access requests (see <xref>9.2.1</xref> and
+                <xref>9.2.2</xref>);</li>
+            <li>requirements for periodic review of access rights (see <xref>9.2.5</xref>);</li>
+            <li>removal of access rights (see <xref>9.2.6</xref>);</li>
+            <li>archiving of records of all significant events concerning the use and management of
+              user identities and secret authentication information;</li>
+            <li>roles with privileged access (see <xref>9.2.3</xref>).</li>
+          </ol>
+        </stmt>
+        <stmt role="information">
+          <p>Care should be taken when specifying access control rules to consider:</p>
+          <ol>
+            <li>establishing rules based on the premise “Everything is generally forbidden unless
+              expressly permitted” rather than the weaker rule “Everything is generally permitted
+              unless expressly forbidden”;</li>
+            <li>changes in information labels (see <xref>8.2.2</xref>) that are initiated
+              automatically by information processing facilities and those initiated at the
+              discretion of a user;</li>
+            <li>changes in user permissions that are initiated automatically by the information
+              system and those initiated by an administrator;</li>
+            <li>rules which require specific approval before enactment and those which do not.</li>
+          </ol>
+          <p>Access control rules should be supported by formal procedures (see <xref>9.2</xref>,
+              <xref>9.3</xref>, <xref>9.4</xref>) and defined responsibilities (see
+              <xref>6.1.1</xref>, <xref>9.3</xref>).</p>
+          <p>Role based access control is an approach used successfully by many organisations to
+            link access rights with business roles.</p>
+          <p>Two of the frequent principles directing the access control policy are:</p>
+          <ol>
+            <li>Need-to-know: you are only granted access to the information you need to perform
+              your tasks (different tasks/roles mean different need-to-know and hence different
+              access profile);</li>
+            <li>Need-to-use: you are only granted access to the information processing facilities
+              (IT equipment, applications, procedures, rooms) you need to perform your
+              task/job/role.</li>
+          </ol>
+        </stmt>
+      </control>
+      <control type="iso-27002">
+        <title>Access to networks and network services</title>
+        <prop role="number">9.1.2</prop>
+        <desc>
+          <p>Users should only be provided with access to the network and network services that they
+            have been specifically authorized to use.</p>
+        </desc>
+        <stmt role="guidance">
+          <p>A policy should be formulated concerning the use of networks and network services. This
+            policy should cover:</p>
+          <ol>
+            <li>the networks and network services which are allowed to be accessed;</li>
+            <li>authorization procedures for determining who is allowed to access which networks and
+              networked services;</li>
+            <li>management controls and procedures to protect access to network connections and
+              network services;</li>
+            <li>the means used to access networks and network services (e.g. use of VPN or wireless
+              network);</li>
+            <li>user authentication requirements for accessing various network services;</li>
+            <li>monitoring of the use of network services.</li>
+          </ol>
+          <p>The policy on the use of network services should be consistent with the organization’s
+            access control policy (see <xref>9.1.1</xref>).</p>
+        </stmt>
+        <stmt role="information">
+          <p>Unauthorized and insecure connections to network services can affect the whole
+            organization. This control is particularly important for network connections to
+            sensitive or critical business applications or to users in high-risk locations, e.g.
+            public or external areas that are outside the organization’s information security
+            management and control.</p>
+        </stmt>
+      </control>
+    </group>
       <group type="clause">
          <title>User access management</title>
          <prop role="number">9.2</prop>
@@ -2726,27 +2792,48 @@
                <p>Appropriate procedures should be implemented to ensure compliance with legislative, regulatory and contractual requirements related to intellectual property rights and use of proprietary software products.</p>
             </desc>
             <stmt role="guidance">
-               <p>The following guidelines should be considered to protect any material that may be considered intellectual property:</p>
-               <ol>
-                  <li>publishing an intellectual property rights compliance policy which defines the legal use of software and information products;</li>
-                  <li>acquiring software only through known and reputable sources, to ensure that copyright is not violated;</li>
-                  <li>maintaining awareness of policies to protect intellectual property rights and giving notice of the intent to take disciplinary action against personnel breaching them;</li>
-                  <li>maintaining appropriate asset registers and identifying all assets with requirements to protect intellectual property rights;</li>
-                  <li>maintaining proof and evidence of ownership of licences, master disks, manuals, etc.;</li>
-                  <li>implementing controls to ensure that any maximum number of users permitted within the licence is not exceeded;</li>
-                  <li>carrying out reviews that only authorized software and licensed products are installed;</li>
-                  <li>providing a policy for maintaining appropriate licence conditions;</li>
-                  <li>providing a policy for disposing of or transferring software to others;</li>
-                  <li>complying with terms and conditions for software and information obtained from public networks;</li>
-                  <li>not duplicating, converting to another format or extracting from commercial recordings (film, audio) other than permitted by copyright law;</li>
-                  <li>not copying in full or in part, books, articles, reports or other documents, other than permitted by copyright law.</li>
-               </ol>
-            </stmt>
-            <stmt role="information">
-               <p>Intellectual property rights include software or document copyright, design rights, trademarks, patents and source code licences.</p>
-               <p>Proprietary software products are usually supplied under a licence agreement that specifies licence terms and conditions, for example, limiting the use of the products to specified machines or limiting copying to the creation of backup copies only. The importance and awareness of intellectual property rights should be communicated to staff for software developed by the organization.</p>
-               <p>Legislative, regulatory and contractual requirements may place restrictions on the copying of proprietary material. In particular, they may require that only material that is developed by the organization or that is licensed or provided by the developer to the organization, can be used. Copyright infringement can lead to legal action, which may involve fines and criminal proceedings.</p>
-            </stmt>
+          <p>The following guidelines should be considered to protect any material that may be
+            considered intellectual property:</p>
+          <ol>
+            <li>publishing an intellectual property rights compliance policy which defines the legal
+              use of software and information products;</li>
+            <li>acquiring software only through known and reputable sources, to ensure that
+              copyright is not violated;</li>
+            <li>maintaining awareness of policies to protect intellectual property rights and giving
+              notice of the intent to take disciplinary action against personnel breaching
+              them;</li>
+            <li>maintaining appropriate asset registers and identifying all assets with requirements
+              to protect intellectual property rights;</li>
+            <li>maintaining proof and evidence of ownership of licences, master disks, manuals,
+              etc.;</li>
+            <li>implementing controls to ensure that any maximum number of users permitted within
+              the licence is not exceeded;</li>
+            <li>carrying out reviews that only authorized software and licensed products are
+              installed;</li>
+            <li>providing a policy for maintaining appropriate licence conditions;</li>
+            <li>providing a policy for disposing of or transferring software to others;</li>
+            <li>complying with terms and conditions for software and information obtained from
+              public networks;</li>
+            <li>not duplicating, converting to another format or extracting from commercial
+              recordings (film, audio) other than permitted by copyright law;</li>
+            <li>not copying in full or in part, books, articles, reports or other documents, other
+              than permitted by copyright law.</li>
+          </ol>
+        </stmt>
+            <stmt role="guidance">
+          <p>Intellectual property rights include software or document copyright, design rights,
+            trademarks, patents and source code licences.</p>
+          <p>Proprietary software products are usually supplied under a licence agreement that
+            specifies licence terms and conditions, for example, limiting the use of the products to
+            specified machines or limiting copying to the creation of backup copies only. The
+            importance and awareness of intellectual property rights should be communicated to staff
+            for software developed by the organization.</p>
+          <p>Legislative, regulatory and contractual requirements may place restrictions on the
+            copying of proprietary material. In particular, they may require that only material that
+            is developed by the organization or that is licensed or provided by the developer to the
+            organization, can be used. Copyright infringement can lead to legal action, which may
+            involve fines and criminal proceedings.</p>
+        </stmt>
          </control>
          <control type="iso-27002">
             <title>Protection of records</title>

@@ -85,7 +85,7 @@ desc = element desc { prose }
 # stmt is a bit of controlled prose: its title is implicit in its name
 # e.g. stmt[@name='objectives'] might be displayed with title "Objectives:"
 
-#anyKindofStatement = ( stmt | desc | purpose | guidance | decision | information | remarks )
+#anyKindofStatement = ( stmt | desc | purpose | guidance | information | remarks )
 anyKindofStatement = stmt
 
 stmt =

@@ -145,51 +145,86 @@ x remove sequence, clause, control-group properties (or anything so redundant)
 x Run Trang and debug XSD (yay!)
 
 o rendering XSLT to make a pretty page display (or PDF?)
-
-Thurs Jun 15
-  Review parameters design w/ David
-  Question re: declarations for group (not control) properties and statements?
-    (Flat, or nested?)
-  Check on progress e.g SP800-53A
-
 GOALS for next checkpoint
-o Complete and valid mappings for both sources
-o CSS for oXygen display
-o functioning RNC and Schematron
+x Complete and valid mappings for both sources
+x CSS for oXygen display
+x functioning RNC and Schematron
 ???
 
-x first cut at XSD?
-o embed documentation (and stage documentation pipeline?)
+o add xsd-type for declaration i.e. <xsd-type>decimal</xsd:type> validates $x castable as xs:decimal
 
+x first cut at XSD?
+x embed documentation (and stage documentation pipeline?)
+
+o Question re: implementations
+  Our prototype is implemented on an XML stack in oXygen but OSCAL must be platform independent
+  (We can also foresee developing on an XML stack off of oXygen, of course.
+   XQuery/XForms comes to mind ...)
+  So ... what other platforms / stacks can we be looking at?
+    Python ... Ruby ... who do we have?
+   
 o validate (properties and paramters?) upper-bound, lower-bound, (w/ inclusive/exclusive etc.)
-o enforce uniqueness of param/@name (or @id?)
-o refactor declarations
+  - or - define a mechanism for higher-level validation against such rules
+    e.g. an OSCAL that converts into a Schematron ...
+    cf OSCAL-refinement-OSCAL.xml
+
+x enforce uniqueness of param/@role (or @id?)
+x refactor declarations
    properties and statements at the top
    distinguish between validation and substitution rules?
-Change @name to @type and remove control/@type
+x Change @name to @type and remove control/@type (no: now @role)
+
 Model control enhancements inside controls?
   (Flag to indicate its an enhancement?)
 
 o consider the mapping to unify 800-53 and ISO 27002?
+    issues:
+      hierarchical alignment?
+        (tool: head to head hierarchical comparison of catalogs / profiles
+o       "Profile sketch" XSLT that produces hierarchical analysis in XML and SVG)
+o       Mapping of controls w/ their properties and statements (easy to see in declarations)
+      
 o prototype profiling mechanism
      Assume operator has a list of controls to include
-        (including enhancements with containing controls)
-     Also demo producing a profile by selection (e.g. baseline-impact)
-     
-What I did Friday
-  Met Dave 1 hour
-  wrote plannign email 1 hr
-  from 2pm - 5:30 (3 hrs)
-  Turned declarations structure upside down
-    all declarations are now at top level
-    matching happens by stipulating '@where' w/ match to either @type or local-name()
-    (e.g. 'control' or 'group')
-  Renamed @name to @handle everywhere
-  Built plumbing to support retrieval w/ new declarations matching
-  Ripped out 'display' features of declarations (we'll move this to a different layer)
-  Updated SP800-53 and ISO 27002 samples to new schema
-    (declarations and content)
+        (including control enhancements or subcontrols, with containing controls)
+     Also demo producing a profile by selection/filtering (e.g. baseline-impact)
 
-Next up - finish mapping samples and XSLT pipelines for samples to date
-Then turn to 800-53A
-Also, update XSLTs and CSSs ...
+For Dave - group is good but should we permit control/control (eg 800-53A)
+
+High level issues (group to discuss?)
+  Setting names of elements and attributes
+  Defining when a new schema must be layered over
+    (e.g. new element types for privileged statements)
+    also control points for that layering (in both RNG and XSD versions)
+
+Write a simple narrative describing use of OSCAL
+
+OSCAL is a world of controls, which cluster together in groups and within other ('higher level') controls. Controls come in different types but they all have the same basic form. They probably have titles and almost certainly have some normative language, called the "description" of the control (or sometimes just the "control"). Additionally they have one or more *properties* and *statements*, which provide structured information associated with the control. Exactly which properties and statements are present or available for a control, will depend on the particular control and the control type.
+
+Properties are best thought of as name-value pairs. assigned to a control. So for example a control may have a property 'RATING' (or 'rating') that assigns a nominal rating to a control, permitting controls in a set to be sorted and filtered by rating. The "rating" of any control will be a single value (as this is a property), a string albeit sometimes embellished a little (parameters are described below).
+
+Statements, in contrast, are best thought of as chunks or globs or hunks of prose, of arbitrary length. (Special-purpose statements may be short but some controls use statements to help keep the description short, i.e. for 'spillover'.) They may have internal structure, or they may be simply soup or piles of paragraphs and lists. (OSCAL borrows from HTML to keep the markup inside statements familiar.) Like properties, they might be enhanced (parameters again) in certain ways, but they will generally be fairly free form.
+
+The 'description' of a control might indeed be considered a special or privileged kind of statement, even as its title is a kind of property. For the most part, however, OSCAL permits catalogs and profiles to define their own properties, property values, and statements, for whatever purposes they might need.
+
+All properties and statements are assigned *roles*, which must be distinctive within the control. That is, if a control has a property whose role is to be the "number", no other property or statement may be assigned that role. (To the same control. Other controls may have their own numbers especially if they are the same type as this one.) This means there is always a one-to-one relationship between (any given) property values, and the controls they describe -- a constraint that simplifies queries for controls, since we can know ahead of time that any control can have only a single 'name' or 'number' or 'blodget'. (If we have cases where we need many-to-many key relations, in OSCAL, we will do that not with properties or statements, but subcontrols.)
+
+The "tailoring" or adaptation of controls generally entails adding or overwriting statements and properties given in control catalogs, as well as combining controls (with properties providing links to base controls, etc.) into new controls and control sets.
+
+Parameters
+
+Escape hatch: 'wait list' statements (i.e. no assigned role)
+
+Control enhancements (subcontrols)
+
+Declarations
+
+Adaptability
+
+The rules that define control types can be changed, and new control types can be introduced. Organizations can share control types and share information defined and described using them - that is, as "controls".
+
+(It should be noted in passing that these are digital data objects or data instances, not actual "controls" in the world -- something ineffable, which the documentation of a control can only represent. But metaphysics and epistemology are not in scope here.)
+
+Interchangeability
+
+OSCAL is an entirely independent semantic 'stack' intended to promote interchange of a particular kind (or pattern) of information, a "control set". As such it can be mapped cleanly to NISO JATS, NLM BITS, NISO STS, DITA, or any other format.

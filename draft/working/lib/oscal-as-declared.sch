@@ -25,11 +25,19 @@
       <sch:let name="required-property-declarations" value="$applicable[exists(oscal:required)]/self::oscal:property"/>
       <sch:let name="required-property-roles" value="$required-property-declarations/@role/string(.)"/>
       <sch:let name="missing-properties" value="$required-property-roles[not(. = $here/oscal:prop/@role)]"/>
+      <sch:assert test="empty($required-property-declarations) or empty($missing-properties)">Required 
+        <xsl:value-of select="if (count($missing-properties) gt 1) then 'properties are ' else 'property is'"/>
+        missing on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/>;
+        we expect <xsl:value-of select="for $m in $missing-properties return concat('''',$m,'''')" separator=", "/></sch:assert>
       
       <sch:let name="required-statement-declarations" value="$applicable[exists(oscal:required)]/self::oscal:statement"/>
       <sch:let name="required-statement-roles" value="$required-statement-declarations/(@role/string(.),local-name(.))[1]"/>
-      <sch:assert test="empty($required-property-declarations) or empty($missing-properties)">Required property/ies is/are not found for <sch:name/>;
-        we expect <xsl:value-of select="for $m in $missing-properties return concat('''',$m,'''')" separator=", "/></sch:assert>
+      <!-- Extend the next line to support named statements e.g. <observations> not just stmt[@role] -->
+      <sch:let name="missing-statements" value="$required-statement-roles[not(. = $here/oscal:stmt/@role)]"/>
+      <sch:assert test="empty($required-statement-declarations) or empty($missing-statements)">Required 
+        <xsl:value-of select="if (count($missing-statements) gt 1) then 'statements are ' else 'statement is'"/>
+        missing on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/>;
+        we expect <xsl:value-of select="for $m in $missing-statements return concat('''',$m,'''')" separator=", "/></sch:assert>
       
     </sch:rule>
     
@@ -60,7 +68,9 @@
       
       <sch:let name="regex-requirements" value="$matching-declarations/oscal:regex"/>
       <sch:assert test="empty($regex-requirements) or (every $r in ($regex-requirements) satisfies matches(.,$r))">
-        Value of property '<sch:value-of select="@role"/>' is expected to match (regex/es) '<xsl:value-of select="$regex-requirements/concat('''',.,'''')" separator=", "/>'</sch:assert>
+        Value of property '<sch:value-of select="@role"/>' is expected to match regex
+        <xsl:value-of select="if (count($regex-requirements) gt 1) then '(one of) regexes' else 'regex'"/>
+        <xsl:value-of select="$regex-requirements/concat('''',.,'''')" separator=", "/>'</sch:assert>
       
       <sch:let name="id-requirement" value="$matching-declarations/oscal:identifier"/>
       <!--<sch:report test="exists($id-requirement)">I C ID</sch:report>-->
@@ -77,7 +87,9 @@
         </xsl:apply-templates>
       </xsl:variable>
       <sch:assert test="empty($value-requirements) or (. = $resolved-values)">
-        Value of property '<sch:value-of select="@role"/>' is expected to be (one of) <xsl:value-of select="$resolved-values/concat('''',.,'''')" separator=", "/></sch:assert>
+        Value of property '<sch:value-of select="@role"/>' is expected to be 
+        <xsl:value-of select="if (count($resolved-values) gt 1) then 'one of ' else ''"/>
+        <xsl:value-of select="$resolved-values/concat('''',.,'''')" separator=", "/></sch:assert>
       
       
     </sch:rule>

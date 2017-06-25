@@ -6,7 +6,7 @@ declarations { font-family: sans-serif; font-size: 80%;
    padding: 0.5em; margin: 0.5em; border: thin solid black; background-color: gainsboro;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-declarations:before { font-weight: bold; content: "Declarations" } 
+declarations:before { font-weight: bold; content: "Declarations " attr(href) } 
 
 control-spec, optional, property, statement, parameter
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
@@ -18,29 +18,32 @@ parameter {  border: thin dotted purple }
 
 parameter { background-color: lavenderblush }
 
-required:before { content: "required"; font-weight: bold }
-optional:before { content: "Optional"; font-weight: bold }
-
 value  { display: inline-block; background-color: ivory; border: thin outset pink;
   margin: 2px; padding: 2px; font-weight: bold; font-size: 80% }
 
 regex { display: inline; font-family: monospace; font-size: 90%; white-space: nowrap;
   background-color: ivory; border: thin outset green }
-  
+
 regex:before  { content: "matching (regex) "; font-family: sans-serif  }
 
 
 identifier:before { content: "is an identifier"
  }
 
-parameter:before  { content: '(parameter) "' attr(role) '" on ' attr(where) ' '  }
-property:before  { content: '(property) "' attr(role) '" on ' attr(where) ' '  }
-statement:before  { content: '(statement) "' attr(role) '" on ' attr(where) ' '}
+parameter:before  { content: '(parameter) "' attr(role) '" on ' attr(context) ' '  }
+property:before  { content: '(property) "' attr(role) '" on ' attr(context) ' '  }
+statement:before  { content: '(statement) "' attr(role) '" on ' attr(context) ' '}
 
 property { background-color: pink; margin-top: 0.5em; color: black }
 statement { background-color: cornsilk; margin-top: 0.5em; color: black }
-statement title:before { content: '(titled) '; font-weight: normal }
-statement title { margin-left: 2em }
+
+inherit, autonum { display: inline }
+required { content: oxy_label(text, "required", width, 4em, color, inherit)
+}
+inherit { content: oxy_label(text, "inherit", width, 4em, color, inherit)
+}
+ autonum { content: oxy_label(text, "autonum", width, 4em, color, inherit)
+}
 
 group, div, references, extensions
   { padding: 0.5em; margin: 0.5em; border: thin solid black;
@@ -55,9 +58,9 @@ param:before { content: attr(role) ': ' }
 param { display: inline-block; background-color: darkseagreen; border: thin outset darkgreen;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-prop:before { content: attr(role) ': ' }
+prop:before { content: attr(role) ': ';  font-weight: bold; font-size:90% }
 prop, control:before, group:before { display: inline-block; background-color: pink; border: thin outset pink;
-  margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
+  margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
 
 
 title { font-weight: bold; font-family: sans-serif }
@@ -66,14 +69,14 @@ group > title { font-size: 130% }
 group > group > title { font-size: 120% }
 
 group:before { background-color: #FFE5B4; 
-  content: 'group / ' attr(type); font-weight: bold; font-family: sans-serif; font-size: 80% }
+  content: 'group: ' attr(type); font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 control:before { background-color: #FFE5B4; 
-  content: 'control / ' attr(type); font-weight: bold; font-family: sans-serif; font-size: 80% }
+  content: 'control: ' attr(type); font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 control > title { font-size: 110% }
 
-description { -oxy-foldable: true; 
+desc { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: lightsteelblue }
 
 stmt, purpose, guidance, remarks, information { -oxy-foldable: true; 
@@ -82,21 +85,22 @@ padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: corn
 purpose, guidance, remarks, information { border: thin outset grey }
 
 
-description:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+desc:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 'Description' }
 
-stmt:before { font-weight: bold; color:  darkgreen; font-family: sans-serif;
-          content: attr(role) }
 
-/* SP800-53 */
-stmt[role=supplemental-guidance]:before { content: "Supplemental guidance" }
+stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+          content: oxy_capitalize(attr(role)) }
 
-/* ISO 27002 */
+/* SP800-53
+stmt[role=supplemental-guidance]:before { content: "Supplemental guidance" }  */
+
+/* ISO 27002
 purpose:before,stmt[role=purpose]:before { content: "Purpose/s"; font-weight: bold; color: midnightblue; font-family: sans-serif }
 guidance:before,[role=guidance]:before { content: "Guidance"; font-weight: bold; color: midnightblue; font-family: sans-serif }
 information:before,stmt[role=information]:before { content: "Other information"; font-weight: bold; color: midnightblue; font-family: sans-serif }
 remarks:before,stmt[role=remarks]:before { content: "Remarks"; font-weight: bold; color: midnightblue; font-family: sans-serif }
-
+ */
 
 
 p { margin-top: 0.5em }

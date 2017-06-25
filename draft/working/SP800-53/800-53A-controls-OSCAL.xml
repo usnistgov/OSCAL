@@ -1,156 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../lib/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Regular" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Form view" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
-   <title>NIST SP800-53</title>
+   <title>NIST SP800-53A (with Objectives)</title>
    <declarations href="SP800-53A-declarations.xml"/>
    <group type="family">
       <title>Access Control</title>
       <control type="SP800-53">
-         <title>Access Control Policy and Procedures</title>
-         <prop role="control-class">Technical</prop>
-         <prop role="number">AC-1</prop>
-         <prop role="priority">P1</prop>
-         <desc>
-            <p>The organization develops, disseminates, and reviews/updates [<em>Assignment: organization-defined frequency</em>]:</p>
-            <ol>
-               <li>A formal, documented access control policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and</li>
-               <li>Formal, documented procedures to facilitate the implementation of the access control policy and associated access controls.</li>
-            </ol>
-         </desc>
-      <!--<stmt role="caution">
-        <ul><li>Be Extra Careful.</li></ul>
-      </stmt>-->
-         <stmt role="guidance">
-            <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the access control family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The access control policy can be included as part of the general information security policy for the organization. Access control procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the access control policy. Related control: PM-9.</p>
-         </stmt>
-         <group type="objectives">
-            <control type="objective">
-              <prop role="name">AC-1.1</prop>
-              <group type="decisions">
-                    <control type="decision">
-                     <prop role="name">AC-1.1 (i)</prop>
-                     <desc>
-                        <p>the organization develops and formally documents access control policy</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.1 (ii)</prop>
-                     <desc>
-                        <p>the organization access control policy addresses: 
--purpose; 
--scope; 
--roles and responsibilities; 
--management commitment; 
--coordination among organizational entities;  and 
--compliance</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.1 (iii)</prop>
-                     <desc>
-                        <p>the organization disseminates formal documented access control policy to elements within the organization having associated access control roles and responsibilities</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.1 (iv)</prop>
-                     <desc>
-                        <p>the organization develops and formally documents access control procedures</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.1 (v)</prop>
-                     <desc>
-                        <p>the organization access control procedures facilitate implementation of the access control policy and associated access controls</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.1 (vi)</prop>
-                     <desc>
-                        <p>the organization disseminates formal documented access control procedures to elements within the organization having associated access control roles and responsibilities</p>
-                    </desc>
-                  </control>
-                </group>
-                <group type="potential-assessments">
-                    <control type="assessment">
-                     <prop role="method">EXAMINE</prop>
-                     <desc>
-                        <ul>
-                           <li>Access control policy and procedures</li>
-                           <li>other relevant documents or records</li>
-                        </ul>
-                     </desc>
-                  </control>
-                    <control type="assessment">
-                     <prop role="method">INTERVIEW</prop>
-                     <desc>
-                        <ul>
-                           <li>Organizational personnel with access control responsibilities</li>
-                        </ul>
-                     </desc>
-                  </control>
-                </group>
+      <title>Access Control Policy and Procedures</title>
+      <prop role="control-class">Technical</prop>
+      <prop role="number">AC-1</prop>
+      <prop role="priority">P1</prop>
+      <desc>
+        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
+            organization-defined frequency</em>]:</p>
+        <ol>
+          <li>A formal, documented access control policy that addresses purpose, scope, roles,
+            responsibilities, management commitment, coordination among organizational entities, and
+            compliance; and</li>
+          <li>Formal, documented procedures to facilitate the implementation of the access control
+            policy and associated access controls.</li>
+        </ol>
+      </desc>
+      <stmt role="guidance">
+        <p>This control is intended to produce the policy and procedures that are required for the
+          effective implementation of selected security controls and control enhancements in the
+          access control family. The policy and procedures are consistent with applicable federal
+          laws, Executive Orders, directives, policies, regulations, standards, and guidance.
+          Existing organizational policies and procedures may make the need for additional specific
+          policies and procedures unnecessary. The access control policy can be included as part of
+          the general information security policy for the organization. Access control procedures
+          can be developed for the security program in general and for a particular information
+          system, when required. The organizational risk management strategy is a key factor in the
+          development of the access control policy. Related control: PM-9.</p>
+      </stmt>
+      <group type="objectives">
+        <control type="objective">
+          <prop role="name">AC-1.1</prop>
+          <group type="decisions">
+            <control type="decision">
+              <prop role="name">AC-1.1 (i)</prop>
+              <desc>
+                <p>the organization develops and formally documents access control policy</p>
+              </desc>
             </control>
-            <control type="objective">
-               <prop role="name">AC-1.2</prop>
-                <group type="decisions">
-                    <control type="decision">
-                     <prop role="name">AC-1.2 (i)</prop>
-                     <desc>
-                        <p>the organization defines the frequency of access control policy reviews/updates</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.2 (ii)</prop>
-                     <desc>
-                        <p>the organization reviews/updates access control policy in accordance with organization-defined frequency</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.2 (iii)</prop>
-                     <desc>
-                        <p>the organization defines the frequency of access control procedure reviews/updates</p>
-                    </desc>
-                  </control>
-                    <control type="decision">
-                     <prop role="name">AC-1.2 (iv)</prop>
-                     <desc>
-                        <p>the organization reviews/updates access control procedures in accordance with organization-defined frequency</p>
-                    </desc>
-                  </control>
-                </group>
-                <group type="potential-assessments">
-                    <control type="assessment">
-                     <prop role="method">EXAMINE</prop>
-                     <desc>
-                        <ul>
-                           <li>Access control policy and procedures</li>
-                           <li>other relevant documents or records</li>
-                        </ul>
-                     </desc>
-                  </control>
-                    <control type="assessment">
-                     <prop role="method">INTERVIEW</prop>
-                     <desc>
-                        <ul>
-                           <li>Organizational personnel with access control responsibilities</li>
-                        </ul>
-                     </desc>
-                  </control>
-                </group>
+            <control type="decision">
+              <prop role="name">AC-1.1 (ii)</prop>
+              <desc>
+                <p>the organization access control policy addresses: -purpose; -scope; -roles and
+                  responsibilities; -management commitment; -coordination among organizational
+                  entities; and -compliance</p>
+              </desc>
             </control>
-        </group>
-         <references>
-            <ref>
-               <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-            </ref>
-            <ref>
-               <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-            </ref>
-         </references>
-      </control>
+            <control type="decision">
+              <prop role="name">AC-1.1 (iii)</prop>
+              <desc>
+                <p>the organization disseminates formal documented access control policy to elements
+                  within the organization having associated access control roles and
+                  responsibilities</p>
+              </desc>
+            </control>
+            <control type="decision">
+              <prop role="name">AC-1.1 (iv)</prop>
+              <desc>
+                <p>the organization develops and formally documents access control procedures</p>
+              </desc>
+            </control>
+            <control type="decision">
+              <prop role="name">AC-1.1 (v)</prop>
+              <desc>
+                <p>the organization access control procedures facilitate implementation of the
+                  access control policy and associated access controls</p>
+              </desc>
+            </control>
+            <control type="decision">
+              <prop role="name">AC-1.1 (vi)</prop>
+              <desc>
+                <p>the organization disseminates formal documented access control procedures to
+                  elements within the organization having associated access control roles and
+                  responsibilities</p>
+              </desc>
+            </control>
+          </group>
+          <group type="potential-assessments">
+            <control type="assessment">
+              <prop role="method">EXAMINE</prop>
+              <desc>
+                <ul>
+                  <li>Access control policy and procedures</li>
+                  <li>other relevant documents or records</li>
+                </ul>
+              </desc>
+            </control>
+            <control type="assessment">
+              <prop role="method">INTERVIEW</prop>
+              <desc>
+                <ul>
+                  <li>Organizational personnel with access control responsibilities</li>
+                </ul>
+              </desc>
+            </control>
+          </group>
+        </control>
+        <control type="objective">
+          <prop role="name">AC-1.2</prop>
+          <group type="decisions">
+            <control type="decision">
+              <prop role="name">AC-1.2 (i)</prop>
+              <desc>
+                <p>the organization defines the frequency of access control policy
+                  reviews/updates</p>
+              </desc>
+            </control>
+            <control type="decision">
+              <prop role="name">AC-1.2 (ii)</prop>
+              <desc>
+                <p>the organization reviews/updates access control policy in accordance with
+                  organization-defined frequency</p>
+              </desc>
+            </control>
+            <control type="decision">
+              <prop role="name">AC-1.2 (iii)</prop>
+              <desc>
+                <p>the organization defines the frequency of access control procedure
+                  reviews/updates</p>
+              </desc>
+            </control>
+            <control type="decision">
+              <prop role="name">AC-1.2 (iv)</prop>
+              <desc>
+                <p>the organization reviews/updates access control procedures in accordance with
+                  organization-defined frequency</p>
+              </desc>
+            </control>
+          </group>
+          <group type="potential-assessments">
+            <control type="assessment">
+              <prop role="method">EXAMINE</prop>
+              <desc>
+                <ul>
+                  <li>Access control policy and procedures</li>
+                  <li>other relevant documents or records</li>
+                </ul>
+              </desc>
+            </control>
+            <control type="assessment">
+              <prop role="method">INTERVIEW</prop>
+              <desc>
+                <ul>
+                  <li>Organizational personnel with access control responsibilities</li>
+                </ul>
+              </desc>
+            </control>
+          </group>
+        </control>
+      </group>
+      <references>
+        <ref>
+          <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf"
+            >NIST 800-100</std>
+        </ref>
+        <ref>
+          <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST
+            800-12</std>
+        </ref>
+      </references>
+    </control>
       <control type="SP800-53">
          <title>Account Management</title>
          <prop role="control-class">Technical</prop>
@@ -176,44 +194,47 @@
          </stmt>
          <group type="control-enhancements">
             <control type="SP800-53-enhancement">
-               <desc>
-                  <p>The organization employs automated mechanisms to support the management of information system accounts.</p>
-               </desc>
-               <group type="objectives">
-                    <control type="objective">
-                     <prop role="name">AC-2(1).1</prop>
-                        <group type="decisions">
-                            <control type="decision">
-                           <prop role="name">AC-2(1).1 (i)</prop>
-                           <desc>
-                              <p>the organization employs automated mechanisms to support information system account management functions</p>
-                            </desc>
-                        </control>
-                        </group>
-                        <group type="potential-assessments">
-                            <control type="assessment">
-                           <prop role="method">EXAMINE</prop>
-                           <desc>
-                              <ul>
-                                 <li>procedures addressing account management</li>
-                                 <li>information system design documentation</li>
-                                 <li>information system configuration settings and associated documentation</li>
-                                 <li>other relevant documents or records</li>
-                              </ul>
-                           </desc>
-                        </control>
-                            <control type="assessment">
-                           <prop role="method">TEST</prop>
-                           <desc>
-                              <ul>
-                                 <li>Automated mechanisms implementing account management functions</li>
-                              </ul>
-                           </desc>
-                        </control>
-                        </group>
-                    </control>
-                </group>
+          <desc>
+            <p>The organization employs automated mechanisms to support the management of
+              information system accounts.</p>
+          </desc>
+          <group type="objectives">
+            <control type="objective">
+              <prop role="name">AC-2(1).1</prop>
+              <group type="decisions">
+                <control type="decision">
+                  <prop role="name">AC-2(1).1 (i)</prop>
+                  <desc>
+                    <p>the organization employs automated mechanisms to support information system
+                      account management functions</p>
+                  </desc>
+                </control>
+              </group>
+              <group type="potential-assessments">
+                <control type="assessment">
+                  <prop role="method">EXAMINE</prop>
+                  <desc>
+                    <ul>
+                      <li>procedures addressing account management</li>
+                      <li>information system design documentation</li>
+                      <li>information system configuration settings and associated
+                        documentation</li>
+                      <li>other relevant documents or records</li>
+                    </ul>
+                  </desc>
+                </control>
+                <control type="assessment">
+                  <prop role="method">TEST</prop>
+                  <desc>
+                    <ul>
+                      <li>Automated mechanisms implementing account management functions</li>
+                    </ul>
+                  </desc>
+                </control>
+              </group>
             </control>
+          </group>
+        </control>
             <control type="SP800-53-enhancement">
                <desc>
                   <p>The information system automatically terminates temporary and emergency accounts after [<em>Assignment: organization-defined time period for each type of account</em>].</p>
