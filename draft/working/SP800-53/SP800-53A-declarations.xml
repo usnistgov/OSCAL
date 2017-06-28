@@ -26,13 +26,13 @@
    </property>
 
   <property  role="number" context="SP800-53-enhancement">
-    <!--<required/>-->
+    <required/>
     <value><inherit/><autonum format="(1)"/></value>
   </property>
   
   <property  role="name" context="objective">
-    <!--<required/>-->
-    <!--<value><inherit from="number"/><autonum format=".1"/></value>-->
+    <required/>
+    <value><inherit from="number"/><autonum format=".1"/></value>
   </property>
   
   <property  role="name" context="decision">

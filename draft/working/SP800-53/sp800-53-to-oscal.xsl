@@ -11,8 +11,9 @@
   exclude-result-prefixes="#all"
   >
 
-  <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement"/>
-  
+  <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement objectives objective decisions decision potential-assessments potential-assessment "/>
+
+
   <xsl:output indent="yes"/>
   
   <xsl:template match="feed:controls">
@@ -68,14 +69,7 @@
   </xsl:template>-->
   
   <xsl:template match="descriptions | decisions | objectives | potential-assessments">
-    <!--<xsl:message>
-      <xsl:text>Matched </xsl:text>
-      <xsl:value-of select="local-name()"/>
-    </xsl:message>-->
-    <group type="{ local-name(.) }">
-      <!--<xsl:apply-templates select="." mode="group-label"/>-->
       <xsl:apply-templates/>
-    </group>
   </xsl:template>
   
   <xsl:template match="references">
@@ -86,40 +80,37 @@
   </xsl:template>
   
   <xsl:template match="control-enhancements">
-    <group type="control-enhancements">
-      <!--<xsl:apply-templates select="." mode="group-label"/>-->
-      <xsl:apply-templates/>
-    </group>
+    <xsl:apply-templates/>
   </xsl:template>
   
   <xsl:template match="description">
-    <description>
+    <stmt role="description">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </description>
+    </stmt>
   </xsl:template>
   
   <xsl:template match="objective">
-    <control type="objective">
+    <subcontrol type="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </control>
+    </subcontrol>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
-    <guidance>
+    <stmt role="guidance">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </guidance>
+    </stmt>
   </xsl:template>
   
   <xsl:template match="decision">
-    <control type="decision">
+    <subcontrol type="decision">
       <xsl:apply-templates select="@*" mode="asElement"/>
-      <description>
+      <stmt role="description">
         <xsl:apply-templates/>
-      </description>
-    </control>
+      </stmt>
+    </subcontrol>
   </xsl:template>
   
   <!--<xsl:template match="potential-assessment">
@@ -132,11 +123,11 @@
   </xsl:template>-->
   
   <xsl:template match="control-enhancement">
-    <control type="SP800-53-enhancement">
+    <subcontrol type="SP800-53-enhancement">
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <xsl:apply-templates select="* except title"/>
-    </control>
+    </subcontrol>
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
@@ -146,14 +137,14 @@
   <xsl:template match="@sequence" mode="asElement"/>
   
   <xsl:template match="potential-assessment">
-    <control type="assessment">
+    <subcontrol type="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
-      <description>
+      <stmt role="description">
         <ul>
-        <xsl:apply-templates/>
+          <xsl:apply-templates/>
         </ul>
-      </description>
-    </control>
+      </stmt>
+    </subcontrol>
   </xsl:template>
   
   <xsl:template match="object">

@@ -5,17 +5,16 @@
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>OSCAL: the Open Security Controls Assessment Language</title>
-  <declarations xmlns="http://scap.nist.gov/schema/oscal">
-    <control-spec type="element-description">
-      <required>
-        <property name="tag">
+  <declarations>
+    
+      
+    <property role="tag" context="control">
+           <required/>
           <regex>&lt;\x\c*&gt;</regex>
         </property>
-        <property name="full_name"/>
-        <statement name="remarks"><title>Remarks</title></statement>
-      </required>
-      <optional/>
-    </control-spec>
+    <property role="full_name" context="control"/>
+        <statement role="remarks" context="control"/>
+      
   </declarations>  <!--<declarations></declarations>-->
   <div>
     <title>What is OSCAL</title>
@@ -50,12 +49,12 @@
   <group>
     <title>OSCAL tag set</title>
     <control type="element-description">
-      <prop name="tag">&lt;prop></prop>
-      <prop name="full_name">Property</prop>
+      <prop role="tag">&lt;prop></prop>
+      <prop role="full_name">Property</prop>
       <desc>
         <p>A value with a name, as assigned to a control or set of controls.</p>
       </desc>
-      <stmt name="remarks">
+      <stmt role="remarks">
         <p>Like statements (<code>prop</code>) and parameters (<code>param</code>), properties are
             <q>named things</q>, and as such are expected to be unique within their controls, such
           that a query for a particular property (or other named thing) on a particular control will
@@ -80,21 +79,22 @@
       </stmt>
     </control>
     <control type="element-description">
-      <prop name="tag">&lt;stmt></prop>
-      <prop name="full_name">Statement</prop>
+      <prop role="tag">&lt;stmt></prop>
+      <prop role="full_name">Statement</prop>
       <desc>
         <p>A block of prose; a claim, assertion, accounting or specification applicable to a control
-          or set of controls, for the purpose indicated by its <code>@name</code>.</p>
+          or set of controls, for the purpose indicated by its <code>@role</code>.</p>
       </desc>
-      <stmt name="remarks">
+      <stmt role="remarks">
         <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), statements are
-            <q>named things</q>, and as such are expected to be unique within their controls, such
-          that a query for a particular statement (or other named thing) on a particular control
-          will never return more than one thing by that name. Some OSCAL implementations may also
-          permit anonymous statements, which will not follow the <q>unique naming</q> rule.</p>
-        <p>A statement is typically displayed with a heading proper to its type or function, as
-          indicated by its <code>@name</code>. So that a <code>stmt[@name='objectives']</code> is
-          displayed under a header <em>Objectives</em>, etc.</p>
+          distinguishable from other elements within their controls  by their assigned @role, such
+          that a query for a particular statement (or property or parameter) on a particular control
+          will never return more than one thing by that name. Unlike properties, however,
+          (So-called 'loose' or 'floating' statements, on the other hand, may have no @role
+          assignment.)</p>
+        <p>An assigned role will typically also provide for a header in display, such that
+            <code>stmt[@role='objectives']</code> is displayed under a header <em>Objectives</em>,
+          etc. This is useful, since unlike controls and groups, statements may not have titles.</p>
         <p>Statements are the <q>stuff</q> of an OSCAL catalog or controls profile.</p>
         <p>This element may be formally valid, without its contents or representations being
           correct, complete, veracious or even intelligible.</p>
@@ -119,7 +119,7 @@
           from this requirement: a control or group may have any number of anonymous statements, as
           long as names are not used more than once.</p>
       </desc>
-      <stmt name="remarks">
+      <stmt role="remarks">
         <p>Within a family, there should be only a single <q>Jane</q> or <q>Juanito</q>. There can
           be as many Juanitos as there are families (or this case, controls), but each family may
           have only one.</p>

@@ -15,7 +15,7 @@
   <sch:pattern>
 <!-- Since we support retrieving elements by flags either roles or
       (fallback) element names, we avoid ambiguities by forbidding the
-      use of the element names as role names. -->
+      use of the element names as roles. -->
     <sch:rule context="*">
       <sch:report test="normalize-space(@type)=('control','group','stmt','prop')">
         @type value '<sch:value-of select="@type"/>' is not allowed (reserved name)
@@ -42,11 +42,7 @@
       <sch:assert test="empty($same-role)">
         role '<sch:value-of select="@role"/>' appears more than once inside this <sch:value-of select="name(..)"/>.</sch:assert>
     </sch:rule>
-    
-    
-  </sch:pattern>
+    </sch:pattern>
 
-
-  
   
 </sch:schema>

@@ -38,7 +38,6 @@
         <xsl:value-of select="if (count($missing-statements) gt 1) then 'statements are ' else 'statement is'"/>
         missing on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/>;
         we expect <xsl:value-of select="for $m in $missing-statements return concat('''',$m,'''')" separator=", "/></sch:assert>
-      
     </sch:rule>
     
     <!--  Constraints over declarations - very important!  -->

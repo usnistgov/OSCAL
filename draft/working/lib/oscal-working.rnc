@@ -56,11 +56,18 @@ section = element div { idAttr, typeAttr,
 control =
   element control {
     idAttr, typeAttr,
-    title?, param*, prop*,
-    desc?,
+    param*, title?, prop*,
     anyKindofStatement*,
-    extensions?,
+    subcontrol*,
     references?
+  }
+
+subcontrol =
+  element plug {
+    idAttr, typeAttr,
+    param*, title?, prop*,
+    anyKindofStatement*,
+    subcontrol*
   }
 
 title = element title { (text | q)* }
@@ -71,7 +78,7 @@ title = element title { (text | q)* }
 # or on-the-fly declaration of new parameters for a control
 # (since params are not currently required to be declared
 
-param   = empty #element param { nameAttr, mix }
+param   = element param { idAttr, nameAttr, mix }
 
 prop =
   element prop {
@@ -124,8 +131,6 @@ prose = ( ul | ol | p )*
 
 # cluster = element cluster { control+ | prop+ | ref+ }
 # on group, not(*/@name != */@name) ie all names must be the same
-
-extensions = group+
 
 references = element references { ref+ }
 
@@ -195,4 +200,4 @@ select = element select { paramAttr?, choice* }
 choice = element choice { (assign | mix)* }
 
 
-paramAttr = attribute use-param { text }?
+paramAttr = attribute use { text }?

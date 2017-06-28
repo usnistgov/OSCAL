@@ -1,32 +1,11 @@
-Issues / questions ISO 27001/2 analysis
 
-x Information capture options (we'll start with EPUB)
-  David inquiring re: ISO STS option
-
-x Surrounding materials (intro/front matter etc etc) - out of scope? (yes, for now: DW)
-
-x 'description' will be normative - every control must have this element
-x add control/@type
-x so 'control' has at least (title, description)
-x map ISO stuff in!
-x We need some sort of (nested) div structure for document structure
-  e.g. clause, family
-
-x rename nested catalog as 'group' (DW)
-
-===
-
-Since last check in:
-  implemented declarations/control-spec w/ property, statement declarations
-    schema, Schematron (implementation), test data
-  tagged assign, select, withdraw elements in SP800-53 data
-  CSS for same
-  More CSS and schema enhancements
-  Testing XSD pathway including docs
-  Documentation (oscal-oscal.xml)
-  Extended to inline <code>, <q>
-
-o merge 'implementation' sections from 800-53A (PDF!) into draft control
+x merge 'implementation' sections from 800-53A (PDF!) into draft control
+o pull in more data from PDFs e.g. in 800-53 control enhancements
+  Maybe do all of section AC (account controls)
+o "Media Protection" section
+  x Review shows there are discrepancies btw published PDF/Word and 800-53A XML,
+    but also doesn't readily show anything that doesn't fit in OSCAL
+    (missing numbering is missing; more detail on enhancements is given)
 
 x xrefs and linking
   We are linking using a simple web-friendly notation. An href is a URL,
@@ -42,68 +21,51 @@ x induction of implicit cross-references from SP800-53?
 x Implement parameters
    w/ parameter declarations?
 
-o pull in more data from PDFs e.g. in 800-53 control enhancements
-  Maybe do all of section AC (account controls)
-o presentational XSLT (PDF?) for cross-checking / proofing
-
-o "Media Protection" section (passim!)
-
-XSLT
-  x implement bells and whistles
-    x e.g. headers (titles) for statements, properties
-    x runins for numbering
-  filtered views e.g. all assignments, selections
-
-x Define an ID assignment protocol and add IDs?
+x Define an ID assignment protocol and add IDs (to samples so far)?
     o implement as refactoring XSLT?
       taking numbering format as runtime parameter?!
 
-Implement 'assign' checking as Schematron (specific to catalog / control types)
+o assignment/parameter support
+  Implement 'assign' checking as Schematron (specific to catalog / control types)
   checks against normative versions in the background!?
 Implement 'select' checking as detecting any select without selected/
   select/selected/choice
   select/available/choice
 
-o 'preamble' section including declarations
+x 'preamble' section including declarations
     x control-spec (describing the structure of a control)
     x param-spec (naming permissible/recognized parameters)
     o authority (referencing external authorities / sources)
-x implement PDF production pipeline
-x implement XSLT 1.0 (client side) runtime resolution/display
 
 LAYERED VALIDATION MODEL
   0. element grammar
   1. OSCAL constraints (what makes a control catalog in OSCAL terms)
-  2. OSCAL customization constraints (profile-level)
-  3. implicit/runtime/'culture' constraints (implementation-level)
+  2. OSCAL profile constraints (OSCAL declarations)
+  3. locally implemented extensions and customizations
+  4. implicit/runtime/'culture' constraints (implementation-level)
+  
+TRANSFORMATIONS
+  1. Selecting or filtering controls
+  2. Expanding/resolving assignments
+ 
+Define mapping format in OSCAL?
+   e.g. a document that maps several catalog types over into OSCAL
+   w/ tools for comparison
+   
+Mapping tools - SVG to show controls w/ plugs
 
-All of these can be demonstrated in a prototype/PoC
+Implement OSCAL audit?
+  producing a diff/compare btw a profile and its catalog showing all mods
+  based on a simple diff btw processing results and catalog :-)
+
+Expand filter rewrites all assign or select elements with their inherited param values?
+  
 
 Runtime declarations?
   x parameter value assignments
   o semantic associations / merge-map?
     (e.g. formal mappings between control properties)
 
-  
-inside declarations:
-  x control-spec { @type, parameter-spec*, statement-spec*, authority* )
-    x expansion for run-in label?
-      (so you can say to promote prop[@name='number'] into the control title for display)
-    x add prop/runin <runin/> to <id/><regex/><value/> indicating run-in display of property
-    x also added title as alternative
-  x parameter including lexical contraints
-  x statement-spec
-    x expansions e.g. to provide header "Other considerations" to stmt[@type='other-considerations']"
-  o authority (binding to external resource or copy)
-      stipulates local handle (@id) 
-
-
-NEXT UP
-  o Make CSS filtering down to select/choice and assign values?
-
-  x Make XSLT running (various) substitutions
-  x Another XSLT produces a set of declarations from a group of controls (adapt from mapper)
-    x also produced declarations for ISO20002
 
 Every profile is based on a catalog or multiple catalogs. A catalog is indeed (in one respect) nothing more than a "standalone" profile, that is, a profile that makes reference to no catalog but itself. We distinguish a catalog from a profile in use mainly because we hope we don't have to start from scratch; we generally base our work on earlier work or at least make reference to it - hence we are less interested in making a new catalog from scratch, than in creating a profile of (documenting a relation with) a catalog provided as a reference. Nonetheless, catalogs and profiles are made from the same stuff: the difference is in how we are using it.
 
@@ -126,14 +88,14 @@ What sorts of things do we need to validate at the level of a control?
   Lexical form of properties
     x enumerated list
     x regex
-    * numbering semantics (xsl:number?)
+    x numbering semantics (xsl:number?)
          value/inherit, value/number as dynamic substitution values
     * referential integrity (co-occurrence constraints)
       e.g. if in section "Access Control" then ID must start 'AC' ...
 
 x XSLT to rip catalog declarations from a catalog
-oXygen Author CSS
-pull-downs for properties and statement types inside various controls (e.g.)
+x oXygen Author CSS
+  pull-downs for properties and statement types inside various controls (e.g.)
 
 oXygen macros, boilerplate and auto-insert
   e.g. parameter names by reference to declarations
@@ -153,9 +115,6 @@ x functioning RNC and Schematron
 
 o add xsd-type for declaration i.e. <xsd-type>decimal</xsd:type> validates $x castable as xs:decimal
 
-x first cut at XSD?
-x embed documentation (and stage documentation pipeline?)
-
 o Question re: implementations
   Our prototype is implemented on an XML stack in oXygen but OSCAL must be platform independent
   (We can also foresee developing on an XML stack off of oXygen, of course.
@@ -163,19 +122,8 @@ o Question re: implementations
   So ... what other platforms / stacks can we be looking at?
     Python ... Ruby ... who do we have?
    
-o validate (properties and paramters?) upper-bound, lower-bound, (w/ inclusive/exclusive etc.)
-  - or - define a mechanism for higher-level validation against such rules
-    e.g. an OSCAL that converts into a Schematron ...
-    cf OSCAL-refinement-OSCAL.xml
-
-x enforce uniqueness of param/@role (or @id?)
-x refactor declarations
-   properties and statements at the top
-   distinguish between validation and substitution rules?
-x Change @name to @type and remove control/@type (no: now @role)
-
 Model control enhancements inside controls?
-  (Flag to indicate its an enhancement?)
+  (Flag to indicate it's an enhancement?)
 
 o consider the mapping to unify 800-53 and ISO 27002?
     issues:
@@ -183,15 +131,25 @@ o consider the mapping to unify 800-53 and ISO 27002?
         (tool: head to head hierarchical comparison of catalogs / profiles
 o       "Profile sketch" XSLT that produces hierarchical analysis in XML and SVG)
 o       Mapping of controls w/ their properties and statements (easy to see in declarations)
-      
+
+XSLT template that for any control, returns its control context i.e. the hierarchy of controls
+  and groups it appears in/with.
+
 o prototype profiling mechanism
      Assume operator has a list of controls to include
         (including control enhancements or subcontrols, with containing controls)
      Also demo producing a profile by selection/filtering (e.g. baseline-impact)
 
-For Dave - group is good but should we permit control/control (eg 800-53A)
+o For Dave - group is good but should we permit control/control (eg 800-53A)
 
-High level issues (group to discuss?)
+o remodel control//control as control/subcontrol
+o remove group from control
+'title' not permitted as @role?
+o rename 'desc' to stmt?
+
+
+
+High level issues
   Setting names of elements and attributes
   Defining when a new schema must be layered over
     (e.g. new element types for privileged statements)

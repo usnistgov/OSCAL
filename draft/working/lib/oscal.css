@@ -54,8 +54,8 @@ references:before { content: "References"; font-size: 120%; font-weight: bold }
 control { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-param:before { content: attr(role) ': ' }
-param { display: inline-block; background-color: darkseagreen; border: thin outset darkgreen;
+param:before { content: 'param ' attr(role) ': ' }
+param { display: inline-block; background-color: #C5FF98; border: thin outset darkgreen;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 prop:before { content: attr(role) ': ';  font-weight: bold; font-size:90% }

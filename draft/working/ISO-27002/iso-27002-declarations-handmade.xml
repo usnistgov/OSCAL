@@ -6,22 +6,18 @@
   <property role="number" context="control-category">
     <required/>
     <regex>\d\d?</regex>
-    <!--<autonum>1</autonum> auto numbering needs to manage scope, starting point ... -->
-    <!--<limit type="not-less-than">5</limit>
-    <limit type="not-more-than">12</limit>-->
   </property>
   <property role="number" context="clause">
     <required/>
-    <!--<value>5.1</value> ... <value>18.2</value>-->
+    <value><inherit/><autonum format=".1"/></value>
   </property>
   <statement role="objective" context="clause">
     <required/>
   </statement>
   <property role="number" context="iso-27002">
     <required/>
-    <!--<value>5.1.1</value> ...
-      <value>18.2.3</value>-->
+    <value><inherit/><autonum format=".1"/></value>
   </property>
-  <statement role="implementation-guidance" context="control"/>
-  <statement role="other-information" context="control"/>
+  <statement role="guidance" context="control"/>
+  <statement role="information" context="control"/>
 </declarations>

@@ -19,14 +19,14 @@
     <prop role="match">prop[@role='level']</prop>
     <prop role="report-when">. &gt; 10</prop>
     <desc>
-      <p>Maximum value for property 'level' is 10, inclusive</p>
+      <p>Property 'level' must be 10 or less.</p>
     </desc>
   </control>
   <control type="schematron-rule">
     <prop role="match">prop[@role='level']</prop>
     <prop role="report-when">. &lt; 0</prop>
     <desc>
-      <p>Minimum value for property 'level' is 0, inclusive</p>
+      <p>Property 'level' must be 0 or more.</p>
     </desc>
   </control>
   

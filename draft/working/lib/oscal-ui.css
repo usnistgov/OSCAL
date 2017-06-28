@@ -33,11 +33,6 @@ statement:before { content:
   oxy_textfield(edit, '@role', columns, 20) 
  }
 
-assign:before,
-param:before { content: oxy_textfield(
-          edit, '@role',
-          columns, 30); }
-
 
 control:before { content: 'control: ' oxy_textfield(
           edit, '@type',
@@ -56,3 +51,16 @@ stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
               values, 'purpose, guidance, information, remarks',
               labels, 'Objectives, Guidance, Information, Remarks' )
 }
+
+param:before { content: 'param role ' oxy_textfield(
+          edit, '@role',
+          columns, 10) 
+           'id ' oxy_textfield(
+          edit, '@id',
+          columns, 10); }
+
+assign:before { content: 'use ' oxy_textfield(
+          edit, '@use',
+          columns, 7); }
+
+
