@@ -75,7 +75,7 @@ With respect to content models, catalogs and profiles are isomorphic except wrt 
 
 Hence, in schema validation, 'catalog' and 'profile' are synonymous, with their difference in application asserted in Schematron.
 
-o Also declarations of properties/statements on groups (again by type)
+x Also declarations of properties/statements on groups (again by type)
 
 modeling 'selections' via XML containment <select><alternative></></>
 
@@ -140,14 +140,13 @@ o prototype profiling mechanism
         (including control enhancements or subcontrols, with containing controls)
      Also demo producing a profile by selection/filtering (e.g. baseline-impact)
 
-o For Dave - group is good but should we permit control/control (eg 800-53A)
+x For Dave - group is good but should we permit control/control (eg 800-53A)
+    no - now we have control/enhancement
 
 o remodel control//control as control/subcontrol
 o remove group from control
 'title' not permitted as @role?
 o rename 'desc' to stmt?
-
-
 
 High level issues
   Setting names of elements and attributes
