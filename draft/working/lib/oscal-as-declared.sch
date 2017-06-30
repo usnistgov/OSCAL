@@ -17,7 +17,7 @@
       <sch:assert test="exists($declarations)" role="warning">No declarations found (properties will not be checked).</sch:assert>
     </sch:rule>
     
-    <sch:rule context="oscal:group | oscal:control">
+    <sch:rule context="oscal:group | oscal:control | oscal:enhancement">
       <xsl:variable name="here" select="."/>
       <xsl:variable name="ilk"  select="@type/string(.),local-name(..)"/>
       <sch:let name="applicable" value="$declarations/key('declarations-by-match',$ilk,.)"/>
@@ -49,8 +49,7 @@
       <sch:report test="true"><sch:value-of select="oscal:declares(.)"/></sch:report>
     </sch:rule>
     
-    
-    <sch:rule context="oscal:control/* | oscal:group/*">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/*">
       <sch:let name="me" value="."/>
       <!-- <sch:report test="oscal:match-token($me) = (../* except $me)/oscal:match-token(.)">
         More than one '<sch:value-of select="@role"/>' appears in this <sch:value-of select="name(..)"/> (<sch:value-of select="oscal:match-token(..)"/>).
@@ -138,7 +137,7 @@
     <xsl:variable name="expanded">
       <!-- single level numbering of element among its siblings of the same name. -->
       <xsl:for-each select="$who-cares/..">
-        <xsl:number format="{($call/@format,'A')[1]}"/>
+        <xsl:number format="{($call/string(.),'A')[1]}"/>
       </xsl:for-each>
     </xsl:variable>
     <xsl:value-of select="normalize-space($expanded)"/>

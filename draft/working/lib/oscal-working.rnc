@@ -37,7 +37,7 @@ property =
 regex = element regex { text }
 value = element value { ( \inherit | autonum | text )* }
 \inherit = element inherit { attribute from { text }?, text }
-autonum = element autonum { attribute format { text }?, text }
+autonum = element autonum { text }
 
 statement =
   element statement { nameAttr, contextAttr, required? }
@@ -56,14 +56,14 @@ section = element div { idAttr, typeAttr,
 control =
   element control {
     idAttr, typeAttr,
-    param*, title?, prop*,
+    param*, title?, prop*, plug*,
     anyKindofStatement*,
     subcontrol*,
     references?
   }
 
 subcontrol =
-  element plug {
+  element enhancement {
     idAttr, typeAttr,
     param*, title?, prop*,
     anyKindofStatement*,
@@ -86,6 +86,15 @@ prop =
     whatnot
   }
 # on prop, not(@name = ../(* except current())/@name)
+
+plug = empty
+
+# plug is like prop, except it has a type instead of a role (type is not required to be unique)
+#plug =
+#  element plug {
+#   typeAttr,
+#   whatnot
+# }
 
 desc = element desc { prose }
 

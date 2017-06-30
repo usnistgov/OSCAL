@@ -6,7 +6,7 @@
   xpath-default-namespace="http://scap.nist.gov/schema/oscal"
   version="3.0">
   
-<!-- For tweaking OSCAL documents
+<!-- For tweaking OSCAL documents eg SP800-53A
      (Add ids, normalize values?) -->
   
   <xsl:mode on-no-match="shallow-copy"/>
@@ -21,14 +21,15 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="control">
+  <xsl:template match="control-enhancement">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:attribute name="id">
-      <xsl:for-each select="ancestor::control[prop/@name='number'][1]">
-        <xsl:value-of select="replace(prop[@name='number'],'\C','') ! lower-case(.)"/>
-      </xsl:for-each>
-      <xsl:number format="-A" count="control" level="any" from="control[prop/@name='number']"/>
+        <xsl:for-each select="ancestor::control">
+          <xsl:value-of select="replace(prop[@name = 'number'], '\C', '') ! lower-case(.)"/>
+        </xsl:for-each>
+        <xsl:number format="-a-i" count="control-enhancement" level="multiple"
+          from="control"/>
       </xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>
@@ -44,11 +45,11 @@
   <xsl:template match="assign | select">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
-      <xsl:attribute name="name">
-        <xsl:for-each select="ancestor::control[prop/@name='number'][1]/prop[@name = 'number']">
+      <xsl:attribute name="role">
+        <xsl:for-each select="ancestor::control[prop/@role='number'][1]/prop[@role = 'number']">
           <xsl:value-of select="replace(., '\C', '') ! lower-case(.)"/>
         </xsl:for-each>
-        <xsl:number format="_a" count="assign | select" level="any" from="control[prop/@name='number']"/>
+        <xsl:number format="_a" count="assign | select" level="any" from="control[prop/@role='number']"/>
       </xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>

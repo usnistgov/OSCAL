@@ -111,13 +111,14 @@
     <control>
       <title>Names must be distinct among sibling elements</title>
       <desc>
-        <p><code>@name</code> (the value of the 'name' attribute) must be distinct among sibling
+        <p><code>@role</code> (the value of the 'role' attribute) must be distinct among sibling
           properties (<code>prop</code> elements) and statements (<code>stmt</code> elements), that
           is, properties and statements assigned to the same control. Within a control, no two (or
           more) statements (<code>stmt</code>), properties (<code>prop</code>) or parameter
-          assignments (<code>param</code>) have the same name. Anonymous statements are exempted
-          from this requirement: a control or group may have any number of anonymous statements, as
-          long as names are not used more than once.</p>
+          assignments (<code>param</code>) have the same role. Statements with no role are exempted
+          from this requirement: a control or group may have any number of <q>spare</q> statements,
+          as long as roles are not used more than once (in a control) on statements and properties
+          that have them.</p>
       </desc>
       <stmt role="remarks">
         <p>Within a family, there should be only a single <q>Jane</q> or <q>Juanito</q>. There can
@@ -130,8 +131,8 @@
           retrievability. Because we have this rule, we can always be sure that property (or
           statement) X on control Y means <q>Y is/has X</q>, not only <q>Y is/has X among other
             possibilities</q>.</p>
-        <p>This rule is enforced via Schematron; the test is <code>not(@name = (../* except
-            .)/@name)</code></p>
+        <p>This rule is enforced via Schematron; the test is <code>not(@role = (../* except
+            .)/@role)</code></p>
         <p>Note the constraint governs siblings, not all descendants of a control. Sub controls
           within a control may have their own (properly-named) statements and properties.</p>
       </stmt>

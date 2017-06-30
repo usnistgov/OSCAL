@@ -11,8 +11,9 @@
       <sch:let name="me" value="."/>
       <sch:let name="targets" value="key('assignments-by-use',(@role|@id))"/>
       <sch:let name="echoes"  value="$targets[normalize-space(.)=normalize-space($me)]"/>
-      <sch:assert test="empty($echoes)">Parameter value echoes its
-        <xsl:value-of select="if (count($echoes) gt 1) then 'assignments' else 'assignment'"/>
+      <sch:assert test="empty($echoes)">Parameter value repeats the text
+        to which it is assigned
+        <!--<xsl:value-of select="if (count($echoes) gt 1) then 'assignments' else 'assignment'"/>-->
         (look for assignments using <xsl:value-of select="$echoes/@use/concat('''',.,'''')" separator=", "/>)
       </sch:assert>
     </sch:rule>
@@ -30,7 +31,7 @@
         </sqf:description>
         
         <!--<sqf:add node-type="attribute" target="use" select="$id"/>-->
-        <sqf:add match="ancestor::oscal:control[1]">
+        <sqf:add match="(ancestor::oscal:control|ancestor::oscal:enhancement)[last()]">
           <param id="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
             <xsl:copy-of select="$me/node()"/>
           </param>
@@ -53,7 +54,7 @@
         </sqf:description>
         
         <sqf:add node-type="attribute" target="use" select="$id"/>
-        <sqf:add match="ancestor::oscal:control[1]">
+        <sqf:add match="(ancestor::oscal:control|ancestor::oscal:enhancement)[last()]">
           <param id="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
             <xsl:copy-of select="$me/node()"/>
           </param>

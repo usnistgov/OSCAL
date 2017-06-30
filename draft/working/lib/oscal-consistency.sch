@@ -32,10 +32,10 @@
     
     <sch:rule context="oscal:title"/>
     
-    <sch:rule context="oscal:control | oscal:group"/>
+    <sch:rule context="oscal:control | oscal:group | oscal:enhancement"/>
       
     <!-- Next rule doesn't match controls or groups since the last rule pre-empts it. -->
-    <sch:rule context="oscal:control/* | oscal:group/*">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/*">
       <sch:let name="me" value="."/>
       <xsl:variable name="name" select="(@role,local-name(.))[1]"/>
       <sch:let name="same-role" value="../(* except $me)[(@role,local-name(.))[1]=$name]"/>

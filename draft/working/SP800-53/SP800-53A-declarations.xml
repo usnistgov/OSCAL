@@ -16,8 +16,11 @@
       <value>P0</value>
       <value>P3</value>
    </property>
-   <statement role="guidance" context="SP800-53"/>
-   <property  role="number"   context="SP800-53">
+  <statement role="description" context="SP800-53">
+    <required/>
+  </statement>
+  <statement role="guidance" context="SP800-53"/>
+  <property  role="number"   context="SP800-53">
        <required/>
      <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
   </property>
@@ -26,28 +29,37 @@
    </property>
 
   <property  role="number" context="SP800-53-enhancement">
-    <required/>
-    <value><inherit/><autonum format="(1)"/></value>
+    <!--<required/>-->
+    <value><inherit/><autonum>(1)</autonum></value>
   </property>
   
-  <property  role="name" context="objective">
-    <required/>
-    <value><inherit from="number"/><autonum format=".1"/></value>
-  </property>
   
-  <property  role="name" context="decision">
-      <required/>
-      <value><inherit from="name"/> <autonum format="(i)"/></value>
-   </property>
-   <property  role="method" context="assessment">
+  <property  role="method" context="assessment">
       <required/>
       <value>EXAMINE</value>
       <value>INTERVIEW</value>
       <value>TEST</value>
    </property>
-   <statement role="guidance" context="SP800-53-enhancement"/>
-   <property  role="baseline-impact" context="SP800-53-enhancement">
+  
+  
+  <statement role="guidance" context="SP800-53-enhancement"/>
+  <property  role="baseline-impact" context="SP800-53-enhancement">
       <value>HIGH</value>
       <value>MODERATE</value>
    </property>
+  
+  <property  role="name" context="objective">
+    <required/>
+    <!--<value><inherit from="number"/><autonum>.1</autonum></value>-->
+  </property>
+  
+  <property  role="name" context="decision">
+    <required/>
+    <value><inherit from="name"/> <autonum>(i)</autonum></value>
+  </property>
+  
+  <statement role="description" context="decision assessment SP800-53-enhancement">
+    <required/>
+  </statement>
+  
 </declarations>

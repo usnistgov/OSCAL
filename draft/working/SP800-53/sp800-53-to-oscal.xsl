@@ -91,10 +91,10 @@
   </xsl:template>
   
   <xsl:template match="objective">
-    <subcontrol type="objective">
+    <control-enhancement type="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </subcontrol>
+    </control-enhancement>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
@@ -105,12 +105,12 @@
   </xsl:template>
   
   <xsl:template match="decision">
-    <subcontrol type="decision">
+    <control-enhancement type="decision">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <stmt role="description">
         <xsl:apply-templates/>
       </stmt>
-    </subcontrol>
+    </control-enhancement>
   </xsl:template>
   
   <!--<xsl:template match="potential-assessment">
@@ -123,11 +123,11 @@
   </xsl:template>-->
   
   <xsl:template match="control-enhancement">
-    <subcontrol type="SP800-53-enhancement">
+    <control-enhancement type="SP800-53-enhancement">
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <xsl:apply-templates select="* except title"/>
-    </subcontrol>
+    </control-enhancement>
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
@@ -137,14 +137,14 @@
   <xsl:template match="@sequence" mode="asElement"/>
   
   <xsl:template match="potential-assessment">
-    <subcontrol type="assessment">
+    <control-enhancement type="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <stmt role="description">
         <ul>
           <xsl:apply-templates/>
         </ul>
       </stmt>
-    </subcontrol>
+    </control-enhancement>
   </xsl:template>
   
   <xsl:template match="object">

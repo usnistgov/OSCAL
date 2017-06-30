@@ -48,8 +48,7 @@ stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
             oxy_combobox( 
               edit, '@role',
               editable, true,
-              values, 'purpose, guidance, information, remarks',
-              labels, 'Objectives, Guidance, Information, Remarks' )
+              values, 'description, objectives, guidance, information, remarks' )
 }
 
 param:before { content: 'param role ' oxy_textfield(
