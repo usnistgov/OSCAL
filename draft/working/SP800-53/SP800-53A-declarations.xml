@@ -29,7 +29,7 @@
    </property>
 
   <property  role="number" context="SP800-53-enhancement">
-    <!--<required/>-->
+    <required/>
     <value><inherit/><autonum>(1)</autonum></value>
   </property>
   

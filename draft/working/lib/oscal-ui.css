@@ -5,22 +5,32 @@ declarations:before { content:
   oxy_textfield(edit, '@href', columns, 30) 
  }
 
-value, identifier, regex, inherit, autonum { 
-  display: block; margin-left: 2em; visibility: -oxy-collapse-text }
+value, regex { display: block }
 
+identifier, required, regex, autonum { 
+  display: block; visibility: -oxy-collapse-text }
+
+inherit { 
+  display: inline; visibility: -oxy-collapse-text }
+
+autonum  { display: inline }
+  
 property:before { content:
   oxy_label(text, "property ", styles, "font-weight:bold")
   oxy_textfield(edit, '@role', columns, 12) 
+  ' on '
+  oxy_textfield(edit, '@context', columns, 20) 
  }
 
 parameter:before { content:
   oxy_label(text, "parameter ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@role', columns, 30) 
+  oxy_textfield(edit, '@role', columns, 30)
+  ' on '
+  oxy_textfield(edit, '@context', columns, 20) 
  }
 
 value:before { content:
-  oxy_label(text, "value ", styles, "font-weight:normal")
-  oxy_textfield(edit, '#text', columns, 40) 
+  oxy_label(text, "value ", styles, "font-weight:normal") 
  }
 
 regex:before { content:
@@ -28,9 +38,22 @@ regex:before { content:
   oxy_textfield(edit, '#text', columns, 50) 
  }
 
+autonum:before { content:
+  oxy_label(text, "format after ", styles, "font-weight:normal")
+  oxy_textfield(edit, '#text', columns, 6) 
+ }
+
+inherit:before { content:
+  oxy_label(text, "inherit from (ancestor property) ", styles, "font-weight:normal")
+  oxy_textfield(edit, '@from', columns, 6)
+  
+ }
+
 statement:before { content:
   oxy_label(text, "statement ", styles, "font-weight:bold")
   oxy_textfield(edit, '@role', columns, 20) 
+  ' on '
+  oxy_textfield(edit, '@context', columns, 20) 
  }
 
 

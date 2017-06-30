@@ -40,9 +40,10 @@ statement { background-color: cornsilk; margin-top: 0.5em; color: black }
 inherit, autonum { display: inline }
 required { content: oxy_label(text, "required", width, 4em, color, inherit)
 }
-inherit { content: oxy_label(text, "inherit", width, 4em, color, inherit)
+
+inherit:before { content: oxy_label(text, "inherit", width, 4em, color, inherit)
 }
- autonum { content: oxy_label(text, "autonum", width, 4em, color, inherit)
+autonum:before { content: oxy_label(text, "autonumber ", width, 4em, color, inherit)
 }
 
 group, div, references, extensions

@@ -27,8 +27,8 @@
       <sch:let name="missing-properties" value="$required-property-roles[not(. = $here/oscal:prop/@role)]"/>
       <sch:assert test="empty($required-property-declarations) or empty($missing-properties)">Required 
         <xsl:value-of select="if (count($missing-properties) gt 1) then 'properties are ' else 'property is'"/>
-        missing on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/>;
-        we expect <xsl:value-of select="for $m in $missing-properties return concat('''',$m,'''')" separator=", "/></sch:assert>
+        missing: expecting <xsl:value-of select="for $m in $missing-properties return concat('''',$m,'''')" separator=", "/>
+        on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/></sch:assert>
       
       <sch:let name="required-statement-declarations" value="$applicable[exists(oscal:required)]/self::oscal:statement"/>
       <sch:let name="required-statement-roles" value="$required-statement-declarations/(@role/string(.),local-name(.))[1]"/>
@@ -36,8 +36,9 @@
       <sch:let name="missing-statements" value="$required-statement-roles[not(. = $here/oscal:stmt/@role)]"/>
       <sch:assert test="empty($required-statement-declarations) or empty($missing-statements)">Required 
         <xsl:value-of select="if (count($missing-statements) gt 1) then 'statements are ' else 'statement is'"/>
-        missing on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/>;
-        we expect <xsl:value-of select="for $m in $missing-statements return concat('''',$m,'''')" separator=", "/></sch:assert>
+        missing: expecting <xsl:value-of select="for $m in $missing-statements return concat('''',$m,'''')" separator=", "/>
+        on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/>
+      </sch:assert>
     </sch:rule>
     
     <!--  Constraints over declarations - very important!  -->
@@ -62,7 +63,10 @@
       <!-- Only properties, statements and parameters with roles must also be declared;
            other declarations come for free. -->
       <sch:let name="matching-declarations" value="$declarations/key('declarations-by-role',$signatures,.)"/>
-      <sch:assert test="empty(@role) or empty($declarations) or exists($matching-declarations)">No declaration found for <sch:name/> '<sch:value-of select="@role"/>' in this location</sch:assert>
+      
+      <!--<sch:report test="true()">Seeing <sch:value-of select="count($matching-declarations)"/> matching declarations <xsl:value-of select="string-join($matching-declarations/name(),', ')"/> </sch:report>-->
+      
+      <sch:assert test="empty(@role) or empty($declarations/*) or exists($matching-declarations)">No declaration found for <sch:name/> '<sch:value-of select="@role"/>' in this location</sch:assert>
       
       <sch:let name="regex-requirements" value="$matching-declarations/oscal:regex"/>
       <sch:assert test="empty($regex-requirements) or (every $r in ($regex-requirements) satisfies matches(.,$r))">

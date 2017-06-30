@@ -10,136 +10,154 @@
    <group type="family">
       <title>Access Control</title>
       <control type="SP800-53">
-         <title>Access Control Policy and Procedures</title>
-         <prop role="control-class">Technical</prop>
-         <prop role="number">AC-1</prop>
-         <prop role="priority">P1</prop>
-         <stmt role="description">
-            <p>The organization develops, disseminates, and reviews/updates [<em>Assignment: organization-defined frequency</em>]:</p>
-            <ol>
-               <li>A formal, documented access control policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and</li>
-               <li>Formal, documented procedures to facilitate the implementation of the access control policy and associated access controls.</li>
-            </ol>
-         </stmt>
-         <stmt role="guidance">
-            <p>This control is intended to produce the policy and procedures that are required for the effective implementation of selected security controls and control enhancements in the access control family. The policy and procedures are consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Existing organizational policies and procedures may make the need for additional specific policies and procedures unnecessary. The access control policy can be included as part of the general information security policy for the organization. Access control procedures can be developed for the security program in general and for a particular information system, when required. The organizational risk management strategy is a key factor in the development of the access control policy. Related control: PM-9.</p>
-         </stmt>
-         <enhancement type="objective">
-            <prop role="name">AC-1.1</prop>
-            <enhancement type="decision">
-               <prop role="name">AC-1.1 (i)</prop>
-               <stmt role="description">
-                  <p>the organization develops and formally documents access control policy</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="decision">
-               <prop role="name">AC-1.1 (ii)</prop>
-               <stmt role="description">
-                  <p>the organization access control policy addresses: 
--purpose; 
--scope; 
--roles and responsibilities; 
--management commitment; 
--coordination among organizational entities;  and 
--compliance</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="decision">
-               <prop role="name">AC-1.1 (iii)</prop>
-               <stmt role="description">
-                  <p>the organization disseminates formal documented access control policy to elements within the organization having associated access control roles and responsibilities</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="decision">
-               <prop role="name">AC-1.1 (iv)</prop>
-               <stmt role="description">
-                  <p>the organization develops and formally documents access control procedures</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="decision">
-              <prop role="name">AC-1.1 (v)</prop>
-              <stmt role="description">
-                  <p>the organization access control procedures facilitate implementation of the access control policy and associated access controls</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="decision">
-               <prop role="name">AC-1.1 (vi)</prop>
-               <stmt role="description">
-                  <p>the organization disseminates formal documented access control procedures to elements within the organization having associated access control roles and responsibilities</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="assessment">
-               <prop role="method">EXAMINE</prop>
-               <stmt role="description">
-                  <ul>
-                     <li>Access control policy and procedures</li>
-                     <li>other relevant documents or records</li>
-                  </ul>
-               </stmt>
-            </enhancement>
-            <enhancement type="assessment">
-               <prop role="method">INTERVIEW</prop>
-               <stmt role="description">
-                  <ul>
-                     <li>Organizational personnel with access control responsibilities</li>
-                  </ul>
-               </stmt>
-            </enhancement>
-         </enhancement>
-         <enhancement type="objective">
-            <prop role="name">AC-1.2</prop>
-            <enhancement type="decision">
-               <prop role="name">AC-1.2 (i)</prop>
-               <stmt role="description">
-                  <p>the organization defines the frequency of access control policy reviews/updates</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="decision">
+      <title>Access Control Policy and Procedures</title>
+      <prop role="control-class">Technical</prop>
+      <prop role="number">AC-1</prop>
+      <prop role="priority">P1</prop>
+      <stmt role="description">
+        <p>The organization develops, disseminates, and reviews/updates [<em>Assignment:
+            organization-defined frequency</em>]:</p>
+        <ol>
+          <li>A formal, documented access control policy that addresses purpose, scope, roles,
+            responsibilities, management commitment, coordination among organizational entities, and
+            compliance; and</li>
+          <li>Formal, documented procedures to facilitate the implementation of the access control
+            policy and associated access controls.</li>
+        </ol>
+      </stmt>
+      <stmt role="guidance">
+        <p>This control is intended to produce the policy and procedures that are required for the
+          effective implementation of selected security controls and control enhancements in the
+          access control family. The policy and procedures are consistent with applicable federal
+          laws, Executive Orders, directives, policies, regulations, standards, and guidance.
+          Existing organizational policies and procedures may make the need for additional specific
+          policies and procedures unnecessary. The access control policy can be included as part of
+          the general information security policy for the organization. Access control procedures
+          can be developed for the security program in general and for a particular information
+          system, when required. The organizational risk management strategy is a key factor in the
+          development of the access control policy. Related control: PM-9.</p>
+      </stmt>
+      <enhancement type="objective">
+        <prop role="name">AC-1.1</prop>
+        <enhancement type="decision">
+          <prop role="name">AC-1.1 (i)</prop>
+          <stmt role="description">
+            <p>the organization develops and formally documents access control policy</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="decision">
+          <prop role="name">AC-1.1 (ii)</prop>
+          <stmt role="description">
+            <p>the organization access control policy addresses: -purpose; -scope; -roles and
+              responsibilities; -management commitment; -coordination among organizational entities;
+              and -compliance</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="decision">
+          <prop role="name">AC-1.1 (iii)</prop>
+          <stmt role="description">
+            <p>the organization disseminates formal documented access control policy to elements
+              within the organization having associated access control roles and
+              responsibilities</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="decision">
+          <prop role="name">AC-1.1 (iv)</prop>
+          <stmt role="description">
+            <p>the organization develops and formally documents access control procedures</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="decision">
+          <prop role="name">AC-1.1 (v)</prop>
+          <stmt role="description">
+            <p>the organization access control procedures facilitate implementation of the access
+              control policy and associated access controls</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="decision">
+          <prop role="name">AC-1.1 (vi)</prop>
+          <stmt role="description">
+            <p>the organization disseminates formal documented access control procedures to elements
+              within the organization having associated access control roles and
+              responsibilities</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="assessment">
+          <prop role="method">EXAMINE</prop>
+          <stmt role="description">
+            <ul>
+              <li>Access control policy and procedures</li>
+              <li>other relevant documents or records</li>
+            </ul>
+          </stmt>
+        </enhancement>
+        <enhancement type="assessment">
+          <prop role="method">INTERVIEW</prop>
+          <stmt role="description">
+            <ul>
+              <li>Organizational personnel with access control responsibilities</li>
+            </ul>
+          </stmt>
+        </enhancement>
+      </enhancement>
+      <enhancement type="objective">
+        <prop role="name">AC-1.2</prop>
+        <enhancement type="decision">
+          <prop role="name">AC-1.2 (i)</prop>
+          <stmt role="description">
+            <p>the organization defines the frequency of access control policy reviews/updates</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="decision">
           <prop role="name">AC-1.2 (ii)</prop>
           <stmt role="description">
             <p>the organization reviews/updates access control policy in accordance with
               organization-defined frequency</p>
           </stmt>
         </enhancement>
-            <enhancement type="decision">
-               <prop role="name">AC-1.2 (iii)</prop>
-               <stmt role="description">
-                  <p>the organization defines the frequency of access control procedure reviews/updates</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="decision">
-               <prop role="name">AC-1.2 (iv)</prop>
-               <stmt role="description">
-                  <p>the organization reviews/updates access control procedures in accordance with organization-defined frequency</p>
-               </stmt>
-            </enhancement>
-            <enhancement type="assessment">
-               <prop role="method">EXAMINE</prop>
-               <stmt role="description">
-                  <ul>
-                     <li>Access control policy and procedures</li>
-                     <li>other relevant documents or records</li>
-                  </ul>
-               </stmt>
-            </enhancement>
-            <enhancement type="assessment">
-               <prop role="method">INTERVIEW</prop>
-               <stmt role="description">
-                  <ul>
-                     <li>Organizational personnel with access control responsibilities</li>
-                  </ul>
-               </stmt>
-            </enhancement>
-         </enhancement>
-         <references>
-            <ref>
-               <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf">NIST 800-100</std>
-            </ref>
-            <ref>
-               <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST 800-12</std>
-            </ref>
-         </references>
-      </control>
+        <enhancement type="decision">
+          <prop role="name">AC-1.2 (iii)</prop>
+          <stmt role="description">
+            <p>the organization defines the frequency of access control procedure
+              reviews/updates</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="decision">
+          <prop role="name">AC-1.2 (iv)</prop>
+          <stmt role="description">
+            <p>the organization reviews/updates access control procedures in accordance with
+              organization-defined frequency</p>
+          </stmt>
+        </enhancement>
+        <enhancement type="assessment">
+          <prop role="method">EXAMINE</prop>
+          <stmt role="description">
+            <ul>
+              <li>Access control policy and procedures</li>
+              <li>other relevant documents or records</li>
+            </ul>
+          </stmt>
+        </enhancement>
+        <enhancement type="assessment">
+          <prop role="method">INTERVIEW</prop>
+          <stmt role="description">
+            <ul>
+              <li>Organizational personnel with access control responsibilities</li>
+            </ul>
+          </stmt>
+        </enhancement>
+      </enhancement>
+      <references>
+        <ref>
+          <std href="http://csrc.nist.gov/publications/nistpubs/800-100/SP800-100-Mar07-2007.pdf"
+            >NIST 800-100</std>
+        </ref>
+        <ref>
+          <std href="http://csrc.nist.gov/publications/nistpubs/800-12/handbook.pdf">NIST
+            800-12</std>
+        </ref>
+      </references>
+    </control>
       <control type="SP800-53">
          <title>Account Management</title>
          <prop role="control-class">Technical</prop>
@@ -634,13 +652,10 @@
         </enhancement>
       </enhancement>
       <enhancement type="SP800-53-enhancement">
-        <param id="AC-3_a"><em>Assignment: organization-defined set of users and
-          resources</em></param>
         <stmt role="description">
           <p>The information system enforces [<em>Assignment: organization-defined nondiscretionary
-              access control policies</em>] over [<assign use="AC-3_a"><em>Assignment:
-                organization-defined set of users and resources</em></assign>] where the policy rule
-            set for each policy specifies:</p>
+              access control policies</em>] over [<em>Assignment: organization-defined set of users
+              and resources</em>] where the policy rule set for each policy specifies:</p>
           <ol>
             <li>Access control information (i.e., attributes) employed by the policy rule set (e.g.,
               position, nationality, age, project, time of day); and</li>
