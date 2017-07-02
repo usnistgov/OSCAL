@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="file:/home/wendell/Documents/OSCAL/draft/working/lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal-mapping.css"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>Mappings into OSCAL</title>
   <group type="control-family">
@@ -33,7 +33,7 @@
       <prop role="source">Control category number</prop>
       <prop role="target">group[@type='control-category']/prop[@role='number']</prop>
       <stmt role="remarks">
-        <p>The values are 5 through 18.</p>
+        <p>The values are 5 through 18, corresponding to their section numbers in the document.</p>
       </stmt>
     </control>
     <control type="mapping">
