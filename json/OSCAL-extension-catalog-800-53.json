@@ -1,0 +1,74 @@
+{
+  "definitions": {
+    "oscalnistgovschemacommon:rel": {
+      "enum": [
+        "parent",
+        "related",
+        "layer",
+        "reference",
+        "target",
+        "statement-reference",
+        "alias",
+        "implemented-by"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemaextensioncatalog80053:supplemental-guidance": {
+      "type": "object",
+      "properties": {
+        "link": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacommon:linkType"
+          },
+          "minItems": 0
+        },
+        "description": {
+          "type": "string"
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "oscalnistgovschemacommon:linkType": {
+      "type": "object",
+      "properties": {
+        "rel": {
+          "$ref": "#/definitions/oscalnistgovschemacommon:rel"
+        },
+        "href": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/xs:token"
+        },
+        "lang": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rel",
+        "value"
+      ]
+    },
+    "lang": {
+      "type": "string"
+    },
+    "space": {
+      "enum": [
+        "default",
+        "preserve"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "string"
+}

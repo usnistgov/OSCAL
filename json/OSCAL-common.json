@@ -1,0 +1,28 @@
+{
+  "definitions": {
+    "oscalnistgovschemacommon:rel": {
+      "enum": [
+        "parent",
+        "related",
+        "layer",
+        "reference",
+        "target",
+        "statement-reference",
+        "alias",
+        "implemented-by"
+      ],
+      "type": "string"
+    },
+    "lang": {
+      "type": "string"
+    },
+    "space": {
+      "enum": [
+        "default",
+        "preserve"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "string"
+}
