@@ -85,7 +85,9 @@ td > *:first-child { margin-top: 0em }
   <xsl:template match="oscal:declarations"/>
     
     <xsl:template match="oscal:title" mode="title">
-      <xsl:value-of select="."/>
+      <title>
+        <xsl:value-of select="."/>
+      </title>
     </xsl:template>
 
   <xsl:template match="oscal:control">
