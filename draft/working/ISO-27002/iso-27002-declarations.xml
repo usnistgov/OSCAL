@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
-<?xml-model href="../lib/oscal-working.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <declarations xmlns="http://scap.nist.gov/schema/oscal">
-   <property name="number" context="control-category">
+   <property role="number" context="control-category">
       <required/>
       <value>5</value>
       <value>6</value>
@@ -20,7 +20,7 @@
       <value>17</value>
       <value>18</value>
    </property>
-   <property name="number" context="clause">
+   <property role="number" context="clause">
       <required/>
       <value>5.1</value>
       <value>6.1</value>
@@ -58,10 +58,10 @@
       <value>18.1</value>
       <value>18.2</value>
    </property>
-   <statement name="objective" context="clause">
+   <statement role="objective" context="clause">
       <required/>
    </statement>
-   <property name="number" context="iso-27002">
+   <property role="number" context="iso-27002">
       <required/>
       <value>5.1.1</value>
       <value>5.1.2</value>
@@ -178,6 +178,6 @@
       <value>18.2.2</value>
       <value>18.2.3</value>
    </property>
-   <statement name="implementation-guidance" context="iso-27002"/>
-   <statement name="other-information" context="iso-27002"/>
+   <statement role="implementation-guidance" context="iso-27002"/>
+   <statement role="other-information" context="iso-27002"/>
 </declarations>

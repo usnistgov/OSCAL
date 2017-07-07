@@ -4,7 +4,7 @@
   xmlns:ns3="http://scap.nist.gov/schema/sp800-53/feed/1.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   pub_date="2013-07-12T15:48:06.061-04:00"
-  xsi:schemaLocation="http://scap.nist.gov/schema/sp800-53/1.0 http://nvd.nist.gov/schema/sp800-53/feed/1.0/sp800-53-feed_1.0.xsd">
+  >
     <ns3:control>
         <control-class>Technical</control-class>
         <family>Access Control</family>

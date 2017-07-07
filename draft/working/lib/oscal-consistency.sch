@@ -5,44 +5,85 @@
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
+
+  <xsl:include href="oscal-functions.xsl"/>
   
-   
+  <xsl:variable name="ids" select="//@id/lower-case(normalize-space(.))"/>
   
 <!-- Declarations are the contents of local declarations, if present, or the document at href if locally empty.  -->
   <sch:let name="declarations"
     value="/oscal:catalog/ ( oscal:declarations[empty(@href)], oscal:declarations/document(@href,/)/oscal:declarations )[1]"/>
   
   <sch:pattern>
-<!-- Since we support retrieving elements by flags either roles or
+<!-- Since we support retrieving elements by flags either classes or
       (fallback) element names, we avoid ambiguities by forbidding the
-      use of the element names as roles. -->
-    <sch:rule context="*">
-      <sch:report test="normalize-space(@type)=('control','group','stmt','prop')">
-        @type value '<sch:value-of select="@type"/>' is not allowed (reserved name)
-      </sch:report>
-      <sch:report test="normalize-space(@role)=('control','group','stmt','prop')">
-        @role value '<sch:value-of select="@role"/>' not allowed (reserved name)
-      </sch:report>
+      use of the element names as classes. -->
+    <sch:rule context="*[matches(@class,'\S')]">
+      <sch:let name="interdicted" value="oscal:classes(.)[.=('control','group','stmt','prop','param')]"/>
+      <sch:let name="plural" value="count($interdicted) ne 1"/>
+      <sch:assert test="empty($interdicted)">
+        @class <sch:value-of select="if ($plural) then 'values ' else 'value '"/>
+        <sch:value-of select="oscal:sequence($interdicted)"/> 
+        <sch:value-of select="if ($plural) then 'are' else 'is'"/> not allowed.
+      </sch:assert>
+      
+      <!-- Error if the same class is given to two different element types -->
+      <sch:let name="me" value="."/>
+      <xsl:variable name="rivals" select="key('elements-by-class',oscal:classes($me))
+        [not(local-name(.) = local-name($me))]"/>
+       <sch:assert test="empty($rivals)"><sch:value-of select="name(.)"/>
+       is assigned the same classes as element(s)
+       <xsl:value-of select="oscal:sequence(distinct-values($rivals/local-name(.)))"/> in the same document.</sch:assert>
+      
+      <!--
+       Warning against assigning same values to @class and @id or do we care?        
+        <sch:let name="seen-classes" value="oscal:classes(.)[.=$ids]"/>
+      <sch:let name="plural" value="count($seen-classes) ne 1"/>
+      <sch:assert role="warning" test="empty($seen-classes)">
+        <sch:value-of select="if ($plural) then 'class values ' else 'class value '"/>
+        <sch:value-of select="oscal:sequence($seen-classes)"/>
+        <sch:value-of select="if ($plural) then ' replicate id values' else 'replicates an id value'"/>
+        elsewhere in the document.</sch:assert>-->
     </sch:rule>
   </sch:pattern>
+  
+  
   
   <sch:pattern>
     
     <!--<sch:rule context="oscal:assign | oscal:select"/>-->
-    
+<!-- XXX reimplement against 'singleton' settings in declaration   -->
     <sch:rule context="oscal:title"/>
     
     <sch:rule context="oscal:control | oscal:group | oscal:enhancement"/>
       
-    <!-- Next rule doesn't match controls or groups since the last rule pre-empts it. -->
+    <sch:rule context="oscal:stmt[empty(@class)]"/>
+    
+    <!-- Next rule doesn't match elements pre-empted in the last rules. -->
     <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/*">
       <sch:let name="me" value="."/>
-      <xsl:variable name="name" select="(@role,local-name(.))[1]"/>
-      <sch:let name="same-role" value="../(* except $me)[(@role,local-name(.))[1]=$name]"/>
-      <sch:assert test="empty($same-role)">
-        role '<sch:value-of select="@role"/>' appears more than once inside this <sch:value-of select="name(..)"/>.</sch:assert>
+      <sch:let name="classes" value="oscal:classes($me)"/>
+      <sch:let name="same-classes" value="../(* except $me)/oscal:classes(.)[. = $classes]"/>
+      <sch:let name="plural" value="count($same-classes) ne 1"/>
+      <sch:assert test="empty($same-classes)">
+        <sch:value-of select="if ($plural) then 'classes ' else 'class '"/>
+        <sch:value-of select="oscal:sequence($same-classes)"/>
+        <sch:value-of select="if ($plural) then ' appear ' else ' appears '"/>
+        more than once inside this <sch:value-of select="name(..)"/>.</sch:assert>
+      
+      <!-- only titles and stmt elements are permitted empty(@class) -->
+      <sch:assert test="exists($classes)">
+        Element <sch:value-of select="name()"/> must be assigned a class.</sch:assert>
+      
+      <sch:report test="count($classes) gt 1" role="warning">Overloading classes is a bad idea.</sch:report>
+      
     </sch:rule>
-    </sch:pattern>
+  </sch:pattern>
 
+  <!--<xsl:key name="components-by-class" match="prop[matches(@class,'\S')] | param[matches(@class,'\S')] | stmt[matches(@class,'\S')]" use="oscal:classes(.)"/>-->
+  
+  <xsl:key name="elements-by-class" match="*[matches(@class,'\S')]" use="oscal:classes(.)"/>
+  
+  
   
 </sch:schema>

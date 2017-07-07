@@ -30,7 +30,7 @@
       
       
       <xsl:for-each-group select="feed:control" group-by="family">
-        <group type="family">
+        <group class="family">
           <title><xsl:value-of select="current-grouping-key()"/></title>
           <xsl:apply-templates select="current-group()"/>
         </group>
@@ -39,7 +39,7 @@
   </xsl:template>
   
   <xsl:template match="feed:control">
-    <control type="SP800-53">
+    <control class="SP800-53">
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="* except title"/>
     </control>
@@ -55,7 +55,7 @@
   <xsl:template match="family"/>
   
   <xsl:template match="control-class | number">
-    <prop role="{name()}">
+    <prop class="{name()}">
       <xsl:apply-templates/>
     </prop>
   </xsl:template>
@@ -84,89 +84,76 @@
   </xsl:template>
   
   <xsl:template match="description">
-    <stmt role="description">
+    <stmt class="description">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
     </stmt>
   </xsl:template>
   
   <xsl:template match="objective">
-    <control-enhancement type="objective">
+    <enhancement class="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </control-enhancement>
+    </enhancement>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
-    <stmt role="guidance">
+    <stmt class="guidance">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
     </stmt>
   </xsl:template>
   
   <xsl:template match="decision">
-    <control-enhancement type="decision">
+    <enhancement class="decision">
       <xsl:apply-templates select="@*" mode="asElement"/>
-      <stmt role="description">
+      <stmt class="description">
         <xsl:apply-templates/>
       </stmt>
-    </control-enhancement>
+    </enhancement>
   </xsl:template>
   
-  <!--<xsl:template match="potential-assessment">
-    <stmt type="{name()}">
-      <xsl:apply-templates select="@*" mode="asElement"/>
-      <group>
-      <xsl:apply-templates/>
-      </group>
-    </stmt>
-  </xsl:template>-->
-  
   <xsl:template match="control-enhancement">
-    <control-enhancement type="SP800-53-enhancement">
+    <enhancement class="SP800-53-enhancement">
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <xsl:apply-templates select="* except title"/>
-    </control-enhancement>
+    </enhancement>
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
-    <prop role="{name()}"><xsl:value-of select="."/></prop>
+    <prop class="{name()}"><xsl:value-of select="."/></prop>
   </xsl:template>
   
   <xsl:template match="@sequence" mode="asElement"/>
   
   <xsl:template match="potential-assessment">
-    <control-enhancement type="assessment">
+    <enhancement class="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
-      <stmt role="description">
-        <ul>
           <xsl:apply-templates/>
-        </ul>
-      </stmt>
-    </control-enhancement>
+    </enhancement>
   </xsl:template>
   
   <xsl:template match="object">
-    <li>
+    <prop class="object">
       <xsl:apply-templates/>
-    </li>
+    </prop>
   </xsl:template>
   
   <xsl:template match="priority | baseline-impact">
-    <prop role="{name()}">
+    <prop class="{name()}">
       <xsl:apply-templates/>
     </prop>  
   </xsl:template>
 
   <xsl:template match="reference">
     <ref>
-      <std>
+      <citation>
         <!-- NISO STS -->
         <xsl:apply-templates select="@href"/>
         <!--<xsl:comment> or STS &lt;std> ... </xsl:comment>-->
         <xsl:apply-templates/>
-      </std>
+      </citation>
     </ref>
   </xsl:template>
   

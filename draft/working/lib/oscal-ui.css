@@ -17,14 +17,14 @@ autonum  { display: inline }
   
 property:before { content:
   oxy_label(text, "property ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@role', columns, 12) 
+  oxy_textfield(edit, '@class', columns, 12) 
   ' on '
   oxy_textfield(edit, '@context', columns, 20) 
  }
 
 parameter:before { content:
   oxy_label(text, "parameter ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@role', columns, 30)
+  oxy_textfield(edit, '@class', columns, 30)
   ' on '
   oxy_textfield(edit, '@context', columns, 20) 
  }
@@ -51,7 +51,7 @@ inherit:before { content:
 
 statement:before { content:
   oxy_label(text, "statement ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@role', columns, 20) 
+  oxy_textfield(edit, '@class', columns, 20) 
   ' on '
   oxy_textfield(edit, '@context', columns, 20) 
  }
@@ -62,20 +62,20 @@ control:before { content: 'control: ' oxy_textfield(
           columns, 10); }
 
 prop:before { content: oxy_textfield(
-          edit, '@role',
+          edit, '@class',
           columns, 10); }
 
 stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 
-           oxy_capitalize(attr(role)) ' '
+           oxy_capitalize(attr(class)) ' '
             oxy_combobox( 
-              edit, '@role',
+              edit, '@class',
               editable, true,
               values, 'description, objectives, guidance, information, remarks' )
 }
 
-param:before { content: 'param role ' oxy_textfield(
-          edit, '@role',
+param:before { content: 'param class ' oxy_textfield(
+          edit, '@class',
           columns, 10) 
            'id ' oxy_textfield(
           edit, '@id',

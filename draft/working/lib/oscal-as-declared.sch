@@ -5,7 +5,7 @@
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
-  
+  <xsl:include href="oscal-functions.xsl"/>
    
   
 <!-- Declarations are the contents of local declarations, if present, or the document at href if locally empty.  -->
@@ -15,77 +15,108 @@
   <sch:pattern>
     <sch:rule context="oscal:catalog">
       <sch:assert test="exists($declarations)" role="warning">No declarations found (properties will not be checked).</sch:assert>
-    </sch:rule>
-    
-    <sch:rule context="oscal:group | oscal:control | oscal:enhancement">
-      <xsl:variable name="here" select="."/>
-      <xsl:variable name="ilk"  select="@type/string(.),local-name(..)"/>
-      <sch:let name="applicable" value="$declarations/key('declarations-by-match',$ilk,.)"/>
-      <!--<sch:assert role="warning" test="exists($applicable)">No declarations apply to this <sch:name/></sch:assert>-->
-      <sch:let name="required-property-declarations" value="$applicable[exists(oscal:required)]/self::oscal:property"/>
-      <sch:let name="required-property-roles" value="$required-property-declarations/@role/string(.)"/>
-      <sch:let name="missing-properties" value="$required-property-roles[not(. = $here/oscal:prop/@role)]"/>
-      <sch:assert test="empty($required-property-declarations) or empty($missing-properties)">Required 
-        <xsl:value-of select="if (count($missing-properties) gt 1) then 'properties are ' else 'property is'"/>
-        missing: expecting <xsl:value-of select="for $m in $missing-properties return concat('''',$m,'''')" separator=", "/>
-        on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/></sch:assert>
       
-      <sch:let name="required-statement-declarations" value="$applicable[exists(oscal:required)]/self::oscal:statement"/>
-      <sch:let name="required-statement-roles" value="$required-statement-declarations/(@role/string(.),local-name(.))[1]"/>
-      <!-- Extend the next line to support named statements e.g. <observations> not just stmt[@role] -->
-      <sch:let name="missing-statements" value="$required-statement-roles[not(. = $here/oscal:stmt/@role)]"/>
-      <sch:assert test="empty($required-statement-declarations) or empty($missing-statements)">Required 
-        <xsl:value-of select="if (count($missing-statements) gt 1) then 'statements are ' else 'statement is'"/>
-        missing: expecting <xsl:value-of select="for $m in $missing-statements return concat('''',$m,'''')" separator=", "/>
-        on <sch:name/> <sch:value-of select="@type/concat('''',.,'''')"/>
-      </sch:assert>
+      <!--<sch:report test="true()"><sch:value-of select="oscal:sequence($declarations/*/local-name())"/></sch:report>-->
+      
     </sch:rule>
     
     <!--  Constraints over declarations - very important!  -->
     <sch:rule context="oscal:property | oscal:statement | oscal:parameter">
       <sch:let name="me" value="."/>
+      <!-- oscal:declares returns a set of strings indicating classes and context to which declarations are bound -->
       <sch:let name="look-the-same" value="
-        ../(* except $me)[oscal:declares(.) = oscal:declares($me)]"/>
+        ../(* except $me)[oscal:signatures(.) = oscal:signatures($me)]"/>
       <sch:assert test="empty($look-the-same)">Declaration clashes with another declaration.</sch:assert>
-      <sch:report test="true"><sch:value-of select="oscal:declares(.)"/></sch:report>
+      <!--<sch:report test="true()"><sch:value-of select="oscal:sequence(oscal:signatures(.))"/></sch:report>-->
     </sch:rule>
-    
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/*">
-      <sch:let name="me" value="."/>
-      <!-- <sch:report test="oscal:match-token($me) = (../* except $me)/oscal:match-token(.)">
-        More than one '<sch:value-of select="@role"/>' appears in this <sch:value-of select="name(..)"/> (<sch:value-of select="oscal:match-token(..)"/>).
+     
+    <!-- Constraints over groups, controls and enhancements regarding required properties and statements
+          (not yet parameters) -->
+    <sch:rule context="oscal:group | oscal:control | oscal:enhancement">
+      <xsl:variable name="this" select="."/>
+      <xsl:variable name="matches"  select="oscal:classes($this),local-name($this)"/>
+      <sch:let name="applicable" value="key('declarations-by-context',$matches,$declarations)"/>
+      
+      <!--<sch:report test="true()" role="warning"><sch:value-of select="oscal:sequence($matches)"/> 
+      
+        <sch:value-of select="oscal:sequence($declarations/*/@context)"/>
       </sch:report>-->
-      <xsl:variable name="name" select="(@role,local-name(.))[1]"/>
-      <!-- Note $ilk is a sequence, one token for @type if given, one for the parent's local name. -->
-      <xsl:variable name="ilk"  select="../@type,local-name(..)"/>
-      <sch:let name="signatures" value="for $i in ($ilk) return string-join(($i,$name),'/')"/>
+      
+      <sch:assert role="warning" test="exists($applicable) or empty((oscal:param|oscal:prop|oscal:stmt)/@class)">No declarations apply to this <sch:name/></sch:assert>
+      
+      <!-- First properties (prop) then statements (stmt) -->
+      <!-- Finding property declarations for required properties.  -->
+      <sch:let name="required-property-declarations" value="$applicable/self::oscal:property[exists(oscal:required)]"/>
+      <sch:let name="required-property-classes" value="$required-property-declarations/oscal:classes(.)"/>
+      <!-- Identifying the classes of those that are not found among children -->
+      <sch:let name="missing-property-classes" value="$required-property-classes[not(. = $this/child::*/oscal:classes(.))]"/>
+      
+      <sch:assert test="empty($missing-property-classes)">Required 
+        <xsl:value-of select="if (count($missing-property-classes) gt 1) then 'properties are ' else 'property is'"/>
+        missing: expecting <xsl:value-of select="oscal:sequence($missing-property-classes)"/>
+        on <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes($this) )"/></sch:assert>
+      
+      <sch:let name="required-statement-declarations" value="$applicable/self::oscal:statement[exists(oscal:required)]"/>
+      <sch:let name="required-statement-classes" value="$required-statement-declarations/oscal:classes(.)"/>
+      
+      <!-- Extend to support named statements e.g. <observations> not just stmt[@class] ? -->
+      <sch:let name="missing-statement-classes" value="$required-statement-classes[not(. = $this/child::*/oscal:classes(.)) ]"/>
+      <sch:assert test="empty($missing-statement-classes)">Required 
+        <xsl:value-of select="if (count($missing-statement-classes) gt 1) then 'statements are ' else 'statement is'"/>
+        missing: expecting <xsl:value-of select="oscal:sequence($missing-statement-classes)"/>
+        on <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes($this) )"/>
+      </sch:assert>
+    </sch:rule>
+   
+    
+    <!-- Exempted from declaration rules; other children of control, group, enhancement must be declared
+         and will match the next rule. -->
+    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title | oscal:references"/>
+
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/*">
+      <xsl:variable name="this" select="."/>
+      
+
+      <sch:let name="signatures" value="
+        for $cx in ($this/../(oscal:classes(.),local-name(.)) ),
+            $cl in (oscal:classes($this)) return string-join(($cx,$cl),'/')"/>
       
       <!-- Only properties, statements and parameters with roles must also be declared;
            other declarations come for free. -->
-      <sch:let name="matching-declarations" value="$declarations/key('declarations-by-role',$signatures,.)"/>
+      <sch:let name="matching-declarations" value="$declarations/key('declarations-by-signature',$signatures,.)"/>
       
-      <!--<sch:report test="true()">Seeing <sch:value-of select="count($matching-declarations)"/> matching declarations <xsl:value-of select="string-join($matching-declarations/name(),', ')"/> </sch:report>-->
+      <!--<sch:report test="true()" role="info">Seeing <sch:value-of select="count($matching-declarations)"/> matching declarations <xsl:value-of select="string-join($matching-declarations/name(),', ')"/> </sch:report>-->
       
-      <sch:assert test="empty(@role) or empty($declarations/*) or exists($matching-declarations)">No declaration found for <sch:name/> '<sch:value-of select="@role"/>' in this location</sch:assert>
+      <sch:assert test="empty($matching-declarations) or count($matching-declarations)=1">More than one matching declaration found for <sch:name/> (signatures <sch:value-of select="oscal:sequence($signatures)"/>)
+      </sch:assert>
+      <sch:assert test="empty($declarations/*) or exists($matching-declarations)">No declaration found for <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes(.))"/> in this location</sch:assert>
       
       <sch:let name="regex-requirements" value="$matching-declarations/oscal:regex"/>
+      <!--<sch:report test="true()" role="warning"><sch:value-of select="oscal:sequence($regex-requirements)"/></sch:report>-->
       <sch:assert test="empty($regex-requirements) or (every $r in ($regex-requirements) satisfies matches(.,$r))">
-        Value of property '<sch:value-of select="@role"/>' is expected to match regex
+        Value of property '<sch:value-of select="oscal:classes(.)"/>' is expected to match regex
         <xsl:value-of select="if (count($regex-requirements) gt 1) then '(one of) regexes' else 'regex'"/>
-        <xsl:value-of select="$regex-requirements/concat('''',.,'''')" separator=", "/>'</sch:assert>
+        <xsl:value-of select="oscal:sequence($regex-requirements)"/>'</sch:assert>
       
-      <sch:let name="id-requirement" value="$matching-declarations/oscal:identifier"/>
-      <!--<sch:report test="exists($id-requirement)">I C ID</sch:report>-->
-      <!--<sch:let name="comrades" value="key('prop-by-role',@role)"/>
-      <sch:report test="true()">We have <sch:value-of select="count($comrades)"/> of '<sch:value-of select="."/>'</sch:report>-->
-      <sch:assert test="empty($id-requirement) or empty((key('prop-by-role',@role) except $me)[.=$me])">
-        Value of property '<sch:value-of select="@role"/>' is expected to be unique to this property (instance) within the document.</sch:assert>
+      <sch:let name="singleton-requirement" value="$matching-declarations/oscal:singleton"/>
+      <sch:let name="single-classes" value="$singleton-requirement/oscal:classes(..)[.=oscal:classes($this)]"/>
+      <sch:let name="competitors" value="$this/../*[oscal:classes(.)=$single-classes]"/>
+     
+      <sch:assert test="empty($singleton-requirement) or empty($competitors except $this)">
+        Value of property (<sch:value-of select="oscal:sequence($single-classes)"/>) is expected to be unique to this property (instance) within the document.</sch:assert>
+      
+      <sch:let name="id-requirements" value="$matching-declarations/oscal:identifier"/>
+      <sch:let name="id-classes" value="$id-requirements/oscal:classes(..)[.=oscal:classes($this)]"/>
+      <sch:let name="cohort" value="key('prop-by-value',normalize-space($this))[oscal:classes(.)=$id-classes]"/>
+      
+      <sch:assert test="empty($id-requirements) or empty($cohort except $this)">
+        Value of property (<sch:value-of select="oscal:sequence($id-classes)"/>) is expected to be unique to this property (instance) within the document.</sch:assert>
       
       <sch:let name="value-requirements" value="$matching-declarations/oscal:value"/>
       <xsl:variable name="resolved-values" as="element()*">
         <xsl:apply-templates select="$value-requirements" mode="expand-values">
           <!-- we pass $me as the who-cares -->
-          <xsl:with-param tunnel="yes" name="who-cares" select="$me"/>
+          <xsl:with-param tunnel="yes" name="who-cares" select="$this"/>
         </xsl:apply-templates>
       </xsl:variable>
       <sch:assert test="empty($value-requirements) or (. = $resolved-values)">
@@ -98,25 +129,39 @@
     
   </sch:pattern>
  
- <xsl:key name="prop-by-role" match="oscal:prop" use="@role"/>
+ <xsl:key name="prop-by-value" match="oscal:prop" use="normalize-space(.)"/>
   
-  <sch:pattern>
-    <sch:rule context="oscal:p//* | oscal:list//*"/>
-   </sch:pattern>
   
   
   <!--<xsl:variable name="source" select="/"/>
   
   -->
-  <xsl:key name="declarations-by-role" match="oscal:declarations/*" use="oscal:declares(.)"/>
   
-  <xsl:key name="declarations-by-match" match="oscal:declarations/*" use="tokenize(normalize-space(@context),'\s+')"/>
+  <!--use="tokenize(normalize-space(lower-case(@context)),'\s')"-->
+  <!-- For any control, groups or enhancement we may need (all) the declarations, as indicated by @context. -->
+ 
+  <xsl:key name="declarations-by-context" match="oscal:declarations/*" use="tokenize(normalize-space(lower-case(@context)),'\s')"/>
   
-  <xsl:function name="oscal:declares" as="xs:string*">
+  
+<!-- Each declaration has multiple signatures, a function of its class(es) and context(s).
+     Note that both can be overloaded (not that that is a good idea)
+     although clashing signatures provoke errors. -->
+  <!-- We use this to retrieve the particular declarations that (may) apply to any
+       given property or statement. -->
+  <xsl:key name="declarations-by-signature" match="oscal:declarations/*" use="oscal:signatures(.)"/>
+  
+   
+  <xsl:function name="oscal:signatures" as="xs:string*">
     <xsl:param name="d" as="element()"/>
     <!-- delivers a sequence of strings for a declaration indicating the
-         signature values -->
-    <xsl:sequence select="for $c in (tokenize($d/@context,'\s+')) return string-join(( $c, $d/@role ),'/')"/>
+         signature values 
+      declarations may have multiple classes and multiple contexts (nominal parent classes) indicated by @context -->
+    <xsl:for-each select="tokenize($d/@context/normalize-space(lower-case(.)),'&#32;')">
+      <xsl:variable name="context" select="."/>
+      <xsl:for-each select="oscal:classes($d)">
+      <xsl:value-of select="string-join(($context,.),'/')"/>
+      </xsl:for-each>
+    </xsl:for-each>
   </xsl:function>
   
   <xsl:template match="oscal:value" mode="expand-values">
@@ -128,11 +173,15 @@
 
   <xsl:template match="oscal:inherit" mode="expand-values">
     <xsl:param name="who-cares" required="yes" tunnel="yes"/>
-    <xsl:variable name="from" as="attribute()" select="(@from , parent::oscal:value/parent::oscal:property/@role)[1]"/>
-    <xsl:variable name="benefactor"
-      select="$who-cares/../ancestor::*[oscal:prop/@role=$from][1]/oscal:prop[@role=$from]"/>
-    <xsl:value-of select="normalize-space($benefactor)"/>
-    <xsl:if test="empty($benefactor)">[RESOLUTIONFAIL]</xsl:if>
+    <xsl:variable name="named-classes" select="tokenize(@from/normalize-space(string(.)),'\s')"/>
+    <xsl:variable name="matching-classes" select="if (empty($named-classes))
+      then parent::oscal:value/parent::oscal:property/oscal:classes(.) else $named-classes"/>
+    
+    <xsl:variable name="forebear"
+      select="$who-cares/../ancestor::*[oscal:prop/oscal:classes(.)=$matching-classes][1]/
+                oscal:prop[oscal:classes(.)=$matching-classes]"/>
+    <xsl:value-of select="normalize-space($forebear)"/>
+    <xsl:if test="empty($forebear)">[RESOLUTIONFAIL]</xsl:if>
   </xsl:template>
 
   <xsl:template match="oscal:autonum" mode="expand-values">

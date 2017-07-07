@@ -21,14 +21,16 @@ decls = (parameter | property | statement)*
 
 # parameter declarations expose names and default values for parameters within the control type
 parameter   = element parameter {
-  nameAttr, contextAttr, (regex | value | choice+)? }
+  nameAttr, contextAttr, singleton?, (choice+)? }
+
+singleton = element singleton { empty }
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property =
   element property {
-    nameAttr, contextAttr, required?,
-    ( ((element identifier { empty }?, (regex | autonum )? ) |
-        value* ) )
+    nameAttr, contextAttr, singleton?, required?,
+    element identifier { empty }?,
+    (regex | value* )
   }
 
 # on 'property and possibly 'parameter',
@@ -40,7 +42,7 @@ value = element value { ( \inherit | autonum | text )* }
 autonum = element autonum { text }
 
 statement =
-  element statement { nameAttr, contextAttr, required? }
+  element statement { nameAttr, contextAttr, singleton?, required? }
 
 required = element required { empty }
 
@@ -56,7 +58,7 @@ section = element div { idAttr, typeAttr,
 control =
   element control {
     idAttr, typeAttr,
-    param*, title?, prop*, plug*,
+    param*, title?, prop*,
     anyKindofStatement*,
     subcontrol*,
     references?
@@ -143,7 +145,7 @@ prose = ( ul | ol | p )*
 
 references = element references { ref+ }
 
-ref = element ref { idAttr, (std | citation)* }
+ref = element ref { idAttr, (std | citation | prose )* }
 # add mixed-citation or equivalent
 
 std =  element std {
@@ -171,9 +173,11 @@ ul =
 
 idAttr      = attribute id { xsd:ID }?
 
-nameAttr    = attribute role { text }?
+# collapsing 'names' and 'types' as classes, HTML-style
 
-typeAttr    = attribute type { text }?
+nameAttr    = attribute class { text }?
+
+typeAttr    = attribute class { text }?
 
 contextAttr = attribute context { text }
 

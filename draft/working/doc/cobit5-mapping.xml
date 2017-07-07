@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Regular" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal-mapping.css" title="Tabular" alternate="yes"?>
+<?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
+<catalog xmlns="http://scap.nist.gov/schema/oscal">
+  <title>COBIT 5 to OSCAL Mapping</title>
+  <group>
+    <title>Control organization</title>
+    <control class="mapping">
+      <prop class="source">Domain chapters</prop>
+      <prop class="target">group[@class='domain']/title</prop>
+      <stmt class="concept">
+        <p>COBIT 5 distinguishes groups of controls in five different domains.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Domain name</prop>
+      <prop class="target">group[@class='domain']/title</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source">Domain code</prop>
+      <prop class="target">prop[@class='code']</prop>
+    </control>
+  </group>
+  <group>
+    <title>Controls and components</title>
+    <control class="mapping">
+      <prop class="source">Control name</prop>
+      <prop class="target">control/title</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source">Control number</prop>
+      <prop class="target">prop[@class='number']</prop>
+      <stmt class="remarks">
+        <p>Combines the inherited domain code with a sequential two-digit number (padded zeros) e.g.
+          EDM01 for the first control in domain EDM (<q>Evaluate, Direct and Monitor</q>).</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Process description</prop>
+      <prop class="target">stmt[@class='description']</prop>
+      <stmt class="concept">
+        <p>A normative description of the control (<q>process</q>).</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Process purpose statement</prop>
+      <prop class="target">stmt[@class='objectives']</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source">IT-related goal table</prop>
+      <prop class="target">enhancement[@class='goal']</prop>
+      <stmt class="concept">
+        <p>Each IT goal presents an implicit link to a distinctive IT goal as specified elsewhere in
+          COBITS. IT goals are indicated by a two-digit numeric identifier (01-17) and a title and
+          glossed with a brief statement, <q>Metrics</q>. These are captured inside the
+            <code>enhancement</code> as <code>prop[@class='number']</code>, <code>title</code> and
+            <code>stmt[@class='metrics']</code>.</p>
+      </stmt>
+      <stmt class="remarks">
+        <p>The control enhancement used to describe this is the same as is used for the next table,
+          the process-related goal table. </p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Process Goal and Metrics (table)</prop>
+      <prop class="target">enhancement[@class='goal']</prop>
+      <stmt class="concept">
+        <p>Like IT-related goas, each process-related goal has a number, title and <q>Metrics</q>
+          section. </p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">RACI chart</prop>
+      <prop class="target">enhancement[@class='process']/enhancement[@class='raci_index']</prop>
+      <stmt class="concept">
+        <p>Presents a map of responsibilities, role category classifications for <q>responsible</q>,
+            <q>accountable</q>, <q>consulted</q>, <q>informed</q>.</p>
+      </stmt>
+      <stmt class="remarks">
+        <p>Since the table allocates the values across processes (control enhancements), its
+          contents are allocated to those elements (i.e. disbursed) in the OSCAL.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Governance or Management Practice</prop>
+      <prop class="target">enhancement[@class='process']</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source"/>
+      <prop class="target"/>
+    </control>
+  </group>
+</catalog>

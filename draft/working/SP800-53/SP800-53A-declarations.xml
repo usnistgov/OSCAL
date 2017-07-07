@@ -3,63 +3,80 @@
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <declarations xmlns="http://scap.nist.gov/schema/oscal">
-   <property  role="control-class" context="SP800-53">
-      <required/>
+  <statement context="SP800-53" class="description">
+    <singleton/>
+    <required/>
+  </statement>
+  <property context="SP800-53" class="control-class">
+    <singleton/>
+    <required/>
+    
       <value>Technical</value>
       <value>Operational</value>
       <value>Management</value>
    </property>
-   <property  role="priority" context="SP800-53">
-     <!-- <required/>-->
+   <property context="SP800-53" class="priority">
+    <singleton/>
      <value>P1</value>
       <value>P2</value>
       <value>P0</value>
       <value>P3</value>
    </property>
-  <statement role="description" context="SP800-53">
-    <required/>
-  </statement>
-  <statement role="guidance" context="SP800-53"/>
-  <property  role="number"   context="SP800-53">
+  <statement context="SP800-53" class="guidance"/>
+  <property context="SP800-53" class="number">
+    <singleton/>
        <required/>
      <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
   </property>
-   <property role="baseline-impact" context="SP800-53">
+   <property context="SP800-53" class="baseline-impact">
+    <singleton/>
       <value>HIGH</value>
    </property>
 
-  <property  role="number" context="SP800-53-enhancement">
-    <required/>
+  <property context="SP800-53-enhancement" class="number">
+    <singleton/>
+    <!--<required/>-->
     <value><inherit/><autonum>(1)</autonum></value>
   </property>
   
-  
-  <property  role="method" context="assessment">
+  <property context="assessment" class="method">
+    <singleton/>
       <required/>
       <value>EXAMINE</value>
       <value>INTERVIEW</value>
       <value>TEST</value>
-   </property>
+  </property>
   
-  
-  <statement role="guidance" context="SP800-53-enhancement"/>
-  <property  role="baseline-impact" context="SP800-53-enhancement">
+  <statement context="SP800-53-enhancement" class="guidance">
+    <singleton/>
+  </statement>
+
+  <property context="SP800-53-enhancement" class="baseline-impact">
+    <singleton/>
       <value>HIGH</value>
       <value>MODERATE</value>
    </property>
   
-  <property  role="name" context="objective">
+  <property context="objective" class="name">
+    <singleton/>
     <required/>
     <!--<value><inherit from="number"/><autonum>.1</autonum></value>-->
   </property>
   
-  <property  role="name" context="decision">
+  <property context="decision" class="name">
+    <singleton/>
     <required/>
     <value><inherit from="name"/> <autonum>(i)</autonum></value>
   </property>
   
-  <statement role="description" context="decision assessment SP800-53-enhancement">
+  <statement context="SP800-53-enhancement decision" class="description">
+    <singleton/>
     <required/>
   </statement>
+
+  <property context="assessment" class="object">
+    <required/>
+  </property>
+  
   
 </declarations>

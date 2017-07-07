@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enhancement class="RACI_index">
+  <prop class="responsible"/>
+  <prop class="accountable">Board</prop>
+  <prop class="consulted"/>
+  <prop class="informed"/>
+  <prop>Board</prop>
+  <prop>Chief Executive Officer</prop>
+  <prop>Chief Financial Officer</prop>
+  <prop>Chief Operating Officer</prop>
+  <prop>Business Executives</prop>
+  <prop>Business Practice Owners</prop>
+  <prop>Strategy Executive Committee</prop>
+  <prop>Sterring (Programmes/Projects) Committee</prop>
+  <prop>Project Management Office</prop>
+  <prop>Value Management Office</prop>
+  <prop>Chief Risk Officer</prop>
+  <prop>Chief Information Security Officer</prop>
+  <prop>Architecture Board</prop>
+  <prop>Enterprise Risk Committee</prop>
+  <prop>Head Human Resources</prop>
+  <prop>Compliance</prop>
+  <prop>Audit</prop>
+  <prop>Chief Information Officer</prop>
+  <prop>Head architect</prop>
+  <prop>Head Development</prop>
+  <prop>Head IT Operations</prop>
+  <prop>Head IT Administration</prop>
+  <prop>Service Manager</prop>
+  <prop>Information Security Manager</prop>
+  <prop>Business Continuity Manager</prop>
+  <prop>Privacy Officer</prop>
+</enhancement>

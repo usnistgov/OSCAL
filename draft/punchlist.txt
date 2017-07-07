@@ -39,7 +39,7 @@ x 'preamble' section including declarations
 
 LAYERED VALIDATION MODEL
   0. element grammar
-  1. OSCAL constraints (what makes a control catalog in OSCAL terms)
+  1. OSCAL constraints (what makes a control catalog in OSCAL terms) - DON'T NEED?
   2. OSCAL profile constraints (OSCAL declarations)
   3. locally implemented extensions and customizations
   4. implicit/runtime/'culture' constraints (implementation-level)
@@ -59,13 +59,31 @@ Implement OSCAL audit?
   based on a simple diff btw processing results and catalog :-)
 
 Expand filter rewrites all assign or select elements with their inherited param values?
-  
 
 Runtime declarations?
   x parameter value assignments
   o semantic associations / merge-map?
     (e.g. formal mappings between control properties)
 
+NEXT UP July 2017
+X collapse @role and @type to @class and revise tools
+    including implementation of declarations/(prop|stmt|param)/singleton
+  x did everything but implementing singleton declaration
+  o but - stress test (unit test?) validations
+      write up specs
+o documentation - 
+  o sp800-53 mapping
+  o tag library
+  o declarations model
+o COBIT survey and analysis (write a log)
+
+Profiles take different forms
+  One of them is an "active profile in use" as it were, in a documented "OSCAL application"
+    Tailoring for a single organization
+  Another is "secondary (derived) catalog
+    Tailoring (profiling) for an industry, domain, or application space
+    Extending a base catalog
+    Mapping and reconciling prior catalogs into new catalogs
 
 Every profile is based on a catalog or multiple catalogs. A catalog is indeed (in one respect) nothing more than a "standalone" profile, that is, a profile that makes reference to no catalog but itself. We distinguish a catalog from a profile in use mainly because we hope we don't have to start from scratch; we generally base our work on earlier work or at least make reference to it - hence we are less interested in making a new catalog from scratch, than in creating a profile of (documenting a relation with) a catalog provided as a reference. Nonetheless, catalogs and profiles are made from the same stuff: the difference is in how we are using it.
 
@@ -78,9 +96,6 @@ Hence, in schema validation, 'catalog' and 'profile' are synonymous, with their 
 x Also declarations of properties/statements on groups (again by type)
 
 modeling 'selections' via XML containment <select><alternative></></>
-
-Anything called @id must be lexically unique in document scope!
-Combined with /*/@id (document @id) should be unique across a document collection
 
 
 What sorts of things do we need to validate at the level of a control?
@@ -102,18 +117,7 @@ oXygen macros, boilerplate and auto-insert
 
 x remove sequence, clause, control-group properties (or anything so redundant)
 
-  Model must enable auto-production of Schematron per profile?
-
-x Run Trang and debug XSD (yay!)
-
-o rendering XSLT to make a pretty page display (or PDF?)
-GOALS for next checkpoint
-x Complete and valid mappings for both sources
-x CSS for oXygen display
-x functioning RNC and Schematron
-???
-
-o add xsd-type for declaration i.e. <xsd-type>decimal</xsd:type> validates $x castable as xs:decimal
+o add xsd-type for declaration i.e. <xsd-type>decimal</xsd:type> validates $x castable as xs:decimal?
 
 o Question re: implementations
   Our prototype is implemented on an XML stack in oXygen but OSCAL must be platform independent
@@ -122,9 +126,6 @@ o Question re: implementations
   So ... what other platforms / stacks can we be looking at?
     Python ... Ruby ... who do we have?
    
-Model control enhancements inside controls?
-  (Flag to indicate it's an enhancement?)
-
 o consider the mapping to unify 800-53 and ISO 27002?
     issues:
       hierarchical alignment?
