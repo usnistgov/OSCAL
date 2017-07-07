@@ -1,0 +1,248 @@
+<html xmlns:oscal="http://scap.nist.gov/schema/oscal">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">COBIT 5 to OSCAL Mapping<style type="text/css">
+
+.control { margin:1em; padding: 1em; border: thin dotted black }
+.control > *:first-child { margin-top: 0em }
+
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif }
+h3 { font-size: 120% }
+
+div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
+
+section h3     { font-size: 160% }
+section h3     { font-size: 140% }
+div h3         { font-size: 130% }
+div div h3     { font-size: 120% }
+div div div h3 { font-size: 110% }
+
+.param { font-style: italic }
+.assign, .choice { border: thin solid black; padding: 0.1em }
+
+table { width: 100% }
+
+.source { width: 20% }
+.target { width: 20% }
+.concept, .remarks { width: 30% }
+
+td.source { font-weight: bold; color: darkgreen; word-wrap: break-word }
+td.target { font-weight: bold; color: darkred;   word-wrap: break-word  }
+td.concept, td.remarks {  font-size: 80% }
+
+.subst  { color: midnightblue; font-family: sans-serif; font-size; 85% } 
+
+th, td { border: thin dotted black; vertical-align: top }
+td > *:first-child { margin-top: 0em }
+
+.empty { background-color: darkgrey }
+
+.param .em { font-style: roman }
+
+        </style></head>
+   <body>
+      <div class="catalog">
+         <h2 class="title">COBIT 5 to OSCAL Mapping</h2>
+         <div class="group">
+            <h2 class="title">Control organization</h2>
+            <table class="control-group">
+               <tr>
+                  <th class="source" width="20%">source</th>
+                  <th class="target" width="20%">target</th>
+                  <th class="concept" width="30%">concept</th>
+                  <th class="remarks" width="30%">remarks</th>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Domain chapters</td>
+                  <td class="target" width="20%">group with @class='domain'</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">COBIT 5 distinguishes groups of controls in five different domains.</p>
+                     
+                  </td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Domain name</td>
+                  <td class="target" width="20%">title inside group with @class='domain'e</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Domain prefix</td>
+                  <td class="target" width="20%">prop with @class='code'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+            </table>
+         </div>
+         <div class="group">
+            <h2 class="title">Controls and components</h2>
+            <table class="control-group">
+               <tr>
+                  <th class="source" width="20%">source</th>
+                  <th class="target" width="20%">target</th>
+                  <th class="concept" width="30%">concept</th>
+                  <th class="remarks" width="30%">remarks</th>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Process</td>
+                  <td class="target" width="20%">control with @class='process'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Process name</td>
+                  <td class="target" width="20%">title inside control with @class='process'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Process label</td>
+                  <td class="target" width="20%">prop with @class='number'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Combines the inherited domain code with a sequential two-digit number (padded zeros)
+                        e.g.
+                        EDM01 for the first control in domain EDM (<q class="q">Evaluate, Direct and Monitor</q>).
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Process description</td>
+                  <td class="target" width="20%">stmt with @class='description'</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">A normative description of the control (<q class="q">process</q>).
+                     </p>
+                     
+                  </td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Process purpose statement</td>
+                  <td class="target" width="20%">stmt with @class='objectives'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">IT-related goal table</td>
+                  <td class="target" width="20%">enhancement with @class='goal', containing 'scope' prop = 'IT'</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">Each IT goal presents an implicit link to an IT goal specified elsewhere in COBITS
+                        (the
+                        <q class="q">Goals Cascade</q>). Here, references to IT goals are indicated by a two-digit numeric
+                        identifier (01-17) and a title, and glossed with a brief statement, <q class="q">Metrics</q>. These
+                        are captured inside the <code class="code">enhancement</code> as <code class="code">prop with
+                           @class='number'</code>, <code class="code">title</code> and <code class="code">stmt with
+                           @class='metrics'</code>.
+                     </p>
+                     
+                     <p class="p">The fact that this is an IT-related control enhancement is captured by including a
+                        property <code class="code">prop with @class='scope'</code> with the value <code class="code">IT</code>.
+                     </p>
+                     
+                  </td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">The control enhancement used to describe this is the same as is used for the next
+                        table,
+                        the process-related goal table. Note however that the IT-related goals (as indicated
+                        by
+                        the <code class="code">scope</code> property) are implicit cross-links to elsewhere in OSCAL.
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Process Goal and Metrics (table)</td>
+                  <td class="target" width="20%">enhancement with @class='goal', containing 'scope' prop ='process'</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">Like IT-related goals, each process-related goal has a number, title and <q class="q">Metrics</q>
+                        section. In this case, however, the property <code class="code">prop with @class='scope'</code> has the
+                        value <code class="code">process</code>.
+                     </p>
+                     
+                  </td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">RACI chart</td>
+                  <td class="target" width="20%">enhancement with @class='raci_index' inside enhancement with
+                     @class='process'
+                  </td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">Presents a map of responsibilities, role category classifications for <q class="q">responsible</q>,
+                        <q class="q">accountable</q>, <q class="q">consulted</q>, <q class="q">informed</q>.
+                     </p>
+                     
+                  </td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Since the table allocates the values across processes (control enhancements), its
+                        contents are allocated to those elements (i.e. disbursed) in the OSCAL.
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Governance or Management Practice</td>
+                  <td class="target" width="20%">enhancement with @class=practice</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Governance or Management Practice RACI assignments</td>
+                  <td class="target" width="20%">enhancement with @class='raci_index'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Practice inputs</td>
+                  <td class="target" width="20%">enhancement with @class='input'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Note that according to COBIT (p. 26) not all practice inputs are represented, but
+                        only
+                        those that are specific to particular practices. So if a practice has an input due
+                        to
+                        another practice having <q class="q">all</q> or <q class="q">all EDM</q> as an output (for example), such an
+                        input is not listed. Only inputs designated for this particular control (practice)
+                        are
+                        indicated.
+                     </p>
+                     
+                     <p class="p">Implicit inputs can be detected by querying.</p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Practice outputs</td>
+                  <td class="target" width="20%">enhancement with @class='output'</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%"></td>
+                  <td class="target" width="20%"></td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+            </table>
+         </div>
+         <table class="control-group">
+            <tr>
+               <th class="source" width="20%">source</th>
+               <th class="target" width="20%">target</th>
+               <th class="concept" width="30%">concept</th>
+               <th class="remarks" width="30%">remarks</th>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

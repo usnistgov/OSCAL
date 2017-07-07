@@ -26,11 +26,17 @@ div div div h3 { font-size: 110% }
 .param { font-style: italic }
 .assign, .choice { border: thin solid black; padding: 0.1em }
 
-.source { font-family: monospace; font-weight: bold; color: darkgreen; font-size: 120% }
-.target { font-family: monospace; font-weight: bold; color: darkred; font-size: 120%   }
-.concept, .remarks { font-size: 80% }
+table { width: 100% }
 
-.subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
+.source { width: 20% }
+.target { width: 20% }
+.concept, .remarks { width: 30% }
+
+td.source { font-weight: bold; color: darkgreen; word-wrap: break-word }
+td.target { font-weight: bold; color: darkred;   word-wrap: break-word  }
+td.concept, td.remarks {  font-size: 80% }
+
+.subst  { color: midnightblue; font-family: sans-serif; font-size; 85% } 
 
 th, td { border: thin dotted black; vertical-align: top }
 td > *:first-child { margin-top: 0em }
@@ -49,10 +55,10 @@ td > *:first-child { margin-top: 0em }
   
   <xsl:variable name="table-layout">
     <tr>
-      <th>source</th>
-      <th>target</th>
-      <th>concept</th>
-      <th>remarks</th>
+      <th class="source" width="20%">source</th>
+      <th class="target" width="20%">target</th>
+      <th class="concept" width="30%">concept</th>
+      <th class="remarks" width="30%">remarks</th>
     </tr>
   </xsl:variable>
   
@@ -95,6 +101,7 @@ td > *:first-child { margin-top: 0em }
         </xsl:variable>
         
         <td class="{$who}{$empty}">
+          <xsl:copy-of select="$who/@width"/>
           <xsl:apply-templates select="$cell"/>
         </td>
       </xsl:for-each>
