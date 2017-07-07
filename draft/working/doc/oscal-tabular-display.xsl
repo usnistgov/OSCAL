@@ -65,10 +65,19 @@ td > *:first-child { margin-top: 0em }
   <xsl:variable name="cell-sequence" select="document('')/*/xsl:variable[@name='table-layout']/tr/th"/>
   
   <xsl:template match="oscal:catalog | oscal:group">
+    <xsl:variable name="here" select="."/>
     <div class="{local-name(.)}">
       <xsl:apply-templates select="oscal:title | oscal:group"/>
       <table class="control-group">
-        <xsl:copy-of select="$table-layout"/>
+        <xsl:for-each select="$cell-sequence">
+          <xsl:variable name="who" select="."/>
+          <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates select="$here/oscal:prop[contains(@class, $who/@class)]"/>
+            <xsl:if test="$who/@class='concept'">Concept</xsl:if>
+            <xsl:if test="$who/@class='remarks'">Remarks</xsl:if>
+          </xsl:copy>
+        </xsl:for-each>
       
           
         <xsl:apply-templates select="oscal:control"/>
@@ -96,7 +105,7 @@ td > *:first-child { margin-top: 0em }
       <xsl:copy-of select="@id"/>
       <xsl:for-each select="$cell-sequence">
         <xsl:variable name="who" select="."/>
-        <xsl:variable name="cell" select="$me/*[contains(@class,$who)]"/>
+        <xsl:variable name="cell" select="$me/*[contains(@class,$who/@class)]"/>
         
         <xsl:variable name="empty">
           <xsl:if test="not($cell)"> empty</xsl:if>

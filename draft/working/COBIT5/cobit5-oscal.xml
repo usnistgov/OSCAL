@@ -140,7 +140,7 @@
           <prop class="consulted">Compliance</prop>
           <prop class="consulted">Audit</prop>
           <prop class="responsible">Chief Information Officer</prop>
-          <prop class="consulted">Head architect</prop>
+          <prop class="consulted">Head Architect</prop>
           <prop class="consulted">Head Development</prop>
           <prop class="consulted">Head IT Operations</prop>
         </enhancement>
@@ -201,10 +201,6 @@
           </ol>
         </stmt>
         <enhancement class="raci_index">
-          <!--<prop class="responsible"/>
-          <prop class="accountable"/>
-          <prop class="consulted"/>
-          <prop class="informed"/>-->
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -223,7 +219,7 @@
           <prop class="consulted">Compliance</prop>
           <prop class="consulted">Audit</prop>
           <prop class="responsible">Chief Information Officer</prop>
-          <prop class="consulted">Head architect</prop>
+          <prop class="consulted">Head Architect</prop>
           <prop class="informed">Head Development</prop>
           <prop class="informed">Head IT Operations</prop>
           <prop class="informed">Head IT Administration</prop>
@@ -275,10 +271,6 @@
           </ol>
         </stmt>
         <enhancement class="raci_index">
-          <!--<prop class="responsible"/>
-          <prop class="accountable"/>
-          <prop class="consulted"/>
-          <prop class="informed"/>-->
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -297,7 +289,7 @@
           <prop class="consulted">Compliance</prop>
           <prop class="consulted">Audit</prop>
           <prop class="responsible">Chief Information Officer</prop>
-          <prop class="consulted">Head architect</prop>
+          <prop class="consulted">Head Architect</prop>
           <prop class="informed">Head Development</prop>
           <prop class="informed">Head IT Operations</prop>
           <prop class="informed">Head IT Administration</prop>
@@ -646,7 +638,7 @@
           <prop class="informed">Compliance</prop>
           <prop class="informed">Audit</prop>
           <prop class="responsible">Chief Information Officer</prop>
-          <prop class="informed">Head architect</prop>
+          <prop class="informed">Head Architect</prop>
           <prop class="informed">Head Development</prop>
           <prop class="informed">Head IT Operations</prop>
           <prop class="responsible">Head IT Administration</prop>
@@ -724,7 +716,7 @@
           <prop class="informed">Compliance</prop>
           <prop class="informed">Audit</prop>
           <prop class="responsible">Chief Information Officer</prop>
-          <prop class="consulted">Head architect</prop>
+          <prop class="consulted">Head Architect</prop>
           <prop class="consulted">Head Development</prop>
           <prop class="consulted">Head IT Operations</prop>
           <prop class="responsible">Head IT Administration</prop>
@@ -801,7 +793,7 @@
           <prop class="consulted">Compliance</prop>
           <prop class="consulted">Audit</prop>
           <prop class="responsible">Chief Information Officer</prop>
-          <prop class="responsible">Head architect</prop>
+          <prop class="responsible">Head Architect</prop>
           <prop class="responsible">Head Development</prop>
           <prop class="responsible">Head IT Operations</prop>
           <prop class="responsible">Head IT Administration</prop>
@@ -926,7 +918,7 @@
     </control>
   </group>
   <group class="domain">
-    <title>Monitor , Evaluate and Assess</title>
+    <title>Monitor, Evaluate and Assess</title>
     <prop class="area">Management</prop>
     <prop class="code">MEA</prop>
     <control class="process">
@@ -975,29 +967,25 @@
           </ol>
         </stmt>
         <enhancement class="raci_index">
-          <!--<prop class="responsible"/>
-          <prop class="accountable"/>
-          <prop class="consulted"/>
-          <prop class="informed"/>-->
-          <prop class="accountable">Board</prop>
-          <prop class="responsible">Chief Executive Officer</prop>
+          <prop class="responsible">Board</prop>
+          <prop class="accountable">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
-          <prop class="consulted">Chief Operating Officer</prop>
-          <prop class="responsible">Business Executives</prop>
+          <prop class="informed">Chief Operating Officer</prop>
+          <prop class="informed">Business Executives</prop>
           <prop class="informed">Business Process Owners</prop>
-          <prop class="responsible">Strategy Executive Committee</prop>
+          <prop class="informed">Strategy Executive Committee</prop>
           <prop class="informed">Steering (Programmes/Projects) Committee</prop>
           <prop class="informed">Project Management Office</prop>
           <prop class="informed">Value Management Office</prop>
-          <prop class="consulted">Chief Risk Officer</prop>
+          <prop class="informed">Chief Risk Officer</prop>
           <prop class="informed">Chief Information Security Officer</prop>
           <prop class="informed">Architecture Board</prop>
           <prop class="informed">Enterprise Risk Committee</prop>
           <prop class="informed">Head Human Resources</prop>
-          <prop class="consulted">Compliance</prop>
-          <prop class="consulted">Audit</prop>
-          <prop class="responsible">Chief Information Officer</prop>
-          <prop class="consulted">Head architect</prop>
+          <prop class="informed">Compliance</prop>
+          <prop class="informed">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
           <prop class="informed">Head Development</prop>
           <prop class="informed">Head IT Operations</prop>
           <prop class="informed">Head IT Administration</prop>

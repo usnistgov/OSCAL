@@ -4,8 +4,13 @@
 <?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>Mappings into OSCAL</title>
-  <group class="control-family">
+  <group>
     <title>ISO 27002</title>
+    <prop class="source">ISO 27002 layout structure</prop>
+    <prop class="target">OSCAL element</prop>
+    <stmt>
+      <p>Refer to published ISO 27002 or to screenshot in this directory.</p>
+    </stmt>
     <control class="mapping">
       <prop class="source">Control category (section)</prop>
       <prop class="target">group[@type='control-category']</prop>

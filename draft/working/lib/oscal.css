@@ -68,7 +68,7 @@ param { display: inline-block; background-color: #C5FF98; border: thin outset da
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90% }
-prop, control:before, enhancement:before, group:before { display: inline-block; background-color: pink; border: thin outset pink;
+prop, control:before, enhancement:before, group:before { display:block; background-color: pink; border: thin outset pink;
   margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
 
 

@@ -92,21 +92,8 @@
       <prop class="target">enhancement with @class='goal', containing 'scope' prop ='process'</prop>
       <stmt class="concept">
         <p>Like IT-related goals, each process-related goal has a number, title and <q>Metrics</q>
-          section. In this case, however, the property <code>prop with @class='scope'</code> has the
-          value <code>process</code>.</p>
-      </stmt>
-    </control>
-    <control class="mapping">
-      <prop class="source">RACI chart</prop>
-      <prop class="target">enhancement with @class='raci_index' inside enhancement with
-        @class='process'</prop>
-      <stmt class="concept">
-        <p>Presents a map of responsibilities, role category classifications for <q>responsible</q>,
-            <q>accountable</q>, <q>consulted</q>, <q>informed</q>.</p>
-      </stmt>
-      <stmt class="remarks">
-        <p>Since the table allocates the values across processes (control enhancements), its
-          contents are allocated to those elements (i.e. disbursed) in the OSCAL.</p>
+          section. In this case, however, the <q>scope</q> property (<code>prop</code> with
+            <code>@class</code>='scope') has the value <code>process</code>.</p>
       </stmt>
     </control>
     <control class="mapping">
@@ -115,17 +102,30 @@
     </control>
     <control class="mapping">
       <prop class="source">Governance or Management Practice RACI assignments</prop>
-      <prop class="target">enhancement with @class='raci_index'</prop>
+      <prop class="target">enhancement with @class='raci_index' inside 'practice' enhancement</prop>
+      <stmt class="concept">
+        <p>In COBIT 5, the RACI index is presented at the level of the process (control). Mapped to
+          OSCAL, this table's rows are allocated instead to the appropriate control enhancement
+            (<q>practice</q>) to which they belong.</p>
+        <p>The RACI index enhancement presents a simple list of properties, each one naming a party
+          designated for RACI indexing. The properties must have <code>@class</code> values of
+            <code>responsible</code>, <code>accountable</code>, <code>consulted</code> or
+            <code>informed</code> (exclusively of one another). More than one property is expected
+          to have any of these although guidelines suggest there should be only a single party
+          marked as <code>accountable</code>.</p>
+        <p>RACI tables for controls and across control sets and families can be constructed from
+          these values.</p>
+      </stmt>
     </control>
     <control class="mapping">
       <prop class="source">Practice inputs</prop>
       <prop class="target">enhancement with @class='input'</prop>
       <stmt class="remarks">
-        <p>Note that according to COBIT (p. 26) not all practice inputs are represented, but only
-          those that are specific to particular practices. So if a practice has an input due to
-          another practice having <q>all</q> or <q>all EDM</q> as an output (for example), such an
-          input is not listed. Only inputs designated for this particular control (practice) are
-          indicated.</p>
+        <p>Note that according to COBIT (p. 26) not all practice inputs are represented explicitly,
+          but only those that are specific to particular practices. So if a practice has an input
+          due to another practice having <q>all</q> or <q>all EDM</q> as an output (for example),
+          such an input is not listed. Only inputs designated for this particular control (practice)
+          are indicated.</p>
         <p>Assuming we know which output settings are regarded as wildcards in this way, implicit
           inputs can be detected by query.</p>
       </stmt>
@@ -135,8 +135,30 @@
       <prop class="target">enhancement with @class='output'</prop>
     </control>
     <control class="mapping">
-      <prop class="source"/>
-      <prop class="target"/>
+      <prop class="source">The number or label on any component</prop>
+      <prop class="target">prop[@class='number']</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source">The title or short descriptor of any component</prop>
+      <prop class="target">title</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source">A <q>Metrics</q> section</prop>
+      <prop class="target">stmt[@class='metrics']</prop>
+      <stmt class="remarks">
+        <p>Appears in an item (a <code>goal</code> subcontrol) in a <q>Goals</q> table.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">A <q>Description</q> section</prop>
+      <prop class="target">stmt[@class='description']</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source">An <q>Activities</q> section</prop>
+      <prop class="target">stmt[@class='activities']</prop>
+      <stmt class="remarks">
+        <p>Appears in an item (a <code>goal</code> subcontrol) in a <q>Goals</q> table.</p>
+      </stmt>
     </control>
   </group>
 </catalog>
