@@ -138,7 +138,7 @@ remarks =
     prose }
 
 
-prose = ( ul | ol | p )*
+prose = ( ul | ol | p | pre )*
 
 # cluster = element cluster { control+ | prop+ | ref+ }
 # on group, not(*/@name != */@name) ie all names must be the same
@@ -158,17 +158,21 @@ citation =  element citation {
          mix
   }
 
+# whatnot includes 'semantical' elements along with the inline mix
 p =
-  element p { idAttr, (semantical | mix)* }
+  element p { idAttr, whatnot }
+
+pre =
+  element pre { idAttr, mix }
 
 ol =
   element ol {
-    element li { whatnot }+
+    element li { (whatnot | ol | ul )*  }+
   }
 
 ul =
   element ul {
-    element li { whatnot }+
+    element li { (whatnot | ol | ul )* }+
   }
 
 idAttr      = attribute id { xsd:ID }?
@@ -185,7 +189,7 @@ contextAttr = attribute context { text }
 
 # html!
 whatnot = (
-  semantical | ol | ul | mix )*
+  semantical | mix )*
 
 mix = (inlines | text)*
 

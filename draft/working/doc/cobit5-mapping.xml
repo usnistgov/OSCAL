@@ -16,6 +16,8 @@
   </div>
   <group>
     <title>Control organization</title>
+    <prop class="source">COBIT 5 higher level structure</prop>
+    <prop class="target">OSCAL</prop>
     <control class="mapping">
       <prop class="source">Domain chapters</prop>
       <prop class="target">group with @class='domain'</prop>
@@ -34,7 +36,10 @@
   </group>
   <group>
     <title>Controls and components</title>
+    <prop class="source">COBIT 5 control (process) structure</prop>
+    <prop class="target">OSCAL</prop>
     <control class="mapping">
+      <title/>
       <prop class="source">Process</prop>
       <prop class="target">control with @class='process'</prop>
     </control>
@@ -71,13 +76,15 @@
           are captured inside the <code>enhancement</code> as <code>prop with
           @class='number'</code>, <code>title</code> and <code>stmt with
           @class='metrics'</code>.</p>
-        <p>The fact that this is an IT-related control enhancement is captured by including a
-          property <code>prop with @class='scope'</code> with the value <code>IT</code>.</p>
+        <p>The fact that this is an IT-related goal (as opposed to any other type) is captured by
+          including a property <code>prop with @class='scope'</code> with the value
+          <code>IT</code>.</p>
       </stmt>
       <stmt class="remarks">
-        <p>The control enhancement used to describe this is the same as is used for the next table,
-          the process-related goal table. Note however that the IT-related goals (as indicated by
-          the <code>scope</code> property) are implicit cross-links to elsewhere in OSCAL.</p>
+        <p>The control enhancement used to describe this is the same as is used for (rows in) the
+          next table, the process-related goal table. Note however that the IT-related goals (as
+          indicated by the <code>scope</code> property) are implicit cross-links to elsewhere in
+          COBIT 5.</p>
       </stmt>
     </control>
     <control class="mapping">
@@ -119,7 +126,8 @@
           another practice having <q>all</q> or <q>all EDM</q> as an output (for example), such an
           input is not listed. Only inputs designated for this particular control (practice) are
           indicated.</p>
-        <p>Implicit inputs can be detected by querying.</p>
+        <p>Assuming we know which output settings are regarded as wildcards in this way, implicit
+          inputs can be detected by query.</p>
       </stmt>
     </control>
     <control class="mapping">
