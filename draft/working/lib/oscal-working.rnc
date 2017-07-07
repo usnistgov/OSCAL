@@ -189,7 +189,13 @@ whatnot = (
 
 mix = (inlines | text)*
 
-inlines = (  q | code | element em { text } | element xref { attribute href { text }?, text } )
+inlines = (  q | code | em | xref | i | b )
+
+em = element em { mix }
+i =  element i  { mix }
+b =  element b  { mix }
+
+xref = element xref { attribute href { text }?, ( q | code | element em { text } | text )* }
 
 q = element q { text }
 

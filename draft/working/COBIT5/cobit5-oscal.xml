@@ -106,7 +106,7 @@
           </ul>
         </stmt>
       </enhancement>
-      <enhancement class="process">
+      <enhancement class="practice">
         <title>Evaluate the governance system</title>
         <prop class="number">EDM01.01</prop>
         <stmt class="description">
@@ -181,7 +181,7 @@
           </stmt>
         </enhancement>
       </enhancement>
-      <enhancement class="process">
+      <enhancement class="practice">
         <title>Direct the governance system</title>
         <prop class="number">EDM01.02</prop>
         <stmt class="description">
@@ -247,7 +247,7 @@
           </stmt>
         </enhancement>
       </enhancement>
-      <enhancement class="process">
+      <enhancement class="practice">
         <title>Monitor the governance system</title>
         <prop class="number">EDM01.03</prop>
         <stmt class="description">
@@ -605,7 +605,7 @@
           </ul>
         </stmt>
       </enhancement>
-      <enhancement class="process">
+      <enhancement class="practice">
         <title>Establish and maintain an information security management system (ISMS)</title>
         <prop class="number">APO13.01</prop>
         <stmt class="description">
@@ -675,7 +675,7 @@
           </stmt>
         </enhancement>
       </enhancement>
-      <enhancement class="process">
+      <enhancement class="practice">
         <title>Define and manage an information security risk treatment plan.</title>
         <prop class="number"/>
         <stmt class="description">
@@ -768,7 +768,7 @@
           </stmt>
         </enhancement>
       </enhancement>
-      <enhancement class="process">
+      <enhancement class="practice">
         <title>Monitor and review the ISMS.</title>
         <prop class="number">APO13.03</prop>
         <stmt class="description">
@@ -963,7 +963,7 @@
           </ul>
         </stmt>
       </enhancement>
-      <enhancement class="process">
+      <enhancement class="practice">
         <title/>
         <prop class="number"/>
         <stmt class="description">
