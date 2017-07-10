@@ -16,13 +16,15 @@ OSCAL aims to:
 
 ## Update July 2017
 
-A new OSCAL initiative was undertaken staring in mid-May. Our current work is reflected in the `develop` branch. With apologies, we request that earlier efforts be regarded as learning experiences.
+A new OSCAL initiative was undertaken staring in mid-May. Our current work is reflected in the `develop` branch. With this effort, we are stressing the agile development of a *minimal* format that is both generic enough to capture the breadth of data in scope (controls specifications), while also capable of ad-hoc tuning and extension to support peculiarities of both (industry or sector) "standard" and new control types.
 
 https://github.com/usnistgov/OSCAL/tree/develop
 
+In order to enable such a format, we have developed an alternative validation model: the provision for a second "document level" validation layer (by means of declarations also written in OSCAL) means that much of the complexity that OSCAL must support, can be moved away from the base schema. This means both that the schema itself is simpler, and that OSCAL can be extended and fitted with no schema modification.
+
 In the `develop` branch, ignore the `old` subdirectory: it is an archive. What you want is in the `draft` directory.
 
-In the `working` subdirectory https://github.com/usnistgov/OSCAL/tree/develop/draft/working find the following:
+In its `working` subdirectory https://github.com/usnistgov/OSCAL/tree/develop/draft/working find the following:
 
  * `lib` - schemas including Schematron, CSS and XSLT
  * `doc` - documentation including mapping documentation plus supporting code
