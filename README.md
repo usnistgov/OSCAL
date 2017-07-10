@@ -13,6 +13,45 @@ OSCAL aims to:
 5.	other custom information standardization.
 
 --------------
+
+## Update July 2017
+
+A new OSCAL initiative was undertaken staring in mid-May. Our current work is reflected in the `develop` branch. With apologies, we request that earlier efforts be regarded as learning experiences.
+
+https://github.com/usnistgov/OSCAL/tree/develop
+
+In the `develop` branch, ignore the `old` subdirectory: it is an archive. What you want is in the `draft` directory.
+
+In the `working` subdirectory https://github.com/usnistgov/OSCAL/tree/develop/draft/working find the following:
+
+ * `lib` - schemas including Schematron, CSS and XSLT
+ * `doc` - documentation including mapping documentation plus supporting code
+ * `SP800-53` - OSCAL demo, NIST SP800-53
+ * `ISO27002` - OSCAL demo, ISO 27002
+ * `COBIT5` - OSCAL demo, COBIT5
+
+## oXygen demo guidelines
+
+Validations and "prettified" (formal) editing are configured for oXygen XML Editor, and sample documents are provided with the necessary glue code. However, software components invoked by these bindings, including XSLTs and CSSs, are standards-based and everything done here with oXygen, could be done on a different platform. Likewise demonstrations we have produced thus far only *scratch the surface* of what is possible with OSCAL.
+
+The new OSCAL offers a new validation model that will provide for easier customization. Instead of requiring schema aggregation or extension, customizing OSCAL is now accomplished by describing an "application usage" of OSCAL elements and class values (much like an HTML/CSS microformat). This set of constraints on controls can be expressed and codified in a set of OSCAL declarations, which can also provide a means of formal (run-time) enforcement. Accordingly, users get advantages of schema validation and content modeling, without having to amend a schema.
+
+Application subsets of OSCAL can be put to use in the development of profiles and overlays in the senses described in SP800-53 Rev 4, but also of more free-form and adaptive control models, which perhaps hybridize, combine or synthesize requirements from different control families. OSCAL encoding *by itself*, as a fairly well-defined XML language, will permit a kind of document transparency and traceability simply impossible in the past, with either published specifications or standards (which were never machine-readable and tractable in these ways) or with the profiles, overlays, derivatives or productions that reference them.
+
+## Controls, not (only) the documents that describe them
+
+OSCAL permits the deployment of an application-specific language for the management of 'controls', defined in a very broad sense.
+
+Naturally there is a metaphysical grey zone between controls, and the language by which they are defined and described.
+
+Naturally OSCAL captures chunks of transcribed natural/literary/technical language, i.e. "prose", but it also permits the rational arrangement of such chunks of language with more tightly controlled values (control properties and parameters). In this, OSCAL goes farther than documentary-description XML formats such as JATS, NISO STS, DITA, or other viable alternatives, not in providing a "semantics" for "controls", but in offering a means by which an OSCAL application (or user or developer) may do so.
+
+Accordingly, it is expected that OSCAL would be complementary to any of the formats just mentioned. At the same time, OSCAL is not complete by itself - it requires a 'profile' or 'pattern' among controls in a catalog to be useful - which is no worse than any standard interchange format.
+
+
+--------------
+
+[old - to be removed -]
 General Notes, 20170313:
 Most recent additions are example xml file and schema extensions for a system-implementation. (MI - ?)
 The system-implementation example includes tags from FedRAMP template and links to another hypothetical document that contains an enumerated list of system components. (MI - ?)
