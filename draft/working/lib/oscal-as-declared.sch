@@ -35,7 +35,7 @@
     <sch:rule context="oscal:group | oscal:control | oscal:enhancement">
       <xsl:variable name="this" select="."/>
       <xsl:variable name="matches"  select="oscal:classes($this),local-name($this)"/>
-      <sch:let name="applicable" value="key('declarations-by-context',$matches,$declarations)"/>
+      <sch:let name="applicable" value="$declarations/key('declarations-by-context',$matches,$declarations)"/>
       
       <!--<sch:report test="true()" role="warning"><sch:value-of select="oscal:sequence($matches)"/> 
       
@@ -71,9 +71,9 @@
     
     <!-- Exempted from declaration rules; other children of control, group, enhancement must be declared
          and will match the next rule. -->
-    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title | oscal:references"/>
+    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title | oscal:extension | oscal:link | oscal:references"/>
 
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/*">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/* | oscal:extension/*">
       <xsl:variable name="this" select="."/>
       
 
@@ -113,6 +113,7 @@
         Value of property (<sch:value-of select="oscal:sequence($id-classes)"/>) is expected to be unique to this property (instance) within the document.</sch:assert>
       
       <sch:let name="value-requirements" value="$matching-declarations/oscal:value"/>
+      <sch:let name="value-classes" value="$value-requirements/oscal:classes(..)[.=oscal:classes($this)]"/>
       <xsl:variable name="resolved-values" as="element()*">
         <xsl:apply-templates select="$value-requirements" mode="expand-values">
           <!-- we pass $me as the who-cares -->
@@ -120,7 +121,7 @@
         </xsl:apply-templates>
       </xsl:variable>
       <sch:assert test="empty($value-requirements) or (. = $resolved-values)">
-        Value of property '<sch:value-of select="@role"/>' is expected to be 
+        Value of property <sch:value-of select="oscal:sequence($value-classes)"/> is expected to be 
         <xsl:value-of select="if (count($resolved-values) gt 1) then 'one of ' else ''"/>
         <xsl:value-of select="$resolved-values/concat('''',.,'''')" separator=", "/></sch:assert>
       

@@ -40,7 +40,7 @@
   </property>
   
   <property context="assessment" class="method">
-    <singleton/>
+      <singleton/>
       <required/>
       <value>EXAMINE</value>
       <value>INTERVIEW</value>

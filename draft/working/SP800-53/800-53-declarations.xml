@@ -1,237 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Straight" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
-<?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="../lib/oscal-basic-display.xsl"?>
 <declarations xmlns="http://scap.nist.gov/schema/oscal">
-   <property context="SP800-53" role="control-class">
+   <property context="SP800-53" class="number">
       <required/>
-      <value>Technical</value>
-      <value>Operational</value>
-      <value>Management</value>
+     <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
    </property>
-   <property context="SP800-53" role="number">
-      <required/>
-      <value>AC-1</value>
-      <value>AC-2</value>
-      <value>AC-3</value>
-      <value>AC-4</value>
-      <value>AC-5</value>
-      <value>AC-6</value>
-      <value>AC-7</value>
-      <value>AC-8</value>
-      <value>AC-9</value>
-      <value>AC-10</value>
-      <value>AC-11</value>
-      <value>AC-12</value>
-      <value>AC-13</value>
-      <value>AC-14</value>
-      <value>AC-15</value>
-      <value>AC-16</value>
-      <value>AC-17</value>
-      <value>AC-18</value>
-      <value>AC-19</value>
-      <value>AC-20</value>
-      <value>AC-21</value>
-      <value>AC-22</value>
-      <value>AT-1</value>
-      <value>AT-2</value>
-      <value>AT-3</value>
-      <value>AT-4</value>
-      <value>AT-5</value>
-      <value>AU-1</value>
-      <value>AU-2</value>
-      <value>AU-3</value>
-      <value>AU-4</value>
-      <value>AU-5</value>
-      <value>AU-6</value>
-      <value>AU-7</value>
-      <value>AU-8</value>
-      <value>AU-9</value>
-      <value>AU-10</value>
-      <value>AU-11</value>
-      <value>AU-12</value>
-      <value>AU-13</value>
-      <value>AU-14</value>
-      <value>CA-1</value>
-      <value>CA-2</value>
-      <value>CA-3</value>
-      <value>CA-4</value>
-      <value>CA-5</value>
-      <value>CA-6</value>
-      <value>CA-7</value>
-      <value>CM-1</value>
-      <value>CM-2</value>
-      <value>CM-3</value>
-      <value>CM-4</value>
-      <value>CM-5</value>
-      <value>CM-6</value>
-      <value>CM-7</value>
-      <value>CM-8</value>
-      <value>CM-9</value>
-      <value>CP-1</value>
-      <value>CP-2</value>
-      <value>CP-3</value>
-      <value>CP-4</value>
-      <value>CP-5</value>
-      <value>CP-6</value>
-      <value>CP-7</value>
-      <value>CP-8</value>
-      <value>CP-9</value>
-      <value>CP-10</value>
-      <value>IA-1</value>
-      <value>IA-2</value>
-      <value>IA-3</value>
-      <value>IA-4</value>
-      <value>IA-5</value>
-      <value>IA-6</value>
-      <value>IA-7</value>
-      <value>IA-8</value>
-      <value>IR-1</value>
-      <value>IR-2</value>
-      <value>IR-3</value>
-      <value>IR-4</value>
-      <value>IR-5</value>
-      <value>IR-6</value>
-      <value>IR-7</value>
-      <value>IR-8</value>
-      <value>MA-1</value>
-      <value>MA-2</value>
-      <value>MA-3</value>
-      <value>MA-4</value>
-      <value>MA-5</value>
-      <value>MA-6</value>
-      <value>MP-1</value>
-      <value>MP-2</value>
-      <value>MP-3</value>
-      <value>MP-4</value>
-      <value>MP-5</value>
-      <value>MP-6</value>
-      <value>PE-1</value>
-      <value>PE-2</value>
-      <value>PE-3</value>
-      <value>PE-4</value>
-      <value>PE-5</value>
-      <value>PE-6</value>
-      <value>PE-7</value>
-      <value>PE-8</value>
-      <value>PE-9</value>
-      <value>PE-10</value>
-      <value>PE-11</value>
-      <value>PE-12</value>
-      <value>PE-13</value>
-      <value>PE-14</value>
-      <value>PE-15</value>
-      <value>PE-16</value>
-      <value>PE-17</value>
-      <value>PE-18</value>
-      <value>PE-19</value>
-      <value>PL-1</value>
-      <value>PL-2</value>
-      <value>PL-3</value>
-      <value>PL-4</value>
-      <value>PL-5</value>
-      <value>PL-6</value>
-      <value>PM-1</value>
-      <value>PM-2</value>
-      <value>PM-3</value>
-      <value>PM-4</value>
-      <value>PM-5</value>
-      <value>PM-6</value>
-      <value>PM-7</value>
-      <value>PM-8</value>
-      <value>PM-9</value>
-      <value>PM-10</value>
-      <value>PM-11</value>
-      <value>PS-1</value>
-      <value>PS-2</value>
-      <value>PS-3</value>
-      <value>PS-4</value>
-      <value>PS-5</value>
-      <value>PS-6</value>
-      <value>PS-7</value>
-      <value>PS-8</value>
-      <value>RA-1</value>
-      <value>RA-2</value>
-      <value>RA-3</value>
-      <value>RA-4</value>
-      <value>RA-5</value>
-      <value>SA-1</value>
-      <value>SA-2</value>
-      <value>SA-3</value>
-      <value>SA-4</value>
-      <value>SA-5</value>
-      <value>SA-6</value>
-      <value>SA-7</value>
-      <value>SA-8</value>
-      <value>SA-9</value>
-      <value>SA-10</value>
-      <value>SA-11</value>
-      <value>SA-12</value>
-      <value>SA-13</value>
-      <value>SA-14</value>
-      <value>SC-1</value>
-      <value>SC-2</value>
-      <value>SC-3</value>
-      <value>SC-4</value>
-      <value>SC-5</value>
-      <value>SC-6</value>
-      <value>SC-7</value>
-      <value>SC-8</value>
-      <value>SC-9</value>
-      <value>SC-10</value>
-      <value>SC-11</value>
-      <value>SC-12</value>
-      <value>SC-13</value>
-      <value>SC-14</value>
-      <value>SC-15</value>
-      <value>SC-16</value>
-      <value>SC-17</value>
-      <value>SC-18</value>
-      <value>SC-19</value>
-      <value>SC-20</value>
-      <value>SC-21</value>
-      <value>SC-22</value>
-      <value>SC-23</value>
-      <value>SC-24</value>
-      <value>SC-25</value>
-      <value>SC-26</value>
-      <value>SC-27</value>
-      <value>SC-28</value>
-      <value>SC-29</value>
-      <value>SC-30</value>
-      <value>SC-31</value>
-      <value>SC-32</value>
-      <value>SC-33</value>
-      <value>SC-34</value>
-      <value>SI-1</value>
-      <value>SI-2</value>
-      <value>SI-3</value>
-      <value>SI-4</value>
-      <value>SI-5</value>
-      <value>SI-6</value>
-      <value>SI-7</value>
-      <value>SI-8</value>
-      <value>SI-9</value>
-      <value>SI-10</value>
-      <value>SI-11</value>
-      <value>SI-12</value>
-      <value>SI-13</value>
-   </property>
-   <property context="SP800-53" role="priority">
+   <property context="SP800-53" class="priority">
       <value>P1</value>
       <value>P2</value>
       <value>P0</value>
       <value>P3</value>
    </property>
-   <property context="SP800-53" role="baseline-impact">
-      <value>HIGH</value>
-   </property>
-   <statement context="SP800-53" role="supplemental-guidance"/>
-   <property context="SP800-53-enhancement" role="baseline-impact">
-      <value>HIGH</value>
+   <property context="SP800-53" class="baseline-impact">
+      <value>LOW</value>
       <value>MODERATE</value>
+      <value>HIGH</value>
    </property>
-   <statement context="SP800-53-enhancement" role="supplemental-guidance"/>
+   
+   <statement context="SP800-53 SP800-53-enhancement description description-item" class="description">
+      <required/>
+   </statement>
+   
+  <statement context="SP800-53" class="guidance"/>
+   
+  <property context="SP800-53-enhancement" class="number">
+    <required/>
+    <value><inherit/> <autonum>(1)</autonum></value>
+  </property>
+  
+  <property context="description" class="number">
+    <required/>
+    <value><inherit/><autonum>a.</autonum></value>
+    <value><inherit/><autonum>(a)</autonum></value>
+  </property>
+  
+  <property context="description-item" class="number">
+    <required/>
+    <value><inherit/><autonum>1.</autonum></value>
+    <value><inherit/><autonum>(1)</autonum></value>
+  </property>
+  
+  <property context="SP800-53-enhancement" class="baseline-impact">
+      <value>MODERATE</value>
+      <value>HIGH</value>
+      <value>LOW</value>
+   </property>
+   <statement context="SP800-53-enhancement" class="guidance"/>
+   
 </declarations>

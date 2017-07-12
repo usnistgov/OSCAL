@@ -3,15 +3,15 @@
   
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:feed="http://scap.nist.gov/schema/sp800-53/feed/1.0"
+  xmlns:feed="http://scap.nist.gov/schema/sp800-53/feed/2.0"
   xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:xlink="https://www.w3.org/TR/xlink/"
-  xpath-default-namespace="http://scap.nist.gov/schema/sp800-53/1.0"
+  xpath-default-namespace="http://scap.nist.gov/schema/sp800-53/2.0"
   xmlns="http://scap.nist.gov/schema/oscal"
   exclude-result-prefixes="#all"
   >
 
-  <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement objectives objective decisions decision potential-assessments potential-assessment "/>
+  <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement objectives objective decisions decision potential-assessments potential-assessment withdrawn"/>
 
 
   <xsl:output indent="yes"/>
@@ -25,7 +25,7 @@
     <catalog>
       <title>NIST SP800-53</title>
       
-      <declarations href="SP800-53A-declarations.xml"/>
+      <declarations href="800-53-declarations.xml"/>
       
       
       
@@ -83,18 +83,52 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <xsl:template match="description">
-    <stmt class="description">
+  <!-- contains a description (for the control) plus extensions ... -->
+  <xsl:template match="feed:control/statement | control-enhancement/statement" priority="2">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="statement/statement">
+    <extension class="description">
+      <xsl:apply-templates select="@*" mode="asElement"/>
+      <xsl:apply-templates/>
+    </extension>
+  </xsl:template>
+  
+  <xsl:template match="statement/statement/statement" priority="2">
+    <extension class="description-item">
+      <xsl:apply-templates select="@*" mode="asElement"/>
+      <xsl:apply-templates/>
+    </extension>
+  </xsl:template>
+  
+  <xsl:template match="statement/description">
+    <stmt class="description">
+      <xsl:apply-templates select="@*" mode="asElement"/>
+      <p>
+        <xsl:apply-templates/>
+      </p>
     </stmt>
   </xsl:template>
   
+  <xsl:template match="related">
+    <link rel="related" href="#{normalize-space(.)}">
+      <xsl:apply-templates/>
+    </link>
+  </xsl:template>
+  
+  <xsl:template match="description">
+      <p>
+        <xsl:apply-templates/>
+      </p>
+  </xsl:template>
+  
   <xsl:template match="objective">
-    <enhancement class="objective">
+    <extension class="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </enhancement>
+    </extension>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
@@ -105,12 +139,12 @@
   </xsl:template>
   
   <xsl:template match="decision">
-    <enhancement class="decision">
+    <extension class="decision">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <stmt class="description">
         <xsl:apply-templates/>
       </stmt>
-    </enhancement>
+    </extension>
   </xsl:template>
   
   <xsl:template match="control-enhancement">
@@ -148,13 +182,17 @@
 
   <xsl:template match="reference">
     <ref>
-      <citation>
-        <!-- NISO STS -->
-        <xsl:apply-templates select="@href"/>
-        <!--<xsl:comment> or STS &lt;std> ... </xsl:comment>-->
-        <xsl:apply-templates/>
-      </citation>
+       <xsl:apply-templates/>
     </ref>
+  </xsl:template>
+  
+  <xsl:template match="item">
+    <citation>
+      <!-- NISO STS -->
+      <xsl:apply-templates select="@href"/>
+      <!--<xsl:comment> or STS &lt;std> ... </xsl:comment>-->
+      <xsl:apply-templates/>
+    </citation>
   </xsl:template>
   
   <xsl:template match="@href">
@@ -173,6 +211,16 @@
     </p>
   </xsl:template>
   
+
+  <xsl:template match="withdrawn">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="incorporated-into">
+    <link rel="incorporated-into" href="#{normalize-space(.)}">
+      <xsl:apply-templates/>
+    </link>
+  </xsl:template>
   
   <xsl:template match="html:p">
     <p>

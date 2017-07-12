@@ -39,7 +39,6 @@
     <prop class="source">COBIT 5 control (process) structure</prop>
     <prop class="target">OSCAL</prop>
     <control class="mapping">
-      <title/>
       <prop class="source">Process</prop>
       <prop class="target">control with @class='process'</prop>
     </control>
@@ -146,7 +145,7 @@
       <prop class="source">A <q>Metrics</q> section</prop>
       <prop class="target">stmt[@class='metrics']</prop>
       <stmt class="remarks">
-        <p>Appears in an item (a <code>goal</code> subcontrol) in a <q>Goals</q> table.</p>
+        <p>Appears in an item in a <q>Goals</q> table, a <code>goal</code> subcontrol.</p>
       </stmt>
     </control>
     <control class="mapping">

@@ -186,3 +186,12 @@ The rules that define control types can be changed, and new control types can be
 Interchangeability
 
 OSCAL is an entirely independent semantic 'stack' intended to promote interchange of a particular kind (or pattern) of information, a "control set". As such it can be mapped cleanly to NISO JATS, NLM BITS, NISO STS, DITA, or any other format.
+
+
+o linking element
+o merge 800-53A enhancements into 800-53 controls
+o rename enhancement to 'enh'
+o rename enhancement/enhancement to 'ext'
+o look at COBIT semantics issues
+o prototype catalog profiling mechanism
+

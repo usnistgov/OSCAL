@@ -15,7 +15,7 @@ catalog = element catalog { title, declarations?, section*, (group+ | control+),
 
 # declarations includes declarations for control types, parameters (names/types),
 # authorities (source data for transclusion etc. etc.)
-declarations = ( element declarations { attribute href { text }?, decls } )
+declarations = ( element declarations { hrefAttr?, decls } )
 
 decls = (parameter | property | statement)*
 
@@ -57,19 +57,21 @@ section = element div { idAttr, typeAttr,
 
 control =
   element control {
-    idAttr, typeAttr,
-    param*, title?, prop*,
-    anyKindofStatement*,
-    subcontrol*,
+    idAttr, typeAttr, title?,
+    (link | param | prop | anyKindofStatement | subcontrol | subsubcontrol )*, 
     references?
   }
 
 subcontrol =
   element enhancement {
-    idAttr, typeAttr,
-    param*, title?, prop*,
-    anyKindofStatement*,
-    subcontrol*
+    idAttr, typeAttr, title?,
+    (link | param | prop | anyKindofStatement | subsubcontrol )* 
+  }
+
+subsubcontrol =
+  element extension {
+    idAttr, typeAttr, title?,
+    (link | param* | prop | anyKindofStatement | subsubcontrol )*
   }
 
 title = element title { (text | q)* }
@@ -79,6 +81,9 @@ title = element title { (text | q)* }
 # i.e. local override of a default assignment in a parameter declaration
 # or on-the-fly declaration of new parameters for a control
 # (since params are not currently required to be declared
+
+link    = element link { relAttr, hrefAttr, mix }
+
 
 param   = element param { idAttr, nameAttr, mix }
 
@@ -109,7 +114,8 @@ anyKindofStatement = stmt
 stmt =
   element stmt {
     nameAttr?,
-    prose }
+    prose,
+    link* }
 
 # syntax sugar for stmt[@role='purpose'] for "Objective/s" etc.
 purpose =
@@ -175,18 +181,6 @@ ul =
     element li { (whatnot | ol | ul )* }+
   }
 
-idAttr      = attribute id { xsd:ID }?
-
-# collapsing 'names' and 'types' as classes, HTML-style
-
-nameAttr    = attribute class { text }?
-
-typeAttr    = attribute class { text }?
-
-contextAttr = attribute context { text }
-
-#nameAttr = attribute name { xsd:NCName }
-
 # html!
 whatnot = (
   semantical | mix )*
@@ -223,4 +217,20 @@ select = element select { paramAttr?, choice* }
 choice = element choice { (assign | mix)* }
 
 
+idAttr      = attribute id { xsd:ID }?
+
+# collapsing 'names' and 'types' as classes, HTML-style
+
+nameAttr    = attribute class { text }?
+
+typeAttr    = attribute class { text }?
+
+contextAttr = attribute context { text }
+
 paramAttr = attribute use { text }?
+
+relAttr = attribute rel { text }?
+
+hrefAttr = attribute href { text }
+
+#nameAttr = attribute name { xsd:NCName }
