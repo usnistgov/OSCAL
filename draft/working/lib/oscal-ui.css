@@ -74,6 +74,22 @@ stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
               values, 'description, objectives, guidance, information, remarks' )
 }
 
+subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
+          content: 
+           oxy_capitalize(attr(class)) ' '
+            oxy_combobox( 
+              edit, '@class',
+              editable, true )
+}
+
+feature:before { font-weight: bold; color: darkgreen; font-family: sans-serif;
+          content: 
+           oxy_capitalize(attr(class)) ' '
+            oxy_combobox( 
+              edit, '@class',
+              editable, true )
+}
+
 param:before { content: 'param class ' oxy_textfield(
           edit, '@class',
           columns, 10) 

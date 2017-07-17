@@ -24,89 +24,89 @@
           transparently, compliance with legal and regulatory requirements is confirmed, and the
           governance requirements for board members are met.</p>
       </stmt>
-      <enhancement class="goal">
+      <feature class="goal">
         <title>Alignment of IT and business strategy</title>
         <prop class="scope">IT</prop>
         <prop class="number">01</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Percent of enterprise strategic goals and requirements supported by IT strategic
-              goals</li>
-            <li>Level of stakeholder satisfaction with scope of the planned portfolio of programmes
-              and services</li>
-            <li>Percent of IT value drivers mapped to business value drivers</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+            <prop class="metric">Percent of enterprise strategic goals and requirements supported by IT strategic
+              goals</prop>
+            <prop class="metric">Level of stakeholder satisfaction with scope of the planned portfolio of programmes
+              and services</prop>
+            <prop class="metric">Percent of IT value drivers mapped to business value drivers</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Commitment of executive management for making IT-related decisions</title>
         <prop class="scope">IT</prop>
         <prop class="number">03</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Percent of executive management roles with clearly defined accountabilities for IT
-              decisions</li>
-            <li>Number of times IT is on the board agenda in a proactive manner</li>
-            <li>Frequency of IT strategy (executive) committee meetings</li>
-            <li>Rate of execution of executive IT-related decisions</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+
+          <prop class="metric">Percent of executive management roles with clearly defined
+            accountabilities for IT decisions</prop>
+          <prop class="metric">Number of times IT is on the board agenda in a proactive
+            manner</prop>
+          <prop class="metric">Frequency of IT strategy (executive) committee meetings</prop>
+          <prop class="metric">Rate of execution of executive IT-related decisions</prop>
+
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Delivery of IT services in line with business requirements</title>
         <prop class="number">07</prop>
         <prop class="scope">IT</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Number of business disruptions due to IT service incidents </li>
-            <li>Percent of business stakeholders satisfied that IT service delivery meets agreed-on
-              service levels</li>
-            <li>Percent of users satisfied with the quality of IT service delivery</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Number of business disruptions due to IT service incidents </prop>
+            <prop class="metric">Percent of business stakeholders satisfied that IT service delivery meets agreed-on
+              service levels</prop>
+            <prop class="metric">Percent of users satisfied with the quality of IT service delivery</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Strategic decision-making model for IT is effective and aligned with the enterprise’s
           internal and external environment and stakeholder requirements</title>
         <prop class="scope">Process</prop>
         <prop class="number">1</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Actual vs. target cycle time for key decisions</li>
-            <li>Level of stakeholder satisfaction (measured through surveys)</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Actual vs. target cycle time for key decisions</prop>
+            <prop class="metric">Level of stakeholder satisfaction (measured through surveys)</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>The governance system for IT is embedded in the enterprise</title>
         <prop class="scope">Process</prop>
         <prop class="number">2</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Number of roles, responsibilities and authorities that are defined, assigned and
-              accepted by appropriate business and IT management</li>
-            <li>Degree by which agreed-on governance principles for IT are evidenced in processes
+        <group class="metrics">
+          
+            <prop class="metric">Number of roles, responsibilities and authorities that are defined, assigned and
+              accepted by appropriate business and IT management</prop>
+            <prop class="metric">Degree by which agreed-on governance principles for IT are evidenced in processes
               and practices (percentage of processes and practices with clear traceability to
-              principles)</li>
-            <li>Number of instances of non-compliance with ethical and professional behaviour
-              guidelines</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+              principles)</prop>
+            <prop class="metric">Number of instances of non-compliance with ethical and professional behaviour
+              guidelines</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Assurance is obtained that the governance system for IT is operating
           effectively</title>
         <prop class="scope">Process</prop>
         <prop class="number">3</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Frequency of independent reviews of governance of IT</li>
-            <li>Frequency of governance of IT reporting to the executive committee and board</li>
-            <li>Number of governance of IT issues reported</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="practice">
+        <group class="metrics">
+          
+            <prop class="metric">Frequency of independent reviews of governance of IT</prop>
+            <prop class="metric">Frequency of governance of IT reporting to the executive committee and board</prop>
+            <prop class="metric">Number of governance of IT issues reported</prop>
+          
+        </group>
+      </feature>
+      <subcontrol class="practice">
         <title>Evaluate the governance system</title>
         <prop class="number">EDM01.01</prop>
         <stmt class="description">
@@ -126,7 +126,7 @@
             <li>Articulate principles that will guide the design of governance and decision making of IT.</li>
             <li>Understand the enterprise’s decision-making culture and determine the optimal decision-making model for IT.</li>
             <li>Determine the appropriate levels of authority delegation, including threshold rules, for IT decisions.</li></ol></stmt>
-        <enhancement class="raci_index">
+        <feature class="raci_index">
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -143,14 +143,14 @@
           <prop class="consulted">Head Architect</prop>
           <prop class="consulted">Head Development</prop>
           <prop class="consulted">Head IT Operations</prop>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">MEA03.02</prop>
           <stmt class="description">
             <p>Communications of changed compliance requirements</p>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">Outside COBIT</prop>
           <stmt class="description">
             <ul>
@@ -158,30 +158,30 @@
               <li>Regulations</li>
               <li>Governance/decision-making model</li>
               <li>Constitution/bylaws/statutes of organisation</li></ul></stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.01</prop>
           <prop class="to">APO01.03</prop>
           <stmt class="description">
             <p>Enterprise governance guiding principles</p>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.01</prop>
           <stmt class="description">
             <p>Decision-making model</p></stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.02</prop>
           <stmt class="description">
             <p>Authority levels</p>
           </stmt>
-        </enhancement>
-      </enhancement>
-      <enhancement class="practice">
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
         <title>Direct the governance system</title>
         <prop class="number">EDM01.02</prop>
         <stmt class="description">
@@ -200,7 +200,7 @@
             <li>Direct the establishment of a reward system to promote desirable cultural change.</li>
           </ol>
         </stmt>
-        <enhancement class="raci_index">
+        <feature class="raci_index">
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -227,23 +227,23 @@
           <prop class="informed">Information Security Manager</prop>
           <prop class="informed">Business Continuity Manager</prop>
           <prop class="informed">Privacy Officer</prop>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.04</prop>
           <stmt class="description">
             <p>Enterprise governance communications</p>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">APO07.03</prop>
           <prop class="to">APO07.04</prop>
           <stmt class="description">
             <p>Reward system approach</p>
           </stmt>
-        </enhancement>
-      </enhancement>
-      <enhancement class="practice">
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
         <title>Monitor the governance system</title>
         <prop class="number">EDM01.03</prop>
         <stmt class="description">
@@ -270,7 +270,7 @@
               guidelines.</li>
           </ol>
         </stmt>
-        <enhancement class="raci_index">
+        <feature class="raci_index">
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -297,44 +297,44 @@
           <prop class="informed">Information Security Manager</prop>
           <prop class="informed">Business Continuity Manager</prop>
           <prop class="informed">Privacy Officer</prop>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">MEA01.04</prop>
           <stmt class="description">
-            <p>Performance reports</p></stmt></enhancement>
-        <enhancement class="input">
+            <p>Performance reports</p></stmt></feature>
+        <feature class="input">
           <prop class="from">MEA01.05</prop>
           <stmt class="description">
             <p> Status and results of actions</p>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">MEA02.01</prop>
           <stmt class="description">
             <ul>
             <li>Results of benchmarking and other evaluations</li>
             <li>Results of internal control monitoring and reviews</li></ul>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">MEA02.03</prop>
           <stmt class="description">
             <p>Results of reviews of self-assessments</p>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">MEA02.06</prop>
           <stmt class="description">
             <p>Assurance plans</p>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">MEA03.03</prop>
           <stmt class="description">
             <p>Compliance confirmations</p>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">MEA03.04</prop>
           <stmt class="description">
             <ul>
@@ -342,8 +342,8 @@
               <li>Compliance assurance reports </li>
             </ul>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">Outside COBIT</prop>
           <stmt class="description">
             <ul>
@@ -351,15 +351,15 @@
               <li>Audit reports</li>
             </ul>
           </stmt>
-        </enhancement>
+        </feature>
         
-        <enhancement class="output">
+        <feature class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.07</prop>
           <stmt class="description">
             <p>Feedback on governance effectiveness and performance</p>
           </stmt>
-        </enhancement>
+        </feature>
         <!--
         <enhancement class="practice">
           <title></title>
@@ -383,7 +383,7 @@
             </stmt>
           </enhancement>
           -->
-      </enhancement>
+      </subcontrol>
       
       <references>
         <ref>
@@ -482,122 +482,121 @@
       <prop class="number">APO13</prop>
       <stmt class="description"><p>Define, operate and monitor a system for information security management.</p></stmt>
       <stmt class="objectives"><p>Keep the impact and occurrence of information security incidents within the enterprise’s risk appetite levels.</p></stmt>
-      <enhancement class="goal">
+      <feature class="goal">
         <title>IT compliance and support for business compliance with external laws and
           regulations</title>
         <prop class="scope">IT</prop>
         <prop class="number">02</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Cost of IT non-compliance, including settlements and fines, and the impact of
-              reputational loss</li>
-            <li>Number of IT-related non-compliance issues reported to the board or causing public
-              comment or embarrassment</li>
-            <li>Number of non-compliance issues relating to contractual agreements with IT service
-              providers</li>
-            <li>Coverage of compliance assessments</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Cost of IT non-compliance, including settlements and fines, and the impact of
+              reputational loss</prop>
+            <prop class="metric">Number of IT-related non-compliance issues reported to the board or causing public
+              comment or embarrassment</prop>
+            <prop class="metric">Number of non-compliance issues relating to contractual agreements with IT service
+              providers</prop>
+            <prop class="metric">Coverage of compliance assessments</prop>
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Managed IT-related business risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">04</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Percent of critical business processes, IT services and IT-enabled business
-              programmes covered by risk assessment</li>
-            <li>Number of significant IT-related incidents that were not identified in risk
-              assessment</li>
-            <li>Percent of enterprise risk assessments including IT-related risk</li>
-            <li>Frequency of update of risk profile</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Percent of critical business processes, IT services and IT-enabled business
+              programmes covered by risk assessment</prop>
+            <prop class="metric">Number of significant IT-related incidents that were not identified in risk
+              assessment</prop>
+            <prop class="metric">Percent of enterprise risk assessments including IT-related risk</prop>
+            <prop class="metric">Frequency of update of risk profile</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Transparency of IT costs, benefits and risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">06</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Percent of investment business cases with clearly defined and approved expected
-              IT-related costs and benefits</li>
-            <li>Percent of IT services with clearly defined and approved operational costs and
-              expected benefits</li>
-            <li>Satisfaction survey of key stakeholders regarding the level of transparency,
-              understanding and accuracy of IT financial information</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Percent of investment business cases with clearly defined and approved expected
+              IT-related costs and benefits</prop>
+            <prop class="metric">Percent of IT services with clearly defined and approved operational costs and
+              expected benefits</prop>
+            <prop class="metric">Satisfaction survey of key stakeholders regarding the level of transparency,
+              understanding and accuracy of IT financial information</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Security of information, processing infrastructure and applications</title>
         <prop class="scope">IT</prop>
         <prop class="number">10</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Number of security incidents causing financial loss, business disruption or public
-              embarrassment</li>
-            <li>Number of IT services with outstanding security requirements</li>
-            <li>Time to grant, change and remove access privileges, compared to agreed-on service
-              levels</li>
-            <li>Frequency of security assessment against latest standards and guidelines</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Number of security incidents causing financial loss, business disruption or public
+              embarrassment</prop>
+            <prop class="metric">Number of IT services with outstanding security requirements</prop>
+            <prop class="metric">Time to grant, change and remove access privileges, compared to agreed-on service
+              levels</prop>
+            <prop class="metric">Frequency of security assessment against latest standards and guidelines</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Availability of reliable and useful information for decision making</title>
         <prop class="number">14</prop>
         <prop class="scope">IT</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Level of business user satisfaction with quality and timeliness (or availability) of
-              management information</li>
-            <li>Number of business process incidents caused by non-availability of information</li>
-            <li>Ratio and extent of erroneous business decisions where erroneous or unavailable
-              information was a key factor </li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Level of business user satisfaction with quality and timeliness (or availability) of
+              management information</prop>
+            <prop class="metric">Number of business process incidents caused by non-availability of information</prop>
+            <prop class="metric">Ratio and extent of erroneous business decisions where erroneous or unavailable
+              information was a key factor </prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>A system is in place that considers and effectively addresses enterprise information
           security requirements.</title>
         <prop class="scope">Process</prop>
         <prop class="number">1</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Number of key security roles clearly defined</li>
-            <li>Number of security related incidents</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Number of key security roles clearly defined</prop>
+            <prop class="metric">Number of security related incidents</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>A security plan has been established, accepted and communicated throughout the
           enterprise.</title>
         <prop class="scope">Process</prop>
         <prop class="number">2</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Level of stakeholder satisfaction with the security plan throughout the
-              enterprise</li>
-            <li>Number of security solutions deviating from the plan</li>
-            <li>Number of security solutions deviating from the enterprise architecture</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="goal">
+        <group class="metrics">
+          
+            <prop class="metric">Level of stakeholder satisfaction with the security plan throughout the
+              enterprise</prop>
+            <prop class="metric">Number of security solutions deviating from the plan</prop>
+            <prop class="metric">Number of security solutions deviating from the enterprise architecture</prop>
+          
+        </group>
+      </feature>
+      <feature class="goal">
         <title>Information security solutions are implemented and operated consistently throughout
           the enterprise.</title>
         <prop class="scope">Process</prop>
         <prop class="number">3</prop>
-        <stmt class="metrics">
-          <ul>
-            <li>Number of services with confirmed alignment to the security plan</li>
-            <li>Number of security incidents caused by non-adherence to the security plan</li>
-            <li>Number of solutions developed with confirmed alignment to the security plan</li>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="practice">
+        <group class="metrics">
+          
+            <prop class="metric">Number of services with confirmed alignment to the security plan</prop>
+            <prop class="metric">Number of security incidents caused by non-adherence to the security plan</prop>
+            <prop class="metric">Number of solutions developed with confirmed alignment to the security plan</prop>
+          
+        </group>
+      </feature>
+      <subcontrol class="practice">
         <title>Establish and maintain an information security management system (ISMS)</title>
         <prop class="number">APO13.01</prop>
         <stmt class="description">
@@ -623,7 +622,7 @@
             <li>Communicate the ISMS approach.</li>
           </ol>
         </stmt>
-        <enhancement class="raci_index">
+        <feature class="raci_index">
           <prop class="consulted">Chief Executive Officer</prop>
           <prop class="consulted">Chief Operating Officer</prop>
           <prop class="consulted">Business Executives</prop>
@@ -646,28 +645,28 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">Outside COBIT</prop>
           <stmt class="description">
             <p>Enterprise security approach</p>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">Internal </prop>
           <stmt class="description">
             <p>ISMS policy</p>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">APO01.02</prop>
           <prop class="to">DSS06.03</prop>
           <stmt class="description">
             <p>ISMS scope statement </p>
           </stmt>
-        </enhancement>
-      </enhancement>
-      <enhancement class="practice">
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
         <title>Define and manage an information security risk treatment plan.</title>
         <prop class="number"/>
         <stmt class="description">
@@ -701,7 +700,7 @@
               detection of security events and response to security incidents.</li>
           </ol>
         </stmt>
-        <enhancement class="raci_index">
+        <feature class="raci_index">
           <prop class="consulted">Chief Executive Officer</prop>
           <prop class="consulted">Chief Operating Officer</prop>
           <prop class="consulted">Business Executives</prop>
@@ -724,27 +723,27 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">APO02.04</prop>
           <stmt class="description">
             <p>Gaps and changes required to realise target capability</p>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">APO03.02</prop>
           <stmt class="description">
             <p>Baseline domain descriptions and architecture definition</p>
           </stmt>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">APO12.05</prop>
           <stmt class="description">
             <p>Project proposals for reducing risk</p>
           </stmt>
-        </enhancement>
+        </feature>
         
-        <enhancement class="output">
+        <feature class="output">
           <!--<link rel="output" href="EDM"/>-->
           <prop class="to">All EDM</prop>
           <prop class="to">All APO</prop>
@@ -754,15 +753,15 @@
           <stmt class="description">
             <p>Information security risk treatment plan </p>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">APO02.05</prop>
           <stmt class="description">
             <p>Information security business cases </p>
           </stmt>
-        </enhancement>
-      </enhancement>
-      <enhancement class="practice">
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
         <title>Monitor and review the ISMS.</title>
         <prop class="number">APO13.03</prop>
         <stmt class="description">
@@ -786,7 +785,7 @@
               performance of the ISMS.</li>
           </ol>
         </stmt>
-        <enhancement class="raci_index">
+        <feature class="raci_index">
           <prop class="consulted">Business Executives</prop>
           <prop class="responsible">Business Process Owners</prop>
           <prop class="consulted">Strategy Executive Committee</prop>
@@ -803,26 +802,26 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="responsible">Business Continuity Manager</prop>
           <prop class="responsible">Privacy Officer</prop>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from">DSS02.02</prop>
           <stmt class="description">
             <p>Classified and prioritised incidents and service requests</p>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">MEA02.01</prop>
           <stmt class="description">
             <p>ISMS audit reports</p>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to">Internal</prop>
           <stmt class="description">
             <p>Recommendations for improving the ISMS</p>
           </stmt>
-        </enhancement>
-      </enhancement>
+        </feature>
+      </subcontrol>
       <references>
         <ref>
           <std>ISO/IEC 27001:2005</std>
@@ -846,7 +845,7 @@
     </control>
   </group>
   <group class="domain">
-    <title>Build , Acquire and Implement</title>
+    <title>Build, Acquire and Implement</title>
     <prop class="area">Management</prop>
     <prop class="code">BAI</prop>
     <control class="process">
@@ -930,7 +929,640 @@
     <control class="process">
       <title>Monitor, evaluate and assess the system of internal control</title>
       <prop class="number">MEA02</prop>
+      <stmt class="description">
+        <p>Continuously monitor and evaluate the control environment, including self-assessments and
+          independent assurance reviews. Enable management to identify control deficiencies and
+          inefficiencies and to initiate improvement actions. Plan, organise and maintain standards
+          for internal control assessment and assurance activities.</p>
+      </stmt>
+      <stmt class="objectives">
+        <p>Obtain transparency for key stakeholders on the adequacy of the system of internal
+          controls and thus provide trust in operations, confidence in the achievement of enterprise
+          objectives and an adequate understanding of residual risk.</p>
+      </stmt>
+      <feature class="goal">
+        <title>IT compliance and support for business compliance with external laws and
+          regulations</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">02</prop>
+        <group class="metrics">
+          <prop class="metric">Cost of IT non-compliance, including settlements and fines, and the
+            impact of reputational loss</prop>
+          <prop class="metric">Number of IT-related non-compliance issues reported to the board or
+            causing public comment or embarrassment</prop>
+          <prop class="metric">Number of non-compliance issues relating to contractual agreements
+            with IT service providers</prop>
+          <prop class="metric">Coverage of compliance assessments</prop>
+        </group>
+      </feature>
+      <feature class="goal">
+        <title>Managed IT-related business risk</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">04</prop>
+        <group class="metrics">
+          <prop class="metric">Percent of critical business processes, IT services and IT-enabled
+            business programmes covered by risk assessment</prop>
+          <prop class="metric">Number of significant IT-related incidents that were not identified
+            in risk assessment</prop>
+          <prop class="metric">Percent of enterprise risk assessments including IT-related
+            risk</prop>
+          <prop class="metric">Frequency of update of risk profile</prop>
+        </group>
+      </feature>
+      <feature class="goal">
+        <title>IT compliance with internal policies</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">15 </prop>
+        <group class="metrics">
+          <prop class="metric">Number of incidents related to non-compliance to policy</prop>
+          <prop class="metric">Percent of stakeholders who understand policies</prop>
+          <prop class="metric">Percent of policies supported by effective standards and working
+            practices</prop>
+          <prop class="metric">Frequency of policies review and update</prop>
+        </group>
+      </feature>
+      <feature class="goal">
+        <title/>
+        <prop class="scope">Process</prop>
+        <prop class="number"/>
+        <group class="metrics">
+          <prop class="metric"/>
+        </group>
+      </feature>
+      <feature class="goal">
+        <title>Processes, resources and information meet enterprise internal control system
+          requirements.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">1.</prop>
+        <group class="metrics">
+          <prop class="metric">Percent of processes with assured output meeting targets within
+            tolerances</prop>
+          <prop class="metric">Percent of processes assured as compliant with internal control
+            targets</prop>
+        </group>
+      </feature>
+      <feature class="goal">
+        <title>All assurance initiatives are planned and executed effectively.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">2.</prop>
+        <group class="metrics">
+          <prop class="metric">Percent of assurance initiatives following approved assurance
+            programme and plan standards</prop>
+        </group>
+      </feature>
+      <feature class="goal">
+        <title>Independent assurance that the system of internal control is operational and
+          effective is provided.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">3.</prop>
+        <group class="metrics">
+          <prop class="metric"> Percent of processes receiving independent review</prop>
+        </group>
+      </feature>
+      <feature class="goal">
+        <title>Internal control is established and deficiencies are identified and reported.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">4.</prop>
+        <group class="metrics">
+          <prop class="metric">Number of weaknesses identified by external qualification and
+            certification reports</prop>
+          <prop class="metric">Number of major internal control breaches</prop>
+          <prop class="metric">Time between internal control deficiency occurrence and
+            reporting</prop>
+        </group>
+      </feature>
+      <subcontrol class="practice">
+        <title>Monitor internal controls.</title>
+        <prop class="number">MEA02.01</prop>
+        <stmt class="description">
+          <p>Continuously monitor, benchmark and improve the IT control environment and control
+            framework to meet organisational objectives.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Perform internal control monitoring and evaluation activities based on
+              organisational governance standards and industry-accepted frameworks and practices.
+              Include monitoring and evaluation of the efficiency and effectiveness of managerial
+              supervisory reviews.</li>
+            <li>Consider independent evaluations of the internal control system (e.g., by internal
+              audit or peers).</li>
+            <li>Identify the boundaries of the IT internal control system (e.g., consider how
+              organisational IT internal controls take into account outsourced and/or offshore
+              development or production activities).</li>
+            <li>Ensure that control activities are in place and exceptions are promptly reported,
+              followed up and analysed, and appropriate corrective actions are prioritised and
+              implemented according to the risk management profile (e.g., classify certain
+              exceptions as a key risk and others as a non-key risk).</li>
+            <li>Maintain the IT internal control system, considering ongoing changes in business and
+              IT risk, the organisational control environment, relevant business and IT processes,
+              and IT risk. If gaps exist, evaluate and recommend changes.</li>
+            <li>Regularly evaluate the performance of the IT control framework, benchmarking against
+              industry accepted standards and good practices. Consider formal adoption of a
+              continuous improvement approach to internal control monitoring.</li>
+            <li>Assess the status of external service providers’ internal controls and confirm that
+              service providers comply with legal and regulatory requirements and contractual
+              obligations.</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="informed">Chief Executive Officer</prop>
+          <prop class="consulted">Chief Financial Officer</prop>
+          <prop class="informed">Chief Operating Officer</prop>
+          <prop class="consulted">Business Executives</prop>
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="responsible">Project Management Office</prop>
+          <prop class="responsible">Chief Risk Officer</prop>
+          <prop class="responsible">Compliance</prop>
+          <prop class="responsible">Audit</prop>
+          <prop class="accountable">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="responsible">Head IT Operations</prop>
+          <prop class="responsible">Head IT Administration</prop>
+          <prop class="responsible">Service Manager</prop>
+          <prop class="responsible">Information Security Manager</prop>
+          <prop class="responsible">Business Continuity Manager</prop>
+          <prop class="responsible">Privacy Officer</prop>
+        </feature>
+        <feature class="input">
+          <prop class="from">APO12.04</prop>
+          <stmt class="description">
+            <p>Results of third-party risk assessments</p>
+          </stmt>
+        </feature>
+        <feature class="input">
+          <prop class="from">APO13.03</prop>
+          <stmt class="description">
+            <p>ISMS audit reports</p>
+          </stmt>
+        </feature>
+        <feature class="input">
+          <prop class="from">Outside COBIT</prop>
+          <stmt class="description">
+            <p>Industry standards and good practices</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">EDM01.03</prop>
+          <prop class="to">All APO</prop>
+          <prop class="to">All BAI</prop>
+          <prop class="to">All DSS</prop>
+          <prop class="to">All MEA</prop>
+          <stmt class="description">
+            <p>Results of internal control monitoring and reviews</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">EDM01.03</prop>
+          <prop class="to">All APO</prop>
+          <prop class="to">All BAI</prop>
+          <prop class="to">All DSS</prop>
+          <prop class="to">All MEA</prop>
+          <stmt class="description">
+            <p>Results of benchmarking and other evaluations </p>
+          </stmt>
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Review business process controls effectiveness.</title>
+        <prop class="number">MEA02.02</prop>
+        <stmt class="description">
+          <p> Review the operation of controls, including a review of monitoring and test evidence,
+            to ensure that controls within business processes operate effectively. Include
+            activities to maintain evidence of the effective operation of controls through
+            mechanisms such as periodic testing of controls, continuous controls monitoring,
+            independent assessments, command and control centres, and network operations centres.
+            This provides the business with the assurance of control effectiveness to meet
+            requirements related to business, regulatory and social responsibilities.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Understand and prioritise risk to organisational objectives.</li>
+            <li>Identify key controls and develop a strategy suitable for validating controls.</li>
+            <li>Identify information that will persuasively indicate whether the internal control
+              environment is operating effectively.</li>
+            <li>Develop and implement cost-effective procedures to determine that persuasive
+              information is based on the information criteria.</li>
+            <li>Maintain evidence of control effectiveness.</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="informed">Board</prop>
+          <prop class="informed">Chief Executive Officer</prop>
+          <prop class="responsible">Chief Financial Officer</prop>
+          <prop class="informed">Chief Operating Officer</prop>
+          <prop class="accountable">Business Executives</prop>
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="informed">Strategy Executive Committee</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="responsible">Compliance</prop>
+          <prop class="responsible">Audit</prop>
+          <prop class="consulted">Chief Information Officer</prop>
+          <prop class="consulted">Head IT Operations</prop>
+          <prop class="consulted">Service Manager</prop>
+          <prop class="consulted">Information Security Manager</prop>
+          <prop class="consulted">Business Continuity Manager</prop>
+        </feature>
+        <feature class="input">
+          <prop class="from">BAI05.06</prop>
+          <stmt class="description">
+            <p>Compliance audit results</p>
+          </stmt>
+        </feature>
+        <feature class="input">
+          <prop class="from">BAI05.07</prop>
+          <stmt class="description">
+            <p>Reviews of operational use</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Evidence of control effectiveness</p>
+          </stmt>
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Perform control self-assessments.</title>
+        <prop class="number">MEA02.03</prop>
+        <stmt class="description">
+          <p>Encourage management and process owners to take positive ownership of control
+            improvement through a continuing programme of self-assessment to evaluate the
+            completeness and effectiveness of management’s control over processes, policies and
+            contracts.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Maintain plans and scope and identify evaluation criteria for conducting
+              self-assessments. Plan the communication of results of the self-assessment process to
+              business, IT and general management and the board. Consider internal audit standards
+              in the design of self-assessments.</li>
+            <li>Determine the frequency of periodic self-assessments, considering the overall
+              effectiveness and efficiency of ongoing monitoring.</li>
+            <li>Assign responsibility for self-assessment to appropriate individuals to ensure
+              objectivity and competence.</li>
+            <li>Provide for independent reviews to ensure objectivity of the self-assessment and
+              enable the sharing of internal control good practices from other enterprises.</li>
+            <li>Compare the results of the self-assessments against industry standards and good
+              practices.</li>
+            <li>Summarise and report outcomes of self-assessments and benchmarking for remedial
+              actions.</li>
+            <li>Define an agreed-on, consistent approach for performing control self-assessments and
+              co-ordinating with internal and external auditors.</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="informed">Chief Executive Officer</prop>
+          <prop class="consulted">Chief Financial Officer</prop>
+          <prop class="informed">Chief Operating Officer</prop>
+          <prop class="consulted">Business Executives</prop>
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="responsible">Project Management Office</prop>
+          <prop class="responsible">Chief Risk Officer</prop>
+          <prop class="responsible">Compliance</prop>
+          <prop class="responsible">Audit</prop>
+          <prop class="accountable">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="responsible">Head IT Operations</prop>
+          <prop class="responsible">Head IT Administration</prop>
+          <prop class="responsible">Service Manager</prop>
+          <prop class="responsible">Information Security Manager</prop>
+          <prop class="responsible">Business Continuity Manager</prop>
+          <prop class="responsible">Privacy Officer</prop>
+        </feature>
+        <feature class="output">
+          <prop class="to">All APO</prop>
+          <prop class="to">All BAI</prop>
+          <prop class="to">All DSS</prop>
+          <prop class="to">All MEA</prop>
+          <stmt class="description">
+            <p>Self-assessment plans and criteria</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Results of self-assessments</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">EDM01.03</prop>
+          <prop class="to">All APO</prop>
+          <prop class="to">All BAI</prop>
+          <prop class="to">All DSS</prop>
+          <prop class="to">All MEA</prop>
+          <stmt class="description">
+            <p>Results of reviews of self-assessments </p>
+          </stmt>
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Identify and report control deficiencies.</title>
+        <prop class="number">MEA02.04</prop>
+        <stmt class="description">
+          <p>Identify control deficiencies and analyse and identify their underlying root causes.
+            Escalate control deficiencies and report to stakeholders.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Identify, report and log control exceptions, and assign responsibility for resolving
+              them and reporting on the status.</li>
+            <li>Consider related enterprise risk to establish thresholds for escalation of control
+              exceptions and breakdowns.</li>
+            <li>Communicate procedures for escalation of control exceptions, root cause analysis,
+              and reporting to process owners and IT stakeholders.</li>
+            <li>Decide which control exceptions should be communicated to the individual responsible
+              for the function and which exceptions should be escalated. Inform affected process
+              owners and stakeholders.</li>
+            <li>Follow up on all exceptions to ensure that agreed-on actions have been
+              addressed.</li>
+            <li> Identify, initiate, track and implement remedial actions arising from control
+              assessments and reporting.</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="informed">Chief Executive Officer</prop>
+          <prop class="consulted">Chief Financial Officer</prop>
+          <prop class="informed">Chief Operating Officer</prop>
+          <prop class="consulted">Business Executives</prop>
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="responsible">Project Management Office</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="responsible">Compliance</prop>
+          <prop class="responsible">Audit</prop>
+          <prop class="accountable">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="responsible">Head IT Operations</prop>
+          <prop class="responsible">Head IT Administration</prop>
+          <prop class="responsible">Service Manager</prop>
+          <prop class="responsible">Information Security Manager</prop>
+          <prop class="responsible">Business Continuity Manager</prop>
+          <prop class="responsible">Privacy Officer</prop>
+        </feature>
+        <feature class="input">
+          <prop class="from">APO11.05</prop>
+          <stmt class="description">
+            <p> Root causes of quality delivery failures</p>
+          </stmt>
+        </feature>
+        <feature class="input">
+          <prop class="from">APO12.06</prop>
+          <stmt class="description">
+            <p>Risk-related root causes</p>
+          </stmt>
+        </feature>
+        <feature class="input">
+          <prop class="from">DSS06.01</prop>
+          <stmt class="description">
+            <ul>
+              <li>Root cause analyses and recommendations</li>
+              <li>Results of processing effectiveness reviews</li>
+            </ul>
+          </stmt>
+        </feature>
+        <feature class="input">
+          <prop class="from">DSS06.04</prop>
+          <stmt class="description">
+            <p>Evidence of error correction and remediation</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">All APO</prop>
+          <prop class="to">All BAI</prop>
+          <prop class="to">All DSS</prop>
+          <prop class="to">All MEA</prop>
+          <stmt class="description">
+            <p>Control deficiencies</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">All APO</prop>
+          <prop class="to">All BAI</prop>
+          <prop class="to">All DSS</prop>
+          <prop class="to">All MEA</prop>
+          <stmt class="description">
+            <p>Remedial actions</p>
+          </stmt>
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Ensure that assurance providers are independent and qualified.</title>
+        <prop class="number">MEA02.05</prop>
+        <stmt class="description">
+          <p>Ensure that the entities performing assurance are independent from the function, groups
+            or organisations in scope. The entities performing assurance should demonstrate an
+            appropriate attitude and appearance, competence in the skills and knowledge necessary to
+            perform assurance, and adherence to codes of ethics and professional standards.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Establish adherence to applicable codes of ethics and standards (e.g., Code of
+              Professional Ethics of ISACA) and (industry- and geography-specific) assurance
+              standards, e.g., IT Audit and Assurance Standards of ISACA and the International
+              Auditing and Assurance Standards Board’s (IAASB’s) International Framework for
+              Assurance Engagements (IAASB Assurance Framework).</li>
+            <li>Establish independence of assurance providers.</li>
+            <li>Establish competency and qualification of assurance providers.</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="accountable">Compliance</prop>
+          <prop class="accountable">Audit</prop>
+          <prop class="responsible">Chief Information Officer</prop>
+        </feature>
+        <feature class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Results of assurance provider evaluations</p>
+          </stmt>
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Plan assurance initiatives.</title>
+        <prop class="number">MEA02.06</prop>
+        <stmt class="description">
+          <p>Plan assurance initiatives based on enterprise objectives BAI01.05 and strategic
+            priorities, inherent risk, resource constraints, and sufficient knowledge of the
+            enterprise.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Determine the intended users of the assurance initiative output and the object of
+              the review.</li>
+            <li>Perform a high-level risk assessment and/or assessment of process capability to
+              diagnose risk and identify critical IT processes.</li>
+            <li>Select, customise and reach agreement on the control objectives for critical
+              processes that will be the basis for the control assessment.</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="accountable">Chief Executive Officer</prop>
+          <prop class="consulted">Business Executives</prop>
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="consulted">Project Management Office</prop>
+          <prop class="consulted">Compliance</prop>
+          <prop class="consulted">Audit</prop>
+          <prop class="responsible">Chief Information Officer</prop>
+          <prop class="consulted">Head Architect</prop>
+          <prop class="consulted">Head Development</prop>
+          <prop class="consulted">Head IT Operations</prop>
+          <prop class="consulted">Head IT Administration</prop>
+          <prop class="consulted">Service Manager</prop>
+          <prop class="consulted">Information Security Manager</prop>
+          <prop class="consulted">Business Continuity Manager</prop>
+          <prop class="consulted">Privacy Officer</prop>
+        </feature>
+        <feature class="input">
+          <prop class="from">BAI01.05</prop>
+          <stmt class="description">
+            <p>Programme audit plans</p>
+          </stmt>
+        </feature>
+        <feature class="input">
+          <prop class="from">DSS01.02</prop>
+          <stmt class="description">
+            <p>Independent assurance plans</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>High-level assessments</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">EDM01.03</prop>
+          <prop class="to">All APO</prop>
+          <prop class="to">All BAI</prop>
+          <prop class="to">All DSS</prop>
+          <prop class="to">All MEA</prop>
+          <stmt class="description">
+            <p>Assurance plans</p>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Assessment criteria</p>
+          </stmt>
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Scope assurance initiatives.</title>
+        <prop class="number">MEA02.07</prop>
+        <stmt class="description">
+          <p>Define and agree with management on the scope of the assurance initiative, based on the
+            assurance objectives.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Define the actual scope by identifying the enterprise and IT goals for the
+              environment under review, the set of IT processes and resources, and all the relevant
+              auditable entities within the enterprise and external to the enterprise (e.g., service
+              providers), if applicable.</li>
+            <li>Define the engagement plan and resource requirements.</li>
+            <li>Define practices for gathering and evaluating information from process(es) under
+              review to identify controls to be validated, and current findings (both positive
+              assurance and any deficiencies) for risk evaluation.</li>
+            <li>Define practices to validate control design and outcomes and determine whether the
+              level of effectiveness supports acceptable risk (required by organisational or process
+              risk assessment).</li>
+            <li> Where control effectiveness is not acceptable, define practices to identify
+              residual risk (in preparation for reporting).</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="responsible">Chief Operating Officer</prop>
+          <prop class="responsible">Business Executives</prop>
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="consulted">Project Management Office</prop>
+          <prop class="consulted">Compliance</prop>
+          <prop class="accountable">Audit</prop>
+          <prop class="responsible">Chief Information Officer</prop>
+          <prop class="consulted">Head Architect</prop>
+          <prop class="consulted">Head Development</prop>
+          <prop class="consulted">Head IT Operations</prop>
+          <prop class="consulted">Head IT Administration</prop>
+          <prop class="consulted">Service Manager</prop>
+          <prop class="consulted">Information Security Manager</prop>
+          <prop class="consulted">Business Continuity Manager</prop>
+          <prop class="consulted">Privacy Officer</prop>
+        </feature>
+        <feature class="output">
+          <prop class="to"/>
+          <stmt class="description">
+            <p/>
+          </stmt>
+        </feature>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Execute assurance initiatives.</title>
+        <prop class="number">MEA02.08</prop>
+        <stmt class="description">
+          <p>Execute the planned assurance initiative. Report on identified findings. Provide
+            positive assurance opinions, where appropriate, and recommendations for improvement
+            relating to identified operational performance, external compliance and internal control
+            system residual risk.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Refine the understanding of the IT assurance subject.</li>
+            <li>Refine the scope of key control objectives for the IT assurance subject.</li>
+            <li>Test the effectiveness of the control design of the key control objectives.</li>
+            <li>Alternatively/additionally test the outcome of the key control objectives.</li>
+            <li>Document the impact of control weaknesses.</li>
+            <li>Communicate with management during execution of the initiative so that there is a
+              clear understanding of the work performed and agreement on and acceptance of the
+              preliminary findings and recommendations.</li>
+            <li>Supervise the assurance activities and make sure the work done is complete, meets
+              objectives and is of an acceptable quality.</li>
+            <li>Provide management with a report (aligned with the terms of reference, scope and
+              agreed-on reporting standards) that supports the results of the initiative and enables
+              a clear focus on key issues and important actions. M</li>
+          </ol>
+        </stmt>
+        <feature class="raci_index">
+          <prop class="informed">Board</prop>
+          <prop class="informed">Chief Executive Officer</prop>
+          <prop class="consulted">Business Executives</prop>
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="consulted">Project Management Office</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="consulted">Compliance</prop>
+          <prop class="accountable">Audit</prop>
+          <prop class="responsible">Chief Information Officer</prop>
+          <prop class="consulted">Head Architect</prop>
+          <prop class="consulted">Head Development</prop>
+          <prop class="consulted">Head IT Operations</prop>
+          <prop class="consulted">Head IT Administration</prop>
+          <prop class="consulted">Service Manager</prop>
+          <prop class="consulted">Information Security Manager</prop>
+          <prop class="consulted">Business Continuity Manager</prop>
+          <prop class="consulted">Privacy Officer</prop>
+        </feature>
+        <feature class="input">
+          <prop class="from"/>
+          <stmt class="description">
+            <ul>
+              <li/>
+            </ul>
+          </stmt>
+        </feature>
+        <feature class="output">
+          <prop class="to"/>
+          <stmt class="description">
+            <p/>
+          </stmt>
+        </feature>
+      </subcontrol>
     </control>
+      
     <control class="process">
       <title>Monitor, evaluate and assess compliance with external requirements</title>
       <prop class="number">MEA03</prop>
@@ -947,17 +1579,17 @@
       <stmt class="objectives">
         <p/>
       </stmt>
-      <enhancement class="goal">
+      <feature class="goal">
         <title/>
         <prop class="scope">IT | Process</prop>
         <prop class="number"></prop>
-        <stmt class="metrics">
-          <ul>
-            <li/>
-          </ul>
-        </stmt>
-      </enhancement>
-      <enhancement class="practice">
+        <group class="metrics">
+          
+            <prop class="metric"/>
+          
+        </group>
+      </feature>
+      <subcontrol class="practice">
         <title/>
         <prop class="number"/>
         <stmt class="description">
@@ -968,7 +1600,7 @@
             <li/>
           </ol>
         </stmt>
-        <enhancement class="raci_index">
+        <feature class="raci_index">
           <prop class="responsible">Board</prop>
           <prop class="accountable">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -995,22 +1627,22 @@
           <prop class="informed">Information Security Manager</prop>
           <prop class="informed">Business Continuity Manager</prop>
           <prop class="informed">Privacy Officer</prop>
-        </enhancement>
-        <enhancement class="input">
+        </feature>
+        <feature class="input">
           <prop class="from"/>
           <stmt class="description">
             <ul>
               <li/>
             </ul>
           </stmt>
-        </enhancement>
-        <enhancement class="output">
+        </feature>
+        <feature class="output">
           <prop class="to"/>
           <stmt class="description">
             <p/>
           </stmt>
-        </enhancement>
-      </enhancement>
+        </feature>
+      </subcontrol>
       <references>
         <ref>
           <citation/>

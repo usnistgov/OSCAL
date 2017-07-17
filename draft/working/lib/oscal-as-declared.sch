@@ -71,9 +71,11 @@
     
     <!-- Exempted from declaration rules; other children of control, group, enhancement must be declared
          and will match the next rule. -->
-    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title | oscal:extension | oscal:link | oscal:references"/>
+    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title | oscal:subcontrol | oscal:feature | oscal:link | oscal:references"/>
 
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/* | oscal:extension/*">
+    <sch:rule context="oscal:p | oscal:ul | oscal:ol | oscal:pre"/>
+    
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feature/*">
       <xsl:variable name="this" select="."/>
       
 
@@ -121,7 +123,7 @@
         </xsl:apply-templates>
       </xsl:variable>
       <sch:assert test="empty($value-requirements) or (. = $resolved-values)">
-        Value of property <sch:value-of select="oscal:sequence($value-classes)"/> is expected to be 
+        Value of property <sch:value-of select="oscal:sequence(distinct-values($value-classes))"/> is expected to be 
         <xsl:value-of select="if (count($resolved-values) gt 1) then 'one of ' else ''"/>
         <xsl:value-of select="$resolved-values/concat('''',.,'''')" separator=", "/></sch:assert>
       
@@ -191,7 +193,8 @@
     <xsl:variable name="expanded">
       <!-- single level numbering of element among its siblings of the same name. -->
       <xsl:for-each select="$who-cares/..">
-        <xsl:number format="{($call/string(.),'A')[1]}"/>
+        <xsl:variable name="among" select="oscal:classes(.)"/>
+        <xsl:number format="{($call/string(.),'A')[1]}" count="*[oscal:classes(.)=$among]"/>
       </xsl:for-each>
     </xsl:variable>
     <xsl:value-of select="normalize-space($expanded)"/>

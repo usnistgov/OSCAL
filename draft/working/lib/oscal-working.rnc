@@ -50,7 +50,7 @@ required = element required { empty }
 
 group = element group {
   idAttr, typeAttr,
-  title?, prop*, anyKindofStatement*, (group* | control*), section*, references? }
+  title?, prop*, anyKindofStatement*, (group* | control* | subcontrol* | subsubcontrol*), section*, references? }
 
 section = element div { idAttr, typeAttr,
   title, prose, section*, references? }
@@ -58,20 +58,20 @@ section = element div { idAttr, typeAttr,
 control =
   element control {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | subcontrol | subsubcontrol )*, 
+    (link | param | prop | anyKindofStatement | group | subcontrol | subsubcontrol | prose )*, 
     references?
   }
 
 subcontrol =
-  element enhancement {
+  element subcontrol {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | subsubcontrol )* 
+    (link | param | prop | anyKindofStatement | group | subsubcontrol | prose )* 
   }
 
 subsubcontrol =
-  element extension {
+  element feature {
     idAttr, typeAttr, title?,
-    (link | param* | prop | anyKindofStatement | subsubcontrol )*
+    (link | param | prop | anyKindofStatement | group | subsubcontrol | prose )*
   }
 
 title = element title { (text | q)* }
@@ -83,7 +83,6 @@ title = element title { (text | q)* }
 # (since params are not currently required to be declared
 
 link    = element link { relAttr, hrefAttr, mix }
-
 
 param   = element param { idAttr, nameAttr, mix }
 
@@ -166,19 +165,19 @@ citation =  element citation {
 
 # whatnot includes 'semantical' elements along with the inline mix
 p =
-  element p { idAttr, whatnot }
+  element p { idAttr, typeAttr, whatnot }
 
 pre =
   element pre { idAttr, mix }
 
 ol =
   element ol {
-    element li { (whatnot | ol | ul )*  }+
+    element li { idAttr, typeAttr, (whatnot | ol | ul )*  }+
   }
 
 ul =
   element ul {
-    element li { (whatnot | ol | ul )* }+
+    element li { idAttr, typeAttr, (whatnot | ol | ul )* }+
   }
 
 # html!

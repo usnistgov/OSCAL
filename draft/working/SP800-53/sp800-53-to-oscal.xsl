@@ -11,10 +11,14 @@
   exclude-result-prefixes="#all"
   >
 
-  <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement objectives objective decisions decision potential-assessments potential-assessment withdrawn"/>
+  <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement objectives objective decisions decision potential-assessments potential-assessment withdrawn statement"/>
 
 
   <xsl:output indent="yes"/>
+  
+  <xsl:variable name="source" select="/"/>
+  
+  <xsl:variable name="objectives" select="document('800-53a-objectives.xml',$source)"/>
   
   <xsl:template match="feed:controls">
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
@@ -41,8 +45,24 @@
   <xsl:template match="feed:control">
     <control class="SP800-53">
       <xsl:apply-templates select="title"/>
-      <xsl:apply-templates select="* except title"/>
+      <xsl:apply-templates select="* except (title | references)"/>
+      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)
+        "/>
+      <xsl:apply-templates select="references"/>    
     </control>
+  </xsl:template>
+  
+  <!-- space has to be stripped to integrate across disparities -->
+  <xsl:key match="feed:control | control-enhancement" name="control-by-no" use="replace(number,'\s','')"/>
+  
+  <xsl:template mode="integrate-objectives" match="feed:control | control-enhancement">
+    <xsl:apply-templates mode="#current"/>
+  </xsl:template>
+  
+  <xsl:template mode="integrate-objectives" match="title | number | control-enhancements"/>
+  
+  <xsl:template mode="integrate-objectives" match="feed:control/* | control-enhancement/*" priority="-0.1">
+    <xsl:apply-templates select="." mode="#default"/>
   </xsl:template>
   
   <xsl:template match="title">
@@ -83,33 +103,38 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <!-- contains a description (for the control) plus extensions ... -->
-  <xsl:template match="feed:control/statement | control-enhancement/statement" priority="2">
-      <xsl:apply-templates select="@*" mode="asElement"/>
-      <xsl:apply-templates/>
+  <xsl:template match="control-enhancement">
+    <subcontrol class="SP800-53-enhancement">
+      <xsl:apply-templates select="title"/>
+      <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
+      
+      <xsl:apply-templates select="* except title"/>
+      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)
+        "/>
+    </subcontrol>
   </xsl:template>
   
-  <xsl:template match="statement/statement">
-    <extension class="description">
+  
+  
+  <xsl:template match="statement">
+    <feature class="statement">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </extension>
+    </feature>
   </xsl:template>
   
   <xsl:template match="statement/statement/statement" priority="2">
-    <extension class="description-item">
+    <feature class="statement-item">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </extension>
+    </feature>
   </xsl:template>
   
   <xsl:template match="statement/description">
-    <stmt class="description">
-      <xsl:apply-templates select="@*" mode="asElement"/>
-      <p>
+      <p class="description">
+        <xsl:apply-templates select="@*" mode="asElement"/>
         <xsl:apply-templates/>
       </p>
-    </stmt>
   </xsl:template>
   
   <xsl:template match="related">
@@ -124,11 +149,14 @@
       </p>
   </xsl:template>
   
+  <!-- In latest sp80053a, objective is recursive,
+  resulting in nested plug//plug -->
+  
   <xsl:template match="objective">
-    <extension class="objective">
+    <feature class="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </extension>
+    </feature>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
@@ -139,20 +167,9 @@
   </xsl:template>
   
   <xsl:template match="decision">
-    <extension class="decision">
-      <xsl:apply-templates select="@*" mode="asElement"/>
-      <stmt class="description">
+    <p class="decision">
         <xsl:apply-templates/>
-      </stmt>
-    </extension>
-  </xsl:template>
-  
-  <xsl:template match="control-enhancement">
-    <enhancement class="SP800-53-enhancement">
-      <xsl:apply-templates select="title"/>
-      <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
-      <xsl:apply-templates select="* except title"/>
-    </enhancement>
+    </p>
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
@@ -162,10 +179,10 @@
   <xsl:template match="@sequence" mode="asElement"/>
   
   <xsl:template match="potential-assessment">
-    <enhancement class="assessment">
+    <feature class="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
-          <xsl:apply-templates/>
-    </enhancement>
+      <xsl:apply-templates/>
+    </feature>
   </xsl:template>
   
   <xsl:template match="object">

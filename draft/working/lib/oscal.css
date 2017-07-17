@@ -34,6 +34,8 @@ parameter:before  { content: '(parameter) "' attr(class) '" on ' attr(context) '
 property:before  { content: '(property) "' attr(class) '" on ' attr(context) ' '  }
 statement:before  { content: '(statement) "' attr(class) '" on ' attr(context) ' '}
 
+feature:before  { content: attr(class) " (feature)" }
+subcontrol:before  { content: attr(class) " (subcontrol)" }
 
 property { background-color: pink; margin-top: 0.5em; color: black }
 statement { background-color: cornsilk; margin-top: 0.5em; color: black }
@@ -58,18 +60,21 @@ references:before { content: "References"; font-size: 120%; font-weight: bold }
 
 ref { border-left: thick solid silver; padding-left: 0.5em; margin-top: 0.5ex }
 
-control, enhancement { padding: 0.5em; margin: 0.5em; border: medium double black;
+control, subcontrol, feature { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-enhancement { border: thin dotted black }
+subcontrol { border: thin solid black }
+feature   { border: thin dotted black }
 
 param:before { content: 'param ' attr(class) ': ' }
 param { display: inline-block; background-color: #C5FF98; border: thin outset darkgreen;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90% }
-prop, control:before, enhancement:before, group:before { display:block; background-color: pink; border: thin outset pink;
+
+prop { display:block; background-color: pink; border: thin outset pink;
   margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
+
 
 
 title { font-weight: bold; font-family: sans-serif }
@@ -85,10 +90,10 @@ control:before { background-color: #FFE5B4;
 
 control > title { font-size: 110% }
 
-enhancement:before { background-color: #FFE5B4; 
+subcontrol:before { background-color: #FFE5B4; 
   content: 'enhancement: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-enhancement > title { font-size: 90%; font-style: italic }
+subcontrol > title, feature > title { font-size: 90%; font-style: italic }
 
 desc { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: lightsteelblue }

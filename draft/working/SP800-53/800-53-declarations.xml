@@ -18,9 +18,7 @@
       <value>HIGH</value>
    </property>
    
-   <statement context="SP800-53 SP800-53-enhancement description description-item" class="description">
-      <required/>
-   </statement>
+   <statement context="SP800-53 SP800-53-enhancement description description-item" class="description"/>
    
   <statement context="SP800-53" class="guidance"/>
    
@@ -29,16 +27,36 @@
     <value><inherit/> <autonum>(1)</autonum></value>
   </property>
   
-  <property context="description" class="number">
+  <property context="statement" class="number">
     <required/>
     <value><inherit/><autonum>a.</autonum></value>
     <value><inherit/><autonum>(a)</autonum></value>
+  </property>
+  
+  <property context="statement-item" class="number">
+    <required/>
+    <!--<value><inherit/><autonum>1.</autonum></value>-->
+  </property>
+  
+  <property context="description" class="number">
+    <required/>
+    <!--<value><inherit/><autonum>a.</autonum></value>
+    <value><inherit/><autonum>(a)</autonum></value>-->
   </property>
   
   <property context="description-item" class="number">
     <required/>
     <value><inherit/><autonum>1.</autonum></value>
     <value><inherit/><autonum>(1)</autonum></value>
+  </property>
+  
+  <property context="objective" class="number">
+    <required/>
+    <!-- the data has discontinuities implying groupings -->
+    <!--<value><inherit/><autonum>(1)</autonum></value>
+    <value><inherit/><autonum>(a)</autonum></value>
+    <value><inherit/><autonum>[1]</autonum></value>
+    <value><inherit/><autonum>[a]</autonum></value>-->
   </property>
   
   <property context="SP800-53-enhancement" class="baseline-impact">
@@ -48,4 +66,16 @@
    </property>
    <statement context="SP800-53-enhancement" class="guidance"/>
    
+  <property context="assessment" class="method">
+    <singleton/>
+    <required/>
+    <value>EXAMINE</value>
+    <value>INTERVIEW</value>
+    <value>TEST</value>
+  </property>
+  
+  <property context="assessment" class="object">
+    <required/>
+  </property>
+  
 </declarations>

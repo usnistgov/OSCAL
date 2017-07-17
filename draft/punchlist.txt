@@ -85,18 +85,17 @@ Profiles take different forms
     Extending a base catalog
     Mapping and reconciling prior catalogs into new catalogs
 
+CONTESTABLE DESIGN NOTES
+
 Every profile is based on a catalog or multiple catalogs. A catalog is indeed (in one respect) nothing more than a "standalone" profile, that is, a profile that makes reference to no catalog but itself. We distinguish a catalog from a profile in use mainly because we hope we don't have to start from scratch; we generally base our work on earlier work or at least make reference to it - hence we are less interested in making a new catalog from scratch, than in creating a profile of (documenting a relation with) a catalog provided as a reference. Nonetheless, catalogs and profiles are made from the same stuff: the difference is in how we are using it.
 
 We expect to have standard catalogs, so we don't have to produce them from scratch -- whereas we also expect we need to be able to do our own thing, hence the need for profiling.
 
 With respect to content models, catalogs and profiles are isomorphic except wrt the presence of element 'authority'. One way to produce a profile (a 'null' profile ready for editing) of a given catalog, is to rename 'catalog' to 'profile' and add 'authority' pointing to the original catalog. (There are better ways to do this but it works.)
 
-Hence, in schema validation, 'catalog' and 'profile' are synonymous, with their difference in application asserted in Schematron.
-
 x Also declarations of properties/statements on groups (again by type)
 
 modeling 'selections' via XML containment <select><alternative></></>
-
 
 What sorts of things do we need to validate at the level of a control?
   Properties and statements that (may|must) appear
@@ -165,8 +164,12 @@ Statements, in contrast, are best thought of as chunks or globs or hunks of pros
 
 The 'description' of a control might indeed be considered a special or privileged kind of statement, even as its title is a kind of property. For the most part, however, OSCAL permits catalogs and profiles to define their own properties, property values, and statements, for whatever purposes they might need.
 
-All properties and statements are assigned *roles*, which must be distinctive within the control. That is, if a control has a property whose role is to be the "number", no other property or statement may be assigned that role. (To the same control. Other controls may have their own numbers especially if they are the same type as this one.) This means there is always a one-to-one relationship between (any given) property values, and the controls they describe -- a constraint that simplifies queries for controls, since we can know ahead of time that any control can have only a single 'name' or 'number' or 'blodget'. (If we have cases where we need many-to-many key relations, in OSCAL, we will do that not with properties or statements, but subcontrols.)
+RULES OF CLASS ASSIGNMENT (TBD)
 
+All properties and statements are assigned "roles", which must be distinctive within the control. That is, if a control has a property whose role is to be the "number", no other property or statement may be assigned that role. (To the same control. Other controls may have their own numbers especially if they are the same type as this one.) This means there is always a one-to-one relationship between (any given) property values, and the controls they describe -- a constraint that simplifies queries for controls, since we can know ahead of time that any control can have only a single 'name' or 'number' or 'blodget'. (If we have cases where we need many-to-many key relations, in OSCAL, we will do that not with properties or statements, but subcontrols.)
+
+In OSCAL, the 'role' is expressed as a *controlled class*, which is to say, a value on the 'class' attribute. Not every value of class need be a controlled class; as in HTML, it is always possible (if not always a good idea) to overload class with more than one expressed value.
+ 
 The "tailoring" or adaptation of controls generally entails adding or overwriting statements and properties given in control catalogs, as well as combining controls (with properties providing links to base controls, etc.) into new controls and control sets.
 
 Parameters
@@ -188,10 +191,17 @@ Interchangeability
 OSCAL is an entirely independent semantic 'stack' intended to promote interchange of a particular kind (or pattern) of information, a "control set". As such it can be mapped cleanly to NISO JATS, NLM BITS, NISO STS, DITA, or any other format.
 
 
-o linking element
-o merge 800-53A enhancements into 800-53 controls
-o rename enhancement to 'enh'
-o rename enhancement/enhancement to 'ext'
-o look at COBIT semantics issues
+x rnc for linking element
+x merge 800-53A enhancements into 800-53 controls
+x renamed enhancement to 'subcontrol'
+x renamed enhancement/enhancement to 'feature'
+x update and validate three pathways
+
+o look at COBIT semantics issues (are they addressed by 'feature'?)
+  -- XSLT to convert input/output feature prop[@class=('to','from')] into links
+    similarly introduce link elements into IT goals
+    upconvert metrics/
+  
 o prototype catalog profiling mechanism
+  examples: the three baselines of SP800-53; COBIT by RACI role
 
