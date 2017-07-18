@@ -56,6 +56,13 @@ statement:before { content:
   oxy_textfield(edit, '@context', columns, 20) 
  }
 
+feature:before { content:
+  oxy_label(text, "statement ", styles, "font-weight:bold")
+  oxy_textfield(edit, '@class', columns, 20) 
+  ' on '
+  oxy_textfield(edit, '@context', columns, 20) 
+ }
+
 
 control:before { content: 'control: ' oxy_textfield(
           edit, '@type',
@@ -82,7 +89,7 @@ subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
               editable, true )
 }
 
-feature:before { font-weight: bold; color: darkgreen; font-family: sans-serif;
+feat:before { font-weight: bold; color: darkgreen; font-family: sans-serif;
           content: 
            oxy_capitalize(attr(class)) ' '
             oxy_combobox( 

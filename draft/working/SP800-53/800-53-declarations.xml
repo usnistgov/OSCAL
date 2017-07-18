@@ -2,70 +2,94 @@
 <?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <declarations xmlns="http://scap.nist.gov/schema/oscal">
-   <property context="SP800-53" class="number">
-      <required/>
-     <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
-   </property>
-   <property context="SP800-53" class="priority">
-      <value>P1</value>
-      <value>P2</value>
-      <value>P0</value>
-      <value>P3</value>
-   </property>
-   <property context="SP800-53" class="baseline-impact">
-      <value>LOW</value>
-      <value>MODERATE</value>
-      <value>HIGH</value>
-   </property>
-   
-   <statement context="SP800-53 SP800-53-enhancement description description-item" class="description"/>
-   
-  <statement context="SP800-53" class="guidance"/>
-   
-  <property context="SP800-53-enhancement" class="number">
+
+  <property context="SP800-53" class="number">
+    <singleton/>
     <required/>
-    <value><inherit/> <autonum>(1)</autonum></value>
+    <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
   </property>
-  
-  <property context="statement" class="number">
+  <property context="SP800-53" class="priority">
+    <singleton/>
+    <value>P1</value>
+    <value>P2</value>
+    <value>P0</value>
+    <value>P3</value>
+  </property>
+  <property context="SP800-53" class="baseline-impact">
+    <value>LOW</value>
+    <value>MODERATE</value>
+    <value>HIGH</value>
+  </property>
+  <feature context="SP800-53" class="statement">
+    <singleton/>
     <required/>
+  </feature>
+  <statement context="SP800-53" class="guidance">
+    <singleton/>
+  </statement>
+  <feature context="SP800-53" class="objective">
+    <singleton/>
+    <required/>
+  </feature>
+  <feature context="SP800-53" class="assessment"/>
+  <!-- can repeat -->
+
+  <property context="SP800-53-enhancement" class="number">
+    <singleton/>
+    <required/>
+    <value><inherit/>
+      <autonum>(1)</autonum></value>
+  </property>
+  <property context="SP800-53-enhancement" class="baseline-impact">
+    <value>LOW</value>
+    <value>MODERATE</value>
+    <value>HIGH</value>
+  </property>
+  <feature context="SP800-53-enhancement" class="statement">
+    <singleton/>
+    <required/>
+  </feature>
+  <statement context="SP800-53-enhancement" class="guidance">
+    <singleton/>
+  </statement>
+  <feature context="SP800-53-enhancement" class="objective">
+    <singleton/>
+    <required/>
+  </feature>
+  <feature context="SP800-53-enhancement" class="assessment"/>
+
+  <statement context="statement" class="description">
+    <singleton/>
+    <required/>
+  </statement>
+  <!-- Note recursion -->
+  <feature context="statement" class="statement"/>
+  <property context="statement" class="number">
+    <singleton/>
     <value><inherit/><autonum>a.</autonum></value>
     <value><inherit/><autonum>(a)</autonum></value>
   </property>
-  
+  <feature context="statement" class="statement-item"/>
+
   <property context="statement-item" class="number">
+    <singleton/>
     <required/>
-    <!--<value><inherit/><autonum>1.</autonum></value>-->
   </property>
-  
-  <property context="description" class="number">
+  <property context="statement-item" class="description">
+    <singleton/>
     <required/>
-    <!--<value><inherit/><autonum>a.</autonum></value>
-    <value><inherit/><autonum>(a)</autonum></value>-->
   </property>
-  
-  <property context="description-item" class="number">
-    <required/>
-    <value><inherit/><autonum>1.</autonum></value>
-    <value><inherit/><autonum>(1)</autonum></value>
+
+  <property context="objective" class="decision">
+    <singleton/>
+    <!--<required/> not required because objectives are nested; only lowest level has decision given. -->
   </property>
-  
+  <!-- Note recursion: objectives contain objectives -->
+  <feature context="objective" class="objective"/>
   <property context="objective" class="number">
-    <required/>
-    <!-- the data has discontinuities implying groupings -->
-    <!--<value><inherit/><autonum>(1)</autonum></value>
-    <value><inherit/><autonum>(a)</autonum></value>
-    <value><inherit/><autonum>[1]</autonum></value>
-    <value><inherit/><autonum>[a]</autonum></value>-->
+    <singleton/><!-- outer (wrapper) objectives are not numbered explicitly -->
   </property>
-  
-  <property context="SP800-53-enhancement" class="baseline-impact">
-      <value>MODERATE</value>
-      <value>HIGH</value>
-      <value>LOW</value>
-   </property>
-   <statement context="SP800-53-enhancement" class="guidance"/>
-   
+
   <property context="assessment" class="method">
     <singleton/>
     <required/>
@@ -73,9 +97,8 @@
     <value>INTERVIEW</value>
     <value>TEST</value>
   </property>
-  
   <property context="assessment" class="object">
     <required/>
   </property>
-  
+
 </declarations>

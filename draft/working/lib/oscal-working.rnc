@@ -17,7 +17,7 @@ catalog = element catalog { title, declarations?, section*, (group+ | control+),
 # authorities (source data for transclusion etc. etc.)
 declarations = ( element declarations { hrefAttr?, decls } )
 
-decls = (parameter | property | statement)*
+decls = (parameter | property | statement | feature)*
 
 # parameter declarations expose names and default values for parameters within the control type
 parameter   = element parameter {
@@ -41,12 +41,20 @@ value = element value { ( \inherit | autonum | text )* }
 \inherit = element inherit { attribute from { text }?, text }
 autonum = element autonum { text }
 
+# statement declaration
 statement =
   element statement { nameAttr, contextAttr, singleton?, required? }
 
 required = element required { empty }
 
-# now for elements themselves
+# feature declaration
+feature =
+  element feature { nameAttr, contextAttr, singleton?, required? }
+
+# done with declarations - controls, subcontrols and groups are not declared
+# (constrained) at the OSCAL layer so they don't get declaration elements.
+
+# Now for the contents of the OSCAL doc proper --
 
 group = element group {
   idAttr, typeAttr,
@@ -55,10 +63,11 @@ group = element group {
 section = element div { idAttr, typeAttr,
   title, prose, section*, references? }
 
+# Note prose is permitted directly inside control although it may be forbidden at higher levels
 control =
   element control {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | subcontrol | subsubcontrol | prose )*, 
+    (link | param | prop | anyKindofStatement | group | subcontrol | subsubcontrol )*, 
     references?
   }
 
@@ -69,7 +78,7 @@ subcontrol =
   }
 
 subsubcontrol =
-  element feature {
+  element feat {
     idAttr, typeAttr, title?,
     (link | param | prop | anyKindofStatement | group | subsubcontrol | prose )*
   }

@@ -114,27 +114,25 @@
     </subcontrol>
   </xsl:template>
   
-  
-  
   <xsl:template match="statement">
-    <feature class="statement">
+    <feat class="statement">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feature>
+    </feat>
   </xsl:template>
   
   <xsl:template match="statement/statement/statement" priority="2">
-    <feature class="statement-item">
+    <feat class="statement-item">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feature>
+    </feat>
   </xsl:template>
   
   <xsl:template match="statement/description">
-      <p class="description">
+      <prop class="description">
         <xsl:apply-templates select="@*" mode="asElement"/>
         <xsl:apply-templates/>
-      </p>
+      </prop>
   </xsl:template>
   
   <xsl:template match="related">
@@ -153,10 +151,10 @@
   resulting in nested plug//plug -->
   
   <xsl:template match="objective">
-    <feature class="objective">
+    <feat class="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feature>
+    </feat>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
@@ -167,9 +165,9 @@
   </xsl:template>
   
   <xsl:template match="decision">
-    <p class="decision">
+    <prop class="decision">
         <xsl:apply-templates/>
-    </p>
+    </prop>
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
@@ -179,10 +177,10 @@
   <xsl:template match="@sequence" mode="asElement"/>
   
   <xsl:template match="potential-assessment">
-    <feature class="assessment">
+    <feat class="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <xsl:apply-templates/>
-    </feature>
+    </feat>
   </xsl:template>
   
   <xsl:template match="object">

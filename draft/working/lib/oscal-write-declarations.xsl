@@ -29,7 +29,7 @@
   
   <xsl:template match="/*">
     <declarations>
-    <xsl:for-each-group select="//control | //group | //enhancement" group-by="@class">
+    <xsl:for-each-group select="//control | //group | //subcontrol | //feat" group-by="@class">
       <xsl:variable name="who" select="current-group()"/>
       <xsl:variable name="control-type" select="current-grouping-key()"/>
       <!--<xsl:for-each select="$who//(assign|select)">
@@ -43,19 +43,24 @@
         <!--<control-spec type="{$control-type}"
           match="{string-join(ancestor-or-self::control/name(.),'//')}">-->
         
-      <xsl:for-each-group select="$who/(* except (control|title|group|description))" group-by="(@class[matches(.,'\S')],local-name(.))[1]">
-            <xsl:variable name="always" select="count(current-group()) = count($who)"/>
-            
-        <xsl:element name="{if (self::prop) then 'property' else 'statement'}">
-              <xsl:attribute name="role" select="current-grouping-key()"/>
-              <xsl:attribute name="context" select="(../@class,name(..))[1]"/>
-              <xsl:if test="$always"><required/></xsl:if>
-              <!-- only for values -->
-              <xsl:for-each select="distinct-values(current-group()/self::prop)">
+      <xsl:for-each-group select="$who/(* except (control|subcontrol|title|group|link|references))" group-by="(@class[matches(.,'\S')],local-name(.))[1]">
+        <xsl:variable name="always" select="empty($who except current-group()/..)"/>
+        <xsl:variable name="never-two" select="count(current-group()) eq count(current-group()/..)"/>
+        
+        <xsl:element name="{if (self::prop) then 'property' else
+          if (self::feat) then 'feature' else 'statement'}">
+          <xsl:attribute name="context" select="(../@class,name(..))[1]"/>
+          <xsl:attribute name="class" select="current-grouping-key()"/>
+          <xsl:if test="$never-two"><singleton/></xsl:if>
+          <xsl:if test="$always"><required/></xsl:if>
+          <!-- only for values -->
+          <xsl:for-each-group select="current-group()/self::prop" group-by="string(.)">
+          <xsl:if test="count(current-group()) gt 1 or true()">
                 <value>
-                  <xsl:value-of select="."/>
+                  <xsl:value-of select="current-grouping-key()"/>
                 </value>
-              </xsl:for-each>
+          </xsl:if>
+          </xsl:for-each-group>
             </xsl:element>
           </xsl:for-each-group>
         <!--</control-spec>-->

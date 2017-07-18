@@ -21,7 +21,7 @@
     </sch:rule>
     
     <!--  Constraints over declarations - very important!  -->
-    <sch:rule context="oscal:property | oscal:statement | oscal:parameter">
+    <sch:rule context="oscal:property | oscal:statement | oscal:parameter | oscal:feature">
       <sch:let name="me" value="."/>
       <!-- oscal:declares returns a set of strings indicating classes and context to which declarations are bound -->
       <sch:let name="look-the-same" value="
@@ -29,10 +29,11 @@
       <sch:assert test="empty($look-the-same)">Declaration clashes with another declaration.</sch:assert>
       <!--<sch:report test="true()"><sch:value-of select="oscal:sequence(oscal:signatures(.))"/></sch:report>-->
     </sch:rule>
-     
-    <!-- Constraints over groups, controls and enhancements regarding required properties and statements
-          (not yet parameters) -->
-    <sch:rule context="oscal:group | oscal:control | oscal:enhancement">
+  
+    <!-- Constraints over groups, controls and enhancements (subcontrols, features)
+         regarding required properties and statements
+         (not yet parameters) -->
+    <sch:rule context="oscal:group | oscal:control | oscal:subcontrol | oscal:feat">
       <xsl:variable name="this" select="."/>
       <xsl:variable name="matches"  select="oscal:classes($this),local-name($this)"/>
       <sch:let name="applicable" value="$declarations/key('declarations-by-context',$matches,$declarations)"/>
@@ -42,7 +43,7 @@
         <sch:value-of select="oscal:sequence($declarations/*/@context)"/>
       </sch:report>-->
       
-      <sch:assert role="warning" test="exists($applicable) or empty((oscal:param|oscal:prop|oscal:stmt)/@class)">No declarations apply to this <sch:name/></sch:assert>
+      <sch:assert role="warning" test="exists($applicable) or empty((oscal:param|oscal:prop|oscal:stmt|oscal:feat)/@class)">No declarations apply to this <sch:name/></sch:assert>
       
       <!-- First properties (prop) then statements (stmt) -->
       <!-- Finding property declarations for required properties.  -->
@@ -67,15 +68,26 @@
         on <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes($this) )"/>
       </sch:assert>
     </sch:rule>
-   
+   </sch:pattern>
+  
+  
+  
+<!-- Next, validating the values inside controls and control objects against matching declarations -->
+  <sch:pattern>
+    <sch:rule context="oscal:p | oscal:ul | oscal:ol | oscal:pre">
+      <!--To do: find a way to declare controls as (not) permissive of this stuff ?-->
+    </sch:rule>
+    
+    
     
     <!-- Exempted from declaration rules; other children of control, group, enhancement must be declared
          and will match the next rule. -->
-    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title | oscal:subcontrol | oscal:feature | oscal:link | oscal:references"/>
+    <!-- Note that we have no mechanism for declaring (and constraining) controls and subcontrols,
+         but we are expected to declare features. -->
+    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title |
+      oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
 
-    <sch:rule context="oscal:p | oscal:ul | oscal:ol | oscal:pre"/>
-    
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feature/*">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feat/*">
       <xsl:variable name="this" select="."/>
       
 

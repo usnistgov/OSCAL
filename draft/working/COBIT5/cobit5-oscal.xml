@@ -24,7 +24,7 @@
           transparently, compliance with legal and regulatory requirements is confirmed, and the
           governance requirements for board members are met.</p>
       </stmt>
-      <feature class="goal">
+      <feat class="goal">
         <title>Alignment of IT and business strategy</title>
         <prop class="scope">IT</prop>
         <prop class="number">01</prop>
@@ -36,8 +36,12 @@
             <prop class="metric">Percent of IT value drivers mapped to business value drivers</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+<!--      
+      
+      
+      -->
+      <feat class="goal">
         <title>Commitment of executive management for making IT-related decisions</title>
         <prop class="scope">IT</prop>
         <prop class="number">03</prop>
@@ -51,8 +55,8 @@
           <prop class="metric">Rate of execution of executive IT-related decisions</prop>
 
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Delivery of IT services in line with business requirements</title>
         <prop class="number">07</prop>
         <prop class="scope">IT</prop>
@@ -64,8 +68,8 @@
             <prop class="metric">Percent of users satisfied with the quality of IT service delivery</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Strategic decision-making model for IT is effective and aligned with the enterprise’s
           internal and external environment and stakeholder requirements</title>
         <prop class="scope">Process</prop>
@@ -76,8 +80,8 @@
             <prop class="metric">Level of stakeholder satisfaction (measured through surveys)</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>The governance system for IT is embedded in the enterprise</title>
         <prop class="scope">Process</prop>
         <prop class="number">2</prop>
@@ -92,8 +96,8 @@
               guidelines</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Assurance is obtained that the governance system for IT is operating
           effectively</title>
         <prop class="scope">Process</prop>
@@ -105,7 +109,7 @@
             <prop class="metric">Number of governance of IT issues reported</prop>
           
         </group>
-      </feature>
+      </feat>
       <subcontrol class="practice">
         <title>Evaluate the governance system</title>
         <prop class="number">EDM01.01</prop>
@@ -126,7 +130,7 @@
             <li>Articulate principles that will guide the design of governance and decision making of IT.</li>
             <li>Understand the enterprise’s decision-making culture and determine the optimal decision-making model for IT.</li>
             <li>Determine the appropriate levels of authority delegation, including threshold rules, for IT decisions.</li></ol></stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -143,14 +147,14 @@
           <prop class="consulted">Head Architect</prop>
           <prop class="consulted">Head Development</prop>
           <prop class="consulted">Head IT Operations</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">MEA03.02</prop>
           <stmt class="description">
             <p>Communications of changed compliance requirements</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">Outside COBIT</prop>
           <stmt class="description">
             <ul>
@@ -158,28 +162,28 @@
               <li>Regulations</li>
               <li>Governance/decision-making model</li>
               <li>Constitution/bylaws/statutes of organisation</li></ul></stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.01</prop>
           <prop class="to">APO01.03</prop>
           <stmt class="description">
             <p>Enterprise governance guiding principles</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.01</prop>
           <stmt class="description">
             <p>Decision-making model</p></stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.02</prop>
           <stmt class="description">
             <p>Authority levels</p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Direct the governance system</title>
@@ -200,7 +204,7 @@
             <li>Direct the establishment of a reward system to promote desirable cultural change.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -227,21 +231,21 @@
           <prop class="informed">Information Security Manager</prop>
           <prop class="informed">Business Continuity Manager</prop>
           <prop class="informed">Privacy Officer</prop>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.04</prop>
           <stmt class="description">
             <p>Enterprise governance communications</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">APO07.03</prop>
           <prop class="to">APO07.04</prop>
           <stmt class="description">
             <p>Reward system approach</p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Monitor the governance system</title>
@@ -270,7 +274,7 @@
               guidelines.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -297,44 +301,44 @@
           <prop class="informed">Information Security Manager</prop>
           <prop class="informed">Business Continuity Manager</prop>
           <prop class="informed">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">MEA01.04</prop>
           <stmt class="description">
-            <p>Performance reports</p></stmt></feature>
-        <feature class="input">
+            <p>Performance reports</p></stmt></feat>
+        <feat class="input">
           <prop class="from">MEA01.05</prop>
           <stmt class="description">
             <p> Status and results of actions</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">MEA02.01</prop>
           <stmt class="description">
             <ul>
             <li>Results of benchmarking and other evaluations</li>
             <li>Results of internal control monitoring and reviews</li></ul>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">MEA02.03</prop>
           <stmt class="description">
             <p>Results of reviews of self-assessments</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">MEA02.06</prop>
           <stmt class="description">
             <p>Assurance plans</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">MEA03.03</prop>
           <stmt class="description">
             <p>Compliance confirmations</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">MEA03.04</prop>
           <stmt class="description">
             <ul>
@@ -342,8 +346,8 @@
               <li>Compliance assurance reports </li>
             </ul>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">Outside COBIT</prop>
           <stmt class="description">
             <ul>
@@ -351,15 +355,15 @@
               <li>Audit reports</li>
             </ul>
           </stmt>
-        </feature>
+        </feat>
         
-        <feature class="output">
+        <feat class="output">
           <prop class="to">All EDM</prop>
           <prop class="to">APO01.07</prop>
           <stmt class="description">
             <p>Feedback on governance effectiveness and performance</p>
           </stmt>
-        </feature>
+        </feat>
         <!--
         <enhancement class="practice">
           <title></title>
@@ -482,7 +486,7 @@
       <prop class="number">APO13</prop>
       <stmt class="description"><p>Define, operate and monitor a system for information security management.</p></stmt>
       <stmt class="objectives"><p>Keep the impact and occurrence of information security incidents within the enterprise’s risk appetite levels.</p></stmt>
-      <feature class="goal">
+      <feat class="goal">
         <title>IT compliance and support for business compliance with external laws and
           regulations</title>
         <prop class="scope">IT</prop>
@@ -497,8 +501,8 @@
               providers</prop>
             <prop class="metric">Coverage of compliance assessments</prop>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Managed IT-related business risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">04</prop>
@@ -512,8 +516,8 @@
             <prop class="metric">Frequency of update of risk profile</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Transparency of IT costs, benefits and risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">06</prop>
@@ -527,8 +531,8 @@
               understanding and accuracy of IT financial information</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Security of information, processing infrastructure and applications</title>
         <prop class="scope">IT</prop>
         <prop class="number">10</prop>
@@ -542,8 +546,8 @@
             <prop class="metric">Frequency of security assessment against latest standards and guidelines</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Availability of reliable and useful information for decision making</title>
         <prop class="number">14</prop>
         <prop class="scope">IT</prop>
@@ -556,8 +560,8 @@
               information was a key factor </prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>A system is in place that considers and effectively addresses enterprise information
           security requirements.</title>
         <prop class="scope">Process</prop>
@@ -568,8 +572,8 @@
             <prop class="metric">Number of security related incidents</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>A security plan has been established, accepted and communicated throughout the
           enterprise.</title>
         <prop class="scope">Process</prop>
@@ -582,8 +586,8 @@
             <prop class="metric">Number of security solutions deviating from the enterprise architecture</prop>
           
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Information security solutions are implemented and operated consistently throughout
           the enterprise.</title>
         <prop class="scope">Process</prop>
@@ -595,7 +599,7 @@
             <prop class="metric">Number of solutions developed with confirmed alignment to the security plan</prop>
           
         </group>
-      </feature>
+      </feat>
       <subcontrol class="practice">
         <title>Establish and maintain an information security management system (ISMS)</title>
         <prop class="number">APO13.01</prop>
@@ -622,7 +626,7 @@
             <li>Communicate the ISMS approach.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="consulted">Chief Executive Officer</prop>
           <prop class="consulted">Chief Operating Officer</prop>
           <prop class="consulted">Business Executives</prop>
@@ -645,26 +649,26 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">Outside COBIT</prop>
           <stmt class="description">
             <p>Enterprise security approach</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">Internal </prop>
           <stmt class="description">
             <p>ISMS policy</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">APO01.02</prop>
           <prop class="to">DSS06.03</prop>
           <stmt class="description">
             <p>ISMS scope statement </p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Define and manage an information security risk treatment plan.</title>
@@ -700,7 +704,7 @@
               detection of security events and response to security incidents.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="consulted">Chief Executive Officer</prop>
           <prop class="consulted">Chief Operating Officer</prop>
           <prop class="consulted">Business Executives</prop>
@@ -723,27 +727,27 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">APO02.04</prop>
           <stmt class="description">
             <p>Gaps and changes required to realise target capability</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">APO03.02</prop>
           <stmt class="description">
             <p>Baseline domain descriptions and architecture definition</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">APO12.05</prop>
           <stmt class="description">
             <p>Project proposals for reducing risk</p>
           </stmt>
-        </feature>
+        </feat>
         
-        <feature class="output">
+        <feat class="output">
           <!--<link rel="output" href="EDM"/>-->
           <prop class="to">All EDM</prop>
           <prop class="to">All APO</prop>
@@ -753,13 +757,13 @@
           <stmt class="description">
             <p>Information security risk treatment plan </p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">APO02.05</prop>
           <stmt class="description">
             <p>Information security business cases </p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Monitor and review the ISMS.</title>
@@ -785,7 +789,7 @@
               performance of the ISMS.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="consulted">Business Executives</prop>
           <prop class="responsible">Business Process Owners</prop>
           <prop class="consulted">Strategy Executive Committee</prop>
@@ -802,25 +806,25 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="responsible">Business Continuity Manager</prop>
           <prop class="responsible">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">DSS02.02</prop>
           <stmt class="description">
             <p>Classified and prioritised incidents and service requests</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">MEA02.01</prop>
           <stmt class="description">
             <p>ISMS audit reports</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">Internal</prop>
           <stmt class="description">
             <p>Recommendations for improving the ISMS</p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <references>
         <ref>
@@ -940,7 +944,7 @@
           controls and thus provide trust in operations, confidence in the achievement of enterprise
           objectives and an adequate understanding of residual risk.</p>
       </stmt>
-      <feature class="goal">
+      <feat class="goal">
         <title>IT compliance and support for business compliance with external laws and
           regulations</title>
         <prop class="scope">IT</prop>
@@ -954,8 +958,8 @@
             with IT service providers</prop>
           <prop class="metric">Coverage of compliance assessments</prop>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Managed IT-related business risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">04</prop>
@@ -968,8 +972,8 @@
             risk</prop>
           <prop class="metric">Frequency of update of risk profile</prop>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>IT compliance with internal policies</title>
         <prop class="scope">IT</prop>
         <prop class="number">15 </prop>
@@ -980,16 +984,16 @@
             practices</prop>
           <prop class="metric">Frequency of policies review and update</prop>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title/>
         <prop class="scope">Process</prop>
         <prop class="number"/>
         <group class="metrics">
           <prop class="metric"/>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Processes, resources and information meet enterprise internal control system
           requirements.</title>
         <prop class="scope">Process</prop>
@@ -1000,8 +1004,8 @@
           <prop class="metric">Percent of processes assured as compliant with internal control
             targets</prop>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>All assurance initiatives are planned and executed effectively.</title>
         <prop class="scope">Process</prop>
         <prop class="number">2.</prop>
@@ -1009,8 +1013,8 @@
           <prop class="metric">Percent of assurance initiatives following approved assurance
             programme and plan standards</prop>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Independent assurance that the system of internal control is operational and
           effective is provided.</title>
         <prop class="scope">Process</prop>
@@ -1018,8 +1022,8 @@
         <group class="metrics">
           <prop class="metric"> Percent of processes receiving independent review</prop>
         </group>
-      </feature>
-      <feature class="goal">
+      </feat>
+      <feat class="goal">
         <title>Internal control is established and deficiencies are identified and reported.</title>
         <prop class="scope">Process</prop>
         <prop class="number">4.</prop>
@@ -1030,7 +1034,7 @@
           <prop class="metric">Time between internal control deficiency occurrence and
             reporting</prop>
         </group>
-      </feature>
+      </feat>
       <subcontrol class="practice">
         <title>Monitor internal controls.</title>
         <prop class="number">MEA02.01</prop>
@@ -1064,7 +1068,7 @@
               obligations.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="informed">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
           <prop class="informed">Chief Operating Officer</prop>
@@ -1083,26 +1087,26 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="responsible">Business Continuity Manager</prop>
           <prop class="responsible">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">APO12.04</prop>
           <stmt class="description">
             <p>Results of third-party risk assessments</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">APO13.03</prop>
           <stmt class="description">
             <p>ISMS audit reports</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">Outside COBIT</prop>
           <stmt class="description">
             <p>Industry standards and good practices</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">EDM01.03</prop>
           <prop class="to">All APO</prop>
           <prop class="to">All BAI</prop>
@@ -1111,8 +1115,8 @@
           <stmt class="description">
             <p>Results of internal control monitoring and reviews</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">EDM01.03</prop>
           <prop class="to">All APO</prop>
           <prop class="to">All BAI</prop>
@@ -1121,7 +1125,7 @@
           <stmt class="description">
             <p>Results of benchmarking and other evaluations </p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Review business process controls effectiveness.</title>
@@ -1146,7 +1150,7 @@
             <li>Maintain evidence of control effectiveness.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="informed">Board</prop>
           <prop class="informed">Chief Executive Officer</prop>
           <prop class="responsible">Chief Financial Officer</prop>
@@ -1163,25 +1167,25 @@
           <prop class="consulted">Service Manager</prop>
           <prop class="consulted">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">BAI05.06</prop>
           <stmt class="description">
             <p>Compliance audit results</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">BAI05.07</prop>
           <stmt class="description">
             <p>Reviews of operational use</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">Internal</prop>
           <stmt class="description">
             <p>Evidence of control effectiveness</p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Perform control self-assessments.</title>
@@ -1212,7 +1216,7 @@
               co-ordinating with internal and external auditors.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="informed">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
           <prop class="informed">Chief Operating Officer</prop>
@@ -1231,8 +1235,8 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="responsible">Business Continuity Manager</prop>
           <prop class="responsible">Privacy Officer</prop>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">All APO</prop>
           <prop class="to">All BAI</prop>
           <prop class="to">All DSS</prop>
@@ -1240,14 +1244,14 @@
           <stmt class="description">
             <p>Self-assessment plans and criteria</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">Internal</prop>
           <stmt class="description">
             <p>Results of self-assessments</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">EDM01.03</prop>
           <prop class="to">All APO</prop>
           <prop class="to">All BAI</prop>
@@ -1256,7 +1260,7 @@
           <stmt class="description">
             <p>Results of reviews of self-assessments </p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Identify and report control deficiencies.</title>
@@ -1282,7 +1286,7 @@
               assessments and reporting.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="informed">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
           <prop class="informed">Chief Operating Officer</prop>
@@ -1302,20 +1306,20 @@
           <prop class="responsible">Information Security Manager</prop>
           <prop class="responsible">Business Continuity Manager</prop>
           <prop class="responsible">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">APO11.05</prop>
           <stmt class="description">
             <p> Root causes of quality delivery failures</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">APO12.06</prop>
           <stmt class="description">
             <p>Risk-related root causes</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">DSS06.01</prop>
           <stmt class="description">
             <ul>
@@ -1323,14 +1327,14 @@
               <li>Results of processing effectiveness reviews</li>
             </ul>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">DSS06.04</prop>
           <stmt class="description">
             <p>Evidence of error correction and remediation</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">All APO</prop>
           <prop class="to">All BAI</prop>
           <prop class="to">All DSS</prop>
@@ -1338,8 +1342,8 @@
           <stmt class="description">
             <p>Control deficiencies</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">All APO</prop>
           <prop class="to">All BAI</prop>
           <prop class="to">All DSS</prop>
@@ -1347,7 +1351,7 @@
           <stmt class="description">
             <p>Remedial actions</p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Ensure that assurance providers are independent and qualified.</title>
@@ -1369,18 +1373,18 @@
             <li>Establish competency and qualification of assurance providers.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="responsible">Business Process Owners</prop>
           <prop class="accountable">Compliance</prop>
           <prop class="accountable">Audit</prop>
           <prop class="responsible">Chief Information Officer</prop>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">Internal</prop>
           <stmt class="description">
             <p>Results of assurance provider evaluations</p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Plan assurance initiatives.</title>
@@ -1400,7 +1404,7 @@
               processes that will be the basis for the control assessment.</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="accountable">Chief Executive Officer</prop>
           <prop class="consulted">Business Executives</prop>
           <prop class="responsible">Business Process Owners</prop>
@@ -1416,26 +1420,26 @@
           <prop class="consulted">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">BAI01.05</prop>
           <stmt class="description">
             <p>Programme audit plans</p>
           </stmt>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from">DSS01.02</prop>
           <stmt class="description">
             <p>Independent assurance plans</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">Internal</prop>
           <stmt class="description">
             <p>High-level assessments</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">EDM01.03</prop>
           <prop class="to">All APO</prop>
           <prop class="to">All BAI</prop>
@@ -1444,13 +1448,13 @@
           <stmt class="description">
             <p>Assurance plans</p>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to">Internal</prop>
           <stmt class="description">
             <p>Assessment criteria</p>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Scope assurance initiatives.</title>
@@ -1476,7 +1480,7 @@
               residual risk (in preparation for reporting).</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="responsible">Chief Operating Officer</prop>
           <prop class="responsible">Business Executives</prop>
           <prop class="responsible">Business Process Owners</prop>
@@ -1492,13 +1496,13 @@
           <prop class="consulted">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to"/>
           <stmt class="description">
             <p/>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <subcontrol class="practice">
         <title>Execute assurance initiatives.</title>
@@ -1526,7 +1530,7 @@
               a clear focus on key issues and important actions. M</li>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="informed">Board</prop>
           <prop class="informed">Chief Executive Officer</prop>
           <prop class="consulted">Business Executives</prop>
@@ -1545,21 +1549,21 @@
           <prop class="consulted">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from"/>
           <stmt class="description">
             <ul>
               <li/>
             </ul>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to"/>
           <stmt class="description">
             <p/>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
     </control>
       
@@ -1579,7 +1583,7 @@
       <stmt class="objectives">
         <p/>
       </stmt>
-      <feature class="goal">
+      <feat class="goal">
         <title/>
         <prop class="scope">IT | Process</prop>
         <prop class="number"></prop>
@@ -1588,7 +1592,7 @@
             <prop class="metric"/>
           
         </group>
-      </feature>
+      </feat>
       <subcontrol class="practice">
         <title/>
         <prop class="number"/>
@@ -1600,7 +1604,7 @@
             <li/>
           </ol>
         </stmt>
-        <feature class="raci_index">
+        <feat class="raci_index">
           <prop class="responsible">Board</prop>
           <prop class="accountable">Chief Executive Officer</prop>
           <prop class="consulted">Chief Financial Officer</prop>
@@ -1627,21 +1631,21 @@
           <prop class="informed">Information Security Manager</prop>
           <prop class="informed">Business Continuity Manager</prop>
           <prop class="informed">Privacy Officer</prop>
-        </feature>
-        <feature class="input">
+        </feat>
+        <feat class="input">
           <prop class="from"/>
           <stmt class="description">
             <ul>
               <li/>
             </ul>
           </stmt>
-        </feature>
-        <feature class="output">
+        </feat>
+        <feat class="output">
           <prop class="to"/>
           <stmt class="description">
             <p/>
           </stmt>
-        </feature>
+        </feat>
       </subcontrol>
       <references>
         <ref>
