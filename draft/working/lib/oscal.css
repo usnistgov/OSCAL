@@ -36,9 +36,6 @@ property:before   { content: '(property) "'  attr(class) '" on ' attr(context) '
 statement:before  { content: '(statement) "' attr(class) '" on ' attr(context) ' '}
 feature:before    { content: '(feature) "'   attr(class) '" on ' attr(context) ' '}
 
-subcontrol:before  { content: attr(class) " (subcontrol)" }
-feat:before  { content: attr(class) " (feature)" }
-
 property { background-color: pink; margin-top: 0.5em; color: black }
 statement { background-color: cornsilk; margin-top: 0.5em; color: black }
 
@@ -65,8 +62,23 @@ ref { border-left: thick solid silver; padding-left: 0.5em; margin-top: 0.5ex }
 control, subcontrol, feat { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
+
 subcontrol { border: thin solid black }
 feat   { border: thin dotted black }
+
+
+group:before { background-color: #FFE5B4; 
+  content: 'group: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+control:before { background-color: #FFE5B4; 
+  content: 'control: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+control > title { font-size: 110% }
+
+
+subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; font-size:80%; font-family: sans-serif }
+
+feat:before  { content: attr(class) " (feature)";  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 param:before { content: 'param ' attr(class) ': ' }
 param { display: inline-block; background-color: #C5FF98; border: thin outset darkgreen;
@@ -77,23 +89,10 @@ prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90% }
 prop { display:block; background-color: pink; border: thin outset pink;
   margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
 
-
-
 title { font-weight: bold; font-family: sans-serif }
 catalog > title { font-size: 150% }
 group > title { font-size: 130% }
 group > group > title { font-size: 120% }
-
-group:before { background-color: #FFE5B4; 
-  content: 'group: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
-
-control:before { background-color: #FFE5B4; 
-  content: 'control: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
-
-control > title { font-size: 110% }
-
-subcontrol:before { background-color: #FFE5B4; 
-  content: 'enhancement: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 subcontrol > title, feat > title { font-size: 90%; font-style: italic }
 

@@ -24,7 +24,7 @@
           transparently, compliance with legal and regulatory requirements is confirmed, and the
           governance requirements for board members are met.</p>
       </stmt>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Alignment of IT and business strategy</title>
         <prop class="scope">IT</prop>
         <prop class="number">01</prop>
@@ -37,11 +37,7 @@
           
         </group>
       </feat>
-<!--      
-      
-      
-      -->
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Commitment of executive management for making IT-related decisions</title>
         <prop class="scope">IT</prop>
         <prop class="number">03</prop>
@@ -56,7 +52,7 @@
 
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Delivery of IT services in line with business requirements</title>
         <prop class="number">07</prop>
         <prop class="scope">IT</prop>
@@ -69,7 +65,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>Strategic decision-making model for IT is effective and aligned with the enterprise’s
           internal and external environment and stakeholder requirements</title>
         <prop class="scope">Process</prop>
@@ -81,7 +77,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>The governance system for IT is embedded in the enterprise</title>
         <prop class="scope">Process</prop>
         <prop class="number">2</prop>
@@ -97,7 +93,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>Assurance is obtained that the governance system for IT is operating
           effectively</title>
         <prop class="scope">Process</prop>
@@ -486,7 +482,7 @@
       <prop class="number">APO13</prop>
       <stmt class="description"><p>Define, operate and monitor a system for information security management.</p></stmt>
       <stmt class="objectives"><p>Keep the impact and occurrence of information security incidents within the enterprise’s risk appetite levels.</p></stmt>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>IT compliance and support for business compliance with external laws and
           regulations</title>
         <prop class="scope">IT</prop>
@@ -502,7 +498,7 @@
             <prop class="metric">Coverage of compliance assessments</prop>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Managed IT-related business risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">04</prop>
@@ -517,7 +513,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Transparency of IT costs, benefits and risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">06</prop>
@@ -532,7 +528,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Security of information, processing infrastructure and applications</title>
         <prop class="scope">IT</prop>
         <prop class="number">10</prop>
@@ -547,7 +543,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Availability of reliable and useful information for decision making</title>
         <prop class="number">14</prop>
         <prop class="scope">IT</prop>
@@ -561,7 +557,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>A system is in place that considers and effectively addresses enterprise information
           security requirements.</title>
         <prop class="scope">Process</prop>
@@ -573,7 +569,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>A security plan has been established, accepted and communicated throughout the
           enterprise.</title>
         <prop class="scope">Process</prop>
@@ -587,7 +583,7 @@
           
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>Information security solutions are implemented and operated consistently throughout
           the enterprise.</title>
         <prop class="scope">Process</prop>
@@ -944,7 +940,7 @@
           controls and thus provide trust in operations, confidence in the achievement of enterprise
           objectives and an adequate understanding of residual risk.</p>
       </stmt>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>IT compliance and support for business compliance with external laws and
           regulations</title>
         <prop class="scope">IT</prop>
@@ -959,7 +955,7 @@
           <prop class="metric">Coverage of compliance assessments</prop>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>Managed IT-related business risk</title>
         <prop class="scope">IT</prop>
         <prop class="number">04</prop>
@@ -973,7 +969,7 @@
           <prop class="metric">Frequency of update of risk profile</prop>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="IT-goal">
         <title>IT compliance with internal policies</title>
         <prop class="scope">IT</prop>
         <prop class="number">15 </prop>
@@ -985,7 +981,7 @@
           <prop class="metric">Frequency of policies review and update</prop>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title/>
         <prop class="scope">Process</prop>
         <prop class="number"/>
@@ -993,7 +989,7 @@
           <prop class="metric"/>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>Processes, resources and information meet enterprise internal control system
           requirements.</title>
         <prop class="scope">Process</prop>
@@ -1005,7 +1001,7 @@
             targets</prop>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>All assurance initiatives are planned and executed effectively.</title>
         <prop class="scope">Process</prop>
         <prop class="number">2.</prop>
@@ -1014,7 +1010,7 @@
             programme and plan standards</prop>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>Independent assurance that the system of internal control is operational and
           effective is provided.</title>
         <prop class="scope">Process</prop>
@@ -1023,7 +1019,7 @@
           <prop class="metric"> Percent of processes receiving independent review</prop>
         </group>
       </feat>
-      <feat class="goal">
+      <feat class="process-goal">
         <title>Internal control is established and deficiencies are identified and reported.</title>
         <prop class="scope">Process</prop>
         <prop class="number">4.</prop>
