@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<profile xmlns="http://scap.nist.gov/schema/oscal">
+  <invoke href="800-53-controls-OSCAL.xml">
+    <include> <!--(all | (call | filter)+ ) -->
+<!-- all includes all controls and subcontrols
+     call includes controls with all their subcontrol descendants, along with
+      (shells of) all controls containing called subcontrols;
+     filter applies a rule that filters at all levels (controls and subcontrols)
+        and is sensitive to 'buried' properties;
+      controls and subcontrols are always presented as 'shells' in any case, as
+      are groups. -->
+      <filter key="baseline-impact">HIGH</filter>
+      <!--<all/>-->
+      <!--<call key="number">AC-3</call>-->
+      <!--<call key="number">EDM04</call>
+      <call key="number">EDM05</call>-->
+    </include>
+  </invoke>
+  <mod context="control">
+    <!--<call key="number">AC01</call>-->
+    <!--<remove>
+    </remove>
+    <add>
+    </add>
+    <patch>
+    </patch>-->
+  </mod>
+</profile>

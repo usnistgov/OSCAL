@@ -1,7 +1,7 @@
 default namespace = "http://scap.nist.gov/schema/oscal"
 
 # We can have a catalog, or we can have only declarations for catalogs
-start = (catalog | declarations)
+start = (catalog | declarations | profile)
 
 # start = element oscal-catalog { declarations, catalog } 
 # have initial sections
@@ -54,7 +54,7 @@ feature =
 # done with declarations - controls, subcontrols and groups are not declared
 # (constrained) at the OSCAL layer so they don't get declaration elements.
 
-# Now for the contents of the OSCAL doc proper --
+# Now for the contents of the OSCAL doc proper ...
 
 group = element group {
   idAttr, typeAttr,
@@ -74,13 +74,13 @@ control =
 subcontrol =
   element subcontrol {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | subsubcontrol | prose )* 
+    (link | param | prop | anyKindofStatement | group | subsubcontrol )* 
   }
 
 subsubcontrol =
   element feat {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | subsubcontrol | prose )*
+    (link | param | prop | anyKindofStatement | group | subsubcontrol )*
   }
 
 title = element title { (text | q)* }
@@ -242,3 +242,21 @@ relAttr = attribute rel { text }?
 hrefAttr = attribute href { text }
 
 #nameAttr = attribute name { xsd:NCName }
+
+#
+
+profile = element profile { invoke+, mod* }
+
+invoke = element invoke { hrefAttr, (\include?, exclude?) }
+
+\include = element include { (all | (call | filter)+ ) }
+
+# 'all' or 'filter' make sense for inclusions but not exclusions
+exclude = element exclude { call+ }
+
+mod = element mod { contextAttr }
+
+all = element all { empty }
+
+call = element call { attribute key { text }, text }
+filter = element filter { attribute key { text }, text }

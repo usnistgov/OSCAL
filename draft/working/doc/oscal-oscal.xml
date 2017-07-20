@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../lib/oscal-strict.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Straight" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Formal" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
@@ -8,12 +8,12 @@
   <declarations>
     
       
-    <property role="tag" context="control">
+    <property context="control" class="tag">
            <required/>
           <regex>&lt;\x\c*&gt;</regex>
         </property>
-    <property role="full_name" context="control"/>
-        <statement role="remarks" context="control"/>
+    <property context="control" class="full_name"/>
+        <statement context="control" class="remarks"/>
       
   </declarations>  <!--<declarations></declarations>-->
   <div>
@@ -48,56 +48,123 @@
   </div>
   <group>
     <title>OSCAL tag set</title>
-    <control type="element-description">
-      <prop role="tag">&lt;prop></prop>
-      <prop role="full_name">Property</prop>
-      <desc>
-        <p>A value with a name, as assigned to a control or set of controls.</p>
-      </desc>
-      <stmt role="remarks">
-        <p>Like statements (<code>prop</code>) and parameters (<code>param</code>), properties are
-            <q>named things</q>, and as such are expected to be unique within their controls, such
-          that a query for a particular property (or other named thing) on a particular control will
-          never return more than one thing by that name.</p>
-        <p>Properties are the <q>bread and butter</q> of OSCAL; they enable the deployment and
-          management of arbitrary controlled values, with and among control objects
-          (<q>controls</q>), for any purpose useful to an application or implementation of those
-          controls. Typically and routinely, properties they will be used to sort, select, order and
-          arrange controls or relate them to one another or to class hierarchies, taxonomies or
-          external authorities.</p>
-        <p>Unlike statements, properties may not be assigned dynamic contents (OSCAL
-            <code>assign</code> or <code>select</code>). Within properties, inline markup may be
-          respected for display, but will be wiped or flattened (aka <q>value normalization</q>) for
-          purposes of value comparison and cross-checking. The permissible values and lexical forms
-          of (the text content of) properties may be constrained by their declarations as described
-          under the <code>property</code>
-          <q>Property Declaration</q> element.</p>
-        <p>Properties may be displayed with either or both their <code>@name</code>, or a property
-          title as given in a corresponding <code>property</code> declaration, or both.</p>
-        <p>As with statements, OSCAL can offer no warrant or assurance that properties are correctly
-          or even meaningfully assigned.</p>
+    <control class="element-description">
+      <prop class="tag">&lt; ></prop>
+      <prop class="full_name">Element</prop>
+      <stmt class="description"/>
+      <stmt class="remarks"/>
+    </control>
+    <control class="element-description">
+      <prop class="tag">&lt;control></prop>
+      <prop class="full_name">Control</prop>
+      <stmt class="description"/>
+      <stmt class="remarks"/>
+    </control>
+    <control class="element-description">
+      <prop class="tag">&lt;subcontrol></prop>
+      <prop class="full_name">Control enhancement</prop>
+      <stmt class="description">
+        <p>Within a control, a control object appearing as a component.</p>
+      </stmt>
+      <stmt class="remarks">
+        <p>This is a control object, just like a control, only related to a particular control by
+          virtue of containment in the OSCAL instance. Control enhancements (subcontrols) may
+          contain their own enhancements as well as control components (properties, statements
+          etc.).</p>
+        <p>Because either <code>control</code> or <code>subcontrol</code> may be grouped, the schema
+          does not absolutely constrain that <code>subcontrol</code> appear only within
+            <code>control</code> and never the reverse: this enforcement is left to a
+          Schematron.</p>
+        <p>Albeit not absolutely forbidden by the schema, the rule is that while both controls and
+          subcontrols may contain subcontrols, neither may contain controls. That is, in any
+          catalog, a control is only the <q>top level</q> of control object (even if gathered in
+          groups) – all else is subcontrols (control enhancements) or control contents.</p>
       </stmt>
     </control>
-    <control type="element-description">
-      <prop role="tag">&lt;stmt></prop>
-      <prop role="full_name">Statement</prop>
-      <desc>
-        <p>A block of prose; a claim, assertion, accounting or specification applicable to a control
-          or set of controls, for the purpose indicated by its <code>@role</code>.</p>
-      </desc>
-      <stmt role="remarks">
+    <control class="element-description">
+      <prop class="tag">&lt;prop></prop>
+      <prop class="full_name">Property</prop>
+      <stmt class="description">
+        <p>A value with a name, as assigned to a control or set of controls.</p>
+      </stmt>
+      <stmt class="remarks">
+        <p>Like statements (<code>stmt</code>) and parameters (<code>param</code>), properties are
+            <q>named things</q> that appear within their controls or subcontrols.</p>
+        <p>Properties do not contain structured content, only values, albeit sometimes containing
+          inline markup (<q>rich text</q>). Inasmuch as properties are often used as selectors for
+          OSCAL operations, its value can be expected to be flattened and normalized frequently in
+          use.</p>
+        <p>When singletons (that is, the only element among siblings with its <code>@class</code>),
+          properties are especially useful as proxies (unique identifiers) for their controls, such
+          that controls may be returned one for one on queries for properties (name and value). The
+          robustness of such queries can be ensured by appropriate property declarations (as
+          singletons and as identifiers); cf <code>property</code> in the declarations model (which
+          also supports other constraints over property values).</p>
+        <p>Properties are the <q>bread and butter</q> of OSCAL; they enable the deployment and
+          management of arbitrary controlled values, with and among control objects (controls and
+          their formal enhancements), for any purpose useful to an application or implementation of
+          those controls. Typically and routinely, properties will be used to sort, select, order
+          and arrange controls or relate them to one another or to class hierarchies, taxonomies or
+          external authorities.</p>
+      </stmt>
+    </control>
+    <control class="element-description">
+      <prop class="tag">&lt;stmt></prop>
+      <prop class="full_name">Statement</prop>
+      <stmt class="description">
+        <p>A block of prose; a claim, assertion, description, accounting or specification applicable
+          to a control, control component, or set of controls.</p>
+      </stmt>
+      <stmt class="remarks">
         <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), statements are
-          distinguishable from other elements within their controls  by their assigned @role, such
-          that a query for a particular statement (or property or parameter) on a particular control
-          will never return more than one thing by that name. Unlike properties, however,
-          (So-called 'loose' or 'floating' statements, on the other hand, may have no @role
-          assignment.)</p>
-        <p>An assigned role will typically also provide for a header in display, such that
-            <code>stmt[@role='objectives']</code> is displayed under a header <em>Objectives</em>,
-          etc. This is useful, since unlike controls and groups, statements may not have titles.</p>
-        <p>Statements are the <q>stuff</q> of an OSCAL catalog or controls profile.</p>
-        <p>This element may be formally valid, without its contents or representations being
-          correct, complete, veracious or even intelligible.</p>
+          distinguishable from other elements within their controls by their assigned
+            <code>@class</code>, such that they may be subjected to <q>declarations logic</q> using
+          these values as bindings (and thereby getting open-ended extensibility).
+            <code>@class</code> is however optional on <code>stmt</code></p>
+        <p>An assigned class will typically also provide for a header in display, such that
+            <code>stmt[@class='objectives']</code> is displayed under a header <em>Objectives</em>,
+          etc. This is useful, since unlike controls, subcontrols, groups or even features
+            (<code>feat</code>), statements may not have titles.</p>
+        <p>Like anything in OSCAL, this element may be formally valid, without its contents or
+          representations being correct, complete, veracious or even intelligible.</p>
+      </stmt>
+    </control>
+    <control class="element-description">
+      <prop class="tag">&lt;feat></prop>
+      <prop class="full_name">Feature</prop>
+      <stmt class="description">
+        <p>A control extension: a fragment or semi-independent block of controlled information
+          within a control and dependant on it.</p>
+      </stmt>
+      <stmt class="remarks">
+        <p>In addition to properties, statements and parameters, controls and their subcontrols may
+          include features; without being control objects themselves (controls or enhancements),
+          these are the most the most <q>full-featured</q> and versatile control component, like
+          controls in containing their own control components (properties, statements etc.) but
+          (because they are considered components of controls, not full-fledged control objects)
+          unlike them with respect to how they are used.</p>
+        <p>Features can be considered as <q>control extensions </q> in the sense that they offer
+          structured data associated with a control, while being logically dependant on that control
+          for their semantics; i.e., a feature is never "standalone" and may always relate if only
+          implicitly to a containing control.</p>
+        <p>In particular, while controls and enhancements are not declared (being only referenced in
+          the declarations of their components), features are like properties and statements in
+          expecting (requiring) declarations before they may appear without warning. This is because
+          the modeling (constraints governing the appearance) of controls and subcontrols is left by
+          OSCAL to its implementation – typically to be constrained in a catalog-specific
+          application such as a Schematron – while control components (properties, statements and
+          features) can be constrained in the (relatively lightweight and open-ended) OSCAL
+          declarations layer.</p>
+        <p>This balance of concerns between explicit and implicit rule sets is intended to provide
+          OSCAL with a maximal combination of flexibility in application, with predictability and
+          processability. In particular, since OSCAL supports the constraint by declaration of
+          features, they become useful <q>catch-all</q> descriptors for application-specific content
+          types, <q>islands</q> of structured data.</p>
+        <p>See the <code>feature</code> element for how to declare features (<code>feat</code>
+          elements) to appear within the context of a control, subcontrol or feature.</p>
+        <p>Because features are where catalog-specific semantics are often captured, it may be
+          common to wish to convert features into (structured chunks of) prose as well as the
+          opposite (semantic induction).</p>
       </stmt>
     </control>
   </group>
@@ -109,44 +176,15 @@
         another process capable of static analysis of the data.</p>
     </stmt>
     <control>
-      <title>Names must be distinct among sibling elements</title>
-      <desc>
-        <p><code>@role</code> (the value of the 'role' attribute) must be distinct among sibling
-          properties (<code>prop</code> elements) and statements (<code>stmt</code> elements), that
-          is, properties and statements assigned to the same control. Within a control, no two (or
-          more) statements (<code>stmt</code>), properties (<code>prop</code>) or parameter
-          assignments (<code>param</code>) have the same role. Statements with no role are exempted
-          from this requirement: a control or group may have any number of <q>spare</q> statements,
-          as long as roles are not used more than once (in a control) on statements and properties
-          that have them.</p>
-      </desc>
-      <stmt role="remarks">
-        <p>Within a family, there should be only a single <q>Jane</q> or <q>Juanito</q>. There can
-          be as many Juanitos as there are families (or this case, controls), but each family may
-          have only one.</p>
-        <p>The basic model of OSCAL is intended to ensure the addressability of controls by means of
-          arbitrary properties associated with those controls. If a control is defined as a thing
-          with properties (and statements and other things), requiring that properties and
-          statements always be specific to their controls (or, be <em>singular</em>), eases
-          retrievability. Because we have this rule, we can always be sure that property (or
-          statement) X on control Y means <q>Y is/has X</q>, not only <q>Y is/has X among other
-            possibilities</q>.</p>
-        <p>This rule is enforced via Schematron; the test is <code>not(@role = (../* except
-            .)/@role)</code></p>
-        <p>Note the constraint governs siblings, not all descendants of a control. Sub controls
-          within a control may have their own (properly-named) statements and properties.</p>
-      </stmt>
-    </control>
-    <control>
       <title>Within a control, properties, statements and parameters may occur in any order.</title>
-      <desc>
+      <stmt class="description">
         <p>This specification does not govern how or whether an implementation may respect the order
           of properties and statements given within a control type. Among properties, statements and
-          parameters (that is, named things) within a control, the uniqueness of their names ensures
-          that a canonical order can be restored at any time. An order may be imposed locally (for
-          example, by a schema that requires all properties to appear before all statements), but
-          this is for its convenience not because an order is mandated.</p>
-      </desc>
+          parameters (that is, named things) within a control, cardinality constraints (where
+          enforced) can help ensure a canonical order. An order may be imposed locally (for example,
+          by a schema that requires all properties to appear before all statements), but this is for
+          its convenience not because an order is mandated.</p>
+      </stmt>
     </control>
   </group>
   <group>

@@ -39,7 +39,7 @@ regex:before { content:
  }
 
 autonum:before { content:
-  oxy_label(text, "format after ", styles, "font-weight:normal")
+  oxy_label(text, "format like ", styles, "font-weight:normal")
   oxy_textfield(edit, '#text', columns, 6) 
  }
 

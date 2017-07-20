@@ -116,16 +116,23 @@
             future design of governance of enterprise IT.</p>
         </stmt>
         <stmt class="activities">
-          <ol><li>Analyse and identify the internal and external environmental factors (legal, regulatory and contractual obligations) and trends in the business
-            environment that may influence governance design.</li>
+          <ol><li>Analyse and identify the internal and external environmental factors (legal, regulatory and
+              contractual obligations) and trends in the business environment that may influence
+              governance design.</li>
             <li>Determine the significance of IT and its role with respect to the business.</li>
-            <li>Consider external regulations, laws and contractual obligations and determine how they should be applied within the governance of enterprise IT.</li>
-            <li>Align the ethical use and processing of information and its impact on society, natural environment, and internal and external stakeholder interests with
-              the enterprise’s direction, goals and objectives.</li>
-            <li>Determine the implications of the overall enterprise control environment with regard to IT.</li>
-            <li>Articulate principles that will guide the design of governance and decision making of IT.</li>
-            <li>Understand the enterprise’s decision-making culture and determine the optimal decision-making model for IT.</li>
-            <li>Determine the appropriate levels of authority delegation, including threshold rules, for IT decisions.</li></ol></stmt>
+            <li>Consider external regulations, laws and contractual obligations and determine how
+              they should be applied within the governance of enterprise IT.</li>
+            <li>Align the ethical use and processing of information and its impact on society,
+              natural environment, and internal and external stakeholder interests with the
+              enterprise’s direction, goals and objectives.</li>
+            <li>Determine the implications of the overall enterprise control environment with regard
+              to IT.</li>
+            <li>Articulate principles that will guide the design of governance and decision making of
+              IT.</li>
+            <li>Understand the enterprise’s decision-making culture and determine the optimal
+              decision-making model for IT.</li>
+            <li>Determine the appropriate levels of authority delegation, including threshold rules,
+              for IT decisions.</li></ol></stmt>
         <feat class="raci_index">
           <prop class="accountable">Board</prop>
           <prop class="responsible">Chief Executive Officer</prop>
@@ -192,11 +199,16 @@
         </stmt>
         <stmt class="activities">
           <ol>
-            <li>Communicate governance of IT principles and agree with executive management on the way to establish informed and committed leadership.</li>
-            <li>Establish or delegate the establishment of governance structures, processes and practices in line with agreed-on design principles.</li>
-            <li>Allocate responsibility, authority and accountability in line with agreed-on governance design principles, decision-making models and delegation.</li>
-            <li>Ensure that communication and reporting mechanisms provide those responsible for oversight and decision-making with appropriate information.</li>
-            <li>Direct that staff follow relevant guidelines for ethical and professional behaviour and ensure that consequences of non-compliance are known and enforced.</li>
+            <li>Communicate governance of IT principles and agree with executive management on the
+              way to establish informed and committed leadership.</li>
+            <li>Establish or delegate the establishment of governance structures, processes and
+              practices in line with agreed-on design principles.</li>
+            <li>Allocate responsibility, authority and accountability in line with agreed-on
+              governance design principles, decision-making models and delegation.</li>
+            <li>Ensure that communication and reporting mechanisms provide those responsible for
+              oversight and decision-making with appropriate information.</li>
+            <li>Direct that staff follow relevant guidelines for ethical and professional behaviour
+              and ensure that consequences of non-compliance are known and enforced.</li>
             <li>Direct the establishment of a reward system to promote desirable cultural change.</li>
           </ol>
         </stmt>
@@ -258,8 +270,8 @@
               responsibility and authority for governance of enterprise IT.</li>
             <li>Periodically assess whether agreed-on governance of IT mechanisms (structures,
               principles, processes, etc.) are established and operating effectively.</li>
-            <li>Assess the effectiveness of the governance design and identify actions to rectify
-              any deviations found.</li>
+            <li>Assess the effectiveness of the governance design and identify actions to rectify any
+              deviations found.</li>
             <li>Maintain oversight of the extent to which IT satisfies obligations (regulatory,
               legislation, common law, contractual), internal policies, standards and professional
               guidelines.</li>
@@ -360,29 +372,6 @@
             <p>Feedback on governance effectiveness and performance</p>
           </stmt>
         </feat>
-        <!--
-        <enhancement class="practice">
-          <title></title>
-          <prop class="number"></prop>
-          <stmt class="description">
-            <p></p>
-          </stmt>
-          <stmt class="activities">
-            <ol></ol>
-          </stmt>
-          <enhancement class="input">
-            <prop class="from"></prop>
-            <stmt class="description">
-              <p></p>
-            </stmt>
-          </enhancement>
-          <enhancement class="output">
-            <prop class="to"></prop>
-            <stmt class="description">
-              <p></p>
-            </stmt>
-          </enhancement>
-          -->
       </subcontrol>
       
       <references>
@@ -396,8 +385,7 @@
         <ref>
           <citation>King III</citation>
           <ul>
-            <li>5.1. The board should be responsible for information technology (IT)
-              governance.</li>
+            <li>5.1. The board should be responsible for information technology (IT) governance.</li>
             <li>5.3. The board should delegate to management the responsibility for the
               implementation of an IT governance framework.</li>
           </ul>
@@ -668,9 +656,8 @@
       </subcontrol>
       <subcontrol class="practice">
         <title>Define and manage an information security risk treatment plan.</title>
-        <prop class="number"/>
+        <prop class="number">APO13.02</prop>
         <stmt class="description">
-          <p>APO13.02</p>
           <p>Maintain an information security plan that describes how information security risk is
             to be managed and aligned with the enterprise strategy and enterprise architecture.
             Ensure that recommendations for implementing security improvements are based on approved
@@ -695,9 +682,9 @@
               specify how these measurements are to be used to assess effectiveness to produce
               comparable and reproducible results.</li>
             <li>Recommend information security training and awareness programmes.</li>
-            <li>Integrate the planning, design, implementation and monitoring of information
-              security procedures and other controls capable of enabling prompt prevention,
-              detection of security events and response to security incidents.</li>
+            <li>Integrate the planning, design, implementation and monitoring of information security
+              procedures and other controls capable of enabling prompt prevention, detection of
+              security events and response to security incidents.</li>
           </ol>
         </stmt>
         <feat class="raci_index">
@@ -777,8 +764,8 @@
               security audits, incidents, results from effectiveness measurements, suggestions and
               feedback from all interested parties.</li>
             <li>Conduct internal ISMS audits at planned intervals.</li>
-            <li>Undertake a management review of the ISMS on a regular basis to ensure that the
-              scope remains adequate and improvements in the ISMS process are identified.</li>
+            <li>Undertake a management review of the ISMS on a regular basis to ensure that the scope
+              remains adequate and improvements in the ISMS process are identified.</li>
             <li>Provide input to the maintenance of the security plans to take into account the
               findings of monitoring and reviewing activities.</li>
             <li>Record actions and events that could have an impact on the effectiveness or
@@ -890,7 +877,7 @@
     </control>
   </group>
   <group class="domain">
-    <title>Deliver , Service and Support</title>
+    <title>Deliver, Service and Support</title>
     <prop class="area">Management</prop>
     <prop class="code">DSS</prop>
     <control class="process">
@@ -900,7 +887,545 @@
     <control class="process">
       <title>Manage service requests and incidents</title>
       <prop class="number">DSS02</prop>
+      <stmt class="description">
+        <p>Provide timely and effective response to user requests and resolution of all types of
+          incidents. Restore normal service; record and fulfil user requests; and record,
+          investigate, diagnose, escalate and resolve incidents.</p>
+      </stmt>
+      <stmt class="objectives">
+        <p>Achieve increased productivity and minimise disruptions through quick resolution of user
+          queries and incidents.</p>
+      </stmt>
+      <feat class="goal">
+        <title>Managed IT-related business risk</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">04</prop>
+        <group class="metrics">
+          <prop class="metric">Percent of critical business processes, IT services and IT-enabled
+            business programmes covered by risk assessment</prop>
+          <prop class="metric">Number of significant IT-related incidents that were not identified
+            in risk assessment</prop>
+          <prop class="metric">Percent of enterprise risk assessments including IT-related
+            risk</prop>
+          <prop class="metric">Frequency of update of risk profile</prop>
+        </group>
+      </feat>
+      <feat class="goal">
+        <title>Delivery of IT services in line with business requirements</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">07</prop>
+        <group class="metrics">
+          <prop class="metric"> Number of business disruptions due to IT service incidents</prop>
+          <prop class="metric">Percent of business stakeholders satisfied that IT service delivery
+            meets agreed-on service levels</prop>
+          <prop class="metric">Percent of users satisfied with the quality of IT service
+            delivery</prop>
+        </group>
+      </feat>
+      <feat class="goal">
+        <title> IT-related services are available for use.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">1.</prop>
+        <group class="metrics">
+          <prop class="metric">Number and percent of incidents causing disruption to
+            business-critical processes</prop>
+          <prop class="metric">Mean time between incidents according to IT-enabled service</prop>
+        </group>
+      </feat>
+      <feat class="goal">
+        <title>Incidents are resolved according to agreed-on service levels.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">2.</prop>
+        <group class="metrics">
+          <prop class="metric">Percent of incidents resolved within an agreed-on/acceptable period
+            of time</prop>
+        </group>
+      </feat>
+      <feat class="goal">
+        <title>Service requests are dealt with according to agreed-on service levels and to the
+          satisfaction of users.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">3.</prop>
+        <group class="metrics">
+          <prop class="metric">Level of user satisfaction with service request fulfilment</prop>
+          <prop class="metric">Mean elapsed time for handling each type of service request</prop>
+        </group>
+      </feat>
+      <subcontrol class="practice">
+        <title> Define incident and service request classification schemes.</title>
+        <prop class="number">DSS02.01</prop>
+        <stmt class="description">
+          <p>Define incident and service request classification schemes and models.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Define incident and service request classification and prioritisation schemes and
+              criteria for problem registration, to ensure consistent approaches for handling,
+              informing users about and conducting trend analysis.</li>
+            <li>Define incident models for known errors to enable efficient and effective
+              resolution.</li>
+            <li>Define service request models according to service request type to enable self-help
+              and efficient service for standard requests.</li>
+            <li>Define incident escalation rules and procedures, especially for major incidents and
+              security incidents.</li>
+            <li>Define incident and request knowledge sources and their use.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="consulted">Business Process Owners</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="accountable">Chief Information Officer</prop>
+          <prop class="consulted">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="responsible">Head IT Operations</prop>
+          <prop class="responsible">Service Manager</prop>
+          <prop class="consulted">Information Security Manager</prop>
+          <prop class="consulted">Business Continuity Manager</prop>
+          <prop class="consulted">Privacy Officer</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">APO09.03</prop>
+          <stmt class="description">
+            <p>SLAs</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI10.02</prop>
+          <stmt class="description">
+            <p>Configuration repository</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI10.03</prop>
+          <stmt class="description">
+            <p>Updated repository with configuration items</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI10.04</prop>
+          <stmt class="description">
+            <p>Configuration status reports</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS01.03</prop>
+          <stmt class="description">
+            <p>Asset monitoring rules and event conditions</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS03.01</prop>
+          <stmt class="description">
+            <p>Problem classification scheme</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS04.03</prop>
+          <stmt class="description">
+            <p>Incident response actions and communications</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Incident and service request classification schemes and models</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Rules for incident escalation</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">DSS03.01</prop>
+          <stmt class="description">
+            <p>Criteria for problem registration</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title> Record, classify and prioritise requests and incidents.</title>
+        <prop class="number">DSS02.02</prop>
+        <stmt class="description">
+          <p>Identify, record and classify service requests and incidents, and assign a priority
+            according to business criticality and service agreements.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Log all service requests and incidents, recording all relevant information so that
+              they can be handled effectively and a full historical record can be maintained.</li>
+            <li>To enable trend analysis, classify service requests and incidents by identifying
+              type and category.</li>
+            <li>Prioritise service requests and incidents based on SLA service definition of
+              business impact and urgency.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="informed">Business Process Owners</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="informed">Compliance</prop>
+          <prop class="informed">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="informed">Head Development</prop>
+          <prop class="informed">Head IT Operations</prop>
+          <prop class="informed">Service Manager</prop>
+          <prop class="informed">Information Security Manager</prop>
+          <prop class="informed">Business Continuity Manager</prop>
+          <prop class="informed">Privacy Officer</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">APO09.03</prop>
+          <stmt class="description">
+            <p>SLAs</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI04.05</prop>
+          <stmt class="description">
+            <p>Emergency escalation procedure</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS01.03</prop>
+          <stmt class="description">
+            <ul>
+              <li>Incident tickets</li>
+              <li>Asset monitoring rules and event conditions</li>
+            </ul>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS05.07</prop>
+          <stmt class="description">
+            <p>Security incident tickets</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Incident and service request log </p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">APO08.03</prop>
+          <prop class="to">APO09.04</prop>
+          <prop class="to">APO13.03</prop>
+          <stmt class="description">
+            <p>Classified and prioritised incidents and service requests </p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title> Verify, approve and fulfil service requests.</title>
+        <prop class="number">DSS02.03</prop>
+        <stmt class="description">
+          <p>Select the appropriate request procedures and verify that the service requests fulfil
+            defined request criteria. Obtain approval, if required, and fulfil the requests</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Verify entitlement for service requests using, where possible, a predefined process
+              flow and standard changes.</li>
+            <li>Obtain financial and functional approval or sign-off, if required, or predefined
+              approvals for agreed-on standard changes.</li>
+            <li>Fulfil the requests by performing the selected request procedure, using, where
+              possible, self-help automated menus and predefined request models for frequently
+              requested items.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="informed">Business Process Owners</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="informed">Compliance</prop>
+          <prop class="informed">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="informed">Head Development</prop>
+          <prop class="informed">Head IT Operations</prop>
+          <prop class="informed">Service Manager</prop>
+          <prop class="informed">Information Security Manager</prop>
+          <prop class="informed">Business Continuity Manager</prop>
+          <prop class="informed">Privacy Officer</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">APO12.06</prop>
+          <stmt class="description">
+            <p>Risk-related root causes</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">BAI01</prop>
+          <stmt class="description">
+            <p>Approved service requests </p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Fulfilled service requests</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title> Investigate, diagnose and allocate incidents.</title>
+        <prop class="number">DSS02.04</prop>
+        <stmt class="description">
+          <p>Identify and record incident symptoms, determine possible causes, and allocate for
+            resolution.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Identify and describe relevant symptoms to establish the most probable causes, of
+              the incidents. Reference available knowledge resources (including known errors and
+              problems) to identify possible incident resolutions (temporary workarounds and/or
+              permanent solutions).</li>
+            <li>If a related problem or known error does not already exist and if the incident
+              satisfies agreed-on criteria for problem registration, log a new problem.</li>
+            <li>Assign incidents to specialist functions if deeper expertise is needed, and engage
+              the appropriate level of management, where and if needed.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="responsible">Business Process Owners</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="informed">Compliance</prop>
+          <prop class="informed">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="consulted">Head Development</prop>
+          <prop class="responsible">Head IT Operations</prop>
+          <prop class="accountable">Service Manager</prop>
+          <prop class="consulted">Information Security Manager</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI07.07</prop>
+          <stmt class="description">
+            <p>Supplemental support plan</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Incident symptoms</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">DSS03.01</prop>
+          <stmt class="description">
+            <p>Problem log</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title> Resolve and recover from incidents.</title>
+        <prop class="number">DSS02.05</prop>
+        <stmt class="description">
+          <p>Document, apply and test the identified solutions or workarounds and perform recovery
+            actions to restore the IT-related service.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Select and apply the most appropriate incident resolutions (temporary workaround
+              and/or permanent solution).</li>
+            <li>Record whether workarounds were used for incident resolution.</li>
+            <li>Perform recovery actions, if required.</li>
+            <li>Document incident resolution and assess if the resolution can be used as a future
+              knowledge source.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="informed">Business Process Owners</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="consulted">Compliance</prop>
+          <prop class="consulted">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="responsible">Head IT Operations</prop>
+          <prop class="accountable">Service Manager</prop>
+          <prop class="responsible">Information Security Manager</prop>
+          <prop class="consulted">Privacy Officer</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">APO12.06</prop>
+          <stmt class="description">
+            <p>Risk-related incident response plans</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS03.03</prop>
+          <stmt class="description">
+            <p>Known error records</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS03.04</prop>
+          <stmt class="description">
+            <p>Communication of knowledge learned</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">DSS03.04</prop>
+          <stmt class="description">
+            <p>Incident resolutions</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Close service requests and incidents. </title>
+        <prop class="number">DSS02.06</prop>
+        <stmt class="description">
+          <p>Verify satisfactory incident resolution and/or request fulfilment, and close.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Verify with the affected users (if agreed on) that the service request has been
+              satisfactory fulfilled or the incident has been satisfactory resolved.</li>
+            <li>Close service requests and incidents.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="informed">Business Process Owners</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="informed">Compliance</prop>
+          <prop class="informed">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="informed">Head Development</prop>
+          <prop class="accountable">Head IT Operations</prop>
+          <prop class="informed">Service Manager</prop>
+          <prop class="responsible">Information Security Manager</prop>
+          <prop class="informed">Privacy Officer</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS03.04</prop>
+          <stmt class="description">
+            <p>Closed problem records</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">APO08.03</prop>
+          <prop class="to">APO09.04</prop>
+          <prop class="to">DSS03.04</prop>
+          <stmt class="description">
+            <p>Closed service requests and incidents </p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">APO08.03</prop>
+          <stmt class="description">
+            <p>User confirmation of satisfactory fulfilment or resolution </p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Track status and produce reports.</title>
+        <prop class="number">DSS02.07</prop>
+        <stmt class="description">
+          <p>Regularly track, analyse and report incident and request fulfilment trends to provide
+            information for continual improvement.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Monitor and track incident escalations and resolutions and request handling
+              procedures to progress towards resolution or completion.</li>
+            <li>Identify information stakeholders and their needs for data or reports. Identify
+              reporting frequency and medium.</li>
+            <li>Analyse incidents and service requests by category and type to establish trends and
+              identify patterns of recurring issues, SLA breaches or inefficiencies. Use the
+              information as input to continual improvement planning.</li>
+            <li>Produce and distribute timely reports or provide controlled access to online
+              data.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="informed">Business Process Owners</prop>
+          <prop class="informed">Chief Risk Officer</prop>
+          <prop class="informed">Chief Information Security Officer</prop>
+          <prop class="informed">Compliance</prop>
+          <prop class="informed">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="informed">Head Architect</prop>
+          <prop class="informed">Head Development</prop>
+          <prop class="accountable">Head IT Operations</prop>
+          <prop class="responsible">Service Manager</prop>
+          <prop class="informed">Information Security Manager</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">APO09.03</prop>
+          <stmt class="description">
+            <p>OLAs</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS03.01</prop>
+          <stmt class="description">
+            <p>Problem status reports</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS03.02</prop>
+          <stmt class="description">
+            <p>Problem resolution reports</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS03.05</prop>
+          <stmt class="description">
+            <p>Problem resolution monitoring reports</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">APO08.03</prop>
+          <prop class="to">APO09.04</prop>
+          <prop class="to">APO11.04</prop>
+          <prop class="to">APO12.01</prop>
+          <prop class="to">MEA01.03</prop>
+          <stmt class="description">
+            <p>Incident status and trends report </p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">APO08.03</prop>
+          <prop class="to">APO09.04</prop>
+          <prop class="to">APO11.04</prop>
+          <prop class="to">MEA01.03</prop>
+          <stmt class="description">
+            <p>Request fulfilment status and trends report </p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <references>
+        <ref>
+          <std>ISO/IEC 20000</std>
+          <ul>
+            <li>6.1 Service level management</li>
+            <li>8.2 Incident management</li>
+          </ul>
+        </ref>
+        <ref>
+          <std>ISO 27002</std>
+          <p>13. Information Security Incident Management</p>
+        </ref>
+        <ref>
+          <std>ITIL V3 2011</std>
+          <ul>
+            <li>Service Operation, 4.2 Incident Management</li>
+            <li>Service Operation, 4.3 Request Fulfilment</li>
+          </ul>
+        </ref>
+      </references>
     </control>
+    
+    
     <control class="process">
       <title>Manage problems</title>
       <prop class="number">DSS03</prop>
@@ -982,14 +1507,6 @@
         </group>
       </feat>
       <feat class="process-goal">
-        <title/>
-        <prop class="scope">Process</prop>
-        <prop class="number"/>
-        <group class="metrics">
-          <prop class="metric"/>
-        </group>
-      </feat>
-      <feat class="process-goal">
         <title>Processes, resources and information meet enterprise internal control system
           requirements.</title>
         <prop class="scope">Process</prop>
@@ -1040,9 +1557,9 @@
         </stmt>
         <stmt class="activities">
           <ol>
-            <li>Perform internal control monitoring and evaluation activities based on
-              organisational governance standards and industry-accepted frameworks and practices.
-              Include monitoring and evaluation of the efficiency and effectiveness of managerial
+            <li>Perform internal control monitoring and evaluation activities based on organisational
+              governance standards and industry-accepted frameworks and practices. Include
+              monitoring and evaluation of the efficiency and effectiveness of managerial
               supervisory reviews.</li>
             <li>Consider independent evaluations of the internal control system (e.g., by internal
               audit or peers).</li>
@@ -1271,13 +1788,12 @@
               them and reporting on the status.</li>
             <li>Consider related enterprise risk to establish thresholds for escalation of control
               exceptions and breakdowns.</li>
-            <li>Communicate procedures for escalation of control exceptions, root cause analysis,
-              and reporting to process owners and IT stakeholders.</li>
+            <li>Communicate procedures for escalation of control exceptions, root cause analysis, and
+              reporting to process owners and IT stakeholders.</li>
             <li>Decide which control exceptions should be communicated to the individual responsible
               for the function and which exceptions should be escalated. Inform affected process
               owners and stakeholders.</li>
-            <li>Follow up on all exceptions to ensure that agreed-on actions have been
-              addressed.</li>
+            <li>Follow up on all exceptions to ensure that agreed-on actions have been addressed.</li>
             <li> Identify, initiate, track and implement remedial actions arising from control
               assessments and reporting.</li>
           </ol>
@@ -1392,8 +1908,8 @@
         </stmt>
         <stmt class="activities">
           <ol>
-            <li>Determine the intended users of the assurance initiative output and the object of
-              the review.</li>
+            <li>Determine the intended users of the assurance initiative output and the object of the
+              review.</li>
             <li>Perform a high-level risk assessment and/or assessment of process capability to
               diagnose risk and identify critical IT processes.</li>
             <li>Select, customise and reach agreement on the control objectives for critical
@@ -1472,8 +1988,8 @@
             <li>Define practices to validate control design and outcomes and determine whether the
               level of effectiveness supports acceptable risk (required by organisational or process
               risk assessment).</li>
-            <li> Where control effectiveness is not acceptable, define practices to identify
-              residual risk (in preparation for reporting).</li>
+            <li> Where control effectiveness is not acceptable, define practices to identify residual
+              risk (in preparation for reporting).</li>
           </ol>
         </stmt>
         <feat class="raci_index">
@@ -1492,6 +2008,12 @@
           <prop class="consulted">Information Security Manager</prop>
           <prop class="consulted">Business Continuity Manager</prop>
           <prop class="consulted">Privacy Officer</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from"/>
+          <stmt class="description">
+            <p/>
+          </stmt>
         </feat>
         <feat class="output">
           <prop class="to"/>
@@ -1631,9 +2153,7 @@
         <feat class="input">
           <prop class="from"/>
           <stmt class="description">
-            <ul>
-              <li/>
-            </ul>
+            <p/>
           </stmt>
         </feat>
         <feat class="output">

@@ -18,8 +18,9 @@
 <!-- Since we support retrieving elements by flags either classes or
       (fallback) element names, we avoid ambiguities by forbidding the
       use of the element names as classes. -->
+    <sch:rule context="oscal:declarations//*"/>
     <sch:rule context="*[matches(@class,'\S')]">
-      <sch:let name="interdicted" value="oscal:classes(.)[.=('control','group','stmt','prop','param')]"/>
+      <sch:let name="interdicted" value="oscal:classes(.)[.=('control','group','stmt','prop','param','feat','title')]"/>
       <sch:let name="plural" value="count($interdicted) ne 1"/>
       <sch:assert test="empty($interdicted)">
         @class <sch:value-of select="if ($plural) then 'values ' else 'value '"/>
@@ -53,25 +54,28 @@
     
     <!--<sch:rule context="oscal:assign | oscal:select"/>-->
 <!-- XXX reimplement against 'singleton' settings in declaration   -->
-    <sch:rule context="oscal:title"/>
+    <sch:rule context="oscal:title | oscal:references | oscal:link"/>
     
-    <sch:rule context="oscal:control | oscal:group | oscal:enhancement"/>
-      
+    <sch:rule context="oscal:control">
+      <sch:assert test="empty(ancestor::oscal:control)">Controls must not be inside controls. (Use subcontrols for that.)</sch:assert>
+    </sch:rule>
+    
+    <sch:rule context="oscal:subcontrol">
+      <sch:assert test="exists(ancestor::oscal:control)">Subcontrol appears outside a control.</sch:assert>
+      <sch:assert test="empty(ancestor::oscal:feat)">Subcontrol may not appear inside a feature.</sch:assert>
+    </sch:rule>
+    
+    <sch:rule context="oscal:group"/>
+    
     <sch:rule context="oscal:stmt[empty(@class)]"/>
     
+    <sch:rule context="oscal:div"/>
+    
     <!-- Next rule doesn't match elements pre-empted in the last rules. -->
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:enhancement/*">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feat/*">
       <sch:let name="me" value="."/>
       <sch:let name="classes" value="oscal:classes($me)"/>
-      <sch:let name="same-classes" value="../(* except $me)/oscal:classes(.)[. = $classes]"/>
-      <sch:let name="plural" value="count($same-classes) ne 1"/>
-      <sch:assert test="empty($same-classes)">
-        <sch:value-of select="if ($plural) then 'classes ' else 'class '"/>
-        <sch:value-of select="oscal:sequence($same-classes)"/>
-        <sch:value-of select="if ($plural) then ' appear ' else ' appears '"/>
-        more than once inside this <sch:value-of select="name(..)"/>.</sch:assert>
       
-      <!-- only titles and stmt elements are permitted empty(@class) -->
       <sch:assert test="exists($classes)">
         Element <sch:value-of select="name()"/> must be assigned a class.</sch:assert>
       
@@ -82,7 +86,7 @@
 
   <!--<xsl:key name="components-by-class" match="prop[matches(@class,'\S')] | param[matches(@class,'\S')] | stmt[matches(@class,'\S')]" use="oscal:classes(.)"/>-->
   
-  <xsl:key name="elements-by-class" match="*[matches(@class,'\S')]" use="oscal:classes(.)"/>
+  <xsl:key name="elements-by-class" match="*[matches(@class,'\S')][empty(ancestor::oscal:declarations)]" use="oscal:classes(.)"/>
   
   
   

@@ -128,8 +128,8 @@ p { margin-top: 0.5em }
 italic { display: inline; font-style: italic }
 
 ol, list { padding-left: 2em }
-ol { list-style-type: lower-alpha }
-ol ol { list-style-type: decimal }
+ol { list-style-type: decimal }
+ol ol { list-style-type: l }
 
 li, list-item { display: list-item; margin-top: 0.5em }
 li > p, list-item > p { margin-top: 0.5em }
