@@ -874,6 +874,322 @@
     <control class="process">
       <title>Manage configuration</title>
       <prop class="number">BAI10</prop>
+      <stmt class="description">
+        <p>Define and maintain descriptions and relationships between key resources and capabilities
+          required to deliver IT-enabled services, including collecting configuration information,
+          establishing baselines, verifying and auditing configuration information, and updating the
+          configuration repository.</p>
+      </stmt>
+      <stmt class="objectives">
+        <p>Provide sufficient information about service assets to enable the service to be
+          effectively managed, assess the impact of changes and deal with service incidents.</p>
+      </stmt>
+      <feat class="IT-goal">
+        <title>IT compliance and support for business compliance with external laws and
+          regulations</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">02</prop>
+        <group class="metrics">
+          <prop class="metric">Cost of IT non-compliance, including settlements and fines, and the
+            impact of reputational loss</prop>
+          <prop class="metric">Number of IT-related non-compliance issues reported to the board or
+            causing public comment or embarrassment</prop>
+          <prop class="metric">Number of non-compliance issues relating to contractual agreements
+            with IT service providers</prop>
+          <prop class="metric">Coverage of compliance assessments</prop>
+        </group>
+      </feat>
+      <feat class="IT-goal">
+        <title>Optimisation of IT assets, resources and capabilities</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">11</prop>
+        <group class="metrics">
+          <prop class="metric">Frequency of capability maturity and cost optimisation assessments </prop>
+          <prop class="metric">Trend of assessment results</prop>
+          <prop class="metric">Satisfaction levels of business and IT executives with IT-related
+            costs and capabilities</prop>
+        </group>
+      </feat>
+      <feat class="IT-goal">
+        <title>Availability of reliable and useful information for decision making</title>
+        <prop class="scope">IT</prop>
+        <prop class="number">14</prop>
+        <group class="metrics">
+          <prop class="metric"> Level of business user satisfaction with quality and timeliness (or
+            availability) of management information</prop>
+          <prop class="metric">Number of business process incidents caused by non-availability of
+            information</prop>
+          <prop class="metric">Ratio and extent of erroneous business decisions where erroneous or
+            unavailable information was a key factor</prop>
+        </group>
+      </feat>
+      <feat class="process-goal">
+        <title>Configuration repository is accurate, complete and up to date.</title>
+        <prop class="scope">Process</prop>
+        <prop class="number">1.</prop>
+        <group class="metrics">
+          <prop class="metric">Number of deviations between the configuration repository and live
+            configuration</prop>
+          <prop class="metric">Number of discrepancies relating to incomplete or missing
+            configuration information</prop>
+        </group>
+      </feat>
+      <subcontrol class="practice">
+        <title> Establish and maintain a configuration model.</title>
+        <prop class="number"/>
+      </subcontrol>
+      <subcontrol>
+        <title>BAI10.01</title>
+      </subcontrol>
+      <subcontrol class="practice">
+        <stmt class="description">
+          <p>Establish and maintain a logical model of the services, assets and infrastructure and
+            how to record configuration items (CIs) and the relationships amongst them. Include the
+            CIs considered necessary to manage services effectively and to provide a single reliable
+            description of the assets in a service.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Define and agree on the scope and level of detail for configuration management
+              (i.e., which services, assets and infrastructure configurable items to include).</li>
+            <li>Establish and maintain a logical model for configuration management, including
+              information on configuration item types, configuration item attributes, relationship
+              types, relationship attributes and status codes.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="consulted">Business Process Owners</prop>
+          <prop class="consulted">Audit</prop>
+          <prop class="consulted">Chief Information Officer</prop>
+          <prop class="consulted">Head Architect</prop>
+          <prop class="informed">Head Development</prop>
+          <prop class="accountable">Head IT Operations</prop>
+          <prop class="responsible">Head IT Administration</prop>
+          <prop class="responsible">Service Manager</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI07.06</prop>
+          <stmt class="description">
+            <p>Release plan</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Scope of configuration management model</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Logical configuration model</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Establish and maintain a configuration repository and baseline.</title>
+        <prop class="number">BAI10.02</prop>
+        <stmt class="description">
+          <p>Establish and maintain a configuration management repository and create controlled
+            configuration baselines.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Identify and classify configuration items and populate the repository.</li>
+            <li>Create, review and formally agree on configuration baselines of a service,
+              application or infrastructure.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="consulted">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="accountable">Head IT Operations</prop>
+          <prop class="responsible">Head IT Administration</prop>
+          <prop class="responsible">Service Manager</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI09.05</prop>
+          <stmt class="description">
+            <p>Register of software licences</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">BAI09.01</prop>
+          <prop class="to">DSS02.01</prop>
+          <stmt class="description">
+            <p>Configuration repository </p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">BAI03.11</prop>
+          <stmt class="description">
+            <p>Configuration baseline </p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Maintain and control configuration items.</title>
+        <prop class="number">BAI10.03</prop>
+        <stmt class="description">
+          <p>Maintain an up-to-date repository of configuration items by populating with
+            changes.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Regularly identify all changes to configuration items.</li>
+            <li>Review proposed changes to configuration items against the baseline to ensure
+              completeness and accuracy.</li>
+            <li>Update configuration details for approved changes to configuration items.</li>
+            <li>Create, review and formally agree on changes to configuration baselines whenever
+              needed.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="accountable">Chief Information Officer</prop>
+          <prop class="consulted">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="responsible">Head IT Operations</prop>
+          <prop class="responsible">Head IT Administration</prop>
+          <prop class="consulted">Service Manager</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI06.03</prop>
+          <stmt class="description">
+            <p>Change request status reports</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI09.01</prop>
+          <stmt class="description">
+            <ul>
+              <li>Results of physical inventory checks</li>
+              <li>Asset register</li>
+            </ul>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI09.03</prop>
+          <stmt class="description">
+            <ul>
+              <li>Authorised asset retirements</li>
+              <li>Updated asset register</li>
+            </ul>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">DSS02.01</prop>
+          <stmt class="description">
+            <p>Updated repository with configuration items </p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">BAI03.11</prop>
+          <stmt class="description">
+            <p>Approved changes to baseline</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title>Produce status and configuration reports.</title>
+        <prop class="number">BAI10.04</prop>
+        <stmt class="description">
+          <p>Define and produce configuration reports on status changes of configuration items.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Identify status changes of configuration items and report against the baseline.</li>
+            <li>Match all configuration changes with approved requests for change to identify any
+              unauthorised changes. Report unauthorised changes to change management.</li>
+            <li>Identify reporting requirements from all stakeholders, including content, frequency
+              and media. Produce reports according to the identified requirements.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="informed">Business Process Owners</prop>
+          <prop class="informed">Audit</prop>
+          <prop class="informed">Chief Information Officer</prop>
+          <prop class="consulted">Head Architect</prop>
+          <prop class="consulted">Head Development</prop>
+          <prop class="accountable">Head IT Operations</prop>
+          <prop class="responsible">Head IT Administration</prop>
+          <prop class="informed">Service Manager</prop>
+        </feat>
+        <feat class="input">
+          <prop class="from">BAI09.01</prop>
+          <stmt class="description">
+            <p>Results of physical inventory checks</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">BAI03.11</prop>
+          <prop class="to">DSS02.01</prop>
+          <stmt class="description">
+            <p>Configuration status reports</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <subcontrol class="practice">
+        <title> Verify and review integrity of the configuration repository.</title>
+        <prop class="number">BAI10.05</prop>
+        <stmt class="description">
+          <p>Periodically review the configuration repository and verify completeness and
+            correctness against the desired target.</p>
+        </stmt>
+        <stmt class="activities">
+          <ol>
+            <li>Periodically verify live configuration items against the configuration repository by
+              comparing physical and logical configurations and using appropriate discovery tools,
+              as required.</li>
+            <li>Report and review all deviations for approved corrections or action to remove any
+              unauthorised assets.</li>
+            <li>Periodically verify that all physical configuration items, as defined in the
+              repository, physically exist. Report any deviations to management.</li>
+            <li>Set and periodically review the target for completeness of the configuration
+              repository based on business need.</li>
+            <li>Periodically compare the degree of completeness and accuracy against targets and
+              take remedial action, as necessary, to improve the quality of the repository
+              data.</li>
+          </ol>
+        </stmt>
+        <feat class="raci_index">
+          <prop class="informed">Business Process Owners</prop>
+          <prop class="responsible">Audit</prop>
+          <prop class="responsible">Head Architect</prop>
+          <prop class="responsible">Head Development</prop>
+          <prop class="accountable">Head IT Operations</prop>
+          <prop class="responsible">Service Manager</prop>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Results of physical verification of configuration items</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">MEA03.03</prop>
+          <stmt class="description">
+            <p>Licence deviations</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to">Internal</prop>
+          <stmt class="description">
+            <p>Results of repository completeness reviews</p>
+          </stmt>
+        </feat>
+      </subcontrol>
+      <references>
+        <ref>
+          <std>ISO/IEC 20000</std>
+          <p>9.1 Configuration management</p>
+        </ref>
+        <ref>
+          <std>ITIL V3 2011</std>
+        </ref>
+        <ref>
+          <p>Service Transition, 4.3 Service Asset and Configuration Management</p>
+        </ref>
+      </references>
     </control>
   </group>
   <group class="domain">
