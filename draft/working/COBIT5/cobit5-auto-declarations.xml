@@ -58,7 +58,6 @@
       <value>MEA01</value>
       <value>MEA02</value>
       <value>MEA03</value>
-      <value/>
    </property>
    <statement context="process" class="description">
       <singleton/>
@@ -66,35 +65,31 @@
    <statement context="process" class="objectives">
       <singleton/>
    </statement>
-   <feature context="process" class="goal"/>
-   <property context="goal" class="scope">
+   <feature context="process" class="IT-goal"/>
+   <feature context="process" class="process-goal"/>
+   <property context="IT-goal" class="scope">
       <singleton/>
       <required/>
       <value>IT</value>
-      <value>Process</value>
-      <value>IT | Process</value>
    </property>
-   <property context="goal" class="number">
+   <property context="IT-goal" class="number">
       <singleton/>
       <required/>
       <value>01</value>
       <value>03</value>
       <value>07</value>
-      <value>1</value>
-      <value>2</value>
-      <value>3</value>
       <value>02</value>
       <value>04</value>
       <value>06</value>
       <value>10</value>
       <value>14</value>
+      <value>11</value>
       <value>15 </value>
-      <value/>
-      <value>1.</value>
-      <value>2.</value>
-      <value>3.</value>
-      <value>4.</value>
    </property>
+   <feature context="IT-goal" class="metrics">
+      <singleton/>
+      <required/>
+   </feature>
    <property context="metrics" class="metric">
       <required/>
       <value>Percent of enterprise strategic goals and requirements supported by IT strategic
@@ -169,18 +164,43 @@
             causing public comment or embarrassment</value>
       <value>Number of non-compliance issues relating to contractual agreements
             with IT service providers</value>
+      <value>Frequency of capability maturity and cost optimisation assessments </value>
+      <value>Trend of assessment results</value>
+      <value>Satisfaction levels of business and IT executives with IT-related
+            costs and capabilities</value>
+      <value> Level of business user satisfaction with quality and timeliness (or
+            availability) of management information</value>
+      <value>Number of business process incidents caused by non-availability of
+            information</value>
+      <value>Ratio and extent of erroneous business decisions where erroneous or
+            unavailable information was a key factor</value>
+      <value>Number of deviations between the configuration repository and live
+            configuration</value>
+      <value>Number of discrepancies relating to incomplete or missing
+            configuration information</value>
       <value>Percent of critical business processes, IT services and IT-enabled
             business programmes covered by risk assessment</value>
       <value>Number of significant IT-related incidents that were not identified
             in risk assessment</value>
       <value>Percent of enterprise risk assessments including IT-related
             risk</value>
+      <value> Number of business disruptions due to IT service incidents</value>
+      <value>Percent of business stakeholders satisfied that IT service delivery
+            meets agreed-on service levels</value>
+      <value>Percent of users satisfied with the quality of IT service
+            delivery</value>
+      <value>Number and percent of incidents causing disruption to
+            business-critical processes</value>
+      <value>Mean time between incidents according to IT-enabled service</value>
+      <value>Percent of incidents resolved within an agreed-on/acceptable period
+            of time</value>
+      <value>Level of user satisfaction with service request fulfilment</value>
+      <value>Mean elapsed time for handling each type of service request</value>
       <value>Number of incidents related to non-compliance to policy</value>
       <value>Percent of stakeholders who understand policies</value>
       <value>Percent of policies supported by effective standards and working
             practices</value>
       <value>Frequency of policies review and update</value>
-      <value/>
       <value>Percent of processes with assured output meeting targets within
             tolerances</value>
       <value>Percent of processes assured as compliant with internal control
@@ -194,15 +214,43 @@
       <value>Time between internal control deficiency occurrence and
             reporting</value>
    </property>
-   <property context="practice" class="number">
+   <property context="process-goal" class="scope">
       <singleton/>
       <required/>
+      <value>Process</value>
+   </property>
+   <property context="process-goal" class="number">
+      <singleton/>
+      <required/>
+      <value>1.</value>
+      <value>2.</value>
+      <value>3.</value>
+      <value>4.</value>
+   </property>
+   <feature context="process-goal" class="metrics">
+      <singleton/>
+      <required/>
+   </feature>
+   <property context="practice" class="number">
+      <singleton/>
       <value>EDM01.01</value>
       <value>EDM01.02</value>
       <value>EDM01.03</value>
       <value>APO13.01</value>
-      <value/>
+      <value>APO13.02</value>
       <value>APO13.03</value>
+      <value/>
+      <value>BAI10.02</value>
+      <value>BAI10.03</value>
+      <value>BAI10.04</value>
+      <value>BAI10.05</value>
+      <value>DSS02.01</value>
+      <value>DSS02.02</value>
+      <value>DSS02.03</value>
+      <value>DSS02.04</value>
+      <value>DSS02.05</value>
+      <value>DSS02.06</value>
+      <value>DSS02.07</value>
       <value>MEA02.01</value>
       <value>MEA02.02</value>
       <value>MEA02.03</value>
@@ -214,32 +262,27 @@
    </property>
    <statement context="practice" class="description">
       <singleton/>
-      <required/>
    </statement>
    <statement context="practice" class="activities">
       <singleton/>
-      <required/>
    </statement>
    <feature context="practice" class="raci_index">
       <singleton/>
-      <required/>
    </feature>
    <feature context="practice" class="input"/>
-   <feature context="practice" class="output">
-      <required/>
-   </feature>
+   <feature context="practice" class="output"/>
    <property context="raci_index" class="accountable">
-      <required/>
       <value>Board</value>
       <value>Chief Information Security Officer</value>
+      <value>Head IT Operations</value>
       <value>Chief Information Officer</value>
+      <value>Service Manager</value>
       <value>Business Executives</value>
       <value>Compliance</value>
       <value>Audit</value>
       <value>Chief Executive Officer</value>
    </property>
    <property context="raci_index" class="responsible">
-      <required/>
       <value>Chief Executive Officer</value>
       <value>Business Executives</value>
       <value>Strategy Executive Committee</value>
@@ -254,12 +297,11 @@
       <value>Service Manager</value>
       <value>Business Continuity Manager</value>
       <value>Privacy Officer</value>
+      <value>Audit</value>
       <value>Chief Risk Officer</value>
       <value>Compliance</value>
-      <value>Audit</value>
       <value>Chief Financial Officer</value>
       <value>Chief Operating Officer</value>
-      <value>Board</value>
    </property>
    <property context="raci_index" class="consulted">
       <value>Chief Financial Officer</value>
@@ -305,12 +347,11 @@
       <value>Compliance</value>
       <value>Audit</value>
       <value>Head Architect</value>
+      <value>Chief Information Officer</value>
       <value>Chief Executive Officer</value>
       <value>Chief Operating Officer</value>
       <value>Board</value>
       <value>Strategy Executive Committee</value>
-      <value>Business Executives</value>
-      <value>Chief Information Officer</value>
    </property>
    <property context="input" class="from">
       <singleton/>
@@ -328,12 +369,31 @@
       <value>APO03.02</value>
       <value>APO12.05</value>
       <value>DSS02.02</value>
+      <value>BAI07.06</value>
+      <value>BAI09.05</value>
+      <value>BAI06.03</value>
+      <value>BAI09.01</value>
+      <value>BAI09.03</value>
+      <value>APO09.03</value>
+      <value>BAI10.02</value>
+      <value>BAI10.03</value>
+      <value>BAI10.04</value>
+      <value>DSS01.03</value>
+      <value>DSS03.01</value>
+      <value>DSS04.03</value>
+      <value>BAI04.05</value>
+      <value>DSS05.07</value>
+      <value>APO12.06</value>
+      <value>BAI07.07</value>
+      <value>DSS03.03</value>
+      <value>DSS03.04</value>
+      <value>DSS03.02</value>
+      <value>DSS03.05</value>
       <value>APO12.04</value>
       <value>APO13.03</value>
       <value>BAI05.06</value>
       <value>BAI05.07</value>
       <value>APO11.05</value>
-      <value>APO12.06</value>
       <value>DSS06.01</value>
       <value>DSS06.04</value>
       <value>BAI01.05</value>
@@ -363,6 +423,19 @@
       <value>APO02.05</value>
       <value>MEA02.01</value>
       <value>Internal</value>
+      <value>BAI09.01</value>
+      <value>DSS02.01</value>
+      <value>BAI03.11</value>
+      <value>MEA03.03</value>
+      <value>DSS03.01</value>
+      <value>APO08.03</value>
+      <value>APO09.04</value>
+      <value>APO13.03</value>
+      <value>BAI01</value>
+      <value>DSS03.04</value>
+      <value>APO11.04</value>
+      <value>APO12.01</value>
+      <value>MEA01.03</value>
       <value>EDM01.03</value>
       <value/>
    </property>

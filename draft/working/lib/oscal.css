@@ -55,7 +55,7 @@ group, div, references, extensions
   { padding: 0.5em; margin: 0.5em; border: thin solid black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-references:before { content: "References"; font-size: 120%; font-weight: bold }
+references:before { content: "References"; font-size: 120%; font-family: sans-serif; font-weight: bold }
 
 ref { border-left: thick solid silver; padding-left: 0.5em; margin-top: 0.5ex }
 
@@ -64,19 +64,20 @@ control, subcontrol, feat { padding: 0.5em; margin: 0.5em; border: medium double
 
 
 subcontrol { border: thin solid black }
+
 feat   { border: thin dotted black }
 
 
-group:before { background-color: #FFE5B4; 
-  content: 'group: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
+group:before { content: attr(class) " (group)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-control:before { background-color: #FFE5B4; 
-  content: 'control: ' attr(class); font-weight: bold; font-family: sans-serif; font-size: 80% }
+control:before { content: attr(class) " (control)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
 control > title { font-size: 110% }
 
 
 subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; font-size:80%; font-family: sans-serif }
+
+group:before  { content: oxy_capitalize(attr(class));  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 feat:before  { content: attr(class) " (feature)";  font-weight: bold; font-size:90%; font-family: sans-serif }
 
@@ -84,10 +85,10 @@ param:before { content: 'param ' attr(class) ': ' }
 param { display: inline-block; background-color: #C5FF98; border: thin outset darkgreen;
   margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90% }
+prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 prop { display:block; background-color: pink; border: thin outset pink;
-  margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
+  margin: 2px; padding: 2px; font-size: 90% }
 
 title { font-weight: bold; font-family: sans-serif }
 catalog > title { font-size: 150% }
@@ -95,9 +96,6 @@ group > title { font-size: 130% }
 group > group > title { font-size: 120% }
 
 subcontrol > title, feat > title { font-size: 90%; font-style: italic }
-
-desc { -oxy-foldable: true; 
-padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: lightsteelblue }
 
 stmt, purpose, guidance, remarks, information { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }

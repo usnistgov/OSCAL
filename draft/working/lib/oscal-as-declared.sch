@@ -82,10 +82,10 @@
     
     <!-- Exempted from declaration rules; other children of control, group, enhancement must be declared
          and will match the next rule. -->
-    <!-- Note that we have no mechanism for declaring (and constraining) controls and subcontrols,
+    <!-- Note that we have no mechanism for declaring (and constraining) controls, subcontrols or groups,
          but we are expected to declare features. -->
     <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title |
-      oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
+      oscal:group | oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
 
     <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feat/*">
       <xsl:variable name="this" select="."/>
