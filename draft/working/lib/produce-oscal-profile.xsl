@@ -92,31 +92,30 @@
     </xsl:variable>
    
    <xsl:variable name="included-results">
-    <xsl:choose>
+      <xsl:choose>
         <!-- included for free when doesn't say otherwise -->
         <xsl:when test="empty($invocation/include) or exists($invocation/include/all)">
           <xsl:sequence select="$filtered-results"/>
         </xsl:when>
         <!-- included if called explicitly, oneself or an ancestor -->
-        <xsl:when
-          test="
-            some $c in ($invocation/include/call)
-              satisfies
+        <xsl:when test="some $c in ($invocation/include/call) satisfies
               $c = $this/ancestor-or-self::*/prop[oscal:classes(.) = $c/@key]/normalize-space(.)">
           <xsl:sequence select="$filtered-results"/>
         </xsl:when>
-        <!-- filter can include an element by virtue of a property on itself or a descendant
-           (except in subcontrols) -->
-        <xsl:when
-          test="
-            some $c in ($invocation/include/filter)
-              satisfies
+        <!-- A 'flag' can be thrown for any contents at any level -->
+        <xsl:when test="some $c in ($invocation/include/flag) satisfies
+              $c = $this//prop[oscal:classes(.) = $c/@key]/normalize-space(.)">
+          <xsl:sequence select="$filtered-results"/>
+        </xsl:when>
+        <!-- like flag, filter can include an element by virtue of a property on itself or a descendant
+           except it excludes subcontrols -->
+        <xsl:when test="some $c in ($invocation/include/filter) satisfies
               $c = $properties[oscal:classes(.) = $c/@key]/normalize-space(.)">
           <xsl:sequence select="$filtered-results"/>
         </xsl:when>
         <xsl:otherwise/>
       </xsl:choose>
-    </xsl:variable>
+  </xsl:variable>
     
     
     <!-- Addressing three situations: the control or subcontrol is included; or
