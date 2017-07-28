@@ -13,6 +13,7 @@
    <property context="domain" class="code">
       <singleton/>
       <required/>
+      <identifier/>
       <value>EDM</value>
       <value>APO</value>
       <value>BAI</value>

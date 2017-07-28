@@ -1,7 +1,9 @@
 default namespace = "http://scap.nist.gov/schema/oscal"
 
 # We can have a catalog, or we can have only declarations for catalogs
-start = (catalog | declarations | profile)
+start = (catalog | declarations | profile | collection)
+
+# Also we have an alias for 'catalog', namely 'collection', used for ad-hoc collections of controls
 
 # start = element oscal-catalog { declarations, catalog } 
 # have initial sections
@@ -9,24 +11,27 @@ start = (catalog | declarations | profile)
 #             (enumerated values for properties, regexes and what not)
 # also declares bindings to authorities (e.g. sources for transclusion/comparison)?
 
-catalog = element catalog { title, declarations?, section*, (group+ | control+), section*, references? }
+#keeping these together until we have differentiating requirements
+collection-contents =  (title, declarations?, section*, (group+ | control+), section*, references?)
 
-# do we want a 'runtime' element for runtime bindings? such as parameters
+catalog    = element catalog { collection-contents } 
+
+collection = element collection { collection-contents }
 
 # declarations includes declarations for control types, parameters (names/types),
 # authorities (source data for transclusion etc. etc.)
 declarations = ( element declarations { hrefAttr?, decls } )
 
-decls = (parameter | property | statement | feature)*
+decls = (parameter_decl | property_decl | statement_decl | feature_decl)*
 
 # parameter declarations expose names and default values for parameters within the control type
-parameter   = element parameter {
+parameter_decl   = element parameter {
   nameAttr, contextAttr, singleton?, (choice+)? }
 
 singleton = element singleton { empty }
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
-property =
+property_decl =
   element property {
     nameAttr, contextAttr, singleton?, required?,
     element identifier { empty }?,
@@ -35,20 +40,20 @@ property =
 
 # on 'property and possibly 'parameter',
 # element limit { nameAttr, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
-  
+
 regex = element regex { text }
 value = element value { ( \inherit | autonum | text )* }
 \inherit = element inherit { attribute from { text }?, text }
 autonum = element autonum { text }
 
 # statement declaration
-statement =
+statement_decl =
   element statement { nameAttr, contextAttr, singleton?, required? }
 
 required = element required { empty }
 
 # feature declaration
-feature =
+feature_decl =
   element feature { nameAttr, contextAttr, singleton?, required? }
 
 # done with declarations - controls, subcontrols and groups are not declared
@@ -56,31 +61,37 @@ feature =
 
 # Now for the contents of the OSCAL doc proper ...
 
+# groups may contain more groups, controls or subcontrols
+# But controls should not appear in controls (even grouped)
+# And subcontrols must not appear without control ancestors
+# ... these constraints validated w/ Schematron
+
 group = element group {
   idAttr, typeAttr,
-  title?, prop*, anyKindofStatement*, (group* | control* | subcontrol* | subsubcontrol*), section*, references? }
+  title?, prop*, anyKindofStatement*, ((group | section)* | control* | subcontrol* | feature*) }
 
 section = element div { idAttr, typeAttr,
-  title, prose, section*, references? }
+  title, prose, (section | group)*, references? }
 
-# Note prose is permitted directly inside control although it may be forbidden at higher levels
+# For some especially loose contents it might be thinkable to permit prose in controls
+# (i.e. outside of statements and properties) but we have no use case, so ...
 control =
   element control {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | subcontrol | subsubcontrol )*, 
+    (link | param | prop | anyKindofStatement | group | subcontrol | feature )*, 
     references?
   }
 
 subcontrol =
   element subcontrol {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | subsubcontrol )* 
+    (link | param | prop | anyKindofStatement | group | feature )* 
   }
 
-subsubcontrol =
+feature =
   element feat {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | subsubcontrol )*
+    (link | param | prop | anyKindofStatement | group | feature )*
   }
 
 title = element title { (text | q)* }
@@ -93,6 +104,7 @@ title = element title { (text | q)* }
 
 link    = element link { relAttr, hrefAttr, mix }
 
+# Can't inject param values into parameter settings, okay?
 param   = element param { idAttr, nameAttr, mix }
 
 prop =
@@ -102,21 +114,10 @@ prop =
   }
 # on prop, not(@name = ../(* except current())/@name)
 
-plug = empty
-
-# plug is like prop, except it has a type instead of a role (type is not required to be unique)
-#plug =
-#  element plug {
-#   typeAttr,
-#   whatnot
-# }
-
-desc = element desc { prose }
-
 # stmt is a bit of controlled prose: its title is implicit in its name
 # e.g. stmt[@name='objectives'] might be displayed with title "Objectives:"
 
-#anyKindofStatement = ( stmt | desc | purpose | guidance | information | remarks )
+# for harder wiring: anyKindofStatement = ( stmt | desc | purpose | guidance | information | remarks )
 anyKindofStatement = stmt
 
 stmt =
@@ -126,70 +127,63 @@ stmt =
     link* }
 
 # syntax sugar for stmt[@role='purpose'] for "Objective/s" etc.
-purpose =
-  element purpose {
-    prose }
+# purpose =
+#   element purpose {
+#     prose }
 
 # syntax sugar for stmt[@role='guidance'] for "Supplemental Guidance" etc.
-guidance =
-  element guidance {
-    prose }
+# guidance =
+#   element guidance {
+#     prose }
 
 # syntax sugar for stmt[@role='decision']
-decision =
-  element decision {
-    prose }
+# decision =
+#   element decision {
+#     prose }
 
 # syntax sugar for stmt[@role='information'], other-info, etc.
-information =
-  element information {
-    prose }
-
+# information =
+#   element information {
+#     prose }
 
 # syntax sugar for stmt[@role='remarks']
-remarks =
-  element remarks {
-    prose }
+# remarks =
+#   element remarks {
+#     prose }
 
 
 prose = ( ul | ol | p | pre )*
 
-# cluster = element cluster { control+ | prop+ | ref+ }
-# on group, not(*/@name != */@name) ie all names must be the same
-
 references = element references { ref+ }
 
+# JATS-like references
 ref = element ref { idAttr, (std | citation | prose )* }
-# add mixed-citation or equivalent
 
+# analogous to JATS mixed-citation[@citation-type='standard'] or equivalent
 std =  element std {
          attribute href { xsd:anyURI }?,
          mix
   }
 
+# analogous to JATS mixed-citation
 citation =  element citation {
          attribute href { xsd:anyURI }?,
          mix
   }
 
+
+# We can map more html in if/as needed
+
+p = element p { idAttr, typeAttr, whatnot }
+
+pre = element pre { idAttr, mix }
+
+ol = element ol { element li { idAttr, typeAttr, (whatnot | ol | ul )*  }+ }
+
+ul = element ul { element li { idAttr, typeAttr, (whatnot | ol | ul )* }+ }
+
 # whatnot includes 'semantical' elements along with the inline mix
-p =
-  element p { idAttr, typeAttr, whatnot }
 
-pre =
-  element pre { idAttr, mix }
-
-ol =
-  element ol {
-    element li { idAttr, typeAttr, (whatnot | ol | ul )*  }+
-  }
-
-ul =
-  element ul {
-    element li { idAttr, typeAttr, (whatnot | ol | ul )* }+
-  }
-
-# html!
 whatnot = (
   semantical | mix )*
 

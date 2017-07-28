@@ -2,11 +2,7 @@
 <profile xmlns="http://scap.nist.gov/schema/oscal">
   <invoke href="OSCAL.xml">
     <include> <!--(all | call+) --> 
-      <call key="baseline-impact">HIGH</call>
-      
-      <!--<call key="number">AC01</call>-->
-      <!--<call key="number">EDM04</call>
-      <call key="number">EDM05</call>-->
+      <call key="number">AC-01</call>
     </include>
     <!--<exclude> <!-\-(call+) -\-> 
       <call key="baseline-impact">HIGH</call>

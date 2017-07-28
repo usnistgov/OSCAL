@@ -319,7 +319,7 @@
         <feat class="input">
           <prop class="from">MEA01.05</prop>
           <stmt class="description">
-            <p> Status and results of actions</p>
+            <p>Status and results of actions</p>
           </stmt>
         </feat>
         <feat class="input">
@@ -917,7 +917,7 @@
         <prop class="scope">IT</prop>
         <prop class="number">14</prop>
         <feat class="metrics">
-          <prop class="metric"> Level of business user satisfaction with quality and timeliness (or
+          <prop class="metric">Level of business user satisfaction with quality and timeliness (or
             availability) of management information</prop>
           <prop class="metric">Number of business process incidents caused by non-availability of
             information</prop>
@@ -1126,7 +1126,7 @@
         </feat>
       </subcontrol>
       <subcontrol class="practice">
-        <title> Verify and review integrity of the configuration repository.</title>
+        <title>Verify and review integrity of the configuration repository.</title>
         <prop class="number">BAI10.05</prop>
         <stmt class="description">
           <p>Periodically review the configuration repository and verify completeness and
@@ -1265,7 +1265,7 @@
         </feat>
       </feat>
       <subcontrol class="practice">
-        <title> Define incident and service request classification schemes.</title>
+        <title>Define incident and service request classification schemes.</title>
         <prop class="number">DSS02.01</prop>
         <stmt class="description">
           <p>Define incident and service request classification schemes and models.</p>
@@ -1359,7 +1359,7 @@
         </feat>
       </subcontrol>
       <subcontrol class="practice">
-        <title> Record, classify and prioritise requests and incidents.</title>
+        <title>Record, classify and prioritise requests and incidents.</title>
         <prop class="number">DSS02.02</prop>
         <stmt class="description">
           <p>Identify, record and classify service requests and incidents, and assign a priority
@@ -1433,7 +1433,7 @@
         </feat>
       </subcontrol>
       <subcontrol class="practice">
-        <title> Verify, approve and fulfil service requests.</title>
+        <title>Verify, approve and fulfil service requests.</title>
         <prop class="number">DSS02.03</prop>
         <stmt class="description">
           <p>Select the appropriate request procedures and verify that the service requests fulfil
@@ -1485,7 +1485,7 @@
         </feat>
       </subcontrol>
       <subcontrol class="practice">
-        <title> Investigate, diagnose and allocate incidents.</title>
+        <title>Investigate, diagnose and allocate incidents.</title>
         <prop class="number">DSS02.04</prop>
         <stmt class="description">
           <p>Identify and record incident symptoms, determine possible causes, and allocate for
@@ -1536,7 +1536,7 @@
         </feat>
       </subcontrol>
       <subcontrol class="practice">
-        <title> Resolve and recover from incidents.</title>
+        <title>Resolve and recover from incidents.</title>
         <prop class="number">DSS02.05</prop>
         <stmt class="description">
           <p>Document, apply and test the identified solutions or workarounds and perform recovery
@@ -1846,7 +1846,7 @@
         <prop class="scope">Process</prop>
         <prop class="number">3.</prop>
         <feat class="metrics">
-          <prop class="metric"> Percent of processes receiving independent review</prop>
+          <prop class="metric">Percent of processes receiving independent review</prop>
         </feat>
       </feat>
       <feat class="process-goal">
@@ -1957,7 +1957,7 @@
         <title>Review business process controls effectiveness.</title>
         <prop class="number">MEA02.02</prop>
         <stmt class="description">
-          <p> Review the operation of controls, including a review of monitoring and test evidence,
+          <p>Review the operation of controls, including a review of monitoring and test evidence,
             to ensure that controls within business processes operate effectively. Include
             activities to maintain evidence of the effective operation of controls through
             mechanisms such as periodic testing of controls, continuous controls monitoring,
@@ -2107,7 +2107,7 @@
               for the function and which exceptions should be escalated. Inform affected process
               owners and stakeholders.</li>
             <li>Follow up on all exceptions to ensure that agreed-on actions have been addressed.</li>
-            <li> Identify, initiate, track and implement remedial actions arising from control
+            <li>Identify, initiate, track and implement remedial actions arising from control
               assessments and reporting.</li>
           </ol>
         </stmt>
@@ -2135,7 +2135,7 @@
         <feat class="input">
           <prop class="from">APO11.05</prop>
           <stmt class="description">
-            <p> Root causes of quality delivery failures</p>
+            <p>Root causes of quality delivery failures</p>
           </stmt>
         </feat>
         <feat class="input">
@@ -2301,7 +2301,7 @@
             <li>Define practices to validate control design and outcomes and determine whether the
               level of effectiveness supports acceptable risk (required by organisational or process
               risk assessment).</li>
-            <li> Where control effectiveness is not acceptable, define practices to identify residual
+            <li>Where control effectiveness is not acceptable, define practices to identify residual
               risk (in preparation for reporting).</li>
           </ol>
         </stmt>
@@ -2323,15 +2323,45 @@
           <prop class="consulted">Privacy Officer</prop>
         </feat>
         <feat class="input">
-          <prop class="from"/>
+          <prop class="from">APO11.05</prop>
           <stmt class="description">
-            <p/>
+            <p>Root causes of quality delivery failures</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">APO12.06</prop>
+          <stmt class="description">
+            <p>Risk-related root causes</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">DSS06.01</prop>
+          <stmt class="description">
+            <p>Root cause analyses and recommendations</p>
+          </stmt>
+        </feat>
+        <feat class="input">
+          <prop class="from">MEA03.04</prop>
+          <stmt class="description">
+            <p>Reports of non-compliance issues and root causes</p>
           </stmt>
         </feat>
         <feat class="output">
-          <prop class="to"/>
+          <prop class="to"> Internal</prop>
           <stmt class="description">
-            <p/>
+            <p>Assurance review scope</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to"> Internal</prop>
+          <stmt class="description">
+            <p>Engagement plan</p>
+          </stmt>
+        </feat>
+        <feat class="output">
+          <prop class="to"> Internal</prop>
+          <stmt class="description">
+            <p>Assurance review practices</p>
           </stmt>
         </feat>
       </subcontrol>

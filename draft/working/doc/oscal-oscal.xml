@@ -19,10 +19,6 @@
   <div>
     <title>What is OSCAL</title>
     <div>
-      <title>A language for describing security controls</title>
-      <!--<p>We do not define <q>security control</q> except within the narrow context of OSCAL, and OSCAL does not stipulate whether what it describes has anything to do with <q>security</q> or <q>controls</q>. In OSCAL terms, a control is a unit of structured (encoded) information that takes a particular form. (In this OSCAL is comparable to an HTML microformat, except with the extra benefits of tools and a validation model.) As such, OSCAL structures follow regular patterns which can be exploited by an OSCAL-aware processor. OSCAL, however, is entirely general as to what these structures are, what they represent, how they are managed or verified, etc. etc. We expect and anticipate building OSCAL applications within the domain of security controls and Security Controls Assessment; but that is not the only potential application of OSCAL.</p>-->
-    </div>
-    <div>
       <title>XML platform</title>
       <p>OSCAL as described here assumes XML and its related technologies, as is exemplified (for
         example) by the prevalence of XPath in these definitions. However, this platform is regarded
@@ -57,7 +53,9 @@
     <control class="element-description">
       <prop class="tag">&lt;control></prop>
       <prop class="full_name">Control</prop>
-      <stmt class="description"/>
+      <stmt class="description">
+        <p>A structured information object representing a security control.</p>
+      </stmt>
       <stmt class="remarks"/>
     </control>
     <control class="element-description">

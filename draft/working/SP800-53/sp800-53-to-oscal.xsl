@@ -55,8 +55,11 @@
   <!-- space has to be stripped to integrate across disparities -->
   <xsl:key match="feed:control | control-enhancement" name="control-by-no" use="replace(number,'\s','')"/>
   
-  <xsl:template mode="integrate-objectives" match="feed:control | control-enhancement">
-    <xsl:apply-templates mode="#current"/>
+  <xsl:template mode="integrate-objectives" match="feed:control[exists(withdrawn)] | control-enhancement[exists(withdrawn)]"/>
+    
+    
+    <xsl:template mode="integrate-objectives" match="feed:control | control-enhancement">
+      <xsl:apply-templates mode="#current"/>
   </xsl:template>
   
   <xsl:template mode="integrate-objectives" match="title | number | control-enhancements"/>
