@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/oscal-assignments.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>NIST SP800-53</title>
    <declarations href="800-53-declarations.xml"/>
@@ -8,6 +9,7 @@
       <title>ACCESS CONTROL</title>
       <control class="SP800-53">
          <title>ACCESS CONTROL POLICY AND PROCEDURES</title>
+         <param id="x">;aldsjf;ladskj</param>
          <prop class="number">AC-1</prop>
          <prop class="priority">P1</prop>
          <prop class="baseline-impact">LOW</prop>
@@ -17,7 +19,7 @@
             <prop class="description">The organization:</prop>
             <feat class="statement">
                <prop class="number">AC-1a.</prop>
-               <prop class="description">Develops, documents, and disseminates to [Assignment: organization-defined personnel or roles]:</prop>
+               <prop class="description">Develops, documents, and disseminates to [<assign use="x">Assignment: organization-defined personnel or roles]</assign>:</prop>
                <feat class="statement-item">
                   <prop class="number">AC-1a.1.</prop>
                   <prop class="description">An access control policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and</prop>

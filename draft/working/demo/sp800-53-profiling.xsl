@@ -146,8 +146,9 @@
         <xsl:apply-templates select="." mode="label"/>
         <xsl:apply-templates select="* except link[@rel='related']"/>
         <xsl:for-each-group select="link[@rel='related']" group-by="true()">
+          <xsl:variable name="noun" select="if (count(current-group()) eq 1) then 'control' else 'controls'"/>
           <div class="related">
-            <h5 class="label">Related controls:</h5>
+            <h5 class="label" xsl:expand-text="yes">Related {$noun}:</h5>
             <xsl:apply-templates select="current-group()" mode="inline"/>
           </div>
         </xsl:for-each-group>
