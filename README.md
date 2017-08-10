@@ -14,23 +14,21 @@ OSCAL aims to:
 
 --------------
 
-## Update July 2017
+## Update August 10th, 2017
 
-A new OSCAL initiative was undertaken starting in mid-May. Our current work is reflected in the `develop` branch. With this effort, we are stressing the agile development of a *minimal* format that is both generic enough to capture the breadth of data in scope (controls specifications), while also capable of ad-hoc tuning and extension to support peculiarities of both (industry or sector) standard and new control types.
-
-https://github.com/usnistgov/OSCAL/tree/develop
+As the result of a new OSCAL initiative undertaken starting in mid-May, this repo has been updated. With this effort, we are stressing the agile development of a *minimal* format that is both generic enough to capture the breadth of data in scope (controls specifications), while also capable of ad-hoc tuning and extension to support peculiarities of both (industry or sector) standard and new control types.
 
 In order to enable such a format, we have developed an alternative validation model: the provision for a second "document level" validation layer (by means of declarations also written in OSCAL) means that much of the complexity that OSCAL must support, can be moved away from the base schema. The schema (base tag set) is simpler, while OSCAL can be configured, extended and fitted to new control types and applications, with no schema modification at all. (OSCAL is instead extended using its own declarations.)
 
 The '[old](old)' subdirectory is an archive. Current work is in the '[draft](draft)' directory.
 
-The '[draft/working](draft/working)` subdirectory contains the following:
+The '[draft/working](draft/working)' subdirectory contains the following:
 
- * `lib` - schemas along with Schematron, CSS and XSLT
- * `doc` - documentation including mapping documentation plus supporting code; any tag set docs will also be here
- * `SP800-53` - OSCAL demo, NIST SP800-53
- * `ISO27002` - OSCAL demo, ISO 27002
- * `COBIT5` - OSCAL demo, COBIT 5
+ * '[lib](draft/working/lib)' - schemas along with Schematron, CSS and XSLT
+ * '[doc](draft/working/doc)' - documentation including mapping documentation plus supporting code; any tag set docs will also be here
+ * '[SP800-53](draft/working/SP800-53)' - OSCAL demo, NIST SP800-53
+ * '[ISO27002](draft/working/ISO27002)' - OSCAL demo, ISO 27002
+ * '[COBIT5](draft/working/COBIT5)' - OSCAL demo, COBIT 5
 
 ## oXygen demo guidelines
 
