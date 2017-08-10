@@ -1,0 +1,90 @@
+
+RANDOM CHUNKS OF PROSE
+
+Write a simple narrative describing use of OSCAL
+
+OSCAL is a world of controls, which cluster together in groups and within other ('higher level') controls. Controls come in different types but they all have the same basic form. They probably have titles and almost certainly have some normative language, called the "description" of the control (or sometimes just the "control"). Additionally they have one or more *properties* and *statements*, which provide structured information associated with the control. Exactly which properties and statements are present or available for a control, will depend on the particular control and the control type.
+
+Properties are best thought of as name-value pairs. assigned to a control. So for example a control may have a property 'RATING' (or 'rating') that assigns a nominal rating to a control, permitting controls in a set to be sorted and filtered by rating. The "rating" of any control will be a single value (as this is a property), a string albeit sometimes embellished a little (parameters are described below).
+
+Statements, in contrast, are best thought of as chunks or globs or hunks of prose, of arbitrary length. (Special-purpose statements may be short but some controls use statements to help keep the description short, i.e. for 'spillover'.) They may have internal structure, or they may be simply soup or piles of paragraphs and lists. (OSCAL borrows from HTML to keep the markup inside statements familiar.) Like properties, they might be enhanced (parameters again) in certain ways, but they will generally be fairly free form.
+
+The 'description' of a control might indeed be considered a special or privileged kind of statement, even as its title is a kind of property. For the most part, however, OSCAL permits catalogs and profiles to define their own properties, property values, and statements, for whatever purposes they might need.
+
+
+Parameters
+
+Escape hatch: 'wait list' statements (i.e. no assigned role)
+
+Control enhancements (subcontrols)
+
+Declarations
+
+Adaptability
+
+The rules that define control types can be changed, and new control types can be introduced. Organizations can share control types and share information defined and described using them - that is, as "controls".
+
+(It should be noted in passing that these are digital data objects or data instances, not actual "controls" in the world -- something ineffable, which the documentation of a control can only represent. But metaphysics and epistemology are not in scope here.)
+
+Interchangeability
+
+OSCAL is an entirely independent semantic 'stack' intended to promote interchange of a particular kind (or pattern) of information, a "control set". As such it can be mapped cleanly to NISO JATS, NLM BITS, NISO STS, DITA, or any other format.
+
+
+
+EXTRAS      
+o write XSLT to produce RACI chart for (all of) COBIT 5?
+  
+NOT EXTRAS
+
+Schema maintenance model
+  Finish OSCAL tag library
+  Convert RNC to RNG
+  Convert RNG+OSCAL -> XSD
+  Document all this on Github
+
+Github Issues
+  Namespace update
+
+Define spec for content enhancement tranformation over SP800-53
+  Infer links (there are lots e.g. inside Supplemental Guidance)
+  Infer assignments
+  Add IDs
+Same for content enhancement XSLT over COBIT5
+ o convert input/output feature prop[@class=('to','from')] into links
+   o similarly introduce link elements into IT goals
+   o similarly upconvert Activities (into ...?)
+
+Same for other catalogs? such as 
+Complete (OSCAL) mapping documents for three applications (flavors) so far
+
+Regression testing (for schema, XSLT etc.)
+  Requiring authoritative sample docs
+    Go / no-go
+    Schematron XSpec
+
+in SaxonJS demo:
+look for ixsl:onchange mode (dynamic rendering)
+
+add @datatype to 'param'
+o add xsd-type for declaration i.e. <xsd-type>decimal</xsd:type> validates $x castable as xs:decimal? (use eval)
+
+remove parameter declarations
+remove param/@class (till later)
+
+rough out profile functionality
+  select controls by ID
+  (then deselect controls by arbitrary criteria)
+  implement paramesters and assignments (crude is okay)
+  validation collection (selected controls) against source
+    catalog to verify (existence) of control
+
+links - validate internal cross-references
+  validate required and singleton by @rel (relationship)
+
+fix up parameter (Schematron) implementation
+
+OSCAL framework in oXygen? 
+  oXygen macros, boilerplate and auto-insert
+  e.g. parameter names by reference to declarations
+

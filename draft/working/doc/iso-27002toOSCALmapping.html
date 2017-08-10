@@ -1,0 +1,241 @@
+<html xmlns:oscal="http://scap.nist.gov/schema/oscal">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Mappings into OSCAL</title><style type="text/css">
+
+.control { margin:1em; padding: 1em; border: thin dotted black }
+.control > *:first-child { margin-top: 0em }
+
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif }
+h3 { font-size: 120% }
+
+div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
+
+section h3     { font-size: 160% }
+section h3     { font-size: 140% }
+div h3         { font-size: 130% }
+div div h3     { font-size: 120% }
+div div div h3 { font-size: 110% }
+
+.param { font-style: italic }
+.assign, .choice { border: thin solid black; padding: 0.1em }
+
+table { width: 100% }
+
+.source { width: 20% }
+.target { width: 20% }
+.concept, .remarks { width: 30% }
+
+td.source { font-weight: bold; color: darkgreen; word-wrap: break-word }
+td.target { font-weight: bold; color: darkred;   word-wrap: break-word  }
+td.concept, td.remarks {  font-size: 80% }
+
+.subst  { color: midnightblue; font-family: sans-serif; font-size; 85% } 
+
+th, td { border: thin dotted black; vertical-align: top }
+td > *:first-child { margin-top: 0em }
+
+.empty { background-color: darkgrey }
+
+.param .em { font-style: roman }
+
+        </style></head>
+   <body>
+      <div class="catalog">
+         <h2 class="title">Mappings into OSCAL</h2>
+         <div class="group">
+            <h2 class="title">ISO 27002</h2>
+            <table class="control-group">
+               <tr>
+                  <th class="source" width="20%">source</th>
+                  <th class="target" width="20%">target</th>
+                  <th class="concept" width="30%">concept</th>
+                  <th class="remarks" width="30%">remarks</th>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Control category (section)</td>
+                  <td class="target" width="20%">group[@type='control-category']</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">The control categories are the top level sections in the document, providing its
+                        organization; they include high level categories such as <q class="q">Information security
+                           policies</q>, <q class="q">Organization of information security</q>, <q class="q">Human resource
+                           security</q>, and so forth to <q class="q">Compliance</q>. As published the document contains 14
+                        such sections, numbered 5-14 (after four introductory sections).
+                     </p>
+                     
+                  </td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Maintaining hierarchical organization supports autonumber checking on properties on
+                        controls in the groupings. So this becomes a group containing groups (the clauses)
+                        containing controls.
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Control category title (section title)</td>
+                  <td class="target" width="20%">group[@type='control-category']/title</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">In OSCAL, a title is a privileged kind of property (of a group or control) that doesn't
+                        have to be declared. It's appropriate for the section header.
+                     </p>
+                     
+                  </td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Control category number</td>
+                  <td class="target" width="20%">group[@type='control-category']/prop[@role='number']</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">The values are 5 through 18, corresponding to their section numbers in the document.</p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Clause (section)</td>
+                  <td class="target" width="20%">group[@type='clause']</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">A subgrouping of controls inside the control category. All controls are members of
+                        a
+                        clause inside a control category.
+                     </p>
+                     
+                  </td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Clause title (section title)</td>
+                  <td class="target" width="20%">group[@type='clause']/title</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%"><q class="q">Objective</q> section inside clause
+                  </td>
+                  <td class="target" width="20%">control[@type='iso-27002']/stmt[@role='objective']</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks empty" width="30%"></td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Clause number</td>
+                  <td class="target" width="20%">group[@type='clause']/prop[@role='number']</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Second level down: the values are 5.1 (first clause inside category 5) through 18.2.
+                        They
+                        are composed of splicing together the number of the containing group (control category)
+                        with a number for the clause (section) within the category.
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Control</td>
+                  <td class="target" width="20%">control[@type='iso-27002']</td>
+                  <td class="concept" width="30%">
+                     
+                     <p class="p">In the document, a control appears as a section headed by its title and containing
+                        a
+                        regular structure, including a subsection headed <q class="q">Control</q>. The containing element
+                        (structure) <q class="q">control</q> is implicit.
+                     </p>
+                     
+                  </td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">All controls in ISO27002 appear inside clauses, so they are three levels down as
+                        indicated by their assigned numbers. The standard includes 114 controls.
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Control number</td>
+                  <td class="target" width="20%">control[@type='iso-27002']/prop[@role='number']</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Third level down: the values are 5.1.1 (first control inside category 5) through 18.2.3.
+                        Like clause numbers, they splice together a counter with the number of the containing
+                        structure (here, the clause).
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">Control title</td>
+                  <td class="target" width="20%">control[@type='iso-27002']/title</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Every control has its own title. NB since titles are also distinctive, they can serve
+                        as
+                        an additional key or counter-check on retrieval of (for) the control.
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%"><q class="q">Control</q> section inside control
+                  </td>
+                  <td class="target" width="20%">control[@type='iso-27002']/stmt[@role='description']</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p"><q class="q">description</q> is a conventional label for the normative section of prose describing
+                        a control, which this is.
+                     </p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">"Implementation guidance" section inside control</td>
+                  <td class="target" width="20%">control[@type='iso-27002']/stmt[@role='guidance']</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Not normative and not always present.</p>
+                     
+                  </td>
+               </tr>
+               <tr class="control">
+                  <td class="source" width="20%">"Other information" section inside control</td>
+                  <td class="target" width="20%">control[@type='iso-27002']/stmt[@role='information']</td>
+                  <td class="concept empty" width="30%"></td>
+                  <td class="remarks" width="30%">
+                     
+                     <p class="p">Not normative and not always present.</p>
+                     
+                  </td>
+               </tr>
+            </table>
+         </div>
+         <div class="group">
+            <h2 class="title">NIST SP800-53A</h2>
+            <table class="control-group">
+               <tr>
+                  <th class="source" width="20%">source</th>
+                  <th class="target" width="20%">target</th>
+                  <th class="concept" width="30%">concept</th>
+                  <th class="remarks" width="30%">remarks</th>
+               </tr>
+            </table>
+         </div>
+         <table class="control-group">
+            <tr>
+               <th class="source" width="20%">source</th>
+               <th class="target" width="20%">target</th>
+               <th class="concept" width="30%">concept</th>
+               <th class="remarks" width="30%">remarks</th>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

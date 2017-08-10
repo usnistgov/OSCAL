@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<overlay xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://oscal.nist.gov/schema/core file:../../../../../xsd/nist/oscal/2.0/latest/OSCAL-core.xsd">
+    <id>SP800-53-Mod</id>
+    <name>SP 800-53 rev 4 Mod baseline</name>
+    <version>4</version>
+    <summary>Low baseline of SP 800-53 rev 4 controls</summary>
+    <base>
+        <layer-ref id="SP800-53" version="4" type="catalog" 
+            URI="../../../../xm/nist/oscal/2.0/catalog_control_sp800-53.xml" />        
+    </base>
+    <!-- <baseline-impact>Mod</baseline-impact> -->
+    <items>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-1</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-2</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-2(1)</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-2(2)</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-2(3)</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-2(4)</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-3</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-3 (1)</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-4</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>AC-8</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>CA-2</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        <item>
+            <type>control-overlay</type>
+            <id>CA-2(1)</id>
+            <rationale change="supplemented">simply listed</rationale>
+        </item>
+        
+        <!-- and so on, list all controls from low; use transf to generate it -->
+    </items>
+</overlay>

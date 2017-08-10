@@ -1,1 +1,7 @@
 .DS_Store
+
+# Proprietary files not to be propagated
+vault
+
+*/working/**/*.pdf
+

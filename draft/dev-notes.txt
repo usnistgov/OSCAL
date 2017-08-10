@@ -1,0 +1,67 @@
+
+http://www.iso.org/schema/isosts/
+  Tag Library http://www.iso.org/schema/isosts/v1.1/doc/index.html
+  
+As you can see, very similar to JATS 
+
+NISO press release: http://www.niso.org/news/pr/view?item_key=f74de7db56828abfd977e90c2546babc91fdf27d
+Launch page for NISO STS http://www.niso-sts.org/
+Tag Library at http://www.niso-sts.org/TagLibrary/niso-sts-TL-0-2-html/index.html
+
+JATS-Con presentation (video, works in FF but not Chrome)
+  https://videocast.nih.gov/summary.asp?Live=23180&start=1372
+   
+Interesting paper by vendor of services in the engineering sector on applications of NISO STS
+  https://videocast.nih.gov/summary.asp?Live=23182&start=13045  
+to do list:
+  SP800-53 element analysis
+
+criterion
+rule
+regime/regimen (rule+)
+test
+control
+assertion
+
+Heads-up comparison btw SP800 and OSCAL v0?
+
+
+OSCAL v0 catalog mechanism?
+SP800 catalog mechanism?
+
+What is the need we are going to address?
+  What about SP800-53 is good
+  (What about other standards are good?)
+  Where is the gap
+  
+How do we approach modeling?
+  From scratch?
+  SP800-53 schemas?
+  Or current (draft) OSCAL models?
+
+Schema development
+Data sampling / mockups/conversion/prototyping/testing
+Component / UI / application development
+
+
+
+
+NIST SP800-53 BASELINES
+FedRAMP
+ISO/IEC 27002
+ISO/IEC 27001
+NIST CSF (cyber security framework)
+PCI (security standards council for financial account data protection)
+HIPAA (health info)
+COBIT (enterprise IT governance)
+CIS (Center for Internet Security)
+                
+Commitments Summer 2017
+
+STS conference May 31 - June 2 (so, week of May 29 Mem Day)
+July 12 - 16 (so, week of July 10) - Capon Springs
+Week of July 31 - Aug 4 - Balisage
+Plus possibly also week after Aug 7 - 11 (or: into mid-August)
+Plus, conference prep for two papers!
+
+Plus: Coko, JATSKit / Pellucid Lit / Pause Press, DHQ

@@ -1,0 +1,49 @@
+default namespace = "http://scap.nist.gov/schema/oscal"
+namespace   xlink = "https://www.w3.org/TR/xlink/"
+
+start = element catalog { control+ }
+control =
+  element control {
+    prp*,
+    element title { text }?,
+    (group
+     | nb
+     | prp
+     )*
+  }
+
+prp =
+  element prp {
+    attribute name { xsd:NCName },
+    text
+  }
+
+nb =
+  element nb {
+    attribute flag { xsd:NCName },
+    prp*, (nb | group)*,
+    ((\list | p)*
+     | element point { text }*)
+  }
+       
+group = element group { control+ | nb+ | std+ }
+# on group, not(nb/@flag != nb/@flag) 
+
+
+std =  element std {
+         attribute xlink:href { xsd:anyURI },
+         whatnot
+  }
+
+p =
+  element p {
+    whatnot+
+  }
+
+\list =
+  element list {
+    attribute list-type { xsd:NCName },
+    element list-item { (p | \list)* }+
+  }
+
+whatnot = (text | element italic { text })
