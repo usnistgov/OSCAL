@@ -22,9 +22,9 @@ https://github.com/usnistgov/OSCAL/tree/develop
 
 In order to enable such a format, we have developed an alternative validation model: the provision for a second "document level" validation layer (by means of declarations also written in OSCAL) means that much of the complexity that OSCAL must support, can be moved away from the base schema. The schema (base tag set) is simpler, while OSCAL can be configured, extended and fitted to new control types and applications, with no schema modification at all. (OSCAL is instead extended using its own declarations.)
 
-In the `develop` branch, ignore the `old` subdirectory: it is an archive. What you want is in the `draft` directory.
+The `[old](old)` subdirectory is an archive. Current work is in the `[draft](draft)` directory.
 
-In its `working` subdirectory https://github.com/usnistgov/OSCAL/tree/develop/draft/working find the following:
+The '[draft/working](draft/working)` subdirectory contains the following:
 
  * `lib` - schemas along with Schematron, CSS and XSLT
  * `doc` - documentation including mapping documentation plus supporting code; any tag set docs will also be here
