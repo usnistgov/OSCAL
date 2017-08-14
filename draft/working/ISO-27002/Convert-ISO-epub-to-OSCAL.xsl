@@ -19,27 +19,29 @@
       <title>ISO/IEC 27002</title>
       
       <declarations>
-        <property role="number" where="control-category">
+        <property context="control-category" class="number">
           <required/>
-          <regex>\d\d?</regex>
-          <!--<autonum>1</autonum> auto numbering needs to manage scope, starting point ... -->
-          <!--<limit type="not-less-than">5</limit>
-    <limit type="not-more-than">12</limit>-->
+          <identifier/>
+          <regex>^\d\d?$</regex>
         </property>
-        <property role="number" where="clause">
+        <property context="clause" class="number">
           <required/>
-          <!--<value>5.1</value> ... <value>18.2</value>-->
+          <identifier/>
+          <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <statement role="objective" where="clause">
+        <statement context="clause" class="objective">
           <required/>
         </statement>
-        <property role="number" where="iso-27002">
+        <property context="iso-27002" class="number">
           <required/>
-          <!--<value>5.1.1</value> ...
-      <value>18.2.3</value>-->
+          <identifier/>
+          <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <statement role="implementation-guidance" where="control"/>
-        <statement role="other-information" where="control"/>
+        <statement context="control" class="description">
+          <required/>
+        </statement>
+        <statement context="control" class="guidance"/>
+        <statement context="control" class="information"/>
       </declarations>
       
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
@@ -58,12 +60,12 @@
     <xsl:variable name="in-bibliography" select="h1[@id = 'toc_marker-58']/(.|following-sibling::*)"/>
     <xsl:for-each-group select="$after-intro except $in-bibliography" group-starting-with="h1">
       <xsl:variable name="category-head" select="current-group()/self::h1"/>
-      <group type="control-category">
+      <group class="control-category">
         <xsl:apply-templates select="$category-head" mode="no-num"/>
         <xsl:apply-templates select="$category-head" mode="num"/>
         <xsl:for-each-group select="current-group() except $category-head" group-starting-with="h2">
           <xsl:variable name="clause-head" select="current-group()/self::h2"/>
-          <group type="clause">
+          <group class="clause">
             <xsl:variable name="first-control-head" select="(current-group()/self::h3)[1]"/>
             <xsl:variable name="controls"
               select="$first-control-head | current-group()[. >> $first-control-head]"/>
@@ -76,7 +78,7 @@
             <xsl:apply-templates select="current-group() except ($clause-head|$controls)"/>
             
             <xsl:for-each-group select="$controls" group-starting-with="h3">
-              <control type="iso-27002">
+              <control class="iso-27002">
 <!--                <prop name="category">
                   <xsl:value-of select="$category-head/replace(normalize-space(), '^[\d\s\.]+', '')"
                   />
@@ -93,31 +95,31 @@
                     select="current-group()[normalize-space(.) = $statement-headers]"/>
                   <xsl:choose>
                     <xsl:when test="$statement-head = 'Control'">
-                      <description>
+                      <stmt class="description">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </description>
+                      </stmt>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Implementation guidance'">
-                      <guidance>
+                      <stmt class="guidance">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </guidance>
+                      </stmt>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Other information'">
-                      <information>
+                      <stmt class="information">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </information>
+                      </stmt>
                     </xsl:when>
                     <xsl:otherwise>
-                      <stmt role="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
+                      <stmt class="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
@@ -192,14 +194,14 @@
   </xsl:template>
   
   <xsl:template match="h1 | h2 | h3" mode="num" priority="5">
-    <prop role="number">
+    <prop class="number">
       <xsl:value-of select="replace(.,'[^\d\.].*$','')"/>
     </prop>
   </xsl:template>
   
  
   <xsl:template match="p[starts-with(., 'Objective:')]">
-    <stmt role="objective">
+    <stmt class="objective">
       <p>
         <xsl:apply-templates mode="tune">
           <xsl:with-param name="trim" tunnel="yes" as="xs:string">Objective: </xsl:with-param>
@@ -247,9 +249,9 @@
   <xsl:template match="a[not(matches(., '\S'))]" priority="3"/>
 
   <xsl:template match="a" priority="2">
-    <xref>
+    <a>
       <xsl:apply-templates/>
-    </xref>
+    </a>
   </xsl:template>
 
 </xsl:stylesheet>
