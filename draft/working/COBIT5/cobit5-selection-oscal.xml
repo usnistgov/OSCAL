@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Basic" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Forms interface" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal-cobit5.css" title="COBIT" alternate="yes"?>
+<?xml-model href="../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css" title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css" title="Forms interface" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal-cobit5.css" title="COBIT" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>COBIT 5 (extracts / examples)</title>
   <declarations href="cobit5-tuned-declarations.xml"/>
