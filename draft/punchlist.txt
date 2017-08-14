@@ -37,28 +37,7 @@ o write XSLT to produce RACI chart for (all of) COBIT 5?
   
 NOT EXTRAS
 
-Schema maintenance model
-  Finish OSCAL tag library
-  Convert RNC to RNG
-  Convert RNG+OSCAL -> XSD
-  Document all this on Github
-
-Github Issues
-  Namespace update
-
-Define spec for content enhancement tranformation over SP800-53
-  Infer links (there are lots e.g. inside Supplemental Guidance)
-  Infer assignments
-  Add IDs
-Same for content enhancement XSLT over COBIT5
- o convert input/output feature prop[@class=('to','from')] into links
-   o similarly introduce link elements into IT goals
-   o similarly upconvert Activities (into ...?)
-
-Same for other catalogs? such as 
-Complete (OSCAL) mapping documents for three applications (flavors) so far
-
-Regression testing (for schema, XSLT etc.)
+o Regression testing (for schema, XSLT etc.)
   Requiring authoritative sample docs
     Go / no-go
     Schematron XSpec
@@ -66,25 +45,48 @@ Regression testing (for schema, XSLT etc.)
 in SaxonJS demo:
 look for ixsl:onchange mode (dynamic rendering)
 
-add @datatype to 'param'
+x XSD pathway
+  x RNC -> XSD frame via Trang
+  x XSD frame + OSCAL.oscal -> XSD (w/ warnings re disparities) cf xsd-merge-docs.xsl
+  o XProc for Trang?
+  
+Monday Aug 14
+  Adjusted schema and Schematron
+    changed xref to a (inline links)
+    pulled link validation into a separate Schematron
+  Updated ISO27002 extraction
+  Implemented ISO27002 enhancement (adding internal links)
+  Improved SP800-53 enhancement (picking up "withdrawn")
+  Tightened and tested schema, Schematrons
+  Much documentation
+  
+  to do:
+  
+  XSLT to add/normalized assign/@id
+  Adjust assign model:
+  
+  Repair "Assignment" Schematron to new model
+
+links -
+  x validate internal cross-references - href[starts-with(.,'#)]
+  x change xref to a
+  o VALIDATE link in declarations - validate required and singleton by @rel (relationship) not @class
+
+
 o add xsd-type for declaration i.e. <xsd-type>decimal</xsd:type> validates $x castable as xs:decimal? (use eval)
+  o prop, param
 
-remove parameter declarations
-remove param/@class (till later)
-
-rough out profile functionality
+o Rough out profile functionality
   select controls by ID
-  (then deselect controls by arbitrary criteria)
-  implement paramesters and assignments (crude is okay)
-  validation collection (selected controls) against source
-    catalog to verify (existence) of control
-
-links - validate internal cross-references
-  validate required and singleton by @rel (relationship)
-
-fix up parameter (Schematron) implementation
+  (then deselect controls by arbitrary criteria?)
+  implement parameters and assignments (crude is okay)
+    pass 1: expand profile to contain params for all //assign
+    pass 2: produce collection with params in place
+            (and other mods e.g. overwrites, additions)
+  
+  o validate collection (selected controls) against source catalog?
+    to verify (existence/coverage) of control
 
 OSCAL framework in oXygen? 
   oXygen macros, boilerplate and auto-insert
   e.g. parameter names by reference to declarations
-
