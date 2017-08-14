@@ -1,7 +1,7 @@
 default namespace = "http://scap.nist.gov/schema/oscal"
 
 # We can have a catalog, or we can have only declarations for catalogs
-start = (catalog | declarations | profile | collection)
+start = (catalog | declarations | collection)
 
 # Also we have an alias for 'catalog', namely 'collection', used for ad-hoc collections of controls
 
@@ -12,7 +12,7 @@ start = (catalog | declarations | profile | collection)
 # also declares bindings to authorities (e.g. sources for transclusion/comparison)?
 
 #keeping these together until we have differentiating requirements
-collection-contents =  (title, declarations?, section*, (group+ | control+), section*, references?)
+collection-contents =  (title, declarations?, (section | group | control)*, references?)
 
 catalog    = element catalog { collection-contents } 
 
@@ -22,13 +22,11 @@ collection = element collection { collection-contents }
 # authorities (source data for transclusion etc. etc.)
 declarations = ( element declarations { hrefAttr?, decls } )
 
-decls = (parameter_decl | property_decl | statement_decl | feature_decl)*
+decls = (parameter_decl | property_decl | statement_decl | feature_decl | link_decl)*
 
 # parameter declarations expose names and default values for parameters within the control type
 parameter_decl   = element parameter {
   nameAttr, contextAttr, singleton?, (choice+)? }
-
-singleton = element singleton { empty }
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property_decl =
@@ -38,6 +36,23 @@ property_decl =
     (regex | value* )
   }
 
+# statement declaration
+statement_decl =
+  element statement { nameAttr, contextAttr, singleton?, required? }
+
+# feature declaration
+feature_decl =
+  element feature { nameAttr, contextAttr, singleton?, required? }
+
+# link declaration
+link_decl =
+  element link_ {
+    nameAttr, contextAttr, singleton?, required? }
+
+singleton = element singleton { empty }
+
+required =  element required { empty }
+
 # on 'property and possibly 'parameter',
 # element limit { nameAttr, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
 
@@ -46,20 +61,13 @@ value = element value { ( \inherit | autonum | text )* }
 \inherit = element inherit { attribute from { text }?, text }
 autonum = element autonum { text }
 
-# statement declaration
-statement_decl =
-  element statement { nameAttr, contextAttr, singleton?, required? }
-
-required = element required { empty }
-
-# feature declaration
-feature_decl =
-  element feature { nameAttr, contextAttr, singleton?, required? }
-
 # done with declarations - controls, subcontrols and groups are not declared
 # (constrained) at the OSCAL layer so they don't get declaration elements.
 
 # Now for the contents of the OSCAL doc proper ...
+
+section = element section { idAttr, typeAttr,
+  title, prose, (section | group)*, references? }
 
 # groups may contain more groups, controls or subcontrols
 # But controls should not appear in controls (even grouped)
@@ -68,30 +76,28 @@ feature_decl =
 
 group = element group {
   idAttr, typeAttr,
-  title?, prop*, anyKindofStatement*, ((group | section)* | control* | subcontrol* | feature*) }
+  title?, control-components, (group | control)+, references? }
 
-section = element div { idAttr, typeAttr,
-  title, prose, (section | group)*, references? }
+control-components = (prop | param | anyKindofStatement | feature | link)*
 
-# For some especially loose contents it might be thinkable to permit prose in controls
-# (i.e. outside of statements and properties) but we have no use case, so ...
 control =
   element control {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | subcontrol | feature )*, 
+    control-components, subcontrol*,
     references?
   }
 
 subcontrol =
   element subcontrol {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | feature )* 
+    control-components,
+    references? 
   }
 
 feature =
   element feat {
     idAttr, typeAttr, title?,
-    (link | param | prop | anyKindofStatement | group | feature )*
+    control-components
   }
 
 title = element title { (text | q)* }
@@ -105,7 +111,7 @@ title = element title { (text | q)* }
 link    = element link { relAttr, hrefAttr, mix }
 
 # Can't inject param values into parameter settings, okay?
-param   = element param { idAttr, nameAttr, mix }
+param   = element param { nameAttr, targetAttr, mix }
 
 prop =
   element prop {
@@ -117,14 +123,15 @@ prop =
 # stmt is a bit of controlled prose: its title is implicit in its name
 # e.g. stmt[@name='objectives'] might be displayed with title "Objectives:"
 
-# for harder wiring: anyKindofStatement = ( stmt | desc | purpose | guidance | information | remarks )
-anyKindofStatement = stmt
+# for harder wiring: anyKindofStatement = ( stmt | desc | purpose | guidance | information | remarks )*
+# of course that complicates the declarations model ...
+# declaring as zeroOrMore/choice avoids XSD substitution group (in Trang)
+anyKindofStatement = stmt*
 
 stmt =
   element stmt {
     nameAttr?,
-    prose,
-    link* }
+    prose }
 
 # syntax sugar for stmt[@role='purpose'] for "Objective/s" etc.
 # purpose =
@@ -189,30 +196,36 @@ whatnot = (
 
 mix = (inlines | text)*
 
-inlines = (  q | code | em | xref | i | b )
+# declaring as zeroOrMore/choice avoids XSD substitution group
+inlines = (  q | code | em | xref | i | b | span )*
 
 em = element em { mix }
 i =  element i  { mix }
 b =  element b  { mix }
 
-xref = element xref { attribute href { text }?, ( q | code | element em { text } | text )* }
+xref = element a { attribute href { text }?, ( q | code | element em { text } | text )* }
 
 q = element q { text }
 
 # A bit of code (perhaps capable of evaluation in the correct context)
 code = element code { attribute type { text }?, mix }
 
+# An arbitrary span
+span = element span { classAttr, mix }
+
 # not html!
-semantical = ( withdrawn | assign | select )
+
+# declaring as zeroOrMore/choice avoids XSD substitution group
+semantical = ( withdrawn | assign | select )*
 
 # A placeholder status report typically with a cross-reference
 withdrawn = element withdrawn { (inlines | text)* }
 
 # A value to be assigned by responder, possibly via a param (parameter) or parameter declaration
-assign = element assign { paramAttr?, mix }
+assign = element assign { idAttr, mix }
 
 # A selection to be made by responder
-select = element select { paramAttr?, choice* }
+select = element select { idAttr, choice* }
 
 # Within a selection, a choice
 # unlike 'value', choice may have inline stuff as well as 'assign' elements
@@ -221,36 +234,20 @@ choice = element choice { (assign | mix)* }
 
 idAttr      = attribute id { xsd:ID }?
 
+targetAttr      = attribute target { xsd:IDREFS }?
+
 # collapsing 'names' and 'types' as classes, HTML-style
 
 nameAttr    = attribute class { text }?
 
 typeAttr    = attribute class { text }?
 
-contextAttr = attribute context { text }
+classAttr   = attribute class { text }?
 
-paramAttr = attribute use { text }?
+contextAttr = attribute context { text }
 
 relAttr = attribute rel { text }?
 
-hrefAttr = attribute href { text }
+hrefAttr = attribute href { text }?
 
 #nameAttr = attribute name { xsd:NCName }
-
-#
-
-profile = element profile { invoke+, mod* }
-
-invoke = element invoke { hrefAttr, (\include?, exclude?) }
-
-\include = element include { (all | (call | filter)+ ) }
-
-# 'all' or 'filter' make sense for inclusions but not exclusions
-exclude = element exclude { call+ }
-
-mod = element mod { contextAttr }
-
-all = element all { empty }
-
-call = element call { attribute key { text }, text }
-filter = element filter { attribute key { text }, text }
