@@ -51,7 +51,7 @@ inherit:before { content: oxy_label(text, "inherit", width, 4em, color, inherit)
 autonum:before { content: oxy_label(text, "autonumber ", width, 4em, color, inherit)
 }
 
-group, div, references, extensions
+group, section, references, extensions
   { padding: 0.5em; margin: 0.5em; border: thin solid black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
