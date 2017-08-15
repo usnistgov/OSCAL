@@ -1,0 +1,547 @@
+{
+  "definitions": {
+    "oscalnistgovschemacore:type": {
+      "type": "string",
+      "enum": [
+        "examine",
+        "interview",
+        "test"
+      ]
+    },
+    "oscalnistgovschemacore:baselineImpactType": {
+      "enum": [
+        "Low",
+        "Moderate",
+        "High"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacore:rationaleChangeType": {
+      "enum": [
+        "supplemented",
+        "modified",
+        "scopedout",
+        "compensating"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacore:relatedTypeType": {
+      "enum": [
+        "compensating",
+        "related"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacore:statusType": {
+      "enum": [
+        "withdrawn"
+      ]
+    },
+    "oscalnistgovschemacore:itemEnumType": {
+      "enum": [
+        "control",
+        "control-enhancement",
+        "objective",
+        "control-overlay",
+        "objective-overlay",
+        "control-system",
+        "assessment"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacore:item": {
+      "enum": [
+        "specifications",
+        "mechanisms",
+        "activities",
+        "individuals",
+        ""
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacore:depth": {
+      "enum": [
+        "basic",
+        "focused",
+        "comprehensive"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacore:coverage": {
+      "enum": [
+        "basic",
+        "focused",
+        "comprehensive"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacommon:rel": {
+      "enum": [
+        "parent",
+        "related",
+        "layer",
+        "reference",
+        "target",
+        "statement-reference",
+        "alias",
+        "implemented-by"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemacore:enumeration": {
+      "required": [
+        "value"
+      ],
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "oscalnistgovschemacore:baseType": {
+      "type": "object",
+      "properties": {
+        "layer-ref": {
+          "type": "array",
+          "items": {
+            "type": "oscalnistgovschemacore:layer-ref"
+          },
+          "minItems": 0
+        }
+      }
+    },
+    "oscalnistgovschemacore:statementType": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "xhtml:xhtml.div.type"
+        },
+        "statement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacore:statementType"
+          },
+          "minItems": 0
+        },
+        "number": {
+          "type": "string"
+        },
+        "assignment": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "number"
+      ]
+    },
+    "oscalnistgovschemacore:tailoringType": {
+      "type": "object",
+      "properties": {
+        "parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacore:parameterType"
+          },
+          "minItems": 0
+        },
+        "properties": {
+          "type": "oscalnistgovschemacore:properties"
+        },
+        "id": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "oscalnistgovschemacore:assessmentObjectType": {
+      "required": [
+        "item",
+        "statement"
+      ],
+      "type": "object",
+      "properties": {
+        "item": {
+          "$ref": "#/definitions/oscalnistgovschemacore:item"
+        },
+        "statement": {
+          "type": "xhtml:xhtml.div.type"
+        }
+      }
+    },
+    "oscalnistgovschemacore:parameterType": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "oscalnistgovschemacore:value"
+        },
+        "description": {
+          "type": "xhtml:xhtml.div.type"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "oscalnistgovschemacore:catalog": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "author": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacore:author"
+          },
+          "minItems": 0
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "type": "xhtml:xhtml.div.type"
+          },
+          "minItems": 1
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "type": "oscalnistgovschemacore:documentation"
+          },
+          "minItems": 0
+        },
+        "definitions": {
+          "$ref": "#/definitions/oscalnistgovschemacore:definitions"
+        },
+        "items": {
+          "$ref": "#/definitions/oscalnistgovschemacore:items"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary",
+        "id",
+        "name"
+      ]
+    },
+    "oscalnistgovschemacore:overlay": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "author": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacore:author"
+          },
+          "minItems": 0
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "type": "xhtml:xhtml.div.type"
+          },
+          "minItems": 1
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "type": "oscalnistgovschemacore:documentation"
+          },
+          "minItems": 0
+        },
+        "definitions": {
+          "$ref": "#/definitions/oscalnistgovschemacore:definitions"
+        },
+        "base": {
+          "$ref": "#/definitions/oscalnistgovschemacore:baseType"
+        },
+        "items": {
+          "$ref": "#/definitions/oscalnistgovschemacore:items"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary",
+        "base",
+        "id",
+        "name"
+      ]
+    },
+    "oscalnistgovschemacore:system": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "author": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacore:author"
+          },
+          "minItems": 0
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "type": "xhtml:xhtml.div.type"
+          },
+          "minItems": 1
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "type": "oscalnistgovschemacore:documentation"
+          },
+          "minItems": 0
+        },
+        "definitions": {
+          "$ref": "#/definitions/oscalnistgovschemacore:definitions"
+        },
+        "base": {
+          "$ref": "#/definitions/oscalnistgovschemacore:baseType"
+        },
+        "items": {
+          "$ref": "#/definitions/oscalnistgovschemacore:items"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary",
+        "base",
+        "id",
+        "name"
+      ]
+    },
+    "oscalnistgovschemacore:assessment": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "author": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacore:author"
+          },
+          "minItems": 0
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "type": "xhtml:xhtml.div.type"
+          },
+          "minItems": 1
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "type": "oscalnistgovschemacore:documentation"
+          },
+          "minItems": 0
+        },
+        "definitions": {
+          "$ref": "#/definitions/oscalnistgovschemacore:definitions"
+        },
+        "base": {
+          "$ref": "#/definitions/oscalnistgovschemacore:baseType"
+        },
+        "items": {
+          "$ref": "#/definitions/oscalnistgovschemacore:items"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary",
+        "base",
+        "id",
+        "name"
+      ]
+    },
+    "oscalnistgovschemacore:author": {
+      "type": "object",
+      "properties": {
+        "contact-info": {
+          "type": "xhtml:xhtml.div.type"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "oscalnistgovschemacore:definitions": {
+      "required": [
+        "definition"
+      ],
+      "type": "object",
+      "properties": {
+        "definition": {
+          "type": "array",
+          "items": {
+            "type": "xhtml:xhtml.div.type"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "oscalnistgovschemacore:potential-assessment": {
+      "required": [
+        "object",
+        "method"
+      ],
+      "type": "object",
+      "properties": {
+        "object": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "method": {
+          "enum": [
+            "Examine",
+            "Interview",
+            "Test"
+          ]
+        }
+      }
+    },
+    "oscalnistgovschemacore:statement": {
+      "required": [
+        "description"
+      ],
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "xhtml:xhtml.div.type"
+        },
+        "statement": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/oscalnistgovschemacore:statementType"
+          },
+          "minItems": 0
+        }
+      }
+    },
+    "oscalnistgovschemacore:tailoring": {
+      "required": [
+        "tailor"
+      ],
+      "type": "object",
+      "properties": {
+        "tailor": {
+          "$ref": "#/definitions/oscalnistgovschemacore:tailoringType"
+        }
+      }
+    },
+    "oscalnistgovschemacore:items": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "array",
+          "items": {
+            "type": "oscalnistgovschemacore:baseItemType"
+          },
+          "minItems": 0
+        }
+      }
+    },
+    "lang": {
+      "type": "string"
+    },
+    "space": {
+      "enum": [
+        "default",
+        "preserve"
+      ],
+      "type": "string"
+    }
+  }
+}

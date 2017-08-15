@@ -1,0 +1,39 @@
+{
+  "definitions": {
+    "oscalnistgovschemacommon:rel": {
+      "enum": [
+        "parent",
+        "related",
+        "layer",
+        "reference",
+        "target",
+        "statement-reference",
+        "alias",
+        "implemented-by"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemaextensioncatalogPCI:guidance": {
+      "required": [
+        "description"
+      ],
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "lang": {
+      "type": "string"
+    },
+    "space": {
+      "enum": [
+        "default",
+        "preserve"
+      ],
+      "type": "string"
+    }
+  },
+  "$ref": "#/definitions/oscalnistgovschemaextensioncatalogPCI:guidance"
+}

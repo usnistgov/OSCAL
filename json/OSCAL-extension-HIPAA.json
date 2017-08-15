@@ -1,0 +1,63 @@
+{
+  "definitions": {
+    "oscalnistgovschemacommon:rel": {
+      "enum": [
+        "parent",
+        "related",
+        "layer",
+        "reference",
+        "target",
+        "statement-reference",
+        "alias",
+        "implemented-by"
+      ],
+      "type": "string"
+    },
+    "oscalnistgovschemaextensionHIPAA:key-activity": {
+      "required": [
+        "number",
+        "key-activity-overview",
+        "description",
+        "sample-questions"
+      ],
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "key-activity-overview": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "sample-questions": {
+          "maxItems": 2,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2
+        },
+        "footnote": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      }
+    },
+    "lang": {
+      "type": "string"
+    },
+    "space": {
+      "enum": [
+        "default",
+        "preserve"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "string"
+}
