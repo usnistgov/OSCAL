@@ -90,3 +90,16 @@ o Rough out profile functionality
 OSCAL framework in oXygen? 
   oXygen macros, boilerplate and auto-insert
   e.g. parameter names by reference to declarations
+  
+o relax declarations: not declaring something is not an error
+o collapse features and statements:
+  o permit prose in features
+  o eliminate statements and rename stmts as features
+
+  o experiment (again) w/ semantic aliases for feat[@class='objectives'] etc
+  o add declarations for paragraph[@class]
+  o contemplate recursion
+  
+
+  
+

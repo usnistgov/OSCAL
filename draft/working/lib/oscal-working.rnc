@@ -83,7 +83,7 @@ control-components = (prop | param | anyKindofStatement | feature | link)*
 control =
   element control {
     idAttr, typeAttr, title?,
-    control-components, subcontrol*,
+    (control-components | subcontrol)*,
     references?
   }
 
@@ -131,7 +131,7 @@ anyKindofStatement = stmt*
 stmt =
   element stmt {
     nameAttr?,
-    prose }
+    (prose | link)* }
 
 # syntax sugar for stmt[@role='purpose'] for "Objective/s" etc.
 # purpose =

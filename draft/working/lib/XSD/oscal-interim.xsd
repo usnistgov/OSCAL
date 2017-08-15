@@ -14,10 +14,10 @@
     <xs:sequence>
       <xs:element ref="oscal:title"/>
       <xs:element minOccurs="0" ref="oscal:declarations"/>
-      <xs:choice>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:section"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:group"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:control"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:section"/>
+        <xs:element ref="oscal:group"/>
+        <xs:element ref="oscal:control"/>
       </xs:choice>
       <xs:element minOccurs="0" ref="oscal:references"/>
     </xs:sequence>
@@ -165,7 +165,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
         <xs:group ref="oscal:control-components"/>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:choice maxOccurs="unbounded">
           <xs:element ref="oscal:group"/>
           <xs:element ref="oscal:control"/>
         </xs:choice>
@@ -190,8 +190,10 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:group ref="oscal:control-components"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:subcontrol"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="oscal:control-components"/>
+          <xs:element ref="oscal:subcontrol"/>
+        </xs:choice>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:idAttr"/>
@@ -271,7 +273,10 @@
   </xs:group>
   <xs:element name="stmt">
     <xs:complexType>
-      <xs:group ref="oscal:prose"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="oscal:prose"/>
+        <xs:element ref="oscal:link"/>
+      </xs:choice>
       <xs:attributeGroup ref="oscal:nameAttr"/>
     </xs:complexType>
   </xs:element>
