@@ -124,8 +124,15 @@
     </feat>
   </xsl:template>
   
-  <xsl:template match="statement/statement/statement" priority="2">
+  <xsl:template match="statement/statement" priority="2">
     <feat class="statement-item">
+      <xsl:apply-templates select="@*" mode="asElement"/>
+      <xsl:apply-templates/>
+    </feat>
+  </xsl:template>
+  
+  <xsl:template match="statement/statement/statement" priority="3">
+    <feat class="statement-subitem">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
     </feat>

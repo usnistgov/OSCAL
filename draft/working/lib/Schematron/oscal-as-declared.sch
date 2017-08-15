@@ -5,7 +5,7 @@
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
-  <xsl:include href="oscal-functions.xsl"/>
+  <xsl:include href="../XSL/oscal-functions.xsl"/>
    
   
 <!-- Declarations are the contents of local declarations, if present, or the document at href if locally empty.  -->
@@ -85,7 +85,7 @@
     <!-- Note that we have no mechanism for declaring (and constraining) controls, subcontrols or groups,
          but we are expected to declare features. -->
     <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title |
-      oscal:group | oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
+      oscal:group | oscal:div | oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
 
     <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feat/*">
       <xsl:variable name="this" select="."/>

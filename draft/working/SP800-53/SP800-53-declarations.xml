@@ -58,24 +58,29 @@
   </feature>
   <feature context="SP800-53-enhancement" class="assessment"/>
 
+  <!--'number' properties are not given on feat.statement -->
   <statement context="statement" class="description">
     <singleton/>
     <required/>
   </statement>
-  <!-- Note recursion -->
-  <feature context="statement" class="statement"/>
-  <property context="statement" class="number">
-    <singleton/>
-    <value><inherit/><autonum>a.</autonum></value>
-    <value><inherit/><autonum>(a)</autonum></value>
-  </property>
-  <feature context="statement" class="statement-item"/>
 
+  <feature context="statement" class="statement-item"/>
+  
+  <feature context="statement-item" class="statement-subitem"/>
+  
   <property context="statement-item" class="number">
     <singleton/>
     <required/>
+    <value><inherit/><autonum>a.</autonum></value><!-- in controls -->
+    <value><inherit/><autonum>(a)</autonum></value><!-- in subcontrols -->
   </property>
-  <property context="statement-item" class="description">
+  <property context="statement-subitem" class="number">
+    <singleton/>
+    <required/>
+    <value><inherit/><autonum>1.</autonum></value><!-- in controls -->
+    <value><inherit/><autonum>(1)</autonum></value><!-- in subcontrols -->
+  </property>
+  <property context="statement-item statement-subitem" class="description">
     <singleton/>
     <required/>
   </property>
@@ -84,6 +89,7 @@
     <singleton/>
     <!--<required/> not required because objectives are nested; only lowest level has decision given. -->
   </property>
+  
   <!-- Note recursion: objectives contain objectives -->
   <feature context="objective" class="objective"/>
   <property context="objective" class="number">
