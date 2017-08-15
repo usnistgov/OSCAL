@@ -1,5 +1,4 @@
-# OSCAL
-Open Security Controls Assessment Language (OSCAL) 
+# Open Security Controls Assessment Language (OSCAL) 
 
 The Cloud First policy established by the U.S. Federal CIO in December 2010, mandates that agencies take full advantage of cloud computing benefits to maximize capacity utilization, improve IT flexibility and responsiveness, and minimize cost. By 2012, a subsequent report to Congress showed that more than half of all federal agencies had adopted cloud computing for at least one application. The rapid adoption of cloud computing under this mandate is not voiding any of the agencies’ FISMA requirements for adequate security and privacy protection of data. 
 
@@ -20,15 +19,13 @@ As the result of a new OSCAL initiative undertaken starting in mid-May, this rep
 
 In order to enable such a format, we have developed an alternative validation model: the provision for a second "document level" validation layer (by means of declarations also written in OSCAL) means that much of the complexity that OSCAL must support, can be moved away from the base schema. The schema (base tag set) is simpler, while OSCAL can be configured, extended and fitted to new control types and applications, with no schema modification at all. (OSCAL is instead extended using its own declarations.)
 
-The '[old](old)' subdirectory is an archive. Current work is in the '[draft](draft)' directory.
+The '[working](working)' subdirectory contains the following:
 
-The '[draft/working](draft/working)' subdirectory contains the following:
-
- * '[lib](draft/working/lib)' - schemas along with Schematron, CSS and XSLT
- * '[doc](draft/working/doc)' - documentation including mapping documentation plus supporting code; any tag set docs will also be here
- * '[SP800-53](draft/working/SP800-53)' - OSCAL demo, NIST SP800-53
- * '[ISO27002](draft/working/ISO27002)' - OSCAL demo, ISO 27002
- * '[COBIT5](draft/working/COBIT5)' - OSCAL demo, COBIT 5
+ * '[lib](working/lib)' - schemas along with Schematron, CSS and XSLT
+ * '[doc](working/doc)' - documentation including mapping documentation plus supporting code; any tag set docs will also be here
+ * '[SP800-53](working/SP800-53)' - OSCAL demo, NIST SP800-53
+ * '[ISO27002](working/ISO27002)' - OSCAL demo, ISO 27002
+ * '[COBIT5](working/COBIT5)' - OSCAL demo, COBIT 5
 
 ## oXygen demo guidelines
 
