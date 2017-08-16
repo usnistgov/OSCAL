@@ -13,12 +13,12 @@
       <!-- An XML name -->
         </property>
     <property context="element-description" class="full_name"/>
-    <statement context="element-description general-constraint" class="description">
+    <feature context="element-description general-constraint" class="description">
       <required/>
-    </statement>
-    <statement context="element-description" class="remarks"/>
+    </feature>
+    <feature context="element-description" class="remarks"/>
     <property context="term-definition" class="term"/>
-    <statement context="term-definition" class="definition"/>
+    <feature context="term-definition" class="definition"/>
     
   </declarations>
   <section>
@@ -38,22 +38,22 @@
     <title>OSCAL terminology</title>
     <control class="term-definition">
       <prop class="term">Control object</prop>
-      <stmt class="definition">
+      <feat class="definition">
         <p>OSCAL catalogs are comprised of control objects, typically arranged in groups. The
           top-level control object is <code>control</code>. Other control objects are subcontrols
             (<code>subcontrol</code>) and features (<code>feat</code>). Subcontrols may only appear
-          (directly) within controls. Features may appear within controls or  subcontrols, or may be
+          (directly) within controls. Features may appear within controls or subcontrols, or may be
           nested (to any depth) within features.</p>
         <p>Control objects in OSCAL may be characterized as consistent data structures, whose
           contents are appropriate to their type and application. The type of a control object is
           labelled by means of its <code>@class</code>. Control objects may validated for
           consistency between and among objects of the same type, by means of constraining values
           assigned to the control components (qv) appearing within them.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="term-definition">
       <prop class="term">Control component</prop>
-      <stmt class="definition">
+      <feat class="definition">
         <p>Control components are information objects that constitute particular controls. They
           include properties (<code>prop</code>), statements (<code>stmt</code>), features
             (<code>feat</code>), and parameters (<code>param</code>).</p>
@@ -67,7 +67,7 @@
           component) and/or components (of features) may be constrained and validated by means of
           the OSCAL declarations model. This enables catalogs and catalog types to enforce
           consistency of components across controls of identified and labeled types.</p>
-      </stmt>
+      </feat>
     </control>
   </group>
   <group>
@@ -75,39 +75,39 @@
     <control class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Top-level element for a (canonical) control catalog</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">collection</prop>
       <prop class="full_name">Collection</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Top-level element for a set of controls, not considered to be a catalog</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Most often, a collection element will be used for a set of controls derived from one or
           more control catalogs (such as a profile, baseline or overlay), which do not themselves
           serve as a catalog.</p>
         <p>However, collections may contain everything that catalogs may contain, and OSCAL does not
           prohibit their use as (source or interim) catalogs for profiling. (Although an application
           might).</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">control</prop>
       <prop class="full_name">Control</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A structured information object representing a security control</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control enhancement</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Within a control, a control object appearing as a component</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>This is a control object, just like a control, only related to a particular control by
           virtue of containment in the OSCAL instance. Control enhancements (subcontrols) may
           contain their own enhancements as well as control components (properties, statements
@@ -120,16 +120,16 @@
           subcontrols may contain subcontrols, neither may contain controls. That is, in any
           catalog, a control is only the <q>top level</q> of control object (even if gathered in
           groups) – all else is subcontrols (control enhancements) or control contents.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">prop</prop>
       <prop class="full_name">Property</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A value with a name, attributed to the containing control, subcontrol, feature or
           group</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Like statements (<code>stmt</code>), features (<code>feat</code>) and parameters
             (<code>param</code>), properties are <q>named things</q> that appear within controls,
           subcontrols or features.</p>
@@ -149,17 +149,17 @@
           those controls. Typically and routinely, properties will be used to sort, select, order
           and arrange controls or relate them to one another or to class hierarchies, taxonomies or
           external authorities.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">stmt</prop>
       <prop class="full_name">Statement</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A block of prose; a claim, assertion, description, accounting or specification applicable
           to a control, control enhancement or component (subcontrol or feature), or to a group of
           controls</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), statements are
           distinguishable from other elements within their controls by their assigned
             <code>@class</code>, such that they may be subjected to <q>declarations logic</q> using
@@ -171,16 +171,16 @@
             (<code>feat</code>), statements may not have titles.</p>
         <p>Like anything in OSCAL, this element may be formally valid, without its contents or
           representations being correct, complete, veracious or even intelligible.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">feat</prop>
       <prop class="full_name">Feature</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A control extension: a block of controlled information within a control and dependent on
           it</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>In addition to properties, statements and parameters, controls and their subcontrols may
           include features; without being control objects themselves (controls or enhancements),
           these are the most the most <q>full-featured</q> and versatile control component, like
@@ -209,61 +209,59 @@
         <p>Because features are where catalog-specific semantics are often captured, it may be
           common to wish to convert features into (structured chunks of) prose as well as the
           opposite (semantic induction).</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">link</prop>
       <prop class="full_name">Link</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A line or paragraph with a hypertext link</p>
-      </stmt>
+      </feat>
       
     </control>
     <control class="element-description">
       <prop class="tag">param</prop>
       <prop class="full_name">Parameter</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A parameter setting, to be propagated to assignments or selections</p>
-      </stmt>
+      </feat>
       
     </control>
   </group>
   <group>
     <title>Functional elements</title>
-    <stmt>
-      <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
-        processors for dynamic injection.</p>
-    </stmt>
+    <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL processors
+      for dynamic injection.</p>
     <control class="element-description">
       <prop class="tag">withdrawn</prop>
       <prop class="full_name">Withdrawn</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Indicates that a containing control or subcontrol is no longer applicable</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Used to mark a control or subcontrol included in a catalog as a placeholder, </p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">assign</prop>
       <prop class="full_name">Assignment</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A value requiring assignment via parameter</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">select</prop>
       <prop class="full_name">Selection</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A selection requiring designation via parameter</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">choice</prop>
       <prop class="full_name">Choice</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A choice of values, to be designated via parameter</p>
-      </stmt>
+      </feat>
     </control>
   </group>
   <group>
@@ -271,10 +269,10 @@
     <control class="element-description">
       <prop class="tag">declarations</prop>
       <prop class="full_name">Declarations</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>For extra-schema validation of control components within controls</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>The OSCAL validation model supports not only validation against a formal schema
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
@@ -284,129 +282,129 @@
           may appear), enable automated checking for consistency of controls, subcontrols and
           features, specific to the types or kinds of control items that appear within a particular
           catalog or control collection.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">parameter</prop>
       <prop class="full_name">Parameter declaration</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Constraints applicable to a class or classes of parameters within a control object</p>
-      </stmt>
+      </feat>
       
     </control>
     <control class="element-description">
       <prop class="tag">property</prop>
       <prop class="full_name">Property declaration</prop>
-      <stmt class="description">
-        <p>Indicates constraints to be imposed on properties in context</p>
-      </stmt>
+      <feat class="description"/>
+      <p>Constraints applicable to a class or classes of <code>p</code> elements within a control
+        object</p>
       
     </control>
     <control class="element-description">
-      <prop class="tag">statement</prop>
-      <prop class="full_name">Statement declaration</prop>
-      <stmt class="description">
+      <prop class="tag">paragraph</prop>
+      <prop class="full_name">Paragraph declaration</prop>
+      <feat class="description">
         <p>Indicates constraints to be imposed on statements in context</p>
-      </stmt>
+      </feat>
       
     </control>
     <control class="element-description">
       <prop class="tag">feature</prop>
       <prop class="full_name">Feature declaration</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Indicates constraints to be imposed on features in context</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">link_</prop>
       <prop class="full_name">Link declaration</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Indicates constraints to be imposed on links in context</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">singleton</prop>
       <prop class="full_name">Singleton constraint</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>The declared component may occur only once in its context</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>When this element is present in the declaration of an OSCAL control component, the
           component (<code>prop</code>, <code>param</code>, <code>stmt</code> or <code>feat</code>)
           must be the only component of that class given in its context. i.e., no other element
           child of the same parent may have the same <code>@class</code> value (at the level of
           syntax), or be bound to the same component type (at the semantic level).</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">required</prop>
       <prop class="full_name">Requirement constraint</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>The declared component is required in its context</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>When this element is present in the declaration of an OSCAL control component, the
           component (<code>prop</code>, <code>param</code>, <code>stmt</code> or <code>feat</code>)
           is required to appear, at least once, in its context.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">identifier</prop>
       <prop class="full_name">Identifier constraint</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>The declared component has a value unique within the document, among components of the
           same type</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>This constraint is generally only used for properties to be used as identifiers for their
           control object (control, subcontrol or feature). Guaranteeing their uniqueness means that
           these values can be used to effect one-to-one retrieval or reference to the objects to
           which they are assigned.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">regex</prop>
       <prop class="full_name">Regular expression constraint</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Indicates that the value of a property (<code>prop)</code> or parameter
             (<code>param</code>) must match the given regular expression</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Matching against a regular expression is conducted on the normalized lexical value of the
           given parameter or property: that is, with leading and trailing whitespace stripped,
           interim whitespace (space, tab or line feed) normalized to single spaces, and inline
           markup stripped.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">value</prop>
       <prop class="full_name">Value constraint</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Indicates a permissible value for a parameter or property</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Typically, <code>value</code> will be given in groups, indicating a set of enumerated
           permissible values.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">autonum</prop>
       <prop class="full_name">Autonumbered (generated) value</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
           alphabetic, roman etc)</p>
-      </stmt>
+      </feat>
       
     </control>
     <control class="element-description">
       <prop class="tag">inherit</prop>
       <prop class="full_name">Inherited value constraint</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Indicates that a value or part of a value will be inherited from a property on a
           containing control object</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p><code>inherit</code> is typically used to enforce hierarchical numbering within control
           objects. When given in a <code>value</code> in a declaration, <code>inherit</code>
           indicates that the value of a property, or a segment of its value, must be the same as a
@@ -423,7 +421,7 @@
           object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
           class). By default, <code>inherit</code> indicates a property value should match an
           ancestor's property with the same <code>@class</code> (the most usual case).</p>
-      </stmt>
+      </feat>
     </control>
   </group>
   <group>
@@ -431,22 +429,22 @@
     <control class="element-description">
       <prop class="tag">section</prop>
       <prop class="full_name">Division</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>A chapter, section or subsection partitioning a catalog, collection or section
           therein</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Echoes HTML5 <code>section</code>.</p>
         <p>Like groups, sections (<code>section</code>)</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">group</prop>
       <prop class="full_name">Group</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Related controls or groups (of controls or groups)</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>In addition to controls or groups, groups may be titled and may have their own
           properties, statements, parameter settings and references, subject to declaration. In this
           respect they are like control objects (control, subcontrol and feature), albeit their
@@ -455,47 +453,47 @@
         <p>Unlike sections (<code>section</code> elements), groups may not contain arbitrary prose
           (paragraphs and lists). They may however contain statements (stmt), which may be untyped
           (no @class) and therefore unconstrained by declarations.</p>
-      </stmt>
+      </feat>
       
     </control>
     <control class="element-description">
       <prop class="tag">title</prop>
       <prop class="full_name">Title</prop>
-      <stmt class="description"/>
+      <feat class="description"/>
       
     </control>
     <control class="element-description">
       <prop class="tag">references</prop>
       <prop class="full_name">References</prop>
-      <stmt class="description"/>
+      <feat class="description"/>
       
     </control>
     <control class="element-description">
       <prop class="tag">ref</prop>
       <prop class="full_name">Reference</prop>
-      <stmt class="description"/>
+      <feat class="description"/>
       
     </control>
     <control class="element-description">
       <prop class="tag">std</prop>
       <prop class="full_name">Standard</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Citation of a formal published standard</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Echoes the NISO JATS (and NISO STS) <code>std</code> element</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">citation</prop>
       <prop class="full_name">Citation</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Citation of a resource</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Echoes the NISO JATS (and NISO STS) <code>mixed-citation</code> element.</p>
         <p>For references to standards, <code>std</code> (qv) may be preferred.</p>
-      </stmt>
+      </feat>
     </control>
   </group>
   <group>
@@ -503,146 +501,146 @@
     <control class="element-description">
       <prop class="tag">p</prop>
       <prop class="full_name">Paragraph</prop>
-      <stmt class="description">
-        <p>Paragraph or paragraph fragment</p>
-      </stmt>
-      <stmt class="remarks">
+      <feat class="description">
+        <p>Or paragraph fragment</p>
+      </feat>
+      <feat class="remarks">
         <p>This element echoes HTML <code>p</code>; like its forebear, it is not limited to
           indicating complete or discrete (compositional or logical) paragraphs, but can be used for
           any text set off on its own line.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">pre</prop>
       <prop class="full_name">Preformatted text</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Retains whitespace in display</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Echoes HTML <code>pre</code>.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">ol</prop>
       <prop class="full_name">Ordered List</prop>
-      <stmt class="description"/>
+      <feat class="description"/>
       
     </control>
     <control class="element-description">
       <prop class="tag">li</prop>
       <prop class="full_name">List item</prop>
-      <stmt class="description"/>
+      <feat class="description"/>
       
     </control>
     <control class="element-description">
       <prop class="tag">ul</prop>
       <prop class="full_name">Unordered list</prop>
-      <stmt class="description"/>
-      <stmt class="remarks">
+      <feat class="description"/>
+      <feat class="remarks">
         <p>As in HTML, <q>unordered</q> does not indicate that the order of contained list items is
           not respected, only that they are not displayed with any notation indicating their order:
           that is, bullets, not numbers.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">em</prop>
       <prop class="full_name">Emphasis</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Rhetorical emphasis as indicated typically by a font shift</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>In display, this element can be expected to <q>toggle</q>, i.e. provide for italics when
           appearing within roman text, but roman when appearing within italic text.</p>
         <p>Particular semantics (indicating types of emphasis for finer resolution in display or
           retrieval) may be provided via <code>@class</code>.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">i</prop>
       <prop class="full_name">Italics</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Typographical shift to italics</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>An implementation may toggle, i.e. display contents using a roman face when the
           surrounding text is already italic.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">b</prop>
       <prop class="full_name">Bold</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Typographical shift to bold</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>In display, when surrounding text is already bold, an implementation may indicate
             <q>bold</q> by means of double-bold or some other typographical distinction.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">a</prop>
       <prop class="full_name">Anchor</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>An HTML-style anchor (inline linking element)</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>As in HTML, the link target is indicated by <code>@href</code>, with a '#' prefix for an
           internal cross-reference matching an <code>@id</code> elsewhere in the document.</p>
         <p>Anchors without <code>@href</code> are not invalid to the OSCAL schema (base validation),
           but may be reported by a Schematron. In use, an application may promote the contents of a
             <code>a</code> element, when a valid URI, to serve as the link target, if
             <code>@href</code> is missing or not a URI.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">q</prop>
       <prop class="full_name">Quoted text</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>An inline segment to appear within quotation marks</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>For practical purposes, this is a cosmetic element with no special semantics other than
           to provide quotation marks in display.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">code</prop>
       <prop class="full_name">Code</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Inline code</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>Strictly, this element should identify formal code or code fragments.</p>
-      </stmt>
+      </feat>
     </control>
     <control class="element-description">
       <prop class="tag">span</prop>
       <prop class="full_name">Span</prop>
-      <stmt class="description">
+      <feat class="description">
         <p>Generic inline container</p>
-      </stmt>
-      <stmt class="remarks">
+      </feat>
+      <feat class="remarks">
         <p>As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
-      </stmt>
+      </feat>
     </control>
   </group>
   <group>
     <title>Structural constraints</title>
-    <stmt>
+    <feat>
       <p>Over and above what is validable with a grammar (in Level 0), there is a small set of
         constraints governing usage. Validations enforcing them can be implemented via Schematron or
         another process capable of static analysis of the data.</p>
-    </stmt>
+    </feat>
     <control class="general-constraint">
       <title>Within a control, properties, statements and parameters may occur in any order.</title>
-      <stmt class="description">
+      <feat class="description">
         <p>This specification does not govern how or whether an implementation may respect the order
           of properties and statements given within a control type. Among properties, statements and
           parameters (that is, named things) within a control, cardinality constraints (where
           enforced) can help ensure a canonical order. An order may be imposed locally (for example,
           by a schema that requires all properties to appear before all statements), but this is for
           its convenience not because an order is mandated.</p>
-      </stmt>
+      </feat>
     </control>
   </group>
   <section>

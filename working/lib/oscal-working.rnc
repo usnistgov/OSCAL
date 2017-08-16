@@ -22,7 +22,7 @@ collection = element collection { collection-contents }
 # authorities (source data for transclusion etc. etc.)
 declarations = ( element declarations { hrefAttr?, decls } )
 
-decls = (parameter_decl | property_decl | statement_decl | feature_decl | link_decl)*
+decls = (parameter_decl | property_decl | feature_decl | para_decl | link_decl)*
 
 # parameter declarations expose names and default values for parameters within the control type
 parameter_decl   = element parameter {
@@ -36,13 +36,13 @@ property_decl =
     (regex | value* )
   }
 
-# statement declaration
-statement_decl =
-  element statement { nameAttr, contextAttr, singleton?, required? }
-
 # feature declaration
 feature_decl =
-  element feature { nameAttr, contextAttr, singleton?, required? }
+  element component { nameAttr, contextAttr, singleton?, required? }
+
+# paragraph declaration
+para_decl =
+  element paragraph { nameAttr, contextAttr, singleton?, required? }
 
 # link declaration
 link_decl =
@@ -78,7 +78,7 @@ group = element group {
   idAttr, typeAttr,
   title?, control-components, (group | control)+, references? }
 
-control-components = (prop | param | anyKindofStatement | feature | link)*
+control-components = (prop | param | anyKindofFeature | link | prose)*
 
 control =
   element control {
@@ -94,8 +94,11 @@ subcontrol =
     references? 
   }
 
+# Add 'semantic' feature types: purpose, guidance, decision, information, remarks (etc) 
+anyKindofFeature = (feature)*
+
 feature =
-  element feat {
+  element comp {
     idAttr, typeAttr, title?,
     control-components
   }
@@ -115,49 +118,32 @@ param   = element param { nameAttr, targetAttr, mix }
 
 prop =
   element prop {
-    nameAttr,
-    whatnot
-  }
-# on prop, not(@name = ../(* except current())/@name)
+    nameAttr, text }
 
-# stmt is a bit of controlled prose: its title is implicit in its name
-# e.g. stmt[@name='objectives'] might be displayed with title "Objectives:"
-
-# for harder wiring: anyKindofStatement = ( stmt | desc | purpose | guidance | information | remarks )*
-# of course that complicates the declarations model ...
-# declaring as zeroOrMore/choice avoids XSD substitution group (in Trang)
-anyKindofStatement = stmt*
-
-stmt =
-  element stmt {
-    nameAttr?,
-    (prose | link)* }
-
-# syntax sugar for stmt[@role='purpose'] for "Objective/s" etc.
+# syntax sugar for feat[@role='purpose'] for "Objective/s" etc.
 # purpose =
 #   element purpose {
 #     prose }
 
-# syntax sugar for stmt[@role='guidance'] for "Supplemental Guidance" etc.
+# syntax sugar for feat[@role='guidance'] for "Supplemental Guidance" etc.
 # guidance =
 #   element guidance {
 #     prose }
 
-# syntax sugar for stmt[@role='decision']
+# syntax sugar for feat[@role='decision']
 # decision =
 #   element decision {
 #     prose }
 
-# syntax sugar for stmt[@role='information'], other-info, etc.
+# syntax sugar for feat[@role='information'], other-info, etc.
 # information =
 #   element information {
 #     prose }
 
-# syntax sugar for stmt[@role='remarks']
+# syntax sugar for feat[@role='remarks']
 # remarks =
 #   element remarks {
 #     prose }
-
 
 prose = ( ul | ol | p | pre )*
 
@@ -197,11 +183,13 @@ whatnot = (
 mix = (inlines | text)*
 
 # declaring as zeroOrMore/choice avoids XSD substitution group
-inlines = (  q | code | em | xref | i | b | span )*
+inlines = (  q | code | em | xref | i | b | sub | sup | span )*
 
 em = element em { mix }
 i =  element i  { mix }
 b =  element b  { mix }
+sub = element sub { text }
+sup = element sup { text }
 
 xref = element a { attribute href { text }?, ( q | code | element em { text } | text )* }
 

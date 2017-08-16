@@ -8,14 +8,14 @@ declarations { font-family: sans-serif; font-size: 80%;
 
 declarations:before { font-weight: bold; content: "Declarations " attr(href) } 
 
-property, statement, parameter,feature
+property, statement, parameter, feature, component
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 property  {  border: thin outset pink } 
 statement {  border: thin outset blue } 
 parameter {  border: thin dotted purple } 
-feature   {  border: thin outset green } 
+feature, component   {  border: thin outset green } 
 
 parameter { background-color: lavenderblush }
 
@@ -35,9 +35,10 @@ parameter:before  { content: '(parameter) "' attr(class) '" on ' attr(context) '
 property:before   { content: '(property) "'  attr(class) '" on ' attr(context) ' '  }
 statement:before  { content: '(statement) "' attr(class) '" on ' attr(context) ' '}
 feature:before    { content: '(feature) "'   attr(class) '" on ' attr(context) ' '}
+component:before    { content: '(component) "'   attr(class) '" on ' attr(context) ' '}
 
 property { background-color: pink; margin-top: 0.5em; color: black }
-statement { background-color: cornsilk; margin-top: 0.5em; color: black }
+statement, component { background-color: cornsilk; margin-top: 0.5em; color: black }
 
 singleton { content: oxy_label(text, "singleton", width, 4em, color, inherit)
 }
@@ -97,7 +98,7 @@ group > group > title { font-size: 120% }
 
 subcontrol > title, feat > title { font-size: 90%; font-style: italic }
 
-stmt, purpose, guidance, remarks, information { -oxy-foldable: true; 
+feat, purpose, guidance, remarks, information { -oxy-foldable: true; 
 padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
 
 purpose, guidance, remarks, information { border: thin outset grey }
@@ -107,17 +108,17 @@ desc:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 'Description' }
 
 
-stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+feat:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: oxy_capitalize(attr(class)) }
 
 /* SP800-53
-stmt[class=supplemental-guidance]:before { content: "Supplemental guidance" }  */
+feat[class=supplemental-guidance]:before { content: "Supplemental guidance" }  */
 
 /* ISO 27002
-purpose:before,stmt[class=purpose]:before { content: "Purpose/s"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+purpose:before,feat[class=purpose]:before { content: "Purpose/s"; font-weight: bold; color: midnightblue; font-family: sans-serif }
 guidance:before,[class=guidance]:before { content: "Guidance"; font-weight: bold; color: midnightblue; font-family: sans-serif }
-information:before,stmt[class=information]:before { content: "Other information"; font-weight: bold; color: midnightblue; font-family: sans-serif }
-remarks:before,stmt[class=remarks]:before { content: "Remarks"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+information:before,feat[class=information]:before { content: "Other information"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+remarks:before,feat[class=remarks]:before { content: "Remarks"; font-weight: bold; color: midnightblue; font-family: sans-serif }
  */
 
 
@@ -155,7 +156,7 @@ std      { color: darkred }
 citation { color: purple }
 
 em { font-style: italic; display: inline }
-xref { display: inline; color: blue }
+xref, a { display: inline; color: blue }
 
 link { color: blue; font-size: 90%; font-weight: bold }
 
