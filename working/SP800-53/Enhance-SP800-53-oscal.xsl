@@ -22,14 +22,14 @@
     <xsl:next-match/>
   </xsl:template>
     
-  <xsl:template match="control | subcontrol | feat" mode="id" as="xs:string">
+  <xsl:template match="control | subcontrol | feat | comp" mode="id" as="xs:string">
     <xsl:for-each select="prop[@class='number']">
       <xsl:attribute name="id" select="translate(.,'()[]','..--') ! replace(.,'\C','.') ! lower-case(.)"/>
     </xsl:for-each>
     <xsl:if test="not(prop/@class='number')">OOPS</xsl:if>
   </xsl:template>
   
-  <xsl:template match="control | subcontrol | feat">
+  <xsl:template match="control | subcontrol | feat | comp">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:if test="prop/@class = 'number'">
