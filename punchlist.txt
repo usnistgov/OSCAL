@@ -34,6 +34,8 @@ OSCAL is an entirely independent semantic 'stack' intended to promote interchang
 
 EXTRAS      
 o write XSLT to produce RACI chart for (all of) COBIT 5?
+
+x Confirm that OSCAL/sources/800-53 is actual
   
 NOT EXTRAS
 
@@ -41,6 +43,9 @@ o Regression testing (for schema, XSLT etc.)
   Requiring authoritative sample docs
     Go / no-go
     Schematron XSpec
+
+feature/closed option in declarations?
+declarations/*/*/@when w/ XPath (conditional applicability) 
 
 in SaxonJS demo:
 look for ixsl:onchange mode (dynamic rendering)
@@ -50,56 +55,108 @@ x XSD pathway
   x XSD frame + OSCAL.oscal -> XSD (w/ warnings re disparities) cf xsd-merge-docs.xsl
   o XProc for Trang?
   
-Monday Aug 14
-  Adjusted schema and Schematron
-    changed xref to a (inline links)
-    pulled link validation into a separate Schematron
-  Updated ISO27002 extraction
-  Implemented ISO27002 enhancement (adding internal links)
-  Improved SP800-53 enhancement (picking up "withdrawn")
-  Tightened and tested schema, Schematrons
-  Much documentation
   
-  to do:
-  
-  XSLT to add/normalized assign/@id
-  Adjust assign model:
-  
-  Repair "Assignment" Schematron to new model
-
-links -
-  x validate internal cross-references - href[starts-with(.,'#)]
-  x change xref to a
-  o VALIDATE link in declarations - validate required and singleton by @rel (relationship) not @class
+To do:
 
 
-o add xsd-type for declaration i.e. <xsd-type>decimal</xsd:type> validates $x castable as xs:decimal? (use eval)
-  o prop, param
+Profile support
+o implement retrieval (control/subcontrol) by ID
+  XSLT to convert "all" and "add" retrieval profile into profile w/ stubs (with params)
+    (deprecate 'filter'?)
+    (then deselect controls by arbitrary criteria?)
+  XSLT to produce resolved collection w/ parameters (and substitutions/additions/mods?) in place
+    pass 1: expand profile to contain params for all $control//assign
+    pass 2: from profile, produce collection with params in place
+            (and other mods e.g. overwrites, additions, mappings or enhancements as given in profile doc)
+    3: Display XSLT (1.0?) to show resolved-and-rendered collection in browser
+  4. Validate collection against source catalog (Schematron?)
+    Does control (subcontrol) exist? (key by ID)
+      o do we want a control/@provenance (subcontrol/@prov, prop/@prov) to carry provenance code(s)?
+      o declarations/provenance
+        <provenance catalog="sp800-53-oscal.xml" code="sp800-53/>
+    Is title changed /varied as compared to catalog?
+    Are properties aligned with their stated provenance?
+    How about links? (auto-generate links to sourced catalog controls?)
+    Are parameters covered? (hook in present oscal-assign.sch)
+    Other profile constraints?
 
-o Rough out profile functionality
-  select controls by ID
-  (then deselect controls by arbitrary criteria?)
-  implement parameters and assignments (crude is okay)
-    pass 1: expand profile to contain params for all //assign
-    pass 2: produce collection with params in place
-            (and other mods e.g. overwrites, additions)
-  
-  o validate collection (selected controls) against source catalog?
-    to verify (existence/coverage) of control
-
-OSCAL framework in oXygen? 
+o OSCAL framework in oXygen (nice to have) 
   oXygen macros, boilerplate and auto-insert
   e.g. parameter names by reference to declarations
-  
-o relax declarations: not declaring something is not an error
-o collapse features and statements:
-  o permit prose in features
-  o eliminate statements and rename stmts as features
 
-  o experiment (again) w/ semantic aliases for feat[@class='objectives'] etc
-  o add declarations for paragraph[@class]
-  o contemplate recursion
-  
+x collapse features and statements:
+  x eliminate statements
+  x add declarations for paras
+  x prohibit prop/* (properties should be text only)
+  x permit prose in features
+  o rename stmts as comps
+    x SP800-53
+    x ISO27002
+    o COBIT5
+  o Update conversion scripts
+    o SP800-53
+      o (also see below for enhance2.xsl)
+    x ISO27002
+      x as-comp
+      x w/ text obfuscation?
+  x CSS
+    x added support for component|comp
+    x test
+    o remove support of statement|stmt|feature|feat
+  x other Schematrons? (global search for 'stmt|statement')
+    o remove support of statement|stmt|feature|feat here too
 
+o revisit OSCAL validations only after models restabilize
+o validate against their (new) declarations:
+  o SP800-53
+  o ISO27002
+  o COBIT5
+
+Declarations support (desiderata: these could go on github)
+  o Validate links by @rel
+  o Validate paras by @class
+  o Add declarations/*/xsd-type w/ support
+    o to property|parameter declarations (not comp|paragraph)
+  o Add declarations/component/strict w/ support (prohibits 'free' components i.e. w/o declarations)
+    o otherwise, relax declarations: not declaring something is not an error
+    o test this!
+  o Add declarations/*/*/@when for qualified assertion (on required|singleton|value|regex|strict )
+    o implement via eval (be sure and test against broken XPath!)
+
+o experiment (again) w/ semantic aliases for feat[@class='objectives'] etc
+x add declarations for paragraph[@class]
+  o test!
+
+o Implement parameter support in editor
+  o update OSCAL-assign.sch to @target -> @id (from @use)
+  o transformation sequence for display
   
+o write readme for SP800-53 documenting how to perform extraction from sources
+x same for ISO 27002
+  o (w/ pointer to updated mapping)
+o same for COBIT5 (w/ mapping)
+
+x write XProc for SP800-53 extraction two-step and wire up
+  x Now three steps!
+  o refine/reduce pipeline once models have stabilized
+    (since as of now, mappings are indirect)
+
+SP800-53 (further) adjustments - enhance2.xsl
+x remove link contents
+x rename @class[.='number'] to 'name'
+x add assign/@id
+x improve ID syntax
+
+o make little display stylesheet for SP800-53 (emulate PDF? :-)
+  o wire up, run and document on github readme.md
+
+
+x rename 'feat' to 'comp'
+
+x introduce content obfuscation support into ISO27002 extraction
+  o via runtime parameter?
+
+o tomorrow Thu Aug 17 visualize / recognize / gratefulness same as Aug 16 i.e. live with similar consciousness/faith
+
+o argument for overloading 'p'?
 
