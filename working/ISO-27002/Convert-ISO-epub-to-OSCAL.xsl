@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs"
-  xmlns="http://scap.nist.gov/schema/oscal" xpath-default-namespace="http://www.w3.org/1999/xhtml"
+  xmlns="http://scap.nist.gov/schema/oscal"
+  xmlns:oscal="http://scap.nist.gov/schema/oscal"
+  xpath-default-namespace="http://www.w3.org/1999/xhtml"
   version="2.0">
 
   <!-- Data extraction and mapping from ISO EPUB into (draft) OSCAL -->
@@ -10,7 +12,7 @@
   <xsl:output indent="yes"/>
 
   <xsl:template match="/">
-    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"</xsl:processing-instruction>
     <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <!--<xsl:processing-instruction name="xml-model">href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
 
@@ -29,19 +31,19 @@
           <identifier/>
           <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <statement context="clause" class="objective">
+        <component context="clause" class="objective">
           <required/>
-        </statement>
+        </component>
         <property context="iso-27002" class="number">
           <required/>
           <identifier/>
           <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <statement context="control" class="description">
+        <component context="control" class="description">
           <required/>
-        </statement>
-        <statement context="control" class="guidance"/>
-        <statement context="control" class="information"/>
+        </component>
+        <component context="control" class="guidance"/>
+        <component context="control" class="information"/>
       </declarations>
       
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
@@ -95,36 +97,36 @@
                     select="current-group()[normalize-space(.) = $statement-headers]"/>
                   <xsl:choose>
                     <xsl:when test="$statement-head = 'Control'">
-                      <stmt class="description">
+                      <comp class="description">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </comp>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Implementation guidance'">
-                      <stmt class="guidance">
+                      <comp class="guidance">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </comp>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Other information'">
-                      <stmt class="information">
+                      <comp class="information">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </comp>
                     </xsl:when>
                     <xsl:otherwise>
-                      <stmt class="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
+                      <comp class="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </comp>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:for-each-group>
@@ -201,32 +203,45 @@
   
  
   <xsl:template match="p[starts-with(., 'Objective:')]">
-    <stmt class="objective">
+    <comp class="objective">
       <p>
         <xsl:apply-templates mode="tune">
           <xsl:with-param name="trim" tunnel="yes" as="xs:string">Objective: </xsl:with-param>
         </xsl:apply-templates>
       </p>
-    </stmt>
+    </comp>
   </xsl:template>
 
-  <xsl:template match="text()" mode="tune">
+  <xsl:function name="oscal:obfusc" as="xs:string">
+    <xsl:param name="some" as="xs:string"/>
+    <xsl:value-of select="replace($some,'\w','X')"/>
+  </xsl:function>
+  
+  <xsl:template match="text()" mode="#all">
     <xsl:param tunnel="yes" name="trim"/>
     <xsl:value-of
-      select="
-        if (matches($trim, '\S')) then
-          replace(., $trim, '')
-        else
-          ."
+      select="oscal:obfusc(
+      if (matches($trim, '\S')) then
+      replace(., $trim, '')
+      else
+      . )"
     />
   </xsl:template>
-
+  
+  <xsl:template match="a//text()" mode="#all">
+    <xsl:param tunnel="yes" name="trim"/>
+    <xsl:value-of
+      select="if (matches($trim, '\S')) then
+      replace(., $trim, '')
+      else ."
+    />
+  </xsl:template>
+  
   <xsl:template match="p | p//*" mode="#all">
     <xsl:element name="{local-name()}" namespace="http://scap.nist.gov/schema/oscal">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-
 
   <xsl:template match="p" priority="2" mode="bibliography">
     <ref id="{a[1]/@id}">
