@@ -2,6 +2,16 @@
 
 ## Converting ISO 27002 into OSCAL
 
+As described below, conversion of ISO27002 controls into OSCAL occurs in two stages.
+
+For convenience, an XProc pipeline is offered that combines the two steps into a single call on an XProc processor such as XML Calabash. The source file should be an XML-well-formed ("tidied") copy of HTML extracted from the published EPUB version of the ISO specification. If you do not have this file, you cannot run this transformation.
+
+XML Calabash can be invoked inside oXygen XML Editor or Developer: create an XProc scenario with the necessary bindings. (The HTML file must be bound to the `source` port.)
+
+Alternatively, XML Calabash (a Java application) can be run from the command line or via Apache Maven or Gradle. See http://xmlcalabash.com.
+
+Or the two processes can be run separately, in sequence (that is, run the second XSLT over the results of the first one).
+
 ### Extraction
 
 Sections of ISO 27002 are systematic enough in their EPUB format for automated conversion via XSLT, with reasonable results, into OSCAL.
