@@ -5,7 +5,7 @@
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
 
-  <xsl:include href="../XSL/oscal-functions.xsl"/>
+  <xsl:include href="../XSLT/oscal-functions.xsl"/>
   
   <xsl:key name="elements-by-class" match="*[matches(@class,'\S')][empty(ancestor::oscal:declarations)]" use="oscal:classes(.)"/>
   
