@@ -17,10 +17,10 @@
   
   <xsl:mode on-no-match="shallow-copy"/>
   
-  <xsl:template match="/node()">
+  <!--<xsl:template match="/node()">
     <xsl:text>&#xA;</xsl:text>
     <xsl:next-match/>
-  </xsl:template>
+  </xsl:template>-->
    
   <xsl:template match="group | control | subcontrol">
     <xsl:copy>

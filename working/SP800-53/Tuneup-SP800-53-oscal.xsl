@@ -23,6 +23,10 @@
     <xsl:attribute name="class">name</xsl:attribute>
   </xsl:template>
   
+  <xsl:template match="declarations">
+    <xsl:comment expand-text="true"> Adjustments are needed to declarations given in {@href} </xsl:comment>
+  </xsl:template>
+  
   <xsl:template match="link[starts-with(.,'#')]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
@@ -60,11 +64,19 @@
     <xsl:attribute name="class">item</xsl:attribute>
   </xsl:template>
   
-  <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
+  <xsl:key name="by-id"           match="*[@id]" use="@id"/>
+  <xsl:key name="cross-reference" match="*[@id]" use="'#' || @id"/>
   
-  <xsl:template match="@id | @href[starts-with(.,'#')]">
-    <xsl:attribute name="{name()}">
-      <xsl:apply-templates select="key('element-by-id',string(.))" mode="munge-id"/>
+  <xsl:template match="@id">
+    <xsl:attribute name="id">
+      <xsl:apply-templates select="key('by-id',string(.))" mode="munge-id"/>
+    </xsl:attribute>
+  </xsl:template>
+  
+  <xsl:template match="@href[starts-with(.,'#')]">
+    <xsl:attribute name="href">
+      <xsl:text>#</xsl:text>
+      <xsl:apply-templates select="key('cross-reference',string(.))" mode="munge-id"/>
     </xsl:attribute>
   </xsl:template>
   

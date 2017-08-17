@@ -21,18 +21,10 @@
   <xsl:variable name="objectives" select="document('800-53a-objectives.xml',$source)"/>
   
   <xsl:template match="feed:controls">
-    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
-    <!--<xsl:processing-instruction name="xml-model">href="strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
-    
-    <xsl:text>&#xA;</xsl:text>
     <catalog>
       <title>NIST SP800-53</title>
-      
-      <declarations href="800-53-declarations.xml"/>
-      
-      
-      
+      <declarations href="SP800-53-declarations.xml"/>
+
       <xsl:for-each-group select="feed:control" group-by="family">
         <group class="family">
           <title><xsl:value-of select="current-grouping-key()"/></title>
@@ -46,8 +38,7 @@
     <control class="SP800-53">
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="* except (title | references)"/>
-      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)
-        "/>
+      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)"/>
       <xsl:apply-templates select="references"/>    
     </control>
   </xsl:template>

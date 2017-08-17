@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs"
+  exclude-result-prefixes="#all"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns="http://scap.nist.gov/schema/oscal"
   xmlns:oscal="http://scap.nist.gov/schema/oscal"
   xpath-default-namespace="http://www.w3.org/1999/xhtml"
@@ -9,14 +10,10 @@
   <!-- Data extraction and mapping from ISO EPUB into (draft) OSCAL -->
 
   <xsl:strip-space elements="body div table tbody tr td"/>
+  
   <xsl:output indent="yes"/>
 
   <xsl:template match="/">
-    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
-    <!--<xsl:processing-instruction name="xml-model">href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
-
-    <xsl:text>&#xA;</xsl:text>
     <catalog>
       <title>ISO/IEC 27002</title>
       
@@ -29,7 +26,7 @@
         <property context="clause" class="number">
           <required/>
           <identifier/>
-          <value><inherit/><autonum>.1</autonum></value>
+          <value xml:space="preserve"><inherit/><autonum>.1</autonum></value>
         </property>
         <component context="clause" class="objective">
           <required/>
