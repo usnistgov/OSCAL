@@ -8,6 +8,9 @@
   <p:input port="source" primary="true"/>
   <p:input port="parameters" kind="parameter"/>
   
+  <p:output port="_0_input" primary="false">
+    <p:pipe port="result" step="input"/>
+  </p:output>
   <p:output port="_A_converted" primary="false">
     <p:pipe port="result" step="converted"/>
   </p:output>
@@ -23,10 +26,12 @@
   
   <p:serialization port="final"        indent="true"/>
   
+  <p:serialization port="_0_input"     indent="true"/>
   <p:serialization port="_A_converted" indent="true"/>
   <p:serialization port="_B_enhanced"  indent="true"/>
   <p:serialization port="_C_tuned"     indent="true"/>
   
+  <p:identity name="input"/>
   
   <p:xslt name="converted">
     <p:input port="stylesheet">

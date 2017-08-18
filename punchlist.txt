@@ -58,18 +58,16 @@ x XSD pathway
   
 To do:
 
+rename 'comp' as 'part' --!
 
 Profile support
-o implement retrieval (control/subcontrol) by ID
-  XSLT to convert "all" and "add" retrieval profile into profile w/ stubs (with params)
-    (deprecate 'filter'?)
-    (then deselect controls by arbitrary criteria?)
-  XSLT to produce resolved collection w/ parameters (and substitutions/additions/mods?) in place
-    pass 1: expand profile to contain params for all $control//assign
-    pass 2: from profile, produce collection with params in place
-            (and other mods e.g. overwrites, additions, mappings or enhancements as given in profile doc)
-    3: Display XSLT (1.0?) to show resolved-and-rendered collection in browser
-  4. Validate collection against source catalog (Schematron?)
+o An "identity profile" is produced from a catalog
+    include a switch for copying about params
+    consider making this flat (!)
+    runtime parameters to switch inclusion of subcontrols, parameters
+  A profile is configured by editing this 
+
+  Validate a profile against its source catalog (Schematron?)
     Does control (subcontrol) exist? (key by ID)
       o do we want a control/@provenance (subcontrol/@prov, prop/@prov) to carry provenance code(s)?
       o declarations/provenance
@@ -89,17 +87,18 @@ x collapse features and statements:
   x add declarations for paras
   x prohibit prop/* (properties should be text only)
   x permit prose in features
-  o rename stmts as comps
-    x SP800-53
-    x ISO27002
+  o rename stmts as comps - parts!
+    o SP800-53
+    o ISO27002
     o COBIT5
   o Update conversion scripts
     o SP800-53
       o (also see below for enhance2.xsl)
-    x ISO27002
-      x as-comp
-      x w/ text obfuscation?
-  x CSS
+    o ISO27002
+      o as-comp
+      o w/ text obfuscation?
+  o CSS
+    o mod to 'part'
     x added support for component|comp
     x test
     o remove support of statement|stmt|feature|feat
@@ -113,6 +112,8 @@ o validate against their (new) declarations:
   o COBIT5
 
 Declarations support (desiderata: these could go on github)
+  o update to 'part'!
+  o change models to declare[@component="property"], part, parameter, p
   o Validate links by @rel
   o Validate paras by @class
   o Add declarations/*/xsd-type w/ support
@@ -150,7 +151,6 @@ x improve ID syntax
 
 o make little display stylesheet for SP800-53 (emulate PDF? :-)
   o wire up, run and document on github readme.md
-
 
 x rename 'feat' to 'comp'
 

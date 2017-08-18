@@ -27,7 +27,7 @@
     <xsl:comment expand-text="true"> Adjustments are needed to declarations given in {@href} </xsl:comment>
   </xsl:template>
   
-  <xsl:template match="link[starts-with(.,'#')]">
+  <xsl:template match="link[starts-with(@href,'#')]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <!-- display string should be acquired from the link target -->
@@ -47,14 +47,14 @@
 <!-- Remapping these - to do: pull these mappings into earlier pipeline steps -->
   
   <xsl:template match="feat | stmt">
-    <comp>
+    <part>
       <xsl:apply-templates select="@*"/>
       <xsl:apply-templates/>
-    </comp>
+    </part>
   </xsl:template>
   
-  <xsl:template match="prop[@class='description']">
-    <p class="description">
+  <xsl:template match="prop[@class=('description','object','decision')]">
+    <p>
       <xsl:apply-templates select="@*"/>
       <xsl:apply-templates/>
     </p>

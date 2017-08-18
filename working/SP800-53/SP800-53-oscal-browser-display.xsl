@@ -9,14 +9,18 @@
         <xsl:apply-templates select="descendant::oscal:title[1]" mode="title"/>
         <style type="text/css">
 
-.control { margin:1em; padding: 1em; border: thin dotted black }
-.control > *:first-child { margin-top: 0em }
+body { line-height: 135% }
+
+.control { margin:1em; padding: 1em; border: thin solid black }
+.subcontrol { margin-top: 0.5em; padding: 1em; border: thin dotted black }
+.control > *:first-child, .subcontrol > *:first-child { margin-top: 0em }
 
 h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin-bottom: 0em }
 h3 { font-size: 120% }
 
-div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
-div.component { border: none; padding: 0em; margin: 0em }
+// div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
+// div.part { border: none; padding: 0em; margin: 0em }
+.part { max-width: 48em }
 
 section h3     { font-size: 160% }
 section h3     { font-size: 140% }
@@ -27,20 +31,29 @@ div div div h3 { font-size: 110% }
 p { margin-top: 0.4em; margin-bottom: 0.2em }
 p:first-child { margin-top: 0ex }
 
-p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; border: medium solid blue; margin-right: 0.2em }
+p.object { padding-left: 2em; text-indent: -2em }
 
-.component td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
+p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; border: medium solid blue; padding-right: 0.2em; margin-right: 0.2em }
 
-.param { font-style: italic }
+.part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
+
+.param { padding: 0.1em; background-color: lemonchiffon; border: thin solid green }
+.param-value { font-style: italic }
 .assign, .choice { border: thin solid black; padding: 0.1em }
 .unassigned { border: thin solid red; background-color: pink}
-.assignment-value { color: grey; font-weight: bold }
-.assign .assignment-value { font-size: 80%; font-weight: normal }
+.assignment-value { color: grey }
+.assign .assignment-value { font-size: 80%; font-family: sans-serif }
+.assign-id { font-size: 90%; font-family: sans-serif; font-weight: bold; background-color: black; color: white }
+.withdrawn { font-weight: bold; font-style: italic }
 
+.box { vertical-align: middle; width: 2em }
 .subst  { color: midnightblue; font-family: sans-serif; font-size; 85% } 
- 
+
+.impact-table { width: 100%; collapse: collapsed; font-family: sans-serif }
+.impact-table td { padding: 0.5em; background-color: lightgrey; border: thin solid black }
+
 li { list-style-type: square }
-.param .em { font-style: roman }
+a { text-decoration: none }
 
         </style>
       </head>
@@ -62,57 +75,10 @@ li { list-style-type: square }
   
   <xsl:template match="oscal:declarations"/>
     
-    <xsl:template match="oscal:title" mode="title">
-      <xsl:value-of select="."/>
-    </xsl:template>
-
-  <!--<xsl:template match="oscal:declarations">
-    <x class="declarations">
-      <apply-templates/>
-    </x>
+  <xsl:template match="oscal:title" mode="title">
+    <xsl:value-of select="."/>
   </xsl:template>
-  <xsl:template match="oscal:control-spec">
-    <x class="control-spec">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:required">
-    <x class="required">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:property">
-    <x class="property">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:value">
-    <x class="value">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:identifier">
-    <x class="identifier">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:regex">
-    <x class="regex">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  
-  <xsl:template match="oscal:optional">
-    <x class="optional">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  
-  <xsl:template match="oscal:statement">
-    <div class="statement">
-      <apply-templates/>
-    </div>
-  </xsl:template>-->
+ 
   
   <xsl:template match="oscal:group">
     <section class="group">
@@ -129,14 +95,102 @@ li { list-style-type: square }
   
   <xsl:key name="element-by-id"  match="*[@id]" use="@id"/>
   
-  <xsl:template match="oscal:control | oscal:subcontrol">
+  <xsl:template match="oscal:control">
+    <div class="{local-name()}">
+      <xsl:copy-of select="@id"/>
+      <xsl:call-template name="make-title">
+        <xsl:with-param name="runins" select="oscal:prop[@class = 'name']"/>
+      </xsl:call-template>
+      <xsl:apply-templates/>
+      <xsl:if test="oscal:subcontrol">
+        <div class="enhancements">
+          <h4>Control enhancements</h4>
+          <xsl:apply-templates select="oscal:subcontrol" mode="include"/>
+        </div>
+      </xsl:if>
+      <xsl:apply-templates select="oscal:references" mode="include"/>
+      <xsl:if test="not(oscal:references)">
+        <h4>References: <i style="font-weight: normal">None</i></h4>
+      </xsl:if>
+      <xsl:apply-templates select="self::oscal:control[not(oscal:part//oscal:withdrawn)]"
+        mode="impact-table"/>
+    </div>
+  </xsl:template>
+  
+  <!-- dropped in default traversal -->
+  <xsl:template match="oscal:subcontrol"/>
+  
+  <xsl:template match="oscal:subcontrol" mode="include">
     <div class="{local-name()}">
       <xsl:copy-of select="@id"/>
       <xsl:call-template name="make-title">
         <xsl:with-param name="runins" select="oscal:prop[@class='name']"/>
       </xsl:call-template>
       <xsl:apply-templates/>
+      <xsl:apply-templates select="self::oscal:control[not(oscal:part//oscal:withdrawn)]" mode="impact-table"/>
     </div>
+  </xsl:template>
+  
+  <xsl:template match="oscal:control" mode="impact-table">
+    <xsl:variable name="me" select="."/>
+    <h4>Priority and baseline allocation</h4>
+    <table class="impact-table">
+      <tbody>
+        <tr>
+          <td>
+            <xsl:value-of select="oscal:prop[@class='priority']"/>
+          </td>
+          <xsl:call-template name="impact-cell">
+            <xsl:with-param name="impact">LOW</xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="impact-cell">
+            <xsl:with-param name="impact">MODERATE</xsl:with-param>
+          </xsl:call-template>
+          <xsl:call-template name="impact-cell">
+            <xsl:with-param name="impact">HIGH</xsl:with-param>
+          </xsl:call-template>
+        </tr>
+      </tbody>
+    </table>
+  </xsl:template>
+  
+  <xsl:template name="impact-cell">
+    <xsl:param name="impact">HIGH</xsl:param>
+    <xsl:variable name="control-no" select="oscal:prop[@class = 'name']"/>
+    <td style="width:30%">
+      <b>
+        <xsl:choose>
+          <xsl:when test="$impact = 'MODERATE'">MOD</xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$impact"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </b>
+      <xsl:text> </xsl:text>
+      <xsl:choose>
+        <!-- XXX Check out AC-17-->
+        <!-- When the control doesn't have the baseline impact, it's not selected -->
+        <xsl:when test="not(oscal:prop[@class = 'baseline-impact'] = $impact)">Not selected</xsl:when>
+        <!-- The control has the baseline impact, but no subcontrol has it ...
+             list the control. -->
+        <xsl:when test="not(oscal:subcontrol/oscal:prop[@class = 'baseline-impact'] = $impact)">
+          <xsl:value-of select="oscal:prop[@class = 'name']"/>
+        </xsl:when>
+        <!-- Otherwise, list all subcontrols that have the baseline impact ... ex AC-17, CP-6 -->
+        <xsl:otherwise>
+          <xsl:for-each
+          select="oscal:subcontrol[oscal:prop[@class = 'baseline-impact'] = $impact]">
+            <xsl:choose>
+              <xsl:when test="position() = 1"><xsl:value-of select="oscal:prop[@class = 'name']"/></xsl:when>
+              <xsl:otherwise>
+                <xsl:text> </xsl:text>
+                <xsl:value-of select="substring-after(oscal:prop[@class = 'name'],$control-no)"/>      
+              </xsl:otherwise>
+            </xsl:choose>
+        </xsl:for-each></xsl:otherwise>
+
+      </xsl:choose>
+    </td>
   </xsl:template>
   
   <!-- Picked up in parent -->
@@ -155,39 +209,26 @@ li { list-style-type: square }
     </h3>
   </xsl:template>
   
-  <xsl:template match="oscal:comp">
+  <xsl:template match="oscal:part">
     <xsl:apply-templates select="." mode="title"/>
-    <div class="component">
+    <div class="part {@class}">
       <xsl:copy-of select="@id"/>
-      <xsl:apply-templates select="." mode="component-number"/>
+      <xsl:apply-templates select="." mode="part-number"/>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:comp[@class='assessment']">
+  <xsl:template match="oscal:part[@class='assessment']/oscal:prop[@class='method']"/>
+
+  
+  <xsl:template match="oscal:part[ancestor::oscal:part | descendant::oscal:part]">
     <xsl:apply-templates select="." mode="title"/>
-    <ul class="assessment">
-      <xsl:copy-of select="@id"/>
-      <xsl:apply-templates/>
-    </ul>
-  </xsl:template>
-  
-  <xsl:template match="oscal:comp[@class='assessment']/oscal:prop[@class='method']"/>
-  
-  <xsl:template match="oscal:comp[@class='assessment']/oscal:prop[@class='object']">
-    <li>
-      <xsl:apply-templates/>
-    </li>
-  </xsl:template>
-  
-  <xsl:template match="oscal:comp[ancestor::oscal:comp | descendant::oscal:comp]">
-    <xsl:apply-templates select="." mode="title"/>
-    <table class="component">
+    <table class="part">
       <xsl:copy-of select="@id"/>
       <tbody>
       <tr>
         <td>
-          <xsl:apply-templates select="." mode="component-number"/>
+          <xsl:apply-templates select="." mode="part-number"/>
         </td>
         <td>
           <xsl:apply-templates/>
@@ -198,40 +239,45 @@ li { list-style-type: square }
     
   </xsl:template>
   
-  <xsl:template match="oscal:comp[ancestor::oscal:comp | descendant::oscal:comp]" mode="title"/>
+  <xsl:template match="oscal:part[ancestor::oscal:part | descendant::oscal:part]" mode="title"/>
   
-  <xsl:template match="oscal:comp" mode="component-number"/>
+  <xsl:template match="oscal:part" mode="part-number"/>
   
-  <xsl:template match="oscal:comp[oscal:prop[@class='name']]" mode="component-number">
+  <xsl:template match="oscal:part[oscal:prop[@class='name']]" mode="part-number">
     <xsl:variable name="inherited-no" select="ancestor::*[oscal:prop[@class='name']][1]/oscal:prop[@class='name']"/>
     <xsl:variable name="inherited-trimmed" select="translate($inherited-no,' ','')"/>
-    <p class="component-number">
+    <p class="part-number">
       <xsl:value-of select="substring-after(translate(oscal:prop[@class='name'],' ',''),$inherited-trimmed)"/>
     </p>
   </xsl:template>
   
-  <xsl:template match="oscal:comp/oscal:prop[@class='name']"/>
+  <xsl:template match="oscal:part/oscal:prop[@class='name']"/>
   
   <xsl:template match="oscal:param">
+    <xsl:variable name="target" select="key('element-by-id',@target)"/>
     <p class="param">
       <span class="subst">
         <xsl:text>Parameter </xsl:text>
-        <xsl:for-each select="key('element-by-id',@target)">
+        <xsl:for-each select="$target">
+          <a href="#{@id}" style="text-decoration: none; color: inherit">
+            <xsl:apply-templates select="." mode="assign-id-block"/>
+          </a>
+          <xsl:text> </xsl:text>
           <span class="assignment-value">
             <xsl:apply-templates/>
           </span>
         </xsl:for-each>
-        <xsl:text> (target </xsl:text>
-        <xsl:for-each select="@target">
-          <xsl:value-of select="."/>
-        </xsl:for-each>
-        <xsl:text>): </xsl:text>
+        <xsl:text>: </xsl:text>
       </span>
-        <xsl:apply-templates/>
-      
+      <span class="param-value">
+      <xsl:apply-templates/>
+      </span>
     </p>
-    
   </xsl:template>
+
+  <!-- Pulled into impact table -->
+  <xsl:template match="oscal:prop[@class='priority'] | oscal:prop[@class='baseline-impact']"/>
+  
   
   <xsl:template match="oscal:prop">
     <p class="prop {@class}">
@@ -247,39 +293,43 @@ li { list-style-type: square }
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="oscal:prop[@class='decision']" mode="label"/>
+  <xsl:template match="oscal:p[@class = 'object']">
+    <p class="object">
+      <input type="checkbox" class="box"/>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
   
   <xsl:template match="oscal:prop" mode="label">
     <span class="subst">
       <xsl:value-of select="@class"/>
       <xsl:text>: </xsl:text>
     </span>
-    
   </xsl:template>
   
-  <xsl:template match="oscal:comp[@class='statement']" mode="title">
+  <xsl:template match="oscal:part[@class='statement']" mode="title">
     <h4>Control</h4>
   </xsl:template>
   
-  <xsl:template match="oscal:comp[@class='guidance']" mode="title">
+  <xsl:template match="oscal:part[@class='guidance']" mode="title">
     <h4>Supplemental guidance</h4>
   </xsl:template>
   
-  <xsl:template match="oscal:comp[@class='objective']" mode="title">
+  <xsl:template match="oscal:part[@class='objective']" mode="title">
     <h4>
       <xsl:text>Objective</xsl:text>
-      <xsl:if test="oscal:comp">s</xsl:if>
+      <xsl:if test="oscal:part">s</xsl:if>
     </h4>
   </xsl:template>
   
-  <xsl:template match="oscal:comp[@class='assessment']" mode="title">
+  <xsl:template match="oscal:part[@class='assessment']" mode="title">
     <h4>
       <xsl:text>Assessment: </xsl:text>
       <xsl:value-of select="oscal:prop[@class='method']"/>
     </h4>
   </xsl:template>
   
-  <xsl:template match="oscal:comp[@class='objective']//oscal:comp[@class='objective']" priority="2" mode="title"/>
+  <xsl:template match="oscal:part[@class='objective']//oscal:part[@class='objective']" priority="2" mode="title"/>
     
   <xsl:template match="*" mode="title">
     <xsl:value-of select="@class"/>
@@ -300,8 +350,8 @@ li { list-style-type: square }
   </xsl:template>
 
   <xsl:template match="oscal:assign">
-    <xsl:variable name="id" select="@id"/>
-    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[contains(@target,$id)][last()]"/>
+    <xsl:variable name="closest-param"
+      select="ancestor-or-self::*/oscal:param[contains(@target, current()/@id)][last()]"/>
     <!-- Providing substitution via declaration not yet supported -->
     <xsl:variable name="unassigned">
       <xsl:if test="not($closest-param)"> unassigned</xsl:if>
@@ -309,29 +359,42 @@ li { list-style-type: square }
     <xsl:variable name="result">
       <xsl:apply-templates/>
     </xsl:variable>
-      <span class="assign{$unassigned}">
+    <span class="assign{$unassigned}">
+      <xsl:copy-of select="@id"/>
+      <xsl:apply-templates select="@id/.." mode="assign-id-block"/>
       <xsl:for-each select="$closest-param">
         <span class="subst">
           <xsl:apply-templates/>
         </span>
+        <xsl:text> </xsl:text>
       </xsl:for-each>
-        <xsl:choose>
-      <xsl:when test="$closest-param">
-        <span class="assignment-value">
-          <xsl:text> [</xsl:text>
+      <xsl:choose>
+        <xsl:when test="$closest-param">
+          <span class="assignment-value">
+            <xsl:text> [</xsl:text>
+            <xsl:copy-of select="$result"/>
+            <xsl:text>]</xsl:text>
+          </span>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>[Assignment: </xsl:text>
           <xsl:copy-of select="$result"/>
           <xsl:text>]</xsl:text>
-        </span>
-      </xsl:when>
-          <xsl:otherwise>
-            <xsl:copy-of select="$result"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
     </span>
-    
-    
   </xsl:template>
 
+  <xsl:template match="oscal:assign" mode="assign-id-block">
+    <span class="assign-id">
+      <xsl:text>&#xA0;</xsl:text>
+      <xsl:value-of select="@id"/>
+      <xsl:text>&#xA0;</xsl:text>
+    </span>
+    <xsl:text> </xsl:text>
+  </xsl:template>
+  
+  
   <xsl:template match="oscal:ol">
     <ol class="ol">
       <xsl:apply-templates/>
@@ -386,8 +449,12 @@ li { list-style-type: square }
     </xsl:choose>
   </xsl:template>
         
-  <xsl:template match="oscal:references">
+  <!-- dropped in default traversal -->
+  <xsl:template match="oscal:references"/>
+  
+  <xsl:template match="oscal:references" mode="include">
     <section class="references">
+      <h4>References</h4>
       <xsl:apply-templates/>
     </section>
   </xsl:template>
@@ -405,9 +472,11 @@ li { list-style-type: square }
 
   <xsl:template match="oscal:withdrawn">
     <span class="withdrawn">
+      <xsl:text>Withdrawn: </xsl:text>
       <xsl:apply-templates/>
     </span>
   </xsl:template>
+  
   <xsl:template match="oscal:em">
     <em class="em">
       <xsl:apply-templates/>

@@ -94,11 +94,11 @@ subcontrol =
     references? 
   }
 
-# Add 'semantic' feature types: purpose, guidance, decision, information, remarks (etc) 
+# Add 'semantic' part types: purpose, guidance, decision, information, remarks (etc) 
 anyKindofFeature = (feature)*
 
 feature =
-  element comp {
+  element part {
     idAttr, typeAttr, title?,
     control-components
   }

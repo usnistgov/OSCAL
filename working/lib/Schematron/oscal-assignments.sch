@@ -54,13 +54,18 @@
         
         <sqf:add node-type="attribute" target="id" select="$id" use-when="not(matches(@id,'\S'))"/>
         
-        <sqf:add use-when="empty($home/oscal:title)"
+        <sqf:add use-when="empty($home/(oscal:title|oscal:param))"
           match="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]">
           <param target="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
             <xsl:copy-of select="$me/node()"/>
           </param>
         </sqf:add>
-        <sqf:add use-when="exists($home/oscal:title)" position="after" match="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]/oscal:title">
+        <sqf:add use-when="exists($home/oscal:title) and empty($home/oscal:param)" position="after" match="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]/oscal:title">
+          <param target="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
+            <xsl:copy-of select="$me/node()"/>
+          </param>
+        </sqf:add>
+        <sqf:add use-when="exists($home/oscal:param)" position="after" match="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]/oscal:param[last()]">
           <param target="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
             <xsl:copy-of select="$me/node()"/>
           </param>
