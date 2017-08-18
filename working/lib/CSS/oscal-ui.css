@@ -72,12 +72,21 @@ feature:before { content:
 
 
 control:before { content: 'control: ' oxy_textfield(
-          edit, '@type',
+          edit, '@class',
           columns, 10); }
+
+
+subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
+          content: 
+           oxy_capitalize(attr(class)) ' '
+            oxy_combobox( 
+              edit, '@class',
+              editable, true )
+}
 
 prop:before { content: oxy_textfield(
           edit, '@class',
-          columns, 10); }
+          columns, 15); }
 
 feat:before, comp:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 
@@ -88,23 +97,15 @@ feat:before, comp:before { font-weight: bold; color: midnightblue; font-family: 
               values, 'description, objectives, guidance, information, remarks' )
 }
 
-subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
-          content: 
-           oxy_capitalize(attr(class)) ' '
-            oxy_combobox( 
-              edit, '@class',
-              editable, true )
-}
-
-param:before { content: 'param class ' oxy_textfield(
-          edit, '@class',
+param:before { content: 'param targets ' oxy_textfield(
+          edit, '@target',
           columns, 10) 
-           'id ' oxy_textfield(
-          edit, '@id',
+           'class ' oxy_textfield(
+          edit, '@class',
           columns, 10); }
 
-assign:before { content: 'use ' oxy_textfield(
-          edit, '@use',
+assign:before { content: 'id ' oxy_textfield(
+          edit, '@id',
           columns, 7); }
 
 

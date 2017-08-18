@@ -26,7 +26,8 @@
         <property context="clause" class="number">
           <required/>
           <identifier/>
-          <value xml:space="preserve"><inherit/><autonum>.1</autonum></value>
+          <!-- Try xml:space="preserve" to prevent indenting? -->
+          <value><inherit/><autonum>.1</autonum></value>
         </property>
         <component context="clause" class="objective">
           <required/>

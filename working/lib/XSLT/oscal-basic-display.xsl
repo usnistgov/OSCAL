@@ -115,7 +115,7 @@ div div div h3 { font-size: 110% }
   <xsl:key name="declarations" match="oscal:property | oscal:statement | oscal:parameter"
     use="concat(@context,'#',@role)"/>-->
   
-  <xsl:key name="assignment"  match="oscal:param" use="@role"/>
+  <xsl:key name="assignment"  match="oscal:param" use="@target"/>
   
   <xsl:template match="oscal:control">
     <div class="control">
@@ -147,27 +147,20 @@ div div div h3 { font-size: 110% }
   </xsl:template>
       
   <xsl:template match="oscal:param">
-    <xsl:variable name="declaration" select="key('declarations',concat(ancestor::oscal:control[1]/@type,'#',@role))"/>
-    
-      <p class="param">
-        <xsl:for-each select="$declaration/oscal:title">
-          <span class="subst">
-            <xsl:apply-templates/>
-          </span>
-        </xsl:for-each>
-        
-        <xsl:for-each select="@role[not($declaration/oscal:title)]">
+    <p class="param">
+      <span class="subst">
+        <xsl:for-each select="@target">
           <xsl:value-of select="."/>
         </xsl:for-each>
         <xsl:text>: </xsl:text>
+      </span>
         <xsl:apply-templates/>
       </p>
     
   </xsl:template>
   
   <xsl:template match="oscal:prop">
-    <!-- If a run-in, gets picked up for the title. -->
-    <p class="prop {@role}">
+    <p class="prop {@class}">
       <span class="subst">
         <xsl:apply-templates select="." mode="title"/>
         <xsl:text>: </xsl:text>
@@ -177,7 +170,7 @@ div div div h3 { font-size: 110% }
   </xsl:template>
 
   <xsl:template match="*" mode="title">
-    <xsl:value-of select="@role"/>
+    <xsl:value-of select="@class"/>
   </xsl:template>
   
   <xsl:template match="oscal:p">
@@ -187,8 +180,8 @@ div div div h3 { font-size: 110% }
   </xsl:template>
 
   <xsl:template match="oscal:assign">
-    <xsl:variable name="who" select="@use"/>
-    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[(@role|@id)=$who][last()]"/>
+    <xsl:variable name="id" select="@id"/>
+    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[contains(@target,$id)][last()]"/>
     <!-- Providing substitution via declaration not yet supported -->
       <span class="assign">
       <xsl:for-each select="$closest-param">

@@ -60,13 +60,13 @@ references:before { content: "References"; font-size: 120%; font-family: sans-se
 
 ref { border-left: thick solid silver; padding-left: 0.5em; margin-top: 0.5ex }
 
-control, subcontrol, feat { padding: 0.5em; margin: 0.5em; border: medium double black;
+control, subcontrol, feat, comp { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 
 subcontrol { border: thin solid black }
 
-feat   { border: thin dotted black }
+feat, comp   { border: thin dotted black }
 
 
 group:before { content: attr(class) " (group)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
@@ -80,28 +80,32 @@ subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; f
 
 group:before  { content: oxy_capitalize(attr(class));  font-weight: bold; font-size:90%; font-family: sans-serif }
 
-feat:before  { content: attr(class) " (feature)";  font-weight: bold; font-size:90%; font-family: sans-serif }
+title { font-weight: bold; font-family: sans-serif }
+catalog > title { font-size: 150% }
+group > title { font-size: 130% }
+group > group > title { font-size: 120% }
 
-param:before { content: 'param ' attr(class) ': ' }
-param { display: inline-block; background-color: #C5FF98; border: thin outset darkgreen;
-  margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
+subcontrol > title { font-size: 90%; font-style: italic }
+
+feat > title, comp > title  { font-size: 90%; font-weight: bold }
+
+comp, feat, purpose, guidance, remarks, information { -oxy-foldable: true; 
+padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
+
+purpose, guidance, remarks, information { border: thin outset grey }
+
+feat:before  { content: attr(class) " (feature)";  font-weight: bold; font-size:90%; font-family: sans-serif }
+comp:before  { content: attr(class) " (component)";  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+param:before { font-weight: bold; font-style: normal; content: 'param ' attr(class) ' [' attr(target) '] ' }
+param { display: inline-block; background-color: #B5EAAA; border: thin outset darkgreen;
+  margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80%; font-style: italic }
 
 prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 prop { display:block; background-color: pink; border: thin outset pink;
   margin: 2px; padding: 2px; font-size: 90% }
 
-title { font-weight: bold; font-family: sans-serif }
-catalog > title { font-size: 150% }
-group > title { font-size: 130% }
-group > group > title { font-size: 120% }
-
-subcontrol > title, feat > title { font-size: 90%; font-style: italic }
-
-feat, purpose, guidance, remarks, information { -oxy-foldable: true; 
-padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
-
-purpose, guidance, remarks, information { border: thin outset grey }
 
 
 desc:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
@@ -167,8 +171,8 @@ code { display: inline; font-family: monospace; font-size: 90% }
 assign { display: inline; font-family: sans-serif; background-color: white;
   font-size: 80%; font-style: italic; border: thin solid pink }
 
-assign:before { content: "Assignment: "; font-style: normal; font-size: 80%; font-weight: bold  }
-select:before { content: "Selection: "; font-style: normal; font-size: 80%; font-weight: bold  }
+assign:before { content: 'Assignment [' attr(id) ']: '; font-style: normal; font-size: 80%; font-weight: bold  }
+select:before { content: 'Selection [' attr(id) ']: '; font-style: normal; font-size: 80%; font-weight: bold  }
 
 select { display: inline }
 choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }

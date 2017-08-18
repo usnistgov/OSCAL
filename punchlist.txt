@@ -122,6 +122,7 @@ Declarations support (desiderata: these could go on github)
     o test this!
   o Add declarations/*/*/@when for qualified assertion (on required|singleton|value|regex|strict )
     o implement via eval (be sure and test against broken XPath!)
+  o Adjust 'value' logic to mitigate whitespace problems (when indented) - xml:space='preserve'?
 
 o experiment (again) w/ semantic aliases for feat[@class='objectives'] etc
 x add declarations for paragraph[@class]
