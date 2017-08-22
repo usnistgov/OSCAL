@@ -58,7 +58,7 @@ x XSD pathway
   
 To do:
 
-rename 'comp' as 'part' --!
+x rename 'comp' as 'part' --!
 
 Profile support
 o An "identity profile" is produced from a catalog
@@ -87,21 +87,20 @@ x collapse features and statements:
   x add declarations for paras
   x prohibit prop/* (properties should be text only)
   x permit prose in features
-  o rename stmts as comps - parts!
-    o SP800-53
-    o ISO27002
-    o COBIT5
-  o Update conversion scripts
-    o SP800-53
+  x rename stmts as comps - parts!
+    x SP800-53
+    x ISO27002
+    x COBIT5
+  x Update conversion scripts
+    x SP800-53
       o (also see below for enhance2.xsl)
-    o ISO27002
-      o as-comp
-      o w/ text obfuscation?
-  o CSS
-    o mod to 'part'
+    x ISO27002
+      x w/ text obfuscation?
+  x CSS
+    x mod to 'part'
     x added support for component|comp
     x test
-    o remove support of statement|stmt|feature|feat
+    x remove support of statement|stmt|feature|feat
   x other Schematrons? (global search for 'stmt|statement')
     o remove support of statement|stmt|feature|feat here too
 
@@ -113,8 +112,8 @@ o validate against their (new) declarations:
 
 Declarations support (desiderata: these could go on github)
   o update to 'part'!
-  o change models to declare[@component="property"], part, parameter, p
-  o Validate links by @rel
+  o change models to declare[@component=[('property','part','parameter','p')]
+  o Validate links (use @rel not @class]
   o Validate paras by @class
   o Add declarations/*/xsd-type w/ support
     o to property|parameter declarations (not comp|paragraph)
@@ -125,7 +124,7 @@ Declarations support (desiderata: these could go on github)
     o implement via eval (be sure and test against broken XPath!)
   o Adjust 'value' logic to mitigate whitespace problems (when indented) - xml:space='preserve'?
 
-o experiment (again) w/ semantic aliases for feat[@class='objectives'] etc
+o add semantic aliases for part[@class='objectives'] etc
 x add declarations for paragraph[@class]
   o test!
 
@@ -133,10 +132,13 @@ o Implement parameter support in editor
   o update OSCAL-assign.sch to @target -> @id (from @use)
   o transformation sequence for display
   
-o write readme for SP800-53 documenting how to perform extraction from sources
+x write readme for SP800-53 documenting how to perform extraction from sources
 x same for ISO 27002
-  o (w/ pointer to updated mapping)
-o same for COBIT5 (w/ mapping)
+
+o update mapping documents
+  o SP800-53
+  o ISO 27002
+  o COBIT5
 
 x write XProc for SP800-53 extraction two-step and wire up
   x Now three steps!
@@ -149,15 +151,40 @@ x rename @class[.='number'] to 'name'
 x add assign/@id
 x improve ID syntax
 
-o make little display stylesheet for SP800-53 (emulate PDF? :-)
-  o wire up, run and document on github readme.md
+x make little display stylesheet for SP800-53 (emulate PDF? :-)
+  x wire up
+  o run and document on github readme.md
 
 x rename 'feat' to 'comp'
 
 x introduce content obfuscation support into ISO27002 extraction
   o via runtime parameter?
 
-o tomorrow Thu Aug 17 visualize / recognize / gratefulness same as Aug 16 i.e. live with similar consciousness/faith
+Aug 21 ECLIPSE DAY  
+x schema tweaks -
+  x 'part' model
+  x modify assign, param, param declarations
+  x update SP800-53 pipeline
+  x update COBIT5, ISO27002 samples
+x Schematron
+  x modify OSCAL-assignments.sch to new model
+  x orphan assignment
+    x assign/@use points to parameter
+    x assign/@use points to parameter in scope
+    x quickfix to add pointer and new param
+    o quickfix to add pointer to extant param
+  x orphan parameter (as warning)
+  x assignment has no param/value or default - as warning
+    x quickfix: add param value for assignment
+x CSS tweaks
+x HTML XSLT tweaks (for parameters/assignments)
 
-o argument for overloading 'p'?
 
+o COBIT5 enhance - some properties are (internal) links...
+o profile
+  o XSLT to produce 'identity profile' from catalog
+    expand control, subcontrol, param
+  o or from profile (expand 'all')
+  o profile schema
+o profile resolution against catalog (display)
+o remodel OSCAL declarations
