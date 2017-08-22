@@ -20,16 +20,21 @@
 
   <xsl:template match="/">
     
-    <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css" title="Basic" alternate="yes"?>
+    <!--<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css" title="Basic" alternate="yes"?>
     <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-    <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css" title="Wiring" alternate="yes"?>
+    <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css" title="Wiring" alternate="yes"?>-->
     
     <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <xsl:text>&#xA;</xsl:text>
-    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"  title="Basic" alternate="yes"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"</xsl:processing-instruction>
     <xsl:text>&#xA;</xsl:text>
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"</xsl:processing-instruction>
-    <xsl:text>&#xA;</xsl:text>
     <xsl:apply-templates/>
   </xsl:template>
+  
+  <xsl:template match="/node()">
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:next-match/>
+  </xsl:template>
+  
 </xsl:stylesheet>

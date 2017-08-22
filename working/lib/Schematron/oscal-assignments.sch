@@ -1,80 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns="http://scap.nist.gov/schema/oscal">
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
+
+
+  <xsl:key name="assignments-by-use" match="oscal:assign[exists(@use)]" use="@use"/>
+  
+  <xsl:key name="parameter-by-id" match="oscal:param[exists(@id)]" use="@id"/>
   
   <sch:pattern>
-    <!-- parameters and assignments -->
-    <sch:rule context="oscal:param">
-      <sch:let name="me" value="."/>
-      <sch:let name="target-ids" value="tokenize(@target,'\s+')"/>
-      <!-- Note targets must be within scope of parameter parent -->
-      <sch:let name="targets" value="key('assignments-by-id',$target-ids,..)"/>
-      <sch:let name="echoes"  value="$targets[normalize-space(.)=normalize-space($me)]"/>
-      <sch:assert test="empty($echoes)">Parameter value repeats text to which it is assigned
-        <!--<xsl:value-of select="if (count($echoes) gt 1) then 'assignments' else 'assignment'"/>-->
-        - look for //assign[@id=(<xsl:value-of select="$echoes/(@id)/concat('''',.,'''')" separator=","/>)]
-      </sch:assert>
-    </sch:rule>
-    
+    <!--
+    o orphan assignment
+      o assign/@use points to parameter
+      o assign/@use points to parameter in scope
+      o quickfix to add param or pointer to param?
+    o orphan parameter (as warning)
+    o assignment has no param/value or default - as warning
+      o quickfix: add param value for assignment
+   -->
     <sch:rule context="oscal:assign">
-      <sch:let name="me" value="."/>
+      <sch:let name="my-param" value="key('parameter-by-id',normalize-space(@use))"/>
       
-      <sch:let name="my-params" value="key('parameter-by-targets',normalize-space(@id))"/>
-      
-      <sch:assert test="not(normalize-space(.) = $my-params[last()])" role="warning">
-        Parameter value echoes assignment value.
+      <sch:assert test="exists($my-param)" sqf:fix="add-new-param">Assignment has no parameter</sch:assert>
+      <!--<sch:assert test="empty($my-param) or exists($my-param intersect ancestor::*/oscal:param)" sqf:fix="move-param">Parameter for assignment is not in scope</sch:assert>-->
+      <sch:assert test="empty($my-param) or exists($my-param/(oscal:default|oscal:value))" sqf:fix="add-param-value">
+        Assignment parameter has no value (or default)
       </sch:assert>
-      
-      <sch:assert test="matches(@id,'\S')">Assignment has no @id</sch:assert>
-      <sch:assert test="not(matches(@id,'\S')) or exists($my-params)"  sqf:fix="add-param">No parameter found with target '<sch:value-of select="@id"/>'</sch:assert>
-      
-      <sch:assert test="matches(@id,'\S')" role="warning" sqf:fix="add-param">Indicate parameter for assignment</sch:assert>
-
-      
     </sch:rule>
-    
+    <sch:rule context="oscal:param">
+      <sch:let name="my-assignments" value="key('assignments-by-use',normalize-space(@id))"/>
+      <sch:assert test="exists($my-assignments)" role="warning">No assignment uses this parameter</sch:assert>
+    </sch:rule>
     
   </sch:pattern>
   
     <sqf:fixes>
-      <sqf:fix id="add-param">
-        <xsl:variable name="new_id"> 
-          <xsl:value-of select="ancestor::oscal:control/oscal:prop[@class=('number','name','id')]"/>
-          <xsl:number from="oscal:control" format="_a"/>
+      <!-- XXX Add quickfix use-param to select from available parameters? -->
+      <sqf:fix id="add-new-param">
+        <xsl:variable name="me" select="."/>
+        <xsl:variable name="home" select="(ancestor::oscal:control | ancestor::oscal:subcontrol)[last()]"/>
+        <xsl:variable name="id_guess">
+          <xsl:for-each select="ancestor::oscal:control">
+            <xsl:value-of select="(@id,oscal:prop[@class=('number','name','id')])[1]"/>
+            <xsl:number value="count(.|.//oscal:param)" format="_a"/>
+          </xsl:for-each>
         </xsl:variable>
-        <xsl:variable name="id" select="($me/@id[matches(.,'\S')],$new_id)[1]"/>
-        
         <sqf:description>
-          <sqf:title>Add parameter for target '<sch:value-of select="$id"/>'</sqf:title>
+          <sqf:title>Add parameter for assignment</sqf:title>
         </sqf:description>
-        <sch:let name="home" value="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]"/>
         
-        <sqf:add node-type="attribute" target="id" select="$id" use-when="not(matches(@id,'\S'))"/>
+        <sqf:user-entry name="param_id" default="{if (empty(key('parameter-by-id',$id_guess))) then $id_guess else generate-id()}">
+          <sqf:description>
+            <sqf:title>Parameter id</sqf:title>
+          </sqf:description>
+        </sqf:user-entry>
+        <sqf:user-entry name="param_value">
+          <sqf:description>
+            <sqf:title>Parameter value</sqf:title>
+          </sqf:description>
+        </sqf:user-entry>
         
-        <sqf:add use-when="empty($home/(oscal:title|oscal:param))"
-          match="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]">
-          <param target="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
+        <sqf:add node-type="attribute" target="use" select="$param_id"/>
+        
+        <sqf:add use-when="empty($home/(oscal:title|oscal:param))" match="$home">
+          <param id="{$param_id}">
             <xsl:copy-of select="$me/node()"/>
+            <value><xsl:value-of select="$param_value"/></value>
           </param>
         </sqf:add>
-        <sqf:add use-when="exists($home/oscal:title) and empty($home/oscal:param)" position="after" match="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]/oscal:title">
-          <param target="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
+        <sqf:add use-when="exists($home/oscal:title) and empty($home/oscal:param)" position="after" match="$home/oscal:title">
+          <param id="{$param_id}">
             <xsl:copy-of select="$me/node()"/>
+            <value><xsl:value-of select="$param_value"/></value>
           </param>
         </sqf:add>
         <sqf:add use-when="exists($home/oscal:param)" position="after" match="(ancestor::oscal:control|ancestor::oscal:subcontrol)[last()]/oscal:param[last()]">
-          <param target="{$id}" xmlns="http://scap.nist.gov/schema/oscal">
+          <param id="{$param_id}">
             <xsl:copy-of select="$me/node()"/>
+            <value><xsl:value-of select="$param_value"/></value>
           </param>
         </sqf:add>
       </sqf:fix>
+      <sqf:fix id="add-param-value">
+        <sqf:description>
+          <sqf:title>Add parameter value</sqf:title>
+        </sqf:description>
+        <sqf:user-entry name="param_value">
+          <sqf:description>
+            <sqf:title>Parameter value</sqf:title>
+          </sqf:description>
+        </sqf:user-entry>
+        <sqf:add match="$my-param" position="last-child">
+          <value><xsl:value-of select="$param_value"/></value>
+        </sqf:add>
+        
+        
+        </sqf:fix>
     </sqf:fixes>
-
-  <xsl:key name="assignments-by-id" match="oscal:assign[@id]" use="@id"/>
-  
-  <xsl:key name="parameter-by-targets" match="oscal:param[@target]" use="tokenize(@target,'\s+')"/>
   
 </sch:schema>

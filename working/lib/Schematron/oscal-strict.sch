@@ -27,7 +27,7 @@
       use of the element names as classes. -->
     <sch:rule context="oscal:declarations//*"/>
     <sch:rule context="*[matches(@class,'\S')]">
-      <sch:let name="interdicted" value="oscal:classes(.)[.=('control','group','stmt','prop','param','feat','comp','title')]"/>
+      <sch:let name="interdicted" value="oscal:classes(.)[.=('control','group','part','prop','param','title')]"/>
       <sch:let name="plural" value="count($interdicted) ne 1"/>
       <sch:assert test="empty($interdicted)">
         @class <sch:value-of select="if ($plural) then 'values ' else 'value '"/>

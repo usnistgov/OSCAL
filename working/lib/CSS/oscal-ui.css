@@ -49,22 +49,8 @@ inherit:before { content:
   
  }
 
-component:before { content:
-  oxy_label(text, "component ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@class', columns, 20) 
-  ' on '
-  oxy_textfield(edit, '@context', columns, 20) 
- }
-
-statement:before { content:
-  oxy_label(text, "statement ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@class', columns, 20) 
-  ' on '
-  oxy_textfield(edit, '@context', columns, 20) 
- }
-
-feature:before { content:
-  oxy_label(text, "statement ", styles, "font-weight:bold")
+part_declaration:before { content:
+  oxy_label(text, "part ", styles, "font-weight:bold")
   oxy_textfield(edit, '@class', columns, 20) 
   ' on '
   oxy_textfield(edit, '@context', columns, 20) 
@@ -88,7 +74,7 @@ prop:before { content: oxy_textfield(
           edit, '@class',
           columns, 15); }
 
-feat:before, comp:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+part:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 
            oxy_capitalize(attr(class)) ' '
             oxy_combobox( 

@@ -22,11 +22,11 @@ collection = element collection { collection-contents }
 # authorities (source data for transclusion etc. etc.)
 declarations = ( element declarations { hrefAttr?, decls } )
 
-decls = (parameter_decl | property_decl | feature_decl | para_decl | link_decl)*
+decls = (parameter_decl | property_decl | part_decl | para_decl | link_decl)*
 
 # parameter declarations expose names and default values for parameters within the control type
 parameter_decl   = element parameter {
-  nameAttr, contextAttr, singleton?, (choice+)? }
+  nameAttr, contextAttr, singleton?, desc, \default? }
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property_decl =
@@ -36,8 +36,8 @@ property_decl =
     (regex | value* )
   }
 
-# feature declaration
-feature_decl =
+# part declaration
+part_decl =
   element component { nameAttr, contextAttr, singleton?, required? }
 
 # paragraph declaration
@@ -78,26 +78,26 @@ group = element group {
   idAttr, typeAttr,
   title?, control-components, (group | control)+, references? }
 
-control-components = (prop | param | anyKindofFeature | link | prose)*
+control-components = (prop | anyKindofPart | link | prose)*
 
 control =
   element control {
-    idAttr, typeAttr, title?,
+    idAttr, typeAttr, title?, param*,
     (control-components | subcontrol)*,
     references?
   }
 
 subcontrol =
   element subcontrol {
-    idAttr, typeAttr, title?,
+    idAttr, typeAttr, title?, param*,
     control-components,
     references? 
   }
 
 # Add 'semantic' part types: purpose, guidance, decision, information, remarks (etc) 
-anyKindofFeature = (feature)*
+anyKindofPart = (part)*
 
-feature =
+part =
   element part {
     idAttr, typeAttr, title?,
     control-components
@@ -105,16 +105,18 @@ feature =
 
 title = element title { (text | q)* }
 
+
+link    = element link { relAttr, hrefAttr, mix }
+
 # param is like its declaration, but simpler
 # permits bindings to assign and select elements w/in controls
 # i.e. local override of a default assignment in a parameter declaration
 # or on-the-fly declaration of new parameters for a control
 # (since params are not currently required to be declared
 
-link    = element link { relAttr, hrefAttr, mix }
+param   = element param { nameAttr, idAttr, desc, (\default | paramValue)? }
 
-# Can't inject param values into parameter settings, okay?
-param   = element param { nameAttr, targetAttr, mix }
+paramValue = element value { text }
 
 prop =
   element prop {
@@ -155,13 +157,13 @@ ref = element ref { idAttr, (std | citation | prose )* }
 # analogous to JATS mixed-citation[@citation-type='standard'] or equivalent
 std =  element std {
          attribute href { xsd:anyURI }?,
-         mix
+         (mix | xref)*
   }
 
 # analogous to JATS mixed-citation
 citation =  element citation {
          attribute href { xsd:anyURI }?,
-         mix
+         (mix | xref)*
   }
 
 
@@ -169,7 +171,7 @@ citation =  element citation {
 
 p = element p { idAttr, typeAttr, whatnot }
 
-pre = element pre { idAttr, mix }
+pre = element pre { idAttr, (mix | xref)* }
 
 ol = element ol { element li { idAttr, typeAttr, (whatnot | ol | ul )*  }+ }
 
@@ -178,16 +180,16 @@ ul = element ul { element li { idAttr, typeAttr, (whatnot | ol | ul )* }+ }
 # whatnot includes 'semantical' elements along with the inline mix
 
 whatnot = (
-  semantical | mix )*
+  semantical | mix | xref)*
 
 mix = (inlines | text)*
 
 # declaring as zeroOrMore/choice avoids XSD substitution group
-inlines = (  q | code | em | xref | i | b | sub | sup | span )*
+inlines = (  q | code | em | i | b | sub | sup | span )*
 
-em = element em { mix }
-i =  element i  { mix }
-b =  element b  { mix }
+em = element em { (mix | xref)* }
+i =  element i  { (mix | xref)* }
+b =  element b  { (mix | xref)* }
 sub = element sub { text }
 sup = element sup { text }
 
@@ -199,7 +201,7 @@ q = element q { text }
 code = element code { attribute type { text }?, mix }
 
 # An arbitrary span
-span = element span { classAttr, mix }
+span = element span { classAttr, (mix | xref)* }
 
 # not html!
 
@@ -210,7 +212,10 @@ semantical = ( withdrawn | assign | select )*
 withdrawn = element withdrawn { (inlines | text)* }
 
 # A value to be assigned by responder, possibly via a param (parameter) or parameter declaration
-assign = element assign { idAttr, mix }
+assign = element assign { idAttr, targetAttr, desc, \default? }
+
+desc = element desc        { mix }
+\default = element default { mix }  
 
 # A selection to be made by responder
 select = element select { idAttr, choice* }
@@ -222,7 +227,7 @@ choice = element choice { (assign | mix)* }
 
 idAttr      = attribute id { xsd:ID }?
 
-targetAttr      = attribute target { xsd:IDREFS }?
+targetAttr      = attribute use { xsd:IDREF }?
 
 # collapsing 'names' and 'types' as classes, HTML-style
 
