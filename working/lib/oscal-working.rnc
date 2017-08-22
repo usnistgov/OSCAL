@@ -25,36 +25,36 @@ declarations = ( element declarations { hrefAttr?, decls } )
 decls = (parameter_decl | property_decl | part_decl | para_decl | link_decl)*
 
 # parameter declarations expose names and default values for parameters within the control type
-parameter_decl   = element parameter {
-  nameAttr, contextAttr, singleton?, desc, \default? }
+parameter_decl = empty
+# parameter_decl =
+# element declare-param { requiredClass, contextAttr, singleton?, desc, \default? }
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property_decl =
-  element property {
-    nameAttr, contextAttr, singleton?, required?,
+  element declare-property { requiredClass, contextAttr, singleton?, required?,
     element identifier { empty }?,
     (regex | value* )
   }
 
 # part declaration
+# add 'purpose', 'guidance' etc.
 part_decl =
-  element component { nameAttr, contextAttr, singleton?, required? }
+  element declare-part { requiredClass, contextAttr, singleton?, required? }
 
 # paragraph declaration
 para_decl =
-  element paragraph { nameAttr, contextAttr, singleton?, required? }
+  element declare-p { requiredClass, contextAttr, singleton?, required? }
 
 # link declaration
 link_decl =
-  element link_ {
-    nameAttr, contextAttr, singleton?, required? }
+ element declare-link { requiredClass, contextAttr, singleton?, required? }
 
 singleton = element singleton { empty }
 
 required =  element required { empty }
 
 # on 'property and possibly 'parameter',
-# element limit { nameAttr, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
+# element limit { requiredClass, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
 
 regex = element regex { text }
 value = element value { ( \inherit | autonum | text )* }
@@ -66,7 +66,7 @@ autonum = element autonum { text }
 
 # Now for the contents of the OSCAL doc proper ...
 
-section = element section { idAttr, typeAttr,
+section = element section { idAttr, optionalClass,
   title, prose, (section | group)*, references? }
 
 # groups may contain more groups, controls or subcontrols
@@ -75,21 +75,21 @@ section = element section { idAttr, typeAttr,
 # ... these constraints validated w/ Schematron
 
 group = element group {
-  idAttr, typeAttr,
+  idAttr, optionalClass,
   title?, control-components, (group | control)+, references? }
 
 control-components = (prop | anyKindofPart | link | prose)*
 
 control =
   element control {
-    idAttr, typeAttr, title?, param*,
+    idAttr, optionalClass, title?, param*,
     (control-components | subcontrol)*,
     references?
   }
 
 subcontrol =
   element subcontrol {
-    idAttr, typeAttr, title?, param*,
+    idAttr, optionalClass, title?, param*,
     control-components,
     references? 
   }
@@ -99,7 +99,7 @@ anyKindofPart = (part)*
 
 part =
   element part {
-    idAttr, typeAttr, title?,
+    idAttr, optionalClass, title?,
     control-components
   }
 
@@ -114,13 +114,15 @@ link    = element link { relAttr, hrefAttr, mix }
 # or on-the-fly declaration of new parameters for a control
 # (since params are not currently required to be declared
 
-param   = element param { nameAttr, idAttr, desc, (\default | paramValue)? }
+param   = element param { idAttr, optionalClass, desc, paramValue }
+
+desc = element desc        { mix }
 
 paramValue = element value { text }
 
 prop =
   element prop {
-    nameAttr, text }
+    requiredClass, text }
 
 # syntax sugar for feat[@role='purpose'] for "Objective/s" etc.
 # purpose =
@@ -169,13 +171,13 @@ citation =  element citation {
 
 # We can map more html in if/as needed
 
-p = element p { idAttr, typeAttr, whatnot }
+p = element p { idAttr, optionalClass, whatnot }
 
 pre = element pre { idAttr, (mix | xref)* }
 
-ol = element ol { element li { idAttr, typeAttr, (whatnot | ol | ul )*  }+ }
+ol = element ol { element li { idAttr, optionalClass, (whatnot | ol | ul )*  }+ }
 
-ul = element ul { element li { idAttr, typeAttr, (whatnot | ol | ul )* }+ }
+ul = element ul { element li { idAttr, optionalClass, (whatnot | ol | ul )* }+ }
 
 # whatnot includes 'semantical' elements along with the inline mix
 
@@ -201,7 +203,7 @@ q = element q { text }
 code = element code { attribute type { text }?, mix }
 
 # An arbitrary span
-span = element span { classAttr, (mix | xref)* }
+span = element span { optionalClass, (mix | xref)* }
 
 # not html!
 
@@ -211,11 +213,10 @@ semantical = ( withdrawn | assign | select )*
 # A placeholder status report typically with a cross-reference
 withdrawn = element withdrawn { (inlines | text)* }
 
-# A value to be assigned by responder, possibly via a param (parameter) or parameter declaration
-assign = element assign { idAttr, targetAttr, desc, \default? }
-
-desc = element desc        { mix }
-\default = element default { mix }  
+# A value to be assigned by responder via parameter
+# (a parameter must be available)
+assign = element inject { idAttr,
+  attribute param-id { xsd:IDREF } }
 
 # A selection to be made by responder
 select = element select { idAttr, choice* }
@@ -227,15 +228,11 @@ choice = element choice { (assign | mix)* }
 
 idAttr      = attribute id { xsd:ID }?
 
-targetAttr      = attribute use { xsd:IDREF }?
-
 # collapsing 'names' and 'types' as classes, HTML-style
 
-nameAttr    = attribute class { text }?
+requiredClass    = attribute class { text }
 
-typeAttr    = attribute class { text }?
-
-classAttr   = attribute class { text }?
+optionalClass    = attribute class { text }?
 
 contextAttr = attribute context { text }
 
@@ -243,4 +240,4 @@ relAttr = attribute rel { text }?
 
 hrefAttr = attribute href { text }?
 
-#nameAttr = attribute name { xsd:NCName }
+#requiredClass = attribute name { xsd:NCName }

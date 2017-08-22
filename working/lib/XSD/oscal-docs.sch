@@ -39,7 +39,7 @@
       <sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <sch:value-of select="$schema-file"/></sch:assert>
     </sch:rule>
     
-    <sch:rule context="oscal:stmt[@class='description']">
+    <sch:rule context="oscal:part[@class='description']">
       <sch:let name="exception" value="not(../@class='element-description')"/>
       <sch:assert role="warning" test="matches(string(.),'\S')">No control description</sch:assert>
       <sch:assert test="empty(* except oscal:p[1]) or $exception">Description may contain only a single paragraph, with a sentence fragment (no periods)</sch:assert>
