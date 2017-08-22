@@ -44,14 +44,11 @@
   </xsl:template>
   
   <xsl:template match="assign">
-    <xsl:copy>
-      <xsl:attribute name="use">
+    <insert>
+      <xsl:attribute name="param-id">
         <xsl:apply-templates select="." mode="make-id"/>
       </xsl:attribute>
-      <desc>
-        <xsl:apply-templates/>
-      </desc>
-    </xsl:copy>
+    </insert>
   </xsl:template>
   
   <xsl:template match="assign" mode="make-param">
@@ -62,9 +59,9 @@
       <desc>
         <xsl:apply-templates/>
       </desc>
-      <default>
+      <value>
         <xsl:apply-templates/>
-      </default>
+      </value>
     </param>
   </xsl:template>
   

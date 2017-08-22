@@ -484,7 +484,7 @@
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:withdrawn"/>
-        <xs:element ref="oscal:inject"/>
+        <xs:element ref="oscal:insert"/>
         <xs:element ref="oscal:select"/>
       </xs:choice>
     </xs:sequence>
@@ -499,7 +499,7 @@
     A value to be assigned by responder via parameter
     (a parameter must be available)
   -->
-  <xs:element name="inject">
+  <xs:element name="insert">
     <xs:complexType>
       <xs:attributeGroup ref="oscal:idAttr"/>
       <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
@@ -521,7 +521,7 @@
   <xs:element name="choice">
     <xs:complexType mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal:inject"/>
+        <xs:element ref="oscal:insert"/>
         <xs:group ref="oscal:mix"/>
       </xs:choice>
     </xs:complexType>
