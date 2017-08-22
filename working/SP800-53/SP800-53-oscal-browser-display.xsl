@@ -6,10 +6,10 @@
   <xsl:template match="/">
     <html>
       <head>
-        <xsl:apply-templates select="descendant::oscal:title[1]" mode="title"/>
+        <title>
+        <xsl:value-of select="descendant::oscal:title[1]"/>
+        </title>
         <style type="text/css">
-
-body { line-height: 135% }
 
 .control { margin:1em; padding: 1em; border: thin solid black }
 .subcontrol { margin-top: 0.5em; padding: 1em; border: thin dotted black }
@@ -28,8 +28,13 @@ div h3         { font-size: 130% }
 div div h3     { font-size: 120% }
 div div div h3 { font-size: 110% }
 
-p { margin-top: 0.4em; margin-bottom: 0.2em }
+p, div.param { margin-top: 0.4em; margin-bottom: 0.2em }
+p { line-height: 160% }
 p:first-child { margin-top: 0ex }
+
+div.param { background-color: lightgreen; border: thin solid green; font-size: 80%; padding: 0.3em }
+
+.param p { margin: 0em }
 
 p.object { padding-left: 2em; text-indent: -2em }
 
@@ -37,17 +42,18 @@ p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; bor
 
 .part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
 
-.param { padding: 0.1em; background-color: lemonchiffon; border: thin solid green }
-.param-value { font-style: italic }
 .assign, .choice { border: thin solid black; padding: 0.1em }
 .unassigned { border: thin solid red; background-color: pink}
-.assignment-value { color: grey }
-.assign .assignment-value { font-size: 80%; font-family: sans-serif }
-.assign-id { font-size: 90%; font-family: sans-serif; font-weight: bold; background-color: black; color: white }
+.desc { color: darkgreen }
+.assign .desc { font-size: 90% }
+.value { font-style: italic }
+.param-id { font-size: 90%; font-family: sans-serif; font-weight: bold; background-color: black; color: white }
+.assign .param-id { font-size: 80% }
+
 .withdrawn { font-weight: bold; font-style: italic }
 
 .box { vertical-align: middle; width: 2em }
-.subst  { color: midnightblue; font-family: sans-serif; font-size; 85% } 
+.subst  { color: midnightblue; font-family: sans-serif; font-style: normal; font-weight: normal; font-size; 85% } 
 
 .impact-table { width: 100%; collapse: collapsed; font-family: sans-serif }
 .impact-table td { padding: 0.5em; background-color: lightgrey; border: thin solid black }
@@ -64,7 +70,7 @@ a { text-decoration: none }
   </xsl:template>
   
   <xsl:template match="oscal:catalog | oscal:collection">
-      <xsl:apply-templates/>
+    <xsl:apply-templates/>
   </xsl:template>
   
   <xsl:template match="oscal:title">
@@ -90,8 +96,6 @@ a { text-decoration: none }
   
   <xsl:key name="declarations" match="oscal:property | oscal:statement | oscal:parameter"
     use="concat(@context,'#',@role)"/>-->
-  
-  <xsl:key name="parameter-by-target"  match="oscal:param" use="@target"/>
   
   <xsl:key name="element-by-id"  match="*[@id]" use="@id"/>
   
@@ -239,7 +243,7 @@ a { text-decoration: none }
     
   </xsl:template>
   
-  <xsl:template match="oscal:part[ancestor::oscal:part | descendant::oscal:part]" mode="title"/>
+  <xsl:template priority="10" match="oscal:part[ancestor::oscal:part | descendant::oscal:part]" mode="title"/>
   
   <xsl:template match="oscal:part" mode="part-number"/>
   
@@ -255,26 +259,39 @@ a { text-decoration: none }
   
   <xsl:template match="oscal:param">
     <xsl:variable name="target" select="key('element-by-id',@target)"/>
-    <p class="param">
-      <span class="subst">
-        <xsl:text>Parameter </xsl:text>
-        <xsl:for-each select="$target">
-          <a href="#{@id}" style="text-decoration: none; color: inherit">
-            <xsl:apply-templates select="." mode="assign-id-block"/>
-          </a>
-          <xsl:text> </xsl:text>
-          <span class="assignment-value">
-            <xsl:apply-templates/>
-          </span>
-        </xsl:for-each>
-        <xsl:text>: </xsl:text>
-      </span>
-      <span class="param-value">
-      <xsl:apply-templates/>
-      </span>
-    </p>
+    <div class="param">
+      <xsl:copy-of select="@id"/>
+        <xsl:apply-templates/>
+    </div>
   </xsl:template>
 
+  <xsl:template match="oscal:param/oscal:desc">
+    <p class="desc">
+      <span class="subst">Parameter:</span>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select=".." mode="param-id-block"/>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="oscal:param/oscal:default">
+    <p class="default">
+      <span class="subst">Default:</span>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="oscal:param/oscal:value">
+    <p class="value">
+      <span class="subst">Value:</span>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  
+  
+  
   <!-- Pulled into impact table -->
   <xsl:template match="oscal:prop[@class='priority'] | oscal:prop[@class='baseline-impact']"/>
   
@@ -349,44 +366,40 @@ a { text-decoration: none }
     </p>
   </xsl:template>
 
+<!-- 'assign' contains description and optional default
+     its param contains description and optionally either default or value -->
   <xsl:template match="oscal:assign">
     <xsl:variable name="closest-param"
-      select="ancestor-or-self::*/oscal:param[contains(@target, current()/@id)][last()]"/>
+      select="ancestor-or-self::*/oscal:param[@id=current()/@use][last()]"/>
     <!-- Providing substitution via declaration not yet supported -->
     <xsl:variable name="unassigned">
       <xsl:if test="not($closest-param)"> unassigned</xsl:if>
     </xsl:variable>
-    <xsl:variable name="result">
-      <xsl:apply-templates/>
-    </xsl:variable>
     <span class="assign{$unassigned}">
-      <xsl:copy-of select="@id"/>
-      <xsl:apply-templates select="@id/.." mode="assign-id-block"/>
       <xsl:for-each select="$closest-param">
-        <span class="subst">
-          <xsl:apply-templates/>
-        </span>
-        <xsl:text> </xsl:text>
+        <a href="#{@id}">
+          <xsl:apply-templates select="." mode="param-id-block"/>
+        </a>
       </xsl:for-each>
-      <xsl:choose>
-        <xsl:when test="$closest-param">
-          <span class="assignment-value">
-            <xsl:text> [</xsl:text>
-            <xsl:copy-of select="$result"/>
-            <xsl:text>]</xsl:text>
-          </span>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>[Assignment: </xsl:text>
-          <xsl:copy-of select="$result"/>
-          <xsl:text>]</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
+      <span class="value">
+        <!-- There will be only one of default or value -->
+        <xsl:apply-templates select="$closest-param/oscal:default | $closest-param/oscal:value"
+          mode="param-value"/>
+        <xsl:if test="not($closest-param)">
+          <xsl:apply-templates select="oscal:default" mode="param-value"/>
+        </xsl:if>
+      </span>
+      <xsl:text> </xsl:text>
+      <span class="desc">
+        <xsl:text> [</xsl:text>
+        <xsl:apply-templates select="oscal:desc"/>
+        <xsl:text>]</xsl:text>
+      </span>
     </span>
   </xsl:template>
 
-  <xsl:template match="oscal:assign" mode="assign-id-block">
-    <span class="assign-id">
+  <xsl:template match="oscal:param" mode="param-id-block">
+    <span class="param-id">
       <xsl:text>&#xA0;</xsl:text>
       <xsl:value-of select="@id"/>
       <xsl:text>&#xA0;</xsl:text>

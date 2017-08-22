@@ -17,7 +17,7 @@
     <catalog>
       <title>ISO/IEC 27002</title>
       
-      <declarations>
+      <!--<declarations>
         <property context="control-category" class="number">
           <required/>
           <identifier/>
@@ -26,23 +26,23 @@
         <property context="clause" class="number">
           <required/>
           <identifier/>
-          <!-- Try xml:space="preserve" to prevent indenting? -->
+          <!-\- Try xml:space="preserve" to prevent indenting? -\->
           <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <component context="clause" class="objective">
+        <part_declaration context="clause" class="objective">
           <required/>
-        </component>
+        </part_declaration>
         <property context="iso-27002" class="number">
           <required/>
           <identifier/>
           <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <component context="control" class="description">
+        <part_declaration context="control" class="description">
           <required/>
-        </component>
-        <component context="control" class="guidance"/>
-        <component context="control" class="information"/>
-      </declarations>
+        </part_declaration>
+        <part_declaration context="control" class="guidance"/>
+        <part_declaration context="control" class="information"/>
+      </declarations>-->
       
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
     </catalog>
@@ -95,36 +95,36 @@
                     select="current-group()[normalize-space(.) = $statement-headers]"/>
                   <xsl:choose>
                     <xsl:when test="$statement-head = 'Control'">
-                      <comp class="description">
+                      <part class="description">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </comp>
+                      </part>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Implementation guidance'">
-                      <comp class="guidance">
+                      <part class="guidance">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </comp>
+                      </part>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Other information'">
-                      <comp class="information">
+                      <part class="information">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </comp>
+                      </part>
                     </xsl:when>
                     <xsl:otherwise>
-                      <comp class="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
+                      <part class="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </comp>
+                      </part>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:for-each-group>
@@ -201,13 +201,13 @@
   
  
   <xsl:template match="p[starts-with(., 'Objective:')]">
-    <comp class="objective">
+    <part class="objective">
       <p>
         <xsl:apply-templates mode="tune">
           <xsl:with-param name="trim" tunnel="yes" as="xs:string">Objective: </xsl:with-param>
         </xsl:apply-templates>
       </p>
-    </comp>
+    </part>
   </xsl:template>
 
   <xsl:function name="oscal:obfusc" as="xs:string">

@@ -12,10 +12,10 @@
 
   <xsl:mode on-no-match="shallow-copy"/>
   
-  <!--<xsl:template match="/processing-instruction() | /comment() | /*">
-    <xsl:text>&#xA;</xsl:text>
+  <xsl:template match="/">
+      <xsl:processing-instruction name="xml-stylesheet">type="text/xsl" href="SP800-53-oscal-browser-display.xsl"</xsl:processing-instruction>
     <xsl:next-match/>
-  </xsl:template>-->
+  </xsl:template>
     
   <!-- DW doesn't consider them numbers because they're not really numeric
        being more like identifier codes or labels -->
@@ -27,6 +27,15 @@
     <xsl:comment expand-text="true"> Adjustments are needed to declarations given in {@href} </xsl:comment>
   </xsl:template>
   
+  <xsl:template match="control | subcontrol">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="title"/>
+      <xsl:apply-templates select=".//assign except subcontrol//assign" mode="make-param"/>
+      <xsl:apply-templates select="* except title"/>
+    </xsl:copy>
+  </xsl:template>
+  
   <xsl:template match="link[starts-with(@href,'#')]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
@@ -36,12 +45,32 @@
   
   <xsl:template match="assign">
     <xsl:copy>
-      <xsl:attribute name="id">
-        <xsl:value-of select="ancestor::control/@id"/>
-        <xsl:number from="control" level="any" format="_a"/>
+      <xsl:attribute name="use">
+        <xsl:apply-templates select="." mode="make-id"/>
       </xsl:attribute>
-      <xsl:apply-templates/>
+      <desc>
+        <xsl:apply-templates/>
+      </desc>
     </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="assign" mode="make-param">
+    <param>
+      <xsl:attribute name="id">
+        <xsl:apply-templates select="." mode="make-id"/>
+      </xsl:attribute>
+      <desc>
+        <xsl:apply-templates/>
+      </desc>
+      <default>
+        <xsl:apply-templates/>
+      </default>
+    </param>
+  </xsl:template>
+  
+  <xsl:template match="assign" mode="make-id">
+    <xsl:value-of select="ancestor::control/@id"/>
+    <xsl:number from="control" level="any" format="_a"/>
   </xsl:template>
   
 <!-- Remapping these - to do: pull these mappings into earlier pipeline steps -->
