@@ -18,22 +18,19 @@
    <xs:element name="catalog" type="oscal:collection-contents">
       <xs:annotation>
          <xs:documentation>
-            <b>Catalog</b> 
-         </xs:documentation>
+            <b>Catalog</b> Top-level element for a (canonical) control catalog</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="collection" type="oscal:collection-contents">
       <xs:annotation>
          <xs:documentation>
-            <b>Collection</b> 
-         </xs:documentation>
+            <b>Collection</b> Top-level element for a set of controls, not considered to be a catalog</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="declarations">
       <xs:annotation>
          <xs:documentation>
-            <b>Declarations</b> 
-         </xs:documentation>
+            <b>Declarations</b> For extra-schema validation of control components within controls</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:complexContent>
@@ -54,8 +51,8 @@
    <xs:element name="declare-property">
       <xs:annotation>
          <xs:documentation>
-            <b>Property declaration</b> 
-         </xs:documentation>
+            <b>Property declaration</b> Constraints applicable to a class or classes of <code xmlns="http://scap.nist.gov/schema/oscal">p</code> elements within a control
+        object</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -74,16 +71,15 @@
    <xs:element name="identifier">
       <xs:annotation>
          <xs:documentation>
-            <b>Identifier constraint</b> 
-         </xs:documentation>
+            <b>Identifier constraint</b> The declared component has a value unique within the document, among components of the
+          same type</xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>
    <xs:element name="declare-part">
       <xs:annotation>
          <xs:documentation>
-            <b>Part declaration</b> 
-         </xs:documentation>
+            <b>Part declaration</b> Indicates constraints to be imposed on parts in context</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -97,8 +93,7 @@
    <xs:element name="declare-p">
       <xs:annotation>
          <xs:documentation>
-            <b>Paragraph declaration</b> 
-         </xs:documentation>
+            <b>Paragraph declaration</b> Indicates constraints to be enforced on paragraphs in context</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -112,8 +107,7 @@
    <xs:element name="declare-link">
       <xs:annotation>
          <xs:documentation>
-            <b>Link declaration</b> 
-         </xs:documentation>
+            <b>Link declaration</b> Indicates constraints to be imposed on links in context</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -127,24 +121,22 @@
    <xs:element name="singleton">
       <xs:annotation>
          <xs:documentation>
-            <b>Singleton constraint</b> 
-         </xs:documentation>
+            <b>Singleton constraint</b> The declared component may occur only once in its context</xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>
    <xs:element name="required">
       <xs:annotation>
          <xs:documentation>
-            <b>Requirement constraint</b> 
-         </xs:documentation>
+            <b>Requirement constraint</b> The declared component is required in its context</xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>
    <xs:element name="regex" type="xs:string">
       <xs:annotation>
          <xs:documentation>
-            <b>Regular expression constraint</b> 
-         </xs:documentation>
+            <b>Regular expression constraint</b> Indicates that the value of a property (<code xmlns="http://scap.nist.gov/schema/oscal">prop)</code> or parameter
+            (<code xmlns="http://scap.nist.gov/schema/oscal">param</code>) must match the given regular expression</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:group name="value">
@@ -152,8 +144,7 @@
          <xs:element name="value">
             <xs:annotation>
                <xs:documentation>
-                  <b>Value constraint</b> 
-               </xs:documentation>
+                  <b>Value constraint</b> Indicates a permissible value for a parameter or property</xs:documentation>
             </xs:annotation>
             <xs:complexType mixed="true">
                <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -167,8 +158,8 @@
    <xs:element name="inherit">
       <xs:annotation>
          <xs:documentation>
-            <b>Inherited value constraint</b> 
-         </xs:documentation>
+            <b>Inherited value constraint</b> Indicates that a value or part of a value will be inherited from a property on a
+          containing control object</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="from"/>
@@ -177,15 +168,16 @@
    <xs:element name="autonum" type="xs:string">
       <xs:annotation>
          <xs:documentation>
-            <b>Autonumbered (generated) value</b> 
-         </xs:documentation>
+            <b>Autonumbered (generated) value</b> Generates a formatted numeric value based on the position of a control object among its
+          siblings, the text contents providing a template for the numbering format (arabic,
+          alphabetic, roman etc)</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="section">
       <xs:annotation>
          <xs:documentation>
-            <b>Division</b> 
-         </xs:documentation>
+            <b>Division</b> A chapter, section or subsection partitioning a catalog, collection or section
+          therein</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -204,8 +196,7 @@
    <xs:element name="group">
       <xs:annotation>
          <xs:documentation>
-            <b>Group</b> 
-         </xs:documentation>
+            <b>Group</b> Related controls or groups (of controls or groups)</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -234,8 +225,7 @@
    <xs:element name="control">
       <xs:annotation>
          <xs:documentation>
-            <b>Control</b> 
-         </xs:documentation>
+            <b>Control</b> A structured information object representing a security control</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -254,8 +244,7 @@
    <xs:element name="subcontrol">
       <xs:annotation>
          <xs:documentation>
-            <b>Control enhancement</b> 
-         </xs:documentation>
+            <b>Control enhancement</b> Within a control, a control object appearing as a component</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -276,8 +265,7 @@
    <xs:element name="part">
       <xs:annotation>
          <xs:documentation>
-            <b>Part</b> 
-         </xs:documentation>
+            <b>Part</b> A component of a control, subcontrol or part</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -303,8 +291,7 @@
    <xs:element name="link">
       <xs:annotation>
          <xs:documentation>
-            <b>Link</b> 
-         </xs:documentation>
+            <b>Link</b> A line or paragraph with a hypertext link</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:mix"/>
@@ -315,8 +302,7 @@
    <xs:element name="param">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter</b> 
-         </xs:documentation>
+            <b>Parameter</b> A parameter setting, to be propagated to points of injection</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -330,8 +316,7 @@
    <xs:element name="desc">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter description</b> 
-         </xs:documentation>
+            <b>Parameter description</b> Indicates and explains the purpose and use of a parameter</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:mix"/>
@@ -342,8 +327,7 @@
          <xs:element name="value" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Value constraint</b> 
-               </xs:documentation>
+                  <b>Value constraint</b> Indicates a permissible value for a parameter or property</xs:documentation>
             </xs:annotation>
          </xs:element>
       </xs:sequence>
@@ -351,8 +335,8 @@
    <xs:element name="prop">
       <xs:annotation>
          <xs:documentation>
-            <b>Property</b> 
-         </xs:documentation>
+            <b>Property</b> A value with a name, attributed to the containing control, subcontrol, feature or
+          group</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attributeGroup ref="oscal:requiredClass"/>
@@ -398,8 +382,7 @@
    <xs:element name="std">
       <xs:annotation>
          <xs:documentation>
-            <b>Standard</b> 
-         </xs:documentation>
+            <b>Standard</b> Citation of a formal published standard</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -412,8 +395,7 @@
    <xs:element name="citation">
       <xs:annotation>
          <xs:documentation>
-            <b>Citation</b> 
-         </xs:documentation>
+            <b>Citation</b> Citation of a resource</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -426,8 +408,7 @@
    <xs:element name="p">
       <xs:annotation>
          <xs:documentation>
-            <b>Paragraph</b> 
-         </xs:documentation>
+            <b>Paragraph</b> Or paragraph fragment</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:whatnot"/>
@@ -438,8 +419,7 @@
    <xs:element name="pre">
       <xs:annotation>
          <xs:documentation>
-            <b>Preformatted text</b> 
-         </xs:documentation>
+            <b>Preformatted text</b> Retains whitespace in display</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -520,8 +500,7 @@
    <xs:element name="em">
       <xs:annotation>
          <xs:documentation>
-            <b>Emphasis</b> 
-         </xs:documentation>
+            <b>Emphasis</b> Rhetorical emphasis as indicated typically by a font shift</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -533,8 +512,7 @@
    <xs:element name="i">
       <xs:annotation>
          <xs:documentation>
-            <b>Italics</b> 
-         </xs:documentation>
+            <b>Italics</b> Typographical shift to italics</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -546,8 +524,7 @@
    <xs:element name="b">
       <xs:annotation>
          <xs:documentation>
-            <b>Bold</b> 
-         </xs:documentation>
+            <b>Bold</b> Typographical shift to bold</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -559,22 +536,19 @@
    <xs:element name="sub" type="xs:string">
       <xs:annotation>
          <xs:documentation>
-            <b>Subscript</b> 
-         </xs:documentation>
+            <b>Subscript</b> Subscripted text</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="sup" type="xs:string">
       <xs:annotation>
          <xs:documentation>
-            <b>Superscript</b> 
-         </xs:documentation>
+            <b>Superscript</b> Superscripted text</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="a">
       <xs:annotation>
          <xs:documentation>
-            <b>Anchor</b> 
-         </xs:documentation>
+            <b>Anchor</b> An HTML-style anchor (inline linking element)</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -583,8 +557,7 @@
             <xs:element name="em" type="xs:string">
                <xs:annotation>
                   <xs:documentation>
-                     <b>Emphasis</b> 
-                  </xs:documentation>
+                     <b>Emphasis</b> Rhetorical emphasis as indicated typically by a font shift</xs:documentation>
                </xs:annotation>
             </xs:element>
          </xs:choice>
@@ -594,15 +567,13 @@
    <xs:element name="q" type="xs:string">
       <xs:annotation>
          <xs:documentation>
-            <b>Quoted text</b> 
-         </xs:documentation>
+            <b>Quoted text</b> An inline segment to appear within quotation marks</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="code">
       <xs:annotation>
          <xs:documentation>
-            <b>Code</b> 
-         </xs:documentation>
+            <b>Code</b> Inline code</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:mix"/>
@@ -612,8 +583,7 @@
    <xs:element name="span">
       <xs:annotation>
          <xs:documentation>
-            <b>Span</b> 
-         </xs:documentation>
+            <b>Span</b> Generic inline container</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -635,8 +605,7 @@
    <xs:element name="withdrawn">
       <xs:annotation>
          <xs:documentation>
-            <b>Withdrawn</b> 
-         </xs:documentation>
+            <b>Withdrawn</b> Indicates that a containing control or subcontrol is no longer applicable</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal:inlines"/>
@@ -645,8 +614,7 @@
    <xs:element name="inject">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter injection</b> 
-         </xs:documentation>
+            <b>Parameter injection</b> A reference to a parameter for dynamic content transclusion</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attributeGroup ref="oscal:idAttr"/>
@@ -656,8 +624,7 @@
    <xs:element name="select">
       <xs:annotation>
          <xs:documentation>
-            <b>Selection</b> 
-         </xs:documentation>
+            <b>Selection</b> A selection requiring designation via parameter</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -669,8 +636,7 @@
    <xs:element name="choice">
       <xs:annotation>
          <xs:documentation>
-            <b>Choice</b> 
-         </xs:documentation>
+            <b>Choice</b> A choice of values, to be designated via parameter</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
