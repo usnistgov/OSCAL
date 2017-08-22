@@ -182,23 +182,15 @@
       <prop class="tag">param</prop>
       <prop class="full_name">Parameter</prop>
       <part class="description">
-        <p>A parameter setting, to be propagated to points of injection</p>
+        <p>A parameter setting, to be propagated to points of insertion</p>
       </part>
       
     </control>
-    <control class="element-description">
-      <prop class="tag">desc</prop>
-      <prop class="full_name">Parameter description</prop>
-      <part class="description">
-        <p>Indicates and explains the purpose and use of a parameter</p>
-      </part>
-    </control>
-    
   </group>
   <group>
     <title>Functional elements</title>
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL processors
-      for dynamic injection.</p>
+      for dynamic insertion.</p>
     <control class="element-description">
       <prop class="tag">withdrawn</prop>
       <prop class="full_name">Withdrawn</prop>
@@ -210,8 +202,8 @@
       </part>
     </control>
     <control class="element-description">
-      <prop class="tag">inject</prop>
-      <prop class="full_name">Parameter injection</prop>
+      <prop class="tag">insert</prop>
+      <prop class="full_name">Parameter insertion</prop>
       <part class="description">
         <p>A reference to a parameter for dynamic content transclusion</p>
       </part>
@@ -382,6 +374,14 @@
           ancestor's property with the same <code>@class</code> (the most usual case).</p>
       </part>
     </control>
+    <control class="element-description">
+      <prop class="tag">desc</prop>
+      <prop class="full_name">Parameter description</prop>
+      <part class="description">
+        <p>Indicates and explains the purpose and use of a parameter</p>
+      </part>
+    </control>
+    
   </group>
   <group>
     <title>Structural elements</title>

@@ -13,11 +13,11 @@
   <sch:pattern>
     <sch:rule context="oscal:control">
       <sch:assert test="empty(ancestor::oscal:control)">Controls may not appear inside controls</sch:assert>
-      <sch:assert test="empty(ancestor::oscal:feat)">Controls may not appear inside features</sch:assert>
+      <sch:assert test="empty(ancestor::oscal:part)">Controls may not appear inside parts</sch:assert>
     </sch:rule>    
     <sch:rule context="oscal:subcontrol">
       <sch:assert test="exists(ancestor::oscal:control)">Subcontrols may not appear outside controls</sch:assert>
-      <sch:assert test="empty(ancestor::oscal:feat)">Subcontrols may not appear inside features</sch:assert>
+      <sch:assert test="empty(ancestor::oscal:part)">Subcontrols may not appear inside parts</sch:assert>
     </sch:rule>    
   </sch:pattern>
   

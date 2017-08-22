@@ -215,7 +215,7 @@ withdrawn = element withdrawn { (inlines | text)* }
 
 # A value to be assigned by responder via parameter
 # (a parameter must be available)
-assign = element inject { idAttr,
+assign = element insert { idAttr,
   attribute param-id { xsd:IDREF } }
 
 # A selection to be made by responder

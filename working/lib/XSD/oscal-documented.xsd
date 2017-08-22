@@ -302,7 +302,7 @@
    <xs:element name="param">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter</b> A parameter setting, to be propagated to points of injection</xs:documentation>
+            <b>Parameter</b> A parameter setting, to be propagated to points of insertion</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -597,7 +597,7 @@
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="oscal:withdrawn"/>
-            <xs:element ref="oscal:inject"/>
+            <xs:element ref="oscal:insert"/>
             <xs:element ref="oscal:select"/>
          </xs:choice>
       </xs:sequence>
@@ -611,10 +611,10 @@
          <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal:inlines"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="inject">
+   <xs:element name="insert">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter injection</b> A reference to a parameter for dynamic content transclusion</xs:documentation>
+            <b>Parameter insertion</b> A reference to a parameter for dynamic content transclusion</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attributeGroup ref="oscal:idAttr"/>
@@ -640,7 +640,7 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal:inject"/>
+            <xs:element ref="oscal:insert"/>
             <xs:group ref="oscal:mix"/>
          </xs:choice>
       </xs:complexType>
