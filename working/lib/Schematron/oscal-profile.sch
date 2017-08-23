@@ -23,8 +23,18 @@
       <sch:let name="catalog-file" value="ancestor::oscal:invoke/@href"/>
       <sch:let name="catalog" value="document($catalog-file)"/>
       <sch:assert test="matches(@id,'\S')">Parameter has no valid @id</sch:assert>
-      <sch:assert test="empty($catalog) or not(matches(@id,'\S')) or exists(key('element-by-id',@id,$catalog)/self::oscal:param)">Referenced catalog '<sch:value-of select="$catalog-file"/>'
+      
+      <sch:let name="matching-param" value="key('element-by-id',@id,$catalog)/self::oscal:param"/>
+      <sch:assert test="empty($catalog) or not(matches(@id,'\S')) or exists($matching-param)">Referenced catalog '<sch:value-of select="$catalog-file"/>'
         has no parameter with @id '<sch:value-of select="@id"/>'</sch:assert>
+    </sch:rule>
+    <sch:rule context="oscal:param/oscal:desc">
+      <sch:let name="catalog-file" value="ancestor::oscal:invoke/@href"/>
+      <sch:let name="catalog" value="document($catalog-file)"/>
+      <sch:let name="matching-param" value="key('element-by-id',../@id,$catalog)/self::oscal:param"/>
+      <sch:assert test="empty($matching-param) or deep-equal(.,$matching-param/oscal:desc)">
+        Referenced parameter '<sch:value-of select="../@id"/>' has a different description: "<sch:value-of select="$matching-param/oscal:desc"/>"</sch:assert>
+        
     </sch:rule>
   </sch:pattern>
   
