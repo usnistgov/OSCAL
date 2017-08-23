@@ -68,12 +68,7 @@ o An "identity profile" is produced from a catalog
   A profile is configured by editing this 
 
   Validate a profile against its source catalog (Schematron?)
-    Does control (subcontrol) exist? (key by ID)
-      o do we want a control/@provenance (subcontrol/@prov, prop/@prov) to carry provenance code(s)?
-      o declarations/provenance
-        <provenance catalog="sp800-53-oscal.xml" code="sp800-53/>
-    Is title changed /varied as compared to catalog?
-    Are properties aligned with their stated provenance?
+    x Does control (subcontrol) exist? (key by ID)
     How about links? (auto-generate links to sourced catalog controls?)
     Are parameters covered? (hook in present oscal-assign.sch)
     Other profile constraints?
@@ -145,18 +140,6 @@ x write XProc for SP800-53 extraction two-step and wire up
   o refine/reduce pipeline once models have stabilized
     (since as of now, mappings are indirect)
 
-SP800-53 (further) adjustments - enhance2.xsl
-x remove link contents
-x rename @class[.='number'] to 'name'
-x add assign/@id
-x improve ID syntax
-
-x make little display stylesheet for SP800-53 (emulate PDF? :-)
-  x wire up
-  o run and document on github readme.md
-
-x rename 'feat' to 'comp'
-
 x introduce content obfuscation support into ISO27002 extraction
   o via runtime parameter?
 
@@ -167,7 +150,7 @@ x schema tweaks -
   x update SP800-53 pipeline
   x update COBIT5, ISO27002 samples
 x Schematron
-  x modify OSCAL-assignments.sch to new model
+  x modify OSCAL-assignments.sch to new model (with new/better rules)
   x orphan assignment
     x assign/@use points to parameter
     x assign/@use points to parameter in scope
@@ -179,12 +162,58 @@ x Schematron
 x CSS tweaks
 x HTML XSLT tweaks (for parameters/assignments)
 
+o HTML reading view
+  o hide parameters
+o remove assign/desc and assign/default
+  o rename 'assign' to 'param-ref' or some equivalent
+  o Schematron rules for dangling references should be tight
+  o revise
+    o extractions
+    o reading HTML
+    o Schematron
 
 o COBIT5 enhance - some properties are (internal) links...
 o profile
-  o XSLT to produce 'identity profile' from catalog
+  x XSLT to produce 'identity profile' from catalog
     expand control, subcontrol, param
   o or from profile (expand 'all')
-  o profile schema
+  x profile schema
 o profile resolution against catalog (display)
-o remodel OSCAL declarations
+
+o Catalog demo issues (for Github)
+  SP800-53
+    How do we acquire better parameter descriptions? 
+    Can we design (and map) a robust protocol for semantic IDs?
+    Provide missing link/@href (four cases)?
+  COBIT5
+    Link enhancements - some properties should be links
+
+o Update extractions to current models
+  o ISO 27002
+  o SP800-53
+o Test updates to oscal-parameters.sch
+o Update/test HTML display XSLT (hide parameters)
+
+"Refine the Schematron from User Stories 2 and 3 to enforce profile constraints and validate the profile against the referenced control catalogs and controls. Validation will include automatically verifying that the selected controls exist in the underlying catalog."
+
+o profile//param/desc should not be permitted
+    (sounds like param inside profile needs a separate element?)
+x remove param/default: param/value will do all the work
+
+o Markdown docs!
+  o finalize oscal-oscal.xml
+  o update/merge into XSD
+  o produce Markdown version and post to Github
+o Github issues
+  o pick up outstanding / orphan issues from these here notes
+
+PROFILE QUESTIONS:
+  When you call for a control, do you get its subcontrols for free?
+    (or must they be excluded specifically?)
+    NO (but this behavior can be modified at runtime via parameter)
+
+If a profile has param/default and its catalog has param/value, what happens?
+    (does the calling profile override the stipulated value?
+     or is this an error condition to be detected?)
+
+o REMODEL OSCAL declarations
