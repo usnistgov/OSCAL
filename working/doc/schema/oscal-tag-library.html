@@ -30,58 +30,55 @@ div div div h3 { font-size: 110% }
   
   
          <h2 class="title">OSCAL namespace</h2>
-         <p class="p">Determine the element population of an OSCAL document (set) bmo XPath
-        <code class="code">distinct-values(//*/node-name())</code>
-         </p>
-         <p class="p">Valid OSCAL documents will not contain elements not described in this specification. While
-      OSCAL may be mixed with other tag sets, or extended, neither of these applications is
-      addressed in any way by this document. This document provides only bare-bones information
-      about the OSCAL <q class="q">core</q>.</p>
+         <p class="p">The element population of an OSCAL document (set) may be determined by means of XPath
+        <code class="code">distinct-values(//*/node-name())</code>, or analogous query.</p>
+         <p class="p">Conformant (valid) OSCAL documents will not contain elements not described in this
+      specification. While OSCAL may be mixed with other tag sets, or extended, neither of these
+      uses is described or circumscribed by this document, which provides only bare-bones
+      information about the OSCAL <q class="q">core</q>.</p>
          <p class="p">For its XML names, OSCAL uses the namespace <a class="xref">XXX http://scap.nist.gov/schema/oscal XXX</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
       without a prefix, <code class="code">oscal:</code> or any other.</p>
+         <p class="p">By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should
+      always strip the OSCAL namespace, to produce HTML in the appropriate namespace for the target
+      application. (Or the target application could learn to consume OSCAL.) Only some parts of
+      HTML, however, make their way into OSCAL, which is designed to address its own
+      requirements.</p>
   
-         <section class="group">
-            <h2 class="title">OSCAL terminology</h2>
-            <div class="control">
-               <h3/>
-               <p class="prop term">
-                  <span class="subst">term: </span>Control object</p>
-               <div class="stmt ">definition
-        <p class="p">OSCAL catalogs are comprised of control objects, typically arranged in groups. The
-          top-level control object is <code class="code">control</code>. Other control objects are subcontrols
-            (<code class="code">subcontrol</code>) and features (<code class="code">feat</code>). Subcontrols may only appear
-          (directly) within controls. Features may appear within controls or subcontrols, or may be
-          nested (to any depth) within features.</p>
-                  <p class="p">Control objects in OSCAL may be characterized as consistent data structures, whose
-          contents are appropriate to their type and application. The type of a control object is
-          labelled by means of its <code class="code">@class</code>. Control objects may validated for
-          consistency between and among objects of the same type, by means of constraining values
-          assigned to the control components (qv) appearing within them.</p>
-               </div>
-            </div>
-            <div class="control">
-               <h3/>
-               <p class="prop term">
-                  <span class="subst">term: </span>Control component</p>
-               <div class="stmt ">definition
-        <p class="p">Control components are information objects that constitute particular controls. They
-          include properties (<code class="code">prop</code>), statements (<code class="code">stmt</code>), features
-            (<code class="code">feat</code>), and parameters (<code class="code">param</code>).</p>
-                  <p class="p">Note that features (feat) are both control components (only appearing inside control
-          objects) and themselves control objects (which may contain their own properties,
-          statements, and features). As such they are <q class="q">transitional</q> objects. Indeed they may
-          be used for control components below the level of subcontrols. Typically, however, they
-          will be more fragmentary, not providing useful information outside the context of the
-          containing control object.</p>
-                  <p class="p">The appearance (whether required or optional), cardinality, and values (of any control
-          component) and/or components (of features) may be constrained and validated by means of
-          the OSCAL declarations model. This enables catalogs and catalog types to enforce
-          consistency of components across controls of identified and labeled types.</p>
-               </div>
-            </div>
-         </section>
+  
+         <h2 class="title">OSCAL organization</h2>
+         <p class="p">OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form
+        <q class="q">documentary</q> format, which includes semantic <q class="q">islands</q> of structured information.
+      These are <q class="q">semantic</q> not only because they are addressable in principle, but more
+      importantly because their organizations and values may be known (at least with respect to
+      certain operations and relations), before processing occurs, even (at the most general level)
+      before operations are designed and deployed. OSCAL offers a Yin to the Yang of query and
+      processing.</p>
+         <p class="p">At the broadest level, <q class="q">control objects</q> in OSCAL, as it is formally defined, include
+      controls, subcontrols (i.e. control extensions), parts of controls or subcontrols, and control
+      groups. In other words, <q class="q">control</q> over OSCAL data structures is offered at many levels at
+      once. It will be the job of a particular OSCAL application domain to determine what the most
+      appopriate level of description, for that domain, to describe best as <q class="q">control</q>,
+        <q class="q">subcontrol</q> etc.</p>
+         <p class="p">This organization is governed by an XML schema, which enforces containment constraints among
+      these elements. In particular, the OSCAL schema declares elements for <code class="code">control</code>,
+        <code class="code">subcontrol</code> and <code class="code">part</code>. According to its rules, subcontrols may only
+      appear within controls. Either controls or subcontrols may be partitioned (may contain parts),
+      and parts may contain their own parts. Any of these objects may be <q class="q">controlled</q> in the
+      sense that they may be used, consistently, to carry regular sets of properties, whose names
+      and value spaces may be known in advance, or discovered dynamically.</p>
+  
+  
+         <h2 class="title">Interoperability with other data formats</h2>
+         <p class="p">OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language
+      including HTML, Markdown and its variants, NISO JATS, DITA, etc. etc. Additionally, OSCAL
+      documents may be taken as <q class="q">warrants for inference</q> for serialization of linked data
+      objects or other application binding formats including JSON.</p>
+         <p class="p">Because OSCAL is semantically richer and denser than most markup languages as used, however,
+      automated conversion into OSCAL from any of these formats is likely to require tuning or
+      customization per instance - that is, each one will be a one-off conversion.</p>
+  
          <section class="group">
             <h2 class="title">Controls and control components</h2>
             <div class="control">
@@ -121,6 +118,9 @@ div div div h3 { font-size: 110% }
                <div class="stmt ">description
         <p class="p">A structured information object representing a security control</p>
                </div>
+               <div class="stmt ">remarks
+        <p class="p">Controls may be grouped using <code class="code">group</code>, and </p>
+               </div>
             </div>
             <div class="control">
                <h3/>
@@ -129,21 +129,13 @@ div div div h3 { font-size: 110% }
                <p class="prop full_name">
                   <span class="subst">full_name: </span>Control enhancement</p>
                <div class="stmt ">description
-        <p class="p">Within a control, a control object appearing as a component</p>
+        <p class="p">Within a control, a component or enhancement</p>
                </div>
                <div class="stmt ">remarks
-        <p class="p">This is a control object, just like a control, only related to a particular control by
-          virtue of containment in the OSCAL instance. Control enhancements (subcontrols) may
-          contain their own enhancements as well as control components (properties, statements
-          etc.).</p>
-                  <p class="p">Because either <code class="code">control</code> or <code class="code">subcontrol</code> may be grouped, the schema
-          does not absolutely constrain that <code class="code">subcontrol</code> appear only within
-            <code class="code">control</code> and never the reverse: this enforcement is left to a
-          Schematron.</p>
-                  <p class="p">Albeit not absolutely forbidden by the schema, the rule is that while both controls and
-          subcontrols may contain subcontrols, neither may contain controls. That is, in any
-          catalog, a control is only the <q class="q">top level</q> of control object (even if gathered in
-          groups) – all else is subcontrols (control enhancements) or control contents.</p>
+        <p class="p">A nominal subcontrol or <q class="q">control enhancement</q>, permitting catalogs easily to provide
+          access to structured data at two levels. Further levels down can be achieved using
+            <code class="code">part</code> (both controls and subcontrols may be partitioned) which may contain
+          their own parts</p>
                </div>
             </div>
             <div class="control">

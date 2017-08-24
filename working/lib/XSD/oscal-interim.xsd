@@ -45,7 +45,11 @@
       <xs:element ref="oscal:declare-link"/>
     </xs:choice>
   </xs:complexType>
-  <!-- parameter declarations expose names and default values for parameters within the control type -->
+  <!--
+    parameter declarations expose names and default values for parameters within the control type
+    XXX not implemented: for now, parameters are declared implicitly (i.e. in use)
+    We can add this (w/ support for it) when we wish to constrain them at the OSCAL layer
+  -->
   <!--
     parameter_decl =
     element declare-param { requiredClass, contextAttr, singleton?, desc, \default? }
@@ -424,12 +428,30 @@
       </xs:choice>
     </xs:sequence>
   </xs:group>
+  <xs:element name="q">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:i"/>
+        <xs:element ref="oscal:b"/>
+        <xs:element ref="oscal:sub"/>
+        <xs:element ref="oscal:sup"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <!-- A bit of code (perhaps capable of evaluation in the correct context) -->
+  <xs:element name="code">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal:mix"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="em">
     <xs:complexType mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group ref="oscal:mix"/>
         <xs:element ref="oscal:a"/>
       </xs:choice>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="i">
@@ -438,6 +460,7 @@
         <xs:group ref="oscal:mix"/>
         <xs:element ref="oscal:a"/>
       </xs:choice>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="b">
@@ -446,26 +469,17 @@
         <xs:group ref="oscal:mix"/>
         <xs:element ref="oscal:a"/>
       </xs:choice>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="sub" type="xs:string"/>
-  <xs:element name="sup" type="xs:string"/>
-  <xs:element name="a">
+  <xs:element name="sub">
     <xs:complexType mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal:q"/>
-        <xs:element ref="oscal:code"/>
-        <xs:element name="em" type="xs:string"/>
-      </xs:choice>
-      <xs:attribute name="href"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="q" type="xs:string"/>
-  <!-- A bit of code (perhaps capable of evaluation in the correct context) -->
-  <xs:element name="code">
+  <xs:element name="sup">
     <xs:complexType mixed="true">
-      <xs:group ref="oscal:mix"/>
-      <xs:attribute name="type"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <!-- An arbitrary span -->
@@ -476,6 +490,21 @@
         <xs:element ref="oscal:a"/>
       </xs:choice>
       <xs:attributeGroup ref="oscal:optionalClass"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Using HTML for this -->
+  <xs:element name="a">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:q"/>
+        <xs:element ref="oscal:code"/>
+        <xs:element name="em">
+          <xs:complexType mixed="true">
+            <xs:attributeGroup ref="oscal:optionalClass"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:attribute name="href"/>
     </xs:complexType>
   </xs:element>
   <!-- not html! -->
@@ -526,10 +555,14 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
+  <!-- IDs are required everywhere for now -->
   <xs:attributeGroup name="idAttr">
     <xs:attribute name="id" type="xs:ID"/>
   </xs:attributeGroup>
-  <!-- collapsing 'names' and 'types' as classes, HTML-style -->
+  <!--
+    we used to distinguish btw @type and @name the latter for components
+    now we overload 'class' every which way
+  -->
   <xs:attributeGroup name="requiredClass">
     <xs:attribute name="class" use="required"/>
   </xs:attributeGroup>

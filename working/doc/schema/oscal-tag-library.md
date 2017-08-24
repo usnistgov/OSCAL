@@ -4,31 +4,27 @@
 
 ## OSCAL namespace 
 
-Determine the element population of an OSCAL document (set) bmo XPath distinct-values(//*/node-name()) 
+The element population of an OSCAL document (set) may be determined by means of XPath distinct-values(//*/node-name()), or analogous query. 
 
-Valid OSCAL documents will not contain elements not described in this specification. While OSCAL may be mixed with other tag sets, or extended, neither of these applications is addressed in any way by this document. This document provides only bare-bones information about the OSCAL core. 
+Conformant (valid) OSCAL documents will not contain elements not described in this specification. While OSCAL may be mixed with other tag sets, or extended, neither of these uses is described or circumscribed by this document, which provides only bare-bones information about the OSCAL core. 
 
-For its XML names, OSCAL uses the namespace XXX http://scap.nist.gov/schema/oscal XXX. Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced without a prefix, oscal: or any other.  
+For its XML names, OSCAL uses the namespace XXX http://scap.nist.gov/schema/oscal XXX. Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced without a prefix, oscal: or any other. 
 
-## OSCAL terminology 
+By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should always strip the OSCAL namespace, to produce HTML in the appropriate namespace for the target application. (Or the target application could learn to consume OSCAL.) Only some parts of HTML, however, make their way into OSCAL, which is designed to address its own requirements. 
 
-###  
+## OSCAL organization 
 
-term: Control object definition 
+OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form documentary format, which includes semantic islands of structured information. These are semantic not only because they are addressable in principle, but more importantly because their organizations and values may be known (at least with respect to certain operations and relations), before processing occurs, even (at the most general level) before operations are designed and deployed. OSCAL offers a Yin to the Yang of query and processing. 
 
-OSCAL catalogs are comprised of control objects, typically arranged in groups. The top-level control object is control. Other control objects are subcontrols (subcontrol) and features (feat). Subcontrols may only appear (directly) within controls. Features may appear within controls or subcontrols, or may be nested (to any depth) within features. 
+At the broadest level, control objects in OSCAL, as it is formally defined, include controls, subcontrols (i.e. control extensions), parts of controls or subcontrols, and control groups. In other words, control over OSCAL data structures is offered at many levels at once. It will be the job of a particular OSCAL application domain to determine what the most appopriate level of description, for that domain, to describe best as control, subcontrol etc. 
 
-Control objects in OSCAL may be characterized as consistent data structures, whose contents are appropriate to their type and application. The type of a control object is labelled by means of its @class. Control objects may validated for consistency between and among objects of the same type, by means of constraining values assigned to the control components (qv) appearing within them.   
+This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for control, subcontrol and part. According to its rules, subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. Any of these objects may be controlled in the sense that they may be used, consistently, to carry regular sets of properties, whose names and value spaces may be known in advance, or discovered dynamically. 
 
-###  
+## Interoperability with other data formats 
 
-term: Control component definition 
+OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language including HTML, Markdown and its variants, NISO JATS, DITA, etc. etc. Additionally, OSCAL documents may be taken as warrants for inference for serialization of linked data objects or other application binding formats including JSON. 
 
-Control components are information objects that constitute particular controls. They include properties (prop), statements (stmt), features (feat), and parameters (param). 
-
-Note that features (feat) are both control components (only appearing inside control objects) and themselves control objects (which may contain their own properties, statements, and features). As such they are transitional objects. Indeed they may be used for control components below the level of subcontrols. Typically, however, they will be more fragmentary, not providing useful information outside the context of the containing control object. 
-
-The appearance (whether required or optional), cardinality, and values (of any control component) and/or components (of features) may be constrained and validated by means of the OSCAL declarations model. This enables catalogs and catalog types to enforce consistency of components across controls of identified and labeled types.     
+Because OSCAL is semantically richer and denser than most markup languages as used, however, automated conversion into OSCAL from any of these formats is likely to require tuning or customization per instance - that is, each one will be a one-off conversion.  
 
 ## Controls and control components 
 
@@ -58,7 +54,9 @@ tag: control
 
 full_name: Control description 
 
-A structured information object representing a security control   
+A structured information object representing a security control  remarks 
+
+Controls may be grouped using group, and    
 
 ###  
 
@@ -66,13 +64,9 @@ tag: subcontrol
 
 full_name: Control enhancement description 
 
-Within a control, a control object appearing as a component  remarks 
+Within a control, a component or enhancement  remarks 
 
-This is a control object, just like a control, only related to a particular control by virtue of containment in the OSCAL instance. Control enhancements (subcontrols) may contain their own enhancements as well as control components (properties, statements etc.). 
-
-Because either control or subcontrol may be grouped, the schema does not absolutely constrain that subcontrol appear only within control and never the reverse: this enforcement is left to a Schematron. 
-
-Albeit not absolutely forbidden by the schema, the rule is that while both controls and subcontrols may contain subcontrols, neither may contain controls. That is, in any catalog, a control is only the top level of control object (even if gathered in groups) – all else is subcontrols (control enhancements) or control contents.   
+A nominal subcontrol or control enhancement, permitting catalogs easily to provide access to structured data at two levels. Further levels down can be achieved using part (both controls and subcontrols may be partitioned) which may contain their own parts   
 
 ###  
 

@@ -243,7 +243,7 @@
    <xs:element name="subcontrol">
       <xs:annotation>
          <xs:documentation>
-            <b>Control enhancement</b> Within a control, a control object appearing as a component</xs:documentation>
+            <b>Control enhancement</b> Within a control, a component or enhancement</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -496,6 +496,30 @@
          </xs:choice>
       </xs:sequence>
    </xs:group>
+   <xs:element name="q">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Quoted text</b> An inline segment to appear within quotation marks</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal:i"/>
+            <xs:element ref="oscal:b"/>
+            <xs:element ref="oscal:sub"/>
+            <xs:element ref="oscal:sup"/>
+         </xs:choice>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="code">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Code</b> Inline code</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal:mix"/>
+         <xs:attributeGroup ref="oscal:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="em">
       <xs:annotation>
          <xs:documentation>
@@ -506,6 +530,7 @@
             <xs:group ref="oscal:mix"/>
             <xs:element ref="oscal:a"/>
          </xs:choice>
+         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="i">
@@ -518,6 +543,7 @@
             <xs:group ref="oscal:mix"/>
             <xs:element ref="oscal:a"/>
          </xs:choice>
+         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="b">
@@ -530,53 +556,25 @@
             <xs:group ref="oscal:mix"/>
             <xs:element ref="oscal:a"/>
          </xs:choice>
+         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="sub" type="xs:string">
+   <xs:element name="sub">
       <xs:annotation>
          <xs:documentation>
             <b>Subscript</b> Subscripted text</xs:documentation>
       </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attributeGroup ref="oscal:optionalClass"/>
+      </xs:complexType>
    </xs:element>
-   <xs:element name="sup" type="xs:string">
+   <xs:element name="sup">
       <xs:annotation>
          <xs:documentation>
             <b>Superscript</b> Superscripted text</xs:documentation>
       </xs:annotation>
-   </xs:element>
-   <xs:element name="a">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Anchor</b> An HTML-style anchor (inline linking element)</xs:documentation>
-      </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal:q"/>
-            <xs:element ref="oscal:code"/>
-            <xs:element name="em" type="xs:string">
-               <xs:annotation>
-                  <xs:documentation>
-                     <b>Emphasis</b> Rhetorical emphasis as indicated typically by a font shift</xs:documentation>
-               </xs:annotation>
-            </xs:element>
-         </xs:choice>
-         <xs:attribute name="href"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="q" type="xs:string">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Quoted text</b> An inline segment to appear within quotation marks</xs:documentation>
-      </xs:annotation>
-   </xs:element>
-   <xs:element name="code">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Code</b> Inline code</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal:mix"/>
-         <xs:attribute name="type"/>
+         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="span">
@@ -590,6 +588,28 @@
             <xs:element ref="oscal:a"/>
          </xs:choice>
          <xs:attributeGroup ref="oscal:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="a">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Anchor</b> An HTML-style anchor (inline linking element)</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal:q"/>
+            <xs:element ref="oscal:code"/>
+            <xs:element name="em">
+               <xs:annotation>
+                  <xs:documentation>
+                     <b>Emphasis</b> Rhetorical emphasis as indicated typically by a font shift</xs:documentation>
+               </xs:annotation>
+               <xs:complexType mixed="true">
+                  <xs:attributeGroup ref="oscal:optionalClass"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:choice>
+         <xs:attribute name="href"/>
       </xs:complexType>
    </xs:element>
    <xs:group name="semantical">
