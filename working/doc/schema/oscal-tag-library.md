@@ -28,6 +28,8 @@ Because OSCAL is semantically richer and denser than most markup languages as us
 
 ## Controls and control components 
 
+The foundations of OSCAL are in control objects, such as controls and subcontrols, and their components, including both controlled components, and relatively uncontrolled or free-form contents. The latter category of information is described elsewhere as Prose. The former category is described here. 
+
 ### &lt;catalog> Catalog   
 
 Top-level element for a (canonical) control catalog   
@@ -74,6 +76,10 @@ When singletons (that is, the only element among siblings with its @class), prop
 
 Properties the deployment and management of arbitrary controlled values, with and among control objects (controls and their formal enhancements), for any purpose useful to an application or implementation of those controls. Typically and routinely, properties will be used to sort, select, order and arrange controls or relate them to one another or to class hierarchies, taxonomies or external authorities.   
 
+### &lt;param> Parameter   
+
+A parameter setting, to be propagated to points of insertion   
+
 ### &lt;part> Part   
 
 A component or partition in a control, subcontrol or part  
@@ -86,15 +92,11 @@ An assigned class may frequently provide for a header in display, such that part
 
 ### &lt;link> Link   
 
-A line or paragraph with a hypertext link   
-
-### &lt;param> Parameter   
-
-A parameter setting, to be propagated to points of insertion     
+A line or paragraph with a hypertext link     
 
 ## Functional elements 
 
-Functional elements appear inside control content to provide "hooks" to OSCAL processors for dynamic insertion. 
+Functional elements appear inside control content to provide "hooks" to OSCAL processors, for retrievability, manipulation (including mapping and transformation) and semantic traversal. 
 
 ### &lt;withdrawn> Withdrawn   
 
@@ -102,21 +104,19 @@ Indicates that a containing control or subcontrol is no longer applicable
 
 ##### remarks 
 
-Used to mark a control or subcontrol included in a catalog as a placeholder,    
+Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain its semantic integrity even in obsolescence. Links should be provided to superseding controls or components.   
 
 ### &lt;insert> Parameter insertion   
 
-A reference to a parameter for dynamic content transclusion   
-
-### &lt;select> Selection   
-
-A selection requiring designation via parameter   
-
-### &lt;choice> Choice   
-
-A choice of values, to be designated via parameter     
+A "call" (reference) to a parameter for dynamic content transclusion     
 
 ## Declarations elements 
+
+By declaring constraints on control components, such as properties ([&lt;prop>](#prop-property)), parts ([&lt;part>](#part-part)) and links ([&lt;link>](#link-link)) within controls and subcontrols, applications and operators can validate the regularity and composition of available controls. By documenting constraints that are enforceable at need, Declarations also serve as an implicit "semantic contract" between a control catalog (or set of controls valid to a set of OSCAL declarations) 
+
+In this way, the OSCAL declarations mechanism provides for a kind of "on the fly supertyping" of control objects, by restriction (constraint) of the core OSCAL language. The extent and degree to which declarations are used to impose order on controls is up to the application and its methods: by no means are declarations necessary; rather, they serve as an aid in modeling and in communicating expectations. 
+
+OSCAL declarations are enforced by a Schematron; the core schema stipulates their model, but does not enforce any of the constraints so declared. Developers should take note that these constraints are all readily testable in XPath. 
 
 ### &lt;declarations> Declarations   
 
@@ -180,7 +180,7 @@ Indicates a permissible value for a parameter or property
 
 ##### remarks 
 
-In a declaration, [&lt;value>](#value-value-constraint) will be given in groups, indicating a set of enumerated permissible values. 
+In a declaration, [&lt;value>](#value-value-constraint) will commonly be given in groups, indicating a set of enumerated permissible values. (I.e. for an element to be valid to a value constraint, it must equal one of the given values). 
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".   
 
@@ -194,7 +194,9 @@ In a declaration, [&lt;value>](#value-value-constraint) will be given in groups,
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack". 
 
-The *contents*, not the value of any attribute, will be taken by the processor to be a formatting code. The format should follow the spec for XSLT xsl:number/@format. For example, if the value is "A." then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper and lower case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.   
+The *contents*, not the value of any attribute, will be taken by the processor to be a formatting code. The format should follow the spec for XSLT xsl:number/@format. For example, if the value is "A." then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper and lower case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT. 
+
+The best way to understand the workings of this element is to see operational examples.   
 
 ### &lt;inherit> Inherited value constraint   
 
@@ -206,7 +208,9 @@ Indicates that a value or part of a value will be inherited from a property on a
 
 Usually, [&lt;inherit>](#inherit-inherited-value-constraint) is used in conjunction with [&lt;autonum>](#autonum-autonumbered-(generated)-value) (qv). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b" etc., depending on the position of the subcontrol within the control. 
 
-If a value must inherit from a property of a different class from the containing control object, inherit/@from can be used to indicate the applicable property (by its class). By default, [&lt;inherit>](#inherit-inherited-value-constraint) indicates a property value should match an ancestor's property with the same @class (the most usual case).   
+If a value must inherit from a property of a different class from the containing control object, inherit/@from can be used to indicate the applicable property (by its class). By default, [&lt;inherit>](#inherit-inherited-value-constraint) indicates a property value should match an ancestor's property with the same @class (the most usual case). 
+
+The best way to understand the workings of this element is to see operational examples.   
 
 ### &lt;desc> Parameter description   
 
@@ -234,11 +238,17 @@ In addition to controls or groups, groups may be titled and may have their own p
 
 Unlike sections ([&lt;section>](#section-division) elements), groups may not contain arbitrary prose (paragraphs and lists). They may however contain statements (stmt), which may be untyped (no @class) and therefore unconstrained by declarations.   
 
-### &lt;title> Title    
+### &lt;title> Title   
 
-### &lt;references> References    
+A fallback for display and navigation, exclusive of more specific properties   
 
-### &lt;ref> Reference    
+### &lt;references> References   
+
+A group of reference descriptions   
+
+### &lt;ref> Reference   
+
+A reference, with one or more citations to standards, related documents or other resources   
 
 ### &lt;std> Standard   
 
@@ -260,6 +270,10 @@ For references to standards, [&lt;std>](#std-standard) (qv) may be preferred.
 
 ## Prose 
 
+Prose may ordinarily appear anywhere, in a control, subcontrol or part, or at a higher level. Prose elements echo HTML semantics, although they provide only a deliberately and specifically narrow subset of HTML element types. 
+
+Prose elements may be constrained by declarations like other control components, although this may not often be as useful as imposing constraints over properties and parts. Frequently, a part organization will be used to assign prose to specific known "sections" or "components" of a control (modeled as [&lt;part>](#part-part) or [&lt;subcontrol>](#subcontrol-control-enhancement)). 
+
 ### &lt;p> Paragraph   
 
 Or paragraph fragment  
@@ -276,15 +290,29 @@ Retains whitespace in display
 
 Echoes HTML [&lt;pre>](#pre-preformatted-text).   
 
-### &lt;ol> Ordered List    
+### &lt;ol> Ordered List   
 
-### &lt;li> List item    
-
-### &lt;ul> Unordered list   
+Appears with numbering in ordinal position  
 
 ##### remarks 
 
-As in HTML, "unordered" does not indicate that the order of contained list items is not respected, only that they are not displayed with any notation indicating their order: that is, bullets, not numbers.   
+Although this echoes HTML [&lt;ol>](#ol-ordered-list), renditional aspects of this element are not offered by OSCAL. How numbering of lists are to be numbered is left to implementations; it is likely that specific control catalogs will have their own schemes. 
+
+At present there is no support for "continued lists" as we have not seen any in documents in scope for analysis.   
+
+### &lt;ul> Unordered list   
+
+A series of items kept in order but without indicators of sequence, likely bulleted  
+
+##### remarks 
+
+As in HTML, "unordered" does not indicate that the order of contained list items is not respected, only that they are not displayed with any notation indicating their order: that is, bullets, not numbers. 
+
+Note that when sequences or lists appear, it may be as common in OSCAL to list (and control) them as sequences of properties or paragraphs, perhaps grouped in parts or subcontrols. This is very much a display element, convenient when what we have is really prose, not highly organized or "semantic".   
+
+### &lt;li> List item   
+
+An item demarcated with bullet or numerator   
 
 ### &lt;em> Emphasis   
 

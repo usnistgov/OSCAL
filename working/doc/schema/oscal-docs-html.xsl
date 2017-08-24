@@ -65,11 +65,10 @@ div div div h3 { font-size: 110% }
     <xsl:template match="oscal:title" mode="title">
       <xsl:value-of select="."/>
     </xsl:template>
-
- 
   
   <xsl:template match="oscal:group">
     <section class="group">
+      <xsl:copy-of select="@class | @id"/>
       <xsl:apply-templates/>
     </section>
   </xsl:template>
@@ -80,6 +79,7 @@ div div div h3 { font-size: 110% }
     use="concat(@context,'#',@role)"/>-->
   
   <!--<xsl:key name="assignment"  match="oscal:param" use="@target"/>-->
+  
   
   <xsl:template match="oscal:control">
     <div class="control {@class}">
@@ -202,6 +202,17 @@ div div div h3 { font-size: 110% }
     </div>
   </xsl:template>
 
+<!-- They're all internal links (they better be) -->
+  <xsl:template match="oscal:a[contains(@href,'#')]">
+    <a class="xref">
+      <xsl:attribute name="href">
+        <xsl:text>#</xsl:text>
+        <xsl:value-of select="substring-after(.,'#')"/>
+      </xsl:attribute>
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
+  
   <xsl:template match="oscal:a">
     <a class="xref">
       <xsl:copy-of select="@href"/>

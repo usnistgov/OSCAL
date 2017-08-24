@@ -74,6 +74,10 @@
   </section>
   <group>
     <title>Controls and control components</title>
+    <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
+      components, including both controlled components, and relatively uncontrolled or free-form
+      contents. The latter category of information is described elsewhere as <a
+        href="oscal-oscal.xml#prose">Prose</a>. The former category is described here.</p>
     <control class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
@@ -189,8 +193,9 @@
   </group>
   <group>
     <title>Functional elements</title>
-    <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL processors
-      for dynamic insertion.</p>
+    <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
+      processors, for retrievability, manipulation (including mapping and transformation) and
+      semantic traversal.</p>
     <control class="element-description">
       <prop class="tag">withdrawn</prop>
       <prop class="full_name">Withdrawn</prop>
@@ -198,33 +203,37 @@
         <p>Indicates that a containing control or subcontrol is no longer applicable</p>
       </part>
       <part class="remarks">
-        <p>Used to mark a control or subcontrol included in a catalog as a placeholder, </p>
+        <p>Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain
+          its semantic integrity even in obsolescence. Links should be provided to superseding
+          controls or components.</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">insert</prop>
       <prop class="full_name">Parameter insertion</prop>
       <part class="description">
-        <p>A reference to a parameter for dynamic content transclusion</p>
+        <p>A <q>call</q> (reference) to a parameter for dynamic content transclusion</p>
       </part>
     </control>
-    <control class="element-description">
-      <prop class="tag">select</prop>
-      <prop class="full_name">Selection</prop>
-      <part class="description">
-        <p>A selection requiring designation via parameter</p>
-      </part>
-    </control>
-    <control class="element-description">
-      <prop class="tag">choice</prop>
-      <prop class="full_name">Choice</prop>
-      <part class="description">
-        <p>A choice of values, to be designated via parameter</p>
-      </part>
-    </control>
+    <!--<control class="element-description"><prop class="tag">select</prop><prop class="full_name">Selection</prop><part class="description"><p>A selection requiring designation via parameter (tbd)</p></part></control>-->
+    <!--<control class="element-description"><prop class="tag">choice</prop><prop class="full_name">Choice</prop><part class="description"><p>A choice of values, to be designated via parameter (tbd)</p></part></control>-->
   </group>
   <group>
     <title>Declarations elements</title>
+    <p>By declaring constraints on control components, such as properties (<code>prop</code>), parts
+        (<code>part</code>) and links (<code>link</code>) within controls and subcontrols,
+      applications and operators can validate the regularity and composition of available controls.
+      By documenting constraints that are enforceable at need, Declarations also serve as an
+      implicit <q>semantic contract</q> between a control catalog (or set of controls valid to a set
+      of OSCAL declarations)</p>
+    <p>In this way, the OSCAL declarations mechanism provides for a kind of <q>on the fly
+        supertyping</q> of control objects, by restriction (constraint) of the core OSCAL language.
+      The extent and degree to which declarations are used to impose order on controls is up to the
+      application and its methods: by no means are declarations necessary; rather, they serve as an
+      aid in modeling and in communicating expectations.</p>
+    <p>OSCAL declarations are enforced by a Schematron; the core schema stipulates their model, but
+      does not enforce any of the constraints so declared. Developers should take note that these
+      constraints are all readily testable in XPath.</p>
     <control class="element-description">
       <prop class="tag">declarations</prop>
       <prop class="full_name">Declarations</prop>
@@ -485,7 +494,7 @@
       </part>
     </control>
   </group>
-  <group>
+  <group id="prose">
     <title>Prose</title>
     <p>Prose may ordinarily appear anywhere, in a control, subcontrol or part, or at a higher level.
       Prose elements echo HTML semantics, although they provide only a deliberately and specifically
@@ -530,7 +539,6 @@
         <p>At present there is no support for <q>continued lists</q> as we have not seen any in
           documents in scope for analysis.</p>
       </part>
-      
     </control>
     <control class="element-description">
       <prop class="tag">ul</prop>
@@ -554,7 +562,6 @@
       <part class="description">
         <p>An item demarcated with bullet or numerator</p>
       </part>
-      
     </control>
     <control class="element-description">
       <prop class="tag">em</prop>

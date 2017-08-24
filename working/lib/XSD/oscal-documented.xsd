@@ -279,8 +279,7 @@
    <xs:element name="title">
       <xs:annotation>
          <xs:documentation>
-            <b>Title</b> 
-         </xs:documentation>
+            <b>Title</b> A fallback for display and navigation, exclusive of more specific properties</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:sequence>
@@ -355,8 +354,7 @@
    <xs:element name="references">
       <xs:annotation>
          <xs:documentation>
-            <b>References</b> 
-         </xs:documentation>
+            <b>References</b> A group of reference descriptions</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -367,8 +365,8 @@
    <xs:element name="ref">
       <xs:annotation>
          <xs:documentation>
-            <b>Reference</b> 
-         </xs:documentation>
+            <b>Reference</b> A reference, with one or more citations to standards, related documents or other
+          resources</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -432,8 +430,7 @@
    <xs:element name="ol">
       <xs:annotation>
          <xs:documentation>
-            <b>Ordered List</b> 
-         </xs:documentation>
+            <b>Ordered List</b> Appears with numbering in ordinal position</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -444,8 +441,7 @@
    <xs:element name="li">
       <xs:annotation>
          <xs:documentation>
-            <b>List item</b> 
-         </xs:documentation>
+            <b>List item</b> An item demarcated with bullet or numerator</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -460,8 +456,7 @@
    <xs:element name="ul">
       <xs:annotation>
          <xs:documentation>
-            <b>Unordered list</b> 
-         </xs:documentation>
+            <b>Unordered list</b> A series of items kept in order but without indicators of sequence, likely bulleted</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -618,7 +613,6 @@
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="oscal:withdrawn"/>
             <xs:element ref="oscal:insert"/>
-            <xs:element ref="oscal:select"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>
@@ -634,35 +628,11 @@
    <xs:element name="insert">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter insertion</b> A reference to a parameter for dynamic content transclusion</xs:documentation>
+            <b>Parameter insertion</b> A <q xmlns="http://scap.nist.gov/schema/oscal">call</q> (reference) to a parameter for dynamic content transclusion</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attributeGroup ref="oscal:idAttr"/>
          <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="select">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Selection</b> A selection requiring designation via parameter</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:choice"/>
-         </xs:sequence>
-         <xs:attributeGroup ref="oscal:idAttr"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="choice">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Choice</b> A choice of values, to be designated via parameter</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal:insert"/>
-            <xs:group ref="oscal:mix"/>
-         </xs:choice>
       </xs:complexType>
    </xs:element>
    <xs:attributeGroup name="idAttr">

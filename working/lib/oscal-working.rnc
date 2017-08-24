@@ -224,12 +224,13 @@ withdrawn = element withdrawn { (inlines | text)* }
 assign = element insert { idAttr,
   attribute param-id { xsd:IDREF } }
 
-# A selection to be made by responder
-select = element select { idAttr, choice* }
+# A selection to be made by responder - tbd
+select = empty
+# select = element select { idAttr, choice* }
 
-# Within a selection, a choice
+# Within a selection, a choice - tbd
 # unlike 'value', choice may have inline stuff as well as 'assign' elements
-choice = element choice { (assign | mix)* }
+# choice = element choice { (assign | mix)* }
 
 # IDs are required everywhere for now
 idAttr      = attribute id { xsd:ID }?

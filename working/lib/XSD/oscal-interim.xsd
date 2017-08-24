@@ -514,7 +514,6 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:withdrawn"/>
         <xs:element ref="oscal:insert"/>
-        <xs:element ref="oscal:select"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
@@ -534,27 +533,13 @@
       <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
     </xs:complexType>
   </xs:element>
-  <!-- A selection to be made by responder -->
-  <xs:element name="select">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:choice"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
-    </xs:complexType>
-  </xs:element>
+  <!-- A selection to be made by responder - tbd -->
+  <!-- select = element select { idAttr, choice* } -->
   <!--
-    Within a selection, a choice
+    Within a selection, a choice - tbd
     unlike 'value', choice may have inline stuff as well as 'assign' elements
+    choice = element choice { (assign | mix)* }
   -->
-  <xs:element name="choice">
-    <xs:complexType mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal:insert"/>
-        <xs:group ref="oscal:mix"/>
-      </xs:choice>
-    </xs:complexType>
-  </xs:element>
   <!-- IDs are required everywhere for now -->
   <xs:attributeGroup name="idAttr">
     <xs:attribute name="id" type="xs:ID"/>

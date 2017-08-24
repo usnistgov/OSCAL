@@ -90,6 +90,9 @@ div div div h3 { font-size: 110% }
   
          <section class="group">
             <h2 class="title">Controls and control components</h2>
+            <p class="p">The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
+      components, including both controlled components, and relatively uncontrolled or free-form
+      contents. The latter category of information is described elsewhere as <a class="xref" href="#">Prose</a>. The former category is described here.</p>
             <div class="control element-description" id="tag_catalog">
                <h3>
                   <span class="run-in subst tag">catalog</span> 
@@ -199,6 +202,17 @@ div div div h3 { font-size: 110% }
           class hierarchies, taxonomies or external authorities.</p>
                </div>
             </div>
+            <div class="control element-description" id="tag_param">
+               <h3>
+                  <span class="run-in subst tag">param</span> 
+                  <span class="run-in subst full_name">Parameter</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A parameter setting, to be propagated to points of insertion</p>
+               </div>
+            </div>
             <div class="control element-description" id="tag_part">
                <h3>
                   <span class="run-in subst tag">part</span> 
@@ -242,23 +256,12 @@ div div div h3 { font-size: 110% }
                </div>
       
             </div>
-            <div class="control element-description" id="tag_param">
-               <h3>
-                  <span class="run-in subst tag">param</span> 
-                  <span class="run-in subst full_name">Parameter</span> 
-               </h3>
-      
-      
-               <div class="part description">
-                  <p class="p">A parameter setting, to be propagated to points of insertion</p>
-               </div>
-      
-            </div>
          </section>
          <section class="group">
             <h2 class="title">Functional elements</h2>
-            <p class="p">Functional elements appear inside control content to provide <q class="q">hooks</q> to OSCAL processors
-      for dynamic insertion.</p>
+            <p class="p">Functional elements appear inside control content to provide <q class="q">hooks</q> to OSCAL
+      processors, for retrievability, manipulation (including mapping and transformation) and
+      semantic traversal.</p>
             <div class="control element-description" id="tag_withdrawn">
                <h3>
                   <span class="run-in subst tag">withdrawn</span> 
@@ -271,7 +274,9 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, </p>
+                  <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain
+          its semantic integrity even in obsolescence. Links should be provided to superseding
+          controls or components.</p>
                </div>
             </div>
             <div class="control element-description" id="tag_insert">
@@ -282,34 +287,34 @@ div div div h3 { font-size: 110% }
       
       
                <div class="part description">
-                  <p class="p">A reference to a parameter for dynamic content transclusion</p>
+                  <p class="p">A <q class="q">call</q> (reference) to a parameter for dynamic content transclusion</p>
                </div>
             </div>
-            <div class="control element-description" id="tag_select">
-               <h3>
-                  <span class="run-in subst tag">select</span> 
-                  <span class="run-in subst full_name">Selection</span> 
-               </h3>
-      
-      
-               <div class="part description">
-                  <p class="p">A selection requiring designation via parameter</p>
-               </div>
-            </div>
-            <div class="control element-description" id="tag_choice">
-               <h3>
-                  <span class="run-in subst tag">choice</span> 
-                  <span class="run-in subst full_name">Choice</span> 
-               </h3>
-      
-      
-               <div class="part description">
-                  <p class="p">A choice of values, to be designated via parameter</p>
-               </div>
-            </div>
+    
+    
          </section>
          <section class="group">
             <h2 class="title">Declarations elements</h2>
+            <p class="p">By declaring constraints on control components, such as properties (<code class="code prop">
+                  <a href="#tag_prop">prop</a>
+               </code>), parts
+        (<code class="code part">
+                  <a href="#tag_part">part</a>
+               </code>) and links (<code class="code link">
+                  <a href="#tag_link">link</a>
+               </code>) within controls and subcontrols,
+      applications and operators can validate the regularity and composition of available controls.
+      By documenting constraints that are enforceable at need, Declarations also serve as an
+      implicit <q class="q">semantic contract</q> between a control catalog (or set of controls valid to a set
+      of OSCAL declarations)</p>
+            <p class="p">In this way, the OSCAL declarations mechanism provides for a kind of <q class="q">on the fly
+        supertyping</q> of control objects, by restriction (constraint) of the core OSCAL language.
+      The extent and degree to which declarations are used to impose order on controls is up to the
+      application and its methods: by no means are declarations necessary; rather, they serve as an
+      aid in modeling and in communicating expectations.</p>
+            <p class="p">OSCAL declarations are enforced by a Schematron; the core schema stipulates their model, but
+      does not enforce any of the constraints so declared. Developers should take note that these
+      constraints are all readily testable in XPath.</p>
             <div class="control element-description" id="tag_declarations">
                <h3>
                   <span class="run-in subst tag">declarations</span> 
@@ -490,8 +495,9 @@ div div div h3 { font-size: 110% }
                   <h5 class="remarks">remarks</h5>
                   <p class="p">In a declaration, <code class="code value">
                         <a href="#tag_value">value</a>
-                     </code> will be given in groups, indicating a set of
-          enumerated permissible values.</p>
+                     </code> will commonly be given in groups, indicating a set
+          of enumerated permissible values. (I.e. for an element to be valid to a value constraint,
+          it must equal one of the given values).</p>
                   <p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any
           value given at the point of insertion. When parameters are provided in OSCAL profiles,
           their values will override any values assigned <q class="q">lower down the stack</q>.</p>
@@ -519,11 +525,13 @@ div div div h3 { font-size: 110% }
           value given at the point of insertion. When parameters are provided in OSCAL profiles,
           their values will override any values assigned <q class="q">lower down the stack</q>.</p>
                   <p class="p">The <em class="em">contents</em>, not the value of any attribute, will be taken by the processor to
-          be a formatting code. The format should follow the spec for <a class="xref" href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
+          be a formatting code. The format should follow the spec for <a class="xref" href="#">XSLT
               xsl:number/@format</a>. For example, if the value is <q class="q">A.</q> then
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
           include upper and lower case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
+                  <p class="p">The best way to understand the workings of this element is to see operational
+          examples.</p>
                </div>
       
             </div>
@@ -571,6 +579,8 @@ div div div h3 { font-size: 110% }
                         <a href="#tag_inherit">inherit</a>
                      </code> indicates a property value should match an
           ancestor's property with the same @class (the most usual case).</p>
+                  <p class="p">The best way to understand the workings of this element is to see operational
+          examples.</p>
                </div>
             </div>
             <div class="control element-description" id="tag_desc">
@@ -641,7 +651,9 @@ div div div h3 { font-size: 110% }
                </h3>
       
       
-               <div class="part description"/>
+               <div class="part description">
+                  <p class="p">A fallback for display and navigation, exclusive of more specific properties</p>
+               </div>
       
             </div>
             <div class="control element-description" id="tag_references">
@@ -651,7 +663,9 @@ div div div h3 { font-size: 110% }
                </h3>
       
       
-               <div class="part description"/>
+               <div class="part description">
+                  <p class="p">A group of reference descriptions</p>
+               </div>
       
             </div>
             <div class="control element-description" id="tag_ref">
@@ -661,7 +675,10 @@ div div div h3 { font-size: 110% }
                </h3>
       
       
-               <div class="part description"/>
+               <div class="part description">
+                  <p class="p">A reference, with one or more citations to standards, related documents or other
+          resources</p>
+               </div>
       
             </div>
             <div class="control element-description" id="tag_std">
@@ -700,8 +717,20 @@ div div div h3 { font-size: 110% }
                </div>
             </div>
          </section>
-         <section class="group">
+         <section class="group" id="prose">
             <h2 class="title">Prose</h2>
+            <p class="p">Prose may ordinarily appear anywhere, in a control, subcontrol or part, or at a higher level.
+      Prose elements echo HTML semantics, although they provide only a deliberately and specifically
+      narrow subset of HTML element types.</p>
+            <p class="p">Prose elements may be constrained by declarations like other control components, although
+      this may not often be as useful as imposing constraints over properties and parts. Frequently,
+      a part organization will be used to assign prose to specific known <q class="q">sections</q> or
+        <q class="q">components</q> of a control (modeled as <code class="code part">
+                  <a href="#tag_part">part</a>
+               </code> or
+      <code class="code subcontrol">
+                  <a href="#tag_subcontrol">subcontrol</a>
+               </code>).</p>
             <div class="control element-description" id="tag_p">
                <h3>
                   <span class="run-in subst tag">p</span> 
@@ -745,18 +774,19 @@ div div div h3 { font-size: 110% }
                </h3>
       
       
-               <div class="part description"/>
-      
-            </div>
-            <div class="control element-description" id="tag_li">
-               <h3>
-                  <span class="run-in subst tag">li</span> 
-                  <span class="run-in subst full_name">List item</span> 
-               </h3>
-      
-      
-               <div class="part description"/>
-      
+               <div class="part description">
+                  <p class="p">Appears with numbering in ordinal position</p>
+               </div>
+               <div class="part remarks">
+                  <h5 class="remarks">remarks</h5>
+                  <p class="p">Although this echoes HTML <code class="code ol">
+                        <a href="#tag_ol">ol</a>
+                     </code>, renditional aspects of this element are not
+          offered by OSCAL. How numbering of lists are to be numbered is left to implementations; it
+          is likely that specific control catalogs will have their own schemes.</p>
+                  <p class="p">At present there is no support for <q class="q">continued lists</q> as we have not seen any in
+          documents in scope for analysis.</p>
+               </div>
             </div>
             <div class="control element-description" id="tag_ul">
                <h3>
@@ -765,12 +795,29 @@ div div div h3 { font-size: 110% }
                </h3>
       
       
-               <div class="part description"/>
+               <div class="part description">
+                  <p class="p">A series of items kept in order but without indicators of sequence, likely bulleted</p>
+               </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
                   <p class="p">As in HTML, <q class="q">unordered</q> does not indicate that the order of contained list items is
           not respected, only that they are not displayed with any notation indicating their order:
           that is, bullets, not numbers.</p>
+                  <p class="p">Note that when sequences or lists appear, it may be as common in OSCAL to list (and
+          control) them as sequences of properties or paragraphs, perhaps grouped in parts or
+          subcontrols. This is very much a display element, convenient when what we have is really
+          prose, not highly organized or <q class="q">semantic</q>.</p>
+               </div>
+            </div>
+            <div class="control element-description" id="tag_li">
+               <h3>
+                  <span class="run-in subst tag">li</span> 
+                  <span class="run-in subst full_name">List item</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">An item demarcated with bullet or numerator</p>
                </div>
             </div>
             <div class="control element-description" id="tag_em">
