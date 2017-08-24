@@ -1,0 +1,499 @@
+ 
+
+## OSCAL: the Open Security Controls Assessment Language 
+
+## OSCAL namespace 
+
+Determine the element population of an OSCAL document (set) bmo XPath distinct-values(//*/node-name()) 
+
+Valid OSCAL documents will not contain elements not described in this specification. While OSCAL may be mixed with other tag sets, or extended, neither of these applications is addressed in any way by this document. This document provides only bare-bones information about the OSCAL core. 
+
+For its XML names, OSCAL uses the namespace XXX http://scap.nist.gov/schema/oscal XXX. Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced without a prefix, oscal: or any other.  
+
+## OSCAL terminology 
+
+###  
+
+term: Control object definition 
+
+OSCAL catalogs are comprised of control objects, typically arranged in groups. The top-level control object is control. Other control objects are subcontrols (subcontrol) and features (feat). Subcontrols may only appear (directly) within controls. Features may appear within controls or subcontrols, or may be nested (to any depth) within features. 
+
+Control objects in OSCAL may be characterized as consistent data structures, whose contents are appropriate to their type and application. The type of a control object is labelled by means of its @class. Control objects may validated for consistency between and among objects of the same type, by means of constraining values assigned to the control components (qv) appearing within them.   
+
+###  
+
+term: Control component definition 
+
+Control components are information objects that constitute particular controls. They include properties (prop), statements (stmt), features (feat), and parameters (param). 
+
+Note that features (feat) are both control components (only appearing inside control objects) and themselves control objects (which may contain their own properties, statements, and features). As such they are transitional objects. Indeed they may be used for control components below the level of subcontrols. Typically, however, they will be more fragmentary, not providing useful information outside the context of the containing control object. 
+
+The appearance (whether required or optional), cardinality, and values (of any control component) and/or components (of features) may be constrained and validated by means of the OSCAL declarations model. This enables catalogs and catalog types to enforce consistency of components across controls of identified and labeled types.     
+
+## Controls and control components 
+
+###  
+
+tag: catalog 
+
+full_name: Catalog description 
+
+Top-level element for a (canonical) control catalog   
+
+###  
+
+tag: collection 
+
+full_name: Collection description 
+
+Top-level element for a set of controls, not considered to be a catalog  remarks 
+
+Most often, a collection element will be used for a set of controls derived from one or more control catalogs (such as a profile, baseline or overlay), which do not themselves serve as a catalog. 
+
+However, collections may contain everything that catalogs may contain, and OSCAL does not prohibit their use as (source or interim) catalogs for profiling. (Although an application might).   
+
+###  
+
+tag: control 
+
+full_name: Control description 
+
+A structured information object representing a security control   
+
+###  
+
+tag: subcontrol 
+
+full_name: Control enhancement description 
+
+Within a control, a control object appearing as a component  remarks 
+
+This is a control object, just like a control, only related to a particular control by virtue of containment in the OSCAL instance. Control enhancements (subcontrols) may contain their own enhancements as well as control components (properties, statements etc.). 
+
+Because either control or subcontrol may be grouped, the schema does not absolutely constrain that subcontrol appear only within control and never the reverse: this enforcement is left to a Schematron. 
+
+Albeit not absolutely forbidden by the schema, the rule is that while both controls and subcontrols may contain subcontrols, neither may contain controls. That is, in any catalog, a control is only the top level of control object (even if gathered in groups) – all else is subcontrols (control enhancements) or control contents.   
+
+###  
+
+tag: prop 
+
+full_name: Property description 
+
+A value with a name, attributed to the containing control, subcontrol, feature or group  remarks 
+
+Like statements (stmt), features (feat) and parameters (param), properties are named things that appear within controls, subcontrols or features. 
+
+Properties do not contain structured content, only values, albeit sometimes containing inline markup (rich text). Inasmuch as properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be flattened (markup stripped) and normalized (e.g., with respect to whitespace) in use. 
+
+When singletons (that is, the only element among siblings with its @class), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf property in the declarations model (which also supports other constraints over property values). 
+
+Properties are the bread and butter of OSCAL; they enable the deployment and management of arbitrary controlled values, with and among control objects (controls and their formal enhancements), for any purpose useful to an application or implementation of those controls. Typically and routinely, properties will be used to sort, select, order and arrange controls or relate them to one another or to class hierarchies, taxonomies or external authorities.   
+
+###  
+
+tag: part 
+
+full_name: Part description 
+
+A component of a control, subcontrol or part  remarks 
+
+Like properties (prop) and parameters (param), parts can be distinguished from other elements within their controls by their assigned @class, such that they may be subjected to declarations logic using these values as bindings (and thereby getting open-ended extensibility). @class is however optional on stmt 
+
+An assigned class will typically also provide for a header in display, such that stmt[@class='objectives'] is displayed under a header Objectives, etc. This is useful, since unlike controls, subcontrols, groups or even features (feat), statements may not have titles. 
+
+Like anything in OSCAL, this element may be formally valid, without its contents or representations being correct, complete, veracious or even intelligible.   
+
+###  
+
+tag: link 
+
+full_name: Link description 
+
+A line or paragraph with a hypertext link   
+
+###  
+
+tag: param 
+
+full_name: Parameter description 
+
+A parameter setting, to be propagated to points of insertion     
+
+## Functional elements 
+
+Functional elements appear inside control content to provide hooks to OSCAL processors for dynamic insertion. 
+
+###  
+
+tag: withdrawn 
+
+full_name: Withdrawn description 
+
+Indicates that a containing control or subcontrol is no longer applicable  remarks 
+
+Used to mark a control or subcontrol included in a catalog as a placeholder,    
+
+###  
+
+tag: insert 
+
+full_name: Parameter insertion description 
+
+A reference to a parameter for dynamic content transclusion   
+
+###  
+
+tag: select 
+
+full_name: Selection description 
+
+A selection requiring designation via parameter   
+
+###  
+
+tag: choice 
+
+full_name: Choice description 
+
+A choice of values, to be designated via parameter     
+
+## Declarations elements 
+
+###  
+
+tag: declarations 
+
+full_name: Declarations description 
+
+For extra-schema validation of control components within controls  remarks 
+
+The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of @class (for control components) and @context (indicating control, subcontrol or features wherein the components may appear), enable automated checking for consistency of controls, subcontrols and features, specific to the types or kinds of control items that appear within a particular catalog or control collection.   
+
+###  
+
+tag: declare-property 
+
+full_name: Property declaration description 
+
+Constraints applicable to a class or classes of p elements within a control object   
+
+###  
+
+tag: declare-p 
+
+full_name: Paragraph declaration description 
+
+Indicates constraints to be enforced on paragraphs in context   
+
+###  
+
+tag: declare-part 
+
+full_name: Part declaration description 
+
+Indicates constraints to be imposed on parts in context   
+
+###  
+
+tag: declare-link 
+
+full_name: Link declaration description 
+
+Indicates constraints to be imposed on links in context   
+
+###  
+
+tag: singleton 
+
+full_name: Singleton constraint description 
+
+The declared component may occur only once in its context  remarks 
+
+When this element is present in the declaration of an OSCAL control component, the component (prop, param, stmt or feat) must be the only component of that class given in its context. i.e., no other element child of the same parent may have the same @class value (at the level of syntax), or be bound to the same component type (at the semantic level).   
+
+###  
+
+tag: required 
+
+full_name: Requirement constraint description 
+
+The declared component is required in its context  remarks 
+
+When this element is present in the declaration of an OSCAL control component, the component (prop, param, stmt or feat) is required to appear, at least once, in its context.   
+
+###  
+
+tag: identifier 
+
+full_name: Identifier constraint description 
+
+The declared component has a value unique within the document, among components of the same type  remarks 
+
+This constraint is generally only used for properties to be used as identifiers for their control object (control, subcontrol or feature). Guaranteeing their uniqueness means that these values can be used to effect one-to-one retrieval or reference to the objects to which they are assigned.   
+
+###  
+
+tag: regex 
+
+full_name: Regular expression constraint description 
+
+Indicates that the value of a property (prop) or parameter (param) must match the given regular expression  remarks 
+
+Matching against a regular expression is conducted on the normalized lexical value of the given parameter or property: that is, with leading and trailing whitespace stripped, interim whitespace (space, tab or line feed) normalized to single spaces, and inline markup stripped.   
+
+###  
+
+tag: value 
+
+full_name: Value constraint description 
+
+Indicates a permissible value for a parameter or property  remarks 
+
+Typically, value will be given in groups, indicating a set of enumerated permissible values.   
+
+###  
+
+tag: autonum 
+
+full_name: Autonumbered (generated) value description 
+
+Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman etc)   
+
+###  
+
+tag: inherit 
+
+full_name: Inherited value constraint description 
+
+Indicates that a value or part of a value will be inherited from a property on a containing control object  remarks 
+
+inherit is typically used to enforce hierarchical numbering within control objects. When given in a value in a declaration, inherit indicates that the value of a property, or a segment of its value, must be the same as a property (prop) higher in the containment hierarchy of a control object. That is, if a property with @class='number' is constrained with value/inherit, it must be the same as is assigned on the closest ancestor (feature, subcontrol, control or group) with the given property. 
+
+Usually, inherit is used in conjunction with autonum (qv). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered A1 may be constrained to be A1-a, A1-b etc., depending on the position of the subcontrol within the control. 
+
+If a value must inherit from a property of a different class from the containing control object, inherit/@from can be used to indicate the applicable property (by its class). By default, inherit indicates a property value should match an ancestor's property with the same @class (the most usual case).   
+
+###  
+
+tag: desc 
+
+full_name: Parameter description description 
+
+Indicates and explains the purpose and use of a parameter     
+
+## Structural elements 
+
+###  
+
+tag: section 
+
+full_name: Division description 
+
+A chapter, section or subsection partitioning a catalog, collection or section therein  remarks 
+
+Echoes HTML5 section. 
+
+Like groups, sections (section)   
+
+###  
+
+tag: group 
+
+full_name: Group description 
+
+Related controls or groups (of controls or groups)  remarks 
+
+In addition to controls or groups, groups may be titled and may have their own properties, statements, parameter settings and references, subject to declaration. In this respect they are like control objects (control, subcontrol and feature), albeit their properties apply to the entire group – and must be acquired in processing via inheritance. 
+
+Unlike sections (section elements), groups may not contain arbitrary prose (paragraphs and lists). They may however contain statements (stmt), which may be untyped (no @class) and therefore unconstrained by declarations.   
+
+###  
+
+tag: title 
+
+full_name: Title description  
+
+###  
+
+tag: references 
+
+full_name: References description  
+
+###  
+
+tag: ref 
+
+full_name: Reference description  
+
+###  
+
+tag: std 
+
+full_name: Standard description 
+
+Citation of a formal published standard  remarks 
+
+Echoes the NISO JATS (and NISO STS) std element   
+
+###  
+
+tag: citation 
+
+full_name: Citation description 
+
+Citation of a resource  remarks 
+
+Echoes the NISO JATS (and NISO STS) mixed-citation element. 
+
+For references to standards, std (qv) may be preferred.     
+
+## Prose 
+
+###  
+
+tag: p 
+
+full_name: Paragraph description 
+
+Or paragraph fragment  remarks 
+
+This element echoes HTML p; like its forebear, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.   
+
+###  
+
+tag: pre 
+
+full_name: Preformatted text description 
+
+Retains whitespace in display  remarks 
+
+Echoes HTML pre.   
+
+###  
+
+tag: ol 
+
+full_name: Ordered List description  
+
+###  
+
+tag: li 
+
+full_name: List item description  
+
+###  
+
+tag: ul 
+
+full_name: Unordered list description remarks 
+
+As in HTML, unordered does not indicate that the order of contained list items is not respected, only that they are not displayed with any notation indicating their order: that is, bullets, not numbers.   
+
+###  
+
+tag: em 
+
+full_name: Emphasis description 
+
+Rhetorical emphasis as indicated typically by a font shift  remarks 
+
+In display, this element can be expected to toggle, i.e. provide for italics when appearing within roman text, but roman when appearing within italic text. 
+
+Particular semantics (indicating types of emphasis for finer resolution in display or retrieval) may be provided via @class.   
+
+###  
+
+tag: i 
+
+full_name: Italics description 
+
+Typographical shift to italics  remarks 
+
+An implementation may toggle, i.e. display contents using a roman face when the surrounding text is already italic.   
+
+###  
+
+tag: b 
+
+full_name: Bold description 
+
+Typographical shift to bold  remarks 
+
+In display, when surrounding text is already bold, an implementation may indicate bold by means of double-bold or some other typographical distinction.   
+
+###  
+
+tag: a 
+
+full_name: Anchor description 
+
+An HTML-style anchor (inline linking element)  remarks 
+
+As in HTML, the link target is indicated by @href, with a '#' prefix for an internal cross-reference matching an @id elsewhere in the document. 
+
+Anchors without @href are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. In use, an application may promote the contents of a a element, when a valid URI, to serve as the link target, if @href is missing or not a URI.   
+
+###  
+
+tag: q 
+
+full_name: Quoted text description 
+
+An inline segment to appear within quotation marks  remarks 
+
+For practical purposes, this is a cosmetic element with no special semantics other than to provide quotation marks in display.   
+
+###  
+
+tag: code 
+
+full_name: Code description 
+
+Inline code  remarks 
+
+Strictly, this element should identify formal code or code fragments.   
+
+###  
+
+tag: sup 
+
+full_name: Superscript description 
+
+Superscripted text   
+
+###  
+
+tag: sub 
+
+full_name: Subscript description 
+
+Subscripted text  remarks 
+
+Strictly, this element should identify formal code or code fragments.   
+
+###  
+
+tag: span 
+
+full_name: Span description 
+
+Generic inline container  remarks 
+
+As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.     
+
+## Structural constraints  
+
+Over and above what is validable with a grammar (in Level 0), there is a small set of constraints governing usage. Validations enforcing them can be implemented via Schematron or another process capable of static analysis of the data.  
+
+### Within a control, properties, statements and parameters may occur in any order. description 
+
+This specification does not govern how or whether an implementation may respect the order of properties and statements given within a control type. Among properties, statements and parameters (that is, named things) within a control, cardinality constraints (where enforced) can help ensure a canonical order. An order may be imposed locally (for example, by a schema that requires all properties to appear before all statements), but this is for its convenience not because an order is mandated.    
+
+## Customization layers 
+
+Like many tag languages and machine-readable syntaxes, OSCAL is intended to be extended and customized. Unlike most other formats, however, OSCAL's extension mechanism includes a set of features, supported natively in the language, for extension by the simplest possible mechanism, without requiring modification of any schemas, using a simple, native set of declarations for controls. 
+
+OSCAL's validation model consists of several layers. At base is schema validation, which ensures that all tags in use are recognized as OSCAL tagging and that their arrangement in the document (with regard to both structure, and certain semantic relations) is consistent with regular usage of OSCAL. In a second layer, other relationships can be tested and rules enforced, over and above what a schema imposes. Implemented in Schematron or any technology with analogous capabilities, such as second layer is more flexible and configurable than the base layer. 
+
+In a third layer, an OSCAL document is validated to constraints it declares for itself, that is locally in its own declarations. (Call this a consistency check rather than validation, for clarity.) Such a validation may be useful to an OSCAL implementation, which can take advantage of contracts implicit in such validation to provide functionalities; OSCAL itself does not provide such functionality, but only the hooks – and the mechanism by which users and developers can easily create and manage new control types. 

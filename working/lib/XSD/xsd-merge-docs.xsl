@@ -12,8 +12,13 @@
   <xsl:output indent="yes"/>
   
   <!-- Delivers an XSD with documentation merged in.
-  Set $docs to point to the documentation. 
-  Run on an interim XSD (without the documentation) to produce a new XSD -->
+  
+  Run on an interim XSD (without the documentation) to produce a new XSD
+  
+  Pass in $docs-file to point to the documentation,
+  or the documentation XML itself as $docs
+  
+  -->
   
 <!-- Documentation looks like this (it's OSCAL):
   
@@ -28,7 +33,9 @@
   
   -->
   
-  <xsl:variable name="docs" select="document('oscal-oscal.xml')"/>
+  <xsl:param name="docs-file" as="xs:string">../../doc/schema/oscal-oscal.xml</xsl:param>
+  
+  <xsl:param name="docs"      select="document($docs-file)"/>
   
   <xsl:key name="documentation" match="control" use="prop[@class='tag']"/>
 
