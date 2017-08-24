@@ -1,0 +1,9 @@
+@import 'oscal.css';
+
+
+a:after { content:
+   oxy_urlChooser(
+          edit, '@href',
+          columns, 40 ) 
+ }
+

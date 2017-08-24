@@ -4,7 +4,7 @@
 .control { margin:1em; padding: 1em; border: thin dotted black }
 .control &gt; *:first-child { margin-top: 0em }
 
-h1, h2, h3, h4, h5, h6 { font-family: sans-serif }
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin: 0em }
 h3 { font-size: 120% }
 
 div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
@@ -22,6 +22,9 @@ div div div h3 { font-size: 110% }
 
 .param .em { font-style: roman }
 
+.tag:before { content: '&lt;' }
+.tag:after  { content: '&gt;' }
+
         </style>
    </head>
    <body>
@@ -31,7 +34,7 @@ div div div h3 { font-size: 110% }
   
          <h2 class="title">OSCAL namespace</h2>
          <p class="p">The element population of an OSCAL document (set) may be determined by means of XPath
-        <code class="code">distinct-values(//*/node-name())</code>, or analogous query.</p>
+        distinct-values(//*/node-name()), or analogous query.</p>
          <p class="p">Conformant (valid) OSCAL documents will not contain elements not described in this
       specification. While OSCAL may be mixed with other tag sets, or extended, neither of these
       uses is described or circumscribed by this document, which provides only bare-bones
@@ -39,7 +42,7 @@ div div div h3 { font-size: 110% }
          <p class="p">For its XML names, OSCAL uses the namespace <a class="xref">XXX http://scap.nist.gov/schema/oscal XXX</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
-      without a prefix, <code class="code">oscal:</code> or any other.</p>
+      without a prefix, oscal: or any other.</p>
          <p class="p">By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should
       always strip the OSCAL namespace, to produce HTML in the appropriate namespace for the target
       application. (Or the target application could learn to consume OSCAL.) Only some parts of
@@ -62,8 +65,14 @@ div div div h3 { font-size: 110% }
       appopriate level of description, for that domain, to describe best as <q class="q">control</q>,
         <q class="q">subcontrol</q> etc.</p>
          <p class="p">This organization is governed by an XML schema, which enforces containment constraints among
-      these elements. In particular, the OSCAL schema declares elements for <code class="code">control</code>,
-        <code class="code">subcontrol</code> and <code class="code">part</code>. According to its rules, subcontrols may only
+      these elements. In particular, the OSCAL schema declares elements for <code class="code control">
+               <a href="#tag_control">control</a>
+            </code>,
+        <code class="code subcontrol">
+               <a href="#tag_subcontrol">subcontrol</a>
+            </code> and <code class="code part">
+               <a href="#tag_part">part</a>
+            </code>. According to its rules, subcontrols may only
       appear within controls. Either controls or subcontrols may be partitioned (may contain parts),
       and parts may contain their own parts. Any of these objects may be <q class="q">controlled</q> in the
       sense that they may be used, consistently, to carry regular sets of properties, whose names
@@ -81,27 +90,30 @@ div div div h3 { font-size: 110% }
   
          <section class="group">
             <h2 class="title">Controls and control components</h2>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>catalog</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Catalog</p>
-               <div class="stmt ">description
-        <p class="p">Top-level element for a (canonical) control catalog</p>
+            <div class="control" id="tag_catalog">
+               <h3>
+                  <span class="run-in subst tag">catalog</span> 
+                  <span class="run-in subst full_name">Catalog</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Top-level element for a (canonical) control catalog</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>collection</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Collection</p>
-               <div class="stmt ">description
-        <p class="p">Top-level element for a set of controls, not considered to be a catalog</p>
+            <div class="control" id="tag_collection">
+               <h3>
+                  <span class="run-in subst tag">collection</span> 
+                  <span class="run-in subst full_name">Collection</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Top-level element for a set of controls, not considered to be a catalog</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Most often, a collection element will be used for a set of controls derived from one or
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Most often, a collection element will be used for a set of controls derived from one or
           more control catalogs (such as a profile, baseline or overlay), which do not themselves
           serve as a catalog.</p>
                   <p class="p">However, collections may contain everything that catalogs may contain, and OSCAL does not
@@ -109,110 +121,136 @@ div div div h3 { font-size: 110% }
           might).</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>control</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Control</p>
-               <div class="stmt ">description
-        <p class="p">A structured information object representing a security control</p>
+            <div class="control" id="tag_control">
+               <h3>
+                  <span class="run-in subst tag">control</span> 
+                  <span class="run-in subst full_name">Control</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A structured information object representing a security control</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Controls may be grouped using <code class="code">group</code>, and </p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Controls may be grouped using <code class="code group">
+                        <a href="#tag_group">group</a>
+                     </code>, and controls may be partitioned, using
+          either formal <code class="code subcontrol">
+                        <a href="#tag_subcontrol">subcontrol</a>
+                     </code> or (informally) <code class="code part">
+                        <a href="#tag_part">part</a>
+                     </code>.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>subcontrol</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Control enhancement</p>
-               <div class="stmt ">description
-        <p class="p">Within a control, a component or enhancement</p>
+            <div class="control" id="tag_subcontrol">
+               <h3>
+                  <span class="run-in subst tag">subcontrol</span> 
+                  <span class="run-in subst full_name">Control enhancement</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Within a control, a component or enhancement</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">A nominal subcontrol or <q class="q">control enhancement</q>, permitting catalogs easily to provide
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">A nominal subcontrol or <q class="q">control enhancement</q>, permitting catalogs easily to provide
           access to structured data at two levels. Further levels down can be achieved using
-            <code class="code">part</code> (both controls and subcontrols may be partitioned) which may contain
-          their own parts</p>
+            <code class="code part">
+                        <a href="#tag_part">part</a>
+                     </code> (both controls and subcontrols may be partitioned), which may contain
+          their own parts; however having <q class="q">controls</q> and <q class="q">subcontrols</q> known in advance to
+          be especially significant, is helpful.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>prop</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Property</p>
-               <div class="stmt ">description
-        <p class="p">A value with a name, attributed to the containing control, subcontrol, feature or
+            <div class="control" id="tag_prop">
+               <h3>
+                  <span class="run-in subst tag">prop</span> 
+                  <span class="run-in subst full_name">Property</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A value with a name, attributed to the containing control, subcontrol, feature or
           group</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Like statements (<code class="code">stmt</code>), features (<code class="code">feat</code>) and parameters
-            (<code class="code">param</code>), properties are <q class="q">named things</q> that appear within controls,
-          subcontrols or features.</p>
-                  <p class="p">Properties do not contain structured content, only values, albeit sometimes containing
-          inline markup (<q class="q">rich text</q>). Inasmuch as properties are often used as selectors or
-          identifiers for OSCAL operations, their values can be expected frequently to be flattened
-          (markup stripped) and normalized (e.g., with respect to whitespace) in use.</p>
-                  <p class="p">When singletons (that is, the only element among siblings with its <code class="code">@class</code>),
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">The notation used by a property is up to an application; otherwise, properties are
+          distinguished in OSCAL by their not permitting inline markup of any kind. They are
+          expected to be simple scalar values or at any rate, to use machine-readable / parseable
+          notation (not XML), as defined by and for an application.</p>
+                  <p class="p">The lexical composition of properties may be constrained by declarations including
+          matching to regular expressions or declaring known datatype notations (tbd).</p>
+                  <p class="p">Inasmuch as properties are often used as selectors or identifiers for OSCAL operations,
+          their values can be expected frequently to be flattened (markup stripped) and normalized
+          (e.g., with respect to whitespace) in use; however this is application defined.</p>
+                  <p class="p">When singletons (that is, the only element among siblings with its @class),
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
           robustness of such queries can be ensured by appropriate property declarations (as
-          singletons and as identifiers); cf <code class="code">property</code> in the declarations model (which
+          singletons and as identifiers); cf property in the declarations model (which
           also supports other constraints over property values).</p>
-                  <p class="p">Properties are the <q class="q">bread and butter</q> of OSCAL; they enable the deployment and
-          management of arbitrary controlled values, with and among control objects (controls and
-          their formal enhancements), for any purpose useful to an application or implementation of
-          those controls. Typically and routinely, properties will be used to sort, select, order
-          and arrange controls or relate them to one another or to class hierarchies, taxonomies or
-          external authorities.</p>
+                  <p class="p">Properties the deployment and management of arbitrary controlled values, with and among
+          control objects (controls and their formal enhancements), for any purpose useful to an
+          application or implementation of those controls. Typically and routinely, properties will
+          be used to sort, select, order and arrange controls or relate them to one another or to
+          class hierarchies, taxonomies or external authorities.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>part</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Part</p>
-               <div class="stmt ">description
-        <p class="p">A component of a control, subcontrol or part</p>
+            <div class="control" id="tag_part">
+               <h3>
+                  <span class="run-in subst tag">part</span> 
+                  <span class="run-in subst full_name">Part</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A component or partition in a control, subcontrol or part</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Like properties (<code class="code">prop</code>) and parameters (<code class="code">param</code>), parts can
-          be distinguished from other elements within their controls by their assigned
-            <code class="code">@class</code>, such that they may be subjected to <q class="q">declarations logic</q> using
-          these values as bindings (and thereby getting open-ended extensibility).
-            <code class="code">@class</code> is however optional on <code class="code">stmt</code>
-                  </p>
-                  <p class="p">An assigned class will typically also provide for a header in display, such that
-            <code class="code">stmt[@class='objectives']</code> is displayed under a header <em class="em">Objectives</em>,
-          etc. This is useful, since unlike controls, subcontrols, groups or even features
-            (<code class="code">feat</code>), statements may not have titles.</p>
-                  <p class="p">Like anything in OSCAL, this element may be formally valid, without its contents or
-          representations being correct, complete, veracious or even intelligible.</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Like properties (<code class="code prop">
+                        <a href="#tag_prop">prop</a>
+                     </code>) and parameters (<code class="code param">
+                        <a href="#tag_param">param</a>
+                     </code>), parts can be
+          distinguished from other elements within their controls by their assigned
+            @class, such that they may be subjected to <q class="q">declarations logic</q> using
+          these values as bindings (and thereby getting open-ended extensibility).</p>
+                  <p class="p">An assigned class may frequently provide for a header in display, such that
+            part[@class='objectives'] is displayed under a header <em class="em">Objectives</em>,
+          etc. Unlike groups, controls or subcontrols, however, they may not have <code class="code title">
+                        <a href="#tag_title">title</a>
+                     </code>
+          element children (they are not <q class="q">first class objects</q> in this sense). Thus in OSCAL,
+          if the components of your controls have their own titles, they are something else): to
+          accommodate data like this, consider using a property (e.g.
+            prop[@class='part-title'] as an escape hatch.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>link</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Link</p>
-               <div class="stmt ">description
-        <p class="p">A line or paragraph with a hypertext link</p>
+            <div class="control" id="tag_link">
+               <h3>
+                  <span class="run-in subst tag">link</span> 
+                  <span class="run-in subst full_name">Link</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A line or paragraph with a hypertext link</p>
                </div>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>param</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Parameter</p>
-               <div class="stmt ">description
-        <p class="p">A parameter setting, to be propagated to points of insertion</p>
+            <div class="control" id="tag_param">
+               <h3>
+                  <span class="run-in subst tag">param</span> 
+                  <span class="run-in subst full_name">Parameter</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A parameter setting, to be propagated to points of insertion</p>
                </div>
       
             </div>
@@ -221,542 +259,667 @@ div div div h3 { font-size: 110% }
             <h2 class="title">Functional elements</h2>
             <p class="p">Functional elements appear inside control content to provide <q class="q">hooks</q> to OSCAL processors
       for dynamic insertion.</p>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>withdrawn</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Withdrawn</p>
-               <div class="stmt ">description
-        <p class="p">Indicates that a containing control or subcontrol is no longer applicable</p>
+            <div class="control" id="tag_withdrawn">
+               <h3>
+                  <span class="run-in subst tag">withdrawn</span> 
+                  <span class="run-in subst full_name">Withdrawn</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates that a containing control or subcontrol is no longer applicable</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, </p>
-               </div>
-            </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>insert</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Parameter insertion</p>
-               <div class="stmt ">description
-        <p class="p">A reference to a parameter for dynamic content transclusion</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, </p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>select</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Selection</p>
-               <div class="stmt ">description
-        <p class="p">A selection requiring designation via parameter</p>
+            <div class="control" id="tag_insert">
+               <h3>
+                  <span class="run-in subst tag">insert</span> 
+                  <span class="run-in subst full_name">Parameter insertion</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A reference to a parameter for dynamic content transclusion</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>choice</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Choice</p>
-               <div class="stmt ">description
-        <p class="p">A choice of values, to be designated via parameter</p>
+            <div class="control" id="tag_select">
+               <h3>
+                  <span class="run-in subst tag">select</span> 
+                  <span class="run-in subst full_name">Selection</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A selection requiring designation via parameter</p>
+               </div>
+            </div>
+            <div class="control" id="tag_choice">
+               <h3>
+                  <span class="run-in subst tag">choice</span> 
+                  <span class="run-in subst full_name">Choice</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A choice of values, to be designated via parameter</p>
                </div>
             </div>
          </section>
          <section class="group">
             <h2 class="title">Declarations elements</h2>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>declarations</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Declarations</p>
-               <div class="stmt ">description
-        <p class="p">For extra-schema validation of control components within controls</p>
+            <div class="control" id="tag_declarations">
+               <h3>
+                  <span class="run-in subst tag">declarations</span> 
+                  <span class="run-in subst full_name">Declarations</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">For extra-schema validation of control components within controls</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">The OSCAL validation model supports not only validation against a formal schema
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">The OSCAL validation model supports not only validation against a formal schema
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
           or catalog type within which they appear. Constraints described in these declarations, and
-          bound via assignments of <code class="code">@class</code> (for control components) and
-            <code class="code">@context</code> (indicating control, subcontrol or features wherein the components
+          bound via assignments of @class (for control components) and
+            @context (indicating control, subcontrol or features wherein the components
           may appear), enable automated checking for consistency of controls, subcontrols and
           features, specific to the types or kinds of control items that appear within a particular
           catalog or control collection.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>declare-property</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Property declaration</p>
-               <div class="stmt ">description
-      <p class="p">Constraints applicable to a class or classes of <code class="code">p</code> elements within a control
+            <div class="control" id="tag_declare-property">
+               <h3>
+                  <span class="run-in subst tag">declare-property</span> 
+                  <span class="run-in subst full_name">Property declaration</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Constraints applicable to a class or classes of <code class="code p">
+                        <a href="#tag_p">p</a>
+                     </code> elements within a control
         object</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>declare-p</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Paragraph declaration</p>
-               <div class="stmt ">description
-        <p class="p">Indicates constraints to be enforced on paragraphs in context</p>
+            <div class="control" id="tag_declare-p">
+               <h3>
+                  <span class="run-in subst tag">declare-p</span> 
+                  <span class="run-in subst full_name">Paragraph declaration</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates constraints to be enforced on paragraphs in context</p>
                </div>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>declare-part</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Part declaration</p>
-               <div class="stmt ">description
-        <p class="p">Indicates constraints to be imposed on parts in context</p>
+            <div class="control" id="tag_declare-part">
+               <h3>
+                  <span class="run-in subst tag">declare-part</span> 
+                  <span class="run-in subst full_name">Part declaration</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates constraints to be imposed on parts in context</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>declare-link</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Link declaration</p>
-               <div class="stmt ">description
-        <p class="p">Indicates constraints to be imposed on links in context</p>
+            <div class="control" id="tag_declare-link">
+               <h3>
+                  <span class="run-in subst tag">declare-link</span> 
+                  <span class="run-in subst full_name">Link declaration</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates constraints to be imposed on links in context</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>singleton</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Singleton constraint</p>
-               <div class="stmt ">description
-        <p class="p">The declared component may occur only once in its context</p>
+            <div class="control" id="tag_singleton">
+               <h3>
+                  <span class="run-in subst tag">singleton</span> 
+                  <span class="run-in subst full_name">Singleton constraint</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">The declared component may occur only once in its context</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">When this element is present in the declaration of an OSCAL control component, the
-          component (<code class="code">prop</code>, <code class="code">param</code>, <code class="code">stmt</code> or <code class="code">feat</code>)
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">When this element is present in the declaration of an OSCAL control component, the
+          component (<code class="code prop">
+                        <a href="#tag_prop">prop</a>
+                     </code>, <code class="code param">
+                        <a href="#tag_param">param</a>
+                     </code>, stmt or feat)
           must be the only component of that class given in its context. i.e., no other element
-          child of the same parent may have the same <code class="code">@class</code> value (at the level of
+          child of the same parent may have the same @class value (at the level of
           syntax), or be bound to the same component type (at the semantic level).</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>required</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Requirement constraint</p>
-               <div class="stmt ">description
-        <p class="p">The declared component is required in its context</p>
+            <div class="control" id="tag_required">
+               <h3>
+                  <span class="run-in subst tag">required</span> 
+                  <span class="run-in subst full_name">Requirement constraint</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">The declared component is required in its context</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">When this element is present in the declaration of an OSCAL control component, the
-          component (<code class="code">prop</code>, <code class="code">param</code>, <code class="code">stmt</code> or <code class="code">feat</code>)
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">When this element is present in the declaration of an OSCAL control component, the
+          component (<code class="code prop">
+                        <a href="#tag_prop">prop</a>
+                     </code>, <code class="code param">
+                        <a href="#tag_param">param</a>
+                     </code>, stmt or feat)
           is required to appear, at least once, in its context.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>identifier</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Identifier constraint</p>
-               <div class="stmt ">description
-        <p class="p">The declared component has a value unique within the document, among components of the
+            <div class="control" id="tag_identifier">
+               <h3>
+                  <span class="run-in subst tag">identifier</span> 
+                  <span class="run-in subst full_name">Identifier constraint</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">The declared component has a value unique within the document, among components of the
           same type</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">This constraint is generally only used for properties to be used as identifiers for their
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">This constraint is generally only used for properties to be used as identifiers for their
           control object (control, subcontrol or feature). Guaranteeing their uniqueness means that
           these values can be used to effect one-to-one retrieval or reference to the objects to
           which they are assigned.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>regex</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Regular expression constraint</p>
-               <div class="stmt ">description
-        <p class="p">Indicates that the value of a property (<code class="code">prop)</code> or parameter
-            (<code class="code">param</code>) must match the given regular expression</p>
+            <div class="control" id="tag_regex">
+               <h3>
+                  <span class="run-in subst tag">regex</span> 
+                  <span class="run-in subst full_name">Regular expression constraint</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates that the value of a property (prop) or parameter
+            (<code class="code param">
+                        <a href="#tag_param">param</a>
+                     </code>) must match the given regular expression</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Matching against a regular expression is conducted on the normalized lexical value of the
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Matching against a regular expression is conducted on the normalized lexical value of the
           given parameter or property: that is, with leading and trailing whitespace stripped,
           interim whitespace (space, tab or line feed) normalized to single spaces, and inline
           markup stripped.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>value</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Value constraint</p>
-               <div class="stmt ">description
-        <p class="p">Indicates a permissible value for a parameter or property</p>
+            <div class="control" id="tag_value">
+               <h3>
+                  <span class="run-in subst tag">value</span> 
+                  <span class="run-in subst full_name">Value constraint</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates a permissible value for a parameter or property</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Typically, <code class="code">value</code> will be given in groups, indicating a set of enumerated
-          permissible values.</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">In a declaration, <code class="code value">
+                        <a href="#tag_value">value</a>
+                     </code> will be given in groups, indicating a set of
+          enumerated permissible values.</p>
+                  <p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any
+          value given at the point of insertion. When parameters are provided in OSCAL profiles,
+          their values will override any values assigned <q class="q">lower down the stack</q>.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>autonum</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Autonumbered (generated) value</p>
-               <div class="stmt ">description
-        <p class="p">Generates a formatted numeric value based on the position of a control object among its
+            <div class="control" id="tag_autonum">
+               <h3>
+                  <span class="run-in subst tag">autonum</span> 
+                  <span class="run-in subst full_name">Autonumbered (generated) value</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
           alphabetic, roman etc)</p>
                </div>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">In a declaration, <code class="code value">
+                        <a href="#tag_value">value</a>
+                     </code> will be given in groups, indicating a set of
+          enumerated permissible values.</p>
+                  <p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any
+          value given at the point of insertion. When parameters are provided in OSCAL profiles,
+          their values will override any values assigned <q class="q">lower down the stack</q>.</p>
+                  <p class="p">The <em class="em">contents</em>, not the value of any attribute, will be taken by the processor to
+          be a formatting code. The format should follow the spec for <a class="xref" href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
+              xsl:number/@format</a>. For example, if the value is <q class="q">A.</q> then
+          numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
+          include upper and lower case alphabetic numbering, arabic numbering, and upper- and
+          lower-case roman numbering as described for XSLT.</p>
+               </div>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>inherit</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Inherited value constraint</p>
-               <div class="stmt ">description
-        <p class="p">Indicates that a value or part of a value will be inherited from a property on a
+            <div class="control" id="tag_inherit">
+               <h3>
+                  <span class="run-in subst tag">inherit</span> 
+                  <span class="run-in subst full_name">Inherited value constraint</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates that a value or part of a value will be inherited from a property on a
           containing control object</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">
-                     <code class="code">inherit</code> is typically used to enforce hierarchical numbering within control
-          objects. When given in a <code class="code">value</code> in a declaration, <code class="code">inherit</code>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">
+                     <code class="code inherit">
+                        <a href="#tag_inherit">inherit</a>
+                     </code> is typically used to enforce hierarchical numbering within control
+          objects. When given in a <code class="code value">
+                        <a href="#tag_value">value</a>
+                     </code> in a declaration, <code class="code inherit">
+                        <a href="#tag_inherit">inherit</a>
+                     </code>
           indicates that the value of a property, or a segment of its value, must be the same as a
-          property (<code class="code">prop</code>) higher in the containment hierarchy of a control object. That
-          is, if a property with <code class="code">@class='number'</code> is constrained with
-            <code class="code">value/inherit</code>, it must be the same as is assigned on the closest ancestor
+          property (<code class="code prop">
+                        <a href="#tag_prop">prop</a>
+                     </code>) higher in the containment hierarchy of a control object. That
+          is, if a property with @class='number' is constrained with
+            value/inherit, it must be the same as is assigned on the closest ancestor
           (feature, subcontrol, control or group) with the given property.</p>
-                  <p class="p">Usually, <code class="code">inherit</code> is used in conjunction with <code class="code">autonum</code> (qv).
+                  <p class="p">Usually, <code class="code inherit">
+                        <a href="#tag_inherit">inherit</a>
+                     </code> is used in conjunction with <code class="code autonum">
+                        <a href="#tag_autonum">autonum</a>
+                     </code> (qv).
           Using the two elements in combination, for example, the number (property) assigned to a
           subcontrol appearing inside a control numbered <q class="q">A1</q> may be constrained to be
             <q class="q">A1-a</q>, <q class="q">A1-b</q> etc., depending on the position of the subcontrol within the
           control.</p>
                   <p class="p">If a value must inherit from a property of a different class from the containing control
-          object, <code class="code">inherit/@from</code> can be used to indicate the applicable property (by its
-          class). By default, <code class="code">inherit</code> indicates a property value should match an
-          ancestor's property with the same <code class="code">@class</code> (the most usual case).</p>
+          object, inherit/@from can be used to indicate the applicable property (by its
+          class). By default, <code class="code inherit">
+                        <a href="#tag_inherit">inherit</a>
+                     </code> indicates a property value should match an
+          ancestor's property with the same @class (the most usual case).</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>desc</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Parameter description</p>
-               <div class="stmt ">description
-        <p class="p">Indicates and explains the purpose and use of a parameter</p>
+            <div class="control" id="tag_desc">
+               <h3>
+                  <span class="run-in subst tag">desc</span> 
+                  <span class="run-in subst full_name">Parameter description</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Indicates and explains the purpose and use of a parameter</p>
                </div>
             </div>
     
          </section>
          <section class="group">
             <h2 class="title">Structural elements</h2>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>section</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Division</p>
-               <div class="stmt ">description
-        <p class="p">A chapter, section or subsection partitioning a catalog, collection or section
+            <div class="control" id="tag_section">
+               <h3>
+                  <span class="run-in subst tag">section</span> 
+                  <span class="run-in subst full_name">Division</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">A chapter, section or subsection partitioning a catalog, collection or section
           therein</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Echoes HTML5 <code class="code">section</code>.</p>
-                  <p class="p">Like groups, sections (<code class="code">section</code>)</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Echoes HTML5 <code class="code section">
+                        <a href="#tag_section">section</a>
+                     </code>.</p>
+                  <p class="p">Like groups, sections (<code class="code section">
+                        <a href="#tag_section">section</a>
+                     </code>)</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>group</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Group</p>
-               <div class="stmt ">description
-        <p class="p">Related controls or groups (of controls or groups)</p>
+            <div class="control" id="tag_group">
+               <h3>
+                  <span class="run-in subst tag">group</span> 
+                  <span class="run-in subst full_name">Group</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Related controls or groups (of controls or groups)</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">In addition to controls or groups, groups may be titled and may have their own
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">In addition to controls or groups, groups may be titled and may have their own
           properties, statements, parameter settings and references, subject to declaration. In this
           respect they are like control objects (control, subcontrol and feature), albeit their
           properties apply to the entire group – and must be acquired in processing via
           inheritance.</p>
-                  <p class="p">Unlike sections (<code class="code">section</code> elements), groups may not contain arbitrary prose
+                  <p class="p">Unlike sections (<code class="code section">
+                        <a href="#tag_section">section</a>
+                     </code> elements), groups may not contain arbitrary prose
           (paragraphs and lists). They may however contain statements (stmt), which may be untyped
           (no @class) and therefore unconstrained by declarations.</p>
                </div>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>title</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Title</p>
-               <div class="stmt ">description</div>
+            <div class="control" id="tag_title">
+               <h3>
+                  <span class="run-in subst tag">title</span> 
+                  <span class="run-in subst full_name">Title</span> 
+               </h3>
+      
+      
+               <div class="part description"/>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>references</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>References</p>
-               <div class="stmt ">description</div>
+            <div class="control" id="tag_references">
+               <h3>
+                  <span class="run-in subst tag">references</span> 
+                  <span class="run-in subst full_name">References</span> 
+               </h3>
+      
+      
+               <div class="part description"/>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>ref</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Reference</p>
-               <div class="stmt ">description</div>
+            <div class="control" id="tag_ref">
+               <h3>
+                  <span class="run-in subst tag">ref</span> 
+                  <span class="run-in subst full_name">Reference</span> 
+               </h3>
+      
+      
+               <div class="part description"/>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>std</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Standard</p>
-               <div class="stmt ">description
-        <p class="p">Citation of a formal published standard</p>
+            <div class="control" id="tag_std">
+               <h3>
+                  <span class="run-in subst tag">std</span> 
+                  <span class="run-in subst full_name">Standard</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Citation of a formal published standard</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code">std</code> element</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code std">
+                        <a href="#tag_std">std</a>
+                     </code> element</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>citation</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Citation</p>
-               <div class="stmt ">description
-        <p class="p">Citation of a resource</p>
+            <div class="control" id="tag_citation">
+               <h3>
+                  <span class="run-in subst tag">citation</span> 
+                  <span class="run-in subst full_name">Citation</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Citation of a resource</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code">mixed-citation</code> element.</p>
-                  <p class="p">For references to standards, <code class="code">std</code> (qv) may be preferred.</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Echoes the NISO JATS (and NISO STS) mixed-citation element.</p>
+                  <p class="p">For references to standards, <code class="code std">
+                        <a href="#tag_std">std</a>
+                     </code> (qv) may be preferred.</p>
                </div>
             </div>
          </section>
          <section class="group">
             <h2 class="title">Prose</h2>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>p</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Paragraph</p>
-               <div class="stmt ">description
-        <p class="p">Or paragraph fragment</p>
+            <div class="control" id="tag_p">
+               <h3>
+                  <span class="run-in subst tag">p</span> 
+                  <span class="run-in subst full_name">Paragraph</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Or paragraph fragment</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">This element echoes HTML <code class="code">p</code>; like its forebear, it is not limited to
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">This element echoes HTML <code class="code p">
+                        <a href="#tag_p">p</a>
+                     </code>; like its forebear, it is not limited to
           indicating complete or discrete (compositional or logical) paragraphs, but can be used for
           any text set off on its own line.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>pre</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Preformatted text</p>
-               <div class="stmt ">description
-        <p class="p">Retains whitespace in display</p>
+            <div class="control" id="tag_pre">
+               <h3>
+                  <span class="run-in subst tag">pre</span> 
+                  <span class="run-in subst full_name">Preformatted text</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Retains whitespace in display</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Echoes HTML <code class="code">pre</code>.</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Echoes HTML <code class="code pre">
+                        <a href="#tag_pre">pre</a>
+                     </code>.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>ol</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Ordered List</p>
-               <div class="stmt ">description</div>
+            <div class="control" id="tag_ol">
+               <h3>
+                  <span class="run-in subst tag">ol</span> 
+                  <span class="run-in subst full_name">Ordered List</span> 
+               </h3>
+      
+      
+               <div class="part description"/>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>li</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>List item</p>
-               <div class="stmt ">description</div>
+            <div class="control" id="tag_li">
+               <h3>
+                  <span class="run-in subst tag">li</span> 
+                  <span class="run-in subst full_name">List item</span> 
+               </h3>
+      
+      
+               <div class="part description"/>
       
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>ul</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Unordered list</p>
-               <div class="stmt ">description</div>
-               <div class="stmt ">remarks
-        <p class="p">As in HTML, <q class="q">unordered</q> does not indicate that the order of contained list items is
+            <div class="control" id="tag_ul">
+               <h3>
+                  <span class="run-in subst tag">ul</span> 
+                  <span class="run-in subst full_name">Unordered list</span> 
+               </h3>
+      
+      
+               <div class="part description"/>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">As in HTML, <q class="q">unordered</q> does not indicate that the order of contained list items is
           not respected, only that they are not displayed with any notation indicating their order:
           that is, bullets, not numbers.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>em</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Emphasis</p>
-               <div class="stmt ">description
-        <p class="p">Rhetorical emphasis as indicated typically by a font shift</p>
+            <div class="control" id="tag_em">
+               <h3>
+                  <span class="run-in subst tag">em</span> 
+                  <span class="run-in subst full_name">Emphasis</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Rhetorical emphasis as indicated typically by a font shift</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">In display, this element can be expected to <q class="q">toggle</q>, i.e. provide for italics when
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">In display, this element can be expected to <q class="q">toggle</q>, i.e. provide for italics when
           appearing within roman text, but roman when appearing within italic text.</p>
                   <p class="p">Particular semantics (indicating types of emphasis for finer resolution in display or
-          retrieval) may be provided via <code class="code">@class</code>.</p>
+          retrieval) may be provided via @class.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>i</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Italics</p>
-               <div class="stmt ">description
-        <p class="p">Typographical shift to italics</p>
+            <div class="control" id="tag_i">
+               <h3>
+                  <span class="run-in subst tag">i</span> 
+                  <span class="run-in subst full_name">Italics</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Typographical shift to italics</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">An implementation may toggle, i.e. display contents using a roman face when the
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">An implementation may toggle, i.e. display contents using a roman face when the
           surrounding text is already italic.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>b</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Bold</p>
-               <div class="stmt ">description
-        <p class="p">Typographical shift to bold</p>
+            <div class="control" id="tag_b">
+               <h3>
+                  <span class="run-in subst tag">b</span> 
+                  <span class="run-in subst full_name">Bold</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Typographical shift to bold</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">In display, when surrounding text is already bold, an implementation may indicate
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">In display, when surrounding text is already bold, an implementation may indicate
             <q class="q">bold</q> by means of double-bold or some other typographical distinction.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>a</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Anchor</p>
-               <div class="stmt ">description
-        <p class="p">An HTML-style anchor (inline linking element)</p>
+            <div class="control" id="tag_a">
+               <h3>
+                  <span class="run-in subst tag">a</span> 
+                  <span class="run-in subst full_name">Anchor</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">An HTML-style anchor (inline linking element)</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">As in HTML, the link target is indicated by <code class="code">@href</code>, with a '#' prefix for an
-          internal cross-reference matching an <code class="code">@id</code> elsewhere in the document.</p>
-                  <p class="p">Anchors without <code class="code">@href</code> are not invalid to the OSCAL schema (base validation),
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">As in HTML, the link target is indicated by @href, with a '#' prefix for an
+          internal cross-reference matching an @id elsewhere in the document.</p>
+                  <p class="p">Anchors without @href are not invalid to the OSCAL schema (base validation),
           but may be reported by a Schematron. In use, an application may promote the contents of a
-            <code class="code">a</code> element, when a valid URI, to serve as the link target, if
-            <code class="code">@href</code> is missing or not a URI.</p>
+            <code class="code a">
+                        <a href="#tag_a">a</a>
+                     </code> element, when a valid URI, to serve as the link target, if
+            @href is missing or not a URI.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>q</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Quoted text</p>
-               <div class="stmt ">description
-        <p class="p">An inline segment to appear within quotation marks</p>
+            <div class="control" id="tag_q">
+               <h3>
+                  <span class="run-in subst tag">q</span> 
+                  <span class="run-in subst full_name">Quoted text</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">An inline segment to appear within quotation marks</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">For practical purposes, this is a cosmetic element with no special semantics other than
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">For practical purposes, this is a cosmetic element with no special semantics other than
           to provide quotation marks in display.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>code</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Code</p>
-               <div class="stmt ">description
-        <p class="p">Inline code</p>
+            <div class="control" id="tag_code">
+               <h3>
+                  <span class="run-in subst tag">code</span> 
+                  <span class="run-in subst full_name">Code</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Inline code</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">Strictly, this element should identify formal code or code fragments.</p>
-               </div>
-            </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>sup</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Superscript</p>
-               <div class="stmt ">description
-        <p class="p">Superscripted text</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Strictly, this element should identify formal code or code fragments.</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>sub</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Subscript</p>
-               <div class="stmt ">description
-        <p class="p">Subscripted text</p>
-               </div>
-               <div class="stmt ">remarks
-        <p class="p">Strictly, this element should identify formal code or code fragments.</p>
+            <div class="control" id="tag_sup">
+               <h3>
+                  <span class="run-in subst tag">sup</span> 
+                  <span class="run-in subst full_name">Superscript</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Superscripted text</p>
                </div>
             </div>
-            <div class="control">
-               <h3/>
-               <p class="prop tag">
-                  <span class="subst">tag: </span>span</p>
-               <p class="prop full_name">
-                  <span class="subst">full_name: </span>Span</p>
-               <div class="stmt ">description
-        <p class="p">Generic inline container</p>
+            <div class="control" id="tag_sub">
+               <h3>
+                  <span class="run-in subst tag">sub</span> 
+                  <span class="run-in subst full_name">Subscript</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Subscripted text</p>
                </div>
-               <div class="stmt ">remarks
-        <p class="p">As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">Strictly, this element should identify formal code or code fragments.</p>
+               </div>
+            </div>
+            <div class="control" id="tag_span">
+               <h3>
+                  <span class="run-in subst tag">span</span> 
+                  <span class="run-in subst full_name">Span</span> 
+               </h3>
+      
+      
+               <div class="part description">
+                  <p class="p">Generic inline container</p>
+               </div>
+               <div class="part remarks">
+                  <h5>remarks</h5>
+                  <p class="p">As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
                </div>
             </div>
          </section>
          <section class="group">
             <h2 class="title">Structural constraints</h2>
-            <div class="stmt ">
+            <div class="part ">
+               <h4/>
                <p class="p">Over and above what is validable with a grammar (in Level 0), there is a small set of
         constraints governing usage. Validations enforcing them can be implemented via Schematron or
         another process capable of static analysis of the data.</p>
             </div>
             <div class="control">
-               <h3>Within a control, properties, statements and parameters may occur in any order.</h3>
+               <h3/>Within a control, properties, statements and parameters may occur in any order.
       
-               <div class="stmt ">description
-        <p class="p">This specification does not govern how or whether an implementation may respect the order
+      <div class="part description">
+                  <p class="p">This specification does not govern how or whether an implementation may respect the order
           of properties and statements given within a control type. Among properties, statements and
           parameters (that is, named things) within a control, cardinality constraints (where
           enforced) can help ensure a canonical order. An order may be imposed locally (for example,

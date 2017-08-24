@@ -32,7 +32,42 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <xsl:template match="pre//text()">
+  <xsl:template match="span[contains(@class,'tag')]">
+    <!-- double escaped! -->
+    <xsl:text>&amp;lt;</xsl:text>
+    <xsl:apply-templates/>
+    <!-- Heh -->
+    <xsl:text>></xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="span[contains(@class,'code')]">
+    <xsl:text>`</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>`</xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="em">
+    <xsl:text>*</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>*</xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="q">
+    <xsl:text>"</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>"</xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="a[starts-with(@href,'#tag')]">
+    <xsl:text>[</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>]</xsl:text>
+    <xsl:text>(#</xsl:text>
+    <xsl:value-of select="translate(.,' ','-')"/>
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+  
+    <xsl:template match="pre//text()">
     <xsl:value-of select="."/>
   </xsl:template>
   

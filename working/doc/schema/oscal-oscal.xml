@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="oscal-docs-html.xsl"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Straight" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css" title="Formal" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
@@ -103,7 +103,8 @@
         <p>A structured information object representing a security control</p>
       </part>
       <part class="remarks">
-        <p>Controls may be grouped using <code>group</code>, and </p>
+        <p>Controls may be grouped using <code>group</code>, and controls may be partitioned, using
+          either formal <code>subcontrol</code> or (informally) <code>part</code>.</p>
       </part>
     </control>
     <control class="element-description">
@@ -115,8 +116,9 @@
       <part class="remarks">
         <p>A nominal subcontrol or <q>control enhancement</q>, permitting catalogs easily to provide
           access to structured data at two levels. Further levels down can be achieved using
-            <code>part</code> (both controls and subcontrols may be partitioned) which may contain
-          their own parts</p>
+            <code>part</code> (both controls and subcontrols may be partitioned), which may contain
+          their own parts; however having <q>controls</q> and <q>subcontrols</q> known in advance to
+          be especially significant, is helpful.</p>
       </part>
     </control>
     <control class="element-description">
@@ -127,45 +129,46 @@
           group</p>
       </part>
       <part class="remarks">
-        <p>Like statements (<code>stmt</code>), features (<code>feat</code>) and parameters
-            (<code>param</code>), properties are <q>named things</q> that appear within controls,
-          subcontrols or features.</p>
-        <p>Properties do not contain structured content, only values, albeit sometimes containing
-          inline markup (<q>rich text</q>). Inasmuch as properties are often used as selectors or
-          identifiers for OSCAL operations, their values can be expected frequently to be flattened
-          (markup stripped) and normalized (e.g., with respect to whitespace) in use.</p>
+        <p>The notation used by a property is up to an application; otherwise, properties are
+          distinguished in OSCAL by their not permitting inline markup of any kind. They are
+          expected to be simple scalar values or at any rate, to use machine-readable / parseable
+          notation (not XML), as defined by and for an application.</p>
+        <p>The lexical composition of properties may be constrained by declarations including
+          matching to regular expressions or declaring known datatype notations (tbd).</p>
+        <p>Inasmuch as properties are often used as selectors or identifiers for OSCAL operations,
+          their values can be expected frequently to be flattened (markup stripped) and normalized
+          (e.g., with respect to whitespace) in use; however this is application defined.</p>
         <p>When singletons (that is, the only element among siblings with its <code>@class</code>),
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
           robustness of such queries can be ensured by appropriate property declarations (as
           singletons and as identifiers); cf <code>property</code> in the declarations model (which
           also supports other constraints over property values).</p>
-        <p>Properties are the <q>bread and butter</q> of OSCAL; they enable the deployment and
-          management of arbitrary controlled values, with and among control objects (controls and
-          their formal enhancements), for any purpose useful to an application or implementation of
-          those controls. Typically and routinely, properties will be used to sort, select, order
-          and arrange controls or relate them to one another or to class hierarchies, taxonomies or
-          external authorities.</p>
+        <p>Properties the deployment and management of arbitrary controlled values, with and among
+          control objects (controls and their formal enhancements), for any purpose useful to an
+          application or implementation of those controls. Typically and routinely, properties will
+          be used to sort, select, order and arrange controls or relate them to one another or to
+          class hierarchies, taxonomies or external authorities.</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">part</prop>
       <prop class="full_name">Part</prop>
       <part class="description">
-        <p>A component of a control, subcontrol or part</p>
+        <p>A component or partition in a control, subcontrol or part</p>
       </part>
       <part class="remarks">
-        <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can
-          be distinguished from other elements within their controls by their assigned
+        <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
+          distinguished from other elements within their controls by their assigned
             <code>@class</code>, such that they may be subjected to <q>declarations logic</q> using
-          these values as bindings (and thereby getting open-ended extensibility).
-            <code>@class</code> is however optional on <code>stmt</code></p>
-        <p>An assigned class will typically also provide for a header in display, such that
-            <code>stmt[@class='objectives']</code> is displayed under a header <em>Objectives</em>,
-          etc. This is useful, since unlike controls, subcontrols, groups or even features
-            (<code>feat</code>), statements may not have titles.</p>
-        <p>Like anything in OSCAL, this element may be formally valid, without its contents or
-          representations being correct, complete, veracious or even intelligible.</p>
+          these values as bindings (and thereby getting open-ended extensibility).</p>
+        <p>An assigned class may frequently provide for a header in display, such that
+            <code>part[@class='objectives']</code> is displayed under a header <em>Objectives</em>,
+          etc. Unlike groups, controls or subcontrols, however, they may not have <code>title</code>
+          element children (they are not <q>first class objects</q> in this sense). Thus in OSCAL,
+          if the components of your controls have their own titles, they are something else): to
+          accommodate data like this, consider using a property (e.g.
+            <code>prop[@class='part-title']</code> as an escape hatch.</p>
       </part>
     </control>
     <control class="element-description">
@@ -332,8 +335,11 @@
         <p>Indicates a permissible value for a parameter or property</p>
       </part>
       <part class="remarks">
-        <p>Typically, <code>value</code> will be given in groups, indicating a set of enumerated
-          permissible values.</p>
+        <p>In a declaration, <code>value</code> will be given in groups, indicating a set of
+          enumerated permissible values.</p>
+        <p>In a parameter, a value represents a value assignment to the parameter, overriding any
+          value given at the point of insertion. When parameters are provided in OSCAL profiles,
+          their values will override any values assigned <q>lower down the stack</q>.</p>
       </part>
     </control>
     <control class="element-description">
@@ -343,6 +349,20 @@
         <p>Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
           alphabetic, roman etc)</p>
+      </part>
+      <part class="remarks">
+        <p>In a declaration, <code>value</code> will be given in groups, indicating a set of
+          enumerated permissible values.</p>
+        <p>In a parameter, a value represents a value assignment to the parameter, overriding any
+          value given at the point of insertion. When parameters are provided in OSCAL profiles,
+          their values will override any values assigned <q>lower down the stack</q>.</p>
+        <p>The <em>contents</em>, not the value of any attribute, will be taken by the processor to
+          be a formatting code. The format should follow the spec for <a
+            href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
+              <code>xsl:number/@format</code></a>. For example, if the value is <q>A.</q> then
+          numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
+          include upper and lower case alphabetic numbering, arabic numbering, and upper- and
+          lower-case roman numbering as described for XSLT.</p>
       </part>
       
     </control>

@@ -264,7 +264,7 @@
    <xs:element name="part">
       <xs:annotation>
          <xs:documentation>
-            <b>Part</b> A component of a control, subcontrol or part</xs:documentation>
+            <b>Part</b> A component or partition in a control, subcontrol or part</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

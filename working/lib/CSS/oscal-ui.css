@@ -89,9 +89,15 @@ param:before { content: 'param targets ' oxy_textfield(
            'class ' oxy_textfield(
           edit, '@class',
           columns, 10); }
-
-assign:before { content: 'id ' oxy_textfield(
+inject:before { content: 'id ' oxy_textfield(
           edit, '@id',
           columns, 7); }
+
+
+a:after { content:
+   oxy_urlChooser(
+          edit, '@href',
+          columns, 50 ) 
+ }
 
 

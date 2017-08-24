@@ -19,7 +19,7 @@
 .control { margin:1em; padding: 1em; border: thin dotted black }
 .control > *:first-child { margin-top: 0em }
 
-h1, h2, h3, h4, h5, h6 { font-family: sans-serif }
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin: 0em }
 h3 { font-size: 120% }
 
 div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
@@ -36,6 +36,9 @@ div div div h3 { font-size: 110% }
 .subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
 
 .param .em { font-style: roman }
+
+.tag:before { content: '&lt;' }
+.tag:after  { content: '&gt;' }
 
         </style>
       </head>
@@ -63,53 +66,7 @@ div div div h3 { font-size: 110% }
       <xsl:value-of select="."/>
     </xsl:template>
 
-  <!--<xsl:template match="oscal:declarations">
-    <x class="declarations">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:control-spec">
-    <x class="control-spec">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:required">
-    <x class="required">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:property">
-    <x class="property">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:value">
-    <x class="value">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:identifier">
-    <x class="identifier">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  <xsl:template match="oscal:regex">
-    <x class="regex">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  
-  <xsl:template match="oscal:optional">
-    <x class="optional">
-      <apply-templates/>
-    </x>
-  </xsl:template>
-  
-  <xsl:template match="oscal:statement">
-    <div class="statement">
-      <apply-templates/>
-    </div>
-  </xsl:template>-->
+ 
   
   <xsl:template match="oscal:group">
     <section class="group">
@@ -127,32 +84,46 @@ div div div h3 { font-size: 110% }
   <xsl:template match="oscal:control">
     <div class="control">
       <xsl:copy-of select="@id"/>
-      <xsl:call-template name="make-title"/>
+      <xsl:if test="@class='element-description' and oscal:prop[@class='tag']">
+        <!--Remember we are writing XSLT 1.0 here, we have to do everything the hard way-->
+        <xsl:attribute name="id">
+          <xsl:text>tag_</xsl:text>
+          <xsl:value-of select="oscal:prop[@class='tag']"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:call-template name="make-title">
+        <xsl:with-param name="runins" select="oscal:prop[@class='tag'] | oscal:prop[@class='full_name']"/>
+      </xsl:call-template>
       
       <xsl:apply-templates/>
     </div>
   </xsl:template>
   
-  <!-- Picked up in parent -->
+  <!-- Picked up in parent, by default this element is suppressed -->
   <xsl:template match="oscal:control/oscal:title"/>
   
   <xsl:template name="make-title">
     <xsl:param name="runins" select="/.."/>
-    <h3>
+    <xsl:apply-templates select=".." mode="title">
+      <xsl:with-param name="runins" select="$runins"/>
+    </xsl:apply-templates>
+    
+    <xsl:for-each select="oscal:title">
+      <xsl:apply-templates/>
+    </xsl:for-each>
+    <!--<h3>
       <xsl:apply-templates select="$runins" mode="run-in"/>
-      <xsl:for-each select="oscal:title">
-        <xsl:apply-templates/>
-      </xsl:for-each>
-    </h3>
+      
+    </h3>-->
   </xsl:template>
   
   <xsl:template match="oscal:prop" mode="run-in">
-    <span class="run-in subst">
+    <span class="run-in subst {@class}">
       <xsl:apply-templates/>
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
-      
+  
   <xsl:template match="oscal:param">
     <p class="param">
       <span class="subst">
@@ -166,6 +137,9 @@ div div div h3 { font-size: 110% }
     
   </xsl:template>
   
+  <xsl:template match="oscal:prop[@class='tag'] | oscal:prop[@class='full_name'] "/>
+  
+  
   <xsl:template match="oscal:prop">
     <p class="prop {@class}">
       <span class="subst">
@@ -176,8 +150,15 @@ div div div h3 { font-size: 110% }
     </p>
   </xsl:template>
 
+  <xsl:template match="*[@class='description']" mode="title"/>
+    
   <xsl:template match="*" mode="title">
-    <xsl:value-of select="@class"/>
+    <xsl:param name="runins" select="/.."/>
+    <xsl:variable name="how-deep" select="count(ancestor-or-self::*) + 1"/>
+    <xsl:element name="h{$how-deep}">
+      <xsl:apply-templates mode="run-in" select="$runins"/>
+      <xsl:value-of select="@class"/>
+    </xsl:element>
   </xsl:template>
   
   <xsl:template match="oscal:p">
@@ -214,7 +195,7 @@ div div div h3 { font-size: 110% }
   </xsl:template>
   
   <xsl:template match="oscal:part">
-    <div class="stmt {@role}">
+    <div class="part {@class}">
       <xsl:apply-templates select="." mode="title"/>
       <xsl:apply-templates/>
     </div>
@@ -278,11 +259,18 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </section>
   </xsl:template>-->
-  <xsl:template match="oscal:code">
-    <code class="code">
-      <xsl:apply-templates/>
+  
+  <xsl:variable name="all-tags" select="//oscal:prop[@class='tag']"/>
+  
+  <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
+    <code class="code {.}">
+      <a href="#tag_{.}">
+        <xsl:apply-templates/>
+      </a>
     </code>
   </xsl:template>
+  
+  
   <xsl:template match="oscal:q">
     <q class="q">
       <xsl:apply-templates/>
