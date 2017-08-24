@@ -92,7 +92,11 @@ An assigned class may frequently provide for a header in display, such that part
 
 ### &lt;link> Link   
 
-A line or paragraph with a hypertext link     
+A line or paragraph with a hypertext link  
+
+##### remarks 
+
+Works like HTML anchor ([&lt;a>](#a-anchor)) except this is a line-oriented (block) element.     
 
 ## Functional elements 
 

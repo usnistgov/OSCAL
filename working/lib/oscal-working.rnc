@@ -185,6 +185,7 @@ ul = element ul { element li { idAttr, optionalClass, (whatnot | ol | ul )* }+ }
 whatnot = (
   semantical | mix | xref)*
 
+# note mix does not include anchors, which must be included separately 
 mix = (inlines | text)*
 
 # declaring as zeroOrMore/choice avoids XSD substitution group

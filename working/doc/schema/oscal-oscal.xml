@@ -188,6 +188,10 @@
       <part class="description">
         <p>A line or paragraph with a hypertext link</p>
       </part>
+      <part class="remarks">
+        <p>Works like HTML anchor (<code>a</code>) except this is a line-oriented (block)
+          element.</p>
+      </part>
       
     </control>
   </group>

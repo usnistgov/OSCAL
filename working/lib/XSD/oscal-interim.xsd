@@ -408,6 +408,7 @@
       </xs:choice>
     </xs:sequence>
   </xs:group>
+  <!-- note mix does not include anchors, which must be included separately -->
   <xs:group name="mix">
     <xs:sequence>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal:inlines"/>
