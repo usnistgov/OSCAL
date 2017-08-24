@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../CSS/oscal.css" title="Straight" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../CSS/oscal-ui.css" title="Formal" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Straight" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css" title="Formal" alternate="yes"?>
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>OSCAL: the Open Security Controls Assessment Language</title>
   <!--<declarations>

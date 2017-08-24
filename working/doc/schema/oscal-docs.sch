@@ -18,7 +18,7 @@
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
-  <sch:let name="schema-file" value="'oscal-interim.xsd'"/>
+  <sch:let name="schema-file" value="'../../lib/XSD/oscal-interim.xsd'"/>
   <sch:let name="schema" value="document($schema-file)"/>
   
   <sch:let name="element-declarations"  value="$schema//xsd:element[exists(@name)]"/>
