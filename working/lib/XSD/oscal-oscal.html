@@ -1,0 +1,1167 @@
+<html xmlns:oscal="http://scap.nist.gov/schema/oscal">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   OSCAL: the Open Security Controls Assessment Language<style type="text/css">
+
+.control { margin:1em; padding: 1em; border: thin dotted black }
+.control > *:first-child { margin-top: 0em }
+
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif }
+h3 { font-size: 120% }
+
+div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
+
+section h3     { font-size: 160% }
+section h3     { font-size: 140% }
+div h3         { font-size: 130% }
+div div h3     { font-size: 120% }
+div div div h3 { font-size: 110% }
+
+.param { font-style: italic }
+.assign, .choice { border: thin solid black; padding: 0.1em }
+
+.subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
+
+.param .em { font-style: roman }
+
+        </style></head>
+   <body>
+      <x class="catalog">
+         
+         <h2 class="title">OSCAL: the Open Security Controls Assessment Language</h2>
+           
+           
+             
+         <h2 class="title">OSCAL namespace</h2>
+             
+         <p class="p">Determine the element population of an OSCAL document (set) bmo XPath
+                    <code class="code">distinct-values(//*/node-name())</code></p>
+             
+         <p class="p">Valid OSCAL documents will not contain elements not described in this specification. While
+            OSCAL may be mixed with other tag sets, or extended, neither of these applications is
+                  addressed in any way by this document. This document provides only bare-bones information
+                  about the OSCAL <q class="q">core</q>.
+         </p>
+             
+         <p class="p">For its XML names, OSCAL uses the namespace XXX http://scap.nist.gov/schema/oscal XXX.
+                  Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
+                  this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
+                  without a prefix, <code class="code">oscal:</code> or any other.
+         </p>
+           
+           
+         <section class="group">
+                
+            <h2 class="title">OSCAL terminology</h2>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop term"><span class="subst">term: </span>Control object
+               </p>
+                     
+                       
+               <p class="p">OSCAL catalogs are comprised of control objects, typically arranged in groups. The
+                            top-level control object is <code class="code">control</code>. Other control objects are subcontrols
+                              (<code class="code">subcontrol</code>) and features (<code class="code">feat</code>). Subcontrols may only appear
+                            (directly) within controls. Features may appear within controls or subcontrols, or may be
+                            nested (to any depth) within features.
+               </p>
+                       
+               <p class="p">Control objects in OSCAL may be characterized as consistent data structures, whose
+                            contents are appropriate to their type and application. The type of a control object is
+                            labelled by means of its <code class="code">@class</code>. Control objects may validated for
+                            consistency between and among objects of the same type, by means of constraining values
+                            assigned to the control components (qv) appearing within them.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop term"><span class="subst">term: </span>Control component
+               </p>
+                     
+                       
+               <p class="p">Control components are information objects that constitute particular controls. They
+                            include properties (<code class="code">prop</code>), statements (<code class="code">stmt</code>), features
+                              (<code class="code">feat</code>), and parameters (<code class="code">param</code>).
+               </p>
+                       
+               <p class="p">Note that features (feat) are both control components (only appearing inside control
+                            objects) and themselves control objects (which may contain their own properties,
+                            statements, and features). As such they are <q class="q">transitional</q> objects. Indeed they may
+                            be used for control components below the level of subcontrols. Typically, however, they
+                            will be more fragmentary, not providing useful information outside the context of the
+                            containing control object.
+               </p>
+                       
+               <p class="p">The appearance (whether required or optional), cardinality, and values (of any control
+                            component) and/or components (of features) may be constrained and validated by means of
+                            the OSCAL declarations model. This enables catalogs and catalog types to enforce
+                            consistency of components across controls of identified and labeled types.
+               </p>
+                     
+                   
+            </div>
+              
+         </section>
+           
+         <section class="group">
+                
+            <h2 class="title">Controls and control components</h2>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>catalog
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Catalog
+               </p>
+                     
+                       
+               <p class="p">Top-level element for a (canonical) control catalog</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>collection
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Collection
+               </p>
+                     
+                       
+               <p class="p">Top-level element for a set of controls, not considered to be a catalog</p>
+                     
+                     
+                       
+               <p class="p">Most often, a collection element will be used for a set of controls derived from one or
+                            more control catalogs (such as a profile, baseline or overlay), which do not themselves
+                            serve as a catalog.
+               </p>
+                       
+               <p class="p">However, collections may contain everything that catalogs may contain, and OSCAL does not
+                            prohibit their use as (source or interim) catalogs for profiling. (Although an application
+                            might).
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>control
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Control
+               </p>
+                     
+                       
+               <p class="p">A structured information object representing a security control</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>subcontrol
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Control enhancement
+               </p>
+                     
+                       
+               <p class="p">Within a control, a control object appearing as a component</p>
+                     
+                     
+                       
+               <p class="p">This is a control object, just like a control, only related to a particular control by
+                            virtue of containment in the OSCAL instance. Control enhancements (subcontrols) may
+                            contain their own enhancements as well as control components (properties, statements
+                            etc.).
+               </p>
+                       
+               <p class="p">Because either <code class="code">control</code> or <code class="code">subcontrol</code> may be grouped, the schema
+                            does not absolutely constrain that <code class="code">subcontrol</code> appear only within
+                              <code class="code">control</code> and never the reverse: this enforcement is left to a
+                            Schematron.
+               </p>
+                       
+               <p class="p">Albeit not absolutely forbidden by the schema, the rule is that while both controls and
+                            subcontrols may contain subcontrols, neither may contain controls. That is, in any
+                            catalog, a control is only the <q class="q">top level</q> of control object (even if gathered in
+                            groups) &#8211; all else is subcontrols (control enhancements) or control contents.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>prop
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Property
+               </p>
+                     
+                       
+               <p class="p">A value with a name, attributed to the containing control, subcontrol, feature or
+                            group
+               </p>
+                     
+                     
+                       
+               <p class="p">Like statements (<code class="code">stmt</code>), features (<code class="code">feat</code>) and parameters
+                              (<code class="code">param</code>), properties are <q class="q">named things</q> that appear within controls,
+                            subcontrols or features.
+               </p>
+                       
+               <p class="p">Properties do not contain structured content, only values, albeit sometimes containing
+                            inline markup (<q class="q">rich text</q>). Inasmuch as properties are often used as selectors or
+                            identifiers for OSCAL operations, their values can be expected frequently to be flattened
+                            (markup stripped) and normalized (e.g., with respect to whitespace) in use.
+               </p>
+                       
+               <p class="p">When singletons (that is, the only element among siblings with its <code class="code">@class</code>),
+                            properties are especially useful as proxies (unique identifiers) for their controls, such
+                            that controls may be returned one for one on queries for properties (name and value). The
+                            robustness of such queries can be ensured by appropriate property declarations (as
+                            singletons and as identifiers); cf <code class="code">property</code> in the declarations model (which
+                            also supports other constraints over property values).
+               </p>
+                       
+               <p class="p">Properties are the <q class="q">bread and butter</q> of OSCAL; they enable the deployment and
+                            management of arbitrary controlled values, with and among control objects (controls and
+                            their formal enhancements), for any purpose useful to an application or implementation of
+                            those controls. Typically and routinely, properties will be used to sort, select, order
+                            and arrange controls or relate them to one another or to class hierarchies, taxonomies or
+                            external authorities.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>part
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Part
+               </p>
+                     
+                       
+               <p class="p">A component of a control, subcontrol or part</p>
+                     
+                     
+                       
+               <p class="p">Like properties (<code class="code">prop</code>) and parameters (<code class="code">param</code>), parts can
+                            be distinguished from other elements within their controls by their assigned
+                              <code class="code">@class</code>, such that they may be subjected to <q class="q">declarations logic</q> using
+                            these values as bindings (and thereby getting open-ended extensibility).
+                              <code class="code">@class</code> is however optional on <code class="code">stmt</code></p>
+                       
+               <p class="p">An assigned class will typically also provide for a header in display, such that
+                              <code class="code">stmt[@class='objectives']</code> is displayed under a header <em class="em">Objectives</em>,
+                            etc. This is useful, since unlike controls, subcontrols, groups or even features
+                              (<code class="code">feat</code>), statements may not have titles.
+               </p>
+                       
+               <p class="p">Like anything in OSCAL, this element may be formally valid, without its contents or
+                            representations being correct, complete, veracious or even intelligible.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>link
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Link
+               </p>
+                     
+                       
+               <p class="p">A line or paragraph with a hypertext link</p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>param
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Parameter
+               </p>
+                     
+                       
+               <p class="p">A parameter setting, to be propagated to points of insertion</p>
+                     
+                     
+                   
+            </div>
+              
+         </section>
+           
+         <section class="group">
+                
+            <h2 class="title">Functional elements</h2>
+                
+            <p class="p">Functional elements appear inside control content to provide <q class="q">hooks</q> to OSCAL processors
+                     for dynamic insertion.
+            </p>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>withdrawn
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Withdrawn
+               </p>
+                     
+                       
+               <p class="p">Indicates that a containing control or subcontrol is no longer applicable</p>
+                     
+                     
+                       
+               <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>insert
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Parameter insertion
+               </p>
+                     
+                       
+               <p class="p">A reference to a parameter for dynamic content transclusion</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>select
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Selection
+               </p>
+                     
+                       
+               <p class="p">A selection requiring designation via parameter</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>choice
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Choice
+               </p>
+                     
+                       
+               <p class="p">A choice of values, to be designated via parameter</p>
+                     
+                   
+            </div>
+              
+         </section>
+           
+         <section class="group">
+                
+            <h2 class="title">Declarations elements</h2>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>declarations
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Declarations
+               </p>
+                     
+                       
+               <p class="p">For extra-schema validation of control components within controls</p>
+                     
+                     
+                       
+               <p class="p">The OSCAL validation model supports not only validation against a formal schema
+                            (describing elements, attributes, and their permitted contents, described generally and
+                            generically), but also against a set of declarations provided specifically for the catalog
+                            or catalog type within which they appear. Constraints described in these declarations, and
+                            bound via assignments of <code class="code">@class</code> (for control components) and
+                              <code class="code">@context</code> (indicating control, subcontrol or features wherein the components
+                            may appear), enable automated checking for consistency of controls, subcontrols and
+                            features, specific to the types or kinds of control items that appear within a particular
+                            catalog or control collection.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>declare-property
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Property declaration
+               </p>
+                     
+                     
+               <p class="p">Constraints applicable to a class or classes of <code class="code">p</code> elements within a control
+                          object
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>declare-p
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Paragraph declaration
+               </p>
+                     
+                       
+               <p class="p">Indicates constraints to be enforced on paragraphs in context</p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>declare-part
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Part declaration
+               </p>
+                     
+                       
+               <p class="p">Indicates constraints to be imposed on parts in context</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>declare-link
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Link declaration
+               </p>
+                     
+                       
+               <p class="p">Indicates constraints to be imposed on links in context</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>singleton
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Singleton constraint
+               </p>
+                     
+                       
+               <p class="p">The declared component may occur only once in its context</p>
+                     
+                     
+                       
+               <p class="p">When this element is present in the declaration of an OSCAL control component, the
+                            component (<code class="code">prop</code>, <code class="code">param</code>, <code class="code">stmt</code> or <code class="code">feat</code>)
+                            must be the only component of that class given in its context. i.e., no other element
+                            child of the same parent may have the same <code class="code">@class</code> value (at the level of
+                            syntax), or be bound to the same component type (at the semantic level).
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>required
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Requirement constraint
+               </p>
+                     
+                       
+               <p class="p">The declared component is required in its context</p>
+                     
+                     
+                       
+               <p class="p">When this element is present in the declaration of an OSCAL control component, the
+                            component (<code class="code">prop</code>, <code class="code">param</code>, <code class="code">stmt</code> or <code class="code">feat</code>)
+                            is required to appear, at least once, in its context.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>identifier
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Identifier constraint
+               </p>
+                     
+                       
+               <p class="p">The declared component has a value unique within the document, among components of the
+                            same type
+               </p>
+                     
+                     
+                       
+               <p class="p">This constraint is generally only used for properties to be used as identifiers for their
+                            control object (control, subcontrol or feature). Guaranteeing their uniqueness means that
+                            these values can be used to effect one-to-one retrieval or reference to the objects to
+                            which they are assigned.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>regex
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Regular expression constraint
+               </p>
+                     
+                       
+               <p class="p">Indicates that the value of a property (<code class="code">prop)</code> or parameter
+                              (<code class="code">param</code>) must match the given regular expression
+               </p>
+                     
+                     
+                       
+               <p class="p">Matching against a regular expression is conducted on the normalized lexical value of the
+                            given parameter or property: that is, with leading and trailing whitespace stripped,
+                            interim whitespace (space, tab or line feed) normalized to single spaces, and inline
+                            markup stripped.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>value
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Value constraint
+               </p>
+                     
+                       
+               <p class="p">Indicates a permissible value for a parameter or property</p>
+                     
+                     
+                       
+               <p class="p">Typically, <code class="code">value</code> will be given in groups, indicating a set of enumerated
+                            permissible values.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>autonum
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Autonumbered (generated) value
+               </p>
+                     
+                       
+               <p class="p">Generates a formatted numeric value based on the position of a control object among its
+                            siblings, the text contents providing a template for the numbering format (arabic,
+                            alphabetic, roman etc)
+               </p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>inherit
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Inherited value constraint
+               </p>
+                     
+                       
+               <p class="p">Indicates that a value or part of a value will be inherited from a property on a
+                            containing control object
+               </p>
+                     
+                     
+                       
+               <p class="p"><code class="code">inherit</code> is typically used to enforce hierarchical numbering within control
+                            objects. When given in a <code class="code">value</code> in a declaration, <code class="code">inherit</code>
+                            indicates that the value of a property, or a segment of its value, must be the same as a
+                            property (<code class="code">prop</code>) higher in the containment hierarchy of a control object. That
+                            is, if a property with <code class="code">@class='number'</code> is constrained with
+                              <code class="code">value/inherit</code>, it must be the same as is assigned on the closest ancestor
+                            (feature, subcontrol, control or group) with the given property.
+               </p>
+                       
+               <p class="p">Usually, <code class="code">inherit</code> is used in conjunction with <code class="code">autonum</code> (qv).
+                            Using the two elements in combination, for example, the number (property) assigned to a
+                            subcontrol appearing inside a control numbered <q class="q">A1</q> may be constrained to be
+                              <q class="q">A1-a</q>, <q class="q">A1-b</q> etc., depending on the position of the subcontrol within the
+                            control.
+               </p>
+                       
+               <p class="p">If a value must inherit from a property of a different class from the containing control
+                            object, <code class="code">inherit/@from</code> can be used to indicate the applicable property (by its
+                            class). By default, <code class="code">inherit</code> indicates a property value should match an
+                            ancestor's property with the same <code class="code">@class</code> (the most usual case).
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>desc
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Parameter description
+               </p>
+                     
+                       
+               <p class="p">Indicates and explains the purpose and use of a parameter</p>
+                     
+                   
+            </div>
+                
+              
+         </section>
+           
+         <section class="group">
+                
+            <h2 class="title">Structural elements</h2>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>section
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Division
+               </p>
+                     
+                       
+               <p class="p">A chapter, section or subsection partitioning a catalog, collection or section
+                            therein
+               </p>
+                     
+                     
+                       
+               <p class="p">Echoes HTML5 <code class="code">section</code>.
+               </p>
+                       
+               <p class="p">Like groups, sections (<code class="code">section</code>)
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>group
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Group
+               </p>
+                     
+                       
+               <p class="p">Related controls or groups (of controls or groups)</p>
+                     
+                     
+                       
+               <p class="p">In addition to controls or groups, groups may be titled and may have their own
+                            properties, statements, parameter settings and references, subject to declaration. In this
+                            respect they are like control objects (control, subcontrol and feature), albeit their
+                            properties apply to the entire group &#8211; and must be acquired in processing via
+                            inheritance.
+               </p>
+                       
+               <p class="p">Unlike sections (<code class="code">section</code> elements), groups may not contain arbitrary prose
+                            (paragraphs and lists). They may however contain statements (stmt), which may be untyped
+                            (no @class) and therefore unconstrained by declarations.
+               </p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>title
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Title
+               </p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>references
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>References
+               </p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>ref
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Reference
+               </p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>std
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Standard
+               </p>
+                     
+                       
+               <p class="p">Citation of a formal published standard</p>
+                     
+                     
+                       
+               <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code">std</code> element
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>citation
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Citation
+               </p>
+                     
+                       
+               <p class="p">Citation of a resource</p>
+                     
+                     
+                       
+               <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code">mixed-citation</code> element.
+               </p>
+                       
+               <p class="p">For references to standards, <code class="code">std</code> (qv) may be preferred.
+               </p>
+                     
+                   
+            </div>
+              
+         </section>
+           
+         <section class="group">
+                
+            <h2 class="title">Prose</h2>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>p
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Paragraph
+               </p>
+                     
+                       
+               <p class="p">Or paragraph fragment</p>
+                     
+                     
+                       
+               <p class="p">This element echoes HTML <code class="code">p</code>; like its forebear, it is not limited to
+                            indicating complete or discrete (compositional or logical) paragraphs, but can be used for
+                            any text set off on its own line.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>pre
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Preformatted text
+               </p>
+                     
+                       
+               <p class="p">Retains whitespace in display</p>
+                     
+                     
+                       
+               <p class="p">Echoes HTML <code class="code">pre</code>.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>ol
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Ordered List
+               </p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>li
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>List item
+               </p>
+                     
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>ul
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Unordered list
+               </p>
+                     
+                     
+                       
+               <p class="p">As in HTML, <q class="q">unordered</q> does not indicate that the order of contained list items is
+                            not respected, only that they are not displayed with any notation indicating their order:
+                            that is, bullets, not numbers.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>em
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Emphasis
+               </p>
+                     
+                       
+               <p class="p">Rhetorical emphasis as indicated typically by a font shift</p>
+                     
+                     
+                       
+               <p class="p">In display, this element can be expected to <q class="q">toggle</q>, i.e. provide for italics when
+                            appearing within roman text, but roman when appearing within italic text.
+               </p>
+                       
+               <p class="p">Particular semantics (indicating types of emphasis for finer resolution in display or
+                            retrieval) may be provided via <code class="code">@class</code>.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>i
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Italics
+               </p>
+                     
+                       
+               <p class="p">Typographical shift to italics</p>
+                     
+                     
+                       
+               <p class="p">An implementation may toggle, i.e. display contents using a roman face when the
+                            surrounding text is already italic.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>b
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Bold
+               </p>
+                     
+                       
+               <p class="p">Typographical shift to bold</p>
+                     
+                     
+                       
+               <p class="p">In display, when surrounding text is already bold, an implementation may indicate
+                              <q class="q">bold</q> by means of double-bold or some other typographical distinction.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>a
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Anchor
+               </p>
+                     
+                       
+               <p class="p">An HTML-style anchor (inline linking element)</p>
+                     
+                     
+                       
+               <p class="p">As in HTML, the link target is indicated by <code class="code">@href</code>, with a '#' prefix for an
+                            internal cross-reference matching an <code class="code">@id</code> elsewhere in the document.
+               </p>
+                       
+               <p class="p">Anchors without <code class="code">@href</code> are not invalid to the OSCAL schema (base validation),
+                            but may be reported by a Schematron. In use, an application may promote the contents of a
+                              <code class="code">a</code> element, when a valid URI, to serve as the link target, if
+                              <code class="code">@href</code> is missing or not a URI.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>q
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Quoted text
+               </p>
+                     
+                       
+               <p class="p">An inline segment to appear within quotation marks</p>
+                     
+                     
+                       
+               <p class="p">For practical purposes, this is a cosmetic element with no special semantics other than
+                            to provide quotation marks in display.
+               </p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>code
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Code
+               </p>
+                     
+                       
+               <p class="p">Inline code</p>
+                     
+                     
+                       
+               <p class="p">Strictly, this element should identify formal code or code fragments.</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>sup
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Superscript
+               </p>
+                     
+                       
+               <p class="p">Superscripted text</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>sub
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Subscript
+               </p>
+                     
+                       
+               <p class="p">Subscripted text</p>
+                     
+                     
+                       
+               <p class="p">Strictly, this element should identify formal code or code fragments.</p>
+                     
+                   
+            </div>
+                
+            <div class="control">
+               <h3></h3>
+                     
+               <p class="prop tag"><span class="subst">tag: </span>span
+               </p>
+                     
+               <p class="prop full_name"><span class="subst">full_name: </span>Span
+               </p>
+                     
+                       
+               <p class="p">Generic inline container</p>
+                     
+                     
+                       
+               <p class="p">As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
+                     
+                   
+            </div>
+              
+         </section>
+           
+         <section class="group">
+                
+            <h2 class="title">Structural constraints</h2>
+                
+                  
+            <p class="p">Over and above what is validable with a grammar (in Level 0), there is a small set of
+                       constraints governing usage. Validations enforcing them can be implemented via Schematron or
+                       another process capable of static analysis of the data.
+            </p>
+                
+                
+            <div class="control">
+               <h3>Within a control, properties, statements and parameters may occur in any order.</h3>
+                     
+                     
+                       
+               <p class="p">This specification does not govern how or whether an implementation may respect the order
+                            of properties and statements given within a control type. Among properties, statements and
+                            parameters (that is, named things) within a control, cardinality constraints (where
+                            enforced) can help ensure a canonical order. An order may be imposed locally (for example,
+                            by a schema that requires all properties to appear before all statements), but this is for
+                            its convenience not because an order is mandated.
+               </p>
+                     
+                   
+            </div>
+              
+         </section>
+           
+             
+         <h2 class="title">Customization layers</h2>
+             
+         <p class="p">Like many tag languages and machine-readable syntaxes, OSCAL is intended to be extended and
+                  customized. Unlike most other formats, however, OSCAL's extension mechanism includes a set of
+                  features, supported natively in the language, for extension by the simplest possible
+                  mechanism, without requiring modification of any schemas, using a simple, native set of
+                  declarations for controls.
+         </p>
+             
+         <p class="p">OSCAL's validation model consists of several layers. At base is schema validation, which
+                  ensures that all tags in use are recognized as OSCAL tagging and that their arrangement in the
+                  document (with regard to both structure, and certain <q class="q">semantic</q> relations) is consistent
+                  with regular usage of OSCAL. In a second layer, other relationships can be tested and rules
+                  enforced, over and above what a schema imposes. Implemented in Schematron or any technology
+                  with analogous capabilities, such as second layer is more flexible and configurable than the
+                  base layer.
+         </p>
+             
+         <p class="p">In a third layer, an OSCAL document is validated to constraints it declares for itself, that
+                  is locally in its own declarations. (Call this a <q class="q">consistency check</q> rather than
+                  validation, for clarity.) Such a validation may be useful to an OSCAL implementation, which
+                  can take advantage of contracts implicit in such validation to provide functionalities; OSCAL
+                  itself does not provide such functionality, but only the hooks &#8211; and the mechanism by which
+                  users and developers can easily create and manage new control types.
+         </p>
+           
+         
+      </x>
+   </body>
+</html>
