@@ -82,7 +82,7 @@ div div div h3 { font-size: 110% }
   <!--<xsl:key name="assignment"  match="oscal:param" use="@target"/>-->
   
   <xsl:template match="oscal:control">
-    <div class="control">
+    <div class="control {@class}">
       <xsl:copy-of select="@id"/>
       <xsl:if test="@class='element-description' and oscal:prop[@class='tag']">
         <!--Remember we are writing XSLT 1.0 here, we have to do everything the hard way-->
@@ -156,6 +156,7 @@ div div div h3 { font-size: 110% }
     <xsl:param name="runins" select="/.."/>
     <xsl:variable name="how-deep" select="count(ancestor-or-self::*) + 1"/>
     <xsl:element name="h{$how-deep}">
+      <xsl:copy-of select="@class"/>
       <xsl:apply-templates mode="run-in" select="$runins"/>
       <xsl:value-of select="@class"/>
     </xsl:element>

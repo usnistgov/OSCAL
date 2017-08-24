@@ -90,7 +90,7 @@ div div div h3 { font-size: 110% }
   
          <section class="group">
             <h2 class="title">Controls and control components</h2>
-            <div class="control" id="tag_catalog">
+            <div class="control element-description" id="tag_catalog">
                <h3>
                   <span class="run-in subst tag">catalog</span> 
                   <span class="run-in subst full_name">Catalog</span> 
@@ -101,7 +101,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Top-level element for a (canonical) control catalog</p>
                </div>
             </div>
-            <div class="control" id="tag_collection">
+            <div class="control element-description" id="tag_collection">
                <h3>
                   <span class="run-in subst tag">collection</span> 
                   <span class="run-in subst full_name">Collection</span> 
@@ -112,7 +112,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Top-level element for a set of controls, not considered to be a catalog</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Most often, a collection element will be used for a set of controls derived from one or
           more control catalogs (such as a profile, baseline or overlay), which do not themselves
           serve as a catalog.</p>
@@ -121,7 +121,7 @@ div div div h3 { font-size: 110% }
           might).</p>
                </div>
             </div>
-            <div class="control" id="tag_control">
+            <div class="control element-description" id="tag_control">
                <h3>
                   <span class="run-in subst tag">control</span> 
                   <span class="run-in subst full_name">Control</span> 
@@ -132,7 +132,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">A structured information object representing a security control</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Controls may be grouped using <code class="code group">
                         <a href="#tag_group">group</a>
                      </code>, and controls may be partitioned, using
@@ -143,7 +143,7 @@ div div div h3 { font-size: 110% }
                      </code>.</p>
                </div>
             </div>
-            <div class="control" id="tag_subcontrol">
+            <div class="control element-description" id="tag_subcontrol">
                <h3>
                   <span class="run-in subst tag">subcontrol</span> 
                   <span class="run-in subst full_name">Control enhancement</span> 
@@ -154,7 +154,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Within a control, a component or enhancement</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">A nominal subcontrol or <q class="q">control enhancement</q>, permitting catalogs easily to provide
           access to structured data at two levels. Further levels down can be achieved using
             <code class="code part">
@@ -164,7 +164,7 @@ div div div h3 { font-size: 110% }
           be especially significant, is helpful.</p>
                </div>
             </div>
-            <div class="control" id="tag_prop">
+            <div class="control element-description" id="tag_prop">
                <h3>
                   <span class="run-in subst tag">prop</span> 
                   <span class="run-in subst full_name">Property</span> 
@@ -176,7 +176,7 @@ div div div h3 { font-size: 110% }
           group</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">The notation used by a property is up to an application; otherwise, properties are
           distinguished in OSCAL by their not permitting inline markup of any kind. They are
           expected to be simple scalar values or at any rate, to use machine-readable / parseable
@@ -199,7 +199,7 @@ div div div h3 { font-size: 110% }
           class hierarchies, taxonomies or external authorities.</p>
                </div>
             </div>
-            <div class="control" id="tag_part">
+            <div class="control element-description" id="tag_part">
                <h3>
                   <span class="run-in subst tag">part</span> 
                   <span class="run-in subst full_name">Part</span> 
@@ -210,7 +210,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">A component or partition in a control, subcontrol or part</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Like properties (<code class="code prop">
                         <a href="#tag_prop">prop</a>
                      </code>) and parameters (<code class="code param">
@@ -230,7 +230,7 @@ div div div h3 { font-size: 110% }
             prop[@class='part-title'] as an escape hatch.</p>
                </div>
             </div>
-            <div class="control" id="tag_link">
+            <div class="control element-description" id="tag_link">
                <h3>
                   <span class="run-in subst tag">link</span> 
                   <span class="run-in subst full_name">Link</span> 
@@ -242,7 +242,7 @@ div div div h3 { font-size: 110% }
                </div>
       
             </div>
-            <div class="control" id="tag_param">
+            <div class="control element-description" id="tag_param">
                <h3>
                   <span class="run-in subst tag">param</span> 
                   <span class="run-in subst full_name">Parameter</span> 
@@ -259,7 +259,7 @@ div div div h3 { font-size: 110% }
             <h2 class="title">Functional elements</h2>
             <p class="p">Functional elements appear inside control content to provide <q class="q">hooks</q> to OSCAL processors
       for dynamic insertion.</p>
-            <div class="control" id="tag_withdrawn">
+            <div class="control element-description" id="tag_withdrawn">
                <h3>
                   <span class="run-in subst tag">withdrawn</span> 
                   <span class="run-in subst full_name">Withdrawn</span> 
@@ -270,11 +270,11 @@ div div div h3 { font-size: 110% }
                   <p class="p">Indicates that a containing control or subcontrol is no longer applicable</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, </p>
                </div>
             </div>
-            <div class="control" id="tag_insert">
+            <div class="control element-description" id="tag_insert">
                <h3>
                   <span class="run-in subst tag">insert</span> 
                   <span class="run-in subst full_name">Parameter insertion</span> 
@@ -285,7 +285,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">A reference to a parameter for dynamic content transclusion</p>
                </div>
             </div>
-            <div class="control" id="tag_select">
+            <div class="control element-description" id="tag_select">
                <h3>
                   <span class="run-in subst tag">select</span> 
                   <span class="run-in subst full_name">Selection</span> 
@@ -296,7 +296,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">A selection requiring designation via parameter</p>
                </div>
             </div>
-            <div class="control" id="tag_choice">
+            <div class="control element-description" id="tag_choice">
                <h3>
                   <span class="run-in subst tag">choice</span> 
                   <span class="run-in subst full_name">Choice</span> 
@@ -310,7 +310,7 @@ div div div h3 { font-size: 110% }
          </section>
          <section class="group">
             <h2 class="title">Declarations elements</h2>
-            <div class="control" id="tag_declarations">
+            <div class="control element-description" id="tag_declarations">
                <h3>
                   <span class="run-in subst tag">declarations</span> 
                   <span class="run-in subst full_name">Declarations</span> 
@@ -321,7 +321,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">For extra-schema validation of control components within controls</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">The OSCAL validation model supports not only validation against a formal schema
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
@@ -333,7 +333,7 @@ div div div h3 { font-size: 110% }
           catalog or control collection.</p>
                </div>
             </div>
-            <div class="control" id="tag_declare-property">
+            <div class="control element-description" id="tag_declare-property">
                <h3>
                   <span class="run-in subst tag">declare-property</span> 
                   <span class="run-in subst full_name">Property declaration</span> 
@@ -347,7 +347,7 @@ div div div h3 { font-size: 110% }
         object</p>
                </div>
             </div>
-            <div class="control" id="tag_declare-p">
+            <div class="control element-description" id="tag_declare-p">
                <h3>
                   <span class="run-in subst tag">declare-p</span> 
                   <span class="run-in subst full_name">Paragraph declaration</span> 
@@ -359,7 +359,7 @@ div div div h3 { font-size: 110% }
                </div>
       
             </div>
-            <div class="control" id="tag_declare-part">
+            <div class="control element-description" id="tag_declare-part">
                <h3>
                   <span class="run-in subst tag">declare-part</span> 
                   <span class="run-in subst full_name">Part declaration</span> 
@@ -370,7 +370,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Indicates constraints to be imposed on parts in context</p>
                </div>
             </div>
-            <div class="control" id="tag_declare-link">
+            <div class="control element-description" id="tag_declare-link">
                <h3>
                   <span class="run-in subst tag">declare-link</span> 
                   <span class="run-in subst full_name">Link declaration</span> 
@@ -381,7 +381,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Indicates constraints to be imposed on links in context</p>
                </div>
             </div>
-            <div class="control" id="tag_singleton">
+            <div class="control element-description" id="tag_singleton">
                <h3>
                   <span class="run-in subst tag">singleton</span> 
                   <span class="run-in subst full_name">Singleton constraint</span> 
@@ -392,7 +392,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">The declared component may occur only once in its context</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">When this element is present in the declaration of an OSCAL control component, the
           component (<code class="code prop">
                         <a href="#tag_prop">prop</a>
@@ -404,7 +404,7 @@ div div div h3 { font-size: 110% }
           syntax), or be bound to the same component type (at the semantic level).</p>
                </div>
             </div>
-            <div class="control" id="tag_required">
+            <div class="control element-description" id="tag_required">
                <h3>
                   <span class="run-in subst tag">required</span> 
                   <span class="run-in subst full_name">Requirement constraint</span> 
@@ -415,7 +415,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">The declared component is required in its context</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">When this element is present in the declaration of an OSCAL control component, the
           component (<code class="code prop">
                         <a href="#tag_prop">prop</a>
@@ -425,7 +425,7 @@ div div div h3 { font-size: 110% }
           is required to appear, at least once, in its context.</p>
                </div>
             </div>
-            <div class="control" id="tag_identifier">
+            <div class="control element-description" id="tag_identifier">
                <h3>
                   <span class="run-in subst tag">identifier</span> 
                   <span class="run-in subst full_name">Identifier constraint</span> 
@@ -437,14 +437,14 @@ div div div h3 { font-size: 110% }
           same type</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">This constraint is generally only used for properties to be used as identifiers for their
           control object (control, subcontrol or feature). Guaranteeing their uniqueness means that
           these values can be used to effect one-to-one retrieval or reference to the objects to
           which they are assigned.</p>
                </div>
             </div>
-            <div class="control" id="tag_regex">
+            <div class="control element-description" id="tag_regex">
                <h3>
                   <span class="run-in subst tag">regex</span> 
                   <span class="run-in subst full_name">Regular expression constraint</span> 
@@ -458,14 +458,14 @@ div div div h3 { font-size: 110% }
                      </code>) must match the given regular expression</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Matching against a regular expression is conducted on the normalized lexical value of the
           given parameter or property: that is, with leading and trailing whitespace stripped,
           interim whitespace (space, tab or line feed) normalized to single spaces, and inline
           markup stripped.</p>
                </div>
             </div>
-            <div class="control" id="tag_value">
+            <div class="control element-description" id="tag_value">
                <h3>
                   <span class="run-in subst tag">value</span> 
                   <span class="run-in subst full_name">Value constraint</span> 
@@ -476,7 +476,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Indicates a permissible value for a parameter or property</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">In a declaration, <code class="code value">
                         <a href="#tag_value">value</a>
                      </code> will be given in groups, indicating a set of
@@ -486,7 +486,7 @@ div div div h3 { font-size: 110% }
           their values will override any values assigned <q class="q">lower down the stack</q>.</p>
                </div>
             </div>
-            <div class="control" id="tag_autonum">
+            <div class="control element-description" id="tag_autonum">
                <h3>
                   <span class="run-in subst tag">autonum</span> 
                   <span class="run-in subst full_name">Autonumbered (generated) value</span> 
@@ -499,7 +499,7 @@ div div div h3 { font-size: 110% }
           alphabetic, roman etc)</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">In a declaration, <code class="code value">
                         <a href="#tag_value">value</a>
                      </code> will be given in groups, indicating a set of
@@ -516,7 +516,7 @@ div div div h3 { font-size: 110% }
                </div>
       
             </div>
-            <div class="control" id="tag_inherit">
+            <div class="control element-description" id="tag_inherit">
                <h3>
                   <span class="run-in subst tag">inherit</span> 
                   <span class="run-in subst full_name">Inherited value constraint</span> 
@@ -528,7 +528,7 @@ div div div h3 { font-size: 110% }
           containing control object</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">
                      <code class="code inherit">
                         <a href="#tag_inherit">inherit</a>
@@ -562,7 +562,7 @@ div div div h3 { font-size: 110% }
           ancestor's property with the same @class (the most usual case).</p>
                </div>
             </div>
-            <div class="control" id="tag_desc">
+            <div class="control element-description" id="tag_desc">
                <h3>
                   <span class="run-in subst tag">desc</span> 
                   <span class="run-in subst full_name">Parameter description</span> 
@@ -577,7 +577,7 @@ div div div h3 { font-size: 110% }
          </section>
          <section class="group">
             <h2 class="title">Structural elements</h2>
-            <div class="control" id="tag_section">
+            <div class="control element-description" id="tag_section">
                <h3>
                   <span class="run-in subst tag">section</span> 
                   <span class="run-in subst full_name">Division</span> 
@@ -589,7 +589,7 @@ div div div h3 { font-size: 110% }
           therein</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Echoes HTML5 <code class="code section">
                         <a href="#tag_section">section</a>
                      </code>.</p>
@@ -598,7 +598,7 @@ div div div h3 { font-size: 110% }
                      </code>)</p>
                </div>
             </div>
-            <div class="control" id="tag_group">
+            <div class="control element-description" id="tag_group">
                <h3>
                   <span class="run-in subst tag">group</span> 
                   <span class="run-in subst full_name">Group</span> 
@@ -609,7 +609,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Related controls or groups (of controls or groups)</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">In addition to controls or groups, groups may be titled and may have their own
           properties, statements, parameter settings and references, subject to declaration. In this
           respect they are like control objects (control, subcontrol and feature), albeit their
@@ -623,7 +623,7 @@ div div div h3 { font-size: 110% }
                </div>
       
             </div>
-            <div class="control" id="tag_title">
+            <div class="control element-description" id="tag_title">
                <h3>
                   <span class="run-in subst tag">title</span> 
                   <span class="run-in subst full_name">Title</span> 
@@ -633,7 +633,7 @@ div div div h3 { font-size: 110% }
                <div class="part description"/>
       
             </div>
-            <div class="control" id="tag_references">
+            <div class="control element-description" id="tag_references">
                <h3>
                   <span class="run-in subst tag">references</span> 
                   <span class="run-in subst full_name">References</span> 
@@ -643,7 +643,7 @@ div div div h3 { font-size: 110% }
                <div class="part description"/>
       
             </div>
-            <div class="control" id="tag_ref">
+            <div class="control element-description" id="tag_ref">
                <h3>
                   <span class="run-in subst tag">ref</span> 
                   <span class="run-in subst full_name">Reference</span> 
@@ -653,7 +653,7 @@ div div div h3 { font-size: 110% }
                <div class="part description"/>
       
             </div>
-            <div class="control" id="tag_std">
+            <div class="control element-description" id="tag_std">
                <h3>
                   <span class="run-in subst tag">std</span> 
                   <span class="run-in subst full_name">Standard</span> 
@@ -664,13 +664,13 @@ div div div h3 { font-size: 110% }
                   <p class="p">Citation of a formal published standard</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code std">
                         <a href="#tag_std">std</a>
                      </code> element</p>
                </div>
             </div>
-            <div class="control" id="tag_citation">
+            <div class="control element-description" id="tag_citation">
                <h3>
                   <span class="run-in subst tag">citation</span> 
                   <span class="run-in subst full_name">Citation</span> 
@@ -681,7 +681,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Citation of a resource</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Echoes the NISO JATS (and NISO STS) mixed-citation element.</p>
                   <p class="p">For references to standards, <code class="code std">
                         <a href="#tag_std">std</a>
@@ -691,7 +691,7 @@ div div div h3 { font-size: 110% }
          </section>
          <section class="group">
             <h2 class="title">Prose</h2>
-            <div class="control" id="tag_p">
+            <div class="control element-description" id="tag_p">
                <h3>
                   <span class="run-in subst tag">p</span> 
                   <span class="run-in subst full_name">Paragraph</span> 
@@ -702,7 +702,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Or paragraph fragment</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">This element echoes HTML <code class="code p">
                         <a href="#tag_p">p</a>
                      </code>; like its forebear, it is not limited to
@@ -710,7 +710,7 @@ div div div h3 { font-size: 110% }
           any text set off on its own line.</p>
                </div>
             </div>
-            <div class="control" id="tag_pre">
+            <div class="control element-description" id="tag_pre">
                <h3>
                   <span class="run-in subst tag">pre</span> 
                   <span class="run-in subst full_name">Preformatted text</span> 
@@ -721,13 +721,13 @@ div div div h3 { font-size: 110% }
                   <p class="p">Retains whitespace in display</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Echoes HTML <code class="code pre">
                         <a href="#tag_pre">pre</a>
                      </code>.</p>
                </div>
             </div>
-            <div class="control" id="tag_ol">
+            <div class="control element-description" id="tag_ol">
                <h3>
                   <span class="run-in subst tag">ol</span> 
                   <span class="run-in subst full_name">Ordered List</span> 
@@ -737,7 +737,7 @@ div div div h3 { font-size: 110% }
                <div class="part description"/>
       
             </div>
-            <div class="control" id="tag_li">
+            <div class="control element-description" id="tag_li">
                <h3>
                   <span class="run-in subst tag">li</span> 
                   <span class="run-in subst full_name">List item</span> 
@@ -747,7 +747,7 @@ div div div h3 { font-size: 110% }
                <div class="part description"/>
       
             </div>
-            <div class="control" id="tag_ul">
+            <div class="control element-description" id="tag_ul">
                <h3>
                   <span class="run-in subst tag">ul</span> 
                   <span class="run-in subst full_name">Unordered list</span> 
@@ -756,13 +756,13 @@ div div div h3 { font-size: 110% }
       
                <div class="part description"/>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">As in HTML, <q class="q">unordered</q> does not indicate that the order of contained list items is
           not respected, only that they are not displayed with any notation indicating their order:
           that is, bullets, not numbers.</p>
                </div>
             </div>
-            <div class="control" id="tag_em">
+            <div class="control element-description" id="tag_em">
                <h3>
                   <span class="run-in subst tag">em</span> 
                   <span class="run-in subst full_name">Emphasis</span> 
@@ -773,14 +773,14 @@ div div div h3 { font-size: 110% }
                   <p class="p">Rhetorical emphasis as indicated typically by a font shift</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">In display, this element can be expected to <q class="q">toggle</q>, i.e. provide for italics when
           appearing within roman text, but roman when appearing within italic text.</p>
                   <p class="p">Particular semantics (indicating types of emphasis for finer resolution in display or
           retrieval) may be provided via @class.</p>
                </div>
             </div>
-            <div class="control" id="tag_i">
+            <div class="control element-description" id="tag_i">
                <h3>
                   <span class="run-in subst tag">i</span> 
                   <span class="run-in subst full_name">Italics</span> 
@@ -791,12 +791,12 @@ div div div h3 { font-size: 110% }
                   <p class="p">Typographical shift to italics</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">An implementation may toggle, i.e. display contents using a roman face when the
           surrounding text is already italic.</p>
                </div>
             </div>
-            <div class="control" id="tag_b">
+            <div class="control element-description" id="tag_b">
                <h3>
                   <span class="run-in subst tag">b</span> 
                   <span class="run-in subst full_name">Bold</span> 
@@ -807,12 +807,12 @@ div div div h3 { font-size: 110% }
                   <p class="p">Typographical shift to bold</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">In display, when surrounding text is already bold, an implementation may indicate
             <q class="q">bold</q> by means of double-bold or some other typographical distinction.</p>
                </div>
             </div>
-            <div class="control" id="tag_a">
+            <div class="control element-description" id="tag_a">
                <h3>
                   <span class="run-in subst tag">a</span> 
                   <span class="run-in subst full_name">Anchor</span> 
@@ -823,7 +823,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">An HTML-style anchor (inline linking element)</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">As in HTML, the link target is indicated by @href, with a '#' prefix for an
           internal cross-reference matching an @id elsewhere in the document.</p>
                   <p class="p">Anchors without @href are not invalid to the OSCAL schema (base validation),
@@ -834,7 +834,7 @@ div div div h3 { font-size: 110% }
             @href is missing or not a URI.</p>
                </div>
             </div>
-            <div class="control" id="tag_q">
+            <div class="control element-description" id="tag_q">
                <h3>
                   <span class="run-in subst tag">q</span> 
                   <span class="run-in subst full_name">Quoted text</span> 
@@ -845,12 +845,12 @@ div div div h3 { font-size: 110% }
                   <p class="p">An inline segment to appear within quotation marks</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">For practical purposes, this is a cosmetic element with no special semantics other than
           to provide quotation marks in display.</p>
                </div>
             </div>
-            <div class="control" id="tag_code">
+            <div class="control element-description" id="tag_code">
                <h3>
                   <span class="run-in subst tag">code</span> 
                   <span class="run-in subst full_name">Code</span> 
@@ -861,11 +861,11 @@ div div div h3 { font-size: 110% }
                   <p class="p">Inline code</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Strictly, this element should identify formal code or code fragments.</p>
                </div>
             </div>
-            <div class="control" id="tag_sup">
+            <div class="control element-description" id="tag_sup">
                <h3>
                   <span class="run-in subst tag">sup</span> 
                   <span class="run-in subst full_name">Superscript</span> 
@@ -876,7 +876,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Superscripted text</p>
                </div>
             </div>
-            <div class="control" id="tag_sub">
+            <div class="control element-description" id="tag_sub">
                <h3>
                   <span class="run-in subst tag">sub</span> 
                   <span class="run-in subst full_name">Subscript</span> 
@@ -887,11 +887,11 @@ div div div h3 { font-size: 110% }
                   <p class="p">Subscripted text</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">Strictly, this element should identify formal code or code fragments.</p>
                </div>
             </div>
-            <div class="control" id="tag_span">
+            <div class="control element-description" id="tag_span">
                <h3>
                   <span class="run-in subst tag">span</span> 
                   <span class="run-in subst full_name">Span</span> 
@@ -902,7 +902,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">Generic inline container</p>
                </div>
                <div class="part remarks">
-                  <h5>remarks</h5>
+                  <h5 class="remarks">remarks</h5>
                   <p class="p">As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
                </div>
             </div>
@@ -915,7 +915,7 @@ div div div h3 { font-size: 110% }
         constraints governing usage. Validations enforcing them can be implemented via Schematron or
         another process capable of static analysis of the data.</p>
             </div>
-            <div class="control">
+            <div class="control general-constraint">
                <h3/>Within a control, properties, statements and parameters may occur in any order.
       
       <div class="part description">
