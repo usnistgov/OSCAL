@@ -152,6 +152,13 @@
       </part>
     </control>
     <control class="element-description">
+      <prop class="tag">param</prop>
+      <prop class="full_name">Parameter</prop>
+      <part class="description">
+        <p>A parameter setting, to be propagated to points of insertion</p>
+      </part>
+    </control>
+    <control class="element-description">
       <prop class="tag">part</prop>
       <prop class="full_name">Part</prop>
       <part class="description">
@@ -176,14 +183,6 @@
       <prop class="full_name">Link</prop>
       <part class="description">
         <p>A line or paragraph with a hypertext link</p>
-      </part>
-      
-    </control>
-    <control class="element-description">
-      <prop class="tag">param</prop>
-      <prop class="full_name">Parameter</prop>
-      <part class="description">
-        <p>A parameter setting, to be propagated to points of insertion</p>
       </part>
       
     </control>
@@ -282,10 +281,11 @@
       </part>
       <part class="remarks">
         <p>When this element is present in the declaration of an OSCAL control component, the
-          component (<code>prop</code>, <code>param</code>, <code>stmt</code> or <code>feat</code>)
-          must be the only component of that class given in its context. i.e., no other element
-          child of the same parent may have the same <code>@class</code> value (at the level of
-          syntax), or be bound to the same component type (at the semantic level).</p>
+          component (<code>prop</code>, <code>param</code>, <code>part</code>) must be the only
+          component of that class given in its (<code>group</code>, <code>control</code>,
+            <code>subcontrol</code> or <code>part</code>) context. i.e., no other element child of
+          the same parent may have the same <code>@class</code> value (at the level of syntax), or
+          be bound to the same component type (at the semantic level).</p>
       </part>
     </control>
     <control class="element-description">
@@ -305,7 +305,7 @@
       <prop class="full_name">Identifier constraint</prop>
       <part class="description">
         <p>The declared component has a value unique within the document, among components of the
-          same type</p>
+          same type (bearing the applicable <code>@class</code></p>
       </part>
       <part class="remarks">
         <p>This constraint is generally only used for properties to be used as identifiers for their
@@ -335,8 +335,9 @@
         <p>Indicates a permissible value for a parameter or property</p>
       </part>
       <part class="remarks">
-        <p>In a declaration, <code>value</code> will be given in groups, indicating a set of
-          enumerated permissible values.</p>
+        <p>In a declaration, <code>value</code> will commonly be given in groups, indicating a set
+          of enumerated permissible values. (I.e. for an element to be valid to a value constraint,
+          it must equal one of the given values).</p>
         <p>In a parameter, a value represents a value assignment to the parameter, overriding any
           value given at the point of insertion. When parameters are provided in OSCAL profiles,
           their values will override any values assigned <q>lower down the stack</q>.</p>
@@ -363,6 +364,8 @@
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
           include upper and lower case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
+        <p>The best way to understand the workings of this element is to see operational
+          examples.</p>
       </part>
       
     </control>
@@ -390,6 +393,8 @@
           object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
           class). By default, <code>inherit</code> indicates a property value should match an
           ancestor's property with the same <code>@class</code> (the most usual case).</p>
+        <p>The best way to understand the workings of this element is to see operational
+          examples.</p>
       </part>
     </control>
     <control class="element-description">
@@ -436,19 +441,26 @@
     <control class="element-description">
       <prop class="tag">title</prop>
       <prop class="full_name">Title</prop>
-      <part class="description"/>
+      <part class="description">
+        <p>A fallback for display and navigation, exclusive of more specific properties</p>
+      </part>
       
     </control>
     <control class="element-description">
       <prop class="tag">references</prop>
       <prop class="full_name">References</prop>
-      <part class="description"/>
+      <part class="description">
+        <p>A group of reference descriptions</p>
+      </part>
       
     </control>
     <control class="element-description">
       <prop class="tag">ref</prop>
       <prop class="full_name">Reference</prop>
-      <part class="description"/>
+      <part class="description">
+        <p>A reference, with one or more citations to standards, related documents or other
+          resources</p>
+      </part>
       
     </control>
     <control class="element-description">
@@ -475,6 +487,14 @@
   </group>
   <group>
     <title>Prose</title>
+    <p>Prose may ordinarily appear anywhere, in a control, subcontrol or part, or at a higher level.
+      Prose elements echo HTML semantics, although they provide only a deliberately and specifically
+      narrow subset of HTML element types.</p>
+    <p>Prose elements may be constrained by declarations like other control components, although
+      this may not often be as useful as imposing constraints over properties and parts. Frequently,
+      a part organization will be used to assign prose to specific known <q>sections</q> or
+        <q>components</q> of a control (modeled as <code>part</code> or
+      <code>subcontrol</code>).</p>
     <control class="element-description">
       <prop class="tag">p</prop>
       <prop class="full_name">Paragraph</prop>
@@ -500,24 +520,41 @@
     <control class="element-description">
       <prop class="tag">ol</prop>
       <prop class="full_name">Ordered List</prop>
-      <part class="description"/>
-      
-    </control>
-    <control class="element-description">
-      <prop class="tag">li</prop>
-      <prop class="full_name">List item</prop>
-      <part class="description"/>
+      <part class="description">
+        <p>Appears with numbering in ordinal position</p>
+      </part>
+      <part class="remarks">
+        <p>Although this echoes HTML <code>ol</code>, renditional aspects of this element are not
+          offered by OSCAL. How numbering of lists are to be numbered is left to implementations; it
+          is likely that specific control catalogs will have their own schemes.</p>
+        <p>At present there is no support for <q>continued lists</q> as we have not seen any in
+          documents in scope for analysis.</p>
+      </part>
       
     </control>
     <control class="element-description">
       <prop class="tag">ul</prop>
       <prop class="full_name">Unordered list</prop>
-      <part class="description"/>
+      <part class="description">
+        <p>A series of items kept in order but without indicators of sequence, likely bulleted</p>
+      </part>
       <part class="remarks">
         <p>As in HTML, <q>unordered</q> does not indicate that the order of contained list items is
           not respected, only that they are not displayed with any notation indicating their order:
           that is, bullets, not numbers.</p>
+        <p>Note that when sequences or lists appear, it may be as common in OSCAL to list (and
+          control) them as sequences of properties or paragraphs, perhaps grouped in parts or
+          subcontrols. This is very much a display element, convenient when what we have is really
+          prose, not highly organized or <q>semantic</q>.</p>
       </part>
+    </control>
+    <control class="element-description">
+      <prop class="tag">li</prop>
+      <prop class="full_name">List item</prop>
+      <part class="description">
+        <p>An item demarcated with bullet or numerator</p>
+      </part>
+      
     </control>
     <control class="element-description">
       <prop class="tag">em</prop>

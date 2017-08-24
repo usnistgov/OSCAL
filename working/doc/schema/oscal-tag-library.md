@@ -148,7 +148,7 @@ The declared component may occur only once in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-property), [&lt;param>](#param-parameter), stmt or feat) must be the only component of that class given in its context. i.e., no other element child of the same parent may have the same @class value (at the level of syntax), or be bound to the same component type (at the semantic level).   
+When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-property), [&lt;param>](#param-parameter), [&lt;part>](#part-part)) must be the only component of that class given in its ([&lt;group>](#group-group), [&lt;control>](#control-control), [&lt;subcontrol>](#subcontrol-control-enhancement) or [&lt;part>](#part-part)) context. i.e., no other element child of the same parent may have the same @class value (at the level of syntax), or be bound to the same component type (at the semantic level).   
 
 ### &lt;required> Requirement constraint   
 
@@ -160,7 +160,7 @@ When this element is present in the declaration of an OSCAL control component, t
 
 ### &lt;identifier> Identifier constraint   
 
-The declared component has a value unique within the document, among components of the same type  
+The declared component has a value unique within the document, among components of the same type (bearing the applicable @class  
 
 ##### remarks 
 

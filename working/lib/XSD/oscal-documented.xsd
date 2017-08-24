@@ -71,7 +71,8 @@
       <xs:annotation>
          <xs:documentation>
             <b>Identifier constraint</b> The declared component has a value unique within the document, among components of the
-          same type</xs:documentation>
+          same type (bearing the applicable <code xmlns="http://scap.nist.gov/schema/oscal">@class</code>
+         </xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>

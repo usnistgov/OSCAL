@@ -398,10 +398,21 @@ div div div h3 { font-size: 110% }
                         <a href="#tag_prop">prop</a>
                      </code>, <code class="code param">
                         <a href="#tag_param">param</a>
-                     </code>, stmt or feat)
-          must be the only component of that class given in its context. i.e., no other element
-          child of the same parent may have the same @class value (at the level of
-          syntax), or be bound to the same component type (at the semantic level).</p>
+                     </code>, <code class="code part">
+                        <a href="#tag_part">part</a>
+                     </code>) must be the only
+          component of that class given in its (<code class="code group">
+                        <a href="#tag_group">group</a>
+                     </code>, <code class="code control">
+                        <a href="#tag_control">control</a>
+                     </code>,
+            <code class="code subcontrol">
+                        <a href="#tag_subcontrol">subcontrol</a>
+                     </code> or <code class="code part">
+                        <a href="#tag_part">part</a>
+                     </code>) context. i.e., no other element child of
+          the same parent may have the same @class value (at the level of syntax), or
+          be bound to the same component type (at the semantic level).</p>
                </div>
             </div>
             <div class="control element-description" id="tag_required">
@@ -434,7 +445,7 @@ div div div h3 { font-size: 110% }
       
                <div class="part description">
                   <p class="p">The declared component has a value unique within the document, among components of the
-          same type</p>
+          same type (bearing the applicable @class</p>
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
