@@ -18,7 +18,7 @@ OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight an
 
 At the broadest level, "control objects" in OSCAL, as it is formally defined, include controls, subcontrols (i.e. control extensions), parts of controls or subcontrols, and control groups. In other words, "control" over OSCAL data structures is offered at many levels at once. It will be the job of a particular OSCAL application domain to determine what the most appopriate level of description, for that domain, to describe best as "control", "subcontrol" etc. 
 
-This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for [&lt;control> Control](#&lt;control>-Control), [&lt;subcontrol> Control enhancement](#&lt;subcontrol>-Control-enhancement) and [&lt;part> Part](#&lt;part>-Part). According to its rules, subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. Any of these objects may be "controlled" in the sense that they may be used, consistently, to carry regular sets of properties, whose names and value spaces may be known in advance, or discovered dynamically. 
+This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for [&lt;control>](#control-Control), [&lt;subcontrol>](#subcontrol-Control-enhancement) and [&lt;part>](#part-Part). According to its rules, subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. Any of these objects may be "controlled" in the sense that they may be used, consistently, to carry regular sets of properties, whose names and value spaces may be known in advance, or discovered dynamically. 
 
 ## Interoperability with other data formats 
 
@@ -48,7 +48,7 @@ A structured information object representing a security control
 
 ##### remarks 
 
-Controls may be grouped using [&lt;group> Group](#&lt;group>-Group), and controls may be partitioned, using either formal [&lt;subcontrol> Control enhancement](#&lt;subcontrol>-Control-enhancement) or (informally) [&lt;part> Part](#&lt;part>-Part).   
+Controls may be grouped using [&lt;group>](#group-Group), and controls may be partitioned, using either formal [&lt;subcontrol>](#subcontrol-Control-enhancement) or (informally) [&lt;part>](#part-Part).   
 
 ### &lt;subcontrol> Control enhancement   
 
@@ -56,7 +56,7 @@ Within a control, a component or enhancement
 
 ##### remarks 
 
-A nominal subcontrol or "control enhancement", permitting catalogs easily to provide access to structured data at two levels. Further levels down can be achieved using [&lt;part> Part](#&lt;part>-Part) (both controls and subcontrols may be partitioned), which may contain their own parts; however having "controls" and "subcontrols" known in advance to be especially significant, is helpful.   
+A nominal subcontrol or "control enhancement", permitting catalogs easily to provide access to structured data at two levels. Further levels down can be achieved using [&lt;part>](#part-Part) (both controls and subcontrols may be partitioned), which may contain their own parts; however having "controls" and "subcontrols" known in advance to be especially significant, is helpful.   
 
 ### &lt;prop> Property   
 
@@ -80,9 +80,9 @@ A component or partition in a control, subcontrol or part
 
 ##### remarks 
 
-Like properties ([&lt;prop> Property](#&lt;prop>-Property)) and parameters ([&lt;param> Parameter](#&lt;param>-Parameter)), parts can be distinguished from other elements within their controls by their assigned @class, such that they may be subjected to "declarations logic" using these values as bindings (and thereby getting open-ended extensibility). 
+Like properties ([&lt;prop>](#prop-Property)) and parameters ([&lt;param>](#param-Parameter)), parts can be distinguished from other elements within their controls by their assigned @class, such that they may be subjected to "declarations logic" using these values as bindings (and thereby getting open-ended extensibility). 
 
-An assigned class may frequently provide for a header in display, such that part[@class='objectives'] is displayed under a header *Objectives*, etc. Unlike groups, controls or subcontrols, however, they may not have [&lt;title> Title](#&lt;title>-Title) element children (they are not "first class objects" in this sense). Thus in OSCAL, if the components of your controls have their own titles, they are something else): to accommodate data like this, consider using a property (e.g. prop[@class='part-title'] as an escape hatch.   
+An assigned class may frequently provide for a header in display, such that part[@class='objectives'] is displayed under a header *Objectives*, etc. Unlike groups, controls or subcontrols, however, they may not have [&lt;title>](#title-Title) element children (they are not "first class objects" in this sense). Thus in OSCAL, if the components of your controls have their own titles, they are something else): to accommodate data like this, consider using a property (e.g. prop[@class='part-title'] as an escape hatch.   
 
 ### &lt;link> Link   
 
@@ -128,7 +128,7 @@ The OSCAL validation model supports not only validation against a formal schema 
 
 ### &lt;declare-property> Property declaration   
 
-Constraints applicable to a class or classes of [&lt;p> Paragraph](#&lt;p>-Paragraph) elements within a control object   
+Constraints applicable to a class or classes of [&lt;p>](#p-Paragraph) elements within a control object   
 
 ### &lt;declare-p> Paragraph declaration   
 
@@ -148,7 +148,7 @@ The declared component may occur only once in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop> Property](#&lt;prop>-Property), [&lt;param> Parameter](#&lt;param>-Parameter), stmt or feat) must be the only component of that class given in its context. i.e., no other element child of the same parent may have the same @class value (at the level of syntax), or be bound to the same component type (at the semantic level).   
+When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-Property), [&lt;param>](#param-Parameter), stmt or feat) must be the only component of that class given in its context. i.e., no other element child of the same parent may have the same @class value (at the level of syntax), or be bound to the same component type (at the semantic level).   
 
 ### &lt;required> Requirement constraint   
 
@@ -156,7 +156,7 @@ The declared component is required in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop> Property](#&lt;prop>-Property), [&lt;param> Parameter](#&lt;param>-Parameter), stmt or feat) is required to appear, at least once, in its context.   
+When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-Property), [&lt;param>](#param-Parameter), stmt or feat) is required to appear, at least once, in its context.   
 
 ### &lt;identifier> Identifier constraint   
 
@@ -168,7 +168,7 @@ This constraint is generally only used for properties to be used as identifiers 
 
 ### &lt;regex> Regular expression constraint   
 
-Indicates that the value of a property (prop) or parameter ([&lt;param> Parameter](#&lt;param>-Parameter)) must match the given regular expression  
+Indicates that the value of a property (prop) or parameter ([&lt;param>](#param-Parameter)) must match the given regular expression  
 
 ##### remarks 
 
@@ -180,7 +180,7 @@ Indicates a permissible value for a parameter or property
 
 ##### remarks 
 
-In a declaration, [&lt;value> Value constraint](#&lt;value>-Value-constraint) will be given in groups, indicating a set of enumerated permissible values. 
+In a declaration, [&lt;value>](#value-Value-constraint) will be given in groups, indicating a set of enumerated permissible values. 
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".   
 
@@ -190,7 +190,7 @@ Generates a formatted numeric value based on the position of a control object am
 
 ##### remarks 
 
-In a declaration, [&lt;value> Value constraint](#&lt;value>-Value-constraint) will be given in groups, indicating a set of enumerated permissible values. 
+In a declaration, [&lt;value>](#value-Value-constraint) will be given in groups, indicating a set of enumerated permissible values. 
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack". 
 
@@ -202,11 +202,11 @@ Indicates that a value or part of a value will be inherited from a property on a
 
 ##### remarks 
 
-[&lt;inherit> Inherited value constraint](#&lt;inherit>-Inherited-value-constraint) is typically used to enforce hierarchical numbering within control objects. When given in a [&lt;value> Value constraint](#&lt;value>-Value-constraint) in a declaration, [&lt;inherit> Inherited value constraint](#&lt;inherit>-Inherited-value-constraint) indicates that the value of a property, or a segment of its value, must be the same as a property ([&lt;prop> Property](#&lt;prop>-Property)) higher in the containment hierarchy of a control object. That is, if a property with @class='number' is constrained with value/inherit, it must be the same as is assigned on the closest ancestor (feature, subcontrol, control or group) with the given property. 
+[&lt;inherit>](#inherit-Inherited-value-constraint) is typically used to enforce hierarchical numbering within control objects. When given in a [&lt;value>](#value-Value-constraint) in a declaration, [&lt;inherit>](#inherit-Inherited-value-constraint) indicates that the value of a property, or a segment of its value, must be the same as a property ([&lt;prop>](#prop-Property)) higher in the containment hierarchy of a control object. That is, if a property with @class='number' is constrained with value/inherit, it must be the same as is assigned on the closest ancestor (feature, subcontrol, control or group) with the given property. 
 
-Usually, [&lt;inherit> Inherited value constraint](#&lt;inherit>-Inherited-value-constraint) is used in conjunction with [&lt;autonum> Autonumbered (generated) value](#&lt;autonum>-Autonumbered-(generated)-value) (qv). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b" etc., depending on the position of the subcontrol within the control. 
+Usually, [&lt;inherit>](#inherit-Inherited-value-constraint) is used in conjunction with [&lt;autonum>](#autonum-Autonumbered-(generated)-value) (qv). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b" etc., depending on the position of the subcontrol within the control. 
 
-If a value must inherit from a property of a different class from the containing control object, inherit/@from can be used to indicate the applicable property (by its class). By default, [&lt;inherit> Inherited value constraint](#&lt;inherit>-Inherited-value-constraint) indicates a property value should match an ancestor's property with the same @class (the most usual case).   
+If a value must inherit from a property of a different class from the containing control object, inherit/@from can be used to indicate the applicable property (by its class). By default, [&lt;inherit>](#inherit-Inherited-value-constraint) indicates a property value should match an ancestor's property with the same @class (the most usual case).   
 
 ### &lt;desc> Parameter description   
 
@@ -220,9 +220,9 @@ A chapter, section or subsection partitioning a catalog, collection or section t
 
 ##### remarks 
 
-Echoes HTML5 [&lt;section> Division](#&lt;section>-Division). 
+Echoes HTML5 [&lt;section>](#section-Division). 
 
-Like groups, sections ([&lt;section> Division](#&lt;section>-Division))   
+Like groups, sections ([&lt;section>](#section-Division))   
 
 ### &lt;group> Group   
 
@@ -232,7 +232,7 @@ Related controls or groups (of controls or groups)
 
 In addition to controls or groups, groups may be titled and may have their own properties, statements, parameter settings and references, subject to declaration. In this respect they are like control objects (control, subcontrol and feature), albeit their properties apply to the entire group – and must be acquired in processing via inheritance. 
 
-Unlike sections ([&lt;section> Division](#&lt;section>-Division) elements), groups may not contain arbitrary prose (paragraphs and lists). They may however contain statements (stmt), which may be untyped (no @class) and therefore unconstrained by declarations.   
+Unlike sections ([&lt;section>](#section-Division) elements), groups may not contain arbitrary prose (paragraphs and lists). They may however contain statements (stmt), which may be untyped (no @class) and therefore unconstrained by declarations.   
 
 ### &lt;title> Title    
 
@@ -246,7 +246,7 @@ Citation of a formal published standard
 
 ##### remarks 
 
-Echoes the NISO JATS (and NISO STS) [&lt;std> Standard](#&lt;std>-Standard) element   
+Echoes the NISO JATS (and NISO STS) [&lt;std>](#std-Standard) element   
 
 ### &lt;citation> Citation   
 
@@ -256,7 +256,7 @@ Citation of a resource
 
 Echoes the NISO JATS (and NISO STS) mixed-citation element. 
 
-For references to standards, [&lt;std> Standard](#&lt;std>-Standard) (qv) may be preferred.     
+For references to standards, [&lt;std>](#std-Standard) (qv) may be preferred.     
 
 ## Prose 
 
@@ -266,7 +266,7 @@ Or paragraph fragment
 
 ##### remarks 
 
-This element echoes HTML [&lt;p> Paragraph](#&lt;p>-Paragraph); like its forebear, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.   
+This element echoes HTML [&lt;p>](#p-Paragraph); like its forebear, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.   
 
 ### &lt;pre> Preformatted text   
 
@@ -274,7 +274,7 @@ Retains whitespace in display
 
 ##### remarks 
 
-Echoes HTML [&lt;pre> Preformatted text](#&lt;pre>-Preformatted-text).   
+Echoes HTML [&lt;pre>](#pre-Preformatted-text).   
 
 ### &lt;ol> Ordered List    
 
@@ -320,7 +320,7 @@ An HTML-style anchor (inline linking element)
 
 As in HTML, the link target is indicated by @href, with a '#' prefix for an internal cross-reference matching an @id elsewhere in the document. 
 
-Anchors without @href are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. In use, an application may promote the contents of a [&lt;a> Anchor](#&lt;a>-Anchor) element, when a valid URI, to serve as the link target, if @href is missing or not a URI.   
+Anchors without @href are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. In use, an application may promote the contents of a [&lt;a>](#a-Anchor) element, when a valid URI, to serve as the link target, if @href is missing or not a URI.   
 
 ### &lt;q> Quoted text   
 

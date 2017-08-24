@@ -63,14 +63,13 @@
   <xsl:template match="a[starts-with(@href,'#tag')]">
     <xsl:variable name="link-target" select="key('control-by-id',substring-after(@href,'#'))"/>
     <xsl:variable name="text">
-      <xsl:text>&amp;lt;</xsl:text>
       <xsl:value-of select="$link-target/h3/span[contains(@class,'tag')]"/>
-      <xsl:text>> </xsl:text>
+      <xsl:text>-</xsl:text>
       <xsl:value-of select="$link-target/h3/span[contains(@class,'full_name')]"/>
     </xsl:variable>
-    <xsl:text>[</xsl:text>
-    <xsl:copy-of select="$text"/>
-    <xsl:text>]</xsl:text>
+    <xsl:text>[&amp;lt;</xsl:text>
+    <xsl:value-of select="$link-target/h3/span[contains(@class,'tag')]"/>
+    <xsl:text>>]</xsl:text>
     <xsl:text>(#</xsl:text>
     
     <xsl:copy-of select="translate($text,' ','-')"/>
