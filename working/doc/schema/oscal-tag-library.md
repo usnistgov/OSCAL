@@ -98,17 +98,19 @@ A line or paragraph with a hypertext link
 
 Functional elements appear inside control content to provide "hooks" to OSCAL processors, for retrievability, manipulation (including mapping and transformation) and semantic traversal. 
 
+### &lt;insert> Parameter insertion   
+
+A "call" (reference) to a parameter for dynamic content transclusion   
+
 ### &lt;withdrawn> Withdrawn   
 
 Indicates that a containing control or subcontrol is no longer applicable  
 
 ##### remarks 
 
-Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain its semantic integrity even in obsolescence. Links should be provided to superseding controls or components.   
+Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain its semantic integrity even in obsolescence. Links should be provided to superseding controls or components. 
 
-### &lt;insert> Parameter insertion   
-
-A "call" (reference) to a parameter for dynamic content transclusion     
+The functionality provided by this element might better be offered by a property or some other controlled value, at which point it may be removed; it is included to support (some) legacy content.     
 
 ## Declarations elements 
 

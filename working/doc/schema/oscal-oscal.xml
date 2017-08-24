@@ -197,6 +197,13 @@
       processors, for retrievability, manipulation (including mapping and transformation) and
       semantic traversal.</p>
     <control class="element-description">
+      <prop class="tag">insert</prop>
+      <prop class="full_name">Parameter insertion</prop>
+      <part class="description">
+        <p>A <q>call</q> (reference) to a parameter for dynamic content transclusion</p>
+      </part>
+    </control>
+    <control class="element-description">
       <prop class="tag">withdrawn</prop>
       <prop class="full_name">Withdrawn</prop>
       <part class="description">
@@ -206,13 +213,9 @@
         <p>Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain
           its semantic integrity even in obsolescence. Links should be provided to superseding
           controls or components.</p>
-      </part>
-    </control>
-    <control class="element-description">
-      <prop class="tag">insert</prop>
-      <prop class="full_name">Parameter insertion</prop>
-      <part class="description">
-        <p>A <q>call</q> (reference) to a parameter for dynamic content transclusion</p>
+        <p>The functionality provided by this element might better be offered by a property or some
+          other controlled value, at which point it may be removed; it is included to support (some)
+          legacy content.</p>
       </part>
     </control>
     <!--<control class="element-description"><prop class="tag">select</prop><prop class="full_name">Selection</prop><part class="description"><p>A selection requiring designation via parameter (tbd)</p></part></control>-->
