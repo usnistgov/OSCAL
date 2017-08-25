@@ -120,7 +120,6 @@ ol ol { list-style-type: l }
 li, list-item { display: list-item; margin-top: 0.5em }
 li > p, list-item > p { margin-top: 0.5em }
 
-
 std[href]:before, citation[href]:before {
     content: 
         oxy_urlChooser(        
@@ -151,11 +150,15 @@ withdrawn { display: inline; font-style: italic }
 
 code { display: inline; font-family: monospace; font-size: 90% }
 
-insert { display: inline; font-family: sans-serif; background-color: white;
-  font-size: 80%; font-style: italic; border: thin solid pink }
+insert, select { display: inline; font-family: sans-serif; background-color: white;
+  font-size: 80%; font-style: italic; font-weight: bold; border: thin solid pink;
+   content: oxy_popup(
+         edit, '@param-id',
+         values, oxy_xpath("string-join(ancestor-or-self::*/param/@id,',')"),
+        selectionMode, single) }
 
-insert:before { content: 'Insert parameter [' attr(param-id) ']'; font-style: normal; font-size: 80%; font-weight: bold  }
-select:before { content: 'Selection [' attr(param-id) ']'; font-style: normal; font-size: 80%; font-weight: bold  }
+insert:before { content: 'Insert parameter ' }
+select:before { content: 'Selection ' }
 
 select { display: inline }
 choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }
