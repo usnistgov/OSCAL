@@ -8,7 +8,7 @@ The OSCAL schema is currently maintained in RNC format (RelaxNG compact syntax I
 
 Additionally, we process this file with an XProc pipeline [schema-production.xpl](schema-production.xpl) to merge it with documentation [maintained elsewhere](../../doc/schema) (in OSCAL format), producing artifacts including (a) an XSD with embedded documentation (the [publication version](oscal-documented.xsd) named above), and (b) external documentation in HTML and markdown formats. See the [doc/schema](../../doc/schema) subdirectory for these resources.
 
-A RelaxNG version of the schema is not currently maintained but could be provided if needed. A compatible DTD is not planned (although it is not technically infeasible either).
+A RelaxNG version of the schema (XML syntax) is not currently maintained but could be provided if needed (or produced from the working RNC version using Trang). A compatible DTD is not planned (although it is not technically infeasible either).
 
 ## Validation of OSCAL goes beyond the schema
 
