@@ -24,7 +24,7 @@ div div h3     { font-size: 120% }
 div div div h3 { font-size: 110% }
 
 .param { font-style: italic }
-.assign, .choice { border: thin solid black; padding: 0.1em }
+.insert, .choice { border: thin solid black; padding: 0.1em }
 
 table { width: 100% }
 
@@ -129,8 +129,9 @@ td > *:first-child { margin-top: 0em }
     </p>
   </xsl:template>
 
-  <xsl:template match="oscal:assign">
-      <em class="assign">
+  <xsl:template match="oscal:insert">
+      <em class="insert">
+        <xsl:text>NB: parameter insertion not yet supported in this XSLT</xsl:text>
         <xsl:apply-templates/>
     </em>
   </xsl:template>

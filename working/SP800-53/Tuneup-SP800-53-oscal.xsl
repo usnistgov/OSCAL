@@ -9,7 +9,9 @@
   
 <!-- For further tweaking SP800-53 OSCAL -->
 
-
+<!-- NB this transformation contains (re)mappings which should be pulled back
+     into earlier steps in the pipeline ... -->
+  
   <xsl:mode on-no-match="shallow-copy"/>
   
   <xsl:template match="/">

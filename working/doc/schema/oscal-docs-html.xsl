@@ -172,7 +172,7 @@ div div div h3 { font-size: 110% }
     <xsl:variable name="param" select="@param-id"/>
     <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[@id=$param][last()]"/>
     <!-- Providing substitution via declaration not yet supported -->
-      <span class="assign">
+      <span class="inject">
       <xsl:for-each select="$closest-param">
         <span class="subst">
           <xsl:apply-templates/>

@@ -24,7 +24,7 @@ div div h3     { font-size: 120% }
 div div div h3 { font-size: 110% }
 
 .param { font-style: italic }
-.assign, .choice { border: thin solid black; padding: 0.1em }
+.insert, .choice { border: thin solid black; padding: 0.1em }
 
 .subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
 
@@ -115,7 +115,7 @@ div div div h3 { font-size: 110% }
   <xsl:key name="declarations" match="oscal:property | oscal:statement | oscal:parameter"
     use="concat(@context,'#',@role)"/>-->
   
-  <xsl:key name="assignment"  match="oscal:param" use="@target"/>
+  <xsl:key name="assignment"  match="oscal:param" use="@id"/>
   
   <xsl:template match="oscal:control">
     <div class="control">
@@ -179,11 +179,11 @@ div div div h3 { font-size: 110% }
     </p>
   </xsl:template>
 
-  <xsl:template match="oscal:assign">
-    <xsl:variable name="id" select="@id"/>
-    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[contains(@target,$id)][last()]"/>
+  <xsl:template match="oscal:insert">
+    <xsl:variable name="param-id" select="@param-id"/>
+    <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[@id=$param-id][last()]"/>
     <!-- Providing substitution via declaration not yet supported -->
-      <span class="assign">
+      <span class="insert">
       <xsl:for-each select="$closest-param">
         <span class="subst">
           <xsl:apply-templates/>

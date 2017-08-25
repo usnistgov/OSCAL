@@ -40,16 +40,16 @@ div.param { background-color: lightgreen; border: thin solid green; font-size: 8
 p.object { padding-left: 2em; text-indent: -2em }
 
 p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; border: medium solid blue; padding-right: 0.2em; margin-right: 0.2em }
-
+p.link.broken { background-color: lemonchiffon; border: medium solid darkorange; text-decoration: line-through }
 .part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
 
-.assign, .choice { border: thin solid black; padding: 0.1em }
+.insert, .choice { border: thin solid black; padding: 0.1em }
 .unassigned { border: thin solid red; background-color: pink}
 .desc { color: darkgreen }
-.assign .desc { font-size: 90% }
+.insert .desc { font-size: 90% }
 .value { font-style: italic }
 .param-id { font-size: 90%; font-family: sans-serif; font-weight: bold; background-color: black; color: white }
-.assign .param-id { font-size: 80% }
+.insert .param-id { font-size: 80% }
 
 .withdrawn { font-weight: bold; font-style: italic }
 
@@ -275,14 +275,6 @@ a { text-decoration: none }
     </p>
   </xsl:template>
   
-  <xsl:template match="oscal:param/oscal:default">
-    <p class="default">
-      <span class="subst">Default:</span>
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates/>
-    </p>
-  </xsl:template>
-  
   <xsl:template match="oscal:param/oscal:value">
     <p class="value">
       <span class="subst">Value:</span>
@@ -367,35 +359,36 @@ a { text-decoration: none }
     </p>
   </xsl:template>
 
-<!-- 'assign' contains description and optional default
-     its param contains description and optionally either default or value -->
-  <xsl:template match="oscal:assign">
+<!-- 'insert' is a site of injection for a parameter value
+     its param contains a description and (optionally) a value -->
+  <xsl:template match="oscal:insert">
     <xsl:variable name="closest-param"
-      select="ancestor-or-self::*/oscal:param[@id=current()/@use][last()]"/>
+      select="ancestor-or-self::*/oscal:param[@id=current()/@param-id][last()]"/>
     <!-- Providing substitution via declaration not yet supported -->
     <xsl:variable name="unassigned">
       <xsl:if test="not($closest-param)"> unassigned</xsl:if>
     </xsl:variable>
-    <span class="assign{$unassigned}">
+    <span class="insert{$unassigned}">
       <xsl:for-each select="$closest-param">
         <a href="#{@id}">
           <xsl:apply-templates select="." mode="param-id-block"/>
         </a>
-      </xsl:for-each>
       <span class="value">
-        <!-- There will be only one of default or value -->
-        <xsl:apply-templates select="$closest-param/oscal:default | $closest-param/oscal:value"
+        <xsl:apply-templates select="oscal:value"
           mode="param-value"/>
-        <xsl:if test="not($closest-param)">
-          <xsl:apply-templates select="oscal:default" mode="param-value"/>
-        </xsl:if>
+        <xsl:if test="not(oscal:value)">[NO PARAMETER VALUE GIVEN]</xsl:if>
       </span>
       <xsl:text> </xsl:text>
       <span class="desc">
         <xsl:text> [</xsl:text>
-        <xsl:apply-templates select="oscal:desc"/>
+        <!-- walking around the template matching oscal:param/oscal:desc -->
+        <xsl:for-each select="oscal:desc">
+          <xsl:apply-templates/>
+        </xsl:for-each>
         <xsl:text>]</xsl:text>
       </span>
+      </xsl:for-each>
+      <xsl:if test="not($closest-param)">[NO PARAMETER ASSIGNED]</xsl:if>
     </span>
   </xsl:template>
 
@@ -436,21 +429,42 @@ a { text-decoration: none }
   
   <xsl:template match="oscal:link">
     <p class="link">
+      <a>
+        <xsl:copy-of select="@href"/>
+        <xsl:choose>
+          <xsl:when test="normalize-space()">
+            <xsl:apply-templates/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@href"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </a>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="oscal:link[starts-with(@href,'#')]">
+    <xsl:variable name="target" select="key('element-by-id',substring-after(@href,'#'))"/>
+    <p class="link">
+      <xsl:if test="not($target)">
+        <xsl:attribute name="class">broken link</xsl:attribute>
+      </xsl:if>
       <span class="subst">cf </span>
-    <a>
-      <xsl:copy-of select="@href"/>
-      <xsl:choose>
-        <xsl:when test="normalize-space()">
-          <xsl:apply-templates/>
-        </xsl:when>
-        <xsl:when test="starts-with(@href,'#')">
-          <xsl:apply-templates select="key('element-by-id',substring-after(@href,'#'))" mode="link-text"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="@href"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </a>
+      <a>
+        <xsl:copy-of select="@href"/>
+        <xsl:choose>
+          <xsl:when test="normalize-space()">
+            <xsl:apply-templates/>
+          </xsl:when>
+          <!-- Link not broken -->
+          <xsl:when test="$target">
+            <xsl:apply-templates select="$target" mode="link-text"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@href"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </a>
     </p>
   </xsl:template>
   

@@ -151,11 +151,11 @@ withdrawn { display: inline; font-style: italic }
 
 code { display: inline; font-family: monospace; font-size: 90% }
 
-assign { display: inline; font-family: sans-serif; background-color: white;
+insert { display: inline; font-family: sans-serif; background-color: white;
   font-size: 80%; font-style: italic; border: thin solid pink }
 
-assign:before { content: 'Assignment [' attr(use) ']: '; font-style: normal; font-size: 80%; font-weight: bold  }
-select:before { content: 'Selection [' attr(use) ']: '; font-style: normal; font-size: 80%; font-weight: bold  }
+insert:before { content: 'Insert parameter [' attr(param-id) ']'; font-style: normal; font-size: 80%; font-weight: bold  }
+select:before { content: 'Selection [' attr(param-id) ']'; font-style: normal; font-size: 80%; font-weight: bold  }
 
 select { display: inline }
 choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }

@@ -20,7 +20,7 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="assign">
+  <xsl:template match="insert">
     <xsl:copy>
       <xsl:attribute name="id" select="(@id,generate-id(.))[1]"/>
       <xsl:apply-templates select="node() | @*"/>
@@ -32,16 +32,6 @@
     <xsl:for-each-group select="//control | //group | //subcontrol | //feat" group-by="@class">
       <xsl:variable name="who" select="current-group()"/>
       <xsl:variable name="control-type" select="current-grouping-key()"/>
-      <!--<xsl:for-each select="$who//(assign|select)">
-          <parameter id="{(@id,generate-id(.))[1]}">
-            <title>
-              <xsl:value-of select="normalize-space(.)"/>
-            </title>
-            <xsl:apply-templates select="." mode="parameter"/>
-          </parameter>
-        </xsl:for-each>-->
-        <!--<control-spec type="{$control-type}"
-          match="{string-join(ancestor-or-self::control/name(.),'//')}">-->
         
       <xsl:for-each-group select="$who/(* except (control|subcontrol|title|group|link|references))" group-by="(@class[matches(.,'\S')],local-name(.))[1]">
         <xsl:variable name="always" select="empty($who except current-group()/..)"/>
@@ -70,7 +60,7 @@
     </declarations>
   </xsl:template>
   
-  <xsl:template match="assign" mode="parameter">
+  <xsl:template match="insert" mode="parameter">
     <value>AT LEAST ONCE EVERY FULL MOON</value>
   </xsl:template>
   
