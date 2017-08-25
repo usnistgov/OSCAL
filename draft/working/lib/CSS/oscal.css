@@ -1,0 +1,173 @@
+* { display: block } 
+
+catalog { max-width: 48em }
+
+declarations { font-family: sans-serif; font-size: 80%;
+   padding: 0.5em; margin: 0.5em; border: thin solid black; background-color: gainsboro;
+    -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+declarations:before { font-weight: bold; content: "Declarations " attr(href) } 
+
+property, statement, parameter,feature
+  { padding: 0.2em; margin: 0.2em; border: thin outset black;
+    -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+property  {  border: thin outset pink } 
+statement {  border: thin outset blue } 
+parameter {  border: thin dotted purple } 
+feature   {  border: thin outset green } 
+
+parameter { background-color: lavenderblush }
+
+value  { display: inline-block; background-color: ivory; border: thin outset pink;
+  margin: 2px; padding: 2px; font-weight: bold; font-size: 80% }
+
+regex { display: inline; font-family: monospace; font-size: 90%; white-space: nowrap;
+  background-color: ivory; border: thin outset green }
+
+regex:before  { content: "matching (regex) "; font-family: sans-serif  }
+
+
+identifier:before { content: "is an identifier"
+ }
+
+parameter:before  { content: '(parameter) "' attr(class) '" on ' attr(context) ' '  }
+property:before   { content: '(property) "'  attr(class) '" on ' attr(context) ' '  }
+statement:before  { content: '(statement) "' attr(class) '" on ' attr(context) ' '}
+feature:before    { content: '(feature) "'   attr(class) '" on ' attr(context) ' '}
+
+property { background-color: pink; margin-top: 0.5em; color: black }
+statement { background-color: cornsilk; margin-top: 0.5em; color: black }
+
+singleton { content: oxy_label(text, "singleton", width, 4em, color, inherit)
+}
+
+inherit, autonum { display: inline }
+required { content: oxy_label(text, "required", width, 4em, color, inherit)
+}
+
+inherit:before { content: oxy_label(text, "inherit", width, 4em, color, inherit)
+}
+autonum:before { content: oxy_label(text, "autonumber ", width, 4em, color, inherit)
+}
+
+group, section, references, extensions
+  { padding: 0.5em; margin: 0.5em; border: thin solid black;
+    -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+references:before { content: "References"; font-size: 120%; font-family: sans-serif; font-weight: bold }
+
+ref { border-left: thick solid silver; padding-left: 0.5em; margin-top: 0.5ex }
+
+control, subcontrol, feat { padding: 0.5em; margin: 0.5em; border: medium double black;
+          -oxy-foldable: true; -oxy-not-foldable-child: title }
+
+
+subcontrol { border: thin solid black }
+
+feat   { border: thin dotted black }
+
+
+group:before { content: attr(class) " (group)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+control:before { content: attr(class) " (control)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+control > title { font-size: 110% }
+
+
+subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; font-size:80%; font-family: sans-serif }
+
+group:before  { content: oxy_capitalize(attr(class));  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+feat:before  { content: attr(class) " (feature)";  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+param:before { content: 'param ' attr(class) ': ' }
+param { display: inline-block; background-color: #C5FF98; border: thin outset darkgreen;
+  margin: 2px; padding: 2px; font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+prop { display:block; background-color: pink; border: thin outset pink;
+  margin: 2px; padding: 2px; font-size: 90% }
+
+title { font-weight: bold; font-family: sans-serif }
+catalog > title { font-size: 150% }
+group > title { font-size: 130% }
+group > group > title { font-size: 120% }
+
+subcontrol > title, feat > title { font-size: 90%; font-style: italic }
+
+stmt, purpose, guidance, remarks, information { -oxy-foldable: true; 
+padding: 0.5em; margin: 0.5em; border: thin dotted black; background-color: cornsilk }
+
+purpose, guidance, remarks, information { border: thin outset grey }
+
+
+desc:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+          content: 'Description' }
+
+
+stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
+          content: oxy_capitalize(attr(class)) }
+
+/* SP800-53
+stmt[class=supplemental-guidance]:before { content: "Supplemental guidance" }  */
+
+/* ISO 27002
+purpose:before,stmt[class=purpose]:before { content: "Purpose/s"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+guidance:before,[class=guidance]:before { content: "Guidance"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+information:before,stmt[class=information]:before { content: "Other information"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+remarks:before,stmt[class=remarks]:before { content: "Remarks"; font-weight: bold; color: midnightblue; font-family: sans-serif }
+ */
+
+
+p { margin-top: 0.5em }
+
+italic { display: inline; font-style: italic }
+
+ol, list { padding-left: 2em }
+ol { list-style-type: decimal }
+ol ol { list-style-type: l }
+
+li, list-item { display: list-item; margin-top: 0.5em }
+li > p, list-item > p { margin-top: 0.5em }
+
+
+std[href]:before, citation[href]:before {
+    content: 
+        oxy_urlChooser(        
+        edit, "@href",
+        columns 53);
+}
+
+q { display: inline;
+    
+  quotes: "“" "”" "‘" "’";
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+std, citation { margin-top: 0.5em }
+std      { color: darkred }
+citation { color: purple }
+
+em { font-style: italic; display: inline }
+xref { display: inline; color: blue }
+
+link { color: blue; font-size: 90%; font-weight: bold }
+
+withdrawn { display: inline; font-style: italic }
+
+code { display: inline; font-family: monospace; font-size: 90% }
+
+assign { display: inline; font-family: sans-serif; background-color: white;
+  font-size: 80%; font-style: italic; border: thin solid pink }
+
+assign:before { content: "Assignment: "; font-style: normal; font-size: 80%; font-weight: bold  }
+select:before { content: "Selection: "; font-style: normal; font-size: 80%; font-weight: bold  }
+
+select { display: inline }
+choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
-<profile xmlns="http://scap.nist.gov/schema/oscal">
-  <invoke href="SP800-53-OSCAL-refined.xml">
-    <include>
-      <!--<call key=""/>-->
-    </include>
-  </invoke>
-</profile>
