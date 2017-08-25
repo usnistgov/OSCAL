@@ -73,7 +73,7 @@ td > *:first-child { margin-top: 0em }
           <xsl:variable name="who" select="."/>
           <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <xsl:apply-templates select="$here/oscal:prop[contains(@class, $who/@class)]"/>
+            <xsl:apply-templates select="$here/oscal:p[contains(@class, $who/@class)]"/>
             <xsl:if test="$who/@class='concept'">Concept</xsl:if>
             <xsl:if test="$who/@class='remarks'">Remarks</xsl:if>
           </xsl:copy>
