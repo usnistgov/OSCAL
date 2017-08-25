@@ -1,0 +1,218 @@
+
+RANDOM CHUNKS OF PROSE
+
+Write a simple narrative describing use of OSCAL
+
+OSCAL is a world of controls, which cluster together in groups and within other ('higher level') controls. Controls come in different types but they all have the same basic form. They probably have titles and almost certainly have some normative language, called the "description" of the control (or sometimes just the "control"). Additionally they have one or more *properties* and *statements*, which provide structured information associated with the control. Exactly which properties and statements are present or available for a control, will depend on the particular control and the control type.
+
+Properties are best thought of as name-value pairs. assigned to a control. So for example a control may have a property 'RATING' (or 'rating') that assigns a nominal rating to a control, permitting controls in a set to be sorted and filtered by rating. The "rating" of any control will be a single value (as this is a property), a string albeit sometimes embellished a little (parameters are described below).
+
+Statements, in contrast, are best thought of as chunks or globs or hunks of prose, of arbitrary length. (Special-purpose statements may be short but some controls use statements to help keep the description short, i.e. for 'spillover'.) They may have internal structure, or they may be simply soup or piles of paragraphs and lists. (OSCAL borrows from HTML to keep the markup inside statements familiar.) Like properties, they might be enhanced (parameters again) in certain ways, but they will generally be fairly free form.
+
+The 'description' of a control might indeed be considered a special or privileged kind of statement, even as its title is a kind of property. For the most part, however, OSCAL permits catalogs and profiles to define their own properties, property values, and statements, for whatever purposes they might need.
+
+
+Parameters
+
+Escape hatch: 'wait list' statements (i.e. no assigned role)
+
+Control enhancements (subcontrols)
+
+Declarations
+
+Adaptability
+
+The rules that define control types can be changed, and new control types can be introduced. Organizations can share control types and share information defined and described using them - that is, as "controls".
+
+(It should be noted in passing that these are digital data objects or data instances, not actual "controls" in the world -- something ineffable, which the documentation of a control can only represent. But metaphysics and epistemology are not in scope here.)
+
+Interchangeability
+
+OSCAL is an entirely independent semantic 'stack' intended to promote interchange of a particular kind (or pattern) of information, a "control set". As such it can be mapped cleanly to NISO JATS, NLM BITS, NISO STS, DITA, or any other format.
+
+
+
+EXTRAS      
+o write XSLT to produce RACI chart for (all of) COBIT 5?
+
+x Confirm that OSCAL/sources/800-53 is actual
+  
+NOT EXTRAS
+
+o Regression testing (for schema, XSLT etc.)
+  Requiring authoritative sample docs
+    Go / no-go
+    Schematron XSpec
+
+feature/closed option in declarations?
+declarations/*/*/@when w/ XPath (conditional applicability) 
+
+in SaxonJS demo:
+look for ixsl:onchange mode (dynamic rendering)
+
+x XSD pathway
+  x RNC -> XSD frame via Trang
+  x XSD frame + OSCAL.oscal -> XSD (w/ warnings re disparities) cf xsd-merge-docs.xsl
+  o XProc for Trang?
+  
+  
+To do:
+
+x rename 'comp' as 'part' --!
+
+Profile support
+o An "identity profile" is produced from a catalog
+    include a switch for copying about params
+    consider making this flat (!)
+    runtime parameters to switch inclusion of subcontrols, parameters
+  A profile is configured by editing this 
+
+  Validate a profile against its source catalog (Schematron?)
+    x Does control (subcontrol) exist? (key by ID)
+    How about links? (auto-generate links to sourced catalog controls?)
+    Are parameters covered? (hook in present oscal-assign.sch)
+    Other profile constraints?
+
+o OSCAL framework in oXygen (nice to have) 
+  oXygen macros, boilerplate and auto-insert
+  e.g. parameter names by reference to declarations
+
+x collapse features and statements:
+  x eliminate statements
+  x add declarations for paras
+  x prohibit prop/* (properties should be text only)
+  x permit prose in features
+  x rename stmts as comps - parts!
+    x SP800-53
+    x ISO27002
+    x COBIT5
+  x Update conversion scripts
+    x SP800-53
+      o (also see below for enhance2.xsl)
+    x ISO27002
+      x w/ text obfuscation?
+  x CSS
+    x mod to 'part'
+    x added support for component|comp
+    x test
+    x remove support of statement|stmt|feature|feat
+  x other Schematrons? (global search for 'stmt|statement')
+    o remove support of statement|stmt|feature|feat here too
+
+o revisit OSCAL validations only after models restabilize
+o validate against their (new) declarations:
+  o SP800-53
+  o ISO27002
+  o COBIT5
+
+Declarations support (desiderata: these could go on github)
+  o update to 'part'!
+  o change models to declare[@component=[('property','part','parameter','p')]
+  o Validate links (use @rel not @class]
+  o Validate paras by @class
+  o Add declarations/*/xsd-type w/ support
+    o to property|parameter declarations (not comp|paragraph)
+  o Add declarations/component/strict w/ support (prohibits 'free' components i.e. w/o declarations)
+    o otherwise, relax declarations: not declaring something is not an error
+    o test this!
+  o Add declarations/*/*/@when for qualified assertion (on required|singleton|value|regex|strict )
+    o implement via eval (be sure and test against broken XPath!)
+  o Adjust 'value' logic to mitigate whitespace problems (when indented) - xml:space='preserve'?
+
+o add semantic aliases for part[@class='objectives'] etc
+x add declarations for paragraph[@class]
+  o test!
+
+o Implement parameter support in editor
+  o update OSCAL-assign.sch to @target -> @id (from @use)
+  o transformation sequence for display
+  
+x write readme for SP800-53 documenting how to perform extraction from sources
+x same for ISO 27002
+
+o update mapping documents
+  o SP800-53
+  o ISO 27002
+  o COBIT5
+
+x write XProc for SP800-53 extraction two-step and wire up
+  x Now three steps!
+  o refine/reduce pipeline once models have stabilized
+    (since as of now, mappings are indirect)
+
+x introduce content obfuscation support into ISO27002 extraction
+  o via runtime parameter?
+
+Aug 21 ECLIPSE DAY  
+x schema tweaks -
+  x 'part' model
+  x modify assign, param, param declarations
+  x update SP800-53 pipeline
+  x update COBIT5, ISO27002 samples
+x Schematron
+  x modify OSCAL-assignments.sch to new model (with new/better rules)
+  x orphan assignment
+    x assign/@use points to parameter
+    x assign/@use points to parameter in scope
+    x quickfix to add pointer and new param
+    o quickfix to add pointer to extant param
+  x orphan parameter (as warning)
+  x assignment has no param/value or default - as warning
+    x quickfix: add param value for assignment
+x CSS tweaks
+x HTML XSLT tweaks (for parameters/assignments)
+
+o HTML reading view
+  o hide parameters
+x remove assign/desc and assign/default
+  x rename 'assign' to 'param-ref' or some equivalent (it's 'include')
+  x Schematron rules for dangling references should be tight
+  x revise
+    x extractions
+    x reading HTML
+    x Schematron
+
+o COBIT5 enhance - some properties are (internal) links...
+o profile
+  x XSLT to produce 'identity profile' from catalog
+    expand control, subcontrol, param
+  o or from profile (expand 'all')
+  x profile schema
+o profile resolution against catalog (display)
+
+o Catalog demo issues (for Github)
+  SP800-53
+    How do we acquire better parameter descriptions? 
+    Can we design (and map) a robust protocol for semantic IDs?
+    Provide missing link/@href (four cases)?
+  COBIT5
+    Link enhancements - some properties should be links
+
+x Update extractions to current models
+  x ISO 27002
+  x SP800-53
+x Test updates to oscal-parameters.sch
+x Update/test HTML display XSLT
+  o hide parameters
+
+"Refine the Schematron from User Stories 2 and 3 to enforce profile constraints and validate the profile against the referenced control catalogs and controls. Validation will include automatically verifying that the selected controls exist in the underlying catalog."
+
+o profile//param/desc should not be permitted
+    (sounds like param inside profile needs a separate element?)
+x remove param/default: param/value will do all the work
+
+o Markdown docs!
+  o finalize oscal-oscal.xml
+  x update/merge into XSD
+  x produce Markdown version and post to Github
+o Github issues
+  o pick up outstanding / orphan issues from these here notes
+
+PROFILE QUESTIONS:
+  When you call for a control, do you get its subcontrols for free?
+    (or must they be excluded specifically?)
+    NO (but this behavior can be modified at runtime via parameter)
+
+o REMODEL OSCAL declarations
+  o Validate ALL OSCAL (including schema docs and mapping documentation) against their declarations
+o REVIEW AND UPDATE mapping documentation 

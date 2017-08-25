@@ -1,0 +1,27 @@
+default namespace = "http://scap.nist.gov/schema/oscal"
+
+include "oscal-working.rnc" { start = profile }
+
+profile = element profile { invoke+, mod* }
+
+invoke = element invoke { hrefAttr, (\include?, exclude?) }
+
+\include = element include { ((all, param*) | (call | param)+ ) }
+
+# 'all' or 'filter' make sense for inclusions but not exclusions
+exclude = element exclude { call+ }
+
+all = element all { empty }
+
+# 'call' can call *either* a control or a subcontrol by its @id
+# Schematron requirement: there exists in the catalog a control or subcontrol
+# by the given @id
+call = element call {
+  attribute control-id    { text } |
+  attribute subcontrol-id { text } }
+
+# not used ... for experimental feature
+filter = element filter { attribute key { text }, text }
+
+# build out later ...
+mod = element mod { contextAttr }
