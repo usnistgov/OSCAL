@@ -34,9 +34,9 @@
       <p class="target">prop[@class='number']</p>
       <part class="concept">
         <p>Control numbers are composed by combining a code for the family (AC through SI) with a
-          (consecutive) number identifying the control. Control enhancements are also numbered
+          (consecutive) number identifying the control. Control subcontrols are also numbered
           hierarchically based on their position inside their containing controls (and
-          enhancements).</p>
+          subcontrols).</p>
       </part>
     </control>
     <control class="mapping">
@@ -75,7 +75,7 @@
     </control>
     <control class="mapping">
       <p class="source">objective</p>
-      <p class="target">enhancement[@class='objective']</p>
+      <p class="target">subcontrol[@class='objective']</p>
     </control>
     <control class="mapping">
       <p class="source">decisions</p>
@@ -86,7 +86,7 @@
     </control>
     <control class="mapping">
       <p class="source">decision</p>
-      <p class="target">enhancement[@class='decision']</p>
+      <p class="target">subcontrol[@class='decision']</p>
     </control>
     <control class="mapping">
       <p class="source">potential-assessments</p>
@@ -97,14 +97,14 @@
     </control>
     <control class="mapping">
       <p class="source">potential-assessment</p>
-      <p class="target">enhancement[@class='assessment']</p>
+      <p class="target">subcontrol[@class='assessment']</p>
     </control>
     <control class="mapping">
       <p class="source">object</p>
       <p class="target">prop[@class='object']</p>
       <part class="concept">
         <p>In the source, <code>object</code> elements specify the (multiple) focuses of an
-          assessment (a kind of control enhancement).</p>
+          assessment (a kind of control subcontrol).</p>
       </part>
       <part class="remarks">
         <p>The property is <em>not</em> required by declaration to be a singleton.</p>
@@ -130,15 +130,15 @@
       </part>
     </control>
     <control class="mapping">
-      <p class="source">control-enhancements</p>
+      <p class="source">control-subcontrols</p>
       <p class="target">[none]</p>
       <part class="remarks">
         <p>Wrapper element in XML can be removed, retaining its contents.</p>
       </part>
     </control>
     <control class="mapping">
-      <p class="source">control-enhancement</p>
-      <p class="target">enhancement[@class='sp800-53-enhancement]</p>
+      <p class="source">control-subcontrol</p>
+      <p class="target">subcontrol[@class='sp800-53-subcontrol]</p>
     </control>
     <control class="mapping">
       <p class="source">baseline-impact</p>

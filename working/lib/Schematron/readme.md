@@ -2,7 +2,7 @@
 
 This subdirectory contains various Schematron constraint sets for application to OSCAL.
 
-At time of writing (2017-08-25) these are still provisional and subject to change; see the Schematrons themselves (including embedded comments - but don't trust them entirely either) for more info.
+At time of writing (2017-08-25) these are still provisional and subject to change; for more information see the Schematrons themselves (including embedded comments - but don't trust them entirely either).
 
 ## Overview:
 

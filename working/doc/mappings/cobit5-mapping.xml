@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Regular" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal-mapping.css" title="Tabular" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Regular" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-mapping.css" title="Tabular" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>COBIT 5 to OSCAL Mapping</title>
   <section>
@@ -10,7 +10,7 @@
     <p>See <a>COBIT 5, <em>Enabling Business Processes</em> p. 25</a> for a description of the
       process reference model.</p>
     <p>COBIT <q>process</q> becomes OSCAL <code>control with @class='process'</code>. COBIT
-        <q>practice</q> (a component of a process) becomes OSCAL <code>enhancement with
+        <q>practice</q> (a component of a process) becomes OSCAL <code>subcontrol with
         @class='practice'</code>.</p>
   </section>
   <group>
@@ -66,20 +66,19 @@
     </control>
     <control class="mapping">
       <p class="source">IT-related goal table</p>
-      <p class="target">enhancement with @class='goal', containing 'scope' prop = 'IT'</p>
+      <p class="target">subcontrol with @class='goal', containing 'scope' prop = 'IT'</p>
       <part class="concept">
         <p>Each IT goal presents an implicit link to an IT goal specified elsewhere in COBITS (the
             <q>Goals Cascade</q>). Here, references to IT goals are indicated by a two-digit numeric
           identifier (01-17) and a title, and glossed with a brief statement, <q>Metrics</q>. These
-          are captured inside the <code>enhancement</code> as <code>prop with
-          @class='number'</code>, <code>title</code> and <code>part with
-          @class='metrics'</code>.</p>
+          are captured inside the <code>subcontrol</code> as <code>prop with @class='number'</code>,
+            <code>title</code> and <code>part with @class='metrics'</code>.</p>
         <p>The fact that this is an IT-related goal (as opposed to any other type) is captured by
           including a property <code>prop with @class='scope'</code> with the value
           <code>IT</code>.</p>
       </part>
       <part class="remarks">
-        <p>The control enhancement used to describe this is the same as is used for (rows in) the
+        <p>The control subcontrol used to describe this is the same as is used for (rows in) the
           next table, the process-related goal table. Note however that the IT-related goals (as
           indicated by the <code>scope</code> property) are implicit cross-links to elsewhere in
           COBIT 5.</p>
@@ -87,7 +86,7 @@
     </control>
     <control class="mapping">
       <p class="source">Process Goal and Metrics (table)</p>
-      <p class="target">enhancement with @class='goal', containing 'scope' prop ='process'</p>
+      <p class="target">subcontrol with @class='goal', containing 'scope' prop ='process'</p>
       <part class="concept">
         <p>Like IT-related goals, each process-related goal has a number, title and <q>Metrics</q>
           section. In this case, however, the <q>scope</q> property (<code>prop</code> with
@@ -96,16 +95,16 @@
     </control>
     <control class="mapping">
       <p class="source">Governance or Management Practice</p>
-      <p class="target">enhancement with @class=practice</p>
+      <p class="target">subcontrol with @class=practice</p>
     </control>
     <control class="mapping">
       <p class="source">Governance or Management Practice RACI assignments</p>
-      <p class="target">enhancement with @class='raci_index' inside 'practice' enhancement</p>
+      <p class="target">subcontrol with @class='raci_index' inside 'practice' subcontrol</p>
       <part class="concept">
         <p>In COBIT 5, the RACI index is presented at the level of the process (control). Mapped to
-          OSCAL, this table's rows are allocated instead to the appropriate control enhancement
+          OSCAL, this table's rows are allocated instead to the appropriate control subcontrol
             (<q>practice</q>) to which they belong.</p>
-        <p>The RACI index enhancement presents a simple list of properties, each one naming a party
+        <p>The RACI index subcontrol presents a simple list of properties, each one naming a party
           designated for RACI indexing. The properties must have <code>@class</code> values of
             <code>responsible</code>, <code>accountable</code>, <code>consulted</code> or
             <code>informed</code> (exclusively of one another). More than one property is expected
@@ -117,7 +116,7 @@
     </control>
     <control class="mapping">
       <p class="source">Practice inputs</p>
-      <p class="target">enhancement with @class='input'</p>
+      <p class="target">subcontrol with @class='input'</p>
       <part class="remarks">
         <p>Note that according to COBIT (p. 26) not all practice inputs are represented explicitly,
           but only those that are specific to particular practices. So if a practice has an input
@@ -130,7 +129,7 @@
     </control>
     <control class="mapping">
       <p class="source">Practice outputs</p>
-      <p class="target">enhancement with @class='output'</p>
+      <p class="target">subcontrol with @class='output'</p>
     </control>
     <control class="mapping">
       <p class="source">The number or label on any component</p>
