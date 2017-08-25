@@ -164,13 +164,13 @@ x HTML XSLT tweaks (for parameters/assignments)
 
 o HTML reading view
   o hide parameters
-o remove assign/desc and assign/default
-  o rename 'assign' to 'param-ref' or some equivalent
-  o Schematron rules for dangling references should be tight
-  o revise
-    o extractions
-    o reading HTML
-    o Schematron
+x remove assign/desc and assign/default
+  x rename 'assign' to 'param-ref' or some equivalent (it's 'include')
+  x Schematron rules for dangling references should be tight
+  x revise
+    x extractions
+    x reading HTML
+    x Schematron
 
 o COBIT5 enhance - some properties are (internal) links...
 o profile
@@ -188,11 +188,12 @@ o Catalog demo issues (for Github)
   COBIT5
     Link enhancements - some properties should be links
 
-o Update extractions to current models
-  o ISO 27002
-  o SP800-53
-o Test updates to oscal-parameters.sch
-o Update/test HTML display XSLT (hide parameters)
+x Update extractions to current models
+  x ISO 27002
+  x SP800-53
+x Test updates to oscal-parameters.sch
+x Update/test HTML display XSLT
+  o hide parameters
 
 "Refine the Schematron from User Stories 2 and 3 to enforce profile constraints and validate the profile against the referenced control catalogs and controls. Validation will include automatically verifying that the selected controls exist in the underlying catalog."
 
@@ -213,4 +214,5 @@ PROFILE QUESTIONS:
     NO (but this behavior can be modified at runtime via parameter)
 
 o REMODEL OSCAL declarations
+  o Validate ALL OSCAL (including schema docs and mapping documentation) against their declarations
 o REVIEW AND UPDATE mapping documentation 
