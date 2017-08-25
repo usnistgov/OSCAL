@@ -1,0 +1,705 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for xml.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd', 
+				'properties_space', 
+				'properties_lang');
+var facetsBoxes= new Array('facets_space');
+var usedByBoxes= new Array('usedBy_space', 
+				'usedBy_lang');
+var sourceBoxes= new Array('source_space', 
+				'source_lang');
+var annotationBoxes= new Array('annotations_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd', 
+				'annotations_lang');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, facetsBoxes);" class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd"></a><div class="componentTitle">Imported schema <span class="qname">xml.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/XML/1998/namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">See http://www.w3.org/XML/1998/namespace.html and</span><span class="tI">
+</span><span class="tT">   http://www.w3.org/TR/REC-xml for information about this namespace.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">    This schema document describes the XML namespace, in a form</span><span class="tI">
+</span><span class="tT">    suitable for import by other schema documents.  </span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">    Note that local names in this namespace are intended to be defined</span><span class="tI">
+</span><span class="tT">    only by the World Wide Web Consortium or its subgroups.  The</span><span class="tI">
+</span><span class="tT">    following names are currently defined in this namespace and should</span><span class="tI">
+</span><span class="tT">    not be used with conflicting semantics by any Working Group,</span><span class="tI">
+</span><span class="tT">    specification, or document instance:</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">    base (as an attribute name): denotes an attribute whose value</span><span class="tI">
+</span><span class="tT">         provides a URI to be used as the base for interpreting any</span><span class="tI">
+</span><span class="tT">         relative URIs in the scope of the element on which it</span><span class="tI">
+</span><span class="tT">         appears; its value is inherited.  This name is reserved</span><span class="tI">
+</span><span class="tT">         by virtue of its definition in the XML Base specification.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">    id   (as an attribute name): denotes an attribute whose value</span><span class="tI">
+</span><span class="tT">         should be interpreted as if declared to be of type ID.</span><span class="tI">
+</span><span class="tT">         This name is reserved by virtue of its definition in the</span><span class="tI">
+</span><span class="tT">         xml:id specification.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">    lang (as an attribute name): denotes an attribute whose value</span><span class="tI">
+</span><span class="tT">         is a language code for the natural language of the content of</span><span class="tI">
+</span><span class="tT">         any element; its value is inherited.  This name is reserved</span><span class="tI">
+</span><span class="tT">         by virtue of its definition in the XML specification.</span><span class="tI">
+</span><span class="tT">  </span><span class="tI">
+</span><span class="tT">    space (as an attribute name): denotes an attribute whose</span><span class="tI">
+</span><span class="tT">         value is a keyword indicating what whitespace processing</span><span class="tI">
+</span><span class="tT">         discipline is intended for the content of the element; its</span><span class="tI">
+</span><span class="tT">         value is inherited.  This name is reserved by virtue of its</span><span class="tI">
+</span><span class="tT">         definition in the XML specification.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">    Father (in any context at all): denotes Jon Bosak, the chair of </span><span class="tI">
+</span><span class="tT">         the original XML Working Group.  This name is reserved by </span><span class="tI">
+</span><span class="tT">         the following decision of the W3C XML Plenary and </span><span class="tI">
+</span><span class="tT">         XML Coordination groups:</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">             In appreciation for his vision, leadership and dedication</span><span class="tI">
+</span><span class="tT">             the W3C XML Plenary on this 10th day of February, 2000</span><span class="tI">
+</span><span class="tT">             reserves for Jon Bosak in perpetuity the XML name</span><span class="tI">
+</span><span class="tT">             xml:Father</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">This schema defines attributes and an attribute group</span><span class="tI">
+</span><span class="tT">        suitable for use by</span><span class="tI">
+</span><span class="tT">        schemas wishing to allow xml:base, xml:lang, xml:space or xml:id</span><span class="tI">
+</span><span class="tT">        attributes on elements they define.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">        To enable this, such a schema must import this schema</span><span class="tI">
+</span><span class="tT">        for the XML namespace, e.g. as follows:</span><span class="tI">
+</span><span class="tT">        &lt;schema . . .&gt;</span><span class="tI">
+</span><span class="tT">         . . .</span><span class="tI">
+</span><span class="tT">         &lt;import namespace="http://www.w3.org/XML/1998/namespace"</span><span class="tI">
+</span><span class="tT">                    schemaLocation="http://www.w3.org/2001/xml.xsd"/&gt;</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">        Subsequently, qualified reference to any of the attributes</span><span class="tI">
+</span><span class="tT">        or the group defined below will have the desired effect, e.g.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">        &lt;type . . .&gt;</span><span class="tI">
+</span><span class="tT">         . . .</span><span class="tI">
+</span><span class="tT">         &lt;attributeGroup ref="xml:specialAttrs"/&gt;</span><span class="tI">
+</span><span class="tT"> </span><span class="tI">
+</span><span class="tT">         will define a type which will schema-validate an instance</span><span class="tI">
+</span><span class="tT">         element with any of those attributes</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">In keeping with the XML Schema WG's standard versioning</span><span class="tI">
+</span><span class="tT">policy, this schema document will persist at</span><span class="tI">
+</span><span class="tT">http://www.w3.org/2007/08/xml.xsd.</span><span class="tI">
+</span><span class="tT">At the date of issue it can also be found at</span><span class="tI">
+</span><span class="tT">http://www.w3.org/2001/xml.xsd.</span><span class="tI">
+</span><span class="tT">The schema document at that URI may however change in the future,</span><span class="tI">
+</span><span class="tT">in order to remain compatible with the latest version of XML Schema</span><span class="tI">
+</span><span class="tT">itself, or with the XML namespace itself.  In other words, if the XML</span><span class="tI">
+</span><span class="tT">Schema or XML namespaces change, the version of this document at</span><span class="tI">
+</span><span class="tT">http://www.w3.org/2001/xml.xsd will change</span><span class="tI">
+</span><span class="tT">accordingly; the version at</span><span class="tI">
+</span><span class="tT">http://www.w3.org/2007/08/xml.xsd will not change.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_schema_NAMESPACE_http___www.w3.org_XML_1998_namespace_LOCATION_file__Applications_Oxygen_20XML_20Editor_frameworks_xml_xml.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="space"></a><div class="componentTitle">Attribute <span class="qname">@xml:space</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/XML/1998/namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:NCName</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_space" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_space');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_space" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_space" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_space');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_space" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>default</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>preserve</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_space" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_space');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_space" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute Groups </td>
+                                    <td><b><a href="xhtml-attribs-1_xsd.html#xhtml.Core.attrib" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">xhtml.Core.attrib</a></b>, <b><a href="xhtml-struct-1_xsd.html#xhtml.head.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-struct-1.xsd')">xhtml.head.attlist</a></b>, <b><a href="xhtml-struct-1_xsd.html#xhtml.html.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-struct-1.xsd')">xhtml.html.attlist</a></b>, <b><a href="xhtml-struct-1_xsd.html#xhtml.title.attlist" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-struct-1.xsd')">xhtml.title.attlist</a></b>, <b><a href="xml_xsd_1.html#specialAttrs" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:specialAttrs</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_space" type="image" src="img/btM.gif" value="-" onclick="switchState('source_space');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_space" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"space"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:NCName"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"default"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"preserve"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="lang"></a><div class="componentTitle">Attribute <span class="qname">@xml:lang</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/XML/1998/namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_lang" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_lang');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_lang" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_lang" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_lang');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_lang" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_lang" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_lang');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_lang" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute Groups </td>
+                                    <td><b><a href="xhtml-attribs-1_xsd.html#xhtml.Global.i18n.attrib" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">xhtml.Global.i18n.attrib</a></b>, <b><a href="xhtml-attribs-1_xsd.html#xhtml.I18n.attrib" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">xhtml.I18n.attrib</a></b>, <b><a href="xml_xsd_1.html#specialAttrs" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:specialAttrs</a></b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="OSCAL-common_xsd.html#linkType" target="mainFrame" title="http://oscal.nist.gov/schema/common" onclick="updatePageTitle('Schema documentation for OSCAL-common.xsd')">linkType</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_lang" type="image" src="img/btM.gif" value="-" onclick="switchState('source_lang');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_lang" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"lang"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Attempting to install the relevant ISO 2- and 3-letter codes as the enumerated possible values is probably never going to be a realistic possibility. See RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry at http://www.iana.org/assignments/lang-tag-apps.htm for further information. The union allows for the 'un-declaration' of xml:lang with the empty string.</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tAN"> memberTypes=</span><span class="tAV">"xs:language"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">""</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor Trial Edition.
+         </div>
+      </div><script type="text/javascript">
+         <!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>

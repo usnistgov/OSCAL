@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<overlay xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog 
+        file:../../../../xsd/nist/sp800-53/2.0/control-catalog.xsd">
+    <id>LowNISTCloudOverlay</id>
+    <name>Low NIST Cloud Overlay</name>
+    <version>1</version>
+    <summary>TBD</summary>
+    <base>
+        <layer-ref id="SP800-53" version="4" type="catalog" 
+            URI="../../../../xm/nist/sp800-53/2.0/sp800-53-controls-catalog.xml" />        
+        <layer-ref id="FedRAMP-Low" version="4" type="catalog" 
+            URI="../../../../xm/nist/sp800-53/2.0/FedRAMP-low-overlay.xml" />        
+    </base>
+    <!-- <baseline-impact>Low</baseline-impact> -->            
+    <meta>
+        <property name="supplemental-guidance" type="xhtml:xhtml.div.type"/>
+        <property name="implementation-guidance" type="xhtml:xhtml.div.type"/>
+        <tailor>
+            <property name="supplemental-guidance" minOccurs="0" maxOccurs="1" />
+            <property name="implementation-guidance" minOccurs="0" maxOccurs="1" />
+        </tailor>
+    </meta>
+    <items>
+        <item xsi:type="layerItemType">
+            <type>control-overlay</type>
+            <id>AC-1</id>
+            <link rel="layer">FedRAMP-Low</link>
+            <rationale change="compensating">related.</rationale>
+            <tailoring>
+                <tailor>
+                    <id>TBD</id>
+                    <id>TBD2</id>
+                    <properties>
+                        <supplemental-guidance>here's some supplemental guidance </supplemental-guidance>
+                        <implementation-guidance>here's some implementation
+                            guidance</implementation-guidance>                        
+                    </properties>
+                </tailor>
+            </tailoring>
+        </item>
+    </items>
+</overlay>

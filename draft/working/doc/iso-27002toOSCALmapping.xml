@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../lib/oscal-mapping.css"?>
+<?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
+<catalog xmlns="http://scap.nist.gov/schema/oscal">
+  <title>Mappings into OSCAL</title>
+  <group>
+    <title>ISO 27002</title>
+    <prop class="source">ISO 27002 layout structure</prop>
+    <prop class="target">OSCAL element</prop>
+    <stmt>
+      <p>Refer to published ISO 27002 or to screenshot in this directory.</p>
+    </stmt>
+    <control class="mapping">
+      <prop class="source">Control category (section)</prop>
+      <prop class="target">group[@type='control-category']</prop>
+      <stmt class="concept">
+        <p>The control categories are the top level sections in the document, providing its
+          organization; they include high level categories such as <q>Information security
+            policies</q>, <q>Organization of information security</q>, <q>Human resource
+            security</q>, and so forth to <q>Compliance</q>. As published the document contains 14
+          such sections, numbered 5-14 (after four introductory sections).</p>
+      </stmt>
+      <stmt class="remarks">
+        <p>Maintaining hierarchical organization supports autonumber checking on properties on
+          controls in the groupings. So this becomes a group containing groups (the clauses)
+          containing controls.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Control category title (section title)</prop>
+      <prop class="target">group[@type='control-category']/title</prop>
+      <stmt class="concept">
+        <p>In OSCAL, a title is a privileged kind of property (of a group or control) that doesn't
+          have to be declared. It's appropriate for the section header.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Control category number</prop>
+      <prop class="target">group[@type='control-category']/prop[@role='number']</prop>
+      <stmt class="remarks">
+        <p>The values are 5 through 18, corresponding to their section numbers in the document.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Clause (section)</prop>
+      <prop class="target">group[@type='clause']</prop>
+      <stmt class="concept">
+        <p>A subgrouping of controls inside the control category. All controls are members of a
+          clause inside a control category.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Clause title (section title)</prop>
+      <prop class="target">group[@type='clause']/title</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source"><q>Objective</q> section inside clause</prop>
+      <prop class="target">control[@type='iso-27002']/stmt[@role='objective']</prop>
+    </control>
+    <control class="mapping">
+      <prop class="source">Clause number</prop>
+      <prop class="target">group[@type='clause']/prop[@role='number']</prop>
+      <stmt class="remarks">
+        <p>Second level down: the values are 5.1 (first clause inside category 5) through 18.2. They
+          are composed of splicing together the number of the containing group (control category)
+          with a number for the clause (section) within the category.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Control</prop>
+      <prop class="target">control[@type='iso-27002']</prop>
+      <stmt class="concept">
+        <p>In the document, a control appears as a section headed by its title and containing a
+          regular structure, including a subsection headed <q>Control</q>. The containing element
+          (structure) <q>control</q> is implicit.</p>
+      </stmt>
+      <stmt class="remarks">
+        <p>All controls in ISO27002 appear inside clauses, so they are three levels down as
+          indicated by their assigned numbers. The standard includes 114 controls.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Control number</prop>
+      <prop class="target">control[@type='iso-27002']/prop[@role='number']</prop>
+      <stmt class="remarks">
+        <p>Third level down: the values are 5.1.1 (first control inside category 5) through 18.2.3.
+          Like clause numbers, they splice together a counter with the number of the containing
+          structure (here, the clause).</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">Control title</prop>
+      <prop class="target">control[@type='iso-27002']/title</prop>
+      <stmt class="remarks">
+        <p>Every control has its own title. NB since titles are also distinctive, they can serve as
+          an additional key or counter-check on retrieval of (for) the control.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source"><q>Control</q> section inside control</prop>
+      <prop class="target">control[@type='iso-27002']/stmt[@role='description']</prop>
+      <stmt class="remarks">
+        <p><q>description</q> is a conventional label for the normative section of prose describing
+          a control, which this is.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">"Implementation guidance" section inside control</prop>
+      <prop class="target">control[@type='iso-27002']/stmt[@role='guidance']</prop>
+      <stmt class="remarks">
+        <p>Not normative and not always present.</p>
+      </stmt>
+    </control>
+    <control class="mapping">
+      <prop class="source">"Other information" section inside control</prop>
+      <prop class="target">control[@type='iso-27002']/stmt[@role='information']</prop>
+      <stmt class="remarks">
+        <p>Not normative and not always present.</p>
+      </stmt>
+    </control>
+  </group>
+  <group class="control-family">
+    <title>NIST SP800-53A</title>
+  </group>
+</catalog>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog 
+        file:../../../../xsd/nist/oscal/2.0/OSCAL.xsd">
+    <id>IPDR2</id>
+    <name>IPDR2</name>
+    <version>2</version>
+    <summary>TBD</summary>
+    <meta>
+        <property name="requirement" type="xsd:string"/>
+        <item>
+            <property name="requirement" minOccurs="1" maxOccurs="1" />
+            <property name="parameter" minOccurs="0" maxOccurs="unbounded" />
+        </item>
+    </meta>
+
+    <items>
+        <item>
+            <type>requirement</type>
+            <id>Identify</id>
+            <title>Function: Identify</title>
+            <statement>
+                <description> The Framework Core consists of five concurrent and continuous Functions: 
+                    Identify, Protect, Detect, Respond, Recover. When considered together, 
+                    these Functions provide a high-level, strategic view of the lifecycle of an o
+                    rganization’s management of cybersecurity risk. The Framework Core then identifies 
+                    underlying key Categories and Subcategories for each Function 
+                </description>
+            </statement>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM</id>
+            <title>Asset Management</title>
+            <statement>
+                <description>The data, personnel, devices, systems, and facilities that enable
+                    the organization to achieve business purposes are identified
+                    and managed consistent with their relative importance to business
+                    objectives and the organization’s risk strategy. 
+                </description>
+            </statement>
+            <link rel="parent">#Identify</link>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM-1</id>
+            <title>Physical devices and systems
+                within the organization are inventoried
+            </title>
+            <link rel="parent">#ID.AM</link>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM-2</id>
+            <title> Software platforms and
+                applications within the organization are
+                inventoried
+            </title>
+            <link rel="parent">#ID.AM</link>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM-3</id>
+            <title> Organizational communication
+                and data flows are mapped
+            </title>
+            <link rel="parent">#ID.AM</link>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM-4</id>
+            <title> External information systems
+                are catalogued 
+            </title>
+            <link rel="parent">#ID.AM</link>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM-5</id>
+            <title> Resources (e.g., hardware, • COBIT 5 APO03.03, APO03.04, BAI09.02
+                devices, data, and software) are prioritized • ISA 62443-2-1:2009 4.2.3.6
+                based on their classification, criticality, and • ISO/IEC 27001:2013 A.8.2.1
+                business value
+            </title>
+            <link rel="parent">#ID.AM</link>
+        </item>
+        <item>
+            <type>requirement</type>
+            <id>ID.AM-6</id>
+            <title> Cybersecurity roles and
+                responsibilities for the entire workforce and
+                third-party stakeholders (e.g., suppliers,
+                customers, partners) are established
+            </title>
+            <link rel="parent">#ID.AM</link>
+        </item>
+    </items>
+</catalog>
