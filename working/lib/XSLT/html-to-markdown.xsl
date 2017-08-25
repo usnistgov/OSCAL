@@ -75,7 +75,6 @@
     <xsl:value-of select="$link-target/h3/span[contains(@class,'tag')]"/>
     <xsl:text>>]</xsl:text>
     <xsl:text>(#</xsl:text>
-    
     <xsl:value-of select="translate($text,' ','-')"/>
     <xsl:text>)</xsl:text>
   </xsl:template>

@@ -39,7 +39,7 @@ div div div h3 { font-size: 110% }
 
 .tag:before { content: '&lt;' }
 .tag:after  { content: '&gt;' }
-
+.code { font-family: monospace }
         </style>
       </head>
       <body>
@@ -275,11 +275,9 @@ div div div h3 { font-size: 110% }
   <xsl:variable name="all-tags" select="//oscal:prop[@class='tag']"/>
   
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
-    <code class="code {.}">
-      <a href="#tag_{.}">
-        <xsl:apply-templates/>
-      </a>
-    </code>
+    <a href="#tag_{.}" class="code">
+      <xsl:apply-templates/>
+    </a>
   </xsl:template>
   
   

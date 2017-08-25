@@ -24,7 +24,7 @@ div div div h3 { font-size: 110% }
 
 .tag:before { content: '&lt;' }
 .tag:after  { content: '&gt;' }
-
+.code { font-family: monospace }
         </style>
    </head>
    <body>
@@ -65,14 +65,8 @@ div div div h3 { font-size: 110% }
       appopriate level of description, for that domain, to describe best as <q class="q">control</q>,
         <q class="q">subcontrol</q> etc.</p>
          <p class="p">This organization is governed by an XML schema, which enforces containment constraints among
-      these elements. In particular, the OSCAL schema declares elements for <code class="code control">
-               <a href="#tag_control">control</a>
-            </code>,
-        <code class="code subcontrol">
-               <a href="#tag_subcontrol">subcontrol</a>
-            </code> and <code class="code part">
-               <a href="#tag_part">part</a>
-            </code>. According to its rules, subcontrols may only
+      these elements. In particular, the OSCAL schema declares elements for <a href="#tag_control" class="code">control</a>,
+        <a href="#tag_subcontrol" class="code">subcontrol</a> and <a href="#tag_part" class="code">part</a>. According to its rules, subcontrols may only
       appear within controls. Either controls or subcontrols may be partitioned (may contain parts),
       and parts may contain their own parts. Any of these objects may be <q class="q">controlled</q> in the
       sense that they may be used, consistently, to carry regular sets of properties, whose names
@@ -136,14 +130,8 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Controls may be grouped using <code class="code group">
-                        <a href="#tag_group">group</a>
-                     </code>, and controls may be partitioned, using
-          either formal <code class="code subcontrol">
-                        <a href="#tag_subcontrol">subcontrol</a>
-                     </code> or (informally) <code class="code part">
-                        <a href="#tag_part">part</a>
-                     </code>.</p>
+                  <p class="p">Controls may be grouped using <a href="#tag_group" class="code">group</a>, and controls may be partitioned, using
+          either formal <a href="#tag_subcontrol" class="code">subcontrol</a> or (informally) <a href="#tag_part" class="code">part</a>.</p>
                </div>
             </div>
             <div class="control element-description" id="tag_subcontrol">
@@ -160,9 +148,7 @@ div div div h3 { font-size: 110% }
                   <h5 class="remarks">remarks</h5>
                   <p class="p">A nominal subcontrol or <q class="q">control enhancement</q>, permitting catalogs easily to provide
           access to structured data at two levels. Further levels down can be achieved using
-            <code class="code part">
-                        <a href="#tag_part">part</a>
-                     </code> (both controls and subcontrols may be partitioned), which may contain
+            <a href="#tag_part" class="code">part</a> (both controls and subcontrols may be partitioned), which may contain
           their own parts; however having <q class="q">controls</q> and <q class="q">subcontrols</q> known in advance to
           be especially significant, is helpful.</p>
                </div>
@@ -225,19 +211,13 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Like properties (<code class="code prop">
-                        <a href="#tag_prop">prop</a>
-                     </code>) and parameters (<code class="code param">
-                        <a href="#tag_param">param</a>
-                     </code>), parts can be
+                  <p class="p">Like properties (<a href="#tag_prop" class="code">prop</a>) and parameters (<a href="#tag_param" class="code">param</a>), parts can be
           distinguished from other elements within their controls by their assigned
             @class, such that they may be subjected to <q class="q">declarations logic</q> using
           these values as bindings (and thereby getting open-ended extensibility).</p>
                   <p class="p">An assigned class may frequently provide for a header in display, such that
             part[@class='objectives'] is displayed under a header <em class="em">Objectives</em>,
-          etc. Unlike groups, controls or subcontrols, however, they may not have <code class="code title">
-                        <a href="#tag_title">title</a>
-                     </code>
+          etc. Unlike groups, controls or subcontrols, however, they may not have <a href="#tag_title" class="code">title</a>
           element children (they are not <q class="q">first class objects</q> in this sense). Thus in OSCAL,
           if the components of your controls have their own titles, they are something else): to
           accommodate data like this, consider using a property (e.g.
@@ -256,9 +236,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Works like HTML anchor (<code class="code a">
-                        <a href="#tag_a">a</a>
-                     </code>) except this is a line-oriented (block)
+                  <p class="p">Works like HTML anchor (<a href="#tag_a" class="code">a</a>) except this is a line-oriented (block)
           element.</p>
                </div>
       
@@ -305,14 +283,8 @@ div div div h3 { font-size: 110% }
          </section>
          <section class="group">
             <h2 class="title">Declarations elements</h2>
-            <p class="p">By declaring constraints on control components, such as properties (<code class="code prop">
-                  <a href="#tag_prop">prop</a>
-               </code>), parts
-        (<code class="code part">
-                  <a href="#tag_part">part</a>
-               </code>) and links (<code class="code link">
-                  <a href="#tag_link">link</a>
-               </code>) within controls and subcontrols,
+            <p class="p">By declaring constraints on control components, such as properties (<a href="#tag_prop" class="code">prop</a>), parts
+        (<a href="#tag_part" class="code">part</a>) and links (<a href="#tag_link" class="code">link</a>) within controls and subcontrols,
       applications and operators can validate the regularity and composition of available controls.
       By documenting constraints that are enforceable at need, Declarations also serve as an
       implicit <q class="q">semantic contract</q> between a control catalog (or set of controls valid to a set
@@ -356,9 +328,7 @@ div div div h3 { font-size: 110% }
       
       
                <div class="part description">
-                  <p class="p">Constraints applicable to a class or classes of <code class="code p">
-                        <a href="#tag_p">p</a>
-                     </code> elements within a control
+                  <p class="p">Constraints applicable to a class or classes of <a href="#tag_p" class="code">p</a> elements within a control
         object</p>
                </div>
             </div>
@@ -409,23 +379,9 @@ div div div h3 { font-size: 110% }
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
                   <p class="p">When this element is present in the declaration of an OSCAL control component, the
-          component (<code class="code prop">
-                        <a href="#tag_prop">prop</a>
-                     </code>, <code class="code param">
-                        <a href="#tag_param">param</a>
-                     </code>, <code class="code part">
-                        <a href="#tag_part">part</a>
-                     </code>) must be the only
-          component of that class given in its (<code class="code group">
-                        <a href="#tag_group">group</a>
-                     </code>, <code class="code control">
-                        <a href="#tag_control">control</a>
-                     </code>,
-            <code class="code subcontrol">
-                        <a href="#tag_subcontrol">subcontrol</a>
-                     </code> or <code class="code part">
-                        <a href="#tag_part">part</a>
-                     </code>) context. i.e., no other element child of
+          component (<a href="#tag_prop" class="code">prop</a>, <a href="#tag_param" class="code">param</a>, <a href="#tag_part" class="code">part</a>) must be the only
+          component of that class given in its (<a href="#tag_group" class="code">group</a>, <a href="#tag_control" class="code">control</a>,
+            <a href="#tag_subcontrol" class="code">subcontrol</a> or <a href="#tag_part" class="code">part</a>) context. i.e., no other element child of
           the same parent may have the same @class value (at the level of syntax), or
           be bound to the same component type (at the semantic level).</p>
                </div>
@@ -443,11 +399,7 @@ div div div h3 { font-size: 110% }
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
                   <p class="p">When this element is present in the declaration of an OSCAL control component, the
-          component (<code class="code prop">
-                        <a href="#tag_prop">prop</a>
-                     </code>, <code class="code param">
-                        <a href="#tag_param">param</a>
-                     </code>, stmt or feat)
+          component (<a href="#tag_prop" class="code">prop</a>, <a href="#tag_param" class="code">param</a>, stmt or feat)
           is required to appear, at least once, in its context.</p>
                </div>
             </div>
@@ -479,9 +431,7 @@ div div div h3 { font-size: 110% }
       
                <div class="part description">
                   <p class="p">Indicates that the value of a property (prop) or parameter
-            (<code class="code param">
-                        <a href="#tag_param">param</a>
-                     </code>) must match the given regular expression</p>
+            (<a href="#tag_param" class="code">param</a>) must match the given regular expression</p>
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
@@ -503,9 +453,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">In a declaration, <code class="code value">
-                        <a href="#tag_value">value</a>
-                     </code> will commonly be given in groups, indicating a set
+                  <p class="p">In a declaration, <a href="#tag_value" class="code">value</a> will commonly be given in groups, indicating a set
           of enumerated permissible values. (I.e. for an element to be valid to a value constraint,
           it must equal one of the given values).</p>
                   <p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any
@@ -527,9 +475,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">In a declaration, <code class="code value">
-                        <a href="#tag_value">value</a>
-                     </code> will be given in groups, indicating a set of
+                  <p class="p">In a declaration, <a href="#tag_value" class="code">value</a> will be given in groups, indicating a set of
           enumerated permissible values.</p>
                   <p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any
           value given at the point of insertion. When parameters are provided in OSCAL profiles,
@@ -559,35 +505,21 @@ div div div h3 { font-size: 110% }
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
                   <p class="p">
-                     <code class="code inherit">
-                        <a href="#tag_inherit">inherit</a>
-                     </code> is typically used to enforce hierarchical numbering within control
-          objects. When given in a <code class="code value">
-                        <a href="#tag_value">value</a>
-                     </code> in a declaration, <code class="code inherit">
-                        <a href="#tag_inherit">inherit</a>
-                     </code>
+                     <a href="#tag_inherit" class="code">inherit</a> is typically used to enforce hierarchical numbering within control
+          objects. When given in a <a href="#tag_value" class="code">value</a> in a declaration, <a href="#tag_inherit" class="code">inherit</a>
           indicates that the value of a property, or a segment of its value, must be the same as a
-          property (<code class="code prop">
-                        <a href="#tag_prop">prop</a>
-                     </code>) higher in the containment hierarchy of a control object. That
+          property (<a href="#tag_prop" class="code">prop</a>) higher in the containment hierarchy of a control object. That
           is, if a property with @class='number' is constrained with
             value/inherit, it must be the same as is assigned on the closest ancestor
           (feature, subcontrol, control or group) with the given property.</p>
-                  <p class="p">Usually, <code class="code inherit">
-                        <a href="#tag_inherit">inherit</a>
-                     </code> is used in conjunction with <code class="code autonum">
-                        <a href="#tag_autonum">autonum</a>
-                     </code> (qv).
+                  <p class="p">Usually, <a href="#tag_inherit" class="code">inherit</a> is used in conjunction with <a href="#tag_autonum" class="code">autonum</a> (qv).
           Using the two elements in combination, for example, the number (property) assigned to a
           subcontrol appearing inside a control numbered <q class="q">A1</q> may be constrained to be
             <q class="q">A1-a</q>, <q class="q">A1-b</q> etc., depending on the position of the subcontrol within the
           control.</p>
                   <p class="p">If a value must inherit from a property of a different class from the containing control
           object, inherit/@from can be used to indicate the applicable property (by its
-          class). By default, <code class="code inherit">
-                        <a href="#tag_inherit">inherit</a>
-                     </code> indicates a property value should match an
+          class). By default, <a href="#tag_inherit" class="code">inherit</a> indicates a property value should match an
           ancestor's property with the same @class (the most usual case).</p>
                   <p class="p">The best way to understand the workings of this element is to see operational
           examples.</p>
@@ -621,12 +553,8 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Echoes HTML5 <code class="code section">
-                        <a href="#tag_section">section</a>
-                     </code>.</p>
-                  <p class="p">Like groups, sections (<code class="code section">
-                        <a href="#tag_section">section</a>
-                     </code>)</p>
+                  <p class="p">Echoes HTML5 <a href="#tag_section" class="code">section</a>.</p>
+                  <p class="p">Like groups, sections (<a href="#tag_section" class="code">section</a>)</p>
                </div>
             </div>
             <div class="control element-description" id="tag_group">
@@ -646,9 +574,7 @@ div div div h3 { font-size: 110% }
           respect they are like control objects (control, subcontrol and feature), albeit their
           properties apply to the entire group – and must be acquired in processing via
           inheritance.</p>
-                  <p class="p">Unlike sections (<code class="code section">
-                        <a href="#tag_section">section</a>
-                     </code> elements), groups may not contain arbitrary prose
+                  <p class="p">Unlike sections (<a href="#tag_section" class="code">section</a> elements), groups may not contain arbitrary prose
           (paragraphs and lists). They may however contain statements (stmt), which may be untyped
           (no @class) and therefore unconstrained by declarations.</p>
                </div>
@@ -703,9 +629,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code std">
-                        <a href="#tag_std">std</a>
-                     </code> element</p>
+                  <p class="p">Echoes the NISO JATS (and NISO STS) <a href="#tag_std" class="code">std</a> element</p>
                </div>
             </div>
             <div class="control element-description" id="tag_citation">
@@ -721,9 +645,7 @@ div div div h3 { font-size: 110% }
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
                   <p class="p">Echoes the NISO JATS (and NISO STS) mixed-citation element.</p>
-                  <p class="p">For references to standards, <code class="code std">
-                        <a href="#tag_std">std</a>
-                     </code> (qv) may be preferred.</p>
+                  <p class="p">For references to standards, <a href="#tag_std" class="code">std</a> (qv) may be preferred.</p>
                </div>
             </div>
          </section>
@@ -735,12 +657,8 @@ div div div h3 { font-size: 110% }
             <p class="p">Prose elements may be constrained by declarations like other control components, although
       this may not often be as useful as imposing constraints over properties and parts. Frequently,
       a part organization will be used to assign prose to specific known <q class="q">sections</q> or
-        <q class="q">components</q> of a control (modeled as <code class="code part">
-                  <a href="#tag_part">part</a>
-               </code> or
-      <code class="code subcontrol">
-                  <a href="#tag_subcontrol">subcontrol</a>
-               </code>).</p>
+        <q class="q">components</q> of a control (modeled as <a href="#tag_part" class="code">part</a> or
+      <a href="#tag_subcontrol" class="code">subcontrol</a>).</p>
             <div class="control element-description" id="tag_p">
                <h3>
                   <span class="run-in subst tag">p</span> 
@@ -753,9 +671,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">This element echoes HTML <code class="code p">
-                        <a href="#tag_p">p</a>
-                     </code>; like its forebear, it is not limited to
+                  <p class="p">This element echoes HTML <a href="#tag_p" class="code">p</a>; like its forebear, it is not limited to
           indicating complete or discrete (compositional or logical) paragraphs, but can be used for
           any text set off on its own line.</p>
                </div>
@@ -772,9 +688,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Echoes HTML <code class="code pre">
-                        <a href="#tag_pre">pre</a>
-                     </code>.</p>
+                  <p class="p">Echoes HTML <a href="#tag_pre" class="code">pre</a>.</p>
                </div>
             </div>
             <div class="control element-description" id="tag_ol">
@@ -789,9 +703,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Although this echoes HTML <code class="code ol">
-                        <a href="#tag_ol">ol</a>
-                     </code>, renditional aspects of this element are not
+                  <p class="p">Although this echoes HTML <a href="#tag_ol" class="code">ol</a>, renditional aspects of this element are not
           offered by OSCAL. How numbering of lists are to be numbered is left to implementations; it
           is likely that specific control catalogs will have their own schemes.</p>
                   <p class="p">At present there is no support for <q class="q">continued lists</q> as we have not seen any in
@@ -896,9 +808,7 @@ div div div h3 { font-size: 110% }
           internal cross-reference matching an @id elsewhere in the document.</p>
                   <p class="p">Anchors without @href are not invalid to the OSCAL schema (base validation),
           but may be reported by a Schematron. In use, an application may promote the contents of a
-            <code class="code a">
-                        <a href="#tag_a">a</a>
-                     </code> element, when a valid URI, to serve as the link target, if
+            <a href="#tag_a" class="code">a</a> element, when a valid URI, to serve as the link target, if
             @href is missing or not a URI.</p>
                </div>
             </div>
