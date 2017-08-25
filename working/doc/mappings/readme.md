@@ -2,7 +2,7 @@
 
 OSCAL XML documents in this subdirectory describe mappings from published control catalogs into OSCAL. The OSCAL control catalogs themselves are not in this subdirectory: find them (with associated code) in other branches of this repository.
 
-At time of writing (2017-08-24) they are *out of date* and must be modified to reflect the current element set (e.g., no statements or "features", only parts). However, they might offer an idea of how it's done. (Edit this readme when mappings are current. Check their dates to see if this might have been done.)
+At time of writing (2017-08-24) they are *out of date* and must be modified to reflect the current element set and mappings. However, they might offer an idea of how it's done. (Edit this readme when mappings are current. Check their dates to see if this might have been done.)
 
 Mappings described:
 
