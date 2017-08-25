@@ -5,7 +5,7 @@
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
   
-  <xsl:include href="../XSL/oscal-functions.xsl"/>
+  <xsl:include href="../XSLT/oscal-functions.xsl"/>
    
   
 <!-- Declarations are the contents of local declarations, if present, or the document at href if locally empty.  -->
@@ -21,7 +21,7 @@
     </sch:rule>
     
     <!--  Constraints over declarations - very important!  -->
-    <sch:rule context="oscal:property | oscal:statement | oscal:parameter | oscal:feature">
+    <sch:rule context="oscal:property | oscal:paragraph | oscal:parameter | oscal:feature | oscal:component">
       <sch:let name="me" value="."/>
       <!-- oscal:declares returns a set of strings indicating classes and context to which declarations are bound -->
       <sch:let name="look-the-same" value="
@@ -31,9 +31,8 @@
     </sch:rule>
   
     <!-- Constraints over groups, controls and enhancements (subcontrols, features)
-         regarding required properties and statements
-         (not yet parameters) -->
-    <sch:rule context="oscal:group | oscal:control | oscal:subcontrol | oscal:feat">
+         regarding required components (though not yet parameters) -->
+    <sch:rule context="oscal:group | oscal:control | oscal:subcontrol | oscal:feat | oscal:comp">
       <xsl:variable name="this" select="."/>
       <xsl:variable name="matches"  select="oscal:classes($this),local-name($this)"/>
       <sch:let name="applicable" value="$declarations/key('declarations-by-context',$matches,$declarations)"/>
@@ -43,9 +42,8 @@
         <sch:value-of select="oscal:sequence($declarations/*/@context)"/>
       </sch:report>-->
       
-      <sch:assert role="warning" test="exists($applicable) or empty((oscal:param|oscal:prop|oscal:stmt|oscal:feat)/@class)">No declarations apply to this <sch:name/></sch:assert>
+      <!--<sch:assert role="warning" test="exists($applicable) or empty((oscal:param|oscal:prop|oscal:stmt|oscal:feat)/@class)">No declarations apply to this <sch:name/></sch:assert>-->
       
-      <!-- First properties (prop) then statements (stmt) -->
       <!-- Finding property declarations for required properties.  -->
       <sch:let name="required-property-declarations" value="$applicable/self::oscal:property[exists(oscal:required)]"/>
       <sch:let name="required-property-classes" value="$required-property-declarations/oscal:classes(.)"/>
@@ -57,24 +55,23 @@
         missing: expecting <xsl:value-of select="oscal:sequence($missing-property-classes)"/>
         on <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes($this) )"/></sch:assert>
       
-      <sch:let name="required-statement-declarations" value="$applicable/self::oscal:statement[exists(oscal:required)]"/>
-      <sch:let name="required-statement-classes" value="$required-statement-declarations/oscal:classes(.)"/>
+      <!-- Same for paras -->
+      <sch:let name="required-paragraph-declarations" value="$applicable/self::oscal:paragraph[exists(oscal:required)]"/>
+      <sch:let name="required-paragraph-classes" value="$required-paragraph-declarations/oscal:classes(.)"/>
       
       <!-- Extend to support named statements e.g. <observations> not just stmt[@class] ? -->
-      <sch:let name="missing-statement-classes" value="$required-statement-classes[not(. = $this/child::*/oscal:classes(.)) ]"/>
-      <sch:assert test="empty($missing-statement-classes)">Required 
-        <xsl:value-of select="if (count($missing-statement-classes) gt 1) then 'statements are ' else 'statement is'"/>
-        missing: expecting <xsl:value-of select="oscal:sequence($missing-statement-classes)"/>
+      <sch:let name="missing-paragraph-classes" value="$required-paragraph-classes[not(. = $this/child::*/oscal:classes(.)) ]"/>
+      <sch:assert test="empty($missing-paragraph-classes)">Required 
+        <xsl:value-of select="if (count($missing-paragraph-classes) gt 1) then 'paras are ' else 'para is'"/>
+        missing: expecting <xsl:value-of select="oscal:sequence($missing-paragraph-classes)"/>
         on <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes($this) )"/>
       </sch:assert>
     </sch:rule>
    </sch:pattern>
   
-  
-  
 <!-- Next, validating the values inside controls and control objects against matching declarations -->
   <sch:pattern>
-    <sch:rule context="oscal:p | oscal:ul | oscal:ol | oscal:pre">
+    <sch:rule context="oscal:ul | oscal:ol | oscal:pre">
       <!--To do: find a way to declare controls as (not) permissive of this stuff ?-->
     </sch:rule>
     
@@ -84,19 +81,16 @@
          and will match the next rule. -->
     <!-- Note that we have no mechanism for declaring (and constraining) controls, subcontrols or groups,
          but we are expected to declare features. -->
-    <sch:rule context="oscal:stmt[empty(@class)] | oscal:param | oscal:title |
-      oscal:group | oscal:div | oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
+    <sch:rule context="oscal:p[empty(@class)] | oscal:param | oscal:title |
+      oscal:group | oscal:section | oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
 
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feat/*">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feat/* | oscal:comp">
       <xsl:variable name="this" select="."/>
-      
 
       <sch:let name="signatures" value="
         for $cx in ($this/../(oscal:classes(.),local-name(.)) ),
             $cl in (oscal:classes($this)) return string-join(($cx,$cl),'/')"/>
       
-      <!-- Only properties, statements and parameters with roles must also be declared;
-           other declarations come for free. -->
       <sch:let name="matching-declarations" value="$declarations/key('declarations-by-signature',$signatures,.)"/>
       
       <!--<sch:report test="true()" role="info">Seeing <sch:value-of select="count($matching-declarations)"/> matching declarations <xsl:value-of select="string-join($matching-declarations/name(),', ')"/> </sch:report>-->
@@ -162,7 +156,7 @@
      Note that both can be overloaded (not that that is a good idea)
      although clashing signatures provoke errors. -->
   <!-- We use this to retrieve the particular declarations that (may) apply to any
-       given property or statement. -->
+       given control component. -->
   <xsl:key name="declarations-by-signature" match="oscal:declarations/*" use="oscal:signatures(.)"/>
   
    

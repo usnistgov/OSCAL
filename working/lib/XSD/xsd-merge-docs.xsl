@@ -11,22 +11,31 @@
   <xsl:preserve-space elements="p li"/>
   <xsl:output indent="yes"/>
   
-  <!-- Delivers an XSD with documentation merged in. -->
+  <!-- Delivers an XSD with documentation merged in.
   
-<!-- Documentation looks like this:
+  Run on an interim XSD (without the documentation) to produce a new XSD
+  
+  Pass in $docs-file to point to the documentation,
+  or the documentation XML itself as $docs
+  
+  -->
+  
+<!-- Documentation looks like this (it's OSCAL):
   
   <control class="element-description">
       <prop class="tag">control</prop>
       <prop class="full_name">Control</prop>
-      <stmt class="description">
+      <part class="description">
         <p>A structured information object representing a security control.</p>
-      </stmt>
-      <stmt class="remarks"/>
+      </part>
+      <part class="remarks"/>
     </control>
   
   -->
   
-  <xsl:variable name="docs" select="document('oscal-oscal.xml')"/>
+  <xsl:param name="docs-file" as="xs:string">../../doc/schema/oscal-oscal.xml</xsl:param>
+  
+  <xsl:param name="docs"      select="document($docs-file)"/>
   
   <xsl:key name="documentation" match="control" use="prop[@class='tag']"/>
 
@@ -63,7 +72,7 @@
     <xsl:text> </xsl:text>
   </xsl:template>
   
-  <xsl:template match="stmt[@class='description']">
+  <xsl:template match="part[@class='description']">
     <xsl:apply-templates select="*"/>
   </xsl:template>
   

@@ -12,14 +12,14 @@ feat[class~=IT-goal]:before  { content: "IT-related goal" }
 feat[class~=input]:before  { content: "Input" }
 feat[class~=output]:before  { content: "Output" }
 
-stmt { background-color: inherit }
+feat { background-color: inherit }
 
 control:before { content: '' }
-control > stmt[class~=description]:before { content: 'Process Description' }
-control > stmt[class~=objectives]:before { content: 'Process Purpose Statement' }
+control > feat[class~=description]:before { content: 'Process Description' }
+control > feat[class~=objectives]:before { content: 'Process Purpose Statement' }
 
-subcontrol > stmt[class~=description]:before { content: '' }
-subcontrol > stmt[class~=description] {  -oxy-foldable: false }
+subcontrol > feat[class~=description]:before { content: '' }
+subcontrol > feat[class~=description] {  -oxy-foldable: false }
 
 feat[class~=metrics]:before { content: 'Related Metrics' }
 

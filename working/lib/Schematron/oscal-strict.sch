@@ -5,7 +5,7 @@
   
   <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
 
-  <xsl:include href="../XSL/oscal-functions.xsl"/>
+  <xsl:include href="../XSLT/oscal-functions.xsl"/>
   
   <xsl:key name="elements-by-class" match="*[matches(@class,'\S')][empty(ancestor::oscal:declarations)]" use="oscal:classes(.)"/>
   
@@ -13,11 +13,11 @@
   <sch:pattern>
     <sch:rule context="oscal:control">
       <sch:assert test="empty(ancestor::oscal:control)">Controls may not appear inside controls</sch:assert>
-      <sch:assert test="empty(ancestor::oscal:feat)">Controls may not appear inside features</sch:assert>
+      <sch:assert test="empty(ancestor::oscal:part)">Controls may not appear inside parts</sch:assert>
     </sch:rule>    
     <sch:rule context="oscal:subcontrol">
       <sch:assert test="exists(ancestor::oscal:control)">Subcontrols may not appear outside controls</sch:assert>
-      <sch:assert test="empty(ancestor::oscal:feat)">Subcontrols may not appear inside features</sch:assert>
+      <sch:assert test="empty(ancestor::oscal:part)">Subcontrols may not appear inside parts</sch:assert>
     </sch:rule>    
   </sch:pattern>
   
@@ -27,7 +27,7 @@
       use of the element names as classes. -->
     <sch:rule context="oscal:declarations//*"/>
     <sch:rule context="*[matches(@class,'\S')]">
-      <sch:let name="interdicted" value="oscal:classes(.)[.=('control','group','stmt','prop','param','feat','title')]"/>
+      <sch:let name="interdicted" value="oscal:classes(.)[.=('control','group','part','prop','param','title')]"/>
       <sch:let name="plural" value="count($interdicted) ne 1"/>
       <sch:assert test="empty($interdicted)">
         @class <sch:value-of select="if ($plural) then 'values ' else 'value '"/>

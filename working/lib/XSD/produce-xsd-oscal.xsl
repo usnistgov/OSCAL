@@ -7,8 +7,10 @@
   
   <xsl:output indent="yes"/>
   
-  <!-- Produces a set of blank controls for describing elements
-       (and eventually attributes) for an XSD -->
+  <!-- Run on an XSD to produce a set of blank controls for describing elements
+       (and eventually attributes) declared therein.
+  
+  May require adjustment! This has not been written to work on just any XSD. -->
   
   <xsl:template match="/">
     <collection>
@@ -21,8 +23,8 @@
       <prop class="tag"><xsl:value-of select="@name"/></prop>
       <prop class="full_name">
         <xsl:value-of select="@name"/> -- element</prop>
-      <stmt class="description"/>
-      <stmt class="remarks"/>
+      <part class="description"/>
+      <part class="remarks"/>
     </control>
   </xsl:template>
 </xsl:stylesheet>

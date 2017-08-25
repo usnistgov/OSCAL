@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs"
-  xmlns="http://scap.nist.gov/schema/oscal" xpath-default-namespace="http://www.w3.org/1999/xhtml"
+  exclude-result-prefixes="#all"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://scap.nist.gov/schema/oscal"
+  xmlns:oscal="http://scap.nist.gov/schema/oscal"
+  xpath-default-namespace="http://www.w3.org/1999/xhtml"
   version="2.0">
 
   <!-- Data extraction and mapping from ISO EPUB into (draft) OSCAL -->
 
   <xsl:strip-space elements="body div table tbody tr td"/>
+  
   <xsl:output indent="yes"/>
 
   <xsl:template match="/">
-    <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/oscal.css"</xsl:processing-instruction>
-    <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
-    <!--<xsl:processing-instruction name="xml-model">href="../lib/strawman.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>-->
-
-    <xsl:text>&#xA;</xsl:text>
     <catalog>
       <title>ISO/IEC 27002</title>
       
-      <declarations>
+      <!--<declarations>
         <property context="control-category" class="number">
           <required/>
           <identifier/>
@@ -27,22 +26,23 @@
         <property context="clause" class="number">
           <required/>
           <identifier/>
+          <!-\- Try xml:space="preserve" to prevent indenting? -\->
           <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <statement context="clause" class="objective">
+        <part_declaration context="clause" class="objective">
           <required/>
-        </statement>
+        </part_declaration>
         <property context="iso-27002" class="number">
           <required/>
           <identifier/>
           <value><inherit/><autonum>.1</autonum></value>
         </property>
-        <statement context="control" class="description">
+        <part_declaration context="control" class="description">
           <required/>
-        </statement>
-        <statement context="control" class="guidance"/>
-        <statement context="control" class="information"/>
-      </declarations>
+        </part_declaration>
+        <part_declaration context="control" class="guidance"/>
+        <part_declaration context="control" class="information"/>
+      </declarations>-->
       
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
     </catalog>
@@ -95,36 +95,36 @@
                     select="current-group()[normalize-space(.) = $statement-headers]"/>
                   <xsl:choose>
                     <xsl:when test="$statement-head = 'Control'">
-                      <stmt class="description">
+                      <part class="description">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </part>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Implementation guidance'">
-                      <stmt class="guidance">
+                      <part class="guidance">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </part>
                     </xsl:when>
                     <xsl:when test="$statement-head = 'Other information'">
-                      <stmt class="information">
+                      <part class="information">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </part>
                     </xsl:when>
                     <xsl:otherwise>
-                      <stmt class="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
+                      <part class="{replace(lower-case(normalize-space($statement-head)),' ','-')}">
                         <xsl:call-template name="structure-lines">
                           <xsl:with-param name="lines"
                             select="current-group() except $statement-head"/>
                         </xsl:call-template>
-                      </stmt>
+                      </part>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:for-each-group>
@@ -201,32 +201,45 @@
   
  
   <xsl:template match="p[starts-with(., 'Objective:')]">
-    <stmt class="objective">
+    <part class="objective">
       <p>
         <xsl:apply-templates mode="tune">
           <xsl:with-param name="trim" tunnel="yes" as="xs:string">Objective: </xsl:with-param>
         </xsl:apply-templates>
       </p>
-    </stmt>
+    </part>
   </xsl:template>
 
-  <xsl:template match="text()" mode="tune">
+  <xsl:function name="oscal:obfusc" as="xs:string">
+    <xsl:param name="some" as="xs:string"/>
+    <xsl:value-of select="replace($some,'\w','X')"/>
+  </xsl:function>
+  
+  <xsl:template match="text()" mode="#all">
     <xsl:param tunnel="yes" name="trim"/>
     <xsl:value-of
-      select="
-        if (matches($trim, '\S')) then
-          replace(., $trim, '')
-        else
-          ."
+      select="oscal:obfusc(
+      if (matches($trim, '\S')) then
+      replace(., $trim, '')
+      else
+      . )"
     />
   </xsl:template>
-
+  
+  <xsl:template match="a//text()" mode="#all">
+    <xsl:param tunnel="yes" name="trim"/>
+    <xsl:value-of
+      select="if (matches($trim, '\S')) then
+      replace(., $trim, '')
+      else ."
+    />
+  </xsl:template>
+  
   <xsl:template match="p | p//*" mode="#all">
     <xsl:element name="{local-name()}" namespace="http://scap.nist.gov/schema/oscal">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-
 
   <xsl:template match="p" priority="2" mode="bibliography">
     <ref id="{a[1]/@id}">

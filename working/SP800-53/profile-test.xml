@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://scap.nist.gov/schema/oscal">
+   <invoke href="SP800-53-OSCAL-refined.xml">
+      <include>
+         <call control-id="ac.1"><!--ACCESS CONTROL POLICY AND PROCEDURES--></call>
+         <param id="ac-1_a">
+            <desc>organization-defined personnel or roles</desc>
+            <default>organization-defined personnel or roles</default>
+         </param>
+         <param id="ac-1_b">
+            <desc>organization-defined frequency</desc>
+            <value>Every TOTAL ECLIPSE OF THE SUN!</value>
+         </param>
+         <call control-id="ac.2"><!--ACCOUNT MANAGEMENT--></call>
+         <param id="ac-2_a">
+            <desc>organization-defined information system account types</desc>
+            <default>organization-defined information system account types</default>
+         </param>
+         <param id="ac-2_b">
+            <desc>organization-defined personnel or roles</desc>
+            <default>organization-defined personnel or roles</default>
+         </param>
+         <param id="ac-2_c">
+            <desc>organization-defined procedures or conditions</desc>
+            <default>organization-defined procedures or conditions</default>
+         </param>
+         <param id="ac-2_d">
+            <desc>organization-defined frequency</desc>
+            <default>organization-defined frequency</default>
+         </param>
+         <call subcontrol-id="ac.2.2."><!--REMOVAL OF TEMPORARY / EMERGENCY ACCOUNTS--></call>
+         <param id="ac-2_e">
+               <desc>organization-defined time period for each type of account</desc>
+               <default>organization-defined time period for each type of account</default>
+            </param>
+         <call subcontrol-id="ac.3.1."><!--RESTRICTED ACCESS TO PRIVILEGED FUNCTIONS--></call>
+      </include>
+   </invoke>
+</profile>

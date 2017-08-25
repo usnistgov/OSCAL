@@ -7,29 +7,24 @@
   xpath-default-namespace="http://scap.nist.gov/schema/oscal"
   version="3.0">
   
-<!-- For tweaking OSCAL documents eg SP800-53A
-     (Add ids, normalize values?) -->
+<!-- For tweaking OSCAL documents eg SP800-53/A -->
 
 
 <!-- 
-    1. Provide prop[@class='number'] to controls and subcontrols that don't have them.
-    2. Provide @id to all controls, subcontrols and features with prop
+    1. Provide @id to all controls, subcontrols and features with prop[@class='number']
+    2. Infer and install 'assign' and 'withdrawn' elements where appropriate
   -->
-  <xsl:mode on-no-match="shallow-copy"/>
   
-  <xsl:template match="/processing-instruction() | /comment() | /*">
-    <xsl:text>&#xA;</xsl:text>
-    <xsl:next-match/>
-  </xsl:template>
-    
-  <xsl:template match="control | subcontrol | feat" mode="id" as="xs:string">
+  <xsl:mode on-no-match="shallow-copy"/>
+   
+  <xsl:template match="control | subcontrol | feat | comp" mode="id" as="xs:string">
     <xsl:for-each select="prop[@class='number']">
       <xsl:attribute name="id" select="translate(.,'()[]','..--') ! replace(.,'\C','.') ! lower-case(.)"/>
     </xsl:for-each>
     <xsl:if test="not(prop/@class='number')">OOPS</xsl:if>
   </xsl:template>
   
-  <xsl:template match="control | subcontrol | feat">
+  <xsl:template match="control | subcontrol | feat | comp">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:if test="prop/@class = 'number'">
@@ -41,8 +36,7 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:key name="control-by-number" match="control | subcontrol"
-    use="prop[@class='number']"/>
+  <xsl:key name="control-by-number" match="control | subcontrol" use="prop[@class='number']"/>
   
   <xsl:template match="link">
     <xsl:copy>
