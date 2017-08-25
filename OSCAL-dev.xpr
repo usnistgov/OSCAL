@@ -1472,13 +1472,11 @@
                                     <list>
                                         <String>OSCAL against (documented) XSD</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                         <String>Validate assignments in OSCAL</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>

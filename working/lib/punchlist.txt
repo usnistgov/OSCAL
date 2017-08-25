@@ -202,8 +202,8 @@ x remove param/default: param/value will do all the work
 
 o Markdown docs!
   o finalize oscal-oscal.xml
-  o update/merge into XSD
-  o produce Markdown version and post to Github
+  x update/merge into XSD
+  x produce Markdown version and post to Github
 o Github issues
   o pick up outstanding / orphan issues from these here notes
 
@@ -212,8 +212,5 @@ PROFILE QUESTIONS:
     (or must they be excluded specifically?)
     NO (but this behavior can be modified at runtime via parameter)
 
-If a profile has param/default and its catalog has param/value, what happens?
-    (does the calling profile override the stipulated value?
-     or is this an error condition to be detected?)
-
 o REMODEL OSCAL declarations
+o REVIEW AND UPDATE mapping documentation 
