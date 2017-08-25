@@ -34,7 +34,7 @@ div div div h3 { font-size: 110% }
   
          <h2 class="title">OSCAL namespace</h2>
          <p class="p">The element population of an OSCAL document (set) may be determined by means of XPath
-        distinct-values(//*/node-name()), or analogous query.</p>
+        <code class="code">distinct-values(//*/node-name())</code>, or analogous query.</p>
          <p class="p">Conformant (valid) OSCAL documents will not contain elements not described in this
       specification. While OSCAL may be mixed with other tag sets, or extended, neither of these
       uses is described or circumscribed by this document, which provides only bare-bones
@@ -42,7 +42,7 @@ div div div h3 { font-size: 110% }
          <p class="p">For its XML names, OSCAL uses the namespace <a class="xref">XXX http://scap.nist.gov/schema/oscal XXX</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
-      without a prefix, oscal: or any other.</p>
+      without a prefix, <code class="code">oscal:</code> or any other.</p>
          <p class="p">By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should
       always strip the OSCAL namespace, to produce HTML in the appropriate namespace for the target
       application. (Or the target application could learn to consume OSCAL.) Only some parts of
@@ -175,11 +175,11 @@ div div div h3 { font-size: 110% }
                   <p class="p">Inasmuch as properties are often used as selectors or identifiers for OSCAL operations,
           their values can be expected frequently to be flattened (markup stripped) and normalized
           (e.g., with respect to whitespace) in use; however this is application defined.</p>
-                  <p class="p">When singletons (that is, the only element among siblings with its @class),
+                  <p class="p">When singletons (that is, the only element among siblings with its <code class="code">@class</code>),
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
           robustness of such queries can be ensured by appropriate property declarations (as
-          singletons and as identifiers); cf property in the declarations model (which
+          singletons and as identifiers); cf <code class="code">property</code> in the declarations model (which
           also supports other constraints over property values).</p>
                   <p class="p">Properties the deployment and management of arbitrary controlled values, with and among
           control objects (controls and their formal enhancements), for any purpose useful to an
@@ -213,15 +213,15 @@ div div div h3 { font-size: 110% }
                   <h5 class="remarks">remarks</h5>
                   <p class="p">Like properties (<a href="#tag_prop" class="code">prop</a>) and parameters (<a href="#tag_param" class="code">param</a>), parts can be
           distinguished from other elements within their controls by their assigned
-            @class, such that they may be subjected to <q class="q">declarations logic</q> using
+            <code class="code">@class</code>, such that they may be subjected to <q class="q">declarations logic</q> using
           these values as bindings (and thereby getting open-ended extensibility).</p>
                   <p class="p">An assigned class may frequently provide for a header in display, such that
-            part[@class='objectives'] is displayed under a header <em class="em">Objectives</em>,
+            <code class="code">part[@class='objectives']</code> is displayed under a header <em class="em">Objectives</em>,
           etc. Unlike groups, controls or subcontrols, however, they may not have <a href="#tag_title" class="code">title</a>
           element children (they are not <q class="q">first class objects</q> in this sense). Thus in OSCAL,
           if the components of your controls have their own titles, they are something else): to
           accommodate data like this, consider using a property (e.g.
-            prop[@class='part-title'] as an escape hatch.</p>
+            <code class="code">prop[@class='part-title']</code> as an escape hatch.</p>
                </div>
             </div>
             <div class="control element-description" id="tag_link">
@@ -313,8 +313,8 @@ div div div h3 { font-size: 110% }
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
           or catalog type within which they appear. Constraints described in these declarations, and
-          bound via assignments of @class (for control components) and
-            @context (indicating control, subcontrol or features wherein the components
+          bound via assignments of <code class="code">@class</code> (for control components) and
+            <code class="code">@context</code> (indicating control, subcontrol or features wherein the components
           may appear), enable automated checking for consistency of controls, subcontrols and
           features, specific to the types or kinds of control items that appear within a particular
           catalog or control collection.</p>
@@ -382,7 +382,7 @@ div div div h3 { font-size: 110% }
           component (<a href="#tag_prop" class="code">prop</a>, <a href="#tag_param" class="code">param</a>, <a href="#tag_part" class="code">part</a>) must be the only
           component of that class given in its (<a href="#tag_group" class="code">group</a>, <a href="#tag_control" class="code">control</a>,
             <a href="#tag_subcontrol" class="code">subcontrol</a> or <a href="#tag_part" class="code">part</a>) context. i.e., no other element child of
-          the same parent may have the same @class value (at the level of syntax), or
+          the same parent may have the same <code class="code">@class</code> value (at the level of syntax), or
           be bound to the same component type (at the semantic level).</p>
                </div>
             </div>
@@ -399,7 +399,7 @@ div div div h3 { font-size: 110% }
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
                   <p class="p">When this element is present in the declaration of an OSCAL control component, the
-          component (<a href="#tag_prop" class="code">prop</a>, <a href="#tag_param" class="code">param</a>, stmt or feat)
+          component (<a href="#tag_prop" class="code">prop</a>, <a href="#tag_param" class="code">param</a>, <code class="code">stmt</code> or <code class="code">feat</code>)
           is required to appear, at least once, in its context.</p>
                </div>
             </div>
@@ -412,7 +412,8 @@ div div div h3 { font-size: 110% }
       
                <div class="part description">
                   <p class="p">The declared component has a value unique within the document, among components of the
-          same type (bearing the applicable @class</p>
+          same type (bearing the applicable <code class="code">@class</code>
+                  </p>
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
@@ -430,7 +431,7 @@ div div div h3 { font-size: 110% }
       
       
                <div class="part description">
-                  <p class="p">Indicates that the value of a property (prop) or parameter
+                  <p class="p">Indicates that the value of a property (<code class="code">prop)</code> or parameter
             (<a href="#tag_param" class="code">param</a>) must match the given regular expression</p>
                </div>
                <div class="part remarks">
@@ -482,7 +483,8 @@ div div div h3 { font-size: 110% }
           their values will override any values assigned <q class="q">lower down the stack</q>.</p>
                   <p class="p">The <em class="em">contents</em>, not the value of any attribute, will be taken by the processor to
           be a formatting code. The format should follow the spec for <a class="xref" href="#">XSLT
-              xsl:number/@format</a>. For example, if the value is <q class="q">A.</q> then
+              <code class="code">xsl:number/@format</code>
+                     </a>. For example, if the value is <q class="q">A.</q> then
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
           include upper and lower case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
@@ -509,8 +511,8 @@ div div div h3 { font-size: 110% }
           objects. When given in a <a href="#tag_value" class="code">value</a> in a declaration, <a href="#tag_inherit" class="code">inherit</a>
           indicates that the value of a property, or a segment of its value, must be the same as a
           property (<a href="#tag_prop" class="code">prop</a>) higher in the containment hierarchy of a control object. That
-          is, if a property with @class='number' is constrained with
-            value/inherit, it must be the same as is assigned on the closest ancestor
+          is, if a property with <code class="code">@class='number'</code> is constrained with
+            <code class="code">value/inherit</code>, it must be the same as is assigned on the closest ancestor
           (feature, subcontrol, control or group) with the given property.</p>
                   <p class="p">Usually, <a href="#tag_inherit" class="code">inherit</a> is used in conjunction with <a href="#tag_autonum" class="code">autonum</a> (qv).
           Using the two elements in combination, for example, the number (property) assigned to a
@@ -518,9 +520,9 @@ div div div h3 { font-size: 110% }
             <q class="q">A1-a</q>, <q class="q">A1-b</q> etc., depending on the position of the subcontrol within the
           control.</p>
                   <p class="p">If a value must inherit from a property of a different class from the containing control
-          object, inherit/@from can be used to indicate the applicable property (by its
+          object, <code class="code">inherit/@from</code> can be used to indicate the applicable property (by its
           class). By default, <a href="#tag_inherit" class="code">inherit</a> indicates a property value should match an
-          ancestor's property with the same @class (the most usual case).</p>
+          ancestor's property with the same <code class="code">@class</code> (the most usual case).</p>
                   <p class="p">The best way to understand the workings of this element is to see operational
           examples.</p>
                </div>
@@ -644,7 +646,7 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">Echoes the NISO JATS (and NISO STS) mixed-citation element.</p>
+                  <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code">mixed-citation</code> element.</p>
                   <p class="p">For references to standards, <a href="#tag_std" class="code">std</a> (qv) may be preferred.</p>
                </div>
             </div>
@@ -757,7 +759,7 @@ div div div h3 { font-size: 110% }
                   <p class="p">In display, this element can be expected to <q class="q">toggle</q>, i.e. provide for italics when
           appearing within roman text, but roman when appearing within italic text.</p>
                   <p class="p">Particular semantics (indicating types of emphasis for finer resolution in display or
-          retrieval) may be provided via @class.</p>
+          retrieval) may be provided via <code class="code">@class</code>.</p>
                </div>
             </div>
             <div class="control element-description" id="tag_i">
@@ -804,12 +806,12 @@ div div div h3 { font-size: 110% }
                </div>
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
-                  <p class="p">As in HTML, the link target is indicated by @href, with a '#' prefix for an
-          internal cross-reference matching an @id elsewhere in the document.</p>
-                  <p class="p">Anchors without @href are not invalid to the OSCAL schema (base validation),
+                  <p class="p">As in HTML, the link target is indicated by <code class="code">@href</code>, with a '#' prefix for an
+          internal cross-reference matching an <code class="code">@id</code> elsewhere in the document.</p>
+                  <p class="p">Anchors without <code class="code">@href</code> are not invalid to the OSCAL schema (base validation),
           but may be reported by a Schematron. In use, an application may promote the contents of a
             <a href="#tag_a" class="code">a</a> element, when a valid URI, to serve as the link target, if
-            @href is missing or not a URI.</p>
+            <code class="code">@href</code> is missing or not a URI.</p>
                </div>
             </div>
             <div class="control element-description" id="tag_q">

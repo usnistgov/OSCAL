@@ -10,7 +10,7 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/doc/schema/oscal-oscal.xml</String>
+                                    <String>working/lib/XSLT/html-to-markdown.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -40,7 +40,7 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/lib/XSLT/html-to-markdown.xsl</String>
+                                    <String>working/doc/schema/oscal-oscal.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>

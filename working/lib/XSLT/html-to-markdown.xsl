@@ -40,7 +40,7 @@
     <xsl:text>></xsl:text>
   </xsl:template>
   
-  <xsl:template match="span[contains(@class,'code')]">
+  <xsl:template match="code | span[contains(@class,'code')]">
     <xsl:text>`</xsl:text>
     <xsl:apply-templates/>
     <xsl:text>`</xsl:text>

@@ -274,6 +274,12 @@ div div div h3 { font-size: 110% }
   
   <xsl:variable name="all-tags" select="//oscal:prop[@class='tag']"/>
   
+  <xsl:template match="oscal:code">
+    <code class="code">
+      <xsl:apply-templates/>
+    </code>
+  </xsl:template>
+  
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
     <a href="#tag_{.}" class="code">
       <xsl:apply-templates/>

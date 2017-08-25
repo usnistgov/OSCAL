@@ -4,11 +4,11 @@
 
 ## OSCAL namespace 
 
-The element population of an OSCAL document (set) may be determined by means of XPath distinct-values(//*/node-name()), or analogous query. 
+The element population of an OSCAL document (set) may be determined by means of XPath `distinct-values(//*/node-name())`, or analogous query. 
 
 Conformant (valid) OSCAL documents will not contain elements not described in this specification. While OSCAL may be mixed with other tag sets, or extended, neither of these uses is described or circumscribed by this document, which provides only bare-bones information about the OSCAL "core". 
 
-For its XML names, OSCAL uses the namespace XXX http://scap.nist.gov/schema/oscal XXX. Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced without a prefix, oscal: or any other. 
+For its XML names, OSCAL uses the namespace XXX http://scap.nist.gov/schema/oscal XXX. Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced without a prefix, `oscal:` or any other. 
 
 By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should always strip the OSCAL namespace, to produce HTML in the appropriate namespace for the target application. (Or the target application could learn to consume OSCAL.) Only some parts of HTML, however, make their way into OSCAL, which is designed to address its own requirements. 
 
@@ -72,7 +72,7 @@ The lexical composition of properties may be constrained by declarations includi
 
 Inasmuch as properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be flattened (markup stripped) and normalized (e.g., with respect to whitespace) in use; however this is application defined. 
 
-When singletons (that is, the only element among siblings with its @class), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf property in the declarations model (which also supports other constraints over property values). 
+When singletons (that is, the only element among siblings with its `@class`), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf `property` in the declarations model (which also supports other constraints over property values). 
 
 Properties the deployment and management of arbitrary controlled values, with and among control objects (controls and their formal enhancements), for any purpose useful to an application or implementation of those controls. Typically and routinely, properties will be used to sort, select, order and arrange controls or relate them to one another or to class hierarchies, taxonomies or external authorities.   
 
@@ -86,9 +86,9 @@ A component or partition in a control, subcontrol or part
 
 ##### remarks 
 
-Like properties ([&lt;prop>](#prop-property)) and parameters ([&lt;param>](#param-parameter)), parts can be distinguished from other elements within their controls by their assigned @class, such that they may be subjected to "declarations logic" using these values as bindings (and thereby getting open-ended extensibility). 
+Like properties ([&lt;prop>](#prop-property)) and parameters ([&lt;param>](#param-parameter)), parts can be distinguished from other elements within their controls by their assigned `@class`, such that they may be subjected to "declarations logic" using these values as bindings (and thereby getting open-ended extensibility). 
 
-An assigned class may frequently provide for a header in display, such that part[@class='objectives'] is displayed under a header *Objectives*, etc. Unlike groups, controls or subcontrols, however, they may not have [&lt;title>](#title-title) element children (they are not "first class objects" in this sense). Thus in OSCAL, if the components of your controls have their own titles, they are something else): to accommodate data like this, consider using a property (e.g. prop[@class='part-title'] as an escape hatch.   
+An assigned class may frequently provide for a header in display, such that `part[@class='objectives']` is displayed under a header *Objectives*, etc. Unlike groups, controls or subcontrols, however, they may not have [&lt;title>](#title-title) element children (they are not "first class objects" in this sense). Thus in OSCAL, if the components of your controls have their own titles, they are something else): to accommodate data like this, consider using a property (e.g. `prop[@class='part-title']` as an escape hatch.   
 
 ### &lt;link> Link   
 
@@ -130,7 +130,7 @@ For extra-schema validation of control components within controls
 
 ##### remarks 
 
-The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of @class (for control components) and @context (indicating control, subcontrol or features wherein the components may appear), enable automated checking for consistency of controls, subcontrols and features, specific to the types or kinds of control items that appear within a particular catalog or control collection.   
+The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of `@class` (for control components) and `@context` (indicating control, subcontrol or features wherein the components may appear), enable automated checking for consistency of controls, subcontrols and features, specific to the types or kinds of control items that appear within a particular catalog or control collection.   
 
 ### &lt;declare-property> Property declaration   
 
@@ -154,7 +154,7 @@ The declared component may occur only once in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-property), [&lt;param>](#param-parameter), [&lt;part>](#part-part)) must be the only component of that class given in its ([&lt;group>](#group-group), [&lt;control>](#control-control), [&lt;subcontrol>](#subcontrol-control-enhancement) or [&lt;part>](#part-part)) context. i.e., no other element child of the same parent may have the same @class value (at the level of syntax), or be bound to the same component type (at the semantic level).   
+When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-property), [&lt;param>](#param-parameter), [&lt;part>](#part-part)) must be the only component of that class given in its ([&lt;group>](#group-group), [&lt;control>](#control-control), [&lt;subcontrol>](#subcontrol-control-enhancement) or [&lt;part>](#part-part)) context. i.e., no other element child of the same parent may have the same `@class` value (at the level of syntax), or be bound to the same component type (at the semantic level).   
 
 ### &lt;required> Requirement constraint   
 
@@ -162,11 +162,11 @@ The declared component is required in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-property), [&lt;param>](#param-parameter), stmt or feat) is required to appear, at least once, in its context.   
+When this element is present in the declaration of an OSCAL control component, the component ([&lt;prop>](#prop-property), [&lt;param>](#param-parameter), `stmt` or `feat`) is required to appear, at least once, in its context.   
 
 ### &lt;identifier> Identifier constraint   
 
-The declared component has a value unique within the document, among components of the same type (bearing the applicable @class  
+The declared component has a value unique within the document, among components of the same type (bearing the applicable `@class`  
 
 ##### remarks 
 
@@ -174,7 +174,7 @@ This constraint is generally only used for properties to be used as identifiers 
 
 ### &lt;regex> Regular expression constraint   
 
-Indicates that the value of a property (prop) or parameter ([&lt;param>](#param-parameter)) must match the given regular expression  
+Indicates that the value of a property (`prop)` or parameter ([&lt;param>](#param-parameter)) must match the given regular expression  
 
 ##### remarks 
 
@@ -200,7 +200,7 @@ In a declaration, [&lt;value>](#value-value-constraint) will be given in groups,
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack". 
 
-The *contents*, not the value of any attribute, will be taken by the processor to be a formatting code. The format should follow the spec for XSLT xsl:number/@format. For example, if the value is "A." then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper and lower case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT. 
+The *contents*, not the value of any attribute, will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A." then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper and lower case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT. 
 
 The best way to understand the workings of this element is to see operational examples.   
 
@@ -210,11 +210,11 @@ Indicates that a value or part of a value will be inherited from a property on a
 
 ##### remarks 
 
-[&lt;inherit>](#inherit-inherited-value-constraint) is typically used to enforce hierarchical numbering within control objects. When given in a [&lt;value>](#value-value-constraint) in a declaration, [&lt;inherit>](#inherit-inherited-value-constraint) indicates that the value of a property, or a segment of its value, must be the same as a property ([&lt;prop>](#prop-property)) higher in the containment hierarchy of a control object. That is, if a property with @class='number' is constrained with value/inherit, it must be the same as is assigned on the closest ancestor (feature, subcontrol, control or group) with the given property. 
+[&lt;inherit>](#inherit-inherited-value-constraint) is typically used to enforce hierarchical numbering within control objects. When given in a [&lt;value>](#value-value-constraint) in a declaration, [&lt;inherit>](#inherit-inherited-value-constraint) indicates that the value of a property, or a segment of its value, must be the same as a property ([&lt;prop>](#prop-property)) higher in the containment hierarchy of a control object. That is, if a property with `@class='number'` is constrained with `value/inherit`, it must be the same as is assigned on the closest ancestor (feature, subcontrol, control or group) with the given property. 
 
 Usually, [&lt;inherit>](#inherit-inherited-value-constraint) is used in conjunction with [&lt;autonum>](#autonum-autonumbered-(generated)-value) (qv). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b" etc., depending on the position of the subcontrol within the control. 
 
-If a value must inherit from a property of a different class from the containing control object, inherit/@from can be used to indicate the applicable property (by its class). By default, [&lt;inherit>](#inherit-inherited-value-constraint) indicates a property value should match an ancestor's property with the same @class (the most usual case). 
+If a value must inherit from a property of a different class from the containing control object, `inherit/@from` can be used to indicate the applicable property (by its class). By default, [&lt;inherit>](#inherit-inherited-value-constraint) indicates a property value should match an ancestor's property with the same `@class` (the most usual case). 
 
 The best way to understand the workings of this element is to see operational examples.   
 
@@ -270,7 +270,7 @@ Citation of a resource
 
 ##### remarks 
 
-Echoes the NISO JATS (and NISO STS) mixed-citation element. 
+Echoes the NISO JATS (and NISO STS) `mixed-citation` element. 
 
 For references to standards, [&lt;std>](#std-standard) (qv) may be preferred.     
 
@@ -328,7 +328,7 @@ Rhetorical emphasis as indicated typically by a font shift
 
 In display, this element can be expected to "toggle", i.e. provide for italics when appearing within roman text, but roman when appearing within italic text. 
 
-Particular semantics (indicating types of emphasis for finer resolution in display or retrieval) may be provided via @class.   
+Particular semantics (indicating types of emphasis for finer resolution in display or retrieval) may be provided via `@class`.   
 
 ### &lt;i> Italics   
 
@@ -352,9 +352,9 @@ An HTML-style anchor (inline linking element)
 
 ##### remarks 
 
-As in HTML, the link target is indicated by @href, with a '#' prefix for an internal cross-reference matching an @id elsewhere in the document. 
+As in HTML, the link target is indicated by `@href`, with a '#' prefix for an internal cross-reference matching an `@id` elsewhere in the document. 
 
-Anchors without @href are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. In use, an application may promote the contents of a [&lt;a>](#a-anchor) element, when a valid URI, to serve as the link target, if @href is missing or not a URI.   
+Anchors without `@href` are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. In use, an application may promote the contents of a [&lt;a>](#a-anchor) element, when a valid URI, to serve as the link target, if `@href` is missing or not a URI.   
 
 ### &lt;q> Quoted text   
 
