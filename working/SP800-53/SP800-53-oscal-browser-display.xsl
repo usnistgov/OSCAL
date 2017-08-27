@@ -47,7 +47,8 @@ p.link.broken { background-color: lemonchiffon; border: medium solid darkorange;
 .unassigned { border: thin solid red; background-color: pink}
 .desc { color: darkgreen }
 .insert .desc { font-size: 90% }
-.value { font-style: italic }
+.value { font-style: italic; text-decoration: underline }
+
 .param-id { font-size: 90%; font-family: sans-serif; font-weight: bold; background-color: black; color: white }
 .insert .param-id { font-size: 80% }
 

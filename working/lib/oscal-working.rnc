@@ -98,6 +98,9 @@ subcontrol =
 # Add 'semantic' part types: purpose, guidance, decision, information, remarks (etc) 
 anyKindofPart = (part)*
 
+# see utility.xq for analytic breakdown of part types
+# so far: description, guidance
+
 part =
   element part {
     idAttr, optionalClass, title?,
@@ -105,7 +108,6 @@ part =
   }
 
 title = element title { (text | q)* }
-
 
 link    = element link { relAttr, hrefAttr, mix }
 
@@ -125,27 +127,27 @@ prop =
   element prop {
     requiredClass, text }
 
-# syntax sugar for feat[@role='purpose'] for "Objective/s" etc.
+# syntax sugar for part[@class='purpose'] for "Objective/s" etc.
 # purpose =
 #   element purpose {
 #     prose }
 
-# syntax sugar for feat[@role='guidance'] for "Supplemental Guidance" etc.
+# syntax sugar for part[@class='guidance'] for "Supplemental Guidance" etc.
 # guidance =
 #   element guidance {
 #     prose }
 
-# syntax sugar for feat[@role='decision']
+# syntax sugar for part[@class='decision']
 # decision =
 #   element decision {
 #     prose }
 
-# syntax sugar for feat[@role='information'], other-info, etc.
+# syntax sugar for part[@class='information'], other-info, etc.
 # information =
 #   element information {
 #     prose }
 
-# syntax sugar for feat[@role='remarks']
+# syntax sugar for part[@class='remarks']
 # remarks =
 #   element remarks {
 #     prose }
