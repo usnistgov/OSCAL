@@ -26,9 +26,9 @@ OSCAL will also integrate with:
 --------------
 
 This repository consists of the following directories pertaining to the OSCAL project:
-  * [docs](docs): Documentation resources
-  * [working](working): Current development artifacts
-  * [sources](sources): Supporting resources used to produce OSCAL artifacts that are not maintained by the OSCAL project
+  * [docs](docs): Documentation graphics, prose, and presentation slides
+  * [working](working): Development artifacts (e.g., XML, XSLT, CSS, script, Markdown, and sample files, plus supporting files); additional documentation is posted under [working/doc](working/doc): 
+  * [sources](sources): Resources used to produce OSCAL artifacts that are not maintained by the OSCAL project (e.g., a copy of the NIST SP 800-53 control data feed schema)
 
 ## Update August 10th, 2017
 
