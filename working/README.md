@@ -4,11 +4,11 @@ This part of the repository contains artifacts that comprise the implementation 
 
 The 'working' subdirectory contains the following:
 
- * '[lib](lib)' - schemas along with Schematron, CSS, and XSLT
+ * '[lib](lib)' - schemas along with Schematron, CSS, and XSLT files
  * '[doc](doc)' - documentation including mapping documentation plus supporting code; any tag set docs will also be here
- * '[SP800-53](SP800-53)' - OSCAL demo, NIST SP 800-53
- * '[ISO27002](ISO27002)' - OSCAL demo, ISO 27002
- * '[COBIT5](COBIT5)' - OSCAL demo, COBIT 5
+ * '[COBIT5](COBIT5)' - OSCAL demo files for COBIT 5 (e.g., XML files for representing COBIT 5 excerpts in OSCAL format for demonstration purposes)
+ * '[ISO27002](ISO27002)' - OSCAL demo files for ISO 27002
+ * '[SP800-53](SP800-53)' - OSCAL demo files for NIST SP 800-53
 
 ## Controls, not (only) the documents that describe them
 
