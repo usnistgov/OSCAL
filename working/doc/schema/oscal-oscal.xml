@@ -5,7 +5,7 @@
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
-  <title>OSCAL: the Open Security Controls Assessment Language</title>
+  <title>OSCAL: The Open Security Controls Assessment Language</title>
   <!--<declarations>
     <property context="element-description" class="tag">
           <required/>
@@ -23,18 +23,18 @@
   </declarations>-->
   <section>
     <title>OSCAL namespace</title>
+    <p>Conformant (valid) OSCAL documents will not contain elements not described in the OSCAL
+      specification. While OSCAL may be mixed with other tag sets or extended, neither of these
+      uses is described by this document, which provides only bare-bones
+      information about the OSCAL <q>core</q>.</p>
     <p>The element population of an OSCAL document (set) may be determined by means of XPath
         <code>distinct-values(//*/node-name())</code>, or analogous query.</p>
-    <p>Conformant (valid) OSCAL documents will not contain elements not described in this
-      specification. While OSCAL may be mixed with other tag sets, or extended, neither of these
-      uses is described or circumscribed by this document, which provides only bare-bones
-      information about the OSCAL <q>core</q>.</p>
     <p>For its XML names, OSCAL uses the namespace <a>XXX http://scap.nist.gov/schema/oscal XXX</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
       without a prefix, <code>oscal:</code> or any other.</p>
     <p>By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should
-      always strip the OSCAL namespace, to produce HTML in the appropriate namespace for the target
+      always strip the OSCAL namespace to produce HTML in the appropriate namespace for the target
       application. (Or the target application could learn to consume OSCAL.) Only some parts of
       HTML, however, make their way into OSCAL, which is designed to address its own
       requirements.</p>
@@ -43,29 +43,28 @@
     <title>OSCAL organization</title>
     <p>OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form
         <q>documentary</q> format, which includes semantic <q>islands</q> of structured information.
-      These are <q>semantic</q> not only because they are addressable in principle, but more
-      importantly because their organizations and values may be known (at least with respect to
-      certain operations and relations), before processing occurs, even (at the most general level)
-      before operations are designed and deployed. OSCAL offers a Yin to the Yang of query and
+      These are semantic not only because they are addressable in principle, but more
+      importantly because their organizations and values may be known before processing occurs, 
+      at least with respect to certain operations and relations, and even (at the most general level)
+      before operations are designed and deployed. OSCAL offers a yin to the yang of query and
       processing.</p>
-    <p>At the broadest level, <q>control objects</q> in OSCAL, as it is formally defined, include
-      controls, subcontrols (i.e. control extensions), parts of controls or subcontrols, and control
+    <p>At the broadest level, <q>control objects</q> in OSCAL include
+      controls, subcontrols (i.e., control extensions), parts of controls or subcontrols, and control
       groups. In other words, <q>control</q> over OSCAL data structures is offered at many levels at
-      once. It will be the job of a particular OSCAL application domain to determine what the most
-      appopriate level of description, for that domain, to describe best as <q>control</q>,
-        <q>subcontrol</q> etc.</p>
+      once. It will be the job of a particular OSCAL application domain to determine the
+      appopriate level of description to describe <q>control</q>, <q>subcontrol</q>, etc.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>control</code>,
         <code>subcontrol</code> and <code>part</code>. According to its rules, subcontrols may only
       appear within controls. Either controls or subcontrols may be partitioned (may contain parts),
       and parts may contain their own parts. Any of these objects may be <q>controlled</q> in the
-      sense that they may be used, consistently, to carry regular sets of properties, whose names
-      and value spaces may be known in advance, or discovered dynamically.</p>
+      sense that it may be used consistently to carry regular sets of properties with names
+      and value spaces that may be known in advance or discovered dynamically.</p>
   </section>
   <section>
     <title>Interoperability with other data formats</title>
     <p>OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language
-      including HTML, Markdown and its variants, NISO JATS, DITA, etc. etc. Additionally, OSCAL
+      including HTML, Markdown and its variants, NISO JATS, DITA, etc. Additionally, OSCAL
       documents may be taken as <q>warrants for inference</q> for serialization of linked data
       objects or other application binding formats including JSON.</p>
     <p>Because OSCAL is semantically richer and denser than most markup languages as used, however,
@@ -75,9 +74,9 @@
   <group>
     <title>Controls and control components</title>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
-      components, including both controlled components, and relatively uncontrolled or free-form
+      components, including both controlled components and relatively uncontrolled or free-form
       contents. The latter category of information is described elsewhere as <a
-        href="oscal-oscal.xml#prose">Prose</a>. The former category is described here.</p>
+        href="oscal-oscal.xml#prose">prose</a>. The former category is described here.</p>
     <control class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
@@ -93,11 +92,10 @@
       </part>
       <part class="remarks">
         <p>Most often, a collection element will be used for a set of controls derived from one or
-          more control catalogs (such as a profile, baseline or overlay), which do not themselves
-          serve as a catalog.</p>
-        <p>However, collections may contain everything that catalogs may contain, and OSCAL does not
-          prohibit their use as (source or interim) catalogs for profiling. (Although an application
-          might).</p>
+          more control catalogs (such as a profile, baseline, or overlay), which do not themselves
+          serve as a catalog. However, collections may contain everything that catalogs may contain, 
+          and OSCAL does not prohibit their use as (source or interim) catalogs for profiling, 
+          although an individual application might.</p>
       </part>
     </control>
     <control class="element-description">
@@ -107,22 +105,22 @@
         <p>A structured information object representing a security control</p>
       </part>
       <part class="remarks">
-        <p>Controls may be grouped using <code>group</code>, and controls may be partitioned, using
-          either formal <code>subcontrol</code> or (informally) <code>part</code>.</p>
+        <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
+          either (formally) <code>subcontrol</code> or (informally) <code>part</code>.</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control enhancement</prop>
       <part class="description">
-        <p>Within a control, a component or enhancement</p>
+        <p>A component or enhancement within a control</p>
       </part>
       <part class="remarks">
-        <p>A nominal subcontrol or <q>control enhancement</q>, permitting catalogs easily to provide
+        <p>A nominal subcontrol or <q>control enhancement</q> permits catalogs to easily provide
           access to structured data at two levels. Further levels down can be achieved using
             <code>part</code> (both controls and subcontrols may be partitioned), which may contain
-          their own parts; however having <q>controls</q> and <q>subcontrols</q> known in advance to
-          be especially significant, is helpful.</p>
+          their own parts; however, knowing in advance which <q>controls</q> and <q>subcontrols</q> 
+          are especially significant is helpful.</p>
       </part>
     </control>
     <control class="element-description">
