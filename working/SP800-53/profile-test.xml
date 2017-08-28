@@ -7,7 +7,7 @@
          <call control-id="ac.1"><!--ACCESS CONTROL POLICY AND PROCEDURES--></call>
          <param id="ac-1_a">
             <desc>organization-defined personnel or roles</desc>
-            <default>organization-defined personnel or roles</default>
+            <value>organization-defined personnel or roles</value>
          </param>
          <param id="ac-1_b">
             <desc>organization-defined frequency</desc>
@@ -16,24 +16,24 @@
          <call control-id="ac.2"><!--ACCOUNT MANAGEMENT--></call>
          <param id="ac-2_a">
             <desc>organization-defined information system account types</desc>
-            <default>organization-defined information system account types</default>
+            <value>organization-defined information system account types</value>
          </param>
          <param id="ac-2_b">
             <desc>organization-defined personnel or roles</desc>
-            <default>organization-defined personnel or roles</default>
+            <value>organization-defined personnel or roles</value>
          </param>
          <param id="ac-2_c">
             <desc>organization-defined procedures or conditions</desc>
-            <default>organization-defined procedures or conditions</default>
+            <value>organization-defined procedures or conditions</value>
          </param>
          <param id="ac-2_d">
             <desc>organization-defined frequency</desc>
-            <default>organization-defined frequency</default>
+            <value>organization-defined frequency</value>
          </param>
          <call subcontrol-id="ac.2.2."><!--REMOVAL OF TEMPORARY / EMERGENCY ACCOUNTS--></call>
          <param id="ac-2_e">
                <desc>organization-defined time period for each type of account</desc>
-               <default>organization-defined time period for each type of account</default>
+               <value>organization-defined time period for each type of account</value>
             </param>
          <call subcontrol-id="ac.3.1."><!--RESTRICTED ACCESS TO PRIVILEGED FUNCTIONS--></call>
       </include>

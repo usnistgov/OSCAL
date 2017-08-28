@@ -2,13 +2,13 @@
 <profile xmlns="http://scap.nist.gov/schema/oscal">
   <invoke href="OSCAL.xml">
     <include> <!--(all | call+) --> 
-      <call key="number">AC-01</call>
+      <all/>
     </include>
     <!--<exclude> <!-\-(call+) -\-> 
       <call key="baseline-impact">HIGH</call>
     </exclude>-->
   </invoke>
-  <mod context="control">
+  <!--<mod context="control">
     <call key="number">AC01</call>
     <remove>
     </remove>
@@ -16,5 +16,5 @@
     </add>
     <patch>
     </patch>
-  </mod>
+  </mod>-->
 </profile>

@@ -11,4 +11,4 @@ let $library :=
 let $doc-set := $library/doc/doc(.)
 
 for $d in $doc-set return
- '&#xA;' ||  document-uri($d) || ':&#xA;   ' || string-join(distinct-values($d//(part | prop[exists(@class)])/ (../name() || '.' || ../@class || '/' || name() || '.'  ||  @class)), '&#xA;   ' )
+ '&#xA;' ||  document-uri($d) || ':&#xA;   ' || string-join(distinct-values($d//(part | prop[exists(@class)])/ (../name() || ../(@class/('.' || .)) || '/' || name()  ||  @class/('.' || .))), '&#xA;   ' )

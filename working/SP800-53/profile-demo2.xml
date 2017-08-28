@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://scap.nist.gov/schema/oscal">
+  <invoke href="SP800-53-OSCAL-refined.xml">
+    <include> <!--(all | call+) --> 
+      <all/>
+    </include>
+  </invoke>
+  <invoke href="../ISO-27002/ISO-27002-OSCAL-refined.xml">
+    <include> <!--(all | call+) --> 
+      <all/>
+    </include>
+  </invoke>
+  
+</profile>

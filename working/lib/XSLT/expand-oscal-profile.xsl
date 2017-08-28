@@ -30,28 +30,63 @@
     <xsl:text>&#xA;</xsl:text>
     <xsl:apply-templates/>
   </xsl:template>
+  
+  <xsl:variable name="source" select="/"/>
+
+  <!-- excludes are resolved into includes -->
+  <xsl:template match="profile/invoke/exclude"/>
+    
+  <xsl:template match="profile/invoke/include">
+    <xsl:variable name="catalog" select="document(../@href,$source)"/>
+    
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates select="$catalog//(control | subcontrol)" mode="include-if-invoked">
+        <xsl:with-param name="invocation" tunnel="yes" select="parent::invoke"/>
+      </xsl:apply-templates>
+    </xsl:copy>
+  </xsl:template>
+  
   <xsl:template match="catalog">
     <profile>
       <invoke href="{replace(document-uri(/),'.*/','')}">
         <include>
-          <xsl:apply-templates select="//control | //subcontrol | //param"/>
+          <xsl:apply-templates select="//control | //subcontrol | //param" mode="include"/>
         </include>
       </invoke>
     </profile>
   </xsl:template>
   
-  <xsl:template match="control">
+  <xsl:template match="control | subcontrol" mode="include-if-invoked">
+    <xsl:param name="invocation" tunnel="yes" required="yes"/>
+    
+    <xsl:variable name="called"
+      select="exists($invocation/include/all) or @id =
+      ( self::control/$invocation/include/call/@control-id | self::subcontrol/$invocation/include/call/@subcontrol-id )"/>
+<!-- exclusion logic   -->
+    <xsl:variable name="excluded" select="@id =
+      ( self::control/$invocation/exclude/call/@control-id | self::subcontrol/$invocation/exclude/call/@subcontrol-id )"/>
+    <xsl:if test="$called and not($excluded)">
+      <xsl:apply-templates mode="include" select="."/>
+      <xsl:apply-templates mode="include" select="descendant::param"/>
+    </xsl:if>
+
+  </xsl:template>
+  
+  
+  <xsl:template match="control" mode="include">
     <call control-id="{@id}">
       <xsl:apply-templates select="title"/>
     </call>
   </xsl:template>
   
-  <xsl:template match="subcontrol">
-    <call subcontrol-id="{@id}">      <xsl:apply-templates select="title"/>
+  <xsl:template match="subcontrol" mode="include">
+    <call subcontrol-id="{@id}">
+      <xsl:apply-templates select="title"/>
     </call>
   </xsl:template>
   
-  <xsl:template match="param">
+  <xsl:template match="param" mode="include">
     <xsl:copy-of select="."/>
   </xsl:template>
   
@@ -64,4 +99,5 @@
   <xsl:template match="*" mode="plain">
     <xsl:apply-templates/>
   </xsl:template>
+  
 </xsl:stylesheet>
