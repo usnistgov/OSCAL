@@ -157,7 +157,7 @@
    <xs:element name="inherit">
       <xs:annotation>
          <xs:documentation>
-            <b>Inherited value constraint</b> Indicates that a value or text within a value should be inherited from a property on a
+            <b>Inherited value</b> Indicates that a value or text within a value should be inherited from a property on a
           containing control object</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">

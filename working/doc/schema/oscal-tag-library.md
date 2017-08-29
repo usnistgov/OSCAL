@@ -56,7 +56,7 @@
 
 [&lt;autonum> Autonumbered (generated) value](#autonum-autonumbered-(generated)-value)
 
-[&lt;inherit> Inherited value constraint](#inherit-inherited-value-constraint)
+[&lt;inherit> Inherited value](#inherit-inherited-value)
 
 [&lt;desc> Parameter description](#desc-parameter-description)
 
@@ -126,9 +126,9 @@ By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, h
 
 OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form "documentary" format, which includes semantic "islands" of structured information. These are semantic not only because they are addressable in principle, but more importantly because their organizations and values may be known before processing occurs, at least with respect to certain operations and relations, and even (at the most general level) before operations are designed and deployed. OSCAL offers a yin to the yang of query and processing. 
 
-At the broadest level, "control objects" in OSCAL include controls, subcontrols, parts of controls or subcontrols, and control groups. Each OSCAL application or application domain will determine for itself how these correspond to entities or "control objects" within that domain. 
+At the broadest level, "control objects" in OSCAL include controls, subcontrols, parts of controls or subcontrols, and control groups. Each OSCAL application or application domain will determine for itself how these correspond to entities or "controls", formal processes, procedures and so forth, within that domain. 
 
-This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for control, subcontrol and part. According to its rules, subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. Any of these objects may be "controlled" in the sense that it may be used consistently to carry regular sets of properties with names and value spaces that may be known in advance or discovered dynamically.   
+This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for group, control, subcontrol and part. According to its rules, either controls or groups may appear within groups (that is, groups may be nested or may contain controls), while subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. While this design centers around controls and subcontrols, by means of the use of groups and parts, OSCAL can support organizations of controls and their components with arbitrary granularity -- as any of these objects may be used consistently to carry regular sets of properties, with names and value spaces that may be known in advance or discovered dynamically.   
 
 ## Interoperability with other data formats 
 
@@ -306,7 +306,7 @@ Generates a formatted numeric value based on the position of a control object am
 
 The text contents of autonum (not the value of any attribute), will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.   
 
-### &lt;inherit> Inherited value constraint   
+### &lt;inherit> Inherited value   
 
 Indicates that a value or text within a value should be inherited from a property on a containing control object  
 

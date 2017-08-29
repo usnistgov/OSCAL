@@ -205,7 +205,7 @@ a:visited { color: midnightblue }
             <div class="toc">
                <p class="toc-line">
                   <a href="#d6e709">
-                     <code>&lt;inherit&gt;</code> Inherited value constraint</a>
+                     <code>&lt;inherit&gt;</code> Inherited value</a>
                </p>
             </div>
             <div class="toc">
@@ -393,15 +393,18 @@ a:visited { color: midnightblue }
       processing.</p>
             <p class="p">At the broadest level, <q class="q">control objects</q> in OSCAL include controls, subcontrols, parts
       of controls or subcontrols, and control groups. Each OSCAL application or application domain
-      will determine for itself how these correspond to entities or <q class="q">control objects</q> within
-      that domain.</p>
+      will determine for itself how these correspond to entities or <q class="q">controls</q>, formal processes, procedures and so forth, within that domain.</p>
             <p class="p">This organization is governed by an XML schema, which enforces containment constraints among
-      these elements. In particular, the OSCAL schema declares elements for <a href="d6e145" class="code">control</a>,
-        <a href="d6e176" class="code">subcontrol</a> and <a href="d6e263" class="code">part</a>. According to its rules, subcontrols may only
-      appear within controls. Either controls or subcontrols may be partitioned (may contain parts),
-      and parts may contain their own parts. Any of these objects may be <q class="q">controlled</q> in the
-      sense that it may be used consistently to carry regular sets of properties with names
-      and value spaces that may be known in advance or discovered dynamically.</p>
+      these elements. In particular, the OSCAL schema declares elements for <a href="d6e843" class="code">group</a>,
+        <a href="d6e145" class="code">control</a>, <a href="d6e176" class="code">subcontrol</a> and <a href="d6e263" class="code">part</a>. According to its rules,
+      either controls or groups may appear within groups (that is, groups may be nested or may
+      contain controls), while subcontrols may only appear within controls. Either controls or
+      subcontrols may be partitioned (may contain parts), and parts may contain their own parts.
+      While this design centers around controls and subcontrols, by means of the use of groups and
+      parts, OSCAL can support organizations of controls and their components with arbitrary
+      granularity -- as any of these objects may be used consistently to carry regular sets of
+      properties, with names and value spaces that may be known in advance or discovered
+      dynamically.</p>
          </section>
          <section class="section" id="d6e82">
             <h2 class="title">Interoperability with other data formats</h2>
@@ -818,7 +821,7 @@ a:visited { color: midnightblue }
             <div class="control element-description" id="d6e709">
                <h3>
                   <span class="run-in subst tag">inherit</span> 
-                  <span class="run-in subst full_name">Inherited value constraint</span> 
+                  <span class="run-in subst full_name">Inherited value</span> 
                </h3>
       
       
