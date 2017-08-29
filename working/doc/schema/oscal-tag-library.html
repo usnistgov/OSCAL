@@ -365,7 +365,7 @@ a:visited { color: midnightblue }
       <div id="main" class="catalog">
          <h1 class="main-title">OSCAL: The Open Security Controls Assessment Language</h1>
   
-         <section class="group" id="d6e13">
+         <section class="section" id="d6e13">
             <h2 class="title">OSCAL namespace</h2>
             <p class="p">Conformant (valid) OSCAL documents will not contain elements not described in this document.
       While OSCAL may be mixed with other tag sets or extended, neither of these uses is described
@@ -382,7 +382,7 @@ a:visited { color: midnightblue }
       HTML, however, make their way into OSCAL, which is designed to address its own
       requirements.</p>
          </section>
-         <section class="group" id="d6e43">
+         <section class="section" id="d6e43">
             <h2 class="title">OSCAL organization</h2>
             <p class="p">OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form
         <q class="q">documentary</q> format, which includes semantic <q class="q">islands</q> of structured information.
@@ -403,7 +403,7 @@ a:visited { color: midnightblue }
       sense that it may be used consistently to carry regular sets of properties with names
       and value spaces that may be known in advance or discovered dynamically.</p>
          </section>
-         <section class="group" id="d6e82">
+         <section class="section" id="d6e82">
             <h2 class="title">Interoperability with other data formats</h2>
             <p class="p">OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language
       including HTML, Markdown and its variants, NISO JATS, DITA, etc. Additionally, OSCAL
@@ -417,7 +417,7 @@ a:visited { color: midnightblue }
             <h2 class="title">Controls and control components</h2>
             <p class="p">The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
       components, including both formal components (described here) and relatively uncontrolled or
-      free-form contents (described elsewhere as <a class="xref" href="#">prose</a>).</p>
+      free-form contents (described elsewhere as <a class="xref" href="#d6e974">prose</a>).</p>
             <div class="control element-description" id="d6e109">
                <h3>
                   <span class="run-in subst tag">catalog</span> 
@@ -805,7 +805,7 @@ a:visited { color: midnightblue }
                <div class="part remarks">
                   <h5 class="remarks">remarks</h5>
                   <p class="p">The text contents of <a href="d6e675" class="code">autonum</a> (not the value of any attribute), will be taken
-          by the processor to be a formatting code. The format should follow the spec for <a class="xref" href="#">XSLT
+          by the processor to be a formatting code. The format should follow the spec for <a class="xref" href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
               <code class="code">xsl:number/@format</code>
                      </a>. For example, if the value is <q class="q">A.</q>, then
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
@@ -970,7 +970,7 @@ a:visited { color: midnightblue }
                </div>
             </div>
          </section>
-         <section class="group" id="prose">
+         <section class="group" id="d6e974">
             <h2 class="title">Prose</h2>
             <p class="p">Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level.
       Prose elements echo HTML semantics, although they provide only a deliberately and specifically

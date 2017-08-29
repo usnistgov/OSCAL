@@ -76,7 +76,7 @@
 
 [&lt;citation> Citation](#citation-citation)
 
-[Prose](#)
+[Prose](#prose)
 
 [&lt;p> Paragraph](#p-paragraph)
 
@@ -138,7 +138,7 @@ Because OSCAL is semantically richer and denser than most markup languages as us
 
 ## Controls and control components 
 
-The foundations of OSCAL are in control objects, such as controls and subcontrols, and their components, including both formal components (described here) and relatively uncontrolled or free-form contents (described elsewhere as [prose](#)). 
+The foundations of OSCAL are in control objects, such as controls and subcontrols, and their components, including both formal components (described here) and relatively uncontrolled or free-form contents (described elsewhere as [prose](#prose)). 
 
 ### &lt;catalog> Catalog   
 
@@ -304,8 +304,7 @@ Generates a formatted numeric value based on the position of a control object am
 
 ##### remarks 
 
-The text contents of autonum (not the value of any attribute), will be taken by the processor to be a formatting code. The format should follow the spec for [XSLT
-              xsl:number/@format](#). For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.   
+The text contents of autonum (not the value of any attribute), will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.   
 
 ### &lt;inherit> Inherited value constraint   
 

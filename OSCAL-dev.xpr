@@ -25,6 +25,21 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/doc/schema/oscal-docs-html.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run XSLT on OSCAL docs (oscal)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/SP800-53/SP800-53-OSCAL-refined.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -35,21 +50,6 @@
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/lib/util/utility.xq</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run XQuery</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XQUERY</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -70,16 +70,16 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/doc/schema/oscal-docs-html.xsl</String>
+                                    <String>working/lib/util/utility.xq</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Run XSLT on OSCAL docs (oscal)</String>
+                                        <String>Run XQuery</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>XML</String>
+                                        <String>XQUERY</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>

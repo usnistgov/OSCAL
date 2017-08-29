@@ -10,6 +10,8 @@
      XSLT 1.0 (so it will run in your browser)
   -->
   
+  <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
+  
   <xsl:template match="/">
     <html>
       <head>
@@ -127,9 +129,9 @@ a:visited { color: midnightblue }
     <xsl:value-of select="."/>
   </xsl:template>
   
-  <xsl:template match="oscal:group | oscal:section">
-    <section class="group" id="{generate-id(.)}">
-      <xsl:copy-of select="@class | @id"/>
+  <xsl:template match="oscal:group | oscal:section | oscal:references">
+    <section class="{local-name()}" id="{generate-id(.)}">
+      <xsl:copy-of select="@class"/>
       <xsl:apply-templates/>
     </section>
   </xsl:template>
@@ -255,12 +257,13 @@ a:visited { color: midnightblue }
     </div>
   </xsl:template>
 
-<!-- They're all internal links (they better be) -->
-  <xsl:template match="oscal:a[contains(@href,'#')]">
+  <!-- They're all internal links (they better be) -->
+  <xsl:template match="oscal:a[starts-with(@href,'#') or starts-with(@href,'oscal-oscal.xml#')]">
+    <xsl:variable name="target" select="key('element-by-id',substring-after(@href,'#'))"/>
     <a class="xref">
       <xsl:attribute name="href">
         <xsl:text>#</xsl:text>
-        <xsl:value-of select="substring-after(.,'#')"/>
+        <xsl:value-of select="generate-id($target)"/>
       </xsl:attribute>
       <xsl:apply-templates/>
     </a>
