@@ -2,111 +2,111 @@
 
 [OSCAL: The Open Security Controls Assessment Language](#)
 
-[OSCAL namespace](#OSCAL-namespace)
+[OSCAL namespace](#oscal-namespace)
 
-[OSCAL organization](#OSCAL-organization)
+[OSCAL organization](#oscal-organization)
 
-[Interoperability with other data formats](#Interoperability-with-other-data-formats)
+[Interoperability with other data formats](#interoperability-with-other-data-formats)
 
-[Controls and control components](#Controls-and-control-components)
+[Controls and control components](#controls-and-control-components)
 
-[&lt;catalog> Catalog](#catalog-Catalog)
+[&lt;catalog> Catalog](#catalog-catalog)
 
-[&lt;collection> Collection](#collection-Collection)
+[&lt;collection> Collection](#collection-collection)
 
-[&lt;control> Control](#control-Control)
+[&lt;control> Control](#control-control)
 
-[&lt;subcontrol> Control extension](#subcontrol-Control-extension)
+[&lt;subcontrol> Control extension](#subcontrol-control-extension)
 
-[&lt;prop> Property](#prop-Property)
+[&lt;prop> Property](#prop-property)
 
-[&lt;param> Parameter](#param-Parameter)
+[&lt;param> Parameter](#param-parameter)
 
-[&lt;part> Part](#part-Part)
+[&lt;part> Part](#part-part)
 
-[&lt;link> Link](#link-Link)
+[&lt;link> Link](#link-link)
 
-[Functional elements](#Functional-elements)
+[Functional elements](#functional-elements)
 
-[&lt;insert> Parameter insertion](#insert-Parameter-insertion)
+[&lt;insert> Parameter insertion](#insert-parameter-insertion)
 
-[&lt;withdrawn> Withdrawn](#withdrawn-Withdrawn)
+[&lt;withdrawn> Withdrawn](#withdrawn-withdrawn)
 
-[Declarations elements](#Declarations-elements)
+[Declarations elements](#declarations-elements)
 
-[&lt;declarations> Declarations](#declarations-Declarations)
+[&lt;declarations> Declarations](#declarations-declarations)
 
-[&lt;declare-property> Property declaration](#declare-property-Property-declaration)
+[&lt;declare-property> Property declaration](#declare-property-property-declaration)
 
-[&lt;declare-p> Paragraph declaration](#declare-p-Paragraph-declaration)
+[&lt;declare-p> Paragraph declaration](#declare-p-paragraph-declaration)
 
-[&lt;declare-part> Part declaration](#declare-part-Part-declaration)
+[&lt;declare-part> Part declaration](#declare-part-part-declaration)
 
-[&lt;declare-link> Link declaration](#declare-link-Link-declaration)
+[&lt;declare-link> Link declaration](#declare-link-link-declaration)
 
-[&lt;singleton> Singleton constraint](#singleton-Singleton-constraint)
+[&lt;singleton> Singleton constraint](#singleton-singleton-constraint)
 
-[&lt;required> Requirement constraint](#required-Requirement-constraint)
+[&lt;required> Requirement constraint](#required-requirement-constraint)
 
-[&lt;identifier> Identifier constraint](#identifier-Identifier-constraint)
+[&lt;identifier> Identifier constraint](#identifier-identifier-constraint)
 
-[&lt;regex> Regular expression constraint](#regex-Regular-expression-constraint)
+[&lt;regex> Regular expression constraint](#regex-regular-expression-constraint)
 
-[&lt;value> Value constraint](#value-Value-constraint)
+[&lt;value> Value constraint](#value-value-constraint)
 
-[&lt;autonum> Autonumbered (generated) value](#autonum-Autonumbered-(generated)-value)
+[&lt;autonum> Autonumbered (generated) value](#autonum-autonumbered-(generated)-value)
 
-[&lt;inherit> Inherited value constraint](#inherit-Inherited-value-constraint)
+[&lt;inherit> Inherited value constraint](#inherit-inherited-value-constraint)
 
-[&lt;desc> Parameter description](#desc-Parameter-description)
+[&lt;desc> Parameter description](#desc-parameter-description)
 
-[Structural elements](#Structural-elements)
+[Structural elements](#structural-elements)
 
-[&lt;section> Section](#section-Section)
+[&lt;section> Section](#section-section)
 
-[&lt;group> Group](#group-Group)
+[&lt;group> Group](#group-group)
 
-[&lt;title> Title](#title-Title)
+[&lt;title> Title](#title-title)
 
-[&lt;references> References](#references-References)
+[&lt;references> References](#references-references)
 
-[&lt;ref> Reference](#ref-Reference)
+[&lt;ref> Reference](#ref-reference)
 
-[&lt;std> Standard](#std-Standard)
+[&lt;std> Standard](#std-standard)
 
-[&lt;citation> Citation](#citation-Citation)
+[&lt;citation> Citation](#citation-citation)
 
 [Prose](#)
 
-[&lt;p> Paragraph](#p-Paragraph)
+[&lt;p> Paragraph](#p-paragraph)
 
-[&lt;pre> Preformatted text](#pre-Preformatted-text)
+[&lt;pre> Preformatted text](#pre-preformatted-text)
 
-[&lt;ol> Ordered List](#ol-Ordered-List)
+[&lt;ol> Ordered List](#ol-ordered-list)
 
-[&lt;ul> Unordered list](#ul-Unordered-list)
+[&lt;ul> Unordered list](#ul-unordered-list)
 
-[&lt;li> List item](#li-List-item)
+[&lt;li> List item](#li-list-item)
 
-[&lt;em> Emphasis](#em-Emphasis)
+[&lt;em> Emphasis](#em-emphasis)
 
-[&lt;i> Italics](#i-Italics)
+[&lt;i> Italics](#i-italics)
 
-[&lt;b> Bold](#b-Bold)
+[&lt;b> Bold](#b-bold)
 
-[&lt;a> Anchor](#a-Anchor)
+[&lt;a> Anchor](#a-anchor)
 
-[&lt;q> Quoted text](#q-Quoted-text)
+[&lt;q> Quoted text](#q-quoted-text)
 
-[&lt;code> Code](#code-Code)
+[&lt;code> Code](#code-code)
 
-[&lt;sup> Superscript](#sup-Superscript)
+[&lt;sup> Superscript](#sup-superscript)
 
-[&lt;sub> Subscript](#sub-Subscript)
+[&lt;sub> Subscript](#sub-subscript)
 
-[&lt;span> Span](#span-Span)
+[&lt;span> Span](#span-span)
 
-[Structural constraints](#Structural-constraints)
+[Structural constraints](#structural-constraints)
 
 [Order of items inside controls](#) 
 

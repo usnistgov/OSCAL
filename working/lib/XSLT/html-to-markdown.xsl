@@ -67,7 +67,7 @@
     <xsl:value-of select="replace(.,'&lt;','&amp;lt;')"/>
     <xsl:text>]</xsl:text>
     <xsl:text>(#</xsl:text>
-    <xsl:value-of select="replace($link-target/*[1]/normalize-space(.),'\s','-')"/>
+    <xsl:value-of select="$link-target/*[1] => normalize-space() => lower-case() => replace('\s','-')"/>
     <xsl:text>)</xsl:text>
   </xsl:template>
   
