@@ -134,7 +134,7 @@ This organization is governed by an XML schema, which enforces containment const
 
 OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language including HTML, Markdown and its variants, NISO JATS, DITA, etc. Additionally, OSCAL documents may be taken as "warrants for inference" for serialization of linked data objects or other application binding formats including JSON. 
 
-Because OSCAL is semantically richer and denser than most markup languages as used, however, automated conversion into OSCAL from any of these formats is likely to require tuning or customization per instance - that is, each one will be a one-off conversion.   
+Because OSCAL is designed to carry richer and denser semantics than most markup languages as used, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or customization per instance - that is, each one will be a one-off conversion.   
 
 ## Controls and control components 
 
