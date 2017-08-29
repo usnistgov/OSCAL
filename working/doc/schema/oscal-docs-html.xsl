@@ -13,7 +13,9 @@
   <xsl:template match="/">
     <html>
       <head>
-        <xsl:apply-templates select="descendant::oscal:title[1]" mode="title"/>
+        <title>
+          <xsl:value-of select="descendant::oscal:title[1]"/>
+        </title>
         <style type="text/css">
 
 .control { margin:1em; padding: 1em; border: thin dotted black }
