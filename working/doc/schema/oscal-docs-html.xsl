@@ -20,9 +20,8 @@
 .control > *:first-child { margin-top: 0em }
 
 h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin: 0em }
+.main-title { border-bottom: thin solid black; margin-bottom: 0.5em }
 h3 { font-size: 120% }
-
-div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
 
 section h3     { font-size: 160% }
 section h3     { font-size: 140% }
@@ -40,18 +39,71 @@ div div div h3 { font-size: 110% }
 .tag:before { content: '&lt;' }
 .tag:after  { content: '&gt;' }
 .code { font-family: monospace }
+
+#toc-panel { border: thin solid black; float: left; max-width: 20%; font-size: 80%;
+  padding: 1em; position: fixed; max-height: 90%; overflow: auto }
+.toc { margin: 0em; padding: 0em; margin-left: 1em; border: none }
+.toc-line { margin: 0em; padding-left: 3em; text-indent: -3em }
+
+#main { margin-left: 22%; padding-left: 2em }
         </style>
       </head>
       <body>
-        <xsl:apply-templates/>
+        <xsl:apply-templates mode="toc"/>
+         <xsl:apply-templates/>
       </body>
     </html>
   </xsl:template>
   
+  
+  <xsl:template match="oscal:catalog" mode="toc">
+    <div id="toc-panel">
+      <xsl:apply-templates select="oscal:title | oscal:prop[@class='tag']" mode="toc"/>
+      <xsl:apply-templates select="oscal:section | oscal:group | oscal:control" mode="toc"/>
+    </div>
+  </xsl:template>
+  
+  <xsl:template match="oscal:section | oscal:group | oscal:control" mode="toc">
+    <div class="toc">
+      <xsl:apply-templates select="oscal:title | oscal:prop[@class='tag']" mode="toc"/>
+      <xsl:apply-templates select="oscal:section | oscal:group | oscal:control" mode="toc"/>
+    </div>
+  </xsl:template>
+  
+  <xsl:template match="oscal:title" mode="toc">
+    <p class="toc-line">
+      <a href="#{generate-id(parent::*[not(self::oscal:catalog)])}">
+        <xsl:apply-templates/>
+      </a>
+    </p>
+  </xsl:template>
+  
+  <xsl:template match="oscal:prop[@class='tag']" mode="toc">
+    <p class="toc-line">
+      <a href="#{generate-id(..)}">
+      <code>
+        <xsl:text>&lt;</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>&gt;</xsl:text>
+        </code>
+      <xsl:text> </xsl:text>
+      <xsl:for-each select="../oscal:prop[@class='full_name']">
+        <xsl:apply-templates/>
+      </xsl:for-each>
+      </a>
+    </p>
+  </xsl:template>
+
   <xsl:template match="oscal:catalog">
-    <div class="catalog">
+    <div id="main" class="catalog">
       <xsl:apply-templates/>
     </div>
+  </xsl:template>
+  
+  <xsl:template match="oscal:catalog/oscal:title">
+    <h1 class="main-title">
+      <xsl:apply-templates/>
+    </h1>
   </xsl:template>
   
   <xsl:template match="oscal:title">
@@ -62,12 +114,12 @@ div div div h3 { font-size: 110% }
   
   <xsl:template match="oscal:declarations"/>
     
-    <xsl:template match="oscal:title" mode="title">
-      <xsl:value-of select="."/>
-    </xsl:template>
+  <xsl:template match="oscal:title" mode="title">
+    <xsl:value-of select="."/>
+  </xsl:template>
   
-  <xsl:template match="oscal:group">
-    <section class="group">
+  <xsl:template match="oscal:group | oscal:section">
+    <section class="group" id="{generate-id(.)}">
       <xsl:copy-of select="@class | @id"/>
       <xsl:apply-templates/>
     </section>
@@ -82,15 +134,7 @@ div div div h3 { font-size: 110% }
   
   
   <xsl:template match="oscal:control">
-    <div class="control {@class}">
-      <xsl:copy-of select="@id"/>
-      <xsl:if test="@class='element-description' and oscal:prop[@class='tag']">
-        <!--Remember we are writing XSLT 1.0 here, we have to do everything the hard way-->
-        <xsl:attribute name="id">
-          <xsl:text>tag_</xsl:text>
-          <xsl:value-of select="oscal:prop[@class='tag']"/>
-        </xsl:attribute>
-      </xsl:if>
+    <div class="control {@class}" id="{generate-id(.)}">
       <xsl:call-template name="make-title">
         <xsl:with-param name="runins" select="oscal:prop[@class='tag'] | oscal:prop[@class='full_name']"/>
       </xsl:call-template>
@@ -280,8 +324,14 @@ div div div h3 { font-size: 110% }
     </code>
   </xsl:template>
   
+  <xsl:key name="controls-by-tag" match="oscal:control[@class='element-description']"
+    use="oscal:prop[@class='tag']"/>
+  
+  <!-- these are cross-references to controls -->
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
-    <a href="#tag_{.}" class="code">
+    <xsl:variable name="target" select="key('controls-by-tag',.)"/>
+    
+    <a href="{generate-id($target)}" class="code">
       <xsl:apply-templates/>
     </a>
   </xsl:template>

@@ -242,7 +242,7 @@
    <xs:element name="subcontrol">
       <xs:annotation>
          <xs:documentation>
-            <b>Control extension</b> A component or enhancement within a control</xs:documentation>
+            <b>Control extension</b> An associated control within a control</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

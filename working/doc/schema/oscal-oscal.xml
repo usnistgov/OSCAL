@@ -111,11 +111,11 @@
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control extension</prop>
       <part class="description">
-        <p>A component or enhancement within a control</p>
+        <p>An associated control within a control</p>
       </part>
       <part class="remarks">
-        <p>A nominal subcontrol or <q>control extension</q> permits catalogs to easily provide
-          access to structured data at two levels. Further levels down can be achieved using
+        <p>A nominal subcontrol or <q>control extension</q> permits catalogs to offer access to
+          structured control objects within controls. Further levels down can be achieved using
             <code>part</code> (both controls and subcontrols may be partitioned), which may contain
           their own parts; however, knowing in advance which <q>controls</q> and <q>subcontrols</q>
           are especially significant is helpful.</p>
@@ -660,14 +660,15 @@
         another process capable of static analysis of the data.</p>
     </part>
     <control class="general-constraint">
-      <title>Within a control, properties, statements, and parameters may occur in any order.</title>
+      <title>Order of items inside controls</title>
       <part class="description">
+        <p>Within a control, properties, parts, and parameters may occur in any order.</p>
         <p>This specification does not govern how or whether an implementation may respect the order
-          of properties and statements given within a control type. Among properties, statements, and
-          parameters (that is, named things) within a control, cardinality constraints (where
-          enforced) can help ensure a canonical order. An order may be imposed locally (for example,
-          by a schema that requires all properties to appear before all statements), but this is for
-          its convenience, not because an order is mandated.</p>
+          of properties and statements given within a control type. Among properties, formal parts,
+          and parameters within a control, cardinality constraints (where enforced) can help ensure
+          a canonical order. An order may be imposed locally by an application (for example, using a
+          schema that requires all properties to appear before all parts), but this is for its
+          convenience, not because an order is mandated.</p>
       </part>
     </control>
   </group>

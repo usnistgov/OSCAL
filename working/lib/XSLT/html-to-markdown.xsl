@@ -58,24 +58,16 @@
     <xsl:text>"</xsl:text>
   </xsl:template>
   
-  <xsl:key name="control-by-id" match="div[starts-with(@class,'control')]" use="@id"/>
+  <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
   
-  <!-- How quaint -->
-  <xsl:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
-  <xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable>
   
-  <xsl:template match="a[starts-with(@href,'#tag')]">
-    <xsl:variable name="link-target" select="key('control-by-id',substring-after(@href,'#'))"/>
-    <xsl:variable name="text">
-      <xsl:value-of select="$link-target/h3/span[contains(@class,'tag')]"/>
-      <xsl:text>-</xsl:text>
-      <xsl:value-of select="translate($link-target/h3/span[contains(@class,'full_name')],$upper,$lower)"/>
-    </xsl:variable>
-    <xsl:text>[&amp;lt;</xsl:text>
-    <xsl:value-of select="$link-target/h3/span[contains(@class,'tag')]"/>
-    <xsl:text>>]</xsl:text>
+  <xsl:template match="a[starts-with(@href,'#')]">
+    <xsl:variable name="link-target" select="key('element-by-id',substring-after(@href,'#'))"/>
+    <xsl:text>[</xsl:text>
+    <xsl:value-of select="replace(.,'&lt;','&amp;lt;')"/>
+    <xsl:text>]</xsl:text>
     <xsl:text>(#</xsl:text>
-    <xsl:value-of select="translate($text,' ','-')"/>
+    <xsl:value-of select="replace($link-target/*[1]/normalize-space(.),'\s','-')"/>
     <xsl:text>)</xsl:text>
   </xsl:template>
   
