@@ -8,6 +8,13 @@ invoke = element invoke { hrefAttr, (\include?, exclude?) }
 
 \include = element include { ((all, param*) | (call | param)+ ) }
 
+# Move params to a separate 'set' element?
+# Logic: params override params given in source catalogs or profiles
+# but they apply only to controls included.
+# parameters not belonging to included controls/subcontrols might be filtered out of 'set'
+# applicable parameters in 'set' might remain
+# expansion logic could also provide set/param for any param not already represented
+
 # 'all' or 'filter' make sense for inclusions but not exclusions
 exclude = element exclude { call+ }
 

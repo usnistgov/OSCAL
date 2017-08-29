@@ -162,3 +162,30 @@ select:before { content: 'Selection ' }
 
 select { display: inline }
 choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }
+
+profile
+
+
+invoke, include, exclude { padding: 0.5em; margin: 0.5em; border: medium double black;
+          -oxy-foldable: true }
+     
+invoke:before {
+  content: 'Invoke catalog '
+        oxy_urlChooser(        
+        edit, "@href",
+        columns 53);
+}
+
+call[control-id]  { color: blue; font-weight: bold; content: oxy_textfield(
+          edit, '@control-id',
+          columns, 20) }
+
+call[subcontrol-id]  { color: green; content: oxy_textfield(
+          edit, '@subcontrol-id',
+          columns, 20) }
+
+call[param-id]  { color: darkorange; content: oxy_textfield(
+          edit, '@subcontrol-id',
+          columns, 20) }
+
+all { content: "All" }

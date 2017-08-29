@@ -102,7 +102,7 @@ div div div h3 { font-size: 110% }
   <xsl:template match="oscal:param">
     <p class="param">
       <span class="subst">
-        <xsl:for-each select="@target">
+        <xsl:for-each select="@id">
           <xsl:value-of select="."/>
         </xsl:for-each>
         <xsl:text>: </xsl:text>
