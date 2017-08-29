@@ -18,7 +18,9 @@
         </title>
         <style type="text/css">
 
-.control { margin:1em; padding: 1em; border: thin dotted black }
+section, div { margin-top:1em }
+
+.control { padding: 1em; border: thin dotted black }
 .control > *:first-child { margin-top: 0em }
 
 h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin: 0em }
@@ -42,12 +44,17 @@ div div div h3 { font-size: 110% }
 .tag:after  { content: '&gt;' }
 .code { font-family: monospace }
 
-#toc-panel { border: thin solid black; float: left; max-width: 20%; font-size: 80%;
+#toc-panel { border: thin solid black; float: left; max-width: 25%; font-size: 80%; font-family: sans-serif;
   padding: 1em; position: fixed; max-height: 90%; overflow: auto }
 .toc { margin: 0em; padding: 0em; margin-left: 1em; border: none }
 .toc-line { margin: 0em; padding-left: 3em; text-indent: -3em }
 
-#main { margin-left: 22%; padding-left: 2em }
+#main { margin-left: 27%; padding-left: 2em }
+
+a { text-decoration: none; color: midnightblue }
+a:hover { text-decoration: underline; color: blue }
+a:visited { color: midnightblue }
+
         </style>
       </head>
       <body>

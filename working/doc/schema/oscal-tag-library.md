@@ -114,7 +114,7 @@
 
 ## OSCAL namespace 
 
-Conformant (valid) OSCAL documents will not contain elements not described in the OSCAL specification. While OSCAL may be mixed with other tag sets or extended, neither of these uses is described by this document, which provides only bare-bones information about the OSCAL "core". 
+Conformant (valid) OSCAL documents will not contain elements not described in this document. While OSCAL may be mixed with other tag sets or extended, neither of these uses is described here: this document provides only basic information about the OSCAL "core". 
 
 The element population of an OSCAL document (set) may be determined by means of XPath `distinct-values(//*/node-name())`, or analogous query. 
 
