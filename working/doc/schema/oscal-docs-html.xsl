@@ -42,8 +42,8 @@ div div div h3 { font-size: 110% }
 
 .param .em { font-style: roman }
 
-.tag:before { content: '&lt;' }
-.tag:after  { content: '&gt;' }
+.tag:before { content: '\3C' }
+.tag:after  { content: '\3E' }
 .code { font-family: monospace }
 
 #toc-panel { border: thin solid black; float: left; max-width: 25%; font-size: 80%; font-family: sans-serif;

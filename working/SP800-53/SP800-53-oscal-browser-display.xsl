@@ -21,7 +21,7 @@ h3 { font-size: 120% }
 
 // div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
 // div.part { border: none; padding: 0em; margin: 0em }
-.part { max-width: 48em }
+.part {  }
 
 section h3     { font-size: 160% }
 section h3     { font-size: 140% }

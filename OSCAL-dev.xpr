@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="19.0">
     <meta>
-        <filters directoryPatterns="" filePatterns="OSCAL-dev.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
+        <filters directoryPatterns="" filePatterns="OSCAL-dev.xpr" positiveFilePatterns="*.*" showHiddenFiles="false"/>
         <options>
             <serialized version="19.0" xml:space="preserve">
                 <serializableOrderedMap>
@@ -10,7 +10,7 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/doc/schema/oscal-oscal.xml</String>
+                                    <String>working/doc/schema/oscal-docs-html.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -25,16 +25,16 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/doc/schema/oscal-docs-html.xsl</String>
+                                    <String>working/doc/schema/oscal-oscal.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Run XSLT on OSCAL docs (oscal)</String>
+                                        <String>Run schema production pipeline</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>XML</String>
+                                        <String>XPROC</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
