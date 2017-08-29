@@ -56,9 +56,9 @@
   </xsl:template>
   
   <xsl:template match="control | subcontrol" mode="filter-controls">
-    A control or subcontrol is always excluded if it appears in invoke/exclude
+    <!--A control or subcontrol is always excluded if it appears in invoke/exclude
     Otherwise, it is included if empty(invoke/include), exists(invoke/all)
-    or exists(invoke/call[(@control-id | @subcontrol-id)=current()/@id]
+    or exists(invoke/call[(@control-id | @subcontrol-id)=current()/@id]-->
     
     
   </xsl:template>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/xsl" href="profile-basic-display.xsl"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<?xml-model href="lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://scap.nist.gov/schema/oscal">
+  <invoke href="SP800-53/SP800-53-OSCAL-refined.xml">
+    <include> <!--(all | call+) --> 
+      <all/>
+      <!--<call control-id="ac.1"><!-\-ACCESS CONTROL POLICY AND PROCEDURES-\-></call>
+      <call control-id="pm.1"><!-\-INFORMATION SECURITY PROGRAM PLAN-\-></call>
+      <call control-id="at.1"><!-\-SECURITY AWARENESS AND TRAINING POLICY AND PROCEDURES-\-></call>
+      <call control-id="at.2"><!-\-SECURITY AWARENESS TRAINING-\-></call>
+      <call control-id="at.1"><!-\-SECURITY AWARENESS AND TRAINING POLICY AND PROCEDURES-\-></call>-->
+      
+    </include>
+   
+  </invoke>
+  <!--<invoke href="../ISO-27002/ISO-27002-OSCAL-refined.xml">
+    <include> <!-\-(all | call+) -\-> 
+      <all/>
+    </include>
+  </invoke>-->
+  
+</profile>
