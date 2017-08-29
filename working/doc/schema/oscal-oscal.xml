@@ -5,7 +5,7 @@
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
-  <title>OSCAL: the Open Security Controls Assessment Language</title>
+  <title>OSCAL: The Open Security Controls Assessment Language</title>
   <!--<declarations>
     <property context="element-description" class="tag">
           <required/>
@@ -23,18 +23,18 @@
   </declarations>-->
   <section>
     <title>OSCAL namespace</title>
+    <p>Conformant (valid) OSCAL documents will not contain elements not described in the OSCAL
+      specification. While OSCAL may be mixed with other tag sets or extended, neither of these
+      uses is described by this document, which provides only bare-bones
+      information about the OSCAL <q>core</q>.</p>
     <p>The element population of an OSCAL document (set) may be determined by means of XPath
         <code>distinct-values(//*/node-name())</code>, or analogous query.</p>
-    <p>Conformant (valid) OSCAL documents will not contain elements not described in this
-      specification. While OSCAL may be mixed with other tag sets, or extended, neither of these
-      uses is described or circumscribed by this document, which provides only bare-bones
-      information about the OSCAL <q>core</q>.</p>
     <p>For its XML names, OSCAL uses the namespace <a>XXX http://scap.nist.gov/schema/oscal XXX</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
       without a prefix, <code>oscal:</code> or any other.</p>
     <p>By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should
-      always strip the OSCAL namespace, to produce HTML in the appropriate namespace for the target
+      always strip the OSCAL namespace to produce HTML in the appropriate namespace for the target
       application. (Or the target application could learn to consume OSCAL.) Only some parts of
       HTML, however, make their way into OSCAL, which is designed to address its own
       requirements.</p>
@@ -43,29 +43,28 @@
     <title>OSCAL organization</title>
     <p>OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form
         <q>documentary</q> format, which includes semantic <q>islands</q> of structured information.
-      These are <q>semantic</q> not only because they are addressable in principle, but more
-      importantly because their organizations and values may be known (at least with respect to
-      certain operations and relations), before processing occurs, even (at the most general level)
-      before operations are designed and deployed. OSCAL offers a Yin to the Yang of query and
+      These are semantic not only because they are addressable in principle, but more
+      importantly because their organizations and values may be known before processing occurs, 
+      at least with respect to certain operations and relations, and even (at the most general level)
+      before operations are designed and deployed. OSCAL offers a yin to the yang of query and
       processing.</p>
-    <p>At the broadest level, <q>control objects</q> in OSCAL, as it is formally defined, include
-      controls, subcontrols (i.e. control extensions), parts of controls or subcontrols, and control
+    <p>At the broadest level, <q>control objects</q> in OSCAL include
+      controls, subcontrols (i.e., control extensions), parts of controls or subcontrols, and control
       groups. In other words, <q>control</q> over OSCAL data structures is offered at many levels at
-      once. It will be the job of a particular OSCAL application domain to determine what the most
-      appopriate level of description, for that domain, to describe best as <q>control</q>,
-        <q>subcontrol</q> etc.</p>
+      once. It will be the job of a particular OSCAL application domain to determine the
+      appopriate level of description to describe <q>control</q>, <q>subcontrol</q>, etc.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>control</code>,
         <code>subcontrol</code> and <code>part</code>. According to its rules, subcontrols may only
       appear within controls. Either controls or subcontrols may be partitioned (may contain parts),
       and parts may contain their own parts. Any of these objects may be <q>controlled</q> in the
-      sense that they may be used, consistently, to carry regular sets of properties, whose names
-      and value spaces may be known in advance, or discovered dynamically.</p>
+      sense that it may be used consistently to carry regular sets of properties with names
+      and value spaces that may be known in advance or discovered dynamically.</p>
   </section>
   <section>
     <title>Interoperability with other data formats</title>
     <p>OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language
-      including HTML, Markdown and its variants, NISO JATS, DITA, etc. etc. Additionally, OSCAL
+      including HTML, Markdown and its variants, NISO JATS, DITA, etc. Additionally, OSCAL
       documents may be taken as <q>warrants for inference</q> for serialization of linked data
       objects or other application binding formats including JSON.</p>
     <p>Because OSCAL is semantically richer and denser than most markup languages as used, however,
@@ -75,9 +74,9 @@
   <group>
     <title>Controls and control components</title>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
-      components, including both controlled components, and relatively uncontrolled or free-form
+      components, including both controlled components and relatively uncontrolled or free-form
       contents. The latter category of information is described elsewhere as <a
-        href="oscal-oscal.xml#prose">Prose</a>. The former category is described here.</p>
+        href="oscal-oscal.xml#prose">prose</a>. The former category is described here.</p>
     <control class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
@@ -93,11 +92,10 @@
       </part>
       <part class="remarks">
         <p>Most often, a collection element will be used for a set of controls derived from one or
-          more control catalogs (such as a profile, baseline or overlay), which do not themselves
-          serve as a catalog.</p>
-        <p>However, collections may contain everything that catalogs may contain, and OSCAL does not
-          prohibit their use as (source or interim) catalogs for profiling. (Although an application
-          might).</p>
+          more control catalogs (such as a profile, baseline, or overlay), which do not themselves
+          serve as a catalog. However, collections may contain everything that catalogs may contain, 
+          and OSCAL does not prohibit their use as (source or interim) catalogs for profiling, 
+          although an individual application might.</p>
       </part>
     </control>
     <control class="element-description">
@@ -107,42 +105,42 @@
         <p>A structured information object representing a security control</p>
       </part>
       <part class="remarks">
-        <p>Controls may be grouped using <code>group</code>, and controls may be partitioned, using
-          either formal <code>subcontrol</code> or (informally) <code>part</code>.</p>
+        <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
+          either (formally) <code>subcontrol</code> or (informally) <code>part</code>.</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control enhancement</prop>
       <part class="description">
-        <p>Within a control, a component or enhancement</p>
+        <p>A component or enhancement within a control</p>
       </part>
       <part class="remarks">
-        <p>A nominal subcontrol or <q>control enhancement</q>, permitting catalogs easily to provide
+        <p>A nominal subcontrol or <q>control enhancement</q> permits catalogs to easily provide
           access to structured data at two levels. Further levels down can be achieved using
             <code>part</code> (both controls and subcontrols may be partitioned), which may contain
-          their own parts; however having <q>controls</q> and <q>subcontrols</q> known in advance to
-          be especially significant, is helpful.</p>
+          their own parts; however, knowing in advance which <q>controls</q> and <q>subcontrols</q> 
+          are especially significant is helpful.</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">prop</prop>
       <prop class="full_name">Property</prop>
       <part class="description">
-        <p>A value with a name, attributed to the containing control, subcontrol, feature or
+        <p>A value with a name, attributed to the containing control, subcontrol, feature, or
           group</p>
       </part>
       <part class="remarks">
         <p>The notation used by a property is up to an application; otherwise, properties are
-          distinguished in OSCAL by their not permitting inline markup of any kind. They are
-          expected to be simple scalar values or at any rate, to use machine-readable / parseable
+          distinguished in OSCAL by not permitting inline markup of any kind. They are
+          expected to be simple scalar values or to use machine-readable/parseable
           notation (not XML), as defined by and for an application.</p>
         <p>The lexical composition of properties may be constrained by declarations including
           matching to regular expressions or declaring known datatype notations (tbd).</p>
-        <p>Inasmuch as properties are often used as selectors or identifiers for OSCAL operations,
+        <p>Because properties are often used as selectors or identifiers for OSCAL operations,
           their values can be expected frequently to be flattened (markup stripped) and normalized
           (e.g., with respect to whitespace) in use; however this is application defined.</p>
-        <p>When singletons (that is, the only element among siblings with its <code>@class</code>),
+        <p>For singletons (that is, the only element among siblings with its <code>@class</code>),
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
           robustness of such queries can be ensured by appropriate property declarations (as
@@ -151,8 +149,8 @@
         <p>Properties the deployment and management of arbitrary controlled values, with and among
           control objects (controls and their formal enhancements), for any purpose useful to an
           application or implementation of those controls. Typically and routinely, properties will
-          be used to sort, select, order and arrange controls or relate them to one another or to
-          class hierarchies, taxonomies or external authorities.</p>
+          be used to sort, select, order, and arrange controls or relate them to one another or to
+          class hierarchies, taxonomies, or external authorities.</p>
       </part>
     </control>
     <control class="element-description">
@@ -166,7 +164,7 @@
       <prop class="tag">part</prop>
       <prop class="full_name">Part</prop>
       <part class="description">
-        <p>A component or partition in a control, subcontrol or part</p>
+        <p>A component or partition in a control, subcontrol, or part</p>
       </part>
       <part class="remarks">
         <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
@@ -175,10 +173,10 @@
           these values as bindings (and thereby getting open-ended extensibility).</p>
         <p>An assigned class may frequently provide for a header in display, such that
             <code>part[@class='objectives']</code> is displayed under a header <em>Objectives</em>,
-          etc. Unlike groups, controls or subcontrols, however, they may not have <code>title</code>
-          element children (they are not <q>first class objects</q> in this sense). Thus in OSCAL,
-          if the components of your controls have their own titles, they are something else): to
-          accommodate data like this, consider using a property (e.g.
+          etc. Unlike groups, controls, or subcontrols, however, they may not have <code>title</code>
+          element children (they are not <q>first class objects</q> in this sense). Thus, in OSCAL
+          if the components of your controls have their own titles, they are something else; to
+          accommodate data like this, consider using a property (e.g.,
             <code>prop[@class='part-title']</code> as an escape hatch.</p>
       </part>
     </control>
@@ -189,7 +187,7 @@
         <p>A line or paragraph with a hypertext link</p>
       </part>
       <part class="remarks">
-        <p>Works like HTML anchor (<code>a</code>) except this is a line-oriented (block)
+        <p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
           element.</p>
       </part>
       
@@ -198,7 +196,7 @@
   <group>
     <title>Functional elements</title>
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
-      processors, for retrievability, manipulation (including mapping and transformation) and
+      processors for retrievability, manipulation (including mapping and transformation), and
       semantic traversal.</p>
     <control class="element-description">
       <prop class="tag">insert</prop>
@@ -230,15 +228,15 @@
     <p>By declaring constraints on control components, such as properties (<code>prop</code>), parts
         (<code>part</code>) and links (<code>link</code>) within controls and subcontrols,
       applications and operators can validate the regularity and composition of available controls.
-      By documenting constraints that are enforceable at need, Declarations also serve as an
+      By documenting constraints that are enforceable at need, declarations also serve as an
       implicit <q>semantic contract</q> between a control catalog (or set of controls valid to a set
-      of OSCAL declarations)</p>
+      of OSCAL declarations).</p>
     <p>In this way, the OSCAL declarations mechanism provides for a kind of <q>on the fly
         supertyping</q> of control objects, by restriction (constraint) of the core OSCAL language.
       The extent and degree to which declarations are used to impose order on controls is up to the
-      application and its methods: by no means are declarations necessary; rather, they serve as an
+      application and its methods. By no means are declarations necessary; rather, they serve as an
       aid in modeling and in communicating expectations.</p>
-    <p>OSCAL declarations are enforced by a Schematron; the core schema stipulates their model, but
+    <p>OSCAL declarations are enforced by a Schematron; the core schema stipulates their model but
       does not enforce any of the constraints so declared. Developers should take note that these
       constraints are all readily testable in XPath.</p>
     <control class="element-description">
@@ -299,8 +297,8 @@
         <p>When this element is present in the declaration of an OSCAL control component, the
           component (<code>prop</code>, <code>param</code>, <code>part</code>) must be the only
           component of that class given in its (<code>group</code>, <code>control</code>,
-            <code>subcontrol</code> or <code>part</code>) context. i.e., no other element child of
-          the same parent may have the same <code>@class</code> value (at the level of syntax), or
+            <code>subcontrol</code>, or <code>part</code>) context. In other words, no other element child of
+          the same parent may have the same <code>@class</code> value (at the level of syntax) or
           be bound to the same component type (at the semantic level).</p>
       </part>
     </control>
@@ -312,7 +310,7 @@
       </part>
       <part class="remarks">
         <p>When this element is present in the declaration of an OSCAL control component, the
-          component (<code>prop</code>, <code>param</code>, <code>stmt</code> or <code>feat</code>)
+          component (<code>prop</code>, <code>param</code>, <code>stmt</code>, or <code>feat</code>)
           is required to appear, at least once, in its context.</p>
       </part>
     </control>
@@ -325,7 +323,7 @@
       </part>
       <part class="remarks">
         <p>This constraint is generally only used for properties to be used as identifiers for their
-          control object (control, subcontrol or feature). Guaranteeing their uniqueness means that
+          control object (control, subcontrol, or feature). Guaranteeing their uniqueness means that
           these values can be used to effect one-to-one retrieval or reference to the objects to
           which they are assigned.</p>
       </part>
@@ -334,13 +332,13 @@
       <prop class="tag">regex</prop>
       <prop class="full_name">Regular expression constraint</prop>
       <part class="description">
-        <p>Indicates that the value of a property (<code>prop)</code> or parameter
+        <p>Indicates that the value of a property (<code>prop</code>) or parameter
             (<code>param</code>) must match the given regular expression</p>
       </part>
       <part class="remarks">
         <p>Matching against a regular expression is conducted on the normalized lexical value of the
           given parameter or property: that is, with leading and trailing whitespace stripped,
-          interim whitespace (space, tab or line feed) normalized to single spaces, and inline
+          interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline
           markup stripped.</p>
       </part>
     </control>
@@ -352,7 +350,7 @@
       </part>
       <part class="remarks">
         <p>In a declaration, <code>value</code> will commonly be given in groups, indicating a set
-          of enumerated permissible values. (I.e. for an element to be valid to a value constraint,
+          of enumerated permissible values (i.e., for an element to be valid to a value constraint,
           it must equal one of the given values).</p>
         <p>In a parameter, a value represents a value assignment to the parameter, overriding any
           value given at the point of insertion. When parameters are provided in OSCAL profiles,
@@ -365,7 +363,7 @@
       <part class="description">
         <p>Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
-          alphabetic, roman etc)</p>
+          alphabetic, roman, etc.)</p>
       </part>
       <part class="remarks">
         <p>In a declaration, <code>value</code> will be given in groups, indicating a set of
@@ -376,9 +374,9 @@
         <p>The <em>contents</em>, not the value of any attribute, will be taken by the processor to
           be a formatting code. The format should follow the spec for <a
             href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
-              <code>xsl:number/@format</code></a>. For example, if the value is <q>A.</q> then
+              <code>xsl:number/@format</code></a>. For example, if the value is <q>A.</q>, then
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
-          include upper and lower case alphabetic numbering, arabic numbering, and upper- and
+          include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
         <p>The best way to understand the workings of this element is to see operational
           examples.</p>
@@ -399,11 +397,11 @@
           property (<code>prop</code>) higher in the containment hierarchy of a control object. That
           is, if a property with <code>@class='number'</code> is constrained with
             <code>value/inherit</code>, it must be the same as is assigned on the closest ancestor
-          (feature, subcontrol, control or group) with the given property.</p>
+          (feature, subcontrol, control, or group) with the given property.</p>
         <p>Usually, <code>inherit</code> is used in conjunction with <code>autonum</code> (qv).
           Using the two elements in combination, for example, the number (property) assigned to a
           subcontrol appearing inside a control numbered <q>A1</q> may be constrained to be
-            <q>A1-a</q>, <q>A1-b</q> etc., depending on the position of the subcontrol within the
+            <q>A1-a</q>, <q>A1-b</q>, etc., depending on the position of the subcontrol within the
           control.</p>
         <p>If a value must inherit from a property of a different class from the containing control
           object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
@@ -445,12 +443,12 @@
       <part class="remarks">
         <p>In addition to controls or groups, groups may be titled and may have their own
           properties, statements, parameter settings and references, subject to declaration. In this
-          respect they are like control objects (control, subcontrol and feature), albeit their
-          properties apply to the entire group – and must be acquired in processing via
+          respect they are like control objects (control, subcontrol and feature), but their
+          properties apply to the entire group and must be acquired in processing via
           inheritance.</p>
         <p>Unlike sections (<code>section</code> elements), groups may not contain arbitrary prose
-          (paragraphs and lists). They may however contain statements (stmt), which may be untyped
-          (no @class) and therefore unconstrained by declarations.</p>
+          (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped
+          (no <code>@class</code>) and therefore unconstrained by declarations.</p>
       </part>
       
     </control>
@@ -503,7 +501,7 @@
   </group>
   <group id="prose">
     <title>Prose</title>
-    <p>Prose may ordinarily appear anywhere, in a control, subcontrol or part, or at a higher level.
+    <p>Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level.
       Prose elements echo HTML semantics, although they provide only a deliberately and specifically
       narrow subset of HTML element types.</p>
     <p>Prose elements may be constrained by declarations like other control components, although
@@ -515,7 +513,7 @@
       <prop class="tag">p</prop>
       <prop class="full_name">Paragraph</prop>
       <part class="description">
-        <p>Or paragraph fragment</p>
+        <p>Paragraph or paragraph fragment</p>
       </part>
       <part class="remarks">
         <p>This element echoes HTML <code>p</code>; like its forebear, it is not limited to
@@ -541,9 +539,9 @@
       </part>
       <part class="remarks">
         <p>Although this echoes HTML <code>ol</code>, renditional aspects of this element are not
-          offered by OSCAL. How numbering of lists are to be numbered is left to implementations; it
+          offered by OSCAL. How lists are to be numbered is left to implementations; it
           is likely that specific control catalogs will have their own schemes.</p>
-        <p>At present there is no support for <q>continued lists</q> as we have not seen any in
+        <p>At present there is no support for <q>continued lists</q>, as we have not seen any in
           documents in scope for analysis.</p>
       </part>
     </control>
@@ -551,7 +549,7 @@
       <prop class="tag">ul</prop>
       <prop class="full_name">Unordered list</prop>
       <part class="description">
-        <p>A series of items kept in order but without indicators of sequence, likely bulleted</p>
+        <p>A series of items kept in order but without indicators of sequence; likely bulleted</p>
       </part>
       <part class="remarks">
         <p>As in HTML, <q>unordered</q> does not indicate that the order of contained list items is
@@ -567,14 +565,14 @@
       <prop class="tag">li</prop>
       <prop class="full_name">List item</prop>
       <part class="description">
-        <p>An item demarcated with bullet or numerator</p>
+        <p>An item demarcated with a bullet or numerator</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">em</prop>
       <prop class="full_name">Emphasis</prop>
       <part class="description">
-        <p>Rhetorical emphasis as indicated typically by a font shift</p>
+        <p>Rhetorical emphasis as typically indicated by a font shift</p>
       </part>
       <part class="remarks">
         <p>In display, this element can be expected to <q>toggle</q>, i.e. provide for italics when
@@ -590,7 +588,7 @@
         <p>Typographical shift to italics</p>
       </part>
       <part class="remarks">
-        <p>An implementation may toggle, i.e. display contents using a roman face when the
+        <p>An implementation may toggle, i.e., display contents using a roman face when the
           surrounding text is already italic.</p>
       </part>
     </control>
@@ -601,7 +599,7 @@
         <p>Typographical shift to bold</p>
       </part>
       <part class="remarks">
-        <p>In display, when surrounding text is already bold, an implementation may indicate
+        <p>In display, when the surrounding text is already bold, an implementation may indicate
             <q>bold</q> by means of double-bold or some other typographical distinction.</p>
       </part>
     </control>
@@ -615,8 +613,8 @@
         <p>As in HTML, the link target is indicated by <code>@href</code>, with a '#' prefix for an
           internal cross-reference matching an <code>@id</code> elsewhere in the document.</p>
         <p>Anchors without <code>@href</code> are not invalid to the OSCAL schema (base validation),
-          but may be reported by a Schematron. In use, an application may promote the contents of a
-            <code>a</code> element, when a valid URI, to serve as the link target, if
+          but may be reported by a Schematron. An application may promote the contents of an
+            <code>a</code> element, when a valid URI, to serve as the link target if
             <code>@href</code> is missing or not a URI.</p>
       </part>
     </control>
@@ -654,9 +652,6 @@
       <part class="description">
         <p>Subscripted text</p>
       </part>
-      <part class="remarks">
-        <p>Strictly, this element should identify formal code or code fragments.</p>
-      </part>
     </control>
     <control class="element-description">
       <prop class="tag">span</prop>
@@ -672,19 +667,19 @@
   <group>
     <title>Structural constraints</title>
     <part>
-      <p>Over and above what is validable with a grammar (in Level 0), there is a small set of
+      <p>Over and above what can be validated with a grammar (in Level 0), there is a small set of
         constraints governing usage. Validations enforcing them can be implemented via Schematron or
         another process capable of static analysis of the data.</p>
     </part>
     <control class="general-constraint">
-      <title>Within a control, properties, statements and parameters may occur in any order.</title>
+      <title>Within a control, properties, statements, and parameters may occur in any order.</title>
       <part class="description">
         <p>This specification does not govern how or whether an implementation may respect the order
-          of properties and statements given within a control type. Among properties, statements and
+          of properties and statements given within a control type. Among properties, statements, and
           parameters (that is, named things) within a control, cardinality constraints (where
           enforced) can help ensure a canonical order. An order may be imposed locally (for example,
           by a schema that requires all properties to appear before all statements), but this is for
-          its convenience not because an order is mandated.</p>
+          its convenience, not because an order is mandated.</p>
       </part>
     </control>
   </group>
@@ -692,20 +687,20 @@
     <title>Customization layers</title>
     <p>Like many tag languages and machine-readable syntaxes, OSCAL is intended to be extended and
       customized. Unlike most other formats, however, OSCAL's extension mechanism includes a set of
-      features, supported natively in the language, for extension by the simplest possible
+      features supported natively in the language for extension by the simplest possible
       mechanism, without requiring modification of any schemas, using a simple, native set of
       declarations for controls.</p>
     <p>OSCAL's validation model consists of several layers. At base is schema validation, which
       ensures that all tags in use are recognized as OSCAL tagging and that their arrangement in the
-      document (with regard to both structure, and certain <q>semantic</q> relations) is consistent
+      document (with regard to both structure and certain <q>semantic</q> relations) is consistent
       with regular usage of OSCAL. In a second layer, other relationships can be tested and rules
       enforced, over and above what a schema imposes. Implemented in Schematron or any technology
-      with analogous capabilities, such as second layer is more flexible and configurable than the
+      with analogous capabilities, such a second layer is more flexible and configurable than the
       base layer.</p>
-    <p>In a third layer, an OSCAL document is validated to constraints it declares for itself, that
-      is locally in its own declarations. (Call this a <q>consistency check</q> rather than
+    <p>In a third layer, an OSCAL document is validated to constraints it declares for itself
+      (locally in its own declarations). (Call this a <q>consistency check</q> rather than
       validation, for clarity.) Such a validation may be useful to an OSCAL implementation, which
-      can take advantage of contracts implicit in such validation to provide functionalities; OSCAL
+      can take advantage of contracts implicit in such validation to provide functionalities. OSCAL
       itself does not provide such functionality, but only the hooks – and the mechanism by which
       users and developers can easily create and manage new control types.</p>
   </section>
