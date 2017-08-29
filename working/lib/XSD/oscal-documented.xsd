@@ -71,8 +71,7 @@
       <xs:annotation>
          <xs:documentation>
             <b>Identifier constraint</b> The declared component has a value unique within the document, among components of the
-          same type (bearing the applicable <code xmlns="http://scap.nist.gov/schema/oscal">@class</code>
-         </xs:documentation>
+          same type</xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>
@@ -135,7 +134,7 @@
    <xs:element name="regex" type="xs:string">
       <xs:annotation>
          <xs:documentation>
-            <b>Regular expression constraint</b> Indicates that the value of a property (<code xmlns="http://scap.nist.gov/schema/oscal">prop)</code> or parameter
+            <b>Regular expression constraint</b> Indicates that the value of a property (<code xmlns="http://scap.nist.gov/schema/oscal">prop</code>) or parameter
             (<code xmlns="http://scap.nist.gov/schema/oscal">param</code>) must match the given regular expression</xs:documentation>
       </xs:annotation>
    </xs:element>
@@ -158,7 +157,7 @@
    <xs:element name="inherit">
       <xs:annotation>
          <xs:documentation>
-            <b>Inherited value constraint</b> Indicates that a value or part of a value will be inherited from a property on a
+            <b>Inherited value constraint</b> Indicates that a value or text within a value should be inherited from a property on a
           containing control object</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
@@ -170,14 +169,13 @@
          <xs:documentation>
             <b>Autonumbered (generated) value</b> Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
-          alphabetic, roman etc)</xs:documentation>
+          alphabetic, roman, etc)</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="section">
       <xs:annotation>
          <xs:documentation>
-            <b>Division</b> A chapter, section or subsection partitioning a catalog, collection or section
-          therein</xs:documentation>
+            <b>Section</b> For partitioning a catalog, collection or section therein</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -244,7 +242,7 @@
    <xs:element name="subcontrol">
       <xs:annotation>
          <xs:documentation>
-            <b>Control enhancement</b> Within a control, a component or enhancement</xs:documentation>
+            <b>Control extension</b> A component or enhancement within a control</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -265,7 +263,7 @@
    <xs:element name="part">
       <xs:annotation>
          <xs:documentation>
-            <b>Part</b> A component or partition in a control, subcontrol or part</xs:documentation>
+            <b>Part</b> A component or partition in a control, subcontrol, or part</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -334,8 +332,7 @@
    <xs:element name="prop">
       <xs:annotation>
          <xs:documentation>
-            <b>Property</b> A value with a name, attributed to the containing control, subcontrol, feature or
-          group</xs:documentation>
+            <b>Property</b> A value with a name, attributed to the containing control, subcontrol, part, or group</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attributeGroup ref="oscal:requiredClass"/>
@@ -406,7 +403,7 @@
    <xs:element name="p">
       <xs:annotation>
          <xs:documentation>
-            <b>Paragraph</b> Or paragraph fragment</xs:documentation>
+            <b>Paragraph</b> Paragraph or paragraph fragment</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:whatnot"/>
@@ -441,7 +438,7 @@
    <xs:element name="li">
       <xs:annotation>
          <xs:documentation>
-            <b>List item</b> An item demarcated with bullet or numerator</xs:documentation>
+            <b>List item</b> An item demarcated with a bullet or numerator</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -456,7 +453,7 @@
    <xs:element name="ul">
       <xs:annotation>
          <xs:documentation>
-            <b>Unordered list</b> A series of items kept in order but without indicators of sequence, likely bulleted</xs:documentation>
+            <b>Unordered list</b> A series of items kept in order but without indicators of sequence; likely bulleted</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -519,7 +516,7 @@
    <xs:element name="em">
       <xs:annotation>
          <xs:documentation>
-            <b>Emphasis</b> Rhetorical emphasis as indicated typically by a font shift</xs:documentation>
+            <b>Emphasis</b> Rhetorical emphasis as typically indicated by a font shift</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -598,7 +595,7 @@
             <xs:element name="em">
                <xs:annotation>
                   <xs:documentation>
-                     <b>Emphasis</b> Rhetorical emphasis as indicated typically by a font shift</xs:documentation>
+                     <b>Emphasis</b> Rhetorical emphasis as typically indicated by a font shift</xs:documentation>
                </xs:annotation>
                <xs:complexType mixed="true">
                   <xs:attributeGroup ref="oscal:optionalClass"/>

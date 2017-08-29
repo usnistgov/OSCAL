@@ -48,11 +48,10 @@
       at least with respect to certain operations and relations, and even (at the most general level)
       before operations are designed and deployed. OSCAL offers a yin to the yang of query and
       processing.</p>
-    <p>At the broadest level, <q>control objects</q> in OSCAL include
-      controls, subcontrols (i.e., control extensions), parts of controls or subcontrols, and control
-      groups. In other words, <q>control</q> over OSCAL data structures is offered at many levels at
-      once. It will be the job of a particular OSCAL application domain to determine the
-      appopriate level of description to describe <q>control</q>, <q>subcontrol</q>, etc.</p>
+    <p>At the broadest level, <q>control objects</q> in OSCAL include controls, subcontrols, parts
+      of controls or subcontrols, and control groups. Each OSCAL application or application domain
+      will determine for itself how these correspond to entities or <q>control objects</q> within
+      that domain.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>control</code>,
         <code>subcontrol</code> and <code>part</code>. According to its rules, subcontrols may only
@@ -74,9 +73,8 @@
   <group>
     <title>Controls and control components</title>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
-      components, including both controlled components and relatively uncontrolled or free-form
-      contents. The latter category of information is described elsewhere as <a
-        href="oscal-oscal.xml#prose">prose</a>. The former category is described here.</p>
+      components, including both formal components (described here) and relatively uncontrolled or
+      free-form contents (described elsewhere as <a href="oscal-oscal.xml#prose">prose</a>).</p>
     <control class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
@@ -111,15 +109,15 @@
     </control>
     <control class="element-description">
       <prop class="tag">subcontrol</prop>
-      <prop class="full_name">Control enhancement</prop>
+      <prop class="full_name">Control extension</prop>
       <part class="description">
         <p>A component or enhancement within a control</p>
       </part>
       <part class="remarks">
-        <p>A nominal subcontrol or <q>control enhancement</q> permits catalogs to easily provide
+        <p>A nominal subcontrol or <q>control extension</q> permits catalogs to easily provide
           access to structured data at two levels. Further levels down can be achieved using
             <code>part</code> (both controls and subcontrols may be partitioned), which may contain
-          their own parts; however, knowing in advance which <q>controls</q> and <q>subcontrols</q> 
+          their own parts; however, knowing in advance which <q>controls</q> and <q>subcontrols</q>
           are especially significant is helpful.</p>
       </part>
     </control>
@@ -127,8 +125,7 @@
       <prop class="tag">prop</prop>
       <prop class="full_name">Property</prop>
       <part class="description">
-        <p>A value with a name, attributed to the containing control, subcontrol, feature, or
-          group</p>
+        <p>A value with a name, attributed to the containing control, subcontrol, part, or group</p>
       </part>
       <part class="remarks">
         <p>The notation used by a property is up to an application; otherwise, properties are
@@ -146,8 +143,8 @@
           robustness of such queries can be ensured by appropriate property declarations (as
           singletons and as identifiers); cf <code>property</code> in the declarations model (which
           also supports other constraints over property values).</p>
-        <p>Properties the deployment and management of arbitrary controlled values, with and among
-          control objects (controls and their formal enhancements), for any purpose useful to an
+        <p>Properties permit the deployment and management of arbitrary controlled values, with and
+          among control objects (controls and parts and extensions), for any purpose useful to an
           application or implementation of those controls. Typically and routinely, properties will
           be used to sort, select, order, and arrange controls or relate them to one another or to
           class hierarchies, taxonomies, or external authorities.</p>
@@ -251,9 +248,9 @@
           generically), but also against a set of declarations provided specifically for the catalog
           or catalog type within which they appear. Constraints described in these declarations, and
           bound via assignments of <code>@class</code> (for control components) and
-            <code>@context</code> (indicating control, subcontrol or features wherein the components
-          may appear), enable automated checking for consistency of controls, subcontrols and
-          features, specific to the types or kinds of control items that appear within a particular
+            <code>@context</code> (indicating control, subcontrol or part wherein the components may
+          appear), enable automated checking for consistency of controls, subcontrols and their
+          parts, specific to the types or kinds of control items that appear within a particular
           catalog or control collection.</p>
       </part>
     </control>
@@ -319,11 +316,11 @@
       <prop class="full_name">Identifier constraint</prop>
       <part class="description">
         <p>The declared component has a value unique within the document, among components of the
-          same type (bearing the applicable <code>@class</code></p>
+          same type</p>
       </part>
       <part class="remarks">
         <p>This constraint is generally only used for properties to be used as identifiers for their
-          control object (control, subcontrol, or feature). Guaranteeing their uniqueness means that
+          control object (control, subcontrol, or part). Guaranteeing their uniqueness means that
           these values can be used to effect one-to-one retrieval or reference to the objects to
           which they are assigned.</p>
       </part>
@@ -363,23 +360,17 @@
       <part class="description">
         <p>Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
-          alphabetic, roman, etc.)</p>
+          alphabetic, roman, etc)</p>
       </part>
       <part class="remarks">
-        <p>In a declaration, <code>value</code> will be given in groups, indicating a set of
-          enumerated permissible values.</p>
-        <p>In a parameter, a value represents a value assignment to the parameter, overriding any
-          value given at the point of insertion. When parameters are provided in OSCAL profiles,
-          their values will override any values assigned <q>lower down the stack</q>.</p>
-        <p>The <em>contents</em>, not the value of any attribute, will be taken by the processor to
-          be a formatting code. The format should follow the spec for <a
+        <p>The text contents of <code>autonum</code> (not the value of any attribute), will be taken
+          by the processor to be a formatting code. The format should follow the spec for <a
             href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
               <code>xsl:number/@format</code></a>. For example, if the value is <q>A.</q>, then
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
           include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
-        <p>The best way to understand the workings of this element is to see operational
-          examples.</p>
+        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
       
     </control>
@@ -387,7 +378,7 @@
       <prop class="tag">inherit</prop>
       <prop class="full_name">Inherited value constraint</prop>
       <part class="description">
-        <p>Indicates that a value or part of a value will be inherited from a property on a
+        <p>Indicates that a value or text within a value should be inherited from a property on a
           containing control object</p>
       </part>
       <part class="remarks">
@@ -397,18 +388,17 @@
           property (<code>prop</code>) higher in the containment hierarchy of a control object. That
           is, if a property with <code>@class='number'</code> is constrained with
             <code>value/inherit</code>, it must be the same as is assigned on the closest ancestor
-          (feature, subcontrol, control, or group) with the given property.</p>
-        <p>Usually, <code>inherit</code> is used in conjunction with <code>autonum</code> (qv).
-          Using the two elements in combination, for example, the number (property) assigned to a
-          subcontrol appearing inside a control numbered <q>A1</q> may be constrained to be
-            <q>A1-a</q>, <q>A1-b</q>, etc., depending on the position of the subcontrol within the
-          control.</p>
+            (<code>part</code>, <code>subcontrol</code>, <code>control</code>, or
+          <code>group</code>) with the given property.</p>
+        <p>Usually, <code>inherit</code> is used in conjunction with <code>autonum</code>. Using the
+          two elements in combination, for example, the number (property) assigned to a subcontrol
+          appearing inside a control numbered <q>A1</q> may be constrained to be <q>A1-a</q>,
+            <q>A1-b</q>, etc., depending on the position of the subcontrol within the control.</p>
         <p>If a value must inherit from a property of a different class from the containing control
           object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
           class). By default, <code>inherit</code> indicates a property value should match an
           ancestor's property with the same <code>@class</code> (the most usual case).</p>
-        <p>The best way to understand the workings of this element is to see operational
-          examples.</p>
+        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
     </control>
     <control class="element-description">
@@ -424,14 +414,13 @@
     <title>Structural elements</title>
     <control class="element-description">
       <prop class="tag">section</prop>
-      <prop class="full_name">Division</prop>
+      <prop class="full_name">Section</prop>
       <part class="description">
-        <p>A chapter, section or subsection partitioning a catalog, collection or section
-          therein</p>
+        <p>For partitioning a catalog, collection or section therein</p>
       </part>
       <part class="remarks">
-        <p>Echoes HTML5 <code>section</code>.</p>
-        <p>Like groups, sections (<code>section</code>)</p>
+        <p>Echoes HTML5 <code>section</code>. May contain controls (<code>control</code>) or groups
+          of controls (<code>group</code>).</p>
       </part>
     </control>
     <control class="element-description">
@@ -443,9 +432,8 @@
       <part class="remarks">
         <p>In addition to controls or groups, groups may be titled and may have their own
           properties, statements, parameter settings and references, subject to declaration. In this
-          respect they are like control objects (control, subcontrol and feature), but their
-          properties apply to the entire group and must be acquired in processing via
-          inheritance.</p>
+          respect they are like controls, subcontrols or parts, but their properties apply to the
+          entire group and must be acquired in processing via inheritance.</p>
         <p>Unlike sections (<code>section</code> elements), groups may not contain arbitrary prose
           (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped
           (no <code>@class</code>) and therefore unconstrained by declarations.</p>
@@ -516,9 +504,9 @@
         <p>Paragraph or paragraph fragment</p>
       </part>
       <part class="remarks">
-        <p>This element echoes HTML <code>p</code>; like its forebear, it is not limited to
-          indicating complete or discrete (compositional or logical) paragraphs, but can be used for
-          any text set off on its own line.</p>
+        <p>This element echoes HTML <code>p</code>; as in HTML, it is not limited to indicating
+          complete or discrete (compositional or logical) paragraphs, but can be used for any text
+          set off on its own line.</p>
       </part>
     </control>
     <control class="element-description">
@@ -683,25 +671,5 @@
       </part>
     </control>
   </group>
-  <section>
-    <title>Customization layers</title>
-    <p>Like many tag languages and machine-readable syntaxes, OSCAL is intended to be extended and
-      customized. Unlike most other formats, however, OSCAL's extension mechanism includes a set of
-      features supported natively in the language for extension by the simplest possible
-      mechanism, without requiring modification of any schemas, using a simple, native set of
-      declarations for controls.</p>
-    <p>OSCAL's validation model consists of several layers. At base is schema validation, which
-      ensures that all tags in use are recognized as OSCAL tagging and that their arrangement in the
-      document (with regard to both structure and certain <q>semantic</q> relations) is consistent
-      with regular usage of OSCAL. In a second layer, other relationships can be tested and rules
-      enforced, over and above what a schema imposes. Implemented in Schematron or any technology
-      with analogous capabilities, such a second layer is more flexible and configurable than the
-      base layer.</p>
-    <p>In a third layer, an OSCAL document is validated to constraints it declares for itself
-      (locally in its own declarations). (Call this a <q>consistency check</q> rather than
-      validation, for clarity.) Such a validation may be useful to an OSCAL implementation, which
-      can take advantage of contracts implicit in such validation to provide functionalities. OSCAL
-      itself does not provide such functionality, but only the hooks – and the mechanism by which
-      users and developers can easily create and manage new control types.</p>
-  </section>
+  <!-- commented this out as it needs reworking … <section><title>Customization layers</title><p>Like many tag languages and machine-readable syntaxes, OSCAL is intended to be extended and customized. Unlike most other formats, however, OSCAL's primary extension mechanism does not require schema extension, but is done within OSCAL itself, by introducing constraints over and above the basic tagging language in the form of declarations that apply to elements in the particular OSCAL instance or family.</p><p>OSCAL's validation model consists of several layers. At base is schema validation, which ensures that all tags in use are recognized as OSCAL tagging and that their arrangement in the document (with regard to both structure and certain <q>semantic</q> relations) is consistent with regular usage of OSCAL. In a second layer, other relationships can be tested and rules enforced, over and above what a schema imposes. Implemented in Schematron or any technology with analogous capabilities, such a second layer is more flexible and configurable than the base layer.</p><p>In a third layer, an OSCAL document is validated to constraints it declares for itself (locally in its own declarations). (Call this a <q>consistency check</q> rather than validation, for clarity.) Such a validation may be useful to an OSCAL implementation, which can take advantage of contracts implicit in such validation to provide functionalities. OSCAL itself does not provide such functionality, but only the hooks – and the mechanism by which users and developers can easily create and manage new control types.</p></section>-->
 </catalog>
