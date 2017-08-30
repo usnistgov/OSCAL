@@ -25,9 +25,9 @@
     <xsl:attribute name="class">name</xsl:attribute>
   </xsl:template>
   
-  <xsl:template match="declarations">
+  <!--<xsl:template match="declarations">
     <xsl:comment expand-text="true"> Adjustments are needed to declarations given in {@href} </xsl:comment>
-  </xsl:template>
+  </xsl:template>-->
   
   <xsl:template match="control | subcontrol">
     <xsl:copy>

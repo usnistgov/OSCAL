@@ -16,7 +16,34 @@
   <xsl:template match="/">
     <catalog>
       <title>ISO/IEC 27002</title>
-      
+      <declarations>
+        <declare-prop context="control-category" class="number">
+          <required/>
+          <identifier/>
+          <regex>^\d\d?$</regex>
+        </declare-prop>
+        <declare-prop context="clause" class="number">
+          <required/>
+          <identifier/>
+          <value><inherit/><autonum>.1</autonum></value>
+        </declare-prop>
+        <declare-part context="clause" class="objective">
+          <required/>
+        </declare-part>
+        <declare-prop context="iso-27002" class="number">
+          <required/>
+          <identifier/>
+          <value>
+            <inherit/>
+            <autonum>.1</autonum>
+          </value>
+        </declare-prop>
+        <declare-part context="control" class="description">
+          <required/>
+        </declare-part>
+        <declare-part context="control" class="guidance"/>
+        <declare-part context="control" class="information"/>
+      </declarations>
       <!--<declarations>
         <property context="control-category" class="number">
           <required/>

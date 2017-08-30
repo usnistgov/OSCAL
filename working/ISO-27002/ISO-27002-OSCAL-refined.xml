@@ -1,7 +1,10 @@
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?><?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?><catalog xmlns="http://scap.nist.gov/schema/oscal">
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
+<!-- XML touched by transformation 'ISO-27002 EXTRACTOR/OBFUSCATOR' :2017-08-30T17:15:17.825-04:00 -->
+<catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>ISO/IEC 27002</title>
    <declarations>
-     
       <declare-prop context="control-category" class="number">
          <required/>
          <identifier/>
@@ -10,7 +13,10 @@
       <declare-prop context="clause" class="number">
          <required/>
          <identifier/>
-         <value><inherit/><autonum>.1</autonum></value>
+         <value>
+            <inherit/>
+            <autonum>.1</autonum>
+         </value>
       </declare-prop>
       <declare-part context="clause" class="objective">
          <required/>
@@ -18,7 +24,10 @@
       <declare-prop context="iso-27002" class="number">
          <required/>
          <identifier/>
-         <value><inherit/><autonum>.1</autonum></value>
+         <value>
+            <inherit/>
+            <autonum>.1</autonum>
+         </value>
       </declare-prop>
       <declare-part context="control" class="description">
          <required/>

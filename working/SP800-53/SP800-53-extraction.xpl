@@ -53,9 +53,12 @@
   </p:xslt>
   
   <p:xslt name="final">
+    <p:with-param name="xslt-process" select="'SP800-53 OSCAL EXTRACTION'"/>
     <p:input port="stylesheet">
       <p:document href="../lib/XSLT/OSCAL-finalize.xsl"/>
     </p:input>
+    <!--<p:input port="parameters" kind="parameter"/>-->
+      
   </p:xslt>
   
  

@@ -18,6 +18,8 @@
   
   <xsl:output indent="no"/>
 
+  <xsl:param name="xslt-process" as="xs:string">finalize</xsl:param>
+  
   <xsl:template match="/">
     
     <!--<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css" title="Basic" alternate="yes"?>
@@ -29,6 +31,8 @@
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"</xsl:processing-instruction>
     <xsl:text>&#xA;</xsl:text>
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"</xsl:processing-instruction>
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:comment expand-text="true"> XML touched by transformation '{ $xslt-process }' :{ current-dateTime() } </xsl:comment>
     <xsl:apply-templates/>
   </xsl:template>
   

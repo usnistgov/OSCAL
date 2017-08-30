@@ -47,6 +47,7 @@
   </p:xslt>
   
   <p:xslt name="final">
+    <p:with-param name="xslt-process" select="'ISO-27002 EXTRACTOR/OBFUSCATOR'"/>
     <p:input port="stylesheet">
       <p:document href="../lib/XSLT/OSCAL-finalize.xsl"/>
     </p:input>
