@@ -48,6 +48,11 @@
       </xs:choice>
    </xs:complexType>
    <xs:element name="declare-prop">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Property declaration</b> Constraints applicable to a class or classes of <code xmlns="http://scap.nist.gov/schema/oscal">prop</code> elements (properties) in
+          context</xs:documentation>
+      </xs:annotation>
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="0" ref="oscal:singleton"/>
@@ -65,8 +70,8 @@
    <xs:element name="identifier">
       <xs:annotation>
          <xs:documentation>
-            <b>Identifier constraint</b> The declared component has a value unique within the document, among components of the
-          same type</xs:documentation>
+            <b>Identifier constraint</b> The declared component has a value unique within the document, among properties with the
+          same class</xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>

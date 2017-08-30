@@ -256,11 +256,26 @@
       </part>
     </control>
     <control class="element-description">
-      <prop class="tag">declare-property</prop>
+      <prop class="tag">declare-prop</prop>
       <prop class="full_name">Property declaration</prop>
       <part class="description">
-      <p>Constraints applicable to a class or classes of <code>p</code> elements within a control
-        object</p>
+      <p>Constraints applicable to a class or classes of <code>prop</code> elements (properties) in
+          context</p>
+      </part>
+      <part class="remarks">
+        <p>The context in which the property is to be anchored is a <code>control</code>,
+            <code>subcontrol</code>, <code>part</code> or <code>group</code>, as indicated by its
+            <code>@class</code> (class attribute).</p>
+        <p>Because the @class attribute is the basis of the OSCAL declarations model, it is
+          recommended that applications restrict the usage of this attribute to single name values.
+          Although overloading @class, as it is frequently overloaded in HTML, is not forbidden in
+          OSCAL and may even work in an OSCAL application - restricting elements (at whatever level,
+          and including both <q>controls</q> and <q>control components</q> to single class values,
+          will help keep things clean and intelligible.</p>
+        <p>On declarations including <code>declare-prop</code> and its siblings, however, both
+            <code>@class</code> and <code>@context</code> may be overloaded (multiple values). A
+          helpful application will detect where there are conflicting declarations, meaning the same
+          class designator is claimed by different elements in a given context.</p>
       </part>
     </control>
     <control class="element-description">
@@ -269,6 +284,19 @@
       <part class="description">
         <p>Indicates constraints to be enforced on paragraphs in context</p>
       </part>
+      <part class="remarks">
+        <p>Elements contained in the declaration, as with all declarations, indicate constraints.
+          The <code>p</code> may be required for the control to be complete, and/or the only one
+          with its <code>@class</code> (a singleton). The value(s) may be restricted. Etc.</p>
+        <p>Effectively, the difference between a <q>property</q>
+          <code>prop</code> and <q>classified p</q>
+          <code>p[@class]</code> is that properties may have only simple scalar values, not subject
+          to dynamic processing or injection. So p elements directly inside <code>control</code>,
+            <code>subcontrol</code> or <code>part</code> may contain <code>insert</code> elements
+          therein, for example (just as can <code>p</code> elements in running prose) – whereas
+          parameters cannot be injected into properties by definition (since they are required to be
+          stable per control object).</p>
+      </part>
       
     </control>
     <control class="element-description">
@@ -276,6 +304,11 @@
       <prop class="full_name">Part declaration</prop>
       <part class="description">
         <p>Indicates constraints to be imposed on parts in context</p>
+      </part>
+      <part class="remarks">
+        <p>Parts are subject to singleton and requirement constraints, but not to constraints on
+          values. However, note that parts may also serve as contexts for other control objects
+          including properties and parts.</p>
       </part>
     </control>
     <control class="element-description">
@@ -295,9 +328,8 @@
         <p>When this element is present in the declaration of an OSCAL control component, the
           component (<code>prop</code>, <code>param</code>, <code>part</code>) must be the only
           component of that class given in its (<code>group</code>, <code>control</code>,
-            <code>subcontrol</code>, or <code>part</code>) context. In other words, no other element child of
-          the same parent may have the same <code>@class</code> value (at the level of syntax) or
-          be bound to the same component type (at the semantic level).</p>
+            <code>subcontrol</code>, or <code>part</code>) context. In other words, no other element
+          child of the same parent may have the same <code>@class</code> value.</p>
       </part>
     </control>
     <control class="element-description">
@@ -308,16 +340,16 @@
       </part>
       <part class="remarks">
         <p>When this element is present in the declaration of an OSCAL control component, the
-          component (<code>prop</code>, <code>param</code>, <code>stmt</code>, or <code>feat</code>)
-          is required to appear, at least once, in its context.</p>
+          component (<code>prop</code>, <code>param</code>, or <code>part</code>) is required to
+          appear, at least once, in its context.</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">identifier</prop>
       <prop class="full_name">Identifier constraint</prop>
       <part class="description">
-        <p>The declared component has a value unique within the document, among components of the
-          same type</p>
+        <p>The declared component has a value unique within the document, among properties with the
+          same class</p>
       </part>
       <part class="remarks">
         <p>This constraint is generally only used for properties to be used as identifiers for their
@@ -338,6 +370,8 @@
           given parameter or property: that is, with leading and trailing whitespace stripped,
           interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline
           markup stripped.</p>
+        <p>When more than one <code>regex</code> is given in a declaration, a match on any of them
+          is taken to satisfy the requirement.</p>
       </part>
     </control>
     <control class="element-description">

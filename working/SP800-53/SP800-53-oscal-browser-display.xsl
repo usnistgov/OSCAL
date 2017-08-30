@@ -43,7 +43,7 @@ p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; bor
 p.link.broken { background-color: lemonchiffon; border: medium solid darkorange; text-decoration: line-through }
 .part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
 
-.insert, .choice { border: thin solid black; padding: 0.1em }
+.insert, .choice { border: thin solid black; padding: 0.1em; background-color: skyblue }
 .unassigned { border: thin solid red; background-color: pink}
 .desc { color: darkgreen }
 .insert .desc { font-size: 90% }

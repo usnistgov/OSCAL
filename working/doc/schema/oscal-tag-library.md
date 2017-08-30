@@ -36,7 +36,7 @@
 
 [&lt;declarations> Declarations](#declarations-declarations)
 
-[&lt;declare-property> Property declaration](#declare-property-property-declaration)
+[&lt;declare-prop> Property declaration](#declare-prop-property-declaration)
 
 [&lt;declare-p> Paragraph declaration](#declare-p-paragraph-declaration)
 
@@ -240,17 +240,35 @@ For extra-schema validation of control components within controls
 
 The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of `@class` (for control components) and `@context` (indicating control, subcontrol or part wherein the components may appear), enable automated checking for consistency of controls, subcontrols and their parts, specific to the types or kinds of control items that appear within a particular catalog or control collection.   
 
-### &lt;declare-property> Property declaration   
+### &lt;declare-prop> Property declaration   
 
-Constraints applicable to a class or classes of p elements within a control object   
+Constraints applicable to a class or classes of prop elements (properties) in context  
+
+##### remarks 
+
+The context in which the property is to be anchored is a control, subcontrol, part or group, as indicated by its `@class` (class attribute). 
+
+Because the @class attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values. Although overloading @class, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application - restricting elements (at whatever level, and including both "controls" and "control components" to single class values, will help keep things clean and intelligible. 
+
+On declarations including declare-prop and its siblings, however, both `@class` and `@context` may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.   
 
 ### &lt;declare-p> Paragraph declaration   
 
-Indicates constraints to be enforced on paragraphs in context   
+Indicates constraints to be enforced on paragraphs in context  
+
+##### remarks 
+
+Elements contained in the declaration, as with all declarations, indicate constraints. The p may be required for the control to be complete, and/or the only one with its `@class` (a singleton). The value(s) may be restricted. Etc. 
+
+Effectively, the difference between a "property" prop and "classified p" `p[@class]` is that properties may have only simple scalar values, not subject to dynamic processing or injection. So p elements directly inside control, subcontrol or part may contain insert elements therein, for example (just as can p elements in running prose) – whereas parameters cannot be injected into properties by definition (since they are required to be stable per control object).   
 
 ### &lt;declare-part> Part declaration   
 
-Indicates constraints to be imposed on parts in context   
+Indicates constraints to be imposed on parts in context  
+
+##### remarks 
+
+Parts are subject to singleton and requirement constraints, but not to constraints on values. However, note that parts may also serve as contexts for other control objects including properties and parts.   
 
 ### &lt;declare-link> Link declaration   
 
@@ -262,7 +280,7 @@ The declared component may occur only once in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component (prop, param, part) must be the only component of that class given in its (group, control, subcontrol, or part) context. In other words, no other element child of the same parent may have the same `@class` value (at the level of syntax) or be bound to the same component type (at the semantic level).   
+When this element is present in the declaration of an OSCAL control component, the component (prop, param, part) must be the only component of that class given in its (group, control, subcontrol, or part) context. In other words, no other element child of the same parent may have the same `@class` value.   
 
 ### &lt;required> Requirement constraint   
 
@@ -270,11 +288,11 @@ The declared component is required in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component (prop, param, `stmt`, or `feat`) is required to appear, at least once, in its context.   
+When this element is present in the declaration of an OSCAL control component, the component (prop, param, or part) is required to appear, at least once, in its context.   
 
 ### &lt;identifier> Identifier constraint   
 
-The declared component has a value unique within the document, among components of the same type  
+The declared component has a value unique within the document, among properties with the same class  
 
 ##### remarks 
 
@@ -286,7 +304,9 @@ Indicates that the value of a property (prop) or parameter (param) must match th
 
 ##### remarks 
 
-Matching against a regular expression is conducted on the normalized lexical value of the given parameter or property: that is, with leading and trailing whitespace stripped, interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline markup stripped.   
+Matching against a regular expression is conducted on the normalized lexical value of the given parameter or property: that is, with leading and trailing whitespace stripped, interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline markup stripped. 
+
+When more than one regex is given in a declaration, a match on any of them is taken to satisfy the requirement.   
 
 ### &lt;value> Value constraint   
 
