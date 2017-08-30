@@ -4,6 +4,7 @@
 <?xml-stylesheet type="text/xsl" href="SP800-53-oscal-browser-display.xsl"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>NIST SP800-53</title>
+    <declarations href="SP800-53-declarations.xml"/>
    <!-- Adjustments are needed to declarations given in SP800-53-declarations.xml -->
    <group class="family">
       <title>ACCESS CONTROL</title>

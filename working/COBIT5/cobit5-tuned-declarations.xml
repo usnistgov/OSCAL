@@ -4,13 +4,13 @@
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Forms interface" alternate="no"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-cobit5.css"?>
 <declarations xmlns="http://scap.nist.gov/schema/oscal">
-   <property context="domain" class="area">
+   <declare-prop context="domain" class="area">
       <singleton/>
       <required/>
       <value>Governance</value>
       <value>Management</value>
-   </property>
-   <property context="domain" class="code">
+   </declare-prop>
+   <declare-prop context="domain" class="code">
       <singleton/>
       <required/>
       <identifier/>
@@ -19,53 +19,53 @@
       <value>BAI</value>
       <value>DSS</value>
       <value>MEA</value>
-   </property>
+   </declare-prop>
    
-   <property context="process" class="number">
+   <declare-prop context="process" class="number">
       <singleton/>
       <required/>
       <value><inherit from="code"/><autonum>01</autonum></value>
-   </property>
-   <statement context="process" class="description">
+   </declare-prop>
+   <declare-part context="process" class="description">
       <singleton/>
-   </statement>
-   <statement context="process" class="objectives">
+   </declare-part>
+   <declare-part context="process" class="objectives">
       <singleton/>
-   </statement>
-   <feature context="process" class="IT-goal"/>
-   <feature context="process" class="process-goal"/>
+   </declare-part>
+   <declare-part context="process" class="IT-goal"/>
+   <declare-part context="process" class="process-goal"/>
    
-   <property context="IT-goal" class="scope">
+   <declare-prop context="IT-goal" class="scope">
       <singleton/>
       <required/>
       <value>IT</value>
-   </property>
-   <property context="IT-goal" class="number">
+   </declare-prop>
+   <declare-prop context="IT-goal" class="number">
       <singleton/>
       <required/>
       <regex>\d\d</regex>
-   </property>
-  <feature context="IT-goal" class="metrics"/>
+   </declare-prop>
+  <declare-part context="IT-goal" class="metrics"/>
   
-  <property context="metrics" class="metric">
+  <declare-prop context="metrics" class="metric">
       <required/>
-   </property>
+   </declare-prop>
   
-   <property context="process-goal" class="scope">
+   <declare-prop context="process-goal" class="scope">
       <singleton/>
       <required/>
       <value>Process</value>
-   </property>
+   </declare-prop>
   
-  <property context="process-goal" class="number">
+  <declare-prop context="process-goal" class="number">
       <singleton/>
       <required/>
       <value><autonum>1.</autonum></value>
-   </property>
-  <feature context="process-goal" class="metrics"/>
+   </declare-prop>
+  <declare-part context="process-goal" class="metrics"/>
   
   
-  <property context="practice" class="number">
+  <declare-prop context="practice" class="number">
     <singleton/>
     <required/>
     <value><inherit/><autonum>.01</autonum></value>
@@ -94,23 +94,23 @@
       <value>MEA02.06</value>
       <value>MEA02.07</value>
       <value>MEA02.08</value>-->
-  </property>
+  </declare-prop>
    
-  <statement context="practice" class="description">
+  <declare-part context="practice" class="description">
       <singleton/>
     <required/>
-   </statement>
-   <statement context="practice" class="activities">
+   </declare-part>
+   <declare-part context="practice" class="activities">
      <singleton/><required/>
-   </statement>
-   <feature context="practice" class="raci_index">
+   </declare-part>
+   <declare-part context="practice" class="raci_index">
      <singleton/><required/>
-   </feature>
+   </declare-part>
    
-   <feature context="practice" class="input"/>
-   <feature context="practice" class="output"/>
+   <declare-part context="practice" class="input"/>
+   <declare-part context="practice" class="output"/>
    
-   <property context="raci_index" class="accountable">
+   <declare-prop context="raci_index" class="accountable">
      <value>Board</value>
      <value>Chief Executive Officer</value>
      <value>Chief Financial Officer</value>
@@ -137,8 +137,8 @@
      <value>Information Security Manager</value>
      <value>Business Continuity Manager</value>
      <value>Privacy Officer</value>
-   </property>
-   <property context="raci_index" class="responsible">
+   </declare-prop>
+   <declare-prop context="raci_index" class="responsible">
      <value>Board</value>
      <value>Chief Executive Officer</value>
      <value>Chief Financial Officer</value>
@@ -165,8 +165,8 @@
      <value>Information Security Manager</value>
      <value>Business Continuity Manager</value>
      <value>Privacy Officer</value>
-   </property>
-   <property context="raci_index" class="consulted">
+   </declare-prop>
+   <declare-prop context="raci_index" class="consulted">
      <value>Board</value>
      <value>Chief Executive Officer</value>
      <value>Chief Financial Officer</value>
@@ -193,8 +193,8 @@
      <value>Information Security Manager</value>
      <value>Business Continuity Manager</value>
      <value>Privacy Officer</value>
-   </property>
-   <property context="raci_index" class="informed">
+   </declare-prop>
+   <declare-prop context="raci_index" class="informed">
      <value>Board</value>
      <value>Chief Executive Officer</value>
      <value>Chief Financial Officer</value>
@@ -221,9 +221,9 @@
      <value>Information Security Manager</value>
      <value>Business Continuity Manager</value>
      <value>Privacy Officer</value>
-   </property>
+   </declare-prop>
   
-   <property context="input" class="from">
+   <declare-prop context="input" class="from">
       <singleton/>
       <required/>
       <!--<value>MEA03.02</value>
@@ -268,12 +268,12 @@
       <value>DSS06.04</value>
       <value>BAI01.05</value>
       <value>DSS01.02</value>-->
-   </property>
-   <statement context="input" class="description">
+   </declare-prop>
+   <declare-part context="input" class="description">
       <singleton/>
       <required/>
-   </statement>
-   <property context="output" class="to">
+   </declare-part>
+   <declare-prop context="output" class="to">
       <required/>
       <!--<value>All EDM</value>
       <value>APO01.01</value>
@@ -306,9 +306,9 @@
       <value>APO12.01</value>
       <value>MEA01.03</value>
       <value>EDM01.03</value>-->
-   </property>
-   <statement context="output" class="description">
+   </declare-prop>
+   <declare-part context="output" class="description">
       <singleton/>
       <required/>
-   </statement>
+   </declare-part>
 </declarations>

@@ -21,7 +21,7 @@
     </sch:rule>
     
     <!--  Constraints over declarations - very important!  -->
-    <sch:rule context="oscal:property | oscal:paragraph | oscal:parameter | oscal:feature | oscal:component">
+    <sch:rule context="oscal:declare-prop | oscal:declare-p | oscal:declare-param | oscal:declare-part">
       <sch:let name="me" value="."/>
       <!-- oscal:declares returns a set of strings indicating classes and context to which declarations are bound -->
       <sch:let name="look-the-same" value="
@@ -32,7 +32,7 @@
   
     <!-- Constraints over groups, controls and enhancements (subcontrols, features)
          regarding required components (though not yet parameters) -->
-    <sch:rule context="oscal:group | oscal:control | oscal:subcontrol | oscal:feat | oscal:comp">
+    <sch:rule context="oscal:group | oscal:control | oscal:subcontrol | oscal:part">
       <xsl:variable name="this" select="."/>
       <xsl:variable name="matches"  select="oscal:classes($this),local-name($this)"/>
       <sch:let name="applicable" value="$declarations/key('declarations-by-context',$matches,$declarations)"/>
@@ -45,7 +45,7 @@
       <!--<sch:assert role="warning" test="exists($applicable) or empty((oscal:param|oscal:prop|oscal:stmt|oscal:feat)/@class)">No declarations apply to this <sch:name/></sch:assert>-->
       
       <!-- Finding property declarations for required properties.  -->
-      <sch:let name="required-property-declarations" value="$applicable/self::oscal:property[exists(oscal:required)]"/>
+      <sch:let name="required-property-declarations" value="$applicable/self::oscal:declare-prop[exists(oscal:required)]"/>
       <sch:let name="required-property-classes" value="$required-property-declarations/oscal:classes(.)"/>
       <!-- Identifying the classes of those that are not found among children -->
       <sch:let name="missing-property-classes" value="$required-property-classes[not(. = $this/child::*/oscal:classes(.))]"/>
@@ -56,7 +56,7 @@
         on <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes($this) )"/></sch:assert>
       
       <!-- Same for paras -->
-      <sch:let name="required-paragraph-declarations" value="$applicable/self::oscal:paragraph[exists(oscal:required)]"/>
+      <sch:let name="required-paragraph-declarations" value="$applicable/self::oscal:declare-p[exists(oscal:required)]"/>
       <sch:let name="required-paragraph-classes" value="$required-paragraph-declarations/oscal:classes(.)"/>
       
       <!-- Extend to support named statements e.g. <observations> not just stmt[@class] ? -->
@@ -84,7 +84,7 @@
     <sch:rule context="oscal:p[empty(@class)] | oscal:param | oscal:title |
       oscal:group | oscal:section | oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
 
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:feat/* | oscal:comp">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:part">
       <xsl:variable name="this" select="."/>
 
       <sch:let name="signatures" value="
@@ -97,10 +97,12 @@
       
       <sch:assert test="empty($matching-declarations) or count($matching-declarations)=1">More than one matching declaration found for <sch:name/> (signatures <sch:value-of select="oscal:sequence($signatures)"/>)
       </sch:assert>
-      <sch:assert test="empty($declarations/*) or exists($matching-declarations)">No declaration found for <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes(.))"/> in this location</sch:assert>
+      <sch:assert test="empty(@class) or empty($declarations/*) or exists($matching-declarations)">No declaration found for <sch:name/> <sch:value-of select="oscal:sequence(oscal:classes(.))"/> in this location</sch:assert>
       
       <sch:let name="regex-requirements" value="$matching-declarations/oscal:regex"/>
+      
       <!--<sch:report test="true()" role="warning"><sch:value-of select="oscal:sequence($regex-requirements)"/></sch:report>-->
+      
       <sch:assert test="empty($regex-requirements) or (every $r in ($regex-requirements) satisfies matches(.,$r))">
         Value of property '<sch:value-of select="oscal:classes(.)"/>' is expected to match regex
         <xsl:value-of select="if (count($regex-requirements) gt 1) then '(one of) regexes' else 'regex'"/>
@@ -165,7 +167,7 @@
     <!-- delivers a sequence of strings for a declaration indicating the
          signature values 
       declarations may have multiple classes and multiple contexts (nominal parent classes) indicated by @context -->
-    <xsl:for-each select="tokenize($d/@context/normalize-space(lower-case(.)),'&#32;')">
+    <xsl:for-each select="tokenize($d/@context/normalize-space(lower-case(.)),'\s')">
       <xsl:variable name="context" select="."/>
       <xsl:for-each select="oscal:classes($d)">
       <xsl:value-of select="string-join(($context,.),'/')"/>
@@ -184,7 +186,7 @@
     <xsl:param name="who-cares" required="yes" tunnel="yes"/>
     <xsl:variable name="named-classes" select="tokenize(@from/normalize-space(string(.)),'\s')"/>
     <xsl:variable name="matching-classes" select="if (empty($named-classes))
-      then parent::oscal:value/parent::oscal:property/oscal:classes(.) else $named-classes"/>
+      then parent::oscal:value/parent::oscal:declare-prop/oscal:classes(.) else $named-classes"/>
     
     <xsl:variable name="forebear"
       select="$who-cares/../ancestor::*[oscal:prop/oscal:classes(.)=$matching-classes][1]/

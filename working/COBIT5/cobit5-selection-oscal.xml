@@ -5,7 +5,7 @@
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-cobit5.css" title="COBIT" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>COBIT 5 (extracts / examples)</title>
-  <!--<declarations href="cobit5-tuned-declarations.xml"/>-->
+  <declarations href="cobit5-tuned-declarations.xml"/>
   <group class="domain">
     <title>Evaluate, Direct and Monitor</title>
     <prop class="area">Governance</prop>

@@ -4,6 +4,7 @@
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>NIST SP800-53 Excerpts for demonstration</title>
+  <declarations href="SP800-53-declarations.xml"/>
   <!-- Adjustments are needed to declarations given in SP800-53-declarations.xml -->
   <group class="family">
     <title>ACCESS CONTROL</title>

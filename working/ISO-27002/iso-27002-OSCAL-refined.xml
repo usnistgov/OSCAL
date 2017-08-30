@@ -1,5 +1,5 @@
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"  title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>ISO/IEC 27002</title>

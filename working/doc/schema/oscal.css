@@ -8,18 +8,18 @@ declarations { font-family: sans-serif; font-size: 80%;
 
 declarations:before { font-weight: bold; content: "Declarations " attr(href) } 
 
-property, statement, parameter, part_declaration
+declare-prop, declare-part, declare-param
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-property  {  border: thin outset pink; background-color: #FDDDE6; margin-top: 0.5em; color: black }
-part_declaration     {  border: thin outset blue } 
-parameter {  border: thin dotted green; background-color: lightgreen }
+declare-prop {  border: thin outset pink; background-color: #FDDDE6; margin-top: 0.5em; color: black }
+declare-part     {  border: thin outset blue } 
+declare-param {  border: thin dotted green; background-color: lightgreen }
 
-parameter:before  { content: '(parameter) "' attr(class) '" on ' attr(context) ' '  }
-property:before   { content: '(property) "'  attr(class) '" on ' attr(context) ' '  }
-part_declaration:before  { content: '(statement) "' attr(class) '" on ' attr(context) ' '}
-part_declaration     { background-color: cornsilk; margin-top: 0.5em; color: black }
+declare-param:before { content: 'declare parameter "' attr(class) '" on ' attr(context) ' '  }
+declare-prop:before  { content: 'declare property "'   attr(class) '" on ' attr(context) ' '  }
+declare-part:before  { content: 'declare part "'       attr(class) '" on ' attr(context) ' '}
+declare-part         { background-color: cornsilk; margin-top: 0.5em; color: black }
 
 
 /* value is also used inside param */

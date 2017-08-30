@@ -1,7 +1,7 @@
+
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?><?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?><catalog xmlns="http://scap.nist.gov/schema/oscal">
    <title>ISO/IEC 27002</title>
    <declarations>
-     
       <declare-prop context="control-category" class="number">
          <required/>
          <identifier/>
@@ -18,7 +18,10 @@
       <declare-prop context="iso-27002" class="number">
          <required/>
          <identifier/>
-         <value><inherit/><autonum>.1</autonum></value>
+         <value>
+            <inherit/>
+            <autonum>.1</autonum>
+         </value>
       </declare-prop>
       <declare-part context="control" class="description">
          <required/>

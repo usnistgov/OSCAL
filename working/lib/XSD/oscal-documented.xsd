@@ -41,18 +41,13 @@
    </xs:element>
    <xs:complexType name="decls">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:element ref="oscal:declare-property"/>
+         <xs:element ref="oscal:declare-prop"/>
          <xs:element ref="oscal:declare-part"/>
          <xs:element ref="oscal:declare-p"/>
          <xs:element ref="oscal:declare-link"/>
       </xs:choice>
    </xs:complexType>
-   <xs:element name="declare-property">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Property declaration</b> Constraints applicable to a class or classes of <code xmlns="http://scap.nist.gov/schema/oscal">p</code> elements within a control
-        object</xs:documentation>
-      </xs:annotation>
+   <xs:element name="declare-prop">
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="0" ref="oscal:singleton"/>

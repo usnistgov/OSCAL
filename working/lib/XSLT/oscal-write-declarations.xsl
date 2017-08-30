@@ -29,7 +29,7 @@
   
   <xsl:template match="/*">
     <declarations>
-    <xsl:for-each-group select="//control | //group | //subcontrol | //feat" group-by="@class">
+    <xsl:for-each-group select="//control | //group | //subcontrol | //part" group-by="@class">
       <xsl:variable name="who" select="current-group()"/>
       <xsl:variable name="control-type" select="current-grouping-key()"/>
         
@@ -37,8 +37,8 @@
         <xsl:variable name="always" select="empty($who except current-group()/..)"/>
         <xsl:variable name="never-two" select="count(current-group()) eq count(current-group()/..)"/>
         
-        <xsl:element name="{if (self::prop) then 'property' else
-          if (self::feat) then 'feature' else 'statement'}">
+        <xsl:element name="{if (self::prop) then 'declare-prop' else
+          if (self::link) then 'declare-link' else 'declare-part'}">
           <xsl:attribute name="context" select="(../@class,name(..))[1]"/>
           <xsl:attribute name="class" select="current-grouping-key()"/>
           <xsl:if test="$never-two"><singleton/></xsl:if>

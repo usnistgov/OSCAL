@@ -39,7 +39,7 @@
   </xs:element>
   <xs:complexType name="decls">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element ref="oscal:declare-property"/>
+      <xs:element ref="oscal:declare-prop"/>
       <xs:element ref="oscal:declare-part"/>
       <xs:element ref="oscal:declare-p"/>
       <xs:element ref="oscal:declare-link"/>
@@ -55,7 +55,7 @@
     element declare-param { requiredClass, contextAttr, singleton?, desc, \default? }
   -->
   <!-- property may contain only id, only regex, both id and regex, or (sequence of) values -->
-  <xs:element name="declare-property">
+  <xs:element name="declare-prop">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:singleton"/>
@@ -222,6 +222,10 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:part"/>
     </xs:sequence>
   </xs:group>
+  <!--
+    see utility.xq for analytic breakdown of part types
+    so far: description, guidance
+  -->
   <xs:element name="part">
     <xs:complexType>
       <xs:sequence>
@@ -279,31 +283,31 @@
     </xs:complexType>
   </xs:element>
   <!--
-    syntax sugar for feat[@role='purpose'] for "Objective/s" etc.
+    syntax sugar for part[@class='purpose'] for "Objective/s" etc.
     purpose =
       element purpose {
         prose }
   -->
   <!--
-    syntax sugar for feat[@role='guidance'] for "Supplemental Guidance" etc.
+    syntax sugar for part[@class='guidance'] for "Supplemental Guidance" etc.
     guidance =
       element guidance {
         prose }
   -->
   <!--
-    syntax sugar for feat[@role='decision']
+    syntax sugar for part[@class='decision']
     decision =
       element decision {
         prose }
   -->
   <!--
-    syntax sugar for feat[@role='information'], other-info, etc.
+    syntax sugar for part[@class='information'], other-info, etc.
     information =
       element information {
         prose }
   -->
   <!--
-    syntax sugar for feat[@role='remarks']
+    syntax sugar for part[@class='remarks']
     remarks =
       element remarks {
         prose }
