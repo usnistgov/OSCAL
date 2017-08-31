@@ -395,6 +395,7 @@
           is taken to satisfy the requirement.</p>
       </part>
     </control>
+    <!--<control class="element-description"><prop class="tag">xdm-datatype</prop><prop class="full_name">XDM datatype lexical constraint</prop><part class="description"><p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter (<code>param</code>) must be castable to the given XDM datatype</p></part><part class="remarks"><p>TBD.</p><p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An even more general functionality would be an xpath-satisfies that would support arbitrary XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le 10.00</code></p></part></control>-->
     <control class="element-description">
       <prop class="tag">value</prop>
       <prop class="full_name">Value constraint</prop>
@@ -547,7 +548,10 @@
     <title>Prose</title>
     <p>Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level.
       OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a
-      narrow subset of HTML element types.</p>
+      narrow subset of HTML element types. This is intended to be the bare minimum of stripped down
+      text as is appropriate for control documentation. Graphics, diagrams, and tables are all out
+      of scope for OSCAL (although arbitrary feature sets can always be modeled as nested
+      parts).</p>
     <p>Among prose elements, <code>p</code> elements in particular are of interest in that they may
       be constrained by declarations like other control components – although this may not often be
       as useful as imposing constraints over properties and parts. Frequently, a part organization
@@ -667,6 +671,9 @@
           but may be reported by a Schematron. An application may promote the contents of an
             <code>a</code> element, when a valid URI, to serve as the link target if
             <code>@href</code> is missing or not a URI.</p>
+        <p>As in HTML, <code>a</code> appears inline (in mixed content), while <code>link</code> is
+          a <q>paragraph-level</q> link (that appears next to paragraphs or components in a
+          control).</p>
       </part>
     </control>
     <control class="element-description">

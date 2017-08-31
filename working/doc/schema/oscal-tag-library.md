@@ -349,7 +349,7 @@ For references to standards, std may be preferred.
 
 ## Prose 
 
-Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level. OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a narrow subset of HTML element types. 
+Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level. OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a narrow subset of HTML element types. This is intended to be the bare minimum of stripped down text as is appropriate for control documentation. Graphics, diagrams, and tables are all out of scope for OSCAL (although arbitrary feature sets can always be modeled as nested parts). 
 
 Among prose elements, p elements in particular are of interest in that they may be constrained by declarations like other control components – although this may not often be as useful as imposing constraints over properties and parts. Frequently, a part organization will be used to assign prose to specific known "sections" or "components" of a control (modeled as part or subcontrol). 
 
@@ -433,7 +433,9 @@ An HTML-style anchor (inline linking element)
 
 As in HTML, the link target is indicated by `@href`, with a '#' prefix for an internal cross-reference matching an `@id` elsewhere in the document. 
 
-Anchors without `@href` are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. An application may promote the contents of an a element, when a valid URI, to serve as the link target if `@href` is missing or not a URI.   
+Anchors without `@href` are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. An application may promote the contents of an a element, when a valid URI, to serve as the link target if `@href` is missing or not a URI. 
+
+As in HTML, a appears inline (in mixed content), while link is a "paragraph-level" link (that appears next to paragraphs or components in a control).   
 
 ### &lt;q> Quoted text   
 
