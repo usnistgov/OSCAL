@@ -46,8 +46,8 @@ div div div h3 { font-size: 110% }
 .tag:after  { content: '\3E' }
 .code { font-family: monospace }
 
-#toc-panel { border: thin solid black; float: left; max-width: 25%; font-size: 80%; font-family: sans-serif;
-  padding: 1em; position: fixed; max-height: 90%; overflow: auto }
+#toc-panel { margin-top: 0em; border: thin solid black; float: left; max-width: 25%; font-size: 80%; font-family: sans-serif;
+padding: 1em; position: fixed; max-height: 80ex; overflow: auto }
 .toc { margin: 0em; padding: 0em; margin-left: 1em; border: none }
 .toc-line { margin: 0em; padding-left: 3em; text-indent: -3em }
 
@@ -60,8 +60,13 @@ a:visited { color: midnightblue }
         </style>
       </head>
       <body>
+        <xsl:for-each select="oscal:catalog/oscal:title">
+          <h1 class="main-title">
+            <xsl:apply-templates/>
+          </h1>
+        </xsl:for-each>
         <xsl:apply-templates mode="toc"/>
-         <xsl:apply-templates/>
+        <xsl:apply-templates/>
       </body>
     </html>
   </xsl:template>
@@ -111,11 +116,7 @@ a:visited { color: midnightblue }
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:catalog/oscal:title">
-    <h1 class="main-title">
-      <xsl:apply-templates/>
-    </h1>
-  </xsl:template>
+  <xsl:template match="oscal:catalog/oscal:title"/>
   
   <xsl:template match="oscal:title">
     <h2 class="title">

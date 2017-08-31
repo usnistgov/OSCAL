@@ -1,4 +1,6 @@
 
+
+# OSCAL: The Open Security Controls Assessment Language
 > * [OSCAL: The Open Security Controls Assessment Language](#)
 >   * [OSCAL namespace](#oscal-namespace)
 >   * [OSCAL organization](#oscal-organization)
@@ -52,10 +54,10 @@
 >     * [&lt;sup> Superscript](#sup-superscript)
 >     * [&lt;sub> Subscript](#sub-subscript)
 >     * [&lt;span> Span](#span-span)
->   * [Structural constraints](#structural-constraints)
->     * [Order of items inside controls](#) 
-
-# OSCAL: The Open Security Controls Assessment Language  
+>   * [Constraints outside the core schema](#constraints-outside-the-core-schema)
+>     * [Order of items inside controls](#)
+>     * [Interdicted @class assignments](#)
+>     * [No overloading @class](#)  
 
 ## OSCAL namespace 
 
@@ -165,17 +167,17 @@ Indicates that a containing control or subcontrol is no longer applicable
 
 ##### remarks 
 
-Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain its semantic integrity even in obsolescence. Links should be provided to superseding controls or components. 
+Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain its semantic integrity in obsolescence. Links should be provided to superseding controls or components. 
 
 The functionality provided by this element might better be offered by a property or some other controlled value, at which point it may be removed; it is included to support (some) legacy content.     
 
 ## Declarations elements 
 
-By declaring constraints on control components, such as properties (prop), parts (part) and links (link) within controls and subcontrols, applications and operators can validate the composition and consistency of available controls. Over and above the "core validation" of OSCAL element naming (which is enforced by direct application of an XML schema), such validation can help to guarantee processability and interchange of OSCAL data by verifying that not only tags, but even values given in the data, conform to expressed constraints, specific to a catalog or catalog type. 
+By declaring constraints on control components, such as properties (prop), parts (part) and links (link) within controls and subcontrols, applications and operators can validate the composition and consistency of available controls. Over and above the "core validation" of OSCAL element naming (which is enforced by direct application of an XML schema), such validation can help to guarantee processability and interchange of OSCAL data by verifying that not only tags, but also values given in the data, conform to expressed constraints, which can be made specific to a catalog or catalog type. 
 
-In this way, the OSCAL declarations mechanism provides for a kind of "on the fly supertyping" of control objects, by restriction (constraint) of the core OSCAL language. The extent and degree to which declarations are used to impose order on controls is up to the application and its methods. By no means are declarations necessary; rather, they serve as an aid in modeling and in communicating expectations. 
+In this way, the OSCAL declarations mechanism provides for a kind of "on the fly supertyping" of control objects, by restriction (constraint) of the core OSCAL language. The extent and degree to which declarations are used to impose order on controls is up to the application and its methods. By no means are declarations necessary; but they serve as an aid in modeling and in communicating expectations. 
 
-OSCAL declarations are enforced by a Schematron; the core schema stipulates their model but does not enforce any of the constraints so declared. Developers should take note that these constraints are all readily testable in XPath. 
+OSCAL declarations are enforced by a Schematron; the core schema stipulates this model (and tagging used to control it, i.e. a tag interface) but does not enforce any of the constraints so declared. Developers should take note that these constraints are all readily testable in XPath. 
 
 ### &lt;declarations> Declarations   
 
@@ -195,7 +197,7 @@ The class of properties, in context, to which the constraints apply, is indicate
 
 The constraints that will apply to these properties are indicated by the elements contained in the the declaration. For example, a property declared as a "required singleton" is required to appear in its context (the validator will produce an error when it is missing), while it may not appear more than once (the validator will produce an error if more than one appear together). 
 
-Because the `@class` attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values, when used on controls or their components. Although overloading `@class`, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application, restricting elements to have *at most*, a single class assignment, will help keep things clean and intelligible. 
+Because the `@class` attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values, when used on controls or their compo. Although overloading `@class`, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application, restricting elements to have *at most*, a single class assignment, will help keep things clean and intelligible. 
 
 On declarations including declare-prop and its siblings, however, both `@class` and `@context` may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.   
 
@@ -227,7 +229,9 @@ The declared component may occur only once in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component (prop, param, part) must be the only component of that class given in its (group, control, subcontrol, or part) context. In other words, no other element child of the same parent may have the same `@class` value.   
+When this element is present in the declaration of an OSCAL control component, the component (prop, param, part) must be the only component of that class given in its (group, control, subcontrol, or part) context. In other words, no other element child of the same parent may have the same `@class` value. 
+
+Note that the singleton constraint does not apply to the value of the property, but only to the fact that it is an "only child", unique among its siblings for having its class assignment.   
 
 ### &lt;required> Requirement constraint   
 
@@ -235,7 +239,9 @@ The declared component is required in its context
 
 ##### remarks 
 
-When this element is present in the declaration of an OSCAL control component, the component (prop, param, or part) is required to appear, at least once, in its context.   
+When this element is present in the declaration of an OSCAL control component, the component (prop, param, or part, of the given class) is required to appear, at least once, in its context. 
+
+A property or part that is a required singleton, is expected to appear exactly once and once only in every applicable control, subcontrol or part.   
 
 ### &lt;identifier> Identifier constraint   
 
@@ -243,7 +249,9 @@ The declared component has a value unique within the document, among properties 
 
 ##### remarks 
 
-This constraint is generally only used for properties to be used as identifiers for their control object (control, subcontrol, or part). Guaranteeing their uniqueness means that these values can be used to effect one-to-one retrieval or reference to the objects to which they are assigned.   
+This constraint is generally only used for properties to be used as identifiers for their control object (control, subcontrol, or part). Guaranteeing their uniqueness means that these values can be used to effect one-to-one retrieval or reference to the objects to which they are assigned. 
+
+Note that a property marked as an identifier, may or may not be (also declared as) a singleton. In any case the value of *each* property of the given class must be unique. So if a control has several "name" properties, "name" being declared as an identifier, then each of the name properties in that control must be unique: "George" "John" and "Ringo" not "George", "George" and "George".   
 
 ### &lt;regex> Regular expression constraint   
 
@@ -341,9 +349,9 @@ For references to standards, std may be preferred.
 
 ## Prose 
 
-Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level. Prose elements echo HTML semantics, although they provide only a deliberately and specifically narrow subset of HTML element types. 
+Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level. OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a narrow subset of HTML element types. 
 
-Prose elements may be constrained by declarations like other control components, although this may not often be as useful as imposing constraints over properties and parts. Frequently, a part organization will be used to assign prose to specific known "sections" or "components" of a control (modeled as part or subcontrol). 
+Among prose elements, p elements in particular are of interest in that they may be constrained by declarations like other control components – although this may not often be as useful as imposing constraints over properties and parts. Frequently, a part organization will be used to assign prose to specific known "sections" or "components" of a control (modeled as part or subcontrol). 
 
 ### &lt;p> Paragraph   
 
@@ -379,7 +387,9 @@ A series of items kept in order but without indicators of sequence; likely bulle
 
 As in HTML, "unordered" does not indicate that the order of contained list items is not respected, only that they are not displayed with any notation indicating their order: that is, bullets, not numbers. 
 
-Note that when sequences or lists appear, it may be as common in OSCAL to list (and control) them as sequences of properties or paragraphs, perhaps grouped in parts or subcontrols. This is very much a display element, convenient when what we have is really prose, not highly organized or "semantic".   
+Note that when sequences or lists appear, it may be as common in OSCAL to list (and control) them as sequences of properties or paragraphs, perhaps grouped in parts or subcontrols. This is very much a display element, convenient when what we have is really prose, not highly organized or "semantic". 
+
+OSCAL has (as of yet) no "simple" or unadorned list element; it is suggested that an `@class` added to ul should be rendered as such in any application that wants it.   
 
 ### &lt;li> List item   
 
@@ -409,7 +419,11 @@ Typographical shift to bold
 
 ##### remarks 
 
-In display, when the surrounding text is already bold, an implementation may indicate "bold" by means of double-bold or some other typographical distinction.   
+In display, when the surrounding text is already bold, an implementation may indicate "bold" by means of double-bold or some other typographical distinction. 
+
+As of yet, OSCAL does not support underlining directly (no `u` element or designated property 
+
+). Even b and i should be regarded as escape hatches, and marked with classes when possible.   
 
 ### &lt;a> Anchor   
 
@@ -435,7 +449,7 @@ Inline code
 
 ##### remarks 
 
-Strictly, this element should identify formal code or code fragments.   
+Strictly, this element should identify formal code or code fragments. Like anything else, it may be "enhanced" using its class.   
 
 ### &lt;sup> Superscript   
 
@@ -451,16 +465,46 @@ Generic inline container
 
 ##### remarks 
 
-As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.     
+As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging. 
 
-## Structural constraints 
+The OSCAL declarations model does not presently support validating properties of arbitrary spans. But it might. Please share your requirements.     
+
+## Constraints outside the core schema 
 
 ####  
 
-Over and above what can be validated with a grammar (in Level 0), there is a small set of constraints governing usage. Validations enforcing them can be implemented via Schematron or another process capable of static analysis of the data.  
+Over and above what can be validated with a grammar (in the schema at the "core" level, but also distinct from OSCAL-flavor-specific validations, is a small set of constraints governing usage of @class assignments and element occurrence. Validations enforcing them can be implemented via Schematron or another process capable of static analysis of the data.  
 
 ### Order of items inside controls  
 
-Within a control, properties, parts, and parameters may occur in any order. 
+Within a control, properties, parts, parameters and prose contents may appear in any order  
 
-This specification does not govern how or whether an implementation may respect the order of properties and statements given within a control type. Among properties, formal parts, and parameters within a control, cardinality constraints (where enforced) can help ensure a canonical order. An order may be imposed locally by an application (for example, using a schema that requires all properties to appear before all parts), but this is for its convenience, not because an order is mandated.    
+##### remarks 
+
+This is for maximum flexibility in OSCAL. OSCAL leaves it to its applications and implementations to enforce ordering. 
+
+Note that parameters in particular are "floating values" and may appear almost anywhere, in OSCAL that is otherwise unconstrained. It is not an error for a parameter value to be inserted into a document at a point before the parameter itself has been declared; absent other constraints imposed over the XML, parameters may be set even very late in document order, and their values injected "proactively" (before the setting itself appears in the file). This is mitigated by the fact that parameter ID values must be unique, making parameters easily findable from their points of insertion. 
+
+How or whether an implementation may respect the order of properties, parts and components in general, within a control type, may be expected to vary among applications or "flavors" of OSCAL; but order among components is not presently enforced under its declarations model. (Such a functionality could be discussed.)   
+
+### Interdicted @class assignments  
+
+No control, control component or group can have a class assignment that overlaps with an element name in OSCAL  
+
+##### remarks 
+
+Interdicted names: control, group, part, prop,param, or title. Using the title element for nominal titles is better than using a property. The others should be rarely called for (meta-OSCAL aside) and would anyway be confusing. 
+
+This constraint may be relaxed by failing to run the `OSCAL-strict.sch` Schematron.   
+
+### No overloading @class  
+
+(Not presently enforced) Values of the `class` attribute i.e. `@class` must be single; no space-delimited multiple classes as in HTML  
+
+##### remarks 
+
+While the declarations model may still work even with overloaded, multi-value classes, it might also lead to conniption fits. Better perhaps at the outset to warn against this. You shouldn't have to do that anyway. 
+
+So far we have not needed to enforce this – the declarations model, for example, can cope with multiple classes – there may come a day. 
+
+OSCAL users may have insights into whether class overloading (in OSCAL, not elsewhere) is a good thing or a bad thing to be discouraged.    

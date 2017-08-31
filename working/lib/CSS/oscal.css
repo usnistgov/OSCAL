@@ -127,6 +127,9 @@ std[href]:before, citation[href]:before {
         columns 53);
 }
 
+b { display: inline; font-weight: bold; font-size: 95% }
+i { display: inline; font-style: italic }
+
 q { display: inline;
     
   quotes: "“" "”" "‘" "’";
