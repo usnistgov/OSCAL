@@ -126,15 +126,15 @@ By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, h
 
 OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form "documentary" format, which includes semantic "islands" of structured information. These are semantic not only because they are addressable in principle, but more importantly because their organizations and values may be known before processing occurs, at least with respect to certain operations and relations, and even (at the most general level) before operations are designed and deployed. OSCAL offers a yin to the yang of query and processing. 
 
-At the broadest level, "control objects" in OSCAL include controls, subcontrols, parts of controls or subcontrols, and control groups. Each OSCAL application or application domain will determine for itself how these correspond to entities or "controls", formal processes, procedures and so forth, within that domain. 
+At the broadest level, "control objects" in OSCAL include controls, subcontrols, parts of controls or subcontrols, and control groups. Each OSCAL application or application domain will determine for itself how these correspond to entities or "controls", formal processes, procedures, and so forth, within that domain. 
 
-This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for group, control, subcontrol and part. According to its rules, either controls or groups may appear within groups (that is, groups may be nested or may contain controls), while subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. While this design centers around controls and subcontrols, by means of the use of groups and parts, OSCAL can support organizations of controls and their components with arbitrary granularity -- as any of these objects may be used consistently to carry regular sets of properties, with names and value spaces that may be known in advance or discovered dynamically.   
+This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for group, control, subcontrol, and part. According to its rules, either controls or groups may appear within groups (that is, groups may be nested or may contain controls), while subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. While this design centers around controls and subcontrols, by means of the use of groups and parts, OSCAL can support organizations of controls and their components with arbitrary granularity, as any of these objects may be used consistently to carry regular sets of properties, with names and value spaces that may be known in advance or discovered dynamically.   
 
 ## Interoperability with other data formats 
 
 OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language including HTML, Markdown and its variants, NISO JATS, DITA, etc. Additionally, OSCAL documents may be taken as "warrants for inference" for serialization of linked data objects or other application binding formats including JSON. 
 
-Because OSCAL is designed to carry richer and denser semantics than most markup languages as used, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or customization per instance - that is, each one will be a one-off conversion.   
+Because OSCAL is designed to carry richer and denser semantics than most markup languages, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or customization per instance - that is, each one will be a one-off conversion.   
 
 ## Controls and control components 
 
@@ -178,7 +178,7 @@ The notation used by a property is up to an application; otherwise, properties a
 
 The lexical composition of properties may be constrained by declarations including matching to regular expressions or declaring known datatype notations (tbd). 
 
-Because properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be flattened (markup stripped) and normalized (e.g., with respect to whitespace) in use; however this is application defined. 
+Because properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be flattened (markup stripped) and normalized (e.g., with respect to whitespace) in use; however, this is application defined. 
 
 For singletons (that is, the only element among siblings with its `@class`), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf `property` in the declarations model (which also supports other constraints over property values). 
 
@@ -226,7 +226,7 @@ The functionality provided by this element might better be offered by a property
 
 ## Declarations elements 
 
-By declaring constraints on control components, such as properties (prop), parts (part) and links (link) within controls and subcontrols, applications and operators can validate the regularity and composition of available controls. By documenting constraints that are enforceable at need, declarations also serve as an implicit "semantic contract" between a control catalog (or set of controls valid to a set of OSCAL declarations). 
+By declaring constraints on control components, such as properties (prop), parts (part) and links (link) within controls and subcontrols, applications and operators can validate the composition and consistency of available controls. Over and above the "core validation" of OSCAL element naming (which is enforced by direct application of an XML schema), such validation can help to guarantee processability and interchange of OSCAL data by verifying that not only tags, but even values given in the data, conform to expressed constraints, specific to a catalog or catalog type. 
 
 In this way, the OSCAL declarations mechanism provides for a kind of "on the fly supertyping" of control objects, by restriction (constraint) of the core OSCAL language. The extent and degree to which declarations are used to impose order on controls is up to the application and its methods. By no means are declarations necessary; rather, they serve as an aid in modeling and in communicating expectations. 
 
@@ -238,7 +238,7 @@ For extra-schema validation of control components within controls
 
 ##### remarks 
 
-The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of `@class` (for control components) and `@context` (indicating control, subcontrol or part wherein the components may appear), enable automated checking for consistency of controls, subcontrols and their parts, specific to the types or kinds of control items that appear within a particular catalog or control collection.   
+The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of `@class` (for control components) and `@context` (indicating control, subcontrol, or part wherein the components may appear), enable automated checking for consistency of controls, subcontrols, and their parts, specific to the types or kinds of control items that appear within a particular catalog or control collection.   
 
 ### &lt;declare-prop> Property declaration   
 
@@ -246,9 +246,11 @@ Constraints applicable to a class or classes of prop elements (properties) in co
 
 ##### remarks 
 
-The context in which the property is to be anchored is a control, subcontrol, part or group, as indicated by its `@class` (class attribute). 
+The class of properties, in context, to which the constraints apply, is indicated on the @class of the declaration (declare-prop). The context is defined by the class of the element parent of the candidate property, whether it is a control, subcontrol, part or group. So a `declare-prop context="myControl" class="myProp"` will apply to any property (prop element) with class "myProp", appearing in a control, subcontrol, part or group with class "myControl". 
 
-Because the @class attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values. Although overloading @class, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application - restricting elements (at whatever level, and including both "controls" and "control components" to single class values, will help keep things clean and intelligible. 
+The constraints that will apply to these properties are indicated by the elements contained in the the declaration. For example, a property declared as a "required singleton" is required to appear in its context (the validator will produce an error when it is missing), while it may not appear more than once (the validator will produce an error if more than one appear together). 
+
+Because the `@class` attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values, when used on controls or their components. Although overloading `@class`, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application, restricting elements to have *at most*, a single class assignment, will help keep things clean and intelligible. 
 
 On declarations including declare-prop and its siblings, however, both `@class` and `@context` may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.   
 
@@ -258,9 +260,9 @@ Indicates constraints to be enforced on paragraphs in context
 
 ##### remarks 
 
-Elements contained in the declaration, as with all declarations, indicate constraints. The p may be required for the control to be complete, and/or the only one with its `@class` (a singleton). The value(s) may be restricted. Etc. 
+Elements contained in the declaration, as with all declarations, indicate constraints. The p may be required for the control to be complete, and/or the only one with its `@class` (a singleton). The value(s) may be restricted, etc. 
 
-Effectively, the difference between a "property" prop and "classified p" `p[@class]` is that properties may have only simple scalar values, not subject to dynamic processing or injection. So p elements directly inside control, subcontrol or part may contain insert elements therein, for example (just as can p elements in running prose) – whereas parameters cannot be injected into properties by definition (since they are required to be stable per control object).   
+Effectively, the difference between a "property" prop and "classified p" `p[@class]` is that properties may have only simple scalar values, not subject to dynamic processing or injection. So p elements directly inside a control, subcontrol or part may contain insert elements therein, for example (just as can p elements in running prose), whereas parameters cannot be injected into properties by definition since they are required to be stable per control object.   
 
 ### &lt;declare-part> Part declaration   
 
@@ -268,7 +270,7 @@ Indicates constraints to be imposed on parts in context
 
 ##### remarks 
 
-Parts are subject to singleton and requirement constraints, but not to constraints on values. However, note that parts may also serve as contexts for other control objects including properties and parts.   
+Parts are subject to singleton and requirement constraints, but not to constraints on values. However, note that parts may also serve as contexts for other control objects, including properties and parts.   
 
 ### &lt;declare-link> Link declaration   
 
@@ -320,11 +322,11 @@ In a parameter, a value represents a value assignment to the parameter, overridi
 
 ### &lt;autonum> Autonumbered (generated) value   
 
-Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc)  
+Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)  
 
 ##### remarks 
 
-The text contents of autonum (not the value of any attribute), will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.   
+The text contents of autonum (not the value of any attribute) will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.   
 
 ### &lt;inherit> Inherited value   
 
@@ -346,7 +348,7 @@ Indicates and explains the purpose and use of a parameter
 
 ### &lt;section> Section   
 
-For partitioning a catalog, collection or section therein  
+For partitioning a catalog, collection, or section therein  
 
 ##### remarks 
 
@@ -358,7 +360,7 @@ Related controls or groups (of controls or groups)
 
 ##### remarks 
 
-In addition to controls or groups, groups may be titled and may have their own properties, statements, parameter settings and references, subject to declaration. In this respect they are like controls, subcontrols or parts, but their properties apply to the entire group and must be acquired in processing via inheritance. 
+In addition to controls or groups, groups may be titled and may have their own properties, statements, parameter settings, and references, subject to declaration. In this respect they are like controls, subcontrols or parts, but their properties apply to the entire group and must be acquired in processing via inheritance. 
 
 Unlike sections (section elements), groups may not contain arbitrary prose (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped (no `@class`) and therefore unconstrained by declarations.   
 
@@ -372,7 +374,7 @@ A group of reference descriptions
 
 ### &lt;ref> Reference   
 
-A reference, with one or more citations to standards, related documents or other resources   
+A reference, with one or more citations to standards, related documents, or other resources   
 
 ### &lt;std> Standard   
 
@@ -390,7 +392,7 @@ Citation of a resource
 
 Echoes the NISO JATS (and NISO STS) `mixed-citation` element. 
 
-For references to standards, std (qv) may be preferred.     
+For references to standards, std may be preferred.     
 
 ## Prose 
 
@@ -404,7 +406,7 @@ Paragraph or paragraph fragment
 
 ##### remarks 
 
-This element echoes HTML p; as in HTML, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.   
+This element echoes HTML p. As in HTML, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.   
 
 ### &lt;pre> Preformatted text   
 
@@ -504,7 +506,7 @@ Generic inline container
 
 ##### remarks 
 
-As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.     
+As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.     
 
 ## Structural constraints 
 

@@ -4,23 +4,22 @@
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog xmlns="http://scap.nist.gov/schema/oscal">
   <title>OSCAL: The Open Security Controls Assessment Language</title>
-  <!--<declarations>
-    <property context="element-description" class="tag">
+  <declarations>
+    <declare-prop context="element-description" class="tag">
           <required/>
       <identifier/>
           <regex>\i\c*</regex>
-      <!-\- An XML name -\->
-        </property>
-    <property context="element-description" class="full_name"/>
-    <feature context="element-description general-constraint" class="description">
+      <!-- An XML name -->
+        </declare-prop>
+    <declare-prop context="element-description" class="full_name"/>
+    <declare-part context="element-description general-constraint" class="description">
       <required/>
-    </feature>
-    <part context="element-description" class="remarks"/>
-    <property context="term-definition" class="term"/>
-    <part context="term-definition" class="definition"/>
-  </declarations>-->
+    </declare-part>
+    <declare-part context="element-description" class="remarks"/>
+  </declarations>
   <section>
     <title>OSCAL namespace</title>
     <p>Conformant (valid) OSCAL documents will not contain elements not described in this document.
@@ -225,10 +224,11 @@
     <title>Declarations elements</title>
     <p>By declaring constraints on control components, such as properties (<code>prop</code>), parts
         (<code>part</code>) and links (<code>link</code>) within controls and subcontrols,
-      applications and operators can validate the regularity and composition of available controls.
-      By documenting constraints that are enforceable at need, declarations also serve as an
-      implicit <q>semantic contract</q> between a control catalog (or set of controls valid to a set
-      of OSCAL declarations).</p>
+      applications and operators can validate the composition and consistency of available controls.
+      Over and above the <q>core validation</q> of OSCAL element naming (which is enforced by direct
+      application of an XML schema), such validation can help to guarantee processability and
+      interchange of OSCAL data by verifying that not only tags, but even values given in the data,
+      conform to expressed constraints, specific to a catalog or catalog type.</p>
     <p>In this way, the OSCAL declarations mechanism provides for a kind of <q>on the fly
         supertyping</q> of control objects, by restriction (constraint) of the core OSCAL language.
       The extent and degree to which declarations are used to impose order on controls is up to the
@@ -263,15 +263,24 @@
           context</p>
       </part>
       <part class="remarks">
-        <p>The context in which the property is to be anchored is a <code>control</code>,
-            <code>subcontrol</code>, <code>part</code> or <code>group</code>, as indicated by its
-            <code>@class</code> (class attribute).</p>
-        <p>Because the <code>@class</code> attribute is the basis of the OSCAL declarations model, it is
-          recommended that applications restrict the usage of this attribute to single name values.
-          Although overloading <code>@class</code>, as it is frequently overloaded in HTML, is not forbidden in
-          OSCAL and may even work in an OSCAL application, restricting elements (at whatever level,
-          and including both <q>controls</q> and <q>control components</q> to single class values,
-          will help keep things clean and intelligible.</p>
+        <p>The class of properties, in context, to which the constraints apply, is indicated on the
+          @class of the declaration (declare-prop). The context is defined by the class of the
+          element parent of the candidate property, whether it is a <code>control</code>,
+            <code>subcontrol</code>, <code>part</code> or <code>group</code>. So a
+            <code>declare-prop context="myControl" class="myProp"</code> will apply to any property
+          (prop element) with class <q>myProp</q>, appearing in a control, subcontrol, part or group
+          with class <q>myControl</q>.</p>
+        <p>The constraints that will apply to these properties are indicated by the elements
+          contained in the the declaration. For example, a property declared as a <q>required
+            singleton</q> is required to appear in its context (the validator will produce an error
+          when it is missing), while it may not appear more than once (the validator will produce an
+          error if more than one appear together).</p>
+        <p>Because the <code>@class</code> attribute is the basis of the OSCAL declarations model,
+          it is recommended that applications restrict the usage of this attribute to single name
+          values, when used on controls or their components. Although overloading
+            <code>@class</code>, as it is frequently overloaded in HTML, is not forbidden in OSCAL
+          and may even work in an OSCAL application, restricting elements to have <em>at most</em>,
+          a single class assignment, will help keep things clean and intelligible.</p>
         <p>On declarations including <code>declare-prop</code> and its siblings, however, both
             <code>@class</code> and <code>@context</code> may be overloaded (multiple values). A
           helpful application will detect where there are conflicting declarations, meaning the same

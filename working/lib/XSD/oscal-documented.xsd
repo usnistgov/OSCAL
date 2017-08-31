@@ -169,13 +169,13 @@
          <xs:documentation>
             <b>Autonumbered (generated) value</b> Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
-          alphabetic, roman, etc)</xs:documentation>
+          alphabetic, roman, etc.)</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:element name="section">
       <xs:annotation>
          <xs:documentation>
-            <b>Section</b> For partitioning a catalog, collection or section therein</xs:documentation>
+            <b>Section</b> For partitioning a catalog, collection, or section therein</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -362,7 +362,7 @@
    <xs:element name="ref">
       <xs:annotation>
          <xs:documentation>
-            <b>Reference</b> A reference, with one or more citations to standards, related documents or other
+            <b>Reference</b> A reference, with one or more citations to standards, related documents, or other
           resources</xs:documentation>
       </xs:annotation>
       <xs:complexType>

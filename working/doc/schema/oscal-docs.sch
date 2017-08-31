@@ -43,7 +43,8 @@
       <sch:let name="exception" value="not(../@class='element-description')"/>
       <sch:assert role="warning" test="matches(string(.),'\S')">No control description</sch:assert>
       <sch:assert test="empty(* except oscal:p[1]) or $exception">Description may contain only a single paragraph, with a sentence fragment (no periods)</sch:assert>
-      <sch:report test="matches(string(.),'\.') and not($exception)">Description contains a period</sch:report>
+      <sch:report test="matches(normalize-space(.),'\.$') and not($exception)">Description ends in a period</sch:report>
+      <sch:report test="matches(normalize-space(.),'\.\s*[A-Z]') and not($exception)">Description may be more than a descriptive sentence fragment</sch:report>
       
     </sch:rule>
     
