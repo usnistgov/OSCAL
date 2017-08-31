@@ -10,7 +10,7 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/doc/schema/oscal-oscal.xml</String>
+                                    <String>working/lib/XSLT/html-to-markdown.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -30,6 +30,21 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>SP800-53 to OSCAL XProc (convert and refine)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/doc/schema/oscal-oscal.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run schema production pipeline</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -191,21 +206,6 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>working/lib/XSD/oscal-interim.xsd</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run schema production pipeline</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/lib/XSLT/html-to-markdown.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>

@@ -27,6 +27,14 @@
     <xsl:apply-templates/>
   </xsl:template>
   
+  <xsl:template match="p[@class='toc-line']">
+    <xsl:value-of select="$lf1"/>
+    <xsl:text>> </xsl:text>
+    <xsl:for-each select="ancestor::div[@class='toc']" xml:space="preserve">  </xsl:for-each>
+    <xsl:text>* </xsl:text>
+    <xsl:apply-templates/>
+  </xsl:template>
+  
   <xsl:template match="p">
     <xsl:value-of select="$lf2"/>
     <xsl:apply-templates/>

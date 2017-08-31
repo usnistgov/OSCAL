@@ -1,114 +1,59 @@
 
-
-[OSCAL: The Open Security Controls Assessment Language](#)
-
-[OSCAL namespace](#oscal-namespace)
-
-[OSCAL organization](#oscal-organization)
-
-[Interoperability with other data formats](#interoperability-with-other-data-formats)
-
-[Controls and control components](#controls-and-control-components)
-
-[&lt;catalog> Catalog](#catalog-catalog)
-
-[&lt;collection> Collection](#collection-collection)
-
-[&lt;control> Control](#control-control)
-
-[&lt;subcontrol> Control extension](#subcontrol-control-extension)
-
-[&lt;prop> Property](#prop-property)
-
-[&lt;param> Parameter](#param-parameter)
-
-[&lt;part> Part](#part-part)
-
-[&lt;link> Link](#link-link)
-
-[Functional elements](#functional-elements)
-
-[&lt;insert> Parameter insertion](#insert-parameter-insertion)
-
-[&lt;withdrawn> Withdrawn](#withdrawn-withdrawn)
-
-[Declarations elements](#declarations-elements)
-
-[&lt;declarations> Declarations](#declarations-declarations)
-
-[&lt;declare-prop> Property declaration](#declare-prop-property-declaration)
-
-[&lt;declare-p> Paragraph declaration](#declare-p-paragraph-declaration)
-
-[&lt;declare-part> Part declaration](#declare-part-part-declaration)
-
-[&lt;declare-link> Link declaration](#declare-link-link-declaration)
-
-[&lt;singleton> Singleton constraint](#singleton-singleton-constraint)
-
-[&lt;required> Requirement constraint](#required-requirement-constraint)
-
-[&lt;identifier> Identifier constraint](#identifier-identifier-constraint)
-
-[&lt;regex> Regular expression constraint](#regex-regular-expression-constraint)
-
-[&lt;value> Value constraint](#value-value-constraint)
-
-[&lt;autonum> Autonumbered (generated) value](#autonum-autonumbered-(generated)-value)
-
-[&lt;inherit> Inherited value](#inherit-inherited-value)
-
-[&lt;desc> Parameter description](#desc-parameter-description)
-
-[Structural elements](#structural-elements)
-
-[&lt;section> Section](#section-section)
-
-[&lt;group> Group](#group-group)
-
-[&lt;title> Title](#title-title)
-
-[&lt;references> References](#references-references)
-
-[&lt;ref> Reference](#ref-reference)
-
-[&lt;std> Standard](#std-standard)
-
-[&lt;citation> Citation](#citation-citation)
-
-[Prose](#prose)
-
-[&lt;p> Paragraph](#p-paragraph)
-
-[&lt;pre> Preformatted text](#pre-preformatted-text)
-
-[&lt;ol> Ordered List](#ol-ordered-list)
-
-[&lt;ul> Unordered list](#ul-unordered-list)
-
-[&lt;li> List item](#li-list-item)
-
-[&lt;em> Emphasis](#em-emphasis)
-
-[&lt;i> Italics](#i-italics)
-
-[&lt;b> Bold](#b-bold)
-
-[&lt;a> Anchor](#a-anchor)
-
-[&lt;q> Quoted text](#q-quoted-text)
-
-[&lt;code> Code](#code-code)
-
-[&lt;sup> Superscript](#sup-superscript)
-
-[&lt;sub> Subscript](#sub-subscript)
-
-[&lt;span> Span](#span-span)
-
-[Structural constraints](#structural-constraints)
-
-[Order of items inside controls](#) 
+> * [OSCAL: The Open Security Controls Assessment Language](#)
+>   * [OSCAL namespace](#oscal-namespace)
+>   * [OSCAL organization](#oscal-organization)
+>   * [Interoperability with other data formats](#interoperability-with-other-data-formats)
+>   * [Controls and control components](#controls-and-control-components)
+>     * [&lt;catalog> Catalog](#catalog-catalog)
+>     * [&lt;collection> Collection](#collection-collection)
+>     * [&lt;control> Control](#control-control)
+>     * [&lt;subcontrol> Control extension](#subcontrol-control-extension)
+>     * [&lt;prop> Property](#prop-property)
+>     * [&lt;param> Parameter](#param-parameter)
+>     * [&lt;part> Part](#part-part)
+>     * [&lt;link> Link](#link-link)
+>   * [Functional elements](#functional-elements)
+>     * [&lt;insert> Parameter insertion](#insert-parameter-insertion)
+>     * [&lt;withdrawn> Withdrawn](#withdrawn-withdrawn)
+>   * [Declarations elements](#declarations-elements)
+>     * [&lt;declarations> Declarations](#declarations-declarations)
+>     * [&lt;declare-prop> Property declaration](#declare-prop-property-declaration)
+>     * [&lt;declare-p> Paragraph declaration](#declare-p-paragraph-declaration)
+>     * [&lt;declare-part> Part declaration](#declare-part-part-declaration)
+>     * [&lt;declare-link> Link declaration](#declare-link-link-declaration)
+>     * [&lt;singleton> Singleton constraint](#singleton-singleton-constraint)
+>     * [&lt;required> Requirement constraint](#required-requirement-constraint)
+>     * [&lt;identifier> Identifier constraint](#identifier-identifier-constraint)
+>     * [&lt;regex> Regular expression constraint](#regex-regular-expression-constraint)
+>     * [&lt;value> Value constraint](#value-value-constraint)
+>     * [&lt;autonum> Autonumbered (generated) value](#autonum-autonumbered-(generated)-value)
+>     * [&lt;inherit> Inherited value](#inherit-inherited-value)
+>     * [&lt;desc> Parameter description](#desc-parameter-description)
+>   * [Structural elements](#structural-elements)
+>     * [&lt;section> Section](#section-section)
+>     * [&lt;group> Group](#group-group)
+>     * [&lt;title> Title](#title-title)
+>     * [&lt;references> References](#references-references)
+>     * [&lt;ref> Reference](#ref-reference)
+>     * [&lt;std> Standard](#std-standard)
+>     * [&lt;citation> Citation](#citation-citation)
+>   * [Prose](#prose)
+>     * [&lt;p> Paragraph](#p-paragraph)
+>     * [&lt;pre> Preformatted text](#pre-preformatted-text)
+>     * [&lt;ol> Ordered List](#ol-ordered-list)
+>     * [&lt;ul> Unordered list](#ul-unordered-list)
+>     * [&lt;li> List item](#li-list-item)
+>     * [&lt;em> Emphasis](#em-emphasis)
+>     * [&lt;i> Italics](#i-italics)
+>     * [&lt;b> Bold](#b-bold)
+>     * [&lt;a> Anchor](#a-anchor)
+>     * [&lt;q> Quoted text](#q-quoted-text)
+>     * [&lt;code> Code](#code-code)
+>     * [&lt;sup> Superscript](#sup-superscript)
+>     * [&lt;sub> Subscript](#sub-subscript)
+>     * [&lt;span> Span](#span-span)
+>   * [Structural constraints](#structural-constraints)
+>     * [Order of items inside controls](#) 
 
 # OSCAL: The Open Security Controls Assessment Language  
 
