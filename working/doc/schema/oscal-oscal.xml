@@ -49,16 +49,16 @@
       processing.</p>
     <p>At the broadest level, <q>control objects</q> in OSCAL include controls, subcontrols, parts
       of controls or subcontrols, and control groups. Each OSCAL application or application domain
-      will determine for itself how these correspond to entities or <q>controls</q>, formal processes, procedures and so forth, within that domain.</p>
+      will determine for itself how these correspond to entities or <q>controls</q>, formal processes, procedures, and so forth, within that domain.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>group</code>,
-        <code>control</code>, <code>subcontrol</code> and <code>part</code>. According to its rules,
+        <code>control</code>, <code>subcontrol</code>, and <code>part</code>. According to its rules,
       either controls or groups may appear within groups (that is, groups may be nested or may
       contain controls), while subcontrols may only appear within controls. Either controls or
       subcontrols may be partitioned (may contain parts), and parts may contain their own parts.
       While this design centers around controls and subcontrols, by means of the use of groups and
       parts, OSCAL can support organizations of controls and their components with arbitrary
-      granularity -- as any of these objects may be used consistently to carry regular sets of
+      granularity, as any of these objects may be used consistently to carry regular sets of
       properties, with names and value spaces that may be known in advance or discovered
       dynamically.</p>
   </section>
@@ -68,7 +68,7 @@
       including HTML, Markdown and its variants, NISO JATS, DITA, etc. Additionally, OSCAL
       documents may be taken as <q>warrants for inference</q> for serialization of linked data
       objects or other application binding formats including JSON.</p>
-    <p>Because OSCAL is designed to carry richer and denser semantics than most markup languages as used, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or
+    <p>Because OSCAL is designed to carry richer and denser semantics than most markup languages, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or
       customization per instance - that is, each one will be a one-off conversion.</p>
   </section>
   <group>
@@ -137,7 +137,7 @@
           matching to regular expressions or declaring known datatype notations (tbd).</p>
         <p>Because properties are often used as selectors or identifiers for OSCAL operations,
           their values can be expected frequently to be flattened (markup stripped) and normalized
-          (e.g., with respect to whitespace) in use; however this is application defined.</p>
+          (e.g., with respect to whitespace) in use; however, this is application defined.</p>
         <p>For singletons (that is, the only element among siblings with its <code>@class</code>),
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
@@ -249,8 +249,8 @@
           generically), but also against a set of declarations provided specifically for the catalog
           or catalog type within which they appear. Constraints described in these declarations, and
           bound via assignments of <code>@class</code> (for control components) and
-            <code>@context</code> (indicating control, subcontrol or part wherein the components may
-          appear), enable automated checking for consistency of controls, subcontrols and their
+            <code>@context</code> (indicating control, subcontrol, or part wherein the components may
+          appear), enable automated checking for consistency of controls, subcontrols, and their
           parts, specific to the types or kinds of control items that appear within a particular
           catalog or control collection.</p>
       </part>
@@ -266,10 +266,10 @@
         <p>The context in which the property is to be anchored is a <code>control</code>,
             <code>subcontrol</code>, <code>part</code> or <code>group</code>, as indicated by its
             <code>@class</code> (class attribute).</p>
-        <p>Because the @class attribute is the basis of the OSCAL declarations model, it is
+        <p>Because the <code>@class</code> attribute is the basis of the OSCAL declarations model, it is
           recommended that applications restrict the usage of this attribute to single name values.
-          Although overloading @class, as it is frequently overloaded in HTML, is not forbidden in
-          OSCAL and may even work in an OSCAL application - restricting elements (at whatever level,
+          Although overloading <code>@class</code>, as it is frequently overloaded in HTML, is not forbidden in
+          OSCAL and may even work in an OSCAL application, restricting elements (at whatever level,
           and including both <q>controls</q> and <q>control components</q> to single class values,
           will help keep things clean and intelligible.</p>
         <p>On declarations including <code>declare-prop</code> and its siblings, however, both
@@ -287,15 +287,15 @@
       <part class="remarks">
         <p>Elements contained in the declaration, as with all declarations, indicate constraints.
           The <code>p</code> may be required for the control to be complete, and/or the only one
-          with its <code>@class</code> (a singleton). The value(s) may be restricted. Etc.</p>
+          with its <code>@class</code> (a singleton). The value(s) may be restricted, etc.</p>
         <p>Effectively, the difference between a <q>property</q>
           <code>prop</code> and <q>classified p</q>
           <code>p[@class]</code> is that properties may have only simple scalar values, not subject
-          to dynamic processing or injection. So p elements directly inside <code>control</code>,
+          to dynamic processing or injection. So p elements directly inside a <code>control</code>,
             <code>subcontrol</code> or <code>part</code> may contain <code>insert</code> elements
-          therein, for example (just as can <code>p</code> elements in running prose) – whereas
-          parameters cannot be injected into properties by definition (since they are required to be
-          stable per control object).</p>
+          therein, for example (just as can <code>p</code> elements in running prose), whereas
+          parameters cannot be injected into properties by definition since they are required to be
+          stable per control object.</p>
       </part>
       
     </control>
@@ -307,7 +307,7 @@
       </part>
       <part class="remarks">
         <p>Parts are subject to singleton and requirement constraints, but not to constraints on
-          values. However, note that parts may also serve as contexts for other control objects
+          values. However, note that parts may also serve as contexts for other control objects,
           including properties and parts.</p>
       </part>
     </control>
@@ -395,10 +395,10 @@
       <part class="description">
         <p>Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
-          alphabetic, roman, etc)</p>
+          alphabetic, roman, etc.)</p>
       </part>
       <part class="remarks">
-        <p>The text contents of <code>autonum</code> (not the value of any attribute), will be taken
+        <p>The text contents of <code>autonum</code> (not the value of any attribute) will be taken
           by the processor to be a formatting code. The format should follow the spec for <a
             href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
               <code>xsl:number/@format</code></a>. For example, if the value is <q>A.</q>, then
@@ -451,7 +451,7 @@
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
       <part class="description">
-        <p>For partitioning a catalog, collection or section therein</p>
+        <p>For partitioning a catalog, collection, or section therein</p>
       </part>
       <part class="remarks">
         <p>Echoes HTML5 <code>section</code>. May contain controls (<code>control</code>) or groups
@@ -466,7 +466,7 @@
       </part>
       <part class="remarks">
         <p>In addition to controls or groups, groups may be titled and may have their own
-          properties, statements, parameter settings and references, subject to declaration. In this
+          properties, statements, parameter settings, and references, subject to declaration. In this
           respect they are like controls, subcontrols or parts, but their properties apply to the
           entire group and must be acquired in processing via inheritance.</p>
         <p>Unlike sections (<code>section</code> elements), groups may not contain arbitrary prose
@@ -495,7 +495,7 @@
       <prop class="tag">ref</prop>
       <prop class="full_name">Reference</prop>
       <part class="description">
-        <p>A reference, with one or more citations to standards, related documents or other
+        <p>A reference, with one or more citations to standards, related documents, or other
           resources</p>
       </part>
       
@@ -518,7 +518,7 @@
       </part>
       <part class="remarks">
         <p>Echoes the NISO JATS (and NISO STS) <code>mixed-citation</code> element.</p>
-        <p>For references to standards, <code>std</code> (qv) may be preferred.</p>
+        <p>For references to standards, <code>std</code> may be preferred.</p>
       </part>
     </control>
   </group>
@@ -539,7 +539,7 @@
         <p>Paragraph or paragraph fragment</p>
       </part>
       <part class="remarks">
-        <p>This element echoes HTML <code>p</code>; as in HTML, it is not limited to indicating
+        <p>This element echoes HTML <code>p</code>. As in HTML, it is not limited to indicating
           complete or discrete (compositional or logical) paragraphs, but can be used for any text
           set off on its own line.</p>
       </part>
@@ -683,7 +683,7 @@
         <p>Generic inline container</p>
       </part>
       <part class="remarks">
-        <p>As in HTML, an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
+        <p>As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
       </part>
     </control>
   </group>
