@@ -265,14 +265,15 @@
       </part>
       <part class="remarks">
         <p>The class of properties, in context, to which the constraints apply, is indicated on the
-          @class of the declaration (declare-prop). The context is defined by the class of the
-          element parent of the candidate property, whether it is a <code>control</code>,
-            <code>subcontrol</code>, <code>part</code> or <code>group</code>. So a
-            <code>declare-prop context="myControl" class="myProp"</code> will apply to any property
-          (prop element) with class <q>myProp</q>, appearing in a control, subcontrol, part or group
-          with class <q>myControl</q>.</p>
+            <code>@class</code> of the declaration (<code>declare-prop</code>). Only elements named
+            <code>prop</code> with matching <code>@class</code> are subject to the declared
+          constraints. The context is defined by the class of the element parent of the candidate
+          property, whether it is a <code>control</code>, <code>subcontrol</code>, <code>part</code>
+          or <code>group</code>. So a <code>declare-prop context="myControl" class="myProp"</code>
+          will apply to any property (<code>prop</code> element) with class <q>myProp</q>, appearing
+          in a control, subcontrol, part or group with class <q>myControl</q>.</p>
         <p>The constraints that will apply to these properties are indicated by the elements
-          contained in the the declaration. For example, a property declared as a <q>required
+          contained in the declaration. For example, a property declared as a <q>required
             singleton</q> is required to appear in its context (the validator will produce an error
           when it is missing), while it may not appear more than once (the validator will produce an
           error if more than one appear together).</p>
@@ -301,11 +302,11 @@
         <p>Effectively, the difference between a <q>property</q>
           <code>prop</code> and <q>classified p</q>
           <code>p[@class]</code> is that properties may have only simple scalar values, not subject
-          to dynamic processing or injection. So p elements directly inside a <code>control</code>,
-            <code>subcontrol</code> or <code>part</code> may contain <code>insert</code> elements
-          therein, for example (just as can <code>p</code> elements in running prose), whereas
-          parameters cannot be injected into properties by definition since they are required to be
-          stable per control object.</p>
+          to dynamic processing or injection. So <code>p</code> elements directly inside a
+            <code>control</code>, <code>subcontrol</code> or <code>part</code> may contain
+            <code>insert</code> elements, for example (just as can <code>p</code> elements in
+          running prose), whereas parameters cannot be injected into properties by definition (since
+          they are required to be stable per control object).</p>
       </part>
       
     </control>
@@ -357,20 +358,23 @@
           class) is required to appear, at least once, in its context.</p>
         <p>A property or part that is a required singleton, is expected to appear exactly once and
           once only in every applicable control, subcontrol or part.</p>
+        <p>Whenever a control or control object is required to have any parts (or properties etc.),
+          and any of the required parts are missing, errors may be reported against the declarations
+          model.</p>
       </part>
     </control>
     <control class="element-description">
       <prop class="tag">identifier</prop>
       <prop class="full_name">Identifier constraint</prop>
       <part class="description">
-        <p>The declared component has a value unique within the document, among properties with the
-          same class</p>
+        <p>The declared component has a value unique within the document, among properties
+            (<code>prop</code>) with the same class</p>
       </part>
       <part class="remarks">
         <p>This constraint is generally only used for properties to be used as identifiers for their
           control object (control, subcontrol, or part). Guaranteeing their uniqueness means that
           these values can be used to effect one-to-one retrieval or reference to the objects to
-          which they are assigned.</p>
+          which they are assigned (even when IDs are unknown or undefined).</p>
         <p>Note that a property marked as an identifier, may or may not be (also declared as) a
           singleton. In any case the value of <em>each</em> property of the given class must be
           unique. So if a control has several <q>name</q> properties, <q>name</q> being declared as
@@ -727,13 +731,10 @@
   </group>
   <group>
     <title>Constraints outside the core schema</title>
-    <part>
-      <p>Over and above what can be validated with a grammar (in the schema at the <q>core</q>
-        level, but also distinct from OSCAL-flavor-specific validations, is a small set of
-        constraints governing usage of @class assignments and element occurrence. Validations
-        enforcing them can be implemented via Schematron or another process capable of static
-        analysis of the data.</p>
-    </part>
+    <p>Over and above what can be validated with a grammar (in the schema at the <q>core</q> level,
+      but also distinct from OSCAL-flavor-specific validations, is a small set of constraints
+      governing usage of @class assignments and element occurrence. Validations enforcing them can
+      be implemented via Schematron or another process capable of static analysis of the data.</p>
     <control class="general-constraint">
       <title>Order of items inside controls</title>
       <part class="description">

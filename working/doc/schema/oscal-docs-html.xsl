@@ -119,20 +119,21 @@ a:visited { color: midnightblue }
   <xsl:template match="oscal:catalog/oscal:title"/>
   
   <xsl:template match="oscal:title">
-    <h2 class="title">
-      <xsl:apply-templates/>
-    </h2>
+   <!-- <xsl:for-each select="..">
+      <xsl:call-template name="make-title"/>
+    </xsl:for-each>-->
   </xsl:template>
   
   <xsl:template match="oscal:declarations"/>
     
   <xsl:template match="oscal:title" mode="title">
-    <xsl:value-of select="."/>
+    <xsl:apply-templates/>
   </xsl:template>
   
   <xsl:template match="oscal:group | oscal:section | oscal:references">
     <section class="{local-name()}" id="{generate-id(.)}">
       <xsl:copy-of select="@class"/>
+      <xsl:call-template name="make-title"/>
       <xsl:apply-templates/>
     </section>
   </xsl:template>
@@ -150,7 +151,6 @@ a:visited { color: midnightblue }
       <xsl:call-template name="make-title">
         <xsl:with-param name="runins" select="oscal:prop[@class='tag'] | oscal:prop[@class='full_name']"/>
       </xsl:call-template>
-      
       <xsl:apply-templates/>
     </div>
   </xsl:template>
@@ -160,13 +160,13 @@ a:visited { color: midnightblue }
   
   <xsl:template name="make-title">
     <xsl:param name="runins" select="/.."/>
-    <xsl:apply-templates select=".." mode="title">
+    <xsl:apply-templates select="." mode="title">
       <xsl:with-param name="runins" select="$runins"/>
     </xsl:apply-templates>
     
-    <xsl:for-each select="oscal:title">
+    <!--<xsl:for-each select="oscal:title">
       <xsl:apply-templates/>
-    </xsl:for-each>
+    </xsl:for-each>-->
     <!--<h3>
       <xsl:apply-templates select="$runins" mode="run-in"/>
       
@@ -214,8 +214,14 @@ a:visited { color: midnightblue }
     <xsl:element name="h{$how-deep}">
       <xsl:copy-of select="@class"/>
       <xsl:apply-templates mode="run-in" select="$runins"/>
-      <xsl:value-of select="@class"/>
+      <xsl:apply-templates select="oscal:title" mode="title"/>
+      <xsl:if test="not(oscal:title | $runins)"><xsl:value-of select="@class"/></xsl:if>
+      <xsl:if test="not(oscal:title | @class | $runins)"><xsl:value-of select="local-name()"/></xsl:if>
     </xsl:element>
+  </xsl:template>
+  
+  <xsl:template mode="title" match="oscal:control/oscal:title">
+    <xsl:apply-templates/>
   </xsl:template>
   
   <xsl:template match="oscal:p">
@@ -253,7 +259,6 @@ a:visited { color: midnightblue }
   
   <xsl:template match="oscal:part">
     <div class="part {@class}">
-      <xsl:apply-templates select="." mode="title"/>
       <xsl:apply-templates/>
     </div>
   </xsl:template>

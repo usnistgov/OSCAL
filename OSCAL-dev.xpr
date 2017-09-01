@@ -2355,7 +2355,7 @@
     <projectTree name="OSCAL-dev.xpr">
         <folder name="samples">
             <file name="working/COBIT5/cobit5-selection-oscal.xml"/>
-            <file name="working/ISO-27002/iso-27002-OSCAL-refined.xml"/>
+            <file name="working/ISO-27002/ISO-27002-OSCAL-refined.xml"/>
             <file name="working/doc/schema/oscal-oscal.xml"/>
             <file name="working/SP800-53/SP800-53-OSCAL-demo.xml"/>
             <file name="working/SP800-53/SP800-53-OSCAL-refined.xml"/>
