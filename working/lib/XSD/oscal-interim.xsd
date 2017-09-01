@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://scap.nist.gov/schema/oscal" xmlns:oscal="http://scap.nist.gov/schema/oscal">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
   <!-- We can have a catalog, or we can have only declarations for catalogs -->
   <!-- Also we have an alias for 'catalog', namely 'collection', used for ad-hoc collections of controls -->
   <!--
@@ -128,6 +129,7 @@
             <xs:element ref="oscal:inherit"/>
             <xs:element ref="oscal:autonum"/>
           </xs:choice>
+          <xs:attribute ref="xml:space"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>

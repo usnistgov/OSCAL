@@ -38,8 +38,7 @@
   <declare-prop context="SP800-53-enhancement" class="name">
     <singleton/>
     <required/>
-    <value><inherit/>
-      <autonum>(1)</autonum></value>
+    <value xml:space="preserve"><inherit/> <autonum>(1)</autonum></value>
   </declare-prop>
   <declare-prop context="SP800-53-enhancement" class="baseline-impact">
     <value>LOW</value>
@@ -73,8 +72,8 @@
   <declare-prop context="item" class="name">
     <singleton/>
     <required/>
-    <value><inherit/><autonum>a.</autonum></value><!-- in controls -->
-    <value><inherit/><autonum>(a)</autonum></value><!-- in subcontrols -->
+    <value xml:space="preserve"><inherit/><autonum>a.</autonum></value><!-- in controls -->
+    <value xml:space="preserve"><inherit/><autonum>(a)</autonum></value><!-- in subcontrols -->
   
     <!-- then even lower down -->
     <value><inherit/><autonum>1.</autonum></value><!-- in subitems in controls -->

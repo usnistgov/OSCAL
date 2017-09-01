@@ -58,7 +58,7 @@ required =  element required { empty }
 # element limit { requiredClass, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
 
 regex = element regex { text }
-value = element value { ( \inherit | autonum | text )* }
+value = element value { attribute xml:space { 'preserve' }?, ( \inherit | autonum | text )* }
 \inherit = element inherit { attribute from { text }?, text }
 autonum = element autonum { text }
 

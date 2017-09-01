@@ -13,10 +13,7 @@
       <declare-prop context="clause" class="number">
          <required/>
          <identifier/>
-         <value>
-            <inherit/>
-            <autonum>.1</autonum>
-         </value>
+         <value xml:space="preserve"><inherit/><autonum>.1</autonum></value>
       </declare-prop>
       <declare-part context="clause" class="objective">
          <required/>
@@ -24,10 +21,7 @@
       <declare-prop context="iso-27002" class="number">
          <required/>
          <identifier/>
-         <value>
-            <inherit/>
-            <autonum>.1</autonum>
-         </value>
+         <value xml:space="preserve"><inherit/><autonum>.1</autonum></value>
       </declare-prop>
       <declare-part context="control" class="description">
          <required/>

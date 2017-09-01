@@ -2,6 +2,8 @@
            xmlns:oscal="http://scap.nist.gov/schema/oscal"
            elementFormDefault="qualified"
            targetNamespace="http://scap.nist.gov/schema/oscal">
+   <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+              schemaLocation="xml.xsd"/>
    <xs:complexType name="collection-contents">
       <xs:sequence>
          <xs:element ref="oscal:title"/>
@@ -150,6 +152,7 @@
                   <xs:element ref="oscal:inherit"/>
                   <xs:element ref="oscal:autonum"/>
                </xs:choice>
+               <xs:attribute ref="xml:space"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
