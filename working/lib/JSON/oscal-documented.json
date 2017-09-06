@@ -1,0 +1,396 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://scap.nist.gov/schema/oscal.json",
+  "definitions": {
+    "collection": {
+      "$id": "#/definitions/collection",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": ""
+        },
+        "declarations": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/declaration",
+              "description": ""
+            },
+            {
+              "href": {
+                "type": "string",
+                "description": ""
+              }
+            }
+          ]
+        },
+        "sections": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/section" }
+        },
+        "groups": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/group" }
+        }
+      }
+    },
+    "declaration": {
+      "$id": "#/definitions/declaration",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "declareProperties": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/declareProperty" }
+        },
+        "declareParts": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/declarePart" }
+        },
+        "declareLinks": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/declareLink" }
+        }
+      }
+    },
+    "declareProperty": {
+      "$id": "#/definitions/declareProperty",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "identifier": {
+          "type": "boolean",
+          "description": ""
+        },
+        "regex": {
+          "type": "string",
+          "description": ""
+        },
+        "required": {
+          "type": "boolean",
+          "description": ""
+        },
+        "singleton": {
+          "type": "boolean",
+          "description": ""
+        },
+        "values": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/value" }
+        }
+      }
+    },
+    "declarePart": {
+      "$id": "#/definitions/declarePart",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "required": {
+          "type": "boolean",
+          "description": ""
+        },
+        "singleton": {
+          "type": "boolean",
+          "description": ""
+        },
+        "values": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/value" }
+        }
+      }
+    },
+    "declareParagraph": {
+      "$id": "#/definitions/declareParagraph",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    },
+    "declareLink": {
+      "$id": "#/definitions/declareLink",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "required": {
+          "type": "boolean",
+          "description": ""
+        },
+        "singleton": {
+          "type": "boolean",
+          "description": ""
+        }
+      }
+    },    
+    "value": {
+      "$id": "#/definitions/value",
+      "description": "",
+      "oneOf": [
+        {
+          "type": "string",
+          "description": ""
+        },
+        {
+          "type": "object",
+          "description": "",
+          "properties": {
+            "inherit": {
+              "type": "boolean",
+              "description": ""
+            },
+            "autonum": {
+              "type": "string",
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    "section": {
+      "$id": "#/definitions/section",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "paragraphs": {
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
+        },
+        "title": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    },
+    "group": {
+      "$id": "#/definitions/group",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": ""
+        },
+        "paragraphs": {
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
+        },
+        "controls": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/control" }
+        }
+      }
+    },
+    "control": {
+      "$id": "#/definitions/control",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "$id": {
+          "type": "string",
+          "description": ""
+        },
+        "parameters": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/parameter" }
+        },
+        "properties": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/property" }
+        },
+        "parts": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/part" }
+        },
+        "subcontrol": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/control" }
+        },
+        "references": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/reference" }
+        }
+      }
+    },
+    "part": {
+      "$id": "#/definitions/part",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "$id": {
+          "type": "string",
+          "description": ""
+        },
+        "properties": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/property" }
+        },
+        "paragraphs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "",
+            "properties": {
+              "class": {
+                "type": "string",
+                "description": ""
+              },
+              "value": {
+                "type": "string",
+                "description": ""
+              },
+              "withdrawn": {
+                "type": "string",
+                "description": ""
+              },
+              "insert": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                  "paramID": {
+                    "type": "string",
+                    "description": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parts": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/part" }
+        },
+        "links": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "object",
+            "description": "",
+            "properties": {
+              "href": {
+                "type": "string",
+                "description": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameter": {
+      "$id": "#/definitions/parameter",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "$id": {
+          "type": "string",
+          "description": ""
+        },
+        "description": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    },
+    "property": {
+      "$id": "#/definitions/property",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    },
+    "reference": {
+      "$id": "#/definitions/reference",
+      "type": "object",
+      "description": "",
+      "patternProperties": {
+        "^(citation|standard)$": { "$ref": "#/definitions/ref" }
+      }
+    },
+    "ref": {
+      "$id": "#/definitions/ref",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    }    
+  },
+  "patternProperties": {
+    "^(catalog|collection)$": { "$ref": "#/definitions/collection" }
+  }
+}
