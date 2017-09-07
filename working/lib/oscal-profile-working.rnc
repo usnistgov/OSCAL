@@ -2,9 +2,9 @@ default namespace = "http://scap.nist.gov/schema/oscal"
 
 include "oscal-working.rnc" { start = profile }
 
-profile = element profile { declarations?, invoke+, framework? }
+profile = element profile { invoke+, framework? }
 
-invoke = element invoke { hrefAttr, (\include?, exclude?) }
+invoke = element invoke { hrefAttr, idAttr, (\include?, exclude?) }
 
 \include = element include { ((all, param*) | (call | param)+ ) }
 
@@ -32,7 +32,7 @@ filter = element filter { attribute key { text }, text }
 
 
 framework = element framework { idAttr, optionalClass,
-  title?, (category+ | item+ ) }
+  title?, declarations?, (category+ | item+ ) }
 
 category = element category { idAttr, optionalClass,
   title?, (prop | link | prose)*,

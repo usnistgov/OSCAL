@@ -37,8 +37,14 @@
         </p>
     </xsl:template>
     
-    <xsl:template match="Function | Category[empty(../Subcategory)] | Subcategory">
-        <prop class="name">
+    <xsl:template match="Function | Category[empty(../Subcategory)]">
+        <prop class="{ name(.) ! lower-case(.) }-id">
+            <xsl:apply-templates/>
+        </prop>
+    </xsl:template>
+    
+    <xsl:template match="Subcategory">
+        <prop class="number">
             <xsl:apply-templates/>
         </prop>
     </xsl:template>
@@ -52,7 +58,7 @@
     </xsl:template>
     
     <xsl:template priority="2" match="record[exists(Category)]">
-        <category class="category">
+        <category>
             <xsl:apply-templates/>
             <xsl:apply-templates select="key('item-by-category',Category)"/>
         </category>
