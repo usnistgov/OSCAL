@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
-<framework>
+<?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
+<profile xmlns="http://scap.nist.gov/schema/oscal">
+   <!-- NB the declarations model needs to be extended to permit items and categories as context
+        but it should work fine. -->
+   <!--<declarations>
+      <declare-prop class="name" context="item">
+         <value xml:space="preserve"><autonum/></value></declare-prop>
+   </declarations>-->
+   <invoke href="../SP800-53/SP800-53-OSCAL-refined.xml">
+      <include>
+         <all/>
+      </include>
+   </invoke>
+   <framework>
    <category class="function">
       <title>Identify</title>
       <prop class="name">ID</prop>
@@ -918,4 +931,4 @@
          </item>
       </category>
    </category>
-</framework>
+</framework></profile>
