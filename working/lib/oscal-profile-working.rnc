@@ -2,7 +2,7 @@ default namespace = "http://scap.nist.gov/schema/oscal"
 
 include "oscal-working.rnc" { start = profile }
 
-profile = element profile { invoke+, mod* }
+profile = element profile { invoke+, framework? }
 
 invoke = element invoke { hrefAttr, (\include?, exclude?) }
 
@@ -30,5 +30,26 @@ call = element call {
 # not used ... for experimental feature
 filter = element filter { attribute key { text }, text }
 
-# build out later ...
-mod = element mod { contextAttr }
+
+framework = element framework { idAttr, optionalClass,
+  (category | item+ ) }
+
+category = element category { idAttr, optionalClass,
+   (prop | link | prose)*,
+   (category | item+ ) }
+  
+item =
+  element item {
+    idAttr, optionalClass, title?, param*,
+    (prop | link | prose)*
+  }
+
+# an overlay - a framework whose structure matches the catalog?
+
+# frameworks contain categories or items
+# categories contain categories or items
+# items contain title?, prop*, p*, link*
+# strict governance over item/link/@rel
+# declarations too :-)
+# validation can ensure that framework links are scoped
+# corresponding with catalogs/controls included in the profile
