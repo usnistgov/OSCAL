@@ -65,12 +65,14 @@
       "description": "",
       "properties": {
         "context": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         "class": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         "identifier": {
           "type": "boolean",
@@ -101,12 +103,14 @@
       "description": "",
       "properties": {
         "context": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         "class": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         "required": {
           "type": "boolean",
@@ -129,12 +133,14 @@
       "description": "",
       "properties": {
         "context": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         "class": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         }
       }
     },
@@ -144,12 +150,14 @@
       "description": "",
       "properties": {
         "context": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         "class": {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         "required": {
           "type": "boolean",
@@ -190,15 +198,15 @@
       "type": "object",
       "description": "",
       "properties": {
+        "title": {
+          "type": "string",
+          "description": ""
+        },
         "paragraphs": {
           "type": "array",
           "description": "",
           "items": { "type": "string" }
-        },
-        "title": {
-          "type": "string",
-          "description": ""
-        }
+        }        
       }
     },
     "group": {
@@ -231,7 +239,7 @@
           "type": "string",
           "description": ""
         },
-        "$id": {
+        "id": {
           "type": "string",
           "description": ""
         },
@@ -337,7 +345,7 @@
       "type": "object",
       "description": "",
       "properties": {
-        "$id": {
+        "id": {
           "type": "string",
           "description": ""
         },
