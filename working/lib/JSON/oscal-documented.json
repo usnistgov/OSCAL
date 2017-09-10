@@ -284,7 +284,7 @@
           "type": "string",
           "description": ""
         },
-        "$id": {
+        "id": {
           "type": "string",
           "description": ""
         },
