@@ -52,6 +52,11 @@
           "description": "",
           "items": { "$ref": "#/definitions/declarePart" }
         },
+        "declareParagraphs": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/declareParagraph" }
+        },
         "declareLinks": {
           "type": "array",
           "description": "",
