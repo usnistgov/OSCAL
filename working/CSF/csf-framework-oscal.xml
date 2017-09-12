@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<framework>
-   <category class="function">
+<?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<framework  xmlns="http://scap.nist.gov/schema/oscal">
+   <!-- http://csrc.nist.gov/ns/oscal/1.0 -->
+   
+   <group class="function">
       <title>Identify</title>
       <prop class="function-id">ID</prop>
-      <category>
+      <group class="category">
          <title>Asset Management</title>
          <prop class="category-id">ID.AM</prop>
-         <p class="description">The data, personnel, devices, systems, and facilities that enable the organization to achieve business purposes are identified and managed consistent with their relative importance to business objectives and the organization’s risk strategy.</p>
+         <p class="description">The data, personnel, devices, systems, and facilities that enable
+            the organization to achieve business purposes are identified and managed consistent with
+            their relative importance to business objectives and the organization’s risk
+            strategy.</p>
          <item>
             <prop class="number">1</prop>
-            <p class="description">Physical devices and systems within the organization are inventoried</p>
+            <p class="description">Physical devices and systems within the organization are
+               inventoried</p>
+            <link rel="control" href="there.xml#cm.8">CM-8</link>
             <link rel="control">CM-8</link>
          </item>
          <item>
             <prop class="number">2</prop>
-            <p class="description">Software platforms and applications within the organization are inventoried</p>
+            <p class="description">Software platforms and applications within the organization are
+               inventoried</p>
             <link rel="control">CM-8</link>
          </item>
          <item>
             <prop class="number">3</prop>
             <p class="description">Organizational communication and data flows are mapped</p>
-            <link rel="control">AC-4</link>
+            <link href="catalog.xml#ac.4" rel="control">AC-4</link>
             <link rel="control">CA-3</link>
             <link rel="control">CA-9</link>
-            <link rel="control">PL-8</link>
+            <link rel="control" href="sp800-53-catalog.xml#pl.8">PL-8</link>
          </item>
          <item>
             <prop class="number">4</prop>
@@ -33,43 +43,52 @@
          </item>
          <item>
             <prop class="number">5</prop>
-            <p class="description">Resources (e.g., hardware, devices, data, time, and software) are prioritized based on their classification, criticality, and business value</p>
+            <p class="description">Resources (e.g., hardware, devices, data, time, and software) are
+               prioritized based on their classification, criticality, and business value</p>
             <link rel="control">CP-2</link>
             <link rel="control">RA-2</link>
             <link rel="control">SA-14</link>
          </item>
          <item>
             <prop class="number">6</prop>
-            <p class="description">Cybersecurity roles and responsibilities for the entire workforce and third-party stakeholders (e.g., suppliers, customers, partners) are established</p>
+            <p class="description">Cybersecurity roles and responsibilities for the entire workforce
+               and third-party stakeholders (e.g., suppliers, customers, partners) are
+               established</p>
             <link rel="control">CP-2</link>
             <link rel="control">PS-7</link>
             <link rel="control">PM-11</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Business Environment</title>
          <prop class="category-id">ID.BE</prop>
-         <p class="description">The organization’s mission, objectives, stakeholders, and activities are understood and prioritized; this information is used to inform cybersecurity roles, responsibilities, and risk management decisions.</p>
+         <p class="description">The organization’s mission, objectives, stakeholders, and activities
+            are understood and prioritized; this information is used to inform cybersecurity roles,
+            responsibilities, and risk management decisions.</p>
          <item>
             <prop class="number">1</prop>
-            <p class="description">The organization’s role in the supply chain is identified and communicated</p>
+            <p class="description">The organization’s role in the supply chain is identified and
+               communicated</p>
             <link rel="control">CP-2</link>
             <link rel="control">SA-12</link>
          </item>
          <item>
             <prop class="number">2</prop>
-            <p class="description">The organization’s place in critical infrastructure and its industry sector is identified and communicated</p>
+            <p class="description">The organization’s place in critical infrastructure and its
+               industry sector is identified and communicated</p>
             <link rel="control">PM-8</link>
          </item>
          <item>
             <prop class="number">3</prop>
-            <p class="description">Priorities for organizational mission, objectives, and activities are established and communicated</p>
+            <p class="description">Priorities for organizational mission, objectives, and activities
+               are established and communicated</p>
             <link rel="control">PM-11</link>
             <link rel="control">SA-14</link>
          </item>
          <item>
             <prop class="number">4</prop>
-            <p class="description">Dependencies and critical functions for delivery of critical services are established</p>
+            <p class="description">Dependencies and critical functions for delivery of critical
+               services are established</p>
             <link rel="control">CP-8</link>
             <link rel="control">PE-9</link>
             <link rel="control">PE-11</link>
@@ -78,16 +97,20 @@
          </item>
          <item>
             <prop class="number">5</prop>
-            <p class="description">Resilience requirements to support delivery of critical services are established for all operating states (e.g. under duress/attack, during recovery, normal operations)</p>
+            <p class="description">Resilience requirements to support delivery of critical services
+               are established for all operating states (e.g. under duress/attack, during recovery,
+               normal operations)</p>
             <link rel="control">CP-2</link>
             <link rel="control">CP-11</link>
             <link rel="control">SA-14</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Governance</title>
          <prop class="category-id">ID.GV</prop>
-         <p class="description">The policies, procedures, and processes to manage and monitor the organization’s regulatory, legal, risk, environmental, and operational requirements are understood and inform the management of cybersecurity risk.</p>
+         <p class="description">The policies, procedures, and processes to manage and monitor the
+            organization’s regulatory, legal, risk, environmental, and operational requirements are
+            understood and inform the management of cybersecurity risk.</p>
          <item>
             <prop class="number">1</prop>
             <p class="description">Organizational information security policy is established</p>
@@ -95,26 +118,31 @@
          </item>
          <item>
             <prop class="number">2</prop>
-            <p class="description">Information security roles &amp; responsibilities are coordinated and aligned with internal roles and external partners</p>
+            <p class="description">Information security roles &amp; responsibilities are coordinated
+               and aligned with internal roles and external partners</p>
             <link rel="control">PM-1</link>
             <link rel="control">PS-7</link>
          </item>
          <item>
             <prop class="number">3</prop>
-            <p class="description">Legal and regulatory requirements regarding cybersecurity, including privacy and civil liberties obligations, are understood and managed</p>
+            <p class="description">Legal and regulatory requirements regarding cybersecurity,
+               including privacy and civil liberties obligations, are understood and managed</p>
             <link rel="control">All</link>
          </item>
          <item>
             <prop class="number">4</prop>
-            <p class="description">Governance and risk management processes address cybersecurity risks</p>
+            <p class="description">Governance and risk management processes address cybersecurity
+               risks</p>
             <link rel="control">PM-9</link>
             <link rel="control">PM-11</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Risk Assessment</title>
          <prop class="category-id">ID.RA</prop>
-         <p class="description">The organization understands the cybersecurity risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals.</p>
+         <p class="description">The organization understands the cybersecurity risk to
+            organizational operations (including mission, functions, image, or reputation),
+            organizational assets, and individuals.</p>
          <item>
             <prop class="number">1</prop>
             <p class="description">Asset vulnerabilities are identified and documented</p>
@@ -131,14 +159,16 @@
          </item>
          <item>
             <prop class="number">2</prop>
-            <p class="description">Cyber threat intelligence is received from information sharing forums and sources</p>
+            <p class="description">Cyber threat intelligence is received from information sharing
+               forums and sources</p>
             <link rel="control">PM-15</link>
             <link rel="control">PM-16</link>
             <link rel="control">SI-5</link>
          </item>
          <item>
             <prop class="number">3</prop>
-            <p class="description">Threats, both internal and external, are identified and documented</p>
+            <p class="description">Threats, both internal and external, are identified and
+               documented</p>
             <link rel="control">RA-3</link>
             <link rel="control">SI-5</link>
             <link rel="control">PM-12</link>
@@ -155,7 +185,8 @@
          </item>
          <item>
             <prop class="number">5</prop>
-            <p class="description">Threats, vulnerabilities, likelihoods, and impacts are used to determine risk</p>
+            <p class="description">Threats, vulnerabilities, likelihoods, and impacts are used to
+               determine risk</p>
             <link rel="control">RA-2</link>
             <link rel="control">RA-3</link>
             <link rel="control">PM-16</link>
@@ -166,44 +197,52 @@
             <link rel="control">PM-4</link>
             <link rel="control">PM-9</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Risk Management Strategy</title>
          <prop class="category-id">ID.RM</prop>
-         <p class="description">The organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions.</p>
+         <p class="description">The organization’s priorities, constraints, risk tolerances, and
+            assumptions are established and used to support operational risk decisions.</p>
          <item>
             <prop class="number">1</prop>
-            <p class="description">Risk management processes are established, managed, and agreed to by organizational stakeholders</p>
+            <p class="description">Risk management processes are established, managed, and agreed to
+               by organizational stakeholders</p>
             <link rel="control">PM-9</link>
          </item>
          <item>
             <prop class="number">2</prop>
-            <p class="description">Organizational risk tolerance is determined and clearly expressed</p>
+            <p class="description">Organizational risk tolerance is determined and clearly
+               expressed</p>
             <link rel="control">PM-9</link>
          </item>
          <item>
             <prop class="number">3</prop>
-            <p class="description">The organization’s determination of risk tolerance is informed by its role in critical infrastructure and sector specific risk analysis</p>
+            <p class="description">The organization’s determination of risk tolerance is informed by
+               its role in critical infrastructure and sector specific risk analysis</p>
             <link rel="control">PM-8</link>
             <link rel="control">PM-9</link>
             <link rel="control">PM-11</link>
             <link rel="control">SA-14</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Supply Chain Risk Management</title>
          <prop class="category-id">ID.SC</prop>
-         <p class="description">The organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions.</p>
+         <p class="description">The organization’s priorities, constraints, risk tolerances, and
+            assumptions are established and used to support operational risk decisions.</p>
          <item>
             <prop class="number">1</prop>
-            <p class="description">Cyber supply chain risk management processes are identified, established, assessed, managed, and agreed to by organizational stakeholders</p>
+            <p class="description">Cyber supply chain risk management processes are identified,
+               established, assessed, managed, and agreed to by organizational stakeholders</p>
             <link rel="control">SA-9</link>
             <link rel="control">SA-12</link>
             <link rel="control">PM-9</link>
          </item>
          <item>
             <prop class="number">2</prop>
-            <p class="description">Identify, prioritize and assess suppliers and partners of critical information systems, components and services using a cyber supply chain risk assessment process</p>
+            <p class="description">Identify, prioritize and assess suppliers and partners of
+               critical information systems, components and services using a cyber supply chain risk
+               assessment process</p>
             <link rel="control">RA-2</link>
             <link rel="control">RA-3</link>
             <link rel="control">SA-12</link>
@@ -213,7 +252,9 @@
          </item>
          <item>
             <prop class="number">3</prop>
-            <p class="description">Suppliers and partners are required by contract to implement appropriate measures designed to meet the objectives of the Information Security program or Cyber Supply Chain Risk Management Plan.</p>
+            <p class="description">Suppliers and partners are required by contract to implement
+               appropriate measures designed to meet the objectives of the Information Security
+               program or Cyber Supply Chain Risk Management Plan.</p>
             <link rel="control">SA-9</link>
             <link rel="control">SA-11</link>
             <link rel="control">SA-12</link>
@@ -221,7 +262,9 @@
          </item>
          <item>
             <prop class="number">4</prop>
-            <p class="description">Suppliers and partners are monitored to confirm that they have satisfied their obligations as required. Reviews of audits, summaries of test results, or other equivalent evaluations of suppliers/providers are conducted</p>
+            <p class="description">Suppliers and partners are monitored to confirm that they have
+               satisfied their obligations as required. Reviews of audits, summaries of test
+               results, or other equivalent evaluations of suppliers/providers are conducted</p>
             <link rel="control">AU-2</link>
             <link rel="control">AU-6</link>
             <link rel="control">AU-12</link>
@@ -232,7 +275,8 @@
          </item>
          <item>
             <prop class="number">5</prop>
-            <p class="description">Response and recovery planning and testing are conducted with critical suppliers/providers</p>
+            <p class="description">Response and recovery planning and testing are conducted with
+               critical suppliers/providers</p>
             <link rel="control">CP-2</link>
             <link rel="control">CP-4</link>
             <link rel="control">IR-3</link>
@@ -241,12 +285,12 @@
             <link rel="control">IR-8</link>
             <link rel="control">IR-9</link>
          </item>
-      </category>
-   </category>
-   <category class="function">
+      </group>
+   </group>
+   <group class="function">
       <title>Protect</title>
       <prop class="function-id">PR</prop>
-      <category>
+      <group class="category">
          <title>Identity Management and Access Control</title>
          <prop class="category-id">PR.AC</prop>
          <p class="description">Access to physical and logical assets and associated facilities is limited to authorized users, processes, and devices, and is managed consistent with the assessed risk of unauthorized access</p>
@@ -305,8 +349,8 @@
             <link rel="control">PE-2</link>
             <link rel="control">PS-3</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Awareness and Training</title>
          <prop class="category-id">PR.AT</prop>
          <p class="description">The organization’s personnel and partners are provided cybersecurity awareness education and are adequately trained to perform their information security-related duties and responsibilities consistent with related policies, procedures, and agreements.</p>
@@ -340,8 +384,8 @@
             <link rel="control">AT-3</link>
             <link rel="control">PM-13</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Data Security</title>
          <prop class="category-id">PR.DS</prop>
          <p class="description">Information and records (data) are managed consistent with the organization’s risk strategy to protect the confidentiality, integrity, and availability of information.</p>
@@ -400,8 +444,8 @@
             <link rel="control">SA-10</link>
             <link rel="control">SI-7</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Information Protection Processes and Procedures</title>
          <prop class="category-id">PR.IP</prop>
          <p class="description">Security policies (that address purpose, scope, roles, responsibilities, management commitment, and coordination among organizational entities), processes, and procedures are maintained and used to manage protection of information systems and assets.</p>
@@ -499,8 +543,8 @@
             <link rel="control">RA-5</link>
             <link rel="control">SI-2</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Maintenance</title>
          <prop class="category-id">PR.MA</prop>
          <p class="description">Maintenance and repairs of industrial control and information system components is performed consistent with policies and procedures.</p>
@@ -516,8 +560,8 @@
             <p class="description">Remote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access</p>
             <link rel="control">MA-4</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Protective Technology</title>
          <prop class="category-id">PR.PT</prop>
          <p class="description">Technical security solutions are managed to ensure the security and resilience of systems and assets, consistent with related policies, procedures, and agreements.</p>
@@ -560,12 +604,12 @@
             <link rel="control">SA-14</link>
             <link rel="control">SC-6</link>
          </item>
-      </category>
-   </category>
-   <category class="function">
+      </group>
+   </group>
+   <group class="function">
       <title>Detect</title>
       <prop class="function-id">DE</prop>
-      <category>
+      <group class="category">
          <title>Anomalies and Events</title>
          <prop class="category-id">DE.AE</prop>
          <p class="description">Anomalous activity is detected in a timely manner and the potential impact of events is understood.</p>
@@ -610,8 +654,8 @@
             <link rel="control">IR-5</link>
             <link rel="control">IR-8</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Security Continuous Monitoring</title>
          <prop class="category-id">DE.CM</prop>
          <p class="description">The information system and assets are monitored at discrete intervals to identify cybersecurity events and verify the effectiveness of protective measures.</p>
@@ -682,8 +726,8 @@
             <p class="description">Vulnerability scans are performed</p>
             <link rel="control">RA-5</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Detection Processes</title>
          <prop class="category-id">DE.DP</prop>
          <p class="description">Detection processes and procedures are maintained and tested to ensure timely and adequate awareness of anomalous events.</p>
@@ -731,12 +775,12 @@
             <link rel="control">SI-4</link>
             <link rel="control">PM-14</link>
          </item>
-      </category>
-   </category>
-   <category class="function">
+      </group>
+   </group>
+   <group class="function">
       <title>Respond</title>
       <prop class="function-id">RS</prop>
-      <category>
+      <group class="category">
          <title>Response Planning</title>
          <prop class="category-id">RS.RP</prop>
          <p class="description">Response processes and procedures are executed and maintained, to ensure timely response to detected cybersecurity events.</p>
@@ -748,8 +792,8 @@
             <link rel="control">IR-4</link>
             <link rel="control">IR-8</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Communications</title>
          <prop class="category-id">RS.CO</prop>
          <p class="description">Response activities are coordinated with internal and external stakeholders, as appropriate, to include external support from law enforcement agencies.</p>
@@ -793,8 +837,8 @@
             <link rel="control">PM-15</link>
             <link rel="control">SI-5</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Analysis</title>
          <prop class="category-id">RS.AN</prop>
          <p class="description">Analysis is conducted to ensure adequate response and support recovery activities.</p>
@@ -828,8 +872,8 @@
             <link rel="control">IR-5</link>
             <link rel="control">IR-8</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Mitigation</title>
          <prop class="category-id">RS.MI</prop>
          <p class="description">Activities are performed to prevent expansion of an event, mitigate its effects, and eradicate the incident.</p>
@@ -850,8 +894,8 @@
             <link rel="control">RA-3</link>
             <link rel="control">RA-5</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Improvements</title>
          <prop class="category-id">RS.IM</prop>
          <p class="description">Organizational response activities are improved by incorporating lessons learned from current and previous detection/response activities.</p>
@@ -869,12 +913,12 @@
             <link rel="control">IR-4</link>
             <link rel="control">IR-8</link>
          </item>
-      </category>
-   </category>
-   <category class="function">
+      </group>
+   </group>
+   <group class="function">
       <title>Recover</title>
       <prop class="function-id">RC</prop>
-      <category>
+      <group class="category">
          <title>Recovery Planning</title>
          <prop class="category-id">RC.RP</prop>
          <p class="description">Recovery processes and procedures are executed and maintained to ensure timely restoration of systems or assets affected by cybersecurity events.</p>
@@ -885,8 +929,8 @@
             <link rel="control">IR-4</link>
             <link rel="control">IR-8</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Improvements</title>
          <prop class="category-id">RC.IM</prop>
          <p class="description">Recovery planning and processes are improved by incorporating lessons learned into future activities.</p>
@@ -904,8 +948,8 @@
             <link rel="control">IR-4</link>
             <link rel="control">IR-8</link>
          </item>
-      </category>
-      <category>
+      </group>
+      <group class="category">
          <title>Communications</title>
          <prop class="category-id">RC.CO</prop>
          <p class="description">Restoration activities are coordinated with internal and external parties, such as coordinating centers, Internet Service Providers, owners of attacking systems, victims, other CSIRTs, and vendors.</p>
@@ -915,6 +959,6 @@
             <link rel="control">CP-2</link>
             <link rel="control">IR-4</link>
          </item>
-      </category>
-   </category>
+      </group>
+   </group>
 </framework>

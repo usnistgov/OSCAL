@@ -1,6 +1,6 @@
 * { display: block } 
 
-catalog { max-width: 48em }
+catalog, framework { max-width: 48em }
 
 declarations { font-family: sans-serif; font-size: 80%;
    padding: 0.5em; margin: 0.5em; border: thin solid black; background-color: gainsboro;
@@ -47,7 +47,7 @@ inherit:before { content: oxy_label(text, "inherit", width, 4em, color, inherit)
 autonum:before { content: oxy_label(text, "autonumber ", width, 4em, color, inherit)
 }
 
-group, section, references, extensions, framework, category
+group, section, references, extensions, profile framework
   { padding: 0.5em; margin: 0.5em; border: thin solid black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 

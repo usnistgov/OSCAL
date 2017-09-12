@@ -10,60 +10,7 @@
         <title>
         <xsl:value-of select="descendant::oscal:title[1]"/>
         </title>
-        <style type="text/css">
-
-.control { margin:1em; padding: 1em; border: thin solid black }
-.subcontrol { margin-top: 0.5em; padding: 1em; border: thin dotted black }
-.control > *:first-child, .subcontrol > *:first-child { margin-top: 0em }
-
-h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin-bottom: 0em }
-h3 { font-size: 120% }
-
-// div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
-// div.part { border: none; padding: 0em; margin: 0em }
-.part {  }
-
-section h3     { font-size: 160% }
-section h3     { font-size: 140% }
-div h3         { font-size: 130% }
-div div h3     { font-size: 120% }
-div div div h3 { font-size: 110% }
-
-p, div.param { margin-top: 0.4em; margin-bottom: 0.2em }
-p { line-height: 160% }
-p:first-child { margin-top: 0ex }
-
-div.param { background-color: lightgreen; border: thin solid green; font-size: 80%; padding: 0.3em }
-
-.param p { margin: 0em }
-
-p.object { padding-left: 2em; text-indent: -2em }
-
-p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; border: medium solid blue; padding-right: 0.2em; margin-right: 0.2em }
-p.link.broken { background-color: lemonchiffon; border: medium solid darkorange; text-decoration: line-through }
-.part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
-
-.insert, .choice { border: thin solid black; padding: 0.1em; background-color: skyblue }
-.unassigned { border: thin solid red; background-color: pink}
-.desc { color: darkgreen }
-.insert .desc { font-size: 90% }
-.value { font-style: italic; text-decoration: underline }
-
-.param-id { font-size: 90%; font-family: sans-serif; font-weight: bold; background-color: black; color: white }
-.insert .param-id { font-size: 80% }
-
-.withdrawn { font-weight: bold; font-style: italic }
-
-.box { vertical-align: middle; width: 2em }
-.subst  { color: midnightblue; font-family: sans-serif; font-style: normal; font-weight: normal; font-size; 85% } 
-
-.impact-table { width: 100%; collapse: collapsed; font-family: sans-serif }
-.impact-table td { padding: 0.5em; background-color: lightgrey; border: thin solid black }
-
-li { list-style-type: square }
-a { text-decoration: none }
-
-        </style>
+        <xsl:copy-of select="$css"/>
       </head>
       <body class="{local-name(/*)}">
         <xsl:apply-templates/>
@@ -80,7 +27,65 @@ a { text-decoration: none }
       <xsl:apply-templates/>
     </h2>
   </xsl:template>
+
+  <xsl:variable name="css">
+    <style type="text/css">
+      
+      .control { margin:1em; padding: 1em; border: thin solid black }
+      .subcontrol { margin-top: 0.5em; padding: 1em; border: thin dotted black }
+      .control > *:first-child, .subcontrol > *:first-child { margin-top: 0em }
+      
+      h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin-bottom: 0em }
+      h3 { font-size: 120% }
+      
+      // div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
+      // div.part { border: none; padding: 0em; margin: 0em }
+      .part {  }
+      
+      section h3     { font-size: 160% }
+      section h3     { font-size: 140% }
+      div h3         { font-size: 130% }
+      div div h3     { font-size: 120% }
+      div div div h3 { font-size: 110% }
+      
+      p, div.param { margin-top: 0.4em; margin-bottom: 0.2em }
+      p { line-height: 160% }
+      p:first-child { margin-top: 0ex }
+      
+      div.param { background-color: lightgreen; border: thin solid green; font-size: 80%; padding: 0.3em }
+      
+      .param p { margin: 0em }
+      
+      p.object { padding-left: 2em; text-indent: -2em }
+      
+      p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; border: medium solid blue; padding-right: 0.2em; margin-right: 0.2em }
+      p.link.broken { background-color: lemonchiffon; border: medium solid darkorange; text-decoration: line-through }
+      .part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
+      
+      .insert, .choice { border: thin solid black; padding: 0.1em; background-color: skyblue }
+      .unassigned { border: thin solid red; background-color: pink}
+      .desc { color: darkgreen }
+      .insert .desc { font-size: 90% }
+      .value { font-style: italic; text-decoration: underline }
+      
+      .param-id { font-size: 90%; font-family: sans-serif; font-weight: bold; background-color: black; color: white }
+      .insert .param-id { font-size: 80% }
+      
+      .withdrawn { font-weight: bold; font-style: italic }
+      
+      .box { vertical-align: middle; width: 2em }
+      .subst  { color: midnightblue; font-family: sans-serif; font-style: normal; font-weight: normal; font-size; 85% } 
+      
+      .impact-table { width: 100%; collapse: collapsed; font-family: sans-serif }
+      .impact-table td { padding: 0.5em; background-color: lightgrey; border: thin solid black }
+      
+      li { list-style-type: square }
+      a { text-decoration: none }
+      
+    </style>
+  </xsl:variable>
   
+
   <xsl:template match="oscal:declarations"/>
     
   <xsl:template match="oscal:title" mode="title">

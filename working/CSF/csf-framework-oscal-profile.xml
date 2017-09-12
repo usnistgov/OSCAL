@@ -18,7 +18,7 @@
       <declarations>
 
          <declare-link rel="control" context="item">
-            <key href="#sp800-53" match="control" use="prop[@class='name']"/>
+            <key match="control" use="prop[@class='name']"/>
          </declare-link>
 
          <declare-prop class="function-id" context="function">

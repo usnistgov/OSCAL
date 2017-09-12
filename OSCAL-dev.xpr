@@ -1638,6 +1638,67 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>../../public_html/OSCAL/SP800-53-selections.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against (documented) XSD</String>
+                                        <String>OSCAL strict</String>
+                                        <String>OSCAL working RNC</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/SP800-53-OSCAL-refined.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against (documented) XSD</String>
+                                        <String>OSCAL against its declarations</String>
+                                        <String>OSCAL strict</String>
+                                        <String>OSCAL working RNC</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/COBIT5/cobit5-selection-oscal.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against its declarations</String>
+                                        <String>OSCAL working RNC</String>
+                                        <String>OSCAL against (documented) XSD</String>
+                                        <String>OSCAL strict</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/SP800-53/SP800-53-OSCAL-demo.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -1688,48 +1749,6 @@
                                         <String>OSCAL working RNC</String>
                                         <String>OSCAL against (documented) XSD</String>
                                         <String>OSCAL strict</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/COBIT5/cobit5-selection-oscal.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
-                                        <String>OSCAL against (documented) XSD</String>
-                                        <String>OSCAL strict</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/SP800-53-OSCAL-refined.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL against (documented) XSD</String>
-                                        <String>OSCAL against its declarations</String>
-                                        <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -2481,5 +2500,6 @@
             <file name="working/SP800-53/SP800-53-OSCAL-refined.xml"/>
         </folder>
         <folder path="."/>
+        <folder path="../../public_html/OSCAL/"/>
     </projectTree>
 </project>
