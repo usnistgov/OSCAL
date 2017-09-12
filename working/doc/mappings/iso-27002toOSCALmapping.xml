@@ -2,7 +2,7 @@
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-mapping.css"?>
 <?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
-<catalog xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>Mappings into OSCAL</title>
   <group>
     <title>ISO 27002</title>

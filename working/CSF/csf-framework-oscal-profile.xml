@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
-<profile xmlns="http://scap.nist.gov/schema/oscal">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <!-- NB the declarations model needs to be extended to permit items and categories as context
         but it should work fine. -->
    <invoke href="../SP800-53/SP800-53-OSCAL-refined.xml" id="sp800-53">

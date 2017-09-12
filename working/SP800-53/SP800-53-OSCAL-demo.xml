@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <?xml-stylesheet type="text/xsl" href="SP800-53-oscal-browser-display.xsl"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<catalog xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>NIST SP800-53 Excerpts for demonstration</title>
   <declarations href="SP800-53-declarations.xml"/>
   <!-- Adjustments are needed to declarations given in SP800-53-declarations.xml -->

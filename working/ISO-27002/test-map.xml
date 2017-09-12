@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title GIVEN="ALWAYS"/>
    <group GIVEN="ALWAYS">
       <title GIVEN="ALWAYS"/>

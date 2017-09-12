@@ -3,7 +3,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process">
   
-  <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
+  <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
   <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
 

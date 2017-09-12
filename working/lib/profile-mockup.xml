@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<profile xmlns="http://scap.nist.gov/schema/oscal">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <invoke href="OSCAL.xml">
     <include> <!--(all | call+) --> 
       <all/>

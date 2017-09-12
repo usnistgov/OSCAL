@@ -16,7 +16,7 @@
     lib/XSD/oscal-documented.xsd
     -->
   
-  <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
+  <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
   <sch:let name="schema-file" value="'../../lib/XSD/oscal-interim.xsd'"/>
   <sch:let name="schema" value="document($schema-file)"/>

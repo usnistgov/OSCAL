@@ -3,9 +3,9 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:math="http://www.w3.org/2005/xpath-functions/math"
   exclude-result-prefixes="xs math"
-  xmlns="http://scap.nist.gov/schema/oscal"
-  xmlns:oscal="http://scap.nist.gov/schema/oscal"
-  xpath-default-namespace="http://scap.nist.gov/schema/oscal"
+  xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
   version="3.0"
   >
   

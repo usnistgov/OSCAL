@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<profile xmlns="http://scap.nist.gov/schema/oscal">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 <!-- For example, select all controls that have a role assigned in a RACI chart ... -->
   <invoke href="cobit5-selection-oscal.xml">
     <include> <!--(all | call+) --> 

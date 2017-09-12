@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
-<framework  xmlns="http://scap.nist.gov/schema/oscal">
+<framework  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <!-- http://csrc.nist.gov/ns/oscal/1.0 -->
    
    <group class="function">

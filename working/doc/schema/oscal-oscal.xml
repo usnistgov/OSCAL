@@ -5,7 +5,7 @@
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="../../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<catalog xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>OSCAL: The Open Security Controls Assessment Language</title>
   <declarations>
     <declare-prop context="element-description" class="tag">
@@ -27,7 +27,7 @@
       here: this document provides only basic information about the OSCAL <q>core</q>.</p>
     <p>The element population of an OSCAL document (set) may be determined by means of XPath
         <code>distinct-values(//*/node-name())</code>, or analogous query.</p>
-    <p>For its XML names, OSCAL uses the namespace <a>XXX http://scap.nist.gov/schema/oscal XXX</a>.
+    <p>For its XML names, OSCAL uses the namespace <a>XXX http://csrc.nist.gov/ns/oscal/1.0 XXX</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
       without a prefix, <code>oscal:</code> or any other.</p>

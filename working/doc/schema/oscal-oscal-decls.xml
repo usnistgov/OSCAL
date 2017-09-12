@@ -3,7 +3,7 @@
 <?xml-stylesheet type="text/css" href="oscal.css" title="Straight" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
 <?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-  <declarations  xmlns="http://scap.nist.gov/schema/oscal">
+  <declarations  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <declare-prop context="element-description" class="tag">
           <required/>
       <identifier/>

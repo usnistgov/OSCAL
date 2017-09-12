@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
 <?xml-model href="../lib/oscal-consistency.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<declarations xmlns="http://scap.nist.gov/schema/oscal">
+<declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <property role="number" context="control-category">
     <required/>
     <regex>\d\d?</regex>

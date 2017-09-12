@@ -7,7 +7,7 @@
   xmlns:html="http://www.w3.org/1999/xhtml"
   xmlns:xlink="https://www.w3.org/TR/xlink/"
   xpath-default-namespace="http://scap.nist.gov/schema/sp800-53/2.0"
-  xmlns="http://scap.nist.gov/schema/oscal"
+  xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="#all"
   >
 

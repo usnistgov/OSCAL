@@ -1,7 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:oscal="http://scap.nist.gov/schema/oscal"
+           xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
-           targetNamespace="http://scap.nist.gov/schema/oscal">
+           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.xsd"/>
    <xs:complexType name="collection-contents">
@@ -52,7 +52,7 @@
    <xs:element name="declare-prop">
       <xs:annotation>
          <xs:documentation>
-            <b>Property declaration</b> Constraints applicable to a class or classes of <code xmlns="http://scap.nist.gov/schema/oscal">prop</code> elements (properties) in
+            <b>Property declaration</b> Constraints applicable to a class or classes of <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code> elements (properties) in
           context</xs:documentation>
       </xs:annotation>
       <xs:complexType>
@@ -73,7 +73,7 @@
       <xs:annotation>
          <xs:documentation>
             <b>Identifier constraint</b> The declared component has a value unique within the document, among properties
-            (<code xmlns="http://scap.nist.gov/schema/oscal">prop</code>) with the same class</xs:documentation>
+            (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code>) with the same class</xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>
@@ -136,8 +136,8 @@
    <xs:element name="regex" type="xs:string">
       <xs:annotation>
          <xs:documentation>
-            <b>Regular expression constraint</b> Indicates that the value of a property (<code xmlns="http://scap.nist.gov/schema/oscal">prop</code>) or parameter
-            (<code xmlns="http://scap.nist.gov/schema/oscal">param</code>) must match the given regular expression</xs:documentation>
+            <b>Regular expression constraint</b> Indicates that the value of a property (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code>) or parameter
+            (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">param</code>) must match the given regular expression</xs:documentation>
       </xs:annotation>
    </xs:element>
    <xs:group name="value">
@@ -628,7 +628,7 @@
    <xs:element name="insert">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter insertion</b> A <q xmlns="http://scap.nist.gov/schema/oscal">call</q> (reference) to a parameter for dynamic content transclusion</xs:documentation>
+            <b>Parameter insertion</b> A <q xmlns="http://csrc.nist.gov/ns/oscal/1.0">call</q> (reference) to a parameter for dynamic content transclusion</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attributeGroup ref="oscal:idAttr"/>

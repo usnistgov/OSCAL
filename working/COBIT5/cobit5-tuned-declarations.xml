@@ -3,7 +3,7 @@
 <?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Basic" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Forms interface" alternate="no"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-cobit5.css"?>
-<declarations xmlns="http://scap.nist.gov/schema/oscal">
+<declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <declare-prop context="domain" class="area">
       <singleton/>
       <required/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/XML/1998/namespace" xmlns:oscal="http://scap.nist.gov/schema/oscal">
-  <xs:import namespace="http://scap.nist.gov/schema/oscal" schemaLocation="oscal-profile-test.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/XML/1998/namespace" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
+  <xs:import namespace="http://csrc.nist.gov/ns/oscal/1.0" schemaLocation="oscal-profile-test.xsd"/>
   <xs:attribute name="space">
     <xs:simpleType>
       <xs:restriction base="xs:token">

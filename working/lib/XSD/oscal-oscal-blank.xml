@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<collection xmlns="http://scap.nist.gov/schema/oscal">
+<collection xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <control class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">catalog -- element</prop>

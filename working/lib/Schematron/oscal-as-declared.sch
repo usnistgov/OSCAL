@@ -3,7 +3,7 @@
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
-  <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
+  <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
   <xsl:include href="../XSLT/oscal-functions.xsl"/>
    

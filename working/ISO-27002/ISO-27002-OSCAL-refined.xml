@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <!-- XML touched by transformation 'ISO-27002 EXTRACTOR/OBFUSCATOR' :2017-08-30T17:15:17.825-04:00 -->
-<catalog xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>ISO/IEC 27002</title>
    <declarations>
       <declare-prop context="control-category" class="number">
