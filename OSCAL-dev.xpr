@@ -10,11 +10,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/CSF/csf-flat-to-framework.xsl</String>
+                                    <String>working/FedRAMP/fedramp-flat-to-framework.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Run XSLT on Flat CSF XML</String>
+                                        <String>Run XSLT on Flat Fedramp XML</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -25,16 +25,16 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/CSF/Untitled2.xsl</String>
+                                    <String>working/SP800-53/SP800-53-OSCAL-refined.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Run XSLT on Flat CSF XML</String>
+                                        <String>SP800-53 to OSCAL XProc (convert and refine)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>XML</String>
+                                        <String>XPROC</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -90,21 +90,6 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>Run schema production pipeline</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/SP800-53-OSCAL-refined.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>SP800-53 to OSCAL XProc (convert and refine)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -842,7 +827,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>Run XSLT on Flat CSF XML</String>
+                                    <String>Run XSLT on Flat Fedramp XML</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -863,7 +848,7 @@
                                     <String>${currentFileURL}</String>
                                 </field>
                                 <field name="inputXMLURL">
-                                    <String>${pdu}/working/CSF/flat-csf.xml</String>
+                                    <String>${pdu}/working/FedRAMP/excel-extract.xml</String>
                                 </field>
                                 <field name="defaultScenario">
                                     <Boolean>false</Boolean>
@@ -881,10 +866,10 @@
                                     <Boolean>false</Boolean>
                                 </field>
                                 <field name="outputFile">
-                                    <File>${pd}/working/CSF/csf-framework-oscal.xml</File>
+                                    <File>${pd}/working/FedRAMP/fedramp-oscal-RAW.xml</File>
                                 </field>
                                 <field name="outputResource">
-                                    <String>${pd}/working/CSF/csf-framework-oscal.xml</String>
+                                    <String>${pd}/working/FedRAMP/fedramp-oscal-RAW.xml</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
