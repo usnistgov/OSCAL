@@ -52,9 +52,9 @@ category = element group { idAttr, optionalClass,
    (category+ | item+ ) }
   
 item =
-  element item {
+  element component {
     idAttr, optionalClass, title?, param*,
-    (prop | link | prose)*
+    (prop | link | prose)*, item*
   }
 
 # an overlay - a framework whose structure matches the catalog?

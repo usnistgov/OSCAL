@@ -73,6 +73,10 @@ item:before { content: 'item: ' oxy_textfield(
           edit, '@class',
           columns, 10); }
 
+component:before { content: 'component: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+
 
 subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
           content: 

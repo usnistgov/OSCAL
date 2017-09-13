@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<framework>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
+<framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <group>
       <title>Access Control</title>
       <prop class="name">AC</prop>
