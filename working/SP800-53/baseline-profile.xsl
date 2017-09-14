@@ -13,7 +13,7 @@
     <xsl:mode on-no-match="shallow-copy"/>
     
     <xsl:param name="property" as="xs:string">baseline-impact</xsl:param>
-    <xsl:param name="value" as="xs:string">HIGH</xsl:param>
+    <xsl:param name="value" as="xs:string">LOW</xsl:param>
     
     <xsl:template match="/">
         <xsl:comment expand-text="true"> Produced by baseline-profile.xsl applied to
@@ -21,10 +21,11 @@
         runtime parameter settings: $property='{ $property }' $value='{ $value }'</xsl:comment>
         <xsl:apply-templates select="*"/>
     </xsl:template>
+    
     <xsl:template match="catalog">
         <profile>
             <invoke href="{document-uri(/)}">
-              <xsl:apply-templates select="//control" mode="write-call"/>
+              <xsl:apply-templates select="//control | //subcontrol" mode="write-call"/>
             </invoke>
         </profile>
     </xsl:template>
@@ -40,7 +41,6 @@
         <xsl:text>&#xA;&#xA;</xsl:text>
         <call control-id="{@id}"/>
         <xsl:apply-templates select=".//param except ..//subcontrol//param" mode="params"/>
-        <xsl:apply-templates select="subcontrol" mode="write-call"/>
         
     </xsl:template>
     
