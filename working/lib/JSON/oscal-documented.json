@@ -9,30 +9,28 @@
       "properties": {
         "title": {
           "type": "string",
-          "description": ""
+          "description": "A fallback for display and navigation, exclusive of more specific properties"
         },
         "declarations": {
           "anyOf": [
-            {
-              "$ref": "#/definitions/declaration",
-              "description": ""
-            },
+            { "$ref": "#/definitions/declaration" },
             {
               "href": {
                 "type": "string",
                 "description": ""
               }
             }
-          ]
+          ],
+          "description": "For extra-schema validation of control components within controls"
         },
         "sections": {
           "type": "array",
-          "description": "",
+          "description": "For partitioning a catalog, collection, or section therein",
           "items": { "$ref": "#/definitions/section" }
         },
         "groups": {
           "type": "array",
-          "description": "",
+          "description": "Related controls or groups (of controls or groups)",
           "items": { "$ref": "#/definitions/group" }
         }
       },
@@ -48,26 +46,25 @@
     "declaration": {
       "$id": "#/definitions/declaration",
       "type": "object",
-      "description": "",
       "properties": {
         "declareProperties": {
           "type": "array",
-          "description": "",
+          "description": "Constraints applicable to a class or classes of prop elements (properties) in context",
           "items": { "$ref": "#/definitions/declareProperty" }
         },
         "declareParts": {
           "type": "array",
-          "description": "",
+          "description": "Indicates constraints to be imposed on parts in context",
           "items": { "$ref": "#/definitions/declarePart" }
         },
         "declareParagraphs": {
           "type": "array",
-          "description": "",
+          "description": "Indicates constraints to be enforced on paragraphs in context",
           "items": { "$ref": "#/definitions/declareParagraph" }
         },
         "declareLinks": {
           "type": "array",
-          "description": "",
+          "description": "Indicates constraints to be imposed on links in context",
           "items": { "$ref": "#/definitions/declareLink" }
         }
       },
@@ -83,7 +80,6 @@
     "declareProperty": {
       "$id": "#/definitions/declareProperty",
       "type": "object",
-      "description": "",
       "properties": {
         "context": {
           "type": "array",
@@ -97,23 +93,23 @@
         },
         "identifier": {
           "type": "boolean",
-          "description": ""
+          "description": "The declared component has a value unique within the document, among properties prop</code> with the same class"
         },
         "regex": {
           "type": "string",
-          "description": ""
+          "description": "Indicates that the value of a property prop or parameter param must match the given regular expression"
         },
         "required": {
           "type": "boolean",
-          "description": ""
+          "description": "The declared component is required in its context"
         },
         "singleton": {
           "type": "boolean",
-          "description": ""
+          "description": "The declared component may occur only once in its context"
         },
         "values": {
           "type": "array",
-          "description": "",
+          "description": "Indicates a permissible value for a parameter or property",
           "items": { "$ref": "#/definitions/value" }
         }
       },
@@ -132,7 +128,6 @@
     "declarePart": {
       "$id": "#/definitions/declarePart",
       "type": "object",
-      "description": "",
       "properties": {
         "context": {
           "type": "array",
@@ -146,15 +141,15 @@
         },
         "required": {
           "type": "boolean",
-          "description": ""
+          "description": "The declared component is required in its context"
         },
         "singleton": {
           "type": "boolean",
-          "description": ""
+          "description": "The declared component may occur only once in its context"
         },
         "values": {
           "type": "array",
-          "description": "",
+          "description": "Indicates a permissible value for a parameter or property",
           "items": { "$ref": "#/definitions/value" }
         }
       },
@@ -208,11 +203,11 @@
         },
         "required": {
           "type": "boolean",
-          "description": ""
+          "description": "The declared component is required in its context"
         },
         "singleton": {
           "type": "boolean",
-          "description": ""
+          "description": "The declared component may occur only once in its context"
         }
       },
       "propertyNames": {
@@ -238,11 +233,11 @@
           "properties": {
             "inherit": {
               "type": "boolean",
-              "description": ""
+              "description": "Indicates that a value or text within a value should be inherited from a property on a containing control object"
             },
             "autonum": {
               "type": "string",
-              "description": ""
+              "description": "Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)"
             }
           },
           "propertyNames": {
@@ -257,11 +252,10 @@
     "section": {
       "$id": "#/definitions/section",
       "type": "object",
-      "description": "",
       "properties": {
         "title": {
           "type": "string",
-          "description": ""
+          "description": "A fallback for display and navigation, exclusive of more specific properties"
         },
         "paragraphs": {
           "type": "array",
@@ -279,11 +273,10 @@
     "group": {
       "$id": "#/definitions/group",
       "type": "object",
-      "description": "",
       "properties": {
         "title": {
           "type": "string",
-          "description": ""
+          "description": "A fallback for display and navigation, exclusive of more specific properties"
         },
         "paragraphs": {
           "type": "array",
@@ -292,7 +285,7 @@
         },
         "controls": {
           "type": "array",
-          "description": "",
+          "description": "A structured information object representing a security control",
           "items": { "$ref": "#/definitions/control" }
         }
       },
@@ -319,27 +312,27 @@
         },
         "parameters": {
           "type": "array",
-          "description": "",
+          "description": "A parameter setting, to be propagated to points of insertion",
           "items": { "$ref": "#/definitions/parameter" }
         },
         "properties": {
           "type": "array",
-          "description": "",
+          "description": "A value with a name, attributed to the containing control, subcontrol, part, or group",
           "items": { "$ref": "#/definitions/property" }
         },
         "parts": {
           "type": "array",
-          "description": "",
+          "description": "A component or partition in a control, subcontrol, or part",
           "items": { "$ref": "#/definitions/part" }
         },
         "subcontrol": {
           "type": "array",
-          "description": "",
+          "description": "An associated control within a control",
           "items": { "$ref": "#/definitions/control" }
         },
         "references": {
           "type": "array",
-          "description": "",
+          "description": "A reference, with one or more citations to standards, related documents, or other resources",
           "items": { "$ref": "#/definitions/reference" }
         }
       },
@@ -370,14 +363,13 @@
         },
         "properties": {
           "type": "array",
-          "description": "",
+          "description": "A value with a name, attributed to the containing control, subcontrol, part, or group",
           "items": { "$ref": "#/definitions/property" }
         },
         "paragraphs": {
           "type": "array",
           "items": {
             "type": "object",
-            "description": "",
             "properties": {
               "class": {
                 "type": "string",
@@ -389,11 +381,11 @@
               },
               "withdrawn": {
                 "type": "string",
-                "description": ""
+                "description": "Indicates that a containing control or subcontrol is no longer applicable"
               },
               "insert": {
                 "type": "object",
-                "description": "",
+                "description": "A call (reference) to a parameter for dynamic content transclusion",
                 "properties": {
                   "paramID": {
                     "type": "string",
@@ -419,10 +411,9 @@
         },
         "links": {
           "type": "array",
-          "description": "",
+          "description": "A line or paragraph with a hypertext link",
           "items": {
             "type": "object",
-            "description": "",
             "properties": {
               "href": {
                 "type": "string",
@@ -457,11 +448,11 @@
         },
         "description": {
           "type": "string",
-          "description": ""
+          "description": "Indicates and explains the purpose and use of a parameter"
         },
         "value": {
           "type": "string",
-          "description": ""
+          "description": "Indicates a permissible value for a parameter or property"
         }
       },
       "propertyNames": {
@@ -498,7 +489,10 @@
       "type": "object",
       "description": "",
       "patternProperties": {
-        "^(citation|standard)$": { "$ref": "#/definitions/ref" }
+        "^(citation|standard)$": {
+          "$ref": "#/definitions/ref",
+          "description": "Standard: Citation of a formal published standard\n Citation: Citation of a resource"
+        }
       },
       "propertyNames": {
         "enum": [
@@ -530,7 +524,10 @@
     }    
   },
   "patternProperties": {
-    "^(catalog|collection)$": { "$ref": "#/definitions/collection" }
+    "^(catalog|collection)$": {
+      "$ref": "#/definitions/collection",
+      "description": "Catalog: Top-level element for a (canonical) control catalog\n Collection: Top-level element for a set of controls, not considered to be a catalog"
+    }
   },
   "propertyNames": {
     "enum": [
