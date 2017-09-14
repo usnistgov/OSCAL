@@ -35,6 +35,14 @@
           "description": "",
           "items": { "$ref": "#/definitions/group" }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "title",
+          "declarations",
+          "sections",
+          "groups"
+        ]
       }
     },
     "declaration": {
@@ -62,6 +70,14 @@
           "description": "",
           "items": { "$ref": "#/definitions/declareLink" }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "declareProperties",
+          "declareParts",
+          "declareParagraphs",
+          "declareLinks"
+        ]
       }
     },
     "declareProperty": {
@@ -100,6 +116,17 @@
           "description": "",
           "items": { "$ref": "#/definitions/value" }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "context",
+          "class",
+          "identifier",
+          "regex",
+          "required",
+          "singleton",
+          "values"
+        ]
       }
     },
     "declarePart": {
@@ -130,6 +157,15 @@
           "description": "",
           "items": { "$ref": "#/definitions/value" }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "context",
+          "class",
+          "required",
+          "singleton",
+          "values"
+        ]
       }
     },
     "declareParagraph": {
@@ -147,6 +183,12 @@
           "description": "",
           "items": { "type": "string" }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "context",
+          "class"
+        ]
       }
     },
     "declareLink": {
@@ -172,6 +214,14 @@
           "type": "boolean",
           "description": ""
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "context",
+          "class",
+          "required",
+          "singleton"
+        ]
       }
     },    
     "value": {
@@ -194,6 +244,12 @@
               "type": "string",
               "description": ""
             }
+          },
+          "propertyNames": {
+            "enum": [
+              "inherit",
+              "autonum"
+            ]
           }
         }
       ]
@@ -211,7 +267,13 @@
           "type": "array",
           "description": "",
           "items": { "type": "string" }
-        }        
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "title",
+          "paragraphs"
+        ]
       }
     },
     "group": {
@@ -233,6 +295,13 @@
           "description": "",
           "items": { "$ref": "#/definitions/control" }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "title",
+          "paragraphs",
+          "controls"
+        ]
       }
     },
     "control": {
@@ -273,6 +342,17 @@
           "description": "",
           "items": { "$ref": "#/definitions/reference" }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "id",
+          "parameters",
+          "properties",
+          "parts",
+          "subcontrol",
+          "references"
+        ]
       }
     },
     "part": {
@@ -321,6 +401,14 @@
                   }
                 }
               }
+            },
+            "propertyNames": {
+              "enum": [
+                "class",
+                "value",
+                "withdrawn",
+                "insert"
+              ]
             }
           }
         },
@@ -340,9 +428,22 @@
                 "type": "string",
                 "description": ""
               }
+            },
+            "propertyNames": {
+              "enum": [ "href" ]
             }
           }
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "id",
+          "properties",
+          "paragraphs",
+          "parts",
+          "links"
+        ]
       }
     },
     "parameter": {
@@ -362,6 +463,13 @@
           "type": "string",
           "description": ""
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "description",
+          "value"
+        ]
       }
     },
     "property": {
@@ -377,6 +485,12 @@
           "type": "string",
           "description": ""
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "value"
+        ]
       }
     },
     "reference": {
@@ -385,6 +499,12 @@
       "description": "",
       "patternProperties": {
         "^(citation|standard)$": { "$ref": "#/definitions/ref" }
+      },
+      "propertyNames": {
+        "enum": [
+          "citation",
+          "standard"
+        ]
       }
     },
     "ref": {
@@ -400,10 +520,22 @@
           "type": "string",
           "description": ""
         }
+      },
+      "propertyNames": {
+        "enum": [
+          "href",
+          "value"
+        ]
       }
     }    
   },
   "patternProperties": {
     "^(catalog|collection)$": { "$ref": "#/definitions/collection" }
+  },
+  "propertyNames": {
+    "enum": [
+      "catalog",
+      "collection"
+    ]
   }
 }
