@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
+    xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     version="3.0">
 
 <xsl:output indent="yes"/>
@@ -24,7 +25,7 @@
                 <group>
                     <xsl:variable name="group-id" select="tokenize(ID,'\s+')[last()] => translate('()','')"/>
                     <title>{replace(.,'\s*\(.*$','')}</title>
-                    <prop class="name">{$group-id}</prop>
+                    <prop class="group-id">{$group-id}</prop>
                     <xsl:for-each-group select="current-group() except ."
                         group-starting-with="row[matches(ID,$control-regex)]">
                         <component>
@@ -55,13 +56,18 @@
         <title>
             <xsl:value-of select="tokenize(.,' \| ')[last()]"/>
         </title>
-        
+    </xsl:template>
+    
+    <xsl:template match="ID[matches(.,$enhancement-regex)]">
+        <link rel="subcontrol">
+            <xsl:apply-templates/>
+        </link>
     </xsl:template>
     
     <xsl:template match="ID">
-        <prop class="name">
+        <link rel="control">
             <xsl:apply-templates/>
-        </prop>
+        </link>
     </xsl:template>
     
     <xsl:template match="Baseline_LOW[.='X']">
@@ -72,13 +78,6 @@
         <prop class="baseline-impact">MODERATE</prop>
     </xsl:template>
     
-    
-    <!-- First time through we drop rows that describe controls and subcontrols
-         this leaves only the header rows. --> 
-
-
-    <xsl:template match="row[matches(ID,$controlorenhancement-regex)]"/>
-        
     
     
 </xsl:stylesheet>
