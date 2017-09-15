@@ -16,7 +16,7 @@
   Matching a profile: converts include/all to (series of) include/call
   loading with param settings.
     include/call is copied
-    exclude/call resolved by ...?
+    exclude/call resolved by ... (test this)
   
   Matching a catalog: a 'stub' (identity)
   profile including all controls, subcontrols and parameters -->

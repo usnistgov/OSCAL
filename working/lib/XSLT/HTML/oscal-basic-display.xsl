@@ -70,11 +70,12 @@ div div div h3 { font-size: 110% }
   
   <xsl:key name="assignment"  match="oscal:param" use="@id"/>
   
-  <xsl:template match="oscal:control">
-    <div class="control">
+  <xsl:template match="oscal:control | oscal:subcontrol | oscal:component | oscal:part">
+    <div class="{local-name()} {@class}">
       <xsl:copy-of select="@id"/>
-      <xsl:call-template name="make-title"/>
-      
+      <xsl:call-template name="make-title">
+        <xsl:with-param name="runins" select="oscal:prop[@class='name']"/>
+      </xsl:call-template>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
@@ -86,6 +87,12 @@ div div div h3 { font-size: 110% }
     <xsl:param name="runins" select="/.."/>
     <h3>
       <xsl:apply-templates select="$runins" mode="run-in"/>
+      <xsl:for-each select="@class">
+        <xsl:text>[</xsl:text>
+        <xsl:value-of select="."/>
+        <xsl:text>] </xsl:text>
+      </xsl:for-each>
+      
       <xsl:for-each select="oscal:title">
         <xsl:apply-templates/>
       </xsl:for-each>
@@ -102,7 +109,7 @@ div div div h3 { font-size: 110% }
   <xsl:template match="oscal:param">
     <p class="param">
       <span class="subst">
-        <xsl:for-each select="@target">
+        <xsl:for-each select="@id">
           <xsl:value-of select="."/>
         </xsl:for-each>
         <xsl:text>: </xsl:text>
@@ -111,6 +118,8 @@ div div div h3 { font-size: 110% }
       </p>
     
   </xsl:template>
+  
+  <xsl:template match="oscal:prop[@class='name']"/>
   
   <xsl:template match="oscal:prop">
     <p class="prop {@class}">
@@ -189,11 +198,7 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  <xsl:template match="oscal:extensions">
-    <div class="extensions">
-      <xsl:apply-templates/>
-    </div>
-  </xsl:template>
+  
   <xsl:template match="oscal:withdrawn">
     <span class="withdrawn">
       <xsl:apply-templates/>
@@ -204,16 +209,7 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </em>
   </xsl:template>
-  <xsl:template match="oscal:select">
-    <div class="select">
-      <xsl:apply-templates/>
-    </div>
-  </xsl:template>
-  <xsl:template match="oscal:choice">
-    <p class="choice">
-      <xsl:apply-templates/>
-    </p>
-  </xsl:template>
+  
   <xsl:template match="oscal:citation">
     <p class="citation">
       <xsl:apply-templates/>
@@ -235,10 +231,5 @@ div div div h3 { font-size: 110% }
     </q>
   </xsl:template>
   
-  <xsl:template match="@role | @type">
-    <span class="{local-name()}">
-      <xsl:value-of select="."/>
-    </span>
-  </xsl:template>
   
 </xsl:stylesheet>

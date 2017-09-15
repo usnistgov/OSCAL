@@ -23,16 +23,20 @@
     <xsl:key name="sp800-53-control-object-by-name" match="group|control|subcontrol" use="prop[@class='name']"/>
     
     <xsl:template match="component" mode="write-call">
-        <xsl:variable name="controlObj" select="key('sp800-53-control-object-by-name',link[@rel=('control','subcontrol')],$catalog)"/>
-        
+        <xsl:variable name="controlObj"
+            select="key('sp800-53-control-object-by-name', link[@rel = ('control', 'subcontrol')], $catalog)"/>
+
         <xsl:text>&#xA;&#xA;</xsl:text>
         <call>
             <xsl:apply-templates select="$controlObj" mode="link"/>
+           
+            <!--<xsl:copy-of select="* except component"/>-->
         </call>
-        <xsl:comment>
-            <xsl:value-of select="p[@class='param_assigns']"/>
-        </xsl:comment>
-        <xsl:apply-templates select="$controlObj//param except $controlObj//component//param" mode="params"/>
+        <xsl:for-each select="p[@class = 'param_assigns'] | p[@class='remarks']">
+          <xsl:comment><xsl:value-of select="."/></xsl:comment>
+        </xsl:for-each>
+        <xsl:apply-templates select="$controlObj//param except $controlObj//component//param"
+            mode="params"/>
     </xsl:template>
     
     <xsl:template match="control | subcontrol" mode="link">

@@ -7,9 +7,11 @@
   exclude-result-prefixes="#all"
   version="2.0">
   
-<!-- To do: inject parameters!
-     (Requirement: whenever a parameter with ID is given in the catalog,
-      replace it with the like-id parameter from the profile. -->
+<!-- Run on a catalog, produces a profile with explicit references
+     to controls and subcontrols in the catalog.
+  
+     Doesn't yet run on frameworks.
+     Doesn't yet capture parameters. -->
   
   <xsl:import href="oscal-functions.xsl"/>
   
