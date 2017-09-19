@@ -19,10 +19,10 @@
     </xsl:template>
     
     <xsl:template match="record[exists(Function)]">
-        <category class="function">
+        <group class="function">
             <xsl:apply-templates/>
             <xsl:apply-templates select="key('category-by-function',Function)"/>
-        </category>
+        </group>
     </xsl:template>
     
     <xsl:template match="Title">
@@ -58,17 +58,17 @@
     </xsl:template>
     
     <xsl:template priority="2" match="record[exists(Category)]">
-        <category>
+        <component class="category">
             <xsl:apply-templates/>
             <xsl:apply-templates select="key('item-by-category',Category)"/>
-        </category>
+        </component>
     </xsl:template>
 
     <xsl:template priority="3" match="record[exists(Category)][exists(Subcategory)]">
-        <item>
+        <component>
             <xsl:apply-templates/>
             <xsl:apply-templates select="key('category-by-function',Function)"/>
-        </item>
+        </component>
     </xsl:template>
     
     

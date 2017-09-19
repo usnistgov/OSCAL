@@ -43,26 +43,3 @@ call = element call { ( withSubContrlsAttr,
 # not used ... for experimental feature
 filter = element filter { attribute key { text }, text }
 
-
-framework = element framework { idAttr, optionalClass,
-  title?, declarations?, (category+ | item+ ) }
-
-category = element group { idAttr, optionalClass,
-  title?, (prop | link | prose)*,
-   (category+ | item+ ) }
-  
-item =
-  element component {
-    idAttr, optionalClass, title?, param*,
-    (prop | link | prose)*, item*
-  }
-
-# an overlay - a framework whose structure matches the catalog?
-
-# frameworks contain categories or items
-# categories contain categories or items
-# items contain title?, prop*, p*, link*
-# strict governance over item/link/@rel
-# declarations too :-)
-# validation can ensure that framework links are scoped
-# corresponding with catalogs/controls included in the profile

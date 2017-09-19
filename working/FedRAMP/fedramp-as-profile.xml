@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <invoke href="file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml">
       <include>
@@ -30,6 +29,45 @@ AC-1.b.2 [at least annually]-->
          </param>
          <param id="ac-2_d"><!-- inserted into AC-2j. -->
             <value>organization-defined frequency</value>
+         </param>
+         <param id="ac-2_e"><!-- inserted into  -->
+            <value>organization-defined time period for each type of account</value>
+         </param>
+         <param id="ac-2_f"><!-- inserted into  -->
+            <value>organization-defined time period</value>
+         </param>
+         <param id="ac-2_g"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="ac-2_h"><!-- inserted into  -->
+            <value>organization-defined time-period of expected inactivity or description of when to log out</value>
+         </param>
+         <param id="ac-2_i"><!-- inserted into  -->
+            <value>organization-defined list of dynamic privilege management capabilities</value>
+         </param>
+         <param id="ac-2_j"><!-- inserted into AC-2 (7)(c) -->
+            <value>organization-defined actions</value>
+         </param>
+         <param id="ac-2_k"><!-- inserted into  -->
+            <value>organization-defined information system accounts</value>
+         </param>
+         <param id="ac-2_l"><!-- inserted into  -->
+            <value>organization-defined conditions for establishing shared/group accounts</value>
+         </param>
+         <param id="ac-2_m"><!-- inserted into  -->
+            <value>organization-defined circumstances and/or usage conditions</value>
+         </param>
+         <param id="ac-2_n"><!-- inserted into  -->
+            <value>organization-defined information system accounts</value>
+         </param>
+         <param id="ac-2_o"><!-- inserted into AC-2 (12)(a) -->
+            <value>organization-defined atypical usage</value>
+         </param>
+         <param id="ac-2_p"><!-- inserted into AC-2 (12)(b) -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="ac-2_q"><!-- inserted into  -->
+            <value>organization-defined time period</value>
          </param>
 
          <call subcontrol-id="ac.2.1."/>
@@ -81,10 +119,124 @@ AC-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="ac.3"/>
+         <param id="ac-3_a"><!-- inserted into  -->
+            <value>organization-defined privileged commands and/or other organization-defined actions</value>
+         </param>
+         <param id="ac-3_b"><!-- inserted into  -->
+            <value>organization-defined mandatory access control policy</value>
+         </param>
+         <param id="ac-3_c"><!-- inserted into AC-3 (3)(c) -->
+            <value>organization-defined subjects</value>
+         </param>
+         <param id="ac-3_d"><!-- inserted into AC-3 (3)(c) -->
+            <value>organization-defined privileges (i.e., they are trusted subjects)</value>
+         </param>
+         <param id="ac-3_e"><!-- inserted into  -->
+            <value>organization-defined discretionary access control policy</value>
+         </param>
+         <param id="ac-3_f"><!-- inserted into  -->
+            <value>organization-defined security-relevant information</value>
+         </param>
+         <param id="ac-3_g"><!-- inserted into  -->
+            <value>organization-defined roles and users authorized to assume such roles</value>
+         </param>
+         <param id="ac-3_h"><!-- inserted into  -->
+            <value>organization-defined rules governing the timing of revocations of access authorizations</value>
+         </param>
+         <param id="ac-3_i"><!-- inserted into AC-3 (9)(a) -->
+            <value>organization-defined information system or system component</value>
+         </param>
+         <param id="ac-3_j"><!-- inserted into AC-3 (9)(a) -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="ac-3_k"><!-- inserted into AC-3 (9)(b) -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="ac-3_l"><!-- inserted into  -->
+            <value>organization-defined conditions</value>
+         </param>
 
          <call control-id="ac.4"/>
          <param id="ac-4_a"><!-- inserted into  -->
             <value>organization-defined information flow control policies</value>
+         </param>
+         <param id="ac-4_b"><!-- inserted into  -->
+            <value>organization-defined security attributes</value>
+         </param>
+         <param id="ac-4_c"><!-- inserted into  -->
+            <value>organization-defined information, source, and destination objects</value>
+         </param>
+         <param id="ac-4_d"><!-- inserted into  -->
+            <value>organization-defined information flow control policies</value>
+         </param>
+         <param id="ac-4_e"><!-- inserted into  -->
+            <value>organization-defined information flow control policies</value>
+         </param>
+         <param id="ac-4_f"><!-- inserted into  -->
+            <value>organization-defined policies</value>
+         </param>
+         <param id="ac-4_g"><!-- inserted into  -->
+            <value>organization-defined procedure or method</value>
+         </param>
+         <param id="ac-4_h"><!-- inserted into  -->
+            <value>organization-defined limitations</value>
+         </param>
+         <param id="ac-4_i"><!-- inserted into  -->
+            <value>organization-defined metadata</value>
+         </param>
+         <param id="ac-4_j"><!-- inserted into  -->
+            <value>organization-defined one-way information flows</value>
+         </param>
+         <param id="ac-4_k"><!-- inserted into  -->
+            <value>organization-defined security policy filters</value>
+         </param>
+         <param id="ac-4_l"><!-- inserted into  -->
+            <value>organization-defined information flows</value>
+         </param>
+         <param id="ac-4_m"><!-- inserted into  -->
+            <value>organization-defined information flows</value>
+         </param>
+         <param id="ac-4_n"><!-- inserted into  -->
+            <value>organization-defined conditions</value>
+         </param>
+         <param id="ac-4_o"><!-- inserted into  -->
+            <value>organization-defined security policy filters</value>
+         </param>
+         <param id="ac-4_p"><!-- inserted into  -->
+            <value>organization-defined conditions</value>
+         </param>
+         <param id="ac-4_q"><!-- inserted into  -->
+            <value>organization-defined security policy filters</value>
+         </param>
+         <param id="ac-4_r"><!-- inserted into  -->
+            <value>organization-defined data type identifiers</value>
+         </param>
+         <param id="ac-4_s"><!-- inserted into  -->
+            <value>organization-defined policy-relevant subcomponents</value>
+         </param>
+         <param id="ac-4_t"><!-- inserted into  -->
+            <value>organization-defined security policy filters</value>
+         </param>
+         <param id="ac-4_u"><!-- inserted into  -->
+            <value>organized-defined unsanctioned information</value>
+         </param>
+         <param id="ac-4_v"><!-- inserted into  -->
+            <value>organization-defined security policy</value>
+         </param>
+         <param id="ac-4_w"><!-- inserted into  -->
+            <value>organization-defined binding techniques</value>
+         </param>
+         <param id="ac-4_x"><!-- inserted into  -->
+            <value>organization-defined solutions in approved configurations</value>
+         </param>
+         <param id="ac-4_y"><!-- inserted into  -->
+            <value>organization-defined information</value>
+         </param>
+         <param id="ac-4_z"><!-- inserted into  -->
+            <value>organization-defined mechanisms and/or techniques</value>
+         </param>
+         <param id="ac-4_aa"><!-- inserted into  -->
+            <value>organization-defined required separations by types of information</value>
          </param>
 
          <call subcontrol-id="ac.4.21."/>
@@ -101,6 +253,30 @@ AC-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="ac.6"/>
+         <param id="ac-6_a"><!-- inserted into  -->
+            <value>organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information</value>
+         </param>
+         <param id="ac-6_b"><!-- inserted into  -->
+            <value>organization-defined security functions or security-relevant information</value>
+         </param>
+         <param id="ac-6_c"><!-- inserted into  -->
+            <value>organization-defined privileged commands</value>
+         </param>
+         <param id="ac-6_d"><!-- inserted into  -->
+            <value>organization-defined compelling operational needs</value>
+         </param>
+         <param id="ac-6_e"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="ac-6_f"><!-- inserted into AC-6 (7)(a) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="ac-6_g"><!-- inserted into AC-6 (7)(a) -->
+            <value>organization-defined roles or classes of users</value>
+         </param>
+         <param id="ac-6_h"><!-- inserted into  -->
+            <value>organization-defined software</value>
+         </param>
 
          <call subcontrol-id="ac.6.1."/>
          <param id="ac-6_a"><!-- inserted into  -->
@@ -139,6 +315,15 @@ AC-7b [locks the account/node for thirty minutes]-->
          <param id="ac-7_d"><!-- inserted into AC-7b. -->
             <value>organization-defined delay algorithm</value>
          </param>
+         <param id="ac-7_e"><!-- inserted into  -->
+            <value>organization-defined mobile devices</value>
+         </param>
+         <param id="ac-7_f"><!-- inserted into  -->
+            <value>organization-defined purging/wiping requirements/techniques</value>
+         </param>
+         <param id="ac-7_g"><!-- inserted into  -->
+            <value>organization-defined number</value>
+         </param>
 
          <call control-id="ac.8"/>
          <!--Parameter: See Additional Requirements and Guidance.-->
@@ -175,6 +360,9 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          <param id="ac-12_a"><!-- inserted into  -->
             <value>organization-defined conditions or trigger events requiring session disconnect</value>
          </param>
+         <param id="ac-12_b"><!-- inserted into AC-12 (1)(a) -->
+            <value>organization-defined information resources</value>
+         </param>
 
          <call control-id="ac.14"/>
          <param id="ac-14_a"><!-- inserted into AC-14a. -->
@@ -182,6 +370,15 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </param>
 
          <call control-id="ac.17"/>
+         <param id="ac-17_a"><!-- inserted into  -->
+            <value>organization-defined number</value>
+         </param>
+         <param id="ac-17_b"><!-- inserted into AC-17 (4)(a) -->
+            <value>organization-defined needs</value>
+         </param>
+         <param id="ac-17_c"><!-- inserted into  -->
+            <value>organization-defined time period</value>
+         </param>
 
          <call subcontrol-id="ac.17.1."/>
 
@@ -208,6 +405,15 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          <call subcontrol-id="ac.18.1."/>
 
          <call control-id="ac.19"/>
+         <param id="ac-19_a"><!-- inserted into AC-19 (4)(b)(4) -->
+            <value>organization-defined security officials</value>
+         </param>
+         <param id="ac-19_b"><!-- inserted into AC-19 (4)(c) -->
+            <value>organization-defined security policies</value>
+         </param>
+         <param id="ac-19_c"><!-- inserted into  -->
+            <value>organization-defined mobile devices</value>
+         </param>
 
          <call subcontrol-id="ac.19.5."/>
          <param id="ac-19_c"><!-- inserted into  -->
@@ -215,6 +421,9 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </param>
 
          <call control-id="ac.20"/>
+         <param id="ac-20_a"><!-- inserted into  -->
+            <value>organization-defined network accessible storage devices</value>
+         </param>
 
          <call subcontrol-id="ac.20.1."/>
 
@@ -226,6 +435,9 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </param>
          <param id="ac-21_b"><!-- inserted into AC-21b. -->
             <value>organization-defined automated mechanisms or manual processes</value>
+         </param>
+         <param id="ac-21_c"><!-- inserted into  -->
+            <value>organization-defined information sharing restrictions</value>
          </param>
 
          <call control-id="ac.22"/>
@@ -262,6 +474,21 @@ Parameter:  [at least annually]-->
          <param id="at-3_a"><!-- inserted into AT-3c. -->
             <value>organization-defined frequency</value>
          </param>
+         <param id="at-3_b"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="at-3_c"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="at-3_d"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="at-3_e"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="at-3_f"><!-- inserted into  -->
+            <value>organization-defined indicators of malicious code</value>
+         </param>
 
          <call control-id="at.4"/>
          <!--AT-4b. [Assignment: organization-defined frequency]
@@ -292,6 +519,9 @@ AU-2d. [organization-defined subset of the auditable events defined in AU-2 a. t
          <param id="au-2_b"><!-- inserted into AU-2d. -->
             <value>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</value>
          </param>
+         <param id="au-2_c"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
 
          <call subcontrol-id="au.2.3."/>
          <!--AU-2 (3). [Assignment: organization-defined frequency] 
@@ -302,6 +532,12 @@ Parameter: [annually or whenever there is a change in the threat environment] --
          </param>
 
          <call control-id="au.3"/>
+         <param id="au-3_a"><!-- inserted into  -->
+            <value>organization-defined additional, more detailed information</value>
+         </param>
+         <param id="au-3_b"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
 
          <call subcontrol-id="au.3.1."/>
          <!--AU-3 (1). [Assignment: organization-defined additional, more detailed information]                                                                            Parameter: [session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon]-->
@@ -315,6 +551,9 @@ Guidance: For client-server transactions, the number of bytes sent and received 
          <param id="au-4_a"><!-- inserted into  -->
             <value>organization-defined audit record storage requirements</value>
          </param>
+         <param id="au-4_b"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
 
          <call control-id="au.5"/>
          <!--AU-5b. [Assignment:  Organization-defined actions to be taken] 
@@ -324,6 +563,27 @@ Parameter: [low-impact: overwrite oldest audit records; moderate-impact: shut do
          </param>
          <param id="au-5_b"><!-- inserted into AU-5b. -->
             <value>organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)</value>
+         </param>
+         <param id="au-5_c"><!-- inserted into  -->
+            <value>organization-defined personnel, roles, and/or locations</value>
+         </param>
+         <param id="au-5_d"><!-- inserted into  -->
+            <value>organization-defined time period</value>
+         </param>
+         <param id="au-5_e"><!-- inserted into  -->
+            <value>organization-defined percentage</value>
+         </param>
+         <param id="au-5_f"><!-- inserted into  -->
+            <value>organization-defined real-time period</value>
+         </param>
+         <param id="au-5_g"><!-- inserted into  -->
+            <value>organization-defined personnel, roles, and/or locations</value>
+         </param>
+         <param id="au-5_h"><!-- inserted into  -->
+            <value>organization-defined audit failure events requiring real-time alerts</value>
+         </param>
+         <param id="au-5_i"><!-- inserted into  -->
+            <value>organization-defined audit failures</value>
          </param>
 
          <call control-id="au.6"/>
@@ -338,12 +598,21 @@ Parameter: [at least weekly] -->
          <param id="au-6_c"><!-- inserted into AU-6b. -->
             <value>organization-defined personnel or roles</value>
          </param>
+         <param id="au-6_d"><!-- inserted into  -->
+            <value>organization-defined data/information collected from other sources</value>
+         </param>
 
          <call subcontrol-id="au.6.1."/>
 
          <call subcontrol-id="au.6.3."/>
 
          <call control-id="au.7"/>
+         <param id="au-7_a"><!-- inserted into  -->
+            <value>organization-defined audit fields within audit records</value>
+         </param>
+         <param id="au-7_b"><!-- inserted into  -->
+            <value>organization-defined audit fields within audit records</value>
+         </param>
 
          <call subcontrol-id="au.7.1."/>
          <param id="au-7_a"><!-- inserted into  -->
@@ -353,6 +622,15 @@ Parameter: [at least weekly] -->
          <call control-id="au.8"/>
          <param id="au-8_a"><!-- inserted into AU-8b. -->
             <value>organization-defined granularity of time measurement</value>
+         </param>
+         <param id="au-8_b"><!-- inserted into AU-8 (1)(a) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="au-8_c"><!-- inserted into AU-8 (1)(a) -->
+            <value>organization-defined authoritative time source</value>
+         </param>
+         <param id="au-8_d"><!-- inserted into AU-8 (1)(b) -->
+            <value>organization-defined time period</value>
          </param>
 
          <call subcontrol-id="au.8.1."/>
@@ -371,6 +649,18 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
          </param>
 
          <call control-id="au.9"/>
+         <param id="au-9_a"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="au-9_b"><!-- inserted into  -->
+            <value>organization-defined subset of privileged users</value>
+         </param>
+         <param id="au-9_c"><!-- inserted into  -->
+            <value>organization-defined audit information</value>
+         </param>
+         <param id="au-9_d"><!-- inserted into  -->
+            <value>organization-defined subset of privileged users</value>
+         </param>
 
          <call subcontrol-id="au.9.2."/>
          <!--AU-9 (2). [at least weekly] -->
@@ -389,6 +679,9 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
          <param id="au-11_a"><!-- inserted into  -->
             <value>organization-defined time period consistent with records retention policy</value>
          </param>
+         <param id="au-11_b"><!-- inserted into  -->
+            <value>organization-defined measures</value>
+         </param>
 
          <call control-id="au.12"/>
          <!--AU-12a. [all information system and network components where audit capability is deployed/available]-->
@@ -397,6 +690,24 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
          </param>
          <param id="au-12_b"><!-- inserted into AU-12b. -->
             <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="au-12_c"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="au-12_d"><!-- inserted into  -->
+            <value>organization-defined level of tolerance for the relationship between time stamps of individual records in the audit trail</value>
+         </param>
+         <param id="au-12_e"><!-- inserted into  -->
+            <value>organization-defined individuals or roles</value>
+         </param>
+         <param id="au-12_f"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="au-12_g"><!-- inserted into  -->
+            <value>organization-defined selectable event criteria</value>
+         </param>
+         <param id="au-12_h"><!-- inserted into  -->
+            <value>organization-defined time thresholds</value>
          </param>
 
          <call control-id="ca.1"/>
@@ -420,6 +731,24 @@ CA-2d[individuals or roles to include FedRAMP PMO]-->
          </param>
          <param id="ca-2_b"><!-- inserted into CA-2d. -->
             <value>organization-defined individuals or roles</value>
+         </param>
+         <param id="ca-2_c"><!-- inserted into  -->
+            <value>organization-defined level of independence</value>
+         </param>
+         <param id="ca-2_d"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="ca-2_e"><!-- inserted into  -->
+            <value>organization-defined other forms of security assessment</value>
+         </param>
+         <param id="ca-2_f"><!-- inserted into  -->
+            <value>organization-defined information system</value>
+         </param>
+         <param id="ca-2_g"><!-- inserted into  -->
+            <value>organization-defined external organization</value>
+         </param>
+         <param id="ca-2_h"><!-- inserted into  -->
+            <value>organization-defined requirements</value>
          </param>
 
          <call subcontrol-id="ca.2.1."/>
@@ -455,6 +784,27 @@ CA-2d[individuals or roles to include FedRAMP PMO]-->
          <!--CA-3c. 3 Years / Annually and on input from FedRAMP-->
          <param id="ca-3_a"><!-- inserted into CA-3c. -->
             <value>organization-defined frequency</value>
+         </param>
+         <param id="ca-3_b"><!-- inserted into  -->
+            <value>organization-defined unclassified, national security system</value>
+         </param>
+         <param id="ca-3_c"><!-- inserted into  -->
+            <value>organization-defined boundary protection device</value>
+         </param>
+         <param id="ca-3_d"><!-- inserted into  -->
+            <value>organization-defined boundary protection device</value>
+         </param>
+         <param id="ca-3_e"><!-- inserted into  -->
+            <value>organization-defined unclassified, non-national security system</value>
+         </param>
+         <param id="ca-3_f"><!-- inserted into  -->
+            <value>Assignment; organization-defined boundary protection device</value>
+         </param>
+         <param id="ca-3_g"><!-- inserted into  -->
+            <value>organization-defined information system</value>
+         </param>
+         <param id="ca-3_h"><!-- inserted into  -->
+            <value>organization-defined information systems</value>
          </param>
 
          <call subcontrol-id="ca.3.3."/>
@@ -508,6 +858,9 @@ CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vul
          <param id="ca-7_e"><!-- inserted into CA-7g. -->
             <value>organization-defined frequency</value>
          </param>
+         <param id="ca-7_f"><!-- inserted into  -->
+            <value>organization-defined level of independence</value>
+         </param>
 
          <call subcontrol-id="ca.7.1."/>
          <param id="ca-7_f"><!-- inserted into  -->
@@ -521,6 +874,12 @@ CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vul
          </param>
          <param id="ca-8_b"><!-- inserted into  -->
             <value>organization-defined information systems or system components</value>
+         </param>
+         <param id="ca-8_c"><!-- inserted into  -->
+            <value>organization-defined red team exercises</value>
+         </param>
+         <param id="ca-8_d"><!-- inserted into  -->
+            <value>organization-defined rules of engagement</value>
          </param>
 
          <call subcontrol-id="ca.8.1."/>
@@ -544,6 +903,24 @@ CM-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="cm.2"/>
+         <param id="cm-2_a"><!-- inserted into CM-2 (1)(a) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="cm-2_b"><!-- inserted into CM-2 (1)(b) -->
+            <value>Assignment organization-defined circumstances</value>
+         </param>
+         <param id="cm-2_c"><!-- inserted into  -->
+            <value>organization-defined previous versions of baseline configurations of the information system</value>
+         </param>
+         <param id="cm-2_d"><!-- inserted into CM-2 (7)(a) -->
+            <value>organization-defined information systems, system components, or devices</value>
+         </param>
+         <param id="cm-2_e"><!-- inserted into CM-2 (7)(a) -->
+            <value>organization-defined configurations</value>
+         </param>
+         <param id="cm-2_f"><!-- inserted into CM-2 (7)(b) -->
+            <value>organization-defined security safeguards</value>
+         </param>
 
          <call subcontrol-id="cm.2.1."/>
          <!--CM-2 (1) (a). [at least annually]
@@ -555,7 +932,7 @@ CM-2 (1) (b). [to include when directed by Authorizing Official]-->
             <value>Assignment organization-defined circumstances</value>
          </param>
 
-         <call subcontrol-id="cm.2.2."/>
+         <call/>
 
          <call subcontrol-id="cm.2.3."/>
          <param id="cm-2_c"><!-- inserted into  -->
@@ -588,10 +965,43 @@ CM-3e Guidance:  In accordance with record retention policies and procedures.-->
          <param id="cm-3_d"><!-- inserted into CM-3g. -->
             <value>organization-defined configuration change conditions</value>
          </param>
+         <param id="cm-3_e"><!-- inserted into CM-3 (1)(b) -->
+            <value>organized-defined approval authorities</value>
+         </param>
+         <param id="cm-3_f"><!-- inserted into CM-3 (1)(c) -->
+            <value>organization-defined time period</value>
+         </param>
+         <param id="cm-3_g"><!-- inserted into CM-3 (1)(f) -->
+            <value>organization-defined personnel</value>
+         </param>
+         <param id="cm-3_h"><!-- inserted into  -->
+            <value>organization-defined configuration change control element</value>
+         </param>
+         <param id="cm-3_i"><!-- inserted into  -->
+            <value>organization-defined security responses</value>
+         </param>
+         <param id="cm-3_j"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
 
          <call control-id="cm.4"/>
 
          <call control-id="cm.5"/>
+         <param id="cm-5_a"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="cm-5_b"><!-- inserted into  -->
+            <value>organization-defined circumstances</value>
+         </param>
+         <param id="cm-5_c"><!-- inserted into  -->
+            <value>organization-defined software and firmware components</value>
+         </param>
+         <param id="cm-5_d"><!-- inserted into  -->
+            <value>organization-defined information system components and system-level information</value>
+         </param>
+         <param id="cm-5_e"><!-- inserted into CM-5 (5)(b) -->
+            <value>organization-defined frequency</value>
+         </param>
 
          <call subcontrol-id="cm.5.1."/>
 
@@ -621,6 +1031,15 @@ CM-6a. Guidance: Information on the USGCB checklists can be found at: http://usg
          <param id="cm-6_c"><!-- inserted into CM-6c. -->
             <value>organization-defined operational requirements</value>
          </param>
+         <param id="cm-6_d"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="cm-6_e"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="cm-6_f"><!-- inserted into  -->
+            <value>organization-defined configuration settings</value>
+         </param>
 
          <call subcontrol-id="cm.6.1."/>
          <param id="cm-6_d"><!-- inserted into  -->
@@ -634,6 +1053,30 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
 (Partially derived from AC-17(8).)-->
          <param id="cm-7_a"><!-- inserted into CM-7b. -->
             <value>organization-defined prohibited or restricted functions, ports, protocols, and/or services</value>
+         </param>
+         <param id="cm-7_b"><!-- inserted into CM-7 (1)(a) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="cm-7_c"><!-- inserted into CM-7 (1)(b) -->
+            <value>organization-defined functions, ports, protocols, and services within the information system deemed to be unnecessary and/or nonsecure</value>
+         </param>
+         <param id="cm-7_d"><!-- inserted into  -->
+            <value>organization-defined policies regarding software program usage and restrictions</value>
+         </param>
+         <param id="cm-7_e"><!-- inserted into  -->
+            <value>organization-defined registration requirements for functions, ports, protocols, and services</value>
+         </param>
+         <param id="cm-7_f"><!-- inserted into CM-7 (4)(a) -->
+            <value>organization-defined software programs not authorized to execute on the information system</value>
+         </param>
+         <param id="cm-7_g"><!-- inserted into CM-7 (4)(c) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="cm-7_h"><!-- inserted into CM-7 (5)(a) -->
+            <value>organization-defined software programs authorized to execute on the information system</value>
+         </param>
+         <param id="cm-7_i"><!-- inserted into CM-7 (5)(c) -->
+            <value>organization-defined frequency</value>
          </param>
 
          <call subcontrol-id="cm.7.1."/>
@@ -669,6 +1112,15 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          <param id="cm-8_b"><!-- inserted into CM-8b. -->
             <value>organization-defined frequency</value>
          </param>
+         <param id="cm-8_c"><!-- inserted into CM-8 (3)(a) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="cm-8_d"><!-- inserted into CM-8 (3)(b) -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="cm-8_e"><!-- inserted into CM-8 (9)(a) -->
+            <value>organization-defined acquired information system components</value>
+         </param>
 
          <call subcontrol-id="cm.8.1."/>
 
@@ -686,6 +1138,9 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          <call control-id="cm.9"/>
 
          <call control-id="cm.10"/>
+         <param id="cm-10_a"><!-- inserted into  -->
+            <value>organization-defined restrictions</value>
+         </param>
 
          <call subcontrol-id="cm.10.1."/>
          <param id="cm-10_a"><!-- inserted into  -->
@@ -702,6 +1157,9 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          </param>
          <param id="cm-11_c"><!-- inserted into CM-11c. -->
             <value>organization-defined frequency</value>
+         </param>
+         <param id="cm-11_d"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
          </param>
 
          <call control-id="cp.1"/>
@@ -731,6 +1189,12 @@ CP-1.b.2 [at least annually]-->
          </param>
          <param id="cp-2_d"><!-- inserted into CP-2f. -->
             <value>organization-defined key contingency personnel (identified by name and/or by role) and organizational elements</value>
+         </param>
+         <param id="cp-2_e"><!-- inserted into  -->
+            <value>organization-defined time period</value>
+         </param>
+         <param id="cp-2_f"><!-- inserted into  -->
+            <value>organization-defined time period</value>
          </param>
 
          <call subcontrol-id="cp.2.1."/>
@@ -796,6 +1260,12 @@ CP-3.c. [at least annually]-->
          <param id="cp-8_b"><!-- inserted into  -->
             <value>organization-defined time period</value>
          </param>
+         <param id="cp-8_c"><!-- inserted into CP-8 (4)(c) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="cp-8_d"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
 
          <call subcontrol-id="cp.8.1."/>
 
@@ -819,6 +1289,18 @@ CP-9c. Requirement: The service provider maintains at least three backup copies 
          <param id="cp-9_c"><!-- inserted into CP-9c. -->
             <value>organization-defined frequency consistent with recovery time and recovery point objectives</value>
          </param>
+         <param id="cp-9_d"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="cp-9_e"><!-- inserted into  -->
+            <value>organization-defined critical information system software and other security-related information</value>
+         </param>
+         <param id="cp-9_f"><!-- inserted into  -->
+            <value>organization-defined time period and transfer rate consistent with the recovery time and recovery point objectives</value>
+         </param>
+         <param id="cp-9_g"><!-- inserted into  -->
+            <value>organization-defined backup information</value>
+         </param>
 
          <call subcontrol-id="cp.9.1."/>
          <!--CP-9 (1). [at least annually]-->
@@ -832,6 +1314,9 @@ CP-9c. Requirement: The service provider maintains at least three backup copies 
          </param>
 
          <call control-id="cp.10"/>
+         <param id="cp-10_a"><!-- inserted into  -->
+            <value>organization-defined restoration time-periods</value>
+         </param>
 
          <call subcontrol-id="cp.10.2."/>
 
@@ -849,6 +1334,24 @@ IA-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="ia.2"/>
+         <param id="ia-2_a"><!-- inserted into  -->
+            <value>organization-defined strength of mechanism requirements</value>
+         </param>
+         <param id="ia-2_b"><!-- inserted into  -->
+            <value>organization-defined strength of mechanism requirements</value>
+         </param>
+         <param id="ia-2_c"><!-- inserted into  -->
+            <value>organization-defined information system accounts and services</value>
+         </param>
+         <param id="ia-2_d"><!-- inserted into  -->
+            <value>organization-defined strength of mechanism requirements</value>
+         </param>
+         <param id="ia-2_e"><!-- inserted into  -->
+            <value>organization-defined out-of-band authentication</value>
+         </param>
+         <param id="ia-2_f"><!-- inserted into  -->
+            <value>organization-defined conditions</value>
+         </param>
 
          <call subcontrol-id="ia.2.1."/>
 
@@ -873,6 +1376,15 @@ IA-1.b.2 [at least annually]-->
          <param id="ia-3_a"><!-- inserted into  -->
             <value>organization-defined specific and/or types of devices</value>
          </param>
+         <param id="ia-3_b"><!-- inserted into  -->
+            <value>organization-defined specific devices and/or types of devices</value>
+         </param>
+         <param id="ia-3_c"><!-- inserted into IA-3 (3)(a) -->
+            <value>organization-defined lease information and lease duration</value>
+         </param>
+         <param id="ia-3_d"><!-- inserted into  -->
+            <value>organization-defined configuration management process</value>
+         </param>
 
          <call control-id="ia.4"/>
          <!--IA-4d. [at least two years]
@@ -887,6 +1399,12 @@ IA-4e. [ninety days for user identifiers] (See additional requirements and guida
          <param id="ia-4_c"><!-- inserted into IA-4e. -->
             <value>organization-defined time period of inactivity</value>
          </param>
+         <param id="ia-4_d"><!-- inserted into  -->
+            <value>organization-defined characteristic identifying individual status</value>
+         </param>
+         <param id="ia-4_e"><!-- inserted into  -->
+            <value>organization-defined external organizations</value>
+         </param>
 
          <call subcontrol-id="ia.4.4."/>
          <!--IA-4 (4). [contractors; foreign nationals] -->
@@ -898,6 +1416,45 @@ IA-4e. [ninety days for user identifiers] (See additional requirements and guida
          <!--IA-5g. [to include sixty days for passwords]-->
          <param id="ia-5_a"><!-- inserted into IA-5g. -->
             <value>organization-defined time period by authenticator type</value>
+         </param>
+         <param id="ia-5_b"><!-- inserted into IA-5 (1)(a) -->
+            <value>organization-defined requirements for case sensitivity, number of characters, mix of upper-case letters, lower-case letters, numbers, and special characters, including minimum requirements for each type</value>
+         </param>
+         <param id="ia-5_c"><!-- inserted into IA-5 (1)(b) -->
+            <value>organization-defined number</value>
+         </param>
+         <param id="ia-5_d"><!-- inserted into IA-5 (1)(d) -->
+            <value>organization-defined numbers for lifetime minimum, lifetime maximum</value>
+         </param>
+         <param id="ia-5_e"><!-- inserted into IA-5 (1)(e) -->
+            <value>organization-defined number</value>
+         </param>
+         <param id="ia-5_f"><!-- inserted into  -->
+            <value>organization-defined types of and/or specific authenticators</value>
+         </param>
+         <param id="ia-5_g"><!-- inserted into  -->
+            <value>organization-defined registration authority</value>
+         </param>
+         <param id="ia-5_h"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="ia-5_i"><!-- inserted into  -->
+            <value>organization-defined requirements</value>
+         </param>
+         <param id="ia-5_j"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="ia-5_k"><!-- inserted into  -->
+            <value>organization-defined external organizations</value>
+         </param>
+         <param id="ia-5_l"><!-- inserted into  -->
+            <value>organization-defined token quality requirements</value>
+         </param>
+         <param id="ia-5_m"><!-- inserted into  -->
+            <value>organization-defined biometric quality requirements</value>
+         </param>
+         <param id="ia-5_n"><!-- inserted into  -->
+            <value>organization-defined time period</value>
          </param>
 
          <call subcontrol-id="ia.5.1."/>
@@ -952,6 +1509,9 @@ IA-5 (1) (e). [twenty four]-->
          <call control-id="ia.7"/>
 
          <call control-id="ia.8"/>
+         <param id="ia-8_a"><!-- inserted into  -->
+            <value>organization-defined information systems</value>
+         </param>
 
          <call subcontrol-id="ia.8.1."/>
 
@@ -1002,6 +1562,30 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
 
          <call control-id="ir.4"/>
          <!--IR-4/A13. Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.-->
+         <param id="ir-4_a"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="ir-4_b"><!-- inserted into  -->
+            <value>organization-defined classes of incidents</value>
+         </param>
+         <param id="ir-4_c"><!-- inserted into  -->
+            <value>organization-defined actions to take in response to classes of incidents</value>
+         </param>
+         <param id="ir-4_d"><!-- inserted into  -->
+            <value>organization-defined security violations</value>
+         </param>
+         <param id="ir-4_e"><!-- inserted into  -->
+            <value>organization-defined components or elements of the organization</value>
+         </param>
+         <param id="ir-4_f"><!-- inserted into  -->
+            <value>organization-defined external organizations</value>
+         </param>
+         <param id="ir-4_g"><!-- inserted into  -->
+            <value>organization-defined incident information</value>
+         </param>
+         <param id="ir-4_h"><!-- inserted into  -->
+            <value>organization-defined dynamic response capabilities</value>
+         </param>
 
          <call subcontrol-id="ir.4.1."/>
 
@@ -1015,6 +1599,9 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
          </param>
          <param id="ir-6_b"><!-- inserted into IR-6b. -->
             <value>organization-defined authorities</value>
+         </param>
+         <param id="ir-6_c"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
          </param>
 
          <call subcontrol-id="ir.6.1."/>
@@ -1049,6 +1636,18 @@ IR-8(e) Additional FedRAMP Requirements and Guidance:  The service provider defi
          </param>
          <param id="ir-9_b"><!-- inserted into IR-9f. -->
             <value>organization-defined actions</value>
+         </param>
+         <param id="ir-9_c"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="ir-9_d"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="ir-9_e"><!-- inserted into  -->
+            <value>organization-defined procedures</value>
+         </param>
+         <param id="ir-9_f"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
          </param>
 
          <call subcontrol-id="ir.9.1."/>
@@ -1093,6 +1692,9 @@ MA-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="ma.3"/>
+         <param id="ma-3_a"><!-- inserted into MA-3 (3)(d) -->
+            <value>organization-defined personnel or roles</value>
+         </param>
 
          <call subcontrol-id="ma.3.1."/>
 
@@ -1105,6 +1707,18 @@ MA-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="ma.4"/>
+         <param id="ma-4_a"><!-- inserted into MA-4 (1)(a) -->
+            <value>organization-defined audit events</value>
+         </param>
+         <param id="ma-4_b"><!-- inserted into MA-4 (4)(a) -->
+            <value>organization-defined authenticators that are replay resistant</value>
+         </param>
+         <param id="ma-4_c"><!-- inserted into MA-4 (5)(a) -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="ma-4_d"><!-- inserted into MA-4 (5)(b) -->
+            <value>organization-defined personnel or roles</value>
+         </param>
 
          <call subcontrol-id="ma.4.2."/>
 
@@ -1119,6 +1733,18 @@ MA-1.b.2 [at least annually]-->
          </param>
          <param id="ma-6_b"><!-- inserted into  -->
             <value>organization-defined time period</value>
+         </param>
+         <param id="ma-6_c"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="ma-6_d"><!-- inserted into  -->
+            <value>organization-defined time intervals</value>
+         </param>
+         <param id="ma-6_e"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="ma-6_f"><!-- inserted into  -->
+            <value>organization-defined time intervals</value>
          </param>
 
          <call control-id="mp.1"/>
@@ -1181,6 +1807,21 @@ MP-1.b.2 [at least annually]-->
          <param id="mp-6_b"><!-- inserted into MP-6a. -->
             <value>organization-defined sanitization techniques and procedures</value>
          </param>
+         <param id="mp-6_c"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="mp-6_d"><!-- inserted into  -->
+            <value>organization-defined circumstances requiring sanitization of portable storage devices</value>
+         </param>
+         <param id="mp-6_e"><!-- inserted into  -->
+            <value>organization-defined information system media</value>
+         </param>
+         <param id="mp-6_f"><!-- inserted into  -->
+            <value>organization-defined information systems, system components, or devices</value>
+         </param>
+         <param id="mp-6_g"><!-- inserted into  -->
+            <value>organization-defined conditions</value>
+         </param>
 
          <call subcontrol-id="mp.6.2."/>
          <!--[At least annually]-->
@@ -1220,6 +1861,12 @@ PE-1.b.2 [at least annually]-->
          <param id="pe-2_a"><!-- inserted into PE-2c. -->
             <value>organization-defined frequency</value>
          </param>
+         <param id="pe-2_b"><!-- inserted into  -->
+            <value>organization-defined list of acceptable forms of identification</value>
+         </param>
+         <param id="pe-2_c"><!-- inserted into  -->
+            <value>organization-defined credentials</value>
+         </param>
 
          <call control-id="pe.3"/>
          <!--PE-3a.2 [CSP defined physical access control systems/devices AND guards]
@@ -1251,6 +1898,24 @@ PE-3g. [at least annually]
          <param id="pe-3_h"><!-- inserted into PE-3g. -->
             <value>organization-defined frequency</value>
          </param>
+         <param id="pe-3_i"><!-- inserted into  -->
+            <value>organization-defined physical spaces containing one or more components of the information system</value>
+         </param>
+         <param id="pe-3_j"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="pe-3_k"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="pe-3_l"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="pe-3_m"><!-- inserted into  -->
+            <value>organization-defined hardware components</value>
+         </param>
+         <param id="pe-3_n"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
 
          <call control-id="pe.4"/>
          <param id="pe-4_a"><!-- inserted into  -->
@@ -1261,6 +1926,15 @@ PE-3g. [at least annually]
          </param>
 
          <call control-id="pe.5"/>
+         <param id="pe-5_a"><!-- inserted into PE-5 (1)(a) -->
+            <value>organization-defined output devices</value>
+         </param>
+         <param id="pe-5_b"><!-- inserted into PE-5 (2)(a) -->
+            <value>organization-defined output devices</value>
+         </param>
+         <param id="pe-5_c"><!-- inserted into  -->
+            <value>organization-defined information system output devices</value>
+         </param>
 
          <call control-id="pe.6"/>
          <!--PE-6b.[at least monthly]-->
@@ -1269,6 +1943,21 @@ PE-3g. [at least annually]
          </param>
          <param id="pe-6_b"><!-- inserted into PE-6b. -->
             <value>organization-defined events or potential indications of events</value>
+         </param>
+         <param id="pe-6_c"><!-- inserted into  -->
+            <value>organization-defined classes/types of intrusions</value>
+         </param>
+         <param id="pe-6_d"><!-- inserted into  -->
+            <value>organization-defined response actions</value>
+         </param>
+         <param id="pe-6_e"><!-- inserted into  -->
+            <value>organization-defined operational areas</value>
+         </param>
+         <param id="pe-6_f"><!-- inserted into  -->
+            <value>organization-defined time period</value>
+         </param>
+         <param id="pe-6_g"><!-- inserted into  -->
+            <value>organization-defined physical spaces containing one or more components of the information system</value>
          </param>
 
          <call subcontrol-id="pe.6.1."/>
@@ -1284,6 +1973,12 @@ PE-8b. [at least monthly]-->
          </param>
 
          <call control-id="pe.9"/>
+         <param id="pe-9_a"><!-- inserted into  -->
+            <value>organization-defined distance</value>
+         </param>
+         <param id="pe-9_b"><!-- inserted into  -->
+            <value>organization-defined critical information system components</value>
+         </param>
 
          <call control-id="pe.10"/>
          <param id="pe-10_a"><!-- inserted into PE-10b. -->
@@ -1295,6 +1990,21 @@ PE-8b. [at least monthly]-->
          <call control-id="pe.12"/>
 
          <call control-id="pe.13"/>
+         <param id="pe-13_a"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="pe-13_b"><!-- inserted into  -->
+            <value>organization-defined emergency responders</value>
+         </param>
+         <param id="pe-13_c"><!-- inserted into  -->
+            <value>organization-defined emergency responders</value>
+         </param>
+         <param id="pe-13_d"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="pe-13_e"><!-- inserted into  -->
+            <value>organization-defined time period</value>
+         </param>
 
          <call subcontrol-id="pe.13.2."/>
          <param id="pe-13_c"><!-- inserted into  -->
@@ -1317,6 +2027,9 @@ PE-14b. [continuously]-->
          <call subcontrol-id="pe.14.2."/>
 
          <call control-id="pe.15"/>
+         <param id="pe-15_a"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
 
          <call control-id="pe.16"/>
          <!--PE-16. [all information system components]-->
@@ -1350,6 +2063,9 @@ PL-1.b.2 [at least annually]-->
          <param id="pl-2_b"><!-- inserted into PL-2c. -->
             <value>organization-defined frequency</value>
          </param>
+         <param id="pl-2_c"><!-- inserted into  -->
+            <value>organization-defined individuals or groups</value>
+         </param>
 
          <call subcontrol-id="pl.2.3."/>
          <param id="pl-2_c"><!-- inserted into  -->
@@ -1368,6 +2084,18 @@ PL-1.b.2 [at least annually]-->
          <!--PL-8b. [At least annually]-->
          <param id="pl-8_a"><!-- inserted into PL-8b. -->
             <value>organization-defined frequency</value>
+         </param>
+         <param id="pl-8_b"><!-- inserted into PL-8 (1)(a) -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="pl-8_c"><!-- inserted into PL-8 (1)(a) -->
+            <value>organization-defined locations and architectural layers</value>
+         </param>
+         <param id="pl-8_d"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="pl-8_e"><!-- inserted into  -->
+            <value>organization-defined locations and architectural layers</value>
          </param>
 
          <call control-id="ps.1"/>
@@ -1395,6 +2123,9 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
          <param id="ps-3_a"><!-- inserted into PS-3b. -->
             <value>organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening</value>
          </param>
+         <param id="ps-3_b"><!-- inserted into PS-3 (3)(b) -->
+            <value>organization-defined additional personnel screening criteria</value>
+         </param>
 
          <call subcontrol-id="ps.3.3."/>
          <!--PS-3 (3)(b). [personnel screening criteria – as required by specific information]-->
@@ -1415,6 +2146,9 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
          </param>
          <param id="ps-4_d"><!-- inserted into PS-4f. -->
             <value>organization-defined time period</value>
+         </param>
+         <param id="ps-4_e"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
          </param>
 
          <call control-id="ps.5"/>
@@ -1507,6 +2241,18 @@ RA-5e. Requirement: to include the Risk Executive; for JAB authorizations to inc
          <param id="ra-5_c"><!-- inserted into RA-5e. -->
             <value>organization-defined personnel or roles</value>
          </param>
+         <param id="ra-5_d"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="ra-5_e"><!-- inserted into  -->
+            <value>organization-defined corrective actions</value>
+         </param>
+         <param id="ra-5_f"><!-- inserted into  -->
+            <value>organization-identified information system components</value>
+         </param>
+         <param id="ra-5_g"><!-- inserted into  -->
+            <value>organization-defined vulnerability scanning activities</value>
+         </param>
 
          <call subcontrol-id="ra.5.1."/>
 
@@ -1556,6 +2302,21 @@ SA-1.b.2 [at least annually]-->
          <call control-id="sa.4"/>
          <!--SA-4. Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.
 See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html. -->
+         <param id="sa-4_a"><!-- inserted into  -->
+            <value>organization-defined design/implementation information</value>
+         </param>
+         <param id="sa-4_b"><!-- inserted into  -->
+            <value>organization-defined level of detail</value>
+         </param>
+         <param id="sa-4_c"><!-- inserted into  -->
+            <value>organization-defined state-of-the-practice system/security engineering methods, software development methods, testing/evaluation/validation techniques, and quality control processes</value>
+         </param>
+         <param id="sa-4_d"><!-- inserted into SA-4 (5)(a) -->
+            <value>organization-defined security configurations</value>
+         </param>
+         <param id="sa-4_e"><!-- inserted into  -->
+            <value>organization-defined level of detail</value>
+         </param>
 
          <call subcontrol-id="sa.4.1."/>
 
@@ -1597,6 +2358,27 @@ SA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for exter
          </param>
          <param id="sa-9_b"><!-- inserted into SA-9c. -->
             <value>organization-defined processes, methods, and techniques</value>
+         </param>
+         <param id="sa-9_c"><!-- inserted into SA-9 (1)(b) -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="sa-9_d"><!-- inserted into  -->
+            <value>organization-defined external information system services</value>
+         </param>
+         <param id="sa-9_e"><!-- inserted into  -->
+            <value>organization-defined security requirements, properties, factors, or conditions defining acceptable trust relationships</value>
+         </param>
+         <param id="sa-9_f"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="sa-9_g"><!-- inserted into  -->
+            <value>organization-defined external service providers</value>
+         </param>
+         <param id="sa-9_h"><!-- inserted into  -->
+            <value>organization-defined locations</value>
+         </param>
+         <param id="sa-9_i"><!-- inserted into  -->
+            <value>organization-defined requirements or conditions</value>
          </param>
 
          <call subcontrol-id="sa.9.1."/>
@@ -1646,6 +2428,24 @@ SA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for exter
          <param id="sa-11_a"><!-- inserted into SA-11b. -->
             <value>organization-defined depth and coverage</value>
          </param>
+         <param id="sa-11_b"><!-- inserted into SA-11 (3)(a) -->
+            <value>organization-defined independence criteria</value>
+         </param>
+         <param id="sa-11_c"><!-- inserted into  -->
+            <value>organization-defined specific code</value>
+         </param>
+         <param id="sa-11_d"><!-- inserted into  -->
+            <value>organization-defined processes, procedures, and/or techniques</value>
+         </param>
+         <param id="sa-11_e"><!-- inserted into  -->
+            <value>organization-defined breadth/depth</value>
+         </param>
+         <param id="sa-11_f"><!-- inserted into  -->
+            <value>organization-defined constraints</value>
+         </param>
+         <param id="sa-11_g"><!-- inserted into  -->
+            <value>organization-defined depth of testing/evaluation</value>
+         </param>
 
          <call subcontrol-id="sa.11.1."/>
          <!--Requirement: SA-11 (1) or SA-11 (8) or both
@@ -1673,6 +2473,9 @@ SC-1.b.2 [at least annually]-->
          <call control-id="sc.2"/>
 
          <call control-id="sc.4"/>
+         <param id="sc-4_a"><!-- inserted into  -->
+            <value>organization-defined procedures</value>
+         </param>
 
          <call control-id="sc.5"/>
          <param id="sc-5_a"><!-- inserted into  -->
@@ -1680,6 +2483,15 @@ SC-1.b.2 [at least annually]-->
          </param>
          <param id="sc-5_b"><!-- inserted into  -->
             <value>organization-defined security safeguards</value>
+         </param>
+         <param id="sc-5_c"><!-- inserted into  -->
+            <value>organization-defined denial of service attacks</value>
+         </param>
+         <param id="sc-5_d"><!-- inserted into SC-5 (3)(a) -->
+            <value>organization-defined monitoring tools</value>
+         </param>
+         <param id="sc-5_e"><!-- inserted into SC-5 (3)(b) -->
+            <value>organization-defined information system resources</value>
          </param>
 
          <call control-id="sc.6"/>
@@ -1691,6 +2503,45 @@ SC-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="sc.7"/>
+         <param id="sc-7_a"><!-- inserted into SC-7 (4)(e) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="sc-7_b"><!-- inserted into  -->
+            <value>organization-defined internal communications traffic</value>
+         </param>
+         <param id="sc-7_c"><!-- inserted into  -->
+            <value>organization-defined external networks</value>
+         </param>
+         <param id="sc-7_d"><!-- inserted into  -->
+            <value>organization-defined authorized sources</value>
+         </param>
+         <param id="sc-7_e"><!-- inserted into  -->
+            <value>organization-defined authorized destinations</value>
+         </param>
+         <param id="sc-7_f"><!-- inserted into  -->
+            <value>organization-defined host-based boundary protection mechanisms</value>
+         </param>
+         <param id="sc-7_g"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="sc-7_h"><!-- inserted into  -->
+            <value>organization-defined information security tools, mechanisms, and support components</value>
+         </param>
+         <param id="sc-7_i"><!-- inserted into  -->
+            <value>organization-defined managed interfaces</value>
+         </param>
+         <param id="sc-7_j"><!-- inserted into  -->
+            <value>organization-defined communication clients</value>
+         </param>
+         <param id="sc-7_k"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="sc-7_l"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="sc-7_m"><!-- inserted into  -->
+            <value>organization-defined missions and/or business functions</value>
+         </param>
 
          <call subcontrol-id="sc.7.3."/>
 
@@ -1730,6 +2581,15 @@ SC-1.b.2 [at least annually]-->
 
          <call control-id="sc.8"/>
          <!--SC-8. [confidentiality AND integrity]-->
+         <param id="sc-8_a"><!-- inserted into  -->
+            <value>organization-defined alternative physical safeguards</value>
+         </param>
+         <param id="sc-8_b"><!-- inserted into  -->
+            <value>organization-defined alternative physical safeguards</value>
+         </param>
+         <param id="sc-8_c"><!-- inserted into  -->
+            <value>organization-defined alternative physical safeguards</value>
+         </param>
 
          <call subcontrol-id="sc.8.1."/>
          <!--SC-8 (1). [prevent unauthorized disclosure of information AND detect changes to information] [a hardened or alarmed carrier Protective Distribution System (PDS)]-->
@@ -1765,6 +2625,15 @@ SC-1.b.2 [at least annually]-->
          <param id="sc-15_a"><!-- inserted into SC-15a. -->
             <value>organization-defined exceptions where remote activation is to be allowed</value>
          </param>
+         <param id="sc-15_b"><!-- inserted into  -->
+            <value>organization-defined information systems or information system components</value>
+         </param>
+         <param id="sc-15_c"><!-- inserted into  -->
+            <value>organization-defined secure work areas</value>
+         </param>
+         <param id="sc-15_d"><!-- inserted into  -->
+            <value>organization-defined online meetings and teleconferences</value>
+         </param>
 
          <call control-id="sc.17"/>
          <param id="sc-17_a"><!-- inserted into  -->
@@ -1772,6 +2641,24 @@ SC-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="sc.18"/>
+         <param id="sc-18_a"><!-- inserted into  -->
+            <value>organization-defined unacceptable mobile code</value>
+         </param>
+         <param id="sc-18_b"><!-- inserted into  -->
+            <value>organization-defined corrective actions</value>
+         </param>
+         <param id="sc-18_c"><!-- inserted into  -->
+            <value>organization-defined mobile code requirements</value>
+         </param>
+         <param id="sc-18_d"><!-- inserted into  -->
+            <value>organization-defined unacceptable mobile code</value>
+         </param>
+         <param id="sc-18_e"><!-- inserted into  -->
+            <value>organization-defined software applications</value>
+         </param>
+         <param id="sc-18_f"><!-- inserted into  -->
+            <value>organization-defined actions</value>
+         </param>
 
          <call control-id="sc.19"/>
 
@@ -1782,12 +2669,27 @@ SC-1.b.2 [at least annually]-->
          <call control-id="sc.22"/>
 
          <call control-id="sc.23"/>
+         <param id="sc-23_a"><!-- inserted into  -->
+            <value>organization-defined randomness requirements</value>
+         </param>
+         <param id="sc-23_b"><!-- inserted into  -->
+            <value>organization-defined certificate authorities</value>
+         </param>
 
          <call control-id="sc.28"/>
          <!--SC-28. [confidentiality AND integrity]-->
          <!--SC-28. Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest. -->
          <param id="sc-28_a"><!-- inserted into  -->
             <value>organization-defined information at rest</value>
+         </param>
+         <param id="sc-28_b"><!-- inserted into  -->
+            <value>organization-defined information</value>
+         </param>
+         <param id="sc-28_c"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="sc-28_d"><!-- inserted into  -->
+            <value>organization-defined information</value>
          </param>
 
          <call subcontrol-id="sc.28.1."/>
@@ -1799,6 +2701,9 @@ SC-1.b.2 [at least annually]-->
          </param>
 
          <call control-id="sc.39"/>
+         <param id="sc-39_a"><!-- inserted into  -->
+            <value>organization-defined multi-threaded processing</value>
+         </param>
 
          <call control-id="si.1"/>
          <!--SI-1.b.1 [at least every 3 years]
@@ -1817,6 +2722,21 @@ SI-1.b.2 [at least annually]-->
          <!--SI-2c. [Within 30 days of release of updates]-->
          <param id="si-2_a"><!-- inserted into SI-2c. -->
             <value>organization-defined time period</value>
+         </param>
+         <param id="si-2_b"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="si-2_c"><!-- inserted into SI-2 (3)(b) -->
+            <value>organization-defined benchmarks</value>
+         </param>
+         <param id="si-2_d"><!-- inserted into  -->
+            <value>organization-defined security-relevant software and firmware updates</value>
+         </param>
+         <param id="si-2_e"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
+         <param id="si-2_f"><!-- inserted into  -->
+            <value>organization-defined software and firmware components</value>
          </param>
 
          <call subcontrol-id="si.2.2."/>
@@ -1838,6 +2758,24 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]-->
          </param>
          <param id="si-3_b"><!-- inserted into SI-3c.2. -->
             <value>organization-defined action</value>
+         </param>
+         <param id="si-3_c"><!-- inserted into SI-3 (6)(a) -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="si-3_d"><!-- inserted into  -->
+            <value>organization-defined unauthorized operating system commands</value>
+         </param>
+         <param id="si-3_e"><!-- inserted into  -->
+            <value>organization-defined information system hardware components</value>
+         </param>
+         <param id="si-3_f"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="si-3_g"><!-- inserted into  -->
+            <value>organization-defined remote commands</value>
+         </param>
+         <param id="si-3_h"><!-- inserted into SI-3 (10)(a) -->
+            <value>organization-defined tools and techniques</value>
          </param>
 
          <call subcontrol-id="si.3.1."/>
@@ -1862,6 +2800,66 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]-->
          <param id="si-4_e"><!-- inserted into SI-4g. -->
             <value>organization-defined frequency</value>
          </param>
+         <param id="si-4_f"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="si-4_g"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="si-4_h"><!-- inserted into  -->
+            <value>organization-defined compromise indicators</value>
+         </param>
+         <param id="si-4_i"><!-- inserted into  -->
+            <value>organization-defined incident response personnel (identified by name and/or by role)</value>
+         </param>
+         <param id="si-4_j"><!-- inserted into  -->
+            <value>organization-defined least-disruptive actions to terminate suspicious events</value>
+         </param>
+         <param id="si-4_k"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="si-4_l"><!-- inserted into  -->
+            <value>organization-defined encrypted communications traffic</value>
+         </param>
+         <param id="si-4_m"><!-- inserted into  -->
+            <value>organization-defined information system monitoring tools</value>
+         </param>
+         <param id="si-4_n"><!-- inserted into  -->
+            <value>organization-defined interior points within the system (e.g., subnetworks, subsystems)</value>
+         </param>
+         <param id="si-4_o"><!-- inserted into  -->
+            <value>organization-defined activities that trigger alerts</value>
+         </param>
+         <param id="si-4_p"><!-- inserted into  -->
+            <value>organization-defined interior points within the system (e.g., subsystems, subnetworks)</value>
+         </param>
+         <param id="si-4_q"><!-- inserted into  -->
+            <value>organization-defined additional monitoring</value>
+         </param>
+         <param id="si-4_r"><!-- inserted into  -->
+            <value>organization-defined sources</value>
+         </param>
+         <param id="si-4_s"><!-- inserted into  -->
+            <value>organization-defined additional monitoring</value>
+         </param>
+         <param id="si-4_t"><!-- inserted into  -->
+            <value>organization-defined additional monitoring</value>
+         </param>
+         <param id="si-4_u"><!-- inserted into  -->
+            <value>organization-defined probationary period</value>
+         </param>
+         <param id="si-4_v"><!-- inserted into  -->
+            <value>organization-defined authorization or approval processes</value>
+         </param>
+         <param id="si-4_w"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="si-4_x"><!-- inserted into  -->
+            <value>organization-defined host-based monitoring mechanisms</value>
+         </param>
+         <param id="si-4_y"><!-- inserted into  -->
+            <value>organization-defined information system components</value>
+         </param>
 
          <call subcontrol-id="si.4.1."/>
 
@@ -1882,7 +2880,7 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]-->
             <value>organization-defined compromise indicators</value>
          </param>
 
-         <call subcontrol-id="si.4.14."/>
+         <call/>
 
          <call subcontrol-id="si.4.16."/>
 
@@ -1930,10 +2928,61 @@ SI-6d [to include notification of system administrators and security personnel]
          <param id="si-6_e"><!-- inserted into SI-6d. -->
             <value>organization-defined alternative action(s)</value>
          </param>
+         <param id="si-6_f"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
 
          <call control-id="si.7"/>
          <param id="si-7_a"><!-- inserted into  -->
             <value>organization-defined software, firmware, and information</value>
+         </param>
+         <param id="si-7_b"><!-- inserted into  -->
+            <value>organization-defined software, firmware, and information</value>
+         </param>
+         <param id="si-7_c"><!-- inserted into  -->
+            <value>organization-defined transitional states or security-relevant events</value>
+         </param>
+         <param id="si-7_d"><!-- inserted into  -->
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="si-7_e"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="si-7_f"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="si-7_g"><!-- inserted into  -->
+            <value>organization-defined security-relevant changes to the information system</value>
+         </param>
+         <param id="si-7_h"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="si-7_i"><!-- inserted into  -->
+            <value>organization-defined other actions</value>
+         </param>
+         <param id="si-7_j"><!-- inserted into  -->
+            <value>organization-defined devices</value>
+         </param>
+         <param id="si-7_k"><!-- inserted into  -->
+            <value>organization-defined security safeguards</value>
+         </param>
+         <param id="si-7_l"><!-- inserted into  -->
+            <value>organization-defined devices</value>
+         </param>
+         <param id="si-7_m"><!-- inserted into  -->
+            <value>organization-defined user-installed software</value>
+         </param>
+         <param id="si-7_n"><!-- inserted into  -->
+            <value>organization-defined user-installed software</value>
+         </param>
+         <param id="si-7_o"><!-- inserted into  -->
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="si-7_p"><!-- inserted into  -->
+            <value>organization-defined software or firmware components</value>
+         </param>
+         <param id="si-7_q"><!-- inserted into  -->
+            <value>organization-defined time period</value>
          </param>
 
          <call subcontrol-id="si.7.1."/>
@@ -1962,6 +3011,21 @@ SI-6d [to include notification of system administrators and security personnel]
          <call control-id="si.10"/>
          <param id="si-10_a"><!-- inserted into  -->
             <value>organization-defined information inputs</value>
+         </param>
+         <param id="si-10_b"><!-- inserted into SI-10 (1)(a) -->
+            <value>organization-defined inputs</value>
+         </param>
+         <param id="si-10_c"><!-- inserted into SI-10 (1)(b) -->
+            <value>organization-defined authorized individuals</value>
+         </param>
+         <param id="si-10_d"><!-- inserted into  -->
+            <value>organization-defined time period</value>
+         </param>
+         <param id="si-10_e"><!-- inserted into  -->
+            <value>organization-defined trusted sources</value>
+         </param>
+         <param id="si-10_f"><!-- inserted into  -->
+            <value>organization-defined formats</value>
          </param>
 
          <call control-id="si.11"/>

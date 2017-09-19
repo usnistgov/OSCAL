@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+   <title>FedRAMP as OSCAL framework [DRAFT]</title>
    <group>
       <title>Access Control</title>
       <prop class="group-id">AC</prop>
@@ -561,7 +563,7 @@ CM-2 (1) (b). [to include when directed by Authorizing Official]</p>
          </component>
          <component>
             <title>Automation Support For Accuracy / Currency </title>
-            <link rel="control">CM-2(2)</link>
+            <link rel="control">CM-2 (2)</link>
             <prop class="baseline-impact">MODERATE</prop>
          </component>
          <component>
@@ -1991,7 +1993,7 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          </component>
          <component>
             <title>Wireless Intrusion Detection</title>
-            <link rel="control">SI-4(14)</link>
+            <link rel="control">SI-4 (14)</link>
             <prop class="baseline-impact">MODERATE</prop>
          </component>
          <component>

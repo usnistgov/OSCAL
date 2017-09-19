@@ -1,21 +1,38 @@
 default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
-# We can have a catalog, or we can have only declarations for catalogs
-start = (catalog | declarations | collection)
-# Also we have an alias for 'catalog', namely 'collection', used for ad-hoc collections of controls
+# We can have a catalog, or we can have only declarations for catalogs, or we can have a framework
+# (which is kind of a 'catalog mockup' format)
+start = (catalog | declarations | framework)
 
-# start = element oscal-catalog { declarations, catalog } 
-# have initial sections
-# declare   - declares local parameters and settings including constraints on controls
-#             (enumerated values for properties, regexes and what not)
-# also declares bindings to authorities (e.g. sources for transclusion/comparison)?
 
-#keeping these together until we have differentiating requirements
-collection-contents =  (title, declarations?, (section | group | control)*, references?)
+catalog-contents   = (title, declarations?, (section | group | control)*, references?)
 
-catalog    = element catalog { collection-contents } 
+framework-contents = (title, declarations?, (section | category | item)*, references?)
 
-collection = element collection { collection-contents }
+catalog    = element catalog { catalog-contents } 
+
+framework = element framework { idAttr, optionalClass, framework-contents }
+
+# 'group' is the element name as it appears in both frameworks, and catalogs
+# but they group different things
+category = element group { idAttr, optionalClass,
+  title?, (prop | link | prose)*,
+   (category+ | item+ ) }
+
+item = element component {
+    idAttr, optionalClass, title?, param*,
+    (prop | link | prose)*, item*
+  }
+
+# an overlay - a framework whose structure matches the catalog?
+
+# frameworks contain categories or items
+# categories contain categories or items
+# items contain title?, prop*, p*, link*
+# strict governance over item/link/@rel
+# declarations too :-)
+# validation can ensure that framework links are scoped
+# corresponding with catalogs/controls included in the profile
 
 # declarations includes declarations for control types, parameters (names/types),
 # authorities (source data for transclusion etc. etc.)

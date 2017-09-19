@@ -1,47 +1,87 @@
 <!DOCTYPE HTML>
 
-<!-- HTML produced by 'OSCAL PROFILE RESOLUTION AND RENDERING ' :2017-09-15T17:31:49.671-04:00 -->
-<html xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
-   <head>NIST SP800-53 selections (for demo): AT-1 through AT-5, SI-1 through SI-4, PM-1, PM-2,
-      PM-3
-      <style type="text/css">
-
-.control { margin:1em; padding: 1em; border: thin dotted black }
-.control > *:first-child { margin-top: 0em }
-
-h1, h2, h3, h4, h5, h6 { font-family: sans-serif }
-h3 { font-size: 120% }
-
-div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
-
-section h3     { font-size: 160% }
-section h3     { font-size: 140% }
-div h3         { font-size: 130% }
-div div h3     { font-size: 120% }
-div div div h3 { font-size: 110% }
-
-.param { font-style: italic }
-.insert, .choice { border: thin solid black; padding: 0.1em }
-
-.subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
-
-.param .em { font-style: roman }
-
-        </style></head>
-   <body>  
-      
-      
-      
-      
-      <p class="param"><span class="subst">si-1_a: </span>
-         CLUB MEMBERS IN GOOD STANDING
+<!-- HTML produced by ' OSCAL PROFILE RESOLUTION AND RENDERING ' :2017-09-19T09:32:53.322-04:00 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>NIST SP800-53 selections (for demo): AT-1 through AT-5, SI-1 through SI-4, PM-1, PM-2,
+         PM-3
          
-      </p>
+      </title><style type="text/css">
       
-      <p class="param"><span class="subst">si-1_b: </span>
-         DURING ANNUAL SPRING CLEANING
+      .control { margin:1em; padding: 1em; border: thin solid black }
+      .subcontrol { margin-top: 0.5em; padding: 1em; border: thin dotted black }
+      .control &gt; *:first-child, .subcontrol &gt; *:first-child { margin-top: 0em }
+      
+      h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin-bottom: 0em }
+      h3 { font-size: 120% }
+      
+      // div, section { border-left: thin solid black; padding-left: 0.5em; margin-left: 0.5em }
+      // div.part { border: none; padding: 0em; margin: 0em }
+      .part {  }
+      
+      section h3     { font-size: 160% }
+      section h3     { font-size: 140% }
+      div h3         { font-size: 130% }
+      div div h3     { font-size: 120% }
+      div div div h3 { font-size: 110% }
+      
+      p, div.param { margin-top: 0.4em; margin-bottom: 0.2em }
+      p { line-height: 160% }
+      div &gt; *:first-child { margin-top: 0ex }
+      
+      div.param { border: medium solid green; font-size: 80%; padding: 0.3em }
+      
+      .param p { margin: 0em }
+      
+      p.object { padding-left: 2em; text-indent: -2em }
+      
+      p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; border: medium solid blue; padding-right: 0.2em; margin-right: 0.2em }
+      p.link.broken { background-color: lemonchiffon; border: medium solid darkorange; text-decoration: line-through }
+      .part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
+      
+      .insert, .choice { border: thin solid black; padding: 0.1em }
+      .unassigned { border: thin solid red; background-color: pink}
+      .desc { color: darkgreen }
+      .insert .desc { font-size: 90% }
+      .value { font-style: italic; text-decoration: underline }
+      
+      .param-id { font-size: 90%; font-family: sans-serif; font-weight: bold;
+         background-color: black; color: white; padding-left: 0.5ex; padding-right: 0.5ex }
+      .insert .param-id { font-size: 80% }
+      
+      .withdrawn { font-weight: bold; font-style: italic }
+      
+      .box { vertical-align: middle; width: 2em }
+      .subst  { color: midnightblue; font-family: sans-serif; font-style: normal; font-weight: normal; font-size; 85% } 
+      
+      .impact-table { width: 100%; collapse: collapsed; font-family: sans-serif }
+      .impact-table td { padding: 0.5em; background-color: lightgrey; border: thin solid black }
+      
+      .part { padding: 0.25em; margin-top: 0.5em; border: thin dotted black }
+      .part .part { padding: 0em; margin-top: 0em; border: none }
+      table { border-collapse: collapse }
+      li { list-style-type: square }
+      a { text-decoration: none }
+      
+  </style></head>
+   <body class="profile">  
+      
+      
+      
+      
+      <div class="param" id="si-1_a">
          
-      </p>
+         <p class="value"><span class="subst">Value:</span> CLUB MEMBERS IN GOOD STANDING
+         </p>
+         
+      </div>
+      
+      <div class="param" id="si-1_b">
+         
+         <p class="value"><span class="subst">Value:</span> DURING ANNUAL SPRING CLEANING
+         </p>
+         
+      </div>
       
       
       
@@ -58,520 +98,1090 @@ div div div h3 { font-size: 110% }
          PM-3
          
       </h2>
-      <section class="group">
+      <section class="group" id="">
          <h2 class="title">SYSTEM AND INFORMATION INTEGRITY</h2>
-         <div class="component SP800-53 control" id="si.1">
-            <h3><span class="run-in subst">SI-1</span> [SP800-53 control] SYSTEM AND INFORMATION INTEGRITY POLICY AND PROCEDURES
-            </h3>
-            <h2 class="title">SYSTEM AND INFORMATION INTEGRITY POLICY AND PROCEDURES</h2>
-            <p class="param"><span class="subst">si-1_a: </span>
-               organization-defined personnel or roles
-               CLUB MEMBERS IN GOOD STANDING
-               
+         <h2 class="title">SYSTEM AND INFORMATION INTEGRITY POLICY AND PROCEDURES</h2>
+         <div class="param" id="si-1_a">
+            
+            <p class="desc"><span class="subst">Parameter:</span> <span class="param-id">si-1_a</span> organization-defined personnel or roles
             </p>
-            <p class="param"><span class="subst">si-1_b: </span>
-               organization-defined frequency
-               DURING ANNUAL SPRING CLEANING
-               
+            
+            <p class="value"><span class="subst">Value:</span> CLUB MEMBERS IN GOOD STANDING
             </p>
-            <p class="param"><span class="subst">si-1_c: </span>
-               organization-defined frequency
-               organization-defined frequency
-               
+            
+         </div>
+         <div class="param" id="si-1_b">
+            
+            <p class="desc"><span class="subst">Parameter:</span> <span class="param-id">si-1_b</span> organization-defined frequency
             </p>
-            <p class="prop priority"><span class="subst">priority: </span>P1
+            
+            <p class="value"><span class="subst">Value:</span> DURING ANNUAL SPRING CLEANING
             </p>
-            <p class="prop baseline-impact"><span class="subst">baseline-impact: </span>LOW
+            
+         </div>
+         <div class="param" id="si-1_c">
+            
+            <p class="desc"><span class="subst">Parameter:</span> <span class="param-id">si-1_c</span> organization-defined frequency
             </p>
-            <p class="prop baseline-impact"><span class="subst">baseline-impact: </span>MODERATE
+            
+            <p class="value"><span class="subst">Value:</span> organization-defined frequency
             </p>
-            <p class="prop baseline-impact"><span class="subst">baseline-impact: </span>HIGH
+            
+         </div>
+         <p class="prop name"><span class="subst">name: </span>SI-1
+         </p>
+         <div class="part">
+            <h4>Control</h4>
+            <table>
+               <tbody>
+                  <tr>
+                     <td></td>
+                     <td>
+                        <p class="p">The organization:</p>
+                        <div class="part" id="smm_si-1a.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">a.</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">Develops, documents, and disseminates to <span class="insert"><a href="#si-1_a"><span class="param-id">si-1_a</span> </a>
+                                             <span class="desc">organization-defined personnel or roles</span>
+                                             <span class="value">CLUB MEMBERS IN GOOD STANDING</span>
+                                             </span>:
+                                       </p>
+                                       <div class="part" id="sms_si-1a.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">1.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">A system and information integrity policy that addresses purpose, scope, roles, responsibilities,
+                                                         management commitment, coordination among organizational entities, and compliance;
+                                                         and
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="sms_si-1a.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">2.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">Procedures to facilitate the implementation of the system and information integrity
+                                                         policy and associated system and information integrity controls; and
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="smm_si-1b.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">b.</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">Reviews and updates the current:</p>
+                                       <div class="part" id="sms_si-1b.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">1.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">System and information integrity policy <span class="insert"><a href="#si-1_b"><span class="param-id">si-1_b</span> </a>
+                                                            <span class="desc">organization-defined frequency</span>
+                                                            <span class="value">DURING ANNUAL SPRING CLEANING</span>
+                                                            </span>; and
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="sms_si-1b.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">2.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">System and information integrity procedures <span class="insert"><a href="#si-1_c"><span class="param-id">si-1_c</span> </a>
+                                                            <span class="desc">organization-defined frequency</span>
+                                                            <span class="value">organization-defined frequency</span>
+                                                            </span>.
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="part guidance">
+            <h4>Supplemental guidance</h4>
+            <p class="p">This control addresses the establishment of policy and procedures for the effective
+               implementation of selected security controls and control enhancements in the SI family.
+               Policy and procedures reflect applicable federal laws, Executive Orders, directives,
+               regulations, policies, standards, and guidance. Security program policies and procedures
+               at the organization level may make the need for system-specific policies and procedures
+               unnecessary. The policy can be included as part of the general information security
+               policy for organizations or conversely, can be represented by multiple policies reflecting
+               the complex nature of certain organizations. The procedures can be established for
+               the security program in general and for particular information systems, if needed.
+               The organizational risk management strategy is a key factor in establishing policy
+               and procedures.
             </p>
-            <div class="part statement">
-               <h3>[statement] </h3>
-               <p class="p">The organization:</p>
-               <div class="part item" id="smm_si-1a.">
-                  <h3><span class="run-in subst">SI-1a.</span> [item] 
-                  </h3>
-                  <p class="p">Develops, documents, and disseminates to <span class="insert"><span class="subst">
-                           organization-defined personnel or roles
-                           CLUB MEMBERS IN GOOD STANDING
-                           </span></span>:
-                  </p>
-                  <div class="part item" id="sms_si-1a.1.">
-                     <h3><span class="run-in subst">SI-1a.1.</span> [item] 
-                     </h3>
-                     <p class="p">A system and information integrity policy that addresses purpose, scope, roles, responsibilities,
-                        management commitment, coordination among organizational entities, and compliance;
-                        and
-                     </p>
-                  </div>
-                  <div class="part item" id="sms_si-1a.2.">
-                     <h3><span class="run-in subst">SI-1a.2.</span> [item] 
-                     </h3>
-                     <p class="p">Procedures to facilitate the implementation of the system and information integrity
-                        policy and associated system and information integrity controls; and
-                     </p>
-                  </div>
-               </div>
-               <div class="part item" id="smm_si-1b.">
-                  <h3><span class="run-in subst">SI-1b.</span> [item] 
-                  </h3>
-                  <p class="p">Reviews and updates the current:</p>
-                  <div class="part item" id="sms_si-1b.1.">
-                     <h3><span class="run-in subst">SI-1b.1.</span> [item] 
-                     </h3>
-                     <p class="p">System and information integrity policy <span class="insert"><span class="subst">
-                              organization-defined frequency
-                              DURING ANNUAL SPRING CLEANING
-                              </span></span>; and
-                     </p>
-                  </div>
-                  <div class="part item" id="sms_si-1b.2.">
-                     <h3><span class="run-in subst">SI-1b.2.</span> [item] 
-                     </h3>
-                     <p class="p">System and information integrity procedures <span class="insert"><span class="subst">
-                              organization-defined frequency
-                              organization-defined frequency
-                              </span></span>.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="part guidance">
-               <h3>[guidance] </h3>
-               <p class="p">This control addresses the establishment of policy and procedures for the effective
-                  implementation of selected security controls and control enhancements in the SI family.
-                  Policy and procedures reflect applicable federal laws, Executive Orders, directives,
-                  regulations, policies, standards, and guidance. Security program policies and procedures
-                  at the organization level may make the need for system-specific policies and procedures
-                  unnecessary. The policy can be included as part of the general information security
-                  policy for organizations or conversely, can be represented by multiple policies reflecting
-                  the complex nature of certain organizations. The procedures can be established for
-                  the security program in general and for particular information systems, if needed.
-                  The organizational risk management strategy is a key factor in establishing policy
-                  and procedures.
-               </p>
-            </div>
-            <div class="part objective">
-               <h3>[objective] </h3>
-               <p class="p">Determine if the organization:</p>
-               <div class="part objective" id="obj_si-1.a.1.">
-                  <h3><span class="run-in subst">SI-1(a)(1)</span> [objective] 
-                  </h3>
-                  <div class="part objective" id="obj_si-1.a.1.1.">
-                     <h3><span class="run-in subst">SI-1(a)(1)[1]</span> [objective] 
-                     </h3>
-                     <p class="p">develops and documents a system and information integrity policy that addresses:</p>
-                     <div class="part objective" id="obj_si-1.a.1.1.a.">
-                        <h3><span class="run-in subst">SI-1(a)(1)[1][a]</span> [objective] 
-                        </h3>
-                        <p class="p">purpose;</p>
-                     </div>
-                     <div class="part objective" id="obj_si-1.a.1.1.b.">
-                        <h3><span class="run-in subst">SI-1(a)(1)[1][b]</span> [objective] 
-                        </h3>
-                        <p class="p">scope;</p>
-                     </div>
-                     <div class="part objective" id="obj_si-1.a.1.1.c.">
-                        <h3><span class="run-in subst">SI-1(a)(1)[1][c]</span> [objective] 
-                        </h3>
-                        <p class="p">roles;</p>
-                     </div>
-                     <div class="part objective" id="obj_si-1.a.1.1.d.">
-                        <h3><span class="run-in subst">SI-1(a)(1)[1][d]</span> [objective] 
-                        </h3>
-                        <p class="p">responsibilities;</p>
-                     </div>
-                     <div class="part objective" id="obj_si-1.a.1.1.e.">
-                        <h3><span class="run-in subst">SI-1(a)(1)[1][e]</span> [objective] 
-                        </h3>
-                        <p class="p">management commitment;</p>
-                     </div>
-                     <div class="part objective" id="obj_si-1.a.1.1.f.">
-                        <h3><span class="run-in subst">SI-1(a)(1)[1][f]</span> [objective] 
-                        </h3>
-                        <p class="p">coordination among organizational entities;</p>
-                     </div>
-                     <div class="part objective" id="obj_si-1.a.1.1.g.">
-                        <h3><span class="run-in subst">SI-1(a)(1)[1][g]</span> [objective] 
-                        </h3>
-                        <p class="p">compliance;</p>
-                     </div>
-                  </div>
-                  <div class="part objective" id="obj_si-1.a.1.2.">
-                     <h3><span class="run-in subst">SI-1(a)(1)[2]</span> [objective] 
-                     </h3>
-                     <p class="p">defines personnel or roles to whom the system and information integrity policy is
-                        to be disseminated;
-                     </p>
-                  </div>
-                  <div class="part objective" id="obj_si-1.a.1.3.">
-                     <h3><span class="run-in subst">SI-1(a)(1)[3]</span> [objective] 
-                     </h3>
-                     <p class="p">disseminates the system and information integrity policy to organization-defined personnel
-                        or roles;
-                     </p>
-                  </div>
-               </div>
-               <div class="part objective" id="obj_si-1.a.2.">
-                  <h3><span class="run-in subst">SI-1(a)(2)</span> [objective] 
-                  </h3>
-                  <div class="part objective" id="obj_si-1.a.2.1.">
-                     <h3><span class="run-in subst">SI-1(a)(2)[1]</span> [objective] 
-                     </h3>
-                     <p class="p">develops and documents procedures to facilitate the implementation of the system and
-                        information integrity policy and associated  system and information integrity controls;
-                     </p>
-                  </div>
-                  <div class="part objective" id="obj_si-1.a.2.2.">
-                     <h3><span class="run-in subst">SI-1(a)(2)[2]</span> [objective] 
-                     </h3>
-                     <p class="p">defines personnel or roles to whom the procedures are to be disseminated;</p>
-                  </div>
-                  <div class="part objective" id="obj_si-1.a.2.3.">
-                     <h3><span class="run-in subst">SI-1(a)(2)[3]</span> [objective] 
-                     </h3>
-                     <p class="p">disseminates the procedures to organization-defined personnel or roles;</p>
-                  </div>
-               </div>
-               <div class="part objective" id="obj_si-1.b.1.">
-                  <h3><span class="run-in subst">SI-1(b)(1)</span> [objective] 
-                  </h3>
-                  <div class="part objective" id="obj_si-1.b.1.1.">
-                     <h3><span class="run-in subst">SI-1(b)(1)[1]</span> [objective] 
-                     </h3>
-                     <p class="p">defines the frequency to review and update the current system and information integrity
-                        policy;
-                     </p>
-                  </div>
-                  <div class="part objective" id="obj_si-1.b.1.2.">
-                     <h3><span class="run-in subst">SI-1(b)(1)[2]</span> [objective] 
-                     </h3>
-                     <p class="p">reviews and updates the current system and information integrity policy with the organization-defined
-                        frequency;
-                     </p>
-                  </div>
-               </div>
-               <div class="part objective" id="obj_si-1.b.2.">
-                  <h3><span class="run-in subst">SI-1(b)(2)</span> [objective] 
-                  </h3>
-                  <div class="part objective" id="obj_si-1.b.2.1.">
-                     <h3><span class="run-in subst">SI-1(b)(2)[1]</span> [objective] 
-                     </h3>
-                     <p class="p">defines the frequency to review and update the current system and information integrity
-                        procedures; and
-                     </p>
-                  </div>
-                  <div class="part objective" id="obj_si-1.b.2.2.">
-                     <h3><span class="run-in subst">SI-1(b)(2)[2]</span> [objective] 
-                     </h3>
-                     <p class="p">reviews and updates the current system and information integrity procedures with the
-                        organization-defined frequency.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="part assessment">
-               <h3>[assessment] </h3>
-               <p class="prop method"><span class="subst">method: </span>EXAMINE
-               </p>
-               <p class="p">System and information integrity policy and procedures</p>
-               <p class="p">other relevant documents or records</p>
-            </div>
-            <div class="part assessment">
-               <h3>[assessment] </h3>
-               <p class="prop method"><span class="subst">method: </span>INTERVIEW
-               </p>
-               <p class="p">Organizational personnel with system and information integrity responsibilities</p>
-               <p class="p">organizational personnel with information security responsibilities</p>
-            </div>
-            <section class="references">
-               
-               <div class="ref">
-                  
-                  <p class="citation">NIST Special Publication 800-12</p>
-                  
-               </div>
-               
-               <div class="ref">
-                  
-                  <p class="citation">NIST Special Publication 800-100</p>
-                  
-               </div>
-               
-            </section>
+            <p class="broken link"><span class="subst">cf </span><a href="#pm.9">#pm.9</a></p>
+         </div>
+         <div class="part">
+            <h4>Objectives</h4>
+            <table>
+               <tbody>
+                  <tr>
+                     <td></td>
+                     <td>
+                        <p class="p">Determine if the organization:</p>
+                        <div class="part" id="obj_si-1.a.1.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(a)(1)</p>
+                                    </td>
+                                    <td>
+                                       <div class="part" id="obj_si-1.a.1.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[1]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">develops and documents a system and information integrity policy that addresses:</p>
+                                                      <div class="part" id="obj_si-1.a.1.1.a.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[a]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">purpose;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_si-1.a.1.1.b.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[b]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">scope;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_si-1.a.1.1.c.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[c]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">roles;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_si-1.a.1.1.d.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[d]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">responsibilities;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_si-1.a.1.1.e.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[e]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">management commitment;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_si-1.a.1.1.f.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[f]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">coordination among organizational entities;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_si-1.a.1.1.g.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[g]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">compliance;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_si-1.a.1.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[2]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">defines personnel or roles to whom the system and information integrity policy is
+                                                         to be disseminated;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_si-1.a.1.3.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[3]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">disseminates the system and information integrity policy to organization-defined personnel
+                                                         or roles;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="obj_si-1.a.2.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(a)(2)</p>
+                                    </td>
+                                    <td>
+                                       <div class="part" id="obj_si-1.a.2.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[1]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">develops and documents procedures to facilitate the implementation of the system and
+                                                         information integrity policy and associated  system and information integrity controls;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_si-1.a.2.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[2]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">defines personnel or roles to whom the procedures are to be disseminated;</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_si-1.a.2.3.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[3]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">disseminates the procedures to organization-defined personnel or roles;</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="obj_si-1.b.1.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(b)(1)</p>
+                                    </td>
+                                    <td>
+                                       <div class="part" id="obj_si-1.b.1.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[1]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">defines the frequency to review and update the current system and information integrity
+                                                         policy;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_si-1.b.1.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[2]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">reviews and updates the current system and information integrity policy with the organization-defined
+                                                         frequency;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="obj_si-1.b.2.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(b)(2)</p>
+                                    </td>
+                                    <td>
+                                       <div class="part" id="obj_si-1.b.2.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[1]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">defines the frequency to review and update the current system and information integrity
+                                                         procedures; and
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_si-1.b.2.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[2]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">reviews and updates the current system and information integrity procedures with the
+                                                         organization-defined frequency.
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="part assessment">
+            <h4>Assessment: EXAMINE</h4>
+            <p class="object"><input type="checkbox" class="box">System and information integrity policy and procedures
+            </p>
+            <p class="object"><input type="checkbox" class="box">other relevant documents or records
+            </p>
+         </div>
+         <div class="part assessment">
+            <h4>Assessment: INTERVIEW</h4>
+            <p class="object"><input type="checkbox" class="box">Organizational personnel with system and information integrity responsibilities
+            </p>
+            <p class="object"><input type="checkbox" class="box">organizational personnel with information security responsibilities
+            </p>
          </div>
       </section>
-      <section class="group">
+      <section class="group" id="">
          <h2 class="title">PROGRAM MANAGEMENT</h2>
-         <div class="component SP800-53 control" id="pm.1">
-            <h3><span class="run-in subst">PM-1</span> [SP800-53 control] INFORMATION SECURITY PROGRAM PLAN
-            </h3>
-            <h2 class="title">INFORMATION SECURITY PROGRAM PLAN</h2>
-            <p class="param"><span class="subst">pm-1_a: </span>
-               organization-defined frequency
-               organization-defined frequency
-               
+         <h2 class="title">INFORMATION SECURITY PROGRAM PLAN</h2>
+         <div class="param" id="pm-1_a">
+            
+            <p class="desc"><span class="subst">Parameter:</span> <span class="param-id">pm-1_a</span> organization-defined frequency
             </p>
-            <div class="part statement">
-               <h3>[statement] </h3>
-               <p class="p">The organization:</p>
-               <div class="part item" id="smm_pm-1a.">
-                  <h3><span class="run-in subst">PM-1a.</span> [item] 
-                  </h3>
-                  <p class="p">Develops and disseminates an organization-wide information security program plan that:</p>
-                  <div class="part item" id="sms_pm-1a.1.">
-                     <h3><span class="run-in subst">PM-1a.1.</span> [item] 
-                     </h3>
-                     <p class="p">Provides an overview of the requirements for the security program and a description
-                        of the security program management controls and common controls in place or planned
-                        for meeting those requirements;
-                     </p>
-                  </div>
-                  <div class="part item" id="sms_pm-1a.2.">
-                     <h3><span class="run-in subst">PM-1a.2.</span> [item] 
-                     </h3>
-                     <p class="p">Includes the identification and assignment of roles, responsibilities, management
-                        commitment, coordination among organizational entities, and compliance;
-                     </p>
-                  </div>
-                  <div class="part item" id="sms_pm-1a.3.">
-                     <h3><span class="run-in subst">PM-1a.3.</span> [item] 
-                     </h3>
-                     <p class="p">Reflects coordination among organizational entities responsible for the different
-                        aspects of information security (i.e., technical, physical, personnel, cyber-physical);
-                        and
-                     </p>
-                  </div>
-                  <div class="part item" id="sms_pm-1a.4.">
-                     <h3><span class="run-in subst">PM-1a.4.</span> [item] 
-                     </h3>
-                     <p class="p">Is approved by a senior official with responsibility and accountability for the risk
-                        being incurred to organizational operations (including mission, functions, image,
-                        and reputation), organizational assets, individuals, other organizations, and the
-                        Nation;
-                     </p>
-                  </div>
-               </div>
-               <div class="part item" id="smm_pm-1b.">
-                  <h3><span class="run-in subst">PM-1b.</span> [item] 
-                  </h3>
-                  <p class="p">Reviews the organization-wide information security program plan <span class="insert"><span class="subst">
-                           organization-defined frequency
-                           organization-defined frequency
-                           </span></span>;
-                  </p>
-               </div>
-               <div class="part item" id="smm_pm-1c.">
-                  <h3><span class="run-in subst">PM-1c.</span> [item] 
-                  </h3>
-                  <p class="p">Updates the plan to address organizational changes and problems identified during
-                     plan implementation or security control assessments; and
-                  </p>
-               </div>
-               <div class="part item" id="smm_pm-1d.">
-                  <h3><span class="run-in subst">PM-1d.</span> [item] 
-                  </h3>
-                  <p class="p">Protects the information security program plan from unauthorized disclosure and modification.</p>
-               </div>
-            </div>
-            <div class="part guidance">
-               <h3>[guidance] </h3>
-               <p class="p">Information security program plans can be represented in single documents or compilations
-                  of documents at the discretion of organizations. The plans document the program management
-                  controls and organization-defined common controls. Information security program plans
-                  provide sufficient information about the program management controls/common controls
-                  (including specification of parameters for any assignment and selection statements
-                  either explicitly or by reference) to enable implementations that are unambiguously
-                  compliant with the intent of the plans and a determination of the risk to be incurred
-                  if the plans are implemented as intended.
-                  The security plans for individual information systems and the organization-wide information
-                  security program plan together, provide complete coverage for all security controls
-                  employed within the organization. Common controls are documented in an appendix to
-                  the organization�s information security program plan unless the controls are included
-                  in a separate security plan for an information system (e.g., security controls employed
-                  as part of an intrusion detection system providing organization-wide boundary protection
-                  inherited by one or more organizational information systems). The organization-wide
-                  information security program plan will indicate which separate security plans contain
-                  descriptions of common controls.
-                  Organizations have the flexibility to describe common controls in a single document
-                  or in multiple documents. In the case of multiple documents, the documents describing
-                  common controls are included as attachments to the information security program plan.
-                  If the information security program plan contains multiple documents, the organization
-                  specifies in each document the organizational official or officials responsible for
-                  the development, implementation, assessment, authorization, and monitoring of the
-                  respective common controls. For example, the organization may require that the Facilities
-                  Management Office develop, implement, assess, authorize, and continuously monitor
-                  common physical and environmental protection controls from the PE family when such
-                  controls are not associated with a particular information system but instead, support
-                  multiple information systems.
-               </p>
-            </div>
-            <div class="part objective">
-               <h3>[objective] </h3>
-               <p class="p">Determine if the organization:  </p>
-               <div class="part objective" id="obj_pm-1.a.">
-                  <h3><span class="run-in subst">PM-1(a)</span> [objective] 
-                  </h3>
-                  <p class="p">develops and disseminates an organization-wide information security program plan that:</p>
-                  <div class="part objective" id="obj_pm-1.a.1.">
-                     <h3><span class="run-in subst">PM-1(a)(1)</span> [objective] 
-                     </h3>
-                     <div class="part objective" id="obj_pm-1.a.1.1.">
-                        <h3><span class="run-in subst">PM-1(a)(1)[1]</span> [objective] 
-                        </h3>
-                        <p class="p">provides an overview of the requirements for the security program;</p>
-                     </div>
-                     <div class="part objective" id="obj_pm-1.a.1.2.">
-                        <h3><span class="run-in subst">PM-1(a)(1)[2]</span> [objective] 
-                        </h3>
-                        <p class="p">provides a description of the:</p>
-                        <div class="part objective" id="obj_pm-1.a.1.2.a.">
-                           <h3><span class="run-in subst">PM-1(a)(1)[2][a]</span> [objective] 
-                           </h3>
-                           <p class="p">security program management controls in place or planned for meeting those requirements;</p>
+            
+            <p class="value"><span class="subst">Value:</span> organization-defined frequency
+            </p>
+            
+         </div>
+         <p class="prop name"><span class="subst">name: </span>PM-1
+         </p>
+         <div class="part">
+            <h4>Control</h4>
+            <table>
+               <tbody>
+                  <tr>
+                     <td></td>
+                     <td>
+                        <p class="p">The organization:</p>
+                        <div class="part" id="smm_pm-1a.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">a.</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">Develops and disseminates an organization-wide information security program plan that:</p>
+                                       <div class="part" id="sms_pm-1a.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">1.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">Provides an overview of the requirements for the security program and a description
+                                                         of the security program management controls and common controls in place or planned
+                                                         for meeting those requirements;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="sms_pm-1a.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">2.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">Includes the identification and assignment of roles, responsibilities, management
+                                                         commitment, coordination among organizational entities, and compliance;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="sms_pm-1a.3.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">3.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">Reflects coordination among organizational entities responsible for the different
+                                                         aspects of information security (i.e., technical, physical, personnel, cyber-physical);
+                                                         and
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="sms_pm-1a.4.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">4.</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">Is approved by a senior official with responsibility and accountability for the risk
+                                                         being incurred to organizational operations (including mission, functions, image,
+                                                         and reputation), organizational assets, individuals, other organizations, and the
+                                                         Nation;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
                         </div>
-                        <div class="part objective" id="obj_pm-1.a.1.2.b.">
-                           <h3><span class="run-in subst">PM-1(a)(1)[2][b]</span> [objective] 
-                           </h3>
-                           <p class="p">common controls in place or planned for meeting those requirements;</p>
+                        <div class="part" id="smm_pm-1b.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">b.</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">Reviews the organization-wide information security program plan <span class="insert"><a href="#pm-1_a"><span class="param-id">pm-1_a</span> </a>
+                                             <span class="desc">organization-defined frequency</span>
+                                             <span class="value">organization-defined frequency</span>
+                                             </span>;
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
                         </div>
-                     </div>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.a.2.">
-                     <h3><span class="run-in subst">PM-1(a)(2)</span> [objective] 
-                     </h3>
-                     <p class="p">includes the identification and assignment of:</p>
-                     <div class="part objective" id="obj_pm-1.a.2.1.">
-                        <h3><span class="run-in subst">PM-1(a)(2)[1]</span> [objective] 
-                        </h3>
-                        <p class="p">roles;</p>
-                     </div>
-                     <div class="part objective" id="obj_pm-1.a.2.2.">
-                        <h3><span class="run-in subst">PM-1(a)(2)[2]</span> [objective] 
-                        </h3>
-                        <p class="p">responsibilities;</p>
-                     </div>
-                     <div class="part objective" id="obj_pm-1.a.2.3.">
-                        <h3><span class="run-in subst">PM-1(a)(2)[3]</span> [objective] 
-                        </h3>
-                        <p class="p">management commitment;</p>
-                     </div>
-                     <div class="part objective" id="obj_pm-1.a.2.4.">
-                        <h3><span class="run-in subst">PM-1(a)(2)[4]</span> [objective] 
-                        </h3>
-                        <p class="p">coordination among organizational entities;</p>
-                     </div>
-                     <div class="part objective" id="obj_pm-1.a.2.5.">
-                        <h3><span class="run-in subst">PM-1(a)(2)[5]</span> [objective] 
-                        </h3>
-                        <p class="p">compliance;</p>
-                     </div>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.a.3.">
-                     <h3><span class="run-in subst">PM-1(a)(3)</span> [objective] 
-                     </h3>
-                     <p class="p">reflects coordination among organizational entities responsible for the different
-                        aspects of information security (i.e., technical, physical, personnel, cyber-physical);
-                     </p>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.a.4.">
-                     <h3><span class="run-in subst">PM-1(a)(4)</span> [objective] 
-                     </h3>
-                     <p class="p">is approved by a senior official with responsibility and accountability for the risk
-                        being incurred to organizational operations, organizational assets, individuals, other
-                        organizations, and the Nation;
-                     </p>
-                  </div>
-               </div>
-               <div class="part objective" id="obj_pm-1.b.">
-                  <h3><span class="run-in subst">PM-1(b)</span> [objective] 
-                  </h3>
-                  <div class="part objective" id="obj_pm-1.b.1.">
-                     <h3><span class="run-in subst">PM-1(b)[1]</span> [objective] 
-                     </h3>
-                     <p class="p">defines the frequency to review the security program plan for the information system;</p>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.b.2.">
-                     <h3><span class="run-in subst">PM-1(b)[2]</span> [objective] 
-                     </h3>
-                     <p class="p">reviews the organization-wide information security program plan with the organization-defined
-                        frequency;
-                     </p>
-                  </div>
-               </div>
-               <div class="part objective" id="obj_pm-1.c.">
-                  <h3><span class="run-in subst">PM-1(c)</span> [objective] 
-                  </h3>
-                  <p class="p">updates the plan to address organizational:</p>
-                  <div class="part objective" id="obj_pm-1.c.1.">
-                     <h3><span class="run-in subst">PM-1(c)[1]</span> [objective] 
-                     </h3>
-                     <p class="p">changes identified during plan implementation;</p>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.c.2.">
-                     <h3><span class="run-in subst">PM-1(c)[2]</span> [objective] 
-                     </h3>
-                     <p class="p">changes identified during security control assessments;</p>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.c.3.">
-                     <h3><span class="run-in subst">PM-1(c)[3]</span> [objective] 
-                     </h3>
-                     <p class="p">problems identified during plan implementation;</p>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.c.4.">
-                     <h3><span class="run-in subst">PM-1(c)[4]</span> [objective] 
-                     </h3>
-                     <p class="p">problems identified during security control assessments;</p>
-                  </div>
-               </div>
-               <div class="part objective" id="obj_pm-1.d.">
-                  <h3><span class="run-in subst">PM-1(d)</span> [objective] 
-                  </h3>
-                  <p class="p">protects the information security program plan from unauthorized:</p>
-                  <div class="part objective" id="obj_pm-1.d.1.">
-                     <h3><span class="run-in subst">PM-1(d)[1]</span> [objective] 
-                     </h3>
-                     <p class="p">disclosure; and</p>
-                  </div>
-                  <div class="part objective" id="obj_pm-1.d.2.">
-                     <h3><span class="run-in subst">PM-1(d)[2]</span> [objective] 
-                     </h3>
-                     <p class="p">modification.</p>
-                  </div>
-               </div>
-            </div>
-            <div class="part assessment">
-               <h3>[assessment] </h3>
-               <p class="prop method"><span class="subst">method: </span>EXAMINE
-               </p>
-               <p class="p">Information security program plan</p>
-               <p class="p">procedures addressing program plan development and implementation</p>
-               <p class="p">procedures addressing program plan reviews and updates</p>
-               <p class="p">procedures addressing coordination of the program plan with relevant entities</p>
-               <p class="p">procedures for program plan approvals</p>
-               <p class="p">records of program plan reviews and updates</p>
-               <p class="p">other relevant documents or records</p>
-            </div>
-            <div class="part assessment">
-               <h3>[assessment] </h3>
-               <p class="prop method"><span class="subst">method: </span>INTERVIEW
-               </p>
-               <p class="p">Organizational personnel with information security program planning and plan implementation
-                  responsibilities
-               </p>
-               <p class="p">organizational personnel with information security responsibilities</p>
-            </div>
-            <div class="part assessment">
-               <h3>[assessment] </h3>
-               <p class="prop method"><span class="subst">method: </span>TEST
-               </p>
-               <p class="p">Organizational processes for information security program plan development/review/update/approval</p>
-               <p class="p">automated mechanisms supporting and/or implementing the information security program
-                  plan
-               </p>
-            </div>
+                        <div class="part" id="smm_pm-1c.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">c.</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">Updates the plan to address organizational changes and problems identified during
+                                          plan implementation or security control assessments; and
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="smm_pm-1d.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">d.</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">Protects the information security program plan from unauthorized disclosure and modification.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="part guidance">
+            <h4>Supplemental guidance</h4>
+            <p class="p">Information security program plans can be represented in single documents or compilations
+               of documents at the discretion of organizations. The plans document the program management
+               controls and organization-defined common controls. Information security program plans
+               provide sufficient information about the program management controls/common controls
+               (including specification of parameters for any assignment and selection statements
+               either explicitly or by reference) to enable implementations that are unambiguously
+               compliant with the intent of the plans and a determination of the risk to be incurred
+               if the plans are implemented as intended.
+               The security plans for individual information systems and the organization-wide information
+               security program plan together, provide complete coverage for all security controls
+               employed within the organization. Common controls are documented in an appendix to
+               the organization�s information security program plan unless the controls are included
+               in a separate security plan for an information system (e.g., security controls employed
+               as part of an intrusion detection system providing organization-wide boundary protection
+               inherited by one or more organizational information systems). The organization-wide
+               information security program plan will indicate which separate security plans contain
+               descriptions of common controls.
+               Organizations have the flexibility to describe common controls in a single document
+               or in multiple documents. In the case of multiple documents, the documents describing
+               common controls are included as attachments to the information security program plan.
+               If the information security program plan contains multiple documents, the organization
+               specifies in each document the organizational official or officials responsible for
+               the development, implementation, assessment, authorization, and monitoring of the
+               respective common controls. For example, the organization may require that the Facilities
+               Management Office develop, implement, assess, authorize, and continuously monitor
+               common physical and environmental protection controls from the PE family when such
+               controls are not associated with a particular information system but instead, support
+               multiple information systems.
+            </p>
+            <p class="broken link"><span class="subst">cf </span><a href="#pm.8">#pm.8</a></p>
+         </div>
+         <div class="part">
+            <h4>Objectives</h4>
+            <table>
+               <tbody>
+                  <tr>
+                     <td></td>
+                     <td>
+                        <p class="p">Determine if the organization:  </p>
+                        <div class="part" id="obj_pm-1.a.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(a)</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">develops and disseminates an organization-wide information security program plan that:</p>
+                                       <div class="part" id="obj_pm-1.a.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">(1)</p>
+                                                   </td>
+                                                   <td>
+                                                      <div class="part" id="obj_pm-1.a.1.1.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[1]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">provides an overview of the requirements for the security program;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_pm-1.a.1.2.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[2]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">provides a description of the:</p>
+                                                                     <div class="part" id="obj_pm-1.a.1.2.a.">
+                                                                        <table>
+                                                                           <tbody>
+                                                                              <tr>
+                                                                                 <td>
+                                                                                    <p class="part-number">[a]</p>
+                                                                                 </td>
+                                                                                 <td>
+                                                                                    <p class="p">security program management controls in place or planned for meeting those requirements;</p>
+                                                                                 </td>
+                                                                              </tr>
+                                                                           </tbody>
+                                                                        </table>
+                                                                     </div>
+                                                                     <div class="part" id="obj_pm-1.a.1.2.b.">
+                                                                        <table>
+                                                                           <tbody>
+                                                                              <tr>
+                                                                                 <td>
+                                                                                    <p class="part-number">[b]</p>
+                                                                                 </td>
+                                                                                 <td>
+                                                                                    <p class="p">common controls in place or planned for meeting those requirements;</p>
+                                                                                 </td>
+                                                                              </tr>
+                                                                           </tbody>
+                                                                        </table>
+                                                                     </div>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.a.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">(2)</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">includes the identification and assignment of:</p>
+                                                      <div class="part" id="obj_pm-1.a.2.1.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[1]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">roles;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_pm-1.a.2.2.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[2]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">responsibilities;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_pm-1.a.2.3.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[3]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">management commitment;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_pm-1.a.2.4.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[4]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">coordination among organizational entities;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                      <div class="part" id="obj_pm-1.a.2.5.">
+                                                         <table>
+                                                            <tbody>
+                                                               <tr>
+                                                                  <td>
+                                                                     <p class="part-number">[5]</p>
+                                                                  </td>
+                                                                  <td>
+                                                                     <p class="p">compliance;</p>
+                                                                  </td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.a.3.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">(3)</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">reflects coordination among organizational entities responsible for the different
+                                                         aspects of information security (i.e., technical, physical, personnel, cyber-physical);
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.a.4.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">(4)</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">is approved by a senior official with responsibility and accountability for the risk
+                                                         being incurred to organizational operations, organizational assets, individuals, other
+                                                         organizations, and the Nation;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="obj_pm-1.b.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(b)</p>
+                                    </td>
+                                    <td>
+                                       <div class="part" id="obj_pm-1.b.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[1]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">defines the frequency to review the security program plan for the information system;</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.b.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[2]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">reviews the organization-wide information security program plan with the organization-defined
+                                                         frequency;
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="obj_pm-1.c.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(c)</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">updates the plan to address organizational:</p>
+                                       <div class="part" id="obj_pm-1.c.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[1]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">changes identified during plan implementation;</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.c.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[2]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">changes identified during security control assessments;</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.c.3.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[3]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">problems identified during plan implementation;</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.c.4.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[4]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">problems identified during security control assessments;</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <div class="part" id="obj_pm-1.d.">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <p class="part-number">(d)</p>
+                                    </td>
+                                    <td>
+                                       <p class="p">protects the information security program plan from unauthorized:</p>
+                                       <div class="part" id="obj_pm-1.d.1.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[1]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">disclosure; and</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="part" id="obj_pm-1.d.2.">
+                                          <table>
+                                             <tbody>
+                                                <tr>
+                                                   <td>
+                                                      <p class="part-number">[2]</p>
+                                                   </td>
+                                                   <td>
+                                                      <p class="p">modification.</p>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <div class="part assessment">
+            <h4>Assessment: EXAMINE</h4>
+            <p class="object"><input type="checkbox" class="box">Information security program plan
+            </p>
+            <p class="object"><input type="checkbox" class="box">procedures addressing program plan development and implementation
+            </p>
+            <p class="object"><input type="checkbox" class="box">procedures addressing program plan reviews and updates
+            </p>
+            <p class="object"><input type="checkbox" class="box">procedures addressing coordination of the program plan with relevant entities
+            </p>
+            <p class="object"><input type="checkbox" class="box">procedures for program plan approvals
+            </p>
+            <p class="object"><input type="checkbox" class="box">records of program plan reviews and updates
+            </p>
+            <p class="object"><input type="checkbox" class="box">other relevant documents or records
+            </p>
+         </div>
+         <div class="part assessment">
+            <h4>Assessment: INTERVIEW</h4>
+            <p class="object"><input type="checkbox" class="box">Organizational personnel with information security program planning and plan implementation
+               responsibilities
+            </p>
+            <p class="object"><input type="checkbox" class="box">organizational personnel with information security responsibilities
+            </p>
+         </div>
+         <div class="part assessment">
+            <h4>Assessment: TEST</h4>
+            <p class="object"><input type="checkbox" class="box">Organizational processes for information security program plan development/review/update/approval
+            </p>
+            <p class="object"><input type="checkbox" class="box">automated mechanisms supporting and/or implementing the information security program
+               plan
+            </p>
          </div>
       </section>
    </body>

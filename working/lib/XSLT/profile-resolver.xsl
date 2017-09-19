@@ -32,7 +32,6 @@
     <xsl:copy>
       <!-- So we copy ourselves as well in case a subsequent transformation wants to see -->
       <xsl:copy-of select="@*"/>
-      <xsl:apply-templates select="invoke" mode="report-invocation"/>
       <!-- Now we execute the traversal on the catalogs invoked -->
       <xsl:apply-templates select="invoke" mode="select-controls"/>
     </xsl:copy>
@@ -48,19 +47,32 @@
     <xsl:copy>
       <xsl:copy-of select="@href"/>
       <xsl:comment expand-text="true"> invoking a { $authority/*/local-name() }</xsl:comment>
-      <xsl:apply-templates select="$authority/profile/invoke" mode="report-invocation"/>
+      
       <xsl:copy-of select="*"/>
     </xsl:copy>
   </xsl:template>
   
   <xsl:template match="invoke" mode="select-controls">
+    <xsl:param name="authorities-so-far" tunnel="yes" select="document-uri(/)" as="xs:anyURI+"/>
     <xsl:variable name="invocation" select="."/>
     <!-- $authority will be a catalog, framework or profile. -->
     <xsl:variable name="authority" select="document(@href,root(.))"/>
+    <xsl:variable name="authorityURI" select="document-uri($authority)"/>
     
-    <xsl:apply-templates select="$authority/*" mode="filter-controls">
-      <xsl:with-param name="invocation" tunnel="yes" select="$invocation"/>
-    </xsl:apply-templates>
+    <xsl:choose>
+      
+      <xsl:when test="$authorityURI = $authorities-so-far" expand-text="true">
+        <ERROR>Can't resolve profile against {$authorityURI}, already invoked in this chain: {string-join($authorities-so-far,' / ')}</ERROR>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="report-invocation"/> 
+        <xsl:apply-templates select="$authority/*" mode="filter-controls">
+          <xsl:with-param name="invocation" tunnel="yes" select="$invocation"/>
+          <xsl:with-param name="authorities-so-far" tunnel="yes" as="xs:anyURI+"
+            select="$authorities-so-far, $authorityURI"/>
+        </xsl:apply-templates>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   
   <xsl:template match="profile" mode="filter-controls">

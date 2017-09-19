@@ -13,7 +13,9 @@
     <xsl:template match="framework">
         <profile>
             <invoke href="{document-uri($catalog)}">
-                <xsl:apply-templates select="//component" mode="write-call"/>
+                <include>
+                  <xsl:apply-templates select="//component" mode="write-call"/>
+                </include>
             </invoke>
         </profile>
     </xsl:template>
@@ -35,7 +37,7 @@
         <xsl:for-each select="p[@class = 'param_assigns'] | p[@class='remarks']">
           <xsl:comment><xsl:value-of select="."/></xsl:comment>
         </xsl:for-each>
-        <xsl:apply-templates select="$controlObj//param except $controlObj//component//param"
+        <xsl:apply-templates select="$controlObj//param except $controlObj//(subcontrol|component)//param"
             mode="params"/>
     </xsl:template>
     

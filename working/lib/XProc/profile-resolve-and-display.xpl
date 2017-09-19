@@ -20,8 +20,12 @@
   <p:output port="final" primary="true">
     <p:pipe port="result" step="final"/>
   </p:output>
+  <!--<p:output port="markdown" primary="false">
+    <p:pipe port="result" step="Markdown"/>
+  </p:output>-->
   
-  <p:serialization port="final"        indent="true" method="html" version="5.0"/>
+  <p:serialization port="final"        indent="true"  method="html" version="5.0"/>
+  <!--<p:serialization port="markdown"     indent="false" method="text"/>-->
   
   <p:serialization port="_0_input"     indent="true"/>
   <p:serialization port="_A_resolved"  indent="true"/>
@@ -29,28 +33,45 @@
   
   <p:identity name="input"/>
   
+  <!-- Expands the profile into a nominal framework -->
+  <!--<p:identity name="resolved"/>-->
   <p:xslt name="resolved">
     <p:input port="stylesheet">
       <p:document href="../XSLT/profile-resolver.xsl"/>
     </p:input>
   </p:xslt>
-  <!-- Delivers a 'collection' rendering of the catalog(s) -->
   
-  
- <p:xslt name="rendered">
+  <!-- Making HTML out of it -->
+  <p:xslt name="rendered">
     <p:input port="stylesheet">
-      <p:document href="../XSLT/HTML/oscal-basic-display.xsl"/>
+      <!--<p:document href="../XSLT/HTML/oscal-basic-display.xsl"/>-->
+      <p:document href="../XSLT/HTML/oscal-browser-display.xsl"/>
     </p:input>
   </p:xslt>
   
+  <!-- Last chance for comments, PIs etc. -->
   <p:xslt name="final">
-    <p:with-param name="xslt-process" select="'OSCAL PROFILE RESOLUTION AND RENDERING '"/>
+    <p:with-param name="xslt-process" select="' OSCAL PROFILE RESOLUTION AND RENDERING '"/>
     <p:input port="stylesheet">
       <p:document href="../XSLT/HTML/html-finalize.xsl"/>
     </p:input>
     <!--<p:input port="parameters" kind="parameter"/>-->
       
   </p:xslt>
+  
+  <!--<p:sink/>
+  
+  <p:xslt name="Markdown">
+    <p:input port="source">
+      <p:pipe port="result" step="rendered"/>
+    </p:input>
+    <p:input port="stylesheet">
+      <p:document href="../XSLT/html-to-markdown.xsl"/>
+    </p:input>
+    <!-\-<p:input port="parameters" kind="parameter"/>-\->
+    
+  </p:xslt>-->
+  
   
  
 </p:declare-step>
