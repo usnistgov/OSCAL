@@ -9,8 +9,6 @@
     
 <xsl:strip-space _elements="*"/>
  
-    <xsl:key name="category-by-function" match="record[exists(Category)][empty(Subcategory)]"  use="substring-before(Category,'.')"/>
-    <xsl:key name="control-by-family" match="record[exists(Category)][exists(Subcategory)]" use="string(Category)"/>
     
     <xsl:variable name="class-regex" as="xs:string">(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PS|RA|SA|SC|SI)</xsl:variable>
     <xsl:variable name="controlorenhancement-regex" as="xs:string" expand-text="true">^{$class-regex}</xsl:variable>

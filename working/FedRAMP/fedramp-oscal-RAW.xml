@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-   <title>FedRAMP as OSCAL framework [DRAFT]</title>
    <group>
       <title>Access Control</title>
       <prop class="group-id">AC</prop>

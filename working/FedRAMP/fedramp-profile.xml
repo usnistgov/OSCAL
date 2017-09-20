@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <invoke href="file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml">
       <include>

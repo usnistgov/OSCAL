@@ -11,6 +11,9 @@
     <xsl:output indent="yes"/>
     
     <xsl:template match="framework">
+        <xsl:processing-instruction name="xml-model">href="../lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
+        <xsl:processing-instruction name="xml-model">href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+        
         <profile>
             <invoke href="{document-uri($catalog)}">
                 <include>
