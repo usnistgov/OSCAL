@@ -1,6 +1,8 @@
       
       .control, .component { margin:1em; padding: 1em; border: thin solid black }
       .subcontrol, .component .component { margin-top: 0.5em; padding: 1em; border: thin dotted black }
+
+.group, .category { margin-top: 0.5em; padding: 1em; border: thin dotted black }
       
       .control > *:first-child,
       .subcontrol > *:first-child,
@@ -56,8 +58,8 @@
 
 .hidden, p.link.hidden { display: none }
 
-#main { width: 80% }
-#directory { margin-left: 80%; font-size: 90%; margin-top: 1em; float: right;
+#main { width: 72% }
+#directory { margin-left: 75%; font-size: 90%; margin-top: 1em; float: right;
 position: fixed; padding: 0.5em; background-color: lightsteelblue; height: 80%;
 overflow: auto
 

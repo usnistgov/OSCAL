@@ -57,7 +57,7 @@ references:before { content: "References"; font-size: 120%; font-family: sans-se
 
 ref { border-left: thick solid silver; padding-left: 0.5em; margin-top: 0.5ex }
 
-control, subcontrol, part, item, component { padding: 0.5em; margin: 0.5em; border: medium double black;
+control, subcontrol, part, component { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 subcontrol { border: thin solid  black }
@@ -70,11 +70,9 @@ category:before { content: attr(class) " (category)"; font-weight: bold; font-fa
 
 control:before { content: attr(class) " (control)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-item:before { content: attr(class) " (item)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
-
 component:before { content: attr(class) " (component)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-control > title, item > title, component > title { font-size: 110% }
+control > title, component > title { font-size: 110% }
 
 
 subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; font-size:80%; font-family: sans-serif }

@@ -21,7 +21,7 @@ category = element group { idAttr, optionalClass,
 
 item = element component {
     idAttr, optionalClass, title?, param*,
-    (prop | link | prose)*, item*
+    (prop | link | prose | part)*, item*
   }
 
 # an overlay - a framework whose structure matches the catalog?

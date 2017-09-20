@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="oscal-docs-html.xsl"?>
-<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Straight" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css" title="Straight" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<?xml-model href="../../working/lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../working/lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>OSCAL: The Open Security Controls Assessment Language</title>
   <declarations>
     <declare-prop context="element-description" class="tag">
@@ -75,14 +75,14 @@
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
       components, including both formal components (described here) and relatively uncontrolled or
       free-form contents (described elsewhere as <a href="oscal-oscal.xml#prose">prose</a>).</p>
-    <control class="element-description">
+    <component class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
       <part class="description">
         <p>Top-level element for a (canonical) control catalog</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">collection</prop>
       <prop class="full_name">Collection</prop>
       <part class="description">
@@ -95,8 +95,8 @@
           and OSCAL does not prohibit their use as (source or interim) catalogs for profiling, 
           although an individual application might.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">control</prop>
       <prop class="full_name">Control</prop>
       <part class="description">
@@ -106,8 +106,8 @@
         <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
           either (formally) <code>subcontrol</code> or (informally) <code>part</code>.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control extension</prop>
       <part class="description">
@@ -120,8 +120,8 @@
           their own parts; however, knowing in advance which <q>controls</q> and <q>subcontrols</q>
           are especially significant is helpful.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">prop</prop>
       <prop class="full_name">Property</prop>
       <part class="description">
@@ -149,15 +149,15 @@
           be used to sort, select, order, and arrange controls or relate them to one another or to
           class hierarchies, taxonomies, or external authorities.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">param</prop>
       <prop class="full_name">Parameter</prop>
       <part class="description">
         <p>A parameter setting, to be propagated to points of insertion</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">part</prop>
       <prop class="full_name">Part</prop>
       <part class="description">
@@ -176,8 +176,8 @@
           accommodate data like this, consider using a property (e.g.,
             <code>prop[@class='part-title']</code> as an escape hatch.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">link</prop>
       <prop class="full_name">Link</prop>
       <part class="description">
@@ -188,21 +188,21 @@
           element.</p>
       </part>
       
-    </control>
+    </component>
   </group>
   <group>
     <title>Functional elements</title>
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
       semantic traversal.</p>
-    <control class="element-description">
+    <component class="element-description">
       <prop class="tag">insert</prop>
       <prop class="full_name">Parameter insertion</prop>
       <part class="description">
         <p>A <q>call</q> (reference) to a parameter for dynamic content transclusion</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">withdrawn</prop>
       <prop class="full_name">Withdrawn</prop>
       <part class="description">
@@ -216,7 +216,7 @@
           other controlled value, at which point it may be removed; it is included to support (some)
           legacy content.</p>
       </part>
-    </control>
+    </component>
     <!--<control class="element-description"><prop class="tag">select</prop><prop class="full_name">Selection</prop><part class="description"><p>A selection requiring designation via parameter (tbd)</p></part></control>-->
     <!--<control class="element-description"><prop class="tag">choice</prop><prop class="full_name">Choice</prop><part class="description"><p>A choice of values, to be designated via parameter (tbd)</p></part></control>-->
   </group>
@@ -238,7 +238,7 @@
       tagging used to control it, i.e. a tag interface) but does not enforce any of the constraints
       so declared. Developers should take note that these constraints are all readily testable in
       XPath.</p>
-    <control class="element-description">
+    <component class="element-description">
       <prop class="tag">declarations</prop>
       <prop class="full_name">Declarations</prop>
       <part class="description">
@@ -255,8 +255,8 @@
           parts, specific to the types or kinds of control items that appear within a particular
           catalog or control collection.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">declare-prop</prop>
       <prop class="full_name">Property declaration</prop>
       <part class="description">
@@ -288,8 +288,8 @@
           helpful application will detect where there are conflicting declarations, meaning the same
           class designator is claimed by different elements in a given context.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">declare-p</prop>
       <prop class="full_name">Paragraph declaration</prop>
       <part class="description">
@@ -309,8 +309,8 @@
           they are required to be stable per control object).</p>
       </part>
       
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">declare-part</prop>
       <prop class="full_name">Part declaration</prop>
       <part class="description">
@@ -321,15 +321,15 @@
           values. However, note that parts may also serve as contexts for other control objects,
           including properties and parts.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">declare-link</prop>
       <prop class="full_name">Link declaration</prop>
       <part class="description">
         <p>Indicates constraints to be imposed on links in context</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">singleton</prop>
       <prop class="full_name">Singleton constraint</prop>
       <part class="description">
@@ -345,8 +345,8 @@
           to the fact that it is an <q>only child</q>, unique among its siblings for having its
           class assignment.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">required</prop>
       <prop class="full_name">Requirement constraint</prop>
       <part class="description">
@@ -362,8 +362,8 @@
           and any of the required parts are missing, errors may be reported against the declarations
           model.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">identifier</prop>
       <prop class="full_name">Identifier constraint</prop>
       <part class="description">
@@ -382,8 +382,8 @@
             <q>George</q>
           <q>John</q> and <q>Ringo</q> not <q>George</q>, <q>George</q> and <q>George</q>.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">regex</prop>
       <prop class="full_name">Regular expression constraint</prop>
       <part class="description">
@@ -398,9 +398,9 @@
         <p>When more than one <code>regex</code> is given in a declaration, a match on any of them
           is taken to satisfy the requirement.</p>
       </part>
-    </control>
+    </component>
     <!--<control class="element-description"><prop class="tag">xdm-datatype</prop><prop class="full_name">XDM datatype lexical constraint</prop><part class="description"><p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter (<code>param</code>) must be castable to the given XDM datatype</p></part><part class="remarks"><p>TBD.</p><p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An even more general functionality would be an xpath-satisfies that would support arbitrary XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le 10.00</code></p></part></control>-->
-    <control class="element-description">
+    <component class="element-description">
       <prop class="tag">value</prop>
       <prop class="full_name">Value constraint</prop>
       <part class="description">
@@ -414,8 +414,8 @@
           value given at the point of insertion. When parameters are provided in OSCAL profiles,
           their values will override any values assigned <q>lower down the stack</q>.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">autonum</prop>
       <prop class="full_name">Autonumbered (generated) value</prop>
       <part class="description">
@@ -434,8 +434,8 @@
         <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
       
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">inherit</prop>
       <prop class="full_name">Inherited value</prop>
       <part class="description">
@@ -461,19 +461,19 @@
           ancestor's property with the same <code>@class</code> (the most usual case).</p>
         <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">desc</prop>
       <prop class="full_name">Parameter description</prop>
       <part class="description">
         <p>Indicates and explains the purpose and use of a parameter</p>
       </part>
-    </control>
+    </component>
     
   </group>
   <group>
     <title>Structural elements</title>
-    <control class="element-description">
+    <component class="element-description">
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
       <part class="description">
@@ -483,8 +483,8 @@
         <p>Echoes HTML5 <code>section</code>. May contain controls (<code>control</code>) or groups
           of controls (<code>group</code>).</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">group</prop>
       <prop class="full_name">Group</prop>
       <part class="description">
@@ -500,24 +500,24 @@
           (no <code>@class</code>) and therefore unconstrained by declarations.</p>
       </part>
       
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">title</prop>
       <prop class="full_name">Title</prop>
       <part class="description">
         <p>A fallback for display and navigation, exclusive of more specific properties</p>
       </part>
       
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">references</prop>
       <prop class="full_name">References</prop>
       <part class="description">
         <p>A group of reference descriptions</p>
       </part>
       
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">ref</prop>
       <prop class="full_name">Reference</prop>
       <part class="description">
@@ -525,8 +525,8 @@
           resources</p>
       </part>
       
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">std</prop>
       <prop class="full_name">Standard</prop>
       <part class="description">
@@ -535,8 +535,8 @@
       <part class="remarks">
         <p>Echoes the NISO JATS (and NISO STS) <code>std</code> element</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">citation</prop>
       <prop class="full_name">Citation</prop>
       <part class="description">
@@ -546,7 +546,7 @@
         <p>Echoes the NISO JATS (and NISO STS) <code>mixed-citation</code> element.</p>
         <p>For references to standards, <code>std</code> may be preferred.</p>
       </part>
-    </control>
+    </component>
   </group>
   <group id="prose">
     <title>Prose</title>
@@ -561,7 +561,7 @@
       as useful as imposing constraints over properties and parts. Frequently, a part organization
       will be used to assign prose to specific known <q>sections</q> or <q>components</q> of a
       control (modeled as <code>part</code> or <code>subcontrol</code>).</p>
-    <control class="element-description">
+    <component class="element-description">
       <prop class="tag">p</prop>
       <prop class="full_name">Paragraph</prop>
       <part class="description">
@@ -572,8 +572,8 @@
           complete or discrete (compositional or logical) paragraphs, but can be used for any text
           set off on its own line.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">pre</prop>
       <prop class="full_name">Preformatted text</prop>
       <part class="description">
@@ -582,8 +582,8 @@
       <part class="remarks">
         <p>Echoes HTML <code>pre</code>.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">ol</prop>
       <prop class="full_name">Ordered List</prop>
       <part class="description">
@@ -596,8 +596,8 @@
         <p>At present there is no support for <q>continued lists</q>, as we have not seen any in
           documents in scope for analysis.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">ul</prop>
       <prop class="full_name">Unordered list</prop>
       <part class="description">
@@ -615,15 +615,15 @@
             <code>@class</code> added to <code>ul</code> should be rendered as such in any
           application that wants it.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">li</prop>
       <prop class="full_name">List item</prop>
       <part class="description">
         <p>An item demarcated with a bullet or numerator</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">em</prop>
       <prop class="full_name">Emphasis</prop>
       <part class="description">
@@ -635,8 +635,8 @@
         <p>Particular semantics (indicating types of emphasis for finer resolution in display or
           retrieval) may be provided via <code>@class</code>.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">i</prop>
       <prop class="full_name">Italics</prop>
       <part class="description">
@@ -646,8 +646,8 @@
         <p>An implementation may toggle, i.e., display contents using a roman face when the
           surrounding text is already italic.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">b</prop>
       <prop class="full_name">Bold</prop>
       <part class="description">
@@ -661,8 +661,8 @@
         <p>). Even <code>b</code> and <code>i</code> should be regarded as escape hatches, and
           marked with classes when possible.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">a</prop>
       <prop class="full_name">Anchor</prop>
       <part class="description">
@@ -679,8 +679,8 @@
           a <q>paragraph-level</q> link (that appears next to paragraphs or components in a
           control).</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">q</prop>
       <prop class="full_name">Quoted text</prop>
       <part class="description">
@@ -690,8 +690,8 @@
         <p>For practical purposes, this is a cosmetic element with no special semantics other than
           to provide quotation marks in display.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">code</prop>
       <prop class="full_name">Code</prop>
       <part class="description">
@@ -701,22 +701,22 @@
         <p>Strictly, this element should identify formal code or code fragments. Like anything else,
           it may be <q>enhanced</q> using its class.</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">sup</prop>
       <prop class="full_name">Superscript</prop>
       <part class="description">
         <p>Superscripted text</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">sub</prop>
       <prop class="full_name">Subscript</prop>
       <part class="description">
         <p>Subscripted text</p>
       </part>
-    </control>
-    <control class="element-description">
+    </component>
+    <component class="element-description">
       <prop class="tag">span</prop>
       <prop class="full_name">Span</prop>
       <part class="description">
@@ -727,7 +727,7 @@
         <p>The OSCAL declarations model does not presently support validating properties of
           arbitrary spans. But it might. Please share your requirements.</p>
       </part>
-    </control>
+    </component>
   </group>
   <group>
     <title>Constraints outside the core schema</title>
@@ -735,7 +735,7 @@
       but also distinct from OSCAL-flavor-specific validations, is a small set of constraints
       governing usage of @class assignments and element occurrence. Validations enforcing them can
       be implemented via Schematron or another process capable of static analysis of the data.</p>
-    <control class="general-constraint">
+    <component class="general-constraint">
       <title>Order of items inside controls</title>
       <part class="description">
         <p>Within a control, properties, parts, parameters and prose contents may appear in any
@@ -756,8 +756,8 @@
           or <q>flavors</q> of OSCAL; but order among components is not presently enforced under its
           declarations model. (Such a functionality could be discussed.)</p>
       </part>
-    </control>
-    <control class="general-constraint">
+    </component>
+    <component class="general-constraint">
       <title>Interdicted @class assignments</title>
       <part class="description">
         <p>No control, control component or group can have a class assignment that overlaps with an
@@ -771,8 +771,8 @@
         <p>This constraint may be relaxed by failing to run the <code>OSCAL-strict.sch</code>
           Schematron.</p>
       </part>
-    </control>
-    <control class="general-constraint">
+    </component>
+    <component class="general-constraint">
       <title>No overloading @class</title>
       <part class="description">
         <p>(Not presently enforced) Values of the <code>class</code> attribute i.e.
@@ -787,7 +787,7 @@
         <p>OSCAL users may have insights into whether class overloading (in OSCAL, not elsewhere) is
           a good thing or a bad thing to be discouraged.</p>
       </part>
-    </control>
+    </component>
   </group>
   <!-- commented this out as it needs reworking … <section><title>Customization layers</title><p>Like many tag languages and machine-readable syntaxes, OSCAL is intended to be extended and customized. Unlike most other formats, however, OSCAL's primary extension mechanism does not require schema extension, but is done within OSCAL itself, by introducing constraints over and above the basic tagging language in the form of declarations that apply to elements in the particular OSCAL instance or family.</p><p>OSCAL's validation model consists of several layers. At base is schema validation, which ensures that all tags in use are recognized as OSCAL tagging and that their arrangement in the document (with regard to both structure and certain <q>semantic</q> relations) is consistent with regular usage of OSCAL. In a second layer, other relationships can be tested and rules enforced, over and above what a schema imposes. Implemented in Schematron or any technology with analogous capabilities, such a second layer is more flexible and configurable than the base layer.</p><p>In a third layer, an OSCAL document is validated to constraints it declares for itself (locally in its own declarations). (Call this a <q>consistency check</q> rather than validation, for clarity.) Such a validation may be useful to an OSCAL implementation, which can take advantage of contracts implicit in such validation to provide functionalities. OSCAL itself does not provide such functionality, but only the hooks – and the mechanism by which users and developers can easily create and manage new control types.</p></section>-->
-</catalog>
+</framework>
