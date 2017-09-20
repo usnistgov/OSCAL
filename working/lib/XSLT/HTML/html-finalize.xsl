@@ -22,7 +22,8 @@
   
   <xsl:template match="/">
     
-    <xsl:comment expand-text="true"> HTML produced by '{ $xslt-process }' :{ current-dateTime() } </xsl:comment>
+    <xsl:comment expand-text="true"> HTML produced by '{ $xslt-process }' :{ format-date(current-date(),' [Y] [MNn] [D]') => replace('([^\d\s]{3})[^\d\s]*','$1') } { format-time(current-time(),'[h]:[m] [P]') } </xsl:comment>
+    
     <xsl:apply-templates/>
   </xsl:template>
   
