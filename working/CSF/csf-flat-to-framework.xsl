@@ -59,10 +59,10 @@
     </xsl:template>
     
     <xsl:template priority="2" match="record[exists(Category)]">
-        <component class="category">
+        <group class="category">
             <xsl:apply-templates/>
             <xsl:apply-templates select="key('item-by-category',Category)"/>
-        </component>
+        </group>
     </xsl:template>
 
     <xsl:template priority="3" match="record[exists(Category)][exists(Subcategory)]">

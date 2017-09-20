@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
-  xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
+<p:declare-step version="1.0"
+  xmlns:p="http://www.w3.org/ns/xproc"
+  xmlns:c="http://www.w3.org/ns/xproc-step" 
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
   type="oscal:sp800-53-rev4-extraction" name="sp800-53-rev4-extraction">
   
   
@@ -15,7 +18,10 @@
     <p:pipe port="result" step="oscalized"/>
   </p:output>
   <p:output port="_B_enhanced" primary="false">
-    <p:pipe port="result" step="rendered"/>
+    <p:pipe port="result" step="enhanced"/>
+  </p:output>
+  <p:output port="_C_csf-enhanced" primary="false">
+    <p:pipe port="result" step="with-IDs"/>
   </p:output>
   <p:output port="final" primary="true">
     <p:pipe port="result" step="final"/>
@@ -32,6 +38,7 @@
   <p:serialization port="_0_input"     indent="true"/>
   <p:serialization port="_A_OSCALIZED" indent="true"/>
   <p:serialization port="_B_enhanced"  indent="true"/>
+  <p:serialization port="_C_csf-enhanced"  indent="true"/>
   
   <p:variable name="frameworkURI" select="document-uri(/)"/>
   
@@ -45,8 +52,40 @@
     </p:input>
   </p:xslt>
   
+  <!-- Adds IDs -->
+  <p:xslt name="with-IDs">
+    <p:input port="stylesheet">
+      <p:inline>
+        <xsl:stylesheet version="3.0">
+          
+          <!-- Framework enhancement XSLT   -->
+          
+          <xsl:mode on-no-match="shallow-copy"/>
+          
+          <xsl:template match="oscal:group">
+            <xsl:copy>
+              <xsl:attribute name="id" select="oscal:prop[@class=('function-id','category-id')]"/>
+              <xsl:copy-of select="@*"/>
+              <xsl:apply-templates/>
+            </xsl:copy>
+          </xsl:template>
+          
+          <xsl:template match="oscal:component">
+            <xsl:copy>
+              <xsl:attribute name="id" select="../oscal:prop[@class=('function-id','category-id')] || '.' || oscal:prop[@class='number']"/>
+              <xsl:copy-of select="@*"/>
+              <xsl:apply-templates/>
+            </xsl:copy>
+          </xsl:template>
+          
+        </xsl:stylesheet>
+        
+      </p:inline>
+    </p:input>
+  </p:xslt>
+  
   <!-- Enhancing with catalog hyperlinks -->
-  <p:xslt name="rendered">
+  <p:xslt name="enhanced">
     <p:with-param name="catalog-path" select="'../SP800-53/SP800-53-OSCAL-refined.xml'"/>
     <p:with-param name="frameworkURI" select="$frameworkURI"/>
     <p:with-param name="key-property" select="'name'"/>

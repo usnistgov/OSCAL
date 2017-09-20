@@ -40,21 +40,6 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/FedRAMP/fedramp-flat-to-framework.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run XSLT on Flat Fedramp XML</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>working/lib/XSLT/html-to-markdown.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -65,6 +50,21 @@
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/FedRAMP/fedramp-flat-to-framework.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run XSLT on Flat Fedramp XML</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -1755,7 +1755,7 @@
                                         </xprocOutputPort>
                                         <xprocOutputPort>
                                             <field name="portName">
-                                                <String>final</String>
+                                                <String>_C_csf-enhanced</String>
                                             </field>
                                             <field name="url">
                                                 <null/>
