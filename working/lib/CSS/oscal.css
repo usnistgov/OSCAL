@@ -177,3 +177,12 @@ select:before { content: 'Selection ' }
 
 select { display: inline }
 choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }
+
+call { background-color: skyblue; border: thin outset blue; color: midnightblue; font-weight: bold;
+  margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
+
+call:before { content: 'Call from catalog: '; font-style: italic }
+
+call[subcontrol-id]:after                    { content: 'subcontrol ' attr(subcontrol-id) }
+call[control-id]:after                       { content: 'control '    attr(control-id) }
+call[control-id][with-subcontrols=yes]:after { content: 'control '    attr(control-id) ' with subcontrols' }

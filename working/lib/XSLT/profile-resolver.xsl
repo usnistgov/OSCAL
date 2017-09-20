@@ -47,7 +47,6 @@
     <xsl:copy>
       <xsl:copy-of select="@href"/>
       <xsl:comment expand-text="true"> invoking a { $authority/*/local-name() }</xsl:comment>
-      
       <xsl:copy-of select="*"/>
     </xsl:copy>
   </xsl:template>
@@ -60,7 +59,6 @@
     <xsl:variable name="authorityURI" select="document-uri($authority)"/>
     
     <xsl:choose>
-      
       <xsl:when test="$authorityURI = $authorities-so-far" expand-text="true">
         <ERROR>Can't resolve profile against {$authorityURI}, already invoked in this chain: {string-join($authorities-so-far,' / ')}</ERROR>
       </xsl:when>
@@ -153,7 +151,7 @@
     <xsl:variable name="excluded" select="exists($invocation/exclude/call[@subcontrol-id  = current()/@id])"/>
     <!-- Or it can be called on its own (no matter other settings)   -->
     <xsl:variable name="called"   select="exists($invocation/include/call[@subcontrol-id  = current()/@id])"/>
-    <xsl:if test="true() or (($included or $called) and not($excluded))">
+    <xsl:if test="($included or $called) and not($excluded)">
       <component class="{oscal:classes-including(@class,'subcontrol')}">
         <xsl:copy-of select="@* except @class"/>
         <xsl:apply-templates mode="filter-controls"/>
