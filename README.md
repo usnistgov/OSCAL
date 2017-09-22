@@ -1,6 +1,6 @@
 # Open Security Controls Assessment Language (OSCAL) 
 
-NIST is proposing the development of the Open Security Controls Assessment Language, or OSCAL, a hierarchical, formatted, XML-based (and JSON translation) schema that provides a standard for representing different categories of information pertaining to the publication, implementation, and assessment of security controls. See [docs/prose/OSCAL Overview.md](OSCAL Overview.md) for an introduction to OSCAL.
+NIST is proposing the development of the Open Security Controls Assessment Language, or OSCAL, a hierarchical, formatted, XML-based (and JSON translation) schema that provides a standard for representing different categories of information pertaining to the publication, implementation, and assessment of security controls. See [docs/prose/OSCAL-Overview.md](OSCAL-Overview.md) for an introduction to OSCAL.
 
 OSCAL aims to:
 1. Standardize control, implementation, and assessment information using open, machine-readable formats. 
