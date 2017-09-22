@@ -5,9 +5,9 @@ This is an overview of the Open Security Controls Assessment Language (OSCAL). I
 
 Before discussing OSCAL, it is important to define three key OSCAL terms:
  * *Control*: A safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. While this is based on the NIST Special Publication (SP) 800-53 definition of "control", in the context of OSCAL it refers to a similar kind of requirement from a control catalog. 
- * *Catalog*: A set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53, the 100+ controls in ISO 27002, and the practices in COBIT 5. 
- * *Profile*: A set of security requirements; also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements. A profile is basically selecting a set of security requirements from one or more control catalogs.
-
+ * *Catalog*: A set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53 Revision 4 Appendix F, the 100+ controls in ISO 27002, and the practices in COBIT 5. 
+ * *Profile*: A set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.
+ 
 ## Major challenges in security controls assessment
 
 OSCAL is attempting to address a number of challenges around security controls and security controls assessment. The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable, meaning that the prose instructions require someone to do data entry into a tool in order for the tool to use the information. 
@@ -28,15 +28,19 @@ The plans for OSCAL involve seven components, as depicted in the following diagr
 
 ![OSCAL layers](/docs/graphics/oscal-layers.png "OSCAL Layer Diagram")
 
-Here are the current definitions for each component. As the project progresses, these definitions may evolve. They are included here to indicate the overall body of work for OSCAL and not the finalized details of each component.  
- * *Catalog*: Defines a set of security controls (e.g., NIST SP 800-53 Appendix F); may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls has been done because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.
- * *Profile*: Defines a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. The profile format will allow for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements). A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs.
- * *Implementation*: Defines how each profile item is implemented. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.
+Starting from the bottom on the left, the OSCAL layers are:
+ * *Catalog*: In addition to defining a set of security controls, may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls has been done because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.
+ * *Profile*: The profile format will allow for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements). A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs. For more information on the relationship between profiles and catalogs, see [Profile-Catalog-Relationship.md](Profile-Catalog-Relationship.md).
+ * *Implementation*: Defines how each profile item is implemented for a given system component. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.
  * *Assessment*: Describes how the system assessment is to be performed.
  * *Assessment Results*: Records the findings of the assessment.
+ 
+OSCAL will also integrate with:  
  * *Metrics*: Defines metrics and measurements for understanding the effectiveness of the system’s security. 
  * *Mechanism*: Describes methods used to monitor the system’s current security state (e.g., Security Content Automation Protocol (SCAP)). 
  
+These are the current definitions for each component. As the project progresses, these definitions may evolve. They are included here to indicate the overall body of work for OSCAL and not the finalized details of each component.  
+
 ## OSCAL users
 
 The initial OSCAL work encompasses the catalog and profile components. There are several types of users who should benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:
@@ -51,14 +55,6 @@ Standardized OSCAL catalog and profile models should also be beneficial to sever
  * *Security and privacy personnel*: automatically identify problems and address them quickly before loss or damage occur; for example, a profile could be used to identify incorrect parameter values that are weakening security
  * *Auditors/assessors*: perform audits/assessments on demand with minimal effort
  * *Policy personnel*: identify systemic problems that necessitate changes to organization security policy
-
-## The relationship between the OSCAL catalog and profile models
-
-To understand the relationship between the OSCAL catalog and profile models, consider the trivial conceptual example in the figure below. This example represents the NIST SP 800-53 low baseline. The catalog defines the possible security controls within the scope of NIST SP 800-53. The profile indicates which security controls from the catalog are required to be compliant with the low baseline. Using OSCAL formats for the catalog and profile makes the mappings between the catalog and the profile explicit and machine readable. 
-
-![trivial_example](/docs/graphics/profile-catalog-mapping-trivial-example.png "Trivial Example of Profile and Catalog Mapping")
-
-OSCAL provides a standarized, machine-readable profile with clear semantics. OSCAL allows profiles to be generated using the same interoperable format regardless of the underlying catalogs that are being used, like ISO 27001/2 and COBIT 5. 
 
 ## OSCAL deliverables
 
