@@ -1,8 +1,25 @@
 # Decisions of Interest for XML Schema Design and Validation
 
+
+* We need XML, because we have peculiar functional requirements in dealing with arbitrary but semi-regular mixed data, specifically "documentary" contents; this is XML's sweet spot  
+* Syntactically, it would be good to use something as close to MicroXML as possible (we want Python programmers to want to write against this)
+* Despite this discipline (or because of it) the XML stack is useful because it is available, performant for our purposes, and standards-based.
+* We can aim for the widest distributed support via XSD for validation (for ubiquity of tools) but perform modeling work in RNC (flexibility) as long as possible (and perhaps provide/support other validation methodologies?)
+  * Schema maintenance is going to require tools support anyway; we may as well start early: so RNC + docs => XSD+docs
+* Provide for customization by restriction, not extension. Flavors of OSCAL will take the form of particular usages, not of formal schemas.
+  * Ergo, no schema extension mechanism is called for -- much less yet another one.
+* The element set should be as minimal as possible for now - minimum to get the job done (we can aim for decoration later)
+* This implies that semantic modeling (of "control types" in different catalogs) work predominantly via a microformat mechanism (semantics overlaid on generic element types via a class mechanism)
+  * This was prototyped and found to work (see below)
+  * An optional layer (the OSCAL Declarations layer) is implicit so we built one out as a POC
+* Standing something up quickly and changing names as we go gives us a chance to try things on, not just debate principles
+
+
 ## Controls, not (only) the documents that describe them
 
-OSCAL represents a domain-specific language for the expression of collections of security and privacy controls in a control catalog. Inevitably there is a metaphysical grey zone between controls and the language by which they are defined and described. OSCAL attempts to normalize the semantics used to describe controls by providing a single format for which multiple control catalogs (e.g., NIST SP 800-53/53a, ISO/IEC 27001/2, COBIT 5) can be expressed. By normalizing semantics across control catalogs, control information can be expressed more consistently, allowing similar types of information provided in different catalogs to be expressed in the same format. This degree of normalization allows related concepts such as baselines and overlays to be expressed in a profile that can reference controls from one or more catalogs in a consistent format.
+OSCAL is a domain-specific language for the description and specification of collections of security and privacy controls in a control catalog. Inevitably there is a metaphysical grey zone between controls and the language by which they are defined and described. OSCAL attempts to normalize the semantics used to describe controls by providing a single format for which multiple control catalogs (e.g., NIST SP 800-53/53a, ISO/IEC 27001/2, COBIT 5) can be expressed. It does this by presenting a generalized descriptive "slate" or "tablet" upon which the particular patterns of a particular catalog, may be drawn. Not all catalogs in OSCAL will be the same -- the design of controls in different catalogs and of different kinds and species, may be different -- but because they will all be OSCAL, it will be easier to see their differences, easier to relate them to one another, and easier to do alike things, in alike ways.
+
+Not only controls information itself, but a set of structured documents that describes and makes reference to such controls, that is, is in scope for OSCAL. Baselines, profiles, overlays and frameworks written in reference to controls catalogs, are all capabilities we aim to offer and support.
 
 ## Validation
 
