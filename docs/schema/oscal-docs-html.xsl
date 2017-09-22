@@ -46,8 +46,9 @@ div div div h3 { font-size: 110% }
 .tag:after  { content: '\3E' }
 .code { font-family: monospace }
 
-#toc-panel { margin-top: 0em; border: thin solid black; float: left; max-width: 25%; font-size: 80%; font-family: sans-serif;
-padding: 1em; position: fixed; max-height: 80ex; overflow: auto }
+#toc-panel { margin-top: 0em; border: thin solid black; float: left;
+  margin-left: 1rem; max-width: 25%; font-size: 80%; font-family: sans-serif;
+  padding: 1em; max-height: 80ex; overflow: auto; position: fixed }
 .toc { margin: 0em; padding: 0em; margin-left: 1em; border: none }
 .toc-line { margin: 0em; padding-left: 3em; text-indent: -3em }
 
@@ -72,23 +73,23 @@ a:visited { color: midnightblue }
   </xsl:template>
   
   
-  <xsl:template match="oscal:catalog" mode="toc">
+  <xsl:template match="oscal:catalog | oscal:framework" mode="toc">
     <div id="toc-panel">
-      <xsl:apply-templates select="oscal:title | oscal:prop[@class='tag']" mode="toc"/>
-      <xsl:apply-templates select="oscal:section | oscal:group | oscal:control" mode="toc"/>
+      <xsl:apply-templates select="oscal:title" mode="toc"/>
+      <xsl:apply-templates select="oscal:section | oscal:group | oscal:control | oscal:component" mode="toc"/>
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:section | oscal:group | oscal:control" mode="toc">
+  <xsl:template match="oscal:section | oscal:group | oscal:control | oscal:component" mode="toc">
     <div class="toc">
       <xsl:apply-templates select="oscal:title | oscal:prop[@class='tag']" mode="toc"/>
-      <xsl:apply-templates select="oscal:section | oscal:group | oscal:control" mode="toc"/>
+      <xsl:apply-templates select="oscal:section | oscal:group | oscal:control | oscal:component" mode="toc"/>
     </div>
   </xsl:template>
   
   <xsl:template match="oscal:title" mode="toc">
     <p class="toc-line">
-      <a href="#{generate-id(parent::*[not(self::oscal:catalog)])}">
+      <a href="#{generate-id(parent::*[not(self::oscal:catalog|self::oscal:framework)])}">
         <xsl:apply-templates/>
       </a>
     </p>
@@ -110,13 +111,17 @@ a:visited { color: midnightblue }
     </p>
   </xsl:template>
 
-  <xsl:template match="oscal:catalog">
-    <div id="main" class="catalog">
+  <xsl:template match="oscal:catalog | oscal:framework">
+    <div id="main" class="{local-name()}">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:catalog/oscal:title"/>
+  <xsl:template match="oscal:catalog/oscal:title | oscal:framework/oscal:title">
+    <h1>
+      <xsl:apply-templates/>
+    </h1>
+  </xsl:template>
   
   <xsl:template match="oscal:title">
    <!-- <xsl:for-each select="..">
@@ -146,7 +151,7 @@ a:visited { color: midnightblue }
   <!--<xsl:key name="assignment"  match="oscal:param" use="@target"/>-->
   
   
-  <xsl:template match="oscal:control">
+  <xsl:template match="oscal:control | oscal:component">
     <div class="control {@class}" id="{generate-id(.)}">
       <xsl:call-template name="make-title">
         <xsl:with-param name="runins" select="oscal:prop[@class='tag'] | oscal:prop[@class='full_name']"/>
@@ -156,7 +161,7 @@ a:visited { color: midnightblue }
   </xsl:template>
   
   <!-- Picked up in parent, by default this element is suppressed -->
-  <xsl:template match="oscal:control/oscal:title"/>
+  <xsl:template match="oscal:control/oscal:title  | oscal:component/oscal:title"/>
   
   <xsl:template name="make-title">
     <xsl:param name="runins" select="/.."/>

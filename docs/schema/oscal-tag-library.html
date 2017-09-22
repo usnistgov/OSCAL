@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
-      <title>OSCAL: The Open Security Controls Assessment Language</title>
+      <title>Document model and tagging specification - OSCAL: The Open Security Controls Assessment
+    Language</title>
       <style type="text/css">
 
 section, div { margin-top:1em }
@@ -29,8 +30,9 @@ div div div h3 { font-size: 110% }
 .tag:after  { content: '\3E' }
 .code { font-family: monospace }
 
-#toc-panel { margin-top: 0em; border: thin solid black; float: left; max-width: 25%; font-size: 80%; font-family: sans-serif;
-padding: 1em; position: fixed; max-height: 80ex; overflow: auto }
+#toc-panel { margin-top: 0em; border: thin solid black; float: left;
+  margin-left: 1rem; max-width: 25%; font-size: 80%; font-family: sans-serif;
+  padding: 1em; max-height: 80ex; overflow: auto; position: fixed }
 .toc { margin: 0em; padding: 0em; margin-left: 1em; border: none }
 .toc-line { margin: 0em; padding-left: 3em; text-indent: -3em }
 
@@ -43,103 +45,378 @@ a:visited { color: midnightblue }
         </style>
    </head>
    <body>
-      <p class="toc-line">
-         <a href="#d6e7">OSCAL: The Open Security Controls Assessment Language</a>
-      </p>
+      <div id="toc-panel">
+         <p class="toc-line">
+            <a href="#">Document model and tagging specification - OSCAL: The Open Security Controls Assessment
+    Language</a>
+         </p>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e36">OSCAL namespace</a>
+            </p>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e66">OSCAL organization</a>
+            </p>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e105">Interoperability with other data formats</a>
+            </p>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e121">Controls and control components</a>
+            </p>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e132">
+                     <code>&lt;catalog&gt;</code> Catalog</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e147">
+                     <code>&lt;framework&gt;</code> Framework</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e168">
+                     <code>&lt;control&gt;</code> Control</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e199">
+                     <code>&lt;component&gt;</code> Framework component</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e241">
+                     <code>&lt;subcontrol&gt;</code> Control extension</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e274">
+                     <code>&lt;prop&gt;</code> Property</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e313">
+                     <code>&lt;param&gt;</code> Parameter</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e328">
+                     <code>&lt;part&gt;</code> Part</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e382">
+                     <code>&lt;link&gt;</code> Link</a>
+               </p>
+            </div>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e407">Functional elements</a>
+            </p>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e418">
+                     <code>&lt;insert&gt;</code> Parameter insertion</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e436">
+                     <code>&lt;withdrawn&gt;</code> Withdrawn</a>
+               </p>
+            </div>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e465">Declarations elements</a>
+            </p>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e494">
+                     <code>&lt;declarations&gt;</code> Declarations</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e522">
+                     <code>&lt;declare-prop&gt;</code> Property declaration</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e614">
+                     <code>&lt;declare-p&gt;</code> Paragraph declaration</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e675">
+                     <code>&lt;declare-part&gt;</code> Part declaration</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e696">
+                     <code>&lt;declare-link&gt;</code> Link declaration</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e711">
+                     <code>&lt;singleton&gt;</code> Singleton constraint</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e763">
+                     <code>&lt;required&gt;</code> Requirement constraint</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e800">
+                     <code>&lt;identifier&gt;</code> Identifier constraint</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e858">
+                     <code>&lt;regex&gt;</code> Regular expression constraint</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e893">
+                     <code>&lt;value&gt;</code> Value constraint</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e923">
+                     <code>&lt;autonum&gt;</code> Autonumbered (generated) value</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e957">
+                     <code>&lt;inherit&gt;</code> Inherited value</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1041">
+                     <code>&lt;desc&gt;</code> Parameter description</a>
+               </p>
+            </div>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e1057">Structural elements</a>
+            </p>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1062">
+                     <code>&lt;section&gt;</code> Section</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1092">
+                     <code>&lt;group&gt;</code> Group</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1122">
+                     <code>&lt;title&gt;</code> Title</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1137">
+                     <code>&lt;references&gt;</code> References</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1153">
+                     <code>&lt;ref&gt;</code> Reference</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1168">
+                     <code>&lt;std&gt;</code> Standard</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1192">
+                     <code>&lt;citation&gt;</code> Citation</a>
+               </p>
+            </div>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e1223">Prose</a>
+            </p>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1249">
+                     <code>&lt;p&gt;</code> Paragraph</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1273">
+                     <code>&lt;pre&gt;</code> Preformatted text</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1298">
+                     <code>&lt;ol&gt;</code> Ordered List</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1328">
+                     <code>&lt;ul&gt;</code> Unordered list</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1370">
+                     <code>&lt;li&gt;</code> List item</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1385">
+                     <code>&lt;em&gt;</code> Emphasis</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1415">
+                     <code>&lt;i&gt;</code> Italics</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1436">
+                     <code>&lt;b&gt;</code> Bold</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1476">
+                     <code>&lt;a&gt;</code> Anchor</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1527">
+                     <code>&lt;q&gt;</code> Quoted text</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1548">
+                     <code>&lt;code&gt;</code> Code</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1572">
+                     <code>&lt;sup&gt;</code> Superscript</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1587">
+                     <code>&lt;sub&gt;</code> Subscript</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1602">
+                     <code>&lt;span&gt;</code> Span</a>
+               </p>
+            </div>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e1627">Constraints outside the core schema</a>
+            </p>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1638">Order of items inside controls</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1668">Interdicted @class assignments</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1714">No overloading @class</a>
+               </p>
+            </div>
+         </div>
+      </div>
+      <div id="main" class="framework">
+         <h1>Document model and tagging specification - OSCAL: The Open Security Controls Assessment
+    Language</h1>
   
+         <section class="section" id="d6e36">
+            <h3>OSCAL namespace</h3>
     
-          
-      
-          \i\c*
-      
-        
-    
-    
-      
-    
-    
-  
-  <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e36">OSCAL namespace</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e66">OSCAL organization</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e105">Interoperability with other data formats</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e121">Controls and control components</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e392">Functional elements</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e450">Declarations elements</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e1042">Structural elements</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e1208">Prose</a>
-         </p>
-      </div>
-      <div class="toc">
-         <p class="toc-line">
-            <a href="#d6e1612">Constraints outside the core schema</a>
-         </p>
-      </div>
-  
-
-  
-  
-      <section class="section" id="d6e36">
-         <h3>OSCAL namespace</h3>
-    
-         <p class="p">Conformant (valid) OSCAL documents will not contain elements not described in this document.
+            <p class="p">Conformant (valid) OSCAL documents will not contain elements not described in this document.
       While OSCAL may be mixed with other tag sets or extended, neither of these uses is described
       here: this document provides only basic information about the OSCAL <q class="q">core</q>.</p>
-         <p class="p">The element population of an OSCAL document (set) may be determined by means of XPath
+            <p class="p">The element population of an OSCAL document (set) may be determined by means of XPath
         <code class="code">distinct-values(//*/node-name())</code>, or analogous query.</p>
-         <p class="p">For its XML names, OSCAL uses the namespace <a class="xref">http://csrc.nist.gov/ns/oscal/1.0</a>.
+            <p class="p">For its XML names, OSCAL uses the namespace <a class="xref">http://csrc.nist.gov/ns/oscal/1.0</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
       without a prefix, <code class="code">oscal:</code> or any other.</p>
-         <p class="p">By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should
+            <p class="p">By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, however, should
       always strip the OSCAL namespace to produce HTML in the appropriate namespace for the target
       application. (Or the target application could learn to consume OSCAL.) Only some parts of
       HTML, however, make their way into OSCAL, which is designed to address its own
       requirements.</p>
-      </section>
-      <section class="section" id="d6e66">
-         <h3>OSCAL organization</h3>
+         </section>
+         <section class="section" id="d6e66">
+            <h3>OSCAL organization</h3>
     
-         <p class="p">OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form
+            <p class="p">OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form
         <q class="q">documentary</q> format, which includes semantic <q class="q">islands</q> of structured information.
       These are semantic not only because they are addressable in principle, but more
       importantly because their organizations and values may be known before processing occurs, 
       at least with respect to certain operations and relations, and even (at the most general level)
       before operations are designed and deployed. OSCAL offers a yin to the yang of query and
       processing.</p>
-         <p class="p">At the broadest level, <q class="q">control objects</q> in OSCAL include controls, subcontrols, parts
+            <p class="p">At the broadest level, <q class="q">control objects</q> in OSCAL include controls, subcontrols, parts
       of controls or subcontrols, and control groups. Each OSCAL application or application domain
       will determine for itself how these correspond to entities or <q class="q">controls</q>, formal processes, procedures, and so forth, within that domain.</p>
-         <p class="p">This organization is governed by an XML schema, which enforces containment constraints among
+            <p class="p">This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <a href="" class="code">group</a>,
         <a href="" class="code">control</a>, <a href="" class="code">subcontrol</a>, and <a href="" class="code">part</a>. According to its rules,
       either controls or groups may appear within groups (that is, groups may be nested or may
@@ -150,211 +427,264 @@ a:visited { color: midnightblue }
       granularity, as any of these objects may be used consistently to carry regular sets of
       properties, with names and value spaces that may be known in advance or discovered
       dynamically.</p>
-      </section>
-      <section class="section" id="d6e105">
-         <h3>Interoperability with other data formats</h3>
+         </section>
+         <section class="section" id="d6e105">
+            <h3>Interoperability with other data formats</h3>
     
-         <p class="p">OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language
+            <p class="p">OSCAL should map easily and straightforwardly to any generic XML or tag-based markup language
       including HTML, Markdown and its variants, NISO JATS, DITA, etc. Additionally, OSCAL
       documents may be taken as <q class="q">warrants for inference</q> for serialization of linked data
       objects or other application binding formats including JSON.</p>
-         <p class="p">Because OSCAL is designed to carry richer and denser semantics than most markup languages, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or
+            <p class="p">Because OSCAL is designed to carry richer and denser semantics than most markup languages, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or
       customization per instance - that is, each one will be a one-off conversion.</p>
-      </section>
-      <section class="group" id="d6e121">
-         <h3>Controls and control components</h3>
+         </section>
+         <section class="group" id="d6e121">
+            <h3>Controls and control components</h3>
     
-         <p class="p">The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
+            <p class="p">The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
       components, including both formal components (described here) and relatively uncontrolled or
-      free-form contents (described elsewhere as <a class="xref" href="#d6e1208">prose</a>).</p>
-    
+      free-form contents (described elsewhere as <a class="xref" href="#d6e1223">prose</a>).</p>
+            <div class="control element-description" id="d6e132">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">catalog</span> 
+                  <span class="run-in subst full_name">Catalog</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Top-level element for a (canonical) control catalog</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">Top-level element for a (canonical) control catalog</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e147">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">framework</span> 
+                  <span class="run-in subst full_name">Framework</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Top-level element for a set of control-like components, not considered to be a catalog</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Most often, a collection element will be used for a set of components referencing one or
+               <div class="part description">
+                  <p class="p">Top-level element for a set of control-like components, not considered to be a catalog</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Most often, a collection element will be used for a set of components referencing one or
           more control catalogs or catalog proxies (such as a profile, baseline, overlay or other framework), which do not themselves
           serve as a catalog. In many important respects, frameworks with their components are analogous
         structurally to catalogs with their controls - with some important different.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e168">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">control</span> 
+                  <span class="run-in subst full_name">Control</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A structured information object representing a security control</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Controls may be grouped using <a href="" class="code">group</a>, and controls may be partitioned using
+               <div class="part description">
+                  <p class="p">A structured information object representing a security control</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Controls may be grouped using <a href="" class="code">group</a>, and controls may be partitioned using
           either (formally) <a href="" class="code">subcontrol</a> or (informally) <a href="" class="code">part</a>.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e199">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">component</span> 
+                  <span class="run-in subst full_name">Framework component</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Within a framework, a structured information object typically referencing one or more
+               <div class="part description">
+                  <p class="p">Within a framework, a structured information object typically referencing one or more
           security controls</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Components may be grouped using <a href="" class="code">group</a>, and may contain either components
-          (recursively), or be further divided into parts. Both controls and subcontrols in catalogs
-          may be cast as "components" in an analogous (isomorphic or coordinated) framework.</p>
-            <p class="p">In a direct mapping from catalog to framework formats, both control and subcontrol may be
-          regarded as components.</p>
-         </div>
-    
-    
+               </div>
+               <div class="part remarks">
+                  <p class="p">Components may be grouped using <a href="" class="code">group</a> and be further divided into parts.
+          They may also contain components (recursively), although this may not generally be
+          advisable.</p>
+                  <p class="p">In a spreadsheet format, components will frequently be analogous to rows; ideally their
+          child elements (properties, links and other structured contents) will map directly to
+          cells.</p>
+                  <p class="p">In a direct mapping from catalog to framework formats, both <a href="" class="code">control</a> and
+            <a href="" class="code">subcontrol</a> may be regarded as <q class="q">components</q> of their <q class="q">frameworks</q>
+          (catalogs) in the general sense; however components in use are not likely to be much like
+          the controls they reference.</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e241">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">subcontrol</span> 
+                  <span class="run-in subst full_name">Control extension</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">An associated or dependent control object; an enhancement to a control</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">A nominal subcontrol or <q class="q">control extension</q> permits catalogs to offer access to
+               <div class="part description">
+                  <p class="p">An associated or dependent control object; an enhancement to a control</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">A nominal subcontrol or <q class="q">control extension</q> permits catalogs to offer access to
           structured control objects within controls. Further levels down can be achieved using
             <a href="" class="code">part</a> (both controls and subcontrols may be partitioned), which may contain
           their own parts; however, knowing in advance which <q class="q">controls</q> and <q class="q">subcontrols</q>
           are especially significant is helpful.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e274">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">prop</span> 
+                  <span class="run-in subst full_name">Property</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A value with a name, attributed to the containing control, subcontrol, component, part,
+               <div class="part description">
+                  <p class="p">A value with a name, attributed to the containing control, subcontrol, component, part,
           or group</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">The notation used by a property is up to an application; otherwise, properties are
+               </div>
+               <div class="part remarks">
+                  <p class="p">The notation used by a property is up to an application; otherwise, properties are
           distinguished in OSCAL by not permitting inline markup of any kind. They are
           expected to be simple scalar values or to use machine-readable/parseable
           notation (not XML), as defined by and for an application.</p>
-            <p class="p">The lexical composition of properties may be constrained by declarations including
+                  <p class="p">The lexical composition of properties may be constrained by declarations including
           matching to regular expressions or declaring known datatype notations (tbd).</p>
-            <p class="p">Because properties are often used as selectors or identifiers for OSCAL operations,
+                  <p class="p">Because properties are often used as selectors or identifiers for OSCAL operations,
           their values can be expected frequently to be flattened (markup stripped) and normalized
           (e.g., with respect to whitespace) in use; however, this is application defined.</p>
-            <p class="p">For singletons (that is, the only element among siblings with its <code class="code">@class</code>),
+                  <p class="p">For singletons (that is, the only element among siblings with its <code class="code">@class</code>),
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
           robustness of such queries can be ensured by appropriate property declarations (as
           singletons and as identifiers); cf <code class="code">property</code> in the declarations model (which
           also supports other constraints over property values).</p>
-            <p class="p">Properties permit the deployment and management of arbitrary controlled values, with and
+                  <p class="p">Properties permit the deployment and management of arbitrary controlled values, with and
           among control objects (controls and parts and extensions), for any purpose useful to an
           application or implementation of those controls. Typically and routinely, properties will
           be used to sort, select, order, and arrange controls or relate them to one another or to
           class hierarchies, taxonomies, or external authorities.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e313">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">param</span> 
+                  <span class="run-in subst full_name">Parameter</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A parameter setting, to be propagated to points of insertion</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">A parameter setting, to be propagated to points of insertion</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e328">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">part</span> 
+                  <span class="run-in subst full_name">Part</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A partition, <q class="q">piece</q> or section of a control, subcontrol, component or part</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Like properties (<a href="" class="code">prop</a>) and parameters (<a href="" class="code">param</a>), parts can be
+               <div class="part description">
+                  <p class="p">A partition, <q class="q">piece</q> or section of a control, subcontrol, component or part</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Like properties (<a href="" class="code">prop</a>) and parameters (<a href="" class="code">param</a>), parts can be
           distinguished from other elements within their controls by their assigned
             <code class="code">@class</code>, such that they may be subjected to <q class="q">declarations logic</q> using
           these values as bindings (and thereby getting open-ended extensibility).</p>
-            <p class="p">An assigned class may frequently provide for a header in display, such that
+                  <p class="p">An assigned class may frequently provide for a header in display, such that
             <code class="code">part[@class='objectives']</code> is displayed under a header <em class="em">Objectives</em>,
           etc. Unlike groups, controls, or subcontrols, however, they may not have <a href="" class="code">title</a>
           element children (they are not <q class="q">first class objects</q> in this sense). Thus, in OSCAL
           if the components of your controls have their own titles, they are something else; to
           accommodate data like this, consider using a property (e.g.,
             <code class="code">prop[@class='part-title']</code> as an escape hatch.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e382">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">link</span> 
+                  <span class="run-in subst full_name">Link</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A line or paragraph with a hypertext link</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Works like an HTML anchor (<a href="" class="code">a</a>) except this is a line-oriented (block)
+               <div class="part description">
+                  <p class="p">A line or paragraph with a hypertext link</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Works like an HTML anchor (<a href="" class="code">a</a>) except this is a line-oriented (block)
           element.</p>
-         </div>
+               </div>
       
+            </div>
+         </section>
+         <section class="group" id="d6e407">
+            <h3>Functional elements</h3>
     
-      </section>
-      <section class="group" id="d6e392">
-         <h3>Functional elements</h3>
-    
-         <p class="p">Functional elements appear inside control content to provide <q class="q">hooks</q> to OSCAL
+            <p class="p">Functional elements appear inside control content to provide <q class="q">hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
       semantic traversal.</p>
-    
+            <div class="control element-description" id="d6e418">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">insert</span> 
+                  <span class="run-in subst full_name">Parameter insertion</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A <q class="q">call</q> (reference) to a parameter for dynamic content transclusion</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">A <q class="q">call</q> (reference) to a parameter for dynamic content transclusion</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e436">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">withdrawn</span> 
+                  <span class="run-in subst full_name">Withdrawn</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates that a containing control or subcontrol is no longer applicable</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain
+               <div class="part description">
+                  <p class="p">Indicates that a containing control or subcontrol is no longer applicable</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Used to mark a control or subcontrol included in a catalog as a placeholder, to maintain
           its semantic integrity in obsolescence. Links should be provided to superseding controls
           or components.</p>
-            <p class="p">The functionality provided by this element might better be offered by a property or some
+                  <p class="p">The functionality provided by this element might better be offered by a property or some
           other controlled value, at which point it may be removed; it is included to support (some)
           legacy content.</p>
-         </div>
+               </div>
+            </div>
     
     
+         </section>
+         <section class="group" id="d6e465">
+            <h3>Declarations elements</h3>
     
-      </section>
-      <section class="group" id="d6e450">
-         <h3>Declarations elements</h3>
-    
-         <p class="p">By declaring constraints on control components, such as properties (<a href="" class="code">prop</a>), parts
+            <p class="p">By declaring constraints on control components, such as properties (<a href="" class="code">prop</a>), parts
         (<a href="" class="code">part</a>) and links (<a href="" class="code">link</a>) within controls and subcontrols,
       applications and operators can validate the composition and consistency of available controls.
       Over and above the <q class="q">core validation</q> of OSCAL element naming (which is enforced by direct
       application of an XML schema), such validation can help to guarantee processability and
       interchange of OSCAL data by verifying that not only tags, but also values given in the data,
       conform to expressed constraints, which can be made specific to a catalog or catalog type.</p>
-         <p class="p">In this way, the OSCAL declarations mechanism provides for a kind of <q class="q">on the fly
+            <p class="p">In this way, the OSCAL declarations mechanism provides for a kind of <q class="q">on the fly
         supertyping</q> of control objects, by restriction (constraint) of the core OSCAL language.
       The extent and degree to which declarations are used to impose order on controls is up to the
       application and its methods. By no means are declarations necessary; but they serve as an aid
       in modeling and in communicating expectations.</p>
-         <p class="p">OSCAL declarations are enforced by a Schematron; the core schema stipulates this  model (and
+            <p class="p">OSCAL declarations are enforced by a Schematron; the core schema stipulates this  model (and
       tagging used to control it, i.e. a tag interface) but does not enforce any of the constraints
       so declared. Developers should take note that these constraints are all readily testable in
       XPath.</p>
-    
+            <div class="control element-description" id="d6e494">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">declarations</span> 
+                  <span class="run-in subst full_name">Declarations</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">For extra-schema validation of control components within controls</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">The OSCAL validation model supports not only validation against a formal schema
+               <div class="part description">
+                  <p class="p">For extra-schema validation of control components within controls</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">The OSCAL validation model supports not only validation against a formal schema
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
           or catalog type within which they appear. Constraints described in these declarations, and
@@ -363,17 +693,21 @@ a:visited { color: midnightblue }
           appear), enable automated checking for consistency of controls, subcontrols, and their
           parts, specific to the types or kinds of control items that appear within a particular
           catalog or control collection.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e522">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">declare-prop</span> 
+                  <span class="run-in subst full_name">Property declaration</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Constraints applicable to a class or classes of <a href="" class="code">prop</a> elements (properties) in
+               <div class="part description">
+                  <p class="p">Constraints applicable to a class or classes of <a href="" class="code">prop</a> elements (properties) in
           context</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">The class of properties, in context, to which the constraints apply, is indicated on the
+               </div>
+               <div class="part remarks">
+                  <p class="p">The class of properties, in context, to which the constraints apply, is indicated on the
             <code class="code">@class</code> of the declaration (<a href="" class="code">declare-prop</a>). Only elements named
             <a href="" class="code">prop</a> with matching <code class="code">@class</code> are subject to the declared
           constraints. The context is defined by the class of the element parent of the candidate
@@ -381,179 +715,219 @@ a:visited { color: midnightblue }
           or <a href="" class="code">group</a>. So a <code class="code">declare-prop context="myControl" class="myProp"</code>
           will apply to any property (<a href="" class="code">prop</a> element) with class <q class="q">myProp</q>, appearing
           in a control, subcontrol, part or group with class <q class="q">myControl</q>.</p>
-            <p class="p">The constraints that will apply to these properties are indicated by the elements
+                  <p class="p">The constraints that will apply to these properties are indicated by the elements
           contained in the declaration. For example, a property declared as a <q class="q">required
             singleton</q> is required to appear in its context (the validator will produce an error
           when it is missing), while it may not appear more than once (the validator will produce an
           error if more than one appear together).</p>
-            <p class="p">Because the <code class="code">@class</code> attribute is the basis of the OSCAL declarations model,
+                  <p class="p">Because the <code class="code">@class</code> attribute is the basis of the OSCAL declarations model,
           it is recommended that applications restrict the usage of this attribute to single name
           values, when used on controls or their compo. Although overloading <code class="code">@class</code>, as
           it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an
           OSCAL application, restricting elements to have <em class="em">at most</em>, a single class
           assignment, will help keep things clean and intelligible.</p>
-            <p class="p">On declarations including <a href="" class="code">declare-prop</a> and its siblings, however, both
+                  <p class="p">On declarations including <a href="" class="code">declare-prop</a> and its siblings, however, both
             <code class="code">@class</code> and <code class="code">@context</code> may be overloaded (multiple values). A
           helpful application will detect where there are conflicting declarations, meaning the same
           class designator is claimed by different elements in a given context.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e614">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">declare-p</span> 
+                  <span class="run-in subst full_name">Paragraph declaration</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates constraints to be enforced on paragraphs in context</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Elements contained in the declaration, as with all declarations, indicate constraints.
+               <div class="part description">
+                  <p class="p">Indicates constraints to be enforced on paragraphs in context</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Elements contained in the declaration, as with all declarations, indicate constraints.
           The <a href="" class="code">p</a> may be required for the control to be complete, and/or the only one
           with its <code class="code">@class</code> (a singleton). The value(s) may be restricted, etc.</p>
-            <p class="p">Effectively, the difference between a <q class="q">property</q>
-               <a href="" class="code">prop</a> and <q class="q">classified p</q>
-               <code class="code">p[@class]</code> is that properties may have only simple scalar values, not subject
+                  <p class="p">Effectively, the difference between a <q class="q">property</q>
+                     <a href="" class="code">prop</a> and <q class="q">classified p</q>
+                     <code class="code">p[@class]</code> is that properties may have only simple scalar values, not subject
           to dynamic processing or injection. So <a href="" class="code">p</a> elements directly inside a
             <a href="" class="code">control</a>, <a href="" class="code">subcontrol</a> or <a href="" class="code">part</a> may contain
             <a href="" class="code">insert</a> elements, for example (just as can <a href="" class="code">p</a> elements in
           running prose), whereas parameters cannot be injected into properties by definition (since
           they are required to be stable per control object).</p>
-         </div>
+               </div>
       
-    
-    
+            </div>
+            <div class="control element-description" id="d6e675">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">declare-part</span> 
+                  <span class="run-in subst full_name">Part declaration</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates constraints to be imposed on parts in context</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Parts are subject to singleton and requirement constraints, but not to constraints on
+               <div class="part description">
+                  <p class="p">Indicates constraints to be imposed on parts in context</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Parts are subject to singleton and requirement constraints, but not to constraints on
           values. However, note that parts may also serve as contexts for other control objects,
           including properties and parts.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e696">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">declare-link</span> 
+                  <span class="run-in subst full_name">Link declaration</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates constraints to be imposed on links in context</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">Indicates constraints to be imposed on links in context</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e711">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">singleton</span> 
+                  <span class="run-in subst full_name">Singleton constraint</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">The declared component may occur only once in its context</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">When this element is present in the declaration of an OSCAL control component, the
+               <div class="part description">
+                  <p class="p">The declared component may occur only once in its context</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">When this element is present in the declaration of an OSCAL control component, the
           component (<a href="" class="code">prop</a>, <a href="" class="code">param</a>, <a href="" class="code">part</a>) must be the only
           component of that class given in its (<a href="" class="code">group</a>, <a href="" class="code">control</a>,
             <a href="" class="code">subcontrol</a>, or <a href="" class="code">part</a>) context. In other words, no other element
           child of the same parent may have the same <code class="code">@class</code> value.</p>
-            <p class="p">Note that the singleton constraint does not apply to the value of the property, but only
+                  <p class="p">Note that the singleton constraint does not apply to the value of the property, but only
           to the fact that it is an <q class="q">only child</q>, unique among its siblings for having its
           class assignment.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e763">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">required</span> 
+                  <span class="run-in subst full_name">Requirement constraint</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">The declared component is required in its context</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">When this element is present in the declaration of an OSCAL control component, the
+               <div class="part description">
+                  <p class="p">The declared component is required in its context</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">When this element is present in the declaration of an OSCAL control component, the
           component (<a href="" class="code">prop</a>, <a href="" class="code">param</a>, or <a href="" class="code">part</a>, of the given
           class) is required to appear, at least once, in its context.</p>
-            <p class="p">A property or part that is a required singleton, is expected to appear exactly once and
+                  <p class="p">A property or part that is a required singleton, is expected to appear exactly once and
           once only in every applicable control, subcontrol or part.</p>
-            <p class="p">Whenever a control or control object is required to have any parts (or properties etc.),
+                  <p class="p">Whenever a control or control object is required to have any parts (or properties etc.),
           and any of the required parts are missing, errors may be reported against the declarations
           model.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e800">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">identifier</span> 
+                  <span class="run-in subst full_name">Identifier constraint</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">The declared component has a value unique within the document, among properties
+               <div class="part description">
+                  <p class="p">The declared component has a value unique within the document, among properties
             (<a href="" class="code">prop</a>) with the same class</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">This constraint is generally only used for properties to be used as identifiers for their
+               </div>
+               <div class="part remarks">
+                  <p class="p">This constraint is generally only used for properties to be used as identifiers for their
           control object (control, subcontrol, or part). Guaranteeing their uniqueness means that
           these values can be used to effect one-to-one retrieval or reference to the objects to
           which they are assigned (even when IDs are unknown or undefined).</p>
-            <p class="p">Note that a property marked as an identifier, may or may not be (also declared as) a
+                  <p class="p">Note that a property marked as an identifier, may or may not be (also declared as) a
           singleton. In any case the value of <em class="em">each</em> property of the given class must be
           unique. So if a control has several <q class="q">name</q> properties, <q class="q">name</q> being declared as
           an identifier, then each of the name properties in that control must be unique:
             <q class="q">George</q>
-               <q class="q">John</q> and <q class="q">Ringo</q> not <q class="q">George</q>, <q class="q">George</q> and <q class="q">George</q>.</p>
-         </div>
-    
-    
+                     <q class="q">John</q> and <q class="q">Ringo</q> not <q class="q">George</q>, <q class="q">George</q> and <q class="q">George</q>.</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e858">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">regex</span> 
+                  <span class="run-in subst full_name">Regular expression constraint</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates that the value of a property (<a href="" class="code">prop</a>) or parameter
+               <div class="part description">
+                  <p class="p">Indicates that the value of a property (<a href="" class="code">prop</a>) or parameter
             (<a href="" class="code">param</a>) must match the given regular expression</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Matching against a regular expression is conducted on the normalized lexical value of the
+               </div>
+               <div class="part remarks">
+                  <p class="p">Matching against a regular expression is conducted on the normalized lexical value of the
           given parameter or property: that is, with leading and trailing whitespace stripped,
           interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline
           markup stripped.</p>
-            <p class="p">When more than one <a href="" class="code">regex</a> is given in a declaration, a match on any of them
+                  <p class="p">When more than one <a href="" class="code">regex</a> is given in a declaration, a match on any of them
           is taken to satisfy the requirement.</p>
-         </div>
+               </div>
+            </div>
     
-    
-    
+            <div class="control element-description" id="d6e893">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">value</span> 
+                  <span class="run-in subst full_name">Value constraint</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates a permissible value for a parameter or property</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">In a declaration, <a href="" class="code">value</a> will commonly be given in groups, indicating a set
+               <div class="part description">
+                  <p class="p">Indicates a permissible value for a parameter or property</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">In a declaration, <a href="" class="code">value</a> will commonly be given in groups, indicating a set
           of enumerated permissible values (i.e., for an element to be valid to a value constraint,
           it must equal one of the given values).</p>
-            <p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any
+                  <p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any
           value given at the point of insertion. When parameters are provided in OSCAL profiles,
           their values will override any values assigned <q class="q">lower down the stack</q>.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e923">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">autonum</span> 
+                  <span class="run-in subst full_name">Autonumbered (generated) value</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Generates a formatted numeric value based on the position of a control object among its
+               <div class="part description">
+                  <p class="p">Generates a formatted numeric value based on the position of a control object among its
           siblings, the text contents providing a template for the numbering format (arabic,
           alphabetic, roman, etc.)</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">The text contents of <a href="" class="code">autonum</a> (not the value of any attribute) will be taken
+               </div>
+               <div class="part remarks">
+                  <p class="p">The text contents of <a href="" class="code">autonum</a> (not the value of any attribute) will be taken
           by the processor to be a formatting code. The format should follow the spec for <a class="xref" href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
               <code class="code">xsl:number/@format</code>
-               </a>. For example, if the value is <q class="q">A.</q>, then
+                     </a>. For example, if the value is <q class="q">A.</q>, then
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
           include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
         
-         </div>
+               </div>
       
-    
-    
+            </div>
+            <div class="control element-description" id="d6e957">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">inherit</span> 
+                  <span class="run-in subst full_name">Inherited value</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates that a value or text within a value should be inherited from a property on a
+               <div class="part description">
+                  <p class="p">Indicates that a value or text within a value should be inherited from a property on a
           containing control object</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">
-               <a href="" class="code">inherit</a> is typically used to enforce hierarchical numbering within control
+               </div>
+               <div class="part remarks">
+                  <p class="p">
+                     <a href="" class="code">inherit</a> is typically used to enforce hierarchical numbering within control
           objects. When given in a <a href="" class="code">value</a> in a declaration, <a href="" class="code">inherit</a>
           indicates that the value of a property, or a segment of its value, must be the same as a
           property (<a href="" class="code">prop</a>) higher in the containment hierarchy of a control object. That
@@ -561,347 +935,439 @@ a:visited { color: midnightblue }
             <code class="code">value/inherit</code>, it must be the same as is assigned on the closest ancestor
             (<a href="" class="code">part</a>, <a href="" class="code">subcontrol</a>, <a href="" class="code">control</a>, or
           <a href="" class="code">group</a>) with the given property.</p>
-            <p class="p">Usually, <a href="" class="code">inherit</a> is used in conjunction with <a href="" class="code">autonum</a>. Using the
+                  <p class="p">Usually, <a href="" class="code">inherit</a> is used in conjunction with <a href="" class="code">autonum</a>. Using the
           two elements in combination, for example, the number (property) assigned to a subcontrol
           appearing inside a control numbered <q class="q">A1</q> may be constrained to be <q class="q">A1-a</q>,
             <q class="q">A1-b</q>, etc., depending on the position of the subcontrol within the control.</p>
-            <p class="p">If a value must inherit from a property of a different class from the containing control
+                  <p class="p">If a value must inherit from a property of a different class from the containing control
           object, <code class="code">inherit/@from</code> can be used to indicate the applicable property (by its
           class). By default, <a href="" class="code">inherit</a> indicates a property value should match an
           ancestor's property with the same <code class="code">@class</code> (the most usual case).</p>
         
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1041">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">desc</span> 
+                  <span class="run-in subst full_name">Parameter description</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Indicates and explains the purpose and use of a parameter</p>
-         </div>
+               <div class="part description">
+                  <p class="p">Indicates and explains the purpose and use of a parameter</p>
+               </div>
+            </div>
     
+         </section>
+         <section class="group" id="d6e1057">
+            <h3>Structural elements</h3>
     
-      </section>
-      <section class="group" id="d6e1042">
-         <h3>Structural elements</h3>
-    
-    
+            <div class="control element-description" id="d6e1062">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">section</span> 
+                  <span class="run-in subst full_name">Section</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">For partitioning a catalog, collection, or section therein</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Echoes HTML5 <a href="" class="code">section</a>. May contain controls (<a href="" class="code">control</a>) or groups
+               <div class="part description">
+                  <p class="p">For partitioning a catalog, collection, or section therein</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Echoes HTML5 <a href="" class="code">section</a>. May contain controls (<a href="" class="code">control</a>) or groups
           of controls (<a href="" class="code">group</a>).</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1092">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">group</span> 
+                  <span class="run-in subst full_name">Group</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Related controls or groups (of controls or groups)</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">In addition to controls or groups, groups may be titled and may have their own
+               <div class="part description">
+                  <p class="p">Related controls or groups (of controls or groups)</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">In addition to controls or groups, groups may be titled and may have their own
           properties, statements, parameter settings, and references, subject to declaration. In this
           respect they are like controls, subcontrols or parts, but their properties apply to the
           entire group and must be acquired in processing via inheritance.</p>
-            <p class="p">Unlike sections (<a href="" class="code">section</a> elements), groups may not contain arbitrary prose
+                  <p class="p">Unlike sections (<a href="" class="code">section</a> elements), groups may not contain arbitrary prose
           (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped
           (no <code class="code">@class</code>) and therefore unconstrained by declarations.</p>
-         </div>
+               </div>
       
-    
-    
-      
-      
-         <div class="part description">
-            <p class="p">A fallback for display and navigation, exclusive of more specific properties</p>
-         </div>
-      
-    
-    
+            </div>
+            <div class="control element-description" id="d6e1122">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">title</span> 
+                  <span class="run-in subst full_name">Title</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A group of reference descriptions</p>
-         </div>
+               <div class="part description">
+                  <p class="p">A fallback for display and navigation, exclusive of more specific properties</p>
+               </div>
       
-    
-    
+            </div>
+            <div class="control element-description" id="d6e1137">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">references</span> 
+                  <span class="run-in subst full_name">References</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A reference, with one or more citations to standards, related documents, or other
+               <div class="part description">
+                  <p class="p">A group of reference descriptions</p>
+               </div>
+      
+            </div>
+            <div class="control element-description" id="d6e1153">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">ref</span> 
+                  <span class="run-in subst full_name">Reference</span> 
+               </h4>
+      
+      
+               <div class="part description">
+                  <p class="p">A reference, with one or more citations to standards, related documents, or other
           resources</p>
-         </div>
+               </div>
       
-    
-    
-      
-      
-         <div class="part description">
-            <p class="p">Citation of a formal published standard</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Echoes the NISO JATS (and NISO STS) <a href="" class="code">std</a> element</p>
-         </div>
-    
-    
+            </div>
+            <div class="control element-description" id="d6e1168">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">std</span> 
+                  <span class="run-in subst full_name">Standard</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Citation of a resource</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code">mixed-citation</code> element.</p>
-            <p class="p">For references to standards, <a href="" class="code">std</a> may be preferred.</p>
-         </div>
+               <div class="part description">
+                  <p class="p">Citation of a formal published standard</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Echoes the NISO JATS (and NISO STS) <a href="" class="code">std</a> element</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1192">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">citation</span> 
+                  <span class="run-in subst full_name">Citation</span> 
+               </h4>
+      
+      
+               <div class="part description">
+                  <p class="p">Citation of a resource</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Echoes the NISO JATS (and NISO STS) <code class="code">mixed-citation</code> element.</p>
+                  <p class="p">For references to standards, <a href="" class="code">std</a> may be preferred.</p>
+               </div>
+            </div>
+         </section>
+         <section class="group" id="d6e1223">
+            <h3>Prose</h3>
     
-      </section>
-      <section class="group" id="d6e1208">
-         <h3>Prose</h3>
-    
-         <p class="p">Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level.
+            <p class="p">Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level.
       OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a
       narrow subset of HTML element types. This is intended to be the bare minimum of stripped down
       text as is appropriate for control documentation. Graphics, diagrams, and tables are all out
       of scope for OSCAL (although arbitrary feature sets can always be modeled as nested
       parts).</p>
-         <p class="p">Among prose elements, <a href="" class="code">p</a> elements in particular are of interest in that they may
+            <p class="p">Among prose elements, <a href="" class="code">p</a> elements in particular are of interest in that they may
       be constrained by declarations like other control components – although this may not often be
       as useful as imposing constraints over properties and parts. Frequently, a part organization
       will be used to assign prose to specific known <q class="q">sections</q> or <q class="q">components</q> of a
       control (modeled as <a href="" class="code">part</a> or <a href="" class="code">subcontrol</a>).</p>
-    
+            <div class="control element-description" id="d6e1249">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">p</span> 
+                  <span class="run-in subst full_name">Paragraph</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Running text: a paragraph or paragraph fragment</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">This element echoes HTML <a href="" class="code">p</a>. As in HTML, it is not limited to indicating
+               <div class="part description">
+                  <p class="p">Running text: a paragraph or paragraph fragment</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">This element echoes HTML <a href="" class="code">p</a>. As in HTML, it is not limited to indicating
           complete or discrete (compositional or logical) paragraphs, but can be used for any text
           set off on its own line.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1273">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">pre</span> 
+                  <span class="run-in subst full_name">Preformatted text</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Retains whitespace in display</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Echoes HTML <a href="" class="code">pre</a>.</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">Retains whitespace in display</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Echoes HTML <a href="" class="code">pre</a>.</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1298">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">ol</span> 
+                  <span class="run-in subst full_name">Ordered List</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Appears with numbering in ordinal position</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Although this echoes HTML <a href="" class="code">ol</a>, renditional aspects of this element are not
+               <div class="part description">
+                  <p class="p">Appears with numbering in ordinal position</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Although this echoes HTML <a href="" class="code">ol</a>, renditional aspects of this element are not
           offered by OSCAL. How lists are to be numbered is left to implementations; it
           is likely that specific control catalogs will have their own schemes.</p>
-            <p class="p">At present there is no support for <q class="q">continued lists</q>, as we have not seen any in
+                  <p class="p">At present there is no support for <q class="q">continued lists</q>, as we have not seen any in
           documents in scope for analysis.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1328">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">ul</span> 
+                  <span class="run-in subst full_name">Unordered list</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">A series of items kept in order but without indicators of sequence; likely bulleted</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">As in HTML, <q class="q">unordered</q> does not indicate that the order of contained list items is
+               <div class="part description">
+                  <p class="p">A series of items kept in order but without indicators of sequence; likely bulleted</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">As in HTML, <q class="q">unordered</q> does not indicate that the order of contained list items is
           not respected, only that they are not displayed with any notation indicating their order:
           that is, bullets, not numbers.</p>
-            <p class="p">Note that when sequences or lists appear, it may be as common in OSCAL to list (and
+                  <p class="p">Note that when sequences or lists appear, it may be as common in OSCAL to list (and
           control) them as sequences of properties or paragraphs, perhaps grouped in parts or
           subcontrols. This is very much a display element, convenient when what we have is really
           prose, not highly organized or <q class="q">semantic</q>.</p>
-            <p class="p">OSCAL has (as of yet) no <q class="q">simple</q> or unadorned list element; it is suggested that an
+                  <p class="p">OSCAL has (as of yet) no <q class="q">simple</q> or unadorned list element; it is suggested that an
             <code class="code">@class</code> added to <a href="" class="code">ul</a> should be rendered as such in any
           application that wants it.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1370">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">li</span> 
+                  <span class="run-in subst full_name">List item</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">An item demarcated with a bullet or numerator</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">An item demarcated with a bullet or numerator</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1385">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">em</span> 
+                  <span class="run-in subst full_name">Emphasis</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Rhetorical emphasis as typically indicated by a font shift</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">In display, this element can be expected to <q class="q">toggle</q>, i.e. provide for italics when
+               <div class="part description">
+                  <p class="p">Rhetorical emphasis as typically indicated by a font shift</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">In display, this element can be expected to <q class="q">toggle</q>, i.e. provide for italics when
           appearing within roman text, but roman when appearing within italic text.</p>
-            <p class="p">Particular semantics (indicating types of emphasis for finer resolution in display or
+                  <p class="p">Particular semantics (indicating types of emphasis for finer resolution in display or
           retrieval) may be provided via <code class="code">@class</code>.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1415">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">i</span> 
+                  <span class="run-in subst full_name">Italics</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Typographical shift to italics</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">An implementation may toggle, i.e., display contents using a roman face when the
+               <div class="part description">
+                  <p class="p">Typographical shift to italics</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">An implementation may toggle, i.e., display contents using a roman face when the
           surrounding text is already italic.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1436">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">b</span> 
+                  <span class="run-in subst full_name">Bold</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Typographical shift to bold</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">In display, when the surrounding text is already bold, an implementation may indicate
+               <div class="part description">
+                  <p class="p">Typographical shift to bold</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">In display, when the surrounding text is already bold, an implementation may indicate
             <q class="q">bold</q> by means of double-bold or some other typographical distinction.</p>
-            <p class="p">As of yet, OSCAL does not support underlining directly (no <code class="code">u</code> element or
+                  <p class="p">As of yet, OSCAL does not support underlining directly (no <code class="code">u</code> element or
           designated property</p>
-            <p class="p">). Even <a href="" class="code">b</a> and <a href="" class="code">i</a> should be regarded as escape hatches, and
+                  <p class="p">). Even <a href="" class="code">b</a> and <a href="" class="code">i</a> should be regarded as escape hatches, and
           marked with classes when possible.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1476">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">a</span> 
+                  <span class="run-in subst full_name">Anchor</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">An HTML-style anchor (inline linking element)</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">As in HTML, the link target is indicated by <code class="code">@href</code>, with a '#' prefix for an
+               <div class="part description">
+                  <p class="p">An HTML-style anchor (inline linking element)</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">As in HTML, the link target is indicated by <code class="code">@href</code>, with a '#' prefix for an
           internal cross-reference matching an <code class="code">@id</code> elsewhere in the document.</p>
-            <p class="p">Anchors without <code class="code">@href</code> are not invalid to the OSCAL schema (base validation),
+                  <p class="p">Anchors without <code class="code">@href</code> are not invalid to the OSCAL schema (base validation),
           but may be reported by a Schematron. An application may promote the contents of an
             <a href="" class="code">a</a> element, when a valid URI, to serve as the link target if
             <code class="code">@href</code> is missing or not a URI.</p>
-            <p class="p">As in HTML, <a href="" class="code">a</a> appears inline (in mixed content), while <a href="" class="code">link</a> is
+                  <p class="p">As in HTML, <a href="" class="code">a</a> appears inline (in mixed content), while <a href="" class="code">link</a> is
           a <q class="q">paragraph-level</q> link (that appears next to paragraphs or components in a
           control).</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1527">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">q</span> 
+                  <span class="run-in subst full_name">Quoted text</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">An inline segment to appear within quotation marks</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">For practical purposes, this is a cosmetic element with no special semantics other than
+               <div class="part description">
+                  <p class="p">An inline segment to appear within quotation marks</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">For practical purposes, this is a cosmetic element with no special semantics other than
           to provide quotation marks in display.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1548">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">code</span> 
+                  <span class="run-in subst full_name">Code</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Inline code</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Strictly, this element should identify formal code or code fragments. Like anything else,
+               <div class="part description">
+                  <p class="p">Inline code</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">Strictly, this element should identify formal code or code fragments. Like anything else,
           it may be <q class="q">enhanced</q> using its class.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1572">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">sup</span> 
+                  <span class="run-in subst full_name">Superscript</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Superscripted text</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">Superscripted text</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1587">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">sub</span> 
+                  <span class="run-in subst full_name">Subscript</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Subscripted text</p>
-         </div>
-    
-    
+               <div class="part description">
+                  <p class="p">Subscripted text</p>
+               </div>
+            </div>
+            <div class="control element-description" id="d6e1602">
+               <h4 class="element-description">
+                  <span class="run-in subst tag">span</span> 
+                  <span class="run-in subst full_name">Span</span> 
+               </h4>
       
       
-         <div class="part description">
-            <p class="p">Generic inline container</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
-            <p class="p">The OSCAL declarations model does not presently support validating properties of
+               <div class="part description">
+                  <p class="p">Generic inline container</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.</p>
+                  <p class="p">The OSCAL declarations model does not presently support validating properties of
           arbitrary spans. But it might. Please share your requirements.</p>
-         </div>
+               </div>
+            </div>
+         </section>
+         <section class="group" id="d6e1627">
+            <h3>Constraints outside the core schema</h3>
     
-      </section>
-      <section class="group" id="d6e1612">
-         <h3>Constraints outside the core schema</h3>
-    
-         <p class="p">Over and above what can be validated with a grammar (in the schema at the <q class="q">core</q> level,
+            <p class="p">Over and above what can be validated with a grammar (in the schema at the <q class="q">core</q> level,
       but also distinct from OSCAL-flavor-specific validations, is a small set of constraints
       governing usage of @class assignments and element occurrence. Validations enforcing them can
       be implemented via Schematron or another process capable of static analysis of the data.</p>
-    
+            <div class="control general-constraint" id="d6e1638">
+               <h4 class="general-constraint">Order of items inside controls</h4>
       
-         <div class="part description">
-            <p class="p">Within a control, properties, parts, parameters and prose contents may appear in any
+               <div class="part description">
+                  <p class="p">Within a control, properties, parts, parameters and prose contents may appear in any
           order</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">This is for maximum flexibility in OSCAL. OSCAL leaves it to its applications and
+               </div>
+               <div class="part remarks">
+                  <p class="p">This is for maximum flexibility in OSCAL. OSCAL leaves it to its applications and
           implementations to enforce ordering.</p>
-            <p class="p">Note that parameters in particular are "floating values" and may appear almost anywhere,
+                  <p class="p">Note that parameters in particular are "floating values" and may appear almost anywhere,
           in OSCAL that is otherwise unconstrained. It is not an error for a parameter value to be
           inserted into a document at a point before the parameter itself has been declared; absent
           other constraints imposed over the XML, parameters may be set even very late in document
           order, and their values injected <q class="q">proactively</q> (before the setting itself appears in
           the file). This is mitigated by the fact that parameter ID values must be unique, making
           parameters easily findable from their points of insertion.</p>
-            <p class="p">How or whether an implementation may respect the order of properties, parts and
+                  <p class="p">How or whether an implementation may respect the order of properties, parts and
           components in general, within a control type, may be expected to vary among applications
           or <q class="q">flavors</q> of OSCAL; but order among components is not presently enforced under its
           declarations model. (Such a functionality could be discussed.)</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control general-constraint" id="d6e1668">
+               <h4 class="general-constraint">Interdicted @class assignments</h4>
       
-         <div class="part description">
-            <p class="p">No control, control component or group can have a class assignment that overlaps with an
+               <div class="part description">
+                  <p class="p">No control, control component or group can have a class assignment that overlaps with an
           element name in OSCAL</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">Interdicted names: <a href="" class="code">control</a>, <a href="" class="code">group</a>, <a href="" class="code">part</a>,
+               </div>
+               <div class="part remarks">
+                  <p class="p">Interdicted names: <a href="" class="code">control</a>, <a href="" class="code">group</a>, <a href="" class="code">part</a>,
             <a href="" class="code">prop</a>,<a href="" class="code">param</a>, or <a href="" class="code">title</a>. Using the
             <a href="" class="code">title</a> element for nominal titles is better than using a property. The
           others should be rarely called for (meta-OSCAL aside) and would anyway be confusing.</p>
-            <p class="p">This constraint may be relaxed by failing to run the <code class="code">OSCAL-strict.sch</code>
+                  <p class="p">This constraint may be relaxed by failing to run the <code class="code">OSCAL-strict.sch</code>
           Schematron.</p>
-         </div>
-    
-    
+               </div>
+            </div>
+            <div class="control general-constraint" id="d6e1714">
+               <h4 class="general-constraint">No overloading @class</h4>
       
-         <div class="part description">
-            <p class="p">(Not presently enforced) Values of the <code class="code">class</code> attribute i.e.
+               <div class="part description">
+                  <p class="p">(Not presently enforced) Values of the <code class="code">class</code> attribute i.e.
             <code class="code">@class</code> must be single; no space-delimited multiple classes as in HTML</p>
-         </div>
-         <div class="part remarks">
-            <p class="p">While the declarations model may still work even with overloaded, multi-value classes, it
+               </div>
+               <div class="part remarks">
+                  <p class="p">While the declarations model may still work even with overloaded, multi-value classes, it
           might also lead to conniption fits. Better perhaps at the outset to warn against this. You
           shouldn't have to do that anyway.</p>
-            <p class="p">So far we have not needed to enforce this – the declarations model, for example, can cope
+                  <p class="p">So far we have not needed to enforce this – the declarations model, for example, can cope
           with multiple classes – there may come a day.</p>
-            <p class="p">OSCAL users may have insights into whether class overloading (in OSCAL, not elsewhere) is
+                  <p class="p">OSCAL users may have insights into whether class overloading (in OSCAL, not elsewhere) is
           a good thing or a bad thing to be discouraged.</p>
-         </div>
-    
-      </section>
+               </div>
+            </div>
+         </section>
   
+      </div>
    </body>
 </html>
