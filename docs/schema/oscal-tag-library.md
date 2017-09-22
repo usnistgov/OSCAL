@@ -4,7 +4,7 @@
 >   * [OSCAL namespace](#oscal-namespace)
 >   * [OSCAL organization](#oscal-organization)
 >   * [Interoperability with other data formats](#interoperability-with-other-data-formats)
->   * [Controls and control components](#controls-and-control-components)
+>   * [Controls, components and their contents](#controls,-components-and-their-contents)
 >     * [&lt;catalog> Catalog](#catalog-catalog)
 >     * [&lt;framework> Framework](#framework-framework)
 >     * [&lt;control> Control](#control-control)
@@ -85,9 +85,9 @@ OSCAL should map easily and straightforwardly to any generic XML or tag-based ma
 
 Because OSCAL is designed to carry richer and denser semantics than most markup languages, however, automated conversion into OSCAL from any of these formats (or at any rate, into a process-oriented and optimized OSCAL) is likely to require tuning or customization per instance - that is, each one will be a one-off conversion.  
 
-### Controls and control components 
+### Controls, components and their contents 
 
-The foundations of OSCAL are in control objects, such as controls and subcontrols, and their components, including both formal components (described here) and relatively uncontrolled or free-form contents (described elsewhere as [prose](#prose)). 
+The foundations of OSCAL are in control objects, such as controls and subcontrols, and the structured information (loosely "objects", represented as valid XML elements). These contents will include both structured contents (using element types as described here) and relatively uncontrolled or free-form contents (described elsewhere as [prose](#prose)). 
 
 #### &lt;catalog> Catalog   
 
@@ -97,9 +97,9 @@ Top-level element for a (canonical) control catalog
 
 Top-level element for a set of control-like components, not considered to be a catalog   
 
-This element represents a collection of structured data objects ("components", cf component) that present information in ways organized to facilitate coordinated access (both manual and automated) both to one another and to controls documented in control catalogs. This is a suitable element for representing, not a control catalog, but an overlay or customization that has its own organization, making many-to-many links across catalogs, their profiles, and other canonical reference documents. (A customization that does not reorganize, but only selects from and configures a control, can be a `profile`.) 
+This element represents a collection of structured data objects ("components", see component) that present information in ways organized to facilitate coordinated access (both manual and automated) both with one another and with controls documented in control catalogs. This is a suitable element for representing, not a control catalog, but an overlay or customization that has its own organization, making many-to-many links across catalogs, their profiles, and other canonical reference documents. (A customization that does not reorganize, but only selects from and configures a control, can be a `profile`.) 
 
-Despite their very different roles in the system (catalogs for canonical collections of controls, frameworks for most anything else), components inside frameworks and controls inside catalogs have the same kinds of content objects subject to similar kinds of restrictions.   
+Despite their very different roles in the system (catalogs for canonical collections of controls, frameworks for most anything else), components inside frameworks and controls inside catalogs have the same kinds of content objects subject to similar kinds of restrictions. With respect to their internals, that is, they are closely aligned, which simplifies processing of information across the boundaries between them.   
 
 #### &lt;control> Control   
 
@@ -173,7 +173,7 @@ The functionality provided by this element might better be offered by a property
 
 ### Declarations elements 
 
-By declaring constraints on control components, such as properties (prop), parts (part) and links (link) within controls and subcontrols, applications and operators can validate the composition and consistency of available controls. Over and above the "core validation" of OSCAL element naming (which is enforced by direct application of an XML schema), such validation can help to guarantee processability and interchange of OSCAL data by verifying that not only tags, but also values given in the data, conform to expressed constraints, which can be made specific to a catalog or catalog type. 
+By declaring constraints on information associated with controls such as their properties (prop), parts (part) and links (link), applications and operators can validate the composition and consistency of available controls. Over and above the "core validation" of OSCAL element naming (which is enforced by direct application of an XML schema), such validation can help to guarantee processability and interchange of OSCAL data by verifying that not only tags, but also values given in the data, conform to expressed constraints, which can be made specific to a catalog or catalog type. 
 
 In this way, the OSCAL declarations mechanism provides for a kind of "on the fly supertyping" of control objects, by restriction (constraint) of the core OSCAL language. The extent and degree to which declarations are used to impose order on controls is up to the application and its methods. By no means are declarations necessary; but they serve as an aid in modeling and in communicating expectations. 
 
@@ -181,9 +181,9 @@ OSCAL declarations are enforced by a Schematron; the core schema stipulates this
 
 #### &lt;declarations> Declarations   
 
-For extra-schema validation of control components within controls   
+For extra-schema validation of data given within controls or framework components   
 
-The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of `@class` (for control components) and `@context` (indicating control, subcontrol, or part wherein the components may appear), enable automated checking for consistency of controls, subcontrols, and their parts, specific to the types or kinds of control items that appear within a particular catalog or control collection.   
+The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which they appear. Constraints described in these declarations, and bound via assignments of `@class` (for information within controls or components) and `@context` (indicating control, subcontrol, component or part wherein the given object may appear), enable automated checking for consistency of controls, subcontrols, components and their parts, specific to the types or kinds of control items that appear within a particular catalog or framework.   
 
 #### &lt;declare-prop> Property declaration   
 
@@ -219,7 +219,7 @@ Indicates constraints to be imposed on links in context
 
 The declared component may occur only once in its context   
 
-When this element is present in the declaration of an OSCAL control component, the component (prop, param, part) must be the only component of that class given in its (group, control, subcontrol, or part) context. In other words, no other element child of the same parent may have the same `@class` value. 
+When this element is present in the declaration of a data object in OSCAL (such as a prop, link, or part) must be the only object of that class given in its (group, control, subcontrol, component or part) context. In other words, no other element child of the same parent may have the same `@class` value. 
 
 Note that the singleton constraint does not apply to the value of the property, but only to the fact that it is an "only child", unique among its siblings for having its class assignment.   
 
@@ -227,7 +227,7 @@ Note that the singleton constraint does not apply to the value of the property, 
 
 The declared component is required in its context   
 
-When this element is present in the declaration of an OSCAL control component, the component (prop, param, or part, of the given class) is required to appear, at least once, in its context. 
+When this element is present in the declaration of an OSCAL object, the object (prop, link, or part element, of the given class) is required to appear, at least once, in its context. 
 
 A property or part that is a required singleton, is expected to appear exactly once and once only in every applicable control, subcontrol or part. 
 
@@ -323,7 +323,7 @@ For references to standards, std may be preferred.
 
 Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level. OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a narrow subset of HTML element types. This is intended to be the bare minimum of stripped down text as is appropriate for control documentation. Graphics, diagrams, and tables are all out of scope for OSCAL (although arbitrary feature sets can always be modeled as nested parts). 
 
-Among prose elements, p elements in particular are of interest in that they may be constrained by declarations like other control components – although this may not often be as useful as imposing constraints over properties and parts. Frequently, a part organization will be used to assign prose to specific known "sections" or "components" of a control (modeled as part or subcontrol). 
+Among prose elements, p elements in particular are of interest in that they may be constrained by declarations like other contents of controls (or components) – although this may not often be as useful as imposing constraints over properties and parts. Frequently, a part organization will be used to assign prose to specific known "sections" or "enhancements" of a control (modeled as part or subcontrol). 
 
 #### &lt;p> Paragraph   
 
@@ -437,9 +437,9 @@ How or whether an implementation may respect the order of properties, parts and 
 
 #### Interdicted @class assignments  
 
-No control, control component or group can have a class assignment that overlaps with an element name in OSCAL   
+No control, component, object within a control, framework component or group can have a class assignment that overlaps with an element name in OSCAL   
 
-Interdicted names: control, group, part, prop,param, or title. Using the title element for nominal titles is better than using a property. The others should be rarely called for (meta-OSCAL aside) and would anyway be confusing. 
+Interdicted names: control, subcontrol, component group, part, prop,param, or title. Using the title element for nominal titles is better than using a property. 
 
 This constraint may be relaxed by failing to run the `OSCAL-strict.sch` Schematron.   
 

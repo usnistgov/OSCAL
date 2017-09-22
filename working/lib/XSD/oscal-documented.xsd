@@ -99,7 +99,7 @@
    <xs:element name="declarations">
       <xs:annotation>
          <xs:documentation>
-            <b>Declarations</b> For extra-schema validation of control components within controls</xs:documentation>
+            <b>Declarations</b> For extra-schema validation of data given within controls or framework components</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:complexContent>

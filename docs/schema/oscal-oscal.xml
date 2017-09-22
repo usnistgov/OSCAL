@@ -72,10 +72,12 @@
       customization per instance - that is, each one will be a one-off conversion.</p>
   </section>
   <group>
-    <title>Controls and control components</title>
-    <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and their
-      components, including both formal components (described here) and relatively uncontrolled or
-      free-form contents (described elsewhere as <a href="oscal-oscal.xml#prose">prose</a>).</p>
+    <title>Controls, components and their contents</title>
+    <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and the
+      structured information (loosely <q>objects</q>, represented as valid XML elements). These
+      contents will include both structured contents (using element types as described here) and
+      relatively uncontrolled or free-form contents (described elsewhere as <a
+        href="oscal-oscal.xml#prose">prose</a>).</p>
     <component class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
@@ -90,9 +92,9 @@
         <p>Top-level element for a set of control-like components, not considered to be a catalog</p>
       </part>
       <part class="remarks">
-        <p>This element represents a collection of structured data objects (<q>components</q>, cf
+        <p>This element represents a collection of structured data objects (<q>components</q>, see
             <code>component</code>) that present information in ways organized to facilitate
-          coordinated access (both manual and automated) both to one another and to controls
+          coordinated access (both manual and automated) both with one another and with controls
           documented in control catalogs. This is a suitable element for representing, not a control
           catalog, but an overlay or customization that has its own organization, making
           many-to-many links across catalogs, their profiles, and other canonical reference
@@ -101,7 +103,8 @@
         <p>Despite their very different roles in the system (catalogs for canonical collections of
           controls, frameworks for most anything else), components inside frameworks and controls
           inside catalogs have the same kinds of content objects subject to similar kinds of
-          restrictions.</p>
+          restrictions. With respect to their internals, that is, they are closely aligned, which
+          simplifies processing of information across the boundaries between them.</p>
       </part>
     </component>
     <component class="element-description">
@@ -251,10 +254,10 @@
   </group>
   <group>
     <title>Declarations elements</title>
-    <p>By declaring constraints on control components, such as properties (<code>prop</code>), parts
-        (<code>part</code>) and links (<code>link</code>) within controls and subcontrols,
-      applications and operators can validate the composition and consistency of available controls.
-      Over and above the <q>core validation</q> of OSCAL element naming (which is enforced by direct
+    <p>By declaring constraints on information associated with controls such as their properties
+        (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
+      and operators can validate the composition and consistency of available controls. Over and
+      above the <q>core validation</q> of OSCAL element naming (which is enforced by direct
       application of an XML schema), such validation can help to guarantee processability and
       interchange of OSCAL data by verifying that not only tags, but also values given in the data,
       conform to expressed constraints, which can be made specific to a catalog or catalog type.</p>
@@ -271,18 +274,18 @@
       <prop class="tag">declarations</prop>
       <prop class="full_name">Declarations</prop>
       <part class="description">
-        <p>For extra-schema validation of control components within controls</p>
+        <p>For extra-schema validation of data given within controls or framework components</p>
       </part>
       <part class="remarks">
         <p>The OSCAL validation model supports not only validation against a formal schema
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
           or catalog type within which they appear. Constraints described in these declarations, and
-          bound via assignments of <code>@class</code> (for control components) and
-            <code>@context</code> (indicating control, subcontrol, or part wherein the components may
-          appear), enable automated checking for consistency of controls, subcontrols, and their
-          parts, specific to the types or kinds of control items that appear within a particular
-          catalog or control collection.</p>
+          bound via assignments of <code>@class</code> (for information within controls or
+          components) and <code>@context</code> (indicating control, subcontrol, component or part
+          wherein the given object may appear), enable automated checking for consistency of
+          controls, subcontrols, components and their parts, specific to the types or kinds of
+          control items that appear within a particular catalog or framework.</p>
       </part>
     </component>
     <component class="element-description">
@@ -365,11 +368,12 @@
         <p>The declared component may occur only once in its context</p>
       </part>
       <part class="remarks">
-        <p>When this element is present in the declaration of an OSCAL control component, the
-          component (<code>prop</code>, <code>param</code>, <code>part</code>) must be the only
-          component of that class given in its (<code>group</code>, <code>control</code>,
-            <code>subcontrol</code>, or <code>part</code>) context. In other words, no other element
-          child of the same parent may have the same <code>@class</code> value.</p>
+        <p>When this element is present in the declaration of a data object in OSCAL (such as a
+            <code>prop</code>, <code>link</code>, or <code>part</code>) must be the only object of
+          that class given in its (<code>group</code>, <code>control</code>,
+          <code>subcontrol</code>, <code>component</code> or <code>part</code>) context. In other
+          words, no other element child of the same parent may have the same <code>@class</code>
+          value.</p>
         <p>Note that the singleton constraint does not apply to the value of the property, but only
           to the fact that it is an <q>only child</q>, unique among its siblings for having its
           class assignment.</p>
@@ -382,9 +386,9 @@
         <p>The declared component is required in its context</p>
       </part>
       <part class="remarks">
-        <p>When this element is present in the declaration of an OSCAL control component, the
-          component (<code>prop</code>, <code>param</code>, or <code>part</code>, of the given
-          class) is required to appear, at least once, in its context.</p>
+        <p>When this element is present in the declaration of an OSCAL object, the object
+            (<code>prop</code>, <code>link</code>, or <code>part</code> element, of the given class)
+          is required to appear, at least once, in its context.</p>
         <p>A property or part that is a required singleton, is expected to appear exactly once and
           once only in every applicable control, subcontrol or part.</p>
         <p>Whenever a control or control object is required to have any parts (or properties etc.),
@@ -586,10 +590,11 @@
       of scope for OSCAL (although arbitrary feature sets can always be modeled as nested
       parts).</p>
     <p>Among prose elements, <code>p</code> elements in particular are of interest in that they may
-      be constrained by declarations like other control components – although this may not often be
-      as useful as imposing constraints over properties and parts. Frequently, a part organization
-      will be used to assign prose to specific known <q>sections</q> or <q>components</q> of a
-      control (modeled as <code>part</code> or <code>subcontrol</code>).</p>
+      be constrained by declarations like other contents of controls (or components) – although this
+      may not often be as useful as imposing constraints over properties and parts. Frequently, a
+      part organization will be used to assign prose to specific known <q>sections</q> or
+        <q>enhancements</q> of a control (modeled as <code>part</code> or
+      <code>subcontrol</code>).</p>
     <component class="element-description">
       <prop class="tag">p</prop>
       <prop class="full_name">Paragraph</prop>
@@ -789,14 +794,14 @@
     <component class="general-constraint">
       <title>Interdicted @class assignments</title>
       <part class="description">
-        <p>No control, control component or group can have a class assignment that overlaps with an
-          element name in OSCAL</p>
+        <p>No control, component, object within a control, control component or group can have a
+          class assignment that overlaps with an element name in OSCAL</p>
       </part>
       <part class="remarks">
-        <p>Interdicted names: <code>control</code>, <code>group</code>, <code>part</code>,
-            <code>prop</code>,<code>param</code>, or <code>title</code>. Using the
-            <code>title</code> element for nominal titles is better than using a property. The
-          others should be rarely called for (meta-OSCAL aside) and would anyway be confusing.</p>
+        <p>Interdicted names: <code>control</code>, <code>subcontrol</code>, <code>component</code>
+          <code>group</code>, <code>part</code>, <code>prop</code>,<code>param</code>, or
+            <code>title</code>. Using the <code>title</code> element for nominal titles is better
+          than using a property.</p>
         <p>This constraint may be relaxed by failing to run the <code>OSCAL-strict.sch</code>
           Schematron.</p>
       </part>
