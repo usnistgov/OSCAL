@@ -5,7 +5,6 @@
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <invoke href="file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml">
       <include>
-
          <call control-id="ac.1"/>
          <!--AC-1.b.1 [at least every 3 years]
 AC-1.b.2 [at least annually]-->

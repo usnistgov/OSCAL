@@ -4,29 +4,97 @@
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.xsd"/>
-   <xs:complexType name="collection-contents">
+   <xs:complexType name="catalog-contents">
       <xs:sequence>
          <xs:element ref="oscal:title"/>
          <xs:element minOccurs="0" ref="oscal:declarations"/>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="oscal:section"/>
-            <xs:element ref="oscal:group"/>
+            <xs:group ref="oscal:group"/>
             <xs:element ref="oscal:control"/>
          </xs:choice>
          <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
    </xs:complexType>
-   <xs:element name="catalog" type="oscal:collection-contents">
+   <xs:complexType name="framework-contents">
+      <xs:sequence>
+         <xs:element ref="oscal:title"/>
+         <xs:element minOccurs="0" ref="oscal:declarations"/>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal:section"/>
+            <xs:group ref="oscal:category"/>
+            <xs:element ref="oscal:component"/>
+         </xs:choice>
+         <xs:element minOccurs="0" ref="oscal:references"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="catalog" type="oscal:catalog-contents">
       <xs:annotation>
          <xs:documentation>
             <b>Catalog</b> Top-level element for a (canonical) control catalog</xs:documentation>
       </xs:annotation>
    </xs:element>
-   <xs:element name="collection" type="oscal:collection-contents">
+   <xs:element name="framework">
       <xs:annotation>
          <xs:documentation>
-            <b>Collection</b> Top-level element for a set of controls, not considered to be a catalog</xs:documentation>
+            <b>Framework</b> Top-level element for a set of control-like components, not considered to be a catalog</xs:documentation>
       </xs:annotation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="oscal:framework-contents">
+               <xs:attributeGroup ref="oscal:idAttr"/>
+               <xs:attributeGroup ref="oscal:optionalClass"/>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="category">
+      <xs:sequence>
+         <xs:element name="group">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Group</b> Related controls or groups (of controls or groups)</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" ref="oscal:title"/>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                     <xs:element ref="oscal:prop"/>
+                     <xs:element ref="oscal:link"/>
+                     <xs:group ref="oscal:prose"/>
+                  </xs:choice>
+                  <xs:choice>
+                     <xs:group maxOccurs="unbounded" ref="oscal:category"/>
+                     <xs:element maxOccurs="unbounded" ref="oscal:component"/>
+                  </xs:choice>
+               </xs:sequence>
+               <xs:attributeGroup ref="oscal:idAttr"/>
+               <xs:attributeGroup ref="oscal:optionalClass"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:group>
+   <xs:element name="component">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Framework component</b> Within a framework, a structured information object typically referencing one or more
+          security controls</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:title"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:param"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+               <xs:element ref="oscal:prop"/>
+               <xs:element ref="oscal:link"/>
+               <xs:group ref="oscal:prose"/>
+               <xs:element ref="oscal:part"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:component"/>
+         </xs:sequence>
+         <xs:attributeGroup ref="oscal:idAttr"/>
+         <xs:attributeGroup ref="oscal:optionalClass"/>
+      </xs:complexType>
    </xs:element>
    <xs:element name="declarations">
       <xs:annotation>
@@ -115,7 +183,7 @@
             <xs:element minOccurs="0" ref="oscal:singleton"/>
             <xs:element minOccurs="0" ref="oscal:required"/>
          </xs:sequence>
-         <xs:attributeGroup ref="oscal:requiredClass"/>
+         <xs:attributeGroup ref="oscal:relAttr"/>
          <xs:attributeGroup ref="oscal:contextAttr"/>
       </xs:complexType>
    </xs:element>
@@ -186,7 +254,7 @@
             <xs:group ref="oscal:prose"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
                <xs:element ref="oscal:section"/>
-               <xs:element ref="oscal:group"/>
+               <xs:group ref="oscal:group"/>
             </xs:choice>
             <xs:element minOccurs="0" ref="oscal:references"/>
          </xs:sequence>
@@ -194,25 +262,29 @@
          <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="group">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Group</b> Related controls or groups (of controls or groups)</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal:title"/>
-            <xs:group ref="oscal:control-components"/>
-            <xs:choice maxOccurs="unbounded">
-               <xs:element ref="oscal:group"/>
-               <xs:element ref="oscal:control"/>
-            </xs:choice>
-            <xs:element minOccurs="0" ref="oscal:references"/>
-         </xs:sequence>
-         <xs:attributeGroup ref="oscal:idAttr"/>
-         <xs:attributeGroup ref="oscal:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
+   <xs:group name="group">
+      <xs:sequence>
+         <xs:element name="group">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Group</b> Related controls or groups (of controls or groups)</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" ref="oscal:title"/>
+                  <xs:group ref="oscal:control-components"/>
+                  <xs:choice maxOccurs="unbounded">
+                     <xs:group ref="oscal:group"/>
+                     <xs:element ref="oscal:control"/>
+                  </xs:choice>
+                  <xs:element minOccurs="0" ref="oscal:references"/>
+               </xs:sequence>
+               <xs:attributeGroup ref="oscal:idAttr"/>
+               <xs:attributeGroup ref="oscal:optionalClass"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:group>
    <xs:group name="control-components">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -245,7 +317,7 @@
    <xs:element name="subcontrol">
       <xs:annotation>
          <xs:documentation>
-            <b>Control extension</b> An associated control within a control</xs:documentation>
+            <b>Control extension</b> An associated or dependent control object; an enhancement to a control</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -266,7 +338,7 @@
    <xs:element name="part">
       <xs:annotation>
          <xs:documentation>
-            <b>Part</b> A component or partition in a control, subcontrol, or part</xs:documentation>
+            <b>Part</b> A partition, <q xmlns="http://csrc.nist.gov/ns/oscal/1.0">piece</q> or section of a control, subcontrol, component or part</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -335,7 +407,8 @@
    <xs:element name="prop">
       <xs:annotation>
          <xs:documentation>
-            <b>Property</b> A value with a name, attributed to the containing control, subcontrol, part, or group</xs:documentation>
+            <b>Property</b> A value with a name, attributed to the containing control, subcontrol, component, part,
+          or group</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attributeGroup ref="oscal:requiredClass"/>
@@ -406,7 +479,7 @@
    <xs:element name="p">
       <xs:annotation>
          <xs:documentation>
-            <b>Paragraph</b> Paragraph or paragraph fragment</xs:documentation>
+            <b>Paragraph</b> Running text: a paragraph or paragraph fragment</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:whatnot"/>

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<framework xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../lib/XSD/oscal-documented.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+   <title>FedRAMP / OSCAL</title>
    <group>
       <title>Access Control</title>
       <prop class="group-id">AC</prop>
+      
       <component>
+         
          <title>Access Control Policy and Procedures</title>
          <link rel="control">AC-1</link>
          <prop class="baseline-impact">LOW</prop>

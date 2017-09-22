@@ -65,13 +65,11 @@ para_decl =
 
 # link declaration
 link_decl =
- element declare-link { relAttr, contextAttr, singleton?, required?, key* }
+ element declare-link { relAttr, contextAttr, singleton?, required? }
 
 singleton = element singleton { empty }
 
 required =  element required { empty }
-
-key = element key { hrefAttr, attribute match { text }, attribute use { text } }
 
 # on 'property and possibly 'parameter',
 # element limit { requiredClass, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)

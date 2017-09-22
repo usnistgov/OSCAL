@@ -6,7 +6,8 @@
 <?xml-model href="../../working/lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="../../working/lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-  <title>OSCAL: The Open Security Controls Assessment Language</title>
+  <title>Document model and tagging specification - OSCAL: The Open Security Controls Assessment
+    Language</title>
   <declarations>
     <declare-prop context="element-description" class="tag">
           <required/>
@@ -27,7 +28,7 @@
       here: this document provides only basic information about the OSCAL <q>core</q>.</p>
     <p>The element population of an OSCAL document (set) may be determined by means of XPath
         <code>distinct-values(//*/node-name())</code>, or analogous query.</p>
-    <p>For its XML names, OSCAL uses the namespace <a>XXX http://csrc.nist.gov/ns/oscal/1.0 XXX</a>.
+    <p>For its XML names, OSCAL uses the namespace <a>http://csrc.nist.gov/ns/oscal/1.0</a>.
       Commonly, this will be assigned to (unprefixed) names in an OSCAL document by default, and in
       this document, OSCAL elements (and attributes, presumed to be in no-namespace) are referenced
       without a prefix, <code>oscal:</code> or any other.</p>
@@ -83,17 +84,16 @@
       </part>
     </component>
     <component class="element-description">
-      <prop class="tag">collection</prop>
-      <prop class="full_name">Collection</prop>
+      <prop class="tag">framework</prop>
+      <prop class="full_name">Framework</prop>
       <part class="description">
-        <p>Top-level element for a set of controls, not considered to be a catalog</p>
+        <p>Top-level element for a set of control-like components, not considered to be a catalog</p>
       </part>
       <part class="remarks">
-        <p>Most often, a collection element will be used for a set of controls derived from one or
-          more control catalogs (such as a profile, baseline, or overlay), which do not themselves
-          serve as a catalog. However, collections may contain everything that catalogs may contain, 
-          and OSCAL does not prohibit their use as (source or interim) catalogs for profiling, 
-          although an individual application might.</p>
+        <p>Most often, a collection element will be used for a set of components referencing one or
+          more control catalogs or catalog proxies (such as a profile, baseline, overlay or other framework), which do not themselves
+          serve as a catalog. In many important respects, frameworks with their components are analogous
+        structurally to catalogs with their controls - with some important different.</p>
       </part>
     </component>
     <component class="element-description">
@@ -108,10 +108,30 @@
       </part>
     </component>
     <component class="element-description">
+      <prop class="tag">component</prop>
+      <prop class="full_name">Framework component</prop>
+      <part class="description">
+        <p>Within a framework, a structured information object typically referencing one or more
+          security controls</p>
+      </part>
+      <part class="remarks">
+        <p>Components may be grouped using <code>group</code> and be further divided into parts.
+          They may also contain components (recursively), although this may not generally be
+          advisable.</p>
+        <p>In a spreadsheet format, components will frequently be analogous to rows; ideally their
+          child elements (properties, links and other structured contents) will map directly to
+          cells.</p>
+        <p>In a direct mapping from catalog to framework formats, both <code>control</code> and
+            <code>subcontrol</code> may be regarded as <q>components</q> of their <q>frameworks</q>
+          (catalogs) in the general sense; however components in use are not likely to be much like
+          the controls they reference.</p>
+      </part>
+    </component>
+    <component class="element-description">
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control extension</prop>
       <part class="description">
-        <p>An associated control within a control</p>
+        <p>An associated or dependent control object; an enhancement to a control</p>
       </part>
       <part class="remarks">
         <p>A nominal subcontrol or <q>control extension</q> permits catalogs to offer access to
@@ -125,7 +145,8 @@
       <prop class="tag">prop</prop>
       <prop class="full_name">Property</prop>
       <part class="description">
-        <p>A value with a name, attributed to the containing control, subcontrol, part, or group</p>
+        <p>A value with a name, attributed to the containing control, subcontrol, component, part,
+          or group</p>
       </part>
       <part class="remarks">
         <p>The notation used by a property is up to an application; otherwise, properties are
@@ -161,7 +182,7 @@
       <prop class="tag">part</prop>
       <prop class="full_name">Part</prop>
       <part class="description">
-        <p>A component or partition in a control, subcontrol, or part</p>
+        <p>A partition, <q>piece</q> or section of a control, subcontrol, component or part</p>
       </part>
       <part class="remarks">
         <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
@@ -565,7 +586,7 @@
       <prop class="tag">p</prop>
       <prop class="full_name">Paragraph</prop>
       <part class="description">
-        <p>Paragraph or paragraph fragment</p>
+        <p>Running text: a paragraph or paragraph fragment</p>
       </part>
       <part class="remarks">
         <p>This element echoes HTML <code>p</code>. As in HTML, it is not limited to indicating

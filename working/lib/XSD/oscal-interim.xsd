@@ -1,30 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://csrc.nist.gov/ns/oscal/1.0" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
-  <!-- We can have a catalog, or we can have only declarations for catalogs -->
-  <!-- Also we have an alias for 'catalog', namely 'collection', used for ad-hoc collections of controls -->
   <!--
-    start = element oscal-catalog { declarations, catalog } 
-    have initial sections
-    declare   - declares local parameters and settings including constraints on controls
-                (enumerated values for properties, regexes and what not)
-    also declares bindings to authorities (e.g. sources for transclusion/comparison)?
+    We can have a catalog, or we can have only declarations for catalogs, or we can have a framework
+    (which is kind of a 'catalog mockup' format)
   -->
-  <!-- keeping these together until we have differentiating requirements -->
-  <xs:complexType name="collection-contents">
+  <xs:complexType name="catalog-contents">
     <xs:sequence>
       <xs:element ref="oscal:title"/>
       <xs:element minOccurs="0" ref="oscal:declarations"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:section"/>
-        <xs:element ref="oscal:group"/>
+        <xs:group ref="oscal:group"/>
         <xs:element ref="oscal:control"/>
       </xs:choice>
       <xs:element minOccurs="0" ref="oscal:references"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="catalog" type="oscal:collection-contents"/>
-  <xs:element name="collection" type="oscal:collection-contents"/>
+  <xs:complexType name="framework-contents">
+    <xs:sequence>
+      <xs:element ref="oscal:title"/>
+      <xs:element minOccurs="0" ref="oscal:declarations"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:section"/>
+        <xs:group ref="oscal:category"/>
+        <xs:element ref="oscal:component"/>
+      </xs:choice>
+      <xs:element minOccurs="0" ref="oscal:references"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="catalog" type="oscal:catalog-contents"/>
+  <xs:element name="framework">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="oscal:framework-contents">
+          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attributeGroup ref="oscal:optionalClass"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    'group' is the element name as it appears in both frameworks, and catalogs
+    but they group different things
+  -->
+  <xs:group name="category">
+    <xs:sequence>
+      <xs:element name="group">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:title"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="oscal:prop"/>
+              <xs:element ref="oscal:link"/>
+              <xs:group ref="oscal:prose"/>
+            </xs:choice>
+            <xs:choice>
+              <xs:group maxOccurs="unbounded" ref="oscal:category"/>
+              <xs:element maxOccurs="unbounded" ref="oscal:component"/>
+            </xs:choice>
+          </xs:sequence>
+          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attributeGroup ref="oscal:optionalClass"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="component">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:title"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:param"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="oscal:prop"/>
+          <xs:element ref="oscal:link"/>
+          <xs:group ref="oscal:prose"/>
+          <xs:element ref="oscal:part"/>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:component"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- an overlay - a framework whose structure matches the catalog? -->
+  <!--
+    frameworks contain categories or items
+    categories contain categories or items
+    items contain title?, prop*, p*, link*
+    strict governance over item/link/@rel
+    declarations too :-)
+    validation can ensure that framework links are scoped
+    corresponding with catalogs/controls included in the profile
+  -->
   <!--
     declarations includes declarations for control types, parameters (names/types),
     authorities (source data for transclusion etc. etc.)
@@ -106,7 +174,7 @@
         <xs:element minOccurs="0" ref="oscal:singleton"/>
         <xs:element minOccurs="0" ref="oscal:required"/>
       </xs:sequence>
-      <xs:attributeGroup ref="oscal:requiredClass"/>
+      <xs:attributeGroup ref="oscal:relAttr"/>
       <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
   </xs:element>
@@ -152,7 +220,7 @@
         <xs:group ref="oscal:prose"/>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element ref="oscal:section"/>
-          <xs:element ref="oscal:group"/>
+          <xs:group ref="oscal:group"/>
         </xs:choice>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
@@ -166,21 +234,25 @@
     And subcontrols must not appear without control ancestors
     ... these constraints validated w/ Schematron
   -->
-  <xs:element name="group">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:group ref="oscal:control-components"/>
-        <xs:choice maxOccurs="unbounded">
-          <xs:element ref="oscal:group"/>
-          <xs:element ref="oscal:control"/>
-        </xs:choice>
-        <xs:element minOccurs="0" ref="oscal:references"/>
-      </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:group name="group">
+    <xs:sequence>
+      <xs:element name="group">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:title"/>
+            <xs:group ref="oscal:control-components"/>
+            <xs:choice maxOccurs="unbounded">
+              <xs:group ref="oscal:group"/>
+              <xs:element ref="oscal:control"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal:references"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attributeGroup ref="oscal:optionalClass"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
   <xs:group name="control-components">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">

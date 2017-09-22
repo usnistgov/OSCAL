@@ -4,8 +4,8 @@
   
 <!-- For validating oscal-oscal.xml against the schema (XSD) it purportedly describes.
   
-  * Are all elements in the schema matched by controls (via their prop[@class='tag']?
-  * Are all control[@class='element-description'] matched by elements declared in the schema?
+  * Are all elements in the schema matched by components (via their prop[@class='tag']?
+  * Are all component[@class='element-description'] matched by elements declared in the schema?
   
   tbd: the same, for attributes.
   
@@ -18,11 +18,11 @@
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
-  <sch:let name="schema-file" value="'../../lib/XSD/oscal-interim.xsd'"/>
+  <sch:let name="schema-file" value="'../../working/lib/XSD/oscal-interim.xsd'"/>
   <sch:let name="schema" value="document($schema-file)"/>
   
   <sch:let name="element-declarations"  value="$schema//xsd:element[exists(@name)]"/>
-  <sch:let name="element-documentation" value="//oscal:control[@class='element-description']"/>
+  <sch:let name="element-documentation" value="//oscal:component[@class='element-description']"/>
   
   <sch:pattern>
     <sch:rule context="/*">
@@ -34,14 +34,14 @@
       </sch:assert>
     </sch:rule>
     
-    <sch:rule context="oscal:control[@class='element-description']">
+    <sch:rule context="oscal:component[@class='element-description']">
       <sch:let name="gi" value="oscal:prop[@class='tag']"/>
       <sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <sch:value-of select="$schema-file"/></sch:assert>
     </sch:rule>
     
     <sch:rule context="oscal:part[@class='description']">
       <sch:let name="exception" value="not(../@class='element-description')"/>
-      <sch:assert role="warning" test="matches(string(.),'\S')">No control description</sch:assert>
+      <sch:assert role="warning" test="matches(string(.),'\S')">No description</sch:assert>
       <sch:assert test="empty(* except oscal:p[1]) or $exception">Description may contain only a single paragraph, with a sentence fragment (no periods)</sch:assert>
       <sch:report test="matches(normalize-space(.),'\.$') and not($exception)">Description ends in a period</sch:report>
       <sch:report test="matches(normalize-space(.),'\.\s*[A-Z]') and not($exception)">Description may be more than a descriptive sentence fragment</sch:report>
