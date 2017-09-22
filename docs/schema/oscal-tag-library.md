@@ -97,7 +97,9 @@ Top-level element for a (canonical) control catalog
 
 Top-level element for a set of control-like components, not considered to be a catalog   
 
-Most often, a collection element will be used for a set of components referencing one or more control catalogs or catalog proxies (such as a profile, baseline, overlay or other framework), which do not themselves serve as a catalog. In many important respects, frameworks with their components are analogous structurally to catalogs with their controls - with some important different.   
+This element represents a collection of structured data objects ("components", cf component) that present information in ways organized to facilitate coordinated access (both manual and automated) both to one another and to controls documented in control catalogs. This is a suitable element for representing, not a control catalog, but an overlay or customization that has its own organization, making many-to-many links across catalogs, their profiles, and other canonical reference documents. (A customization that does not reorganize, but only selects from and configures a control, can be a `profile`.) 
+
+Despite their very different roles in the system (catalogs for canonical collections of controls, frameworks for most anything else), components inside frameworks and controls inside catalogs have the same kinds of content objects subject to similar kinds of restrictions.   
 
 #### &lt;control> Control   
 
