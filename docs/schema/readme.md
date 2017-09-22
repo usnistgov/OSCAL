@@ -6,6 +6,6 @@ See an [OSCAL Tag Library](oscal-tag-library.md) (element definitions) in this s
 
 The XML also serves as an example of OSCAL, but for more correct or realistic examples with richer semantics, see [subdirectories under 'working'](../..), including [NIST SP800-53](../../SP800-53), [ISO 27002](../../ISO-27002), and [COBIT 5](../../COBIT5).
 
-The publication version of the OSCAL schema may be found in the [lib/XSD](../../lib/XSD) directory as file [oscal-documented.xsd](../../lib/XSD/oscal-documented.xsd). This file is produced via an automated process [as described there](../../lib/XSD/readme.md).
+The publication version of the OSCAL schema may be found in the [lib/XSD](../../lib/XSD) directory as file [oscal-documented.xsd](../../lib/XSD/oscal-documented.xsd). This file is produced via an automated process [as described there](../../lib/XSD/readme.md). A mirror copy may be available in this subdirectory but it may be best to check dates.
 
 -----

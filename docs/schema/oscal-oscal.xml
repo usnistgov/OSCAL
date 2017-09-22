@@ -794,7 +794,7 @@
     <component class="general-constraint">
       <title>Interdicted @class assignments</title>
       <part class="description">
-        <p>No control, component, object within a control, control component or group can have a
+        <p>No control, component, object within a control, framework component or group can have a
           class assignment that overlaps with an element name in OSCAL</p>
       </part>
       <part class="remarks">
