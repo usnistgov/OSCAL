@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "http://scap.nist.gov/schema/oscal.json",
+  "$id": "http://csrc.nist.gov/ns/oscal/core-1.0.json",
   "definitions": {
     "collection": {
       "$id": "#/definitions/collection",
@@ -32,6 +32,11 @@
           "type": "array",
           "description": "Related controls or groups (of controls or groups)",
           "items": { "$ref": "#/definitions/group" }
+        },
+        "controls": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/control" }
         }
       },
       "propertyNames": {
@@ -39,7 +44,8 @@
           "title",
           "declarations",
           "sections",
-          "groups"
+          "groups",
+          "controls"
         ]
       }
     },
@@ -524,9 +530,9 @@
     }    
   },
   "patternProperties": {
-    "^(catalog|collection)$": {
+    "^(catalog|collection|framework)$": {
       "$ref": "#/definitions/collection",
-      "description": "Catalog: Top-level element for a (canonical) control catalog\n Collection: Top-level element for a set of controls, not considered to be a catalog"
+      "description": ""
     }
   },
   "propertyNames": {

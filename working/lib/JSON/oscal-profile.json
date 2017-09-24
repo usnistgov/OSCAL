@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://csrc.nist.gov/ns/oscal/profile-1.0.json",
+  "definitions": {
+    "call": {
+      "$id": "#/definitions/call",
+      "type": "object",
+      "description": "",
+      "oneOf": [
+        {
+          "properties": {
+            "withSubcontrols": {
+              "type": "boolean",
+              "description": ""
+            },
+            "controlID": {
+              "type": "string",
+              "description": ""
+            }
+          }
+        },
+        {
+          "properties": {
+            "subcontrolID": {
+              "type": "string",
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    "param": {
+      "$id": "#/definitions/param",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": "",
+          "items": { "type": "string" }
+        },
+        "param": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "invoke": {
+      "type": "string",
+      "description": "",
+      "format": "uri"
+    },
+    "framework": {
+      "description": "",
+      "$ref": "http://csrc.nist.gov/ns/oscal/core-1.0.json#/definitions/collection"
+    },
+    "calls": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "include": {
+          "anyOf": [
+            {
+              "type": "array",
+              "description": "",
+              "items": { "$ref": "#/definitions/call" }
+            },
+            {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "all": {
+                  "type": "boolean",
+                  "description": ""
+                },
+                "withSubcontrols": {
+                  "type": "boolean",
+                  "description": ""
+                }
+              }
+            }
+          ]          
+        },
+        "exclude": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/call" },
+          "minItems": 1
+        }
+      }
+    },
+    "params": {
+      "type": "array",
+      "description": "",
+      "items": { "$ref": "#/definitions/param" }
+    }
+  },
+  "propertyNames": {
+    "enum": [
+      "invoke",
+      "framework",
+      "calls",
+      "params"
+    ]
+  },
+  "required": [
+    "invoke"
+  ]
+}
