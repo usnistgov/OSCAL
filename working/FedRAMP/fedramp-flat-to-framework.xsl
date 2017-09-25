@@ -17,6 +17,7 @@
     
     <xsl:template match="/*" expand-text="yes">
         <framework>
+            <title>FedRaMP in OSCAL PROTOTYPE</title>
             <xsl:for-each-group select="row" group-starting-with="row[matches(ID,'[a-z]')]">
                 
                 <!-- exploiting the order; remember . is the leader of the group -->
@@ -56,16 +57,10 @@
         </title>
     </xsl:template>
     
-    <xsl:template match="ID[matches(.,$enhancement-regex)]">
-        <link rel="subcontrol">
-            <xsl:apply-templates/>
-        </link>
-    </xsl:template>
-    
     <xsl:template match="ID">
-        <link rel="control">
+        <prop class="name">
             <xsl:apply-templates/>
-        </link>
+        </prop>
     </xsl:template>
     
     <xsl:template match="Baseline_LOW[.='X']">
