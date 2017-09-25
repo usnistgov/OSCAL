@@ -1,0 +1,3 @@
+default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
+
+include "oscal-core.rnc" { start = worksheet }

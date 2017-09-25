@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Basic" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Forms interface" alternate="no"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-cobit5.css"?>
-<declarations xmlns="http://scap.nist.gov/schema/oscal">
+<declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <declare-prop context="domain" class="area">
       <singleton/>
       <required/>
@@ -24,7 +24,7 @@
    <declare-prop context="process" class="number">
       <singleton/>
       <required/>
-      <value><inherit from="code"/><autonum>01</autonum></value>
+      <calc><inherit from="code"/><autonum>01</autonum></calc>
    </declare-prop>
    <declare-part context="process" class="description">
       <singleton/>
@@ -60,7 +60,7 @@
   <declare-prop context="process-goal" class="number">
       <singleton/>
       <required/>
-      <value><autonum>1.</autonum></value>
+      <calc><autonum>1.</autonum></calc>
    </declare-prop>
   <declare-part context="process-goal" class="metrics"/>
   
@@ -68,7 +68,7 @@
   <declare-prop context="practice" class="number">
     <singleton/>
     <required/>
-    <value><inherit/><autonum>.01</autonum></value>
+    <calc><inherit/><autonum>.01</autonum></calc>
     <!--<value>EDM01.01</value>
       <value>EDM01.02</value>
       <value>EDM01.03</value>

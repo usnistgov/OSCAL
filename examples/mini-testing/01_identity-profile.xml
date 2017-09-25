@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-72c45725-89bd-46d6-80c9-a76847218614">
+
+<title>Identity profile (an entire catalog, implicitly)</title>
+   <!-- Asking for all controls. -->
+   
+   <invoke href="mini-testing-catalog.xml"/>
+</profile>

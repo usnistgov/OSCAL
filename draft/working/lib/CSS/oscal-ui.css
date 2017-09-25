@@ -49,37 +49,29 @@ inherit:before { content:
   
  }
 
-statement:before { content:
-  oxy_label(text, "statement ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@class', columns, 20) 
-  ' on '
-  oxy_textfield(edit, '@context', columns, 20) 
- }
-
-feature:before { content:
-  oxy_label(text, "statement ", styles, "font-weight:bold")
+part_declaration:before { content:
+  oxy_label(text, "part ", styles, "font-weight:bold")
   oxy_textfield(edit, '@class', columns, 20) 
   ' on '
   oxy_textfield(edit, '@context', columns, 20) 
  }
 
 
-control:before { content: 'control: ' oxy_textfield(
-          edit, '@type',
-          columns, 10); }
-
-prop:before { content: oxy_textfield(
+group:before { content: 'group: ' oxy_textfield(
           edit, '@class',
           columns, 10); }
 
-stmt:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
-          content: 
-           oxy_capitalize(attr(class)) ' '
-            oxy_combobox( 
-              edit, '@class',
-              editable, true,
-              values, 'description, objectives, guidance, information, remarks' )
-}
+category:before { content: 'category: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+
+control:before { content: 'control: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+component:before { content: 'component: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+
 
 subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
           content: 
@@ -89,23 +81,38 @@ subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
               editable, true )
 }
 
-feat:before { font-weight: bold; color: darkgreen; font-family: sans-serif;
+prop:before { content: oxy_textfield(
+          edit, '@class',
+          columns, 15); }
+
+control p:before[class], component p:before[class] { content: oxy_textfield(
+          edit, '@class',
+          columns, 15); }
+
+part:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
           content: 
            oxy_capitalize(attr(class)) ' '
             oxy_combobox( 
               edit, '@class',
-              editable, true )
+              editable, true,
+              values, 'description, objectives, guidance, information, remarks' )
 }
 
-param:before { content: 'param class ' oxy_textfield(
-          edit, '@class',
+param:before { content: 'param targets ' oxy_textfield(
+          edit, '@target',
           columns, 10) 
-           'id ' oxy_textfield(
-          edit, '@id',
+           'class ' oxy_textfield(
+          edit, '@class',
           columns, 10); }
-
-assign:before { content: 'use ' oxy_textfield(
-          edit, '@use',
+inject:before { content: 'id ' oxy_textfield(
+          edit, '@id',
           columns, 7); }
+
+
+a:after { content:
+   oxy_urlChooser(
+          edit, '@href',
+          columns, 50 ) 
+ }
 
 

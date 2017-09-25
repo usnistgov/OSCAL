@@ -4,7 +4,7 @@
 
 <xsl:stylesheet version="2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xpath-default-namespace="http://scap.nist.gov/schema/oscal">
+  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 
   <xsl:template match="/">
     <fo:root>
@@ -104,7 +104,7 @@
   <xsl:template match="prop">
     <fo:block font-family="sans-serif" space-before="0.5m" font-size="80%">
       <fo:inline font-weight="bold">
-        <xsl:apply-templates select="@name"/>
+        <xsl:apply-templates select="@class"/>
       <xsl:text>: </xsl:text>
       </fo:inline>
       <xsl:apply-templates/>
@@ -117,16 +117,16 @@
     </fo:block>
   </xsl:template>
 
-  <xsl:template match="stmt">
+  <xsl:template match="part">
     <fo:block space-before="1em">
       <xsl:apply-templates select="." mode="label"/>
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
 
-  <xsl:template match="stmt" mode="label">
+  <xsl:template match="part" mode="label">
     <fo:block font-size="12pt" font-family="sans-serif">
-      <xsl:apply-templates select="@name"/>
+      <xsl:apply-templates select="@class"/>
     </fo:block>
   </xsl:template>
   

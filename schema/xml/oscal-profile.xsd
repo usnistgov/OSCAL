@@ -1,0 +1,156 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+           elementFormDefault="qualified"
+           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <xs:include schemaLocation="oscal-core.xsd"/>
+   <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+              schemaLocation="xml.xsd"/>
+   <xs:element name="profile">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Profile</b> In reference to a catalog (or other authority such as profile or framework), a selection
+          and configuration of controls, maintained separately</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal:title"/>
+            <xs:element maxOccurs="unbounded" ref="oscal:invoke"/>
+            <xs:element minOccurs="0" ref="oscal:framework"/>
+         </xs:sequence>
+         <xs:attributeGroup ref="oscal:idAttr"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="invoke">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Authority invocation</b> For invocation of controls and subcontrols from a catalog or other authority</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:sequence>
+               <xs:element minOccurs="0" ref="oscal:include"/>
+               <xs:element minOccurs="0" ref="oscal:exclude"/>
+            </xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+               <xs:element ref="oscal:set-param"/>
+               <xs:element ref="oscal:alter"/>
+            </xs:choice>
+         </xs:sequence>
+         <xs:attributeGroup ref="oscal:hrefAttr"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="include">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Include controls</b> The element's contents indicate which controls and subcontrols to include from the
+          authority (source catalog)</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:choice>
+            <xs:element ref="oscal:all"/>
+            <xs:element maxOccurs="unbounded" ref="oscal:call"/>
+         </xs:choice>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="all">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Include all</b> Include all controls from the invoked authority (catalog)</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:attributeGroup ref="oscal:withSubContrlsAttr"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:attributeGroup name="withSubContrlsAttr">
+      <xs:attribute name="with-subcontrols">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="yes"/>
+               <xs:enumeration value="no"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
+   <xs:element name="call">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Call (control or subcontrol)</b> Call a control or subcontrol by its ID</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:attributeGroup ref="oscal:withSubContrlsAttr"/>
+         <xs:attribute name="control-id"/>
+         <xs:attribute name="subcontrol-id"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="exclude">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Exclude controls</b> Which controls and subcontrols to exclude from the authority (source catalog) being
+          invoked</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="call">
+               <xs:annotation>
+                  <xs:documentation>
+                     <b>Call (control or subcontrol)</b> Call a control or subcontrol by its ID</xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:attribute name="control-id"/>
+                  <xs:attribute name="subcontrol-id"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="set-param">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Parameter setting</b> Set a parameter's value and even override its description</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element ref="oscal:desc"/>
+            <xs:element ref="oscal:value"/>
+         </xs:sequence>
+         <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
+         <xs:attributeGroup ref="oscal:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="alter">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Alteration</b> Specifies changes to be made to an included control or subcontrol when a profile is
+          resolved</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:remove"/>
+            <xs:element minOccurs="0" ref="oscal:augment"/>
+         </xs:sequence>
+         <xs:attribute name="control-id"/>
+         <xs:attribute name="subcontrol-id"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="remove">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Removal</b> Elements to be removed from a control or subcontrol, in resolution</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:attribute name="targets" use="required" type="xs:NMTOKENS"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="augment">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Augmentation</b> Element contents to be added to a control or subcontrols, in resolution</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal:prop"/>
+            <xs:group ref="oscal:anyKindofPart"/>
+         </xs:choice>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

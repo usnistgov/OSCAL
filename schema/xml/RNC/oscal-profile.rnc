@@ -1,0 +1,43 @@
+default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
+
+include "oscal-core.rnc" { start = profile }
+
+profile = element profile { idAttr, title, invoke+, framework? }
+
+invoke = element invoke { hrefAttr, (\include?, exclude?), ( param_setting | alteration )* }
+
+# Can have both 'all' and 'call' to switch up with-subcontrol settings
+\include = element include { all | call+ }
+
+# Move params to a separate 'set' element?
+# Logic: params override params given in source catalogs or profiles
+# but they apply only to controls included.
+# parameters not belonging to included controls/subcontrols might be filtered out of 'set'
+# applicable parameters in 'set' might remain
+# expansion logic could also provide set/param for any param not already represented
+
+# Only 'yes' should have any effect; processors should assume 'no' when implicit
+all = element all { withSubContrlsAttr }
+
+withSubContrlsAttr = attribute with-subcontrols { ('yes'|'no') }?
+
+# 'call' can call *either* a control or a subcontrol by its @id
+# Schematron requirement: there exists in the catalog a control or subcontrol
+# by the given @id
+call = element call {
+          (withSubContrlsAttr, attribute control-id { text } ) |
+           attribute subcontrol-id { text } }
+
+exclude = element exclude { element call {
+            attribute control-id { text } |
+            attribute subcontrol-id { text } }+ }
+
+param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, value }
+
+alteration = element alter { (
+  attribute control-id    { text } |
+  attribute subcontrol-id { text } ),
+  remove?, augment? }
+
+remove  = element remove  { attribute targets { xsd:NMTOKENS } }
+augment = element augment { (prop | anyKindofPart)* }
