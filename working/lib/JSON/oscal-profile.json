@@ -2,6 +2,29 @@
   "$schema": "http://json-schema.org/draft-06/schema#",
   "$id": "http://csrc.nist.gov/ns/oscal/profile-1.0.json",
   "definitions": {
+    "param": {
+      "$id": "#/definitions/param",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": "",
+          "items": { "type": "string" }
+        },
+        "param": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [ "id", "class", "param" ]
+      }
+    },
     "call": {
       "$id": "#/definitions/call",
       "type": "object",
@@ -34,30 +57,7 @@
           }
         }
       ]
-    },
-    "param": {
-      "$id": "#/definitions/param",
-      "type": "object",
-      "description": "",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": ""
-        },
-        "class": {
-          "type": "string",
-          "description": "",
-          "items": { "type": "string" }
-        },
-        "param": {
-          "type": "string",
-          "description": ""
-        }
-      },
-      "propertyNames": {
-        "enum": [ "id", "class", "param" ]
-      }
-    }
+    }    
   },
   "type": "object",
   "properties": {
@@ -68,45 +68,42 @@
     },
     "framework": {
       "description": "",
-      "$ref": "http://csrc.nist.gov/ns/oscal/core-1.0.json#/definitions/collection"
+      "$ref": "http://csrc.nist.gov/ns/oscal/core-1.0.json#/definitions/framework"
     },
     "include": {
       "type": "object",
       "description": "",
-      "anyOf": [
-        {
-          "properties": {
-            "calls": {
-              "type": "array",
-              "description": "",
-              "items": { "$ref": "#/definitions/call" }  
-            },
-            "params": {
-              "type": "array",
-              "description": "",
-              "items": { "$ref": "#/definitions/param" }
-            }
-          },
-          "propertyNames": {
-            "enum": [ "calls", "params" ]
-          }
+      "properties": {
+        "all": {
+          "type": "boolean",
+          "description": ""
         },
-        {
-          "properties": {
-            "all": {
-              "type": "boolean",
-              "description": ""
-            },
-            "withSubcontrols": {
-              "type": "boolean",
-              "description": ""
-            }
-          },
-          "propertyNames": {
-            "enum": [ "all", "withSubcontrols" ]
-          }
+        "withSubcontrols": {
+          "type": "boolean",
+          "description": ""
+        },
+        "calls": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/call" }  
+        },
+        "params": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/param" }
         }
-      ]
+      },
+      "propertyNames": {
+        "enum": [
+          "all",
+          "withSubcontrols",
+          "calls",
+          "params"
+        ]
+      }
+    },
+    "default": {
+      "type": "string"
     },
     "exclude": {
       "type": "array",
@@ -120,6 +117,7 @@
       "invoke",
       "framework",
       "include",
+      "default",
       "exclude"
     ]
   },
