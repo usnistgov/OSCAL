@@ -6,7 +6,7 @@
       "$id": "#/definitions/call",
       "type": "object",
       "description": "",
-      "oneOf": [
+      "anyOf": [
         {
           "properties": {
             "withSubcontrols": {
@@ -17,6 +17,12 @@
               "type": "string",
               "description": ""
             }
+          },
+          "propertyNames": {
+            "enum": [
+              "withSubcontrols",
+              "controlID"
+            ]
           }
         },
         {
@@ -66,7 +72,7 @@
       "description": "",
       "properties": {
         "include": {
-          "anyOf": [
+          "oneOf": [
             {
               "type": "array",
               "description": "",
