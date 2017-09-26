@@ -70,8 +70,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:param"/>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="oscal:param"/>
           <xs:element ref="oscal:prop"/>
           <xs:element ref="oscal:link"/>
           <xs:group ref="oscal:prose"/>
@@ -260,6 +260,7 @@
         <xs:group ref="oscal:anyKindofPart"/>
         <xs:element ref="oscal:link"/>
         <xs:group ref="oscal:prose"/>
+        <xs:element ref="oscal:param"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
@@ -267,7 +268,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:param"/>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:group ref="oscal:control-components"/>
           <xs:element ref="oscal:subcontrol"/>
@@ -282,7 +282,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:param"/>
         <xs:group ref="oscal:control-components"/>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>

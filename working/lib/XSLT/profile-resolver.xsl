@@ -3,6 +3,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   
+   default-mode="oscal:resolve"
   xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
@@ -18,16 +19,18 @@
 
   <xsl:mode name="#default"        on-no-match="shallow-copy"/>
   
+  <xsl:mode name="oscal:resolve"   on-no-match="shallow-copy"/>
+  
   <xsl:mode name="copy"            on-no-match="shallow-copy"/>
   
   <xsl:mode name="filter-controls" on-no-match="shallow-copy"/>
   
   <!-- Frameworks and catalogs are resolved as themselves. -->
-  <xsl:template match="catalog | framework">
+  <xsl:template match="catalog | framework" mode="oscal:resolve">
     <xsl:apply-templates select="." mode="copy"/>
   </xsl:template>
   
-  <xsl:template match="profile">
+  <xsl:template match="profile" mode="oscal:resolve">
     <!-- We need a wrapper element in case of more than one invocation -->
     <xsl:copy>
       <!-- So we copy ourselves as well in case a subsequent transformation wants to see -->

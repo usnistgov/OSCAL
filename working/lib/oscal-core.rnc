@@ -19,8 +19,8 @@ category = element group { idAttr, optionalClass,
    (category+ | item+ ) }
 
 item = element component {
-    idAttr, optionalClass, title?, param*,
-    (prop | link | prose | part)*, item*
+    idAttr, optionalClass, title?,
+    (param | prop | link | prose | part)*, item*
   }
 
 # an overlay - a framework whose structure matches the catalog?
@@ -95,18 +95,18 @@ group = element group {
   idAttr, optionalClass,
   title?, control-components, (group | control)+, references? }
 
-control-components = (prop | anyKindofPart | link | prose)*
+control-components = (prop | anyKindofPart | link | prose | param)*
 
 control =
   element control {
-    idAttr, optionalClass, title?, param*,
+    idAttr, optionalClass, title?,
     (control-components | subcontrol)*,
     references?
   }
 
 subcontrol =
   element subcontrol {
-    idAttr, optionalClass, title?, param*,
+    idAttr, optionalClass, title?,
     control-components,
     references? 
   }

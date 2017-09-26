@@ -32,7 +32,7 @@
     
     <xsl:template match="component" mode="write-call">
         <xsl:variable name="controlObj"
-            select="key('sp800-53-control-object-by-name', link[@rel = ('control', 'subcontrol')], $catalog)"/>
+            select="key('sp800-53-control-object-by-name', link[@rel = ('control', 'subcontrol','component')], $catalog)"/>
 
         <xsl:text>&#xA;&#xA;</xsl:text>
         <call>
@@ -43,7 +43,7 @@
         <xsl:for-each select="p[@class = 'param_assigns'] | p[@class='remarks']">
           <xsl:comment><xsl:value-of select="."/></xsl:comment>
         </xsl:for-each>
-        <xsl:apply-templates select="$controlObj//param except $controlObj//(subcontrol|component)//param"
+        <xsl:apply-templates select="param"
             mode="params"/>
     </xsl:template>
     
@@ -55,7 +55,7 @@
         <xsl:variable name="insertions" select="..//insert[@param-id=current()/@id]"/>
        <xsl:copy>
            <xsl:copy-of select="@*"/>
-           <xsl:comment expand-text="true"> inserted into {$insertions/(ancestor::part | ancestor::subcontrol | ancestor::control)[last()]/prop[@class='name']} </xsl:comment>
+           <!--<xsl:comment expand-text="true"> inserted into {$insertions/(ancestor::part | ancestor::subcontrol | ancestor::control)[last()]/prop[@class='name']} </xsl:comment>-->
            <xsl:copy-of select="value"/>
        </xsl:copy>
     </xsl:template>

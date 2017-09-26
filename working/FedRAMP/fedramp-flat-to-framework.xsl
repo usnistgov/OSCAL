@@ -17,7 +17,7 @@
     
     <xsl:template match="/*" expand-text="yes">
         <framework>
-            <title>FedRaMP in OSCAL PROTOTYPE</title>
+            <title>FedRAMP in OSCAL PROTOTYPE</title>
             <xsl:for-each-group select="row" group-starting-with="row[matches(ID,'[a-z]')]">
                 
                 <!-- exploiting the order; remember . is the leader of the group -->

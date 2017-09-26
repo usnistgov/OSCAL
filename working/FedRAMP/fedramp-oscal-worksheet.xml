@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-   <title>FedRaMP in OSCAL PROTOTYPE</title>
+   <title>FedRAMP in OSCAL PROTOTYPE</title>
    <group>
       <title>Access Control</title>
       <prop class="group-id">AC</prop>

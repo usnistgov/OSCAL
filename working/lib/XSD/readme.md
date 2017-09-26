@@ -11,7 +11,7 @@ The publication version of the OSCAL schema is maintained here as [oscal-core.xs
 
 All of these call on the core module for declarations; in the case of `catalog` and `framework` they are only entry points. Accordingly, any OSCAL catalog or framework document (but not profile) can also validate against the core schema standalone.
 
-Of the three nominal document formats, only `catalog` is nearing stability. However, all the schemas are functional and maintained fairly closely in sync with demonstration code and examples.
+Of the three nominal document formats, only `catalog` is nearing stability (end of Sprint 4). However, all the schemas are functional and maintained fairly closely in sync with demonstration code and examples.
 
 Each of these schemas is maintained in RNC format (RelaxNG compact syntax ISO/IEC 19757-2); see information on RelaxNG at http://relaxng.org. This approach to maintenance permits rapid development with low process overhead. For use by applications without support for RelaxNG, we convert the schemas into W3C XSD using an open source tool, [Trang](http://www.thaiopensource.com/relaxng/trang.html). The direct results of `oscal-core.rnc` appear here as [oscal-interim-core.xsd](oscal-interim-code.xsd).
 
