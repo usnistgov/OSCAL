@@ -8,11 +8,32 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
+<!-- Apply to the FedRAMP 'bridge' framework to enhance it with info pulled from the necessary control
+    catalog.  -->
+    
     <xsl:output indent="yes"/>
 <!-- To do:
     Work against a profile not only a catalog (invoking resolution XSLT)
     Produce an annotated copy of the framework, not a profile
+    
+    In it:
+    
+    for controls that match by ID and for those that match by title but not ID
+      (as well as for those w/ attribution clashes i.e. one things ID, another's title)
+    report whether/how matches (by ID and/or Title)
+    report when titles vary
+    report when identifiers vary
+    report when baseline impacts vary
+    interpolate parameters
+    provide links to referenced controls
+    
+    for components that have no matching controls
+    
+    report when a control is not found in the sourced profile (but it is found in a catalog)
+    report when a control is found nowhere in the authority chain
+    
     -->
+
     <xsl:template match="framework">
         <xsl:processing-instruction name="xml-model">href="../lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
         <xsl:processing-instruction name="xml-model">href="../lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>

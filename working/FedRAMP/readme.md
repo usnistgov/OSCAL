@@ -14,17 +14,17 @@ We use a sequence of tasks and tools, several of which we should be able to reus
 
 We have to do this once. oXgen XML Editor has a tool for this import, which we use to produce a relatively flat XML file representing rows and cells of the spreadsheet as XML element.
 
-**input:** `Fedramp/FedRAMP-Rev-4-Baseline-Workbook-FINAL062014.xlsx` in the `Sources` subdirectory of this repository
+**input**: `Fedramp/FedRAMP-Rev-4-Baseline-Workbook-FINAL062014.xlsx` in the `Sources` subdirectory of this repository
 
-**output:** file `excel-extract.xml`
+**output**: file `excel-extract.xml`
 
 ### Convert raw XML into an OSCAL "bridge framework" format
 
-**source:** file `excel-extract.xml`
+**source**: file `excel-extract.xml`
 
-**transformation:** file `fedramp-flat-to-framework.xsl`
+**transformation**: file `fedramp-flat-to-framework.xsl`
 
-**result:** file `fedramp-oscal-bridge.xml`
+**result**: file `fedramp-oscal-bridge.xml`
 
 The result is valid OSCAL (although without OSCAL declarations)
 
@@ -32,11 +32,13 @@ The result is valid OSCAL (although without OSCAL declarations)
 
 This analysis is performed by an XSLT, whose results take the form of a copy of the input, annotated with results of the analysis and with copies of the parameters declared in the authority and referenced in (included) controls.
 
-This analysis may occur more than once if the bridge framework must be considered next to more than one potential authority (for example, different baselines of SP800-53).
+The analysis may occur more than once if the bridge framework must be considered next to more than one potential authority (for example, different baselines of SP800-53).
 
 In principle, a profile can be produced for the authority if all components in the bridge framework document correspond to controls or subcontrols in the referenced catalog or profile. This can be detected by an XSLT that annotates the bridge framework in reference to the (potential) authority it is profiling. The same XSLT can also perform other analytic functions.
 
 * Dangling components - does the bridge framework describe controls or subcontrols that do not appear in the authority? These can be flagged. Sometimes they will reflect transcription errors in the sources, which can be corrected in `excel-extract.xml` if not in the source spreadsheet.
+
+* Missing controls - are there controls named in the base catalog or profile that are not designated in the bridge? If the bridge is intended to be comprehensive, this is a problem. The XSLT could produce stub components for missing controls (or subcontrols). Since this is not always a desired behavior, the XSLT could support a switch.
 
 * Are titles the same? Do controls and subcontrols have the same titles in the catalog as their corresponding components in the bridge framework? (Do failures here ever show anything but routine transcription errors?)
 
@@ -46,19 +48,23 @@ In principle, a profile can be produced for the authority if all components in t
 
 Parameter assignment can subsequently be made in the the bridge framework document, which may be easier than assigning them in the final profile.
 
-**primary source:** `fedramp-oscal-bridge.xml` - the bridge framework document being assessed
+**primary source**: `fedramp-oscal-bridge.xml` - the bridge framework document being assessed
 
-**secondary source:** The OSCAL catalog or profile being referenced for (by) the assessment. Note that when this is a profile, it must be *resolved* into acontrol catalog (at least implicitly).
+**secondary source**: The OSCAL catalog or profile being referenced for (by) the assessment. Note that when this is a profile, it must be *resolved* (internally) into a (filtered) control catalog.
 
 **result**: A copy of the bridge framework is produced, with annotations and parameters included.
 
 ### Rewriting the bridge framework as a profile
 
+(In place we have an XSLT, `fedramp-framework-to-profile.xsl`, which produces a profile for our test document, in reference to SP800-53 (the entirety). However, we need it to work not only against the full catalog but also against its profiles. Also we need more robust error handling. So what follows here are generalized requirements.)
+
 Given the edited bridge document, checked and tested against an authority (and with no remaining dangling components), another XSLT can produce a profile document recapitulating the operations of the framewok in control selection and parameter assignment.
 
-**primary source:** `fedramp-oscal-bridge.xml` - the bridge framework document being assessed
+(Note that it does need fallback behavior defined for cases where the bridge framework does not line up against the intended catalog. But a profile is expected: should this be runtime failure? or should dangling components or parameters be dropped?)
 
-**secondary source:** The OSCAL catalog or profile being referenced for (by) the assessment.
+**primary source**: `fedramp-oscal-bridge.xml` - the bridge framework document being assessed
+
+**secondary source**: The OSCAL catalog or profile being referenced for (by) the assessment.
 
 **result**: An OSCAL profile document referencing the authority (catalog or profile) copy of the bridge framework is produced, with annotations and parameters included.
 

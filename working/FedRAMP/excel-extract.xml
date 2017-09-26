@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Extracted from FedRAMP-Rev-4-Baseline-Workbook-FINAL062014.xlsx 2017-09-13T16:17:49.723-04:00 -->
+<!-- File made using oXygen's Excel import facility. -->
+<!-- Extracted from FedRAMP-Rev-4-Baseline-Workbook-FINAL062014.xlsx 2017-09-13T16:17:49.723-04:00
+
+We have row/(ID, Title, Baseline_LOW, Baseline_MOD, Param_assigns, Remarks)
+
+ID provides the title when the row is a category header (Title is empty)
+Paradoxically, this means that //row[matches(Title,'\S')] returns controls and subcontrols
+
+count(//row[not(matches(Title,'\S')]) indicates there are 345 entries
+
+results for: string-join(distinct-values(//row[not(matches(Title,'\S'))]/ID),'&#xA;')
+Access Control (AC)
+Awareness and Training (AT)
+Audit and Accountability (AU)
+Security Assessment and Authorization (CA)
+Configuration Management (CM)
+Contingency Planning (CP)
+Identification and Authentication (IA)
+Incident Response (IR)
+Maintenance (MA)
+Media Protection (MP)
+Physical and Environmental Protection (PE)
+Planning (PL)
+Personnel Security (PS)
+Risk Assessment (RA)
+System and Services Acquisition (SA)
+System and Communications Protection (SC)
+System and Information Integrity (SI)
+
+'count(distinct-values(//ID)) eq count(//ID)' returns true so we know there are no dupes.
+
+-->
+
 <root>
     <row>
         <ID>Access Control (AC)</ID>

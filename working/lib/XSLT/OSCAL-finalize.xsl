@@ -23,10 +23,10 @@
   <xsl:template match="/">
     
     <!--<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css" title="Basic" alternate="yes"?>
-    <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+    <?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
     <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css" title="Wiring" alternate="yes"?>-->
     
-    <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <xsl:text>&#xA;</xsl:text>
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"</xsl:processing-instruction>
     <xsl:text>&#xA;</xsl:text>

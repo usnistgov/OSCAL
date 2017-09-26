@@ -1,6 +1,6 @@
 default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
-include "oscal-working.rnc" {
+include "oscal-core.rnc" {
   start = (profile | framework)
   # dropping 'desc' element from param
   param   = element param { idAttr, optionalClass, paramValue }

@@ -3,9 +3,9 @@
         file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml 2017-09-14-04:00
         runtime parameter settings: $property='baseline-impact' $value='LOW'-->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-   <include>
       <invoke href="file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml">
-
+         <include>
+            
          <call control-id="ac.1"/>
          <param id="ac-1_a">
             <!-- inserted into AC-1a. -->
@@ -1075,6 +1075,6 @@
          </param>
 
          <call control-id="si.12"/>
+         </include>
       </invoke>
-   </include>
 </profile>

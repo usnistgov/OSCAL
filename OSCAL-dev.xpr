@@ -994,7 +994,7 @@
                                             </field>
                                             <field name="urls">
                                                 <String-array>
-                                                    <String>${currentFileURL}</String>
+                                                    <String>${pdu}/working/CSF/flat-csf.xml</String>
                                                 </String-array>
                                             </field>
                                         </xprocInputPort>
@@ -1015,7 +1015,7 @@
                                         </xprocOutputPort>
                                         <xprocOutputPort>
                                             <field name="portName">
-                                                <String>_A_resolved</String>
+                                                <String>_A_OSCALIZED</String>
                                             </field>
                                             <field name="url">
                                                 <null/>
@@ -1026,7 +1026,7 @@
                                         </xprocOutputPort>
                                         <xprocOutputPort>
                                             <field name="portName">
-                                                <String>_B_rendered</String>
+                                                <String>_B_enhanced</String>
                                             </field>
                                             <field name="url">
                                                 <null/>
@@ -1037,7 +1037,7 @@
                                         </xprocOutputPort>
                                         <xprocOutputPort>
                                             <field name="portName">
-                                                <String>final</String>
+                                                <String>_C_csf-enhanced</String>
                                             </field>
                                             <field name="url">
                                                 <null/>
@@ -1055,7 +1055,7 @@
                                     <xprocParameterPort-array>
                                         <xprocParameterPort>
                                             <field name="portName">
-                                                <String>*</String>
+                                                <String>parameters</String>
                                             </field>
                                             <field name="parameters">
                                                 <xprocParameter-array/>
@@ -1063,7 +1063,7 @@
                                         </xprocParameterPort>
                                         <xprocParameterPort>
                                             <field name="portName">
-                                                <String>parameters</String>
+                                                <String>*</String>
                                             </field>
                                             <field name="parameters">
                                                 <xprocParameter-array/>
@@ -1075,7 +1075,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>Profile: resolve and render (show only)</String>
+                                    <String>Produce and enhance CSF framework</String>
                                 </field>
                                 <field name="baseURL">
                                     <null/>
@@ -1093,7 +1093,7 @@
                                     <null/>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>${pdu}/working/lib/XProc/profile-resolve-and-display.xpl</String>
+                                    <String>${pdu}/working/CSF/produce-and-enhance-framework.xpl</String>
                                 </field>
                                 <field name="inputXMLURL">
                                     <String></String>
@@ -1343,11 +1343,182 @@
                                     <xprocInputPort-array>
                                         <xprocInputPort>
                                             <field name="portName">
+                                                <String>source</String>
+                                            </field>
+                                            <field name="urls">
+                                                <String-array>
+                                                    <String>${currentFileURL}</String>
+                                                </String-array>
+                                            </field>
+                                        </xprocInputPort>
+                                    </xprocInputPort-array>
+                                </field>
+                                <field name="outputPorts">
+                                    <xprocOutputPort-array>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_0_input</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_A_resolved</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_B_rendered</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>final</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                    </xprocOutputPort-array>
+                                </field>
+                                <field name="xprocOptions">
+                                    <xprocOption-array/>
+                                </field>
+                                <field name="xprocParameters">
+                                    <xprocParameterPort-array>
+                                        <xprocParameterPort>
+                                            <field name="portName">
+                                                <String>*</String>
+                                            </field>
+                                            <field name="parameters">
+                                                <xprocParameter-array/>
+                                            </field>
+                                        </xprocParameterPort>
+                                        <xprocParameterPort>
+                                            <field name="portName">
+                                                <String>parameters</String>
+                                            </field>
+                                            <field name="parameters">
+                                                <xprocParameter-array/>
+                                            </field>
+                                        </xprocParameterPort>
+                                    </xprocParameterPort-array>
+                                </field>
+                                <field name="advancedOptionsMap">
+                                    <null/>
+                                </field>
+                                <field name="name">
+                                    <String>Profile: resolve and render (show only)</String>
+                                </field>
+                                <field name="baseURL">
+                                    <null/>
+                                </field>
+                                <field name="footerURL">
+                                    <null/>
+                                </field>
+                                <field name="fOPMethod">
+                                    <null/>
+                                </field>
+                                <field name="fOProcessorName">
+                                    <null/>
+                                </field>
+                                <field name="headerURL">
+                                    <null/>
+                                </field>
+                                <field name="inputXSLURL">
+                                    <String>${pdu}/working/lib/XProc/profile-resolve-and-display.xpl</String>
+                                </field>
+                                <field name="inputXMLURL">
+                                    <String></String>
+                                </field>
+                                <field name="defaultScenario">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="isFOPPerforming">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="type">
+                                    <String>XPROC</String>
+                                </field>
+                                <field name="saveAs">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="openInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="outputFile">
+                                    <null/>
+                                </field>
+                                <field name="outputResource">
+                                    <null/>
+                                </field>
+                                <field name="openOtherLocationInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="locationToOpenInBrowserURL">
+                                    <null/>
+                                </field>
+                                <field name="openInEditor">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInHTMLPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInXMLPane">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="showInSVGPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInResultSetPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="useXSLTInput">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="xsltParams">
+                                    <list/>
+                                </field>
+                                <field name="cascadingStylesheets">
+                                    <String-array/>
+                                </field>
+                                <field name="xslTransformer">
+                                    <String>Calabash XProc</String>
+                                </field>
+                                <field name="extensionURLs">
+                                    <String-array/>
+                                </field>
+                            </xprocScenario>
+                            <xprocScenario>
+                                <field name="inputPorts">
+                                    <xprocInputPort-array>
+                                        <xprocInputPort>
+                                            <field name="portName">
                                                 <String>source-xsd</String>
                                             </field>
                                             <field name="urls">
                                                 <String-array>
-                                                    <String>${pdu}/working/lib/XSD/oscal-interim.xsd</String>
+                                                    <String>${pdu}/working/lib/XSD/oscal-core-interim.xsd</String>
                                                 </String-array>
                                             </field>
                                         </xprocInputPort>
@@ -1371,7 +1542,7 @@
                                                 <String>documented-xsd</String>
                                             </field>
                                             <field name="url">
-                                                <String>${pdu}/working/lib/XSD/oscal-documented.xsd</String>
+                                                <String>${pdu}/working/lib/XSD/oscal-core.xsd</String>
                                             </field>
                                             <field name="showInSequenceView">
                                                 <Boolean>true</Boolean>
@@ -1725,177 +1896,6 @@
                                     <String-array/>
                                 </field>
                             </xprocScenario>
-                            <xprocScenario>
-                                <field name="inputPorts">
-                                    <xprocInputPort-array>
-                                        <xprocInputPort>
-                                            <field name="portName">
-                                                <String>source</String>
-                                            </field>
-                                            <field name="urls">
-                                                <String-array>
-                                                    <String>${pdu}/working/CSF/flat-csf.xml</String>
-                                                </String-array>
-                                            </field>
-                                        </xprocInputPort>
-                                    </xprocInputPort-array>
-                                </field>
-                                <field name="outputPorts">
-                                    <xprocOutputPort-array>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_0_input</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_A_OSCALIZED</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_B_enhanced</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_C_csf-enhanced</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                    </xprocOutputPort-array>
-                                </field>
-                                <field name="xprocOptions">
-                                    <xprocOption-array/>
-                                </field>
-                                <field name="xprocParameters">
-                                    <xprocParameterPort-array>
-                                        <xprocParameterPort>
-                                            <field name="portName">
-                                                <String>parameters</String>
-                                            </field>
-                                            <field name="parameters">
-                                                <xprocParameter-array/>
-                                            </field>
-                                        </xprocParameterPort>
-                                        <xprocParameterPort>
-                                            <field name="portName">
-                                                <String>*</String>
-                                            </field>
-                                            <field name="parameters">
-                                                <xprocParameter-array/>
-                                            </field>
-                                        </xprocParameterPort>
-                                    </xprocParameterPort-array>
-                                </field>
-                                <field name="advancedOptionsMap">
-                                    <null/>
-                                </field>
-                                <field name="name">
-                                    <String>Produce and enhance CSF framework</String>
-                                </field>
-                                <field name="baseURL">
-                                    <null/>
-                                </field>
-                                <field name="footerURL">
-                                    <null/>
-                                </field>
-                                <field name="fOPMethod">
-                                    <null/>
-                                </field>
-                                <field name="fOProcessorName">
-                                    <null/>
-                                </field>
-                                <field name="headerURL">
-                                    <null/>
-                                </field>
-                                <field name="inputXSLURL">
-                                    <String>${pdu}/working/CSF/produce-and-enhance-framework.xpl</String>
-                                </field>
-                                <field name="inputXMLURL">
-                                    <String></String>
-                                </field>
-                                <field name="defaultScenario">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="isFOPPerforming">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="type">
-                                    <String>XPROC</String>
-                                </field>
-                                <field name="saveAs">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="openInBrowser">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="outputFile">
-                                    <null/>
-                                </field>
-                                <field name="outputResource">
-                                    <null/>
-                                </field>
-                                <field name="openOtherLocationInBrowser">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="locationToOpenInBrowserURL">
-                                    <null/>
-                                </field>
-                                <field name="openInEditor">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInHTMLPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInXMLPane">
-                                    <Boolean>true</Boolean>
-                                </field>
-                                <field name="showInSVGPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInResultSetPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="useXSLTInput">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="xsltParams">
-                                    <list/>
-                                </field>
-                                <field name="cascadingStylesheets">
-                                    <String-array/>
-                                </field>
-                                <field name="xslTransformer">
-                                    <String>Calabash XProc</String>
-                                </field>
-                                <field name="extensionURLs">
-                                    <String-array/>
-                                </field>
-                            </xprocScenario>
                             <scenario>
                                 <field name="advancedOptionsMap">
                                     <null/>
@@ -1989,13 +1989,13 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/FedRAMP/fedramp-oscal-bridge.xml</String>
+                                    <String>working/SP800-53/SP800-53-OSCAL-refined.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL against (documented) XSD</String>
+                                        <String>OSCAL against its declarations</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
+                                        <String>OSCAL core RNC (standalone)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -2008,21 +2008,15 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/SP800-53-OSCAL-refined.xml</String>
+                                    <String>working/FedRAMP/fedramp-oscal-bridge.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL against (documented) XSD</String>
-                                        <String>OSCAL against its declarations</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
                                 </field>
@@ -2034,15 +2028,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
-                                        <String>OSCAL against (documented) XSD</String>
                                         <String>OSCAL strict</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2055,15 +2045,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
-                                        <String>OSCAL against (documented) XSD</String>
                                         <String>OSCAL strict</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2076,15 +2062,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
-                                        <String>OSCAL against (documented) XSD</String>
                                         <String>OSCAL strict</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2097,15 +2079,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
-                                        <String>OSCAL against (documented) XSD</String>
                                         <String>OSCAL strict</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2117,15 +2095,11 @@
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL against (documented) XSD</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
                                 </field>
@@ -2136,24 +2110,7 @@
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL strict</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/COBIT5/cobit5-tuned-declarations.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -2169,13 +2126,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL against its declarations</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2189,12 +2144,10 @@
                                     <list>
                                         <String>OSCAL links</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2206,14 +2159,12 @@
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL strict</String>
                                         <String>OSCAL links</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2226,12 +2177,10 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
                                 </field>
@@ -2243,12 +2192,10 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
                                 </field>
@@ -2260,13 +2207,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL strict</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2280,12 +2225,10 @@
                                     <list>
                                         <String>OSCAL against its declarations</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2299,12 +2242,10 @@
                                     <list>
                                         <String>OSCAL against its declarations</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2318,13 +2259,11 @@
                                     <list>
                                         <String>OSCAL against its declarations</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL links</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
@@ -2338,13 +2277,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL strict</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2357,13 +2294,11 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL against its declarations</String>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL strict</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2375,13 +2310,11 @@
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL against its declarations</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
                                 </field>
@@ -2392,14 +2325,12 @@
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL strict</String>
                                         <String>OSCAL against its declarations</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
@@ -2411,84 +2342,7 @@
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL working RNC</String>
                                         <String>OSCAL strict</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/COBIT5/cobit5-oscal-safe.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/800-53-controls.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/800-53A-controls-OSCAL.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/SP800-53-mockup.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/lib/SP800-53-mockup.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -2504,12 +2358,10 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL working RNC</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
                                 </field>
@@ -2561,7 +2413,7 @@
                                                         <Integer>2</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/XSD/oscal-documented.xsd</String>
+                                                        <String>${pdu}/working/lib/XSD/oscal-catalog.xsd</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -2572,7 +2424,7 @@
                                     <String>Validation_scenario</String>
                                 </field>
                                 <field name="name">
-                                    <String>OSCAL against (documented) XSD</String>
+                                    <String>OSCAL against Catalog XSD</String>
                                 </field>
                             </validationScenario>
                             <validationScenario>
@@ -2785,7 +2637,7 @@
                                                         <Integer>3</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/oscal-working.rnc</String>
+                                                        <String>${pdu}/working/lib/oscal-core.rnc</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -2796,7 +2648,7 @@
                                     <String>Validation_scenario</String>
                                 </field>
                                 <field name="name">
-                                    <String>OSCAL working RNC</String>
+                                    <String>OSCAL core RNC (standalone)</String>
                                 </field>
                             </validationScenario>
                             <validationScenario>

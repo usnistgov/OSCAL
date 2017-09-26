@@ -371,6 +371,15 @@
          <xs:attributeGroup ref="oscal:hrefAttr"/>
       </xs:complexType>
    </xs:element>
+   <xs:element name="desc">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Parameter description</b> Indicates and explains the purpose and use of a parameter</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal:mix"/>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="param">
       <xs:annotation>
          <xs:documentation>
@@ -383,15 +392,6 @@
          </xs:sequence>
          <xs:attributeGroup ref="oscal:idAttr"/>
          <xs:attributeGroup ref="oscal:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="desc">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Parameter description</b> Indicates and explains the purpose and use of a parameter</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal:mix"/>
       </xs:complexType>
    </xs:element>
    <xs:group name="paramValue">

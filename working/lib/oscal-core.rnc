@@ -4,7 +4,6 @@ default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 # (which is kind of a 'catalog mockup' format)
 start = (catalog | declarations | framework)
 
-
 catalog-contents   = (title, declarations?, (section | group | control)*, references?)
 
 framework-contents = (title, declarations?, (section | category | item)*, references?)
@@ -134,9 +133,10 @@ link    = element link { relAttr, hrefAttr, mix }
 # or on-the-fly declaration of new parameters for a control
 # (since params are not currently required to be declared
 
-param   = element param { idAttr, optionalClass, desc, paramValue }
-
 desc = element desc        { mix }
+
+
+param   = element param { idAttr, optionalClass, desc, paramValue }
 
 paramValue = element value { text }
 
