@@ -8,9 +8,14 @@ catalog-contents   = (title, declarations?, (section | group | control)*, refere
 
 framework-contents = (title, declarations?, (section | category | item)*, references?)
 
+# 'worksheet' is just an alias for 'framework' for now
+worksheet-contents = (title, declarations?, (section | category | item)*, references?)
+
 catalog    = element catalog { catalog-contents } 
 
 framework = element framework { idAttr, optionalClass, framework-contents }
+
+worksheet = element worksheet { idAttr, optionalClass, worksheet-contents }
 
 # 'group' is the element name as it appears in both frameworks, and catalogs
 # but they group different things

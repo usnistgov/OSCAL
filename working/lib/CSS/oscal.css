@@ -118,7 +118,7 @@ remarks:before,part[class=remarks]:before { content: "Remarks"; font-weight: bol
 
 
 component p:before  { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif } 
-framework p { background-color: white; padding: 0.5em; border: thin solid orange } 
+component p { background-color: white; padding: 0.5em; border: thin solid orange } 
 
 p { margin-top: 0.5em }
 

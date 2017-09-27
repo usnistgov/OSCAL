@@ -374,9 +374,24 @@ a:visited { color: midnightblue }
                   <a href="#d6e1686">Interdicted @class assignments</a>
                </p>
             </div>
+         </div>
+         <div class="toc">
+            <p class="toc-line">
+               <a href="#d6e1740">Developer notes and rationales</a>
+            </p>
             <div class="toc">
                <p class="toc-line">
-                  <a href="#d6e1738">No overloading @class</a>
+                  <a href="#d6e1791">Controls, not (only) the documents that describe them</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1802">Validation</a>
+               </p>
+            </div>
+            <div class="toc">
+               <p class="toc-line">
+                  <a href="#d6e1813">Relationship to other document formats</a>
                </p>
             </div>
          </div>
@@ -1361,25 +1376,102 @@ a:visited { color: midnightblue }
           Schematron.</p>
                </div>
             </div>
-            <div class="control general-constraint" id="d6e1738">
-               <h4 class="general-constraint">No overloading @class</h4>
-      
-               <div class="part description">
-                  <p class="p">(Not presently enforced) Values of the <code class="code">class</code> attribute i.e.
-            <code class="code">@class</code> must be single; no space-delimited multiple classes as in HTML</p>
-               </div>
-               <div class="part remarks">
-                  <p class="p">While the declarations model may still work even with overloaded, multi-value classes, it
-          might also lead to conniption fits. Better perhaps at the outset to warn against this. You
-          shouldn't have to do that anyway.</p>
-                  <p class="p">So far we have not needed to enforce this – the declarations model, for example, can cope
-          with multiple classes – there may come a day.</p>
-                  <p class="p">OSCAL users may have insights into whether class overloading (in OSCAL, not elsewhere) is
-          a good thing or a bad thing to be discouraged.</p>
-               </div>
-            </div>
          </section>
-  
+         <section class="section" id="d6e1740">
+            <h3>Developer notes and rationales</h3>
+    
+      
+            <li class="li">We need XML, because we have peculiar functional requirements in dealing with arbitrary
+        but semi-regular mixed data, specifically "documentary" contents; this is XML’s sweet
+        spot.</li>
+            <li class="li">Syntactically, it would be good to use something as close to MicroXML as possible (we
+        want Python programmers to want to write against this).</li>
+            <li class="li">Despite this discipline (or because of it) the XML stack is useful because it is
+          available, performant for our purposes, and standards-based.</li>
+            <li class="li">We can aim for the widest distributed support via XSD for validation (for ubiquity of
+        tools) but perform modeling work in RNC (flexibility) as long as possible (and perhaps
+        provide/support other validation methodologies?) 
+          <li class="li">Schema maintenance is going to require tools support anyway; we may as well start
+            early: so RNC + docs =&gt; [XSD+docs] where all three are available as resources (you
+            are reading the 'docs') to both human and machine consumers.</li>
+            </li>
+            <li class="li">Provide for customization by restriction, not extension. Flavors of OSCAL will take the
+        form of particular usages, not of formal schemas. 
+          <li class="li">Ergo, no schema extension mechanism is called for – much less yet another one. If we
+            need schema extension we can show how without a new metalanguage. A sufficiently simple
+            schema should permit this.</li>
+            </li>
+            <li class="li">Accordingly the element set should be as minimal as possible for now - minimum to get
+        the job done (we can aim for decoration later).</li>
+            <li class="li">This implies that semantic modeling (of "control types" in different catalogs) work
+        predominantly via a microformat mechanism (semantics overlaid on generic element types via a
+        class mechanism) 
+          <li class="li">This was prototyped and found to work (see below)</li>
+               <li class="li">An optional layer (the OSCAL Declarations layer) is implicit so we built one out as a
+            POC.</li>
+            </li>
+            <li class="li">Standing something up quickly and changing names as we go gives us a chance to try
+        things on, not just debate principles.</li>
+      
+            <section class="section" id="d6e1791">
+               <h4>Controls, not (only) the documents that describe them</h4>
+      
+               <p class="p">OSCAL is a domain-specific language for the description and specification of collections of
+        security and privacy controls in a control catalog. Inevitably there is a metaphysical grey
+        zone between controls and the language by which they are defined and described. OSCAL
+        attempts to normalize the semantics used to describe controls by providing a single format
+        for which multiple control catalogs (e.g., NIST SP 800-53/53a, ISO/IEC 27001/2, COBIT 5) can
+        be expressed. It does this by presenting a generalized descriptive "slate" or "tablet" upon
+        which the particular patterns of a particular catalog, may be drawn. Not all catalogs in
+        OSCAL will be the same – the design of controls in different catalogs and of different kinds
+        and species, may be different – but because they will all be OSCAL, it will be easier to see
+        their differences, easier to relate them to one another, and easier to do similar things in
+        similar ways.</p>
+               <p class="p">Not only controls information itself, but a set of structured documents that describes and
+        makes reference to such controls is in scope for OSCAL. Baselines, profiles, overlays and
+        frameworks written in reference to controls catalogs, are all capabilities we aim to offer
+        and support.</p>
+            </section>
+            <section class="section" id="d6e1802">
+               <h4>Validation</h4>      
+               <p class="p">In order to enable catalog and profile-specific validation, we have developed an
+        alternative validation model. It is intended to be (third) complementary to the (two)
+        predominant strategies for XML validation, namely validation against a grammar-based schema
+        such as XSD or RNG) and validation per document or instance type (defined loosely) using
+        query-based technologies such as Schematron. This additional validation model, called "OSCAL
+        declarations", provides support for another "document level" validation layer, without
+        having to code a Schematron. A small language (taking the form of a set of OSCAL tags)
+        permits the specification of simple constraints that can be enforced over catalogs, profiles
+        or worksheets. Much of the complexity that OSCAL must support moves away from the base
+        schema, permitting it to be simpler, defining a smaller base tag set.</p>
+               <p class="p">Yet enriching this tagging to carry more semantics (appropriate to either a catalog type or
+        its application or implementation) is nonetheless straightforward: a matter (as always) of
+        defining and enforcing rules. But instead of requiring schema aggregation, modification or
+        or extension, we now describe an "application usage" of OSCAL elements and class values
+        (much like an HTML/CSS microformat). OSCAL declarations gives a way of exposing
+        (documenting) and enforcing this set of constraints on document structures such that they
+        can be enforced by automated means at runtime (when exceptions to stated rules can be
+        detected). Thus developers and users have the capability to define OSCAL control types
+        without having to write any schema code.</p>
+            </section>
+            <section class="section" id="d6e1813">
+               <h4>Relationship to other document formats</h4>
+      
+               <p class="p">OSCAL captures chunks of transcribed natural/literate/technical language, i.e. "prose", but
+        it also permits the rational arrangement of such chunks of language with more tightly
+        controlled values (control properties and parameters). Applied systematically and at scale,
+        such regular and rational arrangements enable higher-order transparencies that can translate
+        directly into functionalities (relating to data creation, manipulation, management and
+        forensics). In this, OSCAL goes further than documentary-description XML formats such as the
+        National Information Standards Organization (NISO) Journal Article Tag Suite (JATS), the
+        NISO Standard Tag Set (STS), the Darwin Information Typing Architecture (DITA), and other
+        viable alternatives for encoding <q class="q">control catalogs</q> in the broad sense. This is not
+        because OSCAL provides a <q class="q">semantics</q> for <q class="q">controls</q> so much as because a means by
+        which an OSCAL application (or user or developer) may do so. Accordingly, it is expected
+        that OSCAL would be complementary to any of the formats just mentioned.</p>
+            </section>
+    
+         </section>
       </div>
    </body>
 </html>
