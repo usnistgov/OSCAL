@@ -3,7 +3,6 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   
-   default-mode="oscal:resolve"
   xmlns="http://csrc.nist.gov/ns/oscal/1.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
@@ -26,11 +25,11 @@
   <xsl:mode name="filter-controls" on-no-match="shallow-copy"/>
   
   <!-- Frameworks and catalogs are resolved as themselves. -->
-  <xsl:template match="catalog | framework" mode="oscal:resolve">
+  <xsl:template match="catalog | framework" mode="oscal:resolve #default">
     <xsl:apply-templates select="." mode="copy"/>
   </xsl:template>
   
-  <xsl:template match="profile" mode="oscal:resolve">
+  <xsl:template match="profile" mode="oscal:resolve #default">
     <!-- We need a wrapper element in case of more than one invocation -->
     <xsl:copy>
       <!-- So we copy ourselves as well in case a subsequent transformation wants to see -->
@@ -98,10 +97,15 @@
   
   <!-- Both catalogs and frameworks are rendered as frameworks. -->
   <xsl:template match="catalog | framework" mode="filter-controls">
-    <framework>
+    <xsl:variable name="filtered-results">
       <xsl:apply-templates select="title" mode="copy"/>
       <xsl:apply-templates select="group | control | component" mode="filter-controls"/>
+    </xsl:variable>
+    <xsl:if test="exists($filtered-results/*)">
+    <framework>
+      <xsl:sequence select="$filtered-results"/>
     </framework>
+    </xsl:if>
   </xsl:template>
     
   <xsl:template match="group" mode="filter-controls">

@@ -279,14 +279,6 @@
     <xsl:value-of select="@class"/>
   </xsl:template>
   
-  <xsl:template match="*" mode="title">
-    <xsl:value-of select="@class"/>
-  </xsl:template>
-  
-  <xsl:template match="*" mode="title">
-    <xsl:value-of select="@class"/>
-  </xsl:template>
-  
   <xsl:template match="oscal:p">
     <p class="p">
       <xsl:apply-templates/>

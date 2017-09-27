@@ -13,9 +13,9 @@ All of these call on the core module for declarations; in the case of `catalog` 
 
 Of the three nominal document formats, only `catalog` is nearing stability (end of Sprint 4). However, all the schemas are functional and maintained fairly closely in sync with demonstration code and examples.
 
-Each of these schemas is maintained in RNC format (RelaxNG compact syntax ISO/IEC 19757-2); see information on RelaxNG at http://relaxng.org. This approach to maintenance permits rapid development with low process overhead. For use by applications without support for RelaxNG, we convert the schemas into W3C XSD using an open source tool, [Trang](http://www.thaiopensource.com/relaxng/trang.html). The direct results of `oscal-core.rnc` appear here as [oscal-interim-core.xsd](oscal-interim-code.xsd).
+Each of these schemas is maintained in RNC format (RelaxNG compact syntax ISO/IEC 19757-2); see information on RelaxNG at http://relaxng.org. This approach to maintenance permits rapid development with low process overhead. For use by applications without support for RelaxNG, we convert the schemas into W3C XSD using an open source tool, [Trang](http://www.thaiopensource.com/relaxng/trang.html). The XSD it produces from `oscal-core.rnc` appears here as [oscal-interim-core.xsd](oscal-interim-code.xsd).
 
-Additionally, we process this file with an XProc pipeline [schema-production.xpl](schema-production.xpl) to merge it with documentation [maintained elsewhere](../../doc/schema) (in OSCAL format), producing artifacts including (a) an XSD with embedded documentation (the [publication version](oscal-core.xsd) named above), and (b) external documentation in HTML and Markdown formats. See the [doc/schema](../../doc/schema) subdirectory for these resources.
+Additionally, we process this file with an XProc pipeline [schema-production.xpl](schema-production.xpl) to merge it with documentation [maintained elsewhere](../../docs/schema) (in OSCAL format), producing artifacts including (a) an XSD with embedded documentation (the [publication version](oscal-core.xsd) named above), and (b) external documentation in HTML and Markdown formats. See the [doc/schema](../../docs/schema) subdirectory for these resources.
 
 (Currently, the elements in the largely untested 'profile' format are not documented; this remains tbd.)
 

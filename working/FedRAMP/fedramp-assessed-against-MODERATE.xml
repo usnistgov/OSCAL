@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../lib/Schematron/oscal-against-its-declarations.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="../lib/oscal-framework.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>FedRAMP in OSCAL PROTOTYPE</title>
-   <p> OSCAL Framework assessment of 'fedramp-oscal-worksheet.xml' against authority 'file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml' </p>
    <group>
       <title>Access Control</title>
       <prop class="group-id">AC</prop>

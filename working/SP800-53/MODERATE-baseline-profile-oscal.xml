@@ -2,6 +2,7 @@
 <!-- Produced by baseline-profile.xsl applied to
         file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml 2017-09-14-04:00
         runtime parameter settings: $property='baseline-impact' $value='MODERATE'-->
+<?xml-stylesheet type="text/xsl" href="SP800-53-oscal-browser-display.xsl"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <invoke href="file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml">
       <include>
