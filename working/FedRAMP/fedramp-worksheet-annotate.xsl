@@ -36,19 +36,25 @@
     
     -->
 
-<xsl:mode on-no-match="shallow-copy"/>
+    <xsl:mode on-no-match="shallow-copy"/>
     
     <xsl:template match="framework">
         <xsl:processing-instruction name="xml-model">href="../lib/Schematron/oscal-against-its-declarations.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
         <xsl:processing-instruction name="xml-model">href="../lib/oscal-framework.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
         <xsl:text>&#xA;</xsl:text>
-        <xsl:next-match/>
+        <!-- can't just next-match since the imported stylesheet will intercept -->
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates/>
+        </xsl:copy>
     </xsl:template>
     
     <xsl:param name="authority-file" select="'../SP800-53/MODERATE-baseline-profile-oscal.xml'"/>
     
     <xsl:variable name="authority">
-        <xsl:apply-templates mode="oscal:resolve" select="document($authority-file)"/>
+<!-- A resolved authority will be a 'profile' element containing copies of 'invoke' elements with 
+            their 'framework' element results (of resolution) containing (filtered) catalog controls  -->
+        <xsl:apply-templates mode="oscal:resolve" select="document($authority-file)/*"/>
     </xsl:variable>
     
     <xsl:key name="component-by-name-prop" match="group | control | subcontrol | component" use="prop[@class='name']/replace(.,'\s+',' ')"/>
@@ -58,11 +64,12 @@
     <xsl:template match="framework/title">
         <xsl:next-match/>
         <section class="file_provenance">
-          <p xsl:expand-text="true"> OSCAL Framework assessment of '{ replace(document-uri(/),'.*/','') }' against authority '{ $authority-file }' </p>
+          <p xsl:expand-text="true"> OSCAL worksheet annotation of '{ replace(document-uri(/),'.*/','') }' against authority '{ $authority-file }' </p>
         </section>
     </xsl:template>
     
     <xsl:template match="component">
+        <xsl:message>Boo!</xsl:message>
         <xsl:variable name="my-name" select="prop[@class = 'name']/replace(., '\s+', ' ')"/>
         <xsl:variable name="my-title" select="title/replace(., '\s+', ' ')"/>
         <xsl:variable name="matching-components"
@@ -76,7 +83,7 @@
                 <xsl:when test="empty($matching-components)">
                     <!-- No match at all -->
                     <xsl:apply-templates select="title"/>
-                    <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+                    <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
                     <xsl:apply-templates select="* except title"/>
                 </xsl:when>
                 <xsl:when test="count($matching-components) = 1">
@@ -87,9 +94,7 @@
                     <xsl:apply-templates select="$matching-components" mode="write-link"/>
                     
                     <xsl:for-each
-                        select="
-                            $matching-components/title
-                            [not(replace(., '\s+', ' ') = $my-title)]">
+                        select="$matching-components/title[not(replace(., '\s+', ' ') = $my-title)]">
                         <prop class="authority_title">
                             <xsl:apply-templates/>
                         </prop>

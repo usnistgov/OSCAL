@@ -18,66 +18,68 @@ We have to do this once. oXgen XML Editor has a tool for this import, which we u
 
 **output**: file `excel-extract.xml`
 
-### Convert raw XML into an OSCAL "bridge framework" format
+### Convert raw XML into an OSCAL "worksheet" format
+
+Note this is called `framework` provisionally; the element might have a new name after models are tested and refined
 
 **source**: file `excel-extract.xml`
 
 **transformation**: file `fedramp-flat-to-framework.xsl`
 
-**result**: file `fedramp-oscal-bridge.xml`
+**result**: file `fedramp-oscal-worksheet.xml`
 
 The result is valid OSCAL (although without OSCAL declarations)
 
-### Analyze the bridge framework in relation to its (presumed) authority (catalog or baseline)
+### Analyze the worksheet in relation to its (presumed) authority (catalog or baseline)
 
 This analysis is performed by an XSLT, whose results take the form of a copy of the input, annotated with results of the analysis and with copies of the parameters declared in the authority and referenced in (included) controls.
 
-The analysis may occur more than once if the bridge framework must be considered next to more than one potential authority (for example, different baselines of SP800-53).
+The analysis may occur more than once if the worksheet must be considered next to more than one potential authority (for example, different baselines of SP800-53).
 
-In principle, a profile can be produced for the authority if all components in the bridge framework document correspond to controls or subcontrols in the referenced catalog or profile. This can be detected by an XSLT that annotates the bridge framework in reference to the (potential) authority it is profiling. The same XSLT can also perform other analytic functions.
+In principle, a profile can be produced for the authority if all components in the worksheet document correspond to controls or subcontrols in the referenced catalog or profile. This can be detected by an XSLT that annotates the worksheet in reference to the (potential) authority it is profiling. The same XSLT can also perform other analytic functions.
 
-* Dangling components - does the bridge framework describe controls or subcontrols that do not appear in the authority? These can be flagged. Sometimes they will reflect transcription errors in the sources, which can be corrected in `excel-extract.xml` if not in the source spreadsheet.
+Note that *not all these* are implemented in this pilot; notes here capture possibilities.
 
-* Missing controls - are there controls named in the base catalog or profile that are not designated in the bridge? If the bridge is intended to be comprehensive, this is a problem. The XSLT could produce stub components for missing controls (or subcontrols). Since this is not always a desired behavior, the XSLT could support a switch.
+However, the pilot implementation does do well enough to show that the FedRAMP spreadsheet used as input does not correspond one-to-one with the SP800-53 MODERATE baseline. So this analysis has been conducted twice, once on the MODERATE profile and once on the entirety of SP800-53.
 
-* Are titles the same? Do controls and subcontrols have the same titles in the catalog as their corresponding components in the bridge framework? (Do failures here ever show anything but routine transcription errors?)
+#### Potential requirements for analysis:
+
+* Dangling components - does the worksheet describe controls or subcontrols that do not appear in the authority? These can be flagged. Sometimes they will reflect transcription errors in the sources, which can be corrected in `excel-extract.xml` if not in the source spreadsheet.
+
+* Missing controls - are there controls named in the base catalog or profile that are not designated in the worksheet? If the worksheet is intended to be comprehensive, this is a problem. The XSLT could produce stub components for missing controls (or subcontrols). Since this is not always a desired behavior, the XSLT could support a switch.
+
+* Are titles the same? Do controls and subcontrols have the same titles in the catalog as their corresponding components in the worksheet? (Do failures here ever show anything but routine transcription errors?)
 
 * Similarly, there are property values that may be assessed for correct correspondence between framework components, and the controls they are supposed to reference. (For example `prop[@class='baseline-impact']` in this data set.) Most lapses here will be incidental but some of them may sometimes be significant of other issues.
 
-* Where are there parameters to be provided? The bridge framework contains notes towards assignment of parameter values; these should be maintained in the (temporary) bridge framework, while copies of the appropriate parameters are also produced.
+* Where are there parameters to be provided? The worksheet contains notes towards assignment of parameter values; these should be maintained in the (temporary) worksheet, while copies of the appropriate parameters are also produced.
 
-Parameter assignment can subsequently be made in the the bridge framework document, which may be easier than assigning them in the final profile.
+#### Next step: editing in view of findings
 
-**primary source**: `fedramp-oscal-bridge.xml` - the bridge framework document being assessed
+Subsequent to this analysis, the worksheet can be edited. In particular, the worksheet may provide parameter values assignments.
+
+**primary source**: `fedramp-oscal-worksheet.xml` - the worksheet document being assessed
 
 **secondary source**: The OSCAL catalog or profile being referenced for (by) the assessment. Note that when this is a profile, it must be *resolved* (internally) into a (filtered) control catalog.
 
-**result**: A copy of the bridge framework is produced, with annotations and parameters included.
+**result**: A copy of the worksheet is produced, with annotations and parameters included.
 
-### Rewriting the bridge framework as a profile
+### Rewriting the worksheet as a profile
 
-(In place we have an XSLT, `fedramp-framework-to-profile.xsl`, which produces a profile for our test document, in reference to SP800-53 (the entirety). However, we need it to work not only against the full catalog but also against its profiles. Also we need more robust error handling. So what follows here are generalized requirements.)
+Finally we have an XSLT transformation, `fedramp-framework-to-profile.xsl`, which produces an OSCAL profile out of a worksheet.
 
-Given the edited bridge document, checked and tested against an authority (and with no remaining dangling components), another XSLT can produce a profile document recapitulating the operations of the framewok in control selection and parameter assignment.
+The current version does this by referencing SP800-53 to match up components against controls. A new better version will be simpler, reflecting how in the prior "annotation" step we have effectively moved the intelligence required to do this. Given results such as the annotation process can produce, in other words, we should be able to rewrite the worksheet as a profile without reference to an authority (other than what the worksheet itself cites). 
 
-(Note that it does need fallback behavior defined for cases where the bridge framework does not line up against the intended catalog. But a profile is expected: should this be runtime failure? or should dangling components or parameters be dropped?)
+This effectively deals also with the requirement to produce a profile for an arbitrary set of controls referencing either catalogs or profiles (since that resolution has already effectively been done).)
 
-**primary source**: `fedramp-oscal-bridge.xml` - the bridge framework document being assessed
+When resolved against its authority (for FedRAMP we are aiming for the MODERATE baseline of SP800-53), this profile document should be capable of rendetion and display, showing the invoked controls with parameterized values, like any other profile.  
 
-**secondary source**: The OSCAL catalog or profile being referenced for (by) the assessment.
+**primary source**: `fedramp-oscal-worksheet.xml` - the worksheet document being assessed - but any OSCAL `framework` should do, as long as it has links in it.
 
-**result**: An OSCAL profile document referencing the authority (catalog or profile) copy of the bridge framework is produced, with annotations and parameters included.
+**result**: An OSCAL profile document referencing the authority (catalog or profile) copy of the worksheet is produced, with annotations and parameters included.
 
 This document should work as a profile: when resolved against its catalog (or appropriate baseline profile), it should give the results intended by the original spreadsheet.
 
-#### Notes towards implementation
+#### Complications set aside for now
 
-A 'naive' profile simply lists all controls and subcontrols to be called.
-
-A more sophisticated profile may rewrite the naive profile (with reference to its authority catalog or profile) using constructs including `invoke/include/all`, `invoke/exclude/call` (if more controls are included than excluded) and `call/@with-subcontrols`.
-
-There will be some art to this (producing the most efficient, legible and useful profile). Possibly the bridge rewrite will occur in two phases: first, writing the 'naive' profile, the second, rewriting it.
-
-#### Complications set aside
-
-For now we are assuming that our profiles will invoke only single authorities (catalogs or profiles). If the bridge framework may call more than one authority, the analysis will be more complex and require further specification (for example to deal with potential conflicts).
+For now we are assuming that our profiles will invoke only single authorities (catalogs or profiles). If the worksheet may call more than one authority, the analysis will be more complex and require further specification (for example to deal with potential conflicts).

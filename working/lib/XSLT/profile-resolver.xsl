@@ -12,7 +12,7 @@
 
   <!--<xsl:import href="oscal-browser-display.xsl"/>-->
   
-  <xsl:strip-space elements="group control subcontrol part section item"/>
+  <xsl:strip-space elements="group control subcontrol part section component"/>
   
   <xsl:output indent="yes"/>
 
