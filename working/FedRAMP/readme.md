@@ -64,9 +64,11 @@ However, the pilot implementation does do well enough to show that the FedRAMP s
 
 Subsequent to this analysis, the worksheet can be edited. In particular, parameter values may be assigned.
 
+A (human) editor should take special note of `<link>` elements in the OSCAL. Where they have "control" or "subcontrol"
+
 ### Rewriting the worksheet as a profile
 
-Finally we have an XSLT transformation, `fedramp-framework-to-profile.xsl`, which produces an OSCAL profile out of a worksheet.
+Finally we have an XSLT transformation, `profile-from-linked-worksheet.xsl`, which produces an OSCAL profile out of a worksheet.
 
 The current version does this by referencing SP800-53 to match up components against controls. A new better version will be simpler, reflecting how in the prior "annotation" step we have effectively moved the intelligence required to do this. Given results such as the annotation process can produce, in other words, we should be able to rewrite the worksheet as a profile without reference to an authority (other than what the worksheet itself cites). 
 
