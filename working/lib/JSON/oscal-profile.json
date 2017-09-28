@@ -11,18 +11,17 @@
           "type": "string",
           "description": ""
         },
-        "class": {
+        "optionalClass": {
           "type": "string",
-          "description": "",
-          "items": { "type": "string" }
+          "description": ""
         },
-        "param": {
+        "paramValue": {
           "type": "string",
           "description": ""
         }
       },
       "propertyNames": {
-        "enum": [ "id", "class", "param" ]
+        "enum": [ "id", "class", "value" ]
       }
     },
     "call": {
