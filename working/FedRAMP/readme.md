@@ -40,29 +40,29 @@ In principle, a profile can be produced for the authority if all components in t
 
 Note that *not all these* are implemented in this pilot; notes here capture possibilities.
 
-However, the pilot implementation does do well enough to show that the FedRAMP spreadsheet used as input does not correspond one-to-one with the SP800-53 MODERATE baseline. So this analysis has been conducted twice, once on the MODERATE profile and once on the entirety of SP800-53.
+However, the pilot implementation does do well enough to show that the FedRAMP spreadsheet used as input does not correspond one-to-one with the SP800-53 MODERATE baseline. Demonstrating this, the analysis has been conducted twice, once on the MODERATE profile and once on the entirety of SP800-53. The delta (for good results, use an XML diff tool) shows where FedRAMP "spills over" from our encoding of the MODERATE baseline.
 
-#### Potential requirements for analysis:
+#### Potential points for analysis:
 
 * Dangling components - does the worksheet describe controls or subcontrols that do not appear in the authority? These can be flagged. Sometimes they will reflect transcription errors in the sources, which can be corrected in `excel-extract.xml` if not in the source spreadsheet.
 
-* Missing controls - are there controls named in the base catalog or profile that are not designated in the worksheet? If the worksheet is intended to be comprehensive, this is a problem. The XSLT could produce stub components for missing controls (or subcontrols). Since this is not always a desired behavior, the XSLT could support a switch.
+* Missing controls - are there controls named in the base catalog or profile that are not designated in the worksheet? This will not be an error if the worksheet is intended to reference only a selection of controls. But if the worksheet is intended to be comprehensive of the profile or catalog it cites, this reflects a problem (missing data or broken links). The XSLT could produce stub components for missing controls (or subcontrols). Since this is not always a desired behavior, the XSLT could support a switch.
 
 * Are titles the same? Do controls and subcontrols have the same titles in the catalog as their corresponding components in the worksheet? (Do failures here ever show anything but routine transcription errors?)
 
+  (Currently, controls and subcontrols (in catalogs) can be matched to components (in the worksheet) by both 'name' property and title; the merger shows variances and falls back if there are ever multiple matches.)
+
 * Similarly, there are property values that may be assessed for correct correspondence between framework components, and the controls they are supposed to reference. (For example `prop[@class='baseline-impact']` in this data set.) Most lapses here will be incidental but some of them may sometimes be significant of other issues.
+
+  (The current implementation rewrites the baseline-impact values for easier comparability between worksheet and catalog.)
 
 * Where are there parameters to be provided? The worksheet contains notes towards assignment of parameter values; these should be maintained in the (temporary) worksheet, while copies of the appropriate parameters are also produced.
 
-#### Next step: editing in view of findings
+  (The current implementation simply splices in any parameters it sees, in controls or subcontrols considered to be referenced by components.)
 
-Subsequent to this analysis, the worksheet can be edited. In particular, the worksheet may provide parameter values assignments.
+### Next step: editing in view of findings (annotations)
 
-**primary source**: `fedramp-oscal-worksheet.xml` - the worksheet document being assessed
-
-**secondary source**: The OSCAL catalog or profile being referenced for (by) the assessment. Note that when this is a profile, it must be *resolved* (internally) into a (filtered) control catalog.
-
-**result**: A copy of the worksheet is produced, with annotations and parameters included.
+Subsequent to this analysis, the worksheet can be edited. In particular, parameter values may be assigned.
 
 ### Rewriting the worksheet as a profile
 
@@ -70,11 +70,11 @@ Finally we have an XSLT transformation, `fedramp-framework-to-profile.xsl`, whic
 
 The current version does this by referencing SP800-53 to match up components against controls. A new better version will be simpler, reflecting how in the prior "annotation" step we have effectively moved the intelligence required to do this. Given results such as the annotation process can produce, in other words, we should be able to rewrite the worksheet as a profile without reference to an authority (other than what the worksheet itself cites). 
 
-This effectively deals also with the requirement to produce a profile for an arbitrary set of controls referencing either catalogs or profiles (since that resolution has already effectively been done).)
+This effectively deals also with the requirement to produce a profile for an arbitrary set of controls referencing either catalogs or profiles (since we already have code that can test the viability of the profiles we make).
 
 When resolved against its authority (for FedRAMP we are aiming for the MODERATE baseline of SP800-53), this profile document should be capable of rendetion and display, showing the invoked controls with parameterized values, like any other profile.  
 
-**primary source**: `fedramp-oscal-worksheet.xml` - the worksheet document being assessed - but any OSCAL `framework` should do, as long as it has links in it.
+**primary source**: `fedramp-oscal-worksheet-annotated.xml` - the worksheet document being assessed - but any OSCAL `framework` should do, as long as it has links in it.
 
 **result**: An OSCAL profile document referencing the authority (catalog or profile) copy of the worksheet is produced, with annotations and parameters included.
 

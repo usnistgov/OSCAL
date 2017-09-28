@@ -39,8 +39,9 @@
     <xsl:mode on-no-match="shallow-copy"/>
     
     <xsl:template match="framework">
-        <xsl:processing-instruction name="xml-model">href="../lib/Schematron/oscal-against-its-declarations.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
-        <xsl:processing-instruction name="xml-model">href="../lib/oscal-framework.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+        <xsl:processing-instruction name="xml-model">href="../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
+        <xsl:processing-instruction name="xml-model">href="../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"</xsl:processing-instruction>
+        <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"</xsl:processing-instruction>
         <xsl:text>&#xA;</xsl:text>
         <!-- can't just next-match since the imported stylesheet will intercept -->
         <xsl:copy>
@@ -48,7 +49,7 @@
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:param name="authority-file" select="'../SP800-53/MODERATE-baseline-profile-oscal.xml'"/>
     
     <xsl:variable name="authority">
@@ -64,12 +65,12 @@
     <xsl:template match="framework/title">
         <xsl:next-match/>
         <section class="file_provenance">
+            <title>resource provenance</title>
           <p xsl:expand-text="true"> OSCAL worksheet annotation of '{ replace(document-uri(/),'.*/','') }' against authority '{ $authority-file }' </p>
         </section>
     </xsl:template>
     
     <xsl:template match="component">
-        <xsl:message>Boo!</xsl:message>
         <xsl:variable name="my-name" select="prop[@class = 'name']/replace(., '\s+', ' ')"/>
         <xsl:variable name="my-title" select="title/replace(., '\s+', ' ')"/>
         <xsl:variable name="matching-components"
@@ -135,7 +136,7 @@
     <xsl:template match="prop[@class='baseline-impact']"/>
     
     <xsl:template match="component | control | subcontrol" mode="write-link">
-        <link rel="{local-name()}" href="{$authority-file}#{@id}">
+        <link rel="{distinct-values((tokenize(@class,'\s+'),local-name(.))) }" href="{$authority-file}#{@id}">
             <xsl:value-of select="prop[@class = 'name']"/>
         </link>
     </xsl:template>

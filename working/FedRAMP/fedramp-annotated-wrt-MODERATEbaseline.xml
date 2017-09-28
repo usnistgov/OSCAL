@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/Schematron/oscal-against-its-declarations.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../lib/oscal-framework.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>FedRAMP in OSCAL PROTOTYPE</title>
    <section class="file_provenance">
-      <p> OSCAL Framework assessment of 'fedramp-oscal-worksheet.xml' against authority 'file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml' </p>
+      <title>resource provenance</title>
+      <p> OSCAL worksheet annotation of 'fedramp-oscal-worksheet.xml' against authority 'file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml' </p>
    </section>
    <group>
       <title>Access Control</title>
       <prop class="group-id">AC</prop>
       <component>
          <title>Access Control Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.1">AC-1</link>
          <prop class="authority_title">ACCESS CONTROL POLICY AND PROCEDURES</prop>
          <param id="ac-1_a"><!-- inserted into .SP800-53 control#ac.1 .statement .item#smm_ac-1a. -->
@@ -34,7 +36,7 @@ AC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Account Management</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.2">AC-2</link>
          <prop class="authority_title">ACCOUNT MANAGEMENT</prop>
          <param id="ac-2_a"><!-- inserted into .SP800-53 control#ac.2 .statement .item#smm_ac-2a. -->
@@ -59,7 +61,7 @@ AC-1.b.2 [at least annually]</p>
          <p class="param_assigns">AC-2j [at least annually]</p>
          <component>
             <title>Automated System Account Management</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.2.1.">AC-2 (1)</link>
             <prop class="authority_title">AUTOMATED SYSTEM ACCOUNT MANAGEMENT</prop>
             <prop class="name">AC-2 (1)</prop>
@@ -68,7 +70,7 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Removal of Temporary / Emergency Accounts</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.2.2.">AC-2 (2)</link>
             <prop class="authority_title">REMOVAL OF TEMPORARY / EMERGENCY ACCOUNTS</prop>
             <param id="ac-2_e"><!-- inserted into .SP800-53 control#ac.2 .SP800-53-enhancement subcontrol#ac.2.2. .statement -->
@@ -82,7 +84,7 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Disable Inactive Accounts</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.2.3.">AC-2 (3)</link>
             <prop class="authority_title">DISABLE INACTIVE ACCOUNTS</prop>
             <param id="ac-2_f"><!-- inserted into .SP800-53 control#ac.2 .SP800-53-enhancement subcontrol#ac.2.3. .statement -->
@@ -97,7 +99,7 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Automated Audit Actions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.2.4.">AC-2 (4)</link>
             <prop class="authority_title">AUTOMATED AUDIT ACTIONS</prop>
             <param id="ac-2_g"><!-- inserted into .SP800-53 control#ac.2 .SP800-53-enhancement subcontrol#ac.2.4. .statement -->
@@ -110,36 +112,36 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Inactivity Logout</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AC-2 (5)</prop>
          </component>
          <component>
             <title>Role-Based Schemes</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AC-2 (7)</prop>
          </component>
          <component>
             <title>Restrictions on Use of Shared Groups / Accounts</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AC-2 (9)</prop>
             <p class="remarks">Required if shared/group accounts are deployed</p>
          </component>
          <component>
             <title>Shared / Group Account Credential Termination</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AC-2 (10)</prop>
             <p class="remarks">Required if shared/group accounts are deployed</p>
          </component>
          <component>
             <title>Account Monitoring / Atypical Usage</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AC-2 (12)</prop>
             <p class="remarks">AC-2 (12)(a) and AC-2 (12)(b) Additional FedRAMP Requirements and Guidance: Required for privileged accounts.</p>
          </component>
       </component>
       <component>
          <title>Access Enforcement</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.3">AC-3</link>
          <prop class="authority_title">ACCESS ENFORCEMENT</prop>
          <prop class="name">AC-3</prop>
@@ -148,7 +150,7 @@ AC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Information Flow Enforcement</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.4">AC-4</link>
          <prop class="authority_title">INFORMATION FLOW ENFORCEMENT</prop>
          <param id="ac-4_a"><!-- inserted into .SP800-53 control#ac.4 .statement -->
@@ -160,13 +162,13 @@ AC-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Physical / Logical Separation of Information Flows</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AC-4 (21)</prop>
          </component>
       </component>
       <component>
          <title>Separation of Duties</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.5">AC-5</link>
          <prop class="authority_title">SEPARATION OF DUTIES</prop>
          <param id="ac-5_a"><!-- inserted into .SP800-53 control#ac.5 .statement .item#smm_ac-5a. -->
@@ -179,7 +181,7 @@ AC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Least Privilege</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.6">AC-6</link>
          <prop class="authority_title">LEAST PRIVILEGE</prop>
          <prop class="name">AC-6</prop>
@@ -187,7 +189,7 @@ AC-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Authorize Access to Security Functions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.6.1.">AC-6 (1)</link>
             <prop class="authority_title">AUTHORIZE ACCESS TO SECURITY FUNCTIONS</prop>
             <param id="ac-6_a"><!-- inserted into .SP800-53 control#ac.6 .SP800-53-enhancement subcontrol#ac.6.1. .statement -->
@@ -201,7 +203,7 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Non-Privileged Access For No security Functions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.6.2.">AC-6 (2)</link>
             <prop class="authority_title">NON-PRIVILEGED ACCESS FOR NONSECURITY FUNCTIONS</prop>
             <param id="ac-6_b"><!-- inserted into .SP800-53 control#ac.6 .SP800-53-enhancement subcontrol#ac.6.2. .statement -->
@@ -216,7 +218,7 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Privileged Accounts</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.6.5.">AC-6 (5)</link>
             <prop class="authority_title">PRIVILEGED ACCOUNTS</prop>
             <param id="ac-6_e"><!-- inserted into .SP800-53 control#ac.6 .SP800-53-enhancement subcontrol#ac.6.5. .statement -->
@@ -229,7 +231,7 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Auditing Use of Privileged Functions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.6.9.">AC-6 (9)</link>
             <prop class="authority_title">AUDITING USE OF PRIVILEGED FUNCTIONS</prop>
             <prop class="name">AC-6 (9)</prop>
@@ -238,7 +240,7 @@ AC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Prohibit Non-privileged Users from Executing Privileged Functions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.6.10.">AC-6 (10)</link>
             <prop class="authority_title">PROHIBIT NON-PRIVILEGED USERS FROM EXECUTING PRIVILEGED FUNCTIONS</prop>
             <prop class="name">AC-6 (10)</prop>
@@ -248,7 +250,7 @@ AC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Unsuccessful Logon Attempts</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.7">AC-7</link>
          <prop class="authority_title">UNSUCCESSFUL LOGON ATTEMPTS</prop>
          <param id="ac-7_a"><!-- inserted into .SP800-53 control#ac.7 .statement .item#smm_ac-7a. -->
@@ -276,7 +278,7 @@ AC-7b [locks the account/node for thirty minutes]</p>
       </component>
       <component>
          <title>System Use Notification</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.8">AC-8</link>
          <prop class="authority_title">SYSTEM USE NOTIFICATION</prop>
          <param id="ac-8_a"><!-- inserted into .SP800-53 control#ac.8 .statement .item#smm_ac-8a. -->
@@ -299,13 +301,13 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Concurrent Session Control</title>
-         <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+         <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
          <prop class="name">AC-10</prop>
          <p class="param_assigns"> [three (3) sessions for privileged access and two (2) sessions for non-privileged access]</p>
       </component>
       <component>
          <title>Session Lock</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.11">AC-11</link>
          <prop class="authority_title">SESSION LOCK</prop>
          <param id="ac-11_a"><!-- inserted into .SP800-53 control#ac.11 .statement .item#smm_ac-11a. -->
@@ -318,7 +320,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          <p class="param_assigns">AC-11a. [fifteen minutes]  </p>
          <component>
             <title>Pattern-Hiding Displays</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.11.1.">AC-11 (1)</link>
             <prop class="authority_title">PATTERN-HIDING DISPLAYS</prop>
             <prop class="name">AC-11 (1)</prop>
@@ -328,7 +330,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Session Termination</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.12">AC-12</link>
          <prop class="authority_title">SESSION TERMINATION</prop>
          <param id="ac-12_a"><!-- inserted into .SP800-53 control#ac.12 .statement -->
@@ -342,7 +344,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Permitted Actions Without Identification or Authentication</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.14">AC-14</link>
          <prop class="authority_title">PERMITTED ACTIONS WITHOUT IDENTIFICATION OR AUTHENTICATION</prop>
          <param id="ac-14_a"><!-- inserted into .SP800-53 control#ac.14 .statement .item#smm_ac-14a. -->
@@ -355,7 +357,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Remote Access</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.17">AC-17</link>
          <prop class="authority_title">REMOTE ACCESS</prop>
          <prop class="name">AC-17</prop>
@@ -363,7 +365,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Automated Monitoring / Control</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.17.1.">AC-17 (1)</link>
             <prop class="authority_title">AUTOMATED MONITORING / CONTROL</prop>
             <prop class="name">AC-17 (1)</prop>
@@ -372,7 +374,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </component>
          <component>
             <title>Protection of Confidentiality / Integrity Using Encryption</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.17.2.">AC-17 (2)</link>
             <prop class="authority_title">PROTECTION OF CONFIDENTIALITY / INTEGRITY USING ENCRYPTION</prop>
             <prop class="name">AC-17 (2)</prop>
@@ -381,7 +383,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </component>
          <component>
             <title>Managed Access Control Points</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.17.3.">AC-17 (3)</link>
             <prop class="authority_title">MANAGED ACCESS CONTROL POINTS</prop>
             <param id="ac-17_a"><!-- inserted into .SP800-53 control#ac.17 .SP800-53-enhancement subcontrol#ac.17.3. .statement -->
@@ -394,7 +396,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </component>
          <component>
             <title>Privileged Commands / Access</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.17.4.">AC-17 (4)</link>
             <prop class="authority_title">PRIVILEGED COMMANDS / ACCESS</prop>
             <param id="ac-17_b"><!-- inserted into .SP800-53 control#ac.17 .SP800-53-enhancement subcontrol#ac.17.4. .statement .item#s_smm_ac-17.4.a. -->
@@ -407,14 +409,14 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </component>
          <component>
             <title>Disconnect / Disable Access</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AC-17 (9)</prop>
             <p class="param_assigns">[no greater than 15 minutes]</p>
          </component>
       </component>
       <component>
          <title>Wireless Access</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.18">AC-18</link>
          <prop class="authority_title">WIRELESS ACCESS</prop>
          <prop class="name">AC-18</prop>
@@ -422,7 +424,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Authentication and Encryption</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.18.1.">AC-18 (1)</link>
             <prop class="authority_title">AUTHENTICATION AND ENCRYPTION</prop>
             <prop class="name">AC-18 (1)</prop>
@@ -432,7 +434,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Access Control For Mobile Devices</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.19">AC-19</link>
          <prop class="authority_title">ACCESS CONTROL FOR MOBILE DEVICES</prop>
          <prop class="name">AC-19</prop>
@@ -440,7 +442,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Full Device / Container-Based Encryption</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.19.5.">AC-19 (5)</link>
             <prop class="authority_title">FULL DEVICE / CONTAINER-BASED  ENCRYPTION</prop>
             <param id="ac-19_c"><!-- inserted into .SP800-53 control#ac.19 .SP800-53-enhancement subcontrol#ac.19.5. .statement -->
@@ -454,7 +456,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Use of External Information Systems</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.20">AC-20</link>
          <prop class="authority_title">USE OF EXTERNAL INFORMATION SYSTEMS</prop>
          <prop class="name">AC-20</prop>
@@ -462,7 +464,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Limits on Authorized Use</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.20.1.">AC-20 (1)</link>
             <prop class="authority_title">LIMITS ON AUTHORIZED USE</prop>
             <prop class="name">AC-20 (1)</prop>
@@ -471,7 +473,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
          </component>
          <component>
             <title>Portable Storage Devices</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.20.2.">AC-20 (2)</link>
             <prop class="authority_title">PORTABLE STORAGE DEVICES</prop>
             <prop class="name">AC-20 (2)</prop>
@@ -481,7 +483,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Information Sharing</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.21">AC-21</link>
          <prop class="authority_title">INFORMATION SHARING</prop>
          <param id="ac-21_a"><!-- inserted into .SP800-53 control#ac.21 .statement .item#smm_ac-21a. -->
@@ -499,7 +501,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </component>
       <component>
          <title>Publicly Accessible Content</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ac.22">AC-22</link>
          <prop class="authority_title">PUBLICLY ACCESSIBLE CONTENT</prop>
          <param id="ac-22_a"><!-- inserted into .SP800-53 control#ac.22 .statement .item#smm_ac-22d. -->
@@ -517,7 +519,7 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       <prop class="group-id">AT</prop>
       <component>
          <title>Security Awareness and Training Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#at.1">AT-1</link>
          <prop class="authority_title">SECURITY AWARENESS AND TRAINING POLICY AND PROCEDURES</prop>
          <param id="at-1_a"><!-- inserted into .SP800-53 control#at.1 .statement .item#smm_at-1a. -->
@@ -540,7 +542,7 @@ AT-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Security Awareness Training</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#at.2">AT-2</link>
          <prop class="authority_title">SECURITY AWARENESS TRAINING</prop>
          <param id="at-2_a"><!-- inserted into .SP800-53 control#at.2 .statement .item#smm_at-2c. -->
@@ -554,7 +556,7 @@ AT-1.b.2 [at least annually]</p>
 Parameter: [at least annually]</p>
          <component>
             <title>Insider Threat</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#at.2.2.">AT-2 (2)</link>
             <prop class="authority_title">INSIDER THREAT</prop>
             <prop class="name">AT-2 (2)</prop>
@@ -564,7 +566,7 @@ Parameter: [at least annually]</p>
       </component>
       <component>
          <title>Role-Based Security Training</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#at.3">AT-3</link>
          <prop class="authority_title">ROLE-BASED SECURITY TRAINING</prop>
          <param id="at-3_a"><!-- inserted into .SP800-53 control#at.3 .statement .item#smm_at-3c. -->
@@ -579,7 +581,7 @@ Parameter:  [at least annually]</p>
       </component>
       <component>
          <title>Security Training Records</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#at.4">AT-4</link>
          <prop class="authority_title">SECURITY TRAINING RECORDS</prop>
          <param id="at-4_a"><!-- inserted into .SP800-53 control#at.4 .statement .item#smm_at-4b. -->
@@ -598,7 +600,7 @@ Parameter:  [At least one years]</p>
       <prop class="group-id">AU</prop>
       <component>
          <title>Audit and Accountability Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.1">AU-1</link>
          <prop class="authority_title">AUDIT AND ACCOUNTABILITY POLICY AND PROCEDURES</prop>
          <param id="au-1_a"><!-- inserted into .SP800-53 control#au.1 .statement .item#smm_au-1a. -->
@@ -621,7 +623,7 @@ AU-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Audit Events</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.2">AU-2</link>
          <prop class="authority_title">AUDIT EVENTS</prop>
          <param id="au-2_a"><!-- inserted into .SP800-53 control#au.2 .statement .item#smm_au-2a. -->
@@ -641,7 +643,7 @@ AU-1.b.2 [at least annually]</p>
 AU-2d. [organization-defined subset of the auditable events defined in AU-2 a. to be audited continually for each identified event].</p>
          <component>
             <title>Reviews and Updates</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.2.3.">AU-2 (3)</link>
             <prop class="authority_title">REVIEWS AND UPDATES</prop>
             <param id="au-2_c"><!-- inserted into .SP800-53 control#au.2 .SP800-53-enhancement subcontrol#au.2.3. .statement -->
@@ -658,7 +660,7 @@ Parameter: [annually or whenever there is a change in the threat environment] </
       </component>
       <component>
          <title>Content of Audit Records</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.3">AU-3</link>
          <prop class="authority_title">CONTENT OF AUDIT RECORDS</prop>
          <prop class="name">AU-3</prop>
@@ -666,7 +668,7 @@ Parameter: [annually or whenever there is a change in the threat environment] </
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Additional Audit Information</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.3.1.">AU-3 (1)</link>
             <prop class="authority_title">ADDITIONAL AUDIT INFORMATION</prop>
             <param id="au-3_a"><!-- inserted into .SP800-53 control#au.3 .SP800-53-enhancement subcontrol#au.3.1. .statement -->
@@ -683,7 +685,7 @@ Guidance: For client-server transactions, the number of bytes sent and received 
       </component>
       <component>
          <title>Audit Storage Capacity</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.4">AU-4</link>
          <prop class="authority_title">AUDIT STORAGE CAPACITY</prop>
          <param id="au-4_a"><!-- inserted into .SP800-53 control#au.4 .statement -->
@@ -696,7 +698,7 @@ Guidance: For client-server transactions, the number of bytes sent and received 
       </component>
       <component>
          <title>Response to Audit Processing Failures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.5">AU-5</link>
          <prop class="authority_title">RESPONSE TO AUDIT PROCESSING FAILURES</prop>
          <param id="au-5_a"><!-- inserted into .SP800-53 control#au.5 .statement .item#smm_au-5a. -->
@@ -716,7 +718,7 @@ Parameter: [low-impact: overwrite oldest audit records; moderate-impact: shut do
       </component>
       <component>
          <title>Audit Review, Analysis, and Reporting</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.6">AU-6</link>
          <prop class="authority_title">AUDIT REVIEW, ANALYSIS, AND REPORTING</prop>
          <param id="au-6_a"><!-- inserted into .SP800-53 control#au.6 .statement .item#smm_au-6a. -->
@@ -738,7 +740,7 @@ Parameter: [low-impact: overwrite oldest audit records; moderate-impact: shut do
 Parameter: [at least weekly] </p>
          <component>
             <title>Process Integration</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.6.1.">AU-6 (1)</link>
             <prop class="authority_title">PROCESS INTEGRATION</prop>
             <prop class="name">AU-6 (1)</prop>
@@ -747,7 +749,7 @@ Parameter: [at least weekly] </p>
          </component>
          <component>
             <title>Correlate Audit Repositories</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.6.3.">AU-6 (3)</link>
             <prop class="authority_title">CORRELATE AUDIT REPOSITORIES</prop>
             <prop class="name">AU-6 (3)</prop>
@@ -757,7 +759,7 @@ Parameter: [at least weekly] </p>
       </component>
       <component>
          <title>Audit Reduction and Report Generation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.7">AU-7</link>
          <prop class="authority_title">AUDIT REDUCTION AND REPORT GENERATION</prop>
          <prop class="name">AU-7</prop>
@@ -765,7 +767,7 @@ Parameter: [at least weekly] </p>
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Automatic Processing</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.7.1.">AU-7 (1)</link>
             <prop class="authority_title">AUTOMATIC PROCESSING</prop>
             <param id="au-7_a"><!-- inserted into .SP800-53 control#au.7 .SP800-53-enhancement subcontrol#au.7.1. .statement -->
@@ -779,7 +781,7 @@ Parameter: [at least weekly] </p>
       </component>
       <component>
          <title>Time Stamps</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.8">AU-8</link>
          <prop class="authority_title">TIME STAMPS</prop>
          <param id="au-8_a"><!-- inserted into .SP800-53 control#au.8 .statement .item#smm_au-8b. -->
@@ -791,7 +793,7 @@ Parameter: [at least weekly] </p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Synchronization With Authoritative Time Source</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.8.1.">AU-8 (1)</link>
             <prop class="authority_title">SYNCHRONIZATION WITH AUTHORITATIVE TIME SOURCE</prop>
             <param id="au-8_b"><!-- inserted into .SP800-53 control#au.8 .SP800-53-enhancement subcontrol#au.8.1. .statement .item#s_smm_au-8.1.a. -->
@@ -817,7 +819,7 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
       </component>
       <component>
          <title>Protection of Audit Information</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.9">AU-9</link>
          <prop class="authority_title">PROTECTION OF AUDIT INFORMATION</prop>
          <prop class="name">AU-9</prop>
@@ -825,13 +827,13 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Audit Backup on Separate Physical Systems / Components</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">AU-9 (2)</prop>
             <p class="param_assigns">AU-9 (2). [at least weekly] </p>
          </component>
          <component>
             <title>Access by Subset of Privileged Users</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.9.4.">AU-9 (4)</link>
             <prop class="authority_title">ACCESS BY SUBSET OF PRIVILEGED USERS</prop>
             <param id="au-9_b"><!-- inserted into .SP800-53 control#au.9 .SP800-53-enhancement subcontrol#au.9.4. .statement -->
@@ -845,7 +847,7 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
       </component>
       <component>
          <title>Audit Record Retention</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.11">AU-11</link>
          <prop class="authority_title">AUDIT RECORD RETENTION</prop>
          <param id="au-11_a"><!-- inserted into .SP800-53 control#au.11 .statement -->
@@ -860,7 +862,7 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
       </component>
       <component>
          <title>Audit Generation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#au.12">AU-12</link>
          <prop class="authority_title">AUDIT GENERATION</prop>
          <param id="au-12_a"><!-- inserted into .SP800-53 control#au.12 .statement .item#smm_au-12a. -->
@@ -882,7 +884,7 @@ Guidance: Synchronization of system clocks improves the accuracy of log analysis
       <prop class="group-id">CA</prop>
       <component>
          <title>Security Assessment and Authorization Policies and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.1">CA-1</link>
          <prop class="authority_title">SECURITY ASSESSMENT AND AUTHORIZATION POLICY AND PROCEDURES</prop>
          <param id="ca-1_a"><!-- inserted into .SP800-53 control#ca.1 .statement .item#smm_ca-1a. -->
@@ -905,7 +907,7 @@ CA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Security Assessments</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.2">CA-2</link>
          <prop class="authority_title">SECURITY ASSESSMENTS</prop>
          <param id="ca-2_a"><!-- inserted into .SP800-53 control#ca.2 .statement .item#smm_ca-2b. -->
@@ -923,7 +925,7 @@ CA-1.b.2 [at least annually]</p>
 CA-2d[individuals or roles to include FedRAMP PMO]</p>
          <component>
             <title>Independent Assessors</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.2.1.">CA-2 (1)</link>
             <prop class="authority_title">INDEPENDENT ASSESSORS</prop>
             <param id="ca-2_c"><!-- inserted into .SP800-53 control#ca.2 .SP800-53-enhancement subcontrol#ca.2.1. .statement -->
@@ -938,21 +940,21 @@ CA-2d[individuals or roles to include FedRAMP PMO]</p>
          </component>
          <component>
             <title>Specialized Assessments</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CA-2 (2)</prop>
             <p class="param_assigns">[at least annually]</p>
             <p class="remarks">Requirement: To include 'announced', 'vulnerability scanning'</p>
          </component>
          <component>
             <title>External Organizations</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CA-2 (3)</prop>
             <p class="param_assigns">[Any FedRAMP Accredited 3PAO]  [the conditions of a P-ATO in the FedRAMP Repository]</p>
          </component>
       </component>
       <component>
          <title>System Interconnections</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.3">CA-3</link>
          <prop class="authority_title">SYSTEM INTERCONNECTIONS</prop>
          <param id="ca-3_a"><!-- inserted into .SP800-53 control#ca.3 .statement .item#smm_ca-3c. -->
@@ -965,14 +967,14 @@ CA-2d[individuals or roles to include FedRAMP PMO]</p>
          <p class="param_assigns">CA-3c. 3 Years / Annually and on input from FedRAMP</p>
          <component>
             <title>Unclassified Non-National Security System Connections</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CA-3 (3)</prop>
             <p class="param_assigns">Boundary Protections which meet the Trusted Internet Connection (TIC) requirements</p>
             <p class="remarks">CA-3(3) Guidance: Refer to Appendix H – Cloud Considerations of the TIC 2.0 Reference Architecture document.</p>
          </component>
          <component>
             <title>Restrictions on External Network Connections</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.3.5.">CA-3 (5)</link>
             <prop class="authority_title">RESTRICTIONS ON EXTERNAL SYSTEM CONNECTIONS</prop>
             <param id="ca-3_h"><!-- inserted into .SP800-53 control#ca.3 .SP800-53-enhancement subcontrol#ca.3.5. .statement -->
@@ -987,7 +989,7 @@ CA-2d[individuals or roles to include FedRAMP PMO]</p>
       </component>
       <component>
          <title>Plan of Action and Milestones</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.5">CA-5</link>
          <prop class="authority_title">PLAN OF ACTION AND MILESTONES</prop>
          <param id="ca-5_a"><!-- inserted into .SP800-53 control#ca.5 .statement .item#smm_ca-5b. -->
@@ -1002,7 +1004,7 @@ CA-2d[individuals or roles to include FedRAMP PMO]</p>
       </component>
       <component>
          <title>Security Authorization</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.6">CA-6</link>
          <prop class="authority_title">SECURITY AUTHORIZATION</prop>
          <param id="ca-6_a"><!-- inserted into .SP800-53 control#ca.6 .statement .item#smm_ca-6c. -->
@@ -1017,7 +1019,7 @@ CA-2d[individuals or roles to include FedRAMP PMO]</p>
       </component>
       <component>
          <title>Continuous Monitoring</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.7">CA-7</link>
          <prop class="authority_title">CONTINUOUS MONITORING</prop>
          <param id="ca-7_a"><!-- inserted into .SP800-53 control#ca.7 .statement .item#smm_ca-7a. -->
@@ -1050,7 +1052,7 @@ All scans performed by Independent Assessor: at least annually
 CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
          <component>
             <title>Independent Assessment</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.7.1.">CA-7 (1)</link>
             <prop class="authority_title">INDEPENDENT ASSESSMENT</prop>
             <param id="ca-7_f"><!-- inserted into .SP800-53 control#ca.7 .SP800-53-enhancement subcontrol#ca.7.1. .statement -->
@@ -1064,18 +1066,18 @@ CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vul
       </component>
       <component>
          <title>Penetration Testing</title>
-         <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+         <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
          <prop class="name">CA-8</prop>
          <p class="param_assigns">[at least annually]</p>
          <component>
             <title>Independent Penetration Agent or Team</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CA-8 (1)</prop>
          </component>
       </component>
       <component>
          <title>Internal System Connections</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ca.9">CA-9</link>
          <prop class="authority_title">INTERNAL SYSTEM CONNECTIONS</prop>
          <param id="ca-9_a"><!-- inserted into .SP800-53 control#ca.9 .statement .item#smm_ca-9a. -->
@@ -1093,7 +1095,7 @@ CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vul
       <prop class="group-id">CM</prop>
       <component>
          <title>Configuration Management Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.1">CM-1</link>
          <prop class="authority_title">CONFIGURATION MANAGEMENT POLICY AND PROCEDURES</prop>
          <param id="cm-1_a"><!-- inserted into .SP800-53 control#cm.1 .statement .item#smm_cm-1a. -->
@@ -1116,7 +1118,7 @@ CM-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Baseline Configuration</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.2">CM-2</link>
          <prop class="authority_title">BASELINE CONFIGURATION</prop>
          <prop class="name">CM-2</prop>
@@ -1124,7 +1126,7 @@ CM-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Reviews and Updates</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.2.1.">CM-2 (1)</link>
             <prop class="authority_title">REVIEWS AND UPDATES</prop>
             <param id="cm-2_a"><!-- inserted into .SP800-53 control#cm.2 .SP800-53-enhancement subcontrol#cm.2.1. .statement .item#s_smm_cm-2.1.a. -->
@@ -1143,12 +1145,12 @@ CM-2 (1) (b). [to include when directed by Authorizing Official]</p>
          </component>
          <component>
             <title>Automation Support For Accuracy / Currency </title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CM-2(2)</prop>
          </component>
          <component>
             <title>Retention of Previous Configurations</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.2.3.">CM-2 (3)</link>
             <prop class="authority_title">RETENTION OF PREVIOUS CONFIGURATIONS</prop>
             <param id="cm-2_c"><!-- inserted into .SP800-53 control#cm.2 .SP800-53-enhancement subcontrol#cm.2.3. .statement -->
@@ -1162,7 +1164,7 @@ CM-2 (1) (b). [to include when directed by Authorizing Official]</p>
          </component>
          <component>
             <title>Configure Systems, Components, or Devices for High-Risk Areas</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.2.7.">CM-2 (7)</link>
             <prop class="authority_title">CONFIGURE SYSTEMS, COMPONENTS, OR DEVICES FOR HIGH-RISK AREAS</prop>
             <param id="cm-2_d"><!-- inserted into .SP800-53 control#cm.2 .SP800-53-enhancement subcontrol#cm.2.7. .statement .item#s_smm_cm-2.7.a. -->
@@ -1184,7 +1186,7 @@ CM-2 (1) (b). [to include when directed by Authorizing Official]</p>
       </component>
       <component>
          <title>Configuration Change Control</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.3">CM-3</link>
          <prop class="authority_title">CONFIGURATION CHANGE CONTROL</prop>
          <param id="cm-3_a"><!-- inserted into .SP800-53 control#cm.3 .statement .item#smm_cm-3e. -->
@@ -1212,7 +1214,7 @@ CM-3e Guidance:  In accordance with record retention policies and procedures.</p
       </component>
       <component>
          <title>Security Impact Analysis</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.4">CM-4</link>
          <prop class="authority_title">SECURITY IMPACT ANALYSIS</prop>
          <prop class="name">CM-4</prop>
@@ -1221,7 +1223,7 @@ CM-3e Guidance:  In accordance with record retention policies and procedures.</p
       </component>
       <component>
          <title>Access Restrictions For Change</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.5">CM-5</link>
          <prop class="authority_title">ACCESS RESTRICTIONS FOR CHANGE</prop>
          <prop class="name">CM-5</prop>
@@ -1229,25 +1231,25 @@ CM-3e Guidance:  In accordance with record retention policies and procedures.</p
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Automated Access Enforcement / Auditing</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CM-5 (1)</prop>
          </component>
          <component>
             <title>Signed Components</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CM-5 (3)</prop>
             <p class="remarks">Guidance: If digital signatures/certificates are unavailable,  alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</p>
          </component>
          <component>
             <title>Limit Production / Operational Privileges</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CM-5 (5)</prop>
             <p class="param_assigns">CM-5 (5) (b). [at least quarterly] </p>
          </component>
       </component>
       <component>
          <title>Configuration Settings</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.6">CM-6</link>
          <prop class="authority_title">CONFIGURATION SETTINGS</prop>
          <param id="cm-6_a"><!-- inserted into .SP800-53 control#cm.6 .statement .item#smm_cm-6a. -->
@@ -1271,13 +1273,13 @@ CM-6a. Requirement: The service provider shall ensure that checklists for config
 CM-6a. Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc .</p>
          <component>
             <title>Automated Central Management / Application / Verification</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CM-6 (1)</prop>
          </component>
       </component>
       <component>
          <title>Least Functionality</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.7">CM-7</link>
          <prop class="authority_title">LEAST FUNCTIONALITY</prop>
          <param id="cm-7_a"><!-- inserted into .SP800-53 control#cm.7 .statement .item#smm_cm-7b. -->
@@ -1294,7 +1296,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
 (Partially derived from AC-17(8).)</p>
          <component>
             <title>Periodic Review</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.7.1.">CM-7 (1)</link>
             <prop class="authority_title">PERIODIC REVIEW</prop>
             <param id="cm-7_b"><!-- inserted into .SP800-53 control#cm.7 .SP800-53-enhancement subcontrol#cm.7.1. .statement .item#s_smm_cm-7.1.a. -->
@@ -1313,7 +1315,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          </component>
          <component>
             <title>Prevent Program Execution</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.7.2.">CM-7 (2)</link>
             <prop class="authority_title">PREVENT PROGRAM EXECUTION</prop>
             <param id="cm-7_d"><!-- inserted into .SP800-53 control#cm.7 .SP800-53-enhancement subcontrol#cm.7.2. .statement -->
@@ -1328,14 +1330,14 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          </component>
          <component>
             <title>Authorized Software / Whitelisting</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CM-7 (5)</prop>
             <p class="param_assigns">CM-7(5)[ at least Annually or when there is a change.]</p>
          </component>
       </component>
       <component>
          <title>Information System Component Inventory</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.8">CM-8</link>
          <prop class="authority_title">INFORMATION SYSTEM COMPONENT INVENTORY</prop>
          <param id="cm-8_a"><!-- inserted into .SP800-53 control#cm.8 .statement .item#smm_cm-8a. .item#sms_cm-8a.4. -->
@@ -1354,7 +1356,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          <p class="remarks">CM-8 Requirement: must be provided at least monthly or when there is a change.</p>
          <component>
             <title>Updates During Installations / Removals</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.8.1.">CM-8 (1)</link>
             <prop class="authority_title">UPDATES DURING INSTALLATIONS / REMOVALS</prop>
             <prop class="name">CM-8 (1)</prop>
@@ -1363,7 +1365,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          </component>
          <component>
             <title>Automated Unauthorized Component Detection</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.8.3.">CM-8 (3)</link>
             <prop class="authority_title">AUTOMATED UNAUTHORIZED COMPONENT DETECTION</prop>
             <param id="cm-8_c"><!-- inserted into .SP800-53 control#cm.8 .SP800-53-enhancement subcontrol#cm.8.3. .statement .item#s_smm_cm-8.3.a. -->
@@ -1381,7 +1383,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          </component>
          <component>
             <title>No Duplicate Accounting of Components</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.8.5.">CM-8 (5)</link>
             <prop class="authority_title">NO DUPLICATE ACCOUNTING OF COMPONENTS</prop>
             <prop class="name">CM-8 (5)</prop>
@@ -1391,7 +1393,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
       </component>
       <component>
          <title>Configuration Management Plan</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.9">CM-9</link>
          <prop class="authority_title">CONFIGURATION MANAGEMENT PLAN</prop>
          <prop class="name">CM-9</prop>
@@ -1400,7 +1402,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
       </component>
       <component>
          <title>Software Usage Restrictions</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.10">CM-10</link>
          <prop class="authority_title">SOFTWARE USAGE RESTRICTIONS</prop>
          <prop class="name">CM-10</prop>
@@ -1408,13 +1410,13 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Open Source Software</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CM-10 (1)</prop>
          </component>
       </component>
       <component>
          <title>User-Installed Software</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.11">CM-11</link>
          <prop class="authority_title">USER-INSTALLED SOFTWARE</prop>
          <param id="cm-11_a"><!-- inserted into .SP800-53 control#cm.11 .statement .item#smm_cm-11a. -->
@@ -1440,7 +1442,7 @@ CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgc
       <prop class="group-id">CP</prop>
       <component>
          <title>Contingency Planning Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.1">CP-1</link>
          <prop class="authority_title">CONTINGENCY PLANNING POLICY AND PROCEDURES</prop>
          <param id="cp-1_a"><!-- inserted into .SP800-53 control#cp.1 .statement .item#smm_cp-1a. -->
@@ -1463,7 +1465,7 @@ CP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Contingency Plan</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.2">CP-2</link>
          <prop class="authority_title">CONTINGENCY PLAN</prop>
          <param id="cp-2_a"><!-- inserted into .SP800-53 control#cp.2 .statement .item#smm_cp-2a. .item#sms_cp-2a.6. -->
@@ -1491,7 +1493,7 @@ CP-1.b.2 [at least annually]</p>
          <p class="remarks">Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
          <component>
             <title>Coordinate With Related Plans</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.2.1.">CP-2 (1)</link>
             <prop class="authority_title">COORDINATE WITH RELATED PLANS</prop>
             <prop class="name">CP-2 (1)</prop>
@@ -1500,12 +1502,12 @@ CP-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Capacity Planning</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CP-2 (2)</prop>
          </component>
          <component>
             <title>Resume Essential Missions / Business Functions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.2.3.">CP-2 (3)</link>
             <prop class="authority_title">RESUME ESSENTIAL MISSIONS / BUSINESS FUNCTIONS</prop>
             <param id="cp-2_e"><!-- inserted into .SP800-53 control#cp.2 .SP800-53-enhancement subcontrol#cp.2.3. .statement -->
@@ -1518,7 +1520,7 @@ CP-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Identify Critical Assets</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.2.8.">CP-2 (8)</link>
             <prop class="authority_title">IDENTIFY CRITICAL ASSETS</prop>
             <prop class="name">CP-2 (8)</prop>
@@ -1528,7 +1530,7 @@ CP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Contingency Training</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.3">CP-3</link>
          <prop class="authority_title">CONTINGENCY TRAINING</prop>
          <param id="cp-3_a"><!-- inserted into .SP800-53 control#cp.3 .statement .item#smm_cp-3a. -->
@@ -1547,7 +1549,7 @@ CP-3.c. [at least annually]</p>
       </component>
       <component>
          <title>Contingency Plan Testing</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.4">CP-4</link>
          <prop class="authority_title">CONTINGENCY PLAN TESTING</prop>
          <param id="cp-4_a"><!-- inserted into .SP800-53 control#cp.4 .statement .item#smm_cp-4a. -->
@@ -1565,7 +1567,7 @@ CP-3.c. [at least annually]</p>
          <p class="remarks">CP-4a. Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the Authorizing Official prior to initiating testing.</p>
          <component>
             <title>Coordinate With Related Plans</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.4.1.">CP-4 (1)</link>
             <prop class="authority_title">COORDINATE WITH RELATED PLANS</prop>
             <prop class="name">CP-4 (1)</prop>
@@ -1575,7 +1577,7 @@ CP-3.c. [at least annually]</p>
       </component>
       <component>
          <title>Alternate Storage Site</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.6">CP-6</link>
          <prop class="authority_title">ALTERNATE STORAGE SITE</prop>
          <prop class="name">CP-6</prop>
@@ -1583,7 +1585,7 @@ CP-3.c. [at least annually]</p>
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Separation From Primary Site</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.6.1.">CP-6 (1)</link>
             <prop class="authority_title">SEPARATION FROM PRIMARY SITE</prop>
             <prop class="name">CP-6 (1)</prop>
@@ -1592,7 +1594,7 @@ CP-3.c. [at least annually]</p>
          </component>
          <component>
             <title>Accessibility</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.6.3.">CP-6 (3)</link>
             <prop class="authority_title">ACCESSIBILITY</prop>
             <prop class="name">CP-6 (3)</prop>
@@ -1602,7 +1604,7 @@ CP-3.c. [at least annually]</p>
       </component>
       <component>
          <title>Alternate Processing Site</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.7">CP-7</link>
          <prop class="authority_title">ALTERNATE PROCESSING SITE</prop>
          <param id="cp-7_a"><!-- inserted into .SP800-53 control#cp.7 .statement .item#smm_cp-7a. -->
@@ -1620,7 +1622,7 @@ CP-3.c. [at least annually]</p>
          <p class="remarks">CP-7a. Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
          <component>
             <title>Separation From Primary Site</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.7.1.">CP-7 (1)</link>
             <prop class="authority_title">SEPARATION FROM PRIMARY SITE</prop>
             <prop class="name">CP-7 (1)</prop>
@@ -1630,7 +1632,7 @@ CP-3.c. [at least annually]</p>
          </component>
          <component>
             <title>Accessibility</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.7.2.">CP-7 (2)</link>
             <prop class="authority_title">ACCESSIBILITY</prop>
             <prop class="name">CP-7 (2)</prop>
@@ -1639,7 +1641,7 @@ CP-3.c. [at least annually]</p>
          </component>
          <component>
             <title>Priority of Service</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.7.3.">CP-7 (3)</link>
             <prop class="authority_title">PRIORITY OF SERVICE</prop>
             <prop class="name">CP-7 (3)</prop>
@@ -1649,7 +1651,7 @@ CP-3.c. [at least annually]</p>
       </component>
       <component>
          <title>Telecommunications Services</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.8">CP-8</link>
          <prop class="authority_title">TELECOMMUNICATIONS SERVICES</prop>
          <param id="cp-8_a"><!-- inserted into .SP800-53 control#cp.8 .statement -->
@@ -1666,7 +1668,7 @@ CP-3.c. [at least annually]</p>
          <p class="remarks">CP-8. Requirement: The service provider defines a time period consistent with the business impact analysis.</p>
          <component>
             <title>Priority of Service Provisions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.8.1.">CP-8 (1)</link>
             <prop class="authority_title">PRIORITY OF SERVICE PROVISIONS</prop>
             <prop class="name">CP-8 (1)</prop>
@@ -1675,7 +1677,7 @@ CP-3.c. [at least annually]</p>
          </component>
          <component>
             <title>Single Points of Failure</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.8.2.">CP-8 (2)</link>
             <prop class="authority_title">SINGLE POINTS OF FAILURE</prop>
             <prop class="name">CP-8 (2)</prop>
@@ -1685,7 +1687,7 @@ CP-3.c. [at least annually]</p>
       </component>
       <component>
          <title>Information System Backup</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.9">CP-9</link>
          <prop class="authority_title">INFORMATION SYSTEM BACKUP</prop>
          <param id="cp-9_a"><!-- inserted into .SP800-53 control#cp.9 .statement .item#smm_cp-9a. -->
@@ -1716,7 +1718,7 @@ CP-9b. Requirement: The service provider maintains at least three backup copies 
 CP-9c. Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</p>
          <component>
             <title>Testing For Reliability / Integrity</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.9.1.">CP-9 (1)</link>
             <prop class="authority_title">TESTING FOR RELIABILITY / INTEGRITY</prop>
             <param id="cp-9_d"><!-- inserted into .SP800-53 control#cp.9 .SP800-53-enhancement subcontrol#cp.9.1. .statement -->
@@ -1730,13 +1732,13 @@ CP-9c. Requirement: The service provider maintains at least three backup copies 
          </component>
          <component>
             <title>Separate Storage for Critical Information</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">CP-9 (3)</prop>
          </component>
       </component>
       <component>
          <title>Information System Recovery and Reconstitution</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.10">CP-10</link>
          <prop class="authority_title">INFORMATION SYSTEM RECOVERY AND RECONSTITUTION</prop>
          <prop class="name">CP-10</prop>
@@ -1744,7 +1746,7 @@ CP-9c. Requirement: The service provider maintains at least three backup copies 
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Transaction Recovery</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cp.10.2.">CP-10 (2)</link>
             <prop class="authority_title">TRANSACTION RECOVERY</prop>
             <prop class="name">CP-10 (2)</prop>
@@ -1758,7 +1760,7 @@ CP-9c. Requirement: The service provider maintains at least three backup copies 
       <prop class="group-id">IA</prop>
       <component>
          <title>Identification and Authentication Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.1">IA-1</link>
          <prop class="authority_title">IDENTIFICATION AND AUTHENTICATION POLICY AND PROCEDURES</prop>
          <param id="ia-1_a"><!-- inserted into .SP800-53 control#ia.1 .statement .item#smm_ia-1a. -->
@@ -1781,7 +1783,7 @@ IA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Identification and Authentication (Organizational Users)</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.2">IA-2</link>
          <prop class="authority_title">IDENTIFICATION AND AUTHENTICATION (ORGANIZATIONAL USERS)</prop>
          <prop class="name">IA-2</prop>
@@ -1789,7 +1791,7 @@ IA-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Network Access to Privileged Accounts</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.2.1.">IA-2 (1)</link>
             <prop class="authority_title">NETWORK ACCESS TO PRIVILEGED ACCOUNTS</prop>
             <prop class="name">IA-2 (1)</prop>
@@ -1798,7 +1800,7 @@ IA-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Network Access to Non-Privileged Accounts</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.2.2.">IA-2 (2)</link>
             <prop class="authority_title">NETWORK ACCESS TO NON-PRIVILEGED ACCOUNTS</prop>
             <prop class="name">IA-2 (2)</prop>
@@ -1807,7 +1809,7 @@ IA-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Local Access to Privileged Accounts</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.2.3.">IA-2 (3)</link>
             <prop class="authority_title">LOCAL ACCESS TO PRIVILEGED ACCOUNTS</prop>
             <prop class="name">IA-2 (3)</prop>
@@ -1816,12 +1818,12 @@ IA-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Group Authentication</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IA-2 (5)</prop>
          </component>
          <component>
             <title>Network Access to Privileged Accounts - Replay Resistant</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.2.8.">IA-2 (8)</link>
             <prop class="authority_title">NETWORK ACCESS TO PRIVILEGED ACCOUNTS - REPLAY RESISTANT</prop>
             <prop class="name">IA-2 (8)</prop>
@@ -1830,7 +1832,7 @@ IA-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Remote Access - Separate Device</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.2.11.">IA-2 (11)</link>
             <prop class="authority_title">REMOTE ACCESS  - SEPARATE DEVICE</prop>
             <param id="ia-2_d"><!-- inserted into .SP800-53 control#ia.2 .SP800-53-enhancement subcontrol#ia.2.11. .statement -->
@@ -1844,7 +1846,7 @@ IA-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Acceptance of PIV Credentials</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.2.12.">IA-2 (12)</link>
             <prop class="authority_title">ACCEPTANCE OF PIV CREDENTIALS</prop>
             <prop class="name">IA-2 (12)</prop>
@@ -1855,7 +1857,7 @@ IA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Device Identification and Authentication</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.3">IA-3</link>
          <prop class="authority_title">DEVICE IDENTIFICATION AND AUTHENTICATION</prop>
          <param id="ia-3_a"><!-- inserted into .SP800-53 control#ia.3 .statement -->
@@ -1868,7 +1870,7 @@ IA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Identifier Management</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.4">IA-4</link>
          <prop class="authority_title">IDENTIFIER MANAGEMENT</prop>
          <param id="ia-4_a"><!-- inserted into .SP800-53 control#ia.4 .statement .item#smm_ia-4a. -->
@@ -1891,14 +1893,14 @@ IA-4e. [ninety days for user identifiers] (See additional requirements and guida
          <p class="remarks">IA-4e. Requirement: The service provider defines time period of inactivity for device identifiers.</p>
          <component>
             <title>Identify User Status</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IA-4 (4)</prop>
             <p class="param_assigns">IA-4 (4). [contractors; foreign nationals] </p>
          </component>
       </component>
       <component>
          <title>Authenticator Management</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.5">IA-5</link>
          <prop class="authority_title">AUTHENTICATOR MANAGEMENT</prop>
          <param id="ia-5_a"><!-- inserted into .SP800-53 control#ia.5 .statement .item#smm_ia-5g. -->
@@ -1911,7 +1913,7 @@ IA-4e. [ninety days for user identifiers] (See additional requirements and guida
          <p class="param_assigns">IA-5g. [to include sixty days for passwords]</p>
          <component>
             <title>Password-Based Authentication</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.5.1.">IA-5 (1)</link>
             <prop class="authority_title">PASSWORD-BASED AUTHENTICATION</prop>
             <param id="ia-5_b"><!-- inserted into .SP800-53 control#ia.5 .SP800-53-enhancement subcontrol#ia.5.1. .statement .item#s_smm_ia-5.1.a. -->
@@ -1942,7 +1944,7 @@ IA-5 (1) (e). [twenty four]</p>
          </component>
          <component>
             <title>PKI-Based Authentication</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.5.2.">IA-5 (2)</link>
             <prop class="authority_title">PKI-BASED AUTHENTICATION</prop>
             <prop class="name">IA-5 (2)</prop>
@@ -1951,7 +1953,7 @@ IA-5 (1) (e). [twenty four]</p>
          </component>
          <component>
             <title>In-Person or Trusted Third-Party Registration</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.5.3.">IA-5 (3)</link>
             <prop class="authority_title">IN-PERSON OR TRUSTED THIRD-PARTY REGISTRATION</prop>
             <param id="ia-5_f"><!-- inserted into .SP800-53 control#ia.5 .SP800-53-enhancement subcontrol#ia.5.3. .statement -->
@@ -1973,23 +1975,23 @@ IA-5 (1) (e). [twenty four]</p>
          </component>
          <component>
             <title>Automated Support for Password Strength Determination</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IA-5 (4)</prop>
             <p class="remarks">IA-4e Additional FedRAMP Requirements and Guidance: Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators</p>
          </component>
          <component>
             <title>Protection of Authenticators</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IA-5 (6)</prop>
          </component>
          <component>
             <title>No Embedded Unencrypted Static Authenticators</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IA-5 (7)</prop>
          </component>
          <component>
             <title>Hardware Token-Based Authentication</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.5.11.">IA-5 (11)</link>
             <prop class="authority_title">HARDWARE TOKEN-BASED AUTHENTICATION</prop>
             <param id="ia-5_l"><!-- inserted into .SP800-53 control#ia.5 .SP800-53-enhancement subcontrol#ia.5.11. .statement -->
@@ -2003,7 +2005,7 @@ IA-5 (1) (e). [twenty four]</p>
       </component>
       <component>
          <title>Authenticator Feedback</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.6">IA-6</link>
          <prop class="authority_title">AUTHENTICATOR FEEDBACK</prop>
          <prop class="name">IA-6</prop>
@@ -2012,7 +2014,7 @@ IA-5 (1) (e). [twenty four]</p>
       </component>
       <component>
          <title>Cryptographic Module Authentication</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.7">IA-7</link>
          <prop class="authority_title">CRYPTOGRAPHIC MODULE AUTHENTICATION</prop>
          <prop class="name">IA-7</prop>
@@ -2021,7 +2023,7 @@ IA-5 (1) (e). [twenty four]</p>
       </component>
       <component>
          <title>Identification and Authentication (Non-Organizational Users)</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.8">IA-8</link>
          <prop class="authority_title">IDENTIFICATION AND AUTHENTICATION (NON-ORGANIZATIONAL USERS)</prop>
          <prop class="name">IA-8</prop>
@@ -2029,7 +2031,7 @@ IA-5 (1) (e). [twenty four]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Acceptance of PIV Credentials from Other Agencies</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.8.1.">IA-8 (1)</link>
             <prop class="authority_title">ACCEPTANCE OF PIV CREDENTIALS FROM OTHER AGENCIES</prop>
             <prop class="name">IA-8 (1)</prop>
@@ -2038,7 +2040,7 @@ IA-5 (1) (e). [twenty four]</p>
          </component>
          <component>
             <title>Acceptance of Third-Party Credentials</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.8.2.">IA-8 (2)</link>
             <prop class="authority_title">ACCEPTANCE OF THIRD-PARTY CREDENTIALS</prop>
             <prop class="name">IA-8 (2)</prop>
@@ -2047,7 +2049,7 @@ IA-5 (1) (e). [twenty four]</p>
          </component>
          <component>
             <title>Use of FICAM-Approved Products</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.8.3.">IA-8 (3)</link>
             <prop class="authority_title">USE OF FICAM-APPROVED PRODUCTS</prop>
             <param id="ia-8_a"><!-- inserted into .SP800-53 control#ia.8 .SP800-53-enhancement subcontrol#ia.8.3. .statement -->
@@ -2060,7 +2062,7 @@ IA-5 (1) (e). [twenty four]</p>
          </component>
          <component>
             <title>Use of FICAM-Issued Profiles</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ia.8.4.">IA-8 (4)</link>
             <prop class="authority_title">USE OF FICAM-ISSUED PROFILES</prop>
             <prop class="name">IA-8 (4)</prop>
@@ -2074,7 +2076,7 @@ IA-5 (1) (e). [twenty four]</p>
       <prop class="group-id">IR</prop>
       <component>
          <title>Incident Response Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.1">IR-1</link>
          <prop class="authority_title">INCIDENT RESPONSE POLICY AND PROCEDURES</prop>
          <param id="ir-1_a"><!-- inserted into .SP800-53 control#ir.1 .statement .item#smm_ir-1a. -->
@@ -2097,7 +2099,7 @@ IR-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Incident Response Training</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.2">IR-2</link>
          <prop class="authority_title">INCIDENT RESPONSE TRAINING</prop>
          <param id="ir-2_a"><!-- inserted into .SP800-53 control#ir.2 .statement .item#smm_ir-2a. -->
@@ -2115,7 +2117,7 @@ IR-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Incident Response Testing</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.3">IR-3</link>
          <prop class="authority_title">INCIDENT RESPONSE TESTING</prop>
          <param id="ir-3_a"><!-- inserted into .SP800-53 control#ir.3 .statement -->
@@ -2135,7 +2137,7 @@ Requirement: For JAB Authorization, the service provider provides test plans to 
 Requirement: Test plans are approved and accepted by the Authorizing Official prior to test commencing.</p>
          <component>
             <title>Coordination With Related Plans</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.3.2.">IR-3 (2)</link>
             <prop class="authority_title">COORDINATION WITH RELATED PLANS</prop>
             <prop class="name">IR-3 (2)</prop>
@@ -2145,7 +2147,7 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
       </component>
       <component>
          <title>Incident Handling</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.4">IR-4</link>
          <prop class="authority_title">INCIDENT HANDLING</prop>
          <prop class="name">IR-4</prop>
@@ -2154,7 +2156,7 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
          <p class="remarks">IR-4/A13. Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
          <component>
             <title>Automated Incident Handling Processes</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.4.1.">IR-4 (1)</link>
             <prop class="authority_title">AUTOMATED INCIDENT HANDLING PROCESSES</prop>
             <prop class="name">IR-4 (1)</prop>
@@ -2164,7 +2166,7 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
       </component>
       <component>
          <title>Incident Monitoring</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.5">IR-5</link>
          <prop class="authority_title">INCIDENT MONITORING</prop>
          <prop class="name">IR-5</prop>
@@ -2173,7 +2175,7 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
       </component>
       <component>
          <title>Incident Reporting</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.6">IR-6</link>
          <prop class="authority_title">INCIDENT REPORTING</prop>
          <param id="ir-6_a"><!-- inserted into .SP800-53 control#ir.6 .statement .item#smm_ir-6a. -->
@@ -2191,7 +2193,7 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
          <p class="remarks">Requirement: Reports security incident information  according to FedRAMP Incident Communications Procedure.</p>
          <component>
             <title>Automated Reporting</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.6.1.">IR-6 (1)</link>
             <prop class="authority_title">AUTOMATED REPORTING</prop>
             <prop class="name">IR-6 (1)</prop>
@@ -2201,7 +2203,7 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
       </component>
       <component>
          <title>Incident Response Assistance</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.7">IR-7</link>
          <prop class="authority_title">INCIDENT RESPONSE ASSISTANCE</prop>
          <prop class="name">IR-7</prop>
@@ -2209,7 +2211,7 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Automation Support For Availability of Information / Support</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.7.1.">IR-7 (1)</link>
             <prop class="authority_title">AUTOMATION SUPPORT FOR AVAILABILITY OF INFORMATION / SUPPORT</prop>
             <prop class="name">IR-7 (1)</prop>
@@ -2218,13 +2220,13 @@ Requirement: Test plans are approved and accepted by the Authorizing Official pr
          </component>
          <component>
             <title>Coordination With External Providers</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IR-7 (2)</prop>
          </component>
       </component>
       <component>
          <title>Incident Response Plan</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ir.8">IR-8</link>
          <prop class="authority_title">INCIDENT RESPONSE PLAN</prop>
          <param id="ir-8_a"><!-- inserted into .SP800-53 control#ir.8 .statement .item#smm_ir-8a. .item#sms_ir-8a.8. -->
@@ -2255,26 +2257,26 @@ IR-8(e) Additional FedRAMP Requirements and Guidance:  The service provider defi
       </component>
       <component>
          <title>Information Spillage Response</title>
-         <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+         <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
          <prop class="name">IR-9</prop>
          <component>
             <title>Responsible Personnel</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IR-9 (1)</prop>
          </component>
          <component>
             <title>Training</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IR-9 (2)</prop>
          </component>
          <component>
             <title>Post-Spill Operations</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IR-9 (3)</prop>
          </component>
          <component>
             <title>Exposure to Unauthorized Personnel</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">IR-9 (4)</prop>
          </component>
       </component>
@@ -2284,7 +2286,7 @@ IR-8(e) Additional FedRAMP Requirements and Guidance:  The service provider defi
       <prop class="group-id">MA</prop>
       <component>
          <title>System Maintenance Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.1">MA-1</link>
          <prop class="authority_title">SYSTEM MAINTENANCE POLICY AND PROCEDURES</prop>
          <param id="ma-1_a"><!-- inserted into .SP800-53 control#ma.1 .statement .item#smm_ma-1a. -->
@@ -2307,7 +2309,7 @@ MA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Controlled Maintenance</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.2">MA-2</link>
          <prop class="authority_title">CONTROLLED MAINTENANCE</prop>
          <param id="ma-2_a"><!-- inserted into .SP800-53 control#ma.2 .statement .item#smm_ma-2c. -->
@@ -2324,7 +2326,7 @@ MA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Maintenance Tools</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.3">MA-3</link>
          <prop class="authority_title">MAINTENANCE TOOLS</prop>
          <prop class="name">MA-3</prop>
@@ -2332,7 +2334,7 @@ MA-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Inspect Tools</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.3.1.">MA-3 (1)</link>
             <prop class="authority_title">INSPECT TOOLS</prop>
             <prop class="name">MA-3 (1)</prop>
@@ -2341,7 +2343,7 @@ MA-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Inspect Media</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.3.2.">MA-3 (2)</link>
             <prop class="authority_title">INSPECT MEDIA</prop>
             <prop class="name">MA-3 (2)</prop>
@@ -2350,14 +2352,14 @@ MA-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Prevent Unauthorized Removal</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">MA-3 (3)</prop>
             <p class="param_assigns">MA-3 (3) (d). [the information owner explicitly authorizing removal of the equipment from the facility]</p>
          </component>
       </component>
       <component>
          <title>Nonlocal Maintenance</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.4">MA-4</link>
          <prop class="authority_title">NONLOCAL MAINTENANCE</prop>
          <prop class="name">MA-4</prop>
@@ -2365,7 +2367,7 @@ MA-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Document Nonlocal Maintenance</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.4.2.">MA-4 (2)</link>
             <prop class="authority_title">DOCUMENT NONLOCAL MAINTENANCE</prop>
             <prop class="name">MA-4 (2)</prop>
@@ -2375,7 +2377,7 @@ MA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Maintenance Personnel</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.5">MA-5</link>
          <prop class="authority_title">MAINTENANCE PERSONNEL</prop>
          <prop class="name">MA-5</prop>
@@ -2383,14 +2385,14 @@ MA-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Individuals Without Appropriate Access</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">MA-5 (1)</prop>
             <p class="remarks">Requirement: Only MA-5 (1)(a)(1) is required by FedRAMP Moderate Baseline</p>
          </component>
       </component>
       <component>
          <title>Timely Maintenance</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ma.6">MA-6</link>
          <prop class="authority_title">TIMELY MAINTENANCE</prop>
          <param id="ma-6_a"><!-- inserted into .SP800-53 control#ma.6 .statement -->
@@ -2411,7 +2413,7 @@ MA-1.b.2 [at least annually]</p>
       <prop class="group-id">MP</prop>
       <component>
          <title>Media Protection Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.1">MP-1</link>
          <prop class="authority_title">MEDIA PROTECTION POLICY AND PROCEDURES</prop>
          <param id="mp-1_a"><!-- inserted into .SP800-53 control#mp.1 .statement .item#smm_mp-1a. -->
@@ -2434,7 +2436,7 @@ MP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Media Access</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.2">MP-2</link>
          <prop class="authority_title">MEDIA ACCESS</prop>
          <param id="mp-2_a"><!-- inserted into .SP800-53 control#mp.2 .statement -->
@@ -2451,7 +2453,7 @@ MP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Media Marking</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.3">MP-3</link>
          <prop class="authority_title">MEDIA MARKING</prop>
          <param id="mp-3_a"><!-- inserted into .SP800-53 control#mp.3 .statement .item#smm_mp-3b. -->
@@ -2470,7 +2472,7 @@ MP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Media Storage</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.4">MP-4</link>
          <prop class="authority_title">MEDIA STORAGE</prop>
          <param id="mp-4_a"><!-- inserted into .SP800-53 control#mp.4 .statement .item#smm_mp-4a. -->
@@ -2489,7 +2491,7 @@ MP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Media Transport</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.5">MP-5</link>
          <prop class="authority_title">MEDIA TRANSPORT</prop>
          <param id="mp-5_a"><!-- inserted into .SP800-53 control#mp.5 .statement .item#smm_mp-5a. -->
@@ -2506,7 +2508,7 @@ MP-1.b.2 [at least annually]</p>
          <p class="param_assigns">MP-5a. [all media with sensitive information] [prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container]</p>
          <component>
             <title>Cryptographic Protection</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.5.4.">MP-5 (4)</link>
             <prop class="authority_title">CRYPTOGRAPHIC PROTECTION</prop>
             <prop class="name">MP-5 (4)</prop>
@@ -2516,7 +2518,7 @@ MP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Media Sanitization</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.6">MP-6</link>
          <prop class="authority_title">MEDIA SANITIZATION</prop>
          <param id="mp-6_a"><!-- inserted into .SP800-53 control#mp.6 .statement .item#smm_mp-6a. -->
@@ -2533,7 +2535,7 @@ MP-1.b.2 [at least annually]</p>
          <p class="param_assigns">The organization: a.  Sanitizes [Assignment: organization-defined information system media] prior to disposal, release out of organizational control, or release for reuse using [Assignment: organization-defined sanitization techniques and procedures] in accordance with applicable federal and organizational standards and policies; and b.  Employs sanitization mechanisms with the strength and integrity commensurate with the security category or classification of the information. </p>
          <component>
             <title>Equipment Testing</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">MP-6 (2)</prop>
             <p class="param_assigns">[At least annually]</p>
             <p class="remarks">Guidance: Equipment and procedures may be tested or validated for effectiveness</p>
@@ -2541,7 +2543,7 @@ MP-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Media Use</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.7">MP-7</link>
          <prop class="authority_title">MEDIA USE</prop>
          <param id="mp-7_a"><!-- inserted into .SP800-53 control#mp.7 .statement -->
@@ -2561,7 +2563,7 @@ MP-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Prohibit Use without Owner</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#mp.7.1.">MP-7 (1)</link>
             <prop class="authority_title">PROHIBIT USE WITHOUT OWNER</prop>
             <prop class="name">MP-7 (1)</prop>
@@ -2575,7 +2577,7 @@ MP-1.b.2 [at least annually]</p>
       <prop class="group-id">PE</prop>
       <component>
          <title>Physical and Environmental Protection Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.1">PE-1</link>
          <prop class="authority_title">PHYSICAL AND ENVIRONMENTAL PROTECTION POLICY AND PROCEDURES</prop>
          <param id="pe-1_a"><!-- inserted into .SP800-53 control#pe.1 .statement .item#smm_pe-1a. -->
@@ -2598,7 +2600,7 @@ PE-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Physical Access Authorizations</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.2">PE-2</link>
          <prop class="authority_title">PHYSICAL ACCESS AUTHORIZATIONS</prop>
          <param id="pe-2_a"><!-- inserted into .SP800-53 control#pe.2 .statement .item#smm_pe-2c. -->
@@ -2612,7 +2614,7 @@ PE-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Physical Access Control</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.3">PE-3</link>
          <prop class="authority_title">PHYSICAL ACCESS CONTROL</prop>
          <param id="pe-3_a"><!-- inserted into .SP800-53 control#pe.3 .statement .item#smm_pe-3a. -->
@@ -2660,7 +2662,7 @@ PE-3g. [at least annually]
       </component>
       <component>
          <title>Access Control For Transmission Medium</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.4">PE-4</link>
          <prop class="authority_title">ACCESS CONTROL FOR TRANSMISSION MEDIUM</prop>
          <param id="pe-4_a"><!-- inserted into .SP800-53 control#pe.4 .statement -->
@@ -2678,7 +2680,7 @@ PE-3g. [at least annually]
       </component>
       <component>
          <title>Access Control For Output Devices</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.5">PE-5</link>
          <prop class="authority_title">ACCESS CONTROL FOR OUTPUT DEVICES</prop>
          <prop class="name">PE-5</prop>
@@ -2687,7 +2689,7 @@ PE-3g. [at least annually]
       </component>
       <component>
          <title>Monitoring Physical Access</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.6">PE-6</link>
          <prop class="authority_title">MONITORING PHYSICAL ACCESS</prop>
          <param id="pe-6_a"><!-- inserted into .SP800-53 control#pe.6 .statement .item#smm_pe-6b. -->
@@ -2704,7 +2706,7 @@ PE-3g. [at least annually]
          <p class="param_assigns">PE-6b.[at least monthly]</p>
          <component>
             <title>Intrusion Alarms / Surveillance Equipment</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.6.1.">PE-6 (1)</link>
             <prop class="authority_title">INTRUSION ALARMS / SURVEILLANCE EQUIPMENT</prop>
             <prop class="name">PE-6 (1)</prop>
@@ -2714,7 +2716,7 @@ PE-3g. [at least annually]
       </component>
       <component>
          <title>Visitor Access Records</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.8">PE-8</link>
          <prop class="authority_title">VISITOR ACCESS RECORDS</prop>
          <param id="pe-8_a"><!-- inserted into .SP800-53 control#pe.8 .statement .item#smm_pe-8a. -->
@@ -2733,7 +2735,7 @@ PE-8b. [at least monthly]</p>
       </component>
       <component>
          <title>Power Equipment and Cabling</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.9">PE-9</link>
          <prop class="authority_title">POWER EQUIPMENT AND CABLING</prop>
          <prop class="name">PE-9</prop>
@@ -2742,7 +2744,7 @@ PE-8b. [at least monthly]</p>
       </component>
       <component>
          <title>Emergency Shutoff</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.10">PE-10</link>
          <prop class="authority_title">EMERGENCY SHUTOFF</prop>
          <param id="pe-10_a"><!-- inserted into .SP800-53 control#pe.10 .statement .item#smm_pe-10b. -->
@@ -2755,7 +2757,7 @@ PE-8b. [at least monthly]</p>
       </component>
       <component>
          <title>Emergency Power</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.11">PE-11</link>
          <prop class="authority_title">EMERGENCY POWER</prop>
          <prop class="name">PE-11</prop>
@@ -2764,7 +2766,7 @@ PE-8b. [at least monthly]</p>
       </component>
       <component>
          <title>Emergency Lighting</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.12">PE-12</link>
          <prop class="authority_title">EMERGENCY LIGHTING</prop>
          <prop class="name">PE-12</prop>
@@ -2773,7 +2775,7 @@ PE-8b. [at least monthly]</p>
       </component>
       <component>
          <title>Fire Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.13">PE-13</link>
          <prop class="authority_title">FIRE PROTECTION</prop>
          <prop class="name">PE-13</prop>
@@ -2781,12 +2783,12 @@ PE-8b. [at least monthly]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Suppression Devices / Systems</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">PE-13 (2)</prop>
          </component>
          <component>
             <title>Automatic Fire Suppression</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.13.3.">PE-13 (3)</link>
             <prop class="authority_title">AUTOMATIC FIRE SUPPRESSION</prop>
             <prop class="name">PE-13 (3)</prop>
@@ -2796,7 +2798,7 @@ PE-8b. [at least monthly]</p>
       </component>
       <component>
          <title>Temperature and Humidity Controls</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.14">PE-14</link>
          <prop class="authority_title">TEMPERATURE AND HUMIDITY CONTROLS</prop>
          <param id="pe-14_a"><!-- inserted into .SP800-53 control#pe.14 .statement .item#smm_pe-14a. -->
@@ -2815,13 +2817,13 @@ PE-14b. [continuously]</p>
          <p class="remarks">PE-14a. Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
          <component>
             <title>Monitoring With Alarms / Notifications</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">PE-14 (2)</prop>
          </component>
       </component>
       <component>
          <title>Water Damage Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.15">PE-15</link>
          <prop class="authority_title">WATER DAMAGE PROTECTION</prop>
          <prop class="name">PE-15</prop>
@@ -2830,7 +2832,7 @@ PE-14b. [continuously]</p>
       </component>
       <component>
          <title>Delivery and Removal</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.16">PE-16</link>
          <prop class="authority_title">DELIVERY AND REMOVAL</prop>
          <param id="pe-16_a"><!-- inserted into .SP800-53 control#pe.16 .statement -->
@@ -2844,7 +2846,7 @@ PE-14b. [continuously]</p>
       </component>
       <component>
          <title>Alternate Work Site</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pe.17">PE-17</link>
          <prop class="authority_title">ALTERNATE WORK SITE</prop>
          <param id="pe-17_a"><!-- inserted into .SP800-53 control#pe.17 .statement .item#smm_pe-17a. -->
@@ -2861,7 +2863,7 @@ PE-14b. [continuously]</p>
       <prop class="group-id">PL</prop>
       <component>
          <title>Security Planning Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pl.1">PL-1</link>
          <prop class="authority_title">SECURITY PLANNING POLICY AND PROCEDURES</prop>
          <param id="pl-1_a"><!-- inserted into .SP800-53 control#pl.1 .statement .item#smm_pl-1a. -->
@@ -2884,7 +2886,7 @@ PL-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>System Security Plan</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pl.2">PL-2</link>
          <prop class="authority_title">SYSTEM SECURITY PLAN</prop>
          <param id="pl-2_a"><!-- inserted into .SP800-53 control#pl.2 .statement .item#smm_pl-2b. -->
@@ -2901,7 +2903,7 @@ PL-1.b.2 [at least annually]</p>
          <p class="param_assigns">PL-2c. [at least annually]</p>
          <component>
             <title>Plan / Coordinate With Other Organizational Entities</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pl.2.3.">PL-2 (3)</link>
             <prop class="authority_title">PLAN / COORDINATE WITH OTHER ORGANIZATIONAL ENTITIES</prop>
             <param id="pl-2_c"><!-- inserted into .SP800-53 control#pl.2 .SP800-53-enhancement subcontrol#pl.2.3. .statement -->
@@ -2915,7 +2917,7 @@ PL-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Rules of Behavior</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pl.4">PL-4</link>
          <prop class="authority_title">RULES OF BEHAVIOR</prop>
          <param id="pl-4_a"><!-- inserted into .SP800-53 control#pl.4 .statement .item#smm_pl-4c. -->
@@ -2928,7 +2930,7 @@ PL-1.b.2 [at least annually]</p>
          <p class="param_assigns">PL-4c. [At least every 3 years]</p>
          <component>
             <title>Social Media and Networking Restrictions</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pl.4.1.">PL-4 (1)</link>
             <prop class="authority_title">SOCIAL MEDIA AND NETWORKING RESTRICTIONS</prop>
             <prop class="name">PL-4 (1)</prop>
@@ -2938,7 +2940,7 @@ PL-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Information Security Architecture</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#pl.8">PL-8</link>
          <prop class="authority_title">INFORMATION SECURITY ARCHITECTURE</prop>
          <param id="pl-8_a"><!-- inserted into .SP800-53 control#pl.8 .statement .item#smm_pl-8b. -->
@@ -2956,7 +2958,7 @@ PL-1.b.2 [at least annually]</p>
       <prop class="group-id">PS</prop>
       <component>
          <title>Personnel Security Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.1">PS-1</link>
          <prop class="authority_title">PERSONNEL SECURITY POLICY AND PROCEDURES</prop>
          <param id="ps-1_a"><!-- inserted into .SP800-53 control#ps.1 .statement .item#smm_ps-1a. -->
@@ -2979,7 +2981,7 @@ PS-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Position Risk Designation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.2">PS-2</link>
          <prop class="authority_title">POSITION RISK DESIGNATION</prop>
          <param id="ps-2_a"><!-- inserted into .SP800-53 control#ps.2 .statement .item#smm_ps-2c. -->
@@ -2993,7 +2995,7 @@ PS-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Personnel Screening</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.3">PS-3</link>
          <prop class="authority_title">PERSONNEL SCREENING</prop>
          <param id="ps-3_a"><!-- inserted into .SP800-53 control#ps.3 .statement .item#smm_ps-3b. -->
@@ -3008,14 +3010,14 @@ PS-1.b.2 [at least annually]</p>
 For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year.  There is no reinvestigation for other moderate risk positions or any low risk positions]</p>
          <component>
             <title>Information With Special Protection Measures</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">PS-3 (3)</prop>
             <p class="param_assigns">PS-3 (3)(b). [personnel screening criteria – as required by specific information]</p>
          </component>
       </component>
       <component>
          <title>Personnel Termination</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.4">PS-4</link>
          <prop class="authority_title">PERSONNEL TERMINATION</prop>
          <param id="ps-4_a"><!-- inserted into .SP800-53 control#ps.4 .statement .item#smm_ps-4a. -->
@@ -3041,7 +3043,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
       </component>
       <component>
          <title>Personnel Transfer</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.5">PS-5</link>
          <prop class="authority_title">PERSONNEL TRANSFER</prop>
          <param id="ps-5_a"><!-- inserted into .SP800-53 control#ps.5 .statement .item#smm_ps-5b. -->
@@ -3067,7 +3069,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
       </component>
       <component>
          <title>Access Agreements</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.6">PS-6</link>
          <prop class="authority_title">ACCESS AGREEMENTS</prop>
          <param id="ps-6_a"><!-- inserted into .SP800-53 control#ps.6 .statement .item#smm_ps-6b. -->
@@ -3086,7 +3088,7 @@ PS-6c.2. [at least annually]</p>
       </component>
       <component>
          <title>Third-Party Personnel Security</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.7">PS-7</link>
          <prop class="authority_title">THIRD-PARTY PERSONNEL SECURITY</prop>
          <param id="ps-7_a"><!-- inserted into .SP800-53 control#ps.7 .statement .item#smm_ps-7d. -->
@@ -3104,7 +3106,7 @@ PS-6c.2. [at least annually]</p>
       </component>
       <component>
          <title>Personnel Sanctions</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ps.8">PS-8</link>
          <prop class="authority_title">PERSONNEL SANCTIONS</prop>
          <param id="ps-8_a"><!-- inserted into .SP800-53 control#ps.8 .statement .item#smm_ps-8b. -->
@@ -3125,7 +3127,7 @@ PS-6c.2. [at least annually]</p>
       <prop class="group-id">RA</prop>
       <component>
          <title>Risk Assessment Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ra.1">RA-1</link>
          <prop class="authority_title">RISK ASSESSMENT POLICY AND PROCEDURES</prop>
          <param id="ra-1_a"><!-- inserted into .SP800-53 control#ra.1 .statement .item#smm_ra-1a. -->
@@ -3148,7 +3150,7 @@ RA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Security Categorization</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ra.2">RA-2</link>
          <prop class="authority_title">SECURITY CATEGORIZATION</prop>
          <prop class="name">RA-2</prop>
@@ -3157,7 +3159,7 @@ RA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Risk Assessment</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ra.3">RA-3</link>
          <prop class="authority_title">RISK ASSESSMENT</prop>
          <param id="ra-3_a"><!-- inserted into .SP800-53 control#ra.3 .statement .item#smm_ra-3b. -->
@@ -3187,7 +3189,7 @@ RA-3d. Requirement: to include the Authorizing Official; for JAB authorizations 
       </component>
       <component>
          <title>Vulnerability Scanning</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ra.5">RA-5</link>
          <prop class="authority_title">VULNERABILITY SCANNING</prop>
          <param id="ra-5_a"><!-- inserted into .SP800-53 control#ra.5 .statement .item#smm_ra-5a. -->
@@ -3212,7 +3214,7 @@ RA-5d. [high-risk vulnerabilities mitigated within thirty days from date of disc
 RA-5e. Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
          <component>
             <title>Update Tool Capability</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ra.5.1.">RA-5 (1)</link>
             <prop class="authority_title">UPDATE TOOL CAPABILITY</prop>
             <prop class="name">RA-5 (1)</prop>
@@ -3221,7 +3223,7 @@ RA-5e. Requirement: to include the Risk Executive; for JAB authorizations to inc
          </component>
          <component>
             <title>Update by Frequency / Prior to New Scan / When Identified</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ra.5.2.">RA-5 (2)</link>
             <prop class="authority_title">UPDATE BY FREQUENCY / PRIOR TO NEW SCAN / WHEN IDENTIFIED</prop>
             <param id="ra-5_d"><!-- inserted into .SP800-53 control#ra.5 .SP800-53-enhancement subcontrol#ra.5.2. .statement -->
@@ -3235,12 +3237,12 @@ RA-5e. Requirement: to include the Risk Executive; for JAB authorizations to inc
          </component>
          <component>
             <title>Breadth / Depth of Coverage</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">RA-5 (3)</prop>
          </component>
          <component>
             <title>Privileged Access</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#ra.5.5.">RA-5 (5)</link>
             <prop class="authority_title">PRIVILEGED ACCESS</prop>
             <param id="ra-5_f"><!-- inserted into .SP800-53 control#ra.5 .SP800-53-enhancement subcontrol#ra.5.5. .statement -->
@@ -3258,13 +3260,13 @@ RA-5e. Requirement: to include the Risk Executive; for JAB authorizations to inc
          </component>
          <component>
             <title>Automated Trend Analyses</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">RA-5 (6)</prop>
             <p class="remarks">RA-5(6) Guidance: include in Continuous Monitoring ISSO digest/report to Authorizing Official</p>
          </component>
          <component>
             <title>Review Historic Audit Logs</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">RA-5 (8)</prop>
             <p class="remarks">RA-5 (8). Requirements: This enhancement is required for all high vulnerability scan findings. Guidance: While scanning tools may lable findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
          </component>
@@ -3275,7 +3277,7 @@ RA-5e. Requirement: to include the Risk Executive; for JAB authorizations to inc
       <prop class="group-id">SA</prop>
       <component>
          <title>System and Services Acquisition Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.1">SA-1</link>
          <prop class="authority_title">SYSTEM AND SERVICES ACQUISITION POLICY AND PROCEDURES</prop>
          <param id="sa-1_a"><!-- inserted into .SP800-53 control#sa.1 .statement .item#smm_sa-1a. -->
@@ -3298,7 +3300,7 @@ SA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Allocation of Resources</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.2">SA-2</link>
          <prop class="authority_title">ALLOCATION OF RESOURCES</prop>
          <prop class="name">SA-2</prop>
@@ -3307,7 +3309,7 @@ SA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>System Development Life Cycle</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.3">SA-3</link>
          <prop class="authority_title">SYSTEM DEVELOPMENT LIFE CYCLE</prop>
          <param id="sa-3_a"><!-- inserted into .SP800-53 control#sa.3 .statement .item#smm_sa-3a. -->
@@ -3320,7 +3322,7 @@ SA-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Acquisition Process</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.4">SA-4</link>
          <prop class="authority_title">ACQUISITION PROCESS</prop>
          <prop class="name">SA-4</prop>
@@ -3330,7 +3332,7 @@ SA-1.b.2 [at least annually]</p>
 See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html. </p>
          <component>
             <title>Functional Properties of Security Controls</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.4.1.">SA-4 (1)</link>
             <prop class="authority_title">FUNCTIONAL PROPERTIES OF SECURITY CONTROLS</prop>
             <prop class="name">SA-4 (1)</prop>
@@ -3339,7 +3341,7 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
          </component>
          <component>
             <title>Design / Implementation Information for Security Controls</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.4.2.">SA-4 (2)</link>
             <prop class="authority_title">DESIGN / IMPLEMENTATION INFORMATION FOR SECURITY CONTROLS</prop>
             <param id="sa-4_a"><!-- inserted into .SP800-53 control#sa.4 .SP800-53-enhancement subcontrol#sa.4.2. .statement -->
@@ -3357,14 +3359,14 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
          </component>
          <component>
             <title>Continuous Monitoring Plan</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-4 (8)</prop>
             <p class="param_assigns">SA-4 (8). [at least the minimum requirement as defined in control CA-7]</p>
             <p class="remarks">SA-4 (8) Guidance: CSP must use the same security standards regardless of where the system component or information system service is aquired.</p>
          </component>
          <component>
             <title>Functions / Ports / Protocols / Services in Use</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.4.9.">SA-4 (9)</link>
             <prop class="authority_title">FUNCTIONS / PORTS / PROTOCOLS / SERVICES IN USE</prop>
             <prop class="name">SA-4 (9)</prop>
@@ -3373,7 +3375,7 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
          </component>
          <component>
             <title>Use of Approved PIV Products</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.4.10.">SA-4 (10)</link>
             <prop class="authority_title">USE OF APPROVED PIV PRODUCTS</prop>
             <prop class="name">SA-4 (10)</prop>
@@ -3383,7 +3385,7 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
       </component>
       <component>
          <title>Information System Documentation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.5">SA-5</link>
          <prop class="authority_title">INFORMATION SYSTEM DOCUMENTATION</prop>
          <param id="sa-5_a"><!-- inserted into .SP800-53 control#sa.5 .statement .item#smm_sa-5c. -->
@@ -3400,7 +3402,7 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
       </component>
       <component>
          <title>Security Engineering Principles</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.8">SA-8</link>
          <prop class="authority_title">SECURITY ENGINEERING PRINCIPLES</prop>
          <prop class="name">SA-8</prop>
@@ -3409,7 +3411,7 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
       </component>
       <component>
          <title>External Information System Services</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.9">SA-9</link>
          <prop class="authority_title">EXTERNAL INFORMATION SYSTEM SERVICES</prop>
          <param id="sa-9_a"><!-- inserted into .SP800-53 control#sa.9 .statement .item#smm_sa-9a. -->
@@ -3427,14 +3429,14 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
 SA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored]</p>
          <component>
             <title>Risk Assessments / Organizational Approvals</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-9 (1)</prop>
             <p class="param_assigns">SA-9 (1) see Additional Requirement and Guidance</p>
             <p class="remarks">SA-9 (1). Requirement: The service provider documents all existing outsourced security services and conducts a risk assessment of future outsourced security services.  For JAB authorizations, future planned outsourced services are approved and accepted by the JAB.</p>
          </component>
          <component>
             <title>Identification of Functions / Ports / Protocols / Services</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.9.2.">SA-9 (2)</link>
             <prop class="authority_title">IDENTIFICATION OF FUNCTIONS / PORTS / PROTOCOLS / SERVICES</prop>
             <param id="sa-9_d"><!-- inserted into .SP800-53 control#sa.9 .SP800-53-enhancement subcontrol#sa.9.2. .statement -->
@@ -3448,20 +3450,20 @@ SA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for exter
          </component>
          <component>
             <title>Consistent Interests of Consumers and Providers</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-9 (4)</prop>
             <p class="param_assigns">SA-9 (4). [All external systems where Federal information is processed, transmitted or stored]</p>
          </component>
          <component>
             <title>Processing, Storage, and Service Location</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-9 (5)</prop>
             <p class="param_assigns">SA-9 (5). [information processing, transmission, information data, AND information services]</p>
          </component>
       </component>
       <component>
          <title>Developer Configuration Management</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.10">SA-10</link>
          <prop class="authority_title">DEVELOPER CONFIGURATION MANAGEMENT</prop>
          <param id="sa-10_a"><!-- inserted into .SP800-53 control#sa.10 .statement .item#smm_sa-10b. -->
@@ -3479,13 +3481,13 @@ SA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for exter
          <p class="remarks">SA-10e. Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to  organization-defined personnel, to include FedRAMP.</p>
          <component>
             <title>Software / Firmware Integrity Verification</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-10 (1)</prop>
          </component>
       </component>
       <component>
          <title>Developer Security Testing and Evaluation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sa.11">SA-11</link>
          <prop class="authority_title">DEVELOPER SECURITY TESTING AND EVALUATION</prop>
          <param id="sa-11_a"><!-- inserted into .SP800-53 control#sa.11 .statement .item#smm_sa-11b. -->
@@ -3497,19 +3499,19 @@ SA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for exter
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Static Code Analysis</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-11 (1)</prop>
             <p class="remarks">Requirement: SA-11 (1) or SA-11 (8) or both
 Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed. </p>
          </component>
          <component>
             <title>Threat and Vulnerability Analyses</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-11 (2)</prop>
          </component>
          <component>
             <title>Dynamic Code Analysis</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SA-11 (8)</prop>
             <p class="remarks">Requirement: SA-11 (1) or SA-11 (8) or both
 Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed. </p>
@@ -3521,7 +3523,7 @@ Requirement: The service provider documents in the Continuous Monitoring Plan, h
       <prop class="group-id">SC</prop>
       <component>
          <title>System and Communications Protection Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.1">SC-1</link>
          <prop class="authority_title">SYSTEM AND COMMUNICATIONS PROTECTION POLICY AND PROCEDURES</prop>
          <param id="sc-1_a"><!-- inserted into .SP800-53 control#sc.1 .statement .item#smm_sc-1a. -->
@@ -3544,7 +3546,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Application Partitioning</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.2">SC-2</link>
          <prop class="authority_title">APPLICATION PARTITIONING</prop>
          <prop class="name">SC-2</prop>
@@ -3553,7 +3555,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Information In Shared Resources</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.4">SC-4</link>
          <prop class="authority_title">INFORMATION IN SHARED RESOURCES</prop>
          <prop class="name">SC-4</prop>
@@ -3562,7 +3564,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Denial of Service Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.5">SC-5</link>
          <prop class="authority_title">DENIAL OF SERVICE PROTECTION</prop>
          <param id="sc-5_a"><!-- inserted into .SP800-53 control#sc.5 .statement -->
@@ -3580,12 +3582,12 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Resource Availability</title>
-         <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+         <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
          <prop class="name">SC-6</prop>
       </component>
       <component>
          <title>Boundary Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.7">SC-7</link>
          <prop class="authority_title">BOUNDARY PROTECTION</prop>
          <prop class="name">SC-7</prop>
@@ -3593,7 +3595,7 @@ SC-1.b.2 [at least annually]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>Access Points</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.7.3.">SC-7 (3)</link>
             <prop class="authority_title">ACCESS POINTS</prop>
             <prop class="name">SC-7 (3)</prop>
@@ -3602,7 +3604,7 @@ SC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>External Telecommunications Services</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.7.4.">SC-7 (4)</link>
             <prop class="authority_title">EXTERNAL TELECOMMUNICATIONS SERVICES</prop>
             <param id="sc-7_a"><!-- inserted into .SP800-53 control#sc.7 .SP800-53-enhancement subcontrol#sc.7.4. .statement .item#s_smm_sc-7.4.e. -->
@@ -3616,7 +3618,7 @@ SC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Deny by Default / Allow by Exception</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.7.5.">SC-7 (5)</link>
             <prop class="authority_title">DENY BY DEFAULT / ALLOW BY EXCEPTION</prop>
             <prop class="name">SC-7 (5)</prop>
@@ -3625,7 +3627,7 @@ SC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Prevent Split Tunneling for Remote Devices</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.7.7.">SC-7 (7)</link>
             <prop class="authority_title">PREVENT SPLIT TUNNELING FOR REMOTE DEVICES</prop>
             <prop class="name">SC-7 (7)</prop>
@@ -3634,29 +3636,29 @@ SC-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Route Traffic to Authenticated Proxy Servers</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SC-7 (8)</prop>
          </component>
          <component>
             <title>Host-Based Protection</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SC-7 (12)</prop>
          </component>
          <component>
             <title>Isolation of Security Tools / Mechanisms / Support Components</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SC-7 (13)</prop>
             <p class="remarks">SC-7 (13). Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</p>
          </component>
          <component>
             <title>Fail Secure</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SC-7 (18)</prop>
          </component>
       </component>
       <component>
          <title>Transmission Confidentiality and Integrity</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.8">SC-8</link>
          <prop class="authority_title">TRANSMISSION CONFIDENTIALITY AND INTEGRITY</prop>
          <prop class="name">SC-8</prop>
@@ -3665,7 +3667,7 @@ SC-1.b.2 [at least annually]</p>
          <p class="param_assigns">SC-8. [confidentiality AND integrity]</p>
          <component>
             <title>Cryptographic or Alternate Physical Protection</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.8.1.">SC-8 (1)</link>
             <prop class="authority_title">CRYPTOGRAPHIC OR ALTERNATE PHYSICAL PROTECTION</prop>
             <param id="sc-8_a"><!-- inserted into .SP800-53 control#sc.8 .SP800-53-enhancement subcontrol#sc.8.1. .statement -->
@@ -3680,7 +3682,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Network Disconnect</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.10">SC-10</link>
          <prop class="authority_title">NETWORK DISCONNECT</prop>
          <param id="sc-10_a"><!-- inserted into .SP800-53 control#sc.10 .statement -->
@@ -3694,7 +3696,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Cryptographic Key Establishment and Management</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.12">SC-12</link>
          <prop class="authority_title">CRYPTOGRAPHIC KEY ESTABLISHMENT AND MANAGEMENT</prop>
          <param id="sc-12_a"><!-- inserted into .SP800-53 control#sc.12 .statement -->
@@ -3708,19 +3710,19 @@ SC-1.b.2 [at least annually]</p>
          <p class="remarks">SC-12 Guidance:  Federally approved cryptography</p>
          <component>
             <title>Symmetric Keys</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SC-12 (2)</prop>
             <p class="param_assigns">SC-12 (2). [NIST FIPS-compliant]</p>
          </component>
          <component>
             <title>Asymmetric Keys</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SC-12 (3)</prop>
          </component>
       </component>
       <component>
          <title>Cryptographic Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.13">SC-13</link>
          <prop class="authority_title">CRYPTOGRAPHIC PROTECTION</prop>
          <param id="sc-13_a"><!-- inserted into .SP800-53 control#sc.13 .statement -->
@@ -3735,7 +3737,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Collaborative Computing Devices</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.15">SC-15</link>
          <prop class="authority_title">COLLABORATIVE COMPUTING DEVICES</prop>
          <param id="sc-15_a"><!-- inserted into .SP800-53 control#sc.15 .statement .item#smm_sc-15a. -->
@@ -3749,7 +3751,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Public Key Infrastructure Certificates</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.17">SC-17</link>
          <prop class="authority_title">PUBLIC KEY INFRASTRUCTURE CERTIFICATES</prop>
          <param id="sc-17_a"><!-- inserted into .SP800-53 control#sc.17 .statement -->
@@ -3762,7 +3764,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Mobile Code</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.18">SC-18</link>
          <prop class="authority_title">MOBILE CODE</prop>
          <prop class="name">SC-18</prop>
@@ -3771,7 +3773,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Voice Over Internet Protocol</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.19">SC-19</link>
          <prop class="authority_title">VOICE OVER INTERNET PROTOCOL</prop>
          <prop class="name">SC-19</prop>
@@ -3780,7 +3782,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Secure Name / Address Resolution Service (Authoritative Source)</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.20">SC-20</link>
          <prop class="authority_title">SECURE NAME / ADDRESS RESOLUTION SERVICE (AUTHORITATIVE SOURCE)</prop>
          <prop class="name">SC-20</prop>
@@ -3789,7 +3791,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Secure Name / Address Resolution Service (Recursive or Caching Resolver)</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.21">SC-21</link>
          <prop class="authority_title">SECURE NAME / ADDRESS RESOLUTION SERVICE (RECURSIVE OR CACHING RESOLVER)</prop>
          <prop class="name">SC-21</prop>
@@ -3798,7 +3800,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Architecture and Provisioning for Name / Address Resolution Service</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.22">SC-22</link>
          <prop class="authority_title">ARCHITECTURE AND PROVISIONING FOR NAME / ADDRESS RESOLUTION SERVICE</prop>
          <prop class="name">SC-22</prop>
@@ -3807,7 +3809,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Session Authenticity</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.23">SC-23</link>
          <prop class="authority_title">SESSION AUTHENTICITY</prop>
          <prop class="name">SC-23</prop>
@@ -3816,7 +3818,7 @@ SC-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Protection of Information At Rest</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.28">SC-28</link>
          <prop class="authority_title">PROTECTION OF INFORMATION AT REST</prop>
          <param id="sc-28_a"><!-- inserted into .SP800-53 control#sc.28 .statement -->
@@ -3830,13 +3832,13 @@ SC-1.b.2 [at least annually]</p>
          <p class="remarks">SC-28. Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest. </p>
          <component>
             <title>Cryptographic Protection</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SC-28 (1)</prop>
          </component>
       </component>
       <component>
          <title>Process Isolation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#sc.39">SC-39</link>
          <prop class="authority_title">PROCESS ISOLATION</prop>
          <prop class="name">SC-39</prop>
@@ -3849,7 +3851,7 @@ SC-1.b.2 [at least annually]</p>
       <prop class="group-id">SI</prop>
       <component>
          <title>System and Information Integrity Policy and Procedures</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.1">SI-1</link>
          <prop class="authority_title">SYSTEM AND INFORMATION INTEGRITY POLICY AND PROCEDURES</prop>
          <param id="si-1_a"><!-- inserted into .SP800-53 control#si.1 .statement .item#smm_si-1a. -->
@@ -3872,7 +3874,7 @@ SI-1.b.2 [at least annually]</p>
       </component>
       <component>
          <title>Flaw Remediation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.2">SI-2</link>
          <prop class="authority_title">FLAW REMEDIATION</prop>
          <param id="si-2_a"><!-- inserted into .SP800-53 control#si.2 .statement .item#smm_si-2c. -->
@@ -3885,7 +3887,7 @@ SI-1.b.2 [at least annually]</p>
          <p class="param_assigns">SI-2c. [Within 30 days of release of updates]</p>
          <component>
             <title>Automated Flaw Remediation Status</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.2.2.">SI-2 (2)</link>
             <prop class="authority_title">AUTOMATED FLAW REMEDIATION STATUS</prop>
             <param id="si-2_b"><!-- inserted into .SP800-53 control#si.2 .SP800-53-enhancement subcontrol#si.2.2. .statement -->
@@ -3899,13 +3901,13 @@ SI-1.b.2 [at least annually]</p>
          </component>
          <component>
             <title>Time to Remediate Flaws / Benchmarks for Corrective Actions</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SI-2 (3)</prop>
          </component>
       </component>
       <component>
          <title>Malicious Code Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.3">SI-3</link>
          <prop class="authority_title">MALICIOUS CODE PROTECTION</prop>
          <param id="si-3_a"><!-- inserted into .SP800-53 control#si.3 .statement .item#smm_si-3c. .item#sms_si-3c.1. -->
@@ -3923,7 +3925,7 @@ SI-1.b.2 [at least annually]</p>
 SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          <component>
             <title>Central Management</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.3.1.">SI-3 (1)</link>
             <prop class="authority_title">CENTRAL MANAGEMENT</prop>
             <prop class="name">SI-3 (1)</prop>
@@ -3932,7 +3934,7 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          </component>
          <component>
             <title>Automatic Updates</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.3.2.">SI-3 (2)</link>
             <prop class="authority_title">AUTOMATIC UPDATES</prop>
             <prop class="name">SI-3 (2)</prop>
@@ -3941,13 +3943,13 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          </component>
          <component>
             <title>Nonsignature-Based Detection</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SI-3 (7)</prop>
          </component>
       </component>
       <component>
          <title>Information System Monitoring</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.4">SI-4</link>
          <prop class="authority_title">INFORMATION SYSTEM MONITORING</prop>
          <param id="si-4_a"><!-- inserted into .SP800-53 control#si.4 .statement .item#smm_si-4a. .item#sms_si-4a.1. -->
@@ -3975,12 +3977,12 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          <prop class="authority_baselines">LOW MODERATE HIGH</prop>
          <component>
             <title>System-Wide Intrusion Detection System</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SI-4 (1)</prop>
          </component>
          <component>
             <title>Automated Tools For Real-Time Analysis</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.4.2.">SI-4 (2)</link>
             <prop class="authority_title">AUTOMATED TOOLS FOR REAL-TIME ANALYSIS</prop>
             <prop class="name">SI-4 (2)</prop>
@@ -3989,7 +3991,7 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          </component>
          <component>
             <title>Inbound and Outbound Communications Traffic</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.4.4.">SI-4 (4)</link>
             <prop class="authority_title">INBOUND AND OUTBOUND COMMUNICATIONS TRAFFIC</prop>
             <param id="si-4_f"><!-- inserted into .SP800-53 control#si.4 .SP800-53-enhancement subcontrol#si.4.4. .statement -->
@@ -4003,7 +4005,7 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          </component>
          <component>
             <title>System-Generated Alerts</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.4.5.">SI-4 (5)</link>
             <prop class="authority_title">SYSTEM-GENERATED ALERTS</prop>
             <param id="si-4_g"><!-- inserted into .SP800-53 control#si.4 .SP800-53-enhancement subcontrol#si.4.5. .statement -->
@@ -4021,23 +4023,23 @@ SI-3.c.2 [to include alerting administrator or defined security personnel]</p>
          </component>
          <component>
             <title>Wireless Intrusion Detection</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SI-4(14)</prop>
          </component>
          <component>
             <title>Correlate Monitoring Information</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SI-4 (16)</prop>
          </component>
          <component>
             <title>Host-Based Devices</title>
-            <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+            <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
             <prop class="name">SI-4 (23)</prop>
          </component>
       </component>
       <component>
          <title>Security Alerts, Advisories, and Directives</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.5">SI-5</link>
          <prop class="authority_title">SECURITY ALERTS, ADVISORIES, AND DIRECTIVES</prop>
          <param id="si-5_a"><!-- inserted into .SP800-53 control#si.5 .statement .item#smm_si-5a. -->
@@ -4064,7 +4066,7 @@ SI-5c. [to include system security personnel and administrators with configurati
       </component>
       <component>
          <title>Security Function Verification</title>
-         <prop class="framework-assessment"> NO MATCH IN CATALOG </prop>
+         <prop class="worksheet-annotation"> NO MATCH IN CATALOG </prop>
          <prop class="name">SI-6</prop>
          <p class="param_assigns">SI-6b [to include upon system startup and/or restart at least monthly]
 SI-6c [to include system administrators and security personnel]
@@ -4073,7 +4075,7 @@ SI-6d [to include notification of system administrators and security personnel]
       </component>
       <component>
          <title>Software, Firmware, and Information Integrity</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.7">SI-7</link>
          <prop class="authority_title">SOFTWARE, FIRMWARE, AND INFORMATION INTEGRITY</prop>
          <param id="si-7_a"><!-- inserted into .SP800-53 control#si.7 .statement -->
@@ -4085,7 +4087,7 @@ SI-6d [to include notification of system administrators and security personnel]
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Integrity Checks</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.7.1.">SI-7 (1)</link>
             <prop class="authority_title">INTEGRITY CHECKS</prop>
             <param id="si-7_b"><!-- inserted into .SP800-53 control#si.7 .SP800-53-enhancement subcontrol#si.7.1. .statement -->
@@ -4107,7 +4109,7 @@ SI-6d [to include notification of system administrators and security personnel]
          </component>
          <component>
             <title>Integration of Detection and Response</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.7.7.">SI-7 (7)</link>
             <prop class="authority_title">INTEGRATION OF DETECTION AND RESPONSE</prop>
             <param id="si-7_g"><!-- inserted into .SP800-53 control#si.7 .SP800-53-enhancement subcontrol#si.7.7. .statement -->
@@ -4121,7 +4123,7 @@ SI-6d [to include notification of system administrators and security personnel]
       </component>
       <component>
          <title>Spam Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.8">SI-8</link>
          <prop class="authority_title">SPAM PROTECTION</prop>
          <prop class="name">SI-8</prop>
@@ -4129,7 +4131,7 @@ SI-6d [to include notification of system administrators and security personnel]
          <prop class="authority_baselines">MODERATE HIGH</prop>
          <component>
             <title>Central Management</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.8.1.">SI-8 (1)</link>
             <prop class="authority_title">CENTRAL MANAGEMENT</prop>
             <prop class="name">SI-8 (1)</prop>
@@ -4138,7 +4140,7 @@ SI-6d [to include notification of system administrators and security personnel]
          </component>
          <component>
             <title>Automatic Updates</title>
-            <link rel="component"
+            <link rel="SP800-53-enhancement subcontrol component"
                   href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.8.2.">SI-8 (2)</link>
             <prop class="authority_title">AUTOMATIC UPDATES</prop>
             <prop class="name">SI-8 (2)</prop>
@@ -4148,7 +4150,7 @@ SI-6d [to include notification of system administrators and security personnel]
       </component>
       <component>
          <title>Information Input Validation</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.10">SI-10</link>
          <prop class="authority_title">INFORMATION INPUT VALIDATION</prop>
          <param id="si-10_a"><!-- inserted into .SP800-53 control#si.10 .statement -->
@@ -4161,7 +4163,7 @@ SI-6d [to include notification of system administrators and security personnel]
       </component>
       <component>
          <title>Error Handling</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.11">SI-11</link>
          <prop class="authority_title">ERROR HANDLING</prop>
          <param id="si-11_a"><!-- inserted into .SP800-53 control#si.11 .statement .item#smm_si-11b. -->
@@ -4174,7 +4176,7 @@ SI-6d [to include notification of system administrators and security personnel]
       </component>
       <component>
          <title>Information Handling and Retention</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.12">SI-12</link>
          <prop class="authority_title">INFORMATION HANDLING AND RETENTION</prop>
          <prop class="name">SI-12</prop>
@@ -4183,7 +4185,7 @@ SI-6d [to include notification of system administrators and security personnel]
       </component>
       <component>
          <title>Memory Protection</title>
-         <link rel="component"
+         <link rel="SP800-53 control component"
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#si.16">SI-16</link>
          <prop class="authority_title">MEMORY PROTECTION</prop>
          <param id="si-16_a"><!-- inserted into .SP800-53 control#si.16 .statement -->
