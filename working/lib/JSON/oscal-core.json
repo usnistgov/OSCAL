@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "http://csrc.nist.gov/ns/oscal/core-1.0.json",
+  "$id": "oscal-core.json",
   "definitions": {
     "catalog": {
       "$id": "#/definitions/catalog",
@@ -60,6 +60,9 @@
       "type": "object",
       "description": "",
       "properties": {
+        "optionalClass": {
+          "type": "string"
+        },
         "title": {
           "type": "string",
           "description": "A fallback for display and navigation, exclusive of more specific properties"
@@ -99,6 +102,7 @@
       },
       "propertyNames": {
         "enum": [
+          "class",
           "title",
           "declarations",
           "sections",
@@ -374,8 +378,9 @@
       "description": "",
       "anyOf": [
         {
-          "type": "string",
-          "description": ""
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         },
         {
           "type": "object",
@@ -424,7 +429,7 @@
         },
         "groups": {
           "type": "array",
-          "$ref": "#/definitions/section"
+          "$ref": "#/definitions/group"
         },
         "references": {
           "type": "array",
@@ -721,11 +726,17 @@
     "reference": {
       "$id": "#/definitions/reference",
       "type": "object",
-      "description": "",
+      "description": "Standard: Citation of a formal published standard\n Citation: Citation of a resource",
       "patternProperties": {
         "^(citation|standard)$": {
-          "$ref": "#/definitions/ref",
-          "description": "Standard: Citation of a formal published standard\n Citation: Citation of a resource"
+          "href": {
+            "type": "string",
+            "description": ""
+          },
+          "value": {
+            "type": "string",
+            "description": ""
+          }
         }
       },
       "propertyNames": {
@@ -734,47 +745,12 @@
           "standard"
         ]
       }
-    },
-    "ref": {
-      "$id": "#/definitions/ref",
-      "type": "object",
-      "description": "",
-      "properties": {
-        "href": {
-          "type": "string",
-          "description": ""
-        },
-        "value": {
-          "type": "string",
-          "description": ""
-        }
-      },
-      "propertyNames": {
-        "enum": [
-          "href",
-          "value"
-        ]
-      }
-    }    
+    }   
   },
   "properties": {
     "catalog": {
       "$ref": "#/definitions/catalog",
       "description": ""
-    },
-    "framework": {
-      "type": "object",
-      "description": "",
-      "allOf": [
-        { "$ref": "#/definitions/framework" },
-        {
-          "properties": {
-            "class": {
-              "type": "string"
-            }
-          }
-        }
-      ]
     },
     "declarations": {
       "type": "array",
@@ -782,7 +758,11 @@
       "items": {
         "$ref": "#/definitions/declaration"
       }
-    }
+    },
+    "framework": {
+      "$ref": "#/definitions/framework",
+      "description": ""      
+    }    
   },
   "propertyNames": {
     "enum": [

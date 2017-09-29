@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "http://csrc.nist.gov/ns/oscal/profile-1.0.json",
+  "$id": "oscal-profile.json",
   "definitions": {
     "param": {
       "$id": "#/definitions/param",
@@ -67,7 +67,7 @@
     },
     "framework": {
       "description": "",
-      "$ref": "http://csrc.nist.gov/ns/oscal/core-1.0.json#/definitions/framework"
+      "$ref": "oscal-profile.json#/definitions/framework"
     },
     "include": {
       "type": "object",
