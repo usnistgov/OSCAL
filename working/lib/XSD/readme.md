@@ -3,13 +3,15 @@
 ## Schema production
 
 
-The publication version of the OSCAL schema is maintained here as [oscal-core.xsd](oscal-core.xsd) but in use you may wish to refer instead to any of:
+There are currently two top-level OSCAL schemas, the 'core' and the (experimental) 'profile' schema.
 
-* [oscal-catalog.xsd](oscal-catalog.xsd) - for describing control catalogs
-* [oscal-profile.xsd](oscal-profile.xsd) - the simplest interface to OSCAL (for referencing catalogs but not writing them)
-* [oscal-framework.xsd](oscal-framework.xsd) - EXPERIMENTAL - used internally in pipelines or as a "worksheet" format
+'core' [oscal-core.xsd](oscal-core.xsd) validates anything but profile documents, which are not full catalogs or catalog-like compilations, but only references into catalogs and frameworks.
 
-All of these call on the core module for declarations; in the case of `catalog` and `framework` they are only entry points. Accordingly, any OSCAL catalog or framework document (but not profile) can also validate against the core schema standalone.
+'profile' [oscal-profile.xsd](oscal-profile.xsd) offers the simplest interface to OSCAL: it is for referencing catalogs not writing them
+
+For convenience, there are also two runtime aliases to core, namely [oscal-catalog.xsd](oscal-catalog.xsd) (nominally, for tagging control catalogs) and [oscal-framework.xsd](oscal-framework.xsd) which is **EXPERIMENTAL** currently used internally in pipelines or as a "worksheet" format. 
+
+All of these call on the core module for declarations; in the case of `catalog` and `framework` they are only entry points. Accordingly, any OSCAL catalog or framework document (but not profile) can also validate against the core schema standalone. (And, because of a weakness in XSD import as compared to RNG, they will persist in validating one another as well.)
 
 Of the three nominal document formats, only `catalog` is nearing stability (end of Sprint 4). However, all the schemas are functional and maintained fairly closely in sync with demonstration code and examples.
 

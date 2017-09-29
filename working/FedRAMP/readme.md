@@ -1,12 +1,26 @@
 # FedRAMP in OSCAL: a demonstration
 
-We aim here to represent a FedRAMP specification spreadsheet, produced as a customization (informal profile) of an SP800-53 baseline, formally in OSCAL.
+We aim here to represent a FedRAMP specification spreadsheet, produced as a customization (OSCAL profile) of an SP800-53 baseline (also an OSCAL profile, referencing an OSCAL catalog).
 
-Note that the referenced document will not be the SP800-53 catalog, but a profile document - whichever of the 'LOW' or 'MODERATE' baselines proves to be the correct one. (Someone who knows the data can determine this just by looking at it, but we want the machine to be able to determine this fitness.) Accordingly, FedRAMP stands two steps away: it is a profile of a profile of the catalog.
+The FedRAMP profile is developed by a "stepwise" process of (largely automated) analysis of input data against the intended reference authority (profile or catalog). File artifacts (in this subdirectory) trace this process:
 
-This will take the form of an OSCAL profile referencing an OSCAL profile (whichever of document that relates 
+* [`excel-extract.xml`](excel-extract.xml) - a "flat dump" of an Excel spreadsheet representing the FedRAMP baseline (profile) of NIST SP800-53 (produced using a commodity tool)
 
-## Method
+* [`fedramp-oscal-worksheet.xml`](fedramp-oscal-worksheet.xml) - an OSCAL rendition of this information, pulled into a hierarchy (produced by transforming [`excel-extract.xml`](excel-extract.xml))
+
+* [`fedramp-annotated-wrt-MODERATEbaseline.xml`](fedramp-annotated-wrt-MODERATEbaseline.xml) - a richer OSCAL rendition of the worksheet, integrating references to the MODERATE baseline of SP800-53, produced by running an analytic XSLT over the basic worksheet. This document shows that *many controls* referenced in FedRAMP, are not referenced in the MODERATE baseline (as we have it). These discrepancies can be traced using the next file.
+
+* [`fedramp-annotated-wrt-SP800-53catalog.xml`](fedramp-annotated-wrt-SP800-53catalog.xml) - since the MODERATE annotations file shows we have many match failures (between the worksheet, and MODERATE), we go back to [`fedramp-oscal-worksheet.xml`](fedramp-oscal-worksheet.xml) and run the "annotation" stylesheet again, except making reference to the entire SP800-53 catalog. This allows us to examine further the discrepancies discovered between the worksheet, and what we see in MODERATE.
+
+Where the worksheets (or any XML produced by refining and editing these further) contain links into reference authorities (profiles or catalogs), another XSLT [`profile-from-linked-worksheet.xsl`](profile-from-linked-worksheet.xsl), can produce an OSCAL profile that "distills" or reduces links and parameter settings given in the worksheet. Note that such links are inserted automatically by the annotation stylesheet into components that are recognized as matching controls.
+
+However, this utility can work only on data that is correct and complete or there is no point, so the question becomes, how to ensure the quality of the worksheet going in. Before a profile can be produced, queries and background validation (via Schematron) of the worksheet against project-specific constraints, are two methods -- over and above editing it by hand -- that can help.
+
+For example, the XPath `//component[prop=' NO MATCH IN CATALOG ']` (applied to any of the annotated worksheets) shows where the FedRAMP worksheet is defective wrt each of the authorities referenced -- where its components fail to match up with controls as expected.
+
+Using an XML diff tool to compare catalogs and frameworks (worksheets) is another interesting approach.
+
+## Means and methods
 
 We use a sequence of tasks and tools, several of which we should be able to reuse for similar tasks.
 
@@ -16,17 +30,17 @@ We have to do this once. oXgen XML Editor has a tool for this import, which we u
 
 **input**: `Fedramp/FedRAMP-Rev-4-Baseline-Workbook-FINAL062014.xlsx` in the `Sources` subdirectory of this repository
 
-**output**: file `excel-extract.xml`
+**output**: file [`excel-extract.xml`](excel-extract.xml)
 
 ### Convert raw XML into an OSCAL "worksheet" format
 
 Note this is called `framework` provisionally; the element might have a new name after models are tested and refined
 
-**source**: file `excel-extract.xml`
+**source**: file [`excel-extract.xml`](excel-extract.xml)
 
-**transformation**: file `fedramp-flat-to-framework.xsl`
+**transformation**: file [`fedramp-flat-to-framework.xsl`](fedramp-flat-to-framework.xsl)
 
-**result**: file `fedramp-oscal-worksheet.xml`
+**result**: file [`fedramp-oscal-worksheet.xml`](fedramp-oscal-worksheet.xml)
 
 The result is valid OSCAL (although without OSCAL declarations)
 
@@ -44,7 +58,7 @@ However, the pilot implementation does do well enough to show that the FedRAMP s
 
 #### Potential points for analysis:
 
-* Dangling components - does the worksheet describe controls or subcontrols that do not appear in the authority? These can be flagged. Sometimes they will reflect transcription errors in the sources, which can be corrected in `excel-extract.xml` if not in the source spreadsheet.
+* Dangling components - does the worksheet describe controls or subcontrols that do not appear in the authority? These can be flagged. Sometimes they will reflect transcription errors in the sources, which can be corrected in [`excel-extract.xml`](excel-extract.xml) if not in the source spreadsheet.
 
 * Missing controls - are there controls named in the base catalog or profile that are not designated in the worksheet? This will not be an error if the worksheet is intended to reference only a selection of controls. But if the worksheet is intended to be comprehensive of the profile or catalog it cites, this reflects a problem (missing data or broken links). The XSLT could produce stub components for missing controls (or subcontrols). Since this is not always a desired behavior, the XSLT could support a switch.
 
@@ -68,7 +82,7 @@ A (human) editor should take special note of `<link>` elements in the OSCAL. Whe
 
 ### Rewriting the worksheet as a profile
 
-Finally we have an XSLT transformation, `profile-from-linked-worksheet.xsl`, which produces an OSCAL profile out of a worksheet.
+Finally we have an XSLT transformation, [`profile-from-linked-worksheet.xsl`](profile-from-linked-worksheet.xsl), which produces an OSCAL profile out of a worksheet.
 
 The current version does this by referencing SP800-53 to match up components against controls. A new better version will be simpler, reflecting how in the prior "annotation" step we have effectively moved the intelligence required to do this. Given results such as the annotation process can produce, in other words, we should be able to rewrite the worksheet as a profile without reference to an authority (other than what the worksheet itself cites). 
 
@@ -76,7 +90,7 @@ This effectively deals also with the requirement to produce a profile for an arb
 
 When resolved against its authority (for FedRAMP we are aiming for the MODERATE baseline of SP800-53), this profile document should be capable of rendetion and display, showing the invoked controls with parameterized values, like any other profile.  
 
-**primary source**: `fedramp-oscal-worksheet-annotated.xml` - the worksheet document being assessed - but any OSCAL `framework` should do, as long as it has links in it.
+**primary source**: [`fedramp-oscal-worksheet-annotated.xml`](fedramp-oscal-worksheet-annotated.xml) - the worksheet document being assessed - but any OSCAL `framework` should do, as long as it has links in it.
 
 **result**: An OSCAL profile document referencing the authority (catalog or profile) copy of the worksheet is produced, with annotations and parameters included.
 

@@ -29,11 +29,34 @@
       <xs:element minOccurs="0" ref="oscal:references"/>
     </xs:sequence>
   </xs:complexType>
+  <!-- 'worksheet' is just an alias for 'framework' for now -->
+  <xs:complexType name="worksheet-contents">
+    <xs:sequence>
+      <xs:element ref="oscal:title"/>
+      <xs:element minOccurs="0" ref="oscal:declarations"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:section"/>
+        <xs:group ref="oscal:category"/>
+        <xs:element ref="oscal:component"/>
+      </xs:choice>
+      <xs:element minOccurs="0" ref="oscal:references"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:element name="catalog" type="oscal:catalog-contents"/>
   <xs:element name="framework">
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="oscal:framework-contents">
+          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attributeGroup ref="oscal:optionalClass"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="worksheet">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="oscal:worksheet-contents">
           <xs:attributeGroup ref="oscal:idAttr"/>
           <xs:attributeGroup ref="oscal:optionalClass"/>
         </xs:extension>

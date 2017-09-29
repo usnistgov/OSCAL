@@ -163,7 +163,7 @@ link { color: blue; font-size: 90%; font-weight: bold }
 link:before { color: blue; font-size: 90%; font-weight: bold; content: 
         'link: ' oxy_urlChooser(        
         edit, "@href",
-        columns 17); }
+        columns 53); }
 
 withdrawn { display: inline; font-style: italic }
 

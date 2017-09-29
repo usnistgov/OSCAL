@@ -30,7 +30,11 @@
     
     <sch:rule context="oscal:param">
       <sch:let name="my-assignments" value="key('assignments-by-use',normalize-space(@id))"/>
-      <sch:assert test="exists($my-assignments)" role="warning">Parameter is used nowhere.</sch:assert>
+      <sch:assert test="exists($my-assignments) or ancestor::oscal:component" role="warning">Parameter is used nowhere.</sch:assert>
+    </sch:rule>
+    
+    <sch:rule context="oscal:param/oscal:value">
+      <sch:assert role="warning" test="not(. = ../oscal:desc)">Parameter value echoes description.</sch:assert>
     </sch:rule>
     
   </sch:pattern>
