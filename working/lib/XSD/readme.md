@@ -2,21 +2,21 @@
 
 ## Schema production
 
-There are currently two top-level OSCAL schemas, the 'core' and the (experimental) 'profile' schema.
+In XSD, there are currently two top-level OSCAL schemas, the 'core' and the (experimental) 'profile' schema.
 
-'core' [oscal-core.xsd](oscal-core.xsd) validates anything but profile documents, which are not full catalogs or catalog-like compilations, but only references into catalogs and frameworks.
+'core' [oscal-core.xsd](oscal-core.xsd) validates anything but profile documents, which are not full catalogs or catalog-like compilations, but only references into catalogs and frameworks. If the root (document) element of your XML is `<catalog>`, `<profile>`, `<declarations>` or `<framework>`, your document may be valid to this schema.
 
-'profile' [oscal-profile.xsd](oscal-profile.xsd) offers the simplest interface to OSCAL: it is for referencing catalogs not writing them
+'profile' [oscal-profile.xsd](oscal-profile.xsd) offers the simplest interface to OSCAL: it is for referencing catalogs not writing them; the root element will be `<profile>`.
 
-For convenience, there are also two runtime aliases to core, namely [oscal-catalog.xsd](oscal-catalog.xsd) (nominally, for tagging control catalogs) and [oscal-framework.xsd](oscal-framework.xsd) which is **EXPERIMENTAL** currently used internally in pipelines or as a "worksheet" format. 
-
-All of these call on the core module for declarations; indeed currently `catalog` and `framework` are maintained only as entry points (with all their respective declarations in core, not yet split out). Accordingly, any OSCAL catalog or framework document (but not profile) can also validate against the core schema standalone -- and, because of a weakness in XSD import as compared to RNG, they will persist in validating one another as well. (When validating against the RNC, only nominal catalogs will validate against the catalog schema, etc.)
+As alternatives to the XSD, developers may wish to consult the maintenance versions of both schemas are kept in the higher subdirectory as 
+[oscal-core.rnc](../oscal-core.rnc) and 
+[oscal-profile.rnc](../oscal-profile.rnc), where they may be referenced directly. For users of RNC, two additional entry points for validation are also offered (in that subdirectory) as conveniences:  [../oscal-catalog.rnc](../oscal-catalog.rnc) (nominally, for tagging control catalogs only) and [oscal-framework.rnc](oscal-framework.rnc) which is **EXPERIMENTAL** currently used internally in pipelines or as a "worksheet" format. Documents valid to these more restrictive variants will also however also be valid using the core module alone.
 
 Of the three nominal document formats, only `catalog` is nearing stability (end of Sprint 4). However, all the schemas are functional and maintained fairly closely in sync with demonstration code and examples.
 
 Each of these schemas is maintained in RNC format (RelaxNG compact syntax ISO/IEC 19757-2); see information on RelaxNG at http://relaxng.org. This approach to maintenance permits rapid development with low process overhead; maintainers should also find RNC relatively legible next to XSD. For use by applications without support for RelaxNG, we convert the schemas into W3C XSD using an open source tool, [Trang](http://www.thaiopensource.com/relaxng/trang.html). The XSD it produces from `oscal-core.rnc` appears here as [oscal-interim-core.xsd](oscal-interim-code.xsd).
 
-The distribution copy of [oscal-core.xsd](oscal-code.xsd) is subsequently produced by a call to an XProc pipeline [schema-production.xpl](schema-production.xpl). While simultaneously performing other chores in schema maintenance (namely, production of external documentation), this pipeline (consisting of an orchestrated set of XSLT transformations) also produces a version of the XSD, into which structured documentation has been injected. See the [doc/schema](../../docs/schema) subdirectory for these resources.
+The distribution copy of [oscal-core.xsd](oscal-code.xsd) is subsequently produced by a call to an XProc pipeline [schema-production.xpl](schema-production.xpl). While simultaneously performing other chores in schema maintenance (namely, production of external documentation), this pipeline (consisting of an orchestrated set of XSLT transformations) also produces a version of the XSD, into which structured documentation has been integrated for use by tools. See the [doc/schema](../../docs/schema) subdirectory for the documentation resources.
 
 (Currently, the elements in the largely untested 'profile' format are not documented; this remains tbd.)
 
