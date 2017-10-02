@@ -70,35 +70,37 @@
       "$ref": "oscal-profile.json#/definitions/framework"
     },
     "include": {
-      "type": "object",
+      "type": "array",
       "description": "",
-      "properties": {
-        "all": {
-          "type": "boolean",
-          "description": ""
+      "items": {
+        "properties": {
+          "all": {
+            "type": "boolean",
+            "description": ""
+          },
+          "withSubcontrols": {
+            "type": "boolean",
+            "description": ""
+          },
+          "calls": {
+            "type": "array",
+            "description": "",
+            "items": { "$ref": "#/definitions/call" }  
+          },
+          "params": {
+            "type": "array",
+            "description": "",
+            "items": { "$ref": "#/definitions/param" }
+          }
         },
-        "withSubcontrols": {
-          "type": "boolean",
-          "description": ""
-        },
-        "calls": {
-          "type": "array",
-          "description": "",
-          "items": { "$ref": "#/definitions/call" }  
-        },
-        "params": {
-          "type": "array",
-          "description": "",
-          "items": { "$ref": "#/definitions/param" }
+        "propertyNames": {
+          "enum": [
+            "all",
+            "withSubcontrols",
+            "calls",
+            "params"
+          ]
         }
-      },
-      "propertyNames": {
-        "enum": [
-          "all",
-          "withSubcontrols",
-          "calls",
-          "params"
-        ]
       }
     },
     "default": {
