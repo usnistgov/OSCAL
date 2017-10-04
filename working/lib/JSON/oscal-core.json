@@ -131,7 +131,8 @@
           "items": { "$ref": "#/definitions/link" }
         },
         "prose": {
-          "type": "string"
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
         },
         "categories": {
           "type": "array",
@@ -177,7 +178,8 @@
           "items": { "$ref": "#/definitions/link" }
         },
         "prose": {
-          "type": "string"
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
         },
         "parts": {
           "type": "array",
@@ -471,7 +473,8 @@
           "items": { "$ref": "#/definitions/link" }
         },
         "prose": {
-          "type": "string"
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
         },
         "groups": {
           "type": "array",
@@ -537,7 +540,8 @@
           "items": { "$ref": "#/definitions/link" }
         },
         "prose": {
-          "type": "string"
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
         },
         "subcontrols": {
           "type": "array",
@@ -596,7 +600,8 @@
           "items": { "$ref": "#/definitions/link" }
         },
         "prose": {
-          "type": "string"
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
         },
         "references": {
           "type": "array",
@@ -644,7 +649,8 @@
           "items": { "$ref": "#/definitions/link" }
         },
         "prose": {
-          "type": "string"
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
         }
       },
       "propertyNames": {
@@ -744,6 +750,25 @@
           "citation",
           "standard"
         ]
+      }
+    },
+    "prose": {
+      "$id": "#/definitions/prose",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
       }
     }   
   },
