@@ -53,6 +53,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.1",
               "value": "AC-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AC-1.b.1 [at least every 3 years]\nAC-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -102,6 +108,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2",
               "value": "AC-2"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AC-2j [at least annually]"
             }
           ],
           "components": [
@@ -166,6 +178,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2.2.",
                   "value": "AC-2 (2)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[No more than 30 days for temporary and emergency account types]"
+                }
               ]
             },
             {
@@ -200,6 +218,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2.3.",
                   "value": "AC-2 (3)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[90 days for user accounts]"
+                },
+                {
+                  "class": "remarks",
+                  "value": "Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices).  The time periods are approved and accepted by the Authorizing Official."
                 }
               ]
             },
@@ -296,8 +324,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -331,8 +358,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -340,6 +366,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2.9.",
                   "value": "AC-2 (9)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "Required if shared/group accounts are deployed"
                 }
               ]
             },
@@ -359,8 +391,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -368,6 +399,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2.10.",
                   "value": "AC-2 (10)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "Required if shared/group accounts are deployed"
                 }
               ]
             },
@@ -408,6 +445,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2.12.",
                   "value": "AC-2 (12)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "AC-2 (12)(a) and AC-2 (12)(b) Additional FedRAMP Requirements and Guidance: Required for privileged accounts."
                 }
               ]
             }
@@ -504,8 +547,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -648,6 +690,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.6.2.",
                   "value": "AC-6 (2)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[all security functions]"
+                },
+                {
+                  "class": "remarks",
+                  "value": "AC-6 (2). Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.                            "
                 }
               ]
             },
@@ -792,6 +844,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.7",
               "value": "AC-7"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AC-7a [not more than three]\n [fifteen minutes] \nAC-7b [locks the account/node for thirty minutes]"
+            }
           ]
         },
         {
@@ -831,6 +889,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.8",
               "value": "AC-8"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "Parameter: See Additional Requirements and Guidance."
+            },
+            {
+              "class": "remarks",
+              "value": "Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the Authorizing Official (AO).\nRequirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the AO.\nGuidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.\nRequirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the AO.\n"
             }
           ]
         },
@@ -872,6 +940,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.10",
               "value": "AC-10"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": " [three (3) sessions for privileged access and two (2) sessions for non-privileged access]"
+            }
           ]
         },
         {
@@ -906,6 +980,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.11",
               "value": "AC-11"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AC-11a. [fifteen minutes]  "
             }
           ],
           "components": [
@@ -1186,8 +1266,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -1195,6 +1274,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.17.9.",
                   "value": "AC-17 (9)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[no greater than 15 minutes]"
                 }
               ]
             }
@@ -1482,6 +1567,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.22",
               "value": "AC-22"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AC-22d. [at least quarterly]"
+            }
           ]
         }
       ]
@@ -1538,6 +1629,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.1",
               "value": "AT-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AT-1.b.1 [at least every 3 years]\nAT-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -1572,6 +1669,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.2",
               "value": "AT-2"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AT-2. [Assignment: organization-defined frequency] \nParameter: [at least annually]"
             }
           ],
           "components": [
@@ -1638,6 +1741,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.3",
               "value": "AT-3"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AT-3c. [Assignment: organization-defined frequency]\nParameter:  [at least annually]"
+            }
           ]
         },
         {
@@ -1672,6 +1781,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.4",
               "value": "AT-4"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AT-4b. [Assignment: organization-defined frequency]\nParameter:  [At least one years]"
             }
           ]
         }
@@ -1729,6 +1844,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.1",
               "value": "AU-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AU-1.b.1 [at least every 3 years]\nAU-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -1770,6 +1891,12 @@
               "value": "AU-2"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AU-2a.  [Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events.  For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes];\nAU-2d. [organization-defined subset of the auditable events defined in AU-2 a. to be audited continually for each identified event]."
+            }
+          ],
           "components": [
             {
               "title": "Reviews and Updates",
@@ -1803,6 +1930,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.2.3.",
                   "value": "AU-2 (3)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "AU-2 (3). [Assignment: organization-defined frequency] \nParameter: [annually or whenever there is a change in the threat environment] "
+                },
+                {
+                  "class": "remarks",
+                  "value": "Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the Authorizing Official. "
                 }
               ]
             }
@@ -1868,6 +2005,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.3.1.",
                   "value": "AU-3 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "AU-3 (1). [Assignment: organization-defined additional, more detailed information]                                                                            Parameter: [session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon]"
+                },
+                {
+                  "class": "remarks",
+                  "value": "AU-3 (1). Requirement: The service provider defines audit record types.  The audit record types are approved and accepted by the Authorizing Official.\nGuidance: For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry. "
                 }
               ]
             }
@@ -1946,6 +2093,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.5",
               "value": "AU-5"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AU-5b. [Assignment:  Organization-defined actions to be taken] \nParameter: [low-impact: overwrite oldest audit records; moderate-impact: shut down] "
+            }
           ]
         },
         {
@@ -1990,6 +2143,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.6",
               "value": "AU-6"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AU-6a. [Assignment: organization-defined frequency] \nParameter: [at least weekly] "
             }
           ],
           "components": [
@@ -2194,6 +2353,16 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.8.1.",
                   "value": "AU-8 (1)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "AU-8 (1). [http://tf.nist.gov/tf-cgi/servers.cgi] \u003cAt least hourly\u003e"
+                },
+                {
+                  "class": "remarks",
+                  "value": "AU-8 (1). Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.\nRequirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.\nGuidance: Synchronization of system clocks improves the accuracy of log analysis."
+                }
               ]
             }
           ]
@@ -2258,6 +2427,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.9.2.",
                   "value": "AU-9 (2)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "AU-9 (2). [at least weekly] "
                 }
               ]
             },
@@ -2331,6 +2506,16 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.11",
               "value": "AU-11"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AU-11. [at least ninety days] "
+            },
+            {
+              "class": "remarks",
+              "value": "AU-11. Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements. "
+            }
           ]
         },
         {
@@ -2370,6 +2555,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.12",
               "value": "AU-12"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "AU-12a. [all information system and network components where audit capability is deployed/available]"
             }
           ]
         }
@@ -2427,6 +2618,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.1",
               "value": "CA-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CA-1.b.1 [at least every 3 years]\nCA-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -2468,6 +2665,12 @@
               "value": "CA-2"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CA-2b. [at least annually] \nCA-2d[individuals or roles to include FedRAMP PMO]"
+            }
+          ],
           "components": [
             {
               "title": "Independent Assessors",
@@ -2501,6 +2704,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2.1.",
                   "value": "CA-2 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "Added to NIST Baseline for \"Low\" FedRAMP baseline."
+                },
+                {
+                  "class": "remarks",
+                  "value": "For JAB Authorization, must be an accredited 3PAO"
                 }
               ]
             },
@@ -2542,6 +2755,16 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2.2.",
                   "value": "CA-2 (2)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[at least annually]"
+                },
+                {
+                  "class": "remarks",
+                  "value": "Requirement: To include 'announced', 'vulnerability scanning'"
+                }
               ]
             },
             {
@@ -2577,8 +2800,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -2586,6 +2808,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2.3.",
                   "value": "CA-2 (3)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[Any FedRAMP Accredited 3PAO]  [the conditions of a P-ATO in the FedRAMP Repository]"
                 }
               ]
             }
@@ -2625,6 +2853,12 @@
               "value": "CA-3"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CA-3c. 3 Years / Annually and on input from FedRAMP"
+            }
+          ],
           "components": [
             {
               "title": "Unclassified Non-National Security System Connections",
@@ -2654,8 +2888,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -2663,6 +2896,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.3.3.",
                   "value": "CA-3 (3)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "Boundary Protections which meet the Trusted Internet Connection (TIC) requirements"
+                },
+                {
+                  "class": "remarks",
+                  "value": "CA-3(3) Guidance: Refer to Appendix H – Cloud Considerations of the TIC 2.0 Reference Architecture document."
                 }
               ]
             },
@@ -2698,6 +2941,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.3.5.",
                   "value": "CA-3 (5)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing"
                 }
               ]
             }
@@ -2736,6 +2985,16 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.5",
               "value": "CA-5"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CA-5b. [at least monthly]"
+            },
+            {
+              "class": "remarks",
+              "value": "CA-5  Guidance: Requirement: POA\u0026Ms  must be provided at least monthly."
+            }
           ]
         },
         {
@@ -2770,6 +3029,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.6",
               "value": "CA-6"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CA-6c. [at least every three years or when a significant change occurs] "
+            },
+            {
+              "class": "remarks",
+              "value": "CA-6c. Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.  The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture.  The types of changes are approved and accepted by the Authorizing Official."
             }
           ]
         },
@@ -2825,6 +3094,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
               "value": "CA-7"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CA-7d. [To meet Federal and FedRAMP requirements]"
+            },
+            {
+              "class": "remarks",
+              "value": "Operating System Scans: at least monthly\nDatabase and Web Application Scans: at least monthly\nAll scans performed by Independent Assessor: at least annually\nCA-7 Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA\u0026M updates."
             }
           ],
           "components": [
@@ -2904,6 +3183,12 @@
               "value": "CA-8"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "[at least annually]"
+            }
+          ],
           "components": [
             {
               "title": "Independent Penetration Agent or Team",
@@ -2921,8 +3206,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -3024,6 +3308,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.1",
               "value": "CM-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CM-1.b.1 [at least every 3 years]\nCM-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -3091,6 +3381,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.2.1.",
                   "value": "CM-2 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "CM-2 (1) (a). [at least annually]\nCM-2 (1) (b). [to include when directed by Authorizing Official]"
                 }
               ]
             },
@@ -3237,6 +3533,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.3",
               "value": "CM-3"
             }
+          ],
+          "prose": [
+            {
+              "class": "remarks",
+              "value": "Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page).  The means of communication are approved and accepted by the Authorizing Official.\nCM-3e Guidance:  In accordance with record retention policies and procedures."
+            }
           ]
         },
         {
@@ -3356,6 +3658,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.5.3.",
                   "value": "CM-5 (3)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "Guidance: If digital signatures/certificates are unavailable,  alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized."
+                }
               ]
             },
             {
@@ -3381,8 +3689,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -3390,6 +3697,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.5.5.",
                   "value": "CM-5 (5)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "CM-5 (5) (b). [at least quarterly] "
                 }
               ]
             }
@@ -3437,6 +3750,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.6",
               "value": "CM-6"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CM-6a. [See CM-6(a) Additional FedRAMP Requirements and Guidance] "
+            },
+            {
+              "class": "remarks",
+              "value": "CM-6a. Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.\nCM-6a. Requirement: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).\nCM-6a. Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc ."
             }
           ],
           "components": [
@@ -3511,6 +3834,16 @@
               "value": "CM-7"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CM-7. [United States Government Configuration Baseline (USGCB)] "
+            },
+            {
+              "class": "remarks",
+              "value": "Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.\nCM-7. Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc.\n(Partially derived from AC-17(8).)"
+            }
+          ],
           "components": [
             {
               "title": "Periodic Review",
@@ -3550,6 +3883,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.7.1.",
                   "value": "CM-7 (1)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "CM-7(1) [ At least Monthly]"
+                }
               ]
             },
             {
@@ -3584,6 +3923,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.7.2.",
                   "value": "CM-7 (2)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "CM-7(2) Guidance:   This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing).  This control is not to be based off of strictly written policy on what is allowed or not allowed to run.    "
                 }
               ]
             },
@@ -3624,6 +3969,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.7.5.",
                   "value": "CM-7 (5)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "CM-7(5)[ at least Annually or when there is a change.]"
                 }
               ]
             }
@@ -3666,6 +4017,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.8",
               "value": "CM-8"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CM-8b. [at least monthly]"
+            },
+            {
+              "class": "remarks",
+              "value": "CM-8 Requirement: must be provided at least monthly or when there is a change."
             }
           ],
           "components": [
@@ -3734,6 +4095,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.8.3.",
                   "value": "CM-8 (3)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "CM-8 (3) (a). [Continuously, using automated mechanisms with a maximum five-minute delay in detection.] "
                 }
               ]
             },
@@ -3846,8 +4213,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -3902,6 +4268,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.11",
               "value": "CM-11"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CM-11.c. [Continuously (via CM-7 (5))]"
             }
           ]
         }
@@ -3959,6 +4331,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.1",
               "value": "CP-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CP-1.b.1 [at least every 3 years]\nCP-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -4008,6 +4386,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
               "value": "CP-2"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CP-2d. [at least annually]"
+            },
+            {
+              "class": "remarks",
+              "value": "Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel."
             }
           ],
           "components": [
@@ -4170,6 +4558,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.3",
               "value": "CP-3"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CP-3.a. [ 10 days]\nCP-3.c. [at least annually]"
+            }
           ]
         },
         {
@@ -4209,6 +4603,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.4",
               "value": "CP-4"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CP-4a. [at least annually for moderate impact systems; at least every three years for low impact systems] [functional exercises for moderate impact systems; classroom exercises/table top written tests for low impact systems]"
+            },
+            {
+              "class": "remarks",
+              "value": "CP-4a. Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the Authorizing Official prior to initiating testing."
             }
           ],
           "components": [
@@ -4367,6 +4771,12 @@
               "value": "CP-7"
             }
           ],
+          "prose": [
+            {
+              "class": "remarks",
+              "value": "CP-7a. Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis."
+            }
+          ],
           "components": [
             {
               "title": "Separation From Primary Site",
@@ -4393,6 +4803,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.7.1.",
                   "value": "CP-7 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "CP-7(1) Guidance: The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant."
                 }
               ]
             },
@@ -4491,6 +4907,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.8",
               "value": "CP-8"
+            }
+          ],
+          "prose": [
+            {
+              "class": "remarks",
+              "value": "CP-8. Requirement: The service provider defines a time period consistent with the business impact analysis."
             }
           ],
           "components": [
@@ -4596,6 +5018,16 @@
               "value": "CP-9"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "CP-9a. [daily incremental; weekly full]\nCP-9b. [daily incremental; weekly full]\nCP-9c. [daily incremental; weekly full]"
+            },
+            {
+              "class": "remarks",
+              "value": "CP-9. Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control.\nRequirement: The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.\nCP-9a. Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.\nCP-9b. Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.\nCP-9c. Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative."
+            }
+          ],
           "components": [
             {
               "title": "Testing For Reliability / Integrity",
@@ -4629,6 +5061,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.9.1.",
                   "value": "CP-9 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "CP-9 (1). [at least annually]"
                 }
               ]
             },
@@ -4781,6 +5219,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.1",
               "value": "IA-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IA-1.b.1 [at least every 3 years]\nIA-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -4911,8 +5355,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -4984,6 +5427,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.2.11.",
                   "value": "IA-2 (11)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "The information system implements multifactor authentication for remote access to privileged and non-privileged accounts such that one of the factors is provided by a device separate from the system gaining access and the device meets [Assignment: organization-defined strength of mechanism requirements]. "
+                }
               ]
             },
             {
@@ -5011,6 +5460,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.2.12.",
                   "value": "IA-2 (12)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12."
                 }
               ]
             }
@@ -5095,6 +5550,16 @@
               "value": "IA-4"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IA-4d. [at least two years]\nIA-4e. [ninety days for user identifiers] (See additional requirements and guidance.)"
+            },
+            {
+              "class": "remarks",
+              "value": "IA-4e. Requirement: The service provider defines time period of inactivity for device identifiers."
+            }
+          ],
           "components": [
             {
               "title": "Identify User Status",
@@ -5119,8 +5584,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -5128,6 +5592,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.4.4.",
                   "value": "IA-4 (4)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "IA-4 (4). [contractors; foreign nationals] "
                 }
               ]
             }
@@ -5165,6 +5635,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.5",
               "value": "IA-5"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IA-5g. [to include sixty days for passwords]"
             }
           ],
           "components": [
@@ -5215,6 +5691,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.5.1.",
                   "value": "IA-5 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "IA-5 (1) (a). [case sensitive, minimum of twelve characters, and at least one each of upper-case letters, lower-case letters, numbers, and special characters]\nIA-5 (1) (b). [at least one]\nIA-5 (1) (d). [one day minimum, sixty day maximum]\nIA-5 (1) (e). [twenty four]"
                 }
               ]
             },
@@ -5289,6 +5771,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.5.3.",
                   "value": "IA-5 (3)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "IA-5 (3). [All hardware/biometric (multifactor authenticators] [in person]"
+                }
               ]
             },
             {
@@ -5314,8 +5802,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -5323,6 +5810,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.5.4.",
                   "value": "IA-5 (4)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "IA-4e Additional FedRAMP Requirements and Guidance: Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators"
                 }
               ]
             },
@@ -5342,8 +5835,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -5370,8 +5862,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -5678,6 +6169,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.1",
               "value": "IR-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IR-1.b.1 [at least every 3 years]\nIR-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -5718,6 +6215,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.2",
               "value": "IR-2"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IR-2b. [at least annually]"
+            }
           ]
         },
         {
@@ -5757,6 +6260,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.3",
               "value": "IR-3"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IR-3. [at least annually]"
+            },
+            {
+              "class": "remarks",
+              "value": "IR-3. Requirement: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended).\nRequirement: For JAB Authorization, the service provider provides test plans to the Authorizing Official (AO)  annually.\nRequirement: Test plans are approved and accepted by the Authorizing Official prior to test commencing."
             }
           ],
           "components": [
@@ -5815,6 +6328,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
               "value": "IR-4"
+            }
+          ],
+          "prose": [
+            {
+              "class": "remarks",
+              "value": "IR-4/A13. Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system."
             }
           ],
           "components": [
@@ -5913,6 +6432,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.6",
               "value": "IR-6"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IR-6a. [US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)]"
+            },
+            {
+              "class": "remarks",
+              "value": "Requirement: Reports security incident information  according to FedRAMP Incident Communications Procedure."
             }
           ],
           "components": [
@@ -6018,8 +6547,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -6080,6 +6608,16 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
               "value": "IR-8"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "IR-8c. [at least annually]\n"
+            },
+            {
+              "class": "remarks",
+              "value": "IR-8(b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.\nIR-8(e) Additional FedRAMP Requirements and Guidance:  The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel."
+            }
           ]
         },
         {
@@ -6110,8 +6648,7 @@
               "value": "MODERATE"
             },
             {
-              "class": "authority_baselines",
-              "value": ""
+              "class": "authority_baselines"
             }
           ],
           "links": [
@@ -6145,8 +6682,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -6180,8 +6716,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -6215,8 +6750,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -6250,8 +6784,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -6317,6 +6850,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ma.1",
               "value": "MA-1"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "MA-1.b.1 [at least every 3 years]\nMA-1.b.2 [at least annually]"
             }
           ]
         },
@@ -6477,6 +7016,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ma.3.3.",
                   "value": "MA-3 (3)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "MA-3 (3) (d). [the information owner explicitly authorizing removal of the equipment from the facility]"
+                }
               ]
             }
           ]
@@ -6593,6 +7138,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ma.5.1.",
                   "value": "MA-5 (1)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "Requirement: Only MA-5 (1)(a)(1) is required by FedRAMP Moderate Baseline"
+                }
               ]
             }
           ]
@@ -6691,6 +7242,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.1",
               "value": "MP-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "MP-1.b.1 [at least every 3 years]\nMP-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -6771,6 +7328,16 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.3",
               "value": "MP-3"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "MP-3b. [no removable media types]"
+            },
+            {
+              "class": "remarks",
+              "value": "MP-3b. Guidance: Second parameter not-applicable"
+            }
           ]
         },
         {
@@ -6811,6 +7378,16 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.4",
               "value": "MP-4"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "MP-4a. [all types of digital and non-digital media with sensitive information] within [FedRAMP Assignment: see additional FedRAMP requirements and guidance];"
+            },
+            {
+              "class": "remarks",
+              "value": "MP-4a Additional FedRAMP Requirements and Guidance: Requirement: The service provider defines controlled areas within facilities where the information and information system reside."
+            }
           ]
         },
         {
@@ -6850,6 +7427,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.5",
               "value": "MP-5"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "MP-5a. [all media with sensitive information] [prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container]"
             }
           ],
           "components": [
@@ -6922,6 +7505,12 @@
               "value": "MP-6"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "The organization: a.  Sanitizes [Assignment: organization-defined information system media] prior to disposal, release out of organizational control, or release for reuse using [Assignment: organization-defined sanitization techniques and procedures] in accordance with applicable federal and organizational standards and policies; and b.  Employs sanitization mechanisms with the strength and integrity commensurate with the security category or classification of the information. "
+            }
+          ],
           "components": [
             {
               "title": "Equipment Testing",
@@ -6955,6 +7544,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.6.2.",
                   "value": "MP-6 (2)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[At least annually]"
+                },
+                {
+                  "class": "remarks",
+                  "value": "Guidance: Equipment and procedures may be tested or validated for effectiveness"
                 }
               ]
             }
@@ -7089,6 +7688,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.1",
               "value": "PE-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PE-1.b.1 [at least every 3 years]\nPE-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -7123,6 +7728,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.2",
               "value": "PE-2"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PE-2c. [at least annually] "
             }
           ]
         },
@@ -7193,6 +7804,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.3",
               "value": "PE-3"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PE-3a.2 [CSP defined physical access control systems/devices AND guards]\nPE-3d. [in all circumstances within restricted access area where the information system resides]\nPE-3f. [at least annually]\nPE-3g. [at least annually] \n"
             }
           ]
         },
@@ -7303,6 +7920,12 @@
               "value": "PE-6"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PE-6b.[at least monthly]"
+            }
+          ],
           "components": [
             {
               "title": "Intrusion Alarms / Surveillance Equipment",
@@ -7371,6 +7994,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.8",
               "value": "PE-8"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PE-8a [for a minimum of one year]\nPE-8b. [at least monthly]"
             }
           ]
         },
@@ -7625,6 +8254,16 @@
               "value": "PE-14"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PE-14a. [consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments]\nPE-14b. [continuously]"
+            },
+            {
+              "class": "remarks",
+              "value": "PE-14a. Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point."
+            }
+          ],
           "components": [
             {
               "title": "Monitoring With Alarms / Notifications",
@@ -7642,8 +8281,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -7716,6 +8354,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.16",
               "value": "PE-16"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PE-16. [all information system components]"
             }
           ]
         },
@@ -7808,6 +8452,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.1",
               "value": "PL-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PL-1.b.1 [at least every 3 years]\nPL-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -7847,6 +8497,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.2",
               "value": "PL-2"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PL-2c. [at least annually]"
             }
           ],
           "components": [
@@ -7921,6 +8577,12 @@
               "value": "PL-4"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PL-4c. [At least every 3 years]"
+            }
+          ],
           "components": [
             {
               "title": "Social Media and Networking Restrictions",
@@ -7985,6 +8647,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.8",
               "value": "PL-8"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PL-8b. [At least annually]"
+            }
           ]
         }
       ]
@@ -8041,6 +8709,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.1",
               "value": "PS-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PS-1.b.1 [at least every 3 years]\nPS-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -8075,6 +8749,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.2",
               "value": "PS-2"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PS-2c. [at least every three years] "
             }
           ]
         },
@@ -8112,6 +8792,12 @@
               "value": "PS-3"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PS-3b. [for national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance.\nFor moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year.  There is no reinvestigation for other moderate risk positions or any low risk positions]"
+            }
+          ],
           "components": [
             {
               "title": "Information With Special Protection Measures",
@@ -8136,8 +8822,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -8145,6 +8830,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.3.3.",
                   "value": "PS-3 (3)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "PS-3 (3)(b). [personnel screening criteria – as required by specific information]"
                 }
               ]
             }
@@ -8198,6 +8889,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.4",
               "value": "PS-4"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PS-4.a. [same day]"
+            }
           ]
         },
         {
@@ -8248,6 +8945,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.5",
               "value": "PS-5"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PS-5. [within five days of the formal transfer action (DoD 24 hours)]"
+            }
           ]
         },
         {
@@ -8288,6 +8991,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.6",
               "value": "PS-6"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PS-6b. [at least annually]\nPS-6c.2. [at least annually]"
+            }
           ]
         },
         {
@@ -8327,6 +9036,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.7",
               "value": "PS-7"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "PS-7d. organization-defined time period – same day"
             }
           ]
         },
@@ -8424,6 +9139,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.1",
               "value": "RA-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "RA-1.b.1 [at least every 3 years]\nRA-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -8502,6 +9223,16 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
               "value": "RA-3"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "RA-3b. [security assessment report]\nRA-3c. [at least every three years or when a significant change occurs]\nRA-3e. [at least every three years or when a significant change occurs] "
+            },
+            {
+              "class": "remarks",
+              "value": "Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.\nRA-3d. Requirement: to include the Authorizing Official; for JAB authorizations to include FedRAMP"
+            }
           ]
         },
         {
@@ -8546,6 +9277,16 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
               "value": "RA-5"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "RA-5a. [monthly operating system/infrastructure; monthly web applications and databases]\nRA-5d. [high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery]"
+            },
+            {
+              "class": "remarks",
+              "value": "RA-5a. Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.\nRA-5e. Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP"
             }
           ],
           "components": [
@@ -8610,6 +9351,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5.2.",
                   "value": "RA-5 (2)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "RA-5 (2). [prior to a new scan] "
+                }
               ]
             },
             {
@@ -8628,8 +9375,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -8678,6 +9424,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5.5.",
                   "value": "RA-5 (5)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "RA-5 (5). [operating systems / web applications / databases] [all scans]"
+                }
               ]
             },
             {
@@ -8696,8 +9448,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -8705,6 +9456,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5.6.",
                   "value": "RA-5 (6)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "RA-5(6) Guidance: include in Continuous Monitoring ISSO digest/report to Authorizing Official"
                 }
               ]
             },
@@ -8724,8 +9481,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -8733,6 +9489,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5.8.",
                   "value": "RA-5 (8)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "RA-5 (8). Requirements: This enhancement is required for all high vulnerability scan findings. Guidance: While scanning tools may lable findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability."
                 }
               ]
             }
@@ -8791,6 +9553,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.1",
               "value": "SA-1"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SA-1.b.1 [at least every 3 years]\nSA-1.b.2 [at least annually]"
             }
           ]
         },
@@ -8884,6 +9652,12 @@
               "value": "SA-4"
             }
           ],
+          "prose": [
+            {
+              "class": "remarks",
+              "value": "SA-4. Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.\nSee http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html. "
+            }
+          ],
           "components": [
             {
               "title": "Functional Properties of Security Controls",
@@ -8951,6 +9725,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.4.2.",
                   "value": "SA-4 (2)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "[to include security-relevant external system interfaces and high-level design]"
+                }
               ]
             },
             {
@@ -8976,8 +9756,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -8985,6 +9764,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.4.8.",
                   "value": "SA-4 (8)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SA-4 (8). [at least the minimum requirement as defined in control CA-7]"
+                },
+                {
+                  "class": "remarks",
+                  "value": "SA-4 (8) Guidance: CSP must use the same security standards regardless of where the system component or information system service is aquired."
                 }
               ]
             },
@@ -9153,6 +9942,12 @@
               "value": "SA-9"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SA-9a. [FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system]\nSA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored]"
+            }
+          ],
           "components": [
             {
               "title": "Risk Assessments / Organizational Approvals",
@@ -9177,8 +9972,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9186,6 +9980,16 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9.1.",
                   "value": "SA-9 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SA-9 (1) see Additional Requirement and Guidance"
+                },
+                {
+                  "class": "remarks",
+                  "value": "SA-9 (1). Requirement: The service provider documents all existing outsourced security services and conducts a risk assessment of future outsourced security services.  For JAB authorizations, future planned outsourced services are approved and accepted by the JAB."
                 }
               ]
             },
@@ -9222,6 +10026,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9.2.",
                   "value": "SA-9 (2)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SA-9 (2). [All external systems where Federal information is processed, transmitted or stored]"
+                }
               ]
             },
             {
@@ -9252,8 +10062,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9261,6 +10070,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9.4.",
                   "value": "SA-9 (4)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SA-9 (4). [All external systems where Federal information is processed, transmitted or stored]"
                 }
               ]
             },
@@ -9292,8 +10107,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9301,6 +10115,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9.5.",
                   "value": "SA-9 (5)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SA-9 (5). [information processing, transmission, information data, AND information services]"
                 }
               ]
             }
@@ -9345,6 +10165,16 @@
               "value": "SA-10"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SA-10a. [development, implementation, AND operation]"
+            },
+            {
+              "class": "remarks",
+              "value": "SA-10e. Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to  organization-defined personnel, to include FedRAMP."
+            }
+          ],
           "components": [
             {
               "title": "Software / Firmware Integrity Verification",
@@ -9362,8 +10192,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9427,8 +10256,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9436,6 +10264,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.11.1.",
                   "value": "SA-11 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "Requirement: SA-11 (1) or SA-11 (8) or both\nRequirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed. "
                 }
               ]
             },
@@ -9455,8 +10289,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9483,8 +10316,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9492,6 +10324,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.11.8.",
                   "value": "SA-11 (8)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "Requirement: SA-11 (1) or SA-11 (8) or both\nRequirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed. "
                 }
               ]
             }
@@ -9550,6 +10388,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.1",
               "value": "SC-1"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SC-1.b.1 [at least every 3 years]\nSC-1.b.2 [at least annually]"
             }
           ]
         },
@@ -9677,8 +10521,7 @@
               "value": "MODERATE"
             },
             {
-              "class": "authority_baselines",
-              "value": ""
+              "class": "authority_baselines"
             }
           ],
           "links": [
@@ -9777,6 +10620,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.7.4.",
                   "value": "SC-7 (4)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SC-7 (4). [at least annually]"
                 }
               ]
             },
@@ -9904,8 +10753,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9939,8 +10787,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -9948,6 +10795,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.7.13.",
                   "value": "SC-7 (13)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "SC-7 (13). Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets."
                 }
               ]
             },
@@ -10008,6 +10861,12 @@
               "value": "SC-8"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SC-8. [confidentiality AND integrity]"
+            }
+          ],
           "components": [
             {
               "title": "Cryptographic or Alternate Physical Protection",
@@ -10041,6 +10900,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.8.1.",
                   "value": "SC-8 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SC-8 (1). [prevent unauthorized disclosure of information AND detect changes to information] [a hardened or alarmed carrier Protective Distribution System (PDS)]"
                 }
               ]
             }
@@ -10079,6 +10944,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.10",
               "value": "SC-10"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SC-10. [no longer than 30 minutes for RAS-based sessions or no longer than 60 minutes for non-interactive user sessions]"
+            }
           ]
         },
         {
@@ -10115,6 +10986,12 @@
               "value": "SC-12"
             }
           ],
+          "prose": [
+            {
+              "class": "remarks",
+              "value": "SC-12 Guidance:  Federally approved cryptography"
+            }
+          ],
           "components": [
             {
               "title": "Symmetric Keys",
@@ -10132,8 +11009,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -10141,6 +11017,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.12.2.",
                   "value": "SC-12 (2)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SC-12 (2). [NIST FIPS-compliant]"
                 }
               ]
             },
@@ -10160,8 +11042,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -10207,6 +11088,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.13",
               "value": "SC-13"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "[FIPS-validated or NSA-approved cryptography]"
+            }
           ]
         },
         {
@@ -10241,6 +11128,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.15",
               "value": "SC-15"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SC-15a. [no exceptions]"
             }
           ]
         },
@@ -10481,6 +11374,16 @@
               "value": "SC-28"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SC-28. [confidentiality AND integrity]"
+            },
+            {
+              "class": "remarks",
+              "value": "SC-28. Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest. "
+            }
+          ],
           "components": [
             {
               "title": "Cryptographic Protection",
@@ -10510,8 +11413,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -10606,6 +11508,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.1",
               "value": "SI-1"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SI-1.b.1 [at least every 3 years]\nSI-1.b.2 [at least annually]"
+            }
           ]
         },
         {
@@ -10642,6 +11550,12 @@
               "value": "SI-2"
             }
           ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SI-2c. [Within 30 days of release of updates]"
+            }
+          ],
           "components": [
             {
               "title": "Automated Flaw Remediation Status",
@@ -10676,6 +11590,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.2.2.",
                   "value": "SI-2 (2)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SI-2 (2). [at least monthly] "
+                }
               ]
             },
             {
@@ -10701,8 +11621,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -10752,6 +11671,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.3",
               "value": "SI-3"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SI-3.c.1 [at least weekly] [to include endpoints]\nSI-3.c.2 [to include alerting administrator or defined security personnel]"
             }
           ],
           "components": [
@@ -10827,8 +11752,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -10912,8 +11836,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -10985,6 +11908,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4.4.",
                   "value": "SI-4 (4)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SI-4 (4). [continually]"
+                }
               ]
             },
             {
@@ -11025,6 +11954,12 @@
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4.5.",
                   "value": "SI-4 (5)"
                 }
+              ],
+              "prose": [
+                {
+                  "class": "remarks",
+                  "value": "SI-4(5) Guidance:  In accordance with the incident response plan."
+                }
               ]
             },
             {
@@ -11056,8 +11991,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -11096,8 +12030,7 @@
                   "value": "MODERATE"
                 },
                 {
-                  "class": "authority_baselines",
-                  "value": ""
+                  "class": "authority_baselines"
                 }
               ],
               "links": [
@@ -11158,6 +12091,12 @@
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.5",
               "value": "SI-5"
             }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SI-5a. [to include US-CERT]\nSI-5c. [to include system security personnel and administrators with configuration/patch-management responsibilities]"
+            }
           ]
         },
         {
@@ -11212,6 +12151,12 @@
               "rel": "control",
               "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.6",
               "value": "SI-6"
+            }
+          ],
+          "prose": [
+            {
+              "class": "param_assigns",
+              "value": "SI-6b [to include upon system startup and/or restart at least monthly]\nSI-6c [to include system administrators and security personnel]\nSI-6d [to include notification of system administrators and security personnel]\n"
             }
           ]
         },
@@ -11292,6 +12237,12 @@
                   "rel": "subcontrol",
                   "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.7.1.",
                   "value": "SI-7 (1)"
+                }
+              ],
+              "prose": [
+                {
+                  "class": "param_assigns",
+                  "value": "SI-7 (1). [Selection to include security relevant events and at least monthly]"
                 }
               ]
             },
