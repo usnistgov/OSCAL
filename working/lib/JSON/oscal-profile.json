@@ -15,13 +15,14 @@
           "type": "string",
           "description": ""
         },
-        "paramValue": {
-          "type": "string",
-          "description": ""
+        "paramValues": {
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
         }
       },
       "propertyNames": {
-        "enum": [ "id", "class", "value" ]
+        "enum": [ "id", "class", "values" ]
       }
     },
     "call": {
@@ -35,13 +36,13 @@
               "type": "boolean",
               "description": ""
             },
-            "controlID": {
+            "controlId": {
               "type": "string",
               "description": ""
             }
           },
           "propertyNames": {
-            "enum": [ "withSubcontrols", "controlID" ]
+            "enum": [ "withSubcontrols", "controlId" ]
           }
         },
         {
@@ -52,7 +53,7 @@
             }
           },
           "propertyNames": {
-            "enum": [ "subcontrolID" ]
+            "enum": [ "subcontrolId" ]
           }
         }
       ]
@@ -67,7 +68,7 @@
     },
     "framework": {
       "description": "",
-      "$ref": "oscal-profile.json#/definitions/framework"
+      "$ref": "oscal-core.json#/definitions/framework"
     },
     "include": {
       "type": "array",
