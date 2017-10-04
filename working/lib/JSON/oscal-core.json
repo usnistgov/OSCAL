@@ -512,6 +512,10 @@
       "type": "object",
       "description": "",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
         "optionalClass": {
           "type": "string",
           "description": ""
@@ -555,6 +559,7 @@
       },
       "propertyNames": {
         "enum": [
+          "id",
           "class",
           "title",
           "params",
@@ -572,6 +577,10 @@
       "type": "object",
       "description": "",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
         "optionalClass": {
           "type": "string",
           "description": ""
@@ -611,6 +620,7 @@
       },
       "propertyNames": {
         "enum": [
+          "id",
           "class",
           "title",
           "params",
@@ -627,6 +637,10 @@
       "type": "object",
       "description": "",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
         "optionalClass": {
           "type": "string",
           "description": ""
@@ -655,6 +669,7 @@
       },
       "propertyNames": {
         "enum": [
+          "id",
           "class",
           "title",
           "props",
@@ -673,12 +688,16 @@
         },
         "href": {
           "type": "string"
+        },
+        "value": {
+          "type": "string"
         }
       },
       "propertyNames": {
         "enum": [
           "rel",
-          "href"
+          "href",
+          "value"
         ]
       }
     },
@@ -687,6 +706,10 @@
       "type": "object",
       "description": "",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
         "optionalClass": {
           "type": "string",
           "description": ""
@@ -702,6 +725,7 @@
       },
       "propertyNames": {
         "enum": [
+          "id",
           "class",
           "description",
           "value"
@@ -733,22 +757,47 @@
       "$id": "#/definitions/reference",
       "type": "object",
       "description": "Standard: Citation of a formal published standard\n Citation: Citation of a resource",
-      "patternProperties": {
-        "^(citation|standard)$": {
-          "href": {
-            "type": "string",
-            "description": ""
-          },
-          "value": {
-            "type": "string",
-            "description": ""
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "citations": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "href": {
+                "type": "string",
+                "description": ""
+              },
+              "value": {
+                "type": "string",
+                "description": ""
+              }
+            }
+          }
+        },
+        "standards": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "href": {
+                "type": "string",
+                "description": ""
+              },
+              "value": {
+                "type": "string",
+                "description": ""
+              }
+            }
           }
         }
       },
       "propertyNames": {
         "enum": [
-          "citation",
-          "standard"
+          "id",
+          "citations",
+          "standards"
         ]
       }
     },
