@@ -203,7 +203,7 @@
         ]
       }
     },
-    "declaration": {
+    "declarations": {
       "$id": "#/definitions/declaration",
       "type": "object",
       "properties": {
@@ -323,9 +323,8 @@
           "description": ""
         },
         "context": {
-          "type": "array",
-          "description": "",
-          "items": { "type": "string" }
+          "type": "string",
+          "description": ""
         },
         "singleton": {
           "type": "boolean",
@@ -378,38 +377,41 @@
     "value": {
       "$id": "#/definitions/value",
       "description": "",
-      "anyOf": [
-        {
+      "type": "object",
+      "properties": {
+        "inherit": {
           "type": "array",
-          "description": "",
+          "description": "Indicates that a value or text within a value should be inherited from a property on a containing control object",
+          "items": {
+            "type": "object",
+            "description": "",
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            },
+            "propertyNames": {
+              "enum": [ "value" ]
+            }
+          }
+        },
+        "autonum": {
+          "type": "array",
+          "description": "Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)",
           "items": { "type": "string" }
         },
-        {
-          "type": "object",
-          "description": "",
-          "properties": {
-            "inherit": {
-              "type": "boolean",
-              "description": "Indicates that a value or text within a value should be inherited from a property on a containing control object"
-            },
-            "autonum": {
-              "type": "string",
-              "description": "Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)"
-            },
-            "values": {
-              "type": "array",
-              "items": { "type": "string" }
-            }
-          },
-          "propertyNames": {
-            "enum": [
-              "inherit",
-              "autonum",
-              "values"
-            ]
-          }
+        "value": {
+          "type": "string",
+          "description": ""
         }
-      ]
+      },
+      "propertyNames": {
+        "enum": [
+          "inherit",
+          "autonum",
+          "value"
+        ]
+      }
     },
     "section": {
       "$id": "#/definitions/section",
@@ -827,11 +829,8 @@
       "description": ""
     },
     "declarations": {
-      "type": "array",
-      "description": "",
-      "items": {
-        "$ref": "#/definitions/declaration"
-      }
+      "$ref": "#/definitions/declarations",
+      "description": ""
     },
     "framework": {
       "$ref": "#/definitions/framework",
