@@ -13,7 +13,7 @@
         },
         "declarations": {
           "anyOf": [
-            { "$ref": "#/definitions/declaration" },
+            { "$ref": "#/definitions/declarations" },
             {
               "href": {
                 "type": "string",
@@ -69,7 +69,7 @@
         },
         "declarations": {
           "anyOf": [
-            { "$ref": "#/definitions/declaration" },
+            { "$ref": "#/definitions/declarations" },
             {
               "href": {
                 "type": "string",
@@ -204,7 +204,7 @@
       }
     },
     "declarations": {
-      "$id": "#/definitions/declaration",
+      "$id": "#/definitions/declarations",
       "type": "object",
       "properties": {
         "propertyDeclarations": {
