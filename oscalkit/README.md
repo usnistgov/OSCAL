@@ -109,6 +109,14 @@ oscalkit validate -s oscal-core.json fedramp-annotated-wrt-SP800-53catalog.json
 
 `oscalkit` is developed with [Go](https://golang.org/) (1.9+). If you have Docker installed, the included `Makefile` can be used to run tests and compile the application for Linux, macOS and Windows. Otherwise, the native Go toolchain can be used.
 
+### Install dependencies
+
+The [`dep`](https://github.com/golang/dep) dependency management tool is used to vendor the application's dependencies. With [`dep`](https://github.com/golang/dep), you can install the dependencies as follows:
+
+```sh
+dep ensure
+```
+
 ### Compile
 
 ```sh
