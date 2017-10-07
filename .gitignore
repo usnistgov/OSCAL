@@ -13,3 +13,6 @@ vault
 *.test
 *.out
 vendor/
+oscalkit/sample/
+
+.vscode/
