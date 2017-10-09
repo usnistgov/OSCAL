@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path"
@@ -64,13 +65,13 @@ piped/redirected from STDIN.`,
 					outputFile = "stdin.xml"
 				}
 
-				return convert(rawSource, ".xml", outputFile)
+				return convert(os.Stdin, ".xml", outputFile)
 			} else if err = json.Unmarshal(rawSource, &jsons); err == nil {
 				if outputFile == "" {
 					outputFile = "stdin.json"
 				}
 
-				return convert(rawSource, ".json", outputFile)
+				return convert(os.Stdin, ".json", outputFile)
 			}
 
 			return errors.New("File content from STDIN is neither XML nor JSON")
@@ -83,12 +84,7 @@ piped/redirected from STDIN.`,
 			}
 			defer f.Close()
 
-			rawSource, err := ioutil.ReadAll(f)
-			if err != nil {
-				return err
-			}
-
-			return convert(rawSource, path.Ext(sourcePath), sourcePath)
+			return convert(f, path.Ext(sourcePath), sourcePath)
 		}
 
 		return nil
@@ -106,17 +102,17 @@ func writeFile(filePath string, ext string, data []byte) error {
 }
 
 // Need to clean up this function
-func convert(rawSource []byte, sourceFileExt string, sourceFilename string) error {
+func convert(r io.Reader, sourceFileExt string, sourceFilename string) error {
 	switch sourceFileExt {
 	case ".xml":
 		logrus.Debug("Converting XML to JSON")
 
-		oscal, err := oscal.New(rawSource)
+		oscal, err := oscal.New(oscal.Options{Reader: r})
 		if err != nil {
 			return err
 		}
 
-		oscalJSON, err := oscal.RawJSON()
+		oscalJSON, err := oscal.RawJSON(false)
 		if err != nil {
 			return err
 		}

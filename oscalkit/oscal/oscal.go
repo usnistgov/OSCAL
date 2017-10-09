@@ -4,161 +4,59 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"errors"
+	"io"
+	"io/ioutil"
 
-	"github.com/usnistgov/OSCAL/oscalkit/converter"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
-	oscalprofile "github.com/usnistgov/OSCAL/oscalkit/oscal/profile"
-	yaml "gopkg.in/yaml.v2"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/profile"
 )
 
 // OSCAL ...
 type OSCAL interface {
 	Component() string
-	RawJSON() ([]byte, error)
+	RawJSON(prettify bool) ([]byte, error)
 	RawYAML() ([]byte, error)
 	RawXML() ([]byte, error)
 	JSONType() interface{}
 	XMLType() interface{}
 }
 
-type catalog struct {
-	XML  *core.CatalogXML
-	JSON *core.CatalogJSON
-}
-
-type declarations struct {
-	XML  *core.DeclarationsXML
-	JSON *core.DeclarationsJSON
-}
-
-type framework struct {
-	XML  *core.FrameworkXML
-	JSON *core.FrameworkJSON
-}
-
-type profile struct {
-	XML  *oscalprofile.ProfileXML
-	JSON *oscalprofile.ProfileJSON
+// Options ...
+type Options struct {
+	Reader io.Reader
 }
 
 // New ...
-func New(rawOSCAL []byte) (OSCAL, error) {
+func New(options Options) (OSCAL, error) {
 	var err error
 
-	var catalog catalog
-	var declarations declarations
-	var framework framework
-	var profile profile
+	rawOSCAL, err := ioutil.ReadAll(options.Reader)
+	if err != nil {
+		return nil, err
+	}
 
-	if err = xml.Unmarshal(rawOSCAL, &catalog.XML); err == nil {
+	var catalog core.Catalog
+	var declarations core.Declarations
+	var framework core.Framework
+	var oscalprofile profile.Profile
+
+	if err = xml.Unmarshal(rawOSCAL, &catalog.CatalogXML); err == nil {
 		return &catalog, nil
-	} else if err = json.Unmarshal(rawOSCAL, &catalog.JSON); err == nil {
+	} else if err = json.Unmarshal(rawOSCAL, &catalog.CatalogJSON); err == nil {
 		return &catalog, nil
-	} else if err = xml.Unmarshal(rawOSCAL, &declarations.XML); err == nil {
+	} else if err = xml.Unmarshal(rawOSCAL, &declarations.DeclarationsXML); err == nil {
 		return &declarations, nil
-	} else if err = json.Unmarshal(rawOSCAL, &declarations.JSON); err == nil {
+	} else if err = json.Unmarshal(rawOSCAL, &declarations.DeclarationsJSON); err == nil {
 		return &declarations, nil
-	} else if err = xml.Unmarshal(rawOSCAL, &framework.XML); err == nil {
+	} else if err = xml.Unmarshal(rawOSCAL, &framework.FrameworkXML); err == nil {
 		return &framework, nil
-	} else if err = json.Unmarshal(rawOSCAL, &framework.JSON); err == nil {
+	} else if err = json.Unmarshal(rawOSCAL, &framework.FrameworkJSON); err == nil {
 		return &framework, nil
-	} else if err = xml.Unmarshal(rawOSCAL, &profile.XML); err == nil {
-		return &profile, nil
-	} else if err = json.Unmarshal(rawOSCAL, &profile.JSON); err == nil {
-		return &profile, nil
+	} else if err = xml.Unmarshal(rawOSCAL, &oscalprofile.ProfileXML); err == nil {
+		return &oscalprofile, nil
+	} else if err = json.Unmarshal(rawOSCAL, &oscalprofile.ProfileJSON); err == nil {
+		return &oscalprofile, nil
 	}
 
 	return nil, errors.New("Improperly formatted OSCAL")
-}
-
-func (p *profile) Component() string {
-	return "profile"
-}
-func (p *profile) RawJSON() ([]byte, error) {
-	p.JSON = converter.ProfileToJSON(p.XML)
-
-	return json.Marshal(p.JSON)
-}
-func (p *profile) RawYAML() ([]byte, error) {
-	p.JSON = converter.ProfileToJSON(p.XML)
-
-	return yaml.Marshal(p.JSON)
-}
-func (p *profile) RawXML() ([]byte, error) {
-	return nil, nil
-}
-func (p *profile) JSONType() interface{} {
-	return p.JSON
-}
-func (p *profile) XMLType() interface{} {
-	return p.XML
-}
-
-func (c *catalog) Component() string {
-	return "catalog"
-}
-func (c *catalog) RawJSON() ([]byte, error) {
-	c.JSON = converter.CatalogToJSON(c.XML)
-
-	return json.Marshal(c.JSON)
-}
-func (c *catalog) RawYAML() ([]byte, error) {
-	c.JSON = converter.CatalogToJSON(c.XML)
-
-	return yaml.Marshal(c.JSON)
-}
-func (c *catalog) RawXML() ([]byte, error) {
-	return nil, nil
-}
-func (c *catalog) JSONType() interface{} {
-	return c.JSON
-}
-func (c *catalog) XMLType() interface{} {
-	return c.XML
-}
-
-func (d *declarations) Component() string {
-	return "declarations"
-}
-func (d *declarations) RawJSON() ([]byte, error) {
-	d.JSON = converter.DeclarationsToJSON(d.XML)
-
-	return json.Marshal(d.JSON)
-}
-func (d *declarations) RawYAML() ([]byte, error) {
-	d.JSON = converter.DeclarationsToJSON(d.XML)
-
-	return yaml.Marshal(d.JSON)
-}
-func (d *declarations) RawXML() ([]byte, error) {
-	return nil, nil
-}
-func (d *declarations) JSONType() interface{} {
-	return d.JSON
-}
-func (d *declarations) XMLType() interface{} {
-	return d.XML
-}
-
-func (f *framework) Component() string {
-	return "framework"
-}
-func (f *framework) RawJSON() ([]byte, error) {
-	f.JSON = converter.FrameworkToJSON(f.XML)
-
-	return json.Marshal(f.JSON)
-}
-func (f *framework) RawYAML() ([]byte, error) {
-	f.JSON = converter.FrameworkToJSON(f.XML)
-
-	return yaml.Marshal(f.JSON)
-}
-func (f *framework) RawXML() ([]byte, error) {
-	return nil, nil
-}
-func (f *framework) JSONType() interface{} {
-	return f.JSON
-}
-func (f *framework) XMLType() interface{} {
-	return f.XML
 }
