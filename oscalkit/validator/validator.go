@@ -24,8 +24,8 @@ type xmlValidator struct {
 	SchemaFile string
 }
 
-// NewValidator ...
-func NewValidator(schemaFile string) Validator {
+// New ...
+func New(schemaFile string) Validator {
 	switch filepath.Ext(schemaFile) {
 	case ".json":
 		return jsonValidator{SchemaFile: schemaFile}

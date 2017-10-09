@@ -1,13 +1,10 @@
 package converter
 
-import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
-)
+import "github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 
 // ParamToJSON ...
-func ParamToJSON(param xmltypes.CoreParam) jsontypes.CoreParam {
-	return jsontypes.CoreParam{
+func ParamToJSON(param core.ParamXML) core.ParamJSON {
+	return core.ParamJSON{
 		ID:            param.ID,
 		OptionalClass: param.OptionalClass,
 		Description:   param.Desc,

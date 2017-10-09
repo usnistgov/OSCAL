@@ -1,21 +1,20 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // GroupToJSON ...
-func GroupToJSON(group xmltypes.Group) jsontypes.Group {
-	groupJSON := jsontypes.Group{
+func GroupToJSON(group core.GroupXML) core.GroupJSON {
+	groupJSON := core.GroupJSON{
 		ID:            group.ID,
 		OptionalClass: group.OptionalClass,
 		Title:         group.Title,
-		Props:         make([]jsontypes.Prop, len(group.Prop)),
-		Parts:         make([]jsontypes.Part, len(group.Part)),
-		Prose:         make([]jsontypes.Prose, len(group.P)),
-		Groups:        make([]jsontypes.Group, len(group.Group)),
-		Controls:      make([]jsontypes.Control, len(group.Control)),
+		Props:         make([]core.PropJSON, len(group.Prop)),
+		Parts:         make([]core.PartJSON, len(group.Part)),
+		Prose:         make([]core.ProseJSON, len(group.P)),
+		Groups:        make([]core.GroupJSON, len(group.Group)),
+		Controls:      make([]core.ControlJSON, len(group.Control)),
 		References:    ReferencesToJSON(group.References),
 	}
 

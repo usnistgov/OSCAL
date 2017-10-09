@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestNewOSCAL(t *testing.T) {
+func TestOSCAL(t *testing.T) {
 	type args struct {
 		rawOSCAL []byte
 	}
@@ -28,7 +28,7 @@ func TestNewOSCAL(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := NewOSCAL(tt.args.rawOSCAL)
+			got, err := New(tt.args.rawOSCAL)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("NewOSCAL() error = %v, wantErr %v", err, tt.wantErr)
 				return

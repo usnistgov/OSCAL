@@ -1,11 +1,8 @@
 package converter
 
-import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
-)
+import "github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 
 // PropToJSON ...
-func PropToJSON(prop xmltypes.Prop) jsontypes.Prop {
-	return jsontypes.Prop(prop)
+func PropToJSON(prop core.PropXML) core.PropJSON {
+	return core.PropJSON(prop)
 }

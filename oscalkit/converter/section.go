@@ -1,19 +1,18 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // SectionToJSON ...
-func SectionToJSON(section xmltypes.Section) jsontypes.Section {
-	sectionJSON := jsontypes.Section{
+func SectionToJSON(section core.SectionXML) core.SectionJSON {
+	sectionJSON := core.SectionJSON{
 		ID:            section.ID,
 		OptionalClass: section.OptionalClass,
 		Title:         section.Title,
-		Prose:         make([]jsontypes.Prose, len(section.P)),
-		Sections:      make([]jsontypes.Section, len(section.Section)),
-		Groups:        make([]jsontypes.Group, len(section.Group)),
+		Prose:         make([]core.ProseJSON, len(section.P)),
+		Sections:      make([]core.SectionJSON, len(section.Section)),
+		Groups:        make([]core.GroupJSON, len(section.Group)),
 		References:    ReferencesToJSON(section.References),
 	}
 

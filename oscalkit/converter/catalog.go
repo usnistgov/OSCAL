@@ -1,22 +1,21 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // CatalogToJSON ...
-func CatalogToJSON(catalog *xmltypes.Catalog) *jsontypes.Catalog {
+func CatalogToJSON(catalog *core.CatalogXML) *core.CatalogJSON {
 	if catalog == nil {
 		return nil
 	}
 
-	catalogJSON := &jsontypes.Catalog{
+	catalogJSON := &core.CatalogJSON{
 		Title:        catalog.Title,
 		Declarations: DeclarationsToJSON(catalog.Declarations),
-		Sections:     make([]jsontypes.Section, len(catalog.Section)),
-		Groups:       make([]jsontypes.Group, len(catalog.Group)),
-		Controls:     make([]jsontypes.Control, len(catalog.Control)),
+		Sections:     make([]core.SectionJSON, len(catalog.Section)),
+		Groups:       make([]core.GroupJSON, len(catalog.Group)),
+		Controls:     make([]core.ControlJSON, len(catalog.Control)),
 		References:   ReferencesToJSON(catalog.References),
 	}
 

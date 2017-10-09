@@ -1,22 +1,21 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // ControlToJSON ...
-func ControlToJSON(control xmltypes.Control) jsontypes.Control {
-	controlJSON := jsontypes.Control{
+func ControlToJSON(control core.ControlXML) core.ControlJSON {
+	controlJSON := core.ControlJSON{
 		ID:            control.ID,
 		OptionalClass: control.OptionalClass,
 		Title:         control.Title,
-		Params:        make([]jsontypes.CoreParam, len(control.Param)),
-		Props:         make([]jsontypes.Prop, len(control.Prop)),
-		Parts:         make([]jsontypes.Part, len(control.Part)),
-		Links:         make([]jsontypes.Link, len(control.Link)),
-		Prose:         make([]jsontypes.Prose, len(control.P)),
-		Subcontrols:   make([]jsontypes.Subcontrol, len(control.Subcontrol)),
+		Params:        make([]core.ParamJSON, len(control.Param)),
+		Props:         make([]core.PropJSON, len(control.Prop)),
+		Parts:         make([]core.PartJSON, len(control.Part)),
+		Links:         make([]core.LinkJSON, len(control.Link)),
+		Prose:         make([]core.ProseJSON, len(control.P)),
+		Subcontrols:   make([]core.SubcontrolJSON, len(control.Subcontrol)),
 		References:    ReferencesToJSON(control.References),
 	}
 

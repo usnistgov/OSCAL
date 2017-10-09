@@ -1,11 +1,8 @@
 package converter
 
-import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
-)
+import "github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 
 // LinkToJSON ...
-func LinkToJSON(link xmltypes.Link) jsontypes.Link {
-	return jsontypes.Link(link)
+func LinkToJSON(link core.LinkXML) core.LinkJSON {
+	return core.LinkJSON(link)
 }

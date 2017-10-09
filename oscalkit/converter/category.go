@@ -1,21 +1,20 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // CategoryToJSON ...
-func CategoryToJSON(category xmltypes.Category) jsontypes.Category {
-	categoryJSON := jsontypes.Category{
+func CategoryToJSON(category core.CategoryXML) core.CategoryJSON {
+	categoryJSON := core.CategoryJSON{
 		ID:            category.ID,
 		OptionalClass: category.OptionalClass,
 		Title:         category.Title,
-		Props:         make([]jsontypes.Prop, len(category.Prop)),
-		Links:         make([]jsontypes.Link, len(category.Link)),
-		Prose:         make([]jsontypes.Prose, len(category.P)),
-		Categories:    make([]jsontypes.Category, len(category.Category)),
-		Items:         make([]jsontypes.Item, len(category.Item)),
+		Props:         make([]core.PropJSON, len(category.Prop)),
+		Links:         make([]core.LinkJSON, len(category.Link)),
+		Prose:         make([]core.ProseJSON, len(category.P)),
+		Categories:    make([]core.CategoryJSON, len(category.Category)),
+		Items:         make([]core.ItemJSON, len(category.Item)),
 	}
 
 	for i, p := range category.Prop {

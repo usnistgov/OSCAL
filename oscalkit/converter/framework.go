@@ -1,24 +1,23 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // FrameworkToJSON ...
-func FrameworkToJSON(framework *xmltypes.Framework) *jsontypes.Framework {
+func FrameworkToJSON(framework *core.FrameworkXML) *core.FrameworkJSON {
 	if framework == nil {
 		return nil
 	}
 
-	frameworkJSON := &jsontypes.Framework{
+	frameworkJSON := &core.FrameworkJSON{
 		ID:            framework.ID,
 		OptionalClass: framework.OptionalClass,
 		Title:         framework.Title,
 		Declarations:  DeclarationsToJSON(framework.Declarations),
-		Sections:      make([]jsontypes.Section, len(framework.Section)),
-		Categories:    make([]jsontypes.Category, len(framework.Category)),
-		Items:         make([]jsontypes.Item, len(framework.Item)),
+		Sections:      make([]core.SectionJSON, len(framework.Section)),
+		Categories:    make([]core.CategoryJSON, len(framework.Category)),
+		Items:         make([]core.ItemJSON, len(framework.Item)),
 		References:    ReferencesToJSON(framework.References),
 	}
 

@@ -1,37 +1,30 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // ReferencesToJSON ...
-func ReferencesToJSON(references *xmltypes.References) []jsontypes.Reference {
+func ReferencesToJSON(references *core.ReferencesXML) []core.ReferenceJSON {
 	if references == nil {
 		return nil
 	}
 
-	referencesJSON := make([]jsontypes.Reference, len(references.Ref))
+	referencesJSON := make([]core.ReferenceJSON, len(references.Ref))
 
 	for r, ref := range references.Ref {
-		referencesJSON[r] = jsontypes.Reference{
+		referencesJSON[r] = core.ReferenceJSON{
 			ID:        ref.ID,
-			Standards: make([]jsontypes.Standard, len(ref.Std)),
-			Citations: make([]jsontypes.Citation, len(ref.Citation)),
+			Standards: make([]core.StandardJSON, len(ref.Std)),
+			Citations: make([]core.CitationJSON, len(ref.Citation)),
 		}
 
 		for s, standard := range ref.Std {
-			referencesJSON[r].Standards[s] = jsontypes.Standard{
-				Href:  standard.Href,
-				Value: standard.Value,
-			}
+			referencesJSON[r].Standards[s] = core.StandardJSON(standard)
 		}
 
 		for c, citation := range ref.Citation {
-			referencesJSON[r].Citations[c] = jsontypes.Citation{
-				Href:  citation.Href,
-				Value: citation.Value,
-			}
+			referencesJSON[r].Citations[c] = core.CitationJSON(citation)
 		}
 	}
 

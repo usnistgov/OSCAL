@@ -111,7 +111,7 @@ func convert(rawSource []byte, sourceFileExt string, sourceFilename string) erro
 	case ".xml":
 		logrus.Debug("Converting XML to JSON")
 
-		oscal, err := oscal.NewOSCAL(rawSource)
+		oscal, err := oscal.New(rawSource)
 		if err != nil {
 			return err
 		}
@@ -120,6 +120,12 @@ func convert(rawSource []byte, sourceFileExt string, sourceFilename string) erro
 		if err != nil {
 			return err
 		}
+
+		if err := writeFile(sourceFilename, ".json", oscalJSON); err != nil {
+			return err
+		}
+
+		logrus.Infof("XML file %s successfully converted to JSON", sourceFilename)
 
 		if yaml {
 			oscalYAML, err := oscal.RawYAML()
@@ -130,13 +136,9 @@ func convert(rawSource []byte, sourceFileExt string, sourceFilename string) erro
 			if err := writeFile(sourceFilename, ".yml", oscalYAML); err != nil {
 				return err
 			}
-		}
 
-		if err := writeFile(sourceFilename, ".json", oscalJSON); err != nil {
-			return err
+			logrus.Infof("XML file %s successfully converted to YAML", sourceFilename)
 		}
-
-		logrus.Debug("XML converted successfully")
 
 	default:
 		return fmt.Errorf("Source file extension %s is not a supported extension", sourceFileExt)

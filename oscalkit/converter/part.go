@@ -1,21 +1,20 @@
 package converter
 
 import (
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 )
 
 // PartToJSON ...
-func PartToJSON(part xmltypes.Part) jsontypes.Part {
-	partJSON := jsontypes.Part{
+func PartToJSON(part core.PartXML) core.PartJSON {
+	partJSON := core.PartJSON{
 		ID:            part.ID,
 		OptionalClass: part.OptionalClass,
 		Title:         part.Title,
-		Params:        make([]jsontypes.CoreParam, len(part.Param)),
-		Props:         make([]jsontypes.Prop, len(part.Prop)),
-		Parts:         make([]jsontypes.Part, len(part.Part)),
-		Links:         make([]jsontypes.Link, len(part.Link)),
-		Prose:         make([]jsontypes.Prose, len(part.P)),
+		Params:        make([]core.ParamJSON, len(part.Param)),
+		Props:         make([]core.PropJSON, len(part.Prop)),
+		Parts:         make([]core.PartJSON, len(part.Part)),
+		Links:         make([]core.LinkJSON, len(part.Link)),
+		Prose:         make([]core.ProseJSON, len(part.P)),
 	}
 
 	for i, p := range part.Param {

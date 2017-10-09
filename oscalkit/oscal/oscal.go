@@ -6,8 +6,8 @@ import (
 	"errors"
 
 	"github.com/usnistgov/OSCAL/oscalkit/converter"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/xmltypes"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
+	oscalprofile "github.com/usnistgov/OSCAL/oscalkit/oscal/profile"
 	yaml "gopkg.in/yaml.v2"
 )
 
@@ -22,27 +22,27 @@ type OSCAL interface {
 }
 
 type catalog struct {
-	XML  *xmltypes.Catalog
-	JSON *jsontypes.Catalog
+	XML  *core.CatalogXML
+	JSON *core.CatalogJSON
 }
 
 type declarations struct {
-	XML  *xmltypes.Declarations
-	JSON *jsontypes.Declarations
+	XML  *core.DeclarationsXML
+	JSON *core.DeclarationsJSON
 }
 
 type framework struct {
-	XML  *xmltypes.Framework
-	JSON *jsontypes.Framework
+	XML  *core.FrameworkXML
+	JSON *core.FrameworkJSON
 }
 
 type profile struct {
-	XML  *xmltypes.Profile
-	JSON *jsontypes.Profile
+	XML  *oscalprofile.ProfileXML
+	JSON *oscalprofile.ProfileJSON
 }
 
-// NewOSCAL ...
-func NewOSCAL(rawOSCAL []byte) (OSCAL, error) {
+// New ...
+func New(rawOSCAL []byte) (OSCAL, error) {
 	var err error
 
 	var catalog catalog

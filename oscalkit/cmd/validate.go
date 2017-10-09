@@ -33,7 +33,7 @@ var validateCmd = &cobra.Command{
 		return nil
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		schemaValidator := validator.NewValidator(schemaFile)
+		schemaValidator := validator.New(schemaFile)
 
 		if err := schemaValidator.Validate(args...); err != nil {
 			logrus.Error(err)
