@@ -3,7 +3,7 @@ package oscal
 import (
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
+	"errors"
 
 	"github.com/usnistgov/OSCAL/oscalkit/converter"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal/jsontypes"
@@ -68,7 +68,7 @@ func NewOSCAL(rawOSCAL []byte) (OSCAL, error) {
 		return &profile, nil
 	}
 
-	return nil, fmt.Errorf("Error unmarshaling rawOSCAL: %v", err)
+	return nil, errors.New("Improperly formatted OSCAL")
 }
 
 func (p *profile) Component() string {
