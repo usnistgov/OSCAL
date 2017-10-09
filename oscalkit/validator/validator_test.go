@@ -16,6 +16,7 @@ func TestNew(t *testing.T) {
 	}{
 		{"newXMLValidator", args{"test.xsd"}, xmlValidator{"test.xsd"}},
 		{"newJSONValidator", args{"test.json"}, jsonValidator{"test.json"}},
+		{"nilValidator", args{"test.nil"}, nil},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -40,15 +41,27 @@ func TestJSONValidate(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:    "successfulJSONValidation",
+			name:    "successful-validation",
 			fields:  fields{"../sample/oscal-profile.json"},
 			args:    args{[]string{"../sample/fedramp-simple-profile.json"}},
 			wantErr: false,
 		},
 		{
-			name:    "failedJSONValidation",
+			name:    "failed-validation-non-existent-schema-file",
 			fields:  fields{"../sample/oscal-profile.failed"},
 			args:    args{[]string{"../sample/fedramp-simple-profile.failed"}},
+			wantErr: true,
+		},
+		{
+			name:    "failed-validation-non-existent-file",
+			fields:  fields{"../sample/oscal-profile.json"},
+			args:    args{[]string{"../sample/fedramp-simple-profile.failed"}},
+			wantErr: true,
+		},
+		{
+			name:    "failed-validation-not-oscal-formatted",
+			fields:  fields{"../sample/oscal-profile.json"},
+			args:    args{[]string{"../sample/notoscal.json"}},
 			wantErr: true,
 		},
 	}
@@ -78,13 +91,13 @@ func TestXMLValidate(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:    "successfulXMLValidation",
+			name:    "successful-validation",
 			fields:  fields{"../sample/oscal-profile.xsd"},
 			args:    args{[]string{"../sample/fedramp-simple-profile.xml"}},
 			wantErr: false,
 		},
 		{
-			name:    "failedXMLValidation",
+			name:    "failed-validation",
 			fields:  fields{"../sample/oscal-profile.failed"},
 			args:    args{[]string{"../sample/fedramp-simple-profile.failed"}},
 			wantErr: true,
