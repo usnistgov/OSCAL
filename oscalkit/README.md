@@ -10,7 +10,7 @@ You can download the appropriate oscalkit command-line utility for your system f
 
 Windows:
 
-> XML Validation requires the `xmllint` tool which is not included with Windows. Installation instructions can be found [here](https://stackoverflow.com/a/21227833).
+> XML validation requires the `xmllint` tool which is not included with Windows. Installation instructions can be found [here](https://stackoverflow.com/a/21227833).
 
 ```powershell
 # Run the following commands in a PowerShell console

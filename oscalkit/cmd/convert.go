@@ -28,16 +28,18 @@ one or more source file paths and can also be used with source file contents
 piped/redirected from STDIN.`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
+			// Check for stdin
 			stat, _ := os.Stdin.Stat()
 			if (stat.Mode() & os.ModeCharDevice) == 0 {
 				return nil
 			}
 
-			return errors.New("Must specify at least one argument")
+			return errors.New("oscalkit convert requires at least one argument")
 		}
 
 		if len(args) > 1 {
 			for _, arg := range args {
+				// Prevent the use of both stdin and specific source files
 				if arg == "-" {
 					return errors.New("Cannot use both file path and '-' (STDIN) in args")
 				}
@@ -51,6 +53,7 @@ piped/redirected from STDIN.`,
 		return nil
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
+		// Parse stdin via pipe or redirection
 		if len(args) <= 0 || args[0] == "-" {
 			rawSource, err := ioutil.ReadAll(os.Stdin)
 			if err != nil {
@@ -77,6 +80,7 @@ piped/redirected from STDIN.`,
 			return errors.New("File content from STDIN is neither XML nor JSON")
 		}
 
+		// Convert each source file
 		for _, sourcePath := range args {
 			f, err := os.Open(sourcePath)
 			if err != nil {

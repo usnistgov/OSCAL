@@ -24,7 +24,7 @@ type xmlValidator struct {
 	SchemaFile string
 }
 
-// New ...
+// New creates a Validator based on the specified schema file
 func New(schemaFile string) Validator {
 	switch filepath.Ext(schemaFile) {
 	case ".json":
@@ -58,14 +58,14 @@ func (j jsonValidator) Validate(file ...string) error {
 			return err
 		}
 
-		logrus.Debugf("%s is valid", f)
+		logrus.Debugf("%s is valid against JSON schema %s", f, j.SchemaFile)
 	}
 
 	return nil
 }
 
 // Validate validates one or more XML files against a specific
-// XML schema (.xsd). Requires `xmllint` CLI
+// XML schema (.xsd). Wrapper around `xmllint`
 func (x xmlValidator) Validate(file ...string) error {
 	for _, f := range file {
 		rawFile, err := os.Open(f)
@@ -86,7 +86,7 @@ func (x xmlValidator) Validate(file ...string) error {
 			continue
 		}
 
-		logrus.Infof("%s is valid", f)
+		logrus.Infof("%s is valid against XML schema %s", f, x.SchemaFile)
 	}
 
 	return nil

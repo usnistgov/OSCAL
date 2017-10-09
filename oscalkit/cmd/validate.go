@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	"errors"
 	"path/filepath"
 
 	"github.com/Sirupsen/logrus"
@@ -14,19 +14,27 @@ var schemaFile string
 var validateCmd = &cobra.Command{
 	Use:   "validate [file ...]",
 	Short: "Validate files against OSCAL XML or JSON schemas",
-	Args:  cobra.MinimumNArgs(1),
+	Long: `Validate OSCAL-formatted XML files against a specific XML schema (.xsd)
+or OSCAL-formatted JSON files against a specific JSON schema`,
+	Args: func(cmd *cobra.Command, args []string) error {
+		if len(args) < 1 {
+			return errors.New("oscalkit validate requires at least one argument")
+		}
+
+		return nil
+	},
 	PreRunE: func(cmd *cobra.Command, args []string) error {
 		if schemaFile == "" {
-			return fmt.Errorf("missing schema file (-s) flag")
+			return errors.New("missing schema file (-s) flag")
 		}
 
 		for _, f := range args {
 			if filepath.Ext(f) == ".xml" && filepath.Ext(schemaFile) != ".xsd" {
-				return fmt.Errorf("Schema file should be .xsd")
+				return errors.New("Schema file should be .xsd")
 			}
 
 			if filepath.Ext(f) == ".json" && filepath.Ext(schemaFile) != ".json" {
-				return fmt.Errorf("Schema file should be .json")
+				return errors.New("Schema file should be .json")
 			}
 		}
 
