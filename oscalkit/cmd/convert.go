@@ -151,6 +151,6 @@ func convert(r io.Reader, sourceFileExt string, sourceFilename string) error {
 
 func init() {
 	convertCmd.Flags().StringVarP(&outputPath, "output-path", "p", "", "Output path for converted file(s). Defaults to current working directory")
-	convertCmd.Flags().StringVarP(&outputFile, "output-file", "o", "", "File name for converted output from STDIN")
+	convertCmd.Flags().StringVarP(&outputFile, "output-file", "o", "", "File name for converted output from STDIN. Defaults to stdin.<json|xml|yml>")
 	convertCmd.Flags().BoolVarP(&yaml, "yaml", "y", false, "If source file is XML or JSON, also generate YAML output")
 }
