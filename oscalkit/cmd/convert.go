@@ -21,11 +21,13 @@ var outputFile string
 var yaml bool
 
 var convertCmd = &cobra.Command{
-	Use:   "convert [source-files...]|-",
+	Use:   "convert [OPTIONS] [source-files...]|-",
 	Short: "Convert between one or more OSCAL XML and JSON files or from STDIN",
 	Long: `Convert between OSCAL-formatted XML and JSON files. The command accepts
 one or more source file paths and can also be used with source file contents
 piped/redirected from STDIN.`,
+	Example: `  oscalkit convert oscal-catalog.xml
+  cat oscal-catalog.xml | oscalkit convert -`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
 			// Check for stdin

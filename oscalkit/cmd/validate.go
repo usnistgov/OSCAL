@@ -12,10 +12,12 @@ import (
 var schemaFile string
 
 var validateCmd = &cobra.Command{
-	Use:   "validate [file ...]",
+	Use:   "validate [OPTIONS] [file ...]",
 	Short: "Validate files against OSCAL XML or JSON schemas",
 	Long: `Validate OSCAL-formatted XML files against a specific XML schema (.xsd)
 or OSCAL-formatted JSON files against a specific JSON schema`,
+	Example: `  oscalkit validate -s oscal-core.xsd oscal-catalog.xml
+  oscalkit validate -s oscal-core.json oscal-catalog.json`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
 			return errors.New("oscalkit validate requires at least one argument")

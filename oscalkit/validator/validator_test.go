@@ -42,26 +42,26 @@ func TestJSONValidate(t *testing.T) {
 	}{
 		{
 			name:    "successful-validation",
-			fields:  fields{"../sample/oscal-profile.json"},
-			args:    args{[]string{"../sample/fedramp-simple-profile.json"}},
+			fields:  fields{"../testdata/oscal-profile.json"},
+			args:    args{[]string{"../testdata/fedramp-simple-profile.json"}},
 			wantErr: false,
 		},
 		{
 			name:    "failed-validation-non-existent-schema-file",
-			fields:  fields{"../sample/oscal-profile.failed"},
-			args:    args{[]string{"../sample/fedramp-simple-profile.failed"}},
+			fields:  fields{"../testdata/oscal-profile.failed"},
+			args:    args{[]string{"../testdata/fedramp-simple-profile.failed"}},
 			wantErr: true,
 		},
 		{
 			name:    "failed-validation-non-existent-file",
-			fields:  fields{"../sample/oscal-profile.json"},
-			args:    args{[]string{"../sample/fedramp-simple-profile.failed"}},
+			fields:  fields{"../testdata/oscal-profile.json"},
+			args:    args{[]string{"../testdata/fedramp-simple-profile.failed"}},
 			wantErr: true,
 		},
 		{
 			name:    "failed-validation-not-oscal-formatted",
-			fields:  fields{"../sample/oscal-profile.json"},
-			args:    args{[]string{"../sample/notoscal.json"}},
+			fields:  fields{"../testdata/oscal-profile.json"},
+			args:    args{[]string{"../testdata/notoscal.json"}},
 			wantErr: true,
 		},
 	}
@@ -92,14 +92,14 @@ func TestXMLValidate(t *testing.T) {
 	}{
 		{
 			name:    "successful-validation",
-			fields:  fields{"../sample/oscal-profile.xsd"},
-			args:    args{[]string{"../sample/fedramp-simple-profile.xml"}},
+			fields:  fields{"../testdata/oscal-profile.xsd"},
+			args:    args{[]string{"../testdata/fedramp-simple-profile.xml"}},
 			wantErr: false,
 		},
 		{
 			name:    "failed-validation",
-			fields:  fields{"../sample/oscal-profile.failed"},
-			args:    args{[]string{"../sample/fedramp-simple-profile.failed"}},
+			fields:  fields{"../testdata/oscal-profile.failed"},
+			args:    args{[]string{"../testdata/fedramp-simple-profile.failed"}},
 			wantErr: true,
 		},
 	}
