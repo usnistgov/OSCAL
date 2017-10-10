@@ -31,10 +31,10 @@ func customUseLine(c *cobra.Command) string {
 
 var usageTemplate = `
 Usage: {{if .Runnable}}{{customUseLine .}}{{end}}{{if .HasAvailableSubCommands}}
-	{{.CommandPath}} [command]{{end}}{{if gt (len .Aliases) 0}}
+  {{.CommandPath}} [command]{{end}}{{if gt (len .Aliases) 0}}
 
 Aliases:
-	{{.NameAndAliases}}{{end}}
+  {{.NameAndAliases}}{{end}}
 
 {{.Short}}{{if .HasExample}}
 

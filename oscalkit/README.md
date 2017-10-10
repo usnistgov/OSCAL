@@ -37,17 +37,17 @@ docker pull usnistgov/oscalkit:latest
 ## Usage
 
 ```
-OSCAL toolkit
-
-Usage:
+Usage: 
   oscalkit [command]
 
-Available Commands:
-  convert     Convert between OSCAL XML and JSON
-  help        Help about any command
-  validate    Validate against OSCAL XML or JSON schemas
+OSCAL toolkit
 
-Flags:
+Available Commands:
+  convert     Convert between one or more OSCAL XML and JSON files or from STDIN
+  help        Help about any command
+  validate    Validate files against OSCAL XML or JSON schemas
+
+Options:
   -d, --debug   enable verbose logging
   -h, --help    help for oscalkit
 
@@ -59,17 +59,21 @@ Use "oscalkit [command] --help" for more information about a command.
 `oscalkit` can be used to convert one or more source files between OSCAL-formatted XML and JSON.
 
 ```
-Convert between OSCAL XML and JSON
+Usage: convert [OPTIONS] [source-files...]|-
 
-Usage:
-  oscalkit convert [source-files...] [flags]
+Convert between one or more OSCAL XML and JSON files or from STDIN
 
-Flags:
-  -h, --help                help for convert
-  -o, --outputPath string   Output path for JSON file(s). Defaults to current directory
-  -y, --yaml                If source file is XML or JSON, also generate YAML output
+Examples:
+  oscalkit convert oscal-catalog.xml
+  cat oscal-catalog.xml | oscalkit convert -
 
-Global Flags:
+Options:
+  -h, --help                 help for convert
+  -o, --output-file string   File name for converted output from STDIN
+  -p, --output-path string   Output path for converted file(s). Defaults to current working directory
+  -y, --yaml                 If source file is XML or JSON, also generate YAML output
+
+Global Options:
   -d, --debug   enable verbose logging
 ```
 
@@ -86,14 +90,19 @@ oscalkit convert SP800-53-declarations.xml
 The tool supports validation of OSCAL-formatted XML and JSON files against the corresponding OSCAL XML schemas (.xsd) and JSON schemas. XML schema validation requires the `xmllint` tool on the local machine (included with macOS and Linux. Windows installation instructions [here](https://stackoverflow.com/a/21227833))
 
 ```
-Usage:
-  oscalkit validate [file ...] [flags]
+Usage: validate [OPTIONS] [file ...]
 
-Flags:
+Validate files against OSCAL XML or JSON schemas
+
+Examples:
+  oscalkit validate -s oscal-core.xsd oscal-catalog.xml
+  oscalkit validate -s oscal-core.json oscal-catalog.json
+
+Options:
   -h, --help            help for validate
   -s, --schema string   Schema file to validate against
 
-Global Flags:
+Global Options:
   -d, --debug   enable verbose logging
 ```
 
