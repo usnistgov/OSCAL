@@ -30,8 +30,15 @@ export PATH
 
 Docker:
 
+> Running the oscalkit Docker container requires either bind-mounting the directory containing your source files or passing file contents in to the command via stdin.
+
 ```sh
 docker pull usnistgov/oscalkit:latest
+docker run -it --rm -v $PWD:/data -w /data usnistgov/oscalkit convert oscal-core.xml
+
+# or via stdin
+
+docker run -it --rm usnistgov/osaclkit convert < oscal-core.xml
 ```
 
 ## Usage
@@ -85,6 +92,12 @@ Convert OSCAL-formatted NIST 800-53 declarations from XML to JSON:
 oscalkit convert SP800-53-declarations.xml
 ```
 
+Convert OSCAL-formatted NIST 800-53 declarations from XML to JSON via STDIN:
+
+```sh
+cat SP800-53-declarations.xml | oscalkit convert -
+```
+
 ### Validate against XML and JSON schemas
 
 The tool supports validation of OSCAL-formatted XML and JSON files against the corresponding OSCAL XML schemas (.xsd) and JSON schemas. XML schema validation requires the `xmllint` tool on the local machine (included with macOS and Linux. Windows installation instructions [here](https://stackoverflow.com/a/21227833))
@@ -127,6 +140,8 @@ dep ensure
 ```
 
 ### Compile
+
+Before compiling, make sure you've installed the dependencies as explained above.
 
 ```sh
 # Compile for Linux
