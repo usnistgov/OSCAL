@@ -1,9 +1,20 @@
 package validator
 
 import (
+	"errors"
 	"reflect"
 	"testing"
 )
+
+type mockValidator struct{}
+
+func (m mockValidator) Validate(files ...string) error {
+	if len(files) <= 0 {
+		return errors.New("No files to validate")
+	}
+
+	return nil
+}
 
 func TestNew(t *testing.T) {
 	type args struct {
@@ -25,6 +36,30 @@ func TestNew(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestValidator(t *testing.T) {
+	type args struct {
+		files []string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		{"validation succeeded", args{[]string{""}}, false},
+		{"validation failed", args{}, true},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			mock := mockValidator{}
+			if err := mock.Validate(tt.args.files...); (err != nil) != tt.wantErr {
+				t.Errorf("Validation failed %v", err)
+			}
+		})
+	}
+
 }
 
 func TestJSONValidate(t *testing.T) {
