@@ -57,7 +57,10 @@
 >   * [Constraints outside the core schema](#constraints-outside-the-core-schema)
 >     * [Order of items inside controls](#order-of-items-inside-controls)
 >     * [Interdicted @class assignments](#interdicted-@class-assignments)
->     * [No overloading @class](#no-overloading-@class) 
+>   * [Developer notes and rationales](#developer-notes-and-rationales)
+>     * [Controls, not (only) the documents that describe them](#controls,-not-(only)-the-documents-that-describe-them)
+>     * [Validation](#validation)
+>     * [Relationship to other document formats](#relationship-to-other-document-formats) 
 
 # Document model and tagging specification - OSCAL: The Open Security Controls Assessment Language 
 
@@ -441,14 +444,22 @@ No control, component, object within a control, framework component or group can
 
 Interdicted names: control, subcontrol, component group, part, prop,param, or title. Using the title element for nominal titles is better than using a property. 
 
-This constraint may be relaxed by failing to run the `OSCAL-strict.sch` Schematron.   
+This constraint may be relaxed by failing to run the `OSCAL-strict.sch` Schematron.    
 
-#### No overloading @class  
+### Developer notes and rationales We need XML, because we have peculiar functional requirements in dealing with arbitrary but semi-regular mixed data, specifically "documentary" contents; this is XML’s sweet spot. Syntactically, it would be good to use something as close to MicroXML as possible (we want Python programmers to want to write against this). Despite this discipline (or because of it) the XML stack is useful because it is available, performant for our purposes, and standards-based. We can aim for the widest distributed support via XSD for validation (for ubiquity of tools) but perform modeling work in RNC (flexibility) as long as possible (and perhaps provide/support other validation methodologies?) Schema maintenance is going to require tools support anyway; we may as well start early: so RNC + docs => [XSD+docs] where all three are available as resources (you are reading the 'docs') to both human and machine consumers.  Provide for customization by restriction, not extension. Flavors of OSCAL will take the form of particular usages, not of formal schemas. Ergo, no schema extension mechanism is called for – much less yet another one. If we need schema extension we can show how without a new metalanguage. A sufficiently simple schema should permit this.  Accordingly the element set should be as minimal as possible for now - minimum to get the job done (we can aim for decoration later). This implies that semantic modeling (of "control types" in different catalogs) work predominantly via a microformat mechanism (semantics overlaid on generic element types via a class mechanism) This was prototyped and found to work (see below) An optional layer (the OSCAL Declarations layer) is implicit so we built one out as a POC.  Standing something up quickly and changing names as we go gives us a chance to try things on, not just debate principles. 
 
-(Not presently enforced) Values of the `class` attribute i.e. `@class` must be single; no space-delimited multiple classes as in HTML   
+#### Controls, not (only) the documents that describe them 
 
-While the declarations model may still work even with overloaded, multi-value classes, it might also lead to conniption fits. Better perhaps at the outset to warn against this. You shouldn't have to do that anyway. 
+OSCAL is a domain-specific language for the description and specification of collections of security and privacy controls in a control catalog. Inevitably there is a metaphysical grey zone between controls and the language by which they are defined and described. OSCAL attempts to normalize the semantics used to describe controls by providing a single format for which multiple control catalogs (e.g., NIST SP 800-53/53a, ISO/IEC 27001/2, COBIT 5) can be expressed. It does this by presenting a generalized descriptive "slate" or "tablet" upon which the particular patterns of a particular catalog, may be drawn. Not all catalogs in OSCAL will be the same – the design of controls in different catalogs and of different kinds and species, may be different – but because they will all be OSCAL, it will be easier to see their differences, easier to relate them to one another, and easier to do similar things in similar ways. 
 
-So far we have not needed to enforce this – the declarations model, for example, can cope with multiple classes – there may come a day. 
+Not only controls information itself, but a set of structured documents that describes and makes reference to such controls is in scope for OSCAL. Baselines, profiles, overlays and frameworks written in reference to controls catalogs, are all capabilities we aim to offer and support. 
 
-OSCAL users may have insights into whether class overloading (in OSCAL, not elsewhere) is a good thing or a bad thing to be discouraged.    
+#### Validation 
+
+In order to enable catalog and profile-specific validation, we have developed an alternative validation model. It is intended to be (third) complementary to the (two) predominant strategies for XML validation, namely validation against a grammar-based schema such as XSD or RNG) and validation per document or instance type (defined loosely) using query-based technologies such as Schematron. This additional validation model, called "OSCAL declarations", provides support for another "document level" validation layer, without having to code a Schematron. A small language (taking the form of a set of OSCAL tags) permits the specification of simple constraints that can be enforced over catalogs, profiles or worksheets. Much of the complexity that OSCAL must support moves away from the base schema, permitting it to be simpler, defining a smaller base tag set. 
+
+Yet enriching this tagging to carry more semantics (appropriate to either a catalog type or its application or implementation) is nonetheless straightforward: a matter (as always) of defining and enforcing rules. But instead of requiring schema aggregation, modification or or extension, we now describe an "application usage" of OSCAL elements and class values (much like an HTML/CSS microformat). OSCAL declarations gives a way of exposing (documenting) and enforcing this set of constraints on document structures such that they can be enforced by automated means at runtime (when exceptions to stated rules can be detected). Thus developers and users have the capability to define OSCAL control types without having to write any schema code. 
+
+#### Relationship to other document formats 
+
+OSCAL captures chunks of transcribed natural/literate/technical language, i.e. "prose", but it also permits the rational arrangement of such chunks of language with more tightly controlled values (control properties and parameters). Applied systematically and at scale, such regular and rational arrangements enable higher-order transparencies that can translate directly into functionalities (relating to data creation, manipulation, management and forensics). In this, OSCAL goes further than documentary-description XML formats such as the National Information Standards Organization (NISO) Journal Article Tag Suite (JATS), the NISO Standard Tag Set (STS), the Darwin Information Typing Architecture (DITA), and other viable alternatives for encoding "control catalogs" in the broad sense. This is not because OSCAL provides a "semantics" for "controls" so much as because a means by which an OSCAL application (or user or developer) may do so. Accordingly, it is expected that OSCAL would be complementary to any of the formats just mentioned.  

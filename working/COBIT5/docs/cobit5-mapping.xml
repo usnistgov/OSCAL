@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Regular" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-mapping.css" title="Tabular" alternate="yes"?>

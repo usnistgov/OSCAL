@@ -25,7 +25,9 @@
     <xsl:template match="catalog">
         <profile>
             <invoke href="{document-uri(/)}">
-              <xsl:apply-templates select="//control | //subcontrol" mode="write-call"/>
+                <include>
+                    <xsl:apply-templates select="//control | //subcontrol" mode="write-call"/>
+                </include>
             </invoke>
         </profile>
     </xsl:template>

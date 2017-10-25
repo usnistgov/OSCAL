@@ -7,6 +7,8 @@
     <include> <!--(all | call+) --> 
       <call control-id="si.1"/>
       <call control-id="pm.1"/>
+      
+     <!-- <call control-id="c5-1-1"/>-->
     </include>
   </invoke>
   <!--<invoke href="../ISO-27002/ISO-27002-OSCAL-refined.xml">

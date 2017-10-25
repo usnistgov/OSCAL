@@ -38,7 +38,7 @@ div div div h3 { font-size: 110% }
 .param { font-style: italic }
 .insert, .choice { border: thin solid black; padding: 0.1em }
 
-.subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
+.subst  { color: midnightblue; font-family: sans-serif; font-size; 85% } 
 
 .param .em { font-style: roman }
 
