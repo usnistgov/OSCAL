@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xpath-default-namespace="http://scap.nist.gov/schema/oscal"
+   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="xs"
   version="3.0">
   
@@ -33,11 +33,11 @@
   
   -->
   
-  <xsl:param name="docs-file" as="xs:string">../../doc/schema/oscal-oscal.xml</xsl:param>
+  <xsl:param name="docs-file" as="xs:string">../../../docs/schema/oscal-oscal.xml</xsl:param>
   
-  <xsl:param name="docs"      select="document($docs-file)"/>
+  <xsl:param name="docs"      select="document($docs-file,/)"/>
   
-  <xsl:key name="documentation" match="control" use="prop[@class='tag']"/>
+  <xsl:key name="documentation" match="component" use="prop[@class='tag']"/>
 
   <!-- Nix the comments -->
   <xsl:template match="comment()"/>
@@ -47,7 +47,7 @@
       <xsl:copy-of select="@*"/>
       <xsl:variable name="element-description" select="key('documentation',@name,$docs)"/>
       <xsl:if test="empty($element-description)">
-        <xsl:message expand-text="true">No description found for {@name}</xsl:message>
+        <xsl:comment expand-text="true">No description found for {@name}</xsl:comment>
       </xsl:if>
       
       <xsl:apply-templates select="$element-description"/>
@@ -55,7 +55,7 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="control">
+  <xsl:template match="component">
     <xs:annotation>
       <xs:documentation>
         <xsl:apply-templates/>
@@ -63,7 +63,7 @@
     </xs:annotation>
   </xsl:template>
   
-  <xsl:template match="control/*" priority="0"/>
+  <xsl:template match="component/*" priority="0"/>
   
   <xsl:template match="prop[@class='full_name']">
     <b>

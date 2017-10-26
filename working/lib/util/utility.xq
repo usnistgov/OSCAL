@@ -1,4 +1,4 @@
-declare default element namespace "http://scap.nist.gov/schema/oscal";
+declare default element namespace "http://csrc.nist.gov/ns/oscal/1.0";
 
 let $library := 
   <docs>

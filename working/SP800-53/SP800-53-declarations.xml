@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css"?>
-<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<declarations xmlns="http://scap.nist.gov/schema/oscal">
+<declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
   <declare-prop context="SP800-53" class="name">
     <singleton/>

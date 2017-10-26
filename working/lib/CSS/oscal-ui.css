@@ -57,7 +57,23 @@ part_declaration:before { content:
  }
 
 
+group:before { content: 'group: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+
+category:before { content: 'category: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+
 control:before { content: 'control: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+
+item:before { content: 'item: ' oxy_textfield(
+          edit, '@class',
+          columns, 10); }
+
+component:before { content: 'component: ' oxy_textfield(
           edit, '@class',
           columns, 10); }
 

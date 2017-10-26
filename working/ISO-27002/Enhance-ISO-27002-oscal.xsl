@@ -2,8 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="xs"
-  xmlns="http://scap.nist.gov/schema/oscal"
-  xpath-default-namespace="http://scap.nist.gov/schema/oscal"
+  xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
   expand-text="true"
   version="3.0">
   

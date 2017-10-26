@@ -4,7 +4,7 @@
 
 <xsl:stylesheet version="2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xpath-default-namespace="http://scap.nist.gov/schema/oscal">
+  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 
   <xsl:template match="/">
     <fo:root>

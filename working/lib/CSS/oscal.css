@@ -1,6 +1,10 @@
+/* Note this CSS hasn't been reviewed for tightness it is likely to contain obsolte (ordinarily no-op) code */
+
 * { display: block } 
 
-catalog { max-width: 48em }
+catalog, framework { max-width: 48em }
+
+framework { background-color: cornsilk } 
 
 declarations { font-family: sans-serif; font-size: 80%;
    padding: 0.5em; margin: 0.5em; border: thin solid black; background-color: gainsboro;
@@ -47,7 +51,7 @@ inherit:before { content: oxy_label(text, "inherit", width, 4em, color, inherit)
 autonum:before { content: oxy_label(text, "autonumber ", width, 4em, color, inherit)
 }
 
-group, section, references, extensions
+group, section, references, extensions, profile framework
   { padding: 0.5em; margin: 0.5em; border: thin solid black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
@@ -55,7 +59,7 @@ references:before { content: "References"; font-size: 120%; font-family: sans-se
 
 ref { border-left: thick solid silver; padding-left: 0.5em; margin-top: 0.5ex }
 
-control, subcontrol, part { padding: 0.5em; margin: 0.5em; border: medium double black;
+control, subcontrol, part, component { padding: 0.5em; margin: 0.5em; border: medium double black;
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 subcontrol { border: thin solid  black }
@@ -64,9 +68,13 @@ part, purpose, guidance, remarks, information { border: thin dotted black;
 
 group:before { content: attr(class) " (group)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
+category:before { content: attr(class) " (category)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
+
 control:before { content: attr(class) " (control)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
-control > title { font-size: 110% }
+component:before { content: attr(class) " (component)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
+
+control > title, component > title { font-size: 110% }
 
 
 subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; font-size:80%; font-family: sans-serif }
@@ -109,7 +117,11 @@ remarks:before,part[class=remarks]:before { content: "Remarks"; font-weight: bol
  */
 
 
+component p:before  { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif } 
+component p { background-color: white; padding: 0.5em; border: thin solid orange } 
+
 p { margin-top: 0.5em }
+
 
 italic { display: inline; font-style: italic }
 
@@ -151,7 +163,7 @@ link { color: blue; font-size: 90%; font-weight: bold }
 link:before { color: blue; font-size: 90%; font-weight: bold; content: 
         'link: ' oxy_urlChooser(        
         edit, "@href",
-        columns 17); }
+        columns 53); }
 
 withdrawn { display: inline; font-style: italic }
 
@@ -169,3 +181,12 @@ select:before { content: 'Selection ' }
 
 select { display: inline }
 choice { display: table-row; margin-top: 0.4em; background-color: white; padding: 0.1ex }
+
+call { background-color: skyblue; border: thin outset blue; color: midnightblue; font-weight: bold;
+  margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
+
+call:before { content: 'Call from catalog: '; font-style: italic }
+
+call[subcontrol-id]:after                    { content: 'subcontrol ' attr(subcontrol-id) }
+call[control-id]:after                       { content: 'control '    attr(control-id) }
+call[control-id][with-subcontrols=yes]:after { content: 'control '    attr(control-id) ' with subcontrols' }

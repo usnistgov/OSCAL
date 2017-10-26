@@ -2,9 +2,9 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns="http://scap.nist.gov/schema/oscal">
+  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   
-  <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
+  <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
 
   <xsl:key name="assignments-by-use" match="oscal:insert[exists(@param-id)]" use="@param-id"/>
   
@@ -30,7 +30,11 @@
     
     <sch:rule context="oscal:param">
       <sch:let name="my-assignments" value="key('assignments-by-use',normalize-space(@id))"/>
-      <sch:assert test="exists($my-assignments)" role="warning">Parameter is used nowhere.</sch:assert>
+      <sch:assert test="exists($my-assignments) or ancestor::oscal:component" role="warning">Parameter is used nowhere.</sch:assert>
+    </sch:rule>
+    
+    <sch:rule context="oscal:param/oscal:value">
+      <sch:assert role="warning" test="not(. = ../oscal:desc)">Parameter value echoes description.</sch:assert>
     </sch:rule>
     
   </sch:pattern>

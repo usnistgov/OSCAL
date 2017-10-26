@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
-  xmlns:oscal="http://scap.nist.gov/schema/oscal"
+  xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   type="oscal:iso27002-extraction" name="iso27002-extraction">
   
   

@@ -3,21 +3,25 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process">
   
-  <sch:ns uri="http://scap.nist.gov/schema/oscal" prefix="oscal"/>
+  <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
   <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
 
   <sch:pattern>
-    <sch:rule context="oscal:invoke">
-      <sch:assert test="exists(document(@href))">Catalog '<sch:value-of select="@href"/>' not found</sch:assert>
-    </sch:rule>
+    <!--<sch:rule context="oscal:invoke">
+      <sch:let name="catalog-available" value="boolean(exists(document(@href)/oscal:catalog))"/>
+      <!-\-<sch:assert test="exists(document(@href)) and empty(document(@href)/oscal:catalog)" role="warning"><sch:value-of select="@href"/>' is not a catalog</sch:assert>-\->
+      <sch:assert test="$catalog-available or exists(document(@href))">Catalog '<sch:value-of select="@href"/>' not found</sch:assert>
+    </sch:rule>-->
     <sch:rule context="oscal:call">
       <sch:let name="catalog-file" value="ancestor::oscal:invoke/@href"/>
-      <sch:let name="catalog" value="document($catalog-file)"/>
+      <sch:let name="catalog" value="document($catalog-file)/oscal:catalog"/>
       <sch:assert test="empty($catalog) or empty(@control-id) or exists(key('element-by-id',@control-id,$catalog)/self::oscal:control)">Referenced catalog '<sch:value-of select="$catalog-file"/>'
         has no control with @id '<sch:value-of select="@control-id"/>'</sch:assert>
       <sch:assert test="empty($catalog) or empty(@subcontrol-id) or exists(key('element-by-id',@subcontrol-id,$catalog)/self::oscal:subcontrol)">Referenced catalog '<sch:value-of select="$catalog-file"/>'
         has no subcontrol with @id '<sch:value-of select="@control-id"/>'</sch:assert>
+      <sch:report role="warning" test="(@control-id | @subcontrol-id) = preceding-sibling::oscal:call/(@control-id | @subcontrol-id)">Repeated call on
+      '<sch:value-of select="@control-id | @subcontrol-id"/>' will be ignored</sch:report>
     </sch:rule>
     <sch:rule context="oscal:param">
       <sch:let name="catalog-file" value="ancestor::oscal:invoke/@href"/>

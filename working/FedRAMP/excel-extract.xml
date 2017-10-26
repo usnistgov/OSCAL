@@ -1,0 +1,2852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- File made using oXygen's Excel import facility. -->
+<!-- Extracted from FedRAMP-Rev-4-Baseline-Workbook-FINAL062014.xlsx 2017-09-13T16:17:49.723-04:00
+
+We have row/(ID, Title, Baseline_LOW, Baseline_MOD, Param_assigns, Remarks)
+
+ID provides the title when the row is a category header (Title is empty)
+Paradoxically, this means that //row[matches(Title,'\S')] returns controls and subcontrols
+
+count(//row[not(matches(Title,'\S')]) indicates there are 345 entries
+
+results for: string-join(distinct-values(//row[not(matches(Title,'\S'))]/ID),'&#xA;')
+Access Control (AC)
+Awareness and Training (AT)
+Audit and Accountability (AU)
+Security Assessment and Authorization (CA)
+Configuration Management (CM)
+Contingency Planning (CP)
+Identification and Authentication (IA)
+Incident Response (IR)
+Maintenance (MA)
+Media Protection (MP)
+Physical and Environmental Protection (PE)
+Planning (PL)
+Personnel Security (PS)
+Risk Assessment (RA)
+System and Services Acquisition (SA)
+System and Communications Protection (SC)
+System and Information Integrity (SI)
+
+'count(distinct-values(//ID)) eq count(//ID)' returns true so we know there are no dupes.
+
+-->
+
+<root>
+    <row>
+        <ID>Access Control (AC)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-1</ID>
+        <Title>Access Control Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AC-1.b.1 [at least every 3 years]
+AC-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-2</ID>
+        <Title>Account Management</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AC-2j [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (1)</ID>
+        <Title>Account Management | Automated System Account Management</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (2)</ID>
+        <Title>Account Management | Removal of Temporary / Emergency Accounts</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[No more than 30 days for temporary and emergency account types]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (3)</ID>
+        <Title>Account Management | Disable Inactive Accounts</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[90 days for user accounts]</Param_assigns>
+        <Remarks>Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices).  The time periods are approved and accepted by the Authorizing Official.</Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (4)</ID>
+        <Title>Account Management | Automated Audit Actions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (5)</ID>
+        <Title>Account Management | Inactivity Logout</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (7)</ID>
+        <Title>Account Management | Role-Based Schemes</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (9)</ID>
+        <Title>Account Management | Restrictions on Use of Shared Groups / Accounts</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Required if shared/group accounts are deployed</Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (10)</ID>
+        <Title>Account Management | Shared / Group Account Credential Termination</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Required if shared/group accounts are deployed</Remarks>
+    </row>
+    <row>
+        <ID>AC-2 (12)</ID>
+        <Title>Account Management | Account Monitoring / Atypical Usage</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>AC-2 (12)(a) and AC-2 (12)(b) Additional FedRAMP Requirements and Guidance: Required for privileged accounts.</Remarks>
+    </row>
+    <row>
+        <ID>AC-3</ID>
+        <Title>Access Enforcement</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-4</ID>
+        <Title>Information Flow Enforcement</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-4 (21)</ID>
+        <Title>Information Flow Enforcement | Physical / Logical Separation of Information Flows</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-5</ID>
+        <Title>Separation of Duties</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-6</ID>
+        <Title>Least Privilege</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-6 (1)</ID>
+        <Title>Least Privilege | Authorize Access to Security Functions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-6 (2)</ID>
+        <Title>Least Privilege | Non-Privileged Access For No security Functions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[all security functions]</Param_assigns>
+        <Remarks>AC-6 (2). Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.                            </Remarks>
+    </row>
+    <row>
+        <ID>AC-6 (5)</ID>
+        <Title>Least Privilege | Privileged Accounts</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-6 (9)</ID>
+        <Title>Least Privilege | Auditing Use of Privileged Functions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-6 (10)</ID>
+        <Title>Least Privilege | Prohibit Non-privileged Users from Executing Privileged Functions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-7</ID>
+        <Title>Unsuccessful Logon Attempts</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AC-7a [not more than three]
+ [fifteen minutes] 
+AC-7b [locks the account/node for thirty minutes]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-8</ID>
+        <Title>System Use Notification</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>Parameter: See Additional Requirements and Guidance.</Param_assigns>
+        <Remarks>Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the Authorizing Official (AO).
+Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the AO.
+Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.
+Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the AO.
+</Remarks>
+    </row>
+    <row>
+        <ID>AC-10</ID>
+        <Title>Concurrent Session Control</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns> [three (3) sessions for privileged access and two (2) sessions for non-privileged access]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-11</ID>
+        <Title>Session Lock</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AC-11a. [fifteen minutes]  </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-11 (1)</ID>
+        <Title>Session Lock | Pattern-Hiding Displays</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-12</ID>
+        <Title>Session Termination</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-14</ID>
+        <Title>Permitted Actions Without Identification or Authentication</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-17</ID>
+        <Title>Remote Access</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-17 (1)</ID>
+        <Title>Remote Access | Automated Monitoring / Control</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-17 (2)</ID>
+        <Title>Remote Access | Protection of Confidentiality / Integrity Using Encryption</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-17 (3)</ID>
+        <Title>Remote Access | Managed Access Control Points</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-17 (4)</ID>
+        <Title>Remote Access | Privileged Commands / Access</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-17 (9)</ID>
+        <Title>Remote Access | Disconnect / Disable Access</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[no greater than 15 minutes]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-18</ID>
+        <Title>Wireless Access</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-18 (1)</ID>
+        <Title>Wireless Access | Authentication and Encryption</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-19</ID>
+        <Title>Access Control For Mobile Devices</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-19 (5)</ID>
+        <Title>Access Control For Mobile Devices | Full Device / Container-Based Encryption</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-20</ID>
+        <Title>Use of External Information Systems</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-20 (1)</ID>
+        <Title>Use of External Information Systems | Limits on Authorized Use</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-20 (2)</ID>
+        <Title>Use of External Information Systems | Portable Storage Devices</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-21</ID>
+        <Title>Information Sharing</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AC-22</ID>
+        <Title>Publicly Accessible Content</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AC-22d. [at least quarterly]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Awareness and Training (AT)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AT-1</ID>
+        <Title>Security Awareness and Training Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AT-1.b.1 [at least every 3 years]
+AT-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AT-2</ID>
+        <Title>Security Awareness Training</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AT-2. [Assignment: organization-defined frequency] 
+Parameter: [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AT-2 (2)</ID>
+        <Title>Security Awareness | Insider Threat</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AT-3</ID>
+        <Title>Role-Based Security Training</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AT-3c. [Assignment: organization-defined frequency]
+Parameter:  [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AT-4</ID>
+        <Title>Security Training Records</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AT-4b. [Assignment: organization-defined frequency]
+Parameter:  [At least one years]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Audit and Accountability (AU)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-1</ID>
+        <Title>Audit and Accountability Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-1.b.1 [at least every 3 years]
+AU-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-2</ID>
+        <Title>Audit Events</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-2a.  [Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events.  For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes];
+AU-2d. [organization-defined subset of the auditable events defined in AU-2 a. to be audited continually for each identified event].</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-2 (3)</ID>
+        <Title>Audit Events | Reviews and Updates</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-2 (3). [Assignment: organization-defined frequency] 
+Parameter: [annually or whenever there is a change in the threat environment] </Param_assigns>
+        <Remarks>Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the Authorizing Official. </Remarks>
+    </row>
+    <row>
+        <ID>AU-3</ID>
+        <Title>Content of Audit Records</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-3 (1)</ID>
+        <Title>Content of Audit Records | Additional Audit Information</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-3 (1). [Assignment: organization-defined additional, more detailed information]                                                                            Parameter: [session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon]</Param_assigns>
+        <Remarks>AU-3 (1). Requirement: The service provider defines audit record types.  The audit record types are approved and accepted by the Authorizing Official.
+Guidance: For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry. </Remarks>
+    </row>
+    <row>
+        <ID>AU-4</ID>
+        <Title>Audit Storage Capacity</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-5</ID>
+        <Title>Response to Audit Processing Failures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-5b. [Assignment:  Organization-defined actions to be taken] 
+Parameter: [low-impact: overwrite oldest audit records; moderate-impact: shut down] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-6</ID>
+        <Title>Audit Review, Analysis, and Reporting</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-6a. [Assignment: organization-defined frequency] 
+Parameter: [at least weekly] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-6 (1)</ID>
+        <Title>Audit Review, Analysis, and Reporting | Process Integration</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-6 (3)</ID>
+        <Title>Audit Review, Analysis, and Reporting | Correlate Audit Repositories</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-7</ID>
+        <Title>Audit Reduction and Report Generation</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-7 (1)</ID>
+        <Title>Audit Reduction and Report Generation | Automatic Processing</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-8</ID>
+        <Title>Time Stamps</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-8 (1)</ID>
+        <Title>Time Stamps | Synchronization With Authoritative Time Source</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-8 (1). [http://tf.nist.gov/tf-cgi/servers.cgi] &lt;At least hourly></Param_assigns>
+        <Remarks>AU-8 (1). Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.
+Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.
+Guidance: Synchronization of system clocks improves the accuracy of log analysis.</Remarks>
+    </row>
+    <row>
+        <ID>AU-9</ID>
+        <Title>Protection of Audit Information</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-9 (2)</ID>
+        <Title>Protection of Audit Information | Audit Backup on Separate Physical Systems / Components</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-9 (2). [at least weekly] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-9 (4)</ID>
+        <Title>Protection of Audit Information | Access by Subset of Privileged Users</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>AU-11</ID>
+        <Title>Audit Record Retention</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-11. [at least ninety days] </Param_assigns>
+        <Remarks>AU-11. Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements. </Remarks>
+    </row>
+    <row>
+        <ID>AU-12</ID>
+        <Title>Audit Generation</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>AU-12a. [all information system and network components where audit capability is deployed/available]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Security Assessment and Authorization (CA)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-1</ID>
+        <Title>Security Assessment and Authorization Policies and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CA-1.b.1 [at least every 3 years]
+CA-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-2</ID>
+        <Title>Security Assessments</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CA-2b. [at least annually] 
+CA-2d[individuals or roles to include FedRAMP PMO]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-2 (1)</ID>
+        <Title>Security Assessments | Independent Assessors</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>Added to NIST Baseline for "Low" FedRAMP baseline.</Param_assigns>
+        <Remarks>For JAB Authorization, must be an accredited 3PAO</Remarks>
+    </row>
+    <row>
+        <ID>CA-2 (2)</ID>
+        <Title>Security Assessments | Specialized Assessments</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[at least annually]</Param_assigns>
+        <Remarks>Requirement: To include 'announced', 'vulnerability scanning'</Remarks>
+    </row>
+    <row>
+        <ID>CA-2 (3)</ID>
+        <Title>Security Assessments | External Organizations</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[Any FedRAMP Accredited 3PAO]  [the conditions of a P-ATO in the FedRAMP Repository]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-3</ID>
+        <Title>System Interconnections</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CA-3c. 3 Years / Annually and on input from FedRAMP</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-3 (3)</ID>
+        <Title>System Interconnections | Unclassified Non-National Security System Connections</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>Boundary Protections which meet the Trusted Internet Connection (TIC) requirements</Param_assigns>
+        <Remarks>CA-3(3) Guidance: Refer to Appendix H – Cloud Considerations of the TIC 2.0 Reference Architecture document.</Remarks>
+    </row>
+    <row>
+        <ID>CA-3 (5)</ID>
+        <Title>System Interconnections | Restrictions on External Network Connections</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</Remarks>
+    </row>
+    <row>
+        <ID>CA-5</ID>
+        <Title>Plan of Action and Milestones</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CA-5b. [at least monthly]</Param_assigns>
+        <Remarks>CA-5  Guidance: Requirement: POA&amp;Ms  must be provided at least monthly.</Remarks>
+    </row>
+    <row>
+        <ID>CA-6</ID>
+        <Title>Security Authorization</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CA-6c. [at least every three years or when a significant change occurs] </Param_assigns>
+        <Remarks>CA-6c. Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.  The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture.  The types of changes are approved and accepted by the Authorizing Official.</Remarks>
+    </row>
+    <row>
+        <ID>CA-7</ID>
+        <Title>Continuous Monitoring</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CA-7d. [To meet Federal and FedRAMP requirements]</Param_assigns>
+        <Remarks>Operating System Scans: at least monthly
+Database and Web Application Scans: at least monthly
+All scans performed by Independent Assessor: at least annually
+CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</Remarks>
+    </row>
+    <row>
+        <ID>CA-7 (1)</ID>
+        <Title>Continuous Monitoring | Independent Assessment</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-8</ID>
+        <Title>Penetration Testing</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-8 (1)</ID>
+        <Title>Penetration Testing | Independent Penetration Agent or Team</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CA-9</ID>
+        <Title>Internal System Connections</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Configuration Management (CM)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-1</ID>
+        <Title>Configuration Management Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-1.b.1 [at least every 3 years]
+CM-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-2</ID>
+        <Title>Baseline Configuration</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-2 (1)</ID>
+        <Title>Baseline Configuration | Reviews and Updates</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-2 (1) (a). [at least annually]
+CM-2 (1) (b). [to include when directed by Authorizing Official]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-2(2)</ID>
+        <Title>Baseline Configuration | Automation Support For Accuracy / Currency </Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-2 (3)</ID>
+        <Title>Baseline Configuration | Retention of Previous Configurations</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-2 (7)</ID>
+        <Title>Baseline Configuration | Configure Systems, Components, or Devices for High-Risk Areas</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-3</ID>
+        <Title>Configuration Change Control</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page).  The means of communication are approved and accepted by the Authorizing Official.
+CM-3e Guidance:  In accordance with record retention policies and procedures.</Remarks>
+    </row>
+    <row>
+        <ID>CM-4</ID>
+        <Title>Security Impact Analysis</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-5</ID>
+        <Title>Access Restrictions For Change</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-5 (1)</ID>
+        <Title>Access Restrictions For Change | Automated Access Enforcement / Auditing</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-5 (3)</ID>
+        <Title>Access Restrictions For Change | Signed Components</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Guidance: If digital signatures/certificates are unavailable,  alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</Remarks>
+    </row>
+    <row>
+        <ID>CM-5 (5)</ID>
+        <Title>Access Restrictions For Change | Limit Production / Operational Privileges</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-5 (5) (b). [at least quarterly] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-6</ID>
+        <Title>Configuration Settings</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-6a. [See CM-6(a) Additional FedRAMP Requirements and Guidance] </Param_assigns>
+        <Remarks>CM-6a. Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.
+CM-6a. Requirement: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).
+CM-6a. Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc .</Remarks>
+    </row>
+    <row>
+        <ID>CM-6 (1)</ID>
+        <Title>Configuration Settings | Automated Central Management / Application / Verification</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-7</ID>
+        <Title>Least Functionality</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-7. [United States Government Configuration Baseline (USGCB)] </Param_assigns>
+        <Remarks>Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.
+CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc.
+(Partially derived from AC-17(8).)</Remarks>
+    </row>
+    <row>
+        <ID>CM-7 (1)</ID>
+        <Title>Least Functionality | Periodic Review</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-7(1) [ At least Monthly]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-7 (2)</ID>
+        <Title>Least Functionality | Prevent Program Execution</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>CM-7(2) Guidance:   This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing).  This control is not to be based off of strictly written policy on what is allowed or not allowed to run.    </Remarks>
+    </row>
+    <row>
+        <ID>CM-7 (5)</ID>
+        <Title>Least Functionality | Authorized Software / Whitelisting</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-7(5)[ at least Annually or when there is a change.]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-8</ID>
+        <Title>Information System Component Inventory</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-8b. [at least monthly]</Param_assigns>
+        <Remarks>CM-8 Requirement: must be provided at least monthly or when there is a change.</Remarks>
+    </row>
+    <row>
+        <ID>CM-8 (1)</ID>
+        <Title>Information System Component Inventory | Updates During Installations / Removals</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-8 (3)</ID>
+        <Title>Information System Component Inventory | Automated Unauthorized Component Detection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-8 (3) (a). [Continuously, using automated mechanisms with a maximum five-minute delay in detection.] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-8 (5)</ID>
+        <Title>Information System Component Inventory | No Duplicate Accounting of Components</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-9</ID>
+        <Title>Configuration Management Plan</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-10</ID>
+        <Title>Software Usage Restrictions</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-10 (1)</ID>
+        <Title>Software Usage Restrictions | Open Source Software</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CM-11</ID>
+        <Title>User-Installed Software</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CM-11.c. [Continuously (via CM-7 (5))]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Contingency Planning (CP)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-1</ID>
+        <Title>Contingency Planning Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CP-1.b.1 [at least every 3 years]
+CP-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-2</ID>
+        <Title>Contingency Plan</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CP-2d. [at least annually]</Param_assigns>
+        <Remarks>Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</Remarks>
+    </row>
+    <row>
+        <ID>CP-2 (1)</ID>
+        <Title>Contingency Plan | Coordinate With Related Plans</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-2 (2)</ID>
+        <Title>Contingency Plan | Capacity Planning</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>                                   </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-2 (3)</ID>
+        <Title>Contingency Plan | Resume Essential Missions / Business Functions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-2 (8)</ID>
+        <Title>Contingency Plan | Identify Critical Assets</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-3</ID>
+        <Title>Contingency Training</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CP-3.a. [ 10 days]
+CP-3.c. [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-4</ID>
+        <Title>Contingency Plan Testing</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CP-4a. [at least annually for moderate impact systems; at least every three years for low impact systems] [functional exercises for moderate impact systems; classroom exercises/table top written tests for low impact systems]</Param_assigns>
+        <Remarks>CP-4a. Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the Authorizing Official prior to initiating testing.</Remarks>
+    </row>
+    <row>
+        <ID>CP-4 (1)</ID>
+        <Title>Contingency Plan Testing | Coordinate With Related Plans</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-6</ID>
+        <Title>Alternate Storage Site</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-6 (1)</ID>
+        <Title>Alternate Storage Site | Separation From Primary Site</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-6 (3)</ID>
+        <Title>Alternate Storage Site | Accessibility</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-7</ID>
+        <Title>Alternate Processing Site</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>CP-7a. Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</Remarks>
+    </row>
+    <row>
+        <ID>CP-7 (1)</ID>
+        <Title>Alternate Processing Site | Separation From Primary Site</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>CP-7(1) Guidance: The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.</Remarks>
+    </row>
+    <row>
+        <ID>CP-7 (2)</ID>
+        <Title>Alternate Processing Site | Accessibility</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-7 (3)</ID>
+        <Title>Alternate Processing Site | Priority of Service</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-8</ID>
+        <Title>Telecommunications Services</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>CP-8. Requirement: The service provider defines a time period consistent with the business impact analysis.</Remarks>
+    </row>
+    <row>
+        <ID>CP-8 (1)</ID>
+        <Title>Telecommunications Services | Priority of Service Provisions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-8 (2)</ID>
+        <Title>Telecommunications Services | Single Points of Failure</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-9</ID>
+        <Title>Information System Backup</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CP-9a. [daily incremental; weekly full]
+CP-9b. [daily incremental; weekly full]
+CP-9c. [daily incremental; weekly full]</Param_assigns>
+        <Remarks>CP-9. Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control.
+Requirement: The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.
+CP-9a. Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.
+CP-9b. Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.
+CP-9c. Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</Remarks>
+    </row>
+    <row>
+        <ID>CP-9 (1)</ID>
+        <Title>Information System Backup | Testing For Reliability / Integrity</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>CP-9 (1). [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-9 (3)</ID>
+        <Title>Information System Backup | Separate Storage for Critical Information</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-10</ID>
+        <Title>Information System Recovery and Reconstitution</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>CP-10 (2)</ID>
+        <Title>Information System Recovery and Reconstitution | Transaction Recovery</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Identification and Authentication (IA)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-1</ID>
+        <Title>Identification and Authentication Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IA-1.b.1 [at least every 3 years]
+IA-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2</ID>
+        <Title>Identification and Authentication (Organizational Users)</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2 (1)</ID>
+        <Title>Identification and Authentication (Organizational Users) | Network Access to Privileged Accounts</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2 (2)</ID>
+        <Title>Identification and Authentication (Organizational Users) | Network Access to Non-Privileged Accounts</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2 (3)</ID>
+        <Title>Identification and Authentication (Organizational Users) | Local Access to Privileged Accounts</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2 (5)</ID>
+        <Title>Identification and Authentication (Organizational Users) | Group Authentication</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2 (8)</ID>
+        <Title>Identification and Authentication (Organizational Users) | Network Access to Privileged Accounts - Replay Resistant</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2 (11)</ID>
+        <Title>Identification and Authentication (Organizational Users) | Remote Access - Separate Device</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>The information system implements multifactor authentication for remote access to privileged and non-privileged accounts such that one of the factors is provided by a device separate from the system gaining access and the device meets [Assignment: organization-defined strength of mechanism requirements]. </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-2 (12)</ID>
+        <Title>Identification and Authentication (Organizational Users) | Acceptance of PIV Credentials</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</Remarks>
+    </row>
+    <row>
+        <ID>IA-3</ID>
+        <Title>Device Identification and Authentication</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-4</ID>
+        <Title>Identifier Management</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IA-4d. [at least two years]
+IA-4e. [ninety days for user identifiers] (See additional requirements and guidance.)</Param_assigns>
+        <Remarks>IA-4e. Requirement: The service provider defines time period of inactivity for device identifiers.</Remarks>
+    </row>
+    <row>
+        <ID>IA-4 (4)</ID>
+        <Title>Identifier Management | Identify User Status</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IA-4 (4). [contractors; foreign nationals] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-5</ID>
+        <Title>Authenticator Management</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IA-5g. [to include sixty days for passwords]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-5 (1)</ID>
+        <Title>Authenticator Management | Password-Based Authentication</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IA-5 (1) (a). [case sensitive, minimum of twelve characters, and at least one each of upper-case letters, lower-case letters, numbers, and special characters]
+IA-5 (1) (b). [at least one]
+IA-5 (1) (d). [one day minimum, sixty day maximum]
+IA-5 (1) (e). [twenty four]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-5 (2)</ID>
+        <Title>Authenticator Management | PKI-Based Authentication</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-5 (3)</ID>
+        <Title>Authenticator Management | In-Person or Trusted Third-Party Registration</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IA-5 (3). [All hardware/biometric (multifactor authenticators] [in person]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-5 (4)</ID>
+        <Title>Authenticator Management | Automated Support for Password Strength Determination</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>IA-4e Additional FedRAMP Requirements and Guidance: Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators</Remarks>
+    </row>
+    <row>
+        <ID>IA-5 (6)</ID>
+        <Title>Authenticator Management | Protection of Authenticators</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-5 (7)</ID>
+        <Title>Authenticator Management | No Embedded Unencrypted Static Authenticators</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-5 (11)</ID>
+        <Title>Authenticator Management | Hardware Token-Based Authentication</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-6</ID>
+        <Title>Authenticator Feedback</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-7</ID>
+        <Title>Cryptographic Module Authentication</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-8</ID>
+        <Title>Identification and Authentication (Non-Organizational Users)</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-8 (1)</ID>
+        <Title>Identification and Authentication (Non-Organizational Users) | Acceptance of PIV Credentials from Other Agencies</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-8 (2)</ID>
+        <Title>Identification and Authentication (Non-Organizational Users) | Acceptance of Third-Party Credentials</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-8 (3)</ID>
+        <Title>Identification and Authentication (Non-Organizational Users) | Use of FICAM-Approved Products</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IA-8 (4)</ID>
+        <Title>Identification and Authentication (Non-Organizational Users) | Use of FICAM-Issued Profiles</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Incident Response (IR)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-1</ID>
+        <Title>Incident Response Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IR-1.b.1 [at least every 3 years]
+IR-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-2</ID>
+        <Title>Incident Response Training</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IR-2b. [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-3</ID>
+        <Title>Incident Response Testing</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IR-3. [at least annually]</Param_assigns>
+        <Remarks>IR-3. Requirement: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended).
+Requirement: For JAB Authorization, the service provider provides test plans to the Authorizing Official (AO)  annually.
+Requirement: Test plans are approved and accepted by the Authorizing Official prior to test commencing.</Remarks>
+    </row>
+    <row>
+        <ID>IR-3 (2)</ID>
+        <Title>Incident Response Testing | Coordination With Related Plans</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-4</ID>
+        <Title>Incident Handling</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>IR-4/A13. Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</Remarks>
+    </row>
+    <row>
+        <ID>IR-4 (1)</ID>
+        <Title>Incident Handling | Automated Incident Handling Processes</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-5</ID>
+        <Title>Incident Monitoring</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-6</ID>
+        <Title>Incident Reporting</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IR-6a. [US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)]</Param_assigns>
+        <Remarks>Requirement: Reports security incident information  according to FedRAMP Incident Communications Procedure.</Remarks>
+    </row>
+    <row>
+        <ID>IR-6 (1)</ID>
+        <Title>Incident Reporting | Automated Reporting</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-7</ID>
+        <Title>Incident Response Assistance</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-7 (1)</ID>
+        <Title>Incident Response Assistance | Automation Support For Availability of Information / Support</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-7 (2)</ID>
+        <Title>Incident Response Assistance | Coordination With External Providers</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-8</ID>
+        <Title>Incident Response Plan</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>IR-8c. [at least annually]
+</Param_assigns>
+        <Remarks>IR-8(b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.
+IR-8(e) Additional FedRAMP Requirements and Guidance:  The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements.  The incident response list includes designated FedRAMP personnel.</Remarks>
+    </row>
+    <row>
+        <ID>IR-9</ID>
+        <Title>Information Spillage Response</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-9 (1)</ID>
+        <Title>Information Spillage Response | Responsible Personnel</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-9 (2)</ID>
+        <Title>Information Spillage Response | Training</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-9 (3)</ID>
+        <Title>Information Spillage Response | Post-Spill Operations</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>IR-9 (4)</ID>
+        <Title>Information Spillage Response | Exposure to Unauthorized Personnel</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Maintenance (MA)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-1</ID>
+        <Title>System Maintenance Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>MA-1.b.1 [at least every 3 years]
+MA-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-2</ID>
+        <Title>Controlled Maintenance</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-3</ID>
+        <Title>Maintenance Tools</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-3 (1)</ID>
+        <Title>Maintenance Tools | Inspect Tools</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-3 (2)</ID>
+        <Title>Maintenance Tools | Inspect Media</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-3 (3)</ID>
+        <Title>Maintenance Tools | Prevent Unauthorized Removal</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>MA-3 (3) (d). [the information owner explicitly authorizing removal of the equipment from the facility]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-4</ID>
+        <Title>Nonlocal Maintenance</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-4 (2)</ID>
+        <Title>Nonlocal Maintenance | Document Nonlocal Maintenance</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-5</ID>
+        <Title>Maintenance Personnel</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MA-5 (1)</ID>
+        <Title>Maintenance Personnel | Individuals Without Appropriate Access</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Requirement: Only MA-5 (1)(a)(1) is required by FedRAMP Moderate Baseline</Remarks>
+    </row>
+    <row>
+        <ID>MA-6</ID>
+        <Title>Timely Maintenance</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Media Protection (MP)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MP-1</ID>
+        <Title>Media Protection Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>MP-1.b.1 [at least every 3 years]
+MP-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MP-2</ID>
+        <Title>Media Access</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MP-3</ID>
+        <Title>Media Marking</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>MP-3b. [no removable media types]</Param_assigns>
+        <Remarks>MP-3b. Guidance: Second parameter not-applicable</Remarks>
+    </row>
+    <row>
+        <ID>MP-4</ID>
+        <Title>Media Storage</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>MP-4a. [all types of digital and non-digital media with sensitive information] within [FedRAMP Assignment: see additional FedRAMP requirements and guidance];</Param_assigns>
+        <Remarks>MP-4a Additional FedRAMP Requirements and Guidance: Requirement: The service provider defines controlled areas within facilities where the information and information system reside.</Remarks>
+    </row>
+    <row>
+        <ID>MP-5</ID>
+        <Title>Media Transport</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>MP-5a. [all media with sensitive information] [prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MP-5 (4)</ID>
+        <Title>Media Transport | Cryptographic Protection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MP-6</ID>
+        <Title>Media Sanitization</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>The organization: a.  Sanitizes [Assignment: organization-defined information system media] prior to disposal, release out of organizational control, or release for reuse using [Assignment: organization-defined sanitization techniques and procedures] in accordance with applicable federal and organizational standards and policies; and b.  Employs sanitization mechanisms with the strength and integrity commensurate with the security category or classification of the information. </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MP-6 (2)</ID>
+        <Title>Media Sanitization | Equipment Testing</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[At least annually]</Param_assigns>
+        <Remarks>Guidance: Equipment and procedures may be tested or validated for effectiveness</Remarks>
+    </row>
+    <row>
+        <ID>MP-7</ID>
+        <Title>Media Use</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>MP-7 (1)</ID>
+        <Title>Media Use | Prohibit Use without Owner</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Physical and Environmental Protection (PE)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-1</ID>
+        <Title>Physical and Environmental Protection Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PE-1.b.1 [at least every 3 years]
+PE-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-2</ID>
+        <Title>Physical Access Authorizations</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PE-2c. [at least annually] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-3</ID>
+        <Title>Physical Access Control</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PE-3a.2 [CSP defined physical access control systems/devices AND guards]
+PE-3d. [in all circumstances within restricted access area where the information system resides]
+PE-3f. [at least annually]
+PE-3g. [at least annually] 
+</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-4</ID>
+        <Title>Access Control For Transmission Medium</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-5</ID>
+        <Title>Access Control For Output Devices</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-6</ID>
+        <Title>Monitoring Physical Access</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PE-6b.[at least monthly]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-6 (1)</ID>
+        <Title>Monitoring Physical Access | Intrusion Alarms / Surveillance Equipment</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-8</ID>
+        <Title>Visitor Access Records</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PE-8a [for a minimum of one year]
+PE-8b. [at least monthly]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-9</ID>
+        <Title>Power Equipment and Cabling</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-10</ID>
+        <Title>Emergency Shutoff</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-11</ID>
+        <Title>Emergency Power</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-12</ID>
+        <Title>Emergency Lighting</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-13</ID>
+        <Title>Fire Protection</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-13 (2)</ID>
+        <Title>Fire Protection | Suppression Devices / Systems</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-13 (3)</ID>
+        <Title>Fire Protection | Automatic Fire Suppression</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-14</ID>
+        <Title>Temperature and Humidity Controls</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PE-14a. [consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments]
+PE-14b. [continuously]</Param_assigns>
+        <Remarks>PE-14a. Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</Remarks>
+    </row>
+    <row>
+        <ID>PE-14 (2)</ID>
+        <Title>Temperature and Humidity Controls | Monitoring With Alarms / Notifications</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-15</ID>
+        <Title>Water Damage Protection</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-16</ID>
+        <Title>Delivery and Removal</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PE-16. [all information system components]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PE-17</ID>
+        <Title>Alternate Work Site</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Planning (PL)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PL-1</ID>
+        <Title>Security Planning Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PL-1.b.1 [at least every 3 years]
+PL-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PL-2</ID>
+        <Title>System Security Plan</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PL-2c. [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PL-2 (3)</ID>
+        <Title>System Security Plan | Plan / Coordinate With Other Organizational Entities</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PL-4</ID>
+        <Title>Rules of Behavior</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PL-4c. [At least every 3 years]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PL-4 (1)</ID>
+        <Title>Rules of Behavior | Social Media and Networking Restrictions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PL-8</ID>
+        <Title>Information Security Architecture</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PL-8b. [At least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Personnel Security (PS)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-1</ID>
+        <Title>Personnel Security Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-1.b.1 [at least every 3 years]
+PS-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-2</ID>
+        <Title>Position Risk Designation</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-2c. [at least every three years] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-3</ID>
+        <Title>Personnel Screening</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-3b. [for national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance.
+For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year.  There is no reinvestigation for other moderate risk positions or any low risk positions]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-3 (3)</ID>
+        <Title>Personnel Screening | Information With Special Protection Measures</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-3 (3)(b). [personnel screening criteria – as required by specific information]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-4</ID>
+        <Title>Personnel Termination</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-4.a. [same day]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-5</ID>
+        <Title>Personnel Transfer</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-5. [within five days of the formal transfer action (DoD 24 hours)]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-6</ID>
+        <Title>Access Agreements</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-6b. [at least annually]
+PS-6c.2. [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-7</ID>
+        <Title>Third-Party Personnel Security</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>PS-7d. organization-defined time period – same day</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>PS-8</ID>
+        <Title>Personnel Sanctions</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>Risk Assessment (RA)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>RA-1</ID>
+        <Title>Risk Assessment Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>RA-1.b.1 [at least every 3 years]
+RA-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>RA-2</ID>
+        <Title>Security Categorization</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>RA-3</ID>
+        <Title>Risk Assessment</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>RA-3b. [security assessment report]
+RA-3c. [at least every three years or when a significant change occurs]
+RA-3e. [at least every three years or when a significant change occurs] </Param_assigns>
+        <Remarks>Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.
+RA-3d. Requirement: to include the Authorizing Official; for JAB authorizations to include FedRAMP</Remarks>
+    </row>
+    <row>
+        <ID>RA-5</ID>
+        <Title>Vulnerability Scanning</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>RA-5a. [monthly operating system/infrastructure; monthly web applications and databases]
+RA-5d. [high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery]</Param_assigns>
+        <Remarks>RA-5a. Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.
+RA-5e. Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</Remarks>
+    </row>
+    <row>
+        <ID>RA-5 (1)</ID>
+        <Title>Vulnerability Scanning | Update Tool Capability</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>RA-5 (2)</ID>
+        <Title>Vulnerability Scanning | Update by Frequency / Prior to New Scan / When Identified</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>RA-5 (2). [prior to a new scan] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>RA-5 (3)</ID>
+        <Title>Vulnerability Scanning | Breadth / Depth of Coverage</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>RA-5 (5)</ID>
+        <Title>Vulnerability Scanning | Privileged Access</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>RA-5 (5). [operating systems / web applications / databases] [all scans]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>RA-5 (6)</ID>
+        <Title>Vulnerability Scanning | Automated Trend Analyses</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>RA-5(6) Guidance: include in Continuous Monitoring ISSO digest/report to Authorizing Official</Remarks>
+    </row>
+    <row>
+        <ID>RA-5 (8)</ID>
+        <Title>Vulnerability Scanning | Review Historic Audit Logs</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>RA-5 (8). Requirements: This enhancement is required for all high vulnerability scan findings. Guidance: While scanning tools may lable findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</Remarks>
+    </row>
+    <row>
+        <ID>System and Services Acquisition (SA)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-1</ID>
+        <Title>System and Services Acquisition Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-1.b.1 [at least every 3 years]
+SA-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-2</ID>
+        <Title>Allocation of Resources</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-3</ID>
+        <Title>System Development Life Cycle</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-4</ID>
+        <Title>Acquisition Process</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>SA-4. Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.
+See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html. </Remarks>
+    </row>
+    <row>
+        <ID>SA-4 (1)</ID>
+        <Title>Acquisition Process | Functional Properties of Security Controls</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-4 (2)</ID>
+        <Title>Acquisition Process | Design / Implementation Information for Security Controls</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[to include security-relevant external system interfaces and high-level design]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-4 (8)</ID>
+        <Title>Acquisition Process | Continuous Monitoring Plan</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-4 (8). [at least the minimum requirement as defined in control CA-7]</Param_assigns>
+        <Remarks>SA-4 (8) Guidance: CSP must use the same security standards regardless of where the system component or information system service is aquired.</Remarks>
+    </row>
+    <row>
+        <ID>SA-4 (9)</ID>
+        <Title>Acquisition Process | Functions / Ports / Protocols / Services in Use</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-4 (10)</ID>
+        <Title>Acquisition Process | Use of Approved PIV Products</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-5</ID>
+        <Title>Information System Documentation</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-8</ID>
+        <Title>Security Engineering Principles</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-9</ID>
+        <Title>External Information System Services</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-9a. [FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system]
+SA-9c. [Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-9 (1)</ID>
+        <Title>External Information Systems | Risk Assessments / Organizational Approvals</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-9 (1) see Additional Requirement and Guidance</Param_assigns>
+        <Remarks>SA-9 (1). Requirement: The service provider documents all existing outsourced security services and conducts a risk assessment of future outsourced security services.  For JAB authorizations, future planned outsourced services are approved and accepted by the JAB.</Remarks>
+    </row>
+    <row>
+        <ID>SA-9 (2)</ID>
+        <Title>External Information Systems | Identification of Functions / Ports / Protocols / Services</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-9 (2). [All external systems where Federal information is processed, transmitted or stored]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-9 (4)</ID>
+        <Title>External Information Systems | Consistent Interests of Consumers and Providers</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-9 (4). [All external systems where Federal information is processed, transmitted or stored]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-9 (5)</ID>
+        <Title>External Information Systems | Processing, Storage, and Service Location</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-9 (5). [information processing, transmission, information data, AND information services]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-10</ID>
+        <Title>Developer Configuration Management</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SA-10a. [development, implementation, AND operation]</Param_assigns>
+        <Remarks>SA-10e. Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to  organization-defined personnel, to include FedRAMP.</Remarks>
+    </row>
+    <row>
+        <ID>SA-10 (1)</ID>
+        <Title>Developer Configuration Management | Software / Firmware Integrity Verification</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-11</ID>
+        <Title>Developer Security Testing and Evaluation</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-11 (1)</ID>
+        <Title>Developer Security Testing and Evaluation | Static Code Analysis</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Requirement: SA-11 (1) or SA-11 (8) or both
+Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed. </Remarks>
+    </row>
+    <row>
+        <ID>SA-11 (2)</ID>
+        <Title>Developer Security Testing and Evaluation | Threat and Vulnerability Analyses</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SA-11 (8)</ID>
+        <Title>Developer Security Testing and Evaluation | Dynamic Code Analysis</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>Requirement: SA-11 (1) or SA-11 (8) or both
+Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed. </Remarks>
+    </row>
+    <row>
+        <ID>System and Communications Protection (SC)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-1</ID>
+        <Title>System and Communications Protection Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-1.b.1 [at least every 3 years]
+SC-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-2</ID>
+        <Title>Application Partitioning</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-4</ID>
+        <Title>Information In Shared Resources</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-5</ID>
+        <Title>Denial of Service Protection</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-6</ID>
+        <Title>Resource Availability</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7</ID>
+        <Title>Boundary Protection</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (3)</ID>
+        <Title>Boundary Protection | Access Points</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (4)</ID>
+        <Title>Boundary Protection | External Telecommunications Services</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-7 (4). [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (5)</ID>
+        <Title>Boundary Protection | Deny by Default / Allow by Exception</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (7)</ID>
+        <Title>Boundary Protection | Prevent Split Tunneling for Remote Devices</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (8)</ID>
+        <Title>Boundary Protection | Route Traffic to Authenticated Proxy Servers</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (12)</ID>
+        <Title>Boundary Protection | Host-Based Protection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (13)</ID>
+        <Title>Boundary Protection | Isolation of Security Tools / Mechanisms / Support Components</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>SC-7 (13). Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</Remarks>
+    </row>
+    <row>
+        <ID>SC-7 (18)</ID>
+        <Title>Boundary Protection | Fail Secure</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-8</ID>
+        <Title>Transmission Confidentiality and Integrity</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-8. [confidentiality AND integrity]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-8 (1)</ID>
+        <Title>Transmission Confidentiality and Integrity | Cryptographic or Alternate Physical Protection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-8 (1). [prevent unauthorized disclosure of information AND detect changes to information] [a hardened or alarmed carrier Protective Distribution System (PDS)]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-10</ID>
+        <Title>Network Disconnect</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-10. [no longer than 30 minutes for RAS-based sessions or no longer than 60 minutes for non-interactive user sessions]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-12</ID>
+        <Title>Cryptographic Key Establishment and Management</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>SC-12 Guidance:  Federally approved cryptography</Remarks>
+    </row>
+    <row>
+        <ID>SC-12 (2)</ID>
+        <Title>Cryptographic Key Establishment and Management | Symmetric Keys</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-12 (2). [NIST FIPS-compliant]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-12 (3)</ID>
+        <Title>Cryptographic Key Establishment and Management | Asymmetric Keys</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-13</ID>
+        <Title>Cryptographic Protection</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>[FIPS-validated or NSA-approved cryptography]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-15</ID>
+        <Title>Collaborative Computing Devices</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-15a. [no exceptions]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-17</ID>
+        <Title>Public Key Infrastructure Certificates</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-18</ID>
+        <Title>Mobile Code</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-19</ID>
+        <Title>Voice Over Internet Protocol</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-20</ID>
+        <Title>Secure Name / Address Resolution Service (Authoritative Source)</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-21</ID>
+        <Title>Secure Name / Address Resolution Service (Recursive or Caching Resolver)</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-22</ID>
+        <Title>Architecture and Provisioning for Name / Address Resolution Service</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-23</ID>
+        <Title>Session Authenticity</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-28</ID>
+        <Title>Protection of Information At Rest</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SC-28. [confidentiality AND integrity]</Param_assigns>
+        <Remarks>SC-28. Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest. </Remarks>
+    </row>
+    <row>
+        <ID>SC-28 (1)</ID>
+        <Title>Protection Of Information At Rest | Cryptographic Protection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SC-39</ID>
+        <Title>Process Isolation</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>System and Information Integrity (SI)</ID>
+        <Title></Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD></Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-1</ID>
+        <Title>System and Information Integrity Policy and Procedures</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-1.b.1 [at least every 3 years]
+SI-1.b.2 [at least annually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-2</ID>
+        <Title>Flaw Remediation</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-2c. [Within 30 days of release of updates]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-2 (2)</ID>
+        <Title>Flaw Remediation | Automated Flaw Remediation Status</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-2 (2). [at least monthly] </Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-2 (3)</ID>
+        <Title>Flaw Remediation | Time to Remediate Flaws / Benchmarks for Corrective Actions</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-3</ID>
+        <Title>Malicious Code Protection</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-3.c.1 [at least weekly] [to include endpoints]
+SI-3.c.2 [to include alerting administrator or defined security personnel]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-3 (1)</ID>
+        <Title>Malicious Code Protection | Central Management</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-3 (2)</ID>
+        <Title>Malicious Code Protection | Automatic Updates</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-3 (7)</ID>
+        <Title>Malicious Code Protection | Nonsignature-Based Detection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-4</ID>
+        <Title>Information System Monitoring</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-4 (1)</ID>
+        <Title>Information System Monitoring | System-Wide Intrusion Detection System</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-4 (2)</ID>
+        <Title>Information System Monitoring | Automated Tools For Real-Time Analysis</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-4 (4)</ID>
+        <Title>Information System Monitoring | Inbound and Outbound Communications Traffic</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-4 (4). [continually]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-4 (5)</ID>
+        <Title>Information System Monitoring | System-Generated Alerts</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks>SI-4(5) Guidance:  In accordance with the incident response plan.</Remarks>
+    </row>
+    <row>
+        <ID>SI-4(14)</ID>
+        <Title>Information System Monitoring | Wireless Intrusion Detection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-4 (16)</ID>
+        <Title>Information System Monitoring | Correlate Monitoring Information</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-4 (23)</ID>
+        <Title>Information System Monitoring | Host-Based Devices</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-5</ID>
+        <Title>Security Alerts, Advisories, and Directives</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-5a. [to include US-CERT]
+SI-5c. [to include system security personnel and administrators with configuration/patch-management responsibilities]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-6</ID>
+        <Title>Security Function Verification</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-6b [to include upon system startup and/or restart at least monthly]
+SI-6c [to include system administrators and security personnel]
+SI-6d [to include notification of system administrators and security personnel]
+</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-7</ID>
+        <Title>Software, Firmware, and Information Integrity</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-7 (1)</ID>
+        <Title>Software, Firmware, and Information Integrity | Integrity Checks</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns>SI-7 (1). [Selection to include security relevant events and at least monthly]</Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-7 (7)</ID>
+        <Title>Software, Firmware, and Information Integrity | Integration of Detection and Response</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-8</ID>
+        <Title>Spam Protection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-8 (1)</ID>
+        <Title>Spam Protection | Central Management</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-8 (2)</ID>
+        <Title>Spam Protection | Automatic Updates</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-10</ID>
+        <Title>Information Input Validation</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-11</ID>
+        <Title>Error Handling</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-12</ID>
+        <Title>Information Handling and Retention</Title>
+        <Baseline_LOW>X</Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+    <row>
+        <ID>SI-16</ID>
+        <Title>Memory Protection</Title>
+        <Baseline_LOW></Baseline_LOW>
+        <Baseline_MOD>X</Baseline_MOD>
+        <Param_assigns></Param_assigns>
+        <Remarks></Remarks>
+    </row>
+</root>

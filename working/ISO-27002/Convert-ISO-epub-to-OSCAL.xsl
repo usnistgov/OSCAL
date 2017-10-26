@@ -2,8 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   exclude-result-prefixes="#all"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://scap.nist.gov/schema/oscal"
-  xmlns:oscal="http://scap.nist.gov/schema/oscal"
+  xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   xpath-default-namespace="http://www.w3.org/1999/xhtml"
   version="2.0">
 
@@ -263,7 +263,7 @@
   </xsl:template>
   
   <xsl:template match="p | p//*" mode="#all">
-    <xsl:element name="{local-name()}" namespace="http://scap.nist.gov/schema/oscal">
+    <xsl:element name="{local-name()}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>

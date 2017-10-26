@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="profile-basic-display.xsl"?>
 <?xml-model href="lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-model href="lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns="http://scap.nist.gov/schema/oscal">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <invoke href="SP800-53-OSCAL-refined.xml">
       <include>
          <call control-id="ac.1"><!--ACCESS CONTROL POLICY AND PROCEDURES--></call>

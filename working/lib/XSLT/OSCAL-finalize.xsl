@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs"
-  xmlns="http://scap.nist.gov/schema/oscal"
-  xmlns:oscal="http://scap.nist.gov/schema/oscal"
+  xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+  xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   xpath-default-namespace="http://www.w3.org/1999/xhtml"
   version="3.0">
 
@@ -23,10 +23,10 @@
   <xsl:template match="/">
     
     <!--<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css" title="Basic" alternate="yes"?>
-    <?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+    <?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
     <?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css" title="Wiring" alternate="yes"?>-->
     
-    <xsl:processing-instruction name="xml-model">href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
+    <xsl:processing-instruction name="xml-model">href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"</xsl:processing-instruction>
     <xsl:text>&#xA;</xsl:text>
     <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"</xsl:processing-instruction>
     <xsl:text>&#xA;</xsl:text>

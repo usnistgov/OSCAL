@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
-  xmlns:oscal="http://scap.nist.gov/schema/oscal"
+  xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   type="oscal:schema-production" name="schema-production">
   
 <!--
@@ -20,7 +20,7 @@
   -->
   
   <p:input port="source-xsd" primary="true"/>
-  <p:option name="oscal-doc-file" select="'../../doc/schema/oscal-oscal.xml'"/>
+  <p:option name="oscal-doc-file" select="'../../../docs/schema/oscal-oscal.xml'"/>
   
   <p:input port="parameters" kind="parameter"/>
   
@@ -65,7 +65,7 @@
   <p:xslt name="produce-html-docs">
     <p:input port="stylesheet">
       <!-- XSLT 1.0 so it also runs in a browser -->
-      <p:document href="../../doc/schema/oscal-docs-html.xsl"/>
+      <p:document href="../../../docs/schema/oscal-docs-html.xsl"/>
     </p:input>
   </p:xslt>
   
@@ -75,6 +75,5 @@
       <p:document href="../XSLT/html-to-markdown.xsl"/>
     </p:input>
   </p:xslt>
-  
  
 </p:declare-step>

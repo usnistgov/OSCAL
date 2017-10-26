@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:oscal="http://scap.nist.gov/schema/oscal"
+  xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   
   exclude-result-prefixes="xs"
   version="2.0">
@@ -45,7 +45,7 @@ sure it conforms to the profile?)
   </xsl:template>
   
   <xsl:template match="oscal:stmt | oscal:group/oscal:prop">
-    <xsl:element name="{@name}" namespace="http://scap.nist.gov/schema/oscal">
+    <xsl:element name="{@name}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>

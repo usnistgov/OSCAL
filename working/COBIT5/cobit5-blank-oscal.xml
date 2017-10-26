@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Basic" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../lib/oscal-ui.css" title="Forms interface" alternate="no"?>
-<catalog xmlns="http://scap.nist.gov/schema/oscal">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>COBIT 5 (extracts / examples)</title>
   <group>
     <title>Blank controls</title>
