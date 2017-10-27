@@ -10,6 +10,36 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/SP800-53/SP800-53-extraction.xpl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>SP800-53 to OSCAL (convert and refine)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/baseline-profile.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run XSLT on FedRAMP framework</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/FedRAMP/fedramp-annotated-wrt-MODERATEbaseline.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -410,21 +440,6 @@
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/baseline-profile.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run XSLT on FedRAMP framework</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -2273,7 +2288,7 @@
                                             </field>
                                             <field name="urls">
                                                 <String-array>
-                                                    <String>${pdu}/sources/800-53/800-53-controls.xml</String>
+                                                    <String>${pdu}/sources/800-53/rev5/sp800-53-controls.xml</String>
                                                 </String-array>
                                             </field>
                                         </xprocInputPort>
@@ -2319,7 +2334,7 @@
                                                 <String>final</String>
                                             </field>
                                             <field name="url">
-                                                <String>${pdu}/working/SP800-53/SP800-53-OSCAL-refined.xml</String>
+                                                <String>${pdu}/working/SP800-53/rev5/SP800-53-OSCAL-fresh.xml</String>
                                             </field>
                                             <field name="showInSequenceView">
                                                 <Boolean>true</Boolean>

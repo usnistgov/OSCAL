@@ -64,7 +64,7 @@ control, subcontrol, part, component { padding: 0.5em; margin: 0.5em; border: me
 
 subcontrol { border: thin solid  black }
 
-control > *, subcontrol > *, component > * { margin-left: 20% }
+control > *, subcontrol > *, component > * {  }
 control > subcontrol, component > component { margin-left: 0.5em }
 
 part, purpose, guidance, remarks, information { border: thin dotted black;

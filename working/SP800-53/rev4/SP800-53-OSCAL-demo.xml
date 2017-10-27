@@ -1,7 +1,7 @@
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <?xml-stylesheet type="text/xsl" href="SP800-53-oscal-browser-display.xsl"?>
-<?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>NIST SP800-53 Excerpts for demonstration</title>
   <declarations href="SP800-53-declarations.xml"/>

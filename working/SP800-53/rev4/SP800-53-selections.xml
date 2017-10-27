@@ -1,6 +1,6 @@
-<?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
+<?xml-model href="../../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2017-08-30T17:13:37.212-04:00 -->
 <?xml-stylesheet type="text/xsl" href="SP800-53-oscal-browser-display.xsl"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">

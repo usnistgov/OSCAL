@@ -36,9 +36,10 @@
   
   <xsl:template match="feed:control">
     <control class="SP800-53">
+      <xsl:variable name="this" select="."/>
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="* except (title | references)"/>
-      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)"/>
+      <xsl:apply-templates mode="integrate-objectives" select="$objectives/key('control-by-no',$this/number/replace(.,'\s',''),.)"/>
       <xsl:apply-templates select="references"/>    
     </control>
   </xsl:template>
@@ -99,12 +100,13 @@
   
   <xsl:template match="control-enhancement">
     <subcontrol class="SP800-53-enhancement">
+      <xsl:variable name="this" select="."/>
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       
       <xsl:apply-templates select="* except title"/>
-      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)
-        "/>
+      <xsl:apply-templates mode="integrate-objectives"
+        select="$objectives/key('control-by-no',$this/number/replace(.,'\s',''),/)"/>
     </subcontrol>
   </xsl:template>
   
