@@ -18,6 +18,10 @@ However, this utility can work only on data that is correct and complete or ther
 
 For example, the XPath `//component[prop=' NO MATCH IN CATALOG ']` (applied to any of the annotated worksheets) shows where the FedRAMP worksheet is defective wrt each of the authorities referenced -- where its components fail to match up with controls as expected.
 
+Other XPaths returning items of interest:
+
+* `//prop[@class='worksheet_baselines'] [not(contains(../prop[@class='authority-baselines'],.)]` -- returns components where baselines declared by the worksheet, are not also declared by the reference authority (profile or catalog) 
+            
 Using an XML diff tool to compare catalogs and frameworks (worksheets) is another interesting approach.
 
 ## Means and methods
