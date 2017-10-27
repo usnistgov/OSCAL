@@ -2554,6 +2554,25 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/SP800-53/rev5/SP800-53-OSCAL-fresh.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against its declarations</String>
+                                        <String>OSCAL strict</String>
+                                        <String>OSCAL against Catalog XSD</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>working/FedRAMP/fedramp-oscal-worksheet.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -3012,7 +3031,7 @@
                                                         <Integer>2</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/XSD/oscal-catalog.xsd</String>
+                                                        <String>${pdu}/working/lib/XSD/oscal-core.xsd</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>

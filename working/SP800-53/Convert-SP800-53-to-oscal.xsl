@@ -18,7 +18,7 @@
   
   <xsl:variable name="source" select="/"/>
   
-  <xsl:variable name="objectives" select="document('800-53a-objectives.xml',$source)"/>
+  <xsl:variable name="objectives" select="if (false()) then document('800-53a-objectives.xml',$source) else ()"/>
   
   <xsl:template match="feed:controls">
     <catalog>
