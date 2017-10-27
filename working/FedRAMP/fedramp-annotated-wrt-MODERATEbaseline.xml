@@ -1253,8 +1253,8 @@ CM-3e Guidance:  In accordance with record retention policies and procedures.</p
                href="file:/home/wendell/Documents/OSCAL/working/SP800-53/MODERATE-baseline-profile-oscal.xml#cm.6">CM-6</link>
          <prop class="authority_title">CONFIGURATION SETTINGS</prop>
          <param id="cm-6_a"><!-- inserted into .SP800-53 control#cm.6 .statement .item#smm_cm-6a. -->
-            <desc>organization-defined security configuration checklists</desc>
-            <value>organization-defined security configuration checklists</value>
+            
+            <value>See CM-6(a) Additional FedRAMP Requirements and Guidance</value>
          </param>
          <param id="cm-6_b"><!-- inserted into .SP800-53 control#cm.6 .statement .item#smm_cm-6c. -->
             <desc>organization-defined information system components</desc>

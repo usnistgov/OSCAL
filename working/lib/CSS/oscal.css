@@ -63,6 +63,10 @@ control, subcontrol, part, component { padding: 0.5em; margin: 0.5em; border: me
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 subcontrol { border: thin solid  black }
+
+control > *, subcontrol > *, component > * { margin-left: 20% }
+control > subcontrol, component > component { margin-left: 0.5em }
+
 part, purpose, guidance, remarks, information { border: thin dotted black;
   background-color: gainsboro }
 
@@ -81,7 +85,7 @@ subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; f
 
 group:before  { content: oxy_capitalize(attr(class));  font-weight: bold; font-size:90%; font-family: sans-serif }
 
-title { font-weight: bold; font-family: sans-serif }
+title { font-weight: bold; font-family: sans-serif; margin-left: 0em }
 catalog > title { font-size: 150% }
 group > title { font-size: 130% }
 group > group > title { font-size: 120% }
@@ -103,7 +107,7 @@ param value:before {  font-style: normal; content: 'Value: ' }
 prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 prop { display:block; background-color: #FDDDE6; border: thin outset pink;
-  margin: 2px; padding: 2px; font-size: 90% }
+  padding: 2px; font-size: 90% }
 
 
 /* SP800-53

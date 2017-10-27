@@ -1205,7 +1205,8 @@ CM-2 (1) (b). [to include when directed by Authorizing Official]</p>
             <link rel="subcontrol" href="../SP800-53/SP800-53-OSCAL-refined.xml#cm.2.7.">CM-2 (7)</link>
             <prop class="authority_title">CONFIGURE SYSTEMS, COMPONENTS, OR DEVICES FOR HIGH-RISK AREAS</prop>
             <param id="cm-2_d"><!-- inserted into .SP800-53#cm.2 .SP800-53-enhancement#cm.2.7. .statement .item#s_smm_cm-2.7.a. -->
-               <desc>organization-defined information systems, system components, or devices</desc>
+               <desc>organization-defined information systems, system components, or
+                  devices<b/></desc>
                <value>organization-defined information systems, system components, or devices</value>
             </param>
             <param id="cm-2_e"><!-- inserted into .SP800-53#cm.2 .SP800-53-enhancement#cm.2.7. .statement .item#s_smm_cm-2.7.a. -->
