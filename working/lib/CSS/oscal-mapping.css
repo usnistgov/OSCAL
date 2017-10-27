@@ -3,6 +3,8 @@
 catalog { max-width: 100% }
 
 
-group { display: table }
-control { display: table-row }
-control > * { display: table-cell }
+group         { display: table }
+control       { display: table-row }
+component     { display: table-row }
+control   > * { display: table-cell }
+component > * { display: table-cell } 
