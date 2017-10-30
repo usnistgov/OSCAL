@@ -1,0 +1,847 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "oscal-core.json",
+  "definitions": {
+    "catalog": {
+      "$id": "#/definitions/catalog",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "A fallback for display and navigation, exclusive of more specific properties"
+        },
+        "declarations": {
+          "anyOf": [
+            { "$ref": "#/definitions/declarations" },
+            {
+              "href": {
+                "type": "string",
+                "description": ""
+              }
+            }
+          ],
+          "description": "For extra-schema validation of control components within controls"
+        },
+        "sections": {
+          "type": "array",
+          "description": "For partitioning a catalog, collection, or section therein",
+          "items": { "$ref": "#/definitions/section" }
+        },
+        "groups": {
+          "type": "array",
+          "description": "Related controls or groups (of controls or groups)",
+          "items": { "$ref": "#/definitions/group" }
+        },
+        "controls": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/control" }
+        },
+        "references": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/reference" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "title",
+          "declarations",
+          "sections",
+          "groups",
+          "controls",
+          "references"
+        ]
+      }
+    },
+    "framework": {
+      "$id": "#/definitions/framework",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "optionalClass": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "description": "A fallback for display and navigation, exclusive of more specific properties"
+        },
+        "declarations": {
+          "anyOf": [
+            { "$ref": "#/definitions/declarations" },
+            {
+              "href": {
+                "type": "string",
+                "description": ""
+              }
+            }
+          ],
+          "description": "For extra-schema validation of control components within controls"
+        },
+        "sections": {
+          "type": "array",
+          "description": "For partitioning a catalog, collection, or section therein",
+          "items": { "$ref": "#/definitions/section" }
+        },
+        "categories": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/category" }
+        },
+        "items": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/item" }
+        },
+        "references": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/reference" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "title",
+          "declarations",
+          "sections",
+          "groups",
+          "components",
+          "references"
+        ]
+      }
+    },
+    "category": {
+      "$id": "#/definitions/category",
+      "type": "object",
+      "properties": {
+        "optionalClass": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "props": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prop" }
+        },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/link" }
+        },
+        "prose": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
+        },
+        "categories": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/category" }
+        },
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/item" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "title",
+          "props",
+          "links",
+          "prose",
+          "groups",
+          "components"
+        ]
+      }
+    },
+    "item": {
+      "$id": "#/definitions/item",
+      "type": "object",
+      "properties": {
+        "optionalClass": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "params": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/param" }
+        },
+        "props": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prop" }
+        },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/link" }
+        },
+        "prose": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
+        },
+        "parts": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/part" }
+        },
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/item" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "title",
+          "params",
+          "props",
+          "links",
+          "prose",
+          "parts",
+          "components"
+        ]
+      }
+    },
+    "declarations": {
+      "$id": "#/definitions/declarations",
+      "type": "object",
+      "properties": {
+        "propertyDeclarations": {
+          "type": "array",
+          "description": "Constraints applicable to a class or classes of prop elements (properties) in context",
+          "items": { "$ref": "#/definitions/propertyDeclaration" }
+        },
+        "partDeclarations": {
+          "type": "array",
+          "description": "Indicates constraints to be imposed on parts in context",
+          "items": { "$ref": "#/definitions/partDeclaration" }
+        },
+        "paragraphDeclarations": {
+          "type": "array",
+          "description": "Indicates constraints to be enforced on paragraphs in context",
+          "items": { "$ref": "#/definitions/paragraphDeclaration" }
+        },
+        "linkDeclarations": {
+          "type": "array",
+          "description": "Indicates constraints to be imposed on links in context",
+          "items": { "$ref": "#/definitions/linkDeclaration" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "propertyDeclarations",
+          "partDeclarations",
+          "paragraphDeclarations",
+          "linkDeclarations"
+        ]
+      }
+    },
+    "propertyDeclaration": {
+      "$id": "#/definitions/propertyDeclaration",
+      "type": "object",
+      "properties": {
+        "requiredClass": {
+          "type": "string",
+          "description": ""
+        },
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "singleton": {
+          "type": "boolean",
+          "description": "The declared component may occur only once in its context"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "The declared component is required in its context"
+        },
+        "identifier": {
+          "type": "boolean",
+          "description": "The declared component has a value unique within the document, among properties prop</code> with the same class"
+        },
+        "regex": {
+          "type": "string",
+          "description": "Indicates that the value of a property prop or parameter param must match the given regular expression"
+        },
+        "values": {
+          "type": "array",
+          "description": "Indicates a permissible value for a parameter or property",
+          "items": { "$ref": "#/definitions/value" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "context",
+          "singleton",
+          "required",
+          "identifier",
+          "regex",
+          "values"
+        ]
+      }
+    },
+    "partDeclaration": {
+      "$id": "#/definitions/partDeclaration",
+      "type": "object",
+      "properties": {
+        "requiredClass": {
+          "type": "string",
+          "description": ""
+        },
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "singleton": {
+          "type": "boolean",
+          "description": "The declared component may occur only once in its context"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "The declared component is required in its context"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "context",
+          "singleton",
+          "required"
+        ]
+      }
+    },
+    "paragraphDeclaration": {
+      "$id": "#/definitions/paragraphDeclaration",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "requiredClass": {
+          "type": "string",
+          "description": ""
+        },
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "singleton": {
+          "type": "boolean",
+          "description": "The declared component may occur only once in its context"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "The declared component is required in its context"
+        }        
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "context",
+          "singleton",
+          "required"
+        ]
+      }
+    },
+    "linkDeclaration": {
+      "$id": "#/definitions/linkDeclaration",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "context": {
+          "type": "string",
+          "description": ""
+        },
+        "singleton": {
+          "type": "boolean",
+          "description": "The declared component may occur only once in its context"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "The declared component is required in its context"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "rel",
+          "context",
+          "required",
+          "singleton"
+        ]
+      }
+    },    
+    "value": {
+      "$id": "#/definitions/value",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "inherit": {
+          "type": "array",
+          "description": "Indicates that a value or text within a value should be inherited from a property on a containing control object",
+          "items": {
+            "type": "object",
+            "description": "",
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            },
+            "propertyNames": {
+              "enum": [ "value" ]
+            }
+          }
+        },
+        "autonum": {
+          "type": "array",
+          "description": "Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)",
+          "items": { "type": "string" }
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "inherit",
+          "autonum",
+          "value"
+        ]
+      }
+    },
+    "section": {
+      "$id": "#/definitions/section",
+      "type": "object",
+      "properties": {
+        "optionalClass": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "description": "A fallback for display and navigation, exclusive of more specific properties"
+        },
+        "prose": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "$ref": "#/definitions/section"
+        },
+        "groups": {
+          "type": "array",
+          "$ref": "#/definitions/group"
+        },
+        "references": {
+          "type": "array",
+          "$ref": "#/definitions/reference"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "title",
+          "prose",
+          "sections",
+          "groups",
+          "references"
+        ]
+      }
+    },
+    "group": {
+      "$id": "#/definitions/group",
+      "type": "object",
+      "properties": {
+        "optionalClass": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "description": "A fallback for display and navigation, exclusive of more specific properties"
+        },
+        "props": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prop" }
+        },
+        "parts": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/part" }
+        },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/link" }
+        },
+        "prose": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
+        },
+        "groups": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/group" },
+          "minItems": 1
+        },
+        "controls": {
+          "type": "array",
+          "description": "A structured information object representing a security control",
+          "items": { "$ref": "#/definitions/control" }
+        },
+        "references": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/reference" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "title",
+          "props",
+          "parts",
+          "links",
+          "prose",
+          "groups",
+          "controls",
+          "references"
+        ]
+      }     
+    },
+    "control": {
+      "$id": "#/definitions/control",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "optionalClass": {
+          "type": "string",
+          "description": ""
+        },
+        "title": {
+          "type": "string",
+          "description": ""
+        },
+        "params": {
+          "type": "array",
+          "description": "A parameter setting, to be propagated to points of insertion",
+          "items": { "$ref": "#/definitions/param" }
+        },
+        "props": {
+          "type": "array",
+          "description": "A value with a name, attributed to the containing control, subcontrol, part, or group",
+          "items": { "$ref": "#/definitions/prop" }
+        },
+        "parts": {
+          "type": "array",
+          "description": "A component or partition in a control, subcontrol, or part",
+          "items": { "$ref": "#/definitions/part" }
+        },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/link" }
+        },
+        "prose": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
+        },
+        "subcontrols": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/subcontrol" }
+        },
+        "references": {
+          "type": "array",
+          "description": "A reference, with one or more citations to standards, related documents, or other resources",
+          "items": { "$ref": "#/definitions/reference" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "class",
+          "title",
+          "params",
+          "props",
+          "parts",
+          "links",
+          "prose",
+          "subcontrols",
+          "references"
+        ]
+      }
+    },
+    "subcontrol": {
+      "$id": "#/definitions/subcontrol",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "optionalClass": {
+          "type": "string",
+          "description": ""
+        },
+        "title": {
+          "type": "string",
+          "description": ""
+        },
+        "params": {
+          "type": "array",
+          "description": "A parameter setting, to be propagated to points of insertion",
+          "items": { "$ref": "#/definitions/param" }
+        },
+        "props": {
+          "type": "array",
+          "description": "A value with a name, attributed to the containing control, subcontrol, part, or group",
+          "items": { "$ref": "#/definitions/prop" }
+        },
+        "parts": {
+          "type": "array",
+          "description": "A component or partition in a control, subcontrol, or part",
+          "items": { "$ref": "#/definitions/part" }
+        },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/link" }
+        },
+        "prose": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
+        },
+        "references": {
+          "type": "array",
+          "description": "A reference, with one or more citations to standards, related documents, or other resources",
+          "items": { "$ref": "#/definitions/reference" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "class",
+          "title",
+          "params",
+          "props",
+          "parts",
+          "links",
+          "prose",
+          "references"
+        ]
+      }
+    },
+    "part": {
+      "$id": "#/definitions/part",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "optionalClass": {
+          "type": "string",
+          "description": ""
+        },
+        "title": {
+          "type": "string"
+        },
+        "props": {
+          "type": "array",
+          "description": "A value with a name, attributed to the containing control, subcontrol, part, or group",
+          "items": { "$ref": "#/definitions/prop" }
+        },
+        "parts": {
+          "type": "array",
+          "description": "",
+          "items": { "$ref": "#/definitions/part" }
+        },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/link" }
+        },
+        "prose": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/prose" }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "class",
+          "title",
+          "props",
+          "parts",
+          "links",
+          "prose"
+        ]
+      }
+    },
+    "link": {
+      "$id": "#/definitions/link",
+      "type": "object",
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "rel",
+          "href",
+          "value"
+        ]
+      }
+    },
+    "param": {
+      "$id": "#/definitions/param",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "optionalClass": {
+          "type": "string",
+          "description": ""
+        },
+        "description": {
+          "type": "string",
+          "description": "Indicates and explains the purpose and use of a parameter"
+        },
+        "value": {
+          "type": "string",
+          "description": "Indicates a permissible value for a parameter or property"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "class",
+          "description",
+          "value"
+        ]
+      }
+    },
+    "prop": {
+      "$id": "#/definitions/prop",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "requiredClass": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "class",
+          "value"
+        ]
+      }
+    },
+    "reference": {
+      "$id": "#/definitions/reference",
+      "type": "object",
+      "description": "Standard: Citation of a formal published standard\n Citation: Citation of a resource",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "citations": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "href": {
+                "type": "string",
+                "description": ""
+              },
+              "value": {
+                "type": "string",
+                "description": ""
+              }
+            }
+          }
+        },
+        "standards": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "href": {
+                "type": "string",
+                "description": ""
+              },
+              "value": {
+                "type": "string",
+                "description": ""
+              }
+            }
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "citations",
+          "standards"
+        ]
+      }
+    },
+    "prose": {
+      "$id": "#/definitions/prose",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "class": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      }
+    }   
+  },
+  "properties": {
+    "catalog": {
+      "$ref": "#/definitions/catalog",
+      "description": ""
+    },
+    "declarations": {
+      "$ref": "#/definitions/declarations",
+      "description": ""
+    },
+    "framework": {
+      "$ref": "#/definitions/framework",
+      "description": ""      
+    }    
+  },
+  "propertyNames": {
+    "enum": [
+      "catalog",
+      "declarations",
+      "framework"
+    ]
+  }
+}

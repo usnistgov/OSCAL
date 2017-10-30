@@ -1,0 +1,3114 @@
+{
+  "invoke": "file:/home/wendell/Documents/OSCAL/working/SP800-53/SP800-53-OSCAL-refined.xml",
+  "include": [
+    {
+      "all": false,
+      "withSubcontrols": false,
+      "calls": [
+        {
+          "controlId": "ac.1"
+        },
+        {
+          "controlId": "ac.2"
+        },
+        {
+          "subcontrolId": "ac.2.1."
+        },
+        {
+          "subcontrolId": "ac.2.2."
+        },
+        {
+          "subcontrolId": "ac.2.3."
+        },
+        {
+          "subcontrolId": "ac.2.4."
+        },
+        {
+          "subcontrolId": "ac.2.5."
+        },
+        {
+          "subcontrolId": "ac.2.7."
+        },
+        {
+          "subcontrolId": "ac.2.9."
+        },
+        {
+          "subcontrolId": "ac.2.10."
+        },
+        {
+          "subcontrolId": "ac.2.12."
+        },
+        {
+          "controlId": "ac.3"
+        },
+        {
+          "controlId": "ac.4"
+        },
+        {
+          "subcontrolId": "ac.4.21."
+        },
+        {
+          "controlId": "ac.5"
+        },
+        {
+          "controlId": "ac.6"
+        },
+        {
+          "subcontrolId": "ac.6.1."
+        },
+        {
+          "subcontrolId": "ac.6.2."
+        },
+        {
+          "subcontrolId": "ac.6.5."
+        },
+        {
+          "subcontrolId": "ac.6.9."
+        },
+        {
+          "subcontrolId": "ac.6.10."
+        },
+        {
+          "controlId": "ac.7"
+        },
+        {
+          "controlId": "ac.8"
+        },
+        {
+          "controlId": "ac.10"
+        },
+        {
+          "controlId": "ac.11"
+        },
+        {
+          "subcontrolId": "ac.11.1."
+        },
+        {
+          "controlId": "ac.12"
+        },
+        {
+          "controlId": "ac.14"
+        },
+        {
+          "controlId": "ac.17"
+        },
+        {
+          "subcontrolId": "ac.17.1."
+        },
+        {
+          "subcontrolId": "ac.17.2."
+        },
+        {
+          "subcontrolId": "ac.17.3."
+        },
+        {
+          "subcontrolId": "ac.17.4."
+        },
+        {
+          "subcontrolId": "ac.17.9."
+        },
+        {
+          "controlId": "ac.18"
+        },
+        {
+          "subcontrolId": "ac.18.1."
+        },
+        {
+          "controlId": "ac.19"
+        },
+        {
+          "subcontrolId": "ac.19.5."
+        },
+        {
+          "controlId": "ac.20"
+        },
+        {
+          "subcontrolId": "ac.20.1."
+        },
+        {
+          "subcontrolId": "ac.20.2."
+        },
+        {
+          "controlId": "ac.21"
+        },
+        {
+          "controlId": "ac.22"
+        },
+        {
+          "controlId": "at.1"
+        },
+        {
+          "controlId": "at.2"
+        },
+        {
+          "subcontrolId": "at.2.2."
+        },
+        {
+          "controlId": "at.3"
+        },
+        {
+          "controlId": "at.4"
+        },
+        {
+          "controlId": "au.1"
+        },
+        {
+          "controlId": "au.2"
+        },
+        {
+          "subcontrolId": "au.2.3."
+        },
+        {
+          "controlId": "au.3"
+        },
+        {
+          "subcontrolId": "au.3.1."
+        },
+        {
+          "controlId": "au.4"
+        },
+        {
+          "controlId": "au.5"
+        },
+        {
+          "controlId": "au.6"
+        },
+        {
+          "subcontrolId": "au.6.1."
+        },
+        {
+          "subcontrolId": "au.6.3."
+        },
+        {
+          "controlId": "au.7"
+        },
+        {
+          "subcontrolId": "au.7.1."
+        },
+        {
+          "controlId": "au.8"
+        },
+        {
+          "subcontrolId": "au.8.1."
+        },
+        {
+          "controlId": "au.9"
+        },
+        {
+          "subcontrolId": "au.9.2."
+        },
+        {
+          "subcontrolId": "au.9.4."
+        },
+        {
+          "controlId": "au.11"
+        },
+        {
+          "controlId": "au.12"
+        },
+        {
+          "controlId": "ca.1"
+        },
+        {
+          "controlId": "ca.2"
+        },
+        {
+          "subcontrolId": "ca.2.1."
+        },
+        {
+          "subcontrolId": "ca.2.2."
+        },
+        {
+          "subcontrolId": "ca.2.3."
+        },
+        {
+          "controlId": "ca.3"
+        },
+        {
+          "subcontrolId": "ca.3.3."
+        },
+        {
+          "subcontrolId": "ca.3.5."
+        },
+        {
+          "controlId": "ca.5"
+        },
+        {
+          "controlId": "ca.6"
+        },
+        {
+          "controlId": "ca.7"
+        },
+        {
+          "subcontrolId": "ca.7.1."
+        },
+        {
+          "controlId": "ca.8"
+        },
+        {
+          "subcontrolId": "ca.8.1."
+        },
+        {
+          "controlId": "ca.9"
+        },
+        {
+          "controlId": "cm.1"
+        },
+        {
+          "controlId": "cm.2"
+        },
+        {
+          "subcontrolId": "cm.2.1."
+        },
+        {},
+        {
+          "subcontrolId": "cm.2.3."
+        },
+        {
+          "subcontrolId": "cm.2.7."
+        },
+        {
+          "controlId": "cm.3"
+        },
+        {
+          "controlId": "cm.4"
+        },
+        {
+          "controlId": "cm.5"
+        },
+        {
+          "subcontrolId": "cm.5.1."
+        },
+        {
+          "subcontrolId": "cm.5.3."
+        },
+        {
+          "subcontrolId": "cm.5.5."
+        },
+        {
+          "controlId": "cm.6"
+        },
+        {
+          "subcontrolId": "cm.6.1."
+        },
+        {
+          "controlId": "cm.7"
+        },
+        {
+          "subcontrolId": "cm.7.1."
+        },
+        {
+          "subcontrolId": "cm.7.2."
+        },
+        {
+          "subcontrolId": "cm.7.5."
+        },
+        {
+          "controlId": "cm.8"
+        },
+        {
+          "subcontrolId": "cm.8.1."
+        },
+        {
+          "subcontrolId": "cm.8.3."
+        },
+        {
+          "subcontrolId": "cm.8.5."
+        },
+        {
+          "controlId": "cm.9"
+        },
+        {
+          "controlId": "cm.10"
+        },
+        {
+          "subcontrolId": "cm.10.1."
+        },
+        {
+          "controlId": "cm.11"
+        },
+        {
+          "controlId": "cp.1"
+        },
+        {
+          "controlId": "cp.2"
+        },
+        {
+          "subcontrolId": "cp.2.1."
+        },
+        {
+          "subcontrolId": "cp.2.2."
+        },
+        {
+          "subcontrolId": "cp.2.3."
+        },
+        {
+          "subcontrolId": "cp.2.8."
+        },
+        {
+          "controlId": "cp.3"
+        },
+        {
+          "controlId": "cp.4"
+        },
+        {
+          "subcontrolId": "cp.4.1."
+        },
+        {
+          "controlId": "cp.6"
+        },
+        {
+          "subcontrolId": "cp.6.1."
+        },
+        {
+          "subcontrolId": "cp.6.3."
+        },
+        {
+          "controlId": "cp.7"
+        },
+        {
+          "subcontrolId": "cp.7.1."
+        },
+        {
+          "subcontrolId": "cp.7.2."
+        },
+        {
+          "subcontrolId": "cp.7.3."
+        },
+        {
+          "controlId": "cp.8"
+        },
+        {
+          "subcontrolId": "cp.8.1."
+        },
+        {
+          "subcontrolId": "cp.8.2."
+        },
+        {
+          "controlId": "cp.9"
+        },
+        {
+          "subcontrolId": "cp.9.1."
+        },
+        {
+          "subcontrolId": "cp.9.3."
+        },
+        {
+          "controlId": "cp.10"
+        },
+        {
+          "subcontrolId": "cp.10.2."
+        },
+        {
+          "controlId": "ia.1"
+        },
+        {
+          "controlId": "ia.2"
+        },
+        {
+          "subcontrolId": "ia.2.1."
+        },
+        {
+          "subcontrolId": "ia.2.2."
+        },
+        {
+          "subcontrolId": "ia.2.3."
+        },
+        {
+          "subcontrolId": "ia.2.5."
+        },
+        {
+          "subcontrolId": "ia.2.8."
+        },
+        {
+          "subcontrolId": "ia.2.11."
+        },
+        {
+          "subcontrolId": "ia.2.12."
+        },
+        {
+          "controlId": "ia.3"
+        },
+        {
+          "controlId": "ia.4"
+        },
+        {
+          "subcontrolId": "ia.4.4."
+        },
+        {
+          "controlId": "ia.5"
+        },
+        {
+          "subcontrolId": "ia.5.1."
+        },
+        {
+          "subcontrolId": "ia.5.2."
+        },
+        {
+          "subcontrolId": "ia.5.3."
+        },
+        {
+          "subcontrolId": "ia.5.4."
+        },
+        {
+          "subcontrolId": "ia.5.6."
+        },
+        {
+          "subcontrolId": "ia.5.7."
+        },
+        {
+          "subcontrolId": "ia.5.11."
+        },
+        {
+          "controlId": "ia.6"
+        },
+        {
+          "controlId": "ia.7"
+        },
+        {
+          "controlId": "ia.8"
+        },
+        {
+          "subcontrolId": "ia.8.1."
+        },
+        {
+          "subcontrolId": "ia.8.2."
+        },
+        {
+          "subcontrolId": "ia.8.3."
+        },
+        {
+          "subcontrolId": "ia.8.4."
+        },
+        {
+          "controlId": "ir.1"
+        },
+        {
+          "controlId": "ir.2"
+        },
+        {
+          "controlId": "ir.3"
+        },
+        {
+          "subcontrolId": "ir.3.2."
+        },
+        {
+          "controlId": "ir.4"
+        },
+        {
+          "subcontrolId": "ir.4.1."
+        },
+        {
+          "controlId": "ir.5"
+        },
+        {
+          "controlId": "ir.6"
+        },
+        {
+          "subcontrolId": "ir.6.1."
+        },
+        {
+          "controlId": "ir.7"
+        },
+        {
+          "subcontrolId": "ir.7.1."
+        },
+        {
+          "subcontrolId": "ir.7.2."
+        },
+        {
+          "controlId": "ir.8"
+        },
+        {
+          "controlId": "ir.9"
+        },
+        {
+          "subcontrolId": "ir.9.1."
+        },
+        {
+          "subcontrolId": "ir.9.2."
+        },
+        {
+          "subcontrolId": "ir.9.3."
+        },
+        {
+          "subcontrolId": "ir.9.4."
+        },
+        {
+          "controlId": "ma.1"
+        },
+        {
+          "controlId": "ma.2"
+        },
+        {
+          "controlId": "ma.3"
+        },
+        {
+          "subcontrolId": "ma.3.1."
+        },
+        {
+          "subcontrolId": "ma.3.2."
+        },
+        {
+          "subcontrolId": "ma.3.3."
+        },
+        {
+          "controlId": "ma.4"
+        },
+        {
+          "subcontrolId": "ma.4.2."
+        },
+        {
+          "controlId": "ma.5"
+        },
+        {
+          "subcontrolId": "ma.5.1."
+        },
+        {
+          "controlId": "ma.6"
+        },
+        {
+          "controlId": "mp.1"
+        },
+        {
+          "controlId": "mp.2"
+        },
+        {
+          "controlId": "mp.3"
+        },
+        {
+          "controlId": "mp.4"
+        },
+        {
+          "controlId": "mp.5"
+        },
+        {
+          "subcontrolId": "mp.5.4."
+        },
+        {
+          "controlId": "mp.6"
+        },
+        {
+          "subcontrolId": "mp.6.2."
+        },
+        {
+          "controlId": "mp.7"
+        },
+        {
+          "subcontrolId": "mp.7.1."
+        },
+        {
+          "controlId": "pe.1"
+        },
+        {
+          "controlId": "pe.2"
+        },
+        {
+          "controlId": "pe.3"
+        },
+        {
+          "controlId": "pe.4"
+        },
+        {
+          "controlId": "pe.5"
+        },
+        {
+          "controlId": "pe.6"
+        },
+        {
+          "subcontrolId": "pe.6.1."
+        },
+        {
+          "controlId": "pe.8"
+        },
+        {
+          "controlId": "pe.9"
+        },
+        {
+          "controlId": "pe.10"
+        },
+        {
+          "controlId": "pe.11"
+        },
+        {
+          "controlId": "pe.12"
+        },
+        {
+          "controlId": "pe.13"
+        },
+        {
+          "subcontrolId": "pe.13.2."
+        },
+        {
+          "subcontrolId": "pe.13.3."
+        },
+        {
+          "controlId": "pe.14"
+        },
+        {
+          "subcontrolId": "pe.14.2."
+        },
+        {
+          "controlId": "pe.15"
+        },
+        {
+          "controlId": "pe.16"
+        },
+        {
+          "controlId": "pe.17"
+        },
+        {
+          "controlId": "pl.1"
+        },
+        {
+          "controlId": "pl.2"
+        },
+        {
+          "subcontrolId": "pl.2.3."
+        },
+        {
+          "controlId": "pl.4"
+        },
+        {
+          "subcontrolId": "pl.4.1."
+        },
+        {
+          "controlId": "pl.8"
+        },
+        {
+          "controlId": "ps.1"
+        },
+        {
+          "controlId": "ps.2"
+        },
+        {
+          "controlId": "ps.3"
+        },
+        {
+          "subcontrolId": "ps.3.3."
+        },
+        {
+          "controlId": "ps.4"
+        },
+        {
+          "controlId": "ps.5"
+        },
+        {
+          "controlId": "ps.6"
+        },
+        {
+          "controlId": "ps.7"
+        },
+        {
+          "controlId": "ps.8"
+        },
+        {
+          "controlId": "ra.1"
+        },
+        {
+          "controlId": "ra.2"
+        },
+        {
+          "controlId": "ra.3"
+        },
+        {
+          "controlId": "ra.5"
+        },
+        {
+          "subcontrolId": "ra.5.1."
+        },
+        {
+          "subcontrolId": "ra.5.2."
+        },
+        {
+          "subcontrolId": "ra.5.3."
+        },
+        {
+          "subcontrolId": "ra.5.5."
+        },
+        {
+          "subcontrolId": "ra.5.6."
+        },
+        {
+          "subcontrolId": "ra.5.8."
+        },
+        {
+          "controlId": "sa.1"
+        },
+        {
+          "controlId": "sa.2"
+        },
+        {
+          "controlId": "sa.3"
+        },
+        {
+          "controlId": "sa.4"
+        },
+        {
+          "subcontrolId": "sa.4.1."
+        },
+        {
+          "subcontrolId": "sa.4.2."
+        },
+        {
+          "subcontrolId": "sa.4.8."
+        },
+        {
+          "subcontrolId": "sa.4.9."
+        },
+        {
+          "subcontrolId": "sa.4.10."
+        },
+        {
+          "controlId": "sa.5"
+        },
+        {
+          "controlId": "sa.8"
+        },
+        {
+          "controlId": "sa.9"
+        },
+        {
+          "subcontrolId": "sa.9.1."
+        },
+        {
+          "subcontrolId": "sa.9.2."
+        },
+        {
+          "subcontrolId": "sa.9.4."
+        },
+        {
+          "subcontrolId": "sa.9.5."
+        },
+        {
+          "controlId": "sa.10"
+        },
+        {
+          "subcontrolId": "sa.10.1."
+        },
+        {
+          "controlId": "sa.11"
+        },
+        {
+          "subcontrolId": "sa.11.1."
+        },
+        {
+          "subcontrolId": "sa.11.2."
+        },
+        {
+          "subcontrolId": "sa.11.8."
+        },
+        {
+          "controlId": "sc.1"
+        },
+        {
+          "controlId": "sc.2"
+        },
+        {
+          "controlId": "sc.4"
+        },
+        {
+          "controlId": "sc.5"
+        },
+        {
+          "controlId": "sc.6"
+        },
+        {
+          "controlId": "sc.7"
+        },
+        {
+          "subcontrolId": "sc.7.3."
+        },
+        {
+          "subcontrolId": "sc.7.4."
+        },
+        {
+          "subcontrolId": "sc.7.5."
+        },
+        {
+          "subcontrolId": "sc.7.7."
+        },
+        {
+          "subcontrolId": "sc.7.8."
+        },
+        {
+          "subcontrolId": "sc.7.12."
+        },
+        {
+          "subcontrolId": "sc.7.13."
+        },
+        {
+          "subcontrolId": "sc.7.18."
+        },
+        {
+          "controlId": "sc.8"
+        },
+        {
+          "subcontrolId": "sc.8.1."
+        },
+        {
+          "controlId": "sc.10"
+        },
+        {
+          "controlId": "sc.12"
+        },
+        {
+          "subcontrolId": "sc.12.2."
+        },
+        {
+          "subcontrolId": "sc.12.3."
+        },
+        {
+          "controlId": "sc.13"
+        },
+        {
+          "controlId": "sc.15"
+        },
+        {
+          "controlId": "sc.17"
+        },
+        {
+          "controlId": "sc.18"
+        },
+        {
+          "controlId": "sc.19"
+        },
+        {
+          "controlId": "sc.20"
+        },
+        {
+          "controlId": "sc.21"
+        },
+        {
+          "controlId": "sc.22"
+        },
+        {
+          "controlId": "sc.23"
+        },
+        {
+          "controlId": "sc.28"
+        },
+        {
+          "subcontrolId": "sc.28.1."
+        },
+        {
+          "controlId": "sc.39"
+        },
+        {
+          "controlId": "si.1"
+        },
+        {
+          "controlId": "si.2"
+        },
+        {
+          "subcontrolId": "si.2.2."
+        },
+        {
+          "subcontrolId": "si.2.3."
+        },
+        {
+          "controlId": "si.3"
+        },
+        {
+          "subcontrolId": "si.3.1."
+        },
+        {
+          "subcontrolId": "si.3.2."
+        },
+        {
+          "subcontrolId": "si.3.7."
+        },
+        {
+          "controlId": "si.4"
+        },
+        {
+          "subcontrolId": "si.4.1."
+        },
+        {
+          "subcontrolId": "si.4.2."
+        },
+        {
+          "subcontrolId": "si.4.4."
+        },
+        {
+          "subcontrolId": "si.4.5."
+        },
+        {},
+        {
+          "subcontrolId": "si.4.16."
+        },
+        {
+          "subcontrolId": "si.4.23."
+        },
+        {
+          "controlId": "si.5"
+        },
+        {
+          "controlId": "si.6"
+        },
+        {
+          "controlId": "si.7"
+        },
+        {
+          "subcontrolId": "si.7.1."
+        },
+        {
+          "subcontrolId": "si.7.7."
+        },
+        {
+          "controlId": "si.8"
+        },
+        {
+          "subcontrolId": "si.8.1."
+        },
+        {
+          "subcontrolId": "si.8.2."
+        },
+        {
+          "controlId": "si.10"
+        },
+        {
+          "controlId": "si.11"
+        },
+        {
+          "controlId": "si.12"
+        },
+        {
+          "controlId": "si.16"
+        }
+      ],
+      "params": [
+        {
+          "id": "ac-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ac-1_b",
+          "values": [
+            "at least every 3 years"
+          ]
+        },
+        {
+          "id": "ac-1_c",
+          "values": [
+            "at least annually"
+          ]
+        },
+        {
+          "id": "ac-2_a",
+          "values": [
+            "organization-defined information system account types"
+          ]
+        },
+        {
+          "id": "ac-2_b",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ac-2_c",
+          "values": [
+            "organization-defined procedures or conditions"
+          ]
+        },
+        {
+          "id": "ac-2_d",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ac-2_e",
+          "values": [
+            "No more than 30 days for temporary and emergency account types"
+          ]
+        },
+        {
+          "id": "ac-2_f",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ac-2_g",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ac-2_h",
+          "values": [
+            "organization-defined time-period of expected inactivity or description of when to log out"
+          ]
+        },
+        {
+          "id": "ac-2_j",
+          "values": [
+            "organization-defined actions"
+          ]
+        },
+        {
+          "id": "ac-2_l",
+          "values": [
+            "organization-defined conditions for establishing shared/group accounts"
+          ]
+        },
+        {
+          "id": "ac-2_o",
+          "values": [
+            "organization-defined atypical usage"
+          ]
+        },
+        {
+          "id": "ac-2_p",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ac-4_a",
+          "values": [
+            "organization-defined information flow control policies"
+          ]
+        },
+        {
+          "id": "ac-4_z",
+          "values": [
+            "organization-defined mechanisms and/or techniques"
+          ]
+        },
+        {
+          "id": "ac-4_aa",
+          "values": [
+            "organization-defined required separations by types of information"
+          ]
+        },
+        {
+          "id": "ac-5_a",
+          "values": [
+            "organization-defined duties of individuals"
+          ]
+        },
+        {
+          "id": "ac-6_a",
+          "values": [
+            "organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information"
+          ]
+        },
+        {
+          "id": "ac-6_b",
+          "values": [
+            "organization-defined security functions or security-relevant information"
+          ]
+        },
+        {
+          "id": "ac-6_e",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ac-7_a",
+          "values": [
+            "organization-defined number"
+          ]
+        },
+        {
+          "id": "ac-7_b",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ac-7_c",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ac-7_d",
+          "values": [
+            "organization-defined delay algorithm"
+          ]
+        },
+        {
+          "id": "ac-8_a",
+          "values": [
+            "organization-defined system use notification message or banner"
+          ]
+        },
+        {
+          "id": "ac-8_b",
+          "values": [
+            "organization-defined conditions"
+          ]
+        },
+        {
+          "id": "ac-10_a",
+          "values": [
+            "organization-defined account and/or account type"
+          ]
+        },
+        {
+          "id": "ac-10_b",
+          "values": [
+            "organization-defined number"
+          ]
+        },
+        {
+          "id": "ac-11_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ac-12_a",
+          "values": [
+            "organization-defined conditions or trigger events requiring session disconnect"
+          ]
+        },
+        {
+          "id": "ac-14_a",
+          "values": [
+            "organization-defined user actions"
+          ]
+        },
+        {
+          "id": "ac-17_a",
+          "values": [
+            "organization-defined number"
+          ]
+        },
+        {
+          "id": "ac-17_b",
+          "values": [
+            "organization-defined needs"
+          ]
+        },
+        {
+          "id": "ac-17_c",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ac-19_c",
+          "values": [
+            "organization-defined mobile devices"
+          ]
+        },
+        {
+          "id": "ac-21_a",
+          "values": [
+            "organization-defined information sharing circumstances where user discretion is required"
+          ]
+        },
+        {
+          "id": "ac-21_b",
+          "values": [
+            "organization-defined automated mechanisms or manual processes"
+          ]
+        },
+        {
+          "id": "ac-22_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "at-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "at-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "at-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "at-2_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "at-3_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "at-4_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "au-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "au-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "au-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "au-2_a",
+          "values": [
+            "organization-defined auditable events"
+          ]
+        },
+        {
+          "id": "au-2_b",
+          "values": [
+            "organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event"
+          ]
+        },
+        {
+          "id": "au-2_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "au-3_a",
+          "values": [
+            "organization-defined additional, more detailed information"
+          ]
+        },
+        {
+          "id": "au-4_a",
+          "values": [
+            "organization-defined audit record storage requirements"
+          ]
+        },
+        {
+          "id": "au-5_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "au-5_b",
+          "values": [
+            "organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)"
+          ]
+        },
+        {
+          "id": "au-6_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "au-6_b",
+          "values": [
+            "organization-defined inappropriate or unusual activity"
+          ]
+        },
+        {
+          "id": "au-6_c",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "au-7_a",
+          "values": [
+            "organization-defined audit fields within audit records"
+          ]
+        },
+        {
+          "id": "au-8_a",
+          "values": [
+            "organization-defined granularity of time measurement"
+          ]
+        },
+        {
+          "id": "au-8_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "au-8_c",
+          "values": [
+            "organization-defined authoritative time source"
+          ]
+        },
+        {
+          "id": "au-8_d",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "au-9_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "au-9_b",
+          "values": [
+            "organization-defined subset of privileged users"
+          ]
+        },
+        {
+          "id": "au-11_a",
+          "values": [
+            "organization-defined time period consistent with records retention policy"
+          ]
+        },
+        {
+          "id": "au-12_a",
+          "values": [
+            "organization-defined information system components"
+          ]
+        },
+        {
+          "id": "au-12_b",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ca-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ca-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-2_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-2_b",
+          "values": [
+            "organization-defined individuals or roles"
+          ]
+        },
+        {
+          "id": "ca-2_c",
+          "values": [
+            "organization-defined level of independence"
+          ]
+        },
+        {
+          "id": "ca-2_d",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-2_e",
+          "values": [
+            "organization-defined other forms of security assessment"
+          ]
+        },
+        {
+          "id": "ca-2_f",
+          "values": [
+            "organization-defined information system"
+          ]
+        },
+        {
+          "id": "ca-2_g",
+          "values": [
+            "organization-defined external organization"
+          ]
+        },
+        {
+          "id": "ca-2_h",
+          "values": [
+            "organization-defined requirements"
+          ]
+        },
+        {
+          "id": "ca-3_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-3_e",
+          "values": [
+            "organization-defined unclassified, non-national security system"
+          ]
+        },
+        {
+          "id": "ca-3_f",
+          "values": [
+            "Assignment; organization-defined boundary protection device"
+          ]
+        },
+        {
+          "id": "ca-3_h",
+          "values": [
+            "organization-defined information systems"
+          ]
+        },
+        {
+          "id": "ca-5_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-6_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-7_a",
+          "values": [
+            "organization-defined metrics"
+          ]
+        },
+        {
+          "id": "ca-7_b",
+          "values": [
+            "organization-defined frequencies"
+          ]
+        },
+        {
+          "id": "ca-7_c",
+          "values": [
+            "organization-defined frequencies"
+          ]
+        },
+        {
+          "id": "ca-7_d",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ca-7_e",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-7_f",
+          "values": [
+            "organization-defined level of independence"
+          ]
+        },
+        {
+          "id": "ca-8_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ca-8_b",
+          "values": [
+            "organization-defined information systems or system components"
+          ]
+        },
+        {
+          "id": "ca-9_a",
+          "values": [
+            "organization-defined information system components or classes of components"
+          ]
+        },
+        {
+          "id": "cm-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "cm-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-2_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-2_b",
+          "values": [
+            "Assignment organization-defined circumstances"
+          ]
+        },
+        {
+          "id": "cm-2_c",
+          "values": [
+            "organization-defined previous versions of baseline configurations of the information system"
+          ]
+        },
+        {
+          "id": "cm-2_d",
+          "values": [
+            "organization-defined information systems, system components, or devices"
+          ]
+        },
+        {
+          "id": "cm-2_e",
+          "values": [
+            "organization-defined configurations"
+          ]
+        },
+        {
+          "id": "cm-2_f",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "cm-3_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "cm-3_b",
+          "values": [
+            "organization-defined configuration change control element (e.g., committee, board)"
+          ]
+        },
+        {
+          "id": "cm-3_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-3_d",
+          "values": [
+            "organization-defined configuration change conditions"
+          ]
+        },
+        {
+          "id": "cm-5_c",
+          "values": [
+            "organization-defined software and firmware components"
+          ]
+        },
+        {
+          "id": "cm-5_e",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-6_a",
+          "values": [
+            "organization-defined security configuration checklists"
+          ]
+        },
+        {
+          "id": "cm-6_b",
+          "values": [
+            "organization-defined information system components"
+          ]
+        },
+        {
+          "id": "cm-6_c",
+          "values": [
+            "organization-defined operational requirements"
+          ]
+        },
+        {
+          "id": "cm-6_d",
+          "values": [
+            "organization-defined information system components"
+          ]
+        },
+        {
+          "id": "cm-7_a",
+          "values": [
+            "organization-defined prohibited or restricted functions, ports, protocols, and/or services"
+          ]
+        },
+        {
+          "id": "cm-7_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-7_c",
+          "values": [
+            "organization-defined functions, ports, protocols, and services within the information system deemed to be unnecessary and/or nonsecure"
+          ]
+        },
+        {
+          "id": "cm-7_d",
+          "values": [
+            "organization-defined policies regarding software program usage and restrictions"
+          ]
+        },
+        {
+          "id": "cm-7_h",
+          "values": [
+            "organization-defined software programs authorized to execute on the information system"
+          ]
+        },
+        {
+          "id": "cm-7_i",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-8_a",
+          "values": [
+            "organization-defined information deemed necessary to achieve effective information system component accountability"
+          ]
+        },
+        {
+          "id": "cm-8_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-8_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cm-8_d",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "cm-10_a",
+          "values": [
+            "organization-defined restrictions"
+          ]
+        },
+        {
+          "id": "cm-11_a",
+          "values": [
+            "organization-defined policies"
+          ]
+        },
+        {
+          "id": "cm-11_b",
+          "values": [
+            "organization-defined methods"
+          ]
+        },
+        {
+          "id": "cm-11_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cp-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "cp-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cp-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cp-2_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "cp-2_b",
+          "values": [
+            "organization-defined key contingency personnel (identified by name and/or by role) and organizational elements"
+          ]
+        },
+        {
+          "id": "cp-2_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cp-2_d",
+          "values": [
+            "organization-defined key contingency personnel (identified by name and/or by role) and organizational elements"
+          ]
+        },
+        {
+          "id": "cp-2_e",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "cp-3_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "cp-3_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cp-4_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cp-4_b",
+          "values": [
+            "organization-defined tests"
+          ]
+        },
+        {
+          "id": "cp-7_a",
+          "values": [
+            "organization-defined information system operations"
+          ]
+        },
+        {
+          "id": "cp-7_b",
+          "values": [
+            "organization-defined time period consistent with recovery time and recovery point objectives"
+          ]
+        },
+        {
+          "id": "cp-8_a",
+          "values": [
+            "organization-defined information system operations"
+          ]
+        },
+        {
+          "id": "cp-8_b",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "cp-9_a",
+          "values": [
+            "organization-defined frequency consistent with recovery time and recovery point objectives"
+          ]
+        },
+        {
+          "id": "cp-9_b",
+          "values": [
+            "organization-defined frequency consistent with recovery time and recovery point objectives"
+          ]
+        },
+        {
+          "id": "cp-9_c",
+          "values": [
+            "organization-defined frequency consistent with recovery time and recovery point objectives"
+          ]
+        },
+        {
+          "id": "cp-9_d",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "cp-9_e",
+          "values": [
+            "organization-defined critical information system software and other security-related information"
+          ]
+        },
+        {
+          "id": "ia-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ia-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ia-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ia-2_d",
+          "values": [
+            "organization-defined strength of mechanism requirements"
+          ]
+        },
+        {
+          "id": "ia-3_a",
+          "values": [
+            "organization-defined specific and/or types of devices"
+          ]
+        },
+        {
+          "id": "ia-4_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ia-4_b",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ia-4_c",
+          "values": [
+            "organization-defined time period of inactivity"
+          ]
+        },
+        {
+          "id": "ia-4_d",
+          "values": [
+            "organization-defined characteristic identifying individual status"
+          ]
+        },
+        {
+          "id": "ia-5_a",
+          "values": [
+            "organization-defined time period by authenticator type"
+          ]
+        },
+        {
+          "id": "ia-5_b",
+          "values": [
+            "organization-defined requirements for case sensitivity, number of characters, mix of upper-case letters, lower-case letters, numbers, and special characters, including minimum requirements for each type"
+          ]
+        },
+        {
+          "id": "ia-5_c",
+          "values": [
+            "organization-defined number"
+          ]
+        },
+        {
+          "id": "ia-5_d",
+          "values": [
+            "organization-defined numbers for lifetime minimum, lifetime maximum"
+          ]
+        },
+        {
+          "id": "ia-5_e",
+          "values": [
+            "organization-defined number"
+          ]
+        },
+        {
+          "id": "ia-5_f",
+          "values": [
+            "organization-defined types of and/or specific authenticators"
+          ]
+        },
+        {
+          "id": "ia-5_g",
+          "values": [
+            "organization-defined registration authority"
+          ]
+        },
+        {
+          "id": "ia-5_h",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ia-5_i",
+          "values": [
+            "organization-defined requirements"
+          ]
+        },
+        {
+          "id": "ia-5_l",
+          "values": [
+            "organization-defined token quality requirements"
+          ]
+        },
+        {
+          "id": "ia-8_a",
+          "values": [
+            "organization-defined information systems"
+          ]
+        },
+        {
+          "id": "ir-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ir-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ir-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ir-2_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ir-2_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ir-3_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ir-3_b",
+          "values": [
+            "organization-defined tests"
+          ]
+        },
+        {
+          "id": "ir-6_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ir-6_b",
+          "values": [
+            "organization-defined authorities"
+          ]
+        },
+        {
+          "id": "ir-8_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ir-8_b",
+          "values": [
+            "organization-defined incident response personnel (identified by name and/or by role) and organizational elements"
+          ]
+        },
+        {
+          "id": "ir-8_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ir-8_d",
+          "values": [
+            "organization-defined incident response personnel (identified by name and/or by role) and organizational elements"
+          ]
+        },
+        {
+          "id": "ir-9_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ir-9_b",
+          "values": [
+            "organization-defined actions"
+          ]
+        },
+        {
+          "id": "ir-9_c",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ir-9_d",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ir-9_e",
+          "values": [
+            "organization-defined procedures"
+          ]
+        },
+        {
+          "id": "ir-9_f",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "ma-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ma-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ma-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ma-2_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ma-2_b",
+          "values": [
+            "organization-defined maintenance-related information"
+          ]
+        },
+        {
+          "id": "ma-3_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ma-6_a",
+          "values": [
+            "organization-defined information system components"
+          ]
+        },
+        {
+          "id": "ma-6_b",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "mp-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "mp-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "mp-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "mp-2_a",
+          "values": [
+            "organization-defined types of digital and/or non-digital media"
+          ]
+        },
+        {
+          "id": "mp-2_b",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "mp-3_a",
+          "values": [
+            "organization-defined types of information system media"
+          ]
+        },
+        {
+          "id": "mp-3_b",
+          "values": [
+            "organization-defined controlled areas"
+          ]
+        },
+        {
+          "id": "mp-4_a",
+          "values": [
+            "organization-defined types of digital and/or non-digital media"
+          ]
+        },
+        {
+          "id": "mp-4_b",
+          "values": [
+            "organization-defined controlled areas"
+          ]
+        },
+        {
+          "id": "mp-5_a",
+          "values": [
+            "organization-defined types of information system media"
+          ]
+        },
+        {
+          "id": "mp-5_b",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "mp-6_a",
+          "values": [
+            "organization-defined information system media"
+          ]
+        },
+        {
+          "id": "mp-6_b",
+          "values": [
+            "organization-defined sanitization techniques and procedures"
+          ]
+        },
+        {
+          "id": "mp-6_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "mp-7_a",
+          "values": [
+            "organization-defined types of information system media"
+          ]
+        },
+        {
+          "id": "mp-7_b",
+          "values": [
+            "organization-defined information systems or system components"
+          ]
+        },
+        {
+          "id": "mp-7_c",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "pe-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "pe-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-2_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-3_a",
+          "values": [
+            "organization-defined entry/exit points to the facility where the information system resides"
+          ]
+        },
+        {
+          "id": "pe-3_b",
+          "values": [
+            "organization-defined physical access control systems/devices"
+          ]
+        },
+        {
+          "id": "pe-3_c",
+          "values": [
+            "organization-defined entry/exit points"
+          ]
+        },
+        {
+          "id": "pe-3_d",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "pe-3_e",
+          "values": [
+            "organization-defined circumstances requiring visitor escorts and monitoring"
+          ]
+        },
+        {
+          "id": "pe-3_f",
+          "values": [
+            "organization-defined physical access devices"
+          ]
+        },
+        {
+          "id": "pe-3_g",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-3_h",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-4_a",
+          "values": [
+            "organization-defined information system distribution and transmission lines"
+          ]
+        },
+        {
+          "id": "pe-4_b",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "pe-6_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-6_b",
+          "values": [
+            "organization-defined events or potential indications of events"
+          ]
+        },
+        {
+          "id": "pe-8_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "pe-8_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-10_a",
+          "values": [
+            "organization-defined location by information system or system component"
+          ]
+        },
+        {
+          "id": "pe-13_c",
+          "values": [
+            "organization-defined emergency responders"
+          ]
+        },
+        {
+          "id": "pe-14_a",
+          "values": [
+            "organization-defined acceptable levels"
+          ]
+        },
+        {
+          "id": "pe-14_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pe-16_a",
+          "values": [
+            "organization-defined types of information system components"
+          ]
+        },
+        {
+          "id": "pe-17_a",
+          "values": [
+            "organization-defined security controls"
+          ]
+        },
+        {
+          "id": "pl-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "pl-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pl-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pl-2_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "pl-2_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pl-2_c",
+          "values": [
+            "organization-defined individuals or groups"
+          ]
+        },
+        {
+          "id": "pl-4_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "pl-8_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ps-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ps-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ps-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ps-2_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ps-3_a",
+          "values": [
+            "organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening"
+          ]
+        },
+        {
+          "id": "ps-3_b",
+          "values": [
+            "organization-defined additional personnel screening criteria"
+          ]
+        },
+        {
+          "id": "ps-4_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ps-4_b",
+          "values": [
+            "organization-defined information security topics"
+          ]
+        },
+        {
+          "id": "ps-4_c",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ps-4_d",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ps-5_a",
+          "values": [
+            "organization-defined transfer or reassignment actions"
+          ]
+        },
+        {
+          "id": "ps-5_b",
+          "values": [
+            "organization-defined time period following the formal transfer action"
+          ]
+        },
+        {
+          "id": "ps-5_c",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ps-5_d",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ps-6_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ps-6_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ps-7_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ps-7_b",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ps-8_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ps-8_b",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "ra-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ra-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ra-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ra-3_a",
+          "values": [
+            "organization-defined document"
+          ]
+        },
+        {
+          "id": "ra-3_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ra-3_c",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ra-3_d",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ra-5_a",
+          "values": [
+            "organization-defined frequency and/or randomly in accordance with organization-defined process"
+          ]
+        },
+        {
+          "id": "ra-5_b",
+          "values": [
+            "organization-defined response times"
+          ]
+        },
+        {
+          "id": "ra-5_c",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "ra-5_d",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "ra-5_f",
+          "values": [
+            "organization-identified information system components"
+          ]
+        },
+        {
+          "id": "ra-5_g",
+          "values": [
+            "organization-defined vulnerability scanning activities"
+          ]
+        },
+        {
+          "id": "sa-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "sa-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "sa-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "sa-3_a",
+          "values": [
+            "organization-defined system development life cycle"
+          ]
+        },
+        {
+          "id": "sa-4_a",
+          "values": [
+            "organization-defined design/implementation information"
+          ]
+        },
+        {
+          "id": "sa-4_b",
+          "values": [
+            "organization-defined level of detail"
+          ]
+        },
+        {
+          "id": "sa-4_e",
+          "values": [
+            "organization-defined level of detail"
+          ]
+        },
+        {
+          "id": "sa-5_a",
+          "values": [
+            "organization-defined actions"
+          ]
+        },
+        {
+          "id": "sa-5_b",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "sa-9_a",
+          "values": [
+            "organization-defined security controls"
+          ]
+        },
+        {
+          "id": "sa-9_b",
+          "values": [
+            "organization-defined processes, methods, and techniques"
+          ]
+        },
+        {
+          "id": "sa-9_c",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "sa-9_d",
+          "values": [
+            "organization-defined external information system services"
+          ]
+        },
+        {
+          "id": "sa-9_f",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "sa-9_g",
+          "values": [
+            "organization-defined external service providers"
+          ]
+        },
+        {
+          "id": "sa-9_h",
+          "values": [
+            "organization-defined locations"
+          ]
+        },
+        {
+          "id": "sa-9_i",
+          "values": [
+            "organization-defined requirements or conditions"
+          ]
+        },
+        {
+          "id": "sa-10_a",
+          "values": [
+            "organization-defined configuration items under configuration management"
+          ]
+        },
+        {
+          "id": "sa-10_b",
+          "values": [
+            "organization-defined personnel"
+          ]
+        },
+        {
+          "id": "sa-11_a",
+          "values": [
+            "organization-defined depth and coverage"
+          ]
+        },
+        {
+          "id": "sc-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "sc-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "sc-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "sc-5_a",
+          "values": [
+            "organization-defined types of denial of service attacks or references to sources for such information"
+          ]
+        },
+        {
+          "id": "sc-5_b",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "sc-6_a",
+          "values": [
+            "organization-defined resources"
+          ]
+        },
+        {
+          "id": "sc-6_b",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        },
+        {
+          "id": "sc-7_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "sc-7_b",
+          "values": [
+            "organization-defined internal communications traffic"
+          ]
+        },
+        {
+          "id": "sc-7_c",
+          "values": [
+            "organization-defined external networks"
+          ]
+        },
+        {
+          "id": "sc-7_f",
+          "values": [
+            "organization-defined host-based boundary protection mechanisms"
+          ]
+        },
+        {
+          "id": "sc-7_g",
+          "values": [
+            "organization-defined information system components"
+          ]
+        },
+        {
+          "id": "sc-7_h",
+          "values": [
+            "organization-defined information security tools, mechanisms, and support components"
+          ]
+        },
+        {
+          "id": "sc-8_a",
+          "values": [
+            "organization-defined alternative physical safeguards"
+          ]
+        },
+        {
+          "id": "sc-10_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "sc-12_a",
+          "values": [
+            "organization-defined requirements for key generation, distribution, storage, access, and destruction"
+          ]
+        },
+        {
+          "id": "sc-13_a",
+          "values": [
+            "organization-defined cryptographic uses and type of cryptography required for each use"
+          ]
+        },
+        {
+          "id": "sc-15_a",
+          "values": [
+            "organization-defined exceptions where remote activation is to be allowed"
+          ]
+        },
+        {
+          "id": "sc-17_a",
+          "values": [
+            "organization-defined certificate policy"
+          ]
+        },
+        {
+          "id": "sc-28_a",
+          "values": [
+            "organization-defined information at rest"
+          ]
+        },
+        {
+          "id": "sc-28_b",
+          "values": [
+            "organization-defined information"
+          ]
+        },
+        {
+          "id": "sc-28_c",
+          "values": [
+            "organization-defined information system components"
+          ]
+        },
+        {
+          "id": "si-1_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "si-1_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-1_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-2_a",
+          "values": [
+            "organization-defined time period"
+          ]
+        },
+        {
+          "id": "si-2_b",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-2_c",
+          "values": [
+            "organization-defined benchmarks"
+          ]
+        },
+        {
+          "id": "si-3_a",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-3_b",
+          "values": [
+            "organization-defined action"
+          ]
+        },
+        {
+          "id": "si-4_a",
+          "values": [
+            "organization-defined monitoring objectives"
+          ]
+        },
+        {
+          "id": "si-4_b",
+          "values": [
+            "organization-defined techniques and methods"
+          ]
+        },
+        {
+          "id": "si-4_c",
+          "values": [
+            "organization-defined information system monitoring information"
+          ]
+        },
+        {
+          "id": "si-4_d",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "si-4_e",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-4_f",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-4_g",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "si-4_h",
+          "values": [
+            "organization-defined compromise indicators"
+          ]
+        },
+        {
+          "id": "si-4_x",
+          "values": [
+            "organization-defined host-based monitoring mechanisms"
+          ]
+        },
+        {
+          "id": "si-4_y",
+          "values": [
+            "organization-defined information system components"
+          ]
+        },
+        {
+          "id": "si-5_a",
+          "values": [
+            "organization-defined external organizations"
+          ]
+        },
+        {
+          "id": "si-5_b",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "si-5_c",
+          "values": [
+            "organization-defined elements within the organization"
+          ]
+        },
+        {
+          "id": "si-5_d",
+          "values": [
+            "organization-defined external organizations"
+          ]
+        },
+        {
+          "id": "si-6_a",
+          "values": [
+            "organization-defined security functions"
+          ]
+        },
+        {
+          "id": "si-6_b",
+          "values": [
+            "organization-defined system transitional states"
+          ]
+        },
+        {
+          "id": "si-6_c",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-6_d",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "si-6_e",
+          "values": [
+            "organization-defined alternative action(s)"
+          ]
+        },
+        {
+          "id": "si-7_a",
+          "values": [
+            "organization-defined software, firmware, and information"
+          ]
+        },
+        {
+          "id": "si-7_b",
+          "values": [
+            "organization-defined software, firmware, and information"
+          ]
+        },
+        {
+          "id": "si-7_c",
+          "values": [
+            "organization-defined transitional states or security-relevant events"
+          ]
+        },
+        {
+          "id": "si-7_d",
+          "values": [
+            "organization-defined frequency"
+          ]
+        },
+        {
+          "id": "si-7_g",
+          "values": [
+            "organization-defined security-relevant changes to the information system"
+          ]
+        },
+        {
+          "id": "si-10_a",
+          "values": [
+            "organization-defined information inputs"
+          ]
+        },
+        {
+          "id": "si-11_a",
+          "values": [
+            "organization-defined personnel or roles"
+          ]
+        },
+        {
+          "id": "si-16_a",
+          "values": [
+            "organization-defined security safeguards"
+          ]
+        }
+      ]
+    }
+  ]
+}

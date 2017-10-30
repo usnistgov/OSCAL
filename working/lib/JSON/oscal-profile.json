@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "oscal-profile.json",
+  "definitions": {
+    "param": {
+      "$id": "#/definitions/param",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "optionalClass": {
+          "type": "string",
+          "description": ""
+        },
+        "paramValues": {
+          "type": "array",
+          "description": "",
+          "items": { "type": "string" }
+        }
+      },
+      "propertyNames": {
+        "enum": [ "id", "class", "values" ]
+      }
+    },
+    "call": {
+      "$id": "#/definitions/call",
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "properties": {
+            "withSubcontrols": {
+              "type": "boolean",
+              "description": ""
+            },
+            "controlId": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "propertyNames": {
+            "enum": [ "withSubcontrols", "controlId" ]
+          }
+        },
+        {
+          "properties": {
+            "subcontrolID": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "propertyNames": {
+            "enum": [ "subcontrolId" ]
+          }
+        }
+      ]
+    }    
+  },
+  "type": "object",
+  "properties": {
+    "invoke": {
+      "type": "string",
+      "description": "",
+      "format": "uri"
+    },
+    "framework": {
+      "description": "",
+      "$ref": "oscal-core.json#/definitions/framework"
+    },
+    "include": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "properties": {
+          "all": {
+            "type": "boolean",
+            "description": ""
+          },
+          "withSubcontrols": {
+            "type": "boolean",
+            "description": ""
+          },
+          "calls": {
+            "type": "array",
+            "description": "",
+            "items": { "$ref": "#/definitions/call" }  
+          },
+          "params": {
+            "type": "array",
+            "description": "",
+            "items": { "$ref": "#/definitions/param" }
+          }
+        },
+        "propertyNames": {
+          "enum": [
+            "all",
+            "withSubcontrols",
+            "calls",
+            "params"
+          ]
+        }
+      }
+    },
+    "default": {
+      "type": "string"
+    },
+    "exclude": {
+      "type": "array",
+      "description": "",
+      "items": { "$ref": "#/definitions/call" },
+      "minItems": 1
+    }
+  },
+  "propertyNames": {
+    "enum": [
+      "invoke",
+      "framework",
+      "include",
+      "default",
+      "exclude"
+    ]
+  },
+  "required": [ "invoke" ]
+}
