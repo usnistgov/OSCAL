@@ -69,19 +69,22 @@
   <!-- Accounted for by 'div' grouping. -->
   <xsl:template match="family"/>
   
-  <xsl:template match="control-class | number">
+  <xsl:template match="control-class">
     <prop class="{name()}">
       <xsl:apply-templates/>
     </prop>
   </xsl:template>
   
-  <!--<xsl:template match="family">
+<!--  <xsl:template match="family">
     <xsl:attribute name="{name()}"><xsl:value-of select="."/></xsl:attribute>
   </xsl:template>
-  
+-->  
+
   <xsl:template match="number">
-    <xsl:attribute name="no"><xsl:value-of select="."/></xsl:attribute>
-  </xsl:template>-->
+    <prop class="name">
+      <xsl:apply-templates/>
+    </prop>
+  </xsl:template>
   
   <xsl:template match="descriptions | decisions | objectives | potential-assessments">
       <xsl:apply-templates/>
@@ -111,31 +114,31 @@
   </xsl:template>
   
   <xsl:template match="statement">
-    <feat class="statement">
+    <part class="statement">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="statement/statement" priority="2">
-    <feat class="statement-item">
+    <part class="item">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="statement/statement/statement" priority="3">
-    <feat class="statement-subitem">
+    <part class="item">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="statement/description">
-      <prop class="description">
+      <p class="description">
         <xsl:apply-templates select="@*" mode="asElement"/>
         <xsl:apply-templates/>
-      </prop>
+      </p>
   </xsl:template>
   
   <xsl:template match="related">
@@ -151,26 +154,26 @@
   </xsl:template>
   
   <!-- In latest sp80053a, objective is recursive,
-  resulting in nested plug//plug -->
+       resulting in nested part//part -->
   
   <xsl:template match="objective">
-    <feat class="objective">
+    <part class="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
-    <stmt class="guidance">
+    <part class="guidance">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </stmt>
+    </part>
   </xsl:template>
   
   <xsl:template match="decision">
-    <prop class="decision">
+    <p class="decision">
         <xsl:apply-templates/>
-    </prop>
+    </p>
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
@@ -180,16 +183,16 @@
   <xsl:template match="@sequence" mode="asElement"/>
   
   <xsl:template match="potential-assessment">
-    <feat class="assessment">
+    <part class="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="object">
-    <prop class="object">
+    <p class="object">
       <xsl:apply-templates/>
-    </prop>
+    </p>
   </xsl:template>
   
   <xsl:template match="priority | baseline-impact">

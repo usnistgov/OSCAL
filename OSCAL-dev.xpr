@@ -10,11 +10,86 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/SP800-53-extraction.xpl</String>
+                                    <String>working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>SP800-53 to OSCAL (convert and refine)</String>
+                                        <String>OSCAL simple XSLT (open)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/Tuneup-SP800-53-oscal.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/Convert-SP800-53-to-oscal.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL simple XSLT (open)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>sources/800-53/rev5/sp800-53-controls-indented.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/rev5/SP800-53-OSCAL-fresh.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/lib/XSLT/OSCAL-finalize.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>ISO 27002 to OSCAL XProc (convert and refine)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -430,21 +505,6 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/lib/XSLT/OSCAL-finalize.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>ISO 27002 to OSCAL XProc (convert and refine)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>working/doc/schema/oscal-docs-html.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -789,7 +849,7 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>${pdu}/working/lib/OSCAL-simple-fo.xsl</String>
+                                    <String>${pdu}/working/lib/XSLT/OSCAL-simple-fo.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
                                     <String>${currentFileURL}</String>
@@ -875,7 +935,7 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>${pdu}/working/lib/XSLT/oscal-basic-display.xsl</String>
+                                    <String>${pdu}/working/lib/XSLT/HTML/oscal-fancy-display.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
                                     <String>${currentFileURL}</String>
@@ -2334,7 +2394,7 @@
                                                 <String>final</String>
                                             </field>
                                             <field name="url">
-                                                <String>${pdu}/working/SP800-53/rev5/SP800-53-OSCAL-fresh.xml</String>
+                                                <String>${pdu}/working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
                                             </field>
                                             <field name="showInSequenceView">
                                                 <Boolean>true</Boolean>
@@ -2380,7 +2440,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>SP800-53 to OSCAL (convert and refine)</String>
+                                    <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
                                 </field>
                                 <field name="baseURL">
                                     <null/>

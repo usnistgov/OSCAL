@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal.css" title="Regular" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../lib/oscal-mapping.css" title="Tabular" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Regular" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-mapping.css" title="Tabular" alternate="yes"?>
 <?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-  <title>SP800-53A to OSCAL Mapping</title>
+  <title>SP800-53A to OSCAL XML Element Mapping</title>
   <group>
     <p class="source">SP800-53A element</p>
     <p class="target">OSCAL element</p>
@@ -31,12 +31,11 @@
     </control>
     <control class="mapping">
       <p class="source">number</p>
-      <p class="target">prop[@class='number']</p>
+      <p class="target">prop[@class='name']</p>
       <part class="concept">
-        <p>Control numbers are composed by combining a code for the family (AC through SI) with a
-          (consecutive) number identifying the control. Control subcontrols are also numbered
-          hierarchically based on their position inside their containing controls (and
-          subcontrols).</p>
+        <p>Control (formal) names are composed by combining a code for the family (AC through SI)
+          with a (consecutive) number identifying the control. Subcontrols and parts are also named
+          according to their position inside their containing controls (and subcontrols).</p>
       </part>
     </control>
     <control class="mapping">
