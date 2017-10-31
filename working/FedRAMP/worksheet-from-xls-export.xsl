@@ -16,6 +16,7 @@
     <xsl:variable name="enhancement-regex"          as="xs:string" expand-text="true">^{$class-regex}\-\d+\s+\(\d+\)$</xsl:variable>
     
     <xsl:template match="/*" expand-text="yes">
+        <xsl:comment expand-text="true"> XML produced by running { document('')/document-uri(.) } on { document-uri(/) } </xsl:comment> 
         <framework>
             <title>FedRAMP in OSCAL PROTOTYPE</title>
             <xsl:for-each-group select="row" group-starting-with="row[matches(ID,'[a-z]')]">
