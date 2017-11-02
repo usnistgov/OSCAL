@@ -95,8 +95,8 @@
      </xsl:apply-templates>
   </xsl:template>
   
-  <!-- Both catalogs and frameworks are rendered as frameworks. -->
-  <xsl:template match="catalog | framework" mode="filter-controls">
+  <!-- For now, everything comes as a framework. -->
+  <xsl:template match="catalog | framework | worksheet" mode="filter-controls">
     <xsl:variable name="filtered-results">
       <xsl:apply-templates select="title" mode="copy"/>
       <xsl:apply-templates select="group | control | component" mode="filter-controls"/>
@@ -147,17 +147,15 @@
     <!-- A subcontrol is included if all explicitly says to include all subcontrols, or
          if its containing controls is called and set @with-subcontrols -->
     <xsl:variable name="control" select="ancestor::control[1]"/>
-    <xsl:variable name="included" select="( (: include if with-subcontrols on 'all' is not
-      overridden by with-subcontrols=no on the control :) 
-      ($invocation/all/@with-subcontrols='yes')
-        and not( $invocation/include/call[@with-subcontrols='no']/@control-id  = $control/@id ))
-      (: or if the control says to include subcontrols, whatever the 'all' says :)
-      or $invocation/include/call[@with-subcontrols='yes']/@control-id  = $control/@id
+    <xsl:variable name="included" select="(: include if with-subcontrols is on 'all'
+      or on a corresponding 'call' :) 
+      ($invocation/include/all/@with-subcontrols='yes') or
+      ($invocation/include/call[@control-id  = $control/@id]/@with-subcontrols='yes')
       "/>
+    <!-- Or it can be called on its own (no matter other settings) -->
+    <xsl:variable name="called"   select="exists($invocation/include/call[@subcontrol-id  = current()/@id])"/>
     <!-- The subcontrol can still be excluded -->
     <xsl:variable name="excluded" select="exists($invocation/exclude/call[@subcontrol-id  = current()/@id])"/>
-    <!-- Or it can be called on its own (no matter other settings)   -->
-    <xsl:variable name="called"   select="exists($invocation/include/call[@subcontrol-id  = current()/@id])"/>
     <xsl:if test="($included or $called) and not($excluded)">
       <component class="{oscal:classes-including(@class,'subcontrol')}">
         <xsl:copy-of select="@* except @class"/>

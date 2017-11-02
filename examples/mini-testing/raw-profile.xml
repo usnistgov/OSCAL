@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Produced by baseline-profile.xsl applied to
-        file:/home/wendell/Documents/OSCAL/examples/mini-testing/mini-testing-catalog.xml 2017-11-01-04:00
+        mini-testing-catalog.xml 2017-11-01-04:00
         -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/mini-testing/mini-testing-catalog.xml">
+   <invoke href="mini-testing-catalog.xml">
       <include>
 
          <call control-id="ac.5"/>

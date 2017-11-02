@@ -22,7 +22,11 @@
         has no subcontrol with @id '<sch:value-of select="@control-id"/>'</sch:assert>
       <sch:report role="warning" test="(@control-id | @subcontrol-id) = preceding-sibling::oscal:call/(@control-id | @subcontrol-id)">Repeated call on
       '<sch:value-of select="@control-id | @subcontrol-id"/>' will be ignored</sch:report>
+      <assert test="empty(@control-id) or not(parent::oscal:exclude) or exists(../../oscal:include/oscal:all)">
+        Control is excluded but it hasn't been included
+      </assert>
     </sch:rule>
+    
     <sch:rule context="oscal:param">
       <sch:let name="catalog-file" value="ancestor::oscal:invoke/@href"/>
       <sch:let name="catalog" value="document($catalog-file)"/>
@@ -32,11 +36,12 @@
       <sch:assert test="empty($catalog) or not(matches(@id,'\S')) or exists($matching-param)">Referenced catalog '<sch:value-of select="$catalog-file"/>'
         has no parameter with @id '<sch:value-of select="@id"/>'</sch:assert>
     </sch:rule>
+    
     <sch:rule context="oscal:param/oscal:desc">
       <sch:let name="catalog-file" value="ancestor::oscal:invoke/@href"/>
       <sch:let name="catalog" value="document($catalog-file)"/>
       <sch:let name="matching-param" value="key('element-by-id',../@id,$catalog)/self::oscal:param"/>
-      <sch:assert test="empty($matching-param) or deep-equal(.,$matching-param/oscal:desc)">
+      <sch:assert test="empty($matching-param) or normalize-space(.) = normalize-space($matching-param/oscal:desc)">
         Referenced parameter '<sch:value-of select="../@id"/>' has a different description: "<sch:value-of select="$matching-param/oscal:desc"/>"</sch:assert>
         
     </sch:rule>
