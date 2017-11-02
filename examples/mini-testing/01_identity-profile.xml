@@ -6,9 +6,5 @@
 
    <!-- Asking for all controls -->
    
-   <invoke href="mini-testing-catalog.xml">
-      <include>
-         <all/>
-      </include>
-   </invoke>
+   <invoke href="mini-testing-catalog.xml"/>
 </profile>

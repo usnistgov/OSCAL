@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<?xml-model href="../../working/lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+
+   <title>Two controls from AC, with parameters on subcontrols</title>
+   <invoke href="mini-testing-catalog.xml">
+         <include>
+            <call control-id="ac.5"/>
+            <param id="ac-5_a">
+               <desc>CAT PERSON #1 (primary), CAT PERSON #2 (asst), FURTHER CAT PERSONS - organization-defined duties of individuals</desc>
+               <value>CAT PERSON #1 (primary), CAT PERSON #2 (asst), FURTHER CAT PERSONS</value>
+            </param>
+            
+            <call control-id="ac.6"/>
+            
+            <call subcontrol-id="ac.6.1"/>
+            <param id="ac-6_a">
+               <desc>CAT FOOD STATION; LITTER BOX; REGULAR ACCESS TO OUTDOORS - organization-defined security functions (deployed in hardware, software,
+                  and firmware) and security-relevant information</desc>
+               <value>CAT FOOD STATION; LITTER BOX; REGULAR ACCESS TO OUTDOORS</value>
+            </param>
+            
+            <call subcontrol-id="ac.6.2"/>
+            <param id="ac-6_b">
+               <desc>REGULAR FEEDINGS AND PROVISION OF TREATS - organization-defined security functions or security-relevant
+                  information</desc>
+               <value>REGULAR FEEDINGS AND PROVISION OF TREATS</value>
+            </param>
+            
+            <call subcontrol-id="ac.6.3"/>
+            <param id="ac-6_c">
+               <desc>COMMUNICATIVE BEHAVIORS SUCH AS RUBBING LEGS - organization-defined privileged commands</desc>
+               <value>COMMUNICATIVE BEHAVIORS SUCH AS RUBBING LEGS</value>
+            </param>
+            <param id="ac-6_d">
+               <desc>MEALTIMES - organization-defined compelling operational needs</desc>
+               <value>MEALTIMES</value>
+            </param>
+            
+            <call subcontrol-id="ac.6.4"/>
+            
+            <call subcontrol-id="ac.6.5"/>
+            <param id="ac-6_e">
+               <desc>FOREMENTIONED PET CARETAKERS AND STAFF - organization-defined personnel or roles</desc>
+               <value>FOREMENTIONED PET CARETAKERS AND STAFF</value>
+            </param>
+            
+            <call subcontrol-id="ac.6.6"/>
+            
+            <call subcontrol-id="ac.6.7"/>
+            <param id="ac-6_f">
+               <desc>VERY FREQUENTLY - organization-defined frequency</desc>
+               <value>VERY FREQUENTLY</value>
+            </param>
+            <param id="ac-6_g">
+               <desc>PET CARETAKERS - organization-defined roles or classes of users</desc>
+               <value>PET CARETAKERS</value>
+            </param>
+            
+            <call subcontrol-id="ac.6.8"/>
+            <param id="ac-6_h">
+               <desc>CAT TOYS - organization-defined software</desc>
+               <value>CAT TOYS</value>
+            </param>
+            
+            <call subcontrol-id="ac.6.9"/>
+            
+            <call subcontrol-id="ac.6.10"/>
+            
+            
+            
+         </include>
+         
+         
+   </invoke>
+</profile>

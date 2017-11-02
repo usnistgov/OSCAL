@@ -4,7 +4,7 @@ include "oscal-core.rnc" {
   start = (profile | framework)
   }
 
-profile = element profile { invoke+, framework? }
+profile = element profile { title?, invoke+, framework? }
 
 invoke = element invoke { hrefAttr, idAttr, (\include?, exclude?) }
 

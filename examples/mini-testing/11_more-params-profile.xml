@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
 <?xml-model href="../../working/lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
 <profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
    xmlns="http://csrc.nist.gov/ns/oscal/1.0">
@@ -29,7 +30,7 @@
 
          <param id="ac-6_c">
             <desc>organization-defined privileged commands</desc>
-            <value>MEDIA REALLOOCATION INCLUDING HARD DRIVE REFORMATTING; ANY COMMAND ON ANY VOICE-OPERATED DEVICE</value>
+            <value>MEDIA REALLOCATION INCLUDING HARD DRIVE REFORMATTING; ANY COMMAND ON ANY VOICE-OPERATED DEVICE</value>
          </param>
          <param id="ac-6_d">
             <desc>organization-defined compelling operational needs</desc>
@@ -38,7 +39,7 @@
 
          <param id="ac-6_e">
             <desc>organization-defined personnel or roles</desc>
-            <value>OFFICIALLY CERTIFIED WIZARDS</value>
+            <value>CREDENTIALED WIZARDS</value>
          </param>
 
          <!--<param id="ac-6_f">

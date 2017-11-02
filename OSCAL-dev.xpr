@@ -10,6 +10,141 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>examples/mini-testing/99includeACx2-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/99includeRAx3-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/11_more-params-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/99includeAC-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/20_compound-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/10_some-params-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/01a_param-only.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/01_identity-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/02_all-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>examples/mini-testing/05_exclude2-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -41,36 +176,6 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>examples/mini-testing/03_all-with-enh-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/02_all-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/01_identity-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -2854,7 +2959,91 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
+                                    <String>working/SP800-53/rev4/SP800-53-OSCAL-refined.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against XSD</String>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                        <String>OSCAL against its declarations</String>
+                                        <String>OSCAL strict</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>docs/schema/oscal-oscal.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against XSD</String>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                        <String>OSCAL against its declarations</String>
+                                        <String>OSCAL strict</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/ISO-27002/ISO-27002-OSCAL-refined.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against XSD</String>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                        <String>OSCAL against its declarations</String>
+                                        <String>OSCAL strict</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/COBIT5/cobit5-selection-oscal.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL against XSD</String>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                        <String>OSCAL against its declarations</String>
+                                        <String>OSCAL strict</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/11_more-params-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -2869,11 +3058,26 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/FedRAMP/fedramp-low-worksheet.xml</String>
+                                    <String>examples/mini-testing/99includeRAx3-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>OSCAL against Catalog XSD</String>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL core RNC (standalone)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -2907,25 +3111,6 @@
                                     <list>
                                         <String>OSCAL against its declarations</String>
                                         <String>OSCAL strict</String>
-                                        <String>OSCAL against Catalog XSD</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>docs/schema/oscal-oscal.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL strict</String>
-                                        <String>OSCAL core RNC (standalone)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -2957,40 +3142,6 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>working/SP800-53/SP800-53-OSCAL-demo.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL against its declarations</String>
-                                        <String>OSCAL strict</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/ISO-27002/ISO-27002-OSCAL-refined.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL against its declarations</String>
-                                        <String>OSCAL strict</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/COBIT5/cobit5-selection-oscal.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -3361,7 +3512,7 @@
                                                         <Integer>2</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/XSD/oscal-core.xsd</String>
+                                                        <String>${pdu}/schema/xml/oscal-core.xsd</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -3372,7 +3523,7 @@
                                     <String>Validation_scenario</String>
                                 </field>
                                 <field name="name">
-                                    <String>OSCAL against Catalog XSD</String>
+                                    <String>OSCAL against XSD</String>
                                 </field>
                             </validationScenario>
                             <validationScenario>
@@ -3417,7 +3568,7 @@
                                                         <Integer>7</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/Schematron/oscal-as-declared.sch</String>
+                                                        <String>${pdu}/schema/xml/Schematron/oscal-as-declared.sch</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -3473,7 +3624,7 @@
                                                         <Integer>3</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/oscal-core.rnc</String>
+                                                        <String>${pdu}/schema/xml/RNC/oscal-core.rnc</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -3529,7 +3680,7 @@
                                                         <Integer>7</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/Schematron/oscal-links.sch</String>
+                                                        <String>${pdu}/schema/xml/Schematron/oscal-links.sch</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -3585,7 +3736,7 @@
                                                         <Integer>7</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/Schematron/oscal-strict.sch</String>
+                                                        <String>${pdu}/schema/xml/Schematron/oscal-strict.sch</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -3641,7 +3792,7 @@
                                                         <Integer>7</Integer>
                                                     </field>
                                                     <field name="uri">
-                                                        <String>${pdu}/working/lib/Schematron/oscal-parameters.sch</String>
+                                                        <String>${pdu}/schema/xml/Schematron/oscal-parameters.sch</String>
                                                     </field>
                                                 </validationUnitSchema>
                                             </field>
@@ -3666,8 +3817,7 @@
             <file name="working/COBIT5/cobit5-selection-oscal.xml"/>
             <file name="working/ISO-27002/ISO-27002-OSCAL-refined.xml"/>
             <file name="docs/schema/oscal-oscal.xml"/>
-            <file name="working/SP800-53/SP800-53-OSCAL-demo.xml"/>
-            <file name="working/SP800-53/SP800-53-OSCAL-refined.xml"/>
+            <file name="working/SP800-53/rev4/SP800-53-OSCAL-refined.xml"/>
         </folder>
         <folder path="."/>
         <folder path="../../public_html/OSCAL/"/>

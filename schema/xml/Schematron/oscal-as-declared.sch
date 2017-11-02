@@ -5,7 +5,7 @@
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
-  <xsl:include href="../XSLT/oscal-functions.xsl"/>
+  <xsl:include href="oscal-functions.xsl"/>
    
   
 <!-- Declarations are the contents of local declarations, if present, or the document at href if locally empty.  -->

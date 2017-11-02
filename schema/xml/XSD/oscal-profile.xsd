@@ -5,6 +5,7 @@
   <xs:element name="profile">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:title"/>
         <xs:element maxOccurs="unbounded" ref="oscal:invoke"/>
         <xs:element minOccurs="0" ref="oscal:framework"/>
       </xs:sequence>

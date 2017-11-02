@@ -178,6 +178,12 @@
     <xsl:apply-templates mode="copy" select=".[empty(key('element-by-id',parent::param/@id,$invocation)/self::param/value)]"/>
   </xsl:template>
   
+  <xsl:template match="param/desc" mode="filter-controls">
+    <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
+    <xsl:copy-of select="key('element-by-id',parent::param/@id,$invocation)/self::param/desc"/>
+    <xsl:apply-templates mode="copy" select=".[empty(key('element-by-id',parent::param/@id,$invocation)/self::param/desc)]"/>
+  </xsl:template>
+  
   <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
   
   <xsl:function name="oscal:classes" as="xs:string*">
