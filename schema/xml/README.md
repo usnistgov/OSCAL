@@ -23,8 +23,10 @@ XML schemas:
 
 `xml.xsd` | component for XML namespace required by the foregoing.
 
-To come:
+Also in this subdirectory:
 
-* RNC entry point schemas for catalog, framework and worksheet schemas, now in `working/lib` 
-* Working files for schema production, now in `working/lib/XSD`
-* Schematron schemas for validations beyond the schema now in `working/lib/Schematron`
+`RNC` - is the home of the **maintenance copies** of the core schema, as well as convenient top-level (that is, entry point) schemas for the top-level elements `catalog`, `framework` and `worksheet`.
+
+`XSD` is where temp file XSDs are kept and the home directory of schema maintenance-related tasking (XProc and XSLTs).
+
+`Schematron` has lots of useful Schematron including testing of OSCAL against OSCAL declaration sets, and more. Validations, beyond the schema.
