@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- XML produced by running file:/home/wendell/Documents/OSCAL/working/FedRAMP/worksheet-from-xls-export.xsl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/excel-LOW-extract.xml -->
-<framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<worksheet xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>FedRAMP in OSCAL PROTOTYPE</title>
    <group>
       <title>NIST 800-53 Security Controls Catalog Revision 4FedRAMP SSP Low Moderate Baseline Revision 4</title>
@@ -4337,4 +4337,4 @@
          </component>
       </component>
    </group>
-</framework>
+</worksheet>

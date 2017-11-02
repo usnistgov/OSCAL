@@ -17,7 +17,7 @@
     
     <xsl:template match="/*" expand-text="yes">
         <xsl:comment expand-text="true"> XML produced by running { document('')/document-uri(.) } on { document-uri(/) } </xsl:comment> 
-        <framework>
+        <worksheet>
             <title>FedRAMP in OSCAL PROTOTYPE</title>
             <xsl:for-each-group select="row" group-starting-with="row[matches(ID,'[a-z]')]">
                 
@@ -43,7 +43,7 @@
                 </group>
                 
             </xsl:for-each-group>
-        </framework>
+        </worksheet>
     </xsl:template>
     
     <xsl:template match="row/*" priority="-0.4">
