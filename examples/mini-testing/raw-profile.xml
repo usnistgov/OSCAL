@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by baseline-profile.xsl applied to
+        file:/home/wendell/Documents/OSCAL/examples/mini-testing/mini-testing-catalog.xml 2017-11-01-04:00
+        -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+   <invoke href="file:/home/wendell/Documents/OSCAL/examples/mini-testing/mini-testing-catalog.xml">
+      <include>
+
+         <call control-id="ac.5"/>
+         <param id="ac-5_a">
+            <desc>organization-defined duties of individuals</desc>
+            <value>organization-defined duties of individuals</value>
+         </param>
+
+         <call control-id="ac.6"/>
+
+         <call subcontrol-id="ac.6.1"/>
+         <param id="ac-6_a">
+            <desc>organization-defined security functions (deployed in hardware, software,
+                        and firmware) and security-relevant information</desc>
+            <value>organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information</value>
+         </param>
+
+         <call subcontrol-id="ac.6.2"/>
+         <param id="ac-6_b">
+            <desc>organization-defined security functions or security-relevant
+                        information</desc>
+            <value>organization-defined security functions or security-relevant information</value>
+         </param>
+
+         <call subcontrol-id="ac.6.3"/>
+         <param id="ac-6_c">
+            <desc>organization-defined privileged commands</desc>
+            <value>organization-defined privileged commands</value>
+         </param>
+         <param id="ac-6_d">
+            <desc>organization-defined compelling operational needs</desc>
+            <value>organization-defined compelling operational needs</value>
+         </param>
+
+         <call subcontrol-id="ac.6.4"/>
+
+         <call subcontrol-id="ac.6.5"/>
+         <param id="ac-6_e">
+            <desc>organization-defined personnel or roles</desc>
+            <value>organization-defined personnel or roles</value>
+         </param>
+
+         <call subcontrol-id="ac.6.6"/>
+
+         <call subcontrol-id="ac.6.7"/>
+         <param id="ac-6_f">
+            <desc>organization-defined frequency</desc>
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="ac-6_g">
+            <desc>organization-defined roles or classes of users</desc>
+            <value>organization-defined roles or classes of users</value>
+         </param>
+
+         <call subcontrol-id="ac.6.8"/>
+         <param id="ac-6_h">
+            <desc>organization-defined software</desc>
+            <value>organization-defined software</value>
+         </param>
+
+         <call subcontrol-id="ac.6.9"/>
+
+         <call subcontrol-id="ac.6.10"/>
+
+         <call control-id="ra.7"/>
+
+         <call control-id="ra.8"/>
+
+         <call control-id="ra.9"/>
+         <param id="ra-9_a">
+            <desc>organization-defined systems, system components, or system services</desc>
+            <value>organization-defined systems, system components, or system services</value>
+         </param>
+         <param id="ra-9_b">
+            <desc>organization-defined decision points in the system development life
+                    cycle</desc>
+            <value>organization-defined decision points in the system development life cycle</value>
+         </param>
+      </include>
+   </invoke>
+</profile>

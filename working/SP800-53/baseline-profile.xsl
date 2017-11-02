@@ -12,13 +12,12 @@
     
     <xsl:mode on-no-match="shallow-copy"/>
     
-    <xsl:param name="property" as="xs:string">baseline-impact</xsl:param>
-    <xsl:param name="value" as="xs:string">LOW</xsl:param>
+    
     
     <xsl:template match="/">
         <xsl:comment expand-text="true"> Produced by baseline-profile.xsl applied to
         {document-uri(/)} { current-date() }
-        runtime parameter settings: $property='{ $property }' $value='{ $value }'</xsl:comment>
+        </xsl:comment>
         <xsl:apply-templates select="*"/>
     </xsl:template>
     
@@ -36,9 +35,7 @@
     
     <xsl:key name="sp800-53-control-object-by-name" match="group|control|subcontrol" use="prop[@class='name']"/>
     
-    <xsl:template match="control | subcontrol" mode="write-call"/>
-    
-    <xsl:template match="control[prop[@class=$property]=$value]" mode="write-call">
+    <xsl:template match="control" mode="write-call">
             
         <xsl:text>&#xA;&#xA;</xsl:text>
         <call control-id="{@id}"/>
@@ -46,7 +43,7 @@
         
     </xsl:template>
     
-    <xsl:template match="subcontrol[prop[@class=$property]=$value]" mode="write-call">
+    <xsl:template match="subcontrol" mode="write-call">
         
         <xsl:text>&#xA;&#xA;</xsl:text>
         <call subcontrol-id="{@id}"/>
@@ -59,10 +56,10 @@
     
     <xsl:template match="param" mode="params">
         <xsl:variable name="insertions" select="..//insert[@param-id=current()/@id]"/>
-       <xsl:copy>
+       <xsl:copy copy-namespaces="no">
            <xsl:copy-of select="@*"/>
-           <xsl:comment expand-text="true"> inserted into {$insertions/(ancestor::part | ancestor::subcontrol | ancestor::control)[last()]/prop[@class='name']} </xsl:comment>
-           <xsl:copy-of select="value"/>
+           <!--<xsl:comment expand-text="true"> inserted into {$insertions/(ancestor::part | ancestor::subcontrol | ancestor::control)[last()]/prop[@class='name']} </xsl:comment>-->
+           <xsl:copy-of select="desc, value" copy-namespaces="no"/>
        </xsl:copy>
     </xsl:template>
     
