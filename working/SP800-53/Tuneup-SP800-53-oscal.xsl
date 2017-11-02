@@ -11,7 +11,8 @@
 
   <xsl:mode on-no-match="shallow-copy"/>
   
-  
+<!-- For whatever reason the source contains empty elements mapping to p elements... -->
+  <xsl:template match="p[not(matches(.,'\S'))]"/>
   
   <!-- We produce param elements and insert them into controls, for any .//assign
        elements found herein.

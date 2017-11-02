@@ -1,6 +1,6 @@
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
-<!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2017-10-30T11:53:01.985-04:00 -->
+<!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2017-11-01T14:58:57.033-04:00 -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../lib/XSD/oscal-core.xsd">
@@ -28,7 +28,6 @@
          </param>
          <prop class="name">AC-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.1a">
                <prop class="name">AC-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ac-1_a"/>:</p>
@@ -117,7 +116,6 @@
          </param>
          <prop class="name">AC-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.2a">
                <prop class="name">AC-2a.</prop>
                <p class="description">Define and document the types of system accounts allowed for use within the system in support of organizational missions and business functions;</p>
@@ -328,7 +326,6 @@ Temporary and emergency accounts are intended for short-term use. Organizations 
             <title>ROLE-BASED SCHEMES</title>
             <prop class="name">AC-2 (7)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ac.2.7.a">
                   <prop class="name">AC-2 (7)(a)</prop>
                   <p class="description">Establish and administer privileged user accounts in accordance with a role-based access scheme that organizes allowed system access and privileges into roles;</p>
@@ -419,7 +416,6 @@ Temporary and emergency accounts are intended for short-term use. Organizations 
             </param>
             <prop class="name">AC-2 (12)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ac.2.12.a">
                   <prop class="name">AC-2 (12)(a)</prop>
                   <p class="description">Monitor system accounts for <insert param-id="ac-2_n"/>; and</p>
@@ -473,7 +469,6 @@ Temporary and emergency accounts are intended for short-term use. Organizations 
             <title>ATTRIBUTE-BASED SCHEMES</title>
             <prop class="name">AC-2 (15)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ac.2.15.a">
                   <prop class="name">AC-2 (15)(a)</prop>
                   <p class="description">Establish and administer privileged user accounts in accordance with an attribute-based access scheme that specifies allowed system access and privileges based on attributes;</p>
@@ -792,7 +787,6 @@ This control enhancement requires systems to employ technical or procedural mean
             </param>
             <prop class="name">AC-3 (12)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ac.3.12.a">
                   <prop class="name">AC-3 (12)(a)</prop>
                   <p class="description">Require applications to assert, as part of the installation process, the access needed to the following system applications and functions: <insert param-id="ac-3_o"/>; and</p>
@@ -1205,7 +1199,6 @@ Organizations commonly employ information flow control policies and enforcement 
          </param>
          <prop class="name">AC-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.5a">
                <prop class="name">AC-5a.</prop>
                <p class="description">Separate <insert param-id="ac-5_a"/>;</p>
@@ -1373,7 +1366,6 @@ Organizations commonly employ information flow control policies and enforcement 
             </param>
             <prop class="name">AC-6 (7)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ac.6.7.a">
                   <prop class="name">AC-6 (7)(a)</prop>
                   <p class="description">Review <insert param-id="ac-6_f"/> the privileges assigned to <insert param-id="ac-6_g"/> to validate the need for such privileges; and</p>
@@ -1451,7 +1443,6 @@ Organizations commonly employ information flow control policies and enforcement 
          </param>
          <prop class="name">AC-7</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.7a">
                <prop class="name">AC-7a.</prop>
                <p class="description">Enforce a limit of <insert param-id="ac-7_a"/> consecutive invalid logon attempts by a user during a <insert param-id="ac-7_b"/>; and</p>
@@ -1550,7 +1541,6 @@ Organizations commonly employ information flow control policies and enforcement 
          </param>
          <prop class="name">AC-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.8a">
                <prop class="name">AC-8a.</prop>
                <p class="description">Display <insert param-id="ac-8_a"/> to users before granting access to the system that provides privacy and security notices consistent with applicable laws, Executive Orders, directives, policies, regulations, standards, and guidelines and state that:</p>
@@ -1698,7 +1688,6 @@ Organizations commonly employ information flow control policies and enforcement 
          </param>
          <prop class="name">AC-11</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.11a">
                <prop class="name">AC-11a.</prop>
                <p class="description">Prevent further access to the system by initiating a device lock after <insert param-id="ac-11_a"/> of inactivity or upon receiving a request from a user; and</p>
@@ -1809,7 +1798,6 @@ Organizations commonly employ information flow control policies and enforcement 
          </param>
          <prop class="name">AC-14</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.14a">
                <prop class="name">AC-14a.</prop>
                <p class="description">Identify <insert param-id="ac-14_a"/> that can be performed on the system without identification or authentication consistent with organizational missions and business functions; and</p>
@@ -1868,7 +1856,6 @@ Organizations commonly employ information flow control policies and enforcement 
          </param>
          <prop class="name">AC-16</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.16a">
                <prop class="name">AC-16a.</prop>
                <p class="description">Provide the means to associate <insert param-id="ac-16_a"/> having <insert param-id="ac-16_b"/> with information in storage, in process, and/or in transmission;</p>
@@ -2091,7 +2078,6 @@ Organizations can define the types of attributes needed for selected systems to 
          <title>REMOTE ACCESS</title>
          <prop class="name">AC-17</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.17a">
                <prop class="name">AC-17a.</prop>
                <p class="description">Establish and document usage restrictions, configuration/connection requirements, and implementation guidance for each type of remote access allowed; and</p>
@@ -2170,7 +2156,6 @@ Organizations can define the types of attributes needed for selected systems to 
             </param>
             <prop class="name">AC-17 (4)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ac.17.4.a">
                   <prop class="name">AC-17 (4)(a)</prop>
                   <p class="description">Authorize the execution of privileged commands and access to security-relevant information via remote access only for <insert param-id="ac-17_b"/>; and</p>
@@ -2262,7 +2247,6 @@ Organizations can define the types of attributes needed for selected systems to 
          <title>WIRELESS ACCESS</title>
          <prop class="name">AC-18</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.18a">
                <prop class="name">AC-18a.</prop>
                <p class="description">Establish usage restrictions, configuration/connection requirements, and implementation guidance for wireless access; and</p>
@@ -2359,7 +2343,6 @@ Organizations can define the types of attributes needed for selected systems to 
          <title>ACCESS CONTROL FOR MOBILE DEVICES</title>
          <prop class="name">AC-19</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.19a">
                <prop class="name">AC-19a.</prop>
                <p class="description">Establish usage restrictions, configuration requirements, connection requirements, and implementation guidance for organization-controlled mobile devices;</p>
@@ -2437,7 +2420,6 @@ Usage restrictions and authorization to connect may vary among organizational sy
             </param>
             <prop class="name">AC-19 (4)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ac.19.4.a">
                   <prop class="name">AC-19 (4)(a)</prop>
                   <p class="description">Prohibit the use of unclassified mobile devices in facilities containing systems processing, storing, or transmitting classified information unless specifically permitted by the authorizing official; and</p>
@@ -2612,7 +2594,6 @@ This control does not apply to external systems used to access public interfaces
          </param>
          <prop class="name">AC-21</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.21a">
                <prop class="name">AC-21a.</prop>
                <p class="description">Facilitate information sharing by enabling authorized users to determine whether access authorizations assigned to the sharing partner match the access restrictions and privacy authorizations on the information for <insert param-id="ac-21_a"/>; and</p>
@@ -2664,7 +2645,6 @@ This control does not apply to external systems used to access public interfaces
          </param>
          <prop class="name">AC-22</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ac.22a">
                <prop class="name">AC-22a.</prop>
                <p class="description">Designate individuals authorized to post information onto a publicly accessible system;</p>
@@ -2806,7 +2786,6 @@ This control does not apply to external systems used to access public interfaces
          </param>
          <prop class="name">AT-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="at.1a">
                <prop class="name">AT-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="at-1_a"/>:</p>
@@ -3127,7 +3106,6 @@ This control does not apply to external systems used to access public interfaces
          </param>
          <prop class="name">AT-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="at.4a">
                <prop class="name">AT-4a.</prop>
                <p class="description">Document and monitor individual system security and privacy training activities including basic security and privacy awareness training and specific role-based system security and privacy training; and</p>
@@ -3179,7 +3157,6 @@ This control does not apply to external systems used to access public interfaces
          </param>
          <prop class="name">AU-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="au.1a">
                <prop class="name">AU-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="au-1_a"/>:</p>
@@ -3261,7 +3238,6 @@ This control does not apply to external systems used to access public interfaces
          </param>
          <prop class="name">AU-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="au.2a">
                <prop class="name">AU-2a.</prop>
                <p class="description">Verify that the system can audit the following event types: <insert param-id="au-2_a"/>;</p>
@@ -3479,7 +3455,6 @@ Auditing requirements, including the need for auditable events, may be reference
          </param>
          <prop class="name">AU-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="au.5a">
                <prop class="name">AU-5a.</prop>
                <p class="description">Alert <insert param-id="au-5_a"/> in the event of an audit processing failure within <insert param-id="au-5_b"/>; and</p>
@@ -3590,7 +3565,6 @@ Auditing requirements, including the need for auditable events, may be reference
          </param>
          <prop class="name">AU-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="au.6a">
                <prop class="name">AU-6a.</prop>
                <p class="description">Review and analyze system audit records <insert param-id="au-6_a"/> for indications of <insert param-id="au-6_b"/>;</p>
@@ -3820,7 +3794,6 @@ Auditing requirements, including the need for auditable events, may be reference
          </param>
          <prop class="name">AU-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="au.8a">
                <prop class="name">AU-8a.</prop>
                <p class="description">Use internal system clocks to generate time stamps for audit records; and</p>
@@ -3852,7 +3825,6 @@ Auditing requirements, including the need for auditable events, may be reference
             </param>
             <prop class="name">AU-8 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="au.8.1.a">
                   <prop class="name">AU-8 (1)(a)</prop>
                   <p class="description">Compare the internal system clocks <insert param-id="au-8_b"/> with <insert param-id="au-8_c"/>; and</p>
@@ -3871,7 +3843,6 @@ Auditing requirements, including the need for auditable events, may be reference
             <title>SECONDARY AUTHORITATIVE TIME SOURCE</title>
             <prop class="name">AU-8 (2)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="au.8.2.a">
                   <prop class="name">AU-8 (2)(a)</prop>
                   <p class="description">Identify a secondary authoritative time source that is in a different geographic region than the primary authoritative time source; and</p>
@@ -4041,7 +4012,6 @@ Related controls:  AU-4, AU-5, AU-11, SC-29.</p>
             </param>
             <prop class="name">AU-10 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="au.10.1.a">
                   <prop class="name">AU-10 (1)(a)</prop>
                   <p class="description">Bind the identity of the information producer with the information to <insert param-id="au-10_b"/>; and</p>
@@ -4069,7 +4039,6 @@ Related controls:  AU-4, AU-5, AU-11, SC-29.</p>
             </param>
             <prop class="name">AU-10 (2)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="au.10.2.a">
                   <prop class="name">AU-10 (2)(a)</prop>
                   <p class="description">Validate the binding of the information producer identity to the information at <insert param-id="au-10_c"/>; and</p>
@@ -4110,7 +4079,6 @@ Related controls:  AU-4, AU-5, AU-11, SC-29.</p>
             </param>
             <prop class="name">AU-10 (4)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="au.10.4.a">
                   <prop class="name">AU-10 (4)(a)</prop>
                   <p class="description">Validate the binding of the information reviewer identity to the information at the transfer or release points prior to release or transfer between <insert param-id="au-10_e"/>; and</p>
@@ -4191,7 +4159,6 @@ Related controls:  AU-4, AU-5, AU-11, SC-29.</p>
          </param>
          <prop class="name">AU-12</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="au.12a">
                <prop class="name">AU-12a.</prop>
                <p class="description">Provide audit record generation capability for the auditable event types in AU-2 a. at <insert param-id="au-12_a"/>;</p>
@@ -4489,7 +4456,6 @@ Related controls:  AU-4, AU-5, AU-11, SC-29.</p>
          </param>
          <prop class="name">CA-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ca.1a">
                <prop class="name">CA-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ca-1_a"/>:</p>
@@ -4571,7 +4537,6 @@ Related controls:  AU-4, AU-5, AU-11, SC-29.</p>
          </param>
          <prop class="name">CA-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ca.2a">
                <prop class="name">CA-2a.</prop>
                <p class="description">Develop a security and privacy assessment plan that describes the scope of the assessment including:</p>
@@ -4703,7 +4668,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CA-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ca.3a">
                <prop class="name">CA-3a.</prop>
                <p class="description">Authorize connections from the system to other systems using Interconnection Security Agreements;</p>
@@ -4815,7 +4779,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <title>SECONDARY AND TERTIARY CONNECTIONS</title>
             <prop class="name">CA-3 (6)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ca.3.6.a">
                   <prop class="name">CA-3 (6)(a)</prop>
                   <p class="description">Identify secondary and tertiary connections to the interconnected systems; and</p>
@@ -4856,7 +4819,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CA-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ca.5a">
                <prop class="name">CA-5a.</prop>
                <p class="description">Develop a plan of action and milestones for the system to document the planned remedial actions of the organization to correct weaknesses or deficiencies noted during the assessment of the controls and to reduce or eliminate known vulnerabilities in the system; and</p>
@@ -4901,7 +4863,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CA-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ca.6a">
                <prop class="name">CA-6a.</prop>
                <p class="description">Assign a senior-level executive or manager as the authorizing official for the system and for any common controls inherited by the system;</p>
@@ -5192,7 +5153,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CA-9</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ca.9a">
                <prop class="name">CA-9a.</prop>
                <p class="description">Authorize internal connections of <insert param-id="ca-9_a"/> to the system; and</p>
@@ -5253,7 +5213,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CM-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.1a">
                <prop class="name">CM-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="cm-1_a"/>:</p>
@@ -5332,7 +5291,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CM-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.2a">
                <prop class="name">CM-2a.</prop>
                <p class="description">Develop, document, and maintain under configuration control, a current baseline configuration of the system; and</p>
@@ -5458,7 +5416,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             </param>
             <prop class="name">CM-2 (7)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.2.7.a">
                   <prop class="name">CM-2 (7)(a)</prop>
                   <p class="description">Issue <insert param-id="cm-2_d"/> with <insert param-id="cm-2_e"/> to individuals traveling to locations that the organization deems to be of significant risk; and</p>
@@ -5502,7 +5459,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CM-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.3a">
                <prop class="name">CM-3a.</prop>
                <p class="description">Determine the types of changes to the system that are configuration-controlled;</p>
@@ -5754,7 +5710,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <title>AUTOMATED ACCESS ENFORCEMENT AND AUDITING</title>
             <prop class="name">CM-5 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.5.1.a">
                   <prop class="name">CM-5 (1)(a)</prop>
                   <p class="description">Enforce access restrictions; and</p>
@@ -5838,7 +5793,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             </param>
             <prop class="name">CM-5 (5)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.5.5.a">
                   <prop class="name">CM-5 (5)(a)</prop>
                   <p class="description">Limit privileges to change system components and system-related information within a production or operational environment; and</p>
@@ -5895,7 +5849,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          </param>
          <prop class="name">CM-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.6a">
                <prop class="name">CM-6a.</prop>
                <p class="description">Establish and document configuration settings for components employed within the system using <insert param-id="cm-6_a"/> that reflect the most restrictive mode consistent with operational requirements;</p>
@@ -6014,7 +5967,6 @@ Common secure configurations (also referred to as security configuration checkli
          </param>
          <prop class="name">CM-7</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.7a">
                <prop class="name">CM-7a.</prop>
                <p class="description">Configure the system to provide only essential capabilities; and</p>
@@ -6040,7 +5992,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             </param>
             <prop class="name">CM-7 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.7.1.a">
                   <prop class="name">CM-7 (1)(a)</prop>
                   <p class="description">Review the system <insert param-id="cm-7_b"/> to identify unnecessary and/or nonsecure functions, ports, protocols, and services; and</p>
@@ -6098,7 +6049,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             </param>
             <prop class="name">CM-7 (4)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.7.4.a">
                   <prop class="name">CM-7 (4)(a)</prop>
                   <p class="description">Identify <insert param-id="cm-7_f"/>;</p>
@@ -6132,7 +6082,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             </param>
             <prop class="name">CM-7 (5)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.7.5.a">
                   <prop class="name">CM-7 (5)(a)</prop>
                   <p class="description">Identify <insert param-id="cm-7_h"/>;</p>
@@ -6176,7 +6125,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CM-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.8a">
                <prop class="name">CM-8a.</prop>
                <p class="description">Develop and document an inventory of system components that:</p>
@@ -6253,7 +6201,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             </param>
             <prop class="name">CM-8 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.8.3.a">
                   <prop class="name">CM-8 (3)(a)</prop>
                   <p class="description">Employ automated mechanisms <insert param-id="cm-8_c"/> to detect the presence of unauthorized hardware, software, and firmware components within the system; and</p>
@@ -6288,7 +6235,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             <title>NO DUPLICATE ACCOUNTING OF COMPONENTS</title>
             <prop class="name">CM-8 (5)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.8.5.a">
                   <prop class="name">CM-8 (5)(a)</prop>
                   <p class="description">Verify that all components within the authorization boundary of the system are not duplicated in other system component inventories; or</p>
@@ -6348,7 +6294,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             </param>
             <prop class="name">CM-8 (9)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cm.8.9.a">
                   <prop class="name">CM-8 (9)(a)</prop>
                   <p class="description">Assign <insert param-id="cm-8_e"/> to a system; and</p>
@@ -6443,7 +6388,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          <title>SOFTWARE USAGE RESTRICTIONS</title>
          <prop class="name">CM-10</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.10a">
                <prop class="name">CM-10a.</prop>
                <p class="description">Use software and associated documentation in accordance with contract agreements and copyright laws;</p>
@@ -6497,7 +6441,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CM-11</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.11a">
                <prop class="name">CM-11a.</prop>
                <p class="description">Establish <insert param-id="cm-11_a"/> governing the installation of software by users;</p>
@@ -6554,7 +6497,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CM-12</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cm.12a">
                <prop class="name">CM-12a.</prop>
                <p class="description">Identify the location of <insert param-id="cm-12_a"/> and the specific system components on which the information resides;</p>
@@ -6630,7 +6572,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CP-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cp.1a">
                <prop class="name">CP-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="cp-1_a"/>:</p>
@@ -6720,7 +6661,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CP-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cp.2a">
                <prop class="name">CP-2a.</prop>
                <p class="description">Develop a contingency plan for the system that:</p>
@@ -6989,7 +6929,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CP-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cp.4a">
                <prop class="name">CP-4a.</prop>
                <p class="description">Test the contingency plan for the system <insert param-id="cp-4_a"/> using <insert param-id="cp-4_b"/> to determine the effectiveness of the plan and the organizational readiness to execute the plan;</p>
@@ -7094,7 +7033,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          <title>ALTERNATE STORAGE SITE</title>
          <prop class="name">CP-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cp.6a">
                <prop class="name">CP-6a.</prop>
                <p class="description">Establish an alternate storage site including necessary agreements to permit the storage and retrieval of system backup information; and</p>
@@ -7168,7 +7106,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CP-7</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cp.7a">
                <prop class="name">CP-7a.</prop>
                <p class="description">Establish an alternate processing site including necessary agreements to permit the transfer and resumption of <insert param-id="cp-7_a"/> for essential missions and business functions within <insert param-id="cp-7_b"/> when the primary processing capabilities are unavailable;</p>
@@ -7295,7 +7232,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             <title>PRIORITY OF SERVICE PROVISIONS</title>
             <prop class="name">CP-8 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cp.8.1.a">
                   <prop class="name">CP-8 (1)(a)</prop>
                   <p class="description">Develop primary and alternate telecommunications service agreements that contain priority-of-service provisions in accordance with organizational availability requirements (including recovery time objectives); and</p>
@@ -7340,7 +7276,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             </param>
             <prop class="name">CP-8 (4)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="cp.8.4.a">
                   <prop class="name">CP-8 (4)(a)</prop>
                   <p class="description">Require primary and alternate telecommunications service providers to have contingency plans;</p>
@@ -7397,7 +7332,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">CP-9</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="cp.9a">
                <prop class="name">CP-9a.</prop>
                <p class="description">Conduct backups of user-level information contained in the system <insert param-id="cp-9_a"/>;</p>
@@ -7727,7 +7661,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">IA-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ia.1a">
                <prop class="name">IA-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ia-1_a"/>:</p>
@@ -8048,7 +7981,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
             </param>
             <prop class="name">IA-3 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ia.3.3.a">
                   <prop class="name">IA-3 (3)(a)</prop>
                   <p class="description">Where addresses are allocated dynamically, standardize dynamic address allocation lease information and the lease duration assigned to devices in accordance with <insert param-id="ia-3_c"/>; and</p>
@@ -8799,7 +8731,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          <title>IDENTITY PROOFING</title>
          <prop class="name">IA-12</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ia.12a">
                <prop class="name">IA-12a.</prop>
                <p class="description">Identity proof users that require accounts for logical access to systems based on appropriate identity assurance level requirements as specified in applicable standards and guidelines;</p>
@@ -8932,7 +8863,6 @@ Related Controls:  AC-3, AC-4, CM-2, CM-5, CM-11, RA-5, SA-4, SA-5, SA-9, SA-15,
          </param>
          <prop class="name">IP-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ip.1a">
                <prop class="name">IP-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ip-1_a"/>:</p>
@@ -9059,7 +8989,6 @@ To help users understand the risks being accepted when providing consent, organi
          <title>REDRESS</title>
          <prop class="name">IP-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ip.3a">
                <prop class="name">IP-3a.</prop>
                <p class="description">Establish and implement a process for individuals to have inaccurate personally identifiable information maintained by the organization corrected or amended; and</p>
@@ -9112,7 +9041,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">IP-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ip.4a">
                <prop class="name">IP-4a.</prop>
                <p class="description">Make privacy notice(s) available to individuals upon first interacting with an organization, and subsequently <insert param-id="ip-4_a"/>.</p>
@@ -9158,7 +9086,6 @@ An effective redress process includes: providing effective notice of the existen
          <title>PRIVACY ACT STATEMENTS</title>
          <prop class="name">IP-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ip.5a">
                <prop class="name">IP-5a.</prop>
                <p class="description">Include Privacy Act Statements on organizational forms that collect personally identifiable information, or on separate forms that can be retained by individuals; or</p>
@@ -9212,7 +9139,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">IR-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ir.1a">
                <prop class="name">IR-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ir-1_a"/>:</p>
@@ -9432,7 +9358,6 @@ An effective redress process includes: providing effective notice of the existen
          <title>INCIDENT HANDLING</title>
          <prop class="name">IR-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ir.4a">
                <prop class="name">IR-4a.</prop>
                <p class="description">Implement an incident handling capability for security and privacy incidents that includes preparation, detection and analysis, containment, eradication, and recovery;</p>
@@ -9673,7 +9598,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">IR-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ir.6a">
                <prop class="name">IR-6a.</prop>
                <p class="description">Require personnel to report suspected security and privacy incidents to the organizational incident response capability within <insert param-id="ir-6_a"/>; and</p>
@@ -9767,7 +9691,6 @@ An effective redress process includes: providing effective notice of the existen
             <title>COORDINATION WITH EXTERNAL PROVIDERS</title>
             <prop class="name">IR-7 (2)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ir.7.2.a">
                   <prop class="name">IR-7 (2)(a)</prop>
                   <p class="description">Establish a direct, cooperative relationship between its incident response capability and external providers of system protection capability; and</p>
@@ -9807,7 +9730,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">IR-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ir.8a">
                <prop class="name">IR-8a.</prop>
                <p class="description">Develop an incident response plan that:</p>
@@ -10057,7 +9979,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">MA-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ma.1a">
                <prop class="name">MA-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ma-1_a"/>:</p>
@@ -10136,7 +10057,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">MA-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ma.2a">
                <prop class="name">MA-2a.</prop>
                <p class="description">Schedule, document, and review records of maintenance, repair, or replacement on system components in accordance with manufacturer or vendor specifications and/or organizational requirements;</p>
@@ -10187,7 +10107,6 @@ An effective redress process includes: providing effective notice of the existen
             <title>AUTOMATED MAINTENANCE ACTIVITIES</title>
             <prop class="name">MA-2 (2)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ma.2.2.a">
                   <prop class="name">MA-2 (2)(a)</prop>
                   <p class="description">Employ automated mechanisms to schedule, conduct, and document maintenance, repair, and replacement actions for the system or system components; and</p>
@@ -10211,7 +10130,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">MA-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ma.3a">
                <prop class="name">MA-3a.</prop>
                <p class="description">Approve, control, and monitor the use of system maintenance tools; and</p>
@@ -10302,7 +10220,6 @@ An effective redress process includes: providing effective notice of the existen
          <title>NONLOCAL MAINTENANCE</title>
          <prop class="name">MA-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ma.4a">
                <prop class="name">MA-4a.</prop>
                <p class="description">Approve and monitor nonlocal maintenance and diagnostic activities;</p>
@@ -10350,7 +10267,6 @@ An effective redress process includes: providing effective notice of the existen
             </param>
             <prop class="name">MA-4 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ma.4.1.a">
                   <prop class="name">MA-4 (1)(a)</prop>
                   <p class="description">Audit <insert param-id="ma-4_a"/> for nonlocal maintenance and diagnostic sessions; and</p>
@@ -10379,7 +10295,6 @@ An effective redress process includes: providing effective notice of the existen
             <title>COMPARABLE SECURITY AND SANITIZATION</title>
             <prop class="name">MA-4 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ma.4.3.a">
                   <prop class="name">MA-4 (3)(a)</prop>
                   <p class="description">Require that nonlocal maintenance and diagnostic services be performed from a system that implements a security capability comparable to the capability implemented on the system being serviced; or</p>
@@ -10439,7 +10354,6 @@ An effective redress process includes: providing effective notice of the existen
             </param>
             <prop class="name">MA-4 (5)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ma.4.5.a">
                   <prop class="name">MA-4 (5)(a)</prop>
                   <p class="description">Require the approval of each nonlocal maintenance session by <insert param-id="ma-4_c"/>; and</p>
@@ -10499,7 +10413,6 @@ An effective redress process includes: providing effective notice of the existen
          <title>MAINTENANCE PERSONNEL</title>
          <prop class="name">MA-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ma.5a">
                <prop class="name">MA-5a.</prop>
                <p class="description">Establish a process for maintenance personnel authorization and maintains a list of authorized maintenance organizations or personnel;</p>
@@ -10532,7 +10445,6 @@ An effective redress process includes: providing effective notice of the existen
             <title>INDIVIDUALS WITHOUT APPROPRIATE ACCESS</title>
             <prop class="name">MA-5 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ma.5.1.a">
                   <prop class="name">MA-5 (1)(a)</prop>
                   <p class="description">Implement procedures for the use of maintenance personnel that lack appropriate security clearances or are not U.S. citizens, that include the following requirements:</p>
@@ -10726,7 +10638,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">MP-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="mp.1a">
                <prop class="name">MP-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="mp-1_a"/>:</p>
@@ -10862,7 +10773,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">MP-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="mp.3a">
                <prop class="name">MP-3a.</prop>
                <p class="description">Mark system media indicating the distribution limitations, handling caveats, and applicable security markings (if any) of the information; and</p>
@@ -10898,7 +10808,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">MP-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="mp.4a">
                <prop class="name">MP-4a.</prop>
                <p class="description">Physically control and securely store <insert param-id="mp-4_a"/> within <insert param-id="mp-4_b"/>; and</p>
@@ -10970,7 +10879,6 @@ An effective redress process includes: providing effective notice of the existen
          </param>
          <prop class="name">MP-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="mp.5a">
                <prop class="name">MP-5a.</prop>
                <p class="description">Protect and control <insert param-id="mp-5_a"/> during transport outside of controlled areas using <insert param-id="mp-5_b"/>;</p>
@@ -11059,7 +10967,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">MP-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="mp.6a">
                <prop class="name">MP-6a.</prop>
                <p class="description">Sanitize <insert param-id="mp-6_a"/> prior to disposal, release out of organizational control, or release for reuse using <insert param-id="mp-6_b"/>; and</p>
@@ -11235,7 +11142,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">MP-7</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="mp.7a">
                <prop class="name">MP-7a.</prop>
                <p class="description">[Selection: Restrict; Prohibit] the use of <insert param-id="mp-7_a"/> on <insert param-id="mp-7_b"/> using <insert param-id="mp-7_c"/>; and</p>
@@ -11295,7 +11201,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">MP-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="mp.8a">
                <prop class="name">MP-8a.</prop>
                <p class="description">Establish <insert param-id="mp-8_a"/> that includes employing downgrading mechanisms with strength and integrity commensurate with the security category or classification of the information;</p>
@@ -11392,7 +11297,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PA-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pa.1a">
                <prop class="name">PA-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="pa-1_a"/>:</p>
@@ -11541,7 +11445,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PA-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pa.4a">
                <prop class="name">PA-4a.</prop>
                <p class="description">Develop, document, and disseminate guidelines to <insert param-id="pa-4_a"/> for the sharing of personally identifiable information externally, only for the authorized purposes identified in the Privacy Act and/or described in its notices, or for a purpose that is compatible with those purposes;</p>
@@ -11608,7 +11511,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.1a">
                <prop class="name">PE-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="pe-1_a"/>:</p>
@@ -11684,7 +11586,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.2a">
                <prop class="name">PE-2a.</prop>
                <p class="description">Develop, approve, and maintain a list of individuals with authorized access to the facility where the system resides;</p>
@@ -11816,7 +11717,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.3a">
                <prop class="name">PE-3a.</prop>
                <p class="description">Enforce physical access authorizations at <insert param-id="pe-3_a"/> by;</p>
@@ -12096,7 +11996,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.6a">
                <prop class="name">PE-6a.</prop>
                <p class="description">Monitor physical access to the facility where the system resides to detect and respond to physical security incidents;</p>
@@ -12206,7 +12105,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.8a">
                <prop class="name">PE-8a.</prop>
                <p class="description">Maintain visitor access records to the facility where the system resides for <insert param-id="pe-8_a"/>; and</p>
@@ -12289,7 +12187,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-10</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.10a">
                <prop class="name">PE-10a.</prop>
                <p class="description">Provide the capability of shutting off power to the system or individual system components in emergency situations;</p>
@@ -12428,7 +12325,6 @@ Physical and technical safeguards for media are commensurate with the security c
             </param>
             <prop class="name">PE-13 (2)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="pe.13.2.a">
                   <prop class="name">PE-13 (2)(a)</prop>
                   <p class="description">Employ fire suppression devices/systems for the system that provide automatic notification of any activation to <insert param-id="pe-13_c"/> and <insert param-id="pe-13_d"/>; and</p>
@@ -12484,7 +12380,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-14</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.14a">
                <prop class="name">PE-14a.</prop>
                <p class="description">Maintain temperature and humidity levels within the facility where the system resides at <insert param-id="pe-14_a"/>; and</p>
@@ -12584,7 +12479,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PE-17</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pe.17a">
                <prop class="name">PE-17a.</prop>
                <p class="description">Determine and document the <insert param-id="pe-17_a"/> allowed for use by employees;</p>
@@ -12636,7 +12530,6 @@ Physical and technical safeguards for media are commensurate with the security c
             <title>FACILITY SITE</title>
             <prop class="name">PE-18 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="pe.18.1.a">
                   <prop class="name">PE-18 (1)(a)</prop>
                   <p class="description">Plan the location or site of the facility where the system resides considering physical and environmental hazards; and</p>
@@ -12764,7 +12657,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PL-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pl.1a">
                <prop class="name">PL-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="pl-1_a"/>:</p>
@@ -12846,7 +12738,6 @@ Physical and technical safeguards for media are commensurate with the security c
          </param>
          <prop class="name">PL-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pl.2a">
                <prop class="name">PL-2a.</prop>
                <p class="description">Develop security and privacy plans for the system that:</p>
@@ -12998,7 +12889,6 @@ Security and privacy plans need not be single documents. The plans can be a coll
          </param>
          <prop class="name">PL-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pl.4a">
                <prop class="name">PL-4a.</prop>
                <p class="description">Establish and provide to individuals requiring access to the system, the rules that describe their responsibilities and expected behavior for information and system usage, security, and privacy;</p>
@@ -13081,7 +12971,6 @@ Security and privacy plans need not be single documents. The plans can be a coll
          </param>
          <prop class="name">PL-7</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pl.7a">
                <prop class="name">PL-7a.</prop>
                <p class="description">Develop a Concept of Operations (CONOPS) for the system describing how the organization intends to operate the system from the perspective of information security and privacy; and</p>
@@ -13106,7 +12995,6 @@ Security and privacy plans need not be single documents. The plans can be a coll
          </param>
          <prop class="name">PL-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pl.8a">
                <prop class="name">PL-8a.</prop>
                <p class="description">Develop security and privacy architectures for the system that:</p>
@@ -13297,7 +13185,6 @@ In today&#x92;s modern computing architectures, it is becoming less common for o
          </param>
          <prop class="name">PM-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.1a">
                <prop class="name">PM-1a.</prop>
                <p class="description">Develop and disseminate an organization-wide information security program plan that:</p>
@@ -13346,7 +13233,6 @@ Organizations have the flexibility to describe common controls in a single docum
          <title>INFORMATION SECURITY PROGRAM ROLES</title>
          <prop class="name">PM-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.2a">
                <prop class="name">PM-2a.</prop>
                <p class="description">Appoint a Senior Agency Information Security Officer with the mission and resources to coordinate, develop, implement, and maintain an organization-wide information security program;</p>
@@ -13377,7 +13263,6 @@ Organizations have the flexibility to describe common controls in a single docum
          <title>INFORMATION SECURITY AND PRIVACY RESOURCES</title>
          <prop class="name">PM-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.3a">
                <prop class="name">PM-3a.</prop>
                <p class="description">Include the resources needed to implement the information security and privacy programs in capital planning and investment requests and document all exceptions to this requirement;</p>
@@ -13406,7 +13291,6 @@ Organizations have the flexibility to describe common controls in a single docum
          <title>PLAN OF ACTION AND MILESTONES PROCESS</title>
          <prop class="name">PM-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.4a">
                <prop class="name">PM-4a.</prop>
                <p class="description">Implement a process to ensure that plans of action and milestones for the security and privacy programs and associated organizational systems:</p>
@@ -13530,7 +13414,6 @@ Organizations have the flexibility to describe common controls in a single docum
          </param>
          <prop class="name">PM-9</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.9a">
                <prop class="name">PM-9a.</prop>
                <p class="description">Develops a comprehensive strategy to manage:</p>
@@ -13595,7 +13478,6 @@ Organizations have the flexibility to describe common controls in a single docum
          <title>AUTHORIZATION PROCESS</title>
          <prop class="name">PM-10</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.10a">
                <prop class="name">PM-10a.</prop>
                <p class="description">Manage the security and privacy state of organizational systems and the environments in which those systems operate through authorization processes;</p>
@@ -13632,7 +13514,6 @@ Organizations have the flexibility to describe common controls in a single docum
          </param>
          <prop class="name">PM-11</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.11a">
                <prop class="name">PM-11a.</prop>
                <p class="description">Define organizational mission and business processes with consideration for information security and privacy and the resulting risk to organizational operations, organizational assets, individuals, other organizations, and the Nation; and</p>
@@ -13711,7 +13592,6 @@ Insider threat programs can leverage the existence of incident handling teams th
          <title>TESTING, TRAINING, AND MONITORING</title>
          <prop class="name">PM-14</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.14a">
                <prop class="name">PM-14a.</prop>
                <p class="description">Implement a process for ensuring that organizational plans for conducting security and privacy testing, training, and monitoring activities associated with organizational systems:</p>
@@ -13803,7 +13683,6 @@ Insider threat programs can leverage the existence of incident handling teams th
          </param>
          <prop class="name">PM-17</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.17a">
                <prop class="name">PM-17a.</prop>
                <p class="description">Establish policy and procedures to ensure that the requirements for the protection of Controlled Unclassified Information processed, stored or transmitted on external systems, are implemented in accordance with applicable laws, Executive Orders, directives, policies, regulations, and standards.</p>
@@ -13823,7 +13702,6 @@ Insider threat programs can leverage the existence of incident handling teams th
          <title>PRIVACY PROGRAM PLAN</title>
          <prop class="name">PM-18</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.18a">
                <prop class="name">PM-18a.</prop>
                <p class="description">Develop and disseminate an organization-wide privacy program plan that provides an overview of the agency&#x92;s privacy program, and:</p>
@@ -13883,7 +13761,6 @@ Organizations have the flexibility to describe common controls in a single docum
          <title>SYSTEM OF RECORDS NOTICE</title>
          <prop class="name">PM-20</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.20a">
                <prop class="name">PM-20a.</prop>
                <p class="description">Publish System of Records Notices in the Federal Register, subject to required oversight processes, for systems containing personally identifiable information; and</p>
@@ -13904,7 +13781,6 @@ Organizations have the flexibility to describe common controls in a single docum
          <title>DISSEMINATION OF PRIVACY PROGRAM INFORMATION</title>
          <prop class="name">PM-21</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.21a">
                <prop class="name">PM-21a.</prop>
                <p class="description">Ensure that the public has access to information about organizational privacy activities and can communicate with its Senior Agency Official for Privacy;</p>
@@ -13930,7 +13806,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          <title>ACCOUNTING OF DISCLOSURES</title>
          <prop class="name">PM-22</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.22a">
                <prop class="name">PM-22a.</prop>
                <p class="description">Develop and maintain an accounting of disclosures of personally identifiable information held in each system of records under its control, including:</p>
@@ -14010,7 +13885,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PM-24</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.24a">
                <prop class="name">PM-24a.</prop>
                <p class="description">Establish a written charter for a Data Management Board;</p>
@@ -14081,7 +13955,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          <title>MINIMIZATION OF PERSONALLY IDENTIFIABLE INFORMATION USED IN TESTING, TRAINING, AND RESEARCH</title>
          <prop class="name">PM-26</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.26a">
                <prop class="name">PM-26a.</prop>
                <p class="description">Develop and implement policies and procedures that address the use of personally identifiable information for internal testing, training, and research;</p>
@@ -14104,7 +13977,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          <title>INDIVIDUAL ACCESS CONTROL</title>
          <prop class="name">PM-27</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.27a">
                <prop class="name">PM-27a.</prop>
                <p class="description">Publish:</p>
@@ -14168,7 +14040,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PM-29</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.29a">
                <prop class="name">PM-29a.</prop>
                <p class="description">Establish, maintain, and update <insert param-id="pm-29_a"/> an inventory of all programs and systems that create, collect, use, process, store, maintain, disseminate, disclose, or dispose of personally identifiable information;</p>
@@ -14244,7 +14115,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PM-31</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.31a">
                <prop class="name">PM-31a.</prop>
                <p class="description">Develop a plan for managing supply chain risks associated with the development, acquisition, maintenance, and disposal of systems, system components, and system services;</p>
@@ -14273,7 +14143,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          <title>RISK FRAMING</title>
          <prop class="name">PM-32</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="pm.32a">
                <prop class="name">PM-32a.</prop>
                <p class="description">Identify assumptions affecting risk assessments, risk response, and risk monitoring;</p>
@@ -14327,7 +14196,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PS-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ps.1a">
                <prop class="name">PS-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ps-1_a"/>:</p>
@@ -14402,7 +14270,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PS-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ps.2a">
                <prop class="name">PS-2a.</prop>
                <p class="description">Assign a risk designation to all organizational positions;</p>
@@ -14443,7 +14310,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PS-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ps.3a">
                <prop class="name">PS-3a.</prop>
                <p class="description">Screen individuals prior to authorizing access to the system; and</p>
@@ -14608,7 +14474,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
             <title>POST-EMPLOYMENT REQUIREMENTS</title>
             <prop class="name">PS-4 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ps.4.1.a">
                   <prop class="name">PS-4 (1)(a)</prop>
                   <p class="description">Notify terminated individuals of applicable, legally binding post-employment requirements for the protection of organizational information; and</p>
@@ -14659,7 +14524,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PS-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ps.5a">
                <prop class="name">PS-5a.</prop>
                <p class="description">Review and confirm ongoing operational need for current logical and physical access authorizations to systems and facilities when individuals are reassigned or transferred to other positions within the organization;</p>
@@ -14699,7 +14563,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PS-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ps.6a">
                <prop class="name">PS-6a.</prop>
                <p class="description">Develop and document access agreements for organizational systems;</p>
@@ -14769,7 +14632,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
             <title>POST-EMPLOYMENT REQUIREMENTS</title>
             <prop class="name">PS-6 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ps.6.3.a">
                   <prop class="name">PS-6 (3)(a)</prop>
                   <p class="description">Notify individuals of applicable, legally binding post-employment requirements for protection of organizational information; and</p>
@@ -14797,7 +14659,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PS-7</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ps.7a">
                <prop class="name">PS-7a.</prop>
                <p class="description">Establish personnel security requirements including security roles and responsibilities for external providers;</p>
@@ -14852,7 +14713,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">PS-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ps.8a">
                <prop class="name">PS-8a.</prop>
                <p class="description">Employ a formal sanctions process for individuals failing to comply with established information security policies and procedures; and</p>
@@ -14894,7 +14754,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">RA-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ra.1a">
                <prop class="name">RA-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="ra-1_a"/>:</p>
@@ -14965,7 +14824,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          <title>SECURITY CATEGORIZATION</title>
          <prop class="name">RA-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ra.2a">
                <prop class="name">RA-2a.</prop>
                <p class="description">Categorize the system and information it processes, stores, and transmits;</p>
@@ -15040,7 +14898,6 @@ their privacy practices including, for example, Privacy Impact Assessments, Syst
          </param>
          <prop class="name">RA-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ra.3a">
                <prop class="name">RA-3a.</prop>
                <p class="description">Conduct a risk assessment, including the likelihood and magnitude of harm, from:</p>
@@ -15109,7 +14966,6 @@ Organizations can conduct risk assessments, either formal or informal, at all th
             </param>
             <prop class="name">RA-3 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="ra.3.1.a">
                   <prop class="name">RA-3 (1)(a)</prop>
                   <p class="description">Assess supply chain risks associated with <insert param-id="ra-3_e"/>; and</p>
@@ -15164,7 +15020,6 @@ Organizations can conduct risk assessments, either formal or informal, at all th
          </param>
          <prop class="name">RA-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="ra.5a">
                <prop class="name">RA-5a.</prop>
                <p class="description">Scan for vulnerabilities in the system and hosted applications <insert param-id="ra-5_a"/> and when new vulnerabilities potentially affecting the system are identified and reported;</p>
@@ -15493,7 +15348,6 @@ The operational environment of a system or component may impact the criticality 
          </param>
          <prop class="name">SA-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.1a">
                <prop class="name">SA-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="sa-1_a"/>:</p>
@@ -15564,7 +15418,6 @@ The operational environment of a system or component may impact the criticality 
          <title>ALLOCATION OF RESOURCES</title>
          <prop class="name">SA-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.2a">
                <prop class="name">SA-2a.</prop>
                <p class="description">Determine information security and privacy requirements for the system or system service in mission and business process planning;</p>
@@ -15599,7 +15452,6 @@ The operational environment of a system or component may impact the criticality 
          </param>
          <prop class="name">SA-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.3a">
                <prop class="name">SA-3a.</prop>
                <p class="description">Manage the system using <insert param-id="sa-3_a"/> that incorporates information security and privacy considerations;</p>
@@ -15650,7 +15502,6 @@ The operational environment of a system or component may impact the criticality 
             <title>USE OF LIVE DATA</title>
             <prop class="name">SA-3 (2)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sa.3.2.a">
                   <prop class="name">SA-3 (2)(a)</prop>
                   <p class="description">Approve, document, and control the use of live data in development, test, and integration environments for the system, system component, or system service; and</p>
@@ -15823,7 +15674,6 @@ Security and privacy requirements are expressed in terms of security and privacy
             <title>USE OF INFORMATION ASSURANCE PRODUCTS</title>
             <prop class="name">SA-4 (6)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sa.4.6.a">
                   <prop class="name">SA-4 (6)(a)</prop>
                   <p class="description">Employ only government off-the-shelf or commercial off-the-shelf information assurance and information assurance-enabled information technology products that compose an NSA-approved solution to protect classified information when the networks used to transmit the information are at a lower classification level than the information being transmitted; and</p>
@@ -15844,7 +15694,6 @@ Security and privacy requirements are expressed in terms of security and privacy
             <title>NIAP-APPROVED PROTECTION PROFILES</title>
             <prop class="name">SA-4 (7)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sa.4.7.a">
                   <prop class="name">SA-4 (7)(a)</prop>
                   <p class="description">Limit the use of commercially provided information assurance and information assurance-enabled information technology products to those products that have been successfully evaluated against a National Information Assurance partnership (NIAP)-approved Protection Profile for a specific technology type, if such a profile exists; and</p>
@@ -15952,7 +15801,6 @@ Security and privacy requirements are expressed in terms of security and privacy
          </param>
          <prop class="name">SA-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.5a">
                <prop class="name">SA-5a.</prop>
                <p class="description">Obtain administrator documentation for the system, system component, or system service that describes:</p>
@@ -16139,7 +15987,6 @@ Security and privacy requirements are expressed in terms of security and privacy
          </param>
          <prop class="name">SA-9</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.9a">
                <prop class="name">SA-9a.</prop>
                <p class="description">Require that providers of external system services comply with organizational security and privacy requirements and employ <insert param-id="sa-9_a"/>;</p>
@@ -16174,7 +16021,6 @@ Security and privacy requirements are expressed in terms of security and privacy
             </param>
             <prop class="name">SA-9 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sa.9.1.a">
                   <prop class="name">SA-9 (1)(a)</prop>
                   <p class="description">Conduct an organizational assessment of risk prior to the acquisition or outsourcing of information security services; and</p>
@@ -16519,7 +16365,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SA-11 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sa.11.3.a">
                   <prop class="name">SA-11 (3)(a)</prop>
                   <p class="description">Require an independent agent satisfying <insert param-id="sa-11_g"/> to verify the correct implementation of the developer security and privacy assessment plans and the evidence produced during testing and evaluation; and</p>
@@ -16634,7 +16479,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SA-12</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.12a">
                <prop class="name">SA-12a.</prop>
                <p class="description">Employ <insert param-id="sa-12_a"/> to protect against supply chain risks to the system, system component, or system service and to limit the harm or consequences from supply chain-related events; and</p>
@@ -16939,7 +16783,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SA-15</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.15a">
                <prop class="name">SA-15a.</prop>
                <p class="description">Require the developer of the system, system component, or system service to follow a documented development process that:</p>
@@ -17405,7 +17248,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SA-19</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sa.19a">
                <prop class="name">SA-19a.</prop>
                <p class="description">Develop and implement anti-counterfeit policy and procedures that include the means to detect and prevent counterfeit components from entering the system; and</p>
@@ -17597,7 +17439,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SC-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.1a">
                <prop class="name">SC-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="sc-1_a"/>:</p>
@@ -17863,7 +17704,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SC-5 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sc.5.3.a">
                   <prop class="name">SC-5 (3)(a)</prop>
                   <p class="description">Employ <insert param-id="sc-5_d"/> to detect indicators of denial of service attacks against the system; and</p>
@@ -17903,7 +17743,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          <title>BOUNDARY PROTECTION</title>
          <prop class="name">SC-7</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.7a">
                <prop class="name">SC-7a.</prop>
                <p class="description">Monitor and control communications at the external boundary of the system and at key internal boundaries within the system;</p>
@@ -17978,7 +17817,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SC-7 (4)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sc.7.4.a">
                   <prop class="name">SC-7 (4)(a)</prop>
                   <p class="description">Implement a managed interface for each external telecommunication service;</p>
@@ -18059,7 +17897,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             <title>RESTRICT THREATENING OUTGOING COMMUNICATIONS TRAFFIC</title>
             <prop class="name">SC-7 (9)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sc.7.9.a">
                   <prop class="name">SC-7 (9)(a)</prop>
                   <p class="description">Detect and deny outgoing communications traffic posing a threat to external systems; and</p>
@@ -18088,7 +17925,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SC-7 (10)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sc.7.10.a">
                   <prop class="name">SC-7 (10)(a)</prop>
                   <p class="description">Prevent the exfiltration of information; and</p>
@@ -18468,7 +18304,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SC-11</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.11a">
                <prop class="name">SC-11a.</prop>
                <p class="description">Provide a [Selection: physically; logically] isolated trusted communications path for communications between the user and the trusted components of the system; and</p>
@@ -18493,7 +18328,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SC-11 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sc.11.1.a">
                   <prop class="name">SC-11 (1)(a)</prop>
                   <p class="description">Provide a trusted communications path that is irrefutably distinguishable from other communications paths; and</p>
@@ -18697,7 +18531,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SC-15</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.15a">
                <prop class="name">SC-15a.</prop>
                <p class="description">Prohibit remote activation of collaborative computing devices and applications with the following exceptions: <insert param-id="sc-15_a"/>; and</p>
@@ -18824,7 +18657,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          <title>MOBILE CODE</title>
          <prop class="name">SC-18</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.18a">
                <prop class="name">SC-18a.</prop>
                <p class="description">Define acceptable and unacceptable mobile code and mobile code technologies;</p>
@@ -18936,7 +18768,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          <title>VOICE OVER INTERNET PROTOCOL</title>
          <prop class="name">SC-19</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.19a">
                <prop class="name">SC-19a.</prop>
                <p class="description">Establish usage restrictions and implementation guidelines for Voice over Internet Protocol (VoIP) technologies; and</p>
@@ -18962,7 +18793,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          <title>SECURE NAME/ADDRESS RESOLUTION SERVICE (AUTHORITATIVE SOURCE)</title>
          <prop class="name">SC-20</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.20a">
                <prop class="name">SC-20a.</prop>
                <p class="description">Provide additional data origin authentication and integrity verification artifacts along with the authoritative name resolution data the system returns in response to external name/address resolution queries; and</p>
@@ -19444,7 +19274,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          <title>COVERT CHANNEL ANALYSIS</title>
          <prop class="name">SC-31</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.31a">
                <prop class="name">SC-31a.</prop>
                <p class="description">Perform a covert channel analysis to identify those aspects of communications within the system that are potential avenues for covert [Selection (one or more): storage; timing] channels; and</p>
@@ -19615,7 +19444,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SC-34 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sc.34.3.a">
                   <prop class="name">SC-34 (3)(a)</prop>
                   <p class="description">Employ hardware-based, write-protect for <insert param-id="sc-34_d"/>; and</p>
@@ -19674,7 +19502,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SC-36 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="sc.36.1.a">
                   <prop class="name">SC-36 (1)(a)</prop>
                   <p class="description">Employ polling techniques to identify potential faults, errors, or compromises to <insert param-id="sc-36_b"/>; and</p>
@@ -19927,7 +19754,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SC-42</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.42a">
                <prop class="name">SC-42a.</prop>
                <p class="description">Prohibit the remote activation of environmental sensing capabilities on organizational systems or system components with the following exceptions: <insert param-id="sc-42_a"/>; and</p>
@@ -20044,7 +19870,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SC-43</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="sc.43a">
                <prop class="name">SC-43a.</prop>
                <p class="description">Establish usage restrictions and implementation guidelines for <insert param-id="sc-43_a"/>; and</p>
@@ -20113,7 +19938,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SI-1</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.1a">
                <prop class="name">SI-1a.</prop>
                <p class="description">Develop, document, and disseminate to <insert param-id="si-1_a"/>:</p>
@@ -20182,7 +20006,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SI-2</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.2a">
                <prop class="name">SI-2a.</prop>
                <p class="description">Identify, report, and correct system flaws;</p>
@@ -20251,7 +20074,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SI-2 (3)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="si.2.3.a">
                   <prop class="name">SI-2 (3)(a)</prop>
                   <p class="description">Measure the time between flaw identification and flaw remediation; and</p>
@@ -20317,7 +20139,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
             </param>
             <prop class="name">SI-2 (7)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="si.2.7.a">
                   <prop class="name">SI-2 (7)(a)</prop>
                   <p class="description">Identify and correct flaws related to the collection, usage, processing, or dissemination of personally identifiable information;</p>
@@ -20374,7 +20195,6 @@ Related controls: PM-15, RA-3, RA-5.</p>
          </param>
          <prop class="name">SI-3</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.3a">
                <prop class="name">SI-3a.</prop>
                <p class="description">Implement [Selection (one or more): signature based; non-signature based] malicious code protection mechanisms at system entry and exit points to detect and eradicate malicious code;</p>
@@ -20479,7 +20299,6 @@ In situations where malicious code cannot be detected by detection methods and t
             </param>
             <prop class="name">SI-3 (6)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="si.3.6.a">
                   <prop class="name">SI-3 (6)(a)</prop>
                   <p class="description">Test malicious code protection mechanisms <insert param-id="si-3_c"/> by introducing a known benign, non-spreading test case into the system; and</p>
@@ -20555,7 +20374,6 @@ In situations where malicious code cannot be detected by detection methods and t
             </param>
             <prop class="name">SI-3 (10)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="si.3.10.a">
                   <prop class="name">SI-3 (10)(a)</prop>
                   <p class="description">Employ <insert param-id="si-3_h"/> to analyze the characteristics and behavior of malicious code; and</p>
@@ -20595,7 +20413,6 @@ In situations where malicious code cannot be detected by detection methods and t
          </param>
          <prop class="name">SI-4</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.4a">
                <prop class="name">SI-4a.</prop>
                <p class="description">Monitor the system to detect:</p>
@@ -20853,7 +20670,6 @@ In situations where malicious code cannot be detected by detection methods and t
             <title>ANALYZE TRAFFIC AND EVENT PATTERNS</title>
             <prop class="name">SI-4 (13)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="si.4.13.a">
                   <prop class="name">SI-4 (13)(a)</prop>
                   <p class="description">Analyze communications traffic and event patterns for the system;</p>
@@ -21100,7 +20916,6 @@ In situations where malicious code cannot be detected by detection methods and t
          </param>
          <prop class="name">SI-5</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.5a">
                <prop class="name">SI-5a.</prop>
                <p class="description">Receive system security alerts, advisories, and directives from <insert param-id="si-5_a"/> on an ongoing basis;</p>
@@ -21165,7 +20980,6 @@ In situations where malicious code cannot be detected by detection methods and t
          </param>
          <prop class="name">SI-6</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.6a">
                <prop class="name">SI-6a.</prop>
                <p class="description">Verify the correct operation of <insert param-id="si-6_a"/>;</p>
@@ -21478,7 +21292,6 @@ In situations where malicious code cannot be detected by detection methods and t
             <title>BINARY OR MACHINE EXECUTABLE CODE</title>
             <prop class="name">SI-7 (14)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="si.7.14.a">
                   <prop class="name">SI-7 (14)(a)</prop>
                   <p class="description">Prohibit the use of binary or machine-executable code from sources with limited or no warranty and without the provision of source code; and</p>
@@ -21539,7 +21352,6 @@ In situations where malicious code cannot be detected by detection methods and t
          <title>SPAM PROTECTION</title>
          <prop class="name">SI-8</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.8a">
                <prop class="name">SI-8a.</prop>
                <p class="description">Employ spam protection mechanisms at system entry and exit points to detect and act on unsolicited messages; and</p>
@@ -21637,7 +21449,6 @@ In situations where malicious code cannot be detected by detection methods and t
             </param>
             <prop class="name">SI-10 (1)</prop>
             <part class="statement">
-               <p class="description"/>
                <part class="item" id="si.10.1.a">
                   <prop class="name">SI-10 (1)(a)</prop>
                   <p class="description">Provide a manual override capability for input validation of <insert param-id="si-10_b"/>;</p>
@@ -21724,7 +21535,6 @@ In situations where malicious code cannot be detected by detection methods and t
          </param>
          <prop class="name">SI-11</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.11a">
                <prop class="name">SI-11a.</prop>
                <p class="description">Generate error messages that provide information necessary for corrective actions without revealing information that could be exploited; and</p>
@@ -21825,7 +21635,6 @@ In situations where malicious code cannot be detected by detection methods and t
          </param>
          <prop class="name">SI-13</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.13a">
                <prop class="name">SI-13a.</prop>
                <p class="description">Determine mean time to failure (MTTF) for <insert param-id="si-13_a"/> in specific environments of operation; and</p>
@@ -22062,7 +21871,6 @@ Non-persistence can be achieved by refreshing system components, for example, by
          </param>
          <prop class="name">SI-19</prop>
          <part class="statement">
-            <p class="description"/>
             <part class="item" id="si.19a">
                <prop class="name">SI-19a.</prop>
                <p class="description">Upon collection or creation of personally identifiable information, check for the accuracy, relevance, timeliness, impact, completeness, and de-identification of that information across the information life cycle; and</p>

@@ -8,7 +8,7 @@
   xmlns:xlink="https://www.w3.org/TR/xlink/"
   xpath-default-namespace="http://scap.nist.gov/schema/sp800-53/2.0"
   xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-  exclude-result-prefixes="#all"
+   exclude-result-prefixes="#all"
   >
 
   <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement objectives objective decisions decision potential-assessments potential-assessment withdrawn statement"/>

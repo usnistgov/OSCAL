@@ -164,7 +164,7 @@ em { font-style: italic; display: inline }
 xref, a { display: inline; color: blue }
 
 link { color: blue; font-size: 90%; font-weight: bold }
-link:before { color: blue; font-size: 90%; font-weight: bold; content: 
+link[href]:before { color: blue; font-size: 90%; font-weight: bold; content: 
         'link: ' oxy_urlChooser(        
         edit, "@href",
         columns 53); }
