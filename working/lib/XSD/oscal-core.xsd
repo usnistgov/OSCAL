@@ -276,13 +276,13 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
+  <!-- note prose is not included in control-components, unlike item pattern ('component' element) -->
   <xs:group name="control-components">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:prop"/>
         <xs:group ref="oscal:anyKindofPart"/>
         <xs:element ref="oscal:link"/>
-        <xs:group ref="oscal:prose"/>
         <xs:element ref="oscal:param"/>
       </xs:choice>
     </xs:sequence>
@@ -322,11 +322,15 @@
     see utility.xq for analytic breakdown of part types
     so far: description, guidance
   -->
+  <!-- parts are addressable like controls, but can also have prose content -->
   <xs:element name="part">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:group ref="oscal:control-components"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="oscal:prose"/>
+          <xs:group ref="oscal:control-components"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:idAttr"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>

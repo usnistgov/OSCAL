@@ -7,6 +7,7 @@
 >   * [Controls, components and their contents](#controls,-components-and-their-contents)
 >     * [&lt;catalog> Catalog](#catalog-catalog)
 >     * [&lt;framework> Framework](#framework-framework)
+>     * [&lt;worksheet> Worksheet](#worksheet-worksheet)
 >     * [&lt;control> Control](#control-control)
 >     * [&lt;component> Framework component](#component-framework-component)
 >     * [&lt;subcontrol> Control extension](#subcontrol-control-extension)
@@ -76,11 +77,13 @@ By design, OSCAL looks a lot like HTML on the inside. Transformations to HTML, h
 
 ### OSCAL organization 
 
-OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form "documentary" format, which includes semantic "islands" of structured information. These are semantic not only because they are addressable in principle, but more importantly because their organizations and values may be known before processing occurs, at least with respect to certain operations and relations, and even (at the most general level) before operations are designed and deployed. OSCAL offers a yin to the yang of query and processing. 
+OSCAL catalogs are built out of controls. By analogy, OSCAL "frameworks" and "worksheets" are constructed out of components, which may map to (correspond with) controls in a catalog. 
+
+Both controls (in a catalog) and components (more generally) are like rows in a spreadsheet, with cells in the row designated for carrying labeled (and sometimes structured) information. To accommodate this, OSCAL is a lightweight and free-form "documentary" format, which includes semantic "islands" of structured information. These are semantic not only because they are addressable in principle, but more importantly because their organizations and values may be known before processing occurs, at least with respect to certain operations and relations, and even (at the most general level) before operations are designed and deployed. When encoded in OSCAL, control catalogs and the documents that make reference to them become "actionable" even at granular levels. 
 
 At the broadest level, "control objects" in OSCAL include controls, subcontrols, parts of controls or subcontrols, and control groups. Each OSCAL application or application domain will determine for itself how these correspond to entities or "controls", formal processes, procedures, and so forth, within that domain. 
 
-This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for group, control, subcontrol, and part. According to its rules, either controls or groups may appear within groups (that is, groups may be nested or may contain controls), while subcontrols may only appear within controls. Either controls or subcontrols may be partitioned (may contain parts), and parts may contain their own parts. While this design centers around controls and subcontrols, by means of the use of groups and parts, OSCAL can support organizations of controls and their components with arbitrary granularity, as any of these objects may be used consistently to carry regular sets of properties, with names and value spaces that may be known in advance or discovered dynamically.  
+This organization is governed by an XML schema, which enforces containment constraints among these elements. In particular, the OSCAL schema declares elements for group, control, subcontrol, component, and part. OSCAL can support organizations of information (in both catalogs and nominal "frameworks") with arbitrary granularity, as any of these objects may be used consistently to carry regular sets of properties, with names and value spaces that may be known in advance or discovered dynamically.  
 
 ### Interoperability with other data formats 
 
@@ -94,15 +97,21 @@ The foundations of OSCAL are in control objects, such as controls and subcontrol
 
 #### &lt;catalog> Catalog   
 
-Top-level element for a (canonical) control catalog   
+A (canonical) control catalog: a structured set of security controls   
 
 #### &lt;framework> Framework   
 
-Top-level element for a set of control-like components, not considered to be a catalog   
+A collection of components for formal reference into and among control catalogs   
 
 This element represents a collection of structured data objects ("components", see component) that present information in ways organized to facilitate coordinated access (both manual and automated) both with one another and with controls documented in control catalogs. This is a suitable element for representing, not a control catalog, but an overlay or customization that has its own organization, making many-to-many links across catalogs, their profiles, and other canonical reference documents. (A customization that does not reorganize, but only selects from and configures a control, can be a `profile`.) 
 
 Despite their very different roles in the system (catalogs for canonical collections of controls, frameworks for most anything else), components inside frameworks and controls inside catalogs have the same kinds of content objects subject to similar kinds of restrictions. With respect to their internals, that is, they are closely aligned, which simplifies processing of information across the boundaries between them.   
+
+#### &lt;worksheet> Worksheet   
+
+An arbitrary, working collection of components   
+
+Functionally this element is an alias of framework. But it is expected to be used for much more ad-hoc collections of components than formalized (much less published) frameworks.   
 
 #### &lt;control> Control   
 

@@ -40,27 +40,28 @@
   </section>
   <section>
     <title>OSCAL organization</title>
-    <p>OSCAL catalogs are built out of controls. Essentially, OSCAL is a lightweight and free-form
-        <q>documentary</q> format, which includes semantic <q>islands</q> of structured information.
-      These are semantic not only because they are addressable in principle, but more
-      importantly because their organizations and values may be known before processing occurs, 
-      at least with respect to certain operations and relations, and even (at the most general level)
-      before operations are designed and deployed. OSCAL offers a yin to the yang of query and
-      processing.</p>
+    <p>OSCAL catalogs are built out of controls. By analogy, OSCAL <q>frameworks</q> and
+        <q>worksheets</q> are constructed out of components, which may map to (correspond with)
+      controls in a catalog.</p>
+    <p>Both controls (in a catalog) and components (more generally) are like rows in a spreadsheet,
+      with cells in the row designated for carrying labeled (and sometimes structured) information.
+      To accommodate this, OSCAL is a lightweight and free-form <q>documentary</q> format, which
+      includes semantic <q>islands</q> of structured information. These are semantic not only
+      because they are addressable in principle, but more importantly because their organizations
+      and values may be known before processing occurs, at least with respect to certain operations
+      and relations, and even (at the most general level) before operations are designed and
+      deployed. When encoded in OSCAL, control catalogs and the documents that make reference to
+      them become <q>actionable</q> even at granular levels.</p>
     <p>At the broadest level, <q>control objects</q> in OSCAL include controls, subcontrols, parts
       of controls or subcontrols, and control groups. Each OSCAL application or application domain
       will determine for itself how these correspond to entities or <q>controls</q>, formal processes, procedures, and so forth, within that domain.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>group</code>,
-        <code>control</code>, <code>subcontrol</code>, and <code>part</code>. According to its rules,
-      either controls or groups may appear within groups (that is, groups may be nested or may
-      contain controls), while subcontrols may only appear within controls. Either controls or
-      subcontrols may be partitioned (may contain parts), and parts may contain their own parts.
-      While this design centers around controls and subcontrols, by means of the use of groups and
-      parts, OSCAL can support organizations of controls and their components with arbitrary
-      granularity, as any of these objects may be used consistently to carry regular sets of
-      properties, with names and value spaces that may be known in advance or discovered
-      dynamically.</p>
+        <code>control</code>, <code>subcontrol</code>, <code>component</code>, and
+      <code>part</code>. OSCAL can support organizations of information (in both catalogs and
+      nominal <q>frameworks</q>) with arbitrary granularity, as any of these objects may be used
+      consistently to carry regular sets of properties, with names and value spaces that may be
+      known in advance or discovered dynamically.</p>
   </section>
   <section>
     <title>Interoperability with other data formats</title>
@@ -82,14 +83,14 @@
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
       <part class="description">
-        <p>Top-level element for a (canonical) control catalog</p>
+        <p>A (canonical) control catalog: a structured set of security controls</p>
       </part>
     </component>
     <component class="element-description">
       <prop class="tag">framework</prop>
       <prop class="full_name">Framework</prop>
       <part class="description">
-        <p>Top-level element for a set of control-like components, not considered to be a catalog</p>
+        <p>A collection of components for formal reference into and among control catalogs</p>
       </part>
       <part class="remarks">
         <p>This element represents a collection of structured data objects (<q>components</q>, see
@@ -105,6 +106,18 @@
           inside catalogs have the same kinds of content objects subject to similar kinds of
           restrictions. With respect to their internals, that is, they are closely aligned, which
           simplifies processing of information across the boundaries between them.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">worksheet</prop>
+      <prop class="full_name">Worksheet</prop>
+      <part class="description">
+        <p>An arbitrary, working collection of components</p>
+      </part>
+      <part class="remarks">
+        <p>Functionally this element is an alias of <code>framework</code>. But it is expected to be
+          used for much more ad-hoc collections of components than formalized (much less published)
+          frameworks.</p>
       </part>
     </component>
     <component class="element-description">

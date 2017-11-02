@@ -100,7 +100,8 @@ group = element group {
   idAttr, optionalClass,
   title?, control-components, (group | control)+, references? }
 
-control-components = (prop | anyKindofPart | link | prose | param)*
+# note prose is not included in control-components, unlike item pattern ('component' element)
+control-components = (prop | anyKindofPart | link | param)*
 
 control =
   element control {
@@ -122,10 +123,11 @@ anyKindofPart = (part)*
 # see utility.xq for analytic breakdown of part types
 # so far: description, guidance
 
+# parts are addressable like controls, but can also have prose content
 part =
   element part {
     idAttr, optionalClass, title?,
-    control-components
+    (prose | control-components)*
   }
 
 title = element title { (text | q)* }

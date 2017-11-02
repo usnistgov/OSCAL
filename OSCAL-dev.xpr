@@ -10,11 +10,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/SP800-53-extraction.xpl</String>
+                                    <String>working/lib/XSD/oscal-core-interim.xsd</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                        <String>Run schema production pipeline</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -25,46 +25,16 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/Tuneup-SP800-53-oscal.xsl</String>
+                                    <String>docs/schema/oscal-oscal.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                        <String>Run schema production pipeline</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>sources/800-53/rev5/sp800-53-controls-indented.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/Convert-SP800-53-to-oscal.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL simple XSLT (open)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XSL</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -85,21 +55,6 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/FedRAMP/worksheet-from-xls-export.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run XSLT on Flat Fedramp XML</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>working/FedRAMP/excel-LOW-extract.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -110,6 +65,36 @@
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>sources/800-53/rev5/sp800-53-controls-indented.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/FedRAMP/worksheet-from-xls-export.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run XSLT on Flat Fedramp XML</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -140,6 +125,51 @@
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/SP800-53-extraction.xpl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/Tuneup-SP800-53-oscal.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/Convert-SP800-53-to-oscal.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL simple XSLT (open)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -296,21 +326,6 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>working/lib/XSD/schema-production.xpl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run schema production pipeline</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>docs/schema/oscal-oscal.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -2227,7 +2242,7 @@
                                                 <String>documented-xsd</String>
                                             </field>
                                             <field name="url">
-                                                <String>${pdu}/working/lib/XSD/oscal-core.xsd</String>
+                                                <String>${pdu}/schema/xml/oscal-core.xsd</String>
                                             </field>
                                             <field name="showInSequenceView">
                                                 <Boolean>true</Boolean>
@@ -2672,6 +2687,21 @@
                     <entry>
                         <String>validation.scenario.associations</String>
                         <scenarioAssociation-array>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>working/FedRAMP/fedramp-low-worksheet.xml</String>
