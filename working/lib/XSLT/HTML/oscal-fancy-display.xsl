@@ -276,7 +276,7 @@
   <xsl:template match="oscal:part[@class='objective']//oscal:part[@class='objective']" priority="2" mode="title"/>
     
   <xsl:template match="*" mode="title">
-    <xsl:value-of select="@class"/>
+    <span class="subst"><xsl:value-of select="@class"/></span>
   </xsl:template>
   
   <xsl:template match="oscal:p">

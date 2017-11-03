@@ -195,7 +195,7 @@
          by id of the parent and class of the matching component -->
     <xsl:variable name="remove_me" select="key('alteration-by-target',../@id,$invocation)/remove/@targets/tokenize(.,'\s+') = oscal:classes(.)"/>
     <xsl:if test="not($remove_me)">
-     <xsl:next-match/>
+      <xsl:next-match/>
     </xsl:if>
     
   </xsl:template>
