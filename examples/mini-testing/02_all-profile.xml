@@ -8,6 +8,7 @@
    
    <invoke href="mini-testing-catalog.xml">
       <include>
+         <!-- Doesn't include subcontrols since @with-subcontrols defaults to 'no'. -->
          <all/>
       </include>
    </invoke>

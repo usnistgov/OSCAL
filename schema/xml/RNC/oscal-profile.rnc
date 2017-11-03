@@ -4,12 +4,12 @@ include "oscal-core.rnc" {
   start = (profile | framework)
   }
 
-profile = element profile { title?, invoke+, framework? }
+profile = element profile { idAttr, title, invoke+, framework? }
 
-invoke = element invoke { hrefAttr, idAttr, (\include?, exclude?) }
+invoke = element invoke { hrefAttr, idAttr, (\include?, exclude?), ( param | alteration )* }
 
 # Can have both 'all' and 'call' to switch up with-subcontrol settings
-\include = element include { all?, (call |  param)* }
+\include = element include { all | call+ }
 
 # for capturing overwritten values
 \default = element default { text }
@@ -40,3 +40,10 @@ call = element call { ( withSubContrlsAttr,
 # not used ... for experimental feature
 filter = element filter { attribute key { text }, text }
 
+alteration = element alter { (
+  attribute control-id    { text } |
+  attribute subcontrol-id { text } ),
+  remove?, augment? }
+
+remove  = element remove  { attribute targets { xsd:NMTOKENS } }
+augment = element augment { (prop | anyKindofPart)* }

@@ -1,15 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
-<?xml-model href="../../working/lib/Schematron/oscal-links.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 file:/home/wendell/Documents/OSCAL/working/lib/XSD/oscal-core.xsd">
+<?xml-model href="../../schema/xml/Schematron/oscal-links.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-core.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <title>MINI TESTING catalog</title>
     <section>
         <title>This catalog</title>
         <p>Mini-testing starts as a reduced and mocked up subset of SP800-53 controls for testing
             and demonstration of OSCAL features and functionalities.</p>
     </section>
+    <group class="family">
+        <title>FAKE</title>
+        <control class="SP800-53" id="FAKE">
+            <title>SEPARATION OF DUTIES</title>
+            <param id="fake_a">
+                <desc>FAKE PARAMETER IN FAKE CONTROL</desc>
+                <value>organization-defined duties of individuals</value>
+            </param>
+            <prop class="name">FAKE</prop>
+            <part class="statement">
+                <p>A fake control with some pathological markup.</p>
+                <part class="item" id="FAKE-a">
+                    <prop class="name">FAKE-a.</prop>
+                    <p class="description">Insert a parameter here: <insert param-id="fake_a"/>;</p>
+                </part>
+                <part class="item" id="FAKE-b">
+                    <prop class="name">FAKE-b.</prop>
+                    <p class="description">This item includes inline markup such as <i>italics</i>,
+                            <b>bold</b>, <em>emphasis</em>, <code>code</code>, <q>quoted text</q>
+                        and even a bit of water (H<sub>2</sub>O).</p>
+                </part>
+                <part class="item" id="FAKE-c">
+                    <prop class="name">FAKE-c.</prop>
+                    <p class="description">This item includes some more complex prose:</p>
+                    <ul>
+                        <li>Here's language in a list item</li>
+                        <li>Another list item</li>
+                    </ul>
+                    <p class="description">Also there's inline markup such as <i>italics</i>,
+                            <b>bold</b>, <em>emphasis</em>, <code>code</code>, <q>quoted text</q>
+                        and even a bit of water (H<sub>2</sub>O).</p>
+                </part>
+            </part>
+            <part class="guidance">
+                <p>Not much guidance here.</p>
+            </part>
+        </control>
+    </group>
     <group class="family">
         <title>ACCESS CONTROL</title>
         <control class="SP800-53" id="ac.5">
@@ -72,7 +110,8 @@
                 <param id="ac-6_a">
                     <desc>organization-defined security functions (deployed in hardware, software,
                         and firmware) and security-relevant information</desc>
-                    <value>organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information</value>
+                    <value>organization-defined security functions (deployed in hardware, software,
+                        and firmware) and security-relevant information</value>
                 </param>
                 <prop class="name">AC-6 (1)</prop>
                 <part class="statement">
@@ -97,7 +136,8 @@
                 <param id="ac-6_b">
                     <desc>organization-defined security functions or security-relevant
                         information</desc>
-                    <value>organization-defined security functions or security-relevant information</value>
+                    <value>organization-defined security functions or security-relevant
+                        information</value>
                 </param>
                 <prop class="name">AC-6 (2)</prop>
                 <part class="statement">

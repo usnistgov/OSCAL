@@ -122,7 +122,7 @@
     </xsl:if>
   </xsl:template>
   
-  <xsl:template match="control | component[oscal:classes(.)='control']" mode="filter-controls">
+  <xsl:template match="control | component[oscal:classes(.)='control']" priority="3" mode="filter-controls">
     <!--A control or subcontrol is always excluded if it appears in invoke/exclude
     Otherwise, it is included if empty(invoke/include), exists(invoke/all)
     or exists(invoke/call[(@control-id | @subcontrol-id)=current()/@id]-->
@@ -136,11 +136,12 @@
       <component class="{oscal:classes-including(@class,'control')}">
         <xsl:copy-of select="@* except @class"/>
         <xsl:apply-templates mode="filter-controls"/>
+        <xsl:apply-templates mode="augment" select="."/>
       </component>
     </xsl:if>
   </xsl:template>
   
-  <xsl:template match="subcontrol | component[oscal:classes(.)='subcontrol']" mode="filter-controls">
+  <xsl:template match="subcontrol | component[oscal:classes(.)='subcontrol']" priority="2" mode="filter-controls">
     <!-- Subcontrol logic is analogous to control logic for keeping.
       Extend this with (parameterized) defaults for handling subcontrols. -->
     <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
@@ -160,15 +161,18 @@
       <component class="{oscal:classes-including(@class,'subcontrol')}">
         <xsl:copy-of select="@* except @class"/>
         <xsl:apply-templates mode="filter-controls"/>
+        <xsl:apply-templates mode="augment" select="."/>
       </component>
     </xsl:if>
   </xsl:template>
- 
-  <!--<xsl:template match="part | component[oscal:classes(.)='part']" mode="filter-controls">
-    <component class="{@class/(. || ' ')}part">
-      <xsl:apply-templates mode="#current"/>
-    </component>
-  </xsl:template>-->
+
+
+  <xsl:template match="control | subcontrol | component" mode="augment">
+    <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
+    
+    <xsl:copy-of select="key('alteration-by-target',@id,$invocation)/augment/*"/>
+  </xsl:template>
+  
   
   <!-- When a catalog is filtered through a profile, its parameters are overwritten
        by parameters passed in from the invocation. -->
@@ -184,7 +188,21 @@
     <xsl:apply-templates mode="copy" select=".[empty(key('element-by-id',parent::param/@id,$invocation)/self::param/desc)]"/>
   </xsl:template>
   
+  
+  <xsl:template match="control/* | subcontrol/* | component/*" mode="filter-controls">
+    <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
+    <!-- boolean comes back as true() if a 'remove' element in the invocation matches
+         by id of the parent and class of the matching component -->
+    <xsl:variable name="remove_me" select="key('alteration-by-target',../@id,$invocation)/remove/@targets/tokenize(.,'\s+') = oscal:classes(.)"/>
+    <xsl:if test="not($remove_me)">
+     <xsl:next-match/>
+    </xsl:if>
+    
+  </xsl:template>
+  
   <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
+  
+  <xsl:key name="alteration-by-target" match="alter" use="@control-id | @subcontrol-id"/>
   
   <xsl:function name="oscal:classes" as="xs:string*">
     <xsl:param name="who" as="element()"/>

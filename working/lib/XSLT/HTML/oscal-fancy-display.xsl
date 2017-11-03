@@ -415,16 +415,12 @@
     </span>
   </xsl:template>
   
-  <xsl:template match="oscal:em">
-    <em class="em">
-      <xsl:apply-templates/>
-    </em>
-  </xsl:template>
   <xsl:template match="oscal:select">
     <div class="select">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
+  
   <xsl:template match="oscal:choice">
     <p class="choice">
       <xsl:apply-templates/>

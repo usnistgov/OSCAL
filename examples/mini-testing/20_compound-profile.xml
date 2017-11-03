@@ -18,7 +18,7 @@
             
          </include>
          
-         <!-- From here on, we exclude ra.9 just to show that exclusions work -->
+         <!-- Exclude ra.9 to show that exclusions work -->
          <exclude>
             <call control-id="ra.9"/>
          </exclude>

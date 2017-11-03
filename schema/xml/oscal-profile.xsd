@@ -5,17 +5,24 @@
   <xs:element name="profile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:title"/>
+        <xs:element ref="oscal:title"/>
         <xs:element maxOccurs="unbounded" ref="oscal:invoke"/>
         <xs:element minOccurs="0" ref="oscal:framework"/>
       </xs:sequence>
+      <xs:attributeGroup ref="oscal:idAttr"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="invoke">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:include"/>
-        <xs:element minOccurs="0" ref="oscal:exclude"/>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="oscal:include"/>
+          <xs:element minOccurs="0" ref="oscal:exclude"/>
+        </xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="oscal:param"/>
+          <xs:element ref="oscal:alter"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:hrefAttr"/>
       <xs:attributeGroup ref="oscal:idAttr"/>
@@ -24,13 +31,10 @@
   <!-- Can have both 'all' and 'call' to switch up with-subcontrol settings -->
   <xs:element name="include">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:all"/>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="oscal:call"/>
-          <xs:element ref="oscal:param"/>
-        </xs:choice>
-      </xs:sequence>
+      <xs:choice>
+        <xs:element ref="oscal:all"/>
+        <xs:element maxOccurs="unbounded" ref="oscal:call"/>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
   <!-- for capturing overwritten values -->
@@ -83,6 +87,29 @@
   <xs:element name="filter">
     <xs:complexType mixed="true">
       <xs:attribute name="key" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:remove"/>
+        <xs:element minOccurs="0" ref="oscal:augment"/>
+      </xs:sequence>
+      <xs:attribute name="control-id"/>
+      <xs:attribute name="subcontrol-id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="remove">
+    <xs:complexType>
+      <xs:attribute name="targets" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="augment">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:prop"/>
+        <xs:group ref="oscal:anyKindofPart"/>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>

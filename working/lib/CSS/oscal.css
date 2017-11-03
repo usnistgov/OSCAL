@@ -173,6 +173,10 @@ withdrawn { display: inline; font-style: italic }
 
 code { display: inline; font-family: monospace; font-size: 90% }
 
+sub, sup { display: inline; font-size: .83em }
+sub      { vertical-align: sub }
+sup      { vertical-align: super }
+
 insert, select { display: inline; font-family: sans-serif; background-color: white;
   font-size: 80%; font-style: italic; font-weight: bold; border: thin solid pink;
    content: oxy_popup(

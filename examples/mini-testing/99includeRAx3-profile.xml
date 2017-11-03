@@ -15,6 +15,7 @@
             
             <call control-id="ra.9"/>
             
+            <!-- Overriding both description and value in source catalog -->
             <param id="ra-9_a">
                <desc>PET FEEDING, PLAY, ENVIRONMENTAL, VETERINARY REQUIREMENTS - organization-defined systems, system components, or system services</desc>
                <value>PET FEEDING, PLAY, ENVIRONMENTAL, VETERINARY REQUIREMENTS</value>
