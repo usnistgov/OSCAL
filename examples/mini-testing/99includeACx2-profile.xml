@@ -10,7 +10,7 @@
          <include>
             <call control-id="ac.5"/>
             <param id="ac-5_a">
-               <desc>CAT PERSON #1 (primary), CAT PERSON #2 (asst), FURTHER CAT PERSONS - organization-defined duties of individuals</desc>
+               <desc>[whoever is responsible for caring for the cats] - organization-defined duties of individuals</desc>
                <value>CAT PERSON #1 (primary), CAT PERSON #2 (asst), FURTHER CAT PERSONS</value>
             </param>
             
@@ -18,25 +18,25 @@
             
             <call subcontrol-id="ac.6.1"/>
             <param id="ac-6_a">
-               <desc>CAT FOOD STATION; LITTER BOX; REGULAR ACCESS TO OUTDOORS - organization-defined security functions (deployed in hardware, software,
+               <desc>[wherever the cat/s need/s to get to on a regular basis ] - organization-defined security functions (deployed in hardware, software,
                   and firmware) and security-relevant information</desc>
                <value>CAT FOOD STATION; LITTER BOX; REGULAR ACCESS TO OUTDOORS</value>
             </param>
             
             <call subcontrol-id="ac.6.2"/>
             <param id="ac-6_b">
-               <desc>REGULAR FEEDINGS AND PROVISION OF TREATS - organization-defined security functions or security-relevant
+               <desc>[describe feeding routine] - organization-defined security functions or security-relevant
                   information</desc>
                <value>REGULAR FEEDINGS AND PROVISION OF TREATS</value>
             </param>
             
             <call subcontrol-id="ac.6.3"/>
             <param id="ac-6_c">
-               <desc>COMMUNICATIVE BEHAVIORS SUCH AS RUBBING LEGS - organization-defined privileged commands</desc>
+               <desc>[whatever activities occur over networks] - organization-defined privileged commands</desc>
                <value>COMMUNICATIVE BEHAVIORS SUCH AS RUBBING LEGS</value>
             </param>
             <param id="ac-6_d">
-               <desc>MEALTIMES - organization-defined compelling operational needs</desc>
+               <desc>[such occasions as network access may occur] - organization-defined compelling operational needs</desc>
                <value>MEALTIMES</value>
             </param>
             

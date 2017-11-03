@@ -18,7 +18,7 @@
       p { line-height: 160% }
       div > *:first-child { margin-top: 0ex }
       
-      div.param { border: medium solid green; font-size: 80%; padding: 0.3em }
+      div.param { display: none; border: medium solid green; font-size: 80%; padding: 0.3em }
       
       .param p { margin: 0em }
       
@@ -30,8 +30,8 @@
       
       .insert, .choice { border: thin solid black; padding: 0.1em }
       .unassigned { border: thin solid red; background-color: pink}
-      .desc { color: darkgreen }
-      .insert .desc { font-size: 90% }
+      .desc { color: darkgreen; display: none }
+      .insert .desc { font-size: 90%; }
       .value { font-style: italic; text-decoration: underline }
       
       .param-id { font-size: 90%; font-family: sans-serif; font-weight: bold;
