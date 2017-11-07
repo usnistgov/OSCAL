@@ -5,8 +5,9 @@
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
    <!-- Asking for all controls, with an exclusion -->
-   
+   <title>Once Again, with Feeling</title>
    <invoke href="mini-testing-catalog.xml">
+      <!-- This time, subcontrols (enhancements) come with the controls. -->
       <include>
          <all with-subcontrols="yes"/>
       </include>

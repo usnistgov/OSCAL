@@ -47,7 +47,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="oscal:framework-contents">
-          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attribute name="id" type="xs:ID"/>
           <xs:attributeGroup ref="oscal:optionalClass"/>
         </xs:extension>
       </xs:complexContent>
@@ -57,7 +57,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="oscal:worksheet-contents">
-          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attribute name="id" type="xs:ID"/>
           <xs:attributeGroup ref="oscal:optionalClass"/>
         </xs:extension>
       </xs:complexContent>
@@ -83,7 +83,7 @@
               <xs:element maxOccurs="unbounded" ref="oscal:component"/>
             </xs:choice>
           </xs:sequence>
-          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attribute name="id" type="xs:ID"/>
           <xs:attributeGroup ref="oscal:optionalClass"/>
         </xs:complexType>
       </xs:element>
@@ -102,7 +102,7 @@
         </xs:choice>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:component"/>
       </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -247,7 +247,7 @@
         </xs:choice>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -270,7 +270,7 @@
             </xs:choice>
             <xs:element minOccurs="0" ref="oscal:references"/>
           </xs:sequence>
-          <xs:attributeGroup ref="oscal:idAttr"/>
+          <xs:attribute name="id" type="xs:ID"/>
           <xs:attributeGroup ref="oscal:optionalClass"/>
         </xs:complexType>
       </xs:element>
@@ -297,7 +297,7 @@
         </xs:choice>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -308,7 +308,7 @@
         <xs:group ref="oscal:control-components"/>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -332,7 +332,7 @@
           <xs:group ref="oscal:control-components"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -368,7 +368,7 @@
         <xs:element ref="oscal:desc"/>
         <xs:group ref="oscal:paramValue"/>
       </xs:sequence>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -437,7 +437,7 @@
         <xs:element ref="oscal:citation"/>
         <xs:group ref="oscal:prose"/>
       </xs:choice>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
     </xs:complexType>
   </xs:element>
   <!-- analogous to JATS mixed-citation[@citation-type='standard'] or equivalent -->
@@ -464,7 +464,7 @@
   <xs:element name="p">
     <xs:complexType mixed="true">
       <xs:group ref="oscal:whatnot"/>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -474,7 +474,7 @@
         <xs:group ref="oscal:mix"/>
         <xs:element ref="oscal:a"/>
       </xs:choice>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="ol">
@@ -491,7 +491,7 @@
         <xs:element ref="oscal:ol"/>
         <xs:element ref="oscal:ul"/>
       </xs:choice>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
@@ -634,12 +634,12 @@
   -->
   <xs:element name="insert">
     <xs:complexType>
-      <xs:attributeGroup ref="oscal:idAttr"/>
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
     </xs:complexType>
   </xs:element>
   <!-- A selection to be made by responder - tbd -->
-  <!-- select = element select { idAttr, choice* } -->
+  <!-- select = element select { idAttr?, choice* } -->
   <!--
     Within a selection, a choice - tbd
     unlike 'value', choice may have inline stuff as well as 'assign' elements
@@ -647,7 +647,7 @@
   -->
   <!-- IDs are required everywhere for now -->
   <xs:attributeGroup name="idAttr">
-    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attribute name="id" use="required" type="xs:ID"/>
   </xs:attributeGroup>
   <!--
     we used to distinguish btw @type and @name the latter for components

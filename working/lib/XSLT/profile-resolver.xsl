@@ -25,7 +25,7 @@
   <xsl:mode name="filter-controls" on-no-match="shallow-copy"/>
   
   <!-- Frameworks and catalogs are resolved as themselves. -->
-  <xsl:template match="catalog | framework" mode="oscal:resolve #default">
+  <xsl:template match="catalog | framework | worksheet" mode="oscal:resolve #default">
     <xsl:apply-templates select="." mode="copy"/>
   </xsl:template>
   
@@ -35,6 +35,7 @@
       <!-- So we copy ourselves as well in case a subsequent transformation wants to see -->
       <xsl:copy-of select="@*"/>
       <!-- Now we execute the traversal on the catalogs invoked -->
+      <xsl:apply-templates select="title" mode="copy"/>
       <xsl:apply-templates select="invoke" mode="select-controls"/>
     </xsl:copy>
   </xsl:template>
@@ -178,14 +179,12 @@
        by parameters passed in from the invocation. -->
   <xsl:template match="param/value" mode="filter-controls">
     <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
-    <xsl:copy-of select="key('element-by-id',parent::param/@id,$invocation)/self::param/value"/>
-    <xsl:apply-templates mode="copy" select=".[empty(key('element-by-id',parent::param/@id,$invocation)/self::param/value)]"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$invocation)/value,.)[1]"/>
   </xsl:template>
   
   <xsl:template match="param/desc" mode="filter-controls">
     <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
-    <xsl:copy-of select="key('element-by-id',parent::param/@id,$invocation)/self::param/desc"/>
-    <xsl:apply-templates mode="copy" select=".[empty(key('element-by-id',parent::param/@id,$invocation)/self::param/desc)]"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$invocation)/desc,.)[1]"/>
   </xsl:template>
   
   
@@ -202,13 +201,34 @@
   
   <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
   
-  <xsl:key name="alteration-by-target" match="alter" use="@control-id | @subcontrol-id"/>
+  <xsl:key name="param-settings" match="oscal:set-param" use="@param-id"/>
   
-  <xsl:function name="oscal:classes" as="xs:string*">
-    <xsl:param name="who" as="element()"/>
-    <!-- HTML is not case sensitive so neither are we -->
-    <xsl:sequence select="tokenize($who/@class/lower-case(.), '\s+')"/>
+  <xsl:key name="alteration-by-target" match="alter" use="@control-id | @subcontrol-id"/>
+
+<!-- OSCAL*2018 -->
+
+  <!-- Returns a set of controls or components marked as controls for a profile. -->
+  <xsl:function name="oscal:resolved-controls" as="element()*">
+    <xsl:param name="who" as="document-node()"/>
+    <xsl:sequence select="oscal:resolve($who)//(control | component[contains-token(@class,'control')])"/> 
   </xsl:function>
+  
+  <!-- Returns a set of subcontrols or components marked as subcontrols for a profile. -->
+  <xsl:function name="oscal:resolved-subcontrols" as="element()*">
+    <xsl:param name="who" as="document-node()"/>
+    <xsl:sequence select="oscal:resolve($who)//(subcontrol | component[contains-token(@class,'subcontrol')])"/> 
+  </xsl:function>
+  
+  <!-- Expect a profile to be resolved. If a catalog or framework, this should return a copy of the input. -->
+  <xsl:function name="oscal:resolve" as="document-node()">
+    <xsl:param name="who" as="node()"/>
+    <xsl:document>
+      <xsl:apply-templates select="$who" mode="oscal:resolve"/>
+    </xsl:document>
+  </xsl:function>
+  
+  
+  
   
   <!-- returns sequence of tokens including passed value, but non-duplicatively -->
   <xsl:function name="oscal:classes-including" as="xs:string">
@@ -217,5 +237,11 @@
     <xsl:sequence select="string-join((tokenize($class,'\s+')[. ne $value],$value), ' ')"/>
   </xsl:function>
 
+  <xsl:function name="oscal:classes" as="xs:string*">
+    <xsl:param name="who" as="element()"/>
+    <!-- HTML is not case sensitive so neither are we -->
+    <xsl:sequence select="tokenize($who/@class/lower-case(.), '\s+')"/>
+  </xsl:function>
+  
   
 </xsl:stylesheet>

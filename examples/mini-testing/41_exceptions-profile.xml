@@ -5,13 +5,23 @@
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
-   <!-- Asking for all controls, this time with a parameter-->
-   <title>Patching profile example</title>
+   <!-- The profile illustrates a number of errors related to "controls collisions"
+     either errors in specification, or reference
+       -->
+   <title>Exceptions profile example</title>
    <invoke href="mini-testing-catalog.xml">
       <!-- If we leave 'include' out, we get include/all implicitly
          <include><all/></include>-->
-
-      <!-- Exclude ra.9 to show that exclusions work -->
+      <include>
+         <!-- Next element is Schematron-invalid in profile.sch - 'Control is both included and excluded' -->
+         <call control-id="ra.9"/>
+         <!-- Next element throws a warning in profile.sch - 'Repeated call [...] will be ignored' -->
+         <call control-id="ra.9"/>
+         
+         <!-- We should get an error here for empty target (a functional no op) -->
+         <call control-id="controlX"/>
+      </include>
+      
       <exclude>
          <call control-id="ra.9"/>
       </exclude>
@@ -34,4 +44,8 @@
          </augment>
       </alter>
    </invoke>
+   
+   <!-- This should error as a repeated call to the same authority (profile or catalog) - not allowed! -->
+   <invoke href="mini-testing-catalog.xml"/>
+   
 </profile>

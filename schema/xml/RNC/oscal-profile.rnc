@@ -1,12 +1,10 @@
 default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
-include "oscal-core.rnc" {
-  start = (profile | framework)
-  }
+include "oscal-core.rnc" { start = profile }
 
 profile = element profile { idAttr, title, invoke+, framework? }
 
-invoke = element invoke { hrefAttr, idAttr, (\include?, exclude?), ( param | alteration )* }
+invoke = element invoke { hrefAttr, (\include?, exclude?), ( param_setting | alteration )* }
 
 # Can have both 'all' and 'call' to switch up with-subcontrol settings
 \include = element include { all | call+ }
@@ -39,6 +37,9 @@ call = element call { ( withSubContrlsAttr,
 
 # not used ... for experimental feature
 filter = element filter { attribute key { text }, text }
+
+
+param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, paramValue }
 
 alteration = element alter { (
   attribute control-id    { text } |

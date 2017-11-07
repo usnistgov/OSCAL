@@ -22,17 +22,17 @@
             <part class="statement">
                 <p>A fake control with some pathological markup.</p>
                 <part class="item" id="FAKE-a">
-                    <prop class="name">FAKE-a.</prop>
+                    <prop class="name">FAKEa.</prop>
                     <p class="description">Insert a parameter here: <insert param-id="fake_a"/>;</p>
                 </part>
                 <part class="item" id="FAKE-b">
-                    <prop class="name">FAKE-b.</prop>
+                    <prop class="name">FAKEb.</prop>
                     <p class="description">This item includes inline markup such as <i>italics</i>,
                             <b>bold</b>, <em>emphasis</em>, <code>code</code>, <q>quoted text</q>
                         and even a bit of water (H<sub>2</sub>O).</p>
                 </part>
                 <part class="item" id="FAKE-c">
-                    <prop class="name">FAKE-c.</prop>
+                    <prop class="name">FAKEc.</prop>
                     <p class="description">This item includes some more complex prose:</p>
                     <ul>
                         <li>Here's language in a list item</li>

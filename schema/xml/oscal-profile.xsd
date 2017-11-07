@@ -20,12 +20,11 @@
           <xs:element minOccurs="0" ref="oscal:exclude"/>
         </xs:sequence>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="oscal:param"/>
+          <xs:element ref="oscal:set-param"/>
           <xs:element ref="oscal:alter"/>
         </xs:choice>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:hrefAttr"/>
-      <xs:attributeGroup ref="oscal:idAttr"/>
     </xs:complexType>
   </xs:element>
   <!-- Can have both 'all' and 'call' to switch up with-subcontrol settings -->
@@ -87,6 +86,16 @@
   <xs:element name="filter">
     <xs:complexType mixed="true">
       <xs:attribute name="key" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="set-param">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="oscal:desc"/>
+        <xs:group ref="oscal:paramValue"/>
+      </xs:sequence>
+      <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="alter">

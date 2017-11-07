@@ -5,18 +5,16 @@
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
    <!-- Asking for all controls, with an exclusion -->
-   
+   <title>Being Exclusive</title>
    <invoke href="mini-testing-catalog.xml">
       <include>
          <all with-subcontrols="yes"/>
       </include>
+      
+      <!-- Excluding two controls -->
       <exclude>
          <call control-id="ra.7"/>
-         
-         <!--<call control-id="ra.8"/>-->
-         
          <call control-id="ra.9"/>
-         
       </exclude>
    </invoke>
 </profile>

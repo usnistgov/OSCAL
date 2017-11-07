@@ -4,19 +4,16 @@
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
-   <!-- Asking for all controls, this time with subcontrols, and two (not three) exclusions -->
-   
+   <!-- Asking for all controls, this time with subcontrols, and three exclusions. -->
+   <title>Being More Exclusive</title>
    <invoke href="mini-testing-catalog.xml">
       <include>
          <all with-subcontrols="yes"/>
       </include>
       <exclude>
          <call control-id="ra.7"/>
-         
-         <!--<call control-id="ra.8"/>-->
-         
+         <call control-id="ra.8"/>
          <call control-id="ra.9"/>
-         
       </exclude>
    </invoke>
 </profile>

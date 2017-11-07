@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
-<?xml-model href="../../working/lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
-   <!-- Asking for all controls, this time with a parameter-->
-   
+   <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
+   <title>A Compound Profile</title>
    <invoke href="mini-testing-catalog.xml">
-         <include>
-            <all/>
-            
-            <param id="ac-5_a">
-               <desc>organization-defined duties of individuals</desc>
-               <value>butcher; baker; candlestick-maker</value>
-            </param>
-            
-         </include>
-         
-         <!-- Exclude ra.9 to show that exclusions work -->
-         <exclude>
-            <call control-id="ra.9"/>
-         </exclude>
+      <include>
+         <call control-id="ac.5"/>
+      </include>
+      <set-param param-id="ac-5_a">
+         <desc>organization-defined duties of individuals</desc>
+         <value>butcher; baker; candlestick-maker</value>
+      </set-param>
    </invoke>
+   
+   <!-- Note what comes back from invoke/@href is fully resolved -->
+   <invoke href="99includeRAx3-profile.xml"/>
+   
 </profile>
