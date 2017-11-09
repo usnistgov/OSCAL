@@ -7,7 +7,7 @@
 
    <!-- This one should throw an error because certain controls are declared
         in (for) both catalog sources. -->
-   <title>Exceptions profile example</title>
+   <title>More exceptions profile example</title>
    
    <!-- This should error with 'CONTESTED CONTROLS' meaning it invokes controls
         (or subcontrols) with the same ids as other controls invoked.
