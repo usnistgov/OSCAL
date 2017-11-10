@@ -3,9 +3,9 @@
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css" title="Straight" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../../working/lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../../working/lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<?xml-model href="../../schema/xml/RNC/oscal-worksheet.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<worksheet xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>Document model and tagging specification - OSCAL: The Open Security Controls Assessment
     Language</title>
   <declarations>
@@ -775,6 +775,162 @@
           arbitrary spans. But it might. Please share your requirements.</p>
       </part>
     </component>
+  </group><group id="profiling">
+    <title>Profiling</title>
+    <p>By means of its profiling functionality, OSCAL provides ways of specifying and documenting
+      configurations or <q>overlays</q> of catalog, as <b>profile</b> documents. Although they may
+      contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct
+      means or mechanism for working with OSCAL.</p>
+    <p>Roughly speaking, a profile document is a specification of a <em>selection</em> of controls
+      and subcontrols from a catalog, along with a series of <em>operations</em> over those controls
+      and their use.</p>
+    <component class="element-description">
+      <prop class="tag">profile</prop>
+      <prop class="full_name">Profile</prop>
+      <part class="description">
+        <p>In reference to a catalog (or other authority such as profile or framework), a selection
+          and configuration of controls, maintained separately</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">invoke</prop>
+      <prop class="full_name">Authority invocation</prop>
+      <part class="description">
+        <p>For invocation of controls and subcontrols from a catalog or other authority</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">include</prop>
+      <prop class="full_name">Include controls</prop>
+      <part class="description">
+        <p>The element's contents indicate which controls and subcontrols to include from the
+          authority (source catalog)</p>
+      </part>
+      <part class="remarks">
+        <p>To be schema-valid, this element must contain either (but not both) a single
+            <code>all</code> element, or a sequence of <code>call</code> elements.</p>
+        <p>If this element is not given, it is assumed to be present with contents <code>all</code>
+          (qv); i.e., all controls are included by default, unless the <code>include</code>
+          instruction calls controls specifically.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">exclude</prop>
+      <prop class="full_name">Exclude controls</prop>
+      <part class="description">
+        <p>Which controls and subcontrols to exclude from the authority (source catalog) being
+          invoked</p>
+      </part>
+      <part class="remarks">
+        <p>Within <code>exclude</code>, <code>all</code> is not an option since it makes no sense.
+          However, it also makes no sense (think about it) to use <code>exclude/call</code> except
+          with <code>include/all</code> (it makes no sense to call in by ID only to exclude by ID).
+          The only error condition reported, however, is when the same control is both included
+          (explicitly, by ID) and excluded.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">all</prop>
+      <prop class="full_name">Include all</prop>
+      <part class="description">
+        <p>Include all controls from the invoked authority (catalog)</p>
+      </part>
+      <part class="remarks">
+        <p>This element provides an alternative to calling controls and subcontrols individually
+          from a catalog. But this is also the default behavior when no <code>include</code> element
+          is given in an <code>invoke</code>; so ordinarily one might not see this element unless it
+          is for purposes of including its <code>@with-subcontrols='yes'</code></p>
+      </part>
+      <part class="example">
+        <p>An invocation of a catalog with all controls included:</p>
+        <pre>&lt;invoke href="canonical-catalog-oscal.xml">
+  &lt;include>
+    &lt;all/>
+  &lt;/include>
+&lt;/include></pre>
+        <p>has the same outcome as</p>
+        <pre>&lt;invoke href="canonical-catalog-oscal.xml"/>
+</pre>
+        <p>but is not the same as</p>
+        <pre>&lt;invoke href="canonical-catalog-oscal.xml">
+  &lt;include>
+    &lt;all with-subcontrols="yes"/>
+  &lt;/include>
+&lt;/invoke></pre>
+        <p>(Since <code>with-subcontrols</code> is assumed to be <q>no</q> unless stated to be
+            <q>yes</q>.)</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">call</prop>
+      <prop class="full_name">Call (control or subcontrol)</prop>
+      <part class="description">
+        <p>Call a control or subcontrol by its ID</p>
+      </part>
+      <part class="remarks">
+        <p>Inside <code>include</code>, If <code>@control-id</code> is used (to indicate the control
+          being referenced), <code>@subcontrol-id</code> cannot be used, and vice versa. (A single
+            <code>call</code> element is used for each control.) This constraint is enforced by the
+          schema. Likewise, <code>@with-subcontrols</code> can be used only along with
+            <code>@control-id</code> not with <code>@subcontrol-id</code>.</p>
+        <p>If <code>@with-subcontrols</code> is <q>yes</q> on the call to a control, no sibling
+            <code>call</code>elements need to be used to call its subcontrols. Accordingly it may be
+          more common to call subcontrols (enhancements) by ID only to exclude them, not to include
+          them.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">set-param</prop>
+      <prop class="full_name">Parameter setting</prop>
+      <part class="description">
+        <p>Set a parameter's value and even override its description</p>
+      </part>
+      <part class="remarks">
+        <p><code>@param-id</code> indicates the parameter (within the scope of the referenced
+          catalog or authority). The <code>value</code> element is used to provide a value for
+          insertion of a value for the parameter when the catalog is resolved and rendered. A
+            <code>desc</code> element can be presented (made available) to a calling profile – that
+          is, it is a parameter description helping to set the parameter in higher layers, not this
+          one (when profiles are expected to provide baselines, for example).</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">alter</prop>
+      <prop class="full_name">Alteration</prop>
+      <part class="description">
+        <p>Specifies changes to be made to an included control or subcontrol when a profile is
+          resolved</p>
+      </part>
+      <part class="remarks">
+        <p>Use <code>@targets</code> to indicate the classes of elements (typically
+            <code>part</code> or <code>prop</code> elements) to erase or remove from a control, when
+          a catalog is resolved.</p>
+        <p>It is an error for two <code>alter</code> elements to apply to the same control or
+          subcontrol. In practice, multiple alterations can be applied (together), but it creates
+          confusion.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">remove</prop>
+      <prop class="full_name">Removal</prop>
+      <part class="description">
+        <p>Elements to be removed from a control or subcontrol, in resolution</p>
+      </part>
+      <part class="remarks">
+        <p>Use <code>@targets</code> to indicate the classes of elements (typically
+            <code>part</code> or <code>prop</code> elements) to erase or remove from a control, when
+          a catalog is resolved.</p>
+        <p>To change an element, use <code>remove</code> to remove the element, then
+            <code>augment</code> to add it back again with changes.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">augment</prop>
+      <prop class="full_name">Augmentation</prop>
+      <part class="description">
+        <p>Element contents to be added to a control or subcontrols, in resolution</p>
+      </part>
+    </component>
   </group>
   <group>
     <title>Constraints outside the core schema</title>
@@ -908,4 +1064,4 @@
         that OSCAL would be complementary to any of the formats just mentioned.</p></section>
     
   </section>
-</framework>
+</worksheet>

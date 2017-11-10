@@ -55,6 +55,17 @@
 >     * [&lt;sup> Superscript](#sup-superscript)
 >     * [&lt;sub> Subscript](#sub-subscript)
 >     * [&lt;span> Span](#span-span)
+>   * [Profiling](#profiling)
+>     * [&lt;profile> Profile](#profile-profile)
+>     * [&lt;invoke> Authority invocation](#invoke-authority-invocation)
+>     * [&lt;include> Include controls](#include-include-controls)
+>     * [&lt;exclude> Exclude controls](#exclude-exclude-controls)
+>     * [&lt;all> Include all](#all-include-all)
+>     * [&lt;call> Call (control or subcontrol)](#call-call-(control-or-subcontrol))
+>     * [&lt;set-param> Parameter setting](#set-param-parameter-setting)
+>     * [&lt;alter> Alteration](#alter-alteration)
+>     * [&lt;remove> Removal](#remove-removal)
+>     * [&lt;augment> Augmentation](#augment-augmentation)
 >   * [Constraints outside the core schema](#constraints-outside-the-core-schema)
 >     * [Order of items inside controls](#order-of-items-inside-controls)
 >     * [Interdicted @class assignments](#interdicted-@class-assignments)
@@ -103,7 +114,7 @@ A (canonical) control catalog: a structured set of security controls
 
 A collection of components for formal reference into and among control catalogs   
 
-This element represents a collection of structured data objects ("components", see component) that present information in ways organized to facilitate coordinated access (both manual and automated) both with one another and with controls documented in control catalogs. This is a suitable element for representing, not a control catalog, but an overlay or customization that has its own organization, making many-to-many links across catalogs, their profiles, and other canonical reference documents. (A customization that does not reorganize, but only selects from and configures a control, can be a `profile`.) 
+This element represents a collection of structured data objects ("components", see component) that present information in ways organized to facilitate coordinated access (both manual and automated) both with one another and with controls documented in control catalogs. This is a suitable element for representing, not a control catalog, but an overlay or customization that has its own organization, making many-to-many links across catalogs, their profiles, and other canonical reference documents. (A customization that does not reorganize, but only selects from and configures a control, can be a profile.) 
 
 Despite their very different roles in the system (catalogs for canonical collections of controls, frameworks for most anything else), components inside frameworks and controls inside catalogs have the same kinds of content objects subject to similar kinds of restrictions. With respect to their internals, that is, they are closely aligned, which simplifies processing of information across the boundaries between them.   
 
@@ -431,7 +442,101 @@ Generic inline container
 
 As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging. 
 
-The OSCAL declarations model does not presently support validating properties of arbitrary spans. But it might. Please share your requirements.    
+The OSCAL declarations model does not presently support validating properties of arbitrary spans. But it might. Please share your requirements.   
+
+### Profiling 
+
+By means of its profiling functionality, OSCAL provides ways of specifying and documenting configurations or "overlays" of catalog, as profile documents. Although they may contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct means or mechanism for working with OSCAL. 
+
+Roughly speaking, a profile document is a specification of a *selection* of controls and subcontrols from a catalog, along with a series of *operations* over those controls and their use. 
+
+#### &lt;profile> Profile   
+
+In reference to a catalog (or other authority such as profile or framework), a selection and configuration of controls, maintained separately   
+
+#### &lt;invoke> Authority invocation   
+
+For invocation of controls and subcontrols from a catalog or other authority   
+
+#### &lt;include> Include controls   
+
+The element's contents indicate which controls and subcontrols to include from the authority (source catalog)   
+
+To be schema-valid, this element must contain either (but not both) a single all element, or a sequence of call elements. 
+
+If this element is not given, it is assumed to be present with contents all (qv); i.e., all controls are included by default, unless the include instruction calls controls specifically.   
+
+#### &lt;exclude> Exclude controls   
+
+Which controls and subcontrols to exclude from the authority (source catalog) being invoked   
+
+Within exclude, all is not an option since it makes no sense. However, it also makes no sense (think about it) to use `exclude/call` except with `include/all` (it makes no sense to call in by ID only to exclude by ID). The only error condition reported, however, is when the same control is both included (explicitly, by ID) and excluded.   
+
+#### &lt;all> Include all   
+
+Include all controls from the invoked authority (catalog)   
+
+This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no include element is given in an invoke; so ordinarily one might not see this element unless it is for purposes of including its `@with-subcontrols='yes'`   
+
+An invocation of a catalog with all controls included: ```
+<invoke href="canonical-catalog-oscal.xml">
+  <include>
+    <all/>
+  </include>
+</include>
+```
+ 
+
+has the same outcome as ```
+<invoke href="canonical-catalog-oscal.xml"/>
+
+```
+ 
+
+but is not the same as ```
+<invoke href="canonical-catalog-oscal.xml">
+  <include>
+    <all with-subcontrols="yes"/>
+  </include>
+</invoke>
+```
+ 
+
+(Since `with-subcontrols` is assumed to be "no" unless stated to be "yes".)   
+
+#### &lt;call> Call (control or subcontrol)   
+
+Call a control or subcontrol by its ID   
+
+Inside include, If `@control-id` is used (to indicate the control being referenced), `@subcontrol-id` cannot be used, and vice versa. (A single call element is used for each control.) This constraint is enforced by the schema. Likewise, `@with-subcontrols` can be used only along with `@control-id` not with `@subcontrol-id`. 
+
+If `@with-subcontrols` is "yes" on the call to a control, no sibling callelements need to be used to call its subcontrols. Accordingly it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.   
+
+#### &lt;set-param> Parameter setting   
+
+Set a parameter's value and even override its description   
+
+`@param-id` indicates the parameter (within the scope of the referenced catalog or authority). The value element is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A desc element can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).   
+
+#### &lt;alter> Alteration   
+
+Specifies changes to be made to an included control or subcontrol when a profile is resolved   
+
+Use `@targets` to indicate the classes of elements (typically part or prop elements) to erase or remove from a control, when a catalog is resolved. 
+
+It is an error for two alter elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.   
+
+#### &lt;remove> Removal   
+
+Elements to be removed from a control or subcontrol, in resolution   
+
+Use `@targets` to indicate the classes of elements (typically part or prop elements) to erase or remove from a control, when a catalog is resolved. 
+
+To change an element, use remove to remove the element, then augment to add it back again with changes.   
+
+#### &lt;augment> Augmentation   
+
+Element contents to be added to a control or subcontrols, in resolution    
 
 ### Constraints outside the core schema 
 

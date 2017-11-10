@@ -73,7 +73,7 @@ a:visited { color: midnightblue }
   </xsl:template>
   
   
-  <xsl:template match="oscal:catalog | oscal:framework" mode="toc">
+  <xsl:template match="oscal:catalog | oscal:framework | oscal:worksheet" mode="toc">
     <div id="toc-panel">
       <xsl:apply-templates select="oscal:title" mode="toc"/>
       <xsl:apply-templates select="oscal:section | oscal:group | oscal:control | oscal:component" mode="toc"/>
@@ -89,7 +89,7 @@ a:visited { color: midnightblue }
   
   <xsl:template match="oscal:title" mode="toc">
     <p class="toc-line">
-      <a href="#{generate-id(parent::*[not(self::oscal:catalog|self::oscal:framework)])}">
+      <a href="#{generate-id(parent::*[not(self::oscal:catalog|self::oscal:framework|self::oscal:worksheet)])}">
         <xsl:apply-templates/>
       </a>
     </p>
@@ -111,13 +111,13 @@ a:visited { color: midnightblue }
     </p>
   </xsl:template>
 
-  <xsl:template match="oscal:catalog | oscal:framework">
+  <xsl:template match="oscal:catalog | oscal:framework | oscal:worksheet">
     <div id="main" class="{local-name()}">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:catalog/oscal:title | oscal:framework/oscal:title">
+  <xsl:template match="oscal:catalog/oscal:title | oscal:framework/oscal:title | oscal:worksheet/oscal:title">
     <h1>
       <xsl:apply-templates/>
     </h1>
@@ -234,7 +234,13 @@ a:visited { color: midnightblue }
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-
+  
+  <xsl:template match="oscal:pre">
+    <pre class="pre">
+      <xsl:apply-templates/>
+    </pre>
+  </xsl:template>
+  
   <xsl:template match="oscal:inject">
     <xsl:variable name="param" select="@param-id"/>
     <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[@id=$param][last()]"/>

@@ -46,7 +46,8 @@
       
       <!--<sch:report test="true()">We have <xsl:value-of select="$controls/@id" separator=", "/></sch:report>-->
       <sch:let name="contested" value="$controls[@id = $other-controls/@id] | $subcontrols[@id = $other-subcontrols/@id]"/>
-      <sch:assert test="empty($contested)">CONTESTED CONTROLS <xsl:value-of select="$contested/@id" separator=", "/></sch:assert>
+      <sch:assert test="empty($contested)">CONTESTED <xsl:value-of select="(if (count($contested) eq 1) then 'CONTROL ' else 'CONTROLS ') ||
+        string-join($contested/@id,', ') || (if (count($contested) eq 1) then 'appears ' else 'appear ')"/> appear in more than one invoked resource.</sch:assert>
       
     </sch:rule>
     
@@ -86,7 +87,7 @@
       <sch:assert test="$catalog-available or exists(document(@href))">Catalog '<sch:value-of select="@href"/>' not found</sch:assert>
     </sch:rule>-->
     
-    <sch:rule context="oscal:call">
+    <sch:rule context="oscal:call | oscal:set-param | oscal:alter">
       <sch:let name="authority-file" value="ancestor::oscal:invoke/@href"/>
       <sch:let name="authority"      value="document($authority-file)"/>
       <sch:let name="authority-type" value="$authority/local-name(*)"/>
@@ -99,15 +100,17 @@
         has no control with @id '<sch:value-of select="@control-id"/>'</sch:assert>
       <sch:assert test="empty(@subcontrol-id) or exists(key('element-by-id',@subcontrol-id,$resolved-invocation)/(self::oscal:subcontrol|self::oscal:component[contains-token(.,'subcontrol')]))">Referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'
         has no subcontrol with @id '<sch:value-of select="@control-id"/>'</sch:assert>
-      <sch:report role="warning" test="(@control-id | @subcontrol-id) = preceding-sibling::oscal:call/(@control-id | @subcontrol-id)">Repeated call on
-      '<sch:value-of select="@control-id | @subcontrol-id"/>' will be ignored</sch:report>
+      <sch:assert test="empty(@param-id) or exists(key('element-by-id',@param-id,$resolved-invocation)/self::oscal:param)">Referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'
+        has no parameter with @id '<sch:value-of select="@param-id"/>'</sch:assert>
+      <sch:report role="warning" test="(@control-id | @subcontrol-id | @param-id) = preceding-sibling::oscal:call/(@control-id | @subcontrol-id | @param-id)">Repeated call on
+      '<sch:value-of select="@control-id | @subcontrol-id | @param-id"/>' will be ignored</sch:report>
       
       <!--<sch:assert test="empty(@control-id) or not(parent::oscal:exclude) or exists(../../oscal:include/oscal:all)">
         Control is excluded but it hasn't been included
       </sch:assert>-->
     </sch:rule>
     
-    <sch:rule context="oscal:param">
+    <sch:rule context="oscal:set-param">
       <sch:let name="catalog-file" value="ancestor::oscal:invoke/@href"/>
       <sch:let name="catalog" value="document($catalog-file)"/>
       <sch:assert test="matches(@id,'\S')">Parameter has no valid @id</sch:assert>
