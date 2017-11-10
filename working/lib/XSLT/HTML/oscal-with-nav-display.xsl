@@ -293,6 +293,12 @@
     </p>
   </xsl:template>
 
+  <xsl:template match="oscal:pre">
+    <pre class="pre">
+      <xsl:apply-templates/>
+    </pre>
+  </xsl:template>
+  
 <!-- 'insert' is a site of injection for a parameter value
      its param contains a description and (optionally) a value -->
   <xsl:template match="oscal:insert">
@@ -327,6 +333,11 @@
   </xsl:template>
   
   
+  <xsl:template match="oscal:ul">
+    <ul class="ol">
+      <xsl:apply-templates/>
+    </ul>
+  </xsl:template>
   <xsl:template match="oscal:ol">
     <ol class="ol">
       <xsl:apply-templates/>
