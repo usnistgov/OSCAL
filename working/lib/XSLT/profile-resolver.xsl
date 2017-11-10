@@ -50,11 +50,8 @@
     <!-- $authority will be a catalog, framework or profile. -->
     <xsl:variable name="authority" select="document(@href,root(.))"/>
     
-    <xsl:copy>
-      <xsl:copy-of select="@href"/>
       <xsl:comment expand-text="true"> invoking a { $authority/*/local-name() }</xsl:comment>
       <xsl:copy-of select="*"/>
-    </xsl:copy>
   </xsl:template>
   
   <xsl:template match="invoke" mode="select-controls">
@@ -64,6 +61,9 @@
     <xsl:variable name="authority" select="document(@href,root(.))"/>
     <xsl:variable name="authorityURI" select="document-uri($authority)"/>
     
+    <xsl:copy>
+      <xsl:copy-of select="@href"/>
+      
     <xsl:choose>
       <xsl:when test="$authorityURI = $authorities-so-far" expand-text="true">
         <ERROR>Can't resolve profile against {$authorityURI}, already invoked in this chain: {string-join($authorities-so-far,' / ')}</ERROR>
@@ -77,6 +77,7 @@
         </xsl:apply-templates>
       </xsl:otherwise>
     </xsl:choose>
+    </xsl:copy>
   </xsl:template>
   
   <xsl:template match="profile" mode="filter-controls">
@@ -102,7 +103,7 @@
   <!-- For now, everything comes as a framework. -->
   <xsl:template match="catalog | framework | worksheet" mode="filter-controls">
     <xsl:variable name="filtered-results">
-      <xsl:apply-templates select="title" mode="copy"/>
+      <xsl:apply-templates select="title" mode="#current"/>
       <xsl:apply-templates select="group | control | component" mode="filter-controls"/>
     </xsl:variable>
     <xsl:if test="exists($filtered-results/*)">
@@ -125,6 +126,17 @@
       </xsl:copy>  
     </xsl:if>
   </xsl:template>
+  
+  <!--<xsl:template match="catalog/title | framework/title | worksheet/title | profile/title | group/title" mode="filter-controls">
+    <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+      <xsl:text> [included in </xsl:text>
+      <xsl:apply-templates select="$invocation/ancestor::profile[1]/title"/>
+      <xsl:text>]</xsl:text>
+    </xsl:copy>
+  </xsl:template>-->
   
   <xsl:template match="control | component[oscal:classes(.)='control']" priority="3" mode="filter-controls">
     <!--A control or subcontrol is always excluded if it appears in invoke/exclude

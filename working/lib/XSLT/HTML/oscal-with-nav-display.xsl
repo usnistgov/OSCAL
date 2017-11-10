@@ -35,12 +35,20 @@
 
 
   <xsl:template match="oscal:profile">
-    <xsl:apply-templates select="oscal:invoke" mode="display-invocation"/>
-    <xsl:apply-templates select="oscal:framework | oscal:catalog"/>
+    <div class="profile">
+      <xsl:apply-templates select="oscal:title, oscal:invoke"/>
+    </div>
   </xsl:template>
   
-  <xsl:template match="oscal:profile/oscal:framework">
-    <div class="framework">
+  <xsl:template match="oscal:invoke">
+    <div class="invoking">
+    <xsl:apply-templates select="." mode="display-invocation"/>
+    <xsl:apply-templates select="oscal:invoke | oscal:framework"/>
+    </div>
+  </xsl:template>
+      
+  <xsl:template match="oscal:invoke/oscal:framework">
+    <div class="framework" id="{(@id,generate-id())[1]}">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
@@ -496,8 +504,9 @@
   <xsl:template match="oscal:invoke" mode="display-invocation">
     <div class="invocation">
       <p>
+        <xsl:value-of select="@href"/>
         <xsl:text> ➭ </xsl:text>
-        <xsl:apply-templates mode="display-invocation"/>
+        <xsl:apply-templates select="* except oscal:framework" mode="display-invocation"/>
       </p>
     </div>
   </xsl:template>
@@ -531,7 +540,7 @@
     </span>
   </xsl:template>
   
-  <xsl:template match="oscal:invoke//oscal:param" mode="display-invocation">
+  <xsl:template match="oscal:invoke//oscal:set-param" mode="display-invocation">
     <span class="invoking">
       <span class="subst">
         <xsl:text>Parameter </xsl:text>
