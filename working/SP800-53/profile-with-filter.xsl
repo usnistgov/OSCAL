@@ -2,10 +2,12 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+    xmlns:uuid="java:java.util.UUID"
+
     xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
     
-    exclude-result-prefixes="xs math"
+    exclude-result-prefixes="xs math uuid"
     version="3.0">
 
     <!-- Pulls a profile from a catalog, representing controls
@@ -29,8 +31,9 @@
     </xsl:template>
     
     <xsl:template match="catalog">
-        <profile>
-            <invoke href="{document-uri(/)}">
+                <profile id="uuid-{uuid:randomUUID()}">
+            <title xsl:expand-text="true">SP800-53 { $value } BASELINE IMPACT</title>
+            <invoke href="{replace(document-uri(/),'.*/','')}">
                 <include>
                     <xsl:apply-templates select="//control | //subcontrol" mode="write-call"/>
                 </include>

@@ -2,7 +2,9 @@
 <!-- Produced by profile-with-filter.xsl applied to
         file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml 2017-11-10-05:00
         runtime parameter settings: $property='baseline-impact' $value='MODERATE'-->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         id="uuid-082126fc-69ab-4bdf-8520-29456f158752">
+   <title>SP800-53 MODERATE BASELINE IMPACT</title>
    <invoke href="SP800-53-rev4-catalog.xml">
       <include>
          <call control-id="ac.1"/>
