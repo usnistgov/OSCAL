@@ -3,8 +3,8 @@
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2017-08-30T17:13:37.212-04:00 -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-   <title>NIST SP800-53</title>
-   <declarations href="SP800-53-declarations.xml"/>
+   <title>NIST SP800-53 rev 4</title>
+   <declarations href="SP800-53-oscal-declarations.xml"/>
    <group class="family">
       <title>ACCESS CONTROL</title>
       <control class="SP800-53" id="ac.1">
