@@ -10,6 +10,7 @@
    <invoke href="mini-testing-catalog.xml">
       <include>
          <call control-id="ac.5"/>
+         <!-- expect an error for including this: <call control-id="ra.7"/>-->
       </include>
       <set-param param-id="ac-5_a">
          <desc>organization-defined duties of individuals</desc>
@@ -17,7 +18,7 @@
       </set-param>
    </invoke>
    
-   <!-- Note what comes back from invoke/@href is fully resolved -->
+   <!-- Note what comes back from invoke/@href is fully resolved, with implicit include/all -->
    <invoke href="99includeRAx3-profile.xml"/>
    
 </profile>
