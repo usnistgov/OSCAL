@@ -19,21 +19,22 @@
         <xsl:comment expand-text="true"> XML produced by running { document('')/document-uri(.) } on { document-uri(/) } </xsl:comment> 
         <worksheet>
             <title>FedRAMP in OSCAL PROTOTYPE</title>
-            <xsl:for-each-group select="row" group-by="Family">
+            <xsl:for-each-group select="row" group-starting-with="row[matches(ID,'[a-z]')]">
+                
                 <!-- exploiting the order; remember . is the leader of the group -->
                 <group>
-                    <prop class="family">{ current-grouping-key() }</prop>
-                    <prop class="group-id">{substring-before(Sort_ID,'-')}</prop>
-                    <!-- next grouping rows for each control and its enhancements -->
-                    <xsl:for-each-group select="current-group()"
-                         group-by="replace(Sort_ID,' .*','')">
+                    <xsl:variable name="group-id" select="tokenize(ID,'\s+')[last()] => translate('()','')"/>
+                    <title>{replace(.,'\s*\(.*$','')}</title>
+                    <prop class="group-id">{$group-id}</prop>
+                    <xsl:for-each-group select="current-group() except ."
+                        group-starting-with="row[matches(ID,$control-regex)]">
                         <component>
-                            <xsl:apply-templates select="."/>
+                            <xsl:apply-templates select="Title, * except Title"/>
                          <!--the first row represents the control, subsequent ones are subcontrols-->
                             
                             <xsl:for-each select="current-group() except .">
                                 <component>
-                                    <xsl:apply-templates select="."/>
+                                    <xsl:apply-templates select="Title, * except Title"/>
                                 </component>
                             </xsl:for-each>
                                 
@@ -45,34 +46,16 @@
         </worksheet>
     </xsl:template>
     
-    <xsl:template match="row">
-        <xsl:apply-templates select="Control_name, * except Control_name"/>
-    </xsl:template>
-    
     <xsl:template match="row/*" priority="-0.4">
         <p class="{lower-case(name())}"><xsl:apply-templates/></p>
     </xsl:template>
     
-    <!--<xsl:template match="row/*[not(matches(.,'\S'))]" priority="-0.3"/>-->
+    <xsl:template match="row/*[not(matches(.,'\S'))]" priority="-0.3"/>
     
-    <xsl:template match="Control_desc | Count | Sort_ID | Baseline | Parameters[not(matches(.,'\S'))] | Additional[not(matches(.,'\S'))]"/>
-    
-    <xsl:template match="Has_params">
-        <!-- deleting the element unless it is not redundant -->
-        <xsl:if test="matches(.,'\S') and not(matches(../Parameters,'\S'))">
-            <prop class="has_params"/></xsl:if>
-    </xsl:template>
-    
-    <xsl:template match="Control_name">
+    <xsl:template match="Title">
         <title>
-            <xsl:value-of select="tokenize(., ' \| ')[last()]"/>
+            <xsl:value-of select="tokenize(.,' \| ')[last()]"/>
         </title>
-    </xsl:template>
-    
-    <xsl:template match="Family">
-        <prop class="family">
-            <xsl:apply-templates/>
-        </prop>
     </xsl:template>
     
     <xsl:template match="ID">
@@ -81,6 +64,13 @@
         </prop>
     </xsl:template>
     
+    <xsl:template match="Baseline_LOW[.='X']">
+        <prop class="baseline-impact">LOW</prop>
+    </xsl:template>
+    
+    <xsl:template match="Baseline_MOD[.='X']">
+        <prop class="baseline-impact">MODERATE</prop>
+    </xsl:template>
     
     
     
