@@ -76,12 +76,10 @@
       <sch:let name="resolved-invocation" value="oscal:resolve($authority)"/>
       
       <!--<sch:let name="catalog" value="document($catalog-file)/oscal:catalog"/>-->
-      <sch:assert test="empty(@control-id) or exists(key('element-by-id',@control-id,$resolved-invocation)/(self::oscal:control|self::oscal:component[contains-token(.,'control')]) )">Referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'
-        has no control with @id '<sch:value-of select="@control-id"/>'</sch:assert>
-      <sch:assert test="empty(@subcontrol-id) or exists(key('element-by-id',@subcontrol-id,$resolved-invocation)/(self::oscal:subcontrol|self::oscal:component[contains-token(.,'subcontrol')]))">Referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'
-        has no subcontrol with @id '<sch:value-of select="@subcontrol-id"/>'</sch:assert>
-      <sch:assert test="empty(@param-id) or exists(key('element-by-id',@param-id,$resolved-invocation)/self::oscal:param)">Referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'
-        has no parameter with @id '<sch:value-of select="@param-id"/>'</sch:assert>
+      <sch:assert test="empty(@control-id) or exists(key('element-by-id',@control-id,$resolved-invocation)/(self::oscal:control|self::oscal:component[contains-token(@class,'control')]) )">No control with @id '<sch:value-of select="@control-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'
+        has</sch:assert>
+      <sch:assert test="empty(@subcontrol-id) or exists(key('element-by-id',@subcontrol-id,$resolved-invocation)/(self::oscal:subcontrol|self::oscal:component[contains-token(@class,'subcontrol')]))">no subcontrol with @id '<sch:value-of select="@subcontrol-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
+      <sch:assert test="empty(@param-id) or exists(key('element-by-id',@param-id,$resolved-invocation)/self::oscal:param)">No parameter with @id '<sch:value-of select="@param-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
       
       
       <!--<sch:assert test="empty(@control-id) or not(parent::oscal:exclude) or exists(../../oscal:include/oscal:all)">

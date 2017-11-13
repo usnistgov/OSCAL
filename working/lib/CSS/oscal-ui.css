@@ -68,11 +68,6 @@ category:before { content: 'category: ' oxy_textfield(
 control:before { content: 'control: ' oxy_textfield(
           edit, '@class',
           columns, 10); }
-
-item:before { content: 'item: ' oxy_textfield(
-          edit, '@class',
-          columns, 10); }
-
 component:before { content: 'component: ' oxy_textfield(
           edit, '@class',
           columns, 10); }
@@ -87,6 +82,10 @@ subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
 }
 
 prop:before { content: oxy_textfield(
+          edit, '@class',
+          columns, 15); }
+
+p:before { content: oxy_textfield(
           edit, '@class',
           columns, 15); }
 

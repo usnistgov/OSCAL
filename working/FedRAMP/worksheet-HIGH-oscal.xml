@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- XML produced by running file:/home/wendell/Documents/OSCAL/working/FedRAMP/worksheet-from-xls-export.xsl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/excel-HIGH-extract.xml -->
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css" title="Basic" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css" title="Easy" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../lib/CSS/oscal-ui.css" title="Fields" alternate="yes"?>
 <worksheet xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>FedRAMP in OSCAL prototype - HIGH worksheet</title>
    <group>
