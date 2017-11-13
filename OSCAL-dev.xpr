@@ -4032,18 +4032,5 @@
         </folder>
         <folder path="."/>
         <folder path="../../public_html/OSCAL/"/>
-        <file name="examples/mini-testing/01_identity-profile.xml"/>
-        <file name="examples/mini-testing/01a_param-only.xml"/>
-        <file name="examples/mini-testing/10_some-params-profile.xml"/>
-        <file name="examples/mini-testing/11_more-params-profile.xml"/>
-        <file name="examples/mini-testing/20_compound-profile.xml"/>
-        <file name="examples/mini-testing/30_patched-profile.xml"/>
-        <file name="examples/mini-testing/99includeACx2-profile.xml"/>
-        <file name="schema/xml/RNC/oscal-core.rnc"/>
-        <file name="schema/xml/RNC/oscal-profile.rnc"/>
-        <file name="schema/xml/Schematron/oscal-profile.sch"/>
-        <file name="working/lib/XSLT/profile-resolver.xsl"/>
-        <file name="vault/punchlist.txt"/>
-        <file name="working/SP800-53/rev5/SP800-53rev5-OSCAL.xml"/>
     </projectTree>
 </project>
