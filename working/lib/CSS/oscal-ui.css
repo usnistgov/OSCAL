@@ -85,7 +85,7 @@ prop:before { content: oxy_textfield(
           edit, '@class',
           columns, 15); }
 
-p:before { content: oxy_textfield(
+control p:before[class], component p:before[class] { content: oxy_textfield(
           edit, '@class',
           columns, 15); }
 

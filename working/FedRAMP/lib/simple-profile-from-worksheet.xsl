@@ -10,13 +10,13 @@
     
     <xsl:output indent="yes"/>
 
-    <xsl:template match="/processing-instruction()"/>
+    <xsl:template match="comment() | processing-instruction()">
+        <xsl:copy-of select="."/>
+    </xsl:template>
     
     <xsl:template match="worksheet">
-        <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"</xsl:processing-instruction>
-        
         <xsl:comment expand-text="true"> XML produced by running { document('')/document-uri(.) } on { document-uri(/) } { current-date() } </xsl:comment> 
-        
+        <xsl:text>&#xA;</xsl:text>
         <profile>
             <invoke href="catalog.xml">
                 <include>

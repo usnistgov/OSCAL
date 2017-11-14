@@ -7,11 +7,14 @@
     
     <sch:pattern>
         
-        <sch:rule context="oscal:param/oscal:value">
-            <sch:assert role="warning" test="not(. = ../oscal:desc)">Value is unassigned</sch:assert>
+        <!--<sch:rule context="oscal:param/oscal:value">
+            <sch:report role="warning" test=". = ../oscal:desc">Value is unassigned</sch:report>
+        </sch:rule>-->
+        <sch:rule context="oscal:part[@class='parameters']">
+            <sch:report test="true()">Check parameters</sch:report>
         </sch:rule>
-        <sch:rule context="oscal:prop[@class='worksheet_baselines']">
-            <sch:assert test="contains(../oscal:prop[@class='authority_baselines'],.)">Baselines in worksheet vary from authority </sch:assert>
+        <sch:rule context="oscal:prop">
+            <sch:report role="warning" test="true()">Check propert '<sch:value-of select="@class"/>'</sch:report>
         </sch:rule>
         
     </sch:pattern>

@@ -193,8 +193,23 @@ choice { display: table-row; margin-top: 0.4em; background-color: white; padding
 call { background-color: skyblue; border: thin outset blue; color: midnightblue; font-weight: bold;
   margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
 
-call:before { content: 'Call from catalog: '; font-style: italic }
+call[subcontrol-id] { margin-left: 2em }
+
+call:before { content: 'Call from source: '; font-style: italic }
 
 call[subcontrol-id]:after                    { content: 'subcontrol ' attr(subcontrol-id) }
 call[control-id]:after                       { content: 'control '    attr(control-id) }
 call[control-id][with-subcontrols=yes]:after { content: 'control '    attr(control-id) ' with subcontrols' }
+
+alter:before { content: 'Alteration to ' attr(control-id) attr(subcontrol-id) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+alter { display:block; background-color: lavender; border: thin outset pink;
+  padding: 2px; font-size: 90%; margin: 0.5em }
+
+remove:before { content: 'Remove ' attr(targets);  font-weight: bold; font-size:90%; font-family: sans-serif }
+augment:before { content: 'Augment: ';  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+augment { display:block; background-color: #C3FDB8; border: thin outset lavender;
+  padding: 2px; font-size: 90% }
+
+augment prop { background-color: inherit }

@@ -11,7 +11,7 @@
     exclude-result-prefixes="xs math uuid"
     version="3.0">
     
-    <xsl:import href="../lib/XSLT/profile-resolver.xsl"/>
+    <xsl:import href="../../lib/XSLT/profile-resolver.xsl"/>
     
     <xsl:output indent="yes"/>
 
@@ -19,28 +19,38 @@
     
     <xsl:mode name="filter" on-no-match="shallow-copy"/>
     
-    <xsl:template match="profile">
-        <xsl:processing-instruction name="xml-stylesheet">type="text/css" href="../lib/CSS/oscal.css"</xsl:processing-instruction>
-        
-        <xsl:comment expand-text="true"> XML produced by running { document('')/document-uri(.) } on { document-uri(/) } { current-date() } </xsl:comment> 
-        <profile id="uuid-{uuid:randomUUID()}">
-        <title>FEDRamp PROFILE allocation</title>
-            <xsl:apply-templates/>
-        </profile>
-        
-    </xsl:template>
-    
+    <!-- Must be set at runtime -->
+    <xsl:variable name="catalog-path" select="'file:/home/wendell/Documents/OSCAL/examples/SP800-53/'"/>
+
     <!-- First time through we will expand all four of the catalog sources
          in order of preference; in the second pass we remove the unwanted
          citations (those after the earliest) -->
     <xsl:variable name="catalogs" as="element()">
         <sequence>
-            <invoke key="HIGH"    >SP800-53-HIGH-baseline.xml</invoke>
             <invoke key="MODERATE">SP800-53-MODERATE-baseline.xml</invoke>
             <invoke key="LOW"     >SP800-53-LOW-baseline.xml</invoke>
+            <invoke key="HIGH"    >SP800-53-HIGH-baseline.xml</invoke>
             <invoke key="sp800-53">SP800-53-rev4-catalog.xml</invoke>
         </sequence>
     </xsl:variable>
+    
+    <xsl:template match="profile">
+        <xsl:comment expand-text="true"> XML produced by running { document('')/document-uri(.) } on { document-uri(/) } { current-date() } </xsl:comment> 
+        <xsl:text>&#xA;</xsl:text>
+        <xsl:comment expand-text="true"> Baseline allocation of calls (in order): { string-join($catalogs/invoke/@key,', ') } </xsl:comment> 
+        <xsl:text>&#xA;</xsl:text>
+        <!--<xsl:next-match/>-->
+        <!--<profile id="uuid-{uuid:randomUUID()}">
+            <title>FedRAMP PROFILE allocation</title>
+            <xsl:apply-templates/>
+        </profile>-->
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:comment expand-text="true"> Baseline allocation of calls (in order): { string-join($catalogs/invoke/@key,', ') } </xsl:comment> 
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
+    
     
     <xsl:key name="call-by-id" match="call | alter" use="@control-id | @subcontrol-id"/>
     
@@ -48,18 +58,17 @@
         <xsl:variable name="here" select="."/>
         <xsl:variable name="full-sequence">
             <xsl:for-each select="$catalogs/invoke">
-                <xsl:variable name="source" select="document('../../examples/SP800-53/' || .)"/>
+                <xsl:variable name="source-path" select="$catalog-path || ."/>
+                <xsl:message expand-text="true">{ $source-path }</xsl:message>
+                <xsl:variable name="source" select="document($source-path,.)"/>
                 <xsl:variable name="resolved" select="oscal:resolve($source)"/>
+                <xsl:variable name="good-calls" select="$here/include/call[(@control-id|@subcontrol-id)=$resolved//(component|control|subcontrol)/@id]"/>
                 <xsl:copy>
-                    <xsl:attribute name="href">
-                        <xsl:text>../../examples/SP800-53/</xsl:text>
-                        <xsl:value-of select="."/>
-                    </xsl:attribute>
-                    <xsl:variable name="actual-calls" select="$here/include/call[(@control-id|@subcontrol-id)=$resolved//(component|control|subcontrol)/@id]"/>
+                    <xsl:attribute name="href" select="$catalog-path || string(.)"/>
                     <include>
-                        <xsl:copy-of select="$actual-calls"/>
+                        <xsl:copy-of select="$good-calls"/>
                     </include>
-                    <xsl:copy-of select="$here/alter[(@control-id|@subcontrol-id)=$actual-calls/(@control-id|@subcontrol-id)]"/>
+                    <xsl:copy-of select="$here/alter[(@control-id|@subcontrol-id)=$good-calls/(@control-id|@subcontrol-id)]"/>
                 </xsl:copy>
             </xsl:for-each>
         </xsl:variable>
