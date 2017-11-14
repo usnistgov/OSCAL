@@ -1,15 +1,13 @@
 # FedRAMP in OSCAL: a demonstration
 
-Working files for the creation of "starter OSCAL" profiles for each of three provided FedRAMP baselines of SP800-53, namely HIGH, MEDIUM and LOW. Each of these is made available to us as an Excel spreadsheet (see the `/sources/FedRAMP` directory)
+This directory contains the data conversion pipeline we have used to produce the creation of "starter OSCAL" profiles for each of three provided FedRAMP baselines of SP800-53, namely HIGH, MEDIUM and LOW. Each of these was made available to us as an Excel spreadsheet (see the `/sources/FedRAMP` directory). XML from extracted from each of these using a commodity tool (Excel Import in oXygen XML Editor) to "dump" the Excel contents into a simple ad-hoc ("flat") XML format. The three files resulting are given here: see `excel-HIGH-extract.xml`, etc.
 
-Each of these has been extracted using a commodity tool (Excel Import in oXygen XML Editor) to "dump" the Excel contents into a simple ("flat") XML format. The three files resulting appear here as `excel-HIGH-extract.xml`, etc.
+The `lib` subdirectory contains logic for an XProc pipeline that can in turn produce a "starter" OSCAL profile for each of these, based on analysis of the file structure and contents in reference to the set of catalogs that are to be invoked. The catalogs used are the three baseline profiles of SP800-53, plus SP800-53 itself as a backup; they are invoked first when calls on controls and subcontrols are allocated among them, then again when parameter settings are added in. Without support of the `saxon:memo-function` extension expect performance to be s l o w.
 
-The `lib` subdirectory contains logic for an XProc pipeline that can in turn produce a "starter" OSCAL profile for each of these, based on analysis of the file structure and contents in reference to the set of catalogs that are to be invoked. (The catalogs used are the three baseline profiles of SP800-53, plus SP800-53 itself as a backup.) 
+When all goes well, what results is an OSCAL profile containing all the information from the spreadsheets, cast into OSCAL in the form of a *profile* -- which is to say, not as a catalog or mock-catalog, but a layer to be applied to a catalog, conforming to the OSCAL rules for such layers, and ready for subsequent editing.
 
-When all goes well, what results is an OSCAL profile containing all the information from the spreadsheets, cast into OSCAL in the form of a "profile" -- which is to say, not as a catalog or mock-catalog, but a layer to be applied to a catalog -- ready for subsequent editing.
+When it doesn't go so well, the casting can be diagnosed by running the XProc and (when necessary) the XSLTs. See the `lib` directory.
 
-When it doesn't, the casting can be diagnosed by running the XProc and (when necessary) the XSLTs, which are all documented to describe how we go from loosely described "semantic" tabular data in the spreadsheets, into the more rigorous OSCAL format, then how we coordinate it with the canonical catalog and profile files (already in OSCAL) -- or the closest we have to these -- in order to produce the final results.
-
-Of course, the results of the transformation pipeline are not final, but have to be edited. (For these examples, the editing happens over in the `/examples/FedRAMP` directory, not here.) But they have exposed the editorial issue such that it can be addressed (by staff with the appropriate skills) much more easily and expeditiously than heretofore, when process overhead is so significant.
+Keep in mind that the results of the transformation pipeline are only not intended to be final and will require editing. For these examples, the editing happens over in the `/examples/FedRAMP` directory, not here.
 
 A Schematron, `fedramp-working.sch` can support this process.
