@@ -3,9 +3,9 @@
 <profile xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
          xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          id="uuid-bdcf8017-075c-48e1-9ccc-359e66d777a2">
-   <title>FedRAMP "HIGH" BASELINE IMPACT PROFILE</title>
+   <title>FedRAMP "HIGH" BASELINE IMPACT - AN OSCAL PROFILE</title>
    <!-- Baseline allocation of calls (in order): HIGH, MODERATE, LOW, sp800-53 -->
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-HIGH-baseline.xml">
+   <invoke href="../SP800-53/SP800-53-HIGH-baseline.xml">
       <include>
          <call control-id="ac.1"/>
          <call control-id="ac.2"/>
@@ -5285,7 +5285,7 @@ SI-7(1)-2 [at least monthly]</p>
       </alter>
       <!-- ===== -->
    </invoke>
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml">
+   <invoke href="../SP800-53/SP800-53-rev4-catalog.xml">
       <include>
          <call subcontrol-id="ac.2.7."/>
          <call subcontrol-id="ac.2.9."/>

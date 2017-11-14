@@ -80,14 +80,6 @@
         <xsl:attribute name="{local-name()}-id" select="@id"/>
     </xsl:template>-->
     
-    <xsl:template match="param" mode="params">
-        <xsl:variable name="insertions" select="..//insert[@param-id=current()/@id]"/>
-       <xsl:copy>
-           <xsl:copy-of select="@*"/>
-           <!--<xsl:comment expand-text="true"> inserted into {$insertions/(ancestor::part | ancestor::subcontrol | ancestor::control)[last()]/prop[@class='name']} </xsl:comment>-->
-           <xsl:copy-of select="value"/>
-       </xsl:copy>
-    </xsl:template>
     
     
 </xsl:stylesheet>

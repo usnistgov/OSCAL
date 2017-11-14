@@ -5,7 +5,7 @@
          id="uuid-fb603e6e-95bc-49f9-9e0a-37d0d86ed5bc">
    <title>FedRAMP "MODERATE" BASELINE IMPACT - AN OSCAL PROFILE</title>
    <!-- Baseline allocation of calls (in order): MODERATE, HIGH, LOW, sp800-53 -->
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-MODERATE-baseline.xml">
+   <invoke href="../SP800-53/SP800-53-MODERATE-baseline.xml">
       <include>
          <call control-id="ac.1"/>
          <call control-id="ac.2"/>
@@ -3142,7 +3142,7 @@ SI-5 (c) [to include system security personnel and administrators with configura
       </alter>
       <!-- ===== -->
    </invoke>
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-HIGH-baseline.xml">
+   <invoke href="../SP800-53/SP800-53-HIGH-baseline.xml">
       <include>
          <call subcontrol-id="ac.2.5."/>
          <call subcontrol-id="ac.2.12."/>
@@ -3406,7 +3406,7 @@ SI-6 (d) [to include notification of system administrators and security personne
       </alter>
       <!-- ===== -->
    </invoke>
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml">
+   <invoke href="../SP800-53/SP800-53-rev4-catalog.xml">
       <include>
          <call subcontrol-id="ac.2.7."/>
          <call subcontrol-id="ac.2.9."/>

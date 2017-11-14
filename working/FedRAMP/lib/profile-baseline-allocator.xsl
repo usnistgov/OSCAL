@@ -27,8 +27,8 @@
          citations (those after the earliest) -->
     <xsl:variable name="catalogs" as="element()">
         <sequence>
-            <invoke key="MODERATE">SP800-53-MODERATE-baseline.xml</invoke>
             <invoke key="LOW"     >SP800-53-LOW-baseline.xml</invoke>
+            <invoke key="MODERATE">SP800-53-MODERATE-baseline.xml</invoke>
             <invoke key="HIGH"    >SP800-53-HIGH-baseline.xml</invoke>
             <invoke key="sp800-53">SP800-53-rev4-catalog.xml</invoke>
         </sequence>

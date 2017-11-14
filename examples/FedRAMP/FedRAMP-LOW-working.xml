@@ -5,7 +5,7 @@
          id="uuid-dbcbf238-0912-49b5-93bd-0818b36fd52d">
    <title>FedRAMP "LOW" BASELINE IMPACT - AN OSCAL PROFILE</title>
    <!-- Baseline allocation of calls (in order): LOW, MODERATE, HIGH, sp800-53 -->
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-LOW-baseline.xml">
+   <invoke href="../SP800-53/SP800-53-LOW-baseline.xml">
       <include>
          <call control-id="ac.1"/>
          <call control-id="ac.2"/>
@@ -1927,7 +1927,7 @@
       </alter>
       <!-- ===== -->
    </invoke>
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-MODERATE-baseline.xml">
+   <invoke href="../SP800-53/SP800-53-MODERATE-baseline.xml">
       <include>
          <call subcontrol-id="ca.2.1."/>
          <call control-id="si.16"/>

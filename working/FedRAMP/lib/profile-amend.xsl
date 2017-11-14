@@ -52,7 +52,7 @@
                     <xsl:for-each select="alter">
                         <xsl:comment> ----- </xsl:comment>
                         <xsl:variable name="who" select="key('component-by-id',(@control-id|@subcontrol-id),$resolved)"/>
-                        <xsl:copy-of select="$who/param"/>
+                        <xsl:apply-templates select="$who/param" mode="params"/>
                         <xsl:apply-templates select="." mode="filter">
                             <xsl:with-param tunnel="yes" name="controlObj" select="$who"/>
                         </xsl:apply-templates>
@@ -64,6 +64,15 @@
                 </xsl:copy>
             </xsl:if>
         
+    </xsl:template>
+    
+    <xsl:template match="param" mode="params">
+        <xsl:variable name="insertions" select="..//insert[@param-id=current()/@id]"/>
+        <set-param param-id="{@id}">
+            <xsl:copy-of select="@* except @id"/>
+            <!--<xsl:comment expand-text="true"> inserted into {$insertions/(ancestor::part | ancestor::subcontrol | ancestor::control)[last()]/prop[@class='name']} </xsl:comment>-->
+            <xsl:copy-of select="desc, value"/>
+        </set-param>
     </xsl:template>
     
     <!--<prop class="profile-title">REVIEWS AND UPDATES</prop>

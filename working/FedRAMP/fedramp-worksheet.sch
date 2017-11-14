@@ -14,7 +14,7 @@
             <sch:report test="true()">Check parameters</sch:report>
         </sch:rule>
         <sch:rule context="oscal:prop">
-            <sch:report role="warning" test="true()">Check propert '<sch:value-of select="@class"/>'</sch:report>
+            <sch:report role="warning" test="true()">Check property '<sch:value-of select="@class"/>'</sch:report>
         </sch:rule>
         
     </sch:pattern>
