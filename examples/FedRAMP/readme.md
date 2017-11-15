@@ -1,6 +1,6 @@
 # FedRAMP profile examples
 
-The source data for "High", "Moderate" and "Low" baselines (profiles) defined by FedRAMP is found here:
+The source data from which are derived these representations of the "High", "Moderate" and "Low" baselines (profiles) defined by FedRAMP can be found here:
 
 https://www.fedramp.gov/resources/documents-2016/
 
@@ -8,14 +8,10 @@ https://www.fedramp.gov/resources/documents-2016/
 
 The three spreadsheets we used for LOW, MODERATE and HIGH are archived in the `sources` directory.
 
-Before hand-editing, the OSCAL profiles in this subdirectory were produced by extraction from (machine-readable) source data as described in directory `working/FedRAMP`. Perform a diff or file comparison between any file and the corresponding file in that directory, to see what the hand edits have been.
+Before hand-editing, the OSCAL profiles in this subdirectory were produced by extraction from (machine-readable) source data as described in directory `working/FedRAMP`. Perform a diff or file comparison between any file in this folder, and the corresponding file in that directory, to see what the hand edits have been. (NB as of Nov 15 hand-editing has only just started, extending to several elements in the High profile only.)
 
-The `pub` directory contains HTML web pages showing the resolved-and-rendered OSCAL data. It is populated by applying XProc pipeline `working/lib/XProc/profile-resolve-and-display.xpl` to each of the OSCAL profiles.
+The `pub` directory contains (or will contain) HTML web pages showing the resolved-and-rendered OSCAL data. It is populated by applying XProc pipeline `working/lib/XProc/profile-resolve-and-display.xpl` to each of the OSCAL profiles. (At time of writing we haven't run it yet: just ask.)
 
-Note the profiles reference profiles and catalogs stored in the neighbor SP800-53 directory.
+Note the profiles make reference to profiles and catalogs stored in the neighbor SP800-53 directory, on which they are dependent.
 
-
-
-
-
-
+Also note that (at least according to Schematron `oscal-profiles-sources.sch`, several of the OSCAL invocations here could be rewritten to exclude rather than include controls (thereby being much more concise). The Schematron is able to report which controls should be excluded from such an invocation to the same effect as the include/call element set given here (which was ultimately pulled from the Excel map of controls and subcontrols).

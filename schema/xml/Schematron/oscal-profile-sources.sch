@@ -42,15 +42,17 @@
       </sch:assert>
       
       <sch:let name="resolved"        value="oscal:resolve(.)"/>
-      
-      <!--<sch:let name="authority-file"  value="@href"/>
-      <sch:let name="authority"       value="document($authority-file,/)"/>
-      <sch:let name="authority-type"  value="$authority/local-name(*)"/>
-      <sch:let name="authority-title" value="$authority/*/title"/>-->
-      <!-- We expect a catalog, framework or resolved profile. -->
-      
-      <!--<sch:let name="resolved-invocation" value="oscal:resolve($authority)"/>-->
       <!-- Saxon should be memoing these functions for efficiency --> 
+      
+      
+<!-- Testing to see if 'all' might be used instead of a set of calls -->
+      <sch:let name="explicit-calls" value="oscal:include/oscal:call"/>
+      <sch:let name="unresolved"     value="oscal:resolve(document(@href))"/>
+      <sch:let name="excluded" value="($unresolved//(oscal:control|oscal:subcontrol|oscal:component)) except key('element-by-id',$explicit-calls/(@control-id|@subcontrol-id),$unresolved)"/>
+      <sch:report role="warning" test="exists($explicit-calls) and exists($excluded) and count($excluded) lt 4">This profile calls controls by @id, but it could use include/all, excluding only <xsl:value-of select="$excluded/@id" separator=", "/></sch:report>
+      <sch:report role="warning" test="exists($explicit-calls) and empty($excluded)">This profile calls controls by @id, but it calls all the controls in the source catalog or profile, without excluding any</sch:report>
+      
+      
       <sch:let name="controls"            value="$resolved//(oscal:control | oscal:component[contains-token(@class,'control')] )"/>
       <sch:let name="subcontrols"         value="$resolved//(oscal:subcontrol | oscal:component[contains-token(@class,'subcontrol')] )"/>
       
@@ -76,8 +78,7 @@
       <sch:let name="resolved-invocation" value="oscal:resolve($authority)"/>
       
       <!--<sch:let name="catalog" value="document($catalog-file)/oscal:catalog"/>-->
-      <sch:assert test="empty(@control-id) or exists(key('element-by-id',@control-id,$resolved-invocation)/(self::oscal:control|self::oscal:component[contains-token(@class,'control')]) )">No control with @id '<sch:value-of select="@control-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'
-        has</sch:assert>
+      <sch:assert test="empty(@control-id) or exists(key('element-by-id',@control-id,$resolved-invocation)/(self::oscal:control|self::oscal:component[contains-token(@class,'control')]) )">No control with @id '<sch:value-of select="@control-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
       <sch:assert test="empty(@subcontrol-id) or exists(key('element-by-id',@subcontrol-id,$resolved-invocation)/(self::oscal:subcontrol|self::oscal:component[contains-token(@class,'subcontrol')]))">no subcontrol with @id '<sch:value-of select="@subcontrol-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
       <sch:assert test="empty(@param-id) or exists(key('element-by-id',@param-id,$resolved-invocation)/self::oscal:param)">No parameter with @id '<sch:value-of select="@param-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
       
