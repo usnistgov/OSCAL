@@ -462,6 +462,17 @@
       </part>
     </component>
     <component class="element-description">
+      <prop class="tag">calc</prop>
+      <prop class="full_name">Calculated value constraint</prop>
+      <part class="description">
+        <p>Indicates a permissible value for a parameter or property, calculated dynamically</p>
+      </part>
+      <part class="remarks">
+        <p>Similar to <code>value</code> except that its contents are expanded to produce the
+          permitted value, instead of being given as a literal.</p>
+      </part>
+    </component>
+    <component class="element-description">
       <prop class="tag">autonum</prop>
       <prop class="full_name">Autonumbered (generated) value</prop>
       <part class="description">

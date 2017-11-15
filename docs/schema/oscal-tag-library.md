@@ -29,6 +29,7 @@
 >     * [&lt;identifier> Identifier constraint](#identifier-identifier-constraint)
 >     * [&lt;regex> Regular expression constraint](#regex-regular-expression-constraint)
 >     * [&lt;value> Value constraint](#value-value-constraint)
+>     * [&lt;calc> Calculated value constraint](#calc-calculated-value-constraint)
 >     * [&lt;autonum> Autonumbered (generated) value](#autonum-autonumbered-(generated)-value)
 >     * [&lt;inherit> Inherited value](#inherit-inherited-value)
 >     * [&lt;desc> Parameter description](#desc-parameter-description)
@@ -279,6 +280,12 @@ Indicates a permissible value for a parameter or property
 In a declaration, value will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values). 
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".   
+
+#### &lt;calc> Calculated value constraint   
+
+Indicates a permissible value for a parameter or property, calculated dynamically   
+
+Similar to value except that its contents are expanded to produce the permitted value, instead of being given as a literal.   
 
 #### &lt;autonum> Autonumbered (generated) value   
 

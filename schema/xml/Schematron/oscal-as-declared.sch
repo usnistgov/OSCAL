@@ -84,7 +84,7 @@
     <sch:rule context="oscal:p[empty(@class)] | oscal:param | oscal:title |
       oscal:group | oscal:section | oscal:control | oscal:subcontrol | oscal:link | oscal:references"/>
 
-    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:part">
+    <sch:rule context="oscal:control/* | oscal:group/* | oscal:subcontrol/* | oscal:part/*">
       <xsl:variable name="this" select="."/>
 
       <sch:let name="signatures" value="
@@ -123,19 +123,25 @@
         Value of property (<sch:value-of select="oscal:sequence($id-classes)"/>) is expected to be unique to this property (instance) within the document.</sch:assert>
       
       <sch:let name="value-requirements" value="$matching-declarations/oscal:value"/>
+      <!--<sch:let name="value-classes" value="$value-requirements/oscal:classes(..)[.=oscal:classes($this)]"/>-->
       <sch:let name="value-classes" value="$value-requirements/oscal:classes(..)[.=oscal:classes($this)]"/>
-      <xsl:variable name="resolved-values" as="element()*">
-        <xsl:apply-templates select="$value-requirements" mode="expand-values">
+      <sch:assert test="empty($value-requirements) or (. = $value-requirements)">
+        Value of property <sch:value-of select="oscal:sequence(distinct-values($value-classes))"/> is expected to be 
+        <xsl:value-of select="if (count($value-requirements) gt 1) then 'one of ' else ''"/>
+        <xsl:value-of select="$value-requirements/concat('''',.,'''')" separator=", "/></sch:assert>
+      
+    <sch:let name="calc-requirements" value="$matching-declarations/oscal:calc"/>
+      <sch:let name="calc-classes" value="$calc-requirements/oscal:classes(..)[.=oscal:classes($this)]"/>
+      <xsl:variable name="resolved-calcs" as="element()*">
+        <xsl:apply-templates select="$calc-requirements" mode="calculate">
           <!-- we pass $me as the who-cares -->
           <xsl:with-param tunnel="yes" name="who-cares" select="$this"/>
         </xsl:apply-templates>
       </xsl:variable>
-      <sch:assert test="empty($value-requirements) or (. = $resolved-values)">
-        Value of property <sch:value-of select="oscal:sequence(distinct-values($value-classes))"/> is expected to be 
-        <xsl:value-of select="if (count($resolved-values) gt 1) then 'one of ' else ''"/>
-        <xsl:value-of select="$resolved-values/concat('''',.,'''')" separator=", "/></sch:assert>
-      
-      
+      <sch:assert test="empty($calc-requirements) or (. = $resolved-calcs)">
+        Value of property <sch:value-of select="oscal:sequence(distinct-values($calc-classes))"/> is expected to be <xsl:value-of select="if (count($calc-requirements) gt 1) then 'one of ' else ''"/>
+        <xsl:value-of select="$resolved-calcs/concat('''',.,'''')" separator=", "/></sch:assert>
+  
     </sch:rule>
     
   </sch:pattern>
@@ -173,20 +179,21 @@
       <xsl:value-of select="string-join(($context,.),'/')"/>
       </xsl:for-each>
     </xsl:for-each>
+<!-- So for context=""   -->
   </xsl:function>
   
-  <xsl:template match="oscal:value" mode="expand-values">
-    <xsl:variable name="expanded">
-      <xsl:apply-templates mode="expand-values"/>
-    </xsl:variable>
-    <xsl:copy><xsl:value-of select="normalize-space($expanded)"/></xsl:copy>
+  
+  <xsl:template match="oscal:calc" mode="calculate">
+    <xsl:copy>
+      <xsl:apply-templates mode="calculate"/>
+    </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="oscal:inherit" mode="expand-values">
+  <xsl:template match="oscal:inherit" mode="calculate">
     <xsl:param name="who-cares" required="yes" tunnel="yes"/>
     <xsl:variable name="named-classes" select="tokenize(@from/normalize-space(string(.)),'\s')"/>
     <xsl:variable name="matching-classes" select="if (empty($named-classes))
-      then parent::oscal:value/parent::oscal:declare-prop/oscal:classes(.) else $named-classes"/>
+      then parent::oscal:calc/parent::oscal:declare-prop/oscal:classes(.) else $named-classes"/>
     
     <xsl:variable name="forebear"
       select="$who-cares/../ancestor::*[oscal:prop/oscal:classes(.)=$matching-classes][1]/
@@ -195,7 +202,7 @@
     <xsl:if test="empty($forebear)">[RESOLUTIONFAIL]</xsl:if>
   </xsl:template>
 
-  <xsl:template match="oscal:autonum" mode="expand-values">
+  <xsl:template match="oscal:autonum" mode="calculate">
     <xsl:param name="who-cares" required="yes" tunnel="yes"/>
     <xsl:param name="call" select="."/>
     <xsl:variable name="expanded">

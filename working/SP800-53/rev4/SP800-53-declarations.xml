@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../../lib/oscal.css"?>
-<?xml-model href="../../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../../lib/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 
   <declare-prop context="SP800-53" class="name">
@@ -38,7 +36,7 @@
   <declare-prop context="SP800-53-enhancement" class="name">
     <singleton/>
     <required/>
-    <value xml:space="preserve"><inherit/> <autonum>(1)</autonum></value>
+    <calc xml:space="preserve"><inherit/> <autonum>(1)</autonum></calc>
   </declare-prop>
   <declare-prop context="SP800-53-enhancement" class="baseline-impact">
     <value>LOW</value>
@@ -72,12 +70,12 @@
   <declare-prop context="item" class="name">
     <singleton/>
     <required/>
-    <value xml:space="preserve"><inherit/><autonum>a.</autonum></value><!-- in controls -->
-    <value xml:space="preserve"><inherit/><autonum>(a)</autonum></value><!-- in subcontrols -->
+    <calc xml:space="preserve"><inherit/><autonum>a.</autonum></calc><!-- in controls -->
+    <calc xml:space="preserve"><inherit/><autonum>(a)</autonum></calc><!-- in subcontrols -->
   
     <!-- then even lower down -->
-    <value><inherit/><autonum>1.</autonum></value><!-- in subitems in controls -->
-    <value><inherit/><autonum>(1)</autonum></value><!-- in subitems subcontrols -->
+    <calc><inherit/><autonum>1.</autonum></calc><!-- in subitems in controls -->
+    <calc><inherit/><autonum>(1)</autonum></calc><!-- in subitems subcontrols -->
   </declare-prop>
   
   <declare-prop context="item" class="description">
