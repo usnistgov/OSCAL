@@ -1,5 +1,6 @@
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl 2017-11-14-05:00 -->
+<?xml-model href="../../working/FedRAMP/fedramp-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <profile xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
          xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          id="uuid-bdcf8017-075c-48e1-9ccc-359e66d777a2">
@@ -358,21 +359,18 @@
       </set-param>
       <set-param param-id="ac-1_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="ac-1_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or whenever a significant change occurs</value>
       </set-param>
       <alter control-id="ac.1">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-1 (b) (1) [at least annually] 
-AC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-1 (b) (1) [at least annually] AC-1 (b) (2) [at least annually or whenever a significant change occurs]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -390,16 +388,14 @@ AC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
       </set-param>
       <set-param param-id="ac-2_d">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>monthly for privileged accessed, every six (6) months for non-privileged access</value>
       </set-param>
       <alter control-id="ac.2">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-2 (j) [monthly for privileged accessed, every six (6) months for non-privileged access] </p>
-            </part>
+            <!--<part class="parameters"><p>AC-2 (j) [monthly for privileged accessed, every six (6) months for non-privileged access] </p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -413,32 +409,27 @@ AC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
       <!-- - - - - - -->
       <set-param param-id="ac-2_e">
          <desc>organization-defined time period for each type of account</desc>
-         <value>organization-defined time period for each type of account</value>
+         <value>24 hours from last use</value>
       </set-param>
       <alter subcontrol-id="ac.2.2.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-2 (2) [Selection: disables] 
-[Assignment: 24 hours from last use]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-2 (2) [Selection: disables] [Assignment: 24 hours from last use]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-2_f">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>35 days for user accounts</value>
       </set-param>
       <alter subcontrol-id="ac.2.3.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-2 (3) [35 days for user accounts]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-2 (3) [35 days for user accounts]</p></part>-->
             <part class="additional">
                <p>AC-2 (3) Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices).  The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.
 </p>
@@ -448,31 +439,27 @@ AC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
       <!-- - - - - - -->
       <set-param param-id="ac-2_g">
          <desc>organization-defined personnel or roles</desc>
-         <value>organization-defined personnel or roles</value>
+         <value>organization and/or service provider system owner</value>
       </set-param>
       <alter subcontrol-id="ac.2.4.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-2 (4) [organization and/or service provider system owner]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-2 (4) [organization and/or service provider system owner]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-2_h">
          <desc>organization-defined time-period of expected inactivity or description of when to log out</desc>
-         <value>organization-defined time-period of expected inactivity or description of when to log out</value>
+         <value>inactivity is anticipated to exceed Fifteen (15) minutes</value>
       </set-param>
       <alter subcontrol-id="ac.2.5.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-2 (5) [inactivity is anticipated to exceed Fifteen (15) minutes]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-2 (5) [inactivity is anticipated to exceed Fifteen (15) minutes]</p></part>-->
             <part class="additional">
                <p>AC-2 (5) Guidance: Should use a shorter timeframe than AC-12.</p>
             </part>
@@ -501,16 +488,14 @@ AC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
       </set-param>
       <set-param param-id="ac-2_p">
          <desc>organization-defined personnel or roles</desc>
-         <value>organization-defined personnel or roles</value>
+         <value>at a minimum, the ISSO and/or similar role within the organization</value>
       </set-param>
       <alter subcontrol-id="ac.2.12.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-2 (12) (b)[at a minimum, the ISSO and/or similar role within the organization]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-2 (12) (b)[at a minimum, the ISSO and/or similar role within the organization]</p></part>-->
             <part class="additional">
                <p>AC-2 (12)(a) Guidance: Required for privileged accounts.
 AC-2 (12)(b) Guidance: Required for privileged accounts.
@@ -521,16 +506,14 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="ac-2_q">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>one (1) hour</value>
       </set-param>
       <alter subcontrol-id="ac.2.13.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-2 (13) [one (1) hour]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-2 (13) [one (1) hour]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -580,31 +563,27 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="ac-6_a">
          <desc>organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information</desc>
-         <value>organization-defined security functions (deployed in hardware, software, and firmware) and security-relevant information</value>
+         <value>all functions not publicly accessible and all security-relevant information not publicly available</value>
       </set-param>
       <alter subcontrol-id="ac.6.1.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-6 (1) [all functions not publicly accessible and all security-relevant information not publicly available]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-6 (1) [all functions not publicly accessible and all security-relevant information not publicly available]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-6_b">
          <desc>organization-defined security functions or security-relevant information</desc>
-         <value>organization-defined security functions or security-relevant information</value>
+         <value>all security functions</value>
       </set-param>
       <alter subcontrol-id="ac.6.2.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-6 (2) [all security functions]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-6 (2) [all security functions]</p></part>-->
             <part class="additional">
                <p>AC-6 (2) Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.                            
 </p>
@@ -614,7 +593,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="ac-6_c">
          <desc>organization-defined privileged commands</desc>
-         <value>organization-defined privileged commands</value>
+         <value>all privileged commands</value>
       </set-param>
       <set-param param-id="ac-6_d">
          <desc>organization-defined compelling operational needs</desc>
@@ -625,9 +604,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-6 (3)-1 [all privileged commands] </p>
-            </part>
+            <!--<part class="parameters"><p>AC-6 (3)-1 [all privileged commands] </p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -661,51 +638,44 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="ac-7_a">
          <desc>organization-defined number</desc>
-         <value>organization-defined number</value>
+         <value>not more than three (3)</value>
       </set-param>
       <set-param param-id="ac-7_b">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>fifteen (15) minutes</value>
       </set-param>
       <set-param param-id="ac-7_c">
          <desc>organization-defined time period</desc>
          <value>organization-defined time period</value>
+         <!--??? b or c ???-->
       </set-param>
       <set-param param-id="ac-7_d">
          <desc>organization-defined delay algorithm</desc>
-         <value>organization-defined delay algorithm</value>
+         <value>locks the account/node for a minimum of three (3) hours or until unlocked by an administrator</value>
       </set-param>
       <alter control-id="ac.7">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-7(a)-1  [not more than three (3)]
- 
-AC-7(a)-2 [fifteen (15) minutes] 
-AC-7(b) [locks the account/node for a minimum of three (3) hours or until unlocked by an administrator]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-7(a)-1 [not more than three (3)] AC-7(a)-2 [fifteen (15) minutes] AC-7(b) [locks the account/node for a minimum of three (3) hours or until unlocked by an administrator]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-8_a">
          <desc>organization-defined system use notification message or banner</desc>
-         <value>organization-defined system use notification message or banner</value>
+         <value>[see additional Requirements and Guidance]</value>
       </set-param>
       <set-param param-id="ac-8_b">
          <desc>organization-defined conditions</desc>
-         <value>organization-defined conditions</value>
+         <value>[see additional Requirements and Guidance]</value>
       </set-param>
       <alter control-id="ac.8">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-8 (a) [see additional Requirements and Guidance]
-AC-8 (c) (1)  [see additional Requirements and Guidance]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-8 (a) [see additional Requirements and Guidance] AC-8 (c) (1) [see additional Requirements and Guidance]</p></part>-->
             <part class="additional">
                <p>AC-8 Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO. 
 Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.
@@ -721,31 +691,27 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </set-param>
       <set-param param-id="ac-10_b">
          <desc>organization-defined number</desc>
-         <value>organization-defined number</value>
+         <value>three (3) sessions for privileged access and two (2) sessions for non-privileged access</value>
       </set-param>
       <alter control-id="ac.10">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-10-2 [three (3) sessions for privileged access and two (2) sessions for non-privileged access]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-10-2 [three (3) sessions for privileged access and two (2) sessions for non-privileged access]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-11_a">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>fifteen (15) minutes</value>
       </set-param>
       <alter control-id="ac.11">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-11(a) [fifteen (15) minutes]  </p>
-            </part>
+            <!--<part class="parameters"><p>AC-11(a) [fifteen (15) minutes] </p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -923,16 +889,14 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       <!-- - - - - - -->
       <set-param param-id="ac-22_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least quarterly</value>
       </set-param>
       <alter control-id="ac.22">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AC-22 (d) [at least quarterly]</p>
-            </part>
+            <!--<part class="parameters"><p>AC-22 (d) [at least quarterly]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -942,37 +906,32 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       </set-param>
       <set-param param-id="at-1_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or whenever a significant change occurs</value>
       </set-param>
       <set-param param-id="at-1_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or whenever a significant change occurs</value>
       </set-param>
       <alter control-id="at.1">
          <augment>
-            <prop class="profile-title">SECURITY AWARENESS AND TRAINING POLICY ANDPROCEDURES</prop>
+            <!--<prop class="profile-title">SECURITY AWARENESS AND TRAINING POLICY ANDPROCEDURES</prop>-->
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AT-1 (b) (1) [at least annually or whenever a significant change occurs] 
-AT-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
-            </part>
+            <!--<part class="parameters"><p>AT-1 (b) (1) [at least annually or whenever a significant change occurs] AT-1 (b) (2) [at least annually or whenever a significant change occurs]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="at-2_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <alter control-id="at.2">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AT-2 (c) [at least annually]</p>
-            </part>
+            <!--<part class="parameters"><p>AT-2 (c) [at least annually]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -986,31 +945,27 @@ AT-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
       <!-- - - - - - -->
       <set-param param-id="at-3_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <alter control-id="at.3">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AT-3 (c) [at least annually]</p>
-            </part>
+            <!--<part class="parameters"><p>AT-3 (c) [at least annually]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="at-4_a">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>five (5) years or 5 years after completion of a specific training program</value>
       </set-param>
       <alter control-id="at.4">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AT-4 (b) [five (5) years or 5 years after completion of a specific training program]</p>
-            </part>
+            <!--<part class="parameters"><p>AT-4 (b) [five (5) years or 5 years after completion of a specific training program]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1020,21 +975,18 @@ AT-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
       </set-param>
       <set-param param-id="au-1_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="au-1_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or whenever a significant change occurs</value>
       </set-param>
       <alter control-id="au.1">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-1 (b) (1) [at least annually]
-AU-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-1 (b) (1) [at least annually] AU-1 (b) (2) [at least annually or whenever a significant change occurs]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -2875,7 +2827,7 @@ IA-5 (3)-2 [in person]
       <!-- - - - - - -->
       <alter control-id="ia.8">
          <augment>
-            <prop class="profile-title">IDENTIFICATION AND AUTHENTICATION (NON- ORGANIZATIONAL USERS)</prop>
+            <!--<prop class="profile-title">IDENTIFICATION AND AUTHENTICATION (NON- ORGANIZATIONAL USERS)</prop>-->
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
