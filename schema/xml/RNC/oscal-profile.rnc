@@ -32,7 +32,7 @@ exclude = element exclude { element call {
             attribute control-id { text } |
             attribute subcontrol-id { text } }+ }
 
-param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, paramValue }
+param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, value }
 
 alteration = element alter { (
   attribute control-id    { text } |

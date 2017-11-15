@@ -88,7 +88,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="oscal:desc"/>
-        <xs:group ref="oscal:paramValue"/>
+        <xs:element ref="oscal:value"/>
       </xs:sequence>
       <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>

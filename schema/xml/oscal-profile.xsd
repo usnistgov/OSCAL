@@ -36,8 +36,6 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <!-- for capturing overwritten values -->
-  <xs:element name="default" type="xs:string"/>
   <!--
     Move params to a separate 'set' element?
     Logic: params override params given in source catalogs or profiles
@@ -46,14 +44,6 @@
     applicable parameters in 'set' might remain
     expansion logic could also provide set/param for any param not already represented
   -->
-  <!-- 'all' or 'filter' make sense for inclusions but not exclusions -->
-  <xs:element name="exclude">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="oscal:call"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <!-- Only 'yes' should have any effect; processors should assume 'no' when implicit -->
   <xs:element name="all">
     <xs:complexType>
@@ -82,17 +72,23 @@
       <xs:attribute name="subcontrol-id"/>
     </xs:complexType>
   </xs:element>
-  <!-- not used ... for experimental feature -->
-  <xs:element name="filter">
-    <xs:complexType mixed="true">
-      <xs:attribute name="key" use="required"/>
+  <xs:element name="exclude">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="call">
+          <xs:complexType>
+            <xs:attribute name="control-id"/>
+            <xs:attribute name="subcontrol-id"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="set-param">
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="oscal:desc"/>
-        <xs:group ref="oscal:paramValue"/>
+        <xs:element ref="oscal:value"/>
       </xs:sequence>
       <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
