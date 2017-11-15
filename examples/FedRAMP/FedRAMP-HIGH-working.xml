@@ -1,4 +1,4 @@
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl 2017-11-14-05:00 -->
 <profile xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
          xmlns="http://csrc.nist.gov/ns/oscal/1.0"
