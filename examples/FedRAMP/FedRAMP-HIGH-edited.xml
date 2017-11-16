@@ -1,12 +1,11 @@
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
-<!-- Produced by running profile-produce.xpl 2017-11-14-05:00 -->
+<!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-HIGH-extract.xml 2017-11-16-05:00 -->
 <?xml-model href="../../working/FedRAMP/fedramp-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-         xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-bdcf8017-075c-48e1-9ccc-359e66d777a2">
-   <title>FedRAMP "HIGH" BASELINE IMPACT PROFILE</title>
+<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         id="uuid-fe680beb-e833-4287-bf0f-985eeaea1e70">
+   <title>FedRAMP HIGH Baseline PROFILE (extracted and aligned, no edits)</title>
    <!-- Baseline allocation of calls (in order): HIGH, MODERATE, LOW, sp800-53 -->
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-HIGH-baseline.xml">
+   <invoke href="../SP800-53/SP800-53-HIGH-baseline.xml">
       <include>
          <call control-id="ac.1"/>
          <call control-id="ac.2"/>
@@ -431,8 +430,7 @@
             </part>
             <!--<part class="parameters"><p>AC-2 (3) [35 days for user accounts]</p></part>-->
             <part class="additional">
-               <p>AC-2 (3) Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices).  The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.
-</p>
+               <p>AC-2 (3) Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices). The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.</p>
             </part>
          </augment>
       </alter>
@@ -547,8 +545,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>AC-5 Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.
-</p>
+               <p>AC-5 Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.</p>
             </part>
          </augment>
       </alter>
@@ -585,8 +582,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             </part>
             <!--<part class="parameters"><p>AC-6 (2) [all security functions]</p></part>-->
             <part class="additional">
-               <p>AC-6 (2) Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.                            
-</p>
+               <p>AC-6 (2) Guidance: Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.</p>
             </part>
          </augment>
       </alter>
@@ -647,7 +643,6 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <set-param param-id="ac-7_c">
          <desc>organization-defined time period</desc>
          <value>organization-defined time period</value>
-         <!--??? b or c ???-->
       </set-param>
       <set-param param-id="ac-7_d">
          <desc>organization-defined delay algorithm</desc>
@@ -677,10 +672,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             </part>
             <!--<part class="parameters"><p>AC-8 (a) [see additional Requirements and Guidance] AC-8 (c) (1) [see additional Requirements and Guidance]</p></part>-->
             <part class="additional">
-               <p>AC-8 Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO. 
-Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.
-Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. 
-Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
+               <p>AC-8 Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO. Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO. Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
             </part>
          </augment>
       </alter>
@@ -992,21 +984,23 @@ Requirement: If not performed as part of a Configuration Baseline check, then th
       <!-- - - - - - -->
       <set-param param-id="au-2_a">
          <desc>organization-defined auditable events</desc>
-         <value>organization-defined auditable events</value>
+         <value>successful and unsuccessful account logon events, account management events, object
+            access, policy change, privilege functions, process tracking, and system events. For Web
+            applications: all administrator activity, authentication checks, authorization checks,
+            data deletions, data access, data changes, and permission changes</value>
       </set-param>
       <set-param param-id="au-2_b">
          <desc>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</desc>
-         <value>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</value>
+         <value>organization-defined subset of the auditable events defined in AU-2a to be audited
+            continually for each identified event</value>
+         <!--Note the (uncoded) cross-reference to the neighbor parameter-->
       </set-param>
       <alter control-id="au.2">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-2 (a) [successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events. For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes]
-AU-2 (d) [organization-defined subset of the auditable events defined in AU-2a to be audited continually for each identified event].</p>
-            </part>
+            <!--<part class="parameters"><p>AU-2 (a) [successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events. For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes] AU-2 (d) [organization-defined subset of the auditable events defined in AU-2a to be audited continually for each identified event].</p></part>-->
             <part class="additional">
                <p>AU-2 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
             </part>
@@ -1015,18 +1009,16 @@ AU-2 (d) [organization-defined subset of the auditable events defined in AU-2a t
       <!-- - - - - - -->
       <set-param param-id="au-2_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>annually or whenever there is a change in the threat environment</value>
       </set-param>
       <alter subcontrol-id="au.2.3.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-2 (3) [annually or whenever there is a change in the threat environment] </p>
-            </part>
+            <!--<part class="parameters"><p>AU-2 (3) [annually or whenever there is a change in the threat environment] </p></part>-->
             <part class="additional">
-               <p>AU-2 (3) Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO. </p>
+               <p>AU-2 (3) Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.</p>
             </part>
          </augment>
       </alter>
@@ -1041,16 +1033,18 @@ AU-2 (d) [organization-defined subset of the auditable events defined in AU-2a t
       <!-- - - - - - -->
       <set-param param-id="au-3_a">
          <desc>organization-defined additional, more detailed information</desc>
-         <value>organization-defined additional, more detailed information</value>
+         <value>session, connection, transaction, or activity duration; for client-server
+            transactions, the number of bytes received and bytes sent; additional informational
+            messages to diagnose or identify the event; characteristics that describe or identify
+            the object or resource being acted upon; individual identities of group account users;
+            full-text of privileged commands</value>
       </set-param>
       <alter subcontrol-id="au.3.1.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-3 (1) [session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-3 (1) [session, connection, transaction, or activity duration; for client-server transactions, the number of bytes received and bytes sent; additional informational messages to diagnose or identify the event; characteristics that describe or identify the object or resource being acted upon; individual identities of group account users; full-text of privileged commands]</p></part>-->
             <part class="additional">
                <p>AU-3 (1) Guidance: For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.</p>
             </part>
@@ -1059,16 +1053,14 @@ AU-2 (d) [organization-defined subset of the auditable events defined in AU-2a t
       <!-- - - - - - -->
       <set-param param-id="au-3_b">
          <desc>organization-defined information system components</desc>
-         <value>organization-defined information system components</value>
+         <value>all network, data storage, and computing devices</value>
       </set-param>
       <alter subcontrol-id="au.3.2.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-3 (2) [all network, data storage, and computing devices]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-3 (2) [all network, data storage, and computing devices]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1090,16 +1082,14 @@ AU-2 (d) [organization-defined subset of the auditable events defined in AU-2a t
       </set-param>
       <set-param param-id="au-5_b">
          <desc>organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)</desc>
-         <value>organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)</value>
+         <value>organization-defined actions to be taken (overwrite oldest record)</value>
       </set-param>
       <alter control-id="au.5">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-5 (b). [organization-defined actions to be taken (overwrite oldest record)</p>
-            </part>
+            <!--<part class="parameters"><p>AU-5 (b). [organization-defined actions to be taken (overwrite oldest record)</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1125,32 +1115,30 @@ AU-2 (d) [organization-defined subset of the auditable events defined in AU-2a t
       <!-- - - - - - -->
       <set-param param-id="au-5_f">
          <desc>organization-defined real-time period</desc>
-         <value>organization-defined real-time period</value>
+         <value>real-time</value>
       </set-param>
       <set-param param-id="au-5_g">
          <desc>organization-defined personnel, roles, and/or locations</desc>
-         <value>organization-defined personnel, roles, and/or locations</value>
+         <value>service provider personnel with authority to address failed audit events</value>
       </set-param>
       <set-param param-id="au-5_h">
          <desc>organization-defined audit failure events requiring real-time alerts</desc>
-         <value>organization-defined audit failure events requiring real-time alerts</value>
+         <value>audit failure events requiring real-time alerts, as defined by organization audit
+            policy</value>
       </set-param>
       <alter subcontrol-id="au.5.2.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-5 (2)-1 [real-time] 
-AU-5 (1)-2 [service provider personnel with authority to address failed audit events] 
-AU-5 (1)-3 [audit failure events requiring real-time alerts, as defined by organization  audit policy].</p>
-            </part>
+            <!--<part class="parameters"><p>AU-5 (2)-1 [real-time] AU-5 (1)-2 [service provider personnel with authority to address failed audit events] AU-5 (1)-3 [audit failure events requiring real-time alerts, as defined by organization audit policy].</p></part>-->
+            <!--tautological values?-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-6_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least weekly</value>
       </set-param>
       <set-param param-id="au-6_b">
          <desc>organization-defined inappropriate or unusual activity</desc>
@@ -1165,9 +1153,7 @@ AU-5 (1)-3 [audit failure events requiring real-time alerts, as defined by organ
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-6 (a)-1 [at least weekly] </p>
-            </part>
+            <!--<part class="parameters"><p>AU-6 (a)-1 [at least weekly] </p></part>-->
             <part class="additional">
                <p>AU-6 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
             </part>
@@ -1192,16 +1178,16 @@ AU-5 (1)-3 [audit failure events requiring real-time alerts, as defined by organ
       <!-- - - - - - -->
       <set-param param-id="au-6_d">
          <desc>organization-defined data/information collected from other sources</desc>
-         <value>organization-defined data/information collected from other sources</value>
+         <value>Selection (one or more): vulnerability scanning information; performance data;
+            information system monitoring information; penetration test data</value>
       </set-param>
       <alter subcontrol-id="au.6.5.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-6 (5) [Selection (one or more): vulnerability scanning information; performance data; information system monitoring information; penetration test data; [Organization -defined data/information collected from other sources]]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-6 (5) [Selection (one or more): vulnerability scanning information; performance data; information system monitoring information; penetration test data; [Organization -defined data/information collected from other sources]]</p></part>-->
+            <!--NB requirement to be able to assign "selection" as parameter value i.e. switch param value from string to enumeration-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1238,16 +1224,14 @@ AU-5 (1)-3 [audit failure events requiring real-time alerts, as defined by organ
       <!-- - - - - - -->
       <set-param param-id="au-8_a">
          <desc>organization-defined granularity of time measurement</desc>
-         <value>organization-defined granularity of time measurement</value>
+         <value>one second granularity of time measurement</value>
       </set-param>
       <alter control-id="au.8">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-8 (b) [one second granularity of time measurement]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-8 (b) [one second granularity of time measurement]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1257,25 +1241,22 @@ AU-5 (1)-3 [audit failure events requiring real-time alerts, as defined by organ
       </set-param>
       <set-param param-id="au-8_c">
          <desc>organization-defined authoritative time source</desc>
-         <value>organization-defined authoritative time source</value>
+         <value>http://tf.nist.gov/tf-cgi/servers.cgi</value>
+         <!--Note URI value-->
       </set-param>
       <set-param param-id="au-8_d">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>At least hourly</value>
+         <!--? or au8_b-->
       </set-param>
       <alter subcontrol-id="au.8.1.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-8 (1) [http://tf.nist.gov/tf-cgi/servers.cgi] [At least hourly]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-8 (1) [http://tf.nist.gov/tf-cgi/servers.cgi] [At least hourly]</p></part>-->
             <part class="additional">
-               <p>AU-8 (1) Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.
-AU-8 (1) Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.
-AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log analysis.
-</p>
+               <p>AU-8 (1) Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server. AU-8 (1) Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server. AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log analysis.</p>
             </part>
          </augment>
       </alter>
@@ -1290,16 +1271,14 @@ AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log
       <!-- - - - - - -->
       <set-param param-id="au-9_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least weekly</value>
       </set-param>
       <alter subcontrol-id="au.9.2.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-9 (2) [at least weekly] </p>
-            </part>
+            <!--<part class="parameters"><p>AU-9 (2) [at least weekly] </p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1325,33 +1304,30 @@ AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log
       <!-- - - - - - -->
       <set-param param-id="au-10_a">
          <desc>organization-defined actions to be covered by non-repudiation</desc>
-         <value>organization-defined actions to be covered by non-repudiation</value>
+         <value>minimum actions including the addition, modification, deletion, approval, sending,
+            or receiving of data</value>
       </set-param>
       <alter control-id="au.10">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-10 [minimum actions including the addition, modification, deletion, approval, sending, or receiving of data]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-10 [minimum actions including the addition, modification, deletion, approval, sending, or receiving of data]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-11_a">
          <desc>organization-defined time period consistent with records retention policy</desc>
-         <value>organization-defined time period consistent with records retention policy</value>
+         <value>at least one (1) year</value>
       </set-param>
       <alter control-id="au.11">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-11 [at least one (1) year] </p>
-            </part>
+            <!--<part class="parameters"><p>AU-11 [at least one (1) year] </p></part>-->
             <part class="additional">
-               <p>AU-11 Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements. </p>
+               <p>AU-11 Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
             </part>
          </augment>
       </alter>
@@ -1362,22 +1338,21 @@ AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log
       </set-param>
       <set-param param-id="au-12_b">
          <desc>organization-defined personnel or roles</desc>
-         <value>organization-defined personnel or roles</value>
+         <value>all information system and network components where audit capability is
+            deployed/available</value>
       </set-param>
       <alter control-id="au.12">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>AU-12 (a) [all information system and network components where audit capability is deployed/available]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-12 (a) [all information system and network components where audit capability is deployed/available]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-12_c">
          <desc>organization-defined information system components</desc>
-         <value>organization-defined information system components</value>
+         <value>all network, data storage, and computing devices</value>
       </set-param>
       <set-param param-id="au-12_d">
          <desc>organization-defined level of tolerance for the relationship between time stamps of individual records in the audit trail</desc>
@@ -1388,19 +1363,18 @@ AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log
             <part class="justification">
                <p>Non-repudiation</p>
             </part>
-            <part class="parameters">
-               <p>AU-12 (1) [all network, data storage, and computing devices]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-12 (1) [all network, data storage, and computing devices]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-12_e">
          <desc>organization-defined individuals or roles</desc>
-         <value>organization-defined individuals or roles</value>
+         <value>service provider-defined individuals or roles with audit configuration
+            responsibilities</value>
       </set-param>
       <set-param param-id="au-12_f">
          <desc>organization-defined information system components</desc>
-         <value>organization-defined information system components</value>
+         <value>all network, data storage, and computing devices</value>
       </set-param>
       <set-param param-id="au-12_g">
          <desc>organization-defined selectable event criteria</desc>
@@ -1415,10 +1389,7 @@ AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log
             <part class="justification">
                <p>Non-repudiation</p>
             </part>
-            <part class="parameters">
-               <p>AU-12 (3) (1) [service provider-defined individuals or roles with audit configuration responsibilities]  
-AU-12 (3) (2) [all network, data storage, and computing devices]</p>
-            </part>
+            <!--<part class="parameters"><p>AU-12 (3) (1) [service provider-defined individuals or roles with audit configuration responsibilities] AU-12 (3) (2) [all network, data storage, and computing devices]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1428,41 +1399,35 @@ AU-12 (3) (2) [all network, data storage, and computing devices]</p>
       </set-param>
       <set-param param-id="ca-1_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="ca-1_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or whenever a significant change occurs</value>
       </set-param>
       <alter control-id="ca.1">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-1 (b) (1) [at least annually] 
-CA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-1 (b) (1) [at least annually] CA-1 (b) (2) [at least annually or whenever a significant change occurs]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-2_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="ca-2_b">
          <desc>organization-defined individuals or roles</desc>
-         <value>organization-defined individuals or roles</value>
+         <value>individuals or roles to include FedRAMP PMO</value>
       </set-param>
       <alter control-id="ca.2">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-2 (b) [at least annually] 
-CA-2 (d) [individuals or roles to include FedRAMP PMO]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-2 (b) [at least annually] CA-2 (d) [individuals or roles to include FedRAMP PMO]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1483,7 +1448,7 @@ CA-2 (d) [individuals or roles to include FedRAMP PMO]</p>
       <!-- - - - - - -->
       <set-param param-id="ca-2_d">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="ca-2_e">
          <desc>organization-defined other forms of security assessment</desc>
@@ -1494,64 +1459,53 @@ CA-2 (d) [individuals or roles to include FedRAMP PMO]</p>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-2 (2) [at least annually]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-2 (2) [at least annually]</p></part>-->
             <part class="additional">
-               <p>CA-2 (2) Requirement: To include 'announced', 'vulnerability scanning'
-</p>
+               <p>CA-2 (2) Requirement: To include 'announced', 'vulnerability scanning'</p>
             </part>
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-3_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>At least annually and on input from FedRAMP</value>
       </set-param>
       <alter control-id="ca.3">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-3 (c) [At least annually and on input from FedRAMP]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-3 (c) [At least annually and on input from FedRAMP]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-3_h">
          <desc>organization-defined information systems</desc>
-         <value>organization-defined information systems</value>
+         <value>any systems</value>
       </set-param>
+      <!-- XXX Since "selection" parameters are not yet supported, there's a value missing here. See the text of CA 3 (5). XXX-->
       <alter subcontrol-id="ca.3.5.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-3 (5) [deny-all, permit by exception]
-
-[any systems]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-3 (5) [deny-all, permit by exception]</p><p>[any systems]</p></part>-->
             <part class="additional">
-               <p>CA-3 (5) Guidance: For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing
-</p>
+               <p>CA-3 (5) Guidance: For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</p>
             </part>
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-5_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least monthly</value>
       </set-param>
       <alter control-id="ca.5">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-5 (b) [at least monthly]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-5 (b) [at least monthly]</p></part>-->
             <part class="additional">
                <p>CA-5 Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
             </part>
@@ -1560,16 +1514,14 @@ CA-2 (d) [individuals or roles to include FedRAMP PMO]</p>
       <!-- - - - - - -->
       <set-param param-id="ca-6_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least every three (3) years or when a significant change occurs</value>
       </set-param>
       <alter control-id="ca.6">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-6 (c) [at least every three (3) years or when a significant change occurs] </p>
-            </part>
+            <!--<part class="parameters"><p>CA-6 (c) [at least every three (3) years or when a significant change occurs]</p></part>-->
             <part class="additional">
                <p>CA-6 (c) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
             </part>
@@ -1601,15 +1553,16 @@ CA-2 (d) [individuals or roles to include FedRAMP PMO]</p>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-7 (g) [to meet Federal and FedRAMP requirements]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-7 (g) [to meet Federal and FedRAMP requirements]</p></part>-->
             <part class="additional">
-               <p>CA-7 Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually
-CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.
-Operating System Scans: at least monthly 
-Database and Web Application Scans: at least monthly 
-All scans performed by Independent Assessor: at least annually</p>
+               <p>CA-7 Requirement: Operating System Scans: at least monthly</p>
+               <p>Database and Web Application Scans: at least monthly</p>
+               <p>All scans performed by Independent Assessor: at least annually</p>
+               <p>CA-7 Guidance: CSPs must provide evidence of closure and remediation of high
+                  vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
+               <p>Operating System Scans: at least monthly</p>
+               <p>Database and Web Application Scans: at least monthly</p>
+               <p>All scans performed by Independent Assessor: at least annually</p>
             </part>
          </augment>
       </alter>
@@ -1628,7 +1581,7 @@ All scans performed by Independent Assessor: at least annually</p>
       <!-- - - - - - -->
       <set-param param-id="ca-8_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="ca-8_b">
          <desc>organization-defined information systems or system components</desc>
@@ -1639,9 +1592,7 @@ All scans performed by Independent Assessor: at least annually</p>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CA-8-1 [at least annually]</p>
-            </part>
+            <!--<part class="parameters"><p>CA-8-1 [at least annually]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1663,21 +1614,18 @@ All scans performed by Independent Assessor: at least annually</p>
       </set-param>
       <set-param param-id="cm-1_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="cm-1_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or whenever a significant change occurs</value>
       </set-param>
       <alter control-id="cm.1">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-1 (b) (1) [at least annually]
-CM-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-1 (b) (1) [at least annually] CM-1 (b) (2) [at least annually or whenever a significant change occurs]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1691,24 +1639,20 @@ CM-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
       <!-- - - - - - -->
       <set-param param-id="cm-2_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or when a significant change occurs</value>
       </set-param>
       <set-param param-id="cm-2_b">
          <desc>Assignment organization-defined circumstances</desc>
-         <value>Assignment organization-defined circumstances</value>
+         <value>to include when directed by the JAB</value>
       </set-param>
       <alter subcontrol-id="cm.2.1.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-2 (1) (a) [at least annually or when a significant change occurs]
-CM-2 (1) (b) [to include when  directed by the JAB]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-2 (1) (a) [at least annually or when a significant change occurs] CM-2 (1) (b) [to include when directed by the JAB]</p></part>-->
             <part class="additional">
-               <p> CM-2 (1) (a) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.
-</p>
+               <p>CM-2 (1) (a) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
             </part>
          </augment>
       </alter>
@@ -1723,16 +1667,16 @@ CM-2 (1) (b) [to include when  directed by the JAB]</p>
       <!-- - - - - - -->
       <set-param param-id="cm-2_c">
          <desc>organization-defined previous versions of baseline configurations of the information system</desc>
-         <value>organization-defined previous versions of baseline configurations of the information system</value>
+         <value>organization-defined previous versions of baseline configurations of the previously
+            approved baseline configuration of IS components</value>
+         <!--???-->
       </set-param>
       <alter subcontrol-id="cm.2.3.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-2 (3) [organization-defined previous versions of baseline configurations of the previously approved baseline configuration of IS components]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-2 (3) [organization-defined previous versions of baseline configurations of the previously approved baseline configuration of IS components]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1778,8 +1722,13 @@ CM-2 (1) (b) [to include when  directed by the JAB]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>CM-3 Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.
-CM-3 (e) Guidance: In accordance with record retention policies and procedures.</p>
+               <p>CM-3 Requirement: The service provider establishes a central means of
+                  communicating major changes to or developments in the information system or
+                  environment of operations that may affect its services to the federal government
+                  and associated service consumers (e.g., electronic bulletin board, web status
+                  page). The means of communication are approved and accepted by the JAB/AO.</p>
+               <p>CM-3 (e) Guidance: In accordance with record retention policies and
+                  procedures.</p>
             </part>
          </augment>
       </alter>
@@ -1790,21 +1739,18 @@ CM-3 (e) Guidance: In accordance with record retention policies and procedures.<
       </set-param>
       <set-param param-id="cm-3_f">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>organization agreed upon time period</value>
       </set-param>
       <set-param param-id="cm-3_g">
          <desc>organization-defined personnel</desc>
-         <value>organization-defined personnel</value>
+         <value>organization defined configuration management approval authorities</value>
       </set-param>
       <alter subcontrol-id="cm.3.1.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-3 (1) (c)  [organization agreed upon time period] 
-CM-3 (1) (f) [organization defined configuration management approval authorities] </p>
-            </part>
+            <!--<part class="parameters"><p>CM-3 (1) (c) [organization agreed upon time period] CM-3 (1) (f) [organization defined configuration management approval authorities]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1850,7 +1796,7 @@ CM-3 (1) (f) [organization defined configuration management approval authorities
       <!-- - - - - - -->
       <set-param param-id="cm-5_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least every thirty (30) days</value>
       </set-param>
       <set-param param-id="cm-5_b">
          <desc>organization-defined circumstances</desc>
@@ -1861,9 +1807,7 @@ CM-3 (1) (f) [organization defined configuration management approval authorities
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-5 (2) [at least every thirty (30) days]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-5 (2) [at least every thirty (30) days]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1903,9 +1847,7 @@ CM-3 (1) (f) [organization defined configuration management approval authorities
                <p>CM-6 (a) [United States Government Configuration Baseline (USGCB)]</p>
             </part>
             <part class="additional">
-               <p>CM-6 (a)-1 Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.
-CM-6 (a)-2 Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).
-CM-6 (a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
+               <p>CM-6 (a)-1 Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. CM-6 (a)-2 Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available). CM-6 (a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
             </part>
          </augment>
       </alter>
@@ -1948,12 +1890,10 @@ CM-6 (a) Guidance: Information on the USGCB checklists can be found at: http://u
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CM-7 (b) [United States Government Configuration Baseline (USGCB)] </p>
+               <p>CM-7 (b) [United States Government Configuration Baseline (USGCB)]</p>
             </part>
             <part class="additional">
-               <p>CM-7 (b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.
-CM-7 Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc.
-(Partially derived from AC-17(8).</p>
+               <p>CM-7 (b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available. CM-7 Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc. (Partially derived from AC-17(8).</p>
             </part>
          </augment>
       </alter>
@@ -1972,7 +1912,7 @@ CM-7 Guidance: Information on the USGCB checklists can be found at: http://usgcb
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CM-7 (1) (a) [at least monthly] </p>
+               <p>CM-7 (1) (a) [at least monthly]</p>
             </part>
          </augment>
       </alter>
@@ -2063,7 +2003,7 @@ CM-7 Guidance: Information on the USGCB checklists can be found at: http://usgcb
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CM-8 (3) (a). [Continuously, using automated mechanisms with a maximum five-minute delay in detection.] </p>
+               <p>CM-8 (3) (a). [Continuously, using automated mechanisms with a maximum five-minute delay in detection.]</p>
             </part>
          </augment>
       </alter>
@@ -2144,8 +2084,7 @@ CM-7 Guidance: Information on the USGCB checklists can be found at: http://usgcb
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CP-1 (b) (1) [at least annually]
-CP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>CP-1 (b) (1) [at least annually] CP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -2218,7 +2157,7 @@ CP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CP-2 (4) [time period defined in service provider and organization  SLA]</p>
+               <p>CP-2 (4) [time period defined in service provider and organization SLA]</p>
             </part>
          </augment>
       </alter>
@@ -2253,8 +2192,7 @@ CP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CP-3 (a) [ten (10) days]
-CP-3 (c) [at least annually]</p>
+               <p>CP-3 (a) [ten (10) days] CP-3 (c) [at least annually]</p>
             </part>
          </augment>
       </alter>
@@ -2281,8 +2219,7 @@ CP-3 (c) [at least annually]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CP-4 (a)-1 [at least annually] 
-CP-4 (a)-2 [functional exercises]</p>
+               <p>CP-4 (a)-1 [at least annually] CP-4 (a)-2 [functional exercises]</p>
             </part>
             <part class="additional">
                <p>CP-4 (a) Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
@@ -2352,8 +2289,7 @@ CP-4 (a)-2 [functional exercises]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>CP-7 (a) Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.
-</p>
+               <p>CP-7 (a) Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
             </part>
          </augment>
       </alter>
@@ -2407,8 +2343,7 @@ CP-4 (a)-2 [functional exercises]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>CP-8 Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.
-</p>
+               <p>CP-8 Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
             </part>
          </augment>
       </alter>
@@ -2470,15 +2405,10 @@ CP-4 (a)-2 [functional exercises]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CP-9 (a) [daily incremental; weekly full]
-CP-9 (b) [daily incremental; weekly full]
-CP-9 (c) [daily incremental; weekly full]</p>
+               <p>CP-9 (a) [daily incremental; weekly full] CP-9 (b) [daily incremental; weekly full] CP-9 (c) [daily incremental; weekly full]</p>
             </part>
             <part class="additional">
-               <p>CP-9 Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control.  The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.
-CP-9 (a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.
-CP-9 (b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.
-CP-9 (c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</p>
+               <p>CP-9 Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check. CP-9 (a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative. CP-9 (b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative. CP-9 (c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</p>
             </part>
          </augment>
       </alter>
@@ -2528,7 +2458,7 @@ CP-9 (c) Requirement: The service provider maintains at least three backup copie
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CP-9 (5) [time period and transfer rate consistent with the recovery time and recovery point objectives defined in the service provider and organization  SLA].</p>
+               <p>CP-9 (5) [time period and transfer rate consistent with the recovery time and recovery point objectives defined in the service provider and organization SLA].</p>
             </part>
          </augment>
       </alter>
@@ -2559,7 +2489,7 @@ CP-9 (c) Requirement: The service provider maintains at least three backup copie
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CP-10 (4) [time period consistent with the restoration time-periods defined in the service provider and organization  SLA]</p>
+               <p>CP-10 (4) [time period consistent with the restoration time-periods defined in the service provider and organization SLA]</p>
             </part>
          </augment>
       </alter>
@@ -2582,8 +2512,7 @@ CP-9 (c) Requirement: The service provider maintains at least three backup copie
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IA-1 (b) (1) [at least annually] 
-IA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>IA-1 (b) (1) [at least annually] IA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -2657,7 +2586,7 @@ IA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>IA-2 (11) [FIPS 140-2, NIAP Certification, or NSA approval]</p>
             </part>
             <part class="additional">
-               <p>IA-2 (11) Guidance: PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials. </p>
+               <p>IA-2 (11) Guidance: PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.</p>
             </part>
          </augment>
       </alter>
@@ -2668,8 +2597,7 @@ IA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>IA-2 (12) Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.
-</p>
+               <p>IA-2 (12) Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
             </part>
          </augment>
       </alter>
@@ -2704,13 +2632,10 @@ IA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IA-4(a) [at a minimum, the ISSO (or similar role within the organization)]  
-IA-4 (d) [at least two (2) years]
-IA-4 (e) [thirty-five (35) days] (See additional requirements and guidance.)</p>
+               <p>IA-4(a) [at a minimum, the ISSO (or similar role within the organization)] IA-4 (d) [at least two (2) years] IA-4 (e) [thirty-five (35) days] (See additional requirements and guidance.)</p>
             </part>
             <part class="additional">
-               <p>IA-4 (e) Requirement: The service provider defines the time period of inactivity for device identifiers.
-Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
+               <p>IA-4 (e) Requirement: The service provider defines the time period of inactivity for device identifiers. Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
             </part>
          </augment>
       </alter>
@@ -2725,8 +2650,7 @@ Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements th
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IA-5 (g) [to include sixty (60) days for passwords]
-</p>
+               <p>IA-5 (g) [to include sixty (60) days for passwords]</p>
             </part>
             <part class="additional">
                <p>IA-5 Requirement: Authenticators must be compliant with NIST SP 800-63-2 Electronic Authentication Guideline assurance Level 4 (Link http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-2.pdf)</p>
@@ -2756,10 +2680,7 @@ Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements th
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IA-5 (1) (a) [case sensitive, minimum of fourteen (14) characters, and at least one (1) each of upper-case letters, lower-case letters, numbers, and special characters]
-IA-5 (1) (b) [at least fifty percent (50%)]
-IA-5 (1) (d) [one (1) day minimum, sixty (60) day maximum]
-IA-5 (1) (e) [twenty four (24)]</p>
+               <p>IA-5 (1) (a) [case sensitive, minimum of fourteen (14) characters, and at least one (1) each of upper-case letters, lower-case letters, numbers, and special characters] IA-5 (1) (b) [at least fifty percent (50%)] IA-5 (1) (d) [one (1) day minimum, sixty (60) day maximum] IA-5 (1) (e) [twenty four (24)]</p>
             </part>
          </augment>
       </alter>
@@ -2790,9 +2711,7 @@ IA-5 (1) (e) [twenty four (24)]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IA-5 (3)-1 [All hardware/biometric (multifactor authenticators] 
-IA-5 (3)-2 [in person]
-</p>
+               <p>IA-5 (3)-1 [All hardware/biometric (multifactor authenticators] IA-5 (3)-2 [in person]</p>
             </part>
          </augment>
       </alter>
@@ -2827,7 +2746,7 @@ IA-5 (3)-2 [in person]
       <!-- - - - - - -->
       <alter control-id="ia.8">
          <augment>
-            <!--<prop class="profile-title">IDENTIFICATION AND AUTHENTICATION (NON- ORGANIZATIONAL USERS)</prop>-->
+            <prop class="profile-title">IDENTIFICATION AND AUTHENTICATION (NON- ORGANIZATIONAL USERS)</prop>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
@@ -2888,8 +2807,7 @@ IA-5 (3)-2 [in person]
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IR-1 (b) (1) [at least annually] 
-IR-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>IR-1 (b) (1) [at least annually] IR-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -2908,8 +2826,7 @@ IR-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IR-2 (a) [within ten (10) days]
-IR-2 (c) [at least annually]</p>
+               <p>IR-2 (a) [within ten (10) days] IR-2 (c) [at least annually]</p>
             </part>
          </augment>
       </alter>
@@ -2966,8 +2883,7 @@ IR-2 (c) [at least annually]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>IR-4 Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.
-</p>
+               <p>IR-4 Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
             </part>
          </augment>
       </alter>
@@ -3072,13 +2988,10 @@ IR-2 (c) [at least annually]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IR-8 (b) [see additional FedRAMP Requirements and Guidance]
-IR-8 (c) [at least annually]
-IR-8 (e) [see additional FedRAMP Requirements and Guidance]</p>
+               <p>IR-8 (b) [see additional FedRAMP Requirements and Guidance] IR-8 (c) [at least annually] IR-8 (e) [see additional FedRAMP Requirements and Guidance]</p>
             </part>
             <part class="additional">
-               <p>IR-8 (b) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.
-IR-8 (e) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
+               <p>IR-8 (b) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel. IR-8 (e) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
             </part>
          </augment>
       </alter>
@@ -3101,8 +3014,7 @@ IR-8 (e) Requirement: The service provider defines a list of incident response p
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>MA-1 (b) (1) [at least annually]
-MA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>MA-1 (b) (1) [at least annually] MA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -3244,8 +3156,7 @@ MA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>MP-1 (b) (1) [at least annually]
-MP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>MP-1 (b) (1) [at least annually] MP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -3283,8 +3194,7 @@ MP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>MP-3 (b)-1 [no removable media types]
-MP-3 (b)-2 [organization-defined security safeguards not applicable]</p>
+               <p>MP-3 (b)-1 [no removable media types] MP-3 (b)-2 [organization-defined security safeguards not applicable]</p>
             </part>
             <part class="additional">
                <p>MP-3 (b) Guidance: Second parameter not-applicable</p>
@@ -3306,8 +3216,7 @@ MP-3 (b)-2 [organization-defined security safeguards not applicable]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>MP-4 (a)-1 [all types of digital and non-digital media with sensitive information] 
-MP-4 (a)-2 [see additional FedRAMP requirements and guidance]</p>
+               <p>MP-4 (a)-1 [all types of digital and non-digital media with sensitive information] MP-4 (a)-2 [see additional FedRAMP requirements and guidance]</p>
             </part>
             <part class="additional">
                <p>MP-4 (a) Requirement: The service provider defines controlled areas within facilities where the information and information system reside.</p>
@@ -3329,11 +3238,10 @@ MP-4 (a)-2 [see additional FedRAMP requirements and guidance]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>MP-5 (a) [all media with sensitive information] [prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container]
-</p>
+               <p>MP-5 (a) [all media with sensitive information] [prior to leaving secure/controlled environment: for digital media, encryption using a FIPS 140-2 validated encryption module; for non-digital media, secured in locked container]</p>
             </part>
             <part class="additional">
-               <p>MP-5 (a) Requirement: The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.</p>
+               <p>MP-5 (a) Requirement: The service provider defines security measures to protect digital and non-digital media in transport. The security measures are approved and accepted by the JAB.</p>
             </part>
          </augment>
       </alter>
@@ -3449,8 +3357,7 @@ MP-4 (a)-2 [see additional FedRAMP requirements and guidance]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PE-1 (b) (1) [at least annually] 
-PE-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>PE-1 (b) (1) [at least annually] PE-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -3465,7 +3372,7 @@ PE-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PE-2 (c) [at least every ninety (90) days] </p>
+               <p>PE-2 (c) [at least every ninety (90) days]</p>
             </part>
          </augment>
       </alter>
@@ -3508,11 +3415,7 @@ PE-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PE-3 (a) (2) [CSP defined physical access control systems/devices AND guards]
-PE-3 (d) [in all circumstances within restricted access area where the information system resides]
-PE-3 (f) [at least annually]
-PE-3 (g) [at least annually] 
-</p>
+               <p>PE-3 (a) (2) [CSP defined physical access control systems/devices AND guards] PE-3 (d) [in all circumstances within restricted access area where the information system resides] PE-3 (f) [at least annually] PE-3 (g) [at least annually]</p>
             </part>
          </augment>
       </alter>
@@ -3567,7 +3470,7 @@ PE-3 (g) [at least annually]
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PE-6 (b) [at least monthly] </p>
+               <p>PE-6 (b) [at least monthly]</p>
             </part>
          </augment>
       </alter>
@@ -3606,8 +3509,7 @@ PE-3 (g) [at least annually]
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PE-8 (a) [for a minimum of one (1) year]
-PE-8 (b) [at least monthly]</p>
+               <p>PE-8 (a) [for a minimum of one (1) year] PE-8 (b) [at least monthly]</p>
             </part>
          </augment>
       </alter>
@@ -3686,8 +3588,7 @@ PE-8 (b) [at least monthly]</p>
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PE-13 (1) -1 [service provider building maintenance/physical security personnel]
-PE-13 (1) -2 [service provider emergency responders with incident response responsibilities] </p>
+               <p>PE-13 (1) -1 [service provider building maintenance/physical security personnel] PE-13 (1) -2 [service provider emergency responders with incident response responsibilities]</p>
             </part>
          </augment>
       </alter>
@@ -3726,11 +3627,10 @@ PE-13 (1) -2 [service provider emergency responders with incident response respo
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PE-14 (a) [consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments]
-PE-14 (b) [continuously]</p>
+               <p>PE-14 (a) [consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments] PE-14 (b) [continuously]</p>
             </part>
             <part class="additional">
-               <p>PE-14 (a) Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
+               <p>PE-14 (a) Requirements: The service provider measures temperature at server inlets and humidity levels by dew point.</p>
             </part>
          </augment>
       </alter>
@@ -3818,8 +3718,7 @@ PE-14 (b) [continuously]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PL-1 (b) (1) [at least annually]
-PL-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>PL-1 (b) (1) [at least annually] PL-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -3891,7 +3790,7 @@ PL-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>PL-8 (b) [at least annually or when a significant change occurs]</p>
             </part>
             <part class="additional">
-               <p>PL-8 (b) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7. </p>
+               <p>PL-8 (b) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
             </part>
          </augment>
       </alter>
@@ -3914,8 +3813,7 @@ PL-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PS-1 (b) (1) [at least annually] 
-PS-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>PS-1 (b) (1) [at least annually] PS-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -3930,7 +3828,7 @@ PS-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PS-2 (c) [at least annually] </p>
+               <p>PS-2 (c) [at least annually]</p>
             </part>
          </augment>
       </alter>
@@ -3945,8 +3843,7 @@ PS-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PS-3 (b) [for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance.
-For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year.  There is no reinvestigation for other moderate risk positions or any low risk positions]</p>
+               <p>PS-3 (b) [for national security clearances; a reinvestigation is required during the fifth (5th) year for top secret security clearance, the tenth (10th) year for secret security clearance, and fifteenth (15th) year for confidential security clearance. For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the fifth (5th) year. There is no reinvestigation for other moderate risk positions or any low risk positions]</p>
             </part>
          </augment>
       </alter>
@@ -4015,8 +3912,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PS-5 (b)-2 [twenty-four (24) hours] 
-PS-5 (d)-2 [twenty-four (24) hours]</p>
+               <p>PS-5 (b)-2 [twenty-four (24) hours] PS-5 (d)-2 [twenty-four (24) hours]</p>
             </part>
          </augment>
       </alter>
@@ -4035,8 +3931,7 @@ PS-5 (d)-2 [twenty-four (24) hours]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>PS-6 (b) [at least annually]
-PS-6 (c) (2) [at least annually and any time there is a change to the user's level of access]</p>
+               <p>PS-6 (b) [at least annually] PS-6 (c) (2) [at least annually and any time there is a change to the user's level of access]</p>
             </part>
          </augment>
       </alter>
@@ -4097,8 +3992,7 @@ PS-6 (c) (2) [at least annually and any time there is a change to the user's lev
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>RA-1 (b) (1) [at least annually] 
-RA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>RA-1 (b) (1) [at least annually] RA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -4133,16 +4027,12 @@ RA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>RA-3 (b) [security assessment report]
- 
-RA-3 (c) [at least annually or whenever a significant change occurs]
- 
-RA-3 (e) [annually]  </p>
+               <p>RA-3 (b) [security assessment report]</p>
+               <p>RA-3 (c) [at least annually or whenever a significant change occurs]</p>
+               <p>RA-3 (e) [annually]</p>
             </part>
             <part class="additional">
-               <p>RA-3 Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.
-RA-3 (d) Requirement: Include all Authoring Officials and FedRAMP ISSOs.
-</p>
+               <p>RA-3 Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. RA-3 (d) Requirement: Include all Authoring Officials and FedRAMP ISSOs.</p>
             </part>
          </augment>
       </alter>
@@ -4165,13 +4055,10 @@ RA-3 (d) Requirement: Include all Authoring Officials and FedRAMP ISSOs.
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>RA-5 (a) [monthly operating system/infrastructure; monthly web applications and databases]
-RA-5 (d) [high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery]</p>
+               <p>RA-5 (a) [monthly operating system/infrastructure; monthly web applications and databases] RA-5 (d) [high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery]</p>
             </part>
             <part class="additional">
-               <p>RA-5 (a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.
-RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP
-</p>
+               <p>RA-5 (a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually. RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
             </part>
          </augment>
       </alter>
@@ -4194,7 +4081,7 @@ RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to i
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>RA-5 (2) [prior to a new scan] </p>
+               <p>RA-5 (2) [prior to a new scan]</p>
             </part>
          </augment>
       </alter>
@@ -4209,7 +4096,7 @@ RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to i
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>RA-5 (4) [notify appropriate service provider personnel and follow procedures for organization  and service provider-defined corrective actions]</p>
+               <p>RA-5 (4) [notify appropriate service provider personnel and follow procedures for organization and service provider-defined corrective actions]</p>
             </part>
          </augment>
       </alter>
@@ -4228,8 +4115,7 @@ RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to i
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>RA-5 (5)-1 [operating systems / web applications / databases] 
-RA-5 (5)-2 [all scans]</p>
+               <p>RA-5 (5)-1 [operating systems / web applications / databases] RA-5 (5)-2 [all scans]</p>
             </part>
          </augment>
       </alter>
@@ -4252,8 +4138,7 @@ RA-5 (5)-2 [all scans]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SA-1 (b) (1)  [at least annually]
-SA-1 (b) (2)  [at least annually or whenever a significant change occurs]</p>
+               <p>SA-1 (b) (1) [at least annually] SA-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -4284,8 +4169,7 @@ SA-1 (b) (2)  [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>SA-4 Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.
-See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html. </p>
+               <p>SA-4 Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html.</p>
             </part>
          </augment>
       </alter>
@@ -4374,8 +4258,7 @@ See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/product
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SA-9 (a) [FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system]
-SA-9 (c) [Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored]</p>
+               <p>SA-9 (a) [FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system] SA-9 (c) [Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored]</p>
             </part>
          </augment>
       </alter>
@@ -4412,8 +4295,7 @@ SA-9 (c) [Federal/FedRAMP Continuous Monitoring requirements must be met for ext
                <p>SA-10 (a) [development, implementation, AND operation]</p>
             </part>
             <part class="additional">
-               <p>SA-10 (e)  Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.
-</p>
+               <p>SA-10 (e) Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.</p>
             </part>
          </augment>
       </alter>
@@ -4459,8 +4341,7 @@ SA-9 (c) [Federal/FedRAMP Continuous Monitoring requirements must be met for ext
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SA-15 (b)-1 [as needed and as dictated by the current threat posture] 
-SA-15 (b)-2 [organization and service provider- defined security requirements]</p>
+               <p>SA-15 (b)-1 [as needed and as dictated by the current threat posture] SA-15 (b)-2 [organization and service provider- defined security requirements]</p>
             </part>
          </augment>
       </alter>
@@ -4503,8 +4384,7 @@ SA-15 (b)-2 [organization and service provider- defined security requirements]</
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SC-1 (b) (1) [at least annually]  
-SC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>SC-1 (b) (1) [at least annually] SC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -4657,8 +4537,7 @@ SC-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SC-8 (1)-1 [prevent unauthorized disclosure of information AND detect changes to information] 
-SC-8 (1)-1 [a hardened or alarmed carrier Protective Distribution System (PDS)]</p>
+               <p>SC-8 (1)-1 [prevent unauthorized disclosure of information AND detect changes to information] SC-8 (1)-1 [a hardened or alarmed carrier Protective Distribution System (PDS)]</p>
             </part>
          </augment>
       </alter>
@@ -4673,7 +4552,7 @@ SC-8 (1)-1 [a hardened or alarmed carrier Protective Distribution System (PDS)]<
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SC-10  [no longer than ten (10) minutes for privileged sessions and no longer than fifteen (15) minutes for user sessions]</p>
+               <p>SC-10 [no longer than ten (10) minutes for privileged sessions and no longer than fifteen (15) minutes for user sessions]</p>
             </part>
          </augment>
       </alter>
@@ -4833,7 +4712,7 @@ NAME/ADDRESS RESOLUTION SERVICE</prop>
                <p>SC-28 [confidentiality AND integrity]</p>
             </part>
             <part class="additional">
-               <p>SC-28 Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest. </p>
+               <p>SC-28 Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest.</p>
             </part>
          </augment>
       </alter>
@@ -4864,8 +4743,7 @@ NAME/ADDRESS RESOLUTION SERVICE</prop>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SI-1 (b) (1) [at least annually] 
-SI-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
+               <p>SI-1 (b) (1) [at least annually] SI-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
             </part>
          </augment>
       </alter>
@@ -4903,8 +4781,7 @@ SI-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SI-2 (2) [at least monthly] 
-</p>
+               <p>SI-2 (2) [at least monthly]</p>
             </part>
          </augment>
       </alter>
@@ -4923,9 +4800,7 @@ SI-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SI-3 (c) (1)-1 [at least weekly] 
-SI-3 (c) (1)-2 [to include endpoints]
-SI-3 (c) (2) [to include blocking and quarantining malicious code and alerting administrator or defined security personnel near-realtime]</p>
+               <p>SI-3 (c) (1)-1 [at least weekly] SI-3 (c) (1)-2 [to include endpoints] SI-3 (c) (2) [to include blocking and quarantining malicious code and alerting administrator or defined security personnel near-realtime]</p>
             </part>
          </augment>
       </alter>
@@ -4972,7 +4847,7 @@ SI-3 (c) (2) [to include blocking and quarantining malicious code and alerting a
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>SI-4 Guidance: See US-CERT Incident Response Reporting Guidelines. </p>
+               <p>SI-4 Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
             </part>
          </augment>
       </alter>
@@ -5041,8 +4916,7 @@ SI-3 (c) (2) [to include blocking and quarantining malicious code and alerting a
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SI-5 (a) [to include US-CERT]
-SI-5 (c) [to include system security personnel and administrators with configuration/patch-management responsibilities]</p>
+               <p>SI-5 (a) [to include US-CERT] SI-5 (c) [to include system security personnel and administrators with configuration/patch-management responsibilities]</p>
             </part>
          </augment>
       </alter>
@@ -5081,9 +4955,7 @@ SI-5 (c) [to include system security personnel and administrators with configura
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SI-6 (b) [to include upon system startup and/or restart and at least monthly]
-SI-6 (c) [to include system administrators and security personnel]
-SI-6 (d) [to include notification of system administrators and security personnel]</p>
+               <p>SI-6 (b) [to include upon system startup and/or restart and at least monthly] SI-6 (c) [to include system administrators and security personnel] SI-6 (d) [to include notification of system administrators and security personnel]</p>
             </part>
          </augment>
       </alter>
@@ -5118,8 +4990,7 @@ SI-6 (d) [to include notification of system administrators and security personne
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SI-7(1)-1 [selection to include security relevant events]  
-SI-7(1)-2 [at least monthly]</p>
+               <p>SI-7(1)-1 [selection to include security relevant events] SI-7(1)-2 [at least monthly]</p>
             </part>
          </augment>
       </alter>
@@ -5237,7 +5108,7 @@ SI-7(1)-2 [at least monthly]</p>
       </alter>
       <!-- ===== -->
    </invoke>
-   <invoke href="file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml">
+   <invoke href="../SP800-53/SP800-53-rev4-catalog.xml">
       <include>
          <call subcontrol-id="ac.2.7."/>
          <call subcontrol-id="ac.2.9."/>
@@ -5348,8 +5219,7 @@ SI-7(1)-2 [at least monthly]</p>
                <p>AC-2 (9) [organization-defined need with justification statement that explains why such accounts are necessary]</p>
             </part>
             <part class="additional">
-               <p>AC-2 (9) Required if shared/group accounts are deployed
-</p>
+               <p>AC-2 (9) Required if shared/group accounts are deployed</p>
             </part>
          </augment>
       </alter>
@@ -5360,8 +5230,7 @@ SI-7(1)-2 [at least monthly]</p>
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>AC-2 (10) Required if shared/group accounts are deployed
-</p>
+               <p>AC-2 (10) Required if shared/group accounts are deployed</p>
             </part>
          </augment>
       </alter>
@@ -5377,11 +5246,7 @@ SI-7(1)-2 [at least monthly]</p>
       <alter subcontrol-id="ac.4.8.">
          <augment>
             <part class="justification">
-               <p>NEED. If there is a significant high-impact risk of inadvertent or intentional data leakage with a system deployed in a shared-service environment, this control is justified to mitigate that risk. Similar justification applies when an organization needs to ensure data isolation between different types of information enclaves within the organization.
-ANALYSIS. Although this control is usually employed to control flows between different classified enclaves, it  can also apply to non-classified scenarios (e.g., the need to isolate legal, personnel, health-related, financial, or other information or files deemed sensitive. 
-SAMPLE THREAT VECTORS.  Sensitive free-text information passes from the personnel department to the rest of the organization. Law-enforcement sensitive information is inadvertently pulled from the organization's general counsel case management system and passed outside the department to users without authorization to view that information. HIPAA-protected health information flows freely from the HR department to all employees. Privacy-Act information flows from an HR system into a publicly released report. 
-RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Adaptive, Manageable, Assessed, Auditable, Regulated, Controlled, Monitored, Providing Good Data Stewardship, Assured, Competent, Confidential, Data Controllable, Access-Controlled.
-</p>
+               <p>NEED. If there is a significant high-impact risk of inadvertent or intentional data leakage with a system deployed in a shared-service environment, this control is justified to mitigate that risk. Similar justification applies when an organization needs to ensure data isolation between different types of information enclaves within the organization. ANALYSIS. Although this control is usually employed to control flows between different classified enclaves, it can also apply to non-classified scenarios (e.g., the need to isolate legal, personnel, health-related, financial, or other information or files deemed sensitive. SAMPLE THREAT VECTORS. Sensitive free-text information passes from the personnel department to the rest of the organization. Law-enforcement sensitive information is inadvertently pulled from the organization's general counsel case management system and passed outside the department to users without authorization to view that information. HIPAA-protected health information flows freely from the HR department to all employees. Privacy-Act information flows from an HR system into a publicly released report. RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Adaptive, Manageable, Assessed, Auditable, Regulated, Controlled, Monitored, Providing Good Data Stewardship, Assured, Competent, Confidential, Data Controllable, Access-Controlled.</p>
             </part>
          </augment>
       </alter>
@@ -5413,13 +5278,11 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Adaptive, Manageable, A
       <alter subcontrol-id="ac.6.7.">
          <augment>
             <part class="justification">
-               <p>CSP Insider Threat mitigation; Good housekeeping and a best business practice for the protection of the CSP and customer alike. In a cloud environment, the power (and potentially harm) of the privileged users is greatly magnified because of the scale. For that reason periodic review of privileges is important.
-
-Priority for adding to FedRAMP-M: HIGH</p>
+               <p>CSP Insider Threat mitigation; Good housekeeping and a best business practice for the protection of the CSP and customer alike. In a cloud environment, the power (and potentially harm) of the privileged users is greatly magnified because of the scale. For that reason periodic review of privileges is important.</p>
+               <p>Priority for adding to FedRAMP-M: HIGH</p>
             </part>
             <part class="parameters">
-               <p>AC-6 (7)(a)-1  at a minimum, annually
-AC-6 (7)(a)-2  all users with privileges</p>
+               <p>AC-6 (7)(a)-1 at a minimum, annually AC-6 (7)(a)-2 all users with privileges</p>
             </part>
          </augment>
       </alter>
@@ -5454,14 +5317,10 @@ AC-6 (7)(a)-2  all users with privileges</p>
       <alter subcontrol-id="ac.7.2.">
          <augment>
             <part class="justification">
-               <p>NEED. If an organization’s mobile devices carry information whose loss would have a high impact, this control is warranted in order to mitigate the risk of such loss.
-ANALYSIS. The technologies associated with this control are well established COTS hardware and software.
-SAMPLE THREAT VECTORS.  Mobile device is lost, falls into the hands of people without authorization to view the information contained on the device. 
-RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Usable, Adaptive, Manageable, Agile, Supported, Assessed, Auditable, Regulated, Controlled, Monitored, Providing Good Data Stewardship, Assured, Confidential, Data Controllable, Access-Controlled, Mission Assured.</p>
+               <p>NEED. If an organization’s mobile devices carry information whose loss would have a high impact, this control is warranted in order to mitigate the risk of such loss. ANALYSIS. The technologies associated with this control are well established COTS hardware and software. SAMPLE THREAT VECTORS. Mobile device is lost, falls into the hands of people without authorization to view the information contained on the device. RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Usable, Adaptive, Manageable, Agile, Supported, Assessed, Auditable, Regulated, Controlled, Monitored, Providing Good Data Stewardship, Assured, Confidential, Data Controllable, Access-Controlled, Mission Assured.</p>
             </part>
             <part class="parameters">
-               <p>AC-7 (2)-1 [mobile devices as defined by organization policy]
-AC-7 (2)-3 [three (3)]</p>
+               <p>AC-7 (2)-1 [mobile devices as defined by organization policy] AC-7 (2)-3 [three (3)]</p>
             </part>
          </augment>
       </alter>
@@ -5476,7 +5335,7 @@ AC-7 (2)-3 [three (3)]</p>
                <p>Recommended by High Baseline Tiger Team. vulnerabilities associated with not having a logout button are well-documented.</p>
             </part>
             <part class="additional">
-               <p>AC-12 (1) Guidance: https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29  </p>
+               <p>AC-12 (1) Guidance: https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29</p>
             </part>
          </augment>
       </alter>
@@ -5499,14 +5358,9 @@ AC-7 (2)-3 [three (3)]</p>
       <alter subcontrol-id="ac.18.3.">
          <augment>
             <part class="justification">
-               <p>Rationale for Selection: Best business practice for the protection of the CSP and customer alike  " when not intended for use". This is an unanticipated vector for attack if present and active. While probably not an issue with data center servers and networking devices, wireless is becoming embedded in many  components and devices such as printers, fax devices, copiers, scanners, communications devices, etc. There is the additional potential that wireless capabilities may become available in air conditioners, power centers, power controllers, lighting, alarm systems, etc. There is a potential that these capabilities could exist without organizational awareness. Selection drivedsawareness. It's better to perform the check than to make assumptions about what devices are in the IS.
-
-ECSB Supplemental Guidance as the C/CE relates to CSPs
-The application of this control enchancement should include all systems and devices in the CSP facility such as printers, fax devices, copiers, scanners, communications devices, air conditioners, power centers, power controllers, lighting, alarm systems,  etc. Wireless networking capabilities should be disabled when they are near or networked with systems supporting customer's services.
-
-Priority for adding to  FedRAMP-M: Moderate 
- (Low  L1/2)
-</p>
+               <p>Rationale for Selection: Best business practice for the protection of the CSP and customer alike " when not intended for use". This is an unanticipated vector for attack if present and active. While probably not an issue with data center servers and networking devices, wireless is becoming embedded in many components and devices such as printers, fax devices, copiers, scanners, communications devices, etc. There is the additional potential that wireless capabilities may become available in air conditioners, power centers, power controllers, lighting, alarm systems, etc. There is a potential that these capabilities could exist without organizational awareness. Selection drivedsawareness. It's better to perform the check than to make assumptions about what devices are in the IS.</p>
+               <p>ECSB Supplemental Guidance as the C/CE relates to CSPs The application of this control enchancement should include all systems and devices in the CSP facility such as printers, fax devices, copiers, scanners, communications devices, air conditioners, power centers, power controllers, lighting, alarm systems, etc. Wireless networking capabilities should be disabled when they are near or networked with systems supporting customer's services.</p>
+               <p>Priority for adding to FedRAMP-M: Moderate (Low L1/2)</p>
             </part>
          </augment>
       </alter>
@@ -5514,10 +5368,7 @@ Priority for adding to  FedRAMP-M: Moderate
       <alter subcontrol-id="at.3.3.">
          <augment>
             <part class="justification">
-               <p>NEED. High-impact systems warrant significantly elevated protection; one of these elevated protections is provided through simulated no-notice attacks that exercise users’ ability to detect and respond correctly to attempts to steal internal information in their possession.
-ANALYSIS. These controls are well understood and widely installed; COTS components keep implementation time and cost low.
-SAMPLE THREAT VECTORS.  Cybersecurity staff do not know how to monitor, respond, and manage complex enforcement systems and subsystems. Cybersecurity staff is not properly trained to understand how the controls are to operate. Staff does not understand the event alarms/logs. Staff is not able to protect from unauthorized disclosure. Staff is careless with handling data, or unwilling to follow the established security protocols, or willing to cut corners to save time. 
-RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Assessed, Auditable, Controlled, Monitored, Providing Good Data Stewardship, Assured, Competent, Confidential.</p>
+               <p>NEED. High-impact systems warrant significantly elevated protection; one of these elevated protections is provided through simulated no-notice attacks that exercise users’ ability to detect and respond correctly to attempts to steal internal information in their possession. ANALYSIS. These controls are well understood and widely installed; COTS components keep implementation time and cost low. SAMPLE THREAT VECTORS. Cybersecurity staff do not know how to monitor, respond, and manage complex enforcement systems and subsystems. Cybersecurity staff is not properly trained to understand how the controls are to operate. Staff does not understand the event alarms/logs. Staff is not able to protect from unauthorized disclosure. Staff is careless with handling data, or unwilling to follow the established security protocols, or willing to cut corners to save time. RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Assessed, Auditable, Controlled, Monitored, Providing Good Data Stewardship, Assured, Competent, Confidential.</p>
             </part>
          </augment>
       </alter>
@@ -5529,17 +5380,13 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Assessed, Auditable, Co
       <alter subcontrol-id="at.3.4.">
          <augment>
             <part class="justification">
-               <p>NEED. High-impact systems warrant significantly elevated protection.
-
-ANALYSIS. These controls are well understood and widely installed.
-
-THREAT VECTORS ADDRESSED.  Staff does not know how to monitor or manage complex systems in a way that supports effective management decision or control. Malicious actors manipulate the system to appear as if functioning normally when in reality, it is not. People fail to review event logs. People make unauthorized changes to event logger.  
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Assessed, Auditable, Controlled, Monitored, Providing Good Data Stewardship, Assured, Competent, Confidential.
-</p>
+               <p>NEED. High-impact systems warrant significantly elevated protection.</p>
+               <p>ANALYSIS. These controls are well understood and widely installed.</p>
+               <p>THREAT VECTORS ADDRESSED. Staff does not know how to monitor or manage complex systems in a way that supports effective management decision or control. Malicious actors manipulate the system to appear as if functioning normally when in reality, it is not. People fail to review event logs. People make unauthorized changes to event logger.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Assessed, Auditable, Controlled, Monitored, Providing Good Data Stewardship, Assured, Competent, Confidential.</p>
             </part>
             <part class="parameters">
-               <p>AT-3 (4) [malicious code indicators as defined by organization  incident policy/capability]</p>
+               <p>AT-3 (4) [malicious code indicators as defined by organization incident policy/capability]</p>
             </part>
          </augment>
       </alter>
@@ -5547,10 +5394,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Assessed, Auditable, Co
       <alter subcontrol-id="au.6.4.">
          <augment>
             <part class="justification">
-               <p>NEED. Due to the complexity of independent systems exchanging security-related monitoring data, and high-impact systems implemented in shared-service environments, the responsible organization needs a centralized capability that integrates these various data sources into a unified whole permitting central review and analysis of diverse log data relevant to security audits.
-ANALYSIS. This control permits analysts and auditors to focus on their primary duty of analyzing log data, and relieves them of the usual burden of discovery, collection, validation, aggregation, and indexing of large log datasets relevant to system security. Since these latter collection tasks have been automated under this control, less time and funding will be required to execute this core audit/analysis activity.
-SAMPLE THREAT VECTORS. Staff does not know how to monitor or manage complex systems in a way that supports effective management decision or control. Malicious actors manipulate the system to appear as if functioning normally, when it is not. People fail to review event logs. People make unauthorized changes to event logger." 
-RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored.</p>
+               <p>NEED. Due to the complexity of independent systems exchanging security-related monitoring data, and high-impact systems implemented in shared-service environments, the responsible organization needs a centralized capability that integrates these various data sources into a unified whole permitting central review and analysis of diverse log data relevant to security audits. ANALYSIS. This control permits analysts and auditors to focus on their primary duty of analyzing log data, and relieves them of the usual burden of discovery, collection, validation, aggregation, and indexing of large log datasets relevant to system security. Since these latter collection tasks have been automated under this control, less time and funding will be required to execute this core audit/analysis activity. SAMPLE THREAT VECTORS. Staff does not know how to monitor or manage complex systems in a way that supports effective management decision or control. Malicious actors manipulate the system to appear as if functioning normally, when it is not. People fail to review event logs. People make unauthorized changes to event logger." RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored.</p>
             </part>
          </augment>
       </alter>
@@ -5561,7 +5405,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored.</p>
                <p>This control is not part of the NIST high baseline and was added for FedRAMP.</p>
             </part>
             <part class="parameters">
-               <p>AU-6 (7) [information system process; role; user] </p>
+               <p>AU-6 (7) [information system process; role; user]</p>
             </part>
          </augment>
       </alter>
@@ -5569,13 +5413,9 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored.</p>
       <alter subcontrol-id="au.6.10.">
          <augment>
             <part class="justification">
-               <p>Rationale for Selection L3-6: In support of cyber security threat / incident response activities. Supports flexibility in auditing levels based on threat level. Supports CSP integration with DoD security architecture. The sensitivity of the information at  levels 3-6 warrents the adjustment of auditing levels based on threat level. 
-
-ECSB Supplemental Guidance as the C/CE relates to CSPs: This CE supports  cyber security threat / incident response activities and  flexibility in auditing levels based on threat level. This CE also supports CSP integration with DoD security architecture and the ability to respond to  USCYBERCOM and DoD CNDSP alerts and directives.  
-NOTE L1/2: The handling of alerts from US-CERT and other credible sources is sufficient to change auditing activities if this CE is tailored in via an SLA.
-NOTE: L3-6: The handling of alerts and directives from USCYBERCOM and DoD CNDSPs is required at these levels in addition to handling of alerts from US-CERTand other credible sources.    
-
-Priority for adding to  FedRAMP-M: High</p>
+               <p>Rationale for Selection L3-6: In support of cyber security threat / incident response activities. Supports flexibility in auditing levels based on threat level. Supports CSP integration with DoD security architecture. The sensitivity of the information at levels 3-6 warrents the adjustment of auditing levels based on threat level.</p>
+               <p>ECSB Supplemental Guidance as the C/CE relates to CSPs: This CE supports cyber security threat / incident response activities and flexibility in auditing levels based on threat level. This CE also supports CSP integration with DoD security architecture and the ability to respond to USCYBERCOM and DoD CNDSP alerts and directives. NOTE L1/2: The handling of alerts from US-CERT and other credible sources is sufficient to change auditing activities if this CE is tailored in via an SLA. NOTE: L3-6: The handling of alerts and directives from USCYBERCOM and DoD CNDSPs is required at these levels in addition to handling of alerts from US-CERTand other credible sources.</p>
+               <p>Priority for adding to FedRAMP-M: High</p>
             </part>
          </augment>
       </alter>
@@ -5598,9 +5438,7 @@ Priority for adding to  FedRAMP-M: High</p>
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CA-2 (3)-1 [any FedRAMP Accredited 3PAO]
-CA-2 (3)-1-2 [any FedRAMP Accredited 3PAO]
-CA-2 (3)-1-3 [the conditions of the JAB/AO in the FedRAMP Repository]</p>
+               <p>CA-2 (3)-1 [any FedRAMP Accredited 3PAO] CA-2 (3)-1-2 [any FedRAMP Accredited 3PAO] CA-2 (3)-1-3 [the conditions of the JAB/AO in the FedRAMP Repository]</p>
             </part>
          </augment>
       </alter>
@@ -5630,13 +5468,10 @@ CA-2 (3)-1-3 [the conditions of the JAB/AO in the FedRAMP Repository]</p>
       <alter subcontrol-id="ca.7.3.">
          <augment>
             <part class="justification">
-               <p>NEED. Organization requires independent data to validate that current security monitoring continues to target the right data, and that no gaps have opened between what is currently measured and what needs to be measured given the constantly evolving threat environment. In particular, the organization determines that security management will need trend analytics tuned to the current security climate to ensure the organization’s security officials maintain general situational awareness of larger security trends that may pose a threat to the organization’s high-impact systems fielded in shared-service environments.
-
-ANALYSIS. Implementation of this control should provide security management with a technical advantage by forcing them to maintain continual current awareness of the larger security threat-scape, rather than become lost in the lower-level details of specific security metrics. 
-
-SAMPLE THREAT VECTORS ADDRESSED. Stakeholders do not have the information they need to make sound decisions due to technology capability. System fails to send alarms, logs, and other pertinent data to the event manager. Control processes involve too many layers of review, concurrence, and revision to support effective and timely conveyance of relevant information to decision-makers. Monitoring not effectively linked to control processes. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Controlled</p>
+               <p>NEED. Organization requires independent data to validate that current security monitoring continues to target the right data, and that no gaps have opened between what is currently measured and what needs to be measured given the constantly evolving threat environment. In particular, the organization determines that security management will need trend analytics tuned to the current security climate to ensure the organization’s security officials maintain general situational awareness of larger security trends that may pose a threat to the organization’s high-impact systems fielded in shared-service environments.</p>
+               <p>ANALYSIS. Implementation of this control should provide security management with a technical advantage by forcing them to maintain continual current awareness of the larger security threat-scape, rather than become lost in the lower-level details of specific security metrics.</p>
+               <p>SAMPLE THREAT VECTORS ADDRESSED. Stakeholders do not have the information they need to make sound decisions due to technology capability. System fails to send alarms, logs, and other pertinent data to the event manager. Control processes involve too many layers of review, concurrence, and revision to support effective and timely conveyance of relevant information to decision-makers. Monitoring not effectively linked to control processes.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Controlled</p>
             </part>
          </augment>
       </alter>
@@ -5656,8 +5491,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Controlled</p>
       <alter subcontrol-id="cm.3.4.">
          <augment>
             <part class="justification">
-               <p>Rationale for De-Selection L1/2: The sensitivity of the information at these levels may not require a  information security representative to be a member of the  organization-defined configuration change control element.
-Rationale for Selection L3-6: This is a best business practice for the protection of the CSP and customer alike in that the security representative will be more aware of IA issues that configuration changes can introduce and he/she can more easily provide IA guidance for issues spotted.</p>
+               <p>Rationale for De-Selection L1/2: The sensitivity of the information at these levels may not require a information security representative to be a member of the organization-defined configuration change control element. Rationale for Selection L3-6: This is a best business practice for the protection of the CSP and customer alike in that the security representative will be more aware of IA issues that configuration changes can introduce and he/she can more easily provide IA guidance for issues spotted.</p>
             </part>
             <part class="parameters">
                <p>CM-3 (4) Configuration control board (CCB) or similar (as defined in CM-3)</p>
@@ -5672,13 +5506,9 @@ Rationale for Selection L3-6: This is a best business practice for the protectio
       <alter subcontrol-id="cm.3.6.">
          <augment>
             <part class="justification">
-               <p>Rationale for SA L1: Cryptographic mechanisms are only required at this level for priviledged user (system administrator / SA) access control and the transport of privileged commands or configuration files. Not the publicly released information served at this level. 
-Rationale for Selection L2-6: Best practice. Supplemental guidance for this CE refers primarily to the processes surrounding the management of the cryptographic mechanisms used. These processes need to be under change management that addresses security concerns to ensure they remain secure.
-
-CE supplemental guidance.
-Regardless of the cryptographic means employed (e.g., public key, private key, shared secrets), organizations ensure that there are processes and procedures in place to effectively manage those means. For example, if devices use certificates as a basis for identification and authentication, there needs to be a process in place to address the expiration of those certificates. 
-
-Priority for adding to  FedRAMP-M: High</p>
+               <p>Rationale for SA L1: Cryptographic mechanisms are only required at this level for priviledged user (system administrator / SA) access control and the transport of privileged commands or configuration files. Not the publicly released information served at this level. Rationale for Selection L2-6: Best practice. Supplemental guidance for this CE refers primarily to the processes surrounding the management of the cryptographic mechanisms used. These processes need to be under change management that addresses security concerns to ensure they remain secure.</p>
+               <p>CE supplemental guidance. Regardless of the cryptographic means employed (e.g., public key, private key, shared secrets), organizations ensure that there are processes and procedures in place to effectively manage those means. For example, if devices use certificates as a basis for identification and authentication, there needs to be a process in place to address the expiration of those certificates.</p>
+               <p>Priority for adding to FedRAMP-M: High</p>
             </part>
             <part class="parameters">
                <p>CM-3 (6) All security safeguards that rely on cryptography</p>
@@ -5696,7 +5526,7 @@ Priority for adding to  FedRAMP-M: High</p>
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>CM-5 (5) (b) [at least quarterly] </p>
+               <p>CM-5 (5) (b) [at least quarterly]</p>
             </part>
          </augment>
       </alter>
@@ -5720,10 +5550,7 @@ Priority for adding to  FedRAMP-M: High</p>
       <alter subcontrol-id="cm.11.1.">
          <augment>
             <part class="justification">
-               <p>NEED. High-impact systems will require special measures to ensure users cannot place the overall system at risk by installing unauthorized software. This control supports that need.
-ANALYSIS. Implementation of these controls is well understood, and relies on capabilities provided in COTS operating systems.
-SAMPLE THREAT VECTORS.  The system executes malicious and harmful software. Software updates could render the system unstable or cause it to function incorrectly. Software is not designed with adequate safeguards to protect PII and other sensitive information. Users could make mistakes in following policy. Users could intentionally install unapproved/unvetted software. 
-RELEVANT SECURITY CONTROL ATTRIBUTES. Quality Assured, Substantiated  Integrity, Maintainable, Testable, Configuration Managed, Change Managed, Supported, Assessed, Auditable, Authorized, Regulated, Enforcement, Controlled, Reliable, Providing Good Data Stewardship, Assured, Confidential, Access-Controlled</p>
+               <p>NEED. High-impact systems will require special measures to ensure users cannot place the overall system at risk by installing unauthorized software. This control supports that need. ANALYSIS. Implementation of these controls is well understood, and relies on capabilities provided in COTS operating systems. SAMPLE THREAT VECTORS. The system executes malicious and harmful software. Software updates could render the system unstable or cause it to function incorrectly. Software is not designed with adequate safeguards to protect PII and other sensitive information. Users could make mistakes in following policy. Users could intentionally install unapproved/unvetted software. RELEVANT SECURITY CONTROL ATTRIBUTES. Quality Assured, Substantiated Integrity, Maintainable, Testable, Configuration Managed, Change Managed, Supported, Assessed, Auditable, Authorized, Regulated, Enforcement, Controlled, Reliable, Providing Good Data Stewardship, Assured, Confidential, Access-Controlled</p>
             </part>
          </augment>
       </alter>
@@ -5748,7 +5575,7 @@ GROUP AUTHENTICATION</prop>
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>IA-4 (4) [contractors; foreign nationals] </p>
+               <p>IA-4 (4) [contractors; foreign nationals]</p>
             </part>
          </augment>
       </alter>
@@ -5766,8 +5593,7 @@ GROUP AUTHENTICATION</prop>
                <p>IA-5 (4) [complexity as identified in IA-5 (1) Control Enhancement Part (a)]</p>
             </part>
             <part class="additional">
-               <p>IA-5 (4) Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.
-</p>
+               <p>IA-5 (4) Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.</p>
             </part>
          </augment>
       </alter>
@@ -5795,10 +5621,7 @@ GROUP AUTHENTICATION</prop>
       <alter subcontrol-id="ia.5.8.">
          <augment>
             <part class="justification">
-               <p>NEED. In those cases where an organization’s user accounts authenticate to more than one system, and at least one of those systems is a high-impact system implemented in a shared-service environment, then this control is warranted as a baseline capability to guard against loss of high-impact, sensitive information.
-ANALYSIS. Organizations can use COTS tools and techniques to implement this control in many ways. Agencies should be prepared to document their plan and approach to this control technique.
-THREAT VECTORS ADDRESSED. A user’s account password is cracked, permitting attackers to identify all systems to which the user has access, and to gain access to the information in those systems. 
-RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
+               <p>NEED. In those cases where an organization’s user accounts authenticate to more than one system, and at least one of those systems is a high-impact system implemented in a shared-service environment, then this control is warranted as a baseline capability to guard against loss of high-impact, sensitive information. ANALYSIS. Organizations can use COTS tools and techniques to implement this control in many ways. Agencies should be prepared to document their plan and approach to this control technique. THREAT VECTORS ADDRESSED. A user’s account password is cracked, permitting attackers to identify all systems to which the user has access, and to gain access to the information in those systems. RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
             </part>
             <part class="parameters">
                <p>IA-5 (8) [different authenticators on different systems]</p>
@@ -5813,13 +5636,9 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
       <alter subcontrol-id="ia.5.13.">
          <augment>
             <part class="justification">
-               <p>Rationale for Selection:  Best practice for authenticated web services and best business practice for the protection of the CSP and customer alike.  ECSB sees this as a significant value add toward the protection of customer accounts on SaaS or customer service / managent interfaces/portals.
-L1 Rationale for SA: No authenticators are required for user access to public informationl. Info sensitivity does not warrant. However this CE would be required priviledged user access to manage the system server(s) containing public information.
-
-ECSB Supplemental Guidance as the C/CE relates to CSPs: CSP must minimally implement this control enhancement on all SaaS offerings and customer service / managent interfaces. The time period can be negotiated in the SLA. 
-NOTE: while the browser or other client cashes the authenticator, the server must enforce its expiration if the client does not.
-
-Priority for adding to  FedRAMP-M: Low</p>
+               <p>Rationale for Selection: Best practice for authenticated web services and best business practice for the protection of the CSP and customer alike. ECSB sees this as a significant value add toward the protection of customer accounts on SaaS or customer service / managent interfaces/portals. L1 Rationale for SA: No authenticators are required for user access to public informationl. Info sensitivity does not warrant. However this CE would be required priviledged user access to manage the system server(s) containing public information.</p>
+               <p>ECSB Supplemental Guidance as the C/CE relates to CSPs: CSP must minimally implement this control enhancement on all SaaS offerings and customer service / managent interfaces. The time period can be negotiated in the SLA. NOTE: while the browser or other client cashes the authenticator, the server must enforce its expiration if the client does not.</p>
+               <p>Priority for adding to FedRAMP-M: Low</p>
             </part>
          </augment>
       </alter>
@@ -5831,13 +5650,10 @@ Priority for adding to  FedRAMP-M: Low</p>
       <alter subcontrol-id="ir.4.2.">
          <augment>
             <part class="justification">
-               <p>NEED. Organization requires near real-time subsystem reconfiguration for high-impact systems, especially those deployed wholly or partially into shared-service environments. This dynamic reconfiguration is required for core infrastructure components such as routers, firewalls, messaging gateways, or access control/authentication servers, especially when these core components are under cyber-attack.
-
-ANALYSIS. These critical cyber controls are well understood, and to some extent their automated capability has been established. Other aspects still require human decisions. Since this technology area is rapidly changing to meet new cyber-threat scenarios, it is expected that implementation of this control will be subject to significant change for the foreseeable future. Even so, its technology advantages are clear, especially for high-impact systems infrastructure.
-
-SAMPLE THREAT VECTORS. System does not have error-correcting or self-recovery capabilities. The system is not designed to allow for quick remediation of threats that will impact the system. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Survivable, Absorptive, Adaptive, Restorable</p>
+               <p>NEED. Organization requires near real-time subsystem reconfiguration for high-impact systems, especially those deployed wholly or partially into shared-service environments. This dynamic reconfiguration is required for core infrastructure components such as routers, firewalls, messaging gateways, or access control/authentication servers, especially when these core components are under cyber-attack.</p>
+               <p>ANALYSIS. These critical cyber controls are well understood, and to some extent their automated capability has been established. Other aspects still require human decisions. Since this technology area is rapidly changing to meet new cyber-threat scenarios, it is expected that implementation of this control will be subject to significant change for the foreseeable future. Even so, its technology advantages are clear, especially for high-impact systems infrastructure.</p>
+               <p>SAMPLE THREAT VECTORS. System does not have error-correcting or self-recovery capabilities. The system is not designed to allow for quick remediation of threats that will impact the system.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Survivable, Absorptive, Adaptive, Restorable</p>
             </part>
             <part class="parameters">
                <p>IR-4 (2) [all network, data storage, and computing devices]</p>
@@ -5856,13 +5672,10 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Survivable, Absorptive, Adaptive, Restorab
       <alter subcontrol-id="ir.4.3.">
          <augment>
             <part class="justification">
-               <p>NEED. Due to the direct connection between system function and critical mission/business capability, the system requires Continuity-of-Operations (COOP) controls.
-
-ANALYSIS. These critical cyber controls are well understood, and to some extent their automated capability has been established. Other aspects still require human decisions. Since this technology area is rapidly changing to meet new cyber-threat scenarios and also changes in subsystem technology, it is expected that implementation of this control will be subject to significant change for the foreseeable future. Even so, its technology advantages are fundamental, especially for high-impact systems infrastructure.
-
-SAMPLE THREAT VECTORS. The system does not have error-correcting or self-recovery capabilities. The system is not designed to allow for quick remediation of threats that will impact the system. Time does not allow for the design in error handling, self-recovery, or to capitalize on system diversity to restore a system.  Also, the organization lacks the expertise to develop or implement a plan for restoring system. A malicious change may be implemented to counter the ability to restore the system. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Survivable, Absorptive, Adaptable, Restorable</p>
+               <p>NEED. Due to the direct connection between system function and critical mission/business capability, the system requires Continuity-of-Operations (COOP) controls.</p>
+               <p>ANALYSIS. These critical cyber controls are well understood, and to some extent their automated capability has been established. Other aspects still require human decisions. Since this technology area is rapidly changing to meet new cyber-threat scenarios and also changes in subsystem technology, it is expected that implementation of this control will be subject to significant change for the foreseeable future. Even so, its technology advantages are fundamental, especially for high-impact systems infrastructure.</p>
+               <p>SAMPLE THREAT VECTORS. The system does not have error-correcting or self-recovery capabilities. The system is not designed to allow for quick remediation of threats that will impact the system. Time does not allow for the design in error handling, self-recovery, or to capitalize on system diversity to restore a system. Also, the organization lacks the expertise to develop or implement a plan for restoring system. A malicious change may be implemented to counter the ability to restore the system.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Survivable, Absorptive, Adaptable, Restorable</p>
             </part>
          </augment>
       </alter>
@@ -5870,10 +5683,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Survivable, Absorptive, Adaptable, Restora
       <alter subcontrol-id="ir.4.6.">
          <augment>
             <part class="justification">
-               <p>NEED. High-impact systems will require special measures to ensure security incidents are correctly and effectively handled in a timely manner. This high-level control supports that need, and is therefore warranted as a baseline for high-impact systems in shared-service environments.
-ANALYSIS. Implementation of this general control is well understood among Departments and Agencies. However, it may require special funding and time to implement in a shared service environment, where response roles and responsibilities demand vigilant analysis and definition.
-SAMPLE THREAT VECTORS.  Insiders gain access to information for which they have no authorization. Insiders push sensitive information to outside networks not authorized to receive it. Insiders violate agency information-security policies. Insider actions are not monitored. 
-RELEVANT SECURITY CONTROL ATTRIBUTES. Agile, Owned, Enforcement</p>
+               <p>NEED. High-impact systems will require special measures to ensure security incidents are correctly and effectively handled in a timely manner. This high-level control supports that need, and is therefore warranted as a baseline for high-impact systems in shared-service environments. ANALYSIS. Implementation of this general control is well understood among Departments and Agencies. However, it may require special funding and time to implement in a shared service environment, where response roles and responsibilities demand vigilant analysis and definition. SAMPLE THREAT VECTORS. Insiders gain access to information for which they have no authorization. Insiders push sensitive information to outside networks not authorized to receive it. Insiders violate agency information-security policies. Insider actions are not monitored. RELEVANT SECURITY CONTROL ATTRIBUTES. Agile, Owned, Enforcement</p>
             </part>
          </augment>
       </alter>
@@ -5889,7 +5699,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Agile, Owned, Enforcement</p>
       <alter subcontrol-id="ir.4.8.">
          <augment>
             <part class="justification">
-               <p>This control was recommended ecommended by the High Baseline Tiger Team. </p>
+               <p>This control was recommended ecommended by the High Baseline Tiger Team.</p>
             </part>
             <part class="parameters">
                <p>IR-4 (8) [external organizations including consumer incident responders and network defenders and the appropriate CIRT/CERT (such as US-CERT, DOD CERT, IC CERT)]</p>
@@ -5975,11 +5785,9 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Agile, Owned, Enforcement</p>
       <alter subcontrol-id="ma.4.6.">
          <augment>
             <part class="justification">
-               <p>Rationale for Selection:    Best practice business practice for the protection of the CSP and customer alike.  Protects against unauthorized access and compromise of the CSP infrastructure. See Supplemental Guidance
-
-ECSB Supplemental Guidance as the C/CE relates to CSPs:  While AC-17(2) is similar to this CE and implements cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions, System configuration, maintenance and diagnostic communications can be considered sensitive information and it is in DoD. Maintaining the confidrntiality and integrity of nonlocal maintenance and diagnostic communications helps maintain the health of the system, prevents unauthorized access from sniffing and MITM atacks, etc. While beneficial this selection may not be required for nonlocal maintenance and diagnostic communications over the CSP's private network and particularly if that network is out of band. Encryption is required if such communications are over a network external to the CSP (e.g., the Internet). 
-
-Priority for adding to  FedRAMP-M: High</p>
+               <p>Rationale for Selection: Best practice business practice for the protection of the CSP and customer alike. Protects against unauthorized access and compromise of the CSP infrastructure. See Supplemental Guidance</p>
+               <p>ECSB Supplemental Guidance as the C/CE relates to CSPs: While AC-17(2) is similar to this CE and implements cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions, System configuration, maintenance and diagnostic communications can be considered sensitive information and it is in DoD. Maintaining the confidrntiality and integrity of nonlocal maintenance and diagnostic communications helps maintain the health of the system, prevents unauthorized access from sniffing and MITM atacks, etc. While beneficial this selection may not be required for nonlocal maintenance and diagnostic communications over the CSP's private network and particularly if that network is out of band. Encryption is required if such communications are over a network external to the CSP (e.g., the Internet).</p>
+               <p>Priority for adding to FedRAMP-M: High</p>
             </part>
          </augment>
       </alter>
@@ -6032,8 +5840,7 @@ Priority for adding to  FedRAMP-M: High</p>
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>RA-5 (8) Requirements: This enhancement is required for all high vulnerability scan findings. 
-Guidance: While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
+               <p>RA-5 (8) Requirements: This enhancement is required for all high vulnerability scan findings. Guidance: While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
             </part>
          </augment>
       </alter>
@@ -6041,16 +5848,13 @@ Guidance: While scanning tools may label findings as high or critical, the inten
       <alter subcontrol-id="ra.5.10.">
          <augment>
             <part class="justification">
-               <p>NEED. Organizations commonly run vulnerability scanning tools against diverse enterprise systems and subsystems. These tools are often attuned to the specific subsystems, and often provided by different manufacturers. Because there is no single-vendor consolidation of all scanning tools, organizations need to correlate the outputs of these tools in order to triangulate on potential threats that may be related, or identical at their source. When the security impact is high a shared-service environment may increase the number of independent scanning tools, implementation of this control is warranted.
-
-ANALYSIS. Although this control is well understood by vendors, its implementation takes many forms, depending on the scanning tools adopted by a particular organization. 
-
-SAMPLE THREAT VECTORS. Different scanning tools discover low-impact vulnerabilities in multiple subsystems of a system. Considered individually, none of them warrants immediate action,; yet when considered together, they constitute a significant attack pattern. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supported, Assessed, Monitored</p>
+               <p>NEED. Organizations commonly run vulnerability scanning tools against diverse enterprise systems and subsystems. These tools are often attuned to the specific subsystems, and often provided by different manufacturers. Because there is no single-vendor consolidation of all scanning tools, organizations need to correlate the outputs of these tools in order to triangulate on potential threats that may be related, or identical at their source. When the security impact is high a shared-service environment may increase the number of independent scanning tools, implementation of this control is warranted.</p>
+               <p>ANALYSIS. Although this control is well understood by vendors, its implementation takes many forms, depending on the scanning tools adopted by a particular organization.</p>
+               <p>SAMPLE THREAT VECTORS. Different scanning tools discover low-impact vulnerabilities in multiple subsystems of a system. Considered individually, none of them warrants immediate action,; yet when considered together, they constitute a significant attack pattern.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supported, Assessed, Monitored</p>
             </part>
             <part class="additional">
-               <p>RA-5 (10) Guidance: If multiple tools are not used, this control is not applicable. </p>
+               <p>RA-5 (10) Guidance: If multiple tools are not used, this control is not applicable.</p>
             </part>
          </augment>
       </alter>
@@ -6068,8 +5872,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supp
                <p>SA-4 (8) [at least the minimum requirement as defined in control CA-7]</p>
             </part>
             <part class="additional">
-               <p>SA-4 (8) Guidance: CSP must use the same security standards regardless of where the system component or information system service is acquired.
-</p>
+               <p>SA-4 (8) Guidance: CSP must use the same security standards regardless of where the system component or information system service is acquired.</p>
             </part>
          </augment>
       </alter>
@@ -6138,8 +5941,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supp
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p> SA-11 (1) Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.
-</p>
+               <p>SA-11 (1) Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
             </part>
          </augment>
       </alter>
@@ -6158,8 +5960,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supp
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p> SA-11 (8) Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.
-</p>
+               <p>SA-11 (8) Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
             </part>
          </augment>
       </alter>
@@ -6183,15 +5984,10 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supp
       <alter subcontrol-id="sc.7.10.">
          <augment>
             <part class="justification">
-               <p>NEED. High-impact systems warrant careful attention to scenarios associated with exfiltration of sensitive organizational information. Different systems and implementation will trigger different scenarios, but regardless of the specific system context, organizations are warranted in establishing this control for high-impact systems with subsystems deployed into shared-service environments. 
-
-ANALYSIS. Organizations should devote careful attention to design considerations relative to this control. 
-
-SAMPLE THREAT VECTORS. Authorized processes push very large volumes of data to external networks. Internal devices send address/status/security information to external networks. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES: Integrity-Assured, Absorptive, Survivable, Adaptive, Agile, Auditable, Monitored, Controlled, Data Controllable, Access-Controlled
-
-</p>
+               <p>NEED. High-impact systems warrant careful attention to scenarios associated with exfiltration of sensitive organizational information. Different systems and implementation will trigger different scenarios, but regardless of the specific system context, organizations are warranted in establishing this control for high-impact systems with subsystems deployed into shared-service environments.</p>
+               <p>ANALYSIS. Organizations should devote careful attention to design considerations relative to this control.</p>
+               <p>SAMPLE THREAT VECTORS. Authorized processes push very large volumes of data to external networks. Internal devices send address/status/security information to external networks.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES: Integrity-Assured, Absorptive, Survivable, Adaptive, Agile, Auditable, Monitored, Controlled, Data Controllable, Access-Controlled</p>
             </part>
          </augment>
       </alter>
@@ -6210,7 +6006,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES: Integrity-Assured, Absorptive, Survivable,
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SC-7(12)-1 [Host Intrusion Prevention System (HIPS), Host Intrusion Detection System (HIDS), or minimally a host-based firewall] </p>
+               <p>SC-7(12)-1 [Host Intrusion Prevention System (HIPS), Host Intrusion Detection System (HIDS), or minimally a host-based firewall]</p>
             </part>
          </augment>
       </alter>
@@ -6225,9 +6021,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES: Integrity-Assured, Absorptive, Survivable,
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="additional">
-               <p>SC-7 (13) Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.
-Guidance: Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers,  centralized audit log servers etc.
-</p>
+               <p>SC-7 (13) Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets. Guidance: Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers, centralized audit log servers etc.</p>
             </part>
          </augment>
       </alter>
@@ -6239,13 +6033,10 @@ Guidance: Examples include: information security tools, mechanisms, and support 
       <alter subcontrol-id="sc.7.20.">
          <augment>
             <part class="justification">
-               <p>NEED. High-impact systems warrant careful attention to situations where specific sources or methods become suspect. Such situations can involve specific user accounts, messages, message payloads, data, applications, or even entire subsystems. Under these circumstances, a capability for dynamic segregation is highly justified. 
-
-ANALYSIS. Isolation techniques are well understood in the cyber market, and constantly evolving. Example techniques include honey pots and honey nets. Both techniques can isolate a user, an autonomous application, or an entire subsystem.
-
-SAMPLE THREAT VECTORS. Anomalous user behavior is detected Messages arrive from suspect domains. Messages arrive with suspect attachments. Applications begin to behave anomalously. Subsystems begin moving data anomalously. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Absorptive, Survivable, Adaptive, Agile, Auditable, Monitored, Controlled, Data Controllable, Access-Controlled</p>
+               <p>NEED. High-impact systems warrant careful attention to situations where specific sources or methods become suspect. Such situations can involve specific user accounts, messages, message payloads, data, applications, or even entire subsystems. Under these circumstances, a capability for dynamic segregation is highly justified.</p>
+               <p>ANALYSIS. Isolation techniques are well understood in the cyber market, and constantly evolving. Example techniques include honey pots and honey nets. Both techniques can isolate a user, an autonomous application, or an entire subsystem.</p>
+               <p>SAMPLE THREAT VECTORS. Anomalous user behavior is detected Messages arrive from suspect domains. Messages arrive with suspect attachments. Applications begin to behave anomalously. Subsystems begin moving data anomalously.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Absorptive, Survivable, Adaptive, Agile, Auditable, Monitored, Controlled, Data Controllable, Access-Controlled</p>
             </part>
          </augment>
       </alter>
@@ -6258,8 +6049,7 @@ SYMMETRIC KEYS</prop>
                <p>Included in FedRAMP Moderate Baseline, Rev 4</p>
             </part>
             <part class="parameters">
-               <p>SC-12 (2) [NIST FIPS-compliant]
-</p>
+               <p>SC-12 (2) [NIST FIPS-compliant]</p>
             </part>
          </augment>
       </alter>
@@ -6277,13 +6067,10 @@ ASYMMETRIC KEYS</prop>
       <alter subcontrol-id="sc.23.1.">
          <augment>
             <part class="justification">
-               <p>Rationale for Selection:    Rationale for Selection for SA L1: At L1 this CE is only applicable to privileged user sessions.
-
-Rationale for Selection L1-6: Best Practice; APT. This CE  mitigates the threat/vulnerability inherant in authenticated sessions whereby If an adversary captures a session identifier that remains valid after the session is terminated, the adversary could use it to reinitiate the session thus gaining unauthorized access to CSP and CSP customer resources and information/data.
-
-ECSB Supplemental Guidance as the C/CE relates to CSPs:  If an adversary captures a session identifier that remains valid after the session is terminated, the adversary could use it to reinitiate the session thus gaining unauthorized access to CSP and/or CSP customer resources and information/data. While unnessary for user sessions at L1, this enhancement is selected for System Administrator sessions. 
-
-Priority for adding to  FedRAMP-M: High</p>
+               <p>Rationale for Selection: Rationale for Selection for SA L1: At L1 this CE is only applicable to privileged user sessions.</p>
+               <p>Rationale for Selection L1-6: Best Practice; APT. This CE mitigates the threat/vulnerability inherant in authenticated sessions whereby If an adversary captures a session identifier that remains valid after the session is terminated, the adversary could use it to reinitiate the session thus gaining unauthorized access to CSP and CSP customer resources and information/data.</p>
+               <p>ECSB Supplemental Guidance as the C/CE relates to CSPs: If an adversary captures a session identifier that remains valid after the session is terminated, the adversary could use it to reinitiate the session thus gaining unauthorized access to CSP and/or CSP customer resources and information/data. While unnessary for user sessions at L1, this enhancement is selected for System Administrator sessions.</p>
+               <p>Priority for adding to FedRAMP-M: High</p>
             </part>
          </augment>
       </alter>
@@ -6342,13 +6129,10 @@ Priority for adding to  FedRAMP-M: High</p>
       <alter subcontrol-id="si.4.11.">
          <augment>
             <part class="justification">
-               <p>NEED. When a high-impact system is implemented in a shared-service environment, organizations should ensure their sensitive data is properly protected against classic threats to the confidentiality of its sensitive information. This control partially meets that need.
-
-ANALYSIS. The tools and techniques for implementing this monitoring control are now well understood and embedded in COTS operating systems and software.
-
-SAMPLE THREAT VECTORS. Large outbound file transfers execute without being detected. External malware network sites are accessed from within the organization without detection. Network sessions remain connected for long periods of time without detection. Esoteric protocols are active and undetected on ports not defined by the organization. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored</p>
+               <p>NEED. When a high-impact system is implemented in a shared-service environment, organizations should ensure their sensitive data is properly protected against classic threats to the confidentiality of its sensitive information. This control partially meets that need.</p>
+               <p>ANALYSIS. The tools and techniques for implementing this monitoring control are now well understood and embedded in COTS operating systems and software.</p>
+               <p>SAMPLE THREAT VECTORS. Large outbound file transfers execute without being detected. External malware network sites are accessed from within the organization without detection. Network sessions remain connected for long periods of time without detection. Esoteric protocols are active and undetected on ports not defined by the organization.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored</p>
             </part>
          </augment>
       </alter>
@@ -6376,13 +6160,10 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored</p>
       <alter subcontrol-id="si.4.18.">
          <augment>
             <part class="justification">
-               <p>NEED. When a high-impact system is implemented in a shared-service environment, organizations should ensure their sensitive data is properly protected against classic threats to the confidentiality of sensitive information. This control partially meets that need.
-
-ANALYSIS. The tools and techniques for implementing this monitoring control are now well understood, and embedded in COTS operating systems and software.
-
-SAMPLE THREAT VECTORS. Large outbound files are disguised to transfer without being detected. Communications with external malware network sites are embedded to avoid detection. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Substantiated Integrity, Monitored, Assessed</p>
+               <p>NEED. When a high-impact system is implemented in a shared-service environment, organizations should ensure their sensitive data is properly protected against classic threats to the confidentiality of sensitive information. This control partially meets that need.</p>
+               <p>ANALYSIS. The tools and techniques for implementing this monitoring control are now well understood, and embedded in COTS operating systems and software.</p>
+               <p>SAMPLE THREAT VECTORS. Large outbound files are disguised to transfer without being detected. Communications with external malware network sites are embedded to avoid detection.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Substantiated Integrity, Monitored, Assessed</p>
             </part>
          </augment>
       </alter>
@@ -6398,13 +6179,10 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Substantiated Integrity, Monitored, Assess
       <alter subcontrol-id="si.4.19.">
          <augment>
             <part class="justification">
-               <p>Rationale for De-Selection L1-3: The information sensitivity at these levels does not seem to warrant implementation of this CE. The costs for instituting fine-grained monitoring per individual far may outweigh the risks 
-
-Rationale for selection L4-6: SP Insider Threat mitigation; The information sensitivity at these levels warrants implementation of this CE.Best business practice for the protection of the CSP and customer alike.  This enhancement works in conjunction with AC-2 (13) account disablement for such individuals and IR-4 (6). 
-
-ECSB Supplemental Guidance as the C/CE relates to CSPs:  This enhancement works in conjunction with or opposite of AC-2 (13) which requires acount disablement within a specific time frame of discovering or identifying an individual posing a significant insider threat. In some instances the best action is not to terminate the individual's account, but rather to monitor their actions. This allows for the ability to collect evidence (for prosecution) and obtain insight into the TTPs that they may be using  and others they may working with. Termination of the account is often best left as a final act.
-
-Priority for adding to  FedRAMP-M: Moderate</p>
+               <p>Rationale for De-Selection L1-3: The information sensitivity at these levels does not seem to warrant implementation of this CE. The costs for instituting fine-grained monitoring per individual far may outweigh the risks</p>
+               <p>Rationale for selection L4-6: SP Insider Threat mitigation; The information sensitivity at these levels warrants implementation of this CE.Best business practice for the protection of the CSP and customer alike. This enhancement works in conjunction with AC-2 (13) account disablement for such individuals and IR-4 (6).</p>
+               <p>ECSB Supplemental Guidance as the C/CE relates to CSPs: This enhancement works in conjunction with or opposite of AC-2 (13) which requires acount disablement within a specific time frame of discovering or identifying an individual posing a significant insider threat. In some instances the best action is not to terminate the individual's account, but rather to monitor their actions. This allows for the ability to collect evidence (for prosecution) and obtain insight into the TTPs that they may be using and others they may working with. Termination of the account is often best left as a final act.</p>
+               <p>Priority for adding to FedRAMP-M: Moderate</p>
             </part>
          </augment>
       </alter>
@@ -6417,11 +6195,9 @@ Priority for adding to  FedRAMP-M: Moderate</p>
          <augment>
             <prop class="profile-title">PRIVILEGED USER</prop>
             <part class="justification">
-               <p>Rationale for Selection: Best business practice for the protection of the CSP and customer alike.  Given the scale of a cloud, the possible harm by an malicious insider is greatly magnified over normal systems. 
-
-ECSB Supplemental Guidance as the C/CE relates to CSPs:  his CE is on a par with SI-4 (9), IR-4 (6) and the various other insider threat Cs/CEs. Supports the mitigation of insider threat from those that can do the most damage. While CSPs typically claim they only have privileged users in their infrastructure (other than customers), this CEadds value for privilege users that have higher privilege than others. These higher privileged users should be subject to additional monitoring. 
-
-Priority for adding to  FedRAMP-M: High</p>
+               <p>Rationale for Selection: Best business practice for the protection of the CSP and customer alike. Given the scale of a cloud, the possible harm by an malicious insider is greatly magnified over normal systems.</p>
+               <p>ECSB Supplemental Guidance as the C/CE relates to CSPs: his CE is on a par with SI-4 (9), IR-4 (6) and the various other insider threat Cs/CEs. Supports the mitigation of insider threat from those that can do the most damage. While CSPs typically claim they only have privileged users in their infrastructure (other than customers), this CEadds value for privilege users that have higher privilege than others. These higher privileged users should be subject to additional monitoring.</p>
+               <p>Priority for adding to FedRAMP-M: High</p>
             </part>
          </augment>
       </alter>
@@ -6437,13 +6213,10 @@ Priority for adding to  FedRAMP-M: High</p>
       <alter subcontrol-id="si.4.22.">
          <augment>
             <part class="justification">
-               <p>NEED. When a high-impact system is implemented across networks in a shared-service environment, organizations should monitor network services to protect against unauthorized services capable of exfiltrating sensitive information. This control meets that monitoring need.
-
-ANALYSIS. The tools and techniques for implementing this monitoring control are well understood, and embedded in COTS operating systems and software.
-
-SAMPLE THREAT VECTORS. Systems daemons and application services running in the background, exfiltrating sensitive information to external networks. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
+               <p>NEED. When a high-impact system is implemented across networks in a shared-service environment, organizations should monitor network services to protect against unauthorized services capable of exfiltrating sensitive information. This control meets that monitoring need.</p>
+               <p>ANALYSIS. The tools and techniques for implementing this monitoring control are well understood, and embedded in COTS operating systems and software.</p>
+               <p>SAMPLE THREAT VECTORS. Systems daemons and application services running in the background, exfiltrating sensitive information to external networks.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
             </part>
          </augment>
       </alter>
@@ -6467,13 +6240,10 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
       <alter subcontrol-id="si.4.24.">
          <augment>
             <part class="justification">
-               <p>NEED. When a high-impact system is implemented across networks in a shared-service environment, organizations should aggressively monitor for symptoms that system integrity has been compromised. This control addresses that monitoring need.
-
-ANALYSIS. The tools and techniques for implementing this monitoring control are no longer unusual, but their implementation still requires careful initial analysis of tools, standards, and sources for indicators of compromise (IOC) data. This capability is not a simple matter of installing COTS software and watching for alerts. Rather, it requires staff to maintain a keen understanding of the threat-scape in order to properly understand the alerts coming from the IOC subsystem.
-
-SAMPLE THREAT VECTORS. Temporary files appear but are not associated with any known system processes; independent security services warn of new surveillance techniques appearing globally; evidence of those new techniques appears in an organization’s event logs. Reports on the payload of a new botnet indicate that the system has been touched by the botnet. 
-
-RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
+               <p>NEED. When a high-impact system is implemented across networks in a shared-service environment, organizations should aggressively monitor for symptoms that system integrity has been compromised. This control addresses that monitoring need.</p>
+               <p>ANALYSIS. The tools and techniques for implementing this monitoring control are no longer unusual, but their implementation still requires careful initial analysis of tools, standards, and sources for indicators of compromise (IOC) data. This capability is not a simple matter of installing COTS software and watching for alerts. Rather, it requires staff to maintain a keen understanding of the threat-scape in order to properly understand the alerts coming from the IOC subsystem.</p>
+               <p>SAMPLE THREAT VECTORS. Temporary files appear but are not associated with any known system processes; independent security services warn of new surveillance techniques appearing globally; evidence of those new techniques appears in an organization’s event logs. Reports on the payload of a new botnet indicate that the system has been touched by the botnet.</p>
+               <p>RELEVANT SECURITY CONTROL ATTRIBUTES. Monitored, Assessed</p>
             </part>
          </augment>
       </alter>

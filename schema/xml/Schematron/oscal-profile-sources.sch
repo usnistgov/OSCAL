@@ -49,8 +49,8 @@
       <sch:let name="explicit-calls" value="oscal:include/oscal:call"/>
       <sch:let name="unresolved"     value="oscal:resolve(document(@href))"/>
       <sch:let name="excluded" value="($unresolved//(oscal:control|oscal:subcontrol|oscal:component)) except key('element-by-id',$explicit-calls/(@control-id|@subcontrol-id),$unresolved)"/>
-      <sch:report role="warning" test="exists($explicit-calls) and exists($excluded) and count($excluded) lt 4">This profile calls controls by @id, but it could use include/all, excluding only <xsl:value-of select="$excluded/@id" separator=", "/></sch:report>
-      <sch:report role="warning" test="exists($explicit-calls) and empty($excluded)">This profile calls controls by @id, but it calls all the controls in the source catalog or profile, without excluding any</sch:report>
+      <sch:report role="warning" test="exists($explicit-calls[2]) and exists($excluded) and count($excluded) lt 4">This invocation could use include/all, excluding only <xsl:value-of select="$excluded/@id" separator=", "/> (instead of <sch:value-of select="count($explicit-calls)"/> include/call elements)</sch:report>
+      <sch:report role="warning" test="exists($explicit-calls[2]) and empty($excluded)">This invocation could use include/all (instead of <sch:value-of select="count($explicit-calls)"/> include/call elements): it calls all the controls in <sch:value-of select="@href"/> without excluding any</sch:report>
       
       
       <sch:let name="controls"            value="$resolved//(oscal:control | oscal:component[contains-token(@class,'control')] )"/>

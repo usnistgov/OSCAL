@@ -8,7 +8,9 @@ https://www.fedramp.gov/resources/documents-2016/
 
 The three spreadsheets we used for LOW, MODERATE and HIGH are archived in the `sources` directory.
 
-Before hand-editing, the OSCAL profiles in this subdirectory were produced by extraction from (machine-readable) source data as described in directory `working/FedRAMP`. Perform a diff or file comparison between any file in this folder, and the corresponding file in that directory, to see what the hand edits have been. (NB as of Nov 15 hand-editing has only just started, extending to several elements in the High profile only.)
+Before hand-editing, the OSCAL profiles in this subdirectory were produced by extraction from (machine-readable) source data as described in directory `working/FedRAMP`. The files appearing here as "crude" are very close analogs to the "working" files in that subdirectory (confirm this with a diff or file comparison between any file in this folder, and its corresponding "working" file).
+
+The files named here as "edited" have been worked by hand; again do a diff with the 'crude' version to see what the edits have been.
 
 The `pub` directory contains (or will contain) HTML web pages showing the resolved-and-rendered OSCAL data. It is populated by applying XProc pipeline `working/lib/XProc/profile-resolve-and-display.xpl` to each of the OSCAL profiles. (At time of writing we haven't run it yet: just ask.)
 

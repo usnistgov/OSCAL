@@ -81,11 +81,11 @@
     -->
     
    
-    <xsl:template match="p">
-        <xsl:for-each select="tokenize(.,'\n')[matches(.,'\S')]">
-            <xsl:copy>
-                <xsl:copy-of select="."/>
-            </xsl:copy>
+    <xsl:template match="p" mode="filter">
+        <xsl:for-each select="tokenize(.,'&#xA;\s*&#xA;')[matches(.,'\S')]">
+            <p>
+                <xsl:copy-of select="normalize-space(.)"/>
+            </p>
         </xsl:for-each>
     </xsl:template>
     
