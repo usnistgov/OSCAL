@@ -1,4 +1,5 @@
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-HIGH-extract.xml 2017-11-16-05:00 -->
+<!-- Subsequently edited by hand. -->
 <?xml-model href="../../working/FedRAMP/fedramp-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
@@ -1828,7 +1829,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="cm-6_a">
          <desc>organization-defined security configuration checklists</desc>
-         <value>organization-defined security configuration checklists</value>
+         <value>United States Government Configuration Baseline (USGCB)</value>
       </set-param>
       <set-param param-id="cm-6_b">
          <desc>organization-defined information system components</desc>
@@ -1843,9 +1844,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-6 (a) [United States Government Configuration Baseline (USGCB)]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-6 (a) [United States Government Configuration Baseline (USGCB)]</p></part>-->
             <part class="additional">
                <p>CM-6 (a)-1 Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. CM-6 (a)-2 Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available). CM-6 (a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
             </part>
@@ -1882,25 +1881,31 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="cm-7_a">
          <desc>organization-defined prohibited or restricted functions, ports, protocols, and/or services</desc>
-         <value>organization-defined prohibited or restricted functions, ports, protocols, and/or services</value>
+         <value>[United States Government Configuration Baseline (USGCB)]</value>
+         <!--??? Spreadsheet identifies as CM-7 (b)-->
       </set-param>
       <alter control-id="cm.7">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-7 (b) [United States Government Configuration Baseline (USGCB)]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-7 (b) [United States Government Configuration Baseline (USGCB)]</p></part>-->
             <part class="additional">
-               <p>CM-7 (b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available. CM-7 Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc. (Partially derived from AC-17(8).</p>
+               <p>CM-7 (b) Requirement: The service provider shall use the Center for Internet
+                  Security guidelines (Level 1) to establish list of prohibited or restricted
+                  functions, ports, protocols, and/or services or establishes its own list of
+                  prohibited or restricted functions, ports, protocols, and/or services if USGCB is
+                  not available.</p>
+               <p>CM-7 Guidance: Information on the USGCB checklists can be found at:
+                  http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc. (Partially derived from
+                  AC-17(8).</p>
             </part>
          </augment>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cm-7_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least monthly</value>
       </set-param>
       <set-param param-id="cm-7_c">
          <desc>organization-defined functions, ports, protocols, and services within the information system deemed to be unnecessary and/or nonsecure</desc>
@@ -1911,9 +1916,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-7 (1) (a) [at least monthly]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-7 (1) (a) [at least monthly]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1938,16 +1941,14 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       </set-param>
       <set-param param-id="cm-7_i">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least quarterly or when there is a change</value>
       </set-param>
       <alter subcontrol-id="cm.7.5.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-7(5) (c) [at least quarterly or when there is a change]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-7(5) (c) [at least quarterly or when there is a change]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -1957,16 +1958,14 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       </set-param>
       <set-param param-id="cm-8_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least monthly</value>
       </set-param>
       <alter control-id="cm.8">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-8 (b) [at least monthly]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-8 (b) [at least monthly]</p></part>-->
             <part class="additional">
                <p>CM-8 Requirement: must be provided at least monthly or when there is a change.</p>
             </part>
@@ -1991,7 +1990,8 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="cm-8_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>Continuously, using automated mechanisms with a maximum five-minute delay in
+            detection.</value>
       </set-param>
       <set-param param-id="cm-8_d">
          <desc>organization-defined personnel or roles</desc>
@@ -2002,9 +2002,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-8 (3) (a). [Continuously, using automated mechanisms with a maximum five-minute delay in detection.]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-8 (3) (a). [Continuously, using automated mechanisms with a maximum five-minute delay in detection.]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -2013,9 +2011,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-8 (4) [position and role]</p>
-            </part>
+            <!--NB selection parameter is not yet represented <part class="parameters"><p>CM-8 (4) [position and role]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -2053,16 +2049,15 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       </set-param>
       <set-param param-id="cm-11_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>Continuously (via CM-7 (5))</value>
+         <!--Note expressed cross-reference-->
       </set-param>
       <alter control-id="cm.11">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CM-11 (c) [Continuously (via CM-7 (5))]</p>
-            </part>
+            <!--<part class="parameters"><p>CM-11 (c) [Continuously (via CM-7 (5))]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -2072,20 +2067,18 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       </set-param>
       <set-param param-id="cp-1_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="cp-1_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually or whenever a significant change occurs</value>
       </set-param>
       <alter control-id="cp.1">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CP-1 (b) (1) [at least annually] CP-1 (b) (2) [at least annually or whenever a significant change occurs]</p>
-            </part>
+            <!--<part class="parameters"><p>CP-1 (b) (1) [at least annually] CP-1 (b) (2) [at least annually or whenever a significant change occurs]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -2099,7 +2092,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       </set-param>
       <set-param param-id="cp-2_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="cp-2_d">
          <desc>organization-defined key contingency personnel (identified by name and/or by role) and organizational elements</desc>
@@ -2110,9 +2103,7 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CP-2 (d) [at least annually]</p>
-            </part>
+            <!--<part class="parameters"><p>CP-2 (d) [at least annually]</p></part>-->
             <part class="additional">
                <p>CP-2 Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
             </part>
@@ -2149,16 +2140,14 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="cp-2_f">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>time period defined in service provider and organization SLA</value>
       </set-param>
       <alter subcontrol-id="cp.2.4.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CP-2 (4) [time period defined in service provider and organization SLA]</p>
-            </part>
+            <!--<part class="parameters"><p>CP-2 (4) [time period defined in service provider and organization SLA]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -2180,20 +2169,18 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="cp-3_a">
          <desc>organization-defined time period</desc>
-         <value>organization-defined time period</value>
+         <value>ten (10) days</value>
       </set-param>
       <set-param param-id="cp-3_b">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <alter control-id="cp.3">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CP-3 (a) [ten (10) days] CP-3 (c) [at least annually]</p>
-            </part>
+            <!--<part class="parameters"><p>CP-3 (a) [ten (10) days] CP-3 (c) [at least annually]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->
@@ -2207,20 +2194,18 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="cp-4_a">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="cp-4_b">
          <desc>organization-defined tests</desc>
-         <value>organization-defined tests</value>
+         <value>functional exercises</value>
       </set-param>
       <alter control-id="cp.4">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CP-4 (a)-1 [at least annually] CP-4 (a)-2 [functional exercises]</p>
-            </part>
+            <!--<part class="parameters"><p>CP-4 (a)-1 [at least annually] CP-4 (a)-2 [functional exercises]</p></part>-->
             <part class="additional">
                <p>CP-4 (a) Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
             </part>

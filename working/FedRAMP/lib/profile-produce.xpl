@@ -122,8 +122,5 @@
       </p:inline>
     </p:input>
   </p:xslt>
-  
-  
-  
  
 </p:declare-step>

@@ -7,9 +7,9 @@
     
     <sch:pattern>
         
-        <!--<sch:rule context="oscal:param/oscal:value">
+        <sch:rule context="oscal:set-param/oscal:value">
             <sch:report role="warning" test=". = ../oscal:desc">Value is unassigned</sch:report>
-        </sch:rule>-->
+        </sch:rule>
         <sch:rule context="oscal:part[@class='parameters']">
             <sch:report test="true()">Check parameters</sch:report>
         </sch:rule>
