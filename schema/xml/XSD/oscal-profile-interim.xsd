@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://csrc.nist.gov/ns/oscal/1.0" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
+  <xs:include schemaLocation="oscal-core.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="profile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="oscal:title"/>
+        <xs:element maxOccurs="unbounded" ref="oscal:invoke"/>
+        <xs:element minOccurs="0" ref="oscal:framework"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="oscal:idAttr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="invoke">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="oscal:include"/>
+          <xs:element minOccurs="0" ref="oscal:exclude"/>
+        </xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="oscal:set-param"/>
+          <xs:element ref="oscal:alter"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="oscal:hrefAttr"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Can have both 'all' and 'call' to switch up with-subcontrol settings -->
+  <xs:element name="include">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="oscal:all"/>
+        <xs:element maxOccurs="unbounded" ref="oscal:call"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    Move params to a separate 'set' element?
+    Logic: params override params given in source catalogs or profiles
+    but they apply only to controls included.
+    parameters not belonging to included controls/subcontrols might be filtered out of 'set'
+    applicable parameters in 'set' might remain
+    expansion logic could also provide set/param for any param not already represented
+  -->
+  <!-- Only 'yes' should have any effect; processors should assume 'no' when implicit -->
+  <xs:element name="all">
+    <xs:complexType>
+      <xs:attributeGroup ref="oscal:withSubContrlsAttr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="withSubContrlsAttr">
+    <xs:attribute name="with-subcontrols">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="yes"/>
+          <xs:enumeration value="no"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!--
+    'call' can call *either* a control or a subcontrol by its @id
+    Schematron requirement: there exists in the catalog a control or subcontrol
+    by the given @id
+  -->
+  <xs:element name="call">
+    <xs:complexType>
+      <xs:attributeGroup ref="oscal:withSubContrlsAttr"/>
+      <xs:attribute name="control-id"/>
+      <xs:attribute name="subcontrol-id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="exclude">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="call">
+          <xs:complexType>
+            <xs:attribute name="control-id"/>
+            <xs:attribute name="subcontrol-id"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="set-param">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="oscal:desc"/>
+        <xs:element ref="oscal:value"/>
+      </xs:sequence>
+      <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:remove"/>
+        <xs:element minOccurs="0" ref="oscal:augment"/>
+      </xs:sequence>
+      <xs:attribute name="control-id"/>
+      <xs:attribute name="subcontrol-id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="remove">
+    <xs:complexType>
+      <xs:attribute name="targets" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="augment">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:prop"/>
+        <xs:group ref="oscal:anyKindofPart"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

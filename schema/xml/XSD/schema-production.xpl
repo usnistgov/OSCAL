@@ -19,7 +19,7 @@
   
   -->
   
-  <p:input port="source-xsd" primary="true"/>
+  <p:input port="source-xsd" sequence="true"/>
   <p:option name="oscal-doc-file" select="'../../../docs/schema/oscal-oscal.xml'"/>
   
   <p:input port="parameters" kind="parameter"/>
@@ -45,6 +45,7 @@
   <p:serialization port="documented-xsd" indent="true"/>
   <p:serialization port="html-docs"      indent="true"/>
   <p:serialization port="markdown-docs"  method="text"/>
+  
   
   <p:identity name="input"/>
   
