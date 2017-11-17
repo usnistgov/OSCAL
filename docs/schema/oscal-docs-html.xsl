@@ -18,6 +18,8 @@
         <title>
           <xsl:value-of select="descendant::oscal:title[1]"/>
         </title>
+        <!-- b/c XProc serialization doesn't do this -->
+        <meta charset="utf-8"/>
         <style type="text/css">
 
 section, div { margin-top:1em }
@@ -261,6 +263,11 @@ a:visited { color: midnightblue }
     <ol class="ol">
       <xsl:apply-templates/>
     </ol>
+  </xsl:template>
+  <xsl:template match="oscal:ul">
+    <ul class="ul">
+      <xsl:apply-templates/>
+    </ul>
   </xsl:template>
   <xsl:template match="oscal:li">
     <li class="li">

@@ -43,7 +43,7 @@
   <p:serialization port="_OSCAL_docs"    indent="true"/>
   <p:serialization port="_XSD_input"     indent="true"/>
   <p:serialization port="documented-xsd" indent="true"/>
-  <p:serialization port="html-docs"      indent="true"/>
+  <p:serialization port="html-docs"      indent="true" method="html"/>
   <p:serialization port="markdown-docs"  method="text"/>
   
   

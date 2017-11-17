@@ -14,6 +14,21 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>schema/xml/XSD/oscal-core-interim.xsd</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Refresh schema module (run on interim XSD)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>schema/xml/XSD/schema-production.xpl</String>
                                 </field>
                                 <field name="scenarioIds">
