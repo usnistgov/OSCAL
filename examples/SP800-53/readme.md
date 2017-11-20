@@ -8,7 +8,7 @@ Note however in many ordinary working scenarios, users of OSCAL will not be writ
 
 Revision 5 files are not yet available; for draft versions of rev 5 files, see `working/SP800-53/rev5`.
 
------------- | -------------
+------------|-------------
 `SP800-53-rev4-catalog.xml` | Full text of SP800-53, revision 4, *including* information integrated from appendixes describing objectives and assessments for controls (SP800-53A). The OSCAL is produced via transformation pipeline from NIST NVD XML source data. It is *not* an official version of this publication and cannot be warranted in any way except for purposes of these demonstrations.
 `SP800-53-oscal-declarations.xml` | OSCAL declarations file, called in by the catalog for validating the properties and composition of controls in the catalog. 
 `SP800-53-rev4-HIGH-baseline.xml` | An OSCAL profile representing the High Impact Baseline profile (selection) of controls from `SP800-53-rev4-catalog.xml`. (The OSCAL profile is derived from the catalog via transformation.)
