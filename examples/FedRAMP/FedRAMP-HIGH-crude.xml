@@ -1,5 +1,6 @@
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-HIGH-extract.xml 2017-11-16-05:00 -->
+<!-- Copied from ../../working/FedRAMP/FedRAMP-HIGH-working.xml (should have same /profile/@id -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          id="uuid-fe680beb-e833-4287-bf0f-985eeaea1e70">
    <title>FedRAMP HIGH Baseline PROFILE (extracted and aligned, no edits)</title>

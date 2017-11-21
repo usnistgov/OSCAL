@@ -14,15 +14,15 @@ Machine made "crude" versions (hot out of the oven; see below for details)
 * `FedRAMP-MODERATE-crude.xml`
 * `FedRAMP-LOW-crude.xml`
 
-Each one of these captures the (indicated) spreadsheet data and represents it as an OSCAL profile, calling controls in appropriate SP800-53 baselines or when necessary in the SP800-53 catalog. However, this data capture is not yet sufficiently granular in every detail. Specific parameter value assignments are not being parsed out and projected, but require hand intervention..
+Each one of these captures the (indicated) spreadsheet data and represents it as an OSCAL profile, calling controls in appropriate SP800-53 baselines or when necessary in the SP800-53 catalog. However, this data capture is not yet sufficiently granular in every detail. Specific parameter value assignments are not being parsed out and projected, but require hand intervention.
 
-(Scale of effort for such hand intervention: hours per profile. Not weeks or months. However, this gets us a profile only as exact and complete as the actual source data warrants.)
+Estimated scale of effort for such hand intervention: hours per profile. Not weeks or months. Note however that hand intervention could also go beyond completing the profile to the spreadsheet (where it  is incomplete) indeed once editing is in scope, it is open-ended (a feature not a bug).
 
-In order to assess the feasibility of this, we have also made a hand-edited version of 'HIGH' (so far) as a demonstration
+In order to assess the feasibility and come to this estimate, we have also made a partially-hand-edited version of 'HIGH' (so far) as a demonstration:
 
 * `FedRAMP-HIGH-edited.xml`
 
-A diff between this file and `FedRAMP` shows exactly where changes have been made. Editing 81/434 parameters took a couple of hours to do. Note however that a significant number of parameters are not assigned values even in the source data.
+A diff between this file and `FedRAMP` shows exactly where changes have been made. Editing 81 parameters (of 434 in 'HIGH') required 2-3 hours. Note however that a significant number of parameters are not assigned values even in the source data; so quality and completeness of the source data are at issue as much as quality/correctness of the conversion.
 
 ### HTML rendition
 
