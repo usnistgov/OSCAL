@@ -1,0 +1,5 @@
+title: Calling All Controls
+invocations:
+- href: mini-testing-catalog.yaml
+  include:
+    all: true

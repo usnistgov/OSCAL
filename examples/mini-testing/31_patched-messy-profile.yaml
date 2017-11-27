@@ -1,0 +1,32 @@
+title: Patching profile example
+invocations:
+- href: mini-testing-catalog.yaml
+  exclude:
+    calls:
+    - controlId: ra.9
+  paramSettings:
+  - paramId: ac-5_a
+    desc: organization-defined duties of individuals
+    value: butcher; baker; candlestick-maker
+  alterations:
+  - controlId: ac.6
+    remove:
+      targets:
+      - statement guidance
+    augment:
+      props:
+      - class: stamp
+        value: SEAL OF APPROVAL (a)
+      parts:
+      - class: guidance
+        prose:
+        - <p>Do <em>NOT</em> go back in the water.</p>
+      - class: notes
+        prose:
+        - <p>Local organizations may wish to sponsor special events including</p>
+        - <ul> <li>bake sales,</li><li> lemonade stands,</li><li> house-to-house <i>cookie
+          sales</i>,</li><li> lawn mowing services</li><li> or other seasonal services
+          etc.</li></ul>
+      - class: special
+        prose:
+        - <p>Code <code>green</code></p>

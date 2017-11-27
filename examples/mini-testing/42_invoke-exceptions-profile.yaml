@@ -1,0 +1,4 @@
+title: More exceptions profile example
+invocations:
+- href: mini-testing-catalog.yaml
+- href: 99includeRAx3-profile.yaml

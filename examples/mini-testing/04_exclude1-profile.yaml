@@ -1,0 +1,10 @@
+title: Being Exclusive
+invocations:
+- href: mini-testing-catalog.yaml
+  include:
+    all:
+      withsubcontrols: true
+  exclude:
+    calls:
+    - controlId: ra.7
+    - controlId: ra.9
