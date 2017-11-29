@@ -1,0 +1,23 @@
+{
+  "title": "Being Exclusive",
+  "invocations": [
+    {
+      "href": "mini-testing-catalog.json",
+      "include": {
+        "all": {
+          "withSubcontrols": true
+        }
+      },
+      "exclude": {
+        "calls": [
+          {
+            "controlId": "ra.7"
+          },
+          {
+            "controlId": "ra.9"
+          }
+        ]
+      }
+    }
+  ]
+}

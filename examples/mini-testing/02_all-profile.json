@@ -1,0 +1,11 @@
+{
+  "title": "Calling All Controls",
+  "invocations": [
+    {
+      "href": "mini-testing-catalog.json",
+      "include": {
+        "all": true
+      }
+    }
+  ]
+}
