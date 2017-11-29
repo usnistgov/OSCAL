@@ -3,7 +3,7 @@
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="">
 
    <!-- Example show a simple parameter insertion and patch,
         but with more complicated ("challenging") contents. -->

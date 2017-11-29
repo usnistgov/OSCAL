@@ -2359,16 +2359,14 @@ AC-2 (12)(b) Guidance: Required for privileged accounts.
       <!-- - - - - - -->
       <set-param param-id="cp-8_c">
          <desc>organization-defined frequency</desc>
-         <value>organization-defined frequency</value>
+         <value>annually</value>
       </set-param>
       <alter subcontrol-id="cp.8.4.">
          <augment>
             <part class="justification">
                <p>Included in NIST High Baseline, Rev 4</p>
             </part>
-            <part class="parameters">
-               <p>CP-8 (4) (c) [annually]</p>
-            </part>
+            <!--<part class="parameters"><p>CP-8 (4) (c) [annually]</p></part>-->
          </augment>
       </alter>
       <!-- - - - - - -->

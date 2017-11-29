@@ -44,6 +44,15 @@
             <part class="guidance">
                 <p>Don't follow any guidance you find in a fake control.</p>
             </part>
+            <part class="guidance">
+                <p>Notice this control has more than one statement called "guidance". Presumably any
+                    profile could also patch it to add more.</p>
+            </part>
+            <part class="raci_index">
+                <prop class="accountable">Board</prop>
+                <prop class="responsible">Chief Executive Officer</prop>
+                <prop class="consulted">Chief Financial Officer</prop>
+            </part>
         </control>
     </group>
     <group class="family">
