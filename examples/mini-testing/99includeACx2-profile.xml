@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
-   xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-d8ec4412-7d73-41ad-8cc5-d98db342c4eb">
 
    <title>Two controls from AC, with parameters on subcontrols</title>
-   <invoke href="mini-testing-catalog.xml">
+   <import href="mini-testing-catalog.xml">
       <include>
          <call control-id="ac.5"/>
          <call control-id="ac.6"/>
@@ -20,7 +18,8 @@
          <call subcontrol-id="ac.6.8"/>
          <call subcontrol-id="ac.6.9"/>
          <call subcontrol-id="ac.6.10"/>
-      </include>
+      </include></import>
+<modify>
 
       <set-param param-id="ac-5_a">
          <desc>[whoever is responsible for caring for the cats] - organization-defined duties of
@@ -68,5 +67,4 @@
       </set-param>
 
 
-   </invoke>
-</profile>
+   </modify></profile>

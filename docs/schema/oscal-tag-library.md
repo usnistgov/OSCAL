@@ -58,7 +58,7 @@
 >     * [&lt;span> Span](#span-span)
 >   * [Profiling](#profiling)
 >     * [&lt;profile> Profile](#profile-profile)
->     * [&lt;invoke> Authority invocation](#invoke-authority-invocation)
+>     * [&lt;import> Import resource](#import-import-resource)
 >     * [&lt;include> Include controls](#include-include-controls)
 >     * [&lt;exclude> Exclude controls](#exclude-exclude-controls)
 >     * [&lt;all> Include all](#all-include-all)
@@ -459,15 +459,15 @@ Roughly speaking, a profile document is a specification of a *selection* of cont
 
 #### &lt;profile> Profile   
 
-In reference to a catalog (or other authority such as profile or framework), a selection and configuration of controls, maintained separately   
+In reference to a catalog (or other resource such as profile or framework), a selection and configuration of controls, maintained separately   
 
-#### &lt;invoke> Authority invocation   
+#### &lt;import> Import resource   
 
-For invocation of controls and subcontrols from a catalog or other authority   
+Designating a catalog, profile or other resource for controls   
 
 #### &lt;include> Include controls   
 
-The element's contents indicate which controls and subcontrols to include from the authority (source catalog)   
+Which controls and subcontrols to include from the resource (source catalog) being imported   
 
 To be schema-valid, this element must contain either (but not both) a single all element, or a sequence of call elements. 
 
@@ -475,37 +475,36 @@ If this element is not given, it is assumed to be present with contents all (qv)
 
 #### &lt;exclude> Exclude controls   
 
-Which controls and subcontrols to exclude from the authority (source catalog) being invoked   
+Which controls and subcontrols to exclude from the resource (source catalog) being imported   
 
 Within exclude, all is not an option since it makes no sense. However, it also makes no sense (think about it) to use `exclude/call` except with `include/all` (it makes no sense to call in by ID only to exclude by ID). The only error condition reported, however, is when the same control is both included (explicitly, by ID) and excluded.   
 
 #### &lt;all> Include all   
 
-Include all controls from the invoked authority (catalog)   
+Include all controls from the imported resource (catalog)   
 
-This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no include element is given in an invoke; so ordinarily one might not see this element unless it is for purposes of including its `@with-subcontrols='yes'`   
+This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no include element is given in an import; so ordinarily one might not see this element unless it is for purposes of including its `@with-subcontrols='yes'`   
 
-An invocation of a catalog with all controls included: ```
-<invoke href="canonical-catalog-oscal.xml">
+Importing a catalog with all controls included: ```
+<import href="canonical-catalog-oscal.xml">
   <include>
     <all/>
   </include>
-</include>
+</import>
 ```
  
 
-has the same outcome as ```
-<invoke href="canonical-catalog-oscal.xml"/>
-
+can also be done implicitly (with the same outcome): ```
+<import href="canonical-catalog-oscal.xml"/>
 ```
  
 
-but is not the same as ```
-<invoke href="canonical-catalog-oscal.xml">
+However these are not the same as ```
+<import href="canonical-catalog-oscal.xml">
   <include>
     <all with-subcontrols="yes"/>
   </include>
-</invoke>
+</import>
 ```
  
 
@@ -523,7 +522,7 @@ If `@with-subcontrols` is "yes" on the call to a control, no sibling callelement
 
 Set a parameter's value and even override its description   
 
-`@param-id` indicates the parameter (within the scope of the referenced catalog or authority). The value element is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A desc element can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).   
+`@param-id` indicates the parameter (within the scope of the referenced catalog or resource). The value element is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A desc element can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).   
 
 #### &lt;alter> Alteration   
 

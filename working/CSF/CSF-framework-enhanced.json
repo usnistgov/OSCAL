@@ -1,0 +1,3726 @@
+{
+  "framework": {
+    "title": "",
+    "groups": [
+      {
+        "class": "function",
+        "id": "ID",
+        "title": "Identify",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "ID"
+          }
+        ],
+        "groups": [
+          {
+            "class": "category",
+            "id": "ID.AM",
+            "title": "Asset Management",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.AM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe data, personnel, devices, systems, and facilities that enable the organization to achieve business purposes are identified and managed consistent with their relative importance to business objectives and the organization’s risk strategy.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "ID.AM.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.8",
+                    "value": "CM-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePhysical devices and systems within the organization are inventoried\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.AM.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.8",
+                    "value": "CM-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSoftware platforms and applications within the organization are inventoried\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.AM.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.4",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.3",
+                    "value": "CA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.9",
+                    "value": "CA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.8",
+                    "value": "PL-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eOrganizational communication and data flows are mapped\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.AM.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.20",
+                    "value": "AC-20"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9",
+                    "value": "SA-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eExternal information systems are cataloged\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.AM.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.2",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResources (e.g., hardware, devices, data, time, and software) are prioritized based on their classification, criticality, and business value\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.AM.6",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.7",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.11",
+                    "value": "PM-11"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCybersecurity roles and responsibilities for the entire workforce and third-party stakeholders (e.g., suppliers, customers, partners) are established\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "ID.BE",
+            "title": "Business Environment",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.BE"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s mission, objectives, stakeholders, and activities are understood and prioritized; this information is used to inform cybersecurity roles, responsibilities, and risk management decisions.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "ID.BE.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.12",
+                    "value": "SA-12"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe organization’s role in the supply chain is identified and communicated\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.BE.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.8",
+                    "value": "PM-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe organization’s place in critical infrastructure and its industry sector is identified and communicated\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.BE.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.11",
+                    "value": "PM-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePriorities for organizational mission, objectives, and activities are established and communicated\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.BE.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.8",
+                    "value": "CP-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.9",
+                    "value": "PE-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.11",
+                    "value": "PE-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.8",
+                    "value": "PM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDependencies and critical functions for delivery of critical services are established\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.BE.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.11",
+                    "value": "CP-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResilience requirements to support delivery of critical services are established for all operating states (e.g. under duress/attack, during recovery, normal operations)\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "ID.GV",
+            "title": "Governance",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.GV"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe policies, procedures, and processes to manage and monitor the organization’s regulatory, legal, risk, environmental, and operational requirements are understood and inform the management of cybersecurity risk.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "ID.GV.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "All"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eOrganizational information security policy is established\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.GV.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.1",
+                    "value": "PM-1"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.7",
+                    "value": "PS-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eInformation security roles \u0026amp; responsibilities are coordinated and aligned with internal roles and external partners\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.GV.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "All"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eLegal and regulatory requirements regarding cybersecurity, including privacy and civil liberties obligations, are understood and managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.GV.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.11",
+                    "value": "PM-11"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eGovernance and risk management processes address cybersecurity risks\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "ID.RA",
+            "title": "Risk Assessment",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.RA"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization understands the cybersecurity risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "ID.RA.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.8",
+                    "value": "CA-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.5",
+                    "value": "SA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.11",
+                    "value": "SA-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.2",
+                    "value": "SI-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.5",
+                    "value": "SI-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAsset vulnerabilities are identified and documented\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.RA.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.15",
+                    "value": "PM-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.16",
+                    "value": "PM-16"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.5",
+                    "value": "SI-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCyber threat intelligence is received from information sharing forums and sources\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.RA.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.5",
+                    "value": "SI-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.12",
+                    "value": "PM-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.16",
+                    "value": "PM-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThreats, both internal and external, are identified and documented\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.RA.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.2",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.11",
+                    "value": "PM-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePotential business impacts and likelihoods are identified\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.RA.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.2",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.16",
+                    "value": "PM-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThreats, vulnerabilities, likelihoods, and impacts are used to determine risk\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.RA.6",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.4",
+                    "value": "PM-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRisk responses are identified and prioritized\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "ID.RM",
+            "title": "Risk Management Strategy",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.RM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "ID.RM.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRisk management processes are established, managed, and agreed to by organizational stakeholders\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.RM.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eOrganizational risk tolerance is determined and clearly expressed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.RM.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.8",
+                    "value": "PM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.11",
+                    "value": "PM-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe organization’s determination of risk tolerance is informed by its role in critical infrastructure and sector specific risk analysis\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "ID.SC",
+            "title": "Supply Chain Risk Management",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.SC"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "ID.SC.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.12",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCyber supply chain risk management processes are identified, established, assessed, managed, and agreed to by organizational stakeholders\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.SC.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.2",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.12",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.15",
+                    "value": "SA-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIdentify, prioritize and assess suppliers and partners of critical information systems, components and services using a cyber supply chain risk assessment process\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.SC.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.11",
+                    "value": "SA-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.12",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.9",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSuppliers and partners are required by contract to implement appropriate measures designed to meet the objectives of the Information Security program or Cyber Supply Chain Risk Management Plan.\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.SC.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.2",
+                    "value": "AU-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.6",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.12",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.16",
+                    "value": "AU-16"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.7",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.12",
+                    "value": "SA-12"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSuppliers and partners are monitored to confirm that they have satisfied their obligations as required. Reviews of audits, summaries of test results, or other equivalent evaluations of suppliers/providers are conducted\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "ID.SC.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.4",
+                    "value": "CP-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.3",
+                    "value": "IR-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.6",
+                    "value": "IR-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.9",
+                    "value": "IR-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse and recovery planning and testing are conducted with critical suppliers/providers\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "id": "PR",
+        "title": "Protect",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "PR"
+          }
+        ],
+        "groups": [
+          {
+            "class": "category",
+            "id": "PR.AC",
+            "title": "Identity Management and Access Control",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.AC"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eAccess to physical and logical assets and associated facilities is limited to authorized users, processes, and devices, and is managed consistent with the assessed risk of unauthorized access\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "PR.AC.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IA"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIdentities and credentials are issued, managed, revoked, and audited for authorized devices, users, and processes\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AC.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.2",
+                    "value": "PE-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.3",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.4",
+                    "value": "PE-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.5",
+                    "value": "PE-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.6",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.9",
+                    "value": "PE-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePhysical access to assets is managed and protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AC.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC‑17"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.19",
+                    "value": "AC-19"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.20",
+                    "value": "AC-20"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRemote access is managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AC.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.3",
+                    "value": "AC-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.5",
+                    "value": "AC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.6",
+                    "value": "AC-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.16",
+                    "value": "AC-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAccess permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AC.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.4",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.7",
+                    "value": "SC-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eNetwork integrity is protected, incorporating network segregation where appropriate\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AC.6",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.3",
+                    "value": "AC-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.5",
+                    "value": "AC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.6",
+                    "value": "AC-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.16",
+                    "value": "AC-16"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.19",
+                    "value": "AC-19"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.24",
+                    "value": "AC-24"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.2",
+                    "value": "IA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.4",
+                    "value": "IA-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.5",
+                    "value": "IA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ia.8",
+                    "value": "IA-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.2",
+                    "value": "PE-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.3",
+                    "value": "PS-3"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIdentities are proofed and bound to credentials, and asserted in interactions when appropriate\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "PR.AT",
+            "title": "Awareness and Training",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.AT"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s personnel and partners are provided cybersecurity awareness education and are adequately trained to perform their information security-related duties and responsibilities consistent with related policies, procedures, and agreements.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "PR.AT.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.2",
+                    "value": "AT-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.13",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAll users are informed and trained\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AT.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.3",
+                    "value": "AT-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.13",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePrivileged users understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AT.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.7",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9",
+                    "value": "SA-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThird-party stakeholders (e.g., suppliers, customers, partners) understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AT.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.3",
+                    "value": "AT-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.13",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSenior executives understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.AT.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#at.3",
+                    "value": "AT-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.13",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePhysical and information security personnel understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "PR.DS",
+            "title": "Data Security",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.DS"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eInformation and records (data) are managed consistent with the organization’s risk strategy to protect the confidentiality, integrity, and availability of information.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "PR.DS.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.28",
+                    "value": "SC-28"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eData-at-rest is protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.DS.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.8",
+                    "value": "SC-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eData-in-transit is protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.DS.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.8",
+                    "value": "CM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.6",
+                    "value": "MP-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.16",
+                    "value": "PE-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAssets are formally managed throughout removal, transfers, and disposition\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.DS.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.4",
+                    "value": "AU-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.5",
+                    "value": "SC-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAdequate capacity to ensure availability is maintained\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.DS.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.4",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.5",
+                    "value": "AC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.6",
+                    "value": "AC-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.19",
+                    "value": "PE-19"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.3",
+                    "value": "PS-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.6",
+                    "value": "PS-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.7",
+                    "value": "SC-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.8",
+                    "value": "SC-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.13",
+                    "value": "SC-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.31",
+                    "value": "SC-31"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eProtections against data leaks are implemented\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.DS.6",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.7",
+                    "value": "SI-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIntegrity checking mechanisms are used to verify software, firmware, and information integrity\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.DS.7",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "7"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.2",
+                    "value": "CM-2"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe development and testing environment(s) are separate from the production environment\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.DS.8",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "8"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.10",
+                    "value": "SA-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.7",
+                    "value": "SI-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIntegrity checking mechanisms are used to verify hardware integrity\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "PR.IP",
+            "title": "Information Protection Processes and Procedures",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.IP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eSecurity policies (that address purpose, scope, roles, responsibilities, management commitment, and coordination among organizational entities), processes, and procedures are maintained and used to manage protection of information systems and assets.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "PR.IP.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.2",
+                    "value": "CM-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.3",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.4",
+                    "value": "CM-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.5",
+                    "value": "CM-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.6",
+                    "value": "CM-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.7",
+                    "value": "CM-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.9",
+                    "value": "CM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.10",
+                    "value": "SA-10"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA baseline configuration of information technology/industrial control systems is created and maintained incorporating appropriate security principles (e.g. concept of least functionality)\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.3",
+                    "value": "SA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.4",
+                    "value": "SA-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.8",
+                    "value": "SA-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.10",
+                    "value": "SA-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.11",
+                    "value": "SA-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.12",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.15",
+                    "value": "SA-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.17",
+                    "value": "SA-17"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.8",
+                    "value": "PL-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA System Development Life Cycle to manage systems is implemented\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.3",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.4",
+                    "value": "CM-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.10",
+                    "value": "SA-10"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eConfiguration change control processes are in place\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.4",
+                    "value": "CP-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.6",
+                    "value": "CP-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.9",
+                    "value": "CP-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eBackups of information are conducted, maintained, and tested periodically\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.10",
+                    "value": "PE-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.12",
+                    "value": "PE-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.13",
+                    "value": "PE-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.14",
+                    "value": "PE-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.15",
+                    "value": "PE-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.18",
+                    "value": "PE-18"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePolicy and regulations regarding the physical operating environment for organizational assets are met\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.6",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.6",
+                    "value": "MP-6"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eData is destroyed according to policy\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.7",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "7"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.2",
+                    "value": "PL-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.6",
+                    "value": "PM-6"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eProtection processes are continuously improved\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.8",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "8"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.21",
+                    "value": "AC-21"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEffectiveness of protection technologies is shared with appropriate parties\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.9",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "9"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are in place and managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.10",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "10"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.3",
+                    "value": "IR-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.14",
+                    "value": "PM-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse and recovery plans are tested\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.11",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "11"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCybersecurity is included in human resources practices (e.g., deprovisioning, personnel screening)\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.IP.12",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "12"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.2",
+                    "value": "SI-2"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA vulnerability management plan is developed and implemented\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "PR.MA",
+            "title": "Maintenance",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.MA"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eMaintenance and repairs of industrial control and information system components is performed consistent with policies and procedures.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "PR.MA.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ma.2",
+                    "value": "MA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ma.3",
+                    "value": "MA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ma.5",
+                    "value": "MA-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eMaintenance and repair of organizational assets is performed and logged in a timely manner, with approved and controlled tools\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.MA.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ma.4",
+                    "value": "MA-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRemote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "PR.PT",
+            "title": "Protective Technology",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.PT"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eTechnical security solutions are managed to ensure the security and resilience of systems and assets, consistent with related policies, procedures, and agreements.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "PR.PT.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAudit/log records are determined, documented, implemented, and reviewed in accordance with policy\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.PT.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.2",
+                    "value": "MP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.4",
+                    "value": "MP-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.5",
+                    "value": "MP-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#mp.7",
+                    "value": "MP-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRemovable media is protected and its use restricted according to policy\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.PT.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.3",
+                    "value": "AC-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.7",
+                    "value": "CM-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe principle of least functionality is incorporated by configuring systems to provide only essential capabilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.PT.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.4",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.17",
+                    "value": "AC-17"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.18",
+                    "value": "AC-18"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.8",
+                    "value": "CP-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.7",
+                    "value": "SC-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCommunications and control networks are protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "PR.PT.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.7",
+                    "value": "CP-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.8",
+                    "value": "CP-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.11",
+                    "value": "CP-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.13",
+                    "value": "CP-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.8",
+                    "value": "PL-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.14",
+                    "value": "SA-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.6",
+                    "value": "SC-6"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSystems operate in pre-defined functional states to achieve availability (e.g. under duress, under attack, during recovery, normal operations).\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "id": "DE",
+        "title": "Detect",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "DE"
+          }
+        ],
+        "groups": [
+          {
+            "class": "category",
+            "id": "DE.AE",
+            "title": "Anomalies and Events",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "DE.AE"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eAnomalous activity is detected in a timely manner and the potential impact of events is understood.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "DE.AE.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.4",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.3",
+                    "value": "CA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.2",
+                    "value": "CM-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA baseline of network operations and expected data flows for users and systems is established and managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.AE.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.6",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetected events are analyzed to understand attack targets and methods\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.AE.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.6",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.5",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEvent data are aggregated and correlated from multiple sources and sensors\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.AE.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI -4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eImpact of events is determined\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.AE.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.5",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncident alert thresholds are established\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "DE.CM",
+            "title": "Security Continuous Monitoring",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "DE.CM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe information system and assets are monitored at discrete intervals to identify cybersecurity events and verify the effectiveness of protective measures.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "DE.CM.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.12",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.3",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.5",
+                    "value": "SC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.7",
+                    "value": "SC-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe network is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.CM.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.3",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.6",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.20",
+                    "value": "PE-20"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe physical environment is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.CM.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ac.2",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.12",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.13",
+                    "value": "AU-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.10",
+                    "value": "CM-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.11",
+                    "value": "CM-11"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePersonnel activity is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.CM.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.3",
+                    "value": "SI-3"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eMalicious code is detected\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.CM.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.18",
+                    "value": "SC-18"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sc.44",
+                    "value": "SC-44"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eUnauthorized mobile code is detected\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.CM.6",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ps.7",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.4",
+                    "value": "SA-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#sa.9",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eExternal service provider activity is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.CM.7",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "7"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.12",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.3",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cm.8",
+                    "value": "CM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.3",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.6",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.20",
+                    "value": "PE-20"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eMonitoring for unauthorized personnel, connections, devices, and software is performed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.CM.8",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "8"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
+                    "value": "RA-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eVulnerability scans are performed\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "DE.DP",
+            "title": "Detection Processes",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "DE.DP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eDetection processes and procedures are maintained and tested to ensure timely and adequate awareness of anomalous events.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "DE.DP.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.14",
+                    "value": "PM-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRoles and responsibilities for detection are well defined to ensure accountability\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.DP.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.14",
+                    "value": "PM-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetection activities comply with all applicable requirements\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.DP.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.3",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.14",
+                    "value": "PM-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.3",
+                    "value": "SI-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetection processes are tested\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.DP.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.6",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEvent detection information is communicated to appropriate parties\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "DE.DP.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pl.2",
+                    "value": "PL-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.14",
+                    "value": "PM-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetection processes are continuously improved\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "id": "RS",
+        "title": "Respond",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "RS"
+          }
+        ],
+        "groups": [
+          {
+            "class": "category",
+            "id": "RS.RP",
+            "title": "Response Planning",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.RP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eResponse processes and procedures are executed and maintained, to ensure timely response to detected cybersecurity events.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RS.RP.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.10",
+                    "value": "CP-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse plan is executed during or after an event\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "RS.CO",
+            "title": "Communications",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.CO"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eResponse activities are coordinated with internal and external stakeholders, as appropriate, to include external support from law enforcement agencies.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RS.CO.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.3",
+                    "value": "CP-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.3",
+                    "value": "IR-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePersonnel know their roles and order of operations when a response is needed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.CO.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.6",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.6",
+                    "value": "IR-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEvents are reported consistent with established criteria\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.CO.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.2",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.6",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eInformation is shared consistent with response plans\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.CO.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCoordination with stakeholders occurs consistent with response plans\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.CO.5",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pm.15",
+                    "value": "PM-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.5",
+                    "value": "SI-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eVoluntary information sharing occurs with external stakeholders to achieve broader cybersecurity situational awareness\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "RS.AN",
+            "title": "Analysis",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.AN"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eAnalysis is conducted to ensure adequate response and support recovery activities.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RS.AN.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.6",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.5",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#pe.6",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#si.4",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eNotifications from detection systems are investigated\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.AN.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe impact of the incident is understood\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.AN.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#au.7",
+                    "value": "AU-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eForensics are performed\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.AN.4",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.5",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncidents are categorized consistent with response plans\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "RS.MI",
+            "title": "Mitigation",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.MI"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eActivities are performed to prevent expansion of an event, mitigate its effects, and eradicate the incident.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RS.MI.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncidents are contained\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.MI.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncidents are mitigated\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.MI.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ca.7",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.3",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ra.5",
+                    "value": "RA-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eNewly identified vulnerabilities are mitigated or documented as accepted risks\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "RS.IM",
+            "title": "Improvements",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.IM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eOrganizational response activities are improved by incorporating lessons learned from current and previous detection/response activities.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RS.IM.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse plans incorporate lessons learned\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RS.IM.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse strategies are updated\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "id": "RC",
+        "title": "Recover",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "RC"
+          }
+        ],
+        "groups": [
+          {
+            "class": "category",
+            "id": "RC.RP",
+            "title": "Recovery Planning",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RC.RP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eRecovery processes and procedures are executed and maintained to ensure timely restoration of systems or assets affected by cybersecurity events.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RC.RP.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.10",
+                    "value": "CP-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery plan is executed during or after an event\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "RC.IM",
+            "title": "Improvements",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RC.IM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eRecovery planning and processes are improved by incorporating lessons learned into future activities.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RC.IM.1",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery plans incorporate lessons learned\u003c/p\u003e"
+                ]
+              },
+              {
+                "id": "RC.IM.2",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.8",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery strategies are updated\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "id": "RC.CO",
+            "title": "Communications",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RC.CO"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eRestoration activities are coordinated with internal and external parties, such as coordinating centers, Internet Service Providers, owners of attacking systems, victims, other CSIRTs, and vendors.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "id": "RC.CO.3",
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#cp.2",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "../SP800-53/SP800-53-OSCAL-refined.xml#ir.4",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery activities are communicated to internal stakeholders and executive and management teams\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-
   <declare-prop context="SP800-53" class="name">
     <singleton/>
     <required/>
@@ -57,10 +56,10 @@
   <declare-part context="SP800-53-enhancement" class="assessment"/>
 
   <!--'number' properties are not given on feat.statement -->
-  <declare-part context="statement" class="description">
+  <declare-p context="statement" class="description">
     <singleton/>
     <required/>
-  </declare-part>
+  </declare-p>
 
   <declare-part context="statement" class="item"/>
   
@@ -78,10 +77,10 @@
     <calc><inherit/><autonum>(1)</autonum></calc><!-- in subitems subcontrols -->
   </declare-prop>
   
-  <declare-prop context="item" class="description">
+  <declare-p context="item" class="description">
     <singleton/>
     <required/>
-  </declare-prop>
+  </declare-p>
 
   <!-- Note recursion: objectives contain objectives -->
   <declare-part context="objective" class="objective">
