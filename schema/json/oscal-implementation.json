@@ -11,6 +11,10 @@
           "type": "string",
           "description": ""
         },
+        "description": {
+          "type": "string",
+          "description": ""
+        },
         "responsibleRoles": {
           "type": "array",
           "description": "",
@@ -34,6 +38,7 @@
       "propertyNames": {
         "enum": [
           "name",
+          "description",
           "responsibleRoles",
           "satisfies",
           "references"
@@ -55,6 +60,12 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/narrative"
+          }
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/param"
           }
         },
         "origins": {
@@ -83,6 +94,7 @@
           "controlId",
           "subcontrolId",
           "narratives",
+          "params",
           "origins",
           "statuses",
           "references"
@@ -94,10 +106,6 @@
       "type": "object",
       "description": "",
       "properties": {
-        "paramId": {
-          "type": "string",
-          "description": ""
-        },
         "value": {
           "type": "string",
           "description": ""
@@ -111,7 +119,6 @@
       },
       "propertyNames": {
         "enum": [
-          "paramId",
           "value",
           "references"
         ]
@@ -119,6 +126,27 @@
       "required": [
         "value"
       ]
+    },
+    "param": {
+      "$id": "#/definitions/param",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "paramId": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "paramId",
+          "value"
+        ]
+      }
     },
     "policy": {
       "$id": "#/definitions/policy",
@@ -186,6 +214,27 @@
           "url"
         ]
       }
+    },
+    "profile": {
+      "$id": "#/definitions/profile",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "href": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "name",
+          "href"
+        ]
+      }
     }
   },
   "type": "object",
@@ -209,7 +258,7 @@
       "type": "array",
       "description": "Profiles to map",
       "items": {
-        "type": "string"
+        "$ref": "#/definitions/profile"
       }
     },
     "components": {
@@ -227,6 +276,9 @@
   },
   "propertyNames": {
     "enum": [
+      "name",
+      "description",
+      "maintainers",
       "profiles",
       "components",
       "policies"
