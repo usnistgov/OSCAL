@@ -1,0 +1,235 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://csrc.nist.gov/ns/oscal/1.0-implementation.json",
+  "definitions": {
+    "component": {
+      "$id": "#/definitions/component",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "responsibleRoles": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
+        },
+        "satisfies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/satisfy"
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "name",
+          "responsibleRoles",
+          "satisfies",
+          "references"
+        ]
+      }
+    },
+    "satisfy": {
+      "$id": "#/definitions/satisfy",
+      "type": "object",
+      "description": "",
+      "patternProperties": {
+        "^(controlId|subcontrolId)$": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "properties": {
+        "narratives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/narrative"
+          }
+        },
+        "origins": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
+        },
+        "statuses": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "controlId",
+          "subcontrolId",
+          "narratives",
+          "origins",
+          "statuses",
+          "references"
+        ]
+      }
+    },
+    "narrative": {
+      "$id": "#/definitions/narrative",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "paramId": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "paramId",
+          "value",
+          "references"
+        ]
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "policy": {
+      "$id": "#/definitions/policy",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "description": {
+          "type": "string",
+          "description": ""
+        },
+        "satisfies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/satisfy"  
+          }          
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "name",
+          "description",
+          "satisfies",
+          "references"
+        ]
+      }
+    },
+    "reference": {
+      "$id": "#/definitions/reference",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "description": {
+          "type": "string",
+          "description": ""
+        },
+        "url": {
+          "type": "string",
+          "description": "",
+          "format": "uri"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "name",
+          "description",
+          "url"
+        ]
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": ""
+    },
+    "description": {
+      "type": "string",
+      "description": ""
+    },
+    "maintainers": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "type": "string"
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "description": "Profiles to map",
+      "items": {
+        "type": "string"
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/component"
+      }
+    },
+    "policies": {
+      "type" :"array",
+      "items": {
+        "$ref": "#/definitions/policy"
+      }
+    }
+  },
+  "propertyNames": {
+    "enum": [
+      "profiles",
+      "components",
+      "policies"
+    ]
+  }
+}
