@@ -63,8 +63,12 @@ control, subcontrol, part, component { padding: 0.5em; margin: 0.5em; border: me
           -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 subcontrol { border: thin solid  black }
+
+control > *, subcontrol > *, component > * {  }
+control > subcontrol, component > component { margin-left: 0.5em }
+
 part, purpose, guidance, remarks, information { border: thin dotted black;
-  background-color: gainsboro }
+  background-color: lavender }
 
 group:before { content: attr(class) " (group)"; font-weight: bold; font-family: sans-serif; font-size: 80% }
 
@@ -81,7 +85,7 @@ subcontrol:before  { content: attr(class) " (subcontrol)";  font-weight: bold; f
 
 group:before  { content: oxy_capitalize(attr(class));  font-weight: bold; font-size:90%; font-family: sans-serif }
 
-title { font-weight: bold; font-family: sans-serif }
+title { font-weight: bold; font-family: sans-serif; margin-left: 0em }
 catalog > title { font-size: 150% }
 group > title { font-size: 130% }
 group > group > title { font-size: 120% }
@@ -103,7 +107,7 @@ param value:before {  font-style: normal; content: 'Value: ' }
 prop:before { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 prop { display:block; background-color: #FDDDE6; border: thin outset pink;
-  margin: 2px; padding: 2px; font-size: 90% }
+  padding: 2px; font-size: 90% }
 
 
 /* SP800-53
@@ -117,11 +121,11 @@ remarks:before,part[class=remarks]:before { content: "Remarks"; font-weight: bol
  */
 
 
-component p:before  { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif } 
-component p { background-color: white; padding: 0.5em; border: thin solid orange } 
+component p[class]:before  { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif } 
 
 p { margin-top: 0.5em }
 
+pre { margin-top: 0.5em; font-family: monospace; white-space: pre }
 
 italic { display: inline; font-style: italic }
 
@@ -160,7 +164,7 @@ em { font-style: italic; display: inline }
 xref, a { display: inline; color: blue }
 
 link { color: blue; font-size: 90%; font-weight: bold }
-link:before { color: blue; font-size: 90%; font-weight: bold; content: 
+link[href]:before { color: blue; font-size: 90%; font-weight: bold; content: 
         'link: ' oxy_urlChooser(        
         edit, "@href",
         columns 53); }
@@ -168,6 +172,10 @@ link:before { color: blue; font-size: 90%; font-weight: bold; content:
 withdrawn { display: inline; font-style: italic }
 
 code { display: inline; font-family: monospace; font-size: 90% }
+
+sub, sup { display: inline; font-size: .83em }
+sub      { vertical-align: sub }
+sup      { vertical-align: super }
 
 insert, select { display: inline; font-family: sans-serif; background-color: white;
   font-size: 80%; font-style: italic; font-weight: bold; border: thin solid pink;
@@ -185,8 +193,45 @@ choice { display: table-row; margin-top: 0.4em; background-color: white; padding
 call { background-color: skyblue; border: thin outset blue; color: midnightblue; font-weight: bold;
   margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
 
-call:before { content: 'Call from catalog: '; font-style: italic }
+call[subcontrol-id] { margin-left: 2em }
+
+call:before { content: 'Call from source: '; font-style: italic }
 
 call[subcontrol-id]:after                    { content: 'subcontrol ' attr(subcontrol-id) }
 call[control-id]:after                       { content: 'control '    attr(control-id) }
 call[control-id][with-subcontrols=yes]:after { content: 'control '    attr(control-id) ' with subcontrols' }
+
+alter:before { content: 'Alteration to ' attr(control-id) attr(subcontrol-id) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+alter { display:block; background-color: peachpuff; border: thin outset pink;
+  padding: 2px; font-size: 90%; margin: 0.5em }
+
+
+set-param:before { font-weight: bold; font-style: normal; content: 'set parameter ' attr(class) ' [' attr(param-id) '] ' }
+set-param { background-color: #B5EAAA; border: thin outset darkgreen;
+  margin: 2px; padding: 2px; font-family: sans-serif; font-size: 80% }
+
+set-param desc:before  { font-weight: bold; content: 'Description: '; width: 8em }
+set-param value        { font-style: italic; content: oxy_textfield(edit, '#text', columns, 72);
+          visibility:-oxy-collapse-text;
+ }
+set-param value:before { font-weight: bold; font-style: normal; content: 'Value: '; width: 8em }
+
+
+include, exclude
+  { padding: 0.5em; margin: 0.5em; border: thin solid black;
+    -oxy-foldable: true }
+
+/*remove:before { content: 'Remove ' attr(targets);  font-weight: bold; font-size:90%; font-family: sans-serif }*/
+remove { font-style: italic; content: 'Remove: ' oxy_textfield(edit, '@targets', columns, 60);
+          visibility:-oxy-collapse-text;
+ }
+
+
+augment:before { content: 'Augment: ';  font-weight: bold; font-size:90%; font-family: sans-serif }
+
+augment { display:block; background-color: #C3FDB8; border: thin outset lavender;
+  padding: 2px; font-size: 90% }
+
+augment prop { background-color: inherit }
+

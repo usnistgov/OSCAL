@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
-  xmlns:sqf="http://www.schematron-quickfix.com/validator/process">
+  xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  >
   
 <!-- For validating oscal-oscal.xml against the schema (XSD) it purportedly describes.
   
@@ -18,17 +20,18 @@
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
-  <sch:let name="schema-file" value="'../../working/lib/XSD/oscal-interim.xsd'"/>
-  <sch:let name="schema" value="document($schema-file)"/>
+  <sch:let name="schema-files" value="'../../schema/xml/XSD/oscal-core-interim.xsd', '../../schema/xml/XSD/oscal-profile.xsd'"/>
+  <sch:let name="schemas" value="document($schema-files)"/>
   
-  <sch:let name="element-declarations"  value="$schema//xsd:element[exists(@name)]"/>
+  <sch:let name="element-declarations"  value="$schemas//xsd:element[exists(@name)]"/>
   <sch:let name="element-documentation" value="//oscal:component[@class='element-description']"/>
   
   <sch:pattern>
     <sch:rule context="/*">
+      <!--<sch:report test="true()"><sch:value-of select="count($element-declarations)"/></sch:report>-->
       <sch:let name="undocumented-declarations" value="$element-declarations[not(@name=$element-documentation/oscal:prop[@class='tag'])]"/>
       <sch:assert test="empty($undocumented-declarations)">
-        Schema <sch:value-of select="$schema-file"/> declares 
+        Schemas <sch:value-of select="$schema-files"/> declare/s 
         <sch:value-of select="if (count($undocumented-declarations) eq 1) then 'this element, which is' else 'these elements, which are' "/>
         undocumented: <sch:value-of select="string-join($undocumented-declarations/@name, ', ')"/>
       </sch:assert>
@@ -36,7 +39,7 @@
     
     <sch:rule context="oscal:component[@class='element-description']">
       <sch:let name="gi" value="oscal:prop[@class='tag']"/>
-      <sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <sch:value-of select="$schema-file"/></sch:assert>
+      <sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <xsl:value-of separator=", " select="$schema-files"/></sch:assert>
     </sch:rule>
     
     <sch:rule context="oscal:part[@class='description']">

@@ -50,7 +50,7 @@
   <p:xslt name="rendered">
     <p:input port="stylesheet">
       <!--<p:document href="../XSLT/HTML/oscal-basic-display.xsl"/>-->
-      <p:document href="../XSLT/HTML/oscal-fancy-display.xsl"/>
+      <p:document href="../XSLT/HTML/oscal-with-nav-display.xsl"/>
     </p:input>
   </p:xslt>
   

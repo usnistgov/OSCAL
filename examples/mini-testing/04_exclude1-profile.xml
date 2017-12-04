@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+
+   <!-- Asking for all controls, with an exclusion -->
+   <title>Being Exclusive</title>
+   <invoke href="mini-testing-catalog.xml">
+      <include>
+         <all with-subcontrols="yes"/>
+      </include>
+      
+      <!-- Excluding two controls -->
+      <exclude>
+         <call control-id="ra.7"/>
+         <call control-id="ra.9"/>
+      </exclude>
+   </invoke>
+</profile>

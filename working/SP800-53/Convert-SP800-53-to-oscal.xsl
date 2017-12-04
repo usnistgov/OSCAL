@@ -8,7 +8,7 @@
   xmlns:xlink="https://www.w3.org/TR/xlink/"
   xpath-default-namespace="http://scap.nist.gov/schema/sp800-53/2.0"
   xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-  exclude-result-prefixes="#all"
+   exclude-result-prefixes="#all"
   >
 
   <xsl:strip-space elements="feed:controls feed:control description html:div html:ol supplemental-guidance references control-enhancements control-enhancement objectives objective decisions decision potential-assessments potential-assessment withdrawn statement"/>
@@ -18,7 +18,7 @@
   
   <xsl:variable name="source" select="/"/>
   
-  <xsl:variable name="objectives" select="document('800-53a-objectives.xml',$source)"/>
+  <xsl:variable name="objectives" select="if (false()) then document('800-53a-objectives.xml',$source) else ()"/>
   
   <xsl:template match="feed:controls">
     <catalog>
@@ -36,9 +36,10 @@
   
   <xsl:template match="feed:control">
     <control class="SP800-53">
+      <xsl:variable name="this" select="."/>
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="* except (title | references)"/>
-      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)"/>
+      <xsl:apply-templates mode="integrate-objectives" select="$objectives/key('control-by-no',$this/number/replace(.,'\s',''),.)"/>
       <xsl:apply-templates select="references"/>    
     </control>
   </xsl:template>
@@ -68,19 +69,22 @@
   <!-- Accounted for by 'div' grouping. -->
   <xsl:template match="family"/>
   
-  <xsl:template match="control-class | number">
+  <xsl:template match="control-class">
     <prop class="{name()}">
       <xsl:apply-templates/>
     </prop>
   </xsl:template>
   
-  <!--<xsl:template match="family">
+<!--  <xsl:template match="family">
     <xsl:attribute name="{name()}"><xsl:value-of select="."/></xsl:attribute>
   </xsl:template>
-  
+-->  
+
   <xsl:template match="number">
-    <xsl:attribute name="no"><xsl:value-of select="."/></xsl:attribute>
-  </xsl:template>-->
+    <prop class="name">
+      <xsl:apply-templates/>
+    </prop>
+  </xsl:template>
   
   <xsl:template match="descriptions | decisions | objectives | potential-assessments">
       <xsl:apply-templates/>
@@ -99,41 +103,42 @@
   
   <xsl:template match="control-enhancement">
     <subcontrol class="SP800-53-enhancement">
+      <xsl:variable name="this" select="."/>
       <xsl:apply-templates select="title"/>
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       
       <xsl:apply-templates select="* except title"/>
-      <xsl:apply-templates mode="integrate-objectives" select="key('control-by-no',number/replace(.,'\s',''),$objectives)
-        "/>
+      <xsl:apply-templates mode="integrate-objectives"
+        select="$objectives/key('control-by-no',$this/number/replace(.,'\s',''),/)"/>
     </subcontrol>
   </xsl:template>
   
   <xsl:template match="statement">
-    <feat class="statement">
+    <part class="statement">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="statement/statement" priority="2">
-    <feat class="statement-item">
+    <part class="item">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="statement/statement/statement" priority="3">
-    <feat class="statement-subitem">
+    <part class="item">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="statement/description">
-      <prop class="description">
+      <p class="description">
         <xsl:apply-templates select="@*" mode="asElement"/>
         <xsl:apply-templates/>
-      </prop>
+      </p>
   </xsl:template>
   
   <xsl:template match="related">
@@ -149,26 +154,26 @@
   </xsl:template>
   
   <!-- In latest sp80053a, objective is recursive,
-  resulting in nested plug//plug -->
+       resulting in nested part//part -->
   
   <xsl:template match="objective">
-    <feat class="objective">
+    <part class="objective">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="supplemental-guidance">
-    <stmt class="guidance">
+    <part class="guidance">
       <xsl:apply-templates select="@*" mode="asElement"/>
       <xsl:apply-templates/>
-    </stmt>
+    </part>
   </xsl:template>
   
   <xsl:template match="decision">
-    <prop class="decision">
+    <p class="decision">
         <xsl:apply-templates/>
-    </prop>
+    </p>
   </xsl:template>
   
   <xsl:template match="@*" mode="asElement">
@@ -178,16 +183,16 @@
   <xsl:template match="@sequence" mode="asElement"/>
   
   <xsl:template match="potential-assessment">
-    <feat class="assessment">
+    <part class="assessment">
       <xsl:apply-templates select="@* except @sequence" mode="asElement"/>
       <xsl:apply-templates/>
-    </feat>
+    </part>
   </xsl:template>
   
   <xsl:template match="object">
-    <prop class="object">
+    <p class="object">
       <xsl:apply-templates/>
-    </prop>
+    </p>
   </xsl:template>
   
   <xsl:template match="priority | baseline-impact">

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+
+   <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
+   <title>A Compound Profile</title>
+   <invoke href="mini-testing-catalog.xml">
+      <include>
+         <call control-id="ac.5"/>
+         <!-- expect an error for including this: <call control-id="ra.7"/>-->
+      </include>
+      <set-param param-id="ac-5_a">
+         <desc>organization-defined duties of individuals</desc>
+         <value>butcher; baker; candlestick-maker</value>
+      </set-param>
+   </invoke>
+   
+   <!-- Note what comes back from invoke/@href is fully resolved, with implicit include/all -->
+   <invoke href="99includeRAx3-profile.xml"/>
+   
+</profile>
