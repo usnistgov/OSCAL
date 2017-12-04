@@ -1,0 +1,3594 @@
+{
+  "framework": {
+    "title": "CSF Framework in OSCAL [DRAFT]",
+    "groups": [
+      {
+        "class": "function",
+        "title": "Identify",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "ID"
+          }
+        ],
+        "components": [
+          {
+            "class": "category",
+            "title": "Asset Management",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.AM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe data, personnel, devices, systems, and facilities that enable the organization to achieve business purposes are identified and managed consistent with their relative importance to business objectives and the organization’s risk strategy.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePhysical devices and systems within the organization are inventoried\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSoftware platforms and applications within the organization are inventoried\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PL-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eOrganizational communication and data flows are mapped\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-20"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eExternal information systems are cataloged\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResources (e.g., hardware, devices, data, time, and software) are prioritized based on their classification, criticality, and business value\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-11"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCybersecurity roles and responsibilities for the entire workforce and third-party stakeholders (e.g., suppliers, customers, partners) are established\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Business Environment",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.BE"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s mission, objectives, stakeholders, and activities are understood and prioritized; this information is used to inform cybersecurity roles, responsibilities, and risk management decisions.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-12"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe organization’s role in the supply chain is identified and communicated\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe organization’s place in critical infrastructure and its industry sector is identified and communicated\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePriorities for organizational mission, objectives, and activities are established and communicated\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDependencies and critical functions for delivery of critical services are established\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResilience requirements to support delivery of critical services are established for all operating states (e.g. under duress/attack, during recovery, normal operations)\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Governance",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.GV"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe policies, procedures, and processes to manage and monitor the organization’s regulatory, legal, risk, environmental, and operational requirements are understood and inform the management of cybersecurity risk.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "All"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eOrganizational information security policy is established\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-1"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eInformation security roles \u0026amp; responsibilities are coordinated and aligned with internal roles and external partners\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "All"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eLegal and regulatory requirements regarding cybersecurity, including privacy and civil liberties obligations, are understood and managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-11"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eGovernance and risk management processes address cybersecurity risks\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Risk Assessment",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.RA"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization understands the cybersecurity risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAsset vulnerabilities are identified and documented\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-16"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCyber threat intelligence is received from information sharing forums and sources\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThreats, both internal and external, are identified and documented\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePotential business impacts and likelihoods are identified\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThreats, vulnerabilities, likelihoods, and impacts are used to determine risk\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRisk responses are identified and prioritized\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Risk Management Strategy",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.RM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRisk management processes are established, managed, and agreed to by organizational stakeholders\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eOrganizational risk tolerance is determined and clearly expressed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe organization’s determination of risk tolerance is informed by its role in critical infrastructure and sector specific risk analysis\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Supply Chain Risk Management",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "ID.SC"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCyber supply chain risk management processes are identified, established, assessed, managed, and agreed to by organizational stakeholders\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIdentify, prioritize and assess suppliers and partners of critical information systems, components and services using a cyber supply chain risk assessment process\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSuppliers and partners are required by contract to implement appropriate measures designed to meet the objectives of the Information Security program or Cyber Supply Chain Risk Management Plan.\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-16"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-12"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSuppliers and partners are monitored to confirm that they have satisfied their obligations as required. Reviews of audits, summaries of test results, or other equivalent evaluations of suppliers/providers are conducted\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse and recovery planning and testing are conducted with critical suppliers/providers\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "title": "Protect",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "PR"
+          }
+        ],
+        "components": [
+          {
+            "class": "category",
+            "title": "Identity Management and Access Control",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.AC"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eAccess to physical and logical assets and associated facilities is limited to authorized users, processes, and devices, and is managed consistent with the assessed risk of unauthorized access\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IA"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIdentities and credentials are issued, managed, revoked, and audited for authorized devices, users, and processes\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePhysical access to assets is managed and protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC‑17"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-19"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-20"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRemote access is managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAccess permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eNetwork integrity is protected, incorporating network segregation where appropriate\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-16"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-19"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-24"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IA-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IA-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-3"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIdentities are proofed and bound to credentials, and asserted in interactions when appropriate\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Awareness and Training",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.AT"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe organization’s personnel and partners are provided cybersecurity awareness education and are adequately trained to perform their information security-related duties and responsibilities consistent with related policies, procedures, and agreements.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AT-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAll users are informed and trained\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AT-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePrivileged users understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThird-party stakeholders (e.g., suppliers, customers, partners) understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AT-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSenior executives understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AT-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-13"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePhysical and information security personnel understand roles \u0026amp; responsibilities\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Data Security",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.DS"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eInformation and records (data) are managed consistent with the organization’s risk strategy to protect the confidentiality, integrity, and availability of information.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-28"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eData-at-rest is protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eData-in-transit is protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MP-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-16"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAssets are formally managed throughout removal, transfers, and disposition\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAdequate capacity to ensure availability is maintained\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-19"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-31"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eProtections against data leaks are implemented\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIntegrity checking mechanisms are used to verify software, firmware, and information integrity\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "7"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-2"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe development and testing environment(s) are separate from the production environment\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "8"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIntegrity checking mechanisms are used to verify hardware integrity\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Information Protection Processes and Procedures",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.IP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eSecurity policies (that address purpose, scope, roles, responsibilities, management commitment, and coordination among organizational entities), processes, and procedures are maintained and used to manage protection of information systems and assets.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-10"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA baseline configuration of information technology/industrial control systems is created and maintained incorporating appropriate security principles (e.g. concept of least functionality)\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-17"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PL-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA System Development Life Cycle to manage systems is implemented\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-10"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eConfiguration change control processes are in place\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-9"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eBackups of information are conducted, maintained, and tested periodically\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-18"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePolicy and regulations regarding the physical operating environment for organizational assets are met\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MP-6"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eData is destroyed according to policy\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "7"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PL-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-6"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eProtection processes are continuously improved\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "8"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-21"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEffectiveness of protection technologies is shared with appropriate parties\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "9"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are in place and managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "10"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse and recovery plans are tested\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "11"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCybersecurity is included in human resources practices (e.g., deprovisioning, personnel screening)\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "12"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-2"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA vulnerability management plan is developed and implemented\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Maintenance",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.MA"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eMaintenance and repairs of industrial control and information system components is performed consistent with policies and procedures.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MA-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eMaintenance and repair of organizational assets is performed and logged in a timely manner, with approved and controlled tools\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MA-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRemote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Protective Technology",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "PR.PT"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eTechnical security solutions are managed to ensure the security and resilience of systems and assets, consistent with related policies, procedures, and agreements.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eAudit/log records are determined, documented, implemented, and reviewed in accordance with policy\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MP-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MP-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "MP-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRemovable media is protected and its use restricted according to policy\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe principle of least functionality is incorporated by configuring systems to provide only essential capabilities\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-17"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-18"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-7"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCommunications and control networks are protected\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-11"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PL-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-6"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eSystems operate in pre-defined functional states to achieve availability (e.g. under duress, under attack, during recovery, normal operations).\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "title": "Detect",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "DE"
+          }
+        ],
+        "components": [
+          {
+            "class": "category",
+            "title": "Anomalies and Events",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "DE.AE"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eAnomalous activity is detected in a timely manner and the potential impact of events is understood.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eA baseline of network operations and expected data flows for users and systems is established and managed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetected events are analyzed to understand attack targets and methods\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEvent data are aggregated and correlated from multiple sources and sensors\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI -4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eImpact of events is determined\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncident alert thresholds are established\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Security Continuous Monitoring",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "DE.CM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eThe information system and assets are monitored at discrete intervals to identify cybersecurity events and verify the effectiveness of protective measures.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe network is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-20"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe physical environment is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AC-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-13"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-11"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePersonnel activity is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-3"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eMalicious code is detected\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-18"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SC-44"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eUnauthorized mobile code is detected\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "6"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PS-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SA-9"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eExternal service provider activity is monitored to detect potential cybersecurity events\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "7"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-12"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CM-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-20"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eMonitoring for unauthorized personnel, connections, devices, and software is performed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "8"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eVulnerability scans are performed\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Detection Processes",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "DE.DP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eDetection processes and procedures are maintained and tested to ensure timely and adequate awareness of anomalous events.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRoles and responsibilities for detection are well defined to ensure accountability\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetection activities comply with all applicable requirements\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-14"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetection processes are tested\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEvent detection information is communicated to appropriate parties\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PL-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-14"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eDetection processes are continuously improved\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "title": "Respond",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "RS"
+          }
+        ],
+        "components": [
+          {
+            "class": "category",
+            "title": "Response Planning",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.RP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eResponse processes and procedures are executed and maintained, to ensure timely response to detected cybersecurity events.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse plan is executed during or after an event\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Communications",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.CO"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eResponse activities are coordinated with internal and external stakeholders, as appropriate, to include external support from law enforcement agencies.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003ePersonnel know their roles and order of operations when a response is needed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eEvents are reported consistent with established criteria\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eInformation is shared consistent with response plans\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eCoordination with stakeholders occurs consistent with response plans\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "5"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PM-15"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eVoluntary information sharing occurs with external stakeholders to achieve broader cybersecurity situational awareness\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Analysis",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.AN"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eAnalysis is conducted to ensure adequate response and support recovery activities.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "PE-6"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "SI-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eNotifications from detection systems are investigated\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eThe impact of the incident is understood\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "AU-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eForensics are performed\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "4"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-5"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncidents are categorized consistent with response plans\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Mitigation",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.MI"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eActivities are performed to prevent expansion of an event, mitigate its effects, and eradicate the incident.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncidents are contained\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eIncidents are mitigated\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CA-7"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-3"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "RA-5"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eNewly identified vulnerabilities are mitigated or documented as accepted risks\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Improvements",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RS.IM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eOrganizational response activities are improved by incorporating lessons learned from current and previous detection/response activities.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse plans incorporate lessons learned\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eResponse strategies are updated\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "class": "function",
+        "title": "Recover",
+        "props": [
+          {
+            "class": "function-id",
+            "value": "RC"
+          }
+        ],
+        "components": [
+          {
+            "class": "category",
+            "title": "Recovery Planning",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RC.RP"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eRecovery processes and procedures are executed and maintained to ensure timely restoration of systems or assets affected by cybersecurity events.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-10"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery plan is executed during or after an event\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Improvements",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RC.IM"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eRecovery planning and processes are improved by incorporating lessons learned into future activities.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "1"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery plans incorporate lessons learned\u003c/p\u003e"
+                ]
+              },
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "2"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-8"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery strategies are updated\u003c/p\u003e"
+                ]
+              }
+            ]
+          },
+          {
+            "class": "category",
+            "title": "Communications",
+            "props": [
+              {
+                "class": "category-id",
+                "value": "RC.CO"
+              }
+            ],
+            "prose": [
+              "\u003cp class=\"description\"\u003eRestoration activities are coordinated with internal and external parties, such as coordinating centers, Internet Service Providers, owners of attacking systems, victims, other CSIRTs, and vendors.\u003c/p\u003e"
+            ],
+            "components": [
+              {
+                "props": [
+                  {
+                    "class": "number",
+                    "value": "3"
+                  }
+                ],
+                "links": [
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "CP-2"
+                  },
+                  {
+                    "rel": "control",
+                    "href": "",
+                    "value": "IR-4"
+                  }
+                ],
+                "prose": [
+                  "\u003cp class=\"description\"\u003eRecovery activities are communicated to internal stakeholders and executive and management teams\u003c/p\u003e"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
