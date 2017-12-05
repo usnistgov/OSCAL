@@ -8,9 +8,7 @@
 * All hierarchy must be represented / relevant info (derived from hierarchy) must be preserved
   * This applies both to "native hierarchy" of controls in their (home) catalogs, and to the "invocation hierarchy" of profile resolution
 
-## Operations
-
-In OSCAL, "profiling semantics" refers to the way OSCAL profile instances make reference to catalogs from which their controls are derived.
+In OSCAL, "profiling semantics" refers to the way OSCAL profile instances make reference to catalogs from which their controls are derived. It is an "as if" sketch that describes the *basics* of any OSCAL system that processes profiles especially if and as those profiles integrate with each other and with catalogs (by further reference).
 
 ## Implementation
 
@@ -88,7 +86,7 @@ Likewise, it is an error if an invocation declares parameter settings for the sa
 It is not an error if the same control is both included explicitly, and then excluded (by definition, to no effective purpose), but an implementation may warn if this occurs. *(Sch.)* A working assumption is that only invocations with "all" controls included (implicitly or explicitly) will have use for exclusions.
 
 It is also not an error if a resolved invocation selects the same control set as a much more parsimonious invocation would (for example, instead of including 249 of 250 controls in a catalog, simply include all and exclude one.) Again, an implementation may detect this situation and offer warnings. *(Sch.)*
-  
+
 ### Merge (Combination)
 
 In profile resolution, a "view" is provided of *each* authority (profile or catalog) invoked by a profile, which preserves information regarding the invocation including the structural relations (groupings) among controls selected by it. Because multiple invocations may trace back through several invocation steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
@@ -97,16 +95,15 @@ An improved merger might well be specified for such a document, depending on the
 
 More info here: [Profile Invocation Merge Diagrams](Merge-Diagrams.html)
 
-This specification does not require that an implementation create the merged result described here in any form, and does not dictate a format for its maintenance or exchange -- while we do recognize that a schema describing this format, could be readily developed as an extension of OSCAL (catalog and profile) tagging. Such a schema is left for implementors and/or communities. (We are deliberately not "closing the loop" here.)
+(NB: Merge Diagrams might be expanded to show error conditions described above.)
 
-There are and will be many ways of representing the *results* of OSCAL-based processes, "synthetic", "synoptic", "merged" and "resolved", and this specification should not be taken to constrain them. Accordingly, the merge semantics described here are the *minimum* sufficient for achieving the goal of dependable and traceable references within OSCAL, according to the needs of and accommodating both stable and persistent artifacts (such as catalogs), and very temporary or ephemeral organizations of data -- all potentially relating in complex ways to one another (at higher semantic layers). If a resolved profile is considered as having the organization, after selection and merger of its controls, described here, then further refinements and resolutions can be accomplished in subsequent processing -- which is indeed, in the general case, also dependent on something like the first steps described here.
+This specification does not require that an implementation actually produce or generate the merged result described here in any form, and does not dictate a format for its maintenance or exchange of merged results. Simultaneously we recognize that a schema describing this format, could be fairly readily developed as an extension of OSCAL (catalog and profile) tagging. Such a schema is left for implementors and/or communities. (We are deliberately not "closing the loop" here.)
+
+There are and will be many ways of representing the *results* of OSCAL-based processes, "synthetic", "synoptic", "merged", "resolved", "reduced" etc, and this specification should not be taken to constrain them. Accordingly, the merge semantics described here are intended to provide the *minimum* sufficient for achieving the goal of referential integrity (with regard to persistence, dependability and traceability) of references within OSCAL, across arbitrary catalogs, profiles, control sets and control types, according to the needs of and accommodating both stable and persistent artifacts (such as catalogs), and very temporary or ephemeral organizations of data (such as the results of profile processing may sometimes be) -- all potentially relating in complex ways to one another (at higher semantic layers). If a resolved profile is considered as having the organization, after selection and merger of its controls, described here, then further refinements and resolutions can be accomplished in subsequent processing (which is indeed, in the general case, also dependent on something like the first steps described here). But architects and developers should regard the merge behaviors described here as necessary, but not necessarily sufficient, for viable implementations.
 
 ### Customization (Patch/parameters)
 
-
-
 The matching/selection logic of patches described in this spec is in DRAFT form, inasmuch as we expect (hope) to define more flexible and powerful mechanism in a future sprint.
-
 
 invocation - selects controls to include in (resolved) profile
              (all hierarchy is preserved)
