@@ -32,18 +32,23 @@ However, a profile may not only cite controls from catalogs; it may also do the 
 
 Moreover, it may combine controls from multiple catalog sources into a single "collective". For example, a common way of extending a community-standard profile is to include controls from that profile's own source catalog (going back to "the beginning") along with the (modified) controls in the "base" profile being extended..
 
-
-## Exceptions in profiles
+## Exceptions in profiles (summary)
 
 * broken references (to controls, subcontrols or parameters that do not exist)
 * the same catalog or profile is called more than once
 * the same parameter (in the same catalog) is assigned more than once
 * a subcontrol is included, without its control also being included
 * any control (after resolution) is called more than once
+* any circular reference (a profile calling a profile that calls back again)
 
-\[NB we can describe fallback behavior - invalid results, orphan subcontrols are dropped] 
+
+Expected/okay:
+
+* Controls from the same groups (in the same catalogs) coming in via different invocation pathways
 
 ## Profile Resolution
+
+Described here:
 
 * Invocation (of authorities) and selection (of controls and subcontrols)
 * Merging - how these control sets are organized in the resolved profile
@@ -51,17 +56,13 @@ Moreover, it may combine controls from multiple catalog sources into a single "c
 
 ### Invocation and selection
 
-A profile may include more than one invocation.
+A profile may combine more than one invocation.
 
 Selection is done by controlled ID value on a target control or subcontrol object (in XML, the element's @id). We do not yet support selection by other criteria such as context/organization ("all of AC") or controlled property values ("controls that have X=Y").
 
 It is an error if the same authority (catalog or profile) is called by more than one invocation. *(This is Schematronable. Fallback: process anyway. Complementary call sets will resolve; duplicate calls will result in schema-invalid output.)*
 
-Invocations can select controls by inclusion or by exclusion. If an invocation does not indicate an inclusion, then all controls from the invoked authority are implicitly included.
-
-It is not an error if the same control is both included explicitly, and then excluded (by definition, to no effective purpose), but an implementation may warn if this occurs. A working assumption is that only invocations with "all" controls included (implicitly or explicitly) will have use for exclusions.
-
-It is also not an error if a resolved invocation selects the same control set as a much more parsimonious invocation would (for example, excluding one of 250 controls instead of including 249.) Again, an implementation may detect this and offer warnings.
+Invocations can select controls by inclusion or by exclusion. If an invocation does not indicate an inclusion, then all controls from the invoked authority are implicitly included. (In the XML, no `/invoke/include` is the same as having `/invoke/include/all`. Accordingly, solo `/invoke/exclude` with no "include" stated, is meaningful: include everything but what is excluded.)
 
 Subcontrols are regarded as dependent on their controls. If a control is not selected, it is an error if any of its subcontrols are selected. *(Fallback: drop the subcontrol silently.)* When selecting a subcontrol, see to it that its control is also selected 00 or select the subcontrols implicitly with a "with subcontrols" setting at a higher level.
 
@@ -71,13 +72,20 @@ Similarly, it is an error if an invocation declares more than one modification (
 
 Likewise, it is an error if an invocation declares parameter settings for the same parameter, more than once. *(Sch. Fallback: use only one, tbd by processor.)*
 
+It is not an error if the same control is both included explicitly, and then excluded (by definition, to no effective purpose), but an implementation may warn if this occurs. *(Sch.)* A working assumption is that only invocations with "all" controls included (implicitly or explicitly) will have use for exclusions.
+
+It is also not an error if a resolved invocation selects the same control set as a much more parsimonious invocation would (for example, instead of including 249 / 250 controls, simply exclude one.) Again, an implementation may detect this and offer warnings. *(Sch.)*
+
 
   
 ### Merge (Combination)
 
+In profile resolution, a "view" is provided of *each* authority (profile or catalog) invoked by a profile, which preserves information regarding the invocation including the structural relations (groupings) among controls selected by it. Because multiple invocations may trace back through several invocation steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
 
-When a control is included, its subcontrols are *not* included unless they are called, or the call has the "include subcontrols" switch, either explicitly (given in the data) or implicitly (by virtue of a higher-level setting (e.g. in the XML, `invoke/include/all/@with-subcontrols='yes'`)
+An improved merger might well be specified for such a document, depending on the needs of its users, for example to collapse a "multiply refracted" combination of views on a single catalog, into a single integrated view. Inasmuch as it is straightforwardly achievable (if nothing else) as a post-process, that operation is outside the scope of profile resolution as such.
 
+More info here: 
+[Profile Invocation Merge Diagrams](Merge-Diagrams.html)
 
 ### Customization (Patch/parameters)
 
