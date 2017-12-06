@@ -62,12 +62,6 @@
             "$ref": "#/definitions/narrative"
           }
         },
-        "params": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/param"
-          }
-        },
         "origins": {
           "type": "array",
           "description": "",
@@ -94,7 +88,6 @@
           "controlId",
           "subcontrolId",
           "narratives",
-          "params",
           "origins",
           "statuses",
           "references"
@@ -112,6 +105,7 @@
         },
         "references": {
           "type": "array",
+          "description": "Pointer to component reference",
           "items": {
             "$ref": "#/definitions/reference"
           }
@@ -150,38 +144,7 @@
     },
     "policy": {
       "$id": "#/definitions/policy",
-      "type": "object",
-      "description": "",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": ""
-        },
-        "description": {
-          "type": "string",
-          "description": ""
-        },
-        "satisfies": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/satisfy"  
-          }          
-        },
-        "references": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/reference"
-          }
-        }
-      },
-      "propertyNames": {
-        "enum": [
-          "name",
-          "description",
-          "satisfies",
-          "references"
-        ]
-      }
+      "$ref": "#/definitions/component"
     },
     "reference": {
       "$id": "#/definitions/reference",
@@ -272,6 +235,12 @@
       "items": {
         "$ref": "#/definitions/policy"
       }
+    },
+    "params": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/param"
+      }
     }
   },
   "propertyNames": {
@@ -281,7 +250,8 @@
       "maintainers",
       "profiles",
       "components",
-      "policies"
+      "policies",
+      "params"
     ]
   }
 }
