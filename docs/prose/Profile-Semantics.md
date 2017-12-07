@@ -57,9 +57,13 @@ Described here:
 
 A profile may combine more than one invocation.
 
-An invocation is bound to a single catalog or profile. If bound to a profile, the semantics of resolution for an invocation are the same as they are when bound to a catalog, except the designated profile is considered as resolved.
+An invocation is bound to a single catalog or profile, its "resource". If bound to a profile, it is *implicitly* resolved according to these same rules. Because profiles must be bound to either catalogs, or profiles, this means that (ipso facto) all profiles capable of finite resolution, resolve eventually to catalogs.
 
-An invocation can identify controls for inclusion in either of two ways. Either it can indicate specific controls (and subcontrols) by their IDs via explicit "calls", or it can indicate that all controls from the catalog (or upstream profile) should be included.
+If an OSCAL profile includes, directly or indirectly, any invocations of itself as a resource, such invocations are inoperable. Such circular reference is an error. *(Sch.? Fallback behavior: ignore circular calls.)*  Because circular references are defined as inoperable, in the real world all profiles will be finite.
+
+An invocation can identify controls (as given in and by the resource) for inclusion in either of two ways. The first method is by an explicit "call" using the ID of the desired control or subcontrol.
+
+Alternatively, an invocation can stipulate that all controls from the catalog (or upstream profile) should be included, except as modified by exclusion.
 
 An invocation can also designate controls or subcontrols to be excluded. Ordinarily this will only be done when all controls (or all subcontrols, as applicable) have been included.
 
@@ -67,15 +71,17 @@ An explicit selection or "call" (to be included or excluded) is made by ID value
 
 IDs are expected to be unique within document scope, so no control or subcontrol will have the same ID as another in the same catalog.
 
-Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. If ID collision occurs between catalogs, a system is expected to resolve them such that all controls from all catalogs can be addressed distinctly.
+Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. If local (document-level) ID collision occurs between catalogs, a system is expected to resolve them such that all controls from all catalogs can be addressed distinctly, each call resolving relative to its invocation. Catalogs, however, must also be valid to relevant OSCAL schemas and Schematrons demonstrating their structural integrity. This specification does not define what happens with non-OSCAL inputs to profile resolution.
 
-We do not yet support selection by other criteria such as context/organization ("all of AC") or controlled property values ("controls that have X=Y").
+Note also that it is an expectation that every time a given profile or catalog is invoked, the *same resource* (catalog or resolved profile) is returned, enabling systems to cache. (Cf XPath doc() function.) Along with this is the assumption that resolution of a profile against its sources (profiles and catalogs) will be side-effect free; for example, it cannot have the effect of rewriting catalogs or upstream profiles (by calling some magical URI) or creating new resources to be exploited elsewhere.
 
-It is an error if the same authority (catalog or profile) is called by more than one invocation. *(This is Schematronable. Fallback: process anyway. Complementary call sets will resolve; duplicate calls or multiple settings will result in duplicative or contradictory outputs.)*
+We do not yet support selection of controls by other criteria such as context/organization ("all of AC") or controlled property values ("controls that have X=Y").
 
-Invocations can select controls by inclusion or by exclusion. If an invocation does not indicate an inclusion, then all controls from the invoked authority are implicitly included. (In the XML, no `/invoke/include` is the same as having `/invoke/include/all`. Accordingly, solo `/invoke/exclude` with no "include" stated, is meaningful: include everything but what is excluded.)
+It is not an error if the same resource (catalog or profile) is called by more than one invocation. *(This is Schematronable. Fallback: process anyway. Complementary call sets will resolve; duplicate calls or multiple settings will result in duplicative or contradictory outputs.)*
 
-Subcontrols are regarded as dependent on their controls. If a control is not selected, it is an error if any of its subcontrols are selected. *(Fallback: drop the subcontrol silently.)* When selecting a subcontrol, see to it that its control is also selected, or select the subcontrols implicitly with a "with subcontrols" setting at a higher level.
+Invocations can select controls by inclusion or by exclusion. If an invocation does not indicate an inclusion, then all controls from the invoked resource are implicitly included. (In the XML, no `/invoke/include` is the same as having `/invoke/include/all`. Accordingly, solo `/invoke/exclude` with no "include" stated, is meaningful: include everything but what is excluded.)
+
+Subcontrols are regarded as dependent on their controls. If a control is not selected, it is an error if any of its subcontrols are selected. *(Fallback: drop the subcontrol silently.)* When selecting a subcontrol, see to it that its control is also selected, or select the subcontrols implicitly with a setting ("with subcontrols") setting at a higher level.
 
 It is an error if an invocation includes a control or subcontrol more than once. *(Sch. Fallback: include a single copy of the control.)*
 
@@ -89,15 +95,33 @@ It is also not an error if a resolved invocation selects the same control set as
 
 ### Merge (Combination)
 
-In profile resolution, a "view" is provided of *each* authority (profile or catalog) invoked by a profile, which preserves information regarding the invocation including the structural relations (groupings) among controls selected by it. Because multiple invocations may trace back through several invocation steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
+In profile resolution, a "view" is provided of *each* resource (profile or catalog) invoked by a profile, which preserves information regarding the invocation including the structural relations (groupings) among controls selected by it. Because multiple invocations may trace back through several invocation steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
 
-An improved merger might well be specified for such a document, depending on the needs of its users, for example to collapse a "multiply refracted" combination of views on a single catalog (made by assembling disparate profiles into a profile), into a single integrated view. Inasmuch as this is straightforwardly achievable (if nothing else) as a post-process, that operation is outside the scope of profile resolution as such.
+Note that since profiles can invoke profiles, the views of invocations may be nested, as many layers deep as it takes to get back to a catalog. Also, because profiles may invoke controls from more than a single upstream resource (catalog or profile), views will contain multiple views, in a branching structure. Occasionally, vies within views will point to the same source catalogs as one another; this will happen both in error, and as a feature. Accordingly, it will sometimes be valuable or useful information, not only that a control was included but *how* it was included -- its provenance of invocation.
+
+Within each view, at the deepest layer, a profile will invoke not another profile (making for another view), but a catalog. At that point, the resolved profile will present a partial (filtered) "snapshot" of the catalog in question, showing the controls that are selected.
+
+This snapshot will show a *copy* of the catalog with the following modifications:
+
+* A group that does not contain any control, selected by the profile, is discarded.
+
+* A group that contains a selected control (either directly or by virtue of subgroups) is copied, with its properties and contents (parts and paragraphs), as well as any selected controls or groups that contain (at any level) selected controls.
+
+* Only controls that are selected by the profile, are kept.
+
+* Within controls, only subcontrols that are selected by the profile, are kept. (Note that the means of selection of subcontrols is different from that of the controls on which they depend.)
+
+* Parameter descriptions and values are *unchanged*. (They will be changed in the subsequent "Modify" step.)
 
 More info here: [Profile Invocation Merge Diagrams](Merge-Diagrams.html)
 
 (NB: Merge Diagrams might be expanded to show error conditions described above.)
 
-This specification does not require that an implementation actually produce or generate the merged result described here in any form, and does not dictate a format for its maintenance or exchange of merged results. Simultaneously we recognize that a schema describing this format, could be fairly readily developed as an extension of OSCAL (catalog and profile) tagging. Such a schema is left for implementors and/or communities. (We are deliberately not "closing the loop" here.)
+#### notes on merge
+
+Beyond this "set of branched views", an improved merger might well be specified, depending on the needs of users, for example to collapse a "multiply refracted" combination of views on a single catalog (made by assembling disparate profiles into a profile), into a single integrated view. Inasmuch as this is straightforwardly achievable (if nothing else) as a post-process, that operation is outside the scope of profile resolution as such.
+
+This specification does not require that an implementation actually produce or generate the merged result described here in any form, and does not dictate a format for its maintenance or exchange of merged results. Simultaneously we recognize that a schema describing this format, could be fairly readily developed as an extension of OSCAL (catalog and profile) tagging. Such a schema is left (at least for now) for implementors and/or communities. (We are deliberately not "closing the loop" here.)
 
 There are and will be many ways of representing the *results* of OSCAL-based processes, "synthetic", "synoptic", "merged", "resolved", "reduced" etc, and this specification should not be taken to constrain them. Accordingly, the merge semantics described here are intended to provide the *minimum* sufficient for achieving the goal of referential integrity (with regard to persistence, dependability and traceability) of references within OSCAL, across arbitrary catalogs, profiles, control sets and control types, according to the needs of and accommodating both stable and persistent artifacts (such as catalogs), and very temporary or ephemeral organizations of data (such as the results of profile processing may sometimes be) -- all potentially relating in complex ways to one another (at higher semantic layers). If a resolved profile is considered as having the organization, after selection and merger of its controls, described here, then further refinements and resolutions can be accomplished in subsequent processing (which is indeed, in the general case, also dependent on something like the first steps described here). But architects and developers should regard the merge behaviors described here as necessary, but not necessarily sufficient, for viable implementations.
 

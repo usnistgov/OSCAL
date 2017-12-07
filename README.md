@@ -5,7 +5,6 @@ NIST is proposing the development of the Open Security Controls Assessment Langu
 This repository consists of the following directories pertaining to the OSCAL project:
   * [docs](docs): Documentation graphics, prose, progress updates, and presentation slides
   * [working](working): Development artifacts (e.g., XML, XSLT, CSS, script, Markdown, and sample files, plus supporting files); additional documentation is posted under [working/doc](working/doc): 
-  * [sources](sources): Resources used to produce OSCAL artifacts that are not maintained by the OSCAL project (e.g., a copy of the NIST SP 800-53 control data feed schema)
 
 See [docs/prose/OSCAL-Overview.md](docs/prose/OSCAL-Overview.md) for an introduction to OSCAL and [docs/schema/oscal-tag-library.md](docs/schema/oscal-tag-library.md) for detailed information on the OSCAL data models and XML schema compositions.
 
