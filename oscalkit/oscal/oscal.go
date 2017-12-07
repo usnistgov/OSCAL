@@ -49,6 +49,7 @@ type Options struct {
 // OpenControlOptions ...
 type OpenControlOptions struct {
 	OpenControlYAMLFilepath string
+	OpenControlsDir         string
 }
 
 // NewFromOC ...
@@ -69,16 +70,22 @@ func NewFromOC(options OpenControlOptions) (OSCAL, error) {
 		return nil, err
 	}
 
-	absPath, err := filepath.Abs(options.OpenControlYAMLFilepath)
-	if err != nil {
-		return nil, err
-	}
+	ocComponentFileList := []string{}
+	filepath.Walk(options.OpenControlsDir, func(path string, f os.FileInfo, err error) error {
+		if !f.IsDir() && (filepath.Ext(path) == ".yaml" || filepath.Ext(path) == ".yml") {
+			absPath, err := filepath.Abs(path)
+			if err != nil {
+				return err
+			}
+			ocComponentFileList = append(ocComponentFileList, absPath)
+		}
+
+		return nil
+	})
 
 	ocComponents := []opencontrol.Component{}
-	for _, ocComponentFilepath := range oc.Components {
-		ocComponentAbsFilepath := filepath.Join(filepath.Dir(absPath), ocComponentFilepath, "component.yaml")
-
-		ocComponentFile, err := os.Open(ocComponentAbsFilepath)
+	for _, ocComponentFilepath := range ocComponentFileList {
+		ocComponentFile, err := os.Open(ocComponentFilepath)
 		if err != nil {
 			return nil, err
 		}

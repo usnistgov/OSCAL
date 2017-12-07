@@ -34,6 +34,7 @@ var ConvertOpenControl = cli.Command{
 	Action: func(c *cli.Context) error {
 		ocOSCAL, err := oscal.NewFromOC(oscal.OpenControlOptions{
 			OpenControlYAMLFilepath: c.Args().First(),
+			OpenControlsDir:         c.Args()[1],
 		})
 		if err != nil {
 			return err

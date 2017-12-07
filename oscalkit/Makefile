@@ -16,20 +16,20 @@ BINARY=oscalkit_$(GOOS)_$(GOARCH)
 .DEFAULT_GOAL := $(BINARY)
 
 test:
-	docker run \
+	docker container run \
 		-v $$PWD:/go/src/github.com/usnistgov/OSCAL/oscalkit \
 		-w /go/src/github.com/usnistgov/OSCAL/oscalkit \
 		golang:1.9 \
 		sh -c "go test \$$(go list ./... | grep -v /vendor/)"
 
 build-docker:
-	docker build -t usnistgov/oscalkit .
+	docker image build -t usnistgov/oscalkit .
 
 push: build-docker
-	docker push usnistgov/oscalkit:latest
+	docker image push usnistgov/oscalkit:latest
 
 $(BINARY):
-	docker run --rm \
+	docker container run --rm \
 		-v $$PWD:/go/src/github.com/usnistgov/OSCAL/oscalkit \
 		-w /go/src/github.com/usnistgov/OSCAL/oscalkit \
 		golang:1.9 \
