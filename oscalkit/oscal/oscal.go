@@ -71,7 +71,7 @@ func NewFromOC(options OpenControlOptions) (OSCAL, error) {
 	}
 
 	ocComponentFileList := []string{}
-	filepath.Walk(options.OpenControlsDir, func(path string, f os.FileInfo, err error) error {
+	filepath.Walk(filepath.Join(options.OpenControlsDir, "components/"), func(path string, f os.FileInfo, err error) error {
 		if !f.IsDir() && (filepath.Ext(path) == ".yaml" || filepath.Ext(path) == ".yml") {
 			absPath, err := filepath.Abs(path)
 			if err != nil {

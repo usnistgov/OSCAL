@@ -23,10 +23,10 @@ var ConvertOpenControl = cli.Command{
 	Usage: `convert from OpenControl format to OSCAL "implementation" format`,
 	Description: `Convert OpenControl-formatted "component" and "opencontrol" YAML into
 	 OSCAL-formatted "implementation" layer JSON`,
-	ArgsUsage: "[opencontrol.yaml-filepath]",
+	ArgsUsage: "[opencontrol.yaml-filepath] [opencontrols-dir-path]",
 	Before: func(c *cli.Context) error {
-		if c.NArg() != 1 {
-			return cli.NewExitError("Missing opencontrol.yaml file", 1)
+		if c.NArg() != 2 {
+			return cli.NewExitError("Missing opencontrol.yaml file and path to opencontrols/ directory", 1)
 		}
 
 		return nil

@@ -10,7 +10,10 @@
 
 package implementation
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // Implementation ...
 type Implementation struct {
@@ -88,7 +91,7 @@ func (i *Implementation) Raw(format string, prettify bool) ([]byte, error) {
 		return json.Marshal(i)
 	}
 
-	return nil, nil
+	return nil, fmt.Errorf("Unable to generate raw data. Unknown format: %s", format)
 }
 
 // Type ...
