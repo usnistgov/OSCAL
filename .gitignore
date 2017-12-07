@@ -5,3 +5,12 @@ vault
 
 */working/**/*.pdf
 
+# Go
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+.vscode/
