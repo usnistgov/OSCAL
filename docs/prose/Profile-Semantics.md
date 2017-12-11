@@ -61,21 +61,13 @@ An invocation is bound to a single catalog or profile, its "resource". If bound 
 
 If an OSCAL profile includes, directly or indirectly, any invocations of itself as a resource, such invocations are inoperable. Such circular reference is an error. *(Sch.? Fallback behavior: ignore circular calls.)*  Because circular references are defined as inoperable, in the real world all profiles will be finite.
 
-An invocation can identify controls (as given in and by the resource) for inclusion in either of two ways. The first method is by an explicit "call" using the ID of the desired control or subcontrol.
+An invocation can identify controls (as given in and by the resource) for inclusion in either of two ways. The first method is by an explicit "call" using the ID of the desired control or subcontrol. (See on IDs below.)
 
 Alternatively, an invocation can stipulate that all controls from the catalog (or upstream profile) should be included, except as modified by exclusion.
 
 An invocation can also designate controls or subcontrols to be excluded. Ordinarily this will only be done when all controls (or all subcontrols, as applicable) have been included.
 
 An explicit selection or "call" (to be included or excluded) is made by ID value on a target control or subcontrol object (in XML, the element's @id).
-
-IDs are expected to be unique within document scope, so no control or subcontrol will have the same ID as another in the same catalog.
-
-Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. If local (document-level) ID collision occurs between catalogs, a system is expected to resolve them such that all controls from all catalogs can be addressed distinctly, each call resolving relative to its invocation. Catalogs, however, must also be valid to relevant OSCAL schemas and Schematrons demonstrating their structural integrity. This specification does not define what happens with non-OSCAL inputs to profile resolution.
-
-Note also that it is an expectation that every time a given profile or catalog is invoked, the *same resource* (catalog or resolved profile) is returned, enabling systems to cache. (Cf XPath doc() function.) Along with this is the assumption that resolution of a profile against its sources (profiles and catalogs) will be side-effect free; for example, it cannot have the effect of rewriting catalogs or upstream profiles (by calling some magical URI) or creating new resources to be exploited elsewhere.
-
-We do not yet support selection of controls by other criteria such as context/organization ("all of AC") or controlled property values ("controls that have X=Y").
 
 It is not an error if the same resource (catalog or profile) is called by more than one invocation. *(This is Schematronable. Fallback: process anyway. Complementary call sets will resolve; duplicate calls or multiple settings will result in duplicative or contradictory outputs.)*
 
@@ -92,6 +84,17 @@ Likewise, it is an error if an invocation declares parameter settings for the sa
 It is not an error if the same control is both included explicitly, and then excluded (by definition, to no effective purpose), but an implementation may warn if this occurs. *(Sch.)* A working assumption is that only invocations with "all" controls included (implicitly or explicitly) will have use for exclusions.
 
 It is also not an error if a resolved invocation selects the same control set as a much more parsimonious invocation would (for example, instead of including 249 of 250 controls in a catalog, simply include all and exclude one.) Again, an implementation may detect this situation and offer warnings. *(Sch.)*
+
+#### IDs
+
+IDs are expected to be unique within document scope, so no control or subcontrol will have the same ID as another in the same catalog. Control catalogs whose controls are not tagged with distinct IDs can be excluded from resolution as invalid, although conforming processors have the option of continuing to process while offering some means of addressing and resolving the ID clash. 
+
+Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. If local (document-level) ID collision occurs between catalogs, a system is expected to resolve them such that all controls from all catalogs can be addressed distinctly, each call resolving relative to its invocation. Catalogs, however, must also be valid to relevant OSCAL schemas and Schematrons demonstrating their structural integrity. This specification does not define what happens with non-OSCAL inputs to profile resolution.
+
+Note also that it is an expectation that every time a given profile or catalog is invoked, the *same resource* (catalog or resolved profile) is returned, enabling systems to cache. (Cf XPath doc() function.) Along with this is the assumption that resolution of a profile against its sources (profiles and catalogs) will be side-effect free; for example, it cannot have the effect of rewriting catalogs or upstream profiles (by calling some magical URI) or creating new resources to be exploited elsewhere.
+
+We do not yet support selection of controls by other criteria such as context/organization ("all of AC") or controlled property values ("controls that have X=Y").
+
 
 ### Merge (Combination)
 

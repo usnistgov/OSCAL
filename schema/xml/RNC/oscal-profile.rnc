@@ -6,15 +6,11 @@ profile = element profile { idAttr, title, invoke+, framework? }
 
 invoke = element invoke { hrefAttr, (\include?, exclude?), ( param_setting | alteration )* }
 
-# Can have both 'all' and 'call' to switch up with-subcontrol settings
+# Can have either 'all' or (a set of) 'call'
 \include = element include { all | call+ }
 
-# Move params to a separate 'set' element?
-# Logic: params override params given in source catalogs or profiles
-# but they apply only to controls included.
-# parameters not belonging to included controls/subcontrols might be filtered out of 'set'
-# applicable parameters in 'set' might remain
-# expansion logic could also provide set/param for any param not already represented
+# We are permitting include/call along with exclude/call to support tweaky with-subcontrol allowances
+# But downstream (Schematron) might detect inelegant or inoperable combinations of include/call and exclude/call
 
 # Only 'yes' should have any effect; processors should assume 'no' when implicit
 all = element all { withSubContrlsAttr }
