@@ -2,378 +2,1150 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>OSCAL Profile Invocation Merge Specification (Diagrams)</title>
-        <meta  charset="utf-8"/>
+        <meta charset="utf-8" />
         <style type="text/css">
-
-section { margin-top: 1em }
-
-section section { clear: both;  overflow:hidden; padding: 0.5em; background-color: gainsboro }
-
-.resolution, .profile, .catalog, .invoke, .group { display: inline-block; padding: 0.5em; margin: 0.5em; display: inline-grid }
-
-// .invoke { padding: 0.5em; margin: 0.5em } 
-
-div > * { vertical-align: top }
-
-.catalog { border: medium double black }
-
-.invoke { border: thin dotted black }
-.profile { border: thin solid black }
-.resolution { border: medium dotted grey }
-.resolution .resolution { border: medium double grey }
-p { margin: 0ex; padding-left: 1ex }
-
-section > p { text-indent: 3em }
-section > p:first-child { text-indent: 0em }
-
-.subcontrol { padding-left: 2em; font-size: 80% }
-
-.group > span { font-size: 80%; font-family: sans-serif }
-.invoke > span { font-size: 80%; font-style: italic  }
-
-.exclude { color: grey }
-.exclude:before { content: 'exclude: '; text-decoration: none;
-  font-family: sans-serif; font-size: 70% }
-
-.error { color: red }
-.stress { color: green }
-
-        </style>
+            section{
+                margin-top: 1em
+            }
+            
+            section section{
+                clear: both;
+                overflow: hidden;
+                padding: 0.5em;
+                background-color: lemonchiffon;
+                border: thin outset black;
+                -oxy-foldable: true;
+                -oxy-not-foldable-child: h2, h3, h4;
+            }
+            
+            section > *:first-child{
+                margin-top: 0ex
+            }
+            section > *:last-child{
+                margin-bottom: 0ex
+            }
+            
+            
+            .resolution,
+            .profile,
+            .catalog,
+            .invoke,
+            .group{
+                display: inline-block;
+                padding: 0.5em;
+                margin: 0.5em;
+                display: inline-grid
+            }
+            div.catalog{
+                background-color: white
+            }
+            
+            div.invoke div.catalog{
+                background-color: gainsboro;
+                border: medium dotted black
+            }
+            
+            div.invoke{
+                background-color: #95B9C7
+            }
+            
+            // .invoke { padding: 0.5em; margin: 0.5em }
+            
+            div > *{
+                vertical-align: top
+            }
+            
+            figure div p{
+                margin: 0ex
+            }
+            
+            .catalog{
+                border: medium double black
+            }
+            
+            .invoke{
+                border: thin dotted black
+            }
+            .profile{
+                border: thin solid black
+            }
+            .resolution{
+                border: medium dotted grey
+            }
+            .resolution .resolution{
+                border: medium double grey
+            }
+            
+            
+            .group > span{
+                font-size: 80%;
+                font-family: sans-serif
+            }
+            .invoke > span{
+                font-size: 80%;
+                font-style: italic
+            }
+            
+            .include{
+                color: darkgreen
+            }
+            .include:before{
+                content: 'include: ';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            
+            .exclude{
+                color: darkred
+            }
+            .exclude:before{
+                content: 'exclude: ';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            
+            .ws:after{
+                content: ' - with subcontrols';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            .error{
+                color: red
+            }
+            .stress{
+                color: green
+            }
+            .warning{
+                color: darkorange
+            }
+            .catalog .subcontrol{
+                font-size: 80%;
+                padding-left: 2em
+            }</style>
     </head>
     <body>
-
         <section>
-            <p>A profile may combine more than one invocation.</p>
-            <figure>
-                
-                <div class="profile">
-                    <span>OK Profile</span>
-                    <div class="invoke">
-                        <span>Invoke Catalog A</span>
-                    </div>
-                    <div class="invoke">
-                        <span>Invoke Catalog B</span>
-                    </div>
-                </div>
-            </figure>
-                
-        </section>
-        <section>
-            <p>An invocation is bound to a single catalog or profile, its "resource". If bound to a profile, it is implicitly resolved according to these same rules. Because profiles must be bound to either catalogs, or profiles, this means that (ipso facto) all profiles capable of finite resolution, resolve eventually to catalogs.</p>
-            <p>Note that the same catalog may appear at multiple "leaf" positions in the invocation tree.</p>
-            <figure>
-                <div class="profile">
-                    <span>OK Profile</span>
-                    <div class="invoke">
-                        <span>Invoke Catalog A</span>
-                    </div>
-                    <div class="invoke">
-                        <span>Invoke Profile B1</span>
-                    </div>
-                </div>
-                <div class="profile">
-                    <span>B1 Profile</span>
-                    <div class="invoke">
-                        <span>Invoke Catalog B</span>
-                    </div>
-                </div>
-            </figure>
-            <figure>
-                <div class="profile">
-                    <span>Also OK Profile</span>
-                    <div class="invoke">
-                        <span class="stress">Invoke Catalog A</span>
-                    </div>
-                    <div class="invoke">
-                        <span>Invoke Profile A1</span>
-                    </div>
-                </div>
-                <div class="profile">
-                    <span>A1 Profile</span>
-                    <div class="invoke">
-                        <span class="stress">Invoke Catalog A</span>
-                    </div>
-                </div>
-            </figure>
-        </section>
-        <section>
-            <p>If an OSCAL profile includes, directly or indirectly, any invocations of itself as a resource, such invocations are inoperable. Such circular reference is an error. A processor may fall back by ignoring circular calls (i.e. invocations of resources that have already been invoked higher in the stack).</p>
-            <p>Because circular references are defined as inoperable, in the real world all profiles will be finite. References to URI targets not identifiable as OSCAL (catalogs, profiles or document types tbd) must return nothing.</p>
-            <figure>
-                <div class="profile">
-                    <span>Perplex Profile</span>
-                    <div class="invoke">
-                        <span>Invoke Plexper profile</span>
-                    </div>
-                </div>
-                <div class="profile">
-                    <span>Plexper Profile</span>
-                    <div class="invoke">
-                        <span>Invoke Perplex profile</span>
-                    </div>
-                </div>
-                <div class="resolution"><span>Resolution of Perplex Profile</span>
-                    <div class="invoke"><span>Invoke Plexper profile</span>
-                        <div class="invoke error"><span>Invoke Perplex profile</span>
+            <h2>Invocation and Selection</h2>
+            <section>
+                <h3>A profile may have more than one invocation.</h3>
+                <figure>
+                    <div class="profile">
+                        <span>OK Profile</span>
+                        <div class="invoke">
+                            <span>Invoke Catalog A</span>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke Catalog B</span>
                         </div>
                     </div>
-                </div>
-            </figure>
-        </section>
-        <section>
-            <p>An invocation can identify controls (as given in and by the resource) for inclusion
-                in either of two ways. The first method is by an explicit "call" using the ID of the
-                desired control or subcontrol.</p>
-            <figure>
-                <div class="catalog">
-                    <span>CQZ Controls Catalog</span>
-                    <div class="group">
-                        <span>Group CC</span>
-                        <p class="control">Control CCA</p>
-                        <p class="control">Control CCB</p>
-                        <p class="control">Control CCC</p>
+                    <div class="resolution">
+                        <span>Resolution</span>
+                        <div class="invoke">
+                            <span>Invoke Catalog A</span>
+                            <p>(Results of invocation)</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke Catalog B</span>
+                            <p>(Results of invocation)</p>
+                        </div>
+                    </div></figure>
+            </section>
+            <section>
+                <h3>Each invocation calls a catalog or profile</h3>
+                <p>An invocation is bound to a single catalog or profile, its <q>resource</q>, by
+                    URI. If the resource is an OSCAL profile, it is implicitly resolved (with its
+                    own invocations and modification) according to these same rules. Because
+                    profiles must be bound to either catalogs, or profiles and because circular
+                    references are inoperable (see below), all profiles resolve eventually to
+                    catalogs.</p>
+                <p>References to URI targets not identifiable as OSCAL
+                (catalogs, profiles or document types tbd with resolution rules of their own) must return nothing.</p>
+                <p>Note that the same catalog may appear at multiple <q>leaf</q> positions in the
+                    invocation tree.</p>
+                <figure>
+                    <div class="profile">
+                        <span>OK Profile</span>
+                        <div class="invoke">
+                            <span>Invoke Catalog A</span>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke Profile B1</span>
+                        </div>
                     </div>
-                    <div class="group">
-                        <span>Group QQ</span>
-                        <p class="control">Control QQA</p>
-                        <p class="control">Control QQB</p>
-                        <p class="control">Control QQC</p>
+                    <div class="profile">
+                        <span>B1 Profile</span>
+                        <div class="invoke">
+                            <span>Invoke Catalog B</span>
+                        </div>
                     </div>
-                    <div class="group">
-                        <span>Group ZZ</span>
-                        <p class="control">Control ZZA</p>
-                        <p class="control">Control ZZB</p>
-                        <p class="control">Control ZZC</p>
-                    </div>
-                </div>
-                <div class="profile">
-                    <span>A profile CQ/Z "slim"</span>
-                    <div class="invoke">
-                        <span>Invoke CQZ controls catalog</span>
-                        <p class="call">Control CCA</p>
-                        <p class="control">Control QQC</p>
-                    </div>
-                </div>
-                <div class="resolution">
-                    <span>Resolution of CQ/Z "slim" profile</span>
-                    <div class="invoke">
-                        <span>Invoke CQZ controls catalog</span>
-                        <div class="resolution">
-                            <span>CQZ Controls Catalog</span>
-                            <div class="group">
-                                <span>Group CC</span>
-                                <p class="control">Control CCA</p>
+                    <div class="resolution">
+                        <span><q>OK Profile</q> Resolution</span>
+                        <div class="invoke">
+                            <span>Invoke Catalog A</span>
+                            <p>(Results of invocation)</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke Profile B1</span>
+                            <div class="invoke">
+                                <span>Invoke Catalog B</span>
+                                <p>(Results of invocation)</p>
                             </div>
-                            <div class="group">
-                                <span>Group QQ</span>
-                                <p class="control">Control QQC</p>
+                        </div>
+                    </div></figure>
+                <figure>
+                    <div class="profile">
+                        <span>Also OK Profile</span>
+                        <div class="invoke">
+                            <span class="stress">Invoke Catalog A</span>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke Profile A1</span>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>A1 Profile</span>
+                        <div class="invoke">
+                            <span class="stress">Invoke Catalog A</span>
+                        </div>
+                    </div><div class="resolution">
+                        <span><q>Also OK Profile</q> Resolution</span>
+                        <div class="invoke">
+                            <span>Invoke Catalog A</span>
+                            <p>(Results of invocation)</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke Profile A1</span>
+                            <div class="invoke">
+                                <span>Invoke Catalog A</span>
+                                <p>(Results of invocation)</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </figure>
-            <p>When controls from a catalog are included in resolution, a proxy of the entire
-                catalog structure, including any grouping structure in which selected controls
-                appear, is included. This permits structured representation of contents of the
-                catalog outside of the groups containing selected controls.</p>
-            <p>Note that one consequence of this is that certain information from catalogs,
-                specifically titles and text at the top level and group levels, will be represented
-                in resolved profiles of those catalogs, but may "decay" as their contents (controls)
-                are selected and modified (in the sense that their semantic relations and
-                representations will be less and less applicable). Good catalog design will help
-                mitigate this; and applications are able to trace the provenance of such information
-                (indeed, here the information is retained for purposes of tracing provenance as well
-                as representing the data as given).</p>
-        </section>
-        <section>
-            <p>Alternatively, an invocation can indicate that all controls from the catalog (or
-                upstream profile) should be included.</p>
-            <figure>
-                <div class="catalog">
-                    <span>CQ Controls Catalog</span>
-                    <div class="group">
-                        <span>Group CC</span>
-                        <p class="control">Control CCA</p>
-                        <p class="control">Control CCB</p>
-                        <p class="control">Control CCC</p>
+                </figure>
+            </section>
+            <section>
+                <h3>Circular references are inoperable</h3>
+                <p>If an OSCAL profile includes, directly or indirectly, any invocations of itself
+                    as a resource, such invocations are inoperable. Such circular reference is an
+                    error. A processor may fall back by ignoring circular calls (i.e. invocations of
+                    resources that have already been invoked higher in the stack).</p>
+                <figure>
+                    <div class="profile">
+                        <span>Perplex Profile</span>
+                        <div class="invoke">
+                            <span>Invoke Plexper profile</span>
+                        </div>
                     </div>
-                    <div class="group">
-                        <span>Group QQ</span>
-                        <p class="control">Control QQA</p>
-                        <p class="control">Control QQB</p>
-                        <p class="control">Control QQC</p>
+                    <div class="profile">
+                        <span>Plexper Profile</span>
+                        <div class="invoke">
+                            <span>Invoke Perplex profile</span>
+                        </div>
                     </div>
-                </div>
-                <div class="profile">
-                    <span>An "identity profile" of CQ</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <p class="all">All</p>
-                    </div>
-                </div>
-                <div class="profile">
-                    <span>A more literal "identity profile" of CQ</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <p class="call">Control CCA</p>
-                        <p class="call">Control CCB</p>
-                        <p class="call">Control CCC</p>
-                        <p class="call">Control QQA</p>
-                        <p class="call">Control QQB</p>
-                        <p class="call">Control QQC</p>
-                    </div>
-                </div>
-                <div class="resolution">
-                    <span>Resolution of (either) CQ Identity Profile</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <div class="resolution">
-                            <span>CQ Controls Catalog</span>
-                            <div class="group">
-                                <span>Group CC</span>
-                                <p class="control">Control CCA</p>
-                                <p class="control">Control CCB</p>
-                                <p class="control">Control CCC</p>
-                            </div>
-                            <div class="group">
-                                <span>Group QQ</span>
-                                <p class="control">Control QQA</p>
-                                <p class="control">Control QQB</p>
-                                <p class="control">Control QQC</p>
+                    <div class="resolution">
+                        <span>Resolution of Perplex Profile</span>
+                        <div class="invoke">
+                            <span>Invoke Plexper profile</span>
+                            <div class="invoke error">
+                                <span>Invoke Perplex profile</span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </figure>
-        </section>
-        <section>
-            <p>It is more common to use "include/all" with an exclusion rule – or to use exclusion
-                rules with only an implicit call to "all" (which will be inferred when no other
-                inclusion is given):</p>
-            <figure>
-                <div class="profile">
-                    <span>"Almost All" profile of CQ</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <p class="all">All</p>
-                        <p class="exclude">Control QQC</p>
+                </figure>
+            </section>
+            <section>
+                <h3>Including controls from a resource (catalog or profile) by ID</h3>
+                <p>An invocation can identify controls (as given in and by the resource) for
+                    inclusion in either of two ways. The first method is by an explicit <q>call</q>
+                    using the ID of the desired control or subcontrol.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
                     </div>
-                </div><div class="profile">
-                    <span>"Almost All" profile of CQ (implicit "all")</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <p class="exclude">Control QQC</p>
+                    <div class="profile">
+                        <span>AAS Profile (with selection from AA Catalog)</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
                     </div>
-                </div>
-                <div class="resolution">
-                    <span>Resolution of (either) "Almost All" CQ Profile</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <div class="resolution">
-                            <span>CQ Controls Catalog</span>
-                            <div class="group">
-                                <span>Group CC</span>
-                                <p class="control">Control CCA</p>
-                                <p class="control">Control CCB</p>
-                                <p class="control">Control CCC</p>
-                            </div>
-                            <div class="group">
-                                <span>Group QQ</span>
-                                <p class="control">Control QQA</p>
-                                <p class="control">Control QQB</p>
+                    <div class="resolution">
+                        <span>Resolution of AAS Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA controls catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.3</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </figure>
-        </section>
-        <section>
-            <p>Note that if no explicit inclusion rule is given (irrespective of exclusions), a processor should "include all" in any case:</p>
-            <figure>
-                <div class="profile">
-                    <span>"Null invocation" profile of CQ is effectively "All"</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
+                </figure>
+            </section>
+            <section>
+                <h3>Including all controls from a resource</h3>
+                <p>Alternatively, an invocation can indicate that all controls from the resource
+                    (catalog or upstream profile) should be included.</p>
+                <figure>
+                    <div class="profile">
+                        <span>AAA Profile selecting all controls from AA Catalog</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">All</p>
+                        </div>
                     </div>
-                </div>
-                <div class="resolution">
-                    <span>Resolution of "Null invocation" CQ Profile</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <div class="resolution">
-                            <span>CQ Controls Catalog</span>
-                            <div class="group">
-                                <span>Group CC</span>
-                                <p class="control">Control CCA</p>
-                                <p class="control">Control CCB</p>
-                                <p class="control">Control CCC</p>
-                            </div>
-                            <div class="group">
-                                <span>Group QQ</span>
-                                <p class="control">Control QQA</p>
-                                <p class="control">Control QQB</p>
+                    <div class="resolution">
+                        <span>Resolution of AAA Profile (selecting <q>all</q>)</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.2</p>
+                                    <p>Control AA.3</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </figure>
-            <p>So why would you ever use "all"? If all controls are included by default, then just including
-                or excluding controls by ID ought to be sufficient. (Perhaps following the rule that if any controls are included by ID, "all" goes off.) An explicit instruction to include "all" becomes useful once subcontrols come into the picture. Before we illustrate subcontrols (control enhancements), however, we have ...</p>
-            
-        </section>
-        
-        <section>
-            <h2>Cabinet of Horrors</h2>
-            <p>We can illustrate a number of edge case scenarios, including both errors and exceptional or near-exceptional (but illustrative) cases.</p>
-        <section>
-            
-            <figure>
-                
-                <div class="profile">
-                    <span>Competing (CQ and CQ) Profile</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <p class="call">Control CCB</p>
-                        <p class="call">Control CCC</p>
-                        <p class="call">Control QQC</p>
-                        <p class="call">Control QQA</p>
+                    <div class="profile">
+                        <span>AAA Profile, this time expressed using calls</span>
+                        <div class="invoke">
+                            <span>Invoke CQ controls catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.2</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div></figure>
+                <p>A profile that invokes all controls from a single catalog, without modification,
+                    would be an <q>identity profile</q>.</p>
+            </section>
+            <section>
+                <h3>No inclusion statement implies <q>include all</q></h3>
+                <p>Note that if no explicit inclusion instruction is given (irrespective of
+                    exclusions), a processor should <q>include all</q> as the fallback:</p>
+                <figure>
+                    <div class="profile">
+                        <span>Implicit inclusion AAA Profile is effectively <q>All</q></span>
+                        <div class="invoke">
+                            <span>Invoke AA controls catalog</span>
+                        </div>
                     </div>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <p class="call">Control CCA</p>
-                    </div>
-                </div>
-                <div class="resolution"><span>Resolution of Competing (CQ) Profile</span>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <div class="resolution">
-                            <span>CQ Controls Catalog</span>
-                            <div class="group">
-                                <span>Group CC</span>
-                                <p class="control">Control CCB</p>
-                                <p class="control">Control CCC</p>
-                            </div>
-                            <div class="group">
-                                <span>Group QQ</span>
-                                <p class="control">Control QQA</p>
-                                <p class="control">Control QQC</p>
+                    <div class="resolution">
+                        <span>Resolution of AAA Profile (selecting "all")</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.2</p>
+                                    <p>Control AA.3</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="invoke">
-                        <span>Invoke CQ controls catalog</span>
-                        <div class="resolution">
-                            <span>CQ Controls Catalog</span>
-                            <div class="group">
-                                <span>Group CC</span>
-                                <p class="control">Control CCA</p>
+                </figure>
+            </section>
+            <section>
+                <h3>Excluding a control by ID</h3>
+                <p>It is more common to use "include/all" with an exclusion rule – or to use
+                    exclusion rules with only an implicit call to "all" (which will be inferred when
+                    no other inclusion is given):</p>
+                <figure>
+                    <div class="profile">
+                        <span>"Almost All" profile of AA</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">All</p>
+                            <p class="exclude">Control AA.2</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>"Almost All" profile of AA (implicit "all")</span>
+                        <div class="invoke">
+                            <span>Invoke CQ controls catalog</span>
+                            <p class="exclude">Control AA.2</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of (either) "Almost All" Profile of Catalog AA</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.3</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </figure>
-            <p>In this case, two invocations call (reference) the same control catalog. This is not regarded as an error, but only because there are no actual conflicts between the invocations (when they are resolved). A warning might be offered to provide an alert that a more efficient representation would be possible.</p> 
+                    <p>Note that the profile expressed here is the same as the <q>AAS</q> profile
+                        above (except it selects controls by exclusion not inclusion).</p>
+                </figure>
+            </section>
+            <section>
+                <h3>Exception: a control is included more than once</h3>
+                <p>Multiple inclusions of a single control within the same invocation, result in a
+                    single copy of the control in the resolved profile.</p>
+                <p>An application may produce a warning when this occurs.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>AAZ Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.3</p>
+                            <p class="include warning">Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAZ Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA controls catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Exception: including or excluding a control that is not found in its
+                    catalog</h3>
+                <p>An inclusion of a control that is not found in its catalog is inoperable. An
+                    implementation may report a warning when unknown controls are included or
+                    excluded.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>AAZ Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include warning">Control ZZ.1</p>
+                            <p class="include">Control AA.3</p>
+                            <p class="exclude warning">Control ZZ.0</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAZ Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA controls catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Exception: a control is included more than once, then also excluded</h3>
+                <p>A control identified for exclusion is excluded, no matter how many times it is
+                    included.</p>
+                <p>An application may produce a warning when a control is both included (by ID) and
+                    excluded. Ordinarily, exclusions of controls (not subcontrols) should not be
+                    used unless include has <q>all</q>.</p>
+                <figure>
+                    <div class="profile">
+                        <span>AAZ Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.3</p>
+                            <p class="include warning">Control AA.3</p>
+                            <p class="exclude error">Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAZ Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA controls catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>Along the same lines, multiple exclusions all mean <q>exclude</q>, so more than a
+                    single one is superfluous.</p>
+            </section>
         </section>
+        <section>
+            <h2>Selecting subcontrols</h2>
+            <p>Because each subcontrol is dependent on a control and may not appear without it,
+                there are special features for the selection and exclusion of subcontrols.</p>
+            <p>Note that this dependency is strict and applies to subcontrols and controls as named
+                within the same invocation tree. That is, it is not possible for a profile to select
+                (or modify) subcontrols specified elsewhere in an invocation tree (if, for example,
+                they have been excluded earlier) if their controls are not included (explicitly or
+                implicitly) within the same profile (i.e. within the control set dictated by that
+                profile). When controls however, are included, their subcontrols may also be
+                included either by ID or other means as described.</p>
+            <section>
+                <h3>Selecting subcontrols by ID</h3>
+                <p>Subcontrols are <i>not</i> included by default when their controls are included. However, like controls they may be included by ID.</p>
+                <figure><div class="catalog">
+                        <span>BBB Controls Catalog</span>
+                        <div class="group">
+                            
+                            <p>Control BBB.1</p>
+                            <p class="subcontrol">Subcontrol BBB.1a</p>
+                            <p class="subcontrol">Subcontrol BBB.1b</p>
+                            <p class="subcontrol">Subcontrol BBB.1c</p>
+                            <p>Control BBB.2</p>
+                            <p>Control BBB.3</p>
+                            <p class="subcontrol">Subcontrol BBB.3a</p>
+                            <p class="subcontrol">Subcontrol BBB.3b</p>
+                            <p class="subcontrol">Subcontrol BBB.3c</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                    <div class="invoke">
+                        <span>Invoke BBB controls catalog</span>
+                        <p class="include">Control BBB.1</p>
+                        <p class="include">Control BBB.3</p>
+                        <p class="include subcontrol">Subcontrol BBB.3b</p>
+                    </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolving the BBB Catalog profile</span>
+                        <div class="invoke">
+                            <span>Invoke BBB controls catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    
+                                    <p>Control BBB.1</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>Note that in this example, subcontrols of control BBB.1 are not included, because
+                    none are designated.</p>
+            </section>
+            <section>
+                <h3>Including subcontrols with their controls</h3>
+                <p>Alternatively, an instruction with the control can indicate to include (all) its
+                    subcontrols. (Subcontrols not associated with the control will not be
+                    included.)</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="invoke">
+                            <span>Invoke BBB controls catalog</span>
+                            <p class="include">Control BBB.1</p>
+                            <p class="include ws">Control BBB.3</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolving the BBB Catalog profile</span>
+                        <div class="invoke">
+                            <span>Invoke BBB controls catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    
+                                    <p>Control BBB.1</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3a</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                    <p class="subcontrol">Subcontrol BBB.3c</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>Again, subcontrols of control BBB.1 are not included.</p>
+            </section>
+            <section>
+                <h3>Including subcontrols with all controls</h3>
+                <p>Additionally, the <q>all</q> inclusion instruction may be configured to include
+                    subcontrols.</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="invoke">
+                            <span>Invoke BBB controls catalog</span>
+                            <p class="include ws">All</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAS Profile</span>
+                        <div class="invoke">
+                            <span>Invoke BBB controls catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    
+                                    <p>Control BBB.1</p>
+                                    <p class="subcontrol">Subcontrol BBB.1a</p>
+                                    <p class="subcontrol">Subcontrol BBB.1b</p>
+                                    <p class="subcontrol">Subcontrol BBB.1c</p>
+                                    <p>Control BBB.2</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3a</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                    <p class="subcontrol">Subcontrol BBB.3c</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Excluding subcontrols</h3>
+                <p>Subcontrols may also be (explicitly) excluded.</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="invoke">
+                            <span>Invoke BBB Catalog</span>
+                            <p class="include ws">All</p>
+                            <p class="exclude">Subcontrol BBB.3a</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of BBB Profile</span>
+                        <div class="invoke">
+                            <span>Invoke BBB Catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BBB.1</p>
+                                    <p class="subcontrol">Subcontrol BBB.1a</p>
+                                    <p class="subcontrol">Subcontrol BBB.1b</p>
+                                    <p class="subcontrol">Subcontrol BBB.1c</p>
+                                    <p>Control BBB.2</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                    <p class="subcontrol">Subcontrol BBB.3c</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>The same logic applies when subcontrols are included by other means (such as
+                    "Include all controls with subcontrols").</p>
+            </section>
+            <section>
+                <h3>Exception: including or excluding a subcontrol without its control</h3>
+                <p>An instruction to include a subcontrol without its control is inoperable. A
+                    system may produce a warning when this occurs. In the resolved profile, the
+                    included subcontrol will not appear.</p>
+                <p>Similarly, an instruction to exclude a subcontrol, whose control is not included
+                    (by some means, if only by default), is inoperable; such exclusions might be
+                    flagged with warnings.</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="invoke">
+                            <span>Invoke BBB controls catalog</span>
+                            <p class="include">Control BBB.1</p>
+                            <p class="include warning">Subcontrol BBB.3a</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of BBB Profile</span>
+                        <div class="invoke">
+                            <span>Invoke BBB controls catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BBB.1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+        </section>
+        <section>
+            <h2>Merging</h2>
+            <p><q>Merging</q> in OSCAL profile resolution is a simple process of aggregation of
+                controls from catalogs together in a structure reflecting (a) their original order
+                in their catalogs, arranged within (b) their order of invocation.</p>
+            <p>A more comprehensive merger operation to regroup controls (from a resolved profile)
+                may be offered by applications as a post-process, if and as appropriate to address
+                requirements.</p>
+            <section>
+                <h3>A profile with more than one invocation resolves them separately</h3>
+                <figure><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="catalog">
+                        <span>BB Controls Catalog</span>
+                        <div class="group">
+                            <p>Control BB.1</p>
+                            <p>Control BB.2</p>
+                            <p>Control BB.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>AB Profile (with selections from AA and BB catalogs)</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke BB Catalog</span>
+                            <p class="include">Control BB.1</p>
+                            <p class="include">Control BB.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of AB Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke BB Catalog</span>
+                            <div class="catalog">
+                                <span>BB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BB.1</p>
+                                    <p>Control BB.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+            </section>
+            <section>
+                <h3>Recursive profile resolution is reflected in the invocation hierarchy</h3>
+                <figure><div class="catalog">
+                        <span>BB Controls Catalog</span>
+                        <div class="group">
+                            <p>Control BB.1</p>
+                            <p>Control BB.2</p>
+                            <p>Control BB.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>B-minus Profile selected from BB catalog</span>
+                        <div class="invoke">
+                            <span>Invoke BB Catalog</span>
+                            <p class="include">Control BB.1</p>
+                            <p class="include">Control BB.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A/B-minus Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke B-minus Profile</span>
+                            <p class="include">Control BB.1</p>
+                        </div>
+                    </div><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A/B-minus Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke B-minus Profile</span>
+                            <div class="invoke">
+                                <span>Invoke BB Catalog</span>
+                                <div class="catalog">
+                                    <span>BB Controls Catalog</span>
+                                    <div class="group">
+                                        <p>Control BB.1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+            </section>
+            <section>
+                <h3>The same catalog can appear at multiple terminals in an invocation
+                    hierarchy</h3>
+                <p>There is no error here, nor any reason to consider this condition a problem
+                    unless the multiple invocations actually conflict.</p>
+                <p>A post-process or downstream transformation or rendering might opt to collapse,
+                    regroup or rearrange hierachies – or to normalize controls against their
+                    hierarchies thereby rendering the latter implicit.</p>
+                <figure><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A-minus Profile selected from AA catalog</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A/A-minus Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.2</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke A-minus Profile</span>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A/A-minus Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.2</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke A-minus Profile</span>
+                            <div class="invoke">
+                                <span>Invoke AA Catalog</span>
+                                <div class="catalog">
+                                    <span>AA Controls Catalog</span>
+                                    <div class="group">
+                                        <p>Control BB.3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+            </section>
+            <section>
+                <h3>Among controls as invoked, group organization within their catalogs is
+                    retained</h3>
+                <p>When controls from a catalog are included in resolution, a proxy of the catalog
+                    structure is included, including any group in which selected controls appear.
+                    This permits structured representation of contents of the catalog outside of the
+                    groups containing selected controls.</p>
+                <p>Note that one consequence of this is that certain information from catalogs,
+                    specifically titles and text at the top level and group levels, will be
+                    represented in resolved profiles of those catalogs, but may <q>decay</q> as
+                    their contents (controls) are selected and modified (in the sense that their
+                    semantic relations and representations will be less and less applicable). Good
+                    catalog design will help mitigate this.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>CQZ Controls Catalog</span>
+                        <div class="group">
+                            <span>Group CC</span>
+                            <p>Control CCA</p>
+                            <p>Control CCB</p>
+                            <p>Control CCC</p>
+                        </div>
+                        <div class="group">
+                            <span>Group QQ</span>
+                            <p>Control QQA</p>
+                            <p>Control QQB</p>
+                            <p>Control QQC</p>
+                        </div>
+                        <div class="group">
+                            <span>Group ZZ</span>
+                            <p>Control ZZA</p>
+                            <p>Control ZZB</p>
+                            <p>Control ZZC</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>A profile CQ/Z "slim"</span>
+                        <div class="invoke">
+                            <span>Invoke CQZ controls catalog</span>
+                            <p class="include">Control CCA</p>
+                            <p class="include">Control CCB</p>
+                            <p class="include">Control QQC</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of CQ/Z "slim" profile</span>
+                        <div class="invoke">
+                            <span>Invoke CQZ controls catalog</span>
+                            <div class="catalog">
+                                <span>CQZ Controls Catalog</span>
+                                <div class="group">
+                                    <span>Group CC</span>
+                                    <p class="include">Control CCA</p>
+                                    <p class="include">Control CCB</p>
+                                </div>
+                                <div class="group">
+                                    <span>Group QQ</span>
+                                    <p class="include">Control QQC</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>A warning might be produced for a second direct invocation of a resource from a
+                    profile – simply because its calls could have been included along with the
+                    others; but it does not produce an error unless multiple inclusions of given
+                    controls occurs across the invocations.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>BTW Controls Catalog</span>
+                        <div class="group">
+                            <span>Group Alpha</span>
+                            <div class="group">
+                                <span>Alpha_I</span>
+                                <p>Control A_I_1</p>
+                                <p>Control A_I_2</p>
+                                <p>Control A_I_3</p>
+                            </div>
+                            <div class="group">
+                                <span>Alpha_II</span>
+                                <p>Control A_II_48</p>
+                                <p>Control A_II_49</p>
+                                <p>Control A_II_50</p>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <span>Group Beta</span>
+                            <div class="group">
+                                <span>Beta_I</span>
+                                <p>Control B_I_1</p>
+                                <p>Control B_I_2</p>
+                                <p>Control B_I_3</p>
+                            </div>
+                            <div class="group">
+                                <span>Beta_II</span>
+                                <p>Control B_II_48</p>
+                                <p>Control B_II_49</p>
+                                <p>Control B_II_50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>A combining profile </span>
+                        <div class="invoke">
+                            <span>Invoke CQZ controls catalog</span>
+                            <p class="include">Control CCA</p>
+                            <p class="include">Control CCB</p>
+                            <p class="include">Control QQC</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke BTW controls catalog</span>
+                            <p class="include">Control A_I_1</p>
+                            <p class="include">Control A_II_48</p>
+                        </div>
+                        <div class="invoke warning">
+                            <span>Invoke BTW controls catalog</span>
+                            <p class="include">Control B_I_1</p>
+                            <p class="include">Control B_II_50</p>
+                            <p class="include">Control A_II_50</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of combining profile</span>
+                        <div class="invoke">
+                            <span>Invoke CQZ controls catalog</span>
+                            <div class="catalog">
+                                <span>CQZ Controls Catalog</span>
+                                <div class="group">
+                                    <span>Group CC</span>
+                                    <p class="include">Control CCA</p>
+                                    <p class="include">Control CCB</p>
+                                </div>
+                                <div class="group">
+                                    <span>Group QQ</span>
+                                    <p class="include">Control QQC</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog">
+                            <span>BTW Controls Catalog</span>
+                            <div class="group">
+                                <span>Group Alpha</span>
+                                <div class="group">
+                                    <span>Alpha_I</span>
+                                    <p>Control A_I_1</p>
+                                </div>
+                                <div class="group">
+                                    <span>Alpha_II</span>
+                                    <p>Control A_II_48</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog">
+                            <span>BTW Controls Catalog</span>
+                            <div class="group">
+                                <span>Group Alpha</span>
+                                <div class="group">
+                                    <span>Alpha_II</span>
+                                    <p>Control A_II_50</p>
+                                </div>
+                            </div>
+                            <div class="group">
+                                <span>Group Beta</span>
+                                <div class="group">
+                                    <span>Beta_I</span>
+                                    <p>Control B_I_1</p>
+                                </div>
+                                <div class="group">
+                                    <span>Beta_II</span>
+                                    <p>Control B_II_50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Exception: competing calls</h3>
+                <p>The first of the examples given shows no conflicts. The second shows control AA.2
+                    in doubt – <em>competing</em> –  because it appears in two invocation
+                    hierarchies. If either invocations is marked for modifications the other is not,
+                    they will be (moreover) <em>conflicting</em>.</p>
+                <p>An OSCAL processor may fail to copy one or both, or may copy (and then modify)
+                    both occurrences of a control, while also alerting consuming applications of
+                    apparent or likely conflicts. (In a simple implementation this might be signaled
+                    by an ID collision.)</p>
+                <figure><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A-2 Profile</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">All</p>
+                            <p class="exclude">AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A2A Profile</span>
+                        <div class="invoke">
+                            <span>Invoke A-2</span>
+                            <p>(All AA controls except AA.3)</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A2A Profile</span>
+                        <div class="invoke">
+                            <span>Invoke A-2 Profile</span>
+                            <div class="invoke">
+                                <span>Invoke AA Catalog</span>
+                                <div class="catalog">
+                                    <span>AA Controls Catalog</span>
+                                    <div class="group">
+                                        <p>Control AA.1</p>
+                                        <p>Control AA.2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+                <figure><div class="profile">
+                        <span>A2B Profile</span>
+                        <div class="invoke">
+                            <span>Invoke A-2</span>
+                            <p>(All AA controls except AA.3)</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.2</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A2A Profile</span>
+                        <div class="invoke">
+                            <span>Invoke A-2 Profile</span>
+                            <div class="invoke">
+                                <span>Invoke AA Catalog</span>
+                                <div class="catalog">
+                                    <span>AA Controls Catalog</span>
+                                    <div class="group">
+                                        <p>Control AA.1</p>
+                                        <p class="error">Control AA.2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p class="error">Control AA.2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+            </section>
         </section>
     </body>
 </html>
