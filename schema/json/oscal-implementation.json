@@ -146,6 +146,10 @@
       "$id": "#/definitions/policy",
       "$ref": "#/definitions/component"
     },
+    "procedure": {
+      "$id": "#/definitions/procedure",
+      "$ref": "#/definitions/component"
+    },
     "reference": {
       "$id": "#/definitions/reference",
       "type": "object",
@@ -236,6 +240,12 @@
         "$ref": "#/definitions/policy"
       }
     },
+    "procedures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/procedure"
+      }
+    },
     "params": {
       "type": "array",
       "items": {
@@ -251,6 +261,7 @@
       "profiles",
       "components",
       "policies",
+      "procedures",
       "params"
     ]
   }
