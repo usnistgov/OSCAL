@@ -13,66 +13,71 @@ package implementation
 import (
 	"encoding/json"
 	"fmt"
+
+	yaml "gopkg.in/yaml.v2"
 )
 
 // Implementation ...
 type Implementation struct {
-	Name        string      `json:"name"`
-	Description string      `json:"description"`
-	Maintainers []string    `json:"maintainers"`
-	Profiles    []Profile   `json:"profiles"`
-	Components  []Component `json:"components"`
-	Policies    []Policy    `json:"policies"`
-	Params      []Param     `json:"params"`
+	Name        string      `json:"name" yaml:"name"`
+	Description string      `json:"description" yaml:"description"`
+	Maintainers []string    `json:"maintainers" yaml:"maintainers"`
+	Profiles    []Profile   `json:"profiles" yaml:"profiles"`
+	Components  []Component `json:"components" yaml:"components"`
+	Policies    []Policy    `json:"policies" yaml:"policies"`
+	Procedures  []Procedure `json:"procedures" yaml:"procedures"`
+	Params      []Param     `json:"params" yaml:"params"`
 }
 
 // Profile ...
 type Profile struct {
-	Name string `json:"name"`
-	Href string `json:"href"`
+	Name string `json:"name" yaml:"name"`
+	Href string `json:"href" yaml:"href"`
 }
 
 // Component ...
 type Component struct {
-	Name             string      `json:"name"`
-	Description      string      `json:"description"`
-	ResponsibleRoles []string    `json:"responsibleRoles"`
-	Satisfies        []Satisfy   `json:"satisfies"`
-	References       []Reference `json:"references"`
+	Name             string      `json:"name" yaml:"name"`
+	Description      string      `json:"description" yaml:"description"`
+	ResponsibleRoles []string    `json:"responsibleRoles" yaml:"responsible_roles"`
+	Satisfies        []Satisfy   `json:"satisfies" yaml:"satisfies"`
+	References       []Reference `json:"references" yaml:"references"`
 }
 
 // Policy ...
 type Policy Component
 
+// Procedure ...
+type Procedure Component
+
 // Satisfy ...
 type Satisfy struct {
-	ControlID    string      `json:"controlId"`
-	SubcontrolID string      `json:"subcontrolId"`
-	Narratives   []Narrative `json:"narratives"`
-	Origins      []string    `json:"origins"`
-	Statuses     []string    `json:"statuses"`
-	References   []Reference `json:"references"`
+	ControlID    string      `json:"controlId" yaml:"control_id"`
+	SubcontrolID string      `json:"subcontrolId" yaml:"subcontrol_id"`
+	Narratives   []Narrative `json:"narratives" yaml:"narratives"`
+	Origins      []string    `json:"origins" yaml:"origins"`
+	Statuses     []string    `json:"statuses" yaml:"statuses"`
+	References   []Reference `json:"references" yaml:"references"`
 }
 
 // Narrative ...
 type Narrative struct {
-	Key        string      `json:"key"`
-	Value      string      `json:"value"`
-	References []Reference `json:"references"`
+	Value      string      `json:"value" yaml:"value"`
+	References []Reference `json:"references" yaml:"references"`
 }
 
 // Param ...
 type Param struct {
-	ParamID string `json:"paramId"`
-	Value   string `json:"value"`
+	ParamID string `json:"paramId" yaml:"param_id"`
+	Value   string `json:"value" yaml:"value"`
 }
 
 // Reference ...
 type Reference struct {
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	URL         string `json:"url"`
+	ID          string `json:"id" yaml:"id"`
+	Name        string `json:"name" yaml:"name"`
+	Description string `json:"description" yaml:"description"`
+	URL         string `json:"url" yaml:"url"`
 }
 
 // Component ...
@@ -89,6 +94,9 @@ func (i *Implementation) Raw(format string, prettify bool) ([]byte, error) {
 		}
 
 		return json.Marshal(i)
+
+	case "yaml", "yml":
+		return yaml.Marshal(i)
 	}
 
 	return nil, fmt.Errorf("Unable to generate raw data. Unknown format: %s", format)

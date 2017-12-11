@@ -28,7 +28,6 @@ import (
 
 var outputPath string
 var outputFile string
-var yaml bool
 
 // ConvertOSCAL ...
 var ConvertOSCAL = cli.Command{

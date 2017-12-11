@@ -24,6 +24,13 @@ var ConvertOpenControl = cli.Command{
 	Description: `Convert OpenControl-formatted "component" and "opencontrol" YAML into
 	 OSCAL-formatted "implementation" layer JSON`,
 	ArgsUsage: "[opencontrol.yaml-filepath] [opencontrols-dir-path]",
+	Flags: []cli.Flag{
+		cli.BoolFlag{
+			Name:        "yaml, y",
+			Usage:       "Generate YAML in addition to JSON",
+			Destination: &yaml,
+		},
+	},
 	Before: func(c *cli.Context) error {
 		if c.NArg() != 2 {
 			return cli.NewExitError("Missing opencontrol.yaml file and path to opencontrols/ directory", 1)
@@ -43,6 +50,14 @@ var ConvertOpenControl = cli.Command{
 		rawOCOSCAL, err := ocOSCAL.Raw("json", true)
 		if err != nil {
 			return err
+		}
+
+		if yaml {
+			rawYAMLOCOSCAL, err := ocOSCAL.Raw("yaml", true)
+			if err != nil {
+				return err
+			}
+			ioutil.WriteFile("opencontrol-oscal.yaml", rawYAMLOCOSCAL, 0644)
 		}
 
 		return ioutil.WriteFile("opencontrol-oscal.json", rawOCOSCAL, 0644)
