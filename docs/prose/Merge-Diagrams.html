@@ -674,7 +674,8 @@
                     included subcontrol will not appear.</p>
                 <p>Similarly, an instruction to exclude a subcontrol, whose control is not included
                     (by some means, if only by default), is inoperable; such exclusions might be
-                    flagged with warnings.</p>
+                    flagged with warnings – as might exclusions of subcontrols, that would not have
+                    been included in any case (by virtue of settings or defaults).</p>
                 <figure>
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
@@ -724,7 +725,7 @@
                             <p>Control BB.3</p>
                         </div>
                     </div><div class="profile">
-                        <span>AB Profile (with selections from AA and BB catalogs)</span>
+                        <span>AB Profile (selections from AA and BB)</span>
                         <div class="invoke">
                             <span>Invoke AA Catalog</span>
                             <p class="include">Control AA.1</p>
@@ -869,15 +870,17 @@
                                 <div class="catalog">
                                     <span>AA Controls Catalog</span>
                                     <div class="group">
-                                        <p>Control BB.3</p>
+                                        <p>Control AA.3</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div></figure>
+                <p>It is the business of a receiving application to collapse this if and as wanted
+                    (for example, if no further conflicts or issues are detected).</p>
             </section>
             <section>
-                <h3>Among controls as invoked, group organization within their catalogs is
+                <h3>Among controls selected in an invocation, a catalog's grouping organization is
                     retained</h3>
                 <p>When controls from a catalog are included in resolution, a proxy of the catalog
                     structure is included, including any group in which selected controls appear.
@@ -1033,6 +1036,66 @@
                                 <span>Group Alpha</span>
                                 <div class="group">
                                     <span>Alpha_II</span>
+                                    <p>Control A_II_50</p>
+                                </div>
+                            </div>
+                            <div class="group">
+                                <span>Group Beta</span>
+                                <div class="group">
+                                    <span>Beta_I</span>
+                                    <p>Control B_I_1</p>
+                                </div>
+                                <div class="group">
+                                    <span>Beta_II</span>
+                                    <p>Control B_II_50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="profile">
+                        <span>Better combination</span>
+                        <div class="invoke">
+                            <span>Invoke CQZ controls catalog</span>
+                            <p class="include">Control CCA</p>
+                            <p class="include">Control CCB</p>
+                            <p class="include">Control QQC</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke BTW controls catalog</span>
+                            <p class="include">Control A_I_1</p>
+                            <p class="include">Control A_II_48</p>
+                            <p class="include">Control B_I_1</p>
+                            <p class="include">Control B_II_50</p>
+                            <p class="include">Control A_II_50</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of better combination</span>
+                        <div class="invoke">
+                            <span>Invoke CQZ controls catalog</span>
+                            <div class="catalog">
+                                <span>CQZ Controls Catalog</span>
+                                <div class="group">
+                                    <span>Group CC</span>
+                                    <p class="include">Control CCA</p>
+                                    <p class="include">Control CCB</p>
+                                </div>
+                                <div class="group">
+                                    <span>Group QQ</span>
+                                    <p class="include">Control QQC</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog">
+                            <span>BTW Controls Catalog</span>
+                            <div class="group">
+                                <span>Group Alpha</span>
+                                <div class="group">
+                                    <span>Alpha_I</span>
+                                    <p>Control A_I_1</p>
+                                </div>
+                                <div class="group">
+                                    <span>Alpha_II</span>
+                                    <p>Control A_II_48</p>
                                     <p>Control A_II_50</p>
                                 </div>
                             </div>
