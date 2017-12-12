@@ -1,0 +1,368 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://csrc.nist.gov/ns/oscal/1.0-profile.json",
+  "definitions": {
+    "invoke": {
+      "$id": "#/definitions/invoke",
+      "type": "object",
+      "description": "For invocation of controls and subcontrols from a catalog or other authority",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": ""
+        },
+        "include": {
+          "$ref": "#/definitions/include"
+        },
+        "exclude": {
+          "$ref": "#/definitions/exclude"
+        },
+        "paramSettings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/paramSetting"
+          }
+        },
+        "alterations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/alteration"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "href",
+          "include",
+          "exclude",
+          "paramSettings",
+          "alterations"
+        ]
+      }
+    },
+    "include": {
+      "$id": "#/definitions/include",
+      "type": "object",
+      "description": "The element's contents indicate which controls and subcontrols to include from the authority (source catalog)",
+      "anyOf": [
+        {
+          "properties": {
+            "all": {
+              "type": "object",
+              "description": "Include all controls from the invoked authority (catalog)",
+              "properties": {
+                "withSubcontrols": {
+                  "type": "boolean",
+                  "description": ""
+                }
+              }
+            },
+            "calls": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/call"
+              },
+              "minItems": 1
+            }
+          },
+          "propertyNames": {
+            "enum": [
+              "all",
+              "calls"
+            ]
+          }
+        },
+        {
+          "properties": {
+            "all": {
+              "type": "boolean",
+              "description": "Include all controls from the invoked authority (catalog)"
+            }
+          },
+          "propertyNames": {
+            "enum": [
+              "all"
+            ]
+          }
+        }
+      ]
+    },
+    "exclude": {
+      "$id": "#/definitions/exclude",
+      "type": "object",
+      "description": "Which controls and subcontrols to exclude from the authority (source catalog) being invoked",
+      "properties": {
+        "calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "",
+            "properties": {
+              "controlId": {
+                "type": "string",
+                "description": ""
+              },
+              "subcontrolId": {
+                "type": "string",
+                "description": ""
+              }
+            },
+            "propertyNames": {
+              "enum": [
+                "controlId",
+                "subcontrolId"
+              ]
+            }
+          },
+          "minItems": 1
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "calls"
+        ]
+      }
+    },
+    "call": {
+      "$id": "#/definitions/call",
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "properties": {
+            "withSubcontrols": {
+              "type": "boolean",
+              "description": ""
+            },
+            "controlId": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "propertyNames": {
+            "enum": [
+              "withSubcontrols",
+              "controlId"
+            ]
+          }
+        },
+        {
+          "properties": {
+            "subcontrolID": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "propertyNames": {
+            "enum": [
+              "subcontrolId"
+            ]
+          }
+        }
+      ]
+    },
+    "filter": {
+      "$id": "#/definitions/filter",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "key",
+          "value"
+        ]
+      }
+    },
+    "paramSetting": {
+      "$id": "#/definitions/paramSetting",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "paramId": {
+          "type": "string",
+          "description": "",
+          "pattern": "^\\S*[a-zA-Z0-9.\\-_\\:]\\S*$"
+        },
+        "optionalClass": {
+          "type": "string",
+          "description": ""
+        },
+        "desc": {
+          "type": "string",
+          "description": ""
+        },
+        "paramValue": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "paramId",
+          "class",
+          "desc",
+          "value"
+        ]
+      }
+    },
+    "alteration": {
+      "$id": "#/definitions/alteration",
+      "type": "object",
+      "description": "",
+      "anyOf": [
+        {
+          "properties": {
+            "controlId": {
+              "type": "string",
+              "description": ""
+            },
+            "remove": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/remove"
+              }
+            },
+            "augment": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/augment"
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            }
+          },
+          "propertyNames": {
+            "enum": [
+              "controlId",
+              "remove",
+              "augment"
+            ]
+          }
+        },
+        {
+          "properties": {
+            "subcontrolId": {
+              "type": "string",
+              "description": ""
+            },
+            "remove": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/remove"
+              }
+            },
+            "augment": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/augment"
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            }
+          },
+          "propertyNames": {
+            "enum": [
+              "subcontrolId",
+              "remove",
+              "augment"
+            ]
+          }
+        }
+      ]
+    },
+    "remove": {
+      "$id": "#/definitions/remove",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^\\S*[a-zA-Z0-9.\\-_\\:]\\S*$"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "targets"
+        ]
+      }
+    },
+    "augment": {
+      "$id": "#/definitions/augment",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "props": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/prop"
+          }
+        },
+        "parts": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/part"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "props",
+          "parts"
+        ]
+      }
+    }
+  },
+  "type": "object",
+  "description": "In reference to a catalog (or other authority such as profile or framework), a selection and configuration of controls, maintained separately",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": ""
+    },
+    "title": {
+      "type": "string",
+      "description": ""
+    },
+    "invocations": {
+      "description": "",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/invoke"
+      },
+      "minItems": 1
+    },
+    "framework": {
+      "description": "",
+      "$ref": "oscal-core.json#/definitions/framework"
+    }
+  },
+  "propertyNames": {
+    "enum": [
+      "id",
+      "title",
+      "invocations",
+      "framework"
+    ]
+  },
+  "required": [
+    "invocations"
+  ]
+}
