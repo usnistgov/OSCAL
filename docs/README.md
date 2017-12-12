@@ -11,6 +11,21 @@ The 'docs' subdirectory contains the following:
   
 PROGRESS UPDATES (also sent via email)
 
+NOTE SENT ON SEPTEMBER 26, 2017:
+--------------------------------
+We have been working on creating documentation for the OSCAL project. We have prepared drafts of an overview document that mirrors much of the same content from the PowerPoint slides we delivered at the last tiger team meeting. We have also developed documentation for all of the tags used in the current OSCAL model.
+ 
+These documents can be found on GitHub using the following links:
+ 
+- Overview: https://github.com/usnistgov/OSCAL/blob/master/docs/prose/OSCAL%20Overview.md
+- Tag Library: https://github.com/usnistgov/OSCAL/blob/master/working/doc/schema/oscal-tag-library.md
+ 
+You will need privileges to view the private OSCAL GitHub repository to access these documents. Please send an email to michaela.iorga@nist.gov or david.waltermire@nist.gov including your GitHub username to request access to the OSCAL repository.
+ 
+We would appreciate your review and comments on these documents, with a specific focus on the organization and usability of this documentation. We have created a comment template for this purpose which can be found at: https://github.com/usnistgov/OSCAL/blob/master/docs/OSCAL-comment-template.xls?raw=true. Please email your comments using this template to oscal@nist.gov. To allow time for us to consider your comments in the next sprint work, please email your comments by Monday, October 9th, 2017.
+ 
+We plan to use your feedback to continuously improve the documentation for the project. We plan to ask for periodic reviews of this and other documentation, examples, and schema in the future as our work progresses.
+
 NOTE SENT ON OCTOBER 26, 2017:
 -------------------------------
 We accomplished the following in sprint 4:
