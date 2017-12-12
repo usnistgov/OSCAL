@@ -21,6 +21,7 @@ import (
 
 	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/implementation"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal/profile"
 	yaml "gopkg.in/yaml.v2"
 )
@@ -114,6 +115,7 @@ func New(options Options) (OSCAL, error) {
 
 	var coreOSCAL core.Core
 	var profileOSCAL profile.Profile
+	var implementationOSCAL implementation.Implementation
 
 	// Need a better way to identify OSCAL type from reader contents.
 	// Unable to properly capture error
@@ -125,6 +127,8 @@ func New(options Options) (OSCAL, error) {
 		return &profileOSCAL, nil
 	} else if err = json.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Invocations) > 0 {
 		return &profileOSCAL, nil
+	} else if err = json.Unmarshal(rawOSCAL, &implementationOSCAL); err == nil && len(implementationOSCAL.Components) > 0 {
+		return &implementationOSCAL, nil
 	}
 
 	return nil, errors.New("Improperly formatted OSCAL")
