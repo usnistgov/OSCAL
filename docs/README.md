@@ -9,8 +9,7 @@ The 'docs' subdirectory contains the following:
  * '[prose](prose)' - Prose files (e.g., Markdown format) with narrative on OSCAL (OSCAL overview, how-to steps, etc.)
  * '[schema](schema)' - OSCAL schema documentation, as further detailed in [schema/readme.md](schema/readme.md)
   
-PROGRESS UPDATES (also sent via email)
-
+# PROGRESS UPDATES (also sent via email)
 NOTE SENT ON SEPTEMBER 26, 2017:
 --------------------------------
 We have been working on creating documentation for the OSCAL project. We have prepared drafts of an overview document that mirrors much of the same content from the PowerPoint slides we delivered at the last tiger team meeting. We have also developed documentation for all of the tags used in the current OSCAL model.
