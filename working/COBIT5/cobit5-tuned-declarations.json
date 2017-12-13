@@ -1,0 +1,326 @@
+{
+  "declarations": {
+    "propertyDeclarations": [
+      {
+        "class": "area",
+        "context": "domain",
+        "singleton": true,
+        "required": true,
+        "values": [
+          "Governance",
+          "Management"
+        ]
+      },
+      {
+        "class": "code",
+        "context": "domain",
+        "singleton": true,
+        "required": true,
+        "identifier": true,
+        "values": [
+          "EDM",
+          "APO",
+          "BAI",
+          "DSS",
+          "MEA"
+        ]
+      },
+      {
+        "class": "number",
+        "context": "process",
+        "singleton": true,
+        "required": true,
+        "calc": [
+          {
+            "inheritances": [
+              {
+                "from": "code"
+              }
+            ],
+            "autonum": [
+              "01"
+            ]
+          }
+        ]
+      },
+      {
+        "class": "scope",
+        "context": "IT-goal",
+        "singleton": true,
+        "required": true,
+        "values": [
+          "IT"
+        ]
+      },
+      {
+        "class": "number",
+        "context": "IT-goal",
+        "singleton": true,
+        "required": true,
+        "regex": "\\d\\d"
+      },
+      {
+        "class": "metric",
+        "context": "metrics",
+        "required": true
+      },
+      {
+        "class": "scope",
+        "context": "process-goal",
+        "singleton": true,
+        "required": true,
+        "values": [
+          "Process"
+        ]
+      },
+      {
+        "class": "number",
+        "context": "process-goal",
+        "singleton": true,
+        "required": true,
+        "calc": [
+          {
+            "autonum": [
+              "1."
+            ]
+          }
+        ]
+      },
+      {
+        "class": "number",
+        "context": "practice",
+        "singleton": true,
+        "required": true,
+        "calc": [
+          {
+            "inheritances": [
+              true
+            ],
+            "autonum": [
+              ".01"
+            ]
+          }
+        ]
+      },
+      {
+        "class": "accountable",
+        "context": "raci_index",
+        "values": [
+          "Board",
+          "Chief Executive Officer",
+          "Chief Financial Officer",
+          "Chief Operating Officer",
+          "Business Executives",
+          "Business Process Owners",
+          "Strategy Executive Committee",
+          "Steering (Programmes/Projects) Committee",
+          "Project Management Office",
+          "Value Management Office",
+          "Chief Risk Officer",
+          "Chief Information Security Officer",
+          "Architecture Board",
+          "Enterprise Risk Committee",
+          "Head Human Resources",
+          "Compliance",
+          "Audit",
+          "Chief Information Officer",
+          "Head Architect",
+          "Head Development",
+          "Head IT Operations",
+          "Head IT Administration",
+          "Service Manager",
+          "Information Security Manager",
+          "Business Continuity Manager",
+          "Privacy Officer"
+        ]
+      },
+      {
+        "class": "responsible",
+        "context": "raci_index",
+        "values": [
+          "Board",
+          "Chief Executive Officer",
+          "Chief Financial Officer",
+          "Chief Operating Officer",
+          "Business Executives",
+          "Business Process Owners",
+          "Strategy Executive Committee",
+          "Steering (Programmes/Projects) Committee",
+          "Project Management Office",
+          "Value Management Office",
+          "Chief Risk Officer",
+          "Chief Information Security Officer",
+          "Architecture Board",
+          "Enterprise Risk Committee",
+          "Head Human Resources",
+          "Compliance",
+          "Audit",
+          "Chief Information Officer",
+          "Head Architect",
+          "Head Development",
+          "Head IT Operations",
+          "Head IT Administration",
+          "Service Manager",
+          "Information Security Manager",
+          "Business Continuity Manager",
+          "Privacy Officer"
+        ]
+      },
+      {
+        "class": "consulted",
+        "context": "raci_index",
+        "values": [
+          "Board",
+          "Chief Executive Officer",
+          "Chief Financial Officer",
+          "Chief Operating Officer",
+          "Business Executives",
+          "Business Process Owners",
+          "Strategy Executive Committee",
+          "Steering (Programmes/Projects) Committee",
+          "Project Management Office",
+          "Value Management Office",
+          "Chief Risk Officer",
+          "Chief Information Security Officer",
+          "Architecture Board",
+          "Enterprise Risk Committee",
+          "Head Human Resources",
+          "Compliance",
+          "Audit",
+          "Chief Information Officer",
+          "Head Architect",
+          "Head Development",
+          "Head IT Operations",
+          "Head IT Administration",
+          "Service Manager",
+          "Information Security Manager",
+          "Business Continuity Manager",
+          "Privacy Officer"
+        ]
+      },
+      {
+        "class": "informed",
+        "context": "raci_index",
+        "values": [
+          "Board",
+          "Chief Executive Officer",
+          "Chief Financial Officer",
+          "Chief Operating Officer",
+          "Business Executives",
+          "Business Process Owners",
+          "Strategy Executive Committee",
+          "Steering (Programmes/Projects) Committee",
+          "Project Management Office",
+          "Value Management Office",
+          "Chief Risk Officer",
+          "Chief Information Security Officer",
+          "Architecture Board",
+          "Enterprise Risk Committee",
+          "Head Human Resources",
+          "Compliance",
+          "Audit",
+          "Chief Information Officer",
+          "Head Architect",
+          "Head Development",
+          "Head IT Operations",
+          "Head IT Administration",
+          "Service Manager",
+          "Information Security Manager",
+          "Business Continuity Manager",
+          "Privacy Officer"
+        ]
+      },
+      {
+        "class": "from",
+        "context": "input",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "to",
+        "context": "output",
+        "required": true
+      }
+    ],
+    "partDeclarations": [
+      {
+        "class": "description",
+        "context": "process",
+        "singleton": true,
+        "required": false
+      },
+      {
+        "class": "objectives",
+        "context": "process",
+        "singleton": true,
+        "required": false
+      },
+      {
+        "class": "IT-goal",
+        "context": "process",
+        "singleton": false,
+        "required": false
+      },
+      {
+        "class": "process-goal",
+        "context": "process",
+        "singleton": false,
+        "required": false
+      },
+      {
+        "class": "metrics",
+        "context": "IT-goal",
+        "singleton": false,
+        "required": false
+      },
+      {
+        "class": "metrics",
+        "context": "process-goal",
+        "singleton": false,
+        "required": false
+      },
+      {
+        "class": "description",
+        "context": "practice",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "activities",
+        "context": "practice",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "raci_index",
+        "context": "practice",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "input",
+        "context": "practice",
+        "singleton": false,
+        "required": false
+      },
+      {
+        "class": "output",
+        "context": "practice",
+        "singleton": false,
+        "required": false
+      },
+      {
+        "class": "description",
+        "context": "input",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "description",
+        "context": "output",
+        "singleton": true,
+        "required": true
+      }
+    ]
+  }
+}
