@@ -2,13 +2,13 @@ package opencontrol
 
 // OpenControl ...
 type OpenControl struct {
-	Name           string       `yaml:"name"`
-	SchemaVersion  string       `yaml:"schema_version"`
-	Metadata       Metadata     `yaml:"metadata"`
-	Components     []string     `yaml:"components"`
-	Certifications []string     `yaml:"certifications"`
-	Standards      []string     `yaml:"standards"`
-	Dependencies   Dependencies `yaml:"dependencies"`
+	Name           string        `yaml:"name"`
+	SchemaVersion  string        `yaml:"schema_version"`
+	Metadata       *Metadata     `yaml:"metadata"`
+	Components     []string      `yaml:"components"`
+	Certifications []string      `yaml:"certifications"`
+	Standards      []string      `yaml:"standards"`
+	Dependencies   *Dependencies `yaml:"dependencies"`
 }
 
 // Metadata ...

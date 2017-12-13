@@ -52,7 +52,7 @@ type OpenControlOptions struct {
 	OpenControlsDir         string
 }
 
-// NewFromOC ...
+// NewFromOC initializes an OSCAL type from raw OpenControl data
 func NewFromOC(options OpenControlOptions) (OSCAL, error) {
 	ocFile, err := os.Open(options.OpenControlYAMLFilepath)
 	if err != nil {
@@ -118,7 +118,7 @@ func New(options Options) (OSCAL, error) {
 	var implementationOSCAL implementation.Implementation
 
 	// Need a better way to identify OSCAL type from reader contents.
-	// Unable to properly capture error
+	// Unable to properly capture error for malformed raw OSCAL
 	if err = xml.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (core.Core{}) {
 		return &coreOSCAL, nil
 	} else if err = json.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (core.Core{}) {

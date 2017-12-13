@@ -14,6 +14,7 @@ LDFLAGS=-ldflags "-s -w"
 BINARY=oscalkit_$(GOOS)_$(GOARCH)
 
 .DEFAULT_GOAL := $(BINARY)
+.PHONY: clean test push opencontrol $(BINARY)
 
 test:
 	docker container run \
@@ -35,7 +36,14 @@ $(BINARY):
 		golang:1.9 \
 		sh -c 'GOOS=${GOOS} GOARCH=${GOARCH} go build -v ${LDFLAGS} -o ${BINARY}'
 
-clean:
-	if [ -f ${BINARY} ]; then rm ${BINARY}; fi
+# Convert Docker EE OpenControl example project to OSCAL-formatted JSON "implementation"
+opencontrol: clean $(BINARY)
+	cp -r $$GOPATH/src/github.com/docker/compliance/examples/opencontrol/DockerEE-Moderate-ATO/ DockerEE-Moderate-ATO/
+	cd DockerEE-Moderate-ATO/ && \
+		compliance-masonry get
+	./${BINARY} convert opencontrol DockerEE-Moderate-ATO/opencontrol.yaml DockerEE-Moderate-ATO/opencontrols/
+	rm -rf DockerEE-Moderate-ATO/ ./${BINARY}
 
-.PHONY: clean test push $(BINARY)
+clean:
+	if [ -f "opencontrol-oscal.json" ]; then rm "opencontrol-oscal.json"; fi
+	if [ -f ${BINARY} ]; then rm ${BINARY}; fi

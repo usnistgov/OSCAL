@@ -1,6 +1,8 @@
 package oscal
 
 import (
+	"path"
+
 	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal/implementation"
 )
@@ -15,6 +17,15 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 		ocOSCAL.Profiles = append(ocOSCAL.Profiles, implementation.Profile{
 			Href: cert,
 		})
+	}
+
+	if oc.Dependencies != nil {
+		for _, cert := range oc.Dependencies.Certifications {
+			ocOSCAL.Profiles = append(ocOSCAL.Profiles, implementation.Profile{
+				Href: cert.URL,
+				Name: parseOCCert(cert.URL),
+			})
+		}
 	}
 
 	for _, ocComponent := range ocComponents {
@@ -65,4 +76,14 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 	}
 
 	return &ocOSCAL, nil
+}
+
+// Temporary mechanism for converting https://github.com/opencontrol/FedRAMP-Certifications
+// to path to OSCAL JSON
+func parseOCCert(url string) string {
+	if path.Base(url) == "FedRAMP-Certifications" {
+		return "FedRAMP-MODERATE-crude.json"
+	}
+
+	return ""
 }
