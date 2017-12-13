@@ -1214,6 +1214,40 @@
                         </div>
                     </div></figure>
             </section>
+            <section>
+                <h3>Exception: subcontrols must go with controls in the same invocation</h3>
+                <p>It is not possible to include or exclude subcontrols, whose control is not
+                    included in the same invocation. Such a subcontrol is inoperable, even if the
+                    control is included in a different invocation.</p>
+                <figure><div class="profile">Zelda Profile<div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.2</p>
+                        </div><div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include subcontrol error">Subcontrol AA.2</p>
+                        </div></div><div class="resolution">
+                        <span>Resolution of Zelda</span>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.2</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+            </section>
         </section>
     </body>
 </html>
