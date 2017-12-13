@@ -2,19 +2,18 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-  
+   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="xs"
-  version="2.0">
+  version="3.0">
 
 <!-- Translates an OSCAL document by converting
   
-- statements (stmt) become (named) elements
-- properties (prop) become attributes on their parent.
+- anything with a @class is renamed after that class
+- its old name becomes @data-oscal-type
 
 Constraints on inputs:
 
-- @name values always satisfy matches(@name,'\i\c*') i.e. XML NAME production
-- No prop/@name is duplicated within the prop element's parent (only one is captured)
+- @class values are singles and always satisfy matches(@name,'\i\c*') i.e. XML NAME production
   
 The results of this XSLT (on arbitrary OSCAL) can be validated against
 a stricter (profile-specific) schema than generic OSCAL.
@@ -28,26 +27,12 @@ sure it conforms to the profile?)
 
   <xsl:output indent="yes"/>
   
-  <xsl:strip-space elements="oscal:control"/>
-
-  <xsl:template match="* | @*">
-    <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <xsl:apply-templates select="oscal:prop"/>
-      <xsl:apply-templates select="node() except oscal:prop"/>
-    </xsl:copy>
-  </xsl:template>
+  <xsl:mode on-no-match="shallow-copy"/>
   
-  <xsl:template match="oscal:prop">
-    <xsl:attribute name="{@name}">
-      <xsl:apply-templates/>
-    </xsl:attribute>
-  </xsl:template>
-  
-  <xsl:template match="oscal:stmt | oscal:group/oscal:prop">
-    <xsl:element name="{@name}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:apply-templates/>
+  <xsl:template match="p[matches(@class,'\S')] | prop[matches(@class,'\S')] | part[matches(@class,'\S')]">
+    <xsl:element name="{@class}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:copy-of select="@* except @class"/>
+        <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-  
 </xsl:stylesheet>
