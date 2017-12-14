@@ -118,6 +118,13 @@
             .warning{
                 color: darkorange
             }
+            
+            .prov{
+                font-size: 80%;
+                font-style: italic;
+                font-family: sans-serif
+            }
+            
             .catalog .subcontrol{
                 font-size: 80%;
                 padding-left: 2em
@@ -154,8 +161,6 @@
                             <p>Control ZZC</p>
                         </div>
                     </div>
-                </figure>
-                <figure>
                     <div class="catalog">
                         <span>BTW Controls Catalog</span>
                         <div class="group">
@@ -216,7 +221,6 @@
                         <div class="invoke">
                             <span>Invoke AlphaBeta Profile (BTW controls)</span>
                             <p class="include">Control B_I_1</p>
-                            <p class="include">Control B_II_50</p>
                             <p class="include">Control A_II_50</p>
                         </div>
                     </div><div class="resolution">
@@ -270,10 +274,6 @@
                                             <span>Beta_I</span>
                                             <p>Control B_I_1</p>
                                         </div>
-                                        <div class="group">
-                                            <span>Beta_II</span>
-                                            <p>Control B_II_50</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -310,24 +310,23 @@
                                     </div>
                                     <div class="group">
                                         <span>Alpha_II</span>
-                                        <p>Control A_II_50</p>
+                                        <p>Control A_II_50 <span class="prov">invoked via AlphaBeta
+                                                Profile</span></p>
                                     </div>
                                 </div>
                                 <div class="group">
                                     <span>Group Beta</span>
                                     <div class="group">
                                         <span>Beta_I</span>
-                                        <p>Control B_I_1</p>
-                                    </div>
-                                    <div class="group">
-                                        <span>Beta_II</span>
-                                        <p>Control B_II_50</p>
+                                        <p>Control B_I_1 <span class="prov">invoked via AlphaBeta
+                                                Profile</span></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </figure>
+                    <p>An application may mark or annotate controls with their invocation
+                        provenance, as suggested in the diagram (and see below).</p></figure>
             </section>
             <section>
                 <h3>What to do about clashing controls (duplicated IDs)</h3>
@@ -337,9 +336,9 @@
             </section>
             <section>
                 <h3>Propagating group values / normalization / flattening</h3>
-                <p>We could outline how controls might be marked / decorated with their invocation
-                    provenance (insertion of properties or links back?), which would otherwise be
-                    lost here.</p>
+                <p>We could outline how controls might be marked / decorated with their
+                        <em>invocation provenance</em> (insertion of properties or links back?),
+                    which would otherwise be lost here.</p>
                 <p>We could also provide the option to flatten groups? Either removing or copying
                     downward (to controls) any group properties.</p>
             </section>
