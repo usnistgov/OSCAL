@@ -13,6 +13,7 @@ package implementation
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	yaml "gopkg.in/yaml.v2"
 )
@@ -64,6 +65,18 @@ type Satisfy struct {
 type Narrative struct {
 	Value      string      `json:"value" yaml:"value"`
 	References []Reference `json:"references" yaml:"references"`
+}
+
+// MarshalJSON ...
+func (n *Narrative) MarshalJSON() ([]byte, error) {
+	value, err := strconv.Unquote(n.Value)
+	if err != nil {
+		return nil, err
+	}
+
+	n.Value = value
+
+	return json.Marshal(*n)
 }
 
 // Param ...
