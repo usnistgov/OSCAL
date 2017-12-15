@@ -52,12 +52,12 @@ type Procedure Component
 
 // Satisfy ...
 type Satisfy struct {
-	ControlID    string      `json:"controlId" yaml:"control_id"`
-	SubcontrolID string      `json:"subcontrolId" yaml:"subcontrol_id"`
-	Narratives   []Narrative `json:"narratives" yaml:"narratives"`
-	Origins      []string    `json:"origins" yaml:"origins"`
-	Statuses     []string    `json:"statuses" yaml:"statuses"`
-	References   []Reference `json:"references" yaml:"references"`
+	ControlIDs    []string    `json:"controlIds" yaml:"control_ids"`
+	SubcontrolIDs []string    `json:"subcontrolIds" yaml:"subcontrol_ids"`
+	Narratives    []Narrative `json:"narratives" yaml:"narratives"`
+	Origins       []string    `json:"origins" yaml:"origins"`
+	Statuses      []string    `json:"statuses" yaml:"statuses"`
+	References    []Reference `json:"references" yaml:"references"`
 }
 
 // Narrative ...

@@ -37,7 +37,7 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 
 		for _, ocSatisfy := range ocComponent.Satisfies {
 			var oscalSatisfy implementation.Satisfy
-			oscalSatisfy.ControlID = ocSatisfy.ControlKey
+			oscalSatisfy.ControlIDs = append(oscalSatisfy.ControlIDs, ocSatisfy.ControlKey)
 
 			for _, ocNarrative := range ocSatisfy.Narrative {
 				oscalSatisfy.Narratives = append(oscalSatisfy.Narratives, implementation.Narrative{
