@@ -20,7 +20,9 @@
       ],
       "satisfies": [
         {
-          "controlId": "ac.1",
+          "controlIds": [
+            "ac.1"
+          ],
           "narratives": [
             {
               "value": "This is how my system satisfies ac.1",
@@ -55,7 +57,9 @@
       ],
       "satisfies": [
         {
-          "controlId": "ac.1",
+          "controlIds": [
+            "ac.1"
+          ],
           "narratives": [
             {
               "value": "This is how my policy satisfies ac.1",
@@ -79,6 +83,47 @@
           "id": "refid02",
           "name": "My Reference",
           "description": "This is a description of my organizational policy reference",
+          "url": "http://url-to-my-reference.com/myref"
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "name": "Procedure A",
+      "description": "Description of Procedure A",
+      "responsibleRoles": [
+        "RoleA",
+        "RoleB"
+      ],
+      "satisfies": [
+        {
+          "controlIds": [
+            "ac.1"
+          ],
+          "narratives": [
+            {
+              "value": "This is how my procedure satisfies ac.1",
+              "references": []
+            },
+            {
+              "value": "This is explanation about how my procedure satisfies ac.1",
+              "references": []
+            }
+          ],
+          "origins": [
+            "organization"
+          ],
+          "statuses": [
+            "implemented"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "refid02",
+          "name": "My Reference",
+          "description": "This is a description of my organizational procedure reference",
           "url": "http://url-to-my-reference.com/myref"
         }
       ]

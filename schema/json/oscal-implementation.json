@@ -50,9 +50,12 @@
       "type": "object",
       "description": "",
       "patternProperties": {
-        "^(controlId|subcontrolId)$": {
-          "type": "string",
-          "description": ""
+        "^(controlIds|subcontrolIds)$": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "properties": {
@@ -85,8 +88,8 @@
       },
       "propertyNames": {
         "enum": [
-          "controlId",
-          "subcontrolId",
+          "controlIds",
+          "subcontrolIds",
           "narratives",
           "origins",
           "statuses",
