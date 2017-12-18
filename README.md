@@ -1,2 +1,2 @@
 # OSCAL
-Open Security Controls Assessment Language 
+Open Security Controls Assessment Language Documentation
