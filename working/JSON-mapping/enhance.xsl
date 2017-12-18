@@ -19,12 +19,24 @@
         <xsl:next-match/>
     </xsl:template>
     
+    <xsl:template match="/map">
+        <implementation>
+            <xsl:apply-templates/>
+        </implementation>
+    </xsl:template>
+    
     <xsl:template match="name">
         <title>
             <xsl:apply-templates/>
-            </title>
-        </xsl:template>
-
+        </title>
+    </xsl:template>
+    
+    <xsl:template match="param">
+        <set-param>
+            <xsl:apply-templates/>
+        </set-param>
+    </xsl:template>
+    
     <xsl:template match="description | responsibleRoles">
         <p class="{name()}">
             <xsl:apply-templates/>
@@ -41,7 +53,7 @@
     <xsl:variable name="pathstep"  as="xs:string" expand-text="true">(/{$urlchar}+)</xsl:variable>
     
     <xsl:variable name="url-match" as="xs:string" expand-text="true">((http|ftp|https):/?/?)?{$domain}+{$tlds}{$pathstep}*{$tail}(\?{$extraURLchar}+)?</xsl:variable>
-    
+
    <!-- <xsl:template match="text()">
         
         <xsl:analyze-string select="." regex="{$url-match}">
