@@ -24,6 +24,9 @@
   <p:output port="_400_enhanced" primary="false">
     <p:pipe port="result" step="enhanced"/>
   </p:output>
+  <p:output port="_410_linked" primary="false">
+    <p:pipe port="result" step="linked"/>
+  </p:output>
   <p:output port="_500_analyzed" primary="false">
     <p:pipe port="result" step="analyzed"/>
   </p:output>
@@ -44,6 +47,7 @@
   <p:serialization port="_200_mapped"   indent="true"/>
   <p:serialization port="_300_refined"  indent="true"/>
   <p:serialization port="_400_enhanced" indent="true"/>
+  <p:serialization port="_410_linked"   indent="true"/>
   <p:serialization port="_500_analyzed" indent="true"/>
   
   <!-- Expands the profile into a nominal framework -->
@@ -74,6 +78,12 @@
   <p:xslt name="enhanced">
     <p:input port="stylesheet">
       <p:document href="enhance.xsl"/>
+    </p:input>
+  </p:xslt>
+  
+  <p:xslt name="linked">
+    <p:input port="stylesheet">
+      <p:document href="index-to-catalog.xsl"/>
     </p:input>
   </p:xslt>
   

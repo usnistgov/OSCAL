@@ -58,17 +58,6 @@ Parents of 'string': maintainers,statuses,origins
 
         -->
     
-    <xsl:template match="profiles | components | policies | procedures">
-        <group class="{name(.)}">
-            <xsl:apply-templates/>
-        </group>
-    </xsl:template>
-    
-    <xsl:template match="params">
-        <group class="parameters">
-            <xsl:apply-templates/>
-        </group>
-    </xsl:template>
     
     
     <!-- Unwrapping -->
