@@ -46,35 +46,35 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.1.">AUTOMATED SYSTEM ACCOUNT MANAGEMENT</link>
-            <prop class="control-name">AC-2 (1)</prop>
+            <prop class="subcontrol-name">AC-2 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.2.">REMOVAL OF TEMPORARY / EMERGENCY ACCOUNTS</link>
-            <prop class="control-name">AC-2 (2)</prop>
+            <prop class="subcontrol-name">AC-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.3.">DISABLE INACTIVE ACCOUNTS</link>
-            <prop class="control-name">AC-2 (3)</prop>
+            <prop class="subcontrol-name">AC-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.5.">INACTIVITY LOGOUT</link>
-            <prop class="control-name">AC-2 (5)</prop>
+            <prop class="subcontrol-name">AC-2 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.7.">ROLE-BASED SCHEMES</link>
-            <prop class="control-name">AC-2 (7)</prop>
+            <prop class="subcontrol-name">AC-2 (7)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -83,14 +83,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.9.">RESTRICTIONS ON USE OF SHARED / GROUP ACCOUNTS</link>
-            <prop class="control-name">AC-2 (9)</prop>
+            <prop class="subcontrol-name">AC-2 (9)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.10.">SHARED / GROUP ACCOUNT CREDENTIAL TERMINATION</link>
-            <prop class="control-name">AC-2 (10)</prop>
+            <prop class="subcontrol-name">AC-2 (10)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -129,35 +129,35 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.1.">AUTHORIZE ACCESS TO SECURITY FUNCTIONS</link>
-            <prop class="control-name">AC-6 (1)</prop>
+            <prop class="subcontrol-name">AC-6 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.2.">NON-PRIVILEGED ACCESS FOR NONSECURITY FUNCTIONS</link>
-            <prop class="control-name">AC-6 (2)</prop>
+            <prop class="subcontrol-name">AC-6 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.5.">PRIVILEGED ACCOUNTS</link>
-            <prop class="control-name">AC-6 (5)</prop>
+            <prop class="subcontrol-name">AC-6 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.9.">AUDITING USE OF PRIVILEGED FUNCTIONS</link>
-            <prop class="control-name">AC-6 (9)</prop>
+            <prop class="subcontrol-name">AC-6 (9)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.10.">PROHIBIT NON-PRIVILEGED USERS FROM EXECUTING PRIVILEGED FUNCTIONS</link>
-            <prop class="control-name">AC-6 (10)</prop>
+            <prop class="subcontrol-name">AC-6 (10)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -196,7 +196,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.11.1.">PATTERN-HIDING DISPLAYS</link>
-            <prop class="control-name">AC-11 (1)</prop>
+            <prop class="subcontrol-name">AC-11 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -226,14 +226,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.4.">PRIVILEGED COMMANDS / ACCESS</link>
-            <prop class="control-name">AC-17 (4)</prop>
+            <prop class="subcontrol-name">AC-17 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.18.1.">AUTHENTICATION AND ENCRYPTION</link>
-            <prop class="control-name">AC-18 (1)</prop>
+            <prop class="subcontrol-name">AC-18 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -247,7 +247,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.19.5.">FULL DEVICE / CONTAINER-BASED  ENCRYPTION</link>
-            <prop class="control-name">AC-19 (5)</prop>
+            <prop class="subcontrol-name">AC-19 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -268,14 +268,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.20.2.">PORTABLE STORAGE DEVICES</link>
-            <prop class="control-name">AC-20 (2)</prop>
+            <prop class="subcontrol-name">AC-20 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.20.1.">LIMITS ON AUTHORIZED USE</link>
-            <prop class="control-name">AC-20 (1)</prop>
+            <prop class="subcontrol-name">AC-20 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -324,7 +324,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#at.2.2.">INSIDER THREAT</link>
-            <prop class="control-name">AT-2 (2)</prop>
+            <prop class="subcontrol-name">AT-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -361,14 +361,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.2.3.">REVIEWS AND UPDATES</link>
-            <prop class="control-name">AU-2 (3)</prop>
+            <prop class="subcontrol-name">AU-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.3.1.">ADDITIONAL AUDIT INFORMATION</link>
-            <prop class="control-name">AU-3 (1)</prop>
+            <prop class="subcontrol-name">AU-3 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -398,13 +398,13 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.6.1.">PROCESS INTEGRATION</link>
-            <prop class="control-name">AU-6 (1)</prop>
+            <prop class="subcontrol-name">AU-6 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.6.3.">CORRELATE AUDIT REPOSITORIES</link>
-            <prop class="control-name">AU-6 (3)</prop>
+            <prop class="subcontrol-name">AU-6 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
          </part>
@@ -417,7 +417,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.7.1.">AUTOMATIC PROCESSING</link>
-            <prop class="control-name">AU-7 (1)</prop>
+            <prop class="subcontrol-name">AU-7 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -431,7 +431,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.8.1.">SYNCHRONIZATION WITH AUTHORITATIVE TIME SOURCE</link>
-            <prop class="control-name">AU-8 (1)</prop>
+            <prop class="subcontrol-name">AU-8 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -445,14 +445,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.2.">AUDIT BACKUP ON SEPARATE PHYSICAL SYSTEMS / COMPONENTS</link>
-            <prop class="control-name">AU-9 (2)</prop>
+            <prop class="subcontrol-name">AU-9 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.4.">ACCESS BY SUBSET OF PRIVILEGED USERS</link>
-            <prop class="control-name">AU-9 (4)</prop>
+            <prop class="subcontrol-name">AU-9 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -487,7 +487,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.2.3.">EXTERNAL ORGANIZATIONS</link>
-            <prop class="control-name">CA-2 (3)</prop>
+            <prop class="subcontrol-name">CA-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -507,28 +507,28 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.2.2.">SPECIALIZED ASSESSMENTS</link>
-            <prop class="control-name">CA-2 (2)</prop>
+            <prop class="subcontrol-name">CA-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.2.1.">INDEPENDENT ASSESSORS</link>
-            <prop class="control-name">CA-2 (1)</prop>
+            <prop class="subcontrol-name">CA-2 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.2.2.">SPECIALIZED ASSESSMENTS</link>
-            <prop class="control-name">CA-2 (2)</prop>
+            <prop class="subcontrol-name">CA-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.2.3.">EXTERNAL ORGANIZATIONS</link>
-            <prop class="control-name">CA-2 (3)</prop>
+            <prop class="subcontrol-name">CA-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -542,14 +542,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.3.3.">UNCLASSIFIED NON-NATIONAL SECURITY SYSTEM CONNECTIONS</link>
-            <prop class="control-name">CA-3 (3)</prop>
+            <prop class="subcontrol-name">CA-3 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.3.5.">RESTRICTIONS ON EXTERNAL SYSTEM CONNECTIONS</link>
-            <prop class="control-name">CA-3 (5)</prop>
+            <prop class="subcontrol-name">CA-3 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -595,14 +595,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.7.1.">INDEPENDENT ASSESSMENT</link>
-            <prop class="control-name">CA-7 (1)</prop>
+            <prop class="subcontrol-name">CA-7 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ca.8.1.">INDEPENDENT PENETRATION AGENT OR TEAM</link>
-            <prop class="control-name">CA-8 (1)</prop>
+            <prop class="subcontrol-name">CA-8 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -644,7 +644,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.2.1.">REVIEWS AND UPDATES</link>
-            <prop class="control-name">CM-2 (1)</prop>
+            <prop class="subcontrol-name">CM-2 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -655,21 +655,21 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.2.2.">AUTOMATION SUPPORT FOR ACCURACY / CURRENCY</link>
-            <prop class="control-name">CM-2 (2)</prop>
+            <prop class="subcontrol-name">CM-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.2.3.">RETENTION OF PREVIOUS CONFIGURATIONS</link>
-            <prop class="control-name">CM-2 (3)</prop>
+            <prop class="subcontrol-name">CM-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.2.7.">CONFIGURE SYSTEMS, COMPONENTS, OR DEVICES FOR HIGH-RISK AREAS</link>
-            <prop class="control-name">CM-2 (7)</prop>
+            <prop class="subcontrol-name">CM-2 (7)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -750,28 +750,28 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.2.1.">COORDINATE WITH RELATED PLANS</link>
-            <prop class="control-name">CP-2 (1)</prop>
+            <prop class="subcontrol-name">CP-2 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.2.2.">CAPACITY PLANNING</link>
-            <prop class="control-name">CP-2 (2)</prop>
+            <prop class="subcontrol-name">CP-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.2.3.">RESUME ESSENTIAL MISSIONS / BUSINESS FUNCTIONS</link>
-            <prop class="control-name">CP-2 (3)</prop>
+            <prop class="subcontrol-name">CP-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.2.8.">IDENTIFY CRITICAL ASSETS</link>
-            <prop class="control-name">CP-2 (8)</prop>
+            <prop class="subcontrol-name">CP-2 (8)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -792,7 +792,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.4.1.">COORDINATE WITH RELATED PLANS</link>
-            <prop class="control-name">CP-4 (1)</prop>
+            <prop class="subcontrol-name">CP-4 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -808,14 +808,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.6.1.">SEPARATION FROM PRIMARY SITE</link>
-            <prop class="control-name">CP-6 (1)</prop>
+            <prop class="subcontrol-name">CP-6 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.6.3.">ACCESSIBILITY</link>
-            <prop class="control-name">CP-6 (3)</prop>
+            <prop class="subcontrol-name">CP-6 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -833,21 +833,21 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.7.1.">SEPARATION FROM PRIMARY SITE</link>
-            <prop class="control-name">CP-7 (1)</prop>
+            <prop class="subcontrol-name">CP-7 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.7.2.">ACCESSIBILITY</link>
-            <prop class="control-name">CP-7 (2)</prop>
+            <prop class="subcontrol-name">CP-7 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.7.3.">PRIORITY OF SERVICE</link>
-            <prop class="control-name">CP-7 (3)</prop>
+            <prop class="subcontrol-name">CP-7 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -861,7 +861,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.8.1.">PRIORITY OF SERVICE PROVISIONS</link>
-            <prop class="control-name">CP-8 (1)</prop>
+            <prop class="subcontrol-name">CP-8 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -883,14 +883,14 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.9.1.">TESTING FOR RELIABILITY / INTEGRITY</link>
-            <prop class="control-name">CP-9 (1)</prop>
+            <prop class="subcontrol-name">CP-9 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.9.3.">SEPARATE STORAGE FOR CRITICAL INFORMATION</link>
-            <prop class="control-name">CP-9 (3)</prop>
+            <prop class="subcontrol-name">CP-9 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -904,7 +904,7 @@
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.10.2.">TRANSACTION RECOVERY</link>
-            <prop class="control-name">CP-10 (2)</prop>
+            <prop class="subcontrol-name">CP-10 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -916,7 +916,7 @@
          <p class="responsibleRoles"/>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.1.">UPDATE TOOL CAPABILITY</link>
-            <prop class="control-name">RA-5 (1)</prop>
+            <prop class="subcontrol-name">RA-5 (1)</prop>
             <p class="narrative">'To assist the orgnization in meeting the requirements of this
 control, the Docker Security Scanning (DSS) component of Docker
 Trusted Registry (DTR) that is included with the Docker Enterprise
@@ -929,7 +929,7 @@ triggered either manually or when Docker images are pushed to DTR.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.2.">UPDATE BY FREQUENCY / PRIOR TO NEW SCAN / WHEN IDENTIFIED</link>
-            <prop class="control-name">RA-5 (2)</prop>
+            <prop class="subcontrol-name">RA-5 (2)</prop>
             <p class="narrative">'To assist the orgnization in meeting the requirements of this
 control, the Docker Security Scanning component of Docker Trusted
 Registry (DTR) that is included with the Docker Enterprise Edition
@@ -947,7 +947,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.3.">BREADTH / DEPTH OF COVERAGE</link>
-            <prop class="control-name">RA-5 (3)</prop>
+            <prop class="subcontrol-name">RA-5 (3)</prop>
             <p class="narrative">'To assist the orgnization in meeting the requirements of this
 control, the Docker Security Scanning component of Docker Trusted
 Registry (DTR) that is included with the Docker Enterprise Edition
@@ -959,7 +959,7 @@ them against predefined criticality levels; critical major and minor.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.5.">PRIVILEGED ACCESS</link>
-            <prop class="control-name">RA-5 (5)</prop>
+            <prop class="subcontrol-name">RA-5 (5)</prop>
             <p class="narrative">'Only the appropriate users that the organization has provided Docker
 Trusted Registry access to are able to view and interpret
 vulnerability scan results.'
@@ -969,7 +969,7 @@ vulnerability scan results.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.6.">AUTOMATED TREND ANALYSES</link>
-            <prop class="control-name">RA-5 (6)</prop>
+            <prop class="subcontrol-name">RA-5 (6)</prop>
             <p class="narrative">'For each Docker image pushed to Docker Trusted Registry at a given
 time, Docker Security Scaninng retains a list of vulnerabilities
 detected. The DTR API can be queried to retrieve the vulnerability
@@ -981,7 +981,7 @@ the results can be compared per the requirements of this control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.8.">REVIEW HISTORIC AUDIT LOGS</link>
-            <prop class="control-name">RA-5 (8)</prop>
+            <prop class="subcontrol-name">RA-5 (8)</prop>
             <p class="narrative">'Docker Security Scanning maintains a historical bill-of-materials
 (BOM) for all Docker images that are scanned. Results of previous
 vulnerability scans can be reviewed and audited per the requirements
@@ -1003,7 +1003,7 @@ of this control.'
          <p class="responsibleRoles"/>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.1.">AUTOMATED SYSTEM ACCOUNT MANAGEMENT</link>
-            <prop class="control-name">AC-2 (1)</prop>
+            <prop class="subcontrol-name">AC-2 (1)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, supporting documentation for managing users and teams can
 found at the following resources:
@@ -1016,7 +1016,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.7.">ROLE-BASED SCHEMES</link>
-            <prop class="control-name">AC-2 (7)</prop>
+            <prop class="subcontrol-name">AC-2 (7)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, supporting documentation can be found at the following
 resources:
@@ -1028,7 +1028,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.12.">ACCOUNT MONITORING / ATYPICAL USAGE</link>
-            <prop class="control-name">AC-2 (12)</prop>
+            <prop class="subcontrol-name">AC-2 (12)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, supporting documentation can be found at the following
 resources:
@@ -1071,7 +1071,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.4.8.">SECURITY POLICY FILTERS</link>
-            <prop class="control-name">AC-4 (8)</prop>
+            <prop class="subcontrol-name">AC-4 (8)</prop>
             <p class="narrative">'Supporting documentation to configure Docker Trusted Registry to meet
 the requirements of this control can be found at the following
 resources:
@@ -1085,7 +1085,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.4.21.">PHYSICAL / LOGICAL SEPARATION OF INFORMATION FLOWS</link>
-            <prop class="control-name">AC-4 (21)</prop>
+            <prop class="subcontrol-name">AC-4 (21)</prop>
             <p class="narrative">'Supporting documentation to configure Docker Trusted Registry to meet
 the requirements of this control can be found at the following
 resources:
@@ -1116,7 +1116,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.10.">PROHIBIT NON-PRIVILEGED USERS FROM EXECUTING PRIVILEGED FUNCTIONS</link>
-            <prop class="control-name">AC-6 (10)</prop>
+            <prop class="subcontrol-name">AC-6 (10)</prop>
             <p class="narrative">'One can control which users and teams can create and manipulate
 Docker Trusted Registry resources and prevent non-privileged users
 from executing privileged functions per the requirements of this
@@ -1153,7 +1153,7 @@ access.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.1.">AUTOMATED MONITORING / CONTROL</link>
-            <prop class="control-name">AC-17 (1)</prop>
+            <prop class="subcontrol-name">AC-17 (1)</prop>
             <p class="narrative">'Docker Trusted Registry logs and controls all local and remote
 access events. In addition, auditing can be configured on the
 underlying operating system to meet this control.'
@@ -1163,7 +1163,7 @@ underlying operating system to meet this control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.2.">PROTECTION OF CONFIDENTIALITY / INTEGRITY USING ENCRYPTION</link>
-            <prop class="control-name">AC-17 (2)</prop>
+            <prop class="subcontrol-name">AC-17 (2)</prop>
             <p class="narrative">'All remote access sessions to Docker Trusted Registry are protected
 with Transport Layer Security (TLS) 1.2. This is included at both the
 HTTPS application layer for access to the DTR user interface and for
@@ -1176,7 +1176,7 @@ authentication.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.3.">MANAGED ACCESS CONTROL POINTS</link>
-            <prop class="control-name">AC-17 (3)</prop>
+            <prop class="subcontrol-name">AC-17 (3)</prop>
             <p class="narrative">'A combination of managed load balancers, firewalls and access control
 lists, and virtual networking resources can be used to ensure traffic
 destined for Docker Trusted Registry replicas is routed through
@@ -1187,7 +1187,7 @@ managed network access control points.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.9.">DISCONNECT / DISABLE ACCESS</link>
-            <prop class="control-name">AC-17 (9)</prop>
+            <prop class="subcontrol-name">AC-17 (9)</prop>
             <p class="narrative">'Built-in firewall technology in Docker Trusted Registry's underlying
 operating system can be used to force the disconnection of remote
 connections to the host. In addition, UCP slave nodes running Docker
@@ -1209,7 +1209,7 @@ can control which external systems can access Docker Trusted Registry.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.20.1.">LIMITS ON AUTHORIZED USE</link>
-            <prop class="control-name">AC-20 (1)</prop>
+            <prop class="subcontrol-name">AC-20 (1)</prop>
             <p class="narrative">'To help the organization meet the requirements of this control, one
 can control which external systems can access Docker Trusted Registry.'
 </p>
@@ -1264,7 +1264,7 @@ ok","username":"dockeruser"}'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.3.1.">ADDITIONAL AUDIT INFORMATION</link>
-            <prop class="control-name">AU-3 (1)</prop>
+            <prop class="subcontrol-name">AU-3 (1)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack, which in turn, sends the Docker Trusted Registry
 backend container audit records to the remote logging stack. The
@@ -1280,7 +1280,7 @@ information can be found at the following resource:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.3.2.">CENTRALIZED MANAGEMENT OF PLANNED AUDIT RECORD CONTENT</link>
-            <prop class="control-name">AU-3 (2)</prop>
+            <prop class="subcontrol-name">AU-3 (2)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack, which in turn, sends the Docker Trusted Registry
 backend container audit records to the remote logging stack. The
@@ -1312,7 +1312,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.5.1.">AUDIT STORAGE CAPACITY</link>
-            <prop class="control-name">AU-5 (1)</prop>
+            <prop class="subcontrol-name">AU-5 (1)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack, which in turn, sends the Docker Trusted Registry
 backend container audit records to the remote logging stack. The
@@ -1328,7 +1328,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.5.2.">REAL-TIME ALERTS</link>
-            <prop class="control-name">AU-5 (2)</prop>
+            <prop class="subcontrol-name">AU-5 (2)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack, which in turn, sends the Docker Trusted Registry
 backend container audit records to the remote logging stack. The
@@ -1344,7 +1344,7 @@ the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.6.4.">CENTRAL REVIEW AND ANALYSIS</link>
-            <prop class="control-name">AU-6 (4)</prop>
+            <prop class="subcontrol-name">AU-6 (4)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack, which in turn, sends the Docker Trusted Registry
 backend container audit records to the remote logging stack. The
@@ -1379,7 +1379,7 @@ during generation and transmission to a remote logging stack.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.7.1.">AUTOMATIC PROCESSING</link>
-            <prop class="control-name">AU-7 (1)</prop>
+            <prop class="subcontrol-name">AU-7 (1)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack, which in turn, sends the Docker Trusted Registry
 backend container audit records to the remote logging stack. The
@@ -1409,7 +1409,7 @@ operating system's instructions for doing so.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.8.1.">SYNCHRONIZATION WITH AUTHORITATIVE TIME SOURCE</link>
-            <prop class="control-name">AU-8 (1)</prop>
+            <prop class="subcontrol-name">AU-8 (1)</prop>
             <p class="narrative">'The underlying operating system on which Docker Trusted Registry runs
 should be configured such that its system clock compares itself with
 an authoritative time source as indicated by this control. This can be
@@ -1446,7 +1446,7 @@ control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.2.">AUDIT BACKUP ON SEPARATE PHYSICAL SYSTEMS / COMPONENTS</link>
-            <prop class="control-name">AU-9 (2)</prop>
+            <prop class="subcontrol-name">AU-9 (2)</prop>
             <p class="narrative">'Docker Trusted Registry resides as an Application on a Universal
 Control Plane cluster, and can be configured to send logs to a remote
 logging stack. The logging stack can subsequently be configured to
@@ -1460,7 +1460,7 @@ Additional information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.3.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">AU-9 (3)</prop>
+            <prop class="subcontrol-name">AU-9 (3)</prop>
             <p class="narrative">'Docker Trusted Registry resides as an Application on a Universal
 Control Plane cluster, and can be configured to send logs to a remote
 logging stack. The logging stack can subsequently be configured to
@@ -1515,7 +1515,7 @@ use for instructions on configuring this service.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.12.1.">SYSTEM-WIDE / TIME-CORRELATED AUDIT TRAIL</link>
-            <prop class="control-name">AU-12 (1)</prop>
+            <prop class="subcontrol-name">AU-12 (1)</prop>
             <p class="narrative">'Docker Trusted Registry resides as an Application on a Universal
 Control Plane cluster, and as such, can be configured to send logs to
 a remote logging stack. This logging stack can subsequently be used to
@@ -1531,7 +1531,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.12.3.">CHANGES BY AUTHORIZED INDIVIDUALS</link>
-            <prop class="control-name">AU-12 (3)</prop>
+            <prop class="subcontrol-name">AU-12 (3)</prop>
             <p class="narrative">'Docker Trusted Registry resides as an Application on a Universal
 Control Plane cluster, and as such, can be configured to send logs to
 a remote logging stack. This logging stack can subsequently be used to
@@ -1546,7 +1546,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.5.1.">AUTOMATED ACCESS ENFORCEMENT / AUDITING</link>
-            <prop class="control-name">CM-5 (1)</prop>
+            <prop class="subcontrol-name">CM-5 (1)</prop>
             <p class="narrative">'Role-based access control can be configured within Docker Trusted
 Registry to meet the requirements of this control. Additional
 information can be found at the following resources:
@@ -1560,7 +1560,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.5.3.">SIGNED COMPONENTS</link>
-            <prop class="control-name">CM-5 (3)</prop>
+            <prop class="subcontrol-name">CM-5 (3)</prop>
             <p class="narrative">'Docker Content Trust is a capability provided by Docker Enterprise
 Edition that enforces client-side signing and verification of Docker
 image tags. It provides the ability to use digital signatures for data
@@ -1584,7 +1584,7 @@ Additional information can be found at teh following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.6.1.">AUTOMATED CENTRAL MANAGEMENT / APPLICATION / VERIFICATION</link>
-            <prop class="control-name">CM-6 (1)</prop>
+            <prop class="subcontrol-name">CM-6 (1)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with these requirements, the organization can
 incorporate the use of an external configuration management system to
@@ -1600,7 +1600,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.7.2.">PREVENT PROGRAM EXECUTION</link>
-            <prop class="control-name">CM-7 (2)</prop>
+            <prop class="subcontrol-name">CM-7 (2)</prop>
             <p class="narrative">'The organization can define a list of allowed base Docker images and
 make them available via Docker Trusted Registry. The organization can
 also prevent users from being able to pull Docker images from
@@ -1611,7 +1611,7 @@ untrusted sources.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.7.5.">AUTHORIZED SOFTWARE / WHITELISTING</link>
-            <prop class="control-name">CM-7 (5)</prop>
+            <prop class="subcontrol-name">CM-7 (5)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with these requirements, the organization can
 define a list of allowed base Docker images and make them available
@@ -1644,7 +1644,7 @@ from being able to pull Docker images from untrusted sources.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.11.1.">ALERTS FOR UNAUTHORIZED INSTALLATIONS</link>
-            <prop class="control-name">CM-11 (1)</prop>
+            <prop class="subcontrol-name">CM-11 (1)</prop>
             <p class="narrative">'The organization can define a list of allowed base Docker images and
 make them available via Docker Trusted Registry to meet the
 requirements of this contorl. The organization can also prevent users
@@ -1656,7 +1656,7 @@ from being able to pull Docker images from untrusted sources.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.10.2.">TRANSACTION RECOVERY</link>
-            <prop class="control-name">CP-10 (2)</prop>
+            <prop class="subcontrol-name">CP-10 (2)</prop>
             <p class="narrative">'Docker Trusted Registry maintains its cluster state via an internal
 key-value store. This, and other DTR transactions can be backed up and
 recovered. Additional information can be found at the following
@@ -1670,7 +1670,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.5.">GROUP AUTHENTICATION</link>
-            <prop class="control-name">IA-2 (5)</prop>
+            <prop class="subcontrol-name">IA-2 (5)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, Docker Trusted
 Registry requires individual users to be authenticated in order to
@@ -1698,7 +1698,7 @@ manager nodes has been established. Additional information can be found at the f
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.2.">PKI-BASED AUTHENTICATION</link>
-            <prop class="control-name">IA-5 (2)</prop>
+            <prop class="subcontrol-name">IA-5 (2)</prop>
             <p class="narrative">'Docker Trusted Registry includes a Docker volume which holds the root
 key material for the DTR root CA that issues certificats. In addition
 Universal Control Plane contains two, built-in root certificate
@@ -1771,7 +1771,7 @@ can include groupings for non-organizational users.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.1.">UPDATE TOOL CAPABILITY</link>
-            <prop class="control-name">RA-5 (1)</prop>
+            <prop class="subcontrol-name">RA-5 (1)</prop>
             <p class="narrative">'The Docker Security Scanning tool allows for the scanning of Docker
 images in Docker Trusted Registry against the Common Vulnerabilities
 and Exposures (CVE) dictionary.'
@@ -1781,7 +1781,7 @@ and Exposures (CVE) dictionary.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ra.5.3.">BREADTH / DEPTH OF COVERAGE</link>
-            <prop class="control-name">RA-5 (3)</prop>
+            <prop class="subcontrol-name">RA-5 (3)</prop>
             <p class="narrative">'The Docker Security Scanning tool allows for the scanning of Docker
 images in Docker Trusted Registry against the Common Vulnerabilities
 and Exposures (CVE).' dictionary.
@@ -1791,7 +1791,7 @@ and Exposures (CVE).' dictionary.
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.10.1.">SOFTWARE / FIRMWARE INTEGRITY VERIFICATION</link>
-            <prop class="control-name">SA-10 (1)</prop>
+            <prop class="subcontrol-name">SA-10 (1)</prop>
             <p class="narrative">'Docker Content Trust gives you the ability to verify both the
 integrity and the publisher of all the data received from a Docker
 Trusted Registry over any channel. It allows operations with a remote
@@ -1835,7 +1835,7 @@ two-way mutual TLS authentication.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.28.1.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">SC-28 (1)</prop>
+            <prop class="subcontrol-name">SC-28 (1)</prop>
             <p class="narrative">'All remote access sessions to Docker Trusted Registry are protected
 with Transport Layer Security (TLS) 1.2 with the AES GCM cipher. This
 is included at both the HTTPS application layer for access to the DTR
@@ -1870,7 +1870,7 @@ appropriate level of access can view these error messages.'
          <p class="responsibleRoles"/>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.12.">ACCOUNT MONITORING / ATYPICAL USAGE</link>
-            <prop class="control-name">AC-2 (12)</prop>
+            <prop class="subcontrol-name">AC-2 (12)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, Docker Enterprise Edition can be configured to aggregate
 container and daemon events via a number of logging drivers.
@@ -1898,7 +1898,7 @@ Supporting documentation can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.4.8.">SECURITY POLICY FILTERS</link>
-            <prop class="control-name">AC-4 (8)</prop>
+            <prop class="subcontrol-name">AC-4 (8)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured to control the flow of
 information that originates from applications running in containers
 per organization-defined security policy filters. Supporting
@@ -1917,7 +1917,7 @@ requirements.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.4.21.">PHYSICAL / LOGICAL SEPARATION OF INFORMATION FLOWS</link>
-            <prop class="control-name">AC-4 (21)</prop>
+            <prop class="subcontrol-name">AC-4 (21)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured to separate the flow of
 information that originates from applications running in containers.
 Supporting documentation can be found at the following resources:
@@ -1952,7 +1952,7 @@ access to the Engine.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.1.">AUTOMATED MONITORING / CONTROL</link>
-            <prop class="control-name">AC-17 (1)</prop>
+            <prop class="subcontrol-name">AC-17 (1)</prop>
             <p class="narrative">'Docker Enterprise Edition logs and controls all local and remote
 access events. In addition, auditing can be configured on the
 underlying operating system to meet this control.'
@@ -1962,7 +1962,7 @@ underlying operating system to meet this control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.2.">PROTECTION OF CONFIDENTIALITY / INTEGRITY USING ENCRYPTION</link>
-            <prop class="control-name">AC-17 (2)</prop>
+            <prop class="subcontrol-name">AC-17 (2)</prop>
             <p class="narrative">'All remote access sessions to Docker Enterprise Edition are protected
 with Transport Layer Security (TLS) 1.2. In addition to this, all
 communication to Docker Enterprise Edition is enforced by way of
@@ -1973,7 +1973,7 @@ two-way mutual TLS authentication.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.3.">MANAGED ACCESS CONTROL POINTS</link>
-            <prop class="control-name">AC-17 (3)</prop>
+            <prop class="subcontrol-name">AC-17 (3)</prop>
             <p class="narrative">'A combination of managed load balancers, firewalls and access control
 lists, and virtual networking resources can be used to ensure traffic
 destined for Docker Enterprise Edition is routed through managed
@@ -1984,7 +1984,7 @@ network access control points.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.9.">DISCONNECT / DISABLE ACCESS</link>
-            <prop class="control-name">AC-17 (9)</prop>
+            <prop class="subcontrol-name">AC-17 (9)</prop>
             <p class="narrative">'Built-in firewall technology in Docker Enterprise Edition's
 underlying operating system can be used to force the disconnection of
 remote connections to the host. In addition, Docker Enterprise Edition
@@ -2037,7 +2037,7 @@ Additional documentation can be referenced at the following resource:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.3.1.">ADDITIONAL AUDIT INFORMATION</link>
-            <prop class="control-name">AU-3 (1)</prop>
+            <prop class="subcontrol-name">AU-3 (1)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack. The logging
 stack can subsequently be used to interpolate the information defined
@@ -2052,7 +2052,7 @@ documentation can be found at the following resource:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.3.2.">CENTRALIZED MANAGEMENT OF PLANNED AUDIT RECORD CONTENT</link>
-            <prop class="control-name">AU-3 (2)</prop>
+            <prop class="subcontrol-name">AU-3 (2)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack. The logging
 stack can subsequently be used to interpolate the information defined
@@ -2083,7 +2083,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.5.1.">AUDIT STORAGE CAPACITY</link>
-            <prop class="control-name">AU-5 (1)</prop>
+            <prop class="subcontrol-name">AU-5 (1)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack. The logging
 stack can subsequently be configured to warn the organization when the
@@ -2098,7 +2098,7 @@ the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.5.2.">REAL-TIME ALERTS</link>
-            <prop class="control-name">AU-5 (2)</prop>
+            <prop class="subcontrol-name">AU-5 (2)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack.  The
 logging stack can subsequently be configured to warn the organization
@@ -2113,7 +2113,7 @@ the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.6.4.">CENTRAL REVIEW AND ANALYSIS</link>
-            <prop class="control-name">AU-6 (4)</prop>
+            <prop class="subcontrol-name">AU-6 (4)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack. The
 organization can subsequently centrally review and analyze all of the
@@ -2147,7 +2147,7 @@ generation and transmission to a remote logging stack.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.7.1.">AUTOMATIC PROCESSING</link>
-            <prop class="control-name">AU-7 (1)</prop>
+            <prop class="subcontrol-name">AU-7 (1)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack. The logging
 stack can subsequently be configured to parse information by
@@ -2176,7 +2176,7 @@ operating system's instructions for doing so.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.8.1.">SYNCHRONIZATION WITH AUTHORITATIVE TIME SOURCE</link>
-            <prop class="control-name">AU-8 (1)</prop>
+            <prop class="subcontrol-name">AU-8 (1)</prop>
             <p class="narrative">'The underlying operating system on which Docker Enterprise Edition runs should
 be configured such that its system clock compares itself with an
 authoritative time source as indicated by this control. This can be
@@ -2218,7 +2218,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.2.">AUDIT BACKUP ON SEPARATE PHYSICAL SYSTEMS / COMPONENTS</link>
-            <prop class="control-name">AU-9 (2)</prop>
+            <prop class="subcontrol-name">AU-9 (2)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured to use a logging driver
 that can subsequently meet the backup requirements of this control.
 Additional information can be found at the following resources:
@@ -2230,7 +2230,7 @@ Additional information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.3.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">AU-9 (3)</prop>
+            <prop class="subcontrol-name">AU-9 (3)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured to use a logging driver
 that can subsequently meet the encryption mechanisms required by this
 control. Additional information can be found at the following
@@ -2304,7 +2304,7 @@ distribution in use for instructions on configuring this service.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.12.1.">SYSTEM-WIDE / TIME-CORRELATED AUDIT TRAIL</link>
-            <prop class="control-name">AU-12 (1)</prop>
+            <prop class="subcontrol-name">AU-12 (1)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack. This
 logging stack can subsequently be used to compile audit records in to
@@ -2320,7 +2320,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.12.3.">CHANGES BY AUTHORIZED INDIVIDUALS</link>
-            <prop class="control-name">AU-12 (3)</prop>
+            <prop class="subcontrol-name">AU-12 (3)</prop>
             <p class="narrative">'Docker Enterprise Edition can be configured with various logging
 drivers to send audit events to an external logging stack. This
 logging stack can subsequently be used to meet the requirements of
@@ -2367,7 +2367,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.2.1.">REVIEWS AND UPDATES</link>
-            <prop class="control-name">CM-2 (1)</prop>
+            <prop class="subcontrol-name">CM-2 (1)</prop>
             <p class="narrative">'The CIS Docker Benchmark can be used as a baseline for securing
 Docker Enterprise Edition and for helping the organization meet the
 configurmation management requirements of this control. Additional
@@ -2383,7 +2383,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.2.2.">AUTOMATION SUPPORT FOR ACCURACY / CURRENCY</link>
-            <prop class="control-name">CM-2 (2)</prop>
+            <prop class="subcontrol-name">CM-2 (2)</prop>
             <p class="narrative">'The CIS Docker Benchmark can be used as a baseline for securing
 Docker Enterprise Edition and for helping the organization meet the
 configurmation management requirements of this control. CIS regularly
@@ -2403,7 +2403,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.2.3.">RETENTION OF PREVIOUS CONFIGURATIONS</link>
-            <prop class="control-name">CM-2 (3)</prop>
+            <prop class="subcontrol-name">CM-2 (3)</prop>
             <p class="narrative">'The CIS Docker Benchmark can be used as a baseline for securing
 Docker Enterprise Edition and for helping the organization meet the
 configurmation management requirements of this control. CIS regularly
@@ -2439,7 +2439,7 @@ Additional information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.3.1.">AUTOMATED DOCUMENT / NOTIFICATION / PROHIBITION OF CHANGES</link>
-            <prop class="control-name">CM-3 (1)</prop>
+            <prop class="subcontrol-name">CM-3 (1)</prop>
             <p class="narrative">'The CIS Docker Benchmark can be used as a baseline for securing
 Docker Enterprise Edition and for helping the organization meet the
 configurmation management change control requirements of this control.
@@ -2458,7 +2458,7 @@ be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.3.2.">TEST / VALIDATE / DOCUMENT CHANGES</link>
-            <prop class="control-name">CM-3 (2)</prop>
+            <prop class="subcontrol-name">CM-3 (2)</prop>
             <p class="narrative">'The CIS Docker Benchmark can be used as a baseline for securing
 Docker Enterprise Edition and for helping the organization meet the
 configurmation management change control requirements of this control.
@@ -2477,7 +2477,7 @@ be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.3.6.">CRYPTOGRAPHY MANAGEMENT</link>
-            <prop class="control-name">CM-3 (6)</prop>
+            <prop class="subcontrol-name">CM-3 (6)</prop>
             <p class="narrative">'The CIS Docker Benchmark can be used as a baseline for securing
 Docker Enterprise Edition and for helping the organization meet the
 cryptography management requirements of this control. Additional
@@ -2492,7 +2492,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.5.2.">REVIEW SYSTEM CHANGES</link>
-            <prop class="control-name">CM-5 (2)</prop>
+            <prop class="subcontrol-name">CM-5 (2)</prop>
             <p class="narrative">'The CIS Docker Benchmark can be used as a baseline for securing
 Docker Enterprise Edition and for helping the organization meet the
 system change requirements of this control. Additional information can
@@ -2507,7 +2507,7 @@ be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.5.3.">SIGNED COMPONENTS</link>
-            <prop class="control-name">CM-5 (3)</prop>
+            <prop class="subcontrol-name">CM-5 (3)</prop>
             <p class="narrative">'Before installing Docker Enterprise Edition, ensure that your
 supporting Linux operating system''s packager manager supports package
 signature verification and that it is enabled. It is also required
@@ -2534,7 +2534,7 @@ following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.6.1.">AUTOMATED CENTRAL MANAGEMENT / APPLICATION / VERIFICATION</link>
-            <prop class="control-name">CM-6 (1)</prop>
+            <prop class="subcontrol-name">CM-6 (1)</prop>
             <p class="narrative">'The organization can incorporate the use of an external configuration
 management system to meet the requirements of this control.'
 </p>
@@ -2556,7 +2556,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.7.2.">PREVENT PROGRAM EXECUTION</link>
-            <prop class="control-name">CM-7 (2)</prop>
+            <prop class="subcontrol-name">CM-7 (2)</prop>
             <p class="narrative">'In order to restrict which Docker images can be used to deploy
 applications to Docker Enterprise Edition, the organization can define
 a list of allowed base Docker images and make them available via
@@ -2568,7 +2568,7 @@ being able to pull Docker images from untrusted sources.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.7.5.">AUTHORIZED SOFTWARE / WHITELISTING</link>
-            <prop class="control-name">CM-7 (5)</prop>
+            <prop class="subcontrol-name">CM-7 (5)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with these requirements and in order to restrict
 which Docker images can be used to deploy applications to Docker EE
@@ -2609,7 +2609,7 @@ token includes trust on first use mutual TLS.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.10.1.">SOFTWARE / FIRMWARE INTEGRITY VERIFICATION</link>
-            <prop class="control-name">SA-10 (1)</prop>
+            <prop class="subcontrol-name">SA-10 (1)</prop>
             <p class="narrative">'Docker Content Trust gives you the ability to verify both the
 integrity and the publisher of all the data received from a Docker
 Trusted Registry over any channel. It allows operations with a remote
@@ -2624,7 +2624,7 @@ image tags.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.20.">DYNAMIC ISOLATION / SEGREGATION</link>
-            <prop class="control-name">SC-7 (20)</prop>
+            <prop class="subcontrol-name">SC-7 (20)</prop>
             <p class="narrative">'Docker Enterprise Edition is designed to run application containers
 whose content can be completely isolated/segregated from other
 application containers within the same node/cluster. This is
@@ -2641,7 +2641,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.12.2.">SYMMETRIC KEYS</link>
-            <prop class="control-name">SC-12 (2)</prop>
+            <prop class="subcontrol-name">SC-12 (2)</prop>
             <p class="narrative">'Docker Enterprise Edition can be installed on the following operating
 systems: CentOS 7.1+, Red Hat Enterprise Linux 7.0+, Ubuntu 14.04
 LTS+, SUSE Linux Enterprise 12+ and Windows Server 2016+. In order to
@@ -2690,7 +2690,7 @@ rest using the AES GCM cipher.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.28.1.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">SC-28 (1)</prop>
+            <prop class="subcontrol-name">SC-28 (1)</prop>
             <p class="narrative">'All remote access sessions to Docker Enterprise Edition are protected
 with Transport Layer Security (TLS) 1.2 with the AES GCM cipher. In
 addition to this, all communication to and between Docker Enterprise
@@ -2701,7 +2701,7 @@ Editions is enforced by way of two-way mutual TLS authentication.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.3.2.">AUTOMATIC UPDATES</link>
-            <prop class="control-name">SI-3 (2)</prop>
+            <prop class="subcontrol-name">SI-3 (2)</prop>
             <p class="narrative">'Docker Enterprise Edition packages for supported underlying operating
 systems can only be obtained from Docker, Inc. The Docker EE
 repositories from which Docker EE packages are obtained are protected
@@ -2788,49 +2788,49 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.1.">NETWORK ACCESS TO PRIVILEGED ACCOUNTS</link>
-            <prop class="control-name">IA-2 (1)</prop>
+            <prop class="subcontrol-name">IA-2 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.2.">NETWORK ACCESS TO NON-PRIVILEGED ACCOUNTS</link>
-            <prop class="control-name">IA-2 (2)</prop>
+            <prop class="subcontrol-name">IA-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.5.">GROUP AUTHENTICATION</link>
-            <prop class="control-name">IA-2 (5)</prop>
+            <prop class="subcontrol-name">IA-2 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.3.">LOCAL ACCESS TO PRIVILEGED ACCOUNTS</link>
-            <prop class="control-name">IA-2 (3)</prop>
+            <prop class="subcontrol-name">IA-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.8.">NETWORK ACCESS TO PRIVILEGED ACCOUNTS - REPLAY RESISTANT</link>
-            <prop class="control-name">IA-2 (8)</prop>
+            <prop class="subcontrol-name">IA-2 (8)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.11.">REMOTE ACCESS  - SEPARATE DEVICE</link>
-            <prop class="control-name">IA-2 (11)</prop>
+            <prop class="subcontrol-name">IA-2 (11)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.12.">ACCEPTANCE OF PIV CREDENTIALS</link>
-            <prop class="control-name">IA-2 (12)</prop>
+            <prop class="subcontrol-name">IA-2 (12)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -2851,7 +2851,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.4.4.">IDENTIFY USER STATUS</link>
-            <prop class="control-name">IA-4 (4)</prop>
+            <prop class="subcontrol-name">IA-4 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -2865,49 +2865,49 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.1.">PASSWORD-BASED AUTHENTICATION</link>
-            <prop class="control-name">IA-5 (1)</prop>
+            <prop class="subcontrol-name">IA-5 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.2.">PKI-BASED AUTHENTICATION</link>
-            <prop class="control-name">IA-5 (2)</prop>
+            <prop class="subcontrol-name">IA-5 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.3.">IN-PERSON OR TRUSTED THIRD-PARTY REGISTRATION</link>
-            <prop class="control-name">IA-5 (3)</prop>
+            <prop class="subcontrol-name">IA-5 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.4.">AUTOMATED SUPPORT  FOR PASSWORD STRENGTH DETERMINATION</link>
-            <prop class="control-name">IA-5 (4)</prop>
+            <prop class="subcontrol-name">IA-5 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.6.">PROTECTION OF AUTHENTICATORS</link>
-            <prop class="control-name">IA-5 (6)</prop>
+            <prop class="subcontrol-name">IA-5 (6)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.7.">NO EMBEDDED UNENCRYPTED STATIC AUTHENTICATORS</link>
-            <prop class="control-name">IA-5 (7)</prop>
+            <prop class="subcontrol-name">IA-5 (7)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.11.">HARDWARE TOKEN-BASED AUTHENTICATION</link>
-            <prop class="control-name">IA-5 (11)</prop>
+            <prop class="subcontrol-name">IA-5 (11)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -2928,28 +2928,28 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.8.1.">ACCEPTANCE OF PIV CREDENTIALS FROM OTHER AGENCIES</link>
-            <prop class="control-name">IA-8 (1)</prop>
+            <prop class="subcontrol-name">IA-8 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.8.2.">ACCEPTANCE OF THIRD-PARTY CREDENTIALS</link>
-            <prop class="control-name">IA-8 (2)</prop>
+            <prop class="subcontrol-name">IA-8 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.8.3.">USE OF FICAM-APPROVED PRODUCTS</link>
-            <prop class="control-name">IA-8 (3)</prop>
+            <prop class="subcontrol-name">IA-8 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.8.4.">USE OF FICAM-ISSUED PROFILES</link>
-            <prop class="control-name">IA-8 (4)</prop>
+            <prop class="subcontrol-name">IA-8 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -2988,7 +2988,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.3.2.">COORDINATION WITH RELATED PLANS</link>
-            <prop class="control-name">IR-3 (2)</prop>
+            <prop class="subcontrol-name">IR-3 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3008,7 +3008,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.4.1.">AUTOMATED INCIDENT HANDLING PROCESSES</link>
-            <prop class="control-name">IR-4 (1)</prop>
+            <prop class="subcontrol-name">IR-4 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3031,7 +3031,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.6.1.">AUTOMATED REPORTING</link>
-            <prop class="control-name">IR-6 (1)</prop>
+            <prop class="subcontrol-name">IR-6 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3045,14 +3045,14 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.7.1.">AUTOMATION SUPPORT FOR AVAILABILITY OF INFORMATION / SUPPORT</link>
-            <prop class="control-name">IR-7 (1)</prop>
+            <prop class="subcontrol-name">IR-7 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.7.2.">COORDINATION WITH EXTERNAL PROVIDERS</link>
-            <prop class="control-name">IR-7 (2)</prop>
+            <prop class="subcontrol-name">IR-7 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -3095,28 +3095,28 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.9.1.">RESPONSIBLE PERSONNEL</link>
-            <prop class="control-name">IR-9 (1)</prop>
+            <prop class="subcontrol-name">IR-9 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.9.2.">TRAINING</link>
-            <prop class="control-name">IR-9 (2)</prop>
+            <prop class="subcontrol-name">IR-9 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.9.3.">POST-SPILL OPERATIONS</link>
-            <prop class="control-name">IR-9 (3)</prop>
+            <prop class="subcontrol-name">IR-9 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ir.9.4.">EXPOSURE TO UNAUTHORIZED PERSONNEL</link>
-            <prop class="control-name">IR-9 (4)</prop>
+            <prop class="subcontrol-name">IR-9 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3161,21 +3161,21 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ma.3.1.">INSPECT TOOLS</link>
-            <prop class="control-name">MA-3 (1)</prop>
+            <prop class="subcontrol-name">MA-3 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ma.3.2.">INSPECT MEDIA</link>
-            <prop class="control-name">MA-3 (2)</prop>
+            <prop class="subcontrol-name">MA-3 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ma.3.3.">PREVENT UNAUTHORIZED REMOVAL</link>
-            <prop class="control-name">MA-3 (3)</prop>
+            <prop class="subcontrol-name">MA-3 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -3203,7 +3203,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ma.4.2.">DOCUMENT NONLOCAL MAINTENANCE</link>
-            <prop class="control-name">MA-4 (2)</prop>
+            <prop class="subcontrol-name">MA-4 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3221,7 +3221,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ma.5.1.">INDIVIDUALS WITHOUT APPROPRIATE ACCESS</link>
-            <prop class="control-name">MA-5 (1)</prop>
+            <prop class="subcontrol-name">MA-5 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -3289,7 +3289,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#mp.5.4.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">MP-5 (4)</prop>
+            <prop class="subcontrol-name">MP-5 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3305,7 +3305,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#mp.6.2.">EQUIPMENT TESTING</link>
-            <prop class="control-name">MP-6 (2)</prop>
+            <prop class="subcontrol-name">MP-6 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3319,7 +3319,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#mp.7.1.">PROHIBIT USE WITHOUT OWNER</link>
-            <prop class="control-name">MP-7 (1)</prop>
+            <prop class="subcontrol-name">MP-7 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3397,7 +3397,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#pe.6.1.">INTRUSION ALARMS / SURVEILLANCE EQUIPMENT</link>
-            <prop class="control-name">PE-6 (1)</prop>
+            <prop class="subcontrol-name">PE-6 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3452,14 +3452,14 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#pe.13.2.">SUPPRESSION DEVICES / SYSTEMS</link>
-            <prop class="control-name">PE-13 (2)</prop>
+            <prop class="subcontrol-name">PE-13 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#pe.13.3.">AUTOMATIC FIRE SUPPRESSION</link>
-            <prop class="control-name">PE-13 (3)</prop>
+            <prop class="subcontrol-name">PE-13 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3475,7 +3475,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#pe.14.2.">MONITORING WITH ALARMS / NOTIFICATIONS</link>
-            <prop class="control-name">PE-14 (2)</prop>
+            <prop class="subcontrol-name">PE-14 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3568,7 +3568,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ps.3.3.">INFORMATION WITH SPECIAL PROTECTION MEASURES</link>
-            <prop class="control-name">PS-3 (3)</prop>
+            <prop class="subcontrol-name">PS-3 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -3726,35 +3726,35 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.4.1.">FUNCTIONAL PROPERTIES OF SECURITY CONTROLS</link>
-            <prop class="control-name">SA-4 (1)</prop>
+            <prop class="subcontrol-name">SA-4 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.4.2.">DESIGN / IMPLEMENTATION INFORMATION FOR SECURITY CONTROLS</link>
-            <prop class="control-name">SA-4 (2)</prop>
+            <prop class="subcontrol-name">SA-4 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.4.8.">CONTINUOUS MONITORING PLAN</link>
-            <prop class="control-name">SA-4 (8)</prop>
+            <prop class="subcontrol-name">SA-4 (8)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.4.9.">FUNCTIONS / PORTS / PROTOCOLS / SERVICES IN USE</link>
-            <prop class="control-name">SA-4 (9)</prop>
+            <prop class="subcontrol-name">SA-4 (9)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.4.10.">USE OF APPROVED PIV PRODUCTS</link>
-            <prop class="control-name">SA-4 (10)</prop>
+            <prop class="subcontrol-name">SA-4 (10)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3794,7 +3794,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.9.1.">RISK ASSESSMENTS / ORGANIZATIONAL APPROVALS</link>
-            <prop class="control-name">SA-9 (1)</prop>
+            <prop class="subcontrol-name">SA-9 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -3803,21 +3803,21 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.9.2.">IDENTIFICATION OF FUNCTIONS / PORTS / PROTOCOLS / SERVICES</link>
-            <prop class="control-name">SA-9 (2)</prop>
+            <prop class="subcontrol-name">SA-9 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.9.4.">CONSISTENT INTERESTS OF CONSUMERS AND PROVIDERS</link>
-            <prop class="control-name">SA-9 (4)</prop>
+            <prop class="subcontrol-name">SA-9 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.9.5.">PROCESSING, STORAGE, AND SERVICE LOCATION</link>
-            <prop class="control-name">SA-9 (5)</prop>
+            <prop class="subcontrol-name">SA-9 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3839,7 +3839,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.10.1.">SOFTWARE / FIRMWARE INTEGRITY VERIFICATION</link>
-            <prop class="control-name">SA-10 (1)</prop>
+            <prop class="subcontrol-name">SA-10 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
          </part>
@@ -3859,25 +3859,25 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.11.1.">STATIC CODE ANALYSIS</link>
-            <prop class="control-name">SA-11 (1)</prop>
+            <prop class="subcontrol-name">SA-11 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.11.2.">THREAT AND VULNERABILITY ANALYSES</link>
-            <prop class="control-name">SA-11 (2)</prop>
+            <prop class="subcontrol-name">SA-11 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.11.8.">DYNAMIC CODE ANALYSIS</link>
-            <prop class="control-name">SA-11 (8)</prop>
+            <prop class="subcontrol-name">SA-11 (8)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.22.1.">ALTERNATIVE SOURCES FOR CONTINUED SUPPORT</link>
-            <prop class="control-name">SA-22 (1)</prop>
+            <prop class="subcontrol-name">SA-22 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -3937,14 +3937,14 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.3.">ACCESS POINTS</link>
-            <prop class="control-name">SC-7 (3)</prop>
+            <prop class="subcontrol-name">SC-7 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.4.">EXTERNAL TELECOMMUNICATIONS SERVICES</link>
-            <prop class="control-name">SC-7 (4)</prop>
+            <prop class="subcontrol-name">SC-7 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -3959,42 +3959,42 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.5.">DENY BY DEFAULT / ALLOW BY EXCEPTION</link>
-            <prop class="control-name">SC-7 (5)</prop>
+            <prop class="subcontrol-name">SC-7 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.7.">PREVENT SPLIT TUNNELING FOR REMOTE DEVICES</link>
-            <prop class="control-name">SC-7 (7)</prop>
+            <prop class="subcontrol-name">SC-7 (7)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.8.">ROUTE TRAFFIC TO AUTHENTICATED PROXY SERVERS</link>
-            <prop class="control-name">SC-7 (8)</prop>
+            <prop class="subcontrol-name">SC-7 (8)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.12.">HOST-BASED PROTECTION</link>
-            <prop class="control-name">SC-7 (12)</prop>
+            <prop class="subcontrol-name">SC-7 (12)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.13.">ISOLATION OF SECURITY TOOLS / MECHANISMS / SUPPORT COMPONENTS</link>
-            <prop class="control-name">SC-7 (13)</prop>
+            <prop class="subcontrol-name">SC-7 (13)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.7.18.">FAIL SECURE</link>
-            <prop class="control-name">SC-7 (18)</prop>
+            <prop class="subcontrol-name">SC-7 (18)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4008,7 +4008,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.8.1.">CRYPTOGRAPHIC OR ALTERNATE PHYSICAL PROTECTION</link>
-            <prop class="control-name">SC-8 (1)</prop>
+            <prop class="subcontrol-name">SC-8 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4029,14 +4029,14 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.12.2.">SYMMETRIC KEYS</link>
-            <prop class="control-name">SC-12 (2)</prop>
+            <prop class="subcontrol-name">SC-12 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.12.3.">ASYMMETRIC KEYS</link>
-            <prop class="control-name">SC-12 (3)</prop>
+            <prop class="subcontrol-name">SC-12 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4123,7 +4123,7 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.28.1.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">SC-28 (1)</prop>
+            <prop class="subcontrol-name">SC-28 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4162,14 +4162,14 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.2.2.">AUTOMATED FLAW REMEDIATION STATUS</link>
-            <prop class="control-name">SI-2 (2)</prop>
+            <prop class="subcontrol-name">SI-2 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.2.3.">TIME TO REMEDIATE FLAWS / BENCHMARKS FOR CORRECTIVE ACTIONS</link>
-            <prop class="control-name">SI-2 (3)</prop>
+            <prop class="subcontrol-name">SI-2 (3)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <p class="narrative">[Agency's control implementation here]
@@ -4191,21 +4191,21 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.3.1.">CENTRAL MANAGEMENT</link>
-            <prop class="control-name">SI-3 (1)</prop>
+            <prop class="subcontrol-name">SI-3 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.3.2.">AUTOMATIC UPDATES</link>
-            <prop class="control-name">SI-3 (2)</prop>
+            <prop class="subcontrol-name">SI-3 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.3.7.">NONSIGNATURE-BASED DETECTION</link>
-            <prop class="control-name">SI-3 (7)</prop>
+            <prop class="subcontrol-name">SI-3 (7)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4231,49 +4231,49 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.4.1.">SYSTEM-WIDE INTRUSION DETECTION SYSTEM</link>
-            <prop class="control-name">SI-4 (1)</prop>
+            <prop class="subcontrol-name">SI-4 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.4.2.">AUTOMATED TOOLS FOR REAL-TIME ANALYSIS</link>
-            <prop class="control-name">SI-4 (2)</prop>
+            <prop class="subcontrol-name">SI-4 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.4.4.">INBOUND AND OUTBOUND COMMUNICATIONS TRAFFIC</link>
-            <prop class="control-name">SI-4 (4)</prop>
+            <prop class="subcontrol-name">SI-4 (4)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.4.5.">SYSTEM-GENERATED ALERTS</link>
-            <prop class="control-name">SI-4 (5)</prop>
+            <prop class="subcontrol-name">SI-4 (5)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.4.14.">WIRELESS INTRUSION DETECTION</link>
-            <prop class="control-name">SI-4 (14)</prop>
+            <prop class="subcontrol-name">SI-4 (14)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.4.16.">CORRELATE MONITORING INFORMATION</link>
-            <prop class="control-name">SI-4 (16)</prop>
+            <prop class="subcontrol-name">SI-4 (16)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.4.23.">HOST-BASED DEVICES</link>
-            <prop class="control-name">SI-4 (23)</prop>
+            <prop class="subcontrol-name">SI-4 (23)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4313,14 +4313,14 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.7.1.">INTEGRITY CHECKS</link>
-            <prop class="control-name">SI-7 (1)</prop>
+            <prop class="subcontrol-name">SI-7 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.7.7.">INTEGRATION OF DETECTION AND RESPONSE</link>
-            <prop class="control-name">SI-7 (7)</prop>
+            <prop class="subcontrol-name">SI-7 (7)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4336,14 +4336,14 @@ protection of memory from unauthorized code execution.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.8.1.">CENTRAL MANAGEMENT</link>
-            <prop class="control-name">SI-8 (1)</prop>
+            <prop class="subcontrol-name">SI-8 (1)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#si.8.2.">AUTOMATIC UPDATES</link>
-            <prop class="control-name">SI-8 (2)</prop>
+            <prop class="subcontrol-name">SI-8 (2)</prop>
             <p class="narrative">[Agency's control implementation here]
 </p>
             <prop class="status">none</prop>
@@ -4385,7 +4385,7 @@ protection of memory from unauthorized code execution.'
          <p class="responsibleRoles"/>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.1.">AUTOMATED SYSTEM ACCOUNT MANAGEMENT</link>
-            <prop class="control-name">AC-2 (1)</prop>
+            <prop class="subcontrol-name">AC-2 (1)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, supporting documentation for managing users and teams can
 found at the following resources:
@@ -4398,7 +4398,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.7.">ROLE-BASED SCHEMES</link>
-            <prop class="control-name">AC-2 (7)</prop>
+            <prop class="subcontrol-name">AC-2 (7)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, supporting documentation can be found at the following
 resources:
@@ -4410,7 +4410,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.12.">ACCOUNT MONITORING / ATYPICAL USAGE</link>
-            <prop class="control-name">AC-2 (12)</prop>
+            <prop class="subcontrol-name">AC-2 (12)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, Universal Control Plane can be configured to send system
 account log data to a remote logging service such as an Elasticsearch,
@@ -4471,7 +4471,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.4.8.">SECURITY POLICY FILTERS</link>
-            <prop class="control-name">AC-4 (8)</prop>
+            <prop class="subcontrol-name">AC-4 (8)</prop>
             <p class="narrative">'Supporting documentation to configure Universal Control Plane to meet
 the requirements of this control can be found at the following
 resources:
@@ -4490,7 +4490,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.4.21.">PHYSICAL / LOGICAL SEPARATION OF INFORMATION FLOWS</link>
-            <prop class="control-name">AC-4 (21)</prop>
+            <prop class="subcontrol-name">AC-4 (21)</prop>
             <p class="narrative">'Supporting documentation to configure Universal Control Plane to meet
 the requirements of this control can be found at the following
 resources:
@@ -4546,7 +4546,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.1.">AUTHORIZE ACCESS TO SECURITY FUNCTIONS</link>
-            <prop class="control-name">AC-6 (1)</prop>
+            <prop class="subcontrol-name">AC-6 (1)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, one can control which users and teams can create and
 manipulate Universal Control Plane resources and explicitly authorize
@@ -4565,7 +4565,7 @@ the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.2.">NON-PRIVILEGED ACCESS FOR NONSECURITY FUNCTIONS</link>
-            <prop class="control-name">AC-6 (2)</prop>
+            <prop class="subcontrol-name">AC-6 (2)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, one can control which users and teams can create and
 manipulate Universal Control Plane resources. By default, no one can
@@ -4583,7 +4583,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.3.">NETWORK ACCESS TO PRIVILEGED COMMANDS</link>
-            <prop class="control-name">AC-6 (3)</prop>
+            <prop class="subcontrol-name">AC-6 (3)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, one can control which users and teams can create and
 manipulate Universal Control Plane resources, including Docker
@@ -4603,7 +4603,7 @@ the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.5.">PRIVILEGED ACCOUNTS</link>
-            <prop class="control-name">AC-6 (5)</prop>
+            <prop class="subcontrol-name">AC-6 (5)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, one can restrict privileged accounts within Universal Control
 Plane to custom-defined roles. By default, no one can make changes to
@@ -4622,7 +4622,7 @@ the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.7.">REVIEW OF USER PRIVILEGES</link>
-            <prop class="control-name">AC-6 (7)</prop>
+            <prop class="subcontrol-name">AC-6 (7)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, one can review all implemented grants, accounts and roles
 within Universal Control Plane and reassign/revoke privileges as
@@ -4640,7 +4640,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.8.">PRIVILEGE LEVELS FOR CODE EXECUTION</link>
-            <prop class="control-name">AC-6 (8)</prop>
+            <prop class="subcontrol-name">AC-6 (8)</prop>
             <p class="narrative">'Universal Control Plane users can be assigned to one of a number of
 different permission levels. The permission level assigned to a
 specific user determines that user''s ability to execute certain
@@ -4666,7 +4666,7 @@ permission levels within UCP can be found at the following resource:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.10.">PROHIBIT NON-PRIVILEGED USERS FROM EXECUTING PRIVILEGED FUNCTIONS</link>
-            <prop class="control-name">AC-6 (10)</prop>
+            <prop class="subcontrol-name">AC-6 (10)</prop>
             <p class="narrative">'One can control which users and teams can create and manipulate
 Universal Control Plane resources and prevent non-privileged users
 from executing privileged functions per the requirements of this
@@ -4682,7 +4682,7 @@ functionality can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.12.1.">USER-INITIATED LOGOUTS / MESSAGE DISPLAYS</link>
-            <prop class="control-name">AC-12 (1)</prop>
+            <prop class="subcontrol-name">AC-12 (1)</prop>
             <p class="narrative">'Universal Control Plane includes a logout capability that allows a
 user to terminate his/her current session.'
 </p>
@@ -4711,7 +4711,7 @@ access.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.1.">AUTOMATED MONITORING / CONTROL</link>
-            <prop class="control-name">AC-17 (1)</prop>
+            <prop class="subcontrol-name">AC-17 (1)</prop>
             <p class="narrative">'Universal Control Plane logs and controls all local and remote
 access events. In addition, auditing can be configured on the
 underlying operating system to meet this control.'
@@ -4721,7 +4721,7 @@ underlying operating system to meet this control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.2.">PROTECTION OF CONFIDENTIALITY / INTEGRITY USING ENCRYPTION</link>
-            <prop class="control-name">AC-17 (2)</prop>
+            <prop class="subcontrol-name">AC-17 (2)</prop>
             <p class="narrative">'All remote access sessions to Universal Control Plane are protected
 with Transport Layer Security (TLS) 1.2. This is included at both the
 HTTPS application layer for access to the UCP user interface and for
@@ -4734,7 +4734,7 @@ authentication.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.3.">MANAGED ACCESS CONTROL POINTS</link>
-            <prop class="control-name">AC-17 (3)</prop>
+            <prop class="subcontrol-name">AC-17 (3)</prop>
             <p class="narrative">'A combination of managed load balancers, firewalls and access control
 lists, and virtual networking resources can be used to ensure traffic
 destined for Universal Control Plane managers and worker nodes is
@@ -4745,7 +4745,7 @@ routed through managed network access control points.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.4.">PRIVILEGED COMMANDS / ACCESS</link>
-            <prop class="control-name">AC-17 (4)</prop>
+            <prop class="subcontrol-name">AC-17 (4)</prop>
             <p class="narrative">'To help the organization meet the requirements of this control,
 Universal Control Plane can be configured to authorize certain
 privileged functions via remote access.'
@@ -4755,7 +4755,7 @@ privileged functions via remote access.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.9.">DISCONNECT / DISABLE ACCESS</link>
-            <prop class="control-name">AC-17 (9)</prop>
+            <prop class="subcontrol-name">AC-17 (9)</prop>
             <p class="narrative">'Built-in firewall technology in Universal Control Plane's underlying
 operating system can be used to force the disconnection of remote
 connections to the host. In addition, UCP provides the option to pause
@@ -4780,7 +4780,7 @@ Plane.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.20.1.">LIMITS ON AUTHORIZED USE</link>
-            <prop class="control-name">AC-20 (1)</prop>
+            <prop class="subcontrol-name">AC-20 (1)</prop>
             <p class="narrative">'To help the organization meet the requirements of this control, one
 can control which external systems can access Universal Control
 Plane.'
@@ -4832,7 +4832,7 @@ ok","username":"dockeruser"}'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.3.1.">ADDITIONAL AUDIT INFORMATION</link>
-            <prop class="control-name">AU-3 (1)</prop>
+            <prop class="subcontrol-name">AU-3 (1)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack. The logging stack can subsequently be used to
 interpolate the information defined by this control from the logged
@@ -4847,7 +4847,7 @@ resource:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.3.2.">CENTRALIZED MANAGEMENT OF PLANNED AUDIT RECORD CONTENT</link>
-            <prop class="control-name">AU-3 (2)</prop>
+            <prop class="subcontrol-name">AU-3 (2)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack. The logging stack can subsequently be used to
 interpolate the information defined by this control from the logged
@@ -4875,7 +4875,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.5.1.">AUDIT STORAGE CAPACITY</link>
-            <prop class="control-name">AU-5 (1)</prop>
+            <prop class="subcontrol-name">AU-5 (1)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack. The logging stack can subsequently be configured to
 warn the organization when the allocated log storage is full.
@@ -4889,7 +4889,7 @@ Additional information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.5.2.">REAL-TIME ALERTS</link>
-            <prop class="control-name">AU-5 (2)</prop>
+            <prop class="subcontrol-name">AU-5 (2)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack. The logging stack can subsequently be configured to
 warn the organization when audit log failures occur. Additional
@@ -4903,7 +4903,7 @@ information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.6.4.">CENTRAL REVIEW AND ANALYSIS</link>
-            <prop class="control-name">AU-6 (4)</prop>
+            <prop class="subcontrol-name">AU-6 (4)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack. The organization can subsequently centrally review and
 analyze all of the Docker EE audit records. Additional information can
@@ -4936,7 +4936,7 @@ generation and transmission to a remote logging stack.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.7.1.">AUTOMATIC PROCESSING</link>
-            <prop class="control-name">AU-7 (1)</prop>
+            <prop class="subcontrol-name">AU-7 (1)</prop>
             <p class="narrative">'Universal Control Plane can be configured to log data to a remote
 logging stack. The logging stack can subsequently be configured to
 parse information by organization-defined audit fields. Additional
@@ -4964,7 +4964,7 @@ operating system's instructions for doing so.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.8.1.">SYNCHRONIZATION WITH AUTHORITATIVE TIME SOURCE</link>
-            <prop class="control-name">AU-8 (1)</prop>
+            <prop class="subcontrol-name">AU-8 (1)</prop>
             <p class="narrative">'The underlying operating system on which Universal Control Plane runs
 should be configured such that its system clock compares itself with
 an authoritative time source as indicated by this control. This can be
@@ -5001,7 +5001,7 @@ control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.2.">AUDIT BACKUP ON SEPARATE PHYSICAL SYSTEMS / COMPONENTS</link>
-            <prop class="control-name">AU-9 (2)</prop>
+            <prop class="subcontrol-name">AU-9 (2)</prop>
             <p class="narrative">'Universal Control Plane can be configured to send logs to a remote
 logging stack. The logging stack can subsequently be configured to
 back up audit records per the schedule defined by this control.
@@ -5014,7 +5014,7 @@ Additional information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.9.3.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">AU-9 (3)</prop>
+            <prop class="subcontrol-name">AU-9 (3)</prop>
             <p class="narrative">'Universal Control Plane can be configured to send logs to a remote
 logging stack. The logging stack can subsequently be configured to
 meet the encryption mechanisms required by this control. Additional
@@ -5066,7 +5066,7 @@ use for instructions on configuring this service.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.12.1.">SYSTEM-WIDE / TIME-CORRELATED AUDIT TRAIL</link>
-            <prop class="control-name">AU-12 (1)</prop>
+            <prop class="subcontrol-name">AU-12 (1)</prop>
             <p class="narrative">'Universal Control Plane can be configured to send logs to a remote
 logging stack. This logging stack can subsequently be used to compile
 audit records in to a system-wide audit trail that is time-correlated
@@ -5081,7 +5081,7 @@ found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#au.12.3.">CHANGES BY AUTHORIZED INDIVIDUALS</link>
-            <prop class="control-name">AU-12 (3)</prop>
+            <prop class="subcontrol-name">AU-12 (3)</prop>
             <p class="narrative">'Universal Control Plane can be configured to send logs to a remote
 logging stack. This logging stack can subsequently be used to meet the
 requirements of this control. Additional information can be found at
@@ -5095,7 +5095,7 @@ the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.5.1.">AUTOMATED ACCESS ENFORCEMENT / AUDITING</link>
-            <prop class="control-name">CM-5 (1)</prop>
+            <prop class="subcontrol-name">CM-5 (1)</prop>
             <p class="narrative">'Role-based access control can be configured within Universal Control
 Plane to meet the requirements of this control. Additional information
 can be found at the following resources:
@@ -5109,7 +5109,7 @@ can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.5.3.">SIGNED COMPONENTS</link>
-            <prop class="control-name">CM-5 (3)</prop>
+            <prop class="subcontrol-name">CM-5 (3)</prop>
             <p class="narrative">'Docker Content Trust is a capability provided by Docker Enterprise
 Edition that enforces client-side signing and verification of Docker
 image tags. It provides the ability to use digital signatures for data
@@ -5131,7 +5131,7 @@ following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.6.1.">AUTOMATED CENTRAL MANAGEMENT / APPLICATION / VERIFICATION</link>
-            <prop class="control-name">CM-6 (1)</prop>
+            <prop class="subcontrol-name">CM-6 (1)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with these requirements, the organization can
 incorporate the use of an external configuration management system to
@@ -5148,7 +5148,7 @@ can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.7.1.">PERIODIC REVIEW</link>
-            <prop class="control-name">CM-7 (1)</prop>
+            <prop class="subcontrol-name">CM-7 (1)</prop>
             <p class="narrative">'To help the organization meet the requirements of this control,
 Universal Control Plane includes a robust access control model to
 disable any functionality as mandated by this control.'
@@ -5160,7 +5160,7 @@ disable any functionality as mandated by this control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.7.2.">PREVENT PROGRAM EXECUTION</link>
-            <prop class="control-name">CM-7 (2)</prop>
+            <prop class="subcontrol-name">CM-7 (2)</prop>
             <p class="narrative">'In order to restrict which Docker images can be used to deploy
 applications to Universal Control Plane, the organization can define a
 list of allowed base Docker images and make them available via Docker
@@ -5172,7 +5172,7 @@ able to pull Docker images from untrusted sources.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cm.7.5.">AUTHORIZED SOFTWARE / WHITELISTING</link>
-            <prop class="control-name">CM-7 (5)</prop>
+            <prop class="subcontrol-name">CM-7 (5)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with these requirements and in order to restrict
 which Docker images can be used to deploy applications to Universal
@@ -5198,7 +5198,7 @@ following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#cp.10.2.">TRANSACTION RECOVERY</link>
-            <prop class="control-name">CP-10 (2)</prop>
+            <prop class="subcontrol-name">CP-10 (2)</prop>
             <p class="narrative">'Universal Control Plane maintains its cluster state via an internal
 key-value store. This, and other UCP transactions can be backed up and
 recovered. Additional information can be found at the following
@@ -5212,7 +5212,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.5.">GROUP AUTHENTICATION</link>
-            <prop class="control-name">IA-2 (5)</prop>
+            <prop class="subcontrol-name">IA-2 (5)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, Universal Control
 Plane requires individual users to be authenticated in order to gain
@@ -5236,7 +5236,7 @@ token. Additional information can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.2.">PKI-BASED AUTHENTICATION</link>
-            <prop class="control-name">IA-5 (2)</prop>
+            <prop class="subcontrol-name">IA-5 (2)</prop>
             <p class="narrative">'Universal Control Plane contains two, built-in root certificate
 authorities. One CA is used for signing client bundles generated by
 users. The other CA is used for TLS communication between UCP cluster
@@ -5301,7 +5301,7 @@ can include groupings for non-organizational users.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sa.10.1.">SOFTWARE / FIRMWARE INTEGRITY VERIFICATION</link>
-            <prop class="control-name">SA-10 (1)</prop>
+            <prop class="subcontrol-name">SA-10 (1)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with these requirements, Docker Content Trust gives
 you the ability to verify both the integrity and the publisher of all
@@ -5349,7 +5349,7 @@ two-way mutual TLS authentication.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.28.1.">CRYPTOGRAPHIC PROTECTION</link>
-            <prop class="control-name">SC-28 (1)</prop>
+            <prop class="subcontrol-name">SC-28 (1)</prop>
             <p class="narrative">'All remote access sessions to Universal Control Plane are protected
 with Transport Layer Security (TLS) 1.2 with the AES GCM cipher. This
 is included at both the HTTPS application layer for access to the UCP
@@ -5414,7 +5414,7 @@ Supporting documentation can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.1.">AUTOMATED SYSTEM ACCOUNT MANAGEMENT</link>
-            <prop class="control-name">AC-2 (1)</prop>
+            <prop class="subcontrol-name">AC-2 (1)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, an external identity management system (such as Microsoft''s
 Active Directory or an LDAP endpoint) can be configured as mandated by
@@ -5428,7 +5428,7 @@ Supporting documentation can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.2.">REMOVAL OF TEMPORARY / EMERGENCY ACCOUNTS</link>
-            <prop class="control-name">AC-2 (2)</prop>
+            <prop class="subcontrol-name">AC-2 (2)</prop>
             <p class="narrative">'Using Docker Enterprise Edition''s LDAP integration capabilities, one
 can disable and/or remove temporary and emergency accounts in a
 connected directory service (such as Active Directory) after an
@@ -5443,7 +5443,7 @@ Supporting documentation can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.3.">DISABLE INACTIVE ACCOUNTS</link>
-            <prop class="control-name">AC-2 (3)</prop>
+            <prop class="subcontrol-name">AC-2 (3)</prop>
             <p class="narrative">'Using Docker Enterprise Edition''s LDAP integration capabilities, one
 can automatically disable inactive accounts in a connected directory
 service (such as Active Directory). When a user is removed from LDAP,
@@ -5457,7 +5457,7 @@ Supporting documentation can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.4.">AUTOMATED AUDIT ACTIONS</link>
-            <prop class="control-name">AC-2 (4)</prop>
+            <prop class="subcontrol-name">AC-2 (4)</prop>
             <p class="narrative">'Docker Enterprise Edition logs various authentication and
 authorization events to standard log files. One can configure Docker
 Enterprise Edition to direct these event logs to a remote logging
@@ -5478,7 +5478,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.5.">INACTIVITY LOGOUT</link>
-            <prop class="control-name">AC-2 (5)</prop>
+            <prop class="subcontrol-name">AC-2 (5)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, Docker Enterprise Edition can be configured to enforce automated
 session termination of users after an organization-defined time period
@@ -5492,7 +5492,7 @@ section of the "Admin Settings" in Universal Control Plane.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.7.">ROLE-BASED SCHEMES</link>
-            <prop class="control-name">AC-2 (7)</prop>
+            <prop class="subcontrol-name">AC-2 (7)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, Docker Enterprise Edition supports various levels of user
 permissions and role-based access control enforcements. Administrator
@@ -5513,7 +5513,7 @@ resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.9.">RESTRICTIONS ON USE OF SHARED / GROUP ACCOUNTS</link>
-            <prop class="control-name">AC-2 (9)</prop>
+            <prop class="subcontrol-name">AC-2 (9)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, users and/or groups synchronized to Docker Enterprise Edition
 via LDAP can be configured at the directory service.'
@@ -5523,7 +5523,7 @@ via LDAP can be configured at the directory service.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.10.">SHARED / GROUP ACCOUNT CREDENTIAL TERMINATION</link>
-            <prop class="control-name">AC-2 (10)</prop>
+            <prop class="subcontrol-name">AC-2 (10)</prop>
             <p class="narrative">'Users and/or groups synchronized to Docker Enterprise Edition via
 LDAP can be configured at the directory service to ensure shared/group
 account credentials are terminated when members leave the group.'
@@ -5533,7 +5533,7 @@ account credentials are terminated when members leave the group.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.11.">USAGE CONDITIONS</link>
-            <prop class="control-name">AC-2 (11)</prop>
+            <prop class="subcontrol-name">AC-2 (11)</prop>
             <p class="narrative">'Information system accounts synchronized to Docker Enterprise Edition
 via LDAP can be configured at the directory service to meet this
 requirement as necessary.'
@@ -5543,7 +5543,7 @@ requirement as necessary.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.12.">ACCOUNT MONITORING / ATYPICAL USAGE</link>
-            <prop class="control-name">AC-2 (12)</prop>
+            <prop class="subcontrol-name">AC-2 (12)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, when Docker Enterprise Edition is configured for LDAP
 integration, one can refer to the directory service''s existing
@@ -5554,7 +5554,7 @@ monitoring tools.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.2.13.">DISABLE ACCOUNTS FOR HIGH-RISK INDIVIDUALS</link>
-            <prop class="control-name">AC-2 (13)</prop>
+            <prop class="subcontrol-name">AC-2 (13)</prop>
             <p class="narrative">'To assist the organization in meeting the requirements of this
 control, users and/or groups synchronized to Docker Enterprise Edition
 via LDAP can be managed at the directory service and disabled if
@@ -5580,7 +5580,7 @@ documentation can be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.6.9.">AUDITING USE OF PRIVILEGED FUNCTIONS</link>
-            <prop class="control-name">AC-6 (9)</prop>
+            <prop class="subcontrol-name">AC-6 (9)</prop>
             <p class="narrative">'Docker Enterprise Edition logs privileged user events to standard log
 files. One can configure Docker Enterprise Edition to direct these
 event logs to a remote logging service such as an Elasticsearch,
@@ -5658,7 +5658,7 @@ hours).'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.11.1.">PATTERN-HIDING DISPLAYS</link>
-            <prop class="control-name">AC-11 (1)</prop>
+            <prop class="subcontrol-name">AC-11 (1)</prop>
             <p class="narrative">'Per the requirements of AC-2 (5), Docker Enterprise Edition can be
 configured to enforce user session lifetime limits and renewal
 thresholds. These options can be found within the Universal Control
@@ -5689,7 +5689,7 @@ user will be locked out of his/her session.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ac.17.1.">AUTOMATED MONITORING / CONTROL</link>
-            <prop class="control-name">AC-17 (1)</prop>
+            <prop class="subcontrol-name">AC-17 (1)</prop>
             <p class="narrative">'Docker Enterprise Edition logs and controls all local and remote
 access events. In addition, auditing can be configured on the
 underlying operating system to meet this control.'
@@ -5735,7 +5735,7 @@ be found at the following resources:
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.5.">GROUP AUTHENTICATION</link>
-            <prop class="control-name">IA-2 (5)</prop>
+            <prop class="subcontrol-name">IA-2 (5)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, Docker Enterprise
 Edition requires individual users to be authenticated in order to gain
@@ -5747,7 +5747,7 @@ which the user is a member are subsequently applied.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.8.">NETWORK ACCESS TO PRIVILEGED ACCOUNTS - REPLAY RESISTANT</link>
-            <prop class="control-name">IA-2 (8)</prop>
+            <prop class="subcontrol-name">IA-2 (8)</prop>
             <p class="narrative">'Docker Enterprise Edition integrates with LDAP for authenticating
 users to an external directory service. You should configure your
 external directory service for ensuring that you are protected against
@@ -5758,7 +5758,7 @@ replay attacks.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.2.9.">NETWORK ACCESS TO NON-PRIVILEGED ACCOUNTS - REPLAY RESISTANT</link>
-            <prop class="control-name">IA-2 (9)</prop>
+            <prop class="subcontrol-name">IA-2 (9)</prop>
             <p class="narrative">'Docker Enterprise Edition integrates with LDAP for authenticating
 users to an external directory service. You should configure your
 external directory service for ensuring that you are protected against
@@ -5796,7 +5796,7 @@ documentation for configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.4.4.">IDENTIFY USER STATUS</link>
-            <prop class="control-name">IA-4 (4)</prop>
+            <prop class="subcontrol-name">IA-4 (4)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, an external
 directory service integrated with Docker Enterprise Edition via LDAP
@@ -5881,7 +5881,7 @@ documentation for configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.1.">PASSWORD-BASED AUTHENTICATION</link>
-            <prop class="control-name">IA-5 (1)</prop>
+            <prop class="subcontrol-name">IA-5 (1)</prop>
             <p class="narrative">'An external directory service integrated with Docker Enterprise
 Edition via LDAP can be configured to enforce minimum password
 complexity requirements. Refer to your directory service''s
@@ -5922,7 +5922,7 @@ documentation for configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.2.">PKI-BASED AUTHENTICATION</link>
-            <prop class="control-name">IA-5 (2)</prop>
+            <prop class="subcontrol-name">IA-5 (2)</prop>
             <p class="narrative">'All users within a Docker Enterprise Edition cluster can create a
 client certificate bundle for authenticating in to the cluster from
 the Docker client tooling. When a user attempts to authenticate in to
@@ -5954,7 +5954,7 @@ cache of revocation data per the requirements of this control.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.4.">AUTOMATED SUPPORT  FOR PASSWORD STRENGTH DETERMINATION</link>
-            <prop class="control-name">IA-5 (4)</prop>
+            <prop class="subcontrol-name">IA-5 (4)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, an external
 directory service integrated with Docker Enterprise Edition via LDAP can be
@@ -5967,7 +5967,7 @@ directory service's documentation for configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.5.6.">PROTECTION OF AUTHENTICATORS</link>
-            <prop class="control-name">IA-5 (6)</prop>
+            <prop class="subcontrol-name">IA-5 (6)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, an external
 directory service integrated with Docker Enterprise Edition via LDAP
@@ -5980,7 +5980,7 @@ configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.8.2.">ACCEPTANCE OF THIRD-PARTY CREDENTIALS</link>
-            <prop class="control-name">IA-8 (2)</prop>
+            <prop class="subcontrol-name">IA-8 (2)</prop>
             <p class="narrative">'An external directory service integrated with Docker Enterprise
 Edition via LDAP can be configured to meet the FICAM requirements as
 indicated by this control. Refer to your directory service''s
@@ -5991,7 +5991,7 @@ documentation for configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.8.3.">USE OF FICAM-APPROVED PRODUCTS</link>
-            <prop class="control-name">IA-8 (3)</prop>
+            <prop class="subcontrol-name">IA-8 (3)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, an external
 directory service integrated with Docker Enterprise Edition via LDAP
@@ -6004,7 +6004,7 @@ configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#ia.8.4.">USE OF FICAM-ISSUED PROFILES</link>
-            <prop class="control-name">IA-8 (4)</prop>
+            <prop class="subcontrol-name">IA-8 (4)</prop>
             <p class="narrative">'The organization is responsible for meeting the requirements of this
 control. To assist with meeting these requirements, an external
 directory service integrated with Docker Enterprise Edition via LDAP
@@ -6017,7 +6017,7 @@ configuring this.'
          </part>
          <part class="satisfies">
             <link rel="satisfies" href="#sc.23.1.">INVALIDATE SESSION IDENTIFIERS AT LOGOUT</link>
-            <prop class="control-name">SC-23 (1)</prop>
+            <prop class="subcontrol-name">SC-23 (1)</prop>
             <p class="narrative">'Docker Enterprise Edition invalidates session identifiers upon user
 logout per the requirements of this control.'
 </p>
