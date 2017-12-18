@@ -13,7 +13,7 @@ package implementation
 import (
 	"encoding/json"
 	"fmt"
-	"strconv"
+	"strings"
 
 	yaml "gopkg.in/yaml.v2"
 )
@@ -69,12 +69,13 @@ type Narrative struct {
 
 // MarshalJSON ...
 func (n *Narrative) MarshalJSON() ([]byte, error) {
-	value, err := strconv.Unquote(n.Value)
-	if err != nil {
-		return nil, err
+	if n.Value != "" {
+		r := strings.NewReplacer(
+			"''", "'",
+			"'", "",
+		)
+		n.Value = r.Replace(n.Value)
 	}
-
-	n.Value = value
 
 	return json.Marshal(*n)
 }
