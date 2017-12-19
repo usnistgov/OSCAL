@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="19.0">
     <meta>
-        <filters directoryPatterns="" filePatterns="OSCAL-dev.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
+        <filters directoryPatterns="" filePatterns="OSCAL-dev.xpr" positiveFilePatterns="*.xml" showHiddenFiles="false"/>
         <options>
             <serialized version="19.0" xml:space="preserve">
                 <serializableOrderedMap>
@@ -14,16 +14,241 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/JSON-mapping/acquire-JSON.xpl</String>
+                                    <String>examples/mini-testing/01a_param-only-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Run sample JSON file through Acquisition</String>
+                                        <String>Update profile to new model 20171219</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>XPROC</String>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/99includeRAx3-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/99includeACx2-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/42_invoke-exceptions-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/41_exceptions-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/32_invalid-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/31_patched-messy-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/30_patched-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/20_compound-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/11_more-params-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/10_some-params-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/05_exclude2-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/04_exclude1-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/03_all-with-enh-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/02_all-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/mini-testing/01_identity-profile.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Update profile to new model 20171219</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -44,7 +269,22 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/JSON-mapping/map-refine.xsl</String>
+                                    <String>examples/FedRAMP/FedRAMP-HIGH-edited.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/JSON-mapping/acquire-JSON.xpl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -59,11 +299,11 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/CSF/produce-and-enhance-framework.xpl</String>
+                                    <String>working/JSON-mapping/enhance.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Produce and enhance CSF framework</String>
+                                        <String>Run sample JSON file through Acquisition</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -89,7 +329,22 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/JSON-mapping/enhance.xsl</String>
+                                    <String>working/CSF/produce-and-enhance-framework.xpl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Produce and enhance CSF framework</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/JSON-mapping/map-refine.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -129,36 +384,6 @@
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/02_all-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/FedRAMP/FedRAMP-HIGH-edited.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -329,36 +554,6 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>examples/mini-testing/11_more-params-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/30_patched-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -389,187 +584,7 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>examples/mini-testing/99includeACx2-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/20_compound-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/01_identity-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/10_some-params-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>examples/mini-testing/mini-testing-catalog.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/01a_param-only-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/42_invoke-exceptions-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/41_exceptions-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/32_invalid-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/31_patched-messy-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/05_exclude2-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/04_exclude1-profile.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/03_all-with-enh-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -645,21 +660,6 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>examples/SP800-53/SP800-53-rev4-catalog.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/mini-testing/99includeRAx3-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -1512,6 +1512,92 @@
                                 </field>
                                 <field name="showInXMLPane">
                                     <Boolean>true</Boolean>
+                                </field>
+                                <field name="showInSVGPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInResultSetPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="useXSLTInput">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="xsltParams">
+                                    <list/>
+                                </field>
+                                <field name="cascadingStylesheets">
+                                    <String-array/>
+                                </field>
+                                <field name="xslTransformer">
+                                    <String>Saxon-PE</String>
+                                </field>
+                                <field name="extensionURLs">
+                                    <String-array/>
+                                </field>
+                            </scenario>
+                            <scenario>
+                                <field name="advancedOptionsMap">
+                                    <null/>
+                                </field>
+                                <field name="name">
+                                    <String>Update profile to new model 20171219</String>
+                                </field>
+                                <field name="baseURL">
+                                    <String></String>
+                                </field>
+                                <field name="footerURL">
+                                    <String></String>
+                                </field>
+                                <field name="fOPMethod">
+                                    <String>pdf</String>
+                                </field>
+                                <field name="fOProcessorName">
+                                    <String>Apache FOP</String>
+                                </field>
+                                <field name="headerURL">
+                                    <String></String>
+                                </field>
+                                <field name="inputXSLURL">
+                                    <String>${pdu}/new_examples/migrate-profile.xsl</String>
+                                </field>
+                                <field name="inputXMLURL">
+                                    <String>${currentFileURL}</String>
+                                </field>
+                                <field name="defaultScenario">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="isFOPPerforming">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="type">
+                                    <String>XSL</String>
+                                </field>
+                                <field name="saveAs">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="openInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="outputFile">
+                                    <File>${pd}/working/examples2/mini-testing/${cfne}</File>
+                                </field>
+                                <field name="outputResource">
+                                    <String>${pd}/working/examples2/mini-testing/${cfne}</String>
+                                </field>
+                                <field name="openOtherLocationInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="locationToOpenInBrowserURL">
+                                    <null/>
+                                </field>
+                                <field name="openInEditor">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInHTMLPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInXMLPane">
+                                    <Boolean>false</Boolean>
                                 </field>
                                 <field name="showInSVGPane">
                                     <Boolean>false</Boolean>
@@ -3108,188 +3194,6 @@
                             </xprocScenario>
                             <xprocScenario>
                                 <field name="inputPorts">
-                                    <xprocInputPort-array>
-                                        <xprocInputPort>
-                                            <field name="portName">
-                                                <String>source</String>
-                                            </field>
-                                            <field name="urls">
-                                                <String-array>
-                                                    <String>${pdu}/sources/800-53/rev5/sp800-53-controls.xml</String>
-                                                </String-array>
-                                            </field>
-                                        </xprocInputPort>
-                                    </xprocInputPort-array>
-                                </field>
-                                <field name="outputPorts">
-                                    <xprocOutputPort-array>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_A_converted</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_B_enhanced</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_C_tuned</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>final</String>
-                                            </field>
-                                            <field name="url">
-                                                <String>${pdu}/working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                        <xprocOutputPort>
-                                            <field name="portName">
-                                                <String>_0_input</String>
-                                            </field>
-                                            <field name="url">
-                                                <null/>
-                                            </field>
-                                            <field name="showInSequenceView">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                        </xprocOutputPort>
-                                    </xprocOutputPort-array>
-                                </field>
-                                <field name="xprocOptions">
-                                    <xprocOption-array/>
-                                </field>
-                                <field name="xprocParameters">
-                                    <xprocParameterPort-array>
-                                        <xprocParameterPort>
-                                            <field name="portName">
-                                                <String>parameters</String>
-                                            </field>
-                                            <field name="parameters">
-                                                <xprocParameter-array/>
-                                            </field>
-                                        </xprocParameterPort>
-                                        <xprocParameterPort>
-                                            <field name="portName">
-                                                <String>*</String>
-                                            </field>
-                                            <field name="parameters">
-                                                <xprocParameter-array/>
-                                            </field>
-                                        </xprocParameterPort>
-                                    </xprocParameterPort-array>
-                                </field>
-                                <field name="advancedOptionsMap">
-                                    <null/>
-                                </field>
-                                <field name="name">
-                                    <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
-                                </field>
-                                <field name="baseURL">
-                                    <null/>
-                                </field>
-                                <field name="footerURL">
-                                    <null/>
-                                </field>
-                                <field name="fOPMethod">
-                                    <null/>
-                                </field>
-                                <field name="fOProcessorName">
-                                    <null/>
-                                </field>
-                                <field name="headerURL">
-                                    <null/>
-                                </field>
-                                <field name="inputXSLURL">
-                                    <String>${pdu}/working/SP800-53/SP800-53-extraction.xpl</String>
-                                </field>
-                                <field name="inputXMLURL">
-                                    <String></String>
-                                </field>
-                                <field name="defaultScenario">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="isFOPPerforming">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="type">
-                                    <String>XPROC</String>
-                                </field>
-                                <field name="saveAs">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="openInBrowser">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="outputFile">
-                                    <null/>
-                                </field>
-                                <field name="outputResource">
-                                    <null/>
-                                </field>
-                                <field name="openOtherLocationInBrowser">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="locationToOpenInBrowserURL">
-                                    <null/>
-                                </field>
-                                <field name="openInEditor">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInHTMLPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInXMLPane">
-                                    <Boolean>true</Boolean>
-                                </field>
-                                <field name="showInSVGPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInResultSetPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="useXSLTInput">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="xsltParams">
-                                    <list/>
-                                </field>
-                                <field name="cascadingStylesheets">
-                                    <String-array/>
-                                </field>
-                                <field name="xslTransformer">
-                                    <String>Calabash XProc</String>
-                                </field>
-                                <field name="extensionURLs">
-                                    <String-array/>
-                                </field>
-                            </xprocScenario>
-                            <xprocScenario>
-                                <field name="inputPorts">
                                     <xprocInputPort-array/>
                                 </field>
                                 <field name="outputPorts">
@@ -3431,6 +3335,188 @@
                                 </field>
                                 <field name="inputXSLURL">
                                     <String>${pdu}/working/JSON-mapping/acquire-JSON.xpl</String>
+                                </field>
+                                <field name="inputXMLURL">
+                                    <String></String>
+                                </field>
+                                <field name="defaultScenario">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="isFOPPerforming">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="type">
+                                    <String>XPROC</String>
+                                </field>
+                                <field name="saveAs">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="openInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="outputFile">
+                                    <null/>
+                                </field>
+                                <field name="outputResource">
+                                    <null/>
+                                </field>
+                                <field name="openOtherLocationInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="locationToOpenInBrowserURL">
+                                    <null/>
+                                </field>
+                                <field name="openInEditor">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInHTMLPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInXMLPane">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="showInSVGPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInResultSetPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="useXSLTInput">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="xsltParams">
+                                    <list/>
+                                </field>
+                                <field name="cascadingStylesheets">
+                                    <String-array/>
+                                </field>
+                                <field name="xslTransformer">
+                                    <String>Calabash XProc</String>
+                                </field>
+                                <field name="extensionURLs">
+                                    <String-array/>
+                                </field>
+                            </xprocScenario>
+                            <xprocScenario>
+                                <field name="inputPorts">
+                                    <xprocInputPort-array>
+                                        <xprocInputPort>
+                                            <field name="portName">
+                                                <String>source</String>
+                                            </field>
+                                            <field name="urls">
+                                                <String-array>
+                                                    <String>${pdu}/sources/800-53/rev5/sp800-53-controls.xml</String>
+                                                </String-array>
+                                            </field>
+                                        </xprocInputPort>
+                                    </xprocInputPort-array>
+                                </field>
+                                <field name="outputPorts">
+                                    <xprocOutputPort-array>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_A_converted</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_B_enhanced</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_C_tuned</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>final</String>
+                                            </field>
+                                            <field name="url">
+                                                <String>${pdu}/working/SP800-53/rev5/SP800-53rev5-OSCAL.xml</String>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_0_input</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                    </xprocOutputPort-array>
+                                </field>
+                                <field name="xprocOptions">
+                                    <xprocOption-array/>
+                                </field>
+                                <field name="xprocParameters">
+                                    <xprocParameterPort-array>
+                                        <xprocParameterPort>
+                                            <field name="portName">
+                                                <String>parameters</String>
+                                            </field>
+                                            <field name="parameters">
+                                                <xprocParameter-array/>
+                                            </field>
+                                        </xprocParameterPort>
+                                        <xprocParameterPort>
+                                            <field name="portName">
+                                                <String>*</String>
+                                            </field>
+                                            <field name="parameters">
+                                                <xprocParameter-array/>
+                                            </field>
+                                        </xprocParameterPort>
+                                    </xprocParameterPort-array>
+                                </field>
+                                <field name="advancedOptionsMap">
+                                    <null/>
+                                </field>
+                                <field name="name">
+                                    <String>SP800-53 to OSCAL (convert and refine) - rev5</String>
+                                </field>
+                                <field name="baseURL">
+                                    <null/>
+                                </field>
+                                <field name="footerURL">
+                                    <null/>
+                                </field>
+                                <field name="fOPMethod">
+                                    <null/>
+                                </field>
+                                <field name="fOProcessorName">
+                                    <null/>
+                                </field>
+                                <field name="headerURL">
+                                    <null/>
+                                </field>
+                                <field name="inputXSLURL">
+                                    <String>${pdu}/working/SP800-53/SP800-53-extraction.xpl</String>
                                 </field>
                                 <field name="inputXMLURL">
                                     <String></String>
