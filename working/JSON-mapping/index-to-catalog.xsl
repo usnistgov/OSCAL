@@ -24,10 +24,15 @@
                 <link rel="satisfies" href="#{$target/@id}">
                     <xsl:value-of select="$target/title"/>
                 </link>
+                <prop class="{name($target)}-name">
+                    <xsl:value-of select="."/>
+                </prop>
             </xsl:for-each>
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
+    
+    <xsl:template match="part[@class='satisfies']/prop[@class='control-name']"/>
     
     <xsl:template match="set-param">
         <xsl:variable name="key" select="prop[@class='param-key']"/>

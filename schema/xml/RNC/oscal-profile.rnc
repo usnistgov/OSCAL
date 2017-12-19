@@ -2,9 +2,14 @@ default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
 include "oscal-core.rnc" { start = profile }
 
-profile = element profile { idAttr, title, invoke+, framework? }
+profile = element profile { idAttr, title, import+, merge?, modify?, framework* }
 
-invoke = element invoke { hrefAttr, (\include?, exclude?), ( param_setting | alteration )* }
+import = element import { hrefAttr, (\include?, exclude?) }
+
+# presence of element merge means to merge (not merely aggregate)
+merge = element merge { empty }
+
+modify =  element modify { (param_setting | alteration )* }
 
 # Can have either 'all' or (a set of) 'call'
 \include = element include { all | call+ }
@@ -21,18 +26,18 @@ withSubContrlsAttr = attribute with-subcontrols { ('yes'|'no') }?
 # Schematron requirement: there exists in the catalog a control or subcontrol
 # by the given @id
 call = element call {
-          (withSubContrlsAttr, attribute control-id { text } ) |
-           attribute subcontrol-id { text } }
+          (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
+           attribute subcontrol-id { xsd:NCName } }
 
 exclude = element exclude { element call {
-            attribute control-id { text } |
-            attribute subcontrol-id { text } }+ }
+            attribute control-id { xsd:NCName } |
+            attribute subcontrol-id { xsd:NCName } }+ }
 
 param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, value }
 
 alteration = element alter { (
-  attribute control-id    { text } |
-  attribute subcontrol-id { text } ),
+  attribute control-id    { xsd:NCName } |
+  attribute subcontrol-id { xsd:NCName } ),
   remove?, augment? }
 
 remove  = element remove  { attribute targets { xsd:NMTOKENS } }
