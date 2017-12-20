@@ -29,7 +29,7 @@
             .resolution,
             .profile,
             .catalog,
-            .invoke,
+            .import,
             .group{
                 display: inline-block;
                 padding: 0.5em;
@@ -40,16 +40,16 @@
                 background-color: white
             }
             
-            div.invoke div.catalog{
+            div.import div.catalog{
                 background-color: gainsboro;
                 border: medium dotted black
             }
             
-            div.invoke{
+            div.import{
                 background-color: #95B9C7
             }
             
-            // .invoke { padding: 0.5em; margin: 0.5em }
+            // .import { padding: 0.5em; margin: 0.5em }
             
             div > *{
                 vertical-align: top
@@ -63,7 +63,7 @@
                 border: medium double black
             }
             
-            .invoke{
+            .import{
                 border: thin dotted black
             }
             .profile{
@@ -81,7 +81,7 @@
                 font-size: 80%;
                 font-family: sans-serif
             }
-            .invoke > span{
+            .import > span{
                 font-size: 80%;
                 font-style: italic
             }
@@ -127,68 +127,67 @@
         <section>
             <h2>Invocation and Selection</h2>
             <section>
-                <h3>A profile may have more than one invocation.</h3>
+                <h3>A profile may have more than one import.</h3>
                 <figure>
                     <div class="profile">
                         <span>OK Profile</span>
                         <div class="invoke">
-                            <span>Invoke Catalog A</span>
+                            <span>Import Catalog A</span>
                         </div>
                         <div class="invoke">
-                            <span>Invoke Catalog B</span>
+                            <span>Import Catalog B</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution</span>
                         <div class="invoke">
-                            <span>Invoke Catalog A</span>
-                            <p>(Results of invocation)</p>
+                            <span>Import Catalog A</span>
+                            <p>(Results of import)</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke Catalog B</span>
-                            <p>(Results of invocation)</p>
+                            <span>Import Catalog B</span>
+                            <p>(Results of import)</p>
                         </div>
                     </div></figure>
             </section>
             <section>
-                <h3>Each invocation calls a catalog or profile</h3>
-                <p>An invocation is bound to a single catalog or profile, its <q>resource</q>, by
-                    URI. If the resource is an OSCAL profile, it is implicitly resolved (with its
-                    own invocations and modification) according to these same rules. Because
-                    profiles must be bound to either catalogs, or profiles and because circular
-                    references are inoperable (see below), all profiles resolve eventually to
-                    catalogs.</p>
+                <h3>Each import calls a catalog or profile</h3>
+                <p>An import is bound to a single catalog or profile, its <q>resource</q>, by URI.
+                    If the resource is an OSCAL profile, it is implicitly resolved (with its own
+                    imports and modification) according to these same rules. Because profiles must
+                    be bound to either catalogs, or profiles and because circular references are
+                    inoperable (see below), all profiles resolve eventually to catalogs.</p>
                 <p>References to URI targets not identifiable as OSCAL
                 (catalogs, profiles or document types tbd with resolution rules of their own) must return nothing.</p>
                 <p>Note that the same catalog may appear at multiple <q>leaf</q> positions in the
-                    invocation tree.</p>
+                    import tree.</p>
                 <figure>
                     <div class="profile">
                         <span>OK Profile</span>
                         <div class="invoke">
-                            <span>Invoke Catalog A</span>
+                            <span>Import Catalog A</span>
                         </div>
                         <div class="invoke">
-                            <span>Invoke Profile B1</span>
+                            <span>Import Profile B1</span>
                         </div>
                     </div>
                     <div class="profile">
                         <span>B1 Profile</span>
                         <div class="invoke">
-                            <span>Invoke Catalog B</span>
+                            <span>Import Catalog B</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span><q>OK Profile</q> Resolution</span>
                         <div class="invoke">
-                            <span>Invoke Catalog A</span>
-                            <p>(Results of invocation)</p>
+                            <span>Import Catalog A</span>
+                            <p>(Results of import)</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke Profile B1</span>
+                            <span>Import Profile B1</span>
                             <div class="invoke">
-                                <span>Invoke Catalog B</span>
-                                <p>(Results of invocation)</p>
+                                <span>Import Catalog B</span>
+                                <p>(Results of import)</p>
                             </div>
                         </div>
                     </div></figure>
@@ -196,28 +195,28 @@
                     <div class="profile">
                         <span>Also OK Profile</span>
                         <div class="invoke">
-                            <span class="stress">Invoke Catalog A</span>
+                            <span class="stress">Import Catalog A</span>
                         </div>
                         <div class="invoke">
-                            <span>Invoke Profile A1</span>
+                            <span>Import Profile A1</span>
                         </div>
                     </div>
                     <div class="profile">
                         <span>A1 Profile</span>
                         <div class="invoke">
-                            <span class="stress">Invoke Catalog A</span>
+                            <span class="stress">Import Catalog A</span>
                         </div>
                     </div><div class="resolution">
                         <span><q>Also OK Profile</q> Resolution</span>
                         <div class="invoke">
-                            <span>Invoke Catalog A</span>
-                            <p>(Results of invocation)</p>
+                            <span>Import Catalog A</span>
+                            <p>(Results of import)</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke Profile A1</span>
+                            <span>Import Profile A1</span>
                             <div class="invoke">
-                                <span>Invoke Catalog A</span>
-                                <p>(Results of invocation)</p>
+                                <span>Import Catalog A</span>
+                                <p>(Results of import)</p>
                             </div>
                         </div>
                     </div>
@@ -225,29 +224,29 @@
             </section>
             <section>
                 <h3>Circular references are inoperable</h3>
-                <p>If an OSCAL profile includes, directly or indirectly, any invocations of itself
-                    as a resource, such invocations are inoperable. Such circular reference is an
-                    error. A processor may fall back by ignoring circular calls (i.e. invocations of
-                    resources that have already been invoked higher in the stack).</p>
+                <p>If an OSCAL profile includes, directly or indirectly, any imports of itself as a
+                    resource, such imports are inoperable. Such circular reference is an error. A
+                    processor may fall back by ignoring circular calls (i.e. imports of resources
+                    that have already been imported higher in the stack).</p>
                 <figure>
                     <div class="profile">
                         <span>Perplex Profile</span>
                         <div class="invoke">
-                            <span>Invoke Plexper profile</span>
+                            <span>Import Plexper profile</span>
                         </div>
                     </div>
                     <div class="profile">
                         <span>Plexper Profile</span>
                         <div class="invoke">
-                            <span>Invoke Perplex profile</span>
+                            <span>Import Perplex profile</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of Perplex Profile</span>
                         <div class="invoke">
-                            <span>Invoke Plexper profile</span>
+                            <span>Import Plexper profile</span>
                             <div class="invoke error">
-                                <span>Invoke Perplex profile</span>
+                                <span>Import Perplex profile</span>
                             </div>
                         </div>
                     </div>
@@ -255,9 +254,9 @@
             </section>
             <section>
                 <h3>Including controls from a resource (catalog or profile) by ID</h3>
-                <p>An invocation can identify controls (as given in and by the resource) for
-                    inclusion in either of two ways. The first method is by an explicit <q>call</q>
-                    using the ID of the desired control or subcontrol.</p>
+                <p>An import can identify controls (as given in and by the resource) for inclusion
+                    in either of two ways. The first method is by an explicit <q>call</q> using the
+                    ID of the desired control or subcontrol.</p>
                 <figure>
                     <div class="catalog">
                         <span>AA Controls Catalog</span>
@@ -271,7 +270,7 @@
                     <div class="profile">
                         <span>AAS Profile (with selection from AA Catalog)</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
                         </div>
@@ -279,7 +278,7 @@
                     <div class="resolution">
                         <span>Resolution of AAS Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -293,20 +292,20 @@
             </section>
             <section>
                 <h3>Including all controls from a resource</h3>
-                <p>Alternatively, an invocation can indicate that all controls from the resource
+                <p>Alternatively, an import can indicate that all controls from the resource
                     (catalog or upstream profile) should be included.</p>
                 <figure>
                     <div class="profile">
                         <span>AAA Profile selecting all controls from AA Catalog</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">All</p>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAA Profile (selecting <q>all</q>)</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -320,13 +319,13 @@
                     <div class="profile">
                         <span>AAA Profile, this time expressed using calls</span>
                         <div class="invoke">
-                            <span>Invoke CQ Catalog</span>
+                            <span>Import CQ Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.2</p>
                             <p class="include">Control AA.3</p>
                         </div>
                     </div></figure>
-                <p>A profile that invokes all controls from a single catalog, without modification,
+                <p>A profile that imports all controls from a single catalog, without modification,
                     would be an <q>identity profile</q>.</p>
             </section>
             <section>
@@ -337,13 +336,13 @@
                     <div class="profile">
                         <span>Implicit inclusion AAA Profile is effectively <q>All</q></span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAA Profile (selecting "all")</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -365,21 +364,21 @@
                     <div class="profile">
                         <span>"Almost All" profile of AA</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">All</p>
                             <p class="exclude">Control AA.2</p>
                         </div>
                     </div><div class="profile">
                         <span>"Almost All" profile of AA (implicit "all")</span>
                         <div class="invoke">
-                            <span>Invoke CQ Catalog</span>
+                            <span>Import CQ Catalog</span>
                             <p class="exclude">Control AA.2</p>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of (either) "Almost All" Profile of Catalog AA</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -395,7 +394,7 @@
             </section>
             <section>
                 <h3>Exception: a control is included more than once</h3>
-                <p>Multiple inclusions of a single control within the same invocation, result in a
+                <p>Multiple inclusions of a single control within the same import, result in a
                     single copy of the control in the resolved profile.</p>
                 <p>An application may produce a warning when this occurs.</p>
                 <figure>
@@ -411,7 +410,7 @@
                     <div class="profile">
                         <span>AAZ Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.3</p>
                             <p class="include warning">Control AA.3</p>
                         </div>
@@ -419,7 +418,7 @@
                     <div class="resolution">
                         <span>Resolution of AAZ Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -449,7 +448,7 @@
                     <div class="profile">
                         <span>AAZ Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include warning">Control ZZ.1</p>
                             <p class="include">Control AA.3</p>
                             <p class="exclude warning">Control ZZ.0</p>
@@ -458,7 +457,7 @@
                     <div class="resolution">
                         <span>Resolution of AAZ Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -480,7 +479,7 @@
                     <div class="profile">
                         <span>AAZ Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.3</p>
                             <p class="include warning">Control AA.3</p>
                             <p class="exclude error">Control AA.3</p>
@@ -489,7 +488,7 @@
                     <div class="resolution">
                         <span>Resolution of AAZ Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -508,9 +507,9 @@
             <p>Because each subcontrol is dependent on a control and may not appear without it,
                 there are special features for the selection and exclusion of subcontrols.</p>
             <p>Note that this dependency is strict and applies to subcontrols and controls as named
-                within the same invocation tree. That is, it is not possible for a profile to select
-                (or modify) subcontrols specified elsewhere in an invocation tree (if, for example,
-                they have been excluded earlier) if their controls are not included (explicitly or
+                within the same import tree. That is, it is not possible for a profile to select (or
+                modify) subcontrols specified elsewhere in an import tree (if, for example, they
+                have been excluded earlier) if their controls are not included (explicitly or
                 implicitly) within the same profile (i.e. within the control set dictated by that
                 profile). When controls however, are included, their subcontrols may also be
                 included either by ID or other means as described.</p>
@@ -535,7 +534,7 @@
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
                     <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <p class="include">Control BBB.1</p>
                             <p class="include">Control BBB.3</p>
                             <p class="include subcontrol">Subcontrol BBB.3b</p>
@@ -544,7 +543,7 @@
                     <div class="resolution">
                         <span>Resolving the BBB Catalog profile</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
                                 <div class="group">
@@ -568,7 +567,7 @@
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <p class="include">Control BBB.1</p>
                             <p class="include ws">Control BBB.3</p>
                         </div>
@@ -576,7 +575,7 @@
                     <div class="resolution">
                         <span>Resolving the BBB Catalog profile</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
                                 <div class="group">
@@ -600,14 +599,14 @@
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <p class="include ws">All</p>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAS Profile</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
                                 <div class="group">
@@ -633,7 +632,7 @@
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <p class="include ws">All</p>
                             <p class="exclude">Subcontrol BBB.3a</p>
                         </div>
@@ -641,7 +640,7 @@
                     <div class="resolution">
                         <span>Resolution of BBB Profile</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
                                 <div class="group">
@@ -674,7 +673,7 @@
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <p class="include">Control BBB.1</p>
                             <p class="include warning">Subcontrol BBB.3a</p>
                         </div>
@@ -682,7 +681,7 @@
                     <div class="resolution">
                         <span>Resolution of BBB Profile</span>
                         <div class="invoke">
-                            <span>Invoke BBB Catalog</span>
+                            <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
                                 <div class="group">
@@ -698,12 +697,12 @@
             <h2>Merging</h2>
             <p><q>Merging</q> in OSCAL profile resolution is a simple process of aggregation of
                 controls from catalogs together in a structure reflecting (a) their original order
-                in their catalogs, arranged within (b) their order of invocation.</p>
+                in their catalogs, arranged within (b) their order of import.</p>
             <p>A more comprehensive merger operation to regroup controls (from a resolved profile)
                 may be offered by applications as a post-process, if and as appropriate to address
                 requirements.</p>
             <section>
-                <h3>A profile with more than one invocation resolves them separately</h3>
+                <h3>A profile with more than one import resolves them separately</h3>
                 <figure><div class="catalog">
                         <span>AA Controls Catalog</span>
                         <div class="group">
@@ -721,19 +720,19 @@
                     </div><div class="profile">
                         <span>AB Profile (selections from AA and BB)</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke BB Catalog</span>
+                            <span>Import BB Catalog</span>
                             <p class="include">Control BB.1</p>
                             <p class="include">Control BB.3</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of AB Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -743,7 +742,7 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke BB Catalog</span>
+                            <span>Import BB Catalog</span>
                             <div class="catalog">
                                 <span>BB Controls Catalog</span>
                                 <div class="group">
@@ -755,7 +754,7 @@
                     </div></figure>
             </section>
             <section>
-                <h3>Recursive profile resolution is reflected in the invocation hierarchy</h3>
+                <h3>Recursive profile resolution is reflected in the import hierarchy</h3>
                 <figure><div class="catalog">
                         <span>BB Controls Catalog</span>
                         <div class="group">
@@ -766,19 +765,19 @@
                     </div><div class="profile">
                         <span>B-minus Profile selected from BB catalog</span>
                         <div class="invoke">
-                            <span>Invoke BB Catalog</span>
+                            <span>Import BB Catalog</span>
                             <p class="include">Control BB.1</p>
                             <p class="include">Control BB.3</p>
                         </div>
                     </div><div class="profile">
                         <span>A/B-minus Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke B-minus Profile</span>
+                            <span>Import B-minus Profile</span>
                             <p class="include">Control BB.1</p>
                         </div>
                     </div><div class="catalog">
@@ -791,7 +790,7 @@
                     </div><div class="resolution">
                         <span>Resolution of A/B-minus Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -801,9 +800,9 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke B-minus Profile</span>
+                            <span>Import B-minus Profile</span>
                             <div class="invoke">
-                                <span>Invoke BB Catalog</span>
+                                <span>Import BB Catalog</span>
                                 <div class="catalog">
                                     <span>BB Controls Catalog</span>
                                     <div class="group">
@@ -815,10 +814,9 @@
                     </div></figure>
             </section>
             <section>
-                <h3>The same catalog can appear at multiple terminals in an invocation
-                    hierarchy</h3>
+                <h3>The same catalog can appear at multiple terminals in an import hierarchy</h3>
                 <p>There is no error here, nor any reason to consider this condition a problem
-                    unless the multiple invocations actually conflict.</p>
+                    unless the multiple imports actually conflict.</p>
                 <p>A post-process or downstream transformation or rendering might opt to collapse,
                     regroup or rearrange hierachies – or to normalize controls against their
                     hierarchies thereby rendering the latter implicit.</p>
@@ -832,24 +830,24 @@
                     </div><div class="profile">
                         <span>A-minus Profile selected from AA catalog</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
                         </div>
                     </div><div class="profile">
                         <span>A/A-minus Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.2</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke A-minus Profile</span>
+                            <span>Import A-minus Profile</span>
                             <p class="include">Control AA.3</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of A/A-minus Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -858,9 +856,9 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke A-minus Profile</span>
+                            <span>Import A-minus Profile</span>
                             <div class="invoke">
-                                <span>Invoke AA Catalog</span>
+                                <span>Import AA Catalog</span>
                                 <div class="catalog">
                                     <span>AA Controls Catalog</span>
                                     <div class="group">
@@ -874,7 +872,7 @@
                     (for example, if no further conflicts or issues are detected).</p>
             </section>
             <section>
-                <h3>Among controls selected in an invocation, a catalog's grouping organization is
+                <h3>Among controls selected in an import, a catalog's grouping organization is
                     retained</h3>
                 <p>When controls from a catalog are included in resolution, a proxy of the catalog
                     structure is included, including any group in which selected controls appear.
@@ -911,7 +909,7 @@
                     <div class="profile">
                         <span>A profile CQ/Z "slim"</span>
                         <div class="invoke">
-                            <span>Invoke CQZ controls catalog</span>
+                            <span>Import CQZ controls catalog</span>
                             <p class="include">Control CCA</p>
                             <p class="include">Control CCB</p>
                             <p class="include">Control QQC</p>
@@ -920,7 +918,7 @@
                     <div class="resolution">
                         <span>Resolution of CQ/Z "slim" profile</span>
                         <div class="invoke">
-                            <span>Invoke CQZ controls catalog</span>
+                            <span>Import CQZ controls catalog</span>
                             <div class="catalog">
                                 <span>CQZ Controls Catalog</span>
                                 <div class="group">
@@ -936,12 +934,12 @@
                         </div>
                     </div>
                 </figure>
-                <p>A warning might be produced for a second direct invocation of a resource from a
+                <p>A warning might be produced for a second direct import of a resource from a
                     profile – simply because its calls could have been included along with the
                     others; but it does not produce an error unless multiple inclusions (of any
-                    control or subcontrol) occur across the invocations. Even in that case, a
-                    processor should copy the controls in question, while flagging them as contested
-                    (see below).</p>
+                    control or subcontrol) occur across the imports. Even in that case, a processor
+                    should copy the controls in question, while flagging them as contested (see
+                    below).</p>
                 <figure>
                     <div class="catalog">
                         <span>BTW Controls Catalog</span>
@@ -979,18 +977,18 @@
                     <div class="profile">
                         <span>A combining profile </span>
                         <div class="invoke">
-                            <span>Invoke CQZ Catalog</span>
+                            <span>Import CQZ Catalog</span>
                             <p class="include">Control CCA</p>
                             <p class="include">Control CCB</p>
                             <p class="include">Control QQC</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke BTW Catalog</span>
+                            <span>Import BTW Catalog</span>
                             <p class="include">Control A_I_1</p>
                             <p class="include">Control A_II_48</p>
                         </div>
                         <div class="invoke warning">
-                            <span>Invoke BTW Catalog</span>
+                            <span>Import BTW Catalog</span>
                             <p class="include">Control B_I_1</p>
                             <p class="include">Control B_II_50</p>
                             <p class="include">Control A_II_50</p>
@@ -998,7 +996,7 @@
                     </div><div class="resolution">
                         <span>Resolution of combining profile</span>
                         <div class="invoke">
-                            <span>Invoke CQZ Catalog</span>
+                            <span>Import CQZ Catalog</span>
                             <div class="catalog">
                                 <span>CQZ Controls Catalog</span>
                                 <div class="group">
@@ -1013,7 +1011,7 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke BTW Catalog</span>
+                            <span>Import BTW Catalog</span>
                             <div class="catalog">
                                 <span>BTW Controls Catalog</span>
                                 <div class="group">
@@ -1030,7 +1028,7 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke BTW Catalog</span>
+                            <span>Import BTW Catalog</span>
                             <div class="catalog">
                                 <span>BTW Controls Catalog</span>
                                 <div class="group">
@@ -1056,13 +1054,13 @@
                     </div><div class="profile">
                         <span>Better combination</span>
                         <div class="invoke">
-                            <span>Invoke CQZ Catalog</span>
+                            <span>Import CQZ Catalog</span>
                             <p class="include">Control CCA</p>
                             <p class="include">Control CCB</p>
                             <p class="include">Control QQC</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke BTW Catalog</span>
+                            <span>Import BTW Catalog</span>
                             <p class="include">Control A_I_1</p>
                             <p class="include">Control A_II_48</p>
                             <p class="include">Control B_I_1</p>
@@ -1073,7 +1071,7 @@
                     <div class="resolution">
                         <span>Resolution of better combination</span>
                         <div class="invoke">
-                            <span>Invoke CQZ Catalog</span>
+                            <span>Import CQZ Catalog</span>
                             <div class="catalog">
                                 <span>CQZ Controls Catalog</span>
                                 <div class="group">
@@ -1088,7 +1086,7 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke BTW Catalog</span>
+                            <span>Import BTW Catalog</span>
                             <div class="catalog">
                                 <span>BTW Controls Catalog</span>
                                 <div class="group">
@@ -1122,9 +1120,9 @@
             <section>
                 <h3>Exception: competing calls</h3>
                 <p>The first of the examples given shows no conflicts. The second shows control AA.2
-                    in doubt – <em>competing</em> –  because it appears in two invocation
-                    hierarchies. If either invocation is marked for modifications the other is not,
-                    they will be (moreover) <em>conflicting</em>.</p>
+                    in doubt – <em>competing</em> – because it appears in two import hierarchies. If
+                    either import is marked for modifications the other is not, they will be
+                    (moreover) <em>conflicting</em>.</p>
                 <p>An OSCAL processor may fail to copy one or both, or may copy (and then modify)
                     both occurrences of a control, while also alerting consuming applications of
                     apparent or likely conflicts. (In a simple implementation this might be signaled
@@ -1139,26 +1137,26 @@
                     </div><div class="profile">
                         <span>A-2 Profile</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">All</p>
                             <p class="exclude">AA.3</p>
                         </div>
                     </div><div class="profile">
                         <span>A2A Profile</span>
                         <div class="invoke">
-                            <span>Invoke A-2</span>
+                            <span>Import A-2</span>
                             <p>(All AA controls except AA.3)</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.3</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of A2A Profile</span>
                         <div class="invoke">
-                            <span>Invoke A-2 Profile</span>
+                            <span>Import A-2 Profile</span>
                             <div class="invoke">
-                                <span>Invoke AA Catalog</span>
+                                <span>Import AA Catalog</span>
                                 <div class="catalog">
                                     <span>AA Controls Catalog</span>
                                     <div class="group">
@@ -1169,7 +1167,7 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -1181,19 +1179,19 @@
                 <figure><div class="profile">
                         <span>A2B Profile</span>
                         <div class="invoke">
-                            <span>Invoke A-2</span>
+                            <span>Import A-2</span>
                             <p>(All AA controls except AA.3)</p>
                         </div>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.2</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of A2B Profile</span>
                         <div class="invoke">
-                            <span>Invoke A-2 Profile</span>
+                            <span>Import A-2 Profile</span>
                             <div class="invoke">
-                                <span>Invoke AA Catalog</span>
+                                <span>Import AA Catalog</span>
                                 <div class="catalog">
                                     <span>AA Controls Catalog</span>
                                     <div class="group">
@@ -1204,7 +1202,7 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -1217,21 +1215,21 @@
                     the processor has means or rules for dealing with the situation.)</p>
             </section>
             <section>
-                <h3>Exception: subcontrols must go with controls in the same invocation</h3>
+                <h3>Exception: subcontrols must go with controls in the same import</h3>
                 <p>It is not possible to include or exclude subcontrols, whose control is not
-                    included in the same invocation. Such a subcontrol is inoperable, even if the
-                    control is included in a different invocation.</p>
+                    included in the same import. Such a subcontrol is inoperable, even if the
+                    control is included in a different import.</p>
                 <figure><div class="profile">Zelda Profile<div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.2</p>
                         </div><div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include subcontrol error">Subcontrol AA.2</p>
                         </div></div><div class="resolution">
                         <span>Resolution of Zelda</span>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">
@@ -1240,7 +1238,7 @@
                             </div>
                         </div>
                         <div class="invoke">
-                            <span>Invoke AA Catalog</span>
+                            <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
                                 <div class="group">

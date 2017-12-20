@@ -3,16 +3,16 @@
 ## REQUIREMENTS for profile resolution / rendering / merge
 
 * Include controls from multiple sources
-* Allow multiple invocations from same source (directly or indirectly)
+* Allow multiple imports from same source (directly or indirectly)
 * Resulting (selected) control set has no duplicates or ambiguity ('duplicate' to be defined)
 * All hierarchy must be represented / relevant info (derived from hierarchy) must be preserved
-  * This applies both to "native hierarchy" of controls in their (home) catalogs, and to the "invocation hierarchy" of profile resolution
+  * This applies both to "native hierarchy" of controls in their (home) catalogs, and to the "import hierarchy" of profile resolution
 
 In OSCAL, "profiling semantics" refers to the way OSCAL profile instances make reference to catalogs from which their controls are derived. It is an "as if" sketch that describes the *basics* of any OSCAL system that processes profiles especially if and as those profiles integrate with each other and with catalogs (by further reference).
 
 ## Implementation
 
-This document describes OSCAL profile semantics as a set of relations and operations between catalogs, controls, and the invocation or utilization of those controls that constitute OSCAL profiles. These operations are sometimes described here in terms that may imply a particular implementation or implementation strategy; to the extent that occurs, such description is not normative: any implementation that *delivers the same results* as the process described here, is conformant. In particular, although the process here occurs in three stages, these are conceptual steps: an implementation may work otherwise (as long as the outputs are the same).
+This document describes OSCAL profile semantics as a set of relations and operations between catalogs, controls, and the import or utilization of those controls that constitute OSCAL profiles. These operations are sometimes described here in terms that may imply a particular implementation or implementation strategy; to the extent that occurs, such description is not normative: any implementation that *delivers the same results* as the process described here, is conformant. In particular, although the process here occurs in three stages, these are conceptual steps: an implementation may work otherwise (as long as the outputs are the same).
 
 We have an implementation of these specifications in XSLT, which serves as a point of reference and testbed for viability. Similarly, validation of (XML OSCAL) against many of the constraints described here can be achieved with Schematron we make available in the public library. In all cases where those tools fail to deliver the results described here, they should be regarded as in error (i.e. this specification takes precedence).
 
@@ -43,7 +43,7 @@ Moreover, a profile may combine controls from multiple catalog sources into a si
 
 Expected/okay:
 
-* Controls from the same groups (in the same catalogs) coming in via different invocation pathways
+* Controls from the same groups (in the same catalogs) coming in via different import pathways
 
 ## Profile Resolution
 
@@ -55,41 +55,41 @@ Described here:
 
 ### Invocation and selection
 
-A profile may combine more than one invocation.
+A profile may combine more than one import.
 
-An invocation is bound to a single catalog or profile, its "resource". If bound to a profile, it is *implicitly* resolved according to these same rules. Because profiles must be bound to either catalogs, or profiles, this means that (ipso facto) all profiles capable of finite resolution, resolve eventually to catalogs.
+An import is bound to a single catalog or profile, its "resource". If bound to a profile, it is *implicitly* resolved according to these same rules. Because profiles must be bound to either catalogs, or profiles, this means that (ipso facto) all profiles capable of finite resolution, resolve eventually to catalogs.
 
-If an OSCAL profile includes, directly or indirectly, any invocations of itself as a resource, such invocations are inoperable. Such circular reference is an error. *(Sch.? Fallback behavior: ignore circular calls.)*  Because circular references are defined as inoperable, in the real world all profiles will be finite.
+If an OSCAL profile includes, directly or indirectly, any imports of itself as a resource, such imports are inoperable. Such circular reference is an error. *(Sch.? Fallback behavior: ignore circular calls.)*  Because circular references are defined as inoperable, in the real world all profiles will be finite.
 
-An invocation can identify controls (as given in and by the resource) for inclusion in either of two ways. The first method is by an explicit "call" using the ID of the desired control or subcontrol. (See on IDs below.)
+An import can identify controls (as given in and by the resource) for inclusion in either of two ways. The first method is by an explicit "call" using the ID of the desired control or subcontrol. (See on IDs below.)
 
-Alternatively, an invocation can stipulate that all controls from the catalog (or upstream profile) should be included, except as modified by exclusion.
+Alternatively, an import can stipulate that all controls from the catalog (or upstream profile) should be included, except as modified by exclusion.
 
-An invocation can also designate controls or subcontrols to be excluded. Ordinarily this will only be done when all controls (or all subcontrols, as applicable) have been included.
+An import can also designate controls or subcontrols to be excluded. Ordinarily this will only be done when all controls (or all subcontrols, as applicable) have been included.
 
 An explicit selection or "call" (to be included or excluded) is made by ID value on a target control or subcontrol object (in XML, the element's @id).
 
-It is not an error if the same resource (catalog or profile) is called by more than one invocation. *(This is Schematronable. Fallback: process anyway. Complementary call sets will resolve; duplicate calls or multiple settings will result in duplicative or contradictory outputs.)*
+It is not an error if the same resource (catalog or profile) is called by more than one import. *(This is Schematronable. Fallback: process anyway. Complementary call sets will resolve; duplicate calls or multiple settings will result in duplicative or contradictory outputs.)*
 
-Invocations can select controls by inclusion or by exclusion. If an invocation does not indicate an inclusion, then all controls from the invoked resource are implicitly included. (In the XML, no `/invoke/include` is the same as having `/invoke/include/all`. Accordingly, solo `/invoke/exclude` with no "include" stated, is meaningful: include everything but what is excluded.)
+Invocations can select controls by inclusion or by exclusion. If an import does not indicate an inclusion, then all controls from the invoked resource are implicitly included. (In the XML, no `/invoke/include` is the same as having `/invoke/include/all`. Accordingly, solo `/invoke/exclude` with no "include" stated, is meaningful: include everything but what is excluded.)
 
 Subcontrols are regarded as dependent on their controls. If a control is not selected, it is an error if any of its subcontrols are selected. *(Fallback: drop the subcontrol silently.)* When selecting a subcontrol, see to it that its control is also selected, or select the subcontrols implicitly with a setting ("with subcontrols") setting at a higher level.
 
-It is an error if an invocation includes a control or subcontrol more than once. *(Sch. Fallback: include a single copy of the control.)*
+It is an error if an import includes a control or subcontrol more than once. *(Sch. Fallback: include a single copy of the control.)*
 
-Similarly, it is an error if an invocation declares more than one modification (patch) for a given control. *(Sch. Fallback: apply all patches in order defined by processor.)*
+Similarly, it is an error if an import declares more than one modification (patch) for a given control. *(Sch. Fallback: apply all patches in order defined by processor.)*
 
-Likewise, it is an error if an invocation declares parameter settings for the same parameter, more than once. *(Sch. Fallback: use only one, tbd by processor.)*
+Likewise, it is an error if an import declares parameter settings for the same parameter, more than once. *(Sch. Fallback: use only one, tbd by processor.)*
 
-It is not an error if the same control is both included explicitly, and then excluded (by definition, to no effective purpose), but an implementation may warn if this occurs. *(Sch.)* A working assumption is that only invocations with "all" controls included (implicitly or explicitly) will have use for exclusions.
+It is not an error if the same control is both included explicitly, and then excluded (by definition, to no effective purpose), but an implementation may warn if this occurs. *(Sch.)* A working assumption is that only imports with "all" controls included (implicitly or explicitly) will have use for exclusions.
 
-It is also not an error if a resolved invocation selects the same control set as a much more parsimonious invocation would (for example, instead of including 249 of 250 controls in a catalog, simply include all and exclude one.) Again, an implementation may detect this situation and offer warnings. *(Sch.)*
+It is also not an error if a resolved import selects the same control set as a much more parsimonious import would (for example, instead of including 249 of 250 controls in a catalog, simply include all and exclude one.) Again, an implementation may detect this situation and offer warnings. *(Sch.)*
 
 #### IDs
 
 IDs are expected to be unique within document scope, so no control or subcontrol will have the same ID as another in the same catalog. Control catalogs whose controls are not tagged with distinct IDs can be excluded from resolution as invalid, although conforming processors have the option of continuing to process while offering some means of addressing and resolving the ID clash. 
 
-Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. If local (document-level) ID collision occurs between catalogs, a system is expected to resolve them such that all controls from all catalogs can be addressed distinctly, each call resolving relative to its invocation. Catalogs, however, must also be valid to relevant OSCAL schemas and Schematrons demonstrating their structural integrity. This specification does not define what happens with non-OSCAL inputs to profile resolution.
+Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. If local (document-level) ID collision occurs between catalogs, a system is expected to resolve them such that all controls from all catalogs can be addressed distinctly, each call resolving relative to its import. Catalogs, however, must also be valid to relevant OSCAL schemas and Schematrons demonstrating their structural integrity. This specification does not define what happens with non-OSCAL inputs to profile resolution.
 
 Note also that it is an expectation that every time a given profile or catalog is invoked, the *same resource* (catalog or resolved profile) is returned, enabling systems to cache. (Cf XPath doc() function.) Along with this is the assumption that resolution of a profile against its sources (profiles and catalogs) will be side-effect free; for example, it cannot have the effect of rewriting catalogs or upstream profiles (by calling some magical URI) or creating new resources to be exploited elsewhere.
 
@@ -97,9 +97,9 @@ We do not yet support selection of controls by other criteria such as context/or
 
 ### Merge (Combination)
 
-In profile resolution, a "view" is provided of *each* resource (profile or catalog) invoked by a profile, which preserves information regarding the invocation including the structural relations (groupings) among controls selected by it. Because multiple invocations may trace back through several invocation steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
+In profile resolution, a "view" is provided of *each* resource (profile or catalog) invoked by a profile, which preserves information regarding the import including the structural relations (groupings) among controls selected by it. Because multiple imports may trace back through several import steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
 
-Note that since profiles can invoke profiles, the views of invocations may be nested, as many layers deep as it takes to get back to a catalog. Also, because profiles may invoke controls from more than a single upstream resource (catalog or profile), views will contain multiple views, in a branching structure. Occasionally, views within views will point to the same source catalogs as other views (within views); this will happen both in error, and as a feature. In any case it will sometimes be valuable or useful information, to know not only that a control was included but *how* it was included -- its provenance of invocation.
+Note that since profiles can invoke profiles, the views of imports may be nested, as many layers deep as it takes to get back to a catalog. Also, because profiles may invoke controls from more than a single upstream resource (catalog or profile), views will contain multiple views, in a branching structure. Occasionally, views within views will point to the same source catalogs as other views (within views); this will happen both in error, and as a feature. In any case it will sometimes be valuable or useful information, to know not only that a control was included but *how* it was included -- its provenance of import.
 
 Within each view, at the deepest layer, a profile will invoke not another profile (making for another view), but a catalog. At that point, the resolved profile will present a partial (filtered) "snapshot" of the catalog in question, showing the controls that are (finally) selected (by the views in combination).
 
@@ -129,22 +129,22 @@ Simultaneously we recognize that a schema describing a format implied by this sp
 
 There are and will be many ways of representing the *results* of OSCAL-based processes, "synthetic", "synoptic", "merged", "resolved", "reduced" etc, and this specification should not be taken to constrain them. Accordingly, the merge semantics described here are intended to provide the *minimum* sufficient for achieving the goal of referential integrity (with regard to persistence, dependability and traceability) of references within OSCAL, across arbitrary catalogs, profiles, control sets and control types, according to the needs of and accommodating both stable and persistent artifacts (such as catalogs), and very temporary or ephemeral organizations of data (such as the results of profile processing may sometimes be) -- all potentially relating in complex ways to one another (at higher semantic layers). If a resolved profile is considered as having the organization, after selection and merger of its controls, described here, then further refinements and resolutions can be accomplished in subsequent processing (which is indeed, in the general case, also dependent on something like the first steps described here). But architects and developers should regard the merge behaviors described here as necessary, but not necessarily sufficient, for viable implementations.
 
-* A profile with more than one invocation, resolves them separately. Invocations are resolved separately within a profile.
-* Recursive profile resolution is reflected in the invocation hierarchy
-* The same catalog can appear at multiple terminals in an invocation hierarchy
-* Among controls selected in an invocation, a catalog's grouping organization is retained
-* Because selection can occur at any level of profiling, distinct invocation pathways (each subsetting controls and/or adding branches of their own) will result in very different representations of "fragmented groupings" of control catalogs. Unless these actually select the same controls, this is not necessarily an error. Where they do, they expose issues to be resolved. This occurrence above all should be exposed while being flagged as an error. 
+* A profile with more than one import, resolves them separately. Invocations are resolved separately within a profile.
+* Recursive profile resolution is reflected in the import hierarchy
+* The same catalog can appear at multiple terminals in an import hierarchy
+* Among controls selected in an import, a catalog's grouping organization is retained
+* Because selection can occur at any level of profiling, distinct import pathways (each subsetting controls and/or adding branches of their own) will result in very different representations of "fragmented groupings" of control catalogs. Unless these actually select the same controls, this is not necessarily an error. Where they do, they expose issues to be resolved. This occurrence above all should be exposed while being flagged as an error. 
 
 ### Customization (Patch/parameters)
 
 The matching/selection logic of patches described in this spec is in DRAFT form, inasmuch as we expect (hope) to define more flexible and powerful mechanism in a future sprint.
 
-invocation - selects controls to include in (resolved) profile
+import - selects controls to include in (resolved) profile
              (all hierarchy is preserved)
 merging    - how to deal with conflicts and duplicates and their order/hierarchy
 customization (patching/parameters)
 
-rules for invocation how does it work?
+rules for import how does it work?
 
 schema for target format is NOT explicit
 
