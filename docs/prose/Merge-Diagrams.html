@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>OSCAL Profile Invocation Merge Specification (Diagrams)</title>
+        <title>OSCAL Profile Import and Merge Specification (Diagrams)</title>
         <meta charset="utf-8" />
         <style type="text/css">
             section{
@@ -125,26 +125,26 @@
     </head>
     <body>
         <section>
-            <h2>Invocation and Selection</h2>
+            <h2>Catalog import and control selection</h2>
             <section>
                 <h3>A profile may have more than one import.</h3>
                 <figure>
                     <div class="profile">
                         <span>OK Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog A</span>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog B</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog A</span>
                             <p>(Results of import)</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog B</span>
                             <p>(Results of import)</p>
                         </div>
@@ -164,28 +164,28 @@
                 <figure>
                     <div class="profile">
                         <span>OK Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog A</span>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Profile B1</span>
                         </div>
                     </div>
                     <div class="profile">
                         <span>B1 Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog B</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span><q>OK Profile</q> Resolution</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog A</span>
                             <p>(Results of import)</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Profile B1</span>
-                            <div class="invoke">
+                            <div class="import">
                                 <span>Import Catalog B</span>
                                 <p>(Results of import)</p>
                             </div>
@@ -194,27 +194,27 @@
                 <figure>
                     <div class="profile">
                         <span>Also OK Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span class="stress">Import Catalog A</span>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Profile A1</span>
                         </div>
                     </div>
                     <div class="profile">
                         <span>A1 Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span class="stress">Import Catalog A</span>
                         </div>
                     </div><div class="resolution">
                         <span><q>Also OK Profile</q> Resolution</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Catalog A</span>
                             <p>(Results of import)</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Profile A1</span>
-                            <div class="invoke">
+                            <div class="import">
                                 <span>Import Catalog A</span>
                                 <p>(Results of import)</p>
                             </div>
@@ -231,21 +231,21 @@
                 <figure>
                     <div class="profile">
                         <span>Perplex Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Plexper profile</span>
                         </div>
                     </div>
                     <div class="profile">
                         <span>Plexper Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Perplex profile</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of Perplex Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import Plexper profile</span>
-                            <div class="invoke error">
+                            <div class="import error">
                                 <span>Import Perplex profile</span>
                             </div>
                         </div>
@@ -269,7 +269,7 @@
                     </div>
                     <div class="profile">
                         <span>AAS Profile (with selection from AA Catalog)</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
@@ -277,7 +277,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAS Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -297,14 +297,14 @@
                 <figure>
                     <div class="profile">
                         <span>AAA Profile selecting all controls from AA Catalog</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">All</p>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAA Profile (selecting <q>all</q>)</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -318,7 +318,7 @@
                     </div>
                     <div class="profile">
                         <span>AAA Profile, this time expressed using calls</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQ Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.2</p>
@@ -335,13 +335,13 @@
                 <figure>
                     <div class="profile">
                         <span>Implicit inclusion AAA Profile is effectively <q>All</q></span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAA Profile (selecting "all")</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -363,21 +363,21 @@
                 <figure>
                     <div class="profile">
                         <span>"Almost All" profile of AA</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">All</p>
                             <p class="exclude">Control AA.2</p>
                         </div>
                     </div><div class="profile">
                         <span>"Almost All" profile of AA (implicit "all")</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQ Catalog</span>
                             <p class="exclude">Control AA.2</p>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of (either) "Almost All" Profile of Catalog AA</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -409,7 +409,7 @@
                     </div>
                     <div class="profile">
                         <span>AAZ Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.3</p>
                             <p class="include warning">Control AA.3</p>
@@ -417,7 +417,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAZ Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -447,7 +447,7 @@
                     </div>
                     <div class="profile">
                         <span>AAZ Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include warning">Control ZZ.1</p>
                             <p class="include">Control AA.3</p>
@@ -456,7 +456,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAZ Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -478,7 +478,7 @@
                 <figure>
                     <div class="profile">
                         <span>AAZ Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.3</p>
                             <p class="include warning">Control AA.3</p>
@@ -487,7 +487,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAZ Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -533,7 +533,7 @@
                     </div>
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
-                    <div class="invoke">
+                    <div class="import">
                             <span>Import BBB Catalog</span>
                             <p class="include">Control BBB.1</p>
                             <p class="include">Control BBB.3</p>
@@ -542,7 +542,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolving the BBB Catalog profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
@@ -566,7 +566,7 @@
                 <figure>
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <p class="include">Control BBB.1</p>
                             <p class="include ws">Control BBB.3</p>
@@ -574,7 +574,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolving the BBB Catalog profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
@@ -598,14 +598,14 @@
                 <figure>
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <p class="include ws">All</p>
                         </div>
                     </div>
                     <div class="resolution">
                         <span>Resolution of AAS Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
@@ -631,7 +631,7 @@
                 <figure>
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <p class="include ws">All</p>
                             <p class="exclude">Subcontrol BBB.3a</p>
@@ -639,7 +639,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of BBB Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
@@ -672,7 +672,7 @@
                 <figure>
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <p class="include">Control BBB.1</p>
                             <p class="include warning">Subcontrol BBB.3a</p>
@@ -680,7 +680,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of BBB Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <div class="catalog">
                                 <span>BBB Controls Catalog</span>
@@ -719,19 +719,19 @@
                         </div>
                     </div><div class="profile">
                         <span>AB Profile (selections from AA and BB)</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BB Catalog</span>
                             <p class="include">Control BB.1</p>
                             <p class="include">Control BB.3</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of AB Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -741,7 +741,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BB Catalog</span>
                             <div class="catalog">
                                 <span>BB Controls Catalog</span>
@@ -764,19 +764,19 @@
                         </div>
                     </div><div class="profile">
                         <span>B-minus Profile selected from BB catalog</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BB Catalog</span>
                             <p class="include">Control BB.1</p>
                             <p class="include">Control BB.3</p>
                         </div>
                     </div><div class="profile">
                         <span>A/B-minus Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import B-minus Profile</span>
                             <p class="include">Control BB.1</p>
                         </div>
@@ -789,7 +789,7 @@
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of A/B-minus Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -799,9 +799,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import B-minus Profile</span>
-                            <div class="invoke">
+                            <div class="import">
                                 <span>Import BB Catalog</span>
                                 <div class="catalog">
                                     <span>BB Controls Catalog</span>
@@ -829,24 +829,24 @@
                         </div>
                     </div><div class="profile">
                         <span>A-minus Profile selected from AA catalog</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include">Control AA.3</p>
                         </div>
                     </div><div class="profile">
                         <span>A/A-minus Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.2</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import A-minus Profile</span>
                             <p class="include">Control AA.3</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of A/A-minus Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -855,9 +855,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import A-minus Profile</span>
-                            <div class="invoke">
+                            <div class="import">
                                 <span>Import AA Catalog</span>
                                 <div class="catalog">
                                     <span>AA Controls Catalog</span>
@@ -908,7 +908,7 @@
                     </div>
                     <div class="profile">
                         <span>A profile CQ/Z "slim"</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQZ controls catalog</span>
                             <p class="include">Control CCA</p>
                             <p class="include">Control CCB</p>
@@ -917,7 +917,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of CQ/Z "slim" profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQZ controls catalog</span>
                             <div class="catalog">
                                 <span>CQZ Controls Catalog</span>
@@ -976,18 +976,18 @@
                     </div>
                     <div class="profile">
                         <span>A combining profile </span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQZ Catalog</span>
                             <p class="include">Control CCA</p>
                             <p class="include">Control CCB</p>
                             <p class="include">Control QQC</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BTW Catalog</span>
                             <p class="include">Control A_I_1</p>
                             <p class="include">Control A_II_48</p>
                         </div>
-                        <div class="invoke warning">
+                        <div class="import warning">
                             <span>Import BTW Catalog</span>
                             <p class="include">Control B_I_1</p>
                             <p class="include">Control B_II_50</p>
@@ -995,7 +995,7 @@
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of combining profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQZ Catalog</span>
                             <div class="catalog">
                                 <span>CQZ Controls Catalog</span>
@@ -1010,7 +1010,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BTW Catalog</span>
                             <div class="catalog">
                                 <span>BTW Controls Catalog</span>
@@ -1027,7 +1027,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BTW Catalog</span>
                             <div class="catalog">
                                 <span>BTW Controls Catalog</span>
@@ -1053,13 +1053,13 @@
                         </div>
                     </div><div class="profile">
                         <span>Better combination</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQZ Catalog</span>
                             <p class="include">Control CCA</p>
                             <p class="include">Control CCB</p>
                             <p class="include">Control QQC</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BTW Catalog</span>
                             <p class="include">Control A_I_1</p>
                             <p class="include">Control A_II_48</p>
@@ -1070,7 +1070,7 @@
                     </div>
                     <div class="resolution">
                         <span>Resolution of better combination</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import CQZ Catalog</span>
                             <div class="catalog">
                                 <span>CQZ Controls Catalog</span>
@@ -1085,7 +1085,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import BTW Catalog</span>
                             <div class="catalog">
                                 <span>BTW Controls Catalog</span>
@@ -1136,26 +1136,26 @@
                         </div>
                     </div><div class="profile">
                         <span>A-2 Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">All</p>
                             <p class="exclude">AA.3</p>
                         </div>
                     </div><div class="profile">
                         <span>A2A Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import A-2</span>
                             <p>(All AA controls except AA.3)</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.3</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of A2A Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import A-2 Profile</span>
-                            <div class="invoke">
+                            <div class="import">
                                 <span>Import AA Catalog</span>
                                 <div class="catalog">
                                     <span>AA Controls Catalog</span>
@@ -1166,7 +1166,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -1178,19 +1178,19 @@
                     </div></figure>
                 <figure><div class="profile">
                         <span>A2B Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import A-2</span>
                             <p>(All AA controls except AA.3)</p>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.2</p>
                         </div>
                     </div><div class="resolution">
                         <span>Resolution of A2B Profile</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import A-2 Profile</span>
-                            <div class="invoke">
+                            <div class="import">
                                 <span>Import AA Catalog</span>
                                 <div class="catalog">
                                     <span>AA Controls Catalog</span>
@@ -1201,7 +1201,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -1219,16 +1219,16 @@
                 <p>It is not possible to include or exclude subcontrols, whose control is not
                     included in the same import. Such a subcontrol is inoperable, even if the
                     control is included in a different import.</p>
-                <figure><div class="profile">Zelda Profile<div class="invoke">
+                <figure><div class="profile">Zelda Profile<div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.2</p>
-                        </div><div class="invoke">
+                        </div><div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.1</p>
                             <p class="include subcontrol error">Subcontrol AA.2</p>
                         </div></div><div class="resolution">
                         <span>Resolution of Zelda</span>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
@@ -1237,7 +1237,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="invoke">
+                        <div class="import">
                             <span>Import AA Catalog</span>
                             <div class="catalog">
                                 <span>AA Controls Catalog</span>
