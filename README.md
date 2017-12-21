@@ -2,7 +2,7 @@
 
 Give a brief summary of OSCAL. (NIST is developing OSCAL, a hierarchical, formatted, XML-based (and JSON translation) schema that provides a standard for representing different categories of information pertaining to the publication, implementation, and assessment of security controls.)
 
-Talk about the basic motivations and principles for OSCAL?
+Talk about the basic motivations and principles for OSCAL? The "Major challenges in security controls assessment" section of OSCAL-Overview.md explains the major challenges in security controls assessment. The "The purpose of OSCAL" section explains the purpose.
 
 Define the primary audiences and give each pointers to the main documentation page with more info for them. 
 * Implementers: catalog and profile maintainers, tool vendors. Point them to [IMPLEMENTERS.md](IMPLEMENTERS.md) for more info.  
