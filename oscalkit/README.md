@@ -2,7 +2,7 @@
 
 > In development
 
-Barebones toolkit for translating between OSCAL-formatted XML and JSON
+Barebones toolkit for translating between OSCAL-formatted XML and JSON and for converting from OpenControl projects in to OSCAL.
 
 ## Installing
 
@@ -70,10 +70,10 @@ GLOBAL OPTIONS:
 
 ```
 NAME:
-   oscalkit convert - convert between one or more OSCAL file formats
+   oscalkit convert oscal - convert between one or more OSCAL file formats
 
 USAGE:
-   oscalkit convert [command options] [source-files...]
+   oscalkit convert oscal [command options] [source-files...]
 
 DESCRIPTION:
    Convert between OSCAL-formatted XML and JSON files. The command accepts
@@ -85,19 +85,45 @@ OPTIONS:
    --output-file value, -f value  file name for converted output from STDIN. Defaults to "stdin.<json|xml|yaml>"
    --yaml, -y                     If source file format is XML or JSON, also generate equivalent YAML output
 ```
-
 #### Examples
 
 Convert OSCAL-formatted NIST 800-53 declarations from XML to JSON:
 
 ```sh
-oscalkit convert SP800-53-declarations.xml
+oscalkit convert oscal SP800-53-declarations.xml
 ```
 
 Convert OSCAL-formatted NIST 800-53 declarations from XML to JSON via STDIN (note the use of "-"):
 
 ```sh
-cat SP800-53-declarations.xml | oscalkit convert -
+cat SP800-53-declarations.xml | oscalkit convert oscal -
+```
+
+### Convert from OpenControl project to OSCAL
+
+`oscalkit` also supports converting OpenControl projects to OSCAL-formatted JSON. You will need both the path to the `opencontrol.yaml` file and the `opencontrols/` directory which is created when you run a `compliance-masonry get` command.
+
+```
+NAME:
+   oscalkit convert opencontrol - convert from OpenControl format to OSCAL "implementation" format
+
+USAGE:
+   oscalkit convert opencontrol [command options] [opencontrol.yaml-filepath] [opencontrols-dir-path]
+
+DESCRIPTION:
+   Convert OpenControl-formatted "component" and "opencontrol" YAML into
+   OSCAL-formatted "implementation" layer JSON
+
+OPTIONS:
+   --yaml, -y  Generate YAML in addition to JSON
+```
+
+### Examples
+
+Convert OpenControl project to OSCAL-formatted JSON:
+
+```sh
+oscalkit convert opencontrol ./opencontrol.yaml ./opencontrols/
 ```
 
 ### Validate against XML and JSON schemas
