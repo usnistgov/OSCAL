@@ -10,4 +10,4 @@ Information to present to implementers includes:
 
 Are there multiple audiences within implementers that will want distinct subsets of information? Or will different people need different combinations of information?
 
-A good example of how to engage people is at https://docs.docker.com/machine/overview/. It briefly explains what is available, why it would be beneficial, and what to do next (with links to other docs for installing and setting up a local copy, etc.)
+A good example of how to engage people is at https://docs.docker.com/machine/overview/. It briefly explains what is available, why it would be beneficial, and what to do next (with links to other docs for installing and setting up a local copy, etc.) More details are then provided at https://docs.docker.com/machine/concepts/, which explains the basic concepts, and the https://docs.docker.com/machine/reference/ landing page, which sets up a page for each command (explains what the command does and how it's related to other commands, and gives examples of its use.) Such an approach might be well adapted for OSCAL purposes, although having a separate page for every element would probably be too much.
