@@ -9,3 +9,5 @@ Information to present to implementers includes:
 * Pointers to schemas and Schematron files
 
 Are there multiple audiences within implementers that will want distinct subsets of information? Or will different people need different combinations of information?
+
+A good example of how to engage people is at https://docs.docker.com/machine/overview/. It briefly explains what is available, why it would be beneficial, and what to do next (with links to other docs for installing and setting up a local copy, etc.)
