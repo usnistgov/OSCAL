@@ -250,7 +250,7 @@
     <xsl:for-each-group select="$groups" group-by="@process-id">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
-        <xsl:apply-templates select="current-group()/(* except group)" mode="copy">
+        <xsl:apply-templates select="current-group()/(* except group)" mode="merge-enhance">
           <xsl:sort select="@id"/>
         </xsl:apply-templates>
         <xsl:call-template name="merge-groups">
@@ -262,7 +262,20 @@
 
   <xsl:mode name="filter-merge" on-no-match="shallow-copy"/>
   
+  <xsl:mode name="merge-enhance" on-no-match="shallow-copy"/>
   
+  <xsl:template mode="merge-enhance" match="control | subcontrol | component">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+        <xsl:for-each select="ancestor::import[position() gt 1]">
+          <xsl:sort select="count(ancestor::*)" order="descending"/>
+          <prop name="import-provenance">
+            <xsl:value-of select="@href"/>
+          </prop>
+        </xsl:for-each>
+      <xsl:apply-templates mode="#current"/>
+    </xsl:copy>
+  </xsl:template>
   <xsl:template mode="filter-merge" match="@process-id"/>
   
   <!--<xsl:template match="control | subcontrol | component" mode="filter-merge">
@@ -356,14 +369,11 @@
     </xsl:apply-templates>-->
   </xsl:template>
   
-
-
   <xsl:template match="control | subcontrol | component" mode="augment">
     <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
     
     <xsl:copy-of select="key('alteration-by-target',@id,$invocation)/augment/*"/>
   </xsl:template>
-  
   
   <!-- When a catalog is filtered through a profile, its parameters are overwritten
        by parameters passed in from the invocation. -->
