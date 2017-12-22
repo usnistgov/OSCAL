@@ -26,7 +26,7 @@
     </group>-->
     <group>
         <title>Dinosaurs</title>
-        <group><title>Carnivores</title>
+        <group><title>Predators</title>
             <control id="allosaur"/>
             <control id="tyrannosaur">
                 <subcontrol id="rex"/>
@@ -37,7 +37,7 @@
             <control id="stegosaur"/>
             <control id="triceratops"/>
         </group>
-        <group><title>Unknown</title>
+        <group><title>Proto-avians</title>
             <control id="archeopteryx"/>
         </group>
     </group>
