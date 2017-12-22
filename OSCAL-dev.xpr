@@ -14,6 +14,81 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/JSON-mapping/docker-ee-opencontrol-oscal.json</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run this JSON file through Acquisition</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/JSON-mapping/docker-ee-opencontrol-moderate-ato-oscal.json</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run this JSON file through Acquisition</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/JSON-mapping/index-to-catalog.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run sample JSON file through Acquisition</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>examples/SP800-53/SP800-53-MODERATE-baseline.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Profile: resolve and render (saving HTML)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/JSON-mapping/acquire-JSON.xpl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run sample JSON file through Acquisition</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>examples/mini-testing/01a_param-only-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -254,41 +329,11 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/JSON-mapping/index-to-catalog.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run sample JSON file through Acquisition</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>examples/FedRAMP/FedRAMP-HIGH-edited.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
                                         <String>Profile: resolve and render (saving HTML)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/JSON-mapping/acquire-JSON.xpl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run sample JSON file through Acquisition</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -424,21 +469,6 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>Refresh schema module (run on interim XSD)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>examples/SP800-53/SP800-53-MODERATE-baseline.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Profile: resolve and render (saving HTML)</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -3676,6 +3706,74 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/SP800-53/rev4/MODERATE-baseline-profile-oscal.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL profile (XSD)</String>
+                                        <String>OSCAL profile links (standalone)</String>
+                                        <String>OSCAL profile against its source(s)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/rev4/SP800-53-declarations.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/SP800-53/rev4/SP800-53-OSCAL-refined.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                        <String>OSCAL against its declarations</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/ISO-27002/ISO-27002-OSCAL-refined.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL core RNC (standalone)</String>
+                                        <String>OSCAL against its declarations</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>examples/FedRAMP/FedRAMP-MODERATE-working.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -3786,41 +3884,7 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/SP800-53/rev4/SP800-53-OSCAL-refined.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL core RNC (standalone)</String>
-                                        <String>OSCAL against its declarations</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>docs/schema/oscal-oscal.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL core RNC (standalone)</String>
-                                        <String>OSCAL against its declarations</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/ISO-27002/ISO-27002-OSCAL-refined.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -3855,21 +3919,6 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>examples/SP800-53/SP800-53-oscal-declarations.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL core RNC (standalone)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/rev4/SP800-53-declarations.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -3974,25 +4023,6 @@
                                 </field>
                                 <field name="scenarioTypes">
                                     <list>
-                                        <String>Validation_scenario</String>
-                                        <String>Validation_scenario</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/SP800-53/rev4/MODERATE-baseline-profile-oscal.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>OSCAL profile (XSD)</String>
-                                        <String>OSCAL profile links (standalone)</String>
-                                        <String>OSCAL profile against its source(s)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                         <String>Validation_scenario</String>
                                     </list>
