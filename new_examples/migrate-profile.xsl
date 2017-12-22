@@ -9,9 +9,6 @@
     exclude-result-prefixes="xs math oscal xsi"
     version="3.0">
     
-  
-   
-    
     <xsl:mode on-no-match="shallow-copy"/> 
     
     <xsl:template match="@xsi:*"/>
