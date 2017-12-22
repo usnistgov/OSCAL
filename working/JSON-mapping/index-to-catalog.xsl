@@ -8,37 +8,50 @@
     exclude-result-prefixes="xs math oscal"
     version="3.0">
     
+    <xsl:import href="../lib/XSLT/profile-resolver.xsl"/>
+    
     <xsl:mode on-no-match="shallow-copy"/>
     
-    <xsl:param name="catalog-file" as="xs:string">file:/home/wendell/Documents/OSCAL/working/SP800-53/rev4/SP800-53-OSCAL-refined.xml</xsl:param>
+    <xsl:param name="resource-file" as="xs:string">file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-MODERATE-baseline.xml</xsl:param>
     
-    <xsl:variable name="catalog" select="document($catalog-file)"/>
     
-    <xsl:key name="component-by-key" match="control | subcontrol" use="prop[@class='name']"/>
+    <xsl:variable name="resource">
+        <xsl:apply-templates mode="oscal:resolve" select="document($resource-file)"/>
+    </xsl:variable>
+    
+    <xsl:key name="component-by-key" match="control | subcontrol | component" use="prop[@class='name']"/>
+    
+    <xsl:template match="profiles">
+        <xsl:copy>
+            <link rel="{$resource/name(*)}" href="{$resource-file}">
+                <xsl:value-of select="$resource/descendant::title[1]"/>
+            </link>
+        </xsl:copy>
+    </xsl:template>
     
     <xsl:template match="part[@class='satisfies']">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:for-each select="prop[@class='control-name']">
-                <xsl:variable name="target" select="key('component-by-key',string(.),$catalog)"/>
+                <xsl:variable name="target" select="key('component-by-key',string(.),$resource)"/>
                 <link rel="satisfies" href="#{$target/@id}">
                     <xsl:value-of select="$target/title"/>
                 </link>
-                <prop class="{name($target)}-name">
+                <!--<prop class="{name($target)}-name">
                     <xsl:value-of select="."/>
-                </prop>
+                </prop>-->
             </xsl:for-each>
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="part[@class='satisfies']/prop[@class='control-name']"/>
+    <xsl:template match="prop[@class='control-name']"/>
     
     <xsl:template match="set-param">
         <xsl:variable name="key" select="prop[@class='param-key']"/>
         <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <xsl:attribute name="param-id" select="$catalog//*[starts-with($key,prop[@class='name'])]/param/@id"/>
+            <xsl:attribute name="param-id" select="$resource//*[starts-with($key,prop[@class='name'])]/param/@id"/>
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
