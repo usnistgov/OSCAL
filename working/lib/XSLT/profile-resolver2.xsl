@@ -230,13 +230,19 @@
   merges catalogs ('frameworks') -->
   <xsl:template match="merge" mode="process-profile">
     <xsl:param name="so-far"/>
-    <xsl:variable name="merged">
-      <xsl:call-template name="merge-groups">
-        <xsl:with-param name="groups" select="$so-far//(framework | catalog | worksheet)"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <!--<xsl:sequence select="$merged"/>-->
-    <xsl:apply-templates select="$merged" mode="filter-merge"/>
+    <xsl:for-each select="$so-far/*">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <!-- micropipeline first merges everything, then removes duplication -->
+        <xsl:variable name="merged">
+          <xsl:call-template name="merge-groups">
+            <xsl:with-param name="groups" select="//(framework | catalog | worksheet)"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <!--<xsl:sequence select="$merged"/>-->
+        <xsl:apply-templates select="$merged" mode="filter-merge"/>
+      </xsl:copy>
+    </xsl:for-each>
   </xsl:template>
   
   <xsl:template name="merge-groups">
@@ -256,6 +262,9 @@
 
   <xsl:mode name="filter-merge" on-no-match="shallow-copy"/>
   
+  
+  <xsl:template mode="filter-merge" match="@process-id"/>
+  
   <!--<xsl:template match="control | subcontrol | component" mode="filter-merge">
     <xsl:copy-of select="."/>
   </xsl:template>-->
@@ -264,7 +273,7 @@
     <xsl:variable name="dibs" select="preceding-sibling::*[deep-equal(.,current())]"/>
     <xsl:if test="empty($dibs)">
       <xsl:copy>
-        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates select="@*" mode="filter-merge"/>
         <xsl:apply-templates mode="#current"/>
       </xsl:copy>
     </xsl:if>
