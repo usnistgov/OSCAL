@@ -19,7 +19,7 @@
   <xsl:mode name="copy"            on-no-match="shallow-copy"/>
   
   <!-- XXX -->
-  <xsl:mode name="import"  on-no-match="fail"/>
+  <xsl:mode name="import"  on-no-match="shallow-copy"/>
   <xsl:mode name="include" on-no-match="fail"/>
   
 <!-- Presumes new model (import*, merge? modify)
@@ -43,8 +43,8 @@
       
       <xsl:iterate select="*">
         <!-- $so-far starts with only a flag -->
-        <xsl:param name="so-far" as="element(resolution)">
-          <resolution resource="{document-uri(/)}"/>
+        <xsl:param name="so-far">
+          <resolution profile="{document-uri(/)}"/>
         </xsl:param>
         <xsl:on-completion select="$so-far"/>
         <xsl:next-iteration>
@@ -63,14 +63,14 @@
   
 <!-- import: adds control set by (recursively) calling profiles/catalogs -->
   
-  <xsl:template match="import" as="element(resolution)" mode="process-profile">
-    <xsl:param name="so-far" as="element(resolution)"/>
+  <xsl:template match="import" mode="process-profile">
+    <xsl:param name="so-far" as="document-node()"/>
     <xsl:variable name="imported">
       <!-- Returns the imported profile or catalog, including only the designated controls. -->
       <xsl:apply-templates select="." mode="import"/>
     </xsl:variable>
     <!-- Returning $so-far, except with the imported / filtered catalog spliced in -->
-    <xsl:for-each select="$so-far">
+    <xsl:for-each select="$so-far/*">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:copy-of select="node()"/>
@@ -79,19 +79,18 @@
     </xsl:for-each>
   </xsl:template>
   
-  <!-- TODO Reassembles aggregated catalogs into hierarchies (per catalog) -->
-  <xsl:template match="merge" as="element(resolution)" mode="process-profile">
-    <xsl:param name="so-far" as="element(resolution)"/>
-    <xsl:sequence select="$so-far"/>
-  </xsl:template>
-  
   <!-- TODO Adds patches, replacing parameter and control contents. -->
-  <xsl:template match="modify" as="element(resolution)" mode="process-profile">
-    <xsl:param name="so-far" as="element(resolution)"/>
+  <xsl:template match="modify" mode="process-profile">
+    <xsl:param name="so-far"/>
     <xsl:sequence select="$so-far"/>
   </xsl:template>
   
-
+  <xsl:template match="*" mode="process-profile">
+    <xsl:param name="so-far"/>
+    <xsl:sequence select="$so-far"/>
+  </xsl:template>
+  
+  
   <!-- Mode 'import' manages importing controls from catalogs or upstream profiles -->
   <xsl:template match="import" mode="import">
     <xsl:param name="authorities-so-far" tunnel="yes" select="document-uri(/)" as="xs:anyURI+"/>
@@ -135,22 +134,22 @@
     <!--<xsl:copy-of select="*"/>-->
   </xsl:template>
   
-  <!-- For now, everything comes as a framework. -->
   <xsl:template match="catalog | framework | worksheet" mode="import">
     <xsl:variable name="filtered-results">
       <xsl:apply-templates select="title" mode="#current"/>
       <xsl:apply-templates select="group | control | component" mode="#current"/>
     </xsl:variable>
     <xsl:if test="exists($filtered-results/*)">
-      <framework>
+      <xsl:copy>
+        <xsl:attribute name="process-id" select="generate-id()"/>
         <xsl:sequence select="$filtered-results"/>
-      </framework>
+      </xsl:copy>
     </xsl:if>
   </xsl:template>
 
   <xsl:template match="profile" mode="import">
-    <!-- apply templates to itself in mode="oscal:resolve" ... -->
-    <xsl:message terminate="yes">Bah! matched profile</xsl:message>
+    <!--<xsl:message terminate="yes">Bah! matched profile</xsl:message>-->
+    <xsl:apply-templates select="." mode="oscal:resolve"/>
   </xsl:template>
   
   <xsl:template match="section" mode="import"/>
@@ -163,6 +162,7 @@
     <xsl:if test="exists($included/*)">
       <xsl:copy>
         <xsl:apply-templates select="@*" mode="#current"/>
+        <xsl:attribute name="process-id" select="generate-id()"/>
         <xsl:apply-templates select="title" mode="#current"/>
         <xsl:sequence select="$included"/>
       </xsl:copy>  
@@ -184,24 +184,25 @@
     <!--A control or subcontrol is always excluded if it appears in invoke/exclude
     Otherwise, it is included if empty(invoke/include), exists(invoke/all)
     or exists(invoke/call[(@control-id | @subcontrol-id)=current()/@id]-->
-    <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
+    <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
     <!-- A control is included by 'all' or by default when no inclusion rule is given -->
     <xsl:variable name="included" as="xs:boolean" select="exists($invocation/include/all) or empty($invocation/include)"/>
     <xsl:variable name="excluded" as="xs:boolean" select="$invocation/exclude/call/@control-id = @id"/>
     <xsl:variable name="called"   as="xs:boolean" select="$invocation/include/call/@control-id = @id"/>
     <!--<xsl:copy-of select="$invocation"/>-->
     <xsl:if test="($included or $called) and not($excluded)">
-      <component class="{oscal:classes-including(@class,'control')}">
-        <xsl:copy-of select="@* except @class"/>
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:attribute name="process-id" select="generate-id()"/>
         <xsl:apply-templates mode="#current"/>
-      </component>
+      </xsl:copy>
     </xsl:if>
   </xsl:template>
   
   <xsl:template match="subcontrol | component[oscal:classes(.)='subcontrol']" priority="2" mode="import">
     <!-- Subcontrol logic is analogous to control logic for keeping.
       Extend this with (parameterized) defaults for handling subcontrols. -->
-    <xsl:param name="invocation" tunnel="yes" as="element(invoke)" required="yes"/>
+    <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
     <!-- A subcontrol is included if all explicitly says to include all subcontrols, or
          if its containing controls is called and set @with-subcontrols -->
     <xsl:variable name="control" select="ancestor::control[1]"/>
@@ -215,13 +216,61 @@
     <!-- The subcontrol can still be excluded -->
     <xsl:variable name="excluded" select="exists($invocation/exclude/call[@subcontrol-id  = current()/@id])"/>
     <xsl:if test="($included or $called) and not($excluded)">
-      <component class="{oscal:classes-including(@class,'subcontrol')}">
-        <xsl:copy-of select="@* except @class"/>
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:attribute name="process-id" select="generate-id()"/>
         <xsl:apply-templates mode="#current"/>
-      </component>
+      </xsl:copy>
     </xsl:if>
   </xsl:template>
+
+
+  <!-- Merge step:
+  strips invocation hierarchy
+  merges catalogs ('frameworks') -->
+  <xsl:template match="merge" mode="process-profile">
+    <xsl:param name="so-far"/>
+    <xsl:variable name="merged">
+      <xsl:call-template name="merge-groups">
+        <xsl:with-param name="groups" select="$so-far//(framework | catalog | worksheet)"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <!--<xsl:sequence select="$merged"/>-->
+    <xsl:apply-templates select="$merged" mode="filter-merge"/>
+  </xsl:template>
   
+  <xsl:template name="merge-groups">
+    <xsl:param name="groups" select="()"/>
+    <xsl:for-each-group select="$groups" group-by="@process-id">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates select="current-group()/(* except group)" mode="copy">
+          <xsl:sort select="@id"/>
+        </xsl:apply-templates>
+        <xsl:call-template name="merge-groups">
+          <xsl:with-param name="groups" select="current-group()/group"/>
+        </xsl:call-template>
+      </xsl:copy>
+    </xsl:for-each-group>
+  </xsl:template>
+
+  <xsl:mode name="filter-merge" on-no-match="shallow-copy"/>
+  
+  <!--<xsl:template match="control | subcontrol | component" mode="filter-merge">
+    <xsl:copy-of select="."/>
+  </xsl:template>-->
+  
+  <xsl:template match="*" mode="filter-merge">
+    <xsl:variable name="dibs" select="preceding-sibling::*[deep-equal(.,current())]"/>
+    <xsl:if test="empty($dibs)">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:apply-templates mode="#current"/>
+      </xsl:copy>
+    </xsl:if>
+  </xsl:template>
+    
+    
 <!-- Service functions: provided for Schematron etc. -->
   <!-- Returns a set of controls or components marked as controls for a profile. -->
   <xsl:function name="oscal:resolved-controls" as="element()*">
@@ -246,7 +295,7 @@
   
   <!-- returns sequence of tokens including passed value, but non-duplicatively -->
   <xsl:function name="oscal:classes-including" as="xs:string">
-    <xsl:param name="class" as="attribute(class)"/>
+    <xsl:param name="class" as="attribute(class)?"/>
     <xsl:param name="value" as="xs:string"/>
     <xsl:sequence select="string-join((tokenize($class,'\s+')[. ne $value],$value), ' ')"/>
   </xsl:function>
