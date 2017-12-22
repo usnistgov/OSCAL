@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="19.0">
     <meta>
-        <filters directoryPatterns="" filePatterns="OSCAL-dev.xpr" positiveFilePatterns="*.xml" showHiddenFiles="false"/>
+        <filters directoryPatterns="" filePatterns="OSCAL-dev.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
             <serialized version="19.0" xml:space="preserve">
                 <serializableOrderedMap>

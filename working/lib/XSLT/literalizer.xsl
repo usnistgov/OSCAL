@@ -29,10 +29,20 @@ sure it conforms to the profile?)
   
   <xsl:mode on-no-match="shallow-copy"/>
   
+  <xsl:template match="processing-instruction() | comment()"/>
+  
+  <xsl:template match="/">
+    <xsl:comment> OSCAL LITERALIZATION happened here </xsl:comment>
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:next-match/>  
+  </xsl:template>
+  
+ 
   <xsl:template match="p[matches(@class,'\S')] | prop[matches(@class,'\S')] | part[matches(@class,'\S')]">
     <xsl:element name="{@class}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:copy-of select="@* except @class"/>
-        <xsl:apply-templates/>
+      <!--<xsl:attribute name="class" select="local-name()"/>-->
+      <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 </xsl:stylesheet>
