@@ -12,8 +12,12 @@
     
     <xsl:mode on-no-match="shallow-copy"/>
     
-    <xsl:param name="resource-file" as="xs:string">file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-MODERATE-baseline.xml</xsl:param>
+    <xsl:param name="resource-file" as="xs:string">file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml</xsl:param>
     
+    <!--file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-MODERATE-baseline.xml-->
+    <!--file:/home/wendell/Documents/OSCAL/examples/FedRAMP/FedRAMP-MODERATE-crude.xml-->
+    
+    <!--file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml-->
     
     <xsl:variable name="resource">
         <xsl:apply-templates mode="oscal:resolve" select="document($resource-file)"/>
@@ -48,10 +52,12 @@
     <xsl:template match="prop[@class='control-name']"/>
     
     <xsl:template match="set-param">
-        <xsl:variable name="key" select="prop[@class='param-key']"/>
+        <xsl:variable name="key"
+            select="replace(prop[@class='param-key'],'^(\D\D\-\d\d*(\s*\(\d\d?\))?).*','$1') => replace('\s','')"/>
         <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <xsl:attribute name="param-id" select="$resource//*[starts-with($key,prop[@class='name'])]/param/@id"/>
+            <xsl:attribute name="param-id" select="$resource//prop[@class='name'][replace(.,'\s','')=$key]/../param/@id"/>
+            <key><xsl:value-of select="$key"/></key>
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>

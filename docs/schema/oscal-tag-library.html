@@ -219,7 +219,7 @@ a:visited { color: midnightblue }
                <p class="toc-line"><a href="#d6e1735"><code>&lt;profile&gt;</code> Profile</a></p>
             </div>
             <div class="toc">
-               <p class="toc-line"><a href="#d6e1750"><code>&lt;invoke&gt;</code> Authority invocation</a></p>
+               <p class="toc-line"><a href="#d6e1750"><code>&lt;import&gt;</code> Import resource</a></p>
             </div>
             <div class="toc">
                <p class="toc-line"><a href="#d6e1766"><code>&lt;include&gt;</code> Include controls</a></p>
@@ -1750,7 +1750,7 @@ a:visited { color: midnightblue }
                
                <div class="part description">
                   
-                  <p class="p">In reference to a catalog (or other authority such as profile or framework), a selection
+                  <p class="p">In reference to a catalog (or other resource such as profile or framework), a selection
                      and configuration of controls, maintained separately
                   </p>
                   
@@ -1759,14 +1759,14 @@ a:visited { color: midnightblue }
             </div>
             
             <div class="control element-description" id="d6e1750">
-               <h4 class="element-description"><span class="run-in subst tag">invoke</span> <span class="run-in subst full_name">Authority invocation</span> 
+               <h4 class="element-description"><span class="run-in subst tag">import</span> <span class="run-in subst full_name">Import resource</span> 
                </h4>
                
                
                
                <div class="part description">
                   
-                  <p class="p">For invocation of controls and subcontrols from a catalog or other authority</p>
+                  <p class="p">Designating a catalog, profile or other resource for controls</p>
                   
                </div>
                
@@ -1780,8 +1780,8 @@ a:visited { color: midnightblue }
                
                <div class="part description">
                   
-                  <p class="p">The element's contents indicate which controls and subcontrols to include from the
-                     authority (source catalog)
+                  <p class="p">Which controls and subcontrols to include from the resource (source catalog) being
+                     imported
                   </p>
                   
                </div>
@@ -1809,8 +1809,8 @@ a:visited { color: midnightblue }
                
                <div class="part description">
                   
-                  <p class="p">Which controls and subcontrols to exclude from the authority (source catalog) being
-                     invoked
+                  <p class="p">Which controls and subcontrols to exclude from the resource (source catalog) being
+                     imported
                   </p>
                   
                </div>
@@ -1836,7 +1836,7 @@ a:visited { color: midnightblue }
                
                <div class="part description">
                   
-                  <p class="p">Include all controls from the invoked authority (catalog)</p>
+                  <p class="p">Include all controls from the imported resource (catalog)</p>
                   
                </div>
                
@@ -1844,28 +1844,27 @@ a:visited { color: midnightblue }
                   
                   <p class="p">This element provides an alternative to calling controls and subcontrols individually
                      from a catalog. But this is also the default behavior when no <a href="" class="code">include</a> element
-                     is given in an <a href="" class="code">invoke</a>; so ordinarily one might not see this element unless it
+                     is given in an <a href="" class="code">import</a>; so ordinarily one might not see this element unless it
                      is for purposes of including its <code class="code">@with-subcontrols='yes'</code></p>
                   
                </div>
                
                <div class="part example">
                   
-                  <p class="p">An invocation of a catalog with all controls included:</p>
-                  <pre class="pre">&lt;invoke href="canonical-catalog-oscal.xml"&gt;
+                  <p class="p">Importing a catalog with all controls included:</p>
+                  <pre class="pre">&lt;import href="canonical-catalog-oscal.xml"&gt;
   &lt;include&gt;
     &lt;all/&gt;
   &lt;/include&gt;
-&lt;/include&gt;</pre>
-                  <p class="p">has the same outcome as</p>
-                  <pre class="pre">&lt;invoke href="canonical-catalog-oscal.xml"/&gt;
-</pre>
-                  <p class="p">but is not the same as</p>
-                  <pre class="pre">&lt;invoke href="canonical-catalog-oscal.xml"&gt;
+&lt;/import&gt;</pre>
+                  <p class="p">can also be done implicitly (with the same outcome):</p>
+                  <pre class="pre">&lt;import href="canonical-catalog-oscal.xml"/&gt;</pre>
+                  <p class="p">However these are not the same as</p>
+                  <pre class="pre">&lt;import href="canonical-catalog-oscal.xml"&gt;
   &lt;include&gt;
     &lt;all with-subcontrols="yes"/&gt;
   &lt;/include&gt;
-&lt;/invoke&gt;</pre>
+&lt;/import&gt;</pre>
                   <p class="p">(Since <code class="code">with-subcontrols</code> is assumed to be <q class="q">no</q> unless stated to be
                      <q class="q">yes</q>.)
                   </p>
@@ -1921,7 +1920,7 @@ a:visited { color: midnightblue }
                <div class="part remarks">
                   
                   <p class="p"><code class="code">@param-id</code> indicates the parameter (within the scope of the referenced
-                     catalog or authority). The <a href="" class="code">value</a> element is used to provide a value for
+                     catalog or resource). The <a href="" class="code">value</a> element is used to provide a value for
                      insertion of a value for the parameter when the catalog is resolved and rendered.
                      A
                      <a href="" class="code">desc</a> element can be presented (made available) to a calling profile – that

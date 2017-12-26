@@ -328,6 +328,9 @@
     <xsl:sequence select="tokenize($who/@class/lower-case(.), '\s+')"/>
   </xsl:function>
   
+  <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
+  
+  
   <oscal:hide-code>
     
     <xsl:template match="profile" mode="filter-controls">
@@ -399,7 +402,6 @@
     
   </xsl:template>
   
-    <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
     
     <xsl:key name="param-settings" match="oscal:set-param" use="@param-id"/>
     

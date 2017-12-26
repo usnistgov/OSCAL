@@ -799,23 +799,23 @@
       <prop class="tag">profile</prop>
       <prop class="full_name">Profile</prop>
       <part class="description">
-        <p>In reference to a catalog (or other authority such as profile or framework), a selection
+        <p>In reference to a catalog (or other resource such as profile or framework), a selection
           and configuration of controls, maintained separately</p>
       </part>
     </component>
     <component class="element-description">
-      <prop class="tag">invoke</prop>
-      <prop class="full_name">Authority invocation</prop>
+      <prop class="tag">import</prop>
+      <prop class="full_name">Import resource</prop>
       <part class="description">
-        <p>For invocation of controls and subcontrols from a catalog or other authority</p>
+        <p>Designating a catalog, profile or other resource for controls</p>
       </part>
     </component>
     <component class="element-description">
       <prop class="tag">include</prop>
       <prop class="full_name">Include controls</prop>
       <part class="description">
-        <p>The element's contents indicate which controls and subcontrols to include from the
-          authority (source catalog)</p>
+        <p>Which controls and subcontrols to include from the resource (source catalog) being
+          imported</p>
       </part>
       <part class="remarks">
         <p>To be schema-valid, this element must contain either (but not both) a single
@@ -829,8 +829,8 @@
       <prop class="tag">exclude</prop>
       <prop class="full_name">Exclude controls</prop>
       <part class="description">
-        <p>Which controls and subcontrols to exclude from the authority (source catalog) being
-          invoked</p>
+        <p>Which controls and subcontrols to exclude from the resource (source catalog) being
+          imported</p>
       </part>
       <part class="remarks">
         <p>Within <code>exclude</code>, <code>all</code> is not an option since it makes no sense.
@@ -844,30 +844,29 @@
       <prop class="tag">all</prop>
       <prop class="full_name">Include all</prop>
       <part class="description">
-        <p>Include all controls from the invoked authority (catalog)</p>
+        <p>Include all controls from the imported resource (catalog)</p>
       </part>
       <part class="remarks">
         <p>This element provides an alternative to calling controls and subcontrols individually
           from a catalog. But this is also the default behavior when no <code>include</code> element
-          is given in an <code>invoke</code>; so ordinarily one might not see this element unless it
+          is given in an <code>import</code>; so ordinarily one might not see this element unless it
           is for purposes of including its <code>@with-subcontrols='yes'</code></p>
       </part>
       <part class="example">
-        <p>An invocation of a catalog with all controls included:</p>
-        <pre>&lt;invoke href="canonical-catalog-oscal.xml">
+        <p>Importing a catalog with all controls included:</p>
+        <pre>&lt;import href="canonical-catalog-oscal.xml">
   &lt;include>
     &lt;all/>
   &lt;/include>
-&lt;/include></pre>
-        <p>has the same outcome as</p>
-        <pre>&lt;invoke href="canonical-catalog-oscal.xml"/>
-</pre>
-        <p>but is not the same as</p>
-        <pre>&lt;invoke href="canonical-catalog-oscal.xml">
+&lt;/import></pre>
+        <p>can also be done implicitly (with the same outcome):</p>
+        <pre>&lt;import href="canonical-catalog-oscal.xml"/></pre>
+        <p>However these are not the same as</p>
+        <pre>&lt;import href="canonical-catalog-oscal.xml">
   &lt;include>
     &lt;all with-subcontrols="yes"/>
   &lt;/include>
-&lt;/invoke></pre>
+&lt;/import></pre>
         <p>(Since <code>with-subcontrols</code> is assumed to be <q>no</q> unless stated to be
             <q>yes</q>.)</p>
       </part>
@@ -898,7 +897,7 @@
       </part>
       <part class="remarks">
         <p><code>@param-id</code> indicates the parameter (within the scope of the referenced
-          catalog or authority). The <code>value</code> element is used to provide a value for
+          catalog or resource). The <code>value</code> element is used to provide a value for
           insertion of a value for the parameter when the catalog is resolved and rendered. A
             <code>desc</code> element can be presented (made available) to a calling profile – that
           is, it is a parameter description helping to set the parameter in higher layers, not this
