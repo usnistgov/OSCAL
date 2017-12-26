@@ -2,7 +2,7 @@ default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
 include "oscal-core.rnc" { start = profile }
 
-profile = element profile { idAttr, title, import+, merge?, modify?, framework* }
+profile = element profile { idAttr, title, import+, merge?, modify? }
 
 import = element import { hrefAttr, (\include?, exclude?) }
 
