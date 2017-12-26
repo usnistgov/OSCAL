@@ -36,18 +36,18 @@
 
   <xsl:template match="oscal:profile">
     <div class="profile">
-      <xsl:apply-templates select="oscal:title, oscal:invoke"/>
+      <xsl:apply-templates select="oscal:title, oscal:import"/>
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:invoke">
+  <xsl:template match="oscal:import">
     <div class="invoking">
     <xsl:apply-templates select="." mode="display-invocation"/>
-    <xsl:apply-templates select="oscal:invoke | oscal:framework"/>
+    <xsl:apply-templates select="oscal:import | oscal:framework"/>
     </div>
   </xsl:template>
       
-  <xsl:template match="oscal:invoke/oscal:framework">
+  <xsl:template match="oscal:import/oscal:framework">
     <div class="framework" id="{(@id,generate-id())[1]}">
       <xsl:apply-templates/>
     </div>
@@ -512,7 +512,7 @@
   </xsl:template>
   
   
-  <xsl:template match="oscal:invoke" mode="display-invocation">
+  <xsl:template match="oscal:import" mode="display-invocation">
     <div class="invocation">
       <p>
         <xsl:value-of select="@href"/>
@@ -522,36 +522,36 @@
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:invoke/oscal:include" mode="display-invocation">
+  <xsl:template match="oscal:import/oscal:include" mode="display-invocation">
     <span class="subst">Included:</span>
     <xsl:apply-templates mode="display-invocation"/>
   </xsl:template>
   
-  <xsl:template match="oscal:invoke/oscal:exclude" mode="display-invocation">
+  <xsl:template match="oscal:import/oscal:exclude" mode="display-invocation">
     <span class="subst">Excluded:</span>
     <xsl:apply-templates mode="display-invocation"/>
   </xsl:template>
   
   
-  <xsl:template match="oscal:invoke/oscal:include/oscal:all" mode="display-invocation">
+  <xsl:template match="oscal:import/oscal:include/oscal:all" mode="display-invocation">
     <xsl:text> ALL </xsl:text>
   </xsl:template>
   
-  <xsl:template match="oscal:invoke/*/oscal:call[@control-id]" mode="display-invocation">
+  <xsl:template match="oscal:import/*/oscal:call[@control-id]" mode="display-invocation">
     <span class="invoking">
       <span class="subst">Control </span>
       <xsl:value-of select="@control-id"/>
     </span>
   </xsl:template>
   
-  <xsl:template match="oscal:invoke/*/oscal:call[@subcontrol-id]" mode="display-invocation">
+  <xsl:template match="oscal:import/*/oscal:call[@subcontrol-id]" mode="display-invocation">
     <span class="invoking">
       <span class="subst">Subcontrol </span>
       <xsl:value-of select="@subcontrol-id"/>
     </span>
   </xsl:template>
   
-  <xsl:template match="oscal:invoke//oscal:set-param" mode="display-invocation">
+  <xsl:template match="oscal:set-param" mode="display-invocation">
     <span class="invoking">
       <span class="subst">
         <xsl:text>Parameter </xsl:text>

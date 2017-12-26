@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-  <invoke href="OSCAL.xml">
+  <import href="OSCAL.xml">
     <include> <!--(all | call+) --> 
       <all/>
     </include>
     <!--<exclude> <!-\-(call+) -\-> 
       <call key="baseline-impact">HIGH</call>
     </exclude>-->
-  </invoke>
-  <!--<mod context="control">
+  </import>
+  <!--<modify context="control">
     <call key="number">AC01</call>
     <remove>
     </remove>
@@ -16,5 +16,5 @@
     </add>
     <patch>
     </patch>
-  </mod>-->
+  </modify>-->
 </profile>
