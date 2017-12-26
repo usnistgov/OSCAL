@@ -1,10 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-MODERATE-extract.xml 2017-11-16-05:00 -->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-4a36cdf2-d112-49c3-bde0-7bdec2864842">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-3395c7a6-bc86-44d6-a36a-775d55eb194a">
    <title>FedRAMP MODERATE Baseline PROFILE (extracted and aligned, no edits)</title>
    <!-- Baseline allocation of calls (in order): MODERATE, HIGH, LOW, sp800-53 -->
-   <invoke href="../SP800-53/SP800-53-MODERATE-baseline.xml">
+   <import href="../SP800-53/SP800-53-MODERATE-baseline.xml">
       <include>
          <call control-id="ac.1"/>
          <call control-id="ac.2"/>
@@ -265,7 +265,80 @@
          <call control-id="si.11"/>
          <call control-id="si.12"/>
          <call control-id="si.16"/>
-      </include>
+      </include></import>
+   <import href="../SP800-53/SP800-53-HIGH-baseline.xml">
+      <include>
+         <call subcontrol-id="ac.2.5."/>
+         <call subcontrol-id="ac.2.12."/>
+         <call control-id="ac.10"/>
+         <call subcontrol-id="au.9.2."/>
+         <call subcontrol-id="ca.2.2."/>
+         <call control-id="ca.8"/>
+         <call subcontrol-id="cm.2.2."/>
+         <call subcontrol-id="cm.5.1."/>
+         <call subcontrol-id="cm.5.3."/>
+         <call subcontrol-id="cm.6.1."/>
+         <call subcontrol-id="cm.7.5."/>
+         <call subcontrol-id="cp.2.2."/>
+         <call subcontrol-id="cp.9.3."/>
+         <call subcontrol-id="ma.3.3."/>
+         <call subcontrol-id="ma.5.1."/>
+         <call subcontrol-id="mp.6.2."/>
+         <call subcontrol-id="pe.13.2."/>
+         <call subcontrol-id="sc.7.8."/>
+         <call subcontrol-id="sc.7.18."/>
+         <call control-id="si.6"/>
+      </include></import>
+   <import href="../SP800-53/SP800-53-rev4-catalog.xml">
+      <include>
+         <call subcontrol-id="ac.2.7."/>
+         <call subcontrol-id="ac.2.9."/>
+         <call subcontrol-id="ac.2.10."/>
+         <call subcontrol-id="ac.4.21."/>
+         <call subcontrol-id="ac.17.9."/>
+         <call subcontrol-id="ca.2.3."/>
+         <call subcontrol-id="ca.3.3."/>
+         <call subcontrol-id="ca.8.1."/>
+         <call subcontrol-id="cm.5.5."/>
+         <call subcontrol-id="cm.10.1."/>
+         <call subcontrol-id="ia.2.5."/>
+         <call subcontrol-id="ia.4.4."/>
+         <call subcontrol-id="ia.5.4."/>
+         <call subcontrol-id="ia.5.6."/>
+         <call subcontrol-id="ia.5.7."/>
+         <call subcontrol-id="ir.7.2."/>
+         <call control-id="ir.9"/>
+         <call subcontrol-id="ir.9.1."/>
+         <call subcontrol-id="ir.9.2."/>
+         <call subcontrol-id="ir.9.3."/>
+         <call subcontrol-id="ir.9.4."/>
+         <call subcontrol-id="pe.14.2."/>
+         <call subcontrol-id="ps.3.3."/>
+         <call subcontrol-id="ra.5.3."/>
+         <call subcontrol-id="ra.5.6."/>
+         <call subcontrol-id="ra.5.8."/>
+         <call subcontrol-id="sa.4.8."/>
+         <call subcontrol-id="sa.9.1."/>
+         <call subcontrol-id="sa.9.4."/>
+         <call subcontrol-id="sa.9.5."/>
+         <call subcontrol-id="sa.10.1."/>
+         <call subcontrol-id="sa.11.1."/>
+         <call subcontrol-id="sa.11.2."/>
+         <call subcontrol-id="sa.11.8."/>
+         <call control-id="sc.6"/>
+         <call subcontrol-id="sc.7.12."/>
+         <call subcontrol-id="sc.7.13."/>
+         <call subcontrol-id="sc.12.2."/>
+         <call subcontrol-id="sc.12.3."/>
+         <call subcontrol-id="sc.28.1."/>
+         <call subcontrol-id="si.2.3."/>
+         <call subcontrol-id="si.3.7."/>
+         <call subcontrol-id="si.4.1."/>
+         <call subcontrol-id="si.4.14."/>
+         <call subcontrol-id="si.4.16."/>
+         <call subcontrol-id="si.4.23."/>
+      </include></import>
+<modify>
       <!-- - - - - - -->
       <set-param param-id="ac-1_a">
          <desc>organization-defined personnel or roles</desc>
@@ -3044,30 +3117,7 @@ NAME/ADDRESS RESOLUTION SERVICE</prop>
          <augment/>
       </alter>
       <!-- ===== -->
-   </invoke>
-   <invoke href="../SP800-53/SP800-53-HIGH-baseline.xml">
-      <include>
-         <call subcontrol-id="ac.2.5."/>
-         <call subcontrol-id="ac.2.12."/>
-         <call control-id="ac.10"/>
-         <call subcontrol-id="au.9.2."/>
-         <call subcontrol-id="ca.2.2."/>
-         <call control-id="ca.8"/>
-         <call subcontrol-id="cm.2.2."/>
-         <call subcontrol-id="cm.5.1."/>
-         <call subcontrol-id="cm.5.3."/>
-         <call subcontrol-id="cm.6.1."/>
-         <call subcontrol-id="cm.7.5."/>
-         <call subcontrol-id="cp.2.2."/>
-         <call subcontrol-id="cp.9.3."/>
-         <call subcontrol-id="ma.3.3."/>
-         <call subcontrol-id="ma.5.1."/>
-         <call subcontrol-id="mp.6.2."/>
-         <call subcontrol-id="pe.13.2."/>
-         <call subcontrol-id="sc.7.8."/>
-         <call subcontrol-id="sc.7.18."/>
-         <call control-id="si.6"/>
-      </include>
+   
       <!-- - - - - - -->
       <set-param param-id="ac-2_h">
          <desc>organization-defined time-period of expected inactivity or description of when to log out</desc>
@@ -3303,56 +3353,7 @@ NAME/ADDRESS RESOLUTION SERVICE</prop>
          </augment>
       </alter>
       <!-- ===== -->
-   </invoke>
-   <invoke href="../SP800-53/SP800-53-rev4-catalog.xml">
-      <include>
-         <call subcontrol-id="ac.2.7."/>
-         <call subcontrol-id="ac.2.9."/>
-         <call subcontrol-id="ac.2.10."/>
-         <call subcontrol-id="ac.4.21."/>
-         <call subcontrol-id="ac.17.9."/>
-         <call subcontrol-id="ca.2.3."/>
-         <call subcontrol-id="ca.3.3."/>
-         <call subcontrol-id="ca.8.1."/>
-         <call subcontrol-id="cm.5.5."/>
-         <call subcontrol-id="cm.10.1."/>
-         <call subcontrol-id="ia.2.5."/>
-         <call subcontrol-id="ia.4.4."/>
-         <call subcontrol-id="ia.5.4."/>
-         <call subcontrol-id="ia.5.6."/>
-         <call subcontrol-id="ia.5.7."/>
-         <call subcontrol-id="ir.7.2."/>
-         <call control-id="ir.9"/>
-         <call subcontrol-id="ir.9.1."/>
-         <call subcontrol-id="ir.9.2."/>
-         <call subcontrol-id="ir.9.3."/>
-         <call subcontrol-id="ir.9.4."/>
-         <call subcontrol-id="pe.14.2."/>
-         <call subcontrol-id="ps.3.3."/>
-         <call subcontrol-id="ra.5.3."/>
-         <call subcontrol-id="ra.5.6."/>
-         <call subcontrol-id="ra.5.8."/>
-         <call subcontrol-id="sa.4.8."/>
-         <call subcontrol-id="sa.9.1."/>
-         <call subcontrol-id="sa.9.4."/>
-         <call subcontrol-id="sa.9.5."/>
-         <call subcontrol-id="sa.10.1."/>
-         <call subcontrol-id="sa.11.1."/>
-         <call subcontrol-id="sa.11.2."/>
-         <call subcontrol-id="sa.11.8."/>
-         <call control-id="sc.6"/>
-         <call subcontrol-id="sc.7.12."/>
-         <call subcontrol-id="sc.7.13."/>
-         <call subcontrol-id="sc.12.2."/>
-         <call subcontrol-id="sc.12.3."/>
-         <call subcontrol-id="sc.28.1."/>
-         <call subcontrol-id="si.2.3."/>
-         <call subcontrol-id="si.3.7."/>
-         <call subcontrol-id="si.4.1."/>
-         <call subcontrol-id="si.4.14."/>
-         <call subcontrol-id="si.4.16."/>
-         <call subcontrol-id="si.4.23."/>
-      </include>
+   
       <!-- - - - - - -->
       <set-param param-id="ac-2_j">
          <desc>organization-defined actions</desc>
@@ -3775,5 +3776,4 @@ ASYMMETRIC KEYS</prop>
          <augment/>
       </alter>
       <!-- ===== -->
-   </invoke>
-</profile>
+   </modify></profile>
