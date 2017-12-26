@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-cca384cb-1877-4254-ba4b-4554a3295c8d">
 
    <!-- The profile illustrates a number of errors related to "controls collisions"
      either errors in specification, or reference
        -->
    <title>Exceptions profile example</title>
-   <invoke href="mini-testing-catalog.xml">
+   <import href="mini-testing-catalog.xml">
       <!-- If we leave 'include' out, we get include/all implicitly
          <include><all/></include>-->
       <include>
@@ -24,7 +22,12 @@
       
       <exclude>
          <call control-id="ra.9"/>
-      </exclude>
+      </exclude></import>
+   
+   <!-- This should error as a repeated call to the same authority (profile or catalog) - not allowed! -->
+   <import href="mini-testing-catalog.xml"/>
+   
+<modify>
       
       <!-- Including a parameter. -->
       <set-param param-id="ac-5_a">
@@ -43,9 +46,4 @@
             </part>
          </augment>
       </alter>
-   </invoke>
-   
-   <!-- This should error as a repeated call to the same authority (profile or catalog) - not allowed! -->
-   <invoke href="mini-testing-catalog.xml"/>
-   
-</profile>
+   </modify></profile>

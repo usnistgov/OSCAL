@@ -1,10 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-LOW-extract.xml 2017-11-16-05:00 -->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-84130014-44f3-49c0-85d2-088596a9f496">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-50756f0d-c37b-494d-b77f-f82d25e9aa15">
    <title>FedRAMP LOW Baseline PROFILE (extracted and aligned, no edits)</title>
    <!-- Baseline allocation of calls (in order): LOW, MODERATE, HIGH, sp800-53 -->
-   <invoke href="../SP800-53/SP800-53-LOW-baseline.xml">
+   <import href="../SP800-53/SP800-53-LOW-baseline.xml">
       <include>
          <call control-id="ac.1"/>
          <call control-id="ac.2"/>
@@ -129,7 +129,13 @@
          <call control-id="si.4"/>
          <call control-id="si.5"/>
          <call control-id="si.12"/>
-      </include>
+      </include></import>
+   <import href="../SP800-53/SP800-53-MODERATE-baseline.xml">
+      <include>
+         <call subcontrol-id="ca.2.1."/>
+         <call control-id="si.16"/>
+      </include></import>
+<modify>
       <!-- - - - - - -->
       <set-param param-id="ac-1_a">
          <desc>organization-defined personnel or roles</desc>
@@ -1794,12 +1800,7 @@
          <augment/>
       </alter>
       <!-- ===== -->
-   </invoke>
-   <invoke href="../SP800-53/SP800-53-MODERATE-baseline.xml">
-      <include>
-         <call subcontrol-id="ca.2.1."/>
-         <call control-id="si.16"/>
-      </include>
+   
       <!-- - - - - - -->
       <set-param param-id="ca-2_c">
          <desc>organization-defined level of independence</desc>
@@ -1821,5 +1822,4 @@
          <augment/>
       </alter>
       <!-- ===== -->
-   </invoke>
-</profile>
+   </modify></profile>

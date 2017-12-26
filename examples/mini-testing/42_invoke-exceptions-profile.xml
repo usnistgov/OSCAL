@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-ab698a3c-5604-47e0-ae46-530224f4fb78">
 
    <!-- This one should throw an error because certain controls are declared
         in (for) both catalog sources. -->
@@ -16,11 +14,11 @@
         For now only @id is being examined; catalogs are expected to have exclusive (nonoverlapping) @id schemes.
    -->
    <!-- The full mini-testing-catalog.xml includes several 'RA' examples. -->
-   <invoke href="mini-testing-catalog.xml"/>
+   <import href="mini-testing-catalog.xml"/>
    
    <!-- RA.1 through RA.3 appear again in the profile, creating a set of nominal clashing controls.
    Schematron oscal-profile.sch can successfully report them on both invocations
    (without presuming the first one wins). -->
-   <invoke href="99includeRAx3-profile.xml"/>
+   <import href="99includeRAx3-profile.xml"/>
    
 </profile>

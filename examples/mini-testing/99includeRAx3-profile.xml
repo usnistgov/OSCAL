@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02   -->
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-2c20e8e1-6f36-442c-bfca-1e0ed75a3ecb">
 
    <title>Three RA controls with parameters</title>
    
-   <invoke href="mini-testing-catalog.xml">
+   <import href="mini-testing-catalog.xml">
          <include>
             <call control-id="ra.7"/>
             
@@ -18,7 +16,8 @@
             <!-- Overriding both description and value in source catalog -->
             
             
-         </include>
+         </include></import>
+<modify>
          
       <set-param param-id="ra-9_a">
          <desc>PET FEEDING, PLAY, ENVIRONMENTAL, VETERINARY REQUIREMENTS - organization-defined systems, system components, or system services</desc>
@@ -30,5 +29,4 @@
          <value>ON AN ONGOING BASIS (AT LEAST NIGHTLY)</value>
       </set-param>
       
-   </invoke>
-</profile>
+   </modify></profile>

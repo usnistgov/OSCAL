@@ -3,11 +3,11 @@
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
 <?xml-model href="../../schema/xml/RNC/oscal-profile.rnc" type="application/relax-ng-compact-syntax"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-18c209ec-1a9d-4f8e-a863-36412182a49b">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-6f5ad460-f150-4af5-b08a-9a969e2acadd">
 
    <!-- Subcontrols and parameters therefore -->
   <title>More Paramters, More</title>
-   <invoke href="mini-testing-catalog.xml">
+   <import href="mini-testing-catalog.xml">
       <include>
          <all with-subcontrols="yes"/>
       </include>
@@ -18,7 +18,8 @@
          <call subcontrol-id="ac.6.8"/>
          <call subcontrol-id="ac.6.9"/>
          <call control-id="ra.9"/>
-      </exclude>
+      </exclude></import>
+<modify>
 
       <set-param param-id="ac-5_a">
          <desc>organization-defined duties of individuals</desc>
@@ -66,5 +67,4 @@
             <value>organization-defined software</value>
          </param>-->
 
-   </invoke>
-</profile>
+   </modify></profile>
