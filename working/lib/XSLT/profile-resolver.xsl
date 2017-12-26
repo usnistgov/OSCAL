@@ -309,7 +309,7 @@
   
   <!-- Expect a profile to be resolved. If a catalog or framework, this should return a copy of the input. -->
   <xsl:function name="oscal:resolve" as="document-node()" saxon:memo-function="yes" xmlns:saxon="http://saxon.sf.net/">
-    <xsl:param name="who" as="node()"/>
+    <xsl:param name="who" as="node()?"/>
     <xsl:document>
       <xsl:apply-templates select="$who" mode="oscal:resolve"/>
     </xsl:document>

@@ -9,7 +9,6 @@
         <xs:element maxOccurs="unbounded" ref="oscal:import"/>
         <xs:element minOccurs="0" ref="oscal:merge"/>
         <xs:element minOccurs="0" ref="oscal:modify"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:framework"/>
       </xs:sequence>
       <xs:attributeGroup ref="oscal:idAttr"/>
     </xs:complexType>

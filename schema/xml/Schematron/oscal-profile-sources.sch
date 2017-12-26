@@ -6,7 +6,7 @@
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
 
-  <xsl:include href="../../../working/lib/XSLT/profile-resolver2.xsl"/>
+  <xsl:include href="../../../working/lib/XSLT/profile-resolver.xsl"/>
   <!-- included xslt has <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/> -->
 <!--
     
@@ -33,17 +33,24 @@
     </sch:rule>-->
     
     <sch:rule context="oscal:import">
+      
       <sch:assert test="not(resolve-uri(@href,document-uri(/)) = (../oscal:import except .)/resolve-uri(@href,document-uri(/)) )" role="warning">
         More than one invocation on authority <sch:value-of select="resolve-uri(@href,document-uri(/))"/> is PROBABLY NOT WHAT YOU WANT.
       </sch:assert>
+
+      <sch:let name="resource" value="if (doc-available(resolve-uri(@href, document-uri(/)))) then document(@href,/) else ()"/>
       
-      <sch:let name="resolved"        value="oscal:resolve(.)"/>
+
+      <sch:assert test="exists($resource)">No resource is found at <sch:value-of select="@href"/></sch:assert>
+      
+      <sch:let name="resolved"        value="oscal:resolve($resource)"/>
       <!-- Saxon should be memoing these functions for efficiency --> 
       
       
 <!-- Testing to see if 'all' might be used instead of a set of calls -->
       <sch:let name="explicit-calls" value="oscal:include/oscal:call"/>
-      <sch:let name="unresolved"     value="oscal:resolve(document(@href))"/>
+<!-- unresolved is gotten by resolving the import's href, not the import itself (yes) -->
+      <sch:let name="unresolved"     value="oscal:resolve( if (exists($resource)) then document(@href) else () )"/>
       <sch:let name="excluded" value="($unresolved//(oscal:control|oscal:subcontrol|oscal:component)) except key('element-by-id',$explicit-calls/(@control-id|@subcontrol-id),$unresolved)"/>
       <sch:report role="warning" test="exists($explicit-calls[2]) and exists($excluded) and count($excluded) lt 4">This invocation could use include/all, excluding only <xsl:value-of select="$excluded/@id" separator=", "/> (instead of <sch:value-of select="count($explicit-calls)"/> include/call elements)</sch:report>
       <sch:report role="warning" test="exists($explicit-calls[2]) and empty($excluded)">This invocation could use include/all (instead of <sch:value-of select="count($explicit-calls)"/> include/call elements): it calls all the controls in <sch:value-of select="@href"/> without excluding any</sch:report>
