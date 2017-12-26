@@ -3,14 +3,10 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
-
-  
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
 
-  
-
-  <xsl:include href="../../../working/lib/XSLT/profile-resolver.xsl"/>
+  <xsl:include href="../../../working/lib/XSLT/profile-resolver2.xsl"/>
   <!-- included xslt has <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/> -->
 <!--
     
@@ -36,8 +32,8 @@
       <sch:assert test="$catalog-available or exists(document(@href))">Catalog '<sch:value-of select="@href"/>' not found</sch:assert>
     </sch:rule>-->
     
-    <sch:rule context="oscal:invoke">
-      <sch:assert test="not(resolve-uri(@href,document-uri(/)) = (../oscal:invoke except .)/resolve-uri(@href,document-uri(/)) )" role="warning">
+    <sch:rule context="oscal:import">
+      <sch:assert test="not(resolve-uri(@href,document-uri(/)) = (../oscal:import except .)/resolve-uri(@href,document-uri(/)) )" role="warning">
         More than one invocation on authority <sch:value-of select="resolve-uri(@href,document-uri(/))"/> is PROBABLY NOT WHAT YOU WANT.
       </sch:assert>
       
@@ -52,14 +48,13 @@
       <sch:report role="warning" test="exists($explicit-calls[2]) and exists($excluded) and count($excluded) lt 4">This invocation could use include/all, excluding only <xsl:value-of select="$excluded/@id" separator=", "/> (instead of <sch:value-of select="count($explicit-calls)"/> include/call elements)</sch:report>
       <sch:report role="warning" test="exists($explicit-calls[2]) and empty($excluded)">This invocation could use include/all (instead of <sch:value-of select="count($explicit-calls)"/> include/call elements): it calls all the controls in <sch:value-of select="@href"/> without excluding any</sch:report>
       
+      <sch:let name="controls"    value="$resolved//(oscal:control | oscal:component[contains-token(@class,'control')] )"/>
+      <sch:let name="subcontrols" value="$resolved//(oscal:subcontrol | oscal:component[contains-token(@class,'subcontrol')] )"/>
       
-      <sch:let name="controls"            value="$resolved//(oscal:control | oscal:component[contains-token(@class,'control')] )"/>
-      <sch:let name="subcontrols"         value="$resolved//(oscal:subcontrol | oscal:component[contains-token(@class,'subcontrol')] )"/>
-      
-      <sch:let name="me" value="self::oscal:invoke"/>
-      <sch:let name="other-controls" value="../(oscal:invoke except $me)/oscal:resolve(.)//(oscal:control | oscal:component[contains-token(@class,'control')] )"/>
+      <sch:let name="me" value="self::oscal:import"/>
+      <sch:let name="other-controls" value="../(oscal:import except $me)/oscal:resolve(.)//(oscal:control | oscal:component[contains-token(@class,'control')] )"/>
       <sch:let name="other-subcontrols"
-        value="../(oscal:invoke except $me)/oscal:resolve(.)//(oscal:subcontrol | oscal:component[contains-token(@class,'subcontrol')] )"/>
+        value="../(oscal:import except $me)/oscal:resolve(.)//(oscal:subcontrol | oscal:component[contains-token(@class,'subcontrol')] )"/>
       
       <!--<sch:report test="true()">We have <xsl:value-of select="$resolved/name()" separator=", "/></sch:report>-->
       <sch:let name="contested" value="$controls[@id = $other-controls/@id] | $subcontrols[@id = $other-subcontrols/@id]"/>
@@ -68,8 +63,8 @@
       
     </sch:rule>
     
-    <sch:rule context="oscal:call | oscal:set-param | oscal:alter">
-      <sch:let name="authority-file" value="ancestor::oscal:invoke/@href"/>
+    <sch:rule context="oscal:call">
+      <sch:let name="authority-file" value="ancestor::oscal:import/@href"/>
       <sch:let name="authority"      value="document($authority-file)"/>
       <sch:let name="authority-type" value="$authority/local-name(*)"/>
       <sch:let name="authority-title" value="$authority/*/title"/>
@@ -80,8 +75,6 @@
       <!--<sch:let name="catalog" value="document($catalog-file)/oscal:catalog"/>-->
       <sch:assert test="empty(@control-id) or exists(key('element-by-id',@control-id,$resolved-invocation)/(self::oscal:control|self::oscal:component[contains-token(@class,'control')]) )">No control with @id '<sch:value-of select="@control-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
       <sch:assert test="empty(@subcontrol-id) or exists(key('element-by-id',@subcontrol-id,$resolved-invocation)/(self::oscal:subcontrol|self::oscal:component[contains-token(@class,'subcontrol')]))">no subcontrol with @id '<sch:value-of select="@subcontrol-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
-      <sch:assert test="empty(@param-id) or exists(key('element-by-id',@param-id,$resolved-invocation)/self::oscal:param)">No parameter with @id '<sch:value-of select="@param-id"/>' is found in referenced <sch:value-of select="$authority-type || ' ' || $authority-title"/> at '<sch:value-of select="$authority-file"/>'</sch:assert>
-      
       
       <!--<sch:assert test="empty(@control-id) or not(parent::oscal:exclude) or exists(../../oscal:include/oscal:all)">
         Control is excluded but it hasn't been included
