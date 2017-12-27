@@ -66,7 +66,7 @@
   <xsl:template match="import" mode="process-profile">
     <xsl:param name="so-far" as="document-node()"/>
     <xsl:variable name="imported">
-      <!-- Returns the imported profile or catalog, including only the designated controls. -->
+      <!-- Returns the imported profile or catalog, including only the designated controls. It will be a 'resolution' element or an ERROR.-->
       <xsl:apply-templates select="." mode="import"/>
     </xsl:variable>
     <!-- Returning $so-far, except with the imported / filtered catalog spliced in -->
@@ -94,7 +94,7 @@
   <!-- Mode 'import' manages importing controls from catalogs or upstream profiles -->
   <xsl:template match="import" mode="import">
     <xsl:param name="authorities-so-far" tunnel="yes" select="document-uri(/)" as="xs:anyURI+"/>
-    <xsl:variable name="invocation" select="."/>
+    <xsl:param name="invocation" tunnel="yes" select="."/>
     <!-- $authority will be a catalog, framework or profile. -->
     <xsl:variable name="authority"    select="document(@href,root(.))"/>
     <!-- $authorityURI is a full path not whatever relative form was used -->
@@ -194,6 +194,8 @@
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:attribute name="process-id" select="generate-id()"/>
+        <xsl:comment expand-text="true"> invoked by { $invocation/../title } { document-uri($invocation/root()) }
+        </xsl:comment>
         <xsl:apply-templates mode="#current"/>
       </xsl:copy>
     </xsl:if>
