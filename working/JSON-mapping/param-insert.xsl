@@ -23,32 +23,22 @@
         <xsl:apply-templates mode="oscal:resolve" select="document($resource-file)"/>
     </xsl:variable>
     
-    <xsl:key name="component-by-key" match="control | subcontrol | component" use="prop[@class='name']"/>
-    
-    <xsl:template match="profiles">
+    <xsl:template match="params">
         <xsl:copy>
-            <link rel="{$resource/name(*)}" href="{$resource-file}">
-                <xsl:value-of select="$resource/descendant::title[1]"/>
-            </link>
+        <xsl:variable name="resource-params" select="key('element-by-id',../components//link[@rel='satisfies']/replace(@href,'.*#',''),$resource)/param"/>
+        <xsl:apply-templates select="set-param | $resource-params">
+            <xsl:sort select="prop[@class='param-key'],../prop[@class='name']"/>
+        </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="part[@class='satisfies']">
-        <xsl:copy>
+    <xsl:template match="param">
+        <set-param>
             <xsl:copy-of select="@*"/>
-            <xsl:for-each select="prop[@class='control-name']">
-                <xsl:variable name="target" select="key('component-by-key',string(.),$resource)"/>
-                <link rel="satisfies" href="#{$target/@id}">
-                    <xsl:value-of select="$target/title"/>
-                </link>
-                <!--<prop class="{name($target)}-name">
-                    <xsl:value-of select="."/>
-                </prop>-->
-            </xsl:for-each>
             <xsl:apply-templates/>
-        </xsl:copy>
+        </set-param>
     </xsl:template>
     
-    <xsl:template match="prop[@class='control-name']"/>
+    
     
 </xsl:stylesheet>

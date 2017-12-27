@@ -33,12 +33,16 @@
     <xsl:template match="catalog">
                 <profile id="uuid-{uuid:randomUUID()}">
             <title xsl:expand-text="true">SP800-53 { $value } BASELINE IMPACT</title>
-            <invoke href="{replace(document-uri(/),'.*/','')}">
+            <import href="{replace(document-uri(/),'.*/','')}">
                 <include>
                     <xsl:apply-templates select="//control | //subcontrol" mode="write-call"/>
                 </include>
-            </invoke>
-            <xsl:apply-templates select="//control/param | //subcontrol/param" mode="param"/>
+            </import>
+            <xsl:for-each-group select="//control/param | //subcontrol/param" group-by="true()">
+                <modify>
+                    <xsl:apply-templates select="current-group()" mode="param"/>
+                </modify>
+            </xsl:for-each-group>
         </profile>
     </xsl:template>
     
@@ -63,7 +67,7 @@
     <xsl:template match="param" mode="param"/>
     
     <xsl:template match="control[prop[@class=$property]=$value]/param |
-                         subcontrol[prop[@class=$property]=$value]/param" mode="paramX">
+                         subcontrol[prop[@class=$property]=$value]/param" mode="param">
         <xsl:variable name="insertions" select="..//insert[@param-id=current()/@id]"/>
         <set-param param-id="{@id}">
             <xsl:comment expand-text="true"> inserted into {$insertions/(ancestor::part | ancestor::subcontrol | ancestor::control)[last()]/prop[@class='name']} </xsl:comment>
