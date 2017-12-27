@@ -90,17 +90,21 @@
     <xsl:sequence select="$so-far"/>
   </xsl:template>
   
-  
   <!-- Mode 'import' manages importing controls from catalogs or upstream profiles -->
-  <xsl:template match="import" mode="import">
+  <xsl:template match="import" mode="import oscal:resolve">
     <xsl:param name="authorities-so-far" tunnel="yes" select="document-uri(/)" as="xs:anyURI+"/>
-    <xsl:param name="invocation" tunnel="yes" select="."/>
+    
+    
+    <!--<xsl:param name="invocation" tunnel="yes" select="."/>-->
+    <xsl:variable name="invocation" select="."/>
+    
+    
     <!-- $authority will be a catalog, framework or profile. -->
     <xsl:variable name="authority"    select="document(@href,root(.))"/>
     <!-- $authorityURI is a full path not whatever relative form was used -->
     <xsl:variable name="authorityURI" select="document-uri($authority)"/>
     
-    <xsl:copy copy-namespaces="no">
+    <importing>
       <xsl:copy-of select="@href"/>
 
       <xsl:choose>
@@ -110,20 +114,22 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="." mode="report-invocation"/>
-          <!-- Switching documents - applying templates to the imported catalog or profile -->
-          <xsl:apply-templates select="$authority/*" mode="import">
-            <xsl:with-param name="invocation" tunnel="yes" select="$invocation"/>
+          
+          <!--    first we process ourselves with our own rules, returning a catalog, worksheet or (if a profile), a resolution. -->
+          <!-- then we filter the resolution using the new import -->
+          <xsl:variable name="interim">
+            <xsl:apply-templates select="$authority" mode="oscal:resolve"/>
+          </xsl:variable>
+          <!-- Next we apply templates in mode 'import', passing ourselves in as the invocation -->
+          <xsl:apply-templates select="$interim" mode="import">
+            <xsl:with-param name="invocation" tunnel="yes" select="."/>
             <xsl:with-param name="authorities-so-far" tunnel="yes" as="xs:anyURI+"
               select="$authorities-so-far, $authorityURI"/>
           </xsl:apply-templates>
-          <!--<xsl:apply-templates select="$authority/*" mode="filter-controls">
-          <xsl:with-param name="invocation" tunnel="yes" select="$invocation"/>
-          <xsl:with-param name="authorities-so-far" tunnel="yes" as="xs:anyURI+"
-            select="$authorities-so-far, $authorityURI"/>
-        </xsl:apply-templates>-->
+          <!--<xsl:copy-of  select="$interim"/>-->
         </xsl:otherwise>
       </xsl:choose>
-    </xsl:copy>
+    </importing>
   </xsl:template>
   
   <xsl:template match="import" mode="report-invocation">
@@ -134,22 +140,19 @@
     <!--<xsl:copy-of select="*"/>-->
   </xsl:template>
   
-  <xsl:template match="catalog | framework | worksheet" mode="import">
+  <xsl:template match="catalog | framework | worksheet | resolution" mode="import">
     <xsl:variable name="filtered-results">
-      <xsl:apply-templates select="title" mode="#current"/>
-      <xsl:apply-templates select="group | control | component" mode="#current"/>
+      <xsl:apply-templates select="*" mode="#current"/>
     </xsl:variable>
     <xsl:if test="exists($filtered-results/*)">
       <xsl:copy>
-        <xsl:attribute name="process-id" select="generate-id()"/>
         <xsl:sequence select="$filtered-results"/>
       </xsl:copy>
     </xsl:if>
   </xsl:template>
 
   <xsl:template match="profile" mode="import">
-    <!--<xsl:message terminate="yes">Bah! matched profile</xsl:message>-->
-    <xsl:apply-templates select="." mode="oscal:resolve"/>
+    <xsl:message terminate="yes">Bah! matched profile unexpectedly</xsl:message>
   </xsl:template>
   
   <xsl:template match="section" mode="import"/>
@@ -193,7 +196,6 @@
     <xsl:if test="($included or $called) and not($excluded)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
-        <xsl:attribute name="process-id" select="generate-id()"/>
         <xsl:comment expand-text="true"> invoked by { $invocation/../title } { document-uri($invocation/root()) }
         </xsl:comment>
         <xsl:apply-templates mode="#current"/>
@@ -220,7 +222,6 @@
     <xsl:if test="($included or $called) and not($excluded)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
-        <xsl:attribute name="process-id" select="generate-id()"/>
         <xsl:apply-templates mode="#current"/>
       </xsl:copy>
     </xsl:if>
@@ -247,9 +248,14 @@
     </xsl:for-each>
   </xsl:template>
   
+  <xsl:function name="oscal:group-signature" as="xs:string">
+    <xsl:param name="who"/>
+    <xsl:value-of select="string-join((local-name($who),$who/title,$who/prop[@class='name']),'|')"/>
+  </xsl:function>
+  
   <xsl:template name="merge-groups">
     <xsl:param name="groups" select="()"/>
-    <xsl:for-each-group select="$groups" group-by="@process-id">
+    <xsl:for-each-group select="$groups" group-by="oscal:group-signature(.)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:apply-templates select="current-group()/(* except group)" mode="merge-enhance">
@@ -278,11 +284,10 @@
       <xsl:apply-templates mode="#current"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template mode="filter-merge" match="@process-id"/>
   
-  <!--<xsl:template match="control | subcontrol | component" mode="filter-merge">
+  <xsl:template match="control | subcontrol | component" mode="filter-merge">
     <xsl:copy-of select="."/>
-  </xsl:template>-->
+  </xsl:template>
   
   <xsl:template match="*" mode="filter-merge">
     <xsl:variable name="dibs" select="preceding-sibling::*[deep-equal(.,current())]"/>
