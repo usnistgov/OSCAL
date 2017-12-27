@@ -8,6 +8,8 @@
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
     exclude-result-prefixes="xs math oscal xsi"
     version="3.0">
+
+    <xsl:output indent="yes"/>
     
     <xsl:mode on-no-match="shallow-copy"/> 
     
@@ -30,7 +32,7 @@
             <xsl:apply-templates select="@*"/>
             <xsl:attribute xmlns:uuid="java:java.util.UUID" name="id" select="'uuid-' || uuid:randomUUID()"/>
             <xsl:apply-templates/>
-            <xsl:if test="exists(invoke/(set-param | alter))">
+            <xsl:if test="exists(invoke//(param | set-param | alter))">
                 <modify>
                     <xsl:apply-templates select="invoke" mode="modifications"/>
                 </modify>
@@ -45,16 +47,25 @@
         </import>
     </xsl:template>
     
-    <xsl:template match="invoke/set-param | invoke/alter"/>
+    <xsl:template match="invoke/set-param | invoke//alter | invoke//param"/>
     
-    <xsl:template match="invoke/comment() | invoke/text()">
+    <xsl:template match="invoke//comment() | invoke//text()">
         <xsl:if test="exists(following-sibling::include | following-sibling::exclude)">
             <xsl:next-match/>
         </xsl:if>
     </xsl:template>
     
     <xsl:template match="invoke" mode="modifications">
-        <xsl:copy-of select="(include|exclude)[last()]/following-sibling::node()" copy-namespaces="no"/>
+        <xsl:apply-templates select="(include|exclude)[last()]/following-sibling::node()" mode="modifications"/>
+    </xsl:template>
+    
+    <xsl:mode name="modifications" on-no-match="shallow-copy"/>
+
+    
+    <xsl:template match="param" mode="modifications">
+        <set-param>
+            <xsl:apply-templates select="@*|node()" mode="modifications"/>
+        </set-param>
     </xsl:template>
     
 </xsl:stylesheet>

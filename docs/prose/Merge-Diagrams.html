@@ -154,9 +154,11 @@
                 <h3>Each import calls a catalog or profile</h3>
                 <p>An import is bound to a single catalog or profile, its <q>resource</q>, by URI.
                     If the resource is an OSCAL profile, it is implicitly resolved (with its own
-                    imports and modification) according to these same rules. Because profiles must
-                    be bound to either catalogs, or profiles and because circular references are
-                    inoperable (see below), all profiles resolve eventually to catalogs.</p>
+                    imports and modification) according to these rules. Because profiles must be
+                    bound to either catalogs or profiles, and because circular references are
+                    inoperable (see below), all profiles resolve eventually to collections of
+                    controls as represented in catalogs (including the empty collection, i.e. no
+                    controls).</p>
                 <p>References to URI targets not identifiable as OSCAL
                 (catalogs, profiles or document types tbd with resolution rules of their own) must return nothing.</p>
                 <p>Note that the same catalog may appear at multiple <q>leaf</q> positions in the
@@ -507,12 +509,10 @@
             <p>Because each subcontrol is dependent on a control and may not appear without it,
                 there are special features for the selection and exclusion of subcontrols.</p>
             <p>Note that this dependency is strict and applies to subcontrols and controls as named
-                within the same import tree. That is, it is not possible for a profile to select (or
-                modify) subcontrols specified elsewhere in an import tree (if, for example, they
-                have been excluded earlier) if their controls are not included (explicitly or
-                implicitly) within the same profile (i.e. within the control set dictated by that
-                profile). When controls however, are included, their subcontrols may also be
-                included either by ID or other means as described.</p>
+                within the same import tree. That is, it is not possible for a profile to select
+                subcontrols without their controls, within a single import. When controls however,
+                are included, their subcontrols may also be included either by ID or other means as
+                described.</p>
             <section>
                 <h3>Selecting subcontrols by ID</h3>
                 <p>Subcontrols are <i>not</i> included by default when their controls are included. However, like controls they may be included by ID.</p>
