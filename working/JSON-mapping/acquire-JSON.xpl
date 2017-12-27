@@ -8,10 +8,14 @@
   type="oscal:sp800-53-rev4-extraction" name="sp800-53-rev4-extraction">
   
   <p:option name="json-file"/>
+  <p:option name="resource-file" select="'file:/home/wendell/Documents/OSCAL/examples/FedRAMP/FedRAMP-MODERATE-crude.xml'"/>
   
   <!-- We have no source document since the XML is produced by Saxon. -->
   <p:input port="parameters" kind="parameter"/>
   
+  <p:output port="_000_resolved-resource" primary="false">
+    <p:pipe port="result" step="resolve-resource"/>
+  </p:output>
   <p:output port="_100_exposed" primary="false">
     <p:pipe port="result" step="xpath-results"/>
   </p:output>
@@ -26,6 +30,9 @@
   </p:output>
   <p:output port="_410_linked" primary="false">
     <p:pipe port="result" step="linked"/>
+  </p:output>
+  <p:output port="_420_amended" primary="false">
+    <p:pipe port="result" step="amended"/>
   </p:output>
   <p:output port="_500_analyzed" primary="false">
     <p:pipe port="result" step="analyzed"/>
@@ -43,15 +50,27 @@
    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">-->
   <!--<p:serialization port="markdown"     indent="false" method="text"/>-->
   
+  <p:serialization port="_000_resolved-resource" indent="true"/>
   <p:serialization port="_100_exposed"  indent="true"/>
   <p:serialization port="_200_mapped"   indent="true"/>
   <p:serialization port="_300_refined"  indent="true"/>
   <p:serialization port="_400_enhanced" indent="true"/>
   <p:serialization port="_410_linked"   indent="true"/>
+  <p:serialization port="_420_amended"  indent="true"/>
   <p:serialization port="_500_analyzed" indent="true"/>
   
-  <!-- Expands the profile into a nominal framework -->
-  <!--<p:identity name="resolved"/>-->
+  <p:load>
+    <p:with-option name="href" select="$resource-file"/>
+  </p:load>
+  
+  <p:xslt name="resolve-resource">
+    <p:input port="stylesheet">
+      <p:document href="../lib/XSLT/profile-resolver.xsl"/>
+    </p:input>
+  </p:xslt>
+  
+  <p:sink/>
+  
   <p:xslt name="xpath-results">
     <p:input port="source">
       <p:inline><stub/></p:inline>
@@ -85,6 +104,14 @@
     <p:input port="stylesheet">
       <p:document href="index-to-catalog.xsl"/>
     </p:input>
+    <p:with-param name="resource-file" select="$resource-file"/>
+  </p:xslt>
+  
+  <p:xslt name="amended">
+    <p:input port="stylesheet">
+      <p:document href="param-insert.xsl"/>
+    </p:input>
+    <p:with-param name="resource-file" select="$resource-file"/>
   </p:xslt>
   
   <p:xslt name="analyzed">

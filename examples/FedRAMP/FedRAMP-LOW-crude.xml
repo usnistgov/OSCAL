@@ -135,7 +135,9 @@
          <call subcontrol-id="ca.2.1."/>
          <call control-id="si.16"/>
       </include></import>
-<modify>
+   
+   <merge/>
+   <modify>
       <!-- - - - - - -->
       <set-param param-id="ac-1_a">
          <desc>organization-defined personnel or roles</desc>
