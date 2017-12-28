@@ -5,6 +5,8 @@ TBD: Show prose examples of an 800-53 control and a related control from another
 
 TBD: Use the prose examples to illustrate what a subcontrol is. A subcontrol is very similar to a control in its composition, but a subcontrol always extends a control and is dependent on that control. 
 
+TBD: Should we remove any references to elements, attributes, etc. and make the narrative abstract? Talk about what an OSCAL control includes instead of what an OSCAL control element includes? Talk about content instead of its format, structure, etc.?
+
 ## The control element
 Each control element defines a single security or privacy control. A control element may contain the following:
 * A title (optional) for the control
