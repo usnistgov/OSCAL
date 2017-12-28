@@ -3,6 +3,22 @@ In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set o
 
 TBD: Show prose examples of an 800-53 control and a related control from another catalog. Illustrate the differences in the controls themselves and the terminology used for the parts of their definitions.
 
+TBD: Use the prose examples to illustrate what a subcontrol is. A subcontrol is very similar to a control in its composition, but a subcontrol always extends a control and is dependent on that control. 
+
 ## The control element
+Each control element defines a single security or privacy control. A control element may contain the following:
+* A title (optional) for the control
+* Subcontrols and/or control components (both optional)
+* References (optional)
+* Unique identifier for the control (mandatory) (unique only within the catalog?)
+* optionalClass (?) (mandatory?)
 
+## The subcontrol element
+contains a control extension, enhancement, or associated or dependent control object. Similar composition to the control element, except it may not contain subcontrol elements.
 
+## The control-components element
+Each control-components element TBD. It may contain any number of the following:
+* prop. A property is a value with a name attributed to the containing control, subcontrol, component, part, or group.
+* anyKindofPart. This contains any number of part elements. Each part is a partition, piece or section of a control, subcontrol, component, or part.
+* link. A link is a line or paragraph containing a hypertext link.
+* param. This is a parameter setting to be propagated to points of insertion.
