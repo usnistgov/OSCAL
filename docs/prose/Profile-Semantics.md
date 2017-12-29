@@ -18,7 +18,7 @@ We have an implementation of these specifications in XSLT, which serves as a poi
 
 ## Terms of art
 
-A **control** is a structured data object. Controls have arbitrary contents, which must be passed through unchanged except where these semantics depict modifications to them. A **subcontrol** is a special kind of control, in a fixed relation to another control (which it "extends"), but like controls in all other respects. A subcontrol will always be dependent on a control, never on another subcontrol. While a control may have any number of subcontrols associated (or none), a subcontrol is associated directly (extends) only a single control. In these specifications, controls and subcontrols are together described as *components* (of a catalog or of a profile invoking a catalog). Generally speaking, controls and subcontrols are interchangeable in these specifications (and work the same way in implementation) with the proviso that a subcontrol will never appear in a catalog or profile without its control also appearing.
+A **control** is a structured data object. Controls have arbitrary contents, which must be passed through unchanged except where these semantics depict modifications to them. A **subcontrol** is a special kind of control, in a fixed relation to another control (which it "extends"), but like controls in all other respects. While a control may have any number of subcontrols associated (or none), a subcontrol is associated directly (extends) only a single control. In these specifications, controls and subcontrols are together described as *components* (of a catalog or of a profile invoking a catalog). Generally speaking, controls and subcontrols are interchangeable in these specifications (and work the same way in implementation) with the proviso that a subcontrol will never appear in a catalog or profile without its control also appearing.
 
 Controls and subcontrols are addressable within their catalogs by means of unique identifiers.  Note in particular that often, catalogs will present controls with a range of controlled values, any number of which may be validated as unique to that control. Only one of these will be the ID in the model. (In XML, the `@id` is used. For interchange with XML systems it is recommended that these values conform to the 'name' production rules, i.e. alphanumerics, no spaces, not beginning with digits.)
 
@@ -49,7 +49,7 @@ Expected/okay:
 
 Described here:
 
-* Invocation (of authorities) and selection (of controls and subcontrols)
+* Import (of sources or resources) and selection (of controls and subcontrols)
 * Merging - how these control sets are organized in the resolved profile
 * Modification - how parameters are set, their values inserted, and patches applied
 
@@ -117,17 +117,11 @@ This snapshot will show a *copy* of the catalog with the following modifications
 
 More info here: [Profile Invocation Merge Diagrams](Merge-Diagrams.html)
 
-(NB: Merge Diagrams might be expanded to show error conditions described above.)
+It is noteworthy that this organization, while it has the advantage of low information loss, will not be ideal for many purposes. Accordingly, an additional **merge** step may be performed.
 
-#### notes on merge
+In this context, to "merge" means to collapse a "multiply refracted" combination of views on a single catalog (made by assembling disparate profiles into a profile), into a single integrated view.
 
-Beyond this "set of branched views", an improved merger might well be specified, depending on the needs of users, for example to collapse a "multiply refracted" combination of views on a single catalog (made by assembling disparate profiles into a profile), into a single integrated view. Inasmuch as this is straightforwardly achievable (if nothing else) as a post-process, that operation is outside the scope of profile resolution as such.
-
-This specification does not require that an implementation actually produce or generate the merged result described here in any form, and does not dictate a format for its maintenance or exchange of merged results. The abstract model here is intended instead to define the scope (and limits) of OSCAL processing as it concerns "resolution".
-
-Simultaneously we recognize that a schema describing a format implied by this specification, could be fairly readily developed as an extension of OSCAL (catalog and profile) tagging. Such a schema is left (at least for now) for implementors and/or communities. (We are deliberately not "closing the loop" here.)
-
-There are and will be many ways of representing the *results* of OSCAL-based processes, "synthetic", "synoptic", "merged", "resolved", "reduced" etc, and this specification should not be taken to constrain them. Accordingly, the merge semantics described here are intended to provide the *minimum* sufficient for achieving the goal of referential integrity (with regard to persistence, dependability and traceability) of references within OSCAL, across arbitrary catalogs, profiles, control sets and control types, according to the needs of and accommodating both stable and persistent artifacts (such as catalogs), and very temporary or ephemeral organizations of data (such as the results of profile processing may sometimes be) -- all potentially relating in complex ways to one another (at higher semantic layers). If a resolved profile is considered as having the organization, after selection and merger of its controls, described here, then further refinements and resolutions can be accomplished in subsequent processing (which is indeed, in the general case, also dependent on something like the first steps described here). But architects and developers should regard the merge behaviors described here as necessary, but not necessarily sufficient, for viable implementations.
+This operation is provided as an *optional* step.
 
 * A profile with more than one import, resolves them separately. Invocations are resolved separately within a profile.
 * Recursive profile resolution is reflected in the import hierarchy
