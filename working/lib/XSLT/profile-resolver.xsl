@@ -12,15 +12,22 @@
   
   <xsl:output indent="yes"/>
 
-  <xsl:mode name="#default"        on-no-match="shallow-copy"/>
+  <xsl:mode name="#default"      on-no-match="shallow-copy"/>
   
-  <xsl:mode name="oscal:resolve"   on-no-match="shallow-copy"/>
+  <xsl:mode name="oscal:resolve" on-no-match="shallow-copy"/>
   
-  <xsl:mode name="copy"            on-no-match="shallow-copy"/>
+  <xsl:mode name="copy"          on-no-match="shallow-copy"/>
   
-  <!-- XXX -->
-  <xsl:mode name="import"  on-no-match="shallow-copy"/>
-  <xsl:mode name="include" on-no-match="fail"/>
+  <xsl:mode name="import"        on-no-match="shallow-copy"/>
+  
+  <!-- 'filter-merge' mode post-processes merged results to remove duplicated data -->
+  <xsl:mode name="filter-merge" on-no-match="shallow-copy"/>
+  
+  <!-- Extension point for merge-time enhancement here recording import provenance (otherwise lost in merge) -->
+  <xsl:mode name="merge-enhance" on-no-match="shallow-copy"/>
+  
+  <xsl:mode name="patch"         on-no-match="shallow-copy"/>
+  
   
 <!-- Presumes new model (import*, merge? modify)
   1. Test import* across multiple deep imports
@@ -268,10 +275,6 @@
     </xsl:for-each-group>
   </xsl:template>
 
-  <xsl:mode name="filter-merge" on-no-match="shallow-copy"/>
-  
-  <xsl:mode name="merge-enhance" on-no-match="shallow-copy"/>
-  
   <xsl:template mode="merge-enhance" match="control | subcontrol | component">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -299,7 +302,56 @@
     </xsl:if>
   </xsl:template>
     
-    
+  
+  <!-- Next, matching 'modify' - we pass the 'resolution' document into a filter that
+       rewrites parameter values and patches controls, wrt the stipulated modifications. -->
+
+  <!-- TODO Adds patches, replacing parameter and control contents. -->
+  <xsl:template match="modify" mode="process-profile">
+    <xsl:param name="so-far"/>
+    <xsl:apply-templates select="$so-far" mode="patch">
+      <xsl:with-param name="modifications" tunnel="yes" select="."/>
+    </xsl:apply-templates>
+  </xsl:template>
+  
+  <xsl:template match="control | subcontrol | component" mode="patch">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates mode="#current"/>
+      <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/augment/*"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <!-- When a catalog is filtered through a profile, its parameters are overwritten
+       by parameters passed in from the invocation. -->
+  <xsl:template match="param/value" mode="patch">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
+  </xsl:template>
+  
+  <xsl:template match="param/desc" mode="filter-controls">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
+  </xsl:template>
+  
+  
+  <xsl:template match="control/* | subcontrol/* | component/*" mode="patch">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <!-- boolean comes back as true() if a 'remove' element in the invocation matches
+         by id of the parent and class of the matching component -->
+    <xsl:variable name="remove_me" select="key('alteration-by-target',../@id,$modifications)/remove/@targets/tokenize(.,'\s+') = oscal:classes(.)"/>
+    <xsl:if test="not($remove_me)">
+      <xsl:next-match/>
+    </xsl:if>
+  </xsl:template>
+  
+  
+  <xsl:key name="param-settings" match="oscal:set-param" use="@param-id"/>
+  
+  <xsl:key name="alteration-by-target" match="alter" use="@control-id | @subcontrol-id"/>
+  
+
 <!-- Service functions: provided for Schematron etc. -->
   <!-- Returns a set of controls or components marked as controls for a profile. -->
   <xsl:function name="oscal:resolved-controls" as="element()*">
@@ -379,40 +431,7 @@
     </xsl:apply-templates>-->
   </xsl:template>
   
-  <xsl:template match="control | subcontrol | component" mode="augment">
-    <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
-    
-    <xsl:copy-of select="key('alteration-by-target',@id,$invocation)/augment/*"/>
-  </xsl:template>
   
-  <!-- When a catalog is filtered through a profile, its parameters are overwritten
-       by parameters passed in from the invocation. -->
-  <xsl:template match="param/value" mode="filter-controls">
-    <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
-    <xsl:copy-of select="(key('param-settings',parent::param/@id,$invocation)/value,.)[1]"/>
-  </xsl:template>
-  
-  <xsl:template match="param/desc" mode="filter-controls">
-    <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
-    <xsl:copy-of select="(key('param-settings',parent::param/@id,$invocation)/desc,.)[1]"/>
-  </xsl:template>
-  
-  
-  <xsl:template match="control/* | subcontrol/* | component/*" mode="filter-controls">
-    <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
-    <!-- boolean comes back as true() if a 'remove' element in the invocation matches
-         by id of the parent and class of the matching component -->
-    <xsl:variable name="remove_me" select="key('alteration-by-target',../@id,$invocation)/remove/@targets/tokenize(.,'\s+') = oscal:classes(.)"/>
-    <xsl:if test="not($remove_me)">
-      <xsl:next-match/>
-    </xsl:if>
-    
-  </xsl:template>
-  
-    
-    <xsl:key name="param-settings" match="oscal:set-param" use="@param-id"/>
-    
-    <xsl:key name="alteration-by-target" match="alter" use="@control-id | @subcontrol-id"/>
     
   </oscal:hide-code>
   
