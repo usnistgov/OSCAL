@@ -159,8 +159,8 @@
                     inoperable (see below), all profiles resolve eventually to collections of
                     controls as represented in catalogs (including the empty collection, i.e. no
                     controls).</p>
-                <p>References to URI targets not identifiable as OSCAL
-                (catalogs, profiles or document types tbd with resolution rules of their own) must return nothing.</p>
+                <p>References to URI targets not identifiable as OSCAL (catalogs, profiles or
+                    document types tbd with resolution rules of their own) must return nothing.</p>
                 <p>Note that the same catalog may appear at multiple <q>leaf</q> positions in the
                     import tree.</p>
                 <figure>
@@ -263,7 +263,6 @@
                     <div class="catalog">
                         <span>AA Controls Catalog</span>
                         <div class="group">
-                            
                             <p>Control AA.1</p>
                             <p>Control AA.2</p>
                             <p>Control AA.3</p>
@@ -403,7 +402,6 @@
                     <div class="catalog">
                         <span>AA Controls Catalog</span>
                         <div class="group">
-                            
                             <p>Control AA.1</p>
                             <p>Control AA.2</p>
                             <p>Control AA.3</p>
@@ -441,7 +439,6 @@
                     <div class="catalog">
                         <span>AA Controls Catalog</span>
                         <div class="group">
-                            
                             <p>Control AA.1</p>
                             <p>Control AA.2</p>
                             <p>Control AA.3</p>
@@ -515,11 +512,11 @@
                 described.</p>
             <section>
                 <h3>Selecting subcontrols by ID</h3>
-                <p>Subcontrols are <i>not</i> included by default when their controls are included. However, like controls they may be included by ID.</p>
+                <p>Subcontrols are <i>not</i> included by default when their controls are included.
+                    However, like controls they may be included by ID.</p>
                 <figure><div class="catalog">
                         <span>BBB Controls Catalog</span>
                         <div class="group">
-                            
                             <p>Control BBB.1</p>
                             <p class="subcontrol">Subcontrol BBB.1a</p>
                             <p class="subcontrol">Subcontrol BBB.1b</p>
@@ -533,7 +530,7 @@
                     </div>
                     <div class="profile">
                         <span>Profile of BBB Catalog</span>
-                    <div class="import">
+                        <div class="import">
                             <span>Import BBB Catalog</span>
                             <p class="include">Control BBB.1</p>
                             <p class="include">Control BBB.3</p>
@@ -662,7 +659,12 @@
             </section>
             <section>
                 <h3>Exception: including or excluding a subcontrol without its control</h3>
-                <p>An instruction to include a subcontrol without its control is inoperable. A
+                <p>XXX ISSUE - related to below (subcontrols must be imported with controls)</p>
+                <p>If a subcontrol is included, its control will be implicitly included if it is not
+                    explicitly included. Such an implicit inclusion of a control should be taken to
+                    have a <code>@with-subcontrols</code> "no", that is only subcontrols that are
+                    actually called, come with such a control.</p>
+                <p>Was: An instruction to include a subcontrol without its control is inoperable. A
                     system may produce a warning when this occurs. In the resolved profile, the
                     included subcontrol will not appear.</p>
                 <p>Similarly, an instruction to exclude a subcontrol, whose control is not included
@@ -686,6 +688,8 @@
                                 <span>BBB Controls Catalog</span>
                                 <div class="group">
                                     <p>Control BBB.1</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3a</p>
                                 </div>
                             </div>
                         </div>
@@ -1216,9 +1220,12 @@
             </section>
             <section>
                 <h3>Exception: subcontrols must go with controls in the same import</h3>
-                <p>It is not possible to include or exclude subcontrols, whose control is not
-                    included in the same import. Such a subcontrol is inoperable, even if the
-                    control is included in a different import.</p>
+                <p>XXX ISSUE - we appear to have at least one real-world use case for a subcontrol
+                    reference without a control reference, when a control has already been included
+                    from another resource and only needs to be "amended" with additional
+                    subcontrols. (e.g. in FedRAMP Moderate, when it includes subcontrols additional
+                    to those in its primary resource) we need to revisit this XXX</p>
+                <p></p>
                 <figure><div class="profile">Zelda Profile<div class="import">
                             <span>Import AA Catalog</span>
                             <p class="include">Control AA.2</p>
@@ -1249,5 +1256,22 @@
                     </div></figure>
             </section>
         </section>
+        <section><h2>Modification</h2><p><q>Modification</q> permits further configuration of
+                profiles in two ways: parameters that are declared in catalogs, may be set (in
+                either or both values, and descriptions); or controls may be modified directly
+                    (<em>altered</em>). Parameters are a mechanism used in SP800-53 (and possibly
+                other catalog types) for dynamic assignment of values to settings defined in
+                catalogs. A profile may (and is often expected to) provide values to parameters
+                stipulated in controls; additionally the profiling mechanism allows parameter
+                    <em>descriptions</em> to be written over, a feature of particular use when
+                making profiles that are expected to be further profiled at higher "layers" (which
+                can then seen the emended or augmented description as well as any nominal default
+                value).</p>Parameters are a minimal intervention. Arbitrary modifications of control
+            and subcontrols contents can also be provided for using a more general-purpose
+                <code>alter</code>elements.<section>
+                <h3>Parameters</h3>
+            </section><section>
+                <h3>Alterations</h3>
+            </section></section>
     </body>
 </html>
