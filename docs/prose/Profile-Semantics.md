@@ -97,6 +97,8 @@ We do not yet support selection of controls by other criteria such as context/or
 
 ### Merge (Combination)
 
+XXX NB wondering if we shouldn't simplify by specifying no hierarchy until later - so, not a merge, but a build XXX
+
 In profile resolution, a "view" is provided of *each* resource (profile or catalog) invoked by a profile, which preserves information regarding the import including the structural relations (groupings) among controls selected by it. Because multiple imports may trace back through several import steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
 
 Note that since profiles can invoke profiles, the views of imports may be nested, as many layers deep as it takes to get back to a catalog. Also, because profiles may invoke controls from more than a single upstream resource (catalog or profile), views will contain multiple views, in a branching structure. Occasionally, views within views will point to the same source catalogs as other views (within views); this will happen both in error, and as a feature. In any case it will sometimes be valuable or useful information, to know not only that a control was included but *how* it was included -- its provenance of import.
@@ -129,18 +131,10 @@ This operation is provided as an *optional* step.
 * Among controls selected in an import, a catalog's grouping organization is retained
 * Because selection can occur at any level of profiling, distinct import pathways (each subsetting controls and/or adding branches of their own) will result in very different representations of "fragmented groupings" of control catalogs. Unless these actually select the same controls, this is not necessarily an error. Where they do, they expose issues to be resolved. This occurrence above all should be exposed while being flagged as an error. 
 
-### Customization (Patch/parameters)
+### Modification
 
 The matching/selection logic of patches described in this spec is in DRAFT form, inasmuch as we expect (hope) to define more flexible and powerful mechanism in a future sprint.
 
-import - selects controls to include in (resolved) profile
-             (all hierarchy is preserved)
-merging    - how to deal with conflicts and duplicates and their order/hierarchy
-customization (patching/parameters)
+Currently, two distinct types of modification are supported: setting parameters (values, default values, descriptions); and direct modification ("patching") of controls and subcontrols. A small set of element types are provided to support the latter, including directives for deleting contents and adding new contents to the control or subcontrol.
 
-rules for import how does it work?
-
-schema for target format is NOT explicit
-
-describe this abstracted away from the XML
-
+See the Tag Library for more on elements `alter`, `remove` and `augment` when used inside `modify`. See the Mini Testing samples for examples.

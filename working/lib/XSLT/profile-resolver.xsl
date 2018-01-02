@@ -86,12 +86,6 @@
     </xsl:for-each>
   </xsl:template>
   
-  <!-- TODO Adds patches, replacing parameter and control contents. -->
-  <xsl:template match="modify" mode="process-profile">
-    <xsl:param name="so-far"/>
-    <xsl:sequence select="$so-far"/>
-  </xsl:template>
-  
   <xsl:template match="*" mode="process-profile">
     <xsl:param name="so-far"/>
     <xsl:sequence select="$so-far"/>
