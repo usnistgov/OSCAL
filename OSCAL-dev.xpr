@@ -14,6 +14,51 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
+                                    <String>working/JSON-mapping/docker-ee-opencontrol-moderate-ato-oscal.json</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run this JSON file through Acquisition</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/JSON-mapping/acquire-JSON.xpl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run sample JSON file through Acquisition</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>working/JSON-mapping/index-to-catalog.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Run sample JSON file through Acquisition</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XPROC</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
                                     <String>examples/mini-testing/31_patched-messy-profile.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -104,36 +149,6 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>working/JSON-mapping/acquire-JSON.xpl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run sample JSON file through Acquisition</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/JSON-mapping/docker-ee-opencontrol-moderate-ato-oscal.json</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run this JSON file through Acquisition</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
                                     <String>examples/FedRAMP/FedRAMP-HIGH-crude.xml</String>
                                 </field>
                                 <field name="scenarioIds">
@@ -204,21 +219,6 @@
                                 <field name="scenarioTypes">
                                     <list>
                                         <String>XSL</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>working/JSON-mapping/index-to-catalog.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Run sample JSON file through Acquisition</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XPROC</String>
                                     </list>
                                 </field>
                             </scenarioAssociation>
@@ -3765,6 +3765,39 @@
                                                 <Boolean>true</Boolean>
                                             </field>
                                         </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_000_resolved-resource</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_410_linked</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
+                                        <xprocOutputPort>
+                                            <field name="portName">
+                                                <String>_420_amended</String>
+                                            </field>
+                                            <field name="url">
+                                                <null/>
+                                            </field>
+                                            <field name="showInSequenceView">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                        </xprocOutputPort>
                                     </xprocOutputPort-array>
                                 </field>
                                 <field name="xprocOptions">
@@ -3778,6 +3811,17 @@
                                             </field>
                                             <field name="value">
                                                 <String>${currentFileURL}</String>
+                                            </field>
+                                        </xprocOption>
+                                        <xprocOption>
+                                            <field name="namespaceURI">
+                                                <String></String>
+                                            </field>
+                                            <field name="localName">
+                                                <String>resource-file</String>
+                                            </field>
+                                            <field name="value">
+                                                <String>file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml</String>
                                             </field>
                                         </xprocOption>
                                     </xprocOption-array>

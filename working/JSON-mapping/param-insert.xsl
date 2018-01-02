@@ -34,11 +34,13 @@
     
     <xsl:template match="param">
         <set-param>
-            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates select="@*"/>
             <xsl:apply-templates/>
         </set-param>
     </xsl:template>
     
-    
+    <xsl:template match="param/@id">
+        <xsl:attribute name="param-id" select="."/>
+    </xsl:template>
     
 </xsl:stylesheet>

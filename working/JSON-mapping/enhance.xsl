@@ -43,6 +43,22 @@
         </p>
     </xsl:template>
     
+    <xsl:template match="part[matches(id,'\S')]">
+        <part id="{id}">
+            <xsl:apply-templates/>
+        </part>
+    </xsl:template>
+    
+    <xsl:template match="part/id"/>
+    
+    <xsl:template match="url">
+        <link><xsl:apply-templates/></link>
+    </xsl:template>
+
+    <!--<xsl:template match="p[@class='narrative']/text()">
+        <xsl:value-of select="replace(.,'^''','') => replace('''\s*$','')"/>
+    </xsl:template>-->
+    
     <xsl:variable name="tlds"         as="xs:string" expand-text="true">(com|org|net|gov|mil|edu|io|foundation)</xsl:variable>
     <xsl:variable name="urlchar"      as="xs:string" expand-text="true">[\w\-_\.]</xsl:variable>
     <xsl:variable name="extraURLchar" as="xs:string">[\w\-\$:;/:@&amp;=+,_]</xsl:variable>
