@@ -1,5 +1,10 @@
 # OSCAL Controls
-In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. Although this is based on the NIST Special Publication (SP) 800-53 definition of "control", its meaning has been broadened to encompass safeguards and countermeasures regardless of the level of detail used to define them and the types of information their definitions contain.
+In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures," but most are considerably more complicated. Here's an example of a control from NIST Special Publication (SP) 800-53 Revision 4:
+
+![800-53Rev4AC1](/docs/prose/NIST-SP-800-53-Rev4-AC1.png "NIST SP 800-53 Rev 4 AC-1")
+
+This control has seven high-level components, including a security control identifier ("AC-1"), a title ("ACCESS CONTROL POLICY AND PROCEDURES"), the control itself, supplemental guidance, control enhancements, references, and a priority and baseline allocation. In contrast to this prose-based control, a similar control from the Cloud Security Alliance (CSA) Cloud Controls Matrix (CCM) on user access policies and procedures (control ID number IAM-02) is defined in 53 components within a spreadsheet. *** pick up here. add link to IAM-02 graphic. ***
+
 
 TBD: Show prose examples of an 800-53 control and a related control from another catalog. Illustrate the differences in the controls themselves and the terminology used for the parts of their definitions.
 
