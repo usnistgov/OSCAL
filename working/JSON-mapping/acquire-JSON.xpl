@@ -6,8 +6,12 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   type="oscal:sp800-53-rev4-extraction" name="sp800-53-rev4-extraction">
+
+  <!-- Experimental pipeline rendering 'OpenControl Implementation' JSON into an OSCAL format. -->
+  <!-- Use //p:xslt/p:*[@port='stylesheet']/*/@href to see the XSLT steps -->
   
   <p:option name="json-file"/>
+  <!-- Later steps perform lookup in an external resource. -->
   <p:option name="resource-file" select="'file:/home/wendell/Documents/OSCAL/examples/FedRAMP/FedRAMP-MODERATE-crude.xml'"/>
   
   <!-- We have no source document since the XML is produced by Saxon. -->
@@ -16,25 +20,25 @@
   <p:output port="_000_resolved-resource" primary="false">
     <p:pipe port="result" step="resolve-resource"/>
   </p:output>
-  <p:output port="_100_exposed" primary="false">
+  <p:output port="_100_exposed"           primary="false">
     <p:pipe port="result" step="xpath-results"/>
   </p:output>
-  <p:output port="_200_mapped" primary="false">
+  <p:output port="_200_mapped"            primary="false">
     <p:pipe port="result" step="mapped"/>
   </p:output>
-  <p:output port="_300_refined" primary="false">
+  <p:output port="_300_refined"           primary="false">
     <p:pipe port="result" step="refined"/>
   </p:output>
-  <p:output port="_400_enhanced" primary="false">
+  <p:output port="_400_enhanced"          primary="false">
     <p:pipe port="result" step="enhanced"/>
   </p:output>
-  <p:output port="_410_linked" primary="false">
+  <p:output port="_410_linked"            primary="false">
     <p:pipe port="result" step="linked"/>
   </p:output>
-  <p:output port="_420_amended" primary="false">
+  <p:output port="_420_amended"           primary="false">
     <p:pipe port="result" step="amended"/>
   </p:output>
-  <p:output port="_500_analyzed" primary="false">
+  <p:output port="_500_analyzed"          primary="false">
     <p:pipe port="result" step="analyzed"/>
   </p:output>
   
@@ -50,14 +54,14 @@
    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">-->
   <!--<p:serialization port="markdown"     indent="false" method="text"/>-->
   
-  <p:serialization port="_000_resolved-resource" indent="true"/>
-  <p:serialization port="_100_exposed"  indent="true"/>
-  <p:serialization port="_200_mapped"   indent="true"/>
-  <p:serialization port="_300_refined"  indent="true"/>
-  <p:serialization port="_400_enhanced" indent="true"/>
-  <p:serialization port="_410_linked"   indent="true"/>
-  <p:serialization port="_420_amended"  indent="true"/>
-  <p:serialization port="_500_analyzed" indent="true"/>
+  <p:serialization indent="true" port="_000_resolved-resource"/>
+  <p:serialization indent="true" port="_100_exposed"/>
+  <p:serialization indent="true" port="_200_mapped"/>
+  <p:serialization indent="true" port="_300_refined"/>
+  <p:serialization indent="true" port="_400_enhanced"/>
+  <p:serialization indent="true" port="_410_linked"/>
+  <p:serialization indent="true" port="_420_amended"/>
+  <p:serialization indent="true" port="_500_analyzed"/>
   
   <p:load>
     <p:with-option name="href" select="$resource-file"/>
