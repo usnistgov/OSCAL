@@ -7,30 +7,20 @@ This control has seven high-level components, including a security control ident
 
 ![CSA-CCM-IAM02](/docs/graphics/CSA-CCM-IAM02.png "CSA CCM IAM-02")
 
-Comparing these three components with the NIST SP 800-53 example shows significant differences. The NIST SP 800-53 control has a title, and the CSA CCM control has a "Control Domain" which serves a similar purpose. The "Control" element of the NIST SP 800-53 control and the "Updated Control Specification" element of the CSA CCM control both define the nature of the control, but NIST SP 800-53 does so in a more structured format, breaking the text into several lettered and numbered pieces, while the CSA CCM control is a narrative with bullets.
+Comparing these three components with the NIST SP 800-53 example shows obvious differences. The NIST SP 800-53 control has a title, and the CSA CCM control has a "Control Domain". These serve a similar purpose, but one is hierarchical (multiple levels of domains) and the other is not. The "Control" component of the NIST SP 800-53 control and the "Updated Control Specification" component of the CSA CCM control both define the nature of the control, but NIST SP 800-53 does so in a more structured format, breaking the text into several lettered and numbered pieces, while the CSA CCM control is a plain narrative with bullets. Other components of the two controls vary even more, with each control including information that the other doesn't.
 
-*** pick up here ***
+OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.
 
-TBD: Show prose examples of an 800-53 control and a related control from another catalog. Illustrate the differences in the controls themselves and the terminology used for the parts of their definitions.
-
-TBD: Use the prose examples to illustrate what a subcontrol is. A subcontrol is very similar to a control in its composition, but a subcontrol always extends a control and is dependent on that control. 
-
-TBD: Should we remove any references to elements, attributes, etc. and make the narrative abstract? Talk about what an OSCAL control includes instead of what an OSCAL control element includes? Talk about content instead of its format, structure, etc.?
-
-## The control element
-Each control element defines a single security or privacy control. A control element may contain the following:
-* A title (optional) for the control
-* Subcontrols and/or control components (both optional)
+## The OSCAL control element
+Each OSCAL control element defines a single security or privacy control. A control element may contain the following:
+* Identifier for the control (mandatory)
+* Title for the control (optional)
 * References (optional)
-* Unique identifier for the control (mandatory) (unique only within the catalog?)
-* optionalClass (?) (mandatory?)
+* Subcontrols (optional). An OSCAL subcontrol is very similar to an OSCAL control in its composition, but a subcontrol always extends a control and is dependent on that control. 
+* Control components (optional). An OSCAL control-components element can contain properties, hypertext links, control parameters, and other content.
 
-## The subcontrol element
-contains a control extension, enhancement, or associated or dependent control object. Similar composition to the control element, except it may not contain subcontrol elements.
+The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML.
 
-## The control-components element
-Each control-components element TBD. It may contain any number of the following:
-* prop. A property is a value with a name attributed to the containing control, subcontrol, component, part, or group.
-* anyKindofPart. This contains any number of part elements. Each part is a partition, piece or section of a control, subcontrol, component, or part.
-* link. A link is a line or paragraph containing a hypertext link.
-* param. This is a parameter setting to be propagated to points of insertion.
+![800-53Rev4AC1OSCAL](/docs/graphics/NIST-SP-800-53-AC1-in-OSCAL-XML.png "NIST SP 800-53 Rev 4 AC-1 in OSCAL XML")
+
+TBD talk about what's in the graphic. Focus on the content being represented more than the XML itself. 
