@@ -350,13 +350,13 @@
   <!-- Returns a set of controls or components marked as controls for a profile. -->
   <xsl:function name="oscal:resolved-controls" as="element()*">
     <!--saxon:memo-function="yes" xmlns:saxon="http://saxon.sf.net/"-->
-    <xsl:param name="who" as="document-node()"/>
+    <xsl:param name="who" as="document-node()?"/>
     <xsl:sequence select="oscal:resolve($who)//(control | component[contains-token(@class,'control')])"/> 
   </xsl:function>
   
   <!-- Returns a set of subcontrols or components marked as subcontrols for a profile. -->
   <xsl:function name="oscal:resolved-subcontrols" as="element()*">
-    <xsl:param name="who" as="document-node()"/>
+    <xsl:param name="who" as="document-node()?"/>
     <xsl:sequence select="oscal:resolve($who)//(subcontrol | component[contains-token(@class,'subcontrol')])"/> 
   </xsl:function>
   

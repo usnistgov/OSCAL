@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      version="1.1"
-     viewBox="0 0 239.5 173.6"
-     height="173.6"
+     viewBox="0 0 239.5 189.6"
+     height="189.6"
      width="239.5">
    <g transform="translate(4 4)">
       <rect y="8"
             x="17"
             width="214.5"
-            height="157.6"
+            height="173.6"
             stroke="black"
             stroke-width="1"
             fill="skyblue"
@@ -73,6 +73,17 @@
       <rect y="101.6"
             x="34"
             width="189"
+            height="12"
+            stroke="black"
+            stroke-width="1"
+            fill="white"
+            title="merge"
+            stroke-opacity="1"
+            fill-opacity="1.0"/>
+      <text font-size="10" fill="black" x="36" y="109.6 ">merge</text>
+      <rect y="117.6"
+            x="34"
+            width="189"
             height="60"
             stroke="black"
             stroke-width="1"
@@ -80,8 +91,8 @@
             title="modify"
             stroke-opacity="1"
             fill-opacity="1.0"/>
-      <text font-size="10" fill="black" x="36" y="109.6 ">modify</text>
-      <rect y="113.6"
+      <text font-size="10" fill="black" x="36" y="125.6 ">modify</text>
+      <rect y="129.6"
             x="51"
             width="163.5"
             height="44"
@@ -91,8 +102,8 @@
             title="set-param"
             stroke-opacity="1"
             fill-opacity="1.0"/>
-      <text font-size="10" fill="black" x="53" y="121.6 ">set-param</text>
-      <rect y="125.6"
+      <text font-size="10" fill="black" x="53" y="137.6 ">set-param</text>
+      <rect y="141.6"
             x="68"
             width="138"
             height="12"
@@ -102,8 +113,8 @@
             title="desc"
             stroke-opacity="1"
             fill-opacity="1.0"/>
-      <text font-size="10" fill="black" x="70" y="133.6 ">desc</text>
-      <rect y="141.6"
+      <text font-size="10" fill="black" x="70" y="149.6 ">desc</text>
+      <rect y="157.6"
             x="68"
             width="138"
             height="12"
@@ -113,6 +124,6 @@
             title="value"
             stroke-opacity="1"
             fill-opacity="1.0"/>
-      <text font-size="10" fill="black" x="70" y="149.6 ">value</text>
+      <text font-size="10" fill="black" x="70" y="165.6 ">value</text>
    </g>
 </svg>
