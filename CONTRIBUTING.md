@@ -17,7 +17,7 @@ The OSCAL project is producing several types of deliverables, including the foll
  * *CSS*, so people who are developing catalogs and profiles using XML tools can use CSS for data entry, which offers a much more usable interface 
  * *Documentation* to define the OSCAL component models, capture the operational model of how to use OSCAL, and explain how you can convert existing content (catalogs, profiles, etc.) into OSCAL formats
 
-Contributions are welcome in any of these areas.
+Contributions are welcome in any of these areas. For information on the project's current needs and priorities, see the project's GitHub issue tracker (discussed below).
 
 ## Issue reporting and handling
 
@@ -25,14 +25,10 @@ All requests for changes and enhancements to OSCAL are initiated through the pro
 
 ## Communications mechanisms
 
-Point to mailing lists and other OSCAL-related communications mechanisms.
+There are two mailing lists for the project:
+ * *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by visiting https://email.nist.gov/mailman/listinfo/oscal-dev.
+ * *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. To subscribe, visit https://email.nist.gov/mailman/listinfo/oscal-updates.
 
 ## Setup instructions
 
-All deliverables will be posted to the OSCAL GitHub repository. The repository also contains README files that explain what’s on the repository, how to use it, how the repository is organized, etc.
-
-Point to instructions on how to get the latest files, set up your environment for OSCAL development/testing, etc.
-
-## Expectations on contributors
-
-Define/describe any expectations on contributors, such as rules of behavior, naming conventions, and coding style conventions.
+As the OSCAL project matures, instructions will be posted here for how to get the latest OSCAL files from the GitHub repository, set up your environment for OSCAL development/testing, etc. At this time, instructions are limited to README files in the repository that explain what’s on the repository, how the repository is organized, etc.
