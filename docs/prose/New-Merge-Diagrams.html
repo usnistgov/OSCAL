@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>OSCAL Profile Import and NEW (JANUARY) MODEL Merge Specification (Diagrams)</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            section {
+                margin-top: 1em
+            }
+            
+            section section {
+                clear: both;
+                overflow: hidden;
+                padding: 0.5em;
+                background-color: lemonchiffon;
+                border: thin outset black;
+                -oxy-foldable: true;
+                -oxy-not-foldable-child: h2, h3, h4;
+            }
+            
+            section > *:first-child {
+                margin-top: 0ex
+            }
+            section > *:last-child {
+                margin-bottom: 0ex
+            }
+            
+            
+            .resolution,
+            .profile,
+            .catalog,
+            .import,
+            .group {
+                display: inline-block;
+                padding: 0.5em;
+                margin: 0.5em;
+                display: inline-grid
+            }
+            div.catalog {
+                background-color: white
+            }
+            
+            div.import div.catalog,
+            div.resolution div.catalog {
+                background-color: gainsboro;
+                border: medium dotted black
+            }
+            
+            div.import {
+                background-color: #95B9C7
+            }
+            
+            // .import { padding: 0.5em; margin: 0.5em }
+            
+            div > * {
+                vertical-align: top
+            }
+            
+            figure div p {
+                margin: 0ex
+            }
+            
+            .catalog {
+                border: medium double black
+            }
+            
+            .import {
+                border: thin dotted black
+            }
+            .profile {
+                border: thin solid black
+            }
+            .resolution {
+                border: medium dotted grey
+            }
+            .resolution .resolution {
+                border: medium double grey
+            }
+            
+            
+            .group > span {
+                font-size: 80%;
+                font-family: sans-serif
+            }
+            .import > span {
+                font-size: 80%;
+                font-style: italic
+            }
+            
+            .include {
+                color: darkgreen
+            }
+            .include:before {
+                content: 'include: ';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            
+            .exclude {
+                color: darkred
+            }
+            .exclude:before {
+                content: 'exclude: ';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            
+            .ws:after {
+                content: ' - with subcontrols';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            .error {
+                color: red
+            }
+            .stress {
+                color: green
+            }
+            .warning {
+                color: darkorange
+            }
+            .catalog .subcontrol {
+                font-size: 80%;
+                padding-left: 2em
+            }</style>
+    </head>
+    <body>
+        <p>Critical for understanding this document: "control identity" is established by formal ID
+            (@id) values, not against nominal "names", "codes", or "numbers" of controls in their
+            respective standards. Notations given here are fanciful and for illustration.</p>
+        <section>
+            <h2>Resource (catalog or profile) import</h2>
+            <section>
+                <h3>A profile may have more than one import.</h3>
+                <figure>
+                    <div class="profile">
+                        <span>OK Profile</span>
+                        <div class="import">
+                            <span>Import Catalog A</span>
+                        </div>
+                        <div class="import">
+                            <span>Import Catalog B</span>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution</span>
+                        <div class="results">
+                            <span>Results of importing from Catalog A</span>
+                        </div>
+                        <div class="results">
+                            <span>Results of importing from Catalog B</span>
+                        </div>
+                    </div></figure>
+            </section>
+            <p>One alternative would be to reduce even further from the start – complications being
+                that all the weight then falls on a 'modify/trace' option to expand on import
+                provenance … still it would simplify still further what appears here – and expose
+                things such as ID clashes earlier --</p>
+            <section>
+                <h3>Each import calls a catalog or profile</h3>
+                <p>An import is bound to a single catalog or profile, its <q>resource</q>, by URI.
+                    If the resource is an OSCAL profile, it is implicitly resolved (with its own
+                    imports and modification) according to these rules. Because profiles must be
+                    bound to either catalogs or profiles, and because circular references are
+                    inoperable (see below), all profiles resolve eventually to collections of
+                    controls as represented in catalogs (including the empty collection, i.e. no
+                    controls).</p>
+                <p>References to URI targets not identifiable as OSCAL (catalogs, profiles or
+                    document types tbd with resolution rules of their own) must return nothing.</p>
+                <p>Note that the same catalog may appear at multiple <q>leaf</q> positions in the
+                    import tree.</p>
+                <figure>
+                    <div class="profile">
+                        <span>OK Profile</span>
+                        <div class="import">
+                            <span>Import Catalog A</span>
+                        </div>
+                        <div class="import">
+                            <span>Import Profile B1</span>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>B1 Profile</span>
+                        <div class="import">
+                            <span>Import Catalog B</span>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span><q>OK Profile</q> Resolution</span>
+                        <div class="import">
+                            <span>Import Catalog A</span>
+                            <p>(Results of import)</p>
+                        </div>
+                        <div class="import">
+                            <span>Import Profile B1</span>
+                            <div class="import">
+                                <span>Import Catalog B</span>
+                                <p>(Results of import)</p>
+                            </div>
+                        </div>
+                    </div></figure>
+                <figure>
+                    <div class="profile">
+                        <span>Also OK Profile</span>
+                        <div class="import">
+                            <span class="stress">Import Catalog A</span>
+                        </div>
+                        <div class="import">
+                            <span>Import Profile A1</span>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>A1 Profile</span>
+                        <div class="import">
+                            <span class="stress">Import Catalog A</span>
+                        </div>
+                    </div><div class="resolution">
+                        <span><q>Also OK Profile</q> Resolution</span>
+                        <div class="import">
+                            <span>Import Catalog A</span>
+                            <p>(Results of import)</p>
+                        </div>
+                        <div class="import">
+                            <span>Import Profile A1</span>
+                            <div class="import">
+                                <span>Import Catalog A</span>
+                                <p>(Results of import)</p>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Circular references are inoperable</h3>
+                <p>If an OSCAL profile includes, directly or indirectly, any imports of itself as a
+                    resource, such imports are inoperable. Such circular reference is an error. A
+                    processor may fall back by ignoring circular calls (i.e. imports of resources
+                    that have already been imported higher in the stack).</p>
+                <figure>
+                    <div class="profile">
+                        <span>Perplex Profile</span>
+                        <div class="import">
+                            <span>Import Plexper profile</span>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>Plexper Profile</span>
+                        <div class="import">
+                            <span>Import Perplex profile</span>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of Perplex Profile</span>
+                        <div class="import">
+                            <span>Import Plexper profile</span>
+                            <div class="import error">
+                                <span>Import Perplex profile</span>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+        </section>
+        <h2>Control and subcontrol selection</h2>
+        <section>
+            <section>
+                <h3>Including controls from a resource (catalog or profile) by ID</h3>
+                <p>An import can identify controls (as given in and by the resource) for inclusion
+                    in either of two ways. The first method is by an explicit <q>call</q> using the
+                    ID of the desired control or subcontrol.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>AAS Profile (with selection from AA Catalog)</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAS Profile</span>
+                        <div class="catalog">Control AA.1<p>Control AA.3</p></div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Including all controls from a resource</h3>
+                <p>Alternatively, an import can indicate that all controls from the resource
+                    (catalog or upstream profile) should be included.</p>
+                <figure>
+                    <div class="profile">
+                        <span>AAA Profile selecting all controls from AA Catalog</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">All</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAA Profile (selecting <q>all</q>)</span>
+                        <div class="catalog">
+                            <div class="group">
+                                <p>Control AA.1</p>
+                                <p>Control AA.2</p>
+                                <p>Control AA.3</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>AAA Profile, this time expressed using calls</span>
+                        <div class="import">
+                            <span>Import CQ Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.2</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div></figure>
+                <p>A profile that imports all controls from a single catalog, without modification,
+                    would be an <q>identity profile</q>.</p>
+            </section>
+            <section>
+                <h3>No inclusion statement implies <q>include all</q></h3>
+                <p>Note that if no explicit inclusion instruction is given (irrespective of
+                    exclusions), a processor should <q>include all</q> as the fallback:</p>
+                <figure>
+                    <div class="profile">
+                        <span>Implicit inclusion AAA Profile is effectively <q>All</q></span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAA Profile (selecting "all")</span>
+                        <div class="catalog">Control AA.1<p>Control AA.2</p><p>Control
+                            AA.3</p></div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Excluding a control by ID</h3>
+                <p>It is more common to use "include/all" with an exclusion rule – or to use
+                    exclusion rules with only an implicit call to "all" (which will be inferred when
+                    no other inclusion is given):</p>
+                <figure>
+                    <div class="profile">
+                        <span>"Almost All" profile of AA</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">All</p>
+                            <p class="exclude">Control AA.2</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>"Almost All" profile of AA (implicit "all")</span>
+                        <div class="import">
+                            <span>Import CQ Catalog</span>
+                            <p class="exclude">Control AA.2</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of (either) "Almost All" Profile of Catalog AA</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Note that the profile expressed here is the same as the <q>AAS</q> profile
+                        above (except it selects controls by exclusion not inclusion).</p>
+                </figure>
+            </section>
+            <section>
+                <h3>Exception: ID clash across imported resources</h3>
+                <p>This is a compile-time-detectable error.</p>
+                <p>A modify/normalize/rewriteID step could defend against it, possibly.</p>
+                <figure> </figure>
+            </section>
+            <section>
+                <h3>Exception: a control is included more than once</h3>
+                <p>Multiple inclusions of a single control within the same import, result in a
+                    single copy of the control in the resolved profile.</p>
+                <p>An application may produce a warning when this occurs.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>AAZ Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.3</p>
+                            <p class="include warning">Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAZ Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Exception: including or excluding a control that is not found in its
+                    catalog</h3>
+                <p>An inclusion of a control that is not found in its catalog is inoperable. An
+                    implementation may report a warning when unknown controls are included or
+                    excluded.</p>
+                <figure>
+                    <div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>AAZ Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include warning">Control ZZ.1</p>
+                            <p class="include">Control AA.3</p>
+                            <p class="exclude warning">Control ZZ.0</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAZ Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Exception: a control is included, then also excluded</h3>
+                <p>A control identified for exclusion is excluded, no matter how many times it is
+                    included.</p>
+                <p>An application may produce a warning when a control is both included (by ID) and
+                    excluded. Ordinarily, exclusions of controls (not subcontrols) should not be
+                    used unless include has <q>all</q>.</p>
+                <figure>
+                    <div class="profile">
+                        <span>AAZ Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.3</p>
+                            <p class="include warning">Control AA.3</p>
+                            <p class="exclude error">Control AA.3</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAZ Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>Along the same lines, multiple exclusions all mean <q>exclude</q>, so more than a
+                    single one is superfluous.</p>
+            </section>
+        </section>
+        <section>
+            <h2>Selecting subcontrols</h2>
+            <p>Because each subcontrol is dependent on a control and may not appear without it,
+                there are special features for the selection and exclusion of subcontrols.</p>
+            <p>Note that this dependency is strict and applies to subcontrols and controls as named
+                within the same import tree. That is, it is not possible for a profile to select
+                subcontrols without their controls, within a single import. When controls however,
+                are included, their subcontrols may also be included either by ID or other means as
+                described.</p>
+            <section>
+                <h3>Selecting subcontrols by ID</h3>
+                <p>Subcontrols are <i>not</i> included by default when their controls are included.
+                    However, like controls they may be included by ID.</p>
+                <figure><div class="catalog">
+                        <span>BBB Controls Catalog</span>
+                        <div class="group">
+                            <p>Control BBB.1</p>
+                            <p class="subcontrol">Subcontrol BBB.1a</p>
+                            <p class="subcontrol">Subcontrol BBB.1b</p>
+                            <p class="subcontrol">Subcontrol BBB.1c</p>
+                            <p>Control BBB.2</p>
+                            <p>Control BBB.3</p>
+                            <p class="subcontrol">Subcontrol BBB.3a</p>
+                            <p class="subcontrol">Subcontrol BBB.3b</p>
+                            <p class="subcontrol">Subcontrol BBB.3c</p>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <p class="include">Control BBB.1</p>
+                            <p class="include">Control BBB.3</p>
+                            <p class="include subcontrol">Subcontrol BBB.3b</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolving the BBB Catalog profile</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BBB.1</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>Note that in this example, subcontrols of control BBB.1 are not included, because
+                    none are designated.</p>
+            </section>
+            <section>
+                <h3>Including subcontrols with their controls</h3>
+                <p>Alternatively, an instruction with the control can indicate to include (all) its
+                    subcontrols. (Subcontrols not associated with the control will not be
+                    included.)</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <p class="include">Control BBB.1</p>
+                            <p class="include ws">Control BBB.3</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolving the BBB Catalog profile</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BBB.1</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3a</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                    <p class="subcontrol">Subcontrol BBB.3c</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>Again, subcontrols of control BBB.1 are not included.</p>
+            </section>
+            <section>
+                <h3>Including subcontrols with all controls</h3>
+                <p>Additionally, the <q>all</q> inclusion instruction may be configured to include
+                    subcontrols.</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <p class="include ws">All</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of AAS Profile</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BBB.1</p>
+                                    <p class="subcontrol">Subcontrol BBB.1a</p>
+                                    <p class="subcontrol">Subcontrol BBB.1b</p>
+                                    <p class="subcontrol">Subcontrol BBB.1c</p>
+                                    <p>Control BBB.2</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3a</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                    <p class="subcontrol">Subcontrol BBB.3c</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+            <section>
+                <h3>Excluding subcontrols</h3>
+                <p>Subcontrols may also be (explicitly) excluded.</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <p class="include ws">All</p>
+                            <p class="exclude">Subcontrol BBB.3a</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of BBB Profile</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BBB.1</p>
+                                    <p class="subcontrol">Subcontrol BBB.1a</p>
+                                    <p class="subcontrol">Subcontrol BBB.1b</p>
+                                    <p class="subcontrol">Subcontrol BBB.1c</p>
+                                    <p>Control BBB.2</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3b</p>
+                                    <p class="subcontrol">Subcontrol BBB.3c</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <p>The same logic applies when subcontrols are included by other means (such as
+                    "Include all controls with subcontrols").</p>
+            </section>
+            <section>
+                <h3>Exception: competing calls</h3>
+                <p>The first of the examples given shows no conflicts. The second shows control AA.2
+                    in doubt – <em>competing</em> – because it appears in two import hierarchies. If
+                    either import is marked for modifications the other is not, they will be
+                    (moreover) <em>conflicting</em>.</p>
+                <p>An OSCAL processor may fail to copy one or both, or may copy (and then modify)
+                    both occurrences of a control, while also alerting consuming applications of
+                    apparent or likely conflicts. (In a simple implementation this might be signaled
+                    by an ID collision.)</p>
+                <figure><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A-2 Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">All</p>
+                            <p class="exclude">AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A2A Profile</span>
+                        <div class="import">
+                            <span>Import A-2</span>
+                            <p>(All AA controls except AA.3)</p>
+                        </div>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A2A Profile</span>
+                        <div class="import">
+                            <span>Import A-2 Profile</span>
+                            <div class="import">
+                                <span>Import AA Catalog</span>
+                                <div class="catalog">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.2</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <p>Control AA.3</p>
+                            </div>
+                        </div>
+                    </div></figure>
+                <figure><div class="profile">
+                        <span>A2B Profile</span>
+                        <div class="import">
+                            <span>Import A-2</span>
+                            <p>(All AA controls except AA.3)</p>
+                        </div>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.2</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A2B Profile</span>
+                        <div class="import">
+                            <span>Import A-2 Profile</span>
+                            <div class="import">
+                                <span>Import AA Catalog</span>
+                                <div class="catalog">
+                                    <p>Control AA.1</p>
+                                    <p class="error">Control AA.2</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <p class="error">Control AA.2</p>
+                            </div>
+                        </div>
+                    </div></figure>
+                <p>When this happens processors should signal an error with addresses. (However,
+                    processing does not have to end, if the processor has means or rules for dealing
+                    with the situation.)</p>
+            </section>
+            <section>
+                <h3>Exception: including or excluding a subcontrol without its control</h3>
+                <p>XXX ISSUE - related to below (subcontrols must be imported with controls)</p>
+                <p>If a subcontrol is included, its control will be implicitly included if it is not
+                    explicitly included. Such an implicit inclusion of a control should be taken to
+                    have a <code>@with-subcontrols</code> "no", that is only subcontrols that are
+                    actually called, come with such a control.</p>
+                <p>XXX See "orphan subcontrols okay" below – when merged with parents from other
+                    branches, their values must be available XXX</p>
+                <p>XXX This will require unit testing! XXX</p>
+                <p>Was: An instruction to include a subcontrol without its control is inoperable. A
+                    system may produce a warning when this occurs. In the resolved profile, the
+                    included subcontrol will not appear.</p>
+                <p>Similarly, an instruction to exclude a subcontrol, whose control is not included
+                    (by some means, if only by default), is inoperable; such exclusions might be
+                    flagged with warnings – as might exclusions of subcontrols, that would not have
+                    been included in any case (by virtue of settings or defaults).</p>
+                <figure>
+                    <div class="profile">
+                        <span>Profile of BBB Catalog</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <p class="include">Control BBB.1</p>
+                            <p class="include warning">Subcontrol BBB.3a</p>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution of BBB Profile</span>
+                        <div class="import">
+                            <span>Import BBB Catalog</span>
+                            <div class="catalog">
+                                <span>BBB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BBB.1</p>
+                                    <p>Control BBB.3</p>
+                                    <p class="subcontrol">Subcontrol BBB.3a</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+            </section>
+        </section>
+        <section>
+            <h2>Results of resolution without merge</h2>
+            <p>The <code>merge</code> step of resolution is optional; here we describe what a
+                resolution looks like with no merge (and no modification).</p>
+            <p>Note that modifications may be applied even if there is no merge.</p>
+            <section>
+                <h3>A profile with more than one import resolves them separately</h3>
+                <figure><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="catalog">
+                        <span>BB Controls Catalog</span>
+                        <div class="group">
+                            <p>Control BB.1</p>
+                            <p>Control BB.2</p>
+                            <p>Control BB.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>AB Profile (selections from AA and BB)</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                        <div class="import">
+                            <span>Import BB Catalog</span>
+                            <p class="include">Control BB.1</p>
+                            <p class="include">Control BB.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of AB Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="import">
+                            <span>Import BB Catalog</span>
+                            <div class="catalog">
+                                <span>BB Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control BB.1</p>
+                                    <p>Control BB.3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+            </section>
+            <section>
+                <h3>Recursive profile resolution is reflected in the import hierarchy</h3>
+                <figure><div class="catalog">
+                        <span>BB Controls Catalog</span>
+                        <div class="group">
+                            <p>Control BB.1</p>
+                            <p>Control BB.2</p>
+                            <p>Control BB.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>B-minus Profile selected from BB catalog</span>
+                        <div class="import">
+                            <span>Import BB Catalog</span>
+                            <p class="include">Control BB.1</p>
+                            <p class="include">Control BB.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A/B-minus Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                        <div class="import">
+                            <span>Import B-minus Profile</span>
+                            <p class="include">Control BB.1</p>
+                        </div>
+                    </div><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A/B-minus Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.1</p>
+                                    <p>Control AA.3</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="import">
+                            <span>Import B-minus Profile</span>
+                            <div class="import">
+                                <span>Import BB Catalog</span>
+                                <div class="catalog">
+                                    <span>BB Controls Catalog</span>
+                                    <div class="group">
+                                        <p>Control BB.1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></figure>
+            </section>
+            <section>
+                <h3>The same catalog can appear at multiple terminals in an import hierarchy</h3>
+                <p>There is no error here, nor any reason to consider this condition a problem
+                    unless the multiple imports actually conflict.</p>
+                <p>A post-process or downstream transformation or rendering might opt to collapse,
+                    regroup or rearrange hierachies – or to normalize controls against their
+                    hierarchies thereby rendering the latter implicit.</p>
+                <figure><div class="catalog">
+                        <span>AA Controls Catalog</span>
+                        <div class="group">
+                            <p>Control AA.1</p>
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A-minus Profile selected from AA catalog</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A/A-minus Profile</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.2</p>
+                        </div>
+                        <div class="import">
+                            <span>Import A-minus Profile</span>
+                            <p class="include">Control AA.3</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of A/A-minus Profile</span>
+                        <div class="import">
+                            <p>Control AA.2</p>
+                            <p>Control AA.3</p>
+                        </div>
+                    </div></figure>
+                <p>It is the business of a receiving application to collapse this if and as wanted
+                    (for example, if no further conflicts or issues are detected).</p>
+            </section>
+            <section>
+                <h3>Orphan subcontrols are permitted</h3>
+                <p>We have at least one real-world use case for a subcontrol reference without a
+                    control reference. This can happen when a profile wishes to reference a
+                    canonical profile (such as, say, SP800-53 MODERATE), with additional subcontrols
+                    declared in a separate (supplemental) import hierarchy.</p>
+                <p>This is not an error because the problem it produces can be mitigated in a merge
+                    stage – so the outputs are not <i>necessarily</i> erroneous.</p>
+                <figure><div class="profile">Zelda Profile<div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.2</p>
+                        </div><div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include subcontrol error">Subcontrol AA.2a</p>
+                        </div></div><div class="resolution">
+                        <span>Resolution of Zelda</span>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <span>AA Controls Catalog</span>
+                                <div class="group">
+                                    <p>Control AA.2</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="import">
+                            <span>Import AA Catalog</span>
+                            <div class="catalog">
+                                <p>Control AA.1</p>
+                                <p role="warning" class="warning">Control AA.2</p>
+                                <p>Subcontrol AA.2a</p>
+                            </div>
+                        </div>
+                    </div><p>NB the info for Control AA.2 must come through the first import branch
+                        in case it has been modified along the way</p></figure>
+            </section>
+        </section>
+        <section>
+            <h2>Merging</h2>
+            <p><q>Merging</q> in OSCAL profile resolution is a process of (re)aggregation of
+                controls from catalogs together in a structure reflecting their original order in
+                their catalogs, rather than their order or arrangement of import.</p>
+            <p>A merge instruction may be enhanced with further specifications tbd. This draft
+                specification may suggest how a <code>trace</code> option might work; other
+                functionalities might include support for embedding controls in arbitrary and ad-hoc
+                structures (for example, to produce frameworks).</p>
+            <p>In its simplest default form, however, merge simply functions to reorganize controls
+                on the basis of their organizations within canonical "root" catalogs, called by a
+                fully resolved profile. It does not show a control set simply as such; instead it
+                maps it (in its organization) into the structure of the catalog(s) of origin.</p>
+            <section>
+                <h3>Basic merge restores the structure of the resolved resource</h3>
+                <div class="catalog">
+                    <span>BTW Controls Catalog</span>
+                    <div class="group">
+                        <span>Group Alpha</span>
+                        <div class="group">
+                            <span>Alpha_I</span>
+                            <p>Control A_I_1</p>
+                            <p>Control A_I_2</p>
+                            <p>Control A_I_3</p>
+                        </div>
+                        <div class="group">
+                            <span>Alpha_II</span>
+                            <p>Control A_II_48</p>
+                            <p>Control A_II_49</p>
+                            <p>Control A_II_50</p>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <span>Group Beta</span>
+                        <div class="group">
+                            <span>Beta_I</span>
+                            <p>Control B_I_1</p>
+                            <p>Control B_I_2</p>
+                            <p>Control B_I_3</p>
+                        </div>
+                        <div class="group">
+                            <span>Beta_II</span>
+                            <p>Control B_II_48</p>
+                            <p>Control B_II_49</p>
+                            <p>Control B_II_50</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile">
+                    <span>A combining profile </span>
+                    <div class="import">
+                        <span>Import CQZ Catalog</span>
+                        <p class="include">Control CCA</p>
+                        <p class="include">Control CCB</p>
+                        <p class="include">Control QQC</p>
+                    </div>
+                    <div class="import">
+                        <span>Import BTW Catalog</span>
+                        <p class="include">Control A_I_1</p>
+                        <p class="include">Control A_II_48</p>
+                    </div>
+                    <div class="import warning">
+                        <span>Import BTW Catalog</span>
+                        <p class="include">Control B_I_1</p>
+                        <p class="include">Control B_II_50</p>
+                        <p class="include">Control A_II_50</p>
+                    </div>
+                </div>
+                <div class="resolution">
+                    <span>Resolution of combining profile with 'merge'</span>
+                    <div class="catalog">
+                        <span>CQZ Controls Catalog</span>
+                        <div class="group">
+                            <span>Group CC</span>
+                            <p>Control CCA</p>
+                            <p>Control CCB</p>
+                        </div>
+                        <div class="group">
+                            <span>Group QQ</span>
+                            <p>Control QQA</p>
+                            <p>Control QQB</p>
+                            <p>Control QQC</p>
+                        </div>
+                    </div>
+                    <div class="catalog">
+                        <span>BTW Controls Catalog</span>
+                        <div class="group">
+                            <span>Group Alpha</span>
+                            <div class="group">
+                                <span>Alpha_I</span>
+                                <p>Control A_I_1</p>
+                            </div>
+                            <div class="group">
+                                <span>Alpha_II</span>
+                                <p>Control A_II_48</p>
+                                <p>Control A_II_50</p>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <span>Group Beta</span>
+                            <div class="group">
+                                <span>Beta_I</span>
+                                <p>Control B_I_1</p>
+                            </div>
+                            <div class="group">
+                                <span>Beta_II</span>
+                                <p>Control B_II_50</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h3>Merge accepts an override for the resource referenced for structural resolution
+                    ('root' override)</h3>
+                <p>Maybe the controls coming back from the profile come without their structure;
+                    instead, use <code>merge/as</code> to reference a resource in which to "restore"
+                    (embed) the controls; maybe either "as root" (i.e. grouping controls by root
+                    catalog) or "as" (any arbitrary offline or inline structural proxy)</p>
+                <p>NB this could be a method to tie into OSCAL frameworks albeit backwards ...</p>
+            </section>
+            <section>
+                <h3>Merging orphan subcontrols</h3>
+                <p>(XXX this is no longer an issue if we don't retain an explicit import
+                    hierarchy)</p>
+                <p>We have at least one real-world use case for a subcontrol reference without a
+                    control reference. This can happen when a profile wishes to reference a
+                    canonical profile (such as, say, SP800-53 MODERATE), with additional subcontrols
+                    declared in a separate (supplemental) import hierarchy.</p>
+                <p>This is not an error because the problem it produces can be mitigated in a merge
+                    stage – so the outputs are not <i>necessarily</i> erroneous.</p>
+                <figure><div class="profile">Zelda Profile<div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.2</p>
+                        </div><div class="import">
+                            <span>Import AA Catalog</span>
+                            <p class="include">Control AA.1</p>
+                            <p class="include subcontrol error">Subcontrol AA.2a</p>
+                        </div></div><div class="resolution">
+                        <span>Resolution of Zelda</span>
+                        <div class="catalog">
+                            <span>AA Controls Catalog</span>
+                            <div class="group">
+                                <p>Control AA.1</p>
+                                <p>Control AA.2 (via first import)</p>
+                                <p>Subcontrol AA.2a (via second import)</p>
+                            </div>
+                        </div>
+                    </div></figure>
+                <p>Note that this requires that control AA.2 itself be accepted as modified in/by
+                    the first import (if it imports not a catalog but a profile), while subcontrol
+                    AA.2a is accepted as stipulated (and perhaps modified) via the second
+                    import.</p>
+                <p>(XXX need illustration of this)</p>
+            </section>
+        </section>
+        <section><h2>Modification</h2><p><q>Modification</q> permits further configuration of
+                profiles in two ways: parameters that are declared in catalogs, may be set (in
+                either or both values, and descriptions); or controls may be modified directly
+                    (<em>altered</em>). Parameters are a mechanism used in SP800-53 (and possibly
+                other catalog types) for dynamic assignment of values to settings defined in
+                catalogs. A profile may (and is often expected to) provide values to parameters
+                stipulated in controls; additionally the profiling mechanism allows parameter
+                    <em>descriptions</em> to be written over, a feature of particular use when
+                making profiles that are expected to be further profiled at higher "layers" (which
+                can then seen the emended or augmented description as well as any nominal default
+                value).</p>Parameters are a minimal intervention. Arbitrary modifications of control
+            and subcontrols contents can also be provided for using a more general-purpose
+                <code>alter</code>elements.<section>
+                <h3>modify/trace option (or modify/normalize/trace)</h3>
+                <p>The trace option (<code>modify/trace</code> would permit injection of a "trace"
+                    property (<code>prop</code> element) into controls, subcontrols and parameters,
+                    exposing their provenance (chain of profile imports), useful either separately
+                    from or alongside a merge.</p>
+                <p>Adds property "(sub)control selected by X profile importing from Y catalog"</p>
+                <p>May also add flags where controls have been modified? marking deletions and
+                    augmentations?</p>
+            </section><section>
+                <h3>Parameters</h3>
+                <p>Parameter setting (overrides) are bound to parameter IDs within their respective
+                    (root) catalogs. Either or both of <code>desc</code> or <code>value</code> may
+                    be overridden at any profile level; the intent is that <code>value</code> is
+                    used to set the expressed (intended) value to be presented to (typically,
+                    inserted into) the document, while <code>desc</code> is only a passive value
+                    visible to any profiles that call this one (but not directly applied).</p>
+                <p>NB for now, parameters always travel with controls, but in principle they could
+                    be anywhere in catalogs … so we have to determine how/whether they are
+                    propagated up a profile calling chain … this might also be implicated in merge
+                    i.e. merge could be a way of assuring parameters remain available even when they
+                    are not associated with included controls.</p>
+            </section><section>
+                <h3>Alterations</h3>
+            </section></section>
+    </body>
+</html>
