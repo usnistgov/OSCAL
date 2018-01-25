@@ -97,7 +97,8 @@ We do not yet support selection of controls by other criteria such as context/or
 
 ### Merge (Combination)
 
-XXX NB wondering if we shouldn't simplify by specifying no hierarchy until later - so, not a merge, but a build XXX
+XXX NB THIS ENTIRE SECTION MAY ALTER RADICALLY XXX
+cf New-Merge-Diagrams.html
 
 In profile resolution, a "view" is provided of *each* resource (profile or catalog) invoked by a profile, which preserves information regarding the import including the structural relations (groupings) among controls selected by it. Because multiple imports may trace back through several import steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
 
