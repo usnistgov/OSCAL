@@ -31,18 +31,28 @@ type Prose struct {
 func (p *Prose) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	raw := strings.Join(p.raw, "")
 
-	if err := xml.Unmarshal([]byte(raw), &p); err != nil {
-		return err
+	if raw != "" {
+		if err := xml.Unmarshal([]byte(raw), &p); err != nil {
+			return err
+		}
 	}
 
 	p.XMLName = xml.Name{Local: "ul"}
-	e.Encode(p.UL)
+	if err := e.Encode(p.UL); err != nil {
+		return err
+	}
 	p.XMLName = xml.Name{Local: "ol"}
-	e.Encode(p.OL)
+	if err := e.Encode(p.OL); err != nil {
+		return err
+	}
 	p.XMLName = xml.Name{Local: "p"}
-	e.Encode(p.P)
+	if err := e.Encode(p.P); err != nil {
+		return err
+	}
 	p.XMLName = xml.Name{Local: "pre"}
-	e.Encode(p.Pre)
+	if err := e.Encode(p.Pre); err != nil {
+		return err
+	}
 
 	return nil
 }

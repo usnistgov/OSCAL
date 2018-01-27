@@ -12,86 +12,57 @@ package implementation
 
 import (
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
-	"strings"
 
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 	yaml "gopkg.in/yaml.v2"
 )
 
 // Implementation ...
 type Implementation struct {
-	Name        string      `json:"name" yaml:"name"`
-	Description string      `json:"description" yaml:"description"`
-	Maintainers []string    `json:"maintainers" yaml:"maintainers"`
-	Profiles    []Profile   `json:"profiles" yaml:"profiles"`
-	Components  []Component `json:"components" yaml:"components"`
-	Policies    []Policy    `json:"policies" yaml:"policies"`
-	Procedures  []Procedure `json:"procedures" yaml:"procedures"`
-	Params      []Param     `json:"params" yaml:"params"`
+	XMLName    xml.Name    `xml:"http://csrc.nist.gov/ns/oscal/1.0 implementation" json:"-" yaml:"-"`
+	ID         string      `xml:"id,attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
+	Title      string      `xml:"title" json:"title" yaml:"title"`
+	Paragraphs []core.P    `xml:"p,omitempty" json:"paragraphs,omitempty" yaml:"paragraphs,omitempty"`
+	Props      []core.Prop `xml:"prop,omitempty" json:"prop,omitempty" yaml:"prop,omitempty"`
+	Profiles   *Profiles   `xml:"profiles,omitempty" json:"profiles" yaml:"profiles"`
+	Components Components  `xml:"components,omitempty" json:"components" yaml:"components"`
+	Policies   Policies    `xml:"policies,omitempty" json:"policies" yaml:"policies"`
+	Procedures Procedures  `xml:"procedures,omitempty" json:"procedures" yaml:"procedures"`
+	Params     Params      `xml:"params,omitempty" json:"params" yaml:"params"`
 }
 
-// Profile ...
-type Profile struct {
-	Name string `json:"name" yaml:"name"`
-	Href string `json:"href" yaml:"href"`
+// Profiles ...
+type Profiles struct {
+	Links []core.Link `xml:"link,omitempty" json:"link,omitempty" yaml:"link,omitempty"`
 }
 
-// Component ...
-type Component struct {
-	Name             string      `json:"name" yaml:"name"`
-	Description      string      `json:"description" yaml:"description"`
-	ResponsibleRoles []string    `json:"responsibleRoles" yaml:"responsible_roles"`
-	Satisfies        []Satisfy   `json:"satisfies" yaml:"satisfies"`
-	References       []Reference `json:"references" yaml:"references"`
+// Components ...
+type Components struct {
+	Items []core.Item `xml:"component,omitempty" json:"component,omitempty" yaml:"component,omitempty"`
 }
 
-// Policy ...
-type Policy Component
-
-// Procedure ...
-type Procedure Component
-
-// Satisfy ...
-type Satisfy struct {
-	ControlIDs    []string    `json:"controlIds" yaml:"control_ids"`
-	SubcontrolIDs []string    `json:"subcontrolIds" yaml:"subcontrol_ids"`
-	Narratives    []Narrative `json:"narratives" yaml:"narratives"`
-	Origins       []string    `json:"origins" yaml:"origins"`
-	Statuses      []string    `json:"statuses" yaml:"statuses"`
-	References    []Reference `json:"references" yaml:"references"`
+// Policies ...
+type Policies struct {
+	Items []core.Item `xml:"component,omitempty" json:"component,omitempty" yaml:"component,omitempty"`
 }
 
-// Narrative ...
-type Narrative struct {
-	Value      string      `json:"value" yaml:"value"`
-	References []Reference `json:"references" yaml:"references"`
+// Procedures ...
+type Procedures struct {
+	Items []core.Item `xml:"component,omitempty" json:"component,omitempty" yaml:"component,omitempty"`
 }
 
-// MarshalJSON ...
-func (n *Narrative) MarshalJSON() ([]byte, error) {
-	if n.Value != "" {
-		r := strings.NewReplacer(
-			"''", "'",
-			"'", "",
-		)
-		n.Value = r.Replace(n.Value)
-	}
-
-	return json.Marshal(*n)
+// Params ...
+type Params struct {
+	SetParams []ImplementationParam `xml:"set-param,omitempty" json:"setParam,omitempty" yaml:"setParam,omitempty"`
 }
 
-// Param ...
-type Param struct {
-	ParamID string `json:"paramId" yaml:"param_id"`
-	Value   string `json:"value" yaml:"value"`
-}
-
-// Reference ...
-type Reference struct {
-	ID          string `json:"id" yaml:"id"`
-	Name        string `json:"name" yaml:"name"`
-	Description string `json:"description" yaml:"description"`
-	URL         string `json:"url" yaml:"url"`
+// ImplementationParam ...
+type ImplementationParam struct {
+	ID    string      `xml:"param-id,omitempty" json:"paramId" yaml:"paramId"`
+	Props []core.Prop `xml:"prop,omitempty" json:"prop,omitempty" yaml:"prop,omitempty"`
+	Desc  core.Desc   `xml:"desc,omitempty" json:"desc,omitempty" yaml:"desc,omitempty"`
 }
 
 // Component ...
@@ -111,6 +82,13 @@ func (i *Implementation) Raw(format string, prettify bool) ([]byte, error) {
 
 	case "yaml", "yml":
 		return yaml.Marshal(i)
+
+	case "xml":
+		if prettify {
+			return xml.MarshalIndent(i, "", "  ")
+		}
+
+		return xml.Marshal(i)
 	}
 
 	return nil, fmt.Errorf("Unable to generate raw data. Unknown format: %s", format)

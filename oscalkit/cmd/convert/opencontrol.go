@@ -11,11 +11,14 @@
 package convert
 
 import (
+	"fmt"
 	"io/ioutil"
 
 	"github.com/urfave/cli"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal"
 )
+
+var includeXML bool
 
 // ConvertOpenControl ...
 var ConvertOpenControl = cli.Command{
@@ -29,6 +32,11 @@ var ConvertOpenControl = cli.Command{
 			Name:        "yaml, y",
 			Usage:       "Generate YAML in addition to JSON",
 			Destination: &yaml,
+		},
+		cli.BoolFlag{
+			Name:        "xml, x",
+			Usage:       "Generate XML in addition to JSON",
+			Destination: &includeXML,
 		},
 	},
 	Before: func(c *cli.Context) error {
@@ -44,22 +52,38 @@ var ConvertOpenControl = cli.Command{
 			OpenControlsDir:         c.Args()[1],
 		})
 		if err != nil {
-			return err
+			return cli.NewExitError(err, 1)
 		}
 
-		rawOCOSCAL, err := ocOSCAL.Raw("json", true)
-		if err != nil {
-			return err
+		if includeXML {
+			rawXMLOCOSCAL, err := ocOSCAL.Raw("xml", true)
+			if err != nil {
+				return cli.NewExitError(fmt.Sprintf("Error producing raw XML: %s", err), 1)
+			}
+			if err := ioutil.WriteFile("opencontrol-oscal.xml", rawXMLOCOSCAL, 0644); err != nil {
+				return cli.NewExitError(err, 1)
+			}
 		}
 
 		if yaml {
 			rawYAMLOCOSCAL, err := ocOSCAL.Raw("yaml", true)
 			if err != nil {
-				return err
+				return cli.NewExitError(err, 1)
 			}
-			ioutil.WriteFile("opencontrol-oscal.yaml", rawYAMLOCOSCAL, 0644)
+			if err := ioutil.WriteFile("opencontrol-oscal.yaml", rawYAMLOCOSCAL, 0644); err != nil {
+				return cli.NewExitError(err, 1)
+			}
 		}
 
-		return ioutil.WriteFile("opencontrol-oscal.json", rawOCOSCAL, 0644)
+		rawOCOSCAL, err := ocOSCAL.Raw("json", true)
+		if err != nil {
+			return cli.NewExitError(err, 1)
+		}
+
+		if err := ioutil.WriteFile("opencontrol-oscal.json", rawOCOSCAL, 0644); err != nil {
+			return cli.NewExitError(err, 1)
+		}
+
+		return nil
 	},
 }

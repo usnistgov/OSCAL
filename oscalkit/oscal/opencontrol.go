@@ -4,76 +4,146 @@ import (
 	"path"
 
 	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
+	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal/implementation"
 )
 
 func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component) (OSCAL, error) {
-	var ocOSCAL implementation.Implementation
-	ocOSCAL.Name = oc.Name
-	ocOSCAL.Description = oc.Metadata.Description
-	ocOSCAL.Maintainers = oc.Metadata.Maintainers
+	ocOSCAL := implementation.Implementation{}
+	ocOSCAL.Title = oc.Name
+
+	ocOSCAL.Paragraphs = append(ocOSCAL.Paragraphs, core.P{
+		OptionalClass: "description",
+		Raw:           oc.Metadata.Description,
+	})
+
+	for _, maintainer := range oc.Metadata.Maintainers {
+		ocOSCAL.Props = append(ocOSCAL.Props, core.Prop{
+			RequiredClass: "maintainer",
+			Value:         maintainer,
+		})
+	}
+
+	implementationProfiles := &implementation.Profiles{}
 
 	for _, cert := range oc.Certifications {
-		ocOSCAL.Profiles = append(ocOSCAL.Profiles, implementation.Profile{
+		implementationProfiles.Links = append(implementationProfiles.Links, core.Link{
+			Rel:  "framework",
 			Href: cert,
 		})
 	}
 
 	if oc.Dependencies != nil {
 		for _, cert := range oc.Dependencies.Certifications {
-			ocOSCAL.Profiles = append(ocOSCAL.Profiles, implementation.Profile{
-				Href: cert.URL,
-				Name: parseOCCert(cert.URL),
+			implementationProfiles.Links = append(implementationProfiles.Links, core.Link{
+				Rel:   "framework",
+				Href:  cert.URL,
+				Value: parseOCCert(cert.URL),
 			})
 		}
 	}
 
+	ocOSCAL.Profiles = implementationProfiles
+	ocOSCAL.Params = implementation.Params{}
+	ocOSCAL.Components = implementation.Components{}
+
 	for _, ocComponent := range ocComponents {
-		var oscalComponent implementation.Component
-		oscalComponent.Name = ocComponent.Name
+		item := core.Item{}
+
+		item.Title = ocComponent.Name
+		item.Prose = &core.Prose{}
+		item.Prose.P = append(item.Prose.P, core.P{
+			OptionalClass: "description",
+		})
+
 		if ocComponent.ResponsibleRole != "" {
-			oscalComponent.ResponsibleRoles = append(oscalComponent.ResponsibleRoles, ocComponent.ResponsibleRole)
+			item.Prose.P = append(item.Prose.P, core.P{
+				OptionalClass: "responsibleRoles",
+				Raw:           ocComponent.ResponsibleRole,
+			})
 		}
 
 		for _, ocSatisfy := range ocComponent.Satisfies {
-			var oscalSatisfy implementation.Satisfy
-			oscalSatisfy.ControlIDs = append(oscalSatisfy.ControlIDs, ocSatisfy.ControlKey)
+			var part core.Part
 
+			part.OptionalClass = "satisfies"
+
+			part.Links = append(part.Links, core.Link{
+				Rel:  "satisfies",
+				Href: ocSatisfy.ControlKey,
+				// TODO: Value from linked "catalog"
+			})
+
+			part.Prose = &core.Prose{}
 			for _, ocNarrative := range ocSatisfy.Narrative {
-				oscalSatisfy.Narratives = append(oscalSatisfy.Narratives, implementation.Narrative{
-					Value: ocNarrative.Text,
+				part.Prose.P = append(part.Prose.P, core.P{
+					OptionalClass: "narrative",
+					Raw:           ocNarrative.Text,
 				})
 			}
 
-			oscalSatisfy.Origins = ocSatisfy.ControlOrigins
+			for _, ocOrigin := range ocSatisfy.ControlOrigins {
+				part.Props = append(part.Props, core.Prop{
+					RequiredClass: "origin",
+					Value:         ocOrigin,
+				})
+			}
+
 			if ocSatisfy.ControlOrigin != "" {
-				oscalSatisfy.Origins = append(oscalSatisfy.Origins, ocSatisfy.ControlOrigin)
+				part.Props = append(part.Props, core.Prop{
+					RequiredClass: "origin",
+					Value:         ocSatisfy.ControlOrigin,
+				})
 			}
 
 			for _, ocParameter := range ocSatisfy.Parameters {
-				ocOSCAL.Params = append(ocOSCAL.Params, implementation.Param{
-					ParamID: ocParameter.Key,
-					Value:   ocParameter.Text,
+				ocOSCAL.Params.SetParams = append(ocOSCAL.Params.SetParams, implementation.ImplementationParam{
+					ID: ocParameter.Key,
+					Desc: core.Desc{
+						Raw: ocParameter.Text,
+					},
 				})
 			}
 
-			oscalSatisfy.Statuses = ocSatisfy.ImplementationStatuses
-			if ocSatisfy.ImplementationStatus != "" {
-				oscalSatisfy.Statuses = append(oscalSatisfy.Statuses, ocSatisfy.ImplementationStatus)
+			for _, ocStatus := range ocSatisfy.ImplementationStatuses {
+				part.Props = append(part.Props, core.Prop{
+					RequiredClass: "status",
+					Value:         ocStatus,
+				})
 			}
 
-			oscalComponent.Satisfies = append(oscalComponent.Satisfies, oscalSatisfy)
+			if ocSatisfy.ImplementationStatus != "" {
+				part.Props = append(part.Props, core.Prop{
+					RequiredClass: "status",
+					Value:         ocSatisfy.ImplementationStatus,
+				})
+			}
+
+			item.Parts = append(item.Parts, part)
 		}
 
 		for _, ocReference := range ocComponent.References {
-			oscalComponent.References = append(oscalComponent.References, implementation.Reference{
-				Name: ocReference.Name,
-				URL:  ocReference.Path,
+			part := core.Part{
+				OptionalClass: "reference",
+				Title:         ocReference.Name,
+			}
+
+			part.Prose = &core.Prose{}
+			part.Prose.P = append(part.Prose.P, core.P{
+				OptionalClass: "description",
 			})
+
+			part.Links = append(part.Links, core.Link{
+				Value: ocReference.Path,
+			})
+
+			item.Parts = append(item.Parts, part)
 		}
 
-		ocOSCAL.Components = append(ocOSCAL.Components, oscalComponent)
+		ocOSCAL.Components.Items = append(ocOSCAL.Components.Items, item)
 	}
+
+	ocOSCAL.Profiles = implementationProfiles
 
 	return &ocOSCAL, nil
 }

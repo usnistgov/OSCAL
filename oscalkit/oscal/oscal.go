@@ -127,7 +127,7 @@ func New(options Options) (OSCAL, error) {
 		return &profileOSCAL, nil
 	} else if err = json.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Invocations) > 0 {
 		return &profileOSCAL, nil
-	} else if err = json.Unmarshal(rawOSCAL, &implementationOSCAL); err == nil && len(implementationOSCAL.Components) > 0 {
+	} else if err = json.Unmarshal(rawOSCAL, &implementationOSCAL); err == nil && len(implementationOSCAL.Components.Items) > 0 {
 		return &implementationOSCAL, nil
 	}
 
