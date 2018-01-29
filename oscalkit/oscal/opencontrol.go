@@ -52,6 +52,8 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 
 		item.Title = ocComponent.Name
 		item.Prose = &core.Prose{}
+
+		// Outputs "null" JSON value since this is self-closing XML tag
 		item.Prose.P = append(item.Prose.P, core.P{
 			OptionalClass: "description",
 		})

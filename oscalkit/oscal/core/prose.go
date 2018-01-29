@@ -102,6 +102,33 @@ func (p *Prose) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // MarshalJSON ...
 func (p *Prose) MarshalJSON() ([]byte, error) {
+	// If prose originates from OpenControl
+	if p.order == nil {
+		for _, para := range p.P {
+			if para.Raw != "" {
+				p.raw = append(p.raw, para.Raw)
+			}
+		}
+		for _, ul := range p.UL {
+			if ul.Raw != "" {
+				p.raw = append(p.raw, ul.Raw)
+			}
+		}
+		for _, ol := range p.OL {
+			if ol.Raw != "" {
+				p.raw = append(p.raw, ol.Raw)
+			}
+		}
+		for _, pre := range p.Pre {
+			if pre.Raw != "" {
+				p.raw = append(p.raw, pre.Raw)
+			}
+		}
+
+		return json.Marshal(p.raw)
+	}
+
+	// If prose originates from XML
 	var ulIndex int
 	var olIndex int
 	var pIndex int
@@ -220,10 +247,10 @@ func (i *Inherit) UnmarshalJSON(data []byte) error {
 
 // P ...
 type P struct {
-	XMLName       xml.Name `xml:"p" yaml:"-"`
-	Raw           string   `xml:",innerxml" yaml:"raw,omitempty"`
-	ID            string   `xml:"id,attr,omitempty" yaml:"id,omitempty"`
-	OptionalClass string   `xml:"class,attr,omitempty" yaml:"class,omitempty"`
+	XMLName       xml.Name `xml:"p" json:"-" yaml:"-"`
+	Raw           string   `xml:",innerxml" json:"raw,omitempty" yaml:"raw,omitempty"`
+	ID            string   `xml:"id,attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
+	OptionalClass string   `xml:"class,attr,omitempty" json:"class,omitempty" yaml:"class,omitempty"`
 
 	// // rnc:semantical
 	// Withdrawn []Withdrawn `xml:"withdrawn"`

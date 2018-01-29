@@ -26,7 +26,7 @@ type Implementation struct {
 	Title      string      `xml:"title" json:"title" yaml:"title"`
 	Paragraphs []core.P    `xml:"p,omitempty" json:"paragraphs,omitempty" yaml:"paragraphs,omitempty"`
 	Props      []core.Prop `xml:"prop,omitempty" json:"prop,omitempty" yaml:"prop,omitempty"`
-	Profiles   *Profiles   `xml:"profiles,omitempty" json:"profiles" yaml:"profiles"`
+	Profiles   *Profiles   `xml:"profiles,omitempty" json:"profiles,omitempty" yaml:"profiles,omitempty"`
 	Components Components  `xml:"components,omitempty" json:"components" yaml:"components"`
 	Policies   Policies    `xml:"policies,omitempty" json:"policies" yaml:"policies"`
 	Procedures Procedures  `xml:"procedures,omitempty" json:"procedures" yaml:"procedures"`
