@@ -11,10 +11,13 @@
 GOOS ?= darwin
 GOARCH ?= amd64
 LDFLAGS=-ldflags "-s -w"
+NAMESPACE ?= usnistgov
+REPO ?= oscalkit
+BUILD ?= dev
 BINARY=oscalkit_$(GOOS)_$(GOARCH)
 
 .DEFAULT_GOAL := $(BINARY)
-.PHONY: clean test push $(BINARY)
+.PHONY: test build-docker push $(BINARY) clean
 
 test:
 	docker container run \
@@ -24,7 +27,7 @@ test:
 		sh -c "go test \$$(go list ./... | grep -v /vendor/)"
 
 build-docker:
-	docker image build -t usnistgov/oscalkit .
+	docker image build -t $(NAMESPACE)/$(REPO):$(BUILD) .
 
 push: build-docker
 	docker image push usnistgov/oscalkit:latest

@@ -49,7 +49,7 @@ var ConvertOSCAL = cli.Command{
 			Destination: &outputFile,
 		},
 		cli.BoolFlag{
-			Name:        "yaml, y",
+			Name:        "include-yaml",
 			Usage:       "If source file format is XML or JSON, also generate equivalent YAML output",
 			Destination: &yaml,
 		},
@@ -85,7 +85,7 @@ var ConvertOSCAL = cli.Command{
 		if c.NArg() <= 0 || c.Args().First() == "-" {
 			rawSource, err := parseStdin(os.Stdin)
 			if err != nil {
-				return err
+				return cli.NewExitError(fmt.Sprintf("Error parsing from STDIN: %s", err), 1)
 			}
 
 			return convert(rawSource, "")
@@ -97,12 +97,12 @@ var ConvertOSCAL = cli.Command{
 			if len(matches) > 0 {
 				for _, match := range matches {
 					if err := convert(nil, match); err != nil {
-						return err
+						return cli.NewExitError(fmt.Sprintf("Error converting to OSCAL from source: %s", err), 1)
 					}
 				}
 			} else {
 				if err := convert(nil, sourcePath); err != nil {
-					return err
+					return cli.NewExitError(fmt.Sprintf("Error converting to OSCAL from source: %s", err), 1)
 				}
 			}
 		}
