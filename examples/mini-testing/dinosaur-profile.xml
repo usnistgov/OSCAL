@@ -7,8 +7,9 @@
    <title>Dinosaur Profile</title>
    <import href="dinosaur-catalog.xml">
       <include>
-         <call with-subcontrols="yes" control-id="allosaur"/>
-         <call control-id="triceratops"/>
+         <match pattern="(allosaur|triceratops)"/>
+         <!--<call with-subcontrols="yes" control-id="allosaur"/>
+         <call control-id="triceratops"/>-->
       </include>
    </import>
    
