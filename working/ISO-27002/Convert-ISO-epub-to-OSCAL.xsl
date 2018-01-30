@@ -25,7 +25,7 @@
         <declare-prop context="clause" class="number">
           <required/>
           <identifier/>
-          <value><inherit/><autonum>.1</autonum></value>
+          <calc><inherit/><autonum>.1</autonum></calc>
         </declare-prop>
         <declare-part context="clause" class="objective">
           <required/>
@@ -33,43 +33,13 @@
         <declare-prop context="iso-27002" class="number">
           <required/>
           <identifier/>
-          <value>
-            <inherit/>
-            <autonum>.1</autonum>
-          </value>
-        </declare-prop>
+          <calc><inherit/><autonum>.1</autonum></calc></declare-prop>
         <declare-part context="control" class="description">
           <required/>
         </declare-part>
         <declare-part context="control" class="guidance"/>
         <declare-part context="control" class="information"/>
       </declarations>
-      <!--<declarations>
-        <property context="control-category" class="number">
-          <required/>
-          <identifier/>
-          <regex>^\d\d?$</regex>
-        </property>
-        <property context="clause" class="number">
-          <required/>
-          <identifier/>
-          <!-\- Try xml:space="preserve" to prevent indenting? -\->
-          <value><inherit/><autonum>.1</autonum></value>
-        </property>
-        <part_declaration context="clause" class="objective">
-          <required/>
-        </part_declaration>
-        <property context="iso-27002" class="number">
-          <required/>
-          <identifier/>
-          <value><inherit/><autonum>.1</autonum></value>
-        </property>
-        <part_declaration context="control" class="description">
-          <required/>
-        </part_declaration>
-        <part_declaration context="control" class="guidance"/>
-        <part_declaration context="control" class="information"/>
-      </declarations>-->
       
       <xsl:apply-templates select="/*/body/div/div[@class = 'MainContent'][2]"/>
     </catalog>
