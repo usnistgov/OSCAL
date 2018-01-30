@@ -12,7 +12,7 @@ merge = element merge { empty }
 modify =  element modify { (param_setting | alteration )* }
 
 # Can have either 'all' or (a set of) 'call'
-\include = element include { all | call+ }
+\include = element include { all | (call | match)+ }
 
 # We are permitting include/call along with exclude/call to support tweaky with-subcontrol allowances
 # But downstream (Schematron) might detect inelegant or inoperable combinations of include/call and exclude/call
@@ -29,9 +29,12 @@ call = element call {
           (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
            attribute subcontrol-id { xsd:NCName } }
 
-exclude = element exclude { element call {
-            attribute control-id { xsd:NCName } |
-            attribute subcontrol-id { xsd:NCName } }+ }
+match = element match { withSubContrlsAttr, attribute pattern { text } }
+
+exclude = element exclude { ( match |
+            element call {
+              attribute control-id { xsd:NCName } |
+              attribute subcontrol-id { xsd:NCName } }+ ) }
 
 param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, value }
 
