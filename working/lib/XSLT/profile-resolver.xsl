@@ -194,10 +194,11 @@
     <xsl:variable name="matched" select="some $re in ($invocation/include/match/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/@id,$re))"/>
     <xsl:variable name="parent-control" select="$comp/(parent::control | parent::comp[oscal:classes(.)='control'] )"/>
     <xsl:variable name="subcontrol-matched" select="some $re in ($invocation/include/match[@with-subcontrols='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($parent-control/@id,$re))"/>
+    <xsl:variable name="control-implied" select="some $re in ($invocation/include/match[@with-control='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/subcontrol/@id,$re))"/>
     
     <xsl:variable name="unmatched" select="some $re in ($invocation/exclude/match/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/@id,$re))"/>
     
-    <xsl:sequence select="($matched or $subcontrol-matched or $included) and not($unmatched)"/>
+    <xsl:sequence select="($included or $matched or $subcontrol-matched or $control-implied) and not($unmatched)"/>
   </xsl:function>
   
   <xsl:template match="control | component[oscal:classes(.)='control']" priority="3" mode="import">
@@ -238,6 +239,7 @@
     <xsl:variable name="called"   select="exists($invocation/include/call[@subcontrol-id  = current()/@id])"/>
     <!-- The subcontrol can still be excluded -->
     <xsl:variable name="excluded" select="exists($invocation/exclude/call[@subcontrol-id  = current()/@id])"/>
+    
     <xsl:if test="$included or oscal:matched(.,$invocation) (: $included or $called) and not($excluded :)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
@@ -281,15 +283,15 @@
         </xsl:for-each-group>
       </merged>
     </xsl:variable>
-    <xsl:sequence select="$merged"/>
+    <!--<xsl:sequence select="$merged"/>-->
     
-    <!--<xsl:for-each select="$so-far/*">
+    <xsl:for-each select="$so-far/*">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:copy-of select="node()"/>
         <xsl:sequence select="$merged"/>
       </xsl:copy>
-    </xsl:for-each>-->
+    </xsl:for-each>
     <xsl:apply-templates select="." mode="echo"/>
     
     

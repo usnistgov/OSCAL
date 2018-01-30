@@ -8,10 +8,15 @@
    <import href="dinosaur-profile.xml"/>
    <import href="dinosaur-catalog.xml">
       <include>
-         <call control-id="triceratops"/>
+         <match pattern="tyrannosaur" with-control="yes" with-subcontrols="yes"/>
+         
+         <match pattern="triceratops"/>
+         <!--<call control-id="triceratops"/>
          <call with-subcontrols="yes" control-id="tyrannosaur"/>
-         <call control-id="archeopteryx"/>
+         <call control-id="archeopteryx"/>-->
       </include>
    </import>
-   <merge/>
+   <merge>
+      <build/>
+   </merge>
 </profile>

@@ -12,8 +12,11 @@
          
          <!-- From here on, we exclude ra.9 just to show that exclusions work -->
          <exclude>
-            <call control-id="ra.9"/>
+            <match pattern="ra\.9"/>
+            <!--<call control-id="ra.9"/>-->
          </exclude></import>
+   
+   
 <modify>
       
       <set-param param-id="ac-5_a">

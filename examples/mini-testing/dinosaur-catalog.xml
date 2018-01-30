@@ -29,7 +29,7 @@
         <group><title>Predators</title>
             <control id="allosaur"/>
             <control id="tyrannosaur">
-                <subcontrol id="rex"/>
+                <subcontrol id="tyrannosaurus-rex"/>
             </control>
             <control id="velociraptor"/>
         </group>
