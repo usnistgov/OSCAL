@@ -242,7 +242,7 @@
     <xsl:value-of select="replace($some,'\w','X')"/>
   </xsl:function>
   
-  <xsl:template match="text()" mode="#all">
+  <!--<xsl:template match="text()" mode="#all">
     <xsl:param tunnel="yes" name="trim"/>
     <xsl:value-of
       select="oscal:obfusc(
@@ -260,7 +260,7 @@
       replace(., $trim, '')
       else ."
     />
-  </xsl:template>
+  </xsl:template>-->
   
   <xsl:template match="p | p//*" mode="#all">
     <xsl:element name="{local-name()}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
