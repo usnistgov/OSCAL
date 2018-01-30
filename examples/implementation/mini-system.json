@@ -1,0 +1,138 @@
+{
+  "name": "mini-system",
+  "description": "This is the implementation of my mini-system",
+  "maintainers": [
+    "John Doe <jdoe@company.org>"
+  ],
+  "profiles": [
+    {
+      "name": "FedRAMP High",
+      "href": "../FedRAMP/FedRAMP-HIGH-crude.json"
+    }
+  ],
+  "components": [
+    {
+      "name": "Component A",
+      "description": "Description of Component A",
+      "responsibleRoles": [
+        "RoleA",
+        "RoleB"
+      ],
+      "satisfies": [
+        {
+          "controlIds": [
+            "ac.1"
+          ],
+          "narratives": [
+            {
+              "value": "This is how my system satisfies ac.1",
+              "references": []
+            }
+          ],
+          "origins": [
+            "mini-system"
+          ],
+          "statuses": [
+            "implemented"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "refid01",
+          "name": "My Reference",
+          "description": "This is a description of my reference",
+          "url": "http://url-to-my-reference.com/myref"
+        }
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "name": "Policy A",
+      "description": "Description of Policy A",
+      "responsibleRoles": [
+        "RoleA",
+        "RoleB"
+      ],
+      "satisfies": [
+        {
+          "controlIds": [
+            "ac.1"
+          ],
+          "narratives": [
+            {
+              "value": "This is how my policy satisfies ac.1",
+              "references": []
+            },
+            {
+              "value": "This is explanation about how my policy satisfies ac.1",
+              "references": []
+            }
+          ],
+          "origins": [
+            "organization"
+          ],
+          "statuses": [
+            "implemented"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "refid02",
+          "name": "My Reference",
+          "description": "This is a description of my organizational policy reference",
+          "url": "http://url-to-my-reference.com/myref"
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "name": "Procedure A",
+      "description": "Description of Procedure A",
+      "responsibleRoles": [
+        "RoleA",
+        "RoleB"
+      ],
+      "satisfies": [
+        {
+          "controlIds": [
+            "ac.1"
+          ],
+          "narratives": [
+            {
+              "value": "This is how my procedure satisfies ac.1",
+              "references": []
+            },
+            {
+              "value": "This is explanation about how my procedure satisfies ac.1",
+              "references": []
+            }
+          ],
+          "origins": [
+            "organization"
+          ],
+          "statuses": [
+            "implemented"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "refid02",
+          "name": "My Reference",
+          "description": "This is a description of my organizational procedure reference",
+          "url": "http://url-to-my-reference.com/myref"
+        }
+      ]
+    }
+  ],
+  "params": [
+    {
+      "paramId": "ac-1_a",
+      "value": "This is the value of param ac-1_a"
+    }
+  ]
+}

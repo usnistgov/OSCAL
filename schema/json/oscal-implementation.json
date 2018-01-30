@@ -1,0 +1,271 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://csrc.nist.gov/ns/oscal/1.0-implementation.json",
+  "definitions": {
+    "component": {
+      "$id": "#/definitions/component",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "description": {
+          "type": "string",
+          "description": ""
+        },
+        "responsibleRoles": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
+        },
+        "satisfies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/satisfy"
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "name",
+          "description",
+          "responsibleRoles",
+          "satisfies",
+          "references"
+        ]
+      }
+    },
+    "satisfy": {
+      "$id": "#/definitions/satisfy",
+      "type": "object",
+      "description": "",
+      "patternProperties": {
+        "^(controlIds|subcontrolIds)$": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "properties": {
+        "narratives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/narrative"
+          }
+        },
+        "origins": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
+        },
+        "statuses": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "string"
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "controlIds",
+          "subcontrolIds",
+          "narratives",
+          "origins",
+          "statuses",
+          "references"
+        ]
+      }
+    },
+    "narrative": {
+      "$id": "#/definitions/narrative",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": ""
+        },
+        "references": {
+          "type": "array",
+          "description": "Pointer to component reference",
+          "items": {
+            "$ref": "#/definitions/reference"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "value",
+          "references"
+        ]
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "param": {
+      "$id": "#/definitions/param",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "paramId": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "paramId",
+          "value"
+        ]
+      }
+    },
+    "policy": {
+      "$id": "#/definitions/policy",
+      "$ref": "#/definitions/component"
+    },
+    "procedure": {
+      "$id": "#/definitions/procedure",
+      "$ref": "#/definitions/component"
+    },
+    "reference": {
+      "$id": "#/definitions/reference",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "description": {
+          "type": "string",
+          "description": ""
+        },
+        "url": {
+          "type": "string",
+          "description": "",
+          "format": "uri"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "id",
+          "name",
+          "description",
+          "url"
+        ]
+      }
+    },
+    "profile": {
+      "$id": "#/definitions/profile",
+      "type": "object",
+      "description": "",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": ""
+        },
+        "href": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "name",
+          "href"
+        ]
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": ""
+    },
+    "description": {
+      "type": "string",
+      "description": ""
+    },
+    "maintainers": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "type": "string"
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "description": "Profiles to map",
+      "items": {
+        "$ref": "#/definitions/profile"
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/component"
+      }
+    },
+    "policies": {
+      "type" :"array",
+      "items": {
+        "$ref": "#/definitions/policy"
+      }
+    },
+    "procedures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/procedure"
+      }
+    },
+    "params": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/param"
+      }
+    }
+  },
+  "propertyNames": {
+    "enum": [
+      "name",
+      "description",
+      "maintainers",
+      "profiles",
+      "components",
+      "policies",
+      "procedures",
+      "params"
+    ]
+  }
+}
