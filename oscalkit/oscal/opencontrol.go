@@ -1,7 +1,9 @@
 package oscal
 
 import (
+	"fmt"
 	"path"
+	"strings"
 
 	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
 	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
@@ -28,7 +30,7 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 
 	for _, cert := range oc.Certifications {
 		implementationProfiles.Links = append(implementationProfiles.Links, core.Link{
-			Rel:  "framework",
+			Rel:  "profile",
 			Href: cert,
 		})
 	}
@@ -36,8 +38,8 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 	if oc.Dependencies != nil {
 		for _, cert := range oc.Dependencies.Certifications {
 			implementationProfiles.Links = append(implementationProfiles.Links, core.Link{
-				Rel:   "framework",
-				Href:  cert.URL,
+				Rel:   "profile",
+				Href:  "../../FedRAMP/FedRAMP-MODERATE-crude",
 				Value: parseOCCert(cert.URL),
 			})
 		}
@@ -70,17 +72,29 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 
 			part.OptionalClass = "satisfies"
 
+			key := strings.ToLower(ocSatisfy.ControlKey)
+			r := strings.NewReplacer(
+				" ", "",
+				"-", ".",
+				"(", ".",
+				")", "",
+			)
+			key = fmt.Sprintf("#%s", r.Replace(key))
 			part.Links = append(part.Links, core.Link{
 				Rel:  "satisfies",
-				Href: ocSatisfy.ControlKey,
+				Href: key,
 				// TODO: Value from linked "catalog"
 			})
 
 			part.Prose = &core.Prose{}
 			for _, ocNarrative := range ocSatisfy.Narrative {
+				raw := ocNarrative.Text
+				if strings.HasSuffix(raw, "\n") {
+					raw = strings.TrimSuffix(raw, "\n")
+				}
 				part.Prose.P = append(part.Prose.P, core.P{
 					OptionalClass: "narrative",
-					Raw:           ocNarrative.Text,
+					Raw:           raw,
 				})
 			}
 
@@ -154,7 +168,7 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 // to path to OSCAL JSON
 func parseOCCert(url string) string {
 	if path.Base(url) == "FedRAMP-Certifications" {
-		return "FedRAMP-MODERATE-crude.json"
+		return "FedRAMP MODERATE Baseline PROFILE"
 	}
 
 	return ""
