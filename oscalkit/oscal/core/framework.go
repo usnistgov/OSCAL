@@ -73,7 +73,11 @@ func (f *Framework) Raw(format string, prettify bool) ([]byte, error) {
 		return yaml.Marshal(f)
 
 	case "xml":
-		return nil, nil
+		if prettify {
+			return xml.MarshalIndent(f, "", "  ")
+		}
+
+		return xml.Marshal(f)
 	}
 
 	return nil, fmt.Errorf("Unknown format: %s", format)
