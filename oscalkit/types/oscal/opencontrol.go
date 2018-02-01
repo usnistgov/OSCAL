@@ -6,30 +6,28 @@ import (
 	"strings"
 
 	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/implementation"
 )
 
 func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component) (OSCAL, error) {
-	ocOSCAL := implementation.Implementation{}
+	ocOSCAL := Implementation{}
 	ocOSCAL.Title = oc.Name
 
-	ocOSCAL.Paragraphs = append(ocOSCAL.Paragraphs, core.P{
+	ocOSCAL.Paragraphs = append(ocOSCAL.Paragraphs, P{
 		OptionalClass: "description",
 		Raw:           oc.Metadata.Description,
 	})
 
 	for _, maintainer := range oc.Metadata.Maintainers {
-		ocOSCAL.Props = append(ocOSCAL.Props, core.Prop{
+		ocOSCAL.Props = append(ocOSCAL.Props, Prop{
 			RequiredClass: "maintainer",
 			Value:         maintainer,
 		})
 	}
 
-	implementationProfiles := &implementation.Profiles{}
+	implementationProfiles := &Profiles{}
 
 	for _, cert := range oc.Certifications {
-		implementationProfiles.Links = append(implementationProfiles.Links, core.Link{
+		implementationProfiles.Links = append(implementationProfiles.Links, Link{
 			Rel:  "profile",
 			Href: cert,
 		})
@@ -37,7 +35,7 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 
 	if oc.Dependencies != nil {
 		for _, cert := range oc.Dependencies.Certifications {
-			implementationProfiles.Links = append(implementationProfiles.Links, core.Link{
+			implementationProfiles.Links = append(implementationProfiles.Links, Link{
 				Rel:   "profile",
 				Href:  "../../FedRAMP/FedRAMP-MODERATE-crude",
 				Value: parseOCCert(cert.URL),
@@ -46,29 +44,29 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 	}
 
 	ocOSCAL.Profiles = implementationProfiles
-	ocOSCAL.Params = implementation.Params{}
-	ocOSCAL.Components = implementation.Components{}
+	ocOSCAL.Params = Params{}
+	ocOSCAL.Components = Components{}
 
 	for _, ocComponent := range ocComponents {
-		item := core.Item{}
+		item := Item{}
 
 		item.Title = ocComponent.Name
-		item.Prose = &core.Prose{}
+		item.Prose = &Prose{}
 
 		// Outputs "null" JSON value since this is self-closing XML tag
-		item.Prose.P = append(item.Prose.P, core.P{
+		item.Prose.P = append(item.Prose.P, P{
 			OptionalClass: "description",
 		})
 
 		if ocComponent.ResponsibleRole != "" {
-			item.Prose.P = append(item.Prose.P, core.P{
+			item.Prose.P = append(item.Prose.P, P{
 				OptionalClass: "responsibleRoles",
 				Raw:           ocComponent.ResponsibleRole,
 			})
 		}
 
 		for _, ocSatisfy := range ocComponent.Satisfies {
-			var part core.Part
+			var part Part
 
 			part.OptionalClass = "satisfies"
 
@@ -80,56 +78,56 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 				")", "",
 			)
 			key = fmt.Sprintf("#%s", r.Replace(key))
-			part.Links = append(part.Links, core.Link{
+			part.Links = append(part.Links, Link{
 				Rel:  "satisfies",
 				Href: key,
 				// TODO: Value from linked "catalog"
 			})
 
-			part.Prose = &core.Prose{}
+			part.Prose = &Prose{}
 			for _, ocNarrative := range ocSatisfy.Narrative {
 				raw := ocNarrative.Text
 				if strings.HasSuffix(raw, "\n") {
 					raw = strings.TrimSuffix(raw, "\n")
 				}
-				part.Prose.P = append(part.Prose.P, core.P{
+				part.Prose.P = append(part.Prose.P, P{
 					OptionalClass: "narrative",
 					Raw:           raw,
 				})
 			}
 
 			for _, ocOrigin := range ocSatisfy.ControlOrigins {
-				part.Props = append(part.Props, core.Prop{
+				part.Props = append(part.Props, Prop{
 					RequiredClass: "origin",
 					Value:         ocOrigin,
 				})
 			}
 
 			if ocSatisfy.ControlOrigin != "" {
-				part.Props = append(part.Props, core.Prop{
+				part.Props = append(part.Props, Prop{
 					RequiredClass: "origin",
 					Value:         ocSatisfy.ControlOrigin,
 				})
 			}
 
 			for _, ocParameter := range ocSatisfy.Parameters {
-				ocOSCAL.Params.SetParams = append(ocOSCAL.Params.SetParams, implementation.ImplementationParam{
+				ocOSCAL.Params.SetParams = append(ocOSCAL.Params.SetParams, ImplementationParam{
 					ID: ocParameter.Key,
-					Desc: core.Desc{
+					Desc: Desc{
 						Raw: ocParameter.Text,
 					},
 				})
 			}
 
 			for _, ocStatus := range ocSatisfy.ImplementationStatuses {
-				part.Props = append(part.Props, core.Prop{
+				part.Props = append(part.Props, Prop{
 					RequiredClass: "status",
 					Value:         ocStatus,
 				})
 			}
 
 			if ocSatisfy.ImplementationStatus != "" {
-				part.Props = append(part.Props, core.Prop{
+				part.Props = append(part.Props, Prop{
 					RequiredClass: "status",
 					Value:         ocSatisfy.ImplementationStatus,
 				})
@@ -139,17 +137,17 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 		}
 
 		for _, ocReference := range ocComponent.References {
-			part := core.Part{
+			part := Part{
 				OptionalClass: "reference",
 				Title:         ocReference.Name,
 			}
 
-			part.Prose = &core.Prose{}
-			part.Prose.P = append(part.Prose.P, core.P{
+			part.Prose = &Prose{}
+			part.Prose.P = append(part.Prose.P, P{
 				OptionalClass: "description",
 			})
 
-			part.Links = append(part.Links, core.Link{
+			part.Links = append(part.Links, Link{
 				Value: ocReference.Path,
 			})
 

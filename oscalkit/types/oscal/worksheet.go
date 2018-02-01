@@ -8,12 +8,11 @@
 // You should have received a copy of the CC0 Public Domain Dedication along with this software.
 // If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-package core
+package oscal
 
 import (
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
 
 	yaml "gopkg.in/yaml.v2"
 )
@@ -37,26 +36,23 @@ func (Worksheet) Component() string {
 	return "worksheet"
 }
 
-// Raw ...
-func (w *Worksheet) Raw(format string, prettify bool) ([]byte, error) {
-	switch format {
-	case "json":
-		if prettify {
-			return json.MarshalIndent(w, "", "  ")
-		}
-		return json.Marshal(w)
-
-	case "yaml", "yml":
-		return yaml.Marshal(w)
-
-	case "xml":
-		return xml.Marshal(w)
+// RawXML ...
+func (w *Worksheet) RawXML(prettify bool) ([]byte, error) {
+	if prettify {
+		return xml.MarshalIndent(w, "", "  ")
 	}
-
-	return nil, fmt.Errorf("Unknown format: %s", format)
+	return xml.Marshal(w)
 }
 
-// Type ...
-func (w *Worksheet) Type() interface{} {
-	return w
+// RawJSON ...
+func (w *Worksheet) RawJSON(prettify bool) ([]byte, error) {
+	if prettify {
+		return json.MarshalIndent(w, "", "  ")
+	}
+	return json.Marshal(w)
+}
+
+// RawYAML ...
+func (w *Worksheet) RawYAML() ([]byte, error) {
+	return yaml.Marshal(w)
 }

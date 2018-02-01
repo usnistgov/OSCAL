@@ -20,9 +20,6 @@ import (
 	"path/filepath"
 
 	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/implementation"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/profile"
 	yaml "gopkg.in/yaml.v2"
 )
 
@@ -31,14 +28,14 @@ type OSCAL interface {
 	// Component returns the OSCAL component type of the parsed OSCAL text.
 	Component() string
 
-	// Raw returns the raw OSCAL text in a chosen format.
-	// Setting prettify to true returns prettified text in the given format.
-	Raw(format string, prettify bool) ([]byte, error)
+	// RawXML returns OSCAL-formatted XML
+	RawXML(prettify bool) ([]byte, error)
 
-	// Type returns the parsed OSCAL object. The caller will
-	// need to use type assertion to get the proper OSCAL type.
-	// The Component() function can assist with this.
-	Type() interface{}
+	// RawJSON returns OSCAL-formatted JSON
+	RawJSON(prettify bool) ([]byte, error)
+
+	// RawYAML returns OSCAL-formatted YAML
+	RawYAML() ([]byte, error)
 }
 
 // Options ...
@@ -113,15 +110,15 @@ func New(options Options) (OSCAL, error) {
 		return nil, err
 	}
 
-	var coreOSCAL core.Core
-	var profileOSCAL profile.Profile
-	var implementationOSCAL implementation.Implementation
+	var coreOSCAL Core
+	var profileOSCAL Profile
+	var implementationOSCAL Implementation
 
 	// Need a better way to identify OSCAL type from reader contents.
 	// Unable to properly capture error for malformed raw OSCAL
-	if err = xml.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (core.Core{}) {
+	if err = xml.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (Core{}) {
 		return &coreOSCAL, nil
-	} else if err = json.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (core.Core{}) {
+	} else if err = json.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (Core{}) {
 		return &coreOSCAL, nil
 	} else if err = xml.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Invocations) > 0 {
 		return &profileOSCAL, nil

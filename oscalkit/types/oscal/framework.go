@@ -8,12 +8,11 @@
 // You should have received a copy of the CC0 Public Domain Dedication along with this software.
 // If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-package core
+package oscal
 
 import (
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
 
 	yaml "gopkg.in/yaml.v2"
 )
@@ -60,30 +59,25 @@ func (f *Framework) Component() string {
 	return "framework"
 }
 
-// Raw ...
-func (f *Framework) Raw(format string, prettify bool) ([]byte, error) {
-	switch format {
-	case "json":
-		if prettify {
-			return json.MarshalIndent(f, "", "  ")
-		}
-		return json.Marshal(f)
-
-	case "yaml", "yml":
-		return yaml.Marshal(f)
-
-	case "xml":
-		if prettify {
-			return xml.MarshalIndent(f, "", "  ")
-		}
-
-		return xml.Marshal(f)
+// RawXML ...
+func (f *Framework) RawXML(prettify bool) ([]byte, error) {
+	if prettify {
+		return xml.MarshalIndent(f, "", "  ")
 	}
 
-	return nil, fmt.Errorf("Unknown format: %s", format)
+	return xml.Marshal(f)
 }
 
-// Type ...
-func (f *Framework) Type() interface{} {
-	return f
+// RawJSON ...
+func (f *Framework) RawJSON(prettify bool) ([]byte, error) {
+	if prettify {
+		return json.MarshalIndent(f, "", "  ")
+	}
+
+	return json.Marshal(f)
+}
+
+// RawYAML ...
+func (f *Framework) RawYAML() ([]byte, error) {
+	return yaml.Marshal(f)
 }

@@ -8,10 +8,11 @@
 // You should have received a copy of the CC0 Public Domain Dedication along with this software.
 // If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-package core
+package oscal
 
-// Prop ...
-type Prop struct {
-	RequiredClass string `xml:"class,attr" json:"class" yaml:"class"`
-	Value         string `xml:",chardata" json:"value,omitempty" yaml:"value,omitempty"`
+// Link ...
+type Link struct {
+	Rel   string `xml:"rel,attr" json:"rel,omitempty"  yaml:"rel,omitempty"`
+	Href  string `xml:"href,attr" json:"href" yaml:"href"`
+	Value string `xml:",chardata" json:"value,omitempty" yaml:"value,omitempty"`
 }

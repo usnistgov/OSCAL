@@ -15,7 +15,7 @@ import (
 	"io/ioutil"
 
 	"github.com/urfave/cli"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal"
+	"github.com/usnistgov/OSCAL/oscalkit/types/oscal"
 )
 
 var includeXML bool
@@ -56,7 +56,7 @@ var ConvertOpenControl = cli.Command{
 		}
 
 		if includeXML {
-			rawXMLOCOSCAL, err := ocOSCAL.Raw("xml", true)
+			rawXMLOCOSCAL, err := ocOSCAL.RawXML(true)
 			if err != nil {
 				return cli.NewExitError(fmt.Sprintf("Error producing raw XML: %s", err), 1)
 			}
@@ -66,7 +66,7 @@ var ConvertOpenControl = cli.Command{
 		}
 
 		if yaml {
-			rawYAMLOCOSCAL, err := ocOSCAL.Raw("yaml", true)
+			rawYAMLOCOSCAL, err := ocOSCAL.RawYAML()
 			if err != nil {
 				return cli.NewExitError(err, 1)
 			}
@@ -75,7 +75,7 @@ var ConvertOpenControl = cli.Command{
 			}
 		}
 
-		rawOCOSCAL, err := ocOSCAL.Raw("json", true)
+		rawOCOSCAL, err := ocOSCAL.RawJSON(true)
 		if err != nil {
 			return cli.NewExitError(err, 1)
 		}

@@ -23,7 +23,7 @@ import (
 
 	"github.com/Sirupsen/logrus"
 	"github.com/urfave/cli"
-	"github.com/usnistgov/OSCAL/oscalkit/oscal"
+	"github.com/usnistgov/OSCAL/oscalkit/types/oscal"
 )
 
 var outputPath string
@@ -153,7 +153,7 @@ func convert(rawSource []byte, sourcePath string) error {
 			return err
 		}
 
-		oscalJSON, err := oscal.Raw("json", true)
+		oscalJSON, err := oscal.RawJSON(true)
 		if err != nil {
 			return err
 		}
@@ -165,7 +165,7 @@ func convert(rawSource []byte, sourcePath string) error {
 		logrus.Infof("XML file %s successfully converted to JSON", sourcePath)
 
 		if yaml {
-			oscalYAML, err := oscal.Raw("yml", false)
+			oscalYAML, err := oscal.RawYAML()
 			if err != nil {
 				return err
 			}
@@ -185,7 +185,7 @@ func convert(rawSource []byte, sourcePath string) error {
 			return err
 		}
 
-		oscalXML, err := oscal.Raw("xml", true)
+		oscalXML, err := oscal.RawXML(true)
 		if err != nil {
 			return err
 		}

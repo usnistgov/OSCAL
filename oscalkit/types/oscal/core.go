@@ -8,12 +8,11 @@
 // You should have received a copy of the CC0 Public Domain Dedication along with this software.
 // If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-package core
+package oscal
 
 import (
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
 
 	yaml "gopkg.in/yaml.v2"
 )
@@ -26,6 +25,8 @@ type Core struct {
 	Framework    *Framework    `json:"framework,omitempty" yaml:"framework,omitempty"`
 	Worksheet    *Worksheet    `json:"worksheet,omitempty" yaml:"worksheet,omitempty"`
 }
+
+var _ OSCAL = (*Core)(nil)
 
 // MarshalXML ...
 func (c *Core) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
@@ -98,30 +99,23 @@ func (Core) Component() string {
 	return "core"
 }
 
-// Raw ...
-func (c *Core) Raw(format string, prettify bool) ([]byte, error) {
-	switch format {
-	case "json":
-		if prettify {
-			return json.MarshalIndent(c, "", "  ")
-		}
-
-		return json.Marshal(c)
-
-	case "yaml", "yml":
-		return yaml.Marshal(c)
-
-	case "xml":
-		if prettify {
-			return xml.MarshalIndent(c, "", "  ")
-		}
-		return xml.Marshal(c)
+// RawXML ...
+func (c *Core) RawXML(prettify bool) ([]byte, error) {
+	if prettify {
+		return xml.MarshalIndent(c, "", "  ")
 	}
-
-	return nil, fmt.Errorf("Unknown format: %s", format)
+	return xml.Marshal(c)
 }
 
-// Type ...
-func (c *Core) Type() interface{} {
-	return c
+// RawJSON ...
+func (c *Core) RawJSON(prettify bool) ([]byte, error) {
+	if prettify {
+		return json.MarshalIndent(c, "", "  ")
+	}
+	return json.Marshal(c)
+}
+
+// RawYAML ...
+func (c *Core) RawYAML() ([]byte, error) {
+	return yaml.Marshal(c)
 }

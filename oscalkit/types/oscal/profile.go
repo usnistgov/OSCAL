@@ -8,7 +8,7 @@
 // You should have received a copy of the CC0 Public Domain Dedication along with this software.
 // If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 
-package profile
+package oscal
 
 import (
 	"encoding/json"
@@ -17,7 +17,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/usnistgov/OSCAL/oscalkit/oscal/core"
 	yaml "gopkg.in/yaml.v2"
 )
 
@@ -50,11 +49,11 @@ func (r *Raw) UnmarshalJSON(data []byte) error {
 
 // Profile ...
 type Profile struct {
-	XMLName       xml.Name        `xml:"http://csrc.nist.gov/ns/oscal/1.0 profile" json:"-" yaml:"-"`
-	ID            string          `xml:"id,attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
-	Title         *Raw            `xml:"title,omitempty" json:"title,omitempty" yaml:"title,omitempty"`
-	Invocations   []Invoke        `xml:"invoke" json:"invocations" yaml:"invocations"`
-	FrameworkJSON *core.Framework `xml:"framework,omitempty" json:"framework,omitempty" yaml:"framework,omitempty"`
+	XMLName       xml.Name   `xml:"http://csrc.nist.gov/ns/oscal/1.0 profile" json:"-" yaml:"-"`
+	ID            string     `xml:"id,attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
+	Title         *Raw       `xml:"title,omitempty" json:"title,omitempty" yaml:"title,omitempty"`
+	Invocations   []Invoke   `xml:"invoke" json:"invocations" yaml:"invocations"`
+	FrameworkJSON *Framework `xml:"framework,omitempty" json:"framework,omitempty" yaml:"framework,omitempty"`
 }
 
 // Href ...
@@ -196,8 +195,8 @@ type Remove struct {
 
 // Augment ...
 type Augment struct {
-	Props []core.Prop `xml:"prop,omitempty" json:"props,omitempty" yaml:"props,omitempty"`
-	Parts []core.Part `xml:"part,omitempty" json:"parts,omitempty" yaml:"parts,omitempty"`
+	Props []Prop `xml:"prop,omitempty" json:"props,omitempty" yaml:"props,omitempty"`
+	Parts []Part `xml:"part,omitempty" json:"parts,omitempty" yaml:"parts,omitempty"`
 }
 
 // Component ...
@@ -205,41 +204,24 @@ func (p *Profile) Component() string {
 	return "profile"
 }
 
-// Raw ...
-func (p *Profile) Raw(format string, prettify bool) ([]byte, error) {
-	switch format {
-	case "json":
-		if prettify {
-			return json.MarshalIndent(p, "", "  ")
-		}
-		return json.Marshal(p)
-
-	case "yaml", "yml":
-		return yaml.Marshal(p)
-
-	case "xml":
-		if prettify {
-			return xml.MarshalIndent(p, "", "  ")
-		}
-		return xml.Marshal(p)
+// RawXML ...
+func (p *Profile) RawXML(prettify bool) ([]byte, error) {
+	if prettify {
+		return xml.MarshalIndent(p, "", "  ")
 	}
-
-	return nil, fmt.Errorf("Unknown format: %s", format)
+	return xml.Marshal(p)
 }
 
-// Type ...
-func (p *Profile) Type() interface{} {
-	return p
+// RawJSON ...
+func (p *Profile) RawJSON(prettify bool) ([]byte, error) {
+	if prettify {
+		return json.MarshalIndent(p, "", "  ")
+	}
+	return json.Marshal(p)
+
 }
 
-func formatRawProse(raw string) string {
-	lines := strings.Split(raw, "\n")
-
-	value := []string{}
-
-	for _, line := range lines {
-		value = append(value, strings.TrimSpace(line))
-	}
-
-	return strings.Join(value, "")
+// RawYAML ...
+func (p *Profile) RawYAML() ([]byte, error) {
+	return yaml.Marshal(p)
 }
