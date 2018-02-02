@@ -49,11 +49,12 @@ func (r *Raw) UnmarshalJSON(data []byte) error {
 
 // Profile ...
 type Profile struct {
-	XMLName       xml.Name   `xml:"http://csrc.nist.gov/ns/oscal/1.0 profile" json:"-" yaml:"-"`
-	ID            string     `xml:"id,attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
-	Title         *Raw       `xml:"title,omitempty" json:"title,omitempty" yaml:"title,omitempty"`
-	Invocations   []Invoke   `xml:"invoke" json:"invocations" yaml:"invocations"`
-	FrameworkJSON *Framework `xml:"framework,omitempty" json:"framework,omitempty" yaml:"framework,omitempty"`
+	XMLName xml.Name `xml:"http://csrc.nist.gov/ns/oscal/1.0 profile" json:"-" yaml:"-"`
+	ID      string   `xml:"id,attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
+	Title   *Raw     `xml:"title,omitempty" json:"title,omitempty" yaml:"title,omitempty"`
+	Imports []Import `xml:"import" json:"imports" yaml:"imports"`
+	Merge   *Merge   `xml:"merge,omitempty" json:"merge,omitempty" yaml:"merge,omitempty"`
+	Modify  *Modify  `xml:"modify,omitempty" json:"modify,omitempty" yaml:"modify,omitempty"`
 }
 
 // Href ...
@@ -74,26 +75,46 @@ func (h *Href) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 	return xml.Attr{Name: name, Value: fmt.Sprintf("%s.xml", strings.TrimSuffix(string(*h), filepath.Ext(string(*h))))}, nil
 }
 
-// Invoke ...
-type Invoke struct {
-	Href          *Href          `xml:"href,attr,omitempty" json:"href,omitempty" yaml:"href,omitempty"`
-	Include       *Include       `xml:"include,omitempty" json:"include,omitempty" yaml:"include,omitempty"`
-	Exclude       *Exclude       `xml:"exclude,omitempty" json:"exclude,omitempty" yaml:"exclude,omitempty"`
+// Import ...
+type Import struct {
+	Href    *Href    `xml:"href,attr" json:"href" yaml:"href"`
+	Include *Include `xml:"include,omitempty" json:"include,omitempty" yaml:"include,omitempty"`
+	Exclude *Exclude `xml:"exclude,omitempty" json:"exclude,omitempty" yaml:"exclude,omitempty"`
+}
+
+// Merge ...
+type Merge struct {
+	Build struct{}
+}
+
+// Modify ...
+type Modify struct {
 	ParamSettings []ParamSetting `xml:"set-param,omitempty" json:"paramSettings,omitempty" yaml:"paramSettings,omitempty"`
 	Alterations   []Alteration   `xml:"alter,omitempty" json:"alterations,omitempty" yaml:"alterations,omitempty"`
 }
 
 // Include ...
 type Include struct {
-	All   *All   `xml:"all,omitempty" json:"all,omitempty" yaml:"all,omitempty"`
-	Calls []Call `xml:"call,omitempty" json:"calls,omitempty" yaml:"calls,omitempty"`
+	All     *All    `xml:"all,omitempty" json:"all,omitempty" yaml:"all,omitempty"`
+	Calls   []Call  `xml:"call,omitempty" json:"calls,omitempty" yaml:"calls,omitempty"`
+	Matches []Match `xml:"match,omitempty" json:"match,omitempty" yaml:"match,omitempty"`
 }
 
 // WithSubcontrols ...
 type WithSubcontrols bool
 
+// WithControl ...
+type WithControl bool
+
 // UnmarshalXMLAttr ...
 func (w *WithSubcontrols) UnmarshalXMLAttr(attr xml.Attr) error {
+	*w = attr.Value == "yes"
+
+	return nil
+}
+
+// UnmarshalXMLAttr ...
+func (w *WithControl) UnmarshalXMLAttr(attr xml.Attr) error {
 	*w = attr.Value == "yes"
 
 	return nil
@@ -115,6 +136,13 @@ type All struct {
 
 type withSubcontrolsJSON struct {
 	WithSubcontrols bool `json:"withSubcontrols"`
+}
+
+// Match ...
+type Match struct {
+	WithSubcontrols WithSubcontrols `xml:"with-subcontrols,attr,omitempty"`
+	WithControl     WithControl     `xml:"with-control,attr,omitempty"`
+	Pattern         string          `xml:"pattern,attr,omitempty"`
 }
 
 // MarshalJSON ...
@@ -156,6 +184,7 @@ func (a *All) UnmarshalJSON(data []byte) error {
 
 // Exclude ...
 type Exclude struct {
+	Match *Match        `xml:"match,omitempty" json:"match,omitempty" yaml:"match,omitempty"`
 	Calls []ExcludeCall `xml:"call" json:"calls,omitempty" yaml:"calls,omitempty"`
 }
 
@@ -224,4 +253,73 @@ func (p *Profile) RawJSON(prettify bool) ([]byte, error) {
 // RawYAML ...
 func (p *Profile) RawYAML() ([]byte, error) {
 	return yaml.Marshal(p)
+}
+
+// ScaffoldImplementation ...
+func (p *Profile) ScaffoldImplementation() *Implementation {
+	implementation := &Implementation{
+		Title: fmt.Sprintf("%s Implementation Scaffolding", p.Title),
+	}
+
+	var components []Item
+	for _, impt := range p.Imports {
+		for _, call := range impt.Include.Calls {
+			parts := strings.Split(call.ControlID, ".")
+			components = addComponent(components, call, parts)
+		}
+	}
+
+	implementation.Components.Items = components
+
+	return implementation
+}
+
+func addComponent(items []Item, call Call, suffix []string) []Item {
+	var id string
+	if call.ControlID != "" {
+		id = call.ControlID
+	} else if call.SubcontrolID != "" {
+		id = call.SubcontrolID
+	}
+
+	if len(suffix) == 2 {
+		var id string
+		if call.ControlID != "" {
+			id = call.ControlID
+		} else if call.SubcontrolID != "" {
+			id = call.SubcontrolID
+		}
+
+		items = append(items, Item{
+			ID:    id,
+			Title: fmt.Sprintf("%s Title", id),
+			Parts: []Part{
+				Part{
+					OptionalClass: "satisfies",
+					Prose: &Prose{
+						P: []P{
+							P{
+								OptionalClass: "narrative",
+								Raw:           fmt.Sprintf("%s Narrative", id),
+							},
+						},
+					},
+					Props: []Prop{
+						Prop{
+							RequiredClass: "status",
+							Value:         "none",
+						},
+					},
+				},
+			},
+		})
+	} else {
+		for i, item := range items {
+			if strings.HasPrefix(id, item.ID) {
+				items[i].Items = addComponent(items[i].Items, call, suffix[1:])
+			}
+		}
+	}
+
+	return items
 }

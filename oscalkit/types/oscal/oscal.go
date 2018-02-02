@@ -120,9 +120,9 @@ func New(options Options) (OSCAL, error) {
 		return &coreOSCAL, nil
 	} else if err = json.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (Core{}) {
 		return &coreOSCAL, nil
-	} else if err = xml.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Invocations) > 0 {
+	} else if err = xml.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Imports) > 0 {
 		return &profileOSCAL, nil
-	} else if err = json.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Invocations) > 0 {
+	} else if err = json.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Imports) > 0 {
 		return &profileOSCAL, nil
 	} else if err = json.Unmarshal(rawOSCAL, &implementationOSCAL); err == nil && len(implementationOSCAL.Components.Items) > 0 {
 		return &implementationOSCAL, nil
