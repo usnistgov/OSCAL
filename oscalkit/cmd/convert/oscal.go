@@ -97,12 +97,12 @@ var ConvertOSCAL = cli.Command{
 			if len(matches) > 0 {
 				for _, match := range matches {
 					if err := convert(nil, match); err != nil {
-						return cli.NewExitError(fmt.Sprintf("Error converting to OSCAL from source: %s", err), 1)
+						return cli.NewExitError(fmt.Sprintf("Error converting to OSCAL from file %s: %s", match, err), 1)
 					}
 				}
 			} else {
 				if err := convert(nil, sourcePath); err != nil {
-					return cli.NewExitError(fmt.Sprintf("Error converting to OSCAL from source: %s", err), 1)
+					return cli.NewExitError(fmt.Sprintf("Error converting to OSCAL from file %s: %s", sourcePath, err), 1)
 				}
 			}
 		}
@@ -148,7 +148,7 @@ func convert(rawSource []byte, sourcePath string) error {
 	case ".xml":
 		logrus.Debug("Converting XML to JSON")
 
-		oscal, err := oscal.New(oscal.Options{Reader: f})
+		oscal, err := oscal.New(f)
 		if err != nil {
 			return err
 		}
@@ -180,7 +180,7 @@ func convert(rawSource []byte, sourcePath string) error {
 	case ".json":
 		logrus.Debug("Converting JSON to XML")
 
-		oscal, err := oscal.New(oscal.Options{Reader: f})
+		oscal, err := oscal.New(f)
 		if err != nil {
 			return err
 		}

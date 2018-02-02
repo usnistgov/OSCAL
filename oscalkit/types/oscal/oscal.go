@@ -11,6 +11,7 @@
 package oscal
 
 import (
+	"bytes"
 	"encoding/json"
 	"encoding/xml"
 	"errors"
@@ -24,18 +25,13 @@ import (
 )
 
 // OSCAL ...
-type OSCAL interface {
-	// Component returns the OSCAL component type of the parsed OSCAL text.
-	Component() string
-
-	// RawXML returns OSCAL-formatted XML
-	RawXML(prettify bool) ([]byte, error)
-
-	// RawJSON returns OSCAL-formatted JSON
-	RawJSON(prettify bool) ([]byte, error)
-
-	// RawYAML returns OSCAL-formatted YAML
-	RawYAML() ([]byte, error)
+type OSCAL struct {
+	Catalog        *Catalog        `json:"catalog,omitempty" yaml:"catalog,omitempty"`
+	Framework      *Framework      `json:"framework,omitempty" yaml:"framework,omitempty"`
+	Worksheet      *Worksheet      `json:"worksheet,omitempty" yaml:"worksheet,omitempty"`
+	Declarations   *Declarations   `json:"declarations,omitempty" yaml:"declarations,omitempty"`
+	Profile        *Profile        `json:"profile,omitempty" yaml:"profile,omitempty"`
+	Implementation *Implementation `json:"implementation,omitempty" yaml:"implementation,omitempty"`
 }
 
 // Options ...
@@ -50,7 +46,7 @@ type OpenControlOptions struct {
 }
 
 // NewFromOC initializes an OSCAL type from raw OpenControl data
-func NewFromOC(options OpenControlOptions) (OSCAL, error) {
+func NewFromOC(options OpenControlOptions) (*OSCAL, error) {
 	ocFile, err := os.Open(options.OpenControlYAMLFilepath)
 	if err != nil {
 		return nil, err
@@ -102,31 +98,143 @@ func NewFromOC(options OpenControlOptions) (OSCAL, error) {
 }
 
 // New ...
-func New(options Options) (OSCAL, error) {
+func New(r io.Reader) (*OSCAL, error) {
 	var err error
 
-	rawOSCAL, err := ioutil.ReadAll(options.Reader)
+	rawOSCAL, err := ioutil.ReadAll(r)
 	if err != nil {
 		return nil, err
 	}
 
-	var coreOSCAL Core
-	var profileOSCAL Profile
-	var implementationOSCAL Implementation
+	d := xml.NewDecoder(bytes.NewReader(rawOSCAL))
+	for {
+		token, err := d.Token()
+		if err != nil || token == nil {
+			break
+		}
+		switch startElement := token.(type) {
+		case xml.StartElement:
+			switch startElement.Name.Local {
+			case "catalog":
+				var catalog Catalog
+				if err := xml.Unmarshal(rawOSCAL, &catalog); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Catalog: &catalog}, nil
 
-	// Need a better way to identify OSCAL type from reader contents.
-	// Unable to properly capture error for malformed raw OSCAL
-	if err = xml.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (Core{}) {
-		return &coreOSCAL, nil
-	} else if err = json.Unmarshal(rawOSCAL, &coreOSCAL); err == nil && coreOSCAL != (Core{}) {
-		return &coreOSCAL, nil
-	} else if err = xml.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Imports) > 0 {
-		return &profileOSCAL, nil
-	} else if err = json.Unmarshal(rawOSCAL, &profileOSCAL); err == nil && len(profileOSCAL.Imports) > 0 {
-		return &profileOSCAL, nil
-	} else if err = json.Unmarshal(rawOSCAL, &implementationOSCAL); err == nil && len(implementationOSCAL.Components.Items) > 0 {
-		return &implementationOSCAL, nil
+			case "framework":
+				var framework Framework
+				if err := xml.Unmarshal(rawOSCAL, &framework); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Framework: &framework}, nil
+
+			case "worksheet":
+				var worksheet Worksheet
+				if err := xml.Unmarshal(rawOSCAL, &worksheet); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Worksheet: &worksheet}, nil
+
+			case "declarations":
+				var declarations Declarations
+				if err := xml.Unmarshal(rawOSCAL, &declarations); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Declarations: &declarations}, nil
+
+			case "profile":
+				var profile Profile
+				if err := xml.Unmarshal(rawOSCAL, &profile); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Profile: &profile}, nil
+
+			case "implementation":
+				var implementation Implementation
+				if err := xml.Unmarshal(rawOSCAL, &implementation); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Implementation: &implementation}, nil
+			}
+
+		}
 	}
 
-	return nil, errors.New("Improperly formatted OSCAL")
+	var oscalT map[string]interface{}
+	if err := json.Unmarshal(rawOSCAL, &oscalT); err != nil {
+		return nil, err
+	}
+	if err = json.Unmarshal(rawOSCAL, &oscalT); err == nil {
+		for k := range oscalT {
+			switch k {
+			case "catalog":
+				var catalog Catalog
+				if err := json.Unmarshal(rawOSCAL, &catalog); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Catalog: &catalog}, nil
+
+			case "framework":
+				var framework Framework
+				if err := json.Unmarshal(rawOSCAL, &framework); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Framework: &framework}, nil
+
+			case "worksheet":
+				var worksheet Worksheet
+				if err := json.Unmarshal(rawOSCAL, &worksheet); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Worksheet: &worksheet}, nil
+
+			case "declarations":
+				var declarations Declarations
+				if err := json.Unmarshal(rawOSCAL, &declarations); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Declarations: &declarations}, nil
+
+			case "profile":
+				var profile Profile
+				if err := json.Unmarshal(rawOSCAL, &profile); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Profile: &profile}, nil
+
+			case "implementation":
+				var implementation Implementation
+				if err := json.Unmarshal(rawOSCAL, &implementation); err != nil {
+					return nil, err
+				}
+				return &OSCAL{Implementation: &implementation}, nil
+			}
+		}
+
+		return nil, errors.New("Malformed OSCAL")
+	}
+
+	return nil, errors.New("Malformed OSCAL. Must be XML or JSON")
+}
+
+// RawXML ...
+func (o *OSCAL) RawXML(prettify bool) ([]byte, error) {
+	if prettify {
+		return xml.MarshalIndent(o, "", "  ")
+	}
+	return xml.Marshal(o)
+}
+
+// RawJSON ...
+func (o *OSCAL) RawJSON(prettify bool) ([]byte, error) {
+	if prettify {
+		return json.MarshalIndent(o, "", "  ")
+	}
+	return json.Marshal(o)
+}
+
+// RawYAML ...
+func (o *OSCAL) RawYAML() ([]byte, error) {
+	return yaml.Marshal(o)
 }

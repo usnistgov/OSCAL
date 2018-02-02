@@ -8,7 +8,7 @@ import (
 	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
 )
 
-func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component) (OSCAL, error) {
+func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component) (*OSCAL, error) {
 	ocOSCAL := Implementation{}
 	ocOSCAL.Title = oc.Name
 
@@ -159,7 +159,7 @@ func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component)
 
 	ocOSCAL.Profiles = implementationProfiles
 
-	return &ocOSCAL, nil
+	return &OSCAL{Implementation: &ocOSCAL}, nil
 }
 
 // Temporary mechanism for converting https://github.com/opencontrol/FedRAMP-Certifications
