@@ -26,12 +26,50 @@ import (
 
 // OSCAL ...
 type OSCAL struct {
+	XMLName        xml.Name        `json:"-" yaml:"-"`
 	Catalog        *Catalog        `json:"catalog,omitempty" yaml:"catalog,omitempty"`
 	Framework      *Framework      `json:"framework,omitempty" yaml:"framework,omitempty"`
 	Worksheet      *Worksheet      `json:"worksheet,omitempty" yaml:"worksheet,omitempty"`
 	Declarations   *Declarations   `json:"declarations,omitempty" yaml:"declarations,omitempty"`
 	Profile        *Profile        `json:"profile,omitempty" yaml:"profile,omitempty"`
 	Implementation *Implementation `json:"implementation,omitempty" yaml:"implementation,omitempty"`
+}
+
+// MarshalXML ...
+func (o *OSCAL) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	if o.Catalog != nil {
+		o.XMLName = o.Catalog.XMLName
+		if err := e.Encode(o.Catalog); err != nil {
+			return err
+		}
+	} else if o.Declarations != nil {
+		o.XMLName = o.Declarations.XMLName
+		if err := e.Encode(o.Declarations); err != nil {
+			return err
+		}
+	} else if o.Framework != nil {
+		o.XMLName = o.Framework.XMLName
+		if err := e.Encode(o.Framework); err != nil {
+			return err
+		}
+	} else if o.Worksheet != nil {
+		o.XMLName = o.Worksheet.XMLName
+		if err := e.Encode(o.Worksheet); err != nil {
+			return err
+		}
+	} else if o.Profile != nil {
+		o.XMLName = o.Profile.XMLName
+		if err := e.Encode(o.Profile); err != nil {
+			return err
+		}
+	} else if o.Implementation != nil {
+		o.XMLName = o.Implementation.XMLName
+		if err := e.Encode(o.Implementation); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // Options ...
@@ -161,51 +199,51 @@ func New(r io.Reader) (*OSCAL, error) {
 		}
 	}
 
-	var oscalT map[string]interface{}
+	var oscalT map[string]json.RawMessage
 	if err := json.Unmarshal(rawOSCAL, &oscalT); err != nil {
 		return nil, err
 	}
 	if err = json.Unmarshal(rawOSCAL, &oscalT); err == nil {
-		for k := range oscalT {
+		for k, v := range oscalT {
 			switch k {
 			case "catalog":
 				var catalog Catalog
-				if err := json.Unmarshal(rawOSCAL, &catalog); err != nil {
+				if err := json.Unmarshal(v, &catalog); err != nil {
 					return nil, err
 				}
 				return &OSCAL{Catalog: &catalog}, nil
 
 			case "framework":
 				var framework Framework
-				if err := json.Unmarshal(rawOSCAL, &framework); err != nil {
+				if err := json.Unmarshal(v, &framework); err != nil {
 					return nil, err
 				}
 				return &OSCAL{Framework: &framework}, nil
 
 			case "worksheet":
 				var worksheet Worksheet
-				if err := json.Unmarshal(rawOSCAL, &worksheet); err != nil {
+				if err := json.Unmarshal(v, &worksheet); err != nil {
 					return nil, err
 				}
 				return &OSCAL{Worksheet: &worksheet}, nil
 
 			case "declarations":
 				var declarations Declarations
-				if err := json.Unmarshal(rawOSCAL, &declarations); err != nil {
+				if err := json.Unmarshal(v, &declarations); err != nil {
 					return nil, err
 				}
 				return &OSCAL{Declarations: &declarations}, nil
 
 			case "profile":
 				var profile Profile
-				if err := json.Unmarshal(rawOSCAL, &profile); err != nil {
+				if err := json.Unmarshal(v, &profile); err != nil {
 					return nil, err
 				}
 				return &OSCAL{Profile: &profile}, nil
 
 			case "implementation":
 				var implementation Implementation
-				if err := json.Unmarshal(rawOSCAL, &implementation); err != nil {
+				if err := json.Unmarshal(v, &implementation); err != nil {
 					return nil, err
 				}
 				return &OSCAL{Implementation: &implementation}, nil
