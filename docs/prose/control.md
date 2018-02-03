@@ -1,3 +1,18 @@
+---
+title: OSCAL Controls
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  - xml
+  - json
+
+toc_footers:
+  - <a href='#'>GitHub Repo</a>
+  - <a href='#'>NIST.gov</a>
+
+includes:
+
+search: true
+---
 # OSCAL Controls
 In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures," but most are considerably more complicated. Here's an example of a control from [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4):
 
@@ -26,6 +41,53 @@ The example below shows a partial draft of how the AC1 control from NIST SP 800-
 
 Note: I need to convert this into a code sample to take advantage of Slate capabilities.
 
-![800-53Rev4AC1OSCAL](/docs/graphics/NIST-SP-800-53-AC1-in-OSCAL-XML.png "NIST SP 800-53 Rev 4 AC-1 in OSCAL XML")
+```xml
+      <control class="SP800-53" id="ac.1">
+         <title>ACCESS CONTROL POLICY AND PROCEDURES</title>
+         <param id="ac-1_a">
+            <desc>organization-defined personnel or roles</desc>
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="ac-1_b">
+            <desc>organization-defined frequency</desc>
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="ac-1_c">
+            <desc>organization-defined frequency</desc>
+            <value>organization-defined frequency</value>
+         </param>
+         <prop class="name">AC-1</prop>
+         <prop class="priority">P1</prop>
+         <prop class="baseline-impact">LOW</prop>
+         <prop class="baseline-impact">MODERATE</prop>
+         <prop class="baseline-impact">HIGH</prop>
+         <part class="statement">
+            <p class="description">The organization:</p>
+            <part class="item" id="smm_ac-1a.">
+               <prop class="name">AC-1a.</prop>
+               <p class="description">Develops, documents, and disseminates to <insert param-id="ac-1_a"/>:</p>
+               <part class="item" id="sms_ac-1a.1.">
+                  <prop class="name">AC-1a.1.</prop>
+                  <p class="description">An access control policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and</p>
+               </part>
+               <part class="item" id="sms_ac-1a.2.">
+                  <prop class="name">AC-1a.2.</prop>
+                  <p class="description">Procedures to facilitate the implementation of the access control policy and associated access controls; and</p>
+               </part>
+            </part>
+            <part class="item" id="smm_ac-1b.">
+               <prop class="name">AC-1b.</prop>
+               <p class="description">Reviews and updates the current:</p>
+               <part class="item" id="sms_ac-1b.1.">
+                  <prop class="name">AC-1b.1.</prop>
+                  <p class="description">Access control policy <insert param-id="ac-1_b"/>; and</p>
+               </part>
+               <part class="item" id="sms_ac-1b.2.">
+                  <prop class="name">AC-1b.2.</prop>
+                  <p class="description">Access control procedures <insert param-id="ac-1_c"/>.</p>
+               </part>
+            </part>
+         </part>
+```
 
 TBD talk about what's in the graphic. Focus on the content being represented more than the XML itself.
