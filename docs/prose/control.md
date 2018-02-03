@@ -35,7 +35,13 @@ Each OSCAL control element defines a single security or privacy control. A contr
 * Subcontrols (optional). An OSCAL subcontrol is very similar to an OSCAL control in its composition, but a subcontrol always extends a control and is dependent on that control. 
 * Control components (optional). An OSCAL control-components element can contain properties, hypertext links, control parameters, and other content.
 
-The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. More details on the components of this example are provided below.
+The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. TBD explain the following:
+
+* What the control class and control id are
+* What a param is and how it is used
+* What the name property is
+* What the priority and baseline-impact properties are
+* What the statement property is, including how it uses the item property
 
 ```xml
       <control class="SP800-53" id="ac.1">
@@ -86,15 +92,7 @@ The example below shows a partial draft of how the AC1 control from NIST SP 800-
          </part>
 ```
 
-TBD explain the following:
-
-* What the control class and control id are
-* What a param is and how it is used
-* What the name property is
-* What the priority and baseline-impact properties are
-* What the statement property is, including how it uses the item property
-
-Here is another excerpt:
+Here is another excerpt. TBD explain it.
 
 ```xml
          <part class="guidance">
@@ -103,7 +101,7 @@ Here is another excerpt:
          </part>
 ```
 
-Another excerpt:
+Here is another excerpt. TBD explain it.
 
 ```xml
          <part class="objective">
@@ -153,7 +151,7 @@ Another excerpt:
             </part>
 ```
 
-Another excerpt:
+Here is another excerpt. TBD explain it.
 
 ```xml
          <part class="assessment">
@@ -176,3 +174,5 @@ Another excerpt:
          </references>
       </control>
 ```
+
+TBD provide some sort of conclusion. Would also be good to show a second example, although not to talk to it in as much detail as the first one.
