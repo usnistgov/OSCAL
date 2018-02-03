@@ -26,6 +26,6 @@ The example below shows a partial draft of how the AC1 control from NIST SP 800-
 
 Note: I need to convert this into a code sample to take advantage of Slate capabilities.
 
-![800-53Rev4AC1OSCAL](/source/images/NIST-SP-800-53-AC1-in-OSCAL-XML.png "NIST SP 800-53 Rev 4 AC-1 in OSCAL XML")
+![800-53Rev4AC1OSCAL](/docs/graphics/NIST-SP-800-53-AC1-in-OSCAL-XML.png "NIST SP 800-53 Rev 4 AC-1 in OSCAL XML")
 
 TBD talk about what's in the graphic. Focus on the content being represented more than the XML itself.
