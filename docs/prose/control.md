@@ -24,8 +24,6 @@ This control has seven high-level components, including a security control ident
 
 Comparing the ISO 27001 and NIST SP 800-53 examples show obvious differences. NIST SP 800-53 includes several components, such as references, control enhancements, and priority, that ISO 27001 does not. NIST SP 800-53's statement of the control itself is also much more detailed and specific than ISO 27001's. Also, NIST SP 800-53 states its control in a structured format, breaking the text into several lettered and numbered pieces, while the ISO 27001 control is a single short statement. A final noteworthy distinction is that the security control identifier from NIST SP 800-53 and the control objective number from ISO 27001 both serve the same purpose--providing a unique identifier for a control. Someone who is not familiar with both standards might not assume that these two terms really mean the same thing.
 
-Note: I should try to create a visual that compares the two examples (mappings between them).
-
 OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.
 
 ## The OSCAL control element
@@ -37,9 +35,7 @@ Each OSCAL control element defines a single security or privacy control. A contr
 * Subcontrols (optional). An OSCAL subcontrol is very similar to an OSCAL control in its composition, but a subcontrol always extends a control and is dependent on that control. 
 * Control components (optional). An OSCAL control-components element can contain properties, hypertext links, control parameters, and other content.
 
-The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML.
-
-Note: I need to convert this into a code sample to take advantage of Slate capabilities.
+The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. More details on the components of this example are provided below.
 
 ```xml
       <control class="SP800-53" id="ac.1">
@@ -90,4 +86,12 @@ Note: I need to convert this into a code sample to take advantage of Slate capab
          </part>
 ```
 
-TBD talk about what's in the graphic. Focus on the content being represented more than the XML itself.
+TBD explain the following:
+
+* What the control class and control id are
+* What a param is and how it is used
+* What the name property is
+* What the priority and baseline-impact properties are
+* What the statement property is, including how it uses the item property
+
+
