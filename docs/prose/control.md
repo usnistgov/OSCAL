@@ -94,4 +94,85 @@ TBD explain the following:
 * What the priority and baseline-impact properties are
 * What the statement property is, including how it uses the item property
 
+Here is another excerpt:
 
+```xml
+         <part class="guidance">
+            <p>This control addresses the establishment of policy and procedures for the effective implementation of selected security controls and control enhancements in the AC family. Policy and procedures reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Security program policies and procedures at the organization level may make the need for system-specific policies and procedures unnecessary. The policy can be included as part of the general information security policy for organizations or conversely, can be represented by multiple policies reflecting the complex nature of certain organizations. The procedures can be established for the security program in general and for particular information systems, if needed. The organizational risk management strategy is a key factor in establishing policy and procedures.</p>
+            <link href="#pm.9"/>
+         </part>
+```
+
+Another excerpt:
+
+```xml
+         <part class="objective">
+            <p class="decision">Determine if the organization:</p>
+            <part class="objective" id="obj_ac-1.a.1.">
+               <prop class="name">AC-1(a)(1)</prop>
+               <part class="objective" id="obj_ac-1.a.1.1.">
+                  <prop class="name">AC-1(a)(1)[1]</prop>
+                  <p class="decision">develops and documents an access control policy that addresses:</p>
+                  <part class="objective" id="obj_ac-1.a.1.1.a.">
+                     <prop class="name">AC-1(a)(1)[1][a]</prop>
+                     <p class="decision">purpose;</p>
+                  </part>
+                  <part class="objective" id="obj_ac-1.a.1.1.b.">
+                     <prop class="name">AC-1(a)(1)[1][b]</prop>
+                     <p class="decision">scope;</p>
+                  </part>
+                  <part class="objective" id="obj_ac-1.a.1.1.c.">
+                     <prop class="name">AC-1(a)(1)[1][c]</prop>
+                     <p class="decision">roles;</p>
+                  </part>
+                  <part class="objective" id="obj_ac-1.a.1.1.d.">
+                     <prop class="name">AC-1(a)(1)[1][d]</prop>
+                     <p class="decision">responsibilities;</p>
+                  </part>
+                  <part class="objective" id="obj_ac-1.a.1.1.e.">
+                     <prop class="name">AC-1(a)(1)[1][e]</prop>
+                     <p class="decision">management commitment;</p>
+                  </part>
+                  <part class="objective" id="obj_ac-1.a.1.1.f.">
+                     <prop class="name">AC-1(a)(1)[1][f]</prop>
+                     <p class="decision">coordination among organizational entities;</p>
+                  </part>
+                  <part class="objective" id="obj_ac-1.a.1.1.g.">
+                     <prop class="name">AC-1(a)(1)[1][g]</prop>
+                     <p class="decision">compliance;</p>
+                  </part>
+               </part>
+               <part class="objective" id="obj_ac-1.a.1.2.">
+                  <prop class="name">AC-1(a)(1)[2]</prop>
+                  <p class="decision">defines personnel or roles to whom the access control policy are to be disseminated;</p>
+               </part>
+               <part class="objective" id="obj_ac-1.a.1.3.">
+                  <prop class="name">AC-1(a)(1)[3]</prop>
+                  <p class="decision">disseminates the access control policy to organization-defined personnel or roles;</p>
+               </part>
+            </part>
+```
+
+Another excerpt:
+
+```xml
+         <part class="assessment">
+            <prop class="method">EXAMINE</prop>
+            <p class="object">Access control policy and procedures</p>
+            <p class="object">other relevant documents or records</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">INTERVIEW</prop>
+            <p class="object">Organizational personnel with access control responsibilities</p>
+            <p class="object">organizational personnel with information security responsibilities</p>
+         </part>
+         <references>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special Publication 800-12</citation>
+            </ref>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-100">NIST Special Publication 800-100</citation>
+            </ref>
+         </references>
+      </control>
+```
