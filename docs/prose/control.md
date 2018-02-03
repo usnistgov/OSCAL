@@ -35,9 +35,10 @@ Each OSCAL control element defines a single security or privacy control. A contr
 * Subcontrols (optional). An OSCAL subcontrol is very similar to an OSCAL control in its composition, but a subcontrol always extends a control and is dependent on that control. 
 * Control components (optional). An OSCAL control-components element can contain properties, hypertext links, control parameters, and other content.
 
-The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. TBD explain the following:
+The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. Here's an overview of the major components within this example:
 
-* What the control class and control id are
+* The control class is "SP800-53". This is TBD.
+* The control id is "ac.1".
 * What a param is and how it is used
 * What the name property is
 * What the priority and baseline-impact properties are
