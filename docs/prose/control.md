@@ -35,7 +35,7 @@ Each OSCAL control element defines a single security or privacy control. A contr
 * Subcontrols (optional). An OSCAL subcontrol is very similar to an OSCAL control in its composition, but a subcontrol always extends a control and is dependent on that control. 
 * Control components (optional). An OSCAL control-components element can contain properties, hypertext links, control parameters, and other content.
 
-The example below shows a partial draft of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. Here's an overview of the major components within this example:
+The example below shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. Here's an overview of the major components within this example:
 
 * The control class is "SP800-53". TBD: explain what this means, or skip it?
 * The control id is "ac.1". This is not the "AC-1" identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?
@@ -92,7 +92,7 @@ The example below shows a partial draft of how the AC1 control from NIST SP 800-
          </part>
 ```
 
-Here is another excerpt. TBD explain it.
+The second part of the example continues where the previous one ended. This example contains the supplemental guidance. Note that unlike the control text in the previous example, which had a highly structured OSCAL XML representation, the supplemental guidance is a simple paragraph. There is no need to structure it because it is meant as background information for a person to read and would not be part of automation.
 
 ```xml
          <part class="guidance">
@@ -101,69 +101,9 @@ Here is another excerpt. TBD explain it.
          </part>
 ```
 
-Here is another excerpt. TBD explain it.
+The final part of the example contains the references. These are links to additional sources of information for the control.
 
 ```xml
-         <part class="objective">
-            <p class="decision">Determine if the organization:</p>
-            <part class="objective" id="obj_ac-1.a.1.">
-               <prop class="name">AC-1(a)(1)</prop>
-               <part class="objective" id="obj_ac-1.a.1.1.">
-                  <prop class="name">AC-1(a)(1)[1]</prop>
-                  <p class="decision">develops and documents an access control policy that addresses:</p>
-                  <part class="objective" id="obj_ac-1.a.1.1.a.">
-                     <prop class="name">AC-1(a)(1)[1][a]</prop>
-                     <p class="decision">purpose;</p>
-                  </part>
-                  <part class="objective" id="obj_ac-1.a.1.1.b.">
-                     <prop class="name">AC-1(a)(1)[1][b]</prop>
-                     <p class="decision">scope;</p>
-                  </part>
-                  <part class="objective" id="obj_ac-1.a.1.1.c.">
-                     <prop class="name">AC-1(a)(1)[1][c]</prop>
-                     <p class="decision">roles;</p>
-                  </part>
-                  <part class="objective" id="obj_ac-1.a.1.1.d.">
-                     <prop class="name">AC-1(a)(1)[1][d]</prop>
-                     <p class="decision">responsibilities;</p>
-                  </part>
-                  <part class="objective" id="obj_ac-1.a.1.1.e.">
-                     <prop class="name">AC-1(a)(1)[1][e]</prop>
-                     <p class="decision">management commitment;</p>
-                  </part>
-                  <part class="objective" id="obj_ac-1.a.1.1.f.">
-                     <prop class="name">AC-1(a)(1)[1][f]</prop>
-                     <p class="decision">coordination among organizational entities;</p>
-                  </part>
-                  <part class="objective" id="obj_ac-1.a.1.1.g.">
-                     <prop class="name">AC-1(a)(1)[1][g]</prop>
-                     <p class="decision">compliance;</p>
-                  </part>
-               </part>
-               <part class="objective" id="obj_ac-1.a.1.2.">
-                  <prop class="name">AC-1(a)(1)[2]</prop>
-                  <p class="decision">defines personnel or roles to whom the access control policy are to be disseminated;</p>
-               </part>
-               <part class="objective" id="obj_ac-1.a.1.3.">
-                  <prop class="name">AC-1(a)(1)[3]</prop>
-                  <p class="decision">disseminates the access control policy to organization-defined personnel or roles;</p>
-               </part>
-            </part>
-```
-
-Here is another excerpt. TBD explain it.
-
-```xml
-         <part class="assessment">
-            <prop class="method">EXAMINE</prop>
-            <p class="object">Access control policy and procedures</p>
-            <p class="object">other relevant documents or records</p>
-         </part>
-         <part class="assessment">
-            <prop class="method">INTERVIEW</prop>
-            <p class="object">Organizational personnel with access control responsibilities</p>
-            <p class="object">organizational personnel with information security responsibilities</p>
-         </part>
          <references>
             <ref>
                 <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special Publication 800-12</citation>
