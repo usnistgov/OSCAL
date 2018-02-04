@@ -116,3 +116,52 @@ The final part of the example contains the references. These are links to additi
 ```
 
 TBD provide some sort of conclusion. Would also be good to show a second example, although not to talk to it in as much detail as the first one.
+
+```xml
+   <group class="control-category" id="g9">
+      <title>Access control</title>
+      <prop class="number">9</prop>
+      <group class="clause" id="g9-1">
+         <title>Business requirements of access control</title>
+         <prop class="number">9.1</prop>
+         <part class="objective">
+            <p>XX.</p>
+         </part>
+         <control class="iso-27002" id="c9-1-1">
+            <title>Access control policy</title>
+            <prop class="number">9.1.1</prop>
+            <part class="description">
+               <p>XX.</p>
+            </part>
+            <part class="guidance">
+               <p>XXXXX.</p>
+               <p>XXXXXX.</p>
+               <p>XXX:</p>
+               <ol>
+                  <li>XXXXXXXX;</li>
+                  <li>XXXXXXXX;</li>
+                  <li>XXXXXXXXXX;</li>
+                  <li>XXXXXXXXXXX;</li>
+                  <li>XXXXXXXXXXXX;</li>
+                  <li>XXXXXXXXXXXX;</li>
+                  <li>XXXXX.</li>
+               </ol>
+            </part>
+            <part class="information">
+               <p>XXXX:</p>
+               <ol>
+                  <li>XXXXXXXXXXXX;</li>
+                  <li>XXXXXXX;</li>
+                  <li>XXXXXXX;</li>
+                  <li>XXXXX.</li>
+               </ol>
+               <p>XXXXXX.</p>
+               <p>XXXX.</p>
+               <p>XXX:</p>
+               <ol>
+                  <li>XXXX-XX-XXXX;</li>
+                  <li>XXXX-XX-XXX.</li>
+               </ol>
+            </part>
+         </control>
+```
