@@ -115,7 +115,7 @@ The final part of the example contains the references. These are links to additi
       </control>
 ```
 
-TBD provide some sort of conclusion. Would also be good to show a second example, although not to talk to it in as much detail as the first one.
+TBD show a second example. Not sure if I should be using ISO 27001 (which is what we'd talked about last time) or ISO 27002.
 
 ```xml
    <group class="control-category" id="g9">
