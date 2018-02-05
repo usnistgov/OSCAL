@@ -20,7 +20,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
+	"github.com/usnistgov/OSCAL/oscalkit/types/opencontrol"
 	yaml "gopkg.in/yaml.v2"
 )
 

@@ -5,7 +5,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/usnistgov/OSCAL/oscalkit/opencontrol"
+	"github.com/usnistgov/OSCAL/oscalkit/types/opencontrol"
 )
 
 func convertOC(oc opencontrol.OpenControl, ocComponents []opencontrol.Component) (*OSCAL, error) {
