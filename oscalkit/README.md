@@ -8,38 +8,35 @@ Barebones toolkit for translating between OSCAL-formatted XML and JSON and for c
 
 You can download the appropriate oscalkit command-line utility for your system from the [TBD] page and run it from your local machine directly. For easier execution, you can include it in your `$PATH` environment variable as follows:
 
-Windows:
+### Windows
 
 > XML validation requires the `xmllint` tool which is not included with Windows. Installation instructions for Windows can be found [here](https://stackoverflow.com/a/21227833).
 
-```powershell
-# Run the following commands in a PowerShell console
+Run the following commands in a PowerShell console
 
+```powershell
 $newPath = "<path_to_oscalkit.exe>;" + [Environment]::GetEnvironmentVariable("PATH", [EnvironmentVariableTarget]::Machine)
+
 [Environment]::SetEnvironmentVariable("PATH", $newPath, [EnvironmentVariableTarget]::Machine)
 ```
 
-macOS/Linux:
+### macOS/Linux
 
-```sh
-# Add the following line to to the .profile file in your home directory (~/.profile)
+Add the following line to to the .profile file in your home directory (~/.profile)
 
-PATH=$PATH:/<path_to_oscalkit>
-export PATH
-```
+    $ PATH=$PATH:/<path_to_oscalkit>
+    $ export PATH
 
-Docker:
+### Docker
 
 > Running the oscalkit Docker container requires either bind-mounting the directory containing your source files or passing file contents in to the command via stdin.
 
-```sh
-docker pull usnistgov/oscalkit:latest
-docker run -it --rm -v $PWD:/data -w /data usnistgov/oscalkit convert oscal-core.xml
+    $ docker pull usnistgov/oscalkit:latest
+    $ docker run -it --rm -v $PWD:/data -w /data usnistgov/oscalkit convert oscal-core.xml
 
-# or via stdin
+or via stdin:
 
-docker run -it --rm usnistgov/osaclkit convert < oscal-core.xml
-```
+    $ docker run -it --rm usnistgov/osaclkit convert < oscal-core.xml
 
 ## Usage
 
@@ -69,7 +66,6 @@ GLOBAL OPTIONS:
 `oscalkit` can be used to convert one or more source files between OSCAL-formatted XML and JSON.
 
 ```
-NAME:
    oscalkit convert oscal - convert between one or more OSCAL file formats
 
 USAGE:
@@ -83,21 +79,18 @@ DESCRIPTION:
 OPTIONS:
    --output-path value, -o value  Output path for converted file(s). Defaults to current working directory
    --output-file value, -f value  file name for converted output from STDIN. Defaults to "stdin.<json|xml|yaml>"
-   --yaml, -y                     If source file format is XML or JSON, also generate equivalent YAML output
+   --include-yaml                 If source file format is XML or JSON, also generate equivalent YAML output
 ```
+
 #### Examples
 
 Convert OSCAL-formatted NIST 800-53 declarations from XML to JSON:
 
-```sh
-oscalkit convert oscal SP800-53-declarations.xml
-```
+    $ oscalkit convert oscal SP800-53-declarations.xml
 
 Convert OSCAL-formatted NIST 800-53 declarations from XML to JSON via STDIN (note the use of "-"):
 
-```sh
-cat SP800-53-declarations.xml | oscalkit convert oscal -
-```
+    $ cat SP800-53-declarations.xml | oscalkit convert oscal -
 
 ### Convert from OpenControl project to OSCAL
 
@@ -116,15 +109,14 @@ DESCRIPTION:
 
 OPTIONS:
    --yaml, -y  Generate YAML in addition to JSON
+   --xml, -x   Generate XML in addition to JSON
 ```
 
 ### Examples
 
 Convert OpenControl project to OSCAL-formatted JSON:
 
-```sh
-oscalkit convert opencontrol ./opencontrol.yaml ./opencontrols/
-```
+    $ oscalkit convert opencontrol ./opencontrol.yaml ./opencontrols/
 
 ### Validate against XML and JSON schemas
 
@@ -149,9 +141,7 @@ OPTIONS:
 
 Validate FedRAMP framework in OSCAL-formatted JSON against the corresponding JSON schema
 
-```sh
-oscalkit validate -s oscal-core.json fedramp-annotated-wrt-SP800-53catalog.json
-```
+    $ oscalkit validate -s oscal-core.json fedramp-annotated-wrt-SP800-53catalog.json
 
 ## Developing
 
@@ -161,23 +151,20 @@ oscalkit validate -s oscal-core.json fedramp-annotated-wrt-SP800-53catalog.json
 
 The [`dep`](https://github.com/golang/dep) dependency management tool is used to vendor the application's dependencies. The `vendor/` folder containing the dependencies is checked in with the source. With [`dep`](https://github.com/golang/dep), you can verify the dependencies as follows:
 
-```sh
-dep ensure
-```
+    $ dep ensure
 
 ### Compile
 
 You can use the included `Makefile` to generate binaries for your OS as follows (requires [Docker](https://docs.docker.com/engine/installation/)):
 
-```sh
-# Compile for Linux
+Compile for Linux:
 
-GOOS=linux GOARCH=amd64 make
+    $ GOOS=linux GOARCH=amd64 make
 
-# Compile for macOS
+Compile for macOS:
 
-GOOS=darwin GOARCH=amd64 make
+    $ GOOS=darwin GOARCH=amd64 make
 
-# Compile for Windows
+Compile for Windows:
 
-GOOS=windows GOARCH=amd64 make
+    $ GOOS=windows GOARCH=amd64 make
