@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "http://csrc.nist.gov/ns/oscal/1.0-implementation.json",
+  "definitions": {
+    "profiles": {
+      "$id": "#/definitions/profiles",
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/link"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "links"
+        ]
+      },
+      "required": [
+        "links"
+      ]
+    },
+    "components": {
+      "$id": "#/definitions/components",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/item"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "items"
+        ]
+      },
+      "required": [
+        "items"
+      ]
+    },
+    "policies": {
+      "$id": "#/definitions/policies",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/item"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "items"
+        ]
+      }
+    },
+    "procedures": {
+      "$id": "#/definitions/procedures",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/item"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "items"
+        ]
+      }
+    },
+    "params": {
+      "$id": "#/definitions/params",
+      "type": "object",
+      "properties": {
+        "setParams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/implementationParam"
+          }
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "setParams"
+        ]
+      }
+    },
+    "implementationParam": {
+      "$id": "#/definitions/implementationParam",
+      "type": "object",
+      "properties": {
+        "paramId": {
+          "type": "string"
+        },
+        "props": {
+          "type": "array",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/prop"
+          }
+        },
+        "desc": {
+          "type": "string",
+          "description": ""
+        },
+        "value": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "paramId",
+          "props",
+          "desc",
+          "value"
+        ]
+      }
+    }
+  },
+  "type": "object",
+  "description": "",
+  "properties": {
+    "implementation": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": ""
+        },
+        "title": {
+          "type": "string",
+          "description": ""
+        },
+        "prose": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "props": {
+          "type": "array",
+          "items": {
+            "$ref": "oscal-core.json#/definitions/prop"
+          }
+        },
+        "profiles": {
+          "$ref": "#/definitions/profiles"
+        },
+        "components": {
+          "$ref": "#/definitions/components"
+        },
+        "policies": {
+          "$ref": "#/definitions/policies"
+        },
+        "procedures": {
+          "$ref": "#/definitions/procedures"
+        },
+        "params": {
+          "$ref": "#/definitions/params"
+        }
+      }
+    }
+  },
+  "propertyNames": {
+    "enum": [
+      "implementation"
+    ]
+  },
+  "required": [
+    "implementation"
+  ]
+}
