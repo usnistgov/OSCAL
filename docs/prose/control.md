@@ -18,11 +18,13 @@ In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set o
 
 ![800-53Rev4AC1](/docs/graphics/NIST-SP-800-53-Rev4-AC1.png "NIST SP 800-53 Rev 4 AC-1")
 
-This control has seven high-level components, including a security control identifier ("AC-1"), a title ("ACCESS CONTROL POLICY AND PROCEDURES"), the control itself, supplemental guidance, control enhancements, references, and a priority and baseline allocation. Now look at a similar excerpt of [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) on access control policy (control objective number A.9.1.1). It is comparatively simple, with only an identifier ("A.9.1.1"), a title ("Access control policy"), and the control itself.
+This control has seven high-level components, including a security control identifier ("AC-1"), a title ("ACCESS CONTROL POLICY AND PROCEDURES"), the control itself, supplemental guidance, control enhancements, references, and a priority and baseline allocation. Now look at a similar excerpt of [ISO 27002](https://www.iso.org/standard/54533.html) on access control policy. It is even more detailed, with an identifier ("9.1.1"), a title ("Access control policy"), control text, lengthy implementation guidance, and other information (additional advice on access control policy).
 
-![ISO27001A91](/docs/graphics/ISO-27001-Control-A9.png "ISO 27001 Control Objective A.9.1.1")
+![ISO27002911-1](/docs/graphics/ISO-27002-Control-9.1.1-part1.png "ISO 27002 Control 9.1.1 Part 1")
 
-Comparing the ISO 27001 and NIST SP 800-53 examples show obvious differences. NIST SP 800-53 includes several components, such as references, control enhancements, and priority, that ISO 27001 does not. NIST SP 800-53's statement of the control itself is also much more detailed and specific than ISO 27001's. Also, NIST SP 800-53 states its control in a structured format, breaking the text into several lettered and numbered pieces, while the ISO 27001 control is a single short statement. A final noteworthy distinction is that the security control identifier from NIST SP 800-53 and the control objective number from ISO 27001 both serve the same purpose--providing a unique identifier for a control. Someone who is not familiar with both standards might not assume that these two terms really mean the same thing.
+![ISO27002911-2](/docs/graphics/ISO-27002-Control-9.1.1-part2.png "ISO 27002 Control 9.1.1 Part 2")
+
+Comparing the ISO 27002 and NIST SP 800-53 examples show obvious differences. NIST SP 800-53 includes several components, such as references, control enhancements, and priority, that ISO 27002 does not. NIST SP 800-53's statement of the control itself is also much more detailed and specific than ISO 27002's, because ISO 27002 provides those details in its implementation guidance instead of the control text. There are other differences in terminology as well, such as NIST SP 800-53 using the term "supplemental guidance" for roughly what ISO 27002 calls "other information".
 
 OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.
 
@@ -115,53 +117,44 @@ The final part of the example contains the references. These are links to additi
       </control>
 ```
 
-TBD show a second example. Not sure if I should be using ISO 27001 (which is what we'd talked about last time) or ISO 27002.
+The following shows a brief excerpt of ISO 27002 represented in OSCAL XML. This excerpt contains the definition of control 9.1.1, with text strings replaced with X's and truncated for brevity. Comparing this control definition to the OSCAL XML version of NIST SP 800-53 AC-1, you can see the same elements are used: control class and id, title, number, description, guidance, and information. Both controls are represented using the same structure.
 
 ```xml
-   <group class="control-category" id="g9">
-      <title>Access control</title>
-      <prop class="number">9</prop>
-      <group class="clause" id="g9-1">
-         <title>Business requirements of access control</title>
-         <prop class="number">9.1</prop>
-         <part class="objective">
-            <p>XX.</p>
-         </part>
          <control class="iso-27002" id="c9-1-1">
             <title>Access control policy</title>
             <prop class="number">9.1.1</prop>
             <part class="description">
-               <p>XX.</p>
+               <p>XX XXXXXX.</p>
             </part>
             <part class="guidance">
-               <p>XXXXX.</p>
+               <p>XXXXXX.</p>
                <p>XXXXXX.</p>
                <p>XXX:</p>
                <ol>
                   <li>XXXXXXXX;</li>
-                  <li>XXXXXXXX;</li>
-                  <li>XXXXXXXXXX;</li>
+                  <li>XXXXXXXX (XXX <a href="#g8-2">8.2</a>);</li>
                   <li>XXXXXXXXXXX;</li>
-                  <li>XXXXXXXXXXXX;</li>
-                  <li>XXXXXXXXXXXX;</li>
-                  <li>XXXXX.</li>
+                  <li>XXXXXXXXXXXX (XXX <a href="#c9-2-1">9.2.1</a> XXX <a href="#c9-2-2">9.2.2</a>);</li>
+                  <li>XXXXXXXXXXXX (XXX <a href="#c9-2-5">9.2.5</a>);</li>
+                  <li>XXXXXXX (XXX <a href="#c9-2-6">9.2.6</a>);</li>
+                  <li>XXXXXXXXX;</li>
+                  <li>XXXXX (XXX <a href="#c9-2-3">9.2.3</a>).</li>
                </ol>
             </part>
             <part class="information">
                <p>XXXX:</p>
                <ol>
-                  <li>XXXXXXXXXXXX;</li>
-                  <li>XXXXXXX;</li>
+                  <li>XXXXXXXXXXXX”;</li>
+                  <li>XXXXXXX (XXX <a href="#c8-2-2">8.2.2</a>) XXXX;</li>
                   <li>XXXXXXX;</li>
                   <li>XXXXX.</li>
                </ol>
-               <p>XXXXXX.</p>
+               <p>XXXXXX (XXX <a href="#g9-2">9.2</a>, <a href="#g9-3">9.3</a>, <a href="#g9-4">9.4</a>) XXX (XXX <a href="#c6-1-1">6.1.1</a>, <a href="#g9-3">9.3</a>).</p>
                <p>XXXX.</p>
                <p>XXX:</p>
                <ol>
-                  <li>XXXX-XX-XXXX;</li>
-                  <li>XXXX-XX-XXX.</li>
+                  <li>XXXX-XX-XXXX: XXX);</li>
+                  <li>XXXX-XX-XXX: XXX.</li>
                </ol>
             </part>
-         </control>
 ```
