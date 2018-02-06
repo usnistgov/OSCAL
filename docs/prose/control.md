@@ -20,9 +20,7 @@ In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set o
 
 This control has seven high-level components, including a security control identifier ("AC-1"), a title ("ACCESS CONTROL POLICY AND PROCEDURES"), the control itself, supplemental guidance, control enhancements, references, and a priority and baseline allocation. Now look at a similar excerpt of [ISO 27002](https://www.iso.org/standard/54533.html) on access control policy. It is even more detailed, with an identifier ("9.1.1"), a title ("Access control policy"), control text, lengthy implementation guidance, and other information (additional advice on access control policy).
 
-![ISO27002911-1](/docs/graphics/ISO-27002-Control-9.1.1-part1.png "ISO 27002 Control 9.1.1 Part 1")
-
-![ISO27002911-2](/docs/graphics/ISO-27002-Control-9.1.1-part2.png "ISO 27002 Control 9.1.1 Part 2")
+![ISO27002911](/docs/graphics/ISO-27002-Control-9.1.1.png "ISO 27002 Control 9.1.1")
 
 Comparing the ISO 27002 and NIST SP 800-53 examples show obvious differences. NIST SP 800-53 includes several components, such as references, control enhancements, and priority, that ISO 27002 does not. NIST SP 800-53's statement of the control itself is also much more detailed and specific than ISO 27002's, because ISO 27002 provides those details in its implementation guidance instead of the control text. There are other differences in terminology as well, such as NIST SP 800-53 using the term "supplemental guidance" for roughly what ISO 27002 calls "other information".
 
