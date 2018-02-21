@@ -1,5 +1,7 @@
 # Open Security Controls Assessment Language (OSCAL) 
 
+> Current work is happening in the [sprint-8](https://github.com/usnistgov/OSCAL/tree/sprint-8) branch.
+
 NIST is proposing the development of the Open Security Controls Assessment Language, or OSCAL, a hierarchical, formatted, XML-based (and JSON translation) schema that provides a standard for representing different categories of information pertaining to the publication, implementation, and assessment of security controls. 
 
 This repository consists of the following directories pertaining to the OSCAL project:
