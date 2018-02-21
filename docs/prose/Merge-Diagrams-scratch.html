@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>OSCAL Profile Invocation Merge Specification (Diagrams)</title>
+        <style type="text/css">
+
+section { clear: both;  overflow:hidden; padding: 0.5em; background-color: gainsboro; margin-top: 1em }
+
+.resolution, .profile, .catalog, .invoke, .group { display: inline-block; padding: 0.5em; margin: 0.5em; display: inline-grid }
+
+// .invoke { padding: 0.5em; margin: 0.5em } 
+
+div > * { vertical-align: top }
+
+.catalog { border: medium double black }
+
+.invoke { border: thin dotted black }
+.profile { border: thin solid black }
+.resolution { border: medium dotted grey }
+p { margin: 0ex; padding-left: 1ex }
+
+.subcontrol { padding-left: 2em; font-size: 80% }
+
+.group > span { font-size: 80%; font-family: sans-serif }
+.invoke > span { font-size: 80%; font-style: italic  }
+
+.error { color: red }
+.stress { color: green }
+
+        </style>
+    </head>
+    <body>
+        <figure>
+        <div class="profile">Example profile
+            <div class="invoke"><span>Invocation A</span>
+                <p class="call">Control A1</p>
+                <p class="call subcontrol">Subcontrol A1.1</p>
+            </div>
+            <div class="invoke"><span>Invocation B</span>
+                <p class="call">Control B3</p>
+            </div>
+        </div>
+        </figure>
+        <figure>
+            <div class="catalog"><span>CQ Controls Catalog</span>
+                <div class="group"><span>Group CC</span>
+                    <p class="control">Control CCA</p>
+                    <p class="control">Control CCB</p>
+                    <p class="control">Control CCC</p>
+                </div>
+                <div class="group"><span>Group QQ</span>
+                    <p class="control">Control QQA</p>
+                    <p class="control">Control QQB</p>
+                    <p class="control">Control QQC</p>
+                </div>
+            </div>
+        </figure>
+        <figure>
+            <div class="profile">
+                <span>KK (CQ) Profile</span>
+                <div class="invoke">
+                    <span>Invoke CQ controls catalog</span>
+                    <p class="call">Control CCC</p>
+                    <p class="call">Control QQB</p>
+                    <p class="call">Control QQA</p>
+                </div>
+            </div>
+        </figure>
+        <figure>
+            <div class="resolution"><span>Resolution of KK (CQ) Profile</span>
+                <div class="invoke"><span>Invoke CQ controls catalog</span>
+                    <div class="group">
+                        <span>Group CC</span>
+                        <p class="control">Control CCC</p>
+                    </div>
+                    <div class="group">
+                        <span>Group QQ</span>
+                        <p class="control">Control QQA</p>
+                        <p class="control">Control QQB</p>
+                    </div>
+                </div>
+            </div>
+        </figure>
+        <figure>
+            <div class="profile">
+                <span>MM (CQ) Profile</span>
+                <div class="invoke">
+                    <span>Invoke CQ controls catalog</span>
+                    <p class="call">Control CCA</p>
+                    <p class="call">Control QQC</p>
+                    <p class="call">Control QQA</p>
+                </div>
+            </div>
+        </figure>
+        <figure>
+            <div class="resolution"><span>Resolution of MM (CQ) Profile</span>
+                <div class="invoke"><span>Invoke CQ controls catalog</span>
+                    <div class="group">
+                        <span>Group CC</span>
+                        <p class="control">Control CCA</p>
+                    </div>
+                    <div class="group">
+                        <span>Group QQ</span>
+                        <p class="control">Control QQA</p>
+                        <p class="control">Control QQC</p>
+                    </div>
+                </div>
+            </div>
+        </figure>
+
+    </body>
+</html>

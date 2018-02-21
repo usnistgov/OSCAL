@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>OSCAL Profile Invocation Merge Specification (Diagrams)</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            section{
+                margin-top: 1em
+            }
+            
+            section section{
+                clear: both;
+                overflow: hidden;
+                padding: 0.5em;
+                background-color: lemonchiffon;
+                border: thin outset black;
+                -oxy-foldable: true;
+                -oxy-not-foldable-child: h2, h3, h4;
+            }
+            
+            section > *:first-child{
+                margin-top: 0ex
+            }
+            section > *:last-child{
+                margin-bottom: 0ex
+            }
+            
+            
+            .resolution,
+            .profile,
+            .catalog,
+            .invoke,
+            .group{
+                padding: 0.5em;
+                margin: 0.5em;
+                display: inline-grid
+            }
+            div.catalog{
+                background-color: white
+            }
+            
+            div.invoke div.catalog{
+                background-color: gainsboro;
+                border: medium dotted black
+            }
+            
+            div.invoke{
+                background-color: #95B9C7
+            }
+            
+            // .invoke { padding: 0.5em; margin: 0.5em }
+            
+            div > *{
+                vertical-align: top
+            }
+            
+            figure div p{
+                margin: 0ex
+            }
+            
+            .catalog{
+                border: medium double black
+            }
+            
+            .invoke{
+                border: thin dotted black
+            }
+            .profile{
+                border: thin solid black
+            }
+            .resolution{
+                border: medium dotted grey
+            }
+            .resolution .resolution{
+                border: medium double grey
+            }
+            
+            
+            .group > span{
+                font-size: 80%;
+                font-family: sans-serif
+            }
+            .invoke > span{
+                font-size: 80%;
+                font-style: italic
+            }
+            
+            .include{
+                color: darkgreen
+            }
+            .include:before{
+                content: 'include: ';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            
+            .exclude{
+                color: darkred
+            }
+            .exclude:before{
+                content: 'exclude: ';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            
+            .ws:after{
+                content: ' - with subcontrols';
+                font-family: sans-serif;
+                font-size: 70%
+            }
+            .error{
+                color: red
+            }
+            .stress{
+                color: green
+            }
+            .warning{
+                color: darkorange
+            }
+            
+            .prov{
+                font-size: 80%;
+                font-style: italic;
+                font-family: sans-serif
+            }
+            
+            .catalog .subcontrol{
+                font-size: 80%;
+                padding-left: 2em
+            }</style>
+    </head>
+    <body>
+        <section>
+            <h2>An optimized <q>collapsed</q> or regrouped profile view</h2>
+            <p>Given the profile resolution described in, a more comprehensive merge can also be
+                offered as a post process. It entails re-expressing the controls set returned by
+                profile resolution, in a restored (single) organization</p>
+            <section>
+                <h3>All controls sourced from a given catalog are re) grouped within a single
+                    representation of that catalog, as modified and amended by the profile</h3>
+                <figure>
+                    <div class="catalog">
+                        <span>CQZ Controls Catalog</span>
+                        <div class="group">
+                            <span>Group CC</span>
+                            <p>Control CCA</p>
+                            <p>Control CCB</p>
+                            <p>Control CCC</p>
+                        </div>
+                        <div class="group">
+                            <span>Group QQ</span>
+                            <p>Control QQA</p>
+                            <p>Control QQB</p>
+                            <p>Control QQC</p>
+                        </div>
+                        <div class="group">
+                            <span>Group ZZ</span>
+                            <p>Control ZZA</p>
+                            <p>Control ZZB</p>
+                            <p>Control ZZC</p>
+                        </div>
+                    </div>
+                    <div class="catalog">
+                        <span>BTW Controls Catalog</span>
+                        <div class="group">
+                            <span>Group Alpha</span>
+                            <div class="group">
+                                <span>Alpha_I</span>
+                                <p>Control A_I_1</p>
+                                <p>Control A_I_2</p>
+                                <p>Control A_I_3</p>
+                            </div>
+                            <div class="group">
+                                <span>Alpha_II</span>
+                                <p>Control A_II_48</p>
+                                <p>Control A_II_49</p>
+                                <p>Control A_II_50</p>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <span>Group Beta</span>
+                            <div class="group">
+                                <span>Beta_I</span>
+                                <p>Control B_I_1</p>
+                                <p>Control B_I_2</p>
+                                <p>Control B_I_3</p>
+                            </div>
+                            <div class="group">
+                                <span>Beta_II</span>
+                                <p>Control B_II_48</p>
+                                <p>Control B_II_49</p>
+                                <p>Control B_II_50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <span>AlphaBeta profile of BTW</span>
+                        <div class="invoke">
+                            <span>Invoke BTW Catalog</span>
+                            <p class="include">Control A_I_1</p>
+                            <p class="include">Control A_II_48</p>
+                            <p class="include">Control B_I_1</p>
+                            <p class="include">Control B_II_50</p>
+                            <p class="include">Control A_II_50</p>
+                        </div>
+                    </div><div class="profile">
+                        <span>A combining profile </span>
+                        <div class="invoke">
+                            <span>Invoke CQZ Catalog</span>
+                            <p class="include">Control CCA</p>
+                            <p class="include">Control CCB</p>
+                            <p class="include">Control QQC</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke BTW Catalog</span>
+                            <p class="include">Control A_I_1</p>
+                            <p class="include">Control A_I_2</p>
+                            <p class="include">Control A_I_3</p>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke AlphaBeta Profile (BTW controls)</span>
+                            <p class="include">Control B_I_1</p>
+                            <p class="include">Control A_II_50</p>
+                        </div>
+                    </div><div class="resolution">
+                        <span>Resolution of combining profile</span>
+                        <div class="invoke">
+                            <span>Invoke CQZ Catalog</span>
+                            <div class="catalog">
+                                <span>CQZ Controls Catalog</span>
+                                <div class="group">
+                                    <span>Group CC</span>
+                                    <p class="include">Control CCA</p>
+                                    <p class="include">Control CCB</p>
+                                </div>
+                                <div class="group">
+                                    <span>Group QQ</span>
+                                    <p class="include">Control QQC</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke BTW Catalog</span>
+                            <div class="catalog">
+                                <span>BTW Controls Catalog</span>
+                                <div class="group">
+                                    <span>Group Alpha</span>
+                                    <div class="group">
+                                        <span>Alpha_I</span>
+                                        <p>Control A_I_1</p>
+                                        <p>Control A_I_2</p>
+                                        <p>Control A_I_3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke AlphaBeta Profile (BTW controls)</span>
+                            <div class="invoke">
+                                <span>Invoke BTW Catalog</span>
+                                <div class="catalog">
+                                    <span>BTW Controls Catalog</span>
+                                    <div class="group">
+                                        <span>Group Alpha</span>
+                                        <div class="group">
+                                            <span>Alpha_II</span>
+                                            <p>Control A_II_50</p>
+                                        </div>
+                                    </div>
+                                    <div class="group">
+                                        <span>Group Beta</span>
+                                        <div class="group">
+                                            <span>Beta_I</span>
+                                            <p>Control B_I_1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resolution">
+                        <span>Resolution, now regrouped</span>
+                        <div class="invoke">
+                            <span>Invoke CQZ Catalog</span>
+                            <div class="catalog">
+                                <span>CQZ Controls Catalog</span>
+                                <div class="group">
+                                    <span>Group CC</span>
+                                    <p class="include">Control CCA</p>
+                                    <p class="include">Control CCB</p>
+                                </div>
+                                <div class="group">
+                                    <span>Group QQ</span>
+                                    <p class="include">Control QQC</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoke">
+                            <span>Invoke BTW Catalog</span>
+                            <div class="catalog">
+                                <span>BTW Controls Catalog</span>
+                                <div class="group">
+                                    <span>Group Alpha</span>
+                                    <div class="group">
+                                        <span>Alpha_I</span>
+                                        <p>Control A_I_1</p>
+                                        <p>Control A_I_2</p>
+                                        <p>Control A_I_3</p>
+                                    </div>
+                                    <div class="group">
+                                        <span>Alpha_II</span>
+                                        <p>Control A_II_50 <span class="prov">invoked via AlphaBeta
+                                                Profile</span></p>
+                                    </div>
+                                </div>
+                                <div class="group">
+                                    <span>Group Beta</span>
+                                    <div class="group">
+                                        <span>Beta_I</span>
+                                        <p>Control B_I_1 <span class="prov">invoked via AlphaBeta
+                                                Profile</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>An application may mark or annotate controls with their invocation
+                        provenance, as suggested in the diagram (and see below).</p></figure>
+            </section>
+            <section>
+                <h3>What to do about clashing controls (duplicated IDs)</h3>
+                <p>Copy them both? In XML, the results will presumably be schema-invalid to a schema
+                    that  enforced ID uniqueness. In any case, subsequent processes can detect
+                    duplication and conflict and flag things accordingly.</p>
+            </section>
+            <section>
+                <h3>Propagating group values / normalization / flattening</h3>
+                <p>We could outline how controls might be marked / decorated with their
+                        <em>invocation provenance</em> (insertion of properties or links back?),
+                    which would otherwise be lost here.</p>
+                <p>We could also provide the option to flatten groups? Either removing or copying
+                    downward (to controls) any group properties.</p>
+            </section>
+        </section>
+    </body>
+</html>

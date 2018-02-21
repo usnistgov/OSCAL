@@ -25,11 +25,11 @@
     
     <xsl:template match="catalog">
         <profile>
-            <invoke href="{document-uri(/)}">
+            <import href="{document-uri(/)}">
                 <include>
                     <xsl:apply-templates select="//control | //subcontrol" mode="write-call"/>
                 </include>
-            </invoke>
+            </import>
             <xsl:apply-templates select="//param" mode="param"/>
             
         </profile>

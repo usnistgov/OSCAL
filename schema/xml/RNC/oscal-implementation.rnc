@@ -1,0 +1,17 @@
+default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
+
+include "oscal-profile.rnc" { start = implementation }
+
+implementation = element implementation { idAttr?, title, (p  | prop)*, profiles, components, policies, procedures, params }
+
+profiles = element profiles { link* }
+
+components = element components { item* }
+
+policies = element policies { item* }
+
+procedures = element procedures { item* }
+
+params = element params { implementation-param* }
+
+implementation-param = element set-param { attribute param-id { xsd:NMTOKEN }?, prop*, desc?, value? }

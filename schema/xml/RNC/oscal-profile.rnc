@@ -2,41 +2,46 @@ default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
 include "oscal-core.rnc" { start = profile }
 
-profile = element profile { idAttr, title, invoke+, framework? }
+profile = element profile { idAttr, title, import+, merge?, modify? }
 
-invoke = element invoke { hrefAttr, (\include?, exclude?), ( param_setting | alteration )* }
+import = element import { hrefAttr, (\include?, exclude?) }
 
-# Can have both 'all' and 'call' to switch up with-subcontrol settings
-\include = element include { all | call+ }
+# presence of element merge means to merge (not merely aggregate)
+merge = element merge { element build { empty }? }
 
-# Move params to a separate 'set' element?
-# Logic: params override params given in source catalogs or profiles
-# but they apply only to controls included.
-# parameters not belonging to included controls/subcontrols might be filtered out of 'set'
-# applicable parameters in 'set' might remain
-# expansion logic could also provide set/param for any param not already represented
+modify =  element modify { (param_setting | alteration )* }
+
+# Can have either 'all' or (a set of) 'call'
+\include = element include { all | (call | match)+ }
+
+# We are permitting include/call along with exclude/call to support tweaky with-subcontrol allowances
+# But downstream (Schematron) might detect inelegant or inoperable combinations of include/call and exclude/call
 
 # Only 'yes' should have any effect; processors should assume 'no' when implicit
 all = element all { withSubContrlsAttr }
 
 withSubContrlsAttr = attribute with-subcontrols { ('yes'|'no') }?
+withContrlAttr =  attribute with-control { ('yes'|'no') }?
 
 # 'call' can call *either* a control or a subcontrol by its @id
 # Schematron requirement: there exists in the catalog a control or subcontrol
 # by the given @id
 call = element call {
-          (withSubContrlsAttr, attribute control-id { text } ) |
-           attribute subcontrol-id { text } }
+          (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
+           attribute subcontrol-id { xsd:NCName } }
 
-exclude = element exclude { element call {
-            attribute control-id { text } |
-            attribute subcontrol-id { text } }+ }
+match = element match { withSubContrlsAttr, withContrlAttr, attribute pattern { text } }
+
+exclude = element exclude { ( match |
+            element call {
+              attribute control-id { xsd:NCName } |
+              attribute subcontrol-id { xsd:NCName } }+ ) }
 
 param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, value }
 
 alteration = element alter { (
-  attribute control-id    { text } |
-  attribute subcontrol-id { text } ),
+  attribute control-id    { xsd:NCName } |
+  attribute subcontrol-id { xsd:NCName } ),
   remove?, augment? }
 
 remove  = element remove  { attribute targets { xsd:NMTOKENS } }

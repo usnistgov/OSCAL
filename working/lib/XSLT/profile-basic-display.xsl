@@ -6,7 +6,7 @@
   <xsl:import href="oscal-basic-display.xsl"/>
   
   <xsl:template match="oscal:call">
-    <xsl:variable name="catalog" select="document(ancestor::oscal:invoke/@href,/)"/>
+    <xsl:variable name="catalog" select="document(ancestor::oscal:import/@href,/)"/>
     <xsl:apply-templates select="$catalog//oscal:control | $catalog//oscal:subcontrol" mode="display">
       <xsl:with-param name="caller" select="."/>
     </xsl:apply-templates>

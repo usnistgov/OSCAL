@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02, modified since -->
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-6d20d489-ca9c-4bad-af6a-f30f663c0a50">
+
+   <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
+   <title>A Compound Profile</title>
+   <import href="dinosaur-profile.xml"/>
+   <import href="dinosaur-catalog.xml">
+      <include>
+         <match pattern="tyrannosaur" with-control="yes" with-subcontrols="yes"/>
+         
+         <match pattern="triceratops"/>
+         <!--<call control-id="triceratops"/>
+         <call with-subcontrols="yes" control-id="tyrannosaur"/>
+         <call control-id="archeopteryx"/>-->
+      </include>
+   </import>
+   <merge>
+      <build/>
+   </merge>
+</profile>
