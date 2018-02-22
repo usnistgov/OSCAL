@@ -8,7 +8,17 @@
    <import href="dinosaur-profile.xml"/>
    <import href="dinosaur-catalog.xml">
       <include>
-         <match pattern="tyrannosaur" with-control="yes" with-subcontrols="yes"/>
+         <!--
+         Q: anchor at front but not at end? AC becomes regex '^AC' only 'AC$' becomes '^AC$'
+         
+         include: tyrannosaur.*"
+         exclude: tyrannosaur
+           do we get the subcontrols without the control?
+           see slide 4
+         
+         -->
+         
+         <match pattern="tyrannosaurus-rex" with-control="no"/>
          
          <match pattern="triceratops"/>
          <!--<call control-id="triceratops"/>
