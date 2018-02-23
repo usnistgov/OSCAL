@@ -6,10 +6,10 @@ start = (catalog | declarations | framework | worksheet)
 
 catalog-contents   = (title, declarations?, (section | group | control)*, references?)
 
-framework-contents = (title, declarations?, (section | category | item)*, references?)
+framework-contents = (title, declarations?, (section | category | component)*, references?)
 
 # 'worksheet' is just an alias for 'framework' for now
-worksheet-contents = (title, declarations?, (section | category | item)*, references?)
+worksheet-contents = (title, declarations?, (section | category | component)*, references?)
 
 catalog    = element catalog { catalog-contents } 
 
@@ -21,11 +21,11 @@ worksheet = element worksheet { idAttr?, optionalClass, worksheet-contents }
 # but they group different things
 category = element group { idAttr?, optionalClass,
   title?, (prop | link | prose)*,
-   (category+ | item+ ) }
+   (category+ | component+ ) }
 
-item = element component {
+component = element component {
     idAttr?, optionalClass, title?,
-    (param | prop | link | prose | part)*, item*
+    (param | prop | link | prose | part)*, component*
   }
 
 # an overlay - a framework whose structure matches the catalog?
@@ -108,79 +108,69 @@ group = element group {
   title?, control-components, (group | control)+, references? }
 
 # note prose is not included in control-components, unlike item pattern ('component' element)
-control-components = (prop | anyKindofPart | link | param)*
+control-components = ( anyKindofProp | anyKindofPart | link | param)*
 
 control =
   element control {
-    idAttr?, optionalClass, title?,
-    (control-components | subcontrol)*,
-    references?
+    idAttr?, optionalClass, title?, (control-components | subcontrol)*, references?
   }
 
+#inControl =  title?, (control-components | subcontrol)*, references?
+    
 subcontrol =
   element subcontrol {
-    idAttr?, optionalClass, title?,
-    control-components,
-    references? 
+    idAttr?, optionalClass, title?, control-components, references?
+ 
   }
+
+#inSubcontrol = title?, control-components, references?
+
+# === These declarations can be overridden on a level up:
+
+# Add 'semantic' prop types such as name, number, method
+anyKindofProp = (prop)*
 
 # Add 'semantic' part types: purpose, guidance, decision, information, remarks (etc) 
 anyKindofPart = (part)*
 
+# generic OSCAL doesn't have special kinds of paragraphs
+anyKindofP = (p)*
+
+# Rule of thumb for the difference:
+# - prop if it's a simple scalar value, never markup of any kind, typically a controlled value
+# - p if it's a paragraph or fragment; may contain inline markup
+# - part for anything else (statements or more complex structures)
+
 # see utility.xq for analytic breakdown of part types
 # so far: description, guidance
 
+# === Back to regular programming
+
 # parts are addressable like controls, but can also have prose content
 part =
-  element part {
+  element part { asPart }
+
+asPart = 
     idAttr?, optionalClass, title?,
     (prose | control-components)*
-  }
 
 title = element title { (text | q)* }
 
 link    = element link { relAttr, hrefAttr, mix }
 
-# param is like its declaration, but simpler
-# permits bindings to assign and select elements w/in controls
-# i.e. local override of a default assignment in a parameter declaration
-# or on-the-fly declaration of new parameters for a control
-# (since params are not currently required to be declared
+param   = element param { idAttr?, optionalClass, desc, (hint | value)? }
 
-desc = element desc        { mix }
+desc = element desc { mix }
 
-param   = element param { idAttr?, optionalClass, desc, value }
+# A hint is a proxy or placeholder for a value, which can evade validation checks applied to values
+hint = element hint { text }
 
 prop =
-  element prop {
-    requiredClass, text }
+  element prop { asProp }
 
-# syntax sugar for part[@class='purpose'] for "Objective/s" etc.
-# purpose =
-#   element purpose {
-#     prose }
+asProp = optionalClass, text
 
-# syntax sugar for part[@class='guidance'] for "Supplemental Guidance" etc.
-# guidance =
-#   element guidance {
-#     prose }
-
-# syntax sugar for part[@class='decision']
-# decision =
-#   element decision {
-#     prose }
-
-# syntax sugar for part[@class='information'], other-info, etc.
-# information =
-#   element information {
-#     prose }
-
-# syntax sugar for part[@class='remarks']
-# remarks =
-#   element remarks {
-#     prose }
-
-prose = ( ul | ol | p | pre )*
+prose = ( anyKindofP | ul | ol | pre )*
 
 references = element references { ref+ }
 
@@ -202,7 +192,9 @@ citation =  element citation {
 
 # We can map more html in if/as needed
 
-p = element p { idAttr?, optionalClass, whatnot }
+p = element p { asP }
+
+asP = idAttr?, optionalClass, whatnot
 
 pre = element pre { idAttr?, (mix | xref)* }
 
