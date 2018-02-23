@@ -8,4 +8,5 @@
       <include>
          <!-- Doesn't include subcontrols since @with-subcontrols defaults to 'no'. -->
          <all/>
-   </import>
+      </include></import>
+</profile>
