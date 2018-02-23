@@ -27,6 +27,7 @@ withContrlAttr =  attribute with-control { ('yes'|'no') }?
 # Schematron requirement: there exists in the catalog a control or subcontrol
 # by the given @id
 call = element call {
+
           (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
            attribute subcontrol-id { xsd:NCName } }
 
