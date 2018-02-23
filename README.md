@@ -5,6 +5,7 @@
 NIST is proposing the development of the Open Security Controls Assessment Language, or OSCAL, a hierarchical, formatted, XML-based (and JSON translation) schema that provides a standard for representing different categories of information pertaining to the publication, implementation, and assessment of security controls. 
 
 This repository consists of the following directories pertaining to the OSCAL project:
+
   * [docs](docs): Documentation graphics, prose, progress updates, and presentation slides
   * [examples](examples): OSCAL examples, including both demo (unit test) and "real world" examples
   * [schema](schema): OSCAL schemas and validation tools
