@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Made by hand 2017-11-02, modified since -->
 <?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-945ac268-c826-45b1-a8fe-0c117d39b40b">
+<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-945ac268-c826-45b1-a8fe-0c117d39b40b">
 
    <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
    <title>Dinosaur Profile</title>
@@ -11,6 +13,23 @@
          <!--<call with-subcontrols="yes" control-id="allosaur"/>
          <call control-id="triceratops"/>-->
       </include>
+      
    </import>
-   
+   <modify>
+      <set-param param-id="xyz">
+         <desc></desc>
+         <value></value>
+         
+      </set-param>
+      
+      <alter control-id="allosaurus">
+         <remove targets=""/>
+         
+         <augment>
+            <part>
+               <title>My new part</title>
+            </part>
+         </augment>
+      </alter>
+   </modify>
 </profile>
