@@ -207,11 +207,11 @@
     or exists(import/call[(@control-id | @subcontrol-id)=current()/@id]-->
     <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
     <!-- A control is included by 'all' or by default when no inclusion rule is given -->
-    <!--<xsl:variable name="included" as="xs:boolean" select="exists($invocation/include/all) or empty($invocation/include)"/>
+    <xsl:variable name="included" as="xs:boolean" select="exists($invocation/include/all) or empty($invocation/include)"/>
     <xsl:variable name="excluded" as="xs:boolean" select="$invocation/exclude/call/@control-id = @id"/>
-    <xsl:variable name="called"   as="xs:boolean" select="$invocation/include/call/@control-id = @id"/>-->
+    <xsl:variable name="called"   as="xs:boolean" select="$invocation/include/call/@control-id = @id"/>
     <!--<xsl:copy-of select="$invocation"/>-->
-    <xsl:if test="oscal:matched(.,$invocation) (: ($included or $called) and not($excluded) :)">
+    <xsl:if test="($included or oscal:matched(.,$invocation) or $called) and not($excluded)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:comment expand-text="true"> invoked by { $invocation/../title } { document-uri($invocation/root()) }
@@ -240,7 +240,7 @@
     <!-- The subcontrol can still be excluded -->
     <xsl:variable name="excluded" select="exists($invocation/exclude/call[@subcontrol-id  = current()/@id])"/>
     
-    <xsl:if test="$included or oscal:matched(.,$invocation) (: $included or $called) and not($excluded :)">
+    <xsl:if test="($included or oscal:matched(.,$invocation) or $called) and not($excluded)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
         <xsl:apply-templates mode="#current"/>
@@ -267,15 +267,22 @@
     <xsl:variable name="merge-spec" select="."/>
     <xsl:variable name="merged">
       <merged>
+        <!-- by default, and when nothing else happens, merge
+          will combine multiple imports of the same catalog into a single list.
+          So for example if 30 controls from three profiles are included, but
+          those three profiles are all calling the same catalog, they will come merged in a single group. (And sorted?) -->
         <xsl:for-each-group select="$so-far//control | $so-far//subcontrol[empty(parent::control)]" group-by="parent::importing/@href">
           <group source="{current-grouping-key()}">
             <xsl:choose>
+              <!-- when self::merge/build is given, each group is submitted to a rebuild process in reference to its catalog -->
               <xsl:when test="exists($merge-spec/build)">
                 <xsl:apply-templates select="document(current-grouping-key())/*" mode="rebuild">
                   <xsl:with-param name="controls" tunnel="yes" select="current-group()"/>
                 </xsl:apply-templates>
               </xsl:when>
+              <!-- Other options might include building a new hierarchy. -->
               <xsl:otherwise>
+                 <!-- Otherwise we just spill the groups. -->
                 <xsl:sequence select="current-group()"/>
               </xsl:otherwise>
             </xsl:choose>

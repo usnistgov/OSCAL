@@ -38,12 +38,12 @@ exclude = element exclude { ( match |
               attribute control-id { xsd:NCName } |
               attribute subcontrol-id { xsd:NCName } }+ ) }
 
-param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, value }
+param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc?, (hint | value) }
 
 alteration = element alter { (
   attribute control-id    { xsd:NCName } |
   attribute subcontrol-id { xsd:NCName } ),
   remove?, augment? }
 
-remove  = element remove  { attribute targets { xsd:NMTOKENS } }
-augment = element augment { (prop | anyKindofPart)* }
+remove  = element remove  { (title | param | prop | anyKindofPart)* }
+augment = element add     { (title | param | prop | anyKindofPart)* }
