@@ -4,12 +4,12 @@ default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 # (which is kind of a 'catalog mockup' format)
 start = (catalog | declarations | framework | worksheet)
 
-catalog-contents   = (title, declarations?, (section | group | control)*, references?)
+catalog-contents   = (title, declarations?, (section | controlGroup | control)*, references?)
 
-framework-contents = (title, declarations?, (section | category | component)*, references?)
+framework-contents = (title, declarations?, (section | componentGroup | component)*, references?)
 
 # 'worksheet' is just an alias for 'framework' for now
-worksheet-contents = (title, declarations?, (section | category | component)*, references?)
+worksheet-contents = (title, declarations?, (section | componentGroup | component)*, references?)
 
 catalog    = element catalog { catalog-contents } 
 
@@ -17,11 +17,24 @@ framework = element framework { idAttr?, optionalClass, framework-contents }
 
 worksheet = element worksheet { idAttr?, optionalClass, worksheet-contents }
 
+
+section = element section { idAttr?, optionalClass,
+  title, prose, section*, references? }
+
+# groups may contain more groups, controls or subcontrols
+# But controls should not appear in controls (even grouped)
+# And subcontrols must not appear without control ancestors
+# ... these constraints validated w/ Schematron
+
+controlGroup = element group {
+  idAttr?, optionalClass,
+  title?, control-components, (controlGroup | control)+, references? }
+
 # 'group' is the element name as it appears in both frameworks, and catalogs
 # but they group different things
-category = element group { idAttr?, optionalClass,
+componentGroup = element group { idAttr?, optionalClass,
   title?, (prop | link | prose)*,
-   (category+ | component+ ) }
+   (componentGroup+ | component+ ) }
 
 component = element component {
     idAttr?, optionalClass, title?,
@@ -94,18 +107,6 @@ autonum = element autonum { text }
 # (constrained) at the OSCAL layer so they don't get declaration elements.
 
 # Now for the contents of the OSCAL doc proper ...
-
-section = element section { idAttr?, optionalClass,
-  title, prose, (section | group)*, references? }
-
-# groups may contain more groups, controls or subcontrols
-# But controls should not appear in controls (even grouped)
-# And subcontrols must not appear without control ancestors
-# ... these constraints validated w/ Schematron
-
-group = element group {
-  idAttr?, optionalClass,
-  title?, control-components, (group | control)+, references? }
 
 # note prose is not included in control-components, unlike item pattern ('component' element)
 control-components = ( anyKindofProp | anyKindofPart | link | param)*
