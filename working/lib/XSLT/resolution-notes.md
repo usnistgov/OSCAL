@@ -43,20 +43,11 @@ The value of `@pattern` is an (XSD) regular expression. It is matched against th
 
 In future we may add the feature to match any associated string e.g. a title or property value, not only the ID.
 
+### Orphan or "loose" subcontrols
 
+It is a requirement that a subcontrol may be included in one import clause, with its control included only in another one. (Perhaps the first clause adds a subcontrol to a profile included in the second.) This should be supported as long as the control is indeed included in another import branch (with which it can eventually be merged subject to its logic). "The same control" for these purposes means the control with the same @id from the same catalog. An orphan subcontrol included without its control included anywhere, may be an error (TBD).
 
-
-```
-<include>
-   <match pattern="^AC"/>
-</include>
-      
-```
-
-
-It is a requirement that one can select subcontrols without their controls; this should be supported as long as the control is included in the same profile in another import branch. "The same control" for these purposes means the control with the same @id from the same catalog.
-
-NB currently this feature is still missing. 2018/02/27
+NB currently this feature (merging loose subcontrols) is still missing, subject to merge rules altogether. 2018/02/27
 
 Accordingly (and contrastingly) it must also be an error if a control or subcontrol is included more than once (unless / until we define merge logic to merge 'competitors'). Or is it? In such cases, to which copies or versions of controls, are subcontrols combined? If we are going to have combination we also need resolution between competing versions.
 
