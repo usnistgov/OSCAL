@@ -26,11 +26,13 @@ withContrlAttr =  attribute with-control { ('yes'|'no') }?
 # 'call' can call *either* a control or a subcontrol by its @id
 # Schematron requirement: there exists in the catalog a control or subcontrol
 # by the given @id
-call = element call {
-
-          (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
+# when @with-subcontrols is used, it must be @control-id
+call = element call { (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
            attribute subcontrol-id { xsd:NCName } }
 
+# 'match' calls (includes) controls and subcontrols indiscriminately: when matching (as a regex) the @id,
+# controls or subcontrols may be included.
+# nb this means it is possible to include subcontrols w/o their controls, for later combination w/ other includes
 match = element match { withSubContrlsAttr, withContrlAttr, attribute pattern { text } }
 
 exclude = element exclude { ( match |

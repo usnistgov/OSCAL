@@ -27,9 +27,21 @@
     <group>
         <title>Dinosaurs</title>
         <group><title>Predators</title>
-            <control id="allosaur"/>
+            <control id="allosaur">
+                <title>Allosaurus</title>
+                <prop class="trans">Other Lizard</prop>
+                <prop class="trans">Other Lizard II</prop>
+                <prop class="trans">Other Lizard III</prop>
+                <part id="allosaur-desc"><p>Vicious predator, ancestor of more vicious predators.</p></part>
+            </control>
+                
             <control id="tyrannosaur">
-                <subcontrol id="tyrannosaurus-rex"/>
+                <title>Tyrannosaurus</title>
+                <prop class="trans">Tyrant Lizard</prop>
+                <subcontrol id="tyrannosaurus-rex">
+                    <title>Tyrannosaurus Rex</title>
+                    <prop class="trans">King Tyrant Lizard</prop>
+                </subcontrol>
             </control>
             <control id="velociraptor"/>
         </group>
