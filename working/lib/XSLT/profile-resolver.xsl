@@ -214,8 +214,7 @@
     <xsl:if test="($included or oscal:matched(.,$invocation) or $called) and not($excluded)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
-        <xsl:comment expand-text="true"> invoked by { $invocation/../title } { document-uri($invocation/root()) }
-        </xsl:comment>
+        <!--<xsl:comment expand-text="true"> invoked by { $invocation/../title } { document-uri($invocation/root()) }</xsl:comment>-->
         <!--<xsl:apply-templates mode="#current" select="* except (subcontrol | component[oscal:classes(.)='subcontrol'])"/>-->
         <xsl:apply-templates mode="#current"/>
       </xsl:copy>
@@ -419,40 +418,120 @@
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <xsl:copy>
       <xsl:copy-of select="@*"/>
-      <xsl:apply-templates mode="#current"/>
-      <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/augment/*"/>
+      <xsl:apply-templates select="title" mode="#current"/>
+      <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/add[empty(@target)][@position='starting']/*"/>
+      
+      <xsl:apply-templates select="* except title" mode="#current"/>
+      
+      <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/add[empty(@target)][@position='ending']/*"/>
+      
     </xsl:copy>
   </xsl:template>
   
   <!-- When a catalog is filtered through a profile, its parameters are overwritten
        by parameters passed in from the invocation. -->
+  <xsl:template match="param/desc"  mode="patch">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
+  </xsl:template>
+  
   <xsl:template match="param/value" mode="patch">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
   </xsl:template>
   
-  <!--<xsl:template match="param/desc" mode="filter-controls">
+  <xsl:template match="param/hint"  mode="patch">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
-  </xsl:template>-->
+    <!-- A hint is dropped when a value is given. -->
+    <xsl:if test="exists(key('param-settings',parent::param/@id,$modifications)/value)">
+      <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/hint,.)[1]"/>
+    </xsl:if>
+  </xsl:template>
   
   
-  <xsl:template match="control/* | subcontrol/* | component/*" mode="patch">
+<!--   -->
+  <xsl:function name="oscal:removable" as="xs:boolean">
+    <xsl:param name="who" as="node()"/>
+    <xsl:param name="mods" as="element(modify)"/>
+    <xsl:variable name="home" select="($who/ancestor::control | $who/ancestor::subcontrol | $who/ancestor::component)[last()]"/> 
+    <xsl:variable name="alterations" select="key('alteration-by-target',$home/@id,$mods)"/>
+    <xsl:variable name="removals" select="$alterations/remove"/>
+    
+    <xsl:variable name="excluded-by-id" select="$who/@id = $removals/tokenize(@id-ref,'\s+')"/>
+    
+    <xsl:variable name="excluded-by-class" select="oscal:classes($who) = $removals/tokenize(@class-ref,'\s+')"/>
+    <xsl:variable name="excluded-by-proxy" select="some $r in ($removals/*) satisfies 
+      ( local-name($r) eq local-name($who) ) and
+      ( ($r/@id eq $who/@id) or (oscal:classes($r) = oscal:classes($who) )
+        or empty($r/(@class|@id) ) )"/>
+    
+    <!--<xsl:message expand-text="true">{ count($removals) || ' ... ' || $who/@id || ': ' || $excluded-by-id }</xsl:message>-->
+    <xsl:sequence select="$excluded-by-id or $excluded-by-class or $excluded-by-proxy"/>
+  </xsl:function>  
+  
+  <xsl:template match="control//* | subcontrol//* | component//*" mode="patch">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    <!-- boolean comes back as true() if a 'remove' element in the invocation matches
-         by id of the parent and class of the matching component -->
+    <xsl:variable name="here" select="."/>
+    <xsl:variable name="home" select="(ancestor::control | ancestor::subcontrol | ancestor::component)[last()]"/> 
+    <xsl:variable name="alterations" select="key('alteration-by-target',$home/@id,$modifications)"/>
+    <xsl:variable name="patches-to-id" select="$alterations/key('addition-by-target',$here/@id,.)"/>
+    <xsl:variable name="patches-to-class" select="$alterations/key('addition-by-target',$here/oscal:classes(.),.)"/>
+    
+<!-- $patches-before contains 'add' elements marked as patching before this element, either by its @id
+      or if bound by its @class, iff it is the first of its class in the containing control
+     -->
+    <xsl:variable name="patches-before" select="$patches-to-id[@position='before'] |
+      $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[1] ][@position='before']"/>
+    
+    <xsl:copy-of select="$patches-before/*"/>
+    <xsl:if test="not(oscal:removable(.,$modifications))">
+      <xsl:copy>
+        <xsl:apply-templates select="@*" mode="#current"/>
+        
+        <xsl:variable name="patches-starting" select="$patches-to-id[@position='starting'] |
+          $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[1] ][@position='starting']"/>
+        <xsl:copy-of select="$patches-starting/*"/>
+        
+        <xsl:apply-templates select="node()" mode="#current"/>
+        
+        <xsl:variable name="patches-ending" select="$patches-to-id[@position='ending'] |
+          $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[last()] ][@position='ending']"/>
+        <xsl:copy-of select="$patches-ending/*"/>
+      </xsl:copy>
+    </xsl:if>
+
+<!-- Reverse logic for 'after' patches. Note that elements inside descendant subcontrols or components are excluded from consideration.    -->
+      <xsl:variable name="patches-after" select="$patches-to-id[@position='after'] |
+        $patches-to-class[$here is ($home/(descendant::*[oscal:classes(.)=oscal:classes($here)]
+        except .//(subcontrol|component)/descendant::*[oscal:classes(.)=oscal:classes($here)]) )[last()]
+        ][@position='after']"/>
+        <xsl:copy-of select="$patches-after/*"/>
+        
+        
+  </xsl:template>
+  
+  
+  <!--<xsl:template match="control/* | subcontrol/* | component/*" mode="patch">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <!-\- boolean comes back as true() if a 'remove' element in the invocation matches
+         by id of the parent and class of the matching component -\->
     <xsl:variable name="remove_me" select="key('alteration-by-target',../@id,$modifications)/remove/@targets/tokenize(.,'\s+') = oscal:classes(.)"/>
     <xsl:if test="not($remove_me)">
       <xsl:next-match/>
     </xsl:if>
-  </xsl:template>
+  </xsl:template>-->
   
   
   <xsl:key name="param-settings" match="oscal:set-param" use="@param-id"/>
   
   <xsl:key name="alteration-by-target" match="alter" use="@control-id | @subcontrol-id"/>
   
-
+<!-- additions (modify/alter/add elements) can be applied using either class value or id:
+     however the key must be scoped to within the control (or subcontrol)
+     -->
+  <xsl:key name="addition-by-target" match="add" use="@target"/>
+  
+  
 <!-- Service functions: provided for Schematron etc. -->
   <!-- Returns a set of controls or components marked as controls for a profile. -->
   <xsl:function name="oscal:resolved-controls" as="element()*">
