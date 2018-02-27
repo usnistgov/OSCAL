@@ -194,11 +194,11 @@
     <xsl:variable name="matched" select="some $re in ($invocation/include/match/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/@id,$re))"/>
     <xsl:variable name="parent-control" select="$comp/(parent::control | parent::comp[oscal:classes(.)='control'] )"/>
     <xsl:variable name="subcontrol-matched" select="some $re in ($invocation/include/match[@with-subcontrols='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($parent-control/@id,$re))"/>
-    <xsl:variable name="control-implied" select="some $re in ($invocation/include/match[@with-control='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/subcontrol/@id,$re))"/>
+    <!--<xsl:variable name="control-implied" select="some $re in ($invocation/include/match[@with-control='yes']/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/subcontrol/@id,$re))"/>-->
     
     <xsl:variable name="unmatched" select="some $re in ($invocation/exclude/match/@pattern ! ('^' || . || '$') ) satisfies (matches($comp/@id,$re))"/>
     
-    <xsl:sequence select="($included or $matched or $subcontrol-matched or $control-implied) and not($unmatched)"/>
+    <xsl:sequence select="($included or $matched or $subcontrol-matched) and not($unmatched)"/>
   </xsl:function>
   
   <xsl:template match="control | component[oscal:classes(.)='control']" priority="3" mode="import">
@@ -333,79 +333,12 @@
   
   <xsl:template match="*" mode="echo"/>
   
-  <!-- Merge step:
-  strips invocation hierarchy
-  merges catalogs ('frameworks') -->
-  <!--XXX NEW IN SPRINT 7 GROUPS ARE NOT BEING CAPTURED -->
-  <!--<xsl:template match="merge" mode="process-profile">
-    <xsl:param name="so-far"/>
-    <xsl:for-each select="$so-far/*">
-      <xsl:copy>
-        <xsl:copy-of select="@*"/>
-        <!-\- micropipeline first merges everything, then removes duplication -\->
-        <xsl:variable name="merged">
-          <xsl:call-template name="merge-groups">
-            <xsl:with-param name="groups" select="//(framework | catalog | worksheet)"/>
-          </xsl:call-template>
-        </xsl:variable>
-        <!-\-<xsl:sequence select="$merged"/>-\->
-        <xsl:apply-templates select="$merged" mode="filter-merge"/>
-      </xsl:copy>
-    </xsl:for-each>
-  </xsl:template>-->
   
-  <!--<xsl:function name="oscal:group-signature" as="xs:string">
-    <xsl:param name="who"/>
-    <xsl:value-of select="string-join((local-name($who),$who/title,$who/prop[@class='name']),'|')"/>
-  </xsl:function>-->
-  
-  <!--<xsl:template name="merge-groups">
-    <xsl:param name="groups" select="()"/>
-    <xsl:for-each-group select="$groups" group-by="oscal:group-signature(.)">
-      <xsl:copy>
-        <xsl:copy-of select="@*"/>
-        <xsl:apply-templates select="current-group()/(* except group)" mode="merge-enhance">
-          <xsl:sort select="@id"/>
-        </xsl:apply-templates>
-        <xsl:call-template name="merge-groups">
-          <xsl:with-param name="groups" select="current-group()/group"/>
-        </xsl:call-template>
-      </xsl:copy>
-    </xsl:for-each-group>
-  </xsl:template>-->
-
-  <!--<xsl:template mode="merge-enhance" match="control | subcontrol | component">
-    <xsl:copy>
-      <xsl:copy-of select="@*"/>
-        <xsl:for-each select="ancestor::import[position() gt 1]">
-          <xsl:sort select="count(ancestor::*)" order="descending"/>
-          <prop name="import-provenance">
-            <xsl:value-of select="@href"/>
-          </prop>
-        </xsl:for-each>
-      <xsl:apply-templates mode="#current"/>
-    </xsl:copy>
-  </xsl:template>-->
-  
-  <!--<xsl:template match="control | subcontrol | component" mode="filter-merge">
-    <xsl:copy-of select="."/>
-  </xsl:template>
-  
-  <xsl:template match="*" mode="filter-merge">
-    <xsl:variable name="dibs" select="preceding-sibling::*[deep-equal(.,current())]"/>
-    <xsl:if test="empty($dibs)">
-      <xsl:copy>
-        <xsl:apply-templates select="@*" mode="filter-merge"/>
-        <xsl:apply-templates mode="#current"/>
-      </xsl:copy>
-    </xsl:if>
-  </xsl:template>-->
     
   
   <!-- Next, matching 'modify' - we pass the 'resolution' document into a filter that
        rewrites parameter values and patches controls, wrt the stipulated modifications. -->
 
-  <!-- TODO Adds patches, replacing parameter and control contents. -->
   <xsl:template match="modify" mode="process-profile">
     <xsl:param name="so-far"/>
     <xsl:apply-templates select="$so-far" mode="patch">
@@ -430,17 +363,17 @@
   
   <!-- When a catalog is filtered through a profile, its parameters are overwritten
        by parameters passed in from the invocation. -->
-  <xsl:template match="param/desc"  mode="patch">
+  <xsl:template match="param/desc"  mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
   </xsl:template>
   
-  <xsl:template match="param/value" mode="patch">
+  <xsl:template match="param/value" mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
   </xsl:template>
   
-  <xsl:template match="param/hint"  mode="patch">
+  <xsl:template match="param/hint"  mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <!-- A hint is dropped when a value is given. -->
     <xsl:if test="exists(key('param-settings',parent::param/@id,$modifications)/value)">
@@ -494,8 +427,8 @@
         
         <xsl:apply-templates select="node()" mode="#current"/>
         
-        <xsl:variable name="patches-ending" select="$patches-to-id[@position='ending'] |
-          $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[last()] ][@position='ending']"/>
+        <xsl:variable name="patches-ending" select="$patches-to-id[empty(@position) or @position='ending'] |
+          $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[last()] ][empty(@position) or @position='ending']"/>
         <xsl:copy-of select="$patches-ending/*"/>
       </xsl:copy>
     </xsl:if>
@@ -532,7 +465,7 @@
   <xsl:key name="addition-by-target" match="add" use="@target"/>
   
   
-<!-- Service functions: provided for Schematron etc. -->
+  <!-- Service functions: provided for Schematron etc. DON'T MESS WITH THESE OR YOU'LL BREAK IT. -->
   <!-- Returns a set of controls or components marked as controls for a profile. -->
   <xsl:function name="oscal:resolved-controls" as="element()*">
     <!--saxon:memo-function="yes" xmlns:saxon="http://saxon.sf.net/"-->
