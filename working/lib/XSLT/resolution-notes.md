@@ -39,28 +39,40 @@ It is also possible to use a `with-subcontrols` flag when calling controls by ID
       
 ```
 
-The value of `@pattern` is an (XSD) regular expression. It is matched against the ID. Both/any controls and subcontrols whose IDs match the patterns, will be returned - so in this case, any whose ID starts with "pm".
+The value of `@pattern` is an (XSD) regular expression. It is matched against the ID. Both/any controls and subcontrols whose IDs match the patterns, are selected - so in this case, any whose ID starts with "pm".
 
 In future we may add the feature to match any associated string e.g. a title or property value, not only the ID.
 
 ### Orphan or "loose" subcontrols
 
-It is a requirement that a subcontrol may be included in one import clause, with its control included only in another one. (Perhaps the first clause adds a subcontrol to a profile included in the second.) This should be supported as long as the control is indeed included in another import branch (with which it can eventually be merged subject to its logic). "The same control" for these purposes means the control with the same @id from the same catalog. An orphan subcontrol included without its control included anywhere, may be an error (TBD).
+It is a requirement that a subcontrol may be included in one import clause, with its control included (only) in another one. (Perhaps the first clause adds a subcontrol to a profile included in the second.) This should be supported as long as the control is indeed included in another import branch (with which it can eventually be merged subject to its logic). "The same control" for these purposes means the control with the same @id from the same catalog - so, to be more precise, a subcontrol can be reunited to any control with the same ID as its parent in (its own) home directory. An orphan subcontrol included without its control included anywhere (in the same profile albeit not the same import), may be an error (TBD).
 
 NB currently this feature (merging loose subcontrols) is still missing, subject to merge rules altogether. 2018/02/27
 
-Accordingly (and contrastingly) it must also be an error if a control or subcontrol is included more than once (unless / until we define merge logic to merge 'competitors'). Or is it? In such cases, to which copies or versions of controls, are subcontrols combined? If we are going to have combination we also need resolution between competing versions.
+proposal 20180228 - resolution w/o merge returns import branches w/ orphan subcontrols still orphaned; then merge combines all controls from same catalogs together (w/o regrouping them); merge/build also does the regrouping
 
-## Merge logic
+test this on simple cases then come back to worse errors (e.g. duplicative/conflicting control imports)
 
-One option would be to have no merge logic permit both competitors, and loose subcontrols.
+## Merge proposal
 
-When `/profile/merge` is given, things are then merged. And initial merge could simply collapse controls and subcontrols together, and report on errors or discrepancies.
-(v1: error for competitors. v2: collapse them.)
+`merge` - simply merges import branches together on their source catalogs (reuniting controls and subcontrols)
 
-Currently `merge/build` also provides an extra functionality, rebuilding the source catalog's grouping structure (containment) 
+However this is considered normal indeed to skip it would only be done ordinarily for diagnostic purposes.
 
-A hypothetical `merge/reconcile` or something could handle competing controls according to some logic.
+`merge/build` - rebuilds into hierarchy of home catalog (we have this working)
+
+`merge/frame` - instead, provides a way to "stack" the controls into a new organization (optionally reporting errors for dropped controls):
+
+```
+<group>
+  <title>
+  <match pattern="^cm"/>
+</group>
+```
+
+for purposes of error handling, remember that designers should be using exclusions, not letting profiles conflict even apparently. So `merge` might complain *any* time controls appear duplicative (there is always a remedy).
+
+Should running a resolution w/o merge, also make it impossible to patch? (B/c we don't know what we're patching?)
 
 ## Modify logic ("patching")
 
