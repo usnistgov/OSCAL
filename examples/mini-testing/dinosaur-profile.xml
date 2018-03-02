@@ -15,10 +15,19 @@
       </include>
       
    </import>
+   <merge>
+     <!--<build/>-->
+     <!--<frame>
+       <group>
+         <title>New group</title>
+         <call control-id="allosaur"/>
+         <call control-id="triceratops"/>
+       </group>
+     </frame>-->
+   </merge>
    <modify>
-      <set-param param-id="xyz">
-         <desc></desc>
-         <hint></hint>
+      <set-param param-id="scary">
+         <value>claws, tail, huge jackhammer jaws with sharp teeth</value>
       </set-param>
       
 <!-- make examples of all/any remove and add formations
@@ -41,7 +50,7 @@
          
          
          <!--<add target="@id|@class" position="starting|ending|before|after">-->
-         <add target="trans" position="after">
+         <add position="after">
             <part  class="new">
                <title>My new part</title>
             </part>
