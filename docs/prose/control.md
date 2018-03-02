@@ -14,7 +14,7 @@ includes:
 search: true
 ---
 # OSCAL Controls and Catalogs
-This is an introduction to the concepts of OSCAL controls and catalogs.
+TBD: Expand this. This is an introduction to the concepts of OSCAL controls and catalogs.
 
 ## OSCAL Controls
 In OSCAL, a *control* is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures," but most are considerably more complicated. Here's an example of a control from [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4):
@@ -42,9 +42,9 @@ The example below shows the first portion of how the AC1 control from NIST SP 80
 
 * The control class is "SP800-53". TBD: explain what this means, or skip it?
 * The control id is "ac.1". This is not the "AC-1" identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?
-* The &lt;param> elements define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, "ac-1_a", is for specifying "organization-defined personnel or roles". The &lt;param> elements are referenced by statements (explained below).
-* The &lt;prop> elements specify properties, in this case the control name ("AC-1"), priority ("P1"), and baseline impact ("LOW", "MODERATE", and "HIGH").
-* The &lt;part> element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control's text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.
+* The *&lt;param> elements* define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, "ac-1_a", is for specifying "organization-defined personnel or roles". The &lt;param> elements are referenced by statements (explained below).
+* The *&lt;prop> elements* specify properties, in this case the control name ("AC-1"), priority ("P1"), and baseline impact ("LOW", "MODERATE", and "HIGH").
+* The *&lt;part> element* defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control's text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.
 
 ```xml
       <control class="SP800-53" id="ac.1">
@@ -160,12 +160,12 @@ The following shows a brief excerpt of ISO 27002 represented in OSCAL XML. This 
             </part>
 ```
 ## OSCAL Catalogs
-An OSCAL catalog is a set of closely related OSCAL controls. The &lt;catalog> element for [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4) defines one &lt;control> element for each NIST SP 800-53 control. There would be a separate &lt;catalog> element for defining the &lt;control> elements for [ISO 27002](https://www.iso.org/standard/54533.html).
+An *OSCAL catalog* is a set of closely related OSCAL controls. The &lt;catalog> element for [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4) defines one &lt;control> element for each NIST SP 800-53 control. There would be a separate &lt;catalog> element for defining the &lt;control> elements for [ISO 27002](https://www.iso.org/standard/54533.html).
 
-An OSCAL &lt;catalog> element may use additional elements to structure its contents. The &lt;section> element partitions a catalog or the contents of another &lt;section> element within the catalog. A &lt;section> element contains one or more references to controls or control groups. A &lt;group> element references related controls or control groups. Groups may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
+An OSCAL &lt;catalog> element may use additional elements to structure its contents. The *&lt;section> element* partitions a catalog or the contents of another &lt;section> element within the catalog. A &lt;section> element contains one or more references to controls or control groups. A *&lt;group>* element references related controls or control groups. Groups may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
 
-OSCAL enables the definition of frameworks. A framework is basically selecting one or more OSCAL controls from one or more OSCAL catalogs. A framework allows an organization to specify which controls from which catalogs are relevant for a particular situation, environment, etc. For example, an organization using OSCAL to check certain controls on a system that is subject to both NIST SP 800-53 and ISO 27002 could define a single framework that specifies just the necessary controls from those two catalogs. Specifying a subset of controls from catalogs is also known as creating an overlay or customizing a catalog.
+OSCAL enables the definition of frameworks. A *framework* is basically selecting one or more OSCAL controls from one or more OSCAL catalogs. A framework allows an organization to specify which controls from which catalogs are relevant for a particular situation, environment, etc. For example, an organization using OSCAL to check certain controls on a system that is subject to both NIST SP 800-53 and ISO 27002 could define a single framework that specifies just the necessary controls from those two catalogs. Specifying a subset of controls from catalogs is also known as creating an overlay or customizing a catalog.
 
-In OSCAL, the &lt;framework> element is used to define a formal framework. OSCAL also offers the &lt;worksheet> element, which is used to define an informal, ad hoc framework. The expectation is that the &lt;framework> element will be used when a standards organization or other formal body wants to define a published framework, while the &lt;worksheet> element will be used by organizations creating frameworks for their own use.
+In OSCAL, the *&lt;framework> element* is used to define a formal framework. OSCAL also offers the *&lt;worksheet> element*, which is used to define an informal, ad hoc framework. The expectation is that the &lt;framework> element will be used when a standards organization or other formal body wants to define a published framework, while the &lt;worksheet> element will be used by organizations creating frameworks for their own use.
 
-A &lt;framework> element or &lt;worksheet> element may contain &lt;component> elements. A component references one or more controls. This provides a way to organize the contents of a framework.
+A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* elements. A component references one or more controls. This provides a way to organize the contents of a framework.
