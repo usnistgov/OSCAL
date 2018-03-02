@@ -1,5 +1,5 @@
 ---
-title: OSCAL Controls
+title: OSCAL Controls and Catalogs
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - xml
@@ -26,22 +26,22 @@ Comparing the ISO 27002 and NIST SP 800-53 examples show obvious differences. NI
 
 OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.
 
-## The OSCAL control element
-Each OSCAL control element defines a single security or privacy control. A control element may contain the following:
+## The OSCAL &lt;control> element
+Each OSCAL &lt;control> element defines a single security or privacy control. A &lt;control> element may contain the following:
 
 * Identifier for the control (mandatory)
 * Title for the control (optional)
 * References (optional)
-* Subcontrols (optional). An OSCAL subcontrol is very similar to an OSCAL control in its composition, but a subcontrol always extends a control and is dependent on that control. 
-* Control components (optional). An OSCAL control-components element can contain properties, hypertext links, control parameters, and other content.
+* Subcontrols (optional). An OSCAL &lt;subcontrol> is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. 
+* Control components (optional). An OSCAL &lt;component> element can contain properties, hypertext links, control parameters, and other content.
 
-The example below shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the control element. Here's an overview of the major components within this example:
+The example below shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the &lt;control> element. Here's a high-level explanation of this example:
 
 * The control class is "SP800-53". TBD: explain what this means, or skip it?
 * The control id is "ac.1". This is not the "AC-1" identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?
-* The param elements define values (parameters) for the control that OSCAL users can specify. For example, the first param, "ac-1_a", is for specifying "organization-defined personnel or roles". The param elements are referenced by statement elements (explained below).
-* The prop elements specify the control name ("AC-1"), priority ("P1"), and baseline impact ("LOW", "MODERATE", and "HIGH").
-* The part element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control's text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.
+* The &lt;param> elements define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, "ac-1_a", is for specifying "organization-defined personnel or roles". The &lt;param> elements are referenced by statements (explained below).
+* The &lt;prop> elements specify properties, in this case the control name ("AC-1"), priority ("P1"), and baseline impact ("LOW", "MODERATE", and "HIGH").
+* The &lt;part> element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control's text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.
 
 ```xml
       <control class="SP800-53" id="ac.1">
@@ -101,7 +101,7 @@ The second part of the example continues where the previous one ended. This exam
          </part>
 ```
 
-The final part of the example contains the references. These are links to additional sources of information for the control.
+The final part of the example contains the references. These contain hyperlinks to additional sources of information for the control.
 
 ```xml
          <references>
@@ -156,3 +156,5 @@ The following shows a brief excerpt of ISO 27002 represented in OSCAL XML. This 
                </ol>
             </part>
 ```
+# OSCAL Catalogs
+Add text here
