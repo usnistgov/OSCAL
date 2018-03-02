@@ -363,22 +363,24 @@
   
   <!-- When a catalog is filtered through a profile, its parameters are overwritten
        by parameters passed in from the invocation. -->
+  <!-- set-param/desc overrides param/desc -->
   <xsl:template match="param/desc"  mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+
     <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
   </xsl:template>
   
+  <!-- set-param/value overrides param/value -->
   <xsl:template match="param/value" mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
   </xsl:template>
   
+  <!-- set-param/hint overrides param/hint, but so does set-param/vsalue. -->
   <xsl:template match="param/hint"  mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    <!-- A hint is dropped when a value is given. -->
-    <xsl:if test="exists(key('param-settings',parent::param/@id,$modifications)/value)">
-      <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/hint,.)[1]"/>
-    </xsl:if>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,
+      key('param-settings',parent::param/@id,$modifications)/hint, .)[1]"/>
   </xsl:template>
   
   

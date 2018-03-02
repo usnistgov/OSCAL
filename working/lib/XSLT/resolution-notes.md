@@ -131,7 +131,24 @@ When elements are matched using class tokens, there is the possibility that mult
 
 The difference between `position='before'` and `position='starting'` is that "before" places the inserted content *before* the targeted element, while "starting" places it *inside* it, at the front. "ending" will place the inserted content at the end, inside the identified element.
 
+When the targeted element is a control or subcontrol, `before` is a synonym for `starting` 
+
 If no position is given, `position='ending'` is inferred: the insertion happens inside the targeted element (or the matched control or subcontrol), at the end.
+
+Note that this default works along with the rule that if no target (class or ID) is indicated, the control or subcontrol itself is the point of insertion. So:
+
+```
+<modify control-id="ac.1">
+  <add target="advice">
+    <part class="supplemental">
+       <title>Supplementary Guidelines</title>
+       <p>More advice ...</p>
+    </part>       
+  </add>
+</modify>
+```
+
+This adds the new `part` at the end of the `ac.1` control.
 
 Note also that position "before" and "after" work only when @target is also used. They result in no addition being made. (A Schematron check could be made for this.)
 
