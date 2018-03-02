@@ -1,14 +1,28 @@
-# Documentation for creators and maintainers of OSCAL tools and content
+---
+title: Documentation for OSCAL Tool and Content Creators and Maintainers
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  - xml
+  - json
+
+toc_footers:
+  - <a href='#'>GitHub Repo</a>
+  - <a href='#'>NIST.gov</a>
+
+includes:
+
+search: true
+---
+# Documentation for OSCAL tool and content creators and maintainers
+TBD: Add intro here
 
 ## Terminology
-
 Before discussing OSCAL, it is important to define three key OSCAL terms:
  * *Control*: A safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. While this is based on the NIST Special Publication (SP) 800-53 definition of "control", in the context of OSCAL it refers to a similar kind of requirement from a control catalog. 
  * *Catalog*: A set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53 Revision 4 Appendix F, the 100+ controls in ISO 27002, and the practices in COBIT 5. 
  * *Profile*: A set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.
 
 ## Creator and Maintainer Types
-
 The initial OSCAL work encompasses the catalog and profile concepts. There are several types of users who should benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:
  * *Catalog maintainers*: publishing catalogs into OSCAL format (e.g., NIST, ISO, ISACA)
  * *Standard profile maintainers*: profiles in OSCAL format used by many organizations consuming OSCAL catalogs (e.g., NIST, FedRAMP)
