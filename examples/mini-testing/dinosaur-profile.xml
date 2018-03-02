@@ -15,8 +15,20 @@
       </include>
       
    </import>
+   <import href="something-else.xml"/>
+   
    <merge>
-     <!--<build/>-->
+     <combine (control-id|subcontrol-id|pattern) method="use-first|merge|keep">
+       <
+     </combine>
+     <as-is/>
+     <custom>
+       <group>
+         <title>New group</title>
+         <call control-id="allosaur"/>
+         <match pattern="AC*" order-by="keep|ascending|descending"/>
+       </group>
+     </custom>
      <!--<frame>
        <group>
          <title>New group</title>
@@ -33,12 +45,16 @@
 <!-- make examples of all/any remove and add formations
       showing deep as well as shallow alterations -->
       <alter control-id="allosaur">
-         <!--<remove class-ref="trans"/>
-         <remove>
-            <!-\-<title/>-\->
-            <!-\-<prop class="trans"/>-\->
+        <remove class-ref="trans"/>
+        <remove id-ref="allosaur-desc"/>
+        <remove item-name="title"/>
+        <remove item-name="prop" class-ref="trans"/>
+        
+        <remove>
+            <title/>
+            <prop class="trans"/>
             <part id="allosaur-desc"/>
-         </remove>-->
+        </remove>
          
 <!--      add[empty(@id|@class)] will be added at the end   -->
 <!--      add/@position defaults in processing to 'after' -->
