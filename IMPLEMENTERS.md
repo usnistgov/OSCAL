@@ -1,5 +1,5 @@
 ---
-title: Documentation for OSCAL Tool and Content Creators and Maintainers
+title: Info for OSCAL Tool and Content Creators and Maintainers
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - xml
@@ -13,7 +13,7 @@ includes:
 
 search: true
 ---
-# Documentation for OSCAL tool and content creators and maintainers
+# Info for OSCAL Tool and Content Creators and Maintainers
 TBD: Add intro here
 
 ## Terminology
@@ -30,7 +30,6 @@ The initial OSCAL work encompasses the catalog and profile concepts. There are s
  * *Tool vendors*: creating tools that use OSCAL to support risk assessment, continuous monitoring, compliance reporting, and other purposes
  
 ## OSCAL components and high-level architecture
-
 The plans for OSCAL involve seven components, as depicted in the following diagram:
 
 ![OSCAL layers](/docs/graphics/oscal-layers.png "OSCAL Layer Diagram")
