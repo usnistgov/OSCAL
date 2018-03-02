@@ -138,7 +138,7 @@ Note that this default works along with the rule that if no target (class or ID)
 
 This adds the new `part` at the end of the `ac.1` control.
 
-Note also that position "before" and "after" work only when @target is also used. They result in no addition being made. (A Schematron check could be made for this.)
+Note also that position "before" and "after" work only when @target is also used. They result in no addition being made. (A Schematron check could be made for this.) (Or: 'before' and 'after' can work for 
 
 
 
