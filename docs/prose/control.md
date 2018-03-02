@@ -13,7 +13,10 @@ includes:
 
 search: true
 ---
-# OSCAL Controls
+# OSCAL Controls and Catalogs
+This is an introduction to the concepts of OSCAL controls and catalogs.
+
+## OSCAL Controls
 In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures," but most are considerably more complicated. Here's an example of a control from [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4):
 
 ![800-53Rev4AC1](/docs/graphics/NIST-SP-800-53-Rev4-AC1.png "NIST SP 800-53 Rev 4 AC-1")
@@ -156,5 +159,13 @@ The following shows a brief excerpt of ISO 27002 represented in OSCAL XML. This 
                </ol>
             </part>
 ```
-# OSCAL Catalogs
-Add text here
+## OSCAL Catalogs
+An OSCAL catalog is a set of closely related OSCAL controls. The catalog for [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4) defines one &lt;control> element for each NIST SP 800-53 control. There would be a separate catalog for defining the &lt;control> elements for [ISO 27002](https://www.iso.org/standard/54533.html).
+
+An OSCAL catalog may use additional elements to structure its contents. The &lt;section> element partitions a catalog or the contents of another &lt;section> element within the catalog. A &lt;section> element contains one or more references to controls or control groups. A &lt;group> element references related controls or control groups. Groups may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
+
+OSCAL enables the definition of frameworks. A framework is basically selecting one or more OSCAL controls from one or more OSCAL catalogs. A framework allows an organization to specify which controls from which catalogs are relevant for a particular situation, environment, etc. For example, an organization using OSCAL to check certain controls on a system that is subject to both NIST SP 800-53 and ISO 27002 could define a single framework that specifies just the necessary controls from those two catalogs. Specifying a subset of controls from catalogs is also known as creating an overlay or customizing a catalog.
+
+In OSCAL, the &lt;framework> element is used to define a formal framework. OSCAL also offers the &lt;worksheet> element, which is used to define an informal, ad hoc framework. The expectation is that the &lt;framework> element will be used when a standards organization or other formal body wants to define a published framework, while the &lt;worksheet> element will be used by organizations creating frameworks for their own use.
+
+A &lt;framework> element or &lt;worksheet> element may contain &lt;component> elements. A component references one or more controls. This provides a way to organize the contents of a framework.
