@@ -17,7 +17,7 @@ search: true
 This is an introduction to the concepts of OSCAL controls and catalogs.
 
 ## OSCAL Controls
-In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures," but most are considerably more complicated. Here's an example of a control from [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4):
+In OSCAL, a *control* is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures," but most are considerably more complicated. Here's an example of a control from [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4):
 
 ![800-53Rev4AC1](/docs/graphics/NIST-SP-800-53-Rev4-AC1.png "NIST SP 800-53 Rev 4 AC-1")
 
@@ -30,13 +30,13 @@ Comparing the ISO 27002 and NIST SP 800-53 examples show obvious differences. NI
 OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.
 
 ## The OSCAL &lt;control> element
-Each OSCAL &lt;control> element defines a single security or privacy control. A &lt;control> element may contain the following:
+Each OSCAL *&lt;control> element* defines a single security or privacy control. A &lt;control> element may contain the following:
 
 * Identifier for the control (mandatory)
 * Title for the control (optional). This is specified using the &lt;title> element.
 * References (optional). These are specified using the &lt;references> and &lt;ref> elements.
-* Subcontrols (optional). An OSCAL &lt;subcontrol> is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. 
-* Control components (optional). An OSCAL &lt;component> element can contain properties, hypertext links, control parameters, and other content.
+* Subcontrols (optional). An OSCAL *&lt;subcontrol>* is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. 
+* Control components (optional). An OSCAL *&lt;component>* element can contain properties, hypertext links, control parameters, and other content.
 
 The example below shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the &lt;control> element. Here's a high-level explanation of this example:
 
