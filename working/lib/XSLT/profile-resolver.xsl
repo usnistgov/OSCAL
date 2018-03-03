@@ -564,10 +564,9 @@
     <!-- Reverse logic for 'after' patches. Note that elements inside descendant subcontrols or components are excluded from consideration.    -->
     <xsl:variable name="patches-after" select="$patches-to-id[@position='after'] |
       $patches-to-class[$here is ($home/(descendant::*[oscal:classes(.)=oscal:classes($here)]
-      except .//(subcontrol|component)/descendant::*[oscal:classes(.)=oscal:classes($here)]) )[last()]
-      ][@position='after']"/>
+      except .//(subcontrol|component)/descendant::*[oscal:classes(.)=oscal:classes($here)]) )[last()] ]
+      [@position='after']"/>
     <xsl:copy-of select="$patches-after/*"/>
-    
     
   </xsl:template>
   
