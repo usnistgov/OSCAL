@@ -33,11 +33,8 @@
               <param id="scary"><desc>List anything scary about this dinosaur</desc>
                 <hint>teeth, claws, tail for example</hint></param>
               <prop class="trans">Other Lizard</prop>
-                <prop class="trans">Other Lizard II</prop>
-                <prop class="trans">Other Lizard III</prop>
-                <part id="allosaur-desc"><p>Vicious predator, ancestor of more vicious predators.</p></part>
+              <part class="desc" id="allosaur-desc"><p>Vicious predator, ancestor of more vicious predators.</p></part>
             </control>
-                
             <control id="tyrannosaur">
                 <title>Tyrannosaurus</title>
                 <prop class="trans">Tyrant Lizard</prop>

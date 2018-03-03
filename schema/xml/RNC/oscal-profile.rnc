@@ -7,13 +7,10 @@ profile = element profile { idAttr, title, import+, merge?, modify? }
 import = element import { hrefAttr, (\include?, exclude?) }
 
 # presence of element merge means to merge (not merely aggregate)
-merge = element merge { combine*, (build | frame)? }
+merge = element merge { combine?, (build | frame)? }
 
 combine = element combine {
-            (attribute control-id { xsd:NCName } |
-             attribute subcontrol-id { xsd:NCName } |
-             attribute pattern { text } ),
-             attribute method { 'use-first' | 'merge' | 'keep' } }
+            attribute method { 'use-first' | 'merge' | 'keep' } }
 
 build = element as-is { empty }
 
