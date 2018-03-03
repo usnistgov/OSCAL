@@ -283,7 +283,6 @@
       <merged>
         <!-- $so-far is giving us a sequence of imported controls and subcontrols, some of which may be nested, so representing all the import trees. -->
         <xsl:variable name="included" select="$so-far//control | $so-far//subcontrol[empty(parent::control)]"/>
-        <xsl:message expand-text="true">{ count($included) } included</xsl:message>
         <xsl:choose>
           <xsl:when test="exists($merge-spec/custom)">
             
@@ -308,11 +307,13 @@
                 <!-- nb different mode here -->
                 
                 <xsl:if test="empty($merge-spec/(as-is | custom))">
-                  <!-- Otherwise we just spill each group -->
-                  <!--<xsl:apply-templates mode="build" select="current-group()">
-                    <xsl:with-param name="merge-spec" tunnel="yes" select="$merge-spec"/>
-                  </xsl:apply-templates>-->
-                  <xsl:sequence select="current-group()"/>
+                  <xsl:for-each-group select="current-group()" group-by="@id">
+                    <xsl:call-template name="emit-component">
+                      <xsl:with-param name="control-set" select="current-group()"/>
+                      <xsl:with-param name="combining" select="$merge-spec/combine"/><!-- XXXX -->
+                    </xsl:call-template>
+                  </xsl:for-each-group>
+                  <!--<xsl:sequence select="current-group()"/>-->
                 </xsl:if>
 
               </group>
@@ -358,49 +359,21 @@
       </xsl:copy>
     </xsl:if>
   </xsl:template>
-      
-  <xsl:template mode="build rebuild" match="control | subcontrol | component">
-    <xsl:param name="controls"   tunnel="yes" select="()"/>
-    <xsl:param name="merge-spec" tunnel="yes" as="element(merge)"/>
+   
+   
+  <!-- in 'rebuild' mode, the controls are matched in their original structure,
+       but must then be emitted (now not the originals, but the proxies) according to the merge/combine rules. -->
+  <xsl:template   mode="rebuild" match="control | subcontrol | component">
+    <xsl:param    name="controls"   tunnel="yes" select="()"/>
+    <xsl:param    name="merge-spec" tunnel="yes" as="element(merge)"/>
     <xsl:variable name="here"  select="."/>
-    <xsl:if test="@id = ($controls/@id,$controls/(subcontrol|component)/@id)">
-      <xsl:variable name="applicable" select="combine[empty(@pattern|@control-id|@subcontrol-id) or
-        (@control-id=$here/self::control/@id) or (@subcontrol-id=$here/self::subcontrol/@id) or matches($here/@id,@pattern)][last()]"/>
-      <xsl:choose>
-        <xsl:when test="$applicable/@method='use-first'">
-          <xsl:apply-templates mode="#current" select="$controls[1]/*"/>
-        </xsl:when>
-        <xsl:when test="$applicable/@method='merge'">
-          <control>
-            <xsl:copy-of select="@*"/>
-            <xsl:for-each-group select="$controls/(* except (subcontrol | component | references))" group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
-              <xsl:copy-of select="."/><!-- just one -->
-            </xsl:for-each-group>
-            
-            <xsl:apply-templates mode="#current" select="$controls/(subcontrol | component)"/>
-            
-            <xsl:for-each-group select="$controls/references/*" group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
-              <references>
-                <xsl:copy-of select="."/>
-              </references>
-            </xsl:for-each-group>
-                
-          </control>
-        </xsl:when>
-        
-        <!-- catches value 'keep' or anything else -->
-        <xsl:otherwise>
-          <!-- catches value 'keep' or anything else ... avoiding loop here :-) -->
-          <xsl:for-each select="$controls">
-            <xsl:copy>
-              <xsl:copy-of select="@*"/>
-              <xsl:apply-templates mode="#current"/>
-            </xsl:copy>
-          </xsl:for-each>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:if>
-          
+    
+    <xsl:for-each-group select="$controls[@id=$here/@id]" group-by="true()">
+      <xsl:call-template name="emit-component">
+        <xsl:with-param name="combining"   select="$merge-spec/combine"/>
+        <xsl:with-param name="control-set" select="current-group()"/>
+      </xsl:call-template>
+    </xsl:for-each-group>
       <!--<xsl:for-each-group select="$controls[@id=$here/@id]" group-by="true()">
         <control id="{$here/@id}">
           <xsl:if test="exists(current-group()[matches(@class,'\s')])">
@@ -410,6 +383,50 @@
         </control>
       </xsl:for-each-group>-->
   </xsl:template>
+  
+ 
+  
+  <xsl:template name="emit-component">
+    <xsl:param name="combining" as="element(combine)?"/>
+    <xsl:param name="control-set"/>
+    <xsl:for-each-group select="$control-set" group-by="true()">
+      <xsl:choose>
+        <xsl:when test="$combining/@method = 'use-first'">
+          <xsl:copy-of select="$control-set[1]"/>
+        </xsl:when>
+        <xsl:when test="$combining/@method = 'merge'">
+          <xsl:element name="{$control-set[1]/name()}">
+            <xsl:copy-of select="$control-set/@*"/>
+
+            <xsl:for-each-group
+              select="$control-set/(* except (subcontrol | component | references))"
+              group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
+              <xsl:copy-of select="."/>
+              <!-- just one -->
+            </xsl:for-each-group>
+
+            <xsl:apply-templates mode="#current" select="$control-set/(subcontrol | component)"/>
+
+            <xsl:for-each-group select="$control-set/references/*"
+              group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
+              <references>
+                <xsl:copy-of select="."/>
+              </references>
+            </xsl:for-each-group>
+
+          </xsl:element>
+        </xsl:when>
+
+        <!-- catches value 'keep' or anything else -->
+        <xsl:otherwise>
+          <!-- catches value 'keep' or anything else -->
+          <xsl:copy-of select="$control-set"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each-group>
+  </xsl:template>
+  
+  
   
   <xsl:template match="custom" mode="build">
     <!-- tunnel parameter $controls holds controls and maybe loose subcontrols -->
@@ -423,7 +440,21 @@
   <xsl:template match="call" mode="build">
     <xsl:param name="controls" tunnel="yes" select="()"/>
     <xsl:variable name="calling" select="."/>
-    <xsl:apply-templates mode="#current" select="$controls[@id=$calling/(@control-id|@subcontrol-id)]"/>
+    
+    <xsl:call-template name="emit-component">
+      <xsl:with-param name="combining" select="ancestor::merge/combine" />
+      <xsl:with-param name="control-set" select="$controls[@id=$calling/(@control-id|@subcontrol-id)]"/>
+    </xsl:call-template>
+  </xsl:template>
+  
+  <xsl:template match="match" mode="build">
+    <xsl:param name="controls" tunnel="yes" select="()"/>
+    <xsl:variable name="calling" select="."/>
+    
+    <xsl:call-template name="emit-component">
+      <xsl:with-param name="combining" select="ancestor::merge/combine" />
+      <xsl:with-param name="control-set" select="$controls[matches(@id,$calling/@pattern ! ('^' || . || '$'))]"/>
+    </xsl:call-template>
   </xsl:template>
   
   <!-- mode 'build' matches the proxy structure given in the profile, pulling included

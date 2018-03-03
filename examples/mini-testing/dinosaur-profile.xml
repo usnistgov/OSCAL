@@ -9,26 +9,27 @@
    <title>Dinosaur Profile</title>
   <import href="dinosaur-catalog.xml">
     <include>
-      <match pattern="(allosaur|triceratops)"/>
+      <match pattern="(.*saur.*|triceratops)"/>
       <!--<call with-subcontrols="yes" control-id="allosaur"/>
          <call control-id="triceratops"/>-->
     </include>
     
   </import>
-  <import href="dinosaur-catalog.xml">
+  <!--<import href="dinosaur-catalog.xml">
     <include>
       <match pattern="(allosaur|triceratops)"/>
-      <!--<call with-subcontrols="yes" control-id="allosaur"/>
-         <call control-id="triceratops"/>-->
+      <!-\-<call with-subcontrols="yes" control-id="allosaur"/>
+         <call control-id="triceratops"/>-\->
     </include>
     
-  </import>
+  </import>-->
   <merge>
-    <combine method="use-first"/>
-    <!--<custom>
+    <combine method="merge"/>
+    <!--<as-is/>-->
+    <custom>
       <title>My customization</title>
-      <call control-id="allosaur"/>
-    </custom>-->
+      <match pattern=".*saur.*"/>
+    </custom>
     
   </merge>
   <!--<import href="something-else.xml"/>-->
