@@ -59,14 +59,14 @@ test this on simple cases then come back to worse errors (e.g. duplicative/confl
 
 However this is considered normal indeed to skip it would only be done ordinarily for diagnostic purposes.
 
-`merge/build` - rebuilds into hierarchy of home catalog (we have this working)
+`merge/as-is` - rebuilds into hierarchy of home catalog (we have this working)
 
-`merge/frame` - instead, provides a way to "stack" the controls into a new organization (optionally reporting errors for dropped controls):
+`merge/custom` - instead, provides a way to "stack" the controls into a new organization (optionally reporting errors for dropped controls):
 
 ```
 <group>
   <title>
-  <match pattern="^cm"/>
+  <match pattern="cm"/>
 </group>
 ```
 
@@ -85,23 +85,14 @@ Two ways things can be removed --
 ```
 <remove id-ref="e95b8652"/>
 <remove class-ref="baseline"/>
+<remove item-name="title"/>
 ```
 
-Remove the element with `@id` (id attribute) `e95b8652`
-Remove any element with `@class` token `baseline`
+ * Remove the element with `@id` (id attribute) `e95b8652`
+ * Remove any element with `@class` token `baseline`
+ * Remove any `title` element
 
-.2. Proxy/surrogates
-
-```
-<remove>
-  <title/>
-  <prop class="baseline"/>
-</remove>
-```
-
-Remove the **title** (element), and remove any **prop** element with class (token) `baseline`.
-
-Similarly, there are a few ways things can be added.
+These can be combined.
 
 `<add>` elements permit two attributes to indicate the position of the addition. Four values are recognized: `before`, `after`, `starting` and `ending`.
 
@@ -141,7 +132,7 @@ Note that this default works along with the rule that if no target (class or ID)
 <modify control-id="ac.1">
   <add target="advice">
     <part class="supplemental">
-       <title>Supplementary Guidelines</title>
+       <title>Supplementary Guidance</title>
        <p>More advice ...</p>
     </part>       
   </add>
@@ -150,7 +141,4 @@ Note that this default works along with the rule that if no target (class or ID)
 
 This adds the new `part` at the end of the `ac.1` control.
 
-Note also that position "before" and "after" work only when @target is also used. They result in no addition being made. (A Schematron check could be made for this.) (Or: 'before' and 'after' can work for 
-
-
-
+Note also that position "before" and "after" work only when @target is also used (to identify some contents inside a control); they are inoperable when the target is a control or subcontrol. They result in no addition being made. (A Schematron check could be made for this.)
