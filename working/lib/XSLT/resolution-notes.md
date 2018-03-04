@@ -130,7 +130,10 @@ Note that this default works along with the rule that if no target (class or ID)
 
 ```
 <modify control-id="ac.1">
-  <add target="advice">
+  <add position="starting">
+    <link href="guidelines/">Local guidelines</link>
+  </add>
+  <add>
     <part class="supplemental">
        <title>Supplementary Guidance</title>
        <p>More advice ...</p>
