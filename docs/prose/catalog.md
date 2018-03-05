@@ -50,22 +50,14 @@ Members:
 
 
 
-## The OSCAL &lt;control> element
-Each OSCAL *&lt;control> element* defines a single security or privacy control. A &lt;control> element may contain the following:
+## OSCAL Controls
+Each OSCAL control defines a single security or privacy control. An OSCAL control may contain the following:
 
-* Identifier for the control (mandatory)
-* Title for the control (optional). This is specified using the &lt;title> element.
-* References (optional). These are specified using the &lt;references> and &lt;ref> elements.
-* Subcontrols (optional). An OSCAL *&lt;subcontrol>* is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. 
-* Control components (optional). An OSCAL *&lt;component>* element can contain properties, hypertext links, control parameters, and other content.
-
-The example below shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the &lt;control> element. Here's a high-level explanation of this example:
-
-* The control class is "SP800-53". TBD: explain what this means, or skip it?
-* The control id is "ac.1". This is not the "AC-1" identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?
-* The *&lt;param> elements* define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, "ac-1_a", is for specifying "organization-defined personnel or roles". The &lt;param> elements are referenced by statements (explained below).
-* The *&lt;prop> elements* specify properties, in this case the control name ("AC-1"), priority ("P1"), and baseline impact ("LOW", "MODERATE", and "HIGH").
-* The *&lt;part> element* defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control's text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.
+* Identifier for the control
+* Title for the control
+* References 
+* Subcontrols (enhancements to the control that are dependent on it) 
+* Control components, which can contain properties, hypertext links, parameters, and other content.
 
 ### Bindings
 
