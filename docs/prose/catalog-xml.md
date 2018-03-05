@@ -17,15 +17,40 @@ search: true
 TBD: add intro
 
 ## The &lt;catalog> element
-Each OSCAL catalog is defined by a &lt;catalog> element. 
+Each OSCAL catalog is defined by a &lt;catalog> element. A &lt;catalog> element may contain the following:
+* &lt;title> for the catalog (mandatory)
+* &lt;declarations> (zero or more)
+* &lt;section>, &lt;group>, and/or &lt;control> definitions (zero or more of each)
+* &lt;references> (zero or more)
 
-Catalog Members:
-* Declaration
-* Group
-* Control
-* Sub-control
+## The &lt;declarations> element
 
-### &lt;control> element
+## The &lt;section> and &lt;group> elements
+Catalogs may use &lt;section> elements for catalog partitioning and *&lt;group>* elements to reference related controls or control groups. *&lt;group>* elements may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
+
+### &lt;framework> and &lt;worksheet> elements
+The *&lt;framework> element* is used to define a formal framework. OSCAL also offers the *&lt;worksheet> element*, which is used to define an informal, ad hoc framework. The expectation is that the &lt;framework> element will be used when a standards organization or other formal body wants to define a published framework, while the &lt;worksheet> element will be used by organizations creating frameworks for their own use.
+
+Both &lt;framework> and &lt;worksheet> elements may contain the following:
+* &lt;title>
+* &lt;declarations> (zero or more)
+* &lt;section>, &lt;category>, and/or &lt;component> definitions (zero or more of each)
+* &lt;references> (zero or more)
+* @id
+* &lt;optionalClass>
+
+#### &lt;category> element
+A &lt;category> element specifies a group of related controls or a group of groups of such controls. A &lt;category> element may contain the following:
+* &lt;title> (optional)
+* &lt;prop>, &lt;link>, and/or &lt;prose> elements (zero or more of each)
+* &lt;category> or &lt;component> elements (one or more total) 
+* @id
+* &lt;optionalClass>
+
+#### &lt;component> element
+A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* elements. A component references one or more controls. This provides a way to organize the contents of a framework.
+
+## &lt;control> element
 Each security or privacy control within the catalog is defined by a &lt;control> element. A &lt;control> element may contain the following:
 
 * Identifier for the control (mandatory)
@@ -33,16 +58,6 @@ Each security or privacy control within the catalog is defined by a &lt;control>
 * References (optional). These are specified using the &lt;references> and &lt;ref> elements.
 * Subcontrols (optional). An OSCAL *&lt;subcontrol>* is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. 
 * Control components (optional). An OSCAL *&lt;component>* element can contain properties, hypertext links, control parameters, and other content.
-
-
-#### &lt;section> and &lt;group> elements
-Catalogs may use &lt;section> elements for catalog partitioning and *&lt;group>* elements to reference related controls or control groups. *&lt;group>* elements may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
-
-#### &lt;framework> and &lt;worksheet> elements
-The *&lt;framework> element* is used to define a formal framework. OSCAL also offers the *&lt;worksheet> element*, which is used to define an informal, ad hoc framework. The expectation is that the &lt;framework> element will be used when a standards organization or other formal body wants to define a published framework, while the &lt;worksheet> element will be used by organizations creating frameworks for their own use.
-
-##### &lt;component> element
-A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* elements. A component references one or more controls. This provides a way to organize the contents of a framework.
 
 ## The Declarations Object
 
