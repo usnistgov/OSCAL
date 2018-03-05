@@ -23,8 +23,6 @@ Each OSCAL catalog is defined by a &lt;catalog> element. A &lt;catalog> element 
 * &lt;section>, &lt;group>, and/or &lt;control> definitions (zero or more of each)
 * &lt;references> (zero or more)
 
-## The &lt;declarations> element
-
 ## The &lt;section> and &lt;group> elements
 Catalogs may use &lt;section> elements for catalog partitioning and *&lt;group>* elements to reference related controls or control groups. *&lt;group>* elements may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
 
@@ -95,13 +93,8 @@ An OSCAL *&lt;subcontrol>* is very similar to an OSCAL &lt;control> in its compo
 * @id
 * &lt;optionalClass>
 
-## The Declarations Object
+## The &lt;declarations> element
 TBD
-
-## Bindings
-
-* [XML](xml/catalog.md#control)
-* JSON
 
 ## Examples
 TBD
