@@ -20,8 +20,8 @@ TBD: add intro
 Each OSCAL catalog is defined by a &lt;catalog> element. A &lt;catalog> element may contain the following:
 * &lt;title> for the catalog (mandatory)
 * [&lt;declarations>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-declarations-element) (zero or more)
-* &lt;section>, &lt;group>, and/or &lt;control> definitions (zero or more of each)
-* &lt;references> (zero or more)
+* [&lt;section>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-section-element), [&lt;group>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-group-element), and/or [&lt;control>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#control-element) definitions (zero or more of each)
+* [&lt;references>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-references-element) (zero or more)
 
 ### The &lt;section> element
 Catalogs may use &lt;section> elements for catalog partitioning. A &lt;section> element may contain the following:
