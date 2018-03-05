@@ -27,8 +27,8 @@ Each OSCAL catalog is defined by a &lt;catalog> element. A &lt;catalog> element 
 Catalogs may use &lt;section> elements for catalog partitioning. A &lt;section> element may contain the following:
 * &lt;title> (mandatory)
 * &lt;prose> (mandatory)
-* &lt;section> or &lt;group> (zero or more of each)
-* &lt;references> (zero or more)
+* &lt;section> or [&lt;group>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-group-element) (zero or more of each)
+* [&lt;references>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-references-element) (zero or more)
 * @id
 * &lt;optionalClass>
 
@@ -37,15 +37,15 @@ Catalogs may use &lt;group> elements to reference related controls or control gr
 
 A &lt;group> element may contain the following:
 * &lt;title> (optional)
-* &lt;control-components> (mandatory)
-* &lt;group> or &lt;control> (one or more total)
-* &lt;references> (zero or more)
+* [&lt;control-components>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#control-components-element) (mandatory)
+* [&lt;group>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-group-element) or [&lt;control>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#control-element) (one or more total)
+* [&lt;references>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-references-element) (zero or more)
 * @id
 * &lt;optionalClass>
 
 ### &lt;control-components> element
 A &lt;control-components> element may contain the following:
-* &lt;prop>, &lt;anyKindofPart>, &lt;link>, and/or &lt;param> elements (zero or more of each)
+* [&lt;prop>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#prop-element), [&lt;anyKindofPart>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#part-element), [&lt;link>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#link-element), and/or [&lt;param>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#param-element) elements (zero or more of each)
 
 ### &lt;framework> and &lt;worksheet> elements
 TBD: figure out where this slots in
@@ -54,24 +54,24 @@ The *&lt;framework> element* is used to define a formal framework. OSCAL also of
 
 Both &lt;framework> and &lt;worksheet> elements may contain the following:
 * &lt;title>
-* &lt;declarations> (zero or more)
-* &lt;section>, &lt;category>, and/or &lt;component> definitions (zero or more of each)
-* &lt;references> (zero or more)
+* [&lt;declarations>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-declarations-element) (zero or more)
+* [&lt;section>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-section-element), [&lt;category>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#category-element), and/or [&lt;component>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#component-element) definitions (zero or more of each)
+* [&lt;references>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-references-element) (zero or more)
 * @id
 * &lt;optionalClass>
 
 #### &lt;category> element
 A &lt;category> element specifies a group of related controls or a group of groups of such controls. A &lt;category> element may contain the following:
 * &lt;title> (optional)
-* &lt;prop>, &lt;link>, and/or &lt;prose> elements (zero or more of each)
-* &lt;category> or &lt;component> elements (one or more total) 
+* [&lt;prop>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#prop-element), [&lt;link>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#link-element), and/or &lt;prose> elements (zero or more of each)
+* [&lt;category>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#category-element) or [&lt;component>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#component-element) element (one or more total) 
 * @id
 * &lt;optionalClass>
 
 #### &lt;component> element
-A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* elements. A component references one or more controls. This provides a way to organize the contents of a framework. A &lt;component> element may contain the following:
+A [&lt;framework> or &lt;worksheet>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#framework-and-worksheet-elements) element may contain *&lt;component>* elements. A component references one or more controls. This provides a way to organize the contents of a framework. A &lt;component> element may contain the following:
 * &lt;title> (optional)
-* &lt;param>, &lt;prop>, &lt;link>, &lt;prose>, and/or &lt;part> elements (zero or more of each)
+* [&lt;param>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#param-element), [&lt;prop>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#prop-element), [&lt;link>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#link-element), &lt;prose>, and/or [&lt;anyKindofPart>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#part-element) elements (zero or more of each)
 * &lt;component> elements (zero or more) 
 * @id
 * &lt;optionalClass>
@@ -91,7 +91,7 @@ A &lt;param> element is a parameter setting to be propagated to points of insert
 ##### &lt;part> element
 A &lt;part> element is a partition, piece, or section of a control, subcontrol, component, or part. A &lt;part> element may contain the following:
 * &lt;title> (optional)
-* &lt;prose> and/or &lt;control-components> elements (zero or more of each)
+* &lt;prose> and/or [&lt;control-components>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#control-components-element) (zero or more of each)
 * @id
 * &lt;optionalClass>
 
@@ -102,16 +102,16 @@ A &lt;prop> element is a value with a name. It is attributed to the containing c
 ## &lt;control> element
 Each security or privacy control within the catalog is defined by a &lt;control> element. A &lt;control> element may contain the following:
 * &lt;title> (optional)
-* &lt;control-components> and/or &lt;subcontrol> elements (zero or more of each)
-* &lt;references> (zero or more)
+* [&lt;control-components>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#control-components-element) and/or [&lt;subcontrol>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#subcontrol-element) elements (zero or more of each)
+* [&lt;references>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-references-element) (zero or more)
 * @id
 * &lt;optionalClass>
 
 ## &lt;subcontrol> element
 An OSCAL &lt;subcontrol> element is very similar to an OSCAL &lt;control> element in its composition. A &lt;subcontrol> element may contain the following:
 * &lt;title> (optional)
-* &lt;control-components> element (mandatory)
-* &lt;references> (zero or more)
+* [&lt;control-components>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#control-components-element) element (mandatory)
+* [&lt;references>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-references-element) (zero or more)
 * @id
 * &lt;optionalClass>
 
