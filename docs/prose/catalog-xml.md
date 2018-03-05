@@ -13,7 +13,7 @@ includes:
 
 search: true
 ---
-# XML Representations of OSCAL Catalogs and Controls
+# XML Representation of OSCAL Catalogs
 TBD: add intro
 
 ## The &lt;catalog> element
@@ -27,6 +27,22 @@ Each OSCAL catalog is defined by a &lt;catalog> element. A &lt;catalog> element 
 
 ## The &lt;section> and &lt;group> elements
 Catalogs may use &lt;section> elements for catalog partitioning and *&lt;group>* elements to reference related controls or control groups. *&lt;group>* elements may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
+
+A &lt;section> element may contain the following:
+* &lt;title> (mandatory)
+* &lt;prose> (mandatory)
+* &lt;section> or &lt;group> (zero or more of each)
+* &lt;references> (zero or more)
+* @id
+* &lt;optionalClass>
+
+A &lt;group> element may contain the following:
+* &lt;title> (optional)
+* &lt;control-components> (mandatory)
+* &lt;group> or &lt;control> (one or more total)
+* &lt;references> (zero or more)
+* @id
+* &lt;optionalClass>
 
 ### &lt;framework> and &lt;worksheet> elements
 The *&lt;framework> element* is used to define a formal framework. OSCAL also offers the *&lt;worksheet> element*, which is used to define an informal, ad hoc framework. The expectation is that the &lt;framework> element will be used when a standards organization or other formal body wants to define a published framework, while the &lt;worksheet> element will be used by organizations creating frameworks for their own use.
@@ -48,7 +64,12 @@ A &lt;category> element specifies a group of related controls or a group of grou
 * &lt;optionalClass>
 
 #### &lt;component> element
-A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* elements. A component references one or more controls. This provides a way to organize the contents of a framework.
+A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* elements. A component references one or more controls. This provides a way to organize the contents of a framework. A &lt;component> element may contain the following:
+* &lt;title> (optional)
+* &lt;param>, &lt;prop>, &lt;link>, &lt;prose>, and/or &lt;part> elements (zero or more of each)
+* &lt;component> elements (zero or more) 
+* @id
+* &lt;optionalClass>
 
 ## &lt;control> element
 Each security or privacy control within the catalog is defined by a &lt;control> element. A &lt;control> element may contain the following:
@@ -60,18 +81,15 @@ Each security or privacy control within the catalog is defined by a &lt;control>
 * Control components (optional). An OSCAL *&lt;component>* element can contain properties, hypertext links, control parameters, and other content.
 
 ## The Declarations Object
+TBD
 
-
-
-
-
-### Bindings
+## Bindings
 
 * [XML](xml/catalog.md#control)
 * JSON
 
-
-
+## Examples
+TBD
 
 The example below shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the &lt;control> element. Here's a high-level explanation of this example:
 
