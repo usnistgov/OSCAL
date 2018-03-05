@@ -75,7 +75,28 @@ A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* 
 * @id
 * &lt;optionalClass>
 
-properties, hypertext links, control parameters, and other content
+##### &lt;link> element
+A &lt;link> element is a line or paragraph with a hypertext link. A &lt;link> element may contain the following:
+* &lt;mix> (mandatory)
+* @relAttr and @hrefAttr attributes
+
+##### &lt;param> element
+A &lt;param> element is a parameter setting to be propagated to points of insertion. A &lt;param> element may contain the following:
+* &lt;desc> (mandatory)
+* &lt;value> (mandatory)
+* @id
+* &lt;optionalClass>
+
+##### &lt;part> element
+A &lt;part> element is a partition, piece, or section of a control, subcontrol, component, or part. A &lt;part> element may contain the following:
+* &lt;title> (optional)
+* &lt;prose> and/or &lt;control-components> elements (zero or more of each)
+* @id
+* &lt;optionalClass>
+
+##### &lt;prop> element
+A &lt;prop> element is a value with a name. It is attributed to the containing control, subcontrol, component, part, or group. A &lt;prop> element may contain the following:
+* &lt;requiredClass> (mandatory)
 
 ## &lt;control> element
 Each security or privacy control within the catalog is defined by a &lt;control> element. A &lt;control> element may contain the following:
