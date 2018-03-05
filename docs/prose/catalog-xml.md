@@ -19,20 +19,21 @@ TBD: add intro
 ## The &lt;catalog> element
 Each OSCAL catalog is defined by a &lt;catalog> element. A &lt;catalog> element may contain the following:
 * &lt;title> for the catalog (mandatory)
-* &lt;declarations> (zero or more)
+* [&lt;declarations>](https://github.com/usnistgov/OSCAL/blob/docs/docs/prose/catalog-xml.md#the-declarations-element) (zero or more)
 * &lt;section>, &lt;group>, and/or &lt;control> definitions (zero or more of each)
 * &lt;references> (zero or more)
 
-## The &lt;section> and &lt;group> elements
-Catalogs may use &lt;section> elements for catalog partitioning and *&lt;group>* elements to reference related controls or control groups. *&lt;group>* elements may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
-
-A &lt;section> element may contain the following:
+### The &lt;section> element
+Catalogs may use &lt;section> elements for catalog partitioning. A &lt;section> element may contain the following:
 * &lt;title> (mandatory)
 * &lt;prose> (mandatory)
 * &lt;section> or &lt;group> (zero or more of each)
 * &lt;references> (zero or more)
 * @id
 * &lt;optionalClass>
+
+### The &lt;group> element
+Catalogs may use &lt;group> elements to reference related controls or control groups. &lt;group> elements may be titled and have their own properties, statements, parameters, references, etc., which are inherited by all members of the group.
 
 A &lt;group> element may contain the following:
 * &lt;title> (optional)
