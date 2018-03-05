@@ -44,7 +44,13 @@ A &lt;group> element may contain the following:
 * @id
 * &lt;optionalClass>
 
+### &lt;control-components> element
+A &lt;control-components> element may contain the following:
+* &lt;prop>, &lt;anyKindofPart>, &lt;link>, and/or &lt;param> elements (zero or more of each)
+
 ### &lt;framework> and &lt;worksheet> elements
+TBD: figure out where this slots in
+
 The *&lt;framework> element* is used to define a formal framework. OSCAL also offers the *&lt;worksheet> element*, which is used to define an informal, ad hoc framework. The expectation is that the &lt;framework> element will be used when a standards organization or other formal body wants to define a published framework, while the &lt;worksheet> element will be used by organizations creating frameworks for their own use.
 
 Both &lt;framework> and &lt;worksheet> elements may contain the following:
@@ -71,14 +77,23 @@ A &lt;framework> element or &lt;worksheet> element may contain *&lt;component>* 
 * @id
 * &lt;optionalClass>
 
+properties, hypertext links, control parameters, and other content
+
 ## &lt;control> element
 Each security or privacy control within the catalog is defined by a &lt;control> element. A &lt;control> element may contain the following:
+* &lt;title> (optional)
+* &lt;control-components> and/or &lt;subcontrol> elements (zero or more of each)
+* &lt;references> (zero or more)
+* @id
+* &lt;optionalClass>
 
-* Identifier for the control (mandatory)
-* Title for the control (optional). This is specified using the &lt;title> element.
-* References (optional). These are specified using the &lt;references> and &lt;ref> elements.
-* Subcontrols (optional). An OSCAL *&lt;subcontrol>* is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. 
-* Control components (optional). An OSCAL *&lt;component>* element can contain properties, hypertext links, control parameters, and other content.
+## &lt;subcontrol> element
+An OSCAL *&lt;subcontrol>* is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. A &lt;subcontrol> element may contain the following:
+* &lt;title> (optional)
+* &lt;control-components> element (mandatory)
+* &lt;references> (zero or more)
+* @id
+* &lt;optionalClass>
 
 ## The Declarations Object
 TBD
