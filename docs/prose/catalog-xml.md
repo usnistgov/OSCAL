@@ -107,12 +107,17 @@ Each security or privacy control within the catalog is defined by a &lt;control>
 * &lt;optionalClass>
 
 ## &lt;subcontrol> element
-An OSCAL *&lt;subcontrol>* is very similar to an OSCAL &lt;control> in its composition. A &lt;subcontrol> is an enhancement to a &lt;control>; it extends a &lt;control> and is dependent on that &lt;control>. A &lt;subcontrol> element may contain the following:
+An OSCAL &lt;subcontrol> element is very similar to an OSCAL &lt;control> element in its composition. A &lt;subcontrol> element may contain the following:
 * &lt;title> (optional)
 * &lt;control-components> element (mandatory)
 * &lt;references> (zero or more)
 * @id
 * &lt;optionalClass>
+
+## The &lt;references> element
+A &lt;references> element contains one or more reference descriptions, each contained within a &lt;ref> element. Each &lt;ref> element may contain the following:
+* &lt;std> (citation of a form published standard), &lt;citation> (citation of a resource), and/or &lt;prose> elements (zero or more of each)
+* @id
 
 ## The &lt;declarations> element
 TBD
