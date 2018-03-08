@@ -70,6 +70,17 @@ However this is considered normal indeed to skip it would only be done ordinaril
 </group>
 ```
 
+When invoked using `match`, matched controls and subcontrols come out in their original (source) order. Alternatively, an `order-by` attribute may be used to re-sort the controls, in `ascending` or `descending` (alphabetical) order. Currently, only sorting by the ID value on the control or subcontrol, is supported.
+
+```
+<group>
+  <title>
+  <match pattern="cm" order="descending"/>
+</group>
+```
+
+By combining multiple match patterns
+
 for purposes of error handling, remember that designers should be using exclusions, not letting profiles conflict even apparently. So `merge` might complain *any* time controls appear duplicative (there is always a remedy).
 
 Should running a resolution w/o merge, also make it impossible to patch? (B/c we don't know what we're patching?)
