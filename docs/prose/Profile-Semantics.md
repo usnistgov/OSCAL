@@ -97,45 +97,15 @@ We do not yet support selection of controls by other criteria such as context/or
 
 ### Merge (Combination)
 
-XXX NB THIS ENTIRE SECTION MAY ALTER RADICALLY XXX
-cf New-Merge-Diagrams.html
+A profile that selects controls without merging them has a hierarchy that represents the order (hierarchy) of selection. Remember that since controls may be selected from more than one resource, and that resources include profiles (which may select from more than one resource), what results naturally is a "tree" structure. However, the terminals (final branches) of this tree "overlap" in the sense that many of them may call the same (source) catalog. Indeed, profiles that include multiple controls from NIST SP800-53 (such as FedRAMP) via multiple invocation pathways (multiple profiles) may be quite usual.
 
-In profile resolution, a "view" is provided of *each* resource (profile or catalog) invoked by a profile, which preserves information regarding the import including the structural relations (groupings) among controls selected by it. Because multiple imports may trace back through several import steps, to the same catalog (such as, for example, NIST SP800-53), this means that the resolved profile will contain more than one "copy" (partial or complete) of the organization (groups) within which controls are organized.
+This hierarchy may be represented internally but exposing it is *not* a requirement of profile resolution. Without merging, a profile when resolved should result in a simple "pile" of controls. YMMV. 
 
-Note that since profiles can invoke profiles, the views of imports may be nested, as many layers deep as it takes to get back to a catalog. Also, because profiles may invoke controls from more than a single upstream resource (catalog or profile), views will contain multiple views, in a branching structure. Occasionally, views within views will point to the same source catalogs as other views (within views); this will happen both in error, and as a feature. In any case it will sometimes be valuable or useful information, to know not only that a control was included but *how* it was included -- its provenance of import.
+Merging can either be a simple merge, or it can provide for (re) organizing controls. For purposes of the latter, two features are provided. A merge "as is" will present the controls selected for the profile, regrouped and reorganized into the structure of their original ("home") catalogs. Note that this structure need not be known in advance.
 
-Within each view, at the deepest layer, a profile will invoke not another profile (making for another view), but a catalog. At that point, the resolved profile will present a partial (filtered) "snapshot" of the catalog in question, showing the controls that are (finally) selected (by the views in combination).
+Alternatively, a profile may offer a `combine` instruction that provides an entire structure, within which controls are called (again), from among the set of controls returned by the selection operation. \[ Examples ] ]
 
-This snapshot will show a *copy* of the catalog with the following modifications:
-
-* A group that does not contain any control, selected by the profile, is discarded.
-
-* A group that contains a selected control (either directly or by virtue of subgroups) is copied, with its properties and contents (statements, parts, paragraphs etc), as well as any selected controls or groups that contain (at any level) selected controls.
-
-* Only controls that are selected by the profile, are kept.
-
-* Within controls, only subcontrols that are selected by the profile, are kept. (Note that the means of selection of subcontrols is different from that of the controls on which they depend.)
-
-* Parameter descriptions and values are *unchanged*. (They will be changed in the subsequent "Modify" step.)
-
-More info here: [Profile Invocation Merge Diagrams](Merge-Diagrams.html)
-
-It is noteworthy that this organization, while it has the advantage of low information loss, will not be ideal for many purposes. Accordingly, an additional **merge** step may be performed.
-
-In this context, to "merge" means to collapse a "multiply refracted" combination of views on a single catalog (made by assembling disparate profiles into a profile), into a single integrated view.
-
-This operation is provided as an *optional* step.
-
-* A profile with more than one import, resolves them separately. Invocations are resolved separately within a profile.
-* Recursive profile resolution is reflected in the import hierarchy
-* The same catalog can appear at multiple terminals in an import hierarchy
-* Among controls selected in an import, a catalog's grouping organization is retained
-* Because selection can occur at any level of profiling, distinct import pathways (each subsetting controls and/or adding branches of their own) will result in very different representations of "fragmented groupings" of control catalogs. Unless these actually select the same controls, this is not necessarily an error. Where they do, they expose issues to be resolved. This occurrence above all should be exposed while being flagged as an error. 
 
 ### Modification
 
-The matching/selection logic of patches described in this spec is in DRAFT form, inasmuch as we expect (hope) to define more flexible and powerful mechanism in a future sprint.
-
-Currently, two distinct types of modification are supported: setting parameters (values, default values, descriptions); and direct modification ("patching") of controls and subcontrols. A small set of element types are provided to support the latter, including directives for deleting contents and adding new contents to the control or subcontrol.
-
-See the Tag Library for more on elements `alter`, `remove` and `augment` when used inside `modify`. See the Mini Testing samples for examples.
+\[ patch in from Profile-Semantics2.md ]

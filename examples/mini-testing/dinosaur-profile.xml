@@ -9,27 +9,26 @@
    <title>Dinosaur Profile</title>
   <import href="dinosaur-catalog.xml">
     <include>
-      <match pattern="(.*saur.*|triceratops)"/>
+      <match pattern=".*saur.*"/>
       <!--<call with-subcontrols="yes" control-id="allosaur"/>
          <call control-id="triceratops"/>-->
     </include>
     
   </import>
-  <!--<import href="dinosaur-catalog.xml">
+  <import href="dinosaur-catalog.xml">
     <include>
-      <match pattern="(allosaur|triceratops)"/>
-      <!-\-<call with-subcontrols="yes" control-id="allosaur"/>
-         <call control-id="triceratops"/>-\->
+      <match pattern="triceratops"/>
+      <!--<call with-subcontrols="yes" control-id="allosaur"/>
+         <call control-id="triceratops"/>-->
     </include>
     
-  </import>-->
+  </import>
+  <!--<merge combine="merge"/>-->
   <merge>
-    <combine method="merge"/>
+    <combine method="keep"/>
+<!-- semantics of 'merge' combination should be specified (and tested!)   -->
     <!--<as-is/>-->
-    <custom>
-      <title>My customization</title>
-      <match pattern=".*saur.*"/>
-    </custom>
+    
     
   </merge>
   <!--<import href="something-else.xml"/>-->
@@ -43,7 +42,7 @@
        <group>
          <title>New group</title>
          <call control-id="allosaur"/>
-         <match pattern="AC*" order-by="keep"/>
+         <match pattern="AC*" order-by="ascending|descending|keep"/>
        </group>
      -\-><!-\-</custom>-\->
      
@@ -56,10 +55,10 @@
 <!-- make examples of all/any remove and add formations
       showing deep as well as shallow alterations -->
       <alter control-id="allosaur">
-        <!--<remove class-ref="trans"/>
+        <remove class-ref="trans"/>
         <remove id-ref="allosaur-desc"/>
         <remove item-name="title"/>
-        <remove item-name="prop" class-ref="trans"/>-->
+        <remove item-name="prop" class-ref="trans"/>
         
         <!--      add[empty(@id|@class)] will be added at the end   -->
 <!--      add/@position defaults in processing to 'after' -->
@@ -71,7 +70,7 @@
          
          
          <!--<add target="@id|@class" position="starting|ending|before|after">-->
-         <add position="after">
+         <add position="ending">
             <part  class="new">
                <title>My new part</title>
             </part>
@@ -79,4 +78,11 @@
          <!--</add>-->
       </alter>
    </modify>
+  
+<!-- Errors and warning conditions:
+  Duplicate or clashing controls in final results
+  Orphan subcontrols in final results
+  targets in merge/modify that do not resolve? (come up empty)
+  alter/add[empty(@target)][@position=('before','after')] (Schematron)
+  -->
 </profile>
