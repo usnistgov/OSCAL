@@ -20,7 +20,7 @@
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
   
-  <sch:let name="schema-files" value="'../../schema/xml/XSD/oscal-core-interim.xsd', '../../schema/xml/XSD/oscal-profile.xsd'"/>
+  <sch:let name="schema-files" value="'../../schema/xml/XSD/oscal-core-interim.xsd', '../../schema/xml/XSD/oscal-profile-interim.xsd'"/>
   <sch:let name="schemas" value="document($schema-files)"/>
   
   <sch:let name="element-declarations"  value="$schemas//xsd:element[exists(@name)]"/>

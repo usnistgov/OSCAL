@@ -121,7 +121,6 @@ control =
 subcontrol =
   element subcontrol {
     idAttr?, optionalClass, title?, control-components, references?
- 
   }
 
 #inSubcontrol = title?, control-components, references?
@@ -159,19 +158,22 @@ title = element title { (text | q)* }
 
 link    = element link { relAttr, hrefAttr, mix }
 
-param   = element param { idAttr?, optionalClass, desc, (hint | value)? }
+
+param   = element param { idAttr?, optionalClass, desc, label?, value? }
 
 desc = element desc { mix }
 
-# A hint is a proxy or placeholder for a value, which can evade validation checks applied to values
-hint = element hint { text }
+label = element label { text }
+
 
 prop =
   element prop { asProp }
 
 asProp = optionalClass, text
 
+
 prose = ( anyKindofP | ul | ol | pre )*
+
 
 references = element references { ref+ }
 

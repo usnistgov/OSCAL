@@ -11,7 +11,7 @@
       <xs:element minOccurs="0" ref="oscal:declarations"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:section"/>
-        <xs:group ref="oscal:group"/>
+        <xs:group ref="oscal:controlGroup"/>
         <xs:element ref="oscal:control"/>
       </xs:choice>
       <xs:element minOccurs="0" ref="oscal:references"/>
@@ -23,7 +23,7 @@
       <xs:element minOccurs="0" ref="oscal:declarations"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:section"/>
-        <xs:group ref="oscal:category"/>
+        <xs:group ref="oscal:componentGroup"/>
         <xs:element ref="oscal:component"/>
       </xs:choice>
       <xs:element minOccurs="0" ref="oscal:references"/>
@@ -36,7 +36,7 @@
       <xs:element minOccurs="0" ref="oscal:declarations"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:section"/>
-        <xs:group ref="oscal:category"/>
+        <xs:group ref="oscal:componentGroup"/>
         <xs:element ref="oscal:component"/>
       </xs:choice>
       <xs:element minOccurs="0" ref="oscal:references"/>
@@ -63,11 +63,48 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="section">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="oscal:title"/>
+        <xs:group ref="oscal:prose"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:section"/>
+        <xs:element minOccurs="0" ref="oscal:references"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    groups may contain more groups, controls or subcontrols
+    But controls should not appear in controls (even grouped)
+    And subcontrols must not appear without control ancestors
+    ... these constraints validated w/ Schematron
+  -->
+  <xs:group name="controlGroup">
+    <xs:sequence>
+      <xs:element name="group">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:title"/>
+            <xs:group ref="oscal:control-components"/>
+            <xs:choice maxOccurs="unbounded">
+              <xs:group ref="oscal:controlGroup"/>
+              <xs:element ref="oscal:control"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal:references"/>
+          </xs:sequence>
+          <xs:attribute name="id" type="xs:ID"/>
+          <xs:attributeGroup ref="oscal:optionalClass"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
   <!--
     'group' is the element name as it appears in both frameworks, and catalogs
     but they group different things
   -->
-  <xs:group name="category">
+  <xs:group name="componentGroup">
     <xs:sequence>
       <xs:element name="group">
         <xs:complexType>
@@ -79,7 +116,7 @@
               <xs:group ref="oscal:prose"/>
             </xs:choice>
             <xs:choice>
-              <xs:group maxOccurs="unbounded" ref="oscal:category"/>
+              <xs:group maxOccurs="unbounded" ref="oscal:componentGroup"/>
               <xs:element maxOccurs="unbounded" ref="oscal:component"/>
             </xs:choice>
           </xs:sequence>
@@ -236,51 +273,11 @@
     (constrained) at the OSCAL layer so they don't get declaration elements.
   -->
   <!-- Now for the contents of the OSCAL doc proper ... -->
-  <xs:element name="section">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="oscal:title"/>
-        <xs:group ref="oscal:prose"/>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="oscal:section"/>
-          <xs:group ref="oscal:group"/>
-        </xs:choice>
-        <xs:element minOccurs="0" ref="oscal:references"/>
-      </xs:sequence>
-      <xs:attribute name="id" type="xs:ID"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
-    </xs:complexType>
-  </xs:element>
-  <!--
-    groups may contain more groups, controls or subcontrols
-    But controls should not appear in controls (even grouped)
-    And subcontrols must not appear without control ancestors
-    ... these constraints validated w/ Schematron
-  -->
-  <xs:group name="group">
-    <xs:sequence>
-      <xs:element name="group">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal:title"/>
-            <xs:group ref="oscal:control-components"/>
-            <xs:choice maxOccurs="unbounded">
-              <xs:group ref="oscal:group"/>
-              <xs:element ref="oscal:control"/>
-            </xs:choice>
-            <xs:element minOccurs="0" ref="oscal:references"/>
-          </xs:sequence>
-          <xs:attribute name="id" type="xs:ID"/>
-          <xs:attributeGroup ref="oscal:optionalClass"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
   <!-- note prose is not included in control-components, unlike item pattern ('component' element) -->
   <xs:group name="control-components">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal:prop"/>
+        <xs:group ref="oscal:anyKindofProp"/>
         <xs:group ref="oscal:anyKindofPart"/>
         <xs:element ref="oscal:link"/>
         <xs:element ref="oscal:param"/>
@@ -301,6 +298,7 @@
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
+  <!-- inControl =  title?, (control-components | subcontrol)*, references? -->
   <xs:element name="subcontrol">
     <xs:complexType>
       <xs:sequence>
@@ -312,30 +310,50 @@
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
+  <!-- inSubcontrol = title?, control-components, references? -->
+  <!-- === These declarations can be overridden on a level up: -->
+  <!-- Add 'semantic' prop types such as name, number, method -->
+  <xs:group name="anyKindofProp">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:prop"/>
+    </xs:sequence>
+  </xs:group>
   <!-- Add 'semantic' part types: purpose, guidance, decision, information, remarks (etc) -->
   <xs:group name="anyKindofPart">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:part"/>
     </xs:sequence>
   </xs:group>
+  <!-- generic OSCAL doesn't have special kinds of paragraphs -->
+  <xs:group name="anyKindofP">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:p"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    Rule of thumb for the difference:
+    - prop if it's a simple scalar value, never markup of any kind, typically a controlled value
+    - p if it's a paragraph or fragment; may contain inline markup
+    - part for anything else (statements or more complex structures)
+  -->
   <!--
     see utility.xq for analytic breakdown of part types
     so far: description, guidance
   -->
+  <!-- === Back to regular programming -->
   <!-- parts are addressable like controls, but can also have prose content -->
-  <xs:element name="part">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:group ref="oscal:prose"/>
-          <xs:group ref="oscal:control-components"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attribute name="id" type="xs:ID"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:element name="part" type="oscal:asPart"/>
+  <xs:complexType name="asPart">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="oscal:title"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="oscal:prose"/>
+        <xs:group ref="oscal:control-components"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attributeGroup ref="oscal:optionalClass"/>
+  </xs:complexType>
   <xs:element name="title">
     <xs:complexType mixed="true">
       <xs:sequence>
@@ -350,69 +368,37 @@
       <xs:attributeGroup ref="oscal:hrefAttr"/>
     </xs:complexType>
   </xs:element>
-  <!--
-    param is like its declaration, but simpler
-    permits bindings to assign and select elements w/in controls
-    i.e. local override of a default assignment in a parameter declaration
-    or on-the-fly declaration of new parameters for a control
-    (since params are not currently required to be declared
-  -->
-  <xs:element name="desc">
-    <xs:complexType mixed="true">
-      <xs:group ref="oscal:mix"/>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="param">
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="oscal:desc"/>
-        <xs:element ref="oscal:value"/>
+        <xs:element minOccurs="0" ref="oscal:label"/>
+        <xs:element minOccurs="0" ref="oscal:value"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="prop">
+  <xs:element name="desc">
     <xs:complexType mixed="true">
-      <xs:attributeGroup ref="oscal:requiredClass"/>
+      <xs:group ref="oscal:mix"/>
     </xs:complexType>
   </xs:element>
-  <!--
-    syntax sugar for part[@class='purpose'] for "Objective/s" etc.
-    purpose =
-      element purpose {
-        prose }
-  -->
-  <!--
-    syntax sugar for part[@class='guidance'] for "Supplemental Guidance" etc.
-    guidance =
-      element guidance {
-        prose }
-  -->
-  <!--
-    syntax sugar for part[@class='decision']
-    decision =
-      element decision {
-        prose }
-  -->
-  <!--
-    syntax sugar for part[@class='information'], other-info, etc.
-    information =
-      element information {
-        prose }
-  -->
-  <!--
-    syntax sugar for part[@class='remarks']
-    remarks =
-      element remarks {
-        prose }
-  -->
+  <xs:element name="label" type="xs:string"/>
+  <xs:element name="prop">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="oscal:asProp"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="asProp">
+    <xs:attributeGroup ref="oscal:optionalClass"/>
+  </xs:attributeGroup>
   <xs:group name="prose">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="oscal:anyKindofP"/>
         <xs:element ref="oscal:ul"/>
         <xs:element ref="oscal:ol"/>
-        <xs:element ref="oscal:p"/>
         <xs:element ref="oscal:pre"/>
       </xs:choice>
     </xs:sequence>
@@ -456,13 +442,12 @@
     </xs:complexType>
   </xs:element>
   <!-- We can map more html in if/as needed -->
-  <xs:element name="p">
-    <xs:complexType mixed="true">
-      <xs:group ref="oscal:whatnot"/>
-      <xs:attribute name="id" type="xs:ID"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:element name="p" type="oscal:asP"/>
+  <xs:complexType name="asP" mixed="true">
+    <xs:group ref="oscal:whatnot"/>
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attributeGroup ref="oscal:optionalClass"/>
+  </xs:complexType>
   <xs:element name="pre">
     <xs:complexType mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">

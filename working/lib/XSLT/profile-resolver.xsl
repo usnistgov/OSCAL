@@ -555,7 +555,7 @@
         
         <xsl:apply-templates select="node()" mode="#current"/>
         
-        <xsl:variable name="patches-ending" select="$patches-to-id[empty(@position) or @position='ending'] |
+        <xsl:variable name="patches-ending" select="$patches-to-id[empty(@position) or @position='ending' or not(@position=('before','after','starting','ending'))] |
           $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[last()] ][empty(@position) or @position='ending']"/>
         <xsl:copy-of select="$patches-ending/*"/>
       </xsl:copy>

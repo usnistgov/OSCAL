@@ -927,16 +927,18 @@
         <p>Elements to be removed from a control or subcontrol, in resolution</p>
       </part>
       <part class="remarks">
-        <p>Use <code>@targets</code> to indicate the classes of elements (typically
-            <code>part</code> or <code>prop</code> elements) to erase or remove from a control, when
-          a catalog is resolved.</p>
+        <p>Use <code>@class-ref</code>, <code>@id-ref</code> or <code>@item-name</code> to indicate
+          class tokens or ID reference, or the formal name, of the component to be removed or erased
+          from a control or subcontrol, when a catalog is resolved. The control or subcontrol
+          affected is indicated by the pointer on the removal's parent (containing)
+            <code>alter</code> element.</p>
         <p>To change an element, use <code>remove</code> to remove the element, then
-            <code>augment</code> to add it back again with changes.</p>
+            <code>add</code> to add it back again with changes.</p>
       </part>
     </component>
     <component class="element-description">
-      <prop class="tag">augment</prop>
-      <prop class="full_name">Augmentation</prop>
+      <prop class="tag">add</prop>
+      <prop class="full_name">Addition</prop>
       <part class="description">
         <p>Element contents to be added to a control or subcontrols, in resolution</p>
       </part>
