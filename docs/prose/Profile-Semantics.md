@@ -154,13 +154,55 @@ One of the functions of the merge process (described below) is to "reunite" subc
 
 ### Merge (Combination)
 
-A profile that selects controls without merging them has a hierarchy that represents the order (hierarchy) of selection. Since controls may be selected from more than one resource, and resources may include profiles (which may select from more than one resource), what results naturally is a "tree" structure. However, the terminals (final branches) of this tree "overlap" in the sense that they may severally or all call the same (source) catalog. Indeed, profiles that include multiple controls from a single source via multiple invocation pathways (multiple profiles) may be quite usual. (An example might be a customization of a FedRAMP customization of NIST baseline profiles of SP800-53.)
+A profile that selects controls without merging them has a hierarchy that represents the order (hierarchy) of selection. Since controls may be selected from more than one resource, and resources may include profiles (which may select from more than one resource), what results naturally is a "tree" structure. However, the terminals (final branches) of this tree "overlap" in the sense that they may severally or all call the same (source) catalog. Indeed, profiles that include multiple controls from a single source via multiple invocation pathways (multiple profiles) may be quite usual. (An example might be a customization citing FedRAMP customizations of NIST baseline profiles of SP800-53.)
 
-This hierarchy may be represented internally but exposing it is *not* a requirement of profile resolution. Without merging, a profile when resolved should result in a simple "pile" of controls. YMMV. 
+This hierarchy may be represented internally in resolution (e.g. to help error reporting) but exposing it is *not* a requirement of profile resolution. Without merging, a profile when resolved should result in a simple "pile" of controls.
 
-Merging can either be a simple merge, or it can provide for (re) organizing controls. For purposes of the latter, two features are provided. A merge "as is" will present the controls selected for the profile, regrouped and reorganized into the structure of their original ("home") catalogs. Note that this structure need not be known in advance.
+The way to specify resolution with no merge is to simple omit the merge element:
 
-Alternatively, a profile may offer a `combine` instruction that provides an entire structure, within which controls are called (again), from among the set of controls returned by the selection operation. \[ Examples ] ]
+```
+<profile>
+  <import href="catalog.xml">
+    <include>
+      <match pattern="control"/>
+    </include>
+  </import>
+</profile>
+```  
+
+
+For the most part, however, a profile will always designate some sort of merge Merging can either be a simple merge, or it can provide for (re) organizing controls.
+
+
+```
+<profile>
+  <import href="catalog.xml">...</import>
+  <merge/>  
+</profile>
+```  
+
+For purposes of the latter, two features are provided. A merge "as is" will present the controls selected for the profile, regrouped and reorganized into the structure of their original ("home") catalogs. Note that this structure need not be known in advance.
+
+```
+<profile>
+  <import href="catalog.xml">...</import>
+  <merge>
+    <as-is/>
+  </merge>    
+</profile>
+```  
+
+Alternatively, a profile may offer a `custom` instruction that provides an entire structure, within which controls are called (again), from among the set of controls returned by the selection operation.
+
+\[ More examples ] ]
+
+### ID clashes and control combination
+
+Any kind of merge raises the question of what to do when controls are called multiple times. A `combine` operation, specified along with the merge, provides for different approaches to profile resolution.
+
+`combine` can have a `method` of "keep", "use-first", or "merge".
+
+\[ etc with examples ]
 
 #### Merge proposal (summary)
 
