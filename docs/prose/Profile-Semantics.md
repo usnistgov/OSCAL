@@ -22,7 +22,7 @@ A **control** is a structured data object. Controls have arbitrary contents, whi
 
 Controls and subcontrols are addressable within their catalogs by means of unique identifiers. Note in particular that often, catalogs will present controls with a range of controlled values, any number of which may be validated as unique to that control. Only one of these will be the ID in the model. (In XML, the `@id` is used. For interchange with XML systems it is recommended that these values conform to the 'name' production rules, i.e. alphanumerics, no spaces, not beginning with digits.)
 
-A **catalog** is an authoritative, canonical organization of controls and possibly subcontrols. Within a catalog, controls may be collected in **groups**, and groups may be collected into groups. Information described in the catalog as the group level (i.e., associated with the group) may be inherited (implicitly and sometimes explicitly) within controls in that group; to support this, profile resolution as described here sees to it that when controls are invoked (included), the information that comes with them by virtue of group membership, also comes with them. 
+A **catalog** is an authoritative, canonical organization of controls and possibly subcontrols. Within a catalog, controls may be collected in **groups**, and groups may be collected into groups. Information described in the catalog as the group level (i.e., associated with the group) may be inherited (implicitly and sometimes explicitly) within controls in that group. By default, since controls are selected "from outside", information belonging to groups (as opposed to information associated with their respective controls; it can be restored or replaced using "merge" operations in profiling. 
 
 A **profile** is an OSCAL data object ("document") that cites (by reference) controls while also specifying (declaring) conditions and modifications for those controls. These modifications may take the form of either assignment of values to **parameters** (which can be done independently of the controls that may use the parameters) and/or of specific modifications ("patches") made to components (controls or subcontrols). Usually such modifications will be simply augmentation or supplementation but in general any modification may be possible.
 
@@ -85,19 +85,76 @@ It is not an error if the same control is both included explicitly, and then exc
 
 It is also not an error if a resolved import selects the same control set as a much more parsimonious import would (for example, instead of including 249 of 250 controls in a catalog, simply include all and exclude one.) Again, an implementation may detect this situation and offer warnings. *(Sch.)*
 
-#### IDs
+#### IDs and source catalogs
 
-IDs are expected to be unique within document scope, so no control or subcontrol will have the same ID as another in the same catalog. Control catalogs whose controls are not tagged with distinct IDs can be excluded from resolution as invalid, although conforming processors have the option of continuing to process while offering some means of addressing and resolving the ID clash. 
+Note that a feature (and limitation) of OSCAL profile resolution, is that IDs on controls (in XML, `@id` values) are propagated through resolution. A control with ID 'a.1' remains 'a.1' in the (resolved) profile, even if its contents (title and/or properties) have been altered by the profile. Essentially, ID values are proxies for node identity.
 
-Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. If local (document-level) ID collision occurs between catalogs, a system is expected to resolve them such that all controls from all catalogs can be addressed distinctly, each call resolving relative to its import. Catalogs, however, must also be valid to relevant OSCAL schemas and Schematrons demonstrating their structural integrity. This specification does not define what happens with non-OSCAL inputs to profile resolution.
+Accordingly IDs are expected to be unique within document scope, so no control or subcontrol will have the same ID as another in the same catalog. Control catalogs (resources or source documents) whose controls are not tagged with distinct IDs can be excluded from resolution as invalid, although conforming processors have the option of continuing to process while offering some means of addressing and resolving the ID clash. 
 
-Note also that it is an expectation that every time a given profile or catalog is invoked, the *same resource* (catalog or resolved profile) is returned, enabling systems to cache. (Cf XPath doc() function.) Along with this is the assumption that resolution of a profile against its sources (profiles and catalogs) will be side-effect free; for example, it cannot have the effect of rewriting catalogs or upstream profiles (by calling some magical URI) or creating new resources to be exploited elsewhere.
+Moreover, for purposes of these specifications, ID values are expected to be unique *across* catalogs. That is, two distinct catalogs must also present distinct (non-overlapping) IDs for their controls and subcontrols. Eventually, this restriction may be relaxed; for now, it encourages careful and deliberate use of catalog sources by forcing any necessary reconciliation between catalogs to come to the front of the process.
 
-We do not yet support selection of controls by other criteria such as context/organization ("all of AC") or controlled property values ("controls that have X=Y").
+In general, catalogs, however, must also be valid to relevant OSCAL schemas and Schematrons demonstrating their structural integrity. This specification does not define what happens with non-OSCAL inputs to profile resolution.
+
+Note also that it is an expectation that every time a given profile or catalog is invoked, the *same resource* (catalog or resolved profile) is returned, enabling systems to cache. (Cf XPath `doc()` function.) Along with this is the assumption that resolution of a profile against its sources (profiles and catalogs) will be side-effect free; for example, it cannot have the effect of rewriting catalogs or upstream profiles (for example, by calling some magical URI) or creating new resources to be exploited elsewhere.
+
+#### Importing catalogs and including controls
+
+Two mechanisms are available for selecting controls from imported catalogs. The first is by pointing to their IDs directly (using `call`); the second matches their IDs using a regular expression (`match`). The second mechanism provides for including more than one control at a time.
+
+##### Calling controls (or subcontrols) by ID
+
+The ID of a control is the `@id` in the XML of that control.
+
+```
+<include>
+   <call control-id="pm3"/>
+</include>
+      
+```
+
+`call` with `control-id` works to select the control with with given ID (identifier) in its catalog.
+
+Same for `call` with `subcontrol-id`, except subcontrols are included.
+
+Note that subcontrols may be included without their controls. Depending on other considerations (see below) this may not be an error.
+
+It is also possible to use a `with-subcontrols` flag when calling controls by ID, to include all subcontrols along with it.
+
+
+```
+<include>
+   <call control-id="pm3" with-subcontrols="yes"/>
+</include>
+      
+```
+
+##### Matching (sets of) controls with a pattern (regex)
+
+
+```
+<include>
+   <match pattern="^pm"/>
+</include>
+      
+```
+
+The value of `@pattern` is an (XSD) regular expression. It is matched against the ID. Both/any controls and subcontrols whose IDs match the patterns, are selected - so in this case, any whose ID starts with "pm".
+
+#### Other selection criteria
+
+In future we may wish to match any associated string e.g. a control's title or a property value, not only its ID.
+
+Similarly we do not yet support selection of controls by other criteria such as context/organization ("all of AC") or controlled property values ("controls whose X satisfies Y(X)"). Certainly these can be specified and effected by a custom transformation.
+
+##### Orphan or "loose" subcontrols
+
+It is a requirement that a subcontrol may be included in one import clause, with its control included (only) in another one. (Perhaps the first clause adds a subcontrol to a profile included in the second.) This must be supported as long as the control is indeed included in another import branch (with which it can eventually be merged subject to its logic). "The same control" for these purposes means the control with the same @id from the same catalog - so, to be more precise, a subcontrol can be reunited to any control with the same ID as its parent in (its own) home catalog. (Note the imposition of the requirement that all IDs be distinct or distinguishable across source catalogs.) An orphan subcontrol included without its control included anywhere (in the same profile albeit not the same import), will be an error.
+
+One of the functions of the merge process (described below) is to "reunite" subcontrols with their controls. For these purposes, a subcontrol is considered to "belong to" a control with the same ID as the ID of its home control in its home catalog.
 
 ### Merge (Combination)
 
-A profile that selects controls without merging them has a hierarchy that represents the order (hierarchy) of selection. Remember that since controls may be selected from more than one resource, and that resources include profiles (which may select from more than one resource), what results naturally is a "tree" structure. However, the terminals (final branches) of this tree "overlap" in the sense that many of them may call the same (source) catalog. Indeed, profiles that include multiple controls from NIST SP800-53 (such as FedRAMP) via multiple invocation pathways (multiple profiles) may be quite usual.
+A profile that selects controls without merging them has a hierarchy that represents the order (hierarchy) of selection. Since controls may be selected from more than one resource, and resources may include profiles (which may select from more than one resource), what results naturally is a "tree" structure. However, the terminals (final branches) of this tree "overlap" in the sense that they may severally or all call the same (source) catalog. Indeed, profiles that include multiple controls from a single source via multiple invocation pathways (multiple profiles) may be quite usual. (An example might be a customization of a FedRAMP customization of NIST baseline profiles of SP800-53.)
 
 This hierarchy may be represented internally but exposing it is *not* a requirement of profile resolution. Without merging, a profile when resolved should result in a simple "pile" of controls. YMMV. 
 
@@ -105,7 +162,103 @@ Merging can either be a simple merge, or it can provide for (re) organizing cont
 
 Alternatively, a profile may offer a `combine` instruction that provides an entire structure, within which controls are called (again), from among the set of controls returned by the selection operation. \[ Examples ] ]
 
+#### Merge proposal (summary)
 
-### Modification
+\[ tbd xml examples ]
 
-\[ patch in from Profile-Semantics2.md ]
+`merge` - simply merges import branches together on their source catalogs (reuniting controls and subcontrols)
+
+However this is considered normal indeed to skip it would only be done ordinarily for diagnostic purposes.
+
+`merge/as-is` - rebuilds into hierarchy of home catalog (we have this working)
+
+`merge/custom` - instead, provides a way to "stack" the controls into a new organization (optionally reporting errors for dropped controls):
+
+
+```
+<group>
+  <title>
+  <match pattern="cm"/>
+</group>
+```
+
+When invoked using `match`, matched controls and subcontrols come out in their original (source) order. Alternatively, an `order-by` attribute may be used to re-sort the controls, in `ascending` or `descending` (alphabetical) order. Currently, only sorting by the ID value on the control or subcontrol, is supported.
+
+
+```
+<group>
+  <title>Ad Hoc Controls</title>
+  <match pattern="cm" order="descending"/>
+</group>
+```
+
+By combining multiple match patterns
+
+for purposes of error handling, remember that designers should be using exclusions, not letting profiles conflict even apparently. So `merge` might complain *any* time controls appear duplicative (there is always a remedy).
+
+Should running a resolution w/o merge, also make it impossible to patch? (B/c we don't know what we're patching?)
+
+## Modify logic ("patching")
+
+As implemented, modifications permit both removals and additions.
+
+### Removals
+
+
+```
+<remove id-ref="e95b8652"/>
+<remove class-ref="baseline"/>
+<remove item-name="title"/>
+```
+
+ * Remove the element with `@id` (id attribute) `e95b8652`
+ * Remove any element with `@class` token `baseline`
+ * Remove any `title` element
+
+These can be combined. When combined, all the conditions (ID, class token and/or element name) must be satisfied for the removal to occur.
+
+### Additions
+
+Two attributes on `<add>` elements indicate the position of the addition. `@target` (optional) indicates an element where the patch will be made. `@position` indicates where (in relation to the target) the patch will be placed. Four values are recognized for `@position`: `before`, `after`, `starting` and `ending`.
+
+In its full form, `target` identifies an element descendant of the control or subcontrol:
+
+
+```
+<add position="after" target="advice">
+  <part class="more_advice">
+     <title>More advice</title>
+     <p>More advice ...</p>
+</add>
+```
+
+The target works to identify an element by its `@id` or by a class token.
+
+When elements are matched using class tokens, there is the possibility that multiple elements of the given class are present in the control. The element where the insertion is to be made is then determined by the given `@position`:  `position='before'` and `position='starting'` work to select the *first* of the candidates in the control as given, while  `position='after'` and `position='ending'` work to select only the *last* element of the given class, within the control or subcontrol.
+
+The difference between `position='before'` and `position='starting'` is that "before" places the inserted content *before* the targeted element, while "starting" places it *inside* it, at the front. "ending" will place the inserted content at the end, inside the identified element.
+
+When the targeted element is a control or subcontrol (no target is given), `before` is a synonym for `starting`. 
+
+If no position is given, or for any value not one of these four (case sensitive, whitespace trimmed), `position='ending'` is inferred: the insertion happens inside the targeted element (or the matched control or subcontrol), at the end.
+
+Note that this default works along with the rule that if no target (class or ID) is indicated, the control or subcontrol itself is the point of insertion. So:
+
+```
+<modify control-id="ac.1">
+  <add position="starting">
+    <link href="guidelines/">Local guidelines</link>
+  </add>
+  <add>
+    <part class="supplemental">
+       <title>Supplementary Guidance</title>
+       <p>More advice ...</p>
+    </part>       
+  </add>
+</modify>
+```
+
+This adds the new `part` at the end of the `ac.1` control.
+
+Note also that position "before" and "after" work only when @target is also used (to identify some contents inside a control); they are inoperable when the target is a control or subcontrol. They result in no addition being made. (A Schematron check could be made for this.)
+
