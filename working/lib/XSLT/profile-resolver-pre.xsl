@@ -211,32 +211,20 @@
     <xsl:variable name="excluded" as="xs:boolean" select="$invocation/exclude/call/@control-id = @id"/>
     <xsl:variable name="called"   as="xs:boolean" select="$invocation/include/call/@control-id = @id"/>
     <!--<xsl:copy-of select="$invocation"/>-->
-    
-    
-    <xsl:choose>
-      <!-- The control is included: go for it -->
-      <xsl:when test="($included or oscal:matched(.,$invocation) or $called) and not($excluded)">
-        <xsl:copy>
-          <xsl:copy-of select="@*"/>
-          <!--<xsl:comment expand-text="true"> invoked by { $invocation/../title } { document-uri($invocation/root()) }</xsl:comment>-->
-          <!--<xsl:apply-templates mode="#current" select="* except (subcontrol | component[oscal:classes(.)='subcontrol'])"/>-->
-          <xsl:apply-templates mode="#current"/>
-        </xsl:copy>
-      </xsl:when>
-      <xsl:otherwise>
-        <!-- The control is not included but it is not impossible than a subcontrol is included anyway -->
-        <xsl:apply-templates select="subcontrol" mode="import">
-          <xsl:with-param name="orphan" select="true()"/>
-        </xsl:apply-templates>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:if test="($included or oscal:matched(.,$invocation) or $called) and not($excluded)">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <!--<xsl:comment expand-text="true"> invoked by { $invocation/../title } { document-uri($invocation/root()) }</xsl:comment>-->
+        <!--<xsl:apply-templates mode="#current" select="* except (subcontrol | component[oscal:classes(.)='subcontrol'])"/>-->
+        <xsl:apply-templates mode="#current"/>
+      </xsl:copy>
+    </xsl:if>
     <!--<xsl:apply-templates mode="#current" select="subcontrol | component[oscal:classes(.)='subcontrol']"/>-->
   </xsl:template>
   
   <xsl:template match="subcontrol | component[oscal:classes(.)='subcontrol']" priority="2" mode="import">
     <!-- Subcontrol logic is analogous to control logic for keeping.
       Extend this with (parameterized) defaults for handling subcontrols. -->
-    <xsl:param name="orphan" select="false()"/>
     <xsl:param name="invocation" tunnel="yes" as="element(import)" required="yes"/>
     <!-- A subcontrol is included if all explicitly says to include all subcontrols, or
          if its containing controls is called and set @with-subcontrols -->
@@ -254,9 +242,6 @@
     <xsl:if test="($included or oscal:matched(.,$invocation) or $called) and not($excluded)">
       <xsl:copy>
         <xsl:copy-of select="@*"/>
-        <xsl:if test="$orphan">
-          <xsl:attribute name="control-id" select="../@id"/>
-        </xsl:if>
         <xsl:apply-templates mode="#current"/>
       </xsl:copy>
     </xsl:if>
@@ -281,46 +266,27 @@
     <xsl:variable name="merge-spec" select="."/>
     <xsl:variable name="merged">
       <merged>
-        <!-- $so-far is giving us a sequence of imported controls and subcontrols, some of which may be nested, so representing all the import trees. -->
-        <xsl:variable name="included" select="$so-far//control | $so-far//subcontrol[empty(parent::control)]"/>
-        <xsl:choose>
-          <xsl:when test="exists($merge-spec/custom)">
-            
-            <!-- In this branch, a customized organization will be provided for them, so they are not grouped (by catalog) as below, going in ...  -->
-            <!-- Problem: what to do about clashing IDs (across catalogs) in this case? -->
-            
-            <xsl:apply-templates select="$merge-spec/custom" mode="build">
-              <xsl:with-param name="controls" tunnel="yes" select="$included"/>
-            </xsl:apply-templates>
-            
-          </xsl:when>
-          <xsl:otherwise>
-
-            <xsl:for-each-group select="$included" group-by="parent::importing/@href">
-              <group source="{current-grouping-key()}">
-
-                <!-- If the merge spec says as-is, we do that -->
-                <xsl:apply-templates select="$merge-spec/as-is" mode="rebuild">
-                  <xsl:with-param name="catalog" select="document(current-grouping-key())/*"/>
+        <!-- by default, and when nothing else happens, merge
+          will combine multiple imports of the same catalog into a single list.
+          So for example if 30 controls from three profiles are included, but
+          those three profiles are all calling the same catalog, they will come merged in a single group. (And sorted?) -->
+        <xsl:for-each-group select="$so-far//control | $so-far//subcontrol[empty(parent::control)]" group-by="parent::importing/@href">
+          <group source="{current-grouping-key()}">
+            <xsl:choose>
+              <!-- when self::merge/build is given, each group is submitted to a rebuild process in reference to its catalog -->
+              <xsl:when test="exists($merge-spec/build)">
+                <xsl:apply-templates select="document(current-grouping-key())/*" mode="rebuild">
                   <xsl:with-param name="controls" tunnel="yes" select="current-group()"/>
                 </xsl:apply-templates>
-                <!-- nb different mode here -->
-                
-                <xsl:if test="empty($merge-spec/(as-is | custom))">
-                  <xsl:for-each-group select="current-group()" group-by="@id">
-                    <xsl:call-template name="emit-component">
-                      <xsl:with-param name="control-set" select="current-group()"/>
-                      <xsl:with-param name="combining" select="$merge-spec/combine"/><!-- XXXX -->
-                    </xsl:call-template>
-                  </xsl:for-each-group>
-                  <!--<xsl:sequence select="current-group()"/>-->
-                </xsl:if>
-
-              </group>
-            </xsl:for-each-group>
-
-          </xsl:otherwise>
-        </xsl:choose>
+              </xsl:when>
+              <!-- Other options might include building a new hierarchy. -->
+              <xsl:otherwise>
+                 <!-- Otherwise we just spill the groups. -->
+                <xsl:sequence select="current-group()"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </group>
+        </xsl:for-each-group>
       </merged>
     </xsl:variable>
     <!--<xsl:sequence select="$merged"/>-->
@@ -337,21 +303,11 @@
     
   </xsl:template>
   
-  
-  <xsl:template match="as-is" mode="rebuild">
-    <xsl:param name="catalog"  select="()" as="element(catalog)?"/>
-    <xsl:apply-templates select="$catalog" mode="rebuild">
-      <xsl:with-param name="merge-spec" tunnel="true" select=".."/>
-    </xsl:apply-templates>
-  </xsl:template>
-  
-  <!-- Mode 'rebuild' traverses a home catalog and rebuilds it, containing only the controls and subcontrols
-     included. -->
   <xsl:mode name="rebuild" on-no-match="shallow-copy"/>
   
   <xsl:template match="comment() | processing-instruction()" mode="rebuild"/>
   
-  <xsl:template match="catalog | group" mode="rebuild">
+  <xsl:template match="group" mode="rebuild">
     <xsl:param name="controls" tunnel="yes" select="()"/>
     <xsl:if test="$controls/@id = .//control/@id">
       <xsl:copy>
@@ -359,143 +315,40 @@
       </xsl:copy>
     </xsl:if>
   </xsl:template>
-   
-   
-  <!-- in 'rebuild' mode, the controls are matched in their original structure,
-       but must then be emitted (now not the originals, but the proxies) according to the merge/combine rules. -->
-  <xsl:template   mode="rebuild" match="control | subcontrol | component">
-    <xsl:param    name="controls"   tunnel="yes" select="()"/>
-    <xsl:param    name="merge-spec" tunnel="yes" as="element(merge)"/>
+      
+  <xsl:template mode="rebuild" match="control">
+    <xsl:param name="controls" tunnel="yes" select="()"/>
     <xsl:variable name="here"  select="."/>
-    
-    <xsl:for-each-group select="$controls[@id=$here/@id]" group-by="true()">
-      <xsl:call-template name="emit-component">
-        <xsl:with-param name="combining"   select="$merge-spec/combine"/>
-        <xsl:with-param name="control-set" select="current-group()"/>
-      </xsl:call-template>
-    </xsl:for-each-group>
-      <!--<xsl:for-each-group select="$controls[@id=$here/@id]" group-by="true()">
+    <xsl:if test="@id = $controls/@id">
+      <xsl:for-each-group select="$controls[@id=$here/@id]" group-by="true()">
         <control id="{$here/@id}">
           <xsl:if test="exists(current-group()[matches(@class,'\s')])">
             <xsl:attribute name="class" select="distinct-values(current-group()/tokenize(@class,'\s+'))"/>
           </xsl:if>
           <xsl:apply-templates select="current-group()/*" mode="#current"/>
         </control>
-      </xsl:for-each-group>-->
+      </xsl:for-each-group>
+    </xsl:if>
   </xsl:template>
-  
- 
-  
-  <xsl:template name="emit-component">
-    <xsl:param name="combining" as="element(combine)?"/>
-    <xsl:param name="control-set"/>
-    <xsl:for-each-group select="$control-set" group-by="true()">
-      <xsl:choose>
-        <xsl:when test="$combining/@method = 'use-first'">
-          <xsl:copy-of select="$control-set[1]"/>
-        </xsl:when>
-        <xsl:when test="$combining/@method = 'merge'">
-          <xsl:element name="{$control-set[1]/name()}">
-            <xsl:copy-of select="$control-set/@*"/>
-
-            <xsl:for-each-group
-              select="$control-set/(* except (subcontrol | component | references))"
-              group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
-              <xsl:copy-of select="."/>
-              <!-- just one -->
-            </xsl:for-each-group>
-
-            <xsl:apply-templates mode="#current" select="$control-set/(subcontrol | component)"/>
-
-            <xsl:for-each-group select="$control-set/references/*"
-              group-by="local-name() || ':' || @class || ':' || normalize-space(.)">
-              <references>
-                <xsl:copy-of select="."/>
-              </references>
-            </xsl:for-each-group>
-
-          </xsl:element>
-        </xsl:when>
-
-        <!-- catches value 'keep' or anything else -->
-        <xsl:otherwise>
-          <!-- catches value 'keep' or anything else -->
-          <xsl:copy-of select="$control-set"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each-group>
-  </xsl:template>
-  
-  
-  
-  <xsl:template match="custom" mode="build">
-    <!-- tunnel parameter $controls holds controls and maybe loose subcontrols -->
-    <xsl:copy>
-      <xsl:apply-templates mode="#current">
-        <xsl:with-param name="merge-spec" tunnel="true" select=".."/>
-      </xsl:apply-templates>
-    </xsl:copy>
-  </xsl:template>
-  
-  <xsl:template match="call" mode="build">
-    <xsl:param name="controls" tunnel="yes" select="()"/>
-    <xsl:variable name="calling" select="."/>
-    
-    <xsl:call-template name="emit-component">
-      <xsl:with-param name="combining" select="ancestor::merge/combine" />
-      <xsl:with-param name="control-set" select="$controls[@id=$calling/(@control-id|@subcontrol-id)]"/>
-    </xsl:call-template>
-  </xsl:template>
-  
-  <xsl:template match="match" mode="build">
-    <xsl:param name="controls" tunnel="yes" select="()"/>
-    <xsl:variable name="calling" select="."/>
-    
-    <xsl:call-template name="emit-component">
-      <xsl:with-param name="combining" select="ancestor::merge/combine" />
-      <xsl:with-param name="control-set" select="$controls[matches(@id,$calling/@pattern ! ('^' || . || '$'))]"/>
-    </xsl:call-template>
-  </xsl:template>
-  
-  <!-- mode 'build' matches the proxy structure given in the profile, pulling included
-       controls and subcontrols to populate itself. -->
-  <xsl:mode name="build" on-no-match="shallow-copy"/>
-  
-  <xsl:template match="comment() | processing-instruction()" mode="build"/>
-  
   
   <xsl:template match="*" mode="echo"/>
+  
+  
+    
   
   <!-- Next, matching 'modify' - we pass the 'resolution' document into a filter that
        rewrites parameter values and patches controls, wrt the stipulated modifications. -->
 
   <xsl:template match="modify" mode="process-profile">
     <xsl:param name="so-far"/>
-    <xsl:variable name="modifications" select="."/>
-    <xsl:for-each select="$so-far/resolution">
-      <xsl:copy>
-        <xsl:copy-of select="*|node()"/>
-        <xsl:apply-templates select="merged" mode="patch">
-          <xsl:with-param name="modifications" tunnel="yes" select="$modifications"/>
+    <xsl:apply-templates select="$so-far" mode="patch">
+      <xsl:with-param name="modifications" tunnel="yes" select="."/>
     </xsl:apply-templates>
-      </xsl:copy>
-    </xsl:for-each>
-    
     <!--<xsl:apply-templates select="." mode="echo"/>-->
   </xsl:template>
   
-<!-- 'patch' mode implements modification.  -->
-  <xsl:template match="merged" mode="patch">
-    <modified>
-      <xsl:apply-templates mode="#current"/>
-    </modified>
-  </xsl:template>
-  
-  <xsl:template match="control | component[empty(ancestor::component)]" mode="patch">
+  <xsl:template match="control | subcontrol | component" mode="patch">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    
-    <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/add[empty(@target)][@position='before']/*"/>
-    
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates select="title" mode="#current"/>
@@ -508,6 +361,29 @@
     </xsl:copy>
   </xsl:template>
   
+  <!-- When a catalog is filtered through a profile, its parameters are overwritten
+       by parameters passed in from the invocation. -->
+  <!-- set-param/desc overrides param/desc -->
+  <xsl:template match="param/desc"  mode="patch" priority="10">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
+  </xsl:template>
+  
+  <!-- set-param/value overrides param/value -->
+  <xsl:template match="param/value" mode="patch" priority="10">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
+  </xsl:template>
+  
+  <!-- set-param/hint overrides param/hint, but so does set-param/vsalue. -->
+  <xsl:template match="param/hint"  mode="patch" priority="10">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,
+      key('param-settings',parent::param/@id,$modifications)/hint, .)[1]"/>
+  </xsl:template>
+  
+  
 <!--   -->
   <xsl:function name="oscal:removable" as="xs:boolean">
     <xsl:param name="who" as="node()"/>
@@ -516,29 +392,27 @@
     <xsl:variable name="alterations" select="key('alteration-by-target',$home/@id,$mods)"/>
     <xsl:variable name="removals" select="$alterations/remove"/>
     
-    <xsl:sequence select="some $r in $removals satisfies oscal:remove-match($who,$r)"/>
+    <xsl:variable name="excluded-by-id" select="$who/@id = $removals/tokenize(@id-ref,'\s+')"/>
+    
+    <xsl:variable name="excluded-by-class" select="oscal:classes($who) = $removals/tokenize(@class-ref,'\s+')"/>
+    <xsl:variable name="excluded-by-proxy" select="some $r in ($removals/*) satisfies 
+      ( local-name($r) eq local-name($who) ) and
+      ( ($r/@id eq $who/@id) or (oscal:classes($r) = oscal:classes($who) )
+        or empty($r/(@class|@id) ) )"/>
+    
+    <!--<xsl:message expand-text="true">{ count($removals) || ' ... ' || $who/@id || ': ' || $excluded-by-id }</xsl:message>-->
+    <xsl:sequence select="$excluded-by-id or $excluded-by-class or $excluded-by-proxy"/>
   </xsl:function>  
-  
-  <xsl:function name="oscal:remove-match">
-    <xsl:param name="who" as="node()"/>
-    <xsl:param name="removal" as="element(remove)"/>
-    <xsl:variable name="item-okay"  select="empty($removal/@item-name) or ($removal/@item-name = local-name($who))"/>
-    <xsl:variable name="id-okay"    select="empty($removal/@id-ref)    or ($removal/@id-ref = $who/@id)"/>
-    <xsl:variable name="class-okay" select="empty($removal/@class-ref) or ($removal/@class-ref = oscal:classes($who))"/>
-    <xsl:sequence select="exists($removal/(@item-name|@id-ref|@class-ref)) and ($item-okay and $id-okay and $class-okay)"/>
-  </xsl:function>
-  
   
   <xsl:template match="control//* | subcontrol//* | component//*" mode="patch">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
     <xsl:variable name="here" select="."/>
-    <xsl:variable name="home" select="(ancestor::control | ancestor-or-self::subcontrol | ancestor-or-self::component)[last()]"/> 
+    <xsl:variable name="home" select="(ancestor::control | ancestor::subcontrol | ancestor::component)[last()]"/> 
     <xsl:variable name="alterations" select="key('alteration-by-target',$home/@id,$modifications)"/>
-    <!-- Key retrievals scoped to alterations...   -->
     <xsl:variable name="patches-to-id" select="$alterations/key('addition-by-target',$here/@id,.)"/>
     <xsl:variable name="patches-to-class" select="$alterations/key('addition-by-target',$here/oscal:classes(.),.)"/>
     
-    <!-- $patches-before contains 'add' elements marked as patching before this element, either by its @id
+<!-- $patches-before contains 'add' elements marked as patching before this element, either by its @id
       or if bound by its @class, iff it is the first of its class in the containing control
      -->
     <xsl:variable name="patches-before" select="$patches-to-id[@position='before'] |
@@ -555,43 +429,21 @@
         
         <xsl:apply-templates select="node()" mode="#current"/>
         
-        <xsl:variable name="patches-ending" select="$patches-to-id[empty(@position) or @position='ending' or not(@position=('before','after','starting','ending'))] |
+        <xsl:variable name="patches-ending" select="$patches-to-id[empty(@position) or @position='ending'] |
           $patches-to-class[$here is ($home/descendant::*[oscal:classes(.)=oscal:classes($here)])[last()] ][empty(@position) or @position='ending']"/>
         <xsl:copy-of select="$patches-ending/*"/>
       </xsl:copy>
     </xsl:if>
-    
-    <!-- Reverse logic for 'after' patches. Note that elements inside descendant subcontrols or components are excluded from consideration.    -->
-    <xsl:variable name="patches-after" select="$patches-to-id[@position='after'] |
-      $patches-to-class[$here is ($home/(descendant::*[oscal:classes(.)=oscal:classes($here)]
-      except .//(subcontrol|component)/descendant::*[oscal:classes(.)=oscal:classes($here)]) )[last()] ]
-      [@position='after']"/>
-    <xsl:copy-of select="$patches-after/*"/>
-    
+
+<!-- Reverse logic for 'after' patches. Note that elements inside descendant subcontrols or components are excluded from consideration.    -->
+      <xsl:variable name="patches-after" select="$patches-to-id[@position='after'] |
+        $patches-to-class[$here is ($home/(descendant::*[oscal:classes(.)=oscal:classes($here)]
+        except .//(subcontrol|component)/descendant::*[oscal:classes(.)=oscal:classes($here)]) )[last()]
+        ][@position='after']"/>
+        <xsl:copy-of select="$patches-after/*"/>
+        
+        
   </xsl:template>
-  
-  
-  <!-- When a catalog is filtered through a profile, its parameters are overwritten
-       by parameters passed in from the invocation. -->
-  <!-- set-param/desc overrides param/desc -->
-  <xsl:template match="param/desc"  mode="patch" priority="10">
-    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    
-    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
-  </xsl:template>
-  
-  <!-- set-param/label overrides param/label -->
-  <xsl:template match="param/value" mode="patch" priority="10">
-    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
-  </xsl:template>
-  
-  <!-- same for param/value -->
-  <xsl:template match="param/value" mode="patch" priority="10">
-    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
-  </xsl:template>
-  
   
   
   <!--<xsl:template match="control/* | subcontrol/* | component/*" mode="patch">

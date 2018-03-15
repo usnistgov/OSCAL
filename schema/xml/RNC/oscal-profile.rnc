@@ -7,7 +7,17 @@ profile = element profile { idAttr, title, import+, merge?, modify? }
 import = element import { hrefAttr, (\include?, exclude?) }
 
 # presence of element merge means to merge (not merely aggregate)
-merge = element merge { element build { empty }? }
+merge = element merge { combine?, (build | frame)? }
+
+combine = element combine {
+            attribute method { 'use-first' | 'merge' | 'keep' } }
+
+build = element as-is { empty }
+
+frame = element custom { title?, (profileGroup+ | (call | match)+ ) }
+
+profileGroup = element group { title?, ( profileGroup+ | (call | match)+ ) }
+
 
 modify =  element modify { (param_setting | alteration )* }
 
@@ -26,23 +36,33 @@ withContrlAttr =  attribute with-control { ('yes'|'no') }?
 # 'call' can call *either* a control or a subcontrol by its @id
 # Schematron requirement: there exists in the catalog a control or subcontrol
 # by the given @id
-call = element call {
-          (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
+# when @with-subcontrols is used, it must be @control-id
+call = element call { (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
            attribute subcontrol-id { xsd:NCName } }
 
-match = element match { withSubContrlsAttr, withContrlAttr, attribute pattern { text } }
+# 'match' calls (includes) controls and subcontrols indiscriminately: when matching (as a regex) the @id,
+# controls or subcontrols may be included.
+# nb this means it is possible to include subcontrols w/o their controls, for later combination w/ other includes
+match = element match { withSubContrlsAttr, withContrlAttr, attribute pattern { text },
+  attribute order-by { 'keep' | 'ascending' | 'descending' }? }
 
 exclude = element exclude { ( match |
             element call {
               attribute control-id { xsd:NCName } |
               attribute subcontrol-id { xsd:NCName } }+ ) }
 
-param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc, value }
+param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc?, label?, value? }
 
 alteration = element alter { (
   attribute control-id    { xsd:NCName } |
   attribute subcontrol-id { xsd:NCName } ),
-  remove?, augment? }
+  remove*, augment* }
 
-remove  = element remove  { attribute targets { xsd:NMTOKENS } }
-augment = element augment { (prop | anyKindofPart)* }
+remove  = element remove  {
+  attribute class-ref {  xsd:NMTOKENS }?,
+  attribute id-ref    { xsd:NCName }?,
+  attribute item-name { xsd:NCName }? }
+
+augment = element add {
+  attribute position { 'before' | 'after' | 'starting' |'ending'},
+  (title | param | prop | anyKindofPart)* }

@@ -3,5 +3,9 @@
 # Proprietary files not to be propagated
 vault
 
+# oXygen XML Editor IDE file
+*.xpr
+
 */working/**/*.pdf
 
+/OSCAL-dev.xpr
