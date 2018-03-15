@@ -1,0 +1,44 @@
+default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
+
+include "oscal-catalog.rnc" { start = (framework | worksheet) }
+
+framework = element framework { idAttr?, optionalClass, framework-contents }
+
+framework-contents = (title, declarations?, (section | componentGroup | component)*, references?)
+
+# 'worksheet' is just an alias for 'framework' for now
+
+worksheet = element worksheet { idAttr?, optionalClass, worksheet-contents }
+
+worksheet-contents = (title, declarations?, (section | componentGroup | component)*, references?)
+
+# Another idea ... a 'linksheet' like a framework except flat (no nesting permitted, not even 'part')
+
+linksheet = element linksheet { idAttr?, optionalClass, linksheet-contents } 
+linksheet-contents = (title, declarations?, linkitem*, references?)
+
+
+# 'group' is the element name as it appears in both frameworks, and catalogs
+# but they group different things
+componentGroup = element group { idAttr?, optionalClass,
+  title?, (prop | link | prose)*,
+   (componentGroup+ | component+ ) }
+
+component = element component {
+    idAttr?, optionalClass, title?,
+    (param | prop | link | prose | part)*, component*
+  }
+
+linkitem = element component {
+    idAttr?, optionalClass, title?, (param | prop | link | prose)*
+  }
+
+# an overlay - a framework whose structure matches the catalog?
+
+# frameworks contain categories or items
+# categories contain categories or items
+# items contain title?, prop*, p*, link*
+# strict governance over item/link/@rel
+# declarations too :-)
+# validation can ensure that framework links are scoped
+# corresponding with catalogs/controls included in the profile
