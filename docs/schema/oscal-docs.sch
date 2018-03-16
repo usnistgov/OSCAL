@@ -39,7 +39,10 @@
     
     <sch:rule context="oscal:component[@class='element-description']">
       <sch:let name="gi" value="oscal:prop[@class='tag']"/>
-      <sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <xsl:value-of separator=", " select="$schema-files"/></sch:assert>
+      <sch:let name="extra-declarations" value="document(ancestor::oscal:group/oscal:part[@class='xsd-file'],/)//xsd:element[@name=$gi]"/>
+      <!--<sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <xsl:value-of separator=", " select="$schema-files"/></sch:assert>-->
+      <sch:report test="true()"><sch:value-of select="count($extra-declarations)"/></sch:report>
+      <sch:report test="exists($extra-declarations)">... but it is declared in the called schema ...</sch:report>
     </sch:rule>
     
     <sch:rule context="oscal:part[@class='description']">

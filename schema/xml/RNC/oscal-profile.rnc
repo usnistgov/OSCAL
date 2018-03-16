@@ -18,7 +18,6 @@ frame = element custom { title?, (profileGroup+ | (call | match)+ ) }
 
 profileGroup = element group { title?, ( profileGroup+ | (call | match)+ ) }
 
-
 modify =  element modify { (param_setting | alteration )* }
 
 # Can have either 'all' or (a set of) 'call'
@@ -44,7 +43,7 @@ call = element call { (withSubContrlsAttr, attribute control-id { xsd:NCName } )
 # controls or subcontrols may be included.
 # nb this means it is possible to include subcontrols w/o their controls, for later combination w/ other includes
 match = element match { withSubContrlsAttr, withContrlAttr, attribute pattern { text },
-  attribute order-by { 'keep' | 'ascending' | 'descending' }? }
+  attribute order { 'keep' | 'ascending' | 'descending' }? }
 
 exclude = element exclude { ( match |
             element call {

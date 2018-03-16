@@ -6,17 +6,29 @@ Neighboring subdirectories contain resources relating to RNC versions as well as
 
 ## Schema production
 
-The two top-level OSCAL schemas ('core' and 'profile') stored in the subdirectory above are produced by processing files in this directory. These in turn are not maintained by hand, but are produced by tooling from the actual maintenance versions in RNC. This subdirectory contains only processing logic for schema production along with temporary intermediate files.
+New design!
 
-These are, however, also fully functional:
+For flexibility in development, we continue to maintain in RNC and produce occasional "release" versions in XSD. The XSDs are fully documented internally, as well as provided with out of line (corresponding) documentation.
 
-'core' [../oscal-core-interim.xsd](../oscal-core-interim.xsd) validates anything but profile documents, which are not full catalogs or catalog-like compilations, but only references into catalogs and frameworks. If the root (document) element of your XML is `<catalog>`, `<profile>`, `<declarations>` or `<framework>`, your document may be valid to this schema.
+Now there are three entry point schemas: `catalog`, `declarations`, and `profile`. Experimental features may now be found in RNC sources, but not in the XSDs. Note that while XSD itself does not constrain that the given (stipulated) element entry point actually be used (i.e. that your XML root or document element be one of these three elements), the given models accommodate that usage.
 
-'profile' [../oscal-profile-interim.xsd](../oscal-profile-interim.xsd) offers the simplest interface to OSCAL: it is for referencing catalogs not writing them; the root element will be `<profile>`.
+The source code for the published versions is maintained deeper within the subdirectory. They are produced in a build process from sources that integrate them with documentation, from "masters" maintained (for the present) using RNC notation.
 
-The distribution copies of [oscal-core.xsd](oscal-core.xsd) and [oscal-profile.xsd](oscal-profile.xsd) are subsequently produced by a call to an XProc pipeline [schema-production.xpl](schema-production.xpl). This process produces several outputs, including a cleaned-up version of the XSD, into which structured documentation has been integrated for use by tools, along with updated schema documentation. See the [doc/schema](../../docs/schema) subdirectory for the documentation resources.
+The same pipeline aligns with our expected JSON schema artifacts. Eventually we may switch out RNG for a different meta-notation able to drive the production of XSD the way we presently do. (We would prefer not to author XSD by hand.)
 
-Note that this process now has to be run separately for the two schema modules, although documentation it produces for both is the same (and integrated).
+'catalog' [../oscal-catalog.xsd](../oscal-catalog.xsd)
+
+'profile' [../oscal-profile.xsd](../oscal-profile.xsd) offers the simplest interface to OSCAL: it is for referencing catalogs not writing them; the root element will be `<profile>`.
+
+'declarations' [../declarations.xsd](../oscal-declarations.xsd) OSCAL offers, in addition to constraints enforced by language definition files, additional constraints to be declared and applied dynamically to its (document) contents. This is done by using the set of elements described in this schema (module).
+
+for each module:
+1. Produce pre-injection XSD from RNC using Trang (in IDE)
+1. Inject schema docs 
+
+Then for all/any modules together:
+1. Produce HTML/MD docs for schemas from oscal-oscal.xml
+
 
 RelaxNG versions of the schema (XML syntax) are not currently maintained but could be provided if needed (or produced from the working RNC version using Trang). A compatible DTD is not planned and some aspects of content modeling (such as `group` being different inside catalogs and frameworks) would hinder a straight-up mapping into DTD content models.
 
