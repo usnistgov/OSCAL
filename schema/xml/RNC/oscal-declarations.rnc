@@ -4,7 +4,8 @@ start = declarations
 
 # declarations includes declarations for control types, parameters (names/types),
 # authorities (source data for transclusion etc. etc.)
-declarations = ( element declarations { decls } )
+
+declarations = ( element declarations { attribute href { text }?, decls } )
 
 decls = (parameter_decl | property_decl | part_decl | para_decl | link_decl)*
 

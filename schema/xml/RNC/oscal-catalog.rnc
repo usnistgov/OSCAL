@@ -6,9 +6,6 @@ include "oscal-declarations.rnc" {
 
   start = catalog
 
-  # declarations can be out of line (referenced) or included
-  declarations = ( element declarations { hrefAttr?, decls } )
-
 }
 
 catalog = element catalog { catalog-contents } 

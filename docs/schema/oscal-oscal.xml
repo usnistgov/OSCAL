@@ -3,8 +3,8 @@
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css" title="Straight" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
 <?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../../schema/xml/RNC/oscal-worksheet.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!--<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+<?xml-model href="../../schema/xml/RNC/oscal-experimental.rnc" type="application/relax-ng-compact-syntax"?>
 <worksheet xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>Document model and tagging specification - OSCAL: The Open Security Controls Assessment
     Language</title>
@@ -74,6 +74,7 @@
   </section>
   <group>
     <title>Controls, components and their contents</title>
+    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and the
       structured information (loosely <q>objects</q>, represented as valid XML elements). These
       contents will include both structured contents (using element types as described here) and
@@ -86,7 +87,7 @@
         <p>A (canonical) control catalog: a structured set of security controls</p>
       </part>
     </component>
-    <component class="element-description">
+    <!--<component class="element-description">
       <prop class="tag">framework</prop>
       <prop class="full_name">Framework</prop>
       <part class="description">
@@ -107,8 +108,8 @@
           restrictions. With respect to their internals, that is, they are closely aligned, which
           simplifies processing of information across the boundaries between them.</p>
       </part>
-    </component>
-    <component class="element-description">
+    </component>-->
+    <!--<component class="element-description">
       <prop class="tag">worksheet</prop>
       <prop class="full_name">Worksheet</prop>
       <part class="description">
@@ -119,7 +120,7 @@
           used for much more ad-hoc collections of components than formalized (much less published)
           frameworks.</p>
       </part>
-    </component>
+    </component>-->
     <component class="element-description">
       <prop class="tag">control</prop>
       <prop class="full_name">Control</prop>
@@ -131,7 +132,7 @@
           either (formally) <code>subcontrol</code> or (informally) <code>part</code>.</p>
       </part>
     </component>
-    <component class="element-description">
+    <!--<component class="element-description">
       <prop class="tag">component</prop>
       <prop class="full_name">Framework component</prop>
       <part class="description">
@@ -150,7 +151,7 @@
           (catalogs) in the general sense; however components in use are not likely to be much like
           the controls they reference.</p>
       </part>
-    </component>
+    </component>-->
     <component class="element-description">
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control extension</prop>
@@ -196,13 +197,6 @@
       </part>
     </component>
     <component class="element-description">
-      <prop class="tag">param</prop>
-      <prop class="full_name">Parameter</prop>
-      <part class="description">
-        <p>A parameter setting, to be propagated to points of insertion</p>
-      </part>
-    </component>
-    <component class="element-description">
       <prop class="tag">part</prop>
       <prop class="full_name">Part</prop>
       <part class="description">
@@ -220,6 +214,14 @@
           if the components of your controls have their own titles, they are something else; to
           accommodate data like this, consider using a property (e.g.,
             <code>prop[@class='part-title']</code> as an escape hatch.</p>
+        <p>Generally speaking, <code>part</code> elements will be of two kinds. Many parts are
+          logical partitions or sections for prose; these may be called <q>statements</q> and may be
+          expected to have simple prose contents, even just one paragraph. Other parts may be more
+          formally constructed out of properties (<code>prop</code> elements) and/or their own
+          parts. At the extreme, parts may be fully-fledge control-like or subcontrol-like objects.
+          Since the composition of parts can be constrained using OSCAL declarations (of the items
+          or components to be given in a part or in this type of part), their use for encoding
+            <q>objects</q> of arbitrary complexity within controls, is effectively open-ended.</p>
       </part>
     </component>
     <component class="element-description">
@@ -237,9 +239,32 @@
   </group>
   <group>
     <title>Functional elements</title>
+    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
+    
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
       semantic traversal.</p>
+    <component class="element-description">
+      <prop class="tag">param</prop>
+      <prop class="full_name">Parameter</prop>
+      <part class="description">
+        <p>A parameter setting, to be propagated to points of insertion</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">label</prop>
+      <prop class="full_name">Parameter label</prop>
+      <part class="description">
+        <p>A placeholder for a missing value, in display</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">desc</prop>
+      <prop class="full_name">Parameter description</prop>
+      <part class="description">
+        <p>Indicates and explains the purpose and use of a parameter</p>
+      </part>
+    </component>
     <component class="element-description">
       <prop class="tag">insert</prop>
       <prop class="full_name">Parameter insertion</prop>
@@ -266,270 +291,8 @@
     <!--<control class="element-description"><prop class="tag">choice</prop><prop class="full_name">Choice</prop><part class="description"><p>A choice of values, to be designated via parameter (tbd)</p></part></control>-->
   </group>
   <group>
-    <title>Declarations elements</title>
-    <p>By declaring constraints on information associated with controls such as their properties
-        (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
-      and operators can validate the composition and consistency of available controls. Over and
-      above the <q>core validation</q> of OSCAL element naming (which is enforced by direct
-      application of an XML schema), such validation can help to guarantee processability and
-      interchange of OSCAL data by verifying that not only tags, but also values given in the data,
-      conform to expressed constraints, which can be made specific to a catalog or catalog type.</p>
-    <p>In this way, the OSCAL declarations mechanism provides for a kind of <q>on the fly
-        supertyping</q> of control objects, by restriction (constraint) of the core OSCAL language.
-      The extent and degree to which declarations are used to impose order on controls is up to the
-      application and its methods. By no means are declarations necessary; but they serve as an aid
-      in modeling and in communicating expectations.</p>
-    <p>OSCAL declarations are enforced by a Schematron; the core schema stipulates this  model (and
-      tagging used to control it, i.e. a tag interface) but does not enforce any of the constraints
-      so declared. Developers should take note that these constraints are all readily testable in
-      XPath.</p>
-    <component class="element-description">
-      <prop class="tag">declarations</prop>
-      <prop class="full_name">Declarations</prop>
-      <part class="description">
-        <p>For extra-schema validation of data given within controls or framework components</p>
-      </part>
-      <part class="remarks">
-        <p>The OSCAL validation model supports not only validation against a formal schema
-          (describing elements, attributes, and their permitted contents, described generally and
-          generically), but also against a set of declarations provided specifically for the catalog
-          or catalog type within which they appear. Constraints described in these declarations, and
-          bound via assignments of <code>@class</code> (for information within controls or
-          components) and <code>@context</code> (indicating control, subcontrol, component or part
-          wherein the given object may appear), enable automated checking for consistency of
-          controls, subcontrols, components and their parts, specific to the types or kinds of
-          control items that appear within a particular catalog or framework.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">declare-prop</prop>
-      <prop class="full_name">Property declaration</prop>
-      <part class="description">
-      <p>Constraints applicable to a class or classes of <code>prop</code> elements (properties) in
-          context</p>
-      </part>
-      <part class="remarks">
-        <p>The class of properties, in context, to which the constraints apply, is indicated on the
-            <code>@class</code> of the declaration (<code>declare-prop</code>). Only elements named
-            <code>prop</code> with matching <code>@class</code> are subject to the declared
-          constraints. The context is defined by the class of the element parent of the candidate
-          property, whether it is a <code>control</code>, <code>subcontrol</code>, <code>part</code>
-          or <code>group</code>. So a <code>declare-prop context="myControl" class="myProp"</code>
-          will apply to any property (<code>prop</code> element) with class <q>myProp</q>, appearing
-          in a control, subcontrol, part or group with class <q>myControl</q>.</p>
-        <p>The constraints that will apply to these properties are indicated by the elements
-          contained in the declaration. For example, a property declared as a <q>required
-            singleton</q> is required to appear in its context (the validator will produce an error
-          when it is missing), while it may not appear more than once (the validator will produce an
-          error if more than one appear together).</p>
-        <p>Because the <code>@class</code> attribute is the basis of the OSCAL declarations model,
-          it is recommended that applications restrict the usage of this attribute to single name
-          values, when used on controls or their compo. Although overloading <code>@class</code>, as
-          it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an
-          OSCAL application, restricting elements to have <em>at most</em>, a single class
-          assignment, will help keep things clean and intelligible.</p>
-        <p>On declarations including <code>declare-prop</code> and its siblings, however, both
-            <code>@class</code> and <code>@context</code> may be overloaded (multiple values). A
-          helpful application will detect where there are conflicting declarations, meaning the same
-          class designator is claimed by different elements in a given context.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">declare-p</prop>
-      <prop class="full_name">Paragraph declaration</prop>
-      <part class="description">
-        <p>Indicates constraints to be enforced on paragraphs in context</p>
-      </part>
-      <part class="remarks">
-        <p>Elements contained in the declaration, as with all declarations, indicate constraints.
-          The <code>p</code> may be required for the control to be complete, and/or the only one
-          with its <code>@class</code> (a singleton). The value(s) may be restricted, etc.</p>
-        <p>Effectively, the difference between a <q>property</q>
-          <code>prop</code> and <q>classified p</q>
-          <code>p[@class]</code> is that properties may have only simple scalar values, not subject
-          to dynamic processing or injection. So <code>p</code> elements directly inside a
-            <code>control</code>, <code>subcontrol</code> or <code>part</code> may contain
-            <code>insert</code> elements, for example (just as can <code>p</code> elements in
-          running prose), whereas parameters cannot be injected into properties by definition (since
-          they are required to be stable per control object).</p>
-      </part>
-      
-    </component>
-    <component class="element-description">
-      <prop class="tag">declare-part</prop>
-      <prop class="full_name">Part declaration</prop>
-      <part class="description">
-        <p>Indicates constraints to be imposed on parts in context</p>
-      </part>
-      <part class="remarks">
-        <p>Parts are subject to singleton and requirement constraints, but not to constraints on
-          values. However, note that parts may also serve as contexts for other control objects,
-          including properties and parts.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">declare-link</prop>
-      <prop class="full_name">Link declaration</prop>
-      <part class="description">
-        <p>Indicates constraints to be imposed on links in context</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">singleton</prop>
-      <prop class="full_name">Singleton constraint</prop>
-      <part class="description">
-        <p>The declared component may occur only once in its context</p>
-      </part>
-      <part class="remarks">
-        <p>When this element is present in the declaration of a data object in OSCAL (such as a
-            <code>prop</code>, <code>link</code>, or <code>part</code>) must be the only object of
-          that class given in its (<code>group</code>, <code>control</code>,
-          <code>subcontrol</code>, <code>component</code> or <code>part</code>) context. In other
-          words, no other element child of the same parent may have the same <code>@class</code>
-          value.</p>
-        <p>Note that the singleton constraint does not apply to the value of the property, but only
-          to the fact that it is an <q>only child</q>, unique among its siblings for having its
-          class assignment.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">required</prop>
-      <prop class="full_name">Requirement constraint</prop>
-      <part class="description">
-        <p>The declared component is required in its context</p>
-      </part>
-      <part class="remarks">
-        <p>When this element is present in the declaration of an OSCAL object, the object
-            (<code>prop</code>, <code>link</code>, or <code>part</code> element, of the given class)
-          is required to appear, at least once, in its context.</p>
-        <p>A property or part that is a required singleton, is expected to appear exactly once and
-          once only in every applicable control, subcontrol or part.</p>
-        <p>Whenever a control or control object is required to have any parts (or properties etc.),
-          and any of the required parts are missing, errors may be reported against the declarations
-          model.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">identifier</prop>
-      <prop class="full_name">Identifier constraint</prop>
-      <part class="description">
-        <p>The declared component has a value unique within the document, among properties
-            (<code>prop</code>) with the same class</p>
-      </part>
-      <part class="remarks">
-        <p>This constraint is generally only used for properties to be used as identifiers for their
-          control object (control, subcontrol, or part). Guaranteeing their uniqueness means that
-          these values can be used to effect one-to-one retrieval or reference to the objects to
-          which they are assigned (even when IDs are unknown or undefined).</p>
-        <p>Note that a property marked as an identifier, may or may not be (also declared as) a
-          singleton. In any case the value of <em>each</em> property of the given class must be
-          unique. So if a control has several <q>name</q> properties, <q>name</q> being declared as
-          an identifier, then each of the <b>name</b> properties in that control must be unique:
-            <q>George</q>
-          <q>John</q> and <q>Ringo</q> not <q>George</q>, <q>George</q> and <q>George</q>.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">regex</prop>
-      <prop class="full_name">Regular expression constraint</prop>
-      <part class="description">
-        <p>Indicates that the value of a property (<code>prop</code>) or parameter
-            (<code>param</code>) must match the given regular expression</p>
-      </part>
-      <part class="remarks">
-        <p>Matching against a regular expression is conducted on the normalized lexical value of the
-          given parameter or property: that is, with leading and trailing whitespace stripped,
-          interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline
-          markup stripped.</p>
-        <p>When more than one <code>regex</code> is given in a declaration, a match on any of them
-          is taken to satisfy the requirement.</p>
-      </part>
-    </component>
-    <!--<control class="element-description"><prop class="tag">xdm-datatype</prop><prop class="full_name">XDM datatype lexical constraint</prop><part class="description"><p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter (<code>param</code>) must be castable to the given XDM datatype</p></part><part class="remarks"><p>TBD.</p><p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An even more general functionality would be an xpath-satisfies that would support arbitrary XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le 10.00</code></p></part></control>-->
-    <component class="element-description">
-      <prop class="tag">value</prop>
-      <prop class="full_name">Value constraint</prop>
-      <part class="description">
-        <p>Indicates a permissible value for a parameter or property</p>
-      </part>
-      <part class="remarks">
-        <p>In a declaration, <code>value</code> will commonly be given in groups, indicating a set
-          of enumerated permissible values (i.e., for an element to be valid to a value constraint,
-          it must equal one of the given values).</p>
-        <p>In a parameter, a value represents a value assignment to the parameter, overriding any
-          value given at the point of insertion. When parameters are provided in OSCAL profiles,
-          their values will override any values assigned <q>lower down the stack</q>.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">calc</prop>
-      <prop class="full_name">Calculated value constraint</prop>
-      <part class="description">
-        <p>Indicates a permissible value for a parameter or property, calculated dynamically</p>
-      </part>
-      <part class="remarks">
-        <p>Similar to <code>value</code> except that its contents are expanded to produce the
-          permitted value, instead of being given as a literal.</p>
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">autonum</prop>
-      <prop class="full_name">Autonumbered (generated) value</prop>
-      <part class="description">
-        <p>Generates a formatted numeric value based on the position of a control object among its
-          siblings, the text contents providing a template for the numbering format (arabic,
-          alphabetic, roman, etc.)</p>
-      </part>
-      <part class="remarks">
-        <p>The text contents of <code>autonum</code> (not the value of any attribute) will be taken
-          by the processor to be a formatting code. The format should follow the spec for <a
-            href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
-              <code>xsl:number/@format</code></a>. For example, if the value is <q>A.</q>, then
-          numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
-          include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and
-          lower-case roman numbering as described for XSLT.</p>
-        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
-      </part>
-      
-    </component>
-    <component class="element-description">
-      <prop class="tag">inherit</prop>
-      <prop class="full_name">Inherited value</prop>
-      <part class="description">
-        <p>Indicates that a value or text within a value should be inherited from a property on a
-          containing control object</p>
-      </part>
-      <part class="remarks">
-        <p><code>inherit</code> is typically used to enforce hierarchical numbering within control
-          objects. When given in a <code>value</code> in a declaration, <code>inherit</code>
-          indicates that the value of a property, or a segment of its value, must be the same as a
-          property (<code>prop</code>) higher in the containment hierarchy of a control object. That
-          is, if a property with <code>@class='number'</code> is constrained with
-            <code>value/inherit</code>, it must be the same as is assigned on the closest ancestor
-            (<code>part</code>, <code>subcontrol</code>, <code>control</code>, or
-          <code>group</code>) with the given property.</p>
-        <p>Usually, <code>inherit</code> is used in conjunction with <code>autonum</code>. Using the
-          two elements in combination, for example, the number (property) assigned to a subcontrol
-          appearing inside a control numbered <q>A1</q> may be constrained to be <q>A1-a</q>,
-            <q>A1-b</q>, etc., depending on the position of the subcontrol within the control.</p>
-        <p>If a value must inherit from a property of a different class from the containing control
-          object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
-          class). By default, <code>inherit</code> indicates a property value should match an
-          ancestor's property with the same <code>@class</code> (the most usual case).</p>
-        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
-      </part>
-    </component>
-    <component class="element-description">
-      <prop class="tag">desc</prop>
-      <prop class="full_name">Parameter description</prop>
-      <part class="description">
-        <p>Indicates and explains the purpose and use of a parameter</p>
-      </part>
-    </component>
-    
-  </group>
-  <group>
     <title>Structural elements</title>
+    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
     <component class="element-description">
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
@@ -549,14 +312,13 @@
       </part>
       <part class="remarks">
         <p>In addition to controls or groups, groups may be titled and may have their own
-          properties, statements, parameter settings, and references, subject to declaration. In this
-          respect they are like controls, subcontrols or parts, but their properties apply to the
-          entire group and must be acquired in processing via inheritance.</p>
+          properties, statements, parameter settings, and references, subject to declaration. In
+          this respect they are like controls, subcontrols or parts, but their properties apply to
+          the entire group and must be acquired in processing via inheritance.</p>
         <p>Unlike sections (<code>section</code> elements), groups may not contain arbitrary prose
           (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped
           (no <code>@class</code>) and therefore unconstrained by declarations.</p>
       </part>
-      
     </component>
     <component class="element-description">
       <prop class="tag">title</prop>
@@ -564,7 +326,6 @@
       <part class="description">
         <p>A fallback for display and navigation, exclusive of more specific properties</p>
       </part>
-      
     </component>
     <component class="element-description">
       <prop class="tag">references</prop>
@@ -572,7 +333,6 @@
       <part class="description">
         <p>A group of reference descriptions</p>
       </part>
-      
     </component>
     <component class="element-description">
       <prop class="tag">ref</prop>
@@ -581,7 +341,6 @@
         <p>A reference, with one or more citations to standards, related documents, or other
           resources</p>
       </part>
-      
     </component>
     <component class="element-description">
       <prop class="tag">std</prop>
@@ -607,12 +366,14 @@
   </group>
   <group id="prose">
     <title>Prose</title>
-    <p>Prose may ordinarily appear anywhere in a control, subcontrol, or part, or at a higher level.
-      OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a
-      narrow subset of HTML element types. This is intended to be the bare minimum of stripped down
-      text as is appropriate for control documentation. Graphics, diagrams, and tables are all out
-      of scope for OSCAL (although arbitrary feature sets can always be modeled as nested
-      parts).</p>
+    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
+    <p>Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where
+      they will ordinarily be relegated to the control's partitions or statements
+      (<code>part</code>s). OSCAL prose elements echo HTML semantics, although they are deliberately
+      and specifically a narrow subset of HTML element types. This is intended to be the bare
+      minimum of stripped down text as is appropriate for control documentation. Graphics, diagrams,
+      and tables are all out of scope for OSCAL (although arbitrary feature sets can always be
+      modeled in OSCAL as nested parts).</p>
     <p>Among prose elements, <code>p</code> elements in particular are of interest in that they may
       be constrained by declarations like other contents of controls (or components) – although this
       may not often be as useful as imposing constraints over properties and parts. Frequently, a
@@ -786,8 +547,263 @@
           arbitrary spans. But it might. Please share your requirements.</p>
       </part>
     </component>
+  </group>
+  <group>
+    <title>Declarations elements</title>
+    <prop class="xsd">../../schema/xml/XSD/oscal-declarations_.xsd</prop>
+    <p>By declaring constraints on information associated with controls such as their properties
+        (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
+      and operators can validate the composition and consistency of available controls. Over and
+      above the <q>core validation</q> of OSCAL element naming (which is enforced by direct
+      application of an XML schema), such validation can help to guarantee processability and
+      interchange of OSCAL data by verifying that not only tags, but also values given in the data,
+      conform to expressed constraints, which can be made specific to a catalog or catalog type.</p>
+    <p>In this way, the OSCAL declarations mechanism provides for a kind of <q>on the fly
+        supertyping</q> of control objects, by restriction (constraint) of the core OSCAL language.
+      The extent and degree to which declarations are used to impose order on controls is up to the
+      application and its methods. By no means are declarations necessary; but they serve as an aid
+      in modeling and in communicating expectations.</p>
+    <p>OSCAL declarations are enforced by a Schematron; the core schema stipulates this model (and
+      tagging used to control it, i.e. a tag interface) but does not enforce any of the constraints
+      so declared. Developers should take note that these constraints are all readily testable in
+      XPath.</p>
+    <component class="element-description">
+      <prop class="tag">declarations</prop>
+      <prop class="full_name">Declarations</prop>
+      <part class="description">
+        <p>For extra-schema validation of data given within controls or framework components</p>
+      </part>
+      <part class="remarks">
+        <p>The OSCAL validation model supports not only validation against a formal schema
+          (describing elements, attributes, and their permitted contents, described generally and
+          generically), but also against a set of declarations provided specifically for the catalog
+          or catalog type within which they appear. Constraints described in these declarations, and
+          bound via assignments of <code>@class</code> (for information within controls or
+          components) and <code>@context</code> (indicating control, subcontrol, component or part
+          wherein the given object may appear), enable automated checking for consistency of
+          controls, subcontrols, components and their parts, specific to the types or kinds of
+          control items that appear within a particular catalog or framework.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">declare-prop</prop>
+      <prop class="full_name">Property declaration</prop>
+      <part class="description">
+        <p>Constraints applicable to a class or classes of <code>prop</code> elements (properties)
+          in context</p>
+      </part>
+      <part class="remarks">
+        <p>The class of properties, in context, to which the constraints apply, is indicated on the
+            <code>@class</code> of the declaration (<code>declare-prop</code>). Only elements named
+            <code>prop</code> with matching <code>@class</code> are subject to the declared
+          constraints. The context is defined by the class of the element parent of the candidate
+          property, whether it is a <code>control</code>, <code>subcontrol</code>, <code>part</code>
+          or <code>group</code>. So a <code>declare-prop context="myControl" class="myProp"</code>
+          will apply to any property (<code>prop</code> element) with class <q>myProp</q>, appearing
+          in a control, subcontrol, part or group with class <q>myControl</q>.</p>
+        <p>The constraints that will apply to these properties are indicated by the elements
+          contained in the declaration. For example, a property declared as a <q>required
+            singleton</q> is required to appear in its context (the validator will produce an error
+          when it is missing), while it may not appear more than once (the validator will produce an
+          error if more than one appear together).</p>
+        <p>Because the <code>@class</code> attribute is the basis of the OSCAL declarations model,
+          it is recommended that applications restrict the usage of this attribute to single name
+          values, when used on controls or their compo. Although overloading <code>@class</code>, as
+          it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an
+          OSCAL application, restricting elements to have <em>at most</em>, a single class
+          assignment, will help keep things clean and intelligible.</p>
+        <p>On declarations including <code>declare-prop</code> and its siblings, however, both
+            <code>@class</code> and <code>@context</code> may be overloaded (multiple values). A
+          helpful application will detect where there are conflicting declarations, meaning the same
+          class designator is claimed by different elements in a given context.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">declare-p</prop>
+      <prop class="full_name">Paragraph declaration</prop>
+      <part class="description">
+        <p>Indicates constraints to be enforced on paragraphs in context</p>
+      </part>
+      <part class="remarks">
+        <p>Elements contained in the declaration, as with all declarations, indicate constraints.
+          The <code>p</code> may be required for the control to be complete, and/or the only one
+          with its <code>@class</code> (a singleton). The value(s) may be restricted, etc.</p>
+        <p>Effectively, the difference between a <q>property</q>
+          <code>prop</code> and <q>classified p</q>
+          <code>p[@class]</code> is that properties may have only simple scalar values, not subject
+          to dynamic processing or injection. So <code>p</code> elements directly inside a
+            <code>control</code>, <code>subcontrol</code> or <code>part</code> may contain
+            <code>insert</code> elements, for example (just as can <code>p</code> elements in
+          running prose), whereas parameters cannot be injected into properties by definition (since
+          they are required to be stable per control object).</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">declare-part</prop>
+      <prop class="full_name">Part declaration</prop>
+      <part class="description">
+        <p>Indicates constraints to be imposed on parts in context</p>
+      </part>
+      <part class="remarks">
+        <p>Parts are subject to singleton and requirement constraints, but not to constraints on
+          values. However, note that parts may also serve as contexts for other control objects,
+          including properties and parts.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">declare-link</prop>
+      <prop class="full_name">Link declaration</prop>
+      <part class="description">
+        <p>Indicates constraints to be imposed on links in context</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">singleton</prop>
+      <prop class="full_name">Singleton constraint</prop>
+      <part class="description">
+        <p>The declared component may occur only once in its context</p>
+      </part>
+      <part class="remarks">
+        <p>When this element is present in the declaration of a data object in OSCAL (such as a
+            <code>prop</code>, <code>link</code>, or <code>part</code>) must be the only object of
+          that class given in its (<code>group</code>, <code>control</code>,
+          <code>subcontrol</code>, <code>component</code> or <code>part</code>) context. In other
+          words, no other element child of the same parent may have the same <code>@class</code>
+          value.</p>
+        <p>Note that the singleton constraint does not apply to the value of the property, but only
+          to the fact that it is an <q>only child</q>, unique among its siblings for having its
+          class assignment.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">required</prop>
+      <prop class="full_name">Requirement constraint</prop>
+      <part class="description">
+        <p>The declared component is required in its context</p>
+      </part>
+      <part class="remarks">
+        <p>When this element is present in the declaration of an OSCAL object, the object
+            (<code>prop</code>, <code>link</code>, or <code>part</code> element, of the given class)
+          is required to appear, at least once, in its context.</p>
+        <p>A property or part that is a required singleton, is expected to appear exactly once and
+          once only in every applicable control, subcontrol or part.</p>
+        <p>Whenever a control or control object is required to have any parts (or properties etc.),
+          and any of the required parts are missing, errors may be reported against the declarations
+          model.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">identifier</prop>
+      <prop class="full_name">Identifier constraint</prop>
+      <part class="description">
+        <p>The declared component has a value unique within the document, among properties
+            (<code>prop</code>) with the same class</p>
+      </part>
+      <part class="remarks">
+        <p>This constraint is generally only used for properties to be used as identifiers for their
+          control object (control, subcontrol, or part). Guaranteeing their uniqueness means that
+          these values can be used to effect one-to-one retrieval or reference to the objects to
+          which they are assigned (even when IDs are unknown or undefined).</p>
+        <p>Note that a property marked as an identifier, may or may not be (also declared as) a
+          singleton. In any case the value of <em>each</em> property of the given class must be
+          unique. So if a control has several <q>name</q> properties, <q>name</q> being declared as
+          an identifier, then each of the <b>name</b> properties in that control must be unique:
+            <q>George</q>
+          <q>John</q> and <q>Ringo</q> not <q>George</q>, <q>George</q> and <q>George</q>.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">regex</prop>
+      <prop class="full_name">Regular expression constraint</prop>
+      <part class="description">
+        <p>Indicates that the value of a property (<code>prop</code>) or parameter
+            (<code>param</code>) must match the given regular expression</p>
+      </part>
+      <part class="remarks">
+        <p>Matching against a regular expression is conducted on the normalized lexical value of the
+          given parameter or property: that is, with leading and trailing whitespace stripped,
+          interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline
+          markup stripped.</p>
+        <p>When more than one <code>regex</code> is given in a declaration, a match on any of them
+          is taken to satisfy the requirement.</p>
+      </part>
+    </component>
+    <!--<control class="element-description"><prop class="tag">xdm-datatype</prop><prop class="full_name">XDM datatype lexical constraint</prop><part class="description"><p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter (<code>param</code>) must be castable to the given XDM datatype</p></part><part class="remarks"><p>TBD.</p><p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An even more general functionality would be an xpath-satisfies that would support arbitrary XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le 10.00</code></p></part></control>-->
+    <component class="element-description">
+      <prop class="tag">value</prop>
+      <prop class="full_name">Value constraint</prop>
+      <part class="description">
+        <p>Indicates a permissible value for a parameter or property</p>
+      </part>
+      <part class="remarks">
+        <p>In a declaration, <code>value</code> will commonly be given in groups, indicating a set
+          of enumerated permissible values (i.e., for an element to be valid to a value constraint,
+          it must equal one of the given values).</p>
+        <p>In a parameter, a value represents a value assignment to the parameter, overriding any
+          value given at the point of insertion. When parameters are provided in OSCAL profiles,
+          their values will override any values assigned <q>lower down the stack</q>.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">calc</prop>
+      <prop class="full_name">Calculated value constraint</prop>
+      <part class="description">
+        <p>Indicates a permissible value for a parameter or property, calculated dynamically</p>
+      </part>
+      <part class="remarks">
+        <p>Similar to <code>value</code> except that its contents are expanded to produce the
+          permitted value, instead of being given as a literal.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">autonum</prop>
+      <prop class="full_name">Autonumbered (generated) value</prop>
+      <part class="description">
+        <p>Generates a formatted numeric value based on the position of a control object among its
+          siblings, the text contents providing a template for the numbering format (arabic,
+          alphabetic, roman, etc.)</p>
+      </part>
+      <part class="remarks">
+        <p>The text contents of <code>autonum</code> (not the value of any attribute) will be taken
+          by the processor to be a formatting code. The format should follow the spec for <a
+            href="https://www.w3.org/TR/xslt-30/#element-number">XSLT
+              <code>xsl:number/@format</code></a>. For example, if the value is <q>A.</q>, then
+          numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
+          include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and
+          lower-case roman numbering as described for XSLT.</p>
+        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">inherit</prop>
+      <prop class="full_name">Inherited value</prop>
+      <part class="description">
+        <p>Indicates that a value or text within a value should be inherited from a property on a
+          containing control object</p>
+      </part>
+      <part class="remarks">
+        <p><code>inherit</code> is typically used to enforce hierarchical numbering within control
+          objects. When given in a <code>value</code> in a declaration, <code>inherit</code>
+          indicates that the value of a property, or a segment of its value, must be the same as a
+          property (<code>prop</code>) higher in the containment hierarchy of a control object. That
+          is, if a property with <code>@class='number'</code> is constrained with
+            <code>value/inherit</code>, it must be the same as is assigned on the closest ancestor
+            (<code>part</code>, <code>subcontrol</code>, <code>control</code>, or
+          <code>group</code>) with the given property.</p>
+        <p>Usually, <code>inherit</code> is used in conjunction with <code>autonum</code>. Using the
+          two elements in combination, for example, the number (property) assigned to a subcontrol
+          appearing inside a control numbered <q>A1</q> may be constrained to be <q>A1-a</q>,
+            <q>A1-b</q>, etc., depending on the position of the subcontrol within the control.</p>
+        <p>If a value must inherit from a property of a different class from the containing control
+          object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
+          class). By default, <code>inherit</code> indicates a property value should match an
+          ancestor's property with the same <code>@class</code> (the most usual case).</p>
+        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
+      </part>
+    </component>
   </group><group id="profiling">
     <title>Profiling</title>
+    <prop class="xsd">../../schema/xml/XSD/oscal-profile_.xsd</prop>
     <p>By means of its profiling functionality, OSCAL provides ways of specifying and documenting
       configurations or <q>overlays</q> of catalog, as <b>profile</b> documents. Although they may
       contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct
@@ -802,12 +818,54 @@
         <p>In reference to a catalog (or other resource such as profile or framework), a selection
           and configuration of controls, maintained separately</p>
       </part>
+      <part class="remarks">
+        <p>An OSCAL document that describes a selection with possible modification of multiple
+          controls from multiple catalogs. It provides mechanisms by which controls may be selected
+            (<code>import</code>), merged or (re)structured (<code>merge</code>), and emended
+            (<code>modify</code>). OSCAL profiles may select subsets of control sets, set parameter
+          values for them in application, and even qualify the representation of controls and
+          subcontrols as given in and by a catalog. They may also serve as sources for further
+          modification in and by other profiles, that import them.</p>
+      </part>
     </component>
     <component class="element-description">
       <prop class="tag">import</prop>
       <prop class="full_name">Import resource</prop>
       <part class="description">
         <p>Designating a catalog, profile or other resource for controls</p>
+      </part>
+      <part class="remarks">
+        <p>An <code>import</code> indicates a source whose controls are to be included (referenced
+          and modified) in a profile. This source will either be a catalog whose controls are given
+            (<q>by value</q>), or a profile with its own control imports. In the latter case,
+          profiles are expected to be resolved recursively.</p>
+        <p>The contents of the <code>import</code> element indicate which controls and subcontrols
+          from the source, will be included. Controls and subcontrols may be either selected (using
+          an <code>include</code> element) or de-selected (using an <code>exclude</code> element)
+          from the source catalog or profile.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">merge</prop>
+      <prop class="full_name">merge</prop>
+      <part class="description">
+        <p>Merge controls in resolution</p>
+      </part>
+      <part class="remarks">
+        <p>Indicates (by its presence) that controls included in a profile via different and
+          multiple import pathways, are to be merged in resolution. Element contents of the
+            <code>merge</code> can be used to <q>reorder</q> or <q>restructure</q> controls (that
+          is, indicate their order and/or structure in resolution).</p>
+        <p>Implicitly, a merge statement is also a filter: controls that are included in a profile,
+          but not included (implicitly or explicitly) in the scope of a merge statement, will not be
+          merged into (will be dropped) in the resulting resolution.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">modify</prop>
+      <prop class="full_name">modify</prop>
+      <part class="description">
+        <p>Set parameters or emend controls in resolution</p>
       </part>
     </component>
     <component class="element-description">
@@ -890,10 +948,17 @@
       </part>
     </component>
     <component class="element-description">
+      <prop class="tag">match</prop>
+      <prop class="full_name">match</prop>
+      <part class="description">
+        <p>Select controls by (regular expression) match on ID</p>
+      </part>
+    </component>
+    <component class="element-description">
       <prop class="tag">set-param</prop>
       <prop class="full_name">Parameter setting</prop>
       <part class="description">
-        <p>Set a parameter's value and even override its description</p>
+        <p>Set a parameter's value or rewrite its label or description</p>
       </part>
       <part class="remarks">
         <p><code>@param-id</code> indicates the parameter (within the scope of the referenced
@@ -943,6 +1008,30 @@
         <p>Element contents to be added to a control or subcontrols, in resolution</p>
       </part>
     </component>
+    
+    <component class="element-description">
+      <prop class="tag">combine</prop>
+      <prop class="full_name">combine</prop>
+      <part class="description">
+        <p>Whether and how to combine multiple (competing) versions of the same control</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">as-is</prop>
+      <prop class="full_name">as-is</prop>
+      <part class="description">
+        <p>Structure the controls in resolution as they are structured in their source catalogs</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">custom</prop>
+      <prop class="full_name">custom</prop>
+      <part class="description">
+        <p>Frame a structure wherein represented controls will be embedded in resolution</p>
+      </part>
+    </component>
+    
+    
   </group>
   <group>
     <title>Constraints outside the core schema</title>
@@ -953,12 +1042,22 @@
     <component class="general-constraint">
       <title>Order of items inside controls</title>
       <part class="description">
-        <p>Within a control, properties, parts, parameters and prose contents may appear in any
-          order</p>
+        <p>The schema does not enforce any particular order among the element contents of controls,
+          except that title elements must appear first. Applications may accordingly re-sequence
+          contents of controls and subcontrols. Since such re-ordering is inimical to prose or any
+          linguistic representation that depends on sequencing, <q>islands of prose</q> are expected
+          in OSCAL to appear not directly within controls or subcontrols, but rather within their
+          components. These components themselves should be typed and labeled clearly enough to
+          support arbitrary re-ordering.</p>
+        <p>A particular application or <q>flavor</q> of OSCAL might impose tighter constraints on
+          the contents of controls or subcontrols, or of designated types (classes) of controls and
+          subcontrols.</p>
       </part>
       <part class="remarks">
-        <p>This is for maximum flexibility in OSCAL. OSCAL leaves it to its applications and
-          implementations to enforce ordering.</p>
+        <p>This is for maximum flexibility in OSCAL, in particular when it comes to mapping between
+          XML representations and object representations (such as JSON) whose object types (such as
+          maps) do not respect analogous constraints on cardinality (frequency and order) as XML
+          does. OSCAL leaves it to its applications and implementations to enforce ordering.</p>
         <p>Note that parameters in particular are "floating values" and may appear almost anywhere,
           in OSCAL that is otherwise unconstrained. It is not an error for a parameter value to be
           inserted into a document at a point before the parameter itself has been declared; absent

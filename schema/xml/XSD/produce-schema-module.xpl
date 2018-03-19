@@ -2,7 +2,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-  type="oscal:schema-module-prep" name="schema-module-prep">
+  type="oscal:produce-schema-module" name="produce-schema-module">
   
 <!--
     
@@ -14,12 +14,10 @@
   Outputs:
   
   An XSD schema with embedded documentation
-  HTML documentation
-  Markdown documentation
   
   -->
   
-  <p:input port="source-xsd" sequence="true"/>
+  <p:input port="source-xsd"/>
   <p:option name="oscal-doc-file" select="'../../../docs/schema/oscal-oscal.xml'"/>
   
   <p:input port="parameters" kind="parameter"/>

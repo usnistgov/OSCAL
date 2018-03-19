@@ -3,16 +3,6 @@
   <xs:include schemaLocation="oscal-declarations.xsd"/>
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
   <!-- This module declares core components of catalogs. It includes the declarations model. -->
-  <!-- declarations can be out of line (referenced) or included -->
-  <xs:element name="declarations">
-    <xs:complexType>
-      <xs:complexContent>
-        <xs:extension base="oscal:decls">
-          <xs:attributeGroup ref="oscal:hrefAttr"/>
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="catalog" type="oscal:catalog-contents"/>
   <xs:complexType name="catalog-contents">
     <xs:sequence>

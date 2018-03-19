@@ -166,7 +166,7 @@ a:visited { color: midnightblue }
   <xsl:template match="oscal:control/oscal:title  | oscal:component/oscal:title"/>
   
   <xsl:template name="make-title">
-    <xsl:param name="runins" select="/.."/>
+    <xsl:param name="runins"/>
     <xsl:apply-templates select="." mode="title">
       <xsl:with-param name="runins" select="$runins"/>
     </xsl:apply-templates>
@@ -214,9 +214,13 @@ a:visited { color: midnightblue }
   </xsl:template>
 
   <xsl:template match="*[@class='description']" mode="title"/>
-    
+  
+  <xsl:template match="oscal:prop[@class]" mode="title">
+    <xsl:value-of select="@class"/>
+  </xsl:template>
+  
   <xsl:template match="*" mode="title">
-    <xsl:param name="runins" select="/.."/>
+    <xsl:param name="runins"/>
     <xsl:variable name="how-deep" select="count(ancestor-or-self::*) + 1"/>
     <xsl:element name="h{$how-deep}">
       <xsl:copy-of select="@class"/>
