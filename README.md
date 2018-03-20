@@ -36,7 +36,7 @@ Launch your web browser and connect to `http://localhost:4567` to view the docs.
 
 ## Publishing to pages.nist.gov
 
-In order to publish to pages.nist.gov, the static documents needs to be built. The commands below will generate static documentation in the [`build/`](build/) directory.
+In order to publish to pages.nist.gov, the static documents need to be built. The commands below will generate static documentation in the [`build/`](build/) directory.
 
 Using Docker:
 
