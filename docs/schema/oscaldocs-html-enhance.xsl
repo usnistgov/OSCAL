@@ -9,6 +9,13 @@
   
   <xsl:mode on-no-match="shallow-copy"/>
   
+  <xsl:template match="div[contains-token(@class,'description')]">
+    <blockquote>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </blockquote>
+  </xsl:template>
+        
   <!--<xsl:template match="div[contains-token(@class,'schema-docs')]">
     <xsl:copy>
       <xsl:copy-of select="@*"/>

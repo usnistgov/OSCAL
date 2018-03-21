@@ -94,6 +94,8 @@
     
     <xsl:template mode="explode" match="/schema/complexType" priority="3"/>
     
+    <xsl:template mode="explode" match="annotation"/>
+    
     <xsl:template mode="explode" match="element">
         <element>
             <xsl:apply-templates select="@*" mode="explode"/>

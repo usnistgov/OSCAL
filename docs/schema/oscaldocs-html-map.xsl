@@ -40,9 +40,16 @@ div div div h3 { font-size: 110% }
 
 .param .em { font-style: roman }
 
-.tag:before { content: '\3C' }
-.tag:after  { content: '\3E' }
+.element-description .tag:before { content: '\3C' }
+.element-description .tag:after  { content: '\3E' }
+
+.attribute-description .tag:before { content: '@' }
+.attribute-description .tag:after  { content: ' (attribute)'; font-size: smaller }
+
 .code { font-family: monospace }
+
+blockquote { background-color: gainsboro; padding: 0.2em; margin: 0.5em }
+blockquote * { margin: 0em }
 
 #toc-panel { margin-top: 0em; border: thin solid black; float: left;
   margin-left: 1rem; max-width: 25%; font-size: 80%; font-family: sans-serif;
@@ -97,10 +104,10 @@ a:visited { color: midnightblue }
     <p class="toc-line">
       <a href="#{generate-id(..)}">
       <code>
-        <xsl:text>&lt;</xsl:text>
+        <xsl:text expand-text="true">{ if (contains-token(../@class,'attribute-description')) then '@' else '&lt;' }</xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>&gt;</xsl:text>
-        </code>
+        <xsl:text expand-text="true">{ if (contains-token(../@class,'attribute-description')) then '' else '&gt;' }</xsl:text>
+      </code>
       <xsl:text> </xsl:text>
       <xsl:for-each select="../oscal:prop[@class='full_name']">
         <xsl:apply-templates/>
@@ -248,7 +255,7 @@ a:visited { color: midnightblue }
     </pre>
   </xsl:template>
   
-  <xsl:template match="oscal:inject">
+  <xsl:template match="oscal:insert">
     <xsl:variable name="param" select="@param-id"/>
     <xsl:variable name="closest-param" select="ancestor-or-self::*/oscal:param[@id=$param][last()]"/>
     <!-- Providing substitution via declaration not yet supported -->
@@ -285,7 +292,7 @@ a:visited { color: midnightblue }
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-
+  
   <!-- They're all internal links (they better be) -->
   <xsl:template match="oscal:a[starts-with(@href,'#') or starts-with(@href,'oscal-oscal.xml#')]">
     <xsl:variable name="target" select="key('element-by-id',substring-after(@href,'#'))"/>
@@ -367,13 +374,23 @@ a:visited { color: midnightblue }
     </code>
   </xsl:template>
   
-  <xsl:key name="controls-by-tag" match="oscal:component[@class='element-description']"
+  <xsl:key name="elements-by-tag" match="oscal:component[@class='element-description']"
     use="oscal:prop[@class='tag']"/>
   
-  <!-- these are cross-references to controls -->
+  <xsl:key name="attributes-by-tag" match="oscal:component[@class='attribute-description']"
+    use="'@' || oscal:prop[@class='tag']"/>
+  
+  <!-- these are cross-references to elements -->
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
-    <xsl:variable name="target" select="key('controls-by-tag',.)"/>
-    
+    <xsl:variable name="target" select="key('elements-by-tag',.)"/>
+    <a href="#{$target[1]/generate-id(.)}" class="code">
+      <xsl:apply-templates/>
+    </a>
+  </xsl:template>
+  
+  <!-- and attributes -->
+  <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']!('@' || .)]">
+    <xsl:variable name="target" select="key('attributes-by-tag',.)"/>
     <a href="#{$target[1]/generate-id(.)}" class="code">
       <xsl:apply-templates/>
     </a>

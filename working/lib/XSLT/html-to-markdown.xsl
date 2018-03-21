@@ -35,17 +35,28 @@
     <xsl:apply-templates/>
   </xsl:template>
   
+  <xsl:template match="blockquote/p">
+    <xsl:value-of select="$lf1"/>
+    <xsl:text>> </xsl:text>
+    <xsl:apply-templates/>
+  </xsl:template>
+    
   <xsl:template match="p">
     <xsl:value-of select="$lf2"/>
     <xsl:apply-templates/>
   </xsl:template>
   
-  <xsl:template match="span[contains(@class,'tag')]">
+  <xsl:template match="div[contains-token(@class,'element-description')]/span[contains(@class,'tag')]">
     <!-- double escaped! -->
     <xsl:text>&amp;lt;</xsl:text>
     <xsl:apply-templates/>
     <!-- Heh -->
     <xsl:text>></xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="div[contains-token(@class,'element-description')]/span[contains(@class,'tag')]">
+    <xsl:text>@</xsl:text>
+    <xsl:apply-templates/>
   </xsl:template>
   
   <xsl:template match="code | span[contains(@class,'code')]">
@@ -104,7 +115,7 @@
   
   <xsl:template match="li">
     <xsl:text>&#xA;</xsl:text>
-    <xsl:for-each select="ancestor::ul"><xsl:text>&#32;&#32;</xsl:text></xsl:for-each>
+    <xsl:for-each select="../ancestor::ul"><xsl:text>&#32;&#32;</xsl:text></xsl:for-each>
     <xsl:text>* </xsl:text>
     <xsl:apply-templates/>
   </xsl:template>

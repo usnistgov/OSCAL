@@ -76,12 +76,12 @@
   </section>
   <group>
     <title>Controls and their contents</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and the
-      structured information (loosely <q>objects</q>, represented as valid XML elements). These
-      contents will include both structured contents (using element types as described here) and
-      relatively uncontrolled or free-form contents (described elsewhere as <a
-        href="oscal-oscal.xml#prose">prose</a>).</p>
+      structured information they represent or contain (loosely <q>objects</q>, represented as valid
+      XML elements). These contents will include both structured contents (using element types as
+      described here) and (within those) relatively uncontrolled or free-form contents (described
+      elsewhere as <a href="oscal-oscal.xml#prose">prose</a>).</p>
     <component class="element-description">
       <prop class="tag">catalog</prop>
       <prop class="full_name">Catalog</prop>
@@ -135,8 +135,8 @@
           properties are especially useful as proxies (unique identifiers) for their controls, such
           that controls may be returned one for one on queries for properties (name and value). The
           robustness of such queries can be ensured by appropriate property declarations (as
-          singletons and as identifiers); cf <code>property</code> in the declarations model (which
-          also supports other constraints over property values).</p>
+          singletons and as identifiers); cf <code>declare-prop</code> in the declarations model
+          (which also supports other constraints over property values).</p>
         <p>Properties permit the deployment and management of arbitrary controlled values, with and
           among control objects (controls and parts and extensions), for any purpose useful to an
           application or implementation of those controls. Typically and routinely, properties will
@@ -162,7 +162,8 @@
           logical partitions or sections for prose; these may be called <q>statements</q> and may be
           expected to have simple prose contents, even just one paragraph. Other parts may be more
           formally constructed out of properties (<code>prop</code> elements) and/or their own
-          parts. At the extreme, parts may be fully-fledge control-like or subcontrol-like objects.
+          parts. Such structured objects (sometimes called <q>features</q>) may, at the extreme,
+          function virtually as control extensions or subcontrol-like objects (<q>enhancements</q>).
           Since the composition of parts can be constrained using OSCAL declarations (of the items
           or components to be given in a part or in this type of part), their use for encoding
             <q>objects</q> of arbitrary complexity within controls, is effectively open-ended.</p>
@@ -206,7 +207,7 @@
   </group>
   <group>
     <title>Functional elements</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
@@ -265,7 +266,7 @@
     </group>
   <group>
     <title>Structural elements</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     <component class="element-description">
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
@@ -339,7 +340,7 @@
   </group>
   <group id="prose">
     <title>Prose</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     <p>Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where
       they will ordinarily be relegated to the control's partitions or statements
       (<code>part</code>s). OSCAL prose elements echo HTML semantics, although they are deliberately
@@ -413,6 +414,16 @@
       <prop class="full_name">List item</prop>
       <part class="description">
         <p>An item demarcated with a bullet or numerator</p>
+      </part>
+      <part class="remarks">
+        <p>OSCAL uses a lightweight HTML-like approach to lists, in which list items are
+          unstructured (mixed content) except for permitting sublists directly, without separation
+          from other text. The expectation is that items in lists will not need further internal
+            (<q>paragraph</q>) demarcation.</p>
+        <p>Lists that are really (brief) subsections may be expressed as (nested, unclassed)
+            <code>part</code> elements. Generally speaking, structured feature sets (in the form of
+          parts with regular property sets), are more likely to be easily addressable than
+          lists.</p>
       </part>
     </component>
     <component class="element-description">
@@ -526,7 +537,7 @@
   </group>
   <group>
     <title>Declarations elements</title>
-    <prop class="xsd">../../schema/xml/XSD/declarations_.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-declarations.xsd</prop>
     <p>By declaring constraints on information associated with controls such as their properties
         (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
       and operators can validate the composition and consistency of available controls. Over and
@@ -776,7 +787,7 @@
     </component>
   </group><group id="profiling">
     <title>Profiling</title>
-    <prop class="xsd">../../schema/xml/XSD/profile_.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-profile.xsd</prop>
     <p>By means of its profiling functionality, OSCAL provides ways of specifying and documenting
       configurations or <q>overlays</q> of catalog, as <b>profile</b> documents. Although they may
       contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct
