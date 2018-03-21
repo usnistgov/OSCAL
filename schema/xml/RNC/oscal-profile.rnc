@@ -51,7 +51,7 @@ exclude = element exclude { ( match |
               attribute control-id { xsd:NCName } |
               attribute subcontrol-id { xsd:NCName } }+ ) }
 
-param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc?, label?, value? }
+param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc?, label?, value?, link* }
 
 alteration = element alter { (
   attribute control-id    { xsd:NCName } |
