@@ -12,6 +12,16 @@
     
     <xsl:mode on-no-match="shallow-copy"/>
     
+    <xsl:variable name="schema-files" as="element()*">
+        <document href="catalog_.xsd"/>
+        <document href="declarations_.xsd"/>
+        <document href="profile_.xsd"/>
+    </xsl:variable>
+    
+    <xsl:variable name="schema-sources">
+        <xsl:sequence select="document($schema-files ! ('../../schema/xml/XSD/' || @href))"/>
+    </xsl:variable>
+    
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>
@@ -31,12 +41,45 @@
         </xsl:copy>
     </xsl:template>-->
     
+    <xsl:template match="oscal:component[@class='attribute-description']" expand-text="true">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates/>
+            <xsl:apply-templates select="." mode="schema-extract"/>
+        </xsl:copy>
+    </xsl:template>
+    
     <xsl:template match="oscal:component[@class='element-description']">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates/>
             <xsl:apply-templates select="." mode="schema-extract"/>
         </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="oscal:component[@class='attribute-description']" mode="schema-extract">
+        <xsl:variable name="tag" select="oscal:prop[@class='tag']"/>
+        <xsl:element name="part" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+            <xsl:attribute name="class">schema-docs</xsl:attribute>
+            <xsl:for-each-group select="$schema-sources//xs:attribute[@name = $tag]"
+                group-by="@use = 'required'">
+                <xsl:variable name="permissibility"
+                    select="if (current-grouping-key()) then 'Required on '
+                            else 'Allowed on '"/>
+                <li>
+                    <xsl:value-of select="$permissibility"/>
+                    <xsl:for-each-group
+                        select="current-group()/oscal:elements-for-attribute-declaration(., $schema-sources)"
+                        group-by="@name">
+                        <xsl:if test="position() gt 1">, </xsl:if>
+                        <code>
+                            <xsl:value-of select="current-grouping-key()"/>
+                        </code>
+                    </xsl:for-each-group>
+                </li>
+            </xsl:for-each-group>
+        </xsl:element>
+        
     </xsl:template>
     
     <xsl:template match="oscal:component[@class='element-description']" mode="schema-extract">
@@ -82,9 +125,8 @@
     
     
     <xsl:template match="attribute" mode="oscalize" expand-text="true">
-        <li>attribute <code>@{ @name }</code>{ if (@use='required') then ' (required)' else ' (optional)' }
+        <li>attribute <code>@{ @name }</code>{ if (@use='required') then ' (required)' else ' (optional)' }<xsl:text/>
           <xsl:apply-templates select="@type" mode="#current"/>
-          <xsl:if test="empty(@type)">, with (plain) text</xsl:if>
         </li>
     </xsl:template>
     

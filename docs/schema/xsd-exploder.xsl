@@ -2,7 +2,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-    exclude-result-prefixes="xs math"
+    
+    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+    exclude-result-prefixes="xs math oscal"
     xpath-default-namespace="http://www.w3.org/2001/XMLSchema"
     version="3.0">
     
@@ -43,6 +45,30 @@
         </xsl:if>
     </xsl:template>
     
+    
+    <xsl:key name="element-by-attributeGroups" match="xs:element" use="descendant::xs:attributeGroup/@ref except .//xs:element//xs:attributeGroup/@ref"/>
+    
+    <xsl:key name="attributeGroup-by-attributeGroups" match="xs:attributeGroup" use="descendant::xs:attributeGroup/@ref"/>
+    
+    
+    
+    <xsl:key name="element-by-type" match="xs:element[@type]"   use="@ref"/>
+    
+    
+    <xsl:function name="oscal:elements-for-attribute-declaration" as="element(xs:element)*">
+        <xsl:param name="att" as="element(xs:attribute)"/>
+        <xsl:param name="scope" as="document-node()"/>
+        <xsl:sequence select="$att ! ( ancestor::xs:element[1],
+            ancestor::xs:complexType/key('element-by-type',('oscal:' || @type),$scope ),
+            ancestor::xs:attributeGroup/key('element-by-attributeGroups',('oscal:' || @name),$scope ),
+            ancestor::xs:attributeGroup/
+              key('attributeGroup-by-attributeGroups',('oscal:' || @name),$scope)/
+              key('element-by-attributeGroups',('oscal:' || @name),$scope ),
+            ancestor::xs:attributeGroup/
+              key('attributeGroup-by-attributeGroups',('oscal:' || @name),$scope)/
+                ancestor::xs:complexType/key('element-by-type',('oscal:' || @type),$scope ) 
+            )"/>
+    </xsl:function>
     
     <xsl:key name="attributes-by-group" match="attributeGroup/attribute" use="'oscal:' || ../@name"/>
     

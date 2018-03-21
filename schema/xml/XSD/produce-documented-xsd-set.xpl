@@ -4,6 +4,7 @@
     xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0">
     
    
+    
     <p:input port="parameters" kind="parameter"/>
     
     <!-- Wrapper XProc pipeline reads three "blank" XSD files and rewrites them into a directory up, with documentation injected.   -->
@@ -29,6 +30,7 @@
         
         <p:store>
             <p:with-option name="href" select="$resultURI"/>
+            <p:with-option name="indent" select="true()"/>
         </p:store>
 
     </p:for-each>

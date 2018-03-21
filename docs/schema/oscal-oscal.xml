@@ -180,6 +180,29 @@
       </part>
       
     </component>
+    <component class="attribute-description">
+      <prop class="tag">id</prop>
+      <prop class="full_name">ID / identifier</prop>
+      <part class="description"><p>A value on @id unique within local document scope, i.e. across a given catalog or representation of catalog contents (controls).</p></part>
+      <part class="remarks">
+        <p>No mechanism is proposed to ensure that <code>@id</code> values do not collide across different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">href</prop>
+      <prop class="full_name">hypertext reference</prop>
+      <part class="description"><p>A link to a document or document fragment (actual, nominal or projected)</p></part>
+      <part class="remarks"><p>Note in particular that <code>@href</code> targets include elements (locations) in representations of documents that exist only by virtue of dynamic
+        application, such as (for example) the results of profile resolution.</p></part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">class</prop>
+      <prop class="full_name">Class</prop>
+      <part class="description"><p>Nominal semantic binding(s) for any element (whitespace-separated list of name tokens)</p></part>
+      <part class="remarks">
+        <p>Overloading this attribute with more than one value is permitted, but not recommended.</p>
+      </part>
+    </component>
   </group>
   <group>
     <title>Functional elements</title>
@@ -215,6 +238,14 @@
       <part class="description">
         <p>A <q>call</q> (reference) to a parameter for dynamic content transclusion</p>
       </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">param-id</prop>
+      <prop class="full_name">Parameter ID</prop>
+      <part class="description"><p>Identifies the parameter element target (<code>param</code>) that governs content insertion at this location.
+        While the composition of the parameter (including its given value or labels) may be altered in a profile (or <q>overlay</q>, a parameter declaration
+        is expected to be extant in the document containing the insertion.)</p></part>
+      <part class="remarks"/>
     </component>
     <component class="element-description">
       <prop class="tag">withdrawn</prop>
@@ -418,9 +449,11 @@
         <p>In display, when the surrounding text is already bold, an implementation may indicate
             <q>bold</q> by means of double-bold or some other typographical distinction.</p>
         <p>As of yet, OSCAL does not support underlining directly (no <code>u</code> element or
-          designated property</p>
-        <p>). Even <code>b</code> and <code>i</code> should be regarded as escape hatches, and
-          marked with classes when possible.</p>
+          designated property, which makes underlining, like color and strikethrough, a feature exploitable
+          (with less ambiguity) at the application level.</p>
+        <p>In ordinary use, <code>b</code> and <code>i</code> should perhaps be deprecated in favor
+          of more <q>semantic</q> elements such as <code>em</code>, <code>code</code> or even <code>span></code>
+          especially with <code>@class</code> attributes.</p>
       </part>
     </component>
     <component class="element-description">

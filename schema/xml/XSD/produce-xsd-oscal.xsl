@@ -13,10 +13,20 @@
   May require adjustment! This has not been written to work on just any XSD. -->
   
   <xsl:template match="/">
-    <collection>
+    <worksheet>
       <xsl:apply-templates select="*/xs:element[@name][not(@abstract='true')]"/>
-      <xsl:for-each-group select="//xs:attribute" group-by="@name"/>
-    </collection>
+      <xsl:for-each-group select="//xs:attribute[exists(@name)]" group-by="@name">
+        <component class="attribute-description">
+          <prop class="tag"><xsl:value-of select="current-grouping-key()"/></prop>
+          <prop class="full_name">
+            <xsl:value-of select="@name"/> -- attribute</prop>
+          <part class="description"/>
+          <part class="remarks"/>
+          
+        </component>
+        
+      </xsl:for-each-group>
+    </worksheet>
   </xsl:template>
   
   <xsl:template match="xs:element">
