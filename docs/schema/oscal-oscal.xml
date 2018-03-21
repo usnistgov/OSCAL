@@ -37,6 +37,8 @@
       application. (Or the target application could learn to consume OSCAL.) Only some parts of
       HTML, however, make their way into OSCAL, which is designed to address its own
       requirements.</p>
+    <p>In future, OSCAL features (elements in the XML models) may be split across two or more
+      namespaces.</p>
   </section>
   <section>
     <title>OSCAL organization</title>
@@ -87,40 +89,6 @@
         <p>A (canonical) control catalog: a structured set of security controls</p>
       </part>
     </component>
-    <!--<component class="element-description">
-      <prop class="tag">framework</prop>
-      <prop class="full_name">Framework</prop>
-      <part class="description">
-        <p>A collection of components for formal reference into and among control catalogs</p>
-      </part>
-      <part class="remarks">
-        <p>This element represents a collection of structured data objects (<q>components</q>, see
-            <code>component</code>) that present information in ways organized to facilitate
-          coordinated access (both manual and automated) both with one another and with controls
-          documented in control catalogs. This is a suitable element for representing, not a control
-          catalog, but an overlay or customization that has its own organization, making
-          many-to-many links across catalogs, their profiles, and other canonical reference
-          documents. (A customization that does not reorganize, but only selects from and configures
-          a control, can be a <code>profile</code>.)</p>
-        <p>Despite their very different roles in the system (catalogs for canonical collections of
-          controls, frameworks for most anything else), components inside frameworks and controls
-          inside catalogs have the same kinds of content objects subject to similar kinds of
-          restrictions. With respect to their internals, that is, they are closely aligned, which
-          simplifies processing of information across the boundaries between them.</p>
-      </part>
-    </component>-->
-    <!--<component class="element-description">
-      <prop class="tag">worksheet</prop>
-      <prop class="full_name">Worksheet</prop>
-      <part class="description">
-        <p>An arbitrary, working collection of components</p>
-      </part>
-      <part class="remarks">
-        <p>Functionally this element is an alias of <code>framework</code>. But it is expected to be
-          used for much more ad-hoc collections of components than formalized (much less published)
-          frameworks.</p>
-      </part>
-    </component>-->
     <component class="element-description">
       <prop class="tag">control</prop>
       <prop class="full_name">Control</prop>
@@ -132,26 +100,6 @@
           either (formally) <code>subcontrol</code> or (informally) <code>part</code>.</p>
       </part>
     </component>
-    <!--<component class="element-description">
-      <prop class="tag">component</prop>
-      <prop class="full_name">Framework component</prop>
-      <part class="description">
-        <p>Within a framework, a structured information object typically referencing one or more
-          security controls</p>
-      </part>
-      <part class="remarks">
-        <p>Components may be grouped using <code>group</code> and be further divided into parts.
-          They may also contain components (recursively), although this may not generally be
-          advisable.</p>
-        <p>In a spreadsheet format, components will frequently be analogous to rows; ideally their
-          child elements (properties, links and other structured contents) will map directly to
-          cells.</p>
-        <p>In a direct mapping from catalog to framework formats, both <code>control</code> and
-            <code>subcontrol</code> may be regarded as <q>components</q> of their <q>frameworks</q>
-          (catalogs) in the general sense; however components in use are not likely to be much like
-          the controls they reference.</p>
-      </part>
-    </component>-->
     <component class="element-description">
       <prop class="tag">subcontrol</prop>
       <prop class="full_name">Control extension</prop>
@@ -283,9 +231,7 @@
           legacy content.</p>
       </part>
     </component>
-    <!--<control class="element-description"><prop class="tag">select</prop><prop class="full_name">Selection</prop><part class="description"><p>A selection requiring designation via parameter (tbd)</p></part></control>-->
-    <!--<control class="element-description"><prop class="tag">choice</prop><prop class="full_name">Choice</prop><part class="description"><p>A choice of values, to be designated via parameter (tbd)</p></part></control>-->
-  </group>
+    </group>
   <group>
     <title>Structural elements</title>
     <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
@@ -725,7 +671,6 @@
           is taken to satisfy the requirement.</p>
       </part>
     </component>
-    <!--<control class="element-description"><prop class="tag">xdm-datatype</prop><prop class="full_name">XDM datatype lexical constraint</prop><part class="description"><p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter (<code>param</code>) must be castable to the given XDM datatype</p></part><part class="remarks"><p>TBD.</p><p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An even more general functionality would be an xpath-satisfies that would support arbitrary XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le 10.00</code></p></part></control>-->
     <component class="element-description">
       <prop class="tag">value</prop>
       <prop class="full_name">Value constraint</prop>
@@ -1026,6 +971,82 @@
       </part>
     </component>
     
+    
+  </group>
+  <group>
+    <title>Experimental elements</title>
+    <prop class="rnc">../../schema/xml/RNC/oscal-catalog.rnc</prop>
+    <component class="element-description">
+      <prop class="tag">framework</prop>
+      <prop class="full_name">Framework</prop>
+      <part class="description">
+        <p>A collection of components for formal reference into and among control catalogs</p>
+      </part>
+      <part class="remarks">
+        <p>This element represents a collection of structured data objects (<q>components</q>, see
+            <code>component</code>) that present information in ways organized to facilitate
+          coordinated access (both manual and automated) both with one another and with controls
+          documented in control catalogs. This is a suitable element for representing, not a control
+          catalog, but an overlay or customization that has its own organization, making
+          many-to-many links across catalogs, their profiles, and other canonical reference
+          documents. (A customization that does not reorganize, but only selects from and configures
+          a control, can be a <code>profile</code>.)</p>
+        <p>Despite their very different roles in the system (catalogs for canonical collections of
+          controls, frameworks for most anything else), components inside frameworks and controls
+          inside catalogs have the same kinds of content objects subject to similar kinds of
+          restrictions. With respect to their internals, that is, they are closely aligned, which
+          simplifies processing of information across the boundaries between them.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">worksheet</prop>
+      <prop class="full_name">Worksheet</prop>
+      <part class="description">
+        <p>An arbitrary, working collection of components</p>
+      </part>
+      <part class="remarks">
+        <p>Functionally this element is an alias of <code>framework</code>. But it is expected to be
+          used for much more ad-hoc collections of components than formalized (much less published)
+          frameworks.</p>
+      </part>
+    </component>
+    
+    <component class="element-description">
+      <prop class="tag">component</prop>
+      <prop class="full_name">Framework component</prop>
+      <part class="description">
+        <p>Within a framework, a structured information object typically referencing one or more
+          security controls</p>
+      </part>
+      <part class="remarks">
+        <p>Components may be grouped using <code>group</code> and be further divided into parts.
+          They may also contain components (recursively), although this may not generally be
+          advisable.</p>
+        <p>In a spreadsheet format, components will frequently be analogous to rows; ideally their
+          child elements (properties, links and other structured contents) will map directly to
+          cells.</p>
+        <p>In a direct mapping from catalog to framework formats, both <code>control</code> and
+            <code>subcontrol</code> may be regarded as <q>components</q> of their <q>frameworks</q>
+          (catalogs) in the general sense; however components in use are not likely to be much like
+          the controls they reference.</p>
+      </part>
+    </component>
+    <component class="element-description">
+      <prop class="tag">xdm-datatype</prop>
+      <prop class="full_name">XDM datatype lexical constraint</prop>
+      <part class="description">
+        <p>(TBD) Indicates that the value of a property (<code>prop</code>) or parameter
+            (<code>param</code>) must be castable to the given XDM datatype</p>
+      </part>
+      <part class="remarks">
+        <p>TBD. Another alternative is to permit arbitrary XPath (cast to Boolean), which would encompass this and more.</p>
+        <p>XDM datatypes include integers and numeric formats; dates, durations, date-times etc. An
+          even more general functionality would be an xpath-satisfies that would support arbitrary
+          XPath, so <code>castable as xs:integer</code> but also <code>xs:date(.) gt
+            xs:date(../prop[@class='in-date'])</code> or <code>number(.) ge 0 and number(.) le
+            10.00</code></p>
+      </part>
+    </component>
     
   </group>
   <group>

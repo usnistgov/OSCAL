@@ -47,7 +47,7 @@
       <sch:let name="gi" value="oscal:prop[@class='tag']"/>
       <sch:let name="xsd" value="ancestor::oscal:group/oscal:prop[@class='xsd']"/>
       <sch:let name="extra-declarations" value="document($xsd,/)//xs:element[@name=$gi]"/>
-      <sch:assert test="exists($extra-declarations)">Element declaration not found in schema '<sch:value-of select="$xsd"/>'</sch:assert>
+      <sch:assert test="empty($xsd) or exists($extra-declarations)">Element declaration not found in schema '<sch:value-of select="$xsd"/>'</sch:assert>
       <sch:assert test="count(//oscal:component[@class='element-description'][oscal:prop[@class='tag']=$gi]) = 1">Competing element description for '<sch:value-of select="$gi"/>'</sch:assert>
       <!--<sch:assert test="exists($element-declarations[@name=$gi])">This element description corresponds to no declaration in <xsl:value-of separator=", " select="$schema-files"/></sch:assert>
       <!-\-<sch:report test="true()"><sch:value-of select="$gi"/>: <sch:value-of select="$xsd"/>: <sch:value-of select="count(document($xsd,/))"/></sch:report>-\->
