@@ -5,7 +5,10 @@
   type="oscal:produce-schema-module" name="produce-schema-module">
   
 <!--
-    
+  For injecting schema documentation into a single XSD module.
+  
+  Called by produce-documented-xsd-set.xpl
+  
   Inputs:
   
   XSD 'skeleton' OSCAL schema produced by Trang from RNC/RNG

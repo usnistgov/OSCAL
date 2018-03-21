@@ -21,21 +21,33 @@
   <p:input port="source"     primary="true"/>
   <p:input port="parameters" kind="parameter"/>
   
-  <p:output port="_OSCAL_docs" primary="false">
+  <p:output port="a_OSCAL_docs" primary="false">
     <p:pipe port="result" step="input"/>
   </p:output>
-  <p:output port="html-docs" primary="false">
+  <p:output port="b_with-english" primary="false">
+    <p:pipe port="result" step="inject-englishing"/>
+  </p:output>
+  <p:output port="z1_html-docs" primary="false">
     <p:pipe port="result" step="produce-html-docs"/>
   </p:output>
-  <p:output port="markdown-docs" primary="false">
+  <p:output port="z2_markdown-docs" primary="false">
     <p:pipe port="result" step="produce-markdown-docs"/>
   </p:output>
   
-  <p:serialization port="_OSCAL_docs"    indent="true"/>
-  <p:serialization port="html-docs"      indent="true" method="html"/>
-  <p:serialization port="markdown-docs"  method="text"/>
+  <p:serialization port="a_OSCAL_docs"    indent="true"/>
+  <p:serialization port="b_with-english"    indent="true"/>
+  
+  <p:serialization port="z1_html-docs"      indent="true" method="html"/>
+  <p:serialization port="z2_markdown-docs"  method="text"/>
   
   <p:identity name="input"/>
+  
+  <p:xslt name="inject-englishing">
+    <p:input port="stylesheet">
+      <!-- XSLT 1.0 so it also runs in a browser -->
+      <p:document href="schema-doc.xsl"/>
+    </p:input>
+  </p:xslt>
   
   <p:xslt name="produce-html-docs">
     <p:input port="stylesheet">

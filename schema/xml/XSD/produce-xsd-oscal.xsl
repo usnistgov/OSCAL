@@ -15,6 +15,7 @@
   <xsl:template match="/">
     <collection>
       <xsl:apply-templates select="*/xs:element[@name][not(@abstract='true')]"/>
+      <xsl:for-each-group select="//xs:attribute" group-by="@name"/>
     </collection>
   </xsl:template>
   

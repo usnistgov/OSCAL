@@ -54,14 +54,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:choice>
-          <xs:group maxOccurs="unbounded" ref="oscal:profileGroup"/>
-          <xs:choice maxOccurs="unbounded">
-            <xs:element ref="oscal:call"/>
-            <xs:element ref="oscal:match"/>
-          </xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="oscal:profileGroup"/>
+          <xs:element ref="oscal:call"/>
+          <xs:element ref="oscal:match"/>
         </xs:choice>
       </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:group name="profileGroup">
@@ -70,12 +70,10 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" ref="oscal:title"/>
-            <xs:choice>
-              <xs:group maxOccurs="unbounded" ref="oscal:profileGroup"/>
-              <xs:choice maxOccurs="unbounded">
-                <xs:element ref="oscal:call"/>
-                <xs:element ref="oscal:match"/>
-              </xs:choice>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:group ref="oscal:profileGroup"/>
+              <xs:element ref="oscal:call"/>
+              <xs:element ref="oscal:match"/>
             </xs:choice>
           </xs:sequence>
         </xs:complexType>
@@ -213,7 +211,7 @@
         <xs:element ref="oscal:title"/>
         <xs:element ref="oscal:param"/>
         <xs:element ref="oscal:prop"/>
-        <xs:group ref="oscal:anyKindofPart"/>
+        <xs:element ref="oscal:part"/>
       </xs:choice>
       <xs:attribute name="position" use="required">
         <xs:simpleType>

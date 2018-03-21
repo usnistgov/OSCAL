@@ -14,9 +14,10 @@ combine = element combine {
 
 build = element as-is { empty }
 
-frame = element custom { title?, (profileGroup+ | (call | match)+ ) }
+frame = element custom { idAttr?, optionalClass,
+                         title?, (profileGroup | call | match)* }
 
-profileGroup = element group { title?, ( profileGroup+ | (call | match)+ ) }
+profileGroup = element group { title?, (profileGroup | call | match)* }
 
 modify =  element modify { (param_setting | alteration )* }
 
@@ -64,4 +65,4 @@ remove  = element remove  {
 
 augment = element add {
   attribute position { 'before' | 'after' | 'starting' |'ending'},
-  (title | param | prop | anyKindofPart)* }
+  (title | param | prop | part)* }

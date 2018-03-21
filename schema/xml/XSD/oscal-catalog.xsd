@@ -10,7 +10,7 @@
       <xs:element minOccurs="0" ref="oscal:declarations"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:section"/>
-        <xs:element ref="oscal:group"/>
+        <xs:group ref="oscal:controlGroup"/>
         <xs:element ref="oscal:control"/>
       </xs:choice>
       <xs:element minOccurs="0" ref="oscal:references"/>
@@ -34,21 +34,25 @@
     And subcontrols must not appear without control ancestors
     ... these constraints validated w/ Schematron
   -->
-  <xs:element name="group">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:group ref="oscal:control-components"/>
-        <xs:choice maxOccurs="unbounded">
-          <xs:element ref="oscal:group"/>
-          <xs:element ref="oscal:control"/>
-        </xs:choice>
-        <xs:element minOccurs="0" ref="oscal:references"/>
-      </xs:sequence>
-      <xs:attribute name="id" type="xs:ID"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:group name="controlGroup">
+    <xs:sequence>
+      <xs:element name="group">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:title"/>
+            <xs:group ref="oscal:control-components"/>
+            <xs:choice maxOccurs="unbounded">
+              <xs:group ref="oscal:controlGroup"/>
+              <xs:element ref="oscal:control"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal:references"/>
+          </xs:sequence>
+          <xs:attribute name="id" type="xs:ID"/>
+          <xs:attributeGroup ref="oscal:optionalClass"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
   <!--
     done with declarations - controls, subcontrols and groups are not declared
     (constrained) at the OSCAL layer so they don't get declaration elements.
@@ -126,13 +130,10 @@
   <xs:element name="part" type="oscal:asPart"/>
   <!-- asPart allows other things (in importing schemas) to declare themselves as parts or part-like -->
   <xs:complexType name="asPart">
-    <xs:sequence>
-      <xs:element minOccurs="0" ref="oscal:title"/>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="oscal:control-components"/>
-        <xs:group ref="oscal:prose"/>
-      </xs:choice>
-    </xs:sequence>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="oscal:control-components"/>
+      <xs:group ref="oscal:prose"/>
+    </xs:choice>
     <xs:attribute name="id" type="xs:ID"/>
     <xs:attributeGroup ref="oscal:optionalClass"/>
   </xs:complexType>

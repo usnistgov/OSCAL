@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  version="1.0"
+  version="3.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="oscal">
   
-<!-- A bare-bones OSCAL display suitable for browser rendering or conversion into Markdown.
-     Written and optimized for oscal-oscal.xml.
-     XSLT 1.0 (so it will run in your browser)
-  -->
   
   <xsl:key name="element-by-id" match="*[@id]" use="@id"/>
   
@@ -356,6 +352,8 @@ a:visited { color: midnightblue }
     </section>
   </xsl:template>-->
   
+  <xsl:variable name="taglib" select="/"/>
+  
   <xsl:variable name="all-tags" select="//oscal:prop[@class='tag']"/>
   
   <xsl:template match="oscal:code">
@@ -369,7 +367,7 @@ a:visited { color: midnightblue }
   
   <!-- these are cross-references to controls -->
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
-    <xsl:variable name="target" select="key('controls-by-tag',.)"/>
+    <xsl:variable name="target" select="key('controls-by-tag',.,$taglib)"/>
     
     <a href="{generate-id($target)}" class="code">
       <xsl:apply-templates/>

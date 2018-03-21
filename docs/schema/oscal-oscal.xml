@@ -40,26 +40,26 @@
   </section>
   <section>
     <title>OSCAL organization</title>
-    <p>OSCAL catalogs are built out of controls. By analogy, OSCAL <q>frameworks</q> and
-        <q>worksheets</q> are constructed out of components, which may map to (correspond with)
-      controls in a catalog.</p>
-    <p>Both controls (in a catalog) and components (more generally) are like rows in a spreadsheet,
-      with cells in the row designated for carrying labeled (and sometimes structured) information.
-      To accommodate this, OSCAL is a lightweight and free-form <q>documentary</q> format, which
-      includes semantic <q>islands</q> of structured information. These are semantic not only
-      because they are addressable in principle, but more importantly because their organizations
-      and values may be known before processing occurs, at least with respect to certain operations
-      and relations, and even (at the most general level) before operations are designed and
-      deployed. When encoded in OSCAL, control catalogs and the documents that make reference to
-      them become <q>actionable</q> even at granular levels.</p>
+    <p>OSCAL catalogs are built out of controls. Experimental forms of OSCAL have other structures
+      analogous to controls, but by and large they will eventually make reference to controls.</p>
+    <p>Controls can be thought of as structured information objects aligned with one another, like
+      rows in a spreadsheet, with cells in the row designated for carrying labeled (and sometimes
+      structured) information. To accommodate this, OSCAL provides a lightweight and free-form
+        <q>documentary</q> format, which includes semantic <q>islands</q> of structured information.
+      These are semantic not only because they are addressable in principle, but more importantly
+      because their organizations and values may be known before processing occurs, at least with
+      respect to certain operations and relations, and even (at the most general level) before
+      operations are designed and deployed. When encoded in OSCAL, control catalogs and the
+      documents that make reference to them become <q>actionable</q> even at granular levels.</p>
     <p>At the broadest level, <q>control objects</q> in OSCAL include controls, subcontrols, parts
-      of controls or subcontrols, and control groups. Each OSCAL application or application domain
-      will determine for itself how these correspond to entities or <q>controls</q>, formal processes, procedures, and so forth, within that domain.</p>
+      of controls or subcontrols, and control groups. (Also as mentioned, at other layers and in
+      other forms there may be other analogues going by other names.) Each OSCAL application or
+      application domain will determine for itself how these correspond to entities or
+        <q>controls</q>, formal processes, procedures, and so forth, within that domain.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>group</code>,
-        <code>control</code>, <code>subcontrol</code>, <code>component</code>, and
-      <code>part</code>. OSCAL can support organizations of information (in both catalogs and
-      nominal <q>frameworks</q>) with arbitrary granularity, as any of these objects may be used
+        <code>control</code>, <code>subcontrol</code>,, and <code>part</code>. OSCAL can support
+      organizations of information with arbitrary granularity, as any of these objects may be used
       consistently to carry regular sets of properties, with names and value spaces that may be
       known in advance or discovered dynamically.</p>
   </section>
@@ -73,8 +73,8 @@
       customization per instance - that is, each one will be a one-off conversion.</p>
   </section>
   <group>
-    <title>Controls, components and their contents</title>
-    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
+    <title>Controls and their contents</title>
+    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and the
       structured information (loosely <q>objects</q>, represented as valid XML elements). These
       contents will include both structured contents (using element types as described here) and
@@ -209,11 +209,7 @@
           these values as bindings (and thereby getting open-ended extensibility).</p>
         <p>An assigned class may frequently provide for a header in display, such that
             <code>part[@class='objectives']</code> is displayed under a header <em>Objectives</em>,
-          etc. Unlike groups, controls, or subcontrols, however, they may not have <code>title</code>
-          element children (they are not <q>first class objects</q> in this sense). Thus, in OSCAL
-          if the components of your controls have their own titles, they are something else; to
-          accommodate data like this, consider using a property (e.g.,
-            <code>prop[@class='part-title']</code> as an escape hatch.</p>
+          etc. Parts may also however have their own titles (<code>title</code> elements).</p>
         <p>Generally speaking, <code>part</code> elements will be of two kinds. Many parts are
           logical partitions or sections for prose; these may be called <q>statements</q> and may be
           expected to have simple prose contents, even just one paragraph. Other parts may be more
@@ -239,7 +235,7 @@
   </group>
   <group>
     <title>Functional elements</title>
-    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
     
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
@@ -292,7 +288,7 @@
   </group>
   <group>
     <title>Structural elements</title>
-    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
     <component class="element-description">
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
@@ -366,7 +362,7 @@
   </group>
   <group id="prose">
     <title>Prose</title>
-    <prop class="xsd">../../schema/xml/XSD/oscal-catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
     <p>Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where
       they will ordinarily be relegated to the control's partitions or statements
       (<code>part</code>s). OSCAL prose elements echo HTML semantics, although they are deliberately
@@ -550,7 +546,7 @@
   </group>
   <group>
     <title>Declarations elements</title>
-    <prop class="xsd">../../schema/xml/XSD/oscal-declarations_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/declarations_.xsd</prop>
     <p>By declaring constraints on information associated with controls such as their properties
         (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
       and operators can validate the composition and consistency of available controls. Over and
@@ -771,7 +767,6 @@
           numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats
           include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and
           lower-case roman numbering as described for XSLT.</p>
-        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
     </component>
     <component class="element-description">
@@ -798,12 +793,11 @@
           object, <code>inherit/@from</code> can be used to indicate the applicable property (by its
           class). By default, <code>inherit</code> indicates a property value should match an
           ancestor's property with the same <code>@class</code> (the most usual case).</p>
-        <!--<p>The best way to understand the workings of this element is to see operational examples.</p>-->
       </part>
     </component>
   </group><group id="profiling">
     <title>Profiling</title>
-    <prop class="xsd">../../schema/xml/XSD/oscal-profile_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/profile_.xsd</prop>
     <p>By means of its profiling functionality, OSCAL provides ways of specifying and documenting
       configurations or <q>overlays</q> of catalog, as <b>profile</b> documents. Although they may
       contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct

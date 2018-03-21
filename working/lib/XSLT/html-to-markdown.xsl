@@ -93,4 +93,19 @@
     <xsl:value-of select="replace(.,'\s+',' ')"/>
   </xsl:template>
   
+  <xsl:template match="ul">
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="ul//ul">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="li">
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:for-each select="ancestor::ul"><xsl:text>&#32;&#32;</xsl:text></xsl:for-each>
+    <xsl:text>* </xsl:text>
+    <xsl:apply-templates/>
+  </xsl:template>
 </xsl:stylesheet>
