@@ -502,8 +502,9 @@
         <p>An inline segment to appear within quotation marks</p>
       </part>
       <part class="remarks">
-        <p>For practical purposes, this is a cosmetic element with no special semantics other than
-          to provide quotation marks in display.</p>
+        <p>This element is intended for use producing <q>smart quotes</q> around short phrases, not
+          for extended quotations. Ordinarily it has no special semantics other than to provide
+          quotation marks in display.</p>
       </part>
     </component>
     <component class="element-description">

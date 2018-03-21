@@ -121,10 +121,12 @@ a:visited { color: midnightblue }
     </h1>
   </xsl:template>
   
-  <xsl:template match="oscal:title">
-   <!-- <xsl:for-each select="..">
-      <xsl:call-template name="make-title"/>
-    </xsl:for-each>-->
+  <xsl:template match="oscal:title"/>
+  
+  <xsl:template match="oscal:part/oscal:title">
+    <h5>
+      <xsl:apply-templates/>
+    </h5>
   </xsl:template>
   
   <xsl:template match="oscal:declarations"/>
@@ -175,6 +177,9 @@ a:visited { color: midnightblue }
       
     </h3>-->
   </xsl:template>
+  
+  <!-- Any remains of content model tracing (notice this is in no namespace) ... -->
+  <xsl:template match="element"/>
   
   <xsl:template match="oscal:prop" mode="run-in">
     <span class="run-in subst {@class}">
@@ -362,14 +367,14 @@ a:visited { color: midnightblue }
     </code>
   </xsl:template>
   
-  <xsl:key name="controls-by-tag" match="oscal:control[@class='element-description']"
+  <xsl:key name="controls-by-tag" match="oscal:component[@class='element-description']"
     use="oscal:prop[@class='tag']"/>
   
   <!-- these are cross-references to controls -->
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
-    <xsl:variable name="target" select="key('controls-by-tag',.,$taglib)"/>
+    <xsl:variable name="target" select="key('controls-by-tag',.)"/>
     
-    <a href="{generate-id($target)}" class="code">
+    <a href="#{$target[1]/generate-id(.)}" class="code">
       <xsl:apply-templates/>
     </a>
   </xsl:template>

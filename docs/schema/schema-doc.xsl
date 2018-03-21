@@ -53,30 +53,45 @@
                   <xsl:apply-templates select="$declarations" mode="explode"/>
                 </xsl:variable>
                 <!--<xsl:copy-of select="$declarations"/>-->
-                <!--<xsl:copy-of select="$exploded"/>-->
+                <xsl:copy-of         select="$exploded"/>
                 <xsl:apply-templates select="$exploded" mode="oscalize"/>
             </xsl:element>
         </xsl:for-each>
     </xsl:template>
     
     <xsl:template match="/element" mode="oscalize" expand-text="true">
-        <title>Element <em>{ @name }</em>', containing</title>
+        <title>Content declaration (reduced)</title>
             <ul>
                 <xsl:apply-templates mode="#current"/>
             </ul>
     </xsl:template>
     
     <xsl:template match="element" mode="oscalize" expand-text="true">
-        <li>element <em>{ @name }</em>', containing:
+        <li>element <em>{ @name }</em>'{ if (@minOccurs='0') then ' (optional)' else '' }, containing:
             <ul>
                 <xsl:apply-templates mode="#current"/>
             </ul>
         </li>
     </xsl:template>
     
+    
+    <xsl:template match="element[empty(*)]" priority="2" mode="oscalize" expand-text="true">
+        <li>element <code>{ @name | @ref }</code></li>
+    </xsl:template>
+    
+    
+    
+    <xsl:template match="attribute" mode="oscalize" expand-text="true">
+        <li>attribute <code>@{ @name }</code>{ if (@use='required') then ' (required)' else ' (optional)' }
+          <xsl:apply-templates select="@type" mode="#current"/>
+          <xsl:if test="empty(@type)">, with (plain) text</xsl:if>
+        </li>
+    </xsl:template>
+    
+    <xsl:template match="attribute/@type" mode="oscalize" expand-text="true"> valid to constraints for type '{ QName('http://www.w3.org/2001/XMLSchema',.) ! local-name-from-QName(.) }'</xsl:template>
+    
     <xsl:template match="optionalRepeatable" mode="oscalize" expand-text="true">
-        <li>as many as wanted of:
-            <ul>
+        <li>as needed:<ul>
                 <xsl:apply-templates mode="#current"/>
             </ul>
         </li>
@@ -100,11 +115,6 @@
               <xsl:apply-templates mode="#current"/>
           </ul>
         </li>
-    </xsl:template>
-    
-    
-    <xsl:template match="element[empty(*)]" priority="2" mode="oscalize" expand-text="true">
-        <li>element <code>{ @name | @ref }</code></li>
     </xsl:template>
     
     <xsl:template match="*" mode="oscalize">
