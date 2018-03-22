@@ -27,18 +27,18 @@ A `<merge>` element merges controls. A `<merge>` element may contain the followi
 * [`<combine>`](#combine-element) (optional)
 * [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (optional)
 
-### `<combine>` element
+#### `<combine>` element
 
 A `<combine>` element defines whether and how to combine multiple (competing) versions of the same control. A `<combine>` element may contain the following:
 
 * [`<method>`](#method-element) (mandatory)
 * A restriction, set to one of the following: `use-first`, `merge`, or `keep`
 
-### `<as-is>` element
+#### `<as-is>` element
 
 An `<as-is>` element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.
 
-### `<custom>` element
+#### `<custom>` element
 
 A `<custom>` element frames a structure for embedding represented controls in resolution. A `<custom>` element may contain the following:
 
@@ -47,3 +47,34 @@ A `<custom>` element frames a structure for embedding represented controls in re
 * `@ID` (optional)
 * `@optionalClass` (optional)
 
+#### `<profileGroup>` element
+
+A `<profileGroup>` element designates related controls or groups (of controls or groups). A `<profileGroup>` element may contain the following:
+
+* `<title>` (optional)
+* [`<profileGroup>`](#profileGroup-element), [`<call>`](#call-element), and/or [`<match>`](#match-element) (zero or more of each)
+
+### `<modify>` element
+
+A `<modify>` element sets parameters or amends controls in resolution. A `<modify>` element may contain the following:
+
+* [`<set-param>`](#set-param-element) and/or [`<alter>`](#alter-element) (zero or more of each)
+
+#### `<include>` element
+
+An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<includes>` element may contain the following:
+
+* [`<all>`](#all-element) (mandatory)
+* [`<call>`](#call-element) and/or [`<match>`](#match-element) (one or more of each)
+
+#### `<all>` element
+
+An `<all>` element includes all controls from the imported resource.
+
+#### `<call>` element
+
+A `<call>` element calls a control or subcontrol by its ID. A `<call>` element may contain the following:
+
+* `@withSubContrlsAttr` (optional)
+* `@control-id` (optional)
+* `@subcontrol-id` (optional)
