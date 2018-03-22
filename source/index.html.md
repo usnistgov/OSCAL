@@ -44,7 +44,7 @@ There are also several types of expected consumers of OSCAL catalogs, profiles, 
 
 The plans for OSCAL involve all the components depicted in the following diagram:
 
-![OSCAL Components](../images/oscal-components.png "OSCAL Components")
+![OSCAL Components](images/oscal-components.png "OSCAL Components")
 
 Starting from the bottom on the left, the OSCAL components are:
 
