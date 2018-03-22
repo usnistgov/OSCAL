@@ -1,3 +1,0 @@
-## Profile Schema
-
-TODO
