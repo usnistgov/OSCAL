@@ -130,12 +130,12 @@ The foundations of OSCAL are in control objects, such as controls and subcontrol
 ##### Content declaration (reduced)
 
 * element [title](#title-title)
-* element [declarations](#declarations-declarations)
+* element [declarations](#declarations-declarations) (optional)
 * as needed:
   * element [section](#section-section)
   * element [group](#group-group)
   * element [control](#control-control)
-* element [references](#references-references)
+* element [references](#references-references) (optional)
 
 #### control Control 
 > A structured information object representing a security control
@@ -146,14 +146,14 @@ Controls may be grouped using [group](#group-group), and controls may be partiti
 
 * attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-class) (optional)
-* element [title](#title-title)
+* element [title](#title-title) (optional)
 * as needed:
   * element [param](#param-parameter)
   * element [link](#link-link)
   * element [prop](#prop-property)
   * element [part](#part-part)
   * element [subcontrol](#subcontrol-control-extension)
-* element [references](#references-references)
+* element [references](#references-references) (optional)
 
 #### subcontrol Control extension 
 > An associated or dependent control object; an enhancement to a control
@@ -164,13 +164,13 @@ A nominal subcontrol or "control extension" permits catalogs to offer access to 
 
 * attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-class) (optional)
-* element [title](#title-title)
+* element [title](#title-title) (optional)
 * as needed:
   * element [param](#param-parameter)
   * element [link](#link-link)
   * element [prop](#prop-property)
   * element [part](#part-part)
-* element [references](#references-references)
+* element [references](#references-references) (optional)
 
 #### prop Property 
 > A value with a name, attributed to the containing control, subcontrol, component, part, or group
@@ -187,9 +187,7 @@ Properties permit the deployment and management of arbitrary controlled values, 
 
 ##### Content declaration (reduced)
 
-* fallback
-* xs:attributeGroup ref:oscal:asProp
-* text content
+* text content *only* (and potentially further constrained)
 
 #### part Part 
 > A partition, "piece" or section of a control, subcontrol, component or part
@@ -202,7 +200,7 @@ Generally speaking, [part](#part-part) elements will be of two kinds. Many parts
 
 ##### Content declaration (reduced)
 
-* element [title](#title-title)
+* element [title](#title-title) (optional)
 * as needed:
   * element [param](#param-parameter)
   * element [link](#link-link)
@@ -220,19 +218,17 @@ Works like an HTML anchor ([a](#a-anchor)) except this is a line-oriented (block
 
 ##### Content declaration (reduced)
 
-* fallback
-* xs:attributeGroup ref:oscal:relAttr
+* attribute `@rel` (optional)
 * attribute [@href](#href-hypertext-reference) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
 
 #### id ID / identifier 
 > A value on @id unique within local document scope, i.e. across a given catalog or representation of catalog contents (controls).
@@ -268,19 +264,12 @@ Functional elements appear inside control content to provide "hooks" to OSCAL pr
 * attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-class) (optional)
 * element [desc](#desc-parameter-description)
-* element [label](#label-parameter-label)
-* element [value](#value-value-constraint)
+* element [label](#label-parameter-label) (optional)
+* element [value](#value-value-constraint) (optional)
 
 #### label Parameter label 
 > A placeholder for a missing value, in display
-
-##### Content declaration (reduced)
-
-* fallback
-* xs:element name:label type:xs:string
-* xs:annotation
-* xs:documentation
-* bParameter label A placeholder for a missing value, in display
+* Element *label*, containing text
 
 #### desc Parameter description 
 > Indicates and explains the purpose and use of a parameter
@@ -288,23 +277,19 @@ Functional elements appear inside control content to provide "hooks" to OSCAL pr
 ##### Content declaration (reduced)
 
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
 
 #### insert Parameter insertion 
 > A "call" (reference) to a parameter for dynamic content transclusion
 
-##### Content declaration (reduced)
-
-* attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
-* attribute [@param-id](#param-id-parameter-id) (required) valid to constraints for type 'IDREF'
+This element is empty
 
 #### param-id Parameter ID 
 > Identifies the parameter element target ([param](#param-parameter)) that governs content insertion at this location. While the composition of the parameter (including its given value or labels) may be altered in a profile (or "overlay", a parameter declaration is expected to be extant in the document containing the insertion.)
@@ -320,15 +305,14 @@ The functionality provided by this element might better be offered by a property
 ##### Content declaration (reduced)
 
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
 
 ### Structural elements
 
@@ -349,8 +333,8 @@ Echoes HTML5 [section](#section-section). May contain controls ([control](#contr
   * element [ul](#ul-unordered-list)
   * element [ol](#ol-ordered-list)
   * element [pre](#pre-preformatted-text)
-* element [section](#section-section)
-* element [references](#references-references)
+* element [section](#section-section) (as many as wanted)
+* element [references](#references-references) (optional)
 
 #### group Group 
 > Related controls or groups (of controls or groups)
@@ -363,7 +347,7 @@ Unlike sections ([section](#section-section) elements), groups may not contain a
 
 * attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-class) (optional)
-* element [title](#title-title)
+* element [title](#title-title) (optional)
 * as needed:
   * element [param](#param-parameter)
   * element [link](#link-link)
@@ -371,7 +355,7 @@ Unlike sections ([section](#section-section) elements), groups may not contain a
   * element [part](#part-part)
 * element [group](#group-group)
 * element [control](#control-control)
-* element [references](#references-references)
+* element [references](#references-references) (optional)
 
 #### title Title 
 > A fallback for display and navigation, exclusive of more specific properties
@@ -379,14 +363,14 @@ Unlike sections ([section](#section-section) elements), groups may not contain a
 ##### Content declaration (reduced)
 
 * text content, possibly mixed with 
-  * element [q](#q-quoted-text)
+  * element [q](#q-quoted-text) (as many as wanted)
 
 #### references References 
 > A group of reference descriptions
 
 ##### Content declaration (reduced)
 
-* element [ref](#ref-reference)
+* element [ref](#ref-reference) (at least one)
 
 #### ref Reference 
 > A reference, with one or more citations to standards, related documents, or other resources
@@ -411,16 +395,15 @@ Echoes the NISO JATS (and NISO STS) [std](#std-standard) element
 
 * attribute [@href](#href-hypertext-reference) (optional) valid to constraints for type 'anyURI'
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
 
 #### citation Citation 
 > Citation of a resource
@@ -433,16 +416,15 @@ For references to standards, [std](#std-standard) may be preferred.
 
 * attribute [@href](#href-hypertext-reference) (optional) valid to constraints for type 'anyURI'
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
 
 ### Prose
 
@@ -481,16 +463,15 @@ Echoes HTML [pre](#pre-preformatted-text).
 
 * attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
 
 #### ol Ordered List 
 > Appears with numbering in ordinal position
@@ -501,7 +482,7 @@ At present there is no support for "continued lists", as we have not seen any in
 
 ##### Content declaration (reduced)
 
-* element [li](#li-list-item)
+* element [li](#li-list-item) (at least one)
 
 #### ul Unordered list 
 > A series of items kept in order but without indicators of sequence; likely bulleted
@@ -514,7 +495,7 @@ OSCAL has (as of yet) no "simple" or unadorned list element; it is suggested tha
 
 ##### Content declaration (reduced)
 
-* element [li](#li-list-item)
+* element [li](#li-list-item) (at least one)
 
 #### li List item 
 > An item demarcated with a bullet or numerator
@@ -528,20 +509,19 @@ Lists that are really (brief) subsections may be expressed as (nested, unclassed
 * attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-class) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [withdrawn](#withdrawn-withdrawn)
-    * element [insert](#insert-parameter-insertion)
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
-    * element [ol](#ol-ordered-list)
-    * element [ul](#ul-unordered-list)
+  * element [withdrawn](#withdrawn-withdrawn)
+  * element [insert](#insert-parameter-insertion)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
+  * element [ol](#ol-ordered-list)
+  * element [ul](#ul-unordered-list)
 
 #### em Emphasis 
 > Rhetorical emphasis as typically indicated by a font shift
@@ -554,16 +534,15 @@ Particular semantics (indicating types of emphasis for finer resolution in displ
 
 * attribute [@class](#class-class) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
 
 #### i Italics 
 > Typographical shift to italics
@@ -574,16 +553,15 @@ An implementation may toggle, i.e., display contents using a roman face when the
 
 * attribute [@class](#class-class) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
 
 #### b Bold 
 > Typographical shift to bold
@@ -598,16 +576,15 @@ In ordinary use, [b](#b-bold) and [i](#i-italics) should perhaps be deprecated i
 
 * attribute [@class](#class-class) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
 
 #### a Anchor 
 > An HTML-style anchor (inline linking element)
@@ -622,12 +599,11 @@ As in HTML, [a](#a-anchor) appears inline (in mixed content), while [link](#link
 
 * attribute [@href](#href-hypertext-reference) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element *em*', containing: 
-      * attribute [@class](#class-class) (optional)
-      * text content
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element *em*, containing: 
+    * attribute [@class](#class-class) (optional)
+    * text content
 
 #### q Quoted text 
 > An inline segment to appear within quotation marks
@@ -637,14 +613,13 @@ This element is intended for use producing "smart quotes" around short phrases, 
 ##### Content declaration (reduced)
 
 * text content, possibly mixed with 
-  * as needed:
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
 
 #### code Code 
 > Inline code
@@ -655,15 +630,14 @@ Strictly, this element should identify formal code or code fragments. Like anyth
 
 * attribute [@class](#class-class) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
 
 #### sup Superscript 
 > Superscripted text
@@ -692,16 +666,15 @@ The OSCAL declarations model does not presently support validating properties of
 
 * attribute [@class](#class-class) (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [q](#q-quoted-text)
-    * element [code](#code-code)
-    * element [em](#em-emphasis)
-    * element [i](#i-italics)
-    * element [b](#b-bold)
-    * element [sub](#sub-subscript)
-    * element [sup](#sup-superscript)
-    * element [span](#span-span)
-    * element [a](#a-anchor)
+  * element [q](#q-quoted-text)
+  * element [code](#code-code)
+  * element [em](#em-emphasis)
+  * element [i](#i-italics)
+  * element [b](#b-bold)
+  * element [sub](#sub-subscript)
+  * element [sup](#sup-superscript)
+  * element [span](#span-span)
+  * element [a](#a-anchor)
 
 ### Declarations elements
 
@@ -741,12 +714,12 @@ On declarations including [declare-prop](#declare-prop-property-declaration) and
 
 * attribute [@class](#class-class) (required)
 * attribute `@context` (required)
-* element [singleton](#singleton-singleton-constraint)
-* element [required](#required-requirement-constraint)
-* element [identifier](#identifier-identifier-constraint)
+* element [singleton](#singleton-singleton-constraint) (optional)
+* element [required](#required-requirement-constraint) (optional)
+* element [identifier](#identifier-identifier-constraint) (optional)
 * element [regex](#regex-regular-expression-constraint)
-* element [calc](#calc-calculated-value-constraint)
-* element [value](#value-value-constraint)
+* element [calc](#calc-calculated-value-constraint) (as many as wanted)
+* element [value](#value-value-constraint) (as many as wanted)
 
 #### declare-p Paragraph declaration 
 > Indicates constraints to be enforced on paragraphs in context
@@ -759,8 +732,8 @@ Effectively, the difference between a "property"[prop](#prop-property) and "clas
 
 * attribute [@class](#class-class) (required)
 * attribute `@context` (required)
-* element [singleton](#singleton-singleton-constraint)
-* element [required](#required-requirement-constraint)
+* element [singleton](#singleton-singleton-constraint) (optional)
+* element [required](#required-requirement-constraint) (optional)
 
 #### declare-part Part declaration 
 > Indicates constraints to be imposed on parts in context
@@ -771,8 +744,8 @@ Parts are subject to singleton and requirement constraints, but not to constrain
 
 * attribute [@class](#class-class) (required)
 * attribute `@context` (required)
-* element [singleton](#singleton-singleton-constraint)
-* element [required](#required-requirement-constraint)
+* element [singleton](#singleton-singleton-constraint) (optional)
+* element [required](#required-requirement-constraint) (optional)
 
 #### declare-link Link declaration 
 > Indicates constraints to be imposed on links in context
@@ -781,8 +754,8 @@ Parts are subject to singleton and requirement constraints, but not to constrain
 
 * attribute `@rel` (optional)
 * attribute `@context` (required)
-* element [singleton](#singleton-singleton-constraint)
-* element [required](#required-requirement-constraint)
+* element [singleton](#singleton-singleton-constraint) (optional)
+* element [required](#required-requirement-constraint) (optional)
 
 #### singleton Singleton constraint 
 > The declared component may occur only once in its context
@@ -791,8 +764,7 @@ When this element is present in the declaration of a data object in OSCAL (such 
 
 Note that the singleton constraint does not apply to the value of the property, but only to the fact that it is an "only child", unique among its siblings for having its class assignment.
 
-##### Content declaration (reduced)
-
+This element is empty
 
 #### required Requirement constraint 
 > The declared component is required in its context
@@ -803,8 +775,7 @@ A property or part that is a required singleton, is expected to appear exactly o
 
 Whenever a control or control object is required to have any parts (or properties etc.), and any of the required parts are missing, errors may be reported against the declarations model.
 
-##### Content declaration (reduced)
-
+This element is empty
 
 #### identifier Identifier constraint 
 > The declared component has a value unique within the document, among properties ([prop](#prop-property)) with the same class
@@ -813,8 +784,7 @@ This constraint is generally only used for properties to be used as identifiers 
 
 Note that a property marked as an identifier, may or may not be (also declared as) a singleton. In any case the value of *each* property of the given class must be unique. So if a control has several "name" properties, "name" being declared as an identifier, then each of the name properties in that control must be unique: "George""John" and "Ringo" not "George", "George" and "George".
 
-##### Content declaration (reduced)
-
+This element is empty
 
 #### regex Regular expression constraint 
 > Indicates that the value of a property ([prop](#prop-property)) or parameter ([param](#param-parameter)) must match the given regular expression
@@ -822,16 +792,7 @@ Note that a property marked as an identifier, may or may not be (also declared a
 Matching against a regular expression is conducted on the normalized lexical value of the given parameter or property: that is, with leading and trailing whitespace stripped, interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline markup stripped.
 
 When more than one [regex](#regex-regular-expression-constraint) is given in a declaration, a match on any of them is taken to satisfy the requirement.
-
-##### Content declaration (reduced)
-
-* fallback
-* xs:element name:regex type:xs:string
-* xs:annotation
-* xs:documentation
-* bRegular expression constraint Indicates that the value of a property (
-* codeprop) or parameter (
-* codeparam) must match the given regular expression
+* Element *regex*, containing text
 
 #### value Value constraint 
 > Indicates a permissible value for a parameter or property
@@ -839,14 +800,7 @@ When more than one [regex](#regex-regular-expression-constraint) is given in a d
 In a declaration, [value](#value-value-constraint) will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values).
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".
-
-##### Content declaration (reduced)
-
-* fallback
-* xs:element name:value type:xs:string
-* xs:annotation
-* xs:documentation
-* bValue constraint Indicates a permissible value for a parameter or property
+* Element *value*, containing text
 
 #### calc Calculated value constraint 
 > Indicates a permissible value for a parameter or property, calculated dynamically
@@ -857,22 +811,14 @@ Similar to [value](#value-value-constraint) except that its contents are expande
 
 * attribute `@` (optional)
 * text content, possibly mixed with 
-  * as needed:
-    * element [inherit](#inherit-inherited-value)
-    * element [autonum](#autonum-autonumbered-(generated)-value)
+  * element [inherit](#inherit-inherited-value)
+  * element [autonum](#autonum-autonumbered-(generated)-value)
 
 #### autonum Autonumbered (generated) value 
 > Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)
 
 The text contents of [autonum](#autonum-autonumbered-(generated)-value) (not the value of any attribute) will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.
-
-##### Content declaration (reduced)
-
-* fallback
-* xs:element name:autonum type:xs:string
-* xs:annotation
-* xs:documentation
-* bAutonumbered (generated) value Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)
+* Element *autonum*, containing text
 
 #### inherit Inherited value 
 > Indicates that a value or text within a value should be inherited from a property on a containing control object
@@ -883,9 +829,7 @@ Usually, [inherit](#inherit-inherited-value) is used in conjunction with [autonu
 
 If a value must inherit from a property of a different class from the containing control object, `inherit/@from` can be used to indicate the applicable property (by its class). By default, [inherit](#inherit-inherited-value) indicates a property value should match an ancestor's property with the same [@class](#class-class) (the most usual case).
 
-##### Content declaration (reduced)
-
-* attribute `@from` (optional)
+This element is empty
 
 ### Profiling
 
@@ -902,12 +846,11 @@ An OSCAL document that describes a selection with possible modification of multi
 
 ##### Content declaration (reduced)
 
-* fallback
-* xs:attributeGroup ref:oscal:idAttr
+* attribute [@id](#id-id-/-identifier) (required) valid to constraints for type 'ID'
 * element [title](#title-title)
-* element [import](#import-import-resource)
-* element [merge](#merge-merge)
-* element [modify](#modify-modify)
+* element [import](#import-import-resource) (at least one)
+* element [merge](#merge-merge) (optional)
+* element [modify](#modify-modify) (optional)
 
 #### import Import resource 
 > Designating a catalog, profile or other resource for controls
@@ -918,10 +861,9 @@ The contents of the [import](#import-import-resource) element indicate which con
 
 ##### Content declaration (reduced)
 
-* fallback
-* xs:attributeGroup ref:oscal:hrefAttr
-* element [include](#include-include-controls)
-* element [exclude](#exclude-exclude-controls)
+* attribute [@href](#href-hypertext-reference) (optional)
+* element [include](#include-include-controls) (optional)
+* element [exclude](#exclude-exclude-controls) (optional)
 
 #### merge merge 
 > Merge controls in resolution
@@ -932,7 +874,7 @@ Implicitly, a merge statement is also a filter: controls that are included in a 
 
 ##### Content declaration (reduced)
 
-* element [combine](#combine-combine)
+* element [combine](#combine-combine) (optional)
 * element [as-is](#as-is-as-is)
 * element [custom](#custom-custom)
 
@@ -966,7 +908,7 @@ Within [exclude](#exclude-exclude-controls), [all](#all-include-all) is not an o
 ##### Content declaration (reduced)
 
 * element [match](#match-match)
-* element *call*', containing: 
+* element *call*, containing: 
   * attribute `@control-id` (optional) valid to constraints for type 'NCName'
   * attribute `@subcontrol-id` (optional) valid to constraints for type 'NCName'
 
@@ -1000,9 +942,7 @@ However these are not the same as```
 
 (Since `with-subcontrols` is assumed to be "no" unless stated to be "yes".)
 
-##### Content declaration (reduced)
-
-* attribute `@with-subcontrols` (optional)
+This element is empty
 
 #### call Call (control or subcontrol) 
 > Call a control or subcontrol by its ID
@@ -1011,21 +951,12 @@ Inside [include](#include-include-controls), If `@control-id` is used (to indica
 
 If `@with-subcontrols` is "yes" on the call to a control, no sibling [call](#call-call-(control-or-subcontrol))elements need to be used to call its subcontrols. Accordingly it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
 
-##### Content declaration (reduced)
-
-* attribute `@with-subcontrols` (optional)
-* attribute `@control-id` (optional) valid to constraints for type 'NCName'
-* attribute `@subcontrol-id` (optional) valid to constraints for type 'NCName'
+This element is empty
 
 #### match match 
 > Select controls by (regular expression) match on ID
 
-##### Content declaration (reduced)
-
-* attribute `@with-subcontrols` (optional)
-* attribute `@with-control` (optional)
-* attribute `@pattern` (required)
-* attribute `@order` (optional)
+This element is empty
 
 #### set-param Parameter setting 
 > Set a parameter's value or rewrite its label or description
@@ -1035,11 +966,10 @@ If `@with-subcontrols` is "yes" on the call to a control, no sibling [call](#cal
 ##### Content declaration (reduced)
 
 * attribute [@param-id](#param-id-parameter-id) (required) valid to constraints for type 'NMTOKEN'
-* fallback
-* xs:attributeGroup ref:oscal:optionalClass
-* element [desc](#desc-parameter-description)
-* element [label](#label-parameter-label)
-* element [value](#value-value-constraint)
+* attribute [@class](#class-class) (optional)
+* element [desc](#desc-parameter-description) (optional)
+* element [label](#label-parameter-label) (optional)
+* element [value](#value-value-constraint) (optional)
 
 #### alter Alteration 
 > Specifies changes to be made to an included control or subcontrol when a profile is resolved
@@ -1052,8 +982,8 @@ It is an error for two [alter](#alter-alteration) elements to apply to the same 
 
 * attribute `@control-id` (optional) valid to constraints for type 'NCName'
 * attribute `@subcontrol-id` (optional) valid to constraints for type 'NCName'
-* element [remove](#remove-removal)
-* element [add](#add-addition)
+* element [remove](#remove-removal) (as many as wanted)
+* element [add](#add-addition) (as many as wanted)
 
 #### remove Removal 
 > Elements to be removed from a control or subcontrol, in resolution
@@ -1062,11 +992,7 @@ Use `@class-ref`, `@id-ref` or `@item-name` to indicate class tokens or ID refer
 
 To change an element, use [remove](#remove-removal) to remove the element, then [add](#add-addition) to add it back again with changes.
 
-##### Content declaration (reduced)
-
-* attribute `@class-ref` (optional) valid to constraints for type 'NMTOKENS'
-* attribute `@id-ref` (optional) valid to constraints for type 'NCName'
-* attribute `@item-name` (optional) valid to constraints for type 'NCName'
+This element is empty
 
 #### add Addition 
 > Element contents to be added to a control or subcontrols, in resolution
@@ -1083,15 +1009,12 @@ To change an element, use [remove](#remove-removal) to remove the element, then 
 #### combine combine 
 > Whether and how to combine multiple (competing) versions of the same control
 
-##### Content declaration (reduced)
-
-* attribute `@method` (required)
+This element is empty
 
 #### as-is as-is 
 > Structure the controls in resolution as they are structured in their source catalogs
 
-##### Content declaration (reduced)
-
+This element is empty
 
 #### custom custom 
 > Frame a structure wherein represented controls will be embedded in resolution
@@ -1099,12 +1022,11 @@ To change an element, use [remove](#remove-removal) to remove the element, then 
 ##### Content declaration (reduced)
 
 * attribute [@id](#id-id-/-identifier) (optional) valid to constraints for type 'ID'
-* fallback
-* xs:attributeGroup ref:oscal:optionalClass
-* element [title](#title-title)
+* attribute [@class](#class-class) (optional)
+* element [title](#title-title) (optional)
 * as needed:
-  * element *group*', containing: 
-    * element [title](#title-title)
+  * element *group*, containing: 
+    * element [title](#title-title) (optional)
     * as needed:
       * element [group](#group-group)
       * element [call](#call-call-(control-or-subcontrol))

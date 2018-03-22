@@ -343,6 +343,16 @@ a:visited { color: midnightblue }
       <xsl:apply-templates/>
     </em>
   </xsl:template>
+  <xsl:template match="oscal:b">
+    <b class="b">
+      <xsl:apply-templates/>
+    </b>
+  </xsl:template>
+  <xsl:template match="oscal:i">
+    <i class="i">
+      <xsl:apply-templates/>
+    </i>
+  </xsl:template>
   <xsl:template match="oscal:select">
     <div class="select">
       <xsl:apply-templates/>

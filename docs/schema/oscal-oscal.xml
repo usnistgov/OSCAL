@@ -97,7 +97,7 @@
       </part>
       <part class="remarks">
         <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
-          either (formally) <code>subcontrol</code> or (informally) <code>part</code>.</p>
+            <code>part</code> or extended using <code>subcontrol</code>.</p>
       </part>
     </component>
     <component class="element-description">

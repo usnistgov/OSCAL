@@ -29,10 +29,13 @@
         </attribute>
     </xsl:template>
     
+    <!-- override from calling XSLT   -->
+    <xsl:variable name="schema-sources" select="/"/>
+    
     <xsl:template match="attributeGroup[exists(@ref)]" mode="propagate">
-        <xsl:apply-templates  mode="#current" select="key('attributes-by-group',@ref)"/>
+        <xsl:apply-templates  mode="#current" select="key('attributes-by-group',@ref,$schema-sources)"/>
         <xsl:call-template name="fallback">
-            <xsl:with-param name="from" select="key('attributes-by-group',@ref)"/>
+            <xsl:with-param name="from" select="key('attributes-by-group',@ref,$schema-sources)"/>
         </xsl:call-template>
     </xsl:template>
     
@@ -77,9 +80,9 @@
     <xsl:key name="inside-complexType-by-name" match="complexType[exists(@name)]/*" use="'oscal:' || ../@name"/>
     
     <xsl:template mode="explode" match="group[exists(@ref)]">
-        <xsl:apply-templates mode="explode" select="key('inside-group',current()/@ref)"/>
+        <xsl:apply-templates mode="explode" select="key('inside-group',current()/@ref,$schema-sources)"/>
         <xsl:call-template name="fallback">
-            <xsl:with-param name="from" select="key('inside-group', current()/@ref)"/>
+            <xsl:with-param name="from" select="key('inside-group', current()/@ref,$schema-sources)"/>
         </xsl:call-template>
     </xsl:template>
     
@@ -107,9 +110,9 @@
     <xsl:template mode="explode" match="element[exists(@type)]">
         <element>
             <xsl:apply-templates select="@*" mode="explode"/>
-            <xsl:apply-templates mode="#current" select="key('inside-complexType-by-name',@type)"/>
+            <xsl:apply-templates mode="#current" select="key('inside-complexType-by-name',@type,$schema-sources)"/>
             <xsl:call-template name="fallback">
-                <xsl:with-param name="from" select="key('inside-complexType-by-name',@type)"/>
+                <xsl:with-param name="from" select="key('inside-complexType-by-name',@type,$schema-sources)"/>
             </xsl:call-template>
             
         </element>
