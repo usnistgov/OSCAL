@@ -6,6 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - json
 
 includes:
+  - schema/implementers
   - schema/catalogXML
   - schema/catalogJSON
   - schema/profileXML
