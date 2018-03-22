@@ -8,8 +8,8 @@ Each OSCAL profile is defined by a `<profile>` element. A `<profile>` element ma
 
 * `<title>` for the profile (mandatory)
 * [`<import>`](#import-element) (one or more)
-* [`<merge>`](#merge-element)` (optional)
-* [`<modify>`](#modify-element)` (optional)
+* [`<merge>`](#merge-element) (optional)
+* [`<modify>`](#modify-element) (optional)
 * `@idAttr` (optional)
 
 ### `<import>` element
@@ -31,8 +31,7 @@ A `<merge>` element merges controls. A `<merge>` element may contain the followi
 
 A `<combine>` element defines whether and how to combine multiple (competing) versions of the same control. A `<combine>` element may contain the following:
 
-* [`<method>`](#method-element) (mandatory)
-* A restriction, set to one of the following: `use-first`, `merge`, or `keep`
+* `@method`, set to one of the following: `use-first`, `merge`, or `keep` (mandatory)
 
 #### `<as-is>` element
 
@@ -62,7 +61,7 @@ A `<modify>` element sets parameters or amends controls in resolution. A `<modif
 
 #### `<include>` element
 
-An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<includes>` element may contain the following:
+An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<include>` element may contain the following:
 
 * [`<all>`](#all-element) (mandatory)
 * [`<call>`](#call-element) and/or [`<match>`](#match-element) (one or more of each)
@@ -86,8 +85,7 @@ A `<match>` element selects controls by a regular expression match on ID. A `<ma
 * `@withSubContrlsAttr` (optional)
 * `@withContrlsAttr` (optional)
 * `@pattern` (required)
-* `@order` (optional)
-* A restriction, set to one of the following: `keep`, `ascending`, or `descending`
+* `@order`, set to one of the following: `keep`, `ascending`, or `descending` (optional)
 
 #### `<exclude>` element
 
