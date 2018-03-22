@@ -1,6 +1,6 @@
 ## Catalog XML Schema
 
-The topmost elements in the OSCAL catalog XML schema are [`<catalog>`](#catalog-element), [`<framework>`](#framework-and-worksheet-elements), and [`<worksheet>`](#framework-and-worksheet-elements).
+The topmost element in the OSCAL catalog XML schema is [`<catalog>`](#catalog-element).
 
 ### `<catalog>` element
 
@@ -11,26 +11,13 @@ Each OSCAL catalog is defined by a `<catalog>` element. A `<catalog>` element ma
 * [`<section>`](#section-element), [`<group>`](#group-element), and/or [`<control>`](#control-element) (zero or more of each)
 * [`<references>`](#references-element) (zero or more)
 
-### `<framework>` and `<worksheet>` elements
-
-The `<framework>` element is used to define a formal framework. OSCAL also offers the `<worksheet>` element, which is used to define an informal, ad hoc framework. The expectation is that the `<framework>` element will be used when a standards organization or other formal body wants to define a published framework, while the `<worksheet>` element will be used by organizations creating frameworks for their own use.
-
-Both `<framework>` and `<worksheet>` elements may contain the following:
-
-* `<title>` (mandatory)
-* [`<declarations>`](#declarations-element) (zero or more)
-* [`<section>`](#section-element), [`<category>`](#category-element), and/or [`<component>`](#component-element) (zero or more of each)
-* [`<references>`](#references-element) (zero or more)
-* `@id` (optional)
-* `@optionalClass` (optional)
-
 ### `<section>` element
 
-Catalogs, frameworks, and worksheets may use `<section>` elements for partitioning. A `<section>` element may contain the following:
+Catalogs may use `<section>` elements for partitioning. A `<section>` element may contain the following:
 
 * `<title>` (mandatory)
 * `<prose>` (mandatory)
-* `<section>` or [`<group>`](#group-element) (zero or more of each)
+* `<section>` (zero or more)
 * [`<references>`](#references-element) (zero or more)
 * `@id` (optional)
 * `@optionalClass` (optional)
@@ -50,62 +37,10 @@ Catalogs may use `<group>` elements to reference related controls or control gro
 
 TBD explain what this is for. A `<control-components>` element contains zero or more of each of the following:
 
-* [`<prop>`](#prop-element)
-* [`<anyKindofPart>`](#part-element)
-* [`<link>`](#link-element)
 * [`<param>`](#param-element)
-
-#### `<category>` element
-
-A `<category>` element specifies a group of related controls or a group of groups of such controls for a framework or worksheet. A `<category>` element may contain the following:
-
-* `<title>` (optional)
-* [`<prop>`](#prop-element), [`<link>`](#link-element), and/or `<prose>` (zero or more of each)
-* [`<category>`](#category-element) or [`<component>`](#component-element) (one or more total) 
-* `@id` (optional)
-* `@optionalClass` (optional)
-
-#### `<component>` element
-
-A [`<framework>` or `<worksheet>`](#framework-and-worksheet-elements) element may contain `<component>` elements. A component references one or more controls. This provides a way to organize the contents of a framework. A `<component>` element may contain the following:
-
-* `<title>` (optional)
-* [`<param>`](#param-element), [`<prop>`](#prop-element), [`<link>`](#link-element), `<prose>`, and/or [`<anyKindofPart>`](#part-element) (zero or more of each)
-* `<component>` (zero or more) 
-* `@id` (optional)
-* `@optionalClass` (optional)
-
-##### `<link>` element
-
-A `<link>` element is a line or paragraph with a hypertext link. A `<link>` element may contain the following:
-
-* `<mix>` (mandatory)
-* `@relAttr` (mandatory)
-* `@hrefAttr` (mandatory)
-
-##### `<param>` element
-
-A `<param>` element is a parameter setting to be propagated to one or more points of insertion. A `<param>` element may contain the following:
-
-* `<desc>` (mandatory)
-* `<value>` (mandatory)
-* `@id` (optional)
-* `@optionalClass` (optional)
-
-##### `<part>` element
-
-The `<anyKindofPart>` element simply contains zero or more instances of the `<part>` element. A `<part>` element is a partition, piece, or section of a control, subcontrol, component, or part. A `<part>` element may contain the following:
-
-* `<title>` (optional)
-* `<prose>` and/or [`<control-components>`](#control-components-element) (zero or more of each)
-* `@id` (optional)
-* `@optionalClass` (optional)
-
-##### `<prop>` element
-
-A `<prop>` element is a value with a name. It is attributed to the containing control, subcontrol, component, part, or group. A `<prop>` element may contain the following:
-
-* `@requiredClass` (mandatory)
+* [`<link>`](#link-element)
+* [`<anyKindofProp>`](#prop-element)
+* [`<anyKindofPart>`](#part-element)
 
 ### `<control>` element
 
@@ -126,6 +61,39 @@ An OSCAL `<subcontrol>` element is very similar to an OSCAL `<control>` element 
 * [`<references>`](#references-element) (zero or more)
 * `@id` (optional)
 * `@optionalClass>` (optional)
+
+##### `<prop>` element
+
+The `<anyKindofProp>` element simply contains zero or more instances of the `<prop>` element. A `<prop>` element is a value with a name. It is attributed to the containing control, subcontrol, component, part, or group. A `<prop>` element may contain the following:
+
+* `@requiredClass` (mandatory)
+
+##### `<part>` element
+
+The `<anyKindofPart>` element simply contains zero or more instances of the `<part>` element. A `<part>` element is a partition, piece, or section of a control, subcontrol, component, or part. A `<part>` element may contain the following:
+
+* `<title>` (optional)
+* `<prose>` and/or [`<control-components>`](#control-components-element) (zero or more of each)
+* `@id` (optional)
+* `@optionalClass` (optional)
+
+##### `<link>` element
+
+A `<link>` element is a line or paragraph with a hypertext link. A `<link>` element may contain the following:
+
+* `<mix>` (mandatory)
+* `@relAttr` (mandatory)
+* `@hrefAttr` (mandatory)
+
+##### `<param>` element
+
+A `<param>` element is a parameter setting to be propagated to one or more points of insertion. A `<param>` element may contain the following:
+
+* `<desc>` (mandatory)
+* `<label>` (optional)
+* `<value>` (optional)
+* `@id` (optional)
+* `@optionalClass` (optional)
 
 ### `<references>` element
 
