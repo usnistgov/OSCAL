@@ -13,7 +13,7 @@
         
     <xsl:strip-space elements="*"/>
     
-    <xsl:mode default-mode="explode" on-no-match="shallow-copy"/>
+    <xsl:mode default-mode="explode" name="explode" on-no-match="shallow-copy"/>
     <xsl:mode name="propagate" on-no-match="shallow-copy"/>
     
     <!--<xsl:variable name="me-and-imports" select="
@@ -99,6 +99,14 @@
     
     <xsl:template mode="explode" match="annotation"/>
     
+    <xsl:template match="*" mode="explode">
+        <xsl:element name="{local-name()}">
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates mode="#current"/>
+        </xsl:element>
+    </xsl:template>
+    
+    
     <xsl:template mode="explode" match="element">
         <element>
             <xsl:apply-templates select="@*" mode="explode"/>
@@ -107,6 +115,12 @@
         </element>
     </xsl:template>
 
+    <xsl:template priority="2" mode="explode" match="element[@type='xs:string']">
+        <element>
+            <xsl:apply-templates select="@*" mode="explode"/>
+        </element>
+    </xsl:template>
+    
     <xsl:template mode="explode" match="element[exists(@type)]">
         <element>
             <xsl:apply-templates select="@*" mode="explode"/>

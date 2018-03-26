@@ -5,7 +5,15 @@
     declarations includes declarations for control types, parameters (names/types),
     authorities (source data for transclusion etc. etc.)
   -->
-  <xs:element name="declarations" type="oscal:decls"/>
+  <xs:element name="declarations">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="oscal:decls">
+          <xs:attribute name="href"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:complexType name="decls">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element ref="oscal:declare-prop"/>
@@ -39,9 +47,6 @@
       <xs:attribute name="class" use="required"/>
       <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
-  </xs:element>
-  <xs:element name="identifier">
-    <xs:complexType/>
   </xs:element>
   <!--
     part declaration
@@ -78,6 +83,9 @@
       <xs:attributeGroup ref="oscal:relAttr"/>
       <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
+  </xs:element>
+  <xs:element name="identifier">
+    <xs:complexType/>
   </xs:element>
   <xs:element name="singleton">
     <xs:complexType/>

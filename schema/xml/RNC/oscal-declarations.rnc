@@ -18,8 +18,8 @@ parameter_decl = empty
 
 # property may contain only id, only regex, both id and regex, or (sequence of) values
 property_decl =
-  element declare-prop { attribute class { text }, contextAttr, singleton?, required?,
-    element identifier { empty }?,
+  element declare-prop { attribute class { text }, contextAttr,
+    singleton?, required?, identifier?,
     ( regex | calc* | value* )
   }
 
@@ -35,6 +35,8 @@ para_decl =
 # link declaration
 link_decl =
  element declare-link { relAttr, contextAttr, singleton?, required? }
+
+identifier = element identifier { empty }
 
 singleton = element singleton { empty }
 

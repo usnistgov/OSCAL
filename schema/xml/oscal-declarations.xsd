@@ -4,11 +4,18 @@
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
               schemaLocation="xml.xsd"/>
-   <xs:element name="declarations" type="oscal:decls">
+   <xs:element name="declarations">
       <xs:annotation>
          <xs:documentation>
             <b>Declarations</b> For extra-schema validation of data given within controls or framework components</xs:documentation>
       </xs:annotation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="oscal:decls">
+               <xs:attribute name="href"/>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
    </xs:element>
    <xs:complexType name="decls">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -38,14 +45,6 @@
          <xs:attribute name="class" use="required"/>
          <xs:attributeGroup ref="oscal:contextAttr"/>
       </xs:complexType>
-   </xs:element>
-   <xs:element name="identifier">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Identifier constraint</b> The declared component has a value unique within the document, among properties
-            (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code>) with the same class</xs:documentation>
-      </xs:annotation>
-      <xs:complexType/>
    </xs:element>
    <xs:element name="declare-part">
       <xs:annotation>
@@ -88,6 +87,14 @@
          <xs:attributeGroup ref="oscal:relAttr"/>
          <xs:attributeGroup ref="oscal:contextAttr"/>
       </xs:complexType>
+   </xs:element>
+   <xs:element name="identifier">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Identifier constraint</b> The declared component has a value unique within the document, among properties
+            (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code>) with the same class</xs:documentation>
+      </xs:annotation>
+      <xs:complexType/>
    </xs:element>
    <xs:element name="singleton">
       <xs:annotation>

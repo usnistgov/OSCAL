@@ -5,7 +5,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
   >
   
-<!-- For validating oscal-oscal.xml against the schema (XSD) it purportedly describes.
+<!-- For validating oscal-oscal.xml against the schemas (XSD) it purportedly describes.
   
   * Are all elements in the schema matched by components (via their prop[@class='tag']?
   * Are all component[@class='element-description'] matched by elements declared in the schema?
@@ -23,23 +23,22 @@
   <sch:ns uri="http://www.w3.org/2001/XMLSchema"  prefix="xs" />
   
   <sch:let name="schema-files" value="distinct-values(//oscal:prop[@class='xsd'])"/>
-  <sch:let name="schemas" value="document($schema-files)"/>
+  <sch:let name="schemas" value="document($schema-files,/)"/>
   
   <!--'../../schema/xml/XSD/oscal-catalog.xsd',
   '../../schema/xml/XSD/oscal-declarations.xsd',
   '../../schema/xml/XSD/oscal-profile.xsd'-->
   
-  <sch:let name="element-declarations"  value="$schemas//xsd:element[exists(@name)]"/>
-  <sch:let name="element-documentation" value="//oscal:component[@class='element-description']"/>
+  <sch:let name="declarations"  value="$schemas//(xsd:element[exists(@name)] | xsd:attribute[exists(@name)])"/>
+  <sch:let name="documentation" value="//oscal:component[@class=('element-description','attribute-description')]"/>
   
   <sch:pattern>
     <sch:rule context="/*">
-      <!--<sch:report test="true()"><sch:value-of select="count($element-declarations)"/></sch:report>-->
-      <sch:let name="undocumented-declarations" value="$element-declarations[not(@name=$element-documentation/oscal:prop[@class='tag'])]"/>
+      <sch:let name="undocumented-declarations" value="$declarations[not(@name=$documentation/oscal:prop[@class='tag'])]"/>
       <sch:assert test="empty($undocumented-declarations)">
         Schemas <sch:value-of select="$schema-files"/> declare/s 
-        <sch:value-of select="if (count($undocumented-declarations) eq 1) then 'this element, which is' else 'these elements, which are' "/>
-        undocumented: <sch:value-of select="string-join($undocumented-declarations/@name, ', ')"/>
+        <sch:value-of select="if (count($undocumented-declarations) eq 1) then 'this element or attribute, which is' else 'these elements/attributes, which are' "/>
+        undocumented: <sch:value-of select="string-join($undocumented-declarations/@name/concat('''',.,''''), ', ')"/>
       </sch:assert>
     </sch:rule>
     

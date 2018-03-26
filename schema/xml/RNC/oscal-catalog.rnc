@@ -30,7 +30,7 @@ controlGroup = element group {
 # Now for the contents of the OSCAL doc proper ...
 
 # note prose is not included in control-components, unlike item pattern ('component' element)
-control-components = ( param | link |  anyKindofProp | anyKindofPart)*
+control-components = ( param | link |  prop | part )*
 
 control =
   element control {
@@ -45,17 +45,6 @@ subcontrol =
   }
 
 #inSubcontrol = title?, control-components, references?
-
-# === These declarations can be overridden on a level up:
-
-# Add 'semantic' prop types such as name, number, method
-anyKindofProp = (prop)*
-
-# Add 'semantic' part types: purpose, guidance, decision, information, remarks (etc) 
-anyKindofPart = (part)*
-
-# generic OSCAL doesn't have special kinds of paragraphs
-anyKindofP = (p)*
 
 # Rule of thumb for the difference:
 # - prop if it's a simple scalar value, never markup of any kind, typically a controlled value
@@ -94,7 +83,7 @@ prop =
 # asProp allows other things (in importing schemas) to declare themselves as properties or property-like
 asProp = optionalClass, text
 
-prose = ( anyKindofP | ul | ol | pre )*
+prose = ( p | ul | ol | pre )*
 
 
 references = element references { ref+ }

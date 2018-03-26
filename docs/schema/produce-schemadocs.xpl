@@ -30,8 +30,14 @@
   <p:output port="c_mapped" primary="false">
     <p:pipe port="result" step="produce-html-docs"/>
   </p:output>
-  <p:output port="z1_html-docs" primary="false">
+  <p:output port="d_enhanced" primary="false">
     <p:pipe port="result" step="enhance-html-docs"/>
+  </p:output>
+  <p:output port="e_linked" primary="false">
+    <p:pipe port="result" step="linkup-html-docs"/>
+  </p:output>
+  <p:output port="z1_html-docs" primary="false">
+    <p:pipe port="result" step="linkup-html-docs"/>
   </p:output>
   <p:output port="z2_markdown-docs" primary="false">
     <p:pipe port="result" step="produce-markdown-docs"/>
@@ -40,6 +46,8 @@
   <p:serialization port="a_OSCAL_docs"   indent="true"/>
   <p:serialization port="b_with-english" indent="true"/>
   <p:serialization port="c_mapped"       indent="true"/>
+  <p:serialization port="d_enhanced"     indent="true"/>
+  <p:serialization port="e_linked"       indent="true"/>
   
   <p:serialization port="z1_html-docs"     indent="true" method="html"/>
   <p:serialization port="z2_markdown-docs"               method="text"/>
@@ -66,6 +74,13 @@
     <p:input port="stylesheet">
       <!-- XSLT 1.0 so it also runs in a browser -->
       <p:document href="oscaldocs-html-enhance.xsl"/>
+    </p:input>
+  </p:xslt>
+  
+  <p:xslt name="linkup-html-docs">
+    <p:input port="stylesheet">
+      <!-- XSLT 1.0 so it also runs in a browser -->
+      <p:document href="oscaldocs-html-linkup.xsl"/>
     </p:input>
   </p:xslt>
   

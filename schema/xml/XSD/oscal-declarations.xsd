@@ -48,9 +48,6 @@
       <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="identifier">
-    <xs:complexType/>
-  </xs:element>
   <!--
     part declaration
     add 'purpose', 'guidance' etc.
@@ -86,6 +83,9 @@
       <xs:attributeGroup ref="oscal:relAttr"/>
       <xs:attributeGroup ref="oscal:contextAttr"/>
     </xs:complexType>
+  </xs:element>
+  <xs:element name="identifier">
+    <xs:complexType/>
   </xs:element>
   <xs:element name="singleton">
     <xs:complexType/>

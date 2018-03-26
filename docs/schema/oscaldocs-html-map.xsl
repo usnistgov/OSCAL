@@ -48,7 +48,8 @@ div div div h3 { font-size: 110% }
 
 .code { font-family: monospace }
 
-blockquote { background-color: gainsboro; padding: 0.2em; margin: 0.5em }
+blockquote { background-color: gainsboro; padding: 0.4em; margin: 0.5em; border: thin outset black;
+  font-family: sans-serif; font-size: 80%; display: inline-block }
 blockquote * { margin: 0em }
 
 #toc-panel { margin-top: 0em; border: thin solid black; float: left;
@@ -384,13 +385,13 @@ a:visited { color: midnightblue }
     </code>
   </xsl:template>
   
-  <xsl:key name="elements-by-tag" match="oscal:component[@class='element-description']"
+  <!--<xsl:key name="elements-by-tag" match="oscal:component[@class='element-description']"
     use="oscal:prop[@class='tag']"/>
   
   <xsl:key name="attributes-by-tag" match="oscal:component[@class='attribute-description']"
     use="'@' || oscal:prop[@class='tag']"/>
   
-  <!-- these are cross-references to elements -->
+  <!-\- these are cross-references to elements -\->
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']]">
     <xsl:variable name="target" select="key('elements-by-tag',.)"/>
     <a href="#{$target[1]/generate-id(.)}" class="code">
@@ -398,13 +399,13 @@ a:visited { color: midnightblue }
     </a>
   </xsl:template>
   
-  <!-- and attributes -->
+  <!-\- and attributes -\->
   <xsl:template match="oscal:code[.=//oscal:prop[@class='tag']!('@' || .)]">
     <xsl:variable name="target" select="key('attributes-by-tag',.)"/>
     <a href="#{$target[1]/generate-id(.)}" class="code">
       <xsl:apply-templates/>
     </a>
-  </xsl:template>
+  </xsl:template>-->
   
   
   <xsl:template match="oscal:q">

@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="oscal-docs-html.xsl"?>
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css" title="Straight" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
-<?xml-model href="oscal-docs.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model type="application/xml" href="oscal-docs.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!--<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
 <?xml-model href="../../schema/xml/RNC/oscal-experimental.rnc" type="application/relax-ng-compact-syntax"?>
 <worksheet xmlns="http://csrc.nist.gov/ns/oscal/1.0">
@@ -46,9 +46,10 @@
       analogous to controls, but by and large they will eventually make reference to controls.</p>
     <p>Controls can be thought of as structured information objects aligned with one another, like
       rows in a spreadsheet, with cells in the row designated for carrying labeled (and sometimes
-      structured) information. To accommodate this, OSCAL provides a lightweight and free-form
-        <q>documentary</q> format, which includes semantic <q>islands</q> of structured information.
-      These are semantic not only because they are addressable in principle, but more importantly
+      structured) fields or items of information. To accommodate this, OSCAL provides a lightweight
+      and free-form <q>documentary</q> format, which includes semantic <q>islands</q> of structured
+      (tagged) data. When deployed regularly and systematically (or assumed to be so), these become
+        <q>semantic</q> not only because they are addressable in principle, but more importantly
       because their organizations and values may be known before processing occurs, at least with
       respect to certain operations and relations, and even (at the most general level) before
       operations are designed and deployed. When encoded in OSCAL, control catalogs and the
@@ -60,7 +61,7 @@
         <q>controls</q>, formal processes, procedures, and so forth, within that domain.</p>
     <p>This organization is governed by an XML schema, which enforces containment constraints among
       these elements. In particular, the OSCAL schema declares elements for <code>group</code>,
-        <code>control</code>, <code>subcontrol</code>,, and <code>part</code>. OSCAL can support
+        <code>control</code>, <code>subcontrol</code>, and <code>part</code>. OSCAL can support
       organizations of information with arbitrary granularity, as any of these objects may be used
       consistently to carry regular sets of properties, with names and value spaces that may be
       known in advance or discovered dynamically.</p>
@@ -243,10 +244,12 @@
     <component class="attribute-description">
       <prop class="tag">param-id</prop>
       <prop class="full_name">Parameter ID</prop>
-      <part class="description"><p>Identifies the parameter element target (<code>param</code>) that governs content insertion at this location.
-        While the composition of the parameter (including its given value or labels) may be altered in a profile (or <q>overlay</q>, a parameter declaration
-        is expected to be extant in the document containing the insertion.)</p></part>
-      <part class="remarks"/>
+      <part class="description"><p>Applicable parameter</p></part>
+      <part class="remarks">
+        <p>Identifies the parameter element target (<code>param</code>) that governs content
+          insertion at this location (when on an <code>insert</code>), or to which a parameter
+          setting applies (when on a <code>set-param</code>).</p>
+      </part>
     </component>
     <component class="element-description">
       <prop class="tag">withdrawn</prop>
@@ -271,7 +274,7 @@
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
       <part class="description">
-        <p>For partitioning a catalog, collection, or section therein</p>
+        <p>A partition within a catalog or section (prose text not controls)</p>
       </part>
       <part class="remarks">
         <p>Echoes HTML5 <code>section</code>. May contain controls (<code>control</code>) or groups
@@ -282,7 +285,7 @@
       <prop class="tag">group</prop>
       <prop class="full_name">Group</prop>
       <part class="description">
-        <p>Related controls or groups (of controls or groups)</p>
+        <p>A set of related controls or groups (of controls or groups)</p>
       </part>
       <part class="remarks">
         <p>In addition to controls or groups, groups may be titled and may have their own
@@ -564,8 +567,8 @@
         <p>The OSCAL validation model supports not only validation against a formal schema
           (describing elements, attributes, and their permitted contents, described generally and
           generically), but also against a set of declarations provided specifically for the catalog
-          or catalog type within which they appear. Constraints described in these declarations, and
-          bound via assignments of <code>@class</code> (for information within controls or
+          or catalog type within which controls appear. Constraints described in these declarations,
+          and bound via assignments of <code>@class</code> (for information within controls or
           components) and <code>@context</code> (indicating control, subcontrol, component or part
           wherein the given object may appear), enable automated checking for consistency of
           controls, subcontrols, components and their parts, specific to the types or kinds of
@@ -1016,6 +1019,135 @@
     </component>
     
     
+  </group>
+  <group>
+    <title>Attributes</title>
+    <component class="attribute-description">
+      <prop class="tag">from</prop>
+      <prop class="full_name">from</prop>
+      <part class="description">
+        <p>from</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">context</prop>
+      <prop class="full_name">context</prop>
+      <part class="description">
+        <p>context</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">rel</prop>
+      <prop class="full_name">rel</prop>
+      <part class="description">
+        <p>rel</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">method</prop>
+      <prop class="full_name">method</prop>
+      <part class="description">
+        <p>method</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">with-subcontrols</prop>
+      <prop class="full_name">with-subcontrols</prop>
+      <part class="description">
+        <p>with-subcontrols</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">with-control</prop>
+      <prop class="full_name">with-control</prop>
+      <part class="description">
+        <p>with-control</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">control-id</prop>
+      <prop class="full_name">control-id</prop>
+      <part class="description">
+        <p>control-id</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">subcontrol-id</prop>
+      <prop class="full_name">subcontrol-id</prop>
+      <part class="description">
+        <p>subcontrol-id</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">pattern</prop>
+      <prop class="full_name">pattern</prop>
+      <part class="description">
+        <p>pattern</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">order</prop>
+      <prop class="full_name">order</prop>
+      <part class="description">
+        <p>order</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">control-id</prop>
+      <prop class="full_name">control-id</prop>
+      <part class="description">
+        <p>control-id</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">subcontrol-id</prop>
+      <prop class="full_name">subcontrol-id</prop>
+      <part class="description">
+        <p>subcontrol-id</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">control-id</prop>
+      <prop class="full_name">control-id</prop>
+      <part class="description">
+        <p>control-id</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">subcontrol-id</prop>
+      <prop class="full_name">subcontrol-id</prop>
+      <part class="description">
+        <p>subcontrol-id</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">class-ref</prop>
+      <prop class="full_name">class-ref</prop>
+      <part class="description">
+        <p>class-ref</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">id-ref</prop>
+      <prop class="full_name">id-ref</prop>
+      <part class="description">
+        <p>id-ref</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">item-name</prop>
+      <prop class="full_name">item-name</prop>
+      <part class="description">
+        <p>item-name</p>
+      </part>
+    </component>
+    <component class="attribute-description">
+      <prop class="tag">position</prop>
+      <prop class="full_name">position</prop>
+      <part class="description">
+        <p>position</p>
+      </part>
+    </component>
   </group>
   <group>
     <title>Experimental elements</title>

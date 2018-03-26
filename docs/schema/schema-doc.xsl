@@ -102,18 +102,23 @@
         </xsl:for-each>
     </xsl:template>
     
-    <xsl:template priority="2" match="/element[elements[empty(*)]]" mode="oscalize" expand-text="true">
-        <p><i>This element is empty</i></p>
+    <xsl:template priority="4" match="/element[elements[empty(*)]]" mode="oscalize" expand-text="true">
+        <p>This element is empty</p>
     </xsl:template>
     
-    <xsl:template match="/element" mode="oscalize" expand-text="true">
+    <xsl:template priority="3" match="/element" mode="oscalize" expand-text="true">
         <title>Content declaration (reduced)</title>
         <ul>
             <xsl:apply-templates mode="#current"/>
         </ul>
     </xsl:template>
     
-    <xsl:template match="element" mode="oscalize" expand-text="true">
+    <xsl:template priority="5" match="/element[@type='xs:string']" mode="oscalize" expand-text="true">
+        <p><i>Contains text</i></p>
+    </xsl:template>
+    
+    
+    <xsl:template match="element//element" mode="oscalize" expand-text="true">
         <li>element <em>{ @name }</em>{ if (@minOccurs='0') then ' (optional)' else '' }, containing:
             <ul>
                 <xsl:apply-templates mode="#current"/>
@@ -121,28 +126,24 @@
         </li>
     </xsl:template>
     
-    <xsl:template priority="2" match="element[@type='xs:string']" mode="oscalize" expand-text="true">
-        <li>{ if (exists(parent::*)) then 'e' else 'E' }lement <em>{ @name }</em>, containing text</li>
+    <xsl:template priority="2" match="element//element[@type='xs:string']" mode="oscalize" expand-text="true">
+        <li>contains text</li>
     </xsl:template>
     
     
-    <xsl:template match="element[empty(* except annotation)]" priority="2" mode="oscalize" expand-text="true">
+    <xsl:template match="element//element[empty(* except annotation)]" priority="2" mode="oscalize" expand-text="true">
         <li>element <code>{ @name | @ref }</code>
             <xsl:if test="empty(parent::optionalRepeatable)">
-                <xsl:choose>
-                    <xsl:when test="@minOccurs = '0'">
-                        <xsl:choose>
-                            <xsl:when test="@maxOccurs = 'unbounded'"> (as many as wanted)</xsl:when>
-                            <xsl:otherwise> (optional)</xsl:otherwise>
-                        </xsl:choose>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:if test="@maxOccurs = 'unbounded'"> (at least one)</xsl:if>
-                    </xsl:otherwise>
-                </xsl:choose>
+                <xsl:apply-templates select="." mode="cardinality"/>
             </xsl:if>
         </li>
     </xsl:template>
+    
+    <xsl:template mode="cardinality" priority="1" match="element"> (mandatory)</xsl:template>
+    <xsl:template mode="cardinality" priority="5" match="choice/element"> (once)</xsl:template>
+    <xsl:template mode="cardinality" priority="10" match="element[@maxOccurs='unbounded']"> (at least one)</xsl:template>
+    <xsl:template mode="cardinality" priority="20" match="element[@minOccurs='0']"> (optional)</xsl:template>
+    <xsl:template mode="cardinality" priority="30" match="element[@minOccurs='0'][@maxOccurs='unbounded']"> (zero or more)</xsl:template>
     
     
     
@@ -154,10 +155,17 @@
     
     <xsl:template match="attribute/@type" mode="oscalize" expand-text="true"> valid to constraints for type '{ QName('http://www.w3.org/2001/XMLSchema',.) ! local-name-from-QName(.) }'</xsl:template>
     
+    <xsl:template match="choice" mode="oscalize" expand-text="true">
+        <li>a choice:<ul>
+            <xsl:apply-templates mode="#current"/>
+        </ul>
+        </li>
+    </xsl:template>
+    
     <xsl:template match="optionalRepeatable" mode="oscalize" expand-text="true">
         <li>as needed:<ul>
-                <xsl:apply-templates mode="#current"/>
-            </ul>
+            <xsl:apply-templates mode="#current"/>
+        </ul>
         </li>
     </xsl:template>
     
