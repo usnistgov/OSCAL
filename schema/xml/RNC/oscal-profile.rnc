@@ -37,8 +37,8 @@ withContrlAttr =  attribute with-control { ('yes'|'no') }?
 # Schematron requirement: there exists in the catalog a control or subcontrol
 # by the given @id
 # when @with-subcontrols is used, it must be @control-id
-call = element call { (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
-           attribute subcontrol-id { xsd:NCName } }
+call = element call { ( withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
+                      ( withContrlAttr,     attribute subcontrol-id { xsd:NCName } ) }
 
 # 'match' calls (includes) controls and subcontrols indiscriminately: when matching (as a regex) the @id,
 # controls or subcontrols may be included.

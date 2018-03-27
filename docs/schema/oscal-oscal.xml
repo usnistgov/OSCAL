@@ -1033,28 +1033,30 @@
       <prop class="tag">context</prop>
       <prop class="full_name">context</prop>
       <part class="description">
-        <p>context</p>
+        <p>Identifies the type (marked class) of <code>control</code>, <code>subcontrol</code>,
+            <code>group</code> or <code>part</code> which a declared control item (such as a
+            <code>part</code>, <code>prop</code> or <code>link</code>) is expected to appear.</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">rel</prop>
       <prop class="full_name">rel</prop>
       <part class="description">
-        <p>rel</p>
+        <p>The stipulated relation of a link to its target or vice versa</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">method</prop>
       <prop class="full_name">method</prop>
       <part class="description">
-        <p>method</p>
+        <p>The method to be used when combining controls or subcontrols in resolution. A value of </p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">with-subcontrols</prop>
       <prop class="full_name">with-subcontrols</prop>
       <part class="description">
-        <p>with-subcontrols</p>
+        <p>Say <q>yes</q> to include subcontrols with their controls</p>
       </part>
     </component>
     <component class="attribute-description">
@@ -1082,70 +1084,48 @@
       <prop class="tag">pattern</prop>
       <prop class="full_name">pattern</prop>
       <part class="description">
-        <p>pattern</p>
+        <p>A regular expression to be matched against an ID value for purposes of control
+          selection</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">order</prop>
       <prop class="full_name">order</prop>
       <part class="description">
-        <p>order</p>
-      </part>
-    </component>
-    <component class="attribute-description">
-      <prop class="tag">control-id</prop>
-      <prop class="full_name">control-id</prop>
-      <part class="description">
-        <p>control-id</p>
-      </part>
-    </component>
-    <component class="attribute-description">
-      <prop class="tag">subcontrol-id</prop>
-      <prop class="full_name">subcontrol-id</prop>
-      <part class="description">
-        <p>subcontrol-id</p>
-      </part>
-    </component>
-    <component class="attribute-description">
-      <prop class="tag">control-id</prop>
-      <prop class="full_name">control-id</prop>
-      <part class="description">
-        <p>control-id</p>
-      </part>
-    </component>
-    <component class="attribute-description">
-      <prop class="tag">subcontrol-id</prop>
-      <prop class="full_name">subcontrol-id</prop>
-      <part class="description">
-        <p>subcontrol-id</p>
+        <p>When matching multiple controls, what order to use in emitting them: <code>source</code>,
+            <code>ascending</code>(alphabetically by ID) or <code>descending</code> (alphabetically
+          by ID)</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">class-ref</prop>
       <prop class="full_name">class-ref</prop>
       <part class="description">
-        <p>class-ref</p>
+        <p>Classes of controls or subcontrols in scope for alteration</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">id-ref</prop>
       <prop class="full_name">id-ref</prop>
       <part class="description">
-        <p>id-ref</p>
+        <p>ID values on controls or subcontrols in scope for alteration</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">item-name</prop>
       <prop class="full_name">item-name</prop>
       <part class="description">
-        <p>item-name</p>
+        <p>An element name of control contents in scope for alteration</p>
+      </part>
+      <part class="remarks">
+        <p>To select the <code>title</code> element use the value <q>title</q> etc.</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">position</prop>
       <prop class="full_name">position</prop>
       <part class="description">
-        <p>position</p>
+        <p>The position of insertion when adding to control contents (in alteration)</p>
       </part>
     </component>
   </group>

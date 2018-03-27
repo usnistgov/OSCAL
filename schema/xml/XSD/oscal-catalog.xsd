@@ -64,8 +64,8 @@
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:param"/>
         <xs:element ref="oscal:link"/>
-        <xs:group ref="oscal:anyKindofProp"/>
-        <xs:group ref="oscal:anyKindofPart"/>
+        <xs:element ref="oscal:prop"/>
+        <xs:element ref="oscal:part"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
@@ -96,25 +96,6 @@
     </xs:complexType>
   </xs:element>
   <!-- inSubcontrol = title?, control-components, references? -->
-  <!-- === These declarations can be overridden on a level up: -->
-  <!-- Add 'semantic' prop types such as name, number, method -->
-  <xs:group name="anyKindofProp">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:prop"/>
-    </xs:sequence>
-  </xs:group>
-  <!-- Add 'semantic' part types: purpose, guidance, decision, information, remarks (etc) -->
-  <xs:group name="anyKindofPart">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:part"/>
-    </xs:sequence>
-  </xs:group>
-  <!-- generic OSCAL doesn't have special kinds of paragraphs -->
-  <xs:group name="anyKindofP">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:p"/>
-    </xs:sequence>
-  </xs:group>
   <!--
     Rule of thumb for the difference:
     - prop if it's a simple scalar value, never markup of any kind, typically a controlled value
@@ -130,10 +111,13 @@
   <xs:element name="part" type="oscal:asPart"/>
   <!-- asPart allows other things (in importing schemas) to declare themselves as parts or part-like -->
   <xs:complexType name="asPart">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="oscal:control-components"/>
-      <xs:group ref="oscal:prose"/>
-    </xs:choice>
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="oscal:title"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="oscal:control-components"/>
+        <xs:group ref="oscal:prose"/>
+      </xs:choice>
+    </xs:sequence>
     <xs:attribute name="id" type="xs:ID"/>
     <xs:attributeGroup ref="oscal:optionalClass"/>
   </xs:complexType>
@@ -180,7 +164,7 @@
   <xs:group name="prose">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="oscal:anyKindofP"/>
+        <xs:element ref="oscal:p"/>
         <xs:element ref="oscal:ul"/>
         <xs:element ref="oscal:ol"/>
         <xs:element ref="oscal:pre"/>
