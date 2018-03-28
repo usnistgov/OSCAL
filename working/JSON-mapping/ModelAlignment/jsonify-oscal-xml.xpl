@@ -22,7 +22,7 @@
   
   <p:serialization port="_A_mapped" indent="true"/>
   
-  <p:serialization port="_Z_serialized" indent="true" method="xml"/>
+  <p:serialization port="_Z_serialized" indent="true" method="text"/>
   
   <p:serialization port="_0_input"      indent="true"/>
   
@@ -41,8 +41,8 @@
   </p:xslt>
   
   <!-- Last chance for comments, PIs etc. -->
-  <p:identity name="json-out"/>
-  <!--<p:xslt name="json-out">
+  <!--<p:identity name="json-out"/>-->
+  <p:xslt name="json-out">
     <p:input port="stylesheet">
       <p:inline>
         <xsl:stylesheet version="3.0" exclude-result-prefixes="#all">
@@ -62,7 +62,7 @@
         </xsl:stylesheet>
       </p:inline>
     </p:input>
-  </p:xslt>-->
+  </p:xslt>
   
  
  

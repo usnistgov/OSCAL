@@ -12,6 +12,7 @@
     
     <xsl:output indent="yes"/>
     
+    
 <!-- Takes OSCAL especially SP800-53-flavored OSCAL and produces JSON
         as per requirements
      for ATLAS
@@ -89,8 +90,25 @@
     <xsl:template mode="prose" match="*">
         <string key="prose">
             <xsl:for-each select="p | ul | ol">
-              <xsl:value-of select="serialize(.)"/>
+                <xsl:value-of select="oscal:serialize(.)"/>
             </xsl:for-each>
+        </string>
+    </xsl:template>
+    
+    <xsl:function name="oscal:serialize" as="xs:string">
+        <xsl:param name="who" as="node()"/>
+        <xsl:variable name="no-ns">
+            <xsl:apply-templates select="$who" mode="serialize"/>
+        </xsl:variable>
+        <!-- Note we have to cast off delimiters after serializing -->
+        <xsl:value-of select="serialize($no-ns)"/>
+        <!--<xsl:value-of select="serialize($no-ns) => replace('&lt;','\\u003c') => replace('&gt;','\\u003e')"/>"/>-->
+    </xsl:function>
+    
+    <xsl:template mode="escaped" match="*">
+        <xsl:param name="key">value</xsl:param>
+        <string key="{$key}">
+            <xsl:value-of select="node()/oscal:serialize(.)"/>
         </string>
     </xsl:template>
     
@@ -151,9 +169,7 @@
     <xsl:template match="link">
         <map>
             <xsl:apply-templates mode="as-string" select="@*"/>
-            <xsl:apply-templates mode="as-escaped" select=".[matches(.,'\S')]">
-                <xsl:with-param name="key">prose</xsl:with-param>
-            </xsl:apply-templates>
+            <xsl:apply-templates mode="escaped" select=".[matches(.,'\S')]"/>
         </map>
     </xsl:template>
     
@@ -183,4 +199,18 @@
         </map>
     </xsl:template>
 -->    
+    
+<!-- More 'serialize' strips namespaces and drops comments and PIs   -->
+    <xsl:template mode="serialize" match="*">
+        <!-- Note how namespace has to be *unset* to avoid the XPath processor from providing its own (oof) -->
+        <xsl:element name="{local-name()}" namespace="">
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates mode="#current"/>
+        </xsl:element>
+    </xsl:template>
+    
+    <!-- Since XProc doesn't support character maps we do this in XSLT -   -->
+    <xsl:template mode="serialize" match="text()">
+        <xsl:value-of select="replace(.,'&lt;','\\u003c') => replace('&gt;','\\u003e')"/>
+    </xsl:template>
 </xsl:stylesheet>

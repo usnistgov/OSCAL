@@ -5,19 +5,23 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
-    <xsl:variable name="some_xml">
-        <map xmlns="http://www.w3.org/2005/xpath-functions"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://www.w3.org/2005/xpath-functions file:/home/wendell/Documents/C2Labs/ATLAS/analysis/xml-json.xsd">
-            <array key="mine">
-                <string>here</string>
-            </array>
-        </map>
+        <xsl:output use-character-maps="delimiters" method="text"/>
         
-    </xsl:variable>
-    
-    <xsl:template match="/">
-        <xsl:value-of select="xml-to-json($some_xml)"/>
-    </xsl:template>
-    
+        <xsl:character-map name="delimiters">
+            <xsl:output-character character="&lt;" string="\u003c"/>
+            <xsl:output-character character="&gt;" string="\u003e"/>
+        </xsl:character-map>
+        
+        <xsl:variable name="write-options" as="map(*)">
+            <xsl:map>
+                <xsl:map-entry key="'indent'">true</xsl:map-entry>
+            </xsl:map>
+        </xsl:variable>
+        
+        <xsl:template match="/">
+            <json>
+                <xsl:value-of select="xml-to-json(/, $write-options)"/>
+            </json>
+        </xsl:template>
+        
 </xsl:stylesheet>
