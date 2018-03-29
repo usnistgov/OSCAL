@@ -26,7 +26,7 @@
    <xs:element name="section">
       <xs:annotation>
          <xs:documentation>
-            <b>Section</b> For partitioning a catalog, collection, or section therein</xs:documentation>
+            <b>Section</b> A partition within a catalog or section (prose text not controls)</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -42,7 +42,7 @@
    <xs:element name="group">
       <xs:annotation>
          <xs:documentation>
-            <b>Group</b> Related controls or groups (of controls or groups)</xs:documentation>
+            <b>Group</b> A set of related controls or groups (of controls or groups)</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

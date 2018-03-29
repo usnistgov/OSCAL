@@ -11,6 +11,7 @@
 >     * [&lt;prop> Property](#prop-property)
 >     * [&lt;part> Part](#part-part)
 >     * [&lt;link> Link](#link-link)
+>     * [@rel rel](#rel-rel)
 >     * [@id ID / identifier](#id-id-/-identifier)
 >     * [@href hypertext reference](#href-hypertext-reference)
 >     * [@class Class](#class-class)
@@ -50,6 +51,7 @@
 >     * [&lt;declare-p> Paragraph declaration](#declare-p-paragraph-declaration)
 >     * [&lt;declare-part> Part declaration](#declare-part-part-declaration)
 >     * [&lt;declare-link> Link declaration](#declare-link-link-declaration)
+>     * [@context context](#context-context)
 >     * [&lt;singleton> Singleton constraint](#singleton-singleton-constraint)
 >     * [&lt;required> Requirement constraint](#required-requirement-constraint)
 >     * [&lt;identifier> Identifier constraint](#identifier-identifier-constraint)
@@ -58,6 +60,7 @@
 >     * [&lt;calc> Calculated value constraint](#calc-calculated-value-constraint)
 >     * [&lt;autonum> Autonumbered (generated) value](#autonum-autonumbered-(generated)-value)
 >     * [&lt;inherit> Inherited value](#inherit-inherited-value)
+>     * [@from from](#from-from)
 >   * [Profiling](#profiling)
 >     * [&lt;profile> Profile](#profile-profile)
 >     * [&lt;import> Import resource](#import-import-resource)
@@ -67,14 +70,26 @@
 >     * [&lt;exclude> Exclude controls](#exclude-exclude-controls)
 >     * [&lt;all> Include all](#all-include-all)
 >     * [&lt;call> Call (control or subcontrol)](#call-call-(control-or-subcontrol))
+>     * [@control-id control-id](#control-id-control-id)
+>     * [@subcontrol-id subcontrol-id](#subcontrol-id-subcontrol-id)
 >     * [&lt;match> match](#match-match)
+>     * [@pattern pattern](#pattern-pattern)
+>     * [@order order](#order-order)
+>     * [@with-subcontrols with-subcontrols](#with-subcontrols-with-subcontrols)
+>     * [@with-control with-control](#with-control-with-control)
 >     * [&lt;set-param> Parameter setting](#set-param-parameter-setting)
 >     * [&lt;alter> Alteration](#alter-alteration)
 >     * [&lt;remove> Removal](#remove-removal)
+>     * [@class-ref class-ref](#class-ref-class-ref)
+>     * [@id-ref id-ref](#id-ref-id-ref)
+>     * [@item-name item-name](#item-name-item-name)
 >     * [&lt;add> Addition](#add-addition)
 >     * [&lt;combine> combine](#combine-combine)
+>     * [@method method](#method-method)
 >     * [&lt;as-is> as-is](#as-is-as-is)
 >     * [&lt;custom> custom](#custom-custom)
+>   * [Attributes](#attributes)
+>     * [@position position](#position-position)
 >   * [Experimental elements](#experimental-elements)
 >     * [&lt;framework> Framework](#framework-framework)
 >     * [&lt;worksheet> Worksheet](#worksheet-worksheet)
@@ -120,7 +135,7 @@ Because OSCAL is designed to carry richer and denser semantics than most markup 
 
 ### Controls and their contents
 
-xsd: ../../schema/xml/oscal-catalog.xsd
+xsd: ../../schema/xml/XSD/catalog_.xsd
 
 The foundations of OSCAL are in control objects, such as controls and subcontrols, and the structured information they represent or contain (loosely "objects", represented as valid XML elements). These contents will include both structured contents (using element types as described here) and (within those) relatively uncontrolled or free-form contents (described elsewhere as [prose](#prose)).
 
@@ -218,7 +233,7 @@ Works like an HTML anchor ([a](#a-anchor)) except this is a line-oriented (block
 
 ##### Content declaration (reduced)
 
-* attribute `@rel` (optional)
+* attribute [@rel](#rel-rel) (optional)
 * attribute [@href](#href-hypertext-reference) (optional)
 * text content, possibly mixed with 
   * element [q](#q-quoted-text)
@@ -229,6 +244,10 @@ Works like an HTML anchor ([a](#a-anchor)) except this is a line-oriented (block
   * element [sub](#sub-subscript)
   * element [sup](#sup-superscript)
   * element [span](#span-span)
+
+#### rel rel 
+> The stipulated relation of a link to its target or vice versa
+* Allowed on [link](#link-link), [declare-link](#declare-link-link-declaration)
 
 #### id ID / identifier 
 > A value on @id unique within local document scope, i.e. across a given catalog or representation of catalog contents (controls).
@@ -252,7 +271,7 @@ Overloading this attribute with more than one value is permitted, but not recomm
 
 ### Functional elements
 
-xsd: ../../schema/xml/oscal-catalog.xsd
+xsd: ../../schema/xml/XSD/catalog_.xsd
 
 Functional elements appear inside control content to provide "hooks" to OSCAL processors for retrievability, manipulation (including mapping and transformation), and semantic traversal.
 
@@ -319,7 +338,7 @@ The functionality provided by this element might better be offered by a property
 
 ### Structural elements
 
-xsd: ../../schema/xml/oscal-catalog.xsd
+xsd: ../../schema/xml/XSD/catalog_.xsd
 
 #### section Section 
 > A partition within a catalog or section (prose text not controls)
@@ -432,7 +451,7 @@ For references to standards, [std](#std-standard) may be preferred.
 
 ### Prose
 
-xsd: ../../schema/xml/oscal-catalog.xsd
+xsd: ../../schema/xml/XSD/catalog_.xsd
 
 Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where they will ordinarily be relegated to the control's partitions or statements ([part](#part-part)s). OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a narrow subset of HTML element types. This is intended to be the bare minimum of stripped down text as is appropriate for control documentation. Graphics, diagrams, and tables are all out of scope for OSCAL (although arbitrary feature sets can always be modeled in OSCAL as nested parts).
 
@@ -683,7 +702,7 @@ The OSCAL declarations model does not presently support validating properties of
 
 ### Declarations elements
 
-xsd: ../../schema/xml/oscal-declarations.xsd
+xsd: ../../schema/xml/XSD/declarations_.xsd
 
 By declaring constraints on information associated with controls such as their properties ([prop](#prop-property)), parts ([part](#part-part)) and links ([link](#link-link)), applications and operators can validate the composition and consistency of available controls. Over and above the "core validation" of OSCAL element naming (which is enforced by direct application of an XML schema), such validation can help to guarantee processability and interchange of OSCAL data by verifying that not only tags, but also values given in the data, conform to expressed constraints, which can be made specific to a catalog or catalog type.
 
@@ -694,7 +713,7 @@ OSCAL declarations are enforced by a Schematron; the core schema stipulates this
 #### declarations Declarations 
 > For extra-schema validation of data given within controls or framework components
 
-The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which controls appear. Constraints described in these declarations, and bound via assignments of [@class](#class-class) (for information within controls or components) and `@context` (indicating control, subcontrol, component or part wherein the given object may appear), enable automated checking for consistency of controls, subcontrols, components and their parts, specific to the types or kinds of control items that appear within a particular catalog or framework.
+The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which controls appear. Constraints described in these declarations, and bound via assignments of [@class](#class-class) (for information within controls or components) and [@context](#context-context) (indicating control, subcontrol, component or part wherein the given object may appear), enable automated checking for consistency of controls, subcontrols, components and their parts, specific to the types or kinds of control items that appear within a particular catalog or framework.
 
 ##### Content declaration (reduced)
 
@@ -713,12 +732,12 @@ The constraints that will apply to these properties are indicated by the element
 
 Because the [@class](#class-class) attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values, when used on controls or their compo. Although overloading [@class](#class-class), as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application, restricting elements to have *at most*, a single class assignment, will help keep things clean and intelligible.
 
-On declarations including [declare-prop](#declare-prop-property-declaration) and its siblings, however, both [@class](#class-class) and `@context` may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
+On declarations including [declare-prop](#declare-prop-property-declaration) and its siblings, however, both [@class](#class-class) and [@context](#context-context) may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
 
 ##### Content declaration (reduced)
 
 * attribute [@class](#class-class) (required)
-* attribute `@context` (required)
+* attribute [@context](#context-context) (required)
 * element [singleton](#singleton-singleton-constraint) (optional)
 * element [required](#required-requirement-constraint) (optional)
 * element [identifier](#identifier-identifier-constraint) (optional)
@@ -737,7 +756,7 @@ Effectively, the difference between a "property"[prop](#prop-property) and "clas
 ##### Content declaration (reduced)
 
 * attribute [@class](#class-class) (required)
-* attribute `@context` (required)
+* attribute [@context](#context-context) (required)
 * element [singleton](#singleton-singleton-constraint) (optional)
 * element [required](#required-requirement-constraint) (optional)
 
@@ -749,7 +768,7 @@ Parts are subject to singleton and requirement constraints, but not to constrain
 ##### Content declaration (reduced)
 
 * attribute [@class](#class-class) (required)
-* attribute `@context` (required)
+* attribute [@context](#context-context) (required)
 * element [singleton](#singleton-singleton-constraint) (optional)
 * element [required](#required-requirement-constraint) (optional)
 
@@ -758,10 +777,14 @@ Parts are subject to singleton and requirement constraints, but not to constrain
 
 ##### Content declaration (reduced)
 
-* attribute `@rel` (optional)
-* attribute `@context` (required)
+* attribute [@rel](#rel-rel) (optional)
+* attribute [@context](#context-context) (required)
 * element [singleton](#singleton-singleton-constraint) (optional)
 * element [required](#required-requirement-constraint) (optional)
+
+#### context context 
+> Identifies the type (marked class) of [control](#control-control), [subcontrol](#subcontrol-control-extension), [group](#group-group) or [part](#part-part) which a declared control item (such as a [part](#part-part), [prop](#prop-property) or [link](#link-link)) is expected to appear.
+* Required on [declare-prop](#declare-prop-property-declaration), [declare-part](#declare-part-part-declaration), [declare-p](#declare-p-paragraph-declaration), [declare-link](#declare-link-link-declaration)
 
 #### singleton Singleton constraint 
 > The declared component may occur only once in its context
@@ -840,9 +863,13 @@ If a value must inherit from a property of a different class from the containing
 
 This element is empty
 
+#### from from 
+> from
+* Allowed on [inherit](#inherit-inherited-value)
+
 ### Profiling
 
-xsd: ../../schema/xml/oscal-profile.xsd
+xsd: ../../schema/xml/XSD/profile_.xsd
 
 By means of its profiling functionality, OSCAL provides ways of specifying and documenting configurations or "overlays" of catalog, as profile documents. Although they may contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct means or mechanism for working with OSCAL.
 
@@ -922,8 +949,8 @@ Within [exclude](#exclude-exclude-controls), [all](#all-include-all) is not an o
 * a choice:
   * element [match](#match-match) (once)
   * element *call*, containing: 
-    * attribute `@control-id` (optional) valid to constraints for type 'NCName'
-    * attribute `@subcontrol-id` (optional) valid to constraints for type 'NCName'
+    * attribute [@control-id](#control-id-control-id) (optional) valid to constraints for type 'NCName'
+    * attribute [@subcontrol-id](#subcontrol-id-subcontrol-id) (optional) valid to constraints for type 'NCName'
 
 #### all Include all 
 > Include all controls from the imported resource (catalog)
@@ -960,16 +987,40 @@ This element is empty
 #### call Call (control or subcontrol) 
 > Call a control or subcontrol by its ID
 
-Inside [include](#include-include-controls), If `@control-id` is used (to indicate the control being referenced), `@subcontrol-id` cannot be used, and vice versa. (A single [call](#call-call-(control-or-subcontrol)) element is used for each control.) This constraint is enforced by the schema. Likewise, `@with-subcontrols` can be used only along with `@control-id` not with `@subcontrol-id`.
+Inside [include](#include-include-controls), If [@control-id](#control-id-control-id) is used (to indicate the control being referenced), [@subcontrol-id](#subcontrol-id-subcontrol-id) cannot be used, and vice versa. (A single [call](#call-call-(control-or-subcontrol)) element is used for each control.) This constraint is enforced by the schema. Likewise, [@with-subcontrols](#with-subcontrols-with-subcontrols) can be used only along with [@control-id](#control-id-control-id) not with [@subcontrol-id](#subcontrol-id-subcontrol-id).
 
-If `@with-subcontrols` is "yes" on the call to a control, no sibling [call](#call-call-(control-or-subcontrol))elements need to be used to call its subcontrols. Accordingly it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
+If [@with-subcontrols](#with-subcontrols-with-subcontrols) is "yes" on the call to a control, no sibling [call](#call-call-(control-or-subcontrol))elements need to be used to call its subcontrols. Accordingly it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
 
 This element is empty
+
+#### control-id control-id 
+> control-id
+* Allowed on [call](#call-call-(control-or-subcontrol)), [alter](#alter-alteration)
+
+#### subcontrol-id subcontrol-id 
+> subcontrol-id
+* Allowed on [call](#call-call-(control-or-subcontrol)), [alter](#alter-alteration)
 
 #### match match 
 > Select controls by (regular expression) match on ID
 
 This element is empty
+
+#### pattern pattern 
+> A regular expression to be matched against an ID value for purposes of control selection
+* Required on [match](#match-match)
+
+#### order order 
+> When matching multiple controls, what order to use in emitting them: `source`, `ascending`(alphabetically by ID) or `descending` (alphabetically by ID)
+* Allowed on [match](#match-match)
+
+#### with-subcontrols with-subcontrols 
+> Say "yes" to include subcontrols with their controls
+* Allowed on [all](#all-include-all), [call](#call-call-(control-or-subcontrol)), [match](#match-match)
+
+#### with-control with-control 
+> with-control
+* Allowed on [call](#call-call-(control-or-subcontrol)), [match](#match-match)
 
 #### set-param Parameter setting 
 > Set a parameter's value or rewrite its label or description
@@ -983,6 +1034,7 @@ This element is empty
 * element [desc](#desc-parameter-description) (optional)
 * element [label](#label-parameter-label) (optional)
 * element [value](#value-value-constraint) (optional)
+* element [link](#link-link) (zero or more)
 
 #### alter Alteration 
 > Specifies changes to be made to an included control or subcontrol when a profile is resolved
@@ -993,26 +1045,40 @@ It is an error for two [alter](#alter-alteration) elements to apply to the same 
 
 ##### Content declaration (reduced)
 
-* attribute `@control-id` (optional) valid to constraints for type 'NCName'
-* attribute `@subcontrol-id` (optional) valid to constraints for type 'NCName'
+* attribute [@control-id](#control-id-control-id) (optional) valid to constraints for type 'NCName'
+* attribute [@subcontrol-id](#subcontrol-id-subcontrol-id) (optional) valid to constraints for type 'NCName'
 * element [remove](#remove-removal) (zero or more)
 * element [add](#add-addition) (zero or more)
 
 #### remove Removal 
 > Elements to be removed from a control or subcontrol, in resolution
 
-Use `@class-ref`, `@id-ref` or `@item-name` to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control or subcontrol, when a catalog is resolved. The control or subcontrol affected is indicated by the pointer on the removal's parent (containing) [alter](#alter-alteration) element.
+Use [@class-ref](#class-ref-class-ref), [@id-ref](#id-ref-id-ref) or [@item-name](#item-name-item-name) to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control or subcontrol, when a catalog is resolved. The control or subcontrol affected is indicated by the pointer on the removal's parent (containing) [alter](#alter-alteration) element.
 
 To change an element, use [remove](#remove-removal) to remove the element, then [add](#add-addition) to add it back again with changes.
 
 This element is empty
+
+#### class-ref class-ref 
+> Classes of controls or subcontrols in scope for alteration
+* Allowed on [remove](#remove-removal)
+
+#### id-ref id-ref 
+> ID values on controls or subcontrols in scope for alteration
+* Allowed on [remove](#remove-removal)
+
+#### item-name item-name 
+> An element name of control contents in scope for alteration
+
+To select the [title](#title-title) element use the value "title" etc.
+* Allowed on [remove](#remove-removal)
 
 #### add Addition 
 > Element contents to be added to a control or subcontrols, in resolution
 
 ##### Content declaration (reduced)
 
-* attribute `@position` (required)
+* attribute [@position](#position-position) (required)
 * as needed:
   * element [title](#title-title)
   * element [param](#param-parameter)
@@ -1023,6 +1089,10 @@ This element is empty
 > Whether and how to combine multiple (competing) versions of the same control
 
 This element is empty
+
+#### method method 
+> The method to be used when combining controls or subcontrols in resolution. A value of 
+* Required on [combine](#combine-combine)
 
 #### as-is as-is 
 > Structure the controls in resolution as they are structured in their source catalogs
@@ -1046,6 +1116,12 @@ This element is empty
       * element [match](#match-match)
   * element [call](#call-call-(control-or-subcontrol))
   * element [match](#match-match)
+
+### Attributes
+
+#### position position 
+> The position of insertion when adding to control contents (in alteration)
+* Required on [add](#add-addition)
 
 ### Experimental elements
 

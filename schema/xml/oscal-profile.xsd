@@ -96,7 +96,7 @@
          <xs:element name="group">
             <xs:annotation>
                <xs:documentation>
-                  <b>Group</b> Related controls or groups (of controls or groups)</xs:documentation>
+                  <b>Group</b> A set of related controls or groups (of controls or groups)</xs:documentation>
             </xs:annotation>
             <xs:complexType>
                <xs:sequence>
@@ -176,6 +176,7 @@
       <xs:complexType>
          <xs:attributeGroup ref="oscal:withSubContrlsAttr"/>
          <xs:attribute name="control-id" type="xs:NCName"/>
+         <xs:attributeGroup ref="oscal:withContrlAttr"/>
          <xs:attribute name="subcontrol-id" type="xs:NCName"/>
       </xs:complexType>
    </xs:element>
@@ -231,6 +232,7 @@
             <xs:element minOccurs="0" ref="oscal:desc"/>
             <xs:element minOccurs="0" ref="oscal:label"/>
             <xs:element minOccurs="0" ref="oscal:value"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:link"/>
          </xs:sequence>
          <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
          <xs:attributeGroup ref="oscal:optionalClass"/>
