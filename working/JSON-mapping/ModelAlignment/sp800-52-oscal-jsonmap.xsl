@@ -87,12 +87,16 @@
         </string>
     </xsl:template>
     
-    <xsl:template mode="prose" match="*">
-        <string key="prose">
-            <xsl:for-each select="p | ul | ol">
-                <xsl:value-of select="oscal:serialize(.)"/>
-            </xsl:for-each>
+    <xsl:template mode="as-escaped" match="@* | *">
+        <string>
+            <xsl:value-of select="oscal:serialize(.)"/>
         </string>
+    </xsl:template>
+    
+    <xsl:template mode="prose" match="*">
+        <array key="prose">
+            <xsl:apply-templates mode="as-escaped" select="p | ul | ol"/>
+        </array>
     </xsl:template>
     
     <xsl:function name="oscal:serialize" as="xs:string">
