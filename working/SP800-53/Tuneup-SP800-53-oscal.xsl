@@ -37,9 +37,9 @@
       <desc>
         <xsl:apply-templates/>
       </desc>
-      <value>
+      <label>
         <xsl:apply-templates/>
-      </value>
+      </label>
     </param>
   </xsl:template>
   
