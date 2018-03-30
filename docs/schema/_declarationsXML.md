@@ -16,8 +16,6 @@ For extra-schema validation of data given within controls or framework component
 
 The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which controls appear. Constraints described in these declarations, and bound via assignments of `@class` (for information within controls or components) and [@context](#context-attribute--declaration-context) (indicating control, subcontrol, component or part wherein the given object may appear), enable automated checking for consistency of controls, subcontrols, components and their parts, specific to the types or kinds of control items that appear within a particular catalog or framework.
 
-##### Content declaration (reduced)
-
 * attribute `@href` (optional)
 * complexContent
 * extension base:oscal:decls
@@ -33,8 +31,6 @@ The constraints that will apply to these properties are indicated by the element
 Because the `@class` attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values, when used on controls or their compo. Although overloading `@class`, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application, restricting elements to have *at most*, a single class assignment, will help keep things clean and intelligible.
 
 On declarations including `<declare-prop>` and its siblings, however, both `@class` and [@context](#context-attribute--declaration-context) may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
-
-##### Content declaration (reduced)
 
 * attribute `@class` (required)
 * attribute [@context](#context-attribute--declaration-context) (required)
@@ -54,8 +50,6 @@ Elements contained in the declaration, as with all declarations, indicate constr
 
 Effectively, the difference between a "property"`prop` and "classified p"`p[@class]` is that properties may have only simple scalar values, not subject to dynamic processing or injection. So `p` elements directly inside a `control`, `subcontrol` or `part` may contain `insert` elements, for example (just as can `p` elements in running prose), whereas parameters cannot be injected into properties by definition (since they are required to be stable per control object).
 
-##### Content declaration (reduced)
-
 * attribute `@class` (required)
 * attribute [@context](#context-attribute--declaration-context) (required)
 * element [&lt;singleton>](#singleton-element--singleton-constraint) (optional)
@@ -67,8 +61,6 @@ Indicates constraints to be imposed on parts in context
 
 Parts are subject to singleton and requirement constraints, but not to constraints on values. However, note that parts may also serve as contexts for other control objects, including properties and parts.
 
-##### Content declaration (reduced)
-
 * attribute `@class` (required)
 * attribute [@context](#context-attribute--declaration-context) (required)
 * element [&lt;singleton>](#singleton-element--singleton-constraint) (optional)
@@ -77,8 +69,6 @@ Parts are subject to singleton and requirement constraints, but not to constrain
 ### `<declare-link>` element | Link declaration 
 
 Indicates constraints to be imposed on links in context
-
-##### Content declaration (reduced)
 
 * attribute `@rel` (optional)
 * attribute [@context](#context-attribute--declaration-context) (required)
@@ -147,8 +137,6 @@ Contains text
 Indicates a permissible value for a parameter or property, calculated dynamically
 
 Similar to [&lt;value>](#value-element--value-constraint) except that its contents are expanded to produce the permitted value, instead of being given as a literal.
-
-##### Content declaration (reduced)
 
 * attribute `@` (optional)
 * text content, possibly mixed with 

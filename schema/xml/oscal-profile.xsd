@@ -37,7 +37,7 @@
    <xs:element name="merge">
       <xs:annotation>
          <xs:documentation>
-            <b>merge</b> Merge controls in resolution</xs:documentation>
+            <b>Merge controls</b> Merge controls in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -52,7 +52,7 @@
    <xs:element name="combine">
       <xs:annotation>
          <xs:documentation>
-            <b>combine</b> Whether and how to combine multiple (competing) versions of the same control</xs:documentation>
+            <b>Combination rule</b> Whether and how to combine multiple (competing) versions of the same control</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attribute name="method" use="required">
@@ -69,14 +69,14 @@
    <xs:element name="as-is">
       <xs:annotation>
          <xs:documentation>
-            <b>as-is</b> Structure the controls in resolution as they are structured in their source catalogs</xs:documentation>
+            <b>Structure as-is; retain source structure</b> Structure the controls in resolution as they are structured in their source catalogs</xs:documentation>
       </xs:annotation>
       <xs:complexType/>
    </xs:element>
    <xs:element name="custom">
       <xs:annotation>
          <xs:documentation>
-            <b>custom</b> Frame a structure wherein represented controls will be embedded in resolution</xs:documentation>
+            <b>Customized structure for controls</b> Frame a structure wherein represented controls will be embedded in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -114,7 +114,7 @@
    <xs:element name="modify">
       <xs:annotation>
          <xs:documentation>
-            <b>modify</b> Set parameters or emend controls in resolution</xs:documentation>
+            <b>Modify controls</b> Set parameters or emend controls in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -183,7 +183,7 @@
    <xs:element name="match">
       <xs:annotation>
          <xs:documentation>
-            <b>match</b> Select controls by (regular expression) match on ID</xs:documentation>
+            <b>Match controls and subcontrols by identifier</b> Select controls by (regular expression) match on ID</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:attributeGroup ref="oscal:withSubContrlsAttr"/>

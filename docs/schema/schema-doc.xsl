@@ -108,7 +108,6 @@
     </xsl:template>
     
     <xsl:template priority="3" match="/element" mode="oscalize" expand-text="true">
-        <title>Content declaration (reduced)</title>
         <ul>
             <xsl:apply-templates mode="#current"/>
         </ul>

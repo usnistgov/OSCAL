@@ -16,8 +16,6 @@ In reference to a catalog (or other resource such as profile or framework), a se
 
 An OSCAL document that describes a selection with possible modification of multiple controls from multiple catalogs. It provides mechanisms by which controls may be selected ([&lt;import>](#import-element--import-resource)), merged or (re)structured ([&lt;merge>](#merge-element--merge-controls)), and emended ([&lt;modify>](#modify-element--modify-controls)). OSCAL profiles may select subsets of control sets, set parameter values for them in application, and even qualify the representation of controls and subcontrols as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.
 
-##### Content declaration (reduced)
-
 * attribute `@id` (required) valid to constraints for type 'ID'
 * element `title` (mandatory)
 * element [&lt;import>](#import-element--import-resource) (at least one)
@@ -32,8 +30,6 @@ An `<import>` indicates a source whose controls are to be included (referenced a
 
 The contents of the `<import>` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [&lt;include>](#include-element--include-controls) element) or de-selected (using an [&lt;exclude>](#exclude-element--exclude-controls) element) from the source catalog or profile.
 
-##### Content declaration (reduced)
-
 * attribute `@href` (optional)
 * element [&lt;include>](#include-element--include-controls) (optional)
 * element [&lt;exclude>](#exclude-element--exclude-controls) (optional)
@@ -46,8 +42,6 @@ Indicates (by its presence) that controls included in a profile via different an
 
 Implicitly, a merge statement is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a merge statement, will not be merged into (will be dropped) in the resulting resolution.
 
-##### Content declaration (reduced)
-
 * element [&lt;combine>](#combine-element--combination-rule) (optional)
 * as needed (at least one):
   * element [&lt;as-is>](#as-is-element--structure-as-is-retain-source-structure)
@@ -56,8 +50,6 @@ Implicitly, a merge statement is also a filter: controls that are included in a 
 ### `<modify>` element | Modify controls 
 
 Set parameters or emend controls in resolution
-
-##### Content declaration (reduced)
 
 * as needed:
   * element [&lt;set-param>](#set-param-element--parameter-setting)
@@ -71,8 +63,6 @@ To be schema-valid, this element must contain either (but not both) a single [&l
 
 If this element is not given, it is assumed to be present with contents [&lt;all>](#all-element--include-all) (qv); i.e., all controls are included by default, unless the `<include>` instruction calls controls specifically.
 
-##### Content declaration (reduced)
-
 * as needed (at least one):
   * element [&lt;all>](#all-element--include-all)
   * as needed (at least one):
@@ -84,8 +74,6 @@ If this element is not given, it is assumed to be present with contents [&lt;all
 Which controls and subcontrols to exclude from the resource (source catalog) being imported
 
 Within `<exclude>`, [&lt;all>](#all-element--include-all) is not an option since it makes no sense. However, it also makes no sense (think about it) to use `exclude/call` except with `include/all` (it makes no sense to call in by ID only to exclude by ID). The only error condition reported, however, is when the same control is both included (explicitly, by ID) and excluded.
-
-##### Content declaration (reduced)
 
 * as needed (at least one):
   * element [&lt;match>](#match-element--match-controls-and-subcontrols-by-identifier)
@@ -178,8 +166,6 @@ Set a parameter's value or rewrite its label or description
 
 `@param-id` indicates the parameter (within the scope of the referenced catalog or resource). The `value` element is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A `desc` element can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).
 
-##### Content declaration (reduced)
-
 * attribute `@param-id` (required) valid to constraints for type 'NMTOKEN'
 * attribute `@class` (optional)
 * element `desc` (optional)
@@ -194,8 +180,6 @@ Specifies changes to be made to an included control or subcontrol when a profile
 Use `@targets` to indicate the classes of elements (typically `part` or `prop` elements) to erase or remove from a control, when a catalog is resolved.
 
 It is an error for two `<alter>` elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
-
-##### Content declaration (reduced)
 
 * attribute [@control-id](#control-id-attribute--control-identifier) (optional) valid to constraints for type 'NCName'
 * attribute [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) (optional) valid to constraints for type 'NCName'
@@ -233,8 +217,6 @@ To select the `title` element use the value "title" etc.
 
 Element contents to be added to a control or subcontrols, in resolution
 
-##### Content declaration (reduced)
-
 * attribute `@position` (required)
 * as needed:
   * element `title`
@@ -266,8 +248,6 @@ This element is empty
 ### `<custom>` element | Customized structure for controls 
 
 Frame a structure wherein represented controls will be embedded in resolution
-
-##### Content declaration (reduced)
 
 * attribute `@id` (optional) valid to constraints for type 'ID'
 * attribute `@class` (optional)

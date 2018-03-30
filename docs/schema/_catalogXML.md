@@ -10,8 +10,6 @@ The foundations of OSCAL are in control objects, such as controls and subcontrol
 
 A (canonical) control catalog: a structured set of security controls
 
-##### Content declaration (reduced)
-
 * element [&lt;title>](#title-element--title) (mandatory)
 * element `declarations` (optional)
 * as needed:
@@ -25,8 +23,6 @@ A (canonical) control catalog: a structured set of security controls
 A structured information object representing a security control
 
 Controls may be grouped using [&lt;group>](#group-element--group), and controls may be partitioned using [&lt;part>](#part-element--part) or extended using [&lt;subcontrol>](#subcontrol-element--control-extension).
-
-##### Content declaration (reduced)
 
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-attribute--class) (optional)
@@ -44,8 +40,6 @@ Controls may be grouped using [&lt;group>](#group-element--group), and controls 
 An associated or dependent control object; an enhancement to a control
 
 A nominal subcontrol or "control extension" permits catalogs to offer access to structured control objects within controls. Further levels down can be achieved using [&lt;part>](#part-element--part) (both controls and subcontrols may be partitioned), which may contain their own parts; however, knowing in advance which "controls" and "subcontrols" are especially significant is helpful.
-
-##### Content declaration (reduced)
 
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-attribute--class) (optional)
@@ -71,9 +65,8 @@ For singletons (that is, the only element among siblings with its [@class](#clas
 
 Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls and parts and extensions), for any purpose useful to an application or implementation of those controls. Typically and routinely, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.
 
-##### Content declaration (reduced)
-
-* text content *only* (and potentially further constrained)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* text content
 
 ### `<part>` element | Part 
 
@@ -84,8 +77,6 @@ Like properties ([&lt;prop>](#prop-element--property)) and parameters ([&lt;para
 An assigned class may frequently provide for a header in display, such that `part[@class='objectives']` is displayed under a header *Objectives*, etc. Parts may also however have their own titles ([&lt;title>](#title-element--title) elements).
 
 Generally speaking, `<part>` elements will be of two kinds. Many parts are logical partitions or sections for prose; these may be called "statements" and may be expected to have simple prose contents, even just one paragraph. Other parts may be more formally constructed out of properties ([&lt;prop>](#prop-element--property) elements) and/or their own parts. Such structured objects (sometimes called "features") may, at the extreme, function virtually as control extensions or subcontrol-like objects ("enhancements"). Since the composition of parts can be constrained using OSCAL declarations (of the items or components to be given in a part or in this type of part), their use for encoding "objects" of arbitrary complexity within controls, is effectively open-ended.
-
-##### Content declaration (reduced)
 
 * element [&lt;title>](#title-element--title) (optional)
 * as needed:
@@ -103,8 +94,6 @@ Generally speaking, `<part>` elements will be of two kinds. Many parts are logic
 A line or paragraph with a hypertext link
 
 Works like an HTML anchor ([&lt;a>](#a-element--anchor)) except this is a line-oriented (block) element.
-
-##### Content declaration (reduced)
 
 * attribute [@rel](#rel-attribute--relation) (optional)
 * attribute [@href](#href-attribute--hypertext-reference) (optional)
@@ -155,8 +144,6 @@ Functional elements appear inside control content to provide "hooks" to OSCAL pr
 
 A parameter setting, to be propagated to points of insertion
 
-##### Content declaration (reduced)
-
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-attribute--class) (optional)
 * element [&lt;desc>](#desc-element--parameter-description) (mandatory)
@@ -172,8 +159,6 @@ Contains text
 ### `<desc>` element | Parameter description 
 
 Indicates and explains the purpose and use of a parameter
-
-##### Content declaration (reduced)
 
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
@@ -206,8 +191,6 @@ Used to mark a control or subcontrol included in a catalog as a placeholder, to 
 
 The functionality provided by this element might better be offered by a property or some other controlled value, at which point it may be removed; it is included to support (some) legacy content.
 
-##### Content declaration (reduced)
-
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
   * element [&lt;code>](#code-element--code)
@@ -225,8 +208,6 @@ The functionality provided by this element might better be offered by a property
 A partition within a catalog or section (prose text not controls)
 
 Echoes HTML5 `<section>`. May contain controls ([&lt;control>](#control-element--control)) or groups of controls ([&lt;group>](#group-element--group)).
-
-##### Content declaration (reduced)
 
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-attribute--class) (optional)
@@ -247,8 +228,6 @@ In addition to controls or groups, groups may be titled and may have their own p
 
 Unlike sections ([&lt;section>](#section-element--section) elements), groups may not contain arbitrary prose (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped (no [@class](#class-attribute--class)) and therefore unconstrained by declarations.
 
-##### Content declaration (reduced)
-
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-attribute--class) (optional)
 * element [&lt;title>](#title-element--title) (optional)
@@ -266,8 +245,6 @@ Unlike sections ([&lt;section>](#section-element--section) elements), groups may
 
 A fallback for display and navigation, exclusive of more specific properties
 
-##### Content declaration (reduced)
-
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text) (zero or more)
 
@@ -275,15 +252,11 @@ A fallback for display and navigation, exclusive of more specific properties
 
 A group of reference descriptions
 
-##### Content declaration (reduced)
-
 * element [&lt;ref>](#ref-element--reference) (at least one)
 
 ### `<ref>` element | Reference 
 
 A reference, with one or more citations to standards, related documents, or other resources
-
-##### Content declaration (reduced)
 
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * as needed:
@@ -299,8 +272,6 @@ A reference, with one or more citations to standards, related documents, or othe
 Citation of a formal published standard
 
 Echoes the NISO JATS (and NISO STS) `<std>` element
-
-##### Content declaration (reduced)
 
 * attribute [@href](#href-attribute--hypertext-reference) (optional) valid to constraints for type 'anyURI'
 * text content, possibly mixed with 
@@ -321,8 +292,6 @@ Citation of a resource
 Echoes the NISO JATS (and NISO STS) `mixed-citation` element.
 
 For references to standards, [&lt;std>](#std-element--standard) may be preferred.
-
-##### Content declaration (reduced)
 
 * attribute [@href](#href-attribute--hypertext-reference) (optional) valid to constraints for type 'anyURI'
 * text content, possibly mixed with 
@@ -348,8 +317,6 @@ Running text: a paragraph or paragraph fragment
 
 This element echoes HTML `<p>`. As in HTML, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.
 
-##### Content declaration (reduced)
-
 * [@class](#class-attribute--class) and [@id](#id-attribute--id--identifier), optionally, as usual
 * as needed, mixed with text:
   * element [&lt;withdrawn>](#withdrawn-element--withdrawn)
@@ -369,8 +336,6 @@ This element echoes HTML `<p>`. As in HTML, it is not limited to indicating comp
 Retains whitespace in display
 
 Echoes HTML `<pre>`.
-
-##### Content declaration (reduced)
 
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * text content, possibly mixed with 
@@ -392,8 +357,6 @@ Although this echoes HTML `<ol>`, renditional aspects of this element are not of
 
 At present there is no support for "continued lists", as we have not seen any in documents in scope for analysis.
 
-##### Content declaration (reduced)
-
 * element [&lt;li>](#li-element--list-item) (at least one)
 
 ### `<ul>` element | Unordered list 
@@ -406,8 +369,6 @@ Note that when sequences or lists appear, it may be as common in OSCAL to list (
 
 OSCAL has (as of yet) no "simple" or unadorned list element; it is suggested that an [@class](#class-attribute--class) added to `<ul>` should be rendered as such in any application that wants it.
 
-##### Content declaration (reduced)
-
 * element [&lt;li>](#li-element--list-item) (at least one)
 
 ### `<li>` element | List item 
@@ -417,8 +378,6 @@ An item demarcated with a bullet or numerator
 OSCAL uses a lightweight HTML-like approach to lists, in which list items are unstructured (mixed content) except for permitting sublists directly, without separation from other text. The expectation is that items in lists will not need further internal ("paragraph") demarcation.
 
 Lists that are really (brief) subsections may be expressed as (nested, unclassed) [&lt;part>](#part-element--part) elements. Generally speaking, structured feature sets (in the form of parts with regular property sets), are more likely to be easily addressable than lists.
-
-##### Content declaration (reduced)
 
 * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * attribute [@class](#class-attribute--class) (optional)
@@ -445,8 +404,6 @@ In display, this element can be expected to "toggle", i.e. provide for italics w
 
 Particular semantics (indicating types of emphasis for finer resolution in display or retrieval) may be provided via [@class](#class-attribute--class).
 
-##### Content declaration (reduced)
-
 * attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
@@ -464,8 +421,6 @@ Particular semantics (indicating types of emphasis for finer resolution in displ
 Typographical shift to italics
 
 An implementation may toggle, i.e., display contents using a roman face when the surrounding text is already italic.
-
-##### Content declaration (reduced)
 
 * attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
@@ -489,8 +444,6 @@ As of yet, OSCAL does not support underlining directly (no `u` element or design
 
 In ordinary use, `<b>` and [&lt;i>](#i-element--italics) should perhaps be deprecated in favor of more "semantic" elements such as [&lt;em>](#em-element--emphasis), [&lt;code>](#code-element--code) or even `span>` especially with [@class](#class-attribute--class) attributes.
 
-##### Content declaration (reduced)
-
 * attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
@@ -513,8 +466,6 @@ Anchors without [@href](#href-attribute--hypertext-reference) are not invalid to
 
 As in HTML, `<a>` appears inline (in mixed content), while [&lt;link>](#link-element--link) is a "paragraph-level" link (that appears next to paragraphs or components in a control).
 
-##### Content declaration (reduced)
-
 * attribute [@href](#href-attribute--hypertext-reference) (optional)
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
@@ -528,8 +479,6 @@ As in HTML, `<a>` appears inline (in mixed content), while [&lt;link>](#link-ele
 An inline segment to appear within quotation marks
 
 This element is intended for use producing "smart quotes" around short phrases, not for extended quotations. Ordinarily it has no special semantics other than to provide quotation marks in display.
-
-##### Content declaration (reduced)
 
 * text content, possibly mixed with 
   * element [&lt;code>](#code-element--code)
@@ -546,8 +495,6 @@ Inline code
 
 Strictly, this element should identify formal code or code fragments. Like anything else, it may be "enhanced" using its class.
 
-##### Content declaration (reduced)
-
 * attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
@@ -563,16 +510,12 @@ Strictly, this element should identify formal code or code fragments. Like anyth
 
 Superscripted text
 
-##### Content declaration (reduced)
-
 * attribute [@class](#class-attribute--class) (optional)
 * text content
 
 ### `<sub>` element | Subscript 
 
 Subscripted text
-
-##### Content declaration (reduced)
 
 * attribute [@class](#class-attribute--class) (optional)
 * text content
@@ -584,8 +527,6 @@ Generic inline container
 As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) tagging.
 
 The OSCAL declarations model does not presently support validating properties of arbitrary spans. But it might. Please share your requirements.
-
-##### Content declaration (reduced)
 
 * attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 

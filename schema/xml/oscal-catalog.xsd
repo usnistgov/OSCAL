@@ -181,6 +181,7 @@
       </xs:complexType>
    </xs:element>
    <xs:attributeGroup name="asProp">
+      <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
    </xs:attributeGroup>
    <xs:group name="prose">
