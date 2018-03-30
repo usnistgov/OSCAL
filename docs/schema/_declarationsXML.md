@@ -1,21 +1,4 @@
 
-> * [XML Schema _declarations.xsd](#)
->   * [Declarations elements](#declarations-elements)
->     * [&lt;declarations> Declarations](#declarations-element--declarations)
->     * [&lt;declare-prop> Property declaration](#declare-prop-element--property-declaration)
->     * [&lt;declare-p> Paragraph declaration](#declare-p-element--paragraph-declaration)
->     * [&lt;declare-part> Part declaration](#declare-part-element--part-declaration)
->     * [&lt;declare-link> Link declaration](#declare-link-element--link-declaration)
->     * [@context Declaration context](#context-attribute--declaration-context)
->     * [&lt;singleton> Singleton constraint](#singleton-element--singleton-constraint)
->     * [&lt;required> Requirement constraint](#required-element--requirement-constraint)
->     * [&lt;identifier> Identifier constraint](#identifier-element--identifier-constraint)
->     * [&lt;regex> Regular expression constraint](#regex-element--regular-expression-constraint)
->     * [&lt;value> Value constraint](#value-element--value-constraint)
->     * [&lt;calc> Calculated value constraint](#calc-element--calculated-value-constraint)
->     * [&lt;autonum> Autonumbered (generated) value](#autonum-element--autonumbered-generated-value)
->     * [&lt;inherit> Inherited value](#inherit-element--inherited-value)
->     * [@from Alternative property (class) from which to inherit](#from-attribute--alternative-property-class-from-which-to-inherit)
 
 # XML Schema _declarations.xsd
 

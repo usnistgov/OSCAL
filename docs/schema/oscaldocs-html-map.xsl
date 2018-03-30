@@ -72,7 +72,7 @@ a:visited { color: midnightblue }
             <xsl:apply-templates/>
           </h1>
         </xsl:for-each>
-        <xsl:apply-templates mode="toc"/>
+        <!--<xsl:apply-templates mode="toc"/>-->
         <xsl:apply-templates/>
       </body>
     </html>
