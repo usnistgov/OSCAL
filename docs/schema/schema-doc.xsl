@@ -12,10 +12,11 @@
     
     <xsl:mode on-no-match="shallow-copy"/>
     
+    <!-- The entire set must be included since declarations call declarations in other modules. -->
     <xsl:variable name="schema-files" as="element()*">
-        <document href="catalog_.xsd"/>
-        <document href="declarations_.xsd"/>
-        <document href="profile_.xsd"/>
+        <document href="_catalog.xsd"/>
+        <document href="_declarations.xsd"/>
+        <document href="_profile.xsd"/>
     </xsl:variable>
     
     <xsl:variable name="schema-sources">
@@ -133,7 +134,7 @@
     
     <xsl:template match="element//element[empty(* except annotation)]" priority="2" mode="oscalize" expand-text="true">
         <li>element <code>{ @name | @ref }</code>
-            <xsl:if test="empty(parent::optionalRepeatable)">
+            <xsl:if test="empty(parent::optionalRepeatable|parent::choice)">
                 <xsl:apply-templates select="." mode="cardinality"/>
             </xsl:if>
         </li>
@@ -156,7 +157,7 @@
     <xsl:template match="attribute/@type" mode="oscalize" expand-text="true"> valid to constraints for type '{ QName('http://www.w3.org/2001/XMLSchema',.) ! local-name-from-QName(.) }'</xsl:template>
     
     <xsl:template match="choice" mode="oscalize" expand-text="true">
-        <li>a choice:<ul>
+        <li>as needed (at least one):<ul>
             <xsl:apply-templates mode="#current"/>
         </ul>
         </li>

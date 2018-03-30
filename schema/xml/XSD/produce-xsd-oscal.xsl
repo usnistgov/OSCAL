@@ -7,10 +7,8 @@
   
   <xsl:output indent="yes"/>
   
-  <!-- Run on an XSD to produce a set of blank controls for describing elements
-       (and eventually attributes) declared therein.
-  
-  May require adjustment! This has not been written to work on just any XSD. -->
+  <!-- Purpose: produce a blank (initial) OSCAL document from a schema, listing elements and attributes in that schema. -->
+<!-- Note: you shouldn't need this XSLT unless you are starting to write schema documentation for a new schema, and wish to poll its element/attribute set. -->
   
   <xsl:template match="/">
     <worksheet>

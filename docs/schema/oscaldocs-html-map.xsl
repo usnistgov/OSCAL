@@ -230,7 +230,7 @@ a:visited { color: midnightblue }
   
   <xsl:template match="*" mode="title">
     <xsl:param name="runins"/>
-    <xsl:variable name="how-deep" select="count(ancestor-or-self::*) + 1"/>
+    <xsl:variable name="how-deep" select="count(ancestor-or-self::*)"/>
     <xsl:element name="h{$how-deep}">
       <xsl:copy-of select="@class"/>
       <xsl:apply-templates mode="run-in" select="$runins"/>

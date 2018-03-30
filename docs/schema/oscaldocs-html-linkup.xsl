@@ -12,10 +12,10 @@
   <xsl:mode  on-no-match="shallow-copy"/>
   
   <xsl:key name="desc-by-tag" match="div[contains-token(@class,'element-description')]"
-    use="h4/span[contains-token(@class,'tag')]"/>
+    use="h3/code[contains-token(@class,'tag')]"/>
   
   <xsl:key name="desc-by-tag" match="div[contains-token(@class,'attribute-description')]"
-    use="h4/span[contains-token(@class,'tag')]/('@' || .)"/>
+    use="h3/code[contains-token(@class,'tag')]/('@' || .)"/>
   
   <!--<div class="control attribute-description" id="d81e859">
     <h4 class="attribute-description">
@@ -25,7 +25,9 @@
   <xsl:template match="code[exists(key('desc-by-tag',.))]">
     <xsl:variable name="target" select="key('desc-by-tag',.)"/>
     <a href="#{$target[1]/@id}" class="code">
+      <xsl:if test="contains-token($target/@class,'element-description')">&lt;</xsl:if>
       <xsl:apply-templates/>
+      <xsl:if test="contains-token($target/@class,'element-description')">&gt;</xsl:if>
     </a>
   </xsl:template>
   

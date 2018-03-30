@@ -97,7 +97,7 @@
 >     * [&lt;xdm-datatype> XDM datatype lexical constraint](#xdm-datatype-xdm-datatype-lexical-constraint)
 >   * [Constraints outside the core schema](#constraints-outside-the-core-schema)
 >     * [Order of items inside controls](#order-of-items-inside-controls)
->     * [Interdicted @class assignments](#interdicted-@class-assignments)
+>     * [Reserved @class assignments](#reserved-@class-assignments)
 >   * [Developer notes and rationales](#developer-notes-and-rationales)
 >     * [Controls, not (only) the documents that describe them](#controls,-not-(only)-the-documents-that-describe-them)
 >     * [Validation](#validation)
@@ -375,9 +375,9 @@ Unlike sections ([section](#section-section) elements), groups may not contain a
   * element [link](#link-link)
   * element [prop](#prop-property)
   * element [part](#part-part)
-* a choice:
-  * element [group](#group-group) (once)
-  * element [control](#control-control) (once)
+* as needed (at least one):
+  * element [group](#group-group)
+  * element [control](#control-control)
 * element [references](#references-references) (optional)
 
 #### title Title 
@@ -741,10 +741,10 @@ On declarations including [declare-prop](#declare-prop-property-declaration) and
 * element [singleton](#singleton-singleton-constraint) (optional)
 * element [required](#required-requirement-constraint) (optional)
 * element [identifier](#identifier-identifier-constraint) (optional)
-* a choice:
-  * element [regex](#regex-regular-expression-constraint) (once)
-  * element [calc](#calc-calculated-value-constraint) (zero or more)
-  * element [value](#value-value-constraint) (zero or more)
+* as needed (at least one):
+  * element [regex](#regex-regular-expression-constraint)
+  * element [calc](#calc-calculated-value-constraint)
+  * element [value](#value-value-constraint)
 
 #### declare-p Paragraph declaration 
 > Indicates constraints to be enforced on paragraphs in context
@@ -911,9 +911,9 @@ Implicitly, a merge statement is also a filter: controls that are included in a 
 ##### Content declaration (reduced)
 
 * element [combine](#combine-combine) (optional)
-* a choice:
-  * element [as-is](#as-is-as-is) (once)
-  * element [custom](#custom-custom) (once)
+* as needed (at least one):
+  * element [as-is](#as-is-as-is)
+  * element [custom](#custom-custom)
 
 #### modify modify 
 > Set parameters or emend controls in resolution
@@ -933,11 +933,11 @@ If this element is not given, it is assumed to be present with contents [all](#a
 
 ##### Content declaration (reduced)
 
-* a choice:
-  * element [all](#all-include-all) (once)
-  * a choice:
-    * element [call](#call-call-(control-or-subcontrol)) (once)
-    * element [match](#match-match) (once)
+* as needed (at least one):
+  * element [all](#all-include-all)
+  * as needed (at least one):
+    * element [call](#call-call-(control-or-subcontrol))
+    * element [match](#match-match)
 
 #### exclude Exclude controls 
 > Which controls and subcontrols to exclude from the resource (source catalog) being imported
@@ -946,8 +946,8 @@ Within [exclude](#exclude-exclude-controls), [all](#all-include-all) is not an o
 
 ##### Content declaration (reduced)
 
-* a choice:
-  * element [match](#match-match) (once)
+* as needed (at least one):
+  * element [match](#match-match)
   * element *call*, containing: 
     * attribute [@control-id](#control-id-control-id) (optional) valid to constraints for type 'NCName'
     * attribute [@subcontrol-id](#subcontrol-id-subcontrol-id) (optional) valid to constraints for type 'NCName'
@@ -1169,10 +1169,10 @@ Note that parameters in particular are "floating values" and may appear almost a
 
 How or whether an implementation may respect the order of properties, parts and components in general, within a control type, may be expected to vary among applications or "flavors" of OSCAL; but order among components is not presently enforced under its declarations model. (Such a functionality could be discussed.)
 
-#### Interdicted @class assignments
+#### Reserved @class assignments
 > No control, component, object within a control, framework component or group can have a class assignment that overlaps with an element name in OSCAL
 
-Interdicted names: [control](#control-control), [subcontrol](#subcontrol-control-extension), [component](#component-framework-component)[group](#group-group), [part](#part-part), [prop](#prop-property),[param](#param-parameter), or [title](#title-title). Using the [title](#title-title) element for nominal titles is better than using a property.
+Forbidden names include (at last check): [control](#control-control), [subcontrol](#subcontrol-control-extension), [component](#component-framework-component), [group](#group-group), [part](#part-part), [prop](#prop-property),[param](#param-parameter), or [title](#title-title). Using the [title](#title-title) element for nominal titles is better than using a property.
 
 This constraint may be relaxed by failing to run the `OSCAL-strict.sch` Schematron.
 

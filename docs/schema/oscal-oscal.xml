@@ -77,7 +77,7 @@
   </section>
   <group>
     <title>Controls and their contents</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and the
       structured information they represent or contain (loosely <q>objects</q>, represented as valid
       XML elements). These contents will include both structured contents (using element types as
@@ -184,7 +184,7 @@
     </component>
     <component class="attribute-description">
       <prop class="tag">rel</prop>
-      <prop class="full_name">rel</prop>
+      <prop class="full_name">Relation</prop>
       <part class="description">
         <p>The stipulated relation of a link to its target or vice versa</p>
       </part>
@@ -215,7 +215,7 @@
   </group>
   <group>
     <title>Functional elements</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
     
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
@@ -276,7 +276,7 @@
     </group>
   <group>
     <title>Structural elements</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
     <component class="element-description">
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
@@ -350,7 +350,7 @@
   </group>
   <group id="prose">
     <title>Prose</title>
-    <prop class="xsd">../../schema/xml/XSD/catalog_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
     <p>Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where
       they will ordinarily be relegated to the control's partitions or statements
       (<code>part</code>s). OSCAL prose elements echo HTML semantics, although they are deliberately
@@ -547,7 +547,7 @@
   </group>
   <group>
     <title>Declarations elements</title>
-    <prop class="xsd">../../schema/xml/XSD/declarations_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/_declarations.xsd</prop>
     <p>By declaring constraints on information associated with controls such as their properties
         (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
       and operators can validate the composition and consistency of available controls. Over and
@@ -656,7 +656,7 @@
     </component>
     <component class="attribute-description">
       <prop class="tag">context</prop>
-      <prop class="full_name">context</prop>
+      <prop class="full_name">Declaration context</prop>
       <part class="description">
         <p>Identifies the type (marked class) of <code>control</code>, <code>subcontrol</code>,
             <code>group</code> or <code>part</code> which a declared control item (such as a
@@ -806,14 +806,23 @@
     </component>
     <component class="attribute-description">
       <prop class="tag">from</prop>
-      <prop class="full_name">from</prop>
+      <prop class="full_name">Alternative property (class) from which to inherit</prop>
       <part class="description">
-        <p>from</p>
+        <p>When used, this element indicates a class for a property value to be considered for
+          inheritance.</p>
+      </part>
+      <part class="remarks">
+        <p>If this attribute is ommitted, the target class is considered the same as the calling
+          (inheriting) property. Sometimes, however, a property may wish to inherit a value from a
+          property with a different class assignment (i.e. a differently-named property). In these
+          cases, use this attribute.</p>
+        <p>An example of this attribute in use appears in the declarations model for a COBIT5
+          mockup.</p>
       </part>
     </component>
   </group><group id="profiling">
     <title>Profiling</title>
-    <prop class="xsd">../../schema/xml/XSD/profile_.xsd</prop>
+    <prop class="xsd">../../schema/xml/XSD/_profile.xsd</prop>
     <p>By means of its profiling functionality, OSCAL provides ways of specifying and documenting
       configurations or <q>overlays</q> of catalog, as <b>profile</b> documents. Although they may
       contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct
@@ -821,6 +830,7 @@
     <p>Roughly speaking, a profile document is a specification of a <em>selection</em> of controls
       and subcontrols from a catalog, along with a series of <em>operations</em> over those controls
       and their use.</p>
+    <p>The profiling model is also documented with examples in profile semantics documentation.</p>
     <component class="element-description">
       <prop class="tag">profile</prop>
       <prop class="full_name">Profile</prop>
@@ -857,7 +867,7 @@
     </component>
     <component class="element-description">
       <prop class="tag">merge</prop>
-      <prop class="full_name">merge</prop>
+      <prop class="full_name">Merge controls</prop>
       <part class="description">
         <p>Merge controls in resolution</p>
       </part>
@@ -873,7 +883,7 @@
     </component>
     <component class="element-description">
       <prop class="tag">modify</prop>
-      <prop class="full_name">modify</prop>
+      <prop class="full_name">Modify controls</prop>
       <part class="description">
         <p>Set parameters or emend controls in resolution</p>
       </part>
@@ -959,28 +969,28 @@
     </component>
     <component class="attribute-description">
       <prop class="tag">control-id</prop>
-      <prop class="full_name">control-id</prop>
+      <prop class="full_name">Control Identifier</prop>
       <part class="description">
         <p>control-id</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">subcontrol-id</prop>
-      <prop class="full_name">subcontrol-id</prop>
+      <prop class="full_name">Subcontrol Identifier</prop>
       <part class="description">
         <p>subcontrol-id</p>
       </part>
     </component>
     <component class="element-description">
       <prop class="tag">match</prop>
-      <prop class="full_name">match</prop>
+      <prop class="full_name">Match controls and subcontrols by identifier</prop>
       <part class="description">
         <p>Select controls by (regular expression) match on ID</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">pattern</prop>
-      <prop class="full_name">pattern</prop>
+      <prop class="full_name">Match ID with pattern (regular expression)</prop>
       <part class="description">
         <p>A regular expression to be matched against an ID value for purposes of control
           selection</p>
@@ -988,23 +998,23 @@
     </component>
     <component class="attribute-description">
       <prop class="tag">order</prop>
-      <prop class="full_name">order</prop>
+      <prop class="full_name">Control (re)order</prop>
       <part class="description">
-        <p>When matching multiple controls, what order to use in emitting them: <code>source</code>,
+        <p>When matching multiple controls, what order to use in emitting them: <code>keep</code>,
             <code>ascending</code>(alphabetically by ID) or <code>descending</code> (alphabetically
           by ID)</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">with-subcontrols</prop>
-      <prop class="full_name">with-subcontrols</prop>
+      <prop class="full_name">Include subcontrols with controls</prop>
       <part class="description">
         <p>Say <q>yes</q> to include subcontrols with their controls</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">with-control</prop>
-      <prop class="full_name">with-control</prop>
+      <prop class="full_name">Include controls with subcontrols</prop>
       <part class="description">
         <p>with-control</p>
       </part>
@@ -1058,23 +1068,23 @@
     </component>
     <component class="attribute-description">
       <prop class="tag">class-ref</prop>
-      <prop class="full_name">class-ref</prop>
+      <prop class="full_name">Select by class</prop>
       <part class="description">
-        <p>Classes of controls or subcontrols in scope for alteration</p>
+        <p>Classes of items within controls or subcontrols in scope for removal</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">id-ref</prop>
-      <prop class="full_name">id-ref</prop>
+      <prop class="full_name">Reference by ID</prop>
       <part class="description">
-        <p>ID values on controls or subcontrols in scope for alteration</p>
+        <p>ID values on items within controls or subcontrols in scope for removal</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">item-name</prop>
-      <prop class="full_name">item-name</prop>
+      <prop class="full_name">Item name</prop>
       <part class="description">
-        <p>An element name of control contents in scope for alteration</p>
+        <p>The (element) name of an item within controls or subcontrols in scope for removal</p>
       </part>
       <part class="remarks">
         <p>To select the <code>title</code> element use the value <q>title</q> etc.</p>
@@ -1090,28 +1100,39 @@
     
     <component class="element-description">
       <prop class="tag">combine</prop>
-      <prop class="full_name">combine</prop>
+      <prop class="full_name">Combination rule</prop>
       <part class="description">
         <p>Whether and how to combine multiple (competing) versions of the same control</p>
       </part>
     </component>
     <component class="attribute-description">
       <prop class="tag">method</prop>
-      <prop class="full_name">method</prop>
+      <prop class="full_name">Control combination method</prop>
       <part class="description">
-        <p>The method to be used when combining controls or subcontrols in resolution. A value of </p>
+        <p>The method to be used when combining controls or subcontrols in resolving a profile</p>
+      </part>
+      <part class="remarks">
+        <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to
+          do with clashing invocations (multiple competing versions of a control or a subcontrol).
+          This setting permits a profile designer to apply a rule for the resolution of such cases.
+          In a well-designed profile, such collisions would ordinarily be avoided; but this setting
+          can be useful for defining what to do when it occurs.</p>
+        <p>Three values are provided: <code>use-first</code>, <code>merge</code> or
+            <code>keep</code>. The latter two may produce invalid/broken results in some cases
+          (where upstream profiles compete over control contents). In a profile with no collisions,
+          the three values all have the same results.</p>
       </part>
     </component>
     <component class="element-description">
       <prop class="tag">as-is</prop>
-      <prop class="full_name">as-is</prop>
+      <prop class="full_name">Structure as-is; retain source structure</prop>
       <part class="description">
         <p>Structure the controls in resolution as they are structured in their source catalogs</p>
       </part>
     </component>
     <component class="element-description">
       <prop class="tag">custom</prop>
-      <prop class="full_name">custom</prop>
+      <prop class="full_name">Customized structure for controls</prop>
       <part class="description">
         <p>Frame a structure wherein represented controls will be embedded in resolution</p>
       </part>
@@ -1123,7 +1144,7 @@
     <title>Attributes</title>
     <component class="attribute-description">
       <prop class="tag">position</prop>
-      <prop class="full_name">position</prop>
+      <prop class="full_name">Placement position</prop>
       <part class="description">
         <p>The position of insertion when adding to control contents (in alteration)</p>
       </part>
@@ -1244,13 +1265,13 @@
       </part>
     </component>
     <component class="general-constraint">
-      <title>Interdicted @class assignments</title>
+      <title>Reserved @class assignments</title>
       <part class="description">
         <p>No control, component, object within a control, framework component or group can have a
           class assignment that overlaps with an element name in OSCAL</p>
       </part>
       <part class="remarks">
-        <p>Interdicted names: <code>control</code>, <code>subcontrol</code>, <code>component</code>
+        <p>Forbidden names include (at last check): <code>control</code>, <code>subcontrol</code>, <code>component</code>, 
           <code>group</code>, <code>part</code>, <code>prop</code>,<code>param</code>, or
             <code>title</code>. Using the <code>title</code> element for nominal titles is better
           than using a property.</p>
