@@ -128,7 +128,8 @@ The stipulated relation of a link to its target or vice versa
 A value on @id unique within local document scope, i.e. across a given catalog or representation of catalog contents (controls).
 
 No mechanism is proposed to ensure that [@id](#id-attribute--id--identifier) values do not collide across different catalogs. Use profiling without "merge" to detect such clashes.
-* Allowed on [&lt;section>](#section-element--section), [&lt;group>](#group-element--group), [&lt;control>](#control-element--control), [&lt;subcontrol>](#subcontrol-element--control-extension), [&lt;param>](#param-element--parameter), [&lt;ref>](#ref-element--reference), [&lt;pre>](#pre-element--preformatted-text), [&lt;li>](#li-element--list-item), [&lt;insert>](#insert-element--parameter-insertion), `custom`
+
+* Permitted on most elements
 * Required on `profile`
 
 ### `@href` attribute | hypertext reference 
@@ -349,7 +350,8 @@ This element echoes HTML `<p>`. As in HTML, it is not limited to indicating comp
 
 ##### Content declaration (reduced)
 
-* as needed:
+* [@class](#class-attribute--class) and [@id](#id-attribute--id--identifier), optionally, as usual
+* as needed, mixed with text:
   * element [&lt;withdrawn>](#withdrawn-element--withdrawn)
   * element [&lt;insert>](#insert-element--parameter-insertion)
   * element [&lt;q>](#q-element--quoted-text)

@@ -36,24 +36,19 @@
     </div>
   </xsl:template>
   
-  <xsl:template match="div[contains-token(@class,'schema-docs')][.//li/tokenize(.,'\s+') = 'base:oscal:decls']">
+  <xsl:template match="div[h3/span[contains-token(@class,'tag')]='id']/div[contains-token(@class,'schema-docs')]">
     <!--<div class="part schema-docs">
-      <h5>Content declaration (reduced)</h5>
-      <ul class="ul">
-        <li class="li">fallback</li>
-        <li class="li">xs:attributeGroup ref:oscal:asProp</li>
-        <li class="li">text content</li>
-      </ul>
-    </div>-->
+           <li class="li">Allowed on <code class="code">section</code>, <code class="code">group</code>, <code class="code">control</code>, <code class="code">subcontrol</code>, <code class="code">param</code>, <code class="code">ref</code>, <code class="code">pre</code>, <code class="code">li</code>, <code class="code">insert</code>, <code class="code">custom</code>
+           </li>
+           <li class="li">Required on <code class="code">profile</code>
+           </li>
+         </div>-->
     <div class="part schema-docs">
-      <h5>Content declaration (reduced)</h5>
       <ul class="ul">
-        <li>As many as wanted of:<ul>
-        <li class="li"><code>declare-prop</code></li>
-        <li class="li"><code>declare-part</code></li>
-        <li class="li"><code>declare-p</code></li>
-        <li class="li"><code>declare-link</code></li>
-      </ul></li></ul>
+        <li class="li">Permitted on most elements</li>
+        <li class="li">Required on <code class="code">profile</code>
+        </li> 
+      </ul>
     </div>
   </xsl:template>
   
@@ -67,12 +62,12 @@
       <ul>
         <li>as needed:<ul>
       -->
-  <xsl:template match="div[h4/span[contains-token(@class,'tag')]='p']/div[contains-token(@class,'schema-docs')]//li[starts-with(.,'as needed:')]">
+  <xsl:template match="div[h3/span[contains-token(@class,'tag')]='p']/div[contains-token(@class,'schema-docs')]//li[starts-with(.,'as needed:')]">
     <li><code>@class</code> and <code>@id</code>, optionally, as usual</li>
     <xsl:next-match/>
   </xsl:template>
   
-  <xsl:template match="div[h4/span[contains-token(@class,'tag')]='p']/div[contains-token(@class,'schema-docs')]//li[starts-with(.,'as needed:')]/text()[starts-with(.,'as needed:')]">
+  <xsl:template match="div[h3/span[contains-token(@class,'tag')]='p']/div[contains-token(@class,'schema-docs')]//li[starts-with(.,'as needed:')]/text()[starts-with(.,'as needed:')]">
     <xsl:text>as needed, mixed with text:</xsl:text>
   </xsl:template>
   

@@ -81,7 +81,7 @@ prop =
   element prop { asProp }
 
 # asProp allows other things (in importing schemas) to declare themselves as properties or property-like
-asProp = optionalClass, text
+asProp = idAttr?, optionalClass, text
 
 prose = ( p | ul | ol | pre )*
 

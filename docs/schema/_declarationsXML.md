@@ -18,11 +18,9 @@ The OSCAL validation model supports not only validation against a formal schema 
 
 ##### Content declaration (reduced)
 
-* As many as wanted of:
-  * [&lt;declare-prop>](#declare-prop-element--property-declaration)
-  * [&lt;declare-part>](#declare-part-element--part-declaration)
-  * [&lt;declare-p>](#declare-p-element--paragraph-declaration)
-  * [&lt;declare-link>](#declare-link-element--link-declaration)
+* attribute `@href` (optional)
+* complexContent
+* extension base:oscal:decls
 
 ### `<declare-prop>` element | Property declaration 
 
