@@ -9,6 +9,8 @@
   
   <xsl:mode on-no-match="shallow-copy"/>
   
+  <xsl:template match="p[contains-token(@class,'xsd')]"/>
+    
   <xsl:template match="h3[contains-token(@class,'element-description')]/span[contains-token(@class,'tag')]">
     <code class="tag">&lt;<xsl:apply-templates/>&gt;</code> element | <xsl:text/>  
   </xsl:template>

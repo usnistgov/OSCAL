@@ -31,23 +31,26 @@
   <!-- these will be cross-references to elements -->
   <xsl:template match="code[exists(key('desc-by-tag',('&lt;' || . || '&gt;')))]">
     <xsl:variable name="target" select="key('desc-by-tag',('&lt;' || . || '&gt;'))"/>
+    <xsl:variable name="result">
+      <xsl:copy>
+        <xsl:copy-of select="@*"/>
+        <xsl:text>&lt;</xsl:text>
+        <xsl:apply-templates/>
+        <xsl:text>&gt;</xsl:text>
+      </xsl:copy>
+    </xsl:variable>
     <xsl:choose>
       <!-- No link to an ancestor -->
       <xsl:when test="$target intersect ancestor-or-self::*">
-        <xsl:next-match/>
+        <xsl:sequence select="$result"/>
       </xsl:when>
       <xsl:otherwise>
         <a href="#{$target[1]/@id}">
-          <code>
-            <xsl:if test="contains-token($target/@class, 'element-description')">&lt;</xsl:if>
-            <xsl:apply-templates/>
-            <xsl:if test="contains-token($target/@class, 'element-description')">&gt;</xsl:if>
-          </code>
+          <xsl:sequence select="$result"/>
         </a>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
   
   <!-- these will mostly be cross-references to attributes -->
   <xsl:template match="code[exists(key('desc-by-tag',.))]">

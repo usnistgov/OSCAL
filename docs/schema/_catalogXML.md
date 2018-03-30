@@ -4,8 +4,6 @@
 
 ## Controls and their contents
 
-xsd: ../../schema/xml/XSD/_catalog.xsd
-
 The foundations of OSCAL are in control objects, such as controls and subcontrols, and the structured information they represent or contain (loosely "objects", represented as valid XML elements). These contents will include both structured contents (using element types as described here) and (within those) relatively uncontrolled or free-form contents (described elsewhere as [prose](#prose)).
 
 ### `<catalog>` element | Catalog 
@@ -85,7 +83,7 @@ Like properties ([&lt;prop>](#prop-element--property)) and parameters ([&lt;para
 
 An assigned class may frequently provide for a header in display, such that `part[@class='objectives']` is displayed under a header *Objectives*, etc. Parts may also however have their own titles ([&lt;title>](#title-element--title) elements).
 
-Generally speaking, `part` elements will be of two kinds. Many parts are logical partitions or sections for prose; these may be called "statements" and may be expected to have simple prose contents, even just one paragraph. Other parts may be more formally constructed out of properties ([&lt;prop>](#prop-element--property) elements) and/or their own parts. Such structured objects (sometimes called "features") may, at the extreme, function virtually as control extensions or subcontrol-like objects ("enhancements"). Since the composition of parts can be constrained using OSCAL declarations (of the items or components to be given in a part or in this type of part), their use for encoding "objects" of arbitrary complexity within controls, is effectively open-ended.
+Generally speaking, `<part>` elements will be of two kinds. Many parts are logical partitions or sections for prose; these may be called "statements" and may be expected to have simple prose contents, even just one paragraph. Other parts may be more formally constructed out of properties ([&lt;prop>](#prop-element--property) elements) and/or their own parts. Such structured objects (sometimes called "features") may, at the extreme, function virtually as control extensions or subcontrol-like objects ("enhancements"). Since the composition of parts can be constrained using OSCAL declarations (of the items or components to be given in a part or in this type of part), their use for encoding "objects" of arbitrary complexity within controls, is effectively open-ended.
 
 ##### Content declaration (reduced)
 
@@ -94,7 +92,7 @@ Generally speaking, `part` elements will be of two kinds. Many parts are logical
   * element [&lt;param>](#param-element--parameter)
   * element [&lt;link>](#link-element--link)
   * element [&lt;prop>](#prop-element--property)
-  * element `part`
+  * element `<part>`
   * element [&lt;p>](#p-element--paragraph)
   * element [&lt;ul>](#ul-element--unordered-list)
   * element [&lt;ol>](#ol-element--ordered-list)
@@ -149,8 +147,6 @@ Overloading this attribute with more than one value is permitted, but not recomm
 * Allowed on [&lt;section>](#section-element--section), [&lt;group>](#group-element--group), [&lt;control>](#control-element--control), [&lt;subcontrol>](#subcontrol-element--control-extension), [&lt;param>](#param-element--parameter), [&lt;prop>](#prop-element--property), [&lt;li>](#li-element--list-item), [&lt;code>](#code-element--code), [&lt;em>](#em-element--emphasis), [&lt;i>](#i-element--italics), [&lt;b>](#b-element--bold), [&lt;sub>](#sub-element--subscript), [&lt;sup>](#sup-element--superscript), [&lt;span>](#span-element--span), `custom`, `set-param`
 
 ## Functional elements
-
-xsd: ../../schema/xml/XSD/_catalog.xsd
 
 Functional elements appear inside control content to provide "hooks" to OSCAL processors for retrievability, manipulation (including mapping and transformation), and semantic traversal.
 
@@ -223,13 +219,11 @@ The functionality provided by this element might better be offered by a property
 
 ## Structural elements
 
-xsd: ../../schema/xml/XSD/_catalog.xsd
-
 ### `<section>` element | Section 
 
 A partition within a catalog or section (prose text not controls)
 
-Echoes HTML5 `section`. May contain controls ([&lt;control>](#control-element--control)) or groups of controls ([&lt;group>](#group-element--group)).
+Echoes HTML5 `<section>`. May contain controls ([&lt;control>](#control-element--control)) or groups of controls ([&lt;group>](#group-element--group)).
 
 ##### Content declaration (reduced)
 
@@ -241,7 +235,7 @@ Echoes HTML5 `section`. May contain controls ([&lt;control>](#control-element--c
   * element [&lt;ul>](#ul-element--unordered-list)
   * element [&lt;ol>](#ol-element--ordered-list)
   * element [&lt;pre>](#pre-element--preformatted-text)
-* element `section` (zero or more)
+* element `<section>` (zero or more)
 * element [&lt;references>](#references-element--references) (optional)
 
 ### `<group>` element | Group 
@@ -263,7 +257,7 @@ Unlike sections ([&lt;section>](#section-element--section) elements), groups may
   * element [&lt;prop>](#prop-element--property)
   * element [&lt;part>](#part-element--part)
 * as needed (at least one):
-  * element `group`
+  * element `<group>`
   * element [&lt;control>](#control-element--control)
 * element [&lt;references>](#references-element--references) (optional)
 
@@ -303,7 +297,7 @@ A reference, with one or more citations to standards, related documents, or othe
 
 Citation of a formal published standard
 
-Echoes the NISO JATS (and NISO STS) `std` element
+Echoes the NISO JATS (and NISO STS) `<std>` element
 
 ##### Content declaration (reduced)
 
@@ -343,8 +337,6 @@ For references to standards, [&lt;std>](#std-element--standard) may be preferred
 
 ## Prose
 
-xsd: ../../schema/xml/XSD/_catalog.xsd
-
 Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where they will ordinarily be relegated to the control's partitions or statements ([&lt;part>](#part-element--part)s). OSCAL prose elements echo HTML semantics, although they are deliberately and specifically a narrow subset of HTML element types. This is intended to be the bare minimum of stripped down text as is appropriate for control documentation. Graphics, diagrams, and tables are all out of scope for OSCAL (although arbitrary feature sets can always be modeled in OSCAL as nested parts).
 
 Among prose elements, [&lt;p>](#p-element--paragraph) elements in particular are of interest in that they may be constrained by declarations like other contents of controls (or components) – although this may not often be as useful as imposing constraints over properties and parts. Frequently, a part organization will be used to assign prose to specific known "sections" or "enhancements" of a control (modeled as [&lt;part>](#part-element--part) or [&lt;subcontrol>](#subcontrol-element--control-extension)).
@@ -353,7 +345,7 @@ Among prose elements, [&lt;p>](#p-element--paragraph) elements in particular are
 
 Running text: a paragraph or paragraph fragment
 
-This element echoes HTML `p`. As in HTML, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.
+This element echoes HTML `<p>`. As in HTML, it is not limited to indicating complete or discrete (compositional or logical) paragraphs, but can be used for any text set off on its own line.
 
 ##### Content declaration (reduced)
 
@@ -374,7 +366,7 @@ This element echoes HTML `p`. As in HTML, it is not limited to indicating comple
 
 Retains whitespace in display
 
-Echoes HTML `pre`.
+Echoes HTML `<pre>`.
 
 ##### Content declaration (reduced)
 
@@ -394,7 +386,7 @@ Echoes HTML `pre`.
 
 Appears with numbering in ordinal position
 
-Although this echoes HTML `ol`, renditional aspects of this element are not offered by OSCAL. How lists are to be numbered is left to implementations; it is likely that specific control catalogs will have their own schemes.
+Although this echoes HTML `<ol>`, renditional aspects of this element are not offered by OSCAL. How lists are to be numbered is left to implementations; it is likely that specific control catalogs will have their own schemes.
 
 At present there is no support for "continued lists", as we have not seen any in documents in scope for analysis.
 
@@ -410,7 +402,7 @@ As in HTML, "unordered" does not indicate that the order of contained list items
 
 Note that when sequences or lists appear, it may be as common in OSCAL to list (and control) them as sequences of properties or paragraphs, perhaps grouped in parts or subcontrols. This is very much a display element, convenient when what we have is really prose, not highly organized or "semantic".
 
-OSCAL has (as of yet) no "simple" or unadorned list element; it is suggested that an [@class](#class-attribute--class) added to `ul` should be rendered as such in any application that wants it.
+OSCAL has (as of yet) no "simple" or unadorned list element; it is suggested that an [@class](#class-attribute--class) added to `<ul>` should be rendered as such in any application that wants it.
 
 ##### Content declaration (reduced)
 
@@ -457,7 +449,7 @@ Particular semantics (indicating types of emphasis for finer resolution in displ
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
   * element [&lt;code>](#code-element--code)
-  * element `em`
+  * element `<em>`
   * element [&lt;i>](#i-element--italics)
   * element [&lt;b>](#b-element--bold)
   * element [&lt;sub>](#sub-element--subscript)
@@ -478,7 +470,7 @@ An implementation may toggle, i.e., display contents using a roman face when the
   * element [&lt;q>](#q-element--quoted-text)
   * element [&lt;code>](#code-element--code)
   * element [&lt;em>](#em-element--emphasis)
-  * element `i`
+  * element `<i>`
   * element [&lt;b>](#b-element--bold)
   * element [&lt;sub>](#sub-element--subscript)
   * element [&lt;sup>](#sup-element--superscript)
@@ -493,7 +485,7 @@ In display, when the surrounding text is already bold, an implementation may ind
 
 As of yet, OSCAL does not support underlining directly (no `u` element or designated property, which makes underlining, like color and strikethrough, a feature exploitable (with less ambiguity) at the application level.
 
-In ordinary use, `b` and [&lt;i>](#i-element--italics) should perhaps be deprecated in favor of more "semantic" elements such as [&lt;em>](#em-element--emphasis), [&lt;code>](#code-element--code) or even `span>` especially with [@class](#class-attribute--class) attributes.
+In ordinary use, `<b>` and [&lt;i>](#i-element--italics) should perhaps be deprecated in favor of more "semantic" elements such as [&lt;em>](#em-element--emphasis), [&lt;code>](#code-element--code) or even `span>` especially with [@class](#class-attribute--class) attributes.
 
 ##### Content declaration (reduced)
 
@@ -503,7 +495,7 @@ In ordinary use, `b` and [&lt;i>](#i-element--italics) should perhaps be depreca
   * element [&lt;code>](#code-element--code)
   * element [&lt;em>](#em-element--emphasis)
   * element [&lt;i>](#i-element--italics)
-  * element `b`
+  * element `<b>`
   * element [&lt;sub>](#sub-element--subscript)
   * element [&lt;sup>](#sup-element--superscript)
   * element [&lt;span>](#span-element--span)
@@ -515,9 +507,9 @@ An HTML-style anchor (inline linking element)
 
 As in HTML, the link target is indicated by [@href](#href-attribute--hypertext-reference), with a '#' prefix for an internal cross-reference matching an [@id](#id-attribute--id--identifier) elsewhere in the document.
 
-Anchors without [@href](#href-attribute--hypertext-reference) are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. An application may promote the contents of an `a` element, when a valid URI, to serve as the link target if [@href](#href-attribute--hypertext-reference) is missing or not a URI.
+Anchors without [@href](#href-attribute--hypertext-reference) are not invalid to the OSCAL schema (base validation), but may be reported by a Schematron. An application may promote the contents of an `<a>` element, when a valid URI, to serve as the link target if [@href](#href-attribute--hypertext-reference) is missing or not a URI.
 
-As in HTML, `a` appears inline (in mixed content), while [&lt;link>](#link-element--link) is a "paragraph-level" link (that appears next to paragraphs or components in a control).
+As in HTML, `<a>` appears inline (in mixed content), while [&lt;link>](#link-element--link) is a "paragraph-level" link (that appears next to paragraphs or components in a control).
 
 ##### Content declaration (reduced)
 
@@ -557,7 +549,7 @@ Strictly, this element should identify formal code or code fragments. Like anyth
 * attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
-  * element `code`
+  * element `<code>`
   * element [&lt;em>](#em-element--emphasis)
   * element [&lt;i>](#i-element--italics)
   * element [&lt;b>](#b-element--bold)
@@ -602,5 +594,5 @@ The OSCAL declarations model does not presently support validating properties of
   * element [&lt;b>](#b-element--bold)
   * element [&lt;sub>](#sub-element--subscript)
   * element [&lt;sup>](#sup-element--superscript)
-  * element `span`
+  * element `<span>`
   * element [&lt;a>](#a-element--anchor)
