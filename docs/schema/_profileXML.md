@@ -58,9 +58,9 @@ An OSCAL document that describes a selection with possible modification of multi
 
 Designating a catalog, profile or other resource for controls
 
-An [&lt;import>](#import-element--import-resource) indicates a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given ("by value"), or a profile with its own control imports. In the latter case, profiles are expected to be resolved recursively.
+An `import` indicates a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given ("by value"), or a profile with its own control imports. In the latter case, profiles are expected to be resolved recursively.
 
-The contents of the [&lt;import>](#import-element--import-resource) element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [&lt;include>](#include-element--include-controls) element) or de-selected (using an [&lt;exclude>](#exclude-element--exclude-controls) element) from the source catalog or profile.
+The contents of the `import` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [&lt;include>](#include-element--include-controls) element) or de-selected (using an [&lt;exclude>](#exclude-element--exclude-controls) element) from the source catalog or profile.
 
 ##### Content declaration (reduced)
 
@@ -72,7 +72,7 @@ The contents of the [&lt;import>](#import-element--import-resource) element indi
 
 Merge controls in resolution
 
-Indicates (by its presence) that controls included in a profile via different and multiple import pathways, are to be merged in resolution. Element contents of the [&lt;merge>](#merge-element--merge-controls) can be used to "reorder" or "restructure" controls (that is, indicate their order and/or structure in resolution).
+Indicates (by its presence) that controls included in a profile via different and multiple import pathways, are to be merged in resolution. Element contents of the `merge` can be used to "reorder" or "restructure" controls (that is, indicate their order and/or structure in resolution).
 
 Implicitly, a merge statement is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a merge statement, will not be merged into (will be dropped) in the resulting resolution.
 
@@ -99,7 +99,7 @@ Which controls and subcontrols to include from the resource (source catalog) bei
 
 To be schema-valid, this element must contain either (but not both) a single [&lt;all>](#all-element--include-all) element, or a sequence of [&lt;call>](#call-element--call-control-or-subcontrol) elements.
 
-If this element is not given, it is assumed to be present with contents [&lt;all>](#all-element--include-all) (qv); i.e., all controls are included by default, unless the [&lt;include>](#include-element--include-controls) instruction calls controls specifically.
+If this element is not given, it is assumed to be present with contents [&lt;all>](#all-element--include-all) (qv); i.e., all controls are included by default, unless the `include` instruction calls controls specifically.
 
 ##### Content declaration (reduced)
 
@@ -113,7 +113,7 @@ If this element is not given, it is assumed to be present with contents [&lt;all
 
 Which controls and subcontrols to exclude from the resource (source catalog) being imported
 
-Within [&lt;exclude>](#exclude-element--exclude-controls), [&lt;all>](#all-element--include-all) is not an option since it makes no sense. However, it also makes no sense (think about it) to use `exclude/call` except with `include/all` (it makes no sense to call in by ID only to exclude by ID). The only error condition reported, however, is when the same control is both included (explicitly, by ID) and excluded.
+Within `exclude`, [&lt;all>](#all-element--include-all) is not an option since it makes no sense. However, it also makes no sense (think about it) to use `exclude/call` except with `include/all` (it makes no sense to call in by ID only to exclude by ID). The only error condition reported, however, is when the same control is both included (explicitly, by ID) and excluded.
 
 ##### Content declaration (reduced)
 
@@ -160,9 +160,9 @@ This element is empty
 
 Call a control or subcontrol by its ID
 
-Inside [&lt;include>](#include-element--include-controls), If [@control-id](#control-id-attribute--control-identifier) is used (to indicate the control being referenced), [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) cannot be used, and vice versa. (A single [&lt;call>](#call-element--call-control-or-subcontrol) element is used for each control.) This constraint is enforced by the schema. Likewise, [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) can be used only along with [@control-id](#control-id-attribute--control-identifier) not with [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier).
+Inside [&lt;include>](#include-element--include-controls), If [@control-id](#control-id-attribute--control-identifier) is used (to indicate the control being referenced), [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) cannot be used, and vice versa. (A single `call` element is used for each control.) This constraint is enforced by the schema. Likewise, [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) can be used only along with [@control-id](#control-id-attribute--control-identifier) not with [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier).
 
-If [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) is "yes" on the call to a control, no sibling [&lt;call>](#call-element--call-control-or-subcontrol)elements need to be used to call its subcontrols. Accordingly it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
+If [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) is "yes" on the call to a control, no sibling `call`elements need to be used to call its subcontrols. Accordingly it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
 
 This element is empty
 
@@ -223,7 +223,7 @@ Specifies changes to be made to an included control or subcontrol when a profile
 
 Use `@targets` to indicate the classes of elements (typically `part` or `prop` elements) to erase or remove from a control, when a catalog is resolved.
 
-It is an error for two [&lt;alter>](#alter-element--alteration) elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
+It is an error for two `alter` elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
 
 ##### Content declaration (reduced)
 
@@ -238,7 +238,7 @@ Elements to be removed from a control or subcontrol, in resolution
 
 Use [@class-ref](#class-ref-attribute--select-by-class), [@id-ref](#id-ref-attribute--reference-by-id) or [@item-name](#item-name-attribute--item-name) to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control or subcontrol, when a catalog is resolved. The control or subcontrol affected is indicated by the pointer on the removal's parent (containing) [&lt;alter>](#alter-element--alteration) element.
 
-To change an element, use [&lt;remove>](#remove-element--removal) to remove the element, then [&lt;add>](#add-element--addition) to add it back again with changes.
+To change an element, use `remove` to remove the element, then [&lt;add>](#add-element--addition) to add it back again with changes.
 
 This element is empty
 

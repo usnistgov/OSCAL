@@ -47,13 +47,13 @@ The OSCAL validation model supports not only validation against a formal schema 
 
 Constraints applicable to a class or classes of `prop` elements (properties) in context
 
-The class of properties, in context, to which the constraints apply, is indicated on the `@class` of the declaration ([&lt;declare-prop>](#declare-prop-element--property-declaration)). Only elements named `prop` with matching `@class` are subject to the declared constraints. The context is defined by the class of the element parent of the candidate property, whether it is a `control`, `subcontrol`, `part` or `group`. So a `declare-prop context="myControl" class="myProp"` will apply to any property (`prop` element) with class "myProp", appearing in a control, subcontrol, part or group with class "myControl".
+The class of properties, in context, to which the constraints apply, is indicated on the `@class` of the declaration (`declare-prop`). Only elements named `prop` with matching `@class` are subject to the declared constraints. The context is defined by the class of the element parent of the candidate property, whether it is a `control`, `subcontrol`, `part` or `group`. So a `declare-prop context="myControl" class="myProp"` will apply to any property (`prop` element) with class "myProp", appearing in a control, subcontrol, part or group with class "myControl".
 
 The constraints that will apply to these properties are indicated by the elements contained in the declaration. For example, a property declared as a "required singleton" is required to appear in its context (the validator will produce an error when it is missing), while it may not appear more than once (the validator will produce an error if more than one appear together).
 
 Because the `@class` attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values, when used on controls or their compo. Although overloading `@class`, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application, restricting elements to have *at most*, a single class assignment, will help keep things clean and intelligible.
 
-On declarations including [&lt;declare-prop>](#declare-prop-element--property-declaration) and its siblings, however, both `@class` and [@context](#context-attribute--declaration-context) may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
+On declarations including `declare-prop` and its siblings, however, both `@class` and [@context](#context-attribute--declaration-context) may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
 
 ##### Content declaration (reduced)
 
@@ -149,7 +149,7 @@ Indicates that the value of a property (`prop`) or parameter (`param`) must matc
 
 Matching against a regular expression is conducted on the normalized lexical value of the given parameter or property: that is, with leading and trailing whitespace stripped, interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline markup stripped.
 
-When more than one [&lt;regex>](#regex-element--regular-expression-constraint) is given in a declaration, a match on any of them is taken to satisfy the requirement.
+When more than one `regex` is given in a declaration, a match on any of them is taken to satisfy the requirement.
 
 Contains text
 
@@ -157,7 +157,7 @@ Contains text
 
 Indicates a permissible value for a parameter or property
 
-In a declaration, [&lt;value>](#value-element--value-constraint) will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values).
+In a declaration, `value` will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values).
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".
 
@@ -180,7 +180,7 @@ Similar to [&lt;value>](#value-element--value-constraint) except that its conten
 
 Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)
 
-The text contents of [&lt;autonum>](#autonum-element--autonumbered-generated-value) (not the value of any attribute) will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.
+The text contents of `autonum` (not the value of any attribute) will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.
 
 Contains text
 
@@ -188,11 +188,11 @@ Contains text
 
 Indicates that a value or text within a value should be inherited from a property on a containing control object
 
-[&lt;inherit>](#inherit-element--inherited-value) is typically used to enforce hierarchical numbering within control objects. When given in a [&lt;value>](#value-element--value-constraint) in a declaration, [&lt;inherit>](#inherit-element--inherited-value) indicates that the value of a property, or a segment of its value, must be the same as a property (`prop`) higher in the containment hierarchy of a control object. That is, if a property with `@class='number'` is constrained with `value/inherit`, it must be the same as is assigned on the closest ancestor (`part`, `subcontrol`, `control`, or `group`) with the given property.
+`inherit` is typically used to enforce hierarchical numbering within control objects. When given in a [&lt;value>](#value-element--value-constraint) in a declaration, `inherit` indicates that the value of a property, or a segment of its value, must be the same as a property (`prop`) higher in the containment hierarchy of a control object. That is, if a property with `@class='number'` is constrained with `value/inherit`, it must be the same as is assigned on the closest ancestor (`part`, `subcontrol`, `control`, or `group`) with the given property.
 
-Usually, [&lt;inherit>](#inherit-element--inherited-value) is used in conjunction with [&lt;autonum>](#autonum-element--autonumbered-generated-value). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b", etc., depending on the position of the subcontrol within the control.
+Usually, `inherit` is used in conjunction with [&lt;autonum>](#autonum-element--autonumbered-generated-value). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b", etc., depending on the position of the subcontrol within the control.
 
-If a value must inherit from a property of a different class from the containing control object, `inherit/@from` can be used to indicate the applicable property (by its class). By default, [&lt;inherit>](#inherit-element--inherited-value) indicates a property value should match an ancestor's property with the same `@class` (the most usual case).
+If a value must inherit from a property of a different class from the containing control object, `inherit/@from` can be used to indicate the applicable property (by its class). By default, `inherit` indicates a property value should match an ancestor's property with the same `@class` (the most usual case).
 
 This element is empty
 
