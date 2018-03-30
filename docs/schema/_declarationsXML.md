@@ -1,21 +1,21 @@
 
 > * [XML Schema _declarations.xsd](#)
 >   * [Declarations elements](#declarations-elements)
->     * [&lt;declarations> Declarations](#<&lt;declarations>>-element:-declarations)
->     * [&lt;declare-prop> Property declaration](#<&lt;declare-prop>>-element:-property-declaration)
->     * [&lt;declare-p> Paragraph declaration](#<&lt;declare-p>>-element:-paragraph-declaration)
->     * [&lt;declare-part> Part declaration](#<&lt;declare-part>>-element:-part-declaration)
->     * [&lt;declare-link> Link declaration](#<&lt;declare-link>>-element:-link-declaration)
->     * [@context Declaration context](#@context-attribute:-declaration-context)
->     * [&lt;singleton> Singleton constraint](#<&lt;singleton>>-element:-singleton-constraint)
->     * [&lt;required> Requirement constraint](#<&lt;required>>-element:-requirement-constraint)
->     * [&lt;identifier> Identifier constraint](#<&lt;identifier>>-element:-identifier-constraint)
->     * [&lt;regex> Regular expression constraint](#<&lt;regex>>-element:-regular-expression-constraint)
->     * [&lt;value> Value constraint](#<&lt;value>>-element:-value-constraint)
->     * [&lt;calc> Calculated value constraint](#<&lt;calc>>-element:-calculated-value-constraint)
->     * [&lt;autonum> Autonumbered (generated) value](#<&lt;autonum>>-element:-autonumbered-(generated)-value)
->     * [&lt;inherit> Inherited value](#<&lt;inherit>>-element:-inherited-value)
->     * [@from Alternative property (class) from which to inherit](#@from-attribute:-alternative-property-(class)-from-which-to-inherit)
+>     * [&lt;declarations> Declarations](#<declarations>-element-|-declarations)
+>     * [&lt;declare-prop> Property declaration](#<declare-prop>-element-|-property-declaration)
+>     * [&lt;declare-p> Paragraph declaration](#<declare-p>-element-|-paragraph-declaration)
+>     * [&lt;declare-part> Part declaration](#<declare-part>-element-|-part-declaration)
+>     * [&lt;declare-link> Link declaration](#<declare-link>-element-|-link-declaration)
+>     * [@context Declaration context](#@context-attribute-|-declaration-context)
+>     * [&lt;singleton> Singleton constraint](#<singleton>-element-|-singleton-constraint)
+>     * [&lt;required> Requirement constraint](#<required>-element-|-requirement-constraint)
+>     * [&lt;identifier> Identifier constraint](#<identifier>-element-|-identifier-constraint)
+>     * [&lt;regex> Regular expression constraint](#<regex>-element-|-regular-expression-constraint)
+>     * [&lt;value> Value constraint](#<value>-element-|-value-constraint)
+>     * [&lt;calc> Calculated value constraint](#<calc>-element-|-calculated-value-constraint)
+>     * [&lt;autonum> Autonumbered (generated) value](#<autonum>-element-|-autonumbered-(generated)-value)
+>     * [&lt;inherit> Inherited value](#<inherit>-element-|-inherited-value)
+>     * [@from Alternative property (class) from which to inherit](#@from-attribute-|-alternative-property-(class)-from-which-to-inherit)
 
 # XML Schema _declarations.xsd
 
@@ -29,45 +29,45 @@ In this way, the OSCAL declarations mechanism provides for a kind of "on the fly
 
 OSCAL declarations are enforced by a Schematron; the core schema stipulates this model (and tagging used to control it, i.e. a tag interface) but does not enforce any of the constraints so declared. Developers should take note that these constraints are all readily testable in XPath.
 
-### [&lt;&lt;declarations>>](#<&lt;declarations>>-element:-declarations) element: Declarations 
+### `<declarations>` element | Declarations 
 
 For extra-schema validation of data given within controls or framework components
 
-The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which controls appear. Constraints described in these declarations, and bound via assignments of `@class` (for information within controls or components) and `@context` (indicating control, subcontrol, component or part wherein the given object may appear), enable automated checking for consistency of controls, subcontrols, components and their parts, specific to the types or kinds of control items that appear within a particular catalog or framework.
+The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which controls appear. Constraints described in these declarations, and bound via assignments of `@class` (for information within controls or components) and [@context](#@context-attribute-|-declaration-context) (indicating control, subcontrol, component or part wherein the given object may appear), enable automated checking for consistency of controls, subcontrols, components and their parts, specific to the types or kinds of control items that appear within a particular catalog or framework.
 
 ##### Content declaration (reduced)
 
 * As many as wanted of:
-  * `declare-prop`
-  * `declare-part`
-  * `declare-p`
-  * `declare-link`
+  * [&lt;declare-prop>](#<declare-prop>-element-|-property-declaration)
+  * [&lt;declare-part>](#<declare-part>-element-|-part-declaration)
+  * [&lt;declare-p>](#<declare-p>-element-|-paragraph-declaration)
+  * [&lt;declare-link>](#<declare-link>-element-|-link-declaration)
 
-### [&lt;&lt;declare-prop>>](#<&lt;declare-prop>>-element:-property-declaration) element: Property declaration 
+### `<declare-prop>` element | Property declaration 
 
 Constraints applicable to a class or classes of `prop` elements (properties) in context
 
-The class of properties, in context, to which the constraints apply, is indicated on the `@class` of the declaration (`declare-prop`). Only elements named `prop` with matching `@class` are subject to the declared constraints. The context is defined by the class of the element parent of the candidate property, whether it is a `control`, `subcontrol`, `part` or `group`. So a `declare-prop context="myControl" class="myProp"` will apply to any property (`prop` element) with class "myProp", appearing in a control, subcontrol, part or group with class "myControl".
+The class of properties, in context, to which the constraints apply, is indicated on the `@class` of the declaration ([&lt;declare-prop>](#<declare-prop>-element-|-property-declaration)). Only elements named `prop` with matching `@class` are subject to the declared constraints. The context is defined by the class of the element parent of the candidate property, whether it is a `control`, `subcontrol`, `part` or `group`. So a `declare-prop context="myControl" class="myProp"` will apply to any property (`prop` element) with class "myProp", appearing in a control, subcontrol, part or group with class "myControl".
 
 The constraints that will apply to these properties are indicated by the elements contained in the declaration. For example, a property declared as a "required singleton" is required to appear in its context (the validator will produce an error when it is missing), while it may not appear more than once (the validator will produce an error if more than one appear together).
 
 Because the `@class` attribute is the basis of the OSCAL declarations model, it is recommended that applications restrict the usage of this attribute to single name values, when used on controls or their compo. Although overloading `@class`, as it is frequently overloaded in HTML, is not forbidden in OSCAL and may even work in an OSCAL application, restricting elements to have *at most*, a single class assignment, will help keep things clean and intelligible.
 
-On declarations including `declare-prop` and its siblings, however, both `@class` and `@context` may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
+On declarations including [&lt;declare-prop>](#<declare-prop>-element-|-property-declaration) and its siblings, however, both `@class` and [@context](#@context-attribute-|-declaration-context) may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
 
 ##### Content declaration (reduced)
 
 * attribute `@class` (required)
-* attribute `@context` (required)
-* element `singleton` (optional)
-* element `required` (optional)
-* element `identifier` (optional)
+* attribute [@context](#@context-attribute-|-declaration-context) (required)
+* element [&lt;singleton>](#<singleton>-element-|-singleton-constraint) (optional)
+* element [&lt;required>](#<required>-element-|-requirement-constraint) (optional)
+* element [&lt;identifier>](#<identifier>-element-|-identifier-constraint) (optional)
 * as needed (at least one):
-  * element `regex`
-  * element `calc`
-  * element `value`
+  * element [&lt;regex>](#<regex>-element-|-regular-expression-constraint)
+  * element [&lt;calc>](#<calc>-element-|-calculated-value-constraint)
+  * element [&lt;value>](#<value>-element-|-value-constraint)
 
-### [&lt;&lt;declare-p>>](#<&lt;declare-p>>-element:-paragraph-declaration) element: Paragraph declaration 
+### `<declare-p>` element | Paragraph declaration 
 
 Indicates constraints to be enforced on paragraphs in context
 
@@ -78,11 +78,11 @@ Effectively, the difference between a "property"`prop` and "classified p"`p[@cla
 ##### Content declaration (reduced)
 
 * attribute `@class` (required)
-* attribute `@context` (required)
-* element `singleton` (optional)
-* element `required` (optional)
+* attribute [@context](#@context-attribute-|-declaration-context) (required)
+* element [&lt;singleton>](#<singleton>-element-|-singleton-constraint) (optional)
+* element [&lt;required>](#<required>-element-|-requirement-constraint) (optional)
 
-### [&lt;&lt;declare-part>>](#<&lt;declare-part>>-element:-part-declaration) element: Part declaration 
+### `<declare-part>` element | Part declaration 
 
 Indicates constraints to be imposed on parts in context
 
@@ -91,27 +91,27 @@ Parts are subject to singleton and requirement constraints, but not to constrain
 ##### Content declaration (reduced)
 
 * attribute `@class` (required)
-* attribute `@context` (required)
-* element `singleton` (optional)
-* element `required` (optional)
+* attribute [@context](#@context-attribute-|-declaration-context) (required)
+* element [&lt;singleton>](#<singleton>-element-|-singleton-constraint) (optional)
+* element [&lt;required>](#<required>-element-|-requirement-constraint) (optional)
 
-### [&lt;&lt;declare-link>>](#<&lt;declare-link>>-element:-link-declaration) element: Link declaration 
+### `<declare-link>` element | Link declaration 
 
 Indicates constraints to be imposed on links in context
 
 ##### Content declaration (reduced)
 
 * attribute `@rel` (optional)
-* attribute `@context` (required)
-* element `singleton` (optional)
-* element `required` (optional)
+* attribute [@context](#@context-attribute-|-declaration-context) (required)
+* element [&lt;singleton>](#<singleton>-element-|-singleton-constraint) (optional)
+* element [&lt;required>](#<required>-element-|-requirement-constraint) (optional)
 
-### `@context` attribute: Declaration context 
+### `@context` attribute | Declaration context 
 
 Identifies the type (marked class) of `control`, `subcontrol`, `group` or `part` which a declared control item (such as a `part`, `prop` or `link`) is expected to appear.
-* Required on `declare-prop`, `declare-part`, `declare-p`, `declare-link`
+* Required on [&lt;declare-prop>](#<declare-prop>-element-|-property-declaration), [&lt;declare-part>](#<declare-part>-element-|-part-declaration), [&lt;declare-p>](#<declare-p>-element-|-paragraph-declaration), [&lt;declare-link>](#<declare-link>-element-|-link-declaration)
 
-### [&lt;&lt;singleton>>](#<&lt;singleton>>-element:-singleton-constraint) element: Singleton constraint 
+### `<singleton>` element | Singleton constraint 
 
 The declared component may occur only once in its context
 
@@ -121,7 +121,7 @@ Note that the singleton constraint does not apply to the value of the property, 
 
 This element is empty
 
-### [&lt;&lt;required>>](#<&lt;required>>-element:-requirement-constraint) element: Requirement constraint 
+### `<required>` element | Requirement constraint 
 
 The declared component is required in its context
 
@@ -133,7 +133,7 @@ Whenever a control or control object is required to have any parts (or propertie
 
 This element is empty
 
-### [&lt;&lt;identifier>>](#<&lt;identifier>>-element:-identifier-constraint) element: Identifier constraint 
+### `<identifier>` element | Identifier constraint 
 
 The declared component has a value unique within the document, among properties (`prop`) with the same class
 
@@ -143,64 +143,64 @@ Note that a property marked as an identifier, may or may not be (also declared a
 
 This element is empty
 
-### [&lt;&lt;regex>>](#<&lt;regex>>-element:-regular-expression-constraint) element: Regular expression constraint 
+### `<regex>` element | Regular expression constraint 
 
 Indicates that the value of a property (`prop`) or parameter (`param`) must match the given regular expression
 
 Matching against a regular expression is conducted on the normalized lexical value of the given parameter or property: that is, with leading and trailing whitespace stripped, interim whitespace (spaces, tabs, and line feeds) normalized to single spaces, and inline markup stripped.
 
-When more than one `regex` is given in a declaration, a match on any of them is taken to satisfy the requirement.
+When more than one [&lt;regex>](#<regex>-element-|-regular-expression-constraint) is given in a declaration, a match on any of them is taken to satisfy the requirement.
 
 Contains text
 
-### [&lt;&lt;value>>](#<&lt;value>>-element:-value-constraint) element: Value constraint 
+### `<value>` element | Value constraint 
 
 Indicates a permissible value for a parameter or property
 
-In a declaration, `value` will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values).
+In a declaration, [&lt;value>](#<value>-element-|-value-constraint) will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values).
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".
 
 Contains text
 
-### [&lt;&lt;calc>>](#<&lt;calc>>-element:-calculated-value-constraint) element: Calculated value constraint 
+### `<calc>` element | Calculated value constraint 
 
 Indicates a permissible value for a parameter or property, calculated dynamically
 
-Similar to `value` except that its contents are expanded to produce the permitted value, instead of being given as a literal.
+Similar to [&lt;value>](#<value>-element-|-value-constraint) except that its contents are expanded to produce the permitted value, instead of being given as a literal.
 
 ##### Content declaration (reduced)
 
 * attribute `@` (optional)
 * text content, possibly mixed with 
-  * element `inherit`
-  * element `autonum`
+  * element [&lt;inherit>](#<inherit>-element-|-inherited-value)
+  * element [&lt;autonum>](#<autonum>-element-|-autonumbered-(generated)-value)
 
-### [&lt;&lt;autonum>>](#<&lt;autonum>>-element:-autonumbered-(generated)-value) element: Autonumbered (generated) value 
+### `<autonum>` element | Autonumbered (generated) value 
 
 Generates a formatted numeric value based on the position of a control object among its siblings, the text contents providing a template for the numbering format (arabic, alphabetic, roman, etc.)
 
-The text contents of `autonum` (not the value of any attribute) will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.
+The text contents of [&lt;autonum>](#<autonum>-element-|-autonumbered-(generated)-value) (not the value of any attribute) will be taken by the processor to be a formatting code. The format should follow the spec for XSLT `xsl:number/@format`. For example, if the value is "A.", then numbering will appear in the sequence A., B., C., etc (as punctuated). Recognized formats include upper- and lower-case alphabetic numbering, arabic numbering, and upper- and lower-case roman numbering as described for XSLT.
 
 Contains text
 
-### [&lt;&lt;inherit>>](#<&lt;inherit>>-element:-inherited-value) element: Inherited value 
+### `<inherit>` element | Inherited value 
 
 Indicates that a value or text within a value should be inherited from a property on a containing control object
 
-`inherit` is typically used to enforce hierarchical numbering within control objects. When given in a `value` in a declaration, `inherit` indicates that the value of a property, or a segment of its value, must be the same as a property (`prop`) higher in the containment hierarchy of a control object. That is, if a property with `@class='number'` is constrained with `value/inherit`, it must be the same as is assigned on the closest ancestor (`part`, `subcontrol`, `control`, or `group`) with the given property.
+[&lt;inherit>](#<inherit>-element-|-inherited-value) is typically used to enforce hierarchical numbering within control objects. When given in a [&lt;value>](#<value>-element-|-value-constraint) in a declaration, [&lt;inherit>](#<inherit>-element-|-inherited-value) indicates that the value of a property, or a segment of its value, must be the same as a property (`prop`) higher in the containment hierarchy of a control object. That is, if a property with `@class='number'` is constrained with `value/inherit`, it must be the same as is assigned on the closest ancestor (`part`, `subcontrol`, `control`, or `group`) with the given property.
 
-Usually, `inherit` is used in conjunction with `autonum`. Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b", etc., depending on the position of the subcontrol within the control.
+Usually, [&lt;inherit>](#<inherit>-element-|-inherited-value) is used in conjunction with [&lt;autonum>](#<autonum>-element-|-autonumbered-(generated)-value). Using the two elements in combination, for example, the number (property) assigned to a subcontrol appearing inside a control numbered "A1" may be constrained to be "A1-a", "A1-b", etc., depending on the position of the subcontrol within the control.
 
-If a value must inherit from a property of a different class from the containing control object, `inherit/@from` can be used to indicate the applicable property (by its class). By default, `inherit` indicates a property value should match an ancestor's property with the same `@class` (the most usual case).
+If a value must inherit from a property of a different class from the containing control object, `inherit/@from` can be used to indicate the applicable property (by its class). By default, [&lt;inherit>](#<inherit>-element-|-inherited-value) indicates a property value should match an ancestor's property with the same `@class` (the most usual case).
 
 This element is empty
 
-### `@from` attribute: Alternative property (class) from which to inherit 
+### `@from` attribute | Alternative property (class) from which to inherit 
 
 When used, this element indicates a class for a property value to be considered for inheritance.
 
 If this attribute is ommitted, the target class is considered the same as the calling (inheriting) property. Sometimes, however, a property may wish to inherit a value from a property with a different class assignment (i.e. a differently-named property). In these cases, use this attribute.
 
 An example of this attribute in use appears in the declarations model for a COBIT5 mockup.
-* Allowed on `inherit`
+* Allowed on [&lt;inherit>](#<inherit>-element-|-inherited-value)

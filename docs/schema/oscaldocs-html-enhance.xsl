@@ -10,11 +10,11 @@
   <xsl:mode on-no-match="shallow-copy"/>
   
   <xsl:template match="h3[contains-token(@class,'element-description')]/span[contains-token(@class,'tag')]">
-    <code class="tag">&amp;lt;<xsl:apply-templates/>&gt;</code> element: <xsl:text/>  
+    <code class="tag">&lt;<xsl:apply-templates/>&gt;</code> element | <xsl:text/>  
   </xsl:template>
   
   <xsl:template match="h3[contains-token(@class,'attribute-description')]/span[contains-token(@class,'tag')]">
-    <code class="tag">@<xsl:apply-templates/></code> attribute: <xsl:text/>  
+    <code class="tag">@<xsl:apply-templates/></code> attribute | <xsl:text/>  
   </xsl:template>
   
   <xsl:template match="div[contains-token(@class,'schema-docs')][.//li/tokenize(.,'\s+') = 'ref:oscal:asProp']">
