@@ -30,7 +30,7 @@ Catalogs may use `<group>` elements to reference related controls or control gro
 * `@class` (optional)
 * `<title>` (optional)
 * [`<param>`](#param-element), [`<link>`](#link-element), [`<prop>`](#prop-element), and/or [`<part>`](#part-element) (zero or more of each)
-* [`<group>`](#group-element) or [`<control>`](#control-element) (one or more total)
+* `<group>` or [`<control>`](#control-element) (one or more total)
 * [`<references>`](#references-element) (optional)
 
 ### `<control>` element
