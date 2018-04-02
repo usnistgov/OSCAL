@@ -6,23 +6,25 @@ A profile designates a selection and configuration of controls from one or more 
 
 Each OSCAL profile is defined by a `<profile>` element. A `<profile>` element may contain the following:
 
+* `@id` (optional)
 * `<title>` for the profile (mandatory)
 * [`<import>`](#import-element) (one or more)
 * [`<merge>`](#merge-element) (optional)
 * [`<modify>`](#modify-element) (optional)
-* `@idAttr` (optional)
 
 ### `<import>` element
 
 An `<import>` element designates a catalog, profile, or other resource to be referenced by this profile. An `<import>` element may contain the following:
 
+* `@href` (optional)
 * [`<include>`](#include-element) (optional)
 * [`<exclude>`](#exclude-element) (optional)
-* `@hrefAttr` (optional)
 
 ### `<merge>` element
 
-A `<merge>` element merges controls. A `<merge>` element may contain the following:
+A `<merge>` element merges controls in resolution. The contents of the `<merge>` element may be used to "reorder" or "restructure" controls by indicating an order and/or structure in resolution. 
+
+A `<merge>` element may contain the following:
 
 * [`<combine>`](#combine-element) (optional)
 * [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (optional)
@@ -41,12 +43,14 @@ An `<as-is>` element indicates that the controls should be structured in resolut
 
 A `<custom>` element frames a structure for embedding represented controls in resolution. A `<custom>` element may contain the following:
 
+* `@id` (optional)
+* `@class` (optional)
 * `<title>` (optional)
 * [`<profileGroup>`](#profileGroup-element), [`<call>`](#call-element), and/or [`<match>`](#match-element) (zero or more of each)
-* `@ID` (optional)
-* `@optionalClass` (optional)
 
 #### `<profileGroup>` element
+
+TBD: has this been deleted?
 
 A `<profileGroup>` element designates related controls or groups (of controls or groups). A `<profileGroup>` element may contain the following:
 
@@ -63,8 +67,10 @@ A `<modify>` element sets parameters or amends controls in resolution. A `<modif
 
 An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<include>` element may contain the following:
 
-* [`<all>`](#all-element) (mandatory)
-* [`<call>`](#call-element) and/or [`<match>`](#match-element) (one or more of each)
+TBD: is this at least one of all, call, and/or match?
+
+* [`<all>`](#all-element) (one or more)
+* [`<call>`](#call-element) and/or [`<match>`](#match-element) (one or more total)
 
 #### `<all>` element
 
@@ -91,7 +97,9 @@ A `<match>` element selects controls by a regular expression match on ID. A `<ma
 
 An `<exclude>` element specifies which controls and subcontrols to exclude from the resource (source catalog) being imported. An `<excludes>` element may contain the following:
 
-* [`<match>`](#match-element) (mandatory)
+TBD: is this one or more of match and call?
+
+* [`<match>`](#match-element) (one or more)
 * [`<call>`](#call-element) (one or more)
 * For each instance of [`<call>`](#call-element), there may optionally also be a `@control-id` and a `@subcontrol-id`.
 
