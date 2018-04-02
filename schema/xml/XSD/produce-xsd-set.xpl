@@ -7,7 +7,8 @@
     
     <p:input port="parameters" kind="parameter"/>
     
-    <!-- Wrapper XProc pipeline reads three "blank" XSD files and rewrites them into a directory up, with documentation injected.   -->
+    <!-- Wrapper XProc pipeline reads three "blank" XSD files (w/o embedded documentation)
+         and rewrites them into a directory up, with documentation injected.   -->
     
     <p:input port="source" sequence="true">
         <p:document href="_catalog.xsd"/>

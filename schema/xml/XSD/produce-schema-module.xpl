@@ -20,20 +20,16 @@
   
   -->
   
-  <p:input port="source-xsd"/>
+  <p:input  port="xsd-module"/>
   <p:option name="oscal-doc-file" select="'../../../docs/schema/oscal-oscal.xml'"/>
   
   <p:input port="parameters" kind="parameter"/>
   
-  <p:output port="_XSD_input" primary="false">
-    <p:pipe port="result" step="input"/>
-  </p:output>
-  <p:output port="documented-xsd" primary="true">
+  <p:output port="result" primary="true">
     <p:pipe port="result" step="merge-docs"/>
   </p:output>
   
-  <p:serialization port="_XSD_input"     indent="true"/>
-  <p:serialization port="documented-xsd" indent="true"/>
+  <p:serialization port="result" indent="true"/>
   
   <p:identity name="input"/>
   
@@ -43,5 +39,5 @@
     </p:input>
     <p:with-param name="docs-file" select="$oscal-doc-file"/>
   </p:xslt>
-    
+
 </p:declare-step>
