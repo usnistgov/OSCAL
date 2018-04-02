@@ -69,7 +69,7 @@ A `<part>` element is a partition, piece, or section of a control, subcontrol, c
 A `<part>` element may contain the following:
 
 * `<title>` (optional)
-* [`<param>`](#param-element), [`<link>`](#link-element), [`<prop>`](#prop-element), [`<part>`](#part-element), `<p>`, `<ul>`, `<ol>`, and/or `<pre>` (zero or more of each)
+* [`<param>`](#param-element), [`<link>`](#link-element), [`<prop>`](#prop-element), `<part>`, `<p>`, `<ul>`, `<ol>`, and/or `<pre>` (zero or more of each)
 
 ##### `<link>` element
 
