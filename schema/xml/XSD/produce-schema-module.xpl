@@ -7,7 +7,7 @@
 <!--
   For injecting schema documentation into a single XSD module.
   
-  Called by produce-documented-xsd-set.xpl
+  Called by produce-xsd-set.xpl
   
   Inputs:
   

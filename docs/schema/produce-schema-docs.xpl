@@ -2,84 +2,89 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-  type="oscal:schema-production" name="schema-production">
+  type="oscal:produce-schema-docs" name="produce-schema-docs">
+  
+  <!-- Expects a path to a schema -->
+  <p:option name="schema" required="true"/>
   
 <!--
     
-  Inputs:
+  Inputs: An XSD schema; an OSCAL document containing elements declared from/in that schema
   
-  XSD 'skeleton' OSCAL schema produced by Trang from RNC/RNG
-  An OSCAL document describing the schema (oscal-oscal.xml, valid to oscal-docs.sch as well as the OSCAL schema)
-  
-  Outputs:
-  
-  HTML documentation
-  Markdown documentation
+  Results: (HTML documentation); Markdown documentation
   
   -->
   
-  <p:input port="source"     primary="true"/>
+  <p:input port="schema-docs" primary="true"/>
   <p:input port="parameters" kind="parameter"/>
   
-  <p:output port="a_OSCAL_docs" primary="false">
+  <p:output port="_a_OSCAL_docs" primary="false">
     <p:pipe port="result" step="input"/>
   </p:output>
-  <p:output port="b_with-english" primary="false">
+  <p:output port="_b_reduced" primary="false">
+    <p:pipe port="result" step="reduce"/>
+  </p:output>
+  <p:output port="_c_with-english" primary="false">
     <p:pipe port="result" step="inject-englishing"/>
   </p:output>
-  <p:output port="c_mapped" primary="false">
+  <p:output port="_d_mapped" primary="false">
     <p:pipe port="result" step="produce-html-docs"/>
   </p:output>
-  <p:output port="d_enhanced" primary="false">
+  <p:output port="_e_enhanced" primary="false">
     <p:pipe port="result" step="enhance-html-docs"/>
   </p:output>
-  <p:output port="e_linked" primary="false">
+  <p:output port="_f_linked" primary="false">
     <p:pipe port="result" step="linkup-html-docs"/>
   </p:output>
-  <p:output port="z1_html-docs" primary="false">
+  <p:output port="html-docs" primary="false">
     <p:pipe port="result" step="linkup-html-docs"/>
   </p:output>
-  <p:output port="z2_markdown-docs" primary="false">
+  <p:output port="markdown-docs" primary="false">
     <p:pipe port="result" step="produce-markdown-docs"/>
   </p:output>
   
-  <p:serialization port="a_OSCAL_docs"   indent="true"/>
-  <p:serialization port="b_with-english" indent="true"/>
-  <p:serialization port="c_mapped"       indent="true"/>
-  <p:serialization port="d_enhanced"     indent="true"/>
-  <p:serialization port="e_linked"       indent="true"/>
+  <p:serialization port="_a_OSCAL_docs"   indent="true"/>
+  <p:serialization port="_b_reduced"      indent="true"/>
+  <p:serialization port="_c_with-english" indent="true"/>
+  <p:serialization port="_d_mapped"       indent="true"/>
+  <p:serialization port="_e_enhanced"     indent="true"/>
+  <p:serialization port="_f_linked"       indent="true"/>
   
-  <p:serialization port="z1_html-docs"     indent="true" method="html"/>
-  <p:serialization port="z2_markdown-docs"               method="text"/>
+  <p:serialization port="html-docs"   indent="true" method="html"/>
+  <p:serialization port="markdown-docs"               method="text"/>
   
   <p:identity name="input"/>
   
   <!--<p:identity name="inject-englishing"/>-->
   
+  <p:xslt name="reduce">
+    <p:input port="stylesheet">
+      <p:document href="oscaloscal-reduce.xsl"/>
+    </p:input>
+    <p:with-param name="schema-path" select="$schema"/>
+  </p:xslt>
+  
+  
   <p:xslt name="inject-englishing">
     <p:input port="stylesheet">
-      <!-- XSLT 1.0 so it also runs in a browser -->
       <p:document href="schema-doc.xsl"/>
     </p:input>
   </p:xslt>
   
   <p:xslt name="produce-html-docs">
     <p:input port="stylesheet">
-      <!-- XSLT 1.0 so it also runs in a browser -->
       <p:document href="oscaldocs-html-map.xsl"/>
     </p:input>
   </p:xslt>
   
   <p:xslt name="enhance-html-docs">
     <p:input port="stylesheet">
-      <!-- XSLT 1.0 so it also runs in a browser -->
       <p:document href="oscaldocs-html-enhance.xsl"/>
     </p:input>
   </p:xslt>
   
   <p:xslt name="linkup-html-docs">
     <p:input port="stylesheet">
-      <!-- XSLT 1.0 so it also runs in a browser -->
       <p:document href="oscaldocs-html-linkup.xsl"/>
     </p:input>
   </p:xslt>
