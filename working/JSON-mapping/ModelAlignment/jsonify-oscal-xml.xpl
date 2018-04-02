@@ -7,24 +7,29 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   type="oscal:sp800-53oscal-digest" name="sp800-53oscal-digest">
   
+<!-- Purpose: From XML OSCAL, produces equivalent JSON OSCAL. -->
+<!-- Input: OSCAL XML -->
+<!-- Output: JSON rendition of same (*except*) -->
+<!-- Limitations - doesn't achieve clean escaping of < and > delimiters in results w/o an external process. -->
+<!-- One workaround: save out and run the result of port `xpath-json-xml` through `json-write.xsl` (outside this XProc) -->
+  
   <p:input port="source"     primary="true"/>
   <p:input port="parameters" kind="parameter"/>
   
-  <p:output port="_0_input" primary="false">
+  <p:output port="_input_XML" primary="false">
     <p:pipe port="result" step="catalog"/>
   </p:output>
-  <p:output port="_A_mapped" primary="false">
+  <p:output port="_xpath-json-xml" primary="false">
     <p:pipe port="result" step="reduced"/>
   </p:output>
-  <p:output port="_Z_serialized" primary="false">
+  <p:output port="JSON" primary="false">
     <p:pipe port="result" step="json-out"/>
   </p:output>
   
-  <p:serialization port="_A_mapped" indent="true"/>
   
-  <p:serialization port="_Z_serialized" indent="true" method="text"/>
-  
-  <p:serialization port="_0_input"      indent="true"/>
+  <p:serialization port="_input_XML"       indent="true"/>
+  <p:serialization port="_xpath-json-xml" indent="true"/>
+  <p:serialization port="JSON"           indent="true" method="text"/>
   
   <!--<p:load name="catalog">
     <p:with-option name="href" select="'file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml'"/>

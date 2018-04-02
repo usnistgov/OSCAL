@@ -87,7 +87,10 @@ Include all controls from the imported resource (catalog)
 
 This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [&lt;include>](#include-element--include-controls) element is given in an [&lt;import>](#import-element--import-resource); so ordinarily one might not see this element unless it is for purposes of including its `@with-subcontrols='yes'`
 
-Importing a catalog with all controls included:```
+Importing a catalog with all controls included:
+
+
+```
 <import href="canonical-catalog-oscal.xml">
   <include>
     <all/>
@@ -96,12 +99,17 @@ Importing a catalog with all controls included:```
 ```
 
 
-can also be done implicitly (with the same outcome):```
+can also be done implicitly (with the same outcome):
+
+
+```
 <import href="canonical-catalog-oscal.xml"/>
 ```
 
 
-However these are not the same as```
+However these are not the same as
+
+```
 <import href="canonical-catalog-oscal.xml">
   <include>
     <all with-subcontrols="yes"/>

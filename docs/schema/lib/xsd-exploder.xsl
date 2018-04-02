@@ -90,6 +90,9 @@
     <xsl:template priority="5" mode="explode" match="group[@name='profileGroup']//group[@ref = 'oscal:profileGroup']">
         <element ref="group"/>
     </xsl:template>
+
+    <xsl:template mode="explode" match="group//group" priority="2"/>
+    <xsl:template mode="explode" match="attributeGroup//attributeGroup" priority="2"/>
     
     <xsl:template mode="explode" match="schema/group[exists(@name)]"/>
     

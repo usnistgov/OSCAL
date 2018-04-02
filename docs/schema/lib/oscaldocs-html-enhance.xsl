@@ -29,7 +29,6 @@
       </ul>
     </div>-->
     <div class="part schema-docs">
-      <h5>Content declaration (reduced)</h5>
       <ul class="ul">
         <li class="li">text content <em>only</em> (and potentially further constrained)</li>
       </ul>
