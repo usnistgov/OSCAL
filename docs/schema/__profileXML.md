@@ -137,10 +137,12 @@ If [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-con
 ### `@control-id` attribute | Control Identifier 
 
 control-id
+* Allowed on [&lt;call>](#call-element--call-control-or-subcontrol), [&lt;alter>](#alter-element--alteration)
 
 ### `@subcontrol-id` attribute | Subcontrol Identifier 
 
 subcontrol-id
+* Allowed on [&lt;call>](#call-element--call-control-or-subcontrol), [&lt;alter>](#alter-element--alteration)
 
 ### `<match>` element | Match controls and subcontrols by identifier 
 
@@ -154,18 +156,22 @@ Select controls by (regular expression) match on ID
 ### `@pattern` attribute | Match ID with pattern (regular expression) 
 
 A regular expression to be matched against an ID value for purposes of control selection
+* Required on [&lt;match>](#match-element--match-controls-and-subcontrols-by-identifier)
 
 ### `@order` attribute | Control (re)order 
 
 When matching multiple controls, what order to use in emitting them: `keep`, `ascending`(alphabetically by ID) or `descending` (alphabetically by ID)
+* Allowed on [&lt;match>](#match-element--match-controls-and-subcontrols-by-identifier)
 
 ### `@with-subcontrols` attribute | Include subcontrols with controls 
 
 Say "yes" to include subcontrols with their controls
+* Allowed on 
 
 ### `@with-control` attribute | Include controls with subcontrols 
 
 with-control
+* Allowed on 
 
 ### `<set-param>` element | Parameter setting 
 
@@ -208,16 +214,19 @@ To change an element, use `<remove>` to remove the element, then [&lt;add>](#add
 ### `@class-ref` attribute | Select by class 
 
 Classes of items within controls or subcontrols in scope for removal
+* Allowed on [&lt;remove>](#remove-element--removal)
 
 ### `@id-ref` attribute | Reference by ID 
 
 ID values on items within controls or subcontrols in scope for removal
+* Allowed on [&lt;remove>](#remove-element--removal)
 
 ### `@item-name` attribute | Item name 
 
 The (element) name of an item within controls or subcontrols in scope for removal
 
 To select the `title` element use the value "title" etc.
+* Allowed on [&lt;remove>](#remove-element--removal)
 
 ### `<add>` element | Addition 
 
@@ -243,6 +252,7 @@ The method to be used when combining controls or subcontrols in resolving a prof
 Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control or a subcontrol). This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided; but this setting can be useful for defining what to do when it occurs.
 
 Three values are provided: `use-first`, [&lt;merge>](#merge-element--merge-controls) or `keep`. The latter two may produce invalid/broken results in some cases (where upstream profiles compete over control contents). In a profile with no collisions, the three values all have the same results.
+* Required on [&lt;combine>](#combine-element--combination-rule)
 
 ### `<as-is>` element | Structure as-is; retain source structure 
 

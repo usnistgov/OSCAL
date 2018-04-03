@@ -102,6 +102,7 @@ Works like an HTML anchor ([&lt;a>](#a-element--anchor)) except this is a line-o
 ### `@rel` attribute | Relation 
 
 The stipulated relation of a link to its target or vice versa
+* Allowed on 
 
 ### `@id` attribute | ID / identifier 
 
@@ -117,12 +118,15 @@ No mechanism is proposed to ensure that [@id](#id-attribute--id--identifier) val
 A link to a document or document fragment (actual, nominal or projected)
 
 Note in particular that [@href](#href-attribute--hypertext-reference) targets include elements (locations) in representations of documents that exist only by virtue of dynamic application, such as (for example) the results of profile resolution.
+* Allowed on [&lt;std>](#std-element--standard), [&lt;citation>](#citation-element--citation), [&lt;a>](#a-element--anchor), `declarations`
 
 ### `@class` attribute | Class 
 
 Nominal semantic binding(s) for any element (whitespace-separated list of name tokens)
 
 Overloading this attribute with more than one value is permitted, but not recommended.
+* Required on `declare-prop`, `declare-part`, `declare-p`
+* Allowed on 
 
 ## Functional elements
 
@@ -162,6 +166,7 @@ A "call" (reference) to a parameter for dynamic content transclusion
 Applicable parameter
 
 Identifies the parameter element target ([&lt;param>](#param-element--parameter)) that governs content insertion at this location (when on an [&lt;insert>](#insert-element--parameter-insertion)), or to which a parameter setting applies (when on a `set-param`).
+* Required on [&lt;insert>](#insert-element--parameter-insertion)
 
 ### `<withdrawn>` element | Withdrawn 
 

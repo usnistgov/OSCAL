@@ -91,9 +91,9 @@
   </xsl:template>
   
   <xsl:template match="pre">
-    <xsl:text>```&#xA;</xsl:text>
+    <xsl:text>&#xA;&#xA;```&#xA;</xsl:text>
     <xsl:value-of select="."/>
-    <xsl:text>&#xA;```&#xA;</xsl:text>
+    <xsl:text>&#xA;```&#xA;&#xA;</xsl:text>
   </xsl:template>
   
   <xsl:template match="pre//text()">

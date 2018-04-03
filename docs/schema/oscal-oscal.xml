@@ -77,7 +77,7 @@
   </section>
   <group>
     <title>Controls and their contents</title>
-    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     <p>The foundations of OSCAL are in control objects, such as controls and subcontrols, and the
       structured information they represent or contain (loosely <q>objects</q>, represented as valid
       XML elements). These contents will include both structured contents (using element types as
@@ -215,7 +215,7 @@
   </group>
   <group>
     <title>Functional elements</title>
-    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     
     <p>Functional elements appear inside control content to provide <q>hooks</q> to OSCAL
       processors for retrievability, manipulation (including mapping and transformation), and
@@ -276,7 +276,7 @@
     </group>
   <group>
     <title>Structural elements</title>
-    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     <component class="element-description">
       <prop class="tag">section</prop>
       <prop class="full_name">Section</prop>
@@ -350,7 +350,7 @@
   </group>
   <group id="prose">
     <title>Prose</title>
-    <prop class="xsd">../../schema/xml/XSD/_catalog.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-catalog.xsd</prop>
     <p>Prose may ordinarily appear anywhere except directly inside controls or subcontrols, where
       they will ordinarily be relegated to the control's partitions or statements
       (<code>part</code>s). OSCAL prose elements echo HTML semantics, although they are deliberately
@@ -547,7 +547,7 @@
   </group>
   <group>
     <title>Declarations elements</title>
-    <prop class="xsd">../../schema/xml/XSD/_declarations.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-declarations.xsd</prop>
     <p>By declaring constraints on information associated with controls such as their properties
         (<code>prop</code>), parts (<code>part</code>) and links (<code>link</code>), applications
       and operators can validate the composition and consistency of available controls. Over and
@@ -822,7 +822,7 @@
     </component>
   </group><group id="profiling">
     <title>Profiling</title>
-    <prop class="xsd">../../schema/xml/XSD/_profile.xsd</prop>
+    <prop class="xsd">../../schema/xml/oscal-profile.xsd</prop>
     <p>By means of its profiling functionality, OSCAL provides ways of specifying and documenting
       configurations or <q>overlays</q> of catalog, as <b>profile</b> documents. Although they may
       contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct

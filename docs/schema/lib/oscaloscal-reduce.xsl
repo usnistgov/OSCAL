@@ -25,13 +25,7 @@
     
     <xsl:variable name="this-schema" select="$known-schemas[matches(document-uri(/),'filter')]"/>
     
-    <xsl:template match="/*" expand-text="true">
-        <xsl:copy>
-            <xsl:copy-of select="@*"/>
-            <title>XML Schema { $module }{ if (exists($this-schema)) then replace(document-uri($this-schema),'.*/','') else ' : Full Tag Library' }</title>
-            <xsl:apply-templates select="group"/>
-        </xsl:copy>
-    </xsl:template>
+    
     
     <xsl:template match="/*/title"/>
     
@@ -41,6 +35,14 @@
             <xsl:apply-templates select="title"/>
             <xsl:copy-of select="//prop[contains-token(@class,'xsd')]"/>
             <xsl:apply-templates select="* except title"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="/*" expand-text="true">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <title>XML Schema { $module }{ if (exists($this-schema)) then replace(document-uri($this-schema),'.*/','') else ' : Full Tag Library' }</title>
+            <xsl:apply-templates select="group"/>
         </xsl:copy>
     </xsl:template>
     

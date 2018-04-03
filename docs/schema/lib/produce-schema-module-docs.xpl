@@ -21,7 +21,7 @@
   <p:input port="schema-docs" primary="true"/>
   <p:input port="parameters" kind="parameter"/>
   
-  <p:output port="_a_OSCAL_docs" primary="false">
+  <!--<p:output port="_a_OSCAL_docs" primary="false">
     <p:pipe port="result" step="input"/>
   </p:output>
   <p:output port="_b_reduced" primary="false">
@@ -38,7 +38,7 @@
   </p:output>
   <p:output port="_f_linked" primary="false">
     <p:pipe port="result" step="linkup-html-docs"/>
-  </p:output>
+  </p:output>-->
   <p:output port="html-docs" primary="false">
     <p:pipe port="result" step="linkup-html-docs"/>
   </p:output>
@@ -46,19 +46,17 @@
     <p:pipe port="result" step="produce-markdown-docs"/>
   </p:output>
   
-  <p:serialization port="_a_OSCAL_docs"   indent="true"/>
+  <!--<p:serialization port="_a_OSCAL_docs"   indent="true"/>
   <p:serialization port="_b_reduced"      indent="true"/>
   <p:serialization port="_c_with-english" indent="true"/>
   <p:serialization port="_d_mapped"       indent="true"/>
   <p:serialization port="_e_enhanced"     indent="true"/>
-  <p:serialization port="_f_linked"       indent="true"/>
+  <p:serialization port="_f_linked"       indent="true"/>-->
   
   <p:serialization port="html-docs"   indent="true" method="html"/>
   <p:serialization port="markdown-docs"               method="text"/>
   
   <p:identity name="input"/>
-  
-  <!--<p:identity name="inject-englishing"/>-->
   
   <p:xslt name="reduce">
     <p:input port="stylesheet">
@@ -66,7 +64,6 @@
     </p:input>
     <p:with-param name="module" select="$module"/>
   </p:xslt>
-  
   
   <p:xslt name="inject-englishing">
     <p:input port="stylesheet">

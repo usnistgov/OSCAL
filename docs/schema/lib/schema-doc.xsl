@@ -12,18 +12,23 @@
     
     <xsl:mode on-no-match="shallow-copy"/>
     
-    <!-- The entire set must be included since declarations call declarations in other modules. -->
-    <xsl:variable name="schema-files" select="//oscal:prop[contains-token(@class,'xsd')]"/>
-    
-    <xsl:variable name="schema-sources">
-        <xsl:document>
-          <xsl:sequence select="document(distinct-values($schema-files/resolve-uri(.,/)))"/>
-        </xsl:document>
-    </xsl:variable>
-    
+    <!-- overriding imported template   -->
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>
+    
+    <xsl:variable name="oscal-docs" select="/"/>
+    
+    <!--<!-\- The entire set must be included since declarations call declarations in other modules. -\->
+    <xsl:variable name="schema-files" select="distinct-values(//oscal:prop[contains-token(@class,'xsd')]) ! resolve-uri(.,$oscal-docs)"/>
+    
+    <xsl:variable name="schema-sources" as="document-node()">
+        <xsl:document>
+            <xsl:sequence select="$schema-files ! doc(.)"/>
+        </xsl:document>
+    </xsl:variable>
+    -->
+    
     
     <!--<xsl:template match="/*">
         <xsl:copy>
@@ -33,7 +38,7 @@
               <xsl:for-each select="document(current-grouping-key(),/)">
                   <group class="exploded-declarations">
                       <prop class="xsd">{ current-grouping-key() }</prop>
-                      <xsl:apply-templates mode="explode"/>
+                      <xsl:apply-templates/>
                   </group>
               </xsl:for-each>
             </xsl:for-each-group>
@@ -60,15 +65,17 @@
         <xsl:variable name="tag" select="oscal:prop[@class='tag']"/>
         <xsl:element name="part" namespace="http://csrc.nist.gov/ns/oscal/1.0">
             <xsl:attribute name="class">schema-docs</xsl:attribute>
-            <xsl:for-each-group select="$schema-sources//xs:attribute[@name = $tag]"
+            <xsl:variable name="schema-module" select="ancestor::oscal:group/oscal:prop[contains-token(@class,'xsd')]/document(.,.)/*"/>
+            <xsl:variable name="assembled-schema" select="oscal:assemble-schema($schema-module)"/>
+            <xsl:for-each-group select="$assembled-schema//xs:attribute[@name = $tag]"
                 group-by="@use = 'required'">
                 <xsl:variable name="permissibility"
                     select="if (current-grouping-key()) then 'Required on '
                             else 'Allowed on '"/>
                 <li>
                     <xsl:value-of select="$permissibility"/>
-                    <xsl:for-each-group
-                        select="current-group()/oscal:elements-for-attribute-declaration(., $schema-sources)"
+                     <xsl:for-each-group
+                        select="current-group()/oscal:elements-for-attribute-declaration(.)"
                         group-by="@name">
                         <xsl:if test="position() gt 1">, </xsl:if>
                         <code>
@@ -81,24 +88,27 @@
         
     </xsl:template>
     
-    <xsl:template match="oscal:component[@class='element-description']" mode="schema-extract">
-        <xsl:variable name="tag" select="oscal:prop[@class='tag']"/>
-        <xsl:for-each select="document(ancestor::oscal:*/oscal:prop[@class = 'xsd'], /)">
-            <xsl:element name="part"  namespace="http://csrc.nist.gov/ns/oscal/1.0">
-                <xsl:attribute name="class">schema-docs</xsl:attribute>
-                <!--<xsl:text expand-text="true"> schema { document-uri(/) }</xsl:text>-->
-                
-                <xsl:variable name="declarations" select="/*/xs:element[@name = $tag]"/> 
-                <!--<xsl:text expand-text="true">{ count($declarations) }</xsl:text>-->
-                
-                <xsl:variable name="exploded">
-                  <xsl:apply-templates select="$declarations" mode="explode"/>
-                </xsl:variable>
-                <!--<xsl:copy-of select="$declarations"/>-->
-                <xsl:copy-of         select="$exploded"/>
-                <xsl:apply-templates select="$exploded" mode="oscalize"/>
-            </xsl:element>
-        </xsl:for-each>
+    <xsl:template match="oscal:component[@class = 'element-description']" mode="schema-extract"
+        expand-text="true">
+        <xsl:variable name="tag" select="oscal:prop[@class = 'tag']"/>
+        <xsl:variable name="nominal-schema"
+            select="ancestor::oscal:group/oscal:prop[@class = 'xsd']"/>
+        <!--<xsl:message> nominal schema is { $nominal-schema }</xsl:message>-->
+        <xsl:element name="part" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+            <xsl:attribute name="class">schema-docs</xsl:attribute>
+            <!--<xsl:text expand-text="true"> schema { document-uri(/) }</xsl:text>-->
+
+            <xsl:variable name="declarations"
+                select="document($nominal-schema, /)/*/xs:element[@name = $tag]"/>
+            <!--<xsl:text expand-text="true">{ count($declarations) }</xsl:text>-->
+
+            <xsl:variable name="exploded">
+                <xsl:apply-templates select="$declarations" mode="explode"/>
+            </xsl:variable>
+            <!--<xsl:copy-of select="$declarations"/>-->
+            <xsl:copy-of select="$exploded"/>
+            <xsl:apply-templates select="$exploded" mode="oscalize"/>
+        </xsl:element>
     </xsl:template>
     
     <xsl:template priority="4" match="/element[elements[empty(*)]]" mode="oscalize" expand-text="true">
