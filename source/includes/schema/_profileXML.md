@@ -27,7 +27,7 @@ A `<merge>` element merges controls in resolution. The contents of the `<merge>`
 A `<merge>` element may contain the following:
 
 * [`<combine>`](#combine-element) (optional)
-* [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (one or more total)
+* [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (zero or more total)
 
 #### `<combine>` element
 
@@ -60,7 +60,7 @@ A `<modify>` element sets parameters or amends controls in resolution. A `<modif
 
 An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<include>` element may contain the following:
 
-* [`<all>`](#all-element) (zero or more)
+* [`<all>`](#all-element) (optional)
 * [`<call>`](#call-element) and/or [`<match>`](#match-element) (zero or more total)
 
 To be schema-valid, this element must contain either (but not both) a single [`<all>`](#all-element) element, or a sequence of [`<call>`](#call-element) elements.
@@ -69,11 +69,11 @@ If the `<include>` element is not specified, it is assumed to be present with co
 
 #### `<all>` element
 
-An `<all>` element includes all controls from the imported resource.
+An `<all>` element includes all controls from the imported resource. An `<all>` element may contain the following:
 
-TBD: add the @with-subcontrols attribute? Doc shows this element as being empty.
+* `@with-subcontrols` (optional), which specifies whether subcontrols should also be included (`yes` or `no`)
 
-This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [`<include>`](#include-element) element is given in an [`<import>`](#import-element) element, so ordinarily one might not see this element unless it is for purposes of including its `@with-subcontrols='yes'`.
+This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [`<include>`](#include-element) element is given in an [`<import>`](#import-element) element, so ordinarily one might not see the `<all>` element unless it is for purposes of specifying `@with-subcontrols='yes'`.
 
 Here is an example of importing a catalog with all controls included:
 
@@ -107,6 +107,7 @@ A `<call>` element calls a control or subcontrol by its ID. A `<call>` element m
 
 * `@with-subcontrols` (optional)
 * `@control-id` (optional)
+* `@with-control` (optional)
 * `@subcontrol-id` (optional)
 
 Inside an [`<include>`](#include-element) element, if `@control-id` is used (to indicate the control being referenced), then `@subcontrol-id` cannot be used, and vice versa. (A single `<call>` element is used for each control.) This constraint is enforced by the schema. Likewise, `@with-subcontrols` can be used only along with `@control-id`, not with `@subcontrol-id`.
@@ -128,7 +129,7 @@ An `<exclude>` element specifies which controls and subcontrols to exclude from 
 
 Within `<exclude>`, [`<all>`](#all-element) is not an option since it makes no sense. However, it also makes no sense to use `exclude/call` except with `include/all`; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.
 
-* [`<match>`](#match-element) (zero or more)
+* [`<match>`](#match-element) (optional)
 * [`<call>`](#call-element) (zero or more)
 * For each instance of [`<call>`](#call-element), there may optionally also be a `@control-id` and a `@subcontrol-id`.
 
