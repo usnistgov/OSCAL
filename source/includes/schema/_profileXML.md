@@ -142,7 +142,7 @@ A `<set-param>` element sets a parameter's value or rewrites its label or descri
 * `<desc>` (optional)
 * `<label>` (optional)
 * `<value>` (optional)
-* [`<link>`](#link-element) (zero or more)
+* [`<link>`](/schema/#code-lt-link-gt-code-element) (zero or more)
 
 `@param-id` indicates the parameter (within the scope of the referenced catalog or resource). The `<value>` element is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A `<desc>` element can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).
 
@@ -157,7 +157,7 @@ TBD: what is `@targets`?
 * [`<remove>`](#remove-element) (zero or more)
 * [`<add>`](#add-element) (zero or more)
 
-Use `@targets` to indicate the classes of elements (typically `<part>` or `<prop>` elements) to erase or remove from a control when a catalog is resolved.
+Use `@targets` to indicate the classes of elements (typically [`<part>`](/schema/#code-lt-part-gt-code-element) or [`<prop>`](/schema/#code-lt-prop-gt-code-element) elements) to erase or remove from a control when a catalog is resolved.
 
 It is an error for two `<alter>` elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
 
@@ -178,4 +178,4 @@ To change an item, use `<remove>` to remove the item, then [`<add>`](#add-elemen
 An `<add>` element specifies contents to be added to a control or subcontrols in resolution. An `<add>` element may contain the following:
 
 * `@position`, set to one of the following: `before`, `after`, `starting`, or `ending` (required)
-* `<title>`, [`<param>`](#param-element), [`<prop>`](#prop-element), and/or [`<part>`](#part-element) (zero or more of each)
+* `<title>`, [`<param>`](/schema/#code-lt-param-gt-code-element), [`<prop>`](/schema/#code-lt-prop-gt-code-element), and/or [`<part>`](/schema/#code-lt-part-gt-code-element) (zero or more of each)
