@@ -1,13 +1,13 @@
 ## Profile XML Schema
 
-A profile designates a selection and configuration of controls from one or more catalogs. The topmost element in the OSCAL profile XML schema is [`<profile>`](#profile-element).
+A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is [`<profile>`](#profile-element).
 
 ### `<profile>` element
 
 Each OSCAL profile is defined by a `<profile>` element. A `<profile>` element may contain the following:
 
-* `@id` (optional)
-* `<title>` for the profile (mandatory)
+* `@id` (required)
+* `<title>` (mandatory)
 * [`<import>`](#import-element) (one or more)
 * [`<merge>`](#merge-element) (optional)
 * [`<modify>`](#modify-element) (optional)
@@ -22,12 +22,12 @@ An `<import>` element designates a catalog, profile, or other resource to be ref
 
 ### `<merge>` element
 
-A `<merge>` element merges controls in resolution. The contents of the `<merge>` element may be used to "reorder" or "restructure" controls by indicating an order and/or structure in resolution. 
+A `<merge>` element merges controls in resolution. The contents of the `<merge>` element may be used to "reorder" or "restructure" controls by indicating an order and/or structure in resolution. Implicitly, a `<merge>` element is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a `<merge>` element, will not be merged into (will be dropped) in the resulting resolution.
 
 A `<merge>` element may contain the following:
 
 * [`<combine>`](#combine-element) (optional)
-* [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (optional)
+* [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (one or more total)
 
 #### `<combine>` element
 
@@ -67,14 +67,44 @@ A `<modify>` element sets parameters or amends controls in resolution. A `<modif
 
 An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<include>` element may contain the following:
 
-TBD: is this at least one of all, call, and/or match?
+* [`<all>`](#all-element) (zero or more)
+* [`<call>`](#call-element) and/or [`<match>`](#match-element) (zero or more total)
 
-* [`<all>`](#all-element) (one or more)
-* [`<call>`](#call-element) and/or [`<match>`](#match-element) (one or more total)
+To be schema-valid, this element must contain either (but not both) a single [`<all>`](#all-element) element, or a sequence of [`<call>`](#call-element) elements.
+
+If the `<include>` element is not specified, it is assumed to be present with contents [`<all>`](#all-element); i.e., all controls are included by default, unless the `<include>` element calls controls specifically.
 
 #### `<all>` element
 
 An `<all>` element includes all controls from the imported resource.
+
+This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [`<include>`](#include-element) element is given in an [`<import>`](#import-element) element, so ordinarily one might not see this element unless it is for purposes of including its `@with-subcontrols='yes'`.
+
+Here is an example of importing a catalog with all controls included:
+
+```
+<import href="canonical-catalog-oscal.xml">
+  <include>
+    <all/>
+  </include>
+</import>
+```
+
+This can also be done implicitly (with the same outcome) like this:
+
+```
+<import href="canonical-catalog-oscal.xml"/>
+```
+
+However, these two examples are not the same as the following, since `with-subcontrols` is assumed to be "no" unless stated to be "yes".
+
+```
+<import href="canonical-catalog-oscal.xml">
+  <include>
+    <all with-subcontrols="yes"/>
+  </include>
+</import>
+```
 
 #### `<call>` element
 
@@ -97,10 +127,10 @@ A `<match>` element selects controls by a regular expression match on ID. A `<ma
 
 An `<exclude>` element specifies which controls and subcontrols to exclude from the resource (source catalog) being imported. An `<excludes>` element may contain the following:
 
-TBD: is this one or more of match and call?
+Within `<exclude>`, [`<all>`](#all-element) is not an option since it makes no sense. However, it also makes no sense to use `exclude/call` except with `include/all`; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.
 
-* [`<match>`](#match-element) (one or more)
-* [`<call>`](#call-element) (one or more)
+* [`<match>`](#match-element) (zero or more)
+* [`<call>`](#call-element) (zero or more)
 * For each instance of [`<call>`](#call-element), there may optionally also be a `@control-id` and a `@subcontrol-id`.
 
 #### `<set-param>` element
