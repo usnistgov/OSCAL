@@ -135,3 +135,27 @@ This example shows a brief excerpt of ISO 27002 represented in OSCAL XML. This e
           </ol>
         </part>
 ```
+
+## Profile Example 1
+
+This example shows an excerpt of the profile corresponding to the NIST SP 800-53 low baseline. This excerpt omits additional `<call control>` lines but is otherwise complete. This profile has a title, imports the NIST SP 800-53 catalog, and specifies numerous controls from that catalog. Although this profile seems simple, it is a powerful tool for specifying controls from multiple catalogs in a consistent, interoperable format.
+
+```xml
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-82bbb8a3-492a-4308-9316-6db230697d00">
+   <title>SP800-53 LOW BASELINE IMPACT</title>
+   <import href="SP800-53-rev4-catalog.xml">
+      <include>
+         <call control-id="ac.1"/>
+         <call control-id="ac.2"/>
+         <call control-id="ac.3"/>
+         <call control-id="ac.7"/>
+         <call control-id="ac.8"/>
+         <call control-id="ac.14"/>
+         <call control-id="ac.17"/>
+         <call control-id="ac.18"/>
+         <call control-id="ac.19"/>
+         <call control-id="ac.20"/>
+         <call control-id="ac.22"/>
+      </include></import>
+</profile>
+```
