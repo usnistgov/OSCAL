@@ -1,15 +1,15 @@
 ## Catalog XML Schema
 
-The topmost element in the OSCAL catalog XML schema is [`<catalog>`](#catalog-element).
+The topmost element in the OSCAL catalog XML schema is [`<catalog>`](#code-lt-catalog-gt-code-element).
 
 ### `<catalog>` element
 
 Each OSCAL catalog is defined by a `<catalog>` element. A `<catalog>` element may contain the following:
 
 * `<title>` (mandatory)
-* [`<declarations>`](#declarations-element) (zero or more)
-* [`<section>`](#section-element), [`<group>`](#group-element), and/or [`<control>`](#control-element) (zero or more of each)
-* [`<references>`](#references-element) (optional)
+* [`<declarations>`](#code-lt-declarations-gt-code-element) (zero or more)
+* [`<section>`](#code-lt-section-gt-code-element), [`<group>`](#code-lt-group-gt-code-element), and/or [`<control>`](#code-lt-control-gt-code-element) (zero or more of each)
+* [`<references>`](#code-lt-references-gt-code-element) (optional)
 
 ### `<section>` element
 
@@ -20,7 +20,7 @@ Catalogs may use `<section>` elements for partitioning a catalog itself or anoth
 * `<title>` (mandatory)
 * `<p>`, `<ul>`, `<ol>`, and/or `<pre>` (zero or more of each) 
 * `<section>` (zero or more)
-* [`<references>`](#references-element) (optional)
+* [`<references>`](#code-lt-references-gt-code-element) (optional)
 
 ### `<group>` element
 
@@ -29,9 +29,9 @@ Catalogs may use `<group>` elements to reference related controls or control gro
 * `@id` (optional)
 * `@class` (optional)
 * `<title>` (optional)
-* [`<param>`](#param-element), [`<link>`](#link-element), [`<prop>`](#prop-element), and/or [`<part>`](#part-element) (zero or more of each)
-* `<group>` or [`<control>`](#control-element) (one or more total)
-* [`<references>`](#references-element) (optional)
+* [`<param>`](#code-lt-param-gt-code-element), [`<link>`](#code-lt-link-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), and/or [`<part>`](#code-lt-part-gt-code-element) (zero or more of each)
+* `<group>` or [`<control>`](#code-lt-control-gt-code-element) (one or more total)
+* [`<references>`](#code-lt-references-gt-code-element) (optional)
 
 ### `<control>` element
 
@@ -40,8 +40,8 @@ Each security or privacy control within the catalog is defined by a `<control>` 
 * `@id` (optional)
 * `@class` (optional)
 * `<title>` (optional)
-* [`<param>`](#param-element), [`<link>`](#link-element), [`<prop>`](#prop-element), [`<part>`](#part-element), and/or [`<subcontrol>`](#subcontrol-element) elements (zero or more of each)
-* [`<references>`](#references-element) (optional)
+* [`<param>`](#code-lt-param-gt-code-element), [`<link>`](#code-lt-link-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), [`<part>`](#code-lt-part-gt-code-element), and/or [`<subcontrol>`](#code-lt-subcontrol-gt-code-element) elements (zero or more of each)
+* [`<references>`](#code-lt-references-gt-code-element) (optional)
 
 ### `<subcontrol>` element
 
@@ -50,8 +50,8 @@ An OSCAL `<subcontrol>` element is very similar to an OSCAL `<control>` element 
 * `@id` (optional)
 * `@class` (optional)
 * `<title>` (optional)
-* [`<param>`](#param-element), [`<link>`](#link-element), [`<prop>`](#prop-element), and/or [`<part>`](#part-element) (zero or more of each)
-* [`<references>`](#references-element) (optional)
+* [`<param>`](#code-lt-param-gt-code-element), [`<link>`](#code-lt-link-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), and/or [`<part>`](#code-lt-part-gt-code-element) (zero or more of each)
+* [`<references>`](#code-lt-references-gt-code-element) (optional)
 
 ##### `<prop>` element
 
@@ -69,7 +69,7 @@ A `<part>` element is a partition, piece, or section of a control, subcontrol, c
 A `<part>` element may contain the following:
 
 * `<title>` (optional)
-* [`<param>`](#param-element), [`<link>`](#link-element), [`<prop>`](#prop-element), `<part>`, `<p>`, `<ul>`, `<ol>`, and/or `<pre>` (zero or more of each)
+* [`<param>`](#code-lt-param-gt-code-element), [`<link>`](#code-lt-link-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), `<part>`, `<p>`, `<ul>`, `<ol>`, and/or `<pre>` (zero or more of each)
 
 ##### `<link>` element
 
