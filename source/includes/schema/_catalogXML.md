@@ -53,7 +53,7 @@ An OSCAL `<subcontrol>` element is very similar to an OSCAL `<control>` element 
 * [`<param>`](#code-lt-param-gt-code-element), [`<link>`](#code-lt-link-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), and/or [`<part>`](#code-lt-part-gt-code-element) (zero or more of each)
 * [`<references>`](#code-lt-references-gt-code-element) (optional)
 
-##### `<prop>` element
+#### `<prop>` element
 
 A `<prop>` element is a value with a name. It is attributed to the containing control, subcontrol, component, part, or group. Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls and parts and extensions), for any purpose useful to an application or implementation of those controls. Typically and routinely, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities. 
 
@@ -62,7 +62,7 @@ A `<prop>` element may contain the following:
 * `@id` (optional)
 * text content
 
-##### `<part>` element
+#### `<part>` element
 
 A `<part>` element is a partition, piece, or section of a control, subcontrol, component, or part. Generally speaking, `<part>` elements will be of two kinds. Many parts are logical partitions or sections for prose; these may be called "statements" and may be expected to have simple prose contents, even just one paragraph. Other parts may be more formally constructed out of properties (`<prop>` elements) and/or their own parts. Such structured objects (sometimes called "features") may, at the extreme, function virtually as control extensions or subcontrol-like objects ("enhancements"). Since the composition of parts can be constrained using OSCAL declarations (of the items or components to be given in a part or in this type of part), their use for encoding "objects" of arbitrary complexity within controls is effectively open-ended.
 
@@ -71,7 +71,7 @@ A `<part>` element may contain the following:
 * `<title>` (optional)
 * [`<param>`](#code-lt-param-gt-code-element), [`<link>`](#code-lt-link-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), `<part>`, `<p>`, `<ul>`, `<ol>`, and/or `<pre>` (zero or more of each)
 
-##### `<link>` element
+#### `<link>` element
 
 A `<link>` element is a line or paragraph with a hypertext link. A `<link>` element may contain the following:
 
@@ -79,7 +79,7 @@ A `<link>` element is a line or paragraph with a hypertext link. A `<link>` elem
 * `@href` (optional)
 * text content, possibly mixed with zero or more of each of the following: `<q>`, `<code>`, `<em>`, `<i>`, `<b>`, `<sub>`, `<sup>`, and/or `<span>`
 
-##### `<param>` element
+#### `<param>` element
 
 A `<param>` element is a parameter setting to be propagated to one or more points of insertion. A `<param>` element may contain the following:
 
