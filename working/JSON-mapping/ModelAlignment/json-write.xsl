@@ -5,7 +5,7 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
-        <xsl:output use-character-maps="delimiters" method="xml"/>
+        <xsl:output use-character-maps="delimiters" method="text"/>
         
         <xsl:character-map name="delimiters">
             <xsl:output-character character="&lt;" string="\u003c"/>

@@ -7,7 +7,7 @@ SAXON="/home/wendell/Saxon/saxon9he.jar"
 # Saxon CL documented here: http://www.saxonica.com/documentation9.5/using-xsl/commandline.html
 
 # Set up call to Saxon
-JAVACALL="java -jar $SAXON -s:SP800-52rev4x3controls-json.xml -o:$BASENAME.json -xsl:json-write.xsl"
+JAVACALL="java -jar $SAXON -s:$XMLJSON -o:$BASENAME.json -xsl:json-write.xsl"
 
 # Now ...
 echo

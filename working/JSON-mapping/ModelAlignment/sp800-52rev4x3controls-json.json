@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><json>
+
   { "catalog" : 
     { "title" : "Three Controls from SP800-53",
       "declarations" : 
@@ -3954,4 +3954,4 @@
               [ 
                 { "class" : "statement",
                   "prose" : 
-                  [ "\u003cp class=\"description\"\u003e\n                  \u003cwithdrawn\u003eIncorporated into SC-13\u003c\/withdrawn\u003e.\u003c\/p\u003e" ] } ] } ] } ] } }</json>
+                  [ "\u003cp class=\"description\"\u003e\n                  \u003cwithdrawn\u003eIncorporated into SC-13\u003c\/withdrawn\u003e.\u003c\/p\u003e" ] } ] } ] } ] } }
