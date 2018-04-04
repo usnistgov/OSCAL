@@ -77,7 +77,7 @@ under the License.
         <% toc_data(page_content).each do |h1| %>
           <% @saved_output = capture do %>
             <li>
-              <% if (current_page.url != "/") && (current_page.url != "/concepts/") && (current_page.url != "/schema/") && (current_page.url != "/examples/") %>
+              <% if (current_page.url != "/") && (current_page.url != "/concepts/") && (current_page.url != "/schema/") && (current_page.url != "/examples/" && (current_page.url != "/roadmap/") %>
                 <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content] %>"><%= h1[:content] %></a>
               <% end %>
               <% if h1[:children].length > 0 %>
@@ -109,7 +109,9 @@ under the License.
           <% if current_page.url == "/schema/" %><%= @saved_output %><% end %>
           <li><a class="toc-h1 toc-link" href="/examples">Examples</a></li>
           <% if current_page.url == "/examples/" %><%= @saved_output %><% end %>
-        <% end %>
+          <li><a class="toc-h1 toc-link" href="/roadmap">Roadmap</a></li>
+          <% if current_page.url == "/roadmap/" %><%= @saved_output %><% end %>
+         <% end %>
       </div>
       <ul class="toc-footer">
           <li><a href="https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a></li>
