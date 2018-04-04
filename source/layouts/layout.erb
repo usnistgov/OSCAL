@@ -77,7 +77,7 @@ under the License.
         <% toc_data(page_content).each do |h1| %>
           <% @saved_output = capture do %>
             <li>
-              <% if (current_page.url != "/") && (current_page.url != "/concepts/") && (current_page.url != "/schema/") && (current_page.url != "/examples/" && (current_page.url != "/roadmap/") %>
+              <% if (current_page.url != "/") && (current_page.url != "/concepts/") && (current_page.url != "/schema/") && (current_page.url != "/examples/") && (current_page.url != "/roadmap/") %>
                 <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:content] %>"><%= h1[:content] %></a>
               <% end %>
               <% if h1[:children].length > 0 %>
