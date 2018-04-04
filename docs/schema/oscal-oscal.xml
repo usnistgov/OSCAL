@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="oscal-docs-html.xsl"?>
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css" title="Straight" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Straight" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-author.css" title="Authoring" alternate="yes"?>
 <?xml-model type="application/xml" href="oscal-docs.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!--<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
 <?xml-model href="../../schema/xml/RNC/oscal-experimental.rnc" type="application/relax-ng-compact-syntax"?>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <!-- XML produced by running 'control-selector.xsl' on rev4 sp800-53 catalog.
      It contains the three most-linked controls from the catalog (AC-4, SI-4, SI-13) -->
 <?xml-stylesheet type="text/xsl" href="SP800-53-oscal-browser-display.xsl"?>

@@ -1,4 +1,4 @@
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <?xml-stylesheet type="text/xsl" href="oscal-fancy-display.xsl"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <group id="ID" class="function">

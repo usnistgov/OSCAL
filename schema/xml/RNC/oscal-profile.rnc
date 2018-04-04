@@ -64,5 +64,5 @@ remove  = element remove  {
   attribute item-name { xsd:NCName }? }
 
 augment = element add {
-  attribute position { 'before' | 'after' | 'starting' |'ending'},
+  attribute position { 'before' | 'after' | 'starting' |'ending'}?,
   (title | param | prop | part)* }

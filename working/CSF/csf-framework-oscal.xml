@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
 <framework xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>CSF Framework in OSCAL [DRAFT]</title>
    <group class="function">

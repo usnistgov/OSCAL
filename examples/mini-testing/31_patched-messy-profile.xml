@@ -26,8 +26,8 @@
 
       <!-- Also patching by adding removing and adding statements and properties -->
       <alter control-id="ac.6">
-         <remove targets="statement guidance"/>
-         <augment>
+         <remove class-ref="statement guidance"/>
+         <add>
             <part class="guidance">
                <p>Do <em>NOT</em> go back in the water.</p>
             </part>
@@ -45,7 +45,7 @@
             <part class="special">
                <p>Code <code>green</code></p>
             </part>
-         </augment>
+         </add>
       </alter>
    </modify>
 </profile>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../Documents/OSCAL/working/lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../../Documents/OSCAL/working/lib/CSS/oscal.css"?>
-<?xml-model href="../../Documents/OSCAL/working/lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../Documents/OSCAL/lib/oscal-profile-working.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../../Documents/OSCAL/lib/CSS/oscal.css"?>
+<?xml-model href="../../Documents/OSCAL/lib/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <invoke href="SP800-53-OSCAL-refined.xml">
     <include> <!--(all | call+) --> 

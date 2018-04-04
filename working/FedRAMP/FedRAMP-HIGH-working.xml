@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-HIGH-extract.xml 2017-11-16-05:00 -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          id="uuid-3793ff7f-f182-4e7e-b0b2-4b0dc6fe521d">

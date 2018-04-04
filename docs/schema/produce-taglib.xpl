@@ -87,7 +87,7 @@
   <!--<p:identity name="produce-markdown-docs"/>-->
   <p:xslt name="produce-markdown-docs">
     <p:input port="stylesheet">
-      <p:document href="../../working/lib/XSLT/html-to-markdown.xsl"/>
+      <p:document href="../../lib/XSLT/html-to-markdown.xsl"/>
     </p:input>
   </p:xslt>
  

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css" title="Regular" alternate="yes"?>
-<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-mapping.css" title="Tabular" alternate="yes"?>
+<?xml-model href="../../../lib/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-stylesheet type="text/css" href="../../../lib/CSS/oscal.css" title="Regular" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../../lib/CSS/oscal-mapping.css" title="Tabular" alternate="yes"?>
 <?xml-stylesheet type="text/xsl" href="oscal-tabular-display.xsl"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
   <title>SP800-53A to OSCAL XML Element Mapping</title>

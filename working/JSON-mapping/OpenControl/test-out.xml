@@ -1,4 +1,4 @@
-<?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <map xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>Moderate SSP for Docker Enterprise Edition Deployment ATO</title>
    <p class="description">Moderate SSP for Docker Enterprise Edition Deployment ATO</p>
