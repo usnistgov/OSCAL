@@ -6,7 +6,7 @@ The topmost element in the OSCAL catalog XML schema is [`<catalog>`](#catalog-el
 
 Each OSCAL catalog is defined by a `<catalog>` element. A `<catalog>` element may contain the following:
 
-* `<title>` for the catalog (mandatory)
+* `<title>` (mandatory)
 * [`<declarations>`](#declarations-element) (zero or more)
 * [`<section>`](#section-element), [`<group>`](#group-element), and/or [`<control>`](#control-element) (zero or more of each)
 * [`<references>`](#references-element) (optional)
@@ -98,4 +98,4 @@ A `<references>` element contains one or more reference descriptions, each conta
 
 ### `<declarations>` element
 
-A `<declarations>` element is used for extra-schema validation of data given within controls or framework components. More information on this will be added to the documentation in the future.
+A `<declarations>` element is used for extra-schema validation of data given within controls. More information on this will be added to the documentation in the future.
