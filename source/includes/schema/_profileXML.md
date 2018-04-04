@@ -95,11 +95,11 @@ A `<match>` element selects controls by a regular expression match on ID. A `<ma
 
 An `<exclude>` element specifies which controls and subcontrols to exclude from the resource (source catalog) being imported. An `<excludes>` element may contain the following:
 
-Within `<exclude>`, [`<all>`](#all-element) is not an option since it makes no sense. However, it also makes no sense to use `exclude/call` except with `include/all`; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.
-
 * [`<match>`](#match-element) (optional)
 * [`<call>`](#call-element) (zero or more)
 * For each instance of [`<call>`](#call-element), there may optionally also be a `@control-id` and a `@subcontrol-id`.
+
+Within `<exclude>`, [`<all>`](#all-element) is not an option since it makes no sense. However, it also makes no sense to use `exclude/call` except with `include/all`; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.
 
 ### `<merge>` element
 
