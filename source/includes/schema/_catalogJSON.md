@@ -1,17 +1,17 @@
 ## Catalog JSON Schema
 
-The topmost name in the OSCAL catalog JSON schema is [`"catalog"`](#catalog-name).
+The topmost name in the OSCAL catalog JSON schema is [`"catalog"`](#code-quot-catalog-quot-code-name).
 
 ### `"catalog"` name
 
 Each OSCAL catalog is defined by a `"catalog"` name. A `"catalog"` name may contain the following:
 
 * `"title"`
-* [`"declarations"`](#declarations-name)
-* [`"sections"`](#sections-name)
-* [`"groups"`](#groups-name)
-* [`"controls"`](#controls-name)
-* [`"references"`](#references-name)
+* [`"declarations"`](#code-quot-declarations-quot-code-name)
+* [`"sections"`](#code-quot-sections-quot-code-name)
+* [`"groups"`](#code-quot-groups-quot-code-name)
+* [`"controls"`](#code-quot-controls-quot-code-name)
+* [`"references"`](#code-quot-references-quot-code-name)
 
 ### `"sections"` name
 
@@ -22,8 +22,8 @@ Catalogs may use `"sections"` names for partitioning. A `"sections"` name may co
 * `"title"`
 * `"prose"`
 * `"sections"`
-* [`"groups"`](#groups-name)
-* [`"references"`](#references-name)
+* [`"groups"`](#code-quot-groups-quot-code-name)
+* [`"references"`](#code-quot-references-quot-code-name)
 
 ### `"groups"` name
 
@@ -32,12 +32,12 @@ Catalogs may use `"groups"` names to reference related controls or control group
 * `"id"`
 * `"class"`
 * `"title"`
-* [`"props"`](#props-name)
-* [`"parts"`](#parts-name)
-* [`"links"`](#links-name)
-* [`"params"`](#params-name)
-* [`"groups"`](#groups-name) or [`"controls"`](#controls-name)
-* [`"references"`](#references-name)
+* [`"props"`](#code-quot-props-quot-code-name)
+* [`"parts"`](#code-quot-parts-quot-code-name)
+* [`"links"`](#code-quot-links-quot-code-name)
+* [`"params"`](#code-quot-params-quot-code-name)
+* [`"groups"`](#code-quot-groups-quot-code-name) or [`"controls"`](#code-quot-controls-quot-code-name)
+* [`"references"`](#code-quot-references-quot-code-name)
 
 ### `"controls"` name
 
@@ -46,12 +46,12 @@ Each security or privacy control within the catalog is defined by a `"controls"`
 * `"id"`
 * `"class"`
 * `"title"`
-* [`"props"`](#props-name)
-* [`"parts"`](#parts-name)
-* [`"links"`](#links-name)
-* [`"params"`](#params-name)
-* [`"subcontrols"`](#subcontrols-name)
-* [`"references"`](#references-name)
+* [`"props"`](#code-quot-props-quot-code-name)
+* [`"parts"`](#code-quot-parts-quot-code-name)
+* [`"links"`](#code-quot-links-quot-code-name)
+* [`"params"`](#code-quot-params-quot-code-name)
+* [`"subcontrols"`](#code-quot-subcontrols-quot-code-name)
+* [`"references"`](#code-quot-references-quot-code-name)
 
 ### `"subcontrols"` name
 
@@ -60,11 +60,11 @@ A `"subcontrols"` name is very similar to a `"controls"` name in its composition
 * `"id"`
 * `"class"`
 * `"title"`
-* [`"props"`](#props-name)
-* [`"parts"`](#parts-name)
-* [`"links"`](#links-name)
-* [`"params"`](#params-name)
-* [`"references"`](#references-name)
+* [`"props"`](#code-quot-props-quot-code-name)
+* [`"parts"`](#code-quot-parts-quot-code-name)
+* [`"links"`](#code-quot-links-quot-code-name)
+* [`"params"`](#code-quot-params-quot-code-name)
+* [`"references"`](#code-quot-references-quot-code-name)
 
 ##### `"props"` name
 
@@ -85,10 +85,10 @@ A `"parts"` name may contain the following:
 * `"class"`
 * `"title"`
 * `"prose"`
-* [`"props"`](#props-name)
+* [`"props"`](#code-quot-props-quot-code-name)
 * `"parts"`
-* [`"links"`](#links-name)
-* [`"params"`](#params-name)
+* [`"links"`](#code-quot-links-quot-code-name)
+* [`"params"`](#code-quot-params-quot-code-name)
 
 ##### `"links"` name
 
