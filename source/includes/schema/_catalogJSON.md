@@ -1,6 +1,6 @@
 ## Catalog JSON Schema
 
-The topmost element in the OSCAL catalog JSON schema is [`"catalog"`](#catalog-name).
+The topmost name in the OSCAL catalog JSON schema is [`"catalog"`](#catalog-name).
 
 ### `"catalog"` name
 
