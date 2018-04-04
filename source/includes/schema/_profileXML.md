@@ -24,46 +24,6 @@ An `<import>` element designates a catalog, profile, or other resource to be inc
 
 The contents of the `<import>` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [`<include>`](#include-element) element) or de-selected (using an [`<exclude>`](#exclude-element) element) from the source catalog or profile.
 
-### `<merge>` element
-
-A `<merge>` element merges controls in resolution. The contents of the `<merge>` element may be used to "reorder" or "restructure" controls by indicating an order and/or structure in resolution. Implicitly, a `<merge>` element is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a `<merge>` element, will not be merged into (will be dropped) in the resulting resolution.
-
-A `<merge>` element may contain the following:
-
-* [`<combine>`](#combine-element) (optional)
-* [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (zero or more total)
-
-#### `<combine>` element
-
-A `<combine>` element defines whether and how to combine multiple (competing) versions of the same control. Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control or a subcontrol). This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.
-
-A `<combine>` element must contain the following:
-
-* `@method`, set to one of the following: `use-first`, `merge`, or `keep`. The `merge` and `keep` values may produce invalid/broken results in some cases (where upstream profiles compete over control contents). In a profile with no collisions, the three values all have the same results.
-
-#### `<as-is>` element
-
-An `<as-is>` element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.
-
-#### `<custom>` element
-
-A `<custom>` element frames a structure for embedding represented controls in resolution. The `<custom>` element represents a custom arrangement or organization of controls in the resolution of a catalog. While the [`<as-is>`](#as-is-element) element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.
-
-A `<custom>` element may contain the following:
-
-* `@id` (optional)
-* `@class` (optional)
-* `<title>` (optional)
-* `<group>`, [`<call>`](#call-element), and/or [`<match>`](#match-element) (zero or more of each)
-
-Unlike groups within catalogs, `<group>` elements inside `<custom>` elements contain references to controls to be included in the group (in resolution)--or more such groups.
-
-### `<modify>` element
-
-A `<modify>` element sets parameters or amends controls in resolution. A `<modify>` element may contain the following:
-
-* [`<set-param>`](#set-param-element) and/or [`<alter>`](#alter-element) (zero or more of each)
-
 #### `<include>` element
 
 An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<include>` element may contain the following:
@@ -122,7 +82,7 @@ Inside an [`<include>`](#include-element) element, if `@control-id` is used (to 
 
 If `@with-subcontrols` is "yes" on the call to a control, no sibling `<call>` elements need to be used to call its subcontrols. Accordingly, it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
 
-### `<match>` element
+#### `<match>` element
 
 A `<match>` element selects controls by a regular expression match on ID. A `<match>` element may contain the following:
 
@@ -140,6 +100,46 @@ Within `<exclude>`, [`<all>`](#all-element) is not an option since it makes no s
 * [`<match>`](#match-element) (optional)
 * [`<call>`](#call-element) (zero or more)
 * For each instance of [`<call>`](#call-element), there may optionally also be a `@control-id` and a `@subcontrol-id`.
+
+### `<merge>` element
+
+A `<merge>` element merges controls in resolution. The contents of the `<merge>` element may be used to "reorder" or "restructure" controls by indicating an order and/or structure in resolution. Implicitly, a `<merge>` element is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a `<merge>` element, will not be merged into (will be dropped) in the resulting resolution.
+
+A `<merge>` element may contain the following:
+
+* [`<combine>`](#combine-element) (optional)
+* [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (zero or more total)
+
+#### `<combine>` element
+
+A `<combine>` element defines whether and how to combine multiple (competing) versions of the same control. Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control or a subcontrol). This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.
+
+A `<combine>` element must contain the following:
+
+* `@method`, set to one of the following: `use-first`, `merge`, or `keep`. The `merge` and `keep` values may produce invalid/broken results in some cases (where upstream profiles compete over control contents). In a profile with no collisions, the three values all have the same results.
+
+#### `<as-is>` element
+
+An `<as-is>` element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.
+
+#### `<custom>` element
+
+A `<custom>` element frames a structure for embedding represented controls in resolution. The `<custom>` element represents a custom arrangement or organization of controls in the resolution of a catalog. While the [`<as-is>`](#as-is-element) element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.
+
+A `<custom>` element may contain the following:
+
+* `@id` (optional)
+* `@class` (optional)
+* `<title>` (optional)
+* `<group>`, [`<call>`](#call-element), and/or [`<match>`](#match-element) (zero or more of each)
+
+Unlike groups within catalogs, `<group>` elements inside `<custom>` elements contain references to controls to be included in the group (in resolution)--or more such groups.
+
+### `<modify>` element
+
+A `<modify>` element sets parameters or amends controls in resolution. A `<modify>` element may contain the following:
+
+* [`<set-param>`](#set-param-element) and/or [`<alter>`](#alter-element) (zero or more of each)
 
 #### `<set-param>` element
 
