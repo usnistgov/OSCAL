@@ -1,6 +1,6 @@
 ## Profile XML Schema
 
-A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is [`<profile>`](#profile-element).
+A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is [`<profile>`](#code-lt-profile-gt-code-element).
 
 ### `<profile>` element
 
@@ -8,32 +8,32 @@ Each OSCAL profile is defined by a `<profile>` element. A `<profile>` element ma
 
 * `@id` (required)
 * `<title>` (mandatory)
-* [`<import>`](#import-element) (one or more)
-* [`<merge>`](#merge-element) (optional)
-* [`<modify>`](#modify-element) (optional)
+* [`<import>`](#code-lt-import-gt-code-element) (one or more)
+* [`<merge>`](#code-lt-merge-gt-code-element) (optional)
+* [`<modify>`](#code-lt-modify-gt-code-element) (optional)
 
-An OSCAL document that describes a selection with possible modification of multiple controls from multiple catalogs. It provides mechanisms by which controls may be selected ([`<import>`](#import-element)), merged or (re)structured ([`<merge>`](#merge-element)), and emended ([`<modify>`](#modify-element)). OSCAL profiles may select subsets of control sets, set parameter values for them in an application, and even qualify the representation of controls and subcontrols as given in and by a catalog. They may also serve as sources for further modification in and by other profiles that import them.
+An OSCAL document that describes a selection with possible modification of multiple controls from multiple catalogs. It provides mechanisms by which controls may be selected ([`<import>`](#code-lt-import-gt-code-element)), merged or (re)structured ([`<merge>`](#code-lt-merge-gt-code-element)), and emended ([`<modify>`](#code-lt-modify-gt-code-element)). OSCAL profiles may select subsets of control sets, set parameter values for them in an application, and even qualify the representation of controls and subcontrols as given in and by a catalog. They may also serve as sources for further modification in and by other profiles that import them.
 
 ### `<import>` element
 
 An `<import>` element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. An `<import>` element may contain the following:
 
 * `@href` (optional)
-* [`<include>`](#include-element) (optional)
-* [`<exclude>`](#exclude-element) (optional)
+* [`<include>`](#code-lt-include-gt-code-element) (optional)
+* [`<exclude>`](#code-lt-exclude-gt-code-element) (optional)
 
-The contents of the `<import>` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [`<include>`](#include-element) element) or de-selected (using an [`<exclude>`](#exclude-element) element) from the source catalog or profile.
+The contents of the `<import>` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [`<include>`](#code-lt-include-gt-code-element) element) or de-selected (using an [`<exclude>`](#code-lt-exclude-gt-code-element) element) from the source catalog or profile.
 
 #### `<include>` element
 
 An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<include>` element may contain the following:
 
-* [`<all>`](#all-element) (optional)
-* [`<call>`](#call-element) and/or [`<match>`](#match-element) (zero or more total)
+* [`<all>`](#code-lt-all-gt-code-element) (optional)
+* [`<call>`](#code-lt-call-gt-code-element) and/or [`<match>`](#code-lt-match-gt-code-element) (zero or more total)
 
-To be schema-valid, this element must contain either (but not both) a single [`<all>`](#all-element) element, or a sequence of [`<call>`](#call-element) elements.
+To be schema-valid, this element must contain either (but not both) a single [`<all>`](#code-lt-all-gt-code-element) element, or a sequence of [`<call>`](#code-lt-call-gt-code-element) elements.
 
-If the `<include>` element is not specified, it is assumed to be present with contents [`<all>`](#all-element); i.e., all controls are included by default, unless the `<include>` element calls controls specifically.
+If the `<include>` element is not specified, it is assumed to be present with contents [`<all>`](#code-lt-all-gt-code-element); i.e., all controls are included by default, unless the `<include>` element calls controls specifically.
 
 #### `<all>` element
 
@@ -41,9 +41,9 @@ An `<all>` element includes all controls from the imported resource. An `<all>` 
 
 * `@with-subcontrols` (optional), which specifies whether subcontrols should also be included (`yes` or `no`)
 
-This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [`<include>`](#include-element) element is given in an [`<import>`](#import-element) element, so ordinarily one might not see the `<all>` element unless it is for purposes of specifying `@with-subcontrols='yes'`.
+This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [`<include>`](#code-lt-include-gt-code-element) element is given in an [`<import>`](#code-lt-import-gt-code-element) element, so ordinarily one might not see the `<all>` element unless it is for purposes of specifying `@with-subcontrols='yes'`.
 
-Here is an example of importing a catalog with all controls included:
+The first example is importing a catalog with all controls included:
 
 ```
 <import href="canonical-catalog-oscal.xml">
@@ -53,13 +53,13 @@ Here is an example of importing a catalog with all controls included:
 </import>
 ```
 
-This can also be done implicitly (with the same outcome) like this:
+The second example shows this can also be done implicitly (with the same outcome):
 
 ```
 <import href="canonical-catalog-oscal.xml"/>
 ```
 
-However, these two examples are not the same as the following, since `with-subcontrols` is assumed to be "no" unless stated to be "yes".
+However, these two examples are not the same as the third example, since `with-subcontrols` is assumed to be "no" unless stated to be "yes".
 
 ```
 <import href="canonical-catalog-oscal.xml">
@@ -78,7 +78,7 @@ A `<call>` element calls a control or subcontrol by its ID. A `<call>` element m
 * `@with-control` (optional)
 * `@subcontrol-id` (optional)
 
-Inside an [`<include>`](#include-element) element, if `@control-id` is used (to indicate the control being referenced), then `@subcontrol-id` cannot be used, and vice versa. (A single `<call>` element is used for each control.) This constraint is enforced by the schema. Likewise, `@with-subcontrols` can be used only along with `@control-id`, not with `@subcontrol-id`.
+Inside an [`<include>`](#code-lt-include-gt-code-element) element, if `@control-id` is used (to indicate the control being referenced), then `@subcontrol-id` cannot be used, and vice versa. (A single `<call>` element is used for each control.) This constraint is enforced by the schema. Likewise, `@with-subcontrols` can be used only along with `@control-id`, not with `@subcontrol-id`.
 
 If `@with-subcontrols` is "yes" on the call to a control, no sibling `<call>` elements need to be used to call its subcontrols. Accordingly, it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
 
@@ -95,11 +95,11 @@ A `<match>` element selects controls by a regular expression match on ID. A `<ma
 
 An `<exclude>` element specifies which controls and subcontrols to exclude from the resource (source catalog) being imported. An `<excludes>` element may contain the following:
 
-* [`<match>`](#match-element) (optional)
-* [`<call>`](#call-element) (zero or more)
-* For each instance of [`<call>`](#call-element), there may optionally also be a `@control-id` and a `@subcontrol-id`.
+* [`<match>`](#code-lt-match-gt-code-element) (optional)
+* [`<call>`](#code-lt-call-gt-code-element) (zero or more)
+* For each instance of [`<call>`](#code-lt-call-gt-code-element), there may optionally also be a `@control-id` and a `@subcontrol-id`.
 
-Within `<exclude>`, [`<all>`](#all-element) is not an option since it makes no sense. However, it also makes no sense to use `exclude/call` except with `include/all`; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.
+Within `<exclude>`, [`<all>`](#code-lt-all-gt-code-element) is not an option since it makes no sense. However, it also makes no sense to use `exclude/call` except with `include/all`; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.
 
 ### `<merge>` element
 
@@ -107,8 +107,8 @@ A `<merge>` element merges controls in resolution. The contents of the `<merge>`
 
 A `<merge>` element may contain the following:
 
-* [`<combine>`](#combine-element) (optional)
-* [`<as-is>`](#as-is-element) and/or [`<custom>`](#custom-element) (zero or more total)
+* [`<combine>`](#code-lt-combine-gt-code-element) (optional)
+* [`<as-is>`](#code-lt-as-is-gt-code-element) and/or [`<custom>`](#code-lt-custom-gt-code-element) (zero or more total)
 
 #### `<combine>` element
 
@@ -124,14 +124,14 @@ An `<as-is>` element indicates that the controls should be structured in resolut
 
 #### `<custom>` element
 
-A `<custom>` element frames a structure for embedding represented controls in resolution. The `<custom>` element represents a custom arrangement or organization of controls in the resolution of a catalog. While the [`<as-is>`](#as-is-element) element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.
+A `<custom>` element frames a structure for embedding represented controls in resolution. The `<custom>` element represents a custom arrangement or organization of controls in the resolution of a catalog. While the [`<as-is>`](#code-lt-as-is-gt-code-element) element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.
 
 A `<custom>` element may contain the following:
 
 * `@id` (optional)
 * `@class` (optional)
 * `<title>` (optional)
-* `<group>`, [`<call>`](#call-element), and/or [`<match>`](#match-element) (zero or more of each)
+* `<group>`, [`<call>`](#code-lt-call-gt-code-element), and/or [`<match>`](#code-lt-match-gt-code-element) (zero or more of each)
 
 Unlike groups within catalogs, `<group>` elements inside `<custom>` elements contain references to controls to be included in the group (in resolution)--or more such groups.
 
@@ -139,7 +139,7 @@ Unlike groups within catalogs, `<group>` elements inside `<custom>` elements con
 
 A `<modify>` element sets parameters or amends controls in resolution. A `<modify>` element may contain the following:
 
-* [`<set-param>`](#set-param-element) and/or [`<alter>`](#alter-element) (zero or more of each)
+* [`<set-param>`](#code-lt-set-param-gt-code-element) and/or [`<alter>`](#code-lt-alter-gt-code-element) (zero or more of each)
 
 #### `<set-param>` element
 
@@ -150,7 +150,7 @@ A `<set-param>` element sets a parameter's value or rewrites its label or descri
 * `<desc>` (optional)
 * `<label>` (optional)
 * `<value>` (optional)
-* [`<link>`](/schema/#code-lt-link-gt-code-element) (zero or more)
+* [`<link>`](#code-lt-link-gt-code-element) (zero or more)
 
 `@param-id` indicates the parameter (within the scope of the referenced catalog or resource). The `<value>` element is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A `<desc>` element can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).
 
@@ -160,8 +160,8 @@ An `<alter>` element specifies changes to be made to an included control or subc
 
 * `@control-id` (optional)
 * `@subcontrol-id` (optional)
-* [`<remove>`](#remove-element) (zero or more)
-* [`<add>`](#add-element) (zero or more)
+* [`<remove>`](#code-lt-remove-gt-code-element) (zero or more)
+* [`<add>`](#code-lt-add-gt-code-element) (zero or more)
 
 Use `@control-id` or `@subcontrol-id` to indicate the scope of alteration.
 
@@ -177,13 +177,13 @@ A `<remove>` element specifies items to be removed from a control or subcontrol 
 * `@id-ref` (optional) to specify the ID values of items within controls or subcontrols in scope for removal
 * `@item-name` (optional) to specify the names of items within controls or subcontrols in scope for removal
 
-Use these attributes to specify which items are to be removed or erased from a control or subcontrol when a catalog is resolved. The control or subcontrol affected is indicated by the pointer on the removal's parent (containing) an [`<alter>`](#alter-element) element.
+Use these attributes to specify which items are to be removed or erased from a control or subcontrol when a catalog is resolved. The control or subcontrol affected is indicated by the pointer on the removal's parent (containing) an [`<alter>`](#code-lt-alter-gt-code-element) element.
 
-To change an item, use `<remove>` to remove the item, then [`<add>`](#add-element) to add it back again with changes.
+To change an item, use `<remove>` to remove the item, then [`<add>`](#code-lt-add-gt-code-element) to add it back again with changes.
 
 #### `<add>` element
 
 An `<add>` element specifies contents to be added to a control or subcontrols in resolution. An `<add>` element may contain the following:
 
 * `@position`, set to one of the following: `before`, `after`, `starting`, or `ending` (required)
-* `<title>`, [`<param>`](/schema/#code-lt-param-gt-code-element), [`<prop>`](/schema/#code-lt-prop-gt-code-element), and/or [`<part>`](/schema/#code-lt-part-gt-code-element) (zero or more of each)
+* `<title>`, [`<param>`](#code-lt-param-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), and/or [`<part>`](#code-lt-part-gt-code-element) (zero or more of each)
