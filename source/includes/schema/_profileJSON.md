@@ -78,7 +78,7 @@ Use `"controlId"` or `"subcontrolId"` to indicate the scope of alteration.
 
 It is an error for two `"alteration"` names to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
 
-At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this element to match multiple control IDs could provide for this.
+At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this name to match multiple control IDs could provide for this.
 
 #### `"remove"` name
 
