@@ -190,9 +190,11 @@ Set a parameter's value or rewrite its label or description
 
 Specifies changes to be made to an included control or subcontrol when a profile is resolved
 
-Use `@targets` to indicate the classes of elements (typically `part` or `prop` elements) to erase or remove from a control, when a catalog is resolved.
+Use [@control-id](#control-id-attribute--control-identifier) or [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) to indicate the scope of alteration.
 
 It is an error for two `<alter>` elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
+
+At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this element to match multiple targets could provide for this.
 
 * element [&lt;remove>](#remove-element--removal) (zero or more)
 * element [&lt;add>](#add-element--addition) (zero or more)
@@ -251,7 +253,7 @@ The method to be used when combining controls or subcontrols in resolving a prof
 
 Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control or a subcontrol). This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided; but this setting can be useful for defining what to do when it occurs.
 
-Three values are provided: `use-first`, [&lt;merge>](#merge-element--merge-controls) or `keep`. The latter two may produce invalid/broken results in some cases (where upstream profiles compete over control contents). In a profile with no collisions, the three values all have the same results.
+Three values are recognized: "use-first", "merge" or "keep". The latter two may produce invalid/broken results in some cases (where upstream profiles compete over control contents). In a profile with no collisions, the three values all have the same results.
 * Required on [&lt;combine>](#combine-element--combination-rule)
 
 ### `<as-is>` element | Structure as-is; retain source structure 
@@ -263,6 +265,10 @@ This element is empty
 ### `<custom>` element | Customized structure for controls 
 
 Frame a structure wherein represented controls will be embedded in resolution
+
+This element represents a custom arrangement or organization of controls in the resolution of a catalog. While [&lt;as-is>](#as-is-element--structure-as-is-retain-source-structure) provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.
+
+Unlike groups within catalogs, `group` elements inside `<custom>` contain references to controls to be included in the group (in resolution) - or more such groups.
 
 * element `title` (optional)
 * as needed:

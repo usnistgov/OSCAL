@@ -148,12 +148,12 @@ a:visited { color: midnightblue }
                </div>
                <div class="part schema-docs">
                   <ul class="ul">
-                     <li class="li">element <a href="#d54e848"><code class="code">&lt;combine&gt;</code></a> (optional)
+                     <li class="li">element <a href="#d54e847"><code class="code">&lt;combine&gt;</code></a> (optional)
                      </li>
                      <li class="li">as needed (at least one):
                         <ul class="ul">
-                           <li class="li">element <a href="#d54e893"><code class="code">&lt;as-is&gt;</code></a></li>
-                           <li class="li">element <a href="#d54e906"><code class="code">&lt;custom&gt;</code></a></li>
+                           <li class="li">element <a href="#d54e892"><code class="code">&lt;as-is&gt;</code></a></li>
+                           <li class="li">element <a href="#d54e905"><code class="code">&lt;custom&gt;</code></a></li>
                         </ul>
                      </li>
                   </ul>
@@ -437,20 +437,25 @@ a:visited { color: midnightblue }
                   </p>
                </div>
                <div class="part remarks">
-                  <p class="p">Use <code class="code">@targets</code> to indicate the classes of elements (typically
-                     <code class="code">part</code> or <code class="code">prop</code> elements) to erase or remove from a control, when
-                     a catalog is resolved.
+                  <p class="p">Use <a href="#d54e464" class="code">@control-id</a> or <a href="#d54e480" class="code">@subcontrol-id</a> to indicate the scope of
+                     alteration.
                   </p>
                   <p class="p">It is an error for two <code class="code">&lt;alter&gt;</code> elements to apply to the same control or
                      subcontrol. In practice, multiple alterations can be applied (together), but it creates
                      confusion.
                   </p>
+                  <p class="p">At present, no provision is made for altering many controls at once (for example,
+                     to
+                     systematically remove properties or add global properties); extending this element
+                     to
+                     match multiple targets could provide for this.
+                  </p>
                </div>
                <div class="part schema-docs">
                   <ul class="ul">
-                     <li class="li">element <a href="#d54e705"><code class="code">&lt;remove&gt;</code></a> (zero or more)
+                     <li class="li">element <a href="#d54e704"><code class="code">&lt;remove&gt;</code></a> (zero or more)
                      </li>
-                     <li class="li">element <a href="#d54e806"><code class="code">&lt;add&gt;</code></a> (zero or more)
+                     <li class="li">element <a href="#d54e805"><code class="code">&lt;add&gt;</code></a> (zero or more)
                      </li>
                      <li class="li">attribute <a href="#d54e464" class="code">@control-id</a> (optional) valid to constraints for type 'NCName'
                      </li>
@@ -459,14 +464,14 @@ a:visited { color: midnightblue }
                   </ul>
                </div>
             </div>
-            <div class="control element-description" id="d54e705">
+            <div class="control element-description" id="d54e704">
                <h3 class="element-description"><code class="tag">&lt;remove&gt;</code> element |  <span class="run-in subst full_name">Removal</span> 
                </h3>
                <div class="part description">
                   <p class="p">Elements to be removed from a control or subcontrol, in resolution</p>
                </div>
                <div class="part remarks">
-                  <p class="p">Use <a href="#d54e758" class="code">@class-ref</a>, <a href="#d54e771" class="code">@id-ref</a> or <a href="#d54e784" class="code">@item-name</a> to indicate
+                  <p class="p">Use <a href="#d54e757" class="code">@class-ref</a>, <a href="#d54e770" class="code">@id-ref</a> or <a href="#d54e783" class="code">@item-name</a> to indicate
                      class tokens or ID reference, or the formal name, of the component to be removed or
                      erased
                      from a control or subcontrol, when a catalog is resolved. The control or subcontrol
@@ -474,41 +479,41 @@ a:visited { color: midnightblue }
                      <a href="#d54e651"><code class="code">&lt;alter&gt;</code></a> element.
                   </p>
                   <p class="p">To change an element, use <code class="code">&lt;remove&gt;</code> to remove the element, then
-                     <a href="#d54e806"><code class="code">&lt;add&gt;</code></a> to add it back again with changes.
+                     <a href="#d54e805"><code class="code">&lt;add&gt;</code></a> to add it back again with changes.
                   </p>
                </div>
                <div class="part schema-docs">
                   <ul class="ul">
-                     <li class="li">attribute <a href="#d54e758" class="code">@class-ref</a> (optional) valid to constraints for type 'NMTOKENS'
+                     <li class="li">attribute <a href="#d54e757" class="code">@class-ref</a> (optional) valid to constraints for type 'NMTOKENS'
                      </li>
-                     <li class="li">attribute <a href="#d54e771" class="code">@id-ref</a> (optional) valid to constraints for type 'NCName'
+                     <li class="li">attribute <a href="#d54e770" class="code">@id-ref</a> (optional) valid to constraints for type 'NCName'
                      </li>
-                     <li class="li">attribute <a href="#d54e784" class="code">@item-name</a> (optional) valid to constraints for type 'NCName'
+                     <li class="li">attribute <a href="#d54e783" class="code">@item-name</a> (optional) valid to constraints for type 'NCName'
                      </li>
                   </ul>
                </div>
             </div>
-            <div class="control attribute-description" id="d54e758">
+            <div class="control attribute-description" id="d54e757">
                <h3 class="attribute-description"><code class="tag">@class-ref</code> attribute |  <span class="run-in subst full_name">Select by class</span> 
                </h3>
                <div class="part description">
                   <p class="p">Classes of items within controls or subcontrols in scope for removal</p>
                </div>
                <div class="part schema-docs">
-                  <li class="li">Allowed on <a href="#d54e705"><code class="code">&lt;remove&gt;</code></a></li>
+                  <li class="li">Allowed on <a href="#d54e704"><code class="code">&lt;remove&gt;</code></a></li>
                </div>
             </div>
-            <div class="control attribute-description" id="d54e771">
+            <div class="control attribute-description" id="d54e770">
                <h3 class="attribute-description"><code class="tag">@id-ref</code> attribute |  <span class="run-in subst full_name">Reference by ID</span> 
                </h3>
                <div class="part description">
                   <p class="p">ID values on items within controls or subcontrols in scope for removal</p>
                </div>
                <div class="part schema-docs">
-                  <li class="li">Allowed on <a href="#d54e705"><code class="code">&lt;remove&gt;</code></a></li>
+                  <li class="li">Allowed on <a href="#d54e704"><code class="code">&lt;remove&gt;</code></a></li>
                </div>
             </div>
-            <div class="control attribute-description" id="d54e784">
+            <div class="control attribute-description" id="d54e783">
                <h3 class="attribute-description"><code class="tag">@item-name</code> attribute |  <span class="run-in subst full_name">Item name</span> 
                </h3>
                <div class="part description">
@@ -519,10 +524,10 @@ a:visited { color: midnightblue }
                   </p>
                </div>
                <div class="part schema-docs">
-                  <li class="li">Allowed on <a href="#d54e705"><code class="code">&lt;remove&gt;</code></a></li>
+                  <li class="li">Allowed on <a href="#d54e704"><code class="code">&lt;remove&gt;</code></a></li>
                </div>
             </div>
-            <div class="control element-description" id="d54e806">
+            <div class="control element-description" id="d54e805">
                <h3 class="element-description"><code class="tag">&lt;add&gt;</code> element |  <span class="run-in subst full_name">Addition</span> 
                </h3>
                <div class="part description">
@@ -543,7 +548,7 @@ a:visited { color: midnightblue }
                   </ul>
                </div>
             </div>
-            <div class="control element-description" id="d54e848">
+            <div class="control element-description" id="d54e847">
                <h3 class="element-description"><code class="tag">&lt;combine&gt;</code> element |  <span class="run-in subst full_name">Combination rule</span> 
                </h3>
                <div class="part description">
@@ -551,12 +556,12 @@ a:visited { color: midnightblue }
                </div>
                <div class="part schema-docs">
                   <ul class="ul">
-                     <li class="li">attribute <a href="#d54e866" class="code">@method</a> (required)
+                     <li class="li">attribute <a href="#d54e865" class="code">@method</a> (required)
                      </li>
                   </ul>
                </div>
             </div>
-            <div class="control attribute-description" id="d54e866">
+            <div class="control attribute-description" id="d54e865">
                <h3 class="attribute-description"><code class="tag">@method</code> attribute |  <span class="run-in subst full_name">Control combination method</span> 
                </h3>
                <div class="part description">
@@ -572,17 +577,19 @@ a:visited { color: midnightblue }
                      setting
                      can be useful for defining what to do when it occurs.
                   </p>
-                  <p class="p">Three values are provided: <code class="code">use-first</code>, <a href="#d54e158"><code class="code">&lt;merge&gt;</code></a> or
-                     <code class="code">keep</code>. The latter two may produce invalid/broken results in some cases
-                     (where upstream profiles compete over control contents). In a profile with no collisions,
-                     the three values all have the same results.
+                  <p class="p">Three values are recognized: <q class="q">use-first</q>, <q class="q">merge</q> or <q class="q">keep</q>. The latter
+                     two may produce invalid/broken results in some cases (where upstream profiles compete
+                     over
+                     control contents). In a profile with no collisions, the three values all have the
+                     same
+                     results.
                   </p>
                </div>
                <div class="part schema-docs">
-                  <li class="li">Required on <a href="#d54e848"><code class="code">&lt;combine&gt;</code></a></li>
+                  <li class="li">Required on <a href="#d54e847"><code class="code">&lt;combine&gt;</code></a></li>
                </div>
             </div>
-            <div class="control element-description" id="d54e893">
+            <div class="control element-description" id="d54e892">
                <h3 class="element-description"><code class="tag">&lt;as-is&gt;</code> element |  <span class="run-in subst full_name">Structure as-is; retain source structure</span> 
                </h3>
                <div class="part description">
@@ -592,11 +599,23 @@ a:visited { color: midnightblue }
                   <p class="p">This element is empty</p>
                </div>
             </div>
-            <div class="control element-description" id="d54e906">
+            <div class="control element-description" id="d54e905">
                <h3 class="element-description"><code class="tag">&lt;custom&gt;</code> element |  <span class="run-in subst full_name">Customized structure for controls</span> 
                </h3>
                <div class="part description">
                   <p class="p">Frame a structure wherein represented controls will be embedded in resolution</p>
+               </div>
+               <div class="part remarks">
+                  <p class="p">This element represents a custom arrangement or organization of controls in the
+                     resolution of a catalog. While <a href="#d54e892"><code class="code">&lt;as-is&gt;</code></a> provides for a restitution of a control
+                     set's organization (in one or more source catalogs), this element permits the definition
+                     of an entirely different structure.
+                  </p>
+                  <p class="p">Unlike groups within catalogs, <code class="code">group</code> elements inside <code class="code">&lt;custom&gt;</code>
+                     contain references to controls to be included in the group (in resolution) - or more
+                     such
+                     groups.
+                  </p>
                </div>
                <div class="part schema-docs">
                   <ul class="ul">

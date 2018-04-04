@@ -1042,12 +1042,14 @@
           resolved</p>
       </part>
       <part class="remarks">
-        <p>Use <code>@targets</code> to indicate the classes of elements (typically
-            <code>part</code> or <code>prop</code> elements) to erase or remove from a control, when
-          a catalog is resolved.</p>
+        <p>Use <code>@control-id</code> or <code>@subcontrol-id</code> to indicate the scope of
+          alteration.</p>
         <p>It is an error for two <code>alter</code> elements to apply to the same control or
           subcontrol. In practice, multiple alterations can be applied (together), but it creates
           confusion.</p>
+        <p>At present, no provision is made for altering many controls at once (for example, to
+          systematically remove properties or add global properties); extending this element to
+          match multiple targets could provide for this.</p>
       </part>
     </component>
     <component class="element-description">
@@ -1117,10 +1119,10 @@
           This setting permits a profile designer to apply a rule for the resolution of such cases.
           In a well-designed profile, such collisions would ordinarily be avoided; but this setting
           can be useful for defining what to do when it occurs.</p>
-        <p>Three values are provided: <code>use-first</code>, <code>merge</code> or
-            <code>keep</code>. The latter two may produce invalid/broken results in some cases
-          (where upstream profiles compete over control contents). In a profile with no collisions,
-          the three values all have the same results.</p>
+        <p>Three values are recognized: <q>use-first</q>, <q>merge</q> or <q>keep</q>. The latter
+          two may produce invalid/broken results in some cases (where upstream profiles compete over
+          control contents). In a profile with no collisions, the three values all have the same
+          results.</p>
       </part>
     </component>
     <component class="element-description">
@@ -1135,6 +1137,15 @@
       <prop class="full_name">Customized structure for controls</prop>
       <part class="description">
         <p>Frame a structure wherein represented controls will be embedded in resolution</p>
+      </part>
+      <part class="remarks">
+        <p>This element represents a custom arrangement or organization of controls in the
+          resolution of a catalog. While <code>as-is</code> provides for a restitution of a control
+          set's organization (in one or more source catalogs), this element permits the definition
+          of an entirely different structure.</p>
+        <p>Unlike groups within catalogs, <code>group</code> elements inside <code>custom</code>
+          contain references to controls to be included in the group (in resolution) - or more such
+          groups.</p>
       </part>
     </component>
     
