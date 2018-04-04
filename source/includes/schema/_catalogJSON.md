@@ -66,7 +66,7 @@ A `"subcontrols"` name is very similar to a `"controls"` name in its composition
 * [`"params"`](#code-quot-params-quot-code-name)
 * [`"references"`](#code-quot-references-quot-code-name)
 
-##### `"props"` name
+#### `"props"` name
 
 A `"props"` name is a value with a name. It is attributed to the containing control, subcontrol, part, or group. Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls and parts and extensions), for any purpose useful to an application or implementation of those controls. Typically and routinely, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.
 
@@ -75,7 +75,7 @@ A `"props"` name may contain the following:
 * `"class"`
 * `"value"`
 
-##### `"parts"` name
+#### `"parts"` name
 
 A `"parts"` name is a partition, piece, or section of a control, subcontrol, or another part. Generally speaking, `"parts"` names will be of two kinds. Many parts are logical partitions or sections for prose; these may be called "statements" and may be expected to have simple prose contents, even just one paragraph. Other parts may be more formally constructed out of properties (`"props"` names) and/or their own parts. Such structured objects (sometimes called "features") may, at the extreme, function virtually as control extensions or subcontrol-like objects ("enhancements"). Since the composition of parts can be constrained using OSCAL declarations (of the items or components to be given in a part or in this type of part), their use for encoding "objects" of arbitrary complexity within controls is effectively open-ended.
 
@@ -90,7 +90,7 @@ A `"parts"` name may contain the following:
 * [`"links"`](#code-quot-links-quot-code-name)
 * [`"params"`](#code-quot-params-quot-code-name)
 
-##### `"links"` name
+#### `"links"` name
 
 A `"links"` name is a line or paragraph with a hypertext link. A `"links"` name may contain the following:
 
@@ -98,7 +98,7 @@ A `"links"` name is a line or paragraph with a hypertext link. A `"links"` name 
 * `"href"`
 * `"value"`
 
-##### `"params"` name
+#### `"params"` name
 
 A `"params"` name is a parameter setting to be propagated to one or more points of insertion. A `"params"` name may contain the following:
 
