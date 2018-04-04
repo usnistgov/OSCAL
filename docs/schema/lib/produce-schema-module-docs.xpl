@@ -54,7 +54,7 @@
   <p:serialization port="_f_linked"       indent="true"/>-->
   
   <p:serialization port="html-docs"   indent="true" method="html"/>
-  <p:serialization port="markdown-docs"               method="text"/>
+  <p:serialization port="markdown-docs"             method="text"/>
   
   <p:identity name="input"/>
   
