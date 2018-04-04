@@ -23,7 +23,7 @@
       
       <!-- Also patching by adding removing and adding statements and properties -->
       <alter control-id="ac.6">
-         <remove targets="statement guidance"/>
+         <remove class-ref="statement guidance"/>
          <augment>
             <part class="guidance"><p>DON'T GO BACK IN THE WATER!</p></part>
             <prop class="stamp">SEAL OF APPROVAL (a)</prop>
