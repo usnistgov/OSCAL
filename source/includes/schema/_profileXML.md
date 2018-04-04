@@ -24,7 +24,7 @@ An `<import>` element designates a catalog, profile, or other resource to be inc
 
 The contents of the `<import>` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [`<include>`](#code-lt-include-gt-code-element) element) or de-selected (using an [`<exclude>`](#code-lt-exclude-gt-code-element) element) from the source catalog or profile.
 
-#### `<include>` element
+### `<include>` element
 
 An `<include>` element specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `<include>` element may contain the following:
 
@@ -91,7 +91,7 @@ A `<match>` element selects controls by a regular expression match on ID. A `<ma
 * `@pattern` (required), which is a regular expression to be matched against an ID value for purposes of control selection
 * `@order` (optional), set to one of the following to specify the order when multiple controls match: `keep`, `ascending` (alphabetically by ID), or `descending` (alphabetically by ID)
 
-#### `<exclude>` element
+### `<exclude>` element
 
 An `<exclude>` element specifies which controls and subcontrols to exclude from the resource (source catalog) being imported. An `<excludes>` element may contain the following:
 
