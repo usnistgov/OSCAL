@@ -22,7 +22,7 @@ An `"invoke"` name designates a catalog, profile, or other resource to be includ
 
 The contents of the `"invoke"` name indicate which controls and subcontrols from the source will be included. Controls and subcontrols may be either selected (using an [`"include"`](#code-quot-include-quot-code-name) name) or deselected (using an [`"exclude"`](#code-quot-exclude-quot-code-name) name) from the source catalog or profile.
 
-#### `"include"` name
+### `"include"` name
 
 An `"include"` name specifies which controls and subcontrols to include from the resource (source catalog) being imported. An `"include"` name may contain the following:
 
@@ -48,16 +48,16 @@ A `"calls"` name calls a control or subcontrol by its ID. A `"calls"` name may c
 
 If `"withSubcontrols"` is "yes" on the call to a control, no sibling `"calls"` names need to be used to call its subcontrols. Accordingly, it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
 
-#### `"exclude"` name
+### `"exclude"` name
 
 An `"exclude"` name specifies which controls and subcontrols to exclude from the resource (source catalog) being imported. An `"exclude"` name may contain the following:
 
 * `"controlId"`
 * `"subcontrolId"`
 
-#### `"paramSetting"` name
+### `"paramSettings"` name
 
-A `"paramSetting"` name sets a parameter's value or rewrites its description. A `"paramSetting"` name may contain the following:
+A `"paramSettings"` name sets a parameter's value or rewrites its description. A `"paramSettings"` name may contain the following:
 
 * `"paramId"`
 * `"class"`
@@ -66,9 +66,9 @@ A `"paramSetting"` name sets a parameter's value or rewrites its description. A 
 
 `"paramId"` indicates the parameter (within the scope of the referenced catalog or resource). The `"value"` name is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A `"desc"` name can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).
 
-#### `"alteration"` name
+### `"alterations"` name
 
-An `"alteration"` name specifies changes to be made to an included control or subcontrol when a profile is resolved. An `"alteration"` name may contain the following:
+An `"alterations"` name specifies changes to be made to an included control or subcontrol when a profile is resolved. An `"alterations"` name may contain the following:
 
 * `"controlId"` or `"subcontrolId"`
 * [`"remove"`](#code-quot-remove-quot-code-name)
@@ -76,7 +76,7 @@ An `"alteration"` name specifies changes to be made to an included control or su
 
 Use `"controlId"` or `"subcontrolId"` to indicate the scope of alteration.
 
-It is an error for two `"alteration"` names to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
+It is an error for two `"alterations"` names to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
 
 At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this name to match multiple control IDs could provide for this.
 
