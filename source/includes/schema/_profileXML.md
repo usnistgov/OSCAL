@@ -12,13 +12,17 @@ Each OSCAL profile is defined by a `<profile>` element. A `<profile>` element ma
 * [`<merge>`](#merge-element) (optional)
 * [`<modify>`](#modify-element) (optional)
 
+An OSCAL document that describes a selection with possible modification of multiple controls from multiple catalogs. It provides mechanisms by which controls may be selected ([`<import>`](#import-element)), merged or (re)structured ([`<merge>`](#merge-element)), and emended ([`<modify>`](#modify-element)). OSCAL profiles may select subsets of control sets, set parameter values for them in an application, and even qualify the representation of controls and subcontrols as given in and by a catalog. They may also serve as sources for further modification in and by other profiles that import them.
+
 ### `<import>` element
 
-An `<import>` element designates a catalog, profile, or other resource to be referenced by this profile. An `<import>` element may contain the following:
+An `<import>` element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. An `<import>` element may contain the following:
 
 * `@href` (optional)
 * [`<include>`](#include-element) (optional)
 * [`<exclude>`](#exclude-element) (optional)
+
+The contents of the `<import>` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [`<include>`](#include-element) element) or de-selected (using an [`<exclude>`](#exclude-element) element) from the source catalog or profile.
 
 ### `<merge>` element
 
@@ -43,12 +47,16 @@ An `<as-is>` element indicates that the controls should be structured in resolut
 
 #### `<custom>` element
 
-A `<custom>` element frames a structure for embedding represented controls in resolution. A `<custom>` element may contain the following:
+A `<custom>` element frames a structure for embedding represented controls in resolution. The `<custom>` element represents a custom arrangement or organization of controls in the resolution of a catalog. While the [`<as-is>`](#as-is-element) element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.
+
+A `<custom>` element may contain the following:
 
 * `@id` (optional)
 * `@class` (optional)
 * `<title>` (optional)
-* [`<group>`](#group-element), [`<call>`](#call-element), and/or [`<match>`](#match-element) (zero or more of each)
+* `<group>`, [`<call>`](#call-element), and/or [`<match>`](#match-element) (zero or more of each)
+
+Unlike groups within catalogs, `<group>` elements inside `<custom>` elements contain references to controls to be included in the group (in resolution)--or more such groups.
 
 ### `<modify>` element
 
@@ -150,16 +158,16 @@ A `<set-param>` element sets a parameter's value or rewrites its label or descri
 
 An `<alter>` element specifies changes to be made to an included control or subcontrol when a profile is resolved. An `<alter>` element may contain the following:
 
-TBD: what is `@targets`?
-
 * `@control-id` (optional)
 * `@subcontrol-id` (optional)
 * [`<remove>`](#remove-element) (zero or more)
 * [`<add>`](#add-element) (zero or more)
 
-Use `@targets` to indicate the classes of elements (typically [`<part>`](/schema/#code-lt-part-gt-code-element) or [`<prop>`](/schema/#code-lt-prop-gt-code-element) elements) to erase or remove from a control when a catalog is resolved.
+Use `@control-id` or `@subcontrol-id` to indicate the scope of alteration.
 
 It is an error for two `<alter>` elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
+
+At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this element to match multiple control IDs could provide for this.
 
 #### `<remove>` element
 
