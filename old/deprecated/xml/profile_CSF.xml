@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<overlay xmlns="http://scap.nist.gov/schema/catalog"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://scap.nist.gov/schema/catalog 
+        file:../../../../xsd/nist/oscal/2.0/OSCAL.xsd">
+    <id>CSF</id>
+    <name>CSF profile</name>
+    <version>1</version>
+    <summary>TBD</summary>
+    <base>
+        <layer-ref id="IPDR2" version="4" type="catalog" 
+            URI="../../../../xm/nist/oscal/2.0/catalog_CSF.xml" />        
+        <layer-ref id="SP800-53" version="4" type="catalog" 
+            URI="../../../../xm/nist/oscal/2.0/catalog_controls_sp800-53.xml" />        
+    </base> 
+    <!-- all controls from the catalog listed above are automatically included unless modified below -->
+    <meta>
+        <property name="requirement" type="xsd:string"/>
+        <item>
+            <property name="requirement" minOccurs="1" maxOccurs="1" />
+            <property name="parameter" minOccurs="0" maxOccurs="unbounded" />
+        </item>
+    </meta>
+    <items>
+        <item>
+            <type>requirement-profile</type>
+            <id>ID.MA</id>
+            <link rel="parent">IPDR2#ID.MA</link>
+            <link rel="parent">SP800-53#AC-1</link>
+            <link rel="parent">SP800-53#AC-2</link>
+            <properties>
+                <requirement>TBD</requirement>
+            </properties>
+        </item>
+    </items>
+</overlay>

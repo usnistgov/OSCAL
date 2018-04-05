@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../lib/oscal-working.rnc" type="application/relax-ng-compact-syntax"?>
+<profile xmlns="http://scap.nist.gov/schema/oscal">
+  <invoke href="800-53-controls-OSCAL.xml">
+    <include> 
+      <filter key="baseline-impact">HIGH</filter>      
+    </include>
+  </invoke>
+</profile>

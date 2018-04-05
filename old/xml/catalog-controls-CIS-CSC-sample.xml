@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog xmlns="http://oscal.nist.gov/schema/core"
+    xmlns:xh11d="http://www.w3.org/1999/xhtml/datatypes/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xCIS="http://oscal.nist.gov/schema/extension-catalog-CIS-CSC"
+    xsi:schemaLocation="
+        http://oscal.nist.gov/schema/core file://../xsd/OSCAL-core.xsd
+        http://oscal.nist.gov/schema/extension-catalog-CIS-CSC file://../xsd/OSCAL-extension-catalog-CIS-CSC.xsd">
+    <id>CIS-CSC</id>
+    <name>CIS-CSC</name>
+    <version>6.1</version>
+    <summary>Center for Internet Security Critical Security Controls</summary>
+    <items>
+        <item>
+            <type>control</type>
+            <id>CSC 1</id>
+            <title>Inventory of Authorized and Unauthorized Devices</title>
+            <xCIS:family>System</xCIS:family>
+            <statement>
+                <description>Actively manage (inventory, track, and correct) all hardware devices on the network so that only authorized devices are given access, and unauthorized and unmanaged devices are found and prevented from gaining access.
+                </description>
+                <statement>
+                    <number>CSC 1.1</number>
+                    <description>Deploy an automated asset inventory discovery tool and use it to build a preliminary inventory of systems connected to an organization’s public and private network(s). Both active tools that scan through IPv4 or IPv6 network address ranges and passive tools that identify hosts based on analyzing their traffic should be employed.
+                    </description>
+                    <xCIS:foundational>Y</xCIS:foundational>
+                    <xCIS:advanced>Use a mix of active and passive tools, and apply as part of a continuous monitoring program.
+                    </xCIS:advanced>
+                </statement>
+                <statement>
+                    <number>CSC 1.2</number>
+                    <description>If the organization is dynamically assigning addresses using DHCP, then deploy dynamic host configuration protocol (DHCP) server logging, and use this information to improve the asset inventory and help detect unknown systems.
+                    </description>
+                    <xCIS:foundational>Y</xCIS:foundational>
+                    <xCIS:advanced></xCIS:advanced>
+                </statement>
+                <statement>
+                    <number>CSC 1.3</number>
+                    <description>Ensure that all equipment acquisitions automatically update the inventory system as new, approved devices are connected to the network.
+                    </description>
+                    <xCIS:foundational>Y</xCIS:foundational>
+                    <xCIS:advanced></xCIS:advanced>
+                </statement>
+                <statement>
+                    <number>CSC 1.4</number>
+                    <description>Maintain an asset inventory of all systems connected to the network and the network devices themselves, recording at least the network addresses, machine name(s), purpose of each system, an asset owner responsible for each device, and the department associated with each device. The inventory should include every system that has an Internet protocol (IP) address on the network, including but not limited to desktops, laptops, servers, network equipment (routers, switches, firewalls, etc.), printers, storage area networks, Voice Over-IP telephones, multi-homed addresses, virtual addresses, etc. The asset inventory created must also include data on whether the device is a portable and/or personal device. Devices such as mobile phones, tablets, laptops, and other portable electronic devices that store or process data must be identified, regardless of whether they are attached to the organization’s network.
+                    </description>
+                    <xCIS:foundational>Y</xCIS:foundational>
+                    <xCIS:advanced></xCIS:advanced>
+                </statement>
+                <statement>
+                    <number>CSC 1.5</number>
+                    <description>Deploy network level authentication via 802.1x to limit and control which devices can be connected to the network. The 802.1x must be tied into the inventory data to determine authorized versus unauthorized systems.
+                    </description>
+                    <xCIS:foundational>Y</xCIS:foundational>
+                    <xCIS:advanced>Authentication mechanisms are closely coupled to management of hardware inventory</xCIS:advanced>
+                </statement>
+                <statement>
+                    <number>CSC 1.6</number>
+                    <description>Use client certificates to validate and authenticate systems prior to connecting to the private network.
+                    </description>
+                    <xCIS:foundational></xCIS:foundational>
+                    <xCIS:advanced>Y</xCIS:advanced>
+                </statement>
+            </statement>
+            
+            <!-- link to diagrams here, if desired -->
+            
+            <properties> 
+            <xCIS:family>System</xCIS:family>
+            <xCIS:justification>attached to the network. Attackers also look for devices (especially laptops) which come and go off of the enterprise’s network, and so get out of synch with patches or security updates. Attacks can take advantage of new hardware that is installed on the network one evening but not configured and patched with appropriate security updates until the following day. Even devices that are not visible from the Internet can be used by attackers who have already gained internal access and are hunting for internal jump points or victims. Additional systems that connect to the enterprise’s network (e.g., demonstration systems, temporary test systems, guest networks) should also be managed carefully and/or isolated in order to prevent adversarial access from affecting the security of enterprise operations.
+As new technology continues to come out, BYOD (bring your own device) — where employees bring personal devices into work and connect them to the enterprise network — is becoming very common. These devices could already be compromised and be used to infect internal resources.
+Managed control of all devices also plays a critical role in planning and executing system backup and recovery.
+</xCIS:justification>
+            <xCIS:procedures-tools>This Control requires both technical and procedural actions, united in a process that accounts for and manages the inventory of hardware and all associated information throughout its life cycle. It links to business governance by establishing information/asset owners who are responsible for each component of a business process that includes information, software, and hardware. Organizations can use large-scale, comprehensive enterprise products to maintain IT asset inventories. Others use more modest tools to gather the data by sweeping the network, and manage the results separately in a database.
+Maintaining a current and accurate view of IT assets is an ongoing and dynamic process. Organizations can actively scan on a regular basis, sending a variety of different packet types to identify devices connected to the network. Before such scanning can take place, organizations should verify that they have adequate bandwidth for such periodic scans by consulting load history and capacities for their networks. In conducting inventory scans, scanning tools could send traditional ping packets (ICMP Echo Request) looking for ping responses to identify a system at a given IP address. Because some systems block inbound ping packets, in addition to traditional pings, scanners can also identify devices on the network using transmission control protocol (TCP) synchronize (SYN) or acknowledge (ACK) packets. Once they have identified IP addresses of devices on the network, some scanners provide robust fingerprinting features to determine the operating system type of the discovered machine.
+In addition to active scanning tools that sweep the network, other asset identification tools passively listen on network interfaces for devices to announce their presence by sending traffic. Such passive tools can be connected to switch span ports at critical places in the network to view all data flowing through such switches, maximizing the chance of identifying systems communicating through those switches.
+Many organizations also pull information from network assets such as switches and routers regarding the machines connected to the network. Using securely authenticated and encrypted network management protocols, tools can retrieve MAC addresses and other information from network devices that can be reconciled with the organization’s asset inventory of servers, workstations, laptops, and other devices. Once MAC addresses are confirmed, switches should implement 802.1x and NAC to only allow authorized systems that are properly configured to connect to the network.
+Wireless devices (and wired laptops) may periodically join a network and then disappear, making the inventory of currently available systems very dynamic. Likewise, virtual machines can be difficult to track in asset inventories when they are shut down or paused. Additionally, remote machines accessing the network using virtual private network (VPN) technology may appear on the network for a time, and then be disconnected from it. Whether physical or virtual, each machine using an IP address should be included in an organization’s asset inventory.
+</xCIS:procedures-tools>
+            </properties>
+            
+            <!-- crosswalk map to NIST documents here -->           
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special Publication 800-12</link>
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-14">NIST Special Publication 800-14</link>
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-37">NIST Special Publication 800-37</link>
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-42">NIST Special Publication 800-42</link>
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-53A">NIST Special Publication 800-53A</link>
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-55">NIST Special Publication 800-55</link>
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-84">NIST Special Publication 800-84</link>
+            <link rel="reference" xml:lang="en-US" href="http://csrc.nist.gov/publications/PubsSPs.html#800-115">NIST Special Publication 800-115</link>
+           
+            <!-- map HIPAA controls to NIST controls here -->
+            <link rel="map-to" href="nist800-53#CA-1"/>
+            <link rel="map-to" href="nist800-53#CA-2"/>
+            <link rel="map-to" href="nist800-53#CA-4"/>
+            <link rel="map-to" href="nist800-53#CA-6"/>
+            <link rel="map-to" href="nist800-53#CA-7"/>
+            
+            <!-- the CIS catalog provides loose mapping to NIST CSF families -->
+            <!-- this is one of many cases where mapping is coarse and points to taxa at different levels (limbs/branch of the tree and not the leaf) -->
+            <!-- <link rel="map-to" href="CSF-catalog.Identify.AM"/>  -->
+
+        </item>
+   
+        <!-- add the rest of the HIPAA controls...-->
+    </items>
+</catalog>

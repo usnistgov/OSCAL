@@ -1,0 +1,1481 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for xhtml-blkstruct-1.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_xhtml-blkstruct-1.xsd', 
+				'properties_xhtml.div.type', 
+				'properties_xhtml.p.type');
+var usedByBoxes= new Array('usedBy_xhtml.div.type', 
+				'usedBy_xhtml.p.type', 
+				'usedBy_xhtml.div.content', 
+				'usedBy_xhtml.p.content', 
+				'usedBy_xhtml.p.attlist', 
+				'usedBy_xhtml.div.attlist');
+var sourceBoxes= new Array('source_xhtml.div.type', 
+				'source_xhtml.p.type', 
+				'source_xhtml.div.content', 
+				'source_xhtml.p.content', 
+				'source_xhtml.p.attlist', 
+				'source_xhtml.div.attlist');
+var diagramBoxes= new Array('diagram_xhtml.div.type', 
+				'diagram_xhtml.p.type', 
+				'diagram_xhtml.div.content', 
+				'diagram_xhtml.p.content', 
+				'diagram_xhtml.p.attlist', 
+				'diagram_xhtml.div.attlist');
+var annotationBoxes= new Array('annotations_xhtml-blkstruct-1.xsd');
+var attributesBoxes= new Array('attributes_xhtml.div.type', 
+				'attributes_xhtml.p.type', 
+				'attributes_xhtml.p.attlist', 
+				'attributes_xhtml.div.attlist');
+var modelBoxes= new Array('model_xhtml.div.type', 
+				'model_xhtml.p.type', 
+				'model_xhtml.div.content', 
+				'model_xhtml.p.content');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, attributesBoxes);" class="control" /></span><span class="globalControlName">Attributes </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, modelBoxes);" class="control" /></span><span class="globalControlName">Model </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="xhtml-blkstruct-1.xsd"></a><div class="componentTitle">Included schema <span class="qname">xhtml-blkstruct-1.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_xhtml-blkstruct-1.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_xhtml-blkstruct-1.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_xhtml-blkstruct-1.xsd" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">Block Structural</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">        * div, p</span><span class="tI">
+</span><span class="tT">  </span><span class="tI">
+</span><span class="tT">      This module declares the elements and their attributes used to</span><span class="tI">
+</span><span class="tT">      support block-level structural markup.            </span><span class="tI">
+</span><span class="tT">          </span><span class="tI">
+</span><span class="tT">      This is the XML Schema Block Structural module for XHTML</span><span class="tI">
+</span><span class="tT">      $Id: xhtml-blkstruct-1.xsd,v 1.3 2005/09/26 22:54:53 ahby Exp $</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                              <div class="annotation">
+                                 <p><a href="xhtml-copyright-1.xsd">xhtml-copyright-1.xsd</a></p>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_xhtml-blkstruct-1.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_xhtml-blkstruct-1.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_xhtml-blkstruct-1.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.div.type"></a><div class="componentTitle">Complex Type <span class="qname">xhtml.div.type</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.div.type" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.div.type');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.div.type" style="display:block"><img alt="Diagram" border="0" src="img/xhtml-blkstruct-1_xsd_Complex_Type_xhtml_div_type.jpeg" usemap="#xhtml-blkstruct-1_xsd_Complex_Type_xhtml_div_type" /><map name="xhtml-blkstruct-1_xsd_Complex_Type_xhtml_div_type" id="xhtml-blkstruct-1_xsd_Complex_Type_xhtml_div_type">
+                                 <area alt="xhtml-blkstruct-1_xsd.tmp#xhtml.div.attlist" href="xhtml-blkstruct-1_xsd.html#xhtml.div.attlist" coords="176,41,314,67" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h1" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h1" coords="435,221,486,245" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h2" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h2" coords="435,255,486,279" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h3" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h3" coords="435,289,486,313" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h4" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h4" coords="435,323,486,347" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h5" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h5" coords="435,357,486,381" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h6" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h6" coords="435,391,486,415" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class" href="xhtml11-model-1_xsd.html#xhtml.Heading.class" coords="353,180,516,206" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class_ul" href="xhtml11-model-1_xsd.html#xhtml.List.class_ul" coords="435,476,486,500" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class_ol" href="xhtml11-model-1_xsd.html#xhtml.List.class_ol" coords="435,510,486,534" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class_dl" href="xhtml11-model-1_xsd.html#xhtml.List.class_dl" coords="435,544,486,568" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class" href="xhtml11-model-1_xsd.html#xhtml.List.class" coords="353,435,491,461" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkStruct.class_p" href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_p" coords="520,673,571,697" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkStruct.class_div" href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_div" coords="520,707,571,731" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkStruct.class" href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class" coords="438,632,604,658" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class_pre" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_pre" coords="520,792,571,816" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class_blockquote" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_blockquote" coords="520,826,611,850" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class_address" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_address" coords="520,860,594,884" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class" coords="438,751,602,777" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Table.class_table" href="xhtml11-model-1_xsd.html#xhtml.Table.class_table" coords="605,993,662,1017" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Table.class" href="xhtml11-model-1_xsd.html#xhtml.Table.class" coords="523,948,671,974" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkSpecial.class" href="xhtml11-model-1_xsd.html#xhtml.BlkSpecial.class" coords="438,904,609,930" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Block.extra" href="xhtml11-model-1_xsd.html#xhtml.Block.extra" coords="438,1048,586,1074" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Block.class" href="xhtml11-model-1_xsd.html#xhtml.Block.class" coords="353,588,500,614" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_br" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" coords="520,1233,571,1257" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_span" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" coords="520,1267,577,1291" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class" coords="438,1192,602,1218" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_em" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" coords="520,1352,571,1376" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_strong" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" coords="520,1386,587,1410" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_dfn" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" coords="520,1420,571,1444" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_code" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" coords="520,1454,577,1478" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_samp" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" coords="520,1488,580,1512" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_kbd" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" coords="520,1522,571,1546" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_var" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" coords="520,1556,571,1580" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_cite" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" coords="520,1590,571,1614" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_abbr" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" coords="520,1624,576,1648" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_acronym" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" coords="520,1658,598,1682" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_q" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" coords="520,1692,571,1716" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class" coords="438,1311,600,1337" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class_bdo" href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" coords="520,1781,572,1805" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class" href="xhtml11-model-1_xsd.html#xhtml.I18n.class" coords="438,1736,581,1762" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class_a" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" coords="520,1874,571,1898" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class" coords="438,1829,597,1855" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_img" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" coords="520,1963,571,1987" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_map" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" coords="520,1997,574,2021" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class" coords="438,1922,607,1948" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.extra" href="xhtml11-model-1_xsd.html#xhtml.Inline.extra" coords="438,2041,587,2067" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.class" href="xhtml11-model-1_xsd.html#xhtml.Inline.class" coords="353,1148,501,1174" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.extra" href="xhtml11-model-1_xsd.html#xhtml.Misc.extra" coords="438,2185,582,2211" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.class" href="xhtml11-model-1_xsd.html#xhtml.Misc.class" coords="353,2141,496,2167" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Flow.mix" href="xhtml11-model-1_xsd.html#xhtml.Flow.mix" coords="268,136,404,162" />
+                                 <area alt="xhtml-blkstruct-1_xsd.tmp#xhtml.div.content" href="xhtml-blkstruct-1_xsd.html#xhtml.div.content" coords="162,92,311,118" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_xhtml.div.type" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_xhtml.div.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_xhtml.div.type" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">mixed</td>
+                                    <td><b>true</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.div.type" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.div.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.div.type" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Elements </td>
+                                    <td><b><a href="OSCAL-core_xsd.html#assessmentMethodType_statement" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">assessmentMethodType/statement</a></b>, <b><a href="OSCAL-core_xsd.html#assessmentObjectType_statement" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">assessmentObjectType/statement</a></b>, <b><a href="OSCAL-core_xsd.html#baseItemType_baseItemType_statement_description" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">baseItemType/statement/description</a></b>, <b><a href="OSCAL-core_xsd.html#layerType_layerType_author_contact-info" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">layerType/author/contact-info</a></b>, <b><a href="OSCAL-core_xsd.html#layerType_layerType_definitions_definition" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">layerType/definitions/definition</a></b>, <b><a href="OSCAL-core_xsd.html#layerType_summary" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">layerType/summary</a></b>, <b><a href="OSCAL-core_xsd.html#parameterType_description" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">parameterType/description</a></b>, <b><a href="OSCAL-core_xsd.html#statementType_description" target="mainFrame" title="http://oscal.nist.gov/schema/core" onclick="updatePageTitle('Schema documentation for OSCAL-core.xsd')">statementType/description</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_div" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">xhtml.BlkStruct.class/div</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_xhtml.div.type" type="image" src="img/btM.gif" value="-" onclick="switchState('model_xhtml.div.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_xhtml.div.type" style="display:block">(<b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h1" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h1</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h2" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h2</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h3" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h3</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h4" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h4</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h5" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h5</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h6" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h6</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ul" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ul</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ol" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ol</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_dl" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dl</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_p" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">p</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_div" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">div</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_pre" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">pre</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_blockquote" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">blockquote</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_address" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">address</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Table.class_table" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">table</a></b> | () | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b> | (<b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>) | (<b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>) | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b> | () | ())
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_address" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">address</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_blockquote" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">blockquote</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_div" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">div</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_dl" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dl</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h1" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h1</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h2" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h2</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h3" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h3</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h4" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h4</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h5" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h5</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h6" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h6</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ol" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ol</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_p" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">p</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_pre" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">pre</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Table.class_table" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">table</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ul" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ul</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.div.type" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.div.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.div.type" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.div.type" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.div.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.div.type" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"xhtml.div.type"</span><span class="tAN"> mixed=</span><span class="tAV">"true"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.div.content"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.div.attlist"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.p.type"></a><div class="componentTitle">Complex Type <span class="qname">xhtml.p.type</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.p.type" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.p.type');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.p.type" style="display:block"><img alt="Diagram" border="0" src="img/xhtml-blkstruct-1_xsd_Complex_Type_xhtml_p_type.jpeg" usemap="#xhtml-blkstruct-1_xsd_Complex_Type_xhtml_p_type" /><map name="xhtml-blkstruct-1_xsd_Complex_Type_xhtml_p_type" id="xhtml-blkstruct-1_xsd_Complex_Type_xhtml_p_type">
+                                 <area alt="xhtml-blkstruct-1_xsd.tmp#xhtml.p.attlist" href="xhtml-blkstruct-1_xsd.html#xhtml.p.attlist" coords="167,41,296,67" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_br" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" coords="511,265,562,289" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_span" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" coords="511,299,568,323" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class" coords="429,224,593,250" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_em" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" coords="511,384,562,408" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_strong" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" coords="511,418,578,442" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_dfn" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" coords="511,452,562,476" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_code" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" coords="511,486,568,510" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_samp" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" coords="511,520,571,544" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_kbd" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" coords="511,554,562,578" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_var" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" coords="511,588,562,612" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_cite" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" coords="511,622,562,646" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_abbr" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" coords="511,656,567,680" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_acronym" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" coords="511,690,589,714" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_q" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" coords="511,724,562,748" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class" coords="429,343,591,369" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class_bdo" href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" coords="511,813,563,837" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class" href="xhtml11-model-1_xsd.html#xhtml.I18n.class" coords="429,768,572,794" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class_a" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" coords="511,906,562,930" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class" coords="429,861,588,887" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_img" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" coords="511,995,562,1019" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_map" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" coords="511,1029,565,1053" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class" coords="429,954,598,980" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.extra" href="xhtml11-model-1_xsd.html#xhtml.Inline.extra" coords="429,1073,578,1099" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.class" href="xhtml11-model-1_xsd.html#xhtml.Inline.class" coords="344,180,492,206" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.extra" href="xhtml11-model-1_xsd.html#xhtml.Misc.extra" coords="429,1217,573,1243" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.class" href="xhtml11-model-1_xsd.html#xhtml.Misc.class" coords="344,1173,487,1199" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.mix" href="xhtml11-model-1_xsd.html#xhtml.Inline.mix" coords="259,136,400,162" />
+                                 <area alt="xhtml-blkstruct-1_xsd.tmp#xhtml.p.content" href="xhtml-blkstruct-1_xsd.html#xhtml.p.content" coords="153,92,293,118" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_xhtml.p.type" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_xhtml.p.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_xhtml.p.type" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">mixed</td>
+                                    <td><b>true</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.p.type" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.p.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.p.type" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_p" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">xhtml.BlkStruct.class/p</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_xhtml.p.type" type="image" src="img/btM.gif" value="-" onclick="switchState('model_xhtml.p.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_xhtml.p.type" style="display:block">(<b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b> | (<b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>) | (<b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>) | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b> | () | ())
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.p.type" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.p.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.p.type" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.p.type" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.p.type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.p.type" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"xhtml.p.type"</span><span class="tAN"> mixed=</span><span class="tAV">"true"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.p.content"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.p.attlist"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.div.content"></a><div class="componentTitle">Element Group <span class="qname">xhtml.div.content</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.div.content" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.div.content');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.div.content" style="display:block"><img alt="Diagram" border="0" src="img/xhtml-blkstruct-1_xsd_Element_Group_xhtml_div_content.jpeg" usemap="#xhtml-blkstruct-1_xsd_Element_Group_xhtml_div_content" /><map name="xhtml-blkstruct-1_xsd_Element_Group_xhtml_div_content" id="xhtml-blkstruct-1_xsd_Element_Group_xhtml_div_content">
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h1" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h1" coords="439,88,490,112" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h2" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h2" coords="439,122,490,146" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h3" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h3" coords="439,156,490,180" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h4" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h4" coords="439,190,490,214" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h5" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h5" coords="439,224,490,248" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class_h6" href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h6" coords="439,258,490,282" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Heading.class" href="xhtml11-model-1_xsd.html#xhtml.Heading.class" coords="357,47,520,73" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class_ul" href="xhtml11-model-1_xsd.html#xhtml.List.class_ul" coords="439,343,490,367" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class_ol" href="xhtml11-model-1_xsd.html#xhtml.List.class_ol" coords="439,377,490,401" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class_dl" href="xhtml11-model-1_xsd.html#xhtml.List.class_dl" coords="439,411,490,435" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.List.class" href="xhtml11-model-1_xsd.html#xhtml.List.class" coords="357,302,495,328" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkStruct.class_p" href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_p" coords="524,540,575,564" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkStruct.class_div" href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_div" coords="524,574,575,598" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkStruct.class" href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class" coords="442,499,608,525" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class_pre" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_pre" coords="524,659,575,683" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class_blockquote" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_blockquote" coords="524,693,615,717" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class_address" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_address" coords="524,727,598,751" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkPhras.class" href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class" coords="442,618,606,644" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Table.class_table" href="xhtml11-model-1_xsd.html#xhtml.Table.class_table" coords="609,860,666,884" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Table.class" href="xhtml11-model-1_xsd.html#xhtml.Table.class" coords="527,815,675,841" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.BlkSpecial.class" href="xhtml11-model-1_xsd.html#xhtml.BlkSpecial.class" coords="442,771,613,797" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Block.extra" href="xhtml11-model-1_xsd.html#xhtml.Block.extra" coords="442,915,590,941" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Block.class" href="xhtml11-model-1_xsd.html#xhtml.Block.class" coords="357,455,504,481" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_br" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" coords="524,1100,575,1124" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_span" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" coords="524,1134,581,1158" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class" coords="442,1059,606,1085" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_em" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" coords="524,1219,575,1243" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_strong" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" coords="524,1253,591,1277" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_dfn" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" coords="524,1287,575,1311" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_code" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" coords="524,1321,581,1345" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_samp" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" coords="524,1355,584,1379" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_kbd" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" coords="524,1389,575,1413" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_var" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" coords="524,1423,575,1447" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_cite" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" coords="524,1457,575,1481" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_abbr" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" coords="524,1491,580,1515" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_acronym" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" coords="524,1525,602,1549" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_q" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" coords="524,1559,575,1583" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class" coords="442,1178,604,1204" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class_bdo" href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" coords="524,1648,576,1672" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class" href="xhtml11-model-1_xsd.html#xhtml.I18n.class" coords="442,1603,585,1629" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class_a" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" coords="524,1741,575,1765" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class" coords="442,1696,601,1722" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_img" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" coords="524,1830,575,1854" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_map" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" coords="524,1864,578,1888" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class" coords="442,1789,611,1815" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.extra" href="xhtml11-model-1_xsd.html#xhtml.Inline.extra" coords="442,1908,591,1934" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.class" href="xhtml11-model-1_xsd.html#xhtml.Inline.class" coords="357,1015,505,1041" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.extra" href="xhtml11-model-1_xsd.html#xhtml.Misc.extra" coords="442,2052,586,2078" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.class" href="xhtml11-model-1_xsd.html#xhtml.Misc.class" coords="357,2008,500,2034" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Flow.mix" href="xhtml11-model-1_xsd.html#xhtml.Flow.mix" coords="272,3,408,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.div.content" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.div.content');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.div.content" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-blkstruct-1_xsd.html#xhtml.div.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-blkstruct-1.xsd')">xhtml.div.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_xhtml.div.content" type="image" src="img/btM.gif" value="-" onclick="switchState('model_xhtml.div.content');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_xhtml.div.content" style="display:block">(<b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h1" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h1</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h2" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h2</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h3" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h3</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h4" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h4</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h5" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h5</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h6" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h6</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ul" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ul</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ol" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ol</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_dl" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dl</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_p" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">p</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_div" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">div</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_pre" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">pre</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_blockquote" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">blockquote</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_address" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">address</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.Table.class_table" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">table</a></b> | () | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b> | (<b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>) | (<b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>) | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b> | () | ())
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_address" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">address</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_blockquote" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">blockquote</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_div" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">div</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_dl" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dl</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h1" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h1</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h2" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h2</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h3" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h3</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h4" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h4</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h5" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h5</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Heading.class_h6" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">h6</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ol" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ol</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkStruct.class_p" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">p</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.BlkPhras.class_pre" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">pre</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.Table.class_table" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">table</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.List.class_ul" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">ul</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.div.content" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.div.content');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.div.content" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:group</span><span class="tAN"> name=</span><span class="tAV">"xhtml.div.content"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.Flow.mix"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"unbounded"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:group&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.p.content"></a><div class="componentTitle">Element Group <span class="qname">xhtml.p.content</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.p.content" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.p.content');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.p.content" style="display:block"><img alt="Diagram" border="0" src="img/xhtml-blkstruct-1_xsd_Element_Group_xhtml_p_content.jpeg" usemap="#xhtml-blkstruct-1_xsd_Element_Group_xhtml_p_content" /><map name="xhtml-blkstruct-1_xsd_Element_Group_xhtml_p_content" id="xhtml-blkstruct-1_xsd_Element_Group_xhtml_p_content">
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_br" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" coords="515,132,566,156" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class_span" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" coords="515,166,572,190" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlStruct.class" href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class" coords="433,91,597,117" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_em" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" coords="515,251,566,275" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_strong" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" coords="515,285,582,309" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_dfn" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" coords="515,319,566,343" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_code" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" coords="515,353,572,377" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_samp" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" coords="515,387,575,411" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_kbd" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" coords="515,421,566,445" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_var" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" coords="515,455,566,479" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_cite" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" coords="515,489,566,513" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_abbr" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" coords="515,523,571,547" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_acronym" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" coords="515,557,593,581" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class_q" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" coords="515,591,566,615" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlPhras.class" href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class" coords="433,210,595,236" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class_bdo" href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" coords="515,680,567,704" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.I18n.class" href="xhtml11-model-1_xsd.html#xhtml.I18n.class" coords="433,635,576,661" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class_a" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" coords="515,773,566,797" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Anchor.class" href="xhtml11-model-1_xsd.html#xhtml.Anchor.class" coords="433,728,592,754" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_img" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" coords="515,862,566,886" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class_map" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" coords="515,896,569,920" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.InlSpecial.class" href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class" coords="433,821,602,847" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.extra" href="xhtml11-model-1_xsd.html#xhtml.Inline.extra" coords="433,940,582,966" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.class" href="xhtml11-model-1_xsd.html#xhtml.Inline.class" coords="348,47,496,73" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.extra" href="xhtml11-model-1_xsd.html#xhtml.Misc.extra" coords="433,1084,577,1110" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Misc.class" href="xhtml11-model-1_xsd.html#xhtml.Misc.class" coords="348,1040,491,1066" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Inline.mix" href="xhtml11-model-1_xsd.html#xhtml.Inline.mix" coords="263,3,404,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.p.content" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.p.content');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.p.content" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-blkstruct-1_xsd.html#xhtml.p.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-blkstruct-1.xsd')">xhtml.p.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_xhtml.p.content" type="image" src="img/btM.gif" value="-" onclick="switchState('model_xhtml.p.content');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_xhtml.p.content" style="display:block">(<b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b> | (<b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>) | (<b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>) | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b> | <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b> | () | ())
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="xhtml11-model-1_xsd.html#xhtml.Anchor.class_a" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">a</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_abbr" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">abbr</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_acronym" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">acronym</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.class_bdo" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">bdo</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_br" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">br</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_cite" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">cite</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_code" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">code</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_dfn" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">dfn</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_em" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">em</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_img" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">img</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_kbd" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">kbd</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlSpecial.class_map" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">map</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_q" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">q</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_samp" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">samp</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlStruct.class_span" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">span</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_strong" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">strong</a></b>, <b><a href="xhtml11-model-1_xsd.html#xhtml.InlPhras.class_var" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">var</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.p.content" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.p.content');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.p.content" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:group</span><span class="tAN"> name=</span><span class="tAV">"xhtml.p.content"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.Inline.mix"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"unbounded"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:group&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.p.attlist"></a><div class="componentTitle">Attribute Group <span class="qname">xhtml.p.attlist</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.p.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.p.attlist');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.p.attlist" style="display:block"><img alt="Diagram" border="0" src="img/xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_p_attlist.jpeg" usemap="#xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_p_attlist" /><map name="xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_p_attlist" id="xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_p_attlist">
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Core.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Core.attrib" coords="174,47,321,73" />
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.I18n.attrib" href="xhtml-attribs-1_xsd.html#xhtml.I18n.attrib" coords="174,91,319,117" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Common.extra" href="xhtml11-model-1_xsd.html#xhtml.Common.extra" coords="174,135,332,161" />
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Common.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Common.attrib" coords="160,3,330,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.p.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.p.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.p.attlist" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-blkstruct-1_xsd.html#xhtml.p.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-blkstruct-1.xsd')">xhtml.p.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.p.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.p.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.p.attlist" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.p.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.p.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.p.attlist" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"xhtml.p.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.Common.attrib"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="xhtml.div.attlist"></a><div class="componentTitle">Attribute Group <span class="qname">xhtml.div.attlist</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.w3.org/1999/xhtml</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_xhtml.div.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_xhtml.div.attlist');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_xhtml.div.attlist" style="display:block"><img alt="Diagram" border="0" src="img/xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_div_attlist.jpeg" usemap="#xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_div_attlist" /><map name="xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_div_attlist" id="xhtml-blkstruct-1_xsd_Attribute_Group_xhtml_div_attlist">
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Core.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Core.attrib" coords="183,47,330,73" />
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.I18n.attrib" href="xhtml-attribs-1_xsd.html#xhtml.I18n.attrib" coords="183,91,328,117" />
+                                 <area alt="xhtml11-model-1_xsd.tmp#xhtml.Common.extra" href="xhtml11-model-1_xsd.html#xhtml.Common.extra" coords="183,135,341,161" />
+                                 <area alt="xhtml-attribs-1_xsd.tmp#xhtml.Common.attrib" href="xhtml-attribs-1_xsd.html#xhtml.Common.attrib" coords="169,3,339,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_xhtml.div.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_xhtml.div.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_xhtml.div.attlist" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="xhtml-blkstruct-1_xsd.html#xhtml.div.type" target="mainFrame" title="http://www.w3.org/1999/xhtml" onclick="updatePageTitle('Schema documentation for xhtml-blkstruct-1.xsd')">xhtml.div.type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_xhtml.div.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_xhtml.div.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_xhtml.div.attlist" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Fixed</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.class_class" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">class</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-bdo-1_xsd.html#xhtml.dir.attrib_dir" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-bdo-1.xsd')">dir</a></b></td>
+                                    <td>restriction of <b>xs:NMTOKEN</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.id_id" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml11-model-1_xsd.html#xhtml.I18n.extra.attrib_lang" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml11-model-1.xsd')">lang</a></b></td>
+                                    <td><b><a href="xhtml-datatypes-1_xsd.html#LanguageCode" target="mainFrame" title="http://www.w3.org/1999/xhtml/datatypes/" onclick="updatePageTitle('Schema documentation for xhtml-datatypes-1.xsd')">LanguageCode</a></b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xhtml-attribs-1_xsd.html#xhtml.title_title" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for xhtml-attribs-1.xsd')">title</a></b></td>
+                                    <td><b>xs:string</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:lang</a></b></td>
+                                    <td>union of(<b>xs:language</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">Attempting to install the relevant ISO 2- and 3-letter</span><span class="tI">
+</span><span class="tT">         codes as the enumerated possible values is probably never</span><span class="tI">
+</span><span class="tT">         going to be a realistic possibility.  See</span><span class="tI">
+</span><span class="tT">         RFC 3066 at http://www.ietf.org/rfc/rfc3066.txt and the IANA registry</span><span class="tI">
+</span><span class="tT">         at http://www.iana.org/assignments/lang-tag-apps.htm for</span><span class="tI">
+</span><span class="tT">         further information.</span><span class="tI">
+</span><span class="tT"></span><span class="tI">
+</span><span class="tT">         The union allows for the 'un-declaration' of xml:lang with</span><span class="tI">
+</span><span class="tT">         the empty string.</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for xml.xsd')">xml:space</a></b></td>
+                                    <td>restriction of <b>xs:NCName</b></td>
+                                    <td>preserve</td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_xhtml.div.attlist" type="image" src="img/btM.gif" value="-" onclick="switchState('source_xhtml.div.attlist');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_xhtml.div.attlist" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"xhtml.div.attlist"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"xhtml.Common.attrib"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor Trial Edition.
+         </div>
+      </div><script type="text/javascript">
+         <!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>
