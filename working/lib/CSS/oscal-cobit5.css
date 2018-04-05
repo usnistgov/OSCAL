@@ -1,0 +1,40 @@
+@import 'oscal.css';
+
+
+prop { display:block; background-color: lavender; border: thin outset blue;
+  margin: 2px; padding: 2px; font-size: 90% }
+
+subcontrol[class~=practice]:before  { content:   oxy_xpath('ancestor::group/prop[@class="area"]/string(.)') " Practice" }
+
+feat[class~=process-goal]:before  { content: "Process goal" }
+feat[class~=IT-goal]:before  { content: "IT-related goal" }
+
+feat[class~=input]:before  { content: "Input" }
+feat[class~=output]:before  { content: "Output" }
+
+feat { background-color: inherit }
+
+control:before { content: '' }
+control > feat[class~=description]:before { content: 'Process Description' }
+control > feat[class~=objectives]:before { content: 'Process Purpose Statement' }
+
+subcontrol > feat[class~=description]:before { content: '' }
+subcontrol > feat[class~=description] {  -oxy-foldable: false }
+
+feat[class~=metrics]:before { content: 'Related Metrics' }
+
+prop[class~=metric]:before { content: '' }
+
+prop[class~=metric] { display: list-item; border: none; padding: 0px; background-color: inherit }
+
+feat[class~=raci_index]:before { content: 'RACI chart' }
+
+feat[class~=raci_index] > prop:before {
+          content: 
+            oxy_combobox( 
+              edit, '@class',
+              editable, true,
+              values, 'responsible, accountable, consulted, informed' )
+}
+
+references:before { content: 'Related Guidance' }
