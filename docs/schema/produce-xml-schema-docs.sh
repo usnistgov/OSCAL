@@ -5,7 +5,7 @@ CALABASH=/home/wendell/xmlcalabash-1.1.20-98/xmlcalabash-1.1.20-98.jar
 # Calls to Calabash for each of 'catalog', 'profile' and 'declarations'
 CATALOG_DOCS="java -jar $CALABASH -i schema-docs=oscal-oscal.xml -o html-docs=__catalogXML.html -o markdown-docs=__catalogXML.md lib/produce-schema-module-docs.xpl module=catalog"
 PROFILE_DOCS="java -jar $CALABASH -i schema-docs=oscal-oscal.xml -o html-docs=__profileXML.html -o markdown-docs=__profileXML.md lib/produce-schema-module-docs.xpl module=profile"
-DECLARATIONS_DOCS="java -jar $CALABASH -ischema-docs=oscal-oscal.xml -o html-docs=__declarations-docs.html -o html-docs=catalog-docs.html -omarkdown-docs=__declarationsXML.md lib/produce-schema-module-docs.xpl module=declarations"
+DECLARATIONS_DOCS="java -jar $CALABASH -i schema-docs=oscal-oscal.xml -o html-docs=__declarations-docs.html -o markdown-docs=__declarationsXML.md lib/produce-schema-module-docs.xpl module=declarations"
 
 # Now ...
 echo

@@ -2,7 +2,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-  type="oscal:sp800-53-rev4-extraction" name="sp800-53-rev4-extraction">
+  type="oscal:profile-resolve-and-display" name="profile-resolve-and-display">
   
   
   <p:input port="source" primary="true"/>
@@ -47,7 +47,7 @@
   </p:xslt>
   
   <!-- Making HTML out of it -->
-  <p:xslt name="rendered">
+  <p:xslt name="rendered" version="1.0">
     <p:input port="stylesheet">
       <!--<p:document href="../XSLT/HTML/oscal-basic-display.xsl"/>-->
       <p:document href="../XSLT/HTML/oscal-with-nav-display.xsl"/>

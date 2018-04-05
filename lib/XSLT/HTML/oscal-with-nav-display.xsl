@@ -48,7 +48,8 @@
   </xsl:template>
       
   <xsl:template match="oscal:import/oscal:framework">
-    <div class="framework" id="{(@id,generate-id())[1]}">
+    <div class="framework" id="{generate-id(.)}">
+      <xsl:copy-of select="@id"/>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
@@ -123,9 +124,12 @@
   <xsl:template match="oscal:prop[@class='name']"/>
   
   <xsl:template name="make-title">
-    <xsl:param name="runins" select="/.."/>
+    <!-- $runins are properties to be inserted into the title inline, such as numbering -->
+    <xsl:param name="runins"/>
     <h3>
-      <xsl:apply-templates select="$runins" mode="run-in"/>
+      <xsl:if test="$runins"><!-- doing extra work here to stay in XSLT 1.0 *and* avoid helpful Saxon warnings -->
+        <xsl:apply-templates select="$runins" mode="run-in"/>
+      </xsl:if>
       <xsl:for-each select="oscal:title">
         <xsl:apply-templates/>
       </xsl:for-each>
@@ -517,7 +521,7 @@
       <p>
         <xsl:value-of select="@href"/>
         <xsl:text> ➭ </xsl:text>
-        <xsl:apply-templates select="* except oscal:framework" mode="display-invocation"/>
+        <xsl:apply-templates select="*[not(self::oscal:framework)]" mode="display-invocation"/>
       </p>
     </div>
   </xsl:template>

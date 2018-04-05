@@ -434,7 +434,9 @@
          <call subcontrol-id="si.4.24."/>
       </include></import>
    
-   <merge/>
+   <merge>
+      <as-is/>
+   </merge>
    <modify>
       <!-- - - - - - -->
       <set-param param-id="ac-1_a">
