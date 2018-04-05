@@ -13,13 +13,10 @@
     <xsl:output indent="yes"/>
     
     
-<!-- Takes OSCAL especially SP800-53-flavored OSCAL and produces JSON
-        as per requirements
-     for ATLAS
-    
-    Wendell Piez for C2 Labs February 2018 -->
-    
-    <!-- 
+<!-- Produces JSON from OSCAL. Tested on SP-800-53 OSCAL
+     but it should work on any. -->
+     
+     <!-- 
         
         we want results like
         

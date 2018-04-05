@@ -40,7 +40,7 @@
   <p:xslt name="reduced">
     
       <p:input port="stylesheet">
-        <p:document href="sp800-52-oscal-jsonmap.xsl"/>
+        <p:document href="sp800-53-oscal-jsonmap.xsl"/>
       </p:input>
     
   </p:xslt>
