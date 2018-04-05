@@ -16,22 +16,25 @@
   <p:input port="source"     primary="true"/>
   <p:input port="parameters" kind="parameter"/>
   
-  <p:output port="_input_XML" primary="false">
+  <!-- Diagnostic <p:output port="_input_XML" primary="false">
     <p:pipe port="result" step="catalog"/>
   </p:output>
-  <p:output port="_xpath-json-xml" primary="false">
+  <p:serialization port="_input_XML"       indent="true"/>-->
+  
+  
+  <p:output port="xpath-json-xml" primary="false">
     <p:pipe port="result" step="reduced"/>
   </p:output>
-  <p:output port="JSON" primary="false">
+  <p:serialization port="xpath-json-xml" indent="true"/>
+  
+  <!-- Not capturing presently <p:output port="JSON" primary="false">
     <p:pipe port="result" step="json-out"/>
   </p:output>
+  <p:serialization port="JSON"           indent="true" method="text"/>-->
   
   
-  <p:serialization port="_input_XML"       indent="true"/>
-  <p:serialization port="_xpath-json-xml" indent="true"/>
-  <p:serialization port="JSON"           indent="true" method="text"/>
-  
-  <!--<p:load name="catalog">
+  <!-- Hard-code a catalog here (and remove 'source' input pipe)
+    <p:load name="catalog">
     <p:with-option name="href" select="'file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml'"/>
   </p:load>-->
   
@@ -40,7 +43,7 @@
   <p:xslt name="reduced">
     
       <p:input port="stylesheet">
-        <p:document href="sp800-53-oscal-jsonmap.xsl"/>
+        <p:document href="oscal-json-map.xsl"/>
       </p:input>
     
   </p:xslt>

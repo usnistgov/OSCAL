@@ -1,19 +1,25 @@
-# Rewrites a file in XPath's JSON XML syntax, as JSON
-XMLJSON=$1
-BASENAME=${XMLJSON%.xml}
+# Converts OSCAL into XPath's JSON XML syntax, then converts that to JSON
+OSCALXML=$1
+BASENAME=${OSCALXML%.xml}
+
 
 # This should be a call to maven, gradle or functional equivalent
 SAXON="/home/wendell/Saxon/saxon9he.jar"
 # Saxon CL documented here: http://www.saxonica.com/documentation9.5/using-xsl/commandline.html
 
-# Set up call to Saxon
-JAVACALL="java -jar $SAXON -s:$XMLJSON -o:$BASENAME.json -xsl:json-write.xsl"
+# Set up calls to Saxon - old-fashioned file-writing pipeline
+# produces (and retains) intermediate results
+JAVACALL1="java -jar $SAXON -s:$OSCALXML         -o:$BASENAME-json.xml -xsl:oscal-json-map.xsl"
+JAVACALL2="java -jar $SAXON -s:$BASENAME-json.xml -o:$BASENAME.json     -xsl:json-write.xsl"
+
 
 # Now ...
 echo
-echo Producing JSON from $XMLJSON ...
+echo Producing JSON from $OSCALXML ...
 echo
-echo $JAVACALL
+echo $JAVACALL1
+echo $JAVACALL2
 
 # Go for it --
-$JAVACALL
+$JAVACALL1
+$JAVACALL2
