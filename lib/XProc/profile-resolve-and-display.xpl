@@ -56,7 +56,7 @@
   
   <!-- Last chance for comments, PIs etc. -->
   <p:xslt name="final">
-    <p:with-param name="xslt-process" select="' OSCAL PROFILE RESOLUTION AND RENDERING '"/>
+    <p:with-param name="xslt-process" select="' OSCAL PROFILE RESOLUTION AND RENDERING pipeline -profile-resolve-and-display.xpl- '"/>
     <p:input port="stylesheet">
       <p:document href="../XSLT/HTML/html-finalize.xsl"/>
     </p:input>
