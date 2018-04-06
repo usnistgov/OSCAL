@@ -9,17 +9,19 @@ SAXON="/home/wendell/Saxon/saxon9he.jar"
 
 # Set up calls to Saxon - old-fashioned file-writing pipeline
 # produces (and retains) intermediate results
-JAVACALL1="java -jar $SAXON -s:$OSCALXML         -o:$BASENAME-json.xml -xsl:oscal-json-map.xsl"
-JAVACALL2="java -jar $SAXON -s:$BASENAME-json.xml -o:$BASENAME.json     -xsl:json-write.xsl"
+# JAVACALL1="java -jar $SAXON -s:$OSCALXML          -o:$BASENAME-json.xml -xsl:oscal-json-map.xsl"
+# JAVACALL2="java -jar $SAXON -s:$BASENAME-json.xml -o:$BASENAME.json     -xsl:json-write.xsl"
 
+# This call performs both steps in one (the pipeline is internal to the XSLT)
+JAVACALL3="java -jar $SAXON -s:$OSCALXML -o:$BASENAME.json -xsl:oscal-json-write.xsl"
 
 # Now ...
 echo
 echo Producing JSON from $OSCALXML ...
 echo
-echo $JAVACALL1
-echo $JAVACALL2
+echo $JAVACALL3
 
 # Go for it --
-$JAVACALL1
-$JAVACALL2
+# $JAVACALL1
+# $JAVACALL2
+$JAVACALL3
