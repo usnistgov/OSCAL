@@ -3,7 +3,7 @@ OSCALXML=$1
 BASENAME=${OSCALXML%.xml}
 
 
-# This should be a call to maven, gradle or functional equivalent
+# This could be a call to maven, gradle or functional equivalent
 SAXON="/home/wendell/Saxon/saxon9he.jar"
 # Saxon CL documented here: http://www.saxonica.com/documentation9.5/using-xsl/commandline.html
 
