@@ -2,7 +2,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-  type="oscal:produce-schema-docs" name="produce-schema-docs">
+  type="oscal:produce-schema-module-docs" name="produce-schema-module-docs">
   
   <!-- Expects a keyword identifying a schema
     'taglib' (default) or unrecognized creates a full file
@@ -19,7 +19,7 @@
   -->
   
   <p:input port="schema-docs" primary="true"/>
-  <p:input port="parameters" kind="parameter"/>
+  <p:input port="parameters"  kind="parameter"/>
   
   <!--<p:output port="_a_OSCAL_docs" primary="false">
     <p:pipe port="result" step="input"/>

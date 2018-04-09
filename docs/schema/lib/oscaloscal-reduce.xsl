@@ -30,6 +30,7 @@
     <xsl:template match="/*/title"/>
     
     <xsl:template priority="2" match="/*" expand-text="true">
+        <xsl:message>Module is { $module }</xsl:message>
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="title"/>
