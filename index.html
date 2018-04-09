@@ -1,0 +1,310 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>OSCAL Overview</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <link href="stylesheets/disablelanguagepanel.css" rel="stylesheet" />
+    
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <a href="/"><img src="images/logo.png" class="logo" alt="Logo" /></a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">       
+
+          <li><a class="toc-h1 toc-link" href="/">OSCAL Overview</a></li>
+                      <li>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#the-purpose-of-oscal" class="toc-h2 toc-link" data-title="The purpose of OSCAL">The purpose of OSCAL</a>
+                    </li>
+                    <li>
+                      <a href="#types-of-oscal-users" class="toc-h2 toc-link" data-title="Types of OSCAL users">Types of OSCAL users</a>
+                    </li>
+                    <li>
+                      <a href="#oscal-components-and-high-level-architecture" class="toc-h2 toc-link" data-title="OSCAL components and high-level architecture">OSCAL components and high-level architecture</a>
+                    </li>
+                </ul>
+            </li>
+
+          <li><a class="toc-h1 toc-link" href="/concepts">Concepts</a></li>
+          
+          <li><a class="toc-h1 toc-link" href="/schema">Schema Reference</a></li>
+          
+          <li><a class="toc-h1 toc-link" href="/examples">Examples</a></li>
+          
+          <li><a class="toc-h1 toc-link" href="/roadmap">Roadmap</a></li>
+          
+      </div>
+      <ul class="toc-footer">
+          <li><a href="https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a></li>
+          <li><a href="https://github.com/usnistgov/OSCAL" target="_blank">GitHub</a></li>
+          <li><a href="https://www.nist.gov/" target="_blank">NIST.gov</a></li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='oscal-overview'>OSCAL Overview</h1>
+<p>Before explaining what OSCAL is, it is important to define three key OSCAL terms:</p>
+
+<ul>
+<li><em>Control</em>: A safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. While this is based on the NIST Special Publication (SP) 800-53 definition of &quot;control&quot;, in the context of OSCAL it refers to a similar kind of requirement from a control catalog.</li>
+<li><em>Catalog</em>: A set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53 Revision 4 Appendix F, the 100+ controls in ISO 27002, and the practices in COBIT 5.</li>
+<li><em>Profile</em>: A set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.</li>
+</ul>
+<h2 id='the-purpose-of-oscal'>The purpose of OSCAL</h2>
+<p>OSCAL is attempting to address a number of challenges around security controls and security control assessment. The core challenge, and one of the primary reasons for creating OSCAL, is that concepts like security controls and profiles are represented today largely in proprietary ways. In many cases they are written in prose documents that are imprecise, lead to differences in interpretation, and are not machine-readable, meaning that the prose instructions require someone to do data entry into a tool in order for the tool to use the information. </p>
+
+<p>Organizations are also struggling with information systems that have many different components. Some components require the use of different profiles per component; this is commonly the case with cloud environments. Also, cloud environments can be multitenant or have mixed ownership of components. We need to be able to assess the security of these systems against a number of requirements, owners, etc.—to do that simultaneously and provide these views to stakeholders. </p>
+
+<p>On top of that there are situations where a single system needs to support multiple regulatory frameworks. For example, the U.S. Department of Veterans Affairs is a federal agency (Federal Information Security Modernization Act (FISMA) and NIST Cybersecurity Framework requirements) and a healthcare institution (Health Insurance Portability and Accountability Act (HIPAA) requirements) that has credit card transactions (Payment Card Industry Data Security Standard (PCI DSS)). There is no shortage of requirements for some organizations that have multiple regulatory frameworks. </p>
+
+<p>Assessing all these security controls is extremely complex. Because of that complexity, it’s largely a manual process today. The OSCAL project is trying to change that by standardizing how security controls are represented, how a control implementation for a given system is represented, and how that information is best used and reports generated in a standardized way that can be used by both humans and machines. That means formats are needed that can be generated by machines for communicating with other machines, but can also easily be reformatted so humans can read the information. By standardizing the representation of this information, OSCAL information can be interoperable by having a well-defined specification with information that’s going to be used, imported, and used interoperably for security control assessments. The goal is to keep OSCAL as simple as possible and provide extensive automation for tools to use.</p>
+<h2 id='types-of-oscal-users'>Types of OSCAL users</h2>
+<p>The initial OSCAL work encompasses the catalog and profile concepts. There are several types of users who should benefit from OSCAL catalogs and profiles. They include the following producers of OSCAL catalogs, profiles, and/or tools:</p>
+
+<ul>
+<li><em>Catalog maintainers</em>: publishing catalogs into OSCAL format (e.g., NIST, ISO, ISACA)</li>
+<li><em>Standard profile maintainers</em>: profiles in OSCAL format used by many organizations consuming OSCAL catalogs (e.g., NIST, FedRAMP)</li>
+<li><em>Custom profile maintainers</em>: developing new profiles or customizing existing profiles for organization-specific use (e.g., cloud service providers, integrators)</li>
+<li><em>Tool vendors</em>: creating tools that use OSCAL to support risk assessment, continuous monitoring, compliance reporting, and other purposes</li>
+</ul>
+
+<p>There are also several types of expected consumers of OSCAL catalogs, profiles, and/or tools, including the following:</p>
+
+<ul>
+<li><em>Operations personnel</em>: rapidly verifying that systems comply with organizational security requirements</li>
+<li><em>Security and privacy personnel</em>: automatically identifying problems and addressing them quickly before loss or damage occur</li>
+<li><em>Auditors/assessors</em>: performing audits/assessments on demand with minimal effort</li>
+<li><em>Policy personnel</em>: identifying systemic problems that necessitate changes to organization security policy</li>
+</ul>
+<h2 id='oscal-components-and-high-level-architecture'>OSCAL components and high-level architecture</h2>
+<p>The plans for OSCAL involve all the components depicted in the following diagram:</p>
+
+<p><img src="images/oscal-components.png" title="OSCAL Components" alt="OSCAL Components" /></p>
+
+<p>Starting from the bottom on the left, the OSCAL components are:</p>
+
+<ul>
+<li><em>Catalog/Framework</em>: In addition to defining a set of security controls, it may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls has been done because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.</li>
+<li><em>Profile</em>: The profile format will allow for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements). A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs.</li>
+<li><em>Implementation</em>: Defines how each profile item is implemented for a given system component. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.</li>
+<li><em>Assessment</em>: Describes how the system assessment is to be performed.</li>
+<li><em>Assessment Results</em>: Records the findings of the assessment.</li>
+</ul>
+
+<p>These are the current definitions for each component. As the project progresses, these definitions may evolve. They are included here to indicate the overall body of work for OSCAL and not the finalized details of each component.</p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
