@@ -8,7 +8,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
 includes:
   - schema/catalogXML
   - schema/catalogJSON
-  - schema/profile
+  - schema/profileXML
+  - schema/profileJSON
 
 search: true
 ---

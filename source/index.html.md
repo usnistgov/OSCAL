@@ -42,21 +42,16 @@ There are also several types of expected consumers of OSCAL catalogs, profiles, 
 
 ## OSCAL components and high-level architecture
 
-The plans for OSCAL involve seven components, as depicted in the following diagram:
+The plans for OSCAL involve all the components depicted in the following diagram:
 
-![OSCAL layers](./images/oscal-layers.png "OSCAL Layer Diagram")
+![OSCAL Components](images/oscal-components.png "OSCAL Components")
 
-Starting from the bottom on the left, the OSCAL layers are:
+Starting from the bottom on the left, the OSCAL components are:
 
-* *Catalog*: In addition to defining a set of security controls, may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls has been done because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.
+* *Catalog/Framework*: In addition to defining a set of security controls, it may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls has been done because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.
 * *Profile*: The profile format will allow for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements). A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs.
 * *Implementation*: Defines how each profile item is implemented for a given system component. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.
 * *Assessment*: Describes how the system assessment is to be performed.
 * *Assessment Results*: Records the findings of the assessment.
-
-OSCAL will also integrate with:
-
-* *Metrics*: Defines metrics and measurements for understanding the effectiveness of the system’s security.
-* *Mechanism*: Describes methods used to monitor the system’s current security state (e.g., Security Content Automation Protocol (SCAP)).
 
 These are the current definitions for each component. As the project progresses, these definitions may evolve. They are included here to indicate the overall body of work for OSCAL and not the finalized details of each component.

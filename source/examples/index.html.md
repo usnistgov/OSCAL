@@ -135,3 +135,74 @@ This example shows a brief excerpt of ISO 27002 represented in OSCAL XML. This e
           </ol>
         </part>
 ```
+
+## Profile Example 1
+
+This example shows an excerpt of the profile corresponding to the NIST SP 800-53 low baseline. This excerpt omits additional `<call control>` lines but is otherwise complete. This profile has a title, imports the NIST SP 800-53 catalog, and specifies numerous controls from that catalog. This is a very simple example.
+
+```xml
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-82bbb8a3-492a-4308-9316-6db230697d00">
+   <title>SP800-53 LOW BASELINE IMPACT</title>
+   <import href="SP800-53-rev4-catalog.xml">
+      <include>
+         <call control-id="ac.1"/>
+         <call control-id="ac.2"/>
+         <call control-id="ac.3"/>
+         <call control-id="ac.7"/>
+         <call control-id="ac.8"/>
+         <call control-id="ac.14"/>
+         <call control-id="ac.17"/>
+         <call control-id="ac.18"/>
+         <call control-id="ac.19"/>
+         <call control-id="ac.20"/>
+         <call control-id="ac.22"/>
+      </include></import>
+</profile>
+```
+
+## Profile Example 2
+
+This example shows an excerpt of a more complex profile than the previous example. This example is based on the FedRAMP low baseline, which can be found at https://www.fedramp.gov/resources/documents-2016/ under Key Cloud Service Provider (CSP) Documents. The first notable difference from the first example is that this profile references two other profiles: SP800-53-LOW-baseline and SP800-53-MODERATE-baseline. A single profile can reference zero or more catalogs and zero or more other profiles. (For brevity, the lists of controls referenced from each profile have been truncated.) The second notable difference is that this profile modifies the controls (via the `<modify>` element) by setting parameters for particular controls (using `<set-param>` elements) and altering the language of other controls (using the `<alter>` and `<augment>` elements). This causes the profile to be customized to meet the specific needs of the parties using it.
+
+```xml
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-50756f0d-c37b-494d-b77f-f82d25e9aa15">
+   <title>FedRAMP LOW Baseline PROFILE (extracted and aligned, no edits)</title>
+   <import href="../SP800-53/SP800-53-LOW-baseline.xml">
+      <include>
+         <call control-id="ac.1"/>
+         <call control-id="ac.2"/>
+         <call control-id="ac.3"/>
+         <call control-id="ac.7"/>
+         <call control-id="ac.8"/>
+         <call control-id="ac.14"/>
+      </include></import>
+   <import href="../SP800-53/SP800-53-MODERATE-baseline.xml">
+      <include>
+         <call subcontrol-id="ca.2.1."/>
+         <call control-id="si.16"/>
+      </include></import>
+   <merge/>
+   <modify>
+      <!-- - - - - - -->
+      <set-param param-id="ac-1_a">
+         <desc>organization-defined personnel or roles</desc>
+         <value>organization-defined personnel or roles</value>
+      </set-param>
+      <set-param param-id="ac-1_b">
+         <desc>organization-defined frequency</desc>
+         <value>organization-defined frequency</value>
+      </set-param>
+      <set-param param-id="ac-1_c">
+         <desc>organization-defined frequency</desc>
+         <value>organization-defined frequency</value>
+      </set-param>
+      <alter control-id="ac.1">
+         <augment>
+            <part class="parameters">
+               <p>AC-1 (b) (1) [at least every 3 years] AC-1 (b) (2) [at least annually]</p>
+            </part>
+         </augment>
+      </alter>
+      <!-- - - - - - -->
+   </modify></profile>
+```

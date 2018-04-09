@@ -8,7 +8,7 @@ disable_language_panel: true
 
 # OSCAL Concepts
 
-This is an explanation of the basic constructs supported by OSCAL. These constructs exist in all OSCAL bindings (e.g., XML, JSON). At this time, the material covers OSCAL controls and catalogs. Additional OSCAL constructs will be added as they are developed and mature.
+This is an explanation of the basic constructs supported by OSCAL. These constructs exist in all OSCAL bindings (e.g., XML, JSON). At this time, the material covers OSCAL controls, catalogs, and profiles. Additional OSCAL constructs will be added as they are developed and mature.
 
 ## OSCAL Controls
 
@@ -28,4 +28,10 @@ OSCAL is designed to take disparate control definitions from different sources a
 
 An *OSCAL catalog* is a set of closely related OSCAL controls. The catalog for [NIST Special Publication (SP) 800-53 Revision 4](https://doi.org/10.6028/NIST.SP.800-53r4) defines all NIST SP 800-53 controls. There would be a separate catalog for the controls from [ISO 27002](https://www.iso.org/standard/54533.html). An OSCAL catalog may simply define controls, or it may also organize those controls. *Sections* can be defined to partition a catalog, with each section containing one or more references to controls or control groups. A *group* references related controls or control groups.
 
-OSCAL enables the definition of frameworks. A *framework* is basically selecting one or more OSCAL controls from one or more OSCAL catalogs. A framework allows an organization to specify which controls from which catalogs are relevant for a particular situation, environment, etc. For example, an organization using OSCAL to check certain controls on a system that is subject to both NIST SP 800-53 and ISO 27002 could define a single framework that specifies just the necessary controls from those two catalogs. Specifying a subset of controls from catalogs is also known as creating an overlay or customizing a catalog. Similar to how a catalog may use sections to organize its content, a framework may define *components*, each of which references one or more controls.
+## OSCAL Profiles
+
+An *OSCAL profile* is a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Also called a baseline or overlay, examples of profiles include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements. 
+
+The figure below is an example of what OSCAL is doing with catalogs and profiles. This example represents the NIST SP 800-53 low baseline, which is a profile in OSCAL nomenclature. The profile is effectively indicating which controls from the NIST SP 800-53 catalog are required to be compliant with the profile (NIST SP 800-53 low baseline). Using OSCAL formats for these makes the mappings between the control catalog and the profile explicit and machine readable. A single profile can reference controls in multiple catalogs. OSCAL will allow profiles to be generated using the same interoperable format regardless of which catalogs are being used.
+
+![profile-catalog-mapping](../images/profile-catalog-mapping-trivial-example.png "Trivial Example of Profile-Catalog Mapping")
