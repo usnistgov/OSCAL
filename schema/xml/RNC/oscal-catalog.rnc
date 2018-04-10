@@ -22,7 +22,7 @@ section = element section { idAttr?, optionalClass,
 
 controlGroup = element group {
   idAttr?, optionalClass,
-  title?, control-components, (controlGroup | control)+, references? }
+  title?, ( param | link |  prop | part )*, (controlGroup | control)+, references? }
 
 # done with declarations - controls, subcontrols and groups are not declared
 # (constrained) at the OSCAL layer so they don't get declaration elements.
@@ -30,18 +30,18 @@ controlGroup = element group {
 # Now for the contents of the OSCAL doc proper ...
 
 # note prose is not included in control-components, unlike item pattern ('component' element)
-control-components = ( param | link |  prop | part )*
+Xcontrol-components = ( param | link |  prop | part )*
 
 control =
   element control {
-    idAttr?, optionalClass, title?, (control-components | subcontrol)*, references?
+    idAttr?, optionalClass, title?, ( param | link |  prop)*, (part | subcontrol)*, references?
   }
 
 #inControl =  title?, (control-components | subcontrol)*, references?
     
 subcontrol =
   element subcontrol {
-    idAttr?, optionalClass, title?, control-components, references?
+    idAttr?, optionalClass, title?, ( param | link |  prop | part )*, references?
   }
 
 #inSubcontrol = title?, control-components, references?
@@ -63,7 +63,7 @@ part =
 # asPart allows other things (in importing schemas) to declare themselves as parts or part-like
 asPart = 
     idAttr?, optionalClass, title?,
-    (control-components | prose)*
+    (param | prop)*, prose*, (link | part)*
 
 title = element title { (text | q)* }
 
