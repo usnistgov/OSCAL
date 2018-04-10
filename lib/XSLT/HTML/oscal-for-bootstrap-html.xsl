@@ -130,7 +130,8 @@
       </xsl:if>
       <!-- impact table went here -->
     </div>
-    <xsl:apply-templates select="oscal:subcontrol" mode="include"/>
+    <!-- flattening out -->
+    <xsl:apply-templates select="oscal:subcontrol | oscal:component" mode="include"/>
   </xsl:template>
   
   <!-- dropped in default traversal -->
