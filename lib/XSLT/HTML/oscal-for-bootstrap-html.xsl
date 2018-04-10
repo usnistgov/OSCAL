@@ -10,6 +10,7 @@
   
   <xsl:strip-space elements="*"/>
   <xsl:preserve-space elements="p pre li i a u em b"/>
+
   <xsl:template match="/">
     <html>
     <head>
@@ -61,7 +62,7 @@
       </script>
   </xsl:template>
   
-  <xsl:template match="oscal:catalog | oscal:collection | oscal:framework">
+  <xsl:template match="oscal:catalog | oscal:worksheet | oscal:framework | /*">
     <xsl:apply-templates/>
   </xsl:template>
 
