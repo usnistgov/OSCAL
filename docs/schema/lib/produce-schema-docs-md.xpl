@@ -20,6 +20,8 @@
   
   <p:identity name="schema-documentation"/>
   
+  <p:sink/>
+  
   <p:for-each>
     <p:iteration-source select="*/*">
       <p:inline>
@@ -31,24 +33,29 @@
       </p:inline>
     </p:iteration-source>
     
-    <p:variable name="module"        select="local-name(.)"/>
-    <p:variable name="md-resultfile" select=" '../_x_' || $module || 'XML.md' "/>
+    <p:identity name="proxy"/>
     
-    <oscal:produce-schema-module-docs name="module-docs">
-      <p:input port="schema-docs">
-        <p:pipe step="schema-documentation" port="result"/>
-      </p:input>
-      <p:with-option name="module" select="$module"/>
-      
-    </oscal:produce-schema-module-docs>
-    
-    <p:store method="text">
-      <p:input port="source">
-        <p:pipe port="markdown-docs" step="module-docs"/>
-      </p:input>
-      <p:with-option name="href" select="$md-resultfile"/>
-    </p:store>
- 
+    <p:group>
+      <p:variable name="module" select="local-name(/*)">
+        <p:pipe step="proxy" port="result"/>
+      </p:variable>
+
+      <p:variable name="md-resultfile" select=" '../_' || $module || 'XML.md' "/>
+
+      <oscal:produce-schema-module-docs name="module-docs">
+        <p:input port="schema-docs">
+          <p:pipe step="schema-documentation" port="result"/>
+        </p:input>
+        <p:with-option name="module" select="$module"/>
+      </oscal:produce-schema-module-docs>
+
+      <p:store method="text">
+        <p:input port="source">
+          <p:pipe port="markdown-docs" step="module-docs"/>
+        </p:input>
+        <p:with-option name="href" select="$md-resultfile"/>
+      </p:store>
+    </p:group>
   </p:for-each>
   
 </p:declare-step>

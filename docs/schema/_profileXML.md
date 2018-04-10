@@ -1,7 +1,5 @@
 
 
-# XML Schema _profile.xsd
-
 ## Profiling
 
 By means of its profiling functionality, OSCAL provides ways of specifying and documenting configurations or "overlays" of catalog, as profile documents. Although they may contain fragments of OSCAL catalogs, for the most part, profiles are an entirely distinct means or mechanism for working with OSCAL.
@@ -16,11 +14,11 @@ In reference to a catalog (or other resource such as profile or framework), a se
 
 An OSCAL document that describes a selection with possible modification of multiple controls from multiple catalogs. It provides mechanisms by which controls may be selected ([&lt;import>](#import-element--import-resource)), merged or (re)structured ([&lt;merge>](#merge-element--merge-controls)), and emended ([&lt;modify>](#modify-element--modify-controls)). OSCAL profiles may select subsets of control sets, set parameter values for them in application, and even qualify the representation of controls and subcontrols as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.
 
-* attribute `@id` (required) valid to constraints for type 'ID'
 * element `title` (mandatory)
 * element [&lt;import>](#import-element--import-resource) (at least one)
 * element [&lt;merge>](#merge-element--merge-controls) (optional)
 * element [&lt;modify>](#modify-element--modify-controls) (optional)
+* attribute `@id` (required) valid to constraints for type 'ID'
 
 ### `<import>` element | Import resource 
 
@@ -30,9 +28,9 @@ An `<import>` indicates a source whose controls are to be included (referenced a
 
 The contents of the `<import>` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [&lt;include>](#include-element--include-controls) element) or de-selected (using an [&lt;exclude>](#exclude-element--exclude-controls) element) from the source catalog or profile.
 
-* attribute `@href` (optional)
 * element [&lt;include>](#include-element--include-controls) (optional)
 * element [&lt;exclude>](#exclude-element--exclude-controls) (optional)
+* attribute `@href` (optional)
 
 ### `<merge>` element | Merge controls 
 
@@ -89,7 +87,6 @@ This element provides an alternative to calling controls and subcontrols individ
 
 Importing a catalog with all controls included:
 
-
 ```
 <import href="canonical-catalog-oscal.xml">
   <include>
@@ -99,12 +96,13 @@ Importing a catalog with all controls included:
 ```
 
 
-can also be done implicitly (with the same outcome):
 
+can also be done implicitly (with the same outcome):
 
 ```
 <import href="canonical-catalog-oscal.xml"/>
 ```
+
 
 
 However these are not the same as
@@ -118,9 +116,10 @@ However these are not the same as
 ```
 
 
+
 (Since `with-subcontrols` is assumed to be "no" unless stated to be "yes".)
 
-This element is empty
+* attribute [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) (optional)
 
 ### `<call>` element | Call (control or subcontrol) 
 
@@ -130,7 +129,10 @@ Inside [&lt;include>](#include-element--include-controls), If [@control-id](#con
 
 If [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) is "yes" on the call to a control, no sibling `<call>`elements need to be used to call its subcontrols. Accordingly it may be more common to call subcontrols (enhancements) by ID only to exclude them, not to include them.
 
-This element is empty
+* attribute [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) (optional)
+* attribute [@control-id](#control-id-attribute--control-identifier) (optional) valid to constraints for type 'NCName'
+* attribute [@with-control](#with-control-attribute--include-controls-with-subcontrols) (optional)
+* attribute [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) (optional) valid to constraints for type 'NCName'
 
 ### `@control-id` attribute | Control Identifier 
 
@@ -146,7 +148,10 @@ subcontrol-id
 
 Select controls by (regular expression) match on ID
 
-This element is empty
+* attribute [@with-subcontrols](#with-subcontrols-attribute--include-subcontrols-with-controls) (optional)
+* attribute [@with-control](#with-control-attribute--include-controls-with-subcontrols) (optional)
+* attribute [@pattern](#pattern-attribute--match-id-with-pattern-regular-expression) (required)
+* attribute [@order](#order-attribute--control-reorder) (optional)
 
 ### `@pattern` attribute | Match ID with pattern (regular expression) 
 
@@ -161,12 +166,12 @@ When matching multiple controls, what order to use in emitting them: `keep`, `as
 ### `@with-subcontrols` attribute | Include subcontrols with controls 
 
 Say "yes" to include subcontrols with their controls
-* Allowed on [&lt;all>](#all-element--include-all), [&lt;call>](#call-element--call-control-or-subcontrol), [&lt;match>](#match-element--match-controls-and-subcontrols-by-identifier)
+* Allowed on 
 
 ### `@with-control` attribute | Include controls with subcontrols 
 
 with-control
-* Allowed on [&lt;call>](#call-element--call-control-or-subcontrol), [&lt;match>](#match-element--match-controls-and-subcontrols-by-identifier)
+* Allowed on 
 
 ### `<set-param>` element | Parameter setting 
 
@@ -174,25 +179,27 @@ Set a parameter's value or rewrite its label or description
 
 `@param-id` indicates the parameter (within the scope of the referenced catalog or resource). The `value` element is used to provide a value for insertion of a value for the parameter when the catalog is resolved and rendered. A `desc` element can be presented (made available) to a calling profile – that is, it is a parameter description helping to set the parameter in higher layers, not this one (when profiles are expected to provide baselines, for example).
 
-* attribute `@param-id` (required) valid to constraints for type 'NMTOKEN'
-* attribute `@class` (optional)
 * element `desc` (optional)
 * element `label` (optional)
 * element `value` (optional)
 * element `link` (zero or more)
+* attribute `@param-id` (required) valid to constraints for type 'NMTOKEN'
+* attribute `@class` (optional)
 
 ### `<alter>` element | Alteration 
 
 Specifies changes to be made to an included control or subcontrol when a profile is resolved
 
-Use `@targets` to indicate the classes of elements (typically `part` or `prop` elements) to erase or remove from a control, when a catalog is resolved.
+Use [@control-id](#control-id-attribute--control-identifier) or [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) to indicate the scope of alteration.
 
 It is an error for two `<alter>` elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion.
 
-* attribute [@control-id](#control-id-attribute--control-identifier) (optional) valid to constraints for type 'NCName'
-* attribute [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) (optional) valid to constraints for type 'NCName'
+At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this element to match multiple targets could provide for this.
+
 * element [&lt;remove>](#remove-element--removal) (zero or more)
 * element [&lt;add>](#add-element--addition) (zero or more)
+* attribute [@control-id](#control-id-attribute--control-identifier) (optional) valid to constraints for type 'NCName'
+* attribute [@subcontrol-id](#subcontrol-id-attribute--subcontrol-identifier) (optional) valid to constraints for type 'NCName'
 
 ### `<remove>` element | Removal 
 
@@ -202,7 +209,9 @@ Use [@class-ref](#class-ref-attribute--select-by-class), [@id-ref](#id-ref-attri
 
 To change an element, use `<remove>` to remove the element, then [&lt;add>](#add-element--addition) to add it back again with changes.
 
-This element is empty
+* attribute [@class-ref](#class-ref-attribute--select-by-class) (optional) valid to constraints for type 'NMTOKENS'
+* attribute [@id-ref](#id-ref-attribute--reference-by-id) (optional) valid to constraints for type 'NCName'
+* attribute [@item-name](#item-name-attribute--item-name) (optional) valid to constraints for type 'NCName'
 
 ### `@class-ref` attribute | Select by class 
 
@@ -225,18 +234,18 @@ To select the `title` element use the value "title" etc.
 
 Element contents to be added to a control or subcontrols, in resolution
 
-* attribute `@position` (required)
 * as needed:
   * element `title`
   * element `param`
   * element `prop`
   * element `part`
+* attribute `@position` (required)
 
 ### `<combine>` element | Combination rule 
 
 Whether and how to combine multiple (competing) versions of the same control
 
-This element is empty
+* attribute [@method](#method-attribute--control-combination-method) (required)
 
 ### `@method` attribute | Control combination method 
 
@@ -244,7 +253,7 @@ The method to be used when combining controls or subcontrols in resolving a prof
 
 Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control or a subcontrol). This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided; but this setting can be useful for defining what to do when it occurs.
 
-Three values are provided: `use-first`, [&lt;merge>](#merge-element--merge-controls) or `keep`. The latter two may produce invalid/broken results in some cases (where upstream profiles compete over control contents). In a profile with no collisions, the three values all have the same results.
+Three values are recognized: "use-first", "merge" or "keep". The latter two may produce invalid/broken results in some cases (where upstream profiles compete over control contents). In a profile with no collisions, the three values all have the same results.
 * Required on [&lt;combine>](#combine-element--combination-rule)
 
 ### `<as-is>` element | Structure as-is; retain source structure 
@@ -257,8 +266,10 @@ This element is empty
 
 Frame a structure wherein represented controls will be embedded in resolution
 
-* attribute `@id` (optional) valid to constraints for type 'ID'
-* attribute `@class` (optional)
+This element represents a custom arrangement or organization of controls in the resolution of a catalog. While [&lt;as-is>](#as-is-element--structure-as-is-retain-source-structure) provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.
+
+Unlike groups within catalogs, `group` elements inside `<custom>` contain references to controls to be included in the group (in resolution) - or more such groups.
+
 * element `title` (optional)
 * as needed:
   * element *group*, containing: 
@@ -269,3 +280,5 @@ Frame a structure wherein represented controls will be embedded in resolution
       * element [&lt;match>](#match-element--match-controls-and-subcontrols-by-identifier)
   * element [&lt;call>](#call-element--call-control-or-subcontrol)
   * element [&lt;match>](#match-element--match-controls-and-subcontrols-by-identifier)
+* attribute `@id` (optional) valid to constraints for type 'ID'
+* attribute `@class` (optional)

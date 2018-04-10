@@ -1,7 +1,5 @@
 
 
-# XML Schema _catalog.xsd
-
 ## Controls and their contents
 
 The foundations of OSCAL are in control objects, such as controls and subcontrols, and the structured information they represent or contain (loosely "objects", represented as valid XML elements). These contents will include both structured contents (using element types as described here) and (within those) relatively uncontrolled or free-form contents (described elsewhere as [prose](#prose)).
@@ -24,8 +22,6 @@ A structured information object representing a security control
 
 Controls may be grouped using [&lt;group>](#group-element--group), and controls may be partitioned using [&lt;part>](#part-element--part) or extended using [&lt;subcontrol>](#subcontrol-element--control-extension).
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
-* attribute [@class](#class-attribute--class) (optional)
 * element [&lt;title>](#title-element--title) (optional)
 * as needed:
   * element [&lt;param>](#param-element--parameter)
@@ -34,6 +30,8 @@ Controls may be grouped using [&lt;group>](#group-element--group), and controls 
   * element [&lt;part>](#part-element--part)
   * element [&lt;subcontrol>](#subcontrol-element--control-extension)
 * element [&lt;references>](#references-element--references) (optional)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@class](#class-attribute--class) (optional)
 
 ### `<subcontrol>` element | Control extension 
 
@@ -41,8 +39,6 @@ An associated or dependent control object; an enhancement to a control
 
 A nominal subcontrol or "control extension" permits catalogs to offer access to structured control objects within controls. Further levels down can be achieved using [&lt;part>](#part-element--part) (both controls and subcontrols may be partitioned), which may contain their own parts; however, knowing in advance which "controls" and "subcontrols" are especially significant is helpful.
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
-* attribute [@class](#class-attribute--class) (optional)
 * element [&lt;title>](#title-element--title) (optional)
 * as needed:
   * element [&lt;param>](#param-element--parameter)
@@ -50,6 +46,8 @@ A nominal subcontrol or "control extension" permits catalogs to offer access to 
   * element [&lt;prop>](#prop-element--property)
   * element [&lt;part>](#part-element--part)
 * element [&lt;references>](#references-element--references) (optional)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@class](#class-attribute--class) (optional)
 
 ### `<prop>` element | Property 
 
@@ -65,8 +63,8 @@ For singletons (that is, the only element among siblings with its [@class](#clas
 
 Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls and parts and extensions), for any purpose useful to an application or implementation of those controls. Typically and routinely, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
-* text content
+* text content, possibly mixed with 
+  * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 
 ### `<part>` element | Part 
 
@@ -88,6 +86,8 @@ Generally speaking, `<part>` elements will be of two kinds. Many parts are logic
   * element [&lt;ul>](#ul-element--unordered-list)
   * element [&lt;ol>](#ol-element--ordered-list)
   * element [&lt;pre>](#pre-element--preformatted-text)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@class](#class-attribute--class) (optional)
 
 ### `<link>` element | Link 
 
@@ -95,22 +95,14 @@ A line or paragraph with a hypertext link
 
 Works like an HTML anchor ([&lt;a>](#a-element--anchor)) except this is a line-oriented (block) element.
 
-* attribute [@rel](#rel-attribute--relation) (optional)
-* attribute [@href](#href-attribute--hypertext-reference) (optional)
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
+  * attribute [@rel](#rel-attribute--relation) (optional)
+  * attribute [@href](#href-attribute--hypertext-reference) (optional)
 
 ### `@rel` attribute | Relation 
 
 The stipulated relation of a link to its target or vice versa
-* Allowed on [&lt;link>](#link-element--link), `declare-link`
+* Allowed on 
 
 ### `@id` attribute | ID / identifier 
 
@@ -126,7 +118,7 @@ No mechanism is proposed to ensure that [@id](#id-attribute--id--identifier) val
 A link to a document or document fragment (actual, nominal or projected)
 
 Note in particular that [@href](#href-attribute--hypertext-reference) targets include elements (locations) in representations of documents that exist only by virtue of dynamic application, such as (for example) the results of profile resolution.
-* Allowed on [&lt;link>](#link-element--link), [&lt;std>](#std-element--standard), [&lt;citation>](#citation-element--citation), [&lt;a>](#a-element--anchor), `declarations`, `import`
+* Allowed on [&lt;std>](#std-element--standard), [&lt;citation>](#citation-element--citation), [&lt;a>](#a-element--anchor), `declarations`
 
 ### `@class` attribute | Class 
 
@@ -134,7 +126,7 @@ Nominal semantic binding(s) for any element (whitespace-separated list of name t
 
 Overloading this attribute with more than one value is permitted, but not recommended.
 * Required on `declare-prop`, `declare-part`, `declare-p`
-* Allowed on [&lt;section>](#section-element--section), [&lt;group>](#group-element--group), [&lt;control>](#control-element--control), [&lt;subcontrol>](#subcontrol-element--control-extension), [&lt;param>](#param-element--parameter), [&lt;prop>](#prop-element--property), [&lt;li>](#li-element--list-item), [&lt;code>](#code-element--code), [&lt;em>](#em-element--emphasis), [&lt;i>](#i-element--italics), [&lt;b>](#b-element--bold), [&lt;sub>](#sub-element--subscript), [&lt;sup>](#sup-element--superscript), [&lt;span>](#span-element--span), `custom`, `set-param`
+* Allowed on 
 
 ## Functional elements
 
@@ -144,11 +136,11 @@ Functional elements appear inside control content to provide "hooks" to OSCAL pr
 
 A parameter setting, to be propagated to points of insertion
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
-* attribute [@class](#class-attribute--class) (optional)
 * element [&lt;desc>](#desc-element--parameter-description) (mandatory)
 * element [&lt;label>](#label-element--parameter-label) (optional)
 * element `value` (optional)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@class](#class-attribute--class) (optional)
 
 ### `<label>` element | Parameter label 
 
@@ -160,28 +152,21 @@ Contains text
 
 Indicates and explains the purpose and use of a parameter
 
-* text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
+* text content
 
 ### `<insert>` element | Parameter insertion 
 
 A "call" (reference) to a parameter for dynamic content transclusion
 
-This element is empty
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@param-id](#param-id-attribute--parameter-id) (required) valid to constraints for type 'IDREF'
 
 ### `@param-id` attribute | Parameter ID 
 
 Applicable parameter
 
 Identifies the parameter element target ([&lt;param>](#param-element--parameter)) that governs content insertion at this location (when on an [&lt;insert>](#insert-element--parameter-insertion)), or to which a parameter setting applies (when on a `set-param`).
-* Required on [&lt;insert>](#insert-element--parameter-insertion), `set-param`
+* Required on [&lt;insert>](#insert-element--parameter-insertion)
 
 ### `<withdrawn>` element | Withdrawn 
 
@@ -209,8 +194,6 @@ A partition within a catalog or section (prose text not controls)
 
 Echoes HTML5 `<section>`. May contain controls ([&lt;control>](#control-element--control)) or groups of controls ([&lt;group>](#group-element--group)).
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
-* attribute [@class](#class-attribute--class) (optional)
 * element [&lt;title>](#title-element--title) (mandatory)
 * as needed:
   * element [&lt;p>](#p-element--paragraph)
@@ -219,6 +202,8 @@ Echoes HTML5 `<section>`. May contain controls ([&lt;control>](#control-element-
   * element [&lt;pre>](#pre-element--preformatted-text)
 * element `<section>` (zero or more)
 * element [&lt;references>](#references-element--references) (optional)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@class](#class-attribute--class) (optional)
 
 ### `<group>` element | Group 
 
@@ -228,8 +213,6 @@ In addition to controls or groups, groups may be titled and may have their own p
 
 Unlike sections ([&lt;section>](#section-element--section) elements), groups may not contain arbitrary prose (paragraphs and lists). They may, however, contain statements (stmt), which may be untyped (no [@class](#class-attribute--class)) and therefore unconstrained by declarations.
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
-* attribute [@class](#class-attribute--class) (optional)
 * element [&lt;title>](#title-element--title) (optional)
 * as needed:
   * element [&lt;param>](#param-element--parameter)
@@ -240,6 +223,8 @@ Unlike sections ([&lt;section>](#section-element--section) elements), groups may
   * element `<group>`
   * element [&lt;control>](#control-element--control)
 * element [&lt;references>](#references-element--references) (optional)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@class](#class-attribute--class) (optional)
 
 ### `<title>` element | Title 
 
@@ -258,7 +243,6 @@ A group of reference descriptions
 
 A reference, with one or more citations to standards, related documents, or other resources
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * as needed:
   * element [&lt;std>](#std-element--standard)
   * element [&lt;citation>](#citation-element--citation)
@@ -266,6 +250,7 @@ A reference, with one or more citations to standards, related documents, or othe
   * element [&lt;ul>](#ul-element--unordered-list)
   * element [&lt;ol>](#ol-element--ordered-list)
   * element [&lt;pre>](#pre-element--preformatted-text)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 
 ### `<std>` element | Standard 
 
@@ -273,17 +258,9 @@ Citation of a formal published standard
 
 Echoes the NISO JATS (and NISO STS) `<std>` element
 
-* attribute [@href](#href-attribute--hypertext-reference) (optional) valid to constraints for type 'anyURI'
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
+  * attribute [@href](#href-attribute--hypertext-reference) (optional) valid to constraints for type 'anyURI'
 
 ### `<citation>` element | Citation 
 
@@ -293,17 +270,9 @@ Echoes the NISO JATS (and NISO STS) `mixed-citation` element.
 
 For references to standards, [&lt;std>](#std-element--standard) may be preferred.
 
-* attribute [@href](#href-attribute--hypertext-reference) (optional) valid to constraints for type 'anyURI'
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
+  * attribute [@href](#href-attribute--hypertext-reference) (optional) valid to constraints for type 'anyURI'
 
 ## Prose
 
@@ -319,17 +288,9 @@ This element echoes HTML `<p>`. As in HTML, it is not limited to indicating comp
 
 * [@class](#class-attribute--class) and [@id](#id-attribute--id--identifier), optionally, as usual
 * as needed, mixed with text:
-  * element [&lt;withdrawn>](#withdrawn-element--withdrawn)
-  * element [&lt;insert>](#insert-element--parameter-insertion)
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
+* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+* attribute [@class](#class-attribute--class) (optional)
 
 ### `<pre>` element | Preformatted text 
 
@@ -337,17 +298,9 @@ Retains whitespace in display
 
 Echoes HTML `<pre>`.
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
+  * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
 
 ### `<ol>` element | Ordered List 
 
@@ -379,22 +332,12 @@ OSCAL uses a lightweight HTML-like approach to lists, in which list items are un
 
 Lists that are really (brief) subsections may be expressed as (nested, unclassed) [&lt;part>](#part-element--part) elements. Generally speaking, structured feature sets (in the form of parts with regular property sets), are more likely to be easily addressable than lists.
 
-* attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
-* attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
-  * element [&lt;withdrawn>](#withdrawn-element--withdrawn)
-  * element [&lt;insert>](#insert-element--parameter-insertion)
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
   * element [&lt;ol>](#ol-element--ordered-list)
   * element [&lt;ul>](#ul-element--unordered-list)
+  * attribute [@id](#id-attribute--id--identifier) (optional) valid to constraints for type 'ID'
+  * attribute [@class](#class-attribute--class) (optional)
 
 ### `<em>` element | Emphasis 
 
@@ -404,17 +347,9 @@ In display, this element can be expected to "toggle", i.e. provide for italics w
 
 Particular semantics (indicating types of emphasis for finer resolution in display or retrieval) may be provided via [@class](#class-attribute--class).
 
-* attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element `<em>`
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
+  * attribute [@class](#class-attribute--class) (optional)
 
 ### `<i>` element | Italics 
 
@@ -422,17 +357,9 @@ Typographical shift to italics
 
 An implementation may toggle, i.e., display contents using a roman face when the surrounding text is already italic.
 
-* attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element `<i>`
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
+  * attribute [@class](#class-attribute--class) (optional)
 
 ### `<b>` element | Bold 
 
@@ -444,17 +371,9 @@ As of yet, OSCAL does not support underlining directly (no `u` element or design
 
 In ordinary use, `<b>` and [&lt;i>](#i-element--italics) should perhaps be deprecated in favor of more "semantic" elements such as [&lt;em>](#em-element--emphasis), [&lt;code>](#code-element--code) or even `span>` especially with [@class](#class-attribute--class) attributes.
 
-* attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element `<b>`
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
   * element [&lt;a>](#a-element--anchor)
+  * attribute [@class](#class-attribute--class) (optional)
 
 ### `<a>` element | Anchor 
 
@@ -466,13 +385,13 @@ Anchors without [@href](#href-attribute--hypertext-reference) are not invalid to
 
 As in HTML, `<a>` appears inline (in mixed content), while [&lt;link>](#link-element--link) is a "paragraph-level" link (that appears next to paragraphs or components in a control).
 
-* attribute [@href](#href-attribute--hypertext-reference) (optional)
 * text content, possibly mixed with 
   * element [&lt;q>](#q-element--quoted-text)
   * element [&lt;code>](#code-element--code)
   * element *em*, containing: 
-    * attribute [@class](#class-attribute--class) (optional)
-    * text content
+    * text content, possibly mixed with 
+      * attribute [@class](#class-attribute--class) (optional)
+  * attribute [@href](#href-attribute--hypertext-reference) (optional)
 
 ### `<q>` element | Quoted text 
 
@@ -495,30 +414,22 @@ Inline code
 
 Strictly, this element should identify formal code or code fragments. Like anything else, it may be "enhanced" using its class.
 
-* attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element `<code>`
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element [&lt;span>](#span-element--span)
+  * attribute [@class](#class-attribute--class) (optional)
 
 ### `<sup>` element | Superscript 
 
 Superscripted text
 
-* attribute [@class](#class-attribute--class) (optional)
-* text content
+* text content, possibly mixed with 
+  * attribute [@class](#class-attribute--class) (optional)
 
 ### `<sub>` element | Subscript 
 
 Subscripted text
 
-* attribute [@class](#class-attribute--class) (optional)
-* text content
+* text content, possibly mixed with 
+  * attribute [@class](#class-attribute--class) (optional)
 
 ### `<span>` element | Span 
 
@@ -528,14 +439,6 @@ As in HTML, this is an escape hatch for arbitrary (inline) semantic (or other) t
 
 The OSCAL declarations model does not presently support validating properties of arbitrary spans. But it might. Please share your requirements.
 
-* attribute [@class](#class-attribute--class) (optional)
 * text content, possibly mixed with 
-  * element [&lt;q>](#q-element--quoted-text)
-  * element [&lt;code>](#code-element--code)
-  * element [&lt;em>](#em-element--emphasis)
-  * element [&lt;i>](#i-element--italics)
-  * element [&lt;b>](#b-element--bold)
-  * element [&lt;sub>](#sub-element--subscript)
-  * element [&lt;sup>](#sup-element--superscript)
-  * element `<span>`
   * element [&lt;a>](#a-element--anchor)
+  * attribute [@class](#class-attribute--class) (optional)

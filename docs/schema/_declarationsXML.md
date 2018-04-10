@@ -1,7 +1,5 @@
 
 
-# XML Schema _declarations.xsd
-
 ## Declarations elements
 
 By declaring constraints on information associated with controls such as their properties (`prop`), parts (`part`) and links (`link`), applications and operators can validate the composition and consistency of available controls. Over and above the "core validation" of OSCAL element naming (which is enforced by direct application of an XML schema), such validation can help to guarantee processability and interchange of OSCAL data by verifying that not only tags, but also values given in the data, conform to expressed constraints, which can be made specific to a catalog or catalog type.
@@ -16,9 +14,9 @@ For extra-schema validation of data given within controls or framework component
 
 The OSCAL validation model supports not only validation against a formal schema (describing elements, attributes, and their permitted contents, described generally and generically), but also against a set of declarations provided specifically for the catalog or catalog type within which controls appear. Constraints described in these declarations, and bound via assignments of `@class` (for information within controls or components) and [@context](#context-attribute--declaration-context) (indicating control, subcontrol, component or part wherein the given object may appear), enable automated checking for consistency of controls, subcontrols, components and their parts, specific to the types or kinds of control items that appear within a particular catalog or framework.
 
-* attribute `@href` (optional)
 * complexContent
 * extension base:oscal:decls
+* attribute `@href` (optional)
 
 ### `<declare-prop>` element | Property declaration 
 
@@ -32,8 +30,6 @@ Because the `@class` attribute is the basis of the OSCAL declarations model, it 
 
 On declarations including `<declare-prop>` and its siblings, however, both `@class` and [@context](#context-attribute--declaration-context) may be overloaded (multiple values). A helpful application will detect where there are conflicting declarations, meaning the same class designator is claimed by different elements in a given context.
 
-* attribute `@class` (required)
-* attribute [@context](#context-attribute--declaration-context) (required)
 * element [&lt;singleton>](#singleton-element--singleton-constraint) (optional)
 * element [&lt;required>](#required-element--requirement-constraint) (optional)
 * element [&lt;identifier>](#identifier-element--identifier-constraint) (optional)
@@ -41,6 +37,8 @@ On declarations including `<declare-prop>` and its siblings, however, both `@cla
   * element [&lt;regex>](#regex-element--regular-expression-constraint)
   * element [&lt;calc>](#calc-element--calculated-value-constraint)
   * element [&lt;value>](#value-element--value-constraint)
+* attribute `@class` (required)
+* attribute [@context](#context-attribute--declaration-context) (required)
 
 ### `<declare-p>` element | Paragraph declaration 
 
@@ -50,10 +48,10 @@ Elements contained in the declaration, as with all declarations, indicate constr
 
 Effectively, the difference between a "property"`prop` and "classified p"`p[@class]` is that properties may have only simple scalar values, not subject to dynamic processing or injection. So `p` elements directly inside a `control`, `subcontrol` or `part` may contain `insert` elements, for example (just as can `p` elements in running prose), whereas parameters cannot be injected into properties by definition (since they are required to be stable per control object).
 
-* attribute `@class` (required)
-* attribute [@context](#context-attribute--declaration-context) (required)
 * element [&lt;singleton>](#singleton-element--singleton-constraint) (optional)
 * element [&lt;required>](#required-element--requirement-constraint) (optional)
+* attribute `@class` (required)
+* attribute [@context](#context-attribute--declaration-context) (required)
 
 ### `<declare-part>` element | Part declaration 
 
@@ -61,24 +59,24 @@ Indicates constraints to be imposed on parts in context
 
 Parts are subject to singleton and requirement constraints, but not to constraints on values. However, note that parts may also serve as contexts for other control objects, including properties and parts.
 
-* attribute `@class` (required)
-* attribute [@context](#context-attribute--declaration-context) (required)
 * element [&lt;singleton>](#singleton-element--singleton-constraint) (optional)
 * element [&lt;required>](#required-element--requirement-constraint) (optional)
+* attribute `@class` (required)
+* attribute [@context](#context-attribute--declaration-context) (required)
 
 ### `<declare-link>` element | Link declaration 
 
 Indicates constraints to be imposed on links in context
 
-* attribute `@rel` (optional)
-* attribute [@context](#context-attribute--declaration-context) (required)
 * element [&lt;singleton>](#singleton-element--singleton-constraint) (optional)
 * element [&lt;required>](#required-element--requirement-constraint) (optional)
+* attribute `@rel` (optional)
+* attribute [@context](#context-attribute--declaration-context) (required)
 
 ### `@context` attribute | Declaration context 
 
 Identifies the type (marked class) of `control`, `subcontrol`, `group` or `part` which a declared control item (such as a `part`, `prop` or `link`) is expected to appear.
-* Required on [&lt;declare-prop>](#declare-prop-element--property-declaration), [&lt;declare-part>](#declare-part-element--part-declaration), [&lt;declare-p>](#declare-p-element--paragraph-declaration), [&lt;declare-link>](#declare-link-element--link-declaration)
+* Required on 
 
 ### `<singleton>` element | Singleton constraint 
 
@@ -138,10 +136,10 @@ Indicates a permissible value for a parameter or property, calculated dynamicall
 
 Similar to [&lt;value>](#value-element--value-constraint) except that its contents are expanded to produce the permitted value, instead of being given as a literal.
 
-* attribute `@` (optional)
 * text content, possibly mixed with 
   * element [&lt;inherit>](#inherit-element--inherited-value)
   * element [&lt;autonum>](#autonum-element--autonumbered-generated-value)
+  * attribute `@` (optional)
 
 ### `<autonum>` element | Autonumbered (generated) value 
 
@@ -161,7 +159,7 @@ Usually, `<inherit>` is used in conjunction with [&lt;autonum>](#autonum-element
 
 If a value must inherit from a property of a different class from the containing control object, `inherit/@from` can be used to indicate the applicable property (by its class). By default, `<inherit>` indicates a property value should match an ancestor's property with the same `@class` (the most usual case).
 
-This element is empty
+* attribute [@from](#from-attribute--alternative-property-class-from-which-to-inherit) (optional)
 
 ### `@from` attribute | Alternative property (class) from which to inherit 
 
