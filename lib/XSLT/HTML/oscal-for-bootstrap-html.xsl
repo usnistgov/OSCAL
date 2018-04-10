@@ -261,7 +261,7 @@
   </xsl:template>
   
   <xsl:template match="oscal:part[@class='objective']" mode="make-label">
-    <xsl:variable name="control-label" select="(ancestor::oscal:control | ancestor::oscal:subcontrol)[last()]/oscal:prop[@class='name']"/>
+    <xsl:variable name="control-label" select="translate((ancestor::oscal:control | ancestor::oscal:subcontrol)[last()]/oscal:prop[@class='name'],' ','')"/>
     <xsl:value-of select="substring-after(oscal:prop[@class='name'],$control-label)"/>
     <xsl:text> </xsl:text>
   </xsl:template>
