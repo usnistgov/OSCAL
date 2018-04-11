@@ -381,7 +381,7 @@
   </xsl:template>
   
   <xsl:template match="oscal:part[@class='assessment']" mode="title">
-    <h3>Potential Assessment Methods and Objects:</h3>
+    <h3>Potential Assessment:</h3>
   </xsl:template>
   
   <xsl:template match="oscal:part[@class='objective']//oscal:part[@class='objective']" priority="2" mode="title"/>
