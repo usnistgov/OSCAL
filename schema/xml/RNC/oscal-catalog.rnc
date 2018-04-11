@@ -29,9 +29,6 @@ controlGroup = element group {
 
 # Now for the contents of the OSCAL doc proper ...
 
-# note prose is not included in control-components, unlike item pattern ('component' element)
-Xcontrol-components = ( param | link |  prop | part )*
-
 control =
   element control {
     idAttr?, optionalClass, title?, ( param | link |  prop)*, (part | subcontrol)*, references?
