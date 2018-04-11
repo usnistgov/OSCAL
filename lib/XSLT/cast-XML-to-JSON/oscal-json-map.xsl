@@ -45,28 +45,24 @@
     <xsl:template match="catalog">
         <map key="catalog">
             <xsl:apply-templates select="title, declarations"/>
-            <xsl:call-template name="groups-then-controls"/>
+            <xsl:call-template name="controls-then-groups"/>
         </map>
     </xsl:template>
     
     <xsl:template match="group">
         <map>
             <xsl:apply-templates select="title"/>
-            <xsl:call-template name="groups-then-controls"/>
+            <xsl:call-template name="controls-then-groups"/>
         </map>
     </xsl:template>
     
-    <xsl:template name="groups-then-controls">
-        <xsl:for-each-group select="group" group-by="true()">
-            <array key="groups">
-                <xsl:apply-templates select="current-group()"/>
-            </array>
-        </xsl:for-each-group>
-        <xsl:for-each-group select="control" group-by="true()">
-            <array key="controls">
-                <xsl:apply-templates select="current-group()"/>
-            </array>
-        </xsl:for-each-group>
+    <xsl:template name="controls-then-groups">
+        <xsl:call-template name="elems-arrayed">
+            <xsl:with-param name="elems" select="control"/>
+        </xsl:call-template>
+        <xsl:call-template name="elems-arrayed">
+            <xsl:with-param name="elems" select="group"/>
+        </xsl:call-template>
     </xsl:template>
     
     <!-- Map full declarations in subsequent pass - -->
@@ -140,15 +136,15 @@
     
     <xsl:template mode="cast-key" match="." expand-text="true">{.}s</xsl:template>
         
-    <xsl:template mode="cast-key" match=".[.='match']">matches</xsl:template>
+    <xsl:template mode="cast-key" match=".[.='match']"        >matches</xsl:template>
     
-    <xsl:template mode="cast-key" match=".[.='set-param']">param-settings</xsl:template>
+    <xsl:template mode="cast-key" match=".[.='set-param']"    >param-settings</xsl:template>
     
-    <xsl:template mode="cast-key" match=".[.='alter']">alterations</xsl:template>
+    <xsl:template mode="cast-key" match=".[.='alter']"        >alterations</xsl:template>
     
-    <xsl:template mode="cast-key" match=".[.='remove']">removals</xsl:template>
+    <xsl:template mode="cast-key" match=".[.='remove']"       >removals</xsl:template>
     
-    <xsl:template mode="cast-key" match=".[.='add']">additions</xsl:template>
+    <xsl:template mode="cast-key" match=".[.='add']"          >additions</xsl:template>
     
     
     <xsl:template match="title">
@@ -278,11 +274,9 @@
             <xsl:call-template name="elems-arrayed">
                 <xsl:with-param name="elems" select="remove"/>
             </xsl:call-template>
-            <xsl:for-each-group select="add" group-by="true()">
-                <array key="additions">
-                    <xsl:apply-templates select="current-group()"/>
-                </array>
-            </xsl:for-each-group>
+            <xsl:call-template name="elems-arrayed">
+                <xsl:with-param name="elems" select="add"/>
+            </xsl:call-template>
             <!-- Extra step to silence oxygen warning msg -->
             <xsl:apply-templates select="./merge, ./modify"/>
         </map>
