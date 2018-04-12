@@ -3,6 +3,12 @@
 # Proprietary files not to be propagated
 vault
 
+# Working files
+wendell
+
+# Production outputs
+pub
+
 # oXygen XML Editor IDE file
 *.xpr
 
