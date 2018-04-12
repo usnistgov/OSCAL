@@ -27,7 +27,7 @@
     var headerHeights = {};
     var pageHeight = 0;
     var windowHeight = 0;
-    var originalTitle = document.title;
+    // var originalTitle = document.title;
 
     var recacheHeights = function() {
       headerHeights = {};
@@ -77,7 +77,7 @@
         $toc.find(tocListSelector).filter(":not(.active)").slideUp(150);
         $toc.find(tocListSelector).filter(".active").slideDown(150);
         // TODO remove classnames
-        document.title = $best.data("title") + " – " + originalTitle;
+        // document.title = $best.data("title") + " – " + originalTitle;
       }
     };
 

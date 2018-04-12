@@ -29,8 +29,19 @@ under the License.
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><%= current_page.data.title || "API Documentation" %></title>
-
+    <title>
+    <% if current_page.url == "/" %>
+    OSCAL
+    <% elsif current_page.url == "/concepts/" %>
+    OSCAL Concepts
+    <% elsif current_page.url == "/schema/" %>
+    OSCAL Schema
+    <% elsif current_page.url == "/examples/" %>
+    OSCAL Examples
+    <% elsif current_page.url == "/roadmap/" %>
+    OSCAL Roadmap
+    <% end %>
+    </title>
     <style>
       <%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
     </style>
@@ -101,15 +112,15 @@ under the License.
             </li>
           <% end %>
 
-          <li><a class="toc-h1 toc-link" href="/">OSCAL Overview</a></li>
+          <li><%= link_to "OSCAL Overview", "/OSCAL", class: 'toc-h1 toc-link' %></li>
           <% if current_page.url == "/" %><%= @saved_output %><% end %>
-          <li><a class="toc-h1 toc-link" href="/concepts">Concepts</a></li>
+          <li><%= link_to "Concepts", "/OSCAL/concepts", class: 'toc-h1 toc-link' %></li>
           <% if current_page.url == "/concepts/" %><%= @saved_output %><% end %>
-          <li><a class="toc-h1 toc-link" href="/schema">Schema Reference</a></li>
+          <li><%= link_to "Schema Reference", "/OSCAL/schema", class: 'toc-h1 toc-link' %></li>
           <% if current_page.url == "/schema/" %><%= @saved_output %><% end %>
-          <li><a class="toc-h1 toc-link" href="/examples">Examples</a></li>
+          <li><%= link_to "Examples", "/OSCAL/examples", class: 'toc-h1 toc-link' %></li>
           <% if current_page.url == "/examples/" %><%= @saved_output %><% end %>
-          <li><a class="toc-h1 toc-link" href="/roadmap">Roadmap</a></li>
+          <li><%= link_to "Roadmap", "/OSCAL/roadmap", class: 'toc-h1 toc-link' %></li>
           <% if current_page.url == "/roadmap/" %><%= @saved_output %><% end %>
          <% end %>
       </div>

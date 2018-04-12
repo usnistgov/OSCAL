@@ -37,15 +37,9 @@ If the `<include>` element is not specified, it is assumed to be present with co
 
 #### `<all>` element
 
-An `<all>` element includes all controls from the imported resource. An `<all>` element may contain the following:
+> The first example is importing a catalog with all controls included:
 
-* `@with-subcontrols` (optional), which specifies whether subcontrols should also be included (`yes` or `no`)
-
-This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [`<include>`](#code-lt-include-gt-code-element) element is given in an [`<import>`](#code-lt-import-gt-code-element) element, so ordinarily one might not see the `<all>` element unless it is for purposes of specifying `@with-subcontrols='yes'`.
-
-The first example is importing a catalog with all controls included:
-
-```
+```xml
 <import href="canonical-catalog-oscal.xml">
   <include>
     <all/>
@@ -53,21 +47,27 @@ The first example is importing a catalog with all controls included:
 </import>
 ```
 
-The second example shows this can also be done implicitly (with the same outcome):
+> The second example shows this can also be done implicitly (with the same outcome):
 
-```
+```xml
 <import href="canonical-catalog-oscal.xml"/>
 ```
 
-However, these two examples are not the same as the third example, since `with-subcontrols` is assumed to be "no" unless stated to be "yes".
+> However, these two examples are not the same as the third example, since `with-subcontrols` is assumed to be "no" unless stated to be "yes".
 
-```
+```xml
 <import href="canonical-catalog-oscal.xml">
   <include>
     <all with-subcontrols="yes"/>
   </include>
 </import>
 ```
+
+An `<all>` element includes all controls from the imported resource. An `<all>` element may contain the following:
+
+* `@with-subcontrols` (optional), which specifies whether subcontrols should also be included (`yes` or `no`)
+
+This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no [`<include>`](#code-lt-include-gt-code-element) element is given in an [`<import>`](#code-lt-import-gt-code-element) element, so ordinarily one might not see the `<all>` element unless it is for purposes of specifying `@with-subcontrols='yes'`.
 
 #### `<call>` element
 
