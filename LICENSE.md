@@ -1,3 +1,8 @@
+This project includes a mix of the following:
+
+- Open source work by the U.S. government that is in the public domain contributed under the National Institute of Standards and Technology License.
+- Open source work contributed by members of the public based on the CC0 1.0 Universal license.
+
 # This project is in the worldwide public domain
 
 This project includes a mix of the following:
