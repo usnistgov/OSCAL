@@ -6,6 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>
+    OSCAL Schema
     </title>
     <style>
       .highlight table td { padding: 5px; }
@@ -221,15 +222,117 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">       
 
-          <li><a class="toc-h1 toc-link" href="/OSCAL">OSCAL Overview</a></li>
+          <li><a href="/OSCAL" class="toc-h1 toc-link">OSCAL Overview</a></li>
           
-          <li><a class="toc-h1 toc-link" href="/OSCAL/concepts">Concepts</a></li>
+          <li><a href="/OSCAL/concepts" class="toc-h1 toc-link">Concepts</a></li>
           
-          <li><a class="toc-h1 toc-link" href="/OSCAL/schema">Schema Reference</a></li>
+          <li><a href="/OSCAL/schema" class="toc-h1 toc-link">Schema Reference</a></li>
+                      <li>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#catalog-xml-schema" class="toc-h2 toc-link" data-title="Catalog XML Schema">Catalog XML Schema</a>
+                    </li>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#code-lt-catalog-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;catalog&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-section-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;section&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-group-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;group&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-control-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;control&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-subcontrol-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;subcontrol&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-references-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;references&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-declarations-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;declarations&gt;</code> element</a>
+                          </li>
+                      </ul>
+                    <li>
+                      <a href="#catalog-json-schema" class="toc-h2 toc-link" data-title="Catalog JSON Schema">Catalog JSON Schema</a>
+                    </li>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#code-quot-catalog-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"catalog"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-sections-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"sections"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-groups-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"groups"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-controls-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"controls"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-subcontrols-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"subcontrols"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-references-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"references"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-declarations-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"declarations"</code> name</a>
+                          </li>
+                      </ul>
+                    <li>
+                      <a href="#profile-xml-schema" class="toc-h2 toc-link" data-title="Profile XML Schema">Profile XML Schema</a>
+                    </li>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#code-lt-profile-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;profile&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-import-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;import&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-include-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;include&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-exclude-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;exclude&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-merge-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;merge&gt;</code> element</a>
+                          </li>
+                          <li>
+                            <a href="#code-lt-modify-gt-code-element" class="toc-h3 toc-link" data-title="Schema Reference"><code>&lt;modify&gt;</code> element</a>
+                          </li>
+                      </ul>
+                    <li>
+                      <a href="#profile-json-schema" class="toc-h2 toc-link" data-title="Profile JSON Schema">Profile JSON Schema</a>
+                    </li>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#code-quot-profile-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"profile"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-invoke-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"invoke"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-include-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"include"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-exclude-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"exclude"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-paramsettings-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"paramSettings"</code> name</a>
+                          </li>
+                          <li>
+                            <a href="#code-quot-alterations-quot-code-name" class="toc-h3 toc-link" data-title="Schema Reference"><code>"alterations"</code> name</a>
+                          </li>
+                      </ul>
+                </ul>
+            </li>
+
+          <li><a href="/OSCAL/examples" class="toc-h1 toc-link">Examples</a></li>
           
-          <li><a class="toc-h1 toc-link" href="/OSCAL/examples">Examples</a></li>
-          
-          <li><a class="toc-h1 toc-link" href="/OSCAL/roadmap">Roadmap</a></li>
+          <li><a href="/OSCAL/roadmap" class="toc-h1 toc-link">Roadmap</a></li>
           
       </div>
       <ul class="toc-footer">
@@ -493,6 +596,29 @@
 
 <p>If the <code>&lt;include&gt;</code> element is not specified, it is assumed to be present with contents <a href="#code-lt-all-gt-code-element"><code>&lt;all&gt;</code></a>; i.e., all controls are included by default, unless the <code>&lt;include&gt;</code> element calls controls specifically.</p>
 <h4 id='code-lt-all-gt-code-element'><code>&lt;all&gt;</code> element</h4>
+<blockquote>
+<p>The first example is importing a catalog with all controls included:</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="nt">&lt;import</span> <span class="na">href=</span><span class="s">"canonical-catalog-oscal.xml"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;include&gt;</span>
+    <span class="nt">&lt;all/&gt;</span>
+  <span class="nt">&lt;/include&gt;</span>
+<span class="nt">&lt;/import&gt;</span>
+</code></pre>
+<blockquote>
+<p>The second example shows this can also be done implicitly (with the same outcome):</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="nt">&lt;import</span> <span class="na">href=</span><span class="s">"canonical-catalog-oscal.xml"</span><span class="nt">/&gt;</span>
+</code></pre>
+<blockquote>
+<p>However, these two examples are not the same as the third example, since <code>with-subcontrols</code> is assumed to be &quot;no&quot; unless stated to be &quot;yes&quot;.</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="nt">&lt;import</span> <span class="na">href=</span><span class="s">"canonical-catalog-oscal.xml"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;include&gt;</span>
+    <span class="nt">&lt;all</span> <span class="na">with-subcontrols=</span><span class="s">"yes"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/include&gt;</span>
+<span class="nt">&lt;/import&gt;</span>
+</code></pre>
 <p>An <code>&lt;all&gt;</code> element includes all controls from the imported resource. An <code>&lt;all&gt;</code> element may contain the following:</p>
 
 <ul>
@@ -500,24 +626,7 @@
 </ul>
 
 <p>This element provides an alternative to calling controls and subcontrols individually from a catalog. But this is also the default behavior when no <a href="#code-lt-include-gt-code-element"><code>&lt;include&gt;</code></a> element is given in an <a href="#code-lt-import-gt-code-element"><code>&lt;import&gt;</code></a> element, so ordinarily one might not see the <code>&lt;all&gt;</code> element unless it is for purposes of specifying <code>@with-subcontrols=&#39;yes&#39;</code>.</p>
-
-<p>The first example is importing a catalog with all controls included:</p>
-<pre class="highlight plaintext"><code>&lt;import href="canonical-catalog-oscal.xml"&gt;
-  &lt;include&gt;
-    &lt;all/&gt;
-  &lt;/include&gt;
-&lt;/import&gt;
-</code></pre>
-<p>The second example shows this can also be done implicitly (with the same outcome):</p>
-<pre class="highlight plaintext"><code>&lt;import href="canonical-catalog-oscal.xml"/&gt;
-</code></pre>
-<p>However, these two examples are not the same as the third example, since <code>with-subcontrols</code> is assumed to be &quot;no&quot; unless stated to be &quot;yes&quot;.</p>
-<pre class="highlight plaintext"><code>&lt;import href="canonical-catalog-oscal.xml"&gt;
-  &lt;include&gt;
-    &lt;all with-subcontrols="yes"/&gt;
-  &lt;/include&gt;
-&lt;/import&gt;
-</code></pre><h4 id='code-lt-call-gt-code-element'><code>&lt;call&gt;</code> element</h4>
+<h4 id='code-lt-call-gt-code-element'><code>&lt;call&gt;</code> element</h4>
 <p>A <code>&lt;call&gt;</code> element calls a control or subcontrol by its ID. A <code>&lt;call&gt;</code> element may contain the following:</p>
 
 <ul>

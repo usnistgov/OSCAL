@@ -6,6 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>
+    OSCAL Examples
     </title>
     <style>
       .highlight table td { padding: 5px; }
@@ -217,15 +218,31 @@
         </div>
       <div id="toc" class="toc-list-h1">       
 
-          <li><a class="toc-h1 toc-link" href="/OSCAL">OSCAL Overview</a></li>
+          <li><a href="/OSCAL" class="toc-h1 toc-link">OSCAL Overview</a></li>
           
-          <li><a class="toc-h1 toc-link" href="/OSCAL/concepts">Concepts</a></li>
+          <li><a href="/OSCAL/concepts" class="toc-h1 toc-link">Concepts</a></li>
           
-          <li><a class="toc-h1 toc-link" href="/OSCAL/schema">Schema Reference</a></li>
+          <li><a href="/OSCAL/schema" class="toc-h1 toc-link">Schema Reference</a></li>
           
-          <li><a class="toc-h1 toc-link" href="/OSCAL/examples">Examples</a></li>
-          
-          <li><a class="toc-h1 toc-link" href="/OSCAL/roadmap">Roadmap</a></li>
+          <li><a href="/OSCAL/examples" class="toc-h1 toc-link">Examples</a></li>
+                      <li>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#catalog-example-1" class="toc-h2 toc-link" data-title="Catalog Example 1">Catalog Example 1</a>
+                    </li>
+                    <li>
+                      <a href="#catalog-example-2" class="toc-h2 toc-link" data-title="Catalog Example 2">Catalog Example 2</a>
+                    </li>
+                    <li>
+                      <a href="#profile-example-1" class="toc-h2 toc-link" data-title="Profile Example 1">Profile Example 1</a>
+                    </li>
+                    <li>
+                      <a href="#profile-example-2" class="toc-h2 toc-link" data-title="Profile Example 2">Profile Example 2</a>
+                    </li>
+                </ul>
+            </li>
+
+          <li><a href="/OSCAL/roadmap" class="toc-h1 toc-link">Roadmap</a></li>
           
       </div>
       <ul class="toc-footer">
@@ -239,17 +256,7 @@
       <div class="content">
         <h1 id='examples'>Examples</h1>
 <p>Here are examples of OSCAL content, with narrative explaining certain aspects of each example.</p>
-<h2 id='catalog-example-1'>Catalog Example 1</h2>
-<p>This example shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the <code>&lt;control&gt;</code> element. Here&#39;s a high-level explanation of this example:</p>
-
-<ul>
-<li>The control class is &quot;SP800-53&quot;. TBD: explain what this means, or skip it?</li>
-<li>The control id is &quot;ac.1&quot;. This is not the &quot;AC-1&quot; identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?</li>
-<li>The <code>&lt;param&gt;</code> elements define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, &quot;ac-1_a&quot;, is for specifying &quot;organization-defined personnel or roles&quot;. The <code>&lt;param&gt;</code> elements are referenced by statements (explained below).</li>
-<li>The <code>&lt;prop&gt;</code> elements specify properties, in this case the control name (&quot;AC-1&quot;), priority (&quot;P1&quot;), and baseline impact (&quot;LOW&quot;, &quot;MODERATE&quot;, and &quot;HIGH&quot;).</li>
-<li>The <code>&lt;part&gt;</code> element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control&#39;s text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.</li>
-</ul>
-<pre class="highlight xml tab-xml"><code>      <span class="nt">&lt;control</span> <span class="na">class=</span><span class="s">"SP800-53"</span> <span class="na">id=</span><span class="s">"ac.1"</span><span class="nt">&gt;</span>
+<h2 id='catalog-example-1'>Catalog Example 1</h2><pre class="highlight xml tab-xml"><code>      <span class="nt">&lt;control</span> <span class="na">class=</span><span class="s">"SP800-53"</span> <span class="na">id=</span><span class="s">"ac.1"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;title&gt;</span>ACCESS CONTROL POLICY AND PROCEDURES<span class="nt">&lt;/title&gt;</span>
         <span class="nt">&lt;param</span> <span class="na">id=</span><span class="s">"ac-1_a"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;desc&gt;</span>organization-defined personnel or roles<span class="nt">&lt;/desc&gt;</span>
@@ -295,15 +302,21 @@
             <span class="nt">&lt;/part&gt;</span>
           <span class="nt">&lt;/part&gt;</span>
         <span class="nt">&lt;/part&gt;</span>
-</code></pre>
-<p>The second part of the example continues where the previous one ended. This example contains the supplemental guidance. Note that unlike the control text in the previous example, which had a highly structured OSCAL XML representation, the supplemental guidance is a simple paragraph. There is no need to structure it because it is meant as background information for a person to read and would not be part of automation.</p>
-<pre class="highlight xml tab-xml"><code>        <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"guidance"</span><span class="nt">&gt;</span>
+
+
+...
+
+
+        <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"guidance"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;p&gt;</span>This control addresses the establishment of policy and procedures for the effective implementation of selected security controls and control enhancements in the AC family. Policy and procedures reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Security program policies and procedures at the organization level may make the need for system-specific policies and procedures unnecessary. The policy can be included as part of the general information security policy for organizations or conversely, can be represented by multiple policies reflecting the complex nature of certain organizations. The procedures can be established for the security program in general and for particular information systems, if needed. The organizational risk management strategy is a key factor in establishing policy and procedures.<span class="nt">&lt;/p&gt;</span>
           <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"#pm.9"</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/part&gt;</span>
-</code></pre>
-<p>The final part of the example contains the references. These contain hyperlinks to additional sources of information for the control.</p>
-<pre class="highlight xml tab-xml"><code>        <span class="nt">&lt;references&gt;</span>
+
+
+...
+
+
+        <span class="nt">&lt;references&gt;</span>
           <span class="nt">&lt;ref&gt;</span>
             <span class="nt">&lt;citation</span> <span class="na">href=</span><span class="s">"http://csrc.nist.gov/publications/PubsSPs.html#800-12"</span><span class="nt">&gt;</span>NIST Special Publication 800-12<span class="nt">&lt;/citation&gt;</span>
           <span class="nt">&lt;/ref&gt;</span>
@@ -312,9 +325,21 @@
           <span class="nt">&lt;/ref&gt;</span>
         <span class="nt">&lt;/references&gt;</span>
       <span class="nt">&lt;/control&gt;</span>
-</code></pre><h2 id='catalog-example-2'>Catalog Example 2</h2>
-<p>This example shows a brief excerpt of ISO 27002 represented in OSCAL XML. This excerpt contains the definition of control 9.1.1, with text strings replaced with X&#39;s and truncated for brevity. Comparing this control definition to the OSCAL XML version of NIST SP 800-53 AC-1, you can see the same elements are used: control class and id, title, number, description, guidance, and information. Both controls are represented using the same structure.</p>
-<pre class="highlight xml tab-xml"><code>      <span class="nt">&lt;control</span> <span class="na">class=</span><span class="s">"iso-27002"</span> <span class="na">id=</span><span class="s">"c9-1-1"</span><span class="nt">&gt;</span>
+</code></pre>
+<p>This example shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the <code>&lt;control&gt;</code> element. Here&#39;s a high-level explanation of this example:</p>
+
+<ul>
+<li>The control class is &quot;SP800-53&quot;. TBD: explain what this means, or skip it?</li>
+<li>The control id is &quot;ac.1&quot;. This is not the &quot;AC-1&quot; identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?</li>
+<li>The <code>&lt;param&gt;</code> elements define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, &quot;ac-1_a&quot;, is for specifying &quot;organization-defined personnel or roles&quot;. The <code>&lt;param&gt;</code> elements are referenced by statements (explained below).</li>
+<li>The <code>&lt;prop&gt;</code> elements specify properties, in this case the control name (&quot;AC-1&quot;), priority (&quot;P1&quot;), and baseline impact (&quot;LOW&quot;, &quot;MODERATE&quot;, and &quot;HIGH&quot;).</li>
+<li>The <code>&lt;part&gt;</code> element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control&#39;s text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.</li>
+</ul>
+
+<p>The second part of the example continues where the previous one ended. This example contains the supplemental guidance. Note that unlike the control text in the previous example, which had a highly structured OSCAL XML representation, the supplemental guidance is a simple paragraph. There is no need to structure it because it is meant as background information for a person to read and would not be part of automation.</p>
+
+<p>The final part of the example contains the references. These contain hyperlinks to additional sources of information for the control.</p>
+<h2 id='catalog-example-2'>Catalog Example 2</h2><pre class="highlight xml tab-xml"><code>      <span class="nt">&lt;control</span> <span class="na">class=</span><span class="s">"iso-27002"</span> <span class="na">id=</span><span class="s">"c9-1-1"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;title&gt;</span>Access control policy<span class="nt">&lt;/title&gt;</span>
         <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"number"</span><span class="nt">&gt;</span>9.1.1<span class="nt">&lt;/prop&gt;</span>
         <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>
@@ -351,9 +376,9 @@
             <span class="nt">&lt;li&gt;</span>XXXX-XX-XXX: XXX.<span class="nt">&lt;/li&gt;</span>
           <span class="nt">&lt;/ol&gt;</span>
         <span class="nt">&lt;/part&gt;</span>
-</code></pre><h2 id='profile-example-1'>Profile Example 1</h2>
-<p>This example shows an excerpt of the profile corresponding to the NIST SP 800-53 low baseline. This excerpt omits additional <code>&lt;call control&gt;</code> lines but is otherwise complete. This profile has a title, imports the NIST SP 800-53 catalog, and specifies numerous controls from that catalog. This is a very simple example.</p>
-<pre class="highlight xml tab-xml"><code><span class="nt">&lt;profile</span> <span class="na">xmlns=</span><span class="s">"http://csrc.nist.gov/ns/oscal/1.0"</span> <span class="na">id=</span><span class="s">"uuid-82bbb8a3-492a-4308-9316-6db230697d00"</span><span class="nt">&gt;</span>
+</code></pre>
+<p>This example shows a brief excerpt of ISO 27002 represented in OSCAL XML. This excerpt contains the definition of control 9.1.1, with text strings replaced with X&#39;s and truncated for brevity. Comparing this control definition to the OSCAL XML version of NIST SP 800-53 AC-1, you can see the same elements are used: control class and id, title, number, description, guidance, and information. Both controls are represented using the same structure.</p>
+<h2 id='profile-example-1'>Profile Example 1</h2><pre class="highlight xml tab-xml"><code><span class="nt">&lt;profile</span> <span class="na">xmlns=</span><span class="s">"http://csrc.nist.gov/ns/oscal/1.0"</span> <span class="na">id=</span><span class="s">"uuid-82bbb8a3-492a-4308-9316-6db230697d00"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;title&gt;</span>SP800-53 LOW BASELINE IMPACT<span class="nt">&lt;/title&gt;</span>
    <span class="nt">&lt;import</span> <span class="na">href=</span><span class="s">"SP800-53-rev4-catalog.xml"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;include&gt;</span>
@@ -370,9 +395,9 @@
          <span class="nt">&lt;call</span> <span class="na">control-id=</span><span class="s">"ac.22"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;/include&gt;&lt;/import&gt;</span>
 <span class="nt">&lt;/profile&gt;</span>
-</code></pre><h2 id='profile-example-2'>Profile Example 2</h2>
-<p>This example shows an excerpt of a more complex profile than the previous example. This example is based on the FedRAMP low baseline, which can be found at https://www.fedramp.gov/resources/documents-2016/ under Key Cloud Service Provider (CSP) Documents. The first notable difference from the first example is that this profile references two other profiles: SP800-53-LOW-baseline and SP800-53-MODERATE-baseline. A single profile can reference zero or more catalogs and zero or more other profiles. (For brevity, the lists of controls referenced from each profile have been truncated.) The second notable difference is that this profile modifies the controls (via the <code>&lt;modify&gt;</code> element) by setting parameters for particular controls (using <code>&lt;set-param&gt;</code> elements) and altering the language of other controls (using the <code>&lt;alter&gt;</code> and <code>&lt;augment&gt;</code> elements). This causes the profile to be customized to meet the specific needs of the parties using it.</p>
-<pre class="highlight xml tab-xml"><code><span class="nt">&lt;profile</span> <span class="na">xmlns=</span><span class="s">"http://csrc.nist.gov/ns/oscal/1.0"</span> <span class="na">id=</span><span class="s">"uuid-50756f0d-c37b-494d-b77f-f82d25e9aa15"</span><span class="nt">&gt;</span>
+</code></pre>
+<p>This example shows an excerpt of the profile corresponding to the NIST SP 800-53 low baseline. This excerpt omits additional <code>&lt;call control&gt;</code> lines but is otherwise complete. This profile has a title, imports the NIST SP 800-53 catalog, and specifies numerous controls from that catalog. This is a very simple example.</p>
+<h2 id='profile-example-2'>Profile Example 2</h2><pre class="highlight xml tab-xml"><code><span class="nt">&lt;profile</span> <span class="na">xmlns=</span><span class="s">"http://csrc.nist.gov/ns/oscal/1.0"</span> <span class="na">id=</span><span class="s">"uuid-50756f0d-c37b-494d-b77f-f82d25e9aa15"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;title&gt;</span>FedRAMP LOW Baseline PROFILE (extracted and aligned, no edits)<span class="nt">&lt;/title&gt;</span>
    <span class="nt">&lt;import</span> <span class="na">href=</span><span class="s">"../SP800-53/SP800-53-LOW-baseline.xml"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;include&gt;</span>
@@ -413,6 +438,8 @@
       <span class="c">&lt;!-- - - - - - --&gt;</span>
    <span class="nt">&lt;/modify&gt;&lt;/profile&gt;</span>
 </code></pre>
+<p>This example shows an excerpt of a more complex profile than the previous example. This example is based on the FedRAMP low baseline, which can be found at https://www.fedramp.gov/resources/documents-2016/ under Key Cloud Service Provider (CSP) Documents. The first notable difference from the first example is that this profile references two other profiles: SP800-53-LOW-baseline and SP800-53-MODERATE-baseline. A single profile can reference zero or more catalogs and zero or more other profiles. (For brevity, the lists of controls referenced from each profile have been truncated.) The second notable difference is that this profile modifies the controls (via the <code>&lt;modify&gt;</code> element) by setting parameters for particular controls (using <code>&lt;set-param&gt;</code> elements) and altering the language of other controls (using the <code>&lt;alter&gt;</code> and <code>&lt;augment&gt;</code> elements). This causes the profile to be customized to meet the specific needs of the parties using it.</p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
