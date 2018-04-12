@@ -5,15 +5,16 @@ This project includes a mix of the following:
 
 # This project is in the worldwide public domain
 
-As a work of the United States government, this project is in the public domain within the United States under the National Institute of Standards and Technology License.
+This project includes a mix of the following:
 
-Additionally, we waive copyright and related rights in the work worldwide through the CC0 1.0 Universal public domain dedication.
+- Open source work by the United States government. This work is in the public domain within the United States under the [National Institute of Standards and Technology License](#national-institute-of-standards-and-technology-license). Additionally, we waive copyright and related rights for the work worldwide through the CC0 1.0 Universal public domain dedication.
+- Open source work produced by members of the public based on the [CC0 1.0 Universal license](#cc0-10-universal-license).
 
 # National Institute of Standards and Technology License
 
-Portions of this software was developed by employees of the National Institute
+Portions of this software were developed by employees of the National Institute
 of Standards and Technology (NIST), an agency of the Federal Government.
-Pursuant to title 17 United States Code Section 105, works of NIST employees are
+Pursuant to [title 17 section 105 of the United States Code](https://www.gpo.gov/fdsys/granule/USCODE-2010-title17/USCODE-2010-title17-chap1-sec105), works of NIST employees are
 not subject to copyright protection in the United States and are considered to
 be in the public domain. Permission to freely use, copy, modify, and distribute
 this software and its documentation without fee is hereby granted, provided that
@@ -32,7 +33,7 @@ CONTRACT, TORT, OR OTHERWISE, WHETHER OR NOT INJURY WAS SUSTAINED BY PERSONS OR
 PROPERTY OR OTHERWISE, AND WHETHER OR NOT LOSS WAS SUSTAINED FROM, OR AROSE OUT
 OF THE RESULTS OF, OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
 
-# CC0 1.0 Universal
+# CC0 1.0 Universal License
 
 Statement of Purpose
 
