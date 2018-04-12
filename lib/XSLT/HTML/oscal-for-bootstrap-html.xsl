@@ -125,6 +125,13 @@
     <div class="{local-name()}">
       <xsl:copy-of select="@id"/>
       <xsl:apply-templates/>
+      <xsl:if test="oscal:part[@class='assessment']">
+          <div class="part assessments">
+            <xsl:apply-templates mode="title" select="oscal:part[@class='assessment'][1]"/>
+            <xsl:apply-templates select="oscal:part[@class='assessment']" mode="in"/>
+          </div>
+      </xsl:if>
+        
       <xsl:apply-templates select="oscal:references" mode="include"/>
       <xsl:if test="not(oscal:references)">
         <h4>References: <i style="font-weight: normal">None</i></h4>
@@ -230,35 +237,56 @@
     </div>
   </xsl:template>
   
-  <xsl:template match="oscal:part[@class='item']">
-    <ol>
-      <xsl:attribute name="type">
-        <xsl:choose>
-          <xsl:when test="ancestor::oscal:part/@class='item'">1</xsl:when>
-          <xsl:otherwise>a</xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+  <xsl:template match="oscal:part[@class='objective']">
+    <div class="part {@class}">
+      <xsl:copy-of select="@id"/>
       <xsl:apply-templates/>
-    </ol>
+    </div>
+  </xsl:template>
+  
+  <!--<xsl:template match="oscal:part[@class='assessment']" mode="in">
+      <xsl:apply-templates/>
+  </xsl:template>-->
+  
+  <!-- tucked in -->
+  <xsl:template match="oscal:part[@class='objective']//oscal:part[@class='objective']"/>
+  
+  <xsl:template match="oscal:part[@class='assessment']"/>
+  
+  <xsl:template match="oscal:part[@class='item']"/>
+  
+  <xsl:template match="oscal:part" mode="tuck-in">
+      <xsl:apply-templates/>
+      <xsl:apply-templates select="following-sibling::oscal:part[1][@class=current()/@class]" mode="tuck-in"/>
   </xsl:template>
   
  
-  <xsl:template match="oscal:part[@class='item']/oscal:p">
+  <xsl:template priority="2" match="oscal:part[@class='item']/oscal:part[@class='item']/oscal:p |
+    oscal:part[@class='objective']/oscal:part[@class='objective']/oscal:p">
     <li>
-      <xsl:apply-templates mode="make-label" select="."/>
+      <xsl:apply-templates mode="make-label" select="parent::oscal:part[@class='item']"/>
       <xsl:apply-templates/>
+      <xsl:if test="following-sibling::oscal:part[1][@class=current()/../@class]">
+        <ol type="1">
+          <xsl:apply-templates select="following-sibling::oscal:part[1][@class=current()/../@class]" mode="tuck-in"/>
+        </ol>
+      </xsl:if>
     </li>
   </xsl:template>
   
-  <xsl:template match="oscal:part[@class='objective']">
-    <div class="part objectives">
-      <h3>Assessment Objective</h3>
-      <xsl:apply-templates select="oscal:p"/>
-      <ol>
-        <xsl:apply-templates select="oscal:part"/>
-      </ol>
-    </div>
+  <xsl:template match="oscal:part[@class='item']/oscal:p |
+    oscal:part[@class='objective']/oscal:p">
+    <p>
+      <xsl:apply-templates mode="make-label" select="parent::oscal:part[@class='item']"/>
+      <xsl:apply-templates/>
+      <xsl:if test="following-sibling::oscal:part[1][@class=current()/../@class]">
+        <ol type="a">
+          <xsl:apply-templates select="following-sibling::oscal:part[1][@class=current()/../@class]" mode="tuck-in"/>
+        </ol>
+      </xsl:if>
+    </p>
   </xsl:template>
+  
   
   <xsl:template match="oscal:part[@class='objective']" mode="make-label">
     <xsl:variable name="control-label" select="translate((ancestor::oscal:control | ancestor::oscal:subcontrol)[last()]/oscal:prop[@class='name'],' ','')"/>
@@ -268,23 +296,16 @@
   
   <xsl:template priority="2" match="oscal:part[@class='objective']/oscal:part[@class='objective']">
     <xsl:apply-templates select="oscal:p"/>
-    <xsl:if test="oscal:part">
+    <!--<xsl:if test="oscal:part">
       <ol>
         <xsl:apply-templates select="oscal:part"/>
       </ol>
-    </xsl:if>
+    </xsl:if>-->
   </xsl:template>
   
-  <xsl:template match="oscal:part[@class='objective']/oscal:part[@class='objective']/oscal:p">
-    <li>
-      <xsl:apply-templates mode="make-label" select=".."/>
-      <xsl:apply-templates/>
-    </li>
-  </xsl:template>
   
-  <xsl:template match="oscal:part[@class='assessment']">
+  <xsl:template match="oscal:part[@class='assessment']" mode="in">
     <div class="part assessment">
-      <xsl:apply-templates select="." mode="title"/>      
       <xsl:apply-templates select="oscal:prop"/>
       <ol>
         <xsl:apply-templates select="oscal:p"/>
@@ -381,7 +402,7 @@
   </xsl:template>
   
   <xsl:template match="oscal:part[@class='assessment']" mode="title">
-    <h3>Potential Assessment:</h3>
+    <h3>Potential Assessments, Methods and Objects:</h3>
   </xsl:template>
   
   <xsl:template match="oscal:part[@class='objective']//oscal:part[@class='objective']" priority="2" mode="title"/>
