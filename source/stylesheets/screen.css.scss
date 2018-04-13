@@ -553,9 +553,20 @@ html, body {
     padding-top: 2em;
     padding-bottom: 2em;
     padding: 2em $main-padding;
+
+    margin-bottom: 26px;
+  }
+
+  h1 + pre,
+  h2 + pre,
+  h3 + pre,
+  h4 + pre {
+    margin-top: -68.594px;
   }
 
   blockquote {
+    margin-top: -26px;
+
     &>p {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;

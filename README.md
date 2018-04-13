@@ -19,9 +19,9 @@ You can then launch your web browser and connect to `http://localhost:4567` to v
 If you prefer not to use Docker for local development, you can also install the required components directly onto your machine. You'll need the following:
 
 - Ruby 2.3.1
-  - On macOS, it's best to install using [Homebrew](https://www.ruby-lang.org/en/documentation/installation/#homebrew)
-  - On Linux, you can install via your distro's [package manager](https://www.ruby-lang.org/en/documentation/installation/#package-management-systems)
-  - On Windows, use [RubyInstaller](https://rubyinstaller.org/) or Windows Subsystem for Linux (WSL)
+  - On macOS, it's best to install using [Homebrew](https://www.ruby-lang.org/en/documentation/installation/#homebrew) or [Ruby Version Manager (rvm)](https://rvm.io/)
+  - On Linux, you can install via your distro's [package manager](https://www.ruby-lang.org/en/documentation/installation/#package-management-systems) or with [Ruby Version Manager (rvm)](https://rvm.io/)
+  - On Windows, use [RubyInstaller](https://rubyinstaller.org/) (with Devkit) or Windows Subsystem for Linux (WSL)
 - [Bundler](http://bundler.io/) - `gem install bundler`
 
 Install the dependencies:
@@ -46,6 +46,10 @@ Using Docker:
 Without Docker:
 
     $ bundle exec middleman build --clean
+
+You can also use the included `deploy.sh` script to automate both the build and publishing to the `nist-pages` branch.
+
+Refer to the pages.nist.gov publishing [instructions](https://github.com/usnistgov/pages-root/wiki) for more information on how to configure the GitHub repo.
 
 ## Updating Slate
 
