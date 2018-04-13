@@ -12,14 +12,6 @@ Here are examples of OSCAL content, with narrative explaining certain aspects of
 
 ## Catalog Example 1
 
-This example shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the `<control>` element. Here's a high-level explanation of this example:
-
-* The control class is "SP800-53". TBD: explain what this means, or skip it?
-* The control id is "ac.1". This is not the "AC-1" identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?
-* The `<param>` elements define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, "ac-1_a", is for specifying "organization-defined personnel or roles". The `<param>` elements are referenced by statements (explained below).
-* The `<prop>` elements specify properties, in this case the control name ("AC-1"), priority ("P1"), and baseline impact ("LOW", "MODERATE", and "HIGH").
-* The `<part>` element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control's text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.
-
 ```xml
       <control class="SP800-53" id="ac.1">
         <title>ACCESS CONTROL POLICY AND PROCEDURES</title>
@@ -67,20 +59,20 @@ This example shows the first portion of how the AC1 control from NIST SP 800-53 
             </part>
           </part>
         </part>
-```
 
-The second part of the example continues where the previous one ended. This example contains the supplemental guidance. Note that unlike the control text in the previous example, which had a highly structured OSCAL XML representation, the supplemental guidance is a simple paragraph. There is no need to structure it because it is meant as background information for a person to read and would not be part of automation.
 
-```xml
+...
+
+
         <part class="guidance">
           <p>This control addresses the establishment of policy and procedures for the effective implementation of selected security controls and control enhancements in the AC family. Policy and procedures reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Security program policies and procedures at the organization level may make the need for system-specific policies and procedures unnecessary. The policy can be included as part of the general information security policy for organizations or conversely, can be represented by multiple policies reflecting the complex nature of certain organizations. The procedures can be established for the security program in general and for particular information systems, if needed. The organizational risk management strategy is a key factor in establishing policy and procedures.</p>
           <link href="#pm.9"/>
         </part>
-```
 
-The final part of the example contains the references. These contain hyperlinks to additional sources of information for the control.
 
-```xml
+...
+
+
         <references>
           <ref>
             <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special Publication 800-12</citation>
@@ -92,9 +84,19 @@ The final part of the example contains the references. These contain hyperlinks 
       </control>
 ```
 
-## Catalog Example 2
+This example shows the first portion of how the AC1 control from NIST SP 800-53 can be rendered in OSCAL via XML within the `<control>` element. Here's a high-level explanation of this example:
 
-This example shows a brief excerpt of ISO 27002 represented in OSCAL XML. This excerpt contains the definition of control 9.1.1, with text strings replaced with X's and truncated for brevity. Comparing this control definition to the OSCAL XML version of NIST SP 800-53 AC-1, you can see the same elements are used: control class and id, title, number, description, guidance, and information. Both controls are represented using the same structure.
+* The control class is "SP800-53". TBD: explain what this means, or skip it?
+* The control id is "ac.1". This is not the "AC-1" identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?
+* The `<param>` elements define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, "ac-1_a", is for specifying "organization-defined personnel or roles". The `<param>` elements are referenced by statements (explained below).
+* The `<prop>` elements specify properties, in this case the control name ("AC-1"), priority ("P1"), and baseline impact ("LOW", "MODERATE", and "HIGH").
+* The `<part>` element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control's text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.
+
+The second part of the example continues where the previous one ended. This example contains the supplemental guidance. Note that unlike the control text in the previous example, which had a highly structured OSCAL XML representation, the supplemental guidance is a simple paragraph. There is no need to structure it because it is meant as background information for a person to read and would not be part of automation.
+
+The final part of the example contains the references. These contain hyperlinks to additional sources of information for the control.
+
+## Catalog Example 2
 
 ```xml
       <control class="iso-27002" id="c9-1-1">
@@ -136,9 +138,9 @@ This example shows a brief excerpt of ISO 27002 represented in OSCAL XML. This e
         </part>
 ```
 
-## Profile Example 1
+This example shows a brief excerpt of ISO 27002 represented in OSCAL XML. This excerpt contains the definition of control 9.1.1, with text strings replaced with X's and truncated for brevity. Comparing this control definition to the OSCAL XML version of NIST SP 800-53 AC-1, you can see the same elements are used: control class and id, title, number, description, guidance, and information. Both controls are represented using the same structure.
 
-This example shows an excerpt of the profile corresponding to the NIST SP 800-53 low baseline. This excerpt omits additional `<call control>` lines but is otherwise complete. This profile has a title, imports the NIST SP 800-53 catalog, and specifies numerous controls from that catalog. This is a very simple example.
+## Profile Example 1
 
 ```xml
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-82bbb8a3-492a-4308-9316-6db230697d00">
@@ -160,9 +162,9 @@ This example shows an excerpt of the profile corresponding to the NIST SP 800-53
 </profile>
 ```
 
-## Profile Example 2
+This example shows an excerpt of the profile corresponding to the NIST SP 800-53 low baseline. This excerpt omits additional `<call control>` lines but is otherwise complete. This profile has a title, imports the NIST SP 800-53 catalog, and specifies numerous controls from that catalog. This is a very simple example.
 
-This example shows an excerpt of a more complex profile than the previous example. This example is based on the FedRAMP low baseline, which can be found at https://www.fedramp.gov/resources/documents-2016/ under Key Cloud Service Provider (CSP) Documents. The first notable difference from the first example is that this profile references two other profiles: SP800-53-LOW-baseline and SP800-53-MODERATE-baseline. A single profile can reference zero or more catalogs and zero or more other profiles. (For brevity, the lists of controls referenced from each profile have been truncated.) The second notable difference is that this profile modifies the controls (via the `<modify>` element) by setting parameters for particular controls (using `<set-param>` elements) and altering the language of other controls (using the `<alter>` and `<augment>` elements). This causes the profile to be customized to meet the specific needs of the parties using it.
+## Profile Example 2
 
 ```xml
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-50756f0d-c37b-494d-b77f-f82d25e9aa15">
@@ -206,3 +208,5 @@ This example shows an excerpt of a more complex profile than the previous exampl
       <!-- - - - - - -->
    </modify></profile>
 ```
+
+This example shows an excerpt of a more complex profile than the previous example. This example is based on the FedRAMP low baseline, which can be found at https://www.fedramp.gov/resources/documents-2016/ under Key Cloud Service Provider (CSP) Documents. The first notable difference from the first example is that this profile references two other profiles: SP800-53-LOW-baseline and SP800-53-MODERATE-baseline. A single profile can reference zero or more catalogs and zero or more other profiles. (For brevity, the lists of controls referenced from each profile have been truncated.) The second notable difference is that this profile modifies the controls (via the `<modify>` element) by setting parameters for particular controls (using `<set-param>` elements) and altering the language of other controls (using the `<alter>` and `<augment>` elements). This causes the profile to be customized to meet the specific needs of the parties using it.
