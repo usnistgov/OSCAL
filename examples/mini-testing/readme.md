@@ -10,7 +10,7 @@ In scope:
 
 ### Processes we can expect to run on these samples (and therefore validate/confirm):
 
-* Run the production pipeline to resolve any profiles against their authorities (i.e. source catalogs or profiles) and render the results in HTML (for browser) - presently `/working/lib/XProc/profile-resolve-and-display.xpl` supports this (though its components can also be run independently)
+* Run the production pipeline to resolve any profiles against their authorities (i.e. source catalogs or profiles) and render the results in HTML (for browser) - presently `/lib/XProc/profile-resolve-and-display.xpl` supports this (though its components can also be run independently)
 * We can validate any profile or OSCAL catalog against OSCAL core or profile schemas (XSD) as appropriate
 * We can use the OSCAL profile Schematron (oscal-profile.sch) to detect when profiles elicit ambiguous sourcing (clashing IDs on controls or subcontrols) - a problem for downstream processing
 * We can check the design of our catalog using "OSCAL declarations" for the properties and parts of its controls and subcontrols

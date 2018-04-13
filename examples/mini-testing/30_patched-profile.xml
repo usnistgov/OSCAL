@@ -23,13 +23,13 @@
       
       <!-- Also patching by adding removing and adding statements and properties -->
       <alter control-id="ac.6">
-         <remove targets="statement guidance"/>
-         <augment>
+         <remove class-ref="statement guidance"/>
+         <add>
             <part class="guidance"><p>DON'T GO BACK IN THE WATER!</p></part>
             <prop class="stamp">SEAL OF APPROVAL (a)</prop>
             <part class="notes">
                <p>Local organizations may wish to sponsor special events including bake sales, lemonade stands, house-to-house cookie sales, lawn mowing services or other seasonal services etc.</p>
             </part>
-         </augment>
+         </add>
       </alter>
    </modify></profile>

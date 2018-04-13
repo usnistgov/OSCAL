@@ -8,4 +8,10 @@ vault
 
 */working/**/*.pdf
 
+# Working files
+wendell
+
+# Production outputs
+pub
+
 /OSCAL-dev.xpr

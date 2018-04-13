@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns="http://www.w3.org/2005/xpath-functions">
+   <string key="title">Patching profile example</string>
+   <array key="invocations">
+      <map>
+         <string key="href">mini-testing-catalog.json</string>
+         <map key="exclude">
+            <array key="calls">
+               <map>
+                  <string key="controlId">ra.9</string>
+               </map>
+            </array>
+         </map>
+         <array key="paramSettings">
+            <map>
+               <string key="paramId">ac-5_a</string>
+               <string key="desc">organization-defined duties of individuals</string>
+               <string key="value">butcher; baker; candlestick-maker</string>
+            </map>
+         </array>
+         <array key="alterations">
+            <map>
+               <string key="controlId">ac.6</string>
+               <map key="remove">
+                  <array key="targets">
+                     <string>statement guidance</string>
+                  </array>
+               </map>
+               <map key="augment">
+                  <array key="props">
+                     <map>
+                        <string key="class">stamp</string>
+                        <string key="value">SEAL OF APPROVAL (a)</string>
+                     </map>
+                  </array>
+                  <array key="parts">
+                     <map>
+                        <string key="class">guidance</string>
+                        <array key="prose">
+                           <string>&lt;p&gt;Do &lt;em&gt;NOT&lt;/em&gt; go back in the water.&lt;/p&gt;</string>
+                        </array>
+                     </map>
+                     <map>
+                        <string key="class">notes</string>
+                        <array key="prose">
+                           <string>&lt;p&gt;Local organizations may wish to sponsor special events including&lt;/p&gt;</string>
+                           <string>&lt;ul&gt; &lt;li&gt;bake sales,&lt;/li&gt;&lt;li&gt; lemonade stands,&lt;/li&gt;&lt;li&gt; house-to-house &lt;i&gt;cookie sales&lt;/i&gt;,&lt;/li&gt;&lt;li&gt; lawn mowing services&lt;/li&gt;&lt;li&gt; or other seasonal services etc.&lt;/li&gt;&lt;/ul&gt;</string>
+                        </array>
+                     </map>
+                     <map>
+                        <string key="class">special</string>
+                        <array key="prose">
+                           <string>&lt;p&gt;Code &lt;code&gt;green&lt;/code&gt;&lt;/p&gt;</string>
+                        </array>
+                     </map>
+                  </array>
+               </map>
+            </map>
+         </array>
+      </map>
+   </array>
+</map>

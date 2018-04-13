@@ -1,6 +1,6 @@
 default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
-include "oscal-core.rnc" { start = profile }
+include "oscal-catalog.rnc" { start = profile }
 
 profile = element profile { idAttr, title, import+, merge?, modify? }
 
@@ -14,10 +14,10 @@ combine = element combine {
 
 build = element as-is { empty }
 
-frame = element custom { title?, (profileGroup+ | (call | match)+ ) }
+frame = element custom { idAttr?, optionalClass,
+                         title?, (profileGroup | call | match)* }
 
-profileGroup = element group { title?, ( profileGroup+ | (call | match)+ ) }
-
+profileGroup = element group { title?, (profileGroup | call | match)* }
 
 modify =  element modify { (param_setting | alteration )* }
 
@@ -37,21 +37,21 @@ withContrlAttr =  attribute with-control { ('yes'|'no') }?
 # Schematron requirement: there exists in the catalog a control or subcontrol
 # by the given @id
 # when @with-subcontrols is used, it must be @control-id
-call = element call { (withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
-           attribute subcontrol-id { xsd:NCName } }
+call = element call { ( withSubContrlsAttr, attribute control-id { xsd:NCName } ) |
+                      ( withContrlAttr,     attribute subcontrol-id { xsd:NCName } ) }
 
 # 'match' calls (includes) controls and subcontrols indiscriminately: when matching (as a regex) the @id,
 # controls or subcontrols may be included.
 # nb this means it is possible to include subcontrols w/o their controls, for later combination w/ other includes
 match = element match { withSubContrlsAttr, withContrlAttr, attribute pattern { text },
-  attribute order-by { 'keep' | 'ascending' | 'descending' }? }
+  attribute order { 'keep' | 'ascending' | 'descending' }? }
 
 exclude = element exclude { ( match |
             element call {
               attribute control-id { xsd:NCName } |
               attribute subcontrol-id { xsd:NCName } }+ ) }
 
-param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc?, label?, value? }
+param_setting = element set-param { attribute param-id { xsd:NMTOKEN }, optionalClass, desc?, label?, value?, link* }
 
 alteration = element alter { (
   attribute control-id    { xsd:NCName } |
@@ -64,5 +64,5 @@ remove  = element remove  {
   attribute item-name { xsd:NCName }? }
 
 augment = element add {
-  attribute position { 'before' | 'after' | 'starting' |'ending'},
-  (title | param | prop | anyKindofPart)* }
+  attribute position { 'before' | 'after' | 'starting' |'ending'}?,
+  (title | param | prop | part)* }

@@ -1,0 +1,163 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+           elementFormDefault="qualified"
+           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+              schemaLocation="xml.xsd"/>
+   <xs:element name="declarations">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Declarations</b> For extra-schema validation of data given within controls or framework components</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="oscal:decls">
+               <xs:attribute name="href"/>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:complexType name="decls">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:element ref="oscal:declare-prop"/>
+         <xs:element ref="oscal:declare-part"/>
+         <xs:element ref="oscal:declare-p"/>
+         <xs:element ref="oscal:declare-link"/>
+      </xs:choice>
+   </xs:complexType>
+   <xs:element name="declare-prop">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Property declaration</b> Constraints applicable to a class or classes of <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code> elements (properties)
+          in context</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:singleton"/>
+            <xs:element minOccurs="0" ref="oscal:required"/>
+            <xs:element minOccurs="0" ref="oscal:identifier"/>
+            <xs:choice>
+               <xs:element ref="oscal:regex"/>
+               <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:calc"/>
+               <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:value"/>
+            </xs:choice>
+         </xs:sequence>
+         <xs:attribute name="class" use="required"/>
+         <xs:attributeGroup ref="oscal:contextAttr"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="declare-part">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Part declaration</b> Indicates constraints to be imposed on parts in context</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:singleton"/>
+            <xs:element minOccurs="0" ref="oscal:required"/>
+         </xs:sequence>
+         <xs:attribute name="class" use="required"/>
+         <xs:attributeGroup ref="oscal:contextAttr"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="declare-p">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Paragraph declaration</b> Indicates constraints to be enforced on paragraphs in context</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:singleton"/>
+            <xs:element minOccurs="0" ref="oscal:required"/>
+         </xs:sequence>
+         <xs:attribute name="class" use="required"/>
+         <xs:attributeGroup ref="oscal:contextAttr"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="declare-link">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Link declaration</b> Indicates constraints to be imposed on links in context</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:singleton"/>
+            <xs:element minOccurs="0" ref="oscal:required"/>
+         </xs:sequence>
+         <xs:attributeGroup ref="oscal:relAttr"/>
+         <xs:attributeGroup ref="oscal:contextAttr"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="identifier">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Identifier constraint</b> The declared component has a value unique within the document, among properties
+            (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code>) with the same class</xs:documentation>
+      </xs:annotation>
+      <xs:complexType/>
+   </xs:element>
+   <xs:element name="singleton">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Singleton constraint</b> The declared component may occur only once in its context</xs:documentation>
+      </xs:annotation>
+      <xs:complexType/>
+   </xs:element>
+   <xs:element name="required">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Requirement constraint</b> The declared component is required in its context</xs:documentation>
+      </xs:annotation>
+      <xs:complexType/>
+   </xs:element>
+   <xs:element name="regex" type="xs:string">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Regular expression constraint</b> Indicates that the value of a property (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">prop</code>) or parameter
+            (<code xmlns="http://csrc.nist.gov/ns/oscal/1.0">param</code>) must match the given regular expression</xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:element name="value" type="xs:string">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Value constraint</b> Indicates a permissible value for a parameter or property</xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:element name="calc">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Calculated value constraint</b> Indicates a permissible value for a parameter or property, calculated dynamically</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal:inherit"/>
+            <xs:element ref="oscal:autonum"/>
+         </xs:choice>
+         <xs:attribute ref="xml:space"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="inherit">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Inherited value</b> Indicates that a value or text within a value should be inherited from a property on a
+          containing control object</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:attribute name="from"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="autonum" type="xs:string">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Autonumbered (generated) value</b> Generates a formatted numeric value based on the position of a control object among its
+          siblings, the text contents providing a template for the numbering format (arabic,
+          alphabetic, roman, etc.)</xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:attributeGroup name="contextAttr">
+      <xs:attribute name="context" use="required"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="relAttr">
+      <xs:attribute name="rel"/>
+   </xs:attributeGroup>
+</xs:schema>

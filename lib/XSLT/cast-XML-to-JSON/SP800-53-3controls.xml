@@ -1,0 +1,2242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
+<!-- XML produced by running 'control-selector.xsl' on rev4 sp800-53 catalog.
+     It contains the three most-linked controls from the catalog (AC-4, SI-4, SI-13) -->
+<?xml-stylesheet type="text/xsl" href="SP800-53-oscal-browser-display.xsl"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+   <title>Three Controls from SP800-53</title>
+   <!--<declarations href="SP800-53-declarations.xml"/>-->
+   <control class="SP800-53" id="ac.3">
+         <title>ACCESS ENFORCEMENT</title>
+         <prop class="name">AC-3</prop>
+         <prop class="priority">P1</prop>
+         <prop class="baseline-impact">LOW</prop>
+         <prop class="baseline-impact">MODERATE</prop>
+         <prop class="baseline-impact">HIGH</prop>
+         <part class="statement">
+            <p class="description">The information system enforces approved authorizations for logical access to information           and system resources in accordance with applicable access control policies.</p>
+         </part>
+         <part class="guidance">
+            <p>Access control policies (e.g., identity-based policies, role-based policies, control matrices, cryptography) control access between active entities or subjects (i.e., users or processes acting on behalf of users) and passive entities or objects (e.g., devices, files, records, domains) in information systems. In addition to enforcing authorized access at the information system level and recognizing that information systems can host many applications and services in support of organizational missions and business operations, access enforcement mechanisms can also be employed at the application and service level to provide increased information security.</p>
+            <link href="#ac.2"/>
+            <link href="#ac.4"/>
+            <link href="#ac.5"/>
+            <link href="#ac.6"/>
+            <link href="#ac.16"/>
+            <link href="#ac.17"/>
+            <link href="#ac.18"/>
+            <link href="#ac.19"/>
+            <link href="#ac.20"/>
+            <link href="#ac.21"/>
+            <link href="#ac.22"/>
+            <link href="#au.9"/>
+            <link href="#cm.5"/>
+            <link href="#cm.6"/>
+            <link href="#cm.11"/>
+            <link href="#ma.3"/>
+            <link href="#ma.4"/>
+            <link href="#ma.5"/>
+            <link href="#pe.3"/>
+         </part>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.1.">
+            <title>RESTRICTED ACCESS TO PRIVILEGED FUNCTIONS</title>
+            <prop class="name">AC-3 (1)</prop>
+            <link href="#ac.6"/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into AC-6</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.2.">
+            <title>DUAL AUTHORIZATION</title>
+            <param id="ac-3_a">
+               <desc>organization-defined privileged commands and/or other organization-defined actions</desc>
+               <value>organization-defined privileged commands and/or other organization-defined actions</value>
+            </param>
+            <prop class="name">AC-3 (2)</prop>
+            <part class="statement">
+               <p class="description">The information system enforces dual authorization for <insert param-id="ac-3_a"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Dual authorization mechanisms require the approval of two authorized individuals in order to execute. Organizations do not require dual authorization mechanisms when immediate responses are necessary to ensure public and environmental safety. Dual authorization may also be known as two-person control.</p>
+               <link href="#cp.9"/>
+               <link href="#mp.6"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:</p>
+               <part class="objective" id="s_obj_ac-3.2.1.">
+                  <prop class="name">AC-3(2)[1]</prop>
+                  <p class="decision">the organization defines privileged commands and/or other actions for which dual authorization is to be enforced; and</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.2.2.">
+                  <prop class="name">AC-3(2)[2]</prop>
+                  <p class="decision">the information system enforces dual authorization for organization-defined privileged commands and/or other organization-defined actions.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">procedures addressing access enforcement and dual authorization</p>
+               <p class="object">security plan</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of privileged commands requiring dual authorization</p>
+               <p class="object">list of actions requiring dual authorization</p>
+               <p class="object">list of approved authorizations (user privileges)</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Dual authorization mechanisms implementing access control policy</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.3.">
+            <title>MANDATORY ACCESS CONTROL</title>
+            <param id="ac-3_b">
+               <desc>organization-defined mandatory access control policy</desc>
+               <value>organization-defined mandatory access control policy</value>
+            </param>
+            <param id="ac-3_c">
+               <desc>organization-defined subjects</desc>
+               <value>organization-defined subjects</value>
+            </param>
+            <param id="ac-3_d">
+               <desc>organization-defined privileges (i.e., they are trusted subjects)</desc>
+               <value>organization-defined privileges (i.e., they are trusted subjects)</value>
+            </param>
+            <prop class="name">AC-3 (3)</prop>
+            <part class="statement">
+               <p class="description">The information system enforces <insert param-id="ac-3_b"/> over all subjects and objects where the policy:</p>
+               <part class="item" id="s_smm_ac-3.3.a.">
+                  <prop class="name">AC-3 (3)(a)</prop>
+                  <p class="description">Is uniformly enforced across all subjects and objects within the boundary of the information system;</p>
+               </part>
+               <part class="item" id="s_smm_ac-3.3.b.">
+                  <prop class="name">AC-3 (3)(b)</prop>
+                  <p class="description">Specifies that a subject that has been granted access to information is constrained from doing any of the following;</p>
+                  <part class="item" id="s_sms_ac-3.3.b.1.">
+                     <prop class="name">AC-3 (3)(b)(1)</prop>
+                     <p class="description">Passing the information to unauthorized subjects or objects;</p>
+                  </part>
+                  <part class="item" id="s_sms_ac-3.3.b.2.">
+                     <prop class="name">AC-3 (3)(b)(2)</prop>
+                     <p class="description">Granting its privileges to other subjects;</p>
+                  </part>
+                  <part class="item" id="s_sms_ac-3.3.b.3.">
+                     <prop class="name">AC-3 (3)(b)(3)</prop>
+                     <p class="description">Changing one or more security attributes on subjects, objects, the information system, or information system components;</p>
+                  </part>
+                  <part class="item" id="s_sms_ac-3.3.b.4.">
+                     <prop class="name">AC-3 (3)(b)(4)</prop>
+                     <p class="description">Choosing the security attributes and attribute values to be associated with newly created or modified objects; or</p>
+                  </part>
+                  <part class="item" id="s_sms_ac-3.3.b.5.">
+                     <prop class="name">AC-3 (3)(b)(5)</prop>
+                     <p class="description">Changing the rules governing access control; and</p>
+                  </part>
+               </part>
+               <part class="item" id="s_smm_ac-3.3.c.">
+                  <prop class="name">AC-3 (3)(c)</prop>
+                  <p class="description">Specifies that <insert param-id="ac-3_c"/> may explicitly be granted <insert param-id="ac-3_d"/> such that they are not limited by some or all of the above constraints.</p>
+               </part>
+            </part>
+            <part class="guidance">
+               <p>Mandatory access control as defined in this control enhancement is synonymous with nondiscretionary access control, and is not constrained only to certain historical uses (e.g., implementations using the Bell-LaPadula Model). The above class of mandatory access control policies constrains what actions subjects can take with information obtained from data objects for which they have already been granted access, thus preventing the subjects from passing the information to unauthorized subjects and objects. This class of mandatory access control policies also constrains what actions subjects can take with respect to the propagation of access control privileges; that is, a subject with a privilege cannot pass that privilege to other subjects. The policy is uniformly enforced over all subjects and objects to which the information system has control. Otherwise, the access control policy can be circumvented. This enforcement typically is provided via an implementation that meets the reference monitor concept (see AC-25). The policy is bounded by the information system boundary (i.e., once the information is passed outside of the control of the system, additional means may be required to ensure that the constraints on the information remain in effect). The trusted subjects described above are granted privileges consistent with the concept of least privilege (see AC-6). Trusted subjects are only given the minimum privileges relative to the above policy necessary for satisfying organizational mission/business needs. The control is most applicable when there is some policy mandate (e.g., law, Executive Order, directive, or regulation) that establishes a policy regarding access to sensitive/classified information and some users of the information system are not authorized access to all sensitive/classified information resident in the information system. This control can operate in conjunction with AC-3 (4). A subject that is constrained in its operation by policies governed by this control is still able to operate under the less rigorous constraints of AC-3 (4), but policies governed by this control take precedence over the less rigorous constraints of AC-3 (4). For example, while a mandatory access control policy imposes a constraint preventing a subject from passing information to another subject operating at a different sensitivity label, AC-3 (4) permits the subject to pass the information to any subject with the same sensitivity label as the subject.</p>
+               <link href="#ac.25"/>
+               <link href="#sc.11"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:</p>
+               <part class="objective" id="s_obj_ac-3.3.1.">
+                  <prop class="name">AC-3(3)[1]</prop>
+                  <p class="decision">the organization defines mandatory access control policies to be enforced over all subjects and objects;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.3.2.">
+                  <prop class="name">AC-3(3)[2]</prop>
+                  <p class="decision">the organization defines subjects over which organization-defined mandatory access control policies are to be enforced;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.3.3.">
+                  <prop class="name">AC-3(3)[3]</prop>
+                  <p class="decision">the organization defines objects over which organization-defined mandatory access control policies are to be enforced;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.3.4.">
+                  <prop class="name">AC-3(3)[4]</prop>
+                  <p class="decision">the organization defines subjects that may explicitly be granted privileges such that they are not limited by the constraints specified elsewhere within this control;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.3.5.">
+                  <prop class="name">AC-3(3)[5]</prop>
+                  <p class="decision">the organization defines privileges that may be granted to organization-defined subjects;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.3.6.">
+                  <prop class="name">AC-3(3)[6]</prop>
+                  <p class="decision">the information system enforces organization-defined mandatory access control policies over all subjects and objects where the policy specifies that:</p>
+                  <part class="objective" id="s_obj_ac-3.3.6.a.">
+                     <prop class="name">AC-3(3)[6](a)</prop>
+                     <p class="decision">the policy is uniformly enforced across all subjects and objects within the boundary of the information system;</p>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.3.6.b.">
+                     <prop class="name">AC-3(3)[6](b)</prop>
+                     <p class="decision">a subject that has been granted access to information is constrained from doing any of the following:</p>
+                     <part class="objective" id="s_obj_ac-3.3.6.b.1.">
+                        <prop class="name">AC-3(3)[6](b)(1)</prop>
+                        <p class="decision">passing the information to unauthorized subjects or objects;</p>
+                     </part>
+                     <part class="objective" id="s_obj_ac-3.3.6.b.2.">
+                        <prop class="name">AC-3(3)[6](b)(2)</prop>
+                        <p class="decision">granting its privileges to other subjects;</p>
+                     </part>
+                     <part class="objective" id="s_obj_ac-3.3.6.b.3.">
+                        <prop class="name">AC-3(3)[6](b)(3)</prop>
+                        <p class="decision">changing one or more security attributes on:</p>
+                        <part class="objective" id="s_obj_ac-3.3.6.b.3.a.">
+                           <prop class="name">AC-3(3)[6](b)(3)[a]</prop>
+                           <p class="decision">subjects;</p>
+                        </part>
+                        <part class="objective" id="s_obj_ac-3.3.6.b.3.b.">
+                           <prop class="name">AC-3(3)[6](b)(3)[b]</prop>
+                           <p class="decision">objects;</p>
+                        </part>
+                        <part class="objective" id="s_obj_ac-3.3.6.b.3.c.">
+                           <prop class="name">AC-3(3)[6](b)(3)[c]</prop>
+                           <p class="decision">the information system; or</p>
+                        </part>
+                        <part class="objective" id="s_obj_ac-3.3.6.b.3.d.">
+                           <prop class="name">AC-3(3)[6](b)(3)[d]</prop>
+                           <p class="decision">system components;</p>
+                        </part>
+                     </part>
+                     <part class="objective" id="s_obj_ac-3.3.6.b.4.">
+                        <prop class="name">AC-3(3)[6](b)(4)</prop>
+                        <p class="decision">choosing the security attributes and attribute values to be associated with newly created or modified objects; or</p>
+                     </part>
+                     <part class="objective" id="s_obj_ac-3.3.6.b.5.">
+                        <prop class="name">AC-3(3)[6](b)(5)</prop>
+                        <p class="decision">changing the rules governing access control; and</p>
+                     </part>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.3.6.c.">
+                     <prop class="name">AC-3(3)[6](c)</prop>
+                     <p class="decision">organization-defined subjects may explicitly be granted organization-defined privileges such that they are not limited by some or all of the above constraints.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">mandatory access control policies</p>
+               <p class="object">procedures addressing access enforcement</p>
+               <p class="object">security plan</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of subjects and objects (i.e., users and resources) requiring enforcement of mandatory access control policies</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Automated mechanisms implementing mandatory access control</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.4.">
+            <title>DISCRETIONARY ACCESS CONTROL</title>
+            <param id="ac-3_e">
+               <desc>organization-defined discretionary access control policy</desc>
+               <value>organization-defined discretionary access control policy</value>
+            </param>
+            <prop class="name">AC-3 (4)</prop>
+            <part class="statement">
+               <p class="description">The information system enforces <insert param-id="ac-3_e"/> over defined subjects and objects where the policy specifies that a subject that has been granted access to information can do one or more of the following:</p>
+               <part class="item" id="s_smm_ac-3.4.a.">
+                  <prop class="name">AC-3 (4)(a)</prop>
+                  <p class="description">Pass the  information to any other subjects or objects;</p>
+               </part>
+               <part class="item" id="s_smm_ac-3.4.b.">
+                  <prop class="name">AC-3 (4)(b)</prop>
+                  <p class="description">Grant its privileges to other subjects;</p>
+               </part>
+               <part class="item" id="s_smm_ac-3.4.c.">
+                  <prop class="name">AC-3 (4)(c)</prop>
+                  <p class="description">Change security attributes on subjects, objects, the information system, or the information system�s components;</p>
+               </part>
+               <part class="item" id="s_smm_ac-3.4.d.">
+                  <prop class="name">AC-3 (4)(d)</prop>
+                  <p class="description">Choose the security attributes to be associated with newly created or revised objects; or</p>
+               </part>
+               <part class="item" id="s_smm_ac-3.4.e.">
+                  <prop class="name">AC-3 (4)(e)</prop>
+                  <p class="description">Change the rules governing access control.</p>
+               </part>
+            </part>
+            <part class="guidance">
+               <p>When discretionary access control policies are implemented, subjects are not constrained with regard to what actions they can take with information for which they have already been granted access. Thus, subjects that have been granted access to information are not prevented from passing (i.e., the subjects have the discretion to pass) the information to other subjects or objects. This control enhancement can operate in conjunction with AC-3 (3). A subject that is constrained in its operation by policies governed by AC-3 (3) is still able to operate under the less rigorous constraints of this control enhancement. Thus, while AC-3 (3) imposes constraints preventing a subject from passing information to another subject operating at a different sensitivity level, AC-3 (4) permits the subject to pass the information to any subject at the same sensitivity level. The policy is bounded by the information system boundary. Once the information is passed outside of the control of the information system, additional means may be required to ensure that the constraints remain in effect. While the older, more traditional definitions of discretionary access control require identity-based access control, that limitation is not required for this use of discretionary access control.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:</p>
+               <part class="objective" id="s_obj_ac-3.4.1.">
+                  <prop class="name">AC-3(4)[1]</prop>
+                  <p class="decision">the organization defines discretionary access control policies to be enforced over defined subjects and objects;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.4.2.">
+                  <prop class="name">AC-3(4)[2]</prop>
+                  <p class="decision">the information system enforces organization-defined discretionary access control policies over defined subjects and objects where the policy specifies that a subject has been granted access to information and can do one or more of the following:</p>
+                  <part class="objective" id="s_obj_ac-3.4.2.a.">
+                     <prop class="name">AC-3(4)[2](a)</prop>
+                     <p class="decision">pass the information to any other subjects or objects;</p>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.4.2.b.">
+                     <prop class="name">AC-3(4)[2](b)</prop>
+                     <p class="decision">grant its privileges to other subjects;</p>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.4.2.c.">
+                     <prop class="name">AC-3(4)[2](c)</prop>
+                     <p class="decision">change security attributes on:</p>
+                     <part class="objective" id="s_obj_ac-3.4.2.c.a.">
+                        <prop class="name">AC-3(4)[2](c)[a]</prop>
+                        <p class="decision">subjects,</p>
+                     </part>
+                     <part class="objective" id="s_obj_ac-3.4.2.c.b.">
+                        <prop class="name">AC-3(4)[2](c)[b]</prop>
+                        <p class="decision">objects,</p>
+                     </part>
+                     <part class="objective" id="s_obj_ac-3.4.2.c.c.">
+                        <prop class="name">AC-3(4)[2](c)[c]</prop>
+                        <p class="decision">the information system, or</p>
+                     </part>
+                     <part class="objective" id="s_obj_ac-3.4.2.c.d.">
+                        <prop class="name">AC-3(4)[2](c)[d]</prop>
+                        <p class="decision">the information system’s components;</p>
+                     </part>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.4.2.d.">
+                     <prop class="name">AC-3(4)[2](d)</prop>
+                     <p class="decision">choose the security attributes to be associated with newly created or revised objects; or</p>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.4.2.e.">
+                     <prop class="name">AC-3(4)[2](e)</prop>
+                     <p class="decision">change the rules governing access control.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">discretionary access control policies</p>
+               <p class="object">procedures addressing access enforcement</p>
+               <p class="object">security plan</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of subjects and objects (i.e., users and resources) requiring enforcement of discretionary access control policies</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Automated mechanisms implementing discretionary access control policy</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.5.">
+            <title>SECURITY-RELEVANT INFORMATION</title>
+            <param id="ac-3_f">
+               <desc>organization-defined security-relevant information</desc>
+               <value>organization-defined security-relevant information</value>
+            </param>
+            <prop class="name">AC-3 (5)</prop>
+            <part class="statement">
+               <p class="description">The information system prevents access to <insert param-id="ac-3_f"/> except during secure, non-operable system states.</p>
+            </part>
+            <part class="guidance">
+               <p>Security-relevant information is any information within information systems that can potentially impact the operation of security functions or the provision of security services in a manner that could result in failure to enforce system security policies or maintain the isolation of code and data. Security-relevant information includes, for example, filtering rules for routers/firewalls, cryptographic key management information, configuration parameters for security services, and access control lists. Secure, non-operable system states include the times in which information systems are not performing mission/business-related processing (e.g., the system is off-line for maintenance, troubleshooting, boot-up, shut down).</p>
+               <link href="#cm.3"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:</p>
+               <part class="objective" id="s_obj_ac-3.5.1.">
+                  <prop class="name">AC-3(5)[1]</prop>
+                  <p class="decision">the organization defines security-relevant information to which the information system prevents access except during secure, non-operable system states; and</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.5.2.">
+                  <prop class="name">AC-3(5)[2]</prop>
+                  <p class="decision">the information system prevents access to organization-defined security-relevant information except during secure, non-operable system states.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">procedures addressing access enforcement</p>
+               <p class="object">security plan</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Automated mechanisms preventing access to security-relevant information within the information system</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.6.">
+            <title>PROTECTION OF USER AND SYSTEM INFORMATION</title>
+            <prop class="name">AC-3 (6)</prop>
+            <link href="#mp.4"/>
+            <link href="#sc.28"/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into MP-4 and SC-28</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.7.">
+            <title>ROLE-BASED ACCESS CONTROL</title>
+            <param id="ac-3_g">
+               <desc>organization-defined roles and users authorized to assume such roles</desc>
+               <value>organization-defined roles and users authorized to assume such roles</value>
+            </param>
+            <prop class="name">AC-3 (7)</prop>
+            <part class="statement">
+               <p class="description">The information system enforces a role-based access control policy over defined subjects and objects and controls access based upon <insert param-id="ac-3_g"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Role-based access control (RBAC) is an access control policy that restricts information system access to authorized users. Organizations can create specific roles based on job functions and the authorizations (i.e., privileges) to perform needed operations on organizational information systems associated with the organization-defined roles. When users are assigned to the organizational roles, they inherit the authorizations or privileges defined for those roles. RBAC simplifies privilege administration for organizations because privileges are not assigned directly to every user (which can be a significant number of individuals for mid- to large-size organizations) but are instead acquired through role assignments. RBAC can be implemented either as a mandatory or discretionary form of access control. For organizations implementing RBAC with mandatory access controls, the requirements in AC-3 (3) define the scope of the subjects and objects covered by the policy.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if: </p>
+               <part class="objective" id="s_obj_ac-3.7.1.">
+                  <prop class="name">AC-3(7)[1]</prop>
+                  <p class="decision">the organization defines roles to control information system access;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.7.2.">
+                  <prop class="name">AC-3(7)[2]</prop>
+                  <p class="decision">the organization defines users authorized to assume the organization-defined roles;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.7.3.">
+                  <prop class="name">AC-3(7)[3]</prop>
+                  <p class="decision">the information system controls access based on organization-defined roles and users authorized to assume such roles;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.7.4.">
+                  <prop class="name">AC-3(7)[4]</prop>
+                  <p class="decision">the information system enforces a role-based access control policy over defined:</p>
+                  <part class="objective" id="s_obj_ac-3.7.4.a.">
+                     <prop class="name">AC-3(7)[4][a]</prop>
+                     <p class="decision">subjects, and</p>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.7.4.b.">
+                     <prop class="name">AC-3(7)[4][b]</prop>
+                     <p class="decision">objects.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">role-based access control policies</p>
+               <p class="object">procedures addressing access enforcement</p>
+               <p class="object">security plan, information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of roles, users, and associated privileges required to control information system access</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Automated mechanisms implementing role-based access control policy</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.8.">
+            <title>REVOCATION OF ACCESS AUTHORIZATIONS</title>
+            <param id="ac-3_h">
+               <desc>organization-defined rules governing the timing of revocations of access authorizations</desc>
+               <value>organization-defined rules governing the timing of revocations of access authorizations</value>
+            </param>
+            <prop class="name">AC-3 (8)</prop>
+            <part class="statement">
+               <p class="description">The information system enforces the revocation of access authorizations resulting from changes to the security attributes of subjects and objects based on <insert param-id="ac-3_h"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Revocation of access rules may differ based on the types of access revoked. For example, if a subject (i.e., user or process) is removed from a group, access may not be revoked until the next time the object (e.g., file) is opened or until the next time the subject attempts a new access to the object. Revocation based on changes to security labels may take effect immediately. Organizations can provide alternative approaches on how to make revocations immediate if information systems cannot provide such capability and immediate revocation is necessary.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:   </p>
+               <part class="objective" id="s_obj_ac-3.8.1.">
+                  <prop class="name">AC-3(8)[1]</prop>
+                  <p class="decision">the organization defines rules governing the timing of revocations of access authorizations; and</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.8.2.">
+                  <prop class="name">AC-3(8)[2]</prop>
+                  <p class="decision">the information system enforces the revocation of access authorizations resulting from changes to the security attributes of subjects and objects based on organization-defined rules governing the timing of revocations of access authorizations.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">procedures addressing access enforcement</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">rules governing revocation of access authorizations, information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Automated mechanisms implementing access enforcement functions</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.9.">
+            <title>CONTROLLED RELEASE</title>
+            <param id="ac-3_i">
+               <desc>organization-defined information system or system component</desc>
+               <value>organization-defined information system or system component</value>
+            </param>
+            <param id="ac-3_j">
+               <desc>organization-defined security safeguards</desc>
+               <value>organization-defined security safeguards</value>
+            </param>
+            <param id="ac-3_k">
+               <desc>organization-defined security safeguards</desc>
+               <value>organization-defined security safeguards</value>
+            </param>
+            <prop class="name">AC-3 (9)</prop>
+            <part class="statement">
+               <p class="description">The information system does not release information outside of the established system boundary unless:</p>
+               <part class="item" id="s_smm_ac-3.9.a.">
+                  <prop class="name">AC-3 (9)(a)</prop>
+                  <p class="description">The receiving <insert param-id="ac-3_i"/> provides <insert param-id="ac-3_j"/>; and</p>
+               </part>
+               <part class="item" id="s_smm_ac-3.9.b.">
+                  <prop class="name">AC-3 (9)(b)</prop>
+                  <p class="description">
+                     <insert param-id="ac-3_k"/> are used to validate the appropriateness of the information designated for release.</p>
+               </part>
+            </part>
+            <part class="guidance">
+               <p>Information systems can only protect organizational information within the confines of established system boundaries. Additional security safeguards may be needed to ensure that such information is adequately protected once it is passed beyond the established information system boundaries. Examples of information leaving the system boundary include transmitting information to an external information system or printing the information on one of its printers. In cases where the information system is unable to make a determination of the adequacy of the protections provided by entities outside its boundary, as a mitigating control, organizations determine procedurally whether the external information systems are providing adequate security. The means used to determine the adequacy of the security provided by external information systems include, for example, conducting inspections or periodic testing, establishing agreements between the organization and its counterpart organizations, or some other process. The means used by external entities to protect the information received need not be the same as those used by the organization, but the means employed are sufficient to provide consistent adjudication of the security policy to protect the information. This control enhancement requires information systems to employ technical or procedural means to validate the information prior to releasing it to external systems. For example, if the information system passes information to another system controlled by another organization, technical means are employed to validate that the security attributes associated with the exported information are appropriate for the receiving system. Alternatively, if the information system passes information to a printer in organization-controlled space, procedural means can be employed to ensure that only appropriately authorized individuals gain access to the printer. This control enhancement is most applicable when there is some policy mandate (e.g., law, Executive Order, directive, or regulation) that establishes policy regarding access to the information, and that policy applies beyond the realm of a particular information system or organization.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:  </p>
+               <part class="objective" id="s_obj_ac-3.9.1.">
+                  <prop class="name">AC-3(9)[1]</prop>
+                  <p class="decision">the organization defines the information system or system component authorized to receive information released outside of the established system boundary of the information system releasing such information;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.9.2.">
+                  <prop class="name">AC-3(9)[2]</prop>
+                  <p class="decision">the organization defines security safeguards to be provided by organization-defined information system or system component receiving information released from an information system outside of the established system boundary;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.9.3.">
+                  <prop class="name">AC-3(9)[3]</prop>
+                  <p class="decision">the organization defines security safeguards to be used to validate the appropriateness of the information designated for release;</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.9.4.">
+                  <prop class="name">AC-3(9)[4]</prop>
+                  <p class="decision">the information system does not release information outside of the established system boundary unless:</p>
+                  <part class="objective" id="s_obj_ac-3.9.4.a.">
+                     <prop class="name">AC-3(9)[4](a)</prop>
+                     <p class="decision">the receiving organization-defined information system or system component provides organization-defined security safeguards; and</p>
+                  </part>
+                  <part class="objective" id="s_obj_ac-3.9.4.b.">
+                     <prop class="name">AC-3(9)[4](b)</prop>
+                     <p class="decision">the organization-defined security safeguards are used to validate the appropriateness of the information designated for release.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">procedures addressing access enforcement</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of security safeguards provided by receiving information system or system components</p>
+               <p class="object">list of security safeguards validating appropriateness of information designated for release</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Automated mechanisms implementing access enforcement functions</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="ac.3.10.">
+            <title>AUDITED OVERRIDE OF ACCESS CONTROL MECHANISMS</title>
+            <param id="ac-3_l">
+               <desc>organization-defined conditions</desc>
+               <value>organization-defined conditions</value>
+            </param>
+            <prop class="name">AC-3 (10)</prop>
+            <part class="statement">
+               <p class="description">The organization employs an audited override of automated access control mechanisms under <insert param-id="ac-3_l"/>.</p>
+            </part>
+            <part class="guidance">
+               <link href="#au.2"/>
+               <link href="#au.6"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:   </p>
+               <part class="objective" id="s_obj_ac-3.10.1.">
+                  <prop class="name">AC-3(10)[1]</prop>
+                  <p class="decision">defines conditions under which to employ an audited override of automated access control mechanisms; and</p>
+               </part>
+               <part class="objective" id="s_obj_ac-3.10.2.">
+                  <prop class="name">AC-3(10)[2]</prop>
+                  <p class="decision">employs an audited override of automated access control mechanisms under organization-defined conditions.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">Access control policy</p>
+               <p class="object">procedures addressing access enforcement</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">conditions for employing audited override of automated access control mechanisms</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">Organizational personnel with access enforcement responsibilities</p>
+               <p class="object">system/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Automated mechanisms implementing access enforcement functions</p>
+            </part>
+         </subcontrol>
+         <part class="objective">
+            <p class="decision">Determine if the information system enforces approved authorizations for logical access to information and system resources in accordance with applicable access control policies.</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">EXAMINE</prop>
+            <p class="object">Access control policy</p>
+            <p class="object">procedures addressing access enforcement</p>
+            <p class="object">information system design documentation</p>
+            <p class="object">information system configuration settings and associated documentation</p>
+            <p class="object">list of approved authorizations (user privileges)</p>
+            <p class="object">information system audit records</p>
+            <p class="object">other relevant documents or records</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">INTERVIEW</prop>
+            <p class="object">Organizational personnel with access enforcement responsibilities</p>
+            <p class="object">system/network administrators</p>
+            <p class="object">organizational personnel with information security responsibilities</p>
+            <p class="object">system developers</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">TEST</prop>
+            <p class="object">Automated mechanisms implementing access control policy</p>
+         </part>
+      </control><control class="SP800-53" id="si.4">
+         <title>INFORMATION SYSTEM MONITORING</title>
+         <param id="si-4_a">
+            <desc>organization-defined monitoring objectives</desc>
+            <value>organization-defined monitoring objectives</value>
+         </param>
+         <param id="si-4_b">
+            <desc>organization-defined techniques and methods</desc>
+            <value>organization-defined techniques and methods</value>
+         </param>
+         <param id="si-4_c">
+            <desc>organization-defined information system monitoring information</desc>
+            <value>organization-defined information system monitoring information</value>
+         </param>
+         <param id="si-4_d">
+            <desc>organization-defined personnel or roles</desc>
+            <value>organization-defined personnel or roles</value>
+         </param>
+         <param id="si-4_e">
+            <desc>organization-defined frequency</desc>
+            <value>organization-defined frequency</value>
+         </param>
+         <prop class="name">SI-4</prop>
+         <prop class="priority">P1</prop>
+         <prop class="baseline-impact">LOW</prop>
+         <prop class="baseline-impact">MODERATE</prop>
+         <prop class="baseline-impact">HIGH</prop>
+         <part class="statement">
+            <p class="description">The organization:</p>
+            <part class="item" id="smm_si-4a.">
+               <prop class="name">SI-4a.</prop>
+               <p class="description">Monitors the information system to detect:</p>
+               <part class="item" id="sms_si-4a.1.">
+                  <prop class="name">SI-4a.1.</prop>
+                  <p class="description">Attacks and indicators of potential attacks in accordance with <insert param-id="si-4_a"/>; and</p>
+               </part>
+               <part class="item" id="sms_si-4a.2.">
+                  <prop class="name">SI-4a.2.</prop>
+                  <p class="description">Unauthorized local, network, and remote connections;</p>
+               </part>
+            </part>
+            <part class="item" id="smm_si-4b.">
+               <prop class="name">SI-4b.</prop>
+               <p class="description">Identifies unauthorized use of the information system through <insert param-id="si-4_b"/>;</p>
+            </part>
+            <part class="item" id="smm_si-4c.">
+               <prop class="name">SI-4c.</prop>
+               <p class="description">Deploys monitoring devices:</p>
+               <part class="item" id="sms_si-4c.1.">
+                  <prop class="name">SI-4c.1.</prop>
+                  <p class="description">Strategically within the information system to collect organization-determined essential information; and</p>
+               </part>
+               <part class="item" id="sms_si-4c.2.">
+                  <prop class="name">SI-4c.2.</prop>
+                  <p class="description">At ad hoc locations within the system to track specific types of transactions of interest to the organization;</p>
+               </part>
+            </part>
+            <part class="item" id="smm_si-4d.">
+               <prop class="name">SI-4d.</prop>
+               <p class="description">Protects information obtained from intrusion-monitoring tools from unauthorized access, modification, and deletion;</p>
+            </part>
+            <part class="item" id="smm_si-4e.">
+               <prop class="name">SI-4e.</prop>
+               <p class="description">Heightens the level of information system monitoring activity whenever there is an indication of increased risk to organizational operations and assets, individuals, other organizations, or the Nation based on law enforcement information, intelligence information, or other credible sources of information;</p>
+            </part>
+            <part class="item" id="smm_si-4f.">
+               <prop class="name">SI-4f.</prop>
+               <p class="description">Obtains legal opinion with regard to information system monitoring activities in accordance with applicable federal laws, Executive Orders, directives, policies, or regulations; and</p>
+            </part>
+            <part class="item" id="smm_si-4g.">
+               <prop class="name">SI-4g.</prop>
+               <p class="description">Provides <insert param-id="si-4_c"/> to <insert param-id="si-4_d"/> [Selection (one or more): as needed; <insert param-id="si-4_e"/>].</p>
+            </part>
+         </part>
+         <part class="guidance">
+            <p>Information system monitoring includes external and internal monitoring. External monitoring includes the observation of events occurring at the information system boundary (i.e., part of perimeter defense and boundary protection). Internal monitoring includes the observation of events occurring within the information system. Organizations can monitor information systems, for example, by observing audit activities in real time or by observing other system aspects such as access patterns, characteristics of access, and other actions. The monitoring objectives may guide determination of the events. Information system monitoring capability is achieved through a variety of tools and techniques (e.g., intrusion detection systems, intrusion prevention systems, malicious code protection software, scanning tools, audit record monitoring software, network monitoring software). Strategic locations for monitoring devices include, for example, selected perimeter locations and near server farms supporting critical applications, with such devices typically being employed at the managed interfaces associated with controls SC-7 and AC-17. Einstein network monitoring devices from the Department of Homeland Security can also be included as monitoring devices. The granularity of monitoring information collected is based on organizational monitoring objectives and the capability of information systems to support such objectives. Specific types of transactions of interest include, for example, Hyper Text Transfer Protocol (HTTP) traffic that bypasses HTTP proxies. Information system monitoring is an integral part of organizational continuous monitoring and incident response programs. Output from system monitoring serves as input to continuous monitoring and incident response programs. A network connection is any connection with a device that communicates through a network (e.g., local area network, Internet). A remote connection is any connection with a device communicating through an external network (e.g., the Internet). Local, network, and remote connections can be either wired or wireless.</p>
+            <link href="#ac.3"/>
+            <link href="#ac.4"/>
+            <link href="#ac.8"/>
+            <link href="#ac.17"/>
+            <link href="#au.2"/>
+            <link href="#au.6"/>
+            <link href="#au.7"/>
+            <link href="#au.9"/>
+            <link href="#au.12"/>
+            <link href="#ca.7"/>
+            <link href="#ir.4"/>
+            <link href="#pe.3"/>
+            <link href="#ra.5"/>
+            <link href="#sc.7"/>
+            <link href="#sc.26"/>
+            <link href="#sc.35"/>
+            <link href="#si.3"/>
+            <link href="#si.7"/>
+         </part>
+         <subcontrol class="SP800-53-enhancement" id="si.4.1.">
+            <title>SYSTEM-WIDE INTRUSION DETECTION SYSTEM</title>
+            <prop class="name">SI-4 (1)</prop>
+            <part class="statement">
+               <p class="description">The organization connects and configures individual intrusion detection tools into an information system-wide intrusion detection system.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.1.1.">
+                  <prop class="name">SI-4(1)[1]</prop>
+                  <p class="decision">connects individual intrusion detection tools into an information system-wide intrusion detection system; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.1.2.">
+                  <prop class="name">SI-4(1)[2]</prop>
+                  <p class="decision">configures individual intrusion detection tools into an information system-wide intrusion detection system.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection capability</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.2.">
+            <title>AUTOMATED TOOLS FOR REAL-TIME ANALYSIS</title>
+            <prop class="name">SI-4 (2)</prop>
+            <prop class="baseline-impact">MODERATE</prop>
+            <prop class="baseline-impact">HIGH</prop>
+            <part class="statement">
+               <p class="description">The organization employs automated tools to support near real-time analysis of events.</p>
+            </part>
+            <part class="guidance">
+               <p>Automated tools include, for example, host-based, network-based, transport-based, or storage-based event monitoring tools or Security Information and Event Management (SIEM) technologies that provide real time analysis of alerts and/or notifications generated by organizational information systems.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization employs automated tools to support near real-time analysis of events.</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for incident response/management</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for near real-time analysis of events</p>
+               <p class="object">organizational processes for information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing information system monitoring</p>
+               <p class="object">automated mechanisms/tools supporting and/or implementing analysis of events</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.3.">
+            <title>AUTOMATED TOOL INTEGRATION</title>
+            <prop class="name">SI-4 (3)</prop>
+            <part class="statement">
+               <p class="description">The organization employs automated tools to integrate intrusion detection tools into access control and flow control mechanisms for rapid response to attacks by enabling reconfiguration of these mechanisms in support of attack isolation and elimination.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization, for rapid response to attacks by enabling reconfiguration of intrusion detection tools in support of attack isolation and elimination, employs automated tools to integrate intrusion detection tools into:</p>
+               <part class="objective" id="s_obj_si-4.3.1.">
+                  <prop class="name">SI-4(3)[1]</prop>
+                  <p class="decision">access control mechanisms; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.3.2.">
+                  <prop class="name">SI-4(3)[2]</prop>
+                  <p class="decision">flow control mechanisms.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">access control policy and procedures</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms/tools supporting and/or implementing access/flow control capability</p>
+               <p class="object">automated mechanisms/tools supporting and/or implementing integration of intrusion detection tools into access/flow control mechanisms</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.4.">
+            <title>INBOUND AND OUTBOUND COMMUNICATIONS TRAFFIC</title>
+            <param id="si-4_f">
+               <desc>organization-defined frequency</desc>
+               <value>organization-defined frequency</value>
+            </param>
+            <prop class="name">SI-4 (4)</prop>
+            <prop class="baseline-impact">MODERATE</prop>
+            <prop class="baseline-impact">HIGH</prop>
+            <part class="statement">
+               <p class="description">The information system monitors inbound and outbound communications traffic <insert param-id="si-4_f"/> for unusual or unauthorized activities or conditions.</p>
+            </part>
+            <part class="guidance">
+               <p>Unusual/unauthorized activities or conditions related to information system inbound and outbound communications traffic include, for example, internal traffic that indicates the presence of malicious code within organizational information systems or propagating among system components, the unauthorized exporting of information, or signaling to external information systems. Evidence of malicious code is used to identify potentially compromised information systems or information system components.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.4.1.">
+                  <prop class="name">SI-4(4)[1]</prop>
+                  <p class="decision">defines a frequency to monitor:</p>
+                  <part class="objective" id="s_obj_si-4.4.1.a.">
+                     <prop class="name">SI-4(4)[1][a]</prop>
+                     <p class="decision">inbound communications traffic for unusual or unauthorized activities or conditions;</p>
+                  </part>
+                  <part class="objective" id="s_obj_si-4.4.1.b.">
+                     <prop class="name">SI-4(4)[1][b]</prop>
+                     <p class="decision">outbound communications traffic for unusual or unauthorized activities or conditions;</p>
+                  </part>
+               </part>
+               <part class="objective" id="s_obj_si-4.4.2.">
+                  <prop class="name">SI-4(4)[2]</prop>
+                  <p class="decision">monitors, with the organization-defined frequency:</p>
+                  <part class="objective" id="s_obj_si-4.4.2.a.">
+                     <prop class="name">SI-4(4)[2][a]</prop>
+                     <p class="decision">inbound communications traffic for unusual or unauthorized activities or conditions; and</p>
+                  </part>
+                  <part class="objective" id="s_obj_si-4.4.2.b.">
+                     <prop class="name">SI-4(4)[2][b]</prop>
+                     <p class="decision">outbound communications traffic for unusual or unauthorized activities or conditions.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system protocols</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection capability/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing monitoring of inbound/outbound communications traffic</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.5.">
+            <title>SYSTEM-GENERATED ALERTS</title>
+            <param id="si-4_g">
+               <desc>organization-defined personnel or roles</desc>
+               <value>organization-defined personnel or roles</value>
+            </param>
+            <param id="si-4_h">
+               <desc>organization-defined compromise indicators</desc>
+               <value>organization-defined compromise indicators</value>
+            </param>
+            <prop class="name">SI-4 (5)</prop>
+            <prop class="baseline-impact">MODERATE</prop>
+            <prop class="baseline-impact">HIGH</prop>
+            <part class="statement">
+               <p class="description">The information system alerts <insert param-id="si-4_g"/> when the following indications of compromise or potential compromise occur: <insert param-id="si-4_h"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Alerts may be generated from a variety of sources, including, for example, audit records or inputs from malicious code protection mechanisms, intrusion detection or prevention mechanisms, or boundary protection devices such as firewalls, gateways, and routers. Alerts can be transmitted, for example, telephonically, by electronic mail messages, or by text messaging. Organizational personnel on the notification list can include, for example, system administrators, mission/business owners, system owners, or information system security officers.</p>
+               <link href="#au.5"/>
+               <link href="#pe.6"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:</p>
+               <part class="objective" id="s_obj_si-4.5.1.">
+                  <prop class="name">SI-4(5)[1]</prop>
+                  <p class="decision">the organization defines compromise indicators for the information system;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.5.2.">
+                  <prop class="name">SI-4(5)[2]</prop>
+                  <p class="decision">the organization defines personnel or roles to be alerted when indications of compromise or potential compromise occur; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.5.3.">
+                  <prop class="name">SI-4(5)[3]</prop>
+                  <p class="decision">the information system alerts organization-defined personnel or roles when organization-defined compromise indicators occur.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">alerts/notifications generated based on compromise indicators</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+               <p class="object"/>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing alerts for compromise indicators</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.6.">
+            <title>RESTRICT NON-PRIVILEGED USERS</title>
+            <prop class="name">SI-4 (6)</prop>
+            <link href="#ac.6.10."/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into AC-6 (10)</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.7.">
+            <title>AUTOMATED RESPONSE TO SUSPICIOUS EVENTS</title>
+            <param id="si-4_i">
+               <desc>organization-defined incident response personnel (identified by name and/or by role)</desc>
+               <value>organization-defined incident response personnel (identified by name and/or by role)</value>
+            </param>
+            <param id="si-4_j">
+               <desc>organization-defined least-disruptive actions to terminate suspicious events</desc>
+               <value>organization-defined least-disruptive actions to terminate suspicious events</value>
+            </param>
+            <prop class="name">SI-4 (7)</prop>
+            <part class="statement">
+               <p class="description">The information system notifies <insert param-id="si-4_i"/> of detected suspicious events and takes <insert param-id="si-4_j"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Least-disruptive actions may include, for example, initiating requests for human responses.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:</p>
+               <part class="objective" id="s_obj_si-4.7.1.">
+                  <prop class="name">SI-4(7)[1]</prop>
+                  <p class="decision">the organization defines incident response personnel (identified by name and/or by role) to be notified of detected suspicious events;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.7.2.">
+                  <prop class="name">SI-4(7)[2]</prop>
+                  <p class="decision">the organization defines least-disruptive actions to be taken by the information system to terminate suspicious events;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.7.3.">
+                  <prop class="name">SI-4(7)[3]</prop>
+                  <p class="decision">the information system notifies organization-defined incident response personnel of detected suspicious events; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.7.4.">
+                  <prop class="name">SI-4(7)[4]</prop>
+                  <p class="decision">the information system takes organization-defined least-disruptive actions to terminate suspicious events.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">alerts/notifications generated based on detected suspicious events</p>
+               <p class="object">records of actions taken to terminate suspicious events</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing notifications to incident response personnel</p>
+               <p class="object">automated mechanisms supporting and/or implementing actions to terminate suspicious events</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.8.">
+            <title>PROTECTION OF MONITORING INFORMATION</title>
+            <prop class="name">SI-4 (8)</prop>
+            <link href="#si.4"/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into SI-4</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.9.">
+            <title>TESTING OF MONITORING TOOLS</title>
+            <param id="si-4_k">
+               <desc>organization-defined frequency</desc>
+               <value>organization-defined frequency</value>
+            </param>
+            <prop class="name">SI-4 (9)</prop>
+            <part class="statement">
+               <p class="description">The organization tests intrusion-monitoring tools <insert param-id="si-4_k"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Testing intrusion-monitoring tools is necessary to ensure that the tools are operating correctly and continue to meet the monitoring objectives of organizations. The frequency of testing depends on the types of tools used by organizations and methods of deployment.</p>
+               <link href="#cp.9"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.9.1.">
+                  <prop class="name">SI-4(9)[1]</prop>
+                  <p class="decision">defines a frequency to test intrusion-monitoring tools; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.9.2.">
+                  <prop class="name">SI-4(9)[2]</prop>
+                  <p class="decision">tests intrusion-monitoring tools with the organization-defined frequency.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing testing of information system monitoring tools and techniques</p>
+               <p class="object">documentation providing evidence of testing intrusion-monitoring tools</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing testing of intrusion-monitoring tools</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.10.">
+            <title>VISIBILITY OF ENCRYPTED COMMUNICATIONS</title>
+            <param id="si-4_l">
+               <desc>organization-defined encrypted communications traffic</desc>
+               <value>organization-defined encrypted communications traffic</value>
+            </param>
+            <param id="si-4_m">
+               <desc>organization-defined information system monitoring tools</desc>
+               <value>organization-defined information system monitoring tools</value>
+            </param>
+            <prop class="name">SI-4 (10)</prop>
+            <part class="statement">
+               <p class="description">The organization makes provisions so that <insert param-id="si-4_l"/> is visible to <insert param-id="si-4_m"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Organizations balance the potentially conflicting needs for encrypting communications traffic and for having insight into such traffic from a monitoring perspective. For some organizations, the need to ensure the confidentiality of communications traffic is paramount; for others, mission-assurance is of greater concern. Organizations determine whether the visibility requirement applies to internal encrypted traffic, encrypted traffic intended for external destinations, or a subset of the traffic types.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.10.1.">
+                  <prop class="name">SI-4(10)[1]</prop>
+                  <p class="decision">defines encrypted communications traffic required to be visible to information system monitoring tools;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.10.2.">
+                  <prop class="name">SI-4(10)[2]</prop>
+                  <p class="decision">defines information system monitoring tools to be provided access to organization-defined encrypted communications traffic; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.10.3.">
+                  <prop class="name">SI-4(10)[3]</prop>
+                  <p class="decision">makes provisions so that organization-defined encrypted communications traffic is visible to organization-defined information system monitoring tools.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system protocols</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing visibility of encrypted communications traffic to monitoring tools</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.11.">
+            <title>ANALYZE COMMUNICATIONS TRAFFIC ANOMALIES</title>
+            <param id="si-4_n">
+               <desc>organization-defined interior points within the system (e.g., subnetworks, subsystems)</desc>
+               <value>organization-defined interior points within the system (e.g., subnetworks, subsystems)</value>
+            </param>
+            <prop class="name">SI-4 (11)</prop>
+            <part class="statement">
+               <p class="description">The organization analyzes outbound communications traffic at the external boundary of the information system and selected <insert param-id="si-4_n"/> to discover anomalies.</p>
+            </part>
+            <part class="guidance">
+               <p>Anomalies within organizational information systems include, for example, large file transfers, long-time persistent connections, unusual protocols and ports in use, and attempted communications with suspected malicious external addresses.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.11.1.">
+                  <prop class="name">SI-4(11)[1]</prop>
+                  <p class="decision">defines interior points within the system (e.g., subnetworks, subsystems) where communications traffic is to be analyzed;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.11.2.">
+                  <prop class="name">SI-4(11)[2]</prop>
+                  <p class="decision">analyzes outbound communications traffic to discover anomalies at:</p>
+                  <part class="objective" id="s_obj_si-4.11.2.a.">
+                     <prop class="name">SI-4(11)[2][a]</prop>
+                     <p class="decision">the external boundary of the information system; and</p>
+                  </part>
+                  <part class="objective" id="s_obj_si-4.11.2.b.">
+                     <prop class="name">SI-4(11)[2][b]</prop>
+                     <p class="decision">selected organization-defined interior points within the system.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">network diagram</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing analysis of communications traffic</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.12.">
+            <title>AUTOMATED ALERTS</title>
+            <param id="si-4_o">
+               <desc>organization-defined activities that trigger alerts</desc>
+               <value>organization-defined activities that trigger alerts</value>
+            </param>
+            <prop class="name">SI-4 (12)</prop>
+            <part class="statement">
+               <p class="description">The organization employs automated mechanisms to alert security personnel of the following inappropriate or unusual activities with security implications: <insert param-id="si-4_o"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>This control enhancement focuses on the security alerts generated by organizations and transmitted using automated means. In contrast to the alerts generated by information systems in SI-4 (5), which tend to focus on information sources internal to the systems (e.g., audit records), the sources of information for this enhancement can include other entities as well (e.g., suspicious activity reports, reports on potential insider threats).</p>
+               <link href="#ac.18"/>
+               <link href="#ia.3"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.12.1.">
+                  <prop class="name">SI-4(12)[1]</prop>
+                  <p class="decision">defines activities that trigger alerts to security personnel based on inappropriate or unusual activities with security implications; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.12.2.">
+                  <prop class="name">SI-4(12)[2]</prop>
+                  <p class="decision">employs automated mechanisms to alert security personnel of organization-defined activities that trigger alerts based on inappropriate or unusual activities with security implications.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of inappropriate or unusual activities (with security implications) that trigger alerts</p>
+               <p class="object">alerts/notifications provided to security personnel</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developers</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing automated alerts to security personnel</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.13.">
+            <title>ANALYZE TRAFFIC / EVENT PATTERNS</title>
+            <prop class="name">SI-4 (13)</prop>
+            <part class="statement">
+               <p class="description">The organization:</p>
+               <part class="item" id="s_smm_si-4.13.a.">
+                  <prop class="name">SI-4 (13)(a)</prop>
+                  <p class="description">Analyzes communications traffic/event patterns for the information system;</p>
+               </part>
+               <part class="item" id="s_smm_si-4.13.b.">
+                  <prop class="name">SI-4 (13)(b)</prop>
+                  <p class="description">Develops profiles representing common traffic patterns and/or events; and</p>
+               </part>
+               <part class="item" id="s_smm_si-4.13.c.">
+                  <prop class="name">SI-4 (13)(c)</prop>
+                  <p class="description">Uses the traffic/event profiles in tuning system-monitoring devices to reduce the number of false positives and the number of false negatives.</p>
+               </part>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.13.a.">
+                  <prop class="name">SI-4(13)(a)</prop>
+                  <p class="decision">analyzes communications traffic/event patterns for the information system;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.13.b.">
+                  <prop class="name">SI-4(13)(b)</prop>
+                  <p class="decision">develops profiles representing common traffic patterns and/or events;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.13.c.">
+                  <prop class="name">SI-4(13)(c)</prop>
+                  <p class="decision">uses the traffic/event profiles in tuning system-monitoring devices to reduce the number of false positives and false negatives.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of profiles representing common traffic patterns and/or events</p>
+               <p class="object">information system protocols documentation</p>
+               <p class="object">list of acceptable thresholds for false positives and false negatives</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing analysis of communications traffic/event patterns</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.14.">
+            <title>WIRELESS INTRUSION DETECTION</title>
+            <prop class="name">SI-4 (14)</prop>
+            <part class="statement">
+               <p class="description">The organization employs a wireless intrusion detection system to identify rogue wireless devices and to detect attack attempts and potential compromises/breaches to the information system.</p>
+            </part>
+            <part class="guidance">
+               <p>Wireless signals may radiate beyond the confines of organization-controlled facilities. Organizations proactively search for unauthorized wireless connections including the conduct of thorough scans for unauthorized wireless access points. Scans are not limited to those areas within facilities containing information systems, but also include areas outside of facilities as needed, to verify that unauthorized wireless access points are not connected to the systems.</p>
+               <link href="#ac.18"/>
+               <link href="#ia.3"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization employs a wireless intrusion detection system to:</p>
+               <part class="objective" id="s_obj_si-4.14.1.">
+                  <prop class="name">SI-4(14)[1]</prop>
+                  <p class="decision">identify rogue wireless devices;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.14.2.">
+                  <prop class="name">SI-4(14)[2]</prop>
+                  <p class="decision">detect attack attempts to the information system; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.14.3.">
+                  <prop class="name">SI-4(14)[3]</prop>
+                  <p class="decision">detect potential compromises/breaches to the information system.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system protocols</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection</p>
+               <p class="object">automated mechanisms supporting and/or implementing wireless intrusion detection capability</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.15.">
+            <title>WIRELESS TO WIRELINE COMMUNICATIONS</title>
+            <prop class="name">SI-4 (15)</prop>
+            <part class="statement">
+               <p class="description">The organization employs an intrusion detection system to monitor wireless communications traffic as the traffic passes from wireless to wireline networks.</p>
+            </part>
+            <part class="guidance">
+               <link href="#ac.18"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization employs an intrusion detection system to monitor wireless communications traffic as the traffic passes from wireless to wireline networks.</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system protocols documentation</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing wireless intrusion detection capability</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.16.">
+            <title>CORRELATE MONITORING INFORMATION</title>
+            <prop class="name">SI-4 (16)</prop>
+            <part class="statement">
+               <p class="description">The organization correlates information from monitoring tools employed throughout the information system.</p>
+            </part>
+            <part class="guidance">
+               <p>Correlating information from different monitoring tools can provide a more comprehensive view of information system activity. The correlation of monitoring tools that usually work in isolation (e.g., host monitoring, network monitoring, anti-virus software) can provide an organization-wide view and in so doing, may reveal otherwise unseen attack patterns. Understanding the capabilities/limitations of diverse monitoring tools and how to maximize the utility of information generated by those tools can help organizations to build, operate, and maintain effective monitoring programs.</p>
+               <link href="#au.6"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization correlates information from monitoring tools employed throughout the information system.</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">event correlation logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/information system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing correlation of information from monitoring tools</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.17.">
+            <title>INTEGRATED SITUATIONAL AWARENESS</title>
+            <prop class="name">SI-4 (17)</prop>
+            <part class="statement">
+               <p class="description">The organization correlates information from monitoring physical, cyber, and supply chain activities to achieve integrated, organization-wide situational awareness.</p>
+            </part>
+            <part class="guidance">
+               <p>This control enhancement correlates monitoring information from a more diverse set of information sources to achieve integrated situational awareness. Integrated situational awareness from a combination of physical, cyber, and supply chain monitoring activities enhances the capability of organizations to more quickly detect sophisticated cyber attacks and investigate the methods and techniques employed to carry out such attacks. In contrast to SI-4 (16) which correlates the various cyber monitoring information, this control enhancement correlates monitoring beyond just the cyber domain. Such monitoring may help reveal attacks on organizations that are operating across multiple attack vectors.</p>
+               <link href="#sa.12"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization, to achieve integrated, organization-wide situational awareness, correlates information from monitoring:</p>
+               <part class="objective" id="s_obj_si-4.17.1.">
+                  <prop class="name">SI-4(17)[1]</prop>
+                  <p class="decision">physical activities;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.17.2.">
+                  <prop class="name">SI-4(17)[2]</prop>
+                  <p class="decision">cyber activities; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.17.3.">
+                  <prop class="name">SI-4(17)[3]</prop>
+                  <p class="decision">supply chain activities.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">event correlation logs or records resulting from physical, cyber, and supply chain activities</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing correlation of information from monitoring tools</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.18.">
+            <title>ANALYZE TRAFFIC / COVERT EXFILTRATION</title>
+            <param id="si-4_p">
+               <desc>organization-defined interior points within the system (e.g., subsystems, subnetworks)</desc>
+               <value>organization-defined interior points within the system (e.g., subsystems, subnetworks)</value>
+            </param>
+            <prop class="name">SI-4 (18)</prop>
+            <part class="statement">
+               <p class="description">The organization analyzes outbound communications traffic at the external boundary of the information system (i.e., system perimeter) and at <insert param-id="si-4_p"/> to detect covert exfiltration of information.</p>
+            </part>
+            <part class="guidance">
+               <p>Covert means that can be used for the unauthorized exfiltration of organizational information include, for example, steganography.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.18.1.">
+                  <prop class="name">SI-4(18)[1]</prop>
+                  <p class="decision">defines interior points within the system (e.g., subsystems, subnetworks) where communications traffic is to be analyzed;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.18.2.">
+                  <prop class="name">SI-4(18)[2]</prop>
+                  <p class="decision">to detect covert exfiltration of information, analyzes outbound communications traffic at:</p>
+                  <part class="objective" id="s_obj_si-4.18.2.a.">
+                     <prop class="name">SI-4(18)[2][a]</prop>
+                     <p class="decision">the external boundary of the information system (i.e., system perimeter); and</p>
+                  </part>
+                  <part class="objective" id="s_obj_si-4.18.2.b.">
+                     <prop class="name">SI-4(18)[2][b]</prop>
+                     <p class="decision">organization-defined interior points within the system.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">network diagram</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+               <p class="object">organizational personnel with responsibility for the intrusion detection system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for intrusion detection/information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing intrusion detection/system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing analysis of outbound communications traffic</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.19.">
+            <title>INDIVIDUALS POSING GREATER RISK</title>
+            <param id="si-4_q">
+               <desc>organization-defined additional monitoring</desc>
+               <value>organization-defined additional monitoring</value>
+            </param>
+            <param id="si-4_r">
+               <desc>organization-defined sources</desc>
+               <value>organization-defined sources</value>
+            </param>
+            <prop class="name">SI-4 (19)</prop>
+            <part class="statement">
+               <p class="description">The organization implements <insert param-id="si-4_q"/> of individuals who have been identified by <insert param-id="si-4_r"/> as posing an increased level of risk.</p>
+            </part>
+            <part class="guidance">
+               <p>Indications of increased risk from individuals can be obtained from a variety of sources including, for example, human resource records, intelligence agencies, law enforcement organizations, and/or other credible sources. The monitoring of individuals is closely coordinated with management, legal, security, and human resources officials within organizations conducting such monitoring and complies with federal legislation, Executive Orders, policies, directives, regulations, and standards.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.19.1.">
+                  <prop class="name">SI-4(19)[1]</prop>
+                  <p class="decision">defines sources that identify individuals who pose an increased level of risk;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.19.2.">
+                  <prop class="name">SI-4(19)[2]</prop>
+                  <p class="decision">defines additional monitoring to be implemented on individuals who have been identified by organization-defined sources as posing an increased level of risk; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.19.3.">
+                  <prop class="name">SI-4(19)[3]</prop>
+                  <p class="decision">implements organization-defined additional monitoring of individuals who have been identified by organization-defined sources as posing an increased level of risk.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">list of individuals who have been identified as posing an increased level of risk</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing system monitoring capability</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.20.">
+            <title>PRIVILEGED USERS</title>
+            <param id="si-4_s">
+               <desc>organization-defined additional monitoring</desc>
+               <value>organization-defined additional monitoring</value>
+            </param>
+            <prop class="name">SI-4 (20)</prop>
+            <part class="statement">
+               <p class="description">The organization implements <insert param-id="si-4_s"/> of privileged users.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.20.1.">
+                  <prop class="name">SI-4(20)[1]</prop>
+                  <p class="decision">defines additional monitoring to be implemented on privileged users; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.20.2.">
+                  <prop class="name">SI-4(20)[2]</prop>
+                  <p class="decision">implements organization-defined additional monitoring of privileged users;</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">list of privileged users</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing system monitoring capability</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.21.">
+            <title>PROBATIONARY PERIODS</title>
+            <param id="si-4_t">
+               <desc>organization-defined additional monitoring</desc>
+               <value>organization-defined additional monitoring</value>
+            </param>
+            <param id="si-4_u">
+               <desc>organization-defined probationary period</desc>
+               <value>organization-defined probationary period</value>
+            </param>
+            <prop class="name">SI-4 (21)</prop>
+            <part class="statement">
+               <p class="description">The organization implements <insert param-id="si-4_t"/> of individuals during <insert param-id="si-4_u"/>.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.21.1.">
+                  <prop class="name">SI-4(21)[1]</prop>
+                  <p class="decision">defines additional monitoring to be implemented on individuals during probationary periods;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.21.2.">
+                  <prop class="name">SI-4(21)[2]</prop>
+                  <p class="decision">defines probationary period during which organization-defined additional monitoring of individuals is to be performed; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.21.3.">
+                  <prop class="name">SI-4(21)[3]</prop>
+                  <p class="decision">implements organization-defined additional monitoring of individuals during organization-defined probationary period.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing system monitoring capability</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.22.">
+            <title>UNAUTHORIZED NETWORK SERVICES</title>
+            <param id="si-4_v">
+               <desc>organization-defined authorization or approval processes</desc>
+               <value>organization-defined authorization or approval processes</value>
+            </param>
+            <param id="si-4_w">
+               <desc>organization-defined personnel or roles</desc>
+               <value>organization-defined personnel or roles</value>
+            </param>
+            <prop class="name">SI-4 (22)</prop>
+            <part class="statement">
+               <p class="description">The information system detects network services that have not been authorized or approved by <insert param-id="si-4_v"/> and [Selection (one or more): audits; alerts <insert param-id="si-4_w"/>].</p>
+            </part>
+            <part class="guidance">
+               <p>Unauthorized or unapproved network services include, for example, services in service-oriented architectures that lack organizational verification or validation and therefore may be unreliable or serve as malicious rogues for valid services.</p>
+               <link href="#ac.6"/>
+               <link href="#cm.7"/>
+               <link href="#sa.5"/>
+               <link href="#sa.9"/>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if:</p>
+               <part class="objective" id="s_obj_si-4.22.1.">
+                  <prop class="name">SI-4(22)[1]</prop>
+                  <p class="decision">the organization defines authorization or approval processes for network services;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.22.2.">
+                  <prop class="name">SI-4(22)[2]</prop>
+                  <p class="decision">the organization defines personnel or roles to be alerted upon detection of network services that have not been authorized or approved by organization-defined authorization or approval processes;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.22.3.">
+                  <prop class="name">SI-4(22)[3]</prop>
+                  <p class="decision">the information system detects network services that have not been authorized or approved by organization-defined authorization or approval processes and does one or more of the following:</p>
+                  <part class="objective" id="s_obj_si-4.22.3.a.">
+                     <prop class="name">SI-4(22)[3][a]</prop>
+                     <p class="decision">audits; and/or</p>
+                  </part>
+                  <part class="objective" id="s_obj_si-4.22.3.b.">
+                     <prop class="name">SI-4(22)[3][b]</prop>
+                     <p class="decision">alerts organization-defined personnel or roles.</p>
+                  </part>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">documented authorization/approval of network services</p>
+               <p class="object">notifications or alerts of unauthorized network services</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developer</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring the information system</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing system monitoring capability</p>
+               <p class="object">automated mechanisms for auditing network services</p>
+               <p class="object">automated mechanisms for providing alerts</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.23.">
+            <title>HOST-BASED DEVICES</title>
+            <param id="si-4_x">
+               <desc>organization-defined host-based monitoring mechanisms</desc>
+               <value>organization-defined host-based monitoring mechanisms</value>
+            </param>
+            <param id="si-4_y">
+               <desc>organization-defined information system components</desc>
+               <value>organization-defined information system components</value>
+            </param>
+            <prop class="name">SI-4 (23)</prop>
+            <part class="statement">
+               <p class="description">The organization implements <insert param-id="si-4_x"/> at <insert param-id="si-4_y"/>.</p>
+            </part>
+            <part class="guidance">
+               <p>Information system components where host-based monitoring can be implemented include, for example, servers, workstations, and mobile devices. Organizations consider employing host-based monitoring mechanisms from multiple information technology product developers.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the organization:</p>
+               <part class="objective" id="s_obj_si-4.23.1.">
+                  <prop class="name">SI-4(23)[1]</prop>
+                  <p class="decision">defines host-based monitoring mechanisms to be implemented;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.23.2.">
+                  <prop class="name">SI-4(23)[2]</prop>
+                  <p class="decision">defines information system components where organization-defined host-based monitoring is to be implemented; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.23.3.">
+                  <prop class="name">SI-4(23)[3]</prop>
+                  <p class="decision">implements organization-defined host-based monitoring mechanisms at organization-defined information system components.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring tools and techniques</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">host-based monitoring mechanisms</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">list of information system components requiring host-based monitoring</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring information system hosts</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for information system monitoring</p>
+               <p class="object">automated mechanisms supporting and/or implementing host-based monitoring capability</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="si.4.24.">
+            <title>INDICATORS OF COMPROMISE</title>
+            <prop class="name">SI-4 (24)</prop>
+            <part class="statement">
+               <p class="description">The information system discovers, collects, distributes, and uses indicators of compromise.</p>
+            </part>
+            <part class="guidance">
+               <p>Indicators of compromise (IOC) are forensic artifacts from intrusions that are identified on organizational information systems (at the host or network level). IOCs provide organizations with valuable information on objects or information systems that have been compromised. IOCs for the discovery of compromised hosts can include for example, the creation of registry key values. IOCs for network traffic include, for example, Universal Resource Locator (URL) or protocol elements that indicate malware command and control servers. The rapid distribution and adoption of IOCs can improve information security by reducing the time that information systems and organizations are vulnerable to the same exploit or attack.</p>
+            </part>
+            <part class="objective">
+               <p class="decision">Determine if the information system:</p>
+               <part class="objective" id="s_obj_si-4.24.1.">
+                  <prop class="name">SI-4(24)[1]</prop>
+                  <p class="decision">discovers indicators of compromise;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.24.2.">
+                  <prop class="name">SI-4(24)[2]</prop>
+                  <p class="decision">collects indicators of compromise;</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.24.3.">
+                  <prop class="name">SI-4(24)[3]</prop>
+                  <p class="decision">distributes indicators of compromise; and</p>
+               </part>
+               <part class="objective" id="s_obj_si-4.24.4.">
+                  <prop class="name">SI-4(24)[4]</prop>
+                  <p class="decision">uses indicators of compromise.</p>
+               </part>
+            </part>
+            <part class="assessment">
+               <prop class="method">EXAMINE</prop>
+               <p class="object">System and information integrity policy</p>
+               <p class="object">procedures addressing information system monitoring</p>
+               <p class="object">information system design documentation</p>
+               <p class="object">information system monitoring tools and techniques documentation</p>
+               <p class="object">information system configuration settings and associated documentation</p>
+               <p class="object">information system monitoring logs or records</p>
+               <p class="object">information system audit records</p>
+               <p class="object">other relevant documents or records</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">INTERVIEW</prop>
+               <p class="object">System/network administrators</p>
+               <p class="object">organizational personnel with information security responsibilities</p>
+               <p class="object">system developer</p>
+               <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+               <p class="object">organizational personnel with responsibility for monitoring information system hosts</p>
+            </part>
+            <part class="assessment">
+               <prop class="method">TEST</prop>
+               <p class="object">Organizational processes for information system monitoring</p>
+               <p class="object">organizational processes for discovery, collection, distribution, and use of indicators of compromise</p>
+               <p class="object">automated mechanisms supporting and/or implementing system monitoring capability</p>
+               <p class="object">automated mechanisms supporting and/or implementing the discovery, collection, distribution, and use of indicators of compromise</p>
+            </part>
+         </subcontrol>
+         <part class="objective">
+            <p class="decision">Determine if the organization:</p>
+            <part class="objective" id="obj_si-4.a.">
+               <prop class="name">SI-4(a)</prop>
+               <part class="objective" id="obj_si-4.a.1.">
+                  <prop class="name">SI-4(a)(1)</prop>
+                  <part class="objective" id="obj_si-4.a.1.1.">
+                     <prop class="name">SI-4(a)(1)[1]</prop>
+                     <p class="decision">defines monitoring objectives to detect attacks and indicators of potential attacks on the information system;</p>
+                  </part>
+                  <part class="objective" id="obj_si-4.a.1.2.">
+                     <prop class="name">SI-4(a)(1)[2]</prop>
+                     <p class="decision">monitors the information system to detect, in accordance with organization-defined monitoring objectives,:</p>
+                     <part class="objective" id="obj_si-4.a.1.2.a.">
+                        <prop class="name">SI-4(a)(1)[2][a]</prop>
+                        <p class="decision">attacks;</p>
+                     </part>
+                     <part class="objective" id="obj_si-4.a.1.2.b.">
+                        <prop class="name">SI-4(a)(1)[2][b]</prop>
+                        <p class="decision">indicators of potential attacks;</p>
+                     </part>
+                  </part>
+               </part>
+               <part class="objective" id="obj_si-4.a.2.">
+                  <prop class="name">SI-4(a)(2)</prop>
+                  <p class="decision">monitors the information system to detect unauthorized:</p>
+                  <part class="objective" id="obj_si-4.a.2.1.">
+                     <prop class="name">SI-4(a)(2)[1]</prop>
+                     <p class="decision">local connections;</p>
+                  </part>
+                  <part class="objective" id="obj_si-4.a.2.2.">
+                     <prop class="name">SI-4(a)(2)[2]</prop>
+                     <p class="decision">network connections;</p>
+                  </part>
+                  <part class="objective" id="obj_si-4.a.2.3.">
+                     <prop class="name">SI-4(a)(2)[3]</prop>
+                     <p class="decision">remote connections;</p>
+                  </part>
+               </part>
+            </part>
+            <part class="objective" id="obj_si-4.b.">
+               <prop class="name">SI-4(b)</prop>
+               <part class="objective" id="obj_si-4.b.1.">
+                  <prop class="name">SI-4(b)(1)</prop>
+                  <p class="decision">defines techniques and methods to identify unauthorized use of the information system;</p>
+               </part>
+               <part class="objective" id="obj_si-4.b.2.">
+                  <prop class="name">SI-4(b)(2)</prop>
+                  <p class="decision">identifies unauthorized use of the information system through organization-defined techniques and methods;</p>
+               </part>
+            </part>
+            <part class="objective" id="obj_si-4.c.">
+               <prop class="name">SI-4(c)</prop>
+               <p class="decision">deploys monitoring devices:</p>
+               <part class="objective" id="obj_si-4.c.1.">
+                  <prop class="name">SI-4(c)[1]</prop>
+                  <p class="decision">strategically within the information system to collect organization-determined essential information;</p>
+               </part>
+               <part class="objective" id="obj_si-4.c.2.">
+                  <prop class="name">SI-4(c)[2]</prop>
+                  <p class="decision">at ad hoc locations within the system to track specific types of transactions of interest to the organization;</p>
+               </part>
+            </part>
+            <part class="objective" id="obj_si-4.d.">
+               <prop class="name">SI-4(d)</prop>
+               <p class="decision">protects information obtained from intrusion-monitoring tools from unauthorized:</p>
+               <part class="objective" id="obj_si-4.d.1.">
+                  <prop class="name">SI-4(d)[1]</prop>
+                  <p class="decision">access;</p>
+               </part>
+               <part class="objective" id="obj_si-4.d.2.">
+                  <prop class="name">SI-4(d)[2]</prop>
+                  <p class="decision">modification;</p>
+               </part>
+               <part class="objective" id="obj_si-4.d.3.">
+                  <prop class="name">SI-4(d)[3]</prop>
+                  <p class="decision">deletion;</p>
+               </part>
+            </part>
+            <part class="objective" id="obj_si-4.e.">
+               <prop class="name">SI-4(e)</prop>
+               <p class="decision">heightens the level of information system monitoring activity whenever there is an indication of increased risk to organizational operations and assets, individuals, other organizations, or the Nation based on law enforcement information, intelligence information, or other credible sources of information;</p>
+            </part>
+            <part class="objective" id="obj_si-4.f.">
+               <prop class="name">SI-4(f)</prop>
+               <p class="decision">obtains legal opinion with regard to information system monitoring activities in accordance with applicable federal laws, Executive Orders, directives, policies, or regulations;</p>
+            </part>
+            <part class="objective" id="obj_si-4.g.">
+               <prop class="name">SI-4(g)</prop>
+               <part class="objective" id="obj_si-4.g.1.">
+                  <prop class="name">SI-4(g)[1]</prop>
+                  <p class="decision">defines personnel or roles to whom information system monitoring information is to be provided;</p>
+               </part>
+               <part class="objective" id="obj_si-4.g.2.">
+                  <prop class="name">SI-4(g)[2]</prop>
+                  <p class="decision">defines information system monitoring information to be provided to organization-defined personnel or roles;</p>
+               </part>
+               <part class="objective" id="obj_si-4.g.3.">
+                  <prop class="name">SI-4(g)[3]</prop>
+                  <p class="decision">defines a frequency to provide organization-defined information system monitoring to organization-defined personnel or roles;</p>
+               </part>
+               <part class="objective" id="obj_si-4.g.4.">
+                  <prop class="name">SI-4(g)[4]</prop>
+                  <p class="decision">provides organization-defined information system monitoring information to organization-defined personnel or roles one or more of the following:</p>
+                  <part class="objective" id="obj_si-4.g.4.a.">
+                     <prop class="name">SI-4(g)[4][a]</prop>
+                     <p class="decision">as needed; and/or</p>
+                  </part>
+                  <part class="objective" id="obj_si-4.g.4.b.">
+                     <prop class="name">SI-4(g)[4][b]</prop>
+                     <p class="decision">with the organization-defined frequency.</p>
+                  </part>
+               </part>
+            </part>
+         </part>
+         <part class="assessment">
+            <prop class="method">EXAMINE</prop>
+            <p class="object">Continuous monitoring strategy</p>
+            <p class="object">system and information integrity policy</p>
+            <p class="object">procedures addressing information system monitoring tools and techniques</p>
+            <p class="object">facility diagram/layout</p>
+            <p class="object">information system design documentation</p>
+            <p class="object">information system monitoring tools and techniques documentation</p>
+            <p class="object">locations within information system where monitoring devices are deployed</p>
+            <p class="object">information system configuration settings and associated documentation</p>
+            <p class="object">other relevant documents or records</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">INTERVIEW</prop>
+            <p class="object">System/network administrators</p>
+            <p class="object">organizational personnel with information security responsibilities</p>
+            <p class="object">organizational personnel installing, configuring, and/or maintaining the information system</p>
+            <p class="object">organizational personnel with responsibility monitoring the information system</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">TEST</prop>
+            <p class="object">Organizational processes for information system monitoring</p>
+            <p class="object">automated mechanisms supporting and/or implementing information system monitoring capability</p>
+         </part>
+         <references>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-61">NIST Special Publication 800-61</citation>
+            </ref>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-83">NIST Special Publication 800-83</citation>
+            </ref>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-92">NIST Special Publication 800-92</citation>
+            </ref>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-94">NIST Special Publication 800-94</citation>
+            </ref>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-137">NIST Special Publication 800-137</citation>
+            </ref>
+         </references>
+      </control><control class="SP800-53" id="sc.13">
+         <title>CRYPTOGRAPHIC PROTECTION</title>
+         <param id="sc-13_a">
+            <desc>organization-defined cryptographic uses and type of cryptography required for each use</desc>
+            <value>organization-defined cryptographic uses and type of cryptography required for each use</value>
+         </param>
+         <prop class="name">SC-13</prop>
+         <prop class="priority">P1</prop>
+         <prop class="baseline-impact">LOW</prop>
+         <prop class="baseline-impact">MODERATE</prop>
+         <prop class="baseline-impact">HIGH</prop>
+         <part class="statement">
+            <p class="description">The information system implements <insert param-id="sc-13_a"/> in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</p>
+         </part>
+         <part class="guidance">
+            <p>Cryptography can be employed to support a variety of security solutions including, for example, the protection of classified and Controlled Unclassified Information, the provision of digital signatures, and the enforcement of information separation when authorized individuals have the necessary clearances for such information but lack the necessary formal access approvals. Cryptography can also be used to support random number generation and hash generation. Generally applicable cryptographic standards include FIPS-validated cryptography and NSA-approved cryptography. This control does not impose any requirements on organizations to use cryptography. However, if cryptography is required based on the selection of other security controls, organizations define each type of cryptographic use and the type of cryptography required (e.g., protection of classified information: NSA-approved cryptography; provision of digital signatures: FIPS-validated cryptography).</p>
+            <link href="#ac.2"/>
+            <link href="#ac.3"/>
+            <link href="#ac.7"/>
+            <link href="#ac.17"/>
+            <link href="#ac.18"/>
+            <link href="#au.9"/>
+            <link href="#au.10"/>
+            <link href="#cm.11"/>
+            <link href="#cp.9"/>
+            <link href="#ia.3"/>
+            <link href="#ia.7"/>
+            <link href="#ma.4"/>
+            <link href="#mp.2"/>
+            <link href="#mp.4"/>
+            <link href="#mp.5"/>
+            <link href="#sa.4"/>
+            <link href="#sc.8"/>
+            <link href="#sc.12"/>
+            <link href="#sc.28"/>
+            <link href="#si.7"/>
+         </part>
+         <subcontrol class="SP800-53-enhancement" id="sc.13.1.">
+            <title>FIPS-VALIDATED CRYPTOGRAPHY</title>
+            <prop class="name">SC-13 (1)</prop>
+            <link href="#sc.13"/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into SC-13</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="sc.13.2.">
+            <title>NSA-APPROVED CRYPTOGRAPHY</title>
+            <prop class="name">SC-13 (2)</prop>
+            <link href="#sc.13"/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into SC-13</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="sc.13.3.">
+            <title>INDIVIDUALS WITHOUT FORMAL ACCESS  APPROVALS</title>
+            <prop class="name">SC-13 (3)</prop>
+            <link href="#sc.13"/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into SC-13</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <subcontrol class="SP800-53-enhancement" id="sc.13.4.">
+            <title>DIGITAL SIGNATURES</title>
+            <prop class="name">SC-13 (4)</prop>
+            <link href="#sc.13"/>
+            <part class="statement">
+               <p class="description">
+                  <withdrawn>Incorporated into SC-13</withdrawn>.</p>
+            </part>
+         </subcontrol>
+         <part class="objective">
+            <p class="decision">Determine if:</p>
+            <part class="objective" id="obj_sc-13-1.">
+               <prop class="name">SC-13[1]</prop>
+               <p class="decision">the organization defines cryptographic uses; and</p>
+            </part>
+            <part class="objective" id="obj_sc-13-2.">
+               <prop class="name">SC-13[2]</prop>
+               <p class="decision">the organization defines the type of cryptography required for each use; and</p>
+            </part>
+            <part class="objective" id="obj_sc-13-3.">
+               <prop class="name">SC-13[3]</prop>
+               <p class="decision">the information system implements the organization-defined cryptographic uses and type of cryptography required for each use in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</p>
+            </part>
+         </part>
+         <part class="assessment">
+            <prop class="method">EXAMINE</prop>
+            <p class="object">System and communications protection policy</p>
+            <p class="object">procedures addressing cryptographic protection</p>
+            <p class="object">information system design documentation</p>
+            <p class="object">information system configuration settings and associated documentation</p>
+            <p class="object">cryptographic module validation certificates</p>
+            <p class="object">list of FIPS validated cryptographic modules</p>
+            <p class="object">information system audit records</p>
+            <p class="object">other relevant documents or records</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">INTERVIEW</prop>
+            <p class="object">System/network administrators</p>
+            <p class="object">organizational personnel with information security responsibilities</p>
+            <p class="object">system developer</p>
+            <p class="object">organizational personnel with responsibilities for cryptographic protection</p>
+         </part>
+         <part class="assessment">
+            <prop class="method">TEST</prop>
+            <p class="object">Automated mechanisms supporting and/or implementing cryptographic protection</p>
+         </part>
+         <references>
+            <ref>
+                <citation href="http://csrc.nist.gov/publications/PubsFIPS.html">FIPS Publication 140</citation>
+            </ref>
+            <ref>
+                <citation href="http://csrc.nist.gov/cryptval">http://csrc.nist.gov/cryptval</citation>
+            </ref>
+            <ref>
+                <citation href="http://www.cnss.gov">http://www.cnss.gov</citation>
+            </ref>
+         </references>
+      </control></catalog>

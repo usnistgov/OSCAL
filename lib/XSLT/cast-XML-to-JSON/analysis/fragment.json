@@ -1,0 +1,19 @@
+{
+                "class": "assessment",
+                "prose": [
+                  "\u003cp class=\"object\"\u003eSecurity awareness and training policy\u003c/p\u003e",
+                  "\u003cp class=\"object\"\u003eprocedures addressing security awareness training implementation\u003c/p\u003e",
+                  "\u003cp class=\"object\"\u003eappropriate codes of federal regulations\u003c/p\u003e",
+                  "\u003cp class=\"object\"\u003esecurity awareness training curriculum\u003c/p\u003e",
+                  "\u003cp class=\"object\"\u003esecurity awareness training materials\u003c/p\u003e",
+                  "\u003cp class=\"object\"\u003esecurity plan\u003c/p\u003e",
+                  "\u003cp class=\"object\"\u003etraining records\u003c/p\u003e",
+                  "\u003cp class=\"object\"\u003eother relevant documents or records\u003c/p\u003e"
+                ],
+                "props": [
+                  {
+                    "class": "method",
+                    "value": "EXAMINE"
+                  }
+                ]
+              }

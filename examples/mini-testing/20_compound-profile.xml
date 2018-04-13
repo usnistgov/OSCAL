@@ -14,8 +14,9 @@
    <!-- Note what comes back from invoke/@href is fully resolved, with implicit include/all -->
    <import href="99includeRAx3-profile.xml"/>
 
-   <merge/>
-   
+   <merge>
+     <as-is/>
+   </merge>
    <modify>
       <set-param param-id="ac-5_a">
          <desc>organization-defined duties of individuals</desc>

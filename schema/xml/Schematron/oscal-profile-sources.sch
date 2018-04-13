@@ -6,7 +6,7 @@
   
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
 
-  <xsl:include href="../../../working/lib/XSLT/profile-resolver.xsl"/>
+  <xsl:include href="../../../lib/XSLT/profile-resolver.xsl"/>
   <!-- included xslt has <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/> -->
 <!--
     

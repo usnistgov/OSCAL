@@ -7,15 +7,24 @@
   
   <xsl:output indent="yes"/>
   
-  <!-- Run on an XSD to produce a set of blank controls for describing elements
-       (and eventually attributes) declared therein.
-  
-  May require adjustment! This has not been written to work on just any XSD. -->
+  <!-- Purpose: produce a blank (initial) OSCAL document from a schema, listing elements and attributes in that schema. -->
+<!-- Note: you shouldn't need this XSLT unless you are starting to write schema documentation for a new schema, and wish to poll its element/attribute set. -->
   
   <xsl:template match="/">
-    <collection>
+    <worksheet>
       <xsl:apply-templates select="*/xs:element[@name][not(@abstract='true')]"/>
-    </collection>
+      <xsl:for-each-group select="//xs:attribute[exists(@name)]" group-by="@name">
+        <component class="attribute-description">
+          <prop class="tag"><xsl:value-of select="current-grouping-key()"/></prop>
+          <prop class="full_name">
+            <xsl:value-of select="@name"/> -- attribute</prop>
+          <part class="description"/>
+          <part class="remarks"/>
+          
+        </component>
+        
+      </xsl:for-each-group>
+    </worksheet>
   </xsl:template>
   
   <xsl:template match="xs:element">

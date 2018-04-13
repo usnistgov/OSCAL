@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-LOW-extract.xml 2017-11-16-05:00 -->
+<!-- Adjusted tagging to current model 2018-04-04 -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-50756f0d-c37b-494d-b77f-f82d25e9aa15">
    <title>FedRAMP LOW Baseline PROFILE (extracted and aligned, no edits)</title>
    <!-- Baseline allocation of calls (in order): LOW, MODERATE, HIGH, sp800-53 -->
@@ -152,11 +153,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ac.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AC-1 (b) (1) [at least every 3 years] AC-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-2_a">
@@ -176,15 +177,15 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ac.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AC-2 (j) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ac.3">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-7_a">
@@ -204,11 +205,11 @@
          <value>organization-defined delay algorithm</value>
       </set-param>
       <alter control-id="ac.7">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AC-7(a) [not more than three] [fifteen minutes] AC-7(b) [locks the account/node for thirty minutes]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-8_a">
@@ -220,14 +221,14 @@
          <value>organization-defined conditions</value>
       </set-param>
       <alter control-id="ac.8">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AC-8 (a) [see additional Requirements and Guidance] AC-8 (c) [see additional Requirements and Guidance]</p>
             </part>
             <part class="additional">
                <p>AC-8 Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB. AC-08 Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB. AC-8 Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. AC-8 Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-14_a">
@@ -235,23 +236,23 @@
          <value>organization-defined user actions</value>
       </set-param>
       <alter control-id="ac.14">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ac.17">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ac.18">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ac.19">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ac.20">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ac-22_a">
@@ -259,11 +260,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ac.22">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AC-22 (d) [at least quarterly]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="at-1_a">
@@ -279,12 +280,12 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="at.1">
-         <augment>
+         <add>
             <prop class="profile-title">SECURITY AWARENESS AND TRAINING POLICY ANDPROCEDURES</prop>
             <part class="parameters">
                <p>AT-1 (b) (1) [at least every 3 years] AT-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="at-2_a">
@@ -292,11 +293,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="at.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AT-2(c) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="at-3_a">
@@ -304,11 +305,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="at.3">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AT-3 (c) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="at-4_a">
@@ -316,11 +317,11 @@
          <value>organization-defined time period</value>
       </set-param>
       <alter control-id="at.4">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AT-4 (b) [At least one year]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-1_a">
@@ -336,11 +337,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="au.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AU-1 (b) (1) [at least every 3 years] AU-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-2_a">
@@ -352,18 +353,18 @@
          <value>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</value>
       </set-param>
       <alter control-id="au.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AU-2 (a) [Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes] AU-2 (d) [organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event]</p>
             </part>
             <part class="additional">
                <p>AU-2 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="au.3">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-4_a">
@@ -371,7 +372,7 @@
          <value>organization-defined audit record storage requirements</value>
       </set-param>
       <alter control-id="au.4">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-5_a">
@@ -383,11 +384,11 @@
          <value>organization-defined actions to be taken (e.g., shut down information system, overwrite oldest audit records, stop generating audit records)</value>
       </set-param>
       <alter control-id="au.5">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AU-5 (b) [organization-defined actions to be taken (overwrite oldest record)</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-6_a">
@@ -403,14 +404,14 @@
          <value>organization-defined personnel or roles</value>
       </set-param>
       <alter control-id="au.6">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AU-6 (a)-1 [at least weekly]</p>
             </part>
             <part class="additional">
                <p>AU-6 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-8_a">
@@ -418,11 +419,11 @@
          <value>organization-defined granularity of time measurement</value>
       </set-param>
       <alter control-id="au.8">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="au.9">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-11_a">
@@ -430,14 +431,14 @@
          <value>organization-defined time period consistent with records retention policy</value>
       </set-param>
       <alter control-id="au.11">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AU-11 [at least ninety days]</p>
             </part>
             <part class="additional">
                <p>AU-11. Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="au-12_a">
@@ -449,11 +450,11 @@
          <value>organization-defined personnel or roles</value>
       </set-param>
       <alter control-id="au.12">
-         <augment>
+         <add>
             <part class="parameters">
                <p>AU-12 (a) [all information system and network components where audit capability is deployed/available]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-1_a">
@@ -469,11 +470,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ca.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CA-1 (b) (1) [at least every 3 years] CA-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-2_a">
@@ -485,11 +486,11 @@
          <value>organization-defined individuals or roles</value>
       </set-param>
       <alter control-id="ca.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CA-2 (b) [at least annually] CA-2 (d) [individuals or roles to include FedRAMP PMO]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-3_a">
@@ -497,11 +498,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ca.3">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CA-3 (c) [at least annually and on input from FedRAMP]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-5_a">
@@ -509,14 +510,14 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ca.5">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CA-5 (b) [at least monthly]</p>
             </part>
             <part class="additional">
                <p>CA-5 Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-6_a">
@@ -524,14 +525,14 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ca.6">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CA-6 (c) [at least every three years or when a significant change occurs]</p>
             </part>
             <part class="additional">
                <p>CA-6c. Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-7_a">
@@ -555,14 +556,14 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ca.7">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CA-7 (g) [To meet Federal and FedRAMP requirements]</p>
             </part>
             <part class="additional">
                <p>CA-7 Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates. Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ca-9_a">
@@ -570,7 +571,7 @@
          <value>organization-defined information system components or classes of components</value>
       </set-param>
       <alter control-id="ca.9">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cm-1_a">
@@ -586,19 +587,19 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="cm.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CM-1 (b) (1) [at least every 3 years] CM-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="cm.2">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="cm.4">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cm-6_a">
@@ -614,14 +615,14 @@
          <value>organization-defined operational requirements</value>
       </set-param>
       <alter control-id="cm.6">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CM-6 (a) [United States Government Configuration Baseline (USGCB)]</p>
             </part>
             <part class="additional">
                <p>CM-6 (a) Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available. CM-6 (a) Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available). CM-6 (a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cm-7_a">
@@ -629,14 +630,14 @@
          <value>organization-defined prohibited or restricted functions, ports, protocols, and/or services</value>
       </set-param>
       <alter control-id="cm.7">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CM-7 (b) [United States Government Configuration Baseline (USGCB)]</p>
             </part>
             <part class="additional">
                <p>CM-7 (b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available. CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc. (Partially derived from AC-17(8).)</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cm-8_a">
@@ -648,18 +649,18 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="cm.8">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CM-8 (b) [at least monthly]</p>
             </part>
             <part class="additional">
                <p>CM-8 Requirement: must be provided at least monthly or when there is a change.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="cm.10">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cm-11_a">
@@ -675,11 +676,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="cm.11">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CM-11 (c) [Continuously (via CM-7 (5))]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cp-1_a">
@@ -695,11 +696,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="cp.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CP-1 (b)(1) [at least every 3 years] CP-1 (b)(2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cp-2_a">
@@ -719,14 +720,14 @@
          <value>organization-defined key contingency personnel (identified by name and/or by role) and organizational elements</value>
       </set-param>
       <alter control-id="cp.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CP-2 (d) [at least annually]</p>
             </part>
             <part class="additional">
                <p>CP-2 Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cp-3_a">
@@ -738,11 +739,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="cp.3">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CP-3 (a) [10 days] CP-3 (c) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cp-4_a">
@@ -754,14 +755,14 @@
          <value>organization-defined tests</value>
       </set-param>
       <alter control-id="cp.4">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CP-4 (a)-1 [at least annually for moderate impact systems; at least every three years for low impact systems] CP-4 (a)-2 [functional exercises for moderate impact systems; classroom exercises/table top written tests for low impact systems]</p>
             </part>
             <part class="additional">
                <p>CP-4 (a). Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="cp-9_a">
@@ -777,18 +778,18 @@
          <value>organization-defined frequency consistent with recovery time and recovery point objectives</value>
       </set-param>
       <alter control-id="cp.9">
-         <augment>
+         <add>
             <part class="parameters">
                <p>CP-9 (a) [daily incremental; weekly full] CP-9 (b) [daily incremental; weekly full] CP-9 (c) [daily incremental; weekly full]</p>
             </part>
             <part class="additional">
                <p>CP-9 Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check. CP-9 (a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative. CP-9 (b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative. CP-9 (c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="cp.10">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ia-1_a">
@@ -804,27 +805,27 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ia.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IA-1 (b) (1) [at least every 3 years] IA-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ia.2">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter subcontrol-id="ia.2.1.">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter subcontrol-id="ia.2.12.">
-         <augment>
+         <add>
             <part class="additional">
                <p>IA-2 (12) Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ia-4_a">
@@ -840,14 +841,14 @@
          <value>organization-defined time period of inactivity</value>
       </set-param>
       <alter control-id="ia.4">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IA-4 (d) [at least two years] IA-4 (e) [ninety days for user identifiers] (See additional requirements and guidance)</p>
             </part>
             <part class="additional">
                <p>IA-4 (e) Requirement: The service provider defines time period of inactivity for device identifiers. Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ia-5_a">
@@ -855,11 +856,11 @@
          <value>organization-defined time period by authenticator type</value>
       </set-param>
       <alter control-id="ia.5">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IA-5 (g) [to include sixty days for passwords]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ia-5_b">
@@ -879,11 +880,11 @@
          <value>organization-defined number</value>
       </set-param>
       <alter subcontrol-id="ia.5.1.">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IA-5 (1) (a) [case sensitive, minimum of twelve characters, and at least one each of upper-case letters, lower-case letters, numbers, and special characters] IA-5 (1) (b) [at least one] IA-5 (1) (d) [one day minimum, sixty day maximum] IA-5 (1) (e) [twenty four]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ia-5_l">
@@ -891,29 +892,29 @@
          <value>organization-defined token quality requirements</value>
       </set-param>
       <alter subcontrol-id="ia.5.11.">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ia.6">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ia.7">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ia.8">
-         <augment>
+         <add>
             <prop class="profile-title">IDENTIFICATION AND AUTHENTICATION (NON- ORGANIZATIONAL USERS)</prop>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter subcontrol-id="ia.8.1.">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter subcontrol-id="ia.8.2.">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ia-8_a">
@@ -921,11 +922,11 @@
          <value>organization-defined information systems</value>
       </set-param>
       <alter subcontrol-id="ia.8.3.">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter subcontrol-id="ia.8.4.">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ir-1_a">
@@ -941,11 +942,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ir.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IR-1 (b) (1) [at least every 3 years] IR-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ir-2_a">
@@ -957,23 +958,23 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ir.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IR-2 (c) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ir.4">
-         <augment>
+         <add>
             <part class="additional">
                <p>IR-4 Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ir.5">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ir-6_a">
@@ -985,18 +986,18 @@
          <value>organization-defined authorities</value>
       </set-param>
       <alter control-id="ir.6">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IR-6 (a) [US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)]</p>
             </part>
             <part class="additional">
                <p>IR-6 Requirement: Reports security incident information according to FedRAMP Incident Communications Procedure.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ir.7">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ir-8_a">
@@ -1016,14 +1017,14 @@
          <value>organization-defined incident response personnel (identified by name and/or by role) and organizational elements</value>
       </set-param>
       <alter control-id="ir.8">
-         <augment>
+         <add>
             <part class="parameters">
                <p>IR-8 (b) [see additional FedRAMP Requirements and Guidance] IR-8 (c) [at least annually] IR-8 (e) [see additional FedRAMP Requirements and Guidance]</p>
             </part>
             <part class="additional">
                <p>IR-8 (b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel. IR-8 (e) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ma-1_a">
@@ -1039,11 +1040,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ma.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>MA-1 (b) (1) [at least every 3 years] MA-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ma-2_a">
@@ -1055,15 +1056,15 @@
          <value>organization-defined maintenance-related information</value>
       </set-param>
       <alter control-id="ma.2">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ma.4">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ma.5">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="mp-1_a">
@@ -1079,11 +1080,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="mp.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>MP-1 (b) (1) [at least every 3 years] MP-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="mp-2_a">
@@ -1095,7 +1096,7 @@
          <value>organization-defined personnel or roles</value>
       </set-param>
       <alter control-id="mp.2">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="mp-6_a">
@@ -1107,7 +1108,7 @@
          <value>organization-defined sanitization techniques and procedures</value>
       </set-param>
       <alter control-id="mp.6">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="mp-7_a">
@@ -1123,7 +1124,7 @@
          <value>organization-defined security safeguards</value>
       </set-param>
       <alter control-id="mp.7">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pe-1_a">
@@ -1139,11 +1140,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pe.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PE-1 (b) (1) [at least every 3 years] PE-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pe-2_a">
@@ -1151,11 +1152,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pe.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PE-2 (c) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pe-3_a">
@@ -1191,11 +1192,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pe.3">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PE-3 (a) (2) [CSP defined physical access control systems/devices AND guards] PE-3 (d) [in all circumstances within restricted access area where the information system resides] PE-3 (f) [at least annually] PE-3 (g) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pe-6_a">
@@ -1207,11 +1208,11 @@
          <value>organization-defined events or potential indications of events</value>
       </set-param>
       <alter control-id="pe.6">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PE-6 (b) [at least monthly]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pe-8_a">
@@ -1223,19 +1224,19 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pe.8">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PE-8 (a) [for a minimum of one year] PE-8 (b) [at least monthly]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="pe.12">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="pe.13">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pe-14_a">
@@ -1247,18 +1248,18 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pe.14">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PE-14 (a) [consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments] PE-14 (b) [continuously]</p>
             </part>
             <part class="additional">
                <p>PE-14 (a). Requirements: The service provider measures temperature at server inlets and humidity levels by dew point.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="pe.15">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pe-16_a">
@@ -1266,11 +1267,11 @@
          <value>organization-defined types of information system components</value>
       </set-param>
       <alter control-id="pe.16">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PE-16 [all information system components]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pl-1_a">
@@ -1286,11 +1287,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pl.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PL-1 (b) (1) [at least every 3 years] PL-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pl-2_a">
@@ -1302,11 +1303,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pl.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PL-2 (c) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="pl-4_a">
@@ -1314,11 +1315,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="pl.4">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PL-4 (c) [At least every 3 years]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-1_a">
@@ -1334,11 +1335,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ps.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PS-1 (b) (1) [at least every 3 years] PS-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-2_a">
@@ -1346,11 +1347,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ps.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PS-2 (c) [at least every three years]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-3_a">
@@ -1358,11 +1359,11 @@
          <value>organization-defined conditions requiring rescreening and, where rescreening is so indicated, the frequency of such rescreening</value>
       </set-param>
       <alter control-id="ps.3">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PS-3 (b) [for national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year There is no reinvestigation for other moderate risk positions or any low risk positions]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-4_a">
@@ -1382,11 +1383,11 @@
          <value>organization-defined time period</value>
       </set-param>
       <alter control-id="ps.4">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PS-4 (a) [same day]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-5_a">
@@ -1406,11 +1407,11 @@
          <value>organization-defined time period</value>
       </set-param>
       <alter control-id="ps.5">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PS-5 (d)-2 [five days of the time period following the formal transfer action (DoD 24 hours)]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-6_a">
@@ -1422,11 +1423,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ps.6">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PS-6 (b) [at least annually] PS-6 (c) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-7_a">
@@ -1438,11 +1439,11 @@
          <value>organization-defined time period</value>
       </set-param>
       <alter control-id="ps.7">
-         <augment>
+         <add>
             <part class="parameters">
                <p>PS-7 (d)-2 [organization-defined time period – same day]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ps-8_a">
@@ -1454,7 +1455,7 @@
          <value>organization-defined time period</value>
       </set-param>
       <alter control-id="ps.8">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ra-1_a">
@@ -1470,15 +1471,15 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ra.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>RA-1 (b) (1) [at least every 3 years] RA-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="ra.2">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ra-3_a">
@@ -1498,14 +1499,14 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="ra.3">
-         <augment>
+         <add>
             <part class="parameters">
                <p>RA-3 (b) [security assessment report] RA-3 (c) [at least every three (3) years or when a significant change occurs] RA-3 (d) [to include all Authoring Officials and FedRAMP ISSOs] RA-3 (e) [at least every three (3) years or when a significant change occurs]</p>
             </part>
             <part class="additional">
                <p>RA-3 Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="ra-5_a">
@@ -1521,14 +1522,14 @@
          <value>organization-defined personnel or roles</value>
       </set-param>
       <alter control-id="ra.5">
-         <augment>
+         <add>
             <part class="parameters">
                <p>RA-5 (a) [monthly operating system/infrastructure; monthly web applications and databases] RA-5 (d) [high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery]</p>
             </part>
             <part class="additional">
                <p>RA-5 (a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually. RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sa-1_a">
@@ -1544,15 +1545,15 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="sa.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SA-1 (b) (1) [at least every 3 years] SA-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="sa.2">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sa-3_a">
@@ -1560,15 +1561,15 @@
          <value>organization-defined system development life cycle</value>
       </set-param>
       <alter control-id="sa.3">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="sa.4">
-         <augment>
+         <add>
             <part class="additional">
                <p>SA-4 Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred. See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sa-5_a">
@@ -1580,7 +1581,7 @@
          <value>organization-defined personnel or roles</value>
       </set-param>
       <alter control-id="sa.5">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sa-9_a">
@@ -1592,11 +1593,11 @@
          <value>organization-defined processes, methods, and techniques</value>
       </set-param>
       <alter control-id="sa.9">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SA-9 (a) [FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system] SA-9 (c) [Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sc-1_a">
@@ -1612,11 +1613,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="sc.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SC-1 (b) (1) [at least every 3 years] SC-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sc-5_a">
@@ -1628,11 +1629,11 @@
          <value>organization-defined security safeguards</value>
       </set-param>
       <alter control-id="sc.5">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <alter control-id="sc.7">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sc-12_a">
@@ -1640,11 +1641,11 @@
          <value>organization-defined requirements for key generation, distribution, storage, access, and destruction</value>
       </set-param>
       <alter control-id="sc.12">
-         <augment>
+         <add>
             <part class="additional">
                <p>SC-12 Guidance: Federally approved cryptography</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sc-13_a">
@@ -1652,11 +1653,11 @@
          <value>organization-defined cryptographic uses and type of cryptography required for each use</value>
       </set-param>
       <alter control-id="sc.13">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SC-13 [FIPS-validated or NSA-approved cryptography]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="sc-15_a">
@@ -1664,38 +1665,38 @@
          <value>organization-defined exceptions where remote activation is to be allowed</value>
       </set-param>
       <alter control-id="sc.15">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SC-15 (a) [no exceptions]</p>
             </part>
             <part class="additional">
                <p>SC-15 Additional FedRAMP Requirements and Guidance: Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="sc.20">
-         <augment>
+         <add>
             <prop class="profile-title">SECURE NAME /ADDRESS RESOLUTION SERVICE (AUTHORITATIVE SOURCE)</prop>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="sc.21">
-         <augment>
+         <add>
             <prop class="profile-title">SECURE NAME /ADDRESS RESOLUTION SERVICE (RECURSIVE OR CACHING
             RESOLVER)</prop>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="sc.22">
-         <augment>
+         <add>
             <prop class="profile-title">ARCHITECTURE AND PROVISIONING FOR NAME/ADDRESS RESOLUTION
             SERVICE</prop>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="sc.39">
-         <augment/>
+         <add/>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="si-1_a">
@@ -1711,11 +1712,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="si.1">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SI-1 (b) (1) [at least every 3 years] SI-1 (b) (2) [at least annually]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="si-2_a">
@@ -1723,11 +1724,11 @@
          <value>organization-defined time period</value>
       </set-param>
       <alter control-id="si.2">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SI-2 (c) [within 30 days of release of updates]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="si-3_a">
@@ -1739,11 +1740,11 @@
          <value>organization-defined action</value>
       </set-param>
       <alter control-id="si.3">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SI-3 (c) (1)-1 [at least weekly] SI-3 (c) (1)-2 [to include endpoints] SI-3 (c) (2) [to include alerting administrator or defined security personnel]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="si-4_a">
@@ -1767,11 +1768,11 @@
          <value>organization-defined frequency</value>
       </set-param>
       <alter control-id="si.4">
-         <augment>
+         <add>
             <part class="additional">
                <p>SI-4 Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="si-5_a">
@@ -1791,15 +1792,15 @@
          <value>organization-defined external organizations</value>
       </set-param>
       <alter control-id="si.5">
-         <augment>
+         <add>
             <part class="parameters">
                <p>SI-5 (a) [to include US-CERT] SI-5 (c) [to include system security personnel and administrators with configuration/patch-management responsibilities]</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <alter control-id="si.12">
-         <augment/>
+         <add/>
       </alter>
       <!-- ===== -->
    
@@ -1809,11 +1810,11 @@
          <value>organization-defined level of independence</value>
       </set-param>
       <alter subcontrol-id="ca.2.1.">
-         <augment>
+         <add>
             <part class="additional">
                <p>CA-2(1) Requirement: Must use an accredited 3PAO for JAB authorization</p>
             </part>
-         </augment>
+         </add>
       </alter>
       <!-- - - - - - -->
       <set-param param-id="si-16_a">
@@ -1821,7 +1822,7 @@
          <value>organization-defined security safeguards</value>
       </set-param>
       <alter control-id="si.16">
-         <augment/>
+         <add/>
       </alter>
       <!-- ===== -->
    </modify></profile>

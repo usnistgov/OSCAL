@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../../working/lib/CSS/oscal.css"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <?xml-model href="../../schema/xml/Schematron/oscal-links.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <title>MINI TESTING catalog</title>

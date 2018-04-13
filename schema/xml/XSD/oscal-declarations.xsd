@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://csrc.nist.gov/ns/oscal/1.0" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!--
+    declarations includes declarations for control types, parameters (names/types),
+    authorities (source data for transclusion etc. etc.)
+  -->
+  <xs:element name="declarations">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="oscal:decls">
+          <xs:attribute name="href"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="decls">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="oscal:declare-prop"/>
+      <xs:element ref="oscal:declare-part"/>
+      <xs:element ref="oscal:declare-p"/>
+      <xs:element ref="oscal:declare-link"/>
+    </xs:choice>
+  </xs:complexType>
+  <!--
+    parameter declarations expose names and default values for parameters within the control type
+    XXX not implemented: for now, parameters are declared implicitly (i.e. in use)
+    We can add this (w/ support for it) when we wish to constrain them at the OSCAL layer
+  -->
+  <!--
+    parameter_decl =
+    element declare-param { requiredClass, contextAttr, singleton?, desc, \default? }
+  -->
+  <!-- property may contain only id, only regex, both id and regex, or (sequence of) values -->
+  <xs:element name="declare-prop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:singleton"/>
+        <xs:element minOccurs="0" ref="oscal:required"/>
+        <xs:element minOccurs="0" ref="oscal:identifier"/>
+        <xs:choice>
+          <xs:element ref="oscal:regex"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:calc"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:value"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" use="required"/>
+      <xs:attributeGroup ref="oscal:contextAttr"/>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    part declaration
+    add 'purpose', 'guidance' etc.
+  -->
+  <xs:element name="declare-part">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:singleton"/>
+        <xs:element minOccurs="0" ref="oscal:required"/>
+      </xs:sequence>
+      <xs:attribute name="class" use="required"/>
+      <xs:attributeGroup ref="oscal:contextAttr"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- paragraph declaration -->
+  <xs:element name="declare-p">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:singleton"/>
+        <xs:element minOccurs="0" ref="oscal:required"/>
+      </xs:sequence>
+      <xs:attribute name="class" use="required"/>
+      <xs:attributeGroup ref="oscal:contextAttr"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- link declaration -->
+  <xs:element name="declare-link">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="oscal:singleton"/>
+        <xs:element minOccurs="0" ref="oscal:required"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="oscal:relAttr"/>
+      <xs:attributeGroup ref="oscal:contextAttr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="identifier">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="singleton">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="required">
+    <xs:complexType/>
+  </xs:element>
+  <!--
+    on 'property and possibly 'parameter',
+    element limit { requiredClass, text } w/ @type= upper-bound-inclusive, lower-bound-exclusive, (w/ inclusive/exclusive etc.)
+  -->
+  <xs:element name="regex" type="xs:string"/>
+  <xs:element name="value" type="xs:string"/>
+  <xs:element name="calc">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:inherit"/>
+        <xs:element ref="oscal:autonum"/>
+      </xs:choice>
+      <xs:attribute ref="xml:space"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- empty element because it represents a value to be calculated -->
+  <xs:element name="inherit">
+    <xs:complexType>
+      <xs:attribute name="from"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- this time the text content gives the format of the calculated number -->
+  <xs:element name="autonum" type="xs:string"/>
+  <xs:attributeGroup name="contextAttr">
+    <xs:attribute name="context" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="relAttr">
+    <xs:attribute name="rel"/>
+  </xs:attributeGroup>
+</xs:schema>
