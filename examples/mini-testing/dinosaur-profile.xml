@@ -24,13 +24,13 @@
     
   </import>
   <!--<merge combine="merge"/>-->
-  <merge>
+  <!--<merge>
     <combine method="keep"/>
-<!-- semantics of 'merge' combination should be specified (and tested!)   -->
-    <!--<as-is/>-->
+<!-\- semantics of 'merge' combination should be specified (and tested!)   -\->
+    <!-\-<as-is/>-\->
     
     
-  </merge>
+  </merge>-->
   <!--<import href="something-else.xml"/>-->
    
    <!--<merge>
@@ -47,38 +47,38 @@
      -\-><!-\-</custom>-\->
      
    </merge>-->
-   <modify>
+   <!--<modify>
       <set-param param-id="scary">
          <value>claws, tail, huge jackhammer jaws with sharp teeth</value>
       </set-param>
       
-<!-- make examples of all/any remove and add formations
-      showing deep as well as shallow alterations -->
+<!-\- make examples of all/any remove and add formations
+      showing deep as well as shallow alterations -\->
       <alter control-id="allosaur">
         <remove class-ref="trans"/>
         <remove id-ref="allosaur-desc"/>
         <remove item-name="title"/>
         <remove item-name="prop" class-ref="trans"/>
         
-        <!--      add[empty(@id|@class)] will be added at the end   -->
-<!--      add/@position defaults in processing to 'after' -->
-          <!-- @position w/o @where means added first (after titles and parameters)
-          or last (after everything) -->
-<!-- Empty @target is understood to be the control or subcontrol itself, not a descendant; in these cases position='before' and 'after' are inoperative ... you're not permitted to patch before or after controls, only inside them. -->
-<!--         -->
-<!-- Schematron: when empty(@target) then @position=('starting','ending')        -->
+        <!-\-      add[empty(@id|@class)] will be added at the end   -\->
+<!-\-      add/@position defaults in processing to 'after' -\->
+          <!-\- @position w/o @where means added first (after titles and parameters)
+          or last (after everything) -\->
+<!-\- Empty @target is understood to be the control or subcontrol itself, not a descendant; in these cases position='before' and 'after' are inoperative ... you're not permitted to patch before or after controls, only inside them. -\->
+<!-\-         -\->
+<!-\- Schematron: when empty(@target) then @position=('starting','ending')        -\->
          
          
-         <!--<add target="@id|@class" position="starting|ending|before|after">-->
+         <!-\-<add target="@id|@class" position="starting|ending|before|after">-\->
          <add position="ending">
             <part  class="new">
                <title>My new part</title>
             </part>
          </add>
-         <!--</add>-->
+         <!-\-</add>-\->
       </alter>
    </modify>
-  
+  -->
 <!-- Errors and warning conditions:
   Duplicate or clashing controls in final results
   Orphan subcontrols in final results

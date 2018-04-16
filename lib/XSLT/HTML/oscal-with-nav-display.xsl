@@ -6,7 +6,10 @@
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="oscal">
 
-
+  <xsl:variable name="catalog-or-resolution" select="/oscal:catalog | /oscal:framework | /oscal:worksheet |
+    /oscal:resolution/oscal:modified |
+    /oscal:resolution/oscal:merged[not(../oscal:modified)] |
+    /oscal:resolution/oscal:imported[not(../oscal:merged | ../oscal:modified)]"/>
 
   <xsl:template match="/">
     <html>
@@ -18,11 +21,11 @@
         <link rel="stylesheet" type="text/css" href="oscal-html-fancy.css"/>
       </head>
       <body class="{local-name(/*)}">
-        <div id="directory">
-          <xsl:apply-templates mode="toc" select="//oscal:catalog | //oscal:framework"/>
-        </div>
+        <!--<div id="directory">
+          
+        </div>-->
         <div id="main">
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="$catalog-or-resolution"/>
         </div>
         
       </body>
@@ -34,25 +37,13 @@
   </xsl:template>
 
 
-  <xsl:template match="oscal:profile">
+  <xsl:template match="oscal:resolution">
     <div class="profile">
-      <xsl:apply-templates select="oscal:title, oscal:import"/>
-    </div>
-  </xsl:template>
-  
-  <xsl:template match="oscal:import">
-    <div class="invoking">
-    <xsl:apply-templates select="." mode="display-invocation"/>
-    <xsl:apply-templates select="oscal:import | oscal:framework"/>
-    </div>
-  </xsl:template>
-      
-  <xsl:template match="oscal:import/oscal:framework">
-    <div class="framework" id="{generate-id(.)}">
-      <xsl:copy-of select="@id"/>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
+  
+ 
   
   <xsl:template match="oscal:title">
     <h2 class="title">
@@ -196,6 +187,14 @@
     </p>
   </xsl:template>
   
+  <xsl:template match="oscal:param/oscal:label">
+    <p class="label">
+      <span class="subst">Label:</span>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  
   <xsl:template match="oscal:param/oscal:value">
     <p class="value">
       <span class="subst">Value:</span>
@@ -212,11 +211,7 @@
     </p>
   </xsl:template>
   
-  <xsl:template mode="inline" match="oscal:param/oscal:desc">
-    <span class="desc">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
+  <xsl:template mode="inline" match="oscal:param/oscal:desc"/>
   
   <xsl:template mode="inline" match="oscal:param/oscal:value">
     <span class="value">
@@ -224,13 +219,9 @@
     </span>
   </xsl:template>
   
-  <xsl:template mode="inline" match="oscal:param/oscal:default">
-    <span class="default">
-      <xsl:text>(</xsl:text>
-      <span class="subst">Default:</span>
-      <xsl:text> </xsl:text>
+  <xsl:template mode="inline" match="oscal:param/oscal:label">
+    <span class="label">
       <xsl:apply-templates/>
-      <xsl:text>)</xsl:text>
     </span>
   </xsl:template>
   
@@ -318,7 +309,7 @@
           <xsl:apply-templates select="." mode="param-id-block"/>
         </a>
         <xsl:apply-templates mode="inline"/>
-        <xsl:if test="not(oscal:value | oscal:default)">
+        <xsl:if test="not(oscal:value)">
           <span class="value">
             <xsl:apply-templates select="oscal:value" mode="param-value"/>
             <xsl:if test="not(oscal:value)">[NO PARAMETER VALUE GIVEN]</xsl:if>
