@@ -21,9 +21,9 @@
         <link rel="stylesheet" type="text/css" href="oscal-html-fancy.css"/>
       </head>
       <body class="{local-name(/*)}">
-        <!--<div id="directory">
-          
-        </div>-->
+        <div id="directory">
+          <xsl:apply-templates mode="toc" select="$catalog-or-resolution"/>
+        </div>
         <div id="main">
           <xsl:apply-templates select="$catalog-or-resolution"/>
         </div>
@@ -382,7 +382,7 @@
           </xsl:when>
           <!-- Link not broken -->
           <xsl:when test="$target">
-            <xsl:apply-templates select="$target" mode="link-text"/>
+            <xsl:apply-templates select="$target[last()]" mode="link-text"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@href"/>
@@ -486,7 +486,11 @@
     <xsl:value-of select="generate-id(.)"/>
   </xsl:template>
   
-  <xsl:template match="oscal:catalog | oscal:framework | oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component" mode="toc">
+  <xsl:template match="oscal:importing | oscal:merged | oscal:modified | oscal:catalog | oscal:group[oscal:catalog]" mode="toc">
+    <xsl:apply-templates mode="toc"/>
+  </xsl:template>
+  
+  <xsl:template match="/oscal:catalog | oscal:framework | oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component" mode="toc">
     <xsl:variable name="new-id">
       <xsl:apply-templates select="." mode="new-id"/>
     </xsl:variable>
@@ -497,8 +501,9 @@
           <xsl:text> </xsl:text>
         </xsl:for-each>
         <xsl:apply-templates select="oscal:title" mode="inline"/>
+        <xsl:if test="not(oscal:title)"><xsl:value-of select="local-name()"/></xsl:if>
       </a></p>
-      <xsl:apply-templates mode="toc" select="oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component"/>
+      <xsl:apply-templates mode="toc" select="oscal:catalog | oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component"/>
     </div>
   </xsl:template>
   
