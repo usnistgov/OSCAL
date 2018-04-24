@@ -8,6 +8,9 @@
   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="#all">
 
+  <!-- Purpose: from OSCAL profile input, produce a representation of all controls called with insertions, alterations, modifications and settings applied. -->
+  <!-- Dependencies: working links to valid control catalogs in OSCAL XML. -->
+  
   <xsl:strip-space elements="group control subcontrol part section component"/>
   
   <xsl:output indent="yes"/>

@@ -4,6 +4,8 @@
 
 XSLT stylesheet version 3.0 (2 templates)
 
+Purpose: Enhances OSCAL tagging with *purported* links by performing lookups in a catalog and rewriting the links as resolved. A demonstration.
+
 Runtime parameter ``catalog-path`` as xs:string
 
 Runtime parameter ``frameworkURI`` as xs:string
@@ -13,6 +15,10 @@ Runtime parameter ``key-property`` as xs:string
 #### profile-resolver.xsl
 
 XSLT stylesheet version 3.0 (32 templates)
+
+Purpose: from OSCAL profile input, produce a representation of all controls called with insertions, alterations, modifications and settings applied.
+
+Dependencies: working links to valid control catalogs in OSCAL XML.
 
 #### profile-basic-display.xsl
 
@@ -173,6 +179,8 @@ Runtime dependency: `analysis.xsl`
 #### cast-XML-to-JSON/jsonify-oscal-xml.xpl
 
 XProc pipeline version 1.0 (3 steps)
+
+Purpose: From XML OSCAL, produces equivalent JSON OSCAL.
 
 Input: OSCAL XML
 
