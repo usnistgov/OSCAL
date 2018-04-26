@@ -44,3 +44,43 @@ The OSCAL project uses a typical GitHub fork and pull request [workflow](https:/
 1. Once you have staged your changes, you will need to commit them. When committing, you will need to include a commit message. The commit message should describe the nature of your changes (e.g., added new feature X which supports Y). You can also reference an issue from the OSCAL repository by using the hash symbol. For example, to reference issue #34, you would include the text "#34". The full command would be: ```git commit -m "added new feature X which supports Y addressing issue #34"```.
 1. Next, you must push your changes to your personal repo. You can do this with the command: ```git push```.
 1. Finally, you can [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
+
+## Contributing to a Development Sprint
+
+The NIST OSCAL team is using the GitHub [project cards](https://github.com/usnistgov/OSCAL/projects) feature to track development sprints as part of the core OSCAL work stream. A typical development sprint lasts roughly a month, with some sprints lasting slightly less or more to work around major holidays or events attended by the core project team. The active sprint is typically the lowest numbered open project within the previously referenced page.
+
+### User Stories
+
+Each development sprint consists of a set of [user stories](https://github.com/usnistgov/OSCAL/issues?q=is%3Aopen+is%3Aissue+label%3A%22User+Story%22), that represent features, actions, or enhancements that are intended to be developed during the sprint. Each user story is based on a [template](https://github.com/usnistgov/OSCAL/issues/new?template=user-story_template.md&labels=User+Story) and describes the basic problem or need to be addressed, a set of detailed goals to accomplish, any dependencies that must be addressed to start or complete the user story, and the criteria for acceptance of the contribution. 
+
+The goals in a user story will be bulleted, indicating that each goal can be worked on in parallel, or numbered, indicating that each goal must be worked on sequentially. Each goal will be assigned to one or more individuals to accomplish.
+
+Note: A user story that is not part of a specific development sprint can still be worked on at any time by any OSCAL contributor. When a user story is not assigned to sprint, its status will not be tracked as part of our sprint management efforts, but when completed will still be considered as a possible contribution to the OSCAL project.
+
+### Reporting User Story Status
+
+When working on a goal that is part of a user story you will want to provide a periodic report on any progress that has been made until that goal has been completed. This status must be reported as a comment to the associated user story issue. For a user story that is part of an OSCAL development sprint, status reports will typically be made by close of business the day before the weekly OSCAL status meeting (typically held on Thursdays). Each OSCAL contributor will enter their own status update weekly indicating an estimated completion percentage against each goal to which they are assigned. Progress on goals will be tracked by the NIST OSCAL team and will be used to update the project cards for the current sprint.
+
+When reporting status, please use the following comment template:
+
+```
+MM/DD/YYY - Sprint XX Progress Report
+
+Goal: <goal text>
+Progress: <a short comment on progress made since the last report>
+% Complete: <a rough estimated percentage of the work completed>
+Open Issues: <a list of issues encountered while addressing the goal>
+```
+
+When describing any open issues encountered use an "\@mention" of the individual who needs to respond to the issue. This will ensure that the individual is updated with this status. Please also raise any active, unresolved issues on the weekly status calls.
+
+### Project Status
+
+The project cards for each sprint will be in one of the following states:
+
+- "To do" - The user story has been assigned to the sprint, but work has not started.
+- "In progress" - Work has started on the user story, but development of the issue has not completed.
+- "Under review" - All goals for the user story have been completed and one or more pull requests have been submitted for all associated work. The NIST team will review the pull requests to ensure that all goals and acceptance criteria have been met.
+- "Done" - Once the contributed work has been reviewed and the pull request has been merged, the user story will be marked as "Done".
+
+Note: A pull request must be submitted for all goals before an issue will be moved to the "under review" status. If any goals or acceptance criteria have not been met, then the user story will be commented on to provide feedback, and the issue will be returned to the "In progress" state.
