@@ -6,11 +6,11 @@ XSLT stylesheet version 3.0 (2 templates)
 
 Purpose: Enhances OSCAL tagging with *purported* links by performing lookups in a catalog and rewriting the links as resolved. A demonstration.
 
-Runtime parameter ``catalog-path`` as xs:string
+Runtime parameter `catalog-path` as xs:string
 
-Runtime parameter ``frameworkURI`` as xs:string
+Runtime parameter `frameworkURI` as xs:string
 
-Runtime parameter ``key-property`` as xs:string
+Runtime parameter `key-property` as xs:string
 
 #### profile-resolver.xsl
 
@@ -32,9 +32,9 @@ XSLT stylesheet version 3.0 (1 template)
 
 Compile-time dependency (xsl:include) `oscal-functions.xsl`
 
-Runtime parameter ``selector`` as xs:string
+Runtime parameter `selector` as xs:string
 
-Runtime parameter ``value`` as xs:string
+Runtime parameter `value` as xs:string
 
 #### oscal-write-declarations.xsl
 
@@ -60,7 +60,7 @@ XSLT stylesheet version 2.0 (0 templates)
 
 XSLT stylesheet version 3.0 (3 templates)
 
-Runtime parameter ``xslt-process`` as xs:string
+Runtime parameter `xslt-process` as xs:string
 
 #### cast-JSON-to-XML/OpenControl/param-insert.xsl
 
@@ -68,13 +68,13 @@ XSLT stylesheet version 3.0 (3 templates)
 
 Compile-time dependency (xsl:import) `../lib/XSLT/profile-resolver.xsl`
 
-Runtime parameter ``resource-file`` as xs:string
+Runtime parameter `resource-file` as xs:string
 
 #### cast-JSON-to-XML/OpenControl/json-reader.xsl
 
 XSLT stylesheet version 3.0 (1 template)
 
-Runtime parameter ``json-file`` as xs:string
+Runtime parameter `json-file` as xs:string
 
 #### cast-JSON-to-XML/OpenControl/map-refine.xsl
 
@@ -86,13 +86,13 @@ XSLT stylesheet version 3.0 (3 templates)
 
 Compile-time dependency (xsl:import) `../lib/XSLT/profile-resolver.xsl`
 
-Runtime parameter ``resource-file`` as xs:string
+Runtime parameter `resource-file` as xs:string
 
 #### cast-JSON-to-XML/OpenControl/analysis.xsl
 
 XSLT stylesheet version 3.0 (1 template)
 
-Runtime parameter ``json-file`` 
+Runtime parameter `json-file` 
 
 #### cast-JSON-to-XML/OpenControl/enhance.xsl
 
@@ -124,7 +124,7 @@ XSLT stylesheet version 3.0 (1 template)
 
 XSLT stylesheet version 3.0 (1 template)
 
-Runtime parameter ``json-file`` as xs:string
+Runtime parameter `json-file` as xs:string
 
 #### cast-XML-to-JSON/analysis/json-abstract-map.xsl
 
@@ -146,7 +146,7 @@ XSLT stylesheet version 1.0 (29 templates)
 
 XSLT stylesheet version 3.0 (2 templates)
 
-Runtime parameter ``xslt-process`` as xs:string
+Runtime parameter `xslt-process` as xs:string
 
 #### HTML/oscal-with-nav-display.xsl
 

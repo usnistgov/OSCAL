@@ -70,7 +70,7 @@
   </xsl:template>
   
   <xsl:template match="xsl:stylesheet/xsl:param" mode="report">
-    <p>Runtime parameter <code>{ '`' || @name || '`' }</code> { @as/(' as ' || .) }</p>
+    <p>Runtime parameter <code>{ @name }</code> { @as/(' as ' || .) }</p>
     <xsl:apply-templates mode="#current"/>
   </xsl:template>
   
