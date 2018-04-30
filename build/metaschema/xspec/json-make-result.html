@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:test="http://www.jenitennison.com/xslt/unit-test" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Test Report for home/wendell/Documents/OSCAL/schema/metaschema/json-schema-produce.xsl (passed: 0 / pending: 0 / failed: 1 / total: 1)</title>
+      <link rel="stylesheet" type="text/css" href="file:/home/wendell/Oxygen%20XML%20Editor%2020/frameworks/xspec/src/reporter/test-report.css" />
+   </head>
+   <body>
+      <h1>Test Report</h1>
+      <p>Stylesheet: <a href="file:/home/wendell/Documents/OSCAL/schema/metaschema/json-schema-produce.xsl">home/wendell/Documents/OSCAL/schema/metaschema/json-schema-produce.xsl</a></p>
+      <p>Tested: 16 May 2018 at 09:41</p>
+      <h2>Contents</h2>
+      <table class="xspec">
+         <col width="75%" />
+         <col width="6.25%" />
+         <col width="6.25%" />
+         <col width="6.25%" />
+         <col width="6.25%" />
+         <thead>
+            <tr>
+               <th></th>
+               <th class="totals">passed: 0</th>
+               <th class="totals">pending: 0</th>
+               <th class="totals">failed: 1</th>
+               <th class="totals">total: 1</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="failed">
+               <th><a href="#d3e4">for METASCHEMA input, produce a schema</a></th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+               <th class="totals">1</th>
+            </tr>
+         </tbody>
+      </table>
+      <div id="d3e4">
+         <h2 class="failed">for METASCHEMA input, produce a schema<span class="scenario-totals">passed: 0 / pending: 0 / failed: 1 / total: 1</span></h2>
+         <table class="xspec" id="t-d3e4">
+            <col width="75%" />
+            <col width="25%" />
+            <tbody>
+               <tr class="failed">
+                  <th>for METASCHEMA input, produce a schema</th>
+                  <th>passed: 0 / pending: 0 / failed: 1 / total: 1</th>
+               </tr>
+               <tr class="failed">
+                  <td><a href="#d3e525">A schema</a></td>
+                  <td>Failure</td>
+               </tr>
+            </tbody>
+         </table>
+         <h3 id="d3e4">for METASCHEMA input, produce a schema</h3>
+         <h4 id="d3e525">A schema</h4>
+         <table class="xspecResult">
+            <thead>
+               <tr>
+                  <th>Result</th>
+                  <th>Expected Result</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><pre>&lt;<span class="diff">map</span> xmlns="http://www.w3.org/2005/xpath-functions"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"&gt;
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="$schema"&gt;<span class="diff">http://json-schema.org/draft-07/schema#</span>&lt;/string&gt;
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">http://csrc.nist.gov/ns/oscal/1.0-implementation.json</span>&lt;/string&gt;
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="$comment"&gt;<span class="diff">Implementation Schema</span>&lt;/string&gt;
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+   &lt;<span class="diff">map</span> <span class="diff">key</span>="definitions"&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="control controls"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/control</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n....\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="title"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/title</span>&lt;/string&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="props"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/prop</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="params"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/param</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="parts"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/part</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="links"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/link</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....\n....\n..</span>
+         &lt;/map&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">title</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">props</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">params</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">part</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">link</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">references</span>&lt;/string&gt;
+            &lt;/array&gt;
+         &lt;/map&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="title"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/title</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="props"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/prop</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="params"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/param</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n......\n......\n......</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="descriptions"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/desc</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n......</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="labels"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/label</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n......</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="requirement"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/requirement</span>&lt;/string&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n......</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="value"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/value</span>&lt;/string&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n......</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="links"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/link</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+         &lt;/map&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">descriptions</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">labels</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">requirement</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">value</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">link</span>&lt;/string&gt;
+            &lt;/array&gt;
+         &lt;/map&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="descriptions"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/desc</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="labels"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/label</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="requirement"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/requirement</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="value"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/value</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="part parts"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/part</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n....\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="title"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/title</span>&lt;/string&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="props"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/prop</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="parts"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/part</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="links"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/link</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n..</span>
+         &lt;/map&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">title</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">props</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">part</span>&lt;/string&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">link</span>&lt;/string&gt;
+            &lt;/array&gt;
+         &lt;/map&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="title"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/title</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="props"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/prop</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="link links"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/link</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="references references"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/references</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n....</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="references"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/ref</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n..</span>
+         &lt;/map&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">references</span>&lt;/string&gt;
+            &lt;/array&gt;
+         &lt;/map&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="references"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/ref</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n......</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="citations"&gt;
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/citation</span>&lt;/string&gt;
+               &lt;/map&gt;
+            &lt;/map&gt;
+            <span class="whitespace">\n....</span>
+         &lt;/map&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               &lt;<span class="diff">string</span>&gt;<span class="diff">citations</span>&lt;/string&gt;
+            &lt;/array&gt;
+         &lt;/map&gt;
+      &lt;/map&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="citations"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/citation</span>&lt;/string&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+      &lt;/map&gt;
+   &lt;/map&gt;
+   &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="capabilities"&gt;
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/control</span>&lt;/string&gt;
+         &lt;/map&gt;
+      &lt;/map&gt;
+   &lt;/map&gt;
+   &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+      &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+         &lt;<span class="diff">string</span>&gt;<span class="diff">controls</span>&lt;/string&gt;
+      &lt;/array&gt;
+   &lt;/map&gt;
+&lt;/map&gt;</pre></td>
+                  <td>
+                     <p>XPath <code>/</code> from:
+                     </p><pre>&lt;<span class="diff">map</span> xmlns="http://www.w3.org/2005/xpath-functions"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"&gt;
+   <span class="whitespace">\n...</span>
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="$schema"&gt;<span class="diff">http://json-schema.org/draft-07/schema#</span>&lt;/string&gt;
+   <span class="whitespace">\n...</span>
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">http://csrc.nist.gov/ns/oscal/1.0/sample01-structured</span>&lt;/string&gt;
+   <span class="whitespace">\n...</span>
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="title"&gt;<span class="diff">Sample 01 Control Schema</span>&lt;/string&gt;
+   <span class="whitespace">\n...</span>
+   &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+   <span class="whitespace">\n...</span>
+   &lt;<span class="diff">map</span> <span class="diff">key</span>="definitions"&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="param"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/param</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="desc"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/desc</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="label"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/label</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="value"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/value</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="class"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/class</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">desc</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">label</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">value</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">class</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/array&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="desc"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/desc</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="label"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/label</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="value"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/value</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="link"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/link</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="href"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="format"&gt;<span class="diff">uri-reference</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="rel"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="value"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">href</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">rel</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">value</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/array&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="references"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/references</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/ref</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">refs</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/array&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="ref"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/ref</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="citation"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">citation</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/array&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="prop"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/prop</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="class"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/class</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="value"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="id"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">array</span> <span class="diff">key</span>="required"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span>&gt;<span class="diff">class</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/array&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">class</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">value</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">id</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/array&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="part"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/part</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="prop"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="additionalProperties"&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+                  <span class="whitespace">\n...............</span>
+               &lt;/map&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">sample01-structured-meta-schema.json#/definitions/propNames</span>&lt;/string&gt;
+                  <span class="whitespace">\n...............</span>
+               &lt;/map&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="parts"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="additionalProperties"&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/part</span>&lt;/string&gt;
+                  <span class="whitespace">\n...............</span>
+               &lt;/map&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">sample01-structured-meta-schema.json#/definitions/partNames</span>&lt;/string&gt;
+                  <span class="whitespace">\n...............</span>
+               &lt;/map&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="paragraphs"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/paragraph</span>&lt;/string&gt;
+                  <span class="whitespace">\n...............</span>
+               &lt;/map&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="unorderedLists"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/unorderedList</span>&lt;/string&gt;
+                  <span class="whitespace">\n...............</span>
+               &lt;/map&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="class"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/class</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="id"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">array</span> <span class="diff">key</span>="required"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span>&gt;<span class="diff">class</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/array&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">prop</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">parts</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">paragraphs</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">unorderedLists</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">class</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">id</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/array&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="paragraph"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/paragraph</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="unorderedList"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/unorderedList</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">map</span> <span class="diff">key</span>="listItems"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+                  <span class="whitespace">\n..................</span>
+                  &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/listItem</span>&lt;/string&gt;
+                  <span class="whitespace">\n...............</span>
+               &lt;/map&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/map&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+               <span class="whitespace">\n...............</span>
+               &lt;<span class="diff">string</span>&gt;<span class="diff">listItems</span>&lt;/string&gt;
+               <span class="whitespace">\n............</span>
+            &lt;/array&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="listItem"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/listItem</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="class"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$id"&gt;<span class="diff">#/definitions/class</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n...</span>
+   &lt;/map&gt;
+   <span class="whitespace">\n...</span>
+   &lt;<span class="diff">map</span> <span class="diff">key</span>="properties"&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="title"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="props"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="additionalProperties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">string</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">sample01-structured-meta-schema.json#/definitions/propNames</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="params"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="additionalProperties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/param</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">sample01-structured-meta-schema.json#/definitions/paramNames</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="parts"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">object</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="additionalProperties"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/part</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">sample01-structured-meta-schema.json#/definitions/partNames</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="links"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="type"&gt;<span class="diff">array</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">map</span> <span class="diff">key</span>="items"&gt;
+            <span class="whitespace">\n............</span>
+            &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/link</span>&lt;/string&gt;
+            <span class="whitespace">\n.........</span>
+         &lt;/map&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">map</span> <span class="diff">key</span>="references"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span> <span class="diff">key</span>="$ref"&gt;<span class="diff">#/definitions/references</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/map&gt;
+      <span class="whitespace">\n...</span>
+   &lt;/map&gt;
+   <span class="whitespace">\n...</span>
+   &lt;<span class="diff">map</span> <span class="diff">key</span>="propertyNames"&gt;
+      <span class="whitespace">\n......</span>
+      &lt;<span class="diff">array</span> <span class="diff">key</span>="enum"&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span>&gt;<span class="diff">title</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span>&gt;<span class="diff">props</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span>&gt;<span class="diff">params</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span>&gt;<span class="diff">parts</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span>&gt;<span class="diff">links</span>&lt;/string&gt;
+         <span class="whitespace">\n.........</span>
+         &lt;<span class="diff">string</span>&gt;<span class="diff">references</span>&lt;/string&gt;
+         <span class="whitespace">\n......</span>
+      &lt;/array&gt;
+      <span class="whitespace">\n...</span>
+   &lt;/map&gt;
+   <span class="whitespace">\n</span>
+&lt;/map&gt;</pre></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </body>
+</html>
