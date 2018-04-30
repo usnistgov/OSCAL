@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../json-schema-produce.xsl"
+    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <x:scenario label="for METASCHEMA input, produce a schema">
+        <x:context href="../metaschema-testing.xml" select="/METASCHEMA"/>
+        <x:expect label="A schema" href="../anw-json-schema.xml"/>
+    </x:scenario>
+    
+    
+</x:description>
