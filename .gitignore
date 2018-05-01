@@ -11,6 +11,7 @@ vault
 # Working files
 scratch
 wendell
+backup*
 
 # Production outputs
 pub

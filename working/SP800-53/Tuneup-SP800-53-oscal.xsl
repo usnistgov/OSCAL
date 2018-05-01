@@ -9,6 +9,11 @@
   
 <!-- For further tweaking SP800-53 OSCAL -->
 
+<!--  silencing noisy Saxon ... -->
+  <xsl:template match="/*">
+    <xsl:next-match/>
+  </xsl:template>
+  
   <xsl:mode on-no-match="shallow-copy"/>
   
 <!-- For whatever reason the source contains empty elements mapping to p elements... -->
@@ -24,7 +29,7 @@
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:apply-templates select="title"/>
-      <xsl:apply-templates select=".//assign except subcontrol//assign" mode="make-param"/>
+      <xsl:apply-templates select=".//(assign|selection) except subcontrol//(assign|selection)" mode="make-param"/>
       <xsl:apply-templates select="* except title"/>
     </xsl:copy>
   </xsl:template>
@@ -34,16 +39,38 @@
       <xsl:attribute name="id">
         <xsl:apply-templates select="." mode="make-id"/>
       </xsl:attribute>
+      <xsl:for-each select="ancestor::selection">
+        <xsl:attribute name="depends-on">
+          <xsl:apply-templates select="." mode="make-id"/>
+        </xsl:attribute>
+      </xsl:for-each>
       <desc>
         <xsl:apply-templates/>
       </desc>
-      <value>
+      <label>
         <xsl:apply-templates/>
-      </value>
+      </label>
     </param>
   </xsl:template>
   
-  <xsl:template match="assign">
+  <xsl:template match="selection" mode="make-param">
+    <param>
+      <xsl:attribute name="id">
+        <xsl:apply-templates select="." mode="make-id"/>
+      </xsl:attribute>
+      <desc>SELECT</desc>
+      <select>
+        <xsl:if test="starts-with(.,'(one or more)')">
+          <xsl:attribute name="how-many">one or more</xsl:attribute>
+        </xsl:if>
+        <xsl:apply-templates mode="#default"/>
+      </select>
+    </param>
+  </xsl:template>
+  
+  <xsl:template match="selection/text()[.='(one or more)']" mode="#default"/>
+  
+  <xsl:template match="assign | selection">
     <insert>
       <xsl:attribute name="param-id">
         <xsl:apply-templates select="." mode="make-id"/>
@@ -51,9 +78,10 @@
     </insert>
   </xsl:template>
   
-  <xsl:template match="assign" mode="make-id">
+  <xsl:template match="assign | selection" mode="make-id">
     <xsl:value-of select="ancestor::control/@id"/>
-    <xsl:number from="control" level="any" format="_a"/>
+    <xsl:text>_prm_</xsl:text>
+    <xsl:number count="assign | selection" from="control" level="any" format="1"/>
   </xsl:template>
 
   <xsl:template match="link[starts-with(@href,'#')]">

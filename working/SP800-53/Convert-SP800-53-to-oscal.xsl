@@ -196,9 +196,14 @@
   </xsl:template>
   
   <xsl:template match="priority | baseline-impact">
-    <prop class="{name()}">
+    <xsl:comment> <xsl:value-of select="local-name()"/>
+      <xsl:text> (</xsl:text>
+      <xsl:value-of select="."/>
+      <xsl:text>) will be projected by baselines </xsl:text> 
+    </xsl:comment>
+    <!--<prop class="{name()}">
       <xsl:apply-templates/>
-    </prop>  
+    </prop>-->  
   </xsl:template>
 
   <xsl:template match="reference">

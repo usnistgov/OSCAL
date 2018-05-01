@@ -75,4 +75,87 @@
     </xsl:analyze-string>
   </xsl:template>
   
+  <xsl:template match="*" mode="escape-assign">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
+  <xsl:template match="assign" mode="escape-assign">
+    <xsl:text>#assign></xsl:text>
+    <xsl:apply-templates mode="#current"/>
+    <xsl:text>&lt;assign#</xsl:text>
+  </xsl:template>
+  
+  
+  
+  
+  
+  <xsl:template match="." mode="restore-assign">
+    <xsl:analyze-string select="." regex="#assign>([^&lt;]*)&lt;assign#">
+      <xsl:matching-substring>
+        <assign>
+          <xsl:value-of select="regex-group(1)"/>
+        </assign>
+      </xsl:matching-substring>
+      <xsl:non-matching-substring>
+        <xsl:value-of select="replace(.,'\]$','')"/><!-- btw we drop terminal closing brackets going through -->
+      </xsl:non-matching-substring>
+    </xsl:analyze-string>
+  </xsl:template>
+  
+  <!-- We can cheat this way because this is the only inline markup we have; no sibling anchors
+     or inline formatting to worry about; the only thing in the way is those pesky "assignments" we want ... 
+      we know this by static analysis of the source data: returns //text()[matches(.,'\[Select')]/.. only description
+      elements, and empty(//description/*) is true ... -->
+  
+  <xsl:template match="p[matches(., '\[Select')]">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+    <xsl:variable name="marked-assigns">
+      <!-- Continuing in the default mode will pluck out <assign> elements ...     -->
+        <xsl:apply-templates/>
+    </xsl:variable>
+    <!-- here we rewrite them so to get a string again   -->
+    <xsl:variable name="escaped-assigns" as="xs:string">
+      <xsl:value-of><!-- coercing to text node convertible to string -->
+        <xsl:apply-templates mode="escape-assign" select="$marked-assigns"/>
+      </xsl:value-of>
+    </xsl:variable>
+    <!-- Now with the 'safe' string we proceed to for the analysis of the selection ... -->
+    <!--<xsl:value-of select="$escaped-assigns"/>-->
+    <!--<xsl:apply-templates mode="restore-assign" select="$escaped-assigns"/>-->
+    
+    
+    <xsl:analyze-string select="$escaped-assigns" regex="\[Selection[^\]]*\]">
+      <xsl:matching-substring>
+        <selection>
+          <xsl:apply-templates select="regex-group(0)" mode="process-selection"/>
+        </selection>
+      </xsl:matching-substring>
+      <xsl:non-matching-substring>
+        <xsl:apply-templates select="." mode="process-selection"/>
+      </xsl:non-matching-substring>
+    </xsl:analyze-string>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="." mode="process-selection">
+<!-- It is very fortunate that our data hitherto never has more than one selection per description   -->
+    <xsl:variable name="this" select="."/>
+    <!-- A selection is delimited by : following the label (and optional cardinality rule) and then ; for the individual selections   -->
+    <xsl:for-each select="tokenize(.,':\s*')">
+      <xsl:if test="position() gt 2"><xsl:message>Ooops do not expect more than one colon in "<xsl:value-of select="$this"/>" </xsl:message></xsl:if>
+      <xsl:choose>
+        <xsl:when test="matches(.,'^\[Selection')">
+          <xsl:value-of select="replace(.,'\[Selection\s*','')"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:for-each select="tokenize(.,'\s*;\s*')">
+          <choice>
+            <xsl:apply-templates select="." mode="restore-assign"/>
+          </choice>
+          </xsl:for-each>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:template>
 </xsl:stylesheet>
