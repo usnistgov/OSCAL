@@ -66,13 +66,19 @@ title = element title { (text | q)* }
 
 link    = element link { relAttr, hrefAttr, mix }
 
-
-param   = element param { idAttr?, optionalClass, desc, label?, value? }
+# At higher levels, desc and label may repeat ("echoed" from lower layers) but not in catalogs
+# Here, value is a nominal default value (single-value)
+# So it must be a scalar - to have values w/ cascading parameters use select[count(choice)=1]
+param   = element param { idAttr?, optionalClass, desc, label?, req?, (value | select)? }
 
 desc = element desc { mix }
 
 label = element label { text }
 
+req = element requirement {
+  attribute datatype { text }?,
+  attribute matches  { text }?,
+  text }
 
 prop =
   element prop { asProp }
@@ -160,12 +166,13 @@ assign = element insert { idAttr?,
   attribute param-id { xsd:IDREF } }
 
 # A selection to be made by responder - tbd
-select = empty
-# select = element select { idAttr?, choice* }
+# select = empty
+select = element select { idAttr?, attribute how-many { 'one or more ' }?,
+  choice* }
 
 # Within a selection, a choice - tbd
 # unlike 'value', choice may have inline stuff as well as 'assign' elements
-# choice = element choice { (assign | mix)* }
+choice = element choice { (assign | mix)* }
 
 # IDs are required everywhere for now
 idAttr      = attribute id { xsd:ID }
