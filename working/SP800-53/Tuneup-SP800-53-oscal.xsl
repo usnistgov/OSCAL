@@ -107,11 +107,38 @@
     </xsl:attribute>
   </xsl:template>
   
+  <xsl:template match="part[@class='objective']">
+    <xsl:copy>
+      <xsl:attribute name="id">
+        <xsl:apply-templates select="." mode="munge-id"/>
+      </xsl:attribute>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
   
   <!-- @id munging modified for rev5 not including SP800-53A  -->
   <xsl:template as="xs:string" mode="munge-id" match="control | subcontrol | part">
     <!-- id leads with element class or name code, plus @id value stripped of punctuation -->
     <xsl:value-of select="replace(@id,'\p{P}\p{P}*','.') => replace('\.$','')"/>
+    <!-- Note outputs only happen to be valid in the result -->
+  </xsl:template>
+  
+  <xsl:template as="xs:string" mode="munge-id" match="part[@class='item']">
+    <xsl:value-of>
+      <xsl:apply-templates select="(ancestor::control | ancestor::subcontrol)[last()]" mode="munge-id"/>
+      <xsl:text>_smt_</xsl:text>
+      <xsl:number format="a.1.a.1" level="multiple" count="part" from="control | subcontrol"/>
+    </xsl:value-of>
+    <!-- Note outputs only happen to be valid in the result -->
+  </xsl:template>
+  
+  <xsl:template as="xs:string" mode="munge-id" match="part[@class='objective']">
+    <xsl:value-of>
+      <xsl:apply-templates select="(ancestor::control | ancestor::subcontrol)[last()]" mode="munge-id"/>
+      <xsl:text>_obj_</xsl:text>
+      <xsl:number format="a.1.a.1" level="multiple" count="part" from="control | subcontrol"/>
+    </xsl:value-of>
     <!-- Note outputs only happen to be valid in the result -->
   </xsl:template>
   
