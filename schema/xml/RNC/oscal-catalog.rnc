@@ -69,15 +69,16 @@ link    = element link { relAttr, hrefAttr, mix }
 # At higher levels, desc and label may repeat ("echoed" from lower layers) but not in catalogs
 # Here, value is a nominal default value (single-value)
 # So it must be a scalar - to have values w/ cascading parameters use select[count(choice)=1]
-param   = element param { idAttr?, optionalClass, desc, label?, req?, (value | select)? }
+param   = element param { idAttr?, optionalClass,
+                          attribute depends-on { xsd:IDREF }?,
+                          label, desc?, req?, (value | select)? }
 
 desc = element desc { mix }
 
 label = element label { text }
 
 req = element requirement {
-  attribute datatype { text }?,
-  attribute matches  { text }?,
+  attribute test { text }?,
   text }
 
 prop =
@@ -89,16 +90,16 @@ asProp = idAttr?, optionalClass, text
 prose = ( p | ul | ol | pre )*
 
 
-references = element references { ref+ }
+references = element references { (ref*, link*) }
 
-# JATS-like references
-ref = element ref { idAttr?, (std | citation | prose )* }
+# somewhat JATS-like references
+ref = element ref { idAttr?, citation*, link*, prose }
 
 # analogous to JATS mixed-citation[@citation-type='standard'] or equivalent
-std =  element std {
-         attribute href { xsd:anyURI }?,
-         (mix | xref)*
-  }
+# std =  element std {
+#        attribute href { xsd:anyURI }?,
+#        (mix | xref)*
+# }
 
 # analogous to JATS mixed-citation
 citation =  element citation {
