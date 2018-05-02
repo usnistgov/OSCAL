@@ -76,11 +76,15 @@
       <xsl:attribute name="id">
         <xsl:apply-templates select="." mode="make-id"/>
       </xsl:attribute>
-      <label>SELECT for { ancestor-or-self::*[@id][1]/@id }</label>
+      <label>
+        <xsl:text>SELECT for  </xsl:text>
+        <xsl:apply-templates select="ancestor-or-self::*[@id][1]" mode="munge-id"/>
+      </label>
       <xsl:for-each select="ancestor::part[prop/@class='name'][1]/prop[@class='name']">
         <desc>
           <xsl:text>Insertion into </xsl:text> 
           <xsl:apply-templates/>
+          <xsl:value-of select="ancestor::part[prop/@class='name'][1]/prop[@class='name'] ! (' (' || . || ')')"/>
         </desc>
       </xsl:for-each>
       <select>
@@ -103,9 +107,9 @@
   </xsl:template>
   
   <xsl:template match="assign | selection" mode="make-id">
-    <xsl:value-of select="ancestor::control/@id"/>
+    <xsl:apply-templates mode="munge-id" select="(ancestor::control | ancestor::subcontrol)[last()]"/>
     <xsl:text>_prm_</xsl:text>
-    <xsl:number count="assign | selection" from="control" level="any" format="1"/>
+    <xsl:number count="assign | selection" from="control | subcontrol" level="any" format="1"/>
   </xsl:template>
 
   <xsl:template match="link[starts-with(@href,'#')]">
@@ -130,7 +134,7 @@
   
   <xsl:template match="@id">
     <xsl:attribute name="id">
-      <xsl:apply-templates select="." mode="munge-id"/>
+      <xsl:apply-templates select=".." mode="munge-id"/>
     </xsl:attribute>
   </xsl:template>
   
@@ -152,13 +156,15 @@
   </xsl:template>-->
   
   <!-- @id munging modified for rev5 not including SP800-53A  -->
-  <xsl:template as="xs:string" mode="munge-id" match="control | subcontrol | part">
-    <!-- id leads with element class or name code, plus @id value stripped of punctuation -->
-    <xsl:value-of select="replace(@id,'\p{P}\p{P}*','.') => replace('\.$','')"/>
-    <!-- Note outputs only happen to be valid in the result -->
+  <!--<xsl:value-of select="replace(@id,'\p{P}\p{P}*','.') => replace('\.(\.|$)','$1')"/>-->
+  <xsl:template as="xs:string" mode="munge-id" match="control | part">
+    <xsl:value-of select="@id"/>
+  </xsl:template>
+  <xsl:template as="xs:string" mode="munge-id" match="subcontrol">
+    <xsl:value-of select="replace(@id,'\.(\.|$)','$1')"/>
   </xsl:template>
   
-  <xsl:template as="xs:string?" mode="munge-id" match="*[@id]" priority="0.3">
+  <xsl:template as="xs:string?" mode="munge-id" match="*[@id]" priority="-0.1">
     <xsl:value-of select="@id"/>
   </xsl:template>
     
