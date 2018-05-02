@@ -42,7 +42,7 @@
   <xsl:template match="/*" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <xsl:text>&#xA;</xsl:text>
     <xsl:copy>
-      <xsl:attribute name="xsi:schemaLocation">http://csrc.nist.gov/ns/oscal/1.0 ../../lib/XSD/oscal-core.xsd</xsl:attribute>
+      <!--<xsl:attribute name="xsi:schemaLocation">http://csrc.nist.gov/ns/oscal/1.0 ../../lib/XSD/oscal-core.xsd</xsl:attribute>-->
       <xsl:apply-templates select="@*"/>
       <xsl:apply-templates/>
     </xsl:copy>

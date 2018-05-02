@@ -18,10 +18,10 @@
     <p:pipe port="result" step="corrected"/>
   </p:output>
   <p:output port="_B_converted" primary="false">
-    <p:pipe port="result" step="enhanced"/>
+    <p:pipe port="result" step="converted"/>
   </p:output>
   <p:output port="_C_enhanced" primary="false">
-    <p:pipe port="result" step="tuned"/>
+    <p:pipe port="result" step="enhanced"/>
   </p:output>
   <p:output port="_D_tuned" primary="false">
     <p:pipe port="result" step="tuned"/>
@@ -43,14 +43,14 @@
   <!--<p:identity name="corrected"/>-->
   <p:xslt name="corrected">
     <p:input port="stylesheet">
-      <p:document href="Emend-SP800-53.xsl"/>
+      <p:document href="SP800-53-corrections.xsl"/>
     </p:input>
   </p:xslt>
   
   <!--<p:identity name="converted"/>-->
   <p:xslt name="converted">
     <p:input port="stylesheet">
-      <p:document href="Convert-SP800-53-to-oscal.xsl"/>
+      <p:document href="SP800-53-convert-to-oscal.xsl"/>
     </p:input>
   </p:xslt>
   
@@ -58,14 +58,14 @@
   <!--<p:identity name="enhanced"/>-->
   <p:xslt name="enhanced">
     <p:input port="stylesheet">
-      <p:document href="Enhance-SP800-53-oscal.xsl"/>
+      <p:document href="SP800-53-param-detect.xsl"/>
     </p:input>
   </p:xslt>
   
   <!--<p:identity name="tuned"/>-->
   <p:xslt name="tuned">
     <p:input port="stylesheet">
-      <p:document href="Tuneup-SP800-53-oscal.xsl"/>
+      <p:document href="SP800-53-params-and-ids.xsl"/>
     </p:input>
   </p:xslt>
   

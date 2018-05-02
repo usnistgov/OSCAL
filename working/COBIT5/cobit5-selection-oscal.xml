@@ -382,7 +382,7 @@
             (COSO)</citation>
         </ref>
         <ref>
-          <std>ISO/IEC 38500</std>
+          <citation>ISO/IEC 38500</citation>
         </ref>
         <ref>
           <citation>King III</citation>
@@ -813,18 +813,18 @@
       </subcontrol>
       <references>
         <ref>
-          <std>ISO/IEC 27001:2005</std>
+          <citation>ISO/IEC 27001:2005</citation>
           <p>Information security management systems—Requirements, Section 4</p>
         </ref>
         <ref>
-          <std>ISO/IEC 27002:2011</std>
+          <citation>ISO/IEC 27002:2011</citation>
         </ref>
         <ref>
-          <std>National Institute of Standards and Technology (NIST) SP800-53 Rev 1 </std>
+          <citation>National Institute of Standards and Technology (NIST) SP800-53 Rev 1 </citation>
           <p>Recommended Security Controls for USA Federal Information Systems</p>
         </ref>
         <ref>
-          <std>ITIL V3 2011</std>
+          <citation>ITIL V3 2011</citation>
           <p>Service Design, 4.7 Information Security Management</p>
         </ref>
       </references>
@@ -1177,11 +1177,11 @@
       </subcontrol>
       <references>
         <ref>
-          <std>ISO/IEC 20000</std>
+          <citation>ISO/IEC 20000</citation>
           <p>9.1 Configuration management</p>
         </ref>
         <ref>
-          <std>ITIL V3 2011</std>
+          <citation>ITIL V3 2011</citation>
         </ref>
         <ref>
           <p>Service Transition, 4.3 Service Asset and Configuration Management</p>
@@ -1718,18 +1718,18 @@
       </subcontrol>
       <references>
         <ref>
-          <std>ISO/IEC 20000</std>
+          <citation>ISO/IEC 20000</citation>
           <ul>
             <li>6.1 Service level management</li>
             <li>8.2 Incident management</li>
           </ul>
         </ref>
         <ref>
-          <std>ISO 27002</std>
+          <citation>ISO 27002</citation>
           <p>13. Information Security Incident Management</p>
         </ref>
         <ref>
-          <std>ITIL V3 2011</std>
+          <citation>ITIL V3 2011</citation>
           <ul>
             <li>Service Operation, 4.2 Incident Management</li>
             <li>Service Operation, 4.3 Request Fulfilment</li>
