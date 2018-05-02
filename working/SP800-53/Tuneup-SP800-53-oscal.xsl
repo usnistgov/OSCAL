@@ -47,9 +47,12 @@
       <desc>
         <xsl:apply-templates/>
       </desc>
-      <label>
-        <xsl:apply-templates/>
-      </label>
+      <xsl:for-each select="ancestor::part[1]/prop[@class='name']">
+        <label>
+          <xsl:text>Insertion into </xsl:text> 
+          <xsl:apply-templates/>
+        </label>
+      </xsl:for-each>
     </param>
   </xsl:template>
   
@@ -59,6 +62,12 @@
         <xsl:apply-templates select="." mode="make-id"/>
       </xsl:attribute>
       <desc>SELECT</desc>
+      <xsl:for-each select="ancestor::part[1]/prop[@class='name']">
+        <label>
+          <xsl:text>Insertion into </xsl:text> 
+          <xsl:apply-templates/>
+        </label>
+      </xsl:for-each>
       <select>
         <xsl:if test="starts-with(.,'(one or more)')">
           <xsl:attribute name="how-many">one or more</xsl:attribute>

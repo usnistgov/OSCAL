@@ -38,8 +38,9 @@
     <control class="SP800-53">
       <xsl:variable name="this" select="."/>
       <xsl:apply-templates select="title"/>
-      <xsl:apply-templates select="* except (title | references)"/>
+      <xsl:apply-templates select="* except (title | references | control-enhancement)"/>
       <xsl:apply-templates mode="integrate-objectives" select="$objectives/key('control-by-no',$this/number/replace(.,'\s',''),.)"/>
+      <xsl:apply-templates select="control-enhancement"/>
       <xsl:apply-templates select="references"/>    
     </control>
   </xsl:template>
