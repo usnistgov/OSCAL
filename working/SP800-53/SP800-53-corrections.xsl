@@ -31,6 +31,25 @@
 <!-- In three places, Selection (one or more) is given incorrectly with ; not : so we fix that.   -->
       <match replace="(one or more):">\(one or more\);</match>
       
+<!-- Plus a bunch of character level errors have crept in; this cleans them up (for SP800-rev4 ONLY)     -->
+      <match replace="system’s">system�s</match>
+      <match replace="user’s">user�s</match>
+      <match replace="organization’s">organization�s</match>
+      <match replace="individual’s">individual�s</match>
+      <match replace="drivers’">drivers�</match>
+      <match replace="today’s">today�s</match>
+      <match replace="application’s">application�s</match>
+      
+      <match replace="“dirty words”">�dirty words�</match>
+      <match replace="“app stores”">�app stores.�</match>
+      <match replace="“ping,” “ls,” “ipconfig,">�ping,� �ls,� �ipconfig,�</match>
+      
+      <match replace="policies—a">policies�a</match>
+      <match replace="indirectly—that is">indirectly�that is</match>
+      <match replace="notifications—or">notifications�or</match>
+      
+      
+      
     </sequence>
   </xsl:variable>
   
