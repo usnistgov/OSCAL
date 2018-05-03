@@ -78,8 +78,7 @@ desc = element desc { mix }
 label = element label { text }
 
 req = element requirement {
-  attribute datatype { text }?,
-  attribute pattern  { text }?,
+  attribute test { text }?,
   text }
 
 prop =
