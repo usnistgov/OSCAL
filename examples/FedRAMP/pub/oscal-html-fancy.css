@@ -32,6 +32,7 @@
       .unassigned { border: thin solid red; background-color: pink}
       .desc { color: darkgreen }
       .insert .desc { font-size: 90% }
+      .label { font-size: 90%; font-weight: bold }
       .value { font-style: italic; text-decoration: underline }
       
       .param-id { font-size: 90%; font-family: sans-serif; font-weight: bold;
@@ -66,7 +67,7 @@ overflow: auto
 .toc .toc { margin-left: 2ex; border-left: thin dotted black; padding-left: 0.5em }
 .toc-line { padding-left: 1em; text-indent: -1em }
 
-.default { text-decoration: line-through }
+.label { font-weight: bold; font-size: 85% }
 .invoking { margin-left: 0.2ex; margin-right: 0.2ex; padding: 0.1ex;
 border: thin dashed grey; background-color: azure }
 

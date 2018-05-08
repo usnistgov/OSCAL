@@ -7,7 +7,8 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
-<!-- Framework enhancement XSLT   -->
+<!-- Purpose: Enhances OSCAL tagging with *purported* links by performing lookups
+     in a catalog and rewriting the links as resolved. A demonstration. -->
     
     <xsl:mode on-no-match="shallow-copy"/>
     

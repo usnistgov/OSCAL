@@ -8,6 +8,9 @@
   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="#all">
 
+  <!-- Purpose: from OSCAL profile input, produce a representation of all controls called with insertions, alterations, modifications and settings applied. -->
+  <!-- Dependencies: working links to valid control catalogs in OSCAL XML. -->
+  
   <xsl:strip-space elements="group control subcontrol part section component"/>
   
   <xsl:output indent="yes"/>
@@ -153,7 +156,7 @@
   </xsl:template>
 
   <xsl:template match="profile" mode="import">
-    <xsl:message terminate="yes">Bah! matched profile unexpectedly</xsl:message>
+    <xsl:message terminate="yes">Matched profile unexpectedly</xsl:message>
   </xsl:template>
   
   <xsl:template match="section" mode="import"/>
@@ -478,6 +481,7 @@
         <xsl:apply-templates select="merged" mode="patch">
           <xsl:with-param name="modifications" tunnel="yes" select="$modifications"/>
     </xsl:apply-templates>
+        
       </xsl:copy>
     </xsl:for-each>
     
@@ -502,6 +506,7 @@
       <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/add[empty(@target)][@position='starting']/*"/>
       
       <xsl:apply-templates select="* except title" mode="#current"/>
+      <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
       
       <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/add[empty(@target)][@position='ending']/*"/>
       
@@ -573,6 +578,28 @@
   
   <!-- When a catalog is filtered through a profile, its parameters are overwritten
        by parameters passed in from the invocation. -->
+  
+<!-- @priority 12 overrides the template above (matching anything inside controls for patching) -->
+  <xsl:template match="param" mode="patch" priority="12">
+    <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates mode="patch" select="desc"/>
+      <xsl:if test="empty(desc)">
+        <xsl:copy-of select="key('param-settings',@id,$modifications)/desc"/>
+      </xsl:if>
+      <xsl:apply-templates mode="patch" select="label"/>
+      <xsl:if test="empty(label)">
+        <xsl:copy-of select="key('param-settings',@id,$modifications)/label"/>
+      </xsl:if>
+      <xsl:apply-templates mode="patch" select="value"/>
+      <xsl:if test="empty(value)">
+        <xsl:copy-of select="key('param-settings',@id,$modifications)/value"/>
+      </xsl:if>
+    </xsl:copy>
+    
+  </xsl:template>
+  
   <!-- set-param/desc overrides param/desc -->
   <xsl:template match="param/desc"  mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
@@ -580,10 +607,9 @@
     <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/desc,.)[1]"/>
   </xsl:template>
   
-  <!-- set-param/label overrides param/label -->
-  <xsl:template match="param/value" mode="patch" priority="10">
+  <xsl:template match="param/label" mode="patch" priority="10">
     <xsl:param name="modifications" tunnel="yes" as="element(modify)" required="yes"/>
-    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/value,.)[1]"/>
+    <xsl:copy-of select="(key('param-settings',parent::param/@id,$modifications)/label,.)[1]"/>
   </xsl:template>
   
   <!-- same for param/value -->
