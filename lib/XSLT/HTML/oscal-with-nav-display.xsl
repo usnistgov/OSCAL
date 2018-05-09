@@ -6,7 +6,10 @@
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="oscal">
 
-
+  <xsl:variable name="catalog-or-resolution" select="/oscal:catalog | /oscal:framework | /oscal:worksheet |
+    /oscal:resolution/oscal:modified |
+    /oscal:resolution/oscal:merged[not(../oscal:modified)] |
+    /oscal:resolution/oscal:imported[not(../oscal:merged | ../oscal:modified)]"/>
 
   <xsl:template match="/">
     <html>
@@ -19,10 +22,10 @@
       </head>
       <body class="{local-name(/*)}">
         <div id="directory">
-          <xsl:apply-templates mode="toc" select="//oscal:catalog | //oscal:framework"/>
+          <xsl:apply-templates mode="toc" select="$catalog-or-resolution"/>
         </div>
         <div id="main">
-          <xsl:apply-templates/>
+          <xsl:apply-templates select="$catalog-or-resolution"/>
         </div>
         
       </body>
@@ -34,25 +37,13 @@
   </xsl:template>
 
 
-  <xsl:template match="oscal:profile">
+  <xsl:template match="oscal:resolution">
     <div class="profile">
-      <xsl:apply-templates select="oscal:title, oscal:import"/>
-    </div>
-  </xsl:template>
-  
-  <xsl:template match="oscal:import">
-    <div class="invoking">
-    <xsl:apply-templates select="." mode="display-invocation"/>
-    <xsl:apply-templates select="oscal:import | oscal:framework"/>
-    </div>
-  </xsl:template>
-      
-  <xsl:template match="oscal:import/oscal:framework">
-    <div class="framework" id="{generate-id(.)}">
-      <xsl:copy-of select="@id"/>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
+  
+ 
   
   <xsl:template match="oscal:title">
     <h2 class="title">
@@ -196,6 +187,14 @@
     </p>
   </xsl:template>
   
+  <xsl:template match="oscal:param/oscal:label">
+    <p class="label">
+      <span class="subst">Label:</span>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+  
   <xsl:template match="oscal:param/oscal:value">
     <p class="value">
       <span class="subst">Value:</span>
@@ -212,11 +211,7 @@
     </p>
   </xsl:template>
   
-  <xsl:template mode="inline" match="oscal:param/oscal:desc">
-    <span class="desc">
-      <xsl:apply-templates/>
-    </span>
-  </xsl:template>
+  <xsl:template mode="inline" match="oscal:param/oscal:desc"/>
   
   <xsl:template mode="inline" match="oscal:param/oscal:value">
     <span class="value">
@@ -224,13 +219,9 @@
     </span>
   </xsl:template>
   
-  <xsl:template mode="inline" match="oscal:param/oscal:default">
-    <span class="default">
-      <xsl:text>(</xsl:text>
-      <span class="subst">Default:</span>
-      <xsl:text> </xsl:text>
+  <xsl:template mode="inline" match="oscal:param/oscal:label">
+    <span class="label">
       <xsl:apply-templates/>
-      <xsl:text>)</xsl:text>
     </span>
   </xsl:template>
   
@@ -318,7 +309,7 @@
           <xsl:apply-templates select="." mode="param-id-block"/>
         </a>
         <xsl:apply-templates mode="inline"/>
-        <xsl:if test="not(oscal:value | oscal:default)">
+        <xsl:if test="not(oscal:value)">
           <span class="value">
             <xsl:apply-templates select="oscal:value" mode="param-value"/>
             <xsl:if test="not(oscal:value)">[NO PARAMETER VALUE GIVEN]</xsl:if>
@@ -391,7 +382,7 @@
           </xsl:when>
           <!-- Link not broken -->
           <xsl:when test="$target">
-            <xsl:apply-templates select="$target" mode="link-text"/>
+            <xsl:apply-templates select="$target[last()]" mode="link-text"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@href"/>
@@ -495,7 +486,11 @@
     <xsl:value-of select="generate-id(.)"/>
   </xsl:template>
   
-  <xsl:template match="oscal:catalog | oscal:framework | oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component" mode="toc">
+  <xsl:template match="oscal:importing | oscal:merged | oscal:modified | oscal:catalog | oscal:group[oscal:catalog]" mode="toc">
+    <xsl:apply-templates mode="toc"/>
+  </xsl:template>
+  
+  <xsl:template match="/oscal:catalog | oscal:framework | oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component" mode="toc">
     <xsl:variable name="new-id">
       <xsl:apply-templates select="." mode="new-id"/>
     </xsl:variable>
@@ -506,8 +501,9 @@
           <xsl:text> </xsl:text>
         </xsl:for-each>
         <xsl:apply-templates select="oscal:title" mode="inline"/>
+        <xsl:if test="not(oscal:title)"><xsl:value-of select="local-name()"/></xsl:if>
       </a></p>
-      <xsl:apply-templates mode="toc" select="oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component"/>
+      <xsl:apply-templates mode="toc" select="oscal:catalog | oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component"/>
     </div>
   </xsl:template>
   

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<controls:controls xmlns="http://scap.nist.gov/schema/sp800-53/2.0" xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" pub_date="2015-01-09T08:26:01.231-05:00" xsi:schemaLocation="http://scap.nist.gov/schema/sp800-53/feed/2.0 http://scap.nist.gov/schema/sp800-53/feed/2.0/sp800-53-feed_2.0.xsd">
+<controls:controls xmlns="http://scap.nist.gov/schema/sp800-53/2.0" xmlns:controls="http://scap.nist.gov/schema/sp800-53/feed/2.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" pub_date="2015-01-09T08:26:01.231-05:00">
     <controls:control>
         <family>ACCESS CONTROL</family>
         <number>AC-1</number>

@@ -70,11 +70,11 @@
   </xsl:template>
   
   <xsl:template match="xsl:stylesheet/xsl:param" mode="report">
-    <p>Runtime parameter <code>{ '`' || @name || '`' }</code> { @as/(' as ' || .) }</p>
+    <p>Runtime parameter <code>{ @name }</code> { @as/(' as ' || .) }</p>
     <xsl:apply-templates mode="#current"/>
   </xsl:template>
   
-  <xsl:template match="comment()[matches(.,'^\s*(XSweet|Input|Output|Note|Limitations?):')]"  mode="report">
+  <xsl:template match="comment()[matches(.,'^\s*(OSCAL|Purpose|Dependencies|Input|Output|Note|Limitations?):')]"  mode="report">
     <p>
       <xsl:value-of select="normalize-space(.)"/>
     </p>
