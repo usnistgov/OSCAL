@@ -2,6 +2,11 @@
 <?xml-stylesheet type="text/css" href="../lib/CSS/oscal.css"?>
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-LOW-extract.xml 2017-11-16-05:00 -->
 <!-- Adjusted tagging to current model 2018-04-04 -->
+
+<!-- NB since revs of May 2018 the IDs in this file are *broken* and do not resolve.
+      The data for this file (especially parameter settings) is expected to be provided by extraction from more current sources.
+      This file is retained as a reference for how it might look in tagging (with adjustments made for the pointers)
+   -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-50756f0d-c37b-494d-b77f-f82d25e9aa15">
    <title>FedRAMP LOW Baseline PROFILE (extracted and aligned, no edits)</title>
    <!-- Baseline allocation of calls (in order): LOW, MODERATE, HIGH, sp800-53 -->
