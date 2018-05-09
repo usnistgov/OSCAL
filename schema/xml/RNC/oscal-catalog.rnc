@@ -1,3 +1,5 @@
+# Last touched 2018-05-09
+
 default namespace = "http://csrc.nist.gov/ns/oscal/1.0"
 
 # This module declares core components of catalogs. It includes the declarations model.

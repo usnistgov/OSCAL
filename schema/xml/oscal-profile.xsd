@@ -229,9 +229,12 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal:desc"/>
-            <xs:element minOccurs="0" ref="oscal:label"/>
-            <xs:element minOccurs="0" ref="oscal:value"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:desc"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:label"/>
+            <xs:choice>
+               <xs:element minOccurs="0" ref="oscal:value"/>
+               <xs:element maxOccurs="unbounded" ref="oscal:choice"/>
+            </xs:choice>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:link"/>
          </xs:sequence>
          <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
@@ -276,7 +279,7 @@
             <xs:element ref="oscal:prop"/>
             <xs:element ref="oscal:part"/>
          </xs:choice>
-         <xs:attribute name="position" use="required">
+         <xs:attribute name="position">
             <xs:simpleType>
                <xs:restriction base="xs:token">
                   <xs:enumeration value="before"/>
