@@ -31,8 +31,8 @@ The core OSCAL project team regularly reviews the open issues, prioritizes their
 ## Communications mechanisms
 
 There are two mailing lists for the project:
-* *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by visiting https://email.nist.gov/mailman/listinfo/oscal-dev.
-* *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. To subscribe, visit https://email.nist.gov/mailman/listinfo/oscal-updates.
+* *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
+* *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
 
 ## Contributing to the OSCAL repository
 
