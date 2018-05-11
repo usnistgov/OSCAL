@@ -8,8 +8,8 @@ NIST SP 800-53 Revision 5 files are not yet available; for draft versions of Rev
 
 The structure and contents of this directory are as follows:
 
-* [pub](pub): This directory is TBD.
-* [roundtripped](roundtripped): This directory is TBD.
+* [pub](pub): This directory contains temporary files from a JSON utility.
+* [roundtripped](roundtripped): This directory contains temporary files from a JSON utility.
 * [SP800-53-HIGH-baseline.json](SP800-53-HIGH-baseline.json): This file contains an OSCAL profile in JSON format representing the High impact baseline profile (selection) of controls from `SP800-53-rev4-catalog.xml`. (The OSCAL profile is derived from the catalog via transformation.)
 * [SP800-53-HIGH-baseline.xml](SP800-53-HIGH-baseline.xml): This file has the same contents as [SP800-53-HIGH-baseline.json](SP800-53-HIGH-baseline.json) except in XML format.
 * [SP800-53-LOW-baseline.json](SP800-53-LOW-baseline.json): This file contains an OSCAL profile in JSON format representing the Low impact baseline profile (selection) of controls from `SP800-53-rev4-catalog.xml`.

@@ -20,9 +20,6 @@ The structure and content of the directory are as follows:
 * [Schematron](Schematron): This directory has lots of useful Schematron files, including for testing of OSCAL against OSCAL declaration sets.
 * [XSD](XSD): This directory is where temp file XSDs are kept. It is also the home directory of schema maintenance-related tasking (XProc and XSLTs).
 * [oscal-catalog.xsd](oscal-catalog.xsd): This file is a reference copy of the OSCAL schema. Any OSCAL document except profiles will be valid to this schema. This (machine-generated) copy of the maintenance schema has element descriptors (embedded documentation) injected into it for use by tools.
-* [oscal-core.xsd](oscal-core.xsd): This file is TBD.
-* [oscal-core_xsd.html](oscal-core_xsd.html): This file is TBD.
 * [oscal-declarations.xsd](oscal-declarations.xsd): This file permits having a standalone (independent) XML document artifact for OSCAL declarations, which other documents (especially catalogs) can make reference to instead of including inline. OSCAL declarations permit the specification of constraints to be enforced over control contents as represented in OSCAL.
 * [oscal-profile.xsd](oscal-profile.xsd): This file is a reference copy of the entry schema for OSCAL **profile** documents.
 * [xml.xsd](xml.xsd): This file is a component for the XML namespace required by the foregoing (due to permission of top-level attributes for XSD support).
-* [xml_xsd.html](xml_xsd.html): This file is TBD.
