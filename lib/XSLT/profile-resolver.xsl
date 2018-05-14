@@ -508,7 +508,7 @@
       <xsl:apply-templates select="* except title" mode="#current"/>
       <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
       
-      <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/add[empty(@target)][@position='ending']/*"/>
+      <xsl:copy-of select="key('alteration-by-target',@id,$modifications)/add[empty(@target)][empty(@position) or @position='ending']/*"/>
       
     </xsl:copy>
   </xsl:template>
