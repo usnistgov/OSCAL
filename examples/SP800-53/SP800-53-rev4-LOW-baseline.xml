@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Produced by profile-with-filter.xsl applied to
-        file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml 2017-11-10-05:00
-        runtime parameter settings: $property='baseline-impact' $value='LOW'-->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-82bbb8a3-492a-4308-9316-6db230697d00">
+<!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
+        runtime parameter settings: $baseline='LOW'-->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         id="uuid-40109f85-506e-4c11-bce5-89970e1bc43f">
    <title>SP800-53 LOW BASELINE IMPACT</title>
-   <import href="SP800-53rev4-catalog.xml">
+   <import href="SP800-53-rev4-catalog.xml">
       <include>
          <call control-id="ac-1"/>
          <call control-id="ac-2"/>
@@ -135,4 +134,33 @@
    <merge>
       <as-is/>
    </merge>
+   <modify>
+      <alter subcontrol-id="ia-2.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-2.12">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-5.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-5.11">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sa-4.10">
+         <add position="starting"/>
+      </alter>
+   </modify>
 </profile>

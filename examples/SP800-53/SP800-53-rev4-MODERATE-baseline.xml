@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Produced by profile-with-filter.xsl applied to
-        file:/home/wendell/Documents/OSCAL/examples/SP800-53/SP800-53-rev4-catalog.xml 2017-11-10-05:00
-        runtime parameter settings: $property='baseline-impact' $value='MODERATE'-->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-051e9699-fc3e-4178-9c9c-5159f3e22dc1">
+<!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
+        runtime parameter settings: $baseline='MODERATE'-->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         id="uuid-465eec85-a8a7-4172-9e45-58687d9e01fc">
    <title>SP800-53 MODERATE BASELINE IMPACT</title>
-   <import href="SP800-53rev4-catalog.xml">
+   <import href="SP800-53-rev4-catalog.xml">
       <include>
          <call control-id="ac-1"/>
          <call control-id="ac-2"/>
@@ -272,4 +271,312 @@
    <merge>
       <as-is/>
    </merge>
+   <modify>
+      <alter subcontrol-id="ac-2.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-2.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-2.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-2.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-6.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-6.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-6.5">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-6.9">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-6.10">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-11.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-17.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-17.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-17.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-17.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-18.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-19.5">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-20.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ac-20.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="at-2.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="au-2.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="au-3.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="au-6.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="au-6.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="au-7.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="au-8.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="au-9.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ca-2.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ca-3.5">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ca-7.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-2.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-2.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-2.7">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-3.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-7.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-7.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-7.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-8.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-8.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cm-8.5">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-2.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-2.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-2.8">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-4.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-6.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-6.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-7.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-7.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-7.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-8.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-8.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-9.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="cp-10.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-2.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-2.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-2.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-2.8">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-2.11">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-2.12">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-5.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-5.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-5.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-5.11">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ia-8.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ir-3.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ir-4.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ir-6.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ir-7.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ma-3.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ma-3.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ma-4.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="mp-5.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="mp-7.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="pe-6.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="pe-13.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="pl-2.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="pl-4.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ra-5.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ra-5.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="ra-5.5">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sa-4.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sa-4.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sa-4.9">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sa-4.10">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sa-9.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sc-7.3">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sc-7.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sc-7.5">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sc-7.7">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="sc-8.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-2.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-3.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-3.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-4.2">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-4.4">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-4.5">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-7.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-7.7">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-8.1">
+         <add position="starting"/>
+      </alter>
+      <alter subcontrol-id="si-8.2">
+         <add position="starting"/>
+      </alter>
+   </modify>
 </profile>
