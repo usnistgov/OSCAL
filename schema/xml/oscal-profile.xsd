@@ -229,13 +229,16 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:desc"/>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:label"/>
-            <xs:choice>
-               <xs:element minOccurs="0" ref="oscal:value"/>
-               <xs:element maxOccurs="unbounded" ref="oscal:choice"/>
+            <xs:element minOccurs="0" ref="oscal:label"/>
+            <xs:element minOccurs="0" ref="oscal:desc"/>
+            <xs:element minOccurs="0" ref="oscal:requirement"/>
+            <xs:choice minOccurs="0">
+               <xs:element ref="oscal:value"/>
+               <xs:element ref="oscal:select"/>
             </xs:choice>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:link"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:part"/>
+            <xs:element minOccurs="0" ref="oscal:references"/>
          </xs:sequence>
          <xs:attribute name="param-id" use="required" type="xs:NMTOKEN"/>
          <xs:attributeGroup ref="oscal:optionalClass"/>

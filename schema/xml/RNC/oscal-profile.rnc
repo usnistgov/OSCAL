@@ -53,10 +53,10 @@ exclude = element exclude { ( match |
               attribute control-id { xsd:NCName } |
               attribute subcontrol-id { xsd:NCName } }+ ) }
 
-# May have to loosen to value?, choice* for metaschema
+# May have to loosen to value?, select? for metaschema
 param_setting = element set-param {
   attribute param-id { xsd:NMTOKEN },
-  optionalClass, desc*, label*, (value? | choice+), link* }
+  optionalClass, label?, desc?, req?, (value | select)?, link*, part*, references? }
 
 alteration = element alter { (
   attribute control-id    { xsd:NCName } |

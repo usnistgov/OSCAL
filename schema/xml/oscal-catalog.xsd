@@ -15,12 +15,12 @@
       <xs:sequence>
          <xs:element ref="oscal:title"/>
          <xs:element minOccurs="0" ref="oscal:declarations"/>
+         <xs:element minOccurs="0" ref="oscal:references"/>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="oscal:section"/>
             <xs:element ref="oscal:group"/>
             <xs:element ref="oscal:control"/>
          </xs:choice>
-         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
    </xs:complexType>
    <xs:element name="section">
@@ -262,8 +262,6 @@
    </xs:element>
    <xs:complexType name="asP" mixed="true">
       <xs:group ref="oscal:whatnot"/>
-      <xs:attribute name="id" type="xs:ID"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
    </xs:complexType>
    <xs:element name="pre">
       <xs:annotation>
@@ -300,8 +298,6 @@
             <xs:element ref="oscal:ol"/>
             <xs:element ref="oscal:ul"/>
          </xs:choice>
-         <xs:attribute name="id" type="xs:ID"/>
-         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="ul">
@@ -335,11 +331,11 @@
             <xs:element ref="oscal:q"/>
             <xs:element ref="oscal:code"/>
             <xs:element ref="oscal:em"/>
-            <xs:element ref="oscal:i"/>
+            <xs:element ref="oscal:strong"/>
             <xs:element ref="oscal:b"/>
+            <xs:element ref="oscal:i"/>
             <xs:element ref="oscal:sub"/>
             <xs:element ref="oscal:sup"/>
-            <xs:element ref="oscal:span"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>
@@ -353,10 +349,9 @@
             <xs:element ref="oscal:code"/>
             <xs:element ref="oscal:em"/>
             <xs:element ref="oscal:i"/>
-            <xs:element ref="oscal:b"/>
+            <xs:element ref="oscal:strong"/>
             <xs:element ref="oscal:sub"/>
             <xs:element ref="oscal:sup"/>
-            <xs:element ref="oscal:span"/>
          </xs:choice>
       </xs:complexType>
    </xs:element>
@@ -367,7 +362,6 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:mix"/>
-         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="em">
@@ -380,7 +374,14 @@
             <xs:group ref="oscal:mix"/>
             <xs:element ref="oscal:a"/>
          </xs:choice>
-         <xs:attributeGroup ref="oscal:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="strong"><!--No description found for strong-->
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal:mix"/>
+            <xs:element ref="oscal:a"/>
+         </xs:choice>
       </xs:complexType>
    </xs:element>
    <xs:element name="i">
@@ -393,7 +394,6 @@
             <xs:group ref="oscal:mix"/>
             <xs:element ref="oscal:a"/>
          </xs:choice>
-         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="b">
@@ -406,7 +406,6 @@
             <xs:group ref="oscal:mix"/>
             <xs:element ref="oscal:a"/>
          </xs:choice>
-         <xs:attributeGroup ref="oscal:optionalClass"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="sub">
@@ -465,21 +464,11 @@
    <xs:group name="semantical">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal:withdrawn"/>
             <xs:element ref="oscal:insert"/>
             <xs:element ref="oscal:select"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>
-   <xs:element name="withdrawn">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Withdrawn</b> Indicates that a containing control or subcontrol is no longer applicable</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal:inlines"/>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="insert">
       <xs:annotation>
          <xs:documentation>

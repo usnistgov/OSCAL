@@ -1,5 +1,5 @@
-<?xml-model href='../../working/FedRAMP/fedramp-profile.sch' type='application/xml' schematypens='http://purl.oclc.org/dsdl/schematron'?>
 <?xml-stylesheet type='text/xsl' href='../lib/CSS/oscal.css'?>
+<?xml-model href="../../schema/xml/RNC/oscal-profile.rnc" type="application/relax-ng-compact-syntax"?>
 <profile id="xxx" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<title>FedRAMP HIGH Baseline PROFILE</title>
 	<import href="../SP800-53/SP800-53-rev4-HIGH-baseline.xml">
@@ -445,6 +445,7 @@
 			</add>
 		</alter>
 		<set-param param-id="ac-1_prm_2">
+			
 			<value>at least annually</value>
 		</set-param>
 		<set-param param-id="ac-1_prm_3">
@@ -1385,6 +1386,7 @@ RELEVANT SECURITY CONTROL ATTRIBUTES. Integrity-Assured, Assessed, Auditable, Co
 			</add>
 		</alter>
 		<set-param param-id="au-6_prm_1">
+			
 			<value>at least weekly</value>
 		</set-param>
 		<!-- - - AU-6 (1) - -  -->
