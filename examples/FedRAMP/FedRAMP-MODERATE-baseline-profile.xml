@@ -1,8 +1,8 @@
 <?xml-model href='fedramp-profile.sch' type='application/xml' schematypens='http://purl.oclc.org/dsdl/schematron'?>
 <?xml-stylesheet type='text/xsl' href='oscal.css'?>
 <!-- Produced by VBA MS Access script, using MSXML2.DOMDocument.6.0 -->
-<!-- Created: 5/18/2018 11:31:04 PM -->
-<profile id="uuid-fedramp-moderate-20180518-233104" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<!-- Created: 5/18/2018 11:50:14 PM -->
+<profile id="uuid-fedramp-moderate-20180518-235014" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<title>FedRAMP MODERATE Baseline PROFILE</title>
 	<publication_information>
 		<organization>Federal Risk and Authorization Management Program (FedRAMP)</organization>
@@ -108,17 +108,6 @@
 			<call subcontrol-id="cp-2.1"/>
 			<call subcontrol-id="cp-2.3"/>
 			<call subcontrol-id="cp-2.8"/>
-			<call subcontrol-id="pe-13.3"/>
-			<call control-id="pe-14"/>
-			<call control-id="pe-15"/>
-			<call control-id="pe-16"/>
-			<call control-id="pe-17"/>
-			<call control-id="pl-1"/>
-			<call control-id="ps-1"/>
-			<call control-id="ps-2"/>
-			<call control-id="ps-3"/>
-			<call control-id="ps-4"/>
-			<call control-id="ps-5"/>
 			<call control-id="cp-3"/>
 			<call control-id="cp-4"/>
 			<call subcontrol-id="cp-4.1"/>
@@ -201,11 +190,22 @@
 			<call control-id="pe-11"/>
 			<call control-id="pe-12"/>
 			<call control-id="pe-13"/>
+			<call subcontrol-id="pe-13.3"/>
+			<call control-id="pe-14"/>
+			<call control-id="pe-15"/>
+			<call control-id="pe-16"/>
+			<call control-id="pe-17"/>
+			<call control-id="pl-1"/>
 			<call control-id="pl-2"/>
 			<call subcontrol-id="pl-2.3"/>
 			<call control-id="pl-4"/>
 			<call subcontrol-id="pl-4.1"/>
 			<call control-id="pl-8"/>
+			<call control-id="ps-1"/>
+			<call control-id="ps-2"/>
+			<call control-id="ps-3"/>
+			<call control-id="ps-4"/>
+			<call control-id="ps-5"/>
 			<call control-id="ps-6"/>
 			<call control-id="ps-7"/>
 			<call control-id="ps-8"/>
@@ -301,9 +301,6 @@
 			<call subcontrol-id="cm-7.5"/>
 			<call subcontrol-id="cm-10.1"/>
 			<call subcontrol-id="cp-2.2"/>
-			<call subcontrol-id="pe-13.2"/>
-			<call subcontrol-id="pe-14.2"/>
-			<call subcontrol-id="ps-3.3"/>
 			<call subcontrol-id="cp-9.3"/>
 			<call subcontrol-id="ia-2.5"/>
 			<call subcontrol-id="ia-4.4"/>
@@ -319,6 +316,9 @@
 			<call subcontrol-id="ma-3.3"/>
 			<call subcontrol-id="ma-5.1"/>
 			<call subcontrol-id="mp-6.2"/>
+			<call subcontrol-id="pe-13.2"/>
+			<call subcontrol-id="pe-14.2"/>
+			<call subcontrol-id="ps-3.3"/>
 			<call subcontrol-id="ra-5.3"/>
 			<call subcontrol-id="ra-5.6"/>
 			<call subcontrol-id="ra-5.8"/>

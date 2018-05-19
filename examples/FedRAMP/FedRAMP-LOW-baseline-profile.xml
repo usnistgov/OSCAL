@@ -1,8 +1,8 @@
 <?xml-model href='fedramp-profile.sch' type='application/xml' schematypens='http://purl.oclc.org/dsdl/schematron'?>
 <?xml-stylesheet type='text/xsl' href='oscal.css'?>
 <!-- Produced by VBA MS Access script, using MSXML2.DOMDocument.6.0 -->
-<!-- Created: 5/18/2018 11:31:02 PM -->
-<profile id="uuid-fedramp-low-20180518-233102" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<!-- Created: 5/18/2018 11:50:11 PM -->
+<profile id="uuid-fedramp-low-20180518-235011" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<title>FedRAMP LOW Baseline PROFILE</title>
 	<publication_information>
 		<organization>Federal Risk and Authorization Management Program (FedRAMP)</organization>
@@ -58,15 +58,6 @@
 			<call control-id="cm-11"/>
 			<call control-id="cp-1"/>
 			<call control-id="cp-2"/>
-			<call control-id="pe-14"/>
-			<call control-id="pe-15"/>
-			<call control-id="pe-16"/>
-			<call control-id="pl-1"/>
-			<call control-id="ps-1"/>
-			<call control-id="ps-2"/>
-			<call control-id="ps-3"/>
-			<call control-id="ps-4"/>
-			<call control-id="ps-5"/>
 			<call control-id="cp-3"/>
 			<call control-id="cp-4"/>
 			<call control-id="cp-9"/>
@@ -108,8 +99,17 @@
 			<call control-id="pe-8"/>
 			<call control-id="pe-12"/>
 			<call control-id="pe-13"/>
+			<call control-id="pe-14"/>
+			<call control-id="pe-15"/>
+			<call control-id="pe-16"/>
+			<call control-id="pl-1"/>
 			<call control-id="pl-2"/>
 			<call control-id="pl-4"/>
+			<call control-id="ps-1"/>
+			<call control-id="ps-2"/>
+			<call control-id="ps-3"/>
+			<call control-id="ps-4"/>
+			<call control-id="ps-5"/>
 			<call control-id="ps-6"/>
 			<call control-id="ps-7"/>
 			<call control-id="ps-8"/>
