@@ -1,8 +1,8 @@
 <?xml-model href='fedramp-profile.sch' type='application/xml' schematypens='http://purl.oclc.org/dsdl/schematron'?>
 <?xml-stylesheet type='text/xsl' href='oscal.css'?>
 <!-- Produced by VBA MS Access script, using MSXML2.DOMDocument.6.0 -->
-<!-- Created: 5/17/2018 3:34:36 PM -->
-<profile id="uuid-fedramp-high-20180517-153436" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<!-- Created: 5/18/2018 11:31:07 PM -->
+<profile id="uuid-fedramp-high-20180518-233107" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<title>FedRAMP HIGH Baseline PROFILE</title>
 	<publication_information>
 		<organization>Federal Risk and Authorization Management Program (FedRAMP)</organization>
@@ -141,6 +141,22 @@
 			<call subcontrol-id="cp-2.4"/>
 			<call subcontrol-id="cp-2.5"/>
 			<call subcontrol-id="cp-2.8"/>
+			<call subcontrol-id="pe-13.1"/>
+			<call subcontrol-id="pe-13.2"/>
+			<call subcontrol-id="pe-13.3"/>
+			<call control-id="pe-14"/>
+			<call control-id="pe-15"/>
+			<call subcontrol-id="pe-15.1"/>
+			<call control-id="pe-16"/>
+			<call control-id="pe-17"/>
+			<call control-id="pe-18"/>
+			<call control-id="pl-1"/>
+			<call control-id="ps-1"/>
+			<call control-id="ps-2"/>
+			<call control-id="ps-3"/>
+			<call control-id="ps-4"/>
+			<call subcontrol-id="ps-4.2"/>
+			<call control-id="ps-5"/>
 			<call control-id="cp-3"/>
 			<call subcontrol-id="cp-3.1"/>
 			<call control-id="cp-4"/>
@@ -250,27 +266,11 @@
 			<call subcontrol-id="pe-11.1"/>
 			<call control-id="pe-12"/>
 			<call control-id="pe-13"/>
-			<call subcontrol-id="pe-13.1"/>
-			<call subcontrol-id="pe-13.2"/>
-			<call subcontrol-id="pe-13.3"/>
-			<call control-id="pe-14"/>
-			<call control-id="pe-15"/>
-			<call subcontrol-id="pe-15.1"/>
-			<call control-id="pe-16"/>
-			<call control-id="pe-17"/>
-			<call control-id="pe-18"/>
-			<call control-id="pl-1"/>
 			<call control-id="pl-2"/>
 			<call subcontrol-id="pl-2.3"/>
 			<call control-id="pl-4"/>
 			<call subcontrol-id="pl-4.1"/>
 			<call control-id="pl-8"/>
-			<call control-id="ps-1"/>
-			<call control-id="ps-2"/>
-			<call control-id="ps-3"/>
-			<call control-id="ps-4"/>
-			<call subcontrol-id="ps-4.2"/>
-			<call control-id="ps-5"/>
 			<call control-id="ps-6"/>
 			<call control-id="ps-7"/>
 			<call control-id="ps-8"/>
@@ -388,6 +388,8 @@
 			<call subcontrol-id="cm-5.5"/>
 			<call subcontrol-id="cm-10.1"/>
 			<call subcontrol-id="cm-11.1"/>
+			<call subcontrol-id="pe-14.2"/>
+			<call subcontrol-id="ps-3.3"/>
 			<call subcontrol-id="ia-2.5"/>
 			<call subcontrol-id="ia-4.4"/>
 			<call subcontrol-id="ia-5.4"/>
@@ -406,8 +408,6 @@
 			<call subcontrol-id="ir-9.3"/>
 			<call subcontrol-id="ir-9.4"/>
 			<call subcontrol-id="ma-4.6"/>
-			<call subcontrol-id="pe-14.2"/>
-			<call subcontrol-id="ps-3.3"/>
 			<call subcontrol-id="ra-5.3"/>
 			<call subcontrol-id="ra-5.6"/>
 			<call subcontrol-id="ra-5.8"/>
@@ -4374,7 +4374,7 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="sc-15b._prm_1">
+		<set-param param-id="sc-15_prm_1">
 			<constraint>no exceptions</constraint>
 		</set-param>
 		<!-- - - SC-17 - -  -->
