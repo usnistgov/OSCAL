@@ -1,4 +1,6 @@
-<!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2018-05-16T16:56:15.306-04:00 -->
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
+<!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2018-05-21T11:40:15.476-04:00 -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>NIST SP800-53</title>
    <declarations href="SP800-53-declarations.xml"/>
@@ -31527,11 +31529,14 @@ Physical and technical safeguards for media are commensurate with the security c
          <subcontrol class="SP800-53-enhancement" id="pe-13.2">
             <title>Suppression Devices / Systems</title>
             <param id="pe-13.2_prm_1">
+               <label>organization-defined personnel or roles</label>
+            </param>
+            <param id="pe-13.2_prm_2">
                <label>organization-defined emergency responders</label>
             </param>
             <prop class="name">PE-13 (2)</prop>
             <part class="statement">
-               <p>The organization employs fire suppression devices/systems for the information system that provide automatic notification of any activation to Assignment: organization-defined personnel or roles] and <insert param-id="pe-13.2_prm_1"/>.</p>
+               <p>The organization employs fire suppression devices/systems for the information system that provide automatic notification of any activation to <insert param-id="pe-13.2_prm_1"/> and <insert param-id="pe-13.2_prm_2"/>.</p>
             </part>
             <part class="guidance">
                <p>Organizations can identify specific personnel, roles, and emergency responders in the event that individuals on the notification list must have appropriate access authorizations and/or clearances, for example, to obtain access to facilities where classified operations are taking place or where there are information systems containing classified information.</p>

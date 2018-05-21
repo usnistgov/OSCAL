@@ -2740,6 +2740,9 @@
       <location>
          <label>PE-13 (2)</label>
          <param id="pe-13.2_prm_1">
+            <label>organization-defined personnel or roles</label>
+         </param>
+         <param id="pe-13.2_prm_2">
             <label>organization-defined emergency responders</label>
          </param>
       </location>
