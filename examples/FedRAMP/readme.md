@@ -1,41 +1,15 @@
-# FedRAMP profile examples
+# OSCAL Examples - FedRAMP
 
-The source data from which are derived these representations of the "High", "Moderate" and "Low" baselines (profiles) defined by FedRAMP can be found here:
+This directory contains examples in XML and JSON formats of the low, moderate, and high baselines defined by FedRAMP (the Federal Risk and Authorization Management Program). The structure and contents of the directory are as follows:
 
-https://www.fedramp.gov/resources/documents-2016/
-
-(Under Key Cloud Service Provider (CSP) Documents)
-
-The three spreadsheets we used for LOW, MODERATE and HIGH are archived in the `sources` directory.
-
-Machine made "crude" versions (hot out of the oven; see below for details)
-
-* `FedRAMP-HIGH-crude.xml`
-* `FedRAMP-MODERATE-crude.xml`
-* `FedRAMP-LOW-crude.xml`
-
-Each one of these captures the (indicated) spreadsheet data and represents it as an OSCAL profile, calling controls in appropriate SP800-53 baselines or when necessary in the SP800-53 catalog. However, this data capture is not yet sufficiently granular in every detail. Specific parameter value assignments are not being parsed out and projected, but require hand intervention.
-
-Estimated scale of effort for such hand intervention: hours per profile. Not weeks or months. Note however that hand intervention could also go beyond completing the profile to the spreadsheet (where it  is incomplete) indeed once editing is in scope, it is open-ended (a feature not a bug).
-
-In order to assess the feasibility and come to this estimate, we have also made a partially-hand-edited version of 'HIGH' (so far) as a demonstration:
-
-* `FedRAMP-HIGH-edited.xml`
-
-A diff between this file and `FedRAMP` shows exactly where changes have been made. Editing 81 parameters (of 434 in 'HIGH') required 2-3 hours. Note however that a significant number of parameters are not assigned values even in the source data; so quality and completeness of the source data are at issue as much as quality/correctness of the conversion.
-
-### HTML rendition
-
-* `pub/FedRAMP-HIGH-edited-rendered.html`
-
-### Extraction / conversion process
-
-Before hand editing, the OSCAL profiles in this subdirectory were produced by extraction from (machine-readable) source data using logic maintained in directory `working/FedRAMP`. The files appearing here as "crude" are very close analogs to the "working" files in that subdirectory (confirm this with a diff or file comparison between any file in this folder, and its corresponding "working" file). See `working/FedRAMP` for more info.
-
-The extraction and conversion process is tuned specifically for these spreadsheets and pulls their data at the maximum possible level of "semantic resolution", at the (spreadsheet) cell level. Note that this is *not* a sufficiently high-quality extraction to use "lights out".
-
-### Special considerations
-
-Note also the profiles here make reference to profiles and catalogs stored in the neighbor `SP800-53` directory, on which they are dependent.
-
-Also note that (at least according to Schematron `oscal-profiles-sources.sch`), several of the OSCAL invocations in these profiles could be rewritten to exclude rather than include controls. In a number of cases, invoking controls by exclusion will be much more concise than the same control set (selection) expressed by inclusion; the Schematron detects and reports on this.
+* [pub](pub): This directory contains temporary files from a JSON utility.
+* [roundtripped](roundtripped): This directory contains temporary files from a JSON utility.
+* [FedRAMP-HIGH-crude.json](FedRAMP-HIGH-crude.json): This file represents the FedRAMP high baseline as an OSCAL profile in JSON format, calling controls in appropriate NIST SP 800-53 baselines or when necessary in the NIST SP 800-53 catalog. However, this representation is not sufficiently granular in every detail. Specific parameter value assignments are not being parsed out and projected, but require hand intervention.
+* [FedRAMP-HIGH-crude.xml](FedRAMP-HIGH-crude.xml): This file has the same contents as [FedRAMP-HIGH-crude.json](FedRAMP-HIGH-crude.json) except it is in XML format instead of JSON.
+* [FedRAMP-HIGH-edited.json](FedRAMP-HIGH-edited.json): This file is based on [FedRAMP-HIGH-crude.json](FedRAMP-HIGH-crude.json), but a portion of that file has been hand edited to address specific parameter value assignments.
+* [FedRAMP-HIGH-edited.xml](FedRAMP-HIGH-edited.xml): This file has the same contents as [FedRAMP-HIGH-edited.json](FedRAMP-HIGH-edited.json) except it is in XML format instead of JSON.
+* [FedRAMP-LOW-crude.json](FedRAMP-LOW-crude.json): This file represents the FedRAMP low baseline as an OSCAL profile in JSON format, calling controls in appropriate NIST SP 800-53 baselines or when necessary in the NIST SP 800-53 catalog. However, this representation is not sufficiently granular in every detail. Specific parameter value assignments are not being parsed out and projected, but require hand intervention.
+* [FedRAMP-LOW-crude.xml](FedRAMP-LOW-crude.xml): This file has the same contents as [FedRAMP-LOW-crude.json](FedRAMP-LOW-crude.json) except it is in XML format instead of JSON.
+* [FedRAMP-MODERATE-crude.json](FedRAMP-MODERATE-crude.json): This file represents the FedRAMP moderate baseline as an OSCAL profile in JSON format, calling controls in appropriate NIST SP 800-53 baselines or when necessary in the NIST SP 800-53 catalog. However, this representation is not sufficiently granular in every detail. Specific parameter value assignments are not being parsed out and projected, but require hand intervention.
+* [FedRAMP-MODERATE-crude.xml](FedRAMP-MODERATE-crude.xml): This file has the same contents as [FedRAMP-MODERATE-crude.json](FedRAMP-MODERATE-crude.json) except it is in XML format instead of JSON.
+* [OSCAL-Development-Process-Notes.md](OSCAL-Development-Process-Notes.md): This file explains some of the processes and decision making involved in generating the examples in this directory.

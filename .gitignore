@@ -6,10 +6,11 @@ vault
 # oXygen XML Editor IDE file
 *.xpr
 
-*/working/**/*.pdf
-
 # Working files
+scratch
 wendell
+backup*
+working/
 
 # Production outputs
 pub

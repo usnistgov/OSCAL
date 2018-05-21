@@ -441,7 +441,7 @@
       <!-- - - - - - -->
       <set-param param-id="ac-1_a">
          <desc>organization-defined personnel or roles</desc>
-         <value>organization-defined personnel or roles</value>
+         <value>at least annually</value>
       </set-param>
       <set-param param-id="ac-1_b">
          <desc>organization-defined frequency</desc>

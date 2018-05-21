@@ -24,7 +24,7 @@
   
   <p:xslt name="produce-manifest-html">
     <p:input port="source">
-      <p:document href="directory-manifest.xsl"/>
+      <p:inline><oscal:empty/></p:inline>
     </p:input>
     <p:input port="stylesheet">
       <p:document href="directory-manifest.xsl"/>
