@@ -3,7 +3,7 @@
 <!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2018-05-21T11:40:15.476-04:00 -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
    <title>NIST SP800-53</title>
-   <declarations href="SP800-53-declarations.xml"/>
+   <declarations href="NIST_SP-800-53_rev4_declarations.xml"/>
    <references>
       <ref id="ref001">
          <citation href="http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html">5 C.F.R. 731.106</citation>
