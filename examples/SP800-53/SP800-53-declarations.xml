@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
+<declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+  <declare-prop context="SP800-53" class="name">
+    <singleton/>
+    <required/>
+    <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
+  </declare-prop>
+  <declare-prop context="SP800-53" class="priority">
+    <singleton/>
+    <value>P1</value>
+    <value>P2</value>
+    <value>P0</value>
+    <value>P3</value>
+  </declare-prop>
+  <declare-prop context="SP800-53" class="baseline-impact">
+    <value>LOW</value>
+    <value>MODERATE</value>
+    <value>HIGH</value>
+  </declare-prop>
+  <declare-part context="SP800-53" class="statement">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53" class="guidance">
+    <singleton/>
+  </declare-part>
+  <declare-part context="SP800-53" class="objective">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53" class="assessment"/>
+  <!-- can repeat -->
+
+  <declare-prop context="SP800-53-enhancement" class="name">
+    <singleton/>
+    <required/>
+    <calc xml:space="preserve"><inherit/> <autonum>(1)</autonum></calc>
+  </declare-prop>
+  <declare-prop context="SP800-53-enhancement" class="baseline-impact">
+    <value>LOW</value>
+    <value>MODERATE</value>
+    <value>HIGH</value>
+  </declare-prop>
+  <declare-part context="SP800-53-enhancement" class="statement">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53-enhancement" class="guidance">
+    <singleton/>
+  </declare-part>
+  <declare-part context="SP800-53-enhancement" class="objective">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53-enhancement" class="assessment"/>
+
+  <!--'number' properties are not given on feat.statement -->
+  <!--<declare-p context="statement" class="description">
+    <singleton/>
+    <required/>
+  </declare-p>-->
+
+  <declare-part context="statement" class="item"/>
+  
+  <!-- recursive -->
+  <declare-part context="item" class="item"/>
+  
+  <declare-prop context="item" class="name">
+    <singleton/>
+    <required/>
+    <calc xml:space="preserve"><inherit/><autonum>a.</autonum></calc><!-- in controls -->
+    <calc xml:space="preserve"><inherit/><autonum>(a)</autonum></calc><!-- in subcontrols -->
+  
+    <!-- then even lower down -->
+    <calc><inherit/><autonum>1.</autonum></calc><!-- in subitems in controls -->
+    <calc><inherit/><autonum>(1)</autonum></calc><!-- in subitems subcontrols -->
+  </declare-prop>
+  
+  <!--<declare-p context="item" class="description">
+    <singleton/>
+    <required/>
+  </declare-p>-->
+
+  <!-- Note recursion: objectives contain objectives -->
+  <declare-part context="objective" class="objective">
+    <required/>
+  </declare-part>
+  <declare-prop context="objective" class="name">
+    <singleton/><!-- outer (wrapper) objectives are not numbered explicitly -->
+  </declare-prop>
+  <!--<declare-p context="objective" class="decision">
+    <singleton/>
+    <!-\- <required/>not required because objectives are nested; only lowest level has decision given. -\->
+  </declare-p>-->
+  
+  
+  <declare-prop context="assessment" class="method">
+    <singleton/>
+    <required/>
+    <value>EXAMINE</value>
+    <value>INTERVIEW</value>
+    <value>TEST</value>
+  </declare-prop>
+  <declare-part context="assessment" class="objects">
+    <required/>
+  </declare-part>
+
+</declarations>

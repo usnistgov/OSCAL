@@ -2,6 +2,11 @@
 <!-- Produced by running profile-produce.xpl on file:/home/wendell/Documents/OSCAL/working/FedRAMP/lib/excel-HIGH-extract.xml 2017-11-16-05:00 -->
 <!-- Subsequently edited by hand. -->
 <!--<?xml-model href="../../working/FedRAMP/fedramp-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+
+<!-- NB since revs of May 2018 the IDs in this file are *broken* and do not resolve.
+      The data for this file (especially parameter settings) is expected to be provided by extraction from more current sources.
+      This file is retained as a reference for how it might look in tagging (with adjustments made for the pointers)
+   -->
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-6c2374fa-e566-481a-85d3-0eaf83dde423">
    <title>FedRAMP HIGH Baseline PROFILE (extracted and aligned, no edits)</title>

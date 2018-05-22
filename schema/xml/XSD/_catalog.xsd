@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last touched 2018-05-09 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://csrc.nist.gov/ns/oscal/1.0" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
   <xs:include schemaLocation="oscal-declarations.xsd"/>
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
@@ -8,12 +9,12 @@
     <xs:sequence>
       <xs:element ref="oscal:title"/>
       <xs:element minOccurs="0" ref="oscal:declarations"/>
+      <xs:element minOccurs="0" ref="oscal:references"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:section"/>
         <xs:element ref="oscal:group"/>
         <xs:element ref="oscal:control"/>
       </xs:choice>
-      <xs:element minOccurs="0" ref="oscal:references"/>
     </xs:sequence>
   </xs:complexType>
   <xs:element name="section">
@@ -38,7 +39,12 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:group ref="oscal:control-components"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="oscal:param"/>
+          <xs:element ref="oscal:link"/>
+          <xs:element ref="oscal:prop"/>
+          <xs:element ref="oscal:part"/>
+        </xs:choice>
         <xs:choice maxOccurs="unbounded">
           <xs:element ref="oscal:group"/>
           <xs:element ref="oscal:control"/>
@@ -54,23 +60,17 @@
     (constrained) at the OSCAL layer so they don't get declaration elements.
   -->
   <!-- Now for the contents of the OSCAL doc proper ... -->
-  <!-- note prose is not included in control-components, unlike item pattern ('component' element) -->
-  <xs:group name="control-components">
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal:param"/>
-        <xs:element ref="oscal:link"/>
-        <xs:element ref="oscal:prop"/>
-        <xs:element ref="oscal:part"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:group>
   <xs:element name="control">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:group ref="oscal:control-components"/>
+          <xs:element ref="oscal:param"/>
+          <xs:element ref="oscal:link"/>
+          <xs:element ref="oscal:prop"/>
+        </xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="oscal:part"/>
           <xs:element ref="oscal:subcontrol"/>
         </xs:choice>
         <xs:element minOccurs="0" ref="oscal:references"/>
@@ -84,7 +84,12 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="oscal:title"/>
-        <xs:group ref="oscal:control-components"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="oscal:param"/>
+          <xs:element ref="oscal:link"/>
+          <xs:element ref="oscal:prop"/>
+          <xs:element ref="oscal:part"/>
+        </xs:choice>
         <xs:element minOccurs="0" ref="oscal:references"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
@@ -110,8 +115,13 @@
     <xs:sequence>
       <xs:element minOccurs="0" ref="oscal:title"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="oscal:control-components"/>
-        <xs:group ref="oscal:prose"/>
+        <xs:element ref="oscal:param"/>
+        <xs:element ref="oscal:prop"/>
+      </xs:choice>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal:prose"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:link"/>
+        <xs:element ref="oscal:part"/>
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="id" type="xs:ID"/>
@@ -131,15 +141,25 @@
       <xs:attributeGroup ref="oscal:hrefAttr"/>
     </xs:complexType>
   </xs:element>
+  <!--
+    At higher levels, desc and label may repeat ("echoed" from lower layers) but not in catalogs
+    Here, value is a nominal default value (single-value)
+    So it must be a scalar - to have values w/ cascading parameters use select[count(choice)=1]
+  -->
   <xs:element name="param">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="oscal:desc"/>
-        <xs:element minOccurs="0" ref="oscal:label"/>
-        <xs:element minOccurs="0" ref="oscal:value"/>
+        <xs:element ref="oscal:label"/>
+        <xs:element minOccurs="0" ref="oscal:desc"/>
+        <xs:element minOccurs="0" ref="oscal:requirement"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="oscal:value"/>
+          <xs:element ref="oscal:select"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
       <xs:attributeGroup ref="oscal:optionalClass"/>
+      <xs:attribute name="depends-on" type="xs:IDREF"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="desc">
@@ -148,6 +168,11 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="label" type="xs:string"/>
+  <xs:element name="requirement">
+    <xs:complexType mixed="true">
+      <xs:attribute name="test"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="prop">
     <xs:complexType mixed="true">
       <xs:attributeGroup ref="oscal:asProp"/>
@@ -171,31 +196,29 @@
   <xs:element name="references">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="oscal:ref"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:ref"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:link"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <!-- JATS-like references -->
+  <!-- somewhat JATS-like references -->
   <xs:element name="ref">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal:std"/>
-        <xs:element ref="oscal:citation"/>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:citation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:link"/>
         <xs:group ref="oscal:prose"/>
-      </xs:choice>
+      </xs:sequence>
       <xs:attribute name="id" type="xs:ID"/>
     </xs:complexType>
   </xs:element>
-  <!-- analogous to JATS mixed-citation[@citation-type='standard'] or equivalent -->
-  <xs:element name="std">
-    <xs:complexType mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="oscal:mix"/>
-        <xs:element ref="oscal:a"/>
-      </xs:choice>
-      <xs:attribute name="href" type="xs:anyURI"/>
-    </xs:complexType>
-  </xs:element>
+  <!--
+    analogous to JATS mixed-citation[@citation-type='standard'] or equivalent
+    std =  element std {
+           attribute href { xsd:anyURI }?,
+           (mix | xref)*
+    }
+  -->
   <!-- analogous to JATS mixed-citation -->
   <xs:element name="citation">
     <xs:complexType mixed="true">
@@ -211,8 +234,6 @@
   <!-- Anything p-like can be declared 'asP', which is to say mixed content (unlike parts and props) -->
   <xs:complexType name="asP" mixed="true">
     <xs:group ref="oscal:whatnot"/>
-    <xs:attribute name="id" type="xs:ID"/>
-    <xs:attributeGroup ref="oscal:optionalClass"/>
   </xs:complexType>
   <xs:element name="pre">
     <xs:complexType mixed="true">
@@ -237,8 +258,6 @@
         <xs:element ref="oscal:ol"/>
         <xs:element ref="oscal:ul"/>
       </xs:choice>
-      <xs:attribute name="id" type="xs:ID"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="ul">
@@ -271,25 +290,24 @@
         <xs:element ref="oscal:q"/>
         <xs:element ref="oscal:code"/>
         <xs:element ref="oscal:em"/>
-        <xs:element ref="oscal:i"/>
+        <xs:element ref="oscal:strong"/>
         <xs:element ref="oscal:b"/>
+        <xs:element ref="oscal:i"/>
         <xs:element ref="oscal:sub"/>
         <xs:element ref="oscal:sup"/>
-        <xs:element ref="oscal:span"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
-  <!-- q is a little special, it's not just mix -->
+  <!-- q is a little special, it's not just mix and you can't nest it in itself without cheating -->
   <xs:element name="q">
     <xs:complexType mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="oscal:code"/>
         <xs:element ref="oscal:em"/>
         <xs:element ref="oscal:i"/>
-        <xs:element ref="oscal:b"/>
+        <xs:element ref="oscal:strong"/>
         <xs:element ref="oscal:sub"/>
         <xs:element ref="oscal:sup"/>
-        <xs:element ref="oscal:span"/>
       </xs:choice>
     </xs:complexType>
   </xs:element>
@@ -297,7 +315,6 @@
   <xs:element name="code">
     <xs:complexType mixed="true">
       <xs:group ref="oscal:mix"/>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="em">
@@ -306,7 +323,14 @@
         <xs:group ref="oscal:mix"/>
         <xs:element ref="oscal:a"/>
       </xs:choice>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="strong">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="oscal:mix"/>
+        <xs:element ref="oscal:a"/>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
   <xs:element name="i">
@@ -315,7 +339,6 @@
         <xs:group ref="oscal:mix"/>
         <xs:element ref="oscal:a"/>
       </xs:choice>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="b">
@@ -324,7 +347,6 @@
         <xs:group ref="oscal:mix"/>
         <xs:element ref="oscal:a"/>
       </xs:choice>
-      <xs:attributeGroup ref="oscal:optionalClass"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="sub">
@@ -367,17 +389,11 @@
   <xs:group name="semantical">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal:withdrawn"/>
         <xs:element ref="oscal:insert"/>
+        <xs:element ref="oscal:select"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
-  <!-- A placeholder status report typically with a cross-reference -->
-  <xs:element name="withdrawn">
-    <xs:complexType mixed="true">
-      <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal:inlines"/>
-    </xs:complexType>
-  </xs:element>
   <!--
     A value to be assigned by responder via parameter
     (a parameter must be available)
@@ -388,13 +404,37 @@
       <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
     </xs:complexType>
   </xs:element>
-  <!-- A selection to be made by responder - tbd -->
-  <!-- select = element select { idAttr?, choice* } -->
+  <!--
+    A selection to be made by responder - tbd
+    select = empty
+  -->
+  <xs:element name="select">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oscal:choice"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="how-many">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="one or more "/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
   <!--
     Within a selection, a choice - tbd
     unlike 'value', choice may have inline stuff as well as 'assign' elements
-    choice = element choice { (assign | mix)* }
   -->
+  <xs:element name="choice">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="oscal:insert"/>
+        <xs:group ref="oscal:mix"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
   <!-- IDs are required everywhere for now -->
   <xs:attributeGroup name="idAttr">
     <xs:attribute name="id" use="required" type="xs:ID"/>
