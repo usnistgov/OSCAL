@@ -5,5 +5,5 @@
 <title>Identity profile (an entire catalog, implicitly)</title>
    <!-- Asking for all controls. -->
    
-   <import href="mini-testing-catalog.xml"/>
+   <import href="oscal_testing_mini-testing_catalog.xml"/>
 </profile>
