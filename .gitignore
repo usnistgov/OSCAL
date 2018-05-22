@@ -13,6 +13,7 @@ backup*
 working/
 
 # Production outputs
-pub
+pub/
+roundtripped/
 
 /OSCAL-dev.xpr
