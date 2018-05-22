@@ -16,15 +16,15 @@ The source code for the published versions is maintained deeper within the subdi
 
 The same pipeline aligns with our expected JSON schema artifacts. Eventually we may switch out RNG for a different meta-notation able to drive the production of XSD the way we presently do. (We would prefer not to author XSD by hand.)
 
-'catalog' [../oscal-catalog.xsd](../oscal-catalog.xsd)
+'catalog' [oscal-catalog.xsd](oscal-catalog.xsd)
 
-'profile' [../oscal-profile.xsd](../oscal-profile.xsd) offers the simplest interface to OSCAL: it is for referencing catalogs not writing them; the root element will be `<profile>`.
+'profile' [oscal-profile.xsd](oscal-profile.xsd) offers the simplest interface to OSCAL: it is for referencing catalogs not writing them; the root element will be `<profile>`.
 
-'declarations' [../declarations.xsd](../oscal-declarations.xsd) OSCAL offers, in addition to constraints enforced by language definition files, additional constraints to be declared and applied dynamically to its (document) contents. This is done by using the set of elements described in this schema (module).
+'declarations' [oscal-declarations.xsd](oscal-declarations.xsd) OSCAL offers, in addition to constraints enforced by language definition files, additional constraints to be declared and applied dynamically to its (document) contents. This is done by using the set of elements described in this schema (module).
 
 for each module:
 1. Produce pre-injection XSD from RNC using Trang (in IDE)
-1. Inject schema docs 
+1. Inject schema docs
 
 Then for all/any modules together:
 1. Produce HTML/MD docs for schemas from oscal-oscal.xml

@@ -12,6 +12,4 @@ This directory's structure and contents are as follows:
 * [oscal-docs.sch](oscal-docs.sch): This file contains Schematron for validating [oscal-oscal.xml](oscal-oscal.xml) against the schemas (XSD) it purportedly describes.
 * [oscal-oscal-decls.xml](oscal-oscal-decls.xml): This is an OSCAL file relating to oscal-oscal.xml (tagging documentation) containing declarations of (some of) the constraints (over usage of properties and parts) followed in that document. As such, it is an example of the OSCAL declarations model in an application different from a control catalog.
 * [oscal-oscal.xml](oscal-oscal.xml): This file contains the document model and tagging specification.
-* [oscal-tag-library.html](oscal-tag-library.html): This file is used to generate the [oscal-tag-library.md](oscal-tag-library.md) file.
-* [oscal-tag-library.md](oscal-tag-library.md): This file provides descriptions of OSCAL elements. In the future, attribute definitions may be added along with more background and examples.
 * [produce-xml-schema-docs.sh](produce-xml-schema-docs.sh): This file invokes [lib/produce-schema-docs-md.xpl](lib/produce-schema-docs-md.xpl) to produce Markdown-formatted documentation of schema modules.

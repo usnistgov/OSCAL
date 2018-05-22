@@ -2,7 +2,7 @@
 
 This directory contains a variety of supporting files. For example, it holds core XSLT stylesheets for processing OSCAL. It also contains scripts and utilities used internally by the OSCAL developers.
 
-The structure and contents of the examples directory are as follows:
+The structure and contents of the directory are as follows:
 
 * [CSS](CSS): This directory contains CSS files useful for styling OSCAL in an editor or browser.
 * [XProc](XProc): This directory contains XProc pipeline configurations (scripts) used for general processes, such as resolving a profile against its catalogs and producing an HTML file from the results.
