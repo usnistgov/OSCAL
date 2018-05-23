@@ -1,3 +1,3 @@
-# OSCAL Libraries and Other Supporting Files - XProc
+# OSCAL Library Files - XProc
 
-This directory contains XProc pipeline configurations (scripts) used for general processes, such as resolving a profile against its catalogs and producing an HTML file from the results.
+This directory contains W3C XProc implementations of pipelined transformations. Currently, only a resolve-and-render pipeline is given for testing profile resolution.

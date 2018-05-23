@@ -1,3 +1,3 @@
-# OSCAL Libraries and Other Supporting Files - util
+# OSCAL Library Files - util
 
-This directory contains utility XSLTs and others. It includes some "scratch" XQueries plus the XSLT that produces the file manifests in Markdown.
+This directory contains miscellaneous utility transformations and queries. It includes some "scratch" XQueries plus the XSLT that produces the file manifests in Markdown.
