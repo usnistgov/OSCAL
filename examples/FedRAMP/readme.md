@@ -1,38 +1,28 @@
-# FedRAMP profile examples
+# Federal Risk and Authorization Management Program (FedRAMP) Profile Examples
 
-The source data from which are derived these representations of the "High", "Moderate" and "Low" baselines (profiles) defined by FedRAMP can be found here:
+The source data from which are derived these representations of the "High", "Moderate" and "Low" baselines (profiles) defined by FedRAMP can be found [here](https://www.fedramp.gov/documents/):
 
-https://www.fedramp.gov/resources/documents-2016/
-
-(Under Key Cloud Service Provider (CSP) Documents)
+* [FedRAMP High Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_High_Security_Controls.xlsx)
+* [FedRAMP MODERATE Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_Moderate_Security_Controls.xlsx)
+* [FedRAMP LOW Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_Low_Security_Controls.xlsx)
 
 The three spreadsheets we used for LOW, MODERATE and HIGH are archived in the `sources` directory.
 
-Machine made "crude" versions (hot out of the oven; see below for details)
+Machine made versions (hot out of the oven; see below for details)
 
-* `FedRAMP-HIGH-crude.xml`
-* `FedRAMP-MODERATE-crude.xml`
-* `FedRAMP-LOW-crude.xml`
+* `FedRAMP_HIGH-baseline_profile.xml`
+* `FedRAMP_MODERATE-baseline_profile.xml`
+* `FedRAMP_LOW_profile.xml`
 
-Each one of these captures the (indicated) spreadsheet data and represents it as an OSCAL profile, calling controls in appropriate SP800-53 baselines or when necessary in the SP800-53 catalog. However, this data capture is not yet sufficiently granular in every detail. Specific parameter value assignments are not being parsed out and projected, but require hand intervention.
+Each one of these captures the (indicated) spreadsheet data and represents it as an OSCAL profile, calling controls in from the appropriate SP800-53 baselines or when necessary in the SP800-53 catalog.
 
-Estimated scale of effort for such hand intervention: hours per profile. Not weeks or months. Note however that hand intervention could also go beyond completing the profile to the spreadsheet (where it  is incomplete) indeed once editing is in scope, it is open-ended (a feature not a bug).
-
-In order to assess the feasibility and come to this estimate, we have also made a partially-hand-edited version of 'HIGH' (so far) as a demonstration:
-
-* `FedRAMP-HIGH-edited.xml`
-
-A diff between this file and `FedRAMP` shows exactly where changes have been made. Editing 81 parameters (of 434 in 'HIGH') required 2-3 hours. Note however that a significant number of parameters are not assigned values even in the source data; so quality and completeness of the source data are at issue as much as quality/correctness of the conversion.
-
-### HTML rendition
-
-* `pub/FedRAMP-HIGH-edited-rendered.html`
+Specific FedRAMP guidance and parameter constrants are provided for each control.
 
 ### Extraction / conversion process
 
-Before hand editing, the OSCAL profiles in this subdirectory were produced by extraction from (machine-readable) source data using logic maintained in directory `working/FedRAMP`. The files appearing here as "crude" are very close analogs to the "working" files in that subdirectory (confirm this with a diff or file comparison between any file in this folder, and its corresponding "working" file). See `working/FedRAMP` for more info.
-
-The extraction and conversion process is tuned specifically for these spreadsheets and pulls their data at the maximum possible level of "semantic resolution", at the (spreadsheet) cell level. Note that this is *not* a sufficiently high-quality extraction to use "lights out".
+All control information from NIST SP 800-53, Revistion 4 and all FedRAMP control baseline details are corrilated in an MS Access database, which is part of the MS Office 2016 product suite.
+The FedRAMP profiles are created with MS Access Visual Basic for Applications (VBA) code, which queries the information and creates OSCAL-compliant XML using MSXML Document Object Model (DOM) Version 6.
+This tool represents a proof-of-concept. Open-source tools may be developed in the future.
 
 ### Special considerations
 
