@@ -7,7 +7,7 @@
      either errors in specification, or reference
        -->
    <title>Exceptions profile example</title>
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
       <!-- If we leave 'include' out, we get include/all implicitly
          <include><all/></include>-->
       <include>
@@ -25,7 +25,7 @@
       </exclude></import>
    
    <!-- This should error as a repeated call to the same authority (profile or catalog) - not allowed! -->
-   <import href="mini-testing-catalog.xml"/>
+   <import href="oscal_testing_mini-testing_catalog.xml"/>
    
 <modify>
       

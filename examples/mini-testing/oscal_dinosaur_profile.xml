@@ -7,7 +7,7 @@
 
    <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
    <title>Dinosaur Profile</title>
-  <import href="dinosaur-catalog.xml">
+  <import href="oscal_testing_dinosaur_catalog.xml">
     <include>
       <match pattern=".*saur.*"/>
       <!--<call with-subcontrols="yes" control-id="allosaur"/>
@@ -15,7 +15,7 @@
     </include>
     
   </import>
-  <import href="dinosaur-catalog.xml">
+  <import href="oscal_testing_dinosaur_catalog.xml">
     <include>
       <match pattern="triceratops"/>
       <!--<call with-subcontrols="yes" control-id="allosaur"/>

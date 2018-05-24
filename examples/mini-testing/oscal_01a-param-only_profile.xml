@@ -5,7 +5,7 @@
 
    <!-- Asking for all controls -->
    <title>Parameter This</title>
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
       <!-- Including everything (this also happens by default) -->
       <include>
          <all/>

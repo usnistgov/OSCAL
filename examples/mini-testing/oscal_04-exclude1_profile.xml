@@ -4,7 +4,7 @@
 
    <!-- Asking for all controls, with an exclusion -->
    <title>Being Exclusive</title>
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
       <include>
          <all with-subcontrols="yes"/>
       </include>

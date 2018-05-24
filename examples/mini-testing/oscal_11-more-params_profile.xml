@@ -7,7 +7,7 @@
 
    <!-- Subcontrols and parameters therefore -->
   <title>More Paramters, More</title>
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
       <include>
          <all with-subcontrols="yes"/>
       </include>
