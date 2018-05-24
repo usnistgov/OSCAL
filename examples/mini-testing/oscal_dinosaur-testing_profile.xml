@@ -6,7 +6,7 @@
    <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
    <title>A Compound Profile</title>
    <import href="dinosaur-profile.xml"/>
-   <import href="dinosaur-catalog.xml">
+   <import href="oscal_testing_dinosaur_catalog.xml">
       <include>
          <!--
          Q: anchor at front but not at end? AC becomes regex '^AC' only 'AC$' becomes '^AC$'

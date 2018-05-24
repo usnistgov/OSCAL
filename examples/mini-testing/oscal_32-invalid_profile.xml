@@ -12,7 +12,7 @@
    -->
    
    <title>Patching profile example</title>
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
       <include>
          <!-- Must have only one of 'all' and 'call' -->
          <all/>

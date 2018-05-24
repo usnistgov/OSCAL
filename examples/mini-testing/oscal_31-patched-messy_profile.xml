@@ -8,7 +8,7 @@
 
    <!-- Asking for all controls, this time with a parameter-->
    <title>Patching profile example</title>
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
       <!-- If we leave 'include' out, we get include/all implicitly
          <include><all/></include>-->
 

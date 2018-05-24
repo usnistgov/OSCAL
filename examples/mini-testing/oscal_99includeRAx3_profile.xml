@@ -5,7 +5,7 @@
 
    <title>Three RA controls with parameters</title>
    
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
          <include>
             <call control-id="ra.7"/>
             

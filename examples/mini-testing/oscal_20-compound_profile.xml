@@ -5,7 +5,7 @@
 
    <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
    <title>A Compound Profile</title>
-   <import href="mini-testing-catalog.xml">
+   <import href="oscal_testing_mini-testing_catalog.xml">
       <include>
          <call control-id="ac.5"/>
       </include>

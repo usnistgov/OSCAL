@@ -13,8 +13,8 @@
           for the ur-source catalog (not a deriving profile)
         For now only @id is being examined; catalogs are expected to have exclusive (nonoverlapping) @id schemes.
    -->
-   <!-- The full mini-testing-catalog.xml includes several 'RA' examples. -->
-   <import href="mini-testing-catalog.xml"/>
+   <!-- The full oscal_testing_mini-testing_catalog.xml includes several 'RA' examples. -->
+   <import href="oscal_testing_mini-testing_catalog.xml"/>
    
    <!-- RA.1 through RA.3 appear again in the profile, creating a set of nominal clashing controls.
    Schematron oscal-profile.sch can successfully report them on both invocations
