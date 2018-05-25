@@ -1,7 +1,6 @@
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"     title="Basic" alternate="yes"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal-ui.css"  title="Wiring" alternate="yes"?>
 <!-- XML touched by transformation 'SP800-53 OSCAL EXTRACTION' :2018-05-21T11:40:15.476-04:00 -->
-<?xml-model href="../../schema/xml/Schematron/oscal-as-declared.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-catalog.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
