@@ -1,6 +1,7 @@
 # Open Security Controls Assessment Language (OSCAL)
 
 > Current work is happening in the [master](https://github.com/usnistgov/OSCAL/) branch.
+> NOTE: Some JSON examples might be missing across the repo. We are working to regenerate these.
 
 NIST is developing the Open Security Controls Assessment Language (OSCAL), a set of hierarchical, formatted, XML- and JSON-based formats that provide a standardized representation for different categories of information pertaining to the publication, implementation, and assessment of security controls. OSCAL is being developed through a [collaborative approach](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) with the public. Public contributions to this project are welcome.
 
@@ -16,7 +17,7 @@ This repository consists of the following directories and files pertaining to th
 * [lib](lib): This directory contains a variety of supporting files. For example, it holds core XSLT stylesheets for processing OSCAL. It also contains scripts and utilities used internally by the OSCAL developers.
 * [schema](schema): This directory contains the OSCAL schemas and related validation tools. The directory contains both XML and JSON representations for OSCAL.
 * [sources](sources): This directory contains copies of resources not maintained by the OSCAL project that have been used as sources for producing OSCAL artifacts. For example, the sources directory has a copy of the NIST SP 800-53 control data feed schema.
-* [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains rules of behavior that contributors must follow when contributing to this project.
+* [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
 * [CONTRIBUTING.md](CONTRIBUTING.md): This file is for potential contributors to the OSCAL project. It provides basic information on the OSCAL project, describes the main ways people can make contributions, explains how to report issues with OSCAL, and lists pointers to additional sources of information. It also has instructions on establishing a development environment for contributing to the OSCAL project and using GitHub project cards to track development sprints.
 * [LICENSE.md](LICENSE.md): This file contains license and copyright information for the files in the OSCAL GitHub repository.
 * [USERS.md](USERS.md): This file explains which types of users are most likely to benefit from consuming OSCAL tools and content when they are available.
