@@ -1,6 +1,7 @@
 # Open Security Controls Assessment Language (OSCAL)
 
 > Current work is happening in the [master](https://github.com/usnistgov/OSCAL/) branch.
+> NOTE: Some JSON examples might be missing across the repo. We are working to regenerate these.
 
 NIST is developing the Open Security Controls Assessment Language (OSCAL), a set of hierarchical, formatted, XML- and JSON-based formats that provide a standardized representation for different categories of information pertaining to the publication, implementation, and assessment of security controls. OSCAL is being developed through a [collaborative approach](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) with the public. Public contributions to this project are welcome.
 
