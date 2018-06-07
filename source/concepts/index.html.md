@@ -30,7 +30,7 @@ An *OSCAL catalog* is a set of closely related OSCAL controls. The catalog for [
 
 ## OSCAL Profiles
 
-An *OSCAL profile* is a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Also called a baseline or overlay, examples of profiles include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements. 
+An *OSCAL profile* is a subset of security controls selected from one or more control catalogs. Also called a baseline or overlay, examples of profiles include the control baselines in NIST SP 800-53 and the FedRAMP baselines. A profile can be used to represent a set of control-based requirements, which can be used to implement the requirements in a framework or policy. 
 
 The figure below is an example of what OSCAL is doing with catalogs and profiles. This example represents the NIST SP 800-53 low baseline, which is a profile in OSCAL nomenclature. The profile is effectively indicating which controls from the NIST SP 800-53 catalog are required to be compliant with the profile (NIST SP 800-53 low baseline). Using OSCAL formats for these makes the mappings between the control catalog and the profile explicit and machine readable. A single profile can reference controls in multiple catalogs. OSCAL will allow profiles to be generated using the same interoperable format regardless of which catalogs are being used.
 
