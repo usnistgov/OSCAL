@@ -29,22 +29,17 @@ JAVAJSXML="java -jar $SAXON -s:$METASCHEMAXML -o:$JSXMLXSLT -xsl:$LIBDIR/produce
 # Now ...
 echo
 echo Producing JSON and XML schemas and tools from $METASCHEMAXML ...
-echo
-
 cp -u $LIBDIR/OSCAL/oscal-prose-module.xsd $OSCALDIR/schema/xml
-echo / Updated OSCAL prose XSD module
-
-$JAVACALLJ
-echo / Made JSON Schema ______________ $JSCRESULT
-
+echo _ Updated OSCAL prose XSD module
 $JAVACALLX
-echo / Made XSD ______________________ $XSDRESULT
-
-$JAVADOCMS
-echo / Made markdown documentation ___ $DOCRESULT
-
+echo _ Made XSD ______________________ $XSDRESULT
+$JAVACALLJ
+echo _ Made JSON Schema ______________ $JSCRESULT
 $JAVAXMLJS
-echo / Made XML-to-JSON converter ____ $XMLJSXSLT
+echo _ Made XML-to-JSON converter ____ $XMLJSXSLT
 $JAVAJSXML
-echo / Made JSON-to-XML converter ____ $JSXMLXSLT
+echo _ Made JSON-to-XML converter ____ $JSXMLXSLT
+$JAVADOCMS
+echo _ Made markdown documentation ___ $DOCRESULT
 echo
+
