@@ -35,6 +35,7 @@
 1. Standardize the expression of artifacts driving crowd sourced development and improvement across profile and implementation layers
 1. Support multiple, interoperable, and lossless machine-readable formats including XML and JSON 
 1. Provide a common means to identify and version shared resources
+1. OSCAL models will align with current, practical information use, while supporting advanced structures that provide for greater automation and verification. This will provide a path for early adoption and ongoing evolution around how OSCAL is used.
 
 ## Development timeline
 
