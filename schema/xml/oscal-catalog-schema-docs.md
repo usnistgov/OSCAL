@@ -9,7 +9,8 @@ The OSCAL Control Catalog format can be used to describe a collection of securit
 A collection of controls
 
 The `<catalog>` element has the following contents (in order):
- 
+
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (required) 
 * A [&lt;title>](#title-title-element) element (one) 
 * A [&lt;declarations>](#declarations-declarations-element) element (zero or one) 
 * A [&lt;references>](#references-references-element) element (zero or one) 
@@ -18,7 +19,7 @@ The `<catalog>` element has the following contents (in order):
   * [&lt;group>](#control-group-group-element) elements (zero or more) 
   * [&lt;control>](#control-control-element) elements (zero or more)   
 
-Catalogs may use [&lt;section>](#section-section-element) to sub-divide the textual, contents of a Catalog.  
+Catalogs may use [&lt;section>](#section-section-element) to subdivide the textual contents of a catalog.  
 
 ## Declarations: `<declarations>` element
 
@@ -34,6 +35,7 @@ Allows the inclusion of prose content within a Catalog.
 
 The `<section>` element has the following contents (in order):
 
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional)
 * Attribute [@class](#class-class-attribute) (optional) 
 * A [&lt;title>](#title-title-element) element (one) 
 * Prose contents (paragraphs and lists) 
@@ -46,6 +48,7 @@ A group of controls, or of groups of controls.
 
 The `<group>` element has the following contents (in order):
 
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional)
 * Attribute [@class](#class-class-attribute) (optional) 
 * A [&lt;title>](#title-title-element) element (one) 
 * [&lt;param>](#parameter-param-element) elements (zero or more) 
@@ -82,6 +85,7 @@ A control extension or enhancement
 
 The `<subcontrol>` element has the following contents (in order):
 
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (required)
 * Attribute [@class](#class-class-attribute) (optional) 
 * A [&lt;title>](#title-title-element) element (one) 
 * [&lt;param>](#parameter-param-element) elements (zero or more) 
@@ -102,6 +106,7 @@ A value with a name, attributed to the containing control, subcontrol, part, or 
 
 The `<prop>` element supports:
 
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional)
 * Attribute [@class](#class-class-attribute) (required) 
 
 Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities. 
@@ -128,6 +133,7 @@ For singletons (that is, the only element among siblings with its `@class`), pro
 
 The `<param>` element has the following contents (in order):
 
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (required)
 * Attribute [@class](#class-class-attribute) (optional)
 * Attribute [@depends-on](#depends-on-depends-on-attribute) (nominal data type `IDREF`) (optional) 
 * A [&lt;label>](#parameter-label-label-element) element (zero or one) 
@@ -149,7 +155,11 @@ Supports inline encoding
 
 Supports inline encoding
 
-Indicates and explains the purpose and use of a parameter 
+Indicates and explains the purpose and use of a parameter
+
+The `<desc>` element supports:
+
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional) 
 
 ## Constraint: `<constraint>` element
 
@@ -190,6 +200,7 @@ A partition or component of a control, subcontrol or part
 
 The `<part>` element has the following contents (in order):
 
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional)
 * Attribute [@class](#class-class-attribute) (optional) 
 * A [&lt;title>](#title-title-element) element (zero or one) 
 * [&lt;prop>](#property-prop-element) elements (zero or more) 
@@ -221,7 +232,8 @@ Works like an HTML anchor (`a`) except this is a line-oriented (block) element.
  A group of reference descriptions 
 
 The `<references>` element has the following contents (in order):
- 
+
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional) 
 * [&lt;link>](#link-link-element) elements (zero or more) 
 * [&lt;ref>](#reference-ref-element) elements (zero or more)  
 
@@ -230,7 +242,8 @@ The `<references>` element has the following contents (in order):
  A reference, with one or more citations to standards, related documents, or other resources 
 
 The `<ref>` element has the following contents (in order):
- 
+
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional) 
 * [&lt;citation>](#citation-citation-element) elements (zero or more) 
 * Prose contents (paragraphs and lists)  
 
@@ -242,6 +255,7 @@ Citation of a resource
 
 The `<citation>` element supports:
 
+* Attribute [@id](#id--identifier-id-attribute) (nominal data type `ID`) (optional)
 * Attribute [@href](#hypertext-reference-href-attribute) (nominal data type `anyURI`) (optional) 
 
 Echoes the NISO JATS (and NISO STS) `mixed-citation` element. 

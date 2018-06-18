@@ -260,7 +260,7 @@
    </xsl:template>
    <!-- 000 Handling flag "id" 000 -->
    <xsl:template match="*[@key='id']" mode="json2xml"/>
-   <xsl:template match="*[@key='control']/*[@key='id'] | *[@key='controls']/*/*[@key='id']"
+   <xsl:template match="*[@key='catalog']/*[@key='id'] | *[@key='control-catalog']/*/*[@key='id'] | *[@key='section']/*[@key='id'] | *[@key='sections']/*/*[@key='id'] | *[@key='group']/*[@key='id'] | *[@key='groups']/*/*[@key='id'] | *[@key='control']/*[@key='id'] | *[@key='controls']/*/*[@key='id'] | *[@key='subcontrol']/*[@key='id'] | *[@key='subcontrols']/*/*[@key='id'] | *[@key='prop']/*[@key='id'] | *[@key='props']/*/*[@key='id'] | *[@key='param']/*[@key='id'] | *[@key='params']/*/*[@key='id'] | *[@key='desc']/*[@key='id'] | *[@key='descriptions']/*/*[@key='id'] | *[@key='part']/*[@key='id'] | *[@key='parts']/*/*[@key='id'] | *[@key='references']/*[@key='id'] | *[@key='ref']/*[@key='id'] | *[@key='refs']/*/*[@key='id'] | *[@key='citation']/*[@key='id'] | *[@key='citations']/*/*[@key='id']"
                  mode="as-attribute">
       <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>

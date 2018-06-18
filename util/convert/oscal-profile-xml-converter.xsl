@@ -125,8 +125,7 @@
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
-   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
-   <xsl:template match="profile" mode="xml2json">
+   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->OSCAL Profile Metaschemaoscal-profile<xsl:template match="profile" mode="xml2json">
       <map key="profile">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="exists(import)">
@@ -291,6 +290,7 @@
    </xsl:template>
    <xsl:template match="set-param" mode="xml2json">
       <map key="{@id}">
+         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select="@depends-on"/>
          <xsl:apply-templates select="label" mode="#current"/>
