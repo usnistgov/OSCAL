@@ -9,11 +9,15 @@
   xsi:noNamespaceSchemaLocation="../../build/metaschema/lib/metaschema.xsd"
   xmlns:o="http://csrc.nist.gov/ns/oscal/1.0">
 
-  <title>OSCAL Control Catalog Schema</title>
+  <schema-name>OSCAL Control Catalog format</schema-name>
+  <remarks>The OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is <code>catalog</code>.</remarks>
 
   <define-assembly name="catalog" group-as="control-catalog">
     <formal-name>Catalog</formal-name>
     <description>A collection of controls</description>
+    <remarks>
+      <p>Catalogs may use <code>section</code> to sub-divide the textual, contents of a Catalog.</p>
+    </remarks>
     <model>
       <field named="title" required="yes"/>
       <field named="declarations"/>
@@ -43,7 +47,7 @@
   <define-assembly name="section" group-as="sections">
     <flag name="class"/>
     <formal-name>Section</formal-name>
-    <description>Prose content, unstructured except as sections, set apart from controls or control groups</description>
+    <description>Allows the inclusion of prose content within a Catalog.</description>
     <model>
       <field named="title" required="yes"/>
       <prose/>
@@ -54,8 +58,11 @@
 
   <define-assembly name="group" group-as="groups">
     <flag name="class"/>
-    <formal-name>Control group</formal-name>
-    <description>A group of controls, or of groups of controls</description>
+    <formal-name>Control Group</formal-name>
+    <description>A group of controls, or of groups of controls.</description>
+    <remarks>
+      <p>Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose.</p>
+    </remarks>
     <model>
       <field named="title" required="yes"/>
       <assemblies named="param" group-as="params" address="id"/>
@@ -82,10 +89,10 @@
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Control</formal-name>
-    <description>A structured information object representing a security control</description>
+    <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
     <remarks>
       <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
-        <code>part</code> or extended using <code>subcontrol</code>.</p>
+        <code>part</code> or enhanced using <code>subcontrol</code>.</p>
     </remarks>
     <model>
       <field named="title" required="yes"/>
@@ -106,9 +113,8 @@
 
   <define-assembly name="subcontrol" group-as="subcontrols" address="id">
     <flag name="class"/>
-    <formal-name>Subcontrol</formal-name>
+    <formal-name>Sub-Control</formal-name>
     <description>A control extension or enhancement</description>
-
     <model>
       <field named="title" required="yes"/>
       <assemblies named="param" group-as="params" address="id"/>
@@ -128,14 +134,13 @@
     <flag name="class" required="yes"/>
     <formal-name>Property</formal-name>
     <description>A value with a name, attributed to the containing control, subcontrol, part,
-          or group</description>
+          or group.</description>
     <remarks>
-      <p>The notation used by a property is up to an application; otherwise, properties are
-        distinguished in OSCAL by not permitting inline markup of any kind. They are expected to be
-        simple scalar values or to use machine-readable/parseable notation (not XML), as defined by
-        and for an application.</p>
+      <p>Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p>
+      <p>The value of a property is a
+        simple scalar value or list of values.</p>
       <p>The lexical composition of properties may be constrained by declarations including matching
-        to regular expressions or declaring known datatype notations.</p>
+        to regular expressions or by declaring a known datatype.</p>
       <p>Because properties are often used as selectors or identifiers for OSCAL operations, their
         values can be expected frequently to be normalized (e.g., with respect to whitespace) in
         use; however, this is application defined.</p>
@@ -145,11 +150,6 @@
         robustness of such queries can be ensured by appropriate property declarations (as
         singletons and as identifiers); cf <code>declare-prop</code> in the declarations model
         (which also supports other constraints over property values).</p>
-      <p>Properties permit the deployment and management of arbitrary controlled values, with and
-        among control objects (controls and parts and extensions), for any purpose useful to an
-        application or implementation of those controls. Typically and routinely, properties will be
-        used to sort, select, order, and arrange controls or relate them to one another or to class
-        hierarchies, taxonomies, or external authorities.</p>
     </remarks>
     <example>
       <o:prop class="name">A1</o:prop>
