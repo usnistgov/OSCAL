@@ -8,7 +8,8 @@
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
  xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0" use="profile" top="profile">
-   <title>OSCAL Profile Metaschema</title>
+   <schema-name>OSCAL Profile Metaschema</schema-name>
+   <short-name>oscal-profile</short-name>
    
    <import href="oscal-catalog-metaschema.xml"/>
    
@@ -258,6 +259,7 @@
    </define-assembly>
    
    <define-assembly group-as="param-settings" name="set-param" address="id">
+      <flag name="id" datatype="ID" required="yes"/>
       <flag name="class"/>
       <flag name="depends-on" datatype="IDREF"/>
       <formal-name>Parameter Setting</formal-name>

@@ -19,10 +19,22 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
+    <xsl:variable name="home"   select="/"/>
+    <xsl:variable name="abroad" select="//import/@href/document(.)"/>
+    
+    <xsl:key name="declarations-by-name"
+        match="define-field | define-assembly | define-flag" use="@name"/>
+    
+<!-- grab    -->
     <xsl:template match="/METASCHEMA">
         <xs:schema elementFormDefault="qualified" targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
             <xs:include schemaLocation="oscal-prose-module.xsd"/>
+<!-- First, declarations for elements here -->
             <xsl:apply-templates/>
+            
+<!-- Then, declarations for elements declared in imported metaschemas -->
+            <xsl:apply-templates select="key('declarations-by-name',$home//(flag/@name | model//@named ),$abroad) [not(@name=$home/*/@name) or true()]"/>
+            
             <xs:group name="prose">
                 <xs:choice>
                     <xs:element ref="oscal:p"/>
@@ -34,7 +46,17 @@
         </xs:schema>
     </xsl:template>
     
-    <xsl:template match="/METASCHEMA/title">
+    <xsl:template match="/METASCHEMA/schema-name">
+        <xsl:comment>
+            <xsl:apply-templates/>
+        </xsl:comment>
+    </xsl:template>
+    
+    <xsl:template match="/METASCHEMA/short-name">
+        <xsl:comment>short name: <xsl:apply-templates/></xsl:comment>
+    </xsl:template>
+    
+    <xsl:template match="/METASCHEMA/remarks/*">
         <xsl:comment>
             <xsl:apply-templates/>
         </xsl:comment>
@@ -59,7 +81,6 @@
                 
                 <!-- picking up attribute declarations -->
                 <xsl:apply-templates select="flag"/>
-                <xsl:apply-templates select="." mode="default-attributes"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -70,7 +91,6 @@
             <xs:complexType>
                 <xsl:apply-templates select="model"/>
                 <xsl:apply-templates select="flag"/>
-                <xsl:apply-templates select="." mode="default-attributes"/>
             </xs:complexType>
         </xs:element>
     </xsl:template>
@@ -128,29 +148,5 @@
         </xs:attribute>
     </xsl:template>
     
-    <!-- Ignore these -->
-    <xsl:template match="*[@has-id='required']/flag[@name='id']"/>
-    <xsl:template match="*[@has-id='none'    ][not(@assign='id')]/flag[@name='id']"/>
-    
-    <!-- These templates apply to everyone to provide for default or implicit attribute declarations. -->
-    
-    <xsl:template priority="2" match="*[@has-id='required' or @address='id']" mode="default-attributes">
-        <xs:attribute name="id" type="xs:ID" use="required"/>
-    </xsl:template>
-    
-    <xsl:template priority="1" match="*[matches(@address,'\i\c*')]" mode="default-attributes">
-        <xs:attribute name="{@address}" type="NCNAME" use="required"/>
-    </xsl:template>
-    
-    <!-- No declaration for @id when one is already there -->
-    <xsl:template match="*[flag/@name='id']" mode="default-attributes"/>
-
-    <!-- No declaration when explicitly excluded -->
-    <xsl:template match="*[@has-id='none']"       mode="default-attributes"/>
-    
-    <!-- Ordinarily, @id is available as an option -->
-    <xsl:template match="*" mode="default-attributes">
-        <xs:attribute name="id" type="xs:ID"/>
-    </xsl:template>
     
 </xsl:stylesheet>

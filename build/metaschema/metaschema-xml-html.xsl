@@ -36,6 +36,10 @@
       </h1>
    </xsl:template>
    
+   <xsl:template match="m:METASCHEMA/m:short-name">
+      <p>The short name (file identifier) for this schema shall be <i><xsl:apply-templates/></i></p>
+   </xsl:template>
+   
    <xsl:template  match="m:define-field">
       <div class="define-field" id="{@name}">
          <h2>

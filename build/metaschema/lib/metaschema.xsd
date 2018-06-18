@@ -12,7 +12,8 @@
       
       <xs:sequence>
         <xs:element ref="m:schema-name"/>
-        <xs:element ref="m:remarks"/>
+        <xs:element ref="m:short-name"/>
+        <xs:element ref="m:remarks" minOccurs="0"/>
         <xs:element ref="m:import"  minOccurs="0"/>
         <xs:choice maxOccurs="unbounded">
           <xs:element ref="m:define-assembly"/>
@@ -91,6 +92,14 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="schema-name">
+    <xs:complexType mixed="true">
+      <xs:choice maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="short-name">
     <xs:complexType mixed="true">
       <xs:choice maxOccurs="unbounded">
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>

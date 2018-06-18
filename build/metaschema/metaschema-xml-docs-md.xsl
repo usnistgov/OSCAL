@@ -5,8 +5,8 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
-    <xsl:import href="../../schema/metaschema/metaschema-html.xsl"/>
-    <xsl:import href="../../lib/publish/XSLT/html-to-markdown.xsl"/>
+    <xsl:import href="metaschema-xml-html.xsl"/>
+    <xsl:import href="../../util/publish/XSLT/html-to-markdown.xsl"/>
     
 <!-- output method must be text for good markdown including unescaped code snips   -->
     <xsl:output method="text"/>

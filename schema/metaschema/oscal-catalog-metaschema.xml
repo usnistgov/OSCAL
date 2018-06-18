@@ -2,7 +2,7 @@
 <!-- OSCAL CATALOG METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="metaschema-html.xsl"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-xml-html.xsl"?>
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA top="control-catalog" use="catalog" xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,13 +10,15 @@
   xmlns:o="http://csrc.nist.gov/ns/oscal/1.0">
 
   <schema-name>OSCAL Control Catalog format</schema-name>
+  <short-name>oscal-catalog</short-name>
   <remarks><p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is <code>catalog</code>.</p></remarks>
 
   <define-assembly name="catalog" group-as="control-catalog">
+    <flag name="id" datatype="ID" required="yes"/>
     <formal-name>Catalog</formal-name>
     <description>A collection of controls</description>
     <remarks>
-      <p>Catalogs may use <code>section</code> to sub-divide the textual, contents of a Catalog.</p>
+      <p>Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p>
     </remarks>
     <model>
       <field named="title" required="yes"/>
@@ -45,6 +47,7 @@
   </define-field>
 
   <define-assembly name="section" group-as="sections">
+    <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Section</formal-name>
     <description>Allows the inclusion of prose content within a Catalog.</description>
@@ -57,6 +60,7 @@
   </define-assembly>
 
   <define-assembly name="group" group-as="groups">
+    <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Control Group</formal-name>
     <description>A group of controls, or of groups of controls.</description>
@@ -112,6 +116,7 @@
 
 
   <define-assembly name="subcontrol" group-as="subcontrols" address="id">
+    <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Sub-Control</formal-name>
     <description>A control extension or enhancement</description>
@@ -131,6 +136,7 @@
   </define-field>
 
   <define-field name="prop" group-as="props">
+    <flag name="id" datatype="ID"/>
     <flag name="class" required="yes"/>
     <formal-name>Property</formal-name>
     <description>A value with a name, attributed to the containing control, subcontrol, part,
@@ -157,10 +163,11 @@
   </define-field>
 
   <define-assembly group-as="params" name="param" address="id">
+    <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <flag name="depends-on" datatype="IDREF"/>
     <formal-name>Parameter</formal-name>
-    <description> A parameter setting, to be propagated to points of insertion.
+    <description> A parameter setting, to be propagated to points of insertion
       </description>
     <model>
       <field named="label"/>
@@ -186,25 +193,27 @@
   <!-- @has-id = none on fields, when there are no attributes, permits
      us to produce a string (not an object) on the JSON side. -->
   <define-field name="desc" group-as="descriptions" has-id="none" as="mixed">
+    <flag name="id" datatype="ID"/>
     <formal-name>Parameter description</formal-name>
-    <description>Explains the purpose and use of a parameter</description>
+    <description>Indicates and explains the purpose and use of a parameter</description>
   </define-field>
 
   <define-field name="constraint" group-as="constraints">
     <flag name="test"/>
     <formal-name>Constraint</formal-name>
-    <description>An informal expression of a constraint or test</description>
+    <description>A formal or informal expression of a constraint or test</description>
   </define-field>
 
   <define-field name="value" has-id="none" as="mixed">
-    <formal-name>Value</formal-name>
-    <description>Indicates the value of a parameter or property.</description>
+    <formal-name>Value constraint</formal-name>
+    <description>Indicates a permissible value for a parameter or property</description>
     <remarks>
       <p>In a declaration, <code>value</code> will commonly be given in groups, indicating a set of
         enumerated permissible values (i.e., for an element to be valid to a value constraint, it
         must equal one of the given values).</p>
-      <p>In a parameter, a value represents a value assignment to the parameter. When parameters are provided in OSCAL Profiles, their
-        values will override any values assigned in a Catalog.</p>
+      <p>In a parameter, a value represents a value assignment to the parameter, overriding any
+        value given at the point of insertion. When parameters are provided in OSCAL profiles, their
+        values will override any values assigned <q>lower down the stack</q>.</p>
     </remarks>
   </define-field>
 
@@ -224,10 +233,10 @@
   </define-field>
 
   <define-assembly name="part" group-as="parts">
+    <flag name="id" datatype="ID"/>
     <flag name="class"/>
-
     <formal-name>Part</formal-name>
-    <description>A partition or component of a control, subcontrol, or parent part.</description>
+    <description>A partition or component of a control, subcontrol or part</description>
     <remarks>
       <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
         distinguished from other elements within their controls by their assigned
@@ -237,7 +246,9 @@
         <code>part[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
         Parts may also however have their own titles (<code>title</code> elements).</p>
       <p>Many parts are logical partitions or sections for prose. Other parts may be more formally
-        constructed out of properties (<code>prop</code> elements) and/or their own parts.</p>
+        constructed out of properties (<code>prop</code> elements) and/or their own parts. Such
+        structured objects may, at the extreme, function virtually as control extensions or
+        subcontrol-like objects (<q>enhancements</q>).</p>
     </remarks>
     <model>
       <field named="title"/>
@@ -253,7 +264,7 @@
     <flag name="rel" datatype="NCName"/>
     <formal-name>Link</formal-name>
     <description>
-        A line or paragraph with a hypertext link.
+        A line or paragraph with a hypertext link
       </description>
     <remarks>
       <p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
@@ -262,6 +273,7 @@
   </define-field>
 
   <define-assembly name="references">
+    <flag name="id" datatype="ID"/>
     <formal-name>References</formal-name>
     <description>
         A group of reference descriptions
@@ -273,6 +285,7 @@
   </define-assembly>
 
   <define-assembly name="ref" group-as="refs">
+    <flag name="id" datatype="ID"/>
     <formal-name>Reference</formal-name>
     <description>
         A reference, with one or more citations to standards, related documents, or other
@@ -290,6 +303,7 @@
 
 
   <define-field as="mixed" group-as="citations" name="citation">
+    <flag name="id" datatype="ID"/>
     <flag name="href" datatype="anyURI"/>
     <formal-name>Citation</formal-name>
     <description>Citation of a resource</description>

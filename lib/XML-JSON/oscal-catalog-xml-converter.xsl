@@ -240,6 +240,7 @@
    </xsl:template>
    <xsl:template match="subcontrol" mode="xml2json">
       <map key="{@id}">
+         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:for-each-group select="param" group-by="local-name()">
@@ -273,6 +274,7 @@
    <xsl:template match="prop" mode="xml2json">
       <map key="prop">
          <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
@@ -281,6 +283,7 @@
    </xsl:template>
    <xsl:template match="param" mode="xml2json">
       <map key="{@id}">
+         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select="@depends-on"/>
          <xsl:apply-templates select="label" mode="#current"/>
@@ -314,9 +317,15 @@
       </string>
    </xsl:template>
    <xsl:template match="desc" mode="xml2json">
-      <string key="desc">
-         <xsl:apply-templates mode="md"/>
-      </string>
+      <map key="desc">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:if test="matches(.,'\S')">
+            <string key="RICHTEXT">
+               <xsl:apply-templates mode="md"/>
+            </string>
+         </xsl:if>
+      </map>
    </xsl:template>
    <xsl:template match="constraint" mode="xml2json">
       <map key="constraint">
@@ -416,6 +425,7 @@
    </xsl:template>
    <xsl:template match="citation" mode="xml2json">
       <map key="citation">
+         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@href"/>
          <xsl:if test="matches(.,'\S')">

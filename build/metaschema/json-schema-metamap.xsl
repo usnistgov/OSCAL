@@ -22,8 +22,10 @@
         <xsl:variable name="top-each" select="@use"/>
         <map>
             <string key="$schema">http://json-schema.org/draft-07/schema#</string>
-            <string key="$id">http://csrc.nist.gov/ns/oscal/1.0-metaschema.json</string>
-            <string key="$comment">METASCHEMA Test JSON Schema</string>
+            <string key="$id">http://csrc.nist.gov/ns/oscal/1.0/{ short-name}-schema.json</string>
+            <xsl:for-each select="schema-name">
+              <string key="$comment">{ . }: JSON Schema</string>
+            </xsl:for-each>
             <string key="type">object</string>
             <map key="definitions">
                 <xsl:apply-templates/>
@@ -49,6 +51,7 @@
         </map>
     </xsl:template>
 
+   <xsl:template match="METASCHEMA/schema-name | METASCHEMA/remarks"/>
    <xsl:template match="define-flag"/>
     
     <xsl:template match="define-assembly | define-field">
