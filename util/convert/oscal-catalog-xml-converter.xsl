@@ -125,8 +125,7 @@
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
-   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
-   <xsl:template match="catalog" mode="xml2json">
+   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->OSCAL Control Catalog formatThe OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is catalog.<xsl:template match="catalog" mode="xml2json">
       <map key="catalog">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="title" mode="#current"/>

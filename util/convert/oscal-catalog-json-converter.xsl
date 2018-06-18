@@ -46,9 +46,7 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
-   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
-   <!-- 000 Handling assembly "catalog" 000 -->
-   <xsl:template match="*[@key='catalog'] | *[@key='control-catalog']/* | /map[empty(@key)]"
+   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->OSCAL Control Catalog formatThe OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is catalog.<!-- 000 Handling assembly "catalog" 000 --><xsl:template match="*[@key='catalog'] | *[@key='control-catalog']/* | /map[empty(@key)]"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="catalog" namespace="http://csrc.nist.gov/ns/oscal/1.0">
