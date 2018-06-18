@@ -186,27 +186,25 @@
   <!-- @has-id = none on fields, when there are no attributes, permits
      us to produce a string (not an object) on the JSON side. -->
   <define-field name="desc" group-as="descriptions" has-id="none" as="mixed">
-
     <formal-name>Parameter description</formal-name>
-    <description>Indicates and explains the purpose and use of a parameter</description>
+    <description>Explains the purpose and use of a parameter</description>
   </define-field>
 
   <define-field name="constraint" group-as="constraints">
     <flag name="test"/>
     <formal-name>Constraint</formal-name>
-    <description>A formal or informal expression of a constraint or test</description>
+    <description>An informal expression of a constraint or test</description>
   </define-field>
 
   <define-field name="value" has-id="none" as="mixed">
-    <formal-name>Value constraint</formal-name>
-    <description>Indicates a permissible value for a parameter or property</description>
+    <formal-name>Value</formal-name>
+    <description>Indicates the value of a parameter or property.</description>
     <remarks>
       <p>In a declaration, <code>value</code> will commonly be given in groups, indicating a set of
         enumerated permissible values (i.e., for an element to be valid to a value constraint, it
         must equal one of the given values).</p>
-      <p>In a parameter, a value represents a value assignment to the parameter, overriding any
-        value given at the point of insertion. When parameters are provided in OSCAL profiles, their
-        values will override any values assigned <q>lower down the stack</q>.</p>
+      <p>In a parameter, a value represents a value assignment to the parameter. When parameters are provided in OSCAL Profiles, their
+        values will override any values assigned in a Catalog.</p>
     </remarks>
   </define-field>
 
