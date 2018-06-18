@@ -43,8 +43,6 @@
             <xsl:when test="@as='mixed'"><p>Supports inline encoding</p></xsl:when>
             <xsl:when test="@as='boolean'"><p>True whenever given (presence signifies Boolean value)</p></xsl:when>
          </xsl:choose>
-         <xsl:if test="not(m:flag/@name='id') and not(@has-id='none')"><p>Supports (optionally) an <a hreg="#id">id</a> flag</p></xsl:if>
-         <xsl:if test="@has-id='required' or @address='id'"><p>Flag <a hreg="#id">id</a> is required</p></xsl:if>
          <xsl:apply-templates/>
       </div>
    </xsl:template>
@@ -62,7 +60,6 @@
          <h2>Define assembly <xsl:apply-templates select="@name"/>
             <xsl:apply-templates select="@group-as"/>
          </h2>
-         <xsl:if test="not(m:flag/@name='id') and not(@has-id='none') and not(@address='id')"><p>Supports (optionally) an <a hreg="#id">id</a> flag</p></xsl:if>
          <xsl:if test="@address='id'"><p>Flag <a class="name" href="#id">id</a> is required</p></xsl:if>
          
          <xsl:apply-templates/>
