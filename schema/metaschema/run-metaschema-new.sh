@@ -1,3 +1,4 @@
+#!/bin/bash
 # Converts OSCAL into XPath's JSON XML syntax, then converts that to JSON
 
 METASCHEMAXML=$1
@@ -15,7 +16,22 @@ XMLJSXSLT=$OSCALDIR/util/convert/$BASENAME-xml-converter.xsl
 JSXMLXSLT=$OSCALDIR/util/convert/$BASENAME-json-converter.xsl
 
 # This could be a call to maven, gradle or functional equivalent
-SAXON="/home/wendell/Saxon/saxon9he.jar"
+
+if [[ ! -v SAXON_HOME ]]; then
+    echo "SAXON_HOME is not set"
+    exit 1
+elif [[ -z "$SAXON_HOME" ]]; then
+    echo "SAXON_HOME is set to the empty string"
+    exit 1
+fi
+
+SAXON=$SAXON_HOME/saxon9he.jar
+
+if [ ! -f $SAXON ]; then
+    echo "The saxon library was not found at: $SAXON!"
+    exit 1
+fi
+
 # Saxon CL documented here: http://www.saxonica.com/documentation9.5/using-xsl/commandline.html
 
 # Each call produces a separate schema
