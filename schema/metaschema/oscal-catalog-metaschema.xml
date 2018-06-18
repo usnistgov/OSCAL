@@ -39,8 +39,6 @@
     <formal-name>Declarations</formal-name>
     <description>Either a reference to a declarations file, or a set of declarations</description>
   </define-field>
-    
-
 
   <define-assembly name="section" group-as="sections">
     <flag name="class"/>

@@ -52,25 +52,23 @@
             <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the declaration has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
         </sch:rule>
         
-        <sch:rule context="*[exists(@named)]">
+        <sch:rule context="m:prose">
+            <sch:assert test="count(../m:prose) eq 1">Prose may not appear in more than one position in a part</sch:assert>
+        </sch:rule>
+        <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
+        <sch:rule context="m:choice"/>
+        <sch:rule context="m:model//*">
             <sch:let name="decl" value="key('declaration-by-name',@named) | key('declaration-by-name',@named,$imported-schemas)"/>
             
             <sch:assert test="exists($decl)">No declaration found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty($decl) or empty(@group-as) or (@group-as = $decl/@group-as)">Declaration group name doesn't match: here is '<sch:value-of select="@group-as"/>' but the declaration has '<sch:value-of select="$decl/@group-as"/>'</sch:assert>
             <sch:assert test="empty($decl) or empty(@address) or ($decl/@address = @address)">The target definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>
+            <!--<sch:assert test="empty($decl) or empty(@address) or ($decl/m:flag/@name = @address)">The target definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>-->
+            
             
             <sch:report test="@named = ../(* except current())/@named">Everything named the same must appear together</sch:report>
             <sch:report test="@named = ../*/@group-as">Clashing name with group name: <sch:value-of select="@named"/></sch:report>
             <sch:report test="@group-as = ../*/@named">Clashing group name with name: <sch:value-of select="@named"/></sch:report>
-        </sch:rule>
-        <sch:rule context="m:prose">
-            <sch:assert test="count(../m:prose) eq 1">Prose may not appear in more than one position in a part</sch:assert>
-        </sch:rule>
-    </sch:pattern>
-    
-    <sch:pattern>
-        <sch:rule context="*[@has-id='none']">
-            <sch:report test="@address='id'">has-id="none" will be ignored on <sch:value-of select="name(..)"/> with address="id"</sch:report>
         </sch:rule>
     </sch:pattern>
 
