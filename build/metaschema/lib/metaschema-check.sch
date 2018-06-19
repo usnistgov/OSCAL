@@ -59,7 +59,7 @@
         </sch:rule>
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
         <sch:rule context="m:choice"/>
-        <sch:rule context="m:model//*">
+        <sch:rule context="m:field | m:fields | m:assembly | m:assembly">
             <sch:let name="decl" value="key('declaration-by-name',@named) | key('declaration-by-name',@named,$imported-schemas)"/>
             
             <sch:assert test="exists($decl)">No declaration found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
