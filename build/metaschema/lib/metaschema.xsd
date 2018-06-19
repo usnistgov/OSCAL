@@ -53,6 +53,7 @@
       <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="show-docs"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-field">
@@ -66,8 +67,8 @@
       </xs:sequence>
       <xs:attribute name="as" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
-      <xs:attribute name="has-id" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="show-docs"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-flag">
@@ -80,6 +81,15 @@
       </xs:sequence>
       <xs:attribute name="datatype" use="required" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="show-docs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="xml" />
+            <xs:enumeration value="json" />
+            <xs:enumeration value="xml json" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
@@ -112,6 +122,46 @@
       <xs:attribute name="href" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="assembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+      </xs:sequence>
+      <xs:attribute name="named" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assemblies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+      </xs:sequence>
+      <xs:attribute name="address" type="xs:NCName"/>
+      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
+      <xs:attribute name="named" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="field">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+      </xs:sequence>
+      <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fields">
+    <xs:complexType>
+      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
+      <xs:attribute name="named" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="value">
+    <xs:complexType mixed="true"/>
+  </xs:element>
   <xs:element name="p">
     <xs:complexType mixed="true">
       <xs:choice maxOccurs="unbounded">
@@ -129,12 +179,13 @@
   <xs:element name="flag">
     <xs:complexType>
       <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:value"/>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:value"/>
       </xs:sequence>
       <xs:attribute name="datatype" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="required" type="xs:NCName"/>
-      
     </xs:complexType>
   </xs:element>
   <xs:element name="choice">
@@ -147,12 +198,6 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <xs:element name="fields">
-    <xs:complexType>
-      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="prose">
     <xs:complexType/>
   </xs:element>
@@ -163,25 +208,5 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <xs:element name="assemblies">
-    <xs:complexType>
-      <xs:attribute name="address" type="xs:NCName"/>
-      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="field">
-    <xs:complexType>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
-      <xs:attribute name="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="value">
-    <xs:complexType mixed="true"/>
-  </xs:element>
-  <xs:element name="assembly">
-    <xs:complexType>
-      <xs:attribute name="named" use="required" type="xs:NCName"/>
-    </xs:complexType>
-  </xs:element>
+  
 </xs:schema>

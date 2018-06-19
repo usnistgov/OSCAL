@@ -30,6 +30,8 @@
             <sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>
         </sch:rule>
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
+            <sch:assert test="empty(@show-docs) or @show-docs=('xml', 'json', 'xml json')">Value
+                of @show-docs should be 'xml', 'json', or 'xml json'</sch:assert>
             <sch:report test="@name=('p','ul','ol','pre')">Can't use name '<sch:value-of select="@name"/>': it's reserved for prose.</sch:report>
             <sch:assert test="count( key('declaration-by-name',@name) | key('declaration-by-name',@name,$imported-schemas) ) ge 1">Not a distinct declaration</sch:assert>
             <sch:report test="@name = ../*/@group-as">Clashing name with group name: <sch:value-of select="@name"/></sch:report>
