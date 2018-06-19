@@ -124,7 +124,6 @@
    
    <xsl:template  match="m:flag" mode="model">
       <li>
-         <p>
             <xsl:text>Attribute </xsl:text>
             <a href="#{@name}" class="name">
                <xsl:apply-templates select="@name"/>
@@ -133,7 +132,6 @@
             <xsl:apply-templates select="@required"/>
             <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
             <xsl:apply-templates select="m:description" mode="model"/>
-         </p>
          <xsl:apply-templates select="m:remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -154,15 +152,14 @@
 
    <xsl:template  match="m:assembly | m:field">
       <li>
-         <p><xsl:text>A</xsl:text>
+         <xsl:text>A</xsl:text>
          <xsl:if test="not(translate(substring(@named,1,1),'AEIOUaeiuo',''))">n</xsl:if>
          <xsl:text> </xsl:text>
          <a class="name" href="#{@named}"><xsl:apply-templates select="@named"/></a>
          <xsl:text> element </xsl:text>
          <xsl:apply-templates select="." mode="cardinality"/>
             
-            <xsl:apply-templates select="m:description" mode="model"/>
-         </p>
+          <xsl:apply-templates select="m:description" mode="model"/>
          
          <xsl:apply-templates select="m:remarks" mode="model"/>
       </li>
@@ -174,8 +171,7 @@
    
    <xsl:template  match="m:assemblies | m:fields">
       <li class="assemblies">
-         <p><a class="name" href="#{@named}"><xsl:apply-templates select="@named"/></a> elements (<i>zero or more</i>)</p>
-         
+         <a class="name" href="#{@named}"><xsl:apply-templates select="@named"/></a> elements (<i>zero or more</i>)<xsl:text/>         
          
          <xsl:apply-templates select="m:description" mode="model"/>
       </li>
@@ -188,6 +184,7 @@
    </xsl:template>
    
    <xsl:template match="m:remarks" mode="model">
+      <br class="br"/>
       <xsl:apply-templates/>
    </xsl:template>
    
