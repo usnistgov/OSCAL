@@ -9,12 +9,16 @@
   xsi:noNamespaceSchemaLocation="../../build/metaschema/lib/metaschema.xsd"
   xmlns:o="http://csrc.nist.gov/ns/oscal/1.0">
 
-  <schema-name>OSCAL Control Catalog format</schema-name>
+  <schema-name>OSCAL Control Catalog Format</schema-name>
   <short-name>oscal-catalog</short-name>
-  <remarks><p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is <code>catalog</code>.</p></remarks>
+  <remarks>
+    <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
+    <p>An XML Schema is <a href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/schema/xml/oscal-catalog-schema.xsd">provided</a> for the OSCAL Catalog XML model.</p>
+  </remarks>
 
-  <define-assembly name="catalog" group-as="control-catalog">
+  <define-assembly name="catalog" group-as="control-catalog" show-docs="xml json">
     <flag name="id" datatype="ID" required="yes"/>
+    <flag name="model-version" required="yes"/>
     <formal-name>Catalog</formal-name>
     <description>A collection of controls</description>
     <remarks>
@@ -29,9 +33,10 @@
         <assemblies named="group" group-as="groups"/>
         <assemblies named="control" group-as="controls"/>
       </choice>
+      <any/>
     </model>
     <example>
-      <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+      <catalog id="simple-example" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
         <title>A Miniature Catalog</title>
         <control id="single">
           <title>A Single Control</title>
@@ -40,13 +45,13 @@
     </example>
   </define-assembly>
 
-  <define-field name="declarations" has-id="none">
+  <define-field name="declarations" show-docs="xml json">
     <flag name="href" datatype="anyURI"/>
     <formal-name>Declarations</formal-name>
     <description>Either a reference to a declarations file, or a set of declarations</description>
   </define-field>
 
-  <define-assembly name="section" group-as="sections">
+  <define-assembly name="section" group-as="sections" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Section</formal-name>
@@ -56,10 +61,11 @@
       <prose/>
       <assemblies named="section" group-as="sections"/>
       <assembly named="references"/>
+      <any/>
     </model>
   </define-assembly>
 
-  <define-assembly name="group" group-as="groups">
+  <define-assembly name="group" group-as="groups" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Control Group</formal-name>
@@ -77,6 +83,7 @@
         <assemblies named="control" group-as="controls"/>
       </choice>
       <assembly named="references"/>
+      <any/>
     </model>
     <example>
       <group xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="xyz">
@@ -89,7 +96,7 @@
     </example>
   </define-assembly>
 
-  <define-assembly name="control" group-as="controls">
+  <define-assembly name="control" group-as="controls" show-docs="xml json">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Control</formal-name>
@@ -106,6 +113,7 @@
       <assemblies named="part" group-as="parts"/>
       <assemblies named="subcontrol" group-as="subcontrols" address="id"/>
       <assembly named="references"/>
+      <any/>
     </model>
     <example>
       <control id="x" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
@@ -115,7 +123,7 @@
   </define-assembly>
 
 
-  <define-assembly name="subcontrol" group-as="subcontrols" address="id">
+  <define-assembly name="subcontrol" group-as="subcontrols" address="id" show-docs="xml json">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Sub-Control</formal-name>
@@ -127,15 +135,16 @@
       <fields named="link" group-as="links"/>
       <assemblies named="part" group-as="parts"/>
       <assembly named="references"/>
+      <any/>
     </model>
   </define-assembly>
   
-  <define-field name="title" has-id="none" as="mixed">
+  <define-field name="title" as="mixed" show-docs="xml json">
     <formal-name>Title</formal-name>
     <description>A title for display and navigation, exclusive of more specific properties</description>
   </define-field>
 
-  <define-field name="prop" group-as="props">
+  <define-field name="prop" group-as="props" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <flag name="class" required="yes"/>
     <formal-name>Property</formal-name>
@@ -162,7 +171,7 @@
     </example>
   </define-field>
 
-  <define-assembly group-as="params" name="param" address="id">
+  <define-assembly group-as="params" name="param" address="id" show-docs="xml json">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <flag name="depends-on" datatype="IDREF"/>
@@ -175,49 +184,72 @@
     <model>
       <field named="label">
         <description>A short name for the parameter.</description>
-        <remark><p> that is suitable for inline display in catal</p></remark>
+        <remarks>
+          <p>The label value should be suitable for inline display in a rendered catalog.</p>
+        </remarks>
       </field>
-      <fields named="desc" group-as="descriptions"/>
-      <fields named="constraint" group-as="constraints"/>
-      <assemblies named="guideline" group-as="guidance"/>
+      <fields named="desc" group-as="descriptions">
+        <description>A short summary of the parameter's intended use.</description>
+      </fields>
+      <fields named="constraint" group-as="constraints">
+        <description>A rule describing the permissible parameter values.</description>
+        <remarks>
+          <p>Currently, OSCAL does not standardize any formal rules language for value constraints. A <code>test</code> option may be used to specify a formal rule that may be automatically used if recognized by an OSCAL tool. Further development is <a ref="https://github.com/usnistgov/OSCAL/issues/206">needed</a> to support the declaration of a rule language and value.</p>
+        </remarks>
+      </fields>
+      <assemblies named="guideline" group-as="guidance">
+        <description>Additional recommendations for the use of the parameter, or around what values should be provided.</description>
+      </assemblies>
       <choice>
-        <field named="value"/>
-        <assembly named="select"/>
+        <field named="value">
+          <description>A recommended parameter value or set of values.</description>
+          <remarks>
+            <p>A value provided in a catalog can be redefined at any higher layer of OSCAL (e.g., Profile).</p>
+          </remarks>
+        </field>
+        <assembly named="select">
+          <description>A set of parameter value choices, that may be picked from to set the parameter value.</description>
+          <remarks>
+            <p>.</p>
+          </remarks>
+        </assembly>
       </choice>
-      <fields named="link" group-as="links"/>
-      <assemblies named="part" group-as="parts"/>
+      <fields named="link" group-as="links">
+        <description></description>
+      </fields>
+      <any/>
     </model>
   </define-assembly>
 
-
-  <define-field name="label" has-id="none" as="mixed" show-docs="">
+  <define-field name="label" as="mixed" show-docs="xml json">
     <formal-name>Parameter label</formal-name>
     <description>A placeholder for a missing value, in display.</description>
   </define-field>
 
   <!-- @has-id = none on fields, when there are no attributes, permits
      us to produce a string (not an object) on the JSON side. -->
-  <define-field name="desc" group-as="descriptions" has-id="none" as="mixed">
+  <define-field name="desc" group-as="descriptions" as="mixed" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <formal-name>Parameter description</formal-name>
     <description>Indicates and explains the purpose and use of a parameter</description>
   </define-field>
 
-  <define-field name="constraint" group-as="constraints">
+  <define-field name="constraint" group-as="constraints" show-docs="xml json">
     <flag name="test"/>
     <formal-name>Constraint</formal-name>
     <description>A formal or informal expression of a constraint or test</description>
   </define-field>
   
-  <define-assembly name="guideline" group-as="guidance">
+  <define-assembly name="guideline" group-as="guidance" show-docs="xml json">
     <formal-name>Guideline</formal-name>
     <description>A prose statement that provides a recommendation for the use of a parameter.</description>
     <model>
       <prose/>
+      <any/>
     </model>
   </define-assembly>
   
-  <define-field name="value" has-id="none" as="mixed">
+  <define-field name="value" as="mixed" show-docs="xml json">
     <formal-name>Value constraint</formal-name>
     <description>Indicates a permissible value for a parameter or property</description>
     <remarks>
@@ -231,21 +263,22 @@
   </define-field>
 
 
-  <define-assembly name="select">
+  <define-assembly name="select" show-docs="xml json">
     <flag name="how-many"/>
     <formal-name>Selection</formal-name>
     <description>Presenting a choice among alternatives</description>
     <model>
       <assemblies named="choice" group-as="alternatives"/>
+      <any/>
     </model>
   </define-assembly>
 
-  <define-field name="choice" group-as="alternatives" as="mixed">
+  <define-field name="choice" group-as="alternatives" as="mixed" show-docs="xml json">
     <formal-name>Choice</formal-name>
     <description>A value selection among several such options</description>
   </define-field>
 
-  <define-assembly name="part" group-as="parts">
+  <define-assembly name="part" group-as="parts" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Part</formal-name>
@@ -269,10 +302,11 @@
       <prose/>
       <assemblies named="part" group-as="parts"/>
       <fields named="link" group-as="links"/>
+      <any/>
     </model>
   </define-assembly>
 
-  <define-field name="link" group-as="links" as="mixed">
+  <define-field name="link" group-as="links" as="mixed" show-docs="xml json">
     <flag name="href" datatype="anyURI"/>
     <flag name="rel" datatype="NCName"/>
     <formal-name>Link</formal-name>
@@ -285,7 +319,7 @@
     </remarks>
   </define-field>
 
-  <define-assembly name="references">
+  <define-assembly name="references" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <formal-name>References</formal-name>
     <description>
@@ -294,10 +328,11 @@
     <model>
       <fields     group-as="links" named="link"/>
       <assemblies group-as="refs"  named="ref"/>
+      <any/>
     </model>
   </define-assembly>
 
-  <define-assembly name="ref" group-as="refs">
+  <define-assembly name="ref" group-as="refs" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <formal-name>Reference</formal-name>
     <description>
@@ -307,6 +342,7 @@
     <model>
       <fields group-as="citations" named="citation"/>
       <prose/>
+      <any/>
     </model>
   </define-assembly>
 
@@ -315,7 +351,7 @@
   </define-field>-->
 
 
-  <define-field as="mixed" group-as="citations" name="citation">
+  <define-field as="mixed" group-as="citations" name="citation" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <flag name="href" datatype="anyURI"/>
     <formal-name>Citation</formal-name>
@@ -329,7 +365,7 @@
   </define-field>
 
 
-  <define-flag name="id" datatype="ID">
+  <define-flag name="id" datatype="ID" show-docs="xml json">
     <formal-name>ID / identifier</formal-name>
     <description>Unique identifier</description>
     <remarks>
@@ -341,7 +377,7 @@
     </example>
   </define-flag>
 
-  <define-flag name="class" datatype="NMTOKEN">
+  <define-flag name="class" datatype="NMTOKEN" show-docs="xml json">
     <formal-name>Class</formal-name>
     <description>Identifies the property or object within the control; a semantic hint</description>
     <remarks>
@@ -349,7 +385,7 @@
     </remarks>
   </define-flag>
 
-  <define-flag name="href" datatype="anyURI">
+  <define-flag name="href" datatype="anyURI" show-docs="xml json">
     <formal-name>hypertext reference</formal-name>
     <description>A link to a document or document fragment (actual, nominal or projected)</description>
     <remarks>
@@ -360,22 +396,22 @@
   </define-flag>
 
 
-  <define-flag name="test" datatype="string">
+  <define-flag name="test" datatype="string" show-docs="xml json">
     <formal-name>Constraint test</formal-name>
     <description>A formal (executable) expression of a constraint</description>
   </define-flag>
 
-  <define-flag name="rel" datatype="NCName">
+  <define-flag name="rel" datatype="NCName" show-docs="xml json">
     <formal-name>Relation</formal-name>
     <description>Purpose of the link</description>
   </define-flag>
 
-  <define-flag name="how-many" datatype="string">
+  <define-flag name="how-many" datatype="string" show-docs="xml json">
     <formal-name>Cardinality</formal-name>
     <description>When selecting, a requirement such as one or more</description>
   </define-flag>
   
-  <define-flag name="depends-on" datatype="IDREF">
+  <define-flag name="depends-on" datatype="IDREF" show-docs="xml json">
     <formal-name>Depends on</formal-name>
     <description>Another parameter invoking this one</description>
   </define-flag>
