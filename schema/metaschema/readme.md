@@ -5,15 +5,15 @@ OSCAL Metaschemas, with documentation of the structures (objects or XML element 
 Run a metaschema like this:
 
 ```
-> .produce-schemas.sh oscal-catalog-metaschema.xml
+> ./produce-schemas.sh oscal-catalog-metaschema.xml
 ```
 
 (For the `catalog` metaschema.)
 
-This will produce two schema files representing the metaschema, along with documentation. (Locations where the results are written are configured in the script and echoed to the console.)
+This will produce artifacts based on the metaschema, Locations where the results are written are configured in the script and echoed to the console. The artifacts include:
 
-TBD: split the documentation on the two sides, writing examples out in JSON format on the JSON side
-
-Also note that the `metaschema-html.xsl` resource is an XSLT 1.0 stylesheet that functions in a browser such as Firefox. Or apply it using any conformant XSLT 1.0 engine.
+* Schemas derived from the metaschema, expressed as XSD and JSON Schema;
+* Conversion scripts from JSON-based OSCAL (conformant to the schema) to XML-based OSCAL, and the reverse; 
+* Documentation in markdown format
 
 Additionally, find metaschema resources including its own schemas in the `/build` directory.
