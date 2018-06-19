@@ -123,16 +123,16 @@
    
    <xsl:template match="m:flag"/>
    
-   <xsl:template  match="m:flag" mode="model">
+   <xsl:template match="m:flag" mode="model">
       <li>
-            <xsl:text>Attribute </xsl:text>
-            <a href="#{@name}" class="name">
-               <xsl:apply-templates select="@name"/>
-            </a>
-            <xsl:apply-templates select="@datatype"/>
-            <xsl:apply-templates select="@required"/>
-            <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
-            <xsl:apply-templates select="m:description" mode="model"/>
+         <xsl:text>Attribute </xsl:text>
+         <a href="#{@name}" class="name">
+            <xsl:apply-templates select="@name"/>
+         </a>
+         <xsl:apply-templates select="@datatype"/>
+         <xsl:apply-templates select="@required"/>
+         <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
+         <xsl:apply-templates select="m:description" mode="model"/>
          <xsl:apply-templates select="m:remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -161,7 +161,6 @@
          <xsl:apply-templates select="." mode="cardinality"/>
             
           <xsl:apply-templates select="m:description" mode="model"/>
-         
          <xsl:apply-templates select="m:remarks" mode="model"/>
       </li>
    </xsl:template>
@@ -174,9 +173,8 @@
       <li class="assemblies">
          <a class="name" href="#{@named}"><xsl:apply-templates select="@named"/></a> elements (<i>zero or more</i>)<xsl:text/>         
          
-         <xsl:apply-templates select="m:description" mode="model"/>
+         <xsl:apply-templates select="m:description | m:remarks" mode="model"/>
       </li>
-      <xsl:apply-templates select="m:remarks" mode="model"/>
    </xsl:template>
 
    <xsl:template match="m:description" mode="model">
