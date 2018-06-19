@@ -11,6 +11,7 @@
 <!-- Output:  HTML  -->
 <!-- Note:    An XSLT 1.0 stylesheet may even work in your browser (try FF)  -->
 
+<xsl:output indent="yes"/>
    
    <xsl:template match="/">
       <html>
@@ -183,7 +184,7 @@
       <xsl:apply-templates/>
    </xsl:template>
    
-   <xsl:template match="m:remarks" mode="model">
+   <xsl:template match="m:remarks/m:p" mode="model">
       <br class="br"/>
       <xsl:apply-templates/>
    </xsl:template>
