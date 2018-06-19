@@ -60,13 +60,11 @@
             <string key="$id">#/definitions/{@name}</string>
             <string key="type">object</string>
             <map key="properties">
-                <xsl:apply-templates select="." mode="default-attributes"/>
                 <xsl:apply-templates select="." mode="properties"/>
             </map>
             <boolean key="additionalProperties">false</boolean>
             <map key="propertyNames">
                 <array key="enum">
-                    <xsl:if test="not(@has-id='none') and not(flag/@name='id')"><string>id</string></xsl:if>
                     <xsl:apply-templates select="." mode="text-property"/>
                     <xsl:apply-templates select="flag, model" mode="property-name"/>
                 </array>
@@ -80,7 +78,7 @@
     <xsl:template match="define-field[@as='mixed']" mode="text-property"><string>RICHTEXT</string></xsl:template>
     
 
-    <xsl:template match="define-assembly[matches(@address,'\S')] | define-field[matches(@address,'\S')]">
+    <xsl:template match="define-assembly[@address=flag/@name] | define-field[@address=flag/@name]">
         <map key="{ @group-as }">
             <string key="$id">#/definitions/{@group-as}</string>
             <string key="type">object</string>
@@ -94,12 +92,10 @@
             <string key="$id">#/definitions/{@name}</string>
             <string key="type">object</string>
             <map key="properties">
-                <xsl:apply-templates select="." mode="default-attributes"/>
                 <xsl:apply-templates select="." mode="properties"/>
             </map>
             <map key="propertyNames">
                 <array key="enum">
-                    <xsl:if test="not(@has-id='none') and not(flag/@name='id')"><string>id</string></xsl:if>
                     <xsl:apply-templates select="." mode="text-property"/>
                     <xsl:apply-templates select="flag, model" mode="property-name"/>
                 </array>
@@ -108,7 +104,7 @@
     </xsl:template>
     
     
-    <xsl:template match="define-field[empty(model/*) and (@has-id = 'none')]">
+    <xsl:template match="define-field[empty(flag)]">
         <map key="{ @name (: @group-as | @name[empty(../@group-as)] :) }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
@@ -164,17 +160,8 @@
         </map>
     </xsl:template>
 
-    <xsl:template mode="default-attributes" match="*">
-        <xsl:if test="not(@has-id = 'none') and not(flag/@name = 'id')">
-            <map key="id">
-                <string key="type">string</string>
-            </map>
-        </xsl:if>
-    </xsl:template>
-
+    
     <!-- How to express a required attribute or element in JSON schema? -->
-    <xsl:template mode="default-attributes" match="*[@has-id = 'none']"/>
-
     <xsl:template mode="declaration" match="flag">
         <map key="{@name}">
             <string key="type">string</string>
@@ -203,7 +190,7 @@
         
     </xsl:template>
 
-    <xsl:template match="define-field[empty(model/*) and (@has-id = 'none')]" mode="object-type">
+    <xsl:template match="define-field[empty(flag)]" mode="object-type">
         <string key="type">string</string>
     </xsl:template>
 

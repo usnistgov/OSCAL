@@ -1,0 +1,5 @@
+@namespace "http://csrc.nist.gov/ns/oscal/1.0";
+
+* { display: block }
+
+control { display: block; border: medium solid blue; width: 100px  }

@@ -125,7 +125,8 @@
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
-   <!-- 88888888888888888888888888888888888888888888888888888888888888 --><xsl:template match="catalog" mode="xml2json">
+   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
+   <xsl:template match="catalog" mode="xml2json">
       <map key="catalog">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="title" mode="#current"/>

@@ -172,6 +172,11 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
+  <xs:element name="a">
+    <xs:complexType mixed="true">
+      <xs:attribute name="href"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="q" type="xs:string"/>
   <xs:element name="code" type="xs:string"/>
   <xs:element name="em" type="xs:string"/>

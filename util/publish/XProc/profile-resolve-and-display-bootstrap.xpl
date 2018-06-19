@@ -50,19 +50,21 @@
   <p:xslt name="rendered" version="1.0">
     <p:input port="stylesheet">
       <!--<p:document href="../XSLT/HTML/oscal-basic-display.xsl"/>-->
-      <p:document href="../XSLT/oscal-with-nav-display.xsl"/>
+      <p:document href="../XSLT/oscal-for-bootstrap-html.xsl"/>
     </p:input>
   </p:xslt>
   
   <!-- Last chance for comments, PIs etc. -->
-  <p:xslt name="final">
+  <p:identity name="final"/>
+  
+  <!--<p:xslt name="final">
     <p:with-param name="xslt-process" select="' OSCAL PROFILE RESOLUTION AND RENDERING pipeline -profile-resolve-and-display.xpl- '"/>
     <p:input port="stylesheet">
       <p:document href="../XSLT/html-finalize.xsl"/>
     </p:input>
-    <!--<p:input port="parameters" kind="parameter"/>-->
+    <!-\-<p:input port="parameters" kind="parameter"/>-\->
       
-  </p:xslt>
+  </p:xslt>-->
   
  
 </p:declare-step>

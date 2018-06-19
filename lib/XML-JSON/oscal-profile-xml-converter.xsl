@@ -125,162 +125,170 @@
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
-   <!-- 88888888888888888888888888888888888888888888888888888888888888 --><xsl:template match="catalog" mode="xml2json">
-      <map key="catalog">
+   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->OSCAL Profile Metaschemaoscal-profile<xsl:template match="profile" mode="xml2json">
+      <map key="profile">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:apply-templates select="declarations" mode="#current"/>
-         <xsl:apply-templates select="references" mode="#current"/>
-         <xsl:if test="exists(section)">
-            <array key="sections">
-               <xsl:apply-templates select="section" mode="#current"/>
+         <xsl:if test="exists(import)">
+            <array key="imports">
+               <xsl:apply-templates select="import" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(group)">
-            <array key="groups">
-               <xsl:apply-templates select="group" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(control)">
-            <array key="controls">
-               <xsl:apply-templates select="control" mode="#current"/>
-            </array>
-         </xsl:if>
+         <xsl:apply-templates select="merge" mode="#current"/>
+         <xsl:apply-templates select="modify" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="declarations" mode="xml2json">
-      <map key="declarations">
+   <xsl:template match="import" mode="xml2json">
+      <map key="import">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@href"/>
+         <xsl:apply-templates select="include" mode="#current"/>
+         <xsl:apply-templates select="exclude" mode="#current"/>
+      </map>
+   </xsl:template>
+   <xsl:template match="merge" mode="xml2json">
+      <map key="merge">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates select="combine" mode="#current"/>
+         <xsl:apply-templates select="as-is" mode="#current"/>
+         <xsl:apply-templates select="custom" mode="#current"/>
+      </map>
+   </xsl:template>
+   <xsl:template match="combine" mode="xml2json">
+      <map key="combine">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@method"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
       </map>
    </xsl:template>
-   <xsl:template match="section" mode="xml2json">
-      <map key="section">
+   <xsl:template match="as-is" mode="xml2json">
+      <map key="as-is">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@class"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:call-template name="prose"/>
-         <xsl:if test="exists(section)">
-            <array key="sections">
-               <xsl:apply-templates select="section" mode="#current"/>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+         </xsl:apply-templates>
+      </map>
+   </xsl:template>
+   <xsl:template match="custom" mode="xml2json">
+      <map key="custom">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:if test="exists(group)">
+            <array key="groups">
+               <xsl:apply-templates select="group" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:apply-templates select="references" mode="#current"/>
+         <xsl:if test="exists(call)">
+            <array key="id-selectors">
+               <xsl:apply-templates select="call" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(match)">
+            <array key="pattern-selectors">
+               <xsl:apply-templates select="match" mode="#current"/>
+            </array>
+         </xsl:if>
       </map>
    </xsl:template>
    <xsl:template match="group" mode="xml2json">
       <map key="group">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@class"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:for-each-group select="param" group-by="local-name()">
-            <map key="params">
-               <xsl:apply-templates select="current-group()" mode="#current"/>
-            </map>
-         </xsl:for-each-group>
-         <xsl:if test="exists(prop)">
-            <array key="props">
-               <xsl:apply-templates select="prop" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(part)">
-            <array key="parts">
-               <xsl:apply-templates select="part" mode="#current"/>
-            </array>
-         </xsl:if>
          <xsl:if test="exists(group)">
             <array key="groups">
                <xsl:apply-templates select="group" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(control)">
-            <array key="controls">
-               <xsl:apply-templates select="control" mode="#current"/>
+         <xsl:if test="exists(call)">
+            <array key="id-selectors">
+               <xsl:apply-templates select="call" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:apply-templates select="references" mode="#current"/>
+         <xsl:if test="exists(match)">
+            <array key="pattern-selectors">
+               <xsl:apply-templates select="match" mode="#current"/>
+            </array>
+         </xsl:if>
       </map>
    </xsl:template>
-   <xsl:template match="control" mode="xml2json">
-      <map key="control">
+   <xsl:template match="modify" mode="xml2json">
+      <map key="modify">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@class"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:for-each-group select="param" group-by="local-name()">
-            <map key="params">
-               <xsl:apply-templates select="current-group()" mode="#current"/>
-            </map>
-         </xsl:for-each-group>
-         <xsl:if test="exists(prop)">
-            <array key="props">
-               <xsl:apply-templates select="prop" mode="#current"/>
+         <xsl:if test="exists(set-param)">
+            <array key="param-settings">
+               <xsl:apply-templates select="set-param" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(link)">
-            <array key="links">
-               <xsl:apply-templates select="link" mode="#current"/>
+         <xsl:if test="exists(alter)">
+            <array key="alterations">
+               <xsl:apply-templates select="alter" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(part)">
-            <array key="parts">
-               <xsl:apply-templates select="part" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:for-each-group select="subcontrol" group-by="local-name()">
-            <map key="subcontrols">
-               <xsl:apply-templates select="current-group()" mode="#current"/>
-            </map>
-         </xsl:for-each-group>
-         <xsl:apply-templates select="references" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="subcontrol" mode="xml2json">
-      <map key="{@id}">
+   <xsl:template match="include" mode="xml2json">
+      <map key="include">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@class"/>
-         <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:for-each-group select="param" group-by="local-name()">
-            <map key="params">
-               <xsl:apply-templates select="current-group()" mode="#current"/>
-            </map>
-         </xsl:for-each-group>
-         <xsl:if test="exists(prop)">
-            <array key="props">
-               <xsl:apply-templates select="prop" mode="#current"/>
+         <xsl:apply-templates select="all" mode="#current"/>
+         <xsl:if test="exists(call)">
+            <array key="id-selectors">
+               <xsl:apply-templates select="call" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(link)">
-            <array key="links">
-               <xsl:apply-templates select="link" mode="#current"/>
+         <xsl:if test="exists(match)">
+            <array key="pattern-selectors">
+               <xsl:apply-templates select="match" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(part)">
-            <array key="parts">
-               <xsl:apply-templates select="part" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:apply-templates select="references" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="title" mode="xml2json">
-      <string key="title">
-         <xsl:apply-templates mode="md"/>
-      </string>
-   </xsl:template>
-   <xsl:template match="prop" mode="xml2json">
-      <map key="prop">
+   <xsl:template match="all" mode="xml2json">
+      <map key="all">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@class"/>
+         <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
       </map>
    </xsl:template>
-   <xsl:template match="param" mode="xml2json">
+   <xsl:template match="call" mode="xml2json">
+      <map key="call">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@control-id"/>
+         <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
+         <xsl:apply-templates mode="as-string" select="@with-control"/>
+         <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+         </xsl:apply-templates>
+      </map>
+   </xsl:template>
+   <xsl:template match="match" mode="xml2json">
+      <map key="match">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@pattern"/>
+         <xsl:apply-templates mode="as-string" select="@order"/>
+         <xsl:apply-templates mode="as-string" select="@with-control"/>
+         <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+         </xsl:apply-templates>
+      </map>
+   </xsl:template>
+   <xsl:template match="exclude" mode="xml2json">
+      <map key="exclude">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:if test="exists(call)">
+            <array key="id-selectors">
+               <xsl:apply-templates select="call" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(match)">
+            <array key="pattern-selectors">
+               <xsl:apply-templates select="match" mode="#current"/>
+            </array>
+         </xsl:if>
+      </map>
+   </xsl:template>
+   <xsl:template match="set-param" mode="xml2json">
       <map key="{@id}">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
@@ -310,128 +318,60 @@
          </xsl:if>
       </map>
    </xsl:template>
-   <xsl:template match="label" mode="xml2json">
-      <string key="label">
-         <xsl:apply-templates mode="md"/>
-      </string>
-   </xsl:template>
-   <xsl:template match="desc" mode="xml2json">
-      <map key="desc">
+   <xsl:template match="alter" mode="xml2json">
+      <map key="alter">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:if test="matches(.,'\S')">
-            <string key="RICHTEXT">
-               <xsl:apply-templates mode="md"/>
-            </string>
+         <xsl:apply-templates mode="as-string" select="@control-id"/>
+         <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
+         <xsl:if test="exists(remove)">
+            <array key="removals">
+               <xsl:apply-templates select="remove" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(add)">
+            <array key="additions">
+               <xsl:apply-templates select="add" mode="#current"/>
+            </array>
          </xsl:if>
       </map>
    </xsl:template>
-   <xsl:template match="constraint" mode="xml2json">
-      <map key="constraint">
+   <xsl:template match="remove" mode="xml2json">
+      <map key="remove">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@test"/>
+         <xsl:apply-templates mode="as-string" select="@class-ref"/>
+         <xsl:apply-templates mode="as-string" select="@id-ref"/>
+         <xsl:apply-templates mode="as-string" select="@item-name"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
       </map>
    </xsl:template>
-   <xsl:template match="value" mode="xml2json">
-      <string key="value">
-         <xsl:apply-templates mode="md"/>
-      </string>
-   </xsl:template>
-   <xsl:template match="select" mode="xml2json">
-      <map key="select">
+   <xsl:template match="add" mode="xml2json">
+      <map key="add">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@how-many"/>
-         <xsl:if test="exists(choice)">
-            <array key="alternatives">
-               <xsl:apply-templates select="choice" mode="#current"/>
-            </array>
-         </xsl:if>
-      </map>
-   </xsl:template>
-   <xsl:template match="choice" mode="xml2json">
-      <map key="choice">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:if test="matches(.,'\S')">
-            <string key="RICHTEXT">
-               <xsl:apply-templates mode="md"/>
-            </string>
-         </xsl:if>
-      </map>
-   </xsl:template>
-   <xsl:template match="part" mode="xml2json">
-      <map key="part">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@class"/>
+         <xsl:apply-templates mode="as-string" select="@position"/>
          <xsl:apply-templates select="title" mode="#current"/>
+         <xsl:for-each-group select="param" group-by="local-name()">
+            <map key="params">
+               <xsl:apply-templates select="current-group()" mode="#current"/>
+            </map>
+         </xsl:for-each-group>
          <xsl:if test="exists(prop)">
             <array key="props">
                <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:call-template name="prose"/>
+         <xsl:if test="exists(link)">
+            <array key="links">
+               <xsl:apply-templates select="link" mode="#current"/>
+            </array>
+         </xsl:if>
          <xsl:if test="exists(part)">
             <array key="parts">
                <xsl:apply-templates select="part" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(link)">
-            <array key="links">
-               <xsl:apply-templates select="link" mode="#current"/>
-            </array>
-         </xsl:if>
-      </map>
-   </xsl:template>
-   <xsl:template match="link" mode="xml2json">
-      <map key="link">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@href"/>
-         <xsl:apply-templates mode="as-string" select="@rel"/>
-         <xsl:if test="matches(.,'\S')">
-            <string key="RICHTEXT">
-               <xsl:apply-templates mode="md"/>
-            </string>
-         </xsl:if>
-      </map>
-   </xsl:template>
-   <xsl:template match="references" mode="xml2json">
-      <map key="references">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:if test="exists(link)">
-            <array key="links">
-               <xsl:apply-templates select="link" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(ref)">
-            <array key="refs">
-               <xsl:apply-templates select="ref" mode="#current"/>
-            </array>
-         </xsl:if>
-      </map>
-   </xsl:template>
-   <xsl:template match="ref" mode="xml2json">
-      <map key="ref">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:if test="exists(citation)">
-            <array key="citations">
-               <xsl:apply-templates select="citation" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:call-template name="prose"/>
-      </map>
-   </xsl:template>
-   <xsl:template match="citation" mode="xml2json">
-      <map key="citation">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@href"/>
-         <xsl:if test="matches(.,'\S')">
-            <string key="RICHTEXT">
-               <xsl:apply-templates mode="md"/>
-            </string>
-         </xsl:if>
+         <xsl:apply-templates select="references" mode="#current"/>
       </map>
    </xsl:template>
 </xsl:stylesheet>

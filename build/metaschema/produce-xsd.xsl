@@ -33,7 +33,7 @@
             <xsl:apply-templates/>
             
 <!-- Then, declarations for elements declared in imported metaschemas -->
-            <xsl:apply-templates select="key('declarations-by-name',$home//(flag/@name | model//@named ),$abroad) [not(@name=$home/*/@name) or true()]"/>
+            <xsl:apply-templates select="$abroad/key('declarations-by-name',$home//(flag/@name | model//@named )) [not(@name=$home/*/@name) or true()]"/>
             
             <xs:group name="prose">
                 <xs:choice>

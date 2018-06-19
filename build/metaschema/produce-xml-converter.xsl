@@ -49,7 +49,7 @@
     </xsl:template>
     
     
-    <xsl:template match="define-field[@address][@as='mixed'][@has-id='none'][empty(flag)]" priority="4">
+    <xsl:template match="define-field[@address=flag/@name][@as='mixed'][empty(flag)]" priority="4">
         <xslt:template match="{@name}" mode="xml2json">
             <string key="{@address}">
                 <xsl:apply-templates mode="md"/>
@@ -57,7 +57,7 @@
         </xslt:template>
     </xsl:template>
     
-    <xsl:template match="define-field[@address][@has-id='none'][empty(flag)]" priority="3">
+    <xsl:template match="define-field[@address=flag/@name][empty(flag)]" priority="3">
         <xslt:template match="{@name}" mode="xml2json">
             <string key="{@address}">
                 <xsl:apply-templates/>
@@ -65,7 +65,7 @@
         </xslt:template>
     </xsl:template>
     
-    <xsl:template match="define-field[@address][@as='mixed']" priority="2">
+    <xsl:template match="define-field[@address=flag/@name][@as='mixed']" priority="2">
         <xslt:template match="{@name}" mode="xml2json">
             <map key="{@address}">
                 <xslt:apply-templates mode="as-string" select="@id"/>
@@ -85,7 +85,7 @@
 <!-- Keys are added to everything and then removed from nodes in arrays, in mode 'rectify' -->
 
     <!-- ignoring address in these cases -->
-    <xsl:template match="define-field[@has-id='none'][empty(flag)][@as='mixed']" priority="3">
+    <xsl:template match="define-field[empty(flag)][@as='mixed']" priority="3">
         <xslt:template match="{@name}" mode="xml2json">
             <string key="{@name}">
                 <xslt:apply-templates mode="md"/>
@@ -93,7 +93,7 @@
         </xslt:template>
     </xsl:template>
     
-    <xsl:template match="define-field[@has-id='none'][empty(flag)]" priority="2">
+    <xsl:template match="define-field[empty(flag)]" priority="2">
         <xslt:template match="{@name}" mode="xml2json">
             <string key="{@name}">
                 <xsl:apply-templates/>

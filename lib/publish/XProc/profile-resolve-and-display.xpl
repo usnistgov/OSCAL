@@ -42,7 +42,7 @@
   <!--<p:identity name="resolved"/>-->
   <p:xslt name="resolved">
     <p:input port="stylesheet">
-      <p:document href="../../resolve/profile-resolver.xsl"/>
+      <p:document href="../../util/profile-resolver.xsl"/>
     </p:input>
   </p:xslt>
   
