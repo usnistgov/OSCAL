@@ -183,7 +183,6 @@
          <xsl:apply-templates/>><xsl:text/>
       </a>
    </xsl:template>
-   
   
    <xsl:template name="css">
       <style type="text/css">
