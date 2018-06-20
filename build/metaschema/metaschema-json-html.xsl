@@ -45,7 +45,7 @@
    <xsl:key name="single-invocations" match="m:define-flag | m:define-field | m:define-assembly"
       use="m:flag/@name | m:model//m:field/@named | m:model//m:assembly/@named"/>
    
-   <xsl:key name="group-invocations" match="m:define-flag | m:define-field | m:define-assembly"
+   <xsl:key name="group-invocations" match="m:define-field | m:define-assembly"
       use="m:model//m:fields/@named | m:model//m:assemblies/@named"/>
    
    <xsl:template match="m:define-flag">
@@ -78,7 +78,7 @@
          <xsl:if test="$to-props">
             <div class="model">
                <p>The <xsl:apply-templates select="@name"/>
-                  <xsl:text>object has </xsl:text>
+                  <xsl:text> object has </xsl:text>
                   <xsl:choose>
                      <xsl:when test="count($to-props) &gt; 1">properties:</xsl:when>
                      <xsl:otherwise>a property:</xsl:otherwise>
@@ -136,7 +136,7 @@
       </xsl:for-each>
          <xsl:text> will appear as </xsl:text>
          <xsl:choose>
-            <xsl:when test="key('group-invocations', @name)/@address">a labeled property of an object <code class="name"><xsl:value-of select="@group-as"/></code>.</xsl:when>
+            <xsl:when test="key('group-invocations', @name)/@address">a (labeled) property of an object <code class="name"><xsl:value-of select="@group-as"/></code>.</xsl:when>
             <xsl:when test="key('single-invocations', @name)">a property on an object.</xsl:when>
             <xsl:when test="key('group-invocations', @name)">a data value in an array property.</xsl:when>
             <xsl:when test="@name=/m:METASCHEMA/@use">an object, a property of the root object.</xsl:when>
@@ -147,14 +147,16 @@
    </xsl:template>
    
    <xsl:template name="invocations">
+      <!-- objects can be (especially) addressed only by flags, so single-invocations is enough -->
       <xsl:variable name="labeling-invocations" select="key('single-invocations', @name)[@address=current()/@name]"/>
       <xsl:if test="$labeling-invocations">
          <p>
             <xsl:text> This value is given implicitly as the label of a property
                </xsl:text>
             <xsl:for-each select="$labeling-invocations">
+               <xsl:if test="(position() = 2) and (position() = last())"> or </xsl:if>
+               <xsl:if test="(position() > 2) and (position() = last())">, or </xsl:if>
                <xsl:if test="(position() > 1) and not(position() = last())">, </xsl:if>
-               <xsl:if test="(position() > 1) and (position() = last())"> or </xsl:if>
                <a class="name" href="#{@name}"><xsl:value-of select="@name"/></a>
                <xsl:text> (on object </xsl:text>
                <code class="name"><xsl:value-of select="@group-as"/></code>
@@ -167,10 +169,10 @@
       </xsl:if>
 
 
-      <xsl:if test="key('group-invocations', @name)">
+      <xsl:if test="key('group-invocations', @name)[@address=current()/@name]">
          <p>
             <xsl:text>On </xsl:text>
-            <xsl:for-each select="key('group-invocations', @name)">
+            <xsl:for-each select="key('group-invocations', @name)[@address=current()/@name]">
                <xsl:if test="(position() > 1) and not(position() = last())">, </xsl:if>
                <xsl:if test="(position() > 1) and (position() = last())"> and </xsl:if>
                <a class="name" href="#{@name}"><xsl:apply-templates select="@name"/></a>

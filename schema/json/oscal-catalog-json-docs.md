@@ -36,7 +36,7 @@ A [declarations](#declarations-declarations-object) will appear as a property on
 
 As an explicit property, `declarations` appears on [catalog](#catalog-catalog-object).
 
-The `declarations`object has a property:
+The `declarations` object has a property:
 
 * String [href](#hypertext-reference-href-object) 
 
@@ -45,8 +45,6 @@ The `declarations`object has a property:
 Allows the inclusion of prose content within a Catalog.
 
 A [section](#section-section-object) will appear as a data value in an array property.
-
-On [catalog](#catalog-catalog-object) and [section](#section-section-object), it appears unlabelled, as a member of the array (property) `sections`.
 
 A [section](#section-section-object) object has the following properties:
 
@@ -62,8 +60,6 @@ A [section](#section-section-object) object has the following properties:
 A group of controls, or of groups of controls.
 
 A [group](#control-group-group-object) will appear as a data value in an array property.
-
-On [catalog](#catalog-catalog-object) and [group](#control-group-group-object), it appears unlabelled, as a member of the array (property) `groups`.
 
 A [group](#control-group-group-object) object has the following properties:
 
@@ -86,8 +82,6 @@ A structured information object representing a security or privacy control. Each
 
 A [control](#control-control-object) will appear as a data value in an array property.
 
-On [catalog](#catalog-catalog-object) and [group](#control-group-group-object), it appears unlabelled, as a member of the array (property) `controls`.
-
 A [control](#control-control-object) object has the following properties:
 
 * String [id](#id--identifier-id-object)
@@ -108,8 +102,6 @@ A control extension or enhancement
 
 A [subcontrol](#sub-control-subcontrol-object) will appear as a data value in an array property.
 
-On [control](#control-control-object), it appears unlabelled, as a member of the array (property) `subcontrols`.
-
 A [subcontrol](#sub-control-subcontrol-object) object has the following properties:
 
 * String [class](#class-class-object) 
@@ -128,7 +120,7 @@ A title for display and navigation, exclusive of more specific properties
 
 As an explicit property, `title` appears on [catalog](#catalog-catalog-object), [section](#section-section-object), [group](#control-group-group-object), [control](#control-control-object), [subcontrol](#sub-control-subcontrol-object) and [part](#part-part-object).
 
-The `title`object has a property:
+The `title` object has a property:
 
 * String `RICHTEXT` (supports OSCAL markdown) 
 
@@ -136,11 +128,9 @@ The `title`object has a property:
 
 A value with a name, attributed to the containing control, subcontrol, part, or group.
 
-A [prop](#property-prop-object) will appear as a labeled property of an object `props`.
+A [prop](#property-prop-object) will appear as a (labeled) property of an object `props`.
 
-On [group](#control-group-group-object), [control](#control-control-object), [subcontrol](#sub-control-subcontrol-object) and [part](#part-part-object), it appears unlabelled, as a member of the array (property) `props`.
-
-The `prop`object has properties:
+The `prop` object has properties:
 
 * String [id](#id--identifier-id-object)
 * String [class](#class-class-object)
@@ -168,9 +158,7 @@ For singletons (that is, the only element among siblings with its [class](#class
 
 Parameters provide a mechanism for the dynamic assignment of value(s) in a control.
 
-A [param](#parameter-param-object) will appear as a labeled property of an object `params`.
-
-On [group](#control-group-group-object), [control](#control-control-object) and [subcontrol](#sub-control-subcontrol-object), it appears unlabelled, as a member of the array (property) `params`.
+A [param](#parameter-param-object) will appear as a (labeled) property of an object `params`.
 
 A [param](#parameter-param-object) object has the following properties:
 
@@ -197,7 +185,7 @@ A placeholder for a missing value, in display.
 
 As an explicit property, `label` appears on [param](#parameter-param-object).
 
-The `label`object has a property:
+The `label` object has a property:
 
 * String `RICHTEXT` (supports OSCAL markdown) 
 
@@ -205,11 +193,9 @@ The `label`object has a property:
 
 Indicates and explains the purpose and use of a parameter
 
-A [desc](#parameter-description-desc-object) will appear as a labeled property of an object `descriptions`.
+A [desc](#parameter-description-desc-object) will appear as a (labeled) property of an object `descriptions`.
 
-On [param](#parameter-param-object), it appears unlabelled, as a member of the array (property) `descriptions`.
-
-The `desc`object has properties:
+The `desc` object has properties:
 
 * String [id](#id--identifier-id-object)
 * String `RICHTEXT` (supports OSCAL markdown) 
@@ -218,11 +204,9 @@ The `desc`object has properties:
 
 A formal or informal expression of a constraint or test
 
-A [constraint](#constraint-constraint-object) will appear as a labeled property of an object `constraints`.
+A [constraint](#constraint-constraint-object) will appear as a (labeled) property of an object `constraints`.
 
-On [param](#parameter-param-object), it appears unlabelled, as a member of the array (property) `constraints`.
-
-The `constraint`object has properties:
+The `constraint` object has properties:
 
 * String [test](#constraint-test-test-object)
 * String `STRVALUE` 
@@ -231,9 +215,7 @@ The `constraint`object has properties:
 
 A prose statement that provides a recommendation for the use of a parameter.
 
-A [guideline](#guideline-guideline-object) will appear as a labeled property of an object `guidance`.
-
-On [param](#parameter-param-object), it appears unlabelled, as a member of the array (property) `guidance`.
+A [guideline](#guideline-guideline-object) will appear as a (labeled) property of an object `guidance`.
 
 A [guideline](#guideline-guideline-object) object has the following properties:
  
@@ -247,7 +229,7 @@ Indicates a permissible value for a parameter or property
 
 As an explicit property, `value` appears on [param](#parameter-param-object).
 
-The `value`object has a property:
+The `value` object has a property:
 
 * String `RICHTEXT` (supports OSCAL markdown) 
 
@@ -274,9 +256,7 @@ A value selection among several such options
 
 `choice` will appear as a string property.
 
-On [select](#selection-select-object), it appears unlabelled, as a member of the array (property) `alternatives`.
-
-The `choice`object has a property:
+The `choice` object has a property:
 
 * String `RICHTEXT` (supports OSCAL markdown) 
 
@@ -284,9 +264,7 @@ The `choice`object has a property:
 
 A partition or component of a control, subcontrol or part
 
-A [part](#part-part-object) will appear as a labeled property of an object `parts`.
-
-On [group](#control-group-group-object), [control](#control-control-object), [subcontrol](#sub-control-subcontrol-object) and [part](#part-part-object), it appears unlabelled, as a member of the array (property) `parts`.
+A [part](#part-part-object) will appear as a (labeled) property of an object `parts`.
 
 A [part](#part-part-object) object has the following properties:
 
@@ -308,11 +286,9 @@ Many parts are logical partitions or sections for prose. Other parts may be more
 
  A line or paragraph with a hypertext link 
 
-A [link](#link-link-object) will appear as a labeled property of an object `links`.
+A [link](#link-link-object) will appear as a (labeled) property of an object `links`.
 
-On [control](#control-control-object), [subcontrol](#sub-control-subcontrol-object), [param](#parameter-param-object), [part](#part-part-object) and [references](#references-references-object), it appears unlabelled, as a member of the array (property) `links`.
-
-The `link`object has properties:
+The `link` object has properties:
 
 * String [href](#hypertext-reference-href-object)
 * String [rel](#relation-rel-object)
@@ -340,8 +316,6 @@ A [references](#references-references-object) object has the following propertie
 
 A [ref](#reference-ref-object) will appear as a data value in an array property.
 
-On [references](#references-references-object), it appears unlabelled, as a member of the array (property) `refs`.
-
 A [ref](#reference-ref-object) object has the following properties:
 
 * String [id](#id--identifier-id-object) 
@@ -354,9 +328,7 @@ Citation of a resource
 
 A [citation](#citation-citation-object) will appear as a data value in an array property.
 
-On [ref](#reference-ref-object), it appears unlabelled, as a member of the array (property) `citations`.
-
-The `citation`object has properties:
+The `citation` object has properties:
 
 * String [id](#id--identifier-id-object)
 * String [href](#hypertext-reference-href-object)
