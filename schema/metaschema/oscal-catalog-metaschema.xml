@@ -416,7 +416,7 @@
     <description>Another parameter invoking this one</description>
   </define-flag>
   
-  <define-flag name="model-version" datatype="IDREF" show-docs="xml json">
+  <define-flag name="model-version" datatype="NCName" show-docs="xml json">
     <formal-name>Model version</formal-name>
     <description>Declares a major/minor version for this metaschema</description>
   </define-flag>
