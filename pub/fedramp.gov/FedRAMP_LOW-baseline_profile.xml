@@ -1,0 +1,839 @@
+<?xml-model href='fedramp-profile.sch' type='application/xml' schematypens='http://purl.oclc.org/dsdl/schematron'?>
+<?xml-stylesheet type='text/xsl' href='oscal.css'?>
+<!-- Produced by VBA MS Access script, using MSXML2.DOMDocument.6.0 -->
+<!-- Created: 5/18/2018 11:50:11 PM -->
+<profile id="uuid-fedramp-low-20180518-235011" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+	<title>FedRAMP LOW Baseline PROFILE</title>
+	<publication_information>
+		<organization>Federal Risk and Authorization Management Program (FedRAMP)</organization>
+		<org_email>info@fedramp.gov</org_email>
+		<org_website>https://fedramp.gov</org_website>
+		<publication_title>FedRAMP Low Baseline</publication_title>
+		<publication_date>6/1/2018</publication_date>
+		<publication_version>DRAFT-01</publication_version>
+		<author>FedRAMP PMO</author>
+		<notes>This is where publication notes are captured.</notes>
+	</publication_information>
+	<import href="../SP800-53/NIST_SP-800-53_rev4_LOW-baseline_profile.xml">
+		<include>
+			<call control-id="ac-1"/>
+			<call control-id="ac-2"/>
+			<call control-id="ac-3"/>
+			<call control-id="ac-7"/>
+			<call control-id="ac-8"/>
+			<call control-id="ac-14"/>
+			<call control-id="ac-17"/>
+			<call control-id="ac-18"/>
+			<call control-id="ac-19"/>
+			<call control-id="ac-20"/>
+			<call control-id="ac-22"/>
+			<call control-id="at-1"/>
+			<call control-id="at-2"/>
+			<call control-id="at-3"/>
+			<call control-id="at-4"/>
+			<call control-id="au-1"/>
+			<call control-id="au-2"/>
+			<call control-id="au-3"/>
+			<call control-id="au-4"/>
+			<call control-id="au-5"/>
+			<call control-id="au-6"/>
+			<call control-id="au-8"/>
+			<call control-id="au-9"/>
+			<call control-id="au-11"/>
+			<call control-id="au-12"/>
+			<call control-id="ca-1"/>
+			<call control-id="ca-2"/>
+			<call control-id="ca-3"/>
+			<call control-id="ca-5"/>
+			<call control-id="ca-6"/>
+			<call control-id="ca-7"/>
+			<call control-id="ca-9"/>
+			<call control-id="cm-1"/>
+			<call control-id="cm-2"/>
+			<call control-id="cm-4"/>
+			<call control-id="cm-6"/>
+			<call control-id="cm-7"/>
+			<call control-id="cm-8"/>
+			<call control-id="cm-10"/>
+			<call control-id="cm-11"/>
+			<call control-id="cp-1"/>
+			<call control-id="cp-2"/>
+			<call control-id="cp-3"/>
+			<call control-id="cp-4"/>
+			<call control-id="cp-9"/>
+			<call control-id="cp-10"/>
+			<call control-id="ia-1"/>
+			<call control-id="ia-2"/>
+			<call subcontrol-id="ia-2.1"/>
+			<call subcontrol-id="ia-2.12"/>
+			<call control-id="ia-4"/>
+			<call control-id="ia-5"/>
+			<call subcontrol-id="ia-5.1"/>
+			<call subcontrol-id="ia-5.11"/>
+			<call control-id="ia-6"/>
+			<call control-id="ia-7"/>
+			<call control-id="ia-8"/>
+			<call subcontrol-id="ia-8.1"/>
+			<call subcontrol-id="ia-8.2"/>
+			<call subcontrol-id="ia-8.3"/>
+			<call subcontrol-id="ia-8.4"/>
+			<call control-id="ir-1"/>
+			<call control-id="ir-2"/>
+			<call control-id="ir-4"/>
+			<call control-id="ir-5"/>
+			<call control-id="ir-6"/>
+			<call control-id="ir-7"/>
+			<call control-id="ir-8"/>
+			<call control-id="ma-1"/>
+			<call control-id="ma-2"/>
+			<call control-id="ma-4"/>
+			<call control-id="ma-5"/>
+			<call control-id="mp-1"/>
+			<call control-id="mp-2"/>
+			<call control-id="mp-6"/>
+			<call control-id="mp-7"/>
+			<call control-id="pe-1"/>
+			<call control-id="pe-2"/>
+			<call control-id="pe-3"/>
+			<call control-id="pe-6"/>
+			<call control-id="pe-8"/>
+			<call control-id="pe-12"/>
+			<call control-id="pe-13"/>
+			<call control-id="pe-14"/>
+			<call control-id="pe-15"/>
+			<call control-id="pe-16"/>
+			<call control-id="pl-1"/>
+			<call control-id="pl-2"/>
+			<call control-id="pl-4"/>
+			<call control-id="ps-1"/>
+			<call control-id="ps-2"/>
+			<call control-id="ps-3"/>
+			<call control-id="ps-4"/>
+			<call control-id="ps-5"/>
+			<call control-id="ps-6"/>
+			<call control-id="ps-7"/>
+			<call control-id="ps-8"/>
+			<call control-id="ra-1"/>
+			<call control-id="ra-2"/>
+			<call control-id="ra-3"/>
+			<call control-id="ra-5"/>
+			<call control-id="sa-1"/>
+			<call control-id="sa-2"/>
+			<call control-id="sa-3"/>
+			<call control-id="sa-4"/>
+			<call control-id="sa-5"/>
+			<call control-id="sa-9"/>
+			<call control-id="sc-1"/>
+			<call control-id="sc-5"/>
+			<call control-id="sc-7"/>
+			<call control-id="sc-12"/>
+			<call control-id="sc-13"/>
+			<call control-id="sc-15"/>
+			<call control-id="sc-20"/>
+			<call control-id="sc-21"/>
+			<call control-id="sc-22"/>
+			<call control-id="sc-39"/>
+			<call control-id="si-1"/>
+			<call control-id="si-2"/>
+			<call control-id="si-3"/>
+			<call control-id="si-4"/>
+			<call control-id="si-5"/>
+			<call control-id="si-12"/>
+		</include>
+	</import>
+	<import href="../SP800-53/NIST_SP-800-53_rev4_catalog.xml">
+		<include>
+			<call subcontrol-id="ca-2.1"/>
+			<call control-id="si-16"/>
+		</include>
+	</import>
+	<merge/>
+	<modify>
+		<!-- - - AC-1 - -  -->
+		<set-param param-id="ac-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ac-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - AC-2 - -  -->
+		<set-param param-id="ac-2_prm_4">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - AC-3 - -  -->
+		<!-- - - AC-7 - -  -->
+		<set-param param-id="ac-7_prm_2">
+			<constraint>fifteen minutes</constraint>
+		</set-param>
+		<set-param param-id="ac-7_prm_3">
+			<constraint>locks the account/node for thirty minutes</constraint>
+		</set-param>
+		<set-param param-id="ac-7_prm_4">
+			<constraint>locks the account/node for thirty minutes</constraint>
+		</set-param>
+		<set-param param-id="ac-7_prm_1">
+			<constraint>not more than three</constraint>
+		</set-param>
+		<!-- - - AC-8 - -  -->
+		<alter control-id="ac-8">
+			<add>
+				<part class="guidance">
+					<p>AC-8 Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB.</p>
+					<p>AC-08 Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB.</p>
+					<p>AC-8 Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. AC-8 Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ac-8_prm_1">
+			<constraint>see additional Requirements and Guidance</constraint>
+		</set-param>
+		<set-param param-id="ac-8_prm_2">
+			<constraint>see additional Requirements and Guidance</constraint>
+		</set-param>
+		<!-- - - AC-14 - -  -->
+		<!-- - - AC-17 - -  -->
+		<!-- - - AC-18 - -  -->
+		<!-- - - AC-19 - -  -->
+		<!-- - - AC-20 - -  -->
+		<!-- - - AC-22 - -  -->
+		<set-param param-id="ac-22_prm_1">
+			<constraint>at least quarterly</constraint>
+		</set-param>
+		<!-- - - AT-1 - -  -->
+		<set-param param-id="at-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="at-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - AT-2 - -  -->
+		<set-param param-id="at-2_prm_1">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - AT-3 - -  -->
+		<set-param param-id="at-3_prm_1">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - AT-4 - -  -->
+		<set-param param-id="at-4_prm_1">
+			<constraint>At least one year</constraint>
+		</set-param>
+		<!-- - - AU-1 - -  -->
+		<set-param param-id="au-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="au-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - AU-2 - -  -->
+		<alter control-id="au-2">
+			<add>
+				<part class="guidance">
+					<p>AU-2 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="au-2_prm_2">
+			<constraint>organization-defined subset of the auditable events defined in AU-2 a to be audited continually for each identified event</constraint>
+		</set-param>
+		<set-param param-id="au-2_prm_1">
+			<constraint>Successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes</constraint>
+		</set-param>
+		<!-- - - AU-3 - -  -->
+		<!-- - - AU-4 - -  -->
+		<!-- - - AU-5 - -  -->
+		<set-param param-id="au-5_prm_2">
+			<constraint>organization-defined actions to be taken (overwrite oldest record)</constraint>
+		</set-param>
+		<!-- - - AU-6 - -  -->
+		<alter control-id="au-6">
+			<add>
+				<part class="guidance">
+					<p>AU-6 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="au-6_prm_1">
+			<constraint>at least weekly</constraint>
+		</set-param>
+		<!-- - - AU-8 - -  -->
+		<!-- - - AU-9 - -  -->
+		<!-- - - AU-11 - -  -->
+		<alter control-id="au-11">
+			<add>
+				<part class="guidance">
+					<p>AU-11. Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="au-11_prm_1">
+			<constraint>at least ninety days</constraint>
+		</set-param>
+		<!-- - - AU-12 - -  -->
+		<set-param param-id="au-12_prm_1">
+			<constraint>all information system and network components where audit capability is deployed/available</constraint>
+		</set-param>
+		<set-param param-id="au-12_prm_2">
+			<constraint>all information system and network components where audit capability is deployed/available</constraint>
+		</set-param>
+		<!-- - - CA-1 - -  -->
+		<set-param param-id="ca-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ca-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - CA-2 - -  -->
+		<set-param param-id="ca-2_prm_1">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ca-2_prm_2">
+			<constraint>individuals or roles to include FedRAMP PMO</constraint>
+		</set-param>
+		<!-- - - CA-2 (1) - -  -->
+		<alter subcontrol-id="ca-2.1">
+			<add>
+				<part class="guidance">
+					<p>CA-2(1) Requirement: Must use an accredited 3PAO for JAB authorization</p>
+				</part>
+			</add>
+		</alter>
+		<!-- - - CA-3 - -  -->
+		<set-param param-id="ca-3_prm_1">
+			<constraint>at least annually and on input from FedRAMP</constraint>
+		</set-param>
+		<!-- - - CA-5 - -  -->
+		<alter control-id="ca-5">
+			<add>
+				<part class="guidance">
+					<p>CA-5 Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ca-5_prm_1">
+			<constraint>at least monthly</constraint>
+		</set-param>
+		<!-- - - CA-6 - -  -->
+		<alter control-id="ca-6">
+			<add>
+				<part class="guidance">
+					<p>CA-6c. Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ca-6_prm_1">
+			<constraint>at least every three years or when a significant change occurs</constraint>
+		</set-param>
+		<!-- - - CA-7 - -  -->
+		<alter control-id="ca-7">
+			<add>
+				<part class="guidance">
+					<p>CA-7 Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually</p>
+					<p>CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
+					<p>Operating System Scans: at least monthly</p>
+					<p>Database and Web Application Scans: at least monthly</p>
+					<p>All scans performed by Independent Assessor: at least annually</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ca-7_prm_4">
+			<constraint>to meet Federal and FedRAMP requirements (See additional guidance)</constraint>
+		</set-param>
+		<set-param param-id="ca-7_prm_5">
+			<constraint>to meet Federal and FedRAMP requirements (See additional guidance)</constraint>
+		</set-param>
+		<!-- - - CA-9 - -  -->
+		<!-- - - CM-1 - -  -->
+		<set-param param-id="cm-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="cm-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - CM-2 - -  -->
+		<!-- - - CM-4 - -  -->
+		<!-- - - CM-6 - -  -->
+		<alter control-id="cm-6">
+			<add>
+				<part class="guidance">
+					<p>CM-6 (a) Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.</p>
+					<p>CM-6 (a) Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).</p>
+					<p>CM-6 (a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="cm-6_prm_1">
+			<constraint>United States Government Configuration Baseline (USGCB)</constraint>
+		</set-param>
+		<!-- - - CM-7 - -  -->
+		<alter control-id="cm-7">
+			<add>
+				<part class="guidance">
+					<p>CM-7 (b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
+					<p>CM-7. Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc.</p>
+					<p>(Partially derived from AC-17(8).)</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="cm-7_prm_1">
+			<constraint>United States Government Configuration Baseline (USGCB)</constraint>
+		</set-param>
+		<!-- - - CM-8 - -  -->
+		<alter control-id="cm-8">
+			<add>
+				<part class="guidance">
+					<p>CM-8 Requirement: must be provided at least monthly or when there is a change.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="cm-8_prm_2">
+			<constraint>at least monthly</constraint>
+		</set-param>
+		<!-- - - CM-10 - -  -->
+		<!-- - - CM-11 - -  -->
+		<set-param param-id="cm-11_prm_3">
+			<constraint>Continuously (via CM-7 (5))</constraint>
+		</set-param>
+		<!-- - - CP-1 - -  -->
+		<set-param param-id="cp-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="cp-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - CP-2 - -  -->
+		<alter control-id="cp-2">
+			<add>
+				<part class="guidance">
+					<p>CP-2 Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="cp-2_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - CP-3 - -  -->
+		<set-param param-id="cp-3_prm_2">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="cp-3_prm_1">
+			<constraint>ten (10) days</constraint>
+		</set-param>
+		<!-- - - CP-4 - -  -->
+		<alter control-id="cp-4">
+			<add>
+				<part class="guidance">
+					<p>CP-4 (a). Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="cp-4_prm_1">
+			<constraint>at least every three years</constraint>
+		</set-param>
+		<set-param param-id="cp-4_prm_2">
+			<constraint>classroom exercises/table top written tests</constraint>
+		</set-param>
+		<!-- - - CP-9 - -  -->
+		<alter control-id="cp-9">
+			<add>
+				<part class="guidance">
+					<p>CP-9 Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
+					<p>CP-9 (a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.</p>
+					<p>CP-9 (b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.</p>
+					<p>CP-9 (c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="cp-9_prm_1">
+			<constraint>daily incremental; weekly full</constraint>
+		</set-param>
+		<set-param param-id="cp-9_prm_2">
+			<constraint>daily incremental; weekly full</constraint>
+		</set-param>
+		<set-param param-id="cp-9_prm_3">
+			<constraint>daily incremental; weekly full</constraint>
+		</set-param>
+		<!-- - - CP-10 - -  -->
+		<!-- - - IA-1 - -  -->
+		<set-param param-id="ia-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ia-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - IA-2 - -  -->
+		<!-- - - IA-2 (1) - -  -->
+		<!-- - - IA-2 (12) - -  -->
+		<alter subcontrol-id="ia-2.12">
+			<add>
+				<part class="guidance">
+					<p>IA-2 (12) Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
+				</part>
+			</add>
+		</alter>
+		<!-- - - IA-4 - -  -->
+		<alter control-id="ia-4">
+			<add>
+				<part class="guidance">
+					<p>IA-4 (e) Requirement: The service provider defines time period of inactivity for device identifiers.</p>
+					<p>Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ia-4_prm_2">
+			<constraint>IA-4 (d) [at least two years]</constraint>
+		</set-param>
+		<set-param param-id="ia-4_prm_3">
+			<constraint>ninety days for user identifiers (See additional requirements and guidance)</constraint>
+		</set-param>
+		<!-- - - IA-5 - -  -->
+		<set-param param-id="ia-5_prm_1">
+			<constraint>to include sixty (60) days for passwords</constraint>
+		</set-param>
+		<!-- - - IA-5 (1) - -  -->
+		<set-param param-id="ia-5.1_prm_2">
+			<constraint>at least one</constraint>
+		</set-param>
+		<set-param param-id="ia-5.1_prm_1">
+			<constraint>case sensitive, minimum of twelve characters, and at least one each of upper-case letters, lower-case letters, numbers, and special characters</constraint>
+		</set-param>
+		<set-param param-id="ia-5.1_prm_3">
+			<constraint>one day minimum, sixty day maximum</constraint>
+		</set-param>
+		<set-param param-id="ia-5.1_prm_4">
+			<constraint>twenty four</constraint>
+		</set-param>
+		<!-- - - IA-5 (11) - -  -->
+		<!-- - - IA-6 - -  -->
+		<!-- - - IA-7 - -  -->
+		<!-- - - IA-8 - -  -->
+		<!-- - - IA-8 (1) - -  -->
+		<!-- - - IA-8 (2) - -  -->
+		<!-- - - IA-8 (3) - -  -->
+		<!-- - - IA-8 (4) - -  -->
+		<!-- - - IR-1 - -  -->
+		<set-param param-id="ir-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ir-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - IR-2 - -  -->
+		<set-param param-id="ir-2_prm_2">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - IR-4 - -  -->
+		<alter control-id="ir-4">
+			<add>
+				<part class="guidance">
+					<p>IR-4 Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
+				</part>
+			</add>
+		</alter>
+		<!-- - - IR-5 - -  -->
+		<!-- - - IR-6 - -  -->
+		<alter control-id="ir-6">
+			<add>
+				<part class="guidance">
+					<p>IR-6 Requirement: Reports security incident information according to FedRAMP Incident Communications Procedure.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ir-6_prm_1">
+			<constraint>US-CERT incident reporting timelines as specified in NIST Special Publication 800-61 (as amended)</constraint>
+		</set-param>
+		<!-- - - IR-7 - -  -->
+		<!-- - - IR-8 - -  -->
+		<alter control-id="ir-8">
+			<add>
+				<part class="guidance">
+					<p>IR-8 (b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
+					<p>IR-8 (e) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ir-8_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ir-8_prm_2">
+			<constraint>see additional FedRAMP Requirements and Guidance</constraint>
+		</set-param>
+		<set-param param-id="ir-8_prm_4">
+			<constraint>see additional FedRAMP Requirements and Guidance</constraint>
+		</set-param>
+		<!-- - - MA-1 - -  -->
+		<set-param param-id="ma-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ma-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - MA-2 - -  -->
+		<!-- - - MA-4 - -  -->
+		<!-- - - MA-5 - -  -->
+		<!-- - - MP-1 - -  -->
+		<set-param param-id="mp-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="mp-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - MP-2 - -  -->
+		<!-- - - MP-6 - -  -->
+		<!-- - - MP-7 - -  -->
+		<!-- - - PE-1 - -  -->
+		<set-param param-id="pe-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="pe-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - PE-2 - -  -->
+		<set-param param-id="pe-2_prm_1">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - PE-3 - -  -->
+		<set-param param-id="pe-3_prm_8">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="pe-3_prm_9">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="pe-3_prm_3">
+			<constraint>CSP defined physical access control systems/devices</constraint>
+		</set-param>
+		<set-param param-id="pe-3_prm_2">
+			<constraint>CSP defined physical access control systems/devices AND guards</constraint>
+		</set-param>
+		<set-param param-id="pe-3_prm_6">
+			<constraint>in all circumstances within restricted access area where the information system resides</constraint>
+		</set-param>
+		<!-- - - PE-6 - -  -->
+		<set-param param-id="pe-6_prm_1">
+			<constraint>at least monthly</constraint>
+		</set-param>
+		<!-- - - PE-8 - -  -->
+		<set-param param-id="pe-8_prm_2">
+			<constraint>at least monthly</constraint>
+		</set-param>
+		<set-param param-id="pe-8_prm_1">
+			<constraint>for a minimum of one (1) year</constraint>
+		</set-param>
+		<!-- - - PE-12 - -  -->
+		<!-- - - PE-13 - -  -->
+		<!-- - - PE-14 - -  -->
+		<alter control-id="pe-14">
+			<add>
+				<part class="guidance">
+					<p>PE-14 (a). Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="pe-14_prm_1">
+			<constraint>consistent with American Society of Heating, Refrigerating and Air-conditioning Engineers (ASHRAE) document entitled Thermal Guidelines for Data Processing Environments</constraint>
+		</set-param>
+		<set-param param-id="pe-14_prm_2">
+			<constraint>continuously</constraint>
+		</set-param>
+		<!-- - - PE-15 - -  -->
+		<!-- - - PE-16 - -  -->
+		<set-param param-id="pe-16_prm_1">
+			<constraint>all information system components</constraint>
+		</set-param>
+		<!-- - - PL-1 - -  -->
+		<set-param param-id="pl-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="pl-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - PL-2 - -  -->
+		<set-param param-id="pl-2_prm_2">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - PL-4 - -  -->
+		<set-param param-id="pl-4_prm_1">
+			<constraint>At least every 3 years</constraint>
+		</set-param>
+		<!-- - - PS-1 - -  -->
+		<set-param param-id="ps-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ps-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - PS-2 - -  -->
+		<set-param param-id="ps-2_prm_1">
+			<constraint>at least every three years</constraint>
+		</set-param>
+		<!-- - - PS-3 - -  -->
+		<set-param param-id="ps-3_prm_1">
+			<constraint>PS-3 (b) [for national security clearances; a reinvestigation is required during the 5th year for top secret security clearance, the 10th year for secret security clearance, and 15th year for confidential security clearance
+For moderate risk law enforcement and high impact public trust level, a reinvestigation is required during the 5th year There is no reinvestigation for other moderate risk positions or any low risk positions]</constraint>
+		</set-param>
+		<!-- - - PS-4 - -  -->
+		<set-param param-id="ps-4_prm_1">
+			<constraint>same day</constraint>
+		</set-param>
+		<!-- - - PS-5 - -  -->
+		<set-param param-id="ps-5_prm_4">
+			<constraint>five days of the time period following the formal transfer action (DoD 24 hours)</constraint>
+		</set-param>
+		<!-- - - PS-6 - -  -->
+		<set-param param-id="ps-6_prm_1">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ps-6_prm_2">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<!-- - - PS-7 - -  -->
+		<set-param param-id="ps-7_prm_2">
+			<constraint>organization-defined time period - same day</constraint>
+		</set-param>
+		<!-- - - PS-8 - -  -->
+		<!-- - - RA-1 - -  -->
+		<set-param param-id="ra-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="ra-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - RA-2 - -  -->
+		<!-- - - RA-3 - -  -->
+		<alter control-id="ra-3">
+			<add>
+				<part class="guidance">
+					<p>RA-3 Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ra-3_prm_3">
+			<constraint>at least every three (3) years or when a significant change occurs</constraint>
+		</set-param>
+		<set-param param-id="ra-3_prm_5">
+			<constraint>at least every three (3) years or when a significant change occurs</constraint>
+		</set-param>
+		<set-param param-id="ra-3_prm_2">
+			<constraint>security assessment report</constraint>
+		</set-param>
+		<set-param param-id="ra-3_prm_4">
+			<constraint>to include all Authoring Officials and FedRAMP ISSOs</constraint>
+		</set-param>
+		<!-- - - RA-5 - -  -->
+		<alter control-id="ra-5">
+			<add>
+				<part class="guidance">
+					<p>RA-5 (a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
+					<p>RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="ra-5_prm_2">
+			<constraint>high-risk vulnerabilities mitigated within thirty days from date of discovery; moderate-risk vulnerabilities mitigated within ninety days from date of discovery</constraint>
+		</set-param>
+		<set-param param-id="ra-5_prm_1">
+			<constraint>monthly operating system/infrastructure; monthly web applications and databases</constraint>
+		</set-param>
+		<!-- - - SA-1 - -  -->
+		<set-param param-id="sa-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="sa-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - SA-2 - -  -->
+		<!-- - - SA-3 - -  -->
+		<!-- - - SA-4 - -  -->
+		<alter control-id="sa-4">
+			<add>
+				<part class="guidance">
+					<p>SA-4 Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.</p>
+					<p>See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html.</p>
+				</part>
+			</add>
+		</alter>
+		<!-- - - SA-5 - -  -->
+		<!-- - - SA-9 - -  -->
+		<set-param param-id="sa-9_prm_2">
+			<constraint>Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored</constraint>
+		</set-param>
+		<set-param param-id="sa-9_prm_1">
+			<constraint>FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system</constraint>
+		</set-param>
+		<!-- - - SC-1 - -  -->
+		<set-param param-id="sc-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="sc-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - SC-5 - -  -->
+		<!-- - - SC-7 - -  -->
+		<!-- - - SC-12 - -  -->
+		<alter control-id="sc-12">
+			<add>
+				<part class="guidance">
+					<p>SC-12 Guidance: Federally approved cryptography</p>
+				</part>
+			</add>
+		</alter>
+		<!-- - - SC-13 - -  -->
+		<set-param param-id="sc-13_prm_1">
+			<constraint>FIPS-validated or NSA-approved cryptography</constraint>
+		</set-param>
+		<!-- - - SC-15 - -  -->
+		<alter control-id="sc-15">
+			<add>
+				<part class="guidance">
+					<p>SC-15 Additional FedRAMP Requirements and Guidance:</p>
+					<p>Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
+				</part>
+			</add>
+		</alter>
+		<set-param param-id="sc-15_prm_1">
+			<constraint>no exceptions</constraint>
+		</set-param>
+		<!-- - - SC-20 - -  -->
+		<!-- - - SC-21 - -  -->
+		<!-- - - SC-22 - -  -->
+		<!-- - - SC-39 - -  -->
+		<!-- - - SI-1 - -  -->
+		<set-param param-id="si-1_prm_3">
+			<constraint>at least annually</constraint>
+		</set-param>
+		<set-param param-id="si-1_prm_2">
+			<constraint>at least every 3 years</constraint>
+		</set-param>
+		<!-- - - SI-2 - -  -->
+		<set-param param-id="si-2_prm_1">
+			<constraint>within 30 days of release of updates</constraint>
+		</set-param>
+		<!-- - - SI-3 - -  -->
+		<set-param param-id="si-3_prm_1">
+			<constraint>at least weekly</constraint>
+		</set-param>
+		<set-param param-id="si-3_prm_3">
+			<constraint>to include alerting administrator or defined security personnel</constraint>
+		</set-param>
+		<set-param param-id="si-3_prm_2">
+			<constraint>to include endpoints</constraint>
+		</set-param>
+		<!-- - - SI-4 - -  -->
+		<alter control-id="si-4">
+			<add>
+				<part class="guidance">
+					<p>SI-4 Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
+				</part>
+			</add>
+		</alter>
+		<!-- - - SI-5 - -  -->
+		<set-param param-id="si-5_prm_2">
+			<constraint>to include system security personnel and administrators with configuration/patch-management responsibilities</constraint>
+		</set-param>
+		<set-param param-id="si-5_prm_1">
+			<constraint>to include US-CERT</constraint>
+		</set-param>
+		<!-- - - SI-12 - -  -->
+		<!-- - - SI-16 - -  -->
+	</modify>
+</profile>
