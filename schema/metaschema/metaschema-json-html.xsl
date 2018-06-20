@@ -74,15 +74,21 @@
             <xsl:apply-templates select="@name"/> object</h2>
          <xsl:apply-templates select="m:formal-name | m:description"/>
          <xsl:apply-templates select="." mode="occurrence"/>
-         <xsl:if test="m:flag">
+         <xsl:variable name="to-props" select="m:flag | @as[.='string'] | @as[.='mixed'] | self::node()[not(@as)]"/>
+         <xsl:if test="$to-props">
             <div class="model">
-               <p>The <xsl:apply-templates select="@name"/> object has properties:</p>
+               <p>The <xsl:apply-templates select="@name"/>
+                  <xsl:text>object has </xsl:text>
+                  <xsl:choose>
+                     <xsl:when test="count($to-props)">properties:</xsl:when>
+                     <xsl:otherwise>a property:</xsl:otherwise>
+                  </xsl:choose>
+               </p>
                <ul>
                   <xsl:apply-templates select="m:flag" mode="model"/>
                   <xsl:apply-templates select="." mode="value-property"/>
                </ul>
             </div>
-            
          </xsl:if>
          <xsl:apply-templates select="m:remarks"/>
          <xsl:apply-templates select="m:example"/>

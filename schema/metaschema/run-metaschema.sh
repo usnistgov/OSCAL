@@ -3,7 +3,7 @@
 
 METASCHEMAXML=$1
 
-# munge input file name: oscal-catalog-metaschema.xml becomes oscal-catalog-schema
+# munge input file name: oscal-catalog-metaschema.xml becomes oscal-catalog (and later, oscal-catalog-schema)
 TRIMNAME=$(sed 's/-metaschema//' <<< $METASCHEMAXML)
 BASENAME=$(sed 's/.xml//'  <<< $TRIMNAME)
 
@@ -56,6 +56,5 @@ $CONV_JSON
 echo _ Made JSON-to-XML converter ____ $CONVERSION_DIR/$BASENAME-json-converter.xsl
 $DOC_XML
 $DOC_JSON
-echo _ Made markdown documentation ___ :next to schema files
+echo _ Made markdown documentation ___ find next to schema files
 echo
-
