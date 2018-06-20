@@ -380,20 +380,19 @@
    <xs:element name="param">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter: </b> A parameter setting, to be propagated to points of insertion
-      </xs:documentation>
+            <b>Parameter: </b>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="0" ref="oscal:label"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:desc"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:constraint"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:guideline"/>
             <xs:choice>
                <xs:element minOccurs="0" ref="oscal:value"/>
                <xs:element minOccurs="0" ref="oscal:select"/>
             </xs:choice>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:part"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
@@ -418,9 +417,7 @@
    <xs:element name="label">
       <xs:annotation>
          <xs:documentation>
-            <b>Parameter label: </b>
-        A placeholder for a missing value, in display
-      </xs:documentation>
+            <b>Parameter label: </b>A placeholder for a missing value, in display.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:everything-inline"/>

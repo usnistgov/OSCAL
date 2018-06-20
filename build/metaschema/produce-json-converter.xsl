@@ -43,6 +43,8 @@
     
     <xsl:template match="title"/>
     
+    <xsl:template match="/METASCHEMA/*" priority="-0.2"/>
+    
     <xsl:template match="define-flag" expand-text="true">
         <!-- Flags won't be producing elements in the regular traversal -->
         <xsl:comment> 000 Handling flag "{ @name }" 000 </xsl:comment>

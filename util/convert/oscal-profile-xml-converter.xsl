@@ -125,9 +125,9 @@
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
-   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->OSCAL Profile Metaschemaoscal-profile<xsl:template match="profile" mode="xml2json">
+   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
+   <xsl:template match="profile" mode="xml2json">
       <map key="profile">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="exists(import)">
             <array key="imports">
                <xsl:apply-templates select="import" mode="#current"/>
@@ -139,14 +139,12 @@
    </xsl:template>
    <xsl:template match="import" mode="xml2json">
       <map key="import">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="include" mode="#current"/>
          <xsl:apply-templates select="exclude" mode="#current"/>
       </map>
    </xsl:template>
    <xsl:template match="merge" mode="xml2json">
       <map key="merge">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="combine" mode="#current"/>
          <xsl:apply-templates select="as-is" mode="#current"/>
          <xsl:apply-templates select="custom" mode="#current"/>
@@ -154,7 +152,6 @@
    </xsl:template>
    <xsl:template match="combine" mode="xml2json">
       <map key="combine">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@method"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
@@ -162,16 +159,10 @@
       </map>
    </xsl:template>
    <xsl:template match="as-is" mode="xml2json">
-      <map key="as-is">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
-         </xsl:apply-templates>
-      </map>
+      <string key="as-is">As isMerge controls into groups reflecting their catalog(s) of origin</string>
    </xsl:template>
    <xsl:template match="custom" mode="xml2json">
       <map key="custom">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="exists(group)">
             <array key="groups">
                <xsl:apply-templates select="group" mode="#current"/>
@@ -191,7 +182,6 @@
    </xsl:template>
    <xsl:template match="group" mode="xml2json">
       <map key="group">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="exists(group)">
             <array key="groups">
                <xsl:apply-templates select="group" mode="#current"/>
@@ -211,7 +201,6 @@
    </xsl:template>
    <xsl:template match="modify" mode="xml2json">
       <map key="modify">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="exists(set-param)">
             <array key="param-settings">
                <xsl:apply-templates select="set-param" mode="#current"/>
@@ -226,7 +215,6 @@
    </xsl:template>
    <xsl:template match="include" mode="xml2json">
       <map key="include">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates select="all" mode="#current"/>
          <xsl:if test="exists(call)">
             <array key="id-selectors">
@@ -242,7 +230,6 @@
    </xsl:template>
    <xsl:template match="all" mode="xml2json">
       <map key="all">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@with-subcontrols"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
@@ -251,7 +238,6 @@
    </xsl:template>
    <xsl:template match="call" mode="xml2json">
       <map key="call">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@control-id"/>
          <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
          <xsl:apply-templates mode="as-string" select="@with-control"/>
@@ -263,7 +249,6 @@
    </xsl:template>
    <xsl:template match="match" mode="xml2json">
       <map key="match">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@pattern"/>
          <xsl:apply-templates mode="as-string" select="@order"/>
          <xsl:apply-templates mode="as-string" select="@with-control"/>
@@ -275,7 +260,6 @@
    </xsl:template>
    <xsl:template match="exclude" mode="xml2json">
       <map key="exclude">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="exists(call)">
             <array key="id-selectors">
                <xsl:apply-templates select="call" mode="#current"/>
@@ -320,7 +304,6 @@
    </xsl:template>
    <xsl:template match="alter" mode="xml2json">
       <map key="alter">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@control-id"/>
          <xsl:apply-templates mode="as-string" select="@subcontrol-id"/>
          <xsl:if test="exists(remove)">
@@ -337,7 +320,6 @@
    </xsl:template>
    <xsl:template match="remove" mode="xml2json">
       <map key="remove">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class-ref"/>
          <xsl:apply-templates mode="as-string" select="@id-ref"/>
          <xsl:apply-templates mode="as-string" select="@item-name"/>
@@ -348,7 +330,6 @@
    </xsl:template>
    <xsl:template match="add" mode="xml2json">
       <map key="add">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@position"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:for-each-group select="param" group-by="local-name()">

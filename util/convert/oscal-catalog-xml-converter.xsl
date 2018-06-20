@@ -125,7 +125,8 @@
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
-   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->OSCAL Control Catalog Formatoscal-catalogThe OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is catalog.An XML Schema is provided for the OSCAL Catalog XML model.<xsl:template match="catalog" mode="xml2json">
+   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
+   <xsl:template match="catalog" mode="xml2json">
       <map key="catalog">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@model-version"/>
@@ -151,7 +152,6 @@
    </xsl:template>
    <xsl:template match="declarations" mode="xml2json">
       <map key="declarations">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@href"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
@@ -274,7 +274,6 @@
    <xsl:template match="prop" mode="xml2json">
       <map key="prop">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
@@ -319,7 +318,6 @@
    <xsl:template match="desc" mode="xml2json">
       <map key="desc">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:if test="matches(.,'\S')">
             <string key="RICHTEXT">
                <xsl:apply-templates mode="md"/>
@@ -329,7 +327,6 @@
    </xsl:template>
    <xsl:template match="constraint" mode="xml2json">
       <map key="constraint">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@test"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
@@ -338,7 +335,6 @@
    </xsl:template>
    <xsl:template match="guideline" mode="xml2json">
       <map key="guideline">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
@@ -349,7 +345,6 @@
    </xsl:template>
    <xsl:template match="select" mode="xml2json">
       <map key="select">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@how-many"/>
          <xsl:if test="exists(choice)">
             <array key="alternatives">
@@ -388,7 +383,6 @@
    </xsl:template>
    <xsl:template match="link" mode="xml2json">
       <map key="link">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@href"/>
          <xsl:apply-templates mode="as-string" select="@rel"/>
          <xsl:if test="matches(.,'\S')">
@@ -426,7 +420,6 @@
    </xsl:template>
    <xsl:template match="citation" mode="xml2json">
       <map key="citation">
-         <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@href"/>
          <xsl:if test="matches(.,'\S')">

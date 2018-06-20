@@ -46,7 +46,9 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
-   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->OSCAL Profile Metaschemaoscal-profile<!-- 000 Handling assembly "profile" 000 --><xsl:template match="*[@key='profile'] | *[@key='profiles']/* | /map[empty(@key)]"
+   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
+   <!-- 000 Handling assembly "profile" 000 -->
+   <xsl:template match="*[@key='profile'] | *[@key='profiles']/* | /map[empty(@key)]"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="profile" namespace="http://csrc.nist.gov/ns/oscal/1.0">

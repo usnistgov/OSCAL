@@ -44,6 +44,9 @@
     
     <xsl:template match="METASCHEMA/title"/>
     
+    <xsl:template match="/METASCHEMA/*" priority="-0.2"/>
+    
+    
     <xsl:template match="define-flag">
         
     </xsl:template>
@@ -68,8 +71,6 @@
     <xsl:template match="define-field[@address=flag/@name][@as='mixed']" priority="2">
         <xslt:template match="{@name}" mode="xml2json">
             <map key="{@address}">
-                <xslt:apply-templates mode="as-string" select="@id"/>
-                
                 <xsl:apply-templates select="flag"/>
                 
                 <xslt:if test="matches(.,'\S')">
@@ -104,8 +105,6 @@
     <xsl:template match="define-field[@as='mixed']">
         <xslt:template match="{@name}" mode="xml2json">
             <map key="{@name}">
-                <xslt:apply-templates mode="as-string" select="@id"/>
-                
                 <xsl:apply-templates select="flag"/>
                 
                 <xslt:if test="matches(.,'\S')">
@@ -120,8 +119,6 @@
     <xsl:template match="define-field">
         <xslt:template match="{@name}" mode="xml2json">
             <map key="{@name}">
-                <xslt:apply-templates mode="as-string" select="@id"/>
-                
                 <xsl:apply-templates select="flag"/>
                 
                 <xslt:apply-templates mode="as-string" select=".">
@@ -139,10 +136,6 @@
                 <xsl:for-each select="@address">
                     <xsl:attribute name="key">{@<xsl:value-of select="."/>}</xsl:attribute>
                 </xsl:for-each>
-                
-                <xsl:if test="not(@address='id') and not(flag/@name='id')">
-                    <xslt:apply-templates mode="as-string" select="@id"/>
-                </xsl:if>
                 
                 <xsl:apply-templates select="flag"/>
                 
