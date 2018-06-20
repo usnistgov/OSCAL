@@ -44,6 +44,7 @@
                 <xs:element ref="m:choice"/>
                 <xs:element ref="m:prose"/>
               </xs:choice>
+              <xs:element ref="m:any"/>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -154,6 +155,10 @@
   </xs:element>
   <xs:element name="fields">
     <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+      </xs:sequence>
       <xs:attribute name="group-as" use="required" type="xs:NCName"/>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
     </xs:complexType>
@@ -165,6 +170,7 @@
   <xs:element name="p">
     <xs:complexType mixed="true">
       <xs:choice maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:a"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:em"/>
@@ -203,9 +209,8 @@
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <xs:element name="prose">
-    <xs:complexType/>
-  </xs:element>
+  <xs:element name="prose"/>
+  <xs:element name="any"/>
   <xs:element name="example">
     <xs:complexType>
       <xs:choice>

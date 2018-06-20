@@ -194,7 +194,7 @@
       <fields named="constraint" group-as="constraints">
         <description>A rule describing the permissible parameter values.</description>
         <remarks>
-          <p>Currently, OSCAL does not standardize any formal rules language for value constraints. A <code>test</code> option may be used to specify a formal rule that may be automatically used if recognized by an OSCAL tool. Further development is <a ref="https://github.com/usnistgov/OSCAL/issues/206">needed</a> to support the declaration of a rule language and value.</p>
+          <p>Currently, OSCAL does not standardize any formal rules language for value constraints. A <code>test</code> option may be used to specify a formal rule that may be automatically used if recognized by an OSCAL tool. Further development is <a href="https://github.com/usnistgov/OSCAL/issues/206">needed</a> to support the declaration of a rule language and value.</p>
         </remarks>
       </fields>
       <assemblies named="guideline" group-as="guidance">
@@ -414,6 +414,11 @@
   <define-flag name="depends-on" datatype="IDREF" show-docs="xml json">
     <formal-name>Depends on</formal-name>
     <description>Another parameter invoking this one</description>
+  </define-flag>
+  
+  <define-flag name="model-version" datatype="NCName" show-docs="xml json">
+    <formal-name>Model version</formal-name>
+    <description>Declares a major/minor version for this metaschema</description>
   </define-flag>
   
 </METASCHEMA>
