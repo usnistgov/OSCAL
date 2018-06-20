@@ -8,15 +8,7 @@ TRIMNAME=$(sed 's/-metaschema//' <<< $METASCHEMAXML)
 BASENAME=$(sed 's/.xml//'  <<< $TRIMNAME)
 
 OSCALDIR=../..
-LIBDIR=$OSCALDIR/build/metaschema
 
-XSDRESULT=$OSCALDIR/schema/xml/$BASENAME-schema.xsd
-JSCRESULT=$OSCALDIR/schema/json/$BASENAME-schema.json
-DOCRESULT=$OSCALDIR/schema/metaschema/$BASENAME-docs.md
-XMLJSXSLT=$OSCALDIR/lib/XML-JSON/$BASENAME-xml-converter.xsl
-JSXMLXSLT=$OSCALDIR/lib/XML-JSON/$BASENAME-json-converter.xsl
-
-# This could be a call to maven, gradle or functional equivalent
 
 if [[ ! -v SAXON_HOME ]]; then
     echo "SAXON_HOME is not set"
@@ -35,27 +27,35 @@ fi
 
 # Saxon CL documented here: http://www.saxonica.com/documentation9.5/using-xsl/commandline.html
 
-# Each call produces a separate schema
-JAVACALLX="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDRESULT -xsl:$LIBDIR/produce-xsd.xsl"
-JAVACALLJ="java -jar $SAXON -s:$METASCHEMAXML -o:$JSCRESULT -xsl:$LIBDIR/produce-json-schema.xsl"
-JAVADOCMS="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCRESULT -xsl:$LIBDIR/metaschema-docs-md.xsl"
-JAVAXMLJS="java -jar $SAXON -s:$METASCHEMAXML -o:$XMLJSXSLT -xsl:$LIBDIR/produce-xml-converter.xsl"
-JAVAJSXML="java -jar $SAXON -s:$METASCHEMAXML -o:$JSXMLXSLT -xsl:$LIBDIR/produce-json-converter.xsl"
+LIBDIR=$OSCALDIR/build/metaschema
+XSDDIR=$OSCALDIR/schema/xml
+JSONDIR=$OSCALDIR/schema/json
+CONVERSION_DIR=$OSCALDIR/util/convert
+
+MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xsl:$LIBDIR/produce-xsd.xsl"
+MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/produce-json-schema.xsl"
+
+DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-xml-docs.md -xsl:$LIBDIR/metaschema-xml-docs-md.xsl"
+DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-json-docs.md -xsl:$LIBDIR/metaschema-json-docs-md.xsl"
+
+CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/produce-xml-converter.xsl"
+CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/produce-json-converter.xsl"
 
 # Now ...
 echo
 echo Producing JSON and XML schemas and tools from $METASCHEMAXML ...
 cp -u $LIBDIR/OSCAL/oscal-prose-module.xsd $OSCALDIR/schema/xml
 echo _ Updated OSCAL prose XSD module
-$JAVACALLX
-echo _ Made XSD ______________________ $XSDRESULT
-$JAVACALLJ
-echo _ Made JSON Schema ______________ $JSCRESULT
-$JAVAXMLJS
-echo _ Made XML-to-JSON converter ____ $XMLJSXSLT
-$JAVAJSXML
-echo _ Made JSON-to-XML converter ____ $JSXMLXSLT
-$JAVADOCMS
-echo _ Made markdown documentation ___ $DOCRESULT
+$MAKE_XSD
+echo _ Made XSD ______________________ $XSDDIR/$BASENAME-schema.xsd
+$MAKE_JSC
+echo _ Made JSON Schema ______________ $JSONDIR/$BASENAME-schema.json
+$CONV_XML
+echo _ Made XML-to-JSON converter ____ $CONVERSION_DIR/$BASENAME-xml-converter.xsl
+$CONV_JSON
+echo _ Made JSON-to-XML converter ____ $CONVERSION_DIR/$BASENAME-json-converter.xsl
+$DOC_XML
+$DOC_JSON
+echo _ Made markdown documentation ___ :next to schema files
 echo
 

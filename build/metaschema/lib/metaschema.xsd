@@ -66,7 +66,18 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
-      <xs:attribute name="as" type="xs:NCName"/>
+      <xs:attribute name="as">
+        
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="boolean" />
+              <xs:enumeration value="empty" />
+              <xs:enumeration value="string" />
+              <xs:enumeration value="mixed" />
+            </xs:restriction>
+          </xs:simpleType>
+        
+      </xs:attribute>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="show-docs"/>

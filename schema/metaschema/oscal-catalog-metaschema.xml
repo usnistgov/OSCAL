@@ -2,7 +2,7 @@
 <!-- OSCAL CATALOG METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="metaschema-xml-html.xsl"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-json-html.xsl"?>
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA top="control-catalog" use="catalog" xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -36,7 +36,7 @@
       <any/>
     </model>
     <example>
-      <catalog id="simple-example" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+      <catalog id="simple-example" xmlns="http://csrc.nist.gov/ns/oscal/1.0" model-version="0.99">
         <title>A Miniature Catalog</title>
         <control id="single">
           <title>A Single Control</title>
@@ -45,7 +45,7 @@
     </example>
   </define-assembly>
 
-  <define-field name="declarations" show-docs="xml json">
+  <define-field name="declarations" as="empty" show-docs="xml json">
     <flag name="href" datatype="anyURI"/>
     <formal-name>Declarations</formal-name>
     <description>Either a reference to a declarations file, or a set of declarations</description>
@@ -71,7 +71,7 @@
     <formal-name>Control Group</formal-name>
     <description>A group of controls, or of groups of controls.</description>
     <remarks>
-      <p>Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose.</p>
+      <p>Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose directly, only inside its <code>part</code> or <code>control</code> components.</p>
     </remarks>
     <model>
       <field named="title" required="yes"/>
@@ -159,7 +159,7 @@
       <p>Because properties are often used as selectors or identifiers for OSCAL operations, their
         values can be expected frequently to be normalized (e.g., with respect to whitespace) in
         use; however, this is application defined.</p>
-      <p>For singletons (that is, the only element among siblings with its <code>@class</code>),
+      <p>For singletons (that is, the only element among siblings with its <code>class</code>),
         properties are especially useful as proxies (unique identifiers) for their controls, such
         that controls may be returned one for one on queries for properties (name and value). The
         robustness of such queries can be ensured by appropriate property declarations (as
@@ -286,10 +286,10 @@
     <remarks>
       <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
         distinguished from other elements within their controls by their assigned
-        <code>@class</code>, such that they may be subjected to <q>declarations logic</q> using
+        <code>class</code>, such that they may be subjected to <q>declarations logic</q> using
         these values as bindings (and thereby getting open-ended extensibility).</p>
       <p>An assigned class may frequently provide for a header in display, such that
-        <code>part[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
+        <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
         Parts may also however have their own titles (<code>title</code> elements).</p>
       <p>Many parts are logical partitions or sections for prose. Other parts may be more formally
         constructed out of properties (<code>prop</code> elements) and/or their own parts. Such
@@ -369,7 +369,7 @@
     <formal-name>ID / identifier</formal-name>
     <description>Unique identifier</description>
     <remarks>
-      <p>No mechanism is proposed to ensure that <code>@id</code> values do not collide across
+      <p>No mechanism is proposed to ensure that <code>id</code> values do not collide across
         different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
     </remarks>
     <example>
@@ -389,7 +389,7 @@
     <formal-name>hypertext reference</formal-name>
     <description>A link to a document or document fragment (actual, nominal or projected)</description>
     <remarks>
-      <p>Note in particular that <code>@href</code> targets include elements (locations) in
+      <p>Note in particular that <code>href</code> targets include elements (locations) in
         representations of documents that exist only by virtue of dynamic application, such as (for
         example) the results of profile resolution.</p>
     </remarks>

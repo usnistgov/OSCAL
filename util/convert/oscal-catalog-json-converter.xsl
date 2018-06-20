@@ -46,7 +46,7 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>
-   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->OSCAL Control Catalog formatThe OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is catalog.<!-- 000 Handling assembly "catalog" 000 --><xsl:template match="*[@key='catalog'] | *[@key='control-catalog']/* | /map[empty(@key)]"
+   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->OSCAL Control Catalog Formatoscal-catalogThe OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is catalog.An XML Schema is provided for the OSCAL Catalog XML model.<!-- 000 Handling assembly "catalog" 000 --><xsl:template match="*[@key='catalog'] | *[@key='control-catalog']/* | /map[empty(@key)]"
                  priority="2"
                  mode="json2xml">
       <xsl:element name="catalog" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -57,6 +57,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('section', 'sections')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "declarations" 000 -->
@@ -76,6 +77,7 @@
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
          <xsl:apply-templates mode="#current" select="*[@key=('section', 'sections')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('references')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "group" 000 -->
@@ -91,6 +93,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('control', 'controls')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('references')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "control" 000 -->
@@ -106,6 +109,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('subcontrol', 'subcontrols')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('references')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "subcontrol" 000 -->
@@ -121,6 +125,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('references')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <xsl:template mode="as-attribute"
@@ -152,10 +157,11 @@
          <xsl:apply-templates mode="#current" select="*[@key=('label')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('desc', 'descriptions')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('constraint', 'constraints')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('guideline', 'guidance')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('value')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('select')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <xsl:template mode="as-attribute"
@@ -186,6 +192,16 @@
          <xsl:apply-templates mode="json2xml" select="*[@key='VALUE']"/>
       </xsl:element>
    </xsl:template>
+   <!-- 000 Handling assembly "guideline" 000 -->
+   <xsl:template match="*[@key='guideline'] | *[@key='guidance']/*"
+                 priority="2"
+                 mode="json2xml">
+      <xsl:element name="guideline" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "value" 000 -->
    <xsl:template match="*[@key='value']" priority="2" mode="json2xml">
       <xsl:element name="value" namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -198,6 +214,7 @@
       <xsl:element name="select" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('choice', 'alternatives')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "choice" 000 -->
@@ -220,6 +237,7 @@
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
          <xsl:apply-templates mode="#current" select="*[@key=('part', 'parts')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "link" 000 -->
@@ -237,6 +255,7 @@
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('ref', 'refs')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "ref" 000 -->
@@ -247,6 +266,7 @@
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('citation', 'citations')]"/>
          <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
+         <xsl:apply-templates mode="#current" select="*[@key=()]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "citation" 000 -->
@@ -310,6 +330,14 @@
    <xsl:template match="*[@key='param']/*[@key='depends-on'] | *[@key='params']/*/*[@key='depends-on']"
                  mode="as-attribute">
       <xsl:attribute name="depends-on">
+         <xsl:apply-templates mode="#current"/>
+      </xsl:attribute>
+   </xsl:template>
+   <!-- 000 Handling flag "model-version" 000 -->
+   <xsl:template match="*[@key='model-version']" mode="json2xml"/>
+   <xsl:template match="*[@key='catalog']/*[@key='model-version'] | *[@key='control-catalog']/*/*[@key='model-version']"
+                 mode="as-attribute">
+      <xsl:attribute name="model-version">
          <xsl:apply-templates mode="#current"/>
       </xsl:attribute>
    </xsl:template>

@@ -125,9 +125,10 @@
    <xsl:template match="text()" mode="md">
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
-   <!-- 88888888888888888888888888888888888888888888888888888888888888 --><xsl:template match="catalog" mode="xml2json">
+   <!-- 88888888888888888888888888888888888888888888888888888888888888 -->OSCAL Control Catalog Formatoscal-catalogThe OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is catalog.An XML Schema is provided for the OSCAL Catalog XML model.<xsl:template match="catalog" mode="xml2json">
       <map key="catalog">
          <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@model-version"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:apply-templates select="declarations" mode="#current"/>
          <xsl:apply-templates select="references" mode="#current"/>
@@ -296,16 +297,16 @@
                <xsl:apply-templates select="constraint" mode="#current"/>
             </array>
          </xsl:if>
+         <xsl:if test="exists(guideline)">
+            <array key="guidance">
+               <xsl:apply-templates select="guideline" mode="#current"/>
+            </array>
+         </xsl:if>
          <xsl:apply-templates select="value" mode="#current"/>
          <xsl:apply-templates select="select" mode="#current"/>
          <xsl:if test="exists(link)">
             <array key="links">
                <xsl:apply-templates select="link" mode="#current"/>
-            </array>
-         </xsl:if>
-         <xsl:if test="exists(part)">
-            <array key="parts">
-               <xsl:apply-templates select="part" mode="#current"/>
             </array>
          </xsl:if>
       </map>
@@ -335,6 +336,12 @@
          </xsl:apply-templates>
       </map>
    </xsl:template>
+   <xsl:template match="guideline" mode="xml2json">
+      <map key="guideline">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:call-template name="prose"/>
+      </map>
+   </xsl:template>
    <xsl:template match="value" mode="xml2json">
       <string key="value">
          <xsl:apply-templates mode="md"/>
@@ -352,14 +359,9 @@
       </map>
    </xsl:template>
    <xsl:template match="choice" mode="xml2json">
-      <map key="choice">
-         <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:if test="matches(.,'\S')">
-            <string key="RICHTEXT">
-               <xsl:apply-templates mode="md"/>
-            </string>
-         </xsl:if>
-      </map>
+      <string key="choice">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
    <xsl:template match="part" mode="xml2json">
       <map key="part">

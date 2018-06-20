@@ -43,7 +43,7 @@
             <sch:assert test="empty(*)">Line defined as string may not have attributes</sch:assert>
         </sch:rule>-->
         <sch:rule context="m:define-field[@as='boolean']/*">
-            <sch:assert test="empty(*)">Property defined as boolean may not have attributes</sch:assert>
+            <sch:assert test="empty(m:flag)">Property defined as boolean may not have flags (try 'empty')</sch:assert>
         </sch:rule>
 
         <sch:rule context="m:flag">
