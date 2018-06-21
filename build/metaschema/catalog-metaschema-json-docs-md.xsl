@@ -22,8 +22,7 @@
         <xsl:apply-templates select="$html" mode="md"/>
     </xsl:template>
     
-    <xsl:template match="m:example"
-        >
+    <xsl:template match="m:example">
         <div class="example">
             <xsl:variable name="json-xml">
                 <xsl:apply-templates select="* except m:*" mode="xml2json"/>

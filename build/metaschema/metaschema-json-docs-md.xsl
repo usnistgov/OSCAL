@@ -7,7 +7,7 @@
     
     <xsl:import href="metaschema-json-html.xsl"/>
     <xsl:import href="../../util/publish/XSLT/html-to-markdown.xsl"/>
-    
+<!-- To get JSON serialized as JSON, run the appropriate customization layer e.g. catalog-metaschema-json-docs-md.xsl   -->
 <!-- output method must be text for good markdown including unescaped code snips   -->
     <xsl:output method="text"/>
     

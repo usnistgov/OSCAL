@@ -93,8 +93,8 @@
   
   <xsl:template match="pre" mode="md">
     <xsl:text>&#xA;&#xA;```&#xA;</xsl:text>
-    <xsl:value-of select="."/>
-    <xsl:text>&#xA;```&#xA;&#xA;</xsl:text>
+    <xsl:value-of select="replace(.,'(^\n+|\n+$)','')"/>
+    <xsl:text>&#xA;```&#xA;</xsl:text>
   </xsl:template>
   
   <xsl:template match="pre//text()" mode="md">

@@ -29,10 +29,9 @@ A [catalog](#catalog-catalog-object) object has the following properties:
 
 Catalogs may use [section](#section-section-object) to subdivide the textual contents of a catalog. 
 
-#### Example
+#### Example: A Miniature Catalog
 
 ```
-
   { "id" : "simple-example",
     "model-version" : "0.99",
     "title" : "A Miniature Catalog",
@@ -41,7 +40,6 @@ Catalogs may use [section](#section-section-object) to subdivide the textual con
       { "id" : "single",
         "title" : "A Single Control" } ] }
 ```
-
  
 
 ## Declarations: `declarations` object
@@ -95,7 +93,6 @@ Catalogs can use groups to provide collections of related controls or Control Gr
 #### Example
 
 ```
-
   { "id" : "xyz",
     "title" : "My Group",
     "props" : 
@@ -107,7 +104,6 @@ Catalogs can use groups to provide collections of related controls or Control Gr
       { "id" : "xyz1",
         "title" : "Control" } ] }
 ```
-
  
 
 ## Control: `control` object
@@ -133,11 +129,9 @@ Controls may be grouped using [group](#control-group-group-object), and controls
 #### Example
 
 ```
-
   { "id" : "x",
     "title" : "Control 1" }
 ```
-
  
 
 ## Sub-Control: `subcontrol` object
@@ -193,11 +187,9 @@ For singletons (that is, the only element among siblings with its [class](#class
 #### Example
 
 ```
-
   { "class" : "name",
     "STRVALUE" : "A1" }
 ```
-
  
 
 ## Parameter: `param` object
@@ -385,10 +377,8 @@ Echoes the NISO JATS (and NISO STS) `mixed-citation` element.
 #### Example
 
 ```
-
   { "RICHTEXT" : "Some **citation** of some sort" }
 ```
-
  
 
 ## ID / identifier: `id` object 
@@ -400,11 +390,9 @@ No mechanism is proposed to ensure that `id` values do not collide across differ
 #### Example
 
 ```
-
   { "id" : "xyz2",
     "RICHTEXT" : "Some **citation** of some sort" }
 ```
-
  
 
 `id` will appear as a string property except as noted.

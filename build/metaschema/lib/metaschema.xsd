@@ -113,6 +113,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="title">
+    <xs:complexType mixed="true">
+      <xs:choice maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="schema-name">
     <xs:complexType mixed="true">
       <xs:choice maxOccurs="unbounded">
@@ -223,10 +231,15 @@
   <xs:element name="prose"/>
   <xs:element name="any"/>
   <xs:element name="example">
-    <xs:complexType>
+    <xs:complexType><xs:sequence>
+      <xs:element minOccurs="0" ref="m:title"/>
+      <xs:element minOccurs="0" ref="m:description"/>
+      <xs:element minOccurs="0" ref="m:remarks"/>
       <xs:choice>
         <xs:any namespace="http://csrc.nist.gov/ns/oscal/1.0"/>
       </xs:choice>
+    </xs:sequence>
+      
     </xs:complexType>
   </xs:element>
   

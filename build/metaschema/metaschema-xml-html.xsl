@@ -11,6 +11,12 @@
 <!-- Output:  HTML  -->
 <!-- Note:    An XSLT 1.0 stylesheet may even work in your browser (try FF)  -->
 
+<xsl:import href="metaschema-common-html.xsl"/>
+   
+<xsl:strip-space elements="*"/>
+
+<xsl:preserve-space elements="m:p m:li m:pre m:i m:b m:em m:strong m:a m:code m:q"/>
+   
 <xsl:output indent="yes"/>
    
    <xsl:template match="/">
@@ -86,6 +92,7 @@
          <xsl:apply-templates select="m:formal-name | m:description"/>
          <xsl:apply-templates select="m:model"/>
          <xsl:apply-templates select="m:remarks"/>
+         <xsl:apply-templates select="m:example"/>
       </div>
    </xsl:template>
 
@@ -175,7 +182,22 @@
       </li>
    </xsl:template>
 
-   <xsl:include href="metaschema-common-html.xsl"/>
+   <xsl:template  match="m:example">
+      <div class="example">
+         <h4>Example<xsl:for-each select="m:title">: <xsl:apply-templates/></xsl:for-each></h4>
+         <xsl:apply-templates select="m:description"/>
+         <pre class="example">
+           <xsl:apply-templates select="*" mode="as-example"/>
+         </pre>
+         <xsl:apply-templates select="m:remarks"/>
+      </div>
+   </xsl:template>
+   
+   <xsl:template match="m:*" mode="as-example"/>
+      
+   <xsl:template match="*" mode="as-example">
+      <xsl:apply-templates select="." mode="serialize"/>
+   </xsl:template>
    
    
    <xsl:template match="m:code[. = /*/*[@show-docs='xml' or @show-docs='xml json']/@name]">
@@ -259,76 +281,4 @@ a:hover { text-decoration: underline }
 </style>
    </xsl:template>
 
-  
-   <xsl:template match="*" mode="serialize">
-      
-
-      <xsl:call-template name="indent-for-pre"/>
-
-      <code class="tag">&lt;<xsl:value-of select="name(.)"/>
-         <xsl:for-each select="@*">
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="name()"/>
-            <xsl:text>="</xsl:text>
-            <xsl:value-of select="."/>
-            <xsl:text>"</xsl:text>
-         </xsl:for-each>
-         <xsl:text>&gt;</xsl:text>
-      </code>
-
-      <xsl:apply-templates mode="serialize">
-         <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
-      </xsl:apply-templates>
-
-      <xsl:if test="not(text()[normalize-space(.)])">
-        <xsl:call-template name="indent-for-pre">
-           <xsl:with-param name="endtag" select="true()"/>
-        </xsl:call-template>
-      </xsl:if>
-      <code class="tag">&lt;/<xsl:value-of select="name(.)"/>
-         <xsl:text>&gt;</xsl:text>
-      </code>
-   </xsl:template>
-   
-   <xsl:template name="indent-for-pre">
-      <xsl:param name="endtag" select="false()"/>
-      <!-- Pretty heavy duty doing this under XSLT 1.0 -->
-      <xsl:variable name="inline" select="boolean(../text()[normalize-space(.)])"/>
-      <xsl:variable name="all-ancestors" select="ancestor::*"/>
-      <xsl:variable name="example-ancestors" select="ancestor::m:example/ancestor::*"/>
-      <xsl:variable name="depth" select="count($all-ancestors) - count($example-ancestors)"/>
-      
-      <xsl:if test="not($inline)">
-         <!-- No CR for the first one -->
-         <xsl:if test="boolean(preceding-sibling::*) or not(parent::m:example) or $endtag">
-           <xsl:text>&#xA;</xsl:text>
-         </xsl:if>
-         <!-- check out the ancient method for a loop -->
-         <xsl:for-each select="ancestor::*[position() &lt; $depth]">
-            <xsl:text>  </xsl:text>
-         </xsl:for-each>
-      </xsl:if>
-   </xsl:template>
-   
-   <xsl:template match="text()" mode="serialize">
-      <xsl:param name="hot" select="boolean(../text()[normalize-space(.)])"/>
-      <xsl:if test="$hot">
-         <xsl:value-of select="."/>
-      </xsl:if>
-   </xsl:template>
-
-  
-
-<!--
-
-   <xsl:function name="XJS:classes">
-      <xsl:param name="who" as="element()"/>
-      <xsl:sequence select="tokenize($who/@class, '\s+') ! lower-case(.)"/>
-   </xsl:function>
-
-   <xsl:function name="XJS:has-class">
-      <xsl:param name="who" as="element()"/>
-      <xsl:param name="ilk" as="xs:string"/>
-      <xsl:sequence select="$ilk = XJS:classes($who)"/>
-   </xsl:function> -->
 </xsl:stylesheet>
