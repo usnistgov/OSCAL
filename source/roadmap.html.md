@@ -1,10 +1,10 @@
-# NIST Open Security Controls Assessment Language Roadmap
+# NIST Open Security Controls Assessment Language (OSCAL) Roadmap
 
 ## The problem solved by OSCAL
-With the advent of cloud and IoT, Information Technology complexity is increasing in concert with their associated security vulnerabilities. IT security professionals must ensure their information systems comply with regulatory control catalogs and frameworks such as NIST 800.53, NIST Cyber Security Framework, ISO/IEC 27001, COBIT, PCI, HIPAA, etc. which have security controls and policies that in some cases can be mutually exclusive. Furthermore, they often have to address security controls from multiple control catalogs. Much of their work is done in spreadsheets and documents driving paper-based compliance which is out-of-date the day after it's written, often leaving critical risks undiscovered or unaddressed.  
+With the advent of cloud and IoT, Information Technology complexity is increasing in concert with its' associated security vulnerabilities. IT security professionals must ensure their information systems comply with regulatory control catalogs and frameworks such as NIST 800.53, NIST Cyber Security Framework, ISO/IEC 27001, COBIT, PCI, HIPAA, etc. which have security controls and policies that in some cases can be mutually exclusive. Furthermore, they often have to address security controls from multiple control catalogs. Much of their work is done in spreadsheets and documents driving paper-based compliance which is out-of-date the day after it's written, often leaving critical risks undiscovered or unaddressed.  
 
 ### Why is OSCAL needed?
-
+OSCAL serves to address these issues:
 - Traceability from selection of security controls to implementation to assessment is largely manual and proprietary producing widely varying unstructured artifacts
 - Multi-tenant and mixed ownership of system components complicates assessment
 - Security control and system information is represented in proprietary ways
@@ -15,12 +15,11 @@ With the advent of cloud and IoT, Information Technology complexity is increasin
 - Information Systems can't easily share how the controls have been implemented
 - Assessments and Assessment Results are produced and evaluated using inconsistent, incomplete, and unstructured means resulting in largely manual, non-repeatable methods
 
-
 ## What is OSCAL?
 
-NIST's Open Security Controls Assessment Language (OSCAL) serves as a new "Standard of Standards" normalizing how system security controls and corresponding assessment information are represented:
+NIST's Open Security Controls Assessment Language (OSCAL) serves as a "Standard of Standards" normalizing how system security controls and corresponding assessment information are represented:
 
-- *Standardized*: Provide security control, control implementaiton, and assessment information in an open, standardized way that can be used by both humans and machines
+- *Standardized*: Provide security control, control implementation, and assessment information in an open, standardized way that can be used by both humans and machines
 
 - *Interoperable*: Ensure OSCAL is well-defined so tools using OSCAL information are interoperable and use information consistently
 
@@ -28,15 +27,20 @@ NIST's Open Security Controls Assessment Language (OSCAL) serves as a new "Stand
 
 ## What are the goals addressed by OSCAL?
 
-{derive goals from problem statements above}
 - Improve the efficiency, accuracy, and consistency of system security assessments
-- System information can be shared across communities decreasing assessment and authorization time
+- Share system information across communities decreasing assessment and authorization time
+- Normalize the representation of security control catalogs, regulatory frameworks and system information using a machine-readable language
+- Ensure lossless transformation between machine- and human-readable content 
+- Assess a system's security state much more often, ideally continuously, driving continuous contextual assurance (CA)
+- Assess a system's compliance state against several sets of requirements simultaneously and ensure traceability to the same
+- Consistent performance of assessments, regardless of system type
+- Large decrease in assessment-related labor
 
 ## The OSCAL approach
 
 - Systems with many components require different profiles per component
 
-### Guiding Principles
+### OSCAL Guiding Principles
 
 1. Produce a set of extensible formats through a community-focused effort that supports a broad range of control-based risk management processes.
 1. Support control-based risk assessment based on data collected using a continuous monitoring capability.
@@ -46,7 +50,7 @@ NIST's Open Security Controls Assessment Language (OSCAL) serves as a new "Stand
 1. Provide a common means to identify and version shared resources
 1. OSCAL models will align with current, practical information use, while supporting advanced structures that provide for greater automation and verification. This will provide a path for early adoption and ongoing evolution around how OSCAL is used.
 
-## Development timeline
+## Development Timeline
 
 ### Development Epics
 
