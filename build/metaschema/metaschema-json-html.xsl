@@ -208,6 +208,7 @@
          <xsl:apply-templates select="." mode="occurrence"/>
          <xsl:apply-templates select="m:model"/>
          <xsl:apply-templates select="m:remarks"/>
+         <xsl:apply-templates select="m:example"/>
       </div>
    </xsl:template>
 

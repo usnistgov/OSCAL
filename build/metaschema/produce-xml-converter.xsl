@@ -188,7 +188,7 @@
             <xslt:output-character character="&gt;" string="\u003e"/>
         </xslt:character-map>
         
-        <xslt:param name="indent" as="xs:string">no</xslt:param>
+        <xslt:param name="json-indent" as="xs:string">no</xslt:param>
     
         <xslt:mode name="rectify" on-no-match="shallow-copy"/>
         
@@ -197,7 +197,7 @@
         
         <xslt:variable name="write-options" as="map(*)" expand-text="true">
             <xslt:map>
-                <xslt:map-entry key="'indent'">{ $indent='yes' }</xslt:map-entry>
+                <xslt:map-entry key="'indent'">{ $json-indent='yes' }</xslt:map-entry>
             </xslt:map>
         </xslt:variable>
         

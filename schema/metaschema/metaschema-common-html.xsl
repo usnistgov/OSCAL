@@ -31,10 +31,12 @@
 
    <xsl:template  match="m:example">
       <div class="example">
-         <h4>Example</h4>
+         <h4>Example <xsl:apply-templates select="m:title" mode="inline"/></h4>
+         <xsl:apply-templates select="m:description"/>
       <pre class="example">
          <xsl:apply-templates select="*" mode="serialize"/>
       </pre>
+         <xsl:apply-templates select="m:remarks"/>
       </div>
    </xsl:template>
 
@@ -87,4 +89,65 @@
          <xsl:apply-templates/>
       </xsl:element>
    </xsl:template>
+   
+   
+   <!-- temporary, until we work by passing the xml through the converter and showing that. :-) -->
+   <xsl:template match="*" mode="serialize">
+      
+      
+      <xsl:call-template name="indent-for-pre"/>
+      
+      <code class="tag">&lt;<xsl:value-of select="name(.)"/>
+         <xsl:for-each select="@*">
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="name()"/>
+            <xsl:text>="</xsl:text>
+            <xsl:value-of select="."/>
+            <xsl:text>"</xsl:text>
+         </xsl:for-each>
+         <xsl:text>&gt;</xsl:text>
+      </code>
+      
+      <xsl:apply-templates mode="serialize">
+         <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
+      </xsl:apply-templates>
+      
+      <xsl:if test="not(text()[normalize-space(.)])">
+         <xsl:call-template name="indent-for-pre">
+            <xsl:with-param name="endtag" select="true()"/>
+         </xsl:call-template>
+      </xsl:if>
+      <code class="tag">&lt;/<xsl:value-of select="name(.)"/>
+         <xsl:text>&gt;</xsl:text>
+      </code>
+   </xsl:template>
+   
+   <xsl:template name="indent-for-pre">
+      <xsl:param name="endtag" select="false()"/>
+      <!-- Pretty heavy duty doing this under XSLT 1.0 -->
+      <xsl:variable name="inline" select="boolean(../text()[normalize-space(.)])"/>
+      <xsl:variable name="all-ancestors" select="ancestor::*"/>
+      <xsl:variable name="example-ancestors" select="ancestor::m:example/ancestor::*"/>
+      <xsl:variable name="depth" select="count($all-ancestors) - count($example-ancestors)"/>
+      
+      <xsl:if test="not($inline)">
+         <!-- No CR for the first one -->
+         <xsl:if test="boolean(preceding-sibling::*) or not(parent::m:example) or $endtag">
+            <xsl:text>&#xA;</xsl:text>
+         </xsl:if>
+         <!-- check out the ancient method for a loop -->
+         <xsl:for-each select="ancestor::*[position() &lt; $depth]">
+            <xsl:text>  </xsl:text>
+         </xsl:for-each>
+      </xsl:if>
+   </xsl:template>
+   
+   <xsl:template match="text()" mode="serialize">
+      <xsl:param name="hot" select="boolean(../text()[normalize-space(.)])"/>
+      <xsl:if test="$hot">
+         <xsl:value-of select="."/>
+      </xsl:if>
+   </xsl:template>
+   
+   
 </xsl:stylesheet>

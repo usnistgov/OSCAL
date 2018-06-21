@@ -1,4 +1,5 @@
- 
+<?xml version="1.0" encoding="UTF-8"?>
+<md> 
 
 # OSCAL Control Catalog Format: JSON Schema 
 
@@ -26,7 +27,22 @@ A [catalog](#catalog-catalog-object) object has the following properties:
   * An array `groups` containing [group](#control-group-group-object) data items  
   * An array `controls` containing [control](#control-control-object) data items    
 
-Catalogs may use [section](#section-section-object) to subdivide the textual contents of a catalog.  
+Catalogs may use [section](#section-section-object) to subdivide the textual contents of a catalog. 
+
+#### Example
+
+```
+
+  { "id" : "simple-example",
+    "model-version" : "0.99",
+    "title" : "A Miniature Catalog",
+    "controls" : 
+    [ 
+      { "id" : "single",
+        "title" : "A Single Control" } ] }
+```
+
+ 
 
 ## Declarations: `declarations` object
 
@@ -74,7 +90,25 @@ A [group](#control-group-group-object) object has the following properties:
   * An array `controls` containing [control](#control-control-object) data items   
 * A [references](#references-references-object) object   
 
-Catalogs can use groups to provide collections of related controls or Control Groups. A `group` may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a [section](#section-section-object), a `group` may not contain arbitrary prose directly, only inside its [part](#part-part-object) or [control](#control-control-object) components.  
+Catalogs can use groups to provide collections of related controls or Control Groups. A `group` may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a [section](#section-section-object), a `group` may not contain arbitrary prose directly, only inside its [part](#part-part-object) or [control](#control-control-object) components. 
+
+#### Example
+
+```
+
+  { "id" : "xyz",
+    "title" : "My Group",
+    "props" : 
+    [ 
+      { "class" : "required",
+        "STRVALUE" : "some property" } ],
+    "controls" : 
+    [ 
+      { "id" : "xyz1",
+        "title" : "Control" } ] }
+```
+
+ 
 
 ## Control: `control` object
 
@@ -94,7 +128,17 @@ A [control](#control-control-object) object has the following properties:
 * An array `subcontrols` containing [subcontrol](#sub-control-subcontrol-object) data items  
 * A [references](#references-references-object) object   
 
-Controls may be grouped using [group](#control-group-group-object), and controls may be partitioned using [part](#part-part-object) or enhanced using [subcontrol](#sub-control-subcontrol-object).  
+Controls may be grouped using [group](#control-group-group-object), and controls may be partitioned using [part](#part-part-object) or enhanced using [subcontrol](#sub-control-subcontrol-object). 
+
+#### Example
+
+```
+
+  { "id" : "x",
+    "title" : "Control 1" }
+```
+
+ 
 
 ## Sub-Control: `subcontrol` object
 
@@ -149,7 +193,9 @@ For singletons (that is, the only element among siblings with its [class](#class
 #### Example
 
 ```
-<o:prop class="name">A1</o:prop>
+
+  { "class" : "name",
+    "STRVALUE" : "A1" }
 ```
 
  
@@ -339,7 +385,8 @@ Echoes the NISO JATS (and NISO STS) `mixed-citation` element.
 #### Example
 
 ```
-<o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
+
+  { "RICHTEXT" : "Some **citation** of some sort" }
 ```
 
  
@@ -353,7 +400,9 @@ No mechanism is proposed to ensure that `id` values do not collide across differ
 #### Example
 
 ```
-<o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
+
+  { "id" : "xyz2",
+    "RICHTEXT" : "Some **citation** of some sort" }
 ```
 
  
@@ -422,4 +471,4 @@ Declares a major/minor version for this metaschema
 
 `model-version` will appear as a string property except as noted.
 
-As an explicit property, `model-version` appears on [catalog](#catalog-catalog-object). 
+As an explicit property, `model-version` appears on [catalog](#catalog-catalog-object). </md>
