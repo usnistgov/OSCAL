@@ -6,7 +6,7 @@
 
 - Traceability from selection of security controls to implementation to assessment is largely manual and proprietary producing widely varying unstructured artifacts
 - Multi-tenant and mixed ownership of system components complicates assessment
-- Security control and system information is represented in  proprietary ways
+- Security control and system information is represented in proprietary ways
 - Profile mappings to catalogs are often imprecise, not machine-readable
 - A single system may be subject to several regulatory frameworks
 - Lack of a common language for software and service providers to express implementation guidance against security controls resulting in an unnecessary duplication of effort to implement and verify the same
@@ -17,10 +17,19 @@
 
 ## What is OSCAL?
 
+NIST's Open Security Controls Assessment Language (OSCAL) serves as a new "Standard of Standards" normalizing how system security controls and corresponding assessment information are represented:
+
+- *Standardized*: Provide security control, control implementaiton, and assessment information in an open, standardized way that can be used by both humans and machines
+
+- *Interoperable*: Ensure OSCAL is well-defined so tools using OSCAL information are interoperable and use information consistently
+
+- *Easy to Use*: Promote developer adoption of OSCAL so tools are available for organizations to build, customize, and use OSCAL information
+
 ## What are the goals addressed by OSCAL?
 
 
 {derive goals from problem statements above}
+- Improve the efficiency, accuracy, and consistency of system security assessments
 - System information can be shared across communities decreasing assessment and authorization time
 
 ## The OSCAL approach
