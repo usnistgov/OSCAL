@@ -1,6 +1,7 @@
-# Roadmap
+# NIST Open Security Controls Assessment Language Roadmap
 
 ## The problem solved by OSCAL
+With the advent of cloud and IoT, Information Technology complexity is increasing in concert with their associated security vulnerabilities. IT security professionals must ensure their information systems comply with regulatory control catalogs and frameworks such as NIST 800.53, NIST Cyber Security Framework, ISO/IEC 27001, COBIT, PCI, HIPAA, etc. which have security controls and policies that in some cases can be mutually exclusive. Furthermore, they often have to address security controls from multiple control catalogs. Much of their work is done in spreadsheets and documents driving paper-based compliance which is out-of-date the day after it's written, often leaving critical risks undiscovered or unaddressed.  
 
 ### Why is OSCAL needed?
 
@@ -27,7 +28,6 @@ NIST's Open Security Controls Assessment Language (OSCAL) serves as a new "Stand
 
 ## What are the goals addressed by OSCAL?
 
-
 {derive goals from problem statements above}
 - Improve the efficiency, accuracy, and consistency of system security assessments
 - System information can be shared across communities decreasing assessment and authorization time
@@ -48,7 +48,7 @@ NIST's Open Security Controls Assessment Language (OSCAL) serves as a new "Stand
 
 ## Development timeline
 
-### Development Epochs
+### Development Epics
 
 - Milestone 1: Catalog and Profile (2018 Q2)
 - Milestone 2: Implementation (2018 Q3)
