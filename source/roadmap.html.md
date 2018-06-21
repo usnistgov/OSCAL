@@ -54,10 +54,10 @@ OSCAL is being developed over a series of phases using an agile development appr
 
 ### Development Epics
 
-- Milestone 1: Catalog and Profile (2018 Q2)
-- Milestone 2: Implementation (2018 Q3)
-- Milestone 3: Assessment and Assessment Results (2018 Q4)
-- Milestone 4: Publish an OSCAL 1.0 Specification (2019 Q1)
+- Milestone 1: Catalog and Profile
+- Milestone 2: Implementation
+- Milestone 3: Assessment and Assessment Results
+- Milestone 4: Publish an OSCAL 1.0 Specification
 
 ## Phases
 
@@ -65,6 +65,7 @@ Phase | Milestone | Status | Description
 :---|:---|:--- |:---
 0 | M1 | Done | Prototype catalog
 1 | M1 | Done | Stabilize catalog; Prototype profile
-2 | M1 / M2 | Near Done | Stabilize profile format; Prototype implementation
-3 | M2 / M3 | Planned 2018 | Stabilize implementation; Prototype framework, assessment, and assessment results
-4 | M3 / M4 | Planned Early 2019 | Complete OSCAL 1.0
+2 | M1 / M2 | Near Done (2018 Q3) | Stabilize profile format; Prototype implementation
+3 | M2 / M3 | Planned (2018 Q4) | Stabilize implementation; Start design of framework, assessment, and assessment results
+4 | M3 | Planned (2019 Q1) | Prototype and stabilize framework, assessment, and assessment results
+5 | M4 | Planned (2019 Q2) | Complete OSCAL 1.0
