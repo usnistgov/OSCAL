@@ -1,7 +1,7 @@
 # NIST Open Security Controls Assessment Language (OSCAL) Roadmap
 
 ## The problem solved by OSCAL
-With the advent of cloud and the Internet of Things (IoT), Information Technology complexity is increasing proportionally with its' associated security vulnerabilities. IT security professionals must ensure their information systems comply with regulatory control catalogs and frameworks such as NIST 800.53, NIST Cyber Security Framework, ISO/IEC 27001, COBIT, PCI, HIPAA, etc. which have security controls and policies that in some cases can be mutually exclusive. Furthermore, they often have to address security controls from multiple control catalogs. Much of their work is done in spreadsheets and documents driving paper-based compliance which is out-of-date shortly after it's written, often leaving critical risks undiscovered or unaddressed.
+With the advent of cloud and the Internet of Things (IoT), Information Technology complexity is increasing proportionally with its' associated security vulnerabilities. IT security professionals must ensure their information systems comply with regulatory control catalogs and frameworks such as NIST 800.53, NIST Cyber Security Framework, ISO/IEC 27001, COBIT, PCI DSS, HIPAA, etc. which have security controls and policies that in some cases can be mutually exclusive. Furthermore, they often have to address security controls from multiple control catalogs. Much of their work is done in spreadsheets and documents driving paper-based compliance which is out-of-date shortly after it's written, often leaving critical risks undiscovered or unaddressed.
 
 ### Why is OSCAL needed?
 OSCAL serves to address these issues:
