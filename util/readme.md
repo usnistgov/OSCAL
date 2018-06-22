@@ -1,5 +1,7 @@
 # OSCAL Utilities
 
+Utilities offered include XSLT stylesheets (XSLT 3.0 for performance/power or XSLT 1.0 to run in a browser); CSS stylesheets; XProc pipelines and (a little) XQuery. Nothing here is authoritative as models are still evolving.
+
 ## [author](author)
 
 At present, contains CSS applicable to OSCAL in an authoring environment (such as an XML editor supporting CSS styling)
