@@ -231,8 +231,8 @@
   <xs:element name="prose"/>
   <xs:element name="any"/>
   <xs:element name="example">
-    <xs:complexType><xs:sequence>
-      <xs:element minOccurs="0" ref="m:title"/>
+    <xs:complexType>
+      <xs:sequence>
       <xs:element minOccurs="0" ref="m:description"/>
       <xs:element minOccurs="0" ref="m:remarks"/>
       <xs:choice>

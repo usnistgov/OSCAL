@@ -37,10 +37,10 @@
    </xsl:template>
    
    <xsl:template match="m:METASCHEMA/m:schema-name">
-      <h1 class="title">
+      <h2 class="title">
          <xsl:apply-templates/>
          <xsl:text>: XML Schema</xsl:text>
-      </h1>
+      </h2>
    </xsl:template>
    
    <xsl:template priority="5"
@@ -50,9 +50,9 @@
    
    <xsl:template match="m:define-flag">
       <div class="define-flag" id="{@name}">
-         <h2>
+         <h3>
             <xsl:apply-templates select="m:formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> attribute</h2>
+            <xsl:apply-templates select="@name"/> attribute</h3>
          
          <xsl:apply-templates/>
       </div>
@@ -60,9 +60,9 @@
    
    <xsl:template  match="m:define-field">
       <div class="define-field" id="{@name}">
-         <h2>
+         <h3>
             <xsl:apply-templates select="m:formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> element</h2>
+            <xsl:apply-templates select="@name"/> element</h3>
          <xsl:choose>
             <xsl:when test="@as='mixed'"><p>Supports inline encoding</p></xsl:when>
             <xsl:when test="@as='boolean'"><p>True whenever given (presence signifies Boolean value)</p></xsl:when>
@@ -84,9 +84,9 @@
    
    <xsl:template match="m:define-assembly">
       <div class="define-assembly" id="{@name}">
-         <h2>
+         <h3>
             <xsl:apply-templates select="m:formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> element</h2>
+            <xsl:apply-templates select="@name"/> element</h3>
          <!-- No mention of @group-as on XML side       -->
          
          <xsl:apply-templates select="m:formal-name | m:description"/>
@@ -184,9 +184,8 @@
 
    <xsl:template  match="m:example">
       <div class="example">
-         <h4>Example<xsl:for-each select="m:title">: <xsl:apply-templates/></xsl:for-each></h4>
          <xsl:apply-templates select="m:description"/>
-         <pre class="example">
+         <pre class="xml">
            <xsl:apply-templates select="*" mode="as-example"/>
          </pre>
          <xsl:apply-templates select="m:remarks"/>

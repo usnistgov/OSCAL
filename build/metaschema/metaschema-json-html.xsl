@@ -34,10 +34,10 @@
    </xsl:template>
    
    <xsl:template match="m:METASCHEMA/m:schema-name">
-      <h1 class="title">
+      <h2 class="title">
          <xsl:apply-templates/>
          <xsl:text>: JSON Schema</xsl:text>
-      </h1>
+      </h2>
    </xsl:template>
    
    <xsl:template priority="5"
@@ -53,9 +53,9 @@
    
    <xsl:template match="m:define-flag">
       <div class="define-flag" id="{@name}">
-         <h2>
+         <h3>
             <xsl:apply-templates select="m:formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> object</h2>
+            <xsl:apply-templates select="@name"/> object</h3>
          <xsl:apply-templates/>
          <xsl:apply-templates select="." mode="occurrence"/>
       </div>
@@ -72,9 +72,9 @@
    
    <xsl:template  match="m:define-field">
       <div class="define-field" id="{@name}">
-         <h2>
+         <h3>
             <xsl:apply-templates select="m:formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> object</h2>
+            <xsl:apply-templates select="@name"/> object</h3>
          <xsl:apply-templates select="m:formal-name | m:description"/>
          <xsl:apply-templates select="." mode="occurrence"/>
          <xsl:variable name="to-props" select="m:flag | @as[.='string'] | @as[.='mixed'] | self::node()[not(@as)]"/>
@@ -100,9 +100,9 @@
    
    <xsl:template  match="m:define-field[@as='boolean']">
       <div class="define-field" id="{@name}">
-         <h2>
+         <h3>
             <xsl:apply-templates select="m:formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> object</h2>
+            <xsl:apply-templates select="@name"/> object</h3>
          <xsl:apply-templates select="m:formal-name | m:description"/>
          <xsl:apply-templates select="." mode="occurrence"/>
             <div class="model">
@@ -202,9 +202,9 @@
    
    <xsl:template match="m:define-assembly">
       <div class="define-assembly" id="{@name}">
-         <h2>
+         <h3>
             <xsl:apply-templates select="m:formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> object</h2>
+            <xsl:apply-templates select="@name"/> object</h3>
          <!-- No mention of @group-as on XML side       -->
          
          <xsl:apply-templates select="m:formal-name | m:description"/>

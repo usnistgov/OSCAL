@@ -32,10 +32,9 @@
                 <xsl:apply-templates select="$json-xml" mode="rectify"/>
             </xsl:variable>
             
-            <h4>Example<xsl:for-each select="m:title">: <xsl:apply-templates/></xsl:for-each></h4>
             <xsl:apply-templates select="m:description"/>
             
-            <pre class="example">
+            <pre class="json">
                 
            <xsl:value-of select="xml-to-json($rectified,$write-options)"/>
          </pre>

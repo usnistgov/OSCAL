@@ -1,6 +1,6 @@
 
 
-# OSCAL Control Catalog Format: XML Schema
+## OSCAL Control Catalog Format: XML Schema
 
 The short name (file identifier) for this schema shall be oscal-catalog. It is used internally when an identifier is called for, and may appear in file names of schema artifacts.
 
@@ -8,7 +8,7 @@ The OSCAL Control Catalog format can be used to describe a collection of securit
 
 An XML Schema is provided for the OSCAL Catalog XML model.
 
-## Catalog: `<catalog>` element
+### Catalog: `<catalog>` element
 
 A collection of controls
 
@@ -26,9 +26,9 @@ The `<catalog>` element has the following contents (in order):
 
 Catalogs may use [&lt;section>](#section-section-element) to subdivide the textual contents of a catalog.
 
-#### Example: A Miniature Catalog
+> A small catalog with a single control
 
-```
+```xml
 <catalog id="simple-example" model-version="0.99">
   <title>A Miniature Catalog</title>
   <control id="single">
@@ -38,7 +38,7 @@ Catalogs may use [&lt;section>](#section-section-element) to subdivide the textu
 ```
 
 
-## Declarations: `<declarations>` element
+### Declarations: `<declarations>` element
 
 Either a reference to a declarations file, or a set of declarations
 
@@ -46,7 +46,7 @@ The `<declarations>` element supports:
 
 * Attribute [@href](#hypertext-reference-href-attribute) (optional)
 
-## Section: `<section>` element
+### Section: `<section>` element
 
 Allows the inclusion of prose content within a Catalog.
 
@@ -59,7 +59,7 @@ The `<section>` element has the following contents (in order):
 * [&lt;section>](#section-section-element) elements (zero or more)
 * A [&lt;references>](#references-references-element) element (zero or one)
 
-## Control Group: `<group>` element
+### Control Group: `<group>` element
 
 A group of controls, or of groups of controls.
 
@@ -78,9 +78,7 @@ The `<group>` element has the following contents (in order):
 
 Catalogs can use groups to provide collections of related controls or Control Groups. A [&lt;group>](#control-group-group-element) may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a [&lt;section>](#section-section-element), a [&lt;group>](#control-group-group-element) may not contain arbitrary prose directly, only inside its [&lt;part>](#part-part-element) or [&lt;control>](#control-control-element) components.
 
-#### Example
-
-```
+```xml
 <group id="xyz">
   <title>My Group</title>
   <prop class="required">some property</prop>
@@ -91,7 +89,7 @@ Catalogs can use groups to provide collections of related controls or Control Gr
 ```
 
 
-## Control: `<control>` element
+### Control: `<control>` element
 
 A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.
 
@@ -109,16 +107,14 @@ The `<control>` element has the following contents (in order):
 
 Controls may be grouped using [&lt;group>](#control-group-group-element), and controls may be partitioned using [&lt;part>](#part-part-element) or enhanced using [&lt;subcontrol>](#sub-control-subcontrol-element).
 
-#### Example
-
-```
+```xml
 <control id="x">
   <title>Control 1</title>
 </control>
 ```
 
 
-## Sub-Control: `<subcontrol>` element
+### Sub-Control: `<subcontrol>` element
 
 A control extension or enhancement
 
@@ -133,13 +129,13 @@ The `<subcontrol>` element has the following contents (in order):
 * [&lt;part>](#part-part-element) elements (zero or more)
 * A [&lt;references>](#references-references-element) element (zero or one)
 
-## Title: `<title>` element
+### Title: `<title>` element
 
 Supports inline encoding
 
 A title for display and navigation, exclusive of more specific properties
 
-## Property: `<prop>` element
+### Property: `<prop>` element
 
 A value with a name, attributed to the containing control, subcontrol, part, or group.
 
@@ -158,14 +154,12 @@ Because properties are often used as selectors or identifiers for OSCAL operatio
 
 For singletons (that is, the only element among siblings with its [&lt;class>](#class-class-attribute)), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf `declare-prop` in the declarations model (which also supports other constraints over property values).
 
-#### Example
-
-```
+```xml
 <o:prop class="name">A1</o:prop>
 ```
 
 
-## Parameter: `<param>` element
+### Parameter: `<param>` element
 
 Parameters provide a mechanism for the dynamic assignment of value(s) in a control.
 
@@ -175,7 +169,7 @@ The `<param>` element has the following contents (in order):
 * Attribute [@class](#class-class-attribute) (optional)
 * Attribute [@depends-on](#depends-on-depends-on-attribute) (optional)
 * A [&lt;label>](#parameter-label-label-element) element (zero or one): A short name for the parameter.The label value should be suitable for inline display in a rendered catalog.
-* [&lt;desc>](#parameter-description-desc-element) elements (zero or more): A short summary of the parameter's intended use.
+* [&lt;desc>](#parameter-description-desc-element) elements (zero or more): A short summary of the parameter's intended use. A label is optional, but should be provided unless a [&lt;select>](#selection-select-element) (selection) is provided.
 * [&lt;constraint>](#constraint-constraint-element) elements (zero or more): A rule describing the permissible parameter values.Currently, OSCAL does not standardize any formal rules language for value constraints. A [&lt;test>](#constraint-test-test-attribute) option may be used to specify a formal rule that may be automatically used if recognized by an OSCAL tool. Further development is needed to support the declaration of a rule language and value.
 * [&lt;guideline>](#guideline-guideline-element) elements (zero or more): Additional recommendations for the use of the parameter, or around what values should be provided.
 * A choice between 
@@ -187,13 +181,13 @@ In a catalog, a parameter is typically used as a placeholder for the future assi
 
 A parameter can include a variety of metadata options that support the future solicitation of one or more values. A [&lt;label>](#parameter-label-label-element) provides a textual placeholder that can be used in a tool to solicit parameter value input, or to display in catalog documentation. The [&lt;desc>](#parameter-description-desc-element) provides a short description of what the parameter is used for, which can be used in tooling to help a user understand how to use the parameter. A [&lt;constraint>](#constraint-constraint-element) can be used to provide criteria for the allowed values. A [&lt;guideline>](#guideline-guideline-element) provides a recommendation for the use of a parameter.
 
-## Parameter label: `<label>` element
+### Parameter label: `<label>` element
 
 Supports inline encoding
 
 A placeholder for a missing value, in display.
 
-## Parameter description: `<desc>` element
+### Parameter description: `<desc>` element
 
 Supports inline encoding
 
@@ -203,7 +197,7 @@ The `<desc>` element supports:
 
 * Attribute [@id](#id--identifier-id-attribute) (optional)
 
-## Constraint: `<constraint>` element
+### Constraint: `<constraint>` element
 
 A formal or informal expression of a constraint or test
 
@@ -211,7 +205,7 @@ The `<constraint>` element supports:
 
 * Attribute [@test](#constraint-test-test-attribute) (optional)
 
-## Guideline: `<guideline>` element
+### Guideline: `<guideline>` element
 
 A prose statement that provides a recommendation for the use of a parameter.
 
@@ -219,7 +213,7 @@ The `<guideline>` element has the following contents (in order):
 
 * Prose contents (paragraphs and lists)
 
-## Value constraint: `<value>` element
+### Value constraint: `<value>` element
 
 Supports inline encoding
 
@@ -229,7 +223,7 @@ In a declaration, [&lt;value>](#value-constraint-value-element) will commonly be
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".
 
-## Selection: `<select>` element
+### Selection: `<select>` element
 
 Presenting a choice among alternatives
 
@@ -238,13 +232,13 @@ The `<select>` element has the following contents (in order):
 * Attribute [@how-many](#cardinality-how-many-attribute) (optional)
 * [&lt;choice>](#choice-choice-element) elements (zero or more)
 
-## Choice: `<choice>` element
+### Choice: `<choice>` element
 
 Supports inline encoding
 
 A value selection among several such options
 
-## Part: `<part>` element
+### Part: `<part>` element
 
 A partition or component of a control, subcontrol or part
 
@@ -264,7 +258,7 @@ An assigned class may frequently provide for a header in display, such that [&lt
 
 Many parts are logical partitions or sections for prose. Other parts may be more formally constructed out of properties ([&lt;prop>](#property-prop-element) elements) and/or their own parts. Such structured objects may, at the extreme, function virtually as control extensions or subcontrol-like objects ("enhancements").
 
-## Link: `<link>` element
+### Link: `<link>` element
 
 Supports inline encoding
 
@@ -277,7 +271,7 @@ The `<link>` element supports:
 
 Works like an HTML anchor (`a`) except this is a line-oriented (block) element.
 
-## References: `<references>` element
+### References: `<references>` element
 
  A group of reference descriptions 
 
@@ -287,7 +281,7 @@ The `<references>` element has the following contents (in order):
 * [&lt;link>](#link-link-element) elements (zero or more)
 * [&lt;ref>](#reference-ref-element) elements (zero or more)
 
-## Reference: `<ref>` element
+### Reference: `<ref>` element
 
  A reference, with one or more citations to standards, related documents, or other resources 
 
@@ -297,7 +291,7 @@ The `<ref>` element has the following contents (in order):
 * [&lt;citation>](#citation-citation-element) elements (zero or more)
 * Prose contents (paragraphs and lists)
 
-## Citation: `<citation>` element
+### Citation: `<citation>` element
 
 Supports inline encoding
 
@@ -310,54 +304,50 @@ The `<citation>` element supports:
 
 Echoes the NISO JATS (and NISO STS) `mixed-citation` element.
 
-#### Example
-
-```
+```xml
 <o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
 ```
 
 
-## ID / identifier: `@id` attribute
+### ID / identifier: `@id` attribute
 
 Unique identifier
 
 No mechanism is proposed to ensure that [&lt;id>](#id--identifier-id-attribute) values do not collide across different catalogs. Use profiling without "merge" to detect such clashes.
 
-#### Example
-
-```
+```xml
 <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
 ```
 
 
-## Class: `@class` attribute
+### Class: `@class` attribute
 
 Identifies the property or object within the control; a semantic hint
 
 Overloading this attribute with more than one value is permitted, but not recommended.
 
-## hypertext reference: `@href` attribute
+### hypertext reference: `@href` attribute
 
 A link to a document or document fragment (actual, nominal or projected)
 
 Note in particular that [&lt;href>](#hypertext-reference-href-attribute) targets include elements (locations) in representations of documents that exist only by virtue of dynamic application, such as (for example) the results of profile resolution.
 
-## Constraint test: `@test` attribute
+### Constraint test: `@test` attribute
 
 A formal (executable) expression of a constraint
 
-## Relation: `@rel` attribute
+### Relation: `@rel` attribute
 
 Purpose of the link
 
-## Cardinality: `@how-many` attribute
+### Cardinality: `@how-many` attribute
 
 When selecting, a requirement such as one or more
 
-## Depends on: `@depends-on` attribute
+### Depends on: `@depends-on` attribute
 
 Another parameter invoking this one
 
-## Model version: `@model-version` attribute
+### Model version: `@model-version` attribute
 
 Declares a major/minor version for this metaschema

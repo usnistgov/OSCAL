@@ -31,10 +31,9 @@
 
    <xsl:template  match="m:example">
       <div class="example">
-         <h4>Example</h4>
-      <pre class="example">
-         <xsl:apply-templates select="*" mode="serialize"/>
-      </pre>
+         <pre class="example">
+           <xsl:apply-templates select="*" mode="serialize"/>
+         </pre>
       </div>
    </xsl:template>
 
@@ -62,7 +61,21 @@
          <xsl:apply-templates/>
       </p>
    </xsl:template>
-
+   
+   <xsl:template match="m:example/m:description">
+      <blockquote class="description">
+         <p>
+            <xsl:apply-templates/>
+         </p>
+      </blockquote>
+   </xsl:template>
+   
+   <xsl:template match="m:example/m:remarks">
+      <blockquote class="remarks">
+          <xsl:apply-templates/>
+      </blockquote>
+   </xsl:template>
+   
    <xsl:template  match="m:p">
       <p class="p">
          <xsl:apply-templates/>

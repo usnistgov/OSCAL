@@ -36,12 +36,18 @@
     <xsl:apply-templates mode="#current"/>
   </xsl:template>
   
+  <xsl:template match="blockquote" mode="md">
+    <xsl:value-of select="$lf1"/>
+    <xsl:if test="empty(*)">> </xsl:if>
+    <xsl:apply-templates mode="#current"/>
+  </xsl:template>
+  
   <xsl:template match="blockquote/p" mode="md">
     <xsl:value-of select="$lf1"/>
     <xsl:text>> </xsl:text>
     <xsl:apply-templates mode="#current"/>
   </xsl:template>
-    
+  
   <xsl:template match="p" mode="md">
     <xsl:value-of select="$lf2"/>
     <xsl:apply-templates mode="#current"/>
@@ -92,7 +98,9 @@
   </xsl:template>
   
   <xsl:template match="pre" mode="md">
-    <xsl:text>&#xA;&#xA;```&#xA;</xsl:text>
+    <xsl:text>&#xA;&#xA;```</xsl:text>
+    <xsl:value-of select="@class[.=('xml','json')]"/>
+    <xsl:text>&#xA;</xsl:text>
     <xsl:value-of select="replace(.,'(^\n+|\n+$)','')"/>
     <xsl:text>&#xA;```&#xA;</xsl:text>
   </xsl:template>

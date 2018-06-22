@@ -36,7 +36,7 @@
       <any/>
     </model>
     <example>
-      <title>A Miniature Catalog</title>
+      <description>A small catalog with a single control</description>
       <catalog id="simple-example" xmlns="http://csrc.nist.gov/ns/oscal/1.0" model-version="0.99">
         <title>A Miniature Catalog</title>
         <control id="single">

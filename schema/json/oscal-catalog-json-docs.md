@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <md> 
 
-# OSCAL Control Catalog Format: JSON Schema 
+## OSCAL Control Catalog Format: JSON Schema 
 
 The short name (file identifier) for this schema shall be oscal-catalog. It is used internally when an identifier is called for, and may appear in file names of schema artifacts.  
 
@@ -9,7 +9,7 @@ The OSCAL Control Catalog format can be used to describe a collection of securit
 
 An XML Schema is provided for the OSCAL Catalog XML model.  
 
-## Catalog: `catalog` object
+### Catalog: `catalog` object
 
 A collection of controls
 
@@ -29,9 +29,9 @@ A [catalog](#catalog-catalog-object) object has the following properties:
 
 Catalogs may use [section](#section-section-object) to subdivide the textual contents of a catalog. 
 
-#### Example: A Miniature Catalog
+\u003e A small catalog with a single control
 
-```
+```json
   { "id" : "simple-example",
     "model-version" : "0.99",
     "title" : "A Miniature Catalog",
@@ -42,7 +42,7 @@ Catalogs may use [section](#section-section-object) to subdivide the textual con
 ```
  
 
-## Declarations: `declarations` object
+### Declarations: `declarations` object
 
 Either a reference to a declarations file, or a set of declarations
 
@@ -54,7 +54,7 @@ The `declarations` object has a property:
 
 * String [href](#hypertext-reference-href-object) 
 
-## Section: `section` object
+### Section: `section` object
 
 Allows the inclusion of prose content within a Catalog.
 
@@ -69,7 +69,7 @@ A [section](#section-section-object) object has the following properties:
 * An array `sections` containing [section](#section-section-object) data items  
 * A [references](#references-references-object) object   
 
-## Control Group: `group` object
+### Control Group: `group` object
 
 A group of controls, or of groups of controls.
 
@@ -90,9 +90,7 @@ A [group](#control-group-group-object) object has the following properties:
 
 Catalogs can use groups to provide collections of related controls or Control Groups. A `group` may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a [section](#section-section-object), a `group` may not contain arbitrary prose directly, only inside its [part](#part-part-object) or [control](#control-control-object) components. 
 
-#### Example
-
-```
+```json
   { "id" : "xyz",
     "title" : "My Group",
     "props" : 
@@ -106,7 +104,7 @@ Catalogs can use groups to provide collections of related controls or Control Gr
 ```
  
 
-## Control: `control` object
+### Control: `control` object
 
 A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.
 
@@ -126,15 +124,13 @@ A [control](#control-control-object) object has the following properties:
 
 Controls may be grouped using [group](#control-group-group-object), and controls may be partitioned using [part](#part-part-object) or enhanced using [subcontrol](#sub-control-subcontrol-object). 
 
-#### Example
-
-```
+```json
   { "id" : "x",
     "title" : "Control 1" }
 ```
  
 
-## Sub-Control: `subcontrol` object
+### Sub-Control: `subcontrol` object
 
 A control extension or enhancement
 
@@ -150,7 +146,7 @@ A [subcontrol](#sub-control-subcontrol-object) object has the following properti
 * An array `parts` containing [part](#part-part-object) data items  
 * A [references](#references-references-object) object   
 
-## Title: `title` object
+### Title: `title` object
 
 A title for display and navigation, exclusive of more specific properties
 
@@ -162,7 +158,7 @@ The `title` object has a property:
 
 * String `RICHTEXT` (supports OSCAL markdown) 
 
-## Property: `prop` object
+### Property: `prop` object
 
 A value with a name, attributed to the containing control, subcontrol, part, or group.
 
@@ -184,15 +180,13 @@ Because properties are often used as selectors or identifiers for OSCAL operatio
 
 For singletons (that is, the only element among siblings with its [class](#class-class-object)), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf `declare-prop` in the declarations model (which also supports other constraints over property values). 
 
-#### Example
-
-```
+```json
   { "class" : "name",
     "STRVALUE" : "A1" }
 ```
  
 
-## Parameter: `param` object
+### Parameter: `param` object
 
 Parameters provide a mechanism for the dynamic assignment of value(s) in a control.
 
@@ -203,7 +197,7 @@ A [param](#parameter-param-object) object has the following properties:
 * String [class](#class-class-object)
 * String [depends-on](#depends-on-depends-on-object) 
 * A [label](#parameter-label-label-object) object : A short name for the parameter. The label value should be suitable for inline display in a rendered catalog.  
-* An array `descriptions` containing [desc](#parameter-description-desc-object) data items : A short summary of the parameter's intended use. 
+* An array `descriptions` containing [desc](#parameter-description-desc-object) data items : A short summary of the parameter's intended use. A label is optional, but should be provided unless a [select](#selection-select-object) (selection) is provided. 
 * An array `constraints` containing [constraint](#constraint-constraint-object) data items : A rule describing the permissible parameter values. Currently, OSCAL does not standardize any formal rules language for value constraints. A [test](#constraint-test-test-object) option may be used to specify a formal rule that may be automatically used if recognized by an OSCAL tool. Further development is needed to support the declaration of a rule language and value.  
 * An array `guidance` containing [guideline](#guideline-guideline-object) data items : Additional recommendations for the use of the parameter, or around what values should be provided. 
 * A choice between  
@@ -215,7 +209,7 @@ In a catalog, a parameter is typically used as a placeholder for the future assi
 
 A parameter can include a variety of metadata options that support the future solicitation of one or more values. A [label](#parameter-label-label-object) provides a textual placeholder that can be used in a tool to solicit parameter value input, or to display in catalog documentation. The [desc](#parameter-description-desc-object) provides a short description of what the parameter is used for, which can be used in tooling to help a user understand how to use the parameter. A [constraint](#constraint-constraint-object) can be used to provide criteria for the allowed values. A [guideline](#guideline-guideline-object) provides a recommendation for the use of a parameter.  
 
-## Parameter label: `label` object
+### Parameter label: `label` object
 
 A placeholder for a missing value, in display.
 
@@ -227,7 +221,7 @@ The `label` object has a property:
 
 * String `RICHTEXT` (supports OSCAL markdown) 
 
-## Parameter description: `desc` object
+### Parameter description: `desc` object
 
 Indicates and explains the purpose and use of a parameter
 
@@ -238,7 +232,7 @@ The `desc` object has properties:
 * String [id](#id--identifier-id-object)
 * String `RICHTEXT` (supports OSCAL markdown) 
 
-## Constraint: `constraint` object
+### Constraint: `constraint` object
 
 A formal or informal expression of a constraint or test
 
@@ -249,7 +243,7 @@ The `constraint` object has properties:
 * String [test](#constraint-test-test-object)
 * String `STRVALUE` 
 
-## Guideline: `guideline` object
+### Guideline: `guideline` object
 
 A prose statement that provides a recommendation for the use of a parameter.
 
@@ -259,7 +253,7 @@ A [guideline](#guideline-guideline-object) object has the following properties:
  
 * An array `prose`, containing strings of markdown.  
 
-## Value constraint: `value` object
+### Value constraint: `value` object
 
 Indicates a permissible value for a parameter or property
 
@@ -275,7 +269,7 @@ In a declaration, `value` will commonly be given in groups, indicating a set of 
 
 In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned "lower down the stack".  
 
-## Selection: `select` object
+### Selection: `select` object
 
 Presenting a choice among alternatives
 
@@ -288,7 +282,7 @@ A [select](#selection-select-object) object has the following properties:
 * String [how-many](#cardinality-how-many-object) 
 * An array `alternatives` containing [choice](#choice-choice-object) data items   
 
-## Choice: `choice` object
+### Choice: `choice` object
 
 A value selection among several such options
 
@@ -298,7 +292,7 @@ The `choice` object has a property:
 
 * String `RICHTEXT` (supports OSCAL markdown) 
 
-## Part: `part` object
+### Part: `part` object
 
 A partition or component of a control, subcontrol or part
 
@@ -320,7 +314,7 @@ An assigned class may frequently provide for a header in display, such that `par
 
 Many parts are logical partitions or sections for prose. Other parts may be more formally constructed out of properties ([prop](#property-prop-object) elements) and/or their own parts. Such structured objects may, at the extreme, function virtually as control extensions or subcontrol-like objects ("enhancements").  
 
-## Link: `link` object
+### Link: `link` object
 
  A line or paragraph with a hypertext link 
 
@@ -334,7 +328,7 @@ The `link` object has properties:
 
 Works like an HTML anchor (`a`) except this is a line-oriented (block) element.  
 
-## References: `references` object
+### References: `references` object
 
  A group of reference descriptions 
 
@@ -348,7 +342,7 @@ A [references](#references-references-object) object has the following propertie
 * An array `links` containing [link](#link-link-object) data items  
 * An array `refs` containing [ref](#reference-ref-object) data items   
 
-## Reference: `ref` object
+### Reference: `ref` object
 
  A reference, with one or more citations to standards, related documents, or other resources 
 
@@ -360,7 +354,7 @@ A [ref](#reference-ref-object) object has the following properties:
 * An array `citations` containing [citation](#citation-citation-object) data items  
 * An array `prose`, containing strings of markdown.  
 
-## Citation: `citation` object
+### Citation: `citation` object
 
 Citation of a resource
 
@@ -374,22 +368,18 @@ The `citation` object has properties:
 
 Echoes the NISO JATS (and NISO STS) `mixed-citation` element. 
 
-#### Example
-
-```
+```json
   { "RICHTEXT" : "Some **citation** of some sort" }
 ```
  
 
-## ID / identifier: `id` object 
+### ID / identifier: `id` object 
 
 Unique identifier  
 
 No mechanism is proposed to ensure that `id` values do not collide across different catalogs. Use profiling without "merge" to detect such clashes.  
 
-#### Example
-
-```
+```json
   { "id" : "xyz2",
     "RICHTEXT" : "Some **citation** of some sort" }
 ```
@@ -401,7 +391,7 @@ No mechanism is proposed to ensure that `id` values do not collide across differ
 
 As an explicit property, `id` appears on [catalog](#catalog-catalog-object), [section](#section-section-object), [group](#control-group-group-object), [control](#control-control-object), [subcontrol](#sub-control-subcontrol-object), [prop](#property-prop-object), [param](#parameter-param-object), [desc](#parameter-description-desc-object), [part](#part-part-object), [references](#references-references-object), [ref](#reference-ref-object) and [citation](#citation-citation-object). 
 
-## Class: `class` object 
+### Class: `class` object 
 
 Identifies the property or object within the control; a semantic hint  
 
@@ -411,7 +401,7 @@ Overloading this attribute with more than one value is permitted, but not recomm
 
 As an explicit property, `class` appears on [section](#section-section-object), [group](#control-group-group-object), [control](#control-control-object), [subcontrol](#sub-control-subcontrol-object), [prop](#property-prop-object), [param](#parameter-param-object) and [part](#part-part-object). 
 
-## hypertext reference: `href` object 
+### hypertext reference: `href` object 
 
 A link to a document or document fragment (actual, nominal or projected)  
 
@@ -421,7 +411,7 @@ Note in particular that `href` targets include elements (locations) in represent
 
 As an explicit property, `href` appears on [declarations](#declarations-declarations-object), [link](#link-link-object) and [citation](#citation-citation-object). 
 
-## Constraint test: `test` object 
+### Constraint test: `test` object 
 
 A formal (executable) expression of a constraint 
 
@@ -429,7 +419,7 @@ A formal (executable) expression of a constraint
 
 As an explicit property, `test` appears on [constraint](#constraint-constraint-object). 
 
-## Relation: `rel` object 
+### Relation: `rel` object 
 
 Purpose of the link 
 
@@ -437,7 +427,7 @@ Purpose of the link
 
 As an explicit property, `rel` appears on [link](#link-link-object). 
 
-## Cardinality: `how-many` object 
+### Cardinality: `how-many` object 
 
 When selecting, a requirement such as one or more 
 
@@ -445,7 +435,7 @@ When selecting, a requirement such as one or more
 
 As an explicit property, `how-many` appears on [select](#selection-select-object). 
 
-## Depends on: `depends-on` object 
+### Depends on: `depends-on` object 
 
 Another parameter invoking this one 
 
@@ -453,7 +443,7 @@ Another parameter invoking this one
 
 As an explicit property, `depends-on` appears on [param](#parameter-param-object). 
 
-## Model version: `model-version` object 
+### Model version: `model-version` object 
 
 Declares a major/minor version for this metaschema 
 
