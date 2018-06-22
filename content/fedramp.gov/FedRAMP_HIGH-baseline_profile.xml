@@ -1,20 +1,17 @@
-<?xml-model href='fedramp-profile.sch' type='application/xml' schematypens='http://purl.oclc.org/dsdl/schematron'?>
-<?xml-stylesheet type='text/xsl' href='oscal.css'?>
-<!-- Produced by VBA MS Access script, using MSXML2.DOMDocument.6.0 -->
-<!-- Created: 5/18/2018 11:50:17 PM -->
-<profile id="uuid-fedramp-high-20180518-235017" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<!-- Created: 6/22/2018 1:41:13 PM -->
+<profile id="uuid-fedramp-high-20180622-134113" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<title>FedRAMP HIGH Baseline PROFILE</title>
 	<publication_information>
 		<organization>Federal Risk and Authorization Management Program (FedRAMP)</organization>
 		<org_email>info@fedramp.gov</org_email>
 		<org_website>https://fedramp.gov</org_website>
 		<publication_title>FedRAMP High Baseline</publication_title>
-		<publication_date>6/1/2018</publication_date>
-		<publication_version/>
+		<publication_date>6/22/2018</publication_date>
+		<publication_version>DRAFT-02</publication_version>
 		<author>FedRAMP PMO</author>
-		<notes>This is where publication notes are captured.</notes>
+		<notes>No notes.</notes>
 	</publication_information>
-	<import href="../SP800-53/NIST_SP-800-53_rev4_HIGH-baseline_profile.xml">
+	<import href="https://githib.com/usnistgov/OSCAL/content/nist.gov/SP800-53/rev4/SP800-53-HIGH-baseline.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>
@@ -359,7 +356,7 @@
 			<call control-id="si-16"/>
 		</include>
 	</import>
-	<import href="../SP800-53/NIST_SP-800-53_rev4_catalog.xml">
+	<import href="https://githib.com/usnistgov/OSCAL/content/nist.gov/SP800-53/rev4/SP800-53-rev4-catalog.xml">
 		<include>
 			<call subcontrol-id="ac-2.7"/>
 			<call subcontrol-id="ac-2.9"/>
@@ -486,11 +483,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ac-2.2_prm_2">
-			<constraint>24 hours from last use</constraint>
-		</set-param>
 		<set-param param-id="ac-2.2_prm_1">
 			<constraint>Selection: disables</constraint>
+		</set-param>
+		<set-param param-id="ac-2.2_prm_2">
+			<constraint>24 hours from last use</constraint>
 		</set-param>
 		<!-- - - AC-2 (3) - -  -->
 		<alter subcontrol-id="ac-2.3">
@@ -499,7 +496,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-2 (3) Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices).  The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.</p>
+					<p>Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices).  The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.</p>
 				</part>
 			</add>
 		</alter>
@@ -524,7 +521,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-2 (5) Guidance: Should use a shorter timeframe than AC-12.</p>
+					<p>Guidance: Should use a shorter timeframe than AC-12.</p>
 				</part>
 			</add>
 		</alter>
@@ -549,7 +546,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-2 (9) Required if shared/group accounts are deployed</p>
+					<p>Required if shared/group accounts are deployed</p>
 				</part>
 			</add>
 		</alter>
@@ -563,7 +560,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-2 (10) Required if shared/group accounts are deployed</p>
+					<p>Required if shared/group accounts are deployed</p>
 				</part>
 			</add>
 		</alter>
@@ -582,8 +579,8 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-2 (12)(a) Guidance: Required for privileged accounts.</p>
-					<p>AC-2 (12)(b) Guidance: Required for privileged accounts.</p>
+					<p>(a) Guidance: Required for privileged accounts.</p>
+					<p>(b) Guidance: Required for privileged accounts.</p>
 				</part>
 			</add>
 		</alter>
@@ -646,7 +643,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-5 Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.</p>
+					<p>Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.</p>
 				</part>
 			</add>
 		</alter>
@@ -676,7 +673,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-6 (2) Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.</p>
+					<p>Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.</p>
 				</part>
 			</add>
 		</alter>
@@ -711,11 +708,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ac-6.7_prm_2">
-			<constraint>all users with privileges</constraint>
-		</set-param>
 		<set-param param-id="ac-6.7_prm_1">
 			<constraint>at a minimum, annually</constraint>
+		</set-param>
+		<set-param param-id="ac-6.7_prm_2">
+			<constraint>all users with privileges</constraint>
 		</set-param>
 		<!-- - - AC-6 (8) - -  -->
 		<alter subcontrol-id="ac-6.8">
@@ -752,8 +749,8 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ac-7_prm_4">
-			<constraint>a minimum of three (3) hours</constraint>
+		<set-param param-id="ac-7_prm_1">
+			<constraint>not more than three (3)</constraint>
 		</set-param>
 		<set-param param-id="ac-7_prm_2">
 			<constraint>fifteen (15) minutes</constraint>
@@ -761,8 +758,8 @@
 		<set-param param-id="ac-7_prm_3">
 			<constraint>locks the account/node for a minimum of three (3) hours or until unlocked by an administrator</constraint>
 		</set-param>
-		<set-param param-id="ac-7_prm_1">
-			<constraint>not more than three (3)</constraint>
+		<set-param param-id="ac-7_prm_4">
+			<constraint>a minimum of three (3) hours</constraint>
 		</set-param>
 		<!-- - - AC-7 (2) - -  -->
 		<alter subcontrol-id="ac-7.2">
@@ -788,7 +785,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AC-8 Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
+					<p>Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
 					<p>Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.</p>
 					<p>Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
 					<p>Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB/AO.</p>
@@ -846,7 +843,7 @@
 					<p>Recommended by High Baseline Tiger Team. vulnerabilities associated with not having a logout button are well-documented.</p>
 				</part>
 				<part class="guidance">
-					<p>AC-12 (1) Guidance: https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29</p>
+					<p>Guidance: https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29</p>
 				</part>
 			</add>
 		</alter>
@@ -1113,15 +1110,15 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AU-2 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
+					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="au-2_prm_2">
-			<constraint>organization-defined subset of the auditable events defined in AU-2a to be audited continually for each identified event</constraint>
-		</set-param>
 		<set-param param-id="au-2_prm_1">
 			<constraint>successful and unsuccessful account logon events, account management events, object access, policy change, privilege functions, process tracking, and system events. For Web applications: all administrator activity, authentication checks, authorization checks, data deletions, data access, data changes, and permission changes</constraint>
+		</set-param>
+		<set-param param-id="au-2_prm_2">
+			<constraint>organization-defined subset of the auditable events defined in AU-2a to be audited continually for each identified event</constraint>
 		</set-param>
 		<!-- - - AU-2 (3) - -  -->
 		<alter subcontrol-id="au-2.3">
@@ -1130,7 +1127,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AU-2 (3) Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.</p>
+					<p>Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.</p>
 				</part>
 			</add>
 		</alter>
@@ -1152,7 +1149,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AU-3 (1) Guidance: For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.</p>
+					<p>Guidance: For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.</p>
 				</part>
 			</add>
 		</alter>
@@ -1205,14 +1202,14 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="au-5.2_prm_3">
-			<constraint>audit failure events requiring real-time alerts, as defined by organization audit policy</constraint>
-		</set-param>
 		<set-param param-id="au-5.2_prm_1">
 			<constraint>real-time</constraint>
 		</set-param>
 		<set-param param-id="au-5.2_prm_2">
 			<constraint>service provider personnel with authority to address failed audit events</constraint>
+		</set-param>
+		<set-param param-id="au-5.2_prm_3">
+			<constraint>audit failure events requiring real-time alerts, as defined by organization audit policy</constraint>
 		</set-param>
 		<!-- - - AU-6 - -  -->
 		<alter control-id="au-6">
@@ -1221,7 +1218,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AU-6 Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
+					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
 				</part>
 			</add>
 		</alter>
@@ -1263,11 +1260,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="au-6.5_prm_2">
-			<constraint>Organization -defined data/information collected from other sources</constraint>
-		</set-param>
 		<set-param param-id="au-6.5_prm_1">
 			<constraint>Selection (one or more): vulnerability scanning information; performance data; information system monitoring information; penetration test data; [Organization -defined data/information collected from other sources]</constraint>
+		</set-param>
+		<set-param param-id="au-6.5_prm_2">
+			<constraint>Organization -defined data/information collected from other sources</constraint>
 		</set-param>
 		<!-- - - AU-6 (6) - -  -->
 		<alter subcontrol-id="au-6.6">
@@ -1276,7 +1273,7 @@
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AU-6 (6) Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
+					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
 				</part>
 			</add>
 		</alter>
@@ -1337,9 +1334,9 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AU-8 (1) Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.</p>
-					<p>AU-8 (1) Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.</p>
-					<p>AU-8 (1) Guidance: Synchronization of system clocks improves the accuracy of log analysis.</p>
+					<p>Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.</p>
+					<p>Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.</p>
+					<p>Guidance: Synchronization of system clocks improves the accuracy of log analysis.</p>
 				</part>
 			</add>
 		</alter>
@@ -1402,7 +1399,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>AU-11 Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
+					<p>Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
 				</part>
 			</add>
 		</alter>
@@ -1445,11 +1442,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="au-12.3_prm_2">
-			<constraint>all network, data storage, and computing devices</constraint>
-		</set-param>
 		<set-param param-id="au-12.3_prm_1">
 			<constraint>service provider-defined individuals or roles with audit configuration responsibilities</constraint>
+		</set-param>
+		<set-param param-id="au-12.3_prm_2">
+			<constraint>all network, data storage, and computing devices</constraint>
 		</set-param>
 		<!-- - - CA-1 - -  -->
 		<alter control-id="ca-1">
@@ -1474,7 +1471,7 @@
 			</add>
 		</alter>
 		<set-param param-id="ca-2_prm_1">
-			<constraint>at least annually]</constraint>
+			<constraint>at least annually</constraint>
 		</set-param>
 		<set-param param-id="ca-2_prm_2">
 			<constraint>individuals or roles to include FedRAMP PMO</constraint>
@@ -1486,7 +1483,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CA-2 (1) Requirement: For JAB Authorization, must use an accredited 3PAO.</p>
+					<p>Requirement: For JAB Authorization, must use an accredited 3PAO.</p>
 				</part>
 			</add>
 		</alter>
@@ -1497,7 +1494,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CA-2 (2) Requirement: To include 'announced', 'vulnerability scanning'</p>
+					<p>Requirement: To include 'announced', 'vulnerability scanning'</p>
 				</part>
 			</add>
 		</alter>
@@ -1539,7 +1536,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CA-3 (3) Guidance: Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.</p>
+					<p>Guidance: Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.</p>
 				</part>
 			</add>
 		</alter>
@@ -1553,15 +1550,15 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CA-3 (5) Guidance: For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</p>
+					<p>Guidance: For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</p>
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ca-3.5_prm_2">
-			<constraint>any systems</constraint>
-		</set-param>
 		<set-param param-id="ca-3.5_prm_1">
 			<constraint>deny-all, permit by exception</constraint>
+		</set-param>
+		<set-param param-id="ca-3.5_prm_2">
+			<constraint>any systems</constraint>
 		</set-param>
 		<!-- - - CA-5 - -  -->
 		<alter control-id="ca-5">
@@ -1570,7 +1567,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CA-5 Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
+					<p>Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
 				</part>
 			</add>
 		</alter>
@@ -1584,7 +1581,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CA-6 (c) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
+					<p>(c) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
 				</part>
 			</add>
 		</alter>
@@ -1598,8 +1595,8 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CA-7 Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually</p>
-					<p>CA-7 Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
+					<p>Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually</p>
+					<p>Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
 					<p>Operating System Scans: at least monthly</p>
 					<p>Database and Web Application Scans: at least monthly</p>
 					<p>All scans performed by Independent Assessor: at least annually</p>
@@ -1690,7 +1687,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CM-2 (1) (a) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
+					<p>(a) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
 				</part>
 			</add>
 		</alter>
@@ -1734,8 +1731,8 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CM-3 Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.</p>
-					<p>CM-3 (e) Guidance: In accordance with record retention policies and procedures.</p>
+					<p>Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.</p>
+					<p>(e) Guidance: In accordance with record retention policies and procedures.</p>
 				</part>
 			</add>
 		</alter>
@@ -1841,7 +1838,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CM-5 (3) Guidance: If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</p>
+					<p>Guidance: If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</p>
 				</part>
 			</add>
 		</alter>
@@ -1863,9 +1860,9 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CM-6 (a)-1 Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.</p>
-					<p>CM-6 (a)-2 Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).</p>
-					<p>CM-6 (a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
+					<p>(a)-1 Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.</p>
+					<p>(a)-2 Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).</p>
+					<p>(a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
 				</part>
 			</add>
 		</alter>
@@ -1895,8 +1892,8 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CM-7 (b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
-					<p>CM-7 Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc.</p>
+					<p>(b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
+					<p>Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
 					<p>(Partially derived from AC-17(8).</p>
 				</part>
 			</add>
@@ -1922,7 +1919,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CM-7 (2) Guidance: This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.</p>
+					<p>Guidance: This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.</p>
 				</part>
 			</add>
 		</alter>
@@ -1944,7 +1941,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CM-8 Requirement: must be provided at least monthly or when there is a change.</p>
+					<p>Requirement: must be provided at least monthly or when there is a change.</p>
 				</part>
 			</add>
 		</alter>
@@ -2064,7 +2061,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CP-2 Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
+					<p>Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
 				</part>
 			</add>
 		</alter>
@@ -2130,11 +2127,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="cp-3_prm_2">
-			<constraint>at least annually</constraint>
-		</set-param>
 		<set-param param-id="cp-3_prm_1">
 			<constraint>ten (10) days</constraint>
+		</set-param>
+		<set-param param-id="cp-3_prm_2">
+			<constraint>at least annually</constraint>
 		</set-param>
 		<!-- - - CP-3 (1) - -  -->
 		<alter subcontrol-id="cp-3.1">
@@ -2151,7 +2148,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CP-4 (a) Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
+					<p>(a) Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
 				</part>
 			</add>
 		</alter>
@@ -2216,7 +2213,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CP-7 (a) Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
+					<p>(a) Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
 				</part>
 			</add>
 		</alter>
@@ -2227,7 +2224,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CP-7 (1) Guidance: The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.</p>
+					<p>Guidance: The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.</p>
 				</part>
 			</add>
 		</alter>
@@ -2262,7 +2259,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CP-8 Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
+					<p>Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
 				</part>
 			</add>
 		</alter>
@@ -2308,10 +2305,10 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>CP-9 Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control.  The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
-					<p>CP-9 (a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.</p>
-					<p>CP-9 (b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.</p>
-					<p>CP-9 (c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</p>
+					<p>Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control.  The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
+					<p>(a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.</p>
+					<p>(b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.</p>
+					<p>(c) Requirement: The service provider maintains at least three backup copies of information system documentation including security information (at least one of which is available online) or provides an equivalent alternative.</p>
 				</part>
 			</add>
 		</alter>
@@ -2474,7 +2471,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IA-2 (11) Guidance: PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.</p>
+					<p>Guidance: PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.</p>
 				</part>
 			</add>
 		</alter>
@@ -2488,7 +2485,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IA-2 (12) Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
+					<p>Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
 				</part>
 			</add>
 		</alter>
@@ -2507,7 +2504,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IA-4 (e) Requirement: The service provider defines the time period of inactivity for device identifiers.</p>
+					<p>(e) Requirement: The service provider defines the time period of inactivity for device identifiers.</p>
 					<p>Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
 				</part>
 			</add>
@@ -2539,7 +2536,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IA-5 Requirement: Authenticators must be compliant with NIST SP 800-63-2 Electronic Authentication Guideline assurance Level 4 (Link http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-2.pdf)</p>
+					<p>Requirement: Authenticators must be compliant with NIST SP 800-63-2 Electronic Authentication Guideline assurance Level 4 (Link http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-2.pdf)</p>
 				</part>
 			</add>
 		</alter>
@@ -2554,11 +2551,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ia-5.1_prm_2">
-			<constraint>at least fifty percent (50%)</constraint>
-		</set-param>
 		<set-param param-id="ia-5.1_prm_1">
 			<constraint>case sensitive, minimum of fourteen (14) characters, and at least one (1) each of upper-case letters, lower-case letters, numbers, and special characters</constraint>
+		</set-param>
+		<set-param param-id="ia-5.1_prm_2">
+			<constraint>at least fifty percent (50%)</constraint>
 		</set-param>
 		<set-param param-id="ia-5.1_prm_3">
 			<constraint>one (1) day minimum, sixty (60) day maximum</constraint>
@@ -2595,7 +2592,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IA-5 (4) Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.</p>
+					<p>Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.</p>
 				</part>
 			</add>
 		</alter>
@@ -2720,7 +2717,7 @@
 			<constraint>at least annually</constraint>
 		</set-param>
 		<set-param param-id="ir-1_prm_3">
-			<constraint>IR-1 (b) (2) [at least annually or whenever a significant change occurs]</constraint>
+			<constraint>at least annually or whenever a significant change occurs</constraint>
 		</set-param>
 		<!-- - - IR-2 - -  -->
 		<alter control-id="ir-2">
@@ -2730,11 +2727,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ir-2_prm_2">
-			<constraint>at least annually</constraint>
-		</set-param>
 		<set-param param-id="ir-2_prm_1">
 			<constraint>within ten (10) days</constraint>
+		</set-param>
+		<set-param param-id="ir-2_prm_2">
+			<constraint>at least annually</constraint>
 		</set-param>
 		<!-- - - IR-2 (1) - -  -->
 		<alter subcontrol-id="ir-2.1">
@@ -2759,7 +2756,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IR-3-2 Requirement: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB/AO annually. Test plans are approved and accepted by the JAB/AO prior to test commencing.</p>
+					<p>-2 Requirement: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB/AO annually. Test plans are approved and accepted by the JAB/AO prior to test commencing.</p>
 				</part>
 			</add>
 		</alter>
@@ -2781,7 +2778,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IR-4 Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
+					<p>Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
 				</part>
 			</add>
 		</alter>
@@ -2871,7 +2868,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IR-6 Requirement: Reports security incident information according to FedRAMP Incident Communications Procedure.</p>
+					<p>Requirement: Reports security incident information according to FedRAMP Incident Communications Procedure.</p>
 				</part>
 			</add>
 		</alter>
@@ -2917,16 +2914,16 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>IR-8 (b) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
-					<p>IR-8 (e) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
+					<p>(b) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
+					<p>(e) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ir-8_prm_3">
-			<constraint>at least annually</constraint>
-		</set-param>
 		<set-param param-id="ir-8_prm_2">
 			<constraint>see additional FedRAMP Requirements and Guidance</constraint>
+		</set-param>
+		<set-param param-id="ir-8_prm_3">
+			<constraint>at least annually</constraint>
 		</set-param>
 		<set-param param-id="ir-8_prm_4">
 			<constraint>see additional FedRAMP Requirements and Guidance</constraint>
@@ -3129,7 +3126,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>MP-3 (b) Guidance: Second parameter not-applicable</p>
+					<p>(b) Guidance: Second parameter not-applicable</p>
 				</part>
 			</add>
 		</alter>
@@ -3146,7 +3143,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>MP-4 (a) Requirement: The service provider defines controlled areas within facilities where the information and information system reside.</p>
+					<p>(a) Requirement: The service provider defines controlled areas within facilities where the information and information system reside.</p>
 				</part>
 			</add>
 		</alter>
@@ -3163,7 +3160,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>MP-5 (a) Requirement: The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.</p>
+					<p>(a) Requirement: The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.</p>
 				</part>
 			</add>
 		</alter>
@@ -3207,7 +3204,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>MP-6 (2) Guidance: Equipment and procedures may be tested or validated for effectiveness</p>
+					<p>Guidance: Equipment and procedures may be tested or validated for effectiveness</p>
 				</part>
 			</add>
 		</alter>
@@ -3271,20 +3268,20 @@
 				</part>
 			</add>
 		</alter>
+		<set-param param-id="pe-3_prm_2">
+			<constraint>CSP defined physical access control systems/devices AND guards</constraint>
+		</set-param>
+		<set-param param-id="pe-3_prm_3">
+			<constraint>CSP defined physical access control systems/devices</constraint>
+		</set-param>
+		<set-param param-id="pe-3_prm_6">
+			<constraint>in all circumstances within restricted access area where the information system resides</constraint>
+		</set-param>
 		<set-param param-id="pe-3_prm_8">
 			<constraint>at least annually</constraint>
 		</set-param>
 		<set-param param-id="pe-3_prm_9">
 			<constraint>at least annually</constraint>
-		</set-param>
-		<set-param param-id="pe-3_prm_3">
-			<constraint>CSP defined physical access control systems/devices</constraint>
-		</set-param>
-		<set-param param-id="pe-3_prm_2">
-			<constraint>CSP defined physical access control systems/devices AND guards</constraint>
-		</set-param>
-		<set-param param-id="pe-3_prm_6">
-			<constraint>in all circumstances within restricted access area where the information system resides</constraint>
 		</set-param>
 		<!-- - - PE-3 (1) - -  -->
 		<alter subcontrol-id="pe-3.1">
@@ -3345,11 +3342,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="pe-8_prm_2">
-			<constraint>at least monthly</constraint>
-		</set-param>
 		<set-param param-id="pe-8_prm_1">
 			<constraint>for a minimum of one (1) year</constraint>
+		</set-param>
+		<set-param param-id="pe-8_prm_2">
+			<constraint>at least monthly</constraint>
 		</set-param>
 		<!-- - - PE-8 (1) - -  -->
 		<alter subcontrol-id="pe-8.1">
@@ -3444,7 +3441,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>PE-14 (a) Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
+					<p>(a) Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
 				</part>
 			</add>
 		</alter>
@@ -3570,7 +3567,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>PL-8 (b) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
+					<p>(b) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
 				</part>
 			</add>
 		</alter>
@@ -3725,19 +3722,19 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>RA-3 Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.</p>
-					<p>RA-3 (d) Requirement: Include all Authoring Officials and FedRAMP ISSOs.</p>
+					<p>Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.</p>
+					<p>(d) Requirement: Include all Authoring Officials and FedRAMP ISSOs.</p>
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ra-3_prm_5">
-			<constraint>annually</constraint>
+		<set-param param-id="ra-3_prm_2">
+			<constraint>security assessment report</constraint>
 		</set-param>
 		<set-param param-id="ra-3_prm_3">
 			<constraint>at least annually or whenever a significant change occurs</constraint>
 		</set-param>
-		<set-param param-id="ra-3_prm_2">
-			<constraint>security assessment report</constraint>
+		<set-param param-id="ra-3_prm_5">
+			<constraint>annually</constraint>
 		</set-param>
 		<!-- - - RA-5 - -  -->
 		<alter control-id="ra-5">
@@ -3746,16 +3743,16 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>RA-5 (a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
-					<p>RA-5 (e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
+					<p>(a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
+					<p>(e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ra-5_prm_2">
-			<constraint>high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery</constraint>
-		</set-param>
 		<set-param param-id="ra-5_prm_1">
 			<constraint>monthly operating system/infrastructure; monthly web applications and databases</constraint>
+		</set-param>
+		<set-param param-id="ra-5_prm_2">
+			<constraint>high-risk vulnerabilities mitigated within thirty (30) days from date of discovery; moderate-risk vulnerabilities mitigated within ninety (90) days from date of discovery</constraint>
 		</set-param>
 		<!-- - - RA-5 (1) - -  -->
 		<alter subcontrol-id="ra-5.1">
@@ -3803,11 +3800,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="ra-5.5_prm_2">
-			<constraint>all scans</constraint>
-		</set-param>
 		<set-param param-id="ra-5.5_prm_1">
 			<constraint>operating systems / web applications / databases</constraint>
+		</set-param>
+		<set-param param-id="ra-5.5_prm_2">
+			<constraint>all scans</constraint>
 		</set-param>
 		<!-- - - RA-5 (6) - -  -->
 		<alter subcontrol-id="ra-5.6">
@@ -3816,7 +3813,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>RA-5 (6) Guidance: include in Continuous Monitoring ISSO digest/report to JAB/AO</p>
+					<p>Guidance: include in Continuous Monitoring ISSO digest/report to JAB/AO</p>
 				</part>
 			</add>
 		</alter>
@@ -3827,7 +3824,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>RA-5 (8) Requirements: This enhancement is required for all high vulnerability scan findings.</p>
+					<p>Requirements: This enhancement is required for all high vulnerability scan findings.</p>
 					<p>Guidance: While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
 				</part>
 			</add>
@@ -3842,7 +3839,7 @@
 					<p>RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supported, Assessed, Monitored</p>
 				</part>
 				<part class="guidance">
-					<p>RA-5 (10) Guidance: If multiple tools are not used, this control is not applicable.</p>
+					<p>Guidance: If multiple tools are not used, this control is not applicable.</p>
 				</part>
 			</add>
 		</alter>
@@ -3883,7 +3880,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SA-4 Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.</p>
+					<p>Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.</p>
 					<p>See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html.</p>
 				</part>
 			</add>
@@ -3914,7 +3911,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SA-4 (8) Guidance: CSP must use the same security standards regardless of where the system component or information system service is acquired.</p>
+					<p>Guidance: CSP must use the same security standards regardless of where the system component or information system service is acquired.</p>
 				</part>
 			</add>
 		</alter>
@@ -3964,11 +3961,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="sa-9_prm_2">
-			<constraint>Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored</constraint>
-		</set-param>
 		<set-param param-id="sa-9_prm_1">
 			<constraint>FedRAMP Security Controls Baseline(s) if Federal information is processed or stored within the external system</constraint>
+		</set-param>
+		<set-param param-id="sa-9_prm_2">
+			<constraint>Federal/FedRAMP Continuous Monitoring requirements must be met for external systems where Federal information is processed or stored</constraint>
 		</set-param>
 		<!-- - - SA-9 (1) - -  -->
 		<alter subcontrol-id="sa-9.1">
@@ -4018,7 +4015,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SA-10 (e)  Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.</p>
+					<p>(e)  Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.</p>
 				</part>
 			</add>
 		</alter>
@@ -4048,7 +4045,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SA-11 (1) Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
+					<p>Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
 				</part>
 			</add>
 		</alter>
@@ -4067,7 +4064,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SA-11 (8) Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
+					<p>Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
 				</part>
 			</add>
 		</alter>
@@ -4246,7 +4243,7 @@
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SC-7 (13) Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</p>
+					<p>Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</p>
 					<p>Guidance: Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers,  centralized audit log servers etc.</p>
 				</part>
 			</add>
@@ -4297,11 +4294,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="sc-8.1_prm_2">
-			<constraint>a hardened or alarmed carrier Protective Distribution System (PDS)</constraint>
-		</set-param>
 		<set-param param-id="sc-8.1_prm_1">
 			<constraint>prevent unauthorized disclosure of information AND detect changes to information</constraint>
+		</set-param>
+		<set-param param-id="sc-8.1_prm_2">
+			<constraint>a hardened or alarmed carrier Protective Distribution System (PDS)</constraint>
 		</set-param>
 		<!-- - - SC-10 - -  -->
 		<alter control-id="sc-10">
@@ -4321,7 +4318,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SC-12 Guidance: Federally approved cryptography</p>
+					<p>Guidance: Federally approved cryptography</p>
 				</part>
 			</add>
 		</alter>
@@ -4370,7 +4367,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SC-15 Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
+					<p>Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
 				</part>
 			</add>
 		</alter>
@@ -4459,7 +4456,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SC-28 Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest.</p>
+					<p>Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest.</p>
 				</part>
 			</add>
 		</alter>
@@ -4548,11 +4545,11 @@
 		<set-param param-id="si-3_prm_1">
 			<constraint>at least weekly</constraint>
 		</set-param>
-		<set-param param-id="si-3_prm_3">
-			<constraint>to include blocking and quarantining malicious code and alerting administrator or defined security personnel near-realtime</constraint>
-		</set-param>
 		<set-param param-id="si-3_prm_2">
 			<constraint>to include endpoints</constraint>
+		</set-param>
+		<set-param param-id="si-3_prm_3">
+			<constraint>to include blocking and quarantining malicious code and alerting administrator or defined security personnel near-realtime</constraint>
 		</set-param>
 		<!-- - - SI-3 (1) - -  -->
 		<alter subcontrol-id="si-3.1">
@@ -4585,7 +4582,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SI-4 Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
+					<p>Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
 				</part>
 			</add>
 		</alter>
@@ -4623,7 +4620,7 @@
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 				<part class="guidance">
-					<p>SI-4 (5) Guidance: In accordance with the incident response plan.</p>
+					<p>Guidance: In accordance with the incident response plan.</p>
 				</part>
 			</add>
 		</alter>
@@ -4724,11 +4721,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="si-5_prm_2">
-			<constraint>to include system security personnel and administrators with configuration/patch-management responsibilities</constraint>
-		</set-param>
 		<set-param param-id="si-5_prm_1">
 			<constraint>to include US-CERT</constraint>
+		</set-param>
+		<set-param param-id="si-5_prm_2">
+			<constraint>to include system security personnel and administrators with configuration/patch-management responsibilities</constraint>
 		</set-param>
 		<!-- - - SI-5 (1) - -  -->
 		<alter subcontrol-id="si-5.1">
@@ -4746,17 +4743,17 @@
 				</part>
 			</add>
 		</alter>
+		<set-param param-id="si-6_prm_3">
+			<constraint>to include upon system startup and/or restart</constraint>
+		</set-param>
 		<set-param param-id="si-6_prm_4">
 			<constraint>at least monthly</constraint>
-		</set-param>
-		<set-param param-id="si-6_prm_7">
-			<constraint>to include notification of system administrators and security personnel</constraint>
 		</set-param>
 		<set-param param-id="si-6_prm_5">
 			<constraint>to include system administrators and security personnel</constraint>
 		</set-param>
-		<set-param param-id="si-6_prm_3">
-			<constraint>to include upon system startup and/or restart</constraint>
+		<set-param param-id="si-6_prm_7">
+			<constraint>to include notification of system administrators and security personnel</constraint>
 		</set-param>
 		<!-- - - SI-7 - -  -->
 		<alter control-id="si-7">
@@ -4774,11 +4771,11 @@
 				</part>
 			</add>
 		</alter>
-		<set-param param-id="si-7.1_prm_4">
-			<constraint>at least monthly</constraint>
-		</set-param>
 		<set-param param-id="si-7.1_prm_3">
 			<constraint>selection to include security relevant events</constraint>
+		</set-param>
+		<set-param param-id="si-7.1_prm_4">
+			<constraint>at least monthly</constraint>
 		</set-param>
 		<!-- - - SI-7 (2) - -  -->
 		<alter subcontrol-id="si-7.2">
