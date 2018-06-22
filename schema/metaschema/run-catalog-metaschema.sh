@@ -36,7 +36,10 @@ MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xs
 MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/produce-json-schema.xsl"
 
 DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-xml-docs.md -xsl:$LIBDIR/metaschema-xml-docs-md.xsl"
-DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-json-docs.md -xsl:$LIBDIR/catalog-metaschema-json-docs-md.xsl"
+
+# Note the next XSLT is custom configured for this particular metaschema
+# (since it must import the logic for converting XML samples into JSON just generated)
+DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-json-docs.md -xsl:$LIBDIR/$BASENAME-json-docs-md.xsl"
 
 CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/produce-xml-converter.xsl"
 CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/produce-json-converter.xsl"
