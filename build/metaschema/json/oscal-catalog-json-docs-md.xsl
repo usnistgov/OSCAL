@@ -5,8 +5,8 @@
     exclude-result-prefixes="xs m"
     version="3.0">
     
-    <xsl:import href="../../util/convert/oscal-catalog-xml-converter.xsl"/>
-    <xsl:import href="../../util/publish/XSLT/html-to-markdown.xsl"/>
+    <xsl:import href="../../../util/convert/oscal-catalog-xml-converter.xsl"/>
+    <xsl:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
     <xsl:import href="metaschema-json-html.xsl"/>
     
 <!-- output method must be text for good markdown including unescaped code snips   -->

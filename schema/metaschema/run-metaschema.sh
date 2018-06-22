@@ -32,14 +32,14 @@ XSDDIR=$OSCALDIR/schema/xml
 JSONDIR=$OSCALDIR/schema/json
 CONVERSION_DIR=$OSCALDIR/util/convert
 
-MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xsl:$LIBDIR/produce-xsd.xsl"
-MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/produce-json-schema.xsl"
+MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xsl:$LIBDIR/xml/produce-xsd.xsl"
+MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/json/produce-json-schema.xsl"
 
-DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-xml-docs.md -xsl:$LIBDIR/metaschema-xml-docs-md.xsl"
-DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-json-docs.md -xsl:$LIBDIR/metaschema-json-docs-md.xsl"
+DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-xml-docs.md -xsl:$LIBDIR/xml/metaschema-xml-docs-md.xsl"
+DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-json-docs.md -xsl:$LIBDIR/json/metaschema-json-docs-md.xsl"
 
-CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/produce-xml-converter.xsl"
-CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/produce-json-converter.xsl"
+CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
+CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"
 
 # Now ...
 echo

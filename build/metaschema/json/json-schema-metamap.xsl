@@ -5,6 +5,8 @@
     version="3.0" xmlns="http://www.w3.org/2005/xpath-functions"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0" expand-text="true">
 
+<!-- Purpose: Produce an XPath-JSON document representing JSON Schema declarations from Metaschema source data. The results are conformant to the rules for the XPath 3.1 definition of an XML format capable of being cast (using the xml-to-json() function) into JSON. -->
+<!-- Note: this XSLT will only be used on its own for development and debugging. It is however imported by `produce-json-converter.xsl` and possibly other stylesheets. -->
     <xsl:strip-space elements="METASCHEMA define-assembly define-field model"/>
     
     <xsl:output indent="yes" method="xml"/>
