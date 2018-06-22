@@ -191,6 +191,7 @@
       </field>
       <fields named="desc" group-as="descriptions">
         <description>A short summary of the parameter's intended use.</description>
+        <remarks><p> A label is optional, but should be provided unless a <code>select</code> (selection) is provided.</p></remarks>
       </fields>
       <fields named="constraint" group-as="constraints">
         <description>A rule describing the permissible parameter values.</description>

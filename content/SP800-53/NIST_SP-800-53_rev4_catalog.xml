@@ -1,7 +1,8 @@
-<!-- XML produced by extraction/mapping from NVD XML :2018-06-19T17:40:03.208-04:00 -->
+<!-- XML produced by extraction/mapping from NVD XML :2018-06-22T12:24:43.456-04:00 -->
 <!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="NIST_SP-800-53_rev4_catalog.20180619">
+         id="uuid-3038ecb5-9a61-4018-8396-a81ef68a3533"
+         model-version="0.9.11">
    <title>NIST SP800-53</title>
    <declarations href="NIST_SP-800-53_rev4_declarations.xml"/>
    <references>
@@ -846,7 +847,6 @@
          <subcontrol class="SP800-53-enhancement" id="ac-2.2">
             <title>Removal of Temporary / Emergency Accounts</title>
             <param id="ac-2.2_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>removes</choice>
                   <choice>disables</choice>
@@ -2522,7 +2522,6 @@ Organizations commonly employ information flow control policies and enforcement 
          <subcontrol class="SP800-53-enhancement" id="ac-4.4">
             <title>Content Check Encrypted Information</title>
             <param id="ac-4.4_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>decrypting the information</choice>
                   <choice>blocking the flow of the encrypted information</choice>
@@ -3201,7 +3200,6 @@ Organizations commonly employ information flow control policies and enforcement 
          <subcontrol class="SP800-53-enhancement" id="ac-4.17">
             <title>Domain Authentication</title>
             <param id="ac-4.17_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>organization, system, application, individual</choice>
                </select>
@@ -4201,7 +4199,6 @@ Organizations commonly employ information flow control policies and enforcement 
             <label>organization-defined time period</label>
          </param>
          <param id="ac-7_prm_3">
-            <label>SELECTION</label>
             <select>
                <choice>locks the account/node for an <insert param-id="ac-7_prm_4"/>
                </choice>
@@ -4602,7 +4599,6 @@ Organizations commonly employ information flow control policies and enforcement 
          <subcontrol class="SP800-53-enhancement" id="ac-9.2">
             <title>Successful / Unsuccessful Logons</title>
             <param id="ac-9.2_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>successful logons/accesses</choice>
                   <choice>unsuccessful logon/access attempts</choice>
@@ -6314,7 +6310,6 @@ Organizations can define the types of attributes needed for selected information
          <subcontrol class="SP800-53-enhancement" id="ac-18.1">
             <title>Authentication and Encryption</title>
             <param id="ac-18.1_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>users</choice>
                   <choice>devices</choice>
@@ -6758,7 +6753,6 @@ Organizations can define the types of attributes needed for selected information
          <subcontrol class="SP800-53-enhancement" id="ac-19.5">
             <title>Full Device / Container-based  Encryption</title>
             <param id="ac-19.5_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>full-device encryption</choice>
                   <choice>container encryption</choice>
@@ -6944,7 +6938,6 @@ This control does not apply to the use of external information systems to access
          <subcontrol class="SP800-53-enhancement" id="ac-20.2">
             <title>Portable Storage Devices</title>
             <param id="ac-20.2_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>restricts</choice>
                   <choice>prohibits</choice>
@@ -6990,7 +6983,6 @@ This control does not apply to the use of external information systems to access
          <subcontrol class="SP800-53-enhancement" id="ac-20.3">
             <title>Non-organizationally Owned Systems / Components / Devices</title>
             <param id="ac-20.3_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>restricts</choice>
                   <choice>prohibits</choice>
@@ -9175,7 +9167,6 @@ This control does not apply to the use of external information systems to access
          <subcontrol class="SP800-53-enhancement" id="au-5.3">
             <title>Configurable Traffic Volume Thresholds</title>
             <param id="au-5.3_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>rejects</choice>
                   <choice>delays</choice>
@@ -9243,7 +9234,6 @@ This control does not apply to the use of external information systems to access
          <subcontrol class="SP800-53-enhancement" id="au-5.4">
             <title>Shutdown On Failure</title>
             <param id="au-5.4_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>full system shutdown</choice>
                   <choice>partial system shutdown</choice>
@@ -9580,7 +9570,6 @@ This control does not apply to the use of external information systems to access
          <subcontrol class="SP800-53-enhancement" id="au-6.5">
             <title>Integration / Scanning and Monitoring Capabilities</title>
             <param id="au-6.5_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>vulnerability scanning information</choice>
                   <choice>performance data</choice>
@@ -9702,7 +9691,6 @@ This control does not apply to the use of external information systems to access
          <subcontrol class="SP800-53-enhancement" id="au-6.7">
             <title>Permitted Actions</title>
             <param id="au-6.7_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>information system process</choice>
                   <choice>role</choice>
@@ -10537,7 +10525,6 @@ This control does not apply to the use of external information systems to access
          <subcontrol class="SP800-53-enhancement" id="au-9.5">
             <title>Dual Authorization</title>
             <param id="au-9.5_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>movement</choice>
                   <choice>deletion</choice>
@@ -12203,14 +12190,12 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                <label>organization-defined frequency</label>
             </param>
             <param id="ca-2.2_prm_2">
-               <label>SELECTION</label>
                <select>
                   <choice>announced</choice>
                   <choice>unannounced</choice>
                </select>
             </param>
             <param id="ca-2.2_prm_3">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>in-depth monitoring</choice>
                   <choice>vulnerability scanning</choice>
@@ -12700,7 +12685,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          <subcontrol class="SP800-53-enhancement" id="ca-3.5">
             <title>Restrictions On External System Connections</title>
             <param id="ca-3.5_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>allow-all, deny-by-exception</choice>
                   <choice>deny-all, permit-by-exception</choice>
@@ -14178,7 +14162,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <label>organization-defined configuration change control element (e.g., committee, board)</label>
          </param>
          <param id="cm-3_prm_3">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>
                   <insert param-id="cm-3_prm_4"/>
@@ -15913,7 +15896,6 @@ Common secure configurations (also referred to as security configuration checkli
          <subcontrol class="SP800-53-enhancement" id="cm-7.2">
             <title>Prevent Program Execution</title>
             <param id="cm-7.2_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>
                      <insert param-id="cm-7.2_prm_2"/>
@@ -16472,7 +16454,6 @@ Common secure configurations (also referred to as security configuration checkli
                <label>organization-defined frequency</label>
             </param>
             <param id="cm-8.3_prm_2">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>disables network access by such components</choice>
                   <choice>isolates the components</choice>
@@ -16604,7 +16585,6 @@ Common secure configurations (also referred to as security configuration checkli
          <subcontrol class="SP800-53-enhancement" id="cm-8.4">
             <title>Accountability Information</title>
             <param id="cm-8.4_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>name</choice>
                   <choice>position</choice>
@@ -21079,7 +21059,6 @@ Organizations can satisfy the identification and authentication requirements in 
             <label>organization-defined specific and/or types of devices</label>
          </param>
          <param id="ia-3_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>local</choice>
                <choice>remote</choice>
@@ -21168,7 +21147,6 @@ Organizations can satisfy the identification and authentication requirements in 
                <label>organization-defined specific devices and/or types of devices</label>
             </param>
             <param id="ia-3.1_prm_2">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>local</choice>
                   <choice>remote</choice>
@@ -22308,7 +22286,6 @@ Organizations can satisfy the identification and authentication requirements in 
                <label>organization-defined types of and/or specific authenticators</label>
             </param>
             <param id="ia-5.3_prm_2">
-               <label>SELECTION</label>
                <select>
                   <choice>in person</choice>
                   <choice>by a trusted third party</choice>
@@ -28731,7 +28708,6 @@ Physical and technical safeguards for media are commensurate with the security c
       <control class="SP800-53" id="mp-7">
          <title>Media Use</title>
          <param id="mp-7_prm_1">
-            <label>SELECTION</label>
             <select>
                <choice>restricts</choice>
                <choice>prohibits</choice>
@@ -29533,7 +29509,6 @@ Physical and technical safeguards for media are commensurate with the security c
          <subcontrol class="SP800-53-enhancement" id="pe-2.3">
             <title>Restrict Unescorted Access</title>
             <param id="pe-2.3_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>security clearances for all information contained within the system</choice>
                   <choice>formal access authorizations for all information contained within the system</choice>
@@ -29618,7 +29593,6 @@ Physical and technical safeguards for media are commensurate with the security c
             <label>organization-defined entry/exit points to the facility where the information system resides</label>
          </param>
          <param id="pe-3_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>
                   <insert param-id="pe-3_prm_3"/>
@@ -30093,7 +30067,6 @@ Physical and technical safeguards for media are commensurate with the security c
                <label>organization-defined security safeguards</label>
             </param>
             <param id="pe-3.5_prm_2">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>detect</choice>
                   <choice>prevent</choice>
@@ -31161,7 +31134,6 @@ Physical and technical safeguards for media are commensurate with the security c
       <control class="SP800-53" id="pe-11">
          <title>Emergency Power</title>
          <param id="pe-11_prm_1">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>an orderly shutdown of the information system</choice>
                <choice>transition of the information system to long-term alternate power</choice>
@@ -31253,7 +31225,6 @@ Physical and technical safeguards for media are commensurate with the security c
          <subcontrol class="SP800-53-enhancement" id="pe-11.2">
             <title>Long-term Alternate Power Supply - Self-contained</title>
             <param id="pe-11.2_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>minimally required operational capability</choice>
                   <choice>full operational capability</choice>
@@ -34865,7 +34836,6 @@ In today’s modern architecture, it is becoming less common for organizations t
       <control class="SP800-53" id="ra-3">
          <title>Risk Assessment</title>
          <param id="ra-3_prm_1">
-            <label>SELECTION</label>
             <select>
                <choice>security plan</choice>
                <choice>risk assessment report</choice>
@@ -35294,7 +35264,6 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
          <subcontrol class="SP800-53-enhancement" id="ra-5.2">
             <title>Update by Frequency / Prior to New Scan / When Identified</title>
             <param id="ra-5.2_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>
                      <insert param-id="ra-5.2_prm_2"/>
@@ -35708,7 +35677,6 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
             <label>organization-defined locations</label>
          </param>
          <param id="ra-6_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>
                   <insert param-id="ra-6_prm_3"/>
@@ -36262,7 +36230,6 @@ Security functionality, assurance, and documentation requirements are expressed 
          <subcontrol class="SP800-53-enhancement" id="sa-4.2">
             <title>Design / Implementation Information for Security Controls</title>
             <param id="sa-4.2_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>security-relevant external system interfaces</choice>
                   <choice>high-level design</choice>
@@ -37510,7 +37477,6 @@ Security functionality, assurance, and documentation requirements are expressed 
          <subcontrol class="SP800-53-enhancement" id="sa-9.5">
             <title>Processing, Storage, and Service Location</title>
             <param id="sa-9.5_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>information processing</choice>
                   <choice>information/data</choice>
@@ -37596,7 +37562,6 @@ Security functionality, assurance, and documentation requirements are expressed 
       <control class="SP800-53" id="sa-10">
          <title>Developer Configuration Management</title>
          <param id="sa-10_prm_1">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>design</choice>
                <choice>development</choice>
@@ -38047,7 +38012,6 @@ Security functionality, assurance, and documentation requirements are expressed 
       <control class="SP800-53" id="sa-11">
          <title>Developer Security Testing and Evaluation</title>
          <param id="sa-11_prm_1">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>unit</choice>
                <choice>integration</choice>
@@ -39154,7 +39118,6 @@ Security functionality, assurance, and documentation requirements are expressed 
          <subcontrol class="SP800-53-enhancement" id="sa-12.11">
             <title>Penetration Testing / Analysis of Elements, Processes, and Actors</title>
             <param id="sa-12.11_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>organizational analysis, independent third-party analysis, organizational penetration testing, independent third-party penetration testing</choice>
                </select>
@@ -39750,7 +39713,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sa-15.1">
             <title>Quality Metrics</title>
             <param id="sa-15.1_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>
                      <insert param-id="sa-15.1_prm_2"/>
@@ -40754,7 +40716,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sa-17.4">
             <title>Informal Correspondence</title>
             <param id="sa-17.4_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>informal demonstration, convincing argument with formal methods as feasible</choice>
                </select>
@@ -41095,7 +41056,6 @@ Assurance is also based on the assessment of evidence produced during the system
                <label>organization-defined information systems, system components, or devices</label>
             </param>
             <param id="sa-18.2_prm_2">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>at random</choice>
                   <choice>at <insert param-id="sa-18.2_prm_3"/>, upon <insert param-id="sa-18.2_prm_4"/>
@@ -41179,7 +41139,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sa-19">
          <title>Component Authenticity</title>
          <param id="sa-19_prm_1">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>source of counterfeit component</choice>
                <choice>
@@ -41743,7 +41702,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sa-22.1">
             <title>Alternative Sources for Continued Support</title>
             <param id="sa-22.1_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>in-house support</choice>
                   <choice>
@@ -42661,7 +42619,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined resources</label>
          </param>
          <param id="sc-6_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>priority</choice>
                <choice>quota</choice>
@@ -42737,7 +42694,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-7">
          <title>Boundary Protection</title>
          <param id="sc-7_prm_1">
-            <label>SELECTION</label>
             <select>
                <choice>physically</choice>
                <choice>logically</choice>
@@ -43952,7 +43908,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-8">
          <title>Transmission Confidentiality and Integrity</title>
          <param id="sc-8_prm_1">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>confidentiality</choice>
                <choice>integrity</choice>
@@ -44006,7 +43961,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sc-8.1">
             <title>Cryptographic or Alternate Physical Protection</title>
             <param id="sc-8.1_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>prevent unauthorized disclosure of information</choice>
                   <choice>detect changes to information</choice>
@@ -44073,7 +44027,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sc-8.2">
             <title>Pre / Post Transmission Handling</title>
             <param id="sc-8.2_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>confidentiality</choice>
                   <choice>integrity</choice>
@@ -44540,7 +44493,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sc-12.2">
             <title>Symmetric Keys</title>
             <param id="sc-12.2_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>NIST FIPS-compliant</choice>
                   <choice>NSA-approved</choice>
@@ -44593,7 +44545,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sc-12.3">
             <title>Asymmetric Keys</title>
             <param id="sc-12.3_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>NSA-approved key management technology and processes</choice>
                   <choice>approved PKI Class 3 certificates or prepositioned keying material</choice>
@@ -46381,7 +46332,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-28">
          <title>Protection of Information at Rest</title>
          <param id="sc-28_prm_1">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>confidentiality</choice>
                <choice>integrity</choice>
@@ -46826,7 +46776,6 @@ Assurance is also based on the assessment of evidence produced during the system
                <label>organization-defined processing and/or storage</label>
             </param>
             <param id="sc-30.3_prm_2">
-               <label>SELECTION</label>
                <select>
                   <choice>
                      <insert param-id="sc-30.3_prm_3"/>
@@ -47008,7 +46957,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-31">
          <title>Covert Channel Analysis</title>
          <param id="sc-31_prm_1">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>storage</choice>
                <choice>timing</choice>
@@ -47121,7 +47069,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="sc-31.2">
             <title>Maximum Bandwidth</title>
             <param id="sc-31.2_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>storage</choice>
                   <choice>timing</choice>
@@ -49445,14 +49392,12 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined frequency</label>
          </param>
          <param id="si-3_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>endpoint</choice>
                <choice>network entry/exit points</choice>
             </select>
          </param>
          <param id="si-3_prm_3">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>block malicious code</choice>
                <choice>quarantine malicious code</choice>
@@ -49899,7 +49844,6 @@ Assurance is also based on the assessment of evidence produced during the system
                <label>organization-defined information system hardware components</label>
             </param>
             <param id="si-3.8_prm_3">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>issues a warning</choice>
                   <choice>audits the command execution</choice>
@@ -50131,7 +50075,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined personnel or roles</label>
          </param>
          <param id="si-4_prm_5">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>as needed</choice>
                <choice>
@@ -51469,7 +51412,6 @@ Assurance is also based on the assessment of evidence produced during the system
                <label>organization-defined authorization or approval processes</label>
             </param>
             <param id="si-4.22_prm_2">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>audits</choice>
                   <choice>alerts <insert param-id="si-4.22_prm_3"/>
@@ -51689,7 +51631,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined external organizations</label>
          </param>
          <param id="si-5_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>
                   <insert param-id="si-5_prm_3"/>
@@ -51875,7 +51816,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined security functions</label>
          </param>
          <param id="si-6_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>
                   <insert param-id="si-6_prm_3"/>
@@ -51896,7 +51836,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined personnel or roles</label>
          </param>
          <param id="si-6_prm_6">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>shuts the information system down</choice>
                <choice>restarts the information system</choice>
@@ -52229,7 +52168,6 @@ Assurance is also based on the assessment of evidence produced during the system
                <label>organization-defined software, firmware, and information</label>
             </param>
             <param id="si-7.1_prm_2">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>at startup</choice>
                   <choice>at <insert param-id="si-7.1_prm_3"/>
@@ -52455,7 +52393,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="si-7.5">
             <title>Automated Response to Integrity Violations</title>
             <param id="si-7.5_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>shuts the information system down</choice>
                   <choice>restarts the information system</choice>
@@ -52642,7 +52579,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="si-7.8">
             <title>Auditing Capability for Significant Events</title>
             <param id="si-7.8_prm_1">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>generates an audit record</choice>
                   <choice>alerts current user</choice>
@@ -54102,7 +54038,6 @@ Assurance is also based on the assessment of evidence produced during the system
                <label>organization-defined time period</label>
             </param>
             <param id="si-13.4_prm_2">
-               <label>SELECTION (one or more)</label>
                <select how-many="one or more">
                   <choice>activates <insert param-id="si-13.4_prm_3"/>
                   </choice>
@@ -54194,7 +54129,6 @@ Assurance is also based on the assessment of evidence produced during the system
          <subcontrol class="SP800-53-enhancement" id="si-13.5">
             <title>Failover Capability</title>
             <param id="si-13.5_prm_1">
-               <label>SELECTION</label>
                <select>
                   <choice>real-time</choice>
                   <choice>near real-time</choice>
@@ -54266,7 +54200,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined information system components and services</label>
          </param>
          <param id="si-14_prm_2">
-            <label>SELECTION (one or more)</label>
             <select how-many="one or more">
                <choice>upon end of session of use</choice>
                <choice>periodically at <insert param-id="si-14_prm_3"/>
