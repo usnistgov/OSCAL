@@ -11,7 +11,7 @@
 		<author>FedRAMP PMO</author>
 		<notes>No notes.</notes>
 	</publication_information>
-	<import href="https://githib.com/usnistgov/OSCAL/content/nist.gov/SP800-53/rev4/SP800-53-MODERATE-baseline.xml">
+	<import href="../nist.gov/SP800-53/rev4/SP800-53-MODERATE-baseline.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>
@@ -274,7 +274,7 @@
 			<call control-id="si-16"/>
 		</include>
 	</import>
-	<import href="https://githib.com/usnistgov/OSCAL/content/nist.gov/SP800-53/rev4/SP800-53-rev4-catalog.xml">
+	<import href="../nist.gov/SP800-53/rev4/SP800-53-rev4-catalog.xml">
 		<include>
 			<call subcontrol-id="ac-2.5"/>
 			<call subcontrol-id="ac-2.7"/>
