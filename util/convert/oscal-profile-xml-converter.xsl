@@ -13,14 +13,14 @@
       <xsl:output-character character="&lt;" string="\u003c"/>
       <xsl:output-character character="&gt;" string="\u003e"/>
    </xsl:character-map>
-   <xsl:param name="indent" as="xs:string">no</xsl:param>
+   <xsl:param name="json-indent" as="xs:string">no</xsl:param>
    <xsl:mode name="rectify" on-no-match="shallow-copy"/>
    <xsl:template mode="rectify"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
                  match="/*/@key | array/*/@key"/>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
       <xsl:map>
-         <xsl:map-entry key="'indent'">{ $indent='yes' }</xsl:map-entry>
+         <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>
       </xsl:map>
    </xsl:variable>
    <xsl:template match="/" mode="debug">

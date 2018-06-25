@@ -13,7 +13,7 @@ See also the shell scripts (`.sh` files) in this subdirectory.
 For converting from XML to JSON (where `$OSCALXML` is the path to input file name, `$OSCALJSON` is the output file name path, and `$SAXON` resolves to point to `saxon9he.jar`):
 
 ```
-$ java -jar $SAXON -s:$OSCALXML -o=$OSCALJSON -xsl:oscal-catalog-json-converter.xsl
+$ java -jar $SAXON -s:$OSCALXML -o:$OSCALJSON -xsl:oscal-catalog-json-converter.xsl
 ```
 
 For coming back the other way:
@@ -22,4 +22,5 @@ For coming back the other way:
 $ java -jar $SAXON -o:$OSCALXML -xsl:oscal-catalog-json-converter.xsl json-file=$OSCALJSON
 ```
 
-Note in this case the JSON file is named in a runtime parameter, and no (XML) source file is indicated.
+Note in this case the JSON file is designated with a runtime (stylesheet) parameter `json-file=`, and no (XML) source file (`-s`) is given.
+

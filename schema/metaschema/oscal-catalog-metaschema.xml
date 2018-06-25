@@ -2,7 +2,7 @@
 <!-- OSCAL CATALOG METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="metaschema-json-html.xsl"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA top="control-catalog" use="catalog" xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
