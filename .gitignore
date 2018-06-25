@@ -16,6 +16,6 @@ working/
 pub/
 roundtripped/
 target/
-xpec/*.html
+xspec/*.html
 
 /OSCAL-dev.xpr
