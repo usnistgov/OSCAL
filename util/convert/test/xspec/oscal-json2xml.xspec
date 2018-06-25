@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../oscal-catalog-json-converter.xsl"
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../oscal-catalog-json-converter.xsl"
     xmlns="http://www.w3.org/2005/xpath-functions">
     <x:scenario label="field, with no ID or flags declared">
         <x:context mode="json2xml">
