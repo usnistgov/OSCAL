@@ -229,7 +229,7 @@
          
          .formal-name { font-size: 120%; font-weight: bold; font-family: sans-serif; margin: 0.5em 0em }
          
-         .description { font-size: 90%; font-family: sans-serif; margin: 0.5em 0em }
+         .description { font-size: 90% }
          
          .remarks { }
          
@@ -261,7 +261,7 @@
          .strong {  display: inline; }
          
          .name { color: midnightblue; background-color: lavender;
-         font-family: monospace; font-size: 90% }
+         font-family: monospace }
          
          a { text-decoration:none }
          a:hover { text-decoration: underline }

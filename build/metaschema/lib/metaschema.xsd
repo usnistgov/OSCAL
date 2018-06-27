@@ -44,7 +44,7 @@
                 <xs:element ref="m:choice"/>
                 <xs:element ref="m:prose"/>
               </xs:choice>
-              <xs:element ref="m:any"/>
+              <xs:element ref="m:any" minOccurs="0"/>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

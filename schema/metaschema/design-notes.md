@@ -3,40 +3,46 @@
 ## Goals
 
 * Unify support for compatible data descriptions in multiple disparate formats, such as XML, JSON, YAML and potentially others
-* Produce schema documentation from the same source as schema files and tools (literate programming)
-* Enable distributed, semi-coordinated experimentation with OSCAL format(s) and their tools
+* Produce schema documentation from the same source as schema files and tools
+* Enable distributed, semi-coordinated experimentation with OSCAL format(s) and their tools as supported by Metaschema
 
 A *primary* goal is supporting the maintenance of OSCAL format(s) and data description by the OSCAL team.
 
 A *secondary* and more distant goal is to enable the wider community to build and extend by using the metaschema tech on their own data description problems.
 
-If you are not primarily focused on "core OSCAL", and your needs align only with our secondary goal, you may find your concerns are not a priority for us. (For these purposes, "core OSCAL" can be considered to be any tag set with a namespace URI indicating "OSCAL" or "oscal" and valid to the published models.) Note in particular, we do *not* presently suggest or recommend the Metaschema technology as a means of extending OSCAL, whether branching or forking, and this technology is *not* expected or necessary for any toolkit that  consumes, produces, validates or processes OSCAL -- although the artifacts we produce from it, such as the OSCAL schemas, might be.
+If you are not primarily focused on "core OSCAL", and your needs align only with our secondary goal, you may find your concerns are not presently a priority for us. (For these purposes, "core OSCAL" can be considered to be any tag set with a namespace URI indicating "OSCAL" or "oscal" and valid to the published models.) Note in particular, we do *not* presently suggest or recommend the Metaschema technology as a means of extending OSCAL, whether branching or forking, and this technology is *not* expected or necessary for any toolkit that consumes, produces, validates or processes OSCAL -- although the artifacts we produce from it, such as the OSCAL schemas, might be.
 
 Nonetheless and with that in mind, understanding the mechanism by which the metaschema productions are created -- schemas, transformations and documentation -- will greatly aid comprehension. Knowing the metaschema is the foundation for explaining how the various schemas and tools relate to each other, how they reflect the same logic and internal organization, and how they can be used to support operational requirements such as data conversion and validation.
 
+Usage note: "metaschema" is a common noun and there are many metaschema technologies (indeed almost any mature XML tag set has one), with different purposes, feature sets and capabilities. "Metaschema" (capitalized) is our peculiar homegrown metaschema technology and application.
+
 ## Approach
 
-A reduced, lightweight schema language with certain especially-enforced constraints can be sketched such that multiple schemas constraining disparate formats, such as XML and JSON, can be produced from a single metaschema instance (a document written in Metaschema) deterministically, and thus designed and coordinated in parallel. We begin by producing functioning schemas to describe OSCAL data in XML Schema Definition Language (XSD) 1.1 on the XML side and JSON Schema v7 on the JSON side. As we do this, the constraints imposed by using the metaschema modeling syntax enable us to do two things implicitly (that is, without any extra effort):
+A reduced, lightweight schema language with certain especially-enforced constraints can be sketched such that multiple schemas constraining disparate formats, such as XML and JSON, can be produced from a single metaschema instance (a document written in Metaschema) deterministically, and thus designed and coordinated in parallel. We begin by producing functioning schemas to describe OSCAL data in XML Schema Definition Language (XSD) 1.1 on the XML side and JSON Schema v7 on the JSON side. As we do this, the constraints imposed by using the Metaschema modeling syntax enable us to do two things implicitly (that is, without any further effort or additional cost or planning):
 
-* Limit ourselves to schema constructs that map cleanly into features offered by both schemas, thus ensuring that all information can be preserved in (lossless bidirectional) conversion.
-   
-* Mediate between the "structural imbalances" in the data formats by providing the extra information we need to introduce improvements to model and syntax on both sides. By "model and syntax" we mean everything bearing on both the information sets to be represented, and their (canonical or recognized) representations, including object structures, notations and data type bindings. Beyond the appropriate metaschema, no further inputs and no reliance on arbitrary conventions or runtime settings should be necessary to produce, reliably, correspondent JSON from any (metaschema-described, schema-valid) XML, and vice-versa.
+* Limit ourselves to schema constructs that map cleanly into features offered by both (target) schema technoologies, thus ensuring that all information can be preserved in (lossless bidirectional) conversion.
+
+* Mediate between the "structural imbalances" in the data formats by providing the extra information we need to introduce improvements to model and syntax on both sides. By "model and syntax" we mean everything bearing on both the information sets to be represented, and their (canonical or recognized) representations, including object structures, notations and data type bindings. Beyond the applicable metaschema, no further inputs and no reliance on arbitrary conventions or runtime settings should be necessary to produce, reliably, correspondent JSON from any (metaschema-described, schema-valid) XML, and vice-versa.
 
 Additionally, and this is crucial:
 
-* Produce specifications and running code describing automated production of schemas and model-related artifacts, consistent with the circumscribed model defined (and documented) in the metaschema. 
+* Produce specifications and running code supporting automated production of schemas and model-related artifacts, consistent with the circumscribed model defined (and documented) in the metaschema. 
 
-In addition to the demonstrations offered by running code and this documentation, the semantics of metaschema elements and constructs are documented here and tested by means of unit tests for the transformations concerned. Look for `xspec` directories in the [../../build/metaschema](../../build/metaschema) and [../../lib/convert](../../lib/convert) directories and their subdirectories.
+In addition to the demonstrations offered by schema artifacts, the semantics of metaschema elements and constructs are documented here and tested by means of unit tests for the transformations concerned. Look for `xspec` directories in the [../../build/metaschema](../../build/metaschema) and [../../lib/convert](../../lib/convert) directories and their subdirectories.
 
 The Metaschema syntax (an XML application) is also described and constrained with its own schema, [lib/metaschema.xsd](lib/metaschema.xsd) and with a Schematron constraints set, [lib/metaschema-check.sch](lib/metaschema-check.sch). The latter is able to enforce some of the rules described below.
 
-Because the metaschema is designed to support only a "greatest common factor" of schema features -- a minimal but useful and adequate subset of the wide range of modeling capabilities in either of its target languages (and ideally, other future targets) -- its modeling capabilities are rudimentary. This may also make it easier to use.
+Because the metaschema is designed to support only a "greatest common factor" of schema features -- a minimal but adequate and useful subset of the wide range of modeling capabilities in either of its target schema languages (and ideally, other future targets) -- its modeling capabilities are fairly rudimentary. This may also make it easier to use.
+
+Basically, a Metaschema metaschema describes a documentary structure comprising **assemblies**, each of which is composed of (more) assemblies and **fields**. Fields present data content while assemblies organize things. Both fields and assemblies can have **flags**, which are name-value pairs further qualifying their fields or assemblies with application-oriented and -specific annotations.
+
+Comprehensive mappings from assembly, field and flag definitions, into analogous (representative) XSD and/or JSON Schema structures, enables modeling data in either/both XML or/and JSON, impartially and "ecumenically", as long as rules on both sides are followed. And because these mappings are fully defined, the mappings between corresponding XML and JSON expressions come for free.
 
 ## Metaschema organization
 
 A metaschema has two parts: a header, and a set of definitions for the model components or parts.
 
-Top level documentation for the metaschema and its schemas apperas in the header section, while documentation for all the constructs appears with the definitions for those constructs. There is no explicit separation between the header and the definitions: the header ends when the definitions start.
+Top level documentation for the metaschema and its schemas appears in the header section, while documentation for all the constructs appears with the definitions for those constructs. There is no explicit separation between the header and the definitions: the header ends when the definitions start.
 
 ### `METASCHEMA` element
 
