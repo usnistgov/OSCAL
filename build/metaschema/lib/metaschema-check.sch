@@ -55,7 +55,7 @@
         </sch:rule>
         
         <sch:rule context="m:prose">
-            <sch:assert test="count(../m:prose) eq 1">Prose may not appear in more than one position in a part</sch:assert>
+            <sch:assert test="count(../m:prose) eq 1">Prose may not appear in more than once in a model</sch:assert>
         </sch:rule>
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
         <sch:rule context="m:choice"/>
