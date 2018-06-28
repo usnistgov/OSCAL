@@ -2,22 +2,31 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns="http://www.w3.org/1999/xhtml"
-                version="1.0"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-   exclude-result-prefixes="xs m">
+                version="3.0"
+                xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+   exclude-result-prefixes="xs">
 
-<!-- Purpose: XSLT 1.0 stylesheet for simple display of Metaschema in browsers (HTML): XML version -->
+<!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): XML version -->
 <!-- Input:   Metaschema -->
 <!-- Output:  HTML  -->
-<!-- Note:    An XSLT 1.0 stylesheet may even work in your browser (try FF)  -->
 
 <xsl:import href="../lib/metaschema-common-html.xsl"/>
    
 <xsl:strip-space elements="*"/>
 
-<xsl:preserve-space elements="m:p m:li m:pre m:i m:b m:em m:strong m:a m:code m:q"/>
+<xsl:preserve-space elements="p li pre i b em strong a code q"/>
    
 <xsl:output indent="yes"/>
+   
+   <xsl:variable name="home" select="METASCHEMA"/>
+   
+   <xsl:variable name="imported" select="/METASCHEMA/import/document(@href,/)"/>
+   
+   <xsl:variable name="all-references" select="//flag/@name | //model//*/@named"/>
+   
+   <xsl:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>
+   
+   <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
    
    <xsl:template match="/">
       <html>
@@ -25,18 +34,19 @@
             <xsl:call-template name="css"/>
          </head>
          <body>
-            <xsl:apply-templates/>
+            <!--<xsl:apply-templates/>-->
+            <xsl:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>
          </body>
       </html>
    </xsl:template>
 
-   <xsl:template match="m:METASCHEMA">
+   <xsl:template match="METASCHEMA">
       <div class="METASCHEMA">
          <xsl:apply-templates/>
       </div>
    </xsl:template>
    
-   <xsl:template match="m:METASCHEMA/m:schema-name">
+   <xsl:template match="METASCHEMA/schema-name">
       <h2 class="title">
          <xsl:apply-templates/>
          <xsl:text>: XML Schema</xsl:text>
@@ -44,55 +54,64 @@
    </xsl:template>
    
    <xsl:template priority="5"
-      match="m:define-flag[not(@show-docs='xml' or @show-docs='xml json')] |
-      m:define-field[not(@show-docs='xml' or @show-docs='xml json')] |
-      m:define-assembly[not(@show-docs='xml' or @show-docs='xml json')]"/>
+      match="define-flag[not(@show-docs='xml' or @show-docs='xml json')] |
+      define-field[not(@show-docs='xml' or @show-docs='xml json')] |
+      define-assembly[not(@show-docs='xml' or @show-docs='xml json')]"/>
    
-   <xsl:template match="m:define-flag">
+   <xsl:template match="define-flag">
       <div class="define-flag" id="{@name}">
          <h3>
-            <xsl:apply-templates select="m:formal-name" mode="inline"/>:
+            <xsl:apply-templates select="formal-name" mode="inline"/>:
             <xsl:apply-templates select="@name"/> attribute</h3>
-         
+         <xsl:call-template name="declare-import"/>
          <xsl:apply-templates/>
       </div>
    </xsl:template>
    
-   <xsl:template  match="m:define-field">
+   <xsl:template name="declare-import" expand-text="true">
+      <xsl:if test="root() intersect $imported">
+         <xsl:variable name="where" select="document-uri(root())"/>
+         <xsl:variable name="at" select="$home/import[resolve-uri(@href,base-uri(.)) = $where]/@href"/>
+         <p>Note: definition adopted from <a href="{ $at }">{ $at }</a></p>
+      </xsl:if>
+   </xsl:template>
+   
+   <xsl:template  match="define-field">
       <div class="define-field" id="{@name}">
          <h3>
-            <xsl:apply-templates select="m:formal-name" mode="inline"/>:
+            <xsl:apply-templates select="formal-name" mode="inline"/>:
             <xsl:apply-templates select="@name"/> element</h3>
          <xsl:choose>
             <xsl:when test="@as='mixed'"><p>Supports inline encoding</p></xsl:when>
             <xsl:when test="@as='boolean'"><p>True whenever given (presence signifies Boolean value)</p></xsl:when>
          </xsl:choose>
-         <xsl:apply-templates select="m:formal-name | m:description"/>
-         <xsl:if test="m:flag">
+         <xsl:apply-templates select="formal-name | description"/>
+         <xsl:call-template name="declare-import"/>
+         <xsl:if test="flag">
             <div class="model">
                <p>The <xsl:apply-templates select="@name"/> element supports:</p>
                <ul>
-                  <xsl:apply-templates select="m:flag" mode="model"/>
+                  <xsl:apply-templates select="flag" mode="model"/>
                </ul>
             </div>
-            
          </xsl:if>
-         <xsl:apply-templates select="m:remarks"/>
-         <xsl:apply-templates select="m:example"/>
+         <xsl:apply-templates select="remarks"/>
+         <xsl:apply-templates select="example"/>
       </div>
    </xsl:template>
    
-   <xsl:template match="m:define-assembly">
+   <xsl:template match="define-assembly">
       <div class="define-assembly" id="{@name}">
          <h3>
-            <xsl:apply-templates select="m:formal-name" mode="inline"/>:
+            <xsl:apply-templates select="formal-name" mode="inline"/>:
             <xsl:apply-templates select="@name"/> element</h3>
          <!-- No mention of @group-as on XML side       -->
          
-         <xsl:apply-templates select="m:formal-name | m:description"/>
-         <xsl:apply-templates select="m:model"/>
-         <xsl:apply-templates select="m:remarks"/>
-         <xsl:apply-templates select="m:example"/>
+         <xsl:apply-templates select="formal-name | description"/>
+         <xsl:call-template name="declare-import"/>
+         <xsl:apply-templates select="model"/>
+         <xsl:apply-templates select="remarks"/>
+         <xsl:apply-templates select="example"/>
       </div>
    </xsl:template>
 
@@ -100,7 +119,7 @@
       <code class="name">&lt;<xsl:value-of select="."/>></code>
    </xsl:template>
    
-   <xsl:template match="m:define-flag/@name | m:flag/@name">
+   <xsl:template match="define-flag/@name | flag/@name">
       <code class="name">@<xsl:value-of select="."/></code>
    </xsl:template>
    
@@ -124,9 +143,9 @@
       <i> (required)</i>
    </xsl:template>
    
-   <xsl:template match="m:flag"/>
+   <xsl:template match="flag"/>
    
-   <xsl:template match="m:flag" mode="model">
+   <xsl:template match="flag" mode="model">
       <li>
          <xsl:text>Attribute </xsl:text>
          <a href="#{@name}" class="name">
@@ -135,20 +154,20 @@
          <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates select="@required"/>
          <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
-         <xsl:apply-templates select="m:description" mode="model"/>
-         <xsl:apply-templates select="m:remarks" mode="model"/>
+         <xsl:apply-templates select="description" mode="model"/>
+         <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
    
    
    <!-- Empty model elements (whether by accident or design) will be dropped. -->
-   <xsl:template match="m:model[not(*)]" priority="3"/>
+   <xsl:template match="model[not(*)]" priority="3"/>
       
-   <xsl:template match="m:model">
+   <xsl:template match="model">
       <div class="model">
          <p>The <xsl:apply-templates select="../@name"/> element has the following contents <xsl:if test="count(*) > 1"> (in order)</xsl:if>:</p>
          <ul>
-            <xsl:apply-templates select="../m:flag" mode="model"/>
+            <xsl:apply-templates select="../flag" mode="model"/>
            <xsl:apply-templates/>
          </ul>
       </div>
@@ -156,7 +175,7 @@
 
    
    
-   <xsl:template  match="m:assembly | m:field">
+   <xsl:template  match="assembly | field">
       <li>
          <xsl:text>A</xsl:text>
          <xsl:if test="not(translate(substring(@named,1,1),'AEIOUaeiuo',''))">n</xsl:if>
@@ -165,8 +184,8 @@
          <xsl:text> element </xsl:text>
          <xsl:apply-templates select="." mode="cardinality"/>
             
-          <xsl:apply-templates select="m:description" mode="model"/>
-         <xsl:apply-templates select="m:remarks" mode="model"/>
+          <xsl:apply-templates select="description" mode="model"/>
+         <xsl:apply-templates select="remarks" mode="model"/>
       </li>
    </xsl:template>
 
@@ -174,32 +193,45 @@
    
    <xsl:template match="*[@required='yes']" mode="cardinality"> (<i>one</i>)</xsl:template>
    
-   <xsl:template  match="m:assemblies | m:fields">
+   <xsl:template  match="assemblies | fields">
       <li class="assemblies">
          <a class="name" href="#{@named}"><xsl:apply-templates select="@named"/></a> elements (<i>zero or more</i>)<xsl:text/>         
          
-         <xsl:apply-templates select="m:description | m:remarks" mode="model"/>
+         <xsl:apply-templates select="description | remarks" mode="model"/>
       </li>
    </xsl:template>
 
-   <xsl:template  match="m:example">
-      <div class="example">
-         <xsl:apply-templates select="m:description"/>
+   <xsl:template match="example[empty(* except (description | remarks))]"/>
+   
+    <xsl:template match="example">
+         <xsl:apply-templates select="description"/>
          <pre class="xml">
            <xsl:apply-templates select="*" mode="as-example"/>
          </pre>
-         <xsl:apply-templates select="m:remarks"/>
-      </div>
+         <xsl:apply-templates select="remarks"/>
+      
    </xsl:template>
    
-   <xsl:template match="m:*" mode="as-example"/>
+  <!-- <xsl:template mode="get-example" match="example">
+      <xsl:apply-templates select="*" mode="as-example"/>
+   </xsl:template>-->
+   
+    <!--Not available in SaxonHE.-->
+    <!--<xsl:template mode="get-example" match="example[@href castable as xs:anyURI]">
+      <xsl:variable name="example">
+        <xsl:evaluate context-item="document(@href)" xpath="@path"  namespace-context="."/>
+      </xsl:variable>
+      <xsl:apply-templates select="$example/*" mode="as-example"/>
+   </xsl:template>-->
+   
+   <xsl:template match="m:*" xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0" mode="as-example"/>
       
    <xsl:template match="*" mode="as-example">
       <xsl:apply-templates select="." mode="serialize"/>
    </xsl:template>
    
    
-   <xsl:template match="m:code[. = /*/*[@show-docs='xml' or @show-docs='xml json']/@name]">
+   <xsl:template match="code[. = /*/*[@show-docs='xml' or @show-docs='xml json']/@name]">
       <a href="#{.}" class="name">&lt;<xsl:text/>
          <xsl:apply-templates/>><xsl:text/>
       </a>

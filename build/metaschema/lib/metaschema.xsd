@@ -235,10 +235,13 @@
       <xs:sequence>
       <xs:element minOccurs="0" ref="m:description"/>
       <xs:element minOccurs="0" ref="m:remarks"/>
-      <xs:choice>
+      <xs:choice minOccurs="0">
         <xs:any namespace="http://csrc.nist.gov/ns/oscal/1.0"/>
       </xs:choice>
     </xs:sequence>
+      <xs:attribute name="href" type="xs:anyURI"/>
+      <xs:attribute name="path" type="xs:string"/>
+      
       
     </xs:complexType>
   </xs:element>

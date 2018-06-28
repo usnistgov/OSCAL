@@ -13,7 +13,7 @@
    
    <import href="oscal-catalog-metaschema.xml"/>
    
-   <define-assembly name="profile" group-as="profiles">
+   <define-assembly name="profile" group-as="profiles" show-docs="xml json">
       <formal-name>Profile</formal-name>
       <description>In reference to a catalog (or other resource such as profile or framework), a selection
           and configuration of controls, maintained separately</description>
@@ -32,7 +32,7 @@
             <assembly named="modify"/>
       </model>
    </define-assembly>
-   <define-assembly name="import" group-as="imports">
+   <define-assembly name="import" group-as="imports" show-docs="xml json">
       <formal-name>Import resource</formal-name>
       <description>Designating a catalog, profile or other resource for controls</description>
       <remarks>
@@ -56,7 +56,7 @@
       </model>
    </define-assembly>
    <!-- presence of element merge means to merge (not merely aggregate) -->
-   <define-assembly name="merge">
+   <define-assembly name="merge" show-docs="xml json">
       <formal-name>Merge controls</formal-name>
       <description>Merge controls in resolution</description>
       <remarks>
@@ -76,7 +76,7 @@
             </choice>
       </model>
    </define-assembly>
-   <define-field name="combine" as="empty">
+   <define-field name="combine" as="empty" show-docs="xml json">
       <flag name="method">
          <value>use-first</value>
          <value>merge</value>
@@ -85,19 +85,19 @@
       <formal-name>Combination rule</formal-name>
       <description>Whether and how to combine multiple (competing) versions of the same control</description>
    </define-field>
-   <define-field name="as-is" as="boolean">
+   <define-field name="as-is" as="boolean" show-docs="xml json">
       <formal-name>As is</formal-name>
       <description>Merge controls into groups reflecting their catalog(s) of origin</description>
      
    </define-field>
-   <define-flag name="method" datatype="string">
+   <define-flag name="method" datatype="string" show-docs="xml json">
       <formal-name>Combination method</formal-name>
       <description>How clashing controls and subcontrols should be handled</description>
       <!--<value>use-first</value>
       <value>merge</value>
       <value>keep</value>-->
    </define-flag>
-   <define-assembly name="custom" group-as="customs">
+   <define-assembly name="custom" group-as="customs" show-docs="xml json">
       <formal-name>Custom grouping</formal-name>
       <description>A defined (re)organization for controls; nb serves as another selector as well as sorter</description>
       <model>
@@ -108,7 +108,7 @@
          </choice>
       </model>
    </define-assembly>
-   <define-assembly name="group" group-as="groups">
+   <define-assembly name="group" group-as="groups" show-docs="xml json">
       <formal-name>Control group</formal-name>
       <description>As in catalogs, a group of (selected) controls or of groups of controls</description>
       <model>
@@ -119,7 +119,7 @@
          </choice>
       </model>
    </define-assembly>
-   <define-assembly name="modify" group-as="modifys">
+   <define-assembly name="modify" group-as="modifys" show-docs="xml json">
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or emend controls in resolution</description>
       <model>
@@ -128,7 +128,7 @@
       </model>
    </define-assembly>
    <!-- Can have either 'all' or (a set of) 'call' -->
-   <define-assembly name="include" group-as="includes">
+   <define-assembly name="include" group-as="includes" show-docs="xml json">
       <formal-name>Include controls</formal-name>
       <description>Which controls and subcontrols to include from the resource (source catalog) being
           imported</description>
@@ -152,7 +152,7 @@
     But downstream (Schematron) might detect inelegant or inoperable combinations of include/call and exclude/call
   -->
    <!-- Only 'yes' should have any effect; processors should assume 'no' when implicit -->
-   <define-field name="all" as="empty">
+   <define-field name="all" as="empty" show-docs="xml json">
       <flag name="with-subcontrols">
          <value>yes</value>
       </flag>
@@ -196,7 +196,7 @@
     by the given @id
     when @with-subcontrols is used, it must be @control-id
   -->
-   <define-field name="call" group-as="id-selectors" as="empty">
+   <define-field name="call" group-as="id-selectors" as="empty" show-docs="xml json">
        <!-- instead of using `choice` here we could use Schematron e.g. count(@control-id|@subcontrol)=1 -->
       <flag name="control-id" datatype="NCName"/>
       <flag name="subcontrol-id" datatype="NCName"/>
@@ -227,7 +227,7 @@
     controls or subcontrols may be included.
     nb this means it is possible to include subcontrols w/o their controls, for later combination w/ other includes
   -->
-   <define-field name="match" group-as="pattern-selectors" as="empty">
+   <define-field name="match" group-as="pattern-selectors" as="empty" show-docs="xml json">
       <flag name="pattern"/>
       <flag name="order">
          <value>keep</value>
@@ -242,7 +242,7 @@
       </flag><formal-name>Match controls and subcontrols by identifier</formal-name>
       <description>Select controls by (regular expression) match on ID</description>
    </define-field>
-   <define-assembly name="exclude" group-as="excludes">
+   <define-assembly name="exclude" group-as="excludes" show-docs="xml json">
       <formal-name>Exclude controls</formal-name>
       <description>Which controls and subcontrols to exclude from the resource (source catalog) being
           imported</description>
@@ -258,7 +258,7 @@
       </model>
    </define-assembly>
    
-   <define-assembly group-as="param-settings" name="set-param" address="id">
+   <define-assembly group-as="param-settings" name="set-param" address="id" show-docs="xml json">
       <flag name="id" datatype="ID" required="yes"/>
       <flag name="class"/>
       <flag name="depends-on" datatype="IDREF"/>
@@ -277,9 +277,12 @@
          <fields named="link" group-as="links"/>
          <assemblies named="part" group-as="parts"/>
       </model>
+       <!--Not working only b/c SaxonHE does not support eval--> 
+         <example href="../../content/fedramp.gov/FedRAMP_HIGH-baseline_profile.xml"
+               path="//oscal:set-param[@param-id='au-8.1_prm_1']"/>
    </define-assembly>
 
-   <define-assembly name="alter" group-as="alterations">
+   <define-assembly name="alter" group-as="alterations" show-docs="xml json">
       <flag name="control-id" datatype="NCName"/>
       <flag name="subcontrol-id" datatype="NCName"/>
       <formal-name>Alteration</formal-name>
@@ -293,7 +296,7 @@
       </model>
    </define-assembly>
    
-   <define-field as="empty" name="remove" group-as="removals">
+   <define-field as="empty" name="remove" group-as="removals" show-docs="xml json">
       <flag name="class-ref" datatype="NMTOKENS"/>
       <flag name="id-ref"    datatype="NCName"/>
       <flag name="item-name" datatype="NMTOKENS"/>
@@ -309,7 +312,7 @@
             <code>add</code> to add it back again with changes.</p>
       </remarks>
    </define-field>
-   <define-assembly name="add" group-as="additions">
+   <define-assembly name="add" group-as="additions" show-docs="xml json">
       <flag name="position">
          <value>before</value>
          <value>after</value>
@@ -327,7 +330,7 @@
          <assembly named="references"/>
       </model>
    </define-assembly>
-   <define-flag datatype="NCName" name="control-id">
+   <define-flag datatype="NCName" name="control-id" show-docs="xml json">
       <formal-name>Control ID</formal-name>
       <description>Value of the 'id' flag on a target control</description>
       <!--<value>before</value>
@@ -335,20 +338,20 @@
       <value>starting</value>
       <value>ending</value>-->
    </define-flag>
-   <define-flag datatype="NCName" name="with-control">
+   <define-flag datatype="NCName" name="with-control" show-docs="xml json">
       <formal-name>Include control with subcontrol</formal-name>
       <description>Whether a control should be implicitly included, if not called.</description>
       <!--<value>yes</value>
       <value>no</value>-->
    </define-flag>
-   <define-flag datatype="NCName" name="with-subcontrols">
+   <define-flag datatype="NCName" name="with-subcontrols" show-docs="xml json">
       <formal-name>Include subcontrols with control</formal-name>
       <description>Whether subcontrols should be implicitly included, if not called.</description>
       <!--<value>yes</value>
       <value>no</value>-->
    </define-flag>
    
-   <define-flag datatype="NCName" name="subcontrol-id">
+   <define-flag datatype="NCName" name="subcontrol-id" show-docs="xml json">
       <formal-name>Control ID</formal-name>
       <description>Value of the 'id' flag on a target subcontrol</description>
       <!--<value>before</value>
@@ -356,18 +359,18 @@
       <value>starting</value>
       <value>ending</value>-->
    </define-flag>
-   <define-flag datatype="string" name="pattern">
+   <define-flag datatype="string" name="pattern" show-docs="xml json">
       <formal-name>Pattern</formal-name>
       <description>A regular expression matching the IDs of one or more controls or subcontrols to be selected</description>
    </define-flag>
-   <define-flag datatype="NCName" name="order">
+   <define-flag datatype="NCName" name="order" show-docs="xml json">
       <formal-name>Pattern</formal-name>
       <description>A regular expression matching the IDs of one or more controls or subcontrols to be selected</description>
       <!--<value>keep</value>
       <value>ascending</value>
       <value>descending</value>-->
    </define-flag>
-   <define-flag datatype="NCName" name="position">
+   <define-flag datatype="NCName" name="position" show-docs="xml json">
       <formal-name>Position</formal-name>
       <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
       <!--<value>before</value>
@@ -375,15 +378,15 @@
       <value>starting</value>
       <value>ending</value>-->
    </define-flag>
-   <define-flag datatype="NMTOKENS" name="class-ref">
+   <define-flag datatype="NMTOKENS" name="class-ref" show-docs="xml json">
       <formal-name>References by class</formal-name>
       <description>Items to remove, by class</description>
    </define-flag>
-   <define-flag datatype="NCName" name="id-ref">
+   <define-flag datatype="NCName" name="id-ref" show-docs="xml json">
       <formal-name>References by ID</formal-name>
       <description>Items to remove, by ID</description>
    </define-flag>
-   <define-flag datatype="NMTOKENS" name="item-name">
+   <define-flag datatype="NMTOKENS" name="item-name" show-docs="xml json">
       <formal-name>References by name</formal-name>
       <description>Items to remove, by item type (name), e.g. title or prop</description>
    </define-flag>
