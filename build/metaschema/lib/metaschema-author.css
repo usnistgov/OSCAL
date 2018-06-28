@@ -13,16 +13,26 @@ define-assembly,
 define-field,
 define-flag      { margin-top: 1ex; margin-bottom: 1ex; border: thin inset black; padding: 0.5em }
 
+
 define-assembly:before,
 define-field:before,
 define-flag:before      
  { content:
  oxy_name() 
+ oxy_textfield(edit, '@name', columns, 12) 
+    }
+
+
+define-assembly[group-as]:before,
+define-field[group-as]:before,
+define-flag[group-as]:before      
+ { content:
+ oxy_name() 
  oxy_textfield(edit, '@name', columns, 12)
  ', group as '
  oxy_textfield(edit, '@group-as', columns, 12) 
-   
- }
+    }
+
 define-assembly *,
 define-field    *,
 define-flag     *  { margin: 0em }
@@ -64,7 +74,7 @@ example { background-color: lavender }
 example *:before { content: '<' oxy_name() '>'; font-size: 80%  }
 example *:after { content: '</' oxy_name() '>'; font-size: 80%  }
 
-model > *  { padding-right: 2em; font-size: 80%  }
+model { padding-left: 0.5em; border-left: medium solid blue; font-size: 80%; padding-right: 2em }
 
 flag:after { content:
  oxy_name()

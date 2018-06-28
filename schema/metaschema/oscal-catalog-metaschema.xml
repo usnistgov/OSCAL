@@ -348,24 +348,20 @@
     </model>
   </define-assembly>
 
-  <!--<define-field as="mixed" group-as="citations" name="citation">
-    <flag name="href" datatype="anyURI"/>
-  </define-field>-->
-
-
   <define-field as="mixed" group-as="citations" name="citation" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <flag name="href" datatype="anyURI"/>
     <formal-name>Citation</formal-name>
     <description>Citation of a resource</description>
     <remarks>
-      <p>Echoes the NISO JATS (and NISO STS) <code>mixed-citation</code> element.</p>
+      <p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
+        matches with bibliograpical databases, it is recommended a canonical
+      identifier such as a DOI be provided for any citation.</p>
     </remarks>
     <example>
       <o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
     </example>
   </define-field>
-
 
   <define-flag name="id" datatype="ID" show-docs="xml json">
     <formal-name>ID / identifier</formal-name>
