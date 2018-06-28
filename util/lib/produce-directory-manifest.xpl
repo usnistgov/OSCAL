@@ -40,7 +40,7 @@
   
   <p:xslt name="render-markdown">
     <p:input port="stylesheet">
-      <p:document href="../XSLT/html-to-markdown.xsl"/>
+      <p:document href="html-to-markdown.xsl"/>
     </p:input>
   </p:xslt>
   
