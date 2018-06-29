@@ -1,5 +1,7 @@
 #!/bin/bash
-# Converts OSCAL into XPath's JSON XML syntax, then converts that to JSON
+
+# Produces Metaschema artifacts from an OSCAL Metaschema metaschema
+# Including XML and JSON schemas, conversion utilities (XSLTs) and Markdown documentation
 
 METASCHEMAXML=$1
 
@@ -26,20 +28,19 @@ if [ ! -f $SAXON ]; then
     exit 1
 fi
 
-# Saxon CL documented here: http://www.saxonica.com/documentation9.5/using-xsl/commandline.html
+# Saxon CL documented here: http://www.saxonica.com/documentation9.8/using-xsl/commandline.html
 
 LIBDIR=$OSCALDIR/build/metaschema
 XSDDIR=$OSCALDIR/schema/xml
 JSONDIR=$OSCALDIR/schema/json
 CONVERSION_DIR=$OSCALDIR/util/convert
 DOCSDIR=$OSCALDIR/docs/source/includes/schema
-# _catalogJSON.md
 
 MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xsl:$LIBDIR/xml/produce-xsd.xsl"
 MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/json/produce-json-schema.xsl"
 
-DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/_$BASE-XML.md -xsl:$LIBDIR/xml/metaschema-xml-docs-md.xsl"
-DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/_$BASE-JSON.md -xsl:$LIBDIR/json/metaschema-json-docs-md.xsl"
+DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/_${BASE}XML.md -xsl:$LIBDIR/xml/metaschema-xml-docs-md.xsl"
+DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/_${BASE}JSON.md -xsl:$LIBDIR/json/metaschema-json-docs-md.xsl"
 
 CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
 CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"
@@ -50,14 +51,14 @@ echo Producing JSON and XML schemas and tools from $METASCHEMAXML ...
 cp -u $LIBDIR/OSCAL/oscal-prose-module.xsd $OSCALDIR/schema/xml
 echo _ Updated OSCAL prose XSD module
 $MAKE_XSD
-echo _ Made XSD ______________________ $XSDDIR/$BASENAME-schema.xsd
+echo _ Made XSD ________________________ $XSDDIR/$BASENAME-schema.xsd
 $MAKE_JSC
-echo _ Made JSON Schema ______________ $JSONDIR/$BASENAME-schema.json
+echo _ Made JSON Schema ________________ $JSONDIR/$BASENAME-schema.json
 $CONV_XML
-echo _ Made XML-to-JSON converter ____ $CONVERSION_DIR/$BASENAME-xml-converter.xsl
+echo _ Made XML-to-JSON converter ______ $CONVERSION_DIR/$BASENAME-xml-converter.xsl
 $CONV_JSON
-echo _ Made JSON-to-XML converter ____ $CONVERSION_DIR/$BASENAME-json-converter.xsl
+echo _ Made JSON-to-XML converter ______ $CONVERSION_DIR/$BASENAME-json-converter.xsl
 $DOC_XML
 $DOC_JSON
-echo _ Made XML and JSON documentation ________ $DOCSDIR/_$BASE-XML.md $DOCSDIR/_$BASE-JSON.md
+echo _ Made XML and JSON documentation _ $DOCSDIR/_${BASE}XML.md $DOCSDIR/_${BASE}JSON.md
 echo
