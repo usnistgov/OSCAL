@@ -21,7 +21,7 @@
 
     <xsl:variable name="write-options" as="map(*)">
         <xsl:map>
-            <xsl:map-entry key="'indent'">false</xsl:map-entry>
+            <xsl:map-entry key="'indent'">true</xsl:map-entry>
         </xsl:map>
     </xsl:variable>
 
