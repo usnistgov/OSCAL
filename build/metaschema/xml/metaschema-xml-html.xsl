@@ -34,7 +34,7 @@
             <xsl:call-template name="css"/>
          </head>
          <body>
-            <!--<xsl:apply-templates/>-->
+            <xsl:apply-templates/>
             <xsl:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>
          </body>
       </html>

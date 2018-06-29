@@ -25,7 +25,7 @@
    <xs:element name="import">
       <xs:annotation>
          <xs:documentation>
-            <b>Import resource: </b>Designating a catalog, profile or other resource for controls</xs:documentation>
+            <b>Import resource: </b>Designating a catalog or profile as a source controls</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
