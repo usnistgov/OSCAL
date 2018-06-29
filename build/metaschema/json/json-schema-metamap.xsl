@@ -140,6 +140,9 @@
         </string>
     </xsl:template>
     
+<!-- Note yet implemented -->
+    <xsl:template match="any" mode="property-name"/>
+    
     <xsl:template match="prose" mode="property-name">
         <string>prose</string>
     </xsl:template>

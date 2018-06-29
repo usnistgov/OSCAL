@@ -45,8 +45,7 @@
             "references",
             "sections",
             "groups",
-            "controls",
-            "" ] } },
+            "controls" ] } },
       "declarations" : 
       { "title" : "Declarations",
         "description" : "Either a reference to a declarations file, or a set of declarations",
@@ -92,8 +91,7 @@
             "title",
             "prose",
             "sections",
-            "references",
-            "" ] } },
+            "references" ] } },
       "group" : 
       { "title" : "Control Group",
         "description" : "A group of controls, or of groups of controls.",
@@ -140,8 +138,7 @@
             "parts",
             "groups",
             "controls",
-            "references",
-            "" ] } },
+            "references" ] } },
       "control" : 
       { "title" : "Control",
         "description" : "A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.",
@@ -187,8 +184,7 @@
             "links",
             "parts",
             "subcontrols",
-            "references",
-            "" ] } },
+            "references" ] } },
       "subcontrols" : 
       { "$id" : "#/definitions/subcontrols",
         "type" : "object",
@@ -235,8 +231,7 @@
             "props",
             "links",
             "parts",
-            "references",
-            "" ] } },
+            "references" ] } },
       "title" : 
       { "title" : "Title",
         "description" : "A title for display and navigation, exclusive of more specific properties",
@@ -314,8 +309,7 @@
             "guidance",
             "value",
             "select",
-            "links",
-            "" ] } },
+            "links" ] } },
       "label" : 
       { "title" : "Parameter label",
         "description" : "A placeholder for a missing value, in display.",
@@ -362,8 +356,7 @@
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "prose",
-            "" ] } },
+          [ "prose" ] } },
       "value" : 
       { "title" : "Value constraint",
         "description" : "Indicates a permissible value for a parameter or property",
@@ -385,8 +378,7 @@
         "propertyNames" : 
         { "enum" : 
           [ "how-many",
-            "alternatives",
-            "" ] } },
+            "alternatives" ] } },
       "choice" : 
       { "title" : "Choice",
         "description" : "A value selection among several such options",
@@ -428,8 +420,7 @@
             "props",
             "prose",
             "parts",
-            "links",
-            "" ] } },
+            "links" ] } },
       "link" : 
       { "title" : "Link",
         "description" : "A line or paragraph with a hypertext link",
@@ -469,8 +460,7 @@
         { "enum" : 
           [ "id",
             "links",
-            "refs",
-            "" ] } },
+            "refs" ] } },
       "ref" : 
       { "title" : "Reference",
         "description" : "A reference, with one or more citations to standards, related documents, or other resources",
@@ -490,8 +480,7 @@
         { "enum" : 
           [ "id",
             "citations",
-            "prose",
-            "" ] } },
+            "prose" ] } },
       "citation" : 
       { "title" : "Citation",
         "description" : "Citation of a resource",
