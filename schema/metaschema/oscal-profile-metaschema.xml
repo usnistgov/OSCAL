@@ -12,7 +12,7 @@
    <short-name>oscal-profile</short-name>
 
 <remarks>
-  <p>A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is <code>profile</code>.<p>
+  <p>A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
 </remarks>
    <import href="oscal-catalog-metaschema.xml"/>
 
@@ -42,14 +42,14 @@
       <remarks>
          <p>An <code>import</code> indicates a source whose controls are to be included (referenced
           and modified) in a profile. This source will either be a catalog whose controls are given
-            (<q>by value</q>), or a profile with its own control imports (with possible settings
+            (<q>by value</q>), or a profile with its own control imports (with possible settings.</p>
          <p>The contents of the <code>import</code> element indicate which controls and subcontrols
           from the source, will be included. Controls and subcontrols may be either selected (using
           an <code>include</code> element) or de-selected (using an <code>exclude</code> element)
           from the source catalog or profile.</p>
          <p>When no <code>include</code> is given (whether an <code>exclude</code> is given or not),
             an <code>include</code>/<code>all</code> is assumed (that is, all controls will be
-            included by default). So an empty <code>import</code> implies
+            included by default).</p>
       </remarks>
       <model>
          <assembly named="include"/>
