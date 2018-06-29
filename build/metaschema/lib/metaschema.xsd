@@ -5,8 +5,8 @@
   targetNamespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
 
   <!-- Import any OSCAL schemas needed for samples... -->
-  <xs:import namespace="http://csrc.nist.gov/ns/oscal/1.0"
-    schemaLocation="../../../schema/xml/oscal-catalog-schema.xsd"/>
+  <!--<xs:import namespace="http://csrc.nist.gov/ns/oscal/1.0"
+    schemaLocation="../../../schema/xml/oscal-catalog-schema.xsd"/>-->
   <xs:element name="METASCHEMA">
     <xs:complexType>
       
@@ -236,7 +236,7 @@
       <xs:element minOccurs="0" ref="m:description"/>
       <xs:element minOccurs="0" ref="m:remarks"/>
       <xs:choice minOccurs="0">
-        <xs:any namespace="http://csrc.nist.gov/ns/oscal/1.0"/>
+        <xs:any namespace="##other" processContents="lax"/>
       </xs:choice>
     </xs:sequence>
       <xs:attribute name="href" type="xs:anyURI"/>

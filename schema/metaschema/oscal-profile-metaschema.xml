@@ -32,14 +32,15 @@
             <assembly named="modify"/>
       </model>
    </define-assembly>
+   
    <define-assembly name="import" group-as="imports" show-docs="xml json">
       <formal-name>Import resource</formal-name>
-      <description>Designating a catalog, profile or other resource for controls</description>
+      <description>Designating a catalog or profile as a source controls</description>
       <remarks>
          <p>An <code>import</code> indicates a source whose controls are to be included (referenced
           and modified) in a profile. This source will either be a catalog whose controls are given
-            (<q>by value</q>), or a profile with its own control imports. In the latter case,
-          profiles are expected to be resolved recursively.</p>
+            (<q>by value</q>), or a profile with its own control imports (with possible settings
+            or modifications for them) from another catalog or profile.</p>
          <p>The contents of the <code>import</code> element indicate which controls and subcontrols
           from the source, will be included. Controls and subcontrols may be either selected (using
           an <code>include</code> element) or de-selected (using an <code>exclude</code> element)
@@ -48,12 +49,18 @@
             an <code>include</code>/<code>all</code> is assumed (that is, all controls will be
             included by default). So an empty <code>import</code> implies
             <code>include</code>/<code>all</code> indicating all controls are to be included.</p>
-            
       </remarks>
       <model>
          <assembly named="include"/>
          <assembly named="exclude"/>
       </model>
+      <example>
+         <import xmlns="http://csrc.nist.gov/ns/oscal/1.0" href="catalog.xml">
+            <include>
+               <call control-id="ac-1"/>
+            </include>
+         </import>
+      </example>
    </define-assembly>
    <!-- presence of element merge means to merge (not merely aggregate) -->
    <define-assembly name="merge" show-docs="xml json">

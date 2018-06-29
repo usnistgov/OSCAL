@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../produce-xsd.xsl"
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../xml/produce-xsd.xsl"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     
-    <x:scenario label="for METASCHEMA input, produce a schema" xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-        >
+    <x:scenario label="for METASCHEMA input, produce a schema" xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
         <x:context>
             <METASCHEMA top="controls" use="control"/>
         </x:context>
