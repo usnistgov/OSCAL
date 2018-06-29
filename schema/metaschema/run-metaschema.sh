@@ -6,6 +6,7 @@ METASCHEMAXML=$1
 # munge input file name: oscal-catalog-metaschema.xml becomes oscal-catalog (and later, oscal-catalog-schema)
 TRIMNAME=$(sed 's/-metaschema//' <<< $METASCHEMAXML)
 BASENAME=$(sed 's/.xml//'  <<< $TRIMNAME)
+BASE=$(sed 's/oscal-//'  <<< $BASENAME)
 
 OSCALDIR=../..
 
@@ -37,8 +38,8 @@ DOCSDIR=$OSCALDIR/docs/source/includes/schema
 MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xsl:$LIBDIR/xml/produce-xsd.xsl"
 MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/json/produce-json-schema.xsl"
 
-DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/$BASENAME-XML.md -xsl:$LIBDIR/xml/metaschema-xml-docs-md.xsl"
-DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/$BASENAME-JSON.md -xsl:$LIBDIR/json/metaschema-json-docs-md.xsl"
+DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/_$BASE-XML.md -xsl:$LIBDIR/xml/metaschema-xml-docs-md.xsl"
+DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/_$BASE-JSON.md -xsl:$LIBDIR/json/metaschema-json-docs-md.xsl"
 
 CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
 CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"
@@ -58,5 +59,5 @@ $CONV_JSON
 echo _ Made JSON-to-XML converter ____ $CONVERSION_DIR/$BASENAME-json-converter.xsl
 $DOC_XML
 $DOC_JSON
-echo _ Made XML and JSON documentation ________ $DOCSDIR/$BASENAME-XML.md $DOCSDIR/$BASENAME-JSON.md
+echo _ Made XML and JSON documentation ________ $DOCSDIR/_$BASE-XML.md $DOCSDIR/_$BASE-JSON.md
 echo
