@@ -2,11 +2,13 @@
 
 ## OSCAL Profile Metaschema: JSON Schema 
 
-The short name (file identifier) for this schema shall be oscal-profile. It is used internally when an identifier is called for, and may appear in file names of schema artifacts. 
+The short name (file identifier) for this schema shall be oscal-profile. It is used internally when an identifier is called for, and may appear in file names of schema artifacts.  
+
+A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is [profile](#profile-profile-object).  
 
 ### Profile: `profile` object
 
-In reference to a catalog (or other resource such as profile or framework), a selection and configuration of controls, maintained separately
+Each OSCAL profile is defined by a Profile element
 
 A [profile](#profile-profile-object) will appear as an object, a property of the root object.
 
@@ -20,7 +22,7 @@ An OSCAL document that describes a selection with possible modification of multi
 
 ### Import resource: `import` object
 
-Designating a catalog or profile as a source controls
+An Import element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile.
 
 An [import](#import-resource-import-object) will appear as a data value in an array property.
 
@@ -29,11 +31,11 @@ An [import](#import-resource-import-object) object has the following properties:
 * An [include](#include-controls-include-object) object  
 * An [exclude](#exclude-controls-exclude-object) object   
 
-An `import` indicates a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given ("by value"), or a profile with its own control imports (with possible settings or modifications for them) from another catalog or profile. 
+An `import` indicates a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given ("by value"), or a profile with its own control imports (with possible settings. 
 
 The contents of the `import` element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an [include](#include-controls-include-object) element) or de-selected (using an [exclude](#exclude-controls-exclude-object) element) from the source catalog or profile. 
 
-When no [include](#include-controls-include-object) is given (whether an [exclude](#exclude-controls-exclude-object) is given or not), an [include](#include-controls-include-object)/[all](#include-all-all-object) is assumed (that is, all controls will be included by default). So an empty `import` implies [include](#include-controls-include-object)/[all](#include-all-all-object) indicating all controls are to be included. 
+When no [include](#include-controls-include-object) is given (whether an [exclude](#exclude-controls-exclude-object) is given or not), an [include](#include-controls-include-object)/[all](#include-all-all-object) is assumed (that is, all controls will be included by default). 
 
 ```
 <import href="catalog.xml">
@@ -47,7 +49,7 @@ When no [include](#include-controls-include-object) is given (whether an [exclud
 
 ### Merge controls: `merge` object
 
-Merge controls in resolution
+A Merge element merges controls in resolution.
 
 A [merge](#merge-controls-merge-object) will appear as a property on an object.
 
@@ -60,13 +62,13 @@ A [merge](#merge-controls-merge-object) object has the following properties:
   * An [as-is](#as-is-as-is-object) object  
   * A [custom](#custom-grouping-custom-object) object    
 
-Indicates (by its presence) that controls included in a profile via different and multiple import pathways, are to be merged in resolution. Element contents of the `merge` can be used to "reorder" or "restructure" controls (that is, indicate their order and/or structure in resolution). 
+The contents of the `merge` element may be used to "reorder" or "restructure" controls by indicating an order and/or structure in resolution. 
 
-Implicitly, a merge statement is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a merge statement, will not be merged into (will be dropped) in the resulting resolution.  
+Implicitly, a `merge` element is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a `merge` element, will not be merged into (will be dropped) in the resulting resolution.  
 
 ### Combination rule: `combine` object
 
-Whether and how to combine multiple (competing) versions of the same control
+A Combine element defines whether and how to combine multiple (competing) versions of the same control
 
 A [combine](#combination-rule-combine-object) will appear as a property on an object.
 
@@ -76,9 +78,13 @@ The `combine` object has a property:
 
 * String [method](#combination-method-method-object) 
 
+Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control or a subcontrol).  
+
+This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.  
+
 ### As is: `as-is` object
 
-Merge controls into groups reflecting their catalog(s) of origin
+An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.
 
 `as-is` will appear as a string property.
 
@@ -96,7 +102,7 @@ As an explicit property, `method` appears on [combine](#combination-rule-combine
 
 ### Custom grouping: `custom` object
 
-A defined (re)organization for controls; nb serves as another selector as well as sorter
+A Custom element frames a structure for embedding represented controls in resolution.
 
 A [custom](#custom-grouping-custom-object) will appear as a property on an object.
 
@@ -108,6 +114,10 @@ A [custom](#custom-grouping-custom-object) object has the property
   * An array `groups` containing [group](#control-group-group-object) data items  
   * An array `id-selectors` containing [call](#call-control-or-subcontrol-call-object) data items  
   * An array `pattern-selectors` containing [match](#match-controls-and-subcontrols-by-identifier-match-object) data items    
+
+The `custom` element represents a custom arrangement or organization of controls in the resolution of a catalog.  
+
+While the [as-is](#as-is-as-is-object) element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.  
 
 ### Control group: `group` object
 
@@ -124,7 +134,7 @@ A [group](#control-group-group-object) object has the property
 
 ### Modify controls: `modify` object
 
-Set parameters or emend controls in resolution
+Set parameters or amend controls in resolution
 
 A [modify](#modify-controls-modify-object) will appear as a property on an object.
 
@@ -137,7 +147,7 @@ A [modify](#modify-controls-modify-object) object has the following properties:
 
 ### Include controls: `include` object
 
-Which controls and subcontrols to include from the resource (source catalog) being imported
+Specifies which controls and subcontrols to include from the resource (source catalog) being imported
 
 An [include](#include-controls-include-object) will appear as a property on an object.
 
@@ -212,7 +222,7 @@ An [exclude](#exclude-controls-exclude-object) object has the property
   * An array `id-selectors` containing [call](#call-control-or-subcontrol-call-object) data items  
   * An array `pattern-selectors` containing [match](#match-controls-and-subcontrols-by-identifier-match-object) data items    
 
-Use this as an alternative to [include](#include-controls-include-object) when all controls are to be included by default, and the profile wishes only to filter (remove) controls.  
+Within `exclude`, [all](#include-all-all-object) is not an option since it makes no sense. However, it also makes no sense to use exclude/call except with include/all; you would not want to include and exclude something by ID simultaneously. If this happens, an error condition will be reported.  
 
 ### Parameter Setting: `set-param` object
 
@@ -240,7 +250,7 @@ A [set-param](#parameter-setting-set-param-object) object has the following prop
 
 ### Alteration: `alter` object
 
-Generalized modifications to controls or subcontrols as expressed in a profile
+An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.
 
 An [alter](#alteration-alter-object) will appear as a data value in an array property.
 
@@ -251,11 +261,15 @@ An [alter](#alteration-alter-object) object has the following properties:
 * An array `removals` containing [remove](#removal-remove-object) data items  
 * An array `additions` containing [add](#addition-add-object) data items   
 
-For modifying parameters, use [set-param](#parameter-setting-set-param-object), which will provides traceability.  
+Use `@control-id` or `@subcontrol-id` to indicate the scope of alteration. 
+
+It is an error for two `alter` elements to apply to the same control or subcontrol. In practice, multiple alterations can be applied (together), but it creates confusion. 
+
+At present, no provision is made for altering many controls at once (for example, to systematically remove properties or add global properties); extending this element to match multiple control IDs could provide for this.  
 
 ### Removal: `remove` object
 
-Elements to be removed from a control or subcontrol, in resolution
+Specifies elements to be removed from a control or subcontrol, in resolution
 
 A [remove](#removal-remove-object) will appear as a data value in an array property.
 
@@ -271,7 +285,7 @@ To change an element, use `remove` to remove the element, then [add](#addition-a
 
 ### Addition: `add` object
 
-New contents to be spliced into controls or subcontrols, in resolution
+Specifies contents to be added into controls or subcontrols, in resolution
 
 An [add](#addition-add-object) will appear as a data value in an array property.
 

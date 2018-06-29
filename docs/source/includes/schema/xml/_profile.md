@@ -78,12 +78,14 @@ a:hover { text-decoration: underline }
          <h2 class="title">OSCAL Profile Metaschema: XML Schema</h2>
          <p>The short name (file identifier) for this schema shall be <i>oscal-profile</i>. It is used internally when an
          identifier is called for, and may appear in file names of schema artifacts.</p>
+         <div class="remarks">
+            <p class="p">A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is <a href="#profile" class="name">&lt;profile&gt;</a>.</p>
+         </div>
          <div class="define-assembly" id="profile">
             <h3>
                <b class="formal-name">Profile</b>:
             <code class="name">&lt;profile&gt;</code> element</h3>
-            <p class="description">In reference to a catalog (or other resource such as profile or framework), a selection
-          and configuration of controls, maintained separately</p>
+            <p class="description">Each OSCAL profile is defined by a Profile element</p>
             <div class="model">
                <p>The <code class="name">&lt;profile&gt;</code> element has the following contents  (in order):</p>
                <ul>
@@ -113,7 +115,8 @@ a:hover { text-decoration: underline }
             <h3>
                <b class="formal-name">Import resource</b>:
             <code class="name">&lt;import&gt;</code> element</h3>
-            <p class="description">Designating a catalog or profile as a source controls</p>
+            <p class="description">An Import element designates a catalog, profile, or other resource to be
+         included (referenced and potentially modified) by this profile.</p>
             <div class="model">
                <p>The <code class="name">&lt;import&gt;</code> element has the following contents  (in order):</p>
                <ul>
@@ -128,16 +131,14 @@ a:hover { text-decoration: underline }
             <div class="remarks">
                <p class="p">An <a href="#import" class="name">&lt;import&gt;</a> indicates a source whose controls are to be included (referenced
           and modified) in a profile. This source will either be a catalog whose controls are given
-            (<q>by value</q>), or a profile with its own control imports (with possible settings
-            or modifications for them) from another catalog or profile.</p>
+            (<q>by value</q>), or a profile with its own control imports (with possible settings.</p>
                <p class="p">The contents of the <a href="#import" class="name">&lt;import&gt;</a> element indicate which controls and subcontrols
           from the source, will be included. Controls and subcontrols may be either selected (using
           an <a href="#include" class="name">&lt;include&gt;</a> element) or de-selected (using an <a href="#exclude" class="name">&lt;exclude&gt;</a> element)
           from the source catalog or profile.</p>
                <p class="p">When no <a href="#include" class="name">&lt;include&gt;</a> is given (whether an <a href="#exclude" class="name">&lt;exclude&gt;</a> is given or not),
             an <a href="#include" class="name">&lt;include&gt;</a>/<a href="#all" class="name">&lt;all&gt;</a> is assumed (that is, all controls will be
-            included by default). So an empty <a href="#import" class="name">&lt;import&gt;</a> implies
-            <a href="#include" class="name">&lt;include&gt;</a>/<a href="#all" class="name">&lt;all&gt;</a> indicating all controls are to be included.</p>
+            included by default).</p>
             </div>
             <pre class="xml">
                <code class="tag">&lt;import href="catalog.xml"&gt;</code>
@@ -152,7 +153,7 @@ a:hover { text-decoration: underline }
             <h3>
                <b class="formal-name">Merge controls</b>:
             <code class="name">&lt;merge&gt;</code> element</h3>
-            <p class="description">Merge controls in resolution</p>
+            <p class="description">A Merge element merges controls in resolution.</p>
             <div class="model">
                <p>The <code class="name">&lt;merge&gt;</code> element has the following contents  (in order):</p>
                <ul>
@@ -172,20 +173,19 @@ a:hover { text-decoration: underline }
                </ul>
             </div>
             <div class="remarks">
-               <p class="p">Indicates (by its presence) that controls included in a profile via different and
-          multiple import pathways, are to be merged in resolution. Element contents of the
-            <a href="#merge" class="name">&lt;merge&gt;</a> can be used to <q>reorder</q> or <q>restructure</q> controls (that
-          is, indicate their order and/or structure in resolution).</p>
-               <p class="p">Implicitly, a merge statement is also a filter: controls that are included in a profile,
-          but not included (implicitly or explicitly) in the scope of a merge statement, will not be
-          merged into (will be dropped) in the resulting resolution.</p>
+               <p class="p">The contents of the <a href="#merge" class="name">&lt;merge&gt;</a> element may be used to <q>reorder</q> or
+         <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
+               <p class="p">Implicitly, a <a href="#merge" class="name">&lt;merge&gt;</a> element is also a filter: controls that are included in a
+         profile, but not included (implicitly or explicitly) in the scope of a <a href="#merge" class="name">&lt;merge&gt;</a> element,
+         will not be merged into (will be dropped) in the resulting resolution.</p>
             </div>
          </div>
          <div class="define-field" id="combine">
             <h3>
                <b class="formal-name">Combination rule</b>:
             <code class="name">&lt;combine&gt;</code> element</h3>
-            <p class="description">Whether and how to combine multiple (competing) versions of the same control</p>
+            <p class="description">A Combine element defines whether and how to combine multiple (competing)
+        versions of the same control</p>
             <div class="model">
                <p>The <code class="name">&lt;combine&gt;</code> element supports:</p>
                <ul>
@@ -194,13 +194,21 @@ a:hover { text-decoration: underline }
                      </a> (<i>optional</i>)</li>
                </ul>
             </div>
+            <div class="remarks">
+               <p class="p">Whenever combining controls from multiple (import) pathways, an issue arises of what to do with
+           clashing invocations (multiple competing versions of a control or a subcontrol). </p>
+               <p class="p">This setting permits a profile designer to apply a rule for the resolution of such cases.
+           In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be
+           useful for defining what to do when it occurs.</p>
+            </div>
          </div>
          <div class="define-field" id="as-is">
             <h3>
                <b class="formal-name">As is</b>:
             <code class="name">&lt;as-is&gt;</code> element</h3>
             <p>True whenever given (presence signifies Boolean value)</p>
-            <p class="description">Merge controls into groups reflecting their catalog(s) of origin</p>
+            <p class="description">An As-is element indicates that the controls should be structured in resolution as they are
+        structured in their source catalogs. It does not contain any elements or attributes.</p>
          </div>
          <div class="define-flag" id="method">
             <h3>
@@ -212,7 +220,7 @@ a:hover { text-decoration: underline }
             <h3>
                <b class="formal-name">Custom grouping</b>:
             <code class="name">&lt;custom&gt;</code> element</h3>
-            <p class="description">A defined (re)organization for controls; nb serves as another selector as well as sorter</p>
+            <p class="description">A Custom element frames a structure for embedding represented controls in resolution.</p>
             <div class="model">
                <p>The <code class="name">&lt;custom&gt;</code> element has the following contents :</p>
                <ul>
@@ -233,6 +241,12 @@ a:hover { text-decoration: underline }
                      </ul>
                   </li>
                </ul>
+            </div>
+            <div class="remarks">
+               <p class="p">The <a href="#custom" class="name">&lt;custom&gt;</a> element represents a custom arrangement or organization of controls in
+        the resolution of a catalog. </p>
+               <p class="p">While the <a href="#as-is" class="name">&lt;as-is&gt;</a> element provides for a restitution of a control set's organization
+        (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
             </div>
          </div>
          <div class="define-assembly" id="group">
@@ -266,7 +280,7 @@ a:hover { text-decoration: underline }
             <h3>
                <b class="formal-name">Modify controls</b>:
             <code class="name">&lt;modify&gt;</code> element</h3>
-            <p class="description">Set parameters or emend controls in resolution</p>
+            <p class="description">Set parameters or amend controls in resolution</p>
             <div class="model">
                <p>The <code class="name">&lt;modify&gt;</code> element has the following contents  (in order):</p>
                <ul>
@@ -285,7 +299,7 @@ a:hover { text-decoration: underline }
             <h3>
                <b class="formal-name">Include controls</b>:
             <code class="name">&lt;include&gt;</code> element</h3>
-            <p class="description">Which controls and subcontrols to include from the resource (source catalog) being
+            <p class="description">Specifies which controls and subcontrols to include from the resource (source catalog) being
           imported</p>
             <div class="model">
                <p>The <code class="name">&lt;include&gt;</code> element has the following contents :</p>
@@ -417,8 +431,9 @@ a:hover { text-decoration: underline }
                </ul>
             </div>
             <div class="remarks">
-               <p class="p">Use this as an alternative to <a href="#include" class="name">&lt;include&gt;</a> when all controls are to be included by default,
-         and the profile wishes only to filter (remove) controls.</p>
+               <p class="p">Within <a href="#exclude" class="name">&lt;exclude&gt;</a>, <a href="#all" class="name">&lt;all&gt;</a> is not an option since it makes no sense.
+         However, it also makes no sense to use exclude/call except with include/all; you would not want to
+         include and exclude something by ID simultaneously. If this happens, an error condition will be reported.</p>
             </div>
          </div>
          <div class="define-assembly" id="set-param">
@@ -477,7 +492,7 @@ a:hover { text-decoration: underline }
             <h3>
                <b class="formal-name">Alteration</b>:
             <code class="name">&lt;alter&gt;</code> element</h3>
-            <p class="description">Generalized modifications to controls or subcontrols as expressed in a profile</p>
+            <p class="description">An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</p>
             <div class="model">
                <p>The <code class="name">&lt;alter&gt;</code> element has the following contents  (in order):</p>
                <ul>
@@ -498,14 +513,19 @@ a:hover { text-decoration: underline }
                </ul>
             </div>
             <div class="remarks">
-               <p class="p">For modifying parameters, use <a href="#set-param" class="name">&lt;set-param&gt;</a>, which will provides traceability.</p>
+               <p class="p">Use <code>@control-id</code> or <code>@subcontrol-id</code> to indicate the scope of alteration.</p>
+               <p class="p">It is an error for two <a href="#alter" class="name">&lt;alter&gt;</a> elements to apply to the same control or subcontrol.
+         In practice, multiple alterations can be applied (together), but it creates confusion.</p>
+               <p class="p">At present, no provision is made for altering many controls at once (for example, to systematically
+            remove properties or add global properties); extending this element to match multiple control
+            IDs could provide for this.</p>
             </div>
          </div>
          <div class="define-field" id="remove">
             <h3>
                <b class="formal-name">Removal</b>:
             <code class="name">&lt;remove&gt;</code> element</h3>
-            <p class="description">Elements to be removed from a control or subcontrol, in resolution</p>
+            <p class="description">Specifies elements to be removed from a control or subcontrol, in resolution</p>
             <div class="model">
                <p>The <code class="name">&lt;remove&gt;</code> element supports:</p>
                <ul>
@@ -534,7 +554,7 @@ a:hover { text-decoration: underline }
             <h3>
                <b class="formal-name">Addition</b>:
             <code class="name">&lt;add&gt;</code> element</h3>
-            <p class="description">New contents to be spliced into controls or subcontrols, in resolution</p>
+            <p class="description">Specifies contents to be added into controls or subcontrols, in resolution</p>
             <div class="model">
                <p>The <code class="name">&lt;add&gt;</code> element has the following contents  (in order):</p>
                <ul>

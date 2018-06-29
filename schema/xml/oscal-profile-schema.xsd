@@ -8,11 +8,11 @@
    <xs:include schemaLocation="oscal-prose-module.xsd"/>
    <!--OSCAL Profile Metaschema-->
    <!--short name: oscal-profile-->
+   <!--A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is profile.-->
    <xs:element name="profile">
       <xs:annotation>
          <xs:documentation>
-            <b>Profile: </b>In reference to a catalog (or other resource such as profile or framework), a selection
-          and configuration of controls, maintained separately</xs:documentation>
+            <b>Profile: </b>Each OSCAL profile is defined by a Profile element</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -25,7 +25,8 @@
    <xs:element name="import">
       <xs:annotation>
          <xs:documentation>
-            <b>Import resource: </b>Designating a catalog or profile as a source controls</xs:documentation>
+            <b>Import resource: </b>An Import element designates a catalog, profile, or other resource to be
+         included (referenced and potentially modified) by this profile.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -37,7 +38,7 @@
    <xs:element name="merge">
       <xs:annotation>
          <xs:documentation>
-            <b>Merge controls: </b>Merge controls in resolution</xs:documentation>
+            <b>Merge controls: </b>A Merge element merges controls in resolution.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -52,7 +53,8 @@
    <xs:element name="combine">
       <xs:annotation>
          <xs:documentation>
-            <b>Combination rule: </b>Whether and how to combine multiple (competing) versions of the same control</xs:documentation>
+            <b>Combination rule: </b>A Combine element defines whether and how to combine multiple (competing)
+        versions of the same control</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="method" type="xs:string">
@@ -66,14 +68,15 @@
    <xs:element name="as-is">
       <xs:annotation>
          <xs:documentation>
-            <b>As is: </b>Merge controls into groups reflecting their catalog(s) of origin</xs:documentation>
+            <b>As is: </b>An As-is element indicates that the controls should be structured in resolution as they are
+        structured in their source catalogs. It does not contain any elements or attributes.</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
    <xs:element name="custom">
       <xs:annotation>
          <xs:documentation>
-            <b>Custom grouping: </b>A defined (re)organization for controls; nb serves as another selector as well as sorter</xs:documentation>
+            <b>Custom grouping: </b>A Custom element frames a structure for embedding represented controls in resolution.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -103,7 +106,7 @@
    <xs:element name="modify">
       <xs:annotation>
          <xs:documentation>
-            <b>Modify controls: </b>Set parameters or emend controls in resolution</xs:documentation>
+            <b>Modify controls: </b>Set parameters or amend controls in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -115,7 +118,7 @@
    <xs:element name="include">
       <xs:annotation>
          <xs:documentation>
-            <b>Include controls: </b>Which controls and subcontrols to include from the resource (source catalog) being
+            <b>Include controls: </b>Specifies which controls and subcontrols to include from the resource (source catalog) being
           imported</xs:documentation>
       </xs:annotation>
       <xs:complexType>
@@ -247,7 +250,7 @@
    <xs:element name="alter">
       <xs:annotation>
          <xs:documentation>
-            <b>Alteration: </b>Generalized modifications to controls or subcontrols as expressed in a profile</xs:documentation>
+            <b>Alteration: </b>An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
@@ -271,7 +274,7 @@
    <xs:element name="remove">
       <xs:annotation>
          <xs:documentation>
-            <b>Removal: </b>Elements to be removed from a control or subcontrol, in resolution</xs:documentation>
+            <b>Removal: </b>Specifies elements to be removed from a control or subcontrol, in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="class-ref" type="xs:NMTOKENS">
@@ -297,7 +300,7 @@
    <xs:element name="add">
       <xs:annotation>
          <xs:documentation>
-            <b>Addition: </b>New contents to be spliced into controls or subcontrols, in resolution</xs:documentation>
+            <b>Addition: </b>Specifies contents to be added into controls or subcontrols, in resolution</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

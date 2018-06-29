@@ -6,7 +6,7 @@
     "definitions" : 
     { "profile" : 
       { "title" : "Profile",
-        "description" : "In reference to a catalog (or other resource such as profile or framework), a selection and configuration of controls, maintained separately",
+        "description" : "Each OSCAL profile is defined by a Profile element",
         "$id" : "#/definitions/profile",
         "type" : "object",
         "properties" : 
@@ -28,7 +28,7 @@
             "modify" ] } },
       "import" : 
       { "title" : "Import resource",
-        "description" : "Designating a catalog or profile as a source controls",
+        "description" : "An Import element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile.",
         "$id" : "#/definitions/import",
         "type" : "object",
         "properties" : 
@@ -45,7 +45,7 @@
             "exclude" ] } },
       "merge" : 
       { "title" : "Merge controls",
-        "description" : "Merge controls in resolution",
+        "description" : "A Merge element merges controls in resolution.",
         "$id" : "#/definitions/merge",
         "type" : "object",
         "properties" : 
@@ -66,7 +66,7 @@
             "custom" ] } },
       "combine" : 
       { "title" : "Combination rule",
-        "description" : "Whether and how to combine multiple (competing) versions of the same control",
+        "description" : "A Combine element defines whether and how to combine multiple (competing) versions of the same control",
         "$id" : "#/definitions/combine",
         "type" : "object",
         "properties" : 
@@ -81,12 +81,12 @@
             "method" ] } },
       "as-is" : 
       { "title" : "As is",
-        "description" : "Merge controls into groups reflecting their catalog(s) of origin",
+        "description" : "An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.",
         "$id" : "#/definitions/as-is",
         "type" : "string" },
       "custom" : 
       { "title" : "Custom grouping",
-        "description" : "A defined (re)organization for controls; nb serves as another selector as well as sorter",
+        "description" : "A Custom element frames a structure for embedding represented controls in resolution.",
         "$id" : "#/definitions/custom",
         "type" : "object",
         "properties" : 
@@ -134,7 +134,7 @@
             "pattern-selectors" ] } },
       "modify" : 
       { "title" : "Modify controls",
-        "description" : "Set parameters or emend controls in resolution",
+        "description" : "Set parameters or amend controls in resolution",
         "$id" : "#/definitions/modify",
         "type" : "object",
         "properties" : 
@@ -153,7 +153,7 @@
             "alterations" ] } },
       "include" : 
       { "title" : "Include controls",
-        "description" : "Which controls and subcontrols to include from the resource (source catalog) being imported",
+        "description" : "Specifies which controls and subcontrols to include from the resource (source catalog) being imported",
         "$id" : "#/definitions/include",
         "type" : "object",
         "properties" : 
@@ -310,7 +310,7 @@
             "parts" ] } },
       "alter" : 
       { "title" : "Alteration",
-        "description" : "Generalized modifications to controls or subcontrols as expressed in a profile",
+        "description" : "An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.",
         "$id" : "#/definitions/alter",
         "type" : "object",
         "properties" : 
@@ -335,7 +335,7 @@
             "additions" ] } },
       "remove" : 
       { "title" : "Removal",
-        "description" : "Elements to be removed from a control or subcontrol, in resolution",
+        "description" : "Specifies elements to be removed from a control or subcontrol, in resolution",
         "$id" : "#/definitions/remove",
         "type" : "object",
         "properties" : 
@@ -356,7 +356,7 @@
             "item-name" ] } },
       "add" : 
       { "title" : "Addition",
-        "description" : "New contents to be spliced into controls or subcontrols, in resolution",
+        "description" : "Specifies contents to be added into controls or subcontrols, in resolution",
         "$id" : "#/definitions/add",
         "type" : "object",
         "properties" : 

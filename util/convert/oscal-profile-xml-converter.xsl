@@ -159,7 +159,8 @@
       </map>
    </xsl:template>
    <xsl:template match="as-is" mode="xml2json">
-      <string key="as-is">As isMerge controls into groups reflecting their catalog(s) of origin</string>
+      <string key="as-is">As isAn As-is element indicates that the controls should be structured in resolution as they are
+        structured in their source catalogs. It does not contain any elements or attributes.</string>
    </xsl:template>
    <xsl:template match="custom" mode="xml2json">
       <map key="custom">
