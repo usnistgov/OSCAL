@@ -21,7 +21,7 @@ elif [[ -z "$SAXON_HOME" ]]; then
     exit 1
 fi
 
-SAXON=$SAXON_HOME/saxon9he.jar
+SAXON=$SAXON_HOME/saxon.jar
 
 if [ ! -f $SAXON ]; then
     echo "The saxon library was not found at: $SAXON!"
@@ -40,7 +40,7 @@ MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xs
 MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/json/produce-json-schema.xsl"
 
 DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/xml/_${BASE}.md -xsl:$LIBDIR/xml/metaschema-xml-docs-md.xsl"
-DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/json/_${BASE}.md -xsl:$LIBDIR/json/metaschema-json-docs-md.xsl"
+DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/json/_${BASE}.md -xsl:$LIBDIR/json/$BASENAME-json-docs-md.xsl"
 
 CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
 CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"

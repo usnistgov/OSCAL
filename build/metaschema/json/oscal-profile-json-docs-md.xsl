@@ -10,7 +10,7 @@
     <xsl:import href="metaschema-json-html.xsl"/>
     
 <!-- output method must be text for good markdown including unescaped code snips   -->
-    <xsl:output method="xml"/>
+    <xsl:output method="text"/>
     
     <xsl:param name="json-file" as="xs:string?" select="()"/>
     <xsl:param name="json-indent" as="xs:string">yes</xsl:param>
