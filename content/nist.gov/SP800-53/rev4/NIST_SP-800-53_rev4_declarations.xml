@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
+<declarations xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+  <declare-prop context="SP800-53" class="name">
+    <singleton/>
+    <required/>
+    <regex>^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\d\.\-]*$</regex>
+  </declare-prop>
+  <declare-prop context="SP800-53" class="status">
+    <value>Withdrawn</value>
+  </declare-prop>
+  <declare-part context="SP800-53" class="statement">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53" class="guidance">
+    <singleton/>
+  </declare-part>
+  <declare-part context="SP800-53" class="objective">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53" class="assessment"/>
+  <!-- can repeat -->
+
+  <declare-prop context="SP800-53-enhancement" class="name">
+    <singleton/>
+    <required/>
+    <calc xml:space="preserve"><inherit/><autonum>(1)</autonum></calc>
+  </declare-prop>
+  <declare-prop context="SP800-53-enhancement" class="status">
+    <value>Withdrawn</value>
+  </declare-prop>
+  <declare-part context="SP800-53-enhancement" class="statement">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53-enhancement" class="guidance">
+    <singleton/>
+  </declare-part>
+  <declare-part context="SP800-53-enhancement" class="objective">
+    <singleton/>
+    <required/>
+  </declare-part>
+  <declare-part context="SP800-53-enhancement" class="assessment"/>
+
+  <!--'number' properties are not given on feat.statement -->
+  <!--<declare-p context="statement" class="description">
+    <singleton/>
+    <required/>
+  </declare-p>-->
+
+  <declare-part context="statement" class="item"/>
+  
+  <!-- recursive -->
+  <declare-part context="item" class="item"/>
+  
+  <declare-prop context="item" class="label">
+    <singleton/>
+    <required/>
+    <calc><autonum>a.</autonum></calc><!-- in controls -->
+    <calc><autonum>(a)</autonum></calc><!-- in subcontrols -->
+    <calc><autonum>1.</autonum></calc><!-- in subitems in controls -->
+    <calc><autonum>(1)</autonum></calc><!-- in subitems subcontrols -->
+  </declare-prop>
+  
+  <!--<declare-p context="item" class="description">
+    <singleton/>
+    <required/>
+  </declare-p>-->
+
+  <!-- Note recursion: objectives contain objectives -->
+  <declare-part context="objective" class="objective">
+    <required/>
+  </declare-part>
+  <declare-prop context="objective" class="label">
+    <singleton/><!-- outer (wrapper) objectives are not numbered explicitly -->
+  </declare-prop>
+  <!--<declare-p context="objective" class="decision">
+    <singleton/>
+    <!-\- <required/>not required because objectives are nested; only lowest level has decision given. -\->
+  </declare-p>-->
+  
+  
+  <declare-prop context="assessment" class="method">
+    <singleton/>
+    <required/>
+    <value>EXAMINE</value>
+    <value>INTERVIEW</value>
+    <value>TEST</value>
+  </declare-prop>
+  <declare-part context="assessment" class="objects">
+    <required/>
+  </declare-part>
+
+</declarations>

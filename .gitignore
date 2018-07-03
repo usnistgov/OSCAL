@@ -15,5 +15,11 @@ working/
 # Production outputs
 pub/
 roundtripped/
+target/
+xspec/*.html
 
 /OSCAL-dev.xpr
+
+# Container
+/scr
+/saxon.jar

@@ -12,8 +12,7 @@ The [OSCAL website](https://pages.nist.gov/OSCAL/) provides an overview of the O
 This repository consists of the following directories and files pertaining to the OSCAL project:
 
 * [.github](.github): This directory holds GitHub issue and pull request templates for the OSCAL project.
-* [docs](docs): This directory contains a variety of documentation files and artifacts. They include copies of graphics, old drafts of documentation pending conversion to the new documentation format, and detailed documentation for the OSCAL schema, including a tag library.
-* [examples](examples): This directory contains numerous OSCAL examples in both XML and JSON formats. Some examples are considered provisional "finished" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
+* [content](content): This directory contains numerous OSCAL examples in both XML and JSON formats. Some examples are considered provisional "finished" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
 * [lib](lib): This directory contains a variety of supporting files. For example, it holds core XSLT stylesheets for processing OSCAL. It also contains scripts and utilities used internally by the OSCAL developers.
 * [schema](schema): This directory contains the OSCAL schemas and related validation tools. The directory contains both XML and JSON representations for OSCAL.
 * [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
