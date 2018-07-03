@@ -10,7 +10,7 @@
     <xsl:import href="metaschema-json-html.xsl"/>
     
 <!-- output method must be text for good markdown including unescaped code snips   -->
-    <xsl:output method="xml"/>
+    <xsl:output method="text"/>
     
     <xsl:param name="json-file" as="xs:string?" select="()"/>
     <xsl:param name="json-indent" as="xs:string">yes</xsl:param>
@@ -22,6 +22,12 @@
         <xsl:apply-templates select="$html" mode="md"/>
     </xsl:template>
     
+    <xsl:variable name="write-options" as="map(*)" expand-text="true">
+        <xsl:map>
+            <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>
+        </xsl:map>
+    </xsl:variable>
+
     <xsl:template match="m:example">
         <div class="example">
             <xsl:variable name="json-xml">
@@ -36,7 +42,8 @@
             
             <pre class="json">
                 
-           <xsl:value-of select="xml-to-json($rectified,$write-options)"/>
+           <!--<xsl:value-of select="xml-to-json($rectified,$write-options)"/>-->
+           <xsl:copy-of select="$rectified"/>
          </pre>
             <xsl:apply-templates select="m:remarks"/>
         </div>

@@ -28,14 +28,16 @@ A [catalog](#catalog-catalog-object) object has the following properties:
 
 Catalogs may use [section](#section-section-object) to subdivide the textual contents of a catalog. 
 
-```
-<description>A small catalog with a single control</description>
-<catalog id="simple-example" model-version="0.99">
-  <title>A Miniature Catalog</title>
-  <control id="single">
-    <title>A Single Control</title>
-  </control>
-</catalog>
+\u003e A small catalog with a single control
+
+```json
+  { "id" : "simple-example",
+    "model-version" : "0.99",
+    "title" : "A Miniature Catalog",
+    "controls" : 
+    [ 
+      { "id" : "single",
+        "title" : "A Single Control" } ] }
 ```
  
 
@@ -87,14 +89,17 @@ A [group](#control-group-group-object) object has the following properties:
 
 Catalogs can use groups to provide collections of related controls or Control Groups. A `group` may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a [section](#section-section-object), a `group` may not contain arbitrary prose directly, only inside its [part](#part-part-object) or [control](#control-control-object) components. 
 
-```
-<group id="xyz">
-  <title>My Group</title>
-  <prop class="required">some property</prop>
-  <control id="xyz1">
-    <title>Control</title>
-  </control>
-</group>
+```json
+  { "id" : "xyz",
+    "title" : "My Group",
+    "props" : 
+    [ 
+      { "class" : "required",
+        "STRVALUE" : "some property" } ],
+    "controls" : 
+    [ 
+      { "id" : "xyz1",
+        "title" : "Control" } ] }
 ```
  
 
@@ -118,10 +123,9 @@ A [control](#control-control-object) object has the following properties:
 
 Controls may be grouped using [group](#control-group-group-object), and controls may be partitioned using [part](#part-part-object) or enhanced using [subcontrol](#sub-control-subcontrol-object). 
 
-```
-<control id="x">
-  <title>Control 1</title>
-</control>
+```json
+  { "id" : "x",
+    "title" : "Control 1" }
 ```
  
 
@@ -175,8 +179,9 @@ Because properties are often used as selectors or identifiers for OSCAL operatio
 
 For singletons (that is, the only element among siblings with its [class](#class-class-object)), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf `declare-prop` in the declarations model (which also supports other constraints over property values). 
 
-```
-<o:prop class="name">A1</o:prop>
+```json
+  { "class" : "name",
+    "STRVALUE" : "A1" }
 ```
  
 
@@ -362,8 +367,8 @@ The `citation` object has properties:
 
 Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin matches with bibliograpical databases, it is recommended a canonical identifier such as a DOI be provided for any citation. 
 
-```
-<o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
+```json
+  { "RICHTEXT" : "Some **citation** of some sort" }
 ```
  
 
@@ -373,8 +378,9 @@ Unique identifier
 
 No mechanism is proposed to ensure that `id` values do not collide across different catalogs. Use profiling without "merge" to detect such clashes.  
 
-```
-<o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
+```json
+  { "id" : "xyz2",
+    "RICHTEXT" : "Some **citation** of some sort" }
 ```
  
 

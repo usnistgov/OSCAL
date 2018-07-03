@@ -9,14 +9,13 @@
     <xsl:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
     
 <!-- output method must be text for good markdown including unescaped code snips   -->
-    <xsl:output method="xml"/>
+    <xsl:output method="text"/>
     
     <xsl:template match="/">
         <xsl:variable name="html">
             <xsl:apply-imports/>
         </xsl:variable>
-        <xsl:copy-of select="$html"/>
-        <!--<xsl:apply-templates select="$html" mode="md"/>-->
+        <xsl:apply-templates select="$html" mode="md"/>
     </xsl:template>
     
 </xsl:stylesheet>
