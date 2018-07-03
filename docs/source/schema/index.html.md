@@ -9,7 +9,7 @@ includes:
   - schema/xml/catalog
   - schema/json/catalog
   - schema/xml/profile
-  - schema/json/profileJSON
+  - schema/json/profile
 
 search: true
 ---
