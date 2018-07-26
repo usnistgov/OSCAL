@@ -160,7 +160,7 @@ A `<part>` element may contain the following:
 * `<title>` (optional)
 * [`<param>`](#code-lt-param-gt-code-element), [`<link>`](#code-lt-link-gt-code-element), [`<prop>`](#code-lt-prop-gt-code-element), `<part>`, `<p>`, `<ul>`, `<ol>`, and/or `<pre>` (zero or more of each)
 
-> The examples show the use of the ``<part>`` element with five different classes specified: statement, guidance, objective, assessment, and objects. TBD: explain what those five classes mean. The examples also shows that a ``<part>`` can have a ``@class`` attribute. TBD: the text above does not list that attribute as an option.
+> The examples show the use of the ``<part>`` element with five different classes specified: statement, guidance, objective, assessment, and objects. TBD: explain what those five classes mean. The examples also show that a ``<part>`` can have a ``@class`` attribute. TBD: the text above does not list that attribute is an option.
 
 ```xml
 <part class="statement">
