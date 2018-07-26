@@ -1,11 +1,11 @@
 # NIST Open Security Controls Assessment Language (OSCAL) Roadmap
 
 ## The problem solved by OSCAL
-With the advent of cloud and the Internet of Things (IoT), Information Technology complexity is increasing proportionally with its' associated security vulnerabilities. IT security professionals must ensure their information systems comply with regulatory control catalogs and frameworks such as NIST 800.53, NIST Cyber Security Framework, ISO/IEC 27001, COBIT, PCI DSS, HIPAA, etc. which have security controls and policies that in some cases can be mutually exclusive. Furthermore, they often have to address security controls from multiple control catalogs. Much of their work is done in spreadsheets and documents driving paper-based compliance which is out-of-date shortly after it's written, often leaving critical risks undiscovered or unaddressed.
+With the advent of cloud and the Internet of Things (IoT), Information Technology complexity is increasing proportionally with its' associated security vulnerabilities. IT security professionals must ensure their systems comply with regulatory control catalogs and frameworks such as NIST Special Publication (SP) 800-53, NIST Cybersecurity Framework, ISO/IEC 27001 and 27002, COBIT, PCI DSS, HIPAA, etc., which provide catalogs of security controls and policies and/or security frameworks that, in some cases, can be mutually exclusive. Furthermore, security experts often have to address security controls from multiple control catalogs or comply to multiple security frameworks. A large percentage of system security planning, auditing and assessing is done using spreadsheets and documents, driving paper-based compliance. Such approach is not even labor intensive, but also generates information that is out-of-date shortly after it is documented, often leaving critical risks undiscovered or unaddressed.
 
 ### Why is OSCAL needed?
 OSCAL serves to address these issues:
-- Traceability from selection of security controls to implementation to assessment is largely manual and proprietary producing widely varying unstructured artifacts
+- Traceability from selection of security controls to implementation of these controls and to their assessment is largely manual and proprietary producing widely varying unstructured artifacts
 - Multi-tenant and mixed ownership of system components complicates assessment
 - Security control and system information is represented in proprietary ways
 - Profile mappings to catalogs are often imprecise, not machine-readable
@@ -38,7 +38,7 @@ NIST's Open Security Controls Assessment Language (OSCAL) serves as a "Standard 
 - Consistent performance of assessments, regardless of system type
 
 ## The OSCAL approach
-OSCAL is being developed over a series of phases using an agile development approach. Through a series of development sprints, increased value is provided with a focus on 80% of the solution that can be implemented in 20% of the time. OSCAL is a community-driven, NIST-led project inviting the community to participate in the framing and development of this new standard of standards. User stories can be created and submitted directly into GitHub per the requirements defined in the OSCAL CONTRIBUTING.MD.  
+OSCAL is being developed leveraging an incremental, agile approach. Through a series of development sprints, increased value is provided with a focus on 80% of the solution that can be implemented in 20% of the time. OSCAL is a community-driven, NIST-led project, with an opened invition to the community to participate in the framing and development of this new standard of standards. User stories can be created and submitted directly into GitHub per the requirements defined in the OSCAL CONTRIBUTING.MD.  
 
 ### OSCAL Guiding Principles
 
@@ -48,7 +48,7 @@ OSCAL is being developed over a series of phases using an agile development appr
 1. Standardize the expression of artifacts driving crowd sourced development and improvement across profile and implementation layers
 1. Support multiple, interoperable, and lossless machine-readable formats including XML and JSON 
 1. Provide a common means to identify and version shared resources
-1. OSCAL models will align with current, practical information use, while supporting advanced structures that provide for greater automation and verification. This will provide a path for early adoption and ongoing evolution around how OSCAL is used.
+1. Align OSCAL models with current, practical information used, and support advanced structures that provide for greater automation and verification. This princile provides a path for early adoption and ongoing evolution around how OSCAL is used.
 
 ## Development Timeline
 
