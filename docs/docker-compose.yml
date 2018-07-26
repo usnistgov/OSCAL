@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  docs:
+    build: .
+    ports:
+      - 4567:4567
+      - 35729:35729
+    volumes:
+      - ./source:/usr/src/app/source
