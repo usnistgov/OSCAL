@@ -1,17 +1,17 @@
-<!-- Created: 6/22/2018 1:41:24 PM -->
-<profile id="uuid-fedramp-low-20180622-134124" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<!-- Created: 8/6/2018 7:55:45 PM -->
+<profile id="uuid-fedramp-low-20180806-195545" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<title>FedRAMP LOW Baseline PROFILE</title>
 	<publication_information>
 		<organization>Federal Risk and Authorization Management Program (FedRAMP)</organization>
 		<org_email>info@fedramp.gov</org_email>
 		<org_website>https://fedramp.gov</org_website>
 		<publication_title>FedRAMP Low Baseline</publication_title>
-		<publication_date>6/22/2018</publication_date>
-		<publication_version>DRAFT-02</publication_version>
+		<publication_date>8/6/2018</publication_date>
+		<publication_version>1.0</publication_version>
 		<author>FedRAMP PMO</author>
 		<notes>No notes.</notes>
 	</publication_information>
-	<import href="../nist.gov/SP800-53/rev4/SP800-53-LOW-baseline.xml">
+	<import href="../nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_LOW-baseline_profile.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>
@@ -138,7 +138,7 @@
 			<call control-id="si-12"/>
 		</include>
 	</import>
-	<import href="../nist.gov/SP800-53/rev4/SP800-53-rev4-catalog.xml">
+	<import href="../nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_catalog.xml">
 		<include>
 			<call subcontrol-id="ca-2.1"/>
 			<call control-id="si-16"/>
