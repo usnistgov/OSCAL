@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 file:/home/wendell/Documents/OSCAL/schema/metaschema/test-schema/oscal-test-schema.xsd"
+    id="base" some_string="string">
+    <single-string-required>Required</single-string-required>
+    <single-string></single-string>
+    <single-mixed>Mixed content? <i>here be content?</i></single-mixed>
+</base>
