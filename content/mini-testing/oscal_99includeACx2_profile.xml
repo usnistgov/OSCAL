@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-d8ec4412-7d73-41ad-8cc5-d98db342c4eb">
+
+   <title>Two controls from AC, with parameters on subcontrols</title>
+   <import href="oscal_testing_mini-testing_catalog.xml">
+      <include>
+         <call control-id="ac.5"/>
+         <call control-id="ac.6"/>
+         <call subcontrol-id="ac.6.1"/>
+         <call subcontrol-id="ac.6.2"/>
+         <call subcontrol-id="ac.6.3"/>
+         <call subcontrol-id="ac.6.4"/>
+         <call subcontrol-id="ac.6.5"/>
+         <call subcontrol-id="ac.6.6"/>
+         <call subcontrol-id="ac.6.7"/>
+         <call subcontrol-id="ac.6.8"/>
+         <call subcontrol-id="ac.6.9"/>
+         <call subcontrol-id="ac.6.10"/>
+      </include></import>
+<modify>
+
+      <set-param param-id="ac-5_a">
+         <desc>[whoever is responsible for caring for the cats] - organization-defined duties of
+            individuals</desc>
+         <value>CAT PERSON #1 (primary), CAT PERSON #2 (asst), FURTHER CAT PERSONS</value>
+      </set-param>
+      <set-param param-id="ac-6_a">
+         <desc>[wherever the cat/s need/s to get to on a regular basis ] - organization-defined
+            security functions (deployed in hardware, software, and firmware) and security-relevant
+            information</desc>
+         <value>CAT FOOD STATION; LITTER BOX; REGULAR ACCESS TO OUTDOORS</value>
+      </set-param>
+      <set-param param-id="ac-6_b">
+         <desc>[describe feeding routine] - organization-defined security functions or
+            security-relevant information</desc>
+         <value>REGULAR FEEDINGS AND PROVISION OF TREATS</value>
+      </set-param>
+      <set-param param-id="ac-6_c">
+         <desc>[whatever activities occur over networks] - organization-defined privileged
+            commands</desc>
+         <value>COMMUNICATIVE BEHAVIORS SUCH AS RUBBING LEGS</value>
+      </set-param>
+      <set-param param-id="ac-6_d">
+         <desc>[such occasions as network access may occur] - organization-defined compelling
+            operational needs</desc>
+         <value>MEALTIMES</value>
+      </set-param>
+      <set-param param-id="ac-6_e">
+         <desc>FOREMENTIONED PET CARETAKERS AND STAFF - organization-defined personnel or
+            roles</desc>
+         <value>FOREMENTIONED PET CARETAKERS AND STAFF</value>
+      </set-param>
+      <set-param param-id="ac-6_f">
+         <desc>VERY FREQUENTLY - organization-defined frequency</desc>
+         <value>VERY FREQUENTLY</value>
+      </set-param>
+      <set-param param-id="ac-6_g">
+         <desc>PET CARETAKERS - organization-defined roles or classes of users</desc>
+         <value>PET CARETAKERS</value>
+      </set-param>
+
+      <set-param param-id="ac-6_h">
+         <desc>CAT TOYS - organization-defined software</desc>
+         <value>CAT TOYS</value>
+      </set-param>
+
+
+   </modify></profile>

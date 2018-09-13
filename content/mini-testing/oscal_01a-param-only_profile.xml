@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-895bf828-d1ac-4211-94aa-33098177b4b1">
+
+   <!-- Asking for all controls -->
+   <title>Parameter This</title>
+   <import href="oscal_testing_mini-testing_catalog.xml">
+      <!-- Including everything (this also happens by default) -->
+      <include>
+         <all/>
+      </include></import>
+<modify>
+
+      <!-- Setting a parameter. -->
+      <set-param param-id="ac-5_a">
+         <!-- NB while the description has no effect on value assignment,
+              a new description will be visible to other profiles calling this one. -->
+         <desc>organization-defined duties of individuals</desc>
+         <!-- The assigned value will be propagated to points of insertion of this parameter. -->
+         <value>BUTCHER; BAKER; CANDLESTICK-MAKER</value>
+      </set-param>
+   </modify></profile>

@@ -1,0 +1,6 @@
+@import 'oscal.css';
+
+@namespace "http://csrc.nist.gov/ns/oscal/1.0";
+
+catalog { font-size: 15% }
+control, subcontrol, component, part { display: inline-grid }

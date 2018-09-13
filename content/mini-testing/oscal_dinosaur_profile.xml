@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02, modified since -->
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../schema/xml/RNC/oscal-profile.rnc" type="application/relax-ng-compact-syntax"?>
+<profile
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-945ac268-c826-45b1-a8fe-0c117d39b40b">
+
+   <!-- Asking for a control from a catalog, then also a whole batch of controls as a profile. -->
+   <title>Dinosaur Profile</title>
+  <import href="oscal_testing_dinosaur_catalog.xml">
+    <include>
+      <match pattern=".*saur.*"/>
+      <!--<call with-subcontrols="yes" control-id="allosaur"/>
+         <call control-id="triceratops"/>-->
+    </include>
+    
+  </import>
+  <import href="oscal_testing_dinosaur_catalog.xml">
+    <include>
+      <match pattern="triceratops"/>
+      <!--<call with-subcontrols="yes" control-id="allosaur"/>
+         <call control-id="triceratops"/>-->
+    </include>
+    
+  </import>
+  <!--<merge combine="merge"/>-->
+  <!--<merge>
+    <combine method="keep"/>
+<!-\- semantics of 'merge' combination should be specified (and tested!)   -\->
+    <!-\-<as-is/>-\->
+    
+    
+  </merge>-->
+  <!--<import href="something-else.xml"/>-->
+   
+   <!--<merge>
+     <!-\-<combine (control-id|subcontrol-id|pattern) method="use-first|merge|keep">
+       <
+     </combine>-\->
+     <!-\-<as-is/>-\->
+     <!-\-<custom>
+       <group>
+         <title>New group</title>
+         <call control-id="allosaur"/>
+         <match pattern="AC*" order-by="ascending|descending|keep"/>
+       </group>
+     -\-><!-\-</custom>-\->
+     
+   </merge>-->
+   <!--<modify>
+      <set-param param-id="scary">
+         <value>claws, tail, huge jackhammer jaws with sharp teeth</value>
+      </set-param>
+      
+<!-\- make examples of all/any remove and add formations
+      showing deep as well as shallow alterations -\->
+      <alter control-id="allosaur">
+        <remove class-ref="trans"/>
+        <remove id-ref="allosaur-desc"/>
+        <remove item-name="title"/>
+        <remove item-name="prop" class-ref="trans"/>
+        
+        <!-\-      add[empty(@id|@class)] will be added at the end   -\->
+<!-\-      add/@position defaults in processing to 'after' -\->
+          <!-\- @position w/o @where means added first (after titles and parameters)
+          or last (after everything) -\->
+<!-\- Empty @target is understood to be the control or subcontrol itself, not a descendant; in these cases position='before' and 'after' are inoperative ... you're not permitted to patch before or after controls, only inside them. -\->
+<!-\-         -\->
+<!-\- Schematron: when empty(@target) then @position=('starting','ending')        -\->
+         
+         
+         <!-\-<add target="@id|@class" position="starting|ending|before|after">-\->
+         <add position="ending">
+            <part  class="new">
+               <title>My new part</title>
+            </part>
+         </add>
+         <!-\-</add>-\->
+      </alter>
+   </modify>
+  -->
+<!-- Errors and warning conditions:
+  Duplicate or clashing controls in final results
+  Orphan subcontrols in final results
+  targets in merge/modify that do not resolve? (come up empty)
+  alter/add[empty(@target)][@position=('before','after')] (Schematron)
+  -->
+</profile>

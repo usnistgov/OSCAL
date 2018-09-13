@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
+<?xml-model href="../../schema/xml/RNC/oscal-profile.rnc" type="application/relax-ng-compact-syntax"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-6f5ad460-f150-4af5-b08a-9a969e2acadd">
+
+   <!-- Subcontrols and parameters therefore -->
+  <title>More Paramters, More</title>
+   <import href="oscal_testing_mini-testing_catalog.xml">
+      <include>
+         <all with-subcontrols="yes"/>
+      </include>
+
+      <!-- Excluding some subcontrols as well as a control. -->
+      <exclude>
+         <call subcontrol-id="ac.6.7"/>
+         <call subcontrol-id="ac.6.8"/>
+         <call subcontrol-id="ac.6.9"/>
+         <call control-id="ra.9"/>
+      </exclude></import>
+<modify>
+
+      <set-param param-id="ac-5_a">
+         <desc>organization-defined duties of individuals</desc>
+         <value>BUTCHER; BAKER; CANDLESTICK-MAKER</value>
+      </set-param>
+
+      <set-param param-id="ac-6_a">
+         <desc>organization-defined security functions (deployed in hardware, software, and
+            firmware) and security-relevant information</desc>
+         <value>DOORS, WINDOWS, AND ANY POINTS OF INGRESS; FAUCETS; CABINET DOORS</value>
+      </set-param>
+
+      <set-param param-id="ac-6_b">
+         <desc>organization-defined security functions or security-relevant information</desc>
+         <value>EXTRA-SPECIAL, SECRET AND SENSITIVE OPERATIONS SUCH AS PET FEEDING
+            RESPONSIBILITIES</value>
+      </set-param>
+
+      <set-param param-id="ac-6_c">
+         <desc>organization-defined privileged commands</desc>
+         <value>MEDIA REALLOCATION INCLUDING HARD DRIVE REFORMATTING; ANY COMMAND ON ANY
+            VOICE-OPERATED DEVICE</value>
+      </set-param>
+      <set-param param-id="ac-6_d">
+         <desc>organization-defined compelling operational needs</desc>
+         <value>EMERGENCIES, OR EARLY IN THE MORNING TO SAVE TIME</value>
+      </set-param>
+
+      <set-param param-id="ac-6_e">
+         <desc>organization-defined personnel or roles</desc>
+         <value>CREDENTIALED WIZARDS</value>
+      </set-param>
+
+      <!--<param id="ac-6_f">
+            <desc>organization-defined frequency</desc>
+            <value>organization-defined frequency</value>
+         </param>
+         <param id="ac-6_g">
+            <desc>organization-defined roles or classes of users</desc>
+            <value>organization-defined roles or classes of users</value>
+         </param>
+
+         <param id="ac-6_h">
+            <desc>organization-defined software</desc>
+            <value>organization-defined software</value>
+         </param>-->
+
+   </modify></profile>

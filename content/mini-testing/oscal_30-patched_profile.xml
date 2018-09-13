@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<?xml-model href="../../schema/xml/Schematron/oscal-profile.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-836a9534-9f5d-48ed-8530-0d605167fcdc">
+
+   <!-- Asking for all controls, this time with a parameter-->
+   <title>Patching profile example</title>
+   <import href="oscal_testing_mini-testing_catalog.xml">
+      <!-- If we leave 'include' out, we get include/all implicitly
+         <include><all/></include>-->
+
+      <!-- Exclude ra.9 to show that exclusions work -->
+      <exclude>
+         <call control-id="ra.9"/>
+      </exclude></import>
+<modify>
+      
+      <!-- Including a parameter. -->
+      <set-param param-id="ac-5_a">
+         <desc>organization-defined duties of individuals</desc>
+         <value>butcher; baker; candlestick-maker</value>
+      </set-param>
+      
+      <!-- Also patching by adding removing and adding statements and properties -->
+      <alter control-id="ac.6">
+         <remove class-ref="statement guidance"/>
+         <add>
+            <part class="guidance"><p>DON'T GO BACK IN THE WATER!</p></part>
+            <prop class="stamp">SEAL OF APPROVAL (a)</prop>
+            <part class="notes">
+               <p>Local organizations may wish to sponsor special events including bake sales, lemonade stands, house-to-house cookie sales, lawn mowing services or other seasonal services etc.</p>
+            </part>
+         </add>
+      </alter>
+   </modify></profile>
