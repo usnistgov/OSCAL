@@ -1,0 +1,177 @@
+{
+  "declarations": {
+    "propertyDeclarations": [
+      {
+        "class": "name",
+        "context": "SP800-53",
+        "singleton": true,
+        "required": true,
+        "regex": "^(AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|RA|SA|SC|SI)[\\d\\.\\-]*$"
+      },
+      {
+        "class": "priority",
+        "context": "SP800-53",
+        "singleton": true,
+        "values": [
+          "P1",
+          "P2",
+          "P0",
+          "P3"
+        ]
+      },
+      {
+        "class": "baseline-impact",
+        "context": "SP800-53",
+        "values": [
+          "LOW",
+          "MODERATE",
+          "HIGH"
+        ]
+      },
+      {
+        "class": "name",
+        "context": "SP800-53-enhancement",
+        "singleton": true,
+        "required": true,
+        "calculations": [
+          {
+            "inheritances": [
+              true
+            ],
+            "autonums": [
+              "(1)"
+            ],
+            "value": " "
+          }
+        ]
+      },
+      {
+        "class": "baseline-impact",
+        "context": "SP800-53-enhancement",
+        "values": [
+          "LOW",
+          "MODERATE",
+          "HIGH"
+        ]
+      },
+      {
+        "class": "name",
+        "context": "item",
+        "singleton": true,
+        "required": true,
+        "calculations": [
+          {
+            "inheritances": [
+              true
+            ],
+            "autonums": [
+              "a."
+            ]
+          },
+          {
+            "inheritances": [
+              true
+            ],
+            "autonums": [
+              "(a)"
+            ]
+          },
+          {
+            "inheritances": [
+              true
+            ],
+            "autonums": [
+              "1."
+            ]
+          },
+          {
+            "inheritances": [
+              true
+            ],
+            "autonums": [
+              "(1)"
+            ]
+          }
+        ]
+      },
+      {
+        "class": "name",
+        "context": "objective",
+        "singleton": true
+      },
+      {
+        "class": "method",
+        "context": "assessment",
+        "singleton": true,
+        "required": true,
+        "values": [
+          "EXAMINE",
+          "INTERVIEW",
+          "TEST"
+        ]
+      }
+    ],
+    "partDeclarations": [
+      {
+        "class": "statement",
+        "context": "SP800-53",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "guidance",
+        "context": "SP800-53",
+        "singleton": true
+      },
+      {
+        "class": "objective",
+        "context": "SP800-53",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "assessment",
+        "context": "SP800-53"
+      },
+      {
+        "class": "statement",
+        "context": "SP800-53-enhancement",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "guidance",
+        "context": "SP800-53-enhancement",
+        "singleton": true
+      },
+      {
+        "class": "objective",
+        "context": "SP800-53-enhancement",
+        "singleton": true,
+        "required": true
+      },
+      {
+        "class": "assessment",
+        "context": "SP800-53-enhancement"
+      },
+      {
+        "class": "item",
+        "context": "statement"
+      },
+      {
+        "class": "item",
+        "context": "item"
+      },
+      {
+        "class": "objective",
+        "context": "objective",
+        "required": true
+      },
+      {
+        "class": "objects",
+        "context": "assessment",
+        "required": true
+      }
+    ]
+  }
+}
