@@ -139,6 +139,7 @@
    </xsl:template>
    <xsl:template match="import" mode="xml2json">
       <map key="import">
+         <xsl:apply-templates mode="as-string" select="@href"/>
          <xsl:apply-templates select="include" mode="#current"/>
          <xsl:apply-templates select="exclude" mode="#current"/>
       </map>
