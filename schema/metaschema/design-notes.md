@@ -10,10 +10,6 @@ A *primary* goal is supporting the maintenance of OSCAL format(s) and data descr
 
 A *secondary* and more distant goal is to enable the wider community to build and extend by using the metaschema tech on their own data description problems.
 
-If you are not primarily focused on "core OSCAL", and your needs align only with our secondary goal, you may find your concerns are not presently a priority for us. (For these purposes, "core OSCAL" can be considered to be any tag set with a namespace URI indicating "OSCAL" or "oscal" and valid to the published models.) Note in particular, we do *not* presently suggest or recommend the Metaschema technology as a means of extending OSCAL, whether branching or forking, and this technology is *not* expected or necessary for any toolkit that consumes, produces, validates or processes OSCAL -- although the artifacts we produce from it, such as the OSCAL schemas, might be.
-
-Nonetheless and with that in mind, understanding the mechanism by which the metaschema productions are created -- schemas, transformations and documentation -- will greatly aid comprehension. Knowing the metaschema is the foundation for explaining how the various schemas and tools relate to each other, how they reflect the same logic and internal organization, and how they can be used to support operational requirements such as data conversion and validation.
-
 Usage note: "metaschema" is a common noun and there are many metaschema technologies (indeed almost any mature XML tag set has one), with different purposes, feature sets and capabilities. "Metaschema" (capitalized) is our peculiar homegrown metaschema technology and application.
 
 ## Approach
