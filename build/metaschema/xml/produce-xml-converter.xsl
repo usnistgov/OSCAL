@@ -97,7 +97,7 @@
     <xsl:template match="define-field[empty(flag)]" priority="2">
         <xslt:template match="{@name}" mode="xml2json">
             <string key="{@name}">
-                <xsl:apply-templates mode="md"/>
+                <xslt:apply-templates mode="md"/>
             </string>
         </xslt:template>
     </xsl:template>
