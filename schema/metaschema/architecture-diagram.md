@@ -2,6 +2,8 @@
 
 Here is some Mermaid notation:
 
+Mermaid is a notation for producing graphics from abstract node/network descriptions - https://mermaidjs.github.io/
+
 ```
 graph TB
   ms -- extract documentation --> xmldocsh[XML docs / HTML]
@@ -11,7 +13,7 @@ graph TB
   ms -- object::xdm map --> jx{json to xml XSLT}
   ms -- translate --> jsch(JSON Schema)
   ms -- extract documentation --> jsondocsh[JSON docs / HTML]
-  jsondocsh -- generic HTML to md--> jsondocmd[JSON-flavored docs / md]
+  jsondocsh -- generic HTML to md --> jsondocmd[JSON-flavored docs / md]
 
 classDef metasch fill:skyblue,stroke:blue,stroke-width:12px,stroke-opacity:0.2
 classDef xml fill:gold,stroke:#333,stroke-width:2px;
