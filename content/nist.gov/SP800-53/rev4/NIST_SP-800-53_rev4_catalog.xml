@@ -1,7 +1,7 @@
-<!-- XML produced by extraction/mapping from NVD XML :2018-06-22T12:24:43.456-04:00 -->
+<!-- XML produced by extraction/mapping from NVD XML :2018-08-20T10:10:37.37-04:00 -->
 <!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-3038ecb5-9a61-4018-8396-a81ef68a3533"
+         id="uuid-266b9949-f49f-4cb0-a30f-1a78da5f8cfb"
          model-version="0.9.11">
    <title>NIST SP800-53</title>
    <declarations href="NIST_SP-800-53_rev4_declarations.xml"/>
@@ -1570,7 +1570,6 @@
       <control class="SP800-53" id="ac-3">
          <title>Access Enforcement</title>
          <prop class="name">AC-3</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system enforces approved authorizations for logical access to information           and system resources in accordance with applicable access control policies.</p>
          </part>
@@ -2281,7 +2280,6 @@
             <label>organization-defined information flow control policies</label>
          </param>
          <prop class="name">AC-4</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system enforces approved authorizations for controlling the flow of information within the system and between interconnected systems based on <insert param-id="ac-4_prm_1"/>.</p>
          </part>
@@ -4214,7 +4212,6 @@ Organizations commonly employ information flow control policies and enforcement 
             <label>organization-defined delay algorithm</label>
          </param>
          <prop class="name">AC-7</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system:</p>
             <part class="item" id="ac-7_smt_a">
@@ -5066,7 +5063,6 @@ Organizations commonly employ information flow control policies and enforcement 
             <label>organization-defined user actions</label>
          </param>
          <prop class="name">AC-14</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="ac-14_smt_a">
@@ -5802,7 +5798,6 @@ Organizations can define the types of attributes needed for selected information
       <control class="SP800-53" id="ac-17">
          <title>Remote Access</title>
          <prop class="name">AC-17</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="ac-17_smt_a">
@@ -6230,7 +6225,6 @@ Organizations can define the types of attributes needed for selected information
       <control class="SP800-53" id="ac-18">
          <title>Wireless Access</title>
          <prop class="name">AC-18</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="ac-18_smt_a">
@@ -6512,7 +6506,6 @@ Organizations can define the types of attributes needed for selected information
       <control class="SP800-53" id="ac-19">
          <title>Access Control for Mobile Devices</title>
          <prop class="name">AC-19</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="ac-19_smt_a">
@@ -8466,7 +8459,6 @@ This control does not apply to the use of external information systems to access
             <label>organization-defined audited events (the subset of the auditable events defined in AU-2 a.) along with the frequency of (or situation requiring) auditing for each identified event</label>
          </param>
          <prop class="name">AU-2</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="au-2_smt_a">
@@ -9319,7 +9311,6 @@ This control does not apply to the use of external information systems to access
             <label>organization-defined personnel or roles</label>
          </param>
          <prop class="name">AU-6</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="au-6_smt_a">
@@ -10651,7 +10642,6 @@ This control does not apply to the use of external information systems to access
             <label>organization-defined actions to be covered by non-repudiation</label>
          </param>
          <prop class="name">AU-10</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system protects against an individual (or process acting on behalf of an individual) falsely denying having performed <insert param-id="au-10_prm_1"/>.</p>
          </part>
@@ -13018,7 +13008,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <label>organization-defined frequency</label>
          </param>
          <prop class="name">CA-7</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization develops a continuous monitoring strategy and implements a continuous monitoring program that includes:</p>
             <part class="item" id="ca-7_smt_a">
@@ -13748,7 +13737,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
       <control class="SP800-53" id="cm-2">
          <title>Baseline Configuration</title>
          <prop class="name">CM-2</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization develops, documents, and maintains under configuration control, a current baseline configuration of the information system.</p>
          </part>
@@ -14867,7 +14855,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
       <control class="SP800-53" id="cm-5">
          <title>Access Restrictions for Change</title>
          <prop class="name">CM-5</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization defines, documents, approves, and enforces physical and logical access restrictions associated with changes to the information system.</p>
          </part>
@@ -15319,7 +15306,6 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <label>organization-defined operational requirements</label>
          </param>
          <prop class="name">CM-6</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="cm-6_smt_a">
@@ -18736,7 +18722,6 @@ Common secure configurations (also referred to as security configuration checkli
             <label>organization-defined time period consistent with recovery time and recovery point objectives</label>
          </param>
          <prop class="name">CP-7</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="cp-7_smt_a">
@@ -19333,7 +19318,6 @@ Common secure configurations (also referred to as security configuration checkli
             <label>organization-defined frequency consistent with recovery time and recovery point objectives</label>
          </param>
          <prop class="name">CP-9</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="cp-9_smt_a">
@@ -19747,7 +19731,6 @@ Common secure configurations (also referred to as security configuration checkli
       <control class="SP800-53" id="cp-10">
          <title>Information System Recovery and Reconstitution</title>
          <prop class="name">CP-10</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization provides for the recovery and reconstitution of the information system to a known state after a disruption, compromise, or failure.</p>
          </part>
@@ -21066,7 +21049,6 @@ Organizations can satisfy the identification and authentication requirements in 
             </select>
          </param>
          <prop class="name">IA-3</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system uniquely identifies and authenticates <insert param-id="ia-3_prm_1"/> before establishing a <insert param-id="ia-3_prm_2"/> connection.</p>
          </part>
@@ -25898,7 +25880,6 @@ Organizations can satisfy the identification and authentication requirements in 
             <label>organization-defined maintenance-related information</label>
          </param>
          <prop class="name">MA-2</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="ma-2_smt_a">
@@ -27745,7 +27726,6 @@ Organizations can satisfy the identification and authentication requirements in 
             <label>organization-defined personnel or roles</label>
          </param>
          <prop class="name">MP-2</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization restricts access to <insert param-id="mp-2_prm_1"/> to <insert param-id="mp-2_prm_2"/>.</p>
          </part>
@@ -27927,7 +27907,6 @@ Organizations can satisfy the identification and authentication requirements in 
             <label>organization-defined controlled areas</label>
          </param>
          <prop class="name">MP-4</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="mp-4_smt_a">
@@ -28090,7 +28069,6 @@ Organizations can satisfy the identification and authentication requirements in 
             <label>organization-defined security safeguards</label>
          </param>
          <prop class="name">MP-5</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="mp-5_smt_a">
@@ -28287,7 +28265,6 @@ Physical and technical safeguards for media are commensurate with the security c
             <label>organization-defined sanitization techniques and procedures</label>
          </param>
          <prop class="name">MP-6</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="mp-6_smt_a">
@@ -30808,7 +30785,6 @@ Physical and technical safeguards for media are commensurate with the security c
             <label>organization-defined frequency</label>
          </param>
          <prop class="name">PE-8</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="pe-8_smt_a">
@@ -31052,7 +31028,6 @@ Physical and technical safeguards for media are commensurate with the security c
             <label>organization-defined location by information system or system component</label>
          </param>
          <prop class="name">PE-10</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="pe-10_smt_a">
@@ -32543,7 +32518,6 @@ Physical and technical safeguards for media are commensurate with the security c
             <label>organization-defined frequency</label>
          </param>
          <prop class="name">PL-2</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="pl-2_smt_a">
@@ -34203,7 +34177,6 @@ In today’s modern architecture, it is becoming less common for organizations t
             <label>organization-defined frequency</label>
          </param>
          <prop class="name">PS-6</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="ps-6_smt_a">
@@ -35030,7 +35003,6 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
             <label>organization-defined personnel or roles</label>
          </param>
          <prop class="name">RA-5</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="ra-5_smt_a">
@@ -36075,7 +36047,6 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
       <control class="SP800-53" id="sa-4">
          <title>Acquisition Process</title>
          <prop class="name">SA-4</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization includes the following requirements, descriptions, and criteria, explicitly or by reference, in the acquisition contract for the information system, system component, or information system service in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, standards, guidelines, and organizational mission/business needs:</p>
             <part class="item" id="sa-4_smt_a">
@@ -36798,7 +36769,6 @@ Security functionality, assurance, and documentation requirements are expressed 
             <label>organization-defined personnel or roles</label>
          </param>
          <prop class="name">SA-5</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="sa-5_smt_a">
@@ -38644,7 +38614,6 @@ Security functionality, assurance, and documentation requirements are expressed 
             <label>organization-defined security safeguards</label>
          </param>
          <prop class="name">SA-12</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization protects against supply chain threats to the information system, system component, or information system service by employing <insert param-id="sa-12_prm_1"/> as part of a comprehensive, defense-in-breadth information security strategy.</p>
          </part>
@@ -39508,7 +39477,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined decision points in the system development life cycle</label>
          </param>
          <prop class="name">SA-14</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization identifies critical information system components and functions by performing a criticality analysis for <insert param-id="sa-14_prm_1"/> at <insert param-id="sa-14_prm_2"/>.</p>
          </part>
@@ -42272,7 +42240,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-4">
          <title>Information in Shared Resources</title>
          <prop class="name">SC-4</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system prevents unauthorized and unintended information transfer via shared system resources.</p>
          </part>
@@ -42700,7 +42667,6 @@ Assurance is also based on the assessment of evidence produced during the system
             </select>
          </param>
          <prop class="name">SC-7</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system:</p>
             <part class="item" id="sc-7_smt_a">
@@ -44386,7 +44352,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined requirements for key generation, distribution, storage, access, and destruction</label>
          </param>
          <prop class="name">SC-12</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization establishes and manages cryptographic keys for required cryptography employed within the information system in accordance with <insert param-id="sc-12_prm_1"/>.</p>
          </part>
@@ -44634,7 +44599,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined cryptographic uses and type of cryptography required for each use</label>
          </param>
          <prop class="name">SC-13</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system implements <insert param-id="sc-13_prm_1"/> in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</p>
          </part>
@@ -44781,7 +44745,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined exceptions where remote activation is to be allowed</label>
          </param>
          <prop class="name">SC-15</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system:</p>
             <part class="item" id="sc-15_smt_a">
@@ -45647,7 +45610,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-20">
          <title>Secure Name / Address Resolution Service (authoritative Source)</title>
          <prop class="name">SC-20</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system:</p>
             <part class="item" id="sc-20_smt_a">
@@ -45766,7 +45728,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-21">
          <title>Secure Name / Address Resolution Service (recursive or Caching Resolver)</title>
          <prop class="name">SC-21</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system requests and performs data origin authentication and data integrity verification on the name/address resolution responses the system receives from authoritative sources.</p>
          </part>
@@ -45892,7 +45853,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-23">
          <title>Session Authenticity</title>
          <prop class="name">SC-23</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system protects the authenticity of communications sessions.</p>
          </part>
@@ -46227,7 +46187,6 @@ Assurance is also based on the assessment of evidence produced during the system
       <control class="SP800-53" id="sc-26">
          <title>Honeypots</title>
          <prop class="name">SC-26</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system includes components specifically designed to be the target of malicious attacks for the purpose of detecting, deflecting, and analyzing such attacks.</p>
          </part>
@@ -46652,7 +46611,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined time periods</label>
          </param>
          <prop class="name">SC-30</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization employs <insert param-id="sc-30_prm_1"/> for <insert param-id="sc-30_prm_2"/> at <insert param-id="sc-30_prm_3"/> to confuse and mislead adversaries.</p>
          </part>
@@ -48945,7 +48903,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined time period</label>
          </param>
          <prop class="name">SI-2</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="si-2_smt_a">
@@ -49411,7 +49368,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined action</label>
          </param>
          <prop class="name">SI-3</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="si-3_smt_a">
@@ -50086,7 +50042,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined frequency</label>
          </param>
          <prop class="name">SI-4</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="si-4_smt_a">
@@ -51848,7 +51803,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined alternative action(s)</label>
          </param>
          <prop class="name">SI-6</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The information system:</p>
             <part class="item" id="si-6_smt_a">
@@ -52090,7 +52044,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined software, firmware, and information</label>
          </param>
          <prop class="name">SI-7</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization employs integrity verification tools to detect unauthorized changes to <insert param-id="si-7_prm_1"/>.</p>
          </part>
@@ -53845,7 +53798,6 @@ Assurance is also based on the assessment of evidence produced during the system
             <label>organization-defined MTTF substitution criteria</label>
          </param>
          <prop class="name">SI-13</prop>
-         <prop class="status">Withdrawn</prop>
          <part class="statement">
             <p>The organization:</p>
             <part class="item" id="si-13_smt_a">
