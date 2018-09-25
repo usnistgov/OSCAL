@@ -116,7 +116,7 @@ With these limitations, a model may be defined to contain any mix of fields and 
 
 * `field` refers to a field definition and permits a single occurrence of the indicated field
 * `field/@required='yes'` a field component is to be required in a model by any schema based on the metaschema
-* `assembly` refers to an assembly definition and permits a single occurrence of the indicated assembly.
+* `assembly` refers to an assembly definition and permits a single occurrence of the indicated assembly. This is useful because it provides for some syntactic optimization (on the JSON side, where it signals that an additional array wrapper is never needed around an object) while also permitting "business logic-based" semantics on certain kinds of assembly types.
 * `fields` - same as `field`, but permits the field to be repeated. In the JSON representation the multiple values are represented as any array unless `@address` is given
 * `assemblies` - same as `fields`, but for assemblies. In JSON, this construct is also presented as an array unless there is an `@address`
 * `prose` refers to a "region of prose", that is, a section of prose text of unspecified length. In XML, prose is represented in conventional fashion as (a sequence of) `<p>` and list elements (`<ul>` or `<ol>`) perhaps with inline markup (indicating further formatting). For consistency across metaschema applications, the permitted tagging will always be conformant to the same model for prose, managed to reflect (echo) a clean HTML subset. This specification also permits the markup vocabulary to be mapped to a text-based markdown syntax, suitable for use within JSON expressions of the same or similar data. 
