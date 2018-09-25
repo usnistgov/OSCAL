@@ -1,0 +1,149 @@
+
+  { "$schema" : "http://json-schema.org/draft-07/schema#",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0/oscal-catalog-schema.json",
+    "$comment" : "OSCAL Control Catalog Format: JSON Schema",
+    "type" : "object",
+    "definitions" : 
+    { "base" : 
+      { "title" : "Base",
+        "description" : "Wrapper for other stuff",
+        "$id" : "#/definitions/base",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "some_string" : 
+          { "type" : "string" },
+          "single-string-required" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-string-required" },
+          "single-string" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-string" },
+          "single-mixed" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-mixed" },
+          "plurals" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/plural" } },
+          "plurals-mixed" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/plural-mixed" } },
+          "chunk" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/chunk" },
+          "block" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/block" } },
+          "tweedledee" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/tweedledee" },
+          "tweedledum" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/tweedledum" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "some_string",
+            "single-string-required",
+            "single-string",
+            "single-mixed",
+            "plurals",
+            "plurals-mixed",
+            "chunk",
+            "block",
+            "tweedledee",
+            "tweedledum" ] } },
+      "single-string-required" : 
+      { "title" : "Single string (required)",
+        "description" : "Like it says",
+        "$id" : "#/definitions/single-string-required",
+        "type" : "string" },
+      "single-string" : 
+      { "title" : "Single string",
+        "description" : "Like it says",
+        "$id" : "#/definitions/single-string",
+        "type" : "string" },
+      "single-mixed" : 
+      { "title" : "Single string (required)",
+        "description" : "Like it says",
+        "$id" : "#/definitions/single-mixed",
+        "type" : "string" },
+      "plural" : 
+      { "title" : "A single plural (ha)",
+        "description" : "Like it says",
+        "$id" : "#/definitions/plural",
+        "type" : "string" },
+      "plural-mixed" : 
+      { "title" : "Only one plural, but possibly mixed.",
+        "description" : "Like it says",
+        "$id" : "#/definitions/plural-mixed",
+        "type" : "string" },
+      "plural-flagged-mixed" : 
+      { "title" : "Only one plural, but possibly mixed and possibly flagged.",
+        "description" : "Like it says",
+        "$id" : "#/definitions/plural-flagged-mixed",
+        "type" : "string" },
+      "chunk" : 
+      { "title" : "Chunk",
+        "description" : "Like it says",
+        "$id" : "#/definitions/chunk",
+        "type" : "object",
+        "properties" : 
+        { "single-string-required" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-string-required" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-string-required" ] } },
+      "block" : 
+      { "title" : "Block",
+        "description" : "Like it says",
+        "$id" : "#/definitions/block",
+        "type" : "object",
+        "properties" : 
+        { "single-string-required" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-string-required" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-string-required" ] } },
+      "tweedledee" : 
+      { "title" : "One Choice",
+        "description" : "Like it says",
+        "$id" : "#/definitions/tweedledee",
+        "type" : "object",
+        "properties" : 
+        { "single-string-required" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-string-required" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-string-required" ] } },
+      "tweedledum" : 
+      { "title" : "Another Choice",
+        "description" : "Like it says",
+        "$id" : "#/definitions/tweedledum",
+        "type" : "object",
+        "properties" : 
+        { "single-string-required" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-string-required" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-string-required" ] } },
+      "prose" : 
+      { "type" : "array",
+        "items" : 
+        { "type" : "string" } } },
+    "properties" : 
+    { "base" : 
+      { "$ref" : "#/definitions/base" } } }

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<?xml-model href="../../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../../build/metaschema/lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" top="control-catalog" use="base">
+
+  <schema-name>OSCAL Control Catalog Format</schema-name>
+  <short-name>oscal-catalog</short-name>
+  <remarks>
+    <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
+    <p>An XML Schema is <a href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/schema/xml/oscal-catalog-schema.xsd">provided</a> for the OSCAL Catalog XML model.</p>
+  </remarks>
+
+  <define-assembly name="base" group-as="base-contructs" show-docs="xml json">
+    <flag name="id" datatype="ID" required="yes"/>
+    <flag name="some_string" required="yes"/>
+    <formal-name>Base</formal-name>
+    <description>Wrapper for other stuff</description>
+    <remarks>
+      <p>The Base should have something of everything: flags, fields of various sorts mixed and not, and assemblies.
+      Also the various sorts of addressing should be demonstrated. The model described should be demonstrated in companion instances (XML and JSON), which can in turn be used as targets for mutual conversion.</p>
+    </remarks>
+    <model>
+      <field named="single-string-required" required="yes"/>
+      <field named="single-string"/>
+      <field named="single-mixed" required="yes"  />
+      <fields named="plural" group-as="plurals"/>
+      <fields named="plural-mixed" group-as="plurals-mixed"/>
+      <assembly named="chunk"/>
+      <assemblies named="block" group-as="block"/>
+      <choice>
+        <assembly named="tweedledee"/>
+        <assembly named="tweedledum"/>
+      </choice>
+    </model>
+    
+  </define-assembly>
+  
+  
+<!-- tbd expand to cover rage e.g. examples showing compression  -->
+  <define-field name="single-string-required" as="string">
+    <formal-name>Single string (required)</formal-name>
+    <description>Like it says</description>
+  </define-field>
+  
+  <define-field name="single-string" as="string">
+    <formal-name>Single string</formal-name>
+    <description>Like it says</description>
+  </define-field>
+  
+  <define-field name="single-mixed" as="mixed">
+    <formal-name>Single string (required)</formal-name>
+    <description>Like it says</description>
+  </define-field>
+  
+  <define-field name="plural" group-as="plurals" as="string">
+    <formal-name>A single plural (ha)</formal-name>
+    <description>Like it says</description>
+  </define-field>
+  
+  <define-field name="plural-mixed" group-as="plurals-mixed" as="string">
+    <formal-name>Only one plural, but possibly mixed.</formal-name>
+    <description>Like it says</description>
+  </define-field>
+  
+  <define-field name="plural-flagged-mixed" group-as="plurals" as="string">
+    <formal-name>Only one plural, but possibly mixed and possibly flagged.</formal-name>
+    <description>Like it says</description>
+  </define-field>
+  
+  <define-assembly name="chunk">
+    <formal-name>Chunk</formal-name>
+    <description>Like it says</description>
+    <model>
+      <field named="single-string-required" required="yes"/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="block">
+    <formal-name>Block</formal-name>
+    <description>Like it says</description>
+    <model>
+      <field named="single-string-required" required="yes"/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="tweedledee">
+    <formal-name>One Choice</formal-name>
+    <description>Like it says</description>
+    <model>
+      <field named="single-string-required" required="yes"/>
+    </model>
+  </define-assembly>
+  
+  <define-assembly name="tweedledum">
+    <formal-name>Another Choice</formal-name>
+    <description>Like it says</description>
+    <model>
+      <field named="single-string-required" required="yes"/>
+    </model>
+  </define-assembly>
+  
+  <define-flag name="some_string" datatype="string">
+    <formal-name>A string flag</formal-name>
+    <description>Like it says</description>
+  </define-flag>
+  <define-flag name="id" datatype="ID">
+    <formal-name>An ID</formal-name>
+    <description>Like it says</description>
+  </define-flag>
+  <!--<define-flag name="">
+    <formal-name>A string flag</formal-name>
+    <description>Like it says</description>
+  </define-flag>
+  <define-flag name="some_string"/>
+  -->
+  
+</METASCHEMA>
