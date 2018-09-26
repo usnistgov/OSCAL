@@ -130,67 +130,83 @@
       <map key="base">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@some_string"/>
-         <xsl:apply-templates select="single-string-required" mode="#current"/>
-         <xsl:apply-templates select="single-string" mode="#current"/>
-         <xsl:apply-templates select="single-mixed" mode="#current"/>
-         <xsl:if test="exists(plural)">
+         <xsl:if test="exists(thing)">
+            <array key="things">
+               <xsl:apply-templates select="thing" mode="#current"/>
+            </array>
+         </xsl:if>
+      </map>
+   </xsl:template>
+   <xsl:template match="thing" mode="xml2json">
+      <map key="thing">
+         <xsl:apply-templates mode="as-string" select="@id"/>
+         <xsl:apply-templates mode="as-string" select="@some_string"/>
+         <xsl:apply-templates select="single-required-field" mode="#current"/>
+         <xsl:apply-templates select="single-field" mode="#current"/>
+         <xsl:apply-templates select="single-mixed-field" mode="#current"/>
+         <xsl:if test="exists(plural-field)">
             <array key="plurals">
-               <xsl:apply-templates select="plural" mode="#current"/>
+               <xsl:apply-templates select="plural-field" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(plural-mixed)">
+         <xsl:if test="exists(plural-mixed-field)">
             <array key="plurals-mixed">
-               <xsl:apply-templates select="plural-mixed" mode="#current"/>
+               <xsl:apply-templates select="plural-mixed-field" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:apply-templates select="chunk" mode="#current"/>
-         <xsl:if test="exists(block)">
-            <array key="block">
-               <xsl:apply-templates select="block" mode="#current"/>
+         <xsl:apply-templates select="single-chunk" mode="#current"/>
+         <xsl:if test="exists(chunk-among-chunks)">
+            <array key="chunks-together">
+               <xsl:apply-templates select="chunk-among-chunks" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:apply-templates select="tweedledee" mode="#current"/>
          <xsl:apply-templates select="tweedledum" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="single-string-required" mode="xml2json">
-      <string key="single-string-required">Single string (required)Like it says</string>
-   </xsl:template>
-   <xsl:template match="single-string" mode="xml2json">
-      <string key="single-string">Single stringLike it says</string>
-   </xsl:template>
-   <xsl:template match="single-mixed" mode="xml2json">
-      <string key="single-mixed">
+   <xsl:template match="single-required-field" mode="xml2json">
+      <string key="single-required-field">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template match="plural" mode="xml2json">
-      <string key="plural">A single plural (ha)Like it says</string>
+   <xsl:template match="single-field" mode="xml2json">
+      <string key="single-field">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
-   <xsl:template match="plural-mixed" mode="xml2json">
-      <string key="plural-mixed">Only one plural, but possibly mixed.Like it says</string>
+   <xsl:template match="single-mixed-field" mode="xml2json">
+      <string key="single-mixed-field">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
-   <xsl:template match="plural-flagged-mixed" mode="xml2json">
-      <string key="plural-flagged-mixed">Only one plural, but possibly mixed and possibly flagged.Like it says</string>
+   <xsl:template match="plural-field" mode="xml2json">
+      <string key="plural-field">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
-   <xsl:template match="chunk" mode="xml2json">
-      <map key="chunk">
-         <xsl:apply-templates select="single-string-required" mode="#current"/>
+   <xsl:template match="plural-mixed-field" mode="xml2json">
+      <string key="plural-mixed-field">
+         <xsl:apply-templates mode="md"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="single-chunk" mode="xml2json">
+      <map key="single-chunk">
+         <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="block" mode="xml2json">
-      <map key="block">
-         <xsl:apply-templates select="single-string-required" mode="#current"/>
+   <xsl:template match="chunk-among-chunks" mode="xml2json">
+      <map key="chunk-among-chunks">
+         <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
    </xsl:template>
    <xsl:template match="tweedledee" mode="xml2json">
       <map key="tweedledee">
-         <xsl:apply-templates select="single-string-required" mode="#current"/>
+         <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
    </xsl:template>
    <xsl:template match="tweedledum" mode="xml2json">
       <map key="tweedledum">
-         <xsl:apply-templates select="single-string-required" mode="#current"/>
+         <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
    </xsl:template>
 </xsl:stylesheet>

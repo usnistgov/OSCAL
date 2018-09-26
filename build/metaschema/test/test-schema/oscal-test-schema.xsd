@@ -6,10 +6,9 @@
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
    <xs:include schemaLocation="oscal-prose-module.xsd"/>
-   <!--OSCAL Control Catalog Format-->
-   <!--short name: oscal-catalog-->
-   <!--The OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is catalog.-->
-   <!--An XML Schema is provided for the OSCAL Catalog XML model.-->
+   <!--FAKEUP Testing Schema-->
+   <!--short name: oscal-test-->
+   <!--A test schema for prototyping and demonstrating the metaschema feature set.-->
    <xs:element name="base">
       <xs:annotation>
          <xs:documentation>
@@ -17,13 +16,36 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="1" ref="oscal:single-string-required"/>
-            <xs:element minOccurs="0" ref="oscal:single-string"/>
-            <xs:element minOccurs="1" ref="oscal:single-mixed"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:plural"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:plural-mixed"/>
-            <xs:element minOccurs="0" ref="oscal:chunk"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:block"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:thing"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>An ID: </b>As it says</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="some_string" type="xs:string" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>A string flag: </b>As it says</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="thing">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Base: </b>Wrapper for other stuff</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal:single-required-field"/>
+            <xs:element minOccurs="0" ref="oscal:single-field"/>
+            <xs:element minOccurs="1" ref="oscal:single-mixed-field"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:plural-field"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:plural-mixed-field"/>
+            <xs:element minOccurs="0" ref="oscal:single-chunk"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:chunk-among-chunks"/>
             <xs:choice>
                <xs:element minOccurs="0" ref="oscal:tweedledee"/>
                <xs:element minOccurs="0" ref="oscal:tweedledum"/>
@@ -32,102 +54,95 @@
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>An ID: </b>Like it says</xs:documentation>
+                  <b>An ID: </b>As it says</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="some_string" type="xs:string" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>A string flag: </b>Like it says</xs:documentation>
+                  <b>A string flag: </b>As it says</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="single-string-required">
+   <xs:element name="single-required-field">
       <xs:annotation>
          <xs:documentation>
-            <b>Single string (required): </b>Like it says</xs:documentation>
+            <b>Single string (required): </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="single-string">
+   <xs:element name="single-field">
       <xs:annotation>
          <xs:documentation>
-            <b>Single string: </b>Like it says</xs:documentation>
+            <b>Single string: </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="single-mixed">
+   <xs:element name="single-mixed-field">
       <xs:annotation>
          <xs:documentation>
-            <b>Single string (required): </b>Like it says</xs:documentation>
+            <b>Single string but with mixed content: </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal:everything-inline"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="plural">
+   <xs:element name="plural-field">
       <xs:annotation>
          <xs:documentation>
-            <b>A single plural (ha): </b>Like it says</xs:documentation>
+            <b>A single occurrence of a plural (ha): </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="plural-mixed">
+   <xs:element name="plural-mixed-field">
       <xs:annotation>
          <xs:documentation>
-            <b>Only one plural, but possibly mixed.: </b>Like it says</xs:documentation>
+            <b>Only one plural, but possibly mixed.: </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="plural-flagged-mixed">
+   <xs:element name="single-chunk">
       <xs:annotation>
          <xs:documentation>
-            <b>Only one plural, but possibly mixed and possibly flagged.: </b>Like it says</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true"/>
-   </xs:element>
-   <xs:element name="chunk">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Chunk: </b>Like it says</xs:documentation>
+            <b>Chunk: </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="1" ref="oscal:single-string-required"/>
+            <xs:element minOccurs="1" ref="oscal:single-required-field"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="block">
+   <xs:element name="chunk-among-chunks">
       <xs:annotation>
          <xs:documentation>
-            <b>Block: </b>Like it says</xs:documentation>
+            <b>Chunk among chunks: </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="1" ref="oscal:single-string-required"/>
+            <xs:element minOccurs="1" ref="oscal:single-required-field"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
    <xs:element name="tweedledee">
       <xs:annotation>
          <xs:documentation>
-            <b>One Choice: </b>Like it says</xs:documentation>
+            <b>One Choice: </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="1" ref="oscal:single-string-required"/>
+            <xs:element minOccurs="1" ref="oscal:single-required-field"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
    <xs:element name="tweedledum">
       <xs:annotation>
          <xs:documentation>
-            <b>Another Choice: </b>Like it says</xs:documentation>
+            <b>Another Choice: </b>As it says</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="1" ref="oscal:single-string-required"/>
+            <xs:element minOccurs="1" ref="oscal:single-required-field"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>

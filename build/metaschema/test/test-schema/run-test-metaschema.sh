@@ -10,7 +10,7 @@ TRIMNAME=$(sed 's/-metaschema//' <<< $METASCHEMAXML)
 BASENAME=$(sed 's/.xml//'  <<< $TRIMNAME)
 BASE=$(sed 's/oscal-//'  <<< $BASENAME)
 
-OSCALDIR=../../..
+OSCALDIR=../../../..
 
 
 if [[ ! -v SAXON_HOME ]]; then
@@ -48,8 +48,8 @@ CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-
 # Now ...
 echo
 echo Producing JSON and XML schemas and tools from $METASCHEMAXML ...
-cp -u $LIBDIR/OSCAL/oscal-prose-module.xsd $OSCALDIR/schema/xml
-echo _ Updated OSCAL prose XSD module
+# cp -u $LIBDIR/OSCAL/oscal-prose-module.xsd $OSCALDIR/schema/xml
+# echo _ Updated OSCAL prose XSD module
 $MAKE_XSD
 echo _ Made XSD ________________________ $XSDDIR/$BASENAME-schema.xsd
 $MAKE_JSC
