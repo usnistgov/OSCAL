@@ -33,6 +33,7 @@
             <xs:element minOccurs="0" ref="oscal:include"/>
             <xs:element minOccurs="0" ref="oscal:exclude"/>
          </xs:sequence>
+         <xs:attribute name="href" type="xs:anyURI" use="required"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="merge">
