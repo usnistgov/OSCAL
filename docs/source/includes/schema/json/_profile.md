@@ -27,7 +27,8 @@ An Import element designates a catalog, profile, or other resource to be include
 An [import](#import-resource-import-object) will appear as a data value in an array property.
 
 An [import](#import-resource-import-object) object has the following properties:
- 
+
+* String [href](#) 
 * An [include](#include-controls-include-object) object  
 * An [exclude](#exclude-controls-exclude-object) object   
 
@@ -37,13 +38,12 @@ The contents of the `import` element indicate which controls and subcontrols fro
 
 When no [include](#include-controls-include-object) is given (whether an [exclude](#exclude-controls-exclude-object) is given or not), an [include](#include-controls-include-object)/[all](#include-all-all-object) is assumed (that is, all controls will be included by default). 
 
-```
-<import href="catalog.xml">
-  <include>
-    <call control-id="ac-1">
-    </call>
-  </include>
-</import>
+```json
+  { "href" : "catalog.xml",
+    "include" : 
+    { "id-selectors" : 
+      [ 
+        { "control-id" : "ac-1" } ] } }
 ```
  
 
@@ -241,12 +241,7 @@ A [set-param](#parameter-setting-set-param-object) object has the following prop
   * A [value](#) object  
   * A [select](#) object   
 * An array `links` containing [link](#) data items  
-* An array `parts` containing [part](#) data items  
-
-```
-
-```
- 
+* An array `parts` containing [part](#) data items   
 
 ### Alteration: `alter` object
 

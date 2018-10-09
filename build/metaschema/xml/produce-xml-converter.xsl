@@ -63,7 +63,7 @@
     <xsl:template match="define-field[@address=flag/@name][empty(flag)]" priority="3">
         <xslt:template match="{@name}" mode="xml2json">
             <string key="{@address}">
-                <xsl:apply-templates/>
+                <xsl:apply-templates mode="md"/>
             </string>
         </xslt:template>
     </xsl:template>
@@ -97,7 +97,7 @@
     <xsl:template match="define-field[empty(flag)]" priority="2">
         <xslt:template match="{@name}" mode="xml2json">
             <string key="{@name}">
-                <xsl:apply-templates/>
+                <xslt:apply-templates mode="md"/>
             </string>
         </xslt:template>
     </xsl:template>

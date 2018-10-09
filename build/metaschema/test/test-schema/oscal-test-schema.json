@@ -1,0 +1,164 @@
+
+  { "$schema" : "http://json-schema.org/draft-07/schema#",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0/oscal-test-schema.json",
+    "$comment" : "FAKEUP Testing Schema: JSON Schema",
+    "type" : "object",
+    "definitions" : 
+    { "base" : 
+      { "title" : "Base",
+        "description" : "Wrapper for other stuff",
+        "$id" : "#/definitions/base",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "some_string" : 
+          { "type" : "string" },
+          "things" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/thing" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "some_string",
+            "things" ] } },
+      "thing" : 
+      { "title" : "Base",
+        "description" : "Wrapper for other stuff",
+        "$id" : "#/definitions/thing",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "some_string" : 
+          { "type" : "string" },
+          "single-required-field" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-required-field" },
+          "single-field" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-field" },
+          "single-mixed-field" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-mixed-field" },
+          "plurals" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/plural-field" } },
+          "plurals-mixed" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/plural-mixed-field" } },
+          "single-chunk" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/single-chunk" },
+          "chunks-together" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/chunk-among-chunks" } },
+          "tweedledee" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/tweedledee" },
+          "tweedledum" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/tweedledum" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "some_string",
+            "single-required-field",
+            "single-field",
+            "single-mixed-field",
+            "plurals",
+            "plurals-mixed",
+            "single-chunk",
+            "chunks-together",
+            "tweedledee",
+            "tweedledum" ] } },
+      "single-required-field" : 
+      { "title" : "Single string (required)",
+        "description" : "As it says",
+        "$id" : "#/definitions/single-required-field",
+        "type" : "string" },
+      "single-field" : 
+      { "title" : "Single string",
+        "description" : "As it says",
+        "$id" : "#/definitions/single-field",
+        "type" : "string" },
+      "single-mixed-field" : 
+      { "title" : "Single string but with mixed content",
+        "description" : "As it says",
+        "$id" : "#/definitions/single-mixed-field",
+        "type" : "string" },
+      "plural-field" : 
+      { "title" : "A single occurrence of a plural (ha)",
+        "description" : "As it says",
+        "$id" : "#/definitions/plural-field",
+        "type" : "string" },
+      "plural-mixed-field" : 
+      { "title" : "Only one plural, but possibly mixed.",
+        "description" : "As it says",
+        "$id" : "#/definitions/plural-mixed-field",
+        "type" : "string" },
+      "single-chunk" : 
+      { "title" : "Chunk",
+        "description" : "As it says",
+        "$id" : "#/definitions/single-chunk",
+        "type" : "object",
+        "properties" : 
+        { "single-required-field" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-required-field" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-required-field" ] } },
+      "chunk-among-chunks" : 
+      { "title" : "Chunk among chunks",
+        "description" : "As it says",
+        "$id" : "#/definitions/chunk-among-chunks",
+        "type" : "object",
+        "properties" : 
+        { "single-required-field" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-required-field" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-required-field" ] } },
+      "tweedledee" : 
+      { "title" : "One Choice",
+        "description" : "As it says",
+        "$id" : "#/definitions/tweedledee",
+        "type" : "object",
+        "properties" : 
+        { "single-required-field" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-required-field" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-required-field" ] } },
+      "tweedledum" : 
+      { "title" : "Another Choice",
+        "description" : "As it says",
+        "$id" : "#/definitions/tweedledum",
+        "type" : "object",
+        "properties" : 
+        { "single-required-field" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/single-required-field" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "single-required-field" ] } },
+      "prose" : 
+      { "type" : "array",
+        "items" : 
+        { "type" : "string" } } },
+    "properties" : 
+    { "base" : 
+      { "$ref" : "#/definitions/base" } } }
