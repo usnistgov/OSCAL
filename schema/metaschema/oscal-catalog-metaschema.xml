@@ -5,8 +5,6 @@
 <?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA top="control-catalog" use="catalog" xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="../../build/metaschema/lib/metaschema.xsd"
   xmlns:o="http://csrc.nist.gov/ns/oscal/1.0">
 
   <schema-name>OSCAL Control Catalog Format</schema-name>
@@ -270,7 +268,7 @@
     <formal-name>Selection</formal-name>
     <description>Presenting a choice among alternatives</description>
     <model>
-      <assemblies named="choice" group-as="alternatives"/>
+      <fields named="choice" group-as="alternatives"/>
       <any/>
     </model>
   </define-assembly>
