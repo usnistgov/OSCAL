@@ -36,6 +36,7 @@
    </define-assembly>
 
    <define-assembly name="import" group-as="imports" show-docs="xml json">
+      <flag name="href" datatype="anyURI" required="yes"/>
       <formal-name>Import resource</formal-name>
       <description>An Import element designates a catalog, profile, or other resource to be
          included (referenced and potentially modified) by this profile.</description>
@@ -299,8 +300,8 @@
          <assemblies named="part" group-as="parts"/>
       </model>
        <!--Not working only b/c SaxonHE does not support eval-->
-         <example href="../../content/fedramp.gov/FedRAMP_HIGH-baseline_profile.xml"
-               path="//oscal:set-param[@param-id='au-8.1_prm_1']"/>
+         <!--<example href="../../content/fedramp.gov/FedRAMP_HIGH-baseline_profile.xml"
+               path="//oscal:set-param[@param-id='au-8.1_prm_1']"/>-->
    </define-assembly>
 
    <define-assembly name="alter" group-as="alterations" show-docs="xml json">

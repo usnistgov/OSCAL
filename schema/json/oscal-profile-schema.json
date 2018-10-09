@@ -32,7 +32,9 @@
         "$id" : "#/definitions/import",
         "type" : "object",
         "properties" : 
-        { "include" : 
+        { "href" : 
+          { "type" : "string" },
+          "include" : 
           { "type" : "object",
             "$ref" : "#/definitions/include" },
           "exclude" : 
@@ -41,7 +43,8 @@
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "include",
+          [ "href",
+            "include",
             "exclude" ] } },
       "merge" : 
       { "title" : "Merge controls",
