@@ -7,7 +7,9 @@
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
    <xs:include schemaLocation="oscal-prose-module.xsd"/>
    <!--FAKEUP Testing Schema-->
-   <!--short name: oscal-test-->urn:fakeup<!--A test schema for prototyping and demonstrating the metaschema feature set.--><xs:element name="kit">
+   <!--short name: oscal-test-->
+   <!--A test schema for prototyping and demonstrating the metaschema feature set.-->
+   <xs:element name="kit">
       <xs:annotation>
          <xs:documentation>
             <b>Base: </b>Wrapper for other stuff</xs:documentation>
