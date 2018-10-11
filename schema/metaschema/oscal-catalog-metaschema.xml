@@ -22,6 +22,9 @@
     <formal-name>Catalog</formal-name>
     <description>A collection of controls</description>
     <remarks>
+      <p>The <code>catalog</code> is the basis of the OSCAL Catalog, all following
+      elements are originated in the catalog element. The catalog element is what is imported
+      into OSCAL Profiles to address security requirements.</p>
       <p>Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p>
     </remarks>
     <model>
@@ -50,13 +53,25 @@
     <flag name="href" datatype="anyURI"/>
     <formal-name>Declarations</formal-name>
     <description>Either a reference to a declarations file, or a set of declarations</description>
+    <remarks>
+      <p>Declarations is the catalog element that validates the composition and properties
+         of the controls in the catalog through a separate XML stylesheet. OSCAL documents are
+         capable of referencing or declaring constraints appropriate to that document which go
+         beyond the rules expressed in the OSCAL schema.</p>
+    </remarks>
   </define-field>
 
   <define-assembly name="section" group-as="sections" show-docs="xml json">
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Section</formal-name>
-    <description>Allows the inclusion of prose content within a Catalog.</description>
+    <description>Section elements divide the catalog based on controls or control groups.</description>
+    <remarks>
+      <p><code>Sections</code> are defined to partition a catalog, with each
+       section containing one or more references to controls or control groups. Sections are
+       recursive, a section can contain sections inside of itself. A section is different from
+       a group in that it can contain unstructured prose.</p>
+    </remarks>
     <model>
       <field named="title" required="yes"/>
       <prose/>
@@ -70,9 +85,12 @@
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Control Group</formal-name>
-    <description>A group of controls, or of groups of controls.</description>
+    <description>A group of related controls or control groups such as control families.</description>
     <remarks>
-      <p>Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose directly, only inside its <code>part</code> or <code>control</code> components.</p>
+      <p>All members of a <code>group</code> can share properties, parameters, statements,
+      or references. Unlike a <code>section</code>, a <code>group</code> cannot contain arbitrary
+       prose, only the controls or subcontrols within the <code>group</code> can. Groups are also
+        recursive, a <code>group</code> can contain groups inside of itself.</p>
     </remarks>
     <model>
       <field named="title" required="yes"/>
@@ -101,7 +119,8 @@
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Control</formal-name>
-    <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
+    <description>A structured information object representing a security or privacy control.
+       Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
     <remarks>
       <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using
         <code>part</code> or enhanced using <code>subcontrol</code>.</p>
@@ -128,7 +147,11 @@
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
     <formal-name>Sub-Control</formal-name>
-    <description>A control extension or enhancement</description>
+    <description>A subcontrol is an addition to or modifying element of a control</description>
+    <remarks>
+      <p>A <code>subcontrol</code> element refers to a separate part of a control that adds to or refines
+       a control’s implementation. Subcontrols rely on their main control for their ID and placement in the document.</p>
+    </remarks>
     <model>
       <field named="title" required="yes"/>
       <assemblies named="param" group-as="params" address="id"/>
@@ -139,7 +162,7 @@
       <any/>
     </model>
   </define-assembly>
-  
+
   <define-field name="title" as="mixed" show-docs="xml json">
     <formal-name>Title</formal-name>
     <description>A title for display and navigation, exclusive of more specific properties</description>
@@ -181,6 +204,7 @@
     <remarks>
       <p>In a catalog, a parameter is typically used as a placeholder for the future assignment of a parameter value, although the OSCAL model allows for the direct assignment of a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then it is expected that the value will be provided at the Profile or Implementation layer.</p>
       <p>A parameter can include a variety of metadata options that support the future solicitation of one or more values. A <code>label</code> provides a textual placeholder that can be used in a tool to solicit parameter value input, or to display in catalog documentation. The <code>desc</code> provides a short description of what the parameter is used for, which can be used in tooling to help a user understand how to use the parameter. A <code>constraint</code> can be used to provide criteria for the allowed values. A <code>guideline</code> provides a recommendation for the use of a parameter.</p>
+      <p>There are two types of parameters in OSCAL: regular and selection. Regular parameters ask the user to define a variable from a control, or selection parameters ask the user to define a variable from a selection of choices.</p>
     </remarks>
     <model>
       <field named="label">
@@ -241,7 +265,7 @@
     <formal-name>Constraint</formal-name>
     <description>A formal or informal expression of a constraint or test</description>
   </define-field>
-  
+
   <define-assembly name="guideline" group-as="guidance" show-docs="xml json">
     <formal-name>Guideline</formal-name>
     <description>A prose statement that provides a recommendation for the use of a parameter.</description>
@@ -250,7 +274,7 @@
       <any/>
     </model>
   </define-assembly>
-  
+
   <define-field name="value" as="mixed" show-docs="xml json">
     <formal-name>Value constraint</formal-name>
     <description>Indicates a permissible value for a parameter or property</description>
@@ -284,7 +308,7 @@
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Part</formal-name>
-    <description>A partition or component of a control, subcontrol or part</description>
+    <description>A defining partition or component of a control, subcontrol or part</description>
     <remarks>
       <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
         distinguished from other elements within their controls by their assigned
@@ -380,6 +404,7 @@
     <description>Identifies the property or object within the control; a semantic hint</description>
     <remarks>
       <p>Overloading this attribute with more than one value is permitted, but not recommended.</p>
+      <p><code>Class</code> serves as a semantic hook when moving between OSCAL documents. This is useful when referring to the Catalog from the higher OSCAL layers.</p>
     </remarks>
   </define-flag>
 
@@ -408,15 +433,15 @@
     <formal-name>Cardinality</formal-name>
     <description>When selecting, a requirement such as one or more</description>
   </define-flag>
-  
+
   <define-flag name="depends-on" datatype="IDREF" show-docs="xml json">
     <formal-name>Depends on</formal-name>
     <description>Another parameter invoking this one</description>
   </define-flag>
-  
+
   <define-flag name="model-version" datatype="NCName" show-docs="xml json">
     <formal-name>Model version</formal-name>
     <description>Declares a major/minor version for this metaschema</description>
   </define-flag>
-  
+
 </METASCHEMA>

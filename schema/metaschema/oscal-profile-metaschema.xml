@@ -18,14 +18,12 @@
 
    <define-assembly name="profile" group-as="profiles" show-docs="xml json">
       <formal-name>Profile</formal-name>
-      <description>Each OSCAL profile is defined by a Profile element</description>
+      <description>The Profile element defines the scope of an OSCAL Profile</description>
       <remarks>
-         <p>An OSCAL document that describes a selection with possible modification of multiple
-          controls from multiple catalogs. It provides mechanisms by which controls may be selected
+         <p>The <code>profile</code> is the basis of the OSCAL Profile and provides mechanisms by which controls may be selected
             (<code>import</code>), merged or (re)structured (<code>merge</code>), and emended
             (<code>modify</code>). OSCAL profiles may select subsets of control sets, set parameter
-          values for them in application, and even qualify the representation of controls and
-          subcontrols as given in and by a catalog. They may also serve as sources for further
+          values for them in application, and serve as sources for further
           modification in and by other profiles, that import them.</p>
       </remarks>
       <model>
@@ -38,18 +36,17 @@
    <define-assembly name="import" group-as="imports" show-docs="xml json">
       <formal-name>Import resource</formal-name>
       <description>An Import element designates a catalog, profile, or other resource to be
-         included (referenced and potentially modified) by this profile.</description>
+         included in this profile.</description>
       <remarks>
          <p>An <code>import</code> indicates a source whose controls are to be included (referenced
-          and modified) in a profile. This source will either be a catalog whose controls are given
-            (<q>by value</q>), or a profile with its own control imports (with possible settings.</p>
+          and modified) in a profile.  OSCAL Catalogs and other OSCAL Profiles are valid sources for the import element.</p>
          <p>The contents of the <code>import</code> element indicate which controls and subcontrols
           from the source, will be included. Controls and subcontrols may be either selected (using
           an <code>include</code> element) or de-selected (using an <code>exclude</code> element)
           from the source catalog or profile.</p>
          <p>When no <code>include</code> is given (whether an <code>exclude</code> is given or not),
-            an <code>include</code>/<code>all</code> is assumed (that is, all controls will be
-            included by default).</p>
+            an <code>include</code>/<code>all</code> is assumed, which selects every possible control
+            from the imported source. This can lead to issues when attempting to <code>exclude</code> controls.</p>
       </remarks>
       <model>
          <assembly named="include"/>
@@ -66,11 +63,11 @@
    <!-- presence of element merge means to merge (not merely aggregate) -->
    <define-assembly name="merge" show-docs="xml json">
       <formal-name>Merge controls</formal-name>
-      <description>A Merge element merges controls in resolution.</description>
+      <description>A Merge element is used to merge controls into the final resolution.</description>
       <remarks>
-         <p>The contents of the <code>merge</code> element may be used to <q>reorder</q> or
-         <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
-         <p>Implicitly, a <code>merge</code> element is also a filter: controls that are included in a
+         <p>The <code>merge</code> element may be used to <q>reorder</q> or <q>restructure</q>
+         controls included in the profile by indicating an order and/or structure in resolution.</p>
+         <p>The <code>merge</code> element is also a filter: controls that are included in a
          profile, but not included (implicitly or explicitly) in the scope of a <code>merge</code> element,
          will not be merged into (will be dropped) in the resulting resolution.</p>
       </remarks>
@@ -90,7 +87,7 @@
       </flag>
       <formal-name>Combination rule</formal-name>
       <description>A Combine element defines whether and how to combine multiple (competing)
-        versions of the same control</description>
+        versions of the same control from different imported sources</description>
       <remarks>
         <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with
            clashing invocations (multiple competing versions of a control or a subcontrol). </p>
@@ -102,7 +99,7 @@
    <define-field name="as-is" as="boolean" show-docs="xml json">
       <formal-name>As is</formal-name>
       <description>An As-is element indicates that the controls should be structured in resolution as they are
-        structured in their source catalogs. It does not contain any elements or attributes.</description>
+        structured in their source catalogs. It does not modify the controls and does not contain any elements or attributes.</description>
    </define-field>
    <define-flag name="method" datatype="string" show-docs="xml json">
       <formal-name>Combination method</formal-name>
@@ -113,12 +110,12 @@
    </define-flag>
    <define-assembly name="custom" group-as="customs" show-docs="xml json">
       <formal-name>Custom grouping</formal-name>
-      <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
+      <description>A Custom element frames a new structure for embedding represented controls in resolution.</description>
       <remarks>
         <p>The <code>custom</code> element represents a custom arrangement or organization of controls in
-        the resolution of a catalog. </p>
-        <p>While the <code>as-is</code> element provides for a restitution of a control set's organization
-        (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
+        the resolution of a profile. </p>
+        <p>While the <code>as-is</code> element includes controls in the final resolution without
+        changing their structure from their source, this element permits the definition of an entirely different structure.</p>
      </remarks>
       <model>
          <choice>
@@ -131,6 +128,9 @@
    <define-assembly name="group" group-as="groups" show-docs="xml json">
       <formal-name>Control group</formal-name>
       <description>As in catalogs, a group of (selected) controls or of groups of controls</description>
+      <remarks>
+        <p>Similar to catalogs, a profile group can contain groups within itself.</p>
+      </remarks>
       <model>
          <choice>
             <assemblies named="group" group-as="groups"/>
@@ -142,6 +142,11 @@
    <define-assembly name="modify" group-as="modifys" show-docs="xml json">
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
+      <remarks>
+        <p>The modify element uses the param-setting and alter commands to modify controls.
+          The param-setting command specifies the values of a parameter. The alter command adds
+          or removes part of a control’s description or requirements to tailor it to the system.</p>
+      </remarks>
       <model>
          <assemblies named="set-param" group-as="param-settings"/>
          <assemblies named="alter" group-as="alterations"/>
@@ -231,6 +236,8 @@
       <formal-name>Call (control or subcontrol)</formal-name>
       <description>Call a control or subcontrol by its ID</description>
       <remarks>
+         <p>The Call command specifies a control or subcontrol to be included or excluded in a profile by its ID.
+           Every control or subcontrol to be called requires its own call element.</p>
          <p>Inside <code>include</code>, If <code>@control-id</code> is used (to indicate the control
           being referenced), <code>@subcontrol-id</code> cannot be used, and vice versa. (A single
             <code>call</code> element is used for each control.) This constraint is enforced by the
@@ -286,6 +293,11 @@
       <formal-name>Parameter Setting</formal-name>
       <description> A parameter setting, to be propagated to points of insertion
       </description>
+      <remarks>
+        <p>Param-Setting elements specify the value selected for the parameter of a control.
+          They can either be a regular and selection. Regular parameters ask the user to define
+          a variable from a control. Selection parameters ask the user to define a variable from a
+          selection of choices.</p>
       <model>
          <!-- declarations tbf in the imported schema and to be aligned with it -->
          <field named="label"/>
