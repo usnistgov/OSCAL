@@ -16,15 +16,15 @@
     </md>
   </xsl:template>
 
-  <xsl:variable name="lf1"><xsl:text>&#xA;</xsl:text></xsl:variable>
-  <xsl:variable name="lf2"><xsl:text>&#xA;&#xA;</xsl:text></xsl:variable>
+  <xsl:variable name="lf1" xml:space="preserve"><xsl:text>&#xA;</xsl:text></xsl:variable>
+  <xsl:variable name="lf2" xml:space="preserve"><xsl:text>&#xA;&#xA;</xsl:text></xsl:variable>
 
   <xsl:template mode="md" match="head"/>
   
   <xsl:template match="h1 | h2 | h3 | h4 | h5 | h6" mode="md">
     <xsl:value-of select="$lf2"/>
     <xsl:for-each select="1 to (replace(local-name(),'^h','') cast as xs:integer)">#</xsl:for-each>
-    <xsl:text> </xsl:text>
+    <xsl:text xml:space="preserve"> </xsl:text>
     <xsl:apply-templates mode="#current"/>
   </xsl:template>
   
@@ -72,10 +72,16 @@
     <xsl:text>`</xsl:text>
   </xsl:template>
   
-  <xsl:template match="em" mode="md">
+  <xsl:template match="em | i" mode="md">
     <xsl:text>*</xsl:text>
     <xsl:apply-templates mode="#current"/>
     <xsl:text>*</xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="strong | b" mode="md">
+    <xsl:text>**</xsl:text>
+    <xsl:apply-templates mode="#current"/>
+    <xsl:text>**</xsl:text>
   </xsl:template>
   
   <xsl:template match="q" mode="md">
@@ -98,11 +104,11 @@
   </xsl:template>
   
   <xsl:template match="pre" mode="md">
-    <xsl:text>&#xA;&#xA;```</xsl:text>
+    <xsl:text xml:space="preserve">&#xA;&#xA;```</xsl:text>
     <xsl:value-of select="@class[.=('xml','json')]"/>
-    <xsl:text>&#xA;</xsl:text>
+    <xsl:text xml:space="preserve">&#xA;</xsl:text>
     <xsl:value-of select="replace(.,'(^\n+|\n+$)','')"/>
-    <xsl:text>&#xA;```&#xA;</xsl:text>
+    <xsl:text xml:space="preserve">&#xA;```&#xA;</xsl:text>
   </xsl:template>
   
   <xsl:template match="pre//text()" mode="md">
@@ -114,7 +120,7 @@
   </xsl:template>
   
   <xsl:template match="ul" mode="md">
-    <xsl:text>&#xA;</xsl:text>
+    <xsl:text xml:space="preserve">&#xA;</xsl:text>
     <xsl:apply-templates mode="#current"/>
   </xsl:template>
   
@@ -123,8 +129,8 @@
   </xsl:template>
   
   <xsl:template match="li" mode="md">
-    <xsl:text>&#xA;</xsl:text>
-    <xsl:for-each select="../ancestor::ul"><xsl:text>&#32;&#32;</xsl:text></xsl:for-each>
+    <xsl:text xml:space="preserve">&#xA;</xsl:text>
+    <xsl:for-each select="../ancestor::ul"><xsl:text xml:space="preserve">&#32;&#32;</xsl:text></xsl:for-each>
     <xsl:text>* </xsl:text>
     <xsl:apply-templates mode="#current"/>
   </xsl:template>

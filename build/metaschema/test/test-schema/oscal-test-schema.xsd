@@ -9,7 +9,7 @@
    <!--FAKEUP Testing Schema-->
    <!--short name: oscal-test-->
    <!--A test schema for prototyping and demonstrating the metaschema feature set.-->
-   <xs:element name="base">
+   <xs:element name="kit">
       <xs:annotation>
          <xs:documentation>
             <b>Base: </b>Wrapper for other stuff</xs:documentation>

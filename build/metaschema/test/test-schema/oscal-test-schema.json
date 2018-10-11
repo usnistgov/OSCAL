@@ -4,10 +4,10 @@
     "$comment" : "FAKEUP Testing Schema: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "base" : 
+    { "kit" : 
       { "title" : "Base",
         "description" : "Wrapper for other stuff",
-        "$id" : "#/definitions/base",
+        "$id" : "#/definitions/kit",
         "type" : "object",
         "properties" : 
         { "id" : 
@@ -160,5 +160,5 @@
         "items" : 
         { "type" : "string" } } },
     "properties" : 
-    { "base" : 
-      { "$ref" : "#/definitions/base" } } }
+    { "kit" : 
+      { "$ref" : "#/definitions/kit" } } }

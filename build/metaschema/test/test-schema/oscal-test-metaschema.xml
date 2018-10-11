@@ -12,6 +12,7 @@
   <short-name>oscal-test</short-name>
   <remarks>
     <p>A test schema for prototyping and demonstrating the metaschema feature set.</p>
+    
   </remarks>
 
   <define-assembly name="kit" group-as="thing-kit" show-docs="xml json">
@@ -28,6 +29,7 @@
     <model>
       <assemblies named="thing" group-as="things"/>
     </model>    
+    
   </define-assembly>
   
   <define-assembly name="thing" group-as="things" show-docs="xml json">
@@ -51,32 +53,45 @@
         <assembly named="tweedledee"/>
         <assembly named="tweedledum"/>
       </choice>
-    </model>    
+    </model>
+    <example>
+      <kit xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+       some_string="string">
+        <thing some_string="aha" id="thing001">
+          <single-required-field>Required</single-required-field>
+          <single-field/>
+          <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
+        </thing>
+      </kit>
+    </example>
   </define-assembly>
   
   
 <!-- tbd expand to cover rage e.g. examples showing compression  -->
-  <define-field name="single-required-field" as="string">
+  <define-field name="single-required-field" as="string" show-docs="xml json">
     <formal-name>Single string (required)</formal-name>
     <description>As it says</description>
+    <example href="base-example.xml" path="/descendant::single-required-field[1]">
+      <description>An example in a remote document</description>
+    </example>
   </define-field>
   
-  <define-field name="single-field" as="string">
+  <define-field name="single-field" as="string" show-docs="xml json">
     <formal-name>Single string</formal-name>
     <description>As it says</description>
   </define-field>
   
-  <define-field name="single-mixed-field" as="mixed">
+  <define-field name="single-mixed-field" as="mixed" show-docs="xml json">
     <formal-name>Single string but with mixed content</formal-name>
     <description>As it says</description>
   </define-field>
   
-  <define-field name="plural-field" group-as="plurals" as="string">
+  <define-field name="plural-field" group-as="plurals" as="string" show-docs="xml json">
     <formal-name>A single occurrence of a plural (ha)</formal-name>
     <description>As it says</description>
   </define-field>
   
-  <define-field name="plural-mixed-field" group-as="plurals-mixed" as="string">
+  <define-field name="plural-mixed-field" group-as="plurals-mixed" as="string" show-docs="xml json">
     <formal-name>Only one plural, but possibly mixed.</formal-name>
     <description>As it says</description>
   </define-field>
@@ -86,7 +101,7 @@
     <description>As it says</description>
   </define-field>-->
   
-  <define-assembly name="single-chunk">
+  <define-assembly name="single-chunk" show-docs="xml json">
     <formal-name>Chunk</formal-name>
     <description>As it says</description>
     <model>
@@ -94,7 +109,7 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="chunk-among-chunks">
+  <define-assembly name="chunk-among-chunks" show-docs="xml json">
     <formal-name>Chunk among chunks</formal-name>
     <description>As it says</description>
     <model>
@@ -102,7 +117,7 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="tweedledee">
+  <define-assembly name="tweedledee" show-docs="xml json">
     <formal-name>One Choice</formal-name>
     <description>As it says</description>
     <model>
@@ -110,7 +125,7 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="tweedledum">
+  <define-assembly name="tweedledum" show-docs="xml json">
     <formal-name>Another Choice</formal-name>
     <description>As it says</description>
     <model>
@@ -118,12 +133,12 @@
     </model>
   </define-assembly>
   
-  <define-flag name="some_string" datatype="string">
+  <define-flag name="some_string" datatype="string" show-docs="xml json">
     <formal-name>A string flag</formal-name>
     <description>As it says</description>
   </define-flag>
   
-  <define-flag name="id" datatype="ID">
+  <define-flag name="id" datatype="ID" show-docs="xml json">
     <formal-name>An ID</formal-name>
     <description>As it says</description>
   </define-flag>

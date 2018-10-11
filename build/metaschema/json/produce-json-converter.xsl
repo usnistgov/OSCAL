@@ -20,6 +20,8 @@
     
     <xsl:namespace-alias stylesheet-prefix="xslt" result-prefix="xsl"/>
     
+    <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
+    <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
     
     <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name"/>
     
@@ -93,7 +95,7 @@
                 </xsl:for-each>
                 <xslt:apply-templates mode="as-attribute"/>
                 <xsl:apply-templates/>
-                <xslt:apply-templates mode="json2xml" select="*[@key={ if (@as='mixed') then '''TEXT''' else '''VALUE''' }]"/>
+                <xslt:apply-templates mode="json2xml" select="*[@key={ if (@as='mixed') then $markdown-value-label else $string-value-label }]"/>
             </xslt:element>
         </xslt:template>
         <xsl:call-template name="drop-address"/>
@@ -156,12 +158,12 @@
             </xslt:element>
         </xslt:template>
         
-        <xslt:template match="string[@key='RICHTEXT']" mode="json2xml">
+        <xslt:template match="string[@key=$markdown-value-label]" mode="json2xml">
             <xslt:comment> Not yet handling markdown </xslt:comment>
             <xslt:apply-templates mode="#current"/>
         </xslt:template>
         
-        <xslt:template match="string[@key='STRVALUE']" mode="json2xml">
+        <xslt:template match="string[@key=$string-value-label]" mode="json2xml">
             <xslt:apply-templates mode="#current"/>
         </xslt:template>
         

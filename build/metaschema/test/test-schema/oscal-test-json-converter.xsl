@@ -30,11 +30,11 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml">
+   <xsl:template match="string[@key=$markdown-value-label]" mode="json2xml">
       <xsl:comment> Not yet handling markdown </xsl:comment>
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
-   <xsl:template match="string[@key='STRVALUE']" mode="json2xml">
+   <xsl:template match="string[@key=$string-value-label]" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template mode="as-attribute" match="*"/>
@@ -47,11 +47,11 @@
       </xsl:attribute>
    </xsl:template>
    <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
-   <!-- 000 Handling assembly "base" 000 -->
-   <xsl:template match="*[@key='base'] | *[@key='base-contructs']/* | /map[empty(@key)]"
+   <!-- 000 Handling assembly "kit" 000 -->
+   <xsl:template match="*[@key='kit'] | *[@key='thing-kit']/* | /map[empty(@key)]"
                  priority="2"
                  mode="json2xml">
-      <xsl:element name="base" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="kit" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('thing', 'things')]"/>
       </xsl:element>
@@ -82,21 +82,21 @@
       <xsl:element name="single-required-field"
                    namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='VALUE']"/>
+         <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "single-field" 000 -->
    <xsl:template match="*[@key='single-field']" priority="2" mode="json2xml">
       <xsl:element name="single-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='VALUE']"/>
+         <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "single-mixed-field" 000 -->
    <xsl:template match="*[@key='single-mixed-field']" priority="2" mode="json2xml">
       <xsl:element name="single-mixed-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='TEXT']"/>
+         <xsl:apply-templates mode="json2xml" select="*[@key=RICHTEXT]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "plural-field" 000 -->
@@ -105,7 +105,7 @@
                  mode="json2xml">
       <xsl:element name="plural-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='VALUE']"/>
+         <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "plural-mixed-field" 000 -->
@@ -114,7 +114,7 @@
                  mode="json2xml">
       <xsl:element name="plural-mixed-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="json2xml" select="*[@key='VALUE']"/>
+         <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "single-chunk" 000 -->
@@ -147,7 +147,7 @@
    </xsl:template>
    <!-- 000 Handling flag "some_string" 000 -->
    <xsl:template match="*[@key='some_string']" mode="json2xml"/>
-   <xsl:template match="*[@key='base']/*[@key='some_string'] | *[@key='base-contructs']/*/*[@key='some_string'] | *[@key='thing']/*[@key='some_string'] | *[@key='things']/*/*[@key='some_string']"
+   <xsl:template match="*[@key='kit']/*[@key='some_string'] | *[@key='thing-kit']/*/*[@key='some_string'] | *[@key='thing']/*[@key='some_string'] | *[@key='things']/*/*[@key='some_string']"
                  mode="as-attribute">
       <xsl:attribute name="some_string">
          <xsl:apply-templates mode="#current"/>
@@ -155,7 +155,7 @@
    </xsl:template>
    <!-- 000 Handling flag "id" 000 -->
    <xsl:template match="*[@key='id']" mode="json2xml"/>
-   <xsl:template match="*[@key='base']/*[@key='id'] | *[@key='base-contructs']/*/*[@key='id'] | *[@key='thing']/*[@key='id'] | *[@key='things']/*/*[@key='id']"
+   <xsl:template match="*[@key='kit']/*[@key='id'] | *[@key='thing-kit']/*/*[@key='id'] | *[@key='thing']/*[@key='id'] | *[@key='things']/*/*[@key='id']"
                  mode="as-attribute">
       <xsl:attribute name="id">
          <xsl:apply-templates mode="#current"/>

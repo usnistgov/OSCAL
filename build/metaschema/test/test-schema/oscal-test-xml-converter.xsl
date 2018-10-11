@@ -126,8 +126,8 @@
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
-   <xsl:template match="base" mode="xml2json">
-      <map key="base">
+   <xsl:template match="kit" mode="xml2json">
+      <map key="kit">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@some_string"/>
          <xsl:if test="exists(thing)">
