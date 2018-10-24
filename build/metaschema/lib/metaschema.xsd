@@ -13,6 +13,7 @@
       <xs:sequence>
         <xs:element ref="m:schema-name"/>
         <xs:element ref="m:short-name"/>
+        <xs:element ref="m:namespace"/>
         <xs:element ref="m:remarks" minOccurs="0"/>
         <xs:element ref="m:import"  minOccurs="0"/>
         <xs:choice maxOccurs="unbounded">
@@ -105,7 +106,8 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
-  <xs:element name="description">
+  <xs:element name="namespace" type="xs:string"/>
+  <xs:element name="description"   type="xs:anyURI"/>
     <xs:complexType mixed="true">
       <xs:choice maxOccurs="unbounded">
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:a"/>

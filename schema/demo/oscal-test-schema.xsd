@@ -7,9 +7,7 @@
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
    <xs:include schemaLocation="oscal-prose-module.xsd"/>
    <!--FAKEUP Testing Schema-->
-   <!--short name: oscal-test-->
-   <!--A test schema for prototyping and demonstrating the metaschema feature set.-->
-   <xs:element name="kit">
+   <!--short name: oscal-test-->urn:fakeup<!--A test schema for prototyping and demonstrating the metaschema feature set.--><xs:element name="kit">
       <xs:annotation>
          <xs:documentation>
             <b>Base: </b>Wrapper for other stuff</xs:documentation>
@@ -47,8 +45,8 @@
             <xs:element minOccurs="0" ref="oscal:single-chunk"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:chunk-among-chunks"/>
             <xs:choice>
-               <xs:element minOccurs="0" ref="oscal:tweedledee"/>
-               <xs:element minOccurs="0" ref="oscal:tweedledum"/>
+               <xs:element minOccurs="0" ref="oscal:vanilla"/>
+               <xs:element minOccurs="0" ref="oscal:chocolate"/>
             </xs:choice>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID" use="required">
@@ -124,7 +122,7 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="tweedledee">
+   <xs:element name="vanilla">
       <xs:annotation>
          <xs:documentation>
             <b>One Choice: </b>As it says</xs:documentation>
@@ -135,7 +133,7 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="tweedledum">
+   <xs:element name="chocolate">
       <xs:annotation>
          <xs:documentation>
             <b>Another Choice: </b>As it says</xs:documentation>

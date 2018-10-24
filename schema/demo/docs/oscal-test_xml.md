@@ -2,7 +2,7 @@
 
 ## FAKEUP Testing Schema: XML Schema
 
-The short name (file identifier) for this schema shall be *oscal-test*. It is used internally when an identifier is called for, and may appear in file names of schema artifacts.
+The short name (file identifier) for this schema shall be *oscal-test*. It is used internally when an identifier is called for, and may appear in file names of schema artifacts.urn:fakeup
 
 A test schema for prototyping and demonstrating the metaschema feature set.
 
@@ -24,6 +24,18 @@ feature set for conversions: 'succinct JSON'; mapping nodes to element types in 
 
 Also to do: find a case of variability in controls and show it off... parts?
 
+```xml
+<kit some_string="string">
+  <thing some_string="aha" id="thing001">
+    <single-required-field>Required</single-required-field>
+    <single-field>
+    </single-field>
+    <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
+  </thing>
+</kit>
+```
+
+
 ### **Base**: `<thing>` element
 
 Wrapper for other stuff
@@ -40,28 +52,14 @@ The `<thing>` element has the following contents (in order):
 * A [&lt;single-chunk>](#chunk-single-chunk-element) element (*zero or one*)
 * [&lt;chunk-among-chunks>](#chunk-among-chunks-chunk-among-chunks-element) elements (*zero or more*)
 * A choice between 
-  * A [&lt;tweedledee>](#one-choice-tweedledee-element) element (*zero or one*)
-  * A [&lt;tweedledum>](#another-choice-tweedledum-element) element (*zero or one*)
+  * A [&lt;vanilla>](#one-choice-vanilla-element) element (*zero or one*)
+  * A [&lt;chocolate>](#another-choice-chocolate-element) element (*zero or one*)
 
 A thing can be whatever: flags, fields of various sorts mixed and not, and assemblies. Also the various sorts of addressing should be demonstrated. The model described should be demonstrated in companion instances (XML and JSON), which can in turn be used as targets for mutual conversion.
-
-```xml
-<kit some_string="string">
-  <thing some_string="aha" id="thing001">
-    <single-required-field>Required</single-required-field>
-    <single-field>
-    </single-field>
-    <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
-  </thing>
-</kit>
-```
-
 
 ### **Single string (required)**: `<single-required-field>` element
 
 As it says
-
-> An example in a remote document
 
 ```xml
 <single-required-field>Required</single-required-field>
@@ -102,19 +100,19 @@ The `<chunk-among-chunks>` element has the following contents :
 
 * A [&lt;single-required-field>](#single-string-required-single-required-field-element) element (*one*)
 
-### **One Choice**: `<tweedledee>` element
+### **One Choice**: `<vanilla>` element
 
 As it says
 
-The `<tweedledee>` element has the following contents :
+The `<vanilla>` element has the following contents :
 
 * A [&lt;single-required-field>](#single-string-required-single-required-field-element) element (*one*)
 
-### **Another Choice**: `<tweedledum>` element
+### **Another Choice**: `<chocolate>` element
 
 As it says
 
-The `<tweedledum>` element has the following contents :
+The `<chocolate>` element has the following contents :
 
 * A [&lt;single-required-field>](#single-string-required-single-required-field-element) element (*one*)
 

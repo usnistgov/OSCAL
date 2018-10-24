@@ -30,8 +30,6 @@
     
     <xsl:namespace-alias stylesheet-prefix="xslt" result-prefix="xsl"/>
 
-    <xsl:variable name="markdown-writer" select="document('../../../util/publish/XSLT/html-to-markdown.xsl')"/>
-    
     <xsl:template match="METASCHEMA">
         <xslt:stylesheet version="3.0"
             xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
@@ -75,8 +73,9 @@
     
     <xsl:template name="furniture">
         
-        <xslt:import href="metaschema-xml-html.xsl"/>
-         
+        <xslt:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
+        <xslt:import href="../lib/metaschema-xml-html.xsl"/>
+        
         <!-- output method must be text for good markdown including unescaped code snips   -->
         <xslt:output method="text"/>
         
@@ -105,17 +104,7 @@
             <!--<xsl:copy-of select="$html"/>-->
             <xslt:apply-templates select="$html" mode="md"/>
         </xslt:template>
-        
-        <xsl:apply-templates select="$markdown-writer/xsl:*/*" mode="migrate-xslt"/>
+ 
     </xsl:template>
-    
-    <xsl:mode name="migrate-xslt" on-no-match="shallow-copy"/>
-    
-    <xsl:template match="*[exists(@match)]" mode="migrate-xslt">
-        <xsl:copy>
-            <xsl:copy-of select="@*"/>
-            <xsl:copy-of select="ancestor::*[exists(@xpath-default-namespace)][1]/@xpath-default-namespace"/>
-            <xsl:apply-templates mode="#current"/>
-        </xsl:copy>
-    </xsl:template>
+ 
 </xsl:stylesheet>

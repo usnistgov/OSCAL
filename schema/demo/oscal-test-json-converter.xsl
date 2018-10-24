@@ -71,8 +71,8 @@
          <xsl:apply-templates mode="#current" select="*[@key=('single-chunk')]"/>
          <xsl:apply-templates mode="#current"
                               select="*[@key=('chunk-among-chunks', 'chunks-together')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('tweedledee')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('tweedledum')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('vanilla')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('chocolate')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "single-required-field" 000 -->
@@ -131,16 +131,16 @@
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- 000 Handling assembly "tweedledee" 000 -->
-   <xsl:template match="*[@key='tweedledee']" priority="2" mode="json2xml">
-      <xsl:element name="tweedledee" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <!-- 000 Handling assembly "vanilla" 000 -->
+   <xsl:template match="*[@key='vanilla']" priority="2" mode="json2xml">
+      <xsl:element name="vanilla" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
       </xsl:element>
    </xsl:template>
-   <!-- 000 Handling assembly "tweedledum" 000 -->
-   <xsl:template match="*[@key='tweedledum']" priority="2" mode="json2xml">
-      <xsl:element name="tweedledum" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <!-- 000 Handling assembly "chocolate" 000 -->
+   <xsl:template match="*[@key='chocolate']" priority="2" mode="json2xml">
+      <xsl:element name="chocolate" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
       </xsl:element>

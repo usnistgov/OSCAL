@@ -58,12 +58,12 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/chunk-among-chunks" } },
-          "tweedledee" : 
+          "vanilla" : 
           { "type" : "object",
-            "$ref" : "#/definitions/tweedledee" },
-          "tweedledum" : 
+            "$ref" : "#/definitions/vanilla" },
+          "chocolate" : 
           { "type" : "object",
-            "$ref" : "#/definitions/tweedledum" } },
+            "$ref" : "#/definitions/chocolate" } },
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -76,8 +76,8 @@
             "plurals-mixed",
             "single-chunk",
             "chunks-together",
-            "tweedledee",
-            "tweedledum" ] } },
+            "vanilla",
+            "chocolate" ] } },
       "single-required-field" : 
       { "title" : "Single string (required)",
         "description" : "As it says",
@@ -129,10 +129,10 @@
         "propertyNames" : 
         { "enum" : 
           [ "single-required-field" ] } },
-      "tweedledee" : 
+      "vanilla" : 
       { "title" : "One Choice",
         "description" : "As it says",
-        "$id" : "#/definitions/tweedledee",
+        "$id" : "#/definitions/vanilla",
         "type" : "object",
         "properties" : 
         { "single-required-field" : 
@@ -142,10 +142,10 @@
         "propertyNames" : 
         { "enum" : 
           [ "single-required-field" ] } },
-      "tweedledum" : 
+      "chocolate" : 
       { "title" : "Another Choice",
         "description" : "As it says",
-        "$id" : "#/definitions/tweedledum",
+        "$id" : "#/definitions/chocolate",
         "type" : "object",
         "properties" : 
         { "single-required-field" : 

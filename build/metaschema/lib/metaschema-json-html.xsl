@@ -11,7 +11,8 @@
 <!-- Output:  HTML  -->
 <!-- Note:    An XSLT 1.0 stylesheet may even work in your browser (try FF)  -->
 
-<xsl:import href="../../lib/metaschema-common-html.xsl"/>
+<xsl:import href="metaschema-common-html.xsl"/>
+   
    
    
 <xsl:output indent="yes"/>

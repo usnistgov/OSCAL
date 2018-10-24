@@ -160,8 +160,8 @@
                <xsl:apply-templates select="chunk-among-chunks" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:apply-templates select="tweedledee" mode="#current"/>
-         <xsl:apply-templates select="tweedledum" mode="#current"/>
+         <xsl:apply-templates select="vanilla" mode="#current"/>
+         <xsl:apply-templates select="chocolate" mode="#current"/>
       </map>
    </xsl:template>
    <xsl:template match="single-required-field" mode="xml2json">
@@ -199,13 +199,13 @@
          <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="tweedledee" mode="xml2json">
-      <map key="tweedledee">
+   <xsl:template match="vanilla" mode="xml2json">
+      <map key="vanilla">
          <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template match="tweedledum" mode="xml2json">
-      <map key="tweedledum">
+   <xsl:template match="chocolate" mode="xml2json">
+      <map key="chocolate">
          <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
    </xsl:template>

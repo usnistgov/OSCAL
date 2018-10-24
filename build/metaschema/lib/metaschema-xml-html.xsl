@@ -10,7 +10,7 @@
 <!-- Input:   Metaschema -->
 <!-- Output:  HTML  -->
 
-<xsl:import href="../../lib/metaschema-common-html.xsl"/>
+<xsl:import href="metaschema-common-html.xsl"/>
    
 <xsl:strip-space elements="*"/>
 
