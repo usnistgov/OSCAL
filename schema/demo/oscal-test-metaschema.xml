@@ -30,7 +30,16 @@
     <model>
       <assemblies named="thing" group-as="things"/>
     </model>    
-    
+    <example>
+      <kit xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+        some_string="string">
+        <thing some_string="aha" id="thing001">
+          <single-required-field>Required</single-required-field>
+          <single-field/>
+          <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
+        </thing>
+      </kit>
+    </example>
   </define-assembly>
   
   <define-assembly name="thing" group-as="things" show-docs="xml json">
@@ -55,16 +64,6 @@
         <assembly named="chocolate"/>
       </choice>
     </model>
-    <example>
-      <kit xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-       some_string="string">
-        <thing some_string="aha" id="thing001">
-          <single-required-field>Required</single-required-field>
-          <single-field/>
-          <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
-        </thing>
-      </kit>
-    </example>
   </define-assembly>
   
   
@@ -73,7 +72,7 @@
     <formal-name>Single string (required)</formal-name>
     <description>As it says</description>
     <example href="base-example.xml" path="/descendant::single-required-field[1]">
-      <description>An example in a remote document</description>
+      <!--<description>An example in a remote document</description>-->
     </example>
   </define-field>
   

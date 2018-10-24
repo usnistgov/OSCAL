@@ -106,8 +106,8 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
-  <xs:element name="namespace" type="xs:string"/>
-  <xs:element name="description"   type="xs:anyURI"/>
+  <xs:element name="namespace"   type="xs:anyURI"/>
+  <xs:element name="description" type="xs:string"/>
     <xs:complexType mixed="true">
       <xs:choice maxOccurs="unbounded">
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:a"/>
