@@ -4,14 +4,9 @@
 # Including XML and JSON schemas, conversion utilities (XSLTs) and Markdown documentation
 
 METASCHEMAXML=oscal-test-metaschema.xml
-
-# munge input file name: oscal-catalog-metaschema.xml becomes oscal-catalog (and later, oscal-catalog-schema)
-TRIMNAME=$(sed 's/-metaschema//' <<< $METASCHEMAXML)
-BASENAME=$(sed 's/.xml//'  <<< $TRIMNAME)
-BASE=$(sed 's/oscal-//'  <<< $BASENAME)
+BASENAME=oscal-test
 
 OSCALDIR=../..
-
 
 if [[ ! -v SAXON_HOME ]]; then
     echo "SAXON_HOME is not set"
