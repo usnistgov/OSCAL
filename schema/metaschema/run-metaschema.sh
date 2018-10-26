@@ -4,25 +4,32 @@
 # Including XML and JSON schemas, conversion utilities (XSLTs) and Markdown documentation
 
 METASCHEMAXML=$1
+BASE=$2
 
 # munge input file name: oscal-catalog-metaschema.xml becomes oscal-catalog (and later, oscal-catalog-schema)
-TRIMNAME=$(sed 's/-metaschema//' <<< $METASCHEMAXML)
-BASENAME=$(sed 's/.xml//'  <<< $TRIMNAME)
+BASENAME=oscal-$BASE
 BASE=$(sed 's/oscal-//'  <<< $BASENAME)
 
-OSCALDIR=../..
+echo "Using basename: $BASENAME"
+echo "Using base: $BASE"
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+OSCALDIR=$DIR/../..
 
 
-if [[ ! -v SAXON_HOME ]]; then
-    echo "SAXON_HOME is not set"
-    exit 1
-elif [[ -z "$SAXON_HOME" ]]; then
-    echo "SAXON_HOME is set to the empty string"
-    exit 1
+if [[ ! -v SAXON ]]; then
+    if [[ ! -v SAXON_HOME ]]; then
+        echo "SAXON_HOME is not set"
+        exit 1
+    elif [[ -z "$SAXON_HOME" ]]; then
+        echo "SAXON_HOME is set to the empty string"
+        exit 1
+    fi
+    SAXON=$SAXON_HOME/saxon.jar
 fi
 
-SAXON=$SAXON_HOME/saxon.jar
-
+# SAXON=/home/circleci/.m2/repository/net/sf/saxon/Saxon-HE/9.9.0-1/Saxon-HE-9.9.0-1.jar
 if [ ! -f $SAXON ]; then
     echo "The saxon library was not found at: $SAXON!"
     exit 1

@@ -5,6 +5,7 @@ vault
 
 # oXygen XML Editor IDE file
 *.xpr
+/OSCAL-dev.xpr
 
 # Working files
 scratch
@@ -18,4 +19,6 @@ roundtripped/
 target/
 xspec/*.html
 
-/OSCAL-dev.xpr
+# Slate
+docs/Gemfile.lock
+

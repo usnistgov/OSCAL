@@ -6,10 +6,10 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - json
 
 includes:
-  - schema/xml/catalog
-  - schema/json/catalog
-  - schema/xml/profile
-  - schema/json/profile
+  - schema/xml/_catalog
+  - schema/json/_catalog
+  - schema/xml/_profile
+  - schema/json/_profile
 
 search: true
 ---
