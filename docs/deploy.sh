@@ -8,19 +8,21 @@ Deploy generated files to a git branch.
 
 Options:
 
-  -h, --help               Show this help information.
-  -v, --verbose            Increase verbosity. Useful for debugging.
-  -e, --allow-empty        Allow deployment of an empty directory.
-  -m, --message MESSAGE    Specify the message used when committing on the
-                           deploy branch.
-  -n, --no-hash            Don't append the source commit's hash to the deploy
-                           commit's message.
-      --source-only        Only build but not push
-      --push-only          Only push but not build
+  -h, --help                    Show this help information.
+  -v, --verbose                 Increase verbosity. Useful for debugging.
+  -e, --allow-empty             Allow deployment of an empty directory.
+  -m, --message MESSAGE         Specify the message used when committing on the
+                                deploy branch.
+  -n, --no-hash                 Don't append the source commit's hash to the deploy
+                                commit's message.
+      --source-only             Only build but not push
+      --push-only               Only push but not build
+  -b, --deploy-branch BRANCH    Delpoy to specified branch
 "
 
 
 run_build() {
+  echo "Running middleman"
   bundle exec middleman build --clean
 }
 
@@ -49,6 +51,9 @@ parse_args() {
     elif [[ $1 = "-n" || $1 = "--no-hash" ]]; then
       GIT_DEPLOY_APPEND_HASH=false
       shift
+    elif [[ ( $1 = "-b" || $1 = "--deploy-branch" ) && -n $2 ]]; then
+      deploy-branch=$2
+      shift 2
     else
       break
     fi
@@ -59,7 +64,10 @@ parse_args() {
 
   # Source directory & target branch.
   deploy_directory=build
-  deploy_branch=nist-pages
+
+  if [[ -z $deploy_branch ]]; then
+    deploy_branch=nist-pages
+  fi
 
   #if no user identity is already set in the current git environment, use this:
   default_username=${GIT_DEPLOY_USERNAME:-deploy.sh}
@@ -126,16 +134,19 @@ main() {
 }
 
 initial_deploy() {
+  echo "Deploying initial artifacts to '$deploy_branch'"
   git --work-tree "$deploy_directory" checkout --orphan $deploy_branch
   git --work-tree "$deploy_directory" add --all
   commit+push
 }
 
 incremental_deploy() {
+  echo "Deploying incremental artifacts to '$deploy_branch'"
   #make deploy_branch the current branch
   git symbolic-ref HEAD refs/heads/$deploy_branch
   #put the previously committed contents of deploy_branch into the index
   git --work-tree "$deploy_directory" reset --mixed --quiet
+  echo "  Adding all changes in '$deploy_directory'"
   git --work-tree "$deploy_directory" add --all
 
   set +o errexit
@@ -153,10 +164,12 @@ incremental_deploy() {
 
 commit+push() {
   set_user_id
+  echo "Committing '$deploy_directory'"
   git --work-tree "$deploy_directory" commit -m "$commit_message"
 
   disable_expanded_output
   #--quiet is important here to avoid outputting the repo URL, which may contain a secret token
+  echo "Pushing changes to '$deploy_branch'"
   git push --quiet $repo $deploy_branch
   enable_expanded_output
 }
