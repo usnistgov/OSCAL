@@ -517,6 +517,23 @@ For example AC-2 appears in the FedRAMP Moderate Profile, which references the N
     control_response: A description of HOW the organization is meeting the control. One per control part.
 
 ```
+### Cryptography
+
+
+```yaml=
+    # Need a list of all crpytography used within 
+    # within the system, along with the NIST Labs
+    # certifiate number and supporting details
+    # for FIPS 140-2 validation
+
+    cryptography:
+        certificate_no
+        module_name
+        version_number
+
+```
+
+
 
 ## SSP Attachments
 

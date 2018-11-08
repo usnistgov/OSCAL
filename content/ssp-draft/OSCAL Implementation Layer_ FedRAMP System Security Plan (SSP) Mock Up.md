@@ -131,12 +131,18 @@ This is to enumerate the suggested elements in context of their parent elements.
             </data_flow_diagram>
         </data_flow>
 
-        <user_types>
+        <users>
             <role name="" internal="yes" access="nla" sensitivity_level="limited">
                 <privilege/>
                 <function/>
             </role>
-        </user_types>
+            <statistics>
+                <internal_user_total_current/>
+                <internal_user_total_future/>
+                <external_user_total_current/>
+                <external_user_total_future/>
+            </statistics>
+        </users>
 
     </system_characteristics>
     
@@ -152,6 +158,10 @@ This is to enumerate the suggested elements in context of their parent elements.
         </ports_protocols_services>
 
         <system_inventory>
+            <component id="comp-01">
+                <name/>
+                <description/>
+            </component>
             <inventory_item id="asset_id" virtual="" public="">
                 <asset_id/>
                 <ip_address/>
@@ -210,6 +220,7 @@ This is to enumerate the suggested elements in context of their parent elements.
                     <planned_implementation_date/>
                 <control_origination/>
                 <control_response/>
+                <crypto/>
 
                 <subcontrol>
                     <responsible_role/>
@@ -225,6 +236,14 @@ This is to enumerate the suggested elements in context of their parent elements.
             </control>
         </group>
     </security_controls>
+    
+    <cryptography>
+        <module>
+            <validation/>
+            <module_name/>
+            <version_number/>
+        </module>
+    </cryptography>
 
     <organizations>
         <org>
@@ -497,7 +516,7 @@ All SSP page, section, and table references are based on the FedRAMP SSP High BA
         </data_flow>
 
         <!-- Table 9-1. Personnel Roles and Privileges -->
-        <user_types>
+        <users>
             <role id="ut-01" name="UNIX System Administrator" internal="yes" access="p" sensitivity_level="moderate">
                 <privilege>Full administrative access (root)</privilege>
                 <function>Add/remove users and hardware</function>
@@ -515,7 +534,13 @@ All SSP page, section, and table references are based on the FedRAMP SSP High BA
                 <privilege>none</privilege>
                 <function>Reviews, approves, and enforces policy</function>
             </role>
-        </user_types>
+            <statistics>
+                <internal_user_total_current>22</internal_user_total_current>
+                <internal_user_total_future>33</internal_user_total_future>
+                <external_user_total_current>75</external_user_total_current>
+                <external_user_total_future>100</external_user_total_future>
+            </statistics>
+        </users>
 
     </system_characteristics>	    
 
@@ -557,7 +582,28 @@ All SSP page, section, and table references are based on the FedRAMP SSP High BA
 
         <!-- Attachment 13 Integrated Inventory Workbook -->
         <system_inventory>
-            <inventory_item id="123.45.67.96" virtual="no" public="yes">
+            <component id="comp-01">
+                <name>Linux Host</name>
+                <crypto crypto_id="crypto-01"/>
+                <crypto crypto_id="crypto-02"/>
+                <description>
+                    <p>Physical and virtual linux hosts are used as the primary platform for all server needs within the system, unless another platform is needed to achieve a specific requirement.</p>
+                </description>
+            </component>
+            <component id="comp-02">
+                <name>Web Server</name>
+                <description>
+                    <p>Apache is used for all web servers, and is always installed on a Linux OS.</p>
+                </description>
+            </component>
+            <component id="comp-03">
+                <name>SQL Server</name>
+                <description>
+                    <p>We use Acme BigSQL for our database needs, and always run it on a Linux platform.</p>
+                </description>
+            </component>
+        
+            <inventory_item id="123.45.67.96" virtual="no" public="yes" comp_id="comp-01" comp_id="comp-02">
                 <ip_address>123.45.67.96</ip_address>
                 <ip_address>123.45.68.96</ip_address>
                 <network_name>acme-web-a.a-csp.com</network_name>
@@ -583,7 +629,7 @@ All SSP page, section, and table references are based on the FedRAMP SSP High BA
                 <asset_owner>Jonathan Jacob</asset_owner>
                 <asset_administrator>Mr. L.N.X. Guru</asset_administrator>
             </inventory_item>
-            <inventory_item id="123.46.78.400" virtual="no" public="no">
+            <inventory_item id="123.46.78.400" virtual="no" public="no" comp_id="comp-01" comp_id="comp-03">
                 <ip_address>123.46.78.400</ip_address>
                 <ip_address>123.47.78.400</ip_address>
                 <network_name>big-db.a-csp.com</network_name>
@@ -701,6 +747,19 @@ All SSP page, section, and table references are based on the FedRAMP SSP High BA
             </control>
         </group>
     </security_controls>
+
+    <cryptography>
+        <module id="crypto-01">
+            <validation type="certificate_no" org="NIST Labs">00000001</validation>
+            <module_name>crypto_guard_supreme</module_name>
+            <version_number>1.23</version_number>
+        </module>
+        <module id="crypto-02">
+            <validation type="certificate_no" org="NIST Labs">00000010</validation>
+            <module_name>crypto_guard_supreme</module_name>
+            <version_number>1.23</version_number>
+        </module>
+    </cryptography>
 
     <organizations>
         <org id="org-01">
