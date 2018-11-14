@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 file:/home/wendell/Documents/OSCAL/schema/xml/oscal-metadata-schema.xsd">
+
+    <!-- Almost everything is optional and can be removed. -->
+
+    <title>Fake Service Alpha System Security Plan (SSP)</title>
+    <date>2018-06-27</date>
+    <version>2.1</version>
+    <doc-id type="FedRAMP">SSP-FSA-12345</doc-id>
+    <pub-id>uid-2018-06-27--19-22-31</pub-id>
+    <system>
+        <full-name>Fake Service Alpha</full-name>
+        <short-name>FSA</short-name>
+        <system-id type="FedRAMP">F1234567890</system-id>
+        <desc>FSA is a SaaS that provides Federal agencies with robust widget tracking capability. FSA integrates with a wide range of widget maker systems, as well as distribution vendor tracking systems.</desc>
+        <notes>
+            <p>There are no existing examples of notes for a document outside of version history.</p>
+        </notes>
+    </system>
+    <sensitivity type="FedRAMP">Moderate</sensitivity>
+    <entity role="creator">
+        <organization-name>Small Time Cloud Service Processing</organization-name>
+        <short-organization-name>ST-CSP</short-organization-name>
+        <entity-id type="DUNS">123-456-789</entity-id>
+        <entity-id type="CAGE">US-555-111</entity-id>
+        <address>
+            <addr-line>12345 S. Main Street</addr-line>
+            <city>Star City</city>
+            <state>ST</state>
+            <postal-code>54321</postal-code>
+            <country>US</country>
+        </address>
+        <email>main@st-csp.com</email>
+        <phone>703-555-1212</phone>
+        <url>https://www.st-csp.com</url>
+        <notes>
+            <p>No notes.</p>
+        </notes>
+    </entity>
+    <entity role="creator">
+        <person>
+            <name>John Doe</name>
+            <email></email>
+            <phone></phone>
+        </person>
+        <person>
+            <name>Jane Doe</name>
+            <email></email>
+            <phone></phone>
+        </person>
+        <organization>
+            <organization-name>John Doe Consulting</organization-name>
+            <short-name>JDC</short-name>
+            <entity-id type="DUNS">123-456-789</entity-id>
+            <entity-id type="CAGE">US-555-111</entity-id>
+            <address>
+                <addr-line>12345 S. Main Street</addr-line>
+                <city>Star City</city>
+                <state>ST</state>
+                <postal-code>54321</postal-code>
+                <country>US</country>
+            </address>
+            <email>main@st-csp.com</email>
+            <phone>703-555-1212</phone>
+            <url>https://www.st-csp.com</url>
+        </organization>
+        <notes>
+            <p>No notes.</p>
+        </notes>
+    </entity>
+    <entity role="creator">
+        <person>
+            <name>John Doe</name>
+            <email></email>
+            <phone></phone>
+            <address>
+                <addr-line>12345 S. Main Street</addr-line>
+                <city>Star City</city>
+                <state>ST</state>
+                <postal-code>54321</postal-code>
+                <country>US</country>
+            </address>
+        </person>
+    </entity>
+    <preparation>
+        <entity role="Prepared By">
+            <full-name>PPP Assessment Offices</full-name>
+            <short-name>3PAO</short-name>
+            <entity-id type="DUNS">555444333</entity-id>
+            <address>
+                <addr-line>444 Third St</addr-line>
+                <city>Capitol City</city>
+                <state>VA</state>
+                <postal-code>21111</postal-code>
+                <country>US</country>
+            </address>
+            <email>ron@3pao.com</email>
+            <phone>703-555-2222</phone>
+            <url>https://www.3pao.com</url>
+            <notes>
+				<p>No notes.</p>
+            </notes>
+        </entity>
+        <entity role="Prepared For">
+            <full-name>Small Time Cloud Service Processing</full-name>
+			<entity-id type="DUNS">123-456-789</entity-id>
+        </entity>
+    </preparation>
+    <history>
+        <release>
+            <title> </title> <!-- // This shouldn't change from one verson to the next. In the rare case it does, the from/to is cited in the <notes>-->
+            <date>2017-02-04</date>
+            <version>1.0</version>
+            <doc-id type="type9">uid-2017-02-04--14-12-32</doc-id>
+            <pub-id type="type11"> </pub-id><!-- // We need to discuss this one. I don't remember the intention, but I think this shouldn't change from one version to the next.-->
+            <preparation>
+                <entity role="role5">
+                    <short-name>ST-CSP</short-name>
+                </entity>
+            </preparation>
+            <notes>
+                <p>Initial publication.</p>
+            </notes>
+        </release>
+        <release>
+            <date>2017-08-08</date>
+            <version>2.0</version>
+            <doc-id type="type9">uid-2017-08-08--15-14-30</doc-id>
+            <preparation>
+                <entity role="role5">
+                    <short-name>ST-CSP</short-name>
+                </entity>
+            </preparation>
+            <notes>
+                <p>Revised to reflect addition of CAC/PIV acceptance.</p>
+            </notes>
+        </release>
+        <release>
+            <date>2018-06-27</date>
+            <version>2.1</version>
+            <!--<doc-id type="type9">uid-2018-06-27-\-19-22-31</doc-id>--><!-- // Do we want to list this both in the version history and at the top? I suggest we eliminate this from the version history.-->
+            <preparation>
+                <entity role="role5">
+                    <short-name>ST-CSP</short-name>
+                </entity>
+            </preparation>
+            <notes>
+                <p>Revised to address inaccuracies in the CAC/PIV implementation description.</p>
+            </notes>
+        </release>
+    </history>
+    <attachment href="href7">
+        <title> </title>
+        <desc> </desc>
+        <doc-id type="type15"> </doc-id>
+        <pub-id type="type17"> </pub-id>
+        <file>
+            <format> </format>
+            <timestamp> </timestamp>
+            <url> </url>
+        </file>
+        <notes>
+            <p/>
+        </notes>
+    </attachment>
+    
+</metadata>

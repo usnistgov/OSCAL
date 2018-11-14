@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../xml/oscal-metadata-schema.xsd">
+    <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
+    <date>April 2013</date>
+    <version iso-date="2015-01-22">Updated</version>
+    
+    <resource rel="self" media-type="application/xml">
+        <link href="nist-sp800-53-catalog-header.xml">...</link>
+        <hash> or signature </hash>
+    </resource>
+    <!-- corresponding / aligned -->
+    <resource rel="concurrent" media-type="application/pdf">
+        <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
+        <date>April 2013</date>
+        <version iso-date="2015-01-22">Updated</version>
+        <prop class="alt-title">NIST Special Publication 800-53 Revision 4</prop>
+        <prop class="short-title">NIST SP800-53 rev 4</prop>
+        <prop class="doi">10.6028/NIST.SP.800-53r4</prop>
+        <prop class="coden">NSPUE2</prop>
+        <link rel="alternate" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
+    </resource>
+    <resource rel="superseding" media-type="application/pdf">
+        <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
+        <prop class="alt-title">NIST Special Publication 800-53 Revision 4</prop>
+        <prop class="short-title">NIST SP800-53 rev 4</prop>
+        <link rel="canonical" href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
+    </resource>
+    <resource rel="metaschema" media-type="application/x-xml+oscal.metaschema">
+        <link href="oscal-catalog-metaschema.xml">OSCAL Catalog Metaschema</link>
+    </resource>
+    
+    <party role-id="creator contact">
+        <org>
+            <org-name>Joint Task Force, Transformation Initiative</org-name>
+            <address>
+                <addr-line>National Institute of Standards and Technology</addr-line>
+                <addr-line>Attn: Computer Security Division</addr-line>
+                <addr-line>Information Technology Laboratory</addr-line>
+                <addr-line>100 Bureau Drive (Mail Stop 8930)</addr-line>
+                <city>Gaithersburg</city>
+                <state>MD</state><postal-code>20899-8930</postal-code>
+            </address>
+            <email>sec-cert@nist.gov</email>
+        </org>
+    </party>
+    <roster>
+        <role id="creator"><title>Document creator</title></role>
+        <role id="contact"><title>Contact</title></role>
+    </roster>
+    <extra-meta>
+        <meta-group type="keywords">
+            <meta>Assurance</meta>
+            <meta>computer security</meta>
+            <meta>FIPS Publication 199</meta>
+            <meta>FIPS Publication 200</meta>
+            <meta>FISMA</meta>
+            <meta>Privacy Act</meta>
+            <meta>Risk Management Framework</meta>
+            <meta>security controls</meta>
+            <meta>security requirements</meta>
+        </meta-group>
+    </extra-meta>
+</metadata>

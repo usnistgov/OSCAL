@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0
+                        file:/C:/Users/wap1/Documents/OSCAL/schema/xml/oscal-metadata-schema.xsd">
+    
+    <title>Fake Service Alpha System Security Plan (SSP)</title>
+    <date>2018-06-27</date>
+    <version>2.1</version>
+    <doc-id type="FedRAMP">SSP-FSA-12345</doc-id>
+    <doc-id type="publication-id">uid-2018-06-27--19-22-31</doc-id>
+    
+    <system>
+        <full-name>Fake Service Alpha</full-name>
+        <short-name>FSA</short-name>
+        <!-- make these <prop>? -->
+        <system-id type="FedRAMP">F1234567890</system-id>
+        <desc>FSA is a SaaS that provides Federal agencies with robust widget tracking capability. FSA integrates with a wide range of widget maker systems, as well as distribution vendor tracking systems.</desc>
+        <notes>
+            <p>There are no existing examples of notes for a document outside of version history.</p>
+        </notes>
+    </system>
+    
+    <party role-id="creator">
+        <org>
+          <org-name>Small Time Cloud Service Processing</org-name>
+        
+           <!-- could also be props here... -->
+            <short-name>ST-CSP</short-name>
+        
+        <org-id type="DUNS">123-456-789</org-id>
+        <org-id type="CAGE">US-555-111</org-id>
+        <address>
+            <addr-line>12345 S. Main Street</addr-line>
+            <city>Star City</city>
+            <state>ST</state>
+            <postal-code>54321</postal-code>
+            <country>US</country>
+        </address>
+        <email>main@st-csp.com</email>
+        <phone>703-555-1212</phone>
+        <url>https://www.st-csp.com</url>
+        <notes>
+            <p>No notes.</p>
+        </notes>
+        </org>
+    </party>
+    <party role-id="creator">
+        <person>
+            <person-name>John Doe</person-name>
+            <email></email>
+            <phone></phone>
+        </person>
+        <person>
+            <person-name>Jane Doe</person-name>
+            <email></email>
+            <phone></phone>
+        </person>
+        <org>
+            <org-name>John Doe Consulting</org-name>
+            <short-name>JDC</short-name>
+            <org-id type="DUNS">123-456-789</org-id>
+            <org-id type="CAGE">US-555-111</org-id>
+            <address>
+                <addr-line>12345 S. Main Street</addr-line>
+                <city>Star City</city>
+                <state>ST</state>
+                <postal-code>54321</postal-code>
+                <country>US</country>
+            </address>
+            <email>main@st-csp.com</email>
+            <phone>703-555-1212</phone>
+            <url>https://www.st-csp.com</url>
+        </org>
+        <notes>
+            <p>No notes.</p>
+        </notes>
+    </party>
+    <party role-id="creator">
+        <person>
+            <person-name>John Doe</person-name>
+            <address>
+                <addr-line>12345 S. Main Street</addr-line>
+                <city>Star City</city>
+                <state>ST</state>
+                <postal-code>54321</postal-code>
+                <country>US</country>
+            </address>
+            <email></email>
+            <phone></phone>
+            
+        </person>
+    </party>
+    <roster>
+        <role id="creator"><title>Document preparation</title></role>
+    </roster>
+    <extra-meta>
+        <meta type="FedRAMP-system-ID">Moderate</meta>
+    </extra-meta>
+</metadata>
