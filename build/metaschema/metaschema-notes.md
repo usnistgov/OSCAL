@@ -12,8 +12,8 @@ However, the terminology used to describe data in either format will be differen
 | Assemblies | Sequence (zero or more) of elements (element content) *each named as an individual* | Array property of parent object, with a key for the group, containing objects |
 | Field (with no flags) | Permits or requires a single element with text content | String property |
 | Field with one or more flags | Element with text content, flags as attributes |   Object property with `STRVALUE` String property, flags as other properties |
-| Field type=`mixed`, no flags permitted | Element with mixed content | String property, parseable as markdown |
-| Field type=`mixed`, flag(s) permitted | Element with mixed content | Object property with `RICHTEXT` String property parseable as markdown |
+| Field `as='mixed'`, no flags permitted | Element with mixed content | String property, parseable as markdown |
+| Field `as='mixed'`, flag(s) permitted | Element with mixed content | Object property with `RICHTEXT` String property parseable as markdown |
 | Fields | Sequence (zero or more) elements each for a single field (as above), named singly | Array property, with a key *for the group*, containing objects or strings as above (for fields with and without flags) |
 | Flag | Attribute | String property |
 | Flag with type | Attribute with lexical constraints per type | String property with lexical constraints per type, or typed property such as `number` or URI (per type) | 
