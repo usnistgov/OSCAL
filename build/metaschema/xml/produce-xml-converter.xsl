@@ -47,9 +47,9 @@
     <xsl:template match="/METASCHEMA/*" priority="-0.2"/>
     
     
-    <xsl:template match="define-flag">
-        
-    </xsl:template>
+<!-- Flags don't need templates since they are always handled
+     with fields or assemblies. -->
+    <xsl:template match="define-flag"/>
     
     
     <xsl:template match="define-field[@address=flag/@name][@as='mixed'][empty(flag)]" priority="4">
@@ -251,8 +251,7 @@
             </string>
             <string>```</string>
         </xslt:template>
-        
-        
+
         <xslt:template mode="md" priority="1" match="ul | ol">
             <string/>
             <xslt:apply-templates mode="md"/>
