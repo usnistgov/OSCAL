@@ -108,6 +108,18 @@
         </xs:element>
     </xsl:template>
     
+    <xsl:template match="define-assembly[exists(@acquire-from)] |
+        define-field[exists(@acquire-from)] |
+        define-flag[exists(@acquire-from)]" expand-text="true">
+        <xsl:variable name="defining" select="@name"/>
+        <xsl:variable name="module" select="@acquire-from"/>
+        <xsl:variable name="definition" select="/METASCHEMA/import[@name=$module]/key('declarations-by-name',$defining,document(@href,.))"/>
+        <xsl:apply-templates select="$definition"/>
+        <xsl:if test="empty($definition)">
+            <xsl:comment> No declaration found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
+        </xsl:if>
+    </xsl:template>
+    
     <xsl:template match="define-assembly">
         <xs:element name="{@name}">
             <xsl:apply-templates select="." mode="annotated"/>

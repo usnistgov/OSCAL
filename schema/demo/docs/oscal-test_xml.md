@@ -45,7 +45,7 @@ The `<thing>` element has the following contents (in order):
 * Attribute [@id](#an-id-id-attribute)* (required)*
 * Attribute [@some_string](#a-string-flag-somestring-attribute)* (required)*
 * A [&lt;single-required-field>](#single-string-required-single-required-field-element) element (*one*)
-* A [&lt;single-field>](#single-string-single-field-element) element (*zero or one*)
+* A [&lt;single-field>](#-single-field-element) element (*zero or one*)
 * A [&lt;single-mixed-field>](#single-string-but-with-mixed-content-single-mixed-field-element) element (*one*)
 * [&lt;plural-field>](#a-single-occurrence-of-a-plural-ha-plural-field-element) elements (*zero or more*)
 * [&lt;plural-mixed-field>](#only-one-plural-but-possibly-mixed-plural-mixed-field-element) elements (*zero or more*)
@@ -66,9 +66,7 @@ As it says
 ```
 
 
-### **Single string**: `<single-field>` element
-
-As it says
+### : `<single-field>` element
 
 ### **Single string but with mixed content**: `<single-mixed-field>` element
 

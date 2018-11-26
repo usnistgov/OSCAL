@@ -84,9 +84,7 @@
         "$id" : "#/definitions/single-required-field",
         "type" : "string" },
       "single-field" : 
-      { "title" : "Single string",
-        "description" : "As it says",
-        "$id" : "#/definitions/single-field",
+      { "$id" : "#/definitions/single-field",
         "type" : "string" },
       "single-mixed-field" : 
       { "title" : "Single string but with mixed content",

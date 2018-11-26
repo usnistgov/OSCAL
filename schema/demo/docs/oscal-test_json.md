@@ -49,7 +49,7 @@ A [thing](#base-thing-object) object has the following properties:
 * String [id](#an-id-id-object)
 * String [some_string](#a-string-flag-somestring-object) 
 * A [single-required-field](#single-string-required-single-required-field-object) object * (required)*  
-* A [single-field](#single-string-single-field-object) object  
+* A [single-field](#-single-field-object) object  
 * A [single-mixed-field](#single-string-but-with-mixed-content-single-mixed-field-object) object * (required)*  
 * An array `plurals` containing [plural-field](#a-single-occurrence-of-a-plural-ha-plural-field-object) data items  
 * An array `plurals-mixed` containing [plural-mixed-field](#only-one-plural-but-possibly-mixed-plural-mixed-field-object) data items  
@@ -78,9 +78,7 @@ The `single-required-field` object has a property:
 ```
  
 
-### **Single string**: `single-field` object
-
-As it says
+### : `single-field` object
 
 `single-field` will appear as a string property.
 
