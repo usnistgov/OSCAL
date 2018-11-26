@@ -4,11 +4,10 @@
     xmlns:math="http://www.w3.org/2005/xpath-functions/math"
     xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-    exclude-result-prefixes="xs math"
+    exclude-result-prefixes="xs math m"
     version="3.0"
     
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     
 <!-- Purpose: Produce an XSD Schema representing constraints declared in a netaschema -->
 <!-- Input:   A Metaschema -->
@@ -19,32 +18,56 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <xsl:variable name="home"   select="/"/>
-    <xsl:variable name="abroad" select="//import/@href/document(.)"/>
+    <!--<xsl:variable name="home"   select="/"/>
+    <xsl:variable name="abroad" select="//import/@href/document(.)"/>-->
+    
+    <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
+    
+    <xsl:variable name="declaration-prefix" select="string(/METASCHEMA/short-name)"/>
     
     <xsl:key name="declarations-by-name"
         match="define-field | define-assembly | define-flag" use="@name"/>
     
+    
+    <xsl:template match="/">
+<!-- $unwired has the schema with no namespaces       -->
+        <xsl:variable name="unwired">
+            <xsl:apply-templates/>
+        </xsl:variable>
+<!-- mode 'wire-ns' wires up the namespaces -->
+        <!--<xsl:copy-of select="$unwired"/>-->
+        <xsl:apply-templates select="$unwired" mode="wire-ns"/>
+        
+    </xsl:template>
+    
+    
 <!-- grab    -->
     <xsl:template match="/METASCHEMA">
-        <xs:schema elementFormDefault="qualified" targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
-            <xs:include schemaLocation="oscal-prose-module.xsd"/>
+        <xs:schema elementFormDefault="qualified" targetNamespace="{ $target-namespace }">
+            
 <!-- First, declarations for elements here -->
             <xsl:apply-templates/>
             
 <!-- Then, declarations for elements declared in imported metaschemas -->
-            <xsl:apply-templates select="$abroad/key('declarations-by-name',$home//(flag/@name | model//@named )) [not(@name=$home/*/@name) or true()]"/>
+            <!--<xsl:apply-templates select="$abroad/key('declarations-by-name',$home//(flag/@name | model//@named )) [not(@name=$home/*/@name) or true()]"/>-->
             
             <xs:group name="prose">
                 <xs:choice>
-                    <xs:element ref="oscal:p"/>
-                    <xs:element ref="oscal:ul"/>
-                    <xs:element ref="oscal:ol"/>
-                    <xs:element ref="oscal:pre"/>
+                    <xs:element ref="{$declaration-prefix}:p"/>
+                    <xs:element ref="{$declaration-prefix}:ul"/>
+                    <xs:element ref="{$declaration-prefix}:ol"/>
+                    <xs:element ref="{$declaration-prefix}:pre"/>
                 </xs:choice>
             </xs:group>
+            
+            <xsl:apply-templates mode="acquire-prose" select="document('oscal-prose-module.xsd')"/>
+            
         </xs:schema>
     </xsl:template>
+    
+    <xsl:template match="namespace"/>
+        
+    
     
     <xsl:template match="/METASCHEMA/schema-name">
         <xsl:comment>
@@ -63,12 +86,12 @@
     </xsl:template>
     
     <xsl:template match="*[matches(@named,'\S')]">
-        <xs:element minOccurs="{ number(@required = 'yes') }" ref="oscal:{@named}"/>
+        <xs:element minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@named}"/>
     </xsl:template>
     
 <!-- Will not match declaration elements, which do not have @named -->
     <xsl:template priority="5" match="*[matches(@named,'\S')][matches(@group-as,'\S')]">
-        <xs:element maxOccurs="unbounded" minOccurs="{ number(@required = 'yes') }" ref="oscal:{@named}"/>
+        <xs:element maxOccurs="unbounded" minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@named}"/>
     </xsl:template>
     
     <xsl:template match="define-field">
@@ -76,7 +99,7 @@
             <xsl:apply-templates select="." mode="annotated"/>
             <xs:complexType mixed="true">
                 <xsl:if test="@as='mixed'">
-                    <xs:group ref="oscal:everything-inline"/>
+                    <xs:group ref="{$declaration-prefix}:everything-inline"/>
                 </xsl:if>
                 
                 <!-- picking up attribute declarations -->
@@ -130,7 +153,7 @@
     </xsl:template>
     
     <xsl:template match="prose">
-        <xs:group ref="oscal:prose" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:group ref="{$declaration-prefix}:prose" maxOccurs="unbounded" minOccurs="0"/>
     </xsl:template>
     
     
@@ -147,6 +170,23 @@
             <xsl:apply-templates select="/*/define-flag[@name=$name]" mode="annotated"/>
         </xs:attribute>
     </xsl:template>
+
+    <xsl:mode name="acquire-prose" on-no-match="shallow-copy"/>
     
+    <xsl:template match="xs:schema" mode="acquire-prose">
+        <xsl:apply-templates mode="#current"/>
+    </xsl:template>
+    
+<!-- dropping placeholder 'prose' element declaration -->
+    <xsl:template match="xs:schema/xs:element[@name='prose']" mode="acquire-prose"/>
+    
+    <xsl:template match="*" mode="wire-ns">
+        <xsl:copy copy-namespaces="no"> 
+            <xsl:namespace name="{$declaration-prefix}" select="$target-namespace"/>
+            <xsl:namespace name="oscal-prose" select="$target-namespace"/>
+            <xsl:copy-of select="@*"/>
+           <xsl:apply-templates mode="#current"/>
+        </xsl:copy>
+    </xsl:template>
     
 </xsl:stylesheet>

@@ -9,7 +9,7 @@
    <xsl:output indent="yes" method="text" use-character-maps="delimiters"/>
    <!-- METASCHEMA docs production -->
    <!-- XHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHX -->
-   <xsl:import href="file:/home/wendell/Documents/OSCAL/schema/demo/oscal-test-xml-converter.xsl"/>
+   <xsl:import href="file:/C:/Users/wap1/Documents/OSCAL/schema/demo/oscal-test-xml-converter.xsl"/>
    <xsl:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
    <xsl:import href="../lib/metaschema-json-html.xsl"/>
    <xsl:param name="json-file" as="xs:string?" select="()"/>
