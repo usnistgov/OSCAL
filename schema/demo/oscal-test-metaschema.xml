@@ -13,7 +13,6 @@
   <namespace>urn:fakeup</namespace>
   <remarks>
     <p>A test schema for prototyping and demonstrating the metaschema feature set.</p>
-    
   </remarks>
 
   <import href="module-metaschema.xml" name="module"/>
@@ -68,8 +67,6 @@
     </model>
   </define-assembly>
   
-  
-<!-- tbd expand to cover rage e.g. examples showing compression  -->
   <define-field name="single-required-field" as="string" show-docs="xml json">
     <formal-name>Single string (required)</formal-name>
     <description>As it says</description>

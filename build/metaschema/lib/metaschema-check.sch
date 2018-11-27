@@ -26,17 +26,24 @@
         </sch:rule>
         <sch:rule context="/m:METASCHEMA/m:title"/>
         <sch:rule context="/m:METASCHEMA/m:import">
+            <sch:report role="warning" test="document-uri(/) = resolve-uri(@href,document-uri(/))">Schema can't import itself</sch:report>
             <sch:assert test="exists(document(@href)/m:METASCHEMA)">Can't find a metaschema at <sch:value-of select="@href"/></sch:assert>
             <!--<sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>-->
         </sch:rule>
         
         <sch:rule context="m:define-assembly[exists(@acquire-from)] | m:define-field[exists(@acquire-from)] | m:define-flag[exists(@acquire-from)]">
             <sch:assert test="empty(child::*)">An acquired definition may not have its own contents</sch:assert>
+            <sch:let name="this-name"   value="@name"/>
             <sch:let name="target-name" value="@acquire-from"/>
             <sch:let name="target"      value="/m:METASCHEMA/m:import[@name=$target-name]"/>
             
-            <sch:let name="module" value="$target/document(@href,.)/    m:METASCHEMA"/>
-            <sch:assert test="exists($module)">No metaschema is found for metaschema '<sch:value-of select="$target-name"/>' at <sch:value-of select="$target/@href"/> </sch:assert> 
+            <sch:let name="module" value="$target/document(@href,.)/m:METASCHEMA"/>
+            <sch:assert test="exists($target)">No metaschema is imported for acquisition '<sch:value-of select="$target-name"/>' </sch:assert>
+            <sch:assert test="empty($target) or exists($module)">No metaschema is found for metaschema '<sch:value-of select="$target-name"/>' at <sch:value-of select="$target/@href"/> </sch:assert> 
+            <sch:let name="acquired" value="$module/key('declaration-by-name',$this-name,.)"/>
+            <sch:assert test="exists($acquired)">No definition is found for <sch:value-of select="substring-after(local-name(),'define-')"/>  <sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' at <sch:value-of select="$target/@href"/> </sch:assert> 
+            <sch:assert test="empty($acquired/@acquire-from)">Definition for <sch:value-of select="substring-after(local-name(),'define-')"/> '<sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' is also acquired</sch:assert> 
+            
         </sch:rule>
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
             <sch:assert test="exists(m:formal-name)">formal-name missing from <name/></sch:assert>

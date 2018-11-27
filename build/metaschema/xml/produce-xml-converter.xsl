@@ -7,11 +7,7 @@
     
     xmlns:xslt="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias"
     
-    xmlns="http://www.w3.org/2005/xpath-functions"
-    
-    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-    
-    >
+    xmlns="http://www.w3.org/2005/xpath-functions">
     
 <!-- Purpose: Produce an XSLT supporting bidirectional XML-JSON syntax negotiation based on constraints declared in a netaschema -->
 <!-- Input:   A Metaschema -->
@@ -24,9 +20,11 @@
     
     <xsl:namespace-alias stylesheet-prefix="xslt" result-prefix="xsl"/>
     
+    <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
+    
     <xsl:template match="METASCHEMA">
         <xslt:stylesheet version="3.0"
-            xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
+            xpath-default-namespace="{ $target-namespace }"
             exclude-result-prefixes="#all">
             
             <xslt:output indent="yes" method="text" use-character-maps="delimiters"/>

@@ -21,6 +21,8 @@
     <!--<xsl:variable name="home"   select="/"/>
     <xsl:variable name="abroad" select="//import/@href/document(.)"/>-->
     
+    <xsl:variable name="home" select="/"/>
+    
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     
     <xsl:variable name="declaration-prefix" select="string(/METASCHEMA/short-name)"/>
@@ -30,27 +32,21 @@
     
     
     <xsl:template match="/">
-<!-- $unwired has the schema with no namespaces       -->
+        <!--<xsl:apply-templates/>-->       
+        <!-- $unwired has the schema with no namespaces -->
         <xsl:variable name="unwired">
             <xsl:apply-templates/>
         </xsl:variable>
-<!-- mode 'wire-ns' wires up the namespaces -->
         <!--<xsl:copy-of select="$unwired"/>-->
+        <!-- mode 'wire-ns' wires up the namespaces -->
         <xsl:apply-templates select="$unwired" mode="wire-ns"/>
-        
     </xsl:template>
     
-    
-<!-- grab    -->
     <xsl:template match="/METASCHEMA">
         <xs:schema elementFormDefault="qualified" targetNamespace="{ $target-namespace }">
-            
-<!-- First, declarations for elements here -->
+
             <xsl:apply-templates/>
-            
-<!-- Then, declarations for elements declared in imported metaschemas -->
-            <!--<xsl:apply-templates select="$abroad/key('declarations-by-name',$home//(flag/@name | model//@named )) [not(@name=$home/*/@name) or true()]"/>-->
-            
+
             <xs:group name="prose">
                 <xs:choice>
                     <xs:element ref="{$declaration-prefix}:p"/>
@@ -59,16 +55,14 @@
                     <xs:element ref="{$declaration-prefix}:pre"/>
                 </xs:choice>
             </xs:group>
-            
+
             <xsl:apply-templates mode="acquire-prose" select="document('oscal-prose-module.xsd')"/>
-            
+
         </xs:schema>
     </xsl:template>
     
     <xsl:template match="namespace"/>
         
-    
-    
     <xsl:template match="/METASCHEMA/schema-name">
         <xsl:comment>
             <xsl:apply-templates/>
@@ -93,7 +87,30 @@
     <xsl:template priority="5" match="*[matches(@named,'\S')][matches(@group-as,'\S')]">
         <xs:element maxOccurs="unbounded" minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@named}"/>
     </xsl:template>
-    
+
+    <!-- @acquire-from indicates the model is elsewhere ... -->
+    <xsl:template
+        match="define-assembly[exists(@acquire-from)] |
+               define-field[exists(@acquire-from)] |
+               define-flag[exists(@acquire-from)]"
+        expand-text="true">
+        <xsl:variable name="defining" select="@name"/>
+        <xsl:variable name="module" select="@acquire-from"/>
+        <xsl:variable name="definition"
+            select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, .))"/>
+        <xsl:choose>
+            <xsl:when test="not(root() is $home )">
+                <xsl:comment> Schema definitions cannot be imported indirectly: check { local-name() || '[@name=''' || $defining || ''']'} acquired from '{ $module }' at { /METASCHEMA/import[@name=$module]/@href } </xsl:comment>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates select="$definition"/>
+                <xsl:if test="empty($definition)">
+                    <xsl:comment> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
+                </xsl:if>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
     <xsl:template match="define-field">
         <xs:element name="{@name }">
             <xsl:apply-templates select="." mode="annotated"/>
@@ -106,18 +123,6 @@
                 <xsl:apply-templates select="flag"/>
             </xs:complexType>
         </xs:element>
-    </xsl:template>
-    
-    <xsl:template match="define-assembly[exists(@acquire-from)] |
-        define-field[exists(@acquire-from)] |
-        define-flag[exists(@acquire-from)]" expand-text="true">
-        <xsl:variable name="defining" select="@name"/>
-        <xsl:variable name="module" select="@acquire-from"/>
-        <xsl:variable name="definition" select="/METASCHEMA/import[@name=$module]/key('declarations-by-name',$defining,document(@href,.))"/>
-        <xsl:apply-templates select="$definition"/>
-        <xsl:if test="empty($definition)">
-            <xsl:comment> No declaration found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
-        </xsl:if>
     </xsl:template>
     
     <xsl:template match="define-assembly">
@@ -185,12 +190,18 @@
 
     <xsl:mode name="acquire-prose" on-no-match="shallow-copy"/>
     
+    <xsl:template match="comment() | processing-instruction()" mode="acquire-prose"/>
+    
     <xsl:template match="xs:schema" mode="acquire-prose">
-        <xsl:apply-templates mode="#current"/>
+            <xsl:apply-templates mode="#current"/>
     </xsl:template>
     
 <!-- dropping placeholder 'prose' element declaration -->
     <xsl:template match="xs:schema/xs:element[@name='prose']" mode="acquire-prose"/>
+    
+    <xsl:template match="comment()" mode="wire-ns">
+        <xsl:copy-of select="."/>
+    </xsl:template>
     
     <xsl:template match="*" mode="wire-ns">
         <xsl:copy copy-namespaces="no"> 

@@ -168,17 +168,11 @@
   <xs:group name="special">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="oscal-prose:withdrawn"/>
+        <!-- any other inline elements go here -->
         <xs:element ref="oscal-prose:insert"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
-  <!-- A placeholder status report typically with a cross-reference -->
-  <xs:element name="withdrawn">
-    <xs:complexType mixed="true">
-      <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal-prose:inlines"/>
-    </xs:complexType>
-  </xs:element>
   <!--
     A value to be assigned by responder via parameter
     (a parameter must be available)

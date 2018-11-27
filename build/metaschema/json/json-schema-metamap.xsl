@@ -15,6 +15,7 @@
         <xsl:apply-templates/>
     </xsl:template>
     
+    <xsl:variable name="home" select="/"/>
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
@@ -54,7 +55,33 @@
     </xsl:template>
 
     <xsl:template match="METASCHEMA/schema-name | METASCHEMA/short-name | METASCHEMA/remarks"/>
-   <xsl:template match="define-flag"/>
+  
+    <!-- @acquire-from indicates the model is elsewhere ... -->
+<!-- XXX test this! XXX -->
+    <xsl:template priority="5"
+        match="define-assembly[exists(@acquire-from)] |
+        define-field[exists(@acquire-from)] |
+        define-flag[exists(@acquire-from)]"
+        expand-text="true">
+        <xsl:variable name="defining" select="@name"/>
+        <xsl:variable name="module" select="@acquire-from"/>
+        <xsl:variable name="definition"
+            select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, .))"/>
+        <xsl:choose>
+            <xsl:when test="not(root() is $home )">
+                <xsl:comment> Schema definitions cannot be imported indirectly: check { local-name() || '[@name=''' || $defining || ''']'} acquired from '{ $module }' at { /METASCHEMA/import[@name=$module]/@href } </xsl:comment>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates select="$definition"/>
+                <xsl:if test="empty($definition)">
+                    <xsl:comment> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
+                </xsl:if>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    
+    
+    <xsl:template match="define-flag"/>
     
     <xsl:template match="define-assembly | define-field">
         <map key="{ @name (: @group-as | @name[empty(../@group-as)] :) }">

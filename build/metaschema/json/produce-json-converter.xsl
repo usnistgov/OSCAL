@@ -22,6 +22,7 @@
     
     <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
     <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
+    <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     
     <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name"/>
     
@@ -89,7 +90,7 @@
         <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }{ if (@name=../@use) then ' | /map[empty(@key)]' else ''}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
         <xslt:template match="{$field-match}" priority="2" mode="json2xml">
-            <xslt:element name="{@name}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+            <xslt:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="@address">
                     <xslt:attribute name="{.}" select="../@key"/>
                 </xsl:for-each>
@@ -105,7 +106,7 @@
         <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }{ if (@name=../@use) then ' | /map[empty(@key)]' else ''}</xsl:variable>
         <xsl:comment> 000 Handling assembly "{ @name }" 000 </xsl:comment>
         <xslt:template match="{$assembly-match}" priority="2" mode="json2xml">
-            <xslt:element name="{@name}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+            <xslt:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="@address">
                     <xslt:attribute name="{.}" select="../@key"/>
                 </xsl:for-each>
@@ -153,7 +154,7 @@
         
         <xslt:template match="array[@key='prose']/*" priority="5" mode="json2xml">
             <xsl:comment> This will have to be post-processed to render markdown into markup </xsl:comment>
-            <xslt:element name="p" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+            <xslt:element name="p" namespace="{$target-namespace}">
                 <xslt:apply-templates mode="#current"/>
             </xslt:element>
         </xslt:template>

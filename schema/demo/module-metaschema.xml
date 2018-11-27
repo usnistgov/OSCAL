@@ -16,6 +16,8 @@
     
   </remarks>
 
+  <import href="oscal-test-metaschema.xml" name="oscal-test"/>
+  
   <define-assembly name="kit" group-as="thing-kit" show-docs="xml json">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="some_string" required="yes"/>

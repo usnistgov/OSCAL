@@ -94,8 +94,9 @@
                 <xslt:for-each select="$expanded/*">
                     <html xmlns="http://www.w3.org/1999/xhtml">
                         <body>
+                            <xslt:message>I am here: <xslt:value-of select="document-uri(document(''))"/></xslt:message>
                             <xslt:apply-templates/>
-                            <xslt:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>
+                            <!--<xslt:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>-->
                         </body>
                     </html>
                     
