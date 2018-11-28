@@ -5,11 +5,7 @@
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     version="3.0"
     
-    xmlns:xslt="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias"
-    
-    xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-    
-    >
+    xmlns:xslt="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias">
     
 <!-- Purpose: Produce an XSLT supporting production of XML-oriented metaschema documentation pertaining
         to a particular catalog type.
@@ -30,6 +26,8 @@
     
     <xsl:namespace-alias stylesheet-prefix="xslt" result-prefix="xsl"/>
 
+    <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
+    
     <xsl:template match="METASCHEMA">
         <xslt:stylesheet version="3.0"
             xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
@@ -52,11 +50,14 @@
         <description>An example in a remote document</description>
     </example>-->
     
-    <xsl:template match="METASCHEMA//*">
+    <!-- XXX This has to go b/c @acquire-from objects won't have examples ... but, do we want em?  -->
+    <!--<xsl:template match="METASCHEMA//*">
         <xsl:if test="exists(descendant::example)">
             <xsl:apply-templates/>
         </xsl:if>
-    </xsl:template>
+    </xsl:template>-->
+    
+    <xsl:template match="text()"/>
     
     <xsl:template priority="2" match="example[matches(@href,'\S')][matches(@path,'\S')]">
         <xslt:template
@@ -66,7 +67,7 @@
                 <!-- NB: ns should be dynamic (driven by metaschema) -->
                 
                 <xslt:copy-of select="document( resolve-uri(@href,base-uri(.))){@path}" copy-namespaces="no"
-                    xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"/>
+                    xpath-default-namespace="{$target-namespace}"/>
             </xslt:copy>
         </xslt:template>
     </xsl:template>
@@ -76,9 +77,34 @@
         <xslt:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
         <xslt:import href="../lib/metaschema-xml-html.xsl"/>
         
+        <xslt:variable name="home" select="/"/>
+        <xslt:key name="declarations-by-name"
+            match="define-field | define-assembly | define-flag" use="@name"/>
+        
         <!-- output method must be text for good markdown including unescaped code snips   -->
         <xslt:output method="text"/>
         
+        <xslt:template priority="5"
+            match="define-assembly[exists(@acquire-from)] |
+            define-field[exists(@acquire-from)] |
+            define-flag[exists(@acquire-from)]"
+            expand-text="true">
+            <xslt:variable name="defining" select="@name"/>
+            <xslt:variable name="module" select="@acquire-from"/>
+            <xslt:variable name="definition"
+                select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, .))"/>
+            <xslt:choose>
+                <xslt:when test="not(root() is $home )">
+                    <xslt:comment> Schema definitions cannot be imported indirectly: check { local-name() || '[@name=''' || $defining || ''']'} acquired from '{ $module }' at { /METASCHEMA/import[@name=$module]/@href } </xslt:comment>
+                </xslt:when>
+                <xslt:otherwise>
+                    <xslt:apply-templates select="$definition"/>
+                    <xslt:if test="empty($definition)">
+                        <xsl:comment> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
+                    </xslt:if>
+                </xslt:otherwise>
+            </xslt:choose>
+        </xslt:template>
         <xslt:template match="node() | @*" mode="expand-example">
             <xslt:copy copy-namespaces="no">
                 <xslt:apply-templates select="node() | @*" mode="#current"/>
@@ -88,13 +114,14 @@
         <xslt:variable name="expanded">
             <xslt:apply-templates mode="expand-example" select="/"/>
         </xslt:variable>
-            
+        
+        <!-- XXX template here to intercept @acquire-from see produce-xsd.xsl           -->
+                
         <xslt:template match="/">
             <xslt:variable name="html">
                 <xslt:for-each select="$expanded/*">
                     <html xmlns="http://www.w3.org/1999/xhtml">
                         <body>
-                            <xslt:message>I am here: <xslt:value-of select="document-uri(document(''))"/></xslt:message>
                             <xslt:apply-templates/>
                             <!--<xslt:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>-->
                         </body>

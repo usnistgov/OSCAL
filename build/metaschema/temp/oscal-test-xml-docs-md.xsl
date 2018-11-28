@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
                 version="3.0"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
                 exclude-result-prefixes="#all"><!-- METASCHEMA docs production --><!-- XHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHX -->
    <xsl:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
    <xsl:import href="../lib/metaschema-xml-html.xsl"/>
+   <xsl:variable name="home" select="/"/>
+   <xsl:key name="declarations-by-name"
+            match="define-field | define-assembly | define-flag"
+            use="@name"/>
    <xsl:output method="text"/>
+   <xsl:template priority="5"
+                 match="define-assembly[exists(@acquire-from)] |             define-field[exists(@acquire-from)] |             define-flag[exists(@acquire-from)]"
+                 expand-text="true">
+      <xsl:variable name="defining" select="@name"/>
+      <xsl:variable name="module-name" select="@acquire-from"/>
+      <xsl:variable name="import"
+         select="/METASCHEMA/import[@name = $module-name]"/>
+      <xsl:variable name="module"
+         select="document($import/@href, $home)"/>
+      <!--<h5 xmlns="http://www.w3.org/1999/xhtml">XXXXX Defining { $defining } which should be in { $import/@href }: { $module/document-uri(.) }</h5>-->
+      <xsl:variable name="definition"
+                    select="key('declarations-by-name', $defining, $module)"/>
+            <xsl:apply-templates select="$definition"/>
+            <xsl:if test="empty($definition)"> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:if>
+   </xsl:template>
    <xsl:template match="node() | @*" mode="expand-example">
       <xsl:copy copy-namespaces="no">
          <xsl:apply-templates select="node() | @*" mode="#current"/>
@@ -22,7 +40,6 @@
             <html xmlns="http://www.w3.org/1999/xhtml">
                <body>
                   <xsl:apply-templates/>
-                  <xsl:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>
                </body>
             </html>
          </xsl:for-each>
@@ -36,7 +53,7 @@
          <xsl:apply-templates select="node() | @*" mode="#current"/>
          <xsl:copy-of select="document( resolve-uri(@href,base-uri(.)))/descendant::single-required-field[1]"
                       copy-namespaces="no"
-                      xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"/>
+                      xpath-default-namespace="urn:fakeup"/>
       </xsl:copy>
    </xsl:template>
 </xsl:stylesheet>

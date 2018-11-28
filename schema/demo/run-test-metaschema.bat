@@ -39,7 +39,6 @@ set CONV_XML=java -jar %SAXON% -s:%METASCHEMAXML% -o:%CONVERSION_DIR%/%BASENAME%
 set CONV_JSON=java -jar %SAXON% -s:%METASCHEMAXML% -o:%CONVERSION_DIR%/%BASENAME%-json-converter.xsl  -xsl:%LIBDIR%/json/produce-json-converter.xsl
 
 rem vvvvv
-rem set XMLDOCS_XSLT=java -jar %SAXON% -s:%METASCHEMAXML% -o:%LIBDIR%/temp/%BASENAME%-xml-docs-md.xsl -xsl:%LIBDIR%/xml/produce-xml-documentor.xsl
 rem set JSONDOCS_XSLT=java -jar %SAXON% -s:%METASCHEMAXML% -o:%LIBDIR%/temp/%BASENAME%-json-docs-md.xsl -xsl:%LIBDIR%/json/produce-json-documentor.xsl example-converter-xslt-path=oscal-test-xml-converter.xsl
 
 rem set DOC_XML=java -jar %SAXON% -s:%METASCHEMAXML% -o:%DOCSDIR%/%BASENAME%_xml.md -xsl:%LIBDIR%/temp/%BASENAME%-xml-docs-md.xsl
@@ -47,7 +46,11 @@ rem set DOC_JSON=java -jar %SAXON% -s:%METASCHEMAXML% -o:%DOCSDIR%/%BASENAME%_js
 rem ^^^^^
 
 @echo on
-set DOC_XML=java -jar %SAXON% -s:%METASCHEMAXML% -o:%DOCSDIR%/%BASENAME%_xml-test.md -xsl:%LIBDIR%/xml/produce-and-run-xml-documentor.xsl
+set XMLDOCS_XSLT=java -jar %SAXON% -s:%METASCHEMAXML% -o:%LIBDIR%/temp/%BASENAME%-xml-docs-md.xsl -xsl:%LIBDIR%/xml/produce-xml-documentor.xsl
+set DOC_XML=java -jar %SAXON% -s:%METASCHEMAXML% -o:%DOCSDIR%/%BASENAME%_xml.md -xsl:%LIBDIR%/temp/%BASENAME%-xml-docs-md.xsl
+
+
+set NEWDOC_XML=java -jar %SAXON% -s:%METASCHEMAXML% -o:%DOCSDIR%/%BASENAME%_2_xml.md -xsl:%LIBDIR%/xml/produce-and-run-xml-documentor.xsl
 @echo off
 
 rem Now ...
@@ -63,10 +66,12 @@ rem echo _ Made XML-to-JSON converter ______ %CONVERSION_DIR%/%BASENAME%-xml-con
 rem %CONV_JSON%
 rem echo _ Made JSON-to-XML converter ______ %CONVERSION_DIR%/%BASENAME%-json-converter.xsl
 
-rem %XMLDOCS_XSLT%
 
 @echo on
+
+%XMLDOCS_XSLT%
 %DOC_XML%
+rem %NEWDOC_XML%
 echo %DOC_XML%
 
 rem %JSONDOCS_XSLT%

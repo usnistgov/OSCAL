@@ -6,7 +6,7 @@
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" top="kit-thing" use="kit">
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" top="fields" use="single-field">
 
   <schema-name>FAKEUP Testing Schema</schema-name>
   <short-name>module</short-name>
@@ -16,140 +16,13 @@
     
   </remarks>
 
-  <import href="oscal-test-metaschema.xml" name="oscal-test"/>
   
-  <define-assembly name="kit" group-as="thing-kit" show-docs="xml json">
-    <flag name="id" datatype="ID" required="yes"/>
-    <flag name="some_string" required="yes"/>
-    <formal-name>Base</formal-name>
-    <description>Wrapper for other stuff</description>
-    <remarks>
-      <p>The kit can have all kinds of Things.</p>
-      <p>feature set for testing (schemas):
-          enforcement of addressability constraints (distinctiveness of values)</p>
-      <p>feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax.</p>
-    <p>Also to do: find a case of variability in controls and show it off... parts?</p></remarks>
-    <model>
-      <assemblies named="thing" group-as="things"/>
-    </model>    
-    <example>
-      <kit xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-        some_string="string">
-        <thing some_string="aha" id="thing001">
-          <single-required-field>Required</single-required-field>
-          <single-field/>
-          <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
-        </thing>
-      </kit>
-    </example>
-  </define-assembly>
-  
-  <define-assembly name="thing" group-as="things" show-docs="xml json">
-    <flag name="id" datatype="ID" required="yes"/>
-    <flag name="some_string" required="yes"/>
-    <formal-name>Base</formal-name>
-    <description>Wrapper for other stuff</description>
-    <remarks>
-      <p>A thing can be whatever: flags, fields of various sorts mixed and not, and assemblies.
-        Also the various sorts of addressing should be demonstrated. The model described should be demonstrated in companion instances (XML and JSON), which can in turn be used as targets for mutual conversion.</p>
-    </remarks>
-    <model>
-      <field named="single-required-field" required="yes"/>
-      <field named="single-field"/>
-      <field named="single-mixed-field" required="yes"  />
-      <fields named="plural-field"       group-as="plurals"/>
-      <fields named="plural-mixed-field" group-as="plurals-mixed"/>
-      <assembly named="single-chunk"/>
-      <assemblies named="chunk-among-chunks" group-as="chunks-together"/>
-      <choice>
-        <assembly named="vanilla"/>
-        <assembly named="chocolate"/>
-      </choice>
-    </model>
-  </define-assembly>
-  
-  
-<!-- tbd expand to cover rage e.g. examples showing compression  -->
-  <define-field name="single-required-field" as="string" show-docs="xml json">
-    <formal-name>Single string (required)</formal-name>
-    <description>As it says</description>
-    <example href="base-example.xml" path="/descendant::single-required-field[1]">
-      <!--<description>An example in a remote document</description>-->
-    </example>
-  </define-field>
-  
-  <define-field name="single-field" as="string" show-docs="xml json">
+  <define-field name="single-field" group-as="fields" as="string" show-docs="xml json">
     <formal-name>Single string</formal-name>
-    <description>As it says</description>
+    <description>As it says, this is a single field</description>
+    <remarks>
+      <p>Defined in its own module!</p>
+    </remarks>
   </define-field>
-  
-  <define-field name="single-mixed-field" as="mixed" show-docs="xml json">
-    <formal-name>Single string but with mixed content</formal-name>
-    <description>As it says</description>
-  </define-field>
-  
-  <define-field name="plural-field" group-as="plurals" as="string" show-docs="xml json">
-    <formal-name>A single occurrence of a plural (ha)</formal-name>
-    <description>As it says</description>
-  </define-field>
-  
-  <define-field name="plural-mixed-field" group-as="plurals-mixed" as="string" show-docs="xml json">
-    <formal-name>Only one plural, but possibly mixed.</formal-name>
-    <description>As it says</description>
-  </define-field>
-  
-  <!--<define-field name="plural-flagged-mixed" group-as="plurals" as="string">
-    <formal-name>Only one plural, but possibly mixed and possibly flagged.</formal-name>
-    <description>As it says</description>
-  </define-field>-->
-  
-  <define-assembly name="single-chunk" show-docs="xml json">
-    <formal-name>Chunk</formal-name>
-    <description>As it says</description>
-    <model>
-      <field named="single-required-field" required="yes"/>
-    </model>
-  </define-assembly>
-  
-  <define-assembly name="chunk-among-chunks" show-docs="xml json">
-    <formal-name>Chunk among chunks</formal-name>
-    <description>As it says</description>
-    <model>
-      <field named="single-required-field" required="yes"/>
-    </model>
-  </define-assembly>
-  
-  <define-assembly name="vanilla" show-docs="xml json">
-    <formal-name>One Choice</formal-name>
-    <description>As it says</description>
-    <model>
-      <field named="single-required-field" required="yes"/>
-    </model>
-  </define-assembly>
-  
-  <define-assembly name="chocolate" show-docs="xml json">
-    <formal-name>Another Choice</formal-name>
-    <description>As it says</description>
-    <model>
-      <field named="single-required-field" required="yes"/>
-    </model>
-  </define-assembly>
-  
-  <define-flag name="some_string" datatype="string" show-docs="xml json">
-    <formal-name>A string flag</formal-name>
-    <description>As it says</description>
-  </define-flag>
-  
-  <define-flag name="id" datatype="ID" show-docs="xml json">
-    <formal-name>An ID</formal-name>
-    <description>As it says</description>
-  </define-flag>
-  
-  <!--<define-flag name="">
-    <formal-name>A string flag</formal-name>
-    <description>As it says</description>
-  </define-flag>
-  <define-flag name="some_string"/>
-  -->
-  
+    
 </METASCHEMA>

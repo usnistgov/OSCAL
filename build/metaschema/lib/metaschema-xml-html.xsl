@@ -20,7 +20,7 @@
    
    <xsl:variable name="home" select="METASCHEMA"/>
    
-   <xsl:variable name="imported" select="/METASCHEMA/import/document(@href,/)"/>
+   <!--<xsl:variable name="imported" select="/METASCHEMA/import/document(@href,/)"/>-->
    
    <xsl:variable name="all-references" select="//flag/@name | //model//*/@named"/>
    
@@ -35,7 +35,7 @@
          </head>
          <body>
             <xsl:apply-templates/>
-            <xsl:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>
+            <!--<xsl:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>-->
          </body>
       </html>
    </xsl:template>
@@ -63,17 +63,8 @@
          <h3>
             <xsl:apply-templates select="formal-name" mode="inline"/>:
             <xsl:apply-templates select="@name"/> attribute</h3>
-         <xsl:call-template name="declare-import"/>
          <xsl:apply-templates/>
       </div>
-   </xsl:template>
-   
-   <xsl:template name="declare-import" expand-text="true">
-      <xsl:if test="root() intersect $imported">
-         <xsl:variable name="where" select="document-uri(root())"/>
-         <xsl:variable name="at" select="$home/import[resolve-uri(@href,base-uri(.)) = $where]/@href"/>
-         <p>Note: definition adopted from <a href="{ $at }">{ $at }</a></p>
-      </xsl:if>
    </xsl:template>
    
    <xsl:template  match="define-field">
@@ -86,7 +77,6 @@
             <xsl:when test="@as='boolean'"><p>True whenever given (presence signifies Boolean value)</p></xsl:when>
          </xsl:choose>
          <xsl:apply-templates select="formal-name | description"/>
-         <xsl:call-template name="declare-import"/>
          <xsl:if test="flag">
             <div class="model">
                <p>The <xsl:apply-templates select="@name"/> element supports:</p>
@@ -108,7 +98,6 @@
          <!-- No mention of @group-as on XML side       -->
          
          <xsl:apply-templates select="formal-name | description"/>
-         <xsl:call-template name="declare-import"/>
          <xsl:apply-templates select="model"/>
          <xsl:apply-templates select="remarks"/>
          <xsl:apply-templates select="example"/>
