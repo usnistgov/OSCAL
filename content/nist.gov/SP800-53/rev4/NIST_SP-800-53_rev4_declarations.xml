@@ -67,7 +67,7 @@
   
   <declare-prop context="objective" class="label">
     <singleton/>
-    <required/>
+    <!-- <required/> not given at top level -->
   </declare-prop>
   
   
