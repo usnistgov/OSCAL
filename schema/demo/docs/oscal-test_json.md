@@ -24,19 +24,7 @@ feature set for testing (schemas): enforcement of addressability constraints (di
 
 feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax. 
 
-Also to do: find a case of variability in controls and show it off... parts?
-
-```json
-  { "some_string" : "string",
-    "things" : 
-    [ 
-      { "id" : "thing001",
-        "some_string" : "aha",
-        "single-required-field" : "Required",
-        "single-field" : "",
-        "single-mixed-field" : "Mixed content? *here be content?*" } ] }
-```
- 
+Also to do: find a case of variability in controls and show it off... parts? 
 
 ### **Base**: `thing` object
 
@@ -49,7 +37,7 @@ A [thing](#base-thing-object) object has the following properties:
 * String [id](#an-id-id-object)
 * String [some_string](#a-string-flag-somestring-object) 
 * A [single-required-field](#single-string-required-single-required-field-object) object * (required)*  
-* A [single-field](#-single-field-object) object  
+* An [acquired-model](#acquired-model-acquired-model-object) object  
 * A [single-mixed-field](#single-string-but-with-mixed-content-single-mixed-field-object) object * (required)*  
 * An array `plurals` containing [plural-field](#a-single-occurrence-of-a-plural-ha-plural-field-object) data items  
 * An array `plurals-mixed` containing [plural-mixed-field](#only-one-plural-but-possibly-mixed-plural-mixed-field-object) data items  
@@ -71,22 +59,19 @@ As an explicit property, `single-required-field` appears on [thing](#base-thing-
 
 The `single-required-field` object has a property:
 
-* String `STRVALUE`
-
-```json
-  { "single-required-field" : "Required" }
-```
- 
-
-### : `single-field` object
-
-`single-field` will appear as a string property.
-
-As an explicit property, `single-field` appears on [thing](#base-thing-object).
-
-The `single-field` object has a property:
-
 * String `STRVALUE` 
+
+### **Acquired Model**: `acquired-model` object
+
+A string field, with mixed content
+
+`acquired-model` will appear as a string property.
+
+The `acquired-model` object has a property:
+
+* String `RICHTEXT` (supports OSCAL markdown) 
+
+Defined in its own module!  
 
 ### **Single string but with mixed content**: `single-mixed-field` object
 
@@ -128,9 +113,10 @@ A [single-chunk](#chunk-single-chunk-object) will appear as a property on an obj
 
 As an explicit property, `single-chunk` appears on [thing](#base-thing-object).
 
-A [single-chunk](#chunk-single-chunk-object) object has the property
+A [single-chunk](#chunk-single-chunk-object) object has the following properties:
  
-* A [single-required-field](#single-string-required-single-required-field-object) object * (required)*   
+* A [single-required-field](#single-string-required-single-required-field-object) object * (required)*  
+* An array `prose`, containing strings of markdown.  
 
 ### **Chunk among chunks**: `chunk-among-chunks` object
 
@@ -138,9 +124,10 @@ As it says
 
 A [chunk-among-chunks](#chunk-among-chunks-chunk-among-chunks-object) will appear as a data value in an array property.
 
-A [chunk-among-chunks](#chunk-among-chunks-chunk-among-chunks-object) object has the property
+A [chunk-among-chunks](#chunk-among-chunks-chunk-among-chunks-object) object has the following properties:
  
-* A [single-required-field](#single-string-required-single-required-field-object) object * (required)*   
+* A [single-required-field](#single-string-required-single-required-field-object) object * (required)*  
+* An array `prose`, containing strings of markdown.  
 
 ### **One Choice**: `vanilla` object
 

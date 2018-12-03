@@ -45,7 +45,7 @@ The `<thing>` element has the following contents (in order):
 * Attribute [@id](#an-id-id-attribute)* (required)*
 * Attribute [@some_string](#a-string-flag-somestring-attribute)* (required)*
 * A [&lt;single-required-field>](#single-string-required-single-required-field-element) element (*one*)
-* A [&lt;single-field>](#) element (*zero or one*)
+* An [&lt;acquired-model>](#acquired-model-acquired-model-element) element (*zero or one*)
 * A [&lt;single-mixed-field>](#single-string-but-with-mixed-content-single-mixed-field-element) element (*one*)
 * [&lt;plural-field>](#a-single-occurrence-of-a-plural-ha-plural-field-element) elements (*zero or more*)
 * [&lt;plural-mixed-field>](#only-one-plural-but-possibly-mixed-plural-mixed-field-element) elements (*zero or more*)
@@ -63,6 +63,19 @@ As it says
 
 ```xml
 <single-required-field>Required</single-required-field>
+```
+
+
+### **Acquired Model**: `<acquired-model>` element
+
+Supports inline encoding
+
+A string field, with mixed content
+
+Defined in its own module!
+
+```xml
+<acquired-model>what's <em>up with this?</em></acquired-model>
 ```
 
 
@@ -84,17 +97,19 @@ As it says
 
 As it says
 
-The `<single-chunk>` element has the following contents :
+The `<single-chunk>` element has the following contents (in order):
 
 * A [&lt;single-required-field>](#single-string-required-single-required-field-element) element (*one*)
+* Prose contents (paragraphs and lists)
 
 ### **Chunk among chunks**: `<chunk-among-chunks>` element
 
 As it says
 
-The `<chunk-among-chunks>` element has the following contents :
+The `<chunk-among-chunks>` element has the following contents (in order):
 
 * A [&lt;single-required-field>](#single-string-required-single-required-field-element) element (*one*)
+* Prose contents (paragraphs and lists)
 
 ### **One Choice**: `<vanilla>` element
 

@@ -92,19 +92,13 @@
             <xslt:variable name="defining" select="@name"/>
             <xslt:variable name="module" select="@acquire-from"/>
             <xslt:variable name="definition"
-                select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, .))"/>
-            <xslt:choose>
-                <xslt:when test="not(root() is $home )">
-                    <xslt:comment> Schema definitions cannot be imported indirectly: check { local-name() || '[@name=''' || $defining || ''']'} acquired from '{ $module }' at { /METASCHEMA/import[@name=$module]/@href } </xslt:comment>
-                </xslt:when>
-                <xslt:otherwise>
-                    <xslt:apply-templates select="$definition"/>
-                    <xslt:if test="empty($definition)">
-                        <xsl:comment> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
+                select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, $home))"/>
+            <xslt:apply-templates select="$definition"/>
+            <xslt:if test="empty($definition)">
+               <xsl:comment> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
                     </xslt:if>
-                </xslt:otherwise>
-            </xslt:choose>
         </xslt:template>
+        
         <xslt:template match="node() | @*" mode="expand-example">
             <xslt:copy copy-namespaces="no">
                 <xslt:apply-templates select="node() | @*" mode="#current"/>

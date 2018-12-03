@@ -29,6 +29,8 @@
     
     <xsl:namespace-alias stylesheet-prefix="xslt" result-prefix="xsl"/>
     
+    <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
+    
     <xsl:param name="example-converter-xslt-path" as="xs:string" expand-text="true">../../util/convert/{/METASCHEMA/short-name}-xml-converter.xsl</xsl:param>
     
     <xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,document-uri(/))"/>
@@ -67,7 +69,10 @@
             
             <xslt:copy copy-namespaces="no">
                 <xslt:apply-templates select="node() | @*" mode="#current"/>
-                <xslt:variable name="target"                      xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0" select="document('{@href}',.){@path}[1]"/>
+                
+                <xslt:variable name="target"
+                    xpath-default-namespace="{$target-namespace}"
+                    select="document( resolve-uri(@href,base-uri(.))){@path}[1]"/>
                 <!--<xslt:message expand-text="yes">I see { count($target) }, called { $target/name() } </xslt:message>-->
                 <xslt:for-each select="$target/..">
                     <xslt:copy copy-namespaces="no">
@@ -84,19 +89,33 @@
                 
         <xslt:import href="{$example-converter-xslt}"/>
         <xslt:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
-        
         <xslt:import href="../lib/metaschema-json-html.xsl"/>
-        <!--<xslt:output method="text"/>-->
-        <xslt:param name="json-file" as="xs:string?" select="()"/>
-        <xslt:param name="json-indent" as="xs:string">yes</xslt:param>
         
-        <xslt:variable name="imported" select="/METASCHEMA/import/document(@href,/)"/>
+        <!--<xslt:param name="json-file" as="xs:string?" select="()"/>
+        <xslt:param name="json-indent" as="xs:string">yes</xslt:param>-->
         
-        <xslt:variable name="all-references" select="//flag/@name | //model//*/@named"/>
+        <!--<xslt:variable name="all-references" select="//flag/@name | //model//*/@named"/>-->
         
-        <xslt:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>
+        <!--<xslt:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>-->
         
-        <xslt:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
+        <xslt:variable name="home" select="/"/>
+        <xslt:key name="declarations-by-name"
+            match="define-field | define-assembly | define-flag" use="@name"/>
+        
+        <xslt:template priority="5"
+            match="define-assembly[exists(@acquire-from)] |
+            define-field[exists(@acquire-from)] |
+            define-flag[exists(@acquire-from)]"
+            expand-text="true">
+            <xslt:variable name="defining" select="@name"/>
+            <xslt:variable name="module" select="@acquire-from"/>
+            <xslt:variable name="definition"
+                select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, $home))"/>
+            <xslt:apply-templates select="$definition"/>
+            <xslt:if test="empty($definition)">
+                 <xsl:comment> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
+            </xslt:if>
+        </xslt:template>
         
         <xslt:template match="node() | @*" mode="expand-example">
             <xslt:copy copy-namespaces="no">
@@ -114,7 +133,7 @@
                     <html xmlns="http://www.w3.org/1999/xhtml">
                         <body>
                             <xslt:apply-templates/>
-                            <xslt:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>
+                            
                         </body>
                     </html>
                 </xslt:for-each>
@@ -125,8 +144,12 @@
         <xslt:template match="description | remarks" mode="jsonize"/>
         
         <xslt:template match="*" mode="jsonize">
-            <xslt:apply-templates select="." mode="xml2json"/>
+            <xslt:variable name="near-json">
+                <xsl:apply-templates select="." mode="xml2json"/>
+            </xslt:variable>
+            <xslt:apply-templates select="$near-json" mode="rectify"/>
         </xslt:template>
+        
         
         <xslt:template match="example">
             <!--<xslt:message expand-text="true">- expanding example ... {string-join(*/name(),' ... ') }</xslt:message> -->
@@ -134,15 +157,18 @@
                 <xslt:variable name="json-xml">
                     <xslt:apply-templates select="*" mode="jsonize"/>
                 </xslt:variable>
-                <xslt:variable name="rectified">
-                    <xslt:apply-templates select="$json-xml" mode="rectify"/>
-                </xslt:variable>
                 <xslt:apply-templates select="description"/>
+                
+                <xslt:if test="empty($json-xml/map)" xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
+                    <xslt:message>Not finding example</xslt:message>
+                </xslt:if>
+                    
+            <xslt:if test="exists($json-xml/map)" xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
                 <pre class="json">
-            <xslt:if test="exists($rectified/map)" xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-              <xslt:value-of select="xml-to-json($rectified,$write-options)"/>
+                   <xslt:value-of select="xml-to-json($json-xml,$write-options)"/>
+                </pre>p
             </xslt:if>
-         </pre>
+         
                 <xslt:apply-templates select="remarks"/>
             </div>
         </xslt:template>

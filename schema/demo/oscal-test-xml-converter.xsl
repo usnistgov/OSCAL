@@ -2,9 +2,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns="http://www.w3.org/2005/xpath-functions"
-                xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
                 version="3.0"
-                xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
+                xpath-default-namespace="urn:fakeup"
                 exclude-result-prefixes="#all">
    <xsl:output indent="yes" method="text" use-character-maps="delimiters"/>
    <!-- METASCHEMA conversion stylesheet supports XML->JSON conversion -->
@@ -24,11 +23,15 @@
       </xsl:map>
    </xsl:variable>
    <xsl:template match="/" mode="debug">
-      <xsl:apply-templates mode="xml2json"/>
+      <map>
+         <xsl:apply-templates mode="xml2json"/>
+      </map>
    </xsl:template>
    <xsl:template match="/">
       <xsl:variable name="xpath-json">
-         <xsl:apply-templates mode="xml2json"/>
+         <map>
+            <xsl:apply-templates mode="xml2json"/>
+         </map>
       </xsl:variable>
       <xsl:variable name="rectified">
          <xsl:apply-templates select="$xpath-json" mode="rectify"/>
@@ -142,7 +145,7 @@
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@some_string"/>
          <xsl:apply-templates select="single-required-field" mode="#current"/>
-         <xsl:apply-templates select="single-field" mode="#current"/>
+         <xsl:apply-templates select="acquired-model" mode="#current"/>
          <xsl:apply-templates select="single-mixed-field" mode="#current"/>
          <xsl:if test="exists(plural-field)">
             <array key="plurals">
@@ -169,8 +172,8 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template match="single-field" mode="xml2json">
-      <string key="single-field">
+   <xsl:template match="acquired-model" mode="xml2json">
+      <string key="acquired-model">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
@@ -192,11 +195,13 @@
    <xsl:template match="single-chunk" mode="xml2json">
       <map key="single-chunk">
          <xsl:apply-templates select="single-required-field" mode="#current"/>
+         <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
    <xsl:template match="chunk-among-chunks" mode="xml2json">
       <map key="chunk-among-chunks">
          <xsl:apply-templates select="single-required-field" mode="#current"/>
+         <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
    <xsl:template match="vanilla" mode="xml2json">

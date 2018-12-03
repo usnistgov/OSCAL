@@ -30,7 +30,6 @@
     <xsl:key name="declarations-by-name"
         match="define-field | define-assembly | define-flag" use="@name"/>
     
-    
     <xsl:template match="/">
         <!--<xsl:apply-templates/>-->       
         <!-- $unwired has the schema with no namespaces -->

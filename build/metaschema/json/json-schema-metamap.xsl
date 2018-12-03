@@ -57,7 +57,6 @@
     <xsl:template match="METASCHEMA/schema-name | METASCHEMA/short-name | METASCHEMA/remarks"/>
   
     <!-- @acquire-from indicates the model is elsewhere ... -->
-<!-- XXX test this! XXX -->
     <xsl:template priority="5"
         match="define-assembly[exists(@acquire-from)] |
         define-field[exists(@acquire-from)] |
@@ -66,7 +65,7 @@
         <xsl:variable name="defining" select="@name"/>
         <xsl:variable name="module" select="@acquire-from"/>
         <xsl:variable name="definition"
-            select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, .))"/>
+            select="/METASCHEMA/import[@name = $module]/key('definition-by-name', $defining, document(@href, .))"/>
         <xsl:choose>
             <xsl:when test="not(root() is $home )">
                 <xsl:comment> Schema definitions cannot be imported indirectly: check { local-name() || '[@name=''' || $defining || ''']'} acquired from '{ $module }' at { /METASCHEMA/import[@name=$module]/@href } </xsl:comment>

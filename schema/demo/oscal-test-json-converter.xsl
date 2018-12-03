@@ -22,19 +22,22 @@
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
+   <xsl:template match="/map[empty(@key)]" priority="10" mode="json2xml">
+      <xsl:apply-templates mode="#current" select="*[@key=('kit-thing','kit')]"/>
+   </xsl:template>
    <xsl:template match="array" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template match="array[@key='prose']/*" priority="5" mode="json2xml"><!-- This will have to be post-processed to render markdown into markup -->
-      <xsl:element name="p" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="p" namespace="urn:fakeup">
          <xsl:apply-templates mode="#current"/>
       </xsl:element>
    </xsl:template>
-   <xsl:template match="string[@key=$markdown-value-label]" mode="json2xml">
+   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml">
       <xsl:comment> Not yet handling markdown </xsl:comment>
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
-   <xsl:template match="string[@key=$string-value-label]" mode="json2xml">
+   <xsl:template match="string[@key='STRVALUE']" mode="json2xml">
       <xsl:apply-templates mode="#current"/>
    </xsl:template>
    <xsl:template mode="as-attribute" match="*"/>
@@ -48,10 +51,10 @@
    </xsl:template>
    <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
    <!-- 000 Handling assembly "kit" 000 -->
-   <xsl:template match="*[@key='kit'] | *[@key='thing-kit']/* | /map[empty(@key)]"
+   <xsl:template match="*[@key='kit'] | *[@key='thing-kit']/*"
                  priority="2"
                  mode="json2xml">
-      <xsl:element name="kit" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="kit" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('thing', 'things')]"/>
       </xsl:element>
@@ -60,10 +63,10 @@
    <xsl:template match="*[@key='thing'] | *[@key='things']/*"
                  priority="2"
                  mode="json2xml">
-      <xsl:element name="thing" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="thing" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('single-field')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('acquired-model')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-mixed-field')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('plural-field', 'plurals')]"/>
          <xsl:apply-templates mode="#current"
@@ -79,22 +82,21 @@
    <xsl:template match="*[@key='single-required-field']"
                  priority="2"
                  mode="json2xml">
-      <xsl:element name="single-required-field"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="single-required-field" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
    </xsl:template>
-   <!-- 000 Handling field "single-field" 000 -->
-   <xsl:template match="*[@key='single-field']" priority="2" mode="json2xml">
-      <xsl:element name="single-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <!-- 000 Handling field "acquired-model" 000 -->
+   <xsl:template match="*[@key='acquired-model']" priority="2" mode="json2xml">
+      <xsl:element name="acquired-model" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling field "single-mixed-field" 000 -->
    <xsl:template match="*[@key='single-mixed-field']" priority="2" mode="json2xml">
-      <xsl:element name="single-mixed-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="single-mixed-field" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="json2xml" select="*[@key=RICHTEXT]"/>
       </xsl:element>
@@ -103,7 +105,7 @@
    <xsl:template match="*[@key='plural-field'] | *[@key='plurals']/*"
                  priority="2"
                  mode="json2xml">
-      <xsl:element name="plural-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="plural-field" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
@@ -112,35 +114,37 @@
    <xsl:template match="*[@key='plural-mixed-field'] | *[@key='plurals-mixed']/*"
                  priority="2"
                  mode="json2xml">
-      <xsl:element name="plural-mixed-field" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="plural-mixed-field" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="json2xml" select="*[@key=STRVALUE]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "single-chunk" 000 -->
    <xsl:template match="*[@key='single-chunk']" priority="2" mode="json2xml">
-      <xsl:element name="single-chunk" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="single-chunk" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "chunk-among-chunks" 000 -->
    <xsl:template match="*[@key='chunk-among-chunks']" priority="2" mode="json2xml">
-      <xsl:element name="chunk-among-chunks" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="chunk-among-chunks" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key='prose']"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "vanilla" 000 -->
    <xsl:template match="*[@key='vanilla']" priority="2" mode="json2xml">
-      <xsl:element name="vanilla" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="vanilla" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
       </xsl:element>
    </xsl:template>
    <!-- 000 Handling assembly "chocolate" 000 -->
    <xsl:template match="*[@key='chocolate']" priority="2" mode="json2xml">
-      <xsl:element name="chocolate" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="chocolate" namespace="urn:fakeup">
          <xsl:apply-templates mode="as-attribute"/>
          <xsl:apply-templates mode="#current" select="*[@key=('single-required-field')]"/>
       </xsl:element>

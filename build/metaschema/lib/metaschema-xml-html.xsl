@@ -25,7 +25,7 @@
    
    <xsl:variable name="all-references" select="//flag/@name | //model//*/@named"/>
    
-   <xsl:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>
+   <!--<xsl:variable name="here-declared" as="element()*" select="//define-flag | //define-field | //define-assembly"/>-->
    
    <xsl:key name="definitions" match="define-flag | define-field | define-assembly" use="@name"/>
    

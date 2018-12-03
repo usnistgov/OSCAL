@@ -6,7 +6,7 @@
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" top="fields" use="single-field">
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" top="acquired" use="acquired-model">
 
   <schema-name>FAKEUP Testing Schema</schema-name>
   <short-name>module</short-name>
@@ -17,12 +17,15 @@
   </remarks>
 
   
-  <define-field name="single-field" group-as="fields" as="string" show-docs="xml json">
-    <formal-name>Single string</formal-name>
-    <description>As it says, this is a single field</description>
+  <define-field name="acquired-model" group-as="acquired" as="mixed" show-docs="xml json">
+    <formal-name>Acquired Model</formal-name>
+    <description>A string field, with mixed content</description>
     <remarks>
       <p>Defined in its own module!</p>
     </remarks>
+    <example>
+      <acquired-model  xmlns="urn:fakeup">what's <em>up with this?</em></acquired-model>
+    </example>
   </define-field>
     
 </METASCHEMA>

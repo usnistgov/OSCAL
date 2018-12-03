@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns="http://www.w3.org/1999/xhtml"
                 version="3.0"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
                 exclude-result-prefixes="#all">
-   <xsl:output indent="yes" method="text" use-character-maps="delimiters"/>
+   <xsl:output indent="yes" method="xml" use-character-maps="delimiters"/>
    <!-- METASCHEMA docs production -->
    <!-- XHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHXXHHX -->
    <xsl:import href="file:/C:/Users/wap1/Documents/OSCAL/schema/demo/oscal-test-xml-converter.xsl"/>
@@ -16,14 +15,14 @@
    <xsl:key name="declarations-by-name"
             match="define-field | define-assembly | define-flag"
             use="@name"/>
-   <xsl:template priority="5"
+   <xsl:template priority="5" mode="expand-example"
                  match="define-assembly[exists(@acquire-from)] |             define-field[exists(@acquire-from)] |             define-flag[exists(@acquire-from)]"
                  expand-text="true">
       <xsl:variable name="defining" select="@name"/>
       <xsl:variable name="module" select="@acquire-from"/>
       <xsl:variable name="definition"
                     select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, $home))"/>
-      <xsl:apply-templates select="$definition"/>
+      <xsl:apply-templates select="$definition" mode="#current"/>
       <xsl:if test="empty($definition)"><!-- No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }--></xsl:if>
    </xsl:template>
    <xsl:template match="node() | @*" mode="expand-example">
@@ -34,6 +33,19 @@
    <xsl:variable name="expanded">
       <xsl:apply-templates mode="expand-example" select="/"/>
    </xsl:variable>
+   
+   <!--<xsl:template match="/">
+      <xsl:apply-templates mode="expand-example" select="/"/>
+      
+      <!-\-<xsl:for-each select="$expanded/*">
+         <html>
+            <body>
+               <xsl:apply-templates/>
+            </body>
+         </html>
+      </xsl:for-each>-\->
+   </xsl:template>-->
+   
    <xsl:template match="/">
       <xsl:variable name="html">
          <xsl:for-each select="$expanded/*">
@@ -46,29 +58,29 @@
       </xsl:variable>
       <xsl:apply-templates select="$html" mode="md"/>
    </xsl:template>
+   
    <xsl:template match="description | remarks" mode="jsonize"/>
+   
    <xsl:template match="*" mode="jsonize">
-      <xsl:variable name="near-json">FAKEUP Testing Schemaoscal-testurn:fakeupA test schema for prototyping and demonstrating the metaschema feature set.BaseWrapper for other stuffThe kit can have all kinds of Things.feature set for testing (schemas):
-          enforcement of addressability constraints (distinctiveness of values)feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax.Also to do: find a case of variability in controls and show it off... parts?RequiredMixed content? here be content?BaseWrapper for other stuffA thing can be whatever: flags, fields of various sorts mixed and not, and assemblies.
-        Also the various sorts of addressing should be demonstrated. The model described should be demonstrated in companion instances (XML and JSON), which can in turn be used as targets for mutual conversion.Single string (required)As it saysSingle string but with mixed contentAs it saysA single occurrence of a plural (ha)As it saysOnly one plural, but possibly mixed.As it saysChunkAs it saysChunk among chunksAs it saysOne ChoiceAs it saysAnother ChoiceAs it saysA string flagAs it saysAn IDAs it says</xsl:variable>
+      <xsl:variable name="near-json">
+        <xsl:apply-templates select="." mode="xml2json"/>
+      </xsl:variable>
       <xsl:apply-templates select="$near-json" mode="rectify"/>
    </xsl:template>
+   
    <xsl:template match="example">
       <div class="example">
          <xsl:variable name="json-xml">
             <xsl:apply-templates select="*" mode="jsonize"/>
          </xsl:variable>
          <xsl:apply-templates select="description"/>
-         <xsl:if test="empty($json-xml/map)"
-                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-            <xsl:message>Not finding example</xsl:message>
-         </xsl:if>
-         <xsl:if test="exists($json-xml/map)"
-                 xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-            <pre class="json">
+         <pre class="json">
+            <!--<xsl:copy-of select="$json-xml"/>-->
+            <xsl:if test="exists($json-xml/map)"
+                    xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
                <xsl:value-of select="xml-to-json($json-xml,$write-options)"/>
-            </pre>p
             </xsl:if>
+         </pre>
          <xsl:apply-templates select="remarks"/>
       </div>
    </xsl:template>

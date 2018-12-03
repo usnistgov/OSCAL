@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kit xmlns="urn:fakeup" id="kit"  some_string="someString"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:fakeup file:/C:/Users/wap1/Documents/OSCAL/schema/demo/oscal-test-schema.xsd">
+    <thing id="thing1" some_string="someString">
+        <single-required-field>Required!</single-required-field>
+        <acquired-model>Acquired</acquired-model>
+        <single-mixed-field>something but <em>what</em>?</single-mixed-field>
+        <single-chunk>
+            <single-required-field>Amongst Our Weapons</single-required-field>
+            <p>Tomorrow and tomorrow and tomorrow</p>
+        </single-chunk>
+    </thing>
+</kit>

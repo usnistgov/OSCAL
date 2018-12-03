@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kit xmlns="urn:fakeup"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 oscal-test-schema.xsd" id="base"
+    xsi:schemaLocation="urn:fakeup oscal-test-schema.xsd" id="base"
     some_string="string">
     <thing some_string="aha" id="thing001">
         <single-required-field>Required</single-required-field>
-        <single-field/>
+        <acquired-model/>
         <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
     </thing>
 </kit>

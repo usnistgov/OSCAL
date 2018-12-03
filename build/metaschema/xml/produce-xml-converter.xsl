@@ -200,12 +200,16 @@
         </xslt:variable>
         
         <xslt:template match="/" mode="debug">
-            <xslt:apply-templates mode="xml2json"/>
+            <map>
+                <xslt:apply-templates mode="xml2json"/>
+            </map>
         </xslt:template>
         
         <xslt:template match="/">
             <xslt:variable name="xpath-json">
-                <xslt:apply-templates mode="xml2json"/>
+                <map>
+                  <xslt:apply-templates mode="xml2json"/>
+                </map>
             </xslt:variable>
             <xslt:variable name="rectified">
                 <xslt:apply-templates select="$xpath-json" mode="rectify"/>

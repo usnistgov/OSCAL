@@ -15,16 +15,11 @@
                  match="define-assembly[exists(@acquire-from)] |             define-field[exists(@acquire-from)] |             define-flag[exists(@acquire-from)]"
                  expand-text="true">
       <xsl:variable name="defining" select="@name"/>
-      <xsl:variable name="module-name" select="@acquire-from"/>
-      <xsl:variable name="import"
-         select="/METASCHEMA/import[@name = $module-name]"/>
-      <xsl:variable name="module"
-         select="document($import/@href, $home)"/>
-      <!--<h5 xmlns="http://www.w3.org/1999/xhtml">XXXXX Defining { $defining } which should be in { $import/@href }: { $module/document-uri(.) }</h5>-->
+      <xsl:variable name="module" select="@acquire-from"/>
       <xsl:variable name="definition"
-                    select="key('declarations-by-name', $defining, $module)"/>
-            <xsl:apply-templates select="$definition"/>
-            <xsl:if test="empty($definition)"> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:if>
+                    select="/METASCHEMA/import[@name = $module]/key('declarations-by-name', $defining, document(@href, $home))"/>
+      <xsl:apply-templates select="$definition"/>
+      <xsl:if test="empty($definition)"><!-- No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }--></xsl:if>
    </xsl:template>
    <xsl:template match="node() | @*" mode="expand-example">
       <xsl:copy copy-namespaces="no">

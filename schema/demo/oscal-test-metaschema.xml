@@ -32,7 +32,7 @@
       <assemblies named="thing" group-as="things"/>
     </model>    
     <example>
-      <kit xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+      <kit xmlns="urn:fakeup"
         some_string="string">
         <thing some_string="aha" id="thing001">
           <single-required-field>Required</single-required-field>
@@ -54,7 +54,7 @@
     </remarks>
     <model>
       <field named="single-required-field" required="yes"/>
-      <field named="single-field"/>
+      <field named="acquired-model"/>
       <field named="single-mixed-field" required="yes"  />
       <fields named="plural-field"       group-as="plurals"/>
       <fields named="plural-mixed-field" group-as="plurals-mixed"/>
@@ -75,7 +75,7 @@
     </example>
   </define-field>
   
-  <define-field name="single-field" as="string" show-docs="xml json" acquire-from="module"/>
+  <define-field name="acquired-model" as="string" show-docs="xml json" acquire-from="module"/>
   
   <define-field name="single-mixed-field" as="mixed" show-docs="xml json">
     <formal-name>Single string but with mixed content</formal-name>
@@ -102,6 +102,7 @@
     <description>As it says</description>
     <model>
       <field named="single-required-field" required="yes"/>
+      <prose/>
     </model>
   </define-assembly>
   
@@ -110,6 +111,7 @@
     <description>As it says</description>
     <model>
       <field named="single-required-field" required="yes"/>
+      <prose/>
     </model>
   </define-assembly>
   

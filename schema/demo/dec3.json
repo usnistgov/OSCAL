@@ -1,0 +1,19 @@
+{
+    "kit": {
+        "id": "kit",
+        "some_string": "someString",
+        "things": [
+            {
+                "id": "thing1",
+                "some_string": "someString",
+                "single-required-field": "Required!",
+                "acquired-model": "Acquired",
+                "single-mixed-field": "something but *what*?",
+                "single-chunk": {
+                    "single-required-field": "Amongst Our Weapons",
+                    "prose": ["Tomorrow and tomorrow and tomorrow"]
+                }
+            }
+        ]
+    }
+}

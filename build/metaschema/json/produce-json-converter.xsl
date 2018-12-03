@@ -103,7 +103,7 @@
     </xsl:template>
     
     <xsl:template match="define-assembly" expand-text="true">
-        <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }{ if (@name=../@use) then ' | /map[empty(@key)]' else ''}</xsl:variable>
+        <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }</xsl:variable>
         <xsl:comment> 000 Handling assembly "{ @name }" 000 </xsl:comment>
         <xslt:template match="{$assembly-match}" priority="2" mode="json2xml">
             <xslt:element name="{@name}" namespace="{$target-namespace}">
@@ -148,6 +148,12 @@
             </xslt:choose>
         </xslt:template>
         
+        <xslt:template match="/map[empty(@key)]"
+            priority="10"
+            mode="json2xml">
+            <xslt:apply-templates mode="#current" select="*[@key=({string-join((/*/@top!(''''||.||''''),/*/@use!(''''||.||'''')),',')})]"/>
+        </xslt:template>
+        
         <xslt:template match="array" mode="json2xml">
             <xslt:apply-templates mode="#current"/>
         </xslt:template>
@@ -159,12 +165,12 @@
             </xslt:element>
         </xslt:template>
         
-        <xslt:template match="string[@key=$markdown-value-label]" mode="json2xml">
+        <xslt:template match="string[@key='{$markdown-value-label}']" mode="json2xml">
             <xslt:comment> Not yet handling markdown </xslt:comment>
             <xslt:apply-templates mode="#current"/>
         </xslt:template>
         
-        <xslt:template match="string[@key=$string-value-label]" mode="json2xml">
+        <xslt:template match="string[@key='{$string-value-label}']" mode="json2xml">
             <xslt:apply-templates mode="#current"/>
         </xslt:template>
         

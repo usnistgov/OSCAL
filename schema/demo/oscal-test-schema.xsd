@@ -3,7 +3,7 @@
            xmlns:oscal-test="urn:fakeup"
            xmlns:oscal-prose="urn:fakeup"
            elementFormDefault="qualified"
-           targetNamespace="urn:fakeup">
+           targetNamespace="urn:fakeup"><!--FAKEUP Testing Schema--><!--short name: oscal-test--><!--A test schema for prototyping and demonstrating the metaschema feature set.-->
    <xs:element name="kit">
       <xs:annotation>
          <xs:documentation>
@@ -35,7 +35,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
-            <xs:element minOccurs="0" ref="oscal-test:single-field"/>
+            <xs:element minOccurs="0" ref="oscal-test:acquired-model"/>
             <xs:element minOccurs="1" ref="oscal-test:single-mixed-field"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-test:plural-field"/>
             <xs:element maxOccurs="unbounded"
@@ -71,12 +71,14 @@
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="single-field">
+   <xs:element name="acquired-model">
       <xs:annotation>
          <xs:documentation>
-            <b>Single string: </b>As it says</xs:documentation>
+            <b>Acquired Model: </b>A string field, with mixed content</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true"/>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-test:everything-inline"/>
+      </xs:complexType>
    </xs:element>
    <xs:element name="single-mixed-field">
       <xs:annotation>
@@ -109,6 +111,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
+            <xs:group ref="oscal-test:prose" maxOccurs="unbounded" minOccurs="0"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -120,6 +123,7 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
+            <xs:group ref="oscal-test:prose" maxOccurs="unbounded" minOccurs="0"/>
          </xs:sequence>
       </xs:complexType>
    </xs:element>
@@ -309,16 +313,10 @@
    <xs:group name="special">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal-prose:withdrawn"/>
             <xs:element ref="oscal-prose:insert"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>
-   <xs:element name="withdrawn">
-      <xs:complexType mixed="true">
-         <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal-prose:inlines"/>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="insert">
       <xs:complexType>
          <xs:attribute name="param-id" use="required" type="xs:IDREF"/>

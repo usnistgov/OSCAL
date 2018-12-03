@@ -30,7 +30,13 @@
             <sch:assert test="exists(document(@href)/m:METASCHEMA)">Can't find a metaschema at <sch:value-of select="@href"/></sch:assert>
             <!--<sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>-->
         </sch:rule>
-        
+        <!--<sch:rule context="m:define-assembly | m:define-field | m:define-flag">
+            Don't need this rule since the XSD defines type NCName
+            <sch:assert test="matches(@name,'\i\c*')">Name <sch:value-of select="@name"/> is not a legal XML name token.</sch:assert>
+        </sch:rule>-->
+        </sch:pattern>
+    
+    <sch:pattern>
         <sch:rule context="m:define-assembly[exists(@acquire-from)] | m:define-field[exists(@acquire-from)] | m:define-flag[exists(@acquire-from)]">
             <sch:assert test="empty(child::*)">An acquired definition may not have its own contents</sch:assert>
             <sch:let name="this-name"   value="@name"/>
@@ -91,6 +97,11 @@
             <sch:report test="@named = ../(* except current())/@named">Everything named the same must appear together</sch:report>
             <sch:report test="@named = ../*/@group-as">Clashing name with group name: <sch:value-of select="@named"/></sch:report>
             <sch:report test="@group-as = ../*/@named">Clashing group name with name: <sch:value-of select="@named"/></sch:report>
+        </sch:rule>
+        
+        <sch:rule context="m:example/*">
+            <sch:let name="ns" value="/m:METASCHEMA/m:namespace"/>
+            <sch:assert test="namespace-uri(.) eq $ns">Unexpected namespace: examples should use namespace '<sch:value-of select="$ns"/>'</sch:assert>
         </sch:rule>
     </sch:pattern>
 
