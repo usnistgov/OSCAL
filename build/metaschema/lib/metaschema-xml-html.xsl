@@ -9,6 +9,7 @@
 <!-- Purpose: XSLT 3.0 stylesheet for Metaschema display (HTML): XML version -->
 <!-- Input:   Metaschema -->
 <!-- Output:  HTML  -->
+<!-- The XML version translates metaschema jargon into XML terminology. Another module does the same for JSON/object terminology.  -->
 
 <xsl:import href="metaschema-common-html.xsl"/>
    
@@ -35,7 +36,6 @@
          </head>
          <body>
             <xsl:apply-templates/>
-            <!--<xsl:apply-templates select="$imported/key('definitions',$all-references,.)[not(@name=$here-declared/(@name|@named))]"/>-->
          </body>
       </html>
    </xsl:template>
@@ -149,7 +149,9 @@
    </xsl:template>
    
    
-   <!-- Empty model elements (whether by accident or design) will be dropped. -->
+   <!-- Empty model elements (whether by accident or design) will be dropped.
+     NB: at a later point, we may support model/@acquire-from
+     at present we have @acquire-from only on definitions. -->
    <xsl:template match="model[not(*)]" priority="3"/>
       
    <xsl:template match="model">
