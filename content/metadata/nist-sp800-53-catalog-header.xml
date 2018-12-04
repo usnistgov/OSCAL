@@ -13,7 +13,10 @@
     <resource type="metaschema">
         <link media-type="application/x-xml+oscal.metaschema" href="oscal-catalog-metaschema.xml"/>
     </resource>
-    
+     
+    <role id="creator"><title>Document creator</title></role>
+    <role id="contact"><title>Contact</title></role>
+   
     <party id="IT-JTF" role-id="creator contact">
         <org>
             <org-name>Joint Task Force, Transformation Initiative</org-name>
@@ -28,9 +31,6 @@
             <email>sec-cert@nist.gov</email>
         </org>
     </party>
-    
-    <role id="creator"><title>Document creator</title></role>
-    <role id="contact"><title>Contact</title></role>
     
     <extra-meta>
         <meta-group type="keywords">

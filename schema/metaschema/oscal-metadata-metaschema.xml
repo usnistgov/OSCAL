@@ -24,8 +24,8 @@
       <fields     named="prop"     group-as="properties"/>
       <fields     named="link"     group-as="links"/>
       <assemblies named="resource" group-as="resources"/>
-      <assemblies named="party"    group-as="parties"/>
       <assemblies named="role"     group-as="roles"/>
+      <assemblies named="party"    group-as="parties"/>
       <assembly   named="notes"/>
       <assembly   named="extra-meta"/>
     </model>
