@@ -156,14 +156,14 @@
                <xsl:apply-templates select="resource" mode="#current"/>
             </array>
          </xsl:if>
-         <xsl:if test="exists(party)">
-            <array key="parties">
-               <xsl:apply-templates select="party" mode="#current"/>
-            </array>
-         </xsl:if>
          <xsl:if test="exists(role)">
             <array key="roles">
                <xsl:apply-templates select="role" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(party)">
+            <array key="parties">
+               <xsl:apply-templates select="party" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:apply-templates select="notes" mode="#current"/>
@@ -398,7 +398,7 @@
    </xsl:template>
    <xsl:template match="resource" mode="xml2json">
       <map key="resource">
-         <xsl:apply-templates mode="as-string" select="@rel"/>
+         <xsl:apply-templates mode="as-string" select="@type"/>
          <xsl:apply-templates mode="as-string" select="@media-type"/>
          <xsl:apply-templates select="title" mode="#current"/>
          <xsl:if test="exists(author)">

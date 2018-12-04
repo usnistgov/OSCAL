@@ -39,14 +39,14 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/resource" } },
-          "parties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/party" } },
           "roles" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/role" } },
+          "parties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/party" } },
           "notes" : 
           { "type" : "object",
             "$ref" : "#/definitions/notes" },
@@ -64,8 +64,8 @@
             "properties",
             "links",
             "resources",
-            "parties",
             "roles",
+            "parties",
             "notes",
             "extra-meta" ] } },
       "title" : 
@@ -425,7 +425,7 @@
         "$id" : "#/definitions/resource",
         "type" : "object",
         "properties" : 
-        { "rel" : 
+        { "type" : 
           { "type" : "string" },
           "media-type" : 
           { "type" : "string" },
@@ -460,7 +460,7 @@
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "rel",
+          [ "type",
             "media-type",
             "title",
             "authors",

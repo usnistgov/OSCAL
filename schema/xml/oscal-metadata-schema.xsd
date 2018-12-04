@@ -23,8 +23,8 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:prop"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:resource"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:party"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:role"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:party"/>
             <xs:element minOccurs="0" ref="oscal:notes"/>
             <xs:element minOccurs="0" ref="oscal:extra-meta"/>
          </xs:sequence>
@@ -352,10 +352,10 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
             <xs:element minOccurs="0" ref="oscal:notes"/>
          </xs:sequence>
-         <xs:attribute name="rel" type="xs:string">
+         <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Relation: </b>Purpose of the link</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="media-type" type="xs:string">

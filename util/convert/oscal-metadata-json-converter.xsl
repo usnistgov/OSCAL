@@ -61,8 +61,8 @@
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('resource', 'resources')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party', 'parties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('role', 'roles')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('party', 'parties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('notes')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('extra-meta')]"/>
       </xsl:element>
@@ -115,7 +115,7 @@
    </xsl:template>
    <!-- 000 Handling flag "type" 000 -->
    <xsl:template match="*[@key='type']" mode="json2xml"/>
-   <xsl:template match="*[@key='doc-id']/*[@key='type'] | *[@key='document-identifiers']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-identifiers']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-identifiers']/*/*[@key='type'] | *[@key='meta-group']/*[@key='type'] | *[@key='metadata-groups']/*/*[@key='type'] | *[@key='meta']/*[@key='type'] | *[@key='metadata-fields']/*/*[@key='type']"
+   <xsl:template match="*[@key='doc-id']/*[@key='type'] | *[@key='document-identifiers']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-identifiers']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-identifiers']/*/*[@key='type'] | *[@key='resource']/*[@key='type'] | *[@key='resources']/*/*[@key='type'] | *[@key='meta-group']/*[@key='type'] | *[@key='metadata-groups']/*/*[@key='type'] | *[@key='meta']/*[@key='type'] | *[@key='metadata-fields']/*/*[@key='type']"
                  mode="as-attribute">
       <xsl:attribute name="type">
          <xsl:apply-templates mode="#current"/>
@@ -211,7 +211,7 @@
    </xsl:template>
    <!-- 000 Handling flag "rel" 000 -->
    <xsl:template match="*[@key='rel']" mode="json2xml"/>
-   <xsl:template match="*[@key='link']/*[@key='rel'] | *[@key='links']/*/*[@key='rel'] | *[@key='resource']/*[@key='rel'] | *[@key='resources']/*/*[@key='rel']"
+   <xsl:template match="*[@key='link']/*[@key='rel'] | *[@key='links']/*/*[@key='rel']"
                  mode="as-attribute">
       <xsl:attribute name="rel">
          <xsl:apply-templates mode="#current"/>
