@@ -20,10 +20,9 @@
             <xs:element minOccurs="0" ref="oscal:version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:doc-id"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
-            <xs:element minOccurs="0" ref="oscal:system"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:resource"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:party"/>
-            <xs:element minOccurs="0" ref="oscal:roster"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:role"/>
             <xs:element minOccurs="0" ref="oscal:notes"/>
             <xs:element minOccurs="0" ref="oscal:extra-meta"/>
          </xs:sequence>
@@ -83,6 +82,12 @@
             <xs:element minOccurs="0" ref="oscal:org"/>
             <xs:element minOccurs="0" ref="oscal:notes"/>
          </xs:sequence>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Identifier: </b>A unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
          <xs:attribute name="role-id" type="xs:string">
             <xs:annotation>
                <xs:documentation>
@@ -164,8 +169,11 @@
       A line or paragraph with a hypertext link
     </xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal:everything-inline"/>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:hash"/>
+         </xs:sequence>
          <xs:attribute name="href" type="xs:anyURI" use="required">
             <xs:annotation>
                <xs:documentation>
@@ -347,7 +355,6 @@
             <xs:element minOccurs="0" ref="oscal:version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:doc-id"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:hash"/>
             <xs:element minOccurs="0" ref="oscal:notes"/>
          </xs:sequence>
          <xs:attribute name="rel" type="xs:string">
@@ -370,10 +377,10 @@
             <b>Hash: </b>A document hash or other value subject to cryptographic authentication</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string">
+         <xs:attribute name="algorithm" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type or classification: </b>Indicating the type of identifier or other data item.</xs:documentation>
+                  <b>Hash algorithm: </b>Method by which a hash is derived</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -381,7 +388,8 @@
    <xs:element name="roster">
       <xs:annotation>
          <xs:documentation>
-            <b>Roster: </b>A list of roles defined in relation to this document, its preparation, execution or implementation</xs:documentation>
+            <b>Roster: </b>A list of roles defined in relation to this document, its preparation, execution,
+      application or implementation</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>

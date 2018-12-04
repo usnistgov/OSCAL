@@ -12,7 +12,6 @@
   <schema-name>OSCAL Document Metadata Description</schema-name>
   <short-name>oscal-metadata</short-name>
   
-<!-- rename to 'catalog/head' (a la html) or 'catalog/header'? -->
   <define-assembly name="metadata">
     <formal-name>Publication metadata</formal-name>
     <description>Information describing the publication or availability of this document</description>
@@ -22,10 +21,9 @@
       <field      named="version"/>
       <fields     named="doc-id"   group-as="document-identifiers"/>
       <fields     named="link"     group-as="links"/>
-      <assembly   named="system"/>
       <assemblies named="resource" group-as="resources"/>
       <assemblies named="party"    group-as="parties"/>
-      <assembly   named="roster"/>
+      <assemblies named="role"     group-as="roles"/>
       <assembly   named="notes"/>
       <assembly   named="extra-meta"/>
     </model>
@@ -74,8 +72,15 @@
     <description>Indicating the type of identifier or other data item.</description>
     <remarks><p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up.</p></remarks>
   </define-flag>
-
+  
+  <define-flag name="algorithm" datatype="string">
+    <formal-name>Hash algorithm</formal-name>
+    <description>Method by which a hash is derived</description>
+    <remarks><p>One of the following is recognized: MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, RIPEMD-160. See <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> (W3C, April 2013) for more information.</p></remarks>
+  </define-flag>
+  
   <define-assembly name="party" group-as="parties">
+    <flag name="id" datatype="ID"/>
     <flag name="role-id"/>
     <formal-name>Party (organization or person)</formal-name>
     <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
@@ -139,7 +144,7 @@
     <description>An identifier for an organization using a designated scheme.</description>
   </define-field>
   
-  <define-field name="link" group-as="links" as="mixed" show-docs="xml json">
+  <define-assembly name="link" group-as="links" show-docs="xml json">
     <flag name="href" datatype="anyURI" required="yes"/>
     <flag name="rel"  datatype="NCName"/>
     <flag name="media-type"/>
@@ -148,10 +153,14 @@
       A line or paragraph with a hypertext link
     </description>
     <remarks>
-      <p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
-        element.</p>
+      <p>Clashes with the present catalog model for <code>link</code>, which is a field not an assembly, and
+      has no <code>title</code>.</p>
     </remarks>
-  </define-field>
+    <model>
+      <field  named="title"/>
+      <fields named="hash" group-as="hashes"/>
+    </model>
+  </define-assembly>
   
   <define-flag name="rel" datatype="NCName" show-docs="xml json">
     <formal-name>Relation</formal-name>
@@ -297,13 +306,12 @@
       <field    named="version"/>
       <fields   named="doc-id" group-as="document-identifiers"/>
       <fields   named="link" group-as="links"/>
-      <fields   named="hash" group-as="hashes"/>
       <assembly named="notes"/>
     </model>
   </define-assembly>
 
   <define-field name="hash" group-as="hashes">
-    <flag name="type"/>
+    <flag name="algorithm"/>
     <formal-name>Hash</formal-name>
     <description>A document hash or other value subject to cryptographic authentication</description>
     <remarks>
@@ -335,62 +343,11 @@
     </model>
   </define-assembly>
   
-
-  <!--<define-assembly name="preparation">
-    <formal-name>Preparation</formal-name>
-    <description>Naming organizations playing roles in the preparation.</description>
-    <remarks>
-      <p>May be used in place of or in addition to <code>history</code>.</p>
-      <p>Values for <code>role</code> may include "prepared-by", "prepared-for" etc.</p>
-    </remarks>
-    <model>
-      <assemblies group-as="organizations" named="organization"/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="attachment">
-    <flag name="href"/>
-    <formal-name>Attachment</formal-name>
-    <description>File attachment: ancillary information kept in a separate file.</description>
-    <model>
-      <field    named="title"/>
-      <field    named="desc"/>
-      <fields   named="doc-id" group-as="document-identifiers"/>
-      <fields   named="pub-id" group-as="publication-identifiers"/>
-      <assembly named="file"/>
-      <assembly named="notes"/>
-      <assemblies named="meta-group" group-as="meta-groups"/>
-    </model>
-  </define-assembly>
--->
   <define-flag name="href" datatype="anyURI">
     <formal-name>Hypertext reference</formal-name>
     <description>A relative or absolute URI indicating a resource available on the Internet.</description>
   </define-flag>
 
-  <!--<define-assembly name="file">
-    <formal-name>File</formal-name>
-    <description>Information about an attached file.</description>
-    <model>
-      <field named="format"/>
-      <field named="timestamp"/>
-      <field named="url">
-        <description>When describing an attachment this element may be used to indicate
-          an original or reference version.</description>
-      </field>
-
-    </model>
-  </define-assembly>-->
-
-  <!--<define-field name="format">
-    <formal-name>Format</formal-name>
-    <description>Describes a file format or MIME type.</description>
-  </define-field>
-
-  <define-field name="timestamp">
-    <formal-name>Timestamp</formal-name>
-    <description>A timestamp on a file, offered as corroborating information regarding a file attachment.</description>
-  </define-field>-->
 
   <define-assembly name="extra-meta">
     <formal-name>Extra metadata</formal-name>
@@ -403,7 +360,6 @@
       <assembly named="notes"/>
     </model>
   </define-assembly>
-  
   
   <define-assembly name="meta-group" group-as="metadata-groups">
     <flag name="term"/>
@@ -438,5 +394,57 @@
     <formal-name>Role identifier</formal-name>
     <description>References a <code>role</code> element defined in metadata.</description>
   </define-flag>
+
+  <!--<define-assembly name="preparation">
+    <formal-name>Preparation</formal-name>
+    <description>Naming organizations playing roles in the preparation.</description>
+    <remarks>
+      <p>May be used in place of or in addition to <code>history</code>.</p>
+      <p>Values for <code>role</code> may include "prepared-by", "prepared-for" etc.</p>
+    </remarks>
+    <model>
+      <assemblies group-as="organizations" named="organization"/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="attachment">
+    <flag name="href"/>
+    <formal-name>Attachment</formal-name>
+    <description>File attachment: ancillary information kept in a separate file.</description>
+    <model>
+      <field    named="title"/>
+      <field    named="desc"/>
+      <fields   named="doc-id" group-as="document-identifiers"/>
+      <fields   named="pub-id" group-as="publication-identifiers"/>
+      <assembly named="file"/>
+      <assembly named="notes"/>
+      <assemblies named="meta-group" group-as="meta-groups"/>
+    </model>
+  </define-assembly>
+-->
+  <!--<define-assembly name="file">
+    <formal-name>File</formal-name>
+    <description>Information about an attached file.</description>
+    <model>
+      <field named="format"/>
+      <field named="timestamp"/>
+      <field named="url">
+        <description>When describing an attachment this element may be used to indicate
+          an original or reference version.</description>
+      </field>
+
+    </model>
+  </define-assembly>-->
   
+  <!--<define-field name="format">
+    <formal-name>Format</formal-name>
+    <description>Describes a file format or MIME type.</description>
+  </define-field>
+
+  <define-field name="timestamp">
+    <formal-name>Timestamp</formal-name>
+    <description>A timestamp on a file, offered as corroborating information regarding a file attachment.</description>
+  </define-field>-->
+  
+
 </METASCHEMA>

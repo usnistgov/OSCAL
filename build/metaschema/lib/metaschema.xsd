@@ -105,7 +105,17 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
-  <xs:element name="description" type="xs:string"/>
+  <xs:element name="description">
+    <xs:complexType mixed="true">
+      <xs:choice maxOccurs="unbounded">
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:a"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:em"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:strong"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="remarks">
     <xs:complexType>
       <xs:sequence>

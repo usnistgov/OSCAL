@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../xml/oscal-metadata-schema.xsd"
-    xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-metadata-schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <title>NIST Special Publication 800-53 Revision 4 HIGH BASELINE</title>
     <date>September 2018</date>
     
-    <resource rel="self">
-        <title>High Level Baseline</title>
-        <doc-id type="intrinsic">uuid-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</doc-id>
-        <link href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/xml"/>
+    <link rel="self" media-type="application/xml" href="...">
         <hash> or signature </hash>
-    </resource>
+    </link>
+    
     <resource rel="catalog">
         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
             Information Systems and Organizations</title>
-        <doc-id type="intrinsic">uuid-3038ecb5-9a61-4018-8396-a81ef68a3533</doc-id>
-        <link href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/xml"/>
-        <hash> or signature </hash>
+        <doc-id type="root-id">uuid-3038ecb5-9a61-4018-8396-a81ef68a3533</doc-id>
+        <link href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/xml">
+            <hash> or signature </hash>
+        </link>
     </resource>
+    
     <resource rel="metaschema">
-        <!-- provide links to canonical versions / docs? -->
         <link href="oscal-profile-metaschema.xml" rel="resource"/>
     </resource>
-    <party role-id="creator contact">
+    
+    <party id="IT-JTF" role-id="creator contact">
         <org>
             <org-name>Joint Task Force, Transformation Initiative</org-name>
             <address>
@@ -37,9 +37,8 @@
             <email>sec-cert@nist.gov</email>
         </org>
     </party>
-    <roster>
-        <role id="creator"><title>Document Creator</title></role>
-        <role id="contact"><title>Contact</title></role>
-    </roster>
-    <!-- not duplicating extra-meta from source (keywords) -->
+   
+    <role id="creator"><title>Document Creator</title></role>
+    <role id="contact"><title>Contact</title></role>
+
 </metadata>

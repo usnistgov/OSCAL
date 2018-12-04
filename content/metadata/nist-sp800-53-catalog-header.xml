@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../xml/oscal-metadata-schema.xsd"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-metadata-schema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
     <date>April 2013</date>
     <version iso-date="2015-01-22">Updated</version>
    
-    <resource rel="self" media-type="application/x.xml+oscal.catalog">
-        <link href="nist-sp800-53-catalog-header.xml">...</link>
-    </resource>
-    <resource rel="concurrent" media-type="application/pdf">
-        <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
-        <date>April 2013</date>
-        <version iso-date="2015-01-22">Updated</version>
-        <doc-id type="alt-title">NIST Special Publication 800-53 Revision 4</doc-id>
-        <doc-id type="short-title">NIST SP800-53 rev 4</doc-id>
-        <doc-id type="doi">10.6028/NIST.SP.800-53r4</doc-id>
-        <doc-id type="coden">NSPUE2</doc-id>
-        <link rel="alternate" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
-    </resource>
-    <resource rel="superseding" media-type="application/pdf">
-        <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
-        <doc-id type="alt-title">NIST Special Publication 800-53 Revision 4</doc-id>
-        <doc-id type="short-title">NIST SP800-53 rev 4</doc-id>
-        <link rel="canonical" href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
-    </resource>
-    <resource rel="metaschema" media-type="application/x-xml+oscal.metaschema">
-        <link href="oscal-catalog-metaschema.xml">OSCAL Catalog Metaschema</link>
+    
+    <link rel="self"      media-type="application/x.xml+oscal.catalog" href="nist-sp800-53-catalog-header.xml"/>
+    <link rel="alternate" media-type="application/pdf" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
+    <link rel="canonical" media-type="application/pdf" href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
+    
+    <resource rel="metaschema">
+        <link media-type="application/x-xml+oscal.metaschema" href="oscal-catalog-metaschema.xml"/>
     </resource>
     
-    <party role-id="creator contact">
+    <party id="IT-JTF" role-id="creator contact">
         <org>
             <org-name>Joint Task Force, Transformation Initiative</org-name>
             <address>
@@ -43,10 +29,10 @@
             <email>sec-cert@nist.gov</email>
         </org>
     </party>
-    <roster>
-        <role id="creator"><title>Document creator</title></role>
-        <role id="contact"><title>Contact</title></role>
-    </roster>
+    
+    <role id="creator"><title>Document creator</title></role>
+    <role id="contact"><title>Contact</title></role>
+    
     <extra-meta>
         <meta-group type="keywords">
             <meta>Assurance</meta>
