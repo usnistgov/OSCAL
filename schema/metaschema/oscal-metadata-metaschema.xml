@@ -288,7 +288,7 @@
   </define-field>
   
   <define-assembly name="resource" group-as="resources">
-    <flag name="rel"/>
+    <flag name="type"/>
     <flag name="media-type"/>
     <formal-name>Resource</formal-name>
     <description>A resource to inform or authenticate the present document.</description>

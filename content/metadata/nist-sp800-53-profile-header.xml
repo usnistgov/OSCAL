@@ -9,7 +9,7 @@
         <hash> or signature </hash>
     </link>
     
-    <resource rel="catalog">
+    <resource type="catalog">
         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
             Information Systems and Organizations</title>
         <doc-id type="root-id">uuid-3038ecb5-9a61-4018-8396-a81ef68a3533</doc-id>
@@ -18,7 +18,7 @@
         </link>
     </resource>
     
-    <resource rel="metaschema">
+    <resource type="metaschema">
         <link href="oscal-profile-metaschema.xml" rel="resource"/>
     </resource>
     

@@ -9,8 +9,8 @@
     <link rel="self"      media-type="application/x.xml+oscal.catalog" href="nist-sp800-53-catalog-header.xml"/>
     <link rel="alternate" media-type="application/pdf" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
     <link rel="canonical" media-type="application/pdf" href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
-    
-    <resource rel="metaschema">
+   
+    <resource type="metaschema">
         <link media-type="application/x-xml+oscal.metaschema" href="oscal-catalog-metaschema.xml"/>
     </resource>
     
