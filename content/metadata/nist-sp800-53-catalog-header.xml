@@ -3,9 +3,8 @@
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-metadata-schema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
-    <date>April 2013</date>
+    <publication-date>April 2013</publication-date>
     <version iso-date="2015-01-22">Updated</version>
-   
     
     <link rel="self"      media-type="application/x.xml+oscal.catalog" href="nist-sp800-53-catalog-header.xml"/>
     <link rel="alternate" media-type="application/pdf" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>

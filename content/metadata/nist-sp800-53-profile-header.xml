@@ -3,7 +3,7 @@
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-metadata-schema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <title>NIST Special Publication 800-53 Revision 4 HIGH BASELINE</title>
-    <date>September 2018</date>
+    <publication-date>September 2018</publication-date>
     
     <link rel="self" media-type="application/xml" href="...">
         <hash> or signature </hash>

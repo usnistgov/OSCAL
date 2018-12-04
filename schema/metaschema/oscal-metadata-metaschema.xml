@@ -16,10 +16,12 @@
     <formal-name>Publication metadata</formal-name>
     <description>Information describing the publication or availability of this document</description>
     <model>
-      <field      named="title" required="yes"/>
-      <field      named="date"/>
+      <field      named="title"    required="yes"/>
+      <fields     named="author"   group-as="authors"/>
+      <field      named="publication-date"/>
       <field      named="version"/>
       <fields     named="doc-id"   group-as="document-identifiers"/>
+      <fields     named="prop"     group-as="properties"/>
       <fields     named="link"     group-as="links"/>
       <assemblies named="resource" group-as="resources"/>
       <assemblies named="party"    group-as="parties"/>
@@ -34,9 +36,18 @@
     <description>The title under which this document is formally published</description>
   </define-field>
 
-  <define-field name="date">
-    <formal-name>Date</formal-name>
-    <description>The date of publication of this version.</description>
+  <define-field name="author" group-as="authors">
+    <formal-name>Author</formal-name>
+    <description>A named author</description>
+    <remarks><p>Note this information may be duplicative of information given in a <code>party</code>
+    element with appropriate <code>role-id</code> flags, along with more a more complete structured
+    listing. This element provides a value for display as well as an additional point of comparison.</p></remarks>
+  </define-field>
+  
+  
+  <define-field name="publication-date">
+    <formal-name>Publication date</formal-name>
+    <description>The official date of publication</description>
   </define-field>
 
   <define-field name="version">
@@ -44,7 +55,7 @@
     <formal-name>version</formal-name>
     <description>Version information</description>
   </define-field>
-
+  
   <define-flag name="iso-date" datatype="date">
     <formal-name>ISO (standard) date</formal-name>
     <description>Please use YYYY-MM-DD syntax.</description>
@@ -68,17 +79,24 @@
   </define-field>
 
   <define-flag name="type" datatype="string">
-    <formal-name>Type or classification</formal-name>
+    <formal-name>Type</formal-name>
     <description>Indicating the type of identifier or other data item.</description>
     <remarks><p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up.</p></remarks>
   </define-flag>
-  
-  <define-flag name="algorithm" datatype="string">
-    <formal-name>Hash algorithm</formal-name>
-    <description>Method by which a hash is derived</description>
-    <remarks><p>One of the following is recognized: MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, RIPEMD-160. See <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> (W3C, April 2013) for more information.</p></remarks>
+
+  <define-field name="prop" group-as="properties">
+    <flag name="class"/>
+    <formal-name>Property</formal-name>
+    <description>A property associated with the document</description>
+    <remarks><p>Wherever permitted, a <code>doc-id</code> should be used in preference to this field when the property is a document identifer of any kind.</p></remarks>
+  </define-field>
+
+  <define-flag name="class" datatype="string">
+    <formal-name>Classification</formal-name>
+    <description>Indicating the property being assigned</description>
   </define-flag>
   
+
   <define-assembly name="party" group-as="parties">
     <flag name="id" datatype="ID"/>
     <flag name="role-id"/>
@@ -264,25 +282,6 @@
     </model>
   </define-assembly>
 
-  <define-assembly name="system">
-    <formal-name>System</formal-name>
-    <description>A description of the system for which this specification is intended</description>
-    <model>
-      <field named="full-name"/>
-      <field named="short-name"/>
-      <field named="system-id"/>
-      <field named="desc"/>
-      <assembly named="notes"/> 
-      <assemblies named="meta-group" group-as="metadata-groups"/>
-    </model>
-  </define-assembly>
-
-  <define-field name="system-id">
-    <flag name="type"/>
-    <formal-name>System ID</formal-name>
-    <description>A unique identifier for the system</description>
-  </define-field>
-
   <define-field name="desc">
     <formal-name>Description</formal-name>
     <description>A short description</description>
@@ -302,9 +301,11 @@
     </remarks>
     <model>
       <field    named="title"/>
-      <field    named="date"/>
+      <fields   named="author" group-as="authors"/>
+      <field    named="publication-date"/>
       <field    named="version"/>
       <fields   named="doc-id" group-as="document-identifiers"/>
+      <fields   named="prop"     group-as="properties"/>
       <fields   named="link" group-as="links"/>
       <assembly named="notes"/>
     </model>
@@ -319,14 +320,12 @@
     </remarks>
   </define-field>
   
-  <define-assembly name="roster">
-    <formal-name>Roster</formal-name>
-    <description>A list of roles defined in relation to this document, its preparation, execution,
-      application or implementation</description>
-    <model>
-      <assemblies named="role" group-as="roles"/>
-    </model>
-  </define-assembly>
+  
+  <define-flag name="algorithm" datatype="string">
+    <formal-name>Hash algorithm</formal-name>
+    <description>Method by which a hash is derived</description>
+    <remarks><p>One of the following is recognized: MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, RIPEMD-160. See <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> (W3C, April 2013) for more information.</p></remarks>
+  </define-flag>
   
   <define-assembly name="role" group-as="roles">
     <flag name="id" datatype="ID" required="yes"/>
@@ -444,7 +443,29 @@
   <define-field name="timestamp">
     <formal-name>Timestamp</formal-name>
     <description>A timestamp on a file, offered as corroborating information regarding a file attachment.</description>
-  </define-field>-->
+  </define-field>
+  
+  <define-assembly name="system">
+    <formal-name>System</formal-name>
+    <description>A description of the system for which this specification is intended</description>
+    <model>
+      <field named="full-name"/>
+      <field named="short-name"/>
+      <field named="system-id"/>
+      <field named="desc"/>
+      <assembly named="notes"/> 
+      <assemblies named="meta-group" group-as="metadata-groups"/>
+    </model>
+  </define-assembly>
+  
+  <define-field name="system-id">
+    <flag name="type"/>
+    <formal-name>System ID</formal-name>
+    <description>A unique identifier for the system</description>
+  </define-field>
+
+  
+  -->
   
 
 </METASCHEMA>
