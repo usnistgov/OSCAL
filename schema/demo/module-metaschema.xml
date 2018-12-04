@@ -24,7 +24,7 @@
       <p>Defined in its own module!</p>
     </remarks>
     <example>
-      <acquired-model  xmlns="urn:fakeup">what's <em>up with this?</em></acquired-model>
+      <acquired-model  xmlns="urn:fakeup2">what's <em>up with this?</em></acquired-model>
     </example>
   </define-field>
     

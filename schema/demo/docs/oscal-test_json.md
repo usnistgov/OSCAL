@@ -24,7 +24,12 @@ feature set for testing (schemas): enforcement of addressability constraints (di
 
 feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax. 
 
-Also to do: find a case of variability in controls and show it off... parts? 
+Also to do: find a case of variability in controls and show it off... parts?
+
+```json
+{"some_string":"string","things":[{"id":"thing001","some_string":"aha","single-required-field":"Required","single-mixed-field":"Mixed content? *here be content?*"}]}
+```
+p  
 
 ### **Base**: `thing` object
 
@@ -59,7 +64,12 @@ As an explicit property, `single-required-field` appears on [thing](#base-thing-
 
 The `single-required-field` object has a property:
 
-* String `STRVALUE` 
+* String `STRVALUE`
+
+```json
+{"single-required-field":"Required"}
+```
+p  
 
 ### **Acquired Model**: `acquired-model` object
 

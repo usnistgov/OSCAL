@@ -48,9 +48,9 @@
    </xsl:template>
    <xsl:template match="description | remarks" mode="jsonize"/>
    <xsl:template match="*" mode="jsonize">
-      <xsl:variable name="near-json">FAKEUP Testing Schemaoscal-testurn:fakeupA test schema for prototyping and demonstrating the metaschema feature set.BaseWrapper for other stuffThe kit can have all kinds of Things.feature set for testing (schemas):
-          enforcement of addressability constraints (distinctiveness of values)feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax.Also to do: find a case of variability in controls and show it off... parts?RequiredMixed content? here be content?BaseWrapper for other stuffA thing can be whatever: flags, fields of various sorts mixed and not, and assemblies.
-        Also the various sorts of addressing should be demonstrated. The model described should be demonstrated in companion instances (XML and JSON), which can in turn be used as targets for mutual conversion.Single string (required)As it saysSingle string but with mixed contentAs it saysA single occurrence of a plural (ha)As it saysOnly one plural, but possibly mixed.As it saysChunkAs it saysChunk among chunksAs it saysOne ChoiceAs it saysAnother ChoiceAs it saysA string flagAs it saysAn IDAs it says</xsl:variable>
+      <xsl:variable name="near-json">
+         <xsl:apply-templates select="." mode="xml2json"/>
+      </xsl:variable>
       <xsl:apply-templates select="$near-json" mode="rectify"/>
    </xsl:template>
    <xsl:template match="example">
@@ -61,7 +61,7 @@
          <xsl:apply-templates select="description"/>
          <xsl:if test="empty($json-xml/map)"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-            <xsl:message>Not finding example</xsl:message>
+            <xsl:message expand-text="true">Not finding example for { ../(name() || ' ' || @name) }</xsl:message>
          </xsl:if>
          <xsl:if test="exists($json-xml/map)"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions">

@@ -145,7 +145,7 @@
         
         <xslt:template match="*" mode="jsonize">
             <xslt:variable name="near-json">
-                <xsl:apply-templates select="." mode="xml2json"/>
+                <xslt:apply-templates select="." mode="xml2json"/>
             </xslt:variable>
             <xslt:apply-templates select="$near-json" mode="rectify"/>
         </xslt:template>
@@ -160,7 +160,7 @@
                 <xslt:apply-templates select="description"/>
                 
                 <xslt:if test="empty($json-xml/map)" xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
-                    <xslt:message>Not finding example</xslt:message>
+                    <xslt:message expand-text="true">Not finding example for { ../(name() || ' ' || @name) }</xslt:message>
                 </xslt:if>
                     
             <xslt:if test="exists($json-xml/map)" xpath-default-namespace="http://www.w3.org/2005/xpath-functions">
