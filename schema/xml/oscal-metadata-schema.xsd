@@ -16,9 +16,11 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="1" ref="oscal:title"/>
-            <xs:element minOccurs="0" ref="oscal:date"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:author"/>
+            <xs:element minOccurs="0" ref="oscal:publication-date"/>
             <xs:element minOccurs="0" ref="oscal:version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:doc-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:prop"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:resource"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:party"/>
@@ -35,10 +37,17 @@
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="date">
+   <xs:element name="author">
       <xs:annotation>
          <xs:documentation>
-            <b>Date: </b>The date of publication of this version.</xs:documentation>
+            <b>Author: </b>A named author</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="publication-date">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Publication date: </b>The official date of publication</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
@@ -66,7 +75,21 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type or classification: </b>Indicating the type of identifier or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="prop">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Property: </b>A property associated with the document</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="class" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Classification: </b>Indicating the property being assigned</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -143,7 +166,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type or classification: </b>Indicating the type of identifier or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -157,7 +180,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type or classification: </b>Indicating the type of identifier or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -306,36 +329,6 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="system">
-      <xs:annotation>
-         <xs:documentation>
-            <b>System: </b>A description of the system for which this specification is intended</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal:full-name"/>
-            <xs:element minOccurs="0" ref="oscal:short-name"/>
-            <xs:element minOccurs="0" ref="oscal:system-id"/>
-            <xs:element minOccurs="0" ref="oscal:desc"/>
-            <xs:element minOccurs="0" ref="oscal:notes"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:meta-group"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="system-id">
-      <xs:annotation>
-         <xs:documentation>
-            <b>System ID: </b>A unique identifier for the system</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Type or classification: </b>Indicating the type of identifier or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="desc">
       <xs:annotation>
          <xs:documentation>
@@ -351,9 +344,11 @@
       <xs:complexType>
          <xs:sequence>
             <xs:element minOccurs="0" ref="oscal:title"/>
-            <xs:element minOccurs="0" ref="oscal:date"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:author"/>
+            <xs:element minOccurs="0" ref="oscal:publication-date"/>
             <xs:element minOccurs="0" ref="oscal:version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:doc-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:prop"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
             <xs:element minOccurs="0" ref="oscal:notes"/>
          </xs:sequence>
@@ -383,18 +378,6 @@
                   <b>Hash algorithm: </b>Method by which a hash is derived</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="roster">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Roster: </b>A list of roles defined in relation to this document, its preparation, execution,
-      application or implementation</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:role"/>
-         </xs:sequence>
       </xs:complexType>
    </xs:element>
    <xs:element name="role">
@@ -451,7 +434,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type or classification: </b>Indicating the type of identifier or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -471,7 +454,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type or classification: </b>Indicating the type of identifier or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>

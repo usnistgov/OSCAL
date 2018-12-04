@@ -13,9 +13,13 @@
         { "title" : 
           { "type" : "string",
             "$ref" : "#/definitions/title" },
-          "date" : 
+          "authors" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/author" } },
+          "publication-date" : 
           { "type" : "string",
-            "$ref" : "#/definitions/date" },
+            "$ref" : "#/definitions/publication-date" },
           "version" : 
           { "type" : "object",
             "$ref" : "#/definitions/version" },
@@ -23,6 +27,10 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/doc-id" } },
+          "properties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
           { "type" : "array",
             "items" : 
@@ -49,9 +57,11 @@
         "propertyNames" : 
         { "enum" : 
           [ "title",
-            "date",
+            "authors",
+            "publication-date",
             "version",
             "document-identifiers",
+            "properties",
             "links",
             "resources",
             "parties",
@@ -63,10 +73,15 @@
         "description" : "The title under which this document is formally published",
         "$id" : "#/definitions/title",
         "type" : "string" },
-      "date" : 
-      { "title" : "Date",
-        "description" : "The date of publication of this version.",
-        "$id" : "#/definitions/date",
+      "author" : 
+      { "title" : "Author",
+        "description" : "A named author",
+        "$id" : "#/definitions/author",
+        "type" : "string" },
+      "publication-date" : 
+      { "title" : "Publication date",
+        "description" : "The official date of publication",
+        "$id" : "#/definitions/publication-date",
         "type" : "string" },
       "version" : 
       { "title" : "version",
@@ -98,6 +113,21 @@
         { "enum" : 
           [ "STRVALUE",
             "type" ] } },
+      "prop" : 
+      { "title" : "Property",
+        "description" : "A property associated with the document",
+        "$id" : "#/definitions/prop",
+        "type" : "object",
+        "properties" : 
+        { "class" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "class" ] } },
       "party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
@@ -384,55 +414,6 @@
         "propertyNames" : 
         { "enum" : 
           [ "prose" ] } },
-      "system" : 
-      { "title" : "System",
-        "description" : "A description of the system for which this specification is intended",
-        "$id" : "#/definitions/system",
-        "type" : "object",
-        "properties" : 
-        { "full-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/full-name" },
-          "short-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/short-name" },
-          "system-id" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/system-id" },
-          "desc" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/desc" },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" },
-          "metadata-groups" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta-group" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "full-name",
-            "short-name",
-            "system-id",
-            "desc",
-            "notes",
-            "metadata-groups" ] } },
-      "system-id" : 
-      { "title" : "System ID",
-        "description" : "A unique identifier for the system",
-        "$id" : "#/definitions/system-id",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
       "desc" : 
       { "title" : "Description",
         "description" : "A short description",
@@ -451,9 +432,13 @@
           "title" : 
           { "type" : "string",
             "$ref" : "#/definitions/title" },
-          "date" : 
+          "authors" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/author" } },
+          "publication-date" : 
           { "type" : "string",
-            "$ref" : "#/definitions/date" },
+            "$ref" : "#/definitions/publication-date" },
           "version" : 
           { "type" : "object",
             "$ref" : "#/definitions/version" },
@@ -461,6 +446,10 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/doc-id" } },
+          "properties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
           "links" : 
           { "type" : "array",
             "items" : 
@@ -474,9 +463,11 @@
           [ "rel",
             "media-type",
             "title",
-            "date",
+            "authors",
+            "publication-date",
             "version",
             "document-identifiers",
+            "properties",
             "links",
             "notes" ] } },
       "hash" : 
@@ -494,20 +485,6 @@
         { "enum" : 
           [ "STRVALUE",
             "algorithm" ] } },
-      "roster" : 
-      { "title" : "Roster",
-        "description" : "A list of roles defined in relation to this document, its preparation, execution, application or implementation",
-        "$id" : "#/definitions/roster",
-        "type" : "object",
-        "properties" : 
-        { "roles" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/role" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "roles" ] } },
       "role" : 
       { "title" : "Role",
         "description" : "Defining a role to be assigned to a party or agent",

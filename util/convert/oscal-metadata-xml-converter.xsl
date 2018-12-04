@@ -129,11 +129,21 @@
    <xsl:template match="metadata" mode="xml2json">
       <map key="metadata">
          <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:apply-templates select="date" mode="#current"/>
+         <xsl:if test="exists(author)">
+            <array key="authors">
+               <xsl:apply-templates select="author" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:apply-templates select="publication-date" mode="#current"/>
          <xsl:apply-templates select="version" mode="#current"/>
          <xsl:if test="exists(doc-id)">
             <array key="document-identifiers">
                <xsl:apply-templates select="doc-id" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(prop)">
+            <array key="properties">
+               <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
@@ -165,8 +175,13 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template match="date" mode="xml2json">
-      <string key="date">
+   <xsl:template match="author" mode="xml2json">
+      <string key="author">
+         <xsl:apply-templates mode="md"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="publication-date" mode="xml2json">
+      <string key="publication-date">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
@@ -181,6 +196,14 @@
    <xsl:template match="doc-id" mode="xml2json">
       <map key="doc-id">
          <xsl:apply-templates mode="as-string" select="@type"/>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+         </xsl:apply-templates>
+      </map>
+   </xsl:template>
+   <xsl:template match="prop" mode="xml2json">
+      <map key="prop">
+         <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
@@ -368,28 +391,6 @@
          <xsl:call-template name="prose"/>
       </map>
    </xsl:template>
-   <xsl:template match="system" mode="xml2json">
-      <map key="system">
-         <xsl:apply-templates select="full-name" mode="#current"/>
-         <xsl:apply-templates select="short-name" mode="#current"/>
-         <xsl:apply-templates select="system-id" mode="#current"/>
-         <xsl:apply-templates select="desc" mode="#current"/>
-         <xsl:apply-templates select="notes" mode="#current"/>
-         <xsl:if test="exists(meta-group)">
-            <array key="metadata-groups">
-               <xsl:apply-templates select="meta-group" mode="#current"/>
-            </array>
-         </xsl:if>
-      </map>
-   </xsl:template>
-   <xsl:template match="system-id" mode="xml2json">
-      <map key="system-id">
-         <xsl:apply-templates mode="as-string" select="@type"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
-         </xsl:apply-templates>
-      </map>
-   </xsl:template>
    <xsl:template match="desc" mode="xml2json">
       <string key="desc">
          <xsl:apply-templates mode="md"/>
@@ -400,11 +401,21 @@
          <xsl:apply-templates mode="as-string" select="@rel"/>
          <xsl:apply-templates mode="as-string" select="@media-type"/>
          <xsl:apply-templates select="title" mode="#current"/>
-         <xsl:apply-templates select="date" mode="#current"/>
+         <xsl:if test="exists(author)">
+            <array key="authors">
+               <xsl:apply-templates select="author" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:apply-templates select="publication-date" mode="#current"/>
          <xsl:apply-templates select="version" mode="#current"/>
          <xsl:if test="exists(doc-id)">
             <array key="document-identifiers">
                <xsl:apply-templates select="doc-id" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:if test="exists(prop)">
+            <array key="properties">
+               <xsl:apply-templates select="prop" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(link)">
@@ -421,15 +432,6 @@
          <xsl:apply-templates mode="as-string" select=".">
             <xsl:with-param name="key">STRVALUE</xsl:with-param>
          </xsl:apply-templates>
-      </map>
-   </xsl:template>
-   <xsl:template match="roster" mode="xml2json">
-      <map key="roster">
-         <xsl:if test="exists(role)">
-            <array key="roles">
-               <xsl:apply-templates select="role" mode="#current"/>
-            </array>
-         </xsl:if>
       </map>
    </xsl:template>
    <xsl:template match="role" mode="xml2json">
