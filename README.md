@@ -1,5 +1,7 @@
 # Open Security Controls Assessment Language (OSCAL)
 
+[![Join the chat at https://gitter.im/usnistgov-OSCAL/Lobby](https://badges.gitter.im/usnistgov-OSCAL/Lobby.svg)](https://gitter.im/usnistgov-OSCAL/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > Current work is happening in the [master](https://github.com/usnistgov/OSCAL/) branch.
 > NOTE: Some JSON examples might be missing across the repo. We are working to regenerate these.
 
