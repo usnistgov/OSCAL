@@ -13,17 +13,16 @@
       <xs:sequence>
         <xs:element ref="m:schema-name"/>
         <xs:element ref="m:short-name"/>
-        <xs:element ref="m:namespace"/>
+        <xs:element ref="m:namespace" minOccurs="1"/>
         <xs:element ref="m:remarks" minOccurs="0"/>
-        <xs:element ref="m:import"  minOccurs="0"/>
+        <xs:element ref="m:import"  minOccurs="0" maxOccurs="unbounded"/>
         <xs:choice maxOccurs="unbounded">
           <xs:element ref="m:define-assembly"/>
           <xs:element ref="m:define-field"/>
           <xs:element ref="m:define-flag"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="top" use="required" type="xs:NCName"/>
-      <xs:attribute name="use" use="required" type="xs:NCName"/>
+      <xs:attribute name="root" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-assembly">
@@ -34,7 +33,7 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
 
-        <xs:element name="model">
+        <xs:element name="model" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
               <xs:choice minOccurs="0" maxOccurs="unbounded">

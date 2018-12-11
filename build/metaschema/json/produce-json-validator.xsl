@@ -136,7 +136,7 @@
     </xsl:template>
     
     <xsl:template match="define-field" expand-text="true">
-        <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }{ if (@name=../@use) then ' | /map[empty(@key)]' else ''}</xsl:variable>
+        <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ''}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
         <xslt:template match="{$field-match}" priority="2" mode="json2xml">
             <xslt:element name="{@name}" namespace="http://csrc.nist.gov/ns/oscal/1.0">

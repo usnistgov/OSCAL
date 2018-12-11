@@ -21,8 +21,6 @@
         use="@name"/>
 
     <xsl:template match="/METASCHEMA" expand-text="true">
-        <xsl:variable name="top-group" select="@top"/>
-        <xsl:variable name="top-each" select="@use"/>
         <map>
             <string key="$schema">http://json-schema.org/draft-07/schema#</string>
             <string key="$id">http://csrc.nist.gov/ns/oscal/1.0/{ short-name }-schema.json</string>
@@ -41,8 +39,8 @@
             </map>           
         <map key="properties">
             <!--<xsl:apply-templates mode="properties"/>-->
-            <map key="{$top-each}">
-                <string key="$ref">#/definitions/{ $top-each }</string>
+            <map key="{@root}">
+                <string key="$ref">#/definitions/{ @root }</string>
             </map>
         </map>
         <!--<map key="propertyNames">

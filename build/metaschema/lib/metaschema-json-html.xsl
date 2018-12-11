@@ -143,7 +143,7 @@
             <xsl:when test="key('group-invocations', @name)/@address">a (labeled) property of an object <code class="name"><xsl:value-of select="@group-as"/></code>.</xsl:when>
             <xsl:when test="key('single-invocations', @name)">a property on an object.</xsl:when>
             <xsl:when test="key('group-invocations', @name)">a data value in an array property.</xsl:when>
-            <xsl:when test="@name=/m:METASCHEMA/@use">an object, a property of the root object.</xsl:when>
+            <xsl:when test="@name=/m:METASCHEMA/@root">an object, a property of the root object.</xsl:when>
          </xsl:choose>
       </p>
          <xsl:call-template name="invocations"/>
