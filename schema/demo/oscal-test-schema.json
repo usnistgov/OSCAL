@@ -166,5 +166,5 @@
         "items" : 
         { "type" : "string" } } },
     "properties" : 
-    { "kit" : 
-      { "$ref" : "#/definitions/kit" } } }
+    { "" : 
+      { "$ref" : "#/definitions/" } } }

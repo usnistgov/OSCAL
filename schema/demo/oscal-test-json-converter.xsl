@@ -23,7 +23,7 @@
       </xsl:choose>
    </xsl:template>
    <xsl:template match="/map[empty(@key)]" priority="10" mode="json2xml">
-      <xsl:apply-templates mode="#current" select="*[@key=('kit-thing','kit')]"/>
+      <xsl:apply-templates mode="#current" select="*[@key=('')]"/>
    </xsl:template>
    <xsl:template match="array" mode="json2xml">
       <xsl:apply-templates mode="#current"/>

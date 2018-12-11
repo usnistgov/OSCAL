@@ -10,7 +10,7 @@ A test schema for prototyping and demonstrating the metaschema feature set.
 
 Wrapper for other stuff
 
-A [kit](#base-kit-object) will appear as an object, a property of the root object.
+A [kit](#base-kit-object) will appear as 
 
 A [kit](#base-kit-object) object has the following properties:
 
