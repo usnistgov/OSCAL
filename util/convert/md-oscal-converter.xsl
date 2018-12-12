@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="xs math"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    exclude-result-prefixes="xs o"
     version="3.0">
 
     <xsl:output indent="yes"/>
@@ -33,58 +34,11 @@
 
     
     
-    <xsl:variable name="examples">
-        <p>Extra long x
-            y and z
-            
-            
-            
-
-And interesting.
-
-And many paragraphs!
-
-* One item in a list
-* Another item in a list
-  * Sublist
-   * subsublist
-* Item three
-
-```xml
-&lt;xsl:for-each ...
-
-... select ...>
-```
-
-And Prose!
-
-```xml
-and more code
-```
-
-     * Broken list
-   * What?
-* Levels missing
-
-* something or other
-
-And stuff.
-
-        </p>
-        <p>Here's a markdown string.</p>
-        <p>This `string should *break` (overlap)*</p>
-        <p>`code` may occasionally turn up `in the middle`.</p>
-        <p>Here's a ***really interesting*** markdown string.</p>
-        <p>Some paragraphs might have [links elsewhere](https://link.org).</p>
-    </xsl:variable>
     
     <xsl:template match="/">
-        <test>
-            <xsl:copy-of select="$examples"/>
-            <xsl:element name="examples" namespace="{$target-ns}">
-                <xsl:apply-templates select="$examples/*" mode="parse"/>
-            </xsl:element>
-        </test>
+        <xsl:element name="examples" namespace="{$target-ns}">
+            <xsl:apply-templates select="$examples/*" mode="parse"/>
+        </xsl:element>
     </xsl:template>
 
     <xsl:template mode="parse" match=".">
@@ -101,12 +55,14 @@ And stuff.
             <xsl:for-each-group select="tokenize($str, '\n')"
                 group-starting-with=".[matches(., '^```')]">
                 <xsl:variable name="this-is-code" select="not((position() mod 2) + number($starts-with-code))"/>
-                <block>
+                <p><!-- Adding an attribute flag when this is a code block, code='code' -->
                     <xsl:if test="$this-is-code">
-                        <xsl:attribute name="code" select="(replace(current-group()[1],'^```','')[matches(.,'\S')],'true')[1]"/>
+                        <xsl:variable name="language" expand-text="true"
+                            select="(replace(.,'^```','') ! normalize-space(.))[matches(.,'\S')]"/>
+                        <xsl:attribute name="code" select="if ($language) then $language else 'code'"/>
                     </xsl:if>
                     <xsl:value-of select="string-join(current-group()[not(matches(., '^```'))],'&#xA;')"/>
-                </block>
+                </p>
             </xsl:for-each-group>
         </xsl:variable>
         
@@ -136,23 +92,10 @@ And stuff.
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template mode="mark-lists" match="block[matches(.,'^\s*\*')]">
-        <ul>
-            <xsl:for-each select="tokenize(., '\n')">
-                <li level="{ replace(.,'\S.*$','') ! ceiling(string-length(.) div 2)}">
-                    <xsl:value-of select="replace(., '^\s*\*\s*', '')"/>
-                </li>
-            </xsl:for-each>
-        </ul>
-    </xsl:template>
-    
-    
-        
-    
-    <xsl:template mode="parse-block" priority="1" match="block[exists(@code)]" expand-text="true">
+    <xsl:template mode="parse-block" priority="1" match="p[exists(@code)]" expand-text="true">
         <xsl:element name="pre" namespace="{ $target-ns }">
             <xsl:element name="code" namespace="{ $target-ns }">
-                <xsl:for-each select="@code[not(.='true')]">
+                <xsl:for-each select="@code[not(.='code')]">
                     <xsl:attribute name="class">language-{.}</xsl:attribute>
                 </xsl:for-each>
                 <xsl:value-of select="string(.)"/>
@@ -161,12 +104,22 @@ And stuff.
     </xsl:template>
     
 <!-- outside blocks marked as code, we have paragraphs and lists -->
-    <xsl:template mode="parse-block" match="block" expand-text="true">
+    <xsl:template mode="parse-block" match="p" expand-text="true">
         <xsl:for-each select="tokenize(string(.),'\n\s*\n')[normalize-space(.)]">
-            <block>
-                <xsl:value-of select="replace(.,'\s+$','')"/>
-            </block>
+            <p>
+                <xsl:value-of select="replace(.,'(^\s+|\s+$)','')"/>
+            </p>
         </xsl:for-each>
+    </xsl:template>
+    
+    <xsl:template mode="mark-lists" match="p[matches(.,'^\s*\*')]">
+        <ul>
+            <xsl:for-each select="tokenize(., '\n')">
+                <li level="{ replace(.,'\S.*$','') ! ceiling(string-length(.) div 2)}">
+                    <xsl:value-of select="replace(., '^\s*\*\s*', '')"/>
+                </li>
+            </xsl:for-each>
+        </ul>
     </xsl:template>
     
     <xsl:template mode="nest-lists" match="ul" name="nest-lists">
@@ -212,14 +165,13 @@ And stuff.
         
     <xsl:template match="text()" mode="infer-inlines">
         <xsl:variable name="markup" expand-text="true">
-            <xsl:apply-templates select="$tag-replacements/rules">
+            <xsl:apply-templates select="$tag-replacements/o:rules">
                 <xsl:with-param name="original" tunnel="yes" as="text()" select="."/>
             </xsl:apply-templates>
         </xsl:variable>
-        <xsl:try select="parse-xml($markup)">
-            <xsl:catch expand-text="yes">{string(.)}</xsl:catch>
+        <xsl:try select="parse-xml-fragment($markup)">
+            <xsl:catch expand-text="yes" select="."/>
         </xsl:try>
-        
     </xsl:template>
     
      
@@ -233,7 +185,7 @@ And stuff.
 
     <!-- Match 'rules' passing in $original to receive original back
         as a fully-replaced string. -->
-    <xsl:template match="rules" as="xs:string">
+    <xsl:template match="o:rules" as="xs:string">
 
         <!-- Original is only provided for processing text nodes -->
         <xsl:param name="original" as="text()?" tunnel="yes"/>
@@ -252,23 +204,23 @@ And stuff.
         </xsl:iterate>
     </xsl:template>
 
-    <xsl:template match="replace" expand-text="true">
+    <xsl:template match="o:replace" expand-text="true">
         <xsl:param name="str" as="xs:string"/>
         <!--<xsl:value-of>replace({$str},{@match},{string(.)})</xsl:value-of>-->
         <xsl:sequence select="replace($str, @match, string(.))"/>
         <!--<xsl:copy-of select="."/>-->
     </xsl:template>
 
-    <xsl:variable name="tag-replacements">
+    <xsl:variable name="tag-replacements" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
         <rules>
             <!-- first, literal replacements -->
-            <replace match="&amp;">&amp;amp;</replace>
-            <replace match="&lt;">&amp;lt;</replace>
+            <replace match="&amp;"  >&amp;amp;</replace>
+            <replace match="&lt;"   >&amp;lt;</replace>
             <replace match="\\&#34;">&amp;quot;</replace>
-            <replace match="\\\*">&amp;#2A;</replace>
-            <replace match="\\`">&amp;#60;</replace>
-            <replace match="\\~">&amp;#7E;</replace>
-            <replace match="\\^">&amp;#5E;</replace>
+            <replace match="\\\*"   >&amp;#2A;</replace>
+            <replace match="\\`"    >&amp;#60;</replace>
+            <replace match="\\~"    >&amp;#7E;</replace>
+            <replace match="\\^"    >&amp;#5E;</replace>
             
             <!-- then, replacements based on $tag-specification -->
             <xsl:for-each select="$tag-specification/*">
@@ -289,9 +241,9 @@ And stuff.
     
     
 
-    <xsl:variable name="tag-specification" as="element(tag-spec)">
+    <xsl:variable name="tag-specification" as="element(o:tag-spec)" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
         <tag-spec>
-            <!-- $regex sensitive characters must be escaped for match/replace...  -->
+            <!-- The XML notation represents the substitution by showing both delimiters and tags  -->
             <q>"<insert/>"</q>
             <a href="\[{{$insert}}\]">\(<insert/>\)</a>
             <code>`<insert/>`</code>
@@ -326,17 +278,62 @@ And stuff.
         <xsl:value-of select="replace(., '\{\$insert\}', '(.*)?')"/>
     </xsl:template>
     
-    <xsl:template match="insert" mode="write-replace">
+    <xsl:template match="o:insert" mode="write-replace">
         <xsl:text>$1</xsl:text>
     </xsl:template>
     
-    <xsl:template match="a/@href" mode="write-replace">
+    <xsl:template match="o:a/@href" mode="write-replace">
         <xsl:text> href="$2"</xsl:text>
         <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
     </xsl:template>
     
-    <xsl:template match="insert" mode="write-match">
+    <xsl:template match="o:insert" mode="write-match">
         <xsl:text>(.*?)</xsl:text>
     </xsl:template>
+    
+    <xsl:variable name="examples" xml:space="preserve">
+        <p>Extra long x
+            y and z
+            
+            
+            
+
+And interesting.
+
+And many paragraphs!
+
+* One item in a list
+* Another item in a list
+  * Sublist
+   * subsublist
+* Item three
+
+```xml
+&lt;xsl:for-each ...
+
+... select ...>
+```
+
+And Prose!
+
+```
+and more code
+```
+
+     * Broken list
+   * What?
+* Levels missing
+
+* something or other
+
+And stuff.
+
+        </p>
+        <p>Here's a markdown string.</p>
+        <p>This `string should *break` (overlap)*</p>
+        <p>`code` may occasionally turn up `in the middle`.</p>
+        <p>Here's a ***really interesting*** markdown string.</p>
+        <p>Some paragraphs might have [links elsewhere](https://link.org).</p>
+    </xsl:variable>
     
 </xsl:stylesheet>
