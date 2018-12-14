@@ -1,0 +1,92 @@
+---
+title: Schema Reference
+description: OSCAL schema reference
+permalink: /docs/schema/
+layout: post
+sidenav: docs
+subnav: true
+---
+
+{% for collection in site.collections %}
+{% if collection.label != "posts" %}
+<h2 id="{{ collection.label }}">{{ collection.title }}</h2>
+
+<h3>Elements</h3>
+
+{% for schema_element in collection.docs %}
+{% if schema_element.position == 0 %}{% continue %}{% endif %}
+
+<h4 id="{{ collection.label }}_{{ schema_element.title }}"><code>{{ schema_element.title}}</code></h4>
+
+{{ schema_element.content | markdownify }}
+
+<table class="usa-table-borderless">
+  <caption>Properties</caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Cardinality</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for prop in schema_element.properties %}
+    <tr>
+      <th scope="row"><span class="usa-label">{{ prop.name }}</span></th>
+      <td>{{ prop.description }}</td>
+      <td>{{ prop.cardinality }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if schema_element.snippets %}
+<h6>Snippets</h6>
+
+<ul class="usa-accordion-bordered">
+  {% if schema_element.snippets.xml %}
+  <li>
+    <button class="usa-accordion-button" aria-expanded="true" aria-controls="{{ schema_element.title }}_a1">XML</button>
+    <div id="{{ schema_element.title }}_a1" class="usa-accordion-content">
+{% capture snippet %}
+```xml
+{{ schema_element.snippets.xml }}
+```
+{% endcapture %}
+      {{ snippet | markdownify }}
+    </div>
+  </li>
+  {% endif %}
+  {% if schema_element.snippets.json %}
+  <li>
+    <button class="usa-accordion-button" aria-expanded="true" aria-controls="{{ schema_element.title }}_a2">JSON</button>
+    <div id="{{ schema_element.title }}_a2" class="usa-accordion-content">
+{% capture snippet %}
+```json
+{{ schema_element.snippets.json }}
+```
+{% endcapture %}
+      {{ snippet | markdownify }}
+    </div>
+  </li>
+  {% endif %}
+  {% if schema_element.snippets.yaml %}
+  <li>
+    <button class="usa-accordion-button" aria-expanded="true" aria-controls="{{ schema_element.title }}_a3">YAML</button>
+    <div id="{{ schema_element.title }}_a3" class="usa-accordion-content">
+{% capture snippet %}
+```yaml
+{{ schema_element.snippets.yaml }}
+```
+{% endcapture %}
+      {{ snippet | markdownify }}
+    </div>
+  </li>
+  {% endif %}
+</ul>
+{% endif %}
+
+<hr/>
+{% endfor %}
+{% endif %}
+{% endfor %}

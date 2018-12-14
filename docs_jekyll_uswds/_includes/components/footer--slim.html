@@ -1,0 +1,89 @@
+{% if footer %}
+<footer class="usa-footer usa-footer-slim" role="contentinfo">
+
+  {% if footer.last_updated %}
+    <div class="usa-grid">
+      <div class="usa-width-one-whole">
+        <p>Last updated: {{ page.last_modified_at | date: '%B %d, %Y at %I:%M %p' }}</p>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if footer.top %}
+    <div class="usa-grid usa-footer-return-to-top">
+      <a href="{{ footer.top.href | default: '#' }}">{{ footer.top.text | default: 'Return to top' }}</a>
+    </div>
+  {% endif %}
+
+
+
+  {% if footer.links %}
+    {% assign footer_links = site.data.navigation[footer.links] | default: footer.links %}
+    {% assign _sizes = 'whole half third fourth sixth' | split: ' ' %}
+    {% assign _size = footer_links.size | minus: 1 %}
+    {% assign _size = _sizes[_size] | default: 'whole' %}
+  <div class="usa-footer-primary-section">
+    <div class="usa-grid">
+      <nav class="usa-footer-nav{% if footer.contact.contact_links %} usa-width-two-thirds{% endif %}">
+        <ul class="usa-unstyled-list">
+          {% for _link in footer_links %}
+          <li class="usa-width-one-{{ _size }} usa-footer-primary-content">
+            <a class="usa-footer-primary-link" href="{% if _link.external == true %}{{ _link.href }}{% else %}{{ _link.href | relative_url }}{% endif %}">
+              {{ _link.text }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% if footer.contact.contact_links %}
+      <address>
+        <div class="usa-width-one-third">
+          {% assign contact_links = site.data.footer.contact.contact_links %}
+          {% for _link in contact_links %}
+            <div class="usa-footer-primary-content usa-footer-contact_info">
+              <p>
+                <a href="{% if _link.external == true %}{{ _link.href }}{% else %}{{ _link.href | relative_url }}{% endif %}">
+                  {{ _link.text }}
+                </a>
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </address>
+    {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if footer.logos or footer.edit_page %}
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="usa-footer-logo usa-width-one-half">
+        {% if footer.logos %}
+          {% for logo in footer.logos -%}
+            {% if logo.url %}
+              <a href="{{ logo.url }}">
+            {% endif %}
+            <img class="usa-footer-slim-logo-img" src="{% if logo.external %}{{ logo.src }}{% else %}{{ logo.src | relative_url }}{% endif %}" alt="{{ logo.alt }}"{% if logo.width %}width="{{ logo.width }}"{% endif %}{% if logo.height %}height="{{ logo.height }}"{% endif %}>
+            {% if logo.url %}
+              </a>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% if footer.heading %}
+        <h3 class="usa-footer-slim-logo-heading">{{ footer.heading }}</h3>
+        {% endif %}
+      </div>
+
+      {% if footer.edit_page %}
+      <div class="usa-footer-contact-links usa-width-one-half align-right">
+        <small><a href="https://github.com/{{ site.github.organization }}/{{ site.github.repository }}/edit/{{ site.github.default_branch }}/{{ page.path }}" class="usa-sidenav-edit" target="_blank">{{ footer.edit_page.text | default: 'Edit this page' }}</a></small>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+</footer>
+{% endif %}

@@ -1,0 +1,61 @@
+.usa-sticky-sidenav {
+  position: sticky;
+  top: 1rem;
+}
+
+.usa-sidenav-list {
+  @if variable-exists(side-nav-bg) {
+    background-color: $side-nav-bg;
+  }
+
+  a {
+    @if variable-exists(side-nav-link) {
+      color: $side-nav-link;
+    }
+
+    &:hover {
+      @if variable-exists(side-nav-link-hover-bg) {
+        background-color: $side-nav-link-hover-bg;
+      }
+      @if variable-exists(side-nav-link-hover) {
+        color: $side-nav-link-hover;
+      }
+    }
+
+    &.usa-current {
+      @if variable-exists(side-nav-link-current) {
+        border-color: $side-nav-link-current;
+      }
+      @if variable-exists(side-nav-link-current) {
+        color: $side-nav-link-current;
+      }
+    }
+  }
+}
+// Styles for adjusting the breakpoint for the side nav
+.usa-layout-docs {
+  display: flex;
+}
+@include media ($medium-screen){
+  .sidenav {
+    width: 250px;
+  }
+}
+
+@include media($nav-width) {
+  .usa-layout-docs {
+    display: block;
+
+    .sidenav {
+      display: block;
+      float: left;
+      padding-right: 1rem;
+
+      + .usa-layout-docs-main_content {
+        display: inline-block;
+        padding-left: 3rem;
+        width: calc(100% - 250px);
+      }
+    }
+  }
+}

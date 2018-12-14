@@ -1,0 +1,19 @@
+ul,
+ol {
+  @include margin(1em null);
+  padding-left: 1.94em; // Approximately 15px left padding at default font size
+}
+
+li {
+  line-height: $base-line-height;
+  margin-bottom: 0.5em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Unstyled lists
+.usa-unstyled-list {
+  @include unstyled-list;
+}

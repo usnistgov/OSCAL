@@ -1,0 +1,73 @@
+
+.usa-header {
+  .usa-nav {
+    @if variable-exists(top-nav-bg) {
+      background-color: $top-nav-bg;
+    }
+  }
+
+  .usa-nav-primary {
+    a,
+    button {
+      &:hover {
+        @if variable-exists(top-nav-link-hover-bg) {
+          background-color: $top-nav-link-hover-bg;
+        }
+      }
+    }
+
+    .usa-nav-link {
+      span {
+        @if variable-exists(top-nav-link) {
+          color: $top-nav-link;
+        }
+      }
+
+      &:hover {
+        @if variable-exists(top-nav-link-hover) {
+          color: $top-nav-link-hover;
+        }
+
+        span {
+          @if variable-exists(top-nav-link-current) {
+            border-bottom-color: $top-nav-link-current;
+          }
+          @if variable-exists(top-nav-link-hover) {
+            color: $top-nav-link-hover;
+          }
+        }
+      }
+    }
+
+    .usa-current,
+    button[aria-expanded=true] {
+      span {
+        @if variable-exists(top-nav-link-current) {
+          border-color: $top-nav-link-current;
+        }
+        @if variable-exists(top-nav-link-current) {
+          color: $top-nav-link-current;
+        }
+      }
+    }
+  }
+
+  button[aria-expanded=true],
+  button[aria-expanded=true]:hover,
+  .usa-nav-submenu {
+    @if variable-exists(top-nav-dropdown-bg) {
+      background-color: $top-nav-dropdown-bg;
+    }
+  }
+
+  .usa-nav-submenu {
+    a:hover {
+      @if variable-exists(top-nav-dropdown-link-hover-bg) {
+        background-color: $top-nav-dropdown-link-hover-bg;
+      }
+      @if variable-exists(top-nav-dropdown-link) {
+        color: $top-nav-dropdown-link;
+      }
+    }
+  }
+}

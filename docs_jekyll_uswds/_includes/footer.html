@@ -1,0 +1,9 @@
+{% assign footer = site.data.footer %}
+
+{% if footer.type == 'slim' %}
+  {% include components/footer--slim.html %}
+{% elsif footer.type == 'medium' %}
+  {% include components/footer--medium.html %}
+{% elsif footer.type == 'big' %}
+  {% include components/footer--big.html %}
+{% endif %}

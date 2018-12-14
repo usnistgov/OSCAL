@@ -1,0 +1,117 @@
+# This is the configuration for the site navigation.
+
+# This file defines the structure of various named navigational
+# listings, any of which can be used (with some caveats) as the
+# links in your header, footer, and per-page side navigation.
+#
+# For instance, if you have a "primary" navigation list here, you
+# can use that as your header's primary navigation by setting
+# `primary.links` to "primary":
+#
+# primary:
+#   links: primary
+#
+primary:
+  - text: Documentation
+    href: /docs/
+  - text: Examples
+    href: /examples/
+  - text: Roadmap
+    href: /roadmap/
+  # - text: Navigation section
+  #   links:
+  #     - text: Demo link A
+  #       href: /two/a/
+  #     - text: Demo link B
+  #       href: /two/b/
+  #     - text: Demo link C
+  #       href: /two/c/
+  #     - text: Demo link D
+  #       href: /two/a/
+  #     - text: Demo link E
+  #       href: /two/b/
+  #     - text: Demo link F
+  #       href: /two/c/
+  # - text: Referenced section
+  #   links: footer
+  # - text: External link
+  #   href: https://18f.gsa.gov
+  #   external: true
+
+secondary:
+  - text: Project Overview
+    href: https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language
+  - text: GitHub
+    href: https://github.com/usnistgov/OSCAL
+
+docs:
+  - text: Overview
+    href: /docs/
+  - text: Concepts
+    href: /docs/concepts/
+    # links:
+    #   - text: Demo link A
+    #     href: /two/a/
+    #   - text: Demo link B
+    #     href: /two/b/
+    #   - text: Demo link C
+    #     href: /two/c/
+  - text: Schema Reference
+    href: /docs/schema/
+  # - text: Sidenav External link
+  #   href: https://18f.gsa.gov
+  #   external: true
+
+examples:
+  - text: Catalogs
+    href: '/examples/catalogs/'
+  - text: Profiles
+    href: '/examples/profiles/'
+  - text: Implementations
+    href: '/examples/implementations/'
+
+footer:
+  - text: Documentation
+    href: /docs/
+  # - text: Demo link
+  #   href: /demo/
+  # - text: External link
+  #   href: https://18f.gsa.gov
+  #   external: true
+# Uncomment the items below and comment the items above in the `footer` list
+# to use footer link columns in the 'big' footer style.
+  # - text: Documentation
+  #   links:
+  #     - text: Overview
+  #       href: /docs/
+  #     - text: Secondary documentation page
+  #       href: /docs/two/
+  #     - text: Tertiary docs
+  #       href: /docs/three/
+  # - text: Navigation section
+  #   links:
+  #     - text: Demo link A
+  #       href: /two/a/
+  #     - text: Demo link B
+  #       href: /two/b/
+  #     - text: Demo link C
+  #       href: /two/c/
+  # - text: Referenced section
+  #   links:
+  #     - text: Demo link A
+  #       href: /three/a/
+  #     - text: Demo link B
+  #       href: /three/b/
+  #     - text: Demo link C
+  #       href: /three/c/
+  # - text: External links
+  #   links:
+  #     - text: 18F
+  #       href: https://18f.gsa.gov
+  #       external: true
+  #     - text: Technology Transformation Service
+  #       href: https://join.tts.gsa.gov/
+  #       external: true
+  #     - text: code.gov
+  #       href: https://code.gov/
+  #       external: true
