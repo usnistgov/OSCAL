@@ -1,10 +1,11 @@
 FROM ruby:2.5.1-alpine3.7 AS build-env
-RUN apk update && apk add --no-cache build-base git
+RUN apk update && apk add --no-cache build-base git nodejs-npm
 RUN gem update bundler
 RUN mkdir -p /app
 WORKDIR /app
-COPY Gemfile Gemfile.lock ./
-RUN bundle install -j 4
+COPY Gemfile Gemfile.lock package.json ./
+RUN bundle install -j 4 && \
+    npm install
 ENV JEKYLL_ENV=production
 COPY . ./
 RUN bundle exec jekyll build --verbose
