@@ -32,7 +32,6 @@
       <field named="title" required="yes"/>
       <assembly named="metadata"/>
       <field named="declarations"/>
-      
       <assembly named="references"/>
       <assemblies named="section" group-as="sections"/>
       <choice>

@@ -21,22 +21,6 @@
     <sch:let name="home" value="/m:METASCHEMA"/>
     
     <sch:pattern>
-        <sch:rule context="/m:METASCHEMA">
-            <sch:assert test="@root=*/@name">METASCHEMA/@root should be one of <sch:value-of select="string-join(*/@name,', ')"/></sch:assert>
-        </sch:rule>
-        <sch:rule context="/m:METASCHEMA/m:title"/>
-        <sch:rule context="/m:METASCHEMA/m:import">
-            <sch:report role="warning" test="document-uri(/) = resolve-uri(@href,document-uri(/))">Schema can't import itself</sch:report>
-            <sch:assert test="exists(document(@href)/m:METASCHEMA)">Can't find a metaschema at <sch:value-of select="@href"/></sch:assert>
-            <!--<sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>-->
-        </sch:rule>
-        <!--<sch:rule context="m:define-assembly | m:define-field | m:define-flag">
-            Don't need this rule since the XSD defines type NCName
-            <sch:assert test="matches(@name,'\i\c*')">Name <sch:value-of select="@name"/> is not a legal XML name token.</sch:assert>
-        </sch:rule>-->
-        </sch:pattern>
-    
-    <sch:pattern>
         <sch:rule context="m:define-assembly[exists(@acquire-from)] | m:define-field[exists(@acquire-from)] | m:define-flag[exists(@acquire-from)]">
             <sch:assert test="count(key('declaration-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema</sch:assert>
             <sch:assert test="empty(child::*)">An acquired definition may not have its own contents</sch:assert>
@@ -115,4 +99,26 @@
         </sch:rule>
     </sch:pattern>
 
+
+    <sch:pattern>
+        <sch:rule context="/m:METASCHEMA">
+            <sch:assert test="@root=*/@name">METASCHEMA/@root should be one of <sch:value-of select="string-join(*/@name,', ')"/></sch:assert>
+        </sch:rule>
+        <sch:rule context="/m:METASCHEMA/m:title"/>
+        <sch:rule context="/m:METASCHEMA/m:import">
+            <sch:report role="warning" test="document-uri(/) = resolve-uri(@href,document-uri(/))">Schema can't import itself</sch:report>
+            <sch:assert test="exists(document(@href)/m:METASCHEMA)">Can't find a metaschema at <sch:value-of select="@href"/></sch:assert>
+            <!--<sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>-->
+        </sch:rule>
+        <sch:rule context="m:define-assembly">
+            <sch:assert role="warning" test="@name = (//m:assembly/@named | //m:assemblies/@named)">Definition for assembly <sch:value-of select="@name"/> is not used.</sch:assert>
+        </sch:rule>
+        <sch:rule context="m:define-field">
+            <sch:assert role="warning" test="@name = (//m:field/@named | //m:fields/@named)">Definition for assembly <sch:value-of select="@name"/> is not used.</sch:assert>
+        </sch:rule>
+        <sch:rule context="m:define-flag">
+            <sch:assert role="warning" test="@name = //m:flag/@name">Definition for assembly <sch:value-of select="@name"/> is not used.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    
 </sch:schema>
