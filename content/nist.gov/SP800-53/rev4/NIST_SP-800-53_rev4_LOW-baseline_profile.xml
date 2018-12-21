@@ -14,10 +14,8 @@
       <resource type="catalog">
          <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
             Information Systems and Organizations</title>
-         <doc-id type="root-id">uuid-3038ecb5-9a61-4018-8396-a81ef68a3533</doc-id>
-         <hlink href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/x-xml+oscal.metaschema">
-            <hash> or signature </hash>
-         </hlink>
+         <doc-id type="root-id">uuid-4dfe11da-68c9-42ae-9646-475987433ef6</doc-id>
+         <hlink href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/x-xml+oscal.metaschema"/>
       </resource>
       
       <resource type="metaschema">
