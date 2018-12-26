@@ -5,13 +5,20 @@ vault
 
 # oXygen XML Editor IDE file
 *.xpr
-
-*/working/**/*.pdf
+/OSCAL-dev.xpr
 
 # Working files
+scratch
 wendell
+backup*
+working/
 
 # Production outputs
-pub
+pub/
+roundtripped/
+target/
+xspec/*.html
 
-/OSCAL-dev.xpr
+# Slate
+docs/Gemfile.lock
+

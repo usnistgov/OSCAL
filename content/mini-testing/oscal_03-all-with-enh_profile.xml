@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Made by hand 2017-11-02   -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-389081eb-3a60-43aa-9de6-4ee47cb243c6">
+
+   <!-- Asking for all controls, with an exclusion -->
+   <title>Once Again, with Feeling</title>
+   <import href="oscal_testing_mini-testing_catalog.xml">
+      <!-- This time, subcontrols (enhancements) come with the controls. -->
+      <include>
+         <all with-subcontrols="yes"/>
+      </include></import>
+</profile>

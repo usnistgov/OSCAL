@@ -1,8 +1,0 @@
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-  <title>Calling All Controls</title>
-  <invoke href="mini-testing-catalog.xml">
-    <include>
-      <all></all>
-    </include>
-  </invoke>
-</profile>

@@ -1,8 +1,0 @@
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-  <title>Once Again, with Feeling</title>
-  <invoke href="mini-testing-catalog.xml">
-    <include>
-      <all with-subcontrols="yes"></all>
-    </include>
-  </invoke>
-</profile>

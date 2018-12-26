@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0">
+   <xs:include schemaLocation="oscal-prose-module.xsd"/>
+   <!--OSCAL Profile Metaschema-->
+   <!--short name: oscal-profile-->
+   <!--A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is profile.-->
+   <xs:element name="profile">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Profile: </b>Each OSCAL profile is defined by a Profile element</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:import"/>
+            <xs:element minOccurs="0" ref="oscal:merge"/>
+            <xs:element minOccurs="0" ref="oscal:modify"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="import">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Import resource: </b>An Import element designates a catalog, profile, or other resource to be
+         included (referenced and potentially modified) by this profile.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:include"/>
+            <xs:element minOccurs="0" ref="oscal:exclude"/>
+         </xs:sequence>
+         <xs:attribute name="href" type="xs:anyURI" use="required"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="merge">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Merge controls: </b>A Merge element merges controls in resolution.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:combine"/>
+            <xs:choice>
+               <xs:element minOccurs="0" ref="oscal:as-is"/>
+               <xs:element minOccurs="0" ref="oscal:custom"/>
+            </xs:choice>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="combine">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Combination rule: </b>A Combine element defines whether and how to combine multiple (competing)
+        versions of the same control</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="method" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Combination method: </b>How clashing controls and subcontrols should be handled</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="as-is">
+      <xs:annotation>
+         <xs:documentation>
+            <b>As is: </b>An As-is element indicates that the controls should be structured in resolution as they are
+        structured in their source catalogs. It does not contain any elements or attributes.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="custom">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Custom grouping: </b>A Custom element frames a structure for embedding represented controls in resolution.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:group"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:call"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:match"/>
+            </xs:choice>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="group">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Control group: </b>As in catalogs, a group of (selected) controls or of groups of controls</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:group"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:call"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:match"/>
+            </xs:choice>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="modify">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Modify controls: </b>Set parameters or amend controls in resolution</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:set-param"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:alter"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="include">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Include controls: </b>Specifies which controls and subcontrols to include from the resource (source catalog) being
+          imported</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:choice>
+               <xs:element minOccurs="0" ref="oscal:all"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:call"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:match"/>
+            </xs:choice>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="all">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Include all: </b>Include all controls from the imported resource (catalog)</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="with-subcontrols" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Include subcontrols with control: </b>Whether subcontrols should be implicitly included, if not called.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="call">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Call (control or subcontrol): </b>Call a control or subcontrol by its ID</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="control-id" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Control ID: </b>Value of the 'id' flag on a target control</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="subcontrol-id" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Control ID: </b>Value of the 'id' flag on a target subcontrol</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="with-control" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Include control with subcontrol: </b>Whether a control should be implicitly included, if not called.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="with-subcontrols" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Include subcontrols with control: </b>Whether subcontrols should be implicitly included, if not called.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="match">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Match controls and subcontrols by identifier: </b>Select controls by (regular expression) match on ID</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="pattern" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Pattern: </b>A regular expression matching the IDs of one or more controls or subcontrols to be selected</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="order" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Pattern: </b>A regular expression matching the IDs of one or more controls or subcontrols to be selected</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="with-control" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Include control with subcontrol: </b>Whether a control should be implicitly included, if not called.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="with-subcontrols" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Include subcontrols with control: </b>Whether subcontrols should be implicitly included, if not called.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="exclude">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Exclude controls: </b>Which controls and subcontrols to exclude from the resource (source catalog) being
+          imported</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:call"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:match"/>
+            </xs:choice>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="set-param">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Parameter Setting: </b> A parameter setting, to be propagated to points of insertion
+      </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:label"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:desc"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:constraint"/>
+            <xs:choice>
+               <xs:element minOccurs="0" ref="oscal:value"/>
+               <xs:element minOccurs="0" ref="oscal:select"/>
+            </xs:choice>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:part"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required"/>
+         <xs:attribute name="class" type="xs:string"/>
+         <xs:attribute name="depends-on" type="xs:IDREF"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="alter">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Alteration: </b>An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:remove"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:add"/>
+         </xs:sequence>
+         <xs:attribute name="control-id" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Control ID: </b>Value of the 'id' flag on a target control</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="subcontrol-id" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Control ID: </b>Value of the 'id' flag on a target subcontrol</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="remove">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Removal: </b>Specifies elements to be removed from a control or subcontrol, in resolution</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="class-ref" type="xs:NMTOKENS">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>References by class: </b>Items to remove, by class</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="id-ref" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>References by ID: </b>Items to remove, by ID</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="item-name" type="xs:NMTOKENS">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>References by name: </b>Items to remove, by item type (name), e.g. title or prop</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="add">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Addition: </b>Specifies contents to be added into controls or subcontrols, in resolution</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:param"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:prop"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:part"/>
+            <xs:element minOccurs="0" ref="oscal:references"/>
+         </xs:sequence>
+         <xs:attribute name="position" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Position: </b>Where to add the new content with respect to the targeted element (beside it or inside it)</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="group">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Control Group: </b>A group of controls, or of groups of controls.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:param"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:prop"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:part"/>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:group"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:control"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal:references"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="title">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Title: </b>A title for display and navigation, exclusive of more specific properties</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="prop">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Property: </b>A value with a name, attributed to the containing control, subcontrol, part,
+          or group.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class" type="xs:string" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="param">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Parameter: </b>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:label"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:desc"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:constraint"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:guideline"/>
+            <xs:choice>
+               <xs:element minOccurs="0" ref="oscal:value"/>
+               <xs:element minOccurs="0" ref="oscal:select"/>
+            </xs:choice>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="depends-on" type="xs:IDREF">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Depends on: </b>Another parameter invoking this one</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="label">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Parameter label: </b>A placeholder for a missing value, in display.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="desc">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Parameter description: </b>Indicates and explains the purpose and use of a parameter</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal:everything-inline"/>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="constraint">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Constraint: </b>A formal or informal expression of a constraint or test</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="test" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Constraint test: </b>A formal (executable) expression of a constraint</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="value">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Value constraint: </b>Indicates a permissible value for a parameter or property</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="select">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Selection: </b>Presenting a choice among alternatives</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:choice"/>
+         </xs:sequence>
+         <xs:attribute name="how-many" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Cardinality: </b>When selecting, a requirement such as one or more</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="part">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Part: </b>A partition or component of a control, subcontrol or part</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:prop"/>
+            <xs:group ref="oscal:prose" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:part"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="link">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Link: </b>
+        A line or paragraph with a hypertext link
+      </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal:everything-inline"/>
+         <xs:attribute name="href" type="xs:anyURI">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>hypertext reference: </b>A link to a document or document fragment (actual, nominal or projected)</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="rel" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Relation: </b>Purpose of the link</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="references">
+      <xs:annotation>
+         <xs:documentation>
+            <b>References: </b>
+        A group of reference descriptions
+      </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal:ref"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="prose">
+      <xs:choice>
+         <xs:element ref="oscal:p"/>
+         <xs:element ref="oscal:ul"/>
+         <xs:element ref="oscal:ol"/>
+         <xs:element ref="oscal:pre"/>
+      </xs:choice>
+   </xs:group>
+</xs:schema>

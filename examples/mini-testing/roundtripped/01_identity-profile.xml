@@ -1,4 +1,0 @@
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-72c45725-89bd-46d6-80c9-a76847218614">
-  <title>Identity profile (an entire catalog, implicitly)</title>
-  <invoke href="mini-testing-catalog.xml"></invoke>
-</profile>

@@ -1,9 +1,0 @@
-{
-  "id": "uuid-72c45725-89bd-46d6-80c9-a76847218614",
-  "title": "Identity profile (an entire catalog, implicitly)",
-  "invocations": [
-    {
-      "href": "mini-testing-catalog.json"
-    }
-  ]
-}

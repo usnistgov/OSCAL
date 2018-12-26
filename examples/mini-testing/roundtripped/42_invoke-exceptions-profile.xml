@@ -1,5 +1,0 @@
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-  <title>More exceptions profile example</title>
-  <invoke href="mini-testing-catalog.xml"></invoke>
-  <invoke href="99includeRAx3-profile.xml"></invoke>
-</profile>

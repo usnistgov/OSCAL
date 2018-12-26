@@ -1,0 +1,78 @@
+      
+      .control, .component { margin:1em; padding: 1em; border: thin solid black }
+      .subcontrol, .component .component { margin-top: 0.5em; padding: 1em; border: thin dotted black }
+      
+      .control > *:first-child,
+      .subcontrol > *:first-child,
+      .component > *:first-child,
+      .part > *:first-child { margin-top: 0em }
+      
+      h1, h2, h3, h4, h5, h6 { font-family: sans-serif; margin-bottom: 0em }
+      h3 { font-size: 120% }
+      
+      div h3         { font-size: 130% }
+      div div h3     { font-size: 120% }
+      div div div h3 { font-size: 110% }
+      
+      p, div.param { margin-top: 0.4em; margin-bottom: 0.2em }
+      p { line-height: 160% }
+      div > *:first-child { margin-top: 0ex }
+      
+      div.param { border: medium solid green; font-size: 80%; padding: 0.3em }
+      
+      .param p { margin: 0em }
+      
+      p.object { padding-left: 2em; text-indent: -2em }
+      
+      p.link { display: inline-block; padding: 0.1em; background-color: aliceblue; border: medium solid blue; padding-right: 0.2em; margin-right: 0.2em }
+      p.link.broken { background-color: lemonchiffon; border: medium solid darkorange; text-decoration: line-through }
+      .part td { vertical-align: text-top; padding-top: 0em; padding-bottom: 0em }
+      
+      .insert, .choice { border: thin solid black; padding: 0.1em }
+      .unassigned { border: thin solid red; background-color: pink}
+      .desc { color: darkgreen }
+      .insert .desc { font-size: 90% }
+      .label { font-size: 90%; font-weight: bold }
+      .value { font-style: italic; text-decoration: underline }
+      
+      .param-id { font-size: 90%; font-family: sans-serif; font-weight: bold;
+         background-color: black; color: white; padding-left: 0.5ex; padding-right: 0.5ex }
+      .insert .param-id { font-size: 80% }
+      
+      .withdrawn { font-weight: bold; font-style: italic }
+      
+      .box { vertical-align: middle; width: 2em }
+      .subst  { color: midnightblue; font-family: sans-serif; font-style: normal; font-weight: normal; font-size: 85% } 
+      
+      .impact-table { width: 100%; font-family: sans-serif }
+      .impact-table td { padding: 0.5em; background-color: lightgrey; border: thin solid black }
+      
+      .part { padding: 0.25em; margin-top: 0.5em; border: thin dotted black }
+      .part .part { padding: 0em; margin-top: 0em; border: none }
+      table { border-collapse: collapse }
+      li { list-style-type: square }
+      a { text-decoration: none }
+
+.invocation { padding: 0.2em; border: thin solid black; margin: 0.2em; display: block }
+
+.hidden, p.link.hidden { display: none }
+
+#main { width: 80% }
+#directory { margin-left: 80%; font-size: 90%; margin-top: 1em; float: right;
+position: fixed; padding: 0.5em; background-color: lightsteelblue; height: 80%;
+overflow: auto
+
+}
+
+.toc .toc { margin-left: 2ex; border-left: thin dotted black; padding-left: 0.5em }
+.toc-line { padding-left: 1em; text-indent: -1em }
+
+.label { font-weight: bold; font-size: 85% }
+.invoking { margin-left: 0.2ex; margin-right: 0.2ex; padding: 0.1ex;
+border: thin dashed grey; background-color: azure }
+
+a, a:visited { color: inherit }
+a:hover { text-decoration: underline }
+
+div.param.highlight { border: medium dashed darkgreen; background-color: #c7ddc7 }
+span.insert.highlight { border: thin dashed darkgreen; background-color: #c7ddc7 }
