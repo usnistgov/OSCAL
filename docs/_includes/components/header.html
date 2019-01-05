@@ -1,0 +1,175 @@
+{% if header %}
+
+{% if header.type == 'basic' %}
+<header class="usa-header usa-header-basic" role="banner">
+  {% elsif header.type == 'basic-mega' %}
+  <header class="usa-header usa-header-basic usa-header-basic-megamenu" role="banner">
+    {% elsif header.type == 'extended' or header.type == 'extended-mega' %}
+    <header class="usa-header usa-header-extended" role="banner">
+      {% endif %}
+
+      <div class="nist-header" id="nist-header" role="banner">
+
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-header__logo-link"
+          rel="home" style="text-decoration: none">
+          <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="32" viewBox="0 0 24 32">
+            <path d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z"></path>
+          </svg>
+          <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-237 385.7 109.7 29.3">
+            <title>National Institute of Standards and Technology</title>
+            <g>
+              <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+          c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z" />
+              <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+          c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+          c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+          C-194.9,386.1-195,386.1-195,386.1z" />
+            </g>
+          </svg>
+        </a>
+
+      </div>
+
+      {% if header.type == 'basic' or header.type == 'basic-mega' %}
+      <div class="usa-nav-container">
+        {% endif %}
+        <div class="usa-navbar">
+          <button class="usa-menu-btn">Menu</button>
+          <div class="usa-logo" id="{% if header.type == 'extended' or header.type == 'extended-mega' %}extended-mega-{% endif %}logo">
+            <em class="usa-logo-text">
+              <a href="{% if header.href %}{{ header.href }}{% else %}{{ site.baseurl }}/{% endif %}" title="Home">
+                {{ header.title | default: "OSCAL: the Open Security Controls Assessment Language" }} <span class="usa-label ">PREVIEW</span>
+              </a>
+            </em>
+          </div>
+        </div>
+
+        <nav role="navigation" class="usa-nav">
+          <div class="usa-nav-inner">
+            <button class="usa-nav-close">
+              <img src="{{ site.baseurl }}/assets/uswds/img/close.svg" alt="close">
+            </button>
+
+            {% assign _primary = header.primary.links %}
+            {% assign primary_links = site.data.navigation[_primary] | default: _primary %}
+            {% if primary_links %}
+            <ul class="usa-nav-primary usa-accordion">
+              {% for _section in primary_links %}
+              <li>
+                {% if _section.links %}
+                {% assign section_links = site.data.navigation[_section.links] | default: _section.links %}
+                {% assign _section_id = _section.id %}
+                {% unless _section_id %}{% assign _section_id = 'nav-' | append: forloop.index %}{% endunless %}
+                <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="{{ _section_id }}">
+                  <span>{{ _section.text }}</span>
+                </button>
+                {% if header.type == 'basic' or header.type == 'extended' %}
+                <ul id="{{ _section_id }}" class="usa-nav-submenu" aria-hidden="true">
+                  {% endif %}
+                  {% if header.type == 'basic-mega' or header.type == 'extended-mega' %}
+                  <div id="{{ _section_id }}" class="usa-nav-submenu usa-megamenu usa-grid-full" aria-hidden="true">
+                    {% endif %}
+                    {% for _link in section_links %}
+                    {% if header.type == 'basic-mega' or header.type == 'extended-mega' %}
+                    <!-- wrap every 3 links in a usa-megamenu-col div -->
+                    {% capture modulo %}{{ forloop.index | modulo: 3 }}{% endcapture %}
+                    {% if modulo == '1' %}
+                    <div class="usa-megamenu-col">
+                      <ul>
+                        {% endif %}
+                        {% endif %}
+                        <li>
+                          <a href="{% if _link.external %}{{ _link.href }}{% else %}{{ _link.href | relative_url }}{% endif %}">{{
+                            _link.text }}</a>
+                        </li>
+                        {% if header.type == 'basic-mega' or header.type == 'extended-mega' %}
+                        {% if modulo == '0' or forloop.last %}
+                      </ul>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if header.type == 'basic' or header.type == 'extended' %}
+                </ul>
+                {% endif %}
+                {% if header.type == 'basic-mega' or header.type == 'extended-mega' %}
+          </div>
+          {% endif %}
+          {% else %}
+          <a class="{% if _section.class %}{{ _section.class }}{% else %} usa-nav-link {% endif %} {% if _section.href == page.permalink %} usa-current{% endif %}{% assign section_lower = _section.text | downcase | remove: " " %}{% if section_lower == page.topnav %} usa-current{% endif %}"
+            href="{% if _section.external %}{{ _section.href }}{% else %}{{ _section.href | relative_url }}{% endif %}">
+            <span>{{ _section.text }}</span>
+          </a>
+          {% endif %}
+          </li>
+          {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if header.type == 'basic' or header.type == 'basic-mega' %}
+          {% assign _secondary = header.secondary %}
+          {% if site.search_site_handle %}
+          <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small js-search-form">
+            <div style="margin:0;padding:0;display:inline">
+              <input name="utf8" type="hidden" value="&#x2713;" />
+            </div>
+            <input id="affiliate" name="affiliate" type="hidden" value="{{ site.search_site_handle }}" />
+            <div role="search">
+              <label for="query" class="usa-sr-only">Enter Search Term(s):</label>
+              <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
+              <button type="submit" name="commit">
+                <span class="usa-sr-only">Search</span>
+              </button>
+            </div>
+          </form>
+          {% endif %}
+          {% endif %}
+
+          {% if header.type == 'extended' or header.type == 'extended-mega' %}
+          {% assign _secondary = header.secondary %}
+          <div class="usa-nav-secondary">
+            {% if site.search_site_handle %}
+            <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small js-search-form usa-sr-only">
+              <div style="margin:0;padding:0;display:inline">
+                <input name="utf8" type="hidden" value="&#x2713;" />
+              </div>
+              <input id="affiliate" name="affiliate" type="hidden" value="{{ site.search_site_handle }}" />
+              <div role="search">
+                <label for="query" class="usa-sr-only">Enter Search Term(s):</label>
+                <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
+                <button type="submit" name="commit">
+                  <span class="usa-sr-only">Search</span>
+                </button>
+              </div>
+            </form>
+            {% endif %}
+            <ul class="usa-unstyled-list usa-nav-secondary-links">
+              {% if site.search_site_handle %}
+              <li class="js-search-button-container">
+                <button class="usa-header-search-button js-search-button">Search</button>
+              </li>
+              {% endif %}
+              {% assign secondary_links = site.data.navigation[_secondary.links] | default: _secondary.links %}
+              {% for _link in secondary_links %}
+              <li>
+                <a href="{% if _link.external %}{{ _link.href }}{% else %}{{ _link.href | relative_url }}{% endif %}"
+                  {% if _link.class %} class="{{ _link.class }}" {% endif %}>
+                  {{ _link.text }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+
+      </div>
+      </div>
+      </nav>
+      {% if header.type == 'basic' or header.type == 'basic-mega' %}
+      </div>
+      {% endif %}
+    </header>
+    <div class="usa-overlay"></div>
+    {% endif %}

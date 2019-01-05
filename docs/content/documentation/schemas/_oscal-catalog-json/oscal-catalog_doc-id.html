@@ -1,0 +1,14 @@
+---
+title: Schema Documentation - oscal-catalog - doc-id
+description: oscal-catalog schema documentation - doc-id
+tagname: doc-id
+permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_doc-id
+layout: post
+model: oscal-catalog-json
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="doc-id"><header><h4 id="oscal-catalog-json_doc-id" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Document Identifier</b>: <code>doc-id</code> string object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_doc-id"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">Any sort of document identifier, name, code, path or other indicator of where and how this document
+      may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <a href="#rel">rel</a>, this value may point to <q>the same</q> or <q>another version</q> of the document.</p><div class="model"><p>The doc-id object may have a (string) property</p><ul><li><a href="#type"><code>type</code></a> property  (<i>optional</i>)</li></ul></div><div class="remarks">
+      <p class="p">Flags <a href="#rel">rel</a> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p>
+      <p class="p">Specific usage rules, nomenclatures and recognized file types e.g. DOIs, CMS locators, etc
+        etc., may be defined at application level. The value of this field may also be a hash or check sum.</p>
+    </div><p>This object appears as a property on: <a href="#metadata">metadata</a>, <a href="#resource">resource</a>.</p></div>

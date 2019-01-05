@@ -19,14 +19,10 @@
    
    <xsl:variable name="home" select="/"/>
    
-   <xsl:param name="roots" select="()"/>
-   
-<!-- keeping their order and adding the nominal root if no roots are designated -->
-   <xsl:variable name="root-definitions" select="for $r in distinct-values(($roots,/METASCHEMA/@root[empty($roots)])) return $home/METASCHEMA/*[@name = $r]"/>
-   
-   
+   <xsl:variable name="root-definition" select="/*/*[@name = /*/@root]"/>
+
    <xsl:variable name="surrogate-tree">
-      <xsl:apply-templates select="$root-definitions" mode="build"/>
+      <xsl:apply-templates select="$root-definition" mode="build"/>
    </xsl:variable>
    <xsl:variable name="pruned-tree">
       <xsl:apply-templates select="$surrogate-tree" mode="prune"/>
@@ -41,40 +37,18 @@
       <xsl:apply-templates mode="html-render" select="$pruned-tree"/>
    </xsl:template>
    
-   <!--<xsl:template match="/">
-      <xsl:copy-of select="$pruned-tree"/>
-   </xsl:template>-->
-      
-      
    <xsl:template match="/">
       <html lang="en">
          <head>
             <title>Schema ToC</title>
             <style type="text/css">
-               div.map {
-                   margin-top: 0ex;
-                   margin-bottom: 0ex;
-                   margin-left: 2em;
-                   font-family: monospace;
-                   font-weight: bold;
-                   color: midnightblue
-               }
-               div.map p {
-                   margin: 0ex
-               }
-               .echo { color: darkgreen; font-weight: normal }
-               span.lit {
-                   font-family: serif;
-                   font-weight: normal;
-                   color: darkgrey
-               }
-               a {
-                   color: inherit;
-                   text-decoration: none
-               }
-               a:hover {
-                   text-decoration: underline
-               }</style>
+div.map { margin-top: 0ex; margin-bottom: 0ex; margin-left: 2em; font-family: monospace; font-weight: bold; color: midnightblue } 
+div.map p { margin: 0ex }
+span.lit { font-family: serif; font-weight: normal; color: darkgrey }
+a { color: inherit; text-decoration: none }
+a:hover { text-decoration: underline }
+
+            </style>
          </head>
          <body>
             <xsl:apply-templates mode="html-render" select="$pruned-tree"/>
@@ -98,6 +72,14 @@
       <xsl:param name="who" as="element()"/>
       <xsl:apply-templates select="$who" mode="keep-me"/>
    </xsl:function>
+   
+   <xsl:template mode="keep-me" priority="1" match="m:control/*" as="xs:boolean">
+      <xsl:sequence select="true()"/>
+   </xsl:template>
+   
+   <xsl:template mode="keep-me" match="*[name() = //m:control/*/name()]" as="xs:boolean">
+      <xsl:sequence select="false()"/>
+   </xsl:template>
    
    <xsl:template mode="keep-me" match="*" as="xs:boolean">
       <xsl:variable name="depth" select="min(key('elements-by-name',name(.))/count(ancestor-or-self::*))"/>
@@ -201,32 +183,19 @@
       </xsl:variable>
       <div>
          <p>
-            <xsl:if test="empty($contents/*)">
-               <xsl:attribute name="class">echo</xsl:attribute>
-            </xsl:if>
             <xsl:text>&lt;</xsl:text>
             <a class="name" href="#{local-name()}">
                <xsl:value-of select="local-name()"/>
             </a>
             <xsl:apply-templates select="@*" mode="#current"/>
-            <xsl:if test="empty($contents/*)">
-               <xsl:text>> ... &lt;/</xsl:text>
-               <xsl:value-of select="local-name()"/>
-               <xsl:text>></xsl:text>
-            </xsl:if>
             <xsl:call-template name="cardinality-note"/>
-            <xsl:if test="exists($contents/*)">
-               <xsl:text>></xsl:text>
-            </xsl:if>
          </p>
-         <xsl:if test="exists($contents/*)">
-            <xsl:sequence select="$contents"/>
+         <xsl:sequence select="$contents"/>
          <p>
-            <xsl:text>&lt;/</xsl:text>
+            <xsl:text>&lt;</xsl:text>
             <xsl:value-of select="local-name()"/>
             <xsl:text>></xsl:text>
          </p>
-         </xsl:if>
       </div>
    </xsl:template>
    
@@ -246,11 +215,9 @@
    </xsl:template>
    
    <xsl:template mode="contents" match="*[@m:type='assembly']">
-      <xsl:if test="exists(*)">
       <div class="map">
          <xsl:apply-templates mode="html-render"/>
       </div>
-      </xsl:if>
    </xsl:template>
    
    <xsl:template mode="contents" match="*[@m:type='field']">

@@ -18,7 +18,3 @@ pub/
 roundtripped/
 target/
 xspec/*.html
-
-# Slate
-docs/Gemfile.lock
-

@@ -56,6 +56,364 @@
          </meta-group>
       </extra-meta>
    </metadata>
+<<<<<<< HEAD
+=======
+   
+   <declarations href="NIST_SP-800-53_rev4_declarations.xml"/>
+   <references>
+      <ref id="ref001">
+         <citation href="http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html">5 C.F.R. 731.106</citation>
+      </ref>
+      <ref id="ref002">
+         <citation href="http://www.gpo.gov/fdsys/granule/CFR-2009-title5-vol2/CFR-2009-title5-vol2-sec930-301/content-detail.html">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</citation>
+      </ref>
+      <ref id="ref003">
+         <citation href="https://www.cnss.gov/policies.html">CNSS Policy 15</citation>
+      </ref>
+      <ref id="ref004">
+         <citation>DoD Information Assurance Vulnerability Alerts</citation>
+      </ref>
+      <ref id="ref005">
+         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 5200.39</citation>
+      </ref>
+      <ref id="ref006">
+         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 8551.01</citation>
+      </ref>
+      <ref id="ref007">
+         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 8552.01</citation>
+      </ref>
+      <ref id="ref008">
+         <citation href="http://www.whitehouse.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net">Executive Order 13587</citation>
+      </ref>
+      <ref id="ref009">
+         <citation href="https://acquisition.gov/far">Federal Acquisition Regulation</citation>
+      </ref>
+      <ref id="ref010">
+         <citation href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive 1</citation>
+      </ref>
+      <ref id="ref011">
+         <citation href="http://www.idmanagement.gov/documents/ficam-roadmap-and-implementation-guidance">FICAM Roadmap and Implementation Guidance</citation>
+      </ref>
+      <ref id="ref012">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html">FIPS Publication 140</citation>
+      </ref>
+      <ref id="ref013">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#140-2">FIPS Publication 140-2</citation>
+      </ref>
+      <ref id="ref014">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#197">FIPS Publication 197</citation>
+      </ref>
+      <ref id="ref015">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#199">FIPS Publication 199</citation>
+      </ref>
+      <ref id="ref016">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#200">FIPS Publication 200</citation>
+      </ref>
+      <ref id="ref017">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#201">FIPS Publication 201</citation>
+      </ref>
+      <ref id="ref018">
+         <citation href="http://www.dhs.gov/homeland-security-presidential-directive-12">HSPD-12</citation>
+      </ref>
+      <ref id="ref019">
+         <citation href="http://www.fas.org/irp/offdocs/nspd/hspd-7.html">HSPD 7</citation>
+      </ref>
+      <ref id="ref020">
+         <citation href="http://capec.mitre.org">http://capec.mitre.org</citation>
+      </ref>
+      <ref id="ref021">
+         <citation href="http://checklists.nist.gov">http://checklists.nist.gov</citation>
+      </ref>
+      <ref id="ref022">
+         <citation href="http://csrc.nist.gov/cryptval">http://csrc.nist.gov/cryptval</citation>
+      </ref>
+      <ref id="ref023">
+         <citation href="http://csrc.nist.gov/groups/STM/cmvp/index.html">http://csrc.nist.gov/groups/STM/cmvp/index.html</citation>
+      </ref>
+      <ref id="ref024">
+         <citation href="http://cve.mitre.org">http://cve.mitre.org</citation>
+      </ref>
+      <ref id="ref025">
+         <citation href="http://cwe.mitre.org">http://cwe.mitre.org</citation>
+      </ref>
+      <ref id="ref026">
+         <citation href="http://fips201ep.cio.gov">http://fips201ep.cio.gov</citation>
+      </ref>
+      <ref id="ref027">
+         <citation href="http://idmanagement.gov">http://idmanagement.gov</citation>
+      </ref>
+      <ref id="ref028">
+         <citation href="http://nvd.nist.gov">http://nvd.nist.gov</citation>
+      </ref>
+      <ref id="ref029">
+         <citation href="http://www.acquisition.gov/far">http://www.acquisition.gov/far</citation>
+      </ref>
+      <ref id="ref030">
+         <citation href="http://www.cnss.gov">http://www.cnss.gov</citation>
+      </ref>
+      <ref id="ref031">
+         <citation href="http://www.dhs.gov/telecommunications-service-priority-tsp">http://www.dhs.gov/telecommunications-service-priority-tsp</citation>
+      </ref>
+      <ref id="ref032">
+         <citation href="http://www.niap-ccevs.org">http://www.niap-ccevs.org</citation>
+      </ref>
+      <ref id="ref033">
+         <citation href="http://www.nsa.gov">http://www.nsa.gov</citation>
+      </ref>
+      <ref id="ref034">
+         <citation href="http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml">http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</citation>
+      </ref>
+      <ref id="ref035">
+         <citation href="http://www.omb.gov">http://www.omb.gov</citation>
+      </ref>
+      <ref id="ref036">
+         <citation href="http://www.us-cert.gov">http://www.us-cert.gov</citation>
+      </ref>
+      <ref id="ref037">
+         <citation href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives">ICD 704</citation>
+      </ref>
+      <ref id="ref038">
+         <citation href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives">ICD 705</citation>
+      </ref>
+      <ref id="ref039">
+         <citation href="http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341">ISO/IEC 15408</citation>
+      </ref>
+      <ref id="ref040">
+         <citation>National Communications Systems Directive 3-10</citation>
+      </ref>
+      <ref id="ref041">
+         <citation href="https://www.dhs.gov/national-infrastructure-protection-plan">National Infrastructure Protection Plan</citation>
+      </ref>
+      <ref id="ref042">
+         <citation href="http://www.nist.gov/nstic">National Strategy for Trusted Identities in Cyberspace</citation>
+      </ref>
+      <ref id="ref043">
+         <citation href="http://csrc.nist.gov/publications/PubsNISTIRs.html#NIST-IR-7622">NIST Interagency Report 7622</citation>
+      </ref>
+      <ref id="ref044">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-100">NIST Special Publication 800-100</citation>
+      </ref>
+      <ref id="ref045">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-111">NIST Special Publication 800-111</citation>
+      </ref>
+      <ref id="ref046">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-113">NIST Special Publication 800-113</citation>
+      </ref>
+      <ref id="ref047">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-114">NIST Special Publication 800-114</citation>
+      </ref>
+      <ref id="ref048">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-115">NIST Special Publication 800-115</citation>
+      </ref>
+      <ref id="ref049">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-116">NIST Special Publication 800-116</citation>
+      </ref>
+      <ref id="ref050">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special Publication 800-12</citation>
+      </ref>
+      <ref id="ref051">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-121">NIST Special Publication 800-121</citation>
+      </ref>
+      <ref id="ref052">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-124">NIST Special Publication 800-124</citation>
+      </ref>
+      <ref id="ref053">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-128">NIST Special Publication 800-128</citation>
+      </ref>
+      <ref id="ref054">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-137">NIST Special Publication 800-137</citation>
+      </ref>
+      <ref id="ref055">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-147">NIST Special Publication 800-147</citation>
+      </ref>
+      <ref id="ref056">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-155">NIST Special Publication 800-155</citation>
+      </ref>
+      <ref id="ref057">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-16">NIST Special Publication 800-16</citation>
+      </ref>
+      <ref id="ref058">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-161">NIST Special Publication 800-161</citation>
+      </ref>
+      <ref id="ref059">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-164">NIST Special Publication 800-164</citation>
+      </ref>
+      <ref id="ref060">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-18">NIST Special Publication 800-18</citation>
+      </ref>
+      <ref id="ref061">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-23">NIST Special Publication 800-23</citation>
+      </ref>
+      <ref id="ref062">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-27">NIST Special Publication 800-27</citation>
+      </ref>
+      <ref id="ref063">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-28">NIST Special Publication 800-28</citation>
+      </ref>
+      <ref id="ref064">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-30">NIST Special Publication 800-30</citation>
+      </ref>
+      <ref id="ref065">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-32">NIST Special Publication 800-32</citation>
+      </ref>
+      <ref id="ref066">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-34">NIST Special Publication 800-34</citation>
+      </ref>
+      <ref id="ref067">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-35">NIST Special Publication 800-35</citation>
+      </ref>
+      <ref id="ref068">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-36">NIST Special Publication 800-36</citation>
+      </ref>
+      <ref id="ref069">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-37">NIST Special Publication 800-37</citation>
+      </ref>
+      <ref id="ref070">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-39">NIST Special Publication 800-39</citation>
+      </ref>
+      <ref id="ref071">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-40">NIST Special Publication 800-40</citation>
+      </ref>
+      <ref id="ref072">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-41">NIST Special Publication 800-41</citation>
+      </ref>
+      <ref id="ref073">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-45">NIST Special Publication 800-45</citation>
+      </ref>
+      <ref id="ref074">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-46">NIST Special Publication 800-46</citation>
+      </ref>
+      <ref id="ref075">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-47">NIST Special Publication 800-47</citation>
+      </ref>
+      <ref id="ref076">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-48">NIST Special Publication 800-48</citation>
+      </ref>
+      <ref id="ref077">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-50">NIST Special Publication 800-50</citation>
+      </ref>
+      <ref id="ref078">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-52">NIST Special Publication 800-52</citation>
+      </ref>
+      <ref id="ref079">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-53">NIST Special Publication 800-53</citation>
+      </ref>
+      <ref id="ref080">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-53A">NIST Special Publication 800-53A</citation>
+      </ref>
+      <ref id="ref081">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-55">NIST Special Publication 800-55</citation>
+      </ref>
+      <ref id="ref082">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-56">NIST Special Publication 800-56</citation>
+      </ref>
+      <ref id="ref083">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-57">NIST Special Publication 800-57</citation>
+      </ref>
+      <ref id="ref084">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-58">NIST Special Publication 800-58</citation>
+      </ref>
+      <ref id="ref085">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-60">NIST Special Publication 800-60</citation>
+      </ref>
+      <ref id="ref086">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-61">NIST Special Publication 800-61</citation>
+      </ref>
+      <ref id="ref087">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-63">NIST Special Publication 800-63</citation>
+      </ref>
+      <ref id="ref088">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-64">NIST Special Publication 800-64</citation>
+      </ref>
+      <ref id="ref089">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-65">NIST Special Publication 800-65</citation>
+      </ref>
+      <ref id="ref090">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-70">NIST Special Publication 800-70</citation>
+      </ref>
+      <ref id="ref091">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-73">NIST Special Publication 800-73</citation>
+      </ref>
+      <ref id="ref092">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-76">NIST Special Publication 800-76</citation>
+      </ref>
+      <ref id="ref093">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-77">NIST Special Publication 800-77</citation>
+      </ref>
+      <ref id="ref094">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-78">NIST Special Publication 800-78</citation>
+      </ref>
+      <ref id="ref095">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-81">NIST Special Publication 800-81</citation>
+      </ref>
+      <ref id="ref096">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-83">NIST Special Publication 800-83</citation>
+      </ref>
+      <ref id="ref097">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-84">NIST Special Publication 800-84</citation>
+      </ref>
+      <ref id="ref098">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-88">NIST Special Publication 800-88</citation>
+      </ref>
+      <ref id="ref099">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-92">NIST Special Publication 800-92</citation>
+      </ref>
+      <ref id="ref100">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-94">NIST Special Publication 800-94</citation>
+      </ref>
+      <ref id="ref101">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-95">NIST Special Publication 800-95</citation>
+      </ref>
+      <ref id="ref102">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-97">NIST Special Publication 800-97</citation>
+      </ref>
+      <ref id="ref103">
+         <citation href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI No. 7003</citation>
+      </ref>
+      <ref id="ref104">
+         <citation href="http://www.whitehouse.gov/omb/circulars_a130_a130trans4">OMB Circular A-130</citation>
+      </ref>
+      <ref id="ref105">
+         <citation href="http://www.whitehouse.gov/omb/memoranda_m02-01">OMB Memorandum 02-01</citation>
+      </ref>
+      <ref id="ref106">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</citation>
+      </ref>
+      <ref id="ref107">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2005/m05-24.pdf">OMB Memorandum 05-24</citation>
+      </ref>
+      <ref id="ref108">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2006/m06-16.pdf">OMB Memorandum 06-16</citation>
+      </ref>
+      <ref id="ref109">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf">OMB Memorandum 07-11</citation>
+      </ref>
+      <ref id="ref110">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf">OMB Memorandum 07-18</citation>
+      </ref>
+      <ref id="ref111">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf">OMB Memorandum 08-22</citation>
+      </ref>
+      <ref id="ref112">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-23.pdf">OMB Memorandum 08-23</citation>
+      </ref>
+      <ref id="ref113">
+         <citation>OMB Memorandum 10-06-2011</citation>
+      </ref>
+      <ref id="ref114">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-11.pdf">OMB Memorandum 11-11</citation>
+      </ref>
+      <ref id="ref115">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-33.pdf">OMB Memorandum 11-33</citation>
+      </ref>
+      <ref id="ref116">
+         <citation>Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)</citation>
+      </ref>
+      <ref id="ref117">
+         <citation href="http://www.us-cert.gov/ncas/alerts">US-CERT Technical Cyber Security Alerts</citation>
+      </ref>
+   </references>
+>>>>>>> Complete redesign of docs and content
    <group class="family" id="ac">
       <title>Access Control</title>
       <control class="SP800-53" id="ac-1">

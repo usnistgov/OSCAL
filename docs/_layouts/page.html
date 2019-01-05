@@ -1,0 +1,32 @@
+---
+layout: default
+main:
+  class: usa-grid usa-section usa-content usa-layout-docs
+---
+{% assign sidenav = site.data.navigation[page.sidenav] | default: page.sidenav %}
+{% if sidenav %}
+  <aside class="usa-layout-docs-sidenav sidenav {% if page.sticky_sidenav %}usa-sticky-sidenav{% endif %}">
+    {% include sidenav.html links=sidenav %}
+  </aside>
+{% endif %}
+
+<div class="usa-layout-docs-main_content">
+  {% if page.title %}
+    {% if page.layout == 'schemas' %}
+      {% if page.permalink contains 'xml' %}
+      <div>
+        <div style="float:left"><h1>{{ page.title }}</h1></div>
+        <div style="float:right"><button disabled>XML</button><a href="/docs/schemas/oscal-catalog-json/"><button>JSON</button></a></div>
+      </div>
+      {% elsif page.permalink contains 'json' %}
+      <div>
+        <div style="float:left"><h1>{{ page.title }}</h1></div>
+        <div style="float:right"><a href="/docs/schemas/oscal-catalog-json/"><button>XML</button></a><button disabled>JSON</button></div>
+      </div>
+      {% endif %}
+    {% else %}
+    <h1>{{ page.title }}</h1>
+    {% endif %}
+  {% endif %}
+  {{ content }}
+</div>
