@@ -1,10 +1,11 @@
-version: '3.4'
+version: '3.3'
 
 services:
   docs:
-    build: .
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
     ports:
-      - 4567:4567
-      - 35729:35729
+      - "4000:4000"
     volumes:
-      - ./source:/usr/src/app/source
+      - "./:/app"

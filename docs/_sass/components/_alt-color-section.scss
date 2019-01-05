@@ -1,0 +1,35 @@
+.usa-section-dark {
+  @if variable-exists(alt-section-bg) {
+    background-color: $alt-section-bg;
+  }
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @if variable-exists(alt-section-header) {
+      color: $alt-section-header;
+    }
+  }
+
+  p {
+    @if variable-exists(alt-section-text) {
+      color: $alt-section-text;
+    }
+  }
+
+  a {
+    @if variable-exists(alt-section-link) {
+      color: $alt-section-link;
+    }
+
+    &:hover {
+      @if variable-exists(alt-section-link-hover) {
+        color: $alt-section-link-hover;
+      }
+    }
+  }
+}

@@ -38,11 +38,8 @@ MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -
 CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
 CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"
 
-XMLDOCS_XSLT="java -jar $SAXON -s:$METASCHEMAXML -o:$LIBDIR/temp/$BASENAME-xml-docs-md.xsl -xsl:$LIBDIR/xml/produce-xml-documentor.xsl"
-JSONDOCS_XSLT="java -jar $SAXON -s:$METASCHEMAXML -o:$LIBDIR/temp/$BASENAME-json-docs-md.xsl -xsl:$LIBDIR/json/produce-json-documentor.xsl example-converter-xslt-path=oscal-test-xml-converter.xsl"
+DOCS_XSLT="java -jar $SAXON -s:$METASCHEMAXML -o:$LIBDIR/temp/$BASENAME-xml-docs-md.xsl -xsl:$LIBDIR/xml/produce-and-run-documentor.xsl"
 
-DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/${BASENAME}_xml.md -xsl:$LIBDIR/temp/$BASENAME-xml-docs-md.xsl"
-DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/${BASENAME}_json.md -xsl:$LIBDIR/temp/$BASENAME-json-docs-md.xsl example-converter-xslt-path=oscal-test-xml-converter.xsl"
 
 # Now ...
 echo
@@ -58,9 +55,7 @@ echo _ Made XML-to-JSON converter ______ $CONVERSION_DIR/$BASENAME-xml-converter
 $CONV_JSON
 echo _ Made JSON-to-XML converter ______ $CONVERSION_DIR/$BASENAME-json-converter.xsl
 
-$XMLDOCS_XSLT
-$DOC_XML
-$JSONDOCS_XSLT
-$DOC_JSON
-echo _ Made XML and JSON documentation _ $DOCSDIR/${BASENAME}_xml.md $DOCSDIR/json_${BASENAME}_json.md
+
+$DOCS_XSLT
+echo _ Made Metaschema documentation _ $DOCSDIR/${BASENAME}_xml.md $DOCSDIR/json_${BASENAME}_json.md
 echo

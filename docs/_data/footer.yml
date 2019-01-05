@@ -1,0 +1,71 @@
+# This is the configuration for the site footer.
+
+# Configuration for type of footer.
+# Footer types can be 'slim', 'medium', or 'big'.
+# https://designsystem.digital.gov/components/footers/
+type: medium
+
+# Configuration for "Return to top" link.
+# Customize with 'text' and 'href' properties.
+# Comment out to the following section to hide.
+top:
+  text: Return to top
+  href: '#'
+
+# Configuration for "Edit this page" link in the footer.
+# Customize with 'text' property.
+# Uncomment the following line to show.
+# edit_page:
+#   text: Edit this page
+
+# Configuration for "Last updated" date and time.
+# Uncomment the following line to show.
+# last_updated: true
+
+# Configuration for which links show at the top of the footer.
+# this is a key into _data/navigation.yml
+links: footer
+
+# Configuration for the big footer's email sign-up form.
+# Set to true to make the form visible.
+# Hooking it up to send the data somewhere is up to you :)
+big_footer_signup_form: false
+
+# Configuration for footer heading. (optional)
+heading: National Institute of Standards and Technology
+
+# Configuration for agency logo(s) (shown side by side).
+# If the logo is external add external: true
+logos:
+  - src: /assets/img/NIST_logo.svg
+    alt: NIST
+    url: https://nist.gov
+
+# Configuration for footer contact links
+contact:
+# Configuration for social media links
+# Comment out links you don't want to use (RSS is an example)
+  social_links:
+    - text: GitHub
+      href: https://github.com/usnistgov
+      external: true
+      type: github
+    # - text: Twitter
+    #   href: https://twitter.com
+    #   external: true
+    #   type: twitter
+    # - text: YouTube
+    #   href: https://youtube.com
+    #   external: true
+    #   type: youtube
+  # - text: RSS Feed
+  #   href: https://usa.gov/
+  #   external: true
+  #   type: rss
+  heading: Information Technology Laboratory (ITL)<br />Computer Security Division (CSD)<br />Applied Cybersecurity Division (ACD)
+# Configuration for contact links for email, phone, etc...
+  contact_links:
+    - text: (301) 975-8443
+      href: tel:1-301-975-8443
+    - text: webmaster-csrc@nist.gov
+      href: mailto:webmaster-csrc@nist.gov

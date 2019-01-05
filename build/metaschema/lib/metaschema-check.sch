@@ -110,6 +110,8 @@
             <sch:assert test="exists(document(@href)/m:METASCHEMA)">Can't find a metaschema at <sch:value-of select="@href"/></sch:assert>
             <!--<sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>-->
         </sch:rule>
+       
+        <sch:rule context="/m:METASCHEMA/*[matches(@acquire-from,'\S')]"/>
         <sch:rule context="m:define-assembly">
             <sch:assert role="warning" test="@name = (//m:assembly/@named | //m:assemblies/@named | /m:METASCHEMA/@root)">Definition for assembly '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>

@@ -1,0 +1,14 @@
+---
+title: Schema Documentation - oscal-catalog - hlink
+description: oscal-catalog schema documentation - hlink
+tagname: hlink
+permalink: /docs/schemas/oscal-catalog-xml/oscal-catalog_hlink
+layout: post
+model: oscal-catalog-xml
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="hlink"><header><h4 id="oscal-catalog-xml_hlink" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Hashed link</b>: <code>hlink</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-catalog-json/#oscal-catalog-json_hlink"><button>JSON</button></a></div></header><p class="description">A pointer to an external document with optional hash for verification</p><div class="model"><p class="usa-font-lead">The <code>hlink</code> element has the following contents  (in order):</p><ul><li><a href="#href"><code>href</code></a> attribute <i> (required)</i></li><li><a href="#rel"><code>rel</code></a> attribute  (<i>optional</i>)</li><li><a href="#media-type"><code>media-type</code></a> attribute  (<i>optional</i>)</li>
+      <li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li>
+      <li><a href="#hash"><code>hash</code></a> element  (<i>zero or more</i>)</li>
+    </ul></div><div class="remarks">
+      <p class="p">This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p>
+    </div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#resource">resource</a>.</p></div>

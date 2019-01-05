@@ -1,0 +1,36 @@
+---
+title: Schema Documentation - oscal-catalog - resource
+description: oscal-catalog schema documentation - resource
+tagname: resource
+permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_resource
+layout: post
+model: oscal-catalog-json
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="resource"><header><h4 id="oscal-catalog-json_resource" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Resource</b>: <code>resource</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_resource"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">A resource to inform or authenticate the present document.</p><div class="model"><p class="usa-font-lead">The <code>resource</code> object has the following members (properties):</p><ul><li><a href="#type"><code>type</code></a> property  (<i>optional</i>)</li><li><a href="#media-type"><code>media-type</code></a> property  (<i>optional</i>)</li>
+      <li><a href="#title"><code>title</code></a> object  (<i>optional</i>)</li>
+      <li>An array labelled
+         
+         <b>authors</b>, containing
+         <a href="#author"><code>author</code></a> objects  (<i>optional</i>)</li>
+      <li><a href="#publication-date"><code>publication-date</code></a> object  (<i>optional</i>)</li>
+      <li><a href="#version"><code>version</code></a> object  (<i>optional</i>)</li>
+      <li>An array labelled
+         
+         <b>document-identifiers</b>, containing
+         <a href="#doc-id"><code>doc-id</code></a> objects  (<i>optional</i>)</li>
+      <li>An array labelled
+         
+         <b>properties</b>, containing
+         <a href="#prop"><code>prop</code></a> objects  (<i>optional</i>)</li>
+      <li>An array labelled
+         
+         <b>hashed-links</b>, containing
+         <a href="#hlink"><code>hlink</code></a> objects  (<i>optional</i>)</li>
+      <li><a href="#notes"><code>notes</code></a> object  (<i>optional</i>)</li>
+    </ul></div><div class="remarks">
+      <p class="p">Typically this information item describes and points to a mirror or other (authoritative or
+        informative) copy of a document, or of a resouce helpful (necessary) for interpreting it,
+        such as its metaschema or documentation. It may offer a (persistent) link to a
+        <q>best available</q> version, or to an outdated version, as indicated by its
+        <a href="#rel">rel</a>.</p>
+    </div><p>This object appears as a property on: <a href="#metadata">metadata</a>.</p></div>

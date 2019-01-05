@@ -1,0 +1,166 @@
+# This is the configuration for the site navigation.
+
+# This file defines the structure of various named navigational
+# listings, any of which can be used (with some caveats) as the
+# links in your header, footer, and per-page side navigation.
+#
+# For instance, if you have a "primary" navigation list here, you
+# can use that as your header's primary navigation by setting
+# `primary.links` to "primary":
+#
+# primary:
+#   links: primary
+#
+primary:
+  - text: Home
+    href: /
+  - text: Learn More
+    links:
+      - text: Background
+        href: /learnmore/
+#     - text: For Assessors
+#       href: /learnmore/assessors
+#     - text: For Security Professionals
+#       href: /learnmore/securitypros
+#     - text: For Tool Developers
+#       href: /learnmore/tooldevelopers
+#     - text: For Content Authors
+#       href: /learnmore/authors
+      - text: Relations to Industry Standards
+        href: /learnmore/relations
+  - text: Resources
+    href: /resources/
+  - text: Documentation
+    href: /docs/
+  - text: Schema Reference
+    href: /docs/schemas/
+  - text: Community
+    href: /community/
+# - text: Walkthrough
+#  href: /walkthrough/
+# - text: Navigation section
+#   links:
+#     - text: Demo link A
+#       href: /two/a/
+#     - text: Demo link B
+#       href: /two/b/
+#     - text: Demo link C
+#       href: /two/c/
+#     - text: Demo link D
+#       href: /two/a/
+#     - text: Demo link E
+#       href: /two/b/
+#     - text: Demo link F
+#       href: /two/c/
+# - text: Referenced section
+#   links: footer
+# - text: External link
+#   href: https://18f.gsa.gov
+#   external: true
+
+secondary:
+  - text: Get Involved
+    href: /community/
+  - text: Contact
+    href: /contact/
+
+resources:
+  - text: Resources
+    href: /resources/
+  - text: Roadmap
+    href: /resources/roadmap/
+  - text: Case Studies
+    href: /resources/casestudies/
+  - text: Examples
+    href: /resources/examples/
+    subnav: true
+  - text: Scenarios
+    href: /resources/scenarios/
+  - text: GitHub Repo
+    href: https://github.com/usnistgov/OSCAL
+    external: true
+
+documentation:
+  - text: Concepts
+    href: /docs/
+  - text: Components
+    href: /docs/components/
+    subnav: true
+  - text: Schema Reference
+    href: /docs/schemas/
+
+schemas:
+  - text: Schema Reference
+    href: /docs/schemas/
+  - text: Catalog Schema
+    href: /docs/schemas/oscal-catalog-xml/
+    model: catalog
+  - text: Profile Schema
+    href: /docs/schemas/oscal-profile-xml/
+    model: profile
+  - text: OSCAL Prose Model
+    href: /docs/schemas/oscal-prose/
+
+community:
+  - text: Community
+    href: /community/
+  - text: Security Professionals
+    href: /community/securitypros/
+  - text: Assessors
+    href: /community/assessors/
+  - text: Tool Developers
+    href: /community/tooldevelopers/
+  - text: Policy Authors
+    href: /community/contentcreators/
+
+learnmore:
+  - text: Learn More
+    href: /learnmore/
+  - text: Relations to Documentary Encoding Standards
+    href: /learnmore/relations/
+
+footer:
+  - text: Documentation
+    href: /docs/
+  # - text: Demo link
+  #   href: /demo/
+  # - text: External link
+  #   href: https://18f.gsa.gov
+  #   external: true
+# Uncomment the items below and comment the items above in the `footer` list
+# to use footer link columns in the 'big' footer style.
+# - text: Documentation
+#   links:
+#     - text: Overview
+#       href: /docs/
+#     - text: Secondary documentation page
+#       href: /docs/two/
+#     - text: Tertiary docs
+#       href: /docs/three/
+# - text: Navigation section
+#   links:
+#     - text: Demo link A
+#       href: /two/a/
+#     - text: Demo link B
+#       href: /two/b/
+#     - text: Demo link C
+#       href: /two/c/
+# - text: Referenced section
+#   links:
+#     - text: Demo link A
+#       href: /three/a/
+#     - text: Demo link B
+#       href: /three/b/
+#     - text: Demo link C
+#       href: /three/c/
+# - text: External links
+#   links:
+#     - text: 18F
+#       href: https://18f.gsa.gov
+#       external: true
+#     - text: Technology Transformation Service
+#       href: https://join.tts.gsa.gov/
+#       external: true
+#     - text: code.gov
+#       href: https://code.gov/
+#       external: true

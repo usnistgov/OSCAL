@@ -1,0 +1,256 @@
+.usa-label {
+  background-color: $color-gray;
+  border-radius: $label-border-radius;
+  color: $color-white;
+  font-size: $h5-font-size;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.7rem;
+  text-transform: uppercase;
+
+  &:only-of-type {
+    margin-right: 0;
+  }
+}
+
+.usa-label-big {
+  @extend .usa-label;
+  font-size: $base-font-size;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+}
+
+.usa-color-short {
+  height: 7rem;
+  margin-bottom: 1rem; }
+
+.usa-color-name {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1em; }
+  @media screen and (min-width: 600px) {
+    .usa-color-name {
+      margin: 0; } }
+
+.usa-color-row {
+  margin-bottom: 3rem; }
+  @media screen and (min-width: 600px) {
+    .usa-color-row .color-big {
+      float: left;
+      padding-right: 4%;
+      width: 32%; } }
+  .usa-color-row .color-small {
+    float: left;
+    margin-right: 0;
+    width: 50%; }
+    @media screen and (min-width: 600px) {
+      .usa-color-row .color-small {
+        width: 17%; } }
+  .usa-color-row p {
+    font-family: Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 1.5rem; }
+    .usa-color-row p:last-of-type {
+      font-size: 11px; }
+
+.usa-primary-color-section {
+  margin-bottom: 0; }
+  @media screen and (min-width: 600px) {
+    .usa-primary-color-section {
+      margin-bottom: 8rem; } }
+  .usa-primary-color-section .usa-color-square {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-bottom: 7rem;
+    padding-bottom: 50%;
+    position: relative; }
+    .usa-primary-color-section .usa-color-square:last-child {
+      margin-right: 0; }
+    @media screen and (min-width: 600px) {
+      .usa-primary-color-section .usa-color-square {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 23.23176%;
+        margin-bottom: 0;
+        padding-bottom: 19%; }
+        .usa-primary-color-section .usa-color-square:last-child {
+          margin-right: 0; } }
+  .usa-primary-color-section .usa-mobile-end-row {
+    margin-right: 0; }
+    @media screen and (min-width: 600px) {
+      .usa-primary-color-section .usa-mobile-end-row {
+        margin-right: 2.35765%; } }
+  .usa-primary-color-section .usa-color-name {
+    margin: 0; }
+
+.usa-color-inner-content {
+  position: absolute;
+  top: 100%; }
+
+.usa-color-hex {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-weight: 700; }
+
+.usa-color-text {
+  padding: 1rem 2rem;
+  font-weight: 700;
+  margin-bottom: .4rem; }
+
+.usa-color-outline .usa-color-text {
+  box-shadow: inset 0 0 0 1px #5b616b; }
+
+.usa-color-primary {
+  background-color: #0071bc; }
+
+.usa-color-primary-darker {
+  background-color: #205493; }
+
+.usa-color-primary-darkest {
+  background-color: #112e51; }
+
+.usa-color-base {
+  background-color: #212121; }
+
+.usa-color-gray-dark {
+  background-color: #323a45; }
+
+.usa-color-gray-light {
+  background-color: #aeb0b5; }
+
+.usa-color-white {
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 1px #5b616b; }
+
+.usa-color-primary-alt {
+  background-color: #02bfe7; }
+
+.usa-color-primary-alt-dark {
+  background-color: #00a6d2; }
+
+.usa-color-primary-alt-darkest {
+  background-color: #046b99; }
+
+.usa-color-primary-alt-light {
+  background-color: #9bdaf1; }
+
+.usa-color-primary-alt-lightest {
+  background-color: #e1f3f8; }
+
+.usa-color-secondary {
+  background-color: #e31c3d; }
+
+.usa-color-secondary-dark {
+  background-color: #cd2026; }
+
+.usa-color-secondary-darkest {
+  background-color: #981b1e; }
+
+.usa-color-secondary-light {
+  background-color: #e59393; }
+
+.usa-color-secondary-lightest {
+  background-color: #f9dede; }
+
+.usa-color-gray {
+  background-color: #5b616b; }
+
+.usa-color-gray-lighter {
+  background-color: #d6d7d9; }
+
+.usa-color-gray-lightest {
+  background-color: #f1f1f1; }
+
+.usa-color-gray-warm-dark {
+  background-color: #494440; }
+
+.usa-color-gray-warm-light {
+  background-color: #e4e2e0; }
+
+.usa-color-gray-cool-light {
+  background-color: #dce4ef; }
+
+.usa-color-gold {
+  background-color: #fdb81e; }
+
+.usa-color-gold-light {
+  background-color: #f9c642; }
+
+.usa-color-gold-lighter {
+  background-color: #fad980; }
+
+.usa-color-gold-lightest {
+  background-color: #fff1d2; }
+
+.usa-color-green {
+  background-color: #2e8540; }
+
+.usa-color-green-light {
+  background-color: #4aa564; }
+
+.usa-color-green-lighter {
+  background-color: #94bfa2; }
+
+.usa-color-green-lightest {
+  background-color: #e7f4e4; }
+
+.usa-color-cool-blue {
+  background-color: #205493; }
+
+.usa-color-cool-blue-light {
+  background-color: #4773aa; }
+
+.usa-color-cool-blue-lighter {
+  background-color: #8ba6ca; }
+
+.usa-color-cool-blue-lightest {
+  background-color: #dce4ef; }
+
+.usa-color-focus {
+  background-color: #aeb0b5; }
+
+.usa-color-visited {
+  background-color: #4c2c92; }
+
+.usa-color-text-primary-darkest {
+  color: #112e51; }
+
+.usa-color-text-primary-darker {
+  color: #205493; }
+
+.usa-color-text-primary {
+  color: #0071bc; }
+
+.usa-color-text-cool-blue-light {
+  color: #4773aa; }
+
+.usa-color-text-primary-alt-darkest {
+  color: #046b99; }
+
+.usa-color-text-green {
+  color: #2e8540; }
+
+.usa-color-text-visited {
+  color: #4c2c92; }
+
+.usa-color-text-gray-dark {
+  color: #323a45; }
+
+.usa-color-text-gray {
+  color: #5b616b; }
+
+.usa-color-text-gray-warm-dark {
+  color: #494440; }
+
+.usa-color-text-secondary-darkest {
+  color: #981b1e; }
+
+.usa-color-text-secondary-dark {
+  color: #cd2026; }
+
+.usa-color-text-secondary {
+  color: #e31c3d; }
+
+.usa-color-text-white {
+  color: #ffffff; }
