@@ -23,7 +23,7 @@ Discussion is needed to determine if a logo is needed for the project. Once deci
 
 Sample Logos:
 
-|  ![Sample Logo 1 for OSCAL](OSCAL/redesign-nist-pages/imgs/OSCAL_Logo1.png
+|  ![Sample Logo 1 for OSCAL](imgs/OSCAL_Logo1.png
       )|  |
 |--|--|
 |  |  |
