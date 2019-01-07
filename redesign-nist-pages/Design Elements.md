@@ -1,6 +1,6 @@
 # Design Elements
 
-This section includes the design elements recommended to support the pages.nist redesign.
+This section includes the design elements recommended to support the pages.nist website redesign.
 
 ## Site URL
 
