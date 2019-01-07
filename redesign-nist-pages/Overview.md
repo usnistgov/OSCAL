@@ -50,9 +50,3 @@ The consumers include those that implement, review and maintain the security pos
 ##### Discussion Item/Note: Creation of a "Getting Started with OSCAL" using a Fact Sheet format. Usually a PDF document.
 
 ##### Note:  Create a 2 page "fact sheet" usually in PDF format that would summarize the information. Markdown/text on the page tends to be cumbersome for users to digest and navigate. PDF documentation requires maintenance and may not be a solution NIST wants to implement.
-
-##### Discussion Item/Notes: Creation of OSCAL Case Study(ies) (Example: Department of Veterans Affairs Case Study
-
-##### Department of Veterans Affairs Case Study Information
-
-##### There are situations where a single system needs to support multiple regulatory frameworks. For example, the U.S. Department of Veterans Affairs is a federal agency (Federal Information Security Modernization Act (FISMA) and NIST Cybersecurity Framework requirements) and a healthcare institution (Health Insurance Portability and Accountability Act (HIPAA) requirements) that has credit card transactions (Payment Card Industry Data Security Standard (PCI DSS)). There is no shortage of requirements for some organizations that have multiple regulatory frameworks.
