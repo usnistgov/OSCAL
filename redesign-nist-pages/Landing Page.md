@@ -3,9 +3,9 @@ The look and feel of the site is based upon U.S. Web Design System templates ava
 
 [https://designsystem.digital.gov/](https://designsystem.digital.gov/)
 
-The graphic for the landing page requires discussion and acceptance. 
+The graphic for the landing page requires discussion, design and acceptance. 
 
-C2 Labs will facilitate the discussion and design of the hero graphic. Quick design samples are included for discussion purposes only.
+C2 Labs will facilitate the discussion and design of the hero graphic. Design samples are included for discussion purposes only.
 
 Landing Page Samples for discussion include:
 ![Sample Landing Page 1 for OSCAL](imgs/OSCAL_LandingPage_Sample1.png)
