@@ -8,4 +8,4 @@ The U.S. Department of Veterans Affairs is a federal agency and therefore must c
 
 The case study for the U.S. Department of Veterans Affairs exhibits the complexity and necessity for agencies to meet multiple regulatory frameworks.
 
-The OSCAL development community is taking this case study into consideration while building the foundations of the project. The foundation elements of the control, catalog and profile are set up to permit selection from multiple catalogs of multiple controls and creation of a single profile that an agency may use to maintain compliance. The project will continue to work to make the products applicable to agencies that are required to meet multiple regulatory frameworks.
+The OSCAL development community took this case study into consideration when building the foundations of the project. The foundation elements of the control, catalog and profile are set up to permit selection from multiple catalogs of multiple controls and creation of a single profile that an agency may use to maintain compliance. The project will continue to work to make the products applicable to agencies that are required to meet multiple regulatory frameworks.
