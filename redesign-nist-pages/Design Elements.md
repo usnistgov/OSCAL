@@ -18,7 +18,7 @@ All pages include the standard NIST header and footer.
 
 ## Site Template
 
-Discussion is needed to determine the template for the redesigned site. The user story recommends use of U.S. Web Design System [U.S. Web Design System](https://designsystem.digital.gov/) offered by GSA.
+Discussion is needed to determine the template for the redesigned site. The user story recommends use of [U.S. Web Design System](https://designsystem.digital.gov/) offered by GSA.
 
 ## Project Logo
 C2 Labs recommends a project logo as a way to brand project materials.
