@@ -49,4 +49,4 @@ The consumers include those that implement, review and maintain the security pos
 
 ##### Discussion Item/Note: Creation of a "Getting Started with OSCAL" using a Fact Sheet format. Usually a PDF document.
 
-##### Note:  Create a 2 page "fact sheet" usually in PDF format that would summarize the information. Markdown/text on the page tends to be cumbersome for users to digest and navigate. PDF documentation requires maintenance and may not be a solution NIST wants to implement.
+##### Note:  Create a 2 page "datasheet" usually in PDF format that would summarize the information. Markdown/text on the page tends to be cumbersome for users to digest and navigate. PDF documentation requires maintenance and may not be a solution NIST wants to implement.
