@@ -6,7 +6,7 @@ This section includes the design elements recommended to support the pages.nist 
 
 A request was made to review the URL for the site. The URL should not be case sensitive. The solution may be to add an alias for the site.
 
-[https://pages.nist.gov/OSCAL](https://pages.nist.gov/OSCAL) works but [https://pages.nist.gov/oscal](https://pages.nist.gov/oscal) does not work.
+The URL [https://pages.nist.gov/OSCAL](https://pages.nist.gov/OSCAL) works, but the URL [https://pages.nist.gov/oscal](https://pages.nist.gov/oscal) does not work.
 
 ## Header/Footer
 
