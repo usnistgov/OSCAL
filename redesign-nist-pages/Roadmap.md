@@ -23,4 +23,4 @@ An example of the implementation layer is a machine-readable system security pla
 
 The assessment layer will model performing an assessment so that the data can be used to drive an assessment. The assessment results layer will use the OSCAL format to represent the finding of the assessment.
 
-Examples and documentation for the OSCAL products are found in the Products section of the website.
+Examples and documentation for the OSCAL products are found in the [Products](Products.md) section of the website.
