@@ -7,7 +7,7 @@ The OSCAL roadmap provides a means to navigate the plan and progress of the proj
 
 ##### Note: May want to update the graphic with brighter colors and try to simply/streamline text.
 
->Blockquote The foundation of OSCAL are the catalog and profile layers.
+> The foundation of OSCAL are the catalog and profile layers.
 
 The catalog layer is a set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53, the 100+ controls in ISO 27002, and the practices in COBIT 5. Examples are available for the catalog layer within the GitHub repository.
 
