@@ -1,4 +1,4 @@
-# How to Navigate OSCAL
+# Navigate OSCAL
 
 The OSCAL roadmap provides a means to navigate the plan and progress of the project. The community has worked to define and develop the catalog and profile layer examples. The focus is now to define and develop the implementation layer. The assessment and assessment results layers will follow.
 
