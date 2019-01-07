@@ -34,8 +34,6 @@ Sample Logos:
       ) |
 
 ## Navigation
-Navigation:
-
 This section includes the Navigation recommendation for the site.
 
  - Overview
