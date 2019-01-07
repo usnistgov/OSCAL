@@ -2,7 +2,9 @@
 
 The OSCAL roadmap provides a means to navigate the plan and progress of the project. The community has worked to define and develop the catalog and profile layer examples. The focus is now to define and develop the implementation layer. The assessment and assessment results layers will follow.
 
-##### Insert OSCAL Roadmap Graphic
+![OSCAL Roadmap](imgs/oscal-components.png)
+
+
 ##### Note: May want to update the graphic with brighter colors and try to simply/streamline text.
 
 The foundation of OSCAL are the catalog and profile layers.
