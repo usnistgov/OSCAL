@@ -3,7 +3,7 @@ The look and feel of the site is based upon U.S. Web Design System templates ava
 
 [https://designsystem.digital.gov/](https://designsystem.digital.gov/)
 
-< The content pages proposed are: Overview, Roadmap, Products, Partners and Contact
+> The content pages proposed are: Overview, Roadmap, Products, Partners and Contact
 
 The template proposed for the Content pages:
 
