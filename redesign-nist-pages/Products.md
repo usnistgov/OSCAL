@@ -30,3 +30,8 @@ NIST Special Publication (SP) 800-53 Revision 4 examples in XML and JSON formats
 
 ### Implementation
 FedRamp System Security Plan
+
+#### Notes:
+Need to edit and streamline content from the following for this section:
+https://github.com/usnistgov/OSCAL/tree/nist-pages/examples
+https://github.com/usnistgov/OSCAL/tree/nist-pages/schema
