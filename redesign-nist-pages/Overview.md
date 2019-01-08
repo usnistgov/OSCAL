@@ -21,8 +21,6 @@ Once the standards are defined, tools that use the OSCAL information will be dev
 
 The terms associated with the project are important to understand. Three terms encompass the foundation for the project. Those terms are: Catalog, Profile and Control.
 
-The foundation of OSCAL are the catalog and profile layers.
-
 The catalog layer is a set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53, the 100+ controls in ISO 27002, and the practices in COBIT 5. Examples are available for the catalog layer within the GitHub repository.
 
 The profile layer is a set of security requirements; also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.
@@ -30,6 +28,8 @@ The profile layer is a set of security requirements; also called a baseline or o
 Control is another term associated with the foundation of the project. The control is a safeguard or countermeasure designed to satisfy a set of defined security requirements. [based on NIST SP 800-53 definition]. Models for representing a security control catalog in a common OSCAL format are developed. The control catalog is a collection of controls.
 
 The project is standardizing the terminology used among the various catalogs.
+
+#### Note: Hyperlink here to a "catalog of terms".
 
  #### How is OSCAL Used?
 
