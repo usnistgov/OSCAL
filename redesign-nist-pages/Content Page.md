@@ -5,6 +5,6 @@ The look and feel of the site is based upon U.S. Web Design System templates ava
 
 > The content pages proposed are: Overview, Roadmap, Products, Partners and Contact
 
-The template proposed for the Content pages:
+The template proposed for the Content pages is:
 
 ![Sample Content Page for OSCAL](imgs/OSCAL_ContentPage_Sample.png)
