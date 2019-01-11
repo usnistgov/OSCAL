@@ -32,8 +32,5 @@ Sample Logos:
 ## Navigation
 This section includes the Navigation recommendation for the site.
 
- - Overview
-- Roadmap
-- Products
-- Partners
+- Community
 - Contact
