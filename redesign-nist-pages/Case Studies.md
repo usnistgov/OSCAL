@@ -1,6 +1,4 @@
-# OSCAL Case Studies
-
-## Department of Veterans Affairs Case Study Information
+# Department of Veterans Affairs Scenario
 
 > The U.S. Department of Veterans Affairs agency provides a case study opportunity to highlight the benefits of using OSCAL to meet multiple regulatory frameworks. The work being performed by the OSCAL development community control catalogs and ability to build a custom security profile maps to the multiple regulatory frameworks agencies must meet. 
 
