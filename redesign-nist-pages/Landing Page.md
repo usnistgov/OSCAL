@@ -8,12 +8,4 @@ The graphic for the landing page requires discussion, design and acceptance.
 C2 Labs will facilitate the discussion and design of the hero graphic. Design samples are included for discussion purposes only.
 
 Landing Page Samples for discussion include:
-![Sample Landing Page 1 for OSCAL](imgs/OSCAL_LandingPage_Sample1.png)
-
-
-
-![Sample Landing Page 2 for OSCAL](imgs/OSCAL_LandingPage_Sample2.png)
-
-
-
-![Sample Landing Page 3 for OSCAL](imgs/OSCAL_LandingPage_Sample3.png)
+![Sample Landing Page 1 for OSCAL](imgs/OSCAL_LandingPage_Sample.png)
