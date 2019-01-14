@@ -33,5 +33,4 @@ Sample Logos:
 This section includes the Navigation recommendation for the site.
 
 - Get Involved
-- Community
 - Contact
