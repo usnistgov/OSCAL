@@ -31,24 +31,6 @@ The project is standardizing the terminology used among the various catalogs.
 
 #### Note: Hyperlink here to a "catalog of terms".
 
- #### How is OSCAL Used?
-
-The intended audience for OSCAL consists of producers and consumers.
-
-The producers include those producing catalogs, profiles and tools using the OSCAL format. Additional details for producers include:
-
- - Catalog maintainers publish catalogs into OSCAL format (e.g., NIST, ISO, ISACA).
-
-- Standard profile maintainers maintain profiles in OSCAL format used by many organizations consuming OSCAL catalogs (for example, NIST, FedRAMP).
-
-- Custom profile maintainers develop new profiles or customize existing profiles for organization-specific use (for example, cloud service providers, integrators).
-
-- Tool vendors create tools that use OSCAL to support risk assessment, continuous monitoring, compliance reporting, and other purposes.
-
-The consumers include those that implement, review and maintain the security posture of a system. A sample of consumers include: operations personnel, security and privacy personnel, auditors/assessors, policy personnel and system owners.
-
-##### Discussion Item/Note: Creation of a "Getting Started with OSCAL" using a Fact Sheet format. Usually a PDF document.
-
-##### Note:  Create a 2 page "datasheet" usually in PDF format that would summarize the information. Markdown/text on the page tends to be cumbersome for users to digest and navigate. PDF documentation requires maintenance and may not be a solution NIST wants to implement.
+##### Discussion Item/Note: Creation of a "Getting Started with OSCAL" using a datasheet format (usually limited to 2 pages). Can this be created by clicking a "Datasheet" button? Content in Markdown; pulled to a template; provide a PDF to the audience member?
 
 #### Note: Develop a glossary/catalog of terms for the project?
