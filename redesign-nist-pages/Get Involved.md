@@ -14,5 +14,5 @@ The producers include those producing catalogs, profiles and tools using the OSC
 
 The consumers include those that implement, review and maintain the security posture of a system. A sample of consumers include: operations personnel, security and privacy personnel, auditors/assessors, policy personnel and system owners.
 
-Select ![OSCAL Producer](Producer.md)
-Producer or ![OSCAL Consumer] (Consumer.md) Consumer to continue and learn more about the project.
+Select [Producer](Producer.md)
+Producer or [Consumer] (Consumer.md) Consumer to continue and learn more about the project.
