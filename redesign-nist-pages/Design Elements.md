@@ -22,8 +22,8 @@ C2 Labs recommends a project logo as a way to brand project materials.
 Discussion is needed to determine if a logo is needed for the project. Once decided C2 Labs can facilitate designing the logo. Quick design samples are included for discussion purposes only.
 
 ## Sample Logos:
-|![Sample Logo 1 for OSCAL](imgs/OSCAL_Logo2.png
-)|![Sample Logo 2 for OSCAL](imgs/OSCAL_Logo3.png
+|![Sample Logo 1 for OSCAL](imgs/OSCAL_Logo1.png
+)|![Sample Logo 2 for OSCAL](imgs/OSCAL_Logo2.png
       )
 
 ## Navigation
