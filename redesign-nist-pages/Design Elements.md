@@ -25,9 +25,7 @@ Sample Logos:
 
 |  ![Sample Logo 1 for OSCAL](imgs/OSCAL_Logo1.png
       )|![Sample Logo 2 for OSCAL](imgs/OSCAL_Logo2.png
-      )  |![Sample Logo 3 for OSCAL](imgs/OSCAL_Logo3.png
-      ) |![Sample Logo 4 for OSCAL](imgs/OSCAL_Logo4.png
-      ) |
+      )
 
 ## Navigation
 This section includes the Navigation recommendation for the site.
