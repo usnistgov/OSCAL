@@ -1,4 +1,4 @@
-# Get Involved Content
+# Get Involved
 
 The intended audience for OSCAL consists of producers and consumers.
 
