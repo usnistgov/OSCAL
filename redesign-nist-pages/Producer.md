@@ -1,11 +1,7 @@
-# Producer Content
+# Producers Overview and Roadmap
 
-The producers include those producing catalogs, profiles and tools using the OSCAL format. Additional details for producers include:
+The producers include those producing catalogs, profiles and tools using the OSCAL format.
 
- - Catalog maintainers publish catalogs into OSCAL format (e.g., NIST, ISO, ISACA).
+The roadmap is used to visually display the plan and progress of the project. The project has worked to define and develop the catalog and profile layer examples. The project is now working to define and develop the implementation layer.
 
-- Standard profile maintainers maintain profiles in OSCAL format used by many organizations consuming OSCAL catalogs (for example, NIST, FedRAMP).
-
-- Custom profile maintainers develop new profiles or customize existing profiles for organization-specific use (for example, cloud service providers, integrators).
-
-- Tool vendors create tools that use OSCAL to support risk assessment, continuous monitoring, compliance reporting, and other purposes.
+|![OSCAL Roadmap](imgs/oscal-components.png)
