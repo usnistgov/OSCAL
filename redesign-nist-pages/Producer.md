@@ -1,6 +1,8 @@
 # Producers Overview and Roadmap
 
-The producers include those producing catalogs, profiles and tools using the OSCAL format.
+We are excited that you want to learn more about the OSCAL project. The OSCAL community is a collaborative environment of professionals that contribute to the project goals and objectives. The community is setting out to develop a “standard of standards” that normalizes the representation of system security controls and corresponding information. The focus is to improve security assessment efficiency, accuracy and consistency. The community agrees that the language must be well defined and easy to use for both human and machine-readable formats. The producers audience include those producing catalogs, profiles and tools using the OSCAL format.
+
+Once the standards are defined, tools that use the OSCAL information will be developed in partnership with commercial vendors. The tools that use OSCAL information must be inter-operable and use the information consistently. Partnerships are important to the success of the project. Through project partnerships, an emphasis is to demonstrate the value for developers to adopt OSCAL so tools are available for organizations to build, customize, and use the information .
 
 The roadmap is used to visually display the plan and progress of the project. The project has worked to define and develop the catalog and profile layer examples. The project is now working to define and develop the implementation layer.
 
