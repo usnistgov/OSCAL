@@ -1,7 +1,9 @@
 # Contact
 
-(Email_Symbol.png) oscal@nist.gov
+Email: oscal@nist.gov
 
-(Web_Symbol.png)pages.nist.gov/OSCAL
+Web: http://pages.nist.gov/OSCAL
 
-(GitHub_Symbol.png)github.com/usnistgov/OSCAL
+GitHub: https://github.com/usnistgov/OSCAL
+
+Note: Include a form for "Get Involved"?
