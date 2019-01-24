@@ -1,4 +1,4 @@
-# Overview Content
+# Learn More
 ## What is OSCAL?
 
 NIST is leading a project to develop a standard assessment that may be applied to a system to increase its security posture. The project is the Open Security Controls Assessment Language (OSCAL). The OSCAL project is focused on challenges centered around security controls and security controls assessment. Security controls and profiles are represented in proprietary ways and are expressed in prose format rather than being machine readable. The current environment leads to imprecise implementation, differences in interpretation and requires manual effort to implement the controls. A fundamental element of the project is to move the security control and profile from a text-based approach to a standardized automated format. This moves the implementation of security to a machine-based approach rather than a manual-based approach.
