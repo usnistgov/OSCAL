@@ -131,8 +131,8 @@
         </sch:rule>
         <sch:rule context="m:flag">
             <sch:assert test="@name = /*/m:define-flag/@name">Flag invocation does not point to a flag definition.</sch:assert>
-            <sch:report test="@name = /*/m:define-field/@name">'<sch:value-of select="@named"/>' is a field, not a flag.</sch:report>
-            <sch:report test="@name = /*/m:define-assembly/@name">'<sch:value-of select="@named"/>' is an assembly, not a flag.</sch:report>
+            <sch:report test="@name = /*/m:define-field/@name">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:report>
+            <sch:report test="@name = /*/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
         </sch:rule>
     </sch:pattern>
     
