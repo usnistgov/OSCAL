@@ -111,13 +111,28 @@
             <!--<sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>-->
         </sch:rule>
         <sch:rule context="m:define-assembly">
-            <sch:assert role="warning" test="@name = (//m:assembly/@named | //m:assemblies/@named)">Definition for assembly <sch:value-of select="@name"/> is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = (//m:assembly/@named | //m:assemblies/@named | /m:METASCHEMA/@root)">Definition for assembly '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:define-field">
-            <sch:assert role="warning" test="@name = (//m:field/@named | //m:fields/@named)">Definition for assembly <sch:value-of select="@name"/> is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = (//m:field/@named | //m:fields/@named)">Definition for field '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:define-flag">
-            <sch:assert role="warning" test="@name = //m:flag/@name">Definition for assembly <sch:value-of select="@name"/> is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = //m:flag/@name">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
+        </sch:rule>
+        <sch:rule context="m:assembly | m:assemblies">
+            <sch:assert test="@named = /*/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.</sch:assert>
+            <sch:report test="@named = /*/m:define-field/@name">'<sch:value-of select="@named"/>' is a field, not an assembly.</sch:report>
+            <sch:report test="@named = /*/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
+        </sch:rule>
+        <sch:rule context="m:field | m:fields">
+            <sch:assert test="@named = /*/m:define-field/@name">Field invocation does not point to a field definition.</sch:assert>
+            <sch:report test="@named = /*/m:define-assembly/@name">'<sch:value-of select="@named"/>' is an assembly, not a field.</sch:report>
+            <sch:report test="@named = /*/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
+        </sch:rule>
+        <sch:rule context="m:flag">
+            <sch:assert test="@name = /*/m:define-flag/@name">Flag invocation does not point to a flag definition.</sch:assert>
+            <sch:report test="@name = /*/m:define-field/@name">'<sch:value-of select="@named"/>' is a field, not a flag.</sch:report>
+            <sch:report test="@name = /*/m:define-assembly/@name">'<sch:value-of select="@named"/>' is an assembly, not a flag.</sch:report>
         </sch:rule>
     </sch:pattern>
     
