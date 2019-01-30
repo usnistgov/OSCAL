@@ -9,28 +9,26 @@ Providing a complete assessment is complex and due to that complexity, assessmen
 
 Streamlining and standardizing security assessment decreases assessment-related labor, provides the ability to assess system security continuously, provides the capability to assess system compliance against multiple sets of requirements simultaneously.
 
-### Overview Hyperlinks
-
-#### Why OSCAL?
+## Why OSCAL?
 
 We are excited that you want to learn more about OSCAL. The OSCAL community is a collaborative environment of professionals that contribute to the project goals and objectives. The community is setting out to develop a “standard of standards” that normalizes the representation of system security controls and corresponding information. The focus is to improve security assessment efficiency, accuracy and consistency. The community agrees that the language must be well defined and easy to use for both human and machine-readable formats.
 
 Once the standards are defined, tools that use the OSCAL information will be developed in partnership with commercial vendors. The tools that use OSCAL information must be inter-operable and use the information consistently. Partnerships are important to the success of the project. Through project partnerships, an emphasis is to demonstrate the value for developers to adopt OSCAL so tools are available for organizations to build, customize, and use the information <framework>.
 
-#### OSCAL Concepts
+## OSCAL Concepts
+
+https://pages.nist.gov/OSCAL/concepts/
 
 The terms associated with the project are important to understand. Three terms encompass the foundation for the project. Those terms are: Catalog, Profile and Control.
 
-The catalog layer is a set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53, the 100+ controls in ISO 27002, and the practices in COBIT 5. Examples are available for the catalog layer within the GitHub repository.
+The catalog layer is a set of security control definitions. Examples include the hundreds of controls in NIST SP 800-53, the 100+ controls in ISO 27002, and the practices in COBIT 5.
 
 The profile layer is a set of security requirements; also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.
 
 Control is another term associated with the foundation of the project. The control is a safeguard or countermeasure designed to satisfy a set of defined security requirements. [based on NIST SP 800-53 definition]. Models for representing a security control catalog in a common OSCAL format are developed. The control catalog is a collection of controls.
 
-The project is standardizing the terminology used among the various catalogs.
-
-#### Note: Hyperlink here to a "catalog of terms".
-
-##### Discussion Item/Note: Creation of a "Getting Started with OSCAL" using a datasheet format (usually limited to 2 pages). Can this be created by clicking a "Datasheet" button? Content in Markdown; pulled to a template; provide a PDF to the audience member?
+The project is standardizing the terminology used between the various catalogs.
 
 #### Note: Develop a glossary/catalog of terms for the project?
+
+#### Discussion Item/Note: Provide a PDF data sheet to the audience member?
