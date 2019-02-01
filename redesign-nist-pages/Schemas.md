@@ -1,6 +1,6 @@
 # About the Sample Schemas
 
-#Design Principles for Sample Schemas
+# Design Principles for Sample Schemas
 The sample database schemas have been created with the following design principles
 in mind:
 - Simplicity and ease of use.
