@@ -24,7 +24,7 @@ Benefits provided by the sample schemas include the following:
 # Schema Descriptions
 
 # Available Schemas:
-- Catalog XML Schema Script (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-xml-schema)
-- Catalog JSON Schema Script (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-json-schema)
-- Profile XML Schema Script (hyperlink to: https://pages.nist.gov/OSCAL/schema/#profile-xml-schema)
-- Profile JSON Schema Script (hyperlink to: https://pages.nist.gov/OSCAL/schema/#profile-json-schema)
+- Catalog XML Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-xml-schema)
+- Catalog JSON Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-json-schema)
+- Profile XML Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#profile-xml-schema)
+- Profile JSON Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#profile-json-schema)
