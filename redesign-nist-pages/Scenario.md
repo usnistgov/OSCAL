@@ -7,3 +7,7 @@ As a federal agency, the sample federal agency in this scenario must comply with
 The scenario for the sample federal agency highlights the complexity and necessity for agencies to meet multiple regulatory frameworks.
 
 The OSCAL development community took this scenario into consideration when building the foundations of the project. The foundation elements of the control, catalog and profile are set up to permit selection from multiple catalogs of multiple controls and creation of a single profile that an agency may use to maintain compliance. The project will continue to work to make the products applicable to agencies that are required to meet multiple regulatory frameworks.
+
+# OSCAL Automates the Risk Management Framework Process
+
+> This sample scenario highlights OSCAL automating the risk management framework.
