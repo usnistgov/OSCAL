@@ -1,4 +1,4 @@
-# Government Agency Scenario
+# OSCAL Enables Government Agencies to Meet Multiple Regulatory Frameworks
 
 > This sample scenario highlights the benefits for a government agency to use OSCAL to meet multiple regulatory frameworks. The work being performed by the OSCAL development community control catalogs and ability to build a custom security profile maps to the multiple regulatory frameworks agencies must meet. 
 
