@@ -4,10 +4,10 @@
     "$comment" : "FAKEUP Testing Schema: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "base" : 
+    { "kit" : 
       { "title" : "Base",
         "description" : "Wrapper for other stuff",
-        "$id" : "#/definitions/base",
+        "$id" : "#/definitions/kit",
         "type" : "object",
         "properties" : 
         { "id" : 
@@ -37,9 +37,9 @@
           "single-required-field" : 
           { "type" : "string",
             "$ref" : "#/definitions/single-required-field" },
-          "single-field" : 
+          "acquired-model" : 
           { "type" : "string",
-            "$ref" : "#/definitions/single-field" },
+            "$ref" : "#/definitions/acquired-model" },
           "single-mixed-field" : 
           { "type" : "string",
             "$ref" : "#/definitions/single-mixed-field" },
@@ -58,35 +58,35 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/chunk-among-chunks" } },
-          "tweedledee" : 
+          "vanilla" : 
           { "type" : "object",
-            "$ref" : "#/definitions/tweedledee" },
-          "tweedledum" : 
+            "$ref" : "#/definitions/vanilla" },
+          "chocolate" : 
           { "type" : "object",
-            "$ref" : "#/definitions/tweedledum" } },
+            "$ref" : "#/definitions/chocolate" } },
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
           [ "id",
             "some_string",
             "single-required-field",
-            "single-field",
+            "acquired-model",
             "single-mixed-field",
             "plurals",
             "plurals-mixed",
             "single-chunk",
             "chunks-together",
-            "tweedledee",
-            "tweedledum" ] } },
+            "vanilla",
+            "chocolate" ] } },
       "single-required-field" : 
       { "title" : "Single string (required)",
         "description" : "As it says",
         "$id" : "#/definitions/single-required-field",
         "type" : "string" },
-      "single-field" : 
-      { "title" : "Single string",
-        "description" : "As it says",
-        "$id" : "#/definitions/single-field",
+      "acquired-model" : 
+      { "title" : "Acquired Model",
+        "description" : "A string field, with mixed content",
+        "$id" : "#/definitions/acquired-model",
         "type" : "string" },
       "single-mixed-field" : 
       { "title" : "Single string but with mixed content",
@@ -111,11 +111,14 @@
         "properties" : 
         { "single-required-field" : 
           { "type" : "string",
-            "$ref" : "#/definitions/single-required-field" } },
+            "$ref" : "#/definitions/single-required-field" },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" } },
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "single-required-field" ] } },
+          [ "single-required-field",
+            "prose" ] } },
       "chunk-among-chunks" : 
       { "title" : "Chunk among chunks",
         "description" : "As it says",
@@ -124,15 +127,18 @@
         "properties" : 
         { "single-required-field" : 
           { "type" : "string",
-            "$ref" : "#/definitions/single-required-field" } },
+            "$ref" : "#/definitions/single-required-field" },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" } },
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "single-required-field" ] } },
-      "tweedledee" : 
+          [ "single-required-field",
+            "prose" ] } },
+      "vanilla" : 
       { "title" : "One Choice",
         "description" : "As it says",
-        "$id" : "#/definitions/tweedledee",
+        "$id" : "#/definitions/vanilla",
         "type" : "object",
         "properties" : 
         { "single-required-field" : 
@@ -142,10 +148,10 @@
         "propertyNames" : 
         { "enum" : 
           [ "single-required-field" ] } },
-      "tweedledum" : 
+      "chocolate" : 
       { "title" : "Another Choice",
         "description" : "As it says",
-        "$id" : "#/definitions/tweedledum",
+        "$id" : "#/definitions/chocolate",
         "type" : "object",
         "properties" : 
         { "single-required-field" : 
@@ -160,5 +166,5 @@
         "items" : 
         { "type" : "string" } } },
     "properties" : 
-    { "base" : 
-      { "$ref" : "#/definitions/base" } } }
+    { "" : 
+      { "$ref" : "#/definitions/" } } }

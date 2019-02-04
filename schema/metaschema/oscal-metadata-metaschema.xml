@@ -7,10 +7,11 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
- top="publication-metadata" use="metadata">
+ root="metadata">
 
   <schema-name>OSCAL Document Metadata Description</schema-name>
   <short-name>oscal-metadata</short-name>
+  <namespace>http://csrc.nist.gov/ns/oscal/metadata/1.0/</namespace>
   
   <define-assembly name="metadata">
     <formal-name>Publication metadata</formal-name>
@@ -22,7 +23,7 @@
       <field      named="version"/>
       <fields     named="doc-id"   group-as="document-identifiers"/>
       <fields     named="prop"     group-as="properties"/>
-      <fields     named="link"     group-as="links"/>
+      <fields     named="hlink"    group-as="hashed-links"/>
       <assemblies named="resource" group-as="resources"/>
       <assemblies named="role"     group-as="roles"/>
       <assemblies named="party"    group-as="parties"/>
@@ -162,17 +163,14 @@
     <description>An identifier for an organization using a designated scheme.</description>
   </define-field>
   
-  <define-assembly name="link" group-as="links" show-docs="xml json">
+  <define-assembly name="hlink" group-as="hashed-links" show-docs="xml json">
     <flag name="href" datatype="anyURI" required="yes"/>
     <flag name="rel"  datatype="NCName"/>
     <flag name="media-type"/>
-    <formal-name>Link</formal-name>
-    <description>
-      A line or paragraph with a hypertext link
-    </description>
+    <formal-name>Hashed link</formal-name>
+    <description>A pointer to an external document with optional hash for verification</description>
     <remarks>
-      <p>Clashes with the present catalog model for <code>link</code>, which is a field not an assembly, and
-      has no <code>title</code>.</p>
+      <p>This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p>
     </remarks>
     <model>
       <field  named="title"/>
@@ -305,8 +303,8 @@
       <field    named="publication-date"/>
       <field    named="version"/>
       <fields   named="doc-id" group-as="document-identifiers"/>
-      <fields   named="prop"     group-as="properties"/>
-      <fields   named="link" group-as="links"/>
+      <fields   named="prop"   group-as="properties"/>
+      <fields   named="hlink"  group-as="hashed-links"/>
       <assembly named="notes"/>
     </model>
   </define-assembly>

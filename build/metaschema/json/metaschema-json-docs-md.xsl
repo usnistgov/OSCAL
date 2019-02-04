@@ -5,7 +5,12 @@
     exclude-result-prefixes="xs math"
     version="3.0">
     
+    <!-- Purpose: Produce metaschema docs in markdown -->
+    <!-- Input:   Metaschema -->
+    <!-- Output:  Markdown  -->
+    
     <xsl:import href="metaschema-json-html.xsl"/>
+    
     <xsl:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>
 <!-- To get JSON serialized as JSON, run the appropriate customization layer e.g. catalog-metaschema-json-docs-md.xsl   -->
 <!-- output method must be text for good markdown including unescaped code snips   -->

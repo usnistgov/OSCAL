@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:oscal-test="urn:fakeup"
+           xmlns:oscal-prose="urn:fakeup"
+           elementFormDefault="qualified"
+           targetNamespace="urn:fakeup"><!--FAKEUP Testing Schema--><!--short name: oscal-test--><!--A test schema for prototyping and demonstrating the metaschema feature set.-->
+   <xs:element name="kit">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Base: </b>Wrapper for other stuff</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-test:thing"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>An ID: </b>As it says</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="some_string" type="xs:string" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>A string flag: </b>As it says</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="thing">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Base: </b>Wrapper for other stuff</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
+            <xs:element minOccurs="0" ref="oscal-test:acquired-model"/>
+            <xs:element minOccurs="1" ref="oscal-test:single-mixed-field"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-test:plural-field"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-test:plural-mixed-field"/>
+            <xs:element minOccurs="0" ref="oscal-test:single-chunk"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-test:chunk-among-chunks"/>
+            <xs:choice>
+               <xs:element minOccurs="0" ref="oscal-test:vanilla"/>
+               <xs:element minOccurs="0" ref="oscal-test:chocolate"/>
+            </xs:choice>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>An ID: </b>As it says</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="some_string" type="xs:string" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>A string flag: </b>As it says</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="single-required-field">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Single string (required): </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="acquired-model">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Acquired Model: </b>A string field, with mixed content</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-test:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="single-mixed-field">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Single string but with mixed content: </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-test:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="plural-field">
+      <xs:annotation>
+         <xs:documentation>
+            <b>A single occurrence of a plural (ha): </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="plural-mixed-field">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Only one plural, but possibly mixed.: </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="single-chunk">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Chunk: </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
+            <xs:group ref="oscal-test:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="chunk-among-chunks">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Chunk among chunks: </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
+            <xs:group ref="oscal-test:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="vanilla">
+      <xs:annotation>
+         <xs:documentation>
+            <b>One Choice: </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="chocolate">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Another Choice: </b>As it says</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal-test:single-required-field"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="prose">
+      <xs:choice>
+         <xs:element ref="oscal-test:p"/>
+         <xs:element ref="oscal-test:ul"/>
+         <xs:element ref="oscal-test:ol"/>
+         <xs:element ref="oscal-test:pre"/>
+      </xs:choice>
+   </xs:group>
+   <xs:complexType name="prose">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:element ref="oscal-prose:p"/>
+         <xs:element ref="oscal-prose:ul"/>
+         <xs:element ref="oscal-prose:ol"/>
+         <xs:element ref="oscal-prose:pre"/>
+      </xs:choice>
+   </xs:complexType>
+   <xs:element name="p">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="pre">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ol">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="oscal-prose:li"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="li">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:everything-inline"/>
+            <xs:element ref="oscal-prose:ol"/>
+            <xs:element ref="oscal-prose:ul"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ul">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="oscal-prose:li"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="everything-inline">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:group ref="oscal-prose:special"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:group name="mix">
+      <xs:sequence>
+         <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal-prose:inlines"/>
+      </xs:sequence>
+   </xs:group>
+   <xs:group name="inlines">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:q"/>
+            <xs:element ref="oscal-prose:code"/>
+            <xs:element ref="oscal-prose:em"/>
+            <xs:element ref="oscal-prose:i"/>
+            <xs:element ref="oscal-prose:strong"/>
+            <xs:element ref="oscal-prose:b"/>
+            <xs:element ref="oscal-prose:sub"/>
+            <xs:element ref="oscal-prose:sup"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:element name="q">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:code"/>
+            <xs:element ref="oscal-prose:em"/>
+            <xs:element ref="oscal-prose:i"/>
+            <xs:element ref="oscal-prose:b"/>
+            <xs:element ref="oscal-prose:strong"/>
+            <xs:element ref="oscal-prose:sub"/>
+            <xs:element ref="oscal-prose:sup"/>
+         </xs:choice>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="code">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:mix"/>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="strong">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="em">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="i">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="b">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="sub">
+      <xs:complexType mixed="true">
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="sup">
+      <xs:complexType mixed="true">
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="a">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:q"/>
+            <xs:element ref="oscal-prose:code"/>
+            <xs:element name="em">
+               <xs:complexType mixed="true">
+                  <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:choice>
+         <xs:attribute name="href"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="special">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:insert"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:element name="insert">
+      <xs:complexType>
+         <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:attributeGroup name="requiredClass">
+      <xs:attribute name="class" use="required"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="optionalClass">
+      <xs:attribute name="class"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="hrefAttr">
+      <xs:attribute name="href"/>
+   </xs:attributeGroup>
+</xs:schema>

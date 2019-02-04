@@ -40,17 +40,20 @@ fi
 LIBDIR=$OSCALDIR/build/metaschema
 XSDDIR=$OSCALDIR/schema/xml
 JSONDIR=$OSCALDIR/schema/json
-CONVERSION_DIR=$OSCALDIR/util/convert
+UTIL_DIR=$OSCALDIR/util
 DOCSDIR=$OSCALDIR/docs/source/includes/schema
 
 MAKE_XSD="java -jar $SAXON -s:$METASCHEMAXML -o:$XSDDIR/$BASENAME-schema.xsd -xsl:$LIBDIR/xml/produce-xsd.xsl"
 MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -xsl:$LIBDIR/json/produce-json-schema.xsl"
 
-DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/xml/_${BASE}.md -xsl:$LIBDIR/xml/metaschema-xml-docs-md.xsl"
-DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/json/_${BASE}.md -xsl:$LIBDIR/json/$BASENAME-json-docs-md.xsl"
+CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$UTIL_DIR/convert/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
+CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$UTIL_DIR/convert/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"
 
-CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
-CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"
+XMLDOCS_XSLT="java -jar $SAXON -s:$METASCHEMAXML -o:$LIBDIR/xml/$BASENAME/$BASENAME-xml-docs-md.xsl -xsl:$LIBDIR/xml/produce-metaschema-xml-documentor.xsl"
+JSONDOCS_XSLT="java -jar $SAXON -s:$METASCHEMAXML -o:$LIBDIR/json/$BASENAME/$BASENAME-json-docs-md.xsl -xsl:$LIBDIR/xml/produce-metaschema-json-documentor.xsl"
+
+DOC_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/xml/_${BASE}.md -xsl:$LIBDIR/xml/$BASENAME/$BASENAME-xml-docs-md.xsl"
+DOC_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$DOCSDIR/json/_${BASE}.md -xsl:$LIBDIR/json/$BASENAME/$BASENAME-json-docs-md.xsl"
 
 # Now ...
 echo
@@ -65,7 +68,10 @@ $CONV_XML
 echo _ Made XML-to-JSON converter ______ $CONVERSION_DIR/$BASENAME-xml-converter.xsl
 $CONV_JSON
 echo _ Made JSON-to-XML converter ______ $CONVERSION_DIR/$BASENAME-json-converter.xsl
+
+$XMLDOCS_XSLT
 $DOC_XML
+$JSONDOCS_XSLT
 $DOC_JSON
 echo _ Made XML and JSON documentation _ $DOCSDIR/xml/_${BASE}.md $DOCSDIR/json/_${BASE}.md
 echo
