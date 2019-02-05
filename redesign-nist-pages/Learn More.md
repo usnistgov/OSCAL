@@ -1,23 +1,23 @@
 # Learn More
 ## Automate
 <Add Graphic to symbolize "Automate">
-Reduce admin cost and increase efficiencies with Security and Compliance automation.
+> Reduce admin cost and increase efficiencies with Security and Compliance automation.
 
 ## Monitor
 <Add Graphic to symbolize "Monitor">
-Enhance detection of security exposures in virtualized environments with Real-time compliance monitoring.
+> Enhance detection of security exposures in virtualized environments with Real-time compliance monitoring.
 
 ## Report
 <Add Graphic to symbolize "Report">
-Reduce time and skills required for preparation of security audits with compliance reports.
+> Reduce time and skills required for preparation of security audits with compliance reports.
 
 ## Profile
 <Add Graphic to symbolize "Profile">
-Reduce time and cost of deploying industry standard security with preconfigured security profiles.
+> Reduce time and cost of deploying industry standard security with preconfigured security profiles.
 
 ## Visualize
 <Add Graphic to symbolize "Visualize">
-Quickly view security status and compliance.
+> Quickly view security status and compliance.
 
 
 ## What is OSCAL?
