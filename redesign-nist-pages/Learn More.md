@@ -5,7 +5,7 @@
 
 ## Monitor
 <Add Graphic to symbolize "Monitor">
-> Enhance detection of security exposures in virtualized environments with Real-time compliance monitoring.
+> Enhance detection of security exposures with Real-time compliance monitoring.
 
 ## Report
 <Add Graphic to symbolize "Report">
