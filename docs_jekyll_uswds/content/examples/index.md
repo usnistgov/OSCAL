@@ -7,5 +7,3 @@ layout: post
 sidenav: examples
 subnav: true
 ---
-
-Overview of examples page

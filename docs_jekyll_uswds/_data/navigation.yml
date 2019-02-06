@@ -28,6 +28,8 @@ primary:
     links:
       - text: Overview
         href: /resources/
+      - text: Roadmap
+        href: /resources/roadmap/
       - text: Documentation
         href: /docs/
       - text: Case Studies
@@ -36,16 +38,20 @@ primary:
         href: /examples/
       - text: Scenarios
         href: /resources/scenarios/
+      - text: GitHub Repo
+        href: https://github.com/usnistgov/OSCAL
   - text: Documentation
     links:
       - text: Concepts
         href: /docs/
+      - text: Schemas
+        href: /docs/schemas/
       - text: Schema Reference
-        href: /docs/schema/
+        href: /docs/schemaref/
   - text: Walkthrough
     href: /walkthrough/
-  - text: Roadmap
-    href: /roadmap/
+  - text: Community
+    href: /community/
   # - text: Navigation section
   #   links:
   #     - text: Demo link A
@@ -72,7 +78,13 @@ secondary:
   - text: Contact
     href: /contact/
 
-docs:
+schemaref:
+  - text: Catalog
+    href: "#"
+  - text: Profile
+    href: "#"
+
+schema:
   # - text: Overview
   #   href: /docs/
   # - text: Concepts
@@ -84,19 +96,25 @@ docs:
   #   #     href: /two/b/
   #   #   - text: Demo link C
   #   #     href: /two/c/
-  - text: Schema Reference
-    href: /docs/schema/
+  - text: Catalog
+    href: "#"
+  - text: Profile
+    href: "#"
 #   # - text: Sidenav External link
 #   #   href: https://18f.gsa.gov
 #   external: true
 
 examples:
-  - text: Catalogs
-    href: "/examples/catalogs/"
-  - text: Profiles
-    href: "/examples/profiles/"
-  - text: Implementations
-    href: "/examples/implementations/"
+  - text: Examples
+    href: /examples/
+  - text: For Assessors
+    href: /examples/assessors/
+  - text: For Security Professionals
+    href: /examples/securitypros/
+  - text: For Tool Vendors
+    href: /examples/toolvendors/
+  - text: For OSCAL Content Authors
+    href: /examples/authors/
 
 footer:
   - text: Documentation

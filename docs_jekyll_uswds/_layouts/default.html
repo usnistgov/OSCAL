@@ -2,54 +2,57 @@
 ---
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
-  <head>
-    {% include meta.html %}
-    {% include styles.html %}
-    {% if site.google_analytics_ua or site.dap_agency %}
-      {% include analytics.html %}
-    {% endif %}
-    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
-    <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
-    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
-  </head>
-  <body class="{{ layout.class }} {{ page.class }} {% if site.site_width %}site-{{ site.site_width }}{% endif %}">
 
-    {% include skipnav.html %}
-    {% include header.html %}
+<head>
+  {% include meta.html %}
+  {% include styles.html %}
+  {% if site.google_analytics_ua or site.dap_agency %}
+  {% include analytics.html %}
+  {% endif %}
+  <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
+  <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+</head>
 
-    {% assign hero = page.hero %}
-    {% include components/hero.html %}
+<body class="{{ layout.class }} {{ page.class }} {% if site.site_width %}site-{{ site.site_width }}{% endif %}">
 
-    {% if page.tagline and page.intro %}
-    <section class="usa-grid usa-section">
-      <div class="usa-width-one-third">
-        <h2>{{ page.tagline }}</h2>
-      </div>
-      <div class="usa-width-two-thirds">
-        {{ page.intro | markdownify }}
-      </div>
-    </section>
-    {% endif %}
+  {% include skipnav.html %}
+  {% include header.html %}
 
-    {% capture _graphics %}
-      {% include graphic-list.html graphics=page.graphics %}
-    {% endcapture %}
+  {% assign hero = page.hero %}
+  {% include components/hero.html %}
 
-    {% if page.graphics_position != 'after' %}
-      {{ _graphics }}
-    {% endif %}
+  {% if page.tagline and page.intro %}
+  <section class="usa-grid usa-section">
+    <div class="usa-width-one-third">
+      <h2>{{ page.tagline }}</h2>
+    </div>
+    <div class="usa-width-two-thirds">
+      {{ page.intro | markdownify }}
+    </div>
+  </section>
+  {% endif %}
 
-    <main id="main-content"{% for _attr in layout.main %} {{ _attr[0] }}="{{ _attr[1] }}"{% endfor %}>
-          {{ content }}
-    </main>
+  {% capture _graphics %}
+  {% include graphic-list.html graphics=page.graphics %}
+  {% endcapture %}
 
-    {% if page.graphics_position == 'after' %}
-      {{ _graphics }}
-    {% endif %}
+  {% if page.graphics_position != 'after' %}
+  {{ _graphics }}
+  {% endif %}
 
-    <!-- {% include footer.html %} -->
+  <main id="main-content" {% for _attr in layout.main %} {{ _attr[0] }}="{{ _attr[1] }}" {% endfor %}>
+    {{ content }}
+  </main>
 
-    {% include scripts.html %}
+  {% if page.graphics_position == 'after' %}
+  {{ _graphics }}
+  {% endif %}
 
-  </body>
+  {% include footer.html %}
+
+  {% include scripts.html %}
+
+</body>
+
 </html>

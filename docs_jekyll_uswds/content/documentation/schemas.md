@@ -1,3 +1,13 @@
+---
+title: Schemas
+description: Schemas
+permalink: /docs/schemas/
+
+layout: post
+sidenav: schemas
+subnav: true
+---
+
 # About the Sample Schemas
 
 # Design Principles for Sample Schemas
