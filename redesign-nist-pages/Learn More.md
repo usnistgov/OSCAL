@@ -9,14 +9,12 @@ Providing a complete assessment is complex and due to that complexity, assessmen
 
 Streamlining and standardizing security assessment decreases assessment-related labor, provides the ability to assess system security continuously, provides the capability to assess system compliance against multiple sets of requirements simultaneously.
 
-|Automate
-<Add Graphic to symbolize "Automate">
-> Reduce admin cost and increase efficiencies with Security and Compliance automation.|Monitor
-<Add Graphic to symbolize "Monitor">
-> Enhance detection of security exposures with Real-time compliance monitoring.|
+|Automate (Add Graphic to symbolize "Automate")
+Reduce admin cost and increase efficiencies with Security and Compliance automation.|Monitor
+Add Graphic to symbolize "Monitor"
+Enhance detection of security exposures with Real-time compliance monitoring.|
 |--|--|
-|Report
-<Add Graphic to symbolize "Report">
+|Report Add Graphic to symbolize "Report"
 > Reduce time and skills required for preparation of security audits with compliance reports.| Visualize
 <Add Graphic to symbolize "Visualize">
 > Quickly view security status and compliance.|
