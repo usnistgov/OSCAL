@@ -1,4 +1,10 @@
-# Get Involved
+---
+title: Get Involved
+description: Get Involved
+permalink: /getinvolved/
+
+layout: post
+---
 
 We are excited that you want to learn more about the OSCAL project! The OSCAL community is a collaborative environment of professionals that contribute to the project goals and objectives. The community is setting out to develop a “standard of standards” that normalizes the representation of system security controls and corresponding information. The focus is to improve security assessment efficiency, accuracy and consistency. The community agrees that the language must be well defined and easy to use for both human and machine-readable formats. The consumers audience includes those that implement, review and maintain the security posture of a system.
 

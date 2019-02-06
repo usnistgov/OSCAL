@@ -12,10 +12,36 @@
 #   links: primary
 #
 primary:
+  - text: Learn More
+    links:
+      - text: Overview
+        href: /learnmore/
+      - text: For Assessors
+        href: /learnmore/assessors
+      - text: For Security Professionals
+        href: /learnmore/securitypros
+      - text: For Tool Vendors
+        href: /learnmore/toolvendors
+      - text: For OSCAL Content Authors
+        href: /learnmore/authors
+  - text: Resources
+    links:
+      - text: Overview
+        href: /resources/
+      - text: Documentation
+        href: /docs/
+      - text: Case Studies
+        href: /resources/casestudies/
+      - text: Examples
+        href: /examples/
+      - text: Scenarios
+        href: /resources/scenarios/
   - text: Documentation
-    href: /docs/
-  - text: Examples
-    href: /examples/
+    links:
+      - text: Concepts
+        href: /docs/
+      - text: Schema Reference
+        href: /docs/schema/
   - text: Walkthrough
     href: /walkthrough/
   - text: Roadmap
@@ -41,36 +67,36 @@ primary:
   #   external: true
 
 secondary:
-  - text: Project Overview
-    href: https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language
-  - text: GitHub
-    href: https://github.com/usnistgov/OSCAL
+  - text: Get Involved
+    href: /getinvolved/
+  - text: Contact
+    href: /contact/
 
 docs:
-  - text: Overview
-    href: /docs/
-  - text: Concepts
-    href: /docs/concepts/
-    # links:
-    #   - text: Demo link A
-    #     href: /two/a/
-    #   - text: Demo link B
-    #     href: /two/b/
-    #   - text: Demo link C
-    #     href: /two/c/
+  # - text: Overview
+  #   href: /docs/
+  # - text: Concepts
+  #   href: /docs/concepts/
+  #   # links:
+  #   #   - text: Demo link A
+  #   #     href: /two/a/
+  #   #   - text: Demo link B
+  #   #     href: /two/b/
+  #   #   - text: Demo link C
+  #   #     href: /two/c/
   - text: Schema Reference
     href: /docs/schema/
-  # - text: Sidenav External link
-  #   href: https://18f.gsa.gov
-  #   external: true
+#   # - text: Sidenav External link
+#   #   href: https://18f.gsa.gov
+#   external: true
 
 examples:
   - text: Catalogs
-    href: '/examples/catalogs/'
+    href: "/examples/catalogs/"
   - text: Profiles
-    href: '/examples/profiles/'
+    href: "/examples/profiles/"
   - text: Implementations
-    href: '/examples/implementations/'
+    href: "/examples/implementations/"
 
 footer:
   - text: Documentation
@@ -82,38 +108,38 @@ footer:
   #   external: true
 # Uncomment the items below and comment the items above in the `footer` list
 # to use footer link columns in the 'big' footer style.
-  # - text: Documentation
-  #   links:
-  #     - text: Overview
-  #       href: /docs/
-  #     - text: Secondary documentation page
-  #       href: /docs/two/
-  #     - text: Tertiary docs
-  #       href: /docs/three/
-  # - text: Navigation section
-  #   links:
-  #     - text: Demo link A
-  #       href: /two/a/
-  #     - text: Demo link B
-  #       href: /two/b/
-  #     - text: Demo link C
-  #       href: /two/c/
-  # - text: Referenced section
-  #   links:
-  #     - text: Demo link A
-  #       href: /three/a/
-  #     - text: Demo link B
-  #       href: /three/b/
-  #     - text: Demo link C
-  #       href: /three/c/
-  # - text: External links
-  #   links:
-  #     - text: 18F
-  #       href: https://18f.gsa.gov
-  #       external: true
-  #     - text: Technology Transformation Service
-  #       href: https://join.tts.gsa.gov/
-  #       external: true
-  #     - text: code.gov
-  #       href: https://code.gov/
-  #       external: true
+# - text: Documentation
+#   links:
+#     - text: Overview
+#       href: /docs/
+#     - text: Secondary documentation page
+#       href: /docs/two/
+#     - text: Tertiary docs
+#       href: /docs/three/
+# - text: Navigation section
+#   links:
+#     - text: Demo link A
+#       href: /two/a/
+#     - text: Demo link B
+#       href: /two/b/
+#     - text: Demo link C
+#       href: /two/c/
+# - text: Referenced section
+#   links:
+#     - text: Demo link A
+#       href: /three/a/
+#     - text: Demo link B
+#       href: /three/b/
+#     - text: Demo link C
+#       href: /three/c/
+# - text: External links
+#   links:
+#     - text: 18F
+#       href: https://18f.gsa.gov
+#       external: true
+#     - text: Technology Transformation Service
+#       href: https://join.tts.gsa.gov/
+#       external: true
+#     - text: code.gov
+#       href: https://code.gov/
+#       external: true

@@ -48,11 +48,11 @@ subnav: true
   <li>
     <button class="usa-accordion-button" aria-expanded="true" aria-controls="{{ schema_element.title }}_a1">XML</button>
     <div id="{{ schema_element.title }}_a1" class="usa-accordion-content">
-{% capture snippet %}
-```xml
-{{ schema_element.snippets.xml }}
-```
-{% endcapture %}
+      {% capture snippet %}
+      ```xml
+      {{ schema_element.snippets.xml }}
+      ```
+      {% endcapture %}
       {{ snippet | markdownify }}
     </div>
   </li>
@@ -61,11 +61,11 @@ subnav: true
   <li>
     <button class="usa-accordion-button" aria-expanded="true" aria-controls="{{ schema_element.title }}_a2">JSON</button>
     <div id="{{ schema_element.title }}_a2" class="usa-accordion-content">
-{% capture snippet %}
-```json
-{{ schema_element.snippets.json }}
-```
-{% endcapture %}
+      {% capture snippet %}
+      ```json
+      {{ schema_element.snippets.json }}
+      ```
+      {% endcapture %}
       {{ snippet | markdownify }}
     </div>
   </li>
@@ -74,11 +74,11 @@ subnav: true
   <li>
     <button class="usa-accordion-button" aria-expanded="true" aria-controls="{{ schema_element.title }}_a3">YAML</button>
     <div id="{{ schema_element.title }}_a3" class="usa-accordion-content">
-{% capture snippet %}
-```yaml
-{{ schema_element.snippets.yaml }}
-```
-{% endcapture %}
+      {% capture snippet %}
+      ```yaml
+      {{ schema_element.snippets.yaml }}
+      ```
+      {% endcapture %}
       {{ snippet | markdownify }}
     </div>
   </li>
@@ -86,7 +86,7 @@ subnav: true
 </ul>
 {% endif %}
 
-<hr/>
+<hr />
 {% endfor %}
 {% endif %}
 {% endfor %}

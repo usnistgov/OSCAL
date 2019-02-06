@@ -1,4 +1,10 @@
-# Contact
+---
+title: Contact
+description: Contact
+permalink: /contact/
+
+layout: post
+---
 
 Email: oscal@nist.gov
 

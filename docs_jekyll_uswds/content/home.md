@@ -10,8 +10,8 @@ hero:
     alt: "OSCAL:"
     text: Call attention to a current priority
   button:
-    href: /callout/
-    text: This is a call to all my
+    href: /getinvolved/
+    text: Get Involved
   link:
     text: Link to more about that priority
     href: /link/
