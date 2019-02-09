@@ -1,17 +1,9 @@
 {% if include.title == "Schema Reference" %}
-{% for collection in site.collections %}
-{% if collection.label != "posts" %}
+{% assign collection = site.collections | where: "label", page.schema | first %}
+{% for schema_element in collection.docs %}
+{% if schema_element.position != 0 %}
 <li>
-  <a href="#{{ collection.label }}"><b>{{ collection.title }}</b></a>
-  <ul class="usa-sidenav-sub_list">
-    {% for schema_element in collection.docs %}
-    {% if schema_element.position != 0 %}
-    <li>
-      <a href="#{{ schema_element.schema }}_{{ schema_element.title }}"><code>{{ schema_element.title }}</code></a>
-    </li>
-    {% endif %}
-    {% endfor %}
-  </ul>
+  <a href="#{{ schema_element.schema }}_{{ schema_element.title }}"><code>{{ schema_element.title }}</code></a>
 </li>
 {% endif %}
 {% endfor %}
@@ -19,8 +11,8 @@
 
 {% for link in include.links %}
 <li>
-  <a href="{% if link.external %}{{ link.href }}{% else %}{{ link.href }}{% endif %}" {% if link.class %} class="{{ link.class }}"
-    {% endif %}>{{ link.text }} {{ link.class }}</a>
+  <a href="{% if link.external %}{{ link.href }}{% else %}{{ link.href }}{% endif %}" {% if link.class %}
+    class="{{ link.class }}" {% endif %}>{{ link.text }} {{ link.class }}</a>
 </li>
 {% endfor %}
 {% endif %}

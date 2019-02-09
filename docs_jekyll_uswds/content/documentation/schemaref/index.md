@@ -1,16 +1,14 @@
 ---
-title: Schemas
-description: Schemas
-permalink: /docs/schemas/
-
+title: Schema Reference
+description: OSCAL Schema Reference
+permalink: /docs/schemaref/
 layout: post
-sidenav: schemas
-subnav: true
+sidenav: schemaref
 ---
 
-# About the Sample Schemas
+## About the Sample Schemas
 
-# Design Principles for Sample Schemas
+### Design Principles for Sample Schemas
 The sample database schemas have been created with the following design principles
 in mind:
 - Simplicity and ease of use.
@@ -21,19 +19,22 @@ functionality.
 - Extensibility. The sample schemas provide a logical and physical foundation for...
 - Relevance. The sample schemas are designed to be applicable to... 
 
-# Producer Benefits of Sample Schemas
+### Producer Benefits of Sample Schemas
+
 Benefits provided by the sample schemas include the following:
-## Continuity of context.
 
-## Usability
+#### Continuity of context.
 
-## Quality
+#### Usability
 
-# Schema Diagrams
+#### Quality
 
-# Schema Descriptions
+### Schema Diagrams
 
-# Available Schemas:
+### Schema Descriptions
+
+## Available Schemas
+
 - Catalog XML Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-xml-schema)
 - Catalog JSON Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-json-schema)
 - Profile XML Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#profile-xml-schema)

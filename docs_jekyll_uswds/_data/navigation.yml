@@ -40,12 +40,13 @@ primary:
         href: /resources/scenarios/
       - text: GitHub Repo
         href: https://github.com/usnistgov/OSCAL
+        external: true
   - text: Documentation
     links:
       - text: Concepts
         href: /docs/
-      - text: Schemas
-        href: /docs/schemas/
+      - text: Components
+        href: /docs/components/
       - text: Schema Reference
         href: /docs/schemaref/
   - text: Walkthrough
@@ -79,12 +80,14 @@ secondary:
     href: /contact/
 
 schemaref:
+  - text: Schema Reference
+    href: /docs/schemaref/
   - text: Catalog
-    href: "#"
+    href: /docs/schemaref/catalog/
   - text: Profile
-    href: "#"
+    href: /docs/schemaref/profile/
 
-schema:
+components:
   # - text: Overview
   #   href: /docs/
   # - text: Concepts
@@ -96,10 +99,12 @@ schema:
   #   #     href: /two/b/
   #   #   - text: Demo link C
   #   #     href: /two/c/
+  - text: Components
+    href: /docs/components/
   - text: Catalog
-    href: "#"
+    href: /docs/components/catalog/
   - text: Profile
-    href: "#"
+    href: /docs/components/profile/
 #   # - text: Sidenav External link
 #   #   href: https://18f.gsa.gov
 #   external: true
