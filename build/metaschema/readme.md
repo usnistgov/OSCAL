@@ -40,6 +40,3 @@ Listed here are operations currently supported with the top-level XSLTs for each
 - JSON-oriented documentation:
   - HTML version [json/metaschema-json-html.xsl](xml/metaschema-json-html.xsl)
   - Markdown version [xml/metaschema-json-docs-md.xsl](xml/metaschema-json-docs-md.xsl)
-  - *But note caveat below*
-
-**JSON Samples in JSON docs** - for best results, producing JSON-oriented documentation requires an additional process to convert XML examples to JSON syntax examples. For this, different metaschema instances will require different transformation logic - provided by their respective conversion utilities. Sorting out and implementing logic to manage this dependency, is underway. For now, note that *specialized Markdown-documentation XSLTs* showing examples in JSON are also available for OSCAL formats for which we have metaschemas in development.
