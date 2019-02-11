@@ -45,7 +45,7 @@
         "examples" : 
         [ 
           { "description" : "A small catalog with a single control",
-            "xml" : "\n<catalog xmlns=\"http:\/\/www.w3.org\/2005\/xpath-functions\"\n         id=\"simple-example\"\n         model-version=\"0.99\">A Miniature CatalogA Single Control<\/catalog>\n" } ] },
+            "xml" : "\n<catalog id=\"simple-example\" model-version=\"0.99\">A Miniature CatalogA Single Control<\/catalog>\n" } ] },
       
       { "name" : "declarations",
         "description" : "Either a reference to a declarations file, or a set of declarations",
@@ -125,7 +125,7 @@
             "cardinality" : "zero or one" } ],
         "examples" : 
         [ 
-          { "xml" : "\n<group xmlns=\"http:\/\/www.w3.org\/2005\/xpath-functions\" id=\"xyz\">My Groupsome propertyControl<\/group>\n" } ] },
+          { "xml" : "\n<group id=\"xyz\">My Groupsome propertyControl<\/group>\n" } ] },
       
       { "name" : "control",
         "group-name" : "controls",
@@ -170,7 +170,7 @@
             "cardinality" : "zero or one" } ],
         "examples" : 
         [ 
-          { "xml" : "\n<control xmlns=\"http:\/\/www.w3.org\/2005\/xpath-functions\" id=\"x\">Control 1<\/control>\n" } ] },
+          { "xml" : "\n<control id=\"x\">Control 1<\/control>\n" } ] },
       
       { "name" : "subcontrol",
         "group-name" : "subcontrols",
@@ -227,7 +227,7 @@
             "schema_type" : "flag" } ],
         "examples" : 
         [ 
-          { "xml" : "\n<prop xmlns=\"http:\/\/www.w3.org\/2005\/xpath-functions\" class=\"name\">A1<\/prop>\n" } ] },
+          { "xml" : "\n<prop class=\"name\">A1<\/prop>\n" } ] },
       
       { "name" : "param",
         "group-name" : "parameters",
@@ -431,7 +431,7 @@
             "schema_type" : "flag" } ],
         "examples" : 
         [ 
-          { "xml" : "\n<citation xmlns=\"http:\/\/www.w3.org\/2005\/xpath-functions\">Some citation of some sort<\/citation>\n" } ] },
+          { "xml" : "\n<citation>Some citation of some sort<\/citation>\n" } ] },
       
       { "name" : "id",
         "description" : "Unique identifier",
@@ -439,7 +439,7 @@
         "schema_type" : "flag",
         "examples" : 
         [ 
-          { "xml" : "\n<citation xmlns=\"http:\/\/www.w3.org\/2005\/xpath-functions\" id=\"xyz2\">Some citation of some sort<\/citation>\n" } ] },
+          { "xml" : "\n<citation id=\"xyz2\">Some citation of some sort<\/citation>\n" } ] },
       
       { "name" : "class",
         "description" : "Identifies the property or object within the control; a semantic hint",
