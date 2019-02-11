@@ -117,7 +117,7 @@
     <xsl:template match="example/*" mode="example-in-yaml"/>
     
     
-    <xsl:template mode="no-ns" match="*">
+    <xsl:template mode="no-ns" match="*" xmlns="">
         <xsl:element name="{ local-name() }">
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates/>
