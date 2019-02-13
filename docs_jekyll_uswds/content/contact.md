@@ -2,7 +2,6 @@
 title: Contact
 description: Contact
 permalink: /contact/
-
 layout: post
 ---
 

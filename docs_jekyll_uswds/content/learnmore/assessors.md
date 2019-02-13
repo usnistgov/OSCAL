@@ -6,16 +6,26 @@ permalink: /learnmore/assessors/
 layout: post
 ---
 
-## OSCAL Enables Government Agencies to Meet Multiple Regulatory Frameworks
+## Target Audience
 
-> This sample scenario highlights the benefits for a government agency to use OSCAL to meet multiple regulatory frameworks. The work being performed by the OSCAL development community control catalogs and ability to build a custom security profile maps to the multiple regulatory frameworks agencies must meet. 
+Auditing/assessment personnel who validate the accuracy of security plans and the implementation of security controls within information systems
 
-As a federal agency, the sample federal agency in this scenario must comply with the Federal Information Security Modernization Act (FISMA) and NIST Cybersecurity Framework requirements. The agency is also a healthcare institution and must comply with the Health Insurance Portability and Accountability Act (HIPAA) requirements. The agency provides healthcare services where payments are collected and payments may be made by patients using a credit card. Credit card transactions must comply with the Payment Card Industry Data Security Standard (PCI DSS). The security controls and requirements associated with four separate frameworks increase the complexity for the agency to maintain the security posture of systems operating within its portfolio.
+## Problem OSCAL Solves
 
-The scenario for the sample federal agency highlights the complexity and necessity for agencies to meet multiple regulatory frameworks.
+Provides a standard for documenting security controls within a specific profilw while establishing a framework for the information systems to programmatically attest to the state of the security controls
 
-The OSCAL development community took this scenario into consideration when building the foundations of the project. The foundation elements of the control, catalog and profile are set up to permit selection from multiple catalogs of multiple controls and creation of a single profile that an agency may use to maintain compliance. The project will continue to work to make the products applicable to agencies that are required to meet multiple regulatory frameworks.
+## Why Should You Care?
 
-# OSCAL Automates the Risk Management Framework Process
+- Reduces the amount of manual labor required to provide assurance that controls are implemented as described in the security documentation
 
-> This sample scenario highlights OSCAL automating the risk management framework.
+- Profiles provide flexibility to tailor baselines to the appropriate controls for any agency information system
+
+- Provides real-time or near real-time assurance programmatically allowing any security drift to be detected earlier; reducing overall risk
+
+- Reduces the number of manual assessments required to gather evidence that security controls are implemented within the target information system
+
+- Provides mapping of catalogues to a common profile, reducing the number of assessments required to ensure compliance with multiple compliance frameworks
+
+## Contact
+
+To learn more about OSCAL, [contact us](contact)!

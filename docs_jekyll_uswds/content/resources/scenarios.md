@@ -6,16 +6,20 @@ permalink: /resources/scenarios/
 layout: post
 ---
 
-# OSCAL Enables Government Agencies to Meet Multiple Regulatory Frameworks
+## Managing Multiple Regulatory Frameworks
 
-> This sample scenario highlights the benefits for a government agency to use OSCAL to meet multiple regulatory frameworks. The work being performed by the OSCAL development community control catalogs and ability to build a custom security profile maps to the multiple regulatory frameworks agencies must meet. 
+The work being performed by the OSCAL development team to document catalogues that then map to multiple regulatory frameworks will simplify the compliance burden to maintain multiple security plans or to maintain the mapping themselves within a single security plan. 
 
-As a federal agency, the sample federal agency in this scenario must comply with the Federal Information Security Modernization Act (FISMA) and NIST Cybersecurity Framework requirements. The agency is also a healthcare institution and must comply with the Health Insurance Portability and Accountability Act (HIPAA) requirements. The agency provides healthcare services where payments are collected and payments may be made by patients using a credit card. Credit card transactions must comply with the Payment Card Industry Data Security Standard (PCI DSS). The security controls and requirements associated with four separate frameworks increase the complexity for the agency to maintain the security posture of systems operating within its portfolio.
+As an example, a federal agency may need to comply with the Federal Information Security Modernization Act (FISMA) and NIST Risk Management Framework requirements. The agency also maintains health records and must comply with the Health Insurance Portability and Accountability Act (HIPAA) requirements. The agency provides healthcare services where payments are collected and payments may be made by patients using a credit card. Credit card transactions must comply with the Payment Card Industry Data Security Standard (PCI DSS). The security controls and requirements associated with four separate frameworks increase the complexity and the costs for the agency to maintain the security documentation of systems operating within its portfolio.
 
-The scenario for the sample federal agency highlights the complexity and necessity for agencies to meet multiple regulatory frameworks.
+The scenario for the sample federal agency highlights the need to simplify the complexity for agencies required to meet multiple regulatory frameworks.  The OSCAL development community took this scenario into consideration when building the foundations for the OSCAL project. The foundational elements of the control, catalog, and profile standards permit selection from multiple catalogs of security controls and the creation of a single profile that an agency may use to maintain compliance. This architecture abstracts away the complexity of managing multiple frameworks and reduces the compliance burden while also allowing cyber security professionals to focus on maintaining the security of the system.
 
-The OSCAL development community took this scenario into consideration when building the foundations of the project. The foundation elements of the control, catalog and profile are set up to permit selection from multiple catalogs of multiple controls and creation of a single profile that an agency may use to maintain compliance. The project will continue to work to make the products applicable to agencies that are required to meet multiple regulatory frameworks.
+The project will continue to expand to support additional security catalogues to maximize the utility of the framework.
 
-# OSCAL Automates the Risk Management Framework Process
+## Unlocking Security Plan Data
 
-> This sample scenario highlights OSCAL automating the risk management framework.
+Cyber security professionals are required to document a system's compliance with regulatory frameworks as part of the Certification and Accreditation (C&A process).  This effort is resource intensive; especially in scenarios where multiple regulatory frameworks govern the system.  In addition, the documentation is not standardized, varies widely between agencies, and is stored in a collection of Word documents, Excel files, and other formats that are difficult to configuration manage.
+
+OSCAL is designed to provide a standard format to take this paper-based process and convert it to a highly normalized and machine readable format.  This approach has multiple benefits: 1) data between plans is consistent in both format and mapping to compliance frameworks, 2) data is machine readable and can be exposed to other security tools to provide additional automation, 3) having a consistent data standard will allow for innovation in the commercial tooling to provide further automation to the process.
+
+The OSCAL team continues to build on the data standards and to test the model against real data.  The standard is being continuously improved and enhanced as the model is tested and issues are identified.  The end result will be a robust data standard that greatly simplifies the way security plans are created, managed, and integrated into the technical security controls for a system.

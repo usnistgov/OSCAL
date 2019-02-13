@@ -12,6 +12,8 @@
 #   links: primary
 #
 primary:
+  - text: Home
+    href: /
   - text: Learn More
     links:
       - text: Overview
@@ -22,7 +24,7 @@ primary:
         href: /learnmore/securitypros
       - text: For Tool Vendors
         href: /learnmore/toolvendors
-      - text: For OSCAL Content Authors
+      - text: For Content Authors
         href: /learnmore/authors
   - text: Resources
     links:
@@ -30,8 +32,6 @@ primary:
         href: /resources/
       - text: Roadmap
         href: /resources/roadmap/
-      - text: Documentation
-        href: /docs/
       - text: Case Studies
         href: /resources/casestudies/
       - text: Examples
@@ -52,7 +52,7 @@ primary:
   - text: Walkthrough
     href: /walkthrough/
   - text: Community
-    href: /community/
+    href: /getinvolved/
   # - text: Navigation section
   #   links:
   #     - text: Demo link A
