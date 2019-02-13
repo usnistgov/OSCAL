@@ -116,7 +116,6 @@
     <xsl:template match="example/*" mode="example-in-json"/>
     <xsl:template match="example/*" mode="example-in-yaml"/>
     
-    
     <xsl:template mode="no-ns" match="*" xmlns="">
         <xsl:element name="{ local-name() }">
             <xsl:copy-of select="@*"/>
@@ -193,8 +192,7 @@
     <xsl:template mode="cast" match="/*/*"/>
         
     <xsl:template match="/*" mode="cast">
-        <map>
-            <array key="element-definitions">
+        <array>
             <!--<string key="element">
                 <xsl:value-of select="local-name(.)"/>
             </string>-->
@@ -205,7 +203,6 @@
                     <xsl:apply-templates mode="cast"/>
                 </array>
             </xsl:if>-->
-        </map>
     </xsl:template>
     <!--
     
