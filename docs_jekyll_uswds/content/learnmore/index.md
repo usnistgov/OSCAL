@@ -1,6 +1,6 @@
 ---
-title: Learn More
-description: Learn More
+title: Background
+description: Background
 permalink: /learnmore/
 
 layout: post

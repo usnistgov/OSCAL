@@ -19,7 +19,7 @@ OSCAL specifically addresses the needs of the following stakeholders:
 
 - [Security Professionals](/learnmore/securitypros/)
 
-- [Tool Vendors](/learnmore/toolvendors/)
+- [Tool Developers](/learnmore/tooldevelopers/)
 
 - [Content Authors](/learnmore/authors/)
 
@@ -29,5 +29,5 @@ OSCAL specifically addresses the needs of the following stakeholders:
 
 ## Contact
 
-To learn more about how OSCAL can help you, [contact us](contact)!
+To learn more about how OSCAL can help you, [contact us](/contact/)!
 

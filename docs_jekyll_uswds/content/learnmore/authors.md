@@ -6,13 +6,9 @@ permalink: /learnmore/authors/
 layout: post
 ---
 
-## Target Audience
+**Who: Cyber security policy authors who set requirements for implementation of cyber security programs within their organization or agency**
 
-Cyber security policy authors who set requirements for implementation of cyber security programs within their organization or agency
-
-## Problem OSCAL Solves
-
-Provides a standard solution for building security profiles that set the expectations for implementation within the program and associated information systems
+OSCAL provides a standard solution for building security profiles that set the expectations for implementation within the program and associated information systems
 
 ## Why Should You Care?
 

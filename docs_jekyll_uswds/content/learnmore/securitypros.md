@@ -5,13 +5,10 @@ permalink: /learnmore/securitypros/
 
 layout: post
 ---
-## Target Audience
 
-Security professionals who document or implement security controls within information systems
+**Who: Security professionals who document or implement security controls within information systems**
 
-## Problem OSCAL Solves
-
-Provides a standard for documenting security controls that maps across multiple compliance frameworks (i.e. NIST, PCI, etc.) and a method for attesting to the implementation of the controls within information systems
+OSCAL provides a standard for documenting security controls that maps across multiple compliance frameworks (i.e. NIST, PCI, etc.) and a method for attesting to the implementation of the controls within information systems
 
 ## Why Should You Care?
 
@@ -25,7 +22,7 @@ Provides a standard for documenting security controls that maps across multiple 
 
 - Reduces the burden associated with cyber security staff attrition as the OSCAL standard ensures consistency in implementation across agencies; reducing the learning curve for new staff
 
-- Provides mapping of catalogues to a common profile, reducing the number of assessments required to ensure compliance with multiple compliance frameworks
+- Provides mapping of catalogs to a common profile, reducing the number of assessments required to ensure compliance with multiple compliance frameworks
 
 ## Contact
 

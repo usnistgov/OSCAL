@@ -11,7 +11,10 @@ layout: post
 1. [GitHub Repository for OSCAL](https://github.com/usnistgov/OSCAL)
 2. [NIST OSCAL](https://pages.nist.gov/OSCAL/)
 3. [Computer Security Resource Center: OSCAL](https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language)
-4. [Docker OSCAL SDK](https://github.com/docker/oscalkit)
+
+## Tools
+
+1. [OSCALkit - Converts XML -> JSON (and vice versa)](https://github.com/docker/oscalkit)
 
 ## Videos and Presentations
 
@@ -26,3 +29,5 @@ layout: post
 4. [What's Next for FedRAMP? Automation, new authorizations later this year](https://federalnewsnetwork.com/federal-cloud-report/2018/06/whats-next-for-fedramp-automation-new-authorizations-and-more-later-this-year/)
 5. [You're Nuts! Automating Your 1000+ Page FedRAMP System Security Plan?](https://www.govloop.com/community/blog/youre-nuts-automating-1000page-fedramp-system-security-plan/)
 6. [Government CIOs Lean Toward Cloud for Security](https://www.meritalk.com/articles/government-cios-lean-toward-cloud-for-security/)
+
+

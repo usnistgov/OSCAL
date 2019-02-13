@@ -16,14 +16,14 @@ primary:
     href: /
   - text: Learn More
     links:
-      - text: Overview
+      - text: Background
         href: /learnmore/
       - text: For Assessors
         href: /learnmore/assessors
       - text: For Security Professionals
         href: /learnmore/securitypros
-      - text: For Tool Vendors
-        href: /learnmore/toolvendors
+      - text: For Tool Developers
+        href: /learnmore/tooldevelopers
       - text: For Content Authors
         href: /learnmore/authors
   - text: Resources
@@ -49,8 +49,8 @@ primary:
         href: /docs/components/
       - text: Schema Reference
         href: /docs/schemaref/
-  - text: Walkthrough
-    href: /walkthrough/
+  #- text: Walkthrough
+  #  href: /walkthrough/
   - text: Community
     href: /getinvolved/
   # - text: Navigation section

@@ -1,6 +1,6 @@
 ---
-title: Contact
-description: Contact
+title: Contact Us
+description: Contact Us
 permalink: /contact/
 layout: post
 ---

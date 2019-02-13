@@ -8,7 +8,7 @@ hero:
   image: /assets/img/security-hero4.jpg
   callout:
     alt: "OSCAL:"
-    text: A Data-Centric Approach to Modeling Security Controls
+    text: A Data-centric Approach to Security Assessment Automation
   button:
     href: /getinvolved/
     text: Get Involved
@@ -27,7 +27,7 @@ graphics:
   - image:
       src: /assets/uswds/img/dataCentric.png
       alt: ''
-    title: Data-Centric
+    title: Data-centric
     description: Transitions the legacy approach to security plan generation and management (Word and Excel documents) to a data-centric approach based on common data standards such as XML/JSON.
   - image:
       src: /assets/uswds/img/extensible.png
@@ -38,7 +38,7 @@ graphics:
       src: /assets/uswds/img/integrated.png
       alt: ''
     title: Integrated
-    description: Easily implement with existing systems via APIs and provide a standards-based foundation for next generation compliance tools.
+    description: Allows tool developers to implement APIs and provide a standards-based foundation for next generation compliance tools.
   - image:
       src: /assets/uswds/img/automated.png
       alt: ''

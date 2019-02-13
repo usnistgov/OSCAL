@@ -1,18 +1,14 @@
 ---
-title: Tool Vendors
-description: Tool Vendors
-permalink: /learnmore/toolvendors/
+title: Tool Developers
+description: Tool Developers
+permalink: /learnmore/tooldevelopers/
 
 layout: post
 ---
 
-## Target Audience
+**Who: Tool developers who build security compliance systems (i.e. Electronic Governance Risk and Compliance (eGRC) systems) or who provide secure infrastructure/software solutions to the federal government or highly regulated industries**
 
-Tool vendors who build security compliance systems (i.e. Electronic Governance Risk and Compliance (eGRC) systems) or who provide secure infrastructure/software solutions to the federal government or highly regulated industries
-
-## Problem OSCAL Solves
-
-Provides a standard for consuming security control, catalogue, profile, and implementation data to visualize and automate security compliance processes.  Provides an assessment standard for infrastructure and software solutions to attest to their security control implementation in an automated manner.
+OSCAL provides a standard for consuming security control, catalog, profile, and implementation data to visualize and automate security compliance processes.  Provides an assessment standard for infrastructure and software solutions to attest to their security control implementation in an automated manner.
 
 ## Why Should You Care?
 
