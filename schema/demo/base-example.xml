@@ -7,5 +7,15 @@
         <single-required-field>Required</single-required-field>
         <acquired-model/>
         <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
+        <chunk-among-chunks>
+            <single-required-field></single-required-field>
+            <h4></h4>
+            <table>
+                <tr>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+        </chunk-among-chunks>
     </thing>
 </kit>
