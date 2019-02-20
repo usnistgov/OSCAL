@@ -5,7 +5,7 @@
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     version="3.0">
     
-    <xsl:output method="xml" indent="yes"/>
+    <xsl:output method="xhtml" omit-xml-declaration="true" indent="yes"/>
     
     <!-- The function fn:transform() returns a map, whose primary results are under 'output'
          unless a base output URI is given
