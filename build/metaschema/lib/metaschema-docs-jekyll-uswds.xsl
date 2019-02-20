@@ -151,7 +151,7 @@
       <p>The XML namespace for elements conformant to this schema: <code><xsl:apply-templates/></code></p>
    </xsl:template>
    
-   <xsl:template name="uswds-table">
+   <xsl:template name="uswds-table" expand-text="true">
       <xsl:param name="property-set" select="()"/>
       
       <table class="usa-table-borderless">
@@ -159,22 +159,38 @@
          <thead>
             <tr>
                <th scope="col">Name</th>
-               <th scope="col">Description</th>
+               <th scope="col">Metaschema type</th>
                <th scope="col">Cardinality</th>
+               <th scope="col">Description / Remarks</th>
             </tr>
          </thead>
          <tbody>
             <xsl:for-each select="$property-set">
-            {% for prop in schema_element.properties %}
+            <!--{% for prop in schema_element.properties %}-->
             <tr>
-               <th scope="row"><span class="usa-label">{{ prop.name }}</span></th>
-               <td>{{ prop.description }}</td>
-               <td>{{ prop.cardinality }}</td>
+               <th scope="row"><span class="usa-label">
+                  <a class="name" href="#{@name | @named}"><xsl:apply-templates select="@name | @named"/></a></span></th>
+               <td><xsl:apply-templates select="." mode="metaschema-type"/></td>
+               <td><xsl:apply-templates select="." mode="cardinality"/></td>
+               <td>
+                  <xsl:apply-templates select="description | remarks"/>
+               </td>
             </tr>
-            </xsl:for-each> {% endfor %}
+            </xsl:for-each><!-- {% endfor %}-->
          </tbody>
       </table>
       
+   </xsl:template>
+   
+   <xsl:template mode="metaschema-type" match="flag"                  >flag</xsl:template>
+   <xsl:template mode="metaschema-type" match="field    | fields"     >field</xsl:template>
+   <xsl:template mode="metaschema-type" match="assembly | assemblies" >assembly</xsl:template>
+   <xsl:template mode="metaschema-type" match="prose"                 >Reserved for prose</xsl:template>
+   <xsl:template mode="metaschema-type" match="any"                   >ANY</xsl:template>
+   <xsl:template mode="metaschema-type" match="description | remarks"/>
+   
+   <xsl:template match="*" mode="metaschema-type">
+      <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
    </xsl:template>
    
    <xsl:template priority="5"
@@ -183,23 +199,22 @@
       define-assembly[not(@show-docs='xml' or @show-docs='xml json')]"/>
    
    
-   <xsl:template match="*" mode="header_line"><!--
-      <h4 id="{catalog_catalog (root element)"><code>catalog (root element)</code></h4>-->
-   </xsl:template>
+   
+   
    <xsl:template match="define-flag">
       <div class="define-flag" id="{@name}">
-         <h3>
+         <h4 id="{/*/short-name}_{@name}">
             <xsl:apply-templates select="formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> flag</h3>
+            <xsl:apply-templates select="@name"/> flag</h4>
          <xsl:apply-templates/>
       </div>
    </xsl:template>
    
    <xsl:template  match="define-field">
       <div class="define-field" id="{@name}">
-         <h3>
+         <h4  id="{/*/short-name}_{@name}">
             <xsl:apply-templates select="formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> field</h3>
+            <xsl:apply-templates select="@name"/> field</h4>
          <xsl:choose>
             <xsl:when test="@as='mixed'"><p>Supports inline encoding</p></xsl:when>
             <xsl:when test="@as='boolean'"><p>True whenever given (presence signifies Boolean value)</p></xsl:when>
@@ -212,6 +227,9 @@
                   <xsl:apply-templates select="flag" mode="model"/>
                </ul>
             </div>
+            <xsl:call-template name="uswds-table">
+               <xsl:with-param name="property-set" select="flag"/>
+            </xsl:call-template>
          </xsl:if>
          <xsl:apply-templates select="remarks"/>
          <xsl:apply-templates select="example"/>
@@ -220,15 +238,18 @@
    
    <xsl:template match="define-assembly">
       <div class="define-assembly" id="{@name}">
-         <h3>
+         <h4 id="{/*/short-name}_{@name}">
             <xsl:apply-templates select="formal-name" mode="inline"/>:
-            <xsl:apply-templates select="@name"/> assembly</h3>
+            <xsl:apply-templates select="@name"/> assembly</h4>
          <!-- No mention of @group-as on XML side       -->
          
          <xsl:apply-templates select="formal-name | description"/>
          <xsl:apply-templates select="model"/>
          <xsl:apply-templates select="remarks"/>
-         <xsl:apply-templates select="example"/>
+         <xsl:apply-templates select="example"/>|
+         <xsl:call-template name="uswds-table">
+            <xsl:with-param name="property-set" select="flag | (model//* except model//(choice | description/descendant-or-self::* | remarks/descendant-or-self::*))"/>
+         </xsl:call-template>
       </div>
    </xsl:template>
 
@@ -314,7 +335,7 @@
       <li class="assemblies">
          <a class="name" href="#{@named}">
             <xsl:apply-templates select="@named"/></a> 
-         <xsl:text>{ local-name(.) }..(</xsl:text>
+         <xsl:text expand-text="true"> { local-name(.) } (</xsl:text>
          <i>zero or more</i>
          <xsl:text>)</xsl:text>
          <xsl:apply-templates select="description | remarks" mode="model"/> 
@@ -378,7 +399,7 @@ pre { color: darkgrey }
 .define-field    *,
 .define-flag     *  { margin: 0em }
 
-.define-assembly > div { margin-top: 1em }
+.define-assembly div { margin-top: 1em }
 
 pre { padding: 0.5em; background-color: gainsboro }
 
