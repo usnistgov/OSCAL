@@ -47,6 +47,11 @@
    </xsl:template>
 
 
+   <!-- only works when XML-to-JSON converter is in the import tree -->
+   <xsl:template match="description | remarks" mode="jsonize"/>
+   
+   
+   
 <!--
    
 {% for collection in site.collections %}
@@ -285,7 +290,7 @@
    
    <xsl:template match="flag" mode="model">
       <li>
-         <xsl:text>Attribute </xsl:text>
+         <xsl:text>Flag </xsl:text>
          <a href="#{@name}" class="name">
             <xsl:apply-templates select="@name"/>
          </a>
@@ -346,11 +351,51 @@
    
     <xsl:template match="example">
          <xsl:apply-templates select="description"/>
-         <pre class="xml">
-            <xsl:text xml:space="preserve">&#xA;</xsl:text>
+       <pre class="xml">
+            <!--<xsl:text xml:space="preserve">&#xA;</xsl:text>-->
            <xsl:apply-templates select="*" mode="as-example"/>
          </pre>
-         <xsl:apply-templates select="remarks"/>
+      <pre class="json">
+            <xsl:text xml:space="preserve">&#xA;</xsl:text>
+            <xsl:apply-templates select="*" mode="jsonize"/>
+           
+         </pre>
+       <xsl:apply-templates select="remarks"/>
+      
+   </xsl:template>
+   
+   
+   <xsl:output name="jsonish"
+      indent="yes" method="text" use-character-maps="delimiters"/>
+   
+   <xsl:character-map name="delimiters">
+      <xsl:output-character character="&lt;" string="\u003c"/>
+      <xsl:output-character character="&gt;" string="\u003e"/>
+   </xsl:character-map>
+   
+   <xsl:param name="json-indent" as="xs:string">yes</xsl:param>
+   
+   <xsl:mode name="rectify" on-no-match="shallow-copy"/>
+   
+   <xsl:template mode="rectify"
+      xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
+      match="/*/@key | array/*/@key"/>
+
+   <xsl:variable name="write-options" as="map(*)" expand-text="true">
+      <xsl:map>
+         <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>
+      </xsl:map>
+   </xsl:variable>
+   
+   <xsl:template match="*" mode="jsonize">
+      <xsl:variable name="xpath-json">
+         <xsl:apply-templates select="." mode="xml2json"/>
+      </xsl:variable>
+      <xsl:variable name="rectified">
+         <xsl:apply-templates select="$xpath-json" mode="rectify"/>
+      </xsl:variable>
+      <!--<xsl:copy-of select="$xpath-json"/>-->
+         <xsl:value-of select="xml-to-json($rectified, $write-options)"/>
       
    </xsl:template>
    
@@ -386,6 +431,8 @@ html, body {  }
 
 pre { color: darkgrey }
 .tag { color: black; font-family: monospace; font-size: 80%; font-weight: bold }
+
+pre.json { color: darkblue }
 
 .METASCHEMA { }
 

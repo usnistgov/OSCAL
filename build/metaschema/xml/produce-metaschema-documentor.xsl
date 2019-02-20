@@ -25,6 +25,10 @@
     
     <xsl:namespace-alias stylesheet-prefix="XSLT" result-prefix="xsl"/>
 
+    <xsl:param name="example-converter-xslt-path" as="xs:string" expand-text="true">../../util/convert/{/METASCHEMA/short-name}-xml-converter.xsl</xsl:param>
+    
+    <xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,document-uri(/))"/>
+    
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     
     <xsl:template match="METASCHEMA">
@@ -76,6 +80,7 @@
     <xsl:template name="furniture">
         
         <!--<XSLT:import href="../../../util/publish/XSLT/html-to-markdown.xsl"/>-->
+        <XSLT:import href="{$example-converter-xslt}"/>
         <XSLT:import href="../lib/metaschema-docs-jekyll-uswds.xsl"/>
         <XSLT:preserve-space elements="*"/>
         
@@ -132,6 +137,7 @@
             <!--<XSLT:apply-templates select="$html" mode="md"/>-->
         </XSLT:template>
  
+        
     </xsl:template>
  
 </xsl:stylesheet>

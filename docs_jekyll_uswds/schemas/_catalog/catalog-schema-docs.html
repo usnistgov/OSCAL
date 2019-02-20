@@ -6,6 +6,8 @@ html, body {  }
 pre { color: darkgrey }
 .tag { color: black; font-family: monospace; font-size: 80%; font-weight: bold }
 
+pre.json { color: darkblue }
+
 .METASCHEMA { }
 
 .title { }
@@ -106,8 +108,8 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;catalog&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Attribute <a href="#model-version" class="name"><code class="name">@model-version</code></a><i> (required)</i></li>
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#model-version" class="name"><code class="name">@model-version</code></a><i> (required)</i></li>
                
                <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
                </li>
@@ -149,13 +151,20 @@ a:hover { text-decoration: underline }
          <blockquote class="description">
             <p>A small catalog with a single control</p>
          </blockquote><pre class="xml">
-
 <code class="tag">&lt;catalog id="simple-example" model-version="0.99"&gt;</code>
   <code class="tag">&lt;title&gt;</code>A Miniature Catalog<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;control id="single"&gt;</code>
     <code class="tag">&lt;title&gt;</code>A Single Control<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;/control&gt;</code>
-<code class="tag">&lt;/catalog&gt;</code></pre>|
+<code class="tag">&lt;/catalog&gt;</code></pre><pre class="json">
+
+  { "id" : "simple-example",
+    "model-version" : "0.99",
+    "title" : "A Miniature Catalog",
+    "controls" : 
+    [ 
+      { "id" : "single",
+        "title" : "A Single Control" } ] }</pre>|
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -251,7 +260,7 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;declarations&gt;</code> field may have flags:
             </p>
             <ul>
-               <li>Attribute <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -287,9 +296,9 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;section&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
                </li>
                
                <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
@@ -381,9 +390,9 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;group&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
                </li>
                
                <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
@@ -424,14 +433,24 @@ a:hover { text-decoration: underline }
                by all members of that group. Unlike a <a href="#section" class="name">&lt;section&gt;</a>, a <a href="#group" class="name">&lt;group&gt;</a> may not contain arbitrary prose directly, only inside its <a href="#part" class="name">&lt;part&gt;</a> or <a href="#control" class="name">&lt;control&gt;</a> components.
             </p>
             
-         </div><pre class="xml">
-<code class="tag">&lt;group id="xyz"&gt;</code>
+         </div><pre class="xml"><code class="tag">&lt;group id="xyz"&gt;</code>
   <code class="tag">&lt;title&gt;</code>My Group<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;prop class="required"&gt;</code>some property<code class="tag">&lt;/prop&gt;</code>
   <code class="tag">&lt;control id="xyz1"&gt;</code>
     <code class="tag">&lt;title&gt;</code>Control<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;/control&gt;</code>
-<code class="tag">&lt;/group&gt;</code></pre>|
+<code class="tag">&lt;/group&gt;</code></pre><pre class="json">
+
+  { "id" : "xyz",
+    "title" : "My Group",
+    "props" : 
+    [ 
+      { "class" : "required",
+        "STRVALUE" : "some property" } ],
+    "controls" : 
+    [ 
+      { "id" : "xyz1",
+        "title" : "Control" } ] }</pre>|
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -529,8 +548,8 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;control&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Attribute <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
                </li>
                
                <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
@@ -563,10 +582,12 @@ a:hover { text-decoration: underline }
                <a href="#part" class="name">&lt;part&gt;</a> or enhanced using <a href="#subcontrol" class="name">&lt;subcontrol&gt;</a>.
             </p>
             
-         </div><pre class="xml">
-<code class="tag">&lt;control id="x"&gt;</code>
+         </div><pre class="xml"><code class="tag">&lt;control id="x"&gt;</code>
   <code class="tag">&lt;title&gt;</code>Control 1<code class="tag">&lt;/title&gt;</code>
-<code class="tag">&lt;/control&gt;</code></pre>|
+<code class="tag">&lt;/control&gt;</code></pre><pre class="json">
+
+  { "id" : "x",
+    "title" : "Control 1" }</pre>|
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -663,8 +684,8 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;subcontrol&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Attribute <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
                </li>
                
                <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
@@ -788,9 +809,9 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;prop&gt;</code> field may have flags:
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#class" class="name"><code class="name">@class</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a><i> (required)</i></li>
             </ul>
          </div>
          <table class="usa-table-borderless">
@@ -855,8 +876,10 @@ a:hover { text-decoration: underline }
                (which also supports other constraints over property values).
             </p>
             
-         </div><pre class="xml">
-<code class="tag">&lt;o:prop class="name"&gt;</code>A1<code class="tag">&lt;/o:prop&gt;</code></pre></div>
+         </div><pre class="xml"><code class="tag">&lt;o:prop class="name"&gt;</code>A1<code class="tag">&lt;/o:prop&gt;</code></pre><pre class="json">
+
+  { "class" : "name",
+    "STRVALUE" : "A1" }</pre></div>
       
       
       <div class="define-assembly" id="param">
@@ -868,10 +891,10 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;param&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Attribute <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#depends-on" class="name"><code class="name">@depends-on</code></a> (<i>optional</i>)
+               <li>Flag <a href="#depends-on" class="name"><code class="name">@depends-on</code></a> (<i>optional</i>)
                </li>
                
                <li>A <a class="name" href="#label"><code class="name">&lt;label&gt;</code></a> field  (<i>zero or one</i>): A short name for the parameter.
@@ -1094,7 +1117,7 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;desc&gt;</code> field may have flags:
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1130,7 +1153,7 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;constraint&gt;</code> field may have flags:
             </p>
             <ul>
-               <li>Attribute <a href="#test" class="name"><code class="name">@test</code></a> (<i>optional</i>)
+               <li>Flag <a href="#test" class="name"><code class="name">@test</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1238,7 +1261,7 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;select&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#how-many" class="name"><code class="name">@how-many</code></a> (<i>optional</i>)
+               <li>Flag <a href="#how-many" class="name"><code class="name">@how-many</code></a> (<i>optional</i>)
                </li>
                
                <li class="assemblies"><a class="name" href="#choice"><code class="name">&lt;choice&gt;</code></a> fields (<i>zero or more</i>)
@@ -1303,9 +1326,9 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;part&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
                </li>
                
                <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>zero or one</i>)
@@ -1431,9 +1454,9 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;link&gt;</code> field may have flags:
             </p>
             <ul>
-               <li>Attribute <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#rel" class="name"><code class="name">@rel</code></a> (<i>optional</i>)
+               <li>Flag <a href="#rel" class="name"><code class="name">@rel</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1486,7 +1509,7 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;references&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
                
                <li class="assemblies"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a> fields (<i>zero or more</i>)
@@ -1556,7 +1579,7 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;ref&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
                
                <li class="assemblies"><a class="name" href="#citation"><code class="name">&lt;citation&gt;</code></a> fields (<i>zero or more</i>)
@@ -1622,9 +1645,9 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;citation&gt;</code> field may have flags:
             </p>
             <ul>
-               <li>Attribute <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1663,8 +1686,9 @@ a:hover { text-decoration: underline }
                identifier such as a DOI be provided for any citation.
             </p>
             
-         </div><pre class="xml">
-<code class="tag">&lt;o:citation&gt;</code>Some <code class="tag">&lt;o:strong&gt;</code>citation<code class="tag">&lt;/o:strong&gt;</code> of some sort<code class="tag">&lt;/o:citation&gt;</code></pre></div>
+         </div><pre class="xml"><code class="tag">&lt;o:citation&gt;</code>Some <code class="tag">&lt;o:strong&gt;</code>citation<code class="tag">&lt;/o:strong&gt;</code> of some sort<code class="tag">&lt;/o:citation&gt;</code></pre><pre class="json">
+
+  { "RICHTEXT" : "Some **citation** of some sort" }</pre></div>
       
       
       <div class="define-flag" id="id">
@@ -1682,8 +1706,10 @@ a:hover { text-decoration: underline }
             </p>
             
          </div>
-         <pre class="xml">
-<code class="tag">&lt;o:citation id="xyz2"&gt;</code>Some <code class="tag">&lt;o:strong&gt;</code>citation<code class="tag">&lt;/o:strong&gt;</code> of some sort<code class="tag">&lt;/o:citation&gt;</code></pre>
+         <pre class="xml"><code class="tag">&lt;o:citation id="xyz2"&gt;</code>Some <code class="tag">&lt;o:strong&gt;</code>citation<code class="tag">&lt;/o:strong&gt;</code> of some sort<code class="tag">&lt;/o:citation&gt;</code></pre><pre class="json">
+
+  { "id" : "xyz2",
+    "RICHTEXT" : "Some **citation** of some sort" }</pre>
          </div>
       
       
@@ -1823,10 +1849,10 @@ a:hover { text-decoration: underline }
             <p>The <code class="name">&lt;hlink&gt;</code> element has the following contents  (in order):
             </p>
             <ul>
-               <li>Attribute <a href="#href" class="name"><code class="name">@href</code></a><i> (required)</i></li>
-               <li>Attribute <a href="#rel" class="name"><code class="name">@rel</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a><i> (required)</i></li>
+               <li>Flag <a href="#rel" class="name"><code class="name">@rel</code></a> (<i>optional</i>)
                </li>
-               <li>Attribute <a href="#media-type" class="name"><code class="name">@media-type</code></a> (<i>optional</i>)
+               <li>Flag <a href="#media-type" class="name"><code class="name">@media-type</code></a> (<i>optional</i>)
                </li>
                
                <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>zero or one</i>)
