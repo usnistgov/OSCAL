@@ -48,10 +48,17 @@
 
             <xs:group name="prose">
                 <xs:choice>
-                    <xs:element ref="{$declaration-prefix}:p"/>
-                    <xs:element ref="{$declaration-prefix}:ul"/>
-                    <xs:element ref="{$declaration-prefix}:ol"/>
-                    <xs:element ref="{$declaration-prefix}:pre"/>
+                    <xs:element ref="oscal-prose:h1"/>
+                    <xs:element ref="oscal-prose:h2"/>
+                    <xs:element ref="oscal-prose:h3"/>
+                    <xs:element ref="oscal-prose:h4"/>
+                    <xs:element ref="oscal-prose:h5"/>
+                    <xs:element ref="oscal-prose:h6"/>
+                    <xs:element ref="oscal-prose:p"/>
+                    <xs:element ref="oscal-prose:ul"/>
+                    <xs:element ref="oscal-prose:ol"/>
+                    <xs:element ref="oscal-prose:pre"/>
+                    <xs:element ref="oscal-prose:table"/>
                 </xs:choice>
             </xs:group>
 
@@ -195,8 +202,8 @@
             <xsl:apply-templates mode="#current"/>
     </xsl:template>
     
-<!-- dropping placeholder 'prose' element declaration -->
-    <xsl:template match="xs:schema/xs:element[@name='prose']" mode="acquire-prose"/>
+<!-- dropping top level (placeholder) 'prose' element declaration and its complexType -->
+    <xsl:template match="xs:schema/xs:element[@name='prose'] | xs:schema/xs:complexType[@name='prose']" mode="acquire-prose"/>
     
     <xsl:template match="comment()" mode="wire-ns">
         <xsl:copy-of select="."/>

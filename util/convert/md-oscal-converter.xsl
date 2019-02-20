@@ -8,7 +8,7 @@
     <xsl:output indent="yes"/>
 
     <xsl:param name="target-ns" as="xs:string?">urn:booya</xsl:param>
-<!-- TO DO: Paragraphs, lists and 'pre' blocks...   -->
+    <!-- TO DO: Headers, tables and numbered lists   -->
 
     <!-- Markdown pseudoparser in XSLT  -->
 

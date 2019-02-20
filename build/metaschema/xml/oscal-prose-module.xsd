@@ -3,12 +3,49 @@
   <xs:element name="prose" type="oscal-prose:prose"/>
   <xs:complexType name="prose">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="oscal-prose:h1"/>
+      <xs:element ref="oscal-prose:h2"/>
+      <xs:element ref="oscal-prose:h3"/>
+      <xs:element ref="oscal-prose:h4"/>
+      <xs:element ref="oscal-prose:h5"/>
+      <xs:element ref="oscal-prose:h6"/>
       <xs:element ref="oscal-prose:p"/>
       <xs:element ref="oscal-prose:ul"/>
       <xs:element ref="oscal-prose:ol"/>
       <xs:element ref="oscal-prose:pre"/>
+      <xs:element ref="oscal-prose:table"/>
     </xs:choice>
   </xs:complexType>
+  <xs:element name="h1">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:inlines"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="h2">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:inlines"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="h3">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:inlines"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="h4">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:inlines"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="h5">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:inlines"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="h6">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:inlines"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="p">
     <xs:complexType mixed="true">
       <xs:group ref="oscal-prose:everything-inline"/>
@@ -47,7 +84,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <!-- whatnot includes 'semantical' elements along with the inline mix -->
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="oscal-prose:tr"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tr">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element maxOccurs="unbounded" ref="oscal-prose:td"/>
+        <xs:element maxOccurs="unbounded" ref="oscal-prose:th"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="th">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:everything-inline"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="td">
+    <xs:complexType mixed="true">
+      <xs:group ref="oscal-prose:everything-inline"/>
+    </xs:complexType>
+  </xs:element>
   <xs:group name="everything-inline">
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">

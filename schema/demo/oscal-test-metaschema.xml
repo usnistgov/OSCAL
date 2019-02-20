@@ -6,7 +6,7 @@
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" top="kit-thing" use="kit">
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" root="kit">
 
   <schema-name>FAKEUP Testing Schema</schema-name>
   <short-name>oscal-test</short-name>
@@ -106,7 +106,7 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="chunk-among-chunks" show-docs="xml json">
+  <define-assembly name="chunk-among-chunks" group-as="chunks-together" show-docs="xml json">
     <formal-name>Chunk among chunks</formal-name>
     <description>As it says</description>
     <model>
