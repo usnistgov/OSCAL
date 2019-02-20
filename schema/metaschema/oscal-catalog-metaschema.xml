@@ -10,7 +10,7 @@
  root="catalog">
 
   <schema-name>OSCAL Control Catalog Format</schema-name>
-  <short-name>catalog</short-name>
+  <short-name>oscal-catalog</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
 
   <remarks>
