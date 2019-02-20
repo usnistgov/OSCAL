@@ -101,39 +101,39 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="catalog">
          <h4 id="oscal-catalog_catalog"><b class="formal-name">Catalog</b>:
-            <code class="name">&lt;catalog&gt;</code> assembly
+            <code class="name">catalog</code> assembly
          </h4>
          <p class="description">A collection of controls</p>
          <div class="model">
-            <p>The <code class="name">&lt;catalog&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">catalog</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Flag <a href="#model-version" class="name"><code class="name">@model-version</code></a><i> (required)</i></li>
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#model-version" class="name"><code class="name">model-version</code></a><i> (required)</i></li>
                
-               <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
+               <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>one</i>)
                </li>
                
-               <li>A <a class="name" href="#metadata"><code class="name">&lt;metadata&gt;</code></a> assembly  (<i>zero or one</i>)
+               <li>A <a class="name" href="#metadata"><code class="name">metadata</code></a> assembly  (<i>zero or one</i>)
                </li>
                
-               <li>A <a class="name" href="#declarations"><code class="name">&lt;declarations&gt;</code></a> field  (<i>zero or one</i>)
+               <li>A <a class="name" href="#declarations"><code class="name">declarations</code></a> field  (<i>zero or one</i>)
                </li>
                
-               <li>A <a class="name" href="#references"><code class="name">&lt;references&gt;</code></a> assembly  (<i>zero or one</i>)
+               <li>A <a class="name" href="#references"><code class="name">references</code></a> assembly  (<i>zero or one</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#section"><code class="name">&lt;section&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#section"><code class="name">section</code></a> assemblies (<i>zero or more</i>)
                </li>
                
                <li class="choice">A choice between
                   
                   <ul>
                      
-                     <li class="assemblies"><a class="name" href="#group"><code class="name">&lt;group&gt;</code></a> assemblies (<i>zero or more</i>)
+                     <li class="assemblies"><a class="name" href="#group"><code class="name">group</code></a> assemblies (<i>zero or more</i>)
                      </li>
                      
-                     <li class="assemblies"><a class="name" href="#control"><code class="name">&lt;control&gt;</code></a> assemblies (<i>zero or more</i>)
+                     <li class="assemblies"><a class="name" href="#control"><code class="name">control</code></a> assemblies (<i>zero or more</i>)
                      </li>
                      
                   </ul>
@@ -148,15 +148,16 @@ a:hover { text-decoration: underline }
             </p>
             
          </div>
-         <blockquote class="description">
-            <p>A small catalog with a single control</p>
-         </blockquote><pre class="xml">
+         <ul class="usa-accordion-bordered">
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_xml">XML</button><div id="catalog_example1_xml" class="usa-accordion-content"><pre class="xml">
 <code class="tag">&lt;catalog id="simple-example" model-version="0.99"&gt;</code>
   <code class="tag">&lt;title&gt;</code>A Miniature Catalog<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;control id="single"&gt;</code>
     <code class="tag">&lt;title&gt;</code>A Single Control<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;/control&gt;</code>
-<code class="tag">&lt;/catalog&gt;</code></pre><pre class="json">
+<code class="tag">&lt;/catalog&gt;</code></pre></div>
+            </li>
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_json">JSON</button><div id="catalog_example1_json" class="usa-accordion-content"><pre class="json">
 
   { "id" : "simple-example",
     "model-version" : "0.99",
@@ -164,7 +165,13 @@ a:hover { text-decoration: underline }
     "controls" : 
     [ 
       { "id" : "single",
-        "title" : "A Single Control" } ] }</pre>|
+        "title" : "A Single Control" } ] }</pre></div>
+            </li>
+         </ul>
+         <blockquote class="description">
+            <p>A small catalog with a single control</p>
+         </blockquote>|
+         
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -177,63 +184,63 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#model-version"><code class="name">@model-version</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#model-version"><code class="name">model-version</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">&lt;title&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th>
                   <td>field</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#metadata"><code class="name">&lt;metadata&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#metadata"><code class="name">metadata</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#declarations"><code class="name">&lt;declarations&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#declarations"><code class="name">declarations</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">&lt;references&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">references</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#section"><code class="name">&lt;section&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#section"><code class="name">section</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#group"><code class="name">&lt;group&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#group"><code class="name">group</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#control"><code class="name">&lt;control&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#control"><code class="name">control</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -253,14 +260,14 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="declarations">
          <h4 id="oscal-catalog_declarations"><b class="formal-name">Declarations</b>:
-            <code class="name">&lt;declarations&gt;</code> field
+            <code class="name">declarations</code> field
          </h4>
          <p class="description">Either a reference to a declarations file, or a set of declarations</p>
          <div class="model">
-            <p>The <code class="name">&lt;declarations&gt;</code> field may have flags:
+            <p>The <code class="name">declarations</code> field may have flags:
             </p>
             <ul>
-               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">href</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -276,7 +283,7 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">@href</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">href</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -289,27 +296,27 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="section">
          <h4 id="oscal-catalog_section"><b class="formal-name">Section</b>:
-            <code class="name">&lt;section&gt;</code> assembly
+            <code class="name">section</code> assembly
          </h4>
          <p class="description">Allows the inclusion of prose content within a Catalog.</p>
          <div class="model">
-            <p>The <code class="name">&lt;section&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">section</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)
                </li>
                
-               <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
+               <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>one</i>)
                </li>
                
                <li class="prose">Prose contents (paragraphs and lists)</li>
                
-               <li class="assemblies"><a class="name" href="#section"><code class="name">&lt;section&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#section"><code class="name">section</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li>A <a class="name" href="#references"><code class="name">&lt;references&gt;</code></a> assembly  (<i>zero or one</i>)
+               <li>A <a class="name" href="#references"><code class="name">references</code></a> assembly  (<i>zero or one</i>)
                </li>
                
                
@@ -328,21 +335,21 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">@class</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">&lt;title&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th>
                   <td>field</td>
                   <td> (<i>one</i>)
                   </td>
@@ -356,14 +363,14 @@ a:hover { text-decoration: underline }
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#section"><code class="name">&lt;section&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#section"><code class="name">section</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">&lt;references&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">references</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -383,44 +390,44 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="group">
          <h4 id="oscal-catalog_group"><b class="formal-name">Control Group</b>:
-            <code class="name">&lt;group&gt;</code> assembly
+            <code class="name">group</code> assembly
          </h4>
          <p class="description">A group of controls, or of groups of controls.</p>
          <div class="model">
-            <p>The <code class="name">&lt;group&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">group</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
-               </li>
-               
-               <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
+               <li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#param"><code class="name">&lt;param&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>one</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#param"><code class="name">param</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#prop"><code class="name">prop</code></a> fields (<i>zero or more</i>)
+               </li>
+               
+               <li class="assemblies"><a class="name" href="#part"><code class="name">part</code></a> assemblies (<i>zero or more</i>)
                </li>
                
                <li class="choice">A choice between
                   
                   <ul>
                      
-                     <li class="assemblies"><a class="name" href="#group"><code class="name">&lt;group&gt;</code></a> assemblies (<i>zero or more</i>)
+                     <li class="assemblies"><a class="name" href="#group"><code class="name">group</code></a> assemblies (<i>zero or more</i>)
                      </li>
                      
-                     <li class="assemblies"><a class="name" href="#control"><code class="name">&lt;control&gt;</code></a> assemblies (<i>zero or more</i>)
+                     <li class="assemblies"><a class="name" href="#control"><code class="name">control</code></a> assemblies (<i>zero or more</i>)
                      </li>
                      
                   </ul>
                </li>
                
-               <li>A <a class="name" href="#references"><code class="name">&lt;references&gt;</code></a> assembly  (<i>zero or one</i>)
+               <li>A <a class="name" href="#references"><code class="name">references</code></a> assembly  (<i>zero or one</i>)
                </li>
                
                
@@ -433,13 +440,17 @@ a:hover { text-decoration: underline }
                by all members of that group. Unlike a <a href="#section" class="name">&lt;section&gt;</a>, a <a href="#group" class="name">&lt;group&gt;</a> may not contain arbitrary prose directly, only inside its <a href="#part" class="name">&lt;part&gt;</a> or <a href="#control" class="name">&lt;control&gt;</a> components.
             </p>
             
-         </div><pre class="xml"><code class="tag">&lt;group id="xyz"&gt;</code>
+         </div>
+         <ul class="usa-accordion-bordered">
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">XML</button><div id="group_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;group id="xyz"&gt;</code>
   <code class="tag">&lt;title&gt;</code>My Group<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;prop class="required"&gt;</code>some property<code class="tag">&lt;/prop&gt;</code>
   <code class="tag">&lt;control id="xyz1"&gt;</code>
     <code class="tag">&lt;title&gt;</code>Control<code class="tag">&lt;/title&gt;</code>
   <code class="tag">&lt;/control&gt;</code>
-<code class="tag">&lt;/group&gt;</code></pre><pre class="json">
+<code class="tag">&lt;/group&gt;</code></pre></div>
+            </li>
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">JSON</button><div id="group_example1_json" class="usa-accordion-content"><pre class="json">
 
   { "id" : "xyz",
     "title" : "My Group",
@@ -450,7 +461,10 @@ a:hover { text-decoration: underline }
     "controls" : 
     [ 
       { "id" : "xyz1",
-        "title" : "Control" } ] }</pre>|
+        "title" : "Control" } ] }</pre></div>
+            </li>
+         </ul>|
+         
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -463,63 +477,63 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">@class</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">&lt;title&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th>
                   <td>field</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#param"><code class="name">&lt;param&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#param"><code class="name">param</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">prop</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">part</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#group"><code class="name">&lt;group&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#group"><code class="name">group</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#control"><code class="name">&lt;control&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#control"><code class="name">control</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">&lt;references&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">references</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -539,38 +553,38 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="control">
          <h4 id="oscal-catalog_control"><b class="formal-name">Control</b>:
-            <code class="name">&lt;control&gt;</code> assembly
+            <code class="name">control</code> assembly
          </h4>
          <p class="description">A structured information object representing a security or privacy control. Each security
             or privacy control within the Catalog is defined by a distinct control instance.
          </p>
          <div class="model">
-            <p>The <code class="name">&lt;control&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">control</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)
                </li>
                
-               <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
+               <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>one</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#param"><code class="name">&lt;param&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#param"><code class="name">param</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#prop"><code class="name">prop</code></a> fields (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#link"><code class="name">link</code></a> fields (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#part"><code class="name">part</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#subcontrol"><code class="name">&lt;subcontrol&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#subcontrol"><code class="name">subcontrol</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li>A <a class="name" href="#references"><code class="name">&lt;references&gt;</code></a> assembly  (<i>zero or one</i>)
+               <li>A <a class="name" href="#references"><code class="name">references</code></a> assembly  (<i>zero or one</i>)
                </li>
                
                
@@ -582,12 +596,19 @@ a:hover { text-decoration: underline }
                <a href="#part" class="name">&lt;part&gt;</a> or enhanced using <a href="#subcontrol" class="name">&lt;subcontrol&gt;</a>.
             </p>
             
-         </div><pre class="xml"><code class="tag">&lt;control id="x"&gt;</code>
+         </div>
+         <ul class="usa-accordion-bordered">
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="control_example1_xml">XML</button><div id="control_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;control id="x"&gt;</code>
   <code class="tag">&lt;title&gt;</code>Control 1<code class="tag">&lt;/title&gt;</code>
-<code class="tag">&lt;/control&gt;</code></pre><pre class="json">
+<code class="tag">&lt;/control&gt;</code></pre></div>
+            </li>
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="control_example1_json">JSON</button><div id="control_example1_json" class="usa-accordion-content"><pre class="json">
 
   { "id" : "x",
-    "title" : "Control 1" }</pre>|
+    "title" : "Control 1" }</pre></div>
+            </li>
+         </ul>|
+         
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -600,63 +621,63 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">@class</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">&lt;title&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th>
                   <td>field</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#param"><code class="name">&lt;param&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#param"><code class="name">param</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">prop</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">link</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">part</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#subcontrol"><code class="name">&lt;subcontrol&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#subcontrol"><code class="name">subcontrol</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">&lt;references&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">references</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -677,33 +698,33 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="subcontrol">
          <h4 id="oscal-catalog_subcontrol"><b class="formal-name">Sub-Control</b>:
-            <code class="name">&lt;subcontrol&gt;</code> assembly
+            <code class="name">subcontrol</code> assembly
          </h4>
          <p class="description">A control extension or enhancement</p>
          <div class="model">
-            <p>The <code class="name">&lt;subcontrol&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">subcontrol</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)
                </li>
                
-               <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>one</i>)
+               <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>one</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#param"><code class="name">&lt;param&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#param"><code class="name">param</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#prop"><code class="name">prop</code></a> fields (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#link"><code class="name">link</code></a> fields (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#part"><code class="name">part</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li>A <a class="name" href="#references"><code class="name">&lt;references&gt;</code></a> assembly  (<i>zero or one</i>)
+               <li>A <a class="name" href="#references"><code class="name">references</code></a> assembly  (<i>zero or one</i>)
                </li>
                
                
@@ -722,56 +743,56 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">@class</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">&lt;title&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th>
                   <td>field</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#param"><code class="name">&lt;param&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#param"><code class="name">param</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">prop</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">link</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">part</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">&lt;references&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">references</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -791,7 +812,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="title">
          <h4 id="oscal-catalog_title"><b class="formal-name">Title</b>:
-            <code class="name">&lt;title&gt;</code> field
+            <code class="name">title</code> field
          </h4>
          <p>Supports inline encoding</p>
          <p class="description">A title for display and navigation, exclusive of more specific properties</p>
@@ -800,18 +821,18 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="prop">
          <h4 id="oscal-catalog_prop"><b class="formal-name">Property</b>:
-            <code class="name">&lt;prop&gt;</code> field
+            <code class="name">prop</code> field
          </h4>
          <p class="description">A value with a name, attributed to the containing control, subcontrol, part,
             or group.
          </p>
          <div class="model">
-            <p>The <code class="name">&lt;prop&gt;</code> field may have flags:
+            <p>The <code class="name">prop</code> field may have flags:
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">class</code></a><i> (required)</i></li>
             </ul>
          </div>
          <table class="usa-table-borderless">
@@ -826,14 +847,14 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">@class</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>one</i>)
                   </td>
@@ -876,36 +897,43 @@ a:hover { text-decoration: underline }
                (which also supports other constraints over property values).
             </p>
             
-         </div><pre class="xml"><code class="tag">&lt;o:prop class="name"&gt;</code>A1<code class="tag">&lt;/o:prop&gt;</code></pre><pre class="json">
+         </div>
+         <ul class="usa-accordion-bordered">
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="prop_example1_xml">XML</button><div id="prop_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;prop class="name"&gt;</code>A1<code class="tag">&lt;/prop&gt;</code></pre></div>
+            </li>
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="prop_example1_json">JSON</button><div id="prop_example1_json" class="usa-accordion-content"><pre class="json">
 
   { "class" : "name",
     "STRVALUE" : "A1" }</pre></div>
+            </li>
+         </ul>
+      </div>
       
       
       <div class="define-assembly" id="param">
          <h4 id="oscal-catalog_param"><b class="formal-name">Parameter</b>:
-            <code class="name">&lt;param&gt;</code> assembly
+            <code class="name">param</code> assembly
          </h4>
          <p class="description">Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</p>
          <div class="model">
-            <p>The <code class="name">&lt;param&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">param</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a><i> (required)</i></li>
-               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a><i> (required)</i></li>
+               <li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#depends-on" class="name"><code class="name">@depends-on</code></a> (<i>optional</i>)
+               <li>Flag <a href="#depends-on" class="name"><code class="name">depends-on</code></a> (<i>optional</i>)
                </li>
                
-               <li>A <a class="name" href="#label"><code class="name">&lt;label&gt;</code></a> field  (<i>zero or one</i>): A short name for the parameter.
+               <li>A <a class="name" href="#label"><code class="name">label</code></a> field  (<i>zero or one</i>): A short name for the parameter.
                   <br class="br" />The label value should be suitable for inline display in a rendered catalog.
                   
                </li>
                
-               <li class="assemblies"><a class="name" href="#desc"><code class="name">&lt;desc&gt;</code></a> fields (<i>zero or more</i>): A short summary of the parameter's intended use.<br class="br" /> A label is optional, but should be provided unless a <a href="#select" class="name">&lt;select&gt;</a> (selection) is provided.
+               <li class="assemblies"><a class="name" href="#desc"><code class="name">desc</code></a> fields (<i>zero or more</i>): A short summary of the parameter's intended use.<br class="br" /> A label is optional, but should be provided unless a <a href="#select" class="name">&lt;select&gt;</a> (selection) is provided.
                </li>
                
-               <li class="assemblies"><a class="name" href="#constraint"><code class="name">&lt;constraint&gt;</code></a> fields (<i>zero or more</i>): A rule describing the permissible parameter values.
+               <li class="assemblies"><a class="name" href="#constraint"><code class="name">constraint</code></a> fields (<i>zero or more</i>): A rule describing the permissible parameter values.
                   <br class="br" />Currently, OSCAL does not standardize any formal rules language for value constraints.
                   A <a href="#test" class="name">&lt;test&gt;</a> option may be used to specify a formal rule that may be automatically used if recognized
                   by an OSCAL tool. Further development is needed to support the declaration of a rule
@@ -913,7 +941,7 @@ a:hover { text-decoration: underline }
                   
                </li>
                
-               <li class="assemblies"><a class="name" href="#guideline"><code class="name">&lt;guideline&gt;</code></a> assemblies (<i>zero or more</i>): Additional recommendations for the use of the parameter, or around what values
+               <li class="assemblies"><a class="name" href="#guideline"><code class="name">guideline</code></a> assemblies (<i>zero or more</i>): Additional recommendations for the use of the parameter, or around what values
                   should be provided.
                </li>
                
@@ -921,13 +949,13 @@ a:hover { text-decoration: underline }
                   
                   <ul>
                      
-                     <li>A <a class="name" href="#value"><code class="name">&lt;value&gt;</code></a> field  (<i>zero or one</i>): A recommended parameter value or set of values.
+                     <li>A <a class="name" href="#value"><code class="name">value</code></a> field  (<i>zero or one</i>): A recommended parameter value or set of values.
                         <br class="br" />A value provided in a catalog can be redefined at any higher layer of OSCAL (e.g.,
                         Profile).
                         
                      </li>
                      
-                     <li>A <a class="name" href="#select"><code class="name">&lt;select&gt;</code></a> assembly  (<i>zero or one</i>): A set of parameter value choices, that may be picked from to set the parameter
+                     <li>A <a class="name" href="#select"><code class="name">select</code></a> assembly  (<i>zero or one</i>): A set of parameter value choices, that may be picked from to set the parameter
                         value.
                         <br class="br" />.
                         
@@ -936,7 +964,7 @@ a:hover { text-decoration: underline }
                   </ul>
                </li>
                
-               <li class="assemblies"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a> fields (<i>zero or more</i>): 
+               <li class="assemblies"><a class="name" href="#link"><code class="name">link</code></a> fields (<i>zero or more</i>): 
                </li>
                
                
@@ -970,28 +998,28 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">@class</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#depends-on"><code class="name">@depends-on</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#depends-on"><code class="name">depends-on</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#label"><code class="name">&lt;label&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#label"><code class="name">label</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1005,7 +1033,7 @@ a:hover { text-decoration: underline }
                   </td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#desc"><code class="name">&lt;desc&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#desc"><code class="name">desc</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1018,7 +1046,7 @@ a:hover { text-decoration: underline }
                   </td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#constraint"><code class="name">&lt;constraint&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#constraint"><code class="name">constraint</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1036,7 +1064,7 @@ a:hover { text-decoration: underline }
                   </td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#guideline"><code class="name">&lt;guideline&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#guideline"><code class="name">guideline</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1047,7 +1075,7 @@ a:hover { text-decoration: underline }
                   </td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#value"><code class="name">&lt;value&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#value"><code class="name">value</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1063,7 +1091,7 @@ a:hover { text-decoration: underline }
                   </td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#select"><code class="name">&lt;select&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#select"><code class="name">select</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1077,7 +1105,7 @@ a:hover { text-decoration: underline }
                   </td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">link</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1099,7 +1127,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="label">
          <h4 id="oscal-catalog_label"><b class="formal-name">Parameter label</b>:
-            <code class="name">&lt;label&gt;</code> field
+            <code class="name">label</code> field
          </h4>
          <p>Supports inline encoding</p>
          <p class="description">A placeholder for a missing value, in display.</p>
@@ -1109,15 +1137,15 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="desc">
          <h4 id="oscal-catalog_desc"><b class="formal-name">Parameter description</b>:
-            <code class="name">&lt;desc&gt;</code> field
+            <code class="name">desc</code> field
          </h4>
          <p>Supports inline encoding</p>
          <p class="description">Indicates and explains the purpose and use of a parameter</p>
          <div class="model">
-            <p>The <code class="name">&lt;desc&gt;</code> field may have flags:
+            <p>The <code class="name">desc</code> field may have flags:
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1133,7 +1161,7 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1146,14 +1174,14 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="constraint">
          <h4 id="oscal-catalog_constraint"><b class="formal-name">Constraint</b>:
-            <code class="name">&lt;constraint&gt;</code> field
+            <code class="name">constraint</code> field
          </h4>
          <p class="description">A formal or informal expression of a constraint or test</p>
          <div class="model">
-            <p>The <code class="name">&lt;constraint&gt;</code> field may have flags:
+            <p>The <code class="name">constraint</code> field may have flags:
             </p>
             <ul>
-               <li>Flag <a href="#test" class="name"><code class="name">@test</code></a> (<i>optional</i>)
+               <li>Flag <a href="#test" class="name"><code class="name">test</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1169,7 +1197,7 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#test"><code class="name">@test</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#test"><code class="name">test</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1182,11 +1210,11 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="guideline">
          <h4 id="oscal-catalog_guideline"><b class="formal-name">Guideline</b>:
-            <code class="name">&lt;guideline&gt;</code> assembly
+            <code class="name">guideline</code> assembly
          </h4>
          <p class="description">A prose statement that provides a recommendation for the use of a parameter.</p>
          <div class="model">
-            <p>The <code class="name">&lt;guideline&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">guideline</code> assembly has the following contents  (in order):
             </p>
             <ul>
                
@@ -1228,7 +1256,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="value">
          <h4 id="oscal-catalog_value"><b class="formal-name">Value constraint</b>:
-            <code class="name">&lt;value&gt;</code> field
+            <code class="name">value</code> field
          </h4>
          <p>Supports inline encoding</p>
          <p class="description">Indicates a permissible value for a parameter or property</p>
@@ -1254,17 +1282,17 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="select">
          <h4 id="oscal-catalog_select"><b class="formal-name">Selection</b>:
-            <code class="name">&lt;select&gt;</code> assembly
+            <code class="name">select</code> assembly
          </h4>
          <p class="description">Presenting a choice among alternatives</p>
          <div class="model">
-            <p>The <code class="name">&lt;select&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">select</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#how-many" class="name"><code class="name">@how-many</code></a> (<i>optional</i>)
+               <li>Flag <a href="#how-many" class="name"><code class="name">how-many</code></a> (<i>optional</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#choice"><code class="name">&lt;choice&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#choice"><code class="name">choice</code></a> fields (<i>zero or more</i>)
                </li>
                
                
@@ -1283,14 +1311,14 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#how-many"><code class="name">@how-many</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#how-many"><code class="name">how-many</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#choice"><code class="name">&lt;choice&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#choice"><code class="name">choice</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1310,7 +1338,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="choice">
          <h4 id="oscal-catalog_choice"><b class="formal-name">Choice</b>:
-            <code class="name">&lt;choice&gt;</code> field
+            <code class="name">choice</code> field
          </h4>
          <p>Supports inline encoding</p>
          <p class="description">A value selection among several such options</p>
@@ -1319,30 +1347,30 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="part">
          <h4 id="oscal-catalog_part"><b class="formal-name">Part</b>:
-            <code class="name">&lt;part&gt;</code> assembly
+            <code class="name">part</code> assembly
          </h4>
          <p class="description">A partition or component of a control, subcontrol or part</p>
          <div class="model">
-            <p>The <code class="name">&lt;part&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">part</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#class" class="name"><code class="name">@class</code></a> (<i>optional</i>)
-               </li>
-               
-               <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>zero or one</i>)
+               <li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a> fields (<i>zero or more</i>)
+               <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>zero or one</i>)
+               </li>
+               
+               <li class="assemblies"><a class="name" href="#prop"><code class="name">prop</code></a> fields (<i>zero or more</i>)
                </li>
                
                <li class="prose">Prose contents (paragraphs and lists)</li>
                
-               <li class="assemblies"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#part"><code class="name">part</code></a> assemblies (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#link"><code class="name">link</code></a> fields (<i>zero or more</i>)
                </li>
                
                
@@ -1381,28 +1409,28 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">@class</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">&lt;title&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">&lt;prop&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">prop</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1416,14 +1444,14 @@ a:hover { text-decoration: underline }
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">&lt;part&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">part</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">link</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1443,7 +1471,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="link">
          <h4 id="oscal-catalog_link"><b class="formal-name">Link</b>:
-            <code class="name">&lt;link&gt;</code> field
+            <code class="name">link</code> field
          </h4>
          <p>Supports inline encoding</p>
          <p class="description">
@@ -1451,12 +1479,12 @@ a:hover { text-decoration: underline }
             
          </p>
          <div class="model">
-            <p>The <code class="name">&lt;link&gt;</code> field may have flags:
+            <p>The <code class="name">link</code> field may have flags:
             </p>
             <ul>
-               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">href</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#rel" class="name"><code class="name">@rel</code></a> (<i>optional</i>)
+               <li>Flag <a href="#rel" class="name"><code class="name">rel</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1472,14 +1500,14 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">@href</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">href</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#rel"><code class="name">@rel</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#rel"><code class="name">rel</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1499,23 +1527,23 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="references">
          <h4 id="oscal-catalog_references"><b class="formal-name">References</b>:
-            <code class="name">&lt;references&gt;</code> assembly
+            <code class="name">references</code> assembly
          </h4>
          <p class="description">
             A group of reference descriptions
             
          </p>
          <div class="model">
-            <p>The <code class="name">&lt;references&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">references</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#link"><code class="name">link</code></a> fields (<i>zero or more</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#ref"><code class="name">&lt;ref&gt;</code></a> assemblies (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#ref"><code class="name">ref</code></a> assemblies (<i>zero or more</i>)
                </li>
                
                
@@ -1534,21 +1562,21 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">&lt;link&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">link</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#ref"><code class="name">&lt;ref&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#ref"><code class="name">ref</code></a></span></th>
                   <td>assembly</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1568,7 +1596,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="ref">
          <h4 id="oscal-catalog_ref"><b class="formal-name">Reference</b>:
-            <code class="name">&lt;ref&gt;</code> assembly
+            <code class="name">ref</code> assembly
          </h4>
          <p class="description">
             A reference, with one or more citations to standards, related documents, or other
@@ -1576,13 +1604,13 @@ a:hover { text-decoration: underline }
             
          </p>
          <div class="model">
-            <p>The <code class="name">&lt;ref&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">ref</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#citation"><code class="name">&lt;citation&gt;</code></a> fields (<i>zero or more</i>)
+               <li class="assemblies"><a class="name" href="#citation"><code class="name">citation</code></a> fields (<i>zero or more</i>)
                </li>
                
                <li class="prose">Prose contents (paragraphs and lists)</li>
@@ -1603,14 +1631,14 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#citation"><code class="name">&lt;citation&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#citation"><code class="name">citation</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1637,17 +1665,17 @@ a:hover { text-decoration: underline }
       
       <div class="define-field" id="citation">
          <h4 id="oscal-catalog_citation"><b class="formal-name">Citation</b>:
-            <code class="name">&lt;citation&gt;</code> field
+            <code class="name">citation</code> field
          </h4>
          <p>Supports inline encoding</p>
          <p class="description">Citation of a resource</p>
          <div class="model">
-            <p>The <code class="name">&lt;citation&gt;</code> field may have flags:
+            <p>The <code class="name">citation</code> field may have flags:
             </p>
             <ul>
-               <li>Flag <a href="#id" class="name"><code class="name">@id</code></a> (<i>optional</i>)
+               <li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">href</code></a> (<i>optional</i>)
                </li>
             </ul>
          </div>
@@ -1663,14 +1691,14 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">@id</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">@href</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">href</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1686,14 +1714,21 @@ a:hover { text-decoration: underline }
                identifier such as a DOI be provided for any citation.
             </p>
             
-         </div><pre class="xml"><code class="tag">&lt;o:citation&gt;</code>Some <code class="tag">&lt;o:strong&gt;</code>citation<code class="tag">&lt;/o:strong&gt;</code> of some sort<code class="tag">&lt;/o:citation&gt;</code></pre><pre class="json">
+         </div>
+         <ul class="usa-accordion-bordered">
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_xml">XML</button><div id="citation_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;citation&gt;</code>Some <code class="tag">&lt;strong&gt;</code>citation<code class="tag">&lt;/strong&gt;</code> of some sort<code class="tag">&lt;/citation&gt;</code></pre></div>
+            </li>
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_json">JSON</button><div id="citation_example1_json" class="usa-accordion-content"><pre class="json">
 
   { "RICHTEXT" : "Some **citation** of some sort" }</pre></div>
+            </li>
+         </ul>
+      </div>
       
       
       <div class="define-flag" id="id">
          <h4 id="oscal-catalog_id"><b class="formal-name">ID / identifier</b>:
-            <code class="name">@id</code> flag
+            <code class="name">id</code> flag
          </h4>
          
          
@@ -1706,16 +1741,23 @@ a:hover { text-decoration: underline }
             </p>
             
          </div>
-         <pre class="xml"><code class="tag">&lt;o:citation id="xyz2"&gt;</code>Some <code class="tag">&lt;o:strong&gt;</code>citation<code class="tag">&lt;/o:strong&gt;</code> of some sort<code class="tag">&lt;/o:citation&gt;</code></pre><pre class="json">
+         
+         <ul class="usa-accordion-bordered">
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_xml">XML</button><div id="id_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;citation id="xyz2"&gt;</code>Some <code class="tag">&lt;strong&gt;</code>citation<code class="tag">&lt;/strong&gt;</code> of some sort<code class="tag">&lt;/citation&gt;</code></pre></div>
+            </li>
+            <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_json">JSON</button><div id="id_example1_json" class="usa-accordion-content"><pre class="json">
 
   { "id" : "xyz2",
-    "RICHTEXT" : "Some **citation** of some sort" }</pre>
-         </div>
+    "RICHTEXT" : "Some **citation** of some sort" }</pre></div>
+            </li>
+         </ul>
+         
+      </div>
       
       
       <div class="define-flag" id="class">
          <h4 id="oscal-catalog_class"><b class="formal-name">Class</b>:
-            <code class="name">@class</code> flag
+            <code class="name">class</code> flag
          </h4>
          
          
@@ -1732,7 +1774,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-flag" id="href">
          <h4 id="oscal-catalog_href"><b class="formal-name">hypertext reference</b>:
-            <code class="name">@href</code> flag
+            <code class="name">href</code> flag
          </h4>
          
          
@@ -1754,7 +1796,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-flag" id="test">
          <h4 id="oscal-catalog_test"><b class="formal-name">Constraint test</b>:
-            <code class="name">@test</code> flag
+            <code class="name">test</code> flag
          </h4>
          
          
@@ -1765,7 +1807,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-flag" id="rel">
          <h4 id="oscal-catalog_rel"><b class="formal-name">Relation</b>:
-            <code class="name">@rel</code> flag
+            <code class="name">rel</code> flag
          </h4>
          
          
@@ -1776,7 +1818,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-flag" id="how-many">
          <h4 id="oscal-catalog_how-many"><b class="formal-name">Cardinality</b>:
-            <code class="name">@how-many</code> flag
+            <code class="name">how-many</code> flag
          </h4>
          
          
@@ -1787,7 +1829,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-flag" id="depends-on">
          <h4 id="oscal-catalog_depends-on"><b class="formal-name">Depends on</b>:
-            <code class="name">@depends-on</code> flag
+            <code class="name">depends-on</code> flag
          </h4>
          
          
@@ -1798,7 +1840,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-flag" id="model-version">
          <h4 id="oscal-catalog_model-version"><b class="formal-name">Model version</b>:
-            <code class="name">@model-version</code> flag
+            <code class="name">model-version</code> flag
          </h4>
          
          
@@ -1842,23 +1884,23 @@ a:hover { text-decoration: underline }
       
       <div class="define-assembly" id="hlink">
          <h4 id="oscal-metadata_hlink"><b class="formal-name">Hashed link</b>:
-            <code class="name">&lt;hlink&gt;</code> assembly
+            <code class="name">hlink</code> assembly
          </h4>
          <p class="description">A pointer to an external document with optional hash for verification</p>
          <div class="model">
-            <p>The <code class="name">&lt;hlink&gt;</code> element has the following contents  (in order):
+            <p>The <code class="name">hlink</code> assembly has the following contents  (in order):
             </p>
             <ul>
-               <li>Flag <a href="#href" class="name"><code class="name">@href</code></a><i> (required)</i></li>
-               <li>Flag <a href="#rel" class="name"><code class="name">@rel</code></a> (<i>optional</i>)
+               <li>Flag <a href="#href" class="name"><code class="name">href</code></a><i> (required)</i></li>
+               <li>Flag <a href="#rel" class="name"><code class="name">rel</code></a> (<i>optional</i>)
                </li>
-               <li>Flag <a href="#media-type" class="name"><code class="name">@media-type</code></a> (<i>optional</i>)
-               </li>
-               
-               <li>A <a class="name" href="#title"><code class="name">&lt;title&gt;</code></a> field  (<i>zero or one</i>)
+               <li>Flag <a href="#media-type" class="name"><code class="name">media-type</code></a> (<i>optional</i>)
                </li>
                
-               <li class="assemblies"><a class="name" href="#hash"><code class="name">&lt;hash&gt;</code></a> fields (<i>zero or more</i>)
+               <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>zero or one</i>)
+               </li>
+               
+               <li class="assemblies"><a class="name" href="#hash"><code class="name">hash</code></a> fields (<i>zero or more</i>)
                </li>
                
             </ul>
@@ -1883,35 +1925,35 @@ a:hover { text-decoration: underline }
             </thead>
             <tbody>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">@href</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">href</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#rel"><code class="name">@rel</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#rel"><code class="name">rel</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#media-type"><code class="name">@media-type</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#media-type"><code class="name">media-type</code></a></span></th>
                   <td>flag</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">&lt;title&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
                   <td></td>
                </tr>
                <tr>
-                  <th scope="row"><span class="usa-label"><a class="name" href="#hash"><code class="name">&lt;hash&gt;</code></a></span></th>
+                  <th scope="row"><span class="usa-label"><a class="name" href="#hash"><code class="name">hash</code></a></span></th>
                   <td>field</td>
                   <td> (<i>zero or one</i>)
                   </td>
@@ -1926,7 +1968,7 @@ a:hover { text-decoration: underline }
       
       <div class="define-flag" id="media-type">
          <h4 id="oscal-metadata_media-type"><b class="formal-name">Media type</b>:
-            <code class="name">@media-type</code> flag
+            <code class="name">media-type</code> flag
          </h4>
          
          

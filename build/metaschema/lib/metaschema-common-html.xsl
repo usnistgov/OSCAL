@@ -96,7 +96,7 @@
    </xsl:template>
 
    <xsl:template match="m:em | m:strong | m:b | m:i | m:u">
-      <xsl:element name="{local-name()}">
+      <xsl:element name="{local-name(.)}" namespace="http://www.w3.org/1999/xhtml">
          <xsl:apply-templates/>
       </xsl:element>
    </xsl:template>
@@ -106,10 +106,10 @@
       
       <xsl:call-template name="indent-for-pre"/>
       
-      <code class="tag">&lt;<xsl:value-of select="name(.)"/>
+      <code class="tag">&lt;<xsl:value-of select="local-name(.)"/>
          <xsl:for-each select="@*">
             <xsl:text> </xsl:text>
-            <xsl:value-of select="name()"/>
+            <xsl:value-of select="local-name()"/>
             <xsl:text>="</xsl:text>
             <xsl:value-of select="."/>
             <xsl:text>"</xsl:text>
@@ -126,7 +126,7 @@
             <xsl:with-param name="endtag" select="true()"/>
          </xsl:call-template>
       </xsl:if>
-      <code class="tag">&lt;/<xsl:value-of select="name(.)"/>
+      <code class="tag">&lt;/<xsl:value-of select="local-name(.)"/>
          <xsl:text>&gt;</xsl:text>
       </code>
    </xsl:template>

@@ -259,11 +259,11 @@
    </xsl:template>
 
    <xsl:template match="@name | @named">
-      <code class="name">&lt;<xsl:value-of select="."/>></code>
+      <code class="name"><xsl:value-of select="."/></code>
    </xsl:template>
    
    <xsl:template match="define-flag/@name | flag/@name">
-      <code class="name">@<xsl:value-of select="."/></code>
+      <code class="name"><xsl:value-of select="."/></code>
    </xsl:template>
    
    <xsl:template match="@group-as">
@@ -310,7 +310,7 @@
       
    <xsl:template match="model">
       <div class="model">
-         <p>The <xsl:apply-templates select="../@name"/> element has the following contents <xsl:if test="count(*) > 1"> (in order)</xsl:if>:</p>
+         <p>The <xsl:apply-templates select="../@name"/> assembly has the following contents <xsl:if test="count(*) > 1"> (in order)</xsl:if>:</p>
          <ul>
             <xsl:apply-templates select="../flag" mode="model"/>
            <xsl:apply-templates/>
@@ -349,19 +349,35 @@
 
    <xsl:template match="example[empty(* except (description | remarks))]"/>
    
-    <xsl:template match="example">
-         <xsl:apply-templates select="description"/>
-       <pre class="xml">
+   <xsl:template match="example">
+      <xsl:variable name="n" select="count(.|preceding-sibling::example)"/>
+      <ul class="usa-accordion-bordered">
+         <li>
+            <button class="usa-accordion-button" aria-expanded="true"
+               aria-controls="{ ../@name }_example{$n}_xml">XML</button>
+            <div id="{ ../@name }_example{$n}_xml" class="usa-accordion-content">
+               <pre class="xml">
             <!--<xsl:text xml:space="preserve">&#xA;</xsl:text>-->
            <xsl:apply-templates select="*" mode="as-example"/>
          </pre>
-      <pre class="json">
-            <xsl:text xml:space="preserve">&#xA;</xsl:text>
-            <xsl:apply-templates select="*" mode="jsonize"/>
-           
-         </pre>
-       <xsl:apply-templates select="remarks"/>
-      
+            </div>
+         </li>
+         <li>
+            <button class="usa-accordion-button" aria-expanded="true"
+               aria-controls="{ ../@name }_example{$n}_json">JSON</button>
+            <div id="{ ../@name }_example{$n}_json" class="usa-accordion-content">
+               <pre class="json">
+                  <xsl:text xml:space="preserve">&#xA;</xsl:text>
+                  <xsl:apply-templates select="*" mode="jsonize"/>
+               </pre>
+            </div>
+         </li>
+      </ul>
+
+      <xsl:apply-templates select="description"/>
+
+      <xsl:apply-templates select="remarks"/>
+
    </xsl:template>
    
    
