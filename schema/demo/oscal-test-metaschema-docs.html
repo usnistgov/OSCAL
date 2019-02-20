@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <body>
+      <h2 class="title">FAKEUP Testing Schema: XML Schema</h2>
+      <p>The short name (file identifier) for this schema shall be <i>oscal-test</i>. It is used internally when an
+         identifier is called for, and may appear in file names of schema artifacts.</p>urn:fakeup<div class="remarks">
+         <p class="p">A test schema for prototyping and demonstrating the metaschema feature set.</p>
+      </div>
+      <div class="define-assembly" id="kit">
+         <h3>
+            <b class="formal-name">Base</b>:
+            <code class="name">&lt;kit&gt;</code> element</h3>
+         <p class="description">Wrapper for other stuff</p>
+         <div class="model">
+            <p>The <code class="name">&lt;kit&gt;</code> element has the following contents :</p>
+            <ul>
+               <li>Attribute <a href="#id" class="name">
+                     <code class="name">@id</code>
+                  </a>
+                  <i> (required)</i>
+               </li>
+               <li>Attribute <a href="#some_string" class="name">
+                     <code class="name">@some_string</code>
+                  </a>
+                  <i> (required)</i>
+               </li>
+               <li class="assemblies">
+                  <a class="name" href="#thing">
+                     <code class="name">&lt;thing&gt;</code>
+                  </a> elements (<i>zero or more</i>)</li>
+            </ul>
+         </div>
+         <div class="remarks">
+            <p class="p">The kit can have all kinds of Things.</p>
+            <p class="p">feature set for testing (schemas):
+          enforcement of addressability constraints (distinctiveness of values)</p>
+            <p class="p">feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax.</p>
+            <p class="p">Also to do: find a case of variability in controls and show it off... parts?</p>
+         </div>
+         <pre class="xml">
+            <code class="tag">&lt;kit some_string="string"&gt;</code>
+            <code class="tag">&lt;thing some_string="aha" id="thing001"&gt;</code>
+            <code class="tag">&lt;single-required-field&gt;</code>Required<code class="tag">&lt;/single-required-field&gt;</code>
+            <code class="tag">&lt;single-field&gt;</code>
+            <code class="tag">&lt;/single-field&gt;</code>
+            <code class="tag">&lt;single-mixed-field&gt;</code>Mixed content? <code class="tag">&lt;i&gt;</code>here be content?<code class="tag">&lt;/i&gt;</code>
+            <code class="tag">&lt;/single-mixed-field&gt;</code>
+            <code class="tag">&lt;/thing&gt;</code>
+            <code class="tag">&lt;/kit&gt;</code>
+         </pre>
+      </div>
+      <div class="define-assembly" id="thing">
+         <h3>
+            <b class="formal-name">Base</b>:
+            <code class="name">&lt;thing&gt;</code> element</h3>
+         <p class="description">Wrapper for other stuff</p>
+         <div class="model">
+            <p>The <code class="name">&lt;thing&gt;</code> element has the following contents  (in order):</p>
+            <ul>
+               <li>Attribute <a href="#id" class="name">
+                     <code class="name">@id</code>
+                  </a>
+                  <i> (required)</i>
+               </li>
+               <li>Attribute <a href="#some_string" class="name">
+                     <code class="name">@some_string</code>
+                  </a>
+                  <i> (required)</i>
+               </li>
+               <li>A <a class="name" href="#single-required-field">
+                     <code class="name">&lt;single-required-field&gt;</code>
+                  </a> element  (<i>one</i>)</li>
+               <li>An <a class="name" href="#acquired-model">
+                     <code class="name">&lt;acquired-model&gt;</code>
+                  </a> element  (<i>zero or one</i>)</li>
+               <li>A <a class="name" href="#single-mixed-field">
+                     <code class="name">&lt;single-mixed-field&gt;</code>
+                  </a> element  (<i>one</i>)</li>
+               <li class="assemblies">
+                  <a class="name" href="#plural-field">
+                     <code class="name">&lt;plural-field&gt;</code>
+                  </a> elements (<i>zero or more</i>)</li>
+               <li class="assemblies">
+                  <a class="name" href="#plural-mixed-field">
+                     <code class="name">&lt;plural-mixed-field&gt;</code>
+                  </a> elements (<i>zero or more</i>)</li>
+               <li>A <a class="name" href="#single-chunk">
+                     <code class="name">&lt;single-chunk&gt;</code>
+                  </a> element  (<i>zero or one</i>)</li>
+               <li class="assemblies">
+                  <a class="name" href="#chunk-among-chunks">
+                     <code class="name">&lt;chunk-among-chunks&gt;</code>
+                  </a> elements (<i>zero or more</i>)</li>
+               <li class="choice">A choice between
+         <ul>
+                     <li>A <a class="name" href="#vanilla">
+                           <code class="name">&lt;vanilla&gt;</code>
+                        </a> element  (<i>zero or one</i>)</li>
+                     <li>A <a class="name" href="#chocolate">
+                           <code class="name">&lt;chocolate&gt;</code>
+                        </a> element  (<i>zero or one</i>)</li>
+                  </ul>
+               </li>
+            </ul>
+         </div>
+         <div class="remarks">
+            <p class="p">A thing can be whatever: flags, fields of various sorts mixed and not, and assemblies.
+        Also the various sorts of addressing should be demonstrated. The model described should be demonstrated in companion instances (XML and JSON), which can in turn be used as targets for mutual conversion.</p>
+         </div>
+      </div>
+      <div class="define-field" id="single-required-field">
+         <h3>
+            <b class="formal-name">Single string (required)</b>:
+            <code class="name">&lt;single-required-field&gt;</code> element</h3>
+         <p class="description">As it says</p>
+         <pre class="xml">
+            <code class="tag">&lt;single-required-field&gt;</code>Required<code class="tag">&lt;/single-required-field&gt;</code>
+         </pre>
+      </div>
+      <div class="define-field" id="acquired-model">
+         <h3>
+            <b class="formal-name">Acquired Model</b>:
+            <code class="name">&lt;acquired-model&gt;</code> element</h3>
+         <p>Supports inline encoding</p>
+         <p class="description">A string field, with mixed content</p>
+         <div class="remarks">
+            <p class="p">Defined in its own module!</p>
+         </div>
+         <pre class="xml">
+            <code class="tag">&lt;acquired-model&gt;</code>what's <code class="tag">&lt;em&gt;</code>up with this?<code class="tag">&lt;/em&gt;</code>
+            <code class="tag">&lt;/acquired-model&gt;</code>
+         </pre>
+      </div>
+      <div class="define-field" id="single-mixed-field">
+         <h3>
+            <b class="formal-name">Single string but with mixed content</b>:
+            <code class="name">&lt;single-mixed-field&gt;</code> element</h3>
+         <p>Supports inline encoding</p>
+         <p class="description">As it says</p>
+      </div>
+      <div class="define-field" id="plural-field">
+         <h3>
+            <b class="formal-name">A single occurrence of a plural (ha)</b>:
+            <code class="name">&lt;plural-field&gt;</code> element</h3>
+         <p class="description">As it says</p>
+      </div>
+      <div class="define-field" id="plural-mixed-field">
+         <h3>
+            <b class="formal-name">Only one plural, but possibly mixed.</b>:
+            <code class="name">&lt;plural-mixed-field&gt;</code> element</h3>
+         <p class="description">As it says</p>
+      </div>
+      <div class="define-assembly" id="single-chunk">
+         <h3>
+            <b class="formal-name">Chunk</b>:
+            <code class="name">&lt;single-chunk&gt;</code> element</h3>
+         <p class="description">As it says</p>
+         <div class="model">
+            <p>The <code class="name">&lt;single-chunk&gt;</code> element has the following contents  (in order):</p>
+            <ul>
+               <li>A <a class="name" href="#single-required-field">
+                     <code class="name">&lt;single-required-field&gt;</code>
+                  </a> element  (<i>one</i>)</li>
+               <li class="prose">Prose contents (paragraphs and lists)</li>
+            </ul>
+         </div>
+      </div>
+      <div class="define-assembly" id="chunk-among-chunks">
+         <h3>
+            <b class="formal-name">Chunk among chunks</b>:
+            <code class="name">&lt;chunk-among-chunks&gt;</code> element</h3>
+         <p class="description">As it says</p>
+         <div class="model">
+            <p>The <code class="name">&lt;chunk-among-chunks&gt;</code> element has the following contents  (in order):</p>
+            <ul>
+               <li>A <a class="name" href="#single-required-field">
+                     <code class="name">&lt;single-required-field&gt;</code>
+                  </a> element  (<i>one</i>)</li>
+               <li class="prose">Prose contents (paragraphs and lists)</li>
+            </ul>
+         </div>
+      </div>
+      <div class="define-assembly" id="vanilla">
+         <h3>
+            <b class="formal-name">One Choice</b>:
+            <code class="name">&lt;vanilla&gt;</code> element</h3>
+         <p class="description">As it says</p>
+         <div class="model">
+            <p>The <code class="name">&lt;vanilla&gt;</code> element has the following contents :</p>
+            <ul>
+               <li>A <a class="name" href="#single-required-field">
+                     <code class="name">&lt;single-required-field&gt;</code>
+                  </a> element  (<i>one</i>)</li>
+            </ul>
+         </div>
+      </div>
+      <div class="define-assembly" id="chocolate">
+         <h3>
+            <b class="formal-name">Another Choice</b>:
+            <code class="name">&lt;chocolate&gt;</code> element</h3>
+         <p class="description">As it says</p>
+         <div class="model">
+            <p>The <code class="name">&lt;chocolate&gt;</code> element has the following contents :</p>
+            <ul>
+               <li>A <a class="name" href="#single-required-field">
+                     <code class="name">&lt;single-required-field&gt;</code>
+                  </a> element  (<i>one</i>)</li>
+            </ul>
+         </div>
+      </div>
+      <div class="define-flag" id="some_string">
+         <h3>
+            <b class="formal-name">A string flag</b>:
+            <code class="name">@some_string</code> attribute</h3>
+         <p class="description">As it says</p>
+      </div>
+      <div class="define-flag" id="id">
+         <h3>
+            <b class="formal-name">An ID</b>:
+            <code class="name">@id</code> attribute</h3>
+         <p class="description">As it says</p>
+      </div>
+   </body>
+</html>
