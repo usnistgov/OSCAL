@@ -207,7 +207,7 @@
    
    
    <xsl:template match="define-flag">
-      <div class="define-flag" id="{@name}">
+      <div class="definition define-flag" id="{@name}">
          <h4 id="{/*/short-name}_{@name}">
             <xsl:apply-templates select="formal-name" mode="inline"/>:
             <xsl:apply-templates select="@name"/> flag</h4>
@@ -216,7 +216,7 @@
    </xsl:template>
    
    <xsl:template  match="define-field">
-      <div class="define-field" id="{@name}">
+      <div class="definition define-field" id="{@name}">
          <h4  id="{/*/short-name}_{@name}">
             <xsl:apply-templates select="formal-name" mode="inline"/>:
             <xsl:apply-templates select="@name"/> field</h4>
@@ -242,7 +242,7 @@
    </xsl:template>
    
    <xsl:template match="define-assembly">
-      <div class="define-assembly" id="{@name}">
+      <div class="definition define-assembly" id="{@name}">
          <h4 id="{/*/short-name}_{@name}">
             <xsl:apply-templates select="formal-name" mode="inline"/>:
             <xsl:apply-templates select="@name"/> assembly</h4>
@@ -461,7 +461,6 @@ pre.json { color: darkblue }
 .define-field    *,
 .define-flag     *  { margin: 0em }
 
-.define-assembly div { margin-top: 1em }
 
 pre { padding: 0.5em; background-color: gainsboro }
 
