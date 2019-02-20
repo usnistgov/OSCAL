@@ -63,17 +63,15 @@
    </xsl:template>
    
    <xsl:template match="m:example/m:description">
-      <blockquote class="description">
-         <p>
-            <xsl:apply-templates/>
-         </p>
-      </blockquote>
+      <p class="description">
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:example/m:remarks">
-      <blockquote class="remarks">
+      <div class="remarks">
           <xsl:apply-templates/>
-      </blockquote>
+      </div>
    </xsl:template>
    
    <xsl:template  match="m:p">

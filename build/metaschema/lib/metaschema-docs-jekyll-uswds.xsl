@@ -251,7 +251,7 @@
          <xsl:apply-templates select="formal-name | description"/>
          <xsl:apply-templates select="model"/>
          <xsl:apply-templates select="remarks"/>
-         <xsl:apply-templates select="example"/>|
+         <xsl:apply-templates select="example"/>
          <xsl:call-template name="uswds-table">
             <xsl:with-param name="property-set" select="flag | (model//* except model//(choice | description/descendant-or-self::* | remarks/descendant-or-self::*))"/>
          </xsl:call-template>
@@ -367,7 +367,6 @@
                aria-controls="{ ../@name }_example{$n}_json">JSON</button>
             <div id="{ ../@name }_example{$n}_json" class="usa-accordion-content">
                <pre class="json">
-                  <xsl:text xml:space="preserve">&#xA;</xsl:text>
                   <xsl:apply-templates select="*" mode="jsonize"/>
                </pre>
             </div>
@@ -435,8 +434,8 @@
    
    
    <xsl:template match="code[. = /*/*[@show-docs='xml' or @show-docs='xml json']/@name]">
-      <a href="#{.}" class="name">&lt;<xsl:text/>
-         <xsl:apply-templates/>><xsl:text/>
+      <a href="#{.}" class="name">
+         <xsl:apply-templates/>
       </a>
    </xsl:template>
    

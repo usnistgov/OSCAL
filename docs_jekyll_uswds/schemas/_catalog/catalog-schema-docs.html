@@ -89,7 +89,7 @@ a:hover { text-decoration: underline }
          
          <p class="p">The OSCAL Control Catalog format can be used to describe a collection of security
             controls and related sub-controls, along with a variety of control metadata. The root
-            of the Control Catalog format is <a href="#catalog" class="name">&lt;catalog&gt;</a>.
+            of the Control Catalog format is <a href="#catalog" class="name">catalog</a>.
          </p>
          
          <p class="p">An XML Schema is provided for the OSCAL Catalog XML model.</p>
@@ -144,7 +144,7 @@ a:hover { text-decoration: underline }
          </div>
          <div class="remarks">
             
-            <p class="p">Catalogs may use <a href="#section" class="name">&lt;section&gt;</a> to subdivide the textual contents of a catalog.
+            <p class="p">Catalogs may use <a href="#section" class="name">section</a> to subdivide the textual contents of a catalog.
             </p>
             
          </div>
@@ -158,7 +158,6 @@ a:hover { text-decoration: underline }
 <code class="tag">&lt;/catalog&gt;</code></pre></div>
             </li>
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_json">JSON</button><div id="catalog_example1_json" class="usa-accordion-content"><pre class="json">
-
   { "id" : "simple-example",
     "model-version" : "0.99",
     "title" : "A Miniature Catalog",
@@ -168,10 +167,7 @@ a:hover { text-decoration: underline }
         "title" : "A Single Control" } ] }</pre></div>
             </li>
          </ul>
-         <blockquote class="description">
-            <p>A small catalog with a single control</p>
-         </blockquote>|
-         
+         <p class="description">A small catalog with a single control</p>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -321,8 +317,7 @@ a:hover { text-decoration: underline }
                
                
             </ul>
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -436,8 +431,8 @@ a:hover { text-decoration: underline }
          <div class="remarks">
             
             <p class="p">Catalogs can use groups to provide collections of related controls or Control Groups.
-               A <a href="#group" class="name">&lt;group&gt;</a> may have its own properties, statements, parameters, and references, which are inherited
-               by all members of that group. Unlike a <a href="#section" class="name">&lt;section&gt;</a>, a <a href="#group" class="name">&lt;group&gt;</a> may not contain arbitrary prose directly, only inside its <a href="#part" class="name">&lt;part&gt;</a> or <a href="#control" class="name">&lt;control&gt;</a> components.
+               A <a href="#group" class="name">group</a> may have its own properties, statements, parameters, and references, which are inherited
+               by all members of that group. Unlike a <a href="#section" class="name">section</a>, a <a href="#group" class="name">group</a> may not contain arbitrary prose directly, only inside its <a href="#part" class="name">part</a> or <a href="#control" class="name">control</a> components.
             </p>
             
          </div>
@@ -451,7 +446,6 @@ a:hover { text-decoration: underline }
 <code class="tag">&lt;/group&gt;</code></pre></div>
             </li>
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">JSON</button><div id="group_example1_json" class="usa-accordion-content"><pre class="json">
-
   { "id" : "xyz",
     "title" : "My Group",
     "props" : 
@@ -463,8 +457,7 @@ a:hover { text-decoration: underline }
       { "id" : "xyz1",
         "title" : "Control" } ] }</pre></div>
             </li>
-         </ul>|
-         
+         </ul>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -592,8 +585,8 @@ a:hover { text-decoration: underline }
          </div>
          <div class="remarks">
             
-            <p class="p">Controls may be grouped using <a href="#group" class="name">&lt;group&gt;</a>, and controls may be partitioned using
-               <a href="#part" class="name">&lt;part&gt;</a> or enhanced using <a href="#subcontrol" class="name">&lt;subcontrol&gt;</a>.
+            <p class="p">Controls may be grouped using <a href="#group" class="name">group</a>, and controls may be partitioned using
+               <a href="#part" class="name">part</a> or enhanced using <a href="#subcontrol" class="name">subcontrol</a>.
             </p>
             
          </div>
@@ -603,12 +596,10 @@ a:hover { text-decoration: underline }
 <code class="tag">&lt;/control&gt;</code></pre></div>
             </li>
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="control_example1_json">JSON</button><div id="control_example1_json" class="usa-accordion-content"><pre class="json">
-
   { "id" : "x",
     "title" : "Control 1" }</pre></div>
             </li>
-         </ul>|
-         
+         </ul>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -729,8 +720,7 @@ a:hover { text-decoration: underline }
                
                
             </ul>
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -887,7 +877,7 @@ a:hover { text-decoration: underline }
                use; however, this is application defined.
             </p>
             
-            <p class="p">For singletons (that is, the only element among siblings with its <a href="#class" class="name">&lt;class&gt;</a>),
+            <p class="p">For singletons (that is, the only element among siblings with its <a href="#class" class="name">class</a>),
                properties are especially useful as proxies (unique identifiers) for their controls,
                such
                that controls may be returned one for one on queries for properties (name and value).
@@ -902,7 +892,6 @@ a:hover { text-decoration: underline }
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="prop_example1_xml">XML</button><div id="prop_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;prop class="name"&gt;</code>A1<code class="tag">&lt;/prop&gt;</code></pre></div>
             </li>
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="prop_example1_json">JSON</button><div id="prop_example1_json" class="usa-accordion-content"><pre class="json">
-
   { "class" : "name",
     "STRVALUE" : "A1" }</pre></div>
             </li>
@@ -930,12 +919,12 @@ a:hover { text-decoration: underline }
                   
                </li>
                
-               <li class="assemblies"><a class="name" href="#desc"><code class="name">desc</code></a> fields (<i>zero or more</i>): A short summary of the parameter's intended use.<br class="br" /> A label is optional, but should be provided unless a <a href="#select" class="name">&lt;select&gt;</a> (selection) is provided.
+               <li class="assemblies"><a class="name" href="#desc"><code class="name">desc</code></a> fields (<i>zero or more</i>): A short summary of the parameter's intended use.<br class="br" /> A label is optional, but should be provided unless a <a href="#select" class="name">select</a> (selection) is provided.
                </li>
                
                <li class="assemblies"><a class="name" href="#constraint"><code class="name">constraint</code></a> fields (<i>zero or more</i>): A rule describing the permissible parameter values.
                   <br class="br" />Currently, OSCAL does not standardize any formal rules language for value constraints.
-                  A <a href="#test" class="name">&lt;test&gt;</a> option may be used to specify a formal rule that may be automatically used if recognized
+                  A <a href="#test" class="name">test</a> option may be used to specify a formal rule that may be automatically used if recognized
                   by an OSCAL tool. Further development is needed to support the declaration of a rule
                   language and value.
                   
@@ -974,18 +963,17 @@ a:hover { text-decoration: underline }
             
             <p class="p">In a catalog, a parameter is typically used as a placeholder for the future assignment
                of a parameter value, although the OSCAL model allows for the direct assignment of
-               a value if desired by the control author. The <a href="#value" class="name">&lt;value&gt;</a> may be optionally used to specify one or more values. If no value is provided, then
+               a value if desired by the control author. The <a href="#value" class="name">value</a> may be optionally used to specify one or more values. If no value is provided, then
                it is expected that the value will be provided at the Profile or Implementation layer.
             </p>
             
             <p class="p">A parameter can include a variety of metadata options that support the future solicitation
-               of one or more values. A <a href="#label" class="name">&lt;label&gt;</a> provides a textual placeholder that can be used in a tool to solicit parameter value
-               input, or to display in catalog documentation. The <a href="#desc" class="name">&lt;desc&gt;</a> provides a short description of what the parameter is used for, which can be used
-               in tooling to help a user understand how to use the parameter. A <a href="#constraint" class="name">&lt;constraint&gt;</a> can be used to provide criteria for the allowed values. A <a href="#guideline" class="name">&lt;guideline&gt;</a> provides a recommendation for the use of a parameter.
+               of one or more values. A <a href="#label" class="name">label</a> provides a textual placeholder that can be used in a tool to solicit parameter value
+               input, or to display in catalog documentation. The <a href="#desc" class="name">desc</a> provides a short description of what the parameter is used for, which can be used
+               in tooling to help a user understand how to use the parameter. A <a href="#constraint" class="name">constraint</a> can be used to provide criteria for the allowed values. A <a href="#guideline" class="name">guideline</a> provides a recommendation for the use of a parameter.
             </p>
             
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -1040,7 +1028,7 @@ a:hover { text-decoration: underline }
                   <td>
                      <p class="description">A short summary of the parameter's intended use.</p>
                      <div class="remarks">
-                        <p class="p"> A label is optional, but should be provided unless a <a href="#select" class="name">&lt;select&gt;</a> (selection) is provided.
+                        <p class="p"> A label is optional, but should be provided unless a <a href="#select" class="name">select</a> (selection) is provided.
                         </p>
                      </div>
                   </td>
@@ -1055,7 +1043,7 @@ a:hover { text-decoration: underline }
                      <div class="remarks">
                         
                         <p class="p">Currently, OSCAL does not standardize any formal rules language for value constraints.
-                           A <a href="#test" class="name">&lt;test&gt;</a> option may be used to specify a formal rule that may be automatically used if recognized
+                           A <a href="#test" class="name">test</a> option may be used to specify a formal rule that may be automatically used if recognized
                            by an OSCAL tool. Further development is needed to support the declaration of a rule
                            language and value.
                         </p>
@@ -1222,8 +1210,7 @@ a:hover { text-decoration: underline }
                
                
             </ul>
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -1262,7 +1249,7 @@ a:hover { text-decoration: underline }
          <p class="description">Indicates a permissible value for a parameter or property</p>
          <div class="remarks">
             
-            <p class="p">In a declaration, <a href="#value" class="name">&lt;value&gt;</a> will commonly be given in groups, indicating a set of
+            <p class="p">In a declaration, <a href="#value" class="name">value</a> will commonly be given in groups, indicating a set of
                enumerated permissible values (i.e., for an element to be valid to a value constraint,
                it
                must equal one of the given values).
@@ -1297,8 +1284,7 @@ a:hover { text-decoration: underline }
                
                
             </ul>
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -1378,25 +1364,24 @@ a:hover { text-decoration: underline }
          </div>
          <div class="remarks">
             
-            <p class="p">Like properties (<a href="#prop" class="name">&lt;prop&gt;</a>) and parameters (<a href="#param" class="name">&lt;param&gt;</a>), parts can be
+            <p class="p">Like properties (<a href="#prop" class="name">prop</a>) and parameters (<a href="#param" class="name">param</a>), parts can be
                distinguished from other elements within their controls by their assigned
-               <a href="#class" class="name">&lt;class&gt;</a>, such that they may be subjected to <q>declarations logic</q> using
+               <a href="#class" class="name">class</a>, such that they may be subjected to <q>declarations logic</q> using
                these values as bindings (and thereby getting open-ended extensibility).
             </p>
             
             <p class="p">An assigned class may frequently provide for a header in display, such that
-               <a href="#part" class="name">&lt;part&gt;</a><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
-               Parts may also however have their own titles (<a href="#title" class="name">&lt;title&gt;</a> elements).
+               <a href="#part" class="name">part</a><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
+               Parts may also however have their own titles (<a href="#title" class="name">title</a> elements).
             </p>
             
             <p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally
-               constructed out of properties (<a href="#prop" class="name">&lt;prop&gt;</a> elements) and/or their own parts. Such
+               constructed out of properties (<a href="#prop" class="name">prop</a> elements) and/or their own parts. Such
                structured objects may, at the extreme, function virtually as control extensions or
                subcontrol-like objects (<q>enhancements</q>).
             </p>
             
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -1548,8 +1533,7 @@ a:hover { text-decoration: underline }
                
                
             </ul>
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -1617,8 +1601,7 @@ a:hover { text-decoration: underline }
                
                
             </ul>
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
@@ -1719,7 +1702,6 @@ a:hover { text-decoration: underline }
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_xml">XML</button><div id="citation_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;citation&gt;</code>Some <code class="tag">&lt;strong&gt;</code>citation<code class="tag">&lt;/strong&gt;</code> of some sort<code class="tag">&lt;/citation&gt;</code></pre></div>
             </li>
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_json">JSON</button><div id="citation_example1_json" class="usa-accordion-content"><pre class="json">
-
   { "RICHTEXT" : "Some **citation** of some sort" }</pre></div>
             </li>
          </ul>
@@ -1736,7 +1718,7 @@ a:hover { text-decoration: underline }
          
          <div class="remarks">
             
-            <p class="p">No mechanism is proposed to ensure that <a href="#id" class="name">&lt;id&gt;</a> values do not collide across
+            <p class="p">No mechanism is proposed to ensure that <a href="#id" class="name">id</a> values do not collide across
                different catalogs. Use profiling without <q>merge</q> to detect such clashes.
             </p>
             
@@ -1746,7 +1728,6 @@ a:hover { text-decoration: underline }
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_xml">XML</button><div id="id_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;citation id="xyz2"&gt;</code>Some <code class="tag">&lt;strong&gt;</code>citation<code class="tag">&lt;/strong&gt;</code> of some sort<code class="tag">&lt;/citation&gt;</code></pre></div>
             </li>
             <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_json">JSON</button><div id="id_example1_json" class="usa-accordion-content"><pre class="json">
-
   { "id" : "xyz2",
     "RICHTEXT" : "Some **citation** of some sort" }</pre></div>
             </li>
@@ -1782,7 +1763,7 @@ a:hover { text-decoration: underline }
          
          <div class="remarks">
             
-            <p class="p">Note in particular that <a href="#href" class="name">&lt;href&gt;</a> targets include elements (locations) in
+            <p class="p">Note in particular that <a href="#href" class="name">href</a> targets include elements (locations) in
                representations of documents that exist only by virtue of dynamic application, such
                as (for
                example) the results of profile resolution.
@@ -1911,8 +1892,7 @@ a:hover { text-decoration: underline }
                element of the same name once proposed for HTML.
             </p>
             
-         </div>|
-         
+         </div>
          <table class="usa-table-borderless">
             <caption>Properties</caption>
             <thead>
