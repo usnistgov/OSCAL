@@ -3,9 +3,11 @@ tagname: catalog
 schema: oscal-catalog
 ---
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="catalog">
-   <h4 id="oscal-catalog_catalog"><b class="formal-name">Catalog</b>:
-      <code class="name">catalog</code> assembly
+   <h4 id="oscal-catalog_catalog"><b class="formal-name">Catalog</b>: <code class="name">catalog</code> assembly
    </h4>
+   <h5><code>catalog</code> is the root (containing) element of
+      this schema. 
+   </h5>
    <p class="description">A collection of controls</p>
    <div class="model">
       <p>The <code class="name">catalog</code> assembly has the following contents  (in order):
@@ -53,12 +55,12 @@ schema: oscal-catalog
    </div>
    <ul class="usa-accordion-bordered">
       <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_xml">XML</button><div id="catalog_example1_xml" class="usa-accordion-content"><pre class="xml">
-<code class="tag">&lt;catalog id="simple-example" model-version="0.99"&gt;</code>
-  <code class="tag">&lt;title&gt;</code>A Miniature Catalog<code class="tag">&lt;/title&gt;</code>
-  <code class="tag">&lt;control id="single"&gt;</code>
-    <code class="tag">&lt;title&gt;</code>A Single Control<code class="tag">&lt;/title&gt;</code>
-  <code class="tag">&lt;/control&gt;</code>
-<code class="tag">&lt;/catalog&gt;</code></pre></div>
+&lt;catalog id="simple-example" model-version="0.99"&gt;
+  &lt;title&gt;A Miniature Catalog&lt;/title&gt;
+  &lt;control id="single"&gt;
+    &lt;title&gt;A Single Control&lt;/title&gt;
+  &lt;/control&gt;
+&lt;/catalog&gt;</pre></div>
       </li>
       <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_json">JSON</button><div id="catalog_example1_json" class="usa-accordion-content"><pre class="json">
   { "id" : "simple-example",
