@@ -9,8 +9,10 @@
     <xsl:output method="xhtml" omit-xml-declaration="true" indent="yes"/>
     
     <xsl:variable name="source" select="/"/>
+    <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
     
-    <xsl:variable name="result-path" select="'../../../docs_jekyll_uswds/schemas\_' || /*/short-name/replace(.,'^oscal-','')"/>
+    <!--"C:\Users\wap1\Documents\OSCAL\docs_jekyll_uswds\content\documentation\schemas\oscal-catalog\catalog.md"-->
+    <xsl:variable name="result-path" select="'../../../docs_jekyll_uswds/content/documentation/schemas/' || $metaschema-code"/>
     
     <!-- The function fn:transform() returns a map, whose primary results are under 'output'
          unless a base output URI is given
@@ -27,7 +29,7 @@
     <!-- XPath 3.1 transform() is documented here: https://www.w3.org/TR/xpath-functions-31/#func-transform   -->
     <xsl:variable name="html-docs">
         <!-- to assign a base URI for the XSLT in memory -->
-        <xsl:variable name="xslt-uri" select="resolve-uri((/METASCHEMA/short-name || '-metaschema-documentor.xsl'))"/>
+        <xsl:variable name="xslt-uri" select="resolve-uri(( $metaschema-code || '-metaschema-documentor.xsl'))"/>
         <xsl:variable name="runtime"   select="map {
             'xslt-version'       : 3.0,
             'stylesheet-base-uri': $xslt-uri,
@@ -37,10 +39,9 @@
         
     </xsl:variable>
     
-    <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
     <xsl:template match="/">
         <!--<xsl:message expand-text="true"> { resolve-uri($result-path, document-uri(/)) }</xsl:message>-->
-        <xsl:result-document href="{$result-path}/{ /*/short-name }.html">
+        <xsl:result-document href="{$result-path}/{ $metaschema-code }.html">
             <xsl:text>---&#xA;</xsl:text>
             <xsl:text expand-text="true">title: { $metaschema-code } schema documentation &#xA;</xsl:text>
             <xsl:text expand-text="true">description: { $metaschema-code } schema documentation &#xA;</xsl:text>
@@ -64,7 +65,7 @@
         <xsl:text expand-text="true">title: { $metaschema-code } { @id } documentation &#xA;</xsl:text>
         <xsl:text expand-text="true">tagname: { @id }&#xA;</xsl:text>
         <xsl:text expand-text="true">description: { @id } element/object description | { $metaschema-code } schema &#xA;</xsl:text>
-        <xsl:text expand-text="true">permalink: /documentation/schemas/{ $metaschema-code }/{ @id }&#xA;</xsl:text>
+        <xsl:text expand-text="true">permalink: /documentation/schemas/{ $metaschema-code }/{ $metaschema-code }_{ @id }&#xA;</xsl:text>
         <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
         <xsl:text expand-text="true">schema: { $metaschema-code }&#xA;</xsl:text>
         <xsl:text>---&#xA;</xsl:text>
