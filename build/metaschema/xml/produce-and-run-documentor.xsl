@@ -37,17 +37,21 @@
         
     </xsl:variable>
     
+    <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
     <xsl:template match="/">
         <!--<xsl:message expand-text="true"> { resolve-uri($result-path, document-uri(/)) }</xsl:message>-->
         <xsl:result-document href="{$result-path}/{ /*/short-name }.html">
             <xsl:text>---&#xA;</xsl:text>
-            <xsl:text expand-text="true">title: { $source/*/short-name } schema documentation &#xA;</xsl:text>
-            <xsl:text expand-text="true">schema: { $source/*/short-name }&#xA;</xsl:text>
+            <xsl:text expand-text="true">title: { $metaschema-code } schema documentation &#xA;</xsl:text>
+            <xsl:text expand-text="true">description: { $metaschema-code } schema documentation &#xA;</xsl:text>
+            <xsl:text expand-text="true">permalink: /documentation/schemas/{ $metaschema-code }/&#xA;</xsl:text>
+            <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
+            <xsl:text expand-text="true">schema: { $metaschema-code }&#xA;</xsl:text>
             <xsl:text>---&#xA;</xsl:text>
             <xsl:sequence select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>
         </xsl:result-document>
         <xsl:for-each select="$html-docs/*/html:body/html:div[contains-token(@class,'definition')]">
-            <xsl:result-document href="{$result-path}/{ $source/*/short-name }_{@id}.html"
+            <xsl:result-document href="{$result-path}/{ $metaschema-code }_{@id}.html"
                method="html">
                 <xsl:call-template name="yaml-header"/>
                 <xsl:sequence select="."/>
@@ -57,8 +61,12 @@
     
     <xsl:template name="yaml-header">
         <xsl:text>---&#xA;</xsl:text>
+        <xsl:text expand-text="true">title: { $metaschema-code } { @id } documentation &#xA;</xsl:text>
         <xsl:text expand-text="true">tagname: { @id }&#xA;</xsl:text>
-        <xsl:text expand-text="true">schema: { $source/*/short-name }&#xA;</xsl:text>
+        <xsl:text expand-text="true">description: { @id } element/object description | { $metaschema-code } schema &#xA;</xsl:text>
+        <xsl:text expand-text="true">permalink: /documentation/schemas/{ $metaschema-code }/{ @id }&#xA;</xsl:text>
+        <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
+        <xsl:text expand-text="true">schema: { $metaschema-code }&#xA;</xsl:text>
         <xsl:text>---&#xA;</xsl:text>
     </xsl:template>
             

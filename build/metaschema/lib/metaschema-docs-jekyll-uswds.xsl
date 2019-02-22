@@ -48,8 +48,6 @@
    <!-- only works when XML-to-JSON converter is in the import tree -->
    <xsl:template match="description | remarks" mode="jsonize"/>
 
-
-
    <xsl:template match="METASCHEMA">
       <xsl:variable name="definitions" select="define-assembly | define-field | define-flag"/>
       <div class="METASCHEMA">
@@ -61,7 +59,7 @@
                   <xsl:apply-templates select="@name"/>
                </a>
             </h5>
-            <xsl:call-template name="make-element-map"/>
+           <!-- <xsl:call-template name="make-element-map"/>-->
          </xsl:for-each>
          <xsl:apply-templates select="$definitions"/>
       </div>
@@ -90,14 +88,13 @@
          <xsl:text>></xsl:text>
          <xsl:choose>
             <xsl:when test="@name = $visited"> ... </xsl:when>
-            <xsl:when test="not(@name = $visited)">
+            <xsl:otherwise>
                <ul class="e_map">
                   <xsl:apply-templates select="$this-model" mode="element-map">
                      <xsl:with-param name="visited" tunnel="true" select="$visited, string(@name)"/>
                   </xsl:apply-templates>
                </ul>
-            </xsl:when>
-            <xsl:otherwise> </xsl:otherwise>
+            </xsl:otherwise>
          </xsl:choose>
          <xsl:text>&lt;/</xsl:text>
          <xsl:value-of select="@name"/>
