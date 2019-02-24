@@ -364,7 +364,10 @@
       identifier such as a DOI be provided for any citation.</p>
     </remarks>
     <example>
-      <o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
+      <o:ref>
+        <o:citation>Here is a work cited</o:citation>
+        <o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
+      </o:ref>
     </example>
   </define-field>
 
@@ -430,7 +433,6 @@
   <!--<define-field name="title" acquire-from="metadata"/>-->
   
   <define-field name="author" group-as="authors" acquire-from="metadata"/>
-  
   
   <define-field name="publication-date" acquire-from="metadata"/>
   

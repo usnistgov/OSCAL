@@ -63,17 +63,15 @@
    </xsl:template>
    
    <xsl:template match="m:example/m:description">
-      <blockquote class="description">
-         <p>
-            <xsl:apply-templates/>
-         </p>
-      </blockquote>
+      <p class="description">
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:example/m:remarks">
-      <blockquote class="remarks">
+      <div class="remarks">
           <xsl:apply-templates/>
-      </blockquote>
+      </div>
    </xsl:template>
    
    <xsl:template  match="m:p">
@@ -96,39 +94,39 @@
    </xsl:template>
 
    <xsl:template match="m:em | m:strong | m:b | m:i | m:u">
-      <xsl:element name="{local-name()}">
+      <xsl:element name="{local-name(.)}" namespace="http://www.w3.org/1999/xhtml">
          <xsl:apply-templates/>
       </xsl:element>
    </xsl:template>
    
    <xsl:template match="*" mode="serialize">
-      
-      
+
+
       <xsl:call-template name="indent-for-pre"/>
-      
-      <code class="tag">&lt;<xsl:value-of select="name(.)"/>
-         <xsl:for-each select="@*">
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="name()"/>
-            <xsl:text>="</xsl:text>
-            <xsl:value-of select="."/>
-            <xsl:text>"</xsl:text>
-         </xsl:for-each>
-         <xsl:text>&gt;</xsl:text>
-      </code>
-      
+
+      <xsl:text>&lt;</xsl:text>
+      <xsl:value-of select="local-name(.)"/>
+      <xsl:for-each select="@*">
+         <xsl:text> </xsl:text>
+         <xsl:value-of select="local-name()"/>
+         <xsl:text>="</xsl:text>
+         <xsl:value-of select="."/>
+         <xsl:text>"</xsl:text>
+      </xsl:for-each>
+      <xsl:text>&gt;</xsl:text>
+
       <xsl:apply-templates mode="serialize">
          <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
       </xsl:apply-templates>
-      
+
       <xsl:if test="not(text()[normalize-space(.)])">
          <xsl:call-template name="indent-for-pre">
             <xsl:with-param name="endtag" select="true()"/>
          </xsl:call-template>
       </xsl:if>
-      <code class="tag">&lt;/<xsl:value-of select="name(.)"/>
-         <xsl:text>&gt;</xsl:text>
-      </code>
+      <xsl:text>&lt;/</xsl:text>
+      <xsl:value-of select="local-name(.)"/>
+      <xsl:text>&gt;</xsl:text>
    </xsl:template>
    
    <xsl:template name="indent-for-pre">
