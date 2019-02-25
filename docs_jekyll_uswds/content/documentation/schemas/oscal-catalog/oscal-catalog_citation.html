@@ -58,17 +58,24 @@ schema: oscal-catalog
       
    </div>
    <ul class="usa-accordion-bordered">
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_xml">XML</button><div id="citation_example1_xml" class="usa-accordion-content"><pre class="xml">&lt;ref&gt;
-  &lt;citation&gt;Here is a work cited&lt;/citation&gt;
-  &lt;citation&gt;Some &lt;strong&gt;citation&lt;/strong&gt; of some sort&lt;/citation&gt;
-&lt;/ref&gt;</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_xml">XML</button><div id="citation_example1_xml" class="usa-accordion-content">
+            {% highlight xml %}
+            o:ref&gt;
+            o:citation&gt;Here is a work citedo:citation&gt;
+            o:citation&gt;Some o:strong&gt;citationo:strong&gt; of some sorto:citation&gt;
+            o:ref&gt;
+            {% endhighlight %}
+         </div>
       </li>
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_json">JSON</button><div id="citation_example1_json" class="usa-accordion-content"><pre class="json">
-  { "citations" : 
-    [ 
-      { "RICHTEXT" : "Here is a work cited" },
-      
-      { "RICHTEXT" : "Some **citation** of some sort" } ] }</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_json">JSON</button><div id="citation_example1_json" class="usa-accordion-content">
+            {% highlight json %}
+            { "citations" : 
+            [ 
+            { "RICHTEXT" : "Here is a work cited" },
+            
+            { "RICHTEXT" : "Some **citation** of some sort" } ] }
+            {% endhighlight %}
+         </div>
       </li>
    </ul>
 </div>

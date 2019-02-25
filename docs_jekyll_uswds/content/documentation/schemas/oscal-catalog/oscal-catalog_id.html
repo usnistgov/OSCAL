@@ -22,11 +22,18 @@ schema: oscal-catalog
    </div>
    
    <ul class="usa-accordion-bordered">
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_xml">XML</button><div id="id_example1_xml" class="usa-accordion-content"><pre class="xml">&lt;citation id="xyz2"&gt;Some &lt;strong&gt;citation&lt;/strong&gt; of some sort&lt;/citation&gt;</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_xml">XML</button><div id="id_example1_xml" class="usa-accordion-content">
+            {% highlight xml %}
+            o:citation id="xyz2"&gt;Some o:strong&gt;citationo:strong&gt; of some sorto:citation&gt;
+            {% endhighlight %}
+         </div>
       </li>
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_json">JSON</button><div id="id_example1_json" class="usa-accordion-content"><pre class="json">
-  { "id" : "xyz2",
-    "RICHTEXT" : "Some **citation** of some sort" }</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_json">JSON</button><div id="id_example1_json" class="usa-accordion-content">
+            {% highlight json %}
+            { "id" : "xyz2",
+            "RICHTEXT" : "Some **citation** of some sort" }
+            {% endhighlight %}
+         </div>
       </li>
    </ul>
    

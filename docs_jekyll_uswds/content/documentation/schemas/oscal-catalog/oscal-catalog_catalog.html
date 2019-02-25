@@ -58,22 +58,29 @@ schema: oscal-catalog
       
    </div>
    <ul class="usa-accordion-bordered">
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_xml">XML</button><div id="catalog_example1_xml" class="usa-accordion-content"><pre class="xml">
-&lt;catalog id="simple-example" model-version="0.99"&gt;
-  &lt;title&gt;A Miniature Catalog&lt;/title&gt;
-  &lt;control id="single"&gt;
-    &lt;title&gt;A Single Control&lt;/title&gt;
-  &lt;/control&gt;
-&lt;/catalog&gt;</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_xml">XML</button><div id="catalog_example1_xml" class="usa-accordion-content">
+            {% highlight xml %}
+            
+            catalog id="simple-example" model-version="0.99"&gt;
+            title&gt;A Miniature Catalogtitle&gt;
+            control id="single"&gt;
+            title&gt;A Single Controltitle&gt;
+            control&gt;
+            catalog&gt;
+            {% endhighlight %}
+         </div>
       </li>
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_json">JSON</button><div id="catalog_example1_json" class="usa-accordion-content"><pre class="json">
-  { "id" : "simple-example",
-    "model-version" : "0.99",
-    "title" : "A Miniature Catalog",
-    "controls" : 
-    [ 
-      { "id" : "single",
-        "title" : "A Single Control" } ] }</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_json">JSON</button><div id="catalog_example1_json" class="usa-accordion-content">
+            {% highlight json %}
+            { "id" : "simple-example",
+            "model-version" : "0.99",
+            "title" : "A Miniature Catalog",
+            "controls" : 
+            [ 
+            { "id" : "single",
+            "title" : "A Single Control" } ] }
+            {% endhighlight %}
+         </div>
       </li>
    </ul>
    <p class="description">A small catalog with a single control</p>

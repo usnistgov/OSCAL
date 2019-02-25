@@ -59,25 +59,32 @@ schema: oscal-catalog
       
    </div>
    <ul class="usa-accordion-bordered">
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">XML</button><div id="group_example1_xml" class="usa-accordion-content"><pre class="xml">&lt;group id="xyz"&gt;
-  &lt;title&gt;My Group&lt;/title&gt;
-  &lt;prop class="required"&gt;some property&lt;/prop&gt;
-  &lt;control id="xyz1"&gt;
-    &lt;title&gt;Control&lt;/title&gt;
-  &lt;/control&gt;
-&lt;/group&gt;</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">XML</button><div id="group_example1_xml" class="usa-accordion-content">
+            {% highlight xml %}
+            group id="xyz"&gt;
+            title&gt;My Grouptitle&gt;
+            prop class="required"&gt;some propertyprop&gt;
+            control id="xyz1"&gt;
+            title&gt;Controltitle&gt;
+            control&gt;
+            group&gt;
+            {% endhighlight %}
+         </div>
       </li>
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">JSON</button><div id="group_example1_json" class="usa-accordion-content"><pre class="json">
-  { "id" : "xyz",
-    "title" : "My Group",
-    "props" : 
-    [ 
-      { "class" : "required",
-        "STRVALUE" : "some property" } ],
-    "controls" : 
-    [ 
-      { "id" : "xyz1",
-        "title" : "Control" } ] }</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">JSON</button><div id="group_example1_json" class="usa-accordion-content">
+            {% highlight json %}
+            { "id" : "xyz",
+            "title" : "My Group",
+            "props" : 
+            [ 
+            { "class" : "required",
+            "STRVALUE" : "some property" } ],
+            "controls" : 
+            [ 
+            { "id" : "xyz1",
+            "title" : "Control" } ] }
+            {% endhighlight %}
+         </div>
       </li>
    </ul>
    <table class="usa-table-borderless">
