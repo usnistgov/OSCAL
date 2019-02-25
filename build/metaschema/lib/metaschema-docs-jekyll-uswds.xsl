@@ -426,19 +426,18 @@
             <button class="usa-accordion-button" aria-expanded="true"
                aria-controls="{ ../@name }_example{$n}_xml">XML</button>
             <div id="{ ../@name }_example{$n}_xml" class="usa-accordion-content">
-               <pre class="xml">
-            <!--<xsl:text xml:space="preserve">&#xA;</xsl:text>-->
-           <xsl:apply-templates select="*" mode="as-example"/>
-         </pre>
+               <xsl:text>&#xA;{% highlight xml %}&#xA;</xsl:text>
+               <xsl:apply-templates select="*" mode="as-example"/>
+               <xsl:text>&#xA;{% endhighlight %}</xsl:text>
             </div>
          </li>
          <li>
             <button class="usa-accordion-button" aria-expanded="true"
                aria-controls="{ ../@name }_example{$n}_json">JSON</button>
             <div id="{ ../@name }_example{$n}_json" class="usa-accordion-content">
-               <pre class="json">
-                  <xsl:apply-templates select="*" mode="jsonize"/>
-               </pre>
+               <xsl:text>&#xA;{% highlight json %}</xsl:text>
+               <xsl:apply-templates select="*" mode="jsonize"/>
+               <xsl:text>&#xA;{% endhighlight %}</xsl:text>
             </div>
          </li>
       </ul>

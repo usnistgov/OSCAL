@@ -59,25 +59,32 @@ schema: oscal-catalog
       
    </div>
    <ul class="usa-accordion-bordered">
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">XML</button><div id="group_example1_xml" class="usa-accordion-content"><pre class="xml"><code class="tag">&lt;group id="xyz"&gt;</code>
-  <code class="tag">&lt;title&gt;</code>My Group<code class="tag">&lt;/title&gt;</code>
-  <code class="tag">&lt;prop class="required"&gt;</code>some property<code class="tag">&lt;/prop&gt;</code>
-  <code class="tag">&lt;control id="xyz1"&gt;</code>
-    <code class="tag">&lt;title&gt;</code>Control<code class="tag">&lt;/title&gt;</code>
-  <code class="tag">&lt;/control&gt;</code>
-<code class="tag">&lt;/group&gt;</code></pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">XML</button><div id="group_example1_xml" class="usa-accordion-content">
+            {% highlight xml %}
+            group id="xyz"&gt;
+            title&gt;My Grouptitle&gt;
+            prop class="required"&gt;some propertyprop&gt;
+            control id="xyz1"&gt;
+            title&gt;Controltitle&gt;
+            control&gt;
+            group&gt;
+            {% endhighlight %}
+         </div>
       </li>
-      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">JSON</button><div id="group_example1_json" class="usa-accordion-content"><pre class="json">
-  { "id" : "xyz",
-    "title" : "My Group",
-    "props" : 
-    [ 
-      { "class" : "required",
-        "STRVALUE" : "some property" } ],
-    "controls" : 
-    [ 
-      { "id" : "xyz1",
-        "title" : "Control" } ] }</pre></div>
+      <li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">JSON</button><div id="group_example1_json" class="usa-accordion-content">
+            {% highlight json %}
+            { "id" : "xyz",
+            "title" : "My Group",
+            "props" : 
+            [ 
+            { "class" : "required",
+            "STRVALUE" : "some property" } ],
+            "controls" : 
+            [ 
+            { "id" : "xyz1",
+            "title" : "Control" } ] }
+            {% endhighlight %}
+         </div>
       </li>
    </ul>
    <table class="usa-table-borderless">
