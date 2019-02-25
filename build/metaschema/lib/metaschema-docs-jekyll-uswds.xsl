@@ -16,7 +16,8 @@
    
    -->
    <xsl:import href="metaschema-common-html.xsl"/>
-
+   <xsl:variable name="metaschema-code" select="/*/short-name"/>
+   
    <xsl:strip-space elements="*"/>
 
    <xsl:preserve-space elements="p li pre i b em strong a code q"/>
@@ -250,7 +251,7 @@
       <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-flag" id="{@name}">
-         <h4 id="{/*/short-name}_{@name}">
+         <h4 id="{$metaschema-code}_{@name}">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> flag</h4>
          <xsl:apply-templates/>
@@ -261,7 +262,7 @@
       <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-field" id="{@name}">
-         <h4 id="{/*/short-name}_{@name}">
+         <h4 id="{$metaschema-code}_{@name}">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> field</h4>
          <xsl:for-each select="$definition">
@@ -296,7 +297,7 @@
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       
       <div class="definition define-assembly" id="{@name}">
-         <h4 id="{/*/short-name}_{@name}">
+         <h4 id="{$metaschema-code}_{@name}">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> assembly</h4>
          <!-- No mention of @group-as on XML side       -->
