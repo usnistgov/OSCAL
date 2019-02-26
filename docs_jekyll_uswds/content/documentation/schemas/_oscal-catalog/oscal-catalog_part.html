@@ -1,0 +1,28 @@
+---
+title: oscal-catalog part documentation 
+tagname: part
+description: part element/object description | oscal-catalog schema 
+permalink: /docs/schemas/_oscal-catalog/oscal-catalog_part/
+layout: post
+schema: oscal-catalog
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="part"><h4 id="oscal-catalog_part"><b class="formal-name">Part</b>: <code class="name">part</code> assembly</h4><p class="description">A partition or component of a control, subcontrol or part</p><div class="model"><p>The <code class="name">part</code> assembly has the following contents  (in order):</p><ul><li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)</li><li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)</li>
+      <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>zero or one</i>)</li>
+      <li class="assemblies"><a class="name" href="#prop"><code class="name">prop</code></a> fields (<i>zero or more</i>)</li>
+      <li class="prose">Prose contents (paragraphs and lists)</li>
+      <li class="assemblies"><a class="name" href="#part"><code class="name">part</code></a> assemblies (<i>zero or more</i>)</li>
+      <li class="assemblies"><a class="name" href="#link"><code class="name">link</code></a> fields (<i>zero or more</i>)</li>
+      
+    </ul></div><div class="remarks">
+      <p class="p">Like properties (<a href="#prop" class="name">prop</a>) and parameters (<a href="#param" class="name">param</a>), parts can be
+        distinguished from other elements within their controls by their assigned
+        <a href="#class" class="name">class</a>, such that they may be subjected to <q>declarations logic</q> using
+        these values as bindings (and thereby getting open-ended extensibility).</p>
+      <p class="p">An assigned class may frequently provide for a header in display, such that
+        <a href="#part" class="name">part</a><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
+        Parts may also however have their own titles (<a href="#title" class="name">title</a> elements).</p>
+      <p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally
+        constructed out of properties (<a href="#prop" class="name">prop</a> elements) and/or their own parts. Such
+        structured objects may, at the extreme, function virtually as control extensions or
+        subcontrol-like objects (<q>enhancements</q>).</p>
+    </div><table class="usa-table-borderless"><caption>Properties</caption><thead><tr><th scope="col">Name</th><th scope="col">Metaschema type</th><th scope="col">Cardinality</th><th scope="col">Description / Remarks</th></tr></thead><tbody><tr><th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th><td>flag</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th><td>flag</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th><td>field</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">prop</code></a></span></th><td>field</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#"></a></span></th><td>Reserved for prose</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">part</code></a></span></th><td>assembly</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#link"><code class="name">link</code></a></span></th><td>field</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#"></a></span></th><td>ANY</td><td> (<i>zero or one</i>)</td><td></td></tr></tbody></table></div>

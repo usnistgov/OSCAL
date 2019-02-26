@@ -1,0 +1,14 @@
+---
+title: oscal-catalog hlink documentation 
+tagname: hlink
+description: hlink element/object description | oscal-catalog schema 
+permalink: /docs/schemas/_oscal-catalog/oscal-catalog_hlink/
+layout: post
+schema: oscal-catalog
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="hlink"><h4 id="oscal-catalog_hlink"><b class="formal-name">Hashed link</b>: <code class="name">hlink</code> assembly</h4><p class="description">A pointer to an external document with optional hash for verification</p><div class="model"><p>The <code class="name">hlink</code> assembly has the following contents  (in order):</p><ul><li>Flag <a href="#href" class="name"><code class="name">href</code></a><i> (required)</i></li><li>Flag <a href="#rel" class="name"><code class="name">rel</code></a> (<i>optional</i>)</li><li>Flag <a href="#media-type" class="name"><code class="name">media-type</code></a> (<i>optional</i>)</li>
+      <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>zero or one</i>)</li>
+      <li class="assemblies"><a class="name" href="#hash"><code class="name">hash</code></a> fields (<i>zero or more</i>)</li>
+    </ul></div><div class="remarks">
+      <p class="p">This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p>
+    </div><table class="usa-table-borderless"><caption>Properties</caption><thead><tr><th scope="col">Name</th><th scope="col">Metaschema type</th><th scope="col">Cardinality</th><th scope="col">Description / Remarks</th></tr></thead><tbody><tr><th scope="row"><span class="usa-label"><a class="name" href="#href"><code class="name">href</code></a></span></th><td>flag</td><td> (<i>one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#rel"><code class="name">rel</code></a></span></th><td>flag</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#media-type"><code class="name">media-type</code></a></span></th><td>flag</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th><td>field</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#hash"><code class="name">hash</code></a></span></th><td>field</td><td> (<i>zero or one</i>)</td><td></td></tr></tbody></table></div>

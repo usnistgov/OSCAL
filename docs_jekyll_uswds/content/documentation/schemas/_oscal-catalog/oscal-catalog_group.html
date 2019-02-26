@@ -1,0 +1,44 @@
+---
+title: oscal-catalog group documentation 
+tagname: group
+description: group element/object description | oscal-catalog schema 
+permalink: /docs/schemas/_oscal-catalog/oscal-catalog_group/
+layout: post
+schema: oscal-catalog
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="group"><h4 id="oscal-catalog_group"><b class="formal-name">Control Group</b>: <code class="name">group</code> assembly</h4><p class="description">A group of controls, or of groups of controls.</p><div class="model"><p>The <code class="name">group</code> assembly has the following contents  (in order):</p><ul><li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)</li><li>Flag <a href="#class" class="name"><code class="name">class</code></a> (<i>optional</i>)</li>
+      <li>A <a class="name" href="#title"><code class="name">title</code></a> field  (<i>one</i>)</li>
+      <li class="assemblies"><a class="name" href="#param"><code class="name">param</code></a> assemblies (<i>zero or more</i>)</li>
+      <li class="assemblies"><a class="name" href="#prop"><code class="name">prop</code></a> fields (<i>zero or more</i>)</li>
+      <li class="assemblies"><a class="name" href="#part"><code class="name">part</code></a> assemblies (<i>zero or more</i>)</li>
+      <li class="choice">A choice between
+         <ul>
+        <li class="assemblies"><a class="name" href="#group"><code class="name">group</code></a> assemblies (<i>zero or more</i>)</li>
+        <li class="assemblies"><a class="name" href="#control"><code class="name">control</code></a> assemblies (<i>zero or more</i>)</li>
+      </ul></li>
+      <li>A <a class="name" href="#references"><code class="name">references</code></a> assembly  (<i>zero or one</i>)</li>
+      
+    </ul></div><div class="remarks">
+      <p class="p">Catalogs can use groups to provide collections of related controls or Control Groups. A <a href="#group" class="name">group</a> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <a href="#section" class="name">section</a>, a <a href="#group" class="name">group</a> may not contain arbitrary prose directly, only inside its <a href="#part" class="name">part</a> or <a href="#control" class="name">control</a> components.</p>
+    </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">XML</button><div id="group_example1_xml" class="usa-accordion-content">
+{% highlight xml %}
+&lt;group id="xyz"&gt;
+&lt;title&gt;My Group&lt;/title&gt;
+&lt;prop class="required"&gt;some property&lt;/prop&gt;
+&lt;control id="xyz1"&gt;
+&lt;title&gt;Control&lt;/title&gt;&lt;/control&gt;&lt;/group&gt;
+{% endhighlight %}
+</div></li><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">JSON</button><div id="group_example1_json" class="usa-accordion-content">
+{% highlight json %}
+  { "id" : "xyz",
+    "title" : "My Group",
+    "props" : 
+    [ 
+      { "class" : "required",
+        "STRVALUE" : "some property" } ],
+    "controls" : 
+    [ 
+      { "id" : "xyz1",
+        "title" : "Control" } ] }
+{% endhighlight %}
+</div></li></ul><table class="usa-table-borderless"><caption>Properties</caption><thead><tr><th scope="col">Name</th><th scope="col">Metaschema type</th><th scope="col">Cardinality</th><th scope="col">Description / Remarks</th></tr></thead><tbody><tr><th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th><td>flag</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th><td>flag</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#title"><code class="name">title</code></a></span></th><td>field</td><td> (<i>one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#param"><code class="name">param</code></a></span></th><td>assembly</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#prop"><code class="name">prop</code></a></span></th><td>field</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#part"><code class="name">part</code></a></span></th><td>assembly</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#group"><code class="name">group</code></a></span></th><td>assembly</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#control"><code class="name">control</code></a></span></th><td>assembly</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#references"><code class="name">references</code></a></span></th><td>assembly</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#"></a></span></th><td>ANY</td><td> (<i>zero or one</i>)</td><td></td></tr></tbody></table></div>

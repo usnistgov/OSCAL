@@ -1,0 +1,34 @@
+---
+title: oscal-catalog prop documentation 
+tagname: prop
+description: prop element/object description | oscal-catalog schema 
+permalink: /docs/schemas/_oscal-catalog/oscal-catalog_prop/
+layout: post
+schema: oscal-catalog
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="prop"><h4 id="oscal-catalog_prop"><b class="formal-name">Property</b>: <code class="name">prop</code> field</h4><p class="description">A value with a name, attributed to the containing control, subcontrol, part,
+          or group.</p><div class="model"><p>The <code class="name">prop</code> field may have flags:</p><ul><li>Flag <a href="#id" class="name"><code class="name">id</code></a> (<i>optional</i>)</li><li>Flag <a href="#class" class="name"><code class="name">class</code></a><i> (required)</i></li></ul></div><table class="usa-table-borderless"><caption>Properties</caption><thead><tr><th scope="col">Name</th><th scope="col">Metaschema type</th><th scope="col">Cardinality</th><th scope="col">Description / Remarks</th></tr></thead><tbody><tr><th scope="row"><span class="usa-label"><a class="name" href="#id"><code class="name">id</code></a></span></th><td>flag</td><td> (<i>zero or one</i>)</td><td></td></tr><tr><th scope="row"><span class="usa-label"><a class="name" href="#class"><code class="name">class</code></a></span></th><td>flag</td><td> (<i>one</i>)</td><td></td></tr></tbody></table><div class="remarks">
+      <p class="p">Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p>
+      <p class="p">The value of a property is a
+        simple scalar value or list of values.</p>
+      <p class="p">The lexical composition of properties may be constrained by declarations including matching
+        to regular expressions or by declaring a known datatype.</p>
+      <p class="p">Because properties are often used as selectors or identifiers for OSCAL operations, their
+        values can be expected frequently to be normalized (e.g., with respect to whitespace) in
+        use; however, this is application defined.</p>
+      <p class="p">For singletons (that is, the only element among siblings with its <a href="#class" class="name">class</a>),
+        properties are especially useful as proxies (unique identifiers) for their controls, such
+        that controls may be returned one for one on queries for properties (name and value). The
+        robustness of such queries can be ensured by appropriate property declarations (as
+        singletons and as identifiers); cf <code>declare-prop</code> in the declarations model
+        (which also supports other constraints over property values).</p>
+    </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="prop_example1_xml">XML</button><div id="prop_example1_xml" class="usa-accordion-content">
+{% highlight xml %}
+&lt;prop class="name"&gt;A1&lt;/prop&gt;
+{% endhighlight %}
+</div></li><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="prop_example1_json">JSON</button><div id="prop_example1_json" class="usa-accordion-content">
+{% highlight json %}
+  { "class" : "name",
+    "STRVALUE" : "A1" }
+{% endhighlight %}
+</div></li></ul></div>

@@ -1,0 +1,27 @@
+---
+title: oscal-catalog id documentation 
+tagname: id
+description: id element/object description | oscal-catalog schema 
+permalink: /docs/schemas/_oscal-catalog/oscal-catalog_id/
+layout: post
+schema: oscal-catalog
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="id"><h4 id="oscal-catalog_id"><b class="formal-name">ID / identifier</b>: <code class="name">id</code> flag</h4>
+    
+    <p class="description">Unique identifier</p>
+    <div class="remarks">
+      <p class="p">No mechanism is proposed to ensure that <a href="#id" class="name">id</a> values do not collide across
+        different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
+    </div>
+    <ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_xml">XML</button><div id="id_example1_xml" class="usa-accordion-content">
+{% highlight xml %}
+&lt;citation id="xyz2"&gt;Some 
+&lt;strong&gt;citation&lt;/strong&gt; of some sort&lt;/citation&gt;
+{% endhighlight %}
+</div></li><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_json">JSON</button><div id="id_example1_json" class="usa-accordion-content">
+{% highlight json %}
+  { "id" : "xyz2",
+    "RICHTEXT" : "Some **citation** of some sort" }
+{% endhighlight %}
+</div></li></ul>
+  </div>
