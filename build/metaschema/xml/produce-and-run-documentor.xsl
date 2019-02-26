@@ -75,6 +75,7 @@
             
     <xsl:mode name="unescape" on-no-match="shallow-copy"/>
     
+    <!-- XML examples have to be written out live for Jekyll's macro -->
     <xsl:template mode="unescape" match="li[button='XML']//text()" xpath-default-namespace="http://www.w3.org/1999/xhtml">
         <xsl:value-of disable-output-escaping="yes" select="."/>
     </xsl:template>

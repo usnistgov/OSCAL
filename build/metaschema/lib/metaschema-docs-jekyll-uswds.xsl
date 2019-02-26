@@ -66,114 +66,7 @@
       </div>
    </xsl:template>
 
-   <!-- Context node for this template is the definition of the root element or object ...  -->
-   <xsl:template name="make-element-map">
-      <h3>Element map</h3>
-      <ul class="e_map">
-         <xsl:apply-templates select="." mode="element-map">
-            <xsl:with-param name="first" select="true()"/>
-         </xsl:apply-templates>
-      </ul>
-   </xsl:template>
-
-   <xsl:template match="define-assembly" mode="element-map">
-      <xsl:param name="singleton" select="false()"/>
-      <xsl:param name="required" select="false()"/>
-      <xsl:param name="visited" select="()" tunnel="true"/>
-      <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
-      <xsl:variable name="this-model" select="(model,key('definitions',@name,$imported)/model)[1]"/>
-      <li class="e_map">
-         <xsl:text>&lt;</xsl:text>
-         <xsl:value-of select="@name"/>
-         <xsl:apply-templates select="flag" mode="element-map"/>
-         <xsl:text>></xsl:text>
-         <xsl:choose>
-            <xsl:when test="@name = $visited"> ... </xsl:when>
-            <xsl:otherwise>
-               <ul class="e_map">
-                  <xsl:apply-templates select="$this-model" mode="element-map">
-                     <xsl:with-param name="visited" tunnel="true" select="$visited, string(@name)"/>
-                  </xsl:apply-templates>
-               </ul>
-            </xsl:otherwise>
-         </xsl:choose>
-         <xsl:text>&lt;/</xsl:text>
-         <xsl:value-of select="@name"/>
-         <xsl:text>></xsl:text>
-         <xsl:variable name="note">
-            <xsl:if test="$singleton">one only</xsl:if>
-            <xsl:if test="$required"><xsl:if test="$singleton">,</xsl:if> required</xsl:if>
-         </xsl:variable>
-         <xsl:if test="matches($note, '\S')" expand-text="true">
-            <i class="map_label"> ({ $note })</i>
-         </xsl:if>
-      </li>
-   </xsl:template>
-
-   <xsl:template match="define-field" mode="element-map">
-      <xsl:param name="singleton" select="false()"/>
-      <xsl:param name="required"  select="false()"/>
-      <li class="e_map">
-         <xsl:text>&lt;</xsl:text>
-         <xsl:value-of select="@name"/>
-         <xsl:apply-templates select="flag" mode="element-map"/>
-         <xsl:variable name="contents">
-            <xsl:apply-templates select="." mode="field-contents"/>
-         </xsl:variable>
-         <xsl:choose>
-            <xsl:when test="matches($contents, '\S')">
-               <xsl:text>></xsl:text>
-               <xsl:sequence select="$contents"/>
-               <xsl:text>&lt;/</xsl:text>
-               <xsl:value-of select="@name"/>
-               <xsl:text>></xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:text>/></xsl:text>
-            </xsl:otherwise>
-         </xsl:choose>
-         <xsl:variable name="note">
-            <xsl:if test="$singleton">one only</xsl:if>
-            <xsl:if test="$required"><xsl:if test="$singleton">,</xsl:if> required</xsl:if>
-         </xsl:variable>
-         <xsl:if test="matches($note, '\S')" expand-text="true">
-            <i class="map_label"> ({ $note })</i>
-         </xsl:if>
-      </li>
-   </xsl:template>
-
-   <xsl:template mode="field-contents" match="define-field">
-      <span class="map_label">string value</span>
-   </xsl:template>
-   <xsl:template mode="field-contents" match="define-field[@as = 'mixed']">
-      <span class="map_label">mixed content</span>
-   </xsl:template>
-   <xsl:template mode="field-contents" match="define-field[@as = ('boolean,empty')]"/>
-
-   <xsl:template mode="element-map" match="model//field | model//assembly">
-      <xsl:apply-templates mode="element-map" select="key('definitions', @named, $home)">
-         <xsl:with-param name="singleton" select="true()"/>
-         <xsl:with-param name="required" select="@required = ('yes', 'true')"/>
-         <xsl:with-param name="first" select=". is key('references', @named, $home)[1]"/>
-      </xsl:apply-templates>
-   </xsl:template>
-
-   <xsl:template mode="element-map" match="model//fields | model//assemblies">
-      <xsl:apply-templates mode="element-map" select="key('definitions', @named, $home)"/>
-   </xsl:template>
-
-   <xsl:template mode="element-map" match="prose">
-      <li class="map_label">Prose contents (paragraphs, lists, headers and tables)</li>
-   </xsl:template>
-
-   <xsl:template match="flag" mode="element-map">
-      <xsl:text> </xsl:text>
-      <xsl:value-of select="@name"/>
-      <xsl:text>="</xsl:text>
-      <xsl:value-of select="(@datatype, 'string')[1]"/>
-      <xsl:text>"</xsl:text>
-
-   </xsl:template>
+   
    <xsl:template match="METASCHEMA/schema-name">
       <h2 class="title">
          <xsl:apply-templates/>
@@ -184,60 +77,6 @@
    <xsl:template match="METASCHEMA/namespace">
       <p>The XML namespace for elements conformant to this schema:
             <code><xsl:apply-templates/></code></p>
-   </xsl:template>
-
-   <xsl:template name="uswds-table" expand-text="true">
-      <xsl:param name="property-set" select="()"/>
-
-      <table class="usa-table-borderless">
-         <caption>Properties</caption>
-         <thead>
-            <tr>
-               <th scope="col">Name</th>
-               <th scope="col">Metaschema type</th>
-               <th scope="col">Cardinality</th>
-               <th scope="col">Description / Remarks</th>
-            </tr>
-         </thead>
-         <tbody>
-            <xsl:for-each select="$property-set">
-               <!--{% for prop in schema_element.properties %}-->
-               <tr>
-                  <th scope="row">
-                     <span class="usa-label">
-                        <xsl:for-each select="(@name | @named)">
-                           <a class="name" href="#{.}">
-                              <xsl:value-of select="."/>
-                           </a>
-                        </xsl:for-each>
-                     </span>
-                  </th>
-                  <td>
-                     <xsl:apply-templates select="." mode="metaschema-type"/>
-                  </td>
-                  <td>
-                     <xsl:apply-templates select="." mode="cardinality"/>
-                  </td>
-                  <td>
-                     <xsl:apply-templates select="description | remarks"/>
-                  </td>
-               </tr>
-            </xsl:for-each>
-            <!-- {% endfor %}-->
-         </tbody>
-      </table>
-
-   </xsl:template>
-
-   <xsl:template mode="metaschema-type" match="flag">flag</xsl:template>
-   <xsl:template mode="metaschema-type" match="field | fields">field</xsl:template>
-   <xsl:template mode="metaschema-type" match="assembly | assemblies">assembly</xsl:template>
-   <xsl:template mode="metaschema-type" match="prose">Reserved for prose</xsl:template>
-   <xsl:template mode="metaschema-type" match="any">ANY</xsl:template>
-   <xsl:template mode="metaschema-type" match="description | remarks"/>
-
-   <xsl:template match="*" mode="metaschema-type">
-      <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
    </xsl:template>
 
   <!-- <xsl:template priority="5"
@@ -358,10 +197,10 @@
 
    <xsl:template match="flag" mode="model">
       <li>
-         <xsl:text>Flag </xsl:text>
          <a href="#{@name}" class="name">
             <xsl:apply-templates select="@name"/>
          </a>
+         <xsl:text> flag </xsl:text>
          <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates select="@required"/>
          <xsl:if test="not(@required)"> (<i>optional</i>)</xsl:if>
@@ -387,11 +226,11 @@
       </div>
    </xsl:template>
 
-   <xsl:template match="assembly | field">
+   <xsl:template match="assembly | field | assemblies | fields">
       <li>
-         <xsl:text>A</xsl:text>
+         <!--<xsl:text>A</xsl:text>
          <xsl:if test="not(translate(substring(@named, 1, 1), 'AEIOUaeiuo', ''))">n</xsl:if>
-         <xsl:text> </xsl:text>
+         <xsl:text> </xsl:text>-->
          <a class="name" href="#{@named}">
             <xsl:apply-templates select="@named"/>
          </a>
@@ -404,20 +243,9 @@
    </xsl:template>
 
    <xsl:template match="*" mode="cardinality"> (<i>zero or one</i>)</xsl:template>
-
+   <xsl:template match="assemblies | fields" mode="cardinality"> (<i>zero or more</i>)</xsl:template>   
    <xsl:template match="*[@required = 'yes']" mode="cardinality"> (<i>one</i>)</xsl:template>
-
-   <xsl:template match="assemblies | fields">
-      <li class="assemblies">
-         <a class="name" href="#{@named}">
-            <xsl:apply-templates select="@named"/>
-         </a>
-         <xsl:text expand-text="true"> { local-name(.) } (</xsl:text>
-         <i>zero or more</i>
-         <xsl:text>)</xsl:text>
-         <xsl:apply-templates select="description | remarks" mode="model"/>
-      </li>
-   </xsl:template>
+   <!-- 'assemblies' and 'fields' may not be marked @required so no 'one or more' -->
 
    <xsl:template match="example[empty(* except (description | remarks))]"/>
 
@@ -541,7 +369,61 @@
       </a>
    </xsl:template>
 
-
+   <xsl:template name="uswds-table" expand-text="true">
+      <xsl:param name="property-set" select="()"/>
+      
+      <table class="usa-table-borderless">
+         <caption>Properties</caption>
+         <thead>
+            <tr>
+               <th scope="col">Name</th>
+               <th scope="col">Metaschema type</th>
+               <th scope="col">Cardinality</th>
+               <th scope="col">Description / Remarks</th>
+            </tr>
+         </thead>
+         <tbody>
+            <xsl:for-each select="$property-set">
+               <!--{% for prop in schema_element.properties %}-->
+               <tr>
+                  <th scope="row">
+                     <span class="usa-label">
+                        <xsl:for-each select="(@name | @named)">
+                           <a class="name" href="#{.}">
+                              <xsl:value-of select="."/>
+                           </a>
+                        </xsl:for-each>
+                     </span>
+                  </th>
+                  <td>
+                     <xsl:apply-templates select="." mode="metaschema-type"/>
+                  </td>
+                  <td>
+                     <xsl:apply-templates select="." mode="cardinality"/>
+                  </td>
+                  <td>
+                     <xsl:apply-templates select="description | remarks"/>
+                  </td>
+               </tr>
+            </xsl:for-each>
+            <!-- {% endfor %}-->
+         </tbody>
+      </table>
+      
+   </xsl:template>
+   
+   <xsl:template mode="metaschema-type" match="flag">flag</xsl:template>
+   <xsl:template mode="metaschema-type" match="field | fields">field</xsl:template>
+   <xsl:template mode="metaschema-type" match="assembly | assemblies">assembly</xsl:template>
+   <xsl:template mode="metaschema-type" match="prose">Reserved for prose</xsl:template>
+   <xsl:template mode="metaschema-type" match="any">ANY</xsl:template>
+   <xsl:template mode="metaschema-type" match="description | remarks"/>
+   
+   <xsl:template match="*" mode="metaschema-type">
+      <xsl:message>Matching <xsl:value-of select="local-name()"/></xsl:message>
+   </xsl:template>
+   
+   
    <xsl:template name="css">
       <style type="text/css">
          html,
