@@ -1,9 +1,18 @@
 {% if include.title == "Schema Reference" %}
 {% assign collection = site.collections | where: "label", page.schema | first %}
 {% for schema_element in collection.docs %}
+{% if schema_element.position == 0 %}
+<li>
+  <a href="{{ schema_element.permalink }}">Overview</a>
+</li>
+{% break %}
+{% endif %}
+{% endfor %}
+
+{% for schema_element in collection.docs %}
 {% if schema_element.position != 0 %}
 <li>
-  <a href="#{{ schema_element.schema }}_{{ schema_element.title }}"><code>{{ schema_element.title }}</code></a>
+  <a href="#{{ schema_element.schema }}_{{ schema_element.tagname }}"><code>{{ schema_element.tagname }}{% if schema_element.root %} (root element){% endif %}</code></a>
 </li>
 {% endif %}
 {% endfor %}

@@ -1,11 +1,9 @@
 ---
 title: Schema Reference
 description: OSCAL Schema Reference
-permalink: /docs/schemaref/catalog/
+permalink: /docs/schemaref/oscal-catalog/
 layout: schemaref
 sidenav: schemaref
 subnav: true
-schema: catalog
+schema: oscal-catalog
 ---
-
-This is some info about the catalog schema reference.

@@ -25,9 +25,9 @@ github_username: howieavp76
 collections_dir: schemas
 
 collections:
-  catalog:
+  oscal-catalog:
     title: Catalog
-  profile:
+  oscal-profile:
     title: Profile
 
 markdown: kramdown

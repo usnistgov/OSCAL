@@ -85,9 +85,9 @@ schemaref:
   - text: Schema Reference
     href: /docs/schemaref/
   - text: Catalog
-    href: /docs/schemaref/catalog/
+    href: /docs/schemaref/oscal-catalog/
   - text: Profile
-    href: /docs/schemaref/profile/
+    href: /docs/schemaref/oscal-profile/
 
 components:
   # - text: Overview
