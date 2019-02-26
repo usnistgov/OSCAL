@@ -15,8 +15,3 @@ module Jekyll
 end
 
 Liquid::Template.register_tag('neat_json', Jekyll::NeatJsonTagBlock)
-
-# USAGE:
-# {{ site.data.user | neat_json }}
-# 
-# neatjson formatting options: https://github.com/Phrogz/NeatJSON#options
