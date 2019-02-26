@@ -205,9 +205,11 @@
                <tr>
                   <th scope="row">
                      <span class="usa-label">
-                        <a class="name" href="#{@name | @named}">
-                           <xsl:apply-templates select="@name | @named"/>
-                        </a>
+                        <xsl:for-each select="(@name | @named)">
+                           <a class="name" href="#{.}">
+                              <xsl:value-of select="."/>
+                           </a>
+                        </xsl:for-each>
                      </span>
                   </th>
                   <td>
@@ -426,9 +428,9 @@
             <button class="usa-accordion-button" aria-expanded="true"
                aria-controls="{ ../@name }_example{$n}_xml">XML</button>
             <div id="{ ../@name }_example{$n}_xml" class="usa-accordion-content">
-               <xsl:text>&#xA;{% highlight xml %}&#xA;</xsl:text>
+               <xsl:text>&#xA;{% highlight xml %}</xsl:text>
                <xsl:apply-templates select="*" mode="as-example"/>
-               <xsl:text>&#xA;{% endhighlight %}</xsl:text>
+               <xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>
             </div>
          </li>
          <li>
@@ -437,7 +439,7 @@
             <div id="{ ../@name }_example{$n}_json" class="usa-accordion-content">
                <xsl:text>&#xA;{% highlight json %}</xsl:text>
                <xsl:apply-templates select="*" mode="jsonize"/>
-               <xsl:text>&#xA;{% endhighlight %}</xsl:text>
+               <xsl:text>&#xA;{% endhighlight %}&#xA;</xsl:text>
             </div>
          </li>
       </ul>
@@ -448,6 +450,30 @@
 
    </xsl:template>
 
+   <xsl:template match="*" mode="serialize">
+      <!--<xsl:call-template name="indent-for-pre"/>-->
+      
+      <xsl:text>&#xA;&lt;</xsl:text>
+      <xsl:value-of select="local-name(.)"/>
+      <xsl:for-each select="@*">
+         <xsl:text> </xsl:text>
+         <xsl:value-of select="local-name()"/>
+         <xsl:text>="</xsl:text>
+         <xsl:value-of select="."/>
+         <xsl:text>"</xsl:text>
+      </xsl:for-each>
+      <xsl:text>&gt;</xsl:text>
+      
+      <xsl:apply-templates mode="serialize">
+         <xsl:with-param name="hot" select="boolean(text()[normalize-space(.)])"/>
+      </xsl:apply-templates>
+      
+      <xsl:if test="not(text()[normalize-space(.)])">&#xA;</xsl:if>
+      <xsl:text>&lt;/</xsl:text>
+      <xsl:value-of select="local-name(.)"/>
+      <xsl:text>&gt;</xsl:text>
+   </xsl:template>
+   
 
    <xsl:output name="jsonish" indent="yes" method="text" use-character-maps="delimiters"/>
 
