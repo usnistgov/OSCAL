@@ -5,14 +5,12 @@
 @import 'lib/bourbon';
 @import 'lib/neat';
 @import 'lib/normalize';
-
 // Core -------------- //
 @import 'core/variables';
 @import 'core/fonts';
 @import 'core/grid';
 @import 'core/utilities';
 @import 'core/base';
-
 // Elements -------------- //
 // Styles basic HTML elements
 @import 'elements/buttons';
@@ -23,7 +21,6 @@
 @import 'elements/list';
 @import 'elements/table';
 @import 'elements/typography';
-
 // Components -------------- //
 @import 'components/accordions';
 @import 'components/alerts';
@@ -40,3 +37,6 @@
 @import 'components/section';
 @import 'components/sidenav';
 @import 'components/skipnav';
+//Bootstrap ----------------//
+$font-size-base: 17px;
+@import 'bootstrap';
