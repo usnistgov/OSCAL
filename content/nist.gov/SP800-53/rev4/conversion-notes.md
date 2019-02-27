@@ -1,6 +1,6 @@
 # SP800-53 conversion notes
 
-The XML and JSON versions of SP800-53 given here are derived from official and internal NIST publications and communications, in order faithfully to represent published standards (providing them with machinable proxies) but not to determine their meaning or force.
+The XML, JSON, and YAML versions of SP800-53 given here are derived from official and internal NIST publications and communications, in order faithfully to represent published standards (providing them with machinable proxies) but not to determine their meaning or force.
 
 Keep in mind that the OSCAL code is thus a *representation* of an *interpretation* of the standard, and can in no way be considered as authoritative in itself. Any authority or reliability it may be considered to have derives entirely from its resemblance to the standard as published, as confirmed by external inspection.
 
