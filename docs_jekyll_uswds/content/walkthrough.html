@@ -1,7 +1,7 @@
 ---
 title: Walkthrough
-description: OSCAL walkthrough
-permalink: /walkthrough
+description: Walkthrough
+permalink: /walkthrough/
 layout: post
 ---
 
@@ -10,13 +10,17 @@ layout: post
 <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
 <script src="/node_modules/monaco-editor/min/vs/loader.js"></script>
 <script>
-	require.config({ paths: { 'vs': '/node_modules/monaco-editor/min/vs' }});
-	require(['vs/editor/editor.main'], function() {
-		var editor = monaco.editor.create(document.getElementById('container'), {
-			value: [
-				'<catalog></catalog>'
-			].join('\n'),
-			language: 'xml'
-		});
-	});
+    require.config({
+        paths: {
+            'vs': '/node_modules/monaco-editor/min/vs'
+        }
+    });
+    require(['vs/editor/editor.main'], function() {
+        var editor = monaco.editor.create(document.getElementById('container'), {
+            value: [
+                '<catalog></catalog>'
+            ].join('\n'),
+            language: 'xml'
+        });
+    });
 </script>

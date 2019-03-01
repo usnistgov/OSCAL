@@ -1,5 +1,5 @@
 ---
-title: profile
+title: profile (root element)
 schema: profile
 properties:
   - name: id
@@ -40,7 +40,5 @@ snippets:
     Merge: {}
     Modify: {}
 ---
-
-Top-level element
 
 Profile element description

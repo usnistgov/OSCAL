@@ -157,7 +157,7 @@ catalog:
         value: ICD 705
     - id: ref039
       citations:
-      - href: http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50341
+      - href: http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341
         value: ISO/IEC 15408
     - id: ref040
       citations:
