@@ -6,13 +6,13 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     version="3.0">
     
-    <xsl:output method="xhtml" omit-xml-declaration="true" indent="yes"/>
+    <xsl:output method="xhtml" omit-xml-declaration="true" indent="no"/>
     
     <xsl:variable name="source" select="/"/>
     <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
     
     <!--"C:\Users\wap1\Documents\OSCAL\docs_jekyll_uswds\content\documentation\schemas\oscal-catalog\catalog.md"-->
-    <xsl:variable name="result-path" select="'../../../docs_jekyll_uswds/content/documentation/schemas/' || $metaschema-code"/>
+    <xsl:variable name="result-path" select="'../../../docs_jekyll_uswds/content/documentation/schemas/_' || $metaschema-code"/>
     
     <!-- The function fn:transform() returns a map, whose primary results are under 'output'
          unless a base output URI is given
@@ -45,7 +45,8 @@
             <xsl:text>---&#xA;</xsl:text>
             <xsl:text expand-text="true">title: { $metaschema-code } schema documentation &#xA;</xsl:text>
             <xsl:text expand-text="true">description: { $metaschema-code } schema documentation &#xA;</xsl:text>
-            <xsl:text expand-text="true">permalink: /documentation/schemas/{ $metaschema-code }/&#xA;</xsl:text>
+            <!--<xsl:text expand-text="true">permalink: /documentation/schemas/{ $metaschema-code }/&#xA;</xsl:text>-->
+            <xsl:text expand-text="true">permalink: /docs/schemas/_{ $metaschema-code }/&#xA;</xsl:text>
             <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
             <xsl:text expand-text="true">schema: { $metaschema-code }&#xA;</xsl:text>
             <xsl:text>---&#xA;</xsl:text>
@@ -55,20 +56,28 @@
             <xsl:result-document href="{$result-path}/{ $metaschema-code }_{@id}.html"
                method="html">
                 <xsl:call-template name="yaml-header"/>
-                <xsl:sequence select="."/>
+                <xsl:apply-templates select="." mode="unescape"/>
             </xsl:result-document>
         </xsl:for-each>
     </xsl:template>
+    
     
     <xsl:template name="yaml-header">
         <xsl:text>---&#xA;</xsl:text>
         <xsl:text expand-text="true">title: { $metaschema-code } { @id } documentation &#xA;</xsl:text>
         <xsl:text expand-text="true">tagname: { @id }&#xA;</xsl:text>
         <xsl:text expand-text="true">description: { @id } element/object description | { $metaschema-code } schema &#xA;</xsl:text>
-        <xsl:text expand-text="true">permalink: /documentation/schemas/{ $metaschema-code }/{ $metaschema-code }_{ @id }&#xA;</xsl:text>
+        <xsl:text expand-text="true">permalink: /docs/schemas/_{ $metaschema-code }/{ $metaschema-code }_{ @id }/&#xA;</xsl:text>
         <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
         <xsl:text expand-text="true">schema: { $metaschema-code }&#xA;</xsl:text>
         <xsl:text>---&#xA;</xsl:text>
     </xsl:template>
             
+    <xsl:mode name="unescape" on-no-match="shallow-copy"/>
+    
+    <!-- XML examples have to be written out live for Jekyll's macro -->
+    <xsl:template mode="unescape" match="li[button='XML']//text()" xpath-default-namespace="http://www.w3.org/1999/xhtml">
+        <xsl:value-of disable-output-escaping="yes" select="."/>
+    </xsl:template>
+    
 </xsl:stylesheet>

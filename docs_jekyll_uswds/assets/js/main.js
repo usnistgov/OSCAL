@@ -1,6 +1,3 @@
----
----
-
 {%- if site.anchor_js_targets -%}
   {%- assign _anchor_js_targets = site.anchor_js_targets -%}
   {%- assign _prepended_targets = '' | split: '' -%}

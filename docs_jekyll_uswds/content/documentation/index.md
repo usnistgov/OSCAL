@@ -2,17 +2,17 @@
 title: Concepts
 description: Concepts
 permalink: /docs/
-
 layout: post
+sidenav: components
 ---
 
-Before explaining what OSCAL is, it is important to define three key OSCAL terms:
+Three key OSCAL concepts underlie the architecture:
 
-1. The **catalog layer** is a set of security control definitions. Examples include the controls in NIST SP 800-53, ISO 27001, HIPAA, and PCI.
+1. A **control** is a safeguard or countermeasure designed to satisfy a set of defined security requirements. 
 
-2. The **profile layer** is a specific set of security requirements; also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.
+2. A **catalog** is a set of security control definitions. Examples include the controls in NIST SP 800-53, ISO 27001, HIPAA, and PCI. The **catalog layer** in OSCAL refers to any data made available for processing in this format.
 
-3. The **control layer** is a safeguard or countermeasure designed to satisfy a set of defined security requirements. 
+3. A **profile** is a specific set of security requirements; also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.
 
 ## Purpose
 
@@ -39,45 +39,3 @@ There are also several types of expected consumers of OSCAL catalogs, profiles, 
 - **Security and privacy personnel:** automatically identifying problems and addressing them quickly before loss or damage occur
 - **Auditors/assessors:** performing audits/assessments on demand with minimal effort
 - **Policy personnel:** identifying systemic problems that necessitate changes to organizational security policies
-
-## Components
-
-The plans for OSCAL involve all the components depicted in the following diagram:
-
-<img src="/assets/img/oscal-components.png" alt="oscal components" width="800" />
-
-Starting from the bottom on the left, the OSCAL components are currently defined as:
-
-- **Catalog/Framework:** In addition to defining a set of security controls, it may also define objectives and methods for assessing the controls (e.g., NIST SP 800-53A). Combining assessment objectives and methods with security controls has been done because some control catalog formats, such as COBIT 5, address assessment information directly. Others have it separately, like 800-53A. Including assessment objectives within the OSCAL catalog model simplifies the entire OSCAL operational model.
-- **Profile:** The profile format will allow for selecting security controls using a number of different mechanisms as well as tailoring those controls (e.g., assigning parameter values, modifying requirements). A profile can include controls from more than one catalog, so an organization could have a single profile that references controls from several catalogs.
-- **Implementation:** Defines how each profile item is implemented for a given system component. This can represent a machine-readable system security plan in OSCAL format. It will also support transforms from the machine-readable form to a human-readable version.
-- **Assessment:** Describes how the system assessment is to be performed.
-- **Assessment Results:** Records the findings of the assessment.
-
-As the project progresses, these definitions may evolve. They are included here to indicate the current status within OSCAL and may not the represent the final definitions for each component.  The above is a high-level explanation of the basic constructs supported by OSCAL. These constructs exist in all OSCAL bindings (e.g., XML, JSON). At this time, the material covers OSCAL controls, catalogs, and profiles. Additional OSCAL constructs will be added as they are developed and matured.
-
-## Controls
-
-In OSCAL, a control is a safeguard or countermeasure designed to satisfy a set of defined security and/or privacy requirements. The definitions of controls vary greatly from one standard or guideline to another in terms of the level of detail and the types of information the definitions include. A control definition may be as simple as, "The organization has an access control policy and procedures", but most are considerably more complicated. The following example of a control is from NIST Special Publication (SP) 800-53 Revision 4:
-
-<img src="/assets/img/NIST-SP-800-53-Rev4-AC1.png" alt="800-53Rev4AC1" width="800" />
-
-This control has seven high-level components, including a security control identifier ("AC-1"), a title ("ACCESS CONTROL POLICY AND PROCEDURES"), the control itself, supplemental guidance, control enhancements, references, and a priority and baseline allocation. In contrast, the next control is from ISO 27002 on access control policy. It is even more detailed, with an identifier ("9.1.1"), a title ("Access control policy"), control text, lengthy implementation guidance, and other information (additional advice on access control policy).
-
-<img src="/assets/img/ISO-27002-Control-9.1.1.png" alt="ISO27002911" width="800" />
-
-Comparing the ISO 27002 and NIST SP 800-53 examples show obvious differences. NIST SP 800-53 includes several components, such as references, control enhancements, and priority that ISO 27002 does not. NIST SP 800-53's statement of the control itself is also much more detailed and specific than ISO 27002 because it provides those details in its implementation guidance instead of the control text. There are other differences in terminology as well, such as NIST SP 800-53 using the term "supplemental guidance" for roughly what ISO 27002 calls "other information".
-
-OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using its control element.
-
-## Catalogs
-
-An OSCAL catalog is a set of closely related OSCAL controls. The catalog for NIST Special Publication (SP) 800-53 Revision 4 defines all NIST SP 800-53 controls. There would be a separate catalog for the controls from ISO 27002. An OSCAL catalog may simply define controls, or it may also organize those controls. Sections can be defined to partition a catalog, with each section containing one or more references to controls or control groups. A group references related controls or control groups.
-
-## Profiles
-
-An OSCAL profile is a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Commonly referred to as a baseline or overlay, examples of profiles include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.
-
-The figure below is an example of what OSCAL is doing with catalogs and profiles. This example represents the NIST SP 800-53 low baseline, which is a profile in OSCAL nomenclature. The profile is effectively indicating which controls from the NIST SP 800-53 catalog are required to be compliant with the profile (NIST SP 800-53 low baseline). Using OSCAL formats for these baselines makes the mappings between the control catalog and the profile explicit and machine readable. A single profile can reference controls in multiple catalogs. OSCAL will allow profiles to be generated using the same interoperable format regardless of which catalogs are being used.
-
-<img src="/assets/img/profile-catalog-mapping-trivial-example.png" alt="profile-catalog-mapping" width="800" />
