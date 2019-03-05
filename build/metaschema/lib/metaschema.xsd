@@ -54,7 +54,6 @@
       <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="show-docs"/>
       <xs:attribute name="acquire-from" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -81,7 +80,6 @@
       </xs:attribute>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="show-docs"/>
       <xs:attribute name="acquire-from" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -95,15 +93,6 @@
       </xs:sequence>
       <xs:attribute name="datatype" use="required" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="show-docs">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="xml" />
-            <xs:enumeration value="json" />
-            <xs:enumeration value="xml json" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
       <xs:attribute name="acquire-from" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
