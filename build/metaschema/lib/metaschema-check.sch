@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt3"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
     xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
 
@@ -20,8 +21,28 @@
     
     <sch:let name="home" value="/m:METASCHEMA"/>
     
+    <sch:let name="prose-names" value="document('../xml/oscal-prose-module.xsd')/*/xs:element/@name"/>
+    
+    <sch:let name="definitions">
+        <xsl:variable name="all-definitions">
+            <m:definitions>
+                <xsl:apply-templates mode="acquire-definitions" select="/"/>
+            </m:definitions>
+        </xsl:variable>
+        <xsl:sequence select="$all-definitions/m:definitions/*[not(@name=following-sibling::*/@name)]"/>
+    </sch:let>
+    
+    <xsl:template match="m:METASCHEMA" mode="acquire-definitions">
+        <xsl:apply-templates select="m:import" mode="acquire-definitions"/>
+        <xsl:copy-of select="m:define-field | m:define-flag | m:define-assembly"/>
+    </xsl:template>
+    
+    <xsl:template match="m:import" mode="acquire-definitions">
+        <xsl:apply-templates select="document(@href,/)/m:METASCHEMA" mode="acquire-definitions"/>
+    </xsl:template>
+        
     <sch:pattern>
-        <sch:rule context="m:define-assembly[exists(@acquire-from)] | m:define-field[exists(@acquire-from)] | m:define-flag[exists(@acquire-from)]">
+        <!--<sch:rule context="m:define-assembly[exists(@acquire-from)] | m:define-field[exists(@acquire-from)] | m:define-flag[exists(@acquire-from)]">
             <sch:assert test="count(key('declaration-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema</sch:assert>
             <sch:assert test="empty(child::*)">An acquired definition may not have its own contents</sch:assert>
             <sch:let name="this-name"   value="@name"/>
@@ -41,18 +62,19 @@
             <sch:let name="not-acquired"  value="$acquired-refs[empty(key('declaration-by-name',@named,$home))]"/>
             <sch:assert test="empty($not-acquired)">Failed to acquire a model for <sch:value-of select="string-join($not-acquired/(name() || '[@named=''' || @named || ''']'),', ')"/></sch:assert>
             
-        </sch:rule>
+        </sch:rule>-->
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
-            <sch:assert test="count(key('declaration-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema</sch:assert>
+            <sch:assert role="warning" test="count(key('declaration-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema module (only the last one found will be used)</sch:assert>
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
-            <sch:report test="@name=('p','ul','ol','pre')">Can't use name '<sch:value-of select="@name"/>': it's reserved for prose.</sch:report>
+            <sch:report test="@name=$prose-names">Can't use name '<sch:value-of select="@name"/>': it's reserved for prose.</sch:report>
             <!--<sch:assert test="count( key('declaration-by-name',@name) | key('declaration-by-name',@name,$imported-schemas) ) ge 1">Not a distinct declaration</sch:assert>-->
             <sch:report test="@name = ../*/@group-as">Clashing name with group name: <sch:value-of select="@name"/></sch:report>
             <sch:report test="@group-as = ../*/@name">Clashing group name with name: <sch:value-of select="@name"/></sch:report>
             <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
-            
+            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-assembly) or empty($definitions//m:assemblies[@named=current()/@name])">Assembly is used in groups ("assemblies") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$definitions//m:assemblies[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
+            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-field) or empty($definitions//m:fields[@named=current()/@name])">Field is used in groups ("fields") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$definitions//m:fields[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
             <sch:assert test="not(@as='boolean') or empty(m:flag)">Property defined as boolean may not have flags (try 'empty')</sch:assert>
         </sch:rule>
 
@@ -62,7 +84,7 @@
         
 
         <sch:rule context="m:flag">
-            <sch:let name="decl" value="key('declaration-by-name',@name)"/>
+            <sch:let name="decl" value="key('declaration-by-name',@name,$definitions)"/>
             
             <sch:assert test="exists($decl)" role="warning">No declaration found for '<sch:value-of select="@name"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the declaration has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
@@ -76,11 +98,11 @@
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
         <sch:rule context="m:choice"/>
         <sch:rule context="m:field | m:fields | m:assembly | m:assemblies">
-            <sch:let name="decl" value="key('declaration-by-name',@named)"/>
+            <sch:let name="decl" value="key('declaration-by-name',@named,$definitions)"/>
             <sch:assert test="exists($decl)">No declaration found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
-            <sch:assert test="empty($decl) or empty(@group-as) or (@group-as = $decl/@group-as)">Declaration group name doesn't match: here is '<sch:value-of select="@group-as"/>' but the declaration has '<sch:value-of select="$decl/@group-as"/>'</sch:assert>
-            <sch:assert test="empty($decl) or empty(@address) or ($decl/@address = @address)">The target definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>
-            <sch:assert test="exists($decl/@acquire-from) or empty(@address) or ($decl/m:flag/@name = @address)">The target definition has no flag named '<sch:value-of select="@address"/>'</sch:assert>
+            <sch:assert role="warning" test="empty($decl) or exists(self::m:field|self::m:assembly) or exists($decl/@group-as)">Reference is made to <sch:value-of select="local-name()"/> '<sch:value-of select="@named"/>', but their definition does not give a group name.</sch:assert>
+            <sch:assert test="empty($decl) or empty(@address) or ($decl/@address = @address)">The referenced definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>
+            <sch:assert test="exists($decl/@acquire-from) or empty(@address) or ($decl/m:flag/@name = @address)">The referenced definition has no flag named '<sch:value-of select="@address"/>'</sch:assert>
             <sch:assert test="empty($decl/@acquire-from) or empty(@address) or not($decl/m:flag/@name = @address) or ($decl/m:flag[@name = current()/@address]/@required='yes')">The target definition has no required flag named <sch:value-of select="@address"/></sch:assert>
             
             
@@ -120,19 +142,22 @@
             <sch:assert role="warning" test="@name = //m:flag/@name">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:assembly | m:assemblies">
-            <sch:assert test="@named = /*/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.</sch:assert>
-            <sch:report test="@named = /*/m:define-field/@name">'<sch:value-of select="@named"/>' is a field, not an assembly.</sch:report>
-            <sch:report test="@named = /*/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
+            <sch:assert test="@named = $definitions/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.
+            We expect one of <xsl:value-of select="$definitions/m:define-assembly/@name" separator=", "/></sch:assert>
+            <sch:report test="@named = $definitions/m:define-field/@name">'<sch:value-of select="@named"/>' is a field, not an assembly.</sch:report>
+            <sch:report test="@named = $definitions/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
         <sch:rule context="m:field | m:fields">
-            <sch:assert test="@named = /*/m:define-field/@name">Field invocation does not point to a field definition.</sch:assert>
-            <sch:report test="@named = /*/m:define-assembly/@name">'<sch:value-of select="@named"/>' is an assembly, not a field.</sch:report>
-            <sch:report test="@named = /*/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
+            <sch:assert test="@named = $definitions/m:define-field/@name">Field invocation does not point to a field definition.
+                We expect one of <xsl:value-of select="$definitions/m:define-field/@name" separator=", "/></sch:assert>
+            <sch:report test="@named = $definitions/m:define-assembly/@name">'<sch:value-of select="@named"/>' is an assembly, not a field.</sch:report>
+            <sch:report test="@named = $definitions/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
         <sch:rule context="m:flag">
-            <sch:assert test="@name = /*/m:define-flag/@name">Flag invocation does not point to a flag definition.</sch:assert>
-            <sch:report test="@name = /*/m:define-field/@name">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:report>
-            <sch:report test="@name = /*/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
+            <sch:assert test="@name = $definitions/m:define-flag/@name">Flag invocation does not point to a flag definition.
+                We expect one of <xsl:value-of select="$definitions/m:define-flag/@name" separator=", "/></sch:assert>
+            <sch:report test="@name = $definitions/m:define-field/@name">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:report>
+            <sch:report test="@name = $definitions/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
         </sch:rule>
     </sch:pattern>
     
