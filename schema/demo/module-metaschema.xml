@@ -17,7 +17,7 @@
   </remarks>
 
   
-  <define-assembly name="acquired-model" group-as="acquired-models" show-docs="xml json">
+  <define-assembly name="acquired-model" group-as="acquired-models">
     <formal-name>Acquired Model</formal-name>
     <description>A string field, with mixed content</description>
     <remarks>
@@ -29,7 +29,7 @@
     </model>
   </define-assembly>
   
-  <define-field name="acquired-field" group-as="acquired-fields" as="mixed" show-docs="xml json">
+  <define-field name="acquired-field" group-as="acquired-fields" as="mixed">
     <formal-name>Acquired Model</formal-name>
     <description>A string field, with mixed content</description>
     <remarks>

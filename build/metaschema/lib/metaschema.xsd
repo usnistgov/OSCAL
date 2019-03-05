@@ -67,7 +67,6 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
       <xs:attribute name="as">
-        
           <xs:simpleType>
             <xs:restriction base="xs:string">
               <xs:enumeration value="boolean" />
@@ -76,7 +75,6 @@
               <xs:enumeration value="mixed" />
             </xs:restriction>
           </xs:simpleType>
-        
       </xs:attribute>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
@@ -143,7 +141,6 @@
   <xs:element name="import">
     <xs:complexType mixed="true">
       <xs:attribute name="href" type="xs:anyURI" use="required"/>
-      <xs:attribute name="name" type="xs:NCName" use="required"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="assembly">
@@ -162,7 +159,6 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="address" type="xs:NCName"/>
-      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -182,7 +178,6 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
