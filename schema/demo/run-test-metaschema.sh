@@ -38,7 +38,6 @@ MAKE_JSC="java -jar $SAXON -s:$METASCHEMAXML -o:$JSONDIR/$BASENAME-schema.json -
 CONV_XML="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-xml-converter.xsl -xsl:$LIBDIR/xml/produce-xml-converter.xsl"
 CONV_JSON="java -jar $SAXON -s:$METASCHEMAXML -o:$CONVERSION_DIR/$BASENAME-json-converter.xsl  -xsl:$LIBDIR/json/produce-json-converter.xsl"
 
-
 DOCS_XSLT="java -jar $SAXON -s:$METASCHEMAXML -o:$LIBDIR/temp/$BASENAME-xml-docs-md.xsl -xsl:$LIBDIR/xml/produce-and-run-documentor.xsl"
 
 
@@ -55,6 +54,7 @@ $CONV_XML
 echo _ Made XML-to-JSON converter ______ $CONVERSION_DIR/$BASENAME-xml-converter.xsl
 $CONV_JSON
 echo _ Made JSON-to-XML converter ______ $CONVERSION_DIR/$BASENAME-json-converter.xsl
+
 
 $DOCS_XSLT
 echo _ Made Metaschema documentation _ $DOCSDIR/${BASENAME}_xml.md $DOCSDIR/json_${BASENAME}_json.md
