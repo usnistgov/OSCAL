@@ -6,6 +6,7 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     version="3.0">
     
+    <!-- Controls indenting -->
     <xsl:output method="xhtml" omit-xml-declaration="true" indent="no"/>
     
     <xsl:variable name="source" select="/"/>

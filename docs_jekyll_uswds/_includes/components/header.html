@@ -39,7 +39,7 @@
           <div class="usa-logo" id="{% if header.type == 'extended' or header.type == 'extended-mega' %}extended-mega-{% endif %}logo">
             <em class="usa-logo-text">
               <a href="{% if header.href %}{{ header.href }}{% else %}{{ site.baseurl }}/{% endif %}" title="Home">
-                {{ header.title | default: "Open Security Controls Assessment Language" }}
+                {{ header.title | default: "Open Security Controls Assessment Language" }} <span class="usa-label ">PREVIEW</span>
               </a>
             </em>
           </div>
