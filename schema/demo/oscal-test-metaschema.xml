@@ -29,6 +29,7 @@
       <p>feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax.</p>
     <p>Also to do: find a case of variability in controls and show it off... parts?</p></remarks>
     <model>
+      <field named="another-thing"/>
       <assemblies named="thing"/>
     </model>    
     <example>
@@ -42,6 +43,11 @@
       </kit>
     </example>
   </define-assembly>
+  
+  <define-field name="another-thing">
+    <formal-name>Another Thing</formal-name>
+    <description>Yeah....</description>
+  </define-field>
   
   <define-assembly name="thing" group-as="things">
     <flag name="id" datatype="ID" required="yes"/>
@@ -90,10 +96,11 @@
     <description>As it says</description>
   </define-field>
   
-  <!--<define-field name="plural-flagged-mixed" group-as="plurals" as="string">
+  <define-field name="plural-flagged-mixed" group-as="plurals" as="string">
+    <flag name="some_string"/>
     <formal-name>Only one plural, but possibly mixed and possibly flagged.</formal-name>
     <description>As it says</description>
-  </define-field>-->
+  </define-field>
   
   <define-assembly name="single-chunk">
     <formal-name>Chunk</formal-name>

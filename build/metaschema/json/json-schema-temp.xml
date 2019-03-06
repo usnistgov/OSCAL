@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns="http://www.w3.org/2005/xpath-functions">
+   <string key="$schema">http://json-schema.org/draft-07/schema#</string>
+   <string key="$id">http://csrc.nist.gov/ns/oscal/1.0/oscal-test-schema.json</string>
+   <string key="$comment">FAKEUP Testing Schema: JSON Schema</string>
+   <string key="type">object</string>
+   <map key="definitions">
+      <map key="acquired-model">
+         <string key="title">Acquired Model</string>
+         <string key="description">A string field, with mixed content</string>
+         <string key="$id">#/definitions/acquired-model</string>
+         <string key="type">object</string>
+         <map key="properties">
+            <map key="acquired-fields">
+               <string key="type">array</string>
+               <map key="items">
+                  <string key="$ref">#/definitions/acquired-field</string>
+               </map>
+            </map>
+            <map key="prose">
+               <string key="$ref">#/definitions/prose</string>
+            </map>
+         </map>
+         <boolean key="additionalProperties">false</boolean>
+         <map key="propertyNames">
+            <array key="enum">
+               <string>acquired-fields</string>
+               <string>prose</string>
+            </array>
+         </map>
+      </map>
+      <map key="acquired-field">
+         <string key="title">Acquired Model</string>
+         <string key="description">A string field, with mixed content</string>
+         <string key="$id">#/definitions/acquired-field</string>
+         <string key="type">string</string>
+      </map>
+      <map key="kit">
+         <string key="title">Base</string>
+         <string key="description">Wrapper for other stuff</string>
+         <string key="$id">#/definitions/kit</string>
+         <string key="type">object</string>
+         <map key="properties">
+            <map key="id">
+               <string key="type">string</string>
+            </map>
+            <map key="some_string">
+               <string key="type">string</string>
+            </map>
+            <map key="another-thing">
+               <string key="type">string</string>
+               <string key="$ref">#/definitions/another-thing</string>
+            </map>
+            <map key="">
+               <string key="type">array</string>
+               <map key="items">
+                  <string key="$ref">#/definitions/thing</string>
+               </map>
+            </map>
+         </map>
+         <boolean key="additionalProperties">false</boolean>
+         <map key="propertyNames">
+            <array key="enum">
+               <string>id</string>
+               <string>some_string</string>
+               <string>another-thing</string>
+               <string>thing</string>
+            </array>
+         </map>
+      </map>
+      <map key="another-thing">
+         <string key="title">Another Thing</string>
+         <string key="description">Yeah....</string>
+         <string key="$id">#/definitions/another-thing</string>
+         <string key="type">string</string>
+      </map>
+      <map key="thing">
+         <string key="title">Base</string>
+         <string key="description">Wrapper for other stuff</string>
+         <string key="$id">#/definitions/thing</string>
+         <string key="type">object</string>
+         <map key="properties">
+            <map key="id">
+               <string key="type">string</string>
+            </map>
+            <map key="some_string">
+               <string key="type">string</string>
+            </map>
+            <map key="single-required-field">
+               <string key="type">string</string>
+               <string key="$ref">#/definitions/single-required-field</string>
+            </map>
+            <map key="acquired-model">
+               <string key="type">object</string>
+               <string key="$ref">#/definitions/acquired-model</string>
+            </map>
+            <map key="single-mixed-field">
+               <string key="type">string</string>
+               <string key="$ref">#/definitions/single-mixed-field</string>
+            </map>
+            <map key="">
+               <string key="type">array</string>
+               <map key="items">
+                  <string key="$ref">#/definitions/plural-field</string>
+               </map>
+            </map>
+            <map key="">
+               <string key="type">array</string>
+               <map key="items">
+                  <string key="$ref">#/definitions/plural-mixed-field</string>
+               </map>
+            </map>
+            <map key="single-chunk">
+               <string key="type">object</string>
+               <string key="$ref">#/definitions/single-chunk</string>
+            </map>
+            <map key="">
+               <string key="type">array</string>
+               <map key="items">
+                  <string key="$ref">#/definitions/chunk-among-chunks</string>
+               </map>
+            </map>
+            <map key="vanilla">
+               <string key="type">object</string>
+               <string key="$ref">#/definitions/vanilla</string>
+            </map>
+            <map key="chocolate">
+               <string key="type">object</string>
+               <string key="$ref">#/definitions/chocolate</string>
+            </map>
+         </map>
+         <boolean key="additionalProperties">false</boolean>
+         <map key="propertyNames">
+            <array key="enum">
+               <string>id</string>
+               <string>some_string</string>
+               <string>single-required-field</string>
+               <string>acquired-model</string>
+               <string>single-mixed-field</string>
+               <string>plural-field</string>
+               <string>plural-mixed-field</string>
+               <string>single-chunk</string>
+               <string>chunk-among-chunks</string>
+               <string>vanilla</string>
+               <string>chocolate</string>
+            </array>
+         </map>
+      </map>
+      <map key="single-required-field">
+         <string key="title">Single string (required)</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/single-required-field</string>
+         <string key="type">string</string>
+      </map>
+      <map key="single-mixed-field">
+         <string key="title">Single string but with mixed content</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/single-mixed-field</string>
+         <string key="type">string</string>
+      </map>
+      <map key="plural-field">
+         <string key="title">A single occurrence of a plural (ha)</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/plural-field</string>
+         <string key="type">string</string>
+      </map>
+      <map key="plural-mixed-field">
+         <string key="title">Only one plural, but possibly mixed.</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/plural-mixed-field</string>
+         <string key="type">string</string>
+      </map>
+      <map key="single-chunk">
+         <string key="title">Chunk</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/single-chunk</string>
+         <string key="type">object</string>
+         <map key="properties">
+            <map key="single-required-field">
+               <string key="type">string</string>
+               <string key="$ref">#/definitions/single-required-field</string>
+            </map>
+            <map key="prose">
+               <string key="$ref">#/definitions/prose</string>
+            </map>
+         </map>
+         <boolean key="additionalProperties">false</boolean>
+         <map key="propertyNames">
+            <array key="enum">
+               <string>single-required-field</string>
+               <string>prose</string>
+            </array>
+         </map>
+      </map>
+      <map key="chunk-among-chunks">
+         <string key="title">Chunk among chunks</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/chunk-among-chunks</string>
+         <string key="type">object</string>
+         <map key="properties">
+            <map key="single-required-field">
+               <string key="type">string</string>
+               <string key="$ref">#/definitions/single-required-field</string>
+            </map>
+            <map key="prose">
+               <string key="$ref">#/definitions/prose</string>
+            </map>
+         </map>
+         <boolean key="additionalProperties">false</boolean>
+         <map key="propertyNames">
+            <array key="enum">
+               <string>single-required-field</string>
+               <string>prose</string>
+            </array>
+         </map>
+      </map>
+      <map key="vanilla">
+         <string key="title">One Choice</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/vanilla</string>
+         <string key="type">object</string>
+         <map key="properties">
+            <map key="single-required-field">
+               <string key="type">string</string>
+               <string key="$ref">#/definitions/single-required-field</string>
+            </map>
+         </map>
+         <boolean key="additionalProperties">false</boolean>
+         <map key="propertyNames">
+            <array key="enum">
+               <string>single-required-field</string>
+            </array>
+         </map>
+      </map>
+      <map key="chocolate">
+         <string key="title">Another Choice</string>
+         <string key="description">As it says</string>
+         <string key="$id">#/definitions/chocolate</string>
+         <string key="type">object</string>
+         <map key="properties">
+            <map key="single-required-field">
+               <string key="type">string</string>
+               <string key="$ref">#/definitions/single-required-field</string>
+            </map>
+         </map>
+         <boolean key="additionalProperties">false</boolean>
+         <map key="propertyNames">
+            <array key="enum">
+               <string>single-required-field</string>
+            </array>
+         </map>
+      </map>
+      <map key="prose">
+         <string key="type">array</string>
+         <map key="items">
+            <string key="type">string</string>
+         </map>
+      </map>
+   </map>
+   <map key="properties">
+      <map key="kit">
+         <string key="$ref">#/definitions/kit</string>
+      </map>
+   </map>
+</map>
