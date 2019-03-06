@@ -5,8 +5,13 @@
     version="3.0" xmlns="http://www.w3.org/2005/xpath-functions"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0" expand-text="true">
 
-<!-- Purpose: Produce an XPath-JSON document representing JSON Schema declarations from Metaschema source data. The results are conformant to the rules for the XPath 3.1 definition of an XML format capable of being cast (using the xml-to-json() function) into JSON. -->
-<!-- Note: this XSLT will only be used on its own for development and debugging. It is however imported by `produce-json-converter.xsl` and possibly other stylesheets. -->
+<!-- Purpose: Produce an XPath-JSON document representing JSON Schema declarations from Metaschema source data.
+     The results are conformant to the rules for the XPath 3.1 definition of an XML format capable of being cast
+     (using the xml-to-json() function) into JSON. -->
+    
+<!-- Note: this XSLT will only be used on its own for development and debugging.
+     It is however imported by `produce-json-converter.xsl` and possibly other stylesheets. -->
+    
     <xsl:strip-space elements="METASCHEMA define-assembly define-field model"/>
     
     <xsl:output indent="yes" method="xml"/>
@@ -60,9 +65,6 @@
 
     <xsl:template match="METASCHEMA/schema-name | METASCHEMA/short-name | METASCHEMA/remarks"/>
   
-    
-    
-    
     <xsl:template match="define-flag"/>
     
     <xsl:template match="define-assembly | define-field">
@@ -200,39 +202,26 @@
 
     <xsl:template match="*" mode="object-type">
         <string key="type">object</string>
-        
-    </xsl:template>
+            </xsl:template>
 
     <xsl:template match="define-field[empty(flag)]" mode="object-type">
         <string key="type">string</string>
     </xsl:template>
 
     <xsl:template mode="declaration" match="assembly | field">
-
         <map key="{@named}">
             <xsl:apply-templates select="key('definition-by-name', @named)" mode="object-type"/>
             <string key="$ref">#/definitions/{ @named }</string>
         </map>
     </xsl:template>
 
-    
-    
     <xsl:template mode="declaration" match="prose">
         <map key="prose">
             <string key="$ref">#/definitions/prose</string>
         </map>
     </xsl:template>
     
-    
     <xsl:template match="prose" name="prose"/>
-    <!--<xsl:template match="prose" name="prose">
-        <map key="prose">
-            <string key="type">array</string>
-            <map key="items">
-                <xsl:comment>can't be right</xsl:comment>
-                <string key="$ref">#/definitions/prose</string>
-            </map>
-        </map>
-    </xsl:template>-->
+    
 
 </xsl:stylesheet>
