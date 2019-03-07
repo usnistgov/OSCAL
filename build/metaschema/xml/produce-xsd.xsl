@@ -5,7 +5,7 @@
     xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     exclude-result-prefixes="xs math m"
-    version="3.0"
+    version="2.0"
     
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
@@ -31,9 +31,10 @@
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
-    
+
     <!-- Produces $all-definitions -->
     <xsl:import href="../lib/metaschema-resolve-imports.xsl"/>
+    
     
     <!-- entry template -->
     <xsl:template match="/">       
@@ -45,7 +46,6 @@
         <!-- mode 'wire-ns' wires up the namespaces -->
         <xsl:apply-templates select="$unwired" mode="wire-ns"/>
     </xsl:template>
-    
     
     <!--MAIN ACTION HERE -->
     
@@ -94,12 +94,12 @@
         </xsl:comment>
     </xsl:template>
     
-    <xsl:template match="*[matches(@named,'\S')]">
+    <xsl:template match="field | assembly">
         <xs:element minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@named}"/>
     </xsl:template>
     
 <!-- Will not match declaration elements, which do not have @named -->
-    <xsl:template priority="5" match="*[matches(@named,'\S')][matches(@group-as,'\S')]">
+    <xsl:template priority="5" match="fields | assemblies">
         <xs:element maxOccurs="unbounded" minOccurs="{ number(@required = 'yes') }" ref="{$declaration-prefix}:{@named}"/>
     </xsl:template>
 

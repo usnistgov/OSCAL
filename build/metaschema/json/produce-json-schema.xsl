@@ -8,7 +8,7 @@
     <xsl:strip-space elements="METASCHEMA define-assembly define-field model"/>
     
     <xsl:output indent="yes" method="text" use-character-maps="safe"/>
-    
+
     <xsl:import href="json-schema-metamap.xsl"/>
     
     <xsl:character-map name="safe">
@@ -24,7 +24,6 @@
             <xsl:map-entry key="'indent'">true</xsl:map-entry>
         </xsl:map>
     </xsl:variable>
-
     
     <xsl:template match="/">
         <xsl:variable name="xpath-json">
@@ -34,6 +33,5 @@
             <xsl:value-of select="xml-to-json($xpath-json, $write-options)"/>
         </json>
     </xsl:template>
-
     
 </xsl:stylesheet>
