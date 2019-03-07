@@ -270,6 +270,9 @@ legend {
     content: url('#{$image-path}/correct8-alt.svg');
     text-indent: 0;
   }
+  .no-print {
+    display: none !important;
+  }
 }
 
 // Range inputs

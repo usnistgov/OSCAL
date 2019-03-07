@@ -6,7 +6,7 @@ permalink: /theme/
 
 [This](javascript:void(0);) is a text link on a light background.
 
-[This](https://18f.gsa.gov){: .usa-color-text-visited} is a visited link.
+[This](https://18f.gsa.gov){: .-visited} is a visited link.
 
 This is link that goes to an [external website](https://18f.gsa.gov){: .usa-external_link}.
 

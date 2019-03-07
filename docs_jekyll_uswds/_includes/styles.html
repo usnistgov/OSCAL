@@ -7,5 +7,6 @@
 | push: layout.styles
 | push: page.styles %}
 {% for _list in _styles %}{% for _style in _list %}
-<link rel="stylesheet" href="{{ _style.href | default: _style | relative_url }}" media="{{ _style.media | default: 'screen' }}">
+<!-- Removed media type to make it print better -->
+<link rel="stylesheet" href="{{ _style.href | default: _style | relative_url }}">
 {% endfor %}{% endfor %}
