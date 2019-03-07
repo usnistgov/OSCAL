@@ -56,7 +56,7 @@
          <xsl:for-each select="key('definitions', @root)">
             <h5>
                <xsl:text>The root object (element) of this schema is </xsl:text>
-               <a class="name" href="#{@name}">
+               <a href="#{@name}">
                   <xsl:apply-templates select="@name"/>
                </a>
             </h5>
@@ -68,7 +68,7 @@
 
    
    <xsl:template match="METASCHEMA/schema-name">
-      <h2 class="title">
+      <h2>
          <xsl:apply-templates/>
          <xsl:text>: Schema Reference</xsl:text>
       </h2>
@@ -92,9 +92,11 @@
       <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-flag" id="{@name}">
+         <header>
          <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary usa-color-text-white">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> flag</h4>
+         </header>
          <xsl:apply-templates/>
       </div>
    </xsl:template>
@@ -103,9 +105,11 @@
       <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       <div class="definition define-field" id="{@name}">
+         <header>
          <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary usa-color-text-white">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> field</h4>
+         </header>
          <xsl:for-each select="$definition">
             <xsl:choose>
                <xsl:when test="@as = 'mixed'">
@@ -138,9 +142,11 @@
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
       
       <div class="definition define-assembly" id="{@name}">
+      <header>
          <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary usa-color-text-white">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> assembly</h4>
+      </header>
          <!-- No mention of @group-as on XML side       -->
          <xsl:if test="@name = ../@root">
             <h5>
@@ -162,13 +168,13 @@
    </xsl:template>
 
    <xsl:template match="@name | @named">
-      <code class="name">
+      <code>
          <xsl:value-of select="."/>
       </code>
    </xsl:template>
 
    <xsl:template match="define-flag/@name | flag/@name">
-      <code class="name">
+      <code>
          <xsl:value-of select="."/>
       </code>
    </xsl:template>
@@ -197,7 +203,7 @@
 
    <xsl:template match="flag" mode="model">
       <li>
-         <a href="#{@name}" class="name">
+         <a href="#{@name}">
             <xsl:apply-templates select="@name"/>
          </a>
          <xsl:text> flag </xsl:text>
@@ -217,7 +223,7 @@
 
    <xsl:template match="model">
       <div class="model">
-         <p>The <xsl:apply-templates select="../@name"/> assembly has the following contents <xsl:if
+         <p class="usa-font-lead">The <xsl:apply-templates select="../@name"/> assembly has the following contents <xsl:if
                test="count(*) > 1"> (in order)</xsl:if>:</p>
          <ul>
             <xsl:apply-templates select="../flag" mode="model"/>
@@ -231,7 +237,7 @@
          <!--<xsl:text>A</xsl:text>
          <xsl:if test="not(translate(substring(@named, 1, 1), 'AEIOUaeiuo', ''))">n</xsl:if>
          <xsl:text> </xsl:text>-->
-         <a class="name" href="#{@named}">
+         <a href="#{@named}">
             <xsl:apply-templates select="@named"/>
          </a>
          <xsl:text expand-text="true"> { local-name() } </xsl:text>
@@ -364,7 +370,7 @@
 
 
    <xsl:template match="code[. = /*/*[@show-docs = 'xml' or @show-docs = 'xml json']/@name]">
-      <a href="#{.}" class="name">
+      <a href="#{.}">
          <xsl:apply-templates/>
       </a>
    </xsl:template>
@@ -372,7 +378,7 @@
    <xsl:template name="uswds-table" expand-text="true">
       <xsl:param name="property-set" select="()"/>
       
-      <table class="usa-table-borderless">
+      <table>
          <caption>Properties</caption>
          <thead>
             <tr>

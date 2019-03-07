@@ -7,9 +7,12 @@
 @import 'lib/normalize';
 // Core -------------- //
 @import 'core/variables';
+@import 'core/variables-vendor';
 @import 'core/fonts';
 @import 'core/grid';
+@import 'core/grid-settings';
 @import 'core/utilities';
+@import 'core/defaults';
 @import 'core/base';
 // Elements -------------- //
 // Styles basic HTML elements
