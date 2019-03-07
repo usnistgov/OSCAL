@@ -28,8 +28,7 @@
         use="@name"/>
 
     <!-- Produces $all-definitions -->
-    <xsl:include href="../lib/metaschema-resolve-imports.xsl"/>
-    
+    <xsl:import href="../lib/metaschema-resolve-imports.xsl"/>
     
     <xsl:template match="/METASCHEMA" expand-text="true">
         <map>
@@ -92,14 +91,16 @@
     
 
     <xsl:template match="define-assembly[@address=flag/@name] | define-field[@address=flag/@name]">
-        <map key="{ @group-as }">
-            <string key="$id">#/definitions/{@group-as}</string>
-            <string key="type">object</string>
-            <map key="additionalProperties">
+        <xsl:if test="matches(@group-as,'\S')">
+            <map key="{ @group-as }">
+                <string key="$id">#/definitions/{@group-as}</string>
                 <string key="type">object</string>
-                <string key="$ref">#/definitions/{ @name }</string>
+                <map key="additionalProperties">
+                    <string key="type">object</string>
+                    <string key="$ref">#/definitions/{ @name }</string>
+                </map>
             </map>
-        </map>
+        </xsl:if>
         <map key="{ @name }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
