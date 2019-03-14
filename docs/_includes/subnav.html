@@ -1,4 +1,4 @@
-{% if include.title == "Schema Reference" %}
+{% if include.title contains "Schema Reference" %}
 {% assign collection = site.collections | where: "label", page.schema | first %}
 {% for schema_element in collection.docs %}
 {% if schema_element.position == 0 %}

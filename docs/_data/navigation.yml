@@ -50,7 +50,7 @@ primary:
       - text: Components
         href: /docs/components/
       - text: Schema Reference
-        href: /docs/schemaref/
+        href: /docs/schemas/
   #- text: Walkthrough
   #  href: /walkthrough/
   - text: Community
@@ -81,13 +81,13 @@ secondary:
   - text: Contact
     href: /contact/
 
-schemaref:
+schemas:
   - text: Schema Reference
-    href: /docs/schemaref/
+    href: /docs/schemas/
   - text: Catalog
-    href: /docs/schemaref/oscal-catalog/
+    href: /docs/schemas/oscal-catalog/
   - text: Profile
-    href: /docs/schemaref/oscal-profile/
+    href: /docs/schemas/oscal-profile/
 
 components:
   # - text: Overview

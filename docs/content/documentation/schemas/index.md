@@ -1,9 +1,9 @@
 ---
 title: Schema Reference
 description: OSCAL Schema Reference
-permalink: /docs/schemaref/
+permalink: /docs/schemas/
 layout: post
-sidenav: schemaref
+sidenav: schemas
 ---
 
 ## About the Sample Schemas

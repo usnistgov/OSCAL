@@ -10,7 +10,7 @@ The USWDS framework, a Jekyll customization we are using, is documented here: ht
 
 On Windows 10, for best results, install a Linux subsystem (LSW) such as an Ubuntu VM. This avoids Windows-related Jekyll configuration madness.
 
-To build the site, open a command line in the subdirectory `docs_jekyll_uswds`:
+To build the site, open a command line in the  `docs` subdirectory (where the file you are reading is located):
 
 ```
 bundle exec jekyll build

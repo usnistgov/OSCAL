@@ -1,9 +1,9 @@
 ---
 title: Schema Reference
 description: OSCAL Schema Reference
-permalink: /docs/schemaref/oscal-profile/
-layout: schemaref
-sidenav: schemaref
+permalink: /docs/schemas/oscal-profile/
+layout: schemas
+sidenav: schemas
 subnav: true
 schema: oscal-profile
 ---
