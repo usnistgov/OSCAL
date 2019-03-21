@@ -2,7 +2,7 @@
 layout: post
 ---
 
-{% assign collection = site.collections | where: "label", page.schema | first %}
+{% assign collection = site.collections | where: "label", page.model | first %}
 
 {% for schema_element in collection.docs %}
 {% if schema_element.position == 0 %}{{ schema_element.content }}{% break %}{% endif %}

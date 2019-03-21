@@ -5,7 +5,7 @@
    xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
    exclude-result-prefixes="xs">
    
-   <xsl:output indent="yes"/>
+   <xsl:output indent="yes" method="html"/>
    <!-- Context node for this template is the definition of the root element or object ...  -->
 <!-- first: traverse set of definitions to build a tree
      second: prune the tree to remove duplicate listings
@@ -20,21 +20,30 @@
    <xsl:variable name="home" select="/"/>
    
    <xsl:variable name="root-definition" select="/*/*[@name = /*/@root]"/>
+
+   <xsl:variable name="surrogate-tree">
+      <xsl:apply-templates select="$root-definition" mode="build"/>
+   </xsl:variable>
+   <xsl:variable name="pruned-tree">
+      <xsl:apply-templates select="$surrogate-tree" mode="prune"/>
+   </xsl:variable>
+   
+   <xsl:template name="jekyll-template">
+      <xsl:text>---&#xA;</xsl:text>
+      <xsl:text>title: Schema map test&#xA;</xsl:text>
+      <xsl:text>description: Schema map test&#xA;</xsl:text>
+      <xsl:text>permalink: /schema-map/&#xA;</xsl:text>
+      <xsl:text>layout: post&#xA;---&#xA;</xsl:text>
+      <xsl:apply-templates mode="html-render" select="$pruned-tree"/>
+   </xsl:template>
    
    <xsl:template match="/">
-      <xsl:variable name="surrogate-tree">
-         <xsl:apply-templates select="$root-definition" mode="build"/>
-      </xsl:variable>
-      <xsl:variable name="pruned-tree">
-         <xsl:apply-templates select="$surrogate-tree" mode="prune"/>
-      </xsl:variable>
-      
       <html lang="en">
          <head>
             <title>Schema ToC</title>
             <style type="text/css">
-div.e_map { margin-top: 0ex; margin-bottom: 0ex; margin-left: 2em; font-family: monospace; font-weight: bold; color: midnightblue } 
-div.e_map p { margin: 0ex }
+div.map { margin-top: 0ex; margin-bottom: 0ex; margin-left: 2em; font-family: monospace; font-weight: bold; color: midnightblue } 
+div.map p { margin: 0ex }
 span.lit { font-family: serif; font-weight: normal; color: darkgrey }
 a { color: inherit; text-decoration: none }
 a:hover { text-decoration: underline }
@@ -138,7 +147,7 @@ a:hover { text-decoration: underline }
       <div>
       <h3>Schema map</h3>
          <p>Elements are optional unless noted as <q>required</q>, and repeatable unless noted as <q>one only</q>.</p>
-      <div class="e_map">
+      <div class="map">
          <xsl:apply-templates mode="html-render"/>
       </div>
       </div>
@@ -147,31 +156,49 @@ a:hover { text-decoration: underline }
    <xsl:template mode="html-render" match="@m:*"/>
    
    <xsl:template match="*" mode="html-render">
-      <p class="e_map">
+      <xsl:variable name="contents">
+         <xsl:apply-templates select="." mode="contents"/>
+      </xsl:variable>
+      <p>
          <xsl:text>&lt;</xsl:text>
          <a class="name" href="#{local-name()}">
             <xsl:value-of select="local-name()"/>
          </a>
          <xsl:apply-templates select="@*" mode="#current"/>
-         <xsl:variable name="contents">
-            <xsl:apply-templates select="." mode="contents"/>
-         </xsl:variable>
-         <xsl:choose>
-            <xsl:when test="matches($contents, '\S')">
-               <xsl:text>></xsl:text>
-               <xsl:sequence select="$contents"/>
-               <xsl:text>&lt;/</xsl:text>
-               <xsl:value-of select="local-name()"/>
-               <xsl:text>></xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:text>/></xsl:text>
-            </xsl:otherwise>
-         </xsl:choose>
+         <xsl:if test="not(matches($contents,'\S'))">/</xsl:if>
+         <xsl:text>></xsl:text>
+         <xsl:if test="matches($contents,'\S')">
+            <xsl:sequence select="$contents"/>
+            <xsl:text>&lt;/</xsl:text>
+            <xsl:value-of select="local-name()"/>
+            <xsl:text>></xsl:text>
+         </xsl:if>
          <xsl:call-template name="cardinality-note"/>
       </p>
    </xsl:template>
 
+   <xsl:template match="*[@m:type='assembly']" mode="html-render">
+      <xsl:variable name="contents">
+         <xsl:apply-templates select="." mode="contents"/>
+      </xsl:variable>
+      <div>
+         <p>
+            <xsl:text>&lt;</xsl:text>
+            <a class="name" href="#{local-name()}">
+               <xsl:value-of select="local-name()"/>
+            </a>
+            <xsl:apply-templates select="@*" mode="#current"/>
+            <xsl:call-template name="cardinality-note"/>
+         </p>
+         <xsl:sequence select="$contents"/>
+         <p>
+            <xsl:text>&lt;</xsl:text>
+            <xsl:value-of select="local-name()"/>
+            <xsl:text>></xsl:text>
+         </p>
+      </div>
+   </xsl:template>
+   
    <xsl:template name="cardinality-note">
       <xsl:variable name="note">
          <xsl:variable name="singleton" select="@m:singleton = 'true'"/>
@@ -188,7 +215,7 @@ a:hover { text-decoration: underline }
    </xsl:template>
    
    <xsl:template mode="contents" match="*[@m:type='assembly']">
-      <div class="e_map">
+      <div class="map">
          <xsl:apply-templates mode="html-render"/>
       </div>
    </xsl:template>
@@ -207,7 +234,7 @@ a:hover { text-decoration: underline }
 
    
    <xsl:template mode="html-render" match="m:prose">
-      <p class="lit"><i>Prose contents (paragraphs, lists, headers and tables)</i></p>
+      <p><i>Prose contents (paragraphs, lists, headers and tables)</i></p>
    </xsl:template>
 
    <xsl:template match="@*" mode="html-render">

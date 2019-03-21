@@ -6,7 +6,7 @@ permalink: /learnmore/tooldevelopers/
 layout: post
 ---
 
-**Who: Tool developers who build security compliance systems (i.e. Electronic Governance Risk and Compliance (eGRC) systems) or who provide secure infrastructure/software solutions to the federal government or highly regulated industries**
+**Who: Tool developers who build security compliance systems (such as Electronic Governance Risk and Compliance [eGRC] systems) or who provide secure infrastructure/software solutions to the federal government or highly regulated industries**
 
 OSCAL provides a standard for consuming security control, catalog, profile, and implementation data to visualize and automate security compliance processes.  Provides an assessment standard for infrastructure and software solutions to attest to their security control implementation in an automated manner.
 
@@ -26,4 +26,4 @@ OSCAL provides a standard for consuming security control, catalog, profile, and 
 
 ## Contact
 
-To learn more about OSCAL, [contact us](contact)!
+To learn more about OSCAL, [contact us](contact)

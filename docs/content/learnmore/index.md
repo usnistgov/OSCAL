@@ -30,4 +30,4 @@ The terms associated with the project are important to understand. The following
 
 ## Get Involved 
 
-To learn more about how you can get involved, [contact us](contact)!
+To learn more about how you can get involved, [contact us](contact).

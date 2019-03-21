@@ -1,0 +1,37 @@
+---
+title: Schema Documentation - oscal-catalog - part
+description: oscal-catalog schema documentation - part
+tagname: part
+permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_part
+layout: post
+model: oscal-catalog-json
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="part"><header><h4 id="oscal-catalog-json_part" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Part</b>: <code>part</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_part"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">A partition or component of a control, subcontrol or part</p><div class="model"><p class="usa-font-lead">The <code>part</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li>
+      <li><a href="#title"><code>title</code></a> object  (<i>optional</i>)</li>
+      <li>An array labelled
+         
+         <b>props</b>, containing
+         <a href="#prop"><code>prop</code></a> objects  (<i>optional</i>)</li>
+      <li class="prose">Prose contents (paragraphs and lists)</li>
+      <li>An array labelled
+         
+         <b>parts</b>, containing
+         <a href="#part"><code>part</code></a> objects  (<i>optional</i>)</li>
+      <li>An array labelled
+         
+         <b>links</b>, containing
+         <a href="#link"><code>link</code></a> objects  (<i>optional</i>)</li>
+      
+    </ul></div><div class="remarks">
+      <p class="p">Like properties (<a href="#prop">prop</a>) and parameters (<a href="#param">param</a>), parts can be
+        distinguished from other elements within their controls by their assigned
+        <a href="#class">class</a>, such that they may be subjected to <q>declarations logic</q> using
+        these values as bindings (and thereby getting open-ended extensibility).</p>
+      <p class="p">An assigned class may frequently provide for a header in display, such that
+        <a href="#part">part</a><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
+        Parts may also however have their own titles (<a href="#title">title</a> elements).</p>
+      <p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally
+        constructed out of properties (<a href="#prop">prop</a> elements) and/or their own parts. Such
+        structured objects may, at the extreme, function virtually as control extensions or
+        subcontrol-like objects (<q>enhancements</q>).</p>
+    </div><p>This object appears as a property on: <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>

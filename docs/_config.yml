@@ -22,13 +22,18 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: howieavp76
 # github_username: howieavp76
 
+
 collections_dir: content/documentation/schemas/
 
 collections:
-  oscal-catalog:
-    title: Catalog
-  oscal-profile:
-    title: Profile
+  oscal-catalog-xml:
+    title: Catalog XML
+  oscal-catalog-json:
+    title: Catalog JSON
+  oscal-profile-xml:
+    title: Profile XML
+  oscal-profile-json:
+    title: Profile JSON
 
 markdown: kramdown
 highlighter: rouge

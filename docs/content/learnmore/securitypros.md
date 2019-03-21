@@ -26,4 +26,4 @@ OSCAL provides a standard for documenting security controls that maps across mul
 
 ## Contact
 
-To learn more about OSCAL, [contact us](contact)!
+To learn more about OSCAL, [contact us](contact).

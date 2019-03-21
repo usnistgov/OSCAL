@@ -17,8 +17,8 @@
    </xsl:template>
    
    <xsl:template match="m:remarks/m:p" mode="model">
-      <br class="br"/>
-      <xsl:apply-templates/>
+      <br/>
+        <xsl:apply-templates/>
    </xsl:template>
    
    <xsl:template match="m:choice">
