@@ -15,7 +15,7 @@
 #  @named always resolves (to some /*/*/@name)
 -->
 
-    <xsl:key name="declaration-by-name" match="m:define-assembly | m:define-field | m:define-flag" use="@name"/>
+    <xsl:key name="definition-by-name" match="m:define-assembly | m:define-field | m:define-flag" use="@name"/>
     
     <sch:ns uri="http://csrc.nist.gov/ns/oscal/metaschema/1.0" prefix="m"/>
     
@@ -43,7 +43,7 @@
         
     <sch:pattern>
         <!--<sch:rule context="m:define-assembly[exists(@acquire-from)] | m:define-field[exists(@acquire-from)] | m:define-flag[exists(@acquire-from)]">
-            <sch:assert test="count(key('declaration-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema</sch:assert>
+            <sch:assert test="count(key('definition-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema</sch:assert>
             <sch:assert test="empty(child::*)">An acquired definition may not have its own contents</sch:assert>
             <sch:let name="this-name"   value="@name"/>
             <sch:let name="target-name" value="@acquire-from"/>
@@ -52,30 +52,30 @@
             <sch:let name="module" value="$target/document(@href,.)/m:METASCHEMA"/>
             <sch:assert test="exists($target)">No metaschema is imported for acquisition '<sch:value-of select="$target-name"/>' </sch:assert>
             <sch:assert test="empty($target) or exists($module)">No metaschema is found for metaschema '<sch:value-of select="$target-name"/>' at <sch:value-of select="$target/@href"/> </sch:assert> 
-            <sch:let name="acquired" value="$module/key('declaration-by-name',$this-name,.)"/>
+            <sch:let name="acquired" value="$module/key('definition-by-name',$this-name,.)"/>
             <sch:assert test="exists($acquired)">No definition is found for <sch:value-of select="substring-after(local-name(),'define-')"/>  <sch:value-of select="@name"/> in imported metaschema '<sch:value-of select="$target-name"/>' at <sch:value-of select="$target/@href"/> </sch:assert> 
             <sch:assert test="empty($acquired/@acquire-from)">Definition for <sch:value-of select="substring-after(local-name(),'define-')"/> '<sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' is also acquired (from module '<sch:value-of select="$acquired/@acquire-from"/>'); please import from the original metaschema</sch:assert>
             
             <sch:assert test="empty(@address) or exists($acquired/@address)">Definition for <sch:value-of select="substring-after(local-name(),'define-')"/> '<sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' should have the same 'address' setting.</sch:assert>
             <sch:assert test="empty((.|$acquired)/@address) or @address=$acquired/@address">Definition for <sch:value-of select="substring-after(local-name(),'define-')"/> '<sch:value-of select="@name"/>' in imported metaschema '<sch:value-of select="$target-name"/>' is addressed by ''</sch:assert>
             <sch:let name="acquired-refs" value="$acquired/m:model//(m:flag | m:field | m:assembly | m:fields | m:assemblies)"/>
-            <sch:let name="not-acquired"  value="$acquired-refs[empty(key('declaration-by-name',@named,$home))]"/>
+            <sch:let name="not-acquired"  value="$acquired-refs[empty(key('definition-by-name',@named,$home))]"/>
             <sch:assert test="empty($not-acquired)">Failed to acquire a model for <sch:value-of select="string-join($not-acquired/(name() || '[@named=''' || @named || ''']'),', ')"/></sch:assert>
             
         </sch:rule>-->
         <sch:rule context="m:define-assembly | m:define-field | m:define-flag">
-            <sch:assert role="warning" test="count(key('declaration-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema module (only the last one found will be used)</sch:assert>
+            <sch:assert role="warning" test="count(key('definition-by-name',@name)) = 1">Definition for '<sch:value-of select="@name"/>' is not unique in this metaschema module (only the last one found will be used)</sch:assert>
             <sch:assert test="exists(m:formal-name)">formal-name missing from <sch:name/></sch:assert>
             <sch:assert test="exists(m:description)">description missing from <sch:name/></sch:assert>
             <sch:assert test="empty(self::m:define-assembly) or exists(m:model)">model missing from <sch:name/></sch:assert>
             <sch:report test="@name=$prose-names">Can't use name '<sch:value-of select="@name"/>': it's reserved for prose.</sch:report>
-            <!--<sch:assert test="count( key('declaration-by-name',@name) | key('declaration-by-name',@name,$imported-schemas) ) ge 1">Not a distinct declaration</sch:assert>-->
+            <!--<sch:assert test="count( key('definition-by-name',@name) | key('definition-by-name',@name,$imported-schemas) ) ge 1">Not a distinct definition</sch:assert>-->
             <sch:report test="@name = ../*/@group-as">Clashing name with group name: <sch:value-of select="@name"/></sch:report>
             <sch:report test="@group-as = ../*/@name">Clashing group name with name: <sch:value-of select="@name"/></sch:report>
             <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
             <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-assembly) or empty($definitions//m:assemblies[@named=current()/@name])">Assembly is used in groups ("assemblies") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$definitions//m:assemblies[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
             <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-field) or empty($definitions//m:fields[@named=current()/@name])">Field is used in groups ("fields") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$definitions//m:fields[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
-            <sch:assert test="not(@as='boolean') or empty(m:flag)">Property defined as boolean may not have flags (try 'empty')</sch:assert>
+            <sch:assert test="not(@as='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
         </sch:rule>
 
         <!--<sch:rule context="define-field[@address-by='id']/*">
@@ -84,10 +84,10 @@
         
 
         <sch:rule context="m:flag">
-            <sch:let name="decl" value="key('declaration-by-name',@name,$definitions)"/>
+            <sch:let name="decl" value="key('definition-by-name',@name,$definitions)"/>
             
-            <sch:assert test="exists($decl)" role="warning">No declaration found for '<sch:value-of select="@name"/>' <sch:value-of select="local-name()"/></sch:assert>
-            <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the declaration has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
+            <sch:assert test="exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:value-of select="local-name()"/></sch:assert>
+            <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
             <sch:assert test="not(@name=../@address) or @required='yes'">Definition set to address by '<sch:value-of select="@name"/>', but its flag is not required.</sch:assert>
             <sch:report test="@name=('RICHTEXT','STRVALUE')">Flag should not be named "STRVALUE" or "RICHTEXT" (reserved names)</sch:report>
         </sch:rule>
@@ -98,8 +98,8 @@
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
         <sch:rule context="m:choice"/>
         <sch:rule context="m:field | m:fields | m:assembly | m:assemblies">
-            <sch:let name="decl" value="key('declaration-by-name',@named,$definitions)"/>
-            <sch:assert test="exists($decl)">No declaration found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
+            <sch:let name="decl" value="key('definition-by-name',@named,$definitions)"/>
+            <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert role="warning" test="empty($decl) or exists(self::m:field|self::m:assembly) or exists($decl/@group-as)">Reference is made to <sch:value-of select="local-name()"/> '<sch:value-of select="@named"/>', but their definition does not give a group name.</sch:assert>
             <sch:assert test="empty($decl) or empty(@address) or ($decl/@address = @address)">The referenced definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>
             <sch:assert test="exists($decl/@acquire-from) or empty(@address) or ($decl/m:flag/@name = @address)">The referenced definition has no flag named '<sch:value-of select="@address"/>'</sch:assert>

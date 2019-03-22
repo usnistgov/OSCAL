@@ -39,7 +39,7 @@
             </xsl:for-each>
             <string key="type">object</string>
             <map key="definitions">
-                <xsl:apply-templates select="$all-definitions"/>
+                <xsl:apply-templates select="$all-definitions/*"/>
                 <map key="prose">
                     <string key="type">array</string>
                     <map key="items">
@@ -122,7 +122,7 @@
         <map key="{ @name (: @group-as | @name[empty(../@group-as)] :) }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
-            <string key="type">string</string>
+            <xsl:apply-templates select="." mode="object-type"/>
         </map>
     </xsl:template>
 
@@ -164,14 +164,14 @@
     </xsl:template>
     
     <xsl:template match="define-field[@as = 'mixed']" mode="properties">
-        <xsl:apply-templates mode="declaration" select="flag, model"/>
+        <xsl:apply-templates mode="declaration" select="flag"/>
         <map key="RICHTEXT">
             <string key="type">string</string>
         </map>
     </xsl:template>
 
     <xsl:template match="define-field" mode="properties">
-        <xsl:apply-templates mode="declaration" select="flag, model"/>
+        <xsl:apply-templates mode="declaration" select="flag"/>
         <map key="STRVALUE">
             <string key="type">string</string>
         </map>
@@ -205,10 +205,14 @@
         <string key="type">object</string>
             </xsl:template>
 
-    <xsl:template match="define-field[empty(flag)]" mode="object-type">
+    <xsl:template match="define-field" mode="object-type">
         <string key="type">string</string>
     </xsl:template>
-
+    
+    <xsl:template match="define-field[@as='boolean']" mode="object-type">
+        <string key="type">boolean</string>
+    </xsl:template>
+    
     <xsl:template mode="declaration" match="assembly | field">
         <map key="{@named}">
             <xsl:apply-templates select="key('definition-by-name', @named)" mode="object-type"/>

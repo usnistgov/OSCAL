@@ -17,7 +17,7 @@
    
    
     
-    <xsl:variable name="all-definitions" as="element()*">
+    <xsl:variable name="all-definitions">
         <!-- copy all definitions from all modules, in order from first to last (lowest to highest) -->
         <xsl:variable name="given-definitions">
             <m:definitions>

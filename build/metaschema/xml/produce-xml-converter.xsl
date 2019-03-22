@@ -42,7 +42,7 @@
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
             <xsl:call-template  name="furniture"/>
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="$all-definitions/*"/>
 
 
         </XSLT:stylesheet>
@@ -56,7 +56,6 @@
 <!-- Flags don't need templates since they are always handled
      with fields or assemblies. -->
     <xsl:template match="define-flag"/>
-    
     
     <xsl:template match="define-field[@address=flag/@name][@as='mixed'][empty(flag)]" priority="4">
         <XSLT:template match="{@name}" mode="xml2json">
@@ -100,6 +99,7 @@
         </XSLT:template>
     </xsl:template>
     
+<!-- Handles define-field[@as='boolean']  -->
     <xsl:template match="define-field[empty(flag)]" priority="2">
         <XSLT:template match="{@name}" mode="xml2json">
             <string key="{@name}">
@@ -228,9 +228,10 @@
         </XSLT:template>
         
         <XSLT:template name="prose">
-            <XSLT:if test="exists(p | ul | ol | pre)">
+            <XSLT:variable name="blocks" select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
+            <XSLT:if test="exists($blocks)">
                 <array key="prose">
-                    <XSLT:apply-templates mode="md" select="p | ul | ol | pre"/>
+                    <XSLT:apply-templates mode="md" select="$blocks"/>
                 </array>
             </XSLT:if>
         </XSLT:template>
@@ -250,6 +251,45 @@
             <string>
                 <XSLT:apply-templates mode="md"/>
             </string>
+        </XSLT:template>
+        
+        <XSLT:template mode="md" match="h1 | h2 | h3 | h4 | h5 | h6">
+            <string>
+                <XSLT:apply-templates select="." mode="mark"/>
+                <XSLT:apply-templates mode="md"/>
+            </string>
+        </XSLT:template>
+
+        <XSLT:template mode="mark" match="h1"># </XSLT:template>
+        <XSLT:template mode="mark" match="h2">## </XSLT:template>
+        <XSLT:template mode="mark" match="h3">### </XSLT:template>
+        <XSLT:template mode="mark" match="h4">#### </XSLT:template>
+        <XSLT:template mode="mark" match="h5">##### </XSLT:template>
+        <XSLT:template mode="mark" match="h6">###### </XSLT:template>
+        
+        <XSLT:template mode="md" match="table">
+            <XSLT:apply-templates  select="*"  mode="md"/>
+        </XSLT:template>
+        
+        <XSLT:template mode="md" match="tr">
+            <string>
+                <XSLT:apply-templates select="*" mode="md"/>
+            </string>
+            <XSLT:if test="empty(preceding-sibling::tr)">
+                <string>
+                    <XSLT:text>|</XSLT:text>
+                    <XSLT:for-each select="th | td">
+                        <xsl:text> --- |</xsl:text>
+                    </XSLT:for-each>
+                </string>
+            </XSLT:if>
+        </XSLT:template>
+        
+        <XSLT:template mode="md" match="th | td">
+            <XSLT:if test="empty(preceding-sibling::*)">|</XSLT:if>
+            <XSLT:text><xsl:text> </xsl:text></XSLT:text>
+            <XSLT:apply-templates mode="md"/>
+            <XSLT:text> |</XSLT:text>
         </XSLT:template>
         
         <XSLT:template mode="md" priority="1" match="pre">
