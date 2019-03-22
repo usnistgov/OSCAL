@@ -52,7 +52,7 @@
     <xsl:template match="/METASCHEMA">
         <xs:schema elementFormDefault="qualified" targetNamespace="{ $target-namespace }">
 
-            <xsl:apply-templates select="$all-definitions"/>
+            <xsl:apply-templates select="$all-definitions/*"/>
             
             <xsl:if test="exists($all-definitions//prose)">
                 <xs:group name="prose">
@@ -115,6 +115,12 @@
                 <!-- picking up attribute declarations -->
                 <xsl:apply-templates select="flag"/>
             </xs:complexType>
+        </xs:element>
+    </xsl:template>
+    
+    <xsl:template match="define-field[@as='boolean']">
+        <xs:element name="{@name }" type="xs:boolean">
+            <xsl:apply-templates select="." mode="annotated"/>
         </xs:element>
     </xsl:template>
     
@@ -201,7 +207,7 @@
             <xsl:namespace name="{$declaration-prefix}" select="$target-namespace"/>
             <xsl:namespace name="oscal-prose" select="$target-namespace"/>
             <xsl:copy-of select="@*"/>
-           <xsl:apply-templates mode="#current"/>
+           <xsl:apply-templates select="*" mode="#current"/>
         </xsl:copy>
     </xsl:template>
     

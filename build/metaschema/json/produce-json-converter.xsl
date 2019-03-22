@@ -23,7 +23,9 @@
     <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
     <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
+    <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
+    <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
     <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name"/>
     
     <!-- Produces $all-definitions -->
@@ -41,7 +43,7 @@
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
             <xsl:call-template  name="furniture"/>
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
-            <xsl:apply-templates select="$all-definitions"/>
+            <xsl:apply-templates select="$all-definitions/*"/>
             
         </XSLT:stylesheet>
     </xsl:template>
@@ -81,7 +83,8 @@
     </xsl:template>
     
     <xsl:template match="model//*">
-        <XSLT:apply-templates mode="#current" select="*[@key=({string-join((@named/('''' ||. || ''''),@group-as/('''' || . || '''')),', ')})]"/>    
+        <xsl:variable name="definition" select="key('definition-by-name',@named)"/>
+        <XSLT:apply-templates mode="#current" select="*[@key=({string-join((@named/('''' ||. || ''''),$definition/@group-as/('''' || . || '''')),', ')})]"/>    
     </xsl:template>
     
     <xsl:template match="model/prose" priority="2">

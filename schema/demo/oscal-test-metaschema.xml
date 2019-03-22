@@ -8,6 +8,16 @@
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" root="kit">
 
+
+<!-- Potential improvements to metaschema: 
+  
+  1. Rename @named to @ref throughout
+  2. Also rename flag/@name to flag/@ref
+  3. Rename define-flag/@datatype to @as for consistency with define-field
+  4. Remove flag/@datatype as duplicative
+  
+  -->
+  
   <schema-name>FAKEUP Testing Schema</schema-name>
   <short-name>oscal-test</short-name>
   <namespace>urn:fakeup</namespace>
@@ -62,8 +72,10 @@
       <field named="single-required-field" required="yes"/>
       <assembly named="acquired-model"/>
       <field named="single-mixed-field" required="yes"  />
+      <field named="boolean_field"/>
       <fields named="plural-field"/>
       <fields named="plural-mixed-field"/>
+      <fields named="plural-flagged-mixed"/>
       <assembly named="single-chunk"/>
       <assemblies named="chunk-among-chunks"/>
       <choice>
@@ -112,6 +124,7 @@
   </define-assembly>
   
   <define-assembly name="chunk-among-chunks" group-as="many-chunks">
+    <flag name="boolean_flag"/>
     <formal-name>Chunk among chunks</formal-name>
     <description>As it says</description>
     <model>
@@ -137,7 +150,17 @@
   </define-assembly>
   
   <define-flag name="some_string" datatype="string">
-    <formal-name>A string flag</formal-name>
+    <formal-name>Some string</formal-name>
+    <description>As it says</description>
+  </define-flag>
+  
+  <define-field name="boolean_field" as="boolean">
+    <formal-name>A Boolean field</formal-name>
+    <description>As it says</description>
+  </define-field>
+  
+  <define-flag name="boolean_flag" datatype="boolean">
+    <formal-name>A Boolean flag</formal-name>
     <description>As it says</description>
   </define-flag>
   

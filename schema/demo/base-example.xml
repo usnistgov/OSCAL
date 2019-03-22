@@ -7,13 +7,19 @@
         <single-required-field>Required</single-required-field>
         <acquired-model/>
         <single-mixed-field>Mixed content? <i>here be content?</i></single-mixed-field>
+        <boolean_field>false</boolean_field>
         <chunk-among-chunks>
             <single-required-field></single-required-field>
-            <h4></h4>
+            
+            <h4>Header</h4>
             <table>
                 <tr>
-                    <th></th>
-                    <td></td>
+                    <th>Column 1</th>
+                    <td>Column 2</td>
+                </tr>
+                <tr>
+                    <td>entry 1</td>
+                    <td>entry 2</td>
                 </tr>
             </table>
         </chunk-among-chunks>
