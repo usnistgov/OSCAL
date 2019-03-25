@@ -15,6 +15,7 @@
   2. Also rename flag/@name to flag/@ref
   3. Rename define-flag/@datatype to @as for consistency with define-field
   4. Remove flag/@datatype as duplicative
+  5. Support choice/flag?
   
   -->
   

@@ -18,15 +18,15 @@
     <description>Information describing the publication or availability of this document</description>
     <model>
       <field      named="title"    required="yes"/>
-      <fields     named="author"   group-as="authors"/>
+      <fields     named="author"/>
       <field      named="publication-date"/>
       <field      named="version"/>
-      <fields     named="doc-id"   group-as="document-identifiers"/>
-      <fields     named="prop"     group-as="properties"/>
-      <fields     named="hlink"    group-as="hashed-links"/>
-      <assemblies named="resource" group-as="resources"/>
-      <assemblies named="role"     group-as="roles"/>
-      <assemblies named="party"    group-as="parties"/>
+      <fields     named="doc-id"/>
+      <fields     named="prop"/>
+      <assemblies named="hlink"/>
+      <assemblies named="resource"/>
+      <assemblies named="role"/>
+      <assemblies named="party"/>
       <assembly   named="notes"/>
       <assembly   named="extra-meta"/>
     </model>
@@ -111,7 +111,7 @@
       organization as such serves as a documented party.</p>
     </remarks>
     <model>
-      <assemblies named="person" group-as="persons"/>
+      <assemblies named="person"/>
       <assembly named="org"/>
       <assembly named="notes"/>
     </model>
@@ -126,12 +126,12 @@
       <field    named="org-name">
         <description>Affiliated organization</description>
       </field>
-      <fields   named="person-id" group-as="person-identifiers"/>
-      <fields   named="org-id"    group-as="organization-identifiers"/>
+      <fields   named="person-id"/>
+      <fields   named="org-id"/>
       <assembly named="address"/>
-      <fields   named="email" group-as="email-addresses"/>
-      <fields   named="phone" group-as="telephone-numbers"/>
-      <fields   named="url"   group-as="URLs"/>
+      <fields   named="email"/>
+      <fields   named="phone"/>
+      <fields   named="url"/>
       <assembly named="notes"/>
     </model>
   </define-assembly>
@@ -142,11 +142,11 @@
     <model>
       <field    named="org-name"/>
       <field    named="short-name"/>
-      <fields   named="org-id" group-as="organization-identifiers"/>
+      <fields   named="org-id"/>
       <assembly named="address"/>
-      <fields   named="email" group-as="email-addresses"/>
-      <fields   named="phone" group-as="telephone-numbers"/>
-      <fields   named="url" group-as="URLs"/>
+      <fields   named="email"/>
+      <fields   named="phone"/>
+      <fields   named="url"/>
       <assembly named="notes"/>
     </model>
   </define-assembly>
@@ -163,7 +163,7 @@
     <description>An identifier for an organization using a designated scheme.</description>
   </define-field>
   
-  <define-assembly name="hlink" group-as="hashed-links" show-docs="xml json">
+  <define-assembly name="hlink" group-as="hashed-links">
     <flag name="href" datatype="anyURI" required="yes"/>
     <flag name="rel"  datatype="NCName"/>
     <flag name="media-type"/>
@@ -174,16 +174,16 @@
     </remarks>
     <model>
       <field  named="title"/>
-      <fields named="hash" group-as="hashes"/>
+      <fields named="hash"/>
     </model>
   </define-assembly>
   
-  <define-flag name="rel" datatype="NCName" show-docs="xml json">
+  <define-flag name="rel" datatype="NCName">
     <formal-name>Relation</formal-name>
     <description>Purpose of the link</description>
   </define-flag>
   
-  <define-flag name="media-type" datatype="string" show-docs="xml json">
+  <define-flag name="media-type" datatype="string">
     <formal-name>Media type</formal-name>
     <description>Describes the media or MIME type of a linked resource</description>
   </define-flag>
@@ -203,12 +203,6 @@
     </remarks>
   </define-field>
   
-  <define-field name="full-name" as="mixed">
-    <formal-name>Full Name</formal-name>
-    <description>The complete (legal) name of an entity or role</description>
-  </define-field>
-  
-  
   <define-field name="short-name">
     <formal-name>short-name</formal-name>
     <description>A common name, short name or acronym</description>
@@ -222,7 +216,7 @@
     <formal-name>Address</formal-name>
     <description>A postal address</description>
     <model>
-      <fields named="addr-line" group-as="postal-address"/>
+      <fields named="addr-line"/>
       <field  named="city"/>
       <field  named="state"/>
       <field  named="postal-code"/>
@@ -298,14 +292,14 @@
         <code>rel</code>.</p>
     </remarks>
     <model>
-      <field    named="title"/>
-      <fields   named="author" group-as="authors"/>
-      <field    named="publication-date"/>
-      <field    named="version"/>
-      <fields   named="doc-id" group-as="document-identifiers"/>
-      <fields   named="prop"   group-as="properties"/>
-      <fields   named="hlink"  group-as="hashed-links"/>
-      <assembly named="notes"/>
+      <field      named="title"/>
+      <fields     named="author"/>
+      <field      named="publication-date"/>
+      <field      named="version"/>
+      <fields     named="doc-id"/>
+      <fields     named="prop"/>
+      <assemblies named="hlink"/>
+      <assembly   named="notes"/>
     </model>
   </define-assembly>
 
@@ -351,8 +345,8 @@
     <description>Container for (system-defined) metadata</description>
     <model>
       <choice>
-        <assemblies named="meta-group" group-as="metadata-groups"/>
-        <fields named="meta" group-as="metadata-fields"/>
+        <assemblies named="meta-group"/>
+        <fields named="meta"/>
       </choice>
       <assembly named="notes"/>
     </model>
@@ -364,8 +358,8 @@
     <formal-name>Metadata group</formal-name>
     <description>Custom- or application-defined annotated metadata.</description>
     <model>
-      <fields     named="meta"       group-as="metadata-fields"/>
-      <assemblies named="meta-group" group-as="metadata-groups"/>
+      <fields     named="meta"/>
+      <assemblies named="meta-group"/>
       <assembly   named="notes"/>
     </model>
   </define-assembly>
