@@ -11,12 +11,18 @@
     
     it depends on declarations for $root-name and for key('definitions-by-name') -->
     
-    <!--<xsl:output indent="yes"/>
+    <xsl:output indent="yes"/>
+    
     
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
-    
-    <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>-->
+    <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
    
+    
+    <!--<xsl:template match="/">
+        <BOO>
+        <xsl:copy-of select="$all-definitions"/>
+        </BOO>
+    </xsl:template>-->
     
     <!-- $given-definitions pulls all definitions from all modules into a
          sequence of siblings, guarding against circular imports -->
@@ -36,14 +42,16 @@
     </xsl:variable>
     <!--working down from the top, we collect all references to definitions actually to be used in this schema-->
     
-    <xsl:variable name="all-definitions">
+    <xsl:variable name="all-definitions" as="document-node()">
          <xsl:variable name="all-references" as="xs:string*">
             <xsl:apply-templates mode="collect-references" select="$distinct-definitions/m:definitions/*[@name=$root-name]">
                 <xsl:with-param tunnel="yes" name="ref-stack" select="()"/>
             </xsl:apply-templates>
         </xsl:variable>
+        <xsl:document>
         <!-- finally we filter to include only the definitions named among the references -->
-        <xsl:sequence select="$distinct-definitions/m:definitions/*[@name=($all-references,$root-name)]"/>
+          <xsl:sequence select="$distinct-definitions/m:definitions/*[@name=($all-references,$root-name)]"/>
+        </xsl:document>
     </xsl:variable>
     
     <xsl:template match="METASCHEMA" mode="acquire-definitions">
