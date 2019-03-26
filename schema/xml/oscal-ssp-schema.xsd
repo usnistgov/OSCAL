@@ -1,0 +1,2075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:oscal-ssp="urn:OSCAL-SSP-metaschema"
+           xmlns:oscal-prose="urn:OSCAL-SSP-metaschema"
+           elementFormDefault="qualified"
+           targetNamespace="urn:OSCAL-SSP-metaschema">
+   <xs:element name="system-security-plan">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:metadata"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:import"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:system-characteristics"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:system-implementation"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:control-implementation"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:references"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:attachment"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="system-characteristics">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:system-id"/>
+            <xs:element minOccurs="1" ref="oscal-ssp:system-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:system-name-short"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:description"/>
+            <xs:element minOccurs="1" ref="oscal-ssp:security-sensitivity-level"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:system-information"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-impact-level"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-eauth"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:status"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:status-other-description"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:deployment-model"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:deployment-model-other-description"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:service-model"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:service-model-other-description"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:leveraged-authorizations"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:authorization-boundary"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:network-architecture"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:data-flow"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:users"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="system-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="system-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="system-name-short">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="security-sensitivity-level">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="system-information">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:information-type"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:designations"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="designations">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:designation"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="designation">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:title"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:declaration"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:qualifiers"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="declaration" type="xs:boolean">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:element name="qualifiers">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:qualifier"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="qualifier">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:qual-question"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:qual-response"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:qual-notes"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="qual-question">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="qual-response" type="xs:boolean">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:element name="qual-notes">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="information-type">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:description"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:confidentiality-impact"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:integrity-impact"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:availability-impact"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="nist-id" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="confidentiality-impact">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:base"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:selected"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:adjustment-justification"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="integrity-impact">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:base"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:selected"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:adjustment-justification"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="availability-impact">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:base"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:selected"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:adjustment-justification"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="base">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="selected">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="adjustment-justification">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="security-impact-level">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-objective-confidentiality"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-objective-integrity"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-objective-availability"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="security-objective-confidentiality">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="security-objective-integrity">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="security-objective-availability">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="security-eauth">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-auth-ial"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-auth-aal"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-auth-fal"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:security-eauth-level"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="security-auth-ial">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="security-auth-aal">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="security-auth-fal">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="security-eauth-level">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="status">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="status-other-description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="deployment-model">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="deployment-model-other-description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="service-model">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="service-model-other-description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="leveraged-authorizations">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:leveraged-authorization"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="leveraged-authorization">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:leveraged-authorization-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:leveraged-authorization-service-provider"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:leveraged-authorization-date-granted"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="leveraged-authorization-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="leveraged-authorization-service-provider">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="leveraged-authorization-date-granted">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="authorization-boundary">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:boundary-diagram"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="boundary-diagram">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:boundary-description"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="attachment-id" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="boundary-description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="network-architecture">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:network-diagram"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="network-diagram">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:network-description"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="attachment-id" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="network-description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="data-flow">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:data-flow-diagram"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="data-flow-diagram">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:data-flow-description"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="attachment-id" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="data-flow-description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="users">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:role"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:statistics"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="role">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:title"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:short-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:desc"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:privilege"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:responsibility"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID" use="required"/>
+         <xs:attribute name="name" type="xs:string"/>
+         <xs:attribute name="external" type="xs:boolean"/>
+         <xs:attribute name="access" type="xs:string"/>
+         <xs:attribute name="sensitivity-level" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="privilege">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="responsibility">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="statistics">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:internal-user-total-current"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:internal-user-total-future"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:external-user-total-current"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:external-user-total-future"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="internal-user-total-current">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="internal-user-total-future">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="external-user-total-current">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="external-user-total-future">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="system-implementation">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:ports-protocols-services"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:interconnection"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:component"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:system-inventory"/>
+         </xs:sequence>
+         <xs:attribute name="interconnected" type="xs:boolean"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ports-protocols-services">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:service"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="service">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:protocol"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:purpose"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:used-by"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="name" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="protocol">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:port-range"/>
+         </xs:sequence>
+         <xs:attribute name="name" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="port-range">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="start" type="xs:string"/>
+         <xs:attribute name="end" type="xs:string"/>
+         <xs:attribute name="transport" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="purpose">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-ssp:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="used-by">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="interconnection">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:external-system-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:external-system-org"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:isa-authorization"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:isa-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:isa-date"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="external-system-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="external-system-org">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="isa-authorization">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="isa-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="isa-date">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="component">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:origin"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:characteristics"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:satisfaction"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:validation"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:provisioning"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:subcomponent"/>
+         </xs:sequence>
+         <xs:attribute name="type" type="xs:string"/>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="origin">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:organization"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:title"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:version"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:release-date"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:model"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:part"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="vendor">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="release-date">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="model">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="part">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:phone"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:email"/>
+         </xs:sequence>
+         <xs:attribute name="class" type="xs:NMTOKEN"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="characteristics">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:ip-address"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:service"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:part"/>
+         </xs:sequence>
+         <xs:attribute name="context" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ip-address">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="satisfaction">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="context" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="system-inventory">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:inventory-item"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="inventory-item">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:ip-address"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:dns-name"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:host-item"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:software-item"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:comments"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:serial-no"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:network-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:asset-owner"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:asset-administrator"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="component-id" type="xs:NMTOKEN"/>
+         <xs:attribute name="virtual" type="xs:boolean"/>
+         <xs:attribute name="public" type="xs:boolean"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="dns-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="host-item">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:netbios-name"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:mac-address"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:authenticated-scan"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:baseline-template"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:os-name"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:os-version"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:location"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:asset-type"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:vendor"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:hardware-model"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:scanned"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:prop"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="netbios-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="mac-address">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="os-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="os-version">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="location">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="asset-type">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="hardware-model">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="authenticated-scan" type="xs:boolean">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   <xs:element name="software-item">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:vendor"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:software-name"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:software-version"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:software-patch-level"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:function"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="software-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="software-version">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="software-patch-level">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="function">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="comments">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="serial-no">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="network-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="asset-owner">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="poc-id" type="xs:NMTOKEN"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="asset-administrator">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="poc-id" type="xs:NMTOKEN"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="control-implementation">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:control"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="control">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:responsible-role"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:set-param"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:prop"/>
+            <xs:element maxOccurs="unbounded"
+                        minOccurs="0"
+                        ref="oscal-ssp:control-response"/>
+         </xs:sequence>
+         <xs:attribute name="class" type="xs:NMTOKEN"/>
+         <xs:attribute name="control-id" type="xs:NMTOKEN"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="responsible-role">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="role-id" type="xs:NMTOKEN"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="set-param">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:value"/>
+         </xs:sequence>
+         <xs:attribute name="param-id" type="xs:NMTOKEN"/>
+         <xs:attribute name="target" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="value">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="control-response">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+         <xs:attribute name="stmt-id" type="xs:NMTOKEN"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="references">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:ref"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ref">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:citation"/>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="ref-type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="citation">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-ssp:everything-inline"/>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="link">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-ssp:everything-inline"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+         <xs:attribute name="rel" type="xs:NCName"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="attachment">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:title"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:description"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:format"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:date"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:version"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:attachment-type"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:base64"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="format">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="date">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="attachment-type">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="base64">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="filename" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="validation">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="provisioning">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="subcomponent">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="organization">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="baseline-template">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="scanned">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="metadata">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="1" ref="oscal-ssp:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:author"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:publication-date"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:version"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:doc-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:prop"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:hlink"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:resource"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:role"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:party"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:notes"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:extra-meta"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="title">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="author">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="publication-date">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="version">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="iso-date" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="doc-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="prop">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="class" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="party">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:person"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:org"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:notes"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="role-id" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="person">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:person-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:short-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:org-name"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:person-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:org-id"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:address"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:email"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:phone"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:url"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:notes"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="org">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:org-name"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:short-name"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:org-id"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:address"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:email"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:phone"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:url"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:notes"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="person-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="org-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hlink">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:hash"/>
+         </xs:sequence>
+         <xs:attribute name="href" type="xs:anyURI" use="required"/>
+         <xs:attribute name="rel" type="xs:NCName"/>
+         <xs:attribute name="media-type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="person-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="org-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="short-name">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="address">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:addr-line"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:city"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:state"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:postal-code"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:country"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="addr-line">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="city">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="state">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="postal-code">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="country">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="email">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="phone">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="url">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="notes">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-ssp:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="desc">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="resource">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:author"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:publication-date"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:version"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:doc-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:prop"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:hlink"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:notes"/>
+         </xs:sequence>
+         <xs:attribute name="type" type="xs:string"/>
+         <xs:attribute name="media-type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hash">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="algorithm" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="extra-meta">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:meta-group"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:meta"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal-ssp:notes"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="meta-group">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:meta"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:meta-group"/>
+            <xs:element minOccurs="0" ref="oscal-ssp:notes"/>
+         </xs:sequence>
+         <xs:attribute name="term" type="xs:string"/>
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="meta">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="term" type="xs:string"/>
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="import">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-ssp:include"/>
+         </xs:sequence>
+         <xs:attribute name="href" type="xs:anyURI" use="required"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="include">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:choice>
+               <xs:element minOccurs="0" ref="oscal-ssp:all"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-ssp:call"/>
+            </xs:choice>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="all">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="with-subcontrols" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="call">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="component-id" type="xs:NMTOKEN"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="prose">
+      <xs:choice>
+         <xs:element ref="oscal-prose:h1"/>
+         <xs:element ref="oscal-prose:h2"/>
+         <xs:element ref="oscal-prose:h3"/>
+         <xs:element ref="oscal-prose:h4"/>
+         <xs:element ref="oscal-prose:h5"/>
+         <xs:element ref="oscal-prose:h6"/>
+         <xs:element ref="oscal-prose:p"/>
+         <xs:element ref="oscal-prose:ul"/>
+         <xs:element ref="oscal-prose:ol"/>
+         <xs:element ref="oscal-prose:pre"/>
+         <xs:element ref="oscal-prose:table"/>
+      </xs:choice>
+   </xs:group>
+   <xs:element name="h1">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:inlines"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="h2">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:inlines"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="h3">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:inlines"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="h4">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:inlines"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="h5">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:inlines"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="h6">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:inlines"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="p">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="pre">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ol">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="oscal-prose:li"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="li">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:everything-inline"/>
+            <xs:element ref="oscal-prose:ol"/>
+            <xs:element ref="oscal-prose:ul"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ul">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="oscal-prose:li"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="table">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="oscal-prose:tr"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="tr">
+      <xs:complexType>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" ref="oscal-prose:td"/>
+            <xs:element maxOccurs="unbounded" ref="oscal-prose:th"/>
+         </xs:choice>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="th">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="td">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="everything-inline">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:group ref="oscal-prose:special"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:group name="mix">
+      <xs:sequence>
+         <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal-prose:inlines"/>
+      </xs:sequence>
+   </xs:group>
+   <xs:group name="inlines">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:q"/>
+            <xs:element ref="oscal-prose:code"/>
+            <xs:element ref="oscal-prose:em"/>
+            <xs:element ref="oscal-prose:i"/>
+            <xs:element ref="oscal-prose:strong"/>
+            <xs:element ref="oscal-prose:b"/>
+            <xs:element ref="oscal-prose:sub"/>
+            <xs:element ref="oscal-prose:sup"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:element name="q">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:code"/>
+            <xs:element ref="oscal-prose:em"/>
+            <xs:element ref="oscal-prose:i"/>
+            <xs:element ref="oscal-prose:b"/>
+            <xs:element ref="oscal-prose:strong"/>
+            <xs:element ref="oscal-prose:sub"/>
+            <xs:element ref="oscal-prose:sup"/>
+         </xs:choice>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="code">
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-prose:mix"/>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="strong">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="em">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="i">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="b">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="oscal-prose:mix"/>
+            <xs:element ref="oscal-prose:a"/>
+         </xs:choice>
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="sub">
+      <xs:complexType mixed="true">
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="sup">
+      <xs:complexType mixed="true">
+         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="a">
+      <xs:complexType mixed="true">
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:q"/>
+            <xs:element ref="oscal-prose:code"/>
+            <xs:element name="em">
+               <xs:complexType mixed="true">
+                  <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+               </xs:complexType>
+            </xs:element>
+         </xs:choice>
+         <xs:attribute name="href"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:group name="special">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="oscal-prose:insert"/>
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <xs:element name="insert">
+      <xs:complexType>
+         <xs:attribute name="param-id" use="required" type="xs:IDREF"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:attributeGroup name="requiredClass">
+      <xs:attribute name="class" use="required"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="optionalClass">
+      <xs:attribute name="class"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="hrefAttr">
+      <xs:attribute name="href"/>
+   </xs:attributeGroup>
+</xs:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OSCAL CATALOG METASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<!--<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" root="baby">
+  
+  <schema-name>Baby TestingSchema</schema-name>
+  <short-name>Baby</short-name>
+  <namespace>urn:baby</namespace>
+  
+  <import href="module-metaschema.xml"/>
+  <define-assembly name="baby" group-as="babies">
+    <formal-name>Baby</formal-name>
+    <description>Testing</description>
+    <model>
+      <fields named="toy"/>
+      <field named="acquired-field" required="yes"/>
+      <assemblies named="baby"></assemblies>
+    </model>    
+  </define-assembly>
+
+<define-field name="toy" group-as="toybox">
+  <formal-name>Toy</formal-name>
+  <description>A typical toy</description>
+</define-field>
+  
+</METASCHEMA>
