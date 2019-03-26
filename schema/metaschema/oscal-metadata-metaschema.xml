@@ -67,7 +67,7 @@
     </remarks>
   </define-flag>
 
-  <define-field name="doc-id" group-as="document-identifiers">
+  <define-field name="doc-id" group-as="document-ids">
     <flag name="type"/>
     <formal-name>Document Identifier</formal-name>
     <description>Any sort of document identifier, name, code, path or other indicator of where and how this document
@@ -94,7 +94,8 @@
 
   <define-flag name="class" datatype="string">
     <formal-name>Classification</formal-name>
-    <description>Indicating the property being assigned</description>
+    <description>Indicating the type or classification of a property or part</description>
+    <remarks><p>Extra constraints, expressed as validation rules, may be applied to items based on the assigned <code>class</code>.</p></remarks>
   </define-flag>
   
 
@@ -151,13 +152,13 @@
     </model>
   </define-assembly>
   
-  <define-field name="person-id" group-as="person-identifiers">
+  <define-field name="person-id" group-as="person-ids">
     <flag name="type"/>
     <formal-name>Personal Identifier</formal-name>
     <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
   </define-field>
   
-  <define-field name="org-id" group-as="organization-identifiers">
+  <define-field name="org-id" group-as="organization-ids">
     <flag name="type"/>
     <formal-name>Organization Identifier</formal-name>
     <description>An identifier for an organization using a designated scheme.</description>
@@ -406,7 +407,7 @@
       <field    named="title"/>
       <field    named="desc"/>
       <fields   named="doc-id" group-as="document-identifiers"/>
-      <fields   named="pub-id" group-as="publication-identifiers"/>
+      <fields   named="pub-id" group-as="publication-ids"/>
       <assembly named="file"/>
       <assembly named="notes"/>
       <assemblies named="meta-group" group-as="meta-groups"/>

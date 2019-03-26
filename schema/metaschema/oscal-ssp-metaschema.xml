@@ -1574,7 +1574,7 @@
     </remarks>
   </define-flag>
 
-  <define-field name="doc-id" group-as="document-identifiers">
+  <define-field name="doc-id" group-as="document-ids">
     <flag name="type"/>
     <formal-name>Document Identifier</formal-name>
     <description>Any sort of document identifier, name, code, path or other indicator of where and how this document
@@ -1646,13 +1646,13 @@
     </model>
   </define-assembly>
   
-  <define-field name="person-id" group-as="person-identifiers">
+  <define-field name="person-id" group-as="person-ids">
     <flag name="type"/>
     <formal-name>Personal Identifier</formal-name>
     <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
   </define-field>
   
-  <define-field name="org-id" group-as="organization-identifiers">
+  <define-field name="org-id" group-as="organization-ids">
     <flag name="type"/>
     <formal-name>Organization Identifier</formal-name>
     <description>An identifier for an organization using a designated scheme.</description>

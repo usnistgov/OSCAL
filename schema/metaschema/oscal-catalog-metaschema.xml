@@ -150,7 +150,7 @@
     <description>A title for display and navigation, exclusive of more specific properties</description>
   </define-field>
 
-  <define-field name="prop" group-as="props">
+  <define-field name="prop" group-as="properties">
     <flag name="id" datatype="ID"/>
     <flag name="class" required="yes"/>
     <formal-name>Property</formal-name>
