@@ -15,7 +15,10 @@
   2. Also rename flag/@name to flag/@ref
   3. Rename define-flag/@datatype to @as for consistency with define-field
   4. Remove flag/@datatype as duplicative
+<<<<<<< HEAD:schema/demo/oscal-test-metaschema.xml
   5. Support choice/flag?
+=======
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad:schema/demo/oscal-test-metaschema.xml
   
   -->
   

@@ -34,7 +34,11 @@
 
 	<!-- TOP LEVEL ASSEMBLY -->
 
+<<<<<<< HEAD
 	<define-assembly name="system-security-plan" group-as="ssp">
+=======
+	<define-assembly name="system-security-plan" group-as="ssp" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID" required="yes"/>
 		<formal-name>System Security Plan (SSP)</formal-name>
 		<description/>
@@ -45,7 +49,11 @@
 			<field named="date" required="yes"/>
 			 -->
 			<assembly named="metadata"/>
+<<<<<<< HEAD
 			<assemblies named="import"/>
+=======
+			<assemblies named="import" group-as="imports"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 			<assembly named="system-characteristics"/>
 			<assembly named="system-implementation"/>
 			<assembly named="control-implementation"/>
@@ -57,7 +65,12 @@
 
 	<!-- SYSTEM CHARACTERISTICS -->
 
+<<<<<<< HEAD
 	<define-assembly name="system-characteristics" group-as="ssp-system-characteristics">
+=======
+	<define-assembly name="system-characteristics" group-as="ssp-system-characteristics"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>System Characteristics</formal-name>
 		<description>Contains the characteristics of the system, such as its name, purpose, and
 			security impact level.</description>
@@ -75,8 +88,13 @@
 			<field named="status-other-description"/>
 			<field named="deployment-model"/>
 			<field named="deployment-model-other-description"/>
+<<<<<<< HEAD
 			<fields named="service-model"/>
 			<fields named="service-model-other-description"/>
+=======
+			<fields named="service-model" group-as="service-models"/>
+			<fields named="service-model-other-description" group-as="service-model-descriptions"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 			<assembly named="leveraged-authorizations"/>
 			<assembly named="authorization-boundary"/>
 			<assembly named="network-architecture"/>
@@ -86,18 +104,30 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="system-id" as="string">
+=======
+	<define-field name="system-id" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="type" datatype="string"/>
 		<formal-name>System Identification</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="system-name" as="string">
+=======
+	<define-field name="system-name" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>System Name (Full)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="system-name-short" as="string">
+=======
+	<define-field name="system-name-short" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>System Name (Short)</formal-name>
 		<description/>
 
@@ -111,28 +141,49 @@
 		</model>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="security-sensitivity-level" as="string">
+=======
+	<define-field name="security-sensitivity-level" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name/>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="system-information" group-as="ssp-system-information">
+=======
+	<define-assembly name="system-information" group-as="ssp-system-information" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>System Information</formal-name>
 		<description>Contains details about all types of information stored, processed, or
 			transmitted by the system, such as privacy information, and NIST 800-60 information
 			types.</description>
 		<model>
+<<<<<<< HEAD
 			<assemblies named="information-type"/>
 			<assemblies named="designations"/>
+=======
+			<assemblies named="information-type" group-as="ssp-information-type"/>
+			<assemblies named="designations" group-as="ssp-designations"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="designations" group-as="ssp-designations">
 		<formal-name>System Information Designations</formal-name>
 		<description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
 		<model>
 			<assemblies named="designation"/>
+=======
+	<define-assembly name="designations" group-as="ssp-designations" show-docs="xml json">
+		<formal-name>System Information Designations</formal-name>
+		<description>Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).</description>
+		<model>
+			<assemblies named="designation" group-as="ssp-designation"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example>
 			<designations xmlns="urn:OSCAL-SSP-metaschema">
@@ -144,14 +195,22 @@
 		</example>
 	</define-assembly>
 	
+<<<<<<< HEAD
 	<define-assembly name="designation" group-as="ssp-designation">
+=======
+	<define-assembly name="designation" group-as="ssp-designation" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<formal-name>System Information Designation</formal-name>
 		<description>Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).</description>
 		<model>
 			<field named="title"/>
 			<field named="declaration"/>
+<<<<<<< HEAD
 			<assemblies named="qualifiers"/>
+=======
+			<assemblies named="qualifiers" group-as="ssp-qualifiers"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example>
 			<designation id="pii" xmlns="urn:OSCAL-SSP-metaschema">
@@ -161,7 +220,11 @@
 		</example>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="declaration" as="boolean">
+=======
+	<define-field name="declaration" as="boolean" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Declaration</formal-name>
 		<description>Identifies whether a specific designation applies to this system.</description>
 		<example>
@@ -172,11 +235,19 @@
 		</example>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-assembly name="qualifiers" group-as="ssp-qualifiers">
 		<formal-name>Information Designation Qualifiers</formal-name>
 		<description>A list of questions about the system that contribute to the establishment of a designation, such as the FedRAMP privacy threshold analysis questions.</description>
 		<model>
 			<assemblies named="qualifier"/>
+=======
+	<define-assembly name="qualifiers" group-as="ssp-qualifiers" show-docs="xml json">
+		<formal-name>Information Designation Qualifiers</formal-name>
+		<description>A list of questions about the system that contribute to the establishment of a designation, such as the FedRAMP privacy threshold analysis questions.</description>
+		<model>
+			<assemblies named="qualifier" group-as="ssp-qualifiers"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example>
 			<qualifiers xmlns="urn:OSCAL-SSP-metaschema">
@@ -188,7 +259,11 @@
 		</example>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="qualifier" group-as="ssp-qualifiers">
+=======
+	<define-assembly name="qualifier" group-as="ssp-qualifiers" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<formal-name>Individual Information Designation Qualifier</formal-name>
 		<description>An individual questions about the system that contributes to the establishment of a designation, such as a FedRAMP privacy threshold analysis question.</description>
@@ -208,7 +283,11 @@
 		</example>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="qual-question" as="string">
+=======
+	<define-field name="qual-question" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Qualifier Question</formal-name>
 		<description>A question that must be answered about this system.</description>
 		<example>
@@ -222,7 +301,11 @@
 		</example>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-field name="qual-response" as="boolean">
+=======
+	<define-field name="qual-response" as="boolean" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Qualifier Question Response</formal-name>
 		<description>The response to the question.</description>
 		<example>
@@ -236,7 +319,11 @@
 		</example>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-field name="qual-notes" as="string">
+=======
+	<define-field name="qual-notes" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Qualifier Question Response Notes</formal-name>
 		<description>Additional information about the response to the question.</description>
 		<example>
@@ -250,7 +337,11 @@
 		</example>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-assembly name="information-type" group-as="ssp-information-type">
+=======
+	<define-assembly name="information-type" group-as="ssp-information-type" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="nist-id" datatype="string"/>
 		<formal-name>Information Type</formal-name>
@@ -266,7 +357,12 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="confidentiality-impact" group-as="ssp-confidentiality-impact">
+=======
+	<define-assembly name="confidentiality-impact" group-as="ssp-confidentiality-impact"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Confidentiality Impact Level</formal-name>
 		<description/>
 		<model>
@@ -277,7 +373,11 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="integrity-impact" group-as="ssp-integrity-impact">
+=======
+	<define-assembly name="integrity-impact" group-as="ssp-integrity-impact" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Integrity Impact Level</formal-name>
 		<description/>
 		<model>
@@ -288,7 +388,12 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="availability-impact" group-as="ssp-availability-impact">
+=======
+	<define-assembly name="availability-impact" group-as="ssp-availability-impact"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Availability Impact Level</formal-name>
 		<description/>
 		<model>
@@ -299,25 +404,42 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="base" as="string">
+=======
+	<define-field name="base" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Base Level (Confidentiality, Integrity, or Availability)</formal-name>
 		<description>The prescribed base (Confidentiality, Integrity, or Availability) security
 			impact level.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="selected" as="string">
+=======
+	<define-field name="selected" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Selected Level (Confidentiality, Integrity, or Availability)</formal-name>
 		<description>The selected (Confidentiality, Integrity, or Availability) security impact
 			level.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="adjustment-justification" as="string">
+=======
+	<define-field name="adjustment-justification" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Adjustment Justification</formal-name>
 		<description>If the selected security level is different from the base security level, this
 			contains the justificaiton for the change.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="security-impact-level" group-as="ssp-security-impact-level">
+=======
+	<define-assembly name="security-impact-level" group-as="ssp-security-impact-level"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Impact Level</formal-name>
 		<description/>
 		<model>
@@ -328,22 +450,38 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="security-objective-confidentiality" as="string">
+=======
+	<define-field name="security-objective-confidentiality" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Objective (Confidentiality)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="security-objective-integrity" as="string">
+=======
+	<define-field name="security-objective-integrity" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Objective (Integrity)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="security-objective-availability" as="string">
+=======
+	<define-field name="security-objective-availability" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Objective (Availability)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="security-eauth" group-as="ssp-security-eauth">
+=======
+	<define-assembly name="security-eauth" group-as="ssp-security-eauth" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Electronic Authetication Level</formal-name>
 		<description/>
 		<model>
@@ -355,67 +493,121 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="security-auth-ial" as="string">
+=======
+	<define-field name="security-auth-ial" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Authentication (Identity Assurance Level)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="security-auth-aal" as="string">
+=======
+	<define-field name="security-auth-aal" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Authentication (Authenticator Assurance Level)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="security-auth-fal" as="string">
+=======
+	<define-field name="security-auth-fal" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security Authentication (Federation Assurance Level)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="security-eauth-level" as="string">
+=======
+	<define-field name="security-eauth-level" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Security eAuthentication Level</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="status" as="string">
+=======
+	<define-field name="status" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Status</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="status-other-description" as="string">
+=======
+	<define-field name="status-other-description" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Status Description (if Other)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="deployment-model" as="string">
+=======
+	<define-field name="deployment-model" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Deployment Model</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="deployment-model-other-description" as="string">
+=======
+	<define-field name="deployment-model-other-description" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Deployment Model Description (if Other)</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="service-model" group-as="service-models" as="string">
+=======
+	<define-field name="service-model" group-as="service-models" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Service Model</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="service-model-other-description" group-as="service-model-descriptions" as="string">
+=======
+	<define-field name="service-model-other-description" group-as="service-model-descriptions" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Service Model Description Other</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="leveraged-authorizations" group-as="ssp-leveraged-authorizations">
+=======
+	<define-assembly name="leveraged-authorizations" group-as="ssp-leveraged-authorizations"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Leveraged Authorizations</formal-name>
 		<description>All leveraged authorizations for this system.</description>
 
 		<model>
+<<<<<<< HEAD
 			<assemblies named="leveraged-authorization"/>
+=======
+			<assemblies named="leveraged-authorization" group-as="ssp-leveraged-authorization"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="leveraged-authorization" group-as="ssp-leveraged-authorization">
+=======
+	<define-assembly name="leveraged-authorization" group-as="ssp-leveraged-authorization"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<formal-name>Leveraged Authorization</formal-name>
 		<description>The details for a single leveraged authorization</description>
@@ -428,17 +620,29 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="leveraged-authorization-name" as="string">
+=======
+	<define-field name="leveraged-authorization-name" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Leveraged system Name</formal-name>
 		<description>Name of the leveraged system.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="leveraged-authorization-service-provider" as="string">
+=======
+	<define-field name="leveraged-authorization-service-provider" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Leveraged System Service Provider Name</formal-name>
 		<description>Name of the service provider that manages the leveraged system.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="leveraged-authorization-date-granted">
+=======
+	<define-field name="leveraged-authorization-date-granted" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Leveraged System Authorization Date</formal-name>
 		<description>The date the leveraged system received its authorization.</description>
 		<remarks>
@@ -446,17 +650,30 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="authorization-boundary" group-as="ssp-authorization-boundary">
+=======
+	<define-assembly name="authorization-boundary" group-as="ssp-authorization-boundary"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Authorization Boundary</formal-name>
 		<description/>
 
 		<model>
+<<<<<<< HEAD
 			<assemblies named="boundary-diagram"/>
+=======
+			<assemblies named="boundary-diagram" group-as="ssp-boundary-diagram"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="boundary-diagram" group-as="ssp-boundary-diagram">
+=======
+	<define-assembly name="boundary-diagram" group-as="ssp-boundary-diagram" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="attachment-id" datatype="string"/>
 		<formal-name>Boundary Diagram</formal-name>
@@ -471,7 +688,11 @@
 	</define-assembly>
 
 
+<<<<<<< HEAD
 	<define-assembly name="boundary-description">
+=======
+	<define-assembly name="boundary-description" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Boundary Description</formal-name>
 		<description/>
 		<model>
@@ -479,17 +700,30 @@
 		</model>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="network-architecture" group-as="ssp-network-architecture">
+=======
+	<define-assembly name="network-architecture" group-as="ssp-network-architecture"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Network Architecture Diagrams</formal-name>
 		<description/>
 
 		<model>
+<<<<<<< HEAD
 			<assemblies named="network-diagram"/>
+=======
+			<assemblies named="network-diagram" group-as="ssp-network-boundary"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="network-diagram" group-as="ssp-network-boundary">
+=======
+	<define-assembly name="network-diagram" group-as="ssp-network-boundary" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="attachment-id" datatype="string"/>
 		<formal-name>Network Diagram</formal-name>
@@ -503,7 +737,11 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="network-description">
+=======
+	<define-assembly name="network-description" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Network Description</formal-name>
 		<description/>
 		<model>
@@ -511,16 +749,28 @@
 		</model>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="data-flow" group-as="ssp-data-flow">
 		<formal-name>Data Flow</formal-name>
 		<description/>
 		<model>
 			<assemblies named="data-flow-diagram"/>
+=======
+	<define-assembly name="data-flow" group-as="ssp-data-flow" show-docs="xml json">
+		<formal-name>Data Flow</formal-name>
+		<description/>
+		<model>
+			<assemblies named="data-flow-diagram" group-as="ssp-data-flow-diagram"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="data-flow-diagram" group-as="ssp-data-flow-diagram">
+=======
+	<define-assembly name="data-flow-diagram" group-as="ssp-data-flow-diagram" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="attachment-id" datatype="string"/>
 		<formal-name>Data Flow Diagram</formal-name>
@@ -534,7 +784,11 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="data-flow-description">
+=======
+	<define-assembly name="data-flow-description" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Data Flow Description</formal-name>
 		<description/>
 		<model>
@@ -543,11 +797,19 @@
 	</define-assembly>
 
 	<!-- **** Need to ensure <users> </users> matches pocs, roles, orgs **** -->
+<<<<<<< HEAD
 	<define-assembly name="users" group-as="ssp-users">
 		<formal-name>Users</formal-name>
 		<description>Provides all user roles.</description>
 		<model>
 			<assemblies named="role"/>
+=======
+	<define-assembly name="users" group-as="ssp-users" show-docs="xml json">
+		<formal-name>Users</formal-name>
+		<description>Provides all user roles.</description>
+		<model>
+			<assemblies named="role" group-as="roles"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 			<assembly named="statistics"/>
 		</model>
 		<example/>
@@ -572,23 +834,40 @@
 			<field named="short-name"/>
 			<field named="desc"/>
 			<!-- The following fields appear in <users><roles>, but not in <metadata><roles> -->
+<<<<<<< HEAD
 			<fields named="privilege"/>
 			<fields named="responsibility"/>
 		</model>
 	</define-assembly>
 
 	<define-field name="privilege" group-as="privileges" as="string">
+=======
+			<fields named="privilege" group-as="privileges"/>
+			<fields named="responsibility" group-as="responsibilities"/>
+		</model>
+	</define-assembly>
+
+	<define-field name="privilege" group-as="privileges" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Privilege</formal-name>
 		<description>Identifies the type/level of system privilege for the role. 
 			For FedRAMP, the only valid values are "p" (Privileged), "np" (Non-Privileged), or "nla" (No Logical Access).</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="responsibility" group-as="responsibilities" as="string">
+=======
+	<define-field name="responsibility" group-as="responsibilities" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Responsibility</formal-name>
 		<description>Identifies the functions performed by the user role.</description>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-assembly name="statistics" group-as="ssp-statistics">
+=======
+	<define-assembly name="statistics" group-as="ssp-statistics" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Statistics</formal-name>
 		<description>Provides a collection of statistics about users of the system.</description>
 
@@ -601,7 +880,11 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="internal-user-total-current">
+=======
+	<define-field name="internal-user-total-current" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Total Current Internal Users</formal-name>
 		<description/>
 		<remarks>
@@ -609,7 +892,11 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="internal-user-total-future">
+=======
+	<define-field name="internal-user-total-future" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Total Future Internal Users</formal-name>
 		<description/>
 		<remarks>
@@ -617,7 +904,11 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="external-user-total-current">
+=======
+	<define-field name="external-user-total-current" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Total Current External Users</formal-name>
 		<description/>
 		<remarks>
@@ -625,7 +916,11 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="external-user-total-future">
+=======
+	<define-field name="external-user-total-future" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Total Future External Users</formal-name>
 		<description/>
 		<remarks>
@@ -634,55 +929,96 @@
 	</define-field>
 
 	<!-- SYSTEM IMPLEMENTATION -->
+<<<<<<< HEAD
 	<define-assembly name="system-implementation" group-as="ssp-system-implementation">
+=======
+	<define-assembly name="system-implementation" group-as="ssp-system-implementation"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="interconnected" datatype="boolean"/>
 		<formal-name>System Implementation</formal-name>
 		<description>Provides information as to how the system is implemented.</description>
 
 		<model>
 			<assembly named="ports-protocols-services"/>
+<<<<<<< HEAD
 			<assemblies named="interconnection"/>
 			<assemblies named="component"/>
+=======
+			<assemblies named="interconnection" group-as="ssp-interconnection"/>
+			<assemblies named="component" group-as="components"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 			<assembly named="system-inventory"/>
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="ports-protocols-services" group-as="ssp-ports-protocols-services">
+=======
+	<define-assembly name="ports-protocols-services" group-as="ssp-ports-protocols-services"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Ports, Protocols, and Services</formal-name>
 		<description>A collection of the ports, protocols, and services used within the
 			system.</description>
 		<model>
+<<<<<<< HEAD
 			<assemblies named="service"/>
+=======
+			<assemblies named="service" group-as="ssp-service"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="service" group-as="ssp-service">
+=======
+	<define-assembly name="service" group-as="ssp-service" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="name" datatype="string"/>
 		<formal-name>Service</formal-name>
 		<description>A collection of information about an individual service within the
 			system.</description>
 		<model>
+<<<<<<< HEAD
 			<assemblies named="protocol"/>
 			<field named="purpose"/>
 			<fields named="used-by"/>
+=======
+			<assemblies named="protocol" group-as="ssp-protocol"/>
+			<field named="purpose"/>
+			<fields named="used-by" group-as="component-users"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="protocol" group-as="ssp-protocol">
+=======
+	<define-assembly name="protocol" group-as="ssp-protocol" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="name" datatype="string"/>
 		<formal-name>Protocol</formal-name>
 		<description>Information about the protocol used to provide a service.</description>
 		<model>
+<<<<<<< HEAD
 			<fields named="port-range"/>
+=======
+			<fields named="port-range" group-as="port-ranges"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="port-range" group-as="port-ranges">
+=======
+	<define-field name="port-range" group-as="port-ranges" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="start" datatype="string"/>
 		<flag name="end" datatype="string"/>
 		<flag name="transport" datatype="string"/>
@@ -693,12 +1029,20 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="purpose" as="mixed">
+=======
+	<define-field name="purpose" as="mixed" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Purpose</formal-name>
 		<description>Describes the purpose for the service within the system.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="used-by" group-as="component-users" as="string">
+=======
+	<define-field name="used-by" group-as="component-users" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Used By</formal-name>
 		<description>Identifies the types of system component that uses the service. One entry per
 		</description>
@@ -715,7 +1059,11 @@
 		<example></example>
 	</define-assembly>
 	-->
+<<<<<<< HEAD
 	<define-flag name="interconnected" datatype="boolean">
+=======
+	<define-flag name="interconnected" datatype="boolean" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Interconnection status</formal-name>
 		<description>Are their system interconnections? (Yes/No)</description>
 		<remarks>
@@ -723,7 +1071,11 @@
 		</remarks>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-assembly name="interconnection" group-as="ssp-interconnection">
+=======
+	<define-assembly name="interconnection" group-as="ssp-interconnection" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<formal-name>Interconnection</formal-name>
 		<description>Details on an individual system interconnection.</description>
@@ -734,40 +1086,68 @@
 		<model>
 			<field named="external-system-name"/>
 			<field named="external-system-org"/>
+<<<<<<< HEAD
 			<fields named="isa-authorization"/>
+=======
+			<fields named="isa-authorization" group-as="isa-authorizations"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 			<field named="isa-name"/>
 			<field named="isa-date"/>
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="external-system-name" as="string">
+=======
+	<define-field name="external-system-name" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>External System Name</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="external-system-org" as="string">
+=======
+	<define-field name="external-system-org" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>External System Organization</formal-name>
 		<description/>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="isa-authorization" group-as="isa-authorizations">
+=======
+	<define-field name="isa-authorization" group-as="isa-authorizations" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>ISA Authorization</formal-name>
 		<description>Name of the individual who authorized the Interconnection Security Agreement
 			(ISA).</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="isa-name" as="string">
+=======
+	<define-field name="isa-name" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>ISA Name</formal-name>
 		<description>Title of the Interconnection Security Agreement (ISA).</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="isa-date" as="string">
+=======
+	<define-field name="isa-date" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>ISA Date</formal-name>
 		<description>Date of the Interconnection Security Agreement (ISA).</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="component" group-as="components">
+=======
+	<define-assembly name="component" group-as="components" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="type" datatype="string"/>
 		<flag name="id" datatype="ID"/>
 		<formal-name>Component</formal-name>
@@ -783,17 +1163,30 @@
 				attribute indicating "capability", and the child-element "sub-component".</p>
 		</remarks>
 		<model>
+<<<<<<< HEAD
 			<assemblies named="origin"/>
 			<assemblies named="characteristics"/>
 			<assemblies named="satisfaction"/>
 			<assemblies named="validation"/>
 			<assemblies named="provisioning"/>
 			<fields named="subcomponent"/>
+=======
+			<assemblies named="origin" group-as="ssp-origin"/>
+			<assemblies named="characteristics" group-as="ssp-characteristics"/>
+			<assemblies named="satisfaction" group-as="ssp-satisfaction"/>
+			<assemblies named="validation" group-as="validations"/>
+			<assemblies named="provisioning" group-as="ssp-provisioning"/>
+			<fields named="subcomponent" group-as="subcomponents"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="origin" group-as="ssp-origin">
+=======
+	<define-assembly name="origin" group-as="ssp-origin" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<formal-name>Origin</formal-name>
 		<description>.</description>
@@ -812,17 +1205,29 @@
 			<field named="version"/>
 			<field named="release-date"/>
 			<field named="model"/>
+<<<<<<< HEAD
 			<assemblies named="part"/>
+=======
+			<assemblies named="part" group-as="ssp-part"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-flag name="id" datatype="ID">
+=======
+	<define-flag name="id" datatype="ID" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Component identification number.</formal-name>
 		<description>.</description>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-field name="vendor" as="string" group-as="vendors">
+=======
+	<define-field name="vendor" as="string" group-as="vendors" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="type" datatype="string"/>
 		<formal-name>Vendor</formal-name>
@@ -830,7 +1235,11 @@
 	</define-field>
 
 
+<<<<<<< HEAD
 	<define-field name="release-date">
+=======
+	<define-field name="release-date" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Release Date</formal-name>
 		<description>.</description>
 		<remarks>
@@ -838,12 +1247,20 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="model" as="string">
+=======
+	<define-field name="model" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Model</formal-name>
 		<description>.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="part" group-as="ssp-part">
+=======
+	<define-assembly name="part" group-as="ssp-part" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="class" datatype="NMTOKEN"/>
 		<flag name="href" datatype="anyURI"/>
 		<formal-name>Part</formal-name>
@@ -852,12 +1269,21 @@
 			<p>???</p>
 		</remarks>
 		<model>
+<<<<<<< HEAD
 			<fields named="phone"/>
 			<fields named="email"/>
 		</model>
 	</define-assembly>
 
 	<define-assembly name="characteristics" group-as="ssp-characteristics">
+=======
+			<fields named="phone" group-as="telephone-numbers"/>
+			<fields named="email" group-as="email-addresses"/>
+		</model>
+	</define-assembly>
+
+	<define-assembly name="characteristics" group-as="ssp-characteristics" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="context" datatype="string"/>
 		<formal-name>Characteristics</formal-name>
 		<description>Component characteristics, assets and configuration information</description>
@@ -870,20 +1296,34 @@
 				configuration of the component within a specific system.</p>
 		</remarks>
 		<model>
+<<<<<<< HEAD
 			<fields named="ip-address"/>
 			<assemblies named="service"/>
 			<assemblies named="part"/>
+=======
+			<fields named="ip-address" group-as="ip-addresses"/>
+			<assemblies named="service" group-as="ssp-service"/>
+			<assemblies named="part" group-as="ssp-part"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="ip-address" group-as="ip-addresses" as="string">
+=======
+	<define-field name="ip-address" group-as="ip-addresses" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="type" datatype="string"/>
 		<formal-name>Internet Protocol Address</formal-name>
 		<description>Use the @type flag to deisgnate IPv4 or IPv6.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="satisfaction" group-as="ssp-satisfaction">
+=======
+	<define-assembly name="satisfaction" group-as="ssp-satisfaction" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="context" datatype="string"/>
 		<formal-name>Satisfaction</formal-name>
@@ -903,16 +1343,28 @@
 		</model>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="system-inventory" group-as="ssp-system-inventory">
 		<formal-name>System Inventory</formal-name>
 		<description>.</description>
 		<model>
 			<assemblies named="inventory-item"/>
+=======
+	<define-assembly name="system-inventory" group-as="ssp-system-inventory" show-docs="xml json">
+		<formal-name>System Inventory</formal-name>
+		<description>.</description>
+		<model>
+			<assemblies named="inventory-item" group-as="inventory-items"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="inventory-item" group-as="inventory-items">
+=======
+	<define-assembly name="inventory-item" group-as="inventory-items" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="component-id" datatype="NMTOKEN"/>
 		<flag name="virtual" datatype="boolean"/>
@@ -921,6 +1373,7 @@
 		<description>.</description>
 
 		<model>
+<<<<<<< HEAD
 			<fields named="ip-address"/>
 			<fields named="dns-name"/>
 			<assemblies named="host-item"/>
@@ -930,17 +1383,36 @@
 			<fields named="network-id"/>
 			<fields named="asset-owner"/>
 			<fields named="asset-administrator"/>
+=======
+			<fields named="ip-address" group-as="ip-addresses"/>
+			<fields named="dns-name" group-as="dns-names"/>
+			<assemblies named="host-item" group-as="ssp-host-item"/>
+			<assemblies named="software-item" group-as="ssp-software-item"/>
+			<field named="comments"/>
+			<field named="serial-no"/>
+			<fields named="network-id" group-as="network-ids"/>
+			<fields named="asset-owner" group-as="asset-owners"/>
+			<fields named="asset-administrator" group-as="asset-administrators"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="dns-name" group-as="dns-names" as="string">
+=======
+	<define-field name="dns-name" group-as="dns-names" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Network Name</formal-name>
 		<description>If available, state the DNS name or URL of the inventory item. This can be left
 			blank if one does not exist, or it is a dynamic field.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="host-item" group-as="ssp-host-item">
+=======
+	<define-assembly name="host-item" group-as="ssp-host-item" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Host Item</formal-name>
 		<description/>
 		<remarks>
@@ -948,6 +1420,7 @@
 				objects.</p>
 		</remarks>
 		<model>
+<<<<<<< HEAD
 			<fields named="netbios-name"/>
 			<fields named="mac-address"/>
 			<fields named="authenticated-scan"/>
@@ -960,23 +1433,49 @@
 			<fields named="hardware-model"/>
 			<fields named="scanned"/>
 			<fields named="prop"/>
+=======
+			<fields named="netbios-name" group-as="netbios-names"/>
+			<fields named="mac-address" group-as="mac-addresses"/>
+			<fields named="authenticated-scan" group-as="authenticated-scans"/>
+			<fields named="baseline-template" group-as="baseline-templates"/>
+			<fields named="os-name" group-as="os-names"/>
+			<fields named="os-version" group-as="os-versions"/>
+			<fields named="location" group-as="locations"/>
+			<fields named="asset-type" group-as="asset-types"/>
+			<fields named="vendor" group-as="vendors"/>
+			<fields named="hardware-model" group-as="hardware-models"/>
+			<fields named="scanned" group-as="ssp-scanned"/>
+			<fields named="prop" group-as="properties"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="netbios-name" group-as="netbios-names">
+=======
+	<define-field name="netbios-name" group-as="netbios-names" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>NetBIOS Name</formal-name>
 		<description>If available, state the NetBIOS name of the inventory item. This can be omitted
 			if one does not exist, or it is a dynamic field.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="mac-address" group-as="mac-addresses" as="string">
+=======
+	<define-field name="mac-address" group-as="mac-addresses" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Media Access Control (MAC) Address</formal-name>
 		<description>If available, state the MAC Address of the inventory item. This can be left
 			blank if one does not exist, or it is a dynamic field.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="os-name" group-as="os-names" as="string">
+=======
+	<define-field name="os-name" group-as="os-names" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Operating System Name</formal-name>
 		<description>.</description>
 		<remarks>
@@ -985,7 +1484,11 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="os-version" group-as="os-versions" as="string">
+=======
+	<define-field name="os-version" group-as="os-versions" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Operating System Version Number</formal-name>
 		<description>.</description>
 		<remarks>
@@ -994,19 +1497,31 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="location" group-as="locations">
+=======
+	<define-field name="location" group-as="locations" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Location of the Asset</formal-name>
 		<description>Physical location of hardware. Could include Data Center ID, Cage#, Rack# or
 			other meaningful location identifiers.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="asset-type" group-as="asset-types" as="string">
+=======
+	<define-field name="asset-type" group-as="asset-types" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Asset Type</formal-name>
 		<description>Simple description of the asset's function (e.g., Router, Storage Array, DNS
 			Server, etc.) Do not use vendor or product names here.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="hardware-model" group-as="hardware-models" as="string">
+=======
+	<define-field name="hardware-model" group-as="hardware-models" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Hardware Model</formal-name>
 		<description>Model number of the hardware.</description>
 		<remarks>
@@ -1015,29 +1530,50 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="authenticated-scan" group-as="authenticated-scans" as="boolean">
+=======
+	<define-field name="authenticated-scan" group-as="authenticated-scans" as="boolean"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Authenticated Scan</formal-name>
 		<description>Indicate whether this asset is planned for authenticated
 			scanning.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="software-item" group-as="ssp-software-item">
+=======
+	<define-assembly name="software-item" group-as="ssp-software-item" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Software Item</formal-name>
 		<description/>
 		<remarks>
 			<p>Required for software that runs on a host-item, such as a web server or database application.</p>
 		</remarks>
 		<model>
+<<<<<<< HEAD
 			<fields named="vendor"/>
 			<fields named="software-name"/>
 			<fields named="software-version"/>
 			<fields named="software-patch-level"/>
 			<fields named="function"/>
+=======
+			<fields named="vendor" group-as="vendors"/>
+			<fields named="software-name" group-as="software-names"/>
+			<fields named="software-version" group-as="software-versions"/>
+			<fields named="software-patch-level" group-as="software-patch-levels"/>
+			<fields named="function" group-as="functions"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="software-name" group-as="software-names" as="string">
+=======
+	<define-field name="software-name" group-as="software-names" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Software Product Name</formal-name>
 		<description>.</description>
 		<remarks>
@@ -1046,7 +1582,12 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="software-version" group-as="software-versions" as="string">
+=======
+	<define-field name="software-version" group-as="software-versions" as="string"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Software Version Number</formal-name>
 		<description>.</description>
 		<remarks>
@@ -1055,7 +1596,12 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="software-patch-level" group-as="software-patch-levels" as="string">
+=======
+	<define-field name="software-patch-level" group-as="software-patch-levels" as="string"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Software Patch Level (If applicable)</formal-name>
 		<description>.</description>
 		<remarks>
@@ -1064,7 +1610,11 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="function" group-as="functions" as="string">
+=======
+	<define-field name="function" group-as="functions" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Function</formal-name>
 		<description>.</description>
 		<remarks>
@@ -1073,46 +1623,79 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="comments" as="string">
+=======
+	<define-field name="comments" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Comments</formal-name>
 		<description>Any additional information that could be useful to an auditor or
 			reviewer.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="serial-no" as="string">
+=======
+	<define-field name="serial-no" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Serial Number</formal-name>
 		<description>Product serial number or internal asset tag number.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="network-id" group-as="network-ids" as="string">
+=======
+	<define-field name="network-id" group-as="network-ids" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Network ID</formal-name>
 		<description>Virtual LAN or Network ID.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="asset-owner" group-as="asset-owners" as="string">
+=======
+	<define-field name="asset-owner" group-as="asset-owners" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="poc-id" datatype="NMTOKEN"/>
 		<formal-name>Asset Owner</formal-name>
 		<description>The individual, title, or role who "owns" the asset on behalf of the
 			organization.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="asset-administrator" group-as="asset-administrators" as="string">
+=======
+	<define-field name="asset-administrator" group-as="asset-administrators" as="string"
+		show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="poc-id" datatype="NMTOKEN"/>
 		<formal-name>Asset Administrator</formal-name>
 		<description>The individual, title, role, or team responsible for operating and maintaining
 			the asset.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="control-implementation" group-as="ssp-control-implementation">
 		<formal-name>Implementation of Security Control</formal-name>
 		<description/>
 		<model>
 			<assemblies named="control"/>
+=======
+	<define-assembly name="control-implementation" group-as="ssp-control-implementation" show-docs="xml json">
+		<formal-name>Implementation of Security Control</formal-name>
+		<description/>
+		<model>
+			<assemblies named="control" group-as="controls"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="control" group-as="controls">
+=======
+	<define-assembly name="control" group-as="controls" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="class" datatype="NMTOKEN"/>
 		<flag name="control-id" datatype="NMTOKEN"/>
 		<flag name="href" datatype="anyURI"/>
@@ -1120,21 +1703,36 @@
 		<description>Information related to the implementation of an individual
 			control.</description>
 		<model>
+<<<<<<< HEAD
 			<fields named="responsible-role"/>
 			<assemblies named="set-param"/>
 			<fields named="prop"/>
 			<assemblies named="control-response"/>
+=======
+			<fields named="responsible-role" group-as="ssp-responsible-role"/>
+			<assemblies named="set-param" group-as="parameter-settings"/>
+			<fields named="prop" group-as="properties"/>
+			<assemblies named="control-response" group-as="control-responses"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		</model>
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="responsible-role" group-as="ssp-responsible-role" as="string">
+=======
+	<define-field name="responsible-role" group-as="ssp-responsible-role" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="role-id" datatype="NMTOKEN"/>
 		<formal-name>Responsible Role</formal-name>
 		<description/>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-assembly name="set-param" group-as="parameter-settings">
+=======
+	<define-assembly name="set-param" group-as="parameter-settings" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="param-id" datatype="NMTOKEN"/>
 		<flag name="target"   datatype="string"/>
 		<formal-name>Set Parameter Value</formal-name>
@@ -1147,13 +1745,21 @@
 		<example/>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field name="value" as="string">
+=======
+	<define-field name="value" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Value</formal-name>
 		<description>The phrase or string that fills-in the parameter and completes the requirement
 			statement.</description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="control-response" group-as="control-responses">
+=======
+	<define-assembly name="control-response" group-as="control-responses" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="stmt-id" datatype="NMTOKEN"/>
 		<formal-name>Control Response</formal-name>
 		<description>Describes how a control is implemented.</description>
@@ -1168,31 +1774,52 @@
 
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="references">
+=======
+	<define-assembly name="references" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<formal-name>References</formal-name>
 		<description> A group of reference descriptions </description>
 		<model>
+<<<<<<< HEAD
 			<fields named="link"/>
 			<assemblies named="ref"/>
+=======
+			<fields group-as="links" named="link"/>
+			<assemblies group-as="refs" named="ref"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 			<any/>
 		</model>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="ref" group-as="refs">
+=======
+	<define-assembly name="ref" group-as="refs" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="ref-type" datatype="string"/>
 		<formal-name>Reference</formal-name>
 		<description> A reference, with one or more citations to standards, related documents, or
 			other resources </description>
 		<model>
+<<<<<<< HEAD
 			<fields named="citation"/>
+=======
+			<fields named="citation" group-as="citations"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 			<prose/>
 			<any/>
 		</model>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-field as="mixed" group-as="citations" name="citation">
+=======
+	<define-field as="mixed" group-as="citations" name="citation" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<flag name="href" datatype="anyURI"/>
 		<formal-name>Citation</formal-name>
@@ -1204,7 +1831,11 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="link" group-as="links" as="mixed">
+=======
+	<define-field name="link" group-as="links" as="mixed" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="href" datatype="anyURI"/>
 		<flag name="rel" datatype="NCName"/>
 		<formal-name>Link</formal-name>
@@ -1215,7 +1846,11 @@
 		</remarks>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-assembly name="attachment">
+=======
+	<define-assembly name="attachment" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="id" datatype="ID"/>
 		<formal-name>Attachments</formal-name>
 		<description>.</description>
@@ -1230,22 +1865,38 @@
 		</model>
 	</define-assembly>
 	
+<<<<<<< HEAD
 	<define-field name="format" as="string">
+=======
+	<define-field name="format" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Attachment Format</formal-name>
 		<description></description>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-field name="date" as="string">
+=======
+	<define-field name="date" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Date</formal-name>
 		<description></description>
 	</define-field>
 
+<<<<<<< HEAD
 	<define-field name="attachment-type" as="string">
+=======
+	<define-field name="attachment-type" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Date</formal-name>
 		<description></description>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-field name="base64" as="string">
+=======
+	<define-field name="base64" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="filename" datatype="string"/>
 		<formal-name>Date</formal-name>
 		<description></description>
@@ -1256,7 +1907,11 @@
 
 	<!-- ===== FLAGS ===== -->
 
+<<<<<<< HEAD
 	<define-flag name="attachment-id" datatype="string">
+=======
+	<define-flag name="attachment-id" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Attachment ID / identifier</formal-name>
 		<description>Unique attachment identifier.</description>
 		<remarks>
@@ -1269,7 +1924,11 @@
 		</example>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="component-id" datatype="NMTOKEN">
+=======
+	<define-flag name="component-id" datatype="NMTOKEN" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Component ID / identifier</formal-name>
 		<description>ID of a linked or imported component</description>
 		<remarks>
@@ -1291,24 +1950,40 @@
 		</example>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="control-id" datatype="NMTOKEN">
+=======
+	<define-flag name="control-id" datatype="NMTOKEN" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Control ID / identifier</formal-name>
 		<description>Pointer to a control, by its ID</description>
         <remarks><p>May also address subcontrols.</p></remarks>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="stmt-id" datatype="NMTOKEN">
+=======
+	<define-flag name="stmt-id" datatype="NMTOKEN" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Statement ID / identifier</formal-name>
 		<description>Pointer to a speific requirement statement within a control.</description>
 		<remarks><p>May also address subcontrols.</p></remarks>
 	</define-flag>
 	
+<<<<<<< HEAD
 	<define-flag name="nist-id" datatype="string">
+=======
+	<define-flag name="nist-id" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>NIST 800-60 Information Type Identifier</formal-name>
 		<description>Pointer to the information type in NIST SP 800-60.</description>
 	</define-flag>
 	
+<<<<<<< HEAD
 	<define-flag name="poc-id" datatype="NMTOKEN">
+=======
+	<define-flag name="poc-id" datatype="NMTOKEN" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Point of Contact ID / identifier</formal-name>
 		<description>Identifies the unique identifier for an individual, title, role, or
 			team.</description>
@@ -1317,7 +1992,11 @@
 		</example>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="param-id" datatype="NMTOKEN">
+=======
+	<define-flag name="param-id" datatype="NMTOKEN" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Parameter ID</formal-name>
 		<description>Points to a parameter within a control, to which the contained value will be
 			assigned.</description>
@@ -1329,22 +2008,38 @@
 		</example>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="ref-type" datatype="string">
+=======
+	<define-flag name="ref-type" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Reference Type</formal-name>
 		<description>Identifies the reference type, such as a law, standard, guidance.</description>
 	</define-flag>
 	
+<<<<<<< HEAD
 	<define-flag name="target" datatype="string">
+=======
+	<define-flag name="target" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Target label</formal-name>
 		<description>Provides for an indication of a link target, by its label, when no ID is available</description>
 	</define-flag>
 	
+<<<<<<< HEAD
 	<define-flag name="filename" datatype="string">
+=======
+	<define-flag name="filename" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>File Name</formal-name>
 		<description>Name of the file before it was converted to Base-64. This is the name that will be assigned to the file when converted back to binary.</description>
 	</define-flag>
 	
+<<<<<<< HEAD
 	<define-flag name="role-id" datatype="NMTOKEN">
+=======
+	<define-flag name="role-id" datatype="NMTOKEN" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Role ID</formal-name>
 		<description>In the context of a responsibility element, this points to a role in the users element responsible for this control</description>
 		<example>
@@ -1370,7 +2065,11 @@
 		</example>
 	</define-flag>-->
 
+<<<<<<< HEAD
 	<define-flag name="class" datatype="NMTOKEN">
+=======
+	<define-flag name="class" datatype="NMTOKEN" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Class</formal-name>
 		<description>Identifies the property or object within the control; a semantic hint</description>
 		<remarks>
@@ -1378,7 +2077,11 @@
 		</remarks>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="context" datatype="string">
+=======
+	<define-flag name="context" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Context</formal-name>
 		<description>Context designates the context of information provided.</description>
 		<remarks>
@@ -1388,7 +2091,11 @@
 		<example/>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="name" datatype="string">
+=======
+	<define-flag name="name" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Name</formal-name>
 		<description>Name allows the information to be named.</description>
 		<remarks>
@@ -1397,7 +2104,11 @@
 		<example/>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="start" datatype="string">
+=======
+	<define-flag name="start" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Start</formal-name>
 		<description>Indicates the starting port number in a port range.</description>
         <remarks>
@@ -1412,7 +2123,11 @@
 		</example>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="end" datatype="string">
+=======
+	<define-flag name="end" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>End</formal-name>
 		<description>Indicates the ending port number in a port range.</description>
 		<remarks>
@@ -1427,7 +2142,11 @@
 		</example>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="transport" datatype="string">
+=======
+	<define-flag name="transport" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Transport</formal-name>
 		<description>Indicates the transport type.</description>
 
@@ -1440,7 +2159,11 @@
 		</example>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="type" datatype="string">
+=======
+	<define-flag name="type" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Type</formal-name>
 		<description>Type designates the type of information provided.</description>
 		<remarks>
@@ -1453,7 +2176,11 @@
 		<example/>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="public" datatype="boolean">
+=======
+	<define-flag name="public" datatype="boolean" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Public</formal-name>
 		<description>Designates an asset as either publicly accessible (="yes") or not
 			(="no").</description>
@@ -1461,7 +2188,11 @@
 		<example/>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="virtual" datatype="boolean">
+=======
+	<define-flag name="virtual" datatype="boolean" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Virtual</formal-name>
 		<description>Designates an asset as either virtual (="yes") or physical
 			(="no").</description>
@@ -1469,6 +2200,7 @@
 		<example/>
 	</define-flag>
 
+<<<<<<< HEAD
 	<define-flag name="external" datatype="boolean">
 		<formal-name>external</formal-name>
 		<description>.</description>
@@ -1478,24 +2210,44 @@
 		<description>.</description>
 	</define-flag>
 	<define-flag name="sensitivity-level" datatype="string">
+=======
+	<define-flag name="external" show-docs="xml json" datatype="boolean">
+		<formal-name>external</formal-name>
+		<description>.</description>
+	</define-flag>
+	<define-flag name="access" show-docs="xml json" datatype="string">
+		<formal-name>access</formal-name>
+		<description>.</description>
+	</define-flag>
+	<define-flag name="sensitivity-level" show-docs="xml json" datatype="string">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>sensitivity-level</formal-name>
 		<description>.</description>
 	</define-flag>
 	
+<<<<<<< HEAD
 	<define-assembly name="validation" group-as="validations">
+=======
+	<define-assembly name="validation" show-docs="xml json" group-as="validations">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>validation</formal-name>
 		<description>.</description>
 		<model>
 			<prose/>
 		</model>
 	</define-assembly>
+<<<<<<< HEAD
 	<define-assembly name="provisioning" group-as="ssp-provisioning">
+=======
+	<define-assembly name="provisioning" show-docs="xml json" group-as="ssp-provisioning">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>provisioning</formal-name>
 		<description>.</description>
 		<model>
 			<prose/>
 		</model>
 	</define-assembly>
+<<<<<<< HEAD
 	<define-field name="subcomponent" group-as="subcomponents">
 		<formal-name>sub-component</formal-name>
 		<description>.</description>
@@ -1509,6 +2261,21 @@
 		<description>.</description>
 	</define-field>
 	<define-field name="scanned" group-as="ssp-scanned">
+=======
+	<define-field name="subcomponent" show-docs="xml json" group-as="subcomponents">
+		<formal-name>sub-component</formal-name>
+		<description>.</description>
+	</define-field>
+	<define-field name="organization" show-docs="xml json">
+		<formal-name>organization</formal-name>
+		<description>.</description>
+	</define-field>
+	<define-field name="baseline-template" show-docs="xml json" group-as="baseline-templates">
+		<formal-name>baseline-template</formal-name>
+		<description>.</description>
+	</define-field>
+	<define-field name="scanned" show-docs="xml json" group-as="ssp-scanned">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>scanned</formal-name>
 		<description>.</description>
 	</define-field>
@@ -1525,6 +2292,7 @@
     <description>Information describing the publication or availability of this document</description>
     <model>
       <field      named="title"    required="yes"/>
+<<<<<<< HEAD
       <fields     named="author"/>
       <field      named="publication-date"/>
       <field      named="version"/>
@@ -1534,6 +2302,17 @@
       <assemblies named="resource"/>
       <assemblies named="role"/>
       <assemblies named="party"/>
+=======
+      <fields     named="author"   group-as="authors"/>
+      <field      named="publication-date"/>
+      <field      named="version"/>
+      <fields     named="doc-id"   group-as="document-identifiers"/>
+      <fields     named="prop"     group-as="properties"/>
+      <assemblies named="hlink" group-as="hashed-links"/>
+      <assemblies named="resource" group-as="resources"/>
+      <assemblies named="role"     group-as="roles"/>
+      <assemblies named="party"    group-as="parties"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <assembly   named="notes"/>
       <assembly   named="extra-meta"/>
     </model>
@@ -1606,7 +2385,11 @@
       organization as such serves as a documented party.</p>
     </remarks>
     <model>
+<<<<<<< HEAD
       <assemblies named="person"/>
+=======
+      <assemblies named="person" group-as="persons"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <assembly named="org"/>
       <assembly named="notes"/>
     </model>
@@ -1621,12 +2404,21 @@
       <field    named="org-name">
         <description>Affiliated organization</description>
       </field>
+<<<<<<< HEAD
       <fields   named="person-id"/>
       <fields   named="org-id"/>
       <assembly named="address"/>
       <fields   named="email"/>
       <fields   named="phone"/>
       <fields   named="url"/>
+=======
+      <fields   named="person-id" group-as="person-identifiers"/>
+      <fields   named="org-id"    group-as="organization-identifiers"/>
+      <assembly named="address"/>
+      <fields   named="email" group-as="email-addresses"/>
+      <fields   named="phone" group-as="telephone-numbers"/>
+      <fields   named="url"   group-as="URLs"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <assembly named="notes"/>
     </model>
   </define-assembly>
@@ -1637,11 +2429,19 @@
     <model>
       <field    named="org-name"/>
       <field    named="short-name"/>
+<<<<<<< HEAD
       <fields   named="org-id"/>
       <assembly named="address"/>
       <fields   named="email"/>
       <fields   named="phone"/>
       <fields   named="url"/>
+=======
+      <fields   named="org-id" group-as="organization-identifiers"/>
+      <assembly named="address"/>
+      <fields   named="email" group-as="email-addresses"/>
+      <fields   named="phone" group-as="telephone-numbers"/>
+      <fields   named="url" group-as="URLs"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <assembly named="notes"/>
     </model>
   </define-assembly>
@@ -1658,7 +2458,11 @@
     <description>An identifier for an organization using a designated scheme.</description>
   </define-field>
   
+<<<<<<< HEAD
   <define-assembly name="hlink" group-as="hashed-links">
+=======
+  <define-assembly name="hlink" group-as="hashed-links" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
     <flag name="href" datatype="anyURI" required="yes"/>
     <flag name="rel"  datatype="NCName"/>
     <flag name="media-type"/>
@@ -1669,16 +2473,28 @@
     </remarks>
     <model>
       <field  named="title"/>
+<<<<<<< HEAD
       <fields named="hash"/>
     </model>
   </define-assembly>
   
   <define-flag name="rel" datatype="NCName">
+=======
+      <fields named="hash" group-as="hashes"/>
+    </model>
+  </define-assembly>
+  
+  <define-flag name="rel" datatype="NCName" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
     <formal-name>Relation</formal-name>
     <description>Purpose of the link</description>
   </define-flag>
   
+<<<<<<< HEAD
   <define-flag name="media-type" datatype="string">
+=======
+  <define-flag name="media-type" datatype="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
     <formal-name>Media type</formal-name>
     <description>Describes the media or MIME type of a linked resource</description>
   </define-flag>
@@ -1711,7 +2527,11 @@
     <formal-name>Address</formal-name>
     <description>A postal address</description>
     <model>
+<<<<<<< HEAD
       <fields named="addr-line"/>
+=======
+      <fields named="addr-line" group-as="postal-address"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <field  named="city"/>
       <field  named="state"/>
       <field  named="postal-code"/>
@@ -1788,12 +2608,21 @@
     </remarks>
     <model>
       <field    named="title"/>
+<<<<<<< HEAD
       <fields   named="author"/>
       <field    named="publication-date"/>
       <field    named="version"/>
       <fields   named="doc-id"/>
       <fields   named="prop"/>
       <assemblies named="hlink"/>
+=======
+      <fields   named="author" group-as="authors"/>
+      <field    named="publication-date"/>
+      <field    named="version"/>
+      <fields   named="doc-id" group-as="document-identifiers"/>
+      <fields   named="prop"   group-as="properties"/>
+      <assemblies named="hlink"  group-as="hashed-links"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <assembly named="notes"/>
     </model>
   </define-assembly>
@@ -1841,8 +2670,13 @@
     <description>Container for (system-defined) metadata</description>
     <model>
       <choice>
+<<<<<<< HEAD
         <assemblies named="meta-group"/>
         <fields named="meta"/>
+=======
+        <assemblies named="meta-group" group-as="metadata-groups"/>
+        <fields named="meta" group-as="metadata-fields"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       </choice>
       <assembly named="notes"/>
     </model>
@@ -1854,8 +2688,13 @@
     <formal-name>Metadata group</formal-name>
     <description>Custom- or application-defined annotated metadata.</description>
     <model>
+<<<<<<< HEAD
       <fields     named="meta"/>
       <assemblies named="meta-group"/>
+=======
+      <fields     named="meta"       group-as="metadata-fields"/>
+      <assemblies named="meta-group" group-as="metadata-groups"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <assembly   named="notes"/>
     </model>
   </define-assembly>
@@ -1875,7 +2714,11 @@
 <!--      BORROWED FROM PROFILE METASCHEMA AND MODIFIED    -->
 <!-- The following needs discussion/attention. It may not be the final solution. -->
 
+<<<<<<< HEAD
 	<define-assembly name="import" group-as="imports">
+=======
+	<define-assembly name="import" group-as="imports" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="href" datatype="anyURI" required="yes"/>
 		<formal-name>Import resource</formal-name>
 		<description>Makes information from an external component file available to this component
@@ -1899,7 +2742,11 @@
 		</example>
 	</define-assembly>
 
+<<<<<<< HEAD
 	<define-assembly name="include" group-as="includes">
+=======
+	<define-assembly name="include" group-as="includes" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Include controls</formal-name>
 		<description>Specifies which controls and subcontrols to include from the resource (source catalog) being
 			imported</description>
@@ -1913,13 +2760,21 @@
 		<model>
 			<choice>
 				<field named="all"/>
+<<<<<<< HEAD
 				<fields named="call"/>
+=======
+				<fields named="call"  group-as="calls"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 				<!-- assemblies named="match" group-as="pattern-selectors"/-->
 			</choice>
 		</model>
 	</define-assembly>
 	
+<<<<<<< HEAD
 	<define-field name="all" as="empty">
+=======
+	<define-field name="all" as="empty" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="with-subcontrols">
 			<value>yes</value>
 		</flag>
@@ -1934,7 +2789,11 @@
 		</remarks>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-field name="call" group-as="calls" as="string">
+=======
+	<define-field name="call" group-as="calls" as="string" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<flag name="component-id" datatype="NMTOKEN"/>
 		<formal-name>Call</formal-name>
 		<description>The call element imports the component definition identified by the
@@ -1954,7 +2813,11 @@
 		</example>
 	</define-field>
 	
+<<<<<<< HEAD
 	<define-flag datatype="NCName" name="with-subcontrols">
+=======
+	<define-flag datatype="NCName" name="with-subcontrols" show-docs="xml json">
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
 		<formal-name>Include subcontrols with control</formal-name>
 		<description>Whether subcontrols should be implicitly included, if not called.</description>
 	</define-flag>

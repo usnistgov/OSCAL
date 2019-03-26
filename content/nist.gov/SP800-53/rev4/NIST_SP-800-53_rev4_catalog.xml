@@ -50,6 +50,11 @@
          </meta-group>
       </extra-meta>
    </metadata>
+<<<<<<< HEAD
+=======
+   
+   <declarations href="NIST_SP-800-53_rev4_declarations.xml"/>
+>>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
    <references>
       <ref id="ref001">
          <citation href="http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html">5 C.F.R. 731.106</citation>
