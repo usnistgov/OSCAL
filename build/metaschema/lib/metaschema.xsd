@@ -54,10 +54,6 @@
       <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-<<<<<<< HEAD
-=======
-      <xs:attribute name="acquire-from" type="xs:NCName"/>
->>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
     </xs:complexType>
   </xs:element>
   <xs:element name="define-field">

@@ -1,9 +1,10 @@
 <!-- XML produced by extraction/mapping from NVD XML :2018-11-02T16:55:46.916-04:00 -->
 <!-- Then modified by hand 2018-12-10 to add metadata -->
+<!-- Again modified by hand 2018-12-10 (removed 'declarations' element) -->
 <!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-4dfe11da-68c9-42ae-9646-475987433ef6"
-         model-version="0.9.12">
+         id="uuid-0a011795-9658-4acd-8efa-a72912d3c75f"
+         model-version="0.9.13">
    <title>NIST SP800-53</title>
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
@@ -50,11 +51,6 @@
          </meta-group>
       </extra-meta>
    </metadata>
-<<<<<<< HEAD
-=======
-   
-   <declarations href="NIST_SP-800-53_rev4_declarations.xml"/>
->>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
    <references>
       <ref id="ref001">
          <citation href="http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html">5 C.F.R. 731.106</citation>

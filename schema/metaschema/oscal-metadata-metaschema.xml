@@ -21,21 +21,12 @@
       <fields     named="author"/>
       <field      named="publication-date"/>
       <field      named="version"/>
-<<<<<<< HEAD
       <fields     named="doc-id"/>
       <fields     named="prop"/>
       <assemblies named="hlink"/>
       <assemblies named="resource"/>
       <assemblies named="role"/>
       <assemblies named="party"/>
-=======
-      <fields     named="doc-id"   group-as="document-identifiers"/>
-      <fields     named="prop"     group-as="properties"/>
-      <fields     named="hlink"    group-as="hashed-links"/>
-      <assemblies named="resource" group-as="resources"/>
-      <assemblies named="role"     group-as="roles"/>
-      <assemblies named="party"    group-as="parties"/>
->>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
       <assembly   named="notes"/>
       <assembly   named="extra-meta"/>
     </model>
@@ -172,11 +163,7 @@
     <description>An identifier for an organization using a designated scheme.</description>
   </define-field>
   
-<<<<<<< HEAD
   <define-assembly name="hlink" group-as="hashed-links">
-=======
-  <define-assembly name="hlink" group-as="hashed-links" show-docs="xml json">
->>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
     <flag name="href" datatype="anyURI" required="yes"/>
     <flag name="rel"  datatype="NCName"/>
     <flag name="media-type"/>
@@ -305,7 +292,6 @@
         <code>rel</code>.</p>
     </remarks>
     <model>
-<<<<<<< HEAD
       <field      named="title"/>
       <fields     named="author"/>
       <field      named="publication-date"/>
@@ -314,16 +300,6 @@
       <fields     named="prop"/>
       <assemblies named="hlink"/>
       <assembly   named="notes"/>
-=======
-      <field    named="title"/>
-      <fields   named="author" group-as="authors"/>
-      <field    named="publication-date"/>
-      <field    named="version"/>
-      <fields   named="doc-id" group-as="document-identifiers"/>
-      <fields   named="prop"   group-as="properties"/>
-      <fields   named="hlink"  group-as="hashed-links"/>
-      <assembly named="notes"/>
->>>>>>> 7ebbaa79bacb3ab7e872be6e015eb868c73334ad
     </model>
   </define-assembly>
 
