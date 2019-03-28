@@ -18,7 +18,6 @@
             <xs:element minOccurs="0" ref="oscal-catalog:version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:doc-id"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:prop"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:hlink"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:resource"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:role"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:party"/>
@@ -27,14 +26,6 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="author">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true"/>
-   </xs:element>
    <xs:element name="publication-date">
       <xs:annotation>
          <xs:documentation>
@@ -42,26 +33,6 @@
          </xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
-   </xs:element>
-   <xs:element name="version">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="iso-date" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="doc-id">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string"/>
-      </xs:complexType>
    </xs:element>
    <xs:element name="party">
       <xs:annotation>
@@ -137,22 +108,6 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="type" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hlink">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-catalog:title"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:hash"/>
-         </xs:sequence>
-         <xs:attribute name="href" type="xs:anyURI" use="required"/>
-         <xs:attribute name="rel" type="xs:NCName"/>
-         <xs:attribute name="media-type" type="xs:string"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="person-name">
@@ -259,49 +214,6 @@
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="notes">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:group ref="oscal-catalog:prose" maxOccurs="unbounded" minOccurs="0"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="resource">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-catalog:title"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:author"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:publication-date"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:version"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:doc-id"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:prop"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:hlink"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:notes"/>
-         </xs:sequence>
-         <xs:attribute name="type" type="xs:string"/>
-         <xs:attribute name="media-type" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hash">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="algorithm" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="role">
       <xs:annotation>
          <xs:documentation>
@@ -360,6 +272,192 @@
          <xs:attribute name="type" type="xs:string"/>
       </xs:complexType>
    </xs:element>
+   <xs:element name="resource">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-catalog:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:author"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:format"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:description"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:date"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:version"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:doc-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:prop"/>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:hlink"/>
+               <xs:element minOccurs="0" ref="oscal-catalog:base64"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal-catalog:notes"/>
+         </xs:sequence>
+         <xs:attribute name="rel" type="xs:string"/>
+         <xs:attribute name="media-type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="author">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="doc-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="notes">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-catalog:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hlink">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-catalog:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:hash"/>
+         </xs:sequence>
+         <xs:attribute name="href" type="xs:anyURI" use="required"/>
+         <xs:attribute name="media-type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hash">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="algorithm" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-catalog:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="version">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="iso-date" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="format">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="date">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="iso-date" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="base64">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="filename" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ref-list">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-catalog:title"/>
+            <xs:group ref="oscal-catalog:prose" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:ref"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:ref-list"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ref">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:citation"/>
+            <xs:group ref="oscal-catalog:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="citation">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-catalog:everything-inline"/>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="link">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-catalog:everything-inline"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+         <xs:attribute name="rel" type="xs:NCName"/>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="catalog">
       <xs:annotation>
          <xs:documentation>
@@ -370,15 +468,29 @@
          <xs:sequence>
             <xs:element minOccurs="1" ref="oscal-catalog:title"/>
             <xs:element minOccurs="0" ref="oscal-catalog:metadata"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:references"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:section"/>
             <xs:choice>
                <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:group"/>
                <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:control"/>
             </xs:choice>
+            <xs:element minOccurs="0" ref="oscal-catalog:back"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID" use="required"/>
          <xs:attribute name="model-version" type="xs:string" use="required"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="back">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-catalog:ref-list"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:resource"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="section">
@@ -392,7 +504,7 @@
             <xs:element minOccurs="1" ref="oscal-catalog:title"/>
             <xs:group ref="oscal-catalog:prose" maxOccurs="unbounded" minOccurs="0"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:section"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:references"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:ref-list"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID"/>
          <xs:attribute name="class" type="xs:string"/>
@@ -414,7 +526,7 @@
                <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:group"/>
                <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:control"/>
             </xs:choice>
-            <xs:element minOccurs="0" ref="oscal-catalog:references"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:ref-list"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID"/>
          <xs:attribute name="class" type="xs:string"/>
@@ -434,7 +546,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:part"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:subcontrol"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:references"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:ref-list"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID" use="required"/>
          <xs:attribute name="class" type="xs:string"/>
@@ -453,7 +565,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:prop"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:part"/>
-            <xs:element minOccurs="0" ref="oscal-catalog:references"/>
+            <xs:element minOccurs="0" ref="oscal-catalog:ref-list"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID" use="required"/>
          <xs:attribute name="class" type="xs:string"/>
@@ -595,58 +707,6 @@
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID"/>
          <xs:attribute name="class" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="link">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-catalog:everything-inline"/>
-         <xs:attribute name="href" type="xs:anyURI"/>
-         <xs:attribute name="rel" type="xs:NCName"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="references">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:link"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:ref"/>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:ID"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="ref">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-catalog:citation"/>
-            <xs:group ref="oscal-catalog:prose" maxOccurs="unbounded" minOccurs="0"/>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:ID"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="citation">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-catalog:everything-inline"/>
-         <xs:attribute name="id" type="xs:ID"/>
-         <xs:attribute name="href" type="xs:anyURI"/>
       </xs:complexType>
    </xs:element>
    <xs:group name="prose">

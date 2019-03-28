@@ -359,7 +359,7 @@
          <fields named="prop"/>
          <fields named="link"/>
          <assemblies named="part"/>
-         <assembly named="references"/>
+         <assembly named="ref-list"/>
       </model>
    </define-assembly>
    <define-flag datatype="NCName" name="control-id">

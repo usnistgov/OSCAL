@@ -3,19 +3,24 @@
 <!-- Again modified by hand 2018-12-10 (removed 'declarations' element) -->
 <!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-0a011795-9658-4acd-8efa-a72912d3c75f"
-         model-version="0.9.13">
+         id="uuid-71c1a30f-27d6-499f-a6d1-3c6167f9c716"
+         model-version="0.9.14">
    <title>NIST SP800-53</title>
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
       <publication-date>April 2013</publication-date>
       <version iso-date="2015-01-22">Updated</version>
       
-      <hlink rel="self"      media-type="application/x.xml+oscal.catalog" href="nist-sp800-53-catalog-header.xml"/>
-      <hlink rel="alternate" media-type="application/pdf" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
-      <hlink rel="canonical" media-type="application/pdf" href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
-      
-      <resource type="metaschema">
+      <resource rel="self">
+         <hlink media-type="application/x.xml+oscal.catalog" href="nist-sp800-53-catalog-header.xml"/>
+      </resource>
+      <resource rel="alternate">
+         <hlink media-type="application/pdf" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"/>
+      </resource>
+      <resource rel="canonical">
+         <hlink media-type="application/pdf" href="http://dx.doi.org/10.6028/NIST.SP.800-53r4"/>
+      </resource>
+      <resource rel="metaschema">
          <hlink media-type="application/x-xml+oscal.metaschema" href="oscal-catalog-metaschema.xml"/>
       </resource>
       
@@ -51,359 +56,6 @@
          </meta-group>
       </extra-meta>
    </metadata>
-   <references>
-      <ref id="ref001">
-         <citation href="http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html">5 C.F.R. 731.106</citation>
-      </ref>
-      <ref id="ref002">
-         <citation href="http://www.gpo.gov/fdsys/granule/CFR-2009-title5-vol2/CFR-2009-title5-vol2-sec930-301/content-detail.html">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</citation>
-      </ref>
-      <ref id="ref003">
-         <citation href="https://www.cnss.gov/policies.html">CNSS Policy 15</citation>
-      </ref>
-      <ref id="ref004">
-         <citation>DoD Information Assurance Vulnerability Alerts</citation>
-      </ref>
-      <ref id="ref005">
-         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 5200.39</citation>
-      </ref>
-      <ref id="ref006">
-         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 8551.01</citation>
-      </ref>
-      <ref id="ref007">
-         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 8552.01</citation>
-      </ref>
-      <ref id="ref008">
-         <citation href="http://www.whitehouse.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net">Executive Order 13587</citation>
-      </ref>
-      <ref id="ref009">
-         <citation href="https://acquisition.gov/far">Federal Acquisition Regulation</citation>
-      </ref>
-      <ref id="ref010">
-         <citation href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive 1</citation>
-      </ref>
-      <ref id="ref011">
-         <citation href="http://www.idmanagement.gov/documents/ficam-roadmap-and-implementation-guidance">FICAM Roadmap and Implementation Guidance</citation>
-      </ref>
-      <ref id="ref012">
-         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html">FIPS Publication 140</citation>
-      </ref>
-      <ref id="ref013">
-         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#140-2">FIPS Publication 140-2</citation>
-      </ref>
-      <ref id="ref014">
-         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#197">FIPS Publication 197</citation>
-      </ref>
-      <ref id="ref015">
-         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#199">FIPS Publication 199</citation>
-      </ref>
-      <ref id="ref016">
-         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#200">FIPS Publication 200</citation>
-      </ref>
-      <ref id="ref017">
-         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#201">FIPS Publication 201</citation>
-      </ref>
-      <ref id="ref018">
-         <citation href="http://www.dhs.gov/homeland-security-presidential-directive-12">HSPD-12</citation>
-      </ref>
-      <ref id="ref019">
-         <citation href="http://www.fas.org/irp/offdocs/nspd/hspd-7.html">HSPD 7</citation>
-      </ref>
-      <ref id="ref020">
-         <citation href="http://capec.mitre.org">http://capec.mitre.org</citation>
-      </ref>
-      <ref id="ref021">
-         <citation href="http://checklists.nist.gov">http://checklists.nist.gov</citation>
-      </ref>
-      <ref id="ref022">
-         <citation href="http://csrc.nist.gov/cryptval">http://csrc.nist.gov/cryptval</citation>
-      </ref>
-      <ref id="ref023">
-         <citation href="http://csrc.nist.gov/groups/STM/cmvp/index.html">http://csrc.nist.gov/groups/STM/cmvp/index.html</citation>
-      </ref>
-      <ref id="ref024">
-         <citation href="http://cve.mitre.org">http://cve.mitre.org</citation>
-      </ref>
-      <ref id="ref025">
-         <citation href="http://cwe.mitre.org">http://cwe.mitre.org</citation>
-      </ref>
-      <ref id="ref026">
-         <citation href="http://fips201ep.cio.gov">http://fips201ep.cio.gov</citation>
-      </ref>
-      <ref id="ref027">
-         <citation href="http://idmanagement.gov">http://idmanagement.gov</citation>
-      </ref>
-      <ref id="ref028">
-         <citation href="http://nvd.nist.gov">http://nvd.nist.gov</citation>
-      </ref>
-      <ref id="ref029">
-         <citation href="http://www.acquisition.gov/far">http://www.acquisition.gov/far</citation>
-      </ref>
-      <ref id="ref030">
-         <citation href="http://www.cnss.gov">http://www.cnss.gov</citation>
-      </ref>
-      <ref id="ref031">
-         <citation href="http://www.dhs.gov/telecommunications-service-priority-tsp">http://www.dhs.gov/telecommunications-service-priority-tsp</citation>
-      </ref>
-      <ref id="ref032">
-         <citation href="http://www.niap-ccevs.org">http://www.niap-ccevs.org</citation>
-      </ref>
-      <ref id="ref033">
-         <citation href="http://www.nsa.gov">http://www.nsa.gov</citation>
-      </ref>
-      <ref id="ref034">
-         <citation href="http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml">http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</citation>
-      </ref>
-      <ref id="ref035">
-         <citation href="http://www.omb.gov">http://www.omb.gov</citation>
-      </ref>
-      <ref id="ref036">
-         <citation href="http://www.us-cert.gov">http://www.us-cert.gov</citation>
-      </ref>
-      <ref id="ref037">
-         <citation href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives">ICD 704</citation>
-      </ref>
-      <ref id="ref038">
-         <citation href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives">ICD 705</citation>
-      </ref>
-      <ref id="ref039">
-         <citation href="http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341">ISO/IEC 15408</citation>
-      </ref>
-      <ref id="ref040">
-         <citation>National Communications Systems Directive 3-10</citation>
-      </ref>
-      <ref id="ref041">
-         <citation href="https://www.dhs.gov/national-infrastructure-protection-plan">National Infrastructure Protection Plan</citation>
-      </ref>
-      <ref id="ref042">
-         <citation href="http://www.nist.gov/nstic">National Strategy for Trusted Identities in Cyberspace</citation>
-      </ref>
-      <ref id="ref043">
-         <citation href="http://csrc.nist.gov/publications/PubsNISTIRs.html#NIST-IR-7622">NIST Interagency Report 7622</citation>
-      </ref>
-      <ref id="ref044">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-100">NIST Special Publication 800-100</citation>
-      </ref>
-      <ref id="ref045">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-111">NIST Special Publication 800-111</citation>
-      </ref>
-      <ref id="ref046">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-113">NIST Special Publication 800-113</citation>
-      </ref>
-      <ref id="ref047">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-114">NIST Special Publication 800-114</citation>
-      </ref>
-      <ref id="ref048">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-115">NIST Special Publication 800-115</citation>
-      </ref>
-      <ref id="ref049">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-116">NIST Special Publication 800-116</citation>
-      </ref>
-      <ref id="ref050">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special Publication 800-12</citation>
-      </ref>
-      <ref id="ref051">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-121">NIST Special Publication 800-121</citation>
-      </ref>
-      <ref id="ref052">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-124">NIST Special Publication 800-124</citation>
-      </ref>
-      <ref id="ref053">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-128">NIST Special Publication 800-128</citation>
-      </ref>
-      <ref id="ref054">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-137">NIST Special Publication 800-137</citation>
-      </ref>
-      <ref id="ref055">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-147">NIST Special Publication 800-147</citation>
-      </ref>
-      <ref id="ref056">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-155">NIST Special Publication 800-155</citation>
-      </ref>
-      <ref id="ref057">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-16">NIST Special Publication 800-16</citation>
-      </ref>
-      <ref id="ref058">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-161">NIST Special Publication 800-161</citation>
-      </ref>
-      <ref id="ref059">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-164">NIST Special Publication 800-164</citation>
-      </ref>
-      <ref id="ref060">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-18">NIST Special Publication 800-18</citation>
-      </ref>
-      <ref id="ref061">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-23">NIST Special Publication 800-23</citation>
-      </ref>
-      <ref id="ref062">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-27">NIST Special Publication 800-27</citation>
-      </ref>
-      <ref id="ref063">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-28">NIST Special Publication 800-28</citation>
-      </ref>
-      <ref id="ref064">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-30">NIST Special Publication 800-30</citation>
-      </ref>
-      <ref id="ref065">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-32">NIST Special Publication 800-32</citation>
-      </ref>
-      <ref id="ref066">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-34">NIST Special Publication 800-34</citation>
-      </ref>
-      <ref id="ref067">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-35">NIST Special Publication 800-35</citation>
-      </ref>
-      <ref id="ref068">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-36">NIST Special Publication 800-36</citation>
-      </ref>
-      <ref id="ref069">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-37">NIST Special Publication 800-37</citation>
-      </ref>
-      <ref id="ref070">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-39">NIST Special Publication 800-39</citation>
-      </ref>
-      <ref id="ref071">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-40">NIST Special Publication 800-40</citation>
-      </ref>
-      <ref id="ref072">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-41">NIST Special Publication 800-41</citation>
-      </ref>
-      <ref id="ref073">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-45">NIST Special Publication 800-45</citation>
-      </ref>
-      <ref id="ref074">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-46">NIST Special Publication 800-46</citation>
-      </ref>
-      <ref id="ref075">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-47">NIST Special Publication 800-47</citation>
-      </ref>
-      <ref id="ref076">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-48">NIST Special Publication 800-48</citation>
-      </ref>
-      <ref id="ref077">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-50">NIST Special Publication 800-50</citation>
-      </ref>
-      <ref id="ref078">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-52">NIST Special Publication 800-52</citation>
-      </ref>
-      <ref id="ref079">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-53">NIST Special Publication 800-53</citation>
-      </ref>
-      <ref id="ref080">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-53A">NIST Special Publication 800-53A</citation>
-      </ref>
-      <ref id="ref081">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-55">NIST Special Publication 800-55</citation>
-      </ref>
-      <ref id="ref082">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-56">NIST Special Publication 800-56</citation>
-      </ref>
-      <ref id="ref083">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-57">NIST Special Publication 800-57</citation>
-      </ref>
-      <ref id="ref084">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-58">NIST Special Publication 800-58</citation>
-      </ref>
-      <ref id="ref085">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-60">NIST Special Publication 800-60</citation>
-      </ref>
-      <ref id="ref086">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-61">NIST Special Publication 800-61</citation>
-      </ref>
-      <ref id="ref087">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-63">NIST Special Publication 800-63</citation>
-      </ref>
-      <ref id="ref088">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-64">NIST Special Publication 800-64</citation>
-      </ref>
-      <ref id="ref089">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-65">NIST Special Publication 800-65</citation>
-      </ref>
-      <ref id="ref090">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-70">NIST Special Publication 800-70</citation>
-      </ref>
-      <ref id="ref091">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-73">NIST Special Publication 800-73</citation>
-      </ref>
-      <ref id="ref092">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-76">NIST Special Publication 800-76</citation>
-      </ref>
-      <ref id="ref093">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-77">NIST Special Publication 800-77</citation>
-      </ref>
-      <ref id="ref094">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-78">NIST Special Publication 800-78</citation>
-      </ref>
-      <ref id="ref095">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-81">NIST Special Publication 800-81</citation>
-      </ref>
-      <ref id="ref096">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-83">NIST Special Publication 800-83</citation>
-      </ref>
-      <ref id="ref097">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-84">NIST Special Publication 800-84</citation>
-      </ref>
-      <ref id="ref098">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-88">NIST Special Publication 800-88</citation>
-      </ref>
-      <ref id="ref099">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-92">NIST Special Publication 800-92</citation>
-      </ref>
-      <ref id="ref100">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-94">NIST Special Publication 800-94</citation>
-      </ref>
-      <ref id="ref101">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-95">NIST Special Publication 800-95</citation>
-      </ref>
-      <ref id="ref102">
-         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-97">NIST Special Publication 800-97</citation>
-      </ref>
-      <ref id="ref103">
-         <citation href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI No. 7003</citation>
-      </ref>
-      <ref id="ref104">
-         <citation href="http://www.whitehouse.gov/omb/circulars_a130_a130trans4">OMB Circular A-130</citation>
-      </ref>
-      <ref id="ref105">
-         <citation href="http://www.whitehouse.gov/omb/memoranda_m02-01">OMB Memorandum 02-01</citation>
-      </ref>
-      <ref id="ref106">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</citation>
-      </ref>
-      <ref id="ref107">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2005/m05-24.pdf">OMB Memorandum 05-24</citation>
-      </ref>
-      <ref id="ref108">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2006/m06-16.pdf">OMB Memorandum 06-16</citation>
-      </ref>
-      <ref id="ref109">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf">OMB Memorandum 07-11</citation>
-      </ref>
-      <ref id="ref110">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf">OMB Memorandum 07-18</citation>
-      </ref>
-      <ref id="ref111">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf">OMB Memorandum 08-22</citation>
-      </ref>
-      <ref id="ref112">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-23.pdf">OMB Memorandum 08-23</citation>
-      </ref>
-      <ref id="ref113">
-         <citation>OMB Memorandum 10-06-2011</citation>
-      </ref>
-      <ref id="ref114">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-11.pdf">OMB Memorandum 11-11</citation>
-      </ref>
-      <ref id="ref115">
-         <citation href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-33.pdf">OMB Memorandum 11-33</citation>
-      </ref>
-      <ref id="ref116">
-         <citation>Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)</citation>
-      </ref>
-      <ref id="ref117">
-         <citation href="http://www.us-cert.gov/ncas/alerts">US-CERT Technical Cyber Security Alerts</citation>
-      </ref>
-   </references>
    <group class="family" id="ac">
       <title>Access Control</title>
       <control class="SP800-53" id="ac-1">
@@ -552,11 +204,11 @@
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ac-2">
          <title>Account Management</title>
@@ -4978,9 +4630,9 @@ Organizations commonly employ information flow control policies and enforcement 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ac-12">
          <title>Session Termination</title>
@@ -6238,7 +5890,7 @@ Organizations can define the types of attributes needed for selected information
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref074" rel="reference">NIST Special Publication 800-46</link>
             
                 <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
@@ -6248,7 +5900,7 @@ Organizations can define the types of attributes needed for selected information
                 <link href="#ref047" rel="reference">NIST Special Publication 800-114</link>
             
                 <link href="#ref051" rel="reference">NIST Special Publication 800-121</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ac-18">
          <title>Wireless Access</title>
@@ -6518,13 +6170,13 @@ Organizations can define the types of attributes needed for selected information
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref076" rel="reference">NIST Special Publication 800-48</link>
             
                 <link href="#ref100" rel="reference">NIST Special Publication 800-94</link>
             
                 <link href="#ref102" rel="reference">NIST Special Publication 800-97</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ac-19">
          <title>Access Control for Mobile Devices</title>
@@ -6817,7 +6469,7 @@ Organizations can define the types of attributes needed for selected information
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref108" rel="reference">OMB Memorandum 06-16</link>
             
                 <link href="#ref047" rel="reference">NIST Special Publication 800-114</link>
@@ -6825,7 +6477,7 @@ Organizations can define the types of attributes needed for selected information
                 <link href="#ref052" rel="reference">NIST Special Publication 800-124</link>
             
                 <link href="#ref059" rel="reference">NIST Special Publication 800-164</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ac-20">
          <title>Use of External Information Systems</title>
@@ -7087,9 +6739,9 @@ This control does not apply to the use of external information systems to access
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ac-21">
          <title>Information Sharing</title>
@@ -7775,7 +7427,7 @@ This control does not apply to the use of external information systems to access
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
@@ -7783,7 +7435,7 @@ This control does not apply to the use of external information systems to access
                 <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="at-2">
          <title>Security Awareness Training</title>
@@ -7940,13 +7592,13 @@ This control does not apply to the use of external information systems to access
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
             
                 <link href="#ref008" rel="reference">Executive Order 13587</link>
             
                 <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="at-3">
          <title>Role-based Security Training</title>
@@ -8218,13 +7870,13 @@ This control does not apply to the use of external information systems to access
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref002" rel="reference">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</link>
             
                 <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
             
                 <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="at-4">
          <title>Security Training Records</title>
@@ -8468,11 +8120,11 @@ This control does not apply to the use of external information systems to access
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="au-2">
          <title>Audit Events</title>
@@ -8645,11 +8297,11 @@ This control does not apply to the use of external information systems to access
             <prop class="status">Withdrawn</prop>
             <link rel="incorporated-into" href="#AC-6 (9)">AC-6 (9)</link>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
             
                 <link href="#ref027" rel="reference">http://idmanagement.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="au-3">
          <title>Content of Audit Records</title>
@@ -12006,7 +11658,7 @@ This control does not apply to the use of external information systems to access
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -12014,7 +11666,7 @@ This control does not apply to the use of external information systems to access
                 <link href="#ref080" rel="reference">NIST Special Publication 800-53A</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ca-2">
          <title>Security Assessments</title>
@@ -12351,7 +12003,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref008" rel="reference">Executive Order 13587</link>
             
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -12365,7 +12017,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                 <link href="#ref048" rel="reference">NIST Special Publication 800-115</link>
             
                 <link href="#ref054" rel="reference">NIST Special Publication 800-137</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ca-3">
          <title>System Interconnections</title>
@@ -12761,11 +12413,11 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref075" rel="reference">NIST Special Publication 800-47</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ca-4">
          <title>Security Certification</title>
@@ -12907,11 +12559,11 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref105" rel="reference">OMB Memorandum 02-01</link>
             
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ca-6">
          <title>Security Authorization</title>
@@ -12988,7 +12640,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                <p>Automated mechanisms that facilitate security authorizations and updates</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref104" rel="reference">OMB Circular A-130</link>
             
                 <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
@@ -12996,7 +12648,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
             
                 <link href="#ref054" rel="reference">NIST Special Publication 800-137</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ca-7">
          <title>Continuous Monitoring</title>
@@ -13290,7 +12942,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref115" rel="reference">OMB Memorandum 11-33</link>
             
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -13306,7 +12958,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                 <link href="#ref117" rel="reference">US-CERT Technical Cyber Security Alerts</link>
             
                 <link href="#ref004" rel="reference">DoD Information Assurance Vulnerability Alerts</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ca-8">
          <title>Penetration Testing</title>
@@ -13737,11 +13389,11 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                <p>system/network administrators</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-2">
          <title>Baseline Configuration</title>
@@ -14141,9 +13793,9 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-3">
          <title>Configuration Change Control</title>
@@ -14683,9 +14335,9 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-4">
          <title>Security Impact Analysis</title>
@@ -14858,9 +14510,9 @@ To satisfy annual assessment requirements, organizations can use assessment resu
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-5">
          <title>Access Restrictions for Change</title>
@@ -15608,7 +15260,7 @@ Common secure configurations (also referred to as security configuration checkli
             <prop class="status">Withdrawn</prop>
             <link rel="incorporated-into" href="#CM-4">CM-4</link>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref109" rel="reference">OMB Memorandum 07-11</link>
             
                 <link href="#ref110" rel="reference">OMB Memorandum 07-18</link>
@@ -15624,7 +15276,7 @@ Common secure configurations (also referred to as security configuration checkli
                 <link href="#ref021" rel="reference">http://checklists.nist.gov</link>
             
                 <link href="#ref033" rel="reference">http://www.nsa.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-7">
          <title>Least Functionality</title>
@@ -16214,9 +15866,9 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref006" rel="reference">DoD Instruction 8551.01</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-8">
          <title>Information System Component Inventory</title>
@@ -16877,9 +16529,9 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-9">
          <title>Configuration Management Plan</title>
@@ -17026,9 +16678,9 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cm-10">
          <title>Software Usage Restrictions</title>
@@ -17505,7 +17157,7 @@ Common secure configurations (also referred to as security configuration checkli
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
             
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -17513,7 +17165,7 @@ Common secure configurations (also referred to as security configuration checkli
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-2">
          <title>Contingency Plan</title>
@@ -18090,11 +17742,11 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
             
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-3">
          <title>Contingency Training</title>
@@ -18253,13 +17905,13 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
             
                 <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
             
                 <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-4">
          <title>Contingency Plan Testing</title>
@@ -18532,7 +18184,7 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
             
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -18540,7 +18192,7 @@ Common secure configurations (also referred to as security configuration checkli
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
             
                 <link href="#ref097" rel="reference">NIST Special Publication 800-84</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-5">
          <title>Contingency Plan Update</title>
@@ -18721,9 +18373,9 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-7">
          <title>Alternate Processing Site</title>
@@ -19004,9 +18656,9 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-8">
          <title>Telecommunications Services</title>
@@ -19308,13 +18960,13 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
             
                 <link href="#ref040" rel="reference">National Communications Systems Directive 3-10</link>
             
                 <link href="#ref031" rel="reference">http://www.dhs.gov/telecommunications-service-priority-tsp</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-9">
          <title>Information System Backup</title>
@@ -19729,9 +19381,9 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-10">
          <title>Information System Recovery and Reconstitution</title>
@@ -19981,11 +19633,11 @@ Common secure configurations (also referred to as security configuration checkli
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref010" rel="reference">Federal Continuity Directive 1</link>
             
                 <link href="#ref066" rel="reference">NIST Special Publication 800-34</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="cp-11">
          <title>Alternate Communications Protocols</title>
@@ -20311,7 +19963,7 @@ Common secure configurations (also referred to as security configuration checkli
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref017" rel="reference">FIPS Publication 201</link>
             
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
@@ -20325,7 +19977,7 @@ Common secure configurations (also referred to as security configuration checkli
                 <link href="#ref094" rel="reference">NIST Special Publication 800-78</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ia-2">
          <title>Identification and Authentication (organizational Users)</title>
@@ -21008,7 +20660,7 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref018" rel="reference">HSPD-12</link>
             
                 <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
@@ -21030,7 +20682,7 @@ Organizations can satisfy the identification and authentication requirements in 
                 <link href="#ref011" rel="reference">FICAM Roadmap and Implementation Guidance</link>
             
                 <link href="#ref027" rel="reference">http://idmanagement.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ia-3">
          <title>Device Identification and Authentication</title>
@@ -21814,7 +21466,7 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref017" rel="reference">FIPS Publication 201</link>
             
                 <link href="#ref091" rel="reference">NIST Special Publication 800-73</link>
@@ -21822,7 +21474,7 @@ Organizations can satisfy the identification and authentication requirements in 
                 <link href="#ref092" rel="reference">NIST Special Publication 800-76</link>
             
                 <link href="#ref094" rel="reference">NIST Special Publication 800-78</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ia-5">
          <title>Authenticator Management</title>
@@ -22923,7 +22575,7 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
             
                 <link href="#ref114" rel="reference">OMB Memorandum 11-11</link>
@@ -22941,7 +22593,7 @@ Organizations can satisfy the identification and authentication requirements in 
                 <link href="#ref011" rel="reference">FICAM Roadmap and Implementation Guidance</link>
             
                 <link href="#ref027" rel="reference">http://idmanagement.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ia-6">
          <title>Authenticator Feedback</title>
@@ -23022,11 +22674,11 @@ Organizations can satisfy the identification and authentication requirements in 
                <p>Automated mechanisms supporting and/or implementing cryptographic module authentication</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref012" rel="reference">FIPS Publication 140</link>
             
                 <link href="#ref023" rel="reference">http://csrc.nist.gov/groups/STM/cmvp/index.html</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ia-8">
          <title>Identification and Authentication (non-organizational Users)</title>
@@ -23338,7 +22990,7 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
             
                 <link href="#ref114" rel="reference">OMB Memorandum 11-11</link>
@@ -23356,7 +23008,7 @@ Organizations can satisfy the identification and authentication requirements in 
                 <link href="#ref042" rel="reference">National Strategy for Trusted Identities in Cyberspace</link>
             
                 <link href="#ref027" rel="reference">http://idmanagement.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ia-9">
          <title>Service Identification and Authentication</title>
@@ -23790,7 +23442,7 @@ Organizations can satisfy the identification and authentication requirements in 
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
@@ -23798,7 +23450,7 @@ Organizations can satisfy the identification and authentication requirements in 
                 <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ir-2">
          <title>Incident Response Training</title>
@@ -23952,11 +23604,11 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
             
                 <link href="#ref077" rel="reference">NIST Special Publication 800-50</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ir-3">
          <title>Incident Response Testing</title>
@@ -24097,11 +23749,11 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref097" rel="reference">NIST Special Publication 800-84</link>
             
                 <link href="#ref048" rel="reference">NIST Special Publication 800-115</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ir-4">
          <title>Incident Handling</title>
@@ -24712,11 +24364,11 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref008" rel="reference">Executive Order 13587</link>
             
                 <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ir-5">
          <title>Incident Monitoring</title>
@@ -24825,9 +24477,9 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ir-6">
          <title>Incident Reporting</title>
@@ -25036,11 +24688,11 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
             
                 <link href="#ref036" rel="reference">http://www.us-cert.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ir-7">
          <title>Incident Response Assistance</title>
@@ -25415,9 +25067,9 @@ Organizations can satisfy the identification and authentication requirements in 
                <p>Organizational incident response plan and related organizational processes</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ir-9">
          <title>Information Spillage Response</title>
@@ -25882,11 +25534,11 @@ Organizations can satisfy the identification and authentication requirements in 
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ma-2">
          <title>Controlled Maintenance</title>
@@ -26411,9 +26063,9 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref098" rel="reference">NIST Special Publication 800-88</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ma-4">
          <title>Nonlocal Maintenance</title>
@@ -26977,7 +26629,7 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
             
                 <link href="#ref014" rel="reference">FIPS Publication 197</link>
@@ -26989,7 +26641,7 @@ Organizations can satisfy the identification and authentication requirements in 
                 <link href="#ref098" rel="reference">NIST Special Publication 800-88</link>
             
                 <link href="#ref003" rel="reference">CNSS Policy 15</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ma-5">
          <title>Maintenance Personnel</title>
@@ -27751,11 +27403,11 @@ Organizations can satisfy the identification and authentication requirements in 
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="mp-2">
          <title>Media Access</title>
@@ -27832,11 +27484,11 @@ Organizations can satisfy the identification and authentication requirements in 
             <prop class="status">Withdrawn</prop>
             <link rel="incorporated-into" href="#SC-28 (1)">SC-28 (1)</link>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="mp-3">
          <title>Media Marking</title>
@@ -27924,9 +27576,9 @@ Organizations can satisfy the identification and authentication requirements in 
                <p>automated mechanisms supporting and/or implementing media marking</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="mp-4">
          <title>Media Storage</title>
@@ -28075,7 +27727,7 @@ Organizations can satisfy the identification and authentication requirements in 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
@@ -28083,7 +27735,7 @@ Organizations can satisfy the identification and authentication requirements in 
                 <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
             
                 <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="mp-5">
          <title>Media Transport</title>
@@ -28265,11 +27917,11 @@ Physical and technical safeguards for media are commensurate with the security c
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="mp-6">
          <title>Media Sanitization</title>
@@ -28672,7 +28324,7 @@ Physical and technical safeguards for media are commensurate with the security c
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
@@ -28680,7 +28332,7 @@ Physical and technical safeguards for media are commensurate with the security c
                 <link href="#ref098" rel="reference">NIST Special Publication 800-88</link>
             
                 <link href="#ref034" rel="reference">http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="mp-7">
          <title>Media Use</title>
@@ -28854,11 +28506,11 @@ Physical and technical safeguards for media are commensurate with the security c
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="mp-8">
          <title>Media Downgrading</title>
@@ -29292,11 +28944,11 @@ Physical and technical safeguards for media are commensurate with the security c
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pe-2">
          <title>Physical Access Authorizations</title>
@@ -30164,7 +29816,7 @@ Physical and technical safeguards for media are commensurate with the security c
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref017" rel="reference">FIPS Publication 201</link>
             
                 <link href="#ref091" rel="reference">NIST Special Publication 800-73</link>
@@ -30186,7 +29838,7 @@ Physical and technical safeguards for media are commensurate with the security c
                 <link href="#ref027" rel="reference">http://idmanagement.gov</link>
             
                 <link href="#ref026" rel="reference">http://fips201ep.cio.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pe-4">
          <title>Access Control for Transmission Medium</title>
@@ -30250,9 +29902,9 @@ Physical and technical safeguards for media are commensurate with the security c
                <p>automated mechanisms/security safeguards supporting and/or implementing access control to distribution and transmission lines</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref103" rel="reference">NSTISSI No. 7003</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pe-5">
          <title>Access Control for Output Devices</title>
@@ -32077,9 +31729,9 @@ Physical and technical safeguards for media are commensurate with the security c
                <p>means of communications between personnel at alternate work sites and security personnel</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref074" rel="reference">NIST Special Publication 800-46</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pe-18">
          <title>Location of Information System Components</title>
@@ -32273,9 +31925,9 @@ Physical and technical safeguards for media are commensurate with the security c
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pe-20">
          <title>Asset Monitoring and Tracking</title>
@@ -32505,13 +32157,13 @@ Physical and technical safeguards for media are commensurate with the security c
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pl-2">
          <title>System Security Plan</title>
@@ -32787,9 +32439,9 @@ Security plans need not be single documents; the plans can be a collection of va
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pl-3">
          <title>System Security Plan Update</title>
@@ -32947,9 +32599,9 @@ Security plans need not be single documents; the plans can be a collection of va
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref060" rel="reference">NIST Special Publication 800-18</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pl-5">
          <title>Privacy Impact Assessment</title>
@@ -33333,9 +32985,9 @@ In today’s modern architecture, it is becoming less common for organizations t
                <p>automated mechanisms supporting and/or implementing central management of security controls and related processes</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
-            </references>
+            </ref-list>
       </control>
    </group>
    <group class="family" id="ps">
@@ -33486,11 +33138,11 @@ In today’s modern architecture, it is becoming less common for organizations t
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ps-2">
          <title>Position Risk Designation</title>
@@ -33567,9 +33219,9 @@ In today’s modern architecture, it is becoming less common for organizations t
                <p>organizational processes for establishing screening criteria</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ps-3">
          <title>Personnel Screening</title>
@@ -33787,7 +33439,7 @@ In today’s modern architecture, it is becoming less common for organizations t
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref001" rel="reference">5 C.F.R. 731.106</link>
             
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -33803,7 +33455,7 @@ In today’s modern architecture, it is becoming less common for organizations t
                 <link href="#ref094" rel="reference">NIST Special Publication 800-78</link>
             
                 <link href="#ref037" rel="reference">ICD 704</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ps-4">
          <title>Personnel Termination</title>
@@ -34496,9 +34148,9 @@ In today’s modern architecture, it is becoming less common for organizations t
                <p>automated mechanisms supporting and/or implementing monitoring of provider compliance</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ps-8">
          <title>Personnel Sanctions</title>
@@ -34721,13 +34373,13 @@ In today’s modern architecture, it is becoming less common for organizations t
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ra-2">
          <title>Security Categorization</title>
@@ -34793,7 +34445,7 @@ In today’s modern architecture, it is becoming less common for organizations t
                <p>Organizational processes for security categorization</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
@@ -34801,7 +34453,7 @@ In today’s modern architecture, it is becoming less common for organizations t
                 <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
             
                 <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ra-3">
          <title>Risk Assessment</title>
@@ -34967,7 +34619,7 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
                <p>automated mechanisms supporting and/or for conducting, documenting, reviewing, disseminating, and updating the risk assessment</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref106" rel="reference">OMB Memorandum 04-04</link>
             
                 <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
@@ -34975,7 +34627,7 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
                 <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
             
                 <link href="#ref027" rel="reference">http://idmanagement.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ra-4">
          <title>Risk Assessment Update</title>
@@ -35613,7 +35265,7 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
             
                 <link href="#ref090" rel="reference">NIST Special Publication 800-70</link>
@@ -35623,7 +35275,7 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
                 <link href="#ref025" rel="reference">http://cwe.mitre.org</link>
             
                 <link href="#ref028" rel="reference">http://nvd.nist.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="ra-6">
          <title>Technical Surveillance Countermeasures Survey</title>
@@ -35856,11 +35508,11 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-2">
          <title>Allocation of Resources</title>
@@ -35938,9 +35590,9 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
                <p>automated mechanisms supporting and/or implementing organizational capital planning, programming, and budgeting</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref089" rel="reference">NIST Special Publication 800-65</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-3">
          <title>System Development Life Cycle</title>
@@ -36026,11 +35678,11 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
                <p>automated mechanisms supporting and/or implementing the SDLC</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
             
                 <link href="#ref088" rel="reference">NIST Special Publication 800-64</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-4">
          <title>Acquisition Process</title>
@@ -36717,7 +36369,7 @@ Security functionality, assurance, and documentation requirements are expressed 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref018" rel="reference">HSPD-12</link>
             
                 <link href="#ref039" rel="reference">ISO/IEC 15408</link>
@@ -36747,7 +36399,7 @@ Security functionality, assurance, and documentation requirements are expressed 
                 <link href="#ref026" rel="reference">http://fips201ep.cio.gov</link>
             
                 <link href="#ref029" rel="reference">http://www.acquisition.gov/far</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-5">
          <title>Information System Documentation</title>
@@ -37044,9 +36696,9 @@ Security functionality, assurance, and documentation requirements are expressed 
                <p>automated mechanisms supporting the application of security engineering principles in information system specification, design, development, implementation, and modification</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref062" rel="reference">NIST Special Publication 800-27</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-9">
          <title>External Information System Services</title>
@@ -37481,9 +37133,9 @@ Security functionality, assurance, and documentation requirements are expressed 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref067" rel="reference">NIST Special Publication 800-35</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-10">
          <title>Developer Configuration Management</title>
@@ -37931,9 +37583,9 @@ Security functionality, assurance, and documentation requirements are expressed 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-11">
          <title>Developer Security Testing and Evaluation</title>
@@ -38552,7 +38204,7 @@ Security functionality, assurance, and documentation requirements are expressed 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref039" rel="reference">ISO/IEC 15408</link>
             
                 <link href="#ref080" rel="reference">NIST Special Publication 800-53A</link>
@@ -38564,7 +38216,7 @@ Security functionality, assurance, and documentation requirements are expressed 
                 <link href="#ref024" rel="reference">http://cve.mitre.org</link>
             
                 <link href="#ref020" rel="reference">http://capec.mitre.org</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-12">
          <title>Supply Chain Protection</title>
@@ -39316,11 +38968,11 @@ Security functionality, assurance, and documentation requirements are expressed 
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref058" rel="reference">NIST Special Publication 800-161</link>
             
                 <link href="#ref043" rel="reference">NIST Interagency Report 7622</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-13">
          <title>Trustworthiness</title>
@@ -39397,7 +39049,7 @@ Assurance is also based on the assessment of evidence produced during the system
                <p>authorizing official</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref016" rel="reference">FIPS Publication 200</link>
@@ -39409,7 +39061,7 @@ Assurance is also based on the assessment of evidence produced during the system
                 <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
             
                 <link href="#ref088" rel="reference">NIST Special Publication 800-64</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sa-14">
          <title>Criticality Analysis</title>
@@ -41848,11 +41500,11 @@ Assurance is also based on the assessment of evidence produced during the system
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-2">
          <title>Application Partitioning</title>
@@ -43821,13 +43473,13 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref072" rel="reference">NIST Special Publication 800-41</link>
             
                 <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-8">
          <title>Transmission Confidentiality and Integrity</title>
@@ -44123,7 +43775,7 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref013" rel="reference">FIPS Publication 140-2</link>
             
                 <link href="#ref014" rel="reference">FIPS Publication 197</link>
@@ -44139,7 +43791,7 @@ Assurance is also based on the assessment of evidence produced during the system
                 <link href="#ref003" rel="reference">CNSS Policy 15</link>
             
                 <link href="#ref103" rel="reference">NSTISSI No. 7003</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-9">
          <title>Transmission Confidentiality</title>
@@ -44530,11 +44182,11 @@ Assurance is also based on the assessment of evidence produced during the system
             <prop class="status">Withdrawn</prop>
             <link rel="incorporated-into" href="#SC-12">SC-12</link>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
             
                 <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-13">
          <title>Cryptographic Protection</title>
@@ -44635,13 +44287,13 @@ Assurance is also based on the assessment of evidence produced during the system
             <prop class="status">Withdrawn</prop>
             <link rel="incorporated-into" href="#SC-13">SC-13</link>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref012" rel="reference">FIPS Publication 140</link>
             
                 <link href="#ref022" rel="reference">http://csrc.nist.gov/cryptval</link>
             
                 <link href="#ref030" rel="reference">http://www.cnss.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-14">
          <title>Public Access Protections</title>
@@ -45046,13 +44698,13 @@ Assurance is also based on the assessment of evidence produced during the system
                <p>Automated mechanisms supporting and/or implementing the management of public key infrastructure certificates</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref107" rel="reference">OMB Memorandum 05-24</link>
             
                 <link href="#ref065" rel="reference">NIST Special Publication 800-32</link>
             
                 <link href="#ref087" rel="reference">NIST Special Publication 800-63</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-18">
          <title>Mobile Code</title>
@@ -45433,11 +45085,11 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref063" rel="reference">NIST Special Publication 800-28</link>
             
                 <link href="#ref007" rel="reference">DoD Instruction 8552.01</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-19">
          <title>Voice Over Internet Protocol</title>
@@ -45516,9 +45168,9 @@ Assurance is also based on the assessment of evidence produced during the system
                <p>automated mechanisms supporting and/or implementing authorizing, monitoring, and controlling VoIP</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref084" rel="reference">NIST Special Publication 800-58</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-20">
          <title>Secure Name / Address Resolution Service (authoritative Source)</title>
@@ -45627,11 +45279,11 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref112" rel="reference">OMB Memorandum 08-23</link>
             
                 <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-21">
          <title>Secure Name / Address Resolution Service (recursive or Caching Resolver)</title>
@@ -45694,9 +45346,9 @@ Assurance is also based on the assessment of evidence produced during the system
             <prop class="status">Withdrawn</prop>
             <link rel="incorporated-into" href="#SC-21">SC-21</link>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-22">
          <title>Architecture and Provisioning for Name / Address Resolution Service</title>
@@ -45749,9 +45401,9 @@ Assurance is also based on the assessment of evidence produced during the system
                <p>Automated mechanisms supporting and/or implementing name/address resolution service for fault tolerance and role separation</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-23">
          <title>Session Authenticity</title>
@@ -45945,13 +45597,13 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref078" rel="reference">NIST Special Publication 800-52</link>
             
                 <link href="#ref093" rel="reference">NIST Special Publication 800-77</link>
             
                 <link href="#ref101" rel="reference">NIST Special Publication 800-95</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-24">
          <title>Fail in Known State</title>
@@ -46372,13 +46024,13 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
             
                 <link href="#ref083" rel="reference">NIST Special Publication 800-57</link>
             
                 <link href="#ref045" rel="reference">NIST Special Publication 800-111</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-29">
          <title>Heterogeneity</title>
@@ -47094,9 +46746,9 @@ Assurance is also based on the assessment of evidence produced during the system
                <p>Automated mechanisms supporting and/or implementing physical separation of information system components</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="sc-33">
          <title>Transmission Preparation Integrity</title>
@@ -48777,11 +48429,11 @@ Assurance is also based on the assessment of evidence produced during the system
                <p>organizational personnel with information security responsibilities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref050" rel="reference">NIST Special Publication 800-12</link>
             
                 <link href="#ref044" rel="reference">NIST Special Publication 800-100</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="si-2">
          <title>Flaw Remediation</title>
@@ -49220,11 +48872,11 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
             
                 <link href="#ref053" rel="reference">NIST Special Publication 800-128</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="si-3">
          <title>Malicious Code Protection</title>
@@ -49889,9 +49541,9 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="si-4">
          <title>Information System Monitoring</title>
@@ -51438,7 +51090,7 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref086" rel="reference">NIST Special Publication 800-61</link>
             
                 <link href="#ref096" rel="reference">NIST Special Publication 800-83</link>
@@ -51448,7 +51100,7 @@ Assurance is also based on the assessment of evidence produced during the system
                 <link href="#ref100" rel="reference">NIST Special Publication 800-94</link>
             
                 <link href="#ref054" rel="reference">NIST Special Publication 800-137</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="si-5">
          <title>Security Alerts, Advisories, and Directives</title>
@@ -51631,9 +51283,9 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref071" rel="reference">NIST Special Publication 800-40</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="si-6">
          <title>Security Function Verification</title>
@@ -52953,11 +52605,11 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref055" rel="reference">NIST Special Publication 800-147</link>
             
                 <link href="#ref056" rel="reference">NIST Special Publication 800-155</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="si-8">
          <title>Spam Protection</title>
@@ -53161,9 +52813,9 @@ Assurance is also based on the assessment of evidence produced during the system
                </part>
             </part>
          </subcontrol>
-         <references>
+         <ref-list>
                 <link href="#ref073" rel="reference">NIST Special Publication 800-45</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="si-9">
          <title>Information Input Restrictions</title>
@@ -54597,9 +54249,9 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting the capital planning and investment process</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref089" rel="reference">NIST Special Publication 800-65</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-4">
          <title>Plan of Action and Milestones Process</title>
@@ -54696,11 +54348,11 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting plans of action and milestones</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref105" rel="reference">OMB Memorandum 02-01</link>
             
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-5">
          <title>Information System Inventory</title>
@@ -54747,9 +54399,9 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting the information system inventory</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref035" rel="reference">http://www.omb.gov</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-6">
          <title>Information Security Measures of Performance</title>
@@ -54799,9 +54451,9 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting the development, monitoring, and reporting of information security measures of performance</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref081" rel="reference">NIST Special Publication 800-55</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-7">
          <title>Enterprise Architecture</title>
@@ -54854,9 +54506,9 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting the enterprise architecture and its development</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-8">
          <title>Critical Infrastructure Plan</title>
@@ -54912,11 +54564,11 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting the development, documentation, and updating of the critical infrastructure and key resources protection plan</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref019" rel="reference">HSPD 7</link>
             
                 <link href="#ref041" rel="reference">National Infrastructure Protection Plan</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-9">
          <title>Risk Management Strategy</title>
@@ -54998,11 +54650,11 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting the development, implementation, review, and update of the risk management strategy</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref064" rel="reference">NIST Special Publication 800-30</link>
             
                 <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-10">
          <title>Security Authorization Process</title>
@@ -55070,11 +54722,11 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>automated mechanisms supporting the security authorization process</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
             
                 <link href="#ref070" rel="reference">NIST Special Publication 800-39</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-11">
          <title>Mission/business Process Definition</title>
@@ -55139,11 +54791,11 @@ Organizations have the flexibility to describe common controls in a single docum
                <p>Organizational processes for defining mission/business processes and their information protection needs</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
             
                 <link href="#ref085" rel="reference">NIST Special Publication 800-60</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-12">
          <title>Insider Threat Program</title>
@@ -55206,9 +54858,9 @@ Insider threat programs can leverage the existence of incident handling teams or
                <p>automated mechanisms supporting and/or implementing the insider threat program and the cross-discipline insider threat incident handling team</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref008" rel="reference">Executive Order 13587</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-13">
          <title>Information Security Workforce</title>
@@ -55340,7 +54992,7 @@ Insider threat programs can leverage the existence of incident handling teams or
                <p>automated mechanisms supporting development and maintenance of plans for conducting security testing, training, and monitoring activities</p>
             </part>
          </part>
-         <references>
+         <ref-list>
                 <link href="#ref057" rel="reference">NIST Special Publication 800-16</link>
             
                 <link href="#ref069" rel="reference">NIST Special Publication 800-37</link>
@@ -55348,7 +55000,7 @@ Insider threat programs can leverage the existence of incident handling teams or
                 <link href="#ref080" rel="reference">NIST Special Publication 800-53A</link>
             
                 <link href="#ref054" rel="reference">NIST Special Publication 800-137</link>
-            </references>
+            </ref-list>
       </control>
       <control class="SP800-53" id="pm-15">
          <title>Contacts with Security Groups and Associations</title>
@@ -55461,4 +55113,359 @@ Insider threat programs can leverage the existence of incident handling teams or
          </part>
       </control>
    </group>
+   <back>
+   <ref-list>
+      <ref id="ref001">
+         <citation href="http://www.gpo.gov/fdsys/granule/CFR-2012-title5-vol2/CFR-2012-title5-vol2-sec731-106/content-detail.html">5 C.F.R. 731.106</citation>
+      </ref>
+      <ref id="ref002">
+         <citation href="http://www.gpo.gov/fdsys/granule/CFR-2009-title5-vol2/CFR-2009-title5-vol2-sec930-301/content-detail.html">C.F.R. Part 5 Subpart C (5 C.F.R. 930.301)</citation>
+      </ref>
+      <ref id="ref003">
+         <citation href="https://www.cnss.gov/policies.html">CNSS Policy 15</citation>
+      </ref>
+      <ref id="ref004">
+         <citation>DoD Information Assurance Vulnerability Alerts</citation>
+      </ref>
+      <ref id="ref005">
+         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 5200.39</citation>
+      </ref>
+      <ref id="ref006">
+         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 8551.01</citation>
+      </ref>
+      <ref id="ref007">
+         <citation href="http://www.dtic.mil/whs/directives/corres/ins1.html">DoD Instruction 8552.01</citation>
+      </ref>
+      <ref id="ref008">
+         <citation href="http://www.whitehouse.gov/the-press-office/2011/10/07/executive-order-13587-structural-reforms-improve-security-classified-net">Executive Order 13587</citation>
+      </ref>
+      <ref id="ref009">
+         <citation href="https://acquisition.gov/far">Federal Acquisition Regulation</citation>
+      </ref>
+      <ref id="ref010">
+         <citation href="http://www.fema.gov/pdf/about/offices/fcd1.pdf">Federal Continuity Directive 1</citation>
+      </ref>
+      <ref id="ref011">
+         <citation href="http://www.idmanagement.gov/documents/ficam-roadmap-and-implementation-guidance">FICAM Roadmap and Implementation Guidance</citation>
+      </ref>
+      <ref id="ref012">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html">FIPS Publication 140</citation>
+      </ref>
+      <ref id="ref013">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#140-2">FIPS Publication 140-2</citation>
+      </ref>
+      <ref id="ref014">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#197">FIPS Publication 197</citation>
+      </ref>
+      <ref id="ref015">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#199">FIPS Publication 199</citation>
+      </ref>
+      <ref id="ref016">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#200">FIPS Publication 200</citation>
+      </ref>
+      <ref id="ref017">
+         <citation href="http://csrc.nist.gov/publications/PubsFIPS.html#201">FIPS Publication 201</citation>
+      </ref>
+      <ref id="ref018">
+         <citation href="http://www.dhs.gov/homeland-security-presidential-directive-12">HSPD-12</citation>
+      </ref>
+      <ref id="ref019">
+         <citation href="http://www.fas.org/irp/offdocs/nspd/hspd-7.html">HSPD 7</citation>
+      </ref>
+      <ref id="ref020">
+         <citation href="http://capec.mitre.org">http://capec.mitre.org</citation>
+      </ref>
+      <ref id="ref021">
+         <citation href="http://checklists.nist.gov">http://checklists.nist.gov</citation>
+      </ref>
+      <ref id="ref022">
+         <citation href="http://csrc.nist.gov/cryptval">http://csrc.nist.gov/cryptval</citation>
+      </ref>
+      <ref id="ref023">
+         <citation href="http://csrc.nist.gov/groups/STM/cmvp/index.html">http://csrc.nist.gov/groups/STM/cmvp/index.html</citation>
+      </ref>
+      <ref id="ref024">
+         <citation href="http://cve.mitre.org">http://cve.mitre.org</citation>
+      </ref>
+      <ref id="ref025">
+         <citation href="http://cwe.mitre.org">http://cwe.mitre.org</citation>
+      </ref>
+      <ref id="ref026">
+         <citation href="http://fips201ep.cio.gov">http://fips201ep.cio.gov</citation>
+      </ref>
+      <ref id="ref027">
+         <citation href="http://idmanagement.gov">http://idmanagement.gov</citation>
+      </ref>
+      <ref id="ref028">
+         <citation href="http://nvd.nist.gov">http://nvd.nist.gov</citation>
+      </ref>
+      <ref id="ref029">
+         <citation href="http://www.acquisition.gov/far">http://www.acquisition.gov/far</citation>
+      </ref>
+      <ref id="ref030">
+         <citation href="http://www.cnss.gov">http://www.cnss.gov</citation>
+      </ref>
+      <ref id="ref031">
+         <citation href="http://www.dhs.gov/telecommunications-service-priority-tsp">http://www.dhs.gov/telecommunications-service-priority-tsp</citation>
+      </ref>
+      <ref id="ref032">
+         <citation href="http://www.niap-ccevs.org">http://www.niap-ccevs.org</citation>
+      </ref>
+      <ref id="ref033">
+         <citation href="http://www.nsa.gov">http://www.nsa.gov</citation>
+      </ref>
+      <ref id="ref034">
+         <citation href="http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml">http://www.nsa.gov/ia/mitigation_guidance/media_destruction_guidance/index.shtml</citation>
+      </ref>
+      <ref id="ref035">
+         <citation href="http://www.omb.gov">http://www.omb.gov</citation>
+      </ref>
+      <ref id="ref036">
+         <citation href="http://www.us-cert.gov">http://www.us-cert.gov</citation>
+      </ref>
+      <ref id="ref037">
+         <citation href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives">ICD 704</citation>
+      </ref>
+      <ref id="ref038">
+         <citation href="http://www.dni.gov/index.php/intelligence-community/ic-policies-reports/intelligence-community-directives">ICD 705</citation>
+      </ref>
+      <ref id="ref039">
+         <citation href="http://www.iso.org/iso/iso_catalog/catalog_tc/catalog_detail.htm?csnumber=50341">ISO/IEC 15408</citation>
+      </ref>
+      <ref id="ref040">
+         <citation>National Communications Systems Directive 3-10</citation>
+      </ref>
+      <ref id="ref041">
+         <citation href="https://www.dhs.gov/national-infrastructure-protection-plan">National Infrastructure Protection Plan</citation>
+      </ref>
+      <ref id="ref042">
+         <citation href="http://www.nist.gov/nstic">National Strategy for Trusted Identities in Cyberspace</citation>
+      </ref>
+      <ref id="ref043">
+         <citation href="http://csrc.nist.gov/publications/PubsNISTIRs.html#NIST-IR-7622">NIST Interagency Report 7622</citation>
+      </ref>
+      <ref id="ref044">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-100">NIST Special Publication 800-100</citation>
+      </ref>
+      <ref id="ref045">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-111">NIST Special Publication 800-111</citation>
+      </ref>
+      <ref id="ref046">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-113">NIST Special Publication 800-113</citation>
+      </ref>
+      <ref id="ref047">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-114">NIST Special Publication 800-114</citation>
+      </ref>
+      <ref id="ref048">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-115">NIST Special Publication 800-115</citation>
+      </ref>
+      <ref id="ref049">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-116">NIST Special Publication 800-116</citation>
+      </ref>
+      <ref id="ref050">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special Publication 800-12</citation>
+      </ref>
+      <ref id="ref051">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-121">NIST Special Publication 800-121</citation>
+      </ref>
+      <ref id="ref052">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-124">NIST Special Publication 800-124</citation>
+      </ref>
+      <ref id="ref053">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-128">NIST Special Publication 800-128</citation>
+      </ref>
+      <ref id="ref054">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-137">NIST Special Publication 800-137</citation>
+      </ref>
+      <ref id="ref055">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-147">NIST Special Publication 800-147</citation>
+      </ref>
+      <ref id="ref056">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-155">NIST Special Publication 800-155</citation>
+      </ref>
+      <ref id="ref057">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-16">NIST Special Publication 800-16</citation>
+      </ref>
+      <ref id="ref058">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-161">NIST Special Publication 800-161</citation>
+      </ref>
+      <ref id="ref059">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-164">NIST Special Publication 800-164</citation>
+      </ref>
+      <ref id="ref060">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-18">NIST Special Publication 800-18</citation>
+      </ref>
+      <ref id="ref061">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-23">NIST Special Publication 800-23</citation>
+      </ref>
+      <ref id="ref062">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-27">NIST Special Publication 800-27</citation>
+      </ref>
+      <ref id="ref063">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-28">NIST Special Publication 800-28</citation>
+      </ref>
+      <ref id="ref064">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-30">NIST Special Publication 800-30</citation>
+      </ref>
+      <ref id="ref065">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-32">NIST Special Publication 800-32</citation>
+      </ref>
+      <ref id="ref066">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-34">NIST Special Publication 800-34</citation>
+      </ref>
+      <ref id="ref067">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-35">NIST Special Publication 800-35</citation>
+      </ref>
+      <ref id="ref068">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-36">NIST Special Publication 800-36</citation>
+      </ref>
+      <ref id="ref069">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-37">NIST Special Publication 800-37</citation>
+      </ref>
+      <ref id="ref070">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-39">NIST Special Publication 800-39</citation>
+      </ref>
+      <ref id="ref071">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-40">NIST Special Publication 800-40</citation>
+      </ref>
+      <ref id="ref072">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-41">NIST Special Publication 800-41</citation>
+      </ref>
+      <ref id="ref073">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-45">NIST Special Publication 800-45</citation>
+      </ref>
+      <ref id="ref074">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-46">NIST Special Publication 800-46</citation>
+      </ref>
+      <ref id="ref075">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-47">NIST Special Publication 800-47</citation>
+      </ref>
+      <ref id="ref076">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-48">NIST Special Publication 800-48</citation>
+      </ref>
+      <ref id="ref077">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-50">NIST Special Publication 800-50</citation>
+      </ref>
+      <ref id="ref078">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-52">NIST Special Publication 800-52</citation>
+      </ref>
+      <ref id="ref079">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-53">NIST Special Publication 800-53</citation>
+      </ref>
+      <ref id="ref080">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-53A">NIST Special Publication 800-53A</citation>
+      </ref>
+      <ref id="ref081">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-55">NIST Special Publication 800-55</citation>
+      </ref>
+      <ref id="ref082">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-56">NIST Special Publication 800-56</citation>
+      </ref>
+      <ref id="ref083">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-57">NIST Special Publication 800-57</citation>
+      </ref>
+      <ref id="ref084">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-58">NIST Special Publication 800-58</citation>
+      </ref>
+      <ref id="ref085">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-60">NIST Special Publication 800-60</citation>
+      </ref>
+      <ref id="ref086">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-61">NIST Special Publication 800-61</citation>
+      </ref>
+      <ref id="ref087">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-63">NIST Special Publication 800-63</citation>
+      </ref>
+      <ref id="ref088">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-64">NIST Special Publication 800-64</citation>
+      </ref>
+      <ref id="ref089">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-65">NIST Special Publication 800-65</citation>
+      </ref>
+      <ref id="ref090">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-70">NIST Special Publication 800-70</citation>
+      </ref>
+      <ref id="ref091">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-73">NIST Special Publication 800-73</citation>
+      </ref>
+      <ref id="ref092">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-76">NIST Special Publication 800-76</citation>
+      </ref>
+      <ref id="ref093">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-77">NIST Special Publication 800-77</citation>
+      </ref>
+      <ref id="ref094">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-78">NIST Special Publication 800-78</citation>
+      </ref>
+      <ref id="ref095">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-81">NIST Special Publication 800-81</citation>
+      </ref>
+      <ref id="ref096">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-83">NIST Special Publication 800-83</citation>
+      </ref>
+      <ref id="ref097">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-84">NIST Special Publication 800-84</citation>
+      </ref>
+      <ref id="ref098">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-88">NIST Special Publication 800-88</citation>
+      </ref>
+      <ref id="ref099">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-92">NIST Special Publication 800-92</citation>
+      </ref>
+      <ref id="ref100">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-94">NIST Special Publication 800-94</citation>
+      </ref>
+      <ref id="ref101">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-95">NIST Special Publication 800-95</citation>
+      </ref>
+      <ref id="ref102">
+         <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-97">NIST Special Publication 800-97</citation>
+      </ref>
+      <ref id="ref103">
+         <citation href="http://www.cnss.gov/Assets/pdf/nstissi_7003.pdf">NSTISSI No. 7003</citation>
+      </ref>
+      <ref id="ref104">
+         <citation href="http://www.whitehouse.gov/omb/circulars_a130_a130trans4">OMB Circular A-130</citation>
+      </ref>
+      <ref id="ref105">
+         <citation href="http://www.whitehouse.gov/omb/memoranda_m02-01">OMB Memorandum 02-01</citation>
+      </ref>
+      <ref id="ref106">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy04/m04-04.pdf">OMB Memorandum 04-04</citation>
+      </ref>
+      <ref id="ref107">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2005/m05-24.pdf">OMB Memorandum 05-24</citation>
+      </ref>
+      <ref id="ref108">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2006/m06-16.pdf">OMB Memorandum 06-16</citation>
+      </ref>
+      <ref id="ref109">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-11.pdf">OMB Memorandum 07-11</citation>
+      </ref>
+      <ref id="ref110">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2007/m07-18.pdf">OMB Memorandum 07-18</citation>
+      </ref>
+      <ref id="ref111">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-22.pdf">OMB Memorandum 08-22</citation>
+      </ref>
+      <ref id="ref112">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/assets/omb/memoranda/fy2008/m08-23.pdf">OMB Memorandum 08-23</citation>
+      </ref>
+      <ref id="ref113">
+         <citation>OMB Memorandum 10-06-2011</citation>
+      </ref>
+      <ref id="ref114">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-11.pdf">OMB Memorandum 11-11</citation>
+      </ref>
+      <ref id="ref115">
+         <citation href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/2011/m11-33.pdf">OMB Memorandum 11-33</citation>
+      </ref>
+      <ref id="ref116">
+         <citation>Personal Identity Verification (PIV) in Enterprise Physical Access Control System (E-PACS)</citation>
+      </ref>
+      <ref id="ref117">
+         <citation href="http://www.us-cert.gov/ncas/alerts">US-CERT Technical Cyber Security Alerts</citation>
+      </ref>
+   </ref-list>
+   </back>   
 </catalog>

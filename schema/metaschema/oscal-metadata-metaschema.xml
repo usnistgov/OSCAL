@@ -23,7 +23,6 @@
       <field      named="version"/>
       <fields     named="doc-id"/>
       <fields     named="prop"/>
-      <assemblies named="hlink"/>
       <assemblies named="resource"/>
       <assemblies named="role"/>
       <assemblies named="party"/>
@@ -336,11 +335,15 @@
   </define-assembly>
   
   <define-flag name="href" datatype="anyURI">
-    <formal-name>Hypertext reference</formal-name>
-    <description>A relative or absolute URI indicating a resource available on the Internet.</description>
+    <formal-name>hypertext reference</formal-name>
+    <description>A link to a document or document fragment (actual, nominal or projected)</description>
+    <remarks>
+      <p>Note in particular that <code>href</code> targets include elements (locations) in
+        representations of documents that exist only by virtue of dynamic application, such as (for
+        example) the results of profile resolution.</p>
+    </remarks>
   </define-flag>
-
-
+  
   <define-assembly name="extra-meta">
     <formal-name>Extra metadata</formal-name>
     <description>Container for (system-defined) metadata</description>

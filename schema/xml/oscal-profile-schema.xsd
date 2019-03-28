@@ -18,7 +18,6 @@
             <xs:element minOccurs="0" ref="oscal-profile:version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:doc-id"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:hlink"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:resource"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:role"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:party"/>
@@ -27,14 +26,6 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="author">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true"/>
-   </xs:element>
    <xs:element name="publication-date">
       <xs:annotation>
          <xs:documentation>
@@ -42,26 +33,6 @@
          </xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
-   </xs:element>
-   <xs:element name="version">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="iso-date" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="doc-id">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string"/>
-      </xs:complexType>
    </xs:element>
    <xs:element name="party">
       <xs:annotation>
@@ -137,22 +108,6 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:attribute name="type" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hlink">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-profile:title"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:hash"/>
-         </xs:sequence>
-         <xs:attribute name="href" type="xs:anyURI" use="required"/>
-         <xs:attribute name="rel" type="xs:NCName"/>
-         <xs:attribute name="media-type" type="xs:string"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="person-name">
@@ -259,49 +214,6 @@
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
-   <xs:element name="notes">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="resource">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-profile:title"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:author"/>
-            <xs:element minOccurs="0" ref="oscal-profile:publication-date"/>
-            <xs:element minOccurs="0" ref="oscal-profile:version"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:doc-id"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:hlink"/>
-            <xs:element minOccurs="0" ref="oscal-profile:notes"/>
-         </xs:sequence>
-         <xs:attribute name="type" type="xs:string"/>
-         <xs:attribute name="media-type" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hash">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="algorithm" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="role">
       <xs:annotation>
          <xs:documentation>
@@ -358,6 +270,192 @@
       <xs:complexType mixed="true">
          <xs:attribute name="term" type="xs:string"/>
          <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="resource">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-profile:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:author"/>
+            <xs:element minOccurs="0" ref="oscal-profile:format"/>
+            <xs:element minOccurs="0" ref="oscal-profile:description"/>
+            <xs:element minOccurs="0" ref="oscal-profile:date"/>
+            <xs:element minOccurs="0" ref="oscal-profile:version"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:doc-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:hlink"/>
+               <xs:element minOccurs="0" ref="oscal-profile:base64"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal-profile:notes"/>
+         </xs:sequence>
+         <xs:attribute name="rel" type="xs:string"/>
+         <xs:attribute name="media-type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="author">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="doc-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="notes">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hlink">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-profile:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:hash"/>
+         </xs:sequence>
+         <xs:attribute name="href" type="xs:anyURI" use="required"/>
+         <xs:attribute name="media-type" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hash">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="algorithm" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="description">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="version">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="iso-date" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="format">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="date">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="iso-date" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="base64">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="filename" type="xs:string"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ref-list">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-profile:title"/>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:ref"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:ref-list"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ref">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:citation"/>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+         <xs:attribute name="id" type="xs:ID"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="citation">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-profile:everything-inline"/>
+         <xs:attribute name="id" type="xs:ID"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="link">
+      <xs:annotation>
+         <xs:documentation>
+            <b/>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-profile:everything-inline"/>
+         <xs:attribute name="href" type="xs:anyURI"/>
+         <xs:attribute name="rel" type="xs:NCName"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="title">
@@ -496,58 +594,6 @@
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID"/>
          <xs:attribute name="class" type="xs:string"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="link">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-profile:everything-inline"/>
-         <xs:attribute name="href" type="xs:anyURI"/>
-         <xs:attribute name="rel" type="xs:NCName"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="references">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:ref"/>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:ID"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="ref">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:citation"/>
-            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:ID"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="citation">
-      <xs:annotation>
-         <xs:documentation>
-            <b/>
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-profile:everything-inline"/>
-         <xs:attribute name="id" type="xs:ID"/>
-         <xs:attribute name="href" type="xs:anyURI"/>
       </xs:complexType>
    </xs:element>
    <xs:element name="profile">
@@ -789,7 +835,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:part"/>
-            <xs:element minOccurs="0" ref="oscal-profile:references"/>
+            <xs:element minOccurs="0" ref="oscal-profile:ref-list"/>
          </xs:sequence>
          <xs:attribute name="position" type="xs:string"/>
       </xs:complexType>

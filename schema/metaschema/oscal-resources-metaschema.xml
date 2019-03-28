@@ -14,18 +14,19 @@
 	xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
 	root="assets">
 
-	<schema-name>OSCAL Assets Metaschema Module</schema-name>
-	<short-name>oscal-assets</short-name>
-	<namespace>urn:OSCAL-assets-metaschema</namespace>
+	<schema-name>OSCAL Resources Metaschema Module</schema-name>
+	<short-name>oscal-resources</short-name>
+	<namespace>urn:OSCAL-resources-metaschema</namespace>
 
+<!-- A top-level element 'assets' is declared, but schemas using this module may
+     not use it, instead calling the 'ref-list' or 'resource' objects directly.	-->
 	<define-assembly name="assets">
 		<flag name="id" datatype="ID"/>
 		<formal-name>Assets</formal-name>
 		<description>References, resources and attachments</description>
 		<model>
+			<assembly   named="ref-list"/>
 			<assemblies named="resource"/>
-			<assemblies named="attachment"/>
-			<assemblies named="ref"/>
 		</model>
 	</define-assembly>
 	
@@ -40,13 +41,14 @@
 				such as its metaschema or documentation. It may offer a (persistent) link to a
 				<q>best available</q> version, or to an outdated version, as indicated by its
 				<code>rel</code>.</p>
-			<p>In back matter or within controls, a resource may be an attachment or any external document.</p>
+			<p>In back matter or within sections, a resource may be an attachment or any external document.</p>
 			<p>The <code>rel</code> flag should be used to indicate the relation of the resource to the document
 				referencing it, such as <q>catalog</q>, <q>baseline</q>, <q>metaschema</q> or <q>attachment</q>.</p>
 		</remarks>
 		<model>
 			<field    named="title"/>
 			<fields   named="author"/>
+			<field    named="format"/>
 			<assembly named="description" />
 			<field    named="date"/>
 			<field    named="version"/>
@@ -56,9 +58,10 @@
 			  <assemblies named="hlink"/>
 			  <field      named="base64" />
 			</choice>
-			<assembly   named="notes"/>
+			<assembly named="notes"/>
 		</model>
 	</define-assembly>
+	
 	
 	<define-field name="author" group-as="authors">
 		<formal-name>Author</formal-name>
@@ -66,11 +69,6 @@
 		<remarks><p>Note this information may be duplicative of information given in a <code>party</code>
 			element with appropriate <code>role-id</code> flags, along with more a more complete structured
 			listing. This element provides a value for display as well as an additional point of comparison.</p></remarks>
-	</define-field>
-	
-	<define-field name="publication-date">
-		<formal-name>Publication date</formal-name>
-		<description>The official date of publication</description>
 	</define-field>
 	
 	<define-field name="doc-id" group-as="document-ids">
@@ -101,7 +99,6 @@
 	
 	<define-assembly name="hlink" group-as="hashed-links">
 		<flag name="href" datatype="anyURI" required="yes"/>
-		<flag name="rel"  datatype="NCName"/>
 		<flag name="media-type"/>
 		<formal-name>Hashed link</formal-name>
 		<description>A pointer to an external document with optional hash for verification</description>
@@ -157,46 +154,6 @@
 		<remarks><p>Extra constraints, expressed as validation rules, may be applied to items based on the assigned <code>class</code>.</p></remarks>
 	</define-flag>
 	
-	<define-assembly name="ref" group-as="refs">
-		<flag name="id" datatype="ID"/>
-		<formal-name>Reference</formal-name>
-		<description>
-			A reference, with one or more citations to standards, related documents, or other
-			resources
-		</description>
-		<model>
-			<fields named="citation"/>
-			<prose/>
-			<any/>
-		</model>
-	</define-assembly>
-	
-	<define-field as="mixed" group-as="citations" name="citation">
-		<flag name="id" datatype="ID"/>
-		<flag name="href" datatype="anyURI"/>
-		<formal-name>Citation</formal-name>
-		<description>Citation of a resource</description>
-		<remarks>
-			<p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
-				matches with bibliograpical databases, it is recommended a canonical
-				identifier such as a DOI be provided for any citation.</p>
-		</remarks>
-	</define-field>
-	
-	<define-assembly name="attachment" group-as="attachments">
-		<flag name="id" datatype="ID"/>
-		<formal-name>Attachments</formal-name>
-		<description>.</description>
-		<model>
-			<field named="title" />
-			<assembly named="description" />
-			<field named="format" />
-			<field named="date" />
-			<field named="version" />
-			<field named="attachment-type" />
-			<field named="base64" />
-		</model>
-	</define-assembly>
 	
 	<define-field name="title" as="mixed">
 		<formal-name>Title</formal-name>
@@ -238,16 +195,12 @@
 	</define-flag>
 	
 	<define-field name="format" as="string">
-		<formal-name>Attachment Format</formal-name>
-		<description></description>
+		<formal-name>Resource or attachment Format</formal-name>
+		<description>For use when no mime-type is available or additional information is required.</description>
 	</define-field>
 	
 	<define-field name="date" as="string">
-		<formal-name>Date</formal-name>
-		<description></description>
-	</define-field>
-	
-	<define-field name="attachment-type" as="string">
+		<flag name="iso-date"/>
 		<formal-name>Date</formal-name>
 		<description></description>
 	</define-field>
@@ -263,4 +216,64 @@
 		<description>Name of the file before it was converted to Base-64. This is the name that will be assigned to the file when converted back to binary.</description>
 	</define-flag>
 		
+	<define-assembly name="ref-list" group-as="reference-lists">
+		<flag name="id" datatype="ID"/>
+		<formal-name>Reference</formal-name>
+		<description>A list of references to external resources. This object may be nested
+			for reference lists composed of reference lists.
+		</description>
+		<model>
+			<field named="title"/>
+			<prose/>
+			<fields named="link"/>
+			<assemblies named="ref"/>
+			<assemblies named="ref-list"/>
+		</model>
+		
+	</define-assembly>
+	
+	<define-assembly name="ref" group-as="references">
+		<flag name="id" datatype="ID"/>
+		<formal-name>Reference</formal-name>
+		<description> A reference, with one or more citations to standards, related documents, or
+			other resources </description>
+		<model>
+			<fields named="citation"/>
+			<prose/>
+			<any/>
+		</model>
+	</define-assembly>
+	
+	<define-field group-as="citations" name="citation" as="mixed">
+		<flag name="id" datatype="ID"/>
+		<flag name="href" datatype="anyURI"/>
+		<formal-name>Citation</formal-name>
+		<description>Citation of a resource</description>
+		<remarks>
+			<p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
+				matches with bibliograpical databases, it is recommended a canonical
+				identifier such as a DOI be provided for any citation.</p>
+		</remarks>
+		<example>
+			<o:ref xmlns:o="urn:OSCAL-resources-metaschema">
+				<o:citation>Here is a work cited</o:citation>
+				<o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
+			</o:ref>
+		</example>
+	</define-field>
+	
+	<define-field name="link" group-as="links" as="mixed">
+		<flag name="href" datatype="anyURI"/>
+		<flag name="rel" datatype="NCName"/>
+		<formal-name>Link</formal-name>
+		<description>
+			A line or paragraph with a hypertext link
+		</description>
+		<remarks>
+			<p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
+				element.</p>
+		</remarks>
+	</define-field>
+	
+	
 </METASCHEMA>

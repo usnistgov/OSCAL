@@ -19,7 +19,8 @@
   </remarks>
   
   <import href="oscal-metadata-metaschema.xml"/>
-
+  <import href="oscal-resources-metaschema.xml"/>
+  
   <define-assembly name="catalog" group-as="control-catalog">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="model-version" required="yes"/>
@@ -32,13 +33,12 @@
       <field named="title" required="yes"/>
       <assembly named="metadata"/>
       <!--<field named="declarations"/>-->
-      <assembly named="references"/>
       <assemblies named="section"/>
       <choice>
         <assemblies named="group"/>
         <assemblies named="control"/>
       </choice>
-      <any/>
+      <assembly named="back"/>
     </model>
     <example>
       <description>A small catalog with a single control</description>
@@ -50,6 +50,18 @@
       </catalog>
     </example>
   </define-assembly>
+
+  <define-assembly name="back">
+    <flag name="id" datatype="ID"/>
+    <formal-name>Assets</formal-name>
+    <description>References, resources and attachments</description>
+    <model>
+      <assembly   named="ref-list"/>
+      <assemblies named="resource"/>
+    </model>
+  </define-assembly>
+  
+  
 
   <!--<define-field name="declarations" as="empty">
     <flag name="href" datatype="anyURI"/>
@@ -66,7 +78,7 @@
       <field named="title" required="yes"/>
       <prose/>
       <assemblies named="section"/>
-      <assembly named="references"/>
+      <assembly named="ref-list"/>
       <any/>
     </model>
   </define-assembly>
@@ -88,7 +100,7 @@
         <assemblies named="group"/>
         <assemblies named="control"/>
       </choice>
-      <assembly named="references"/>
+      <assembly named="ref-list"/>
       <any/>
     </model>
     <example>
@@ -118,7 +130,7 @@
       <fields named="link"/>
       <assemblies named="part"/>
       <assemblies named="subcontrol" address="id"/>
-      <assembly named="references"/>
+      <assembly named="ref-list"/>
       <any/>
     </model>
     <example>
@@ -127,7 +139,6 @@
       </control>
     </example>
   </define-assembly>
-
 
   <define-assembly name="subcontrol" group-as="subcontrols" address="id">
     <flag name="id" datatype="ID" required="yes"/>
@@ -140,7 +151,7 @@
       <fields named="prop"/>
       <fields named="link"/>
       <assemblies named="part"/>
-      <assembly named="references"/>
+      <assembly named="ref-list"/>
       <any/>
     </model>
   </define-assembly>
@@ -313,64 +324,6 @@
     </model>
   </define-assembly>
 
-  <define-field name="link" group-as="links" as="mixed">
-    <flag name="href" datatype="anyURI"/>
-    <flag name="rel" datatype="NCName"/>
-    <formal-name>Link</formal-name>
-    <description>
-        A line or paragraph with a hypertext link
-      </description>
-    <remarks>
-      <p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
-        element.</p>
-    </remarks>
-  </define-field>
-
-  <define-assembly name="references">
-    <flag name="id" datatype="ID"/>
-    <formal-name>References</formal-name>
-    <description>
-        A group of reference descriptions
-      </description>
-    <model>
-      <fields named="link"/>
-      <assemblies  named="ref"/>
-      <any/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="ref" group-as="refs">
-    <flag name="id" datatype="ID"/>
-    <formal-name>Reference</formal-name>
-    <description>
-        A reference, with one or more citations to standards, related documents, or other
-          resources
-      </description>
-    <model>
-      <fields named="citation"/>
-      <prose/>
-      <any/>
-    </model>
-  </define-assembly>
-
-  <define-field as="mixed" group-as="citations" name="citation">
-    <flag name="id" datatype="ID"/>
-    <flag name="href" datatype="anyURI"/>
-    <formal-name>Citation</formal-name>
-    <description>Citation of a resource</description>
-    <remarks>
-      <p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
-        matches with bibliograpical databases, it is recommended a canonical
-      identifier such as a DOI be provided for any citation.</p>
-    </remarks>
-    <example>
-      <o:ref>
-        <o:citation>Here is a work cited</o:citation>
-        <o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
-      </o:ref>
-    </example>
-  </define-field>
-
   <define-flag name="id" datatype="ID">
     <formal-name>ID / identifier</formal-name>
     <description>Unique identifier</description>
@@ -391,25 +344,9 @@
     </remarks>
   </define-flag>
 
-  <define-flag name="href" datatype="anyURI">
-    <formal-name>hypertext reference</formal-name>
-    <description>A link to a document or document fragment (actual, nominal or projected)</description>
-    <remarks>
-      <p>Note in particular that <code>href</code> targets include elements (locations) in
-        representations of documents that exist only by virtue of dynamic application, such as (for
-        example) the results of profile resolution.</p>
-    </remarks>
-  </define-flag>
-
-
   <define-flag name="test" datatype="string">
     <formal-name>Constraint test</formal-name>
     <description>A formal (executable) expression of a constraint</description>
-  </define-flag>
-
-  <define-flag name="rel" datatype="NCName">
-    <formal-name>Relation</formal-name>
-    <description>Purpose of the link</description>
   </define-flag>
 
   <define-flag name="how-many" datatype="string">
