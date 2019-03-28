@@ -192,7 +192,7 @@ a:hover { text-decoration: underline }
          </p>
          <xsl:sequence select="$contents"/>
          <p>
-            <xsl:text>&lt;</xsl:text>
+            <xsl:text>&lt;/</xsl:text>
             <xsl:value-of select="local-name()"/>
             <xsl:text>></xsl:text>
          </p>
