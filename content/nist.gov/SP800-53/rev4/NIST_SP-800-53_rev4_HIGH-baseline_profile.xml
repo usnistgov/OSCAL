@@ -2,10 +2,10 @@
         runtime parameter settings: $baseline='HIGH'-->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          id="uuid-599a7728-a154-4035-a556-1f03223120eb">
-   <title>SP800-53 HIGH BASELINE IMPACT</title>
+   <title>SP800-53 HIGH IMPACT BASELINE</title>
 
    <metadata>
-      <title>NIST Special Publication 800-53 Revision 4 HIGH BASELINE</title>
+      <title>NIST Special Publication 800-53 Revision 4 HIGH IMPACT BASELINE</title>
       <publication-date>September 2018</publication-date>
       
       <hlink rel="self" media-type="application/xml" href="...">
