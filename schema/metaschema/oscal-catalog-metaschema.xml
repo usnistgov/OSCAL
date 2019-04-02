@@ -336,7 +336,7 @@
     </example>
   </define-flag>
 
-  <define-flag name="class" datatype="NMTOKEN">
+  <define-flag name="class" datatype="NMTOKENS">
     <formal-name>Class</formal-name>
     <description>Identifies the property or object within the control; a semantic hint</description>
     <remarks>
