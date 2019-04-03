@@ -183,6 +183,9 @@
     <remarks class="wap">
       <p>Excellent remarks!</p>
     </remarks>
+    <example>
+      <acquired-model xmlns="urn:fakeup">okay?</acquired-model>
+    </example>
   </augment>
   
 </METASCHEMA>

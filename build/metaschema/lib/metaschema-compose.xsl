@@ -59,7 +59,7 @@
     <xsl:template match="METASCHEMA" mode="acquire">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <xsl:attribute name="base" select="document-uri(/)"/>
+            <xsl:attribute name="module" select="document-uri(/)"/>
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
@@ -101,7 +101,7 @@
              | define-flag[    . is key('definition-by-name',@name)[last()]] 
              | define-assembly[. is key('definition-by-name',@name)[last()]]">
         <xsl:if test="$verbose">
-            <xsl:message expand-text="true">KEEPING definition for '{ @name }' { replace(local-name(),'^define-','')} from { ancestor::METASCHEMA[1]/@base }</xsl:message>
+            <xsl:message expand-text="true">KEEPING definition for '{ @name }' { replace(local-name(),'^define-','')} from { ancestor::METASCHEMA[1]/@module }</xsl:message>
         </xsl:if>
         <xsl:copy-of select="."/>
     </xsl:template>
@@ -110,7 +110,7 @@
     <xsl:template mode="keep-eligible"
         match="define-field | define-flag | define-assembly">
         <xsl:if test="$verbose">
-            <xsl:message expand-text="true">TOSSING definition for '{ @name }' { replace(local-name(),'^define-','')}  from { ancestor::METASCHEMA[1]/@base }</xsl:message>
+            <xsl:message expand-text="true">TOSSING definition for '{ @name }' { replace(local-name(),'^define-','')}  from { ancestor::METASCHEMA[1]/@module }</xsl:message>
         </xsl:if>
     </xsl:template>
         
@@ -161,19 +161,26 @@
                     <xsl:message expand-text="true">Formal name override for  { replace(local-name(),'^define-','')} '{ @name }': using "{ $me-and-mine[last()]/formal-name }"</xsl:message>
                 </xsl:if>
                 <xsl:copy-of select="$me-and-mine[last()]/description"/>
-                <xsl:for-each select="$me-and-mine/remarks, $me-and-mine/example">
+                <xsl:apply-templates mode="#current" select="$me-and-mine/remarks">
                     <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
-                    <xsl:copy>
-                        <xsl:call-template name="mark-module"/>
-                        <xsl:copy-of select="@*"/>
-                        <xsl:apply-templates mode="#current"/>
-                    </xsl:copy>
-                </xsl:for-each>
+                </xsl:apply-templates>
+                <xsl:copy-of select="model"/>
+                <xsl:apply-templates mode="#current" select="$me-and-mine/example">
+                    <xsl:sort select="position()" order="descending"/><!-- reversing the order -->
+                </xsl:apply-templates>
             </xsl:copy>
         </xsl:if>
         <xsl:if test="$verbose and not(@name = $keepers)">
-            <xsl:message expand-text="true">DISCARDING definition for '{ @name }' { replace(local-name(),'^define-','')} from { ancestor::METASCHEMA[1]/@base } (not being used)</xsl:message>
+            <xsl:message expand-text="true">DISCARDING definition for '{ @name }' { replace(local-name(),'^define-','')} from { ancestor::METASCHEMA[1]/@module } (not being used)</xsl:message>
         </xsl:if>
+    </xsl:template>
+    
+    <xsl:template mode="digest" match="augment/remarks | augment/example">
+        <xsl:copy>
+            <xsl:call-template name="mark-module"/>
+            <xsl:copy-of select="@*"/>
+            <xsl:apply-templates mode="#current"/>
+        </xsl:copy>
     </xsl:template>
     
     <xsl:template priority="10" mode="digest" match="example/description | example/remarks">
@@ -190,7 +197,7 @@
     
     
     <xsl:template name="mark-module">
-        <xsl:copy-of select="ancestor-or-self::METASCHEMA/@base"/>
+        <xsl:copy-of select="ancestor-or-self::METASCHEMA/@module"/>
     </xsl:template>
     
         

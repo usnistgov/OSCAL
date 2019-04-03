@@ -32,7 +32,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
 
         <xs:element name="model" minOccurs="0">
           <xs:complexType>
@@ -63,7 +63,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
       <xs:attribute name="as">
@@ -85,7 +85,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
       <xs:attribute name="datatype" use="required" type="xs:NCName"/>
