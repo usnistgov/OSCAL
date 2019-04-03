@@ -17,15 +17,17 @@
     
     <xsl:strip-space elements="METASCHEMA define-flag define-field define-assembly remarks model choice"/>
     
-    <xsl:template match="/">
-        <xsl:copy-of select="$applicable"/>
-    </xsl:template>
+    <xsl:param name="verbose" select="true()"/>
     
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
     <xsl:variable name="target-ns" select="/METASCHEMA/namespace/string()"/>
     
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
+    
+    <xsl:template match="/">
+        <xsl:sequence select="$applicable"/>
+    </xsl:template>
     
 <!-- pull all schemas together
      traverse from top level
@@ -94,8 +96,6 @@
 
     <xsl:mode name="keep-eligible" on-no-match="shallow-copy"/>
     
-    <xsl:param name="verbose" select="true()"/>
-    
     <xsl:template mode="keep-eligible" priority="10"
         match="define-field[   . is key('definition-by-name',@name)[last()]]
              | define-flag[    . is key('definition-by-name',@name)[last()]] 
@@ -117,9 +117,9 @@
     <!-- ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== -->
     <!-- Pass Three: filter definitions (1) - keep definitions actually used, with all docs
           (i.e. drops definitions 'never picked for a team') -->
-    
-    <!-- also consolidates documentation - definitions that are kept, are also annotated
-           (base metaschema, applicable 'augment' elements i.e. those belongs to ancestor metaschemas) -->
+    <!-- Also consolidates documentation - definitions that are kept, are also annotated
+           with applicable 'augment' elements i.e. those belonging to ancestor metaschemas
+           in the import hierarchy. -->
     
     <xsl:variable name="applicable" as="document-node()">
         <xsl:variable name="all-references" as="xs:string*">
@@ -195,13 +195,10 @@
         </xsl:element>
     </xsl:template>
     
-    
     <xsl:template name="mark-module">
         <xsl:copy-of select="ancestor-or-self::METASCHEMA/@module"/>
     </xsl:template>
     
-        
-
 <!-- Mode 'collect references' collects a set of strings naming definitions
      we actually need, by traversing the definitions tree from the root;
      recursive models are accounted for -->

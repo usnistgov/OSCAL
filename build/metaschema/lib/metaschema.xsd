@@ -24,6 +24,7 @@
         </xs:choice>
       </xs:sequence>
       <xs:attribute name="root" use="required" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-assembly">
@@ -55,6 +56,7 @@
       <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-field">
@@ -78,6 +80,7 @@
       </xs:attribute>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-flag">
@@ -90,6 +93,7 @@
       </xs:sequence>
       <xs:attribute name="datatype" use="required" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
@@ -110,7 +114,8 @@
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="m:p"/>
       </xs:sequence>
-      <xs:attribute name="class" type="xs:NMTOKENS"/>
+      <xs:attribute name="class"  type="xs:NMTOKENS"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="title">
@@ -239,6 +244,7 @@
     </xs:sequence>
       <xs:attribute name="href" type="xs:anyURI"/>
       <xs:attribute name="path" type="xs:string"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="augment">
