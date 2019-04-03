@@ -15,11 +15,12 @@
         <xs:element ref="m:short-name"/>
         <xs:element ref="m:namespace" minOccurs="1"/>
         <xs:element ref="m:remarks" minOccurs="0"/>
-        <xs:element ref="m:import"  minOccurs="0" maxOccurs="unbounded"/>
         <xs:choice maxOccurs="unbounded">
+          <xs:element ref="m:import"/>
           <xs:element ref="m:define-assembly"/>
           <xs:element ref="m:define-field"/>
           <xs:element ref="m:define-flag"/>
+          <xs:element ref="m:augment"/>
         </xs:choice>
       </xs:sequence>
       <xs:attribute name="root" use="required" type="xs:NCName"/>
@@ -77,7 +78,6 @@
       </xs:attribute>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="acquire-from" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-flag">
@@ -90,7 +90,6 @@
       </xs:sequence>
       <xs:attribute name="datatype" use="required" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="acquire-from" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
@@ -111,6 +110,7 @@
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="m:p"/>
       </xs:sequence>
+      <xs:attribute name="class" type="xs:NMTOKENS"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="title">
@@ -239,9 +239,17 @@
     </xs:sequence>
       <xs:attribute name="href" type="xs:anyURI"/>
       <xs:attribute name="path" type="xs:string"/>
-      
-      
     </xs:complexType>
   </xs:element>
-  
+  <xs:element name="augment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:formal-name"/>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

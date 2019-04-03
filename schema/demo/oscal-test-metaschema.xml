@@ -177,4 +177,12 @@
   <define-flag name="some_string"/>
   -->
   
+  <augment name="acquired-model">
+    <formal-name>New name</formal-name>
+    <description>Acquired model, but modified</description>
+    <remarks class="wap">
+      <p>Excellent remarks!</p>
+    </remarks>
+  </augment>
+  
 </METASCHEMA>

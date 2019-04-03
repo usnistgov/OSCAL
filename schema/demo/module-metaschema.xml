@@ -30,7 +30,7 @@
   </define-assembly>
   
   <define-field name="acquired-field" group-as="acquired-fields" as="mixed">
-    <formal-name>Acquired Model</formal-name>
+    <formal-name>Acquired Field</formal-name>
     <description>A string field, with mixed content</description>
     <remarks>
       <p>Defined in its own module!</p>
