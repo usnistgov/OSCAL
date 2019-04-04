@@ -21,6 +21,8 @@
                  module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                  name="prop"
                  group-as="properties">
+      <flag name="id" datatype="ID"/>
+      <flag name="class" required="yes"/>
       <formal-name>Property</formal-name>
       <description>A value with a name, attributed to the containing control, subcontrol, part,
           or group.</description>
@@ -40,6 +42,9 @@
                     group-as="parameters"
                     name="param"
                     address="id">
+      <flag name="id" datatype="ID" required="yes"/>
+      <flag name="class"/>
+      <flag name="depends-on" datatype="IDREF"/>
       <formal-name>Parameter</formal-name>
       <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
       <remarks>
@@ -100,6 +105,7 @@
                  name="desc"
                  group-as="descriptions"
                  as="mixed">
+      <flag name="id" datatype="ID"/>
       <formal-name>Parameter description</formal-name>
       <description>Indicates and explains the purpose and use of a parameter</description>
    </define-field>
@@ -107,6 +113,7 @@
                  module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                  name="constraint"
                  group-as="constraints">
+      <flag name="test"/>
       <formal-name>Constraint</formal-name>
       <description>A formal or informal expression of a constraint or test</description>
    </define-field>
@@ -135,6 +142,7 @@
    <define-assembly xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
                     module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="select">
+      <flag name="how-many"/>
       <formal-name>Selection</formal-name>
       <description>Presenting a choice among alternatives</description>
       <model>
@@ -154,6 +162,8 @@
                     module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="part"
                     group-as="parts">
+      <flag name="id" datatype="ID"/>
+      <flag name="class"/>
       <formal-name>Part</formal-name>
       <description>A partition or component of a control, subcontrol or part</description>
       <remarks>
@@ -218,6 +228,7 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-profile-metaschema.xml"
                     name="profile"
                     group-as="profiles">
+      <flag name="id" datatype="ID" required="yes"/>
       <formal-name>Profile</formal-name>
       <description>Each OSCAL profile is defined by a Profile element</description>
       <remarks>
@@ -234,6 +245,7 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-profile-metaschema.xml"
                     name="import"
                     group-as="imports">
+      <flag name="href" datatype="anyURI" required="yes"/>
       <formal-name>Import resource</formal-name>
       <description>An Import element designates a catalog, profile, or other resource to be
          included (referenced and potentially modified) by this profile.</description>
@@ -273,6 +285,11 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-profile-metaschema.xml"
                  name="combine"
                  as="empty">
+      <flag name="method">
+         <value>use-first</value>
+         <value>merge</value>
+         <value>keep</value>
+      </flag>
       <formal-name>Combination rule</formal-name>
       <description>A Combine element defines whether and how to combine multiple (competing)
         versions of the same control</description>
@@ -355,6 +372,9 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-profile-metaschema.xml"
                  name="all"
                  as="empty">
+      <flag name="with-subcontrols">
+         <value>yes</value>
+      </flag>
       <formal-name>Include all</formal-name>
       <description>Include all controls from the imported resource (catalog)</description>
       <remarks>
@@ -366,6 +386,16 @@
                  name="call"
                  group-as="id-selectors"
                  as="empty">
+      <flag name="control-id" datatype="NCName"/>
+      <flag name="subcontrol-id" datatype="NCName"/>
+      <flag name="with-control" datatype="NCName">
+         <value>no</value>
+         <value>yes</value>
+      </flag>
+      <flag name="with-subcontrols" datatype="NCName">
+         <value>no</value>
+         <value>yes</value>
+      </flag>
       <formal-name>Call (control or subcontrol)</formal-name>
       <description>Call a control or subcontrol by its ID</description>
       <remarks>
@@ -377,6 +407,20 @@
                  name="match"
                  group-as="pattern-selectors"
                  as="empty">
+      <flag name="pattern"/>
+      <flag name="order">
+         <value>keep</value>
+         <value>ascending</value>
+         <value>descending</value>
+      </flag>
+      <flag name="with-control" datatype="NCName">
+         <value>no</value>
+         <value>yes</value>
+      </flag>
+      <flag name="with-subcontrols" datatype="NCName">
+         <value>no</value>
+         <value>yes</value>
+      </flag>
       <formal-name>Match controls and subcontrols by identifier</formal-name>
       <description>Select controls by (regular expression) match on ID</description>
    </define-field>
@@ -400,6 +444,9 @@
                     group-as="param-settings"
                     name="set-param"
                     address="id">
+      <flag name="id" datatype="ID" required="yes"/>
+      <flag name="class"/>
+      <flag name="depends-on" datatype="IDREF"/>
       <formal-name>Parameter Setting</formal-name>
       <description> A parameter setting, to be propagated to points of insertion
       </description>
@@ -418,6 +465,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-profile-metaschema.xml"
                     name="alter"
                     group-as="alterations">
+      <flag name="control-id" datatype="NCName"/>
+      <flag name="subcontrol-id" datatype="NCName"/>
       <formal-name>Alteration</formal-name>
       <description>An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</description>
       <remarks>
@@ -434,6 +483,9 @@
                  as="empty"
                  name="remove"
                  group-as="removals">
+      <flag name="class-ref" datatype="NMTOKENS"/>
+      <flag name="id-ref" datatype="NCName"/>
+      <flag name="item-name" datatype="NMTOKENS"/>
       <formal-name>Removal</formal-name>
       <description>Specifies elements to be removed from a control or subcontrol, in resolution</description>
       <remarks>
@@ -444,6 +496,12 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-profile-metaschema.xml"
                     name="add"
                     group-as="additions">
+      <flag name="position">
+         <value>before</value>
+         <value>after</value>
+         <value>starting</value>
+         <value>ending</value>
+      </flag>
       <formal-name>Addition</formal-name>
       <description>Specifies contents to be added into controls or subcontrols, in resolution</description>
       <model>

@@ -156,6 +156,7 @@
             <xsl:copy>
                 <xsl:call-template name="mark-module"/>
                 <xsl:copy-of select="@*"/>
+                <xsl:copy-of select="flag"/>
                 <xsl:copy-of select="$me-and-mine[last()]/formal-name"/>
                 <xsl:if test="$verbose and ($me-and-mine/formal-name != $me-and-mine/formal-name)">
                     <xsl:message expand-text="true">Formal name override for  { replace(local-name(),'^define-','')} '{ @name }': using "{ $me-and-mine[last()]/formal-name }"</xsl:message>

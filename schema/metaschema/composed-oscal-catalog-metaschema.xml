@@ -38,6 +38,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                     name="party"
                     group-as="parties">
+      <flag name="id" datatype="ID"/>
+      <flag name="role-id"/>
       <formal-name>Party (organization or person)</formal-name>
       <description>A responsible entity, either singular (an organization or person) or collective (multiple persons)</description>
       <remarks>
@@ -88,12 +90,14 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                  name="person-id"
                  group-as="person-ids">
+      <flag name="type"/>
       <formal-name>Personal Identifier</formal-name>
       <description>An identifier for a person (such as an ORCID) using a designated scheme.</description>
    </define-field>
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                  name="org-id"
                  group-as="organization-ids">
+      <flag name="type"/>
       <formal-name>Organization Identifier</formal-name>
       <description>An identifier for an organization using a designated scheme.</description>
    </define-field>
@@ -180,6 +184,7 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                     name="role"
                     group-as="roles">
+      <flag name="id" datatype="ID" required="yes"/>
       <formal-name>Role</formal-name>
       <description>Defining a role to be assigned to a party or agent</description>
       <remarks>
@@ -206,6 +211,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                     name="meta-group"
                     group-as="metadata-groups">
+      <flag name="term"/>
+      <flag name="type"/>
       <formal-name>Metadata group</formal-name>
       <description>Custom- or application-defined annotated metadata.</description>
       <model>
@@ -217,6 +224,8 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                  name="meta"
                  group-as="metadata-fields">
+      <flag name="term"/>
+      <flag name="type"/>
       <formal-name>Metadata field value</formal-name>
       <description>Any customized or specialized metadata value.</description>
    </define-field>
@@ -235,6 +244,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                     name="resource"
                     group-as="resources">
+      <flag name="rel"/>
+      <flag name="media-type"/>
       <formal-name>Resource</formal-name>
       <description>A resource to inform or authenticate the present document, or to supplement it as an attachment</description>
       <remarks>
@@ -270,6 +281,7 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                  name="doc-id"
                  group-as="document-ids">
+      <flag name="type"/>
       <formal-name>Document Identifier</formal-name>
       <description>Any sort of document identifier, name, code, path or other indicator of where and how this document
 			may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <code>rel</code>, this value may point to <q>the same</q> or <q>another version</q> of the document.</description>
@@ -298,6 +310,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                     name="hlink"
                     group-as="hashed-links">
+      <flag name="href" datatype="anyURI" required="yes"/>
+      <flag name="media-type"/>
       <formal-name>Hashed link</formal-name>
       <description>A pointer to an external document with optional hash for verification</description>
       <remarks>
@@ -311,6 +325,7 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                  name="hash"
                  group-as="hashes">
+      <flag name="algorithm"/>
       <formal-name>Hash</formal-name>
       <description>A document hash or other value subject to cryptographic authentication</description>
       <remarks>
@@ -354,6 +369,7 @@
    </define-assembly>
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                  name="version">
+      <flag name="iso-date"/>
       <formal-name>version</formal-name>
       <description>Version information</description>
    </define-field>
@@ -375,12 +391,14 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                  name="date"
                  as="string">
+      <flag name="iso-date"/>
       <formal-name>Date</formal-name>
       <description/>
    </define-field>
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                  name="base64"
                  as="string">
+      <flag name="filename" datatype="string"/>
       <formal-name>Date</formal-name>
       <description/>
    </define-field>
@@ -393,6 +411,7 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                     name="ref-list"
                     group-as="reference-lists">
+      <flag name="id" datatype="ID"/>
       <formal-name>Reference</formal-name>
       <description>A list of references to external resources. This object may be nested
 			for reference lists composed of reference lists.
@@ -408,6 +427,7 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-resources-metaschema.xml"
                     name="ref"
                     group-as="references">
+      <flag name="id" datatype="ID"/>
       <formal-name>Reference</formal-name>
       <description> A reference, with one or more citations to standards, related documents, or
 			other resources </description>
@@ -421,6 +441,8 @@
                  group-as="citations"
                  name="citation"
                  as="mixed">
+      <flag name="id" datatype="ID"/>
+      <flag name="href" datatype="anyURI"/>
       <formal-name>Citation</formal-name>
       <description>Citation of a resource</description>
       <remarks>
@@ -437,6 +459,8 @@
                  name="link"
                  group-as="links"
                  as="mixed">
+      <flag name="href" datatype="anyURI"/>
+      <flag name="rel" datatype="NCName"/>
       <formal-name>Link</formal-name>
       <description>
 			A line or paragraph with a hypertext link
@@ -448,6 +472,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="catalog"
                     group-as="control-catalog">
+      <flag name="id" datatype="ID" required="yes"/>
+      <flag name="model-version" required="yes"/>
       <formal-name>Catalog</formal-name>
       <description>A collection of controls</description>
       <remarks>
@@ -478,6 +504,7 @@
    </define-assembly>
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="back">
+      <flag name="id" datatype="ID"/>
       <formal-name>Assets</formal-name>
       <description>References, resources and attachments</description>
       <model>
@@ -488,6 +515,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="section"
                     group-as="sections">
+      <flag name="id" datatype="ID"/>
+      <flag name="class"/>
       <formal-name>Section</formal-name>
       <description>Allows the inclusion of prose content within a Catalog.</description>
       <model>
@@ -501,6 +530,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="group"
                     group-as="groups">
+      <flag name="id" datatype="ID"/>
+      <flag name="class"/>
       <formal-name>Control Group</formal-name>
       <description>A group of controls, or of groups of controls.</description>
       <remarks>
@@ -531,6 +562,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="control"
                     group-as="controls">
+      <flag name="id" datatype="ID" required="yes"/>
+      <flag name="class"/>
       <formal-name>Control</formal-name>
       <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
       <remarks>
@@ -556,6 +589,8 @@
                     name="subcontrol"
                     group-as="subcontrols"
                     address="id">
+      <flag name="id" datatype="ID" required="yes"/>
+      <flag name="class"/>
       <formal-name>Sub-Control</formal-name>
       <description>A control extension or enhancement</description>
       <model>
@@ -577,6 +612,8 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                  name="prop"
                  group-as="properties">
+      <flag name="id" datatype="ID"/>
+      <flag name="class" required="yes"/>
       <formal-name>Property</formal-name>
       <description>A value with a name, attributed to the containing control, subcontrol, part,
           or group.</description>
@@ -595,6 +632,9 @@
                     group-as="parameters"
                     name="param"
                     address="id">
+      <flag name="id" datatype="ID" required="yes"/>
+      <flag name="class"/>
+      <flag name="depends-on" datatype="IDREF"/>
       <formal-name>Parameter</formal-name>
       <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>
       <remarks>
@@ -653,12 +693,14 @@
                  name="desc"
                  group-as="descriptions"
                  as="mixed">
+      <flag name="id" datatype="ID"/>
       <formal-name>Parameter description</formal-name>
       <description>Indicates and explains the purpose and use of a parameter</description>
    </define-field>
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                  name="constraint"
                  group-as="constraints">
+      <flag name="test"/>
       <formal-name>Constraint</formal-name>
       <description>A formal or informal expression of a constraint or test</description>
    </define-field>
@@ -684,6 +726,7 @@
    </define-field>
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="select">
+      <flag name="how-many"/>
       <formal-name>Selection</formal-name>
       <description>Presenting a choice among alternatives</description>
       <model>
@@ -701,6 +744,8 @@
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-catalog-metaschema.xml"
                     name="part"
                     group-as="parts">
+      <flag name="id" datatype="ID"/>
+      <flag name="class"/>
       <formal-name>Part</formal-name>
       <description>A partition or component of a control, subcontrol or part</description>
       <remarks>
