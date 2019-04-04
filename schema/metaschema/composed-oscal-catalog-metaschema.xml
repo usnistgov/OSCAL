@@ -65,7 +65,7 @@
          </field>
          <fields named="person-id"/>
          <fields named="org-id"/>
-         <assembly named="address"/>
+         <assemblies named="address"/>
          <fields named="email"/>
          <fields named="phone"/>
          <fields named="url"/>
@@ -80,7 +80,7 @@
          <field named="org-name"/>
          <field named="short-name"/>
          <fields named="org-id"/>
-         <assembly named="address"/>
+         <assemblies named="address"/>
          <fields named="email"/>
          <fields named="phone"/>
          <fields named="url"/>
@@ -125,7 +125,9 @@
       </remarks>
    </define-field>
    <define-assembly module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
-                    name="address">
+                    name="address"
+                    group-as="addresses">
+      <flag name="type"/>
       <formal-name>Address</formal-name>
       <description>A postal address</description>
       <model>
@@ -166,18 +168,21 @@
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                  name="email"
                  group-as="email-addresses">
+      <flag name="type"/>
       <formal-name>Email</formal-name>
       <description>Email address</description>
    </define-field>
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                  name="phone"
                  group-as="telephone-numbers">
+      <flag name="type"/>
       <formal-name>Telephone</formal-name>
       <description>Contact number by telephone</description>
    </define-field>
    <define-field module="file:/C:/Users/wap1/Documents/OSCAL/schema/metaschema/oscal-metadata-metaschema.xml"
                  name="url"
                  group-as="URLs">
+      <flag name="type"/>
       <formal-name>URL</formal-name>
       <description>URL for web site or Internet presence</description>
    </define-field>

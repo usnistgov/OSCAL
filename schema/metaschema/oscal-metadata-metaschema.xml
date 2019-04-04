@@ -80,8 +80,8 @@
 
   <define-flag name="type" datatype="string">
     <formal-name>Type</formal-name>
-    <description>Indicating the type of identifier or other data item.</description>
-    <remarks><p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up.</p></remarks>
+    <description>Indicating the type of identifier, address, email or other data item.</description>
+    <remarks><p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up. The values may be constrained to a locally defined list.</p></remarks>
   </define-flag>
 
   <define-field name="prop" group-as="properties">
@@ -126,13 +126,13 @@
       <field    named="org-name">
         <description>Affiliated organization</description>
       </field>
-      <fields   named="person-id"/>
-      <fields   named="org-id"/>
-      <assembly named="address"/>
-      <fields   named="email"/>
-      <fields   named="phone"/>
-      <fields   named="url"/>
-      <assembly named="notes"/>
+      <fields     named="person-id"/>
+      <fields     named="org-id"/>
+      <assemblies named="address"/>
+      <fields     named="email"/>
+      <fields     named="phone"/>
+      <fields     named="url"/>
+      <assembly   named="notes"/>
     </model>
   </define-assembly>
   
@@ -140,14 +140,14 @@
     <formal-name>Organization</formal-name>
     <description>An organization or legal entity (not a person), with contact information</description>
     <model>
-      <field    named="org-name"/>
-      <field    named="short-name"/>
-      <fields   named="org-id"/>
-      <assembly named="address"/>
-      <fields   named="email"/>
-      <fields   named="phone"/>
-      <fields   named="url"/>
-      <assembly named="notes"/>
+      <field      named="org-name"/>
+      <field      named="short-name"/>
+      <fields     named="org-id"/>
+      <assemblies named="address"/>
+      <fields     named="email"/>
+      <fields     named="phone"/>
+      <fields     named="url"/>
+      <assembly   named="notes"/>
     </model>
   </define-assembly>
   
@@ -212,7 +212,8 @@
     </remarks>
   </define-field>
 
-  <define-assembly name="address">
+  <define-assembly name="address" group-as="addresses">
+    <flag name="type"/>
     <formal-name>Address</formal-name>
     <description>A postal address</description>
     <model>
@@ -252,21 +253,25 @@
   </define-field>
 
   <define-field name="email" group-as="email-addresses">
+    <flag name="type"/>
     <formal-name>Email</formal-name>
     <description>Email address</description>
   </define-field>
 
   <define-field name="phone" group-as="telephone-numbers">
+    <flag name="type"/>
     <formal-name>Telephone</formal-name>
     <description>Contact number by telephone</description>
   </define-field>
 
   <define-field name="url" group-as="URLs">
+    <flag name="type"/>
     <formal-name>URL</formal-name>
     <description>URL for web site or Internet presence</description>
   </define-field>
 
   <define-assembly name="notes">
+    <flag name="type"/>
     <formal-name>Notes</formal-name>
     <description>Any notes with further information</description>
     <model>

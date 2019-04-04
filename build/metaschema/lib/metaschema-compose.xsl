@@ -26,6 +26,8 @@
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
     
     <xsl:template match="/">
+        <!--<xsl:sequence select="$compleat"/>-->
+        <!--<xsl:sequence select="$eligible"/>-->
         <xsl:sequence select="$applicable"/>
     </xsl:template>
     
@@ -134,7 +136,7 @@
     
     <xsl:mode name="digest" on-no-match="shallow-copy"/>
     
-    <xsl:template match="METASCHEMA//METASCHEMA" mode="digest">
+    <xsl:template match="METASCHEMA//METASCHEMA" priority="5" mode="digest">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
     
