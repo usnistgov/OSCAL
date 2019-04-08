@@ -17,7 +17,8 @@
     
     <xsl:strip-space elements="METASCHEMA define-flag define-field define-assembly remarks model choice"/>
     
-    <xsl:param name="verbose" select="true()"/>
+    <xsl:variable name="verbose-warnings" as="xs:string">no</xsl:variable>
+    <xsl:variable name="verbose" select="lower-case($verbose-warnings)=('yes','y','1','true')"/>
     
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
@@ -28,7 +29,7 @@
     <xsl:template match="/">
         <!--<xsl:sequence select="$compleat"/>-->
         <!--<xsl:sequence select="$eligible"/>-->
-        <xsl:sequence select="$applicable"/>
+        <xsl:sequence select="$composed-metaschema"/>
     </xsl:template>
     
 <!-- pull all schemas together
@@ -123,7 +124,7 @@
            with applicable 'augment' elements i.e. those belonging to ancestor metaschemas
            in the import hierarchy. -->
     
-    <xsl:variable name="applicable" as="document-node()">
+    <xsl:variable name="composed-metaschema" as="document-node()">
         <xsl:variable name="all-references" as="xs:string*">
             <xsl:apply-templates mode="collect-references" select="$eligible/METASCHEMA/*[@name=$root-name]">
                 <xsl:with-param tunnel="yes" name="ref-stack" select="()"/>

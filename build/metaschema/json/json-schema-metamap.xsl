@@ -27,8 +27,8 @@
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
 
-    <!-- Produces $all-definitions -->
-    <xsl:import href="../lib/metaschema-resolve-imports.xsl"/>
+    <!-- Produces composed metaschema (imports resolved) -->
+    <xsl:import href="../lib/metaschema-compose.xsl"/>
     
     <xsl:template match="/METASCHEMA" expand-text="true">
         <map>
@@ -39,7 +39,7 @@
             </xsl:for-each>
             <string key="type">object</string>
             <map key="definitions">
-                <xsl:apply-templates select="$all-definitions/*"/>
+                <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
                 <map key="prose">
                     <string key="type">array</string>
                     <map key="items">

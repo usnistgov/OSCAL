@@ -27,8 +27,8 @@
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
     
-    <!-- Produces $all-definitions -->
-    <xsl:import href="../lib/metaschema-resolve-imports.xsl"/>
+    <!-- Produces composed metaschema (imports resolved) -->
+    <xsl:import href="../lib/metaschema-compose.xsl"/>
     
     <xsl:template match="METASCHEMA">
         <XSLT:stylesheet version="3.0"

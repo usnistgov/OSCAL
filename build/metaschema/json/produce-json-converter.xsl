@@ -4,10 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     version="3.0"
-    
-    xmlns:XSLT="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias"
-    
-    >
+    xmlns:XSLT="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias">
     
 <!-- Purpose: Produce an XSLT supporting bidirectional XML-JSON syntax negotiation based on constraints declared in a netaschema -->
 <!-- Input:   A Metaschema -->
@@ -28,8 +25,8 @@
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
     <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name"/>
     
-    <!-- Produces $all-definitions -->
-    <xsl:import href="../lib/metaschema-resolve-imports.xsl"/>
+    <!-- Produces composed metaschema (imports resolved) -->
+    <xsl:import href="../lib/metaschema-compose.xsl"/>
     
     <xsl:template match="METASCHEMA">
         <XSLT:stylesheet version="3.0"
@@ -43,7 +40,7 @@
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
             <xsl:call-template  name="furniture"/>
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
-            <xsl:apply-templates select="$all-definitions/*"/>
+            <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
             
         </XSLT:stylesheet>
     </xsl:template>

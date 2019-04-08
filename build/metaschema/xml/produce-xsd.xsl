@@ -33,7 +33,7 @@
         use="@name"/>
 
     <!-- Produces $all-definitions -->
-    <xsl:import href="../lib/metaschema-resolve-imports.xsl"/>
+    <xsl:import href="../lib/metaschema-compose.xsl"/>
     
     
     <!-- entry template -->
@@ -52,9 +52,10 @@
     <xsl:template match="/METASCHEMA">
         <xs:schema elementFormDefault="qualified" targetNamespace="{ $target-namespace }">
 
-            <xsl:apply-templates select="$all-definitions/*"/>
+            <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
+            <!--<xsl:apply-templates select="*"/>-->
             
-            <xsl:if test="exists($all-definitions//prose)">
+            <xsl:if test="exists($composed-metaschema//prose)">
                 <xs:group name="prose">
                     <xs:choice>
                         <xs:element ref="oscal-prose:h1"/>
@@ -207,8 +208,14 @@
             <xsl:namespace name="{$declaration-prefix}" select="$target-namespace"/>
             <xsl:namespace name="oscal-prose" select="$target-namespace"/>
             <xsl:copy-of select="@*"/>
-           <xsl:apply-templates select="*" mode="#current"/>
+            <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
     
+    <xsl:template match="xs:documentation//text()" mode="wire-ns">
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+    <xsl:template match="text()" mode="wire-ns"/>
+        
 </xsl:stylesheet>
