@@ -1,0 +1,23 @@
+---
+title: Schema Documentation - oscal-profile - include
+description: oscal-profile schema documentation - include
+tagname: include
+permalink: /docs/schemas/oscal-profile-xml/oscal-profile_include
+layout: schemas
+model: oscal-profile-xml
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="include"><header><h4 id="oscal-profile-xml_include" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Include controls</b>: <code>include</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-profile-json/#oscal-profile-json_include"><button>JSON</button></a></div></header><p class="description">Specifies which controls and subcontrols to include from the resource (source catalog) being
+          imported</p><div class="model"><p class="usa-font-lead">The <code>include</code> element has the following contents :</p><ul>
+            <li class="choice">A choice between
+         <ul>
+               <li><a href="#all"><code>all</code></a> element  (<i>zero or one</i>)</li>
+               <li><a href="#call"><code>call</code></a> element  (<i>zero or more</i>)</li>
+               <li><a href="#match"><code>match</code></a> element  (<i>zero or more</i>)</li>
+            </ul></li>
+      </ul></div><div class="remarks">
+         <p class="p">To be schema-valid, this element must contain either (but not both) a single
+            <code>all</code> element, or a sequence of <code>call</code> elements.</p>
+         <p class="p">If this element is not given, it is assumed to be present with contents <code>all</code>
+          (qv); i.e., all controls are included by default, unless the <code>include</code>
+          instruction calls controls specifically.</p>
+      </div><p>This element appears inside: <a href="#import">import</a>.</p></div>

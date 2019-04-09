@@ -1,0 +1,22 @@
+---
+title: Schema Documentation - oscal-profile - merge
+description: oscal-profile schema documentation - merge
+tagname: merge
+permalink: /docs/schemas/oscal-profile-xml/oscal-profile_merge
+layout: schemas
+model: oscal-profile-xml
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="merge"><header><h4 id="oscal-profile-xml_merge" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Merge controls</b>: <code>merge</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-profile-json/#oscal-profile-json_merge"><button>JSON</button></a></div></header><p class="description">A Merge element merges controls in resolution.</p><div class="model"><p class="usa-font-lead">The <code>merge</code> element has the following contents  (in order):</p><ul>
+            <li><a href="#combine"><code>combine</code></a> element  (<i>zero or one</i>)</li>
+            <li class="choice">A choice between
+         <ul>
+               <li><a href="#as-is"><code>as-is</code></a> element  (<i>zero or one</i>)</li>
+               <li><a href="#custom"><code>custom</code></a> element  (<i>zero or one</i>)</li>
+            </ul></li>
+      </ul></div><div class="remarks">
+         <p class="p">The contents of the <code>merge</code> element may be used to <q>reorder</q> or
+         <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
+         <p class="p">Implicitly, a <code>merge</code> element is also a filter: controls that are included in a
+         profile, but not included (implicitly or explicitly) in the scope of a <code>merge</code> element,
+         will not be merged into (will be dropped) in the resulting resolution.</p>
+      </div><p>This element appears inside: <a href="#profile">profile</a>.</p></div>

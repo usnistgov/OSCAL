@@ -3,6 +3,7 @@ title: Resources
 description: Resources
 permalink: /resources/
 sidenav: resources
+topnav: resources
 sticky_sidenav: true
 layout: post
 ---

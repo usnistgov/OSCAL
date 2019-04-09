@@ -3,7 +3,7 @@ title: Schema Documentation - oscal-catalog - group
 description: oscal-catalog schema documentation - group
 tagname: group
 permalink: /docs/schemas/oscal-catalog-xml/oscal-catalog_group
-layout: post
+layout: schemas
 model: oscal-catalog-xml
 ---
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="group"><header><h4 id="oscal-catalog-xml_group" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Control Group</b>: <code>group</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-catalog-json/#oscal-catalog-json_group"><button>JSON</button></a></div></header><p class="description">A group of controls, or of groups of controls.</p><div class="model"><p class="usa-font-lead">The <code>group</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li>
@@ -16,10 +16,10 @@ model: oscal-catalog-xml
         <li><a href="#group"><code>group</code></a> element  (<i>zero or more</i>)</li>
         <li><a href="#control"><code>control</code></a> element  (<i>zero or more</i>)</li>
       </ul></li>
-      <li><a href="#references"><code>references</code></a> element  (<i>zero or one</i>)</li>
+      <li><a href="#ref-list"><code>ref-list</code></a> element  (<i>zero or one</i>)</li>
       
     </ul></div><div class="remarks">
-      <p class="p">Catalogs can use groups to provide collections of related controls or Control Groups. A <a href="#group">group</a> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <a href="#section">section</a>, a <a href="#group">group</a> may not contain arbitrary prose directly, only inside its <a href="#part">part</a> or <a href="#control">control</a> components.</p>
+      <p class="p">Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose directly, only inside its <code>part</code> or <code>control</code> components.</p>
     </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">Example</button><div id="group_example1_xml" class="usa-accordion-content"><pre>
 &lt;group id="xyz"&gt;
 &lt;title&gt;My Group&lt;/title&gt;

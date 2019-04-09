@@ -3,34 +3,44 @@ title: Schema Documentation - oscal-catalog - resource
 description: oscal-catalog schema documentation - resource
 tagname: resource
 permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_resource
-layout: post
+layout: schemas
 model: oscal-catalog-json
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="resource"><header><h4 id="oscal-catalog-json_resource" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Resource</b>: <code>resource</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_resource"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">A resource to inform or authenticate the present document.</p><div class="model"><p class="usa-font-lead">The <code>resource</code> object has the following members (properties):</p><ul><li><a href="#type"><code>type</code></a> property  (<i>optional</i>)</li><li><a href="#media-type"><code>media-type</code></a> property  (<i>optional</i>)</li>
-      <li><a href="#title"><code>title</code></a> object  (<i>optional</i>)</li>
-      <li>An array labelled
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="resource"><header><h4 id="oscal-catalog-json_resource" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Resource</b>:
+                  <code>resource</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_resource"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">A resource to inform or authenticate the present document, or to supplement it as an attachment</p><div class="model"><p class="usa-font-lead">The <code>resource</code> object has the following members (properties):</p><ul><li><a href="#rel"><code>rel</code></a> property  (<i>optional</i>)</li><li><a href="#media-type"><code>media-type</code></a> property  (<i>optional</i>)</li>
+			<li><a href="#title"><code>title</code></a> object  (<i>optional</i>)</li>
+			<li>An array labelled
          
-         <b>authors</b>, containing
+         <b></b>, containing
          <a href="#author"><code>author</code></a> objects  (<i>optional</i>)</li>
-      <li><a href="#publication-date"><code>publication-date</code></a> object  (<i>optional</i>)</li>
-      <li><a href="#version"><code>version</code></a> object  (<i>optional</i>)</li>
-      <li>An array labelled
+			<li><a href="#format"><code>format</code></a> object  (<i>optional</i>)</li>
+			<li><a href="#description"><code>description</code></a> object  (<i>optional</i>)</li>
+			<li><a href="#date"><code>date</code></a> object  (<i>optional</i>)</li>
+			<li><a href="#version"><code>version</code></a> object  (<i>optional</i>)</li>
+			<li>An array labelled
          
-         <b>document-identifiers</b>, containing
+         <b></b>, containing
          <a href="#doc-id"><code>doc-id</code></a> objects  (<i>optional</i>)</li>
-      <li>An array labelled
+			<li>An array labelled
          
-         <b>properties</b>, containing
+         <b></b>, containing
          <a href="#prop"><code>prop</code></a> objects  (<i>optional</i>)</li>
-      <li>An array labelled
+			<li class="choice">A choice between
+         <ul>
+			  <li>An array labelled
          
-         <b>hashed-links</b>, containing
+         <b></b>, containing
          <a href="#hlink"><code>hlink</code></a> objects  (<i>optional</i>)</li>
-      <li><a href="#notes"><code>notes</code></a> object  (<i>optional</i>)</li>
-    </ul></div><div class="remarks">
-      <p class="p">Typically this information item describes and points to a mirror or other (authoritative or
-        informative) copy of a document, or of a resouce helpful (necessary) for interpreting it,
-        such as its metaschema or documentation. It may offer a (persistent) link to a
-        <q>best available</q> version, or to an outdated version, as indicated by its
-        <a href="#rel">rel</a>.</p>
-    </div><p>This object appears as a property on: <a href="#metadata">metadata</a>.</p></div>
+			  <li><a href="#base64"><code>base64</code></a> object  (<i>optional</i>)</li>
+			</ul></li>
+			<li><a href="#notes"><code>notes</code></a> object  (<i>optional</i>)</li>
+		</ul></div><div class="remarks">
+			<p class="p">This element is used in two ways. In document metadata, it may describe and point to a mirror or other (authoritative or
+				informative) copy of a document, or of a resouce helpful (necessary) for interpreting it,
+				such as its metaschema or documentation. It may offer a (persistent) link to a
+				<q>best available</q> version, or to an outdated version, as indicated by its
+				<code>rel</code>.</p>
+			<p class="p">In back matter or within sections, a resource may be an attachment or any external document.</p>
+			<p class="p">The <code>rel</code> flag should be used to indicate the relation of the resource to the document
+				referencing it, such as <q>catalog</q>, <q>baseline</q>, <q>metaschema</q> or <q>attachment</q>.</p>
+		</div><p>This object appears as a property on: <a href="#metadata">metadata</a>, <a href="#back">back</a>.</p></div>

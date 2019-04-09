@@ -1,0 +1,16 @@
+---
+title: Schema Documentation - oscal-profile - combine
+description: oscal-profile schema documentation - combine
+tagname: combine
+permalink: /docs/schemas/oscal-profile-xml/oscal-profile_combine
+layout: schemas
+model: oscal-profile-xml
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="combine"><header><h4 id="oscal-profile-xml_combine" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Combination rule</b>: <code>combine</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-profile-json/#oscal-profile-json_combine"><button>JSON</button></a></div></header><p class="description">A Combine element defines whether and how to combine multiple (competing)
+        versions of the same control</p><div class="model"><p>The combine element may have an attribute</p><ul><li><a href="#method"><code>method</code></a> attribute  (<i>optional</i>)</li></ul></div><div class="remarks">
+        <p class="p">Whenever combining controls from multiple (import) pathways, an issue arises of what to do with
+           clashing invocations (multiple competing versions of a control or a subcontrol). </p>
+        <p class="p">This setting permits a profile designer to apply a rule for the resolution of such cases.
+           In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be
+           useful for defining what to do when it occurs.</p>
+      </div><p>This element appears inside: <a href="#merge">merge</a>.</p></div>
