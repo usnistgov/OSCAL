@@ -29,7 +29,7 @@
   <import href="module-metaschema.xml"/>
   
   <define-assembly name="kit" group-as="thing-kit">
-    <flag name="id" datatype="ID" required="yes"/>
+    <flag name="id" required="yes"/>
     <flag name="some_string" required="yes"/>
     <formal-name>Base</formal-name>
     <description>Wrapper for other stuff</description>

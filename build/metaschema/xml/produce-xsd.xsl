@@ -180,7 +180,7 @@
             <xsl:for-each select="@required[.='yes']">
                 <xsl:attribute name="use">required</xsl:attribute>
             </xsl:for-each>
-            <xsl:for-each select="@datatype">
+            <xsl:for-each select="(@datatype,key('definition-by-name',@name)/@datatype)[1]">
                 <xsl:attribute name="type" expand-text="true">xs:{ . }</xsl:attribute>
             </xsl:for-each>
             

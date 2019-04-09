@@ -61,8 +61,8 @@
             <sch:report test="@name = ../*/@group-as">Clashing name with group name: <sch:value-of select="@name"/></sch:report>
             <sch:report test="@group-as = ../*/@name">Clashing group name with name: <sch:value-of select="@name"/></sch:report>
             <sch:assert test="empty(@address) or m:flag/@name=@address">Definition set to address by '<sch:value-of select="@address"/>', but no flag with that name is declared.</sch:assert>
-            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-assembly) or empty($composed-schema//m:assemblies[@named=current()/@name])">Assembly is used in groups ("assemblies") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-schema//m:assemblies[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
-            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-field) or empty($composed-schema//m:fields[@named=current()/@name])">Field is used in groups ("fields") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-schema//m:fields[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
+            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-assembly) or empty($composed-metaschema//m:assemblies[@named=current()/@name])">Assembly is used in groups ("assemblies") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:assemblies[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
+            <sch:assert test="matches(@group-as,'\S') or empty(self::m:define-field) or empty($composed-metaschema//m:fields[@named=current()/@name])">Field is used in groups ("fields") but has no grouping name (@group-as). See definition(s) for <xsl:value-of separator=", " select="$composed-metaschema//m:fields[@named=current()/@name]/ancestor::m:define-assembly/@name"/></sch:assert>
             <sch:assert test="not(@as='boolean') or empty(m:flag)">Property defined as boolean may not have flags.</sch:assert>
         </sch:rule>
 
@@ -72,7 +72,7 @@
         
 
         <sch:rule context="m:flag">
-            <sch:let name="decl" value="key('definition-by-name',@name,$composed-schema)"/>
+            <sch:let name="decl" value="key('definition-by-name',@name,$composed-metaschema)"/>
             
             <sch:assert test="exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
@@ -86,7 +86,7 @@
         <!-- 'choice' is not subjected to rules for other elements inside 'model' -->
         <sch:rule context="m:choice"/>
         <sch:rule context="m:field | m:fields | m:assembly | m:assemblies">
-            <sch:let name="decl" value="key('definition-by-name',@named,$composed-schema)"/>
+            <sch:let name="decl" value="key('definition-by-name',@named,$composed-metaschema)"/>
             <sch:assert test="exists($decl)">No definition found for '<sch:value-of select="@named"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert role="warning" test="empty($decl) or exists(self::m:field|self::m:assembly) or exists($decl/@group-as)">Reference is made to <sch:value-of select="local-name()"/> '<sch:value-of select="@named"/>', but their definition does not give a group name.</sch:assert>
             <sch:assert test="empty($decl) or empty(@address) or ($decl/@address = @address)">The referenced definition has <sch:value-of select="if (exists($decl/@address)) then ('address ''' || $decl/@address || '''') else 'no address'"/></sch:assert>
@@ -120,31 +120,31 @@
         </sch:rule>
        
         <sch:rule context="m:define-assembly">
-            <sch:assert role="warning" test="@name = ($composed-schema//m:assembly/@named | $composed-schema//m:assemblies/@named | /m:METASCHEMA/@root)">Definition for assembly '<sch:value-of select="@name"/>' is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = ($composed-metaschema//m:assembly/@named | $composed-metaschema//m:assemblies/@named | /m:METASCHEMA/@root)">Definition for assembly '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:define-field">
-            <sch:assert role="warning" test="@name = ($composed-schema//m:field/@named | $composed-schema//m:fields/@named)">Definition for field '<sch:value-of select="@name"/>' is not used.</sch:assert>
+            <sch:assert role="warning" test="@name = ($composed-metaschema//m:field/@named | $composed-metaschema//m:fields/@named)">Definition for field '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:define-flag">
             <sch:assert role="warning" test="@name = //m:flag/@name">Definition for flag '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>
         <sch:rule context="m:assembly | m:assemblies">
-            <sch:assert test="@named = $composed-schema/m:METASCHEMA/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.
-            We expect one of <xsl:value-of select="$composed-schema/m:METASCHEMA/m:define-assembly/@name" separator=", "/></sch:assert>
-            <sch:report test="@named = $composed-schema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@named"/>' is a field, not an assembly.</sch:report>
-            <sch:report test="@named = $composed-schema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
+            <sch:assert test="@named = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">Assembly invocation does not point to an assembly definition.
+            We expect one of <xsl:value-of select="$composed-metaschema/m:METASCHEMA/m:define-assembly/@name" separator=", "/></sch:assert>
+            <sch:report test="@named = $composed-metaschema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@named"/>' is a field, not an assembly.</sch:report>
+            <sch:report test="@named = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
         <sch:rule context="m:field | m:fields">
-            <sch:assert test="@named = $composed-schema/m:METASCHEMA/m:define-field/@name">Field invocation does not point to a field definition.
-                We expect one of <xsl:value-of select="$composed-schema/m:METASCHEMA/m:define-field/@name" separator=", "/></sch:assert>
-            <sch:report test="@named = $composed-schema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@named"/>' is an assembly, not a field.</sch:report>
-            <sch:report test="@named = $composed-schema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
+            <sch:assert test="@named = $composed-metaschema/m:METASCHEMA/m:define-field/@name">Field invocation does not point to a field definition.
+                We expect one of <xsl:value-of select="$composed-metaschema/m:METASCHEMA/m:define-field/@name" separator=", "/></sch:assert>
+            <sch:report test="@named = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@named"/>' is an assembly, not a field.</sch:report>
+            <sch:report test="@named = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">'<sch:value-of select="@named"/>' is a flag, not an assembly.</sch:report>
         </sch:rule>
         <sch:rule context="m:flag">
-            <sch:assert test="@name = $composed-schema/m:METASCHEMA/m:define-flag/@name">Flag invocation does not point to a flag definition.
-                We expect one of <xsl:value-of select="$composed-schema/m:METASCHEMA/m:define-flag/@name" separator=", "/></sch:assert>
-            <sch:report test="@name = $composed-schema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:report>
-            <sch:report test="@name = $composed-schema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
+            <sch:assert test="@name = $composed-metaschema/m:METASCHEMA/m:define-flag/@name">Flag invocation does not point to a flag definition.
+                We expect one of <xsl:value-of select="$composed-metaschema/m:METASCHEMA/m:define-flag/@name" separator=", "/></sch:assert>
+            <sch:report test="@name = $composed-metaschema/m:METASCHEMA/m:define-field/@name">'<sch:value-of select="@name"/>' is a field, not a flag.</sch:report>
+            <sch:report test="@name = $composed-metaschema/m:METASCHEMA/m:define-assembly/@name">'<sch:value-of select="@name"/>' is an assembly, not a flag.</sch:report>
         </sch:rule>
     </sch:pattern>
     
