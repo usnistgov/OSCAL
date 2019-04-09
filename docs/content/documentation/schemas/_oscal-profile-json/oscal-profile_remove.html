@@ -1,0 +1,17 @@
+---
+title: Schema Documentation - oscal-profile - remove
+description: oscal-profile schema documentation - remove
+tagname: remove
+permalink: /docs/schemas/oscal-profile-json/oscal-profile_remove
+layout: schemas
+model: oscal-profile-json
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="remove"><header><h4 id="oscal-profile-json_remove" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Removal</b>: <code>remove</code> string object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_remove"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">Specifies elements to be removed from a control or subcontrol, in resolution</p><div class="model"><p>The remove object may have (string) properties </p><ul><li><a href="#class-ref"><code>class-ref</code></a> property  (<i>optional</i>)</li><li><a href="#id-ref"><code>id-ref</code></a> property  (<i>optional</i>)</li><li><a href="#item-name"><code>item-name</code></a> property  (<i>optional</i>)</li></ul></div><div class="remarks">
+         <p class="p">Use <code>@class-ref</code>, <code>@id-ref</code> or <code>@item-name</code> to indicate
+          class tokens or ID reference, or the formal name, of the component to be removed or erased
+          from a control or subcontrol, when a catalog is resolved. The control or subcontrol
+          affected is indicated by the pointer on the removal's parent (containing)
+            <code>alter</code> element.</p>
+         <p class="p">To change an element, use <code>remove</code> to remove the element, then
+            <code>add</code> to add it back again with changes.</p>
+      </div><p>This object appears as a property on: <a href="#alter">alter</a>.</p></div>

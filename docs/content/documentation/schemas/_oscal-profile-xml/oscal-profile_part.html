@@ -1,0 +1,28 @@
+---
+title: Schema Documentation - oscal-profile - part
+description: oscal-profile schema documentation - part
+tagname: part
+permalink: /docs/schemas/oscal-profile-xml/oscal-profile_part
+layout: schemas
+model: oscal-profile-xml
+---
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="part"><header><h4 id="oscal-profile-xml_part" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Part</b>: <code>part</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-profile-json/#oscal-profile-json_part"><button>JSON</button></a></div></header><p class="description">A partition or component of a control, subcontrol or part</p><div class="model"><p class="usa-font-lead">The <code>part</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li>
+      <li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li>
+      <li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li>
+      <li class="prose">Prose contents (paragraphs and lists)</li>
+      <li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li>
+      <li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li>
+      
+    </ul></div><div class="remarks">
+      <p class="p">Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
+        distinguished from other elements within their controls by their assigned
+        <code>class</code>, such that they may be subjected to <q>declarations logic</q> using
+        these values as bindings (and thereby getting open-ended extensibility).</p>
+      <p class="p">An assigned class may frequently provide for a header in display, such that
+        <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
+        Parts may also however have their own titles (<code>title</code> elements).</p>
+      <p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally
+        constructed out of properties (<code>prop</code> elements) and/or their own parts. Such
+        structured objects may, at the extreme, function virtually as control extensions or
+        subcontrol-like objects (<q>enhancements</q>).</p>
+    </div><p>This element appears inside: <a href="#part">part</a>, <a href="#set-param">set-param</a>, <a href="#add">add</a>.</p></div>

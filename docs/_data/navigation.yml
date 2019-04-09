@@ -15,19 +15,7 @@ primary:
   - text: Home
     href: /
   - text: Learn More
-    links:
-      - text: Background
-        href: /learnmore/
-#     - text: For Assessors
-#       href: /learnmore/assessors
-#     - text: For Security Professionals
-#       href: /learnmore/securitypros
-#     - text: For Tool Developers
-#       href: /learnmore/tooldevelopers
-#     - text: For Content Authors
-#       href: /learnmore/authors
-      - text: Relations to Industry Standards
-        href: /learnmore/relations
+    href: /learnmore/
   - text: Resources
     href: /resources/
   - text: Documentation
@@ -36,27 +24,6 @@ primary:
     href: /docs/schemas/
   - text: Community
     href: /community/
-# - text: Walkthrough
-#  href: /walkthrough/
-# - text: Navigation section
-#   links:
-#     - text: Demo link A
-#       href: /two/a/
-#     - text: Demo link B
-#       href: /two/b/
-#     - text: Demo link C
-#       href: /two/c/
-#     - text: Demo link D
-#       href: /two/a/
-#     - text: Demo link E
-#       href: /two/b/
-#     - text: Demo link F
-#       href: /two/c/
-# - text: Referenced section
-#   links: footer
-# - text: External link
-#   href: https://18f.gsa.gov
-#   external: true
 
 secondary:
   - text: Get Involved
@@ -122,45 +89,4 @@ learnmore:
 footer:
   - text: Documentation
     href: /docs/
-  # - text: Demo link
-  #   href: /demo/
-  # - text: External link
-  #   href: https://18f.gsa.gov
-  #   external: true
-# Uncomment the items below and comment the items above in the `footer` list
-# to use footer link columns in the 'big' footer style.
-# - text: Documentation
-#   links:
-#     - text: Overview
-#       href: /docs/
-#     - text: Secondary documentation page
-#       href: /docs/two/
-#     - text: Tertiary docs
-#       href: /docs/three/
-# - text: Navigation section
-#   links:
-#     - text: Demo link A
-#       href: /two/a/
-#     - text: Demo link B
-#       href: /two/b/
-#     - text: Demo link C
-#       href: /two/c/
-# - text: Referenced section
-#   links:
-#     - text: Demo link A
-#       href: /three/a/
-#     - text: Demo link B
-#       href: /three/b/
-#     - text: Demo link C
-#       href: /three/c/
-# - text: External links
-#   links:
-#     - text: 18F
-#       href: https://18f.gsa.gov
-#       external: true
-#     - text: Technology Transformation Service
-#       href: https://join.tts.gsa.gov/
-#       external: true
-#     - text: code.gov
-#       href: https://code.gov/
-#       external: true
+

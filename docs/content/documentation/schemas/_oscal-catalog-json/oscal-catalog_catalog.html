@@ -3,34 +3,34 @@ title: Schema Documentation - oscal-catalog - catalog
 description: oscal-catalog schema documentation - catalog
 tagname: catalog
 permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_catalog
-layout: post
+layout: schemas
 model: oscal-catalog-json
 root: true
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="catalog"><header><h4 id="oscal-catalog-json_catalog" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Catalog</b>: <code>catalog</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_catalog"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><h5><code>catalog</code> is the root (containing) object of
-               this schema. </h5><p class="description">A collection of controls</p><div class="model"><p class="usa-font-lead">The <code>catalog</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#model-version"><code>model-version</code></a> property <i> (required)</i></li>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="catalog"><header><h4 id="oscal-catalog-json_catalog" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Catalog</b>:
+                  <code>catalog</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_catalog"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><h5><code>catalog</code> is the root (containing) object of this
+               schema. </h5><p class="description">A collection of controls</p><div class="model"><p class="usa-font-lead">The <code>catalog</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#model-version"><code>model-version</code></a> property <i> (required)</i></li>
       <li><a href="#title"><code>title</code></a> object  (<i>required</i>)</li>
       <li><a href="#metadata"><code>metadata</code></a> object  (<i>optional</i>)</li>
-      <li><a href="#declarations"><code>declarations</code></a> object  (<i>optional</i>)</li>
-      <li><a href="#references"><code>references</code></a> object  (<i>optional</i>)</li>
+      
       <li>An array labelled
          
-         <b>sections</b>, containing
+         <b></b>, containing
          <a href="#section"><code>section</code></a> objects  (<i>optional</i>)</li>
       <li class="choice">A choice between
          <ul>
         <li>An array labelled
          
-         <b>groups</b>, containing
+         <b></b>, containing
          <a href="#group"><code>group</code></a> objects  (<i>optional</i>)</li>
         <li>An array labelled
          
-         <b>controls</b>, containing
+         <b></b>, containing
          <a href="#control"><code>control</code></a> objects  (<i>optional</i>)</li>
       </ul></li>
-      
+      <li><a href="#back"><code>back</code></a> object  (<i>optional</i>)</li>
     </ul></div><div class="remarks">
-      <p class="p">Catalogs may use <a href="#section">section</a> to subdivide the textual contents of a catalog.</p>
+      <p class="p">Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p>
     </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_json">Example: A small catalog with a single control</button><div id="catalog_example1_json" class="usa-accordion-content">
 {% highlight json %}
   { "id" : "simple-example",

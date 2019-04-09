@@ -3,19 +3,17 @@ title: Schema Documentation - oscal-catalog - citation
 description: oscal-catalog schema documentation - citation
 tagname: citation
 permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_citation
-layout: post
+layout: schemas
 model: oscal-catalog-json
 ---
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="citation"><header><h4 id="oscal-catalog-json_citation" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Citation</b>: <code>citation</code> string object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_citation"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Supports Markdown</p><p class="description">Citation of a resource</p><div class="model"><p>The citation object may have (string) properties </p><ul><li><a href="#id"><code>id</code></a> property  (<i>optional</i>)</li><li><a href="#href"><code>href</code></a> property  (<i>optional</i>)</li></ul></div><div class="remarks">
-      <p class="p">Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
-        matches with bibliograpical databases, it is recommended a canonical
-      identifier such as a DOI be provided for any citation.</p>
-    </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_json">Example</button><div id="citation_example1_json" class="usa-accordion-content">
-{% highlight json %}
-  { "citations" : 
-    [ 
-      { "RICHTEXT" : "Here is a work cited" },
-      
-      { "RICHTEXT" : "Some **citation** of some sort" } ] }
+			<p class="p">Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
+				matches with bibliograpical databases, it is recommended a canonical
+				identifier such as a DOI be provided for any citation.</p>
+		</div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_json">Example</button><div id="citation_example1_json" class="usa-accordion-content">
+{% highlight json %}Example for 'citation' not JSONized -- 
+				Here is a work cited
+				Some citation of some sort
+			
 {% endhighlight %}
 </div></li></ul><p>This object appears as a property on: <a href="#ref">ref</a>.</p></div>
