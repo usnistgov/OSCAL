@@ -42,7 +42,7 @@
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
             <xsl:call-template  name="furniture"/>
             <xsl:comment> 88888888888888888888888888888888888888888888888888888888888888 </xsl:comment>
-            <xsl:apply-templates select="$all-definitions/*"/>
+            <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
 
 
         </XSLT:stylesheet>
