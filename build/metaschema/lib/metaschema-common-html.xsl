@@ -17,8 +17,8 @@
    </xsl:template>
    
    <xsl:template match="m:remarks/m:p" mode="model">
-      <br class="br"/>
-      <xsl:apply-templates/>
+      <br/>
+        <xsl:apply-templates/>
    </xsl:template>
    
    <xsl:template match="m:choice">
@@ -63,17 +63,15 @@
    </xsl:template>
    
    <xsl:template match="m:example/m:description">
-      <blockquote class="description">
-         <p>
-            <xsl:apply-templates/>
-         </p>
-      </blockquote>
+      <p class="description">
+         <xsl:apply-templates/>
+      </p>
    </xsl:template>
    
    <xsl:template match="m:example/m:remarks">
-      <blockquote class="remarks">
+      <div class="remarks">
           <xsl:apply-templates/>
-      </blockquote>
+      </div>
    </xsl:template>
    
    <xsl:template  match="m:p">
@@ -96,14 +94,13 @@
    </xsl:template>
 
    <xsl:template match="m:em | m:strong | m:b | m:i | m:u">
-      <xsl:element name="{local-name()}">
+      <xsl:element name="{local-name(.)}" namespace="http://www.w3.org/1999/xhtml">
          <xsl:apply-templates/>
       </xsl:element>
    </xsl:template>
-   
+
+     
    <xsl:template match="*" mode="serialize">
-      
-      
       <xsl:call-template name="indent-for-pre"/>
       
       <code class="tag">&lt;<xsl:value-of select="name(.)"/>

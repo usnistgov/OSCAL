@@ -82,7 +82,7 @@ flag:after { content:
    
  }
 
-assembly:after, field:after { content:
+assembly:after, field:after, assemblies:after, fields:after { content:
  oxy_name() ' named '
  oxy_textfield(edit, '@named', columns, 12) 
    
@@ -94,14 +94,6 @@ choice:before { content:
 
 prose:before { font-weight: bold; content:
  'prose'
- }
-
-assemblies:after, fields:after { content:
- oxy_name() ' named '
- oxy_textfield(edit, '@named', columns, 12)
- ', grouped as '
- oxy_textfield(edit, '@group-as', columns, 12) 
-   
  }
 
 choice > * { margin-left: 2em }

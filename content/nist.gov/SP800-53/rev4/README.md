@@ -1,6 +1,6 @@
 # NIST SP 800-53 Examples
 
-This subdirectory contains provisional stable, best effort versions of OSCAL catalogs and profiles related to NIST SP800-53. While not authoritative, as examples these are useful as demonstrations. The files have been produced by a combination of automated and semi-automated (editorial) processes.
+This subdirectory contains provisional stable, best effort versions of OSCAL catalogs and profiles related to NIST SP800-53. While not authoritative, as examples these are useful as demonstrations (as can be established by comparing them with their originals). The files have been produced by a combination of automated and semi-automated (editorial) processes.
 
 Note that in many ordinary working scenarios, users of OSCAL will not be writing or creating catalogs or low-level baselines (profiles) such as these, but only referencing them.
 
