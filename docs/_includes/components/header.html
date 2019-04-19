@@ -115,7 +115,7 @@
               <input name="utf8" type="hidden" value="&#x2713;" />
             </div>
             <input id="affiliate" name="affiliate" type="hidden" value="{{ site.search_site_handle }}" />
-            <div role="search">
+            <div role="search" style="margin: 0.4rem 0 0 0">
               <label for="query" class="usa-sr-only">Enter Search Term(s):</label>
               <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
               <button type="submit" name="commit">
@@ -141,7 +141,7 @@
               {% endfor %}
               {% if site.search_site_handle %}
               <li>
-                <div role="search">
+                <div role="search" style="margin: 0.4rem 0 0 0">
                   <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small">
                     <input id="affiliate" name="affiliate" type="hidden" value="{{ site.search_site_handle }}" />
                     <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />

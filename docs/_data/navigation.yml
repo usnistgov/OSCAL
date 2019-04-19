@@ -34,15 +34,9 @@ secondary:
 resources:
   - text: Resources
     href: /resources/
-  - text: Roadmap
-    href: /resources/roadmap/
-  - text: Case Studies
-    href: /resources/casestudies/
   - text: Examples
     href: /resources/examples/
     subnav: true
-  - text: Scenarios
-    href: /resources/scenarios/
   - text: GitHub Repo
     href: https://github.com/usnistgov/OSCAL
     external: true
@@ -55,6 +49,8 @@ documentation:
     subnav: true
   - text: Schema Reference
     href: /docs/schemas/
+  - text: Relations to Documentary Encoding Standards
+    href: /docs/relations/
 
 schemas:
   - text: Schema Reference
@@ -71,21 +67,20 @@ schemas:
 community:
   - text: Community
     href: /community/
-  - text: Security Professionals
-    href: /community/securitypros/
-  - text: Assessors
-    href: /community/assessors/
-  - text: Tool Developers
-    href: /community/tooldevelopers/
-  - text: Policy Authors
-    href: /community/contentcreators/
+  - text: Contribute on Github
+    href: https://github.com/usnistgov/OSCAL
+    external: true
 
 learnmore:
   - text: Learn More
     href: /learnmore/
-  - text: Relations to Documentary Encoding Standards
-    href: /learnmore/relations/
-
+  - text: Roadmap
+    href: /learnmore/roadmap/
+  - text: Case Studies
+    href: /learnmore/casestudies/
+  - text: Scenarios
+    href: /learnmore/scenarios/
+    
 footer:
   - text: Documentation
     href: /docs/

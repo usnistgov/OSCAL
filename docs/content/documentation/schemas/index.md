@@ -10,11 +10,11 @@ sticky_sidenav: true
 
 ## About the schemas
 
-Each OSCAL **model** comes with an XSD and a corresponding JSON Schema.
+Each OSCAL **model** comes with an XSD (W3C XML Schema) and a corresponding JSON Schema.
 
 ### XML and/or JSON
 
-The OSCAL project is producing schemas to describe and validate data in two formats, XML and JSON. These are produced within a framework that provides for semantic unification in the form of a meta-model, which is subsequently expressed (written out) into two different expressions:
+The OSCAL project is producing schemas to describe and validate data in two formats, XML and JSON. These are produced within a framework that provides for semantic unification in the form of a meta-model, which is subsequently processed and written out into two different expressions:
 
 * An XSD (W3C XML Schema) that describes an XML tag set
 * A JSON Schema (v7) that describes a JSON data object

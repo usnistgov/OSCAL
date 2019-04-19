@@ -9,11 +9,12 @@ sticky_sidenav: true
 
 Three key OSCAL concepts underlie the architecture:
 
-1. A **control** is a safeguard or countermeasure designed to satisfy a set of defined security requirements. 
+1. A 
+[control](/docs/components/control/) is a safeguard or countermeasure designed to satisfy a set of defined security requirements. 
 
-2. A **catalog** is a set of security control definitions. Examples include the controls in NIST SP 800-53, ISO 27001, HIPAA, and PCI. The **catalog layer** in OSCAL refers to any data made available for processing in this format.
+2. A [catalog](/docs/components/catalog/) is a set of security control definitions. Examples include the controls in NIST SP 800-53, ISO 27001, HIPAA, and PCI. The **catalog layer** in OSCAL refers to any data made available for processing in this format.
 
-3. A **profile** is a specific set of security requirements; also called a baseline or overlay. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.
+3. A [profile](/docs/components/profile/) is a specific set of security requirements; also called a baseline or overlay. A profile is expressed as a selection of controls from one or more catalogs, with configuration or qualification appropriate to its use case. Profiles may be published with the catalogs from which they are derived, or they may be developed and maintained separately. Examples include the control baselines in NIST SP 800-53, the FedRAMP baselines, NIST SP800-171 (a controls baseline template for CUI/NFO), and the PCI DSS requirements.  Profiles can be tailored based on the Confidentiality, Integrity, and Availability (CIA) requirements of the underlying system.
 
 ## Purpose
 
