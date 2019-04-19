@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Basic Page Needs
+================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Specific Metas
+================================================== -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogs | OSCAL</title>
+
+
+
+<meta name="description" content="OSCAL Catalog Examples">
+
+
+
+<link rel="shortcut icon" type="image/ico"
+  href="/assets/img/favicon-32x32.png">
+
+<link rel="icon" type="image/png"
+  href="/assets/img/favicon-32x32.png">
+
+<link rel="icon" type="image/png"
+  sizes="192x192"
+  href="/assets/uswds/img/favicons/favicon-192.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  href="/assets/uswds/img/favicons/favicon-57.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="72x72"
+  href="/assets/uswds/img/favicons/favicon-72.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="114x114"
+  href="/assets/uswds/img/favicons/favicon-114.png">
+
+<link rel="apple-touch-icon-precomposed" type=""
+  sizes="144x144"
+  href="/assets/uswds/img/favicons/favicon-144.png">
+
+
+ 
+
+
+
+<!-- Removed media type to make it print better -->
+<link rel="stylesheet" href="/assets/css/main.css">
+ 
+    <!-- <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css"> -->
+    <!-- <script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
+    <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script> -->
+</head>
+
+<body class="  site-wide">
+
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+ 
+
+
+<section class="usa-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner"> <img src="/assets/uswds/img/favicons/favicon-57.png" alt="U.S. flag">
+        <p>An official website of the United States government</p> <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner"> <span class="usa-banner-button-text">Here's how you know</span> </button> </div>
+    </header>
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/assets/uswds/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p> <strong>The .gov means it’s official.</strong> <br> Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site. </p>
+        </div>
+      </div>
+      <div class="usa-banner-guidance-ssl usa-width-one-half"> <img class="usa-banner-icon usa-media_block-img" src="/assets/uswds/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p> <strong>The site is secure.</strong> <br> The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+    <header class="usa-header usa-header-extended" role="banner">
+      
+
+      <div class="nist-header" id="nist-header" role="banner">
+
+        <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-header__logo-link"
+          rel="home" style="text-decoration: none">
+          <svg aria-hidden="true" class="nist-header__logo-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="32" viewBox="0 0 24 32">
+            <path d="M20.911 5.375l-9.482 9.482 9.482 9.482c0.446 0.446 0.446 1.161 0 1.607l-2.964 2.964c-0.446 0.446-1.161 0.446-1.607 0l-13.25-13.25c-0.446-0.446-0.446-1.161 0-1.607l13.25-13.25c0.446-0.446 1.161-0.446 1.607 0l2.964 2.964c0.446 0.446 0.446 1.161 0 1.607z"></path>
+          </svg>
+          <svg class="nist-header__logo-image" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-237 385.7 109.7 29.3">
+            <title>National Institute of Standards and Technology</title>
+            <g>
+              <path class="st0" d="M-231,415h-6v-23.1c0,0,0-4.4,4.4-5.8c4-1.3,6.6,1.3,6.6,1.3l19.7,21.3c1,0.6,1.4,0,1.4-0.6v-22h6.1V409
+          c0,1.9-1.6,4.4-4,5.3c-2.4,0.9-4.9,0.9-7.9-1.7l-18.5-20c-0.5-0.5-1.8-0.6-1.8,0.4L-231,415L-231,415z" />
+              <path class="st0" d="M-195,386.1h6.1v20.7c0,2.2,1.9,2.2,3.6,2.2h26.8c1.1,0,2.4-1.3,2.4-2.7c0-1.4-1.3-2.8-2.5-2.8H-176
+          c-3,0.1-9.2-2.7-9.2-8.5c0-7.1,5.9-8.8,8.6-9h49.4v6.1h-12.3V415h-6v-22.9h-30.2c-2.9-0.2-4.9,4.7-0.2,5.4h18.6
+          c2.8,0,7.4,2.4,7.5,8.4c0,6.1-3.6,9-7.5,9H-185c-4.5,0-6.2-1.1-7.8-2.5c-1.5-1.5-1.7-2.3-2.2-5.3L-195,386.1
+          C-194.9,386.1-195,386.1-195,386.1z" />
+            </g>
+          </svg>
+        </a>
+
+      </div>
+
+      
+        <div class="usa-navbar">
+          <button class="usa-menu-btn">Menu</button>
+          <div class="usa-logo" id="extended-mega-logo">
+            <em class="usa-logo-text">
+              <a href="/" title="Home">
+                OSCAL: the Open Security Controls Assessment Language <span class="usa-label ">PREVIEW</span>
+              </a>
+            </em>
+          </div>
+        </div>
+
+        <nav role="navigation" class="usa-nav">
+          <div class="usa-nav-inner">
+            <button class="usa-nav-close">
+              <img src="/assets/uswds/img/close.svg" alt="close">
+            </button>
+
+            
+            
+            
+            <ul class="usa-nav-primary usa-accordion">
+              
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/">
+            <span>Home</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/learnmore/">
+            <span>Learn More</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link   usa-current"
+            href="/resources/">
+            <span>Resources</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/docs/">
+            <span>Documentation</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/docs/schemas/">
+            <span>Schema Reference</span>
+          </a>
+          
+          </li>
+          
+              <li>
+                
+          <a class=" usa-nav-link  "
+            href="/community/">
+            <span>Community</span>
+          </a>
+          
+          </li>
+          
+          </ul>
+          
+
+          
+
+          
+          
+          <div class="usa-nav-secondary">
+            
+            <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small js-search-form usa-sr-only">
+              <div style="margin:0;padding:0;display:inline">
+                <input name="utf8" type="hidden" value="&#x2713;" />
+              </div>
+              <input id="affiliate" name="affiliate" type="hidden" value="oscal" />
+              <div role="search">
+                <label for="query" class="usa-sr-only">Enter Search Term(s):</label>
+                <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
+                <button type="submit" name="commit">
+                  <span class="usa-sr-only">Search</span>
+                </button>
+              </div>
+            </form>
+            
+            <ul class="usa-unstyled-list usa-nav-secondary-links">
+              
+              <li class="js-search-button-container">
+                <button class="usa-header-search-button js-search-button">Search</button>
+              </li>
+              
+              
+              
+              <li>
+                <a href="/community/"
+                  >
+                  Get Involved
+                </a>
+              </li>
+              
+              <li>
+                <a href="/contact/"
+                  >
+                  Contact
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+
+
+      </div>
+      </div>
+      </nav>
+      
+    </header>
+    <div class="usa-overlay"></div>
+      
+     
+
+
+
+  
+
+    <main id="main-content"  class="usa-grid usa-section usa-content usa-layout-docs" >
+        
+
+  <aside class="usa-layout-docs-sidenav sidenav ">
+    <nav>
+  <ul class="usa-sidenav-list">
+    
+      
+      
+      
+    <li>
+      <a href="/resources/"
+         
+          >
+         Resources
+      </a>
+      
+    </li>
+    
+      
+      
+      
+    <li>
+      <a href="/resources/roadmap/"
+         
+          >
+         Roadmap
+      </a>
+      
+    </li>
+    
+      
+      
+      
+    <li>
+      <a href="/resources/casestudies/"
+         
+          >
+         Case Studies
+      </a>
+      
+    </li>
+    
+      
+      
+      
+    <li>
+      <a href="/resources/examples/"
+         
+          >
+         Examples
+      </a>
+      
+      <ul class="usa-sidenav-sub_list">
+        
+
+<li>
+  <a href="/resources/examples/assessors/" >Assessors </a>
+</li>
+
+<li>
+  <a href="/resources/examples/authors/" >Authors </a>
+</li>
+
+<li>
+  <a href="/resources/examples/catalogs/"  class="usa-current">Catalogs </a>
+</li>
+
+<li>
+  <a href="/resources/examples/implementations/" >Implementations </a>
+</li>
+
+<li>
+  <a href="/resources/examples/profiles/" >Profiles </a>
+</li>
+
+<li>
+  <a href="/resources/examples/securitypros/" >Security Professionals </a>
+</li>
+
+<li>
+  <a href="/resources/examples/toolvendors/" >Tool Vendors </a>
+</li>
+
+
+      </ul>
+      
+    </li>
+    
+      
+      
+      
+    <li>
+      <a href="/resources/scenarios/"
+         
+          >
+         Scenarios
+      </a>
+      
+    </li>
+    
+      
+      
+      
+    <li>
+      <a href="https://github.com/usnistgov/OSCAL"
+         
+          >
+         GitHub Repo
+      </a>
+      
+    </li>
+    
+  </ul>
+</nav>
+
+  </aside>
+
+
+<div class="usa-layout-docs-main_content">
+  
+    
+    <h1>Catalogs</h1>
+    
+  
+  <h2 id="nist-800-53">NIST 800-53</h2>
+
+<p>This example shows the first portion of how the <strong>AC1</strong> control from NIST SP 800-53 can be rendered in OSCAL via XML within a <code class="highlighter-rouge">&lt;control&gt;</code> element.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;control</span> <span class="na">class=</span><span class="s">"SP800-53"</span> <span class="na">id=</span><span class="s">"ac.1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>ACCESS CONTROL POLICY AND PROCEDURES<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;param</span> <span class="na">id=</span><span class="s">"ac-1_a"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;desc&gt;</span>organization-defined personnel or roles<span class="nt">&lt;/desc&gt;</span>
+    <span class="nt">&lt;value&gt;</span>organization-defined personnel or roles<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;param</span> <span class="na">id=</span><span class="s">"ac-1_b"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;desc&gt;</span>organization-defined frequency<span class="nt">&lt;/desc&gt;</span>
+    <span class="nt">&lt;value&gt;</span>organization-defined frequency<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;param</span> <span class="na">id=</span><span class="s">"ac-1_c"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;desc&gt;</span>organization-defined frequency<span class="nt">&lt;/desc&gt;</span>
+    <span class="nt">&lt;value&gt;</span>organization-defined frequency<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/param&gt;</span>
+  <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>AC-1<span class="nt">&lt;/prop&gt;</span>
+  <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"priority"</span><span class="nt">&gt;</span>P1<span class="nt">&lt;/prop&gt;</span>
+  <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"baseline-impact"</span><span class="nt">&gt;</span>LOW<span class="nt">&lt;/prop&gt;</span>
+  <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"baseline-impact"</span><span class="nt">&gt;</span>MODERATE<span class="nt">&lt;/prop&gt;</span>
+  <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"baseline-impact"</span><span class="nt">&gt;</span>HIGH<span class="nt">&lt;/prop&gt;</span>
+  <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"statement"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>The organization:<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">id=</span><span class="s">"smm_ac-1a."</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>AC-1a.<span class="nt">&lt;/prop&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>Develops, documents, and disseminates to <span class="nt">&lt;insert</span> <span class="na">param-id=</span><span class="s">"ac-1_a"</span> <span class="nt">/&gt;</span>:
+      <span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">id=</span><span class="s">"sms_ac-1a.1."</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>AC-1a.1.<span class="nt">&lt;/prop&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>An access control policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/part&gt;</span>
+      <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">id=</span><span class="s">"sms_ac-1a.2."</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>AC-1a.2.<span class="nt">&lt;/prop&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>Procedures to facilitate the implementation of the access control policy and associated access controls; and<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/part&gt;</span>
+    <span class="nt">&lt;/part&gt;</span>
+    <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">id=</span><span class="s">"smm_ac-1b."</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>AC-1b.<span class="nt">&lt;/prop&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>Reviews and updates the current:<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">id=</span><span class="s">"sms_ac-1b.1."</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>AC-1b.1.<span class="nt">&lt;/prop&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>Access control policy <span class="nt">&lt;insert</span> <span class="na">param-id=</span><span class="s">"ac-1_b"</span> <span class="nt">/&gt;</span>; and
+        <span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/part&gt;</span>
+      <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"item"</span> <span class="na">id=</span><span class="s">"sms_ac-1b.2."</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;prop</span> <span class="na">class=</span><span class="s">"name"</span><span class="nt">&gt;</span>AC-1b.2.<span class="nt">&lt;/prop&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"description"</span><span class="nt">&gt;</span>Access control procedures <span class="nt">&lt;insert</span> <span class="na">param-id=</span><span class="s">"ac-1_c"</span> <span class="nt">/&gt;</span>.
+        <span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/part&gt;</span>
+    <span class="nt">&lt;/part&gt;</span>
+  <span class="nt">&lt;/part&gt;</span>
+  <span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"guidance"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span>This control addresses the establishment of policy and procedures for the effective implementation of selected security controls and control enhancements in the AC family. Policy and procedures reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Security program policies and procedures at the organization level may make the need for system-specific policies and procedures unnecessary. The policy can be included as part of the general information security policy for organizations or conversely, can be represented by multiple policies reflecting the complex nature of certain organizations. The procedures can be established for the security program in general and for particular information systems, if needed. The organizational risk management strategy is a key factor in establishing policy and procedures.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"#pm.9"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/part&gt;</span>
+  <span class="nt">&lt;references&gt;</span>
+    <span class="nt">&lt;ref&gt;</span>
+      <span class="nt">&lt;citation</span> <span class="na">href=</span><span class="s">"http://csrc.nist.gov/publications/PubsSPs.html#800-12"</span><span class="nt">&gt;</span>NIST Special Publication 800-12<span class="nt">&lt;/citation&gt;</span>
+    <span class="nt">&lt;/ref&gt;</span>
+    <span class="nt">&lt;ref&gt;</span>
+      <span class="nt">&lt;citation</span> <span class="na">href=</span><span class="s">"http://csrc.nist.gov/publications/PubsSPs.html#800-100"</span><span class="nt">&gt;</span>NIST Special Publication 800-100<span class="nt">&lt;/citation&gt;</span>
+    <span class="nt">&lt;/ref&gt;</span>
+  <span class="nt">&lt;/references&gt;</span>
+<span class="nt">&lt;/control&gt;</span>
+</code></pre></div></div>
+
+<h3 id="walkthrough">Walkthrough</h3>
+
+<ul>
+  <li>The control class is “SP800-53”. TBD: explain what this means, or skip it?</li>
+  <li>The control id is “ac.1”. This is not the “AC-1” identifier specified in NIST SP 800-53; instead, this is an OSCAL-internal identifier. TBD: is that correct? do the class and id work together so that the identifier is unique within the class?</li>
+  <li>The <code class="highlighter-rouge">&lt;param&gt;</code> elements define values (parameters) for the control that OSCAL users can specify. For example, the first parameter, “ac-1_a”, is for specifying “organization-defined personnel or roles”. The <code class="highlighter-rouge">&lt;param&gt;</code> elements are referenced by statements (explained below).</li>
+  <li>The <code class="highlighter-rouge">&lt;prop&gt;</code> elements specify properties, in this case the control name (“AC-1”), priority (“P1”), and baseline impact (“LOW”, “MODERATE”, and “HIGH”).</li>
+  <li>The <code class="highlighter-rouge">&lt;part&gt;</code> element defines a statement. The statement is the control text itself. As the example shows, the statement is defined in several pieces, with each discrete piece of the statement handled separately and assigned its own identifier. Some pieces reference parameter IDs (param-id) to bring in those user-defined values, while others simply contain chunks of the control’s text. This modular approach to defining the control text enables granular treatment of each part of the control. For example, an auditor would find it easy to indicate which portions of the control an organization has implemented and which portions it has not.</li>
+</ul>
+
+<p>The following snippet from the example above contains the supplemental guidance.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;part</span> <span class="na">class=</span><span class="s">"guidance"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>This control addresses the establishment of policy and procedures for the effective implementation of selected security controls and control enhancements in the AC family. Policy and procedures reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Security program policies and procedures at the organization level may make the need for system-specific policies and procedures unnecessary. The policy can be included as part of the general information security policy for organizations or conversely, can be represented by multiple policies reflecting the complex nature of certain organizations. The procedures can be established for the security program in general and for particular information systems, if needed. The organizational risk management strategy is a key factor in establishing policy and procedures.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"#pm.9"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/part&gt;</span>
+</code></pre></div></div>
+
+<p>Note that unlike the control text, which had a highly structured OSCAL XML representation, the supplemental guidance is a simple paragraph. There is no need to structure it because it is meant as background information for a person to read and would not be part of automation.</p>
+
+<p>The following snippet from the example contains the references.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;references&gt;</span>
+    <span class="nt">&lt;ref&gt;</span>
+      <span class="nt">&lt;citation</span> <span class="na">href=</span><span class="s">"http://csrc.nist.gov/publications/PubsSPs.html#800-12"</span><span class="nt">&gt;</span>NIST Special Publication 800-12<span class="nt">&lt;/citation&gt;</span>
+    <span class="nt">&lt;/ref&gt;</span>
+    <span class="nt">&lt;ref&gt;</span>
+      <span class="nt">&lt;citation</span> <span class="na">href=</span><span class="s">"http://csrc.nist.gov/publications/PubsSPs.html#800-100"</span><span class="nt">&gt;</span>NIST Special Publication 800-100<span class="nt">&lt;/citation&gt;</span>
+    <span class="nt">&lt;/ref&gt;</span>
+  <span class="nt">&lt;/references&gt;</span>
+<span class="nt">&lt;/control&gt;</span>
+</code></pre></div></div>
+
+<p>These contain hyperlinks to additional sources of information for the control.</p>
+
+
+</div>
+    </main>
+
+     <!-- 
+
+
+
+<footer class="usa-footer usa-footer-medium" role="contentinfo">
+
+  
+
+  
+    <div class="usa-grid usa-footer-return-to-top">
+      <a href="#">Return to top</a>
+    </div>
+  
+
+
+
+  
+    
+    
+    
+    
+  <div class="usa-footer-primary-section">
+    <div class="usa-grid">
+      <nav class="usa-footer-nav">
+        <ul class="usa-unstyled-list">
+          
+          <li class="usa-width-one-whole usa-footer-primary-content">
+            <a class="usa-footer-primary-link" href="/docs/">
+              Documentation
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="usa-footer-secondary_section">
+    <div class="usa-grid">
+      <div class="usa-footer-logo usa-width-one-half">
+        
+          
+              <a href="https://nist.gov">
+            
+            <img class="usa-footer-logo-img" src="/assets/img/NIST_logo.svg" alt="NIST">
+            
+              </a>
+            
+          
+        
+
+        
+        <h3 class="usa-footer-logo-heading" style="margin-top: 0;">National Institute of Standards and Technology</h3>
+        
+      </div>
+
+      
+      <div class="usa-footer-contact-links usa-width-one-half">
+        
+        
+          
+            <a class="usa-link-github" href="https://github.com/usnistgov">
+              <span>GitHub</span>
+            </a>
+          
+        
+        
+          <h3 class="usa-footer-contact-heading">Information Technology Laboratory (ITL)<br />Computer Security Division (CSD)<br />Applied Cybersecurity Division (ACD)</h3>
+          
+          
+            <address>
+              
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="tel:1-301-975-8443">
+                      (301) 975-8443
+                    </a>
+                  </p>
+                </div>
+              
+                <div class="usa-footer-primary-content usa-footer-contact_info">
+                  <p>
+                    <a href="mailto:webmaster-csrc@nist.gov">
+                      webmaster-csrc@nist.gov
+                    </a>
+                  </p>
+                </div>
+              
+            </address>
+        
+      
+      
+      </div>
+    </div>
+  </div>
+  
+
+</footer>
+
+
+ -->
+
+
+<footer class="nist-footer">
+  <div class="nist-footer__inner">
+    <div class="nist-footer__menu" role="navigation">
+      <ul>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy">Privacy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#privpolicy">Privacy Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#secnot">Security Notice</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#accesstate">Accessibility Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy">NIST Privacy Program</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/disclaimer">Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/office-director/freedom-information-act">FOIA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy Statement</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.nist.gov/privacy-policy#cookie">Cookie Disclaimer</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity Summary</a>
+        </li>
+        <li class="nist-footer__menu-item ">
+          <a href="https://www.nist.gov/nist-information-quality-standards">NIST Information Quality Standards</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://business.usa.gov/">Business USA</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.commerce.gov/">Commerce.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="https://www.healthcare.gov/">Healthcare.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.science.gov/">Science.gov</a>
+        </li>
+        <li class="nist-footer__menu-item">
+          <a href="http://www.usa.gov/">USA.gov</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nist-footer__logo">
+    <a href="https://www.nist.gov/" title="National Institute of Standards and Technology" class="nist-footer__logo-link"
+      rel="home">
+      <img src="https://pages.nist.gov/nist-header-footer/images/nist_logo_centered_rev.svg" alt="National Institute of Standards and Technology logo" />
+    </a>
+  </div>
+</footer> 
+
+
+
+
+
+  
+<script src="/assets/uswds/js/uswds.min.js" async></script>
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+      var usasearch_config = { siteHandle:"" };
+
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "//search.usa.gov/javascripts/remote.loader.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+
+//]]>
+</script>
+
+
+
+</body>
+
+</html>
