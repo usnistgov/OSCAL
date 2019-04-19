@@ -11,7 +11,7 @@ layout: post
 ## Useful Links
 
 * [GitHub Repository for OSCAL](https://github.com/usnistgov/OSCAL)
-* [Computer Security Resource Center: OSCAL](https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language)
+* [NIST Computer Security Resource Center: OSCAL](https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language)
 
 ## Tools
 

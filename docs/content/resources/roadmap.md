@@ -10,7 +10,7 @@ layout: post
 
 ## The problem solved by OSCAL
 
-With the advent of cloud and the Internet of Things (IoT), Information Technology complexity is increasing to include a broadening of the attack surface and a proliferation of potential security vulnerabilities. IT security professionals must ensure their systems comply with multiple regulatory control catalogs and frameworks such as NIST Special Publication (SP) 800-53, NIST Cybersecurity Framework, ISO/IEC 27001 and 27002, COBIT, PCI DSS, HIPAA, etc., which provide catalogs of security controls and policies. A large percentage of system security planning, auditing, and assessing is done using spreadsheets and documents which drives manual and paper-based compliance processes. This approach is not only labor intensive, it also generates information that is out-of-date shortly after it is documented, often leaving critical risks undiscovered or unaddressed (a phenomenon sometimes referred to as security drift).
+IT security professionals must ensure their systems comply with multiple regulatory control catalogs and frameworks such as NIST Special Publication (SP) 800-53, NIST Cybersecurity Framework, ISO/IEC 27001 and 27002, COBIT, PCI DSS, HIPAA, etc., which provide catalogs of security controls and policies. With the advent of cloud and the Internet of Things (IoT), Information Technology complexity is increasing to include a broadening of the attack surface and a proliferation of potential security vulnerabilities, making system security planning more complicated. A large percentage of system security planning, auditing, and assessing is done using spreadsheets and documents which drives manual and paper-based compliance processes. This approach is not only labor intensive, it also generates information that is out-of-date shortly after it is documented, often leaving critical risks undiscovered or unaddressed (a phenomenon sometimes referred to as security drift).
 
 <img src="/assets/img/oscal-components.png" alt="oscal components" width="800"/>
 
@@ -46,14 +46,15 @@ NIST's Open Security Controls Assessment Language (OSCAL) serves as a "Standard 
 - Share system information across communities decreasing assessment and authorization time
 - Normalize the representation of security control catalogs, regulatory frameworks, and system information using a machine-readable language
 - Ensure lossless transformation between machine- and human-readable content 
-- Assess a system's security state more often, near real-time (ideally continuously), driving continuous assurance
+- Assess a system's security state more often, ideally continuously, driving continuous assurance
 - Assess a system's compliance state against several sets of requirements simultaneously and ensure traceability between the requirements
 - Consistent performance of assessments, regardless of system type
 - Drive a large decrease in the paperwork burden for both information security professionals and vendors
 
 ## The OSCAL approach
 
-OSCAL is being developed leveraging an incremental and agile approach. Through a series of development sprints, increased value is provided with a focus on an 80% solution (Minimally Viable Product (MVP)) that can be implemented in 20% of the time. OSCAL is a community-driven, NIST-led project, with an open invition to the community to participate in the framing and development of this new standard of standards. User stories can be created and submitted directly into GitHub per the requirements defined in the OSCAL CONTRIBUTING.MD. To learn more, [contact us](contact).
+OSCAL is being developed leveraging an incremental and agile approach. Through a series of development sprints, increased value is provided with a focus on an 80% solution (Minimally Viable Product (MVP)) that can be implemented in 20% of the time. OSCAL is a community-driven, NIST-led project, with an open invition to the community to participate in the framing and development of OSCAL. User stories can be created and submitted directly into GitHub per the requirements defined in the OSCAL CONTRIBUTING.MD. To learn more, [contact us](contact).
+<!-- Include link to CONTRIBUTING.MD -->
 
 ### OSCAL Guiding Principles
 
@@ -80,7 +81,7 @@ Phase | Milestone | Status | Description
 :---|:---|:--- |:---
 0 | M1 | Done | Prototype catalog
 1 | M1 | Done | Stabilize catalog; Prototype profile
-2 | M1 / M2 | Near Done (2018 Q3) | Stabilize profile format; Prototype implementation
-3 | M2 / M3 | Planned (2018 Q4) | Stabilize implementation; Start design of framework, assessment, and assessment results
-4 | M3 | Planned (2019 Q1) | Prototype and stabilize framework, assessment, and assessment results
-5 | M4 | Planned (2019 Q2) | Complete OSCAL 1.0
+2 | M1 / M2 | Done | Stabilize profile format; Prototype implementation
+3 | M2 / M3 | In progress | Stabilize implementation; Start design of framework, assessment, and assessment results
+4 | M3 | Planned | Prototype and stabilize framework, assessment, and assessment results
+5 | M4 | Planned | Complete OSCAL 1.0
