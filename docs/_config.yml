@@ -65,6 +65,8 @@ exclude:
 
 search_site_handle: oscal
 
+google_analytics_ua: UA-42404149-54
+
 search: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

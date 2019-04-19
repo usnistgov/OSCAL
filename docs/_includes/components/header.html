@@ -129,27 +129,7 @@
           {% if header.type == 'extended' or header.type == 'extended-mega' %}
           {% assign _secondary = header.secondary %}
           <div class="usa-nav-secondary">
-            {% if site.search_site_handle %}
-            <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small js-search-form usa-sr-only">
-              <div style="margin:0;padding:0;display:inline">
-                <input name="utf8" type="hidden" value="&#x2713;" />
-              </div>
-              <input id="affiliate" name="affiliate" type="hidden" value="{{ site.search_site_handle }}" />
-              <div role="search">
-                <label for="query" class="usa-sr-only">Enter Search Term(s):</label>
-                <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
-                <button type="submit" name="commit">
-                  <span class="usa-sr-only">Search</span>
-                </button>
-              </div>
-            </form>
-            {% endif %}
             <ul class="usa-unstyled-list usa-nav-secondary-links">
-              {% if site.search_site_handle %}
-              <li class="js-search-button-container">
-                <button class="usa-header-search-button js-search-button">Search</button>
-              </li>
-              {% endif %}
               {% assign secondary_links = site.data.navigation[_secondary.links] | default: _secondary.links %}
               {% for _link in secondary_links %}
               <li>
@@ -159,6 +139,17 @@
                 </a>
               </li>
               {% endfor %}
+              {% if site.search_site_handle %}
+              <li>
+                <div role="search">
+                  <form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form" method="get" class="usa-search usa-search-small">
+                    <input id="affiliate" name="affiliate" type="hidden" value="{{ site.search_site_handle }}" />
+                    <input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="search" />
+                    <button type="submit" name="commit" />
+                  </form>
+                </div>
+              </li>
+              {% endif %}
             </ul>
           </div>
           {% endif %}
