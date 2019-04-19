@@ -8,6 +8,17 @@
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" root="kit">
 
+
+<!-- Potential improvements to metaschema: 
+  
+  1. Rename @named to @ref throughout
+  2. Also rename flag/@name to flag/@ref
+  3. Rename define-flag/@datatype to @as for consistency with define-field
+  4. Remove flag/@datatype as duplicative
+  5. Support choice/flag?
+  
+  -->
+  
   <schema-name>FAKEUP Testing Schema</schema-name>
   <short-name>oscal-test</short-name>
   <namespace>urn:fakeup</namespace>
@@ -15,10 +26,10 @@
     <p>A test schema for prototyping and demonstrating the metaschema feature set.</p>
   </remarks>
 
-  <import href="module-metaschema.xml" name="module"/>
+  <import href="module-metaschema.xml"/>
   
-  <define-assembly name="kit" group-as="thing-kit" show-docs="xml json">
-    <flag name="id" datatype="ID" required="yes"/>
+  <define-assembly name="kit" group-as="thing-kit">
+    <flag name="id" required="yes"/>
     <flag name="some_string" required="yes"/>
     <formal-name>Base</formal-name>
     <description>Wrapper for other stuff</description>
@@ -29,7 +40,8 @@
       <p>feature set for conversions: 'succinct JSON'; mapping nodes to element types in collapsed syntax.</p>
     <p>Also to do: find a case of variability in controls and show it off... parts?</p></remarks>
     <model>
-      <assemblies named="thing" group-as="things"/>
+      <field named="another-thing"/>
+      <assemblies named="thing"/>
     </model>    
     <example>
       <kit xmlns="urn:fakeup"
@@ -43,7 +55,12 @@
     </example>
   </define-assembly>
   
-  <define-assembly name="thing" group-as="things" show-docs="xml json">
+  <define-field name="another-thing">
+    <formal-name>Another Thing</formal-name>
+    <description>Yeah....</description>
+  </define-field>
+  
+  <define-assembly name="thing" group-as="things">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="some_string" required="yes"/>
     <formal-name>Base</formal-name>
@@ -54,12 +71,14 @@
     </remarks>
     <model>
       <field named="single-required-field" required="yes"/>
-      <field named="acquired-model"/>
+      <assembly named="acquired-model"/>
       <field named="single-mixed-field" required="yes"  />
-      <fields named="plural-field"       group-as="plurals"/>
-      <fields named="plural-mixed-field" group-as="plurals-mixed"/>
+      <field named="boolean_field"/>
+      <fields named="plural-field"/>
+      <fields named="plural-mixed-field"/>
+      <fields named="plural-flagged-mixed"/>
       <assembly named="single-chunk"/>
-      <assemblies named="chunk-among-chunks" group-as="chunks-together"/>
+      <assemblies named="chunk-among-chunks"/>
       <choice>
         <assembly named="vanilla"/>
         <assembly named="chocolate"/>
@@ -67,7 +86,7 @@
     </model>
   </define-assembly>
   
-  <define-field name="single-required-field" as="string" show-docs="xml json">
+  <define-field name="single-required-field" as="string">
     <formal-name>Single string (required)</formal-name>
     <description>As it says</description>
     <example href="base-example.xml" path="/descendant::single-required-field[1]">
@@ -75,29 +94,28 @@
     </example>
   </define-field>
   
-  <define-field name="acquired-model" as="string" show-docs="xml json" acquire-from="module"/>
-  
-  <define-field name="single-mixed-field" as="mixed" show-docs="xml json">
+  <define-field name="single-mixed-field" as="mixed">
     <formal-name>Single string but with mixed content</formal-name>
     <description>As it says</description>
   </define-field>
   
-  <define-field name="plural-field" group-as="plurals" as="string" show-docs="xml json">
+  <define-field name="plural-field" as="string" group-as="all-in-fun">
     <formal-name>A single occurrence of a plural (ha)</formal-name>
     <description>As it says</description>
   </define-field>
   
-  <define-field name="plural-mixed-field" group-as="plurals-mixed" as="string" show-docs="xml json">
+  <define-field name="plural-mixed-field" group-as="plurals-mixed" as="string">
     <formal-name>Only one plural, but possibly mixed.</formal-name>
     <description>As it says</description>
   </define-field>
   
-  <!--<define-field name="plural-flagged-mixed" group-as="plurals" as="string">
+  <define-field name="plural-flagged-mixed" group-as="plurals" as="string">
+    <flag name="some_string"/>
     <formal-name>Only one plural, but possibly mixed and possibly flagged.</formal-name>
     <description>As it says</description>
-  </define-field>-->
+  </define-field>
   
-  <define-assembly name="single-chunk" show-docs="xml json">
+  <define-assembly name="single-chunk">
     <formal-name>Chunk</formal-name>
     <description>As it says</description>
     <model>
@@ -106,7 +124,8 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="chunk-among-chunks" group-as="chunks-together" show-docs="xml json">
+  <define-assembly name="chunk-among-chunks" group-as="many-chunks">
+    <flag name="boolean_flag"/>
     <formal-name>Chunk among chunks</formal-name>
     <description>As it says</description>
     <model>
@@ -115,7 +134,7 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="vanilla" show-docs="xml json">
+  <define-assembly name="vanilla">
     <formal-name>One Choice</formal-name>
     <description>As it says</description>
     <model>
@@ -123,7 +142,7 @@
     </model>
   </define-assembly>
   
-  <define-assembly name="chocolate" show-docs="xml json">
+  <define-assembly name="chocolate">
     <formal-name>Another Choice</formal-name>
     <description>As it says</description>
     <model>
@@ -131,12 +150,22 @@
     </model>
   </define-assembly>
   
-  <define-flag name="some_string" datatype="string" show-docs="xml json">
-    <formal-name>A string flag</formal-name>
+  <define-flag name="some_string" datatype="string">
+    <formal-name>Some string</formal-name>
     <description>As it says</description>
   </define-flag>
   
-  <define-flag name="id" datatype="ID" show-docs="xml json">
+  <define-field name="boolean_field" as="boolean">
+    <formal-name>A Boolean field</formal-name>
+    <description>As it says</description>
+  </define-field>
+  
+  <define-flag name="boolean_flag" datatype="boolean">
+    <formal-name>A Boolean flag</formal-name>
+    <description>As it says</description>
+  </define-flag>
+  
+  <define-flag name="id" datatype="ID">
     <formal-name>An ID</formal-name>
     <description>As it says</description>
   </define-flag>
@@ -147,5 +176,16 @@
   </define-flag>
   <define-flag name="some_string"/>
   -->
+  
+  <augment name="acquired-model">
+    <formal-name>New name</formal-name>
+    <description>Acquired model, but modified</description>
+    <remarks class="wap">
+      <p>Excellent remarks!</p>
+    </remarks>
+    <example>
+      <acquired-model xmlns="urn:fakeup">okay?</acquired-model>
+    </example>
+  </augment>
   
 </METASCHEMA>

@@ -5,8 +5,13 @@
     version="3.0" xmlns="http://www.w3.org/2005/xpath-functions"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0" expand-text="true">
 
-<!-- Purpose: Produce an XPath-JSON document representing JSON Schema declarations from Metaschema source data. The results are conformant to the rules for the XPath 3.1 definition of an XML format capable of being cast (using the xml-to-json() function) into JSON. -->
-<!-- Note: this XSLT will only be used on its own for development and debugging. It is however imported by `produce-json-converter.xsl` and possibly other stylesheets. -->
+<!-- Purpose: Produce an XPath-JSON document representing JSON Schema declarations from Metaschema source data.
+     The results are conformant to the rules for the XPath 3.1 definition of an XML format capable of being cast
+     (using the xml-to-json() function) into JSON. -->
+    
+<!-- Note: this XSLT will only be used on its own for development and debugging.
+     It is however imported by `produce-json-converter.xsl` and possibly other stylesheets. -->
+    
     <xsl:strip-space elements="METASCHEMA define-assembly define-field model"/>
     
     <xsl:output indent="yes" method="xml"/>
@@ -17,9 +22,14 @@
     
     <xsl:variable name="home" select="/"/>
     
+    <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
+    
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly"
         use="@name"/>
 
+    <!-- Produces composed metaschema (imports resolved) -->
+    <xsl:import href="../lib/metaschema-compose.xsl"/>
+    
     <xsl:template match="/METASCHEMA" expand-text="true">
         <map>
             <string key="$schema">http://json-schema.org/draft-07/schema#</string>
@@ -29,7 +39,7 @@
             </xsl:for-each>
             <string key="type">object</string>
             <map key="definitions">
-                <xsl:apply-templates/>
+                <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
                 <map key="prose">
                     <string key="type">array</string>
                     <map key="items">
@@ -54,30 +64,6 @@
 
     <xsl:template match="METASCHEMA/schema-name | METASCHEMA/short-name | METASCHEMA/remarks"/>
   
-    <!-- @acquire-from indicates the model is elsewhere ... -->
-    <xsl:template priority="5"
-        match="define-assembly[exists(@acquire-from)] |
-        define-field[exists(@acquire-from)] |
-        define-flag[exists(@acquire-from)]"
-        expand-text="true">
-        <xsl:variable name="defining" select="@name"/>
-        <xsl:variable name="module" select="@acquire-from"/>
-        <xsl:variable name="definition"
-            select="/METASCHEMA/import[@name = $module]/key('definition-by-name', $defining, document(@href, .))"/>
-        <xsl:choose>
-            <xsl:when test="not(root() is $home )">
-                <xsl:comment> Schema definitions cannot be imported indirectly: check { local-name() || '[@name=''' || $defining || ''']'} acquired from '{ $module }' at { /METASCHEMA/import[@name=$module]/@href } </xsl:comment>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates select="$definition"/>
-                <xsl:if test="empty($definition)">
-                    <xsl:comment> No definition found for { $defining } in { $module } at { /METASCHEMA/import[@name=$module]/@href }</xsl:comment>
-                </xsl:if>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-    
-    
     <xsl:template match="define-flag"/>
     
     <xsl:template match="define-assembly | define-field">
@@ -105,14 +91,16 @@
     
 
     <xsl:template match="define-assembly[@address=flag/@name] | define-field[@address=flag/@name]">
-        <map key="{ @group-as }">
-            <string key="$id">#/definitions/{@group-as}</string>
-            <string key="type">object</string>
-            <map key="additionalProperties">
+        <xsl:if test="matches(@group-as,'\S')">
+            <map key="{ @group-as }">
+                <string key="$id">#/definitions/{@group-as}</string>
                 <string key="type">object</string>
-                <string key="$ref">#/definitions/{ @name }</string>
+                <map key="additionalProperties">
+                    <string key="type">object</string>
+                    <string key="$ref">#/definitions/{ @name }</string>
+                </map>
             </map>
-        </map>
+        </xsl:if>
         <map key="{ @name }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
@@ -134,7 +122,7 @@
         <map key="{ @name (: @group-as | @name[empty(../@group-as)] :) }">
             <xsl:apply-templates select="formal-name, description"/>
             <string key="$id">#/definitions/{@name}</string>
-            <string key="type">string</string>
+            <xsl:apply-templates select="." mode="object-type"/>
         </map>
     </xsl:template>
 
@@ -176,14 +164,14 @@
     </xsl:template>
     
     <xsl:template match="define-field[@as = 'mixed']" mode="properties">
-        <xsl:apply-templates mode="declaration" select="flag, model"/>
+        <xsl:apply-templates mode="declaration" select="flag"/>
         <map key="RICHTEXT">
             <string key="type">string</string>
         </map>
     </xsl:template>
 
     <xsl:template match="define-field" mode="properties">
-        <xsl:apply-templates mode="declaration" select="flag, model"/>
+        <xsl:apply-templates mode="declaration" select="flag"/>
         <map key="STRVALUE">
             <string key="type">string</string>
         </map>
@@ -197,9 +185,8 @@
         </map>
     </xsl:template>
 
-
     <xsl:template mode="declaration" match="assemblies | fields">
-        <map key="{ @group-as }">
+        <map key="{ key('definition-by-name',@named)/@group-as }">
             <string key="type">array</string>
             <map key="items">
                 <string key="$ref">#/definitions/{ @named }</string>
@@ -208,7 +195,7 @@
     </xsl:template>
 
     <xsl:template mode="declaration" match="assemblies[matches(@address,'\S')] | fields[matches(@address,'\S')]">
-        <map key="{ @group-as }">
+        <map key="{ key('definition-by-name',@named)/@group-as }">
             <string key="type">object</string>
             <string key="$ref">#/definitions/{ @group-as }</string>
         </map>
@@ -216,39 +203,30 @@
 
     <xsl:template match="*" mode="object-type">
         <string key="type">object</string>
-        
-    </xsl:template>
+            </xsl:template>
 
-    <xsl:template match="define-field[empty(flag)]" mode="object-type">
+    <xsl:template match="define-field" mode="object-type">
         <string key="type">string</string>
     </xsl:template>
-
+    
+    <xsl:template match="define-field[@as='boolean']" mode="object-type">
+        <string key="type">boolean</string>
+    </xsl:template>
+    
     <xsl:template mode="declaration" match="assembly | field">
-
         <map key="{@named}">
             <xsl:apply-templates select="key('definition-by-name', @named)" mode="object-type"/>
             <string key="$ref">#/definitions/{ @named }</string>
         </map>
     </xsl:template>
 
-    
-    
     <xsl:template mode="declaration" match="prose">
         <map key="prose">
             <string key="$ref">#/definitions/prose</string>
         </map>
     </xsl:template>
     
-    
     <xsl:template match="prose" name="prose"/>
-    <!--<xsl:template match="prose" name="prose">
-        <map key="prose">
-            <string key="type">array</string>
-            <map key="items">
-                <xsl:comment>can't be right</xsl:comment>
-                <string key="$ref">#/definitions/prose</string>
-            </map>
-        </map>
-    </xsl:template>-->
+    
 
 </xsl:stylesheet>

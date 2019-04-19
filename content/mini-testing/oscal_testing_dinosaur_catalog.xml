@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
 <?xml-model href="../../schema/xml/Schematron/oscal-links.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="../../schema/xml/RNC/oscal-core.rnc" type="application/relax-ng-compact-syntax"?>
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-catalog-schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="xyz" model-version="abc">
     <title>Skeleton catalog</title>
     <section>
         <title>This catalog</title>
@@ -30,8 +31,9 @@
         <group><title>Predators</title>
             <control id="allosaur">
                 <title>Allosaurus</title>
-              <param id="scary"><desc>List anything scary about this dinosaur</desc>
-                <label>teeth, claws, tail for example</label></param>
+              <param id="scary">
+                <label>teeth, claws, tail for example</label>
+                  <desc>List anything scary about this dinosaur</desc></param>
               <prop class="trans">Other Lizard</prop>
               <part class="desc" id="allosaur-desc"><p>Vicious predator, ancestor of more vicious predators.</p></part>
             </control>

@@ -41,9 +41,11 @@
       </json>
    </xsl:template>
    <xsl:template name="prose">
-      <xsl:if test="exists(p | ul | ol | pre)">
+      <xsl:variable name="blocks"
+                    select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"/>
+      <xsl:if test="exists($blocks)">
          <array key="prose">
-            <xsl:apply-templates mode="md" select="p | ul | ol | pre"/>
+            <xsl:apply-templates mode="md" select="$blocks"/>
          </array>
       </xsl:if>
    </xsl:template>
@@ -59,6 +61,38 @@
       <string>
          <xsl:apply-templates mode="md"/>
       </string>
+   </xsl:template>
+   <xsl:template mode="md" match="h1 | h2 | h3 | h4 | h5 | h6">
+      <string>
+         <xsl:apply-templates select="." mode="mark"/>
+         <xsl:apply-templates mode="md"/>
+      </string>
+   </xsl:template>
+   <xsl:template mode="mark" match="h1"># </xsl:template>
+   <xsl:template mode="mark" match="h2">## </xsl:template>
+   <xsl:template mode="mark" match="h3">### </xsl:template>
+   <xsl:template mode="mark" match="h4">#### </xsl:template>
+   <xsl:template mode="mark" match="h5">##### </xsl:template>
+   <xsl:template mode="mark" match="h6">###### </xsl:template>
+   <xsl:template mode="md" match="table">
+      <xsl:apply-templates select="*" mode="md"/>
+   </xsl:template>
+   <xsl:template mode="md" match="tr">
+      <string>
+         <xsl:apply-templates select="*" mode="md"/>
+      </string>
+      <xsl:if test="empty(preceding-sibling::tr)">
+         <string>
+            <xsl:text>|</xsl:text>
+            <xsl:for-each select="th | td"> --- |</xsl:for-each>
+         </string>
+      </xsl:if>
+   </xsl:template>
+   <xsl:template mode="md" match="th | td">
+      <xsl:if test="empty(preceding-sibling::*)">|</xsl:if>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates mode="md"/>
+      <xsl:text> |</xsl:text>
    </xsl:template>
    <xsl:template mode="md" priority="1" match="pre">
       <string>```</string>
@@ -129,16 +163,37 @@
       <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
    </xsl:template>
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
+   <xsl:template match="acquired-model" mode="xml2json">
+      <map key="acquired-model">
+         <xsl:if test="exists(acquired-field)">
+            <array key="acquired-fields">
+               <xsl:apply-templates select="acquired-field" mode="#current"/>
+            </array>
+         </xsl:if>
+         <xsl:call-template name="prose"/>
+      </map>
+   </xsl:template>
+   <xsl:template match="acquired-field" mode="xml2json">
+      <string key="acquired-field">
+         <xsl:apply-templates mode="md"/>
+      </string>
+   </xsl:template>
    <xsl:template match="kit" mode="xml2json">
       <map key="kit">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@some_string"/>
+         <xsl:apply-templates select="another-thing" mode="#current"/>
          <xsl:if test="exists(thing)">
             <array key="things">
                <xsl:apply-templates select="thing" mode="#current"/>
             </array>
          </xsl:if>
       </map>
+   </xsl:template>
+   <xsl:template match="another-thing" mode="xml2json">
+      <string key="another-thing">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
    <xsl:template match="thing" mode="xml2json">
       <map key="thing">
@@ -147,8 +202,9 @@
          <xsl:apply-templates select="single-required-field" mode="#current"/>
          <xsl:apply-templates select="acquired-model" mode="#current"/>
          <xsl:apply-templates select="single-mixed-field" mode="#current"/>
+         <xsl:apply-templates select="boolean_field" mode="#current"/>
          <xsl:if test="exists(plural-field)">
-            <array key="plurals">
+            <array key="all-in-fun">
                <xsl:apply-templates select="plural-field" mode="#current"/>
             </array>
          </xsl:if>
@@ -157,9 +213,14 @@
                <xsl:apply-templates select="plural-mixed-field" mode="#current"/>
             </array>
          </xsl:if>
+         <xsl:if test="exists(plural-flagged-mixed)">
+            <array key="plurals">
+               <xsl:apply-templates select="plural-flagged-mixed" mode="#current"/>
+            </array>
+         </xsl:if>
          <xsl:apply-templates select="single-chunk" mode="#current"/>
          <xsl:if test="exists(chunk-among-chunks)">
-            <array key="chunks-together">
+            <array key="many-chunks">
                <xsl:apply-templates select="chunk-among-chunks" mode="#current"/>
             </array>
          </xsl:if>
@@ -169,11 +230,6 @@
    </xsl:template>
    <xsl:template match="single-required-field" mode="xml2json">
       <string key="single-required-field">
-         <xsl:apply-templates mode="md"/>
-      </string>
-   </xsl:template>
-   <xsl:template match="acquired-model" mode="xml2json">
-      <string key="acquired-model">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
@@ -192,6 +248,14 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
+   <xsl:template match="plural-flagged-mixed" mode="xml2json">
+      <map key="plural-flagged-mixed">
+         <xsl:apply-templates mode="as-string" select="@some_string"/>
+         <xsl:apply-templates mode="as-string" select=".">
+            <xsl:with-param name="key">STRVALUE</xsl:with-param>
+         </xsl:apply-templates>
+      </map>
+   </xsl:template>
    <xsl:template match="single-chunk" mode="xml2json">
       <map key="single-chunk">
          <xsl:apply-templates select="single-required-field" mode="#current"/>
@@ -200,6 +264,7 @@
    </xsl:template>
    <xsl:template match="chunk-among-chunks" mode="xml2json">
       <map key="chunk-among-chunks">
+         <xsl:apply-templates mode="as-string" select="@boolean_flag"/>
          <xsl:apply-templates select="single-required-field" mode="#current"/>
          <xsl:call-template name="prose"/>
       </map>
@@ -213,5 +278,10 @@
       <map key="chocolate">
          <xsl:apply-templates select="single-required-field" mode="#current"/>
       </map>
+   </xsl:template>
+   <xsl:template match="boolean_field" mode="xml2json">
+      <string key="boolean_field">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
 </xsl:stylesheet>

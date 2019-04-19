@@ -15,14 +15,16 @@
         <xs:element ref="m:short-name"/>
         <xs:element ref="m:namespace" minOccurs="1"/>
         <xs:element ref="m:remarks" minOccurs="0"/>
-        <xs:element ref="m:import"  minOccurs="0" maxOccurs="unbounded"/>
         <xs:choice maxOccurs="unbounded">
+          <xs:element ref="m:import"/>
           <xs:element ref="m:define-assembly"/>
           <xs:element ref="m:define-field"/>
           <xs:element ref="m:define-flag"/>
+          <xs:element ref="m:augment"/>
         </xs:choice>
       </xs:sequence>
       <xs:attribute name="root" use="required" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-assembly">
@@ -31,7 +33,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
 
         <xs:element name="model" minOccurs="0">
           <xs:complexType>
@@ -54,8 +56,7 @@
       <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="show-docs"/>
-      <xs:attribute name="acquire-from" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-field">
@@ -64,11 +65,10 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
       <xs:attribute name="as">
-        
           <xs:simpleType>
             <xs:restriction base="xs:string">
               <xs:enumeration value="boolean" />
@@ -77,12 +77,10 @@
               <xs:enumeration value="mixed" />
             </xs:restriction>
           </xs:simpleType>
-        
       </xs:attribute>
       <xs:attribute name="group-as" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="show-docs"/>
-      <xs:attribute name="acquire-from" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="define-flag">
@@ -90,21 +88,12 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
-        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
       <xs:attribute name="datatype" use="required" type="xs:NCName"/>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
-      <xs:attribute name="show-docs">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="xml" />
-            <xs:enumeration value="json" />
-            <xs:enumeration value="xml json" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="acquire-from" type="xs:NCName"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
@@ -125,6 +114,8 @@
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="m:p"/>
       </xs:sequence>
+      <xs:attribute name="class"  type="xs:NMTOKENS"/>
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="title">
@@ -154,7 +145,6 @@
   <xs:element name="import">
     <xs:complexType mixed="true">
       <xs:attribute name="href" type="xs:anyURI" use="required"/>
-      <xs:attribute name="name" type="xs:NCName" use="required"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="assembly">
@@ -173,7 +163,6 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="address" type="xs:NCName"/>
-      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -193,7 +182,6 @@
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
-      <xs:attribute name="group-as" use="required" type="xs:NCName"/>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
@@ -256,9 +244,18 @@
     </xs:sequence>
       <xs:attribute name="href" type="xs:anyURI"/>
       <xs:attribute name="path" type="xs:string"/>
-      
-      
+      <xs:attribute name="module" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  
+  <xs:element name="augment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="m:formal-name"/>
+        <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

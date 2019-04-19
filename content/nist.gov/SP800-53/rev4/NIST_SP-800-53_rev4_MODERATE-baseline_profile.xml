@@ -2,25 +2,26 @@
         runtime parameter settings: $baseline='MODERATE'-->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          id="uuid-ad080a41-8219-4dcf-8140-2e8c2163b0c9">
-   <title>SP800-53 MODERATE BASELINE IMPACT</title>
+   <title>SP800-53 MODERATE IMPACT BASELINE</title>
    
    <metadata>
-      <title>NIST Special Publication 800-53 Revision 4 MODERATE BASELINE</title>
+      <title>NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE</title>
       <publication-date>September 2018</publication-date>
       
-      <hlink rel="self" media-type="application/xml" href="...">
-         <hash> or signature </hash>
-      </hlink>
-      
-      <resource type="catalog">
-         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
-            Information Systems and Organizations</title>
-         <doc-id type="root-id">uuid-4dfe11da-68c9-42ae-9646-475987433ef6</doc-id>
-         <hlink href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/x-xml+oscal.metaschema"/>
+      <resource rel="self">
+         <hlink media-type="application/xml" href="...">
+            <hash> or signature </hash>
+         </hlink>
       </resource>
       
-      <resource type="metaschema">
-         <hlink href="oscal-profile-metaschema.xml" rel="resource"/>
+      <resource rel="catalog">
+         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
+            Information Systems and Organizations</title>
+         <doc-id type="root-id">uuid-71c1a30f-27d6-499f-a6d1-3c6167f9c716</doc-id>
+         <hlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/x-xml+oscal.metaschema"/>
+      </resource>
+      <resource rel="metaschema">
+         <hlink href="oscal-profile-metaschema.xml"/>
       </resource>
       
       <role id="creator"><title>Document Creator</title></role>
@@ -310,7 +311,7 @@
       </include>
    </import>
    <merge>
-      <as-is/>
+      <as-is>true</as-is>
    </merge>
    <modify>
       <alter control-id="ac-1">

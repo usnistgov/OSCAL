@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-metadata-schema.xsd"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-profile-schema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0">
     <title>NIST Special Publication 800-53 Revision 4 HIGH BASELINE</title>
     <publication-date>September 2018</publication-date>
     
-    <link rel="self" media-type="application/xml" href="...">
-        <hash> or signature </hash>
-    </link>
     
-    <resource type="catalog">
+    <resource rel="self">
+        <hlink media-type="application/xml" href="...">
+            <hash> or signature </hash>
+        </hlink>
+    </resource>
+    
+    <resource rel="catalog">
         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
             Information Systems and Organizations</title>
         <doc-id type="root-id">uuid-3038ecb5-9a61-4018-8396-a81ef68a3533</doc-id>
-        <link href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/xml">
+        <hlink href="NIST_SP-800-53_rev4_catalog.xml" rel="resource" media-type="application/xml">
             <hash> or signature </hash>
-        </link>
+        </hlink>
     </resource>
     
-    <resource type="metaschema">
-        <link href="oscal-profile-metaschema.xml" rel="resource"/>
+    <resource rel="metaschema">
+        <hlink href="oscal-profile-metaschema.xml" rel="resource"/>
     </resource>
    
     <role id="creator"><title>Document Creator</title></role>

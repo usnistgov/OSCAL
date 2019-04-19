@@ -4,7 +4,29 @@
     "$comment" : "FAKEUP Testing Schema: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "kit" : 
+    { "acquired-model" : 
+      { "title" : "Acquired Model",
+        "description" : "A string field, with mixed content",
+        "$id" : "#/definitions/acquired-model",
+        "type" : "object",
+        "properties" : 
+        { "acquired-fields" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/acquired-field" } },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "acquired-fields",
+            "prose" ] } },
+      "acquired-field" : 
+      { "title" : "Acquired Model",
+        "description" : "A string field, with mixed content",
+        "$id" : "#/definitions/acquired-field",
+        "type" : "string" },
+      "kit" : 
       { "title" : "Base",
         "description" : "Wrapper for other stuff",
         "$id" : "#/definitions/kit",
@@ -14,6 +36,9 @@
           { "type" : "string" },
           "some_string" : 
           { "type" : "string" },
+          "another-thing" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/another-thing" },
           "things" : 
           { "type" : "array",
             "items" : 
@@ -23,7 +48,13 @@
         { "enum" : 
           [ "id",
             "some_string",
-            "things" ] } },
+            "another-thing",
+            "thing" ] } },
+      "another-thing" : 
+      { "title" : "Another Thing",
+        "description" : "Yeah....",
+        "$id" : "#/definitions/another-thing",
+        "type" : "string" },
       "thing" : 
       { "title" : "Base",
         "description" : "Wrapper for other stuff",
@@ -38,12 +69,15 @@
           { "type" : "string",
             "$ref" : "#/definitions/single-required-field" },
           "acquired-model" : 
-          { "type" : "string",
+          { "type" : "object",
             "$ref" : "#/definitions/acquired-model" },
           "single-mixed-field" : 
           { "type" : "string",
             "$ref" : "#/definitions/single-mixed-field" },
-          "plurals" : 
+          "boolean_field" : 
+          { "type" : "boolean",
+            "$ref" : "#/definitions/boolean_field" },
+          "all-in-fun" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/plural-field" } },
@@ -51,10 +85,14 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/plural-mixed-field" } },
+          "plurals" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/plural-flagged-mixed" } },
           "single-chunk" : 
           { "type" : "object",
             "$ref" : "#/definitions/single-chunk" },
-          "chunks-together" : 
+          "many-chunks" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/chunk-among-chunks" } },
@@ -72,21 +110,18 @@
             "single-required-field",
             "acquired-model",
             "single-mixed-field",
-            "plurals",
-            "plurals-mixed",
+            "boolean_field",
+            "plural-field",
+            "plural-mixed-field",
+            "plural-flagged-mixed",
             "single-chunk",
-            "chunks-together",
+            "chunk-among-chunks",
             "vanilla",
             "chocolate" ] } },
       "single-required-field" : 
       { "title" : "Single string (required)",
         "description" : "As it says",
         "$id" : "#/definitions/single-required-field",
-        "type" : "string" },
-      "acquired-model" : 
-      { "title" : "Acquired Model",
-        "description" : "A string field, with mixed content",
-        "$id" : "#/definitions/acquired-model",
         "type" : "string" },
       "single-mixed-field" : 
       { "title" : "Single string but with mixed content",
@@ -103,6 +138,21 @@
         "description" : "As it says",
         "$id" : "#/definitions/plural-mixed-field",
         "type" : "string" },
+      "plural-flagged-mixed" : 
+      { "title" : "Only one plural, but possibly mixed and possibly flagged.",
+        "description" : "As it says",
+        "$id" : "#/definitions/plural-flagged-mixed",
+        "type" : "object",
+        "properties" : 
+        { "some_string" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "some_string" ] } },
       "single-chunk" : 
       { "title" : "Chunk",
         "description" : "As it says",
@@ -125,7 +175,9 @@
         "$id" : "#/definitions/chunk-among-chunks",
         "type" : "object",
         "properties" : 
-        { "single-required-field" : 
+        { "boolean_flag" : 
+          { "type" : "string" },
+          "single-required-field" : 
           { "type" : "string",
             "$ref" : "#/definitions/single-required-field" },
           "prose" : 
@@ -133,7 +185,8 @@
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "single-required-field",
+          [ "boolean_flag",
+            "single-required-field",
             "prose" ] } },
       "vanilla" : 
       { "title" : "One Choice",
@@ -161,10 +214,15 @@
         "propertyNames" : 
         { "enum" : 
           [ "single-required-field" ] } },
+      "boolean_field" : 
+      { "title" : "A Boolean field",
+        "description" : "As it says",
+        "$id" : "#/definitions/boolean_field",
+        "type" : "boolean" },
       "prose" : 
       { "type" : "array",
         "items" : 
         { "type" : "string" } } },
     "properties" : 
-    { "" : 
-      { "$ref" : "#/definitions/" } } }
+    { "kit" : 
+      { "$ref" : "#/definitions/kit" } } }
