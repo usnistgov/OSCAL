@@ -7,16 +7,22 @@ layout: post
 topnav: documentation
 sidenav: documentation
 subnav:
-  - text: Catalog
-    href: /docs/components/catalog/
   - text: Control
     href: /docs/components/control/
+  - text: Catalog
+    href: /docs/components/catalog/
   - text: Profile
     href: /docs/components/profile/
 sticky_sidenav: true
 ---
 
-The plans for OSCAL involve all the components depicted in the following diagram:
+OSCAL, or any security documentation using current best practices, is all about **controls** and **catalogs**. A control represents a security requirement, guideline, procedure or activity. A catalog is an organized collection of controls.
+
+However, both controls and catalogs represent abstractions. In order to apply these ideas to real systems, we need documents that talk about the real world. The other layers of OSCAL's model together make up a component architecture that enables such application, through the Risk Management Framework up from policy definition (layers 1 and 2), planning and authorization (on OSCAL layer 3, the Implementation layer), and through to Assessment and Assessment Results (on layers to come).
+
+Specifically, the design of the Profile layer, in relation to the Catalog layer, reflects the use of control catalogs as outlined in NIST SP800-53 -- specifically the design of "baselines" and "overlays" over a base catalog. (And then, as we see in the real world, overlays on the overlays.) In OSCAL, this idea is generalized to be applicable to any set of information presented in catalog form. Thus the idea of tailoring in application can be applied not only to security guidelines in general, but also in mixed environments that have to address requirements in more than one catalog at a time.
+
+All these components except controls (which are present in all layers) are depicted in the following diagram:
 
 <img src="/assets/img/oscal-components.png" alt="oscal components" width="800" />
 

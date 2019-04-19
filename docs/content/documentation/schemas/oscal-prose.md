@@ -22,7 +22,7 @@ In addition, there are contexts in OSCAL where prose usage may be further constr
 
 ## Markdown compatibility
 
-OSCAL also maintains a mapping from its HTML-like tagging for prose into a Markdown syntax. This mapping is shown below. Since markdown (as an array of string objects) is our syntax of choice for representing unstructured prose in JSON, transparent and lossless bidirectional mapping between the OSCAL markup (tag) representation, into its Markdown equivalent, is a requirement.
+OSCAL also maintains a mapping from its HTML-like tagging for prose into a Markdown syntax. Since markdown (as an array of string objects) is our syntax of choice for representing unstructured prose in JSON, transparent and lossless bidirectional mapping between the OSCAL markup (tag) representation, into its Markdown equivalent, is a requirement.
 
 When in doubt, we look to CommonMark for guidance on syntax, largely because it is more rigorously tested than many others.
 

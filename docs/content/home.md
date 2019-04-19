@@ -5,17 +5,18 @@ permalink: /
 layout: home
 
 hero:
-  image: /assets/img/security-hero4.jpg
+  image: /assets/img/automation-hero.png
   callout:
-    alt: "OSCAL:"
-    text: Documentary Foundations for Systems Security
+#    alt: "OSCAL:"
+#    text: Documentary Foundations for Systems Security
+     text: More Insight, Less Paper
   button:
     href: /getinvolved/
     text: Get Involved
   link:
     text: Learn more about OSCAL
     href: /learnmore/
-  content: OSCAL provides standard data formats for automation of systems security assessments and continuous monitoring.
+  content: Standard data formats for systems security planning, assessment and monitoring.
 
 tagline: A “Standard for Standards” for Automating Security Assessment & Continuous Monitoring
 intro: |
