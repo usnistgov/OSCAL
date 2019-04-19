@@ -9,7 +9,7 @@
 # `primary.links` to "primary":
 #
 # primary:
-#   links: primary
+#   links: primary  
 #
 primary:
   - text: Home

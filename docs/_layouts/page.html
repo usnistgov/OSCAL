@@ -16,12 +16,12 @@ main:
       {% if page.permalink contains 'xml' %}
       <div>
         <div style="float:left"><h1>{{ page.title }}</h1></div>
-        <div style="float:right"><button disabled>XML</button><a href="/docs/schemas/oscal-catalog-json/"><button>JSON</button></a></div>
+        <div style="float:right"><button disabled>XML</button><a href="{% if page.model contains 'catalog' %}/docs/schemas/oscal-catalog-json/{% elsif page.model contains 'profile' %}/docs/schemas/oscal-profile-json/{% endif %}"><button>JSON</button></a></div>
       </div>
       {% elsif page.permalink contains 'json' %}
       <div>
         <div style="float:left"><h1>{{ page.title }}</h1></div>
-        <div style="float:right"><a href="/docs/schemas/oscal-catalog-json/"><button>XML</button></a><button disabled>JSON</button></div>
+        <div style="float:right"><a href="{% if page.model contains 'catalog' %}/docs/schemas/oscal-catalog-xml/{% elsif page.model contains 'profile' %}/docs/schemas/oscal-profile-xml/{% endif %}"><button>XML</button></a><button disabled>JSON</button></div>
       </div>
       {% endif %}
     {% else %}
