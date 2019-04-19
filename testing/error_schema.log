@@ -1,0 +1,1 @@
+<string>:4:0:ERROR:SCHEMASV:SCHEMAV_ELEMENT_CONTENT: Element '{http://csrc.nist.gov/ns/oscal/1.0}publication_information': This element is not expected. Expected is one of ( {http://csrc.nist.gov/ns/oscal/1.0}metadata, {http://csrc.nist.gov/ns/oscal/1.0}import, {http://csrc.nist.gov/ns/oscal/1.0}merge, {http://csrc.nist.gov/ns/oscal/1.0}modify ).
