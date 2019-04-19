@@ -7,11 +7,11 @@ layout: post
 topnav: documentation
 sidenav: documentation
 subnav:
+  - text: Control
+    href: /docs/components/control/
   - text: Catalog
     href: /docs/components/catalog/
     current: true
-  - text: Control
-    href: /docs/components/control/
   - text: Profile
     href: /docs/components/profile/
 sticky_sidenav: true

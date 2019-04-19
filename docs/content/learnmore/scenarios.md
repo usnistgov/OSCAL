@@ -1,9 +1,9 @@
 ---
 title: Scenarios
 description: Scenarios
-permalink: /resources/scenarios/
-topnav: resources
-sidenav: resources
+permalink: /learnmore/scenarios/
+topnav: learnmore
+sidenav: learnmore
 sticky_sidenav: true
 layout: post
 ---

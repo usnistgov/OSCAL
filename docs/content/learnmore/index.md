@@ -20,48 +20,18 @@ The ability of OSCAL to streamline and standardize the security control document
 
 ## How OSCAL Supports Your Role
 
-<ul class="usa-accordion-bordered">
-  <li>
-    <button class="usa-accordion-button"
-      aria-expanded="false"
-      aria-controls="creators">
-      OSCAL for Authors of Policies, Guidelines and Standards
-    </button>
-    <div id="creators" class="usa-accordion-content">
-{% include_relative contentcreators.html %}
-    </div>
-  </li>
-  <li>
-    <button class="usa-accordion-button"
-      aria-expanded="false"
-      aria-controls="security_pros">
-      OSCAL for Security Professionals
-    </button>
-    <div id="security_pros" class="usa-accordion-content">
-{% include_relative securitypros.html %}
-    </div>
-  </li>
-  <li>
-    <button class="usa-accordion-button"
-      aria-expanded="false"
-      aria-controls="assessors">
-      OSCAL for Assessors
-    </button>
-    <div id="assessors" class="usa-accordion-content">
-{% include_relative assessors.html %}
-    </div>
-  </li>
-  <li>
-    <button class="usa-accordion-button"
-      aria-expanded="false"
-      aria-controls="tool-devs">
-      OSCAL for Tool Developers
-    </button>
-    <div id="tool-devs" class="usa-accordion-content">
-{% include_relative toolvendors.html %}
-    </div>
-  </li>
-</ul>
+
+Our stakeholders are segmented, as is our industry, into constituencies with various needs. Please decide which category or categories you fit into, then go from there.
+
+- [Security Professionals](/learnmore/securitypros/) -- You are responsible for documenting security controls and how they are applied within a system.
+
+- [Assessors](/learnmore/assessors/) -- You are responsible for assessing security-related information produced by others.
+
+- [Tool Developers](/learnmore/tooldevelopers/) -- You build tools and utilities to help other players, enabling them to do more work more consistently, thoroughly, accurately and easily.
+
+- [Policy Authors](/learnmore/contentcreators/) -- You write policy documents (catalogs or profiles/baselines/overlays) defining, characterizing and customizing security controls for others to use.
+
+
 
 
 [Learn More](/docs/)

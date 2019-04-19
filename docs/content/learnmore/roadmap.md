@@ -1,9 +1,9 @@
 ---
 title: Roadmap
 description: OSCAL Roadmap
-permalink: /resources/roadmap/
-topnav: resources
-sidenav: resources
+permalink: /learnmore/roadmap/
+topnav: learnmore
+sidenav: learnmore
 sticky_sidenav: true
 layout: post
 ---

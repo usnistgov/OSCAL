@@ -7,10 +7,10 @@ layout: post
 topnav: documentation
 sidenav: documentation
 subnav:
-  - text: Catalog
-    href: /docs/components/catalog/
   - text: Control
     href: /docs/components/control/
+  - text: Catalog
+    href: /docs/components/catalog/
   - text: Profile
     href: /docs/components/profile/
     current: true

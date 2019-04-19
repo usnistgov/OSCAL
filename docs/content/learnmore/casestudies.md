@@ -1,9 +1,9 @@
 ---
 title: Case Studies
 description: Case Studies
-permalink: /resources/casestudies/
-sidenav: resources
-topnav: resources
+permalink: /learnmore/casestudies/
+topnav: learnmore
+sidenav: learnmore
 sticky_sidenav: true
 layout: post
 ---
