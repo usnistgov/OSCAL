@@ -11,7 +11,7 @@ hero:
 #    text: Documentary Foundations for Systems Security
      text: More Insight, Less Paper
   button:
-    href: /getinvolved/
+    href: /community/
     text: Get Involved
   link:
     text: Learn more about OSCAL
