@@ -14,7 +14,7 @@ Each OSCAL **model** comes with an XSD (W3C XML Schema) and a corresponding JSON
 
 ### XML and/or JSON
 
-The OSCAL project is producing schemas to describe and validate data in two formats, XML and JSON. These are produced within a framework that provides for semantic unification in the form of a meta-model, which is subsequently processed and written out into two different expressions:
+The OSCAL project is producing schemas to describe and validate data in two formats, XML and JSON. These are produced within a framework that provides for semantic unification in the form of a metamodel, which is subsequently processed and written out into two different expressions:
 
 * An XSD (W3C XML Schema) that describes an XML tag set
 * A JSON Schema (v7) that describes a JSON data object
@@ -39,10 +39,3 @@ Find documentation for each of the models linked on the left.
 
 Additionally, a separate page describes the 
 [OSCAL Prose Model](/docs/schemas/oscal-prose/), which is shared by each of the component models.
-
-### Currently available
-
-- Catalog XML Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-xml-schema)
-- Catalog JSON Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#catalog-json-schema)
-- Profile XML Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#profile-xml-schema)
-- Profile JSON Schema (hyperlink to: https://pages.nist.gov/OSCAL/schema/#profile-json-schema)
