@@ -2,10 +2,19 @@
 title: Background
 description: Background
 permalink: /learnmore/
-
 layout: post
 sidenav: learnmore
 sticky_sidenav: true
+subnav:
+  - text: For Security Professionals
+    href: /learnmore/securitypros/
+  - text: For Assessors
+    href: /learnmore/assessors/
+  - text: For Tool Developers
+    href: /learnmore/tooldevelopers/
+  - text: For Policy Authors
+    href: /learnmore/contentcreators/
+
 ---
 
 ## What is OSCAL?
