@@ -18,7 +18,9 @@ sticky_sidenav: true
 
 [See examples of OSCAL profiles](/resources/examples/profiles/)
 
-An OSCAL profile is a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Commonly referred to as a baseline or overlay, examples of profiles include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements. OSCAL profiles are representations of their catalogs configured for use by organizations or in specialized operational contexts. As such, they can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:
+An OSCAL profile is a set of security requirements, where meeting each requirement necessitates implementing one or more security controls. Commonly referred to as *baselines* or *overlays* (in order to indicate their relations to the catalogs from which their controls are drawn), examples of profiles include the control baselines in NIST SP 800-53, the FedRAMP baselines, and the PCI DSS requirements.
+
+OSCAL profiles are representations of their catalogs configured for use by organizations or in specialized operational contexts. As such, they can be thought of as change lists or punch lists referencing one or more catalogs, defining any or all of the following:
 
 * Which controls are *selected* from the catalog and thereby considered to be in scope for the application;
 * How the control selection should be *organized* and represented, including whether and how competing control definitions are to be resolved and merged;

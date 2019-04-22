@@ -29,7 +29,7 @@ However, there are other standard forms of document represention that might also
     <button class="usa-accordion-button"
       aria-expanded="false"
       aria-controls="docx">
-      MS Word format <code>.docx</code> (word processor)
+      MS Word/Excel formats <code>.docx .xlsx</code> (word processor and spreadsheet)
     </button>
     <div id="docx" class="usa-accordion-content">
 {% include_relative oscal-and-docx.html %}
@@ -59,7 +59,7 @@ However, there are other standard forms of document represention that might also
     <button class="usa-accordion-button"
       aria-expanded="false"
       aria-controls="odt">
-      OpenOffice format <code>.odt</code> (word processor format)
+      OpenOffice formats <code>.odt .ods</code> (word processor and spreadsheet formats)
     </button>
     <div id="odt" class="usa-accordion-content">
 {% include_relative oscal-and-odt.html %}
