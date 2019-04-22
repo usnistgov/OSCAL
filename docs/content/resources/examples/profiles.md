@@ -7,27 +7,18 @@ layout: post
 topnav: resources
 sidenav: resources
 subnav:
-  - text: Assessors
-    href: /resources/examples/assessors/
-  - text: Authors
-    href: /resources/examples/authors/
   - text: Catalogs
     href: /resources/examples/catalogs/
-  - text: Implementations
-    href: /resources/examples/implementations/
   - text: Profiles
     href: /resources/examples/profiles/
     current: true
-  - text: Security Professionals
-    href: /resources/examples/securitypros/
-  - text: Tool Vendors
-    href: /resources/examples/toolvendors/
 ---
 
-## FedRAMP High
+## NIST SP 800-53 Revision 4 Moderate 
+
+NIST Moderate baseline
+
+## FedRAMP Moderate
 
 FedRAMP High example
 
-## DoD SRG IL2
-
-DoD SRG IL2 example

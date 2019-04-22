@@ -5,10 +5,6 @@ permalink: /contact/
 layout: post
 ---
 
-Email: oscal@nist.gov
+Please email the [OSCAL team](mailto:oscal@nist.gov) with any questions you have about this project or if you are interested in getting involved.
 
-Web: http://pages.nist.gov/OSCAL
-
-GitHub: https://github.com/usnistgov/OSCAL
-
-Note: Include a form for "Get Involved"?
+Please visit our [GitHub repository](https://github.com/usnistgov/OSCAL) for more information, schemas, and examples.
