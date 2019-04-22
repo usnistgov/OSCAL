@@ -74,14 +74,6 @@ community:
 learnmore:
   - text: Learn More
     href: /learnmore/
-  - text: For Security Professionals
-    href: /learnmore/securitypros/
-  - text: For Assessors
-    href: /learnmore/assessors/
-  - text: For Tool Developers
-    href: /learnmore/tooldevelopers/
-  - text: For Policy Authors
-    href: /learnmore/contentcreators/
   - text: Roadmap
     href: /learnmore/roadmap/
   - text: Case Studies
