@@ -18,9 +18,14 @@
 {% endfor %}
 {% else %}
 {% for link in include.links %}
+{% assign _current = false %}
+{% if link.href == page.url or link.href == page.permalink %}
+{% assign _current = true %}
+{% endif %}
+
 <li>
   <a href="{% if link.external %}{{ link.href }}{% else %}{{ link.href }}{% endif %}" {% if link.class %}
-    class="{{ link.class }}" {% elsif link.current %} class="usa-current"{% endif %}>{{ link.text }} {{ link.class }}</a>
+    class="{{ link.class }}" {% elsif _current %} class="usa-current"{% endif %}>{{ link.text }} {{ link.class }}</a>
 </li>
 {% endfor %}
 {% endif %}
