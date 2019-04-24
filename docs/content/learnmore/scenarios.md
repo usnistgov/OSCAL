@@ -18,7 +18,7 @@ The scenario for the sample federal agency highlights the need to simplify the c
 
 The project will continue to expand to support additional security catalogs to maximize the utility of the framework.
 
-## Machine=readable System Security Plans (SSPs)
+## Machine-readable System Security Plans (SSPs)
 
 Cyber security professionals are required to document a system's compliance with regulatory frameworks as part of the Certification and Accreditation (C&A process).  This effort is resource intensive; especially in scenarios where multiple regulatory frameworks govern the system.  In addition, the documentation is not standardized, varies widely between agencies, and is stored in a collection of Word documents, Excel files, and other formats that are difficult to configuration manage.
 

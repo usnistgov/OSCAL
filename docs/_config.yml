@@ -16,7 +16,7 @@
 title: OSCAL
 email: oscal@nist.gov
 description: >- # this means to ignore newlines until "baseurl:"
-  OSCAL - more information less paper
+  OSCAL - more insight, less paper
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: howieavp76
