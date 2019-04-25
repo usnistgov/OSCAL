@@ -7,5 +7,7 @@ services:
       context: .
     ports:
       - "4000:4000"
+    environment:
+      - JEKYLL_ENV=production
     volumes:
       - "./:/app"
