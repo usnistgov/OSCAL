@@ -90,9 +90,10 @@
          <header>
          <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest usa-color-text">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
-               select="@name"/> attribute</h4>
+               select="@name"/> object</h4>
             <xsl:call-template name="cross-links"/>
          </header>
+         <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This object appears as a property on: </xsl:text>
@@ -236,7 +237,11 @@
    </xsl:template>
 
    <xsl:template match="@datatype"/>
-
+   
+   <xsl:template match="define-flag/@datatype">
+      <p>Object of type <code><xsl:value-of select="."/></code></p>
+   </xsl:template>
+   
    <xsl:template match="@address">
       <xsl:text> (addressable by </xsl:text>
       <code>

@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-
+{% if jekyll.environment == "production" %}
 {% assign collection = site.collections | where: "label", page.model | first %}
 
 {% for schema_element in collection.docs %}
@@ -12,3 +12,4 @@ layout: post
 {% if schema_element.position == 0 %}{% continue %}{% endif %}
 {{ schema_element.content | markdownify }}
 {% endfor %}
+{% endif %}

@@ -1,5 +1,5 @@
 ---
-title: Controls
+title: Control
 description: Control component description
 permalink: /docs/components/control/
 
@@ -7,11 +7,11 @@ layout: post
 topnav: documentation
 sidenav: documentation
 subnav:
-  - text: Catalog
-    href: /docs/components/catalog/
   - text: Control
     href: /docs/components/control/
     current: true
+  - text: Catalog
+    href: /docs/components/catalog/
   - text: Profile
     href: /docs/components/profile/
 sticky_sidenav: true
