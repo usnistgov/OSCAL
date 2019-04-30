@@ -3,44 +3,43 @@ title: Schema Documentation - oscal-catalog - group
 description: oscal-catalog schema documentation - group
 tagname: group
 permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_group
-layout: schemas
+layout: post
 model: oscal-catalog-json
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="group"><header><h4 id="oscal-catalog-json_group" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Control Group</b>:
-                  <code>group</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_group"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">A group of controls, or of groups of controls.</p><div class="model"><p class="usa-font-lead">The <code>group</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="group"><header><h4 id="oscal-catalog-json_group" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Control Group</b>: <code>group</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_group"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>groups</code></h5></header><p class="description">A group of controls, or of groups of controls.</p><div class="model"><p class="usa-font-lead">The <code>group</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li>
       <li><a href="#title"><code>title</code></a> object  (<i>required</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>parameters</b>, containing
          <a href="#param"><code>param</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>props</b>, containing
          <a href="#prop"><code>prop</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>parts</b>, containing
          <a href="#part"><code>part</code></a> objects  (<i>optional</i>)</li>
       <li class="choice">A choice between
          <ul>
         <li>An array labelled
          
-         <b></b>, containing
+         <b>groups</b>, containing
          <a href="#group"><code>group</code></a> objects  (<i>optional</i>)</li>
         <li>An array labelled
          
-         <b></b>, containing
+         <b>controls</b>, containing
          <a href="#control"><code>control</code></a> objects  (<i>optional</i>)</li>
       </ul></li>
-      <li><a href="#ref-list"><code>ref-list</code></a> object  (<i>optional</i>)</li>
+      <li><a href="#references"><code>references</code></a> object  (<i>optional</i>)</li>
       
     </ul></div><div class="remarks">
-      <p class="p">Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose directly, only inside its <code>part</code> or <code>control</code> components.</p>
+      <p class="p">Catalogs can use groups to provide collections of related controls or Control Groups. A <a href="#group">group</a> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <a href="#section">section</a>, a <a href="#group">group</a> may not contain arbitrary prose directly, only inside its <a href="#part">part</a> or <a href="#control">control</a> components.</p>
     </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_json">Example</button><div id="group_example1_json" class="usa-accordion-content">
 {% highlight json %}
   { "id" : "xyz",
     "title" : "My Group",
-    "properties" : 
+    "props" : 
     [ 
       { "class" : "required",
         "STRVALUE" : "some property" } ],

@@ -3,25 +3,24 @@ title: Schema Documentation - oscal-profile - exclude
 description: oscal-profile schema documentation - exclude
 tagname: exclude
 permalink: /docs/schemas/oscal-profile-json/oscal-profile_exclude
-layout: schemas
+layout: post
 model: oscal-profile-json
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="exclude"><header><h4 id="oscal-profile-json_exclude" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Exclude controls</b>:
-                  <code>exclude</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_exclude"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">Which controls and subcontrols to exclude from the resource (source catalog) being
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="exclude"><header><h4 id="oscal-profile-json_exclude" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Exclude controls</b>: <code>exclude</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_exclude"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>excludes</code></h5></header><p class="description">Which controls and subcontrols to exclude from the resource (source catalog) being
           imported</p><div class="model"><p class="usa-font-lead">The <code>exclude</code> object has the following members (properties):</p><ul>
          <li class="choice">A choice between
          <ul>
             <li>An array labelled
          
-         <b></b>, containing
+         <b>id-selectors</b>, containing
          <a href="#call"><code>call</code></a> objects  (<i>optional</i>)</li>
             <li>An array labelled
          
-         <b></b>, containing
+         <b>pattern-selectors</b>, containing
          <a href="#match"><code>match</code></a> objects  (<i>optional</i>)</li>
          </ul></li>
       </ul></div><div class="remarks">
-         <p class="p">Within <code>exclude</code>, <code>all</code> is not an option since it makes no sense.
+         <p class="p">Within <a href="#exclude">exclude</a>, <a href="#all">all</a> is not an option since it makes no sense.
          However, it also makes no sense to use exclude/call except with include/all; you would not want to
          include and exclude something by ID simultaneously. If this happens, an error condition will be reported.</p>
       </div><p>This object appears as a property on: <a href="#import">import</a>.</p></div>

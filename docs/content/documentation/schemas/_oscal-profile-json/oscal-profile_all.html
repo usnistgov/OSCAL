@@ -3,13 +3,13 @@ title: Schema Documentation - oscal-profile - all
 description: oscal-profile schema documentation - all
 tagname: all
 permalink: /docs/schemas/oscal-profile-json/oscal-profile_all
-layout: schemas
+layout: post
 model: oscal-profile-json
 ---
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="all"><header><h4 id="oscal-profile-json_all" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Include all</b>: <code>all</code> string object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_all"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">Include all controls from the imported resource (catalog)</p><div class="model"><p>The all object may have a (string) property</p><ul><li><a href="#with-subcontrols"><code>with-subcontrols</code></a> property  (<i>optional</i>)</li></ul></div><div class="remarks">
          <p class="p">This element provides an alternative to calling controls and subcontrols individually
-            from a catalog. But this is also the default behavior when no <code>include</code>
-            element is given in an <code>import</code>; so ordinarily one might not see this element
+            from a catalog. But this is also the default behavior when no <a href="#include">include</a>
+            element is given in an <a href="#import">import</a>; so ordinarily one might not see this element
             unless it is for purposes of including its <code>@with-subcontrols='yes'</code>
          </p>
       </div><p>This object appears as a property on: <a href="#include">include</a>.</p></div>

@@ -3,38 +3,43 @@ title: Schema Documentation - oscal-profile - metadata
 description: oscal-profile schema documentation - metadata
 tagname: metadata
 permalink: /docs/schemas/oscal-profile-json/oscal-profile_metadata
-layout: schemas
+layout: post
 model: oscal-profile-json
+root: true
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="metadata"><header><h4 id="oscal-profile-json_metadata" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Publication metadata</b>:
-                  <code>metadata</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_metadata"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">Information describing the publication or availability of this document</p><div class="model"><p class="usa-font-lead">The <code>metadata</code> object has the following members (properties):</p><ul>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="metadata"><header><h4 id="oscal-profile-json_metadata" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Publication metadata</b>: <code>metadata</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_metadata"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><h5><code>metadata</code> is the root (containing) object of
+               this schema. </h5><p class="description">Information describing the publication or availability of this document</p><div class="model"><p class="usa-font-lead">The <code>metadata</code> object has the following members (properties):</p><ul>
       <li><a href="#title"><code>title</code></a> object  (<i>required</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>authors</b>, containing
          <a href="#author"><code>author</code></a> objects  (<i>optional</i>)</li>
       <li><a href="#publication-date"><code>publication-date</code></a> object  (<i>optional</i>)</li>
       <li><a href="#version"><code>version</code></a> object  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>document-identifiers</b>, containing
          <a href="#doc-id"><code>doc-id</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>properties</b>, containing
          <a href="#prop"><code>prop</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>hashed-links</b>, containing
+         <a href="#hlink"><code>hlink</code></a> objects  (<i>optional</i>)</li>
+      <li>An array labelled
+         
+         <b>resources</b>, containing
          <a href="#resource"><code>resource</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>roles</b>, containing
          <a href="#role"><code>role</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>parties</b>, containing
          <a href="#party"><code>party</code></a> objects  (<i>optional</i>)</li>
       <li><a href="#notes"><code>notes</code></a> object  (<i>optional</i>)</li>
       <li><a href="#extra-meta"><code>extra-meta</code></a> object  (<i>optional</i>)</li>
-    </ul></div><p>This object appears as a property on: <a href="#profile">profile</a>.</p></div>
+    </ul></div></div>

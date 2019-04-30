@@ -3,7 +3,7 @@ title: Schema Documentation - oscal-profile - exclude
 description: oscal-profile schema documentation - exclude
 tagname: exclude
 permalink: /docs/schemas/oscal-profile-xml/oscal-profile_exclude
-layout: schemas
+layout: post
 model: oscal-profile-xml
 ---
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="exclude"><header><h4 id="oscal-profile-xml_exclude" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Exclude controls</b>: <code>exclude</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-profile-json/#oscal-profile-json_exclude"><button>JSON</button></a></div></header><p class="description">Which controls and subcontrols to exclude from the resource (source catalog) being
@@ -14,7 +14,7 @@ model: oscal-profile-xml
             <li><a href="#match"><code>match</code></a> element  (<i>zero or more</i>)</li>
          </ul></li>
       </ul></div><div class="remarks">
-         <p class="p">Within <code>exclude</code>, <code>all</code> is not an option since it makes no sense.
+         <p class="p">Within <a href="#exclude">exclude</a>, <a href="#all">all</a> is not an option since it makes no sense.
          However, it also makes no sense to use exclude/call except with include/all; you would not want to
          include and exclude something by ID simultaneously. If this happens, an error condition will be reported.</p>
       </div><p>This element appears inside: <a href="#import">import</a>.</p></div>

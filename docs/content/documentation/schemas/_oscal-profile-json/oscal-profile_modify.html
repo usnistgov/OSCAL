@@ -3,17 +3,16 @@ title: Schema Documentation - oscal-profile - modify
 description: oscal-profile schema documentation - modify
 tagname: modify
 permalink: /docs/schemas/oscal-profile-json/oscal-profile_modify
-layout: schemas
+layout: post
 model: oscal-profile-json
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="modify"><header><h4 id="oscal-profile-json_modify" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Modify controls</b>:
-                  <code>modify</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_modify"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">Set parameters or amend controls in resolution</p><div class="model"><p class="usa-font-lead">The <code>modify</code> object has the following members (properties):</p><ul>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="modify"><header><h4 id="oscal-profile-json_modify" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Modify controls</b>: <code>modify</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_modify"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>modifys</code></h5></header><p class="description">Set parameters or amend controls in resolution</p><div class="model"><p class="usa-font-lead">The <code>modify</code> object has the following members (properties):</p><ul>
          <li>An array labelled
          
-         <b></b>, containing
+         <b>param-settings</b>, containing
          <a href="#set-param"><code>set-param</code></a> objects  (<i>optional</i>)</li>
          <li>An array labelled
          
-         <b></b>, containing
+         <b>alterations</b>, containing
          <a href="#alter"><code>alter</code></a> objects  (<i>optional</i>)</li>
       </ul></div><p>This object appears as a property on: <a href="#profile">profile</a>.</p></div>

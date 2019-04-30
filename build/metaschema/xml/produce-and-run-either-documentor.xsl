@@ -11,11 +11,10 @@
 
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
-    <xsl:param name="target-format" as="xs:string">xml</xsl:param>
+    <xsl:param name="target-format" as="xs:string">json</xsl:param>
     
     <xsl:variable name="source" select="/"/>
     <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
-    
     <!--"C:\Users\wap1\Documents\OSCAL\docs_jekyll_uswds\content\documentation\schemas\oscal-catalog\catalog.md"-->
     <xsl:variable name="result-path" select="('../../../docs/content/documentation/schemas/_' || $metaschema-code || '-' || $target-format)"/>
 

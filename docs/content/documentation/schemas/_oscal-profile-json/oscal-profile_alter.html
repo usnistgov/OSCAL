@@ -3,22 +3,21 @@ title: Schema Documentation - oscal-profile - alter
 description: oscal-profile schema documentation - alter
 tagname: alter
 permalink: /docs/schemas/oscal-profile-json/oscal-profile_alter
-layout: schemas
+layout: post
 model: oscal-profile-json
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="alter"><header><h4 id="oscal-profile-json_alter" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Alteration</b>:
-                  <code>alter</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_alter"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</p><div class="model"><p class="usa-font-lead">The <code>alter</code> object has the following members (properties):</p><ul><li><a href="#control-id"><code>control-id</code></a> property  (<i>optional</i>)</li><li><a href="#subcontrol-id"><code>subcontrol-id</code></a> property  (<i>optional</i>)</li>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="alter"><header><h4 id="oscal-profile-json_alter" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Alteration</b>: <code>alter</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_alter"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>alterations</code></h5></header><p class="description">An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</p><div class="model"><p class="usa-font-lead">The <code>alter</code> object has the following members (properties):</p><ul><li><a href="#control-id"><code>control-id</code></a> property  (<i>optional</i>)</li><li><a href="#subcontrol-id"><code>subcontrol-id</code></a> property  (<i>optional</i>)</li>
                <li>An array labelled
          
-         <b></b>, containing
+         <b>removals</b>, containing
          <a href="#remove"><code>remove</code></a> objects  (<i>optional</i>)</li>
                <li>An array labelled
          
-         <b></b>, containing
+         <b>additions</b>, containing
          <a href="#add"><code>add</code></a> objects  (<i>optional</i>)</li>
       </ul></div><div class="remarks">
          <p class="p">Use <code>@control-id</code> or <code>@subcontrol-id</code> to indicate the scope of alteration.</p>
-         <p class="p">It is an error for two <code>alter</code> elements to apply to the same control or subcontrol.
+         <p class="p">It is an error for two <a href="#alter">alter</a> elements to apply to the same control or subcontrol.
          In practice, multiple alterations can be applied (together), but it creates confusion.</p>
          <p class="p">At present, no provision is made for altering many controls at once (for example, to systematically
             remove properties or add global properties); extending this element to match multiple control

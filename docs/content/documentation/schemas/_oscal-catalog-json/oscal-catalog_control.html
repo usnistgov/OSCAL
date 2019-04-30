@@ -3,37 +3,36 @@ title: Schema Documentation - oscal-catalog - control
 description: oscal-catalog schema documentation - control
 tagname: control
 permalink: /docs/schemas/oscal-catalog-json/oscal-catalog_control
-layout: schemas
+layout: post
 model: oscal-catalog-json
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="control"><header><h4 id="oscal-catalog-json_control" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Control</b>:
-                  <code>control</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_control"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</p><div class="model"><p class="usa-font-lead">The <code>control</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="control"><header><h4 id="oscal-catalog-json_control" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Control</b>: <code>control</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_control"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>controls</code></h5></header><p class="description">A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</p><div class="model"><p class="usa-font-lead">The <code>control</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li>
       <li><a href="#title"><code>title</code></a> object  (<i>required</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>parameters</b>, containing
          <a href="#param"><code>param</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>props</b>, containing
          <a href="#prop"><code>prop</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>links</b>, containing
          <a href="#link"><code>link</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>parts</b>, containing
          <a href="#part"><code>part</code></a> objects  (<i>optional</i>)</li>
       <li>An array labelled
          
-         <b></b>, containing
+         <b>subcontrols</b>, containing
          <a href="#subcontrol"><code>subcontrol</code></a> objects  (<i>optional</i>)</li>
-      <li><a href="#ref-list"><code>ref-list</code></a> object  (<i>optional</i>)</li>
+      <li><a href="#references"><code>references</code></a> object  (<i>optional</i>)</li>
       
     </ul></div><div class="remarks">
-      <p class="p">Controls may be grouped using <code>group</code>, and controls may be partitioned using
-        <code>part</code> or enhanced using <code>subcontrol</code>.</p>
+      <p class="p">Controls may be grouped using <a href="#group">group</a>, and controls may be partitioned using
+        <a href="#part">part</a> or enhanced using <a href="#subcontrol">subcontrol</a>.</p>
     </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="control_example1_json">Example</button><div id="control_example1_json" class="usa-accordion-content">
 {% highlight json %}
   { "id" : "x",

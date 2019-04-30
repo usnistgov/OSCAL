@@ -3,7 +3,7 @@ title: Schema Documentation - oscal-profile - alter
 description: oscal-profile schema documentation - alter
 tagname: alter
 permalink: /docs/schemas/oscal-profile-xml/oscal-profile_alter
-layout: schemas
+layout: post
 model: oscal-profile-xml
 ---
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="alter"><header><h4 id="oscal-profile-xml_alter" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Alteration</b>: <code>alter</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/docs/schemas/oscal-profile-json/#oscal-profile-json_alter"><button>JSON</button></a></div></header><p class="description">An Alter element specifies changes to be made to an included control or subcontrol when a profile is resolved.</p><div class="model"><p class="usa-font-lead">The <code>alter</code> element has the following contents  (in order):</p><ul><li><a href="#control-id"><code>control-id</code></a> attribute  (<i>optional</i>)</li><li><a href="#subcontrol-id"><code>subcontrol-id</code></a> attribute  (<i>optional</i>)</li>
@@ -11,7 +11,7 @@ model: oscal-profile-xml
                <li><a href="#add"><code>add</code></a> element  (<i>zero or more</i>)</li>
       </ul></div><div class="remarks">
          <p class="p">Use <code>@control-id</code> or <code>@subcontrol-id</code> to indicate the scope of alteration.</p>
-         <p class="p">It is an error for two <code>alter</code> elements to apply to the same control or subcontrol.
+         <p class="p">It is an error for two <a href="#alter">alter</a> elements to apply to the same control or subcontrol.
          In practice, multiple alterations can be applied (together), but it creates confusion.</p>
          <p class="p">At present, no provision is made for altering many controls at once (for example, to systematically
             remove properties or add global properties); extending this element to match multiple control

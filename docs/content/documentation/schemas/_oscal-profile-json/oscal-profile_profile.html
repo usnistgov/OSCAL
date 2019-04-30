@@ -3,26 +3,25 @@ title: Schema Documentation - oscal-profile - profile
 description: oscal-profile schema documentation - profile
 tagname: profile
 permalink: /docs/schemas/oscal-profile-json/oscal-profile_profile
-layout: schemas
+layout: post
 model: oscal-profile-json
 root: true
 ---
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="profile"><header><h4 id="oscal-profile-json_profile" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Profile</b>:
-                  <code>profile</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_profile"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><h5><code>profile</code> is the root (containing) object of this
-               schema. </h5><p class="description">Each OSCAL profile is defined by a Profile element</p><div class="model"><p class="usa-font-lead">The <code>profile</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="profile"><header><h4 id="oscal-profile-json_profile" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Profile</b>: <code>profile</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_profile"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>profiles</code></h5></header><h5><code>profile</code> is the root (containing) object of
+               this schema. </h5><p class="description">Each OSCAL profile is defined by a Profile element</p><div class="model"><p class="usa-font-lead">The <code>profile</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li>
             <li><a href="#title"><code>title</code></a> object  (<i>required</i>)</li>
             <li><a href="#metadata"><code>metadata</code></a> object  (<i>optional</i>)</li>
             <li>An array labelled
          
-         <b></b>, containing
+         <b>imports</b>, containing
          <a href="#import"><code>import</code></a> objects  (<i>optional</i>)</li>
             <li><a href="#merge"><code>merge</code></a> object  (<i>optional</i>)</li>
             <li><a href="#modify"><code>modify</code></a> object  (<i>optional</i>)</li>
       </ul></div><div class="remarks">
          <p class="p">An OSCAL document that describes a selection with possible modification of multiple
           controls from multiple catalogs. It provides mechanisms by which controls may be selected
-            (<code>import</code>), merged or (re)structured (<code>merge</code>), and emended
-            (<code>modify</code>). OSCAL profiles may select subsets of control sets, set parameter
+            (<a href="#import">import</a>), merged or (re)structured (<a href="#merge">merge</a>), and emended
+            (<a href="#modify">modify</a>). OSCAL profiles may select subsets of control sets, set parameter
           values for them in application, and even qualify the representation of controls and
           subcontrols as given in and by a catalog. They may also serve as sources for further
           modification in and by other profiles, that import them.</p>
