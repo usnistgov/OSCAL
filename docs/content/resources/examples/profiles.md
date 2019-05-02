@@ -6,11 +6,10 @@ layout: post
 topnav: resources
 sidenav: resources
 subnav:
-  - text: Catalogs
-    href: /resources/examples/catalogs/
-  - text: Profiles
-    href: /resources/examples/profiles/
-    current: true
+ - text: Catalogs
+   href: /resources/examples/catalogs/
+ - text: Profiles
+   href: /resources/examples/profiles/
 ---
 
 Profiles currently available are early work; while we do not believe they have errors, they should be regarded as testing documents until authoritative versions can be published. 

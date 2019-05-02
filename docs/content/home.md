@@ -20,7 +20,7 @@ hero:
 tagline: Automating Security Assessment & Continuous Monitoring
 
 intro: |
-  NIST is developing the Open Security Controls Assessment Language (OSCAL) "standard for standards". It consists of a set of models expressed in standard notations (XML, JSON), offering machine-readable representations of information pertaining to the publication, implementation, and assessment of security and privacy controls. By promoting transparency and interoperability along with rigorous validation of data in context, OSCAL formats provide a foundation for automation and machine assistance of many tasks and activities related to systems security.
+  NIST is developing the Open Security Controls Assessment Language (OSCAL): a set of models expressed in standard notations (XML, JSON), offering machine-readable representations of information pertaining to the publication, implementation, and assessment of security and privacy controls. By promoting transparency and interoperability along with rigorous validation of data in context, OSCAL formats provide a foundation for automation and machine assistance of many tasks and activities related to systems security.
 
   OSCAL is being developed through a collaborative approach with the public. It is designed to improve system security planning, assessment, and monitoring, with a technology that is both user- and developer-friendly.
   

@@ -2,14 +2,12 @@
 title: Catalogs
 description: OSCAL Catalog Examples
 permalink: /resources/examples/catalogs/
-
 layout: post
 topnav: resources
 sidenav: resources
 subnav:
   - text: Catalogs
     href: /resources/examples/catalogs/
-    current: true
   - text: Profiles
     href: /resources/examples/profiles/
 ---
