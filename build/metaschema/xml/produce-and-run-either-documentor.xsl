@@ -11,7 +11,7 @@
 
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
-    <xsl:param name="target-format" as="xs:string">json</xsl:param>
+    <xsl:param name="target-format" as="xs:string">xml</xsl:param>
     
     <xsl:variable name="source" select="/"/>
     <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
@@ -76,7 +76,7 @@
         </xsl:if>
         <!--When $tagname is missing, the last step is omitted -->
         <xsl:text expand-text="true">permalink: /docs/schemas/{ $metaschema-code }-{$target-format}/{ $tagname ! ($metaschema-code || '_' || .) }&#xA;</xsl:text>
-        <xsl:text expand-text="true">layout: post&#xA;</xsl:text>
+        <xsl:text expand-text="true">layout: schemas&#xA;</xsl:text>
         <xsl:text expand-text="true">model: { $metaschema-code }-{ $target-format }&#xA;</xsl:text>
         <xsl:if test="$root">root: true&#xA;</xsl:if>
         <xsl:text>---&#xA;</xsl:text>
