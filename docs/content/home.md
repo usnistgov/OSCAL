@@ -1,5 +1,5 @@
 ---
-title: Home
+title: OSCAL Home
 permalink: /
 
 layout: home
