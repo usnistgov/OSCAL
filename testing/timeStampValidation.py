@@ -2,17 +2,7 @@ import os
 import platform
 import sys
 from datetime import datetime
-
-# colors for output formatting
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+from printColors import bcolors
 
 # get the file names from the command line arguments
 filename1 = sys.argv[1]

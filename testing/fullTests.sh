@@ -13,3 +13,6 @@ sh timeCheck.sh
 # run the JSON checks
 sh jsonSchemaTests.sh
 
+# run the transform checks
+sh transformTests.sh
+

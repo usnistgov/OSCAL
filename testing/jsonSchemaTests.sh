@@ -1,20 +1,24 @@
+#import config
+#!/bin/bash
+source testingConfig.sh
+
 # validate the NIST 800-53 rev JSON catalog against its schema
-python jsonSchemaValidation.py ../content/nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_catalog.json ../schema/json/oscal-catalog-schema.json
+python jsonSchemaValidation.py $var80053Rev4CatalogJSON $varCatalogJSONSchema
 
 # validate the NIST 800-53 rev LOW baseline JSON against its schema
-python jsonSchemaValidation.py ../content/nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_LOW-baseline_profile.json ../schema/json/oscal-profile-schema.json
+python jsonSchemaValidation.py $var80053Rev4ProfileLowJSON $varProfileJSONSchema
 
 # validate the NIST 800-53 rev MODERATE baseline JSON against its schema
-python jsonSchemaValidation.py ../content/nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_MODERATE-baseline_profile.json ../schema/json/oscal-profile-schema.json
+python jsonSchemaValidation.py $var80053Rev4ProfileModerateJSON $varProfileJSONSchema
 
 # validate the NIST 800-53 rev HIGH baseline JSON against its schema
-python jsonSchemaValidation.py ../content/nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_HIGH-baseline_profile.json ../schema/json/oscal-profile-schema.json
+python jsonSchemaValidation.py $var80053Rev4ProfileHighJSON $varProfileJSONSchema
 
 # validate the FedRAMP LOW baseline JSON against its schema
-python jsonSchemaValidation.py ../content/fedramp.gov/FedRAMP_LOW-baseline_profile.json ../schema/json/oscal-profile-schema.json
+python jsonSchemaValidation.py $varFedRAMPProfileLowJSON $varProfileJSONSchema
 
 # validate the FedRAMP MODERATE baseline JSON against its schema
-python jsonSchemaValidation.py ../content/fedramp.gov/FedRAMP_MODERATE-baseline_profile.json ../schema/json/oscal-profile-schema.json
+python jsonSchemaValidation.py $varFedRAMPProfileModerateJSON $varProfileJSONSchema
 
 # validate the FedRAMP HIGH baseline JSON against its schema
-python jsonSchemaValidation.py ../content/fedramp.gov/FedRAMP_HIGH-baseline_profile.json ../schema/json/oscal-profile-schema.json
+python jsonSchemaValidation.py $varFedRAMPProfileHighJSON $varProfileJSONSchema

@@ -4215,6 +4215,14 @@ html.nist-footer-bottom #main {
 html.nist-footer-bottom .nist-footer {
   flex-shrink: 0; }
 
+/**
+ * @file
+ * Leave notice styles
+ *
+ */
+#ln-messageHolder {
+  z-index: 10000; }
+
 .usa-sticky-sidenav {
   position: sticky;
   top: 1rem; }

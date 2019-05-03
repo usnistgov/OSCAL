@@ -1,2 +1,6 @@
+#import config
+#!/bin/bash
+source testingConfig.sh
+
 # tests the NIST 800-53_rev4 catalog
-python xmlValidation.py ../content/nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_catalog.xml ../schema/xml/oscal-catalog-schema.xsd
+python xmlValidation.py $var80053Rev4CatalogXML $varCatalogSchema

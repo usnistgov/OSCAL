@@ -4,10 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     version="3.0"
-    
-    xmlns:xslt="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias"
-    
-    >
+    xmlns:XSLT="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias">
     
 <!-- Purpose: Produce an XSLT supporting bidirectional XML-JSON syntax negotiation based on constraints declared in a netaschema -->
 <!-- Input:   A Metaschema -->
@@ -18,30 +15,38 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <xsl:namespace-alias stylesheet-prefix="xslt" result-prefix="xsl"/>
+    <xsl:namespace-alias stylesheet-prefix="XSLT" result-prefix="xsl"/>
     
     <xsl:variable name="string-value-label">STRVALUE</xsl:variable>
     <xsl:variable name="markdown-value-label">RICHTEXT</xsl:variable>
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
+    <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
     
+    <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
     <xsl:key name="callers-by-flags" match="define-field | define-assembly" use="flag/@name"/>
     
+    <!-- Produces composed metaschema (imports resolved) -->
+    <xsl:import href="../lib/metaschema-compose.xsl"/>
+
+    <xsl:template match="/">
+        <xsl:apply-templates select="$composed-metaschema/METASCHEMA"/>
+    </xsl:template>
+    
     <xsl:template match="METASCHEMA">
-        <xslt:stylesheet version="3.0"
+        <XSLT:stylesheet version="3.0"
             xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
             exclude-result-prefixes="#all">
             
-            <xslt:output indent="yes" method="xml"/>
+            <XSLT:output indent="yes" method="xml"/>
             
             <xsl:comment> METASCHEMA conversion stylesheet supports JSON->XML conversion </xsl:comment>
             
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
             <xsl:call-template  name="furniture"/>
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
-            <xsl:apply-templates/>
-
-
-        </xslt:stylesheet>
+            <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
+            
+        </XSLT:stylesheet>
     </xsl:template>
     
     <xsl:template match="title"/>
@@ -52,7 +57,7 @@
         <!-- Flags won't be producing elements in the regular traversal -->
         <xsl:comment> 000 Handling flag "{ @name }" 000 </xsl:comment>
         
-        <xslt:template match="*[@key='{@name}']" mode="json2xml"/>
+        <XSLT:template match="*[@key='{@name}']" mode="json2xml"/>
         <xsl:variable name="match-step" expand-text="yes" as="xs:string">*[@key='{@name}']</xsl:variable>
         <xsl:variable name="match-patterns" as="xs:string*">
             <xsl:for-each select="key('callers-by-flags',@name)">
@@ -64,11 +69,11 @@
                 </xsl:value-of>
             </xsl:for-each>
         </xsl:variable>
-        <xslt:template match="{string-join($match-patterns,' | ')}" mode="as-attribute">
-            <xslt:attribute name="{@name}">
-                <xslt:apply-templates mode="#current"/>
-            </xslt:attribute>
-        </xslt:template>
+        <XSLT:template match="{string-join($match-patterns,' | ')}" mode="as-attribute">
+            <XSLT:attribute name="{@name}">
+                <XSLT:apply-templates mode="#current"/>
+            </XSLT:attribute>
+        </XSLT:template>
     </xsl:template>
         
     <xsl:template match="define-flag/* | define-field/* | define-assembly/*"/>
@@ -79,48 +84,49 @@
     </xsl:template>
     
     <xsl:template match="model//*">
-        <xslt:apply-templates mode="#current" select="*[@key=({string-join((@named/('''' ||. || ''''),@group-as/('''' || . || '''')),', ')})]"/>    
+        <xsl:variable name="definition" select="key('definition-by-name',@named)"/>
+        <XSLT:apply-templates mode="#current" select="*[@key=({string-join((@named/('''' ||. || ''''),$definition/@group-as/('''' || . || '''')),', ')})]"/>    
     </xsl:template>
     
     <xsl:template match="model/prose" priority="2">
-        <xslt:apply-templates mode="#current" select="*[@key='prose']"/>    
+        <XSLT:apply-templates mode="#current" select="*[@key='prose']"/>    
     </xsl:template>
     
     <xsl:template match="define-field" expand-text="true">
         <xsl:variable name="field-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }{ if (@name=../@root) then ' | /map[empty(@key)]' else ''}</xsl:variable>
         <xsl:comment> 000 Handling field "{ @name }" 000 </xsl:comment>
-        <xslt:template match="{$field-match}" priority="2" mode="json2xml">
-            <xslt:element name="{@name}" namespace="{$target-namespace}">
+        <XSLT:template match="{$field-match}" priority="2" mode="json2xml">
+            <XSLT:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="@address">
-                    <xslt:attribute name="{.}" select="../@key"/>
+                    <XSLT:attribute name="{.}" select="../@key"/>
                 </xsl:for-each>
-                <xslt:apply-templates mode="as-attribute"/>
+                <XSLT:apply-templates mode="as-attribute"/>
                 <xsl:apply-templates/>
-                <xslt:apply-templates mode="json2xml" select="*[@key={ if (@as='mixed') then $markdown-value-label else $string-value-label }]"/>
-            </xslt:element>
-        </xslt:template>
+                <XSLT:apply-templates mode="json2xml" select="*[@key={ if (@as='mixed') then $markdown-value-label else $string-value-label }]"/>
+            </XSLT:element>
+        </XSLT:template>
         <xsl:call-template name="drop-address"/>
     </xsl:template>
     
     <xsl:template match="define-assembly" expand-text="true">
         <xsl:variable name="assembly-match" as="xs:string">*[@key='{@name}']{ @group-as/(' | *[@key=''' || . || ''']/*') }</xsl:variable>
         <xsl:comment> 000 Handling assembly "{ @name }" 000 </xsl:comment>
-        <xslt:template match="{$assembly-match}" priority="2" mode="json2xml">
-            <xslt:element name="{@name}" namespace="{$target-namespace}">
+        <XSLT:template match="{$assembly-match}" priority="2" mode="json2xml">
+            <XSLT:element name="{@name}" namespace="{$target-namespace}">
                 <xsl:for-each select="@address">
-                    <xslt:attribute name="{.}" select="../@key"/>
+                    <XSLT:attribute name="{.}" select="../@key"/>
                 </xsl:for-each>
-                <xslt:apply-templates mode="as-attribute"/>
+                <XSLT:apply-templates mode="as-attribute"/>
                 <xsl:apply-templates/>
-            </xslt:element>
-        </xslt:template>
+            </XSLT:element>
+        </XSLT:template>
         <xsl:call-template name="drop-address"/>
     </xsl:template>
     
     <xsl:template name="drop-address">
         <!-- When a flag is promoted as an address, it appears in the JSON as a label, so no attribute should be made in the regular traversal. -->
         <xsl:if test="matches(@address, '\i\c*')">
-            <xslt:template mode="as-attribute" priority="2"
+            <XSLT:template mode="as-attribute" priority="2"
                 match="*[@key='{@name}']/string[@key='{@address}']{ @group-as/(' | ' || '*[@key=''' || . || ''']/*/string[@key=''{@address}'']') }"
             />
         </xsl:if>
@@ -128,64 +134,64 @@
     
     <xsl:template name="furniture">
         
-        <xslt:output indent="yes"/>
+        <XSLT:output indent="yes"/>
         
-        <xslt:strip-space elements="*"/>
-        <xslt:preserve-space elements="string"/>
+        <XSLT:strip-space elements="*"/>
+        <XSLT:preserve-space elements="string"/>
         
-        <xslt:param name="json-file" as="xs:string"/>
+        <XSLT:param name="json-file" as="xs:string"/>
         
-        <xslt:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
+        <XSLT:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
         
-        <xslt:template match="/">
-            <xslt:choose>
-                <xslt:when test="exists($json-xml/map)">
-                    <xslt:apply-templates select="$json-xml" mode="json2xml"/>
-                </xslt:when>
-                <xslt:otherwise>
-                    <xslt:apply-templates mode="json2xml"/>
-                </xslt:otherwise>
-            </xslt:choose>
-        </xslt:template>
+        <XSLT:template match="/">
+            <XSLT:choose>
+                <XSLT:when test="exists($json-xml/map)">
+                    <XSLT:apply-templates select="$json-xml" mode="json2xml"/>
+                </XSLT:when>
+                <XSLT:otherwise>
+                    <XSLT:apply-templates mode="json2xml"/>
+                </XSLT:otherwise>
+            </XSLT:choose>
+        </XSLT:template>
         
-        <xslt:template match="/map[empty(@key)]"
+        <XSLT:template match="/map[empty(@key)]"
             priority="10"
             mode="json2xml">
-            <xslt:apply-templates mode="#current" select="*[@key=('{@root}')]"/>
-        </xslt:template>
+            <XSLT:apply-templates mode="#current" select="*[@key=('{@root}')]"/>
+        </XSLT:template>
         
-        <xslt:template match="array" mode="json2xml">
-            <xslt:apply-templates mode="#current"/>
-        </xslt:template>
+        <XSLT:template match="array" mode="json2xml">
+            <XSLT:apply-templates mode="#current"/>
+        </XSLT:template>
         
-        <xslt:template match="array[@key='prose']/*" priority="5" mode="json2xml">
+        <XSLT:template match="array[@key='prose']/*" priority="5" mode="json2xml">
             <xsl:comment> This will have to be post-processed to render markdown into markup </xsl:comment>
-            <xslt:element name="p" namespace="{$target-namespace}">
-                <xslt:apply-templates mode="#current"/>
-            </xslt:element>
-        </xslt:template>
+            <XSLT:element name="p" namespace="{$target-namespace}">
+                <XSLT:apply-templates mode="#current"/>
+            </XSLT:element>
+        </XSLT:template>
         
-        <xslt:template match="string[@key='{$markdown-value-label}']" mode="json2xml">
-            <xslt:comment> Not yet handling markdown </xslt:comment>
-            <xslt:apply-templates mode="#current"/>
-        </xslt:template>
+        <XSLT:template match="string[@key='{$markdown-value-label}']" mode="json2xml">
+            <XSLT:comment> Not yet handling markdown </XSLT:comment>
+            <XSLT:apply-templates mode="#current"/>
+        </XSLT:template>
         
-        <xslt:template match="string[@key='{$string-value-label}']" mode="json2xml">
-            <xslt:apply-templates mode="#current"/>
-        </xslt:template>
+        <XSLT:template match="string[@key='{$string-value-label}']" mode="json2xml">
+            <XSLT:apply-templates mode="#current"/>
+        </XSLT:template>
         
         
-        <xslt:template mode="as-attribute" match="*"/>
+        <XSLT:template mode="as-attribute" match="*"/>
         
-        <xslt:template mode="as-attribute" match="map">
-            <xslt:apply-templates mode="#current"/>
-        </xslt:template>
+        <XSLT:template mode="as-attribute" match="map">
+            <XSLT:apply-templates mode="#current"/>
+        </XSLT:template>
         
-        <xslt:template mode="as-attribute"  match="string[@key='id']" priority="0.4">
-            <xslt:attribute name="id">
-                <xslt:apply-templates mode="#current"/>
-            </xslt:attribute>
-        </xslt:template>
+        <XSLT:template mode="as-attribute"  match="string[@key='id']" priority="0.4">
+            <XSLT:attribute name="id">
+                <XSLT:apply-templates mode="#current"/>
+            </XSLT:attribute>
+        </XSLT:template>
         
     </xsl:template>
     
