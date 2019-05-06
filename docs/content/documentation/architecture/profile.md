@@ -1,17 +1,17 @@
 ---
 title: Profile
 description: Profile
-permalink: /docs/components/profile/
+permalink: /docs/architecture/profile/
 layout: post
-topnav: documentation
-sidenav: documentation
+topnav: concepts
+sidenav: concepts
 subnav:
   - text: Control
-    href: /docs/components/control/
+    href: /docs/architecture/control/
   - text: Catalog
-    href: /docs/components/catalog/
+    href: /docs/architecture/catalog/
   - text: Profile
-    href: /docs/components/profile/
+    href: /docs/architecture/profile/
     current: true
 sticky_sidenav: true
 ---

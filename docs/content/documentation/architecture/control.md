@@ -1,19 +1,18 @@
 ---
 title: Control
 description: Control component description
-permalink: /docs/components/control/
-
+permalink: /docs/architecture/control/
 layout: post
-topnav: documentation
-sidenav: documentation
+topnav: concepts
+sidenav: concepts
 subnav:
   - text: Control
-    href: /docs/components/control/
+    href: /docs/architecture/control/
     current: true
   - text: Catalog
-    href: /docs/components/catalog/
+    href: /docs/architecture/catalog/
   - text: Profile
-    href: /docs/components/profile/
+    href: /docs/architecture/profile/
 sticky_sidenav: true
 ---
 

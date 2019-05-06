@@ -18,7 +18,7 @@ primary:
     href: /learnmore/
   - text: Resources
     href: /resources/
-  - text: Documentation
+  - text: Concepts
     href: /docs/
   - text: Schema Reference
     href: /docs/schemas/
@@ -41,11 +41,11 @@ resources:
     href: https://github.com/usnistgov/OSCAL
     external: true
 
-documentation:
+concepts:
   - text: Concepts
     href: /docs/
-  - text: Components
-    href: /docs/components/
+  - text: Architecture
+    href: /docs/architecture/
     subnav: true
   - text: Schema Reference
     href: /docs/schemas/

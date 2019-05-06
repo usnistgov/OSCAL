@@ -1,19 +1,18 @@
 ---
 title: Catalog
 description: Catalog
-permalink: /docs/components/catalog/
-
+permalink: /docs/architecture/catalog/
 layout: post
-topnav: documentation
-sidenav: documentation
+topnav: concepts
+sidenav: concepts
 subnav:
   - text: Control
-    href: /docs/components/control/
+    href: /docs/architecture/control/
   - text: Catalog
-    href: /docs/components/catalog/
+    href: /docs/architecture/catalog/
     current: true
   - text: Profile
-    href: /docs/components/profile/
+    href: /docs/architecture/profile/
 sticky_sidenav: true
 ---
 
