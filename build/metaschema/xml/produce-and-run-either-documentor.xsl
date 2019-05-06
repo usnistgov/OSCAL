@@ -49,7 +49,9 @@
         <!--<xsl:message expand-text="true"> { resolve-uri($result-path, document-uri(/)) }</xsl:message>-->
         <xsl:result-document href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
               
-            <xsl:call-template name="yaml-header"/>
+            <xsl:call-template name="yaml-header">
+                <xsl:with-param name="overview" select="true()"></xsl:with-param>
+            </xsl:call-template>
             
             <xsl:sequence select="$html-docs/*/html:body/(* except child::html:div[contains-token(@class,'definition')])"/>
         </xsl:result-document>
@@ -66,8 +68,9 @@
     </xsl:template>
     
     <xsl:template name="yaml-header">
-        <xsl:param name="tagname" select="()"/>
-        <xsl:param name="root"    as="xs:boolean" select="false()"/>
+        <xsl:param name="tagname"  select="()"/>
+        <xsl:param name="root"     as="xs:boolean" select="false()"/>
+        <xsl:param name="overview" as="xs:boolean" select="false()"/>
         <xsl:text>---&#xA;</xsl:text>
         <xsl:text expand-text="true">title: Schema Documentation - { $metaschema-code }{ $tagname ! (' - ' || .) }&#xA;</xsl:text>
         <xsl:text expand-text="true">description: { $metaschema-code } schema documentation{ $tagname ! (' - ' || .) }&#xA;</xsl:text>
@@ -79,6 +82,7 @@
         <xsl:text expand-text="true">layout: schemas&#xA;</xsl:text>
         <xsl:text expand-text="true">model: { $metaschema-code }-{ $target-format }&#xA;</xsl:text>
         <xsl:if test="$root">root: true&#xA;</xsl:if>
+        <xsl:if test="$overview">overview: true&#xA;</xsl:if>
         <xsl:text>---&#xA;</xsl:text>
     </xsl:template>
             

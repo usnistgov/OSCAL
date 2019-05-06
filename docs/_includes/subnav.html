@@ -1,16 +1,18 @@
 {% if page.layout == 'schemas' %}
 {% assign collection = site.collections | where: "label", page.model | first %}
-{% for schema_element in collection.docs %}
-{% if schema_element.root %}
-<li>
-  <a href="{{ schema_element.permalink }}">Overview</a>
-</li>
-{% break %}
-{% endif %}
-{% endfor %}
+		{% comment %}
+		{% for schema_element in collection.docs %}
+		{% if schema_element.overview %}
+		<li>
+		  <a href="{{ schema_element.permalink }}">Overview</a>
+		</li>
+		{% break %}
+		{% endif %}
+		{% endfor %}
+		{% endcomment %}
 
 {% for schema_element in collection.docs %}
-{% if schema_element.root != true %}
+{% if schema_element.overview != true %}
 <li>
   <a href="#{{ schema_element.model }}_{{ schema_element.tagname }}"><code>{{ schema_element.tagname }}{% if schema_element.root %} (root element){% endif %}</code></a>
 </li>
