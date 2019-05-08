@@ -7,7 +7,7 @@ sidenav: concepts
 sticky_sidenav: true
 ---
 
-Three key OSCAL concepts underlie the [architecture](/docs/architecture/):
+Three key concepts underlie the [OSCAL architecture](/docs/architecture/):
 
 1. A 
 [control](/docs/architecture/control/) is a safeguard or countermeasure designed to satisfy a set of defined security requirements. 

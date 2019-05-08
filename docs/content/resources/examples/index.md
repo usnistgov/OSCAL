@@ -12,3 +12,5 @@ subnav:
   - text: Profiles
     href: /resources/examples/profiles/
 ---
+
+In addition to examples shown on this site, see the [OSCAL Github Repository](http://github.com/usnistgov/OSCAL/content/) for examples of data including both actual data and mockups for demonstration.
