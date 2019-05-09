@@ -192,7 +192,7 @@
          <xsl:call-template name="cross-links"/>
       </header>
          <!-- No mention of @group-as on XML side       -->
-         <xsl:if test="@name = ../@root">
+         <xsl:if test="@name =  $home/METASCHEMA/@root">
             <h5>
                <code xsl:expand-text="true">{ @name }</code> is the root (containing) element of
                this schema. </h5>

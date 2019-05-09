@@ -11,7 +11,7 @@
 
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
-    <xsl:param name="target-format" as="xs:string">xml</xsl:param>
+    <xsl:param name="target-format" as="xs:string">json</xsl:param>
     
     <xsl:variable name="source" select="/"/>
     <xsl:variable name="metaschema-code" select="$source/*/short-name"/>

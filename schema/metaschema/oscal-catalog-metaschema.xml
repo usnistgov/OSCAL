@@ -324,25 +324,7 @@
     </model>
   </define-assembly>
 
-  <define-field as="mixed" group-as="citations" name="citation" show-docs="xml json">
-    <flag name="id" datatype="ID"/>
-    <flag name="href" datatype="anyURI"/>
-    <formal-name>Citation</formal-name>
-    <description>Citation of a resource</description>
-    <remarks>
-      <p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
-        matches with bibliograpical databases, it is recommended a canonical
-      identifier such as a DOI be provided for any citation.</p>
-    </remarks>
-    <example>
-      <o:ref>
-        <o:citation>Here is a work cited</o:citation>
-        <o:citation>Some <o:strong>citation</o:strong> of some sort</o:citation>
-      </o:ref>
-    </example>
-  </define-field>
-
-  <define-flag name="id" datatype="ID" show-docs="xml json">
+  <define-flag name="id" datatype="ID">
     <formal-name>ID / identifier</formal-name>
     <description>Unique identifier</description>
     <remarks>
@@ -381,99 +363,5 @@
     <formal-name>Model version</formal-name>
     <description>Declares a major/minor version for this metaschema</description>
   </define-flag>
-  
-  
-  <define-assembly name="metadata" acquire-from="metadata"/>
-  
-  <!--<define-field name="title" acquire-from="metadata"/>-->
-  
-  <define-field name="author" group-as="authors" acquire-from="metadata"/>
-  
-  <define-field name="publication-date" acquire-from="metadata"/>
-  
-  <define-field name="version" acquire-from="metadata"/>
-  
-  <define-flag name="iso-date" datatype="date" acquire-from="metadata"/>
-  
-  <define-field name="doc-id" group-as="document-identifiers" acquire-from="metadata"/>
-  
-  <define-flag name="type" datatype="string" acquire-from="metadata"/>
-  
-  <!--<define-field name="prop" group-as="properties" acquire-from="metadata"/>-->
-  
-  <!--<define-flag name="class" datatype="string" acquire-from="metadata"/>-->
-  
-  
-  <define-assembly name="party" group-as="parties" acquire-from="metadata"/>
-  
-  <define-assembly name="person" group-as="persons" acquire-from="metadata"/>
-  
-  <define-assembly name="org" acquire-from="metadata"/>
-  
-  <define-field name="person-id" group-as="person-identifiers" acquire-from="metadata"/>
-  
-  <define-field name="org-id" group-as="organization-identifiers" acquire-from="metadata"/>
-  
-  <define-assembly name="hlink" group-as="hashed-links" show-docs="xml json" acquire-from="metadata"/>
-  
-  <!--<define-flag name="rel" datatype="NCName" show-docs="xml json" acquire-from="metadata"/>-->
-  
-  <define-flag name="media-type" datatype="string" show-docs="xml json" acquire-from="metadata"/>
-  
-  <define-field name="person-name" acquire-from="metadata"/>
-  
-  <define-field name="org-name" acquire-from="metadata"/>
-  
-  <define-field name="full-name" as="mixed" acquire-from="metadata"/>
-  
-  
-  <define-field name="short-name" acquire-from="metadata"/>
-  
-  <define-assembly name="address" acquire-from="metadata"/>
-  
-  
-  <define-field name="addr-line" group-as="postal-address" acquire-from="metadata"/>
-  
-  <define-field name="city" acquire-from="metadata"/>
-  
-  <define-field name="state" acquire-from="metadata"/>
-  
-  <define-field name="postal-code" acquire-from="metadata"/>
-  
-  <define-field name="country" acquire-from="metadata"/>
-  
-  <define-field name="email" group-as="email-addresses" acquire-from="metadata"/>
-  
-  <define-field name="phone" group-as="telephone-numbers" acquire-from="metadata"/>
-  
-  <define-field name="url" group-as="URLs" acquire-from="metadata"/>
-  
-  <define-assembly name="notes" acquire-from="metadata"/>
-  
-  <!--<define-field name="desc" acquire-from="metadata"/>-->
-  
-  <define-assembly name="resource" group-as="resources" acquire-from="metadata"/>
-  
-  <define-field name="hash" group-as="hashes" acquire-from="metadata"/>
-  
-  
-  <define-flag name="algorithm" datatype="string" acquire-from="metadata"/>
-  
-  <define-assembly name="role" group-as="roles" acquire-from="metadata"/>
-  
-  <!--<define-flag name="href" datatype="anyURI" acquire-from="metadata"/>-->
-  
-  
-  <define-assembly name="extra-meta" acquire-from="metadata"/>
-  
-  <define-assembly name="meta-group" group-as="metadata-groups" acquire-from="metadata"/>
-  
-  <define-field name="meta" group-as="metadata-fields" acquire-from="metadata"/>
-  
-  <define-flag name="term" datatype="string" acquire-from="metadata"/>
-  
-  <!--<define-flag name="id" datatype="ID" acquire-from="metadata"/>-->
-  
-  <define-flag name="role-id" datatype="IDREFS" acquire-from="metadata"/>
   
 </METASCHEMA>

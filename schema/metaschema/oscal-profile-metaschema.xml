@@ -10,11 +10,12 @@
    <schema-name>OSCAL Profile Metaschema</schema-name>
    <short-name>oscal-profile</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
-<remarks>
-  <p>A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
-</remarks>
-   <import href="oscal-metadata-metaschema.xml" name="metadata"/>
-   <import href="oscal-catalog-metaschema.xml" name="catalog"/>
+   <remarks>
+     <p>A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
+   </remarks>
+
+   <import href="oscal-metadata-metaschema.xml"/>
+   <import href="oscal-catalog-metaschema.xml"/>
    
    <define-assembly name="profile" group-as="profiles">
       <flag name="id" datatype="ID" required="yes"/>
@@ -138,9 +139,9 @@
       <description>As in catalogs, a group of (selected) controls or of groups of controls</description>
       <model>
          <choice>
-            <assemblies named="group" group-as="groups"/>
-            <fields named="call"  group-as="id-selectors"/>
-            <fields named="match" group-as="pattern-selectors"/>
+            <assemblies named="group"/>
+            <fields     named="call"/>
+            <fields     named="match"/>
          </choice>
       </model>
    </define-assembly>
@@ -166,9 +167,9 @@
       </remarks>
       <model>
             <choice>
-               <field named="all"/>
-               <fields named="call"  group-as="id-selectors"/>
-               <fields named="match" group-as="pattern-selectors"/>
+               <field  named="all"/>
+               <fields named="call"/>
+               <fields named="match"/>
             </choice>
       </model>
    </define-assembly>
