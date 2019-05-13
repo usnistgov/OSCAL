@@ -35,9 +35,11 @@
     
     <xsl:namespace-alias stylesheet-prefix="XSLT" result-prefix="xsl"/>
 
+    <xsl:param name="schema-path" as="xs:string" select="document-uri(/)"/>
+
     <xsl:param name="example-converter-xslt-path" as="xs:string" expand-text="true">../../util/convert/{/METASCHEMA/short-name}-{$source-format}-converter.xsl</xsl:param>
     
-    <xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,document-uri(/))"/>
+    <xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,$schema-path)"/>
     
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     

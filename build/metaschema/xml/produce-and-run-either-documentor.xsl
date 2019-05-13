@@ -11,9 +11,11 @@
 
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
-    <xsl:param name="target-format" as="xs:string">json</xsl:param>
+    <xsl:param name="target-format" as="xs:string">xml</xsl:param>
+
+    <xsl:import href="../lib/metaschema-compose.xsl"/>
+    <xsl:variable name="source" select="$composed-metaschema"/>
     
-    <xsl:variable name="source" select="/"/>
     <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
     <!--"C:\Users\wap1\Documents\OSCAL\docs_jekyll_uswds\content\documentation\schemas\oscal-catalog\catalog.md"-->
     <xsl:variable name="result-path" select="('../../../docs/content/documentation/schemas/_' || $metaschema-code || '-' || $target-format)"/>
@@ -24,7 +26,8 @@
             'xslt-version'        : 3.0,
             'stylesheet-location' : 'produce-either-documentor.xsl',
             'source-node'         : $source,
-            'stylesheet-params'   : map { xs:QName('target-format'): $target-format } }" />
+            'stylesheet-params'   : map { xs:QName('target-format'): $target-format,
+                                          xs:QName('schema-path'):   document-uri(/) } }" />
 
         <!-- The function fn:transform() returns a map, whose primary results are under 'output'
          unless a base output URI is given
@@ -46,6 +49,10 @@
     </xsl:variable>
     
     <xsl:template match="/">
+        <xsl:copy-of select="$source"/>
+    </xsl:template>
+    
+    <xsl:template match="/" mode="run">
         <!--<xsl:message expand-text="true"> { resolve-uri($result-path, document-uri(/)) }</xsl:message>-->
         <xsl:result-document href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
               
