@@ -7,21 +7,7 @@ layout: schemas
 model: oscal-profile-json
 ---
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="import"><header><h4 id="oscal-profile-json_import" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Import resource</b>: <code>import</code> object</h4><div style="float:right"><a href="/docs/schemas/oscal-profile-xml/#oscal-profile-xml_import"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>imports</code></h5></header><p class="description">An Import element designates a catalog, profile, or other resource to be
-         included (referenced and potentially modified) by this profile.</p><div class="model"><p class="usa-font-lead">The <code>import</code> object has the following members (properties):</p><ul><li><a href="#href"><code>href</code></a> property <i> (required)</i></li>
-         <li><a href="#include"><code>include</code></a> object  (<i>optional</i>)</li>
-         <li><a href="#exclude"><code>exclude</code></a> object  (<i>optional</i>)</li>
-      </ul></div><div class="remarks">
-         <p class="p">An <a href="#import">import</a> indicates a source whose controls are to be included (referenced
-          and modified) in a profile. This source will either be a catalog whose controls are given
-            (<q>by value</q>), or a profile with its own control imports (with possible settings.</p>
-         <p class="p">The contents of the <a href="#import">import</a> element indicate which controls and subcontrols
-          from the source, will be included. Controls and subcontrols may be either selected (using
-          an <a href="#include">include</a> element) or de-selected (using an <a href="#exclude">exclude</a> element)
-          from the source catalog or profile.</p>
-         <p class="p">When no <a href="#include">include</a> is given (whether an <a href="#exclude">exclude</a> is given or not),
-            an <a href="#include">include</a>/<a href="#all">all</a> is assumed (that is, all controls will be
-            included by default).</p>
-      </div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="import_example1_json">Example</button><div id="import_example1_json" class="usa-accordion-content">
+         included (referenced and potentially modified) by this profile.</p><div class="model"><p class="usa-font-lead">The <code>import</code> object has the following members (properties):</p><ul><li><a href="#href"><code>href</code></a> property <i> (required)</i></li><li><a href="#include"><code>include</code></a> object  (<i>optional</i>)</li><li><a href="#exclude"><code>exclude</code></a> object  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">An <code>import</code> indicates a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given (<q>by value</q>), or a profile with its own control imports (with possible settings.</p><p class="p">The contents of the <code>import</code> element indicate which controls and subcontrols from the source, will be included. Controls and subcontrols may be either selected (using an <code>include</code> element) or de-selected (using an <code>exclude</code> element) from the source catalog or profile.</p><p class="p">When no <code>include</code> is given (whether an <code>exclude</code> is given or not), an <code>include</code>/<code>all</code> is assumed (that is, all controls will be included by default).</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="import_example1_json">Example</button><div id="import_example1_json" class="usa-accordion-content">
 {% highlight json %}
   { "href" : "catalog.xml",
     "include" : 

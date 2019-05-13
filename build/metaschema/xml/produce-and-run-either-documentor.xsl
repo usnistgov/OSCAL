@@ -49,10 +49,6 @@
     </xsl:variable>
     
     <xsl:template match="/">
-        <xsl:copy-of select="$source"/>
-    </xsl:template>
-    
-    <xsl:template match="/" mode="run">
         <!--<xsl:message expand-text="true"> { resolve-uri($result-path, document-uri(/)) }</xsl:message>-->
         <xsl:result-document href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
               
