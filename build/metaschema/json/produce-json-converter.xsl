@@ -28,6 +28,10 @@
     <!-- Produces composed metaschema (imports resolved) -->
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     
+    <xsl:template match="/">
+        <xsl:apply-templates select="$composed-metaschema/METASCHEMA"/>
+    </xsl:template>
+    
     <xsl:template match="METASCHEMA">
         <XSLT:stylesheet version="3.0"
             xpath-default-namespace="http://www.w3.org/2005/xpath-functions"

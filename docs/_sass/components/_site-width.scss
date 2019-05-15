@@ -1,0 +1,16 @@
+.site-wide {
+  .usa-grid {
+    max-width: 100%;
+  }
+
+  .usa-header {
+    .usa-navbar,
+    .usa-nav-inner {
+      max-width: 100%;
+    }
+  }
+
+  .usa-content p, .usa-content ul:not(.usa-accordion):not(.usa-accordion-bordered), .usa-content ol:not(.usa-accordion):not(.usa-accordion-bordered) {
+    max-width: none;
+  }
+}

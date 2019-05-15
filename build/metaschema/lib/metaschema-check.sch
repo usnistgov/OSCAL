@@ -119,6 +119,7 @@
             <!--<sch:report test="empty($imported-schemas/m:METASCHEMA)">Don't see imported schemas</sch:report>-->
         </sch:rule>
        
+        <sch:rule context="/m:METASCHEMA/*[matches(@acquire-from,'\S')]"/>
         <sch:rule context="m:define-assembly">
             <sch:assert role="warning" test="@name = ($composed-metaschema//m:assembly/@named | $composed-metaschema//m:assemblies/@named | /m:METASCHEMA/@root)">Definition for assembly '<sch:value-of select="@name"/>' is not used.</sch:assert>
         </sch:rule>

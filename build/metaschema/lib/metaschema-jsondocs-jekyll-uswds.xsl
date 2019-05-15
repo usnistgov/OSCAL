@@ -90,9 +90,10 @@
          <header>
          <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest usa-color-text">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
-               select="@name"/> attribute</h4>
+               select="@name"/> object</h4>
             <xsl:call-template name="cross-links"/>
          </header>
+         <xsl:apply-templates select="@datatype"/>
          <xsl:apply-templates/>
          <xsl:for-each-group select="key('references',@name)/parent::*" group-by="true()">
             <p><xsl:text>This object appears as a property on: </xsl:text>
@@ -124,8 +125,8 @@
          <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> string object</h4>
-            
             <xsl:call-template name="cross-links"/>
+            <xsl:call-template name="group-label"/>
          </header>
          <xsl:for-each select="$definition">
             <xsl:choose>
@@ -173,6 +174,13 @@
       </div>
    </xsl:template>
 
+   <xsl:template name="group-label">
+      <xsl:if test="matches(@group-as, '\S')">
+         <h5>This object appears <i>unlabelled</i> in any array called <code xsl:expand-text="true"
+               >{ @group-as }</code></h5>
+      </xsl:if>
+   </xsl:template>
+
    <xsl:template match="define-assembly">
       <xsl:variable name="imported" select="/*/import[@name=current()/@acquire-from]/document(@href,$home)"/>
       <xsl:variable name="definition" select="if (exists($imported)) then key('definitions',@name,$imported) else ."/>
@@ -182,8 +190,8 @@
          <h4 id="{$metaschema-code}_{@name}" class="usa-color-text usa-color-primary-alt-lightest">
             <xsl:apply-templates select="$definition/formal-name" mode="inline"/>: <xsl:apply-templates
                select="@name"/> object</h4>
-         
          <xsl:call-template name="cross-links"/>
+         <xsl:call-template name="group-label"/>
       </header>
          <!-- No mention of @group-as on XML side       -->
          <xsl:if test="@name = ../@root">
@@ -236,7 +244,11 @@
    </xsl:template>
 
    <xsl:template match="@datatype"/>
-
+   
+   <xsl:template match="define-flag/@datatype">
+      <p>Object of type <code><xsl:value-of select="."/></code></p>
+   </xsl:template>
+   
    <xsl:template match="@address">
       <xsl:text> (addressable by </xsl:text>
       <code>

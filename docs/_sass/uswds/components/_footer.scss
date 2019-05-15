@@ -1,0 +1,527 @@
+.usa-footer {
+  .usa-unstyled-list {
+    display: block;
+  }
+
+  .usa-footer-primary-link {
+    color: $color-base;
+    display: block;
+    font-weight: $font-bold;
+    margin-top: 0;
+    padding-bottom: $spacing-medium;
+    padding-top: $spacing-medium;
+    text-decoration: none;
+
+    @include media($medium-screen) {
+      border-top: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+
+      @include media($medium-screen) {
+        cursor: auto;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .usa-footer-primary-link ~ li a,
+  .usa-footer-secondary-link {
+    text-decoration: none;
+  }
+}
+
+.usa-footer-contact_info {
+  display: inline-block;
+
+  a {
+    color: $color-base;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.usa-footer-return-to-top {
+  padding-bottom: $spacing-medium;
+  padding-top: $spacing-medium;
+}
+
+.usa-footer-primary-section {
+  background-color: $color-gray-lightest;
+
+  .usa-footer-primary-content {
+    padding-left: 1.5rem;
+    padding-right: 2.5rem;
+
+    @include media($medium-screen) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    li {
+      margin-left: 1rem;
+
+      @include media($medium-screen) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .usa-grid-full {
+    @include media($medium-screen) {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+}
+
+.usa-footer-medium {
+  .usa-footer-contact_info {
+    p {
+      margin: 0 $spacing-small 0 0;
+
+      @include media($medium-screen) {
+        margin: 0 0 0 $spacing-small;
+      }
+    }
+  }
+
+  .usa-footer-contact-heading {
+    margin-top: 0;
+
+    @include media($medium-screen) {
+      margin-top: $spacing-x-small;
+      margin-bottom: $spacing-x-small;
+    }
+  }
+
+  .usa-footer-logo {
+    padding: $spacing-small 0;
+
+    @include media($medium-screen) {
+      padding: $spacing-medium 0;
+    }
+  }
+
+  .usa-footer-primary-link {
+    padding-bottom: $spacing-md-small;
+    padding-top: $spacing-md-small;
+  }
+
+  .usa-footer-primary-section {
+    > .usa-grid {
+      padding: 0;
+
+      @include media($medium-screen) {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+      }
+    }
+
+    .usa-footer-primary-content {
+      @include media($large-screen) {
+        margin-right: 5%;
+        width: inherit;
+      }
+
+      &:last-child {
+        @include media($large-screen) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .usa-footer-nav ul {
+    @include media($medium-screen) {
+      align-items: center;
+    }
+  }
+}
+
+.usa-footer-slim {
+  .usa-footer-nav {
+    a {
+      display: block;
+    }
+
+    .usa-footer-primary-content {
+      @include media($large-screen) {
+        margin-right: 5%;
+        width: inherit;
+      }
+
+      &:last-child {
+        @include media($large-screen) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .usa-footer-primary-link {
+    padding-bottom: $spacing-md-small;
+    padding-top: $spacing-md-small;
+  }
+
+  .usa-footer-primary-section {
+    > .usa-grid {
+      padding: 0;
+
+      @include media($medium-screen) {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+      }
+    }
+
+    @include media($medium-screen) {
+      padding-bottom: 0;
+      padding-top: 0;
+
+      .usa-grid-full {
+        align-items: center;
+      }
+    }
+  }
+
+  .usa-footer-contact_info {
+    > * {
+      @include media($medium-screen) {
+        margin: 0;
+      }
+    }
+
+    @include media($medium-screen) {
+      @include padding ($spacing-md-small null);
+    }
+
+    @include media($medium-screen) {
+      width: 100%;
+    }
+
+    @include media($large-screen) {
+      @include span-columns(6);
+    }
+  }
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+ul.usa-footer-primary-content,
+li.usa-footer-primary-content,
+li.usa-footer-primary-content {
+  border-top: 1px solid $color-gray-light;
+
+  @include media($medium-screen) {
+    border: none;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid $color-gray-light;
+
+    @include media($medium-screen) {
+      border-bottom: none;
+    }
+  }
+}
+/* stylelint-enable */
+
+.usa-sign_up-block {
+  padding-bottom: 4.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @include media($medium-screen) {
+    float: right;
+    padding: 0;
+  }
+
+  label:first-of-type {
+    margin-top: 0;
+  }
+
+  button {
+    float: none;
+    margin-right: 0;
+    margin-top: 1.5rem;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.usa-footer-secondary_section {
+  background-color: $color-gray-lighter;
+  padding-bottom: $spacing-medium;
+  padding-top: $spacing-medium;
+
+  a {
+    color: $color-base;
+  }
+}
+
+.usa-footer-big-secondary-section {
+  @include media($medium-screen) {
+    padding-top: $spacing-medium;
+    padding-bottom: $spacing-medium;
+  }
+}
+
+.usa-footer-contact-links {
+  @include media($medium-screen) {
+    text-align: right;
+  }
+}
+
+.usa-social-links {
+  a {
+    text-decoration: none;
+  }
+}
+
+.usa-footer-big {
+  .usa-footer-contact_info {
+    display: block;
+
+    p {
+      margin: 0 $spacing-small 0 0;
+
+      @include media($medium-screen) {
+        margin: $spacing-x-small 0 0 $spacing-small;
+      }
+    }
+  }
+
+  .usa-footer-contact-links {
+    @include media($medium-screen) {
+      padding-top: $spacing-medium;
+    }
+  }
+
+  .usa-footer-logo {
+    padding: $spacing-small 0;
+
+    @include media($medium-screen) {
+      padding: $spacing-medium 0;
+    }
+  }
+
+  .usa-footer-primary-section {
+    @include media($medium-screen) {
+      padding-bottom: 4rem;
+      padding-top: 3rem;
+    }
+
+    > .usa-grid {
+      padding: 0;
+
+      @include media($medium-screen) {
+        padding-left: $spacing-large;
+        padding-right: $spacing-large;
+      }
+    }
+
+    .usa-footer-primary-content {
+      padding-left: 0;
+      padding-right: 0;
+
+      li {
+        margin-left: $spacing-md-small;
+
+        @include media($medium-screen) {
+          margin-left: 0;
+        }
+      }
+
+      .usa-footer-primary-link {
+        margin-left: 0;
+      }
+    }
+  }
+
+  ul {
+    padding-bottom: 2.4rem;
+
+    @include media($medium-screen) {
+      padding-bottom: 0;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid $color-gray-light;
+
+      @include media($medium-screen) {
+        border-bottom: none;
+      }
+    }
+
+    li:not(.usa-footer-primary-link) {
+      line-height: $heading-line-height;
+      padding-bottom: 0.35em;
+      padding-top: 0.35em;
+    }
+
+    .usa-footer-primary-link {
+      background-image: url('#{$image-path}/arrow-down.png');
+      background-image: url('#{$image-path}/arrow-down.svg');
+      background-position: 1.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.3rem;
+      margin-left: 0;
+      padding-left: 3.5rem;
+
+      @include media($medium-screen) {
+        background: none;
+        margin-bottom: .8rem;
+        padding-bottom: 0;
+        padding-left: 0;
+      }
+
+      > * {
+        @include margin(0 null);
+      }
+    }
+
+    &.hidden { /* stylelint-disable-line selector-no-qualifying-type */
+      padding-bottom: 0;
+
+      li {
+        display: none;
+      }
+
+      .usa-footer-primary-link { /* stylelint-disable-line selector-no-qualifying-type */
+        background-image: url('#{$image-path}/arrow-right.png');
+        background-image: url('#{$image-path}/arrow-right.svg');
+        cursor: pointer;
+        display: block;
+
+        @include media($medium-screen) {
+          background: none;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+.usa-footer-topic {
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.usa-sign_up-header {
+  @include media($medium-screen) {
+    margin: 0;
+    padding: 2rem 0;
+  }
+}
+
+.usa-footer-logo-img {
+  max-width: 8rem;
+
+  @include media($medium-screen) {
+    float: left;
+  }
+}
+
+.usa-footer-big-logo-img {
+  max-width: 10rem;
+}
+
+.usa-footer-slim-logo-img {
+  float: left;
+  max-width: 5rem;
+}
+
+.usa-footer-logo-heading {
+  display: block;
+  margin-top: $spacing-small;
+
+  @include media($medium-screen) {
+    display: inline-block;
+    margin-top: $spacing-large;
+    padding-left: $spacing-md-small;
+  }
+}
+
+.usa-footer-big-logo-heading {
+  margin-top: $spacing-md-small;
+
+  @include media($medium-screen) {
+    margin-top: $spacing-medium;
+  }
+}
+
+.usa-footer-slim-logo-heading {
+  display: inline-block;
+  margin-top: $spacing-md-small;
+  padding-left: $spacing-md-small;
+}
+
+.usa-footer-contact-heading {
+  margin-top: 0;
+
+  @include media($medium-screen) {
+    margin-top: 1rem;
+  }
+}
+
+.usa-social_link {
+  $background-height: 3rem; // Height of icon within hit area.
+  // Link hit target is 44 x 44 pixels following
+  // Apple iOS Human Interface Guidelines.
+  $hit-area: 4.4rem;
+
+  @include margin(2.5rem 1rem 1.5rem 0);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: auto $background-height;
+  display: inline-block;
+  height: $hit-area;
+  left: -1.6rem; // relative left positioning
+  position: relative;
+  text-align: center;
+  width: $hit-area;
+
+  @include media($medium-screen) {
+    @include margin(0 0 0 $spacing-x-small);
+    left: $spacing-md-small;
+  }
+
+  span {
+    @include sr-only();
+  }
+}
+
+.usa-link-facebook {
+  @extend .usa-social_link;
+  background-image: url('#{$image-path}/social-icons/png/facebook25.png');
+  background-image: url('#{$image-path}/social-icons/svg/facebook25.svg');
+}
+
+.usa-link-twitter {
+  @extend .usa-social_link;
+  background-image: url('#{$image-path}/social-icons/png/twitter16.png');
+  background-image: url('#{$image-path}/social-icons/svg/twitter16.svg');
+}
+
+.usa-link-youtube {
+  @extend .usa-social_link;
+  background-image: url('#{$image-path}/social-icons/png/youtube15.png');
+  background-image: url('#{$image-path}/social-icons/svg/youtube15.svg');
+}
+
+.usa-link-rss {
+  @extend .usa-social_link;
+  background-image: url('#{$image-path}/social-icons/png/rss25.png');
+  background-image: url('#{$image-path}/social-icons/svg/rss25.svg');
+}
+
+.usa-link-github {
+  @extend .usa-social_link;
+  background-image: url('#{$image-path}/social-icons/svg/github.svg');
+}

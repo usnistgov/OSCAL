@@ -1,0 +1,15 @@
+---
+layout: post
+---
+{% if jekyll.environment == "production" %}
+{% assign collection = site.collections | where: "label", page.model | first %}
+
+{% for schema_element in collection.docs %}
+{% if schema_element.position == 0 %}{{ schema_element.content }}{% break %}{% endif %}
+{% endfor %}
+
+{% for schema_element in collection.docs %}
+{% if schema_element.position == 0 %}{% continue %}{% endif %}
+{{ schema_element.content | markdownify }}
+{% endfor %}
+{% endif %}

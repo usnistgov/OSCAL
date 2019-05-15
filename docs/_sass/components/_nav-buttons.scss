@@ -1,0 +1,24 @@
+.usa-header,
+.usa-sidenav-list {
+  @include media($nav-width) {
+    .usa-button {
+      margin: 0;
+      width: auto;
+    }
+  }
+  .usa-button {
+    color: $color-white;
+    padding: 1rem;
+    &:hover {
+      background-color: $color-primary-darker;
+      color: $color-white;
+      text-decoration: none;
+    }
+  }
+}
+.usa-sidenav-list,
+.usa-footer-nav .usa-footer-primary-content {
+  .usa-button {
+    margin: 1rem 0;
+  }
+}

@@ -1,0 +1,96 @@
+# This is the configuration for the site navigation.
+
+# This file defines the structure of various named navigational
+# listings, any of which can be used (with some caveats) as the
+# links in your header, footer, and per-page side navigation.
+#
+# For instance, if you have a "primary" navigation list here, you
+# can use that as your header's primary navigation by setting
+# `primary.links` to "primary":
+#
+# primary:
+#   links: primary  
+#
+primary:
+  - text: Home
+    href: /
+  - text: Learn More
+    href: /learnmore/
+  - text: Resources
+    href: /resources/
+  - text: Concepts
+    href: /docs/
+  - text: Schema Reference
+    href: /docs/schemas/
+  - text: Community
+    href: /community/
+
+secondary:
+  - text: Get Involved
+    href: /community/
+  - text: Contact Us
+    href: /contact/
+
+resources:
+  - text: Resources
+    href: /resources/
+  - text: Examples
+    href: /resources/examples/
+    subnav: true
+  - text: GitHub Repo
+    href: https://github.com/usnistgov/OSCAL
+    external: true
+
+concepts:
+  - text: Concepts
+    href: /docs/
+  - text: Architecture
+    href: /docs/architecture/
+    subnav: true
+  - text: Schema Reference
+    href: /docs/schemas/
+  - text: Relations to Documentary Encoding Standards
+    href: /docs/relations/
+
+schemas:
+  - text: Schema Reference
+    href: /docs/schemas/
+  - text: Catalog Schema
+    href: /docs/schemas/oscal-catalog-xml/
+    model: catalog
+  - text: Profile Schema
+    href: /docs/schemas/oscal-profile-xml/
+    model: profile
+  - text: OSCAL Prose Model
+    href: /docs/schemas/oscal-prose/
+
+community:
+  - text: Community
+    href: /community/
+  - text: Contribute on Github
+    href: https://github.com/usnistgov/OSCAL
+    external: true
+
+learnmore:
+  - text: Learn More
+    href: /learnmore/
+    subnav:
+    - text: For Security Professionals
+      href: /learnmore/securitypros/
+    - text: For Assessors
+      href: /learnmore/assessors/
+    - text: For Tool Developers
+      href: /learnmore/tooldevelopers/
+    - text: For Policy Authors
+      href: /learnmore/contentcreators/
+  - text: Roadmap
+    href: /learnmore/roadmap/
+  - text: Case Studies
+    href: /learnmore/casestudies/
+  - text: Scenarios
+    href: /learnmore/scenarios/
+    
+footer:
+  - text: Documentation
+    href: /docs/
+

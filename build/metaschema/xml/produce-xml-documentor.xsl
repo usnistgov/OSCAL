@@ -6,6 +6,8 @@
     version="3.0"
     xmlns:XSLT="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias">
     
+    xmlns:XSLT="http://csrc.nist.gov/ns/oscal/metaschema/xslt-alias">
+    
 <!-- Purpose: Produce an XSLT supporting production of metaschema documentation.
         
         In the XML pipeline this XSLT can be minimal, producing an XSLT that does little but

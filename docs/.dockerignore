@@ -1,7 +1,1 @@
-Vagrantfile
-build/
-.gitignore
-.git/
-.travis.yml
-deploy.sh
-.github/
+node_modules/

@@ -1,0 +1,12 @@
+{% assign _styles = '' | split: '' %}
+{% assign _default_styles = '' | split: ''
+| push: '/assets/css/main.css' %}
+{% assign _styles = _styles
+| push: _default_styles
+| push: site.styles
+| push: layout.styles
+| push: page.styles %}
+{% for _list in _styles %}{% for _style in _list %}
+<!-- Removed media type to make it print better -->
+<link rel="stylesheet" href="{{ _style.href | default: _style | relative_url }}">
+{% endfor %}{% endfor %}

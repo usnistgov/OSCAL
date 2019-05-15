@@ -1,0 +1,27 @@
+.usa-header {
+  @if variable-exists(header-bg) {
+    background-color: $header-bg;
+  }
+
+  .usa-logo {
+    a {
+      @if variable-exists(header-title) {
+        color: $header-title;
+      }
+    }
+  }
+
+  .usa-nav-secondary-links {
+    a {
+      @if variable-exists(header-link) {
+        color: $header-link;
+      }
+
+      &:hover {
+        @if variable-exists(header-link-hover) {
+          color: $header-link-hover;
+        }
+      }
+    }
+  }
+}
