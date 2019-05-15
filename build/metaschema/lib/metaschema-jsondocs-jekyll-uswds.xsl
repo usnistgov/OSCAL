@@ -109,7 +109,7 @@
    <xsl:template name="cross-links">
       <xsl:variable name="alt-schema" select="replace($metaschema-code,'-json$','-xml')"/>
       <div style="float:right">
-         <a href="/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
+         <a href="/OSCAL/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
             <button>XML</button>
          </a>
          <button disabled="disabled">JSON</button>

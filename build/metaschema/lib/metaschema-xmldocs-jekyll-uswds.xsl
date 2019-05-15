@@ -118,7 +118,7 @@
       <xsl:variable name="alt-schema" select="replace($metaschema-code,'-xml$','-json')"/>
       <div style="float:right">
          <button disabled="disabled">XML</button>
-         <a href="/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
+         <a href="/OSCAL/docs/schemas/{ $alt-schema }/#{ $alt-schema }_{ @name}">
             <button>JSON</button>
          </a>
       </div>
