@@ -17,7 +17,6 @@ with open(filename_xml, 'r') as xml_file:
     xml_to_check = xml_file.read()
 
 # parse the document
-# schema_to_check = unicode(schema_to_check, "utf-8")
 xmlschema_doc = etree.parse(StringIO(schema_to_check))
 
 # error checking for schema load
