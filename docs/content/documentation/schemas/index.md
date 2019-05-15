@@ -38,4 +38,4 @@ The sample schemas have been created with the following design principles in min
 Find documentation for each of the models linked on the left.
 
 Additionally, a separate page describes the 
-[OSCAL Prose Model](/docs/schemas/oscal-prose/), which is shared by each of the component models.
+[OSCAL Prose Model](/OSCAL/docs/schemas/oscal-prose/), which is shared by each of the component models.

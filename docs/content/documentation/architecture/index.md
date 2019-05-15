@@ -24,7 +24,7 @@ In particular, the design of the OSCAL Profile layer, in relation to the Catalog
 
 Together, these models address functional requirements as depicted in the following diagram:
 
-<img src="/assets/img/oscal-components.png" alt="oscal components" width="800" />
+<img src="{{ site.baseurl }}/assets/img/oscal-components.png" alt="oscal components" width="800" />
 
 Starting from the left, the OSCAL layers are currently defined as:
 

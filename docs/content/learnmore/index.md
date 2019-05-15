@@ -37,19 +37,16 @@ By streamlining and standardizing the processes of documenting, implementing and
 
 Our stakeholders are segmented, as is our industry, into constituencies with various needs. Please decide which category or categories you fit into, then go from there.
 
-- [Security Professionals](/learnmore/securitypros/) -- You are responsible for documenting security controls and how they are applied within a system.
+- [Security Professionals](/OSCAL/learnmore/securitypros/) -- You are responsible for documenting security controls and how they are applied within a system.
 
-- [Assessors](/learnmore/assessors/) -- You are responsible for assessing security-related information produced by others.
+- [Assessors](/OSCAL/learnmore/assessors/) -- You are responsible for assessing security-related information produced by others.
 
-- [Tool Developers](/learnmore/tooldevelopers/) -- You build tools and utilities to help other players, enabling them to do more work more consistently, thoroughly, accurately and easily.
+- [Tool Developers](/OSCAL/learnmore/tooldevelopers/) -- You build tools and utilities to help other players, enabling them to do more work more consistently, thoroughly, accurately and easily.
 
-- [Policy Authors](/learnmore/contentcreators/) -- You write policy documents (catalogs or profiles/baselines/overlays) defining, characterizing and customizing security controls for others to use.
+- [Policy Authors](/OSCAL/learnmore/contentcreators/) -- You write policy documents (catalogs or profiles/baselines/overlays) defining, characterizing and customizing security controls for others to use.
 
-
-
-
-[Learn More](/docs/)
+## [Learn More](/OSCAL/docs/)
 
 ## Get Involved 
 
-To learn more about how you can get involved, [contact us](contact).
+To learn more about how you can get involved, [contact us](/OSCAL/contact/).

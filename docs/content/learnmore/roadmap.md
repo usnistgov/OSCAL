@@ -12,7 +12,7 @@ layout: post
 
 The IT security domain is characterized by a growing number of regulatory guidelines and frameworks, such as NIST Special Publication (SP) 800-53, NIST Cybersecurity Framework, ISO/IEC 27001 and 27002, COBIT, PCI DSS, HIPAA, and so others. Within this context, the major challenge of IT systems security is developing, applying and coordinating consistent and appropriate policies, both within and across organizational boundaries. With the advent of cloud and the Internet of Things (IoT), the complexity of the IT landscape in general is increasing, with a broadening and dispersal of the attack surface and a proliferation of vulnerabilities: this too makes system security planning more complicated. A great deal of system security planning, auditing, and assessing is now done using spreadsheets and (page-oriented) word processors, supporting manual and paper-based compliance processes. This approach is not only labor intensive, it also takes time, sometimes resulting in documentation that is out of date soon after it is produced -- which can leave critical risks undiscovered or unaddressed. When a system plan and system description is unable to keep up with reality on the ground (a phenomenon sometimes referred to as "security drift"), it becomes a pointless exercise as well as a costly one.
 
-<img src="/assets/img/oscal-components.png" alt="oscal components" width="800"/>
+<img src="{{ site.baseurl }}/assets/img/oscal-components.png" alt="oscal components" width="800"/>
 
 ### Why is OSCAL needed?
 
