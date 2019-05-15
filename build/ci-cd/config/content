@@ -1,0 +1,5 @@
+src/content/fedramp.gov/xml/*profile.xml|xml|profile|json
+src/content/nist.gov/**/xml/*catalog.xml|xml|catalog|json
+src/content/nist.gov/**/xml/*profile.xml|xml|profile|json
+content/**/*catalog.json|json|catalog|xml
+

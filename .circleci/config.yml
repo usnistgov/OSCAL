@@ -1,32 +1,83 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build-metaschema:
-    working_directory: ~/oscal-metaschema # directory where steps will run
-
-    docker: # run the steps with Docker
-      - image: circleci/openjdk:8-jdk-browsers
-
-    steps: # a collection of executable commands
-      - checkout # check out source code to working directory
+version: 2.1 # use CircleCI 2.1
+commands:
+  install-saxon:
+    description: "Retrieve Saxon-HE and setup the environment to run it"
+    steps:
+      - checkout
+      - restore_cache:
+          key: maven-m2
+      - run:
+          name: Init environment
+          command: |
+            source build/ci-cd/common-environment.sh
       - run:
           name: Get Saxon
-          command: mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=9.9.0-1
+          command: |
+            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
+      - save_cache:
+          key: maven-m2
+          paths:
+            - ~/.m2
       - run:
-          name: Generate OSCAL Catalog Artifacts
-          working_directory: ~/oscal-metaschema/schema/metaschema
-          command: bash ./run-metaschema.sh ./oscal-catalog-metaschema.xml catalog
-          environment:
-            SAXON: /home/circleci/.m2/repository/net/sf/saxon/Saxon-HE/9.9.0-1/Saxon-HE-9.9.0-1.jar
+          name: Initialize Saxon Environment
+          command: |
+            source build/ci-cd/saxon-init.sh
+  install-xmllint:
+    description: "Retrieve xmllint and setup the environment to run it"
+    steps:
       - run:
-          name: Generate OSCAL Profile Artifacts
-          working_directory: ~/oscal-metaschema/schema/metaschema
-          command: bash ./run-metaschema.sh ./oscal-profile-metaschema.xml profile
-          environment:
-            SAXON: /home/circleci/.m2/repository/net/sf/saxon/Saxon-HE/9.9.0-1/Saxon-HE-9.9.0-1.jar
-      - run:   
-          name: List Generated OSCAL Catalog Artifacts
-          working_directory: ~/oscal-metaschema
-          command: git status
+          name: Get xmllint
+          command: |
+            sudo apt-get install libxml2-utils
+  install-ajv:
+    description: "Retrieve ajv and setup the environment to run it"
+    steps:
+      - run:
+          name: Get ajv
+          command: |
+            sudo npm install -g ajv-cli
+
+executors:
+  java-executor:
+    docker: # run the steps with Docker
+      - image: circleci/openjdk:8-jdk-node-browsers
+    working_directory: ~/oscal
+    environment:
+      SAXON_VERSION: 9.9.0-1
+
+jobs: # a collection of steps
+
+  job-validate-metaschema:
+    executor: java-executor
+    steps:
+      - checkout
+      - install-xmllint
+      - run:
+          name: Validate metaschema instances
+          command: |
+            bash ./build/ci-cd/validate-metaschema.sh
+  job-generate-schema:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - checkout
+      - install-saxon
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash ./build/ci-cd/generate-schema.sh
+  job-validate-content:
+    executor: java-executor
+    steps:
+      - checkout
+      - install-xmllint
+      - install-ajv
+      - run:
+          name: Validate XML catalog instances
+          command: |
+            bash ./build/ci-cd/validate-content.sh 
+  job-deploy-built:
+    executor: java-executor
+    steps: # a collection of executable commands
       - deploy:
           name: Commit Artifacts
           working_directory: ~/oscal-metaschema
@@ -34,7 +85,7 @@ jobs: # a collection of steps
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying built artifacts [ci skip]"
             git push
-  build-docs:
+  job-build-docs:
     working_directory: ~/oscal-docs # directory where steps will run
 
     docker: # run the steps with Docker
@@ -62,7 +113,11 @@ workflows:
   version: 2
   build:
     jobs:
-      - build-metaschema
-      - build-docs:
+      - job-validate-metaschema
+      - job-generate-schema:
           requires:
-            - build-metaschema
+            - job-validate-metaschema
+      - job-validate-content:
+          requires:
+            - job-generate-schema
+
