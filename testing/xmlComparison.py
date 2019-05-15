@@ -41,12 +41,13 @@ class Element:
         #debugging print
         #print "name: %s, Number of Children = %d, Number of Attributes = %d" % ( self.name, len(self.subs), len(self.atts) )
 
+    # function to compare two XML branches
     def compare(self,el):
         if self.name != el.name:
             raise RuntimeError("Two names are not the same")
-        print "----------------------------------------------------------------"
-        print self.name + ", Level: " + str(self.level)
-        print "----------------------------------------------------------------"
+        print("----------------------------------------------------------------")
+        print(self.name + ", Level: " + str(self.level))
+        print("----------------------------------------------------------------")
         
         # check values
         if self.value == el.value:
