@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSCAL Home | OSCAL</title>
+    <title>Schema Reference | OSCAL</title>
 
 
 
-<meta name="description" content="OSCAL - more insight, less paper">
+<meta name="description" content="OSCAL Schema Reference">
 
 
 
@@ -159,7 +159,7 @@
               
               <li>
                 
-          <a class=" usa-nav-link   usa-current"
+          <a class=" usa-nav-link  "
             href="/">
             <span>Home</span>
           </a>
@@ -195,7 +195,7 @@
           
               <li>
                 
-          <a class=" usa-nav-link  "
+          <a class=" usa-nav-link   usa-current usa-current"
             href="/docs/schemas/">
             <span>Schema Reference</span>
           </a>
@@ -259,109 +259,120 @@
     </header>
     <div class="usa-overlay"></div>
       
-<section class="usa-hero"
-  style="background-image: url('/assets/img/automation-hero.png')">
-  <div class="usa-grid">
-    <div class="usa-hero-callout usa-section-dark">
-      
-      <h2>
-        
-        <span class="usa-hero-callout-alt">F.A.S.T.</span>
-        
-        Assessment
-      </h2>
-      
+     
 
+
+
+  
+
+    <main id="main-content"  class="usa-grid usa-section usa-content usa-layout-docs" >
+        
+
+  <aside class="usa-layout-docs-sidenav sidenav usa-sticky-sidenav">
+    <nav>
+  <ul class="usa-sidenav-list">
+    
       
-      <a class="usa-hero-link" href="/learnmore/">
-        Learn more about OSCAL
+      
+      
+      
+    <li>
+      <a href="/docs/schemas/"
+          class="usa-current" 
+          >
+         Schema Reference
       </a>
+	  
+    </li>
+    
       
-
-      <p>Fast, Accurate, Scalable, Traceable: Documentary Foundations for Systems Security</p>
-
-
       
-      <a class="usa-button"
-        href="/community/">
-        Get Involved
+      
+      
+    <li>
+      <a href="/docs/schemas/oscal-catalog-xml/"
+         
+          >
+         Catalog Schema
       </a>
+	  
+    </li>
+    
       
-    </div>
-  </div>
-</section>
-
- 
-    <section class="usa-grid usa-section">
-        <div class="usa-width-one-third">
-            <h2>Automating Security Assessment & Continuous Monitoring</h2>
-        </div>
-        <div class="usa-width-two-thirds">
-            <p>NIST is developing the Open Security Controls Assessment Language (OSCAL): a set of models expressed in standard notations (XML, JSON), offering machine-readable representations of information pertaining to the publication, implementation, and assessment of security and privacy controls. By promoting transparency and interoperability along with rigorous validation of data in context, OSCAL formats provide a foundation for automation and machine assistance of many tasks and activities related to systems security.</p>
-
-<p>OSCAL is being developed through a collaborative approach with the public. It is designed to improve system security planning, assessment, and monitoring, with a technology that is both user- and developer-friendly.</p>
-
-<p>The <a href="https://github.com/usnistgov/OSCAL">OSCAL GitHub repository</a> holds the current OSCAL schemas, examples, documentation source files, and other resources.
-They are free to inspect, experiment with and use. Our <a href="/resources/">Resources page</a> has links to off-site projects and toolkits relating to OSCAL. The NIST team welcomes public contributions to this project; if you are interested, please <a href="/getinvolved/">contact us</a> to get started.</p>
-
-        </div>
-    </section>
-        
-
-
-<section class="usa-section usa-section-dark usa-graphic_list">
-  
-    <div class="usa-grid usa-graphic_list-row">
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/dataCentric.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Data-centric</h3>
-        <p>Transitions the legacy approach to security plan generation and management (Word and Excel documents) to a data-centric approach based on common data standards such as XML/JSON.</p>
-
-      </div>
-    </div>
+      
+      
+      
+    <li>
+      <a href="/docs/schemas/oscal-profile-xml/"
+         
+          >
+         Profile Schema
+      </a>
+	  
+    </li>
     
+      
+      
+      
+      
+    <li>
+      <a href="/docs/schemas/oscal-prose/"
+         
+          >
+         OSCAL Prose Model
+      </a>
+	  
+    </li>
+    
+  </ul>
+</nav>
+
+  </aside>
+
+
+<div class="usa-layout-docs-main_content">
   
     
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/extensible.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Extensible</h3>
-        <p>Puts security compliance data to work by allowing an extensible architecture that expresses security controls in both machine and human readable formats.</p>
-
-      </div>
-    </div>
-    </div>
-  
-    <div class="usa-grid usa-graphic_list-row">
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/integrated.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Integrated</h3>
-        <p>Allows tool developers to implement APIs and provide a standards-based foundation for next generation compliance tools.</p>
-
-      </div>
-    </div>
+    <h1>Schema Reference</h1>
     
   
-    
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/automated.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Automated</h3>
-        <p>Apply the benefits of the data-centric approach to automate existing processes that are resource intensive.</p>
+  <h2 id="about-the-schemas">About the schemas</h2>
 
-      </div>
-    </div>
-    </div>
-  
-</section>
+<p>Each OSCAL <strong>model</strong> comes with an XSD (W3C XML Schema) and a corresponding JSON Schema.</p>
+
+<h3 id="xml-andor-json">XML and/or JSON</h3>
+
+<p>The OSCAL project is producing schemas to describe and validate data in two formats, XML and JSON. These are produced within a framework that provides for semantic unification in the form of a metamodel, which is subsequently processed and written out into two different expressions:</p>
+
+<ul>
+  <li>An XSD (W3C XML Schema) that describes an XML tag set</li>
+  <li>A JSON Schema (v7) that describes a JSON data object</li>
+</ul>
+
+<p>XML documents that are conformant (validate) to an OSCAL XSD can be converted without loss into the corresponding JSON, according to a mapping provided by the metamodel, and vice versa. Accordingly we can produce not only the models and their documentation, but also tools for converting data sets in the respective formats into their “opposites”.</p>
+
+<p>In addition to the improved control over modeling and documentation this architecture gives us, this enables OSCAL to serve the needs of developers who use either or both formats. We hope and expect that developers’ experience with different approaches will inform further efforts to unify and consolidate a coherent data model.</p>
+
+<p>In future, we plan to extend our models with mappings to other formats as well. As a superset of JSON, YAML syntax is an attractive candidate, as is a Markdown application. Once we have demonstrated that the models themselves are adequate to the data, many more things become possible.</p>
+
+<h3 id="design-principles-for-the-schemas">Design principles for the schemas</h3>
+<p>The sample schemas have been created with the following design principles in mind:</p>
+
+<ul>
+  <li>Simplicity and ease of use.</li>
+  <li>Relevance for typical producers.</li>
+  <li>Extensibility. The sample schemas are designed for adaptability and extensibility. In ordinary cases, users and designers of application can introduce new constructs and usages to support local requirements. In special cases, new schemas may be constructed to work with schemas already in use.</li>
+</ul>
+
+<h3 id="schema-documentation">Schema documentation</h3>
+
+<p>Find documentation for each of the models linked on the left.</p>
+
+<p>Additionally, a separate page describes the 
+<a href="/docs/schemas/oscal-prose/">OSCAL Prose Model</a>, which is shared by each of the component models.</p>
 
 
-  
-
-    <main id="main-content" >
-        
+</div>
     </main>
 
      <!-- 

@@ -12,11 +12,11 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSCAL Home | OSCAL</title>
+    <title>Schema Reference - OSCAL Prose Model | OSCAL</title>
 
 
 
-<meta name="description" content="OSCAL - more insight, less paper">
+<meta name="description" content="OSCAL Profile Model XML Schema Reference">
 
 
 
@@ -159,7 +159,7 @@
               
               <li>
                 
-          <a class=" usa-nav-link   usa-current"
+          <a class=" usa-nav-link  "
             href="/">
             <span>Home</span>
           </a>
@@ -195,7 +195,7 @@
           
               <li>
                 
-          <a class=" usa-nav-link  "
+          <a class=" usa-nav-link   usa-current"
             href="/docs/schemas/">
             <span>Schema Reference</span>
           </a>
@@ -259,109 +259,104 @@
     </header>
     <div class="usa-overlay"></div>
       
-<section class="usa-hero"
-  style="background-image: url('/assets/img/automation-hero.png')">
-  <div class="usa-grid">
-    <div class="usa-hero-callout usa-section-dark">
-      
-      <h2>
-        
-        <span class="usa-hero-callout-alt">F.A.S.T.</span>
-        
-        Assessment
-      </h2>
-      
+     
 
+
+
+  
+
+    <main id="main-content"  class="usa-grid usa-section usa-content usa-layout-docs" >
+        
+
+  <aside class="usa-layout-docs-sidenav sidenav usa-sticky-sidenav">
+    <nav>
+  <ul class="usa-sidenav-list">
+    
       
-      <a class="usa-hero-link" href="/learnmore/">
-        Learn more about OSCAL
+      
+      
+      
+    <li>
+      <a href="/docs/schemas/"
+         
+          >
+         Schema Reference
       </a>
+	  
+    </li>
+    
       
-
-      <p>Fast, Accurate, Scalable, Traceable: Documentary Foundations for Systems Security</p>
-
-
       
-      <a class="usa-button"
-        href="/community/">
-        Get Involved
+      
+      
+    <li>
+      <a href="/docs/schemas/oscal-catalog-xml/"
+         
+          >
+         Catalog Schema
       </a>
+	  
+    </li>
+    
       
-    </div>
-  </div>
-</section>
-
- 
-    <section class="usa-grid usa-section">
-        <div class="usa-width-one-third">
-            <h2>Automating Security Assessment & Continuous Monitoring</h2>
-        </div>
-        <div class="usa-width-two-thirds">
-            <p>NIST is developing the Open Security Controls Assessment Language (OSCAL): a set of models expressed in standard notations (XML, JSON), offering machine-readable representations of information pertaining to the publication, implementation, and assessment of security and privacy controls. By promoting transparency and interoperability along with rigorous validation of data in context, OSCAL formats provide a foundation for automation and machine assistance of many tasks and activities related to systems security.</p>
-
-<p>OSCAL is being developed through a collaborative approach with the public. It is designed to improve system security planning, assessment, and monitoring, with a technology that is both user- and developer-friendly.</p>
-
-<p>The <a href="https://github.com/usnistgov/OSCAL">OSCAL GitHub repository</a> holds the current OSCAL schemas, examples, documentation source files, and other resources.
-They are free to inspect, experiment with and use. Our <a href="/resources/">Resources page</a> has links to off-site projects and toolkits relating to OSCAL. The NIST team welcomes public contributions to this project; if you are interested, please <a href="/getinvolved/">contact us</a> to get started.</p>
-
-        </div>
-    </section>
-        
-
-
-<section class="usa-section usa-section-dark usa-graphic_list">
-  
-    <div class="usa-grid usa-graphic_list-row">
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/dataCentric.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Data-centric</h3>
-        <p>Transitions the legacy approach to security plan generation and management (Word and Excel documents) to a data-centric approach based on common data standards such as XML/JSON.</p>
-
-      </div>
-    </div>
+      
+      
+      
+    <li>
+      <a href="/docs/schemas/oscal-profile-xml/"
+         
+          >
+         Profile Schema
+      </a>
+	  
+    </li>
     
+      
+      
+      
+      
+    <li>
+      <a href="/docs/schemas/oscal-prose/"
+          class="usa-current" 
+          >
+         OSCAL Prose Model
+      </a>
+	  
+    </li>
+    
+  </ul>
+</nav>
+
+  </aside>
+
+
+<div class="usa-layout-docs-main_content">
   
     
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/extensible.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Extensible</h3>
-        <p>Puts security compliance data to work by allowing an extensible architecture that expresses security controls in both machine and human readable formats.</p>
-
-      </div>
-    </div>
-    </div>
-  
-    <div class="usa-grid usa-graphic_list-row">
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/integrated.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Integrated</h3>
-        <p>Allows tool developers to implement APIs and provide a standards-based foundation for next generation compliance tools.</p>
-
-      </div>
-    </div>
+    <h1>Schema Reference - OSCAL Prose Model</h1>
     
   
-    
-    <div class="usa-width-one-half usa-media_block">
-      <img class="usa-media_block-img"  src="/assets/uswds/img/automated.png" alt="">
-      <div class="usa-media_block-body">
-        <h3>Automated</h3>
-        <p>Apply the benefits of the data-centric approach to automate existing processes that are resource intensive.</p>
+  <h2 id="html-compatibility">HTML compatibility</h2>
 
-      </div>
-    </div>
-    </div>
-  
-</section>
+<p>Prose in OSCAL is designed to map cleanly to an HTML subset. Note that this element set is not maintained in the HTML namespace. It is intended not to be treated directly as HTML, but to be readily and transparently converted to HTML (or other presentational formats) as needed.</p>
+
+<p>OSCAL prose supports paragraphs (<code class="highlighter-rouge">p</code>), headers (<code class="highlighter-rouge">h1</code>-<code class="highlighter-rouge">h6</code>), tables (<code class="highlighter-rouge">table</code>), preformatted text (<code class="highlighter-rouge">pre</code>), and ordered and unordered lists (<code class="highlighter-rouge">ul</code> and <code class="highlighter-rouge">ol</code>).</p>
+
+<p>Within paragraphs or text content (inline) the following elements are permitted: <code class="highlighter-rouge">a</code>, <code class="highlighter-rouge">strong</code>, <code class="highlighter-rouge">em</code>, <code class="highlighter-rouge">b</code>, <code class="highlighter-rouge">i</code>, <code class="highlighter-rouge">sup</code>, <code class="highlighter-rouge">sub</code>.</p>
+
+<p>In particular, note that elements such as <code class="highlighter-rouge">div</code>, <code class="highlighter-rouge">blockquote</code>, <code class="highlighter-rouge">section</code> or <code class="highlighter-rouge">aside</code>, used in HTML to provide structure, are <em>not permitted in OSCAL</em>. Structures in OSCAL should be represented using OSCAL elements (or objects in JSON) such as <code class="highlighter-rouge">part</code>, which can include prose.</p>
+
+<p>In addition, there are contexts in OSCAL where prose usage may be further constrained. For example, at a higher level (outside the base schema) an OSCAL application could forbid the use of prose headers <code class="highlighter-rouge">h1-h6</code> in favor of nested OSCAL <code class="highlighter-rouge">part</code> elements with their own titles.</p>
+
+<h2 id="markdown-compatibility">Markdown compatibility</h2>
+
+<p>OSCAL also maintains a mapping from its HTML-like tagging for prose into a Markdown syntax. Since markdown (as an array of string objects) is our syntax of choice for representing unstructured prose in JSON, transparent and lossless bidirectional mapping between the OSCAL markup (tag) representation, into its Markdown equivalent, is a requirement.</p>
+
+<p>When in doubt, we look to CommonMark for guidance on syntax, largely because it is more rigorously tested than many others.</p>
 
 
-  
 
-    <main id="main-content" >
-        
+</div>
     </main>
 
      <!-- 
