@@ -1294,7 +1294,7 @@
             "$ref" : "#/definitions/title" },
           "parameters" : 
           { "type" : "object",
-            "$ref" : "#/definitions/" },
+            "$ref" : "#/definitions/parameters" },
           "properties" : 
           { "type" : "array",
             "items" : 

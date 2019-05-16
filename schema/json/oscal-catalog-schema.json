@@ -834,7 +834,7 @@
             "$ref" : "#/definitions/title" },
           "parameters" : 
           { "type" : "object",
-            "$ref" : "#/definitions/" },
+            "$ref" : "#/definitions/parameters" },
           "properties" : 
           { "type" : "array",
             "items" : 
@@ -881,7 +881,7 @@
             "$ref" : "#/definitions/title" },
           "parameters" : 
           { "type" : "object",
-            "$ref" : "#/definitions/" },
+            "$ref" : "#/definitions/parameters" },
           "properties" : 
           { "type" : "array",
             "items" : 
@@ -896,7 +896,7 @@
             { "$ref" : "#/definitions/part" } },
           "subcontrols" : 
           { "type" : "object",
-            "$ref" : "#/definitions/" },
+            "$ref" : "#/definitions/subcontrols" },
           "ref-list" : 
           { "type" : "object",
             "$ref" : "#/definitions/ref-list" } },
@@ -933,7 +933,7 @@
             "$ref" : "#/definitions/title" },
           "parameters" : 
           { "type" : "object",
-            "$ref" : "#/definitions/" },
+            "$ref" : "#/definitions/parameters" },
           "properties" : 
           { "type" : "array",
             "items" : 
