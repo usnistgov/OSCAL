@@ -8,10 +8,11 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="" read -r p || [ -n "$p" ]
-do
-  if [ -n "$p" ]; then
-    files_to_process="$OSCALDIR"/"$p"
+while IFS="" read -r line || [ -n "$line" ]; do
+  [[ "$line" =~ ^[[:space:]]*# ]] && continue
+
+  if [ -n "$line" ]; then
+    files_to_process="$OSCALDIR"/"$line"
 
     IFS= # disable word splitting    
     for file in $files_to_process

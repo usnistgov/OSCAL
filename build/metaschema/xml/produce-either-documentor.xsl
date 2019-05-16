@@ -37,7 +37,7 @@
 
     <xsl:param name="schema-path" as="xs:string" select="document-uri(/)"/>
 
-    <xsl:param name="example-converter-xslt-path" as="xs:string" expand-text="true">../../util/convert/{/METASCHEMA/short-name}-{$source-format}-converter.xsl</xsl:param>
+    <xsl:param name="example-converter-xslt-path" as="xs:string" expand-text="true">../../{$source-format}/convert/{/METASCHEMA/short-name}-{$source-format}-to-{$target-format}-converter.xsl</xsl:param>
     
     <xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,$schema-path)"/>
     

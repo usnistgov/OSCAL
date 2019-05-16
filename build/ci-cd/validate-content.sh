@@ -8,9 +8,9 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="|" read path format type converttoformats || [ -n "$path" ]
-do
-  printf 'path: %s\n' "$path"
+while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
+  [[ "$path" =~ ^[[:space:]]*# ]] && continue
+
   if [ -n "$path" ]; then
     files_to_process="$OSCALDIR/$path"
     IFS= # disable word splitting    
@@ -33,7 +33,7 @@ do
         ;;
       json)
           schema="json/schema/oscal-$type-schema.json"
-          ajv validate -s "$schema" -d "$file"
+          ajv validate -s "$schema" -d "$file" --extend-refs=true --verbose
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
             printf 'JSON schema validation failed for %s\n' "$file"

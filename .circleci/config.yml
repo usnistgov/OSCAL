@@ -61,10 +61,44 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - checkout
       - install-saxon
+      - install-ajv
       - run:
           name: Generate OSCAL schemas
           command: |
             bash ./build/ci-cd/generate-schema.sh
+      - store_artifacts:
+          path: xml/schema
+          destination: xml/schema
+      - store_artifacts:
+          path: json/schema
+          destination: json/schema
+  job-generate-converters:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - checkout
+      - install-saxon
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash ./build/ci-cd/generate-content-converters.sh
+      - store_artifacts:
+          path: xml/convert
+          destination: xml/convert
+      - store_artifacts:
+          path: json/convert
+          destination: json/convert
+  job-copy-and-convert-content:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - checkout
+      - install-saxon
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash ./build/ci-cd/copy-and-convert-content.sh
+      - store_artifacts:
+          path: content
+          destination: content
   job-validate-content:
     executor: java-executor
     steps:
@@ -117,7 +151,14 @@ workflows:
       - job-generate-schema:
           requires:
             - job-validate-metaschema
+      - job-generate-converters:
+          requires:
+            - job-validate-metaschema
       - job-validate-content:
           requires:
             - job-generate-schema
+      - job-copy-and-convert-content:
+           requires:
+            - job-generate-converters
+            - job-validate-content
 
