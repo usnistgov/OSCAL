@@ -1,5 +1,0 @@
-# safelist
-branches:
-  only:
-  - master
-  - docs
