@@ -140,7 +140,7 @@
 
     <xsl:template match="description">
         <string key="description">
-            <xsl:value-of select="normalize-space(.)"/>
+            <xsl:value-of select="replace(normalize-space(.),'&quot;','\\&quot;')"/>
         </string>
     </xsl:template>
 
