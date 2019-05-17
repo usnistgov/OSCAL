@@ -179,7 +179,7 @@ jobs: # a collection of steps
   job-deploy-artifacts:
     executor: java-executor
     steps: # a collection of executable commands
-    
+      - checkout
       - deploy:
           name: Commit Artifacts
           command: |
