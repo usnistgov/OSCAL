@@ -62,7 +62,10 @@ executors:
     docker: # run the steps with Docker
       - image: circleci/ruby:2.4.6-node-browsers
     working_directory: ~/oscal
-  
+  python-executor:
+    docker:
+      - image: circleci/python:3.7.3-node-browser
+    working_directory: ~/oscal
 jobs: # a collection of steps
 
   job-validate-metaschema:
