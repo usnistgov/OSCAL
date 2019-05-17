@@ -1,15 +1,34 @@
 version: 2.1 # use CircleCI 2.1
+references:
+  common_environment: &common_environment
+    environment:
+      SAXON_VERSION: 9.9.0-1
+      CICD_DIR: git-checkout/build/ci-cd
+      OSCAL_REPO_DIR: git-checkout
+      OSCAL_BUILD_DIR: build_artifacts
+    working_directory: ~/oscal
+  attach_build_workspace: &attach_build_workspace
+    attach_workspace:
+        at: build_artifacts
+  persist_to_build_workspace: &persist_to_build_workspace
+    persist_to_workspace:
+      root: build_artifacts
+      paths:
+        - content
+        - xml
+        - json
+  checkout: &checkout
+    checkout:
+      path: git-checkout
+  publish_artifacts: &publish_artifacts
+    store_artifacts:
+      path: build_artifacts
 commands:
   install-saxon:
     description: "Retrieve Saxon-HE and setup the environment to run it"
     steps:
-      - checkout
       - restore_cache:
           key: maven-m2
-      - run:
-          name: Init environment
-          command: |
-            source build/ci-cd/common-environment.sh
       - run:
           name: Get Saxon
           command: |
@@ -18,10 +37,6 @@ commands:
           key: maven-m2
           paths:
             - ~/.m2
-      - run:
-          name: Initialize Saxon Environment
-          command: |
-            source build/ci-cd/saxon-init.sh
   install-xmllint:
     description: "Retrieve xmllint and setup the environment to run it"
     steps:
@@ -55,99 +70,95 @@ executors:
   java-executor:
     docker: # run the steps with Docker
       - image: circleci/openjdk:8-jdk-node-browsers
-    working_directory: ~/oscal
-    environment:
-      SAXON_VERSION: 9.9.0-1
+    <<: *common_environment 
   ruby-node-executor:
     docker: # run the steps with Docker
       - image: circleci/ruby:2.4.6-node-browsers
-    working_directory: ~/oscal
+    <<: *common_environment 
   python-executor:
     docker:
       - image: circleci/python:3.7.3-node-browser
-    working_directory: ~/oscal
+    <<: *common_environment 
 jobs: # a collection of steps
-
   job-validate-metaschema:
     executor: java-executor
     steps:
-      - checkout
+      - *checkout
+      - run: find ~/oscal -print
       - install-xmllint
       - run:
           name: Validate metaschema instances
           command: |
-            bash ./build/ci-cd/validate-metaschema.sh
+            bash "$CICD_DIR/validate-metaschema.sh"
   job-generate-schema:
     executor: java-executor
     steps: # a collection of executable commands
-      - checkout
+      - *checkout
+      - *attach_build_workspace
       - install-saxon
       - install-ajv
       - run:
           name: Generate OSCAL schemas
           command: |
-            bash ./build/ci-cd/generate-schema.sh
-      - store_artifacts:
-          path: xml/schema
-          destination: xml/schema
-      - store_artifacts:
-          path: json/schema
-          destination: json/schema
+            bash "$CICD_DIR/generate-schema.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - *persist_to_build_workspace
+      - run: find ~/oscal -print
   job-generate-converters:
     executor: java-executor
     steps: # a collection of executable commands
-      - checkout
+      - *checkout
+      - *attach_build_workspace
       - install-saxon
       - run:
           name: Generate OSCAL schemas
           command: |
-            bash ./build/ci-cd/generate-content-converters.sh
-      - store_artifacts:
-          path: xml/convert
-          destination: xml/convert
-      - store_artifacts:
-          path: json/convert
-          destination: json/convert
+            bash "${CICD_DIR}/generate-content-converters.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - *persist_to_build_workspace
+      - run: find ~/oscal -print
   job-copy-and-convert-content:
     executor: java-executor
     steps: # a collection of executable commands
-      - checkout
+      - *checkout
+      - *attach_build_workspace
       - install-saxon
       - run:
           name: Generate OSCAL schemas
           command: |
-            bash ./build/ci-cd/copy-and-convert-content.sh
-      - store_artifacts:
-          path: content
-          destination: content
+            bash "${CICD_DIR}/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - *persist_to_build_workspace
+      - run: find ~/oscal -print
   job-validate-content:
     executor: java-executor
     steps:
-      - checkout
+      - *checkout
+      - *attach_build_workspace
       - install-xmllint
       - install-ajv
       - run:
-          name: Validate XML catalog instances
+          name: Validate content instances
           command: |
-            bash ./build/ci-cd/validate-content.sh 
+            bash "${CICD_DIR}/validate-content.sh" "$OSCAL_BUILD_DIR"
+      - *persist_to_build_workspace
+      - run: find ~/oscal -print
   job-generate-docs:
     executor: java-executor
     steps:
-      - checkout
+      - *checkout
+      - *attach_build_workspace
       - install-saxon
       - run:
           name: Generate schema documentation
           command: |
-            bash ./build/ci-cd/generate-schema-documentation.sh
-      - save_cache:
-          key: site-repo-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - ~/oscal
+            bash "${CICD_DIR}/generate-schema-documentation.sh" "${OSCAL_BUILD_DIR}"
+      - run: find ~/oscal -print
   job-build-and-deploy-site:
     executor: ruby-node-executor
     steps:
-      - restore_cache:
-          key: site-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - *checkout
+      - *attach_build_workspace
       - restore_cache:
           keys:
             - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "docs/Gemfile.lock" }}
@@ -156,14 +167,15 @@ jobs: # a collection of steps
       - run:
           name: Install Bundler
           command: |
-            cd docs
+            cd "${OSCAL_REPO_DIR}/docs"
             ls -al content/documentation/schemas
             echo gem install bundler
             bundle install --path ~/jekyll-bundle
       - run:
           name: Build jekyll site
           command: |
-            cd docs
+            cp -r "${OSCAL_BUILD_DIR}/docs" "${OSCAL_REPO_DIR}"
+            cd "${OSCAL_REPO_DIR}/docs"
             bundle exec jekyll build
           environment:
             JEKYLL_ENV: production
@@ -179,10 +191,16 @@ jobs: # a collection of steps
   job-deploy-artifacts:
     executor: java-executor
     steps: # a collection of executable commands
-      - checkout
-      - deploy:
+      - *checkout
+      - *attach_build_workspace
+      - deploy: # delete and copy artifacts before deploy
           name: Commit Artifacts
           command: |
+            cd "${OSCAL_REPO_DIR}"
+            git rm -r xml
+            git rm -r json
+            git rm -r content
+            cp -r "${OSCAL_BUILD_DIR}" "${OSCAL_REPO_DIR}"
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying site [ci skip]"
             git push

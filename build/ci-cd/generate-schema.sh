@@ -7,6 +7,12 @@ fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
+if [ -z "$1" ]; then
+  working_dir=$OSCALDIR
+else
+  working_dir=$1
+fi
+
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
@@ -24,7 +30,7 @@ while IFS="" read -r line || [ -n "$line" ]; do
       filename="${filename%.*}"
       base="${filename/-metaschema/}"
 
-      schema="xml/schema/$base-schema.xsd"
+      schema="$working_dir/xml/schema/$base-schema.xsd"
       printf 'Generating XML schema for %s as %s\n' "$metaschema" "$schema"
       xsl_transform "$OSCALDIR/build/metaschema/xml/produce-xsd.xsl" "$metaschema" "$schema"
       cmd_exitcode=$?
@@ -33,7 +39,7 @@ while IFS="" read -r line || [ -n "$line" ]; do
         exitcode=1
       fi
 
-      schema="json/schema/$base-schema.json"
+      schema="$working_dir/json/schema/$base-schema.json"
       printf 'Generating JSON schema for %s as %s\n' "$metaschema" "$schema"
       xsl_transform "$OSCALDIR/build/metaschema/json/produce-json-schema.xsl" "$metaschema" "$schema"
       cmd_exitcode=$?
