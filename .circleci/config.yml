@@ -51,6 +51,7 @@ commands:
           command: |
             sudo pip install 'jsonschema>=3.0.1'
             sudo pip install simplejson
+executors:
   java-executor:
     docker: # run the steps with Docker
       - image: circleci/openjdk:8-jdk-node-browsers
