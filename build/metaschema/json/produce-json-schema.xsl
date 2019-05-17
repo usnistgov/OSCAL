@@ -7,18 +7,10 @@
 
     <xsl:strip-space elements="METASCHEMA define-assembly define-field model"/>
     
-    <xsl:output indent="yes" method="text" use-character-maps="safe"/>
-
+    <xsl:output indent="yes" method="text"/>
+    
     <xsl:import href="json-schema-metamap.xsl"/>
     
-    <xsl:character-map name="safe">
-        <!--<xsl:output-character character="&lt;" string="\u003c"/>
-        <xsl:output-character character="&gt;" string="\u003e"/>-->
-        <!-- Force unescaping       -->
-        <xsl:output-character character="\" string=""/>
-    </xsl:character-map>
-    <!-- <xsl:variable name="metaschema" select="document('implementation-metaschema.xml')"/>-->
-
     <xsl:variable name="write-options" as="map(*)">
         <xsl:map>
             <xsl:map-entry key="'indent'">true</xsl:map-entry>
@@ -29,9 +21,24 @@
         <xsl:variable name="xpath-json">
             <xsl:apply-templates/>
         </xsl:variable>
+        <!-- Running through a filter for specialized string handling -->
+        <xsl:variable name="filtered-xpath-json">
+            <xsl:apply-templates/>
+        </xsl:variable>
+        <!--<xsl:copy-of select="$xpath-json"/>-->
         <json>
-            <xsl:value-of select="xml-to-json($xpath-json, $write-options)"/>
+        <!-- Then post-processing the JSON to un-double-escape ... -->
+            <xsl:value-of select="xml-to-json($filtered-xpath-json, $write-options) => replace('\\\\\\&quot;','\\&quot;') => replace('\\/','/')"/>
         </json>
     </xsl:template>
     
+    <xsl:template match="node() | @*" mode="filter">
+        <xsl:copy>
+            <xsl:apply-templates select="node() | @*" mode="filter"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="string">
+        <xsl:value-of select=". ! replace(.,'\\&quot;','\\\\\\&quot;')"/>
+    </xsl:template>
 </xsl:stylesheet>
