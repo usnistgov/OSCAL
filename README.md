@@ -2,13 +2,12 @@
 [![CircleCI](https://circleci.com/gh/usnistgov/OSCAL/tree/master.svg?style=svg)](https://circleci.com/gh/usnistgov/OSCAL/tree/master)[![Gitter](https://img.shields.io/gitter/room/usnistgov-OSCAL/Lobby.svg?style=flat-square)](https://gitter.im/usnistgov-OSCAL/Lobby)
 
 > Current work is happening in the [master](https://github.com/usnistgov/OSCAL/) branch.
-> NOTE: Some JSON examples might be missing across the repo. We are working to regenerate these.
 
 NIST is developing the Open Security Controls Assessment Language (OSCAL), a set of hierarchical, formatted, XML- and JSON-based formats that provide a standardized representation for different categories of information pertaining to the publication, implementation, and assessment of security controls. OSCAL is being developed through a [collaborative approach](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) with the public. Public contributions to this project are welcome.
 
 With this effort, we are stressing the agile development of a *minimal* format that is both generic enough to capture the breadth of data in scope (controls specifications), while also capable of ad-hoc tuning and extension to support peculiarities of both (industry or sector) standard and new control types.
 
-The [OSCAL website](https://pages.nist.gov/OSCAL/) provides an overview of the OSCAL project, including an XML and JSON [schema reference](https://pages.nist.gov/OSCAL/schema/), [examples](https://pages.nist.gov/OSCAL/examples/), and other resources.
+The [OSCAL website](https://pages.nist.gov/OSCAL/) provides an overview of the OSCAL project, including an XML and JSON [schema reference](https://pages.nist.gov/OSCAL/docs/schemas/), [examples](https://pages.nist.gov/OSCAL/resources/examples/), and other resources.
 
 This repository consists of the following directories and files pertaining to the OSCAL project:
 
