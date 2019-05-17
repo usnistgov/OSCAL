@@ -12,10 +12,13 @@ The [OSCAL website](https://pages.nist.gov/OSCAL/) provides an overview of the O
 
 This repository consists of the following directories and files pertaining to the OSCAL project:
 
-* [.github](.github): This directory holds GitHub issue and pull request templates for the OSCAL project.
-* [content](content): This directory contains numerous OSCAL examples in both, XML and JSON formats. Some examples are considered provisional "completed" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
-* [lib](lib): This directory contains a variety of supporting files. For example, it holds core XSLT stylesheets for processing OSCAL. It also contains scripts and utilities used internally by the OSCAL developers.
-* [schema](schema): This directory contains the OSCAL schemas and related validation tools. The directory contains both XML and JSON representations for OSCAL.
+* [.github](.github): Contains GitHub issue and pull request templates for the OSCAL project.
+* [content](content): Provides numerous OSCAL examples in both, XML and JSON formats. Some examples are considered provisional "completed" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
+* [json](json): Provides OSCAL JavaScript Object Notation (JSON) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL JSON-based formats.
+* [xml](xml): Provides OSCAL Extensible Markup Language (XML) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL XML-based formats.
+* [docs](docs): Stores sources for the [OSCAL website](https://pages.nist.gov/OSCAL).
+* [build](build): Contains a collection of scripts, eXtensible Stylesheet Language Transformations (XSLTs), and other artifacts used to support this repository's continuous integration and continuous deployment (CI/CD) processes.
+* [src](src): Stores source artifacts used to produce the content, JSON, and XML resources provided in this repository.
 * [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
 * [CONTRIBUTING.md](CONTRIBUTING.md): This file is for potential contributors to the OSCAL project. It provides basic information on the OSCAL project, describes the main ways people can make contributions, explains how to report issues with OSCAL, and lists pointers to additional sources of information. It also has instructions on establishing a development environment for contributing to the OSCAL project and using GitHub project cards to track development sprints.
 * [LICENSE.md](LICENSE.md): This file contains license and copyright information for the files in the OSCAL GitHub repository.
