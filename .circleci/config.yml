@@ -43,7 +43,14 @@ commands:
           name: Get hub
           command: |
             sudo brew install hub
-executors:
+  install-python-libs:
+    description: "Retrieve python libs and setup the environment to run it"
+    steps:
+      - run:
+          name: Get Python Libs
+          command: |
+            sudo pip install 'jsonschema>=3.0.1'
+            sudo pip install simplejson
   java-executor:
     docker: # run the steps with Docker
       - image: circleci/openjdk:8-jdk-node-browsers
