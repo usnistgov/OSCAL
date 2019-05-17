@@ -1,5 +1,5 @@
-<!-- Created: 5/16/2019 8:42:58 PM -->
-<profile id="uuid-fedramp-low-20190516-204258" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<!-- Created: 5/16/2019 9:05:20 PM -->
+<profile id="uuid-fedramp-low-20190516-210520" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<title>FedRAMP LOW Baseline PROFILE</title>
 	<metadata>
 		<title>FedRAMP Low Baseline</title>
@@ -13,6 +13,9 @@
 				<url>https://fedramp.gov</url>
 			</org>
 		</party>
+		<notes>
+			<p>No notes.</p>
+		</notes>
 	</metadata>
 	<import href="../nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_LOW-baseline_profile.xml">
 		<include>
