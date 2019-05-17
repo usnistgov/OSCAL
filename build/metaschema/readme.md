@@ -5,21 +5,21 @@ OSCAL supports XML and JSON-oriented schema validation technologies including XS
 Current features of the metaschema:
 
 * XSD and JSON Schema production, coordinated from a unified source
-* Documentation (embedded and external)
+* Documentation (embedded and [web-based](https://pages.nist.gov/OSCAL/docs/schemas/))
 * Automated conversion scripts (XSLT transformations) for converting between XML and JSON format(s) conformant to the given metaschema
 
-Check out the [OSCAL Catalog Metaschema](../../schema/metaschema/oscal-catalog-metaschema.xml) in its current form.
+To see an example of a metaschema, check out the [OSCAL Catalog Metaschema](../../src/metaschema/oscal-catalog-metaschema.xml) in its current form.
 
-In [that directory](../../schema/metaschema) you will also find [design notes](../../schema/metaschema/design-notes.md), an XSLT for displaying metaschemas in the browser, and shell scripts for running its transformations (invoking files stored here). Included among the transformations are several that create further tooling in the form of schema files (XSD, JSON Schema, Schematron) or XSLT results; when run, these transformations should typically produce those outputs in relevant (other directories), such as:
+In [that directory](../../schema/metaschema) you will also find [design notes](../../src/metaschema/design-notes.md), an XSLT for displaying metaschemas in the browser, and shell scripts for running its transformations (invoking files stored here). Included among the transformations are several that create further tooling in the form of schema files (XSD, JSON Schema, Schematron) or XSLT results; when run, these transformations should typically produce those outputs in relevant (other directories), such as:
 
-* [schema/xml directory for XSD (XML Schema Definition) results](../../schema/xml)
-* [schema/json directory for JSON Schema results](../../schema/json)
-* [util/convert for conversion scripts between XML and JSON](../../util/convert)
-* Documentation (in two flavors) - is now being produced next to the schema files, but should (also) be redirected to /docs ... 
+* [XML schema](../../xml/schema)
+* [JSON schema](../../json/schema)
+* Conversion scripts for translating OSCAL content to [XML](../../xml/convert) and [JSON](../../json/convert)
+* JSON and XML model documentation provided on the [OSCAL website](https://pages.nist.gov/OSCAL/docs/schemas/)
 
 The current directory contains the libraries and transformation specifications (stylesheets) providing for these data transformations.
 
-For the most part these transformations require a conformant XSLT 3.0 processor such as SaxonHE, as the script shows. Occasionally an XSLT has been written in version 1.0 to provide for greater vailability: they should work in web browsers (with suitable configuratios) as well as in any conformant XSLT 1.0 processor.
+For the most part these transformations require a conformant XSLT 3.0 processor such as SaxonHE, as the script shows. Occasionally an XSLT has been written in version 1.0 to provide for greater avilability: they should work in web browsers (with suitable configuratios) as well as in any conformant XSLT 1.0 processor.
 
 ## Operations
 

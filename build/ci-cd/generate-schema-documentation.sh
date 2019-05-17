@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if [[ ! -v OSCALDIR ]]; then
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+    source "$DIR/common-environment.sh"
+fi
+
+source $OSCALDIR/build/ci-cd/saxon-init.sh
+
+exitcode=0
+shopt -s nullglob
+shopt -s globstar
+while IFS="" read -r line || [ -n "$line" ]; do
+  [[ "$line" =~ ^[[:space:]]*# ]] && continue
+
+  if [ -n "$line" ]; then
+    files_to_process="$OSCALDIR"/"$line"
+
+    IFS= # disable word splitting    
+    for metaschema in $files_to_process
+    do
+      filename=$(basename -- "$metaschema")
+      extension="${filename##*.}"
+      filename="${filename%.*}"
+      base="${filename/-metaschema/}"
+
+      printf 'Generating XML documentation for metaschema %s\n' "$metaschema"
+      xsl_transform build/metaschema/xml/produce-and-run-either-documentor.xsl "$metaschema" "" "target-format=xml" "output-path=$OSCALDIR/docs/content/documentation/schemas"
+      cmd_exitcode=$?
+      if [ $cmd_exitcode -ne 0 ]; then
+        printf 'Generating XML schema failed for %s\n' "$metaschema"
+        exitcode=1
+      fi
+
+      printf 'Generating JSON documentation for metaschema %s\n' "$metaschema"
+      xsl_transform build/metaschema/xml/produce-and-run-either-documentor.xsl "$metaschema" "" "target-format=json" "output-path=$OSCALDIR/docs/content/documentation/schemas"
+      cmd_exitcode=$?
+      if [ $cmd_exitcode -ne 0 ]; then
+        printf 'Generating XML schema failed for %s\n' "$metaschema"
+        exitcode=1
+      fi
+    done
+  fi
+done < $OSCALDIR/build/ci-cd/config/metaschema-docs
+shopt -u nullglob
+shopt -u globstar
+
+exit $exitcode

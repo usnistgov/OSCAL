@@ -1,0 +1,5 @@
+# path to metaschema source
+src/metaschema/oscal-catalog-metaschema.xml
+src/metaschema/oscal-profile-metaschema.xml
+#src/metaschema/oscal-ssp-metaschema.xml
+

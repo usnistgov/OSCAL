@@ -6,4 +6,5 @@ The structure and contents of the examples directory are as follows:
 
  * [fedramp.gov](fedramp.gov): This directory contains examples in XML and JSON formats of the low, moderate, and high baselines defined by FedRAMP (the Federal Risk and Authorization Management Program).
  * [nist.gov/SP800-53/rev4](nist.gov/SP800-53/rev4): This directory contains examples in XML and JSON formats of the low, moderate, and high baselines defined by NIST Special Publication (SP) 800-53 Revision 4.
-
+ * [mini-testing](mini-testing): This directory contains sample files that can be used for unit testing in support of regressions of OSCAL.
+ 

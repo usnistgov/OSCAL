@@ -12,13 +12,14 @@
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
     <xsl:param name="target-format" as="xs:string">xml</xsl:param>
+    <xsl:param name="output-path"   as="xs:string">docs/content/documentation/schemas</xsl:param>
 
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     <xsl:variable name="source" select="$composed-metaschema"/>
     
     <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
     <!--"C:\Users\wap1\Documents\OSCAL\docs_jekyll_uswds\content\documentation\schemas\oscal-catalog\catalog.md"-->
-    <xsl:variable name="result-path" select="('../../../docs/content/documentation/schemas/_' || $metaschema-code || '-' || $target-format)"/>
+    <xsl:variable name="result-path" select="($output-path || '/_' || $metaschema-code || '-' || $target-format)"/>
 
     <!-- This template produces an XSLT dynamically by running an XSLT with a parameter set. -->
     <xsl:variable name="xslt">

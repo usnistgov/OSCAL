@@ -1,68 +1,227 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build-metaschema:
-    working_directory: ~/oscal-metaschema # directory where steps will run
-
-    docker: # run the steps with Docker
-      - image: circleci/openjdk:8-jdk-browsers
-
-    steps: # a collection of executable commands
-      - checkout # check out source code to working directory
+version: 2.1 # use CircleCI 2.1
+commands:
+  install-saxon:
+    description: "Retrieve Saxon-HE and setup the environment to run it"
+    steps:
+      - checkout
+      - restore_cache:
+          key: maven-m2
+      - run:
+          name: Init environment
+          command: |
+            source build/ci-cd/common-environment.sh
       - run:
           name: Get Saxon
-          command: mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=9.9.0-1
-      - run:
-          name: Generate OSCAL Catalog Artifacts
-          working_directory: ~/oscal-metaschema/schema/metaschema
-          command: bash ./run-metaschema.sh ./oscal-catalog-metaschema.xml catalog
-          environment:
-            SAXON: /home/circleci/.m2/repository/net/sf/saxon/Saxon-HE/9.9.0-1/Saxon-HE-9.9.0-1.jar
-      - run:
-          name: Generate OSCAL Profile Artifacts
-          working_directory: ~/oscal-metaschema/schema/metaschema
-          command: bash ./run-metaschema.sh ./oscal-profile-metaschema.xml profile
-          environment:
-            SAXON: /home/circleci/.m2/repository/net/sf/saxon/Saxon-HE/9.9.0-1/Saxon-HE-9.9.0-1.jar
-      - run:   
-          name: List Generated OSCAL Catalog Artifacts
-          working_directory: ~/oscal-metaschema
-          command: git status
-      - deploy:
-          name: Commit Artifacts
-          working_directory: ~/oscal-metaschema
           command: |
-            git config user.name "Deployment Bot"
-            git commit --allow-empty -m "Deploying built artifacts [ci skip]"
-            git push
-  build-docs:
-    working_directory: ~/oscal-docs # directory where steps will run
-
+            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
+      - save_cache:
+          key: maven-m2
+          paths:
+            - ~/.m2
+      - run:
+          name: Initialize Saxon Environment
+          command: |
+            source build/ci-cd/saxon-init.sh
+  install-xmllint:
+    description: "Retrieve xmllint and setup the environment to run it"
+    steps:
+      - run:
+          name: Get xmllint
+          command: |
+            sudo apt-get install libxml2-utils
+  install-ajv:
+    description: "Retrieve ajv and setup the environment to run it"
+    steps:
+      - run:
+          name: Get ajv
+          command: |
+            sudo npm install -g ajv-cli
+  install-hub:
+    description: "Retrieve hub and setup the environment to run it"
+    steps:
+      - run:
+          name: Get hub
+          command: |
+            sudo brew install hub
+  install-python-libs:
+    description: "Retrieve python libs and setup the environment to run it"
+    steps:
+      - run:
+          name: Get Python Libs
+          command: |
+            sudo pip install 'jsonschema>=3.0.1'
+            sudo pip install simplejson
+executors:
+  java-executor:
     docker: # run the steps with Docker
-      - image: circleci/ruby:2.3.8-jessie-node
+      - image: circleci/openjdk:8-jdk-node-browsers
+    working_directory: ~/oscal
+    environment:
+      SAXON_VERSION: 9.9.0-1
+  ruby-node-executor:
+    docker: # run the steps with Docker
+      - image: circleci/ruby:2.4.6-node-browsers
+    working_directory: ~/oscal
+  python-executor:
+    docker:
+      - image: circleci/python:3.7.3-node-browser
+    working_directory: ~/oscal
+jobs: # a collection of steps
 
+  job-validate-metaschema:
+    executor: java-executor
+    steps:
+      - checkout
+      - install-xmllint
+      - run:
+          name: Validate metaschema instances
+          command: |
+            bash ./build/ci-cd/validate-metaschema.sh
+  job-generate-schema:
+    executor: java-executor
     steps: # a collection of executable commands
-      - checkout # check out source code to working directory
+      - checkout
+      - install-saxon
+      - install-ajv
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash ./build/ci-cd/generate-schema.sh
+      - store_artifacts:
+          path: xml/schema
+          destination: xml/schema
+      - store_artifacts:
+          path: json/schema
+          destination: json/schema
+  job-generate-converters:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - checkout
+      - install-saxon
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash ./build/ci-cd/generate-content-converters.sh
+      - store_artifacts:
+          path: xml/convert
+          destination: xml/convert
+      - store_artifacts:
+          path: json/convert
+          destination: json/convert
+  job-copy-and-convert-content:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - checkout
+      - install-saxon
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash ./build/ci-cd/copy-and-convert-content.sh
+      - store_artifacts:
+          path: content
+          destination: content
+  job-validate-content:
+    executor: java-executor
+    steps:
+      - checkout
+      - install-xmllint
+      - install-ajv
+      - run:
+          name: Validate XML catalog instances
+          command: |
+            bash ./build/ci-cd/validate-content.sh 
+  job-generate-docs:
+    executor: java-executor
+    steps:
+      - checkout
+      - install-saxon
+      - run:
+          name: Generate schema documentation
+          command: |
+            bash ./build/ci-cd/generate-schema-documentation.sh
+      - save_cache:
+          key: site-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/oscal
+  job-build-and-deploy-site:
+    executor: ruby-node-executor
+    steps:
+      - restore_cache:
+          key: site-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "docs/Gemfile.lock" }}
+            - gem-cache-{{ arch }}-{{ .Branch }}
+            - gem-cache
       - run:
           name: Install Bundler
           command: |
-            cd ~/oscal-docs/docs
-            gem install bundler
-            bundle install
+            cd docs
+            ls -al content/documentation/schemas
+            echo gem install bundler
+            bundle install --path ~/jekyll-bundle
       - run:
-          name: Middleman exec
+          name: Build jekyll site
           command: |
-            cd ~/oscal-docs/docs
-            bundle exec middleman build --clean
+            cd docs
+            bundle exec jekyll build
+          environment:
+            JEKYLL_ENV: production
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "docs/Gemfile.lock" }}
+          paths:
+            - ~/jekyll-bundle
       - run:
           name: Run deploy script
           command: |
-            cd ~/oscal-docs/docs
+            cd docs
             bash ./deploy.sh -v -m "Deploying site [ci skip]"
+  job-deploy-artifacts:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - deploy:
+          name: Commit Artifacts
+          command: |
+            git config user.name "Deployment Bot"
+            git commit --allow-empty -m "Deploying site [ci skip]"
+            git push
 workflows:
   version: 2
   build:
     jobs:
-      - build-metaschema
-      - build-docs:
+      - job-validate-metaschema
+      - job-generate-schema:
           requires:
-            - build-metaschema
+            - job-validate-metaschema
+      - job-generate-converters:
+          requires:
+            - job-validate-metaschema
+      - job-validate-content:
+          requires:
+            - job-generate-schema
+      - job-copy-and-convert-content:
+           requires:
+            - job-generate-converters
+            - job-validate-content
+      - job-deploy-artifacts:
+          requires:
+            - job-copy-and-convert-content
+          filters:
+            branches:
+              only: master
+  build-and-deploy-site:
+    jobs:
+      - job-validate-metaschema
+      - job-generate-converters:
+          requires:
+            - job-validate-metaschema
+      - job-generate-docs:
+          requires:
+            - job-validate-metaschema
+      - job-build-and-deploy-site:
+          requires:
+            - job-generate-docs
+          filters:
+            branches:
+              only: master
+
