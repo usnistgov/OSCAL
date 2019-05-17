@@ -1,5 +1,5 @@
 # Open Security Controls Assessment Language (OSCAL)
-[![Gitter](https://img.shields.io/gitter/room/usnistgov-OSCAL/Lobby.svg?style=flat-square)](https://gitter.im/usnistgov-OSCAL/Lobby)
+[![CircleCI](https://circleci.com/gh/usnistgov/OSCAL/tree/master.svg?style=svg)](https://circleci.com/gh/usnistgov/OSCAL/tree/master)[![Gitter](https://img.shields.io/gitter/room/usnistgov-OSCAL/Lobby.svg?style=flat-square)](https://gitter.im/usnistgov-OSCAL/Lobby)
 
 > Current work is happening in the [master](https://github.com/usnistgov/OSCAL/) branch.
 > NOTE: Some JSON examples might be missing across the repo. We are working to regenerate these.
