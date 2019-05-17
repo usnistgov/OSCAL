@@ -195,9 +195,10 @@
     </xsl:template>
 
     <xsl:template mode="declaration" match="assemblies[matches(@address,'\S')] | fields[matches(@address,'\S')]">
-        <map key="{ key('definition-by-name',@named)/@group-as }">
+        <xsl:variable name="group-name" select="key('definition-by-name',@named)/@group-as"/>
+        <map key="{ $group-name }">
             <string key="type">object</string>
-            <string key="$ref">#/definitions/{ @group-as }</string>
+            <string key="$ref">#/definitions/{ $group-name }</string>
         </map>
     </xsl:template>
 
