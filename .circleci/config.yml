@@ -171,7 +171,7 @@ jobs: # a collection of steps
       - run:
           name: Build jekyll site
           command: |
-            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
+            cp -vr "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
             cd "${OSCAL_REPO_DIR}/docs"
             bundle exec jekyll build
           environment:
