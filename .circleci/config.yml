@@ -150,8 +150,7 @@ jobs: # a collection of steps
             cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
             bash "${CICD_DIR}/generate-schema-documentation.sh" "${OSCAL_BUILD_DIR}"
             echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
-            mkdir -p "${OSCAL_BUILD_DIR}"/docs/content/documentation/schemas
-            cp -r "${OSCAL_REPO_DIR}"/docs/content/documentation/schemas/_* "${OSCAL_BUILD_DIR}"/docs/content/ocumentation/schemas
+            mv docs "${OSCAL_BUILD_DIR}"/docs
       - *publish_artifacts
       - *persist_to_build_workspace
   job-build-and-deploy-site:
