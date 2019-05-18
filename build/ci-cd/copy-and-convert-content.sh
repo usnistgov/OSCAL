@@ -40,7 +40,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
         newpath="${newpath/\/$format\///$altformat/}"
         newpath="${newpath%.$format}.$altformat"
         dest="$working_dir/$newpath"
-        converter="$working_dir/$format/convert/oscal-$type-$format-to-$altformat-converter.xsl"
+        converter="$working_dir/$altformat/convert/oscal-$type-$format-to-$altformat-converter.xsl"
         xsl_transform "$converter" "$file" "$dest"
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
