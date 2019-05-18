@@ -123,7 +123,7 @@ jobs: # a collection of steps
       - *attach_build_workspace
       - install-saxon
       - run:
-          name: Generate OSCAL schemas
+          name: Generate OSCAL converters
           command: |
             bash "${CICD_DIR}/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
