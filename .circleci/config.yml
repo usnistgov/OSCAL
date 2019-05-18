@@ -14,7 +14,7 @@ references:
     persist_to_workspace:
       root: build_artifacts
       paths:
-        - content
+        - content # not needed?
         - xml
         - json
         - docs
@@ -185,7 +185,7 @@ jobs: # a collection of steps
           name: Run deploy script
           command: |
             cd "${OSCAL_REPO_DIR}/docs"
-            bash ./deploy.sh -v -m "Deploying site [ci skip]"
+            bash ./deploy.sh -v -m "Deploying site [ci skip]" --push-only
       - *publish_artifacts
   job-deploy-artifacts:
     executor: java-executor
