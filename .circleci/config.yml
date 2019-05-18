@@ -158,7 +158,6 @@ jobs: # a collection of steps
     steps:
       - *checkout
       - *attach_build_workspace
-      - install-saxon
       - restore_cache:
           keys:
             - gem-cache-{{ arch }}-{{ .Branch }}
