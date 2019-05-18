@@ -7,6 +7,12 @@ fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
+if [ -z "$1" ]; then
+  working_dir=$OSCALDIR
+else
+  working_dir=$1
+fi
+
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
@@ -25,7 +31,7 @@ while IFS="" read -r line || [ -n "$line" ]; do
       base="${filename/-metaschema/}"
 
       printf 'Generating XML documentation for metaschema %s\n' "$metaschema"
-      xsl_transform build/metaschema/xml/produce-and-run-either-documentor.xsl "$metaschema" "" "target-format=xml" "output-path=$OSCALDIR/docs/content/documentation/schemas"
+      xsl_transform "$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl" "$metaschema" "" "target-format=xml" "output-path=$working_dir/docs/content/documentation/schemas"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
         printf 'Generating XML schema failed for %s\n' "$metaschema"
@@ -33,7 +39,7 @@ while IFS="" read -r line || [ -n "$line" ]; do
       fi
 
       printf 'Generating JSON documentation for metaschema %s\n' "$metaschema"
-      xsl_transform build/metaschema/xml/produce-and-run-either-documentor.xsl "$metaschema" "" "target-format=json" "output-path=$OSCALDIR/docs/content/documentation/schemas"
+      xsl_transform "$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl" "$metaschema" "" "target-format=json" "output-path=$working_dir/docs/content/documentation/schemas"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
         printf 'Generating XML schema failed for %s\n' "$metaschema"

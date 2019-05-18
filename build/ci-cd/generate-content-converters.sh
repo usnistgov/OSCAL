@@ -7,6 +7,12 @@ fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
+if [ -z "$1" ]; then
+  working_dir=$OSCALDIR
+else
+  working_dir=$1
+fi
+
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
@@ -25,7 +31,7 @@ while IFS="" read -r line || [ -n "$line" ]; do
       model="${filename/-metaschema/}"
 #      model="${base/oscal-/}"
 
-      converter="xml/convert/$model-xml-to-json-converter.xsl"
+      converter="$working_dir/xml/convert/$model-xml-to-json-converter.xsl"
       printf 'Generating XML to JSON converter for %s as %s\n' "$metaschema" "$converter"
       xsl_transform "$OSCALDIR/build/metaschema/xml/produce-xml-converter.xsl" "$metaschema" "$converter"
       cmd_exitcode=$?
@@ -34,7 +40,7 @@ while IFS="" read -r line || [ -n "$line" ]; do
         exitcode=1
       fi
 
-      converter="json/convert/$model-json-to-xml-converter.xsl"
+      converter="$working_dir/json/convert/$model-json-to-xml-converter.xsl"
       printf 'Generating JSON to XML converter for %s as %s\n' "$metaschema" "$converter"
       xsl_transform "$OSCALDIR/build/metaschema/json/produce-json-converter.xsl" "$metaschema" "$converter"
       cmd_exitcode=$?

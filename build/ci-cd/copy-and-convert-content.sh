@@ -7,6 +7,12 @@ fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
+if [ -z "$1" ]; then
+  working_dir=$OSCALDIR
+else
+  working_dir=$1
+fi
+
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
@@ -23,7 +29,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
       printf 'type: %s\n' "$type"
       printf 'convert-to: %s\n' "$converttoformats"
 
-      dest="${file/$OSCALDIR\/src\//}"
+      dest="$working_dir/${file/$OSCALDIR\/src\//}"
       dest_dir=${dest%/*}
       mkdir -p "$dest_dir"
       cp "$file" "$dest"
@@ -33,8 +39,8 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
         newpath="${file/$OSCALDIR\/src\//}"
         newpath="${newpath/\/$format\///$altformat/}"
         newpath="${newpath%.$format}.$altformat"
-        dest="$newpath"
-        converter="$format/convert/oscal-$type-$format-to-$altformat-converter.xsl"
+        dest="$working_dir/$newpath"
+        converter="$working_dir/$format/convert/oscal-$type-$format-to-$altformat-converter.xsl"
         xsl_transform "$converter" "$file" "$dest"
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
