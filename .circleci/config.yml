@@ -103,7 +103,6 @@ jobs: # a collection of steps
             bash "$CICD_DIR/generate-schema.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - *persist_to_build_workspace
-      - run: find ~/oscal -print
   job-generate-converters:
     executor: java-executor
     steps: # a collection of executable commands
@@ -246,6 +245,7 @@ workflows:
       - job-generate-docs:
           requires:
             - job-validate-metaschema
+            - job-generate-converters
       - job-build-and-deploy-site:
           requires:
             - job-generate-docs
