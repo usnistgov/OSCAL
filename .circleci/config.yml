@@ -216,7 +216,10 @@ workflows:
   version: 2
   build:
     jobs:
-      - job-validate-metaschema
+      - job-validate-metaschema:
+          filters:
+            branches:
+              ignore: nist-pages
       - job-generate-schema:
           requires:
             - job-validate-metaschema
@@ -238,7 +241,10 @@ workflows:
               only: master
   build-and-deploy-site:
     jobs:
-      - job-validate-metaschema
+      - job-validate-metaschema:
+          filters:
+            branches:
+              ignore: nist-pages
       - job-generate-converters:
           requires:
             - job-validate-metaschema
