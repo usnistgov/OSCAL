@@ -197,10 +197,18 @@ jobs: # a collection of steps
           name: Commit Artifacts
           command: |
             cd "${OSCAL_REPO_DIR}"
-            git rm -r xml
-            git rm -r json
-            git rm -r content
-            cp -r "${OSCAL_BUILD_DIR}" "${OSCAL_REPO_DIR}"
+            git rm -r xml/convert/*.xsl
+            git rm -r xml/schema/*.xsd
+            git rm -r json/convert/*.xsl
+            git rm -r json/schema/*.json
+            git rm -r content/**/*.json
+            git rm -r content/**/*.xml
+            cd -
+            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}/content"
+            cd "${OSCAL_REPO_DIR}"
+            git add xml
+            git add json
+            git add content
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying site [ci skip]"
             git push
