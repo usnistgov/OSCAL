@@ -185,7 +185,7 @@ jobs: # a collection of steps
           name: Run deploy script
           command: |
             cd "${OSCAL_REPO_DIR}/docs"
-            bash ./deploy.sh -v -m "Deploying site [ci skip]" --push-only
+            bash ./deploy.sh --push-only -v -m "Deploying site [ci skip]"
       - *publish_artifacts
   job-deploy-artifacts:
     executor: java-executor
