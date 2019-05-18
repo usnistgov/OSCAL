@@ -176,7 +176,6 @@ jobs: # a collection of steps
           name: Generate schema documentation
           command: |
             cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
-            bash "${CICD_DIR}/generate-schema-documentation.sh" "${OSCAL_BUILD_DIR}"
             cd "${OSCAL_REPO_DIR}/docs"
             bundle exec jekyll build
           environment:
@@ -190,6 +189,7 @@ jobs: # a collection of steps
           command: |
             cd "${OSCAL_REPO_DIR}/docs"
             bash ./deploy.sh -v -m "Deploying site [ci skip]"
+      - *publish_artifacts
   job-deploy-artifacts:
     executor: java-executor
     steps: # a collection of executable commands
@@ -208,12 +208,11 @@ jobs: # a collection of steps
             cd -
             cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}/content"
             cd "${OSCAL_REPO_DIR}"
-            git add xml
-            git add json
-            git add content
+            git .
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying site [ci skip]"
             git push
+      - *publish_artifacts
 workflows:
   version: 2
   build:
