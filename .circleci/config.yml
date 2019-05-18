@@ -156,9 +156,9 @@ jobs: # a collection of steps
     steps:
       - *checkout
       - *attach_build_workspace
+      - install-saxon
       - restore_cache:
           keys:
-            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "docs/Gemfile.lock" }}
             - gem-cache-{{ arch }}-{{ .Branch }}
             - gem-cache
       - run:
@@ -182,7 +182,7 @@ jobs: # a collection of steps
           environment:
             JEKYLL_ENV: production
       - save_cache:
-          key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "docs/Gemfile.lock" }}
+          key: gem-cache-{{ arch }}-{{ .Branch }}
           paths:
             - ~/jekyll-bundle
       - run:
