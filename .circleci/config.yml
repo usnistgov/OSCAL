@@ -208,7 +208,7 @@ jobs: # a collection of steps
             cd -
             cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}/content"
             cd "${OSCAL_REPO_DIR}"
-            git .
+            git add .
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying site [ci skip]"
             git push
