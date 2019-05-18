@@ -17,6 +17,7 @@ references:
         - content
         - xml
         - json
+        - docs
   checkout: &checkout
     checkout:
       path: git-checkout
