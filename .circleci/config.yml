@@ -172,6 +172,11 @@ jobs: # a collection of steps
           command: |
             rm -rf "${OSCAL_REPO_DIR}"/docs/content/documentation/schemas/_*
             cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
+      - run:
+          name: Generate schema documentation
+          command: |
+            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
+            bash "${CICD_DIR}/generate-schema-documentation.sh" "${OSCAL_BUILD_DIR}"
             cd "${OSCAL_REPO_DIR}/docs"
             bundle exec jekyll build
           environment:
@@ -194,12 +199,12 @@ jobs: # a collection of steps
           name: Commit Artifacts
           command: |
             cd "${OSCAL_REPO_DIR}"
-            git rm -r xml/convert/*.xsl
-            git rm -r xml/schema/*.xsd
-            git rm -r json/convert/*.xsl
-            git rm -r json/schema/*.json
-            git rm -r content/**/*.json
-            git rm -r content/**/*.xml
+            git rm -r --ignore-unmatch xml/convert/*.xsl
+            git rm -r --ignore-unmatch xml/schema/*.xsd
+            git rm -r --ignore-unmatch json/convert/*.xsl
+            git rm -r --ignore-unmatch json/schema/*.json
+            git rm -r --ignore-unmatch content/**/*.json
+            git rm -r --ignore-unmatch content/**/*.xml
             cd -
             cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}/content"
             cd "${OSCAL_REPO_DIR}"
