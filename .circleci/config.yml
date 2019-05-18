@@ -115,7 +115,6 @@ jobs: # a collection of steps
             bash "${CICD_DIR}/generate-content-converters.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - *persist_to_build_workspace
-      - run: find ~/oscal -print
   job-copy-and-convert-content:
     executor: java-executor
     steps: # a collection of executable commands
@@ -128,7 +127,6 @@ jobs: # a collection of steps
             bash "${CICD_DIR}/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - *persist_to_build_workspace
-      - run: find ~/oscal -print
   job-validate-content:
     executor: java-executor
     steps:
@@ -140,7 +138,6 @@ jobs: # a collection of steps
           name: Validate content instances
           command: |
             bash "${CICD_DIR}/validate-content.sh" "$OSCAL_BUILD_DIR"
-      - run: find ~/oscal -print
   job-generate-docs:
     executor: java-executor
     steps:
@@ -150,8 +147,8 @@ jobs: # a collection of steps
       - run:
           name: Generate schema documentation
           command: |
+            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
             bash "${CICD_DIR}/generate-schema-documentation.sh" "${OSCAL_BUILD_DIR}"
-      - run: find ~/oscal -print
       - *publish_artifacts
       - *persist_to_build_workspace
   job-build-and-deploy-site:
