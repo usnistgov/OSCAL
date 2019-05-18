@@ -206,11 +206,13 @@ jobs: # a collection of steps
             git rm -r --ignore-unmatch content/**/*.json
             git rm -r --ignore-unmatch content/**/*.xml
             cd -
-            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}/content"
+            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
             cd "${OSCAL_REPO_DIR}"
             git add .
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying site [ci skip]"
+            git fetch
+            git rebase origin/master
             git push
       - *publish_artifacts
 workflows:
