@@ -3,4 +3,4 @@ jobs:
   no-op:
     branches:
       ignore:
-        nist-pages
+        - nist-pages
