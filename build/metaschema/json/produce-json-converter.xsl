@@ -36,16 +36,24 @@
         <XSLT:stylesheet version="3.0"
             xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
             exclude-result-prefixes="#all">
-            
+            <!-- helping out the spliced-in XSLT with a namespace declaration -->
+            <xsl:namespace name="m">http://csrc.nist.gov/ns/oscal/1.0/md-convertor</xsl:namespace>
             <XSLT:output indent="yes" method="xml"/>
             
-            <xsl:comment> METASCHEMA conversion stylesheet supports JSON->XML conversion </xsl:comment>
+            <xsl:comment expand-text="true"> OSCAL { @root} conversion stylesheet supports JSON->XML conversion </xsl:comment>
+            
+            <XSLT:param name="target-ns" as="xs:string?" select="'{$composed-metaschema/METASCHEMA/namespace/normalize-space(.)}'"/>
             
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
             <xsl:call-template  name="furniture"/>
             <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
+            
             <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
             
+            <!-- copying in templates from md-oscal-converter.xsl - everything but top-level parameters -->
+            <xsl:comment> 00000000000000000000000000000000000000000000000000000000000000 </xsl:comment>
+            <xsl:comment> Markdown converter</xsl:comment>
+            <xsl:copy-of select="document('md-oscal-converter.xsl')/xsl:*/(xsl:* except xsl:param)"/>
         </XSLT:stylesheet>
     </xsl:template>
     
@@ -102,7 +110,7 @@
                 </xsl:for-each>
                 <XSLT:apply-templates mode="as-attribute"/>
                 <xsl:apply-templates/>
-                <XSLT:apply-templates mode="json2xml" select="*[@key={ if (@as='mixed') then $markdown-value-label else $string-value-label }]"/>
+                <XSLT:apply-templates mode="json2xml" select="*[@key='{ if (@as='mixed') then $markdown-value-label else $string-value-label }']"/>
             </XSLT:element>
         </XSLT:template>
         <xsl:call-template name="drop-address"/>
@@ -165,21 +173,21 @@
         </XSLT:template>
         
         <XSLT:template match="array[@key='prose']/*" priority="5" mode="json2xml">
-            <xsl:comment> This will have to be post-processed to render markdown into markup </xsl:comment>
             <XSLT:element name="p" namespace="{$target-namespace}">
-                <XSLT:apply-templates mode="#current"/>
+                <XSLT:variable name="text-contents" select="string-join(string,'&#xA;')"/>
+                <XSLT:call-template name="parse">
+                    <XSLT:with-param name="str" select="$text-contents"/>
+                </XSLT:call-template>
             </XSLT:element>
         </XSLT:template>
         
         <XSLT:template match="string[@key='{$markdown-value-label}']" mode="json2xml">
-            <XSLT:comment> Not yet handling markdown </XSLT:comment>
-            <XSLT:apply-templates mode="#current"/>
+            <XSLT:call-template name="parse"/>
         </XSLT:template>
         
         <XSLT:template match="string[@key='{$string-value-label}']" mode="json2xml">
             <XSLT:apply-templates mode="#current"/>
         </XSLT:template>
-        
         
         <XSLT:template mode="as-attribute" match="*"/>
         

@@ -376,7 +376,7 @@
         
         <XSLT:template match="text()" mode="md">
             <!-- Escapes go here       -->
-            <XSLT:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
+            <XSLT:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>
         </XSLT:template>
         
         

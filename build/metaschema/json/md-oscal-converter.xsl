@@ -48,8 +48,10 @@
         within not-codeblock split lines at \n\s*\n
         
         -->
-        <xsl:param    name="str" select="string(.)"/>
-        <xsl:variable name="starts-with-code" select="matches($str,'^```')"/>
+        <!-- $str may be passed in, or we can process the current node -->
+        <xsl:param name="str" select="string(.)"/>
+
+        <xsl:variable name="starts-with-code"   select="matches($str,'^```')"/>
         
 <!-- Blocks is split between code blocks and everything else -->
         <xsl:variable name="blocks">
