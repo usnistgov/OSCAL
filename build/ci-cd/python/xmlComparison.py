@@ -26,14 +26,15 @@ root2 = doc2.getroot()
 
 # class for comparing elements
 class Element:
-    def __init__(self,e, intLevel):
+    def __init__(self,e, strPath, intLevel):
         self.name = e.tag
+        self.path = strPath + "/" + e.tag
         self.subs = {}
         self.atts = {}
         self.value = e.text
         self.level = intLevel
         for child in e:
-            self.subs[child.tag + str(self.level + 1)] = Element(child, (self.level + 1))
+            self.subs[child.tag + str(self.level + 1)] = Element(child, self.path, (self.level + 1))
 
         for att in e.attrib.keys():
             self.atts[att] = e.attrib[att]
@@ -46,7 +47,7 @@ class Element:
         if self.name != el.name:
             raise RuntimeError("Two names are not the same")
         print("----------------------------------------------------------------")
-        print(self.name + ", Level: " + str(self.level))
+        print(self.name + ", Level: " + str(self.level) + ", Path: " +str(self.path))
         print("----------------------------------------------------------------")
         
         # check values
@@ -131,8 +132,8 @@ class Element:
 level = 0
 
 # establish the elements to compare
-e1 = Element(root1, level)
-e2 = Element(root2, level)
+e1 = Element(root1, "", level)
+e2 = Element(root2, "", level)
 
 # do the detailed comparison
 e1.compare(e2)
