@@ -50,6 +50,20 @@ commands:
             git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
             cd "$SCHEMATRON_HOME"
             git checkout master -- trunk/schematron/code
+  install-maven:
+    description: "Installs Maven"
+    steps:
+      - run:
+          name: Get Maven
+          command: |
+            sudo apt-get install maven
+  install-lxml:
+    description: "Installs Python lxml package"
+    steps:
+      - run:
+          name: Get lxml
+          command: |
+            sudo pip install lxml
   install-xmllint:
     description: "Retrieve xmllint and setup the environment to run it"
     steps:
@@ -92,14 +106,6 @@ commands:
           name: Get hub
           command: |
             sudo brew install hub
-  install-python-libs:
-    description: "Retrieve python libs and setup the environment to run it"
-    steps:
-      - run:
-          name: Get Python Libs
-          command: |
-            sudo pip install 'jsonschema>=3.0.1'
-            sudo pip install simplejson
   install-bundler:
     description: "Install bundler and html-proofer"
     steps:
@@ -121,16 +127,16 @@ commands:
             fi
 executors:
   java-executor:
-    docker: # run the steps with Docker
+    docker: # run the java jobs with Docker
       - image: circleci/openjdk:8-jdk-node-browsers
     <<: *common_environment 
   ruby-node-executor:
-    docker: # run the steps with Docker
+    docker: # run the ruby jobs with Docker
       - image: circleci/ruby:2.4.6-node-browsers
-    <<: *common_environment 
+    <<: *common_environment
   python-executor:
-    docker:
-      - image: circleci/python:3.7.3-node-browser
+    docker: #run the python jobs with Docker
+      - image: circleci/python:3.7.3-node-browsers
     <<: *common_environment 
 jobs: # a collection of 
   job-ci-skip-check:
@@ -246,6 +252,20 @@ jobs: # a collection of
           name: Validate content instances
           command: |
             bash "$CICD_DIR/validate-content.sh" "$OSCAL_BUILD_DIR"
+  job-roundtrip-conversions:
+    executor: python-executor
+    steps: 
+      - *checkout
+      - *attach_build_workspace
+      - install-maven
+      - install-saxon
+      - install-ajv
+      - install-lxml
+      - run:
+          name: Generate round trip XML and JSON conversions
+          command: |
+            bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
+      *publish_artifacts
   job-generate-docs:
     executor: java-executor
     steps:
@@ -359,7 +379,197 @@ workflows:
   build:
     jobs:
       - job-ci-skip-check
+      - job-roundtrip-conversions
       - job-validate-markdown:
+
+          requires:
+            - job-ci-skip-check
+          filters:
+            branches:
+              ignore:
+                - master
+                - nist-pages
+      - job-validate-metaschema:
+          requires:
+            - job-ci-skip-check
+          filters:
+            branches:
+              ignore: nist-pages
+      - job-generate-schema:
+          requires:
+            - job-validate-metaschema
+      - job-generate-converters:
+          requires:
+            - job-validate-metaschema
+      - job-validate-content:
+          requires:
+            - job-generate-schema
+      - job-copy-and-convert-content:
+           requires:
+            - job-generate-converters
+            - job-validate-content
+      - job-generate-docs:
+          requires:
+            - job-validate-metaschema
+            - job-generate-converters
+      - job-validate-site-content:
+          requires:
+            - job-generate-docs
+          filters:
+            branches:
+              # only from PRs
+              ignore:
+                - master
+                - nist-pages
+      - job-deploy-artifacts:
+          requires:
+            - job-copy-and-convert-content
+          filters:
+            branches:
+              only: master
+      - job-build-and-deploy-website:
+          requires:
+            - job-generate-docs
+            - job-deploy-artifacts
+          filters:
+            branches:
+              only: master
+      - install-xmllint
+      - install-ajv
+      - run:
+          name: Validate content instances
+          command: |
+            bash "$CICD_DIR/validate-content.sh" "$OSCAL_BUILD_DIR"
+  job-roundtrip-conversions:
+    executor: python-executor
+    steps: 
+      - *checkout
+      - *attach_build_workspace
+      - install-maven
+      - install-saxon
+      - install-ajv
+      - install-lxml
+      - run:
+          name: Generate round trip XML and JSON conversions
+          command: |
+            bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
+      *publish_artifacts
+  job-generate-docs:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - install-saxon
+      - run:
+          name: Generate schema documentation
+          command: |
+            #cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            bash -x "$CICD_DIR/generate-model-documentation.sh" "$OSCAL_BUILD_DIR"
+            # echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
+            # mv docs "$OSCAL_BUILD_DIR"/docs
+      - *publish_artifacts
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - docs
+  job-deploy-artifacts:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - deploy: # delete and copy artifacts before deploy
+          name: Commit Artifacts
+          command: |
+            cd "$OSCAL_REPO_DIR"
+            # Remove existing generated files
+            git rm -r --ignore-unmatch xml/convert/*.xsl
+            git rm -r --ignore-unmatch xml/schema/*.xsd
+            git rm -r --ignore-unmatch json/convert/*.xsl
+            git rm -r --ignore-unmatch json/schema/*.json
+            git rm -r --ignore-unmatch content/**/*.xml
+            git rm -r --ignore-unmatch content/**/*.json
+            git rm -r --ignore-unmatch content/**/*.yaml
+            # Copy new built files to repo
+            cd -
+            cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            cd "$OSCAL_REPO_DIR"
+            # add the new files
+            git add -f --all xml
+            git add -f --all json
+            git add -f --all content
+            # check for changes
+            echo "Changed files:"
+            
+            if ! $(git diff --exit-code --name-only HEAD~1 xml json content); then
+              # Only deploy if something relevant has changed
+              # Setup deployment
+              git config user.name "Deployment Bot"
+              git commit --allow-empty -m "Deploying content [ci deploy skip]"
+              # Ensure we are deploying against the latest
+              git fetch
+              git rebase origin/master
+              # deploy
+              git push
+            else
+              echo "  No files changed"
+            fi
+      - *publish_artifacts
+  job-validate-site-content:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - *restore_gem_cache
+      - install-bundler
+      - run:
+          name: Build jekyll site
+          command: |
+            cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            cd "$OSCAL_REPO_DIR/docs"
+            bundle exec jekyll build -d _site/OSCAL
+            htmlproofer --assume-extension ./_site
+          environment:
+            JEKYLL_ENV: production
+      - *save_gem_cache
+      - *publish_artifacts
+  job-build-and-deploy-website:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - *restore_gem_cache
+      - install-bundler
+      - run:
+          name: Build jekyll site
+          command: |
+            cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            cd "$OSCAL_REPO_DIR/docs"
+            bundle exec jekyll build
+            mkdir -p _site/.circleci
+            # copy the circleci config
+            cp ../.circleci/config.yml _site/.circleci/config.yml
+          environment:
+            JEKYLL_ENV: production
+      - *save_gem_cache
+      - run:
+          name: Run deploy script
+          command: |
+            cd "$OSCAL_REPO_DIR/docs"
+            git config user.name "Deployment Bot"
+            bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
+      - *publish_artifacts
+workflows:
+  version: 2
+  build:
+    jobs:
+      - job-ci-skip-check
+      - job-roundtrip-conversions
+      - job-validate-markdown:
+
           requires:
             - job-ci-skip-check
           filters:
