@@ -65,8 +65,7 @@ commands:
       - run:
           name: Get Python Libs
           command: |
-            sudo pip install 'jsonschema>=3.0.1'
-            sudo pip install simplejson
+            sudo pip install xmldiff #standard library for parsing xml differences, complements custom Python script
 executors:
   java-executor:
     docker: # run the steps with Docker
