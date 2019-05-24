@@ -25,7 +25,7 @@ xsl_transform() {
     
     local classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
 
-    if [ "${output_file}" != "" ]; then
+    if [[ ! -z "$output_file" ]]; then
         java -cp "$classpath" net.sf.saxon.Transform \
             $extra_params "-warnings:silent" "-o:$output_file" "-s:$source_file" "$stylesheet"
     else

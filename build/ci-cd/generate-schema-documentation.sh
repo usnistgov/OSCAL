@@ -16,7 +16,7 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="" read -r path || [ -n "$path" ]; do
+while IFS="" read -r path || [[ -n "$path" ]]; do
   shopt -s extglob
   # skip if line starts with comment
   [[ "$path" =~ ^[[:space:]]*# ]] && continue
@@ -26,8 +26,8 @@ while IFS="" read -r path || [ -n "$path" ]; do
   path="${path%%+([[:space:]])}"
   shopt -u extglob
 
-  if [[ ! -z "$path" ]]; then  if [ -n "$line" ]; then
-    files_to_process="$OSCALDIR"/"$line"
+  if [[ ! -z "$path" ]]; then
+    files_to_process="$OSCALDIR"/"$path"
 
     IFS= # disable word splitting    
     for metaschema in $files_to_process
