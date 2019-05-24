@@ -15,9 +15,16 @@ exitcode=0
 shopt -s nullglob
 shopt -s globstar
 while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
+  shopt -s extglob
+  # skip if line starts with comment
   [[ "$path" =~ ^[[:space:]]*# ]] && continue
+  # remove leading space
+  path="${path##+([[:space:]])}"
+  # remove trailing space
+  converttoformats="${converttoformats%%+([[:space:]])}"
+  shopt -u extglob
 
-  if [ -n "$path" ]; then
+  if [[ ! -z "$path" ]]; then
     files_to_process="$OSCALDIR/$path"
     IFS= # disable word splitting    
     for file in $files_to_process

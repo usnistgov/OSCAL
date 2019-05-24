@@ -7,7 +7,7 @@ fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
   working_dir=$OSCALDIR
 else
   working_dir=$1
@@ -16,11 +16,18 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="" read -r line || [ -n "$line" ]; do
-  [[ "$line" =~ ^[[:space:]]*# ]] && continue
+while IFS="" read -r path || [[ -n "$path" ]]; do
+  shopt -s extglob
+  # skip if line starts with comment
+  [[ "$path" =~ ^[[:space:]]*# ]] && continue
+  # remove leading space
+  path="${path##+([[:space:]])}"
+  # remove trailing space
+  path="${path%%+([[:space:]])}"
+  shopt -u extglob
 
-  if [ -n "$line" ]; then
-    files_to_process="$OSCALDIR"/"$line"
+  if [[ ! -z "$path" ]]; then
+    files_to_process="$OSCALDIR"/"$path"
 
     IFS= # disable word splitting    
     for metaschema in $files_to_process
@@ -55,7 +62,7 @@ while IFS="" read -r line || [ -n "$line" ]; do
       fi
     done
   fi
-done < $OSCALDIR/build/ci-cd/config/metaschema
+done < "$OSCALDIR/build/ci-cd/config/metaschema"
 shopt -u nullglob
 shopt -u globstar
 

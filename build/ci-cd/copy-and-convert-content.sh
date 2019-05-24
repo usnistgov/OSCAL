@@ -7,7 +7,7 @@ fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
   working_dir=$OSCALDIR
 else
   working_dir=$1
@@ -16,21 +16,23 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
+while IFS="|" read path format type converttoformats || [[ -n "$path" ]]; do
+  shopt -s extglob
   [[ "$path" =~ ^[[:space:]]*# ]] && continue
+  # remove leading space
+  path="${path##+([[:space:]])}"
+  # remove trailing space
+  converttoformats="${converttoformats%%+([[:space:]])}"
+  shopt -u extglob
 
-  if [ -n "$path" ]; then
-    files_to_process="$OSCALDIR/$path"
+  if [[ ! -z "$path" ]]; then
+    files_to_process="$OSCALDIR"/"$path"
     IFS= # disable word splitting    
     for file in $files_to_process
     do
-      printf 'file: %s\n' "$file"
-      printf 'format: %s\n' "$format"
-      printf 'type: %s\n' "$type"
-      printf 'convert-to: %s\n' "$converttoformats"
-
       dest="$working_dir/${file/$OSCALDIR\/src\//}"
       dest_dir=${dest%/*}
+      printf 'Copying %s to %s\n' "$file" "$dest"
       mkdir -p "$dest_dir"
       cp "$file" "$dest"
 
@@ -41,6 +43,8 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
         newpath="${newpath%.$format}.$altformat"
         dest="$working_dir/$newpath"
         converter="$working_dir/$altformat/convert/oscal-$type-$format-to-$altformat-converter.xsl"
+
+        printf 'Generating %s file %s from %s\n' "$altformat" "$dest" "$file"
         xsl_transform "$converter" "$file" "$dest"
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then

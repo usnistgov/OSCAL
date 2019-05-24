@@ -1,6 +1,6 @@
 # OSCAL Examples
 
-This directory contains numerous OSCAL examples in both XML and JSON formats. Some examples are considered provisional "finished" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
+This directory contains OSCAL examples in both XML and JSON formats. Some examples are considered provisional "finished" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
 
 The structure and contents of the examples directory are as follows:
 

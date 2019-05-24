@@ -8,17 +8,23 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="" read -r line || [ -n "$line" ]; do
-  [[ "$line" =~ ^[[:space:]]*# ]] && continue
+while IFS="" read -r path || [[ -n "$path" ]]; do
+  shopt -s extglob
+  # skip if line starts with comment
+  [[ "$path" =~ ^[[:space:]]*# ]] && continue
+  # remove leading space
+  path="${path##+([[:space:]])}"
+  # remove trailing space
+  path="${path%%+([[:space:]])}"
+  shopt -u extglob
 
-  if [ -n "$line" ]; then
-    files_to_process="$OSCALDIR"/"$line"
-
+  if [[ ! -z "$path" ]]; then
+    files_to_process="$OSCALDIR"/"$path"
     IFS= # disable word splitting    
     for file in $files_to_process
     do
       printf 'Validating: %s\n' "$file"
-      xmllint --noout --schema "$OSCALDIR/build/metaschema/lib/metaschema.xsd" $file
+      xmllint --noout --schema "$OSCALDIR/build/metaschema/lib/metaschema.xsd" "$file"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
         printf 'XML schema validation failed for %s\n' "$file"
