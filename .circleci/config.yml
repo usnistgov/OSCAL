@@ -205,7 +205,9 @@ jobs: # a collection of steps
             cd -
             cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
             cd "${OSCAL_REPO_DIR}"
-            git add .
+            git add -f --all xml
+            git add -f --all json
+            git add -f --all content
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying site [ci skip]"
             git fetch
