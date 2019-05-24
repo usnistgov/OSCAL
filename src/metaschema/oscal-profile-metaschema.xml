@@ -149,7 +149,7 @@
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
       <model>
-         <assemblies named="set-param"/>
+         <assemblies named="set"/>
          <assemblies named="alter"/>
       </model>
    </define-assembly>
@@ -285,8 +285,8 @@
       </model>
    </define-assembly>
 
-   <define-assembly group-as="param-settings" name="set-param" address="id">
-      <flag name="id" datatype="ID" required="yes"/>
+   <define-assembly name="set" group-as="settings" address="param-id">
+      <flag name="param-id" datatype="NCName" required="yes"/>
       <flag name="class"/>
       <flag name="depends-on" datatype="IDREF"/>
       <formal-name>Parameter Setting</formal-name>
@@ -386,10 +386,10 @@
    <define-flag datatype="NCName" name="subcontrol-id">
       <formal-name>Control ID</formal-name>
       <description>Value of the 'id' flag on a target subcontrol</description>
-      <!--<value>before</value>
-      <value>after</value>
-      <value>starting</value>
-      <value>ending</value>-->
+   </define-flag>
+   <define-flag datatype="NCName" name="param-id">
+      <formal-name>Parameter ID</formal-name>
+      <description>Value of the 'id' flag on a target parameter</description>
    </define-flag>
    <define-flag datatype="string" name="pattern">
       <formal-name>Pattern</formal-name>

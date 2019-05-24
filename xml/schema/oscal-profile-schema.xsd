@@ -867,7 +867,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:set-param"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:set"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:alter"/>
          </xs:sequence>
       </xs:complexType>
@@ -981,7 +981,7 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="set-param">
+   <xs:element name="set">
       <xs:annotation>
          <xs:documentation>
             <b>Parameter Setting: </b> A parameter setting, to be propagated to points of insertion
@@ -999,10 +999,10 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:part"/>
          </xs:sequence>
-         <xs:attribute name="id" type="xs:ID" use="required">
+         <xs:attribute name="param-id" type="xs:NCName" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+                  <b>Parameter ID: </b>Value of the 'id' flag on a target parameter</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
