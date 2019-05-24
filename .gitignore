@@ -18,3 +18,12 @@ pub/
 roundtripped/
 target/
 xspec/*.html
+
+# ignore generated content
+content
+xml
+json
+# but allow markdown files
+!content/**/*.md
+!xml/**/*.md
+!json/**/*.md
