@@ -46,3 +46,20 @@ Python packages:
 pip install 'jsonschema>=3.0.1'
 pip install simplejson
 ```
+
+Finally, the Saxon jar file needs to be retrieved. This can be two ways:
+
+1) You can set the environment variable ```SAXON_VERSION``` to the Saxon version to use. This must correspond to a valid Saxon-HE version in [Maven Central](https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE). Maven will be used to automatically download the Saxon-HE jar dependency.
+
+For example:
+
+```
+export SAXON_VERSION=9.9.1-3
+```
+
+2) You can manually download any variant of Saxon (e.g., HE, ) from [Saxonica](https://www.saxonica.com/download/java.xml) and set the ```SAXON_HOME``` environment variable to the location of the Saxon JAR.
+
+```
+export SAXON_HOME=~/saxon-jar-directory
+```
+
