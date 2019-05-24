@@ -59,24 +59,17 @@ commands:
           name: Get hub
           command: |
             sudo brew install hub
-  install-python-libs:
-    description: "Retrieve python libs and setup the environment to run it"
-    steps:
-      - run:
-          name: Get Python Libs
-          command: |
-            sudo pip install xmldiff #standard library for parsing xml differences, complements custom Python script
 executors:
   java-executor:
-    docker: # run the steps with Docker
+    docker: # run the java steps with Docker
       - image: circleci/openjdk:8-jdk-node-browsers
     <<: *common_environment 
   ruby-node-executor:
-    docker: # run the steps with Docker
+    docker: # run the ruby steps with Docker
       - image: circleci/ruby:2.4.6-node-browsers
     <<: *common_environment 
   python-executor:
-    docker:
+    docker: #run the python steps with Docker
       - image: circleci/python:3.7.3-node-browser
     <<: *common_environment 
 jobs: # a collection of steps
