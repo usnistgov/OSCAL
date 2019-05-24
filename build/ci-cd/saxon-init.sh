@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [[ ! -v OSCALDIR ]]; then
+if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
 fi
 
-if [[ ! -v SAXON_HOME ]] || [[ -z "$SAXON_HOME" ]]; then
+if [[ -z "$SAXON_HOME" ]]; then
     if [[ ! -v SAXON_VERSION ]]; then
         echo "SAXON_VERSION is not set. Please set SAXON_VERSION to indicate the library version"
     elif [[ -z "$SAXON_VERSION" ]]; then
