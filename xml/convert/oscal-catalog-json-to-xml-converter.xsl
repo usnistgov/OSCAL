@@ -16,7 +16,7 @@
    <xsl:preserve-space elements="string"/>
    <xsl:param name="json-file" as="xs:string"/>
    <xsl:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
-   <xsl:template match="/" name="start">
+   <xsl:template match="/">
       <xsl:choose>
          <xsl:when test="exists($json-xml/map)">
             <xsl:apply-templates select="$json-xml" mode="json2xml"/>

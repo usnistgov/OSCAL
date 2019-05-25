@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ! -v OSCALDIR ]]; then
+if [[ -z OSCALDIR ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
 fi
