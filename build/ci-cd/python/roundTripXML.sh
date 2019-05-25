@@ -44,13 +44,6 @@ else
     echo "XML round trip comparison was successful.\n"
 fi
 
-#use the XMLDIFF tool to see differences
-echo ${OSCALDIR}/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml
-echo ${OSCALDIR}/build/ci-cd/python/composedXML.xml
-#xmldiff composedXML.xml composedXML2.xml
-#xmldiff ${OSCALDIR}/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml ${OSCALDIR}/build/ci-cd/python/composedXML.xml
-#xmldiff ${OSCALDIR}/build/ci-cd/python/composedXML.xml ${OSCALDIR}/build/ci-cd/python/composedXML.xml
-
 #validate JSON schemas
 ajv validate -s ${OSCALDIR}/json/schema/oscal-catalog-schema.json -d ${OSCALDIR}/content/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json --extend-refs=true --verbose
 cmd_exitcode=$?
