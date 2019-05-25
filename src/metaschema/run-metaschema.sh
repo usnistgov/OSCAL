@@ -20,8 +20,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 OSCALDIR=$DIR/../..
 
 
-if [[ ! -v SAXON ]]; then
-    if [[ ! -v SAXON_HOME ]]; then
+if [[ -z SAXON ]]; then
+    if [[ -z SAXON_HOME ]]; then
         echo "SAXON_HOME is not set"
         exit 1
     elif [[ -z "$SAXON_HOME" ]]; then

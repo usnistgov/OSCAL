@@ -2,7 +2,7 @@
 OSCALXML=$1
 BASENAME=${OSCALXML%.xml}
 
-if [[ ! -v SAXON_HOME ]]; then
+if [[ -z SAXON_HOME ]]; then
     echo "SAXON_HOME is not set"
     exit 1
 elif [[ -z "$SAXON_HOME" ]]; then
