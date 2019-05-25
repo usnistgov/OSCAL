@@ -1,4 +1,0 @@
-<?xml version="1.0"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-  <uri name="http://csrc.nist.gov/ns/oscal/metaschema/1.0" uri="../metaschema/lib/metaschema.xsd"/>
-</catalog>
