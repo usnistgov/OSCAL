@@ -67,7 +67,7 @@ executors:
   ruby-node-executor:
     docker: # run the ruby steps with Docker
       - image: circleci/ruby:2.4.6-node-browsers
-    <<: *common_environment 
+    <<: *common_environment
   python-executor:
     docker: #run the python steps with Docker
       - image: circleci/python:3.7.3-node-browser
