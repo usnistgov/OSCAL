@@ -3,6 +3,13 @@
 #!/bin/bash
 #source common-environment.sh
 
+#setup print colors
+red=$'\e[1;31m'
+green=$'\e[1;32m'
+yellow=$'\e[1;33m'
+blue=$'\e[1;34m'
+end=$'\e[0m'
+
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
@@ -58,10 +65,10 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           # check the exit code for the conversion
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
-              printf 'XML->JSON conversion failed for file: %s\n' "$file"
+              printf "${red}ERROR: XML->JSON conversion failed for file: %s\n${end}" "$file" 
               exitcode=1
           else
-              echo "XML converted to JSON"
+              printf "${green}SUCCESS: XML converted to JSON. \n${end}" 
           fi
 
           # transformation of JSON back to XML
@@ -73,21 +80,21 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           # check the exit code for the conversion
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
-              printf 'JSON->XML conversion failed for file: %s\n' "$file"
+              printf "${red}JSON->XML conversion failed for file: %s\n${end}" "$file"
               exitcode=1
           else
-              printf "JSON converted back to XML. \n"
+              printf "${green}JSON converted back to XML. \n${end}"
           fi
 
           # compare the XML files to see if there is data loss
-          echo "Checking XML->JSON->XML conversion"
+          printf "Checking XML->JSON->XML conversion"
           python python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/composedXML.xml"
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
-              printf 'XML roundtrip comparison failed for file: %s.\n' "$file"
+              printf "${red}XML roundtrip comparison failed for file: %s.\n${end}" "$file"
               exitcode=1
           else
-              echo "XML round trip comparison was successful.\n"
+              printf "${green}XML round trip comparison was successful.\n${end}"
           fi
 
           #validate JSON schemas
@@ -100,10 +107,10 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           fi
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-              printf 'Comparison of the converted JSON file to the original failed for file: %s.\n' "$file"
+              printf "${red}Comparison of the converted JSON file to the original failed for file: %s.\n${end}" "$file"
               exitcode=1
           else
-              echo "Comparison of the converted JSON file to the original was successful.\n"
+              printf "${green}Comparison of the converted JSON file to the original was successful.\n${end}"
           fi
         ;;
       json)
