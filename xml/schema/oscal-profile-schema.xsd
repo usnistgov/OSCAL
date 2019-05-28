@@ -760,8 +760,7 @@
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="1" ref="oscal-profile:title"/>
-            <xs:element minOccurs="0" ref="oscal-profile:metadata"/>
+            <xs:element minOccurs="1" ref="oscal-profile:metadata"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:import"/>
             <xs:element minOccurs="0" ref="oscal-profile:merge"/>
             <xs:element minOccurs="0" ref="oscal-profile:modify"/>
