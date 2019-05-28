@@ -31,11 +31,10 @@
           modification in and by other profiles, that import them.</p>
       </remarks>
       <model>
-            <field    named="title" required="yes"/>
-            <assembly named="metadata"/>
+            <assembly   named="metadata" required="yes"/>
             <assemblies named="import"/>
-            <assembly named="merge"/>
-            <assembly named="modify"/>
+            <assembly   named="merge"/>
+            <assembly   named="modify"/>
       </model>
    </define-assembly>
 

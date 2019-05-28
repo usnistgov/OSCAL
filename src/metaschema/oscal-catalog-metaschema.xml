@@ -30,8 +30,7 @@
       <p>Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p>
     </remarks>
     <model>
-      <field named="title" required="yes"/>
-      <assembly named="metadata"/>
+      <assembly named="metadata" required="yes"/>
       <!--<field named="declarations"/>-->
       <assemblies named="section"/>
       <choice>

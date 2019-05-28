@@ -74,6 +74,15 @@
             <map key="properties">
                 <xsl:apply-templates select="." mode="properties"/>
             </map>
+            <xsl:for-each-group select="(flag[@required='yes'] | model/*[@required='yes'])" group-by="true()">
+                <array key="required">
+                    <xsl:for-each select="current-group()">
+                        <string>
+                            <xsl:value-of select="@name | @named"/>
+                        </string>
+                    </xsl:for-each>
+                </array>
+            </xsl:for-each-group>
             <boolean key="additionalProperties">false</boolean>
             <map key="propertyNames">
                 <array key="enum">
@@ -177,8 +186,6 @@
         </map>
     </xsl:template>
 
-    
-    <!-- How to express a required attribute or element in JSON schema? -->
     <xsl:template mode="declaration" match="flag">
         <map key="{@name}">
             <string key="type">string</string>
