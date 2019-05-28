@@ -1,6 +1,5 @@
 <!-- Created: 5/16/2019 9:05:18 PM -->
-<profile id="uuid-fedramp-moderate-20190516-210518" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
-	<title>FedRAMP MODERATE Baseline PROFILE</title>
+<profile id="uuid-fedramp-moderate-20190528-125656" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<metadata>
 		<title>FedRAMP Moderate Baseline</title>
 		<author>FedRAMP PMO</author>

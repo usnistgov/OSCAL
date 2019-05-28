@@ -1,9 +1,7 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='MODERATE'-->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         id="uuid-ad080a41-8219-4dcf-8140-2e8c2163b0c9">
-   <title>SP800-53 MODERATE IMPACT BASELINE</title>
-   
+   id="uuid-f0bf2c99-ed39-4cb4-88b7-dc673098c671">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE</title>
       <publication-date>September 2018</publication-date>
