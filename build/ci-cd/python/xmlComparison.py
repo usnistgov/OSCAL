@@ -26,7 +26,7 @@ root2 = doc2.getroot()
 
 # class for comparing elements
 class Element:
-    def __init__(self,e, strPath, intLevel):
+    def __init__(self, e, strPath, intLevel):
         self.name = e.tag
         self.path = strPath + "/" + e.tag
         self.subs = {}

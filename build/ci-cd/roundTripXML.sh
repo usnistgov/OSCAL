@@ -15,11 +15,11 @@ fi
 # default to test passed at zero
 exitcode=0
 
-if [ -z "$1" ]; then
-  working_dir=$OSCALDIR
-else
-  working_dir=$1
-fi
+# config for convertors
+profileJSONConvertor=${OSCALDIR}/json/convert/oscal-profile-xml-to-json-converter.xsl
+profileXMLConvertor=${OSCALDIR}/xml/convert/oscal-profile-json-to-xml-converter.xsl
+catalogJSONConvertor=${OSCALDIR}/json/convert/oscal-catalog-xml-to-json-converter.xsl
+catalogXMLConvertor=${OSCALDIR}/xml/convert/oscal-catalog-json-to-xml-converter.xsl
 
 exitcode=0
 shopt -s nullglob
@@ -39,83 +39,82 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
     IFS= # disable word splitting    
     for file in $files_to_process
     do
-      printf 'Validating %s file %s as %s\n' "$format" "$file" "$type"
+      printf 'file name: %s\n' "$file" 
       printf 'format: %s\n' "$format"
       printf 'type: %s\n' "$type"
       printf 'convert-to: %s\n' "$converttoformats"
 
       case $format in
       xml)
-          schema="$working_dir/xml/schema/oscal-$type-schema.xsd"
-          printf 'Schema Name: %s\n' "$schema"
-          #xmllint --noout --schema "$schema" "$file"
-          #cmd_exitcode=$?
-          #if [ $cmd_exitcode -ne 0 ]; then
-          #  printf 'XML schema validation failed for %s\n' "$file"
-          #  exitcode=1
-          #fi
+          # XML -> JSON -> XML round trip testing
+          #file="/Users/jaredhowerton/oscalMaster/src/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"
+
+          # transformation from source XML to target JSON
+          if [ "$type" = "profile" ]; then
+              java -jar python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:composedJSON.json
+          else
+              java -jar python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:composedJSON.json
+          fi
+          # check the exit code for the conversion
+          cmd_exitcode=$?
+          if [ $cmd_exitcode != 0 ]; then
+              printf 'XML->JSON conversion failed for file: %s\n' "$file"
+              exitcode=1
+          else
+              echo "XML converted to JSON"
+          fi
+
+          # transformation of JSON back to XML
+          if [ "$type" = "profile" ]; then
+              java -jar python/saxon9he.jar  -o:composedXML.xml -it:start -xsl:"$profileXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/composedJSON.json"
+          else
+              java -jar python/saxon9he.jar  -o:composedXML.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/composedJSON.json"
+          fi
+          # check the exit code for the conversion
+          cmd_exitcode=$?
+          if [ $cmd_exitcode != 0 ]; then
+              printf 'JSON->XML conversion failed for file: %s\n' "$file"
+              exitcode=1
+          else
+              printf "JSON converted back to XML. \n"
+          fi
+
+          # compare the XML files to see if there is data loss
+          echo "Checking XML->JSON->XML conversion"
+          python python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/composedXML.xml"
+          cmd_exitcode=$?
+          if [ $cmd_exitcode != 0 ]; then
+              printf 'XML roundtrip comparison failed for file: %s.\n' "$file"
+              exitcode=1
+          else
+              echo "XML round trip comparison was successful.\n"
+          fi
+
+          #validate JSON schemas
+          if [ "$type" = "profile" ]; then
+              #validate the profile JSON
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${OSCALDIR}/build/ci-cd/composedJSON.json"  --extend-refs=true --verbose 
+          else
+              #validate the catalog JSON
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/composedJSON.json"  --extend-refs=true --verbose
+          fi
+          cmd_exitcode=$?
+          if [ $cmd_exitcode -ne 0 ]; then
+              printf 'Comparison of the converted JSON file to the original failed for file: %s.\n' "$file"
+              exitcode=1
+          else
+              echo "Comparison of the converted JSON file to the original was successful.\n"
+          fi
         ;;
       json)
-          schema="$working_dir/json/schema/oscal-$type-schema.json"
-          printf 'Schema Name: %s\n' "$schema"
-          #ajv validate -s "$schema" -d "$file" --extend-refs=true --verbose
-          #cmd_exitcode=$?
-          #if [ $cmd_exitcode -ne 0 ]; then
-          #  printf 'JSON schema validation failed for %s\n' "$file"
-          #  exitcode=1
-          #fi
+          #reverse the process, JSON->XML->JSON
+
         ;;
       esac
     done
   fi
-done < "$OSCALDIR/build/ci-cd/config/content"
+done < "$OSCALDIR/build/ci-cd/config/content" #inserts the config of files to parse
 shopt -u nullglob
 shopt -u globstar
-
-#exit $exitcode
-
-# transformation from source XML to target XML
-java -jar saxon9he.jar -s:${OSCALDIR}/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml -xsl:${OSCALDIR}/json/convert/oscal-catalog-xml-to-json-converter.xsl -o:composedJSON.json
-# check the exit code for the conversion
-cmd_exitcode=$?
-if [ $cmd_exitcode -ne 0 ]; then
-    printf 'XML->JSON conversion failed for %s\n' "$file"
-    exitcode=1
-else
-    echo "XML converted to JSON"
-fi
-
-# transformation of JSON back to XML
-java -jar saxon9he.jar  -o:composedXML.xml -it:start -xsl:${OSCALDIR}/xml/convert/oscal-catalog-json-to-xml-converter.xsl json-file=${OSCALDIR}/build/ci-cd/python/composedJSON.json
-# check the exit code for the conversion
-cmd_exitcode=$?
-if [ $cmd_exitcode -ne 0 ]; then
-    printf 'JSON->XML conversion failed for %s\n' "$file"
-    exitcode=1
-else
-    printf "JSON converted back to XML. \n"
-fi
-
-
-# compare the XML files to see if there is data loss
-echo "Checking XML->JSON->XML conversion for the NIST 800-53 rev4 catalog"
-python python/xmlComparison.py ${OSCALDIR}/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml ${OSCALDIR}/build/ci-cd/python/composedXML.xml
-cmd_exitcode=$?
-if [ $cmd_exitcode -ne 0 ]; then
-    printf 'XML roundtrip comparison failed.\n'
-    exitcode=1
-else
-    echo "XML round trip comparison was successful.\n"
-fi
-
-#validate JSON schemas
-ajv validate -s ${OSCALDIR}/json/schema/oscal-catalog-schema.json -d ${OSCALDIR}/content/nist.gov/SP800-53/rev4/json/NIST_SP-800-53_rev4_catalog.json --extend-refs=true --verbose
-cmd_exitcode=$?
-if [ $cmd_exitcode -ne 0 ]; then
-    printf 'Comparison of the converted JSON file to the original failed.\n'
-    exitcode=1
-else
-    echo "Comparison of the converted JSON file to the original was successful.\n"
-fi
 
 exit $exitcode
