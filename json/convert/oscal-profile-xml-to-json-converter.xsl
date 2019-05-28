@@ -14,7 +14,7 @@
    </xsl:character-map>
    <xsl:param name="json-indent" as="xs:string">no</xsl:param>
    <xsl:mode name="rectify" on-no-match="shallow-copy"/>
-   <xsl:template mode="rectify"
+   <xsl:template mode="rectify" name="start"
                  xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
                  match="/*/@key | array/*/@key"/>
    <xsl:variable name="write-options" as="map(*)" expand-text="true">
