@@ -396,8 +396,8 @@
       <description>A regular expression matching the IDs of one or more controls or subcontrols to be selected</description>
    </define-flag>
    <define-flag datatype="NCName" name="order">
-      <formal-name>Pattern</formal-name>
-      <description>A regular expression matching the IDs of one or more controls or subcontrols to be selected</description>
+      <formal-name>Order</formal-name>
+      <description>A designation of how a selection of controls in a profile is to be ordered.</description>
       <!--<value>keep</value>
       <value>ascending</value>
       <value>descending</value>-->
