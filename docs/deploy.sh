@@ -25,19 +25,8 @@ run_build() {
   echo "Running jekyll"
   JEKYLL_ENV=production bundle exec jekyll build
   mkdir -p _site/.circleci
-  cat <<EOT >> _site/.circleci/config.yml
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/openjdk:8-jdk-node-browsers
-    steps:
-      - checkout
-    branches:
-      ignore:
-        - nist-pages
-EOT
-
+  # copy the circleci config
+  cp ../.circleci/config.yml _site/.circleci/config.yml
 }
 
 parse_args() {

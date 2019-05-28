@@ -246,14 +246,20 @@ workflows:
       - job-validate-metaschema:
           filters:
             branches:
-              ignore: nist-pages
+              only: master
       - job-generate-converters:
           requires:
             - job-validate-metaschema
+          filters:
+            branches:
+              only: master
       - job-generate-docs:
           requires:
             - job-validate-metaschema
             - job-generate-converters
+          filters:
+            branches:
+              only: master
       - job-build-and-deploy-site:
           requires:
             - job-generate-docs
