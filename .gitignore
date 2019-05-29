@@ -23,6 +23,7 @@ xspec/*.html
 content
 xml
 json
+svrl
 # but allow markdown files
 !content/**/*.md
 !xml/**/*.md
