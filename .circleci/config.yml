@@ -3,9 +3,10 @@ references:
   common_environment: &common_environment
     environment:
       SAXON_VERSION: 9.9.0-1
-      CICD_DIR: git-checkout/build/ci-cd
-      OSCAL_REPO_DIR: git-checkout
+      CICD_DIR: git-oscal/build/ci-cd
+      OSCAL_REPO_DIR: git-oscal
       OSCAL_BUILD_DIR: build_artifacts
+      SCHEMATRON_HOME: git-schematron
     working_directory: ~/oscal
   attach_build_workspace: &attach_build_workspace
     attach_workspace:
@@ -18,9 +19,10 @@ references:
         - xml
         - json
         - docs
+        - svrl
   checkout: &checkout
     checkout:
-      path: git-checkout
+      path: git-oscal
   publish_artifacts: &publish_artifacts
     store_artifacts:
       path: build_artifacts
@@ -38,6 +40,15 @@ commands:
           key: maven-m2
           paths:
             - ~/.m2
+  install-schematron:
+    description: "Retrieve the schematron skeleton and setup the environment to run it"
+    steps:
+      - run:
+          name: Get schematron skeleton
+          command: |
+            git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
+            cd "$SCHEMATRON_HOME"
+            git checkout master -- trunk/schematron/code
   install-xmllint:
     description: "Retrieve xmllint and setup the environment to run it"
     steps:
@@ -85,12 +96,13 @@ jobs: # a collection of steps
     executor: java-executor
     steps:
       - *checkout
-      - run: find ~/oscal -print
       - install-xmllint
+      - install-saxon
+      - install-schematron
       - run:
           name: Validate metaschema instances
           command: |
-            bash "$CICD_DIR/validate-metaschema.sh"
+            bash "$CICD_DIR/validate-metaschema.sh" "$OSCAL_BUILD_DIR"
   job-generate-schema:
     executor: java-executor
     steps: # a collection of executable commands
