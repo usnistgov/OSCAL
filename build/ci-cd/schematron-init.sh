@@ -45,7 +45,7 @@ validate_with_schematron() {
     if grep --quiet "failed-assert" "$svrl_result"; then
         printf "The file '%s' has the following Schematron errors:\n" "$source_file"
         # display the errors
-        cat "$svrl_result"
+        xsl_transform "$OSCALDIR/build/ci-cd/svrl-to-plaintext.xsl" "$svrl_result"
         return 1
     else
         printf "File '%s' passed Schematron validation.\n" "$source_file"
