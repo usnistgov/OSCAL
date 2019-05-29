@@ -24,6 +24,9 @@ Options:
 run_build() {
   echo "Running jekyll"
   JEKYLL_ENV=production bundle exec jekyll build
+  mkdir -p _site/.circleci
+  # copy the circleci config
+  cp ../.circleci/config.yml _site/.circleci/config.yml
 }
 
 parse_args() {
