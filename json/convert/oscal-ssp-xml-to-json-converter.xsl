@@ -149,18 +149,16 @@
       <xsl:text>"</xsl:text>
    </xsl:template>
    <xsl:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
-   <xsl:template mode="md" match="a[starts-with(@href,'#')]">
-      <xsl:variable name="link-target"
-                    select="key('element-by-id',substring-after(@href,'#'))"/>
+   <xsl:template mode="md" match="a">
       <xsl:text>[</xsl:text>
-      <xsl:value-of select="replace(.,'&lt;','&amp;lt;')"/>
+      <xsl:value-of select="."/>
       <xsl:text>]</xsl:text>
-      <xsl:text>(#</xsl:text>
-      <xsl:value-of select="$link-target/*[1] =&gt; normalize-space() =&gt; lower-case() =&gt; replace('\s+','-') =&gt; replace('[^a-z\-\d]','')"/>
+      <xsl:text>(</xsl:text>
+      <xsl:value-of select="@href"/>
       <xsl:text>)</xsl:text>
    </xsl:template>
    <xsl:template match="text()" mode="md">
-      <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
+      <xsl:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>
    </xsl:template>
    <!-- 88888888888888888888888888888888888888888888888888888888888888 -->
    <xsl:template match="system-security-plan" mode="xml2json">
