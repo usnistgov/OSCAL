@@ -1,0 +1,284 @@
+version: 2.1 # use CircleCI 2.1
+references:
+  common_environment: &common_environment
+    environment:
+      SAXON_VERSION: 9.9.0-1
+      CICD_DIR: git-oscal/build/ci-cd
+      OSCAL_REPO_DIR: git-oscal
+      OSCAL_BUILD_DIR: build_artifacts
+      SCHEMATRON_HOME: git-schematron
+    working_directory: ~/oscal
+  attach_build_workspace: &attach_build_workspace
+    attach_workspace:
+        at: build_artifacts
+  persist_to_build_workspace: &persist_to_build_workspace
+    persist_to_workspace:
+      root: build_artifacts
+      paths:
+        - content # not needed?
+        - xml
+        - json
+        - docs
+        - svrl
+  checkout: &checkout
+    checkout:
+      path: git-oscal
+  publish_artifacts: &publish_artifacts
+    store_artifacts:
+      path: build_artifacts
+commands:
+  install-saxon:
+    description: "Retrieve Saxon-HE and setup the environment to run it"
+    steps:
+      - restore_cache:
+          key: maven-m2
+      - run:
+          name: Get Saxon
+          command: |
+            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
+      - save_cache:
+          key: maven-m2
+          paths:
+            - ~/.m2
+  install-schematron:
+    description: "Retrieve the schematron skeleton and setup the environment to run it"
+    steps:
+      - run:
+          name: Get schematron skeleton
+          command: |
+            git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
+            cd "$SCHEMATRON_HOME"
+            git checkout master -- trunk/schematron/code
+  install-xmllint:
+    description: "Retrieve xmllint and setup the environment to run it"
+    steps:
+      - run:
+          name: Get xmllint
+          command: |
+            sudo apt-get install libxml2-utils
+  install-ajv:
+    description: "Retrieve ajv and setup the environment to run it"
+    steps:
+      - run:
+          name: Get ajv
+          command: |
+            sudo npm install -g ajv-cli
+  install-hub:
+    description: "Retrieve hub and setup the environment to run it"
+    steps:
+      - run:
+          name: Get hub
+          command: |
+            sudo brew install hub
+  install-python-libs:
+    description: "Retrieve python libs and setup the environment to run it"
+    steps:
+      - run:
+          name: Get Python Libs
+          command: |
+            sudo pip install 'jsonschema>=3.0.1'
+            sudo pip install simplejson
+executors:
+  java-executor:
+    docker: # run the steps with Docker
+      - image: circleci/openjdk:8-jdk-node-browsers
+    <<: *common_environment 
+  ruby-node-executor:
+    docker: # run the steps with Docker
+      - image: circleci/ruby:2.4.6-node-browsers
+    <<: *common_environment 
+  python-executor:
+    docker:
+      - image: circleci/python:3.7.3-node-browser
+    <<: *common_environment 
+jobs: # a collection of steps
+  job-validate-metaschema:
+    executor: java-executor
+    steps:
+      - *checkout
+      - install-xmllint
+      - install-saxon
+      - install-schematron
+      - run:
+          name: Validate metaschema instances
+          command: |
+            bash "$CICD_DIR/validate-metaschema.sh" "$OSCAL_BUILD_DIR"
+  job-generate-schema:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *attach_build_workspace
+      - install-saxon
+      - install-ajv
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash "$CICD_DIR/generate-schema.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - *persist_to_build_workspace
+  job-generate-converters:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *attach_build_workspace
+      - install-saxon
+      - run:
+          name: Generate OSCAL schemas
+          command: |
+            bash "${CICD_DIR}/generate-content-converters.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - *persist_to_build_workspace
+  job-copy-and-convert-content:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *attach_build_workspace
+      - install-saxon
+      - run:
+          name: Generate OSCAL converters
+          command: |
+            bash "${CICD_DIR}/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - *persist_to_build_workspace
+  job-validate-content:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - install-xmllint
+      - install-ajv
+      - run:
+          name: Validate content instances
+          command: |
+            bash "${CICD_DIR}/validate-content.sh" "$OSCAL_BUILD_DIR"
+  job-generate-docs:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - install-saxon
+      - run:
+          name: Generate schema documentation
+          command: |
+            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
+            bash "${CICD_DIR}/generate-schema-documentation.sh" "${OSCAL_BUILD_DIR}"
+            echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
+            mv docs "${OSCAL_BUILD_DIR}"/docs
+      - *publish_artifacts
+      - *persist_to_build_workspace
+  job-build-and-deploy-site:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ .Branch }}
+            - gem-cache
+      - run:
+          name: Install Bundler
+          command: |
+            cd "${OSCAL_REPO_DIR}/docs"
+            echo gem install bundler
+            bundle install --path ~/jekyll-bundle
+      - run:
+          name: Build jekyll site
+          command: |
+            cp -vr "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
+            cd "${OSCAL_REPO_DIR}/docs"
+            bundle exec jekyll build
+            mkdir -p _site/.circleci
+            # copy the circleci config
+            cp ../.circleci/config.yml _site/.circleci/config.yml
+          environment:
+            JEKYLL_ENV: production
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ .Branch }}
+          paths:
+            - ~/jekyll-bundle
+      - run:
+          name: Run deploy script
+          command: |
+            cd "${OSCAL_REPO_DIR}/docs"
+            bash ./deploy.sh --push-only -v -m "Deploying site [ci skip]"
+      - *publish_artifacts
+  job-deploy-artifacts:
+    executor: java-executor
+    steps: # a collection of executable commands
+      - *checkout
+      - *attach_build_workspace
+      - deploy: # delete and copy artifacts before deploy
+          name: Commit Artifacts
+          command: |
+            cd "${OSCAL_REPO_DIR}"
+            git rm -r --ignore-unmatch xml/convert/*.xsl
+            git rm -r --ignore-unmatch xml/schema/*.xsd
+            git rm -r --ignore-unmatch json/convert/*.xsl
+            git rm -r --ignore-unmatch json/schema/*.json
+            git rm -r --ignore-unmatch content/**/*.json
+            git rm -r --ignore-unmatch content/**/*.xml
+            cd -
+            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
+            cd "${OSCAL_REPO_DIR}"
+            git add -f --all xml
+            git add -f --all json
+            git add -f --all content
+            git config user.name "Deployment Bot"
+            git commit --allow-empty -m "Deploying site [ci skip]"
+            git fetch
+            git rebase origin/master
+            git push
+      - *publish_artifacts
+workflows:
+  version: 2
+  build:
+    jobs:
+      - job-validate-metaschema:
+          filters:
+            branches:
+              ignore: nist-pages
+      - job-generate-schema:
+          requires:
+            - job-validate-metaschema
+      - job-generate-converters:
+          requires:
+            - job-validate-metaschema
+      - job-validate-content:
+          requires:
+            - job-generate-schema
+      - job-copy-and-convert-content:
+           requires:
+            - job-generate-converters
+            - job-validate-content
+      - job-deploy-artifacts:
+          requires:
+            - job-copy-and-convert-content
+          filters:
+            branches:
+              only: master
+  build-and-deploy-site:
+    jobs:
+      - job-validate-metaschema:
+          filters:
+            branches:
+              only: master
+      - job-generate-converters:
+          requires:
+            - job-validate-metaschema
+          filters:
+            branches:
+              only: master
+      - job-generate-docs:
+          requires:
+            - job-validate-metaschema
+            - job-generate-converters
+          filters:
+            branches:
+              only: master
+      - job-build-and-deploy-site:
+          requires:
+            - job-generate-docs
+          filters:
+            branches:
+              only: master
+
