@@ -1,0 +1,2402 @@
+
+  { "$schema" : "http://json-schema.org/draft-07/schema#",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0/oscal-ssp-schema.json",
+    "$comment" : "OSCAL System Security Plan (SSP) Format: JSON Schema",
+    "type" : "object",
+    "definitions" : 
+    { "system-security-plan" : 
+      { "title" : "System Security Plan (SSP)",
+        "description" : "",
+        "$id" : "#/definitions/system-security-plan",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "metadata" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/metadata" },
+          "imports" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/import" } },
+          "system-characteristics" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/system-characteristics" },
+          "system-implementation" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/system-implementation" },
+          "control-implementation" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/control-implementation" },
+          "references" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/references" },
+          "attachment" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/attachment" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "metadata",
+            "import",
+            "system-characteristics",
+            "system-implementation",
+            "control-implementation",
+            "references",
+            "attachment" ] } },
+      "system-characteristics" : 
+      { "title" : "System Characteristics",
+        "description" : "Contains the characteristics of the system, such as its name, purpose, and security impact level.",
+        "$id" : "#/definitions/system-characteristics",
+        "type" : "object",
+        "properties" : 
+        { "system-id" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/system-id" },
+          "system-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/system-name" },
+          "system-name-short" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/system-name-short" },
+          "description" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/description" },
+          "security-sensitivity-level" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-sensitivity-level" },
+          "system-information" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/system-information" },
+          "security-impact-level" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/security-impact-level" },
+          "security-eauth" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/security-eauth" },
+          "status" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/status" },
+          "status-other-description" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/status-other-description" },
+          "deployment-model" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/deployment-model" },
+          "deployment-model-other-description" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/deployment-model-other-description" },
+          "service-models" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/service-model" } },
+          "service-model-descriptions" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/service-model-other-description" } },
+          "leveraged-authorizations" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/leveraged-authorizations" },
+          "authorization-boundary" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/authorization-boundary" },
+          "network-architecture" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/network-architecture" },
+          "data-flow" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/data-flow" },
+          "users" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/users" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "system-id",
+            "system-name",
+            "system-name-short",
+            "description",
+            "security-sensitivity-level",
+            "system-information",
+            "security-impact-level",
+            "security-eauth",
+            "status",
+            "status-other-description",
+            "deployment-model",
+            "deployment-model-other-description",
+            "service-model",
+            "service-model-other-description",
+            "leveraged-authorizations",
+            "authorization-boundary",
+            "network-architecture",
+            "data-flow",
+            "users" ] } },
+      "system-id" : 
+      { "title" : "System Identification",
+        "description" : "",
+        "$id" : "#/definitions/system-id",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "type" ] } },
+      "system-name" : 
+      { "title" : "System Name (Full)",
+        "description" : "",
+        "$id" : "#/definitions/system-name",
+        "type" : "string" },
+      "system-name-short" : 
+      { "title" : "System Name (Short)",
+        "description" : "",
+        "$id" : "#/definitions/system-name-short",
+        "type" : "string" },
+      "description" : 
+      { "title" : "Description",
+        "description" : "A free-text description of the system.",
+        "$id" : "#/definitions/description",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "security-sensitivity-level" : 
+      { "title" : "",
+        "description" : "",
+        "$id" : "#/definitions/security-sensitivity-level",
+        "type" : "string" },
+      "system-information" : 
+      { "title" : "System Information",
+        "description" : "Contains details about all types of information stored, processed, or transmitted by the system, such as privacy information, and NIST 800-60 information types.",
+        "$id" : "#/definitions/system-information",
+        "type" : "object",
+        "properties" : 
+        { "ssp-information-type" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/information-type" } },
+          "ssp-designations" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/designations" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "information-type",
+            "designations" ] } },
+      "designations" : 
+      { "title" : "System Information Designations",
+        "description" : "Used to enumerate all special information type designations that may be required by a specific organization or compliance regiem, such as privacy impact information (PII), or payment card information (PCI).",
+        "$id" : "#/definitions/designations",
+        "type" : "object",
+        "properties" : 
+        { "ssp-designation" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/designation" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "designation" ] } },
+      "designation" : 
+      { "title" : "System Information Designation",
+        "description" : "Used when a specific organization or compliance regiem requires certain information types to be explicitly cited, such as privacy impact information (PII), or payment card information (PCI).",
+        "$id" : "#/definitions/designation",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "title" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/title" },
+          "declaration" : 
+          { "type" : "boolean",
+            "$ref" : "#/definitions/declaration" },
+          "ssp-qualifiers" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/qualifiers" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "title",
+            "declaration",
+            "qualifiers" ] } },
+      "declaration" : 
+      { "title" : "Declaration",
+        "description" : "Identifies whether a specific designation applies to this system.",
+        "$id" : "#/definitions/declaration",
+        "type" : "boolean" },
+      "qualifiers" : 
+      { "title" : "Information Designation Qualifiers",
+        "description" : "A list of questions about the system that contribute to the establishment of a designation, such as the FedRAMP privacy threshold analysis questions.",
+        "$id" : "#/definitions/qualifiers",
+        "type" : "object",
+        "properties" : 
+        { "ssp-qualifiers" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/qualifier" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "qualifier" ] } },
+      "qualifier" : 
+      { "title" : "Individual Information Designation Qualifier",
+        "description" : "An individual questions about the system that contributes to the establishment of a designation, such as a FedRAMP privacy threshold analysis question.",
+        "$id" : "#/definitions/qualifier",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "qual-question" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/qual-question" },
+          "qual-response" : 
+          { "type" : "boolean",
+            "$ref" : "#/definitions/qual-response" },
+          "qual-notes" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/qual-notes" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "qual-question",
+            "qual-response",
+            "qual-notes" ] } },
+      "qual-question" : 
+      { "title" : "Qualifier Question",
+        "description" : "A question that must be answered about this system.",
+        "$id" : "#/definitions/qual-question",
+        "type" : "string" },
+      "qual-response" : 
+      { "title" : "Qualifier Question Response",
+        "description" : "The response to the question.",
+        "$id" : "#/definitions/qual-response",
+        "type" : "boolean" },
+      "qual-notes" : 
+      { "title" : "Qualifier Question Response Notes",
+        "description" : "Additional information about the response to the question.",
+        "$id" : "#/definitions/qual-notes",
+        "type" : "string" },
+      "information-type" : 
+      { "title" : "Information Type",
+        "description" : "Contains details about one type of information stored, processed, or transmitted by the system, such as privacy information, and NIST 800-60 information types.",
+        "$id" : "#/definitions/information-type",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "nist-id" : 
+          { "type" : "string" },
+          "description" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/description" },
+          "confidentiality-impact" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/confidentiality-impact" },
+          "integrity-impact" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/integrity-impact" },
+          "availability-impact" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/availability-impact" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "nist-id",
+            "description",
+            "confidentiality-impact",
+            "integrity-impact",
+            "availability-impact" ] } },
+      "confidentiality-impact" : 
+      { "title" : "Confidentiality Impact Level",
+        "description" : "",
+        "$id" : "#/definitions/confidentiality-impact",
+        "type" : "object",
+        "properties" : 
+        { "base" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/base" },
+          "selected" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/selected" },
+          "adjustment-justification" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/adjustment-justification" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "base",
+            "selected",
+            "adjustment-justification" ] } },
+      "integrity-impact" : 
+      { "title" : "Integrity Impact Level",
+        "description" : "",
+        "$id" : "#/definitions/integrity-impact",
+        "type" : "object",
+        "properties" : 
+        { "base" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/base" },
+          "selected" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/selected" },
+          "adjustment-justification" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/adjustment-justification" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "base",
+            "selected",
+            "adjustment-justification" ] } },
+      "availability-impact" : 
+      { "title" : "Availability Impact Level",
+        "description" : "",
+        "$id" : "#/definitions/availability-impact",
+        "type" : "object",
+        "properties" : 
+        { "base" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/base" },
+          "selected" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/selected" },
+          "adjustment-justification" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/adjustment-justification" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "base",
+            "selected",
+            "adjustment-justification" ] } },
+      "base" : 
+      { "title" : "Base Level (Confidentiality, Integrity, or Availability)",
+        "description" : "The prescribed base (Confidentiality, Integrity, or Availability) security impact level.",
+        "$id" : "#/definitions/base",
+        "type" : "string" },
+      "selected" : 
+      { "title" : "Selected Level (Confidentiality, Integrity, or Availability)",
+        "description" : "The selected (Confidentiality, Integrity, or Availability) security impact level.",
+        "$id" : "#/definitions/selected",
+        "type" : "string" },
+      "adjustment-justification" : 
+      { "title" : "Adjustment Justification",
+        "description" : "If the selected security level is different from the base security level, this contains the justificaiton for the change.",
+        "$id" : "#/definitions/adjustment-justification",
+        "type" : "string" },
+      "security-impact-level" : 
+      { "title" : "Security Impact Level",
+        "description" : "",
+        "$id" : "#/definitions/security-impact-level",
+        "type" : "object",
+        "properties" : 
+        { "security-objective-confidentiality" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-objective-confidentiality" },
+          "security-objective-integrity" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-objective-integrity" },
+          "security-objective-availability" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-objective-availability" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "security-objective-confidentiality",
+            "security-objective-integrity",
+            "security-objective-availability" ] } },
+      "security-objective-confidentiality" : 
+      { "title" : "Security Objective (Confidentiality)",
+        "description" : "",
+        "$id" : "#/definitions/security-objective-confidentiality",
+        "type" : "string" },
+      "security-objective-integrity" : 
+      { "title" : "Security Objective (Integrity)",
+        "description" : "",
+        "$id" : "#/definitions/security-objective-integrity",
+        "type" : "string" },
+      "security-objective-availability" : 
+      { "title" : "Security Objective (Availability)",
+        "description" : "",
+        "$id" : "#/definitions/security-objective-availability",
+        "type" : "string" },
+      "security-eauth" : 
+      { "title" : "Security Electronic Authetication Level",
+        "description" : "",
+        "$id" : "#/definitions/security-eauth",
+        "type" : "object",
+        "properties" : 
+        { "security-auth-ial" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-auth-ial" },
+          "security-auth-aal" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-auth-aal" },
+          "security-auth-fal" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-auth-fal" },
+          "security-eauth-level" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/security-eauth-level" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "security-auth-ial",
+            "security-auth-aal",
+            "security-auth-fal",
+            "security-eauth-level" ] } },
+      "security-auth-ial" : 
+      { "title" : "Security Authentication (Identity Assurance Level)",
+        "description" : "",
+        "$id" : "#/definitions/security-auth-ial",
+        "type" : "string" },
+      "security-auth-aal" : 
+      { "title" : "Security Authentication (Authenticator Assurance Level)",
+        "description" : "",
+        "$id" : "#/definitions/security-auth-aal",
+        "type" : "string" },
+      "security-auth-fal" : 
+      { "title" : "Security Authentication (Federation Assurance Level)",
+        "description" : "",
+        "$id" : "#/definitions/security-auth-fal",
+        "type" : "string" },
+      "security-eauth-level" : 
+      { "title" : "Security eAuthentication Level",
+        "description" : "",
+        "$id" : "#/definitions/security-eauth-level",
+        "type" : "string" },
+      "status" : 
+      { "title" : "Status",
+        "description" : "",
+        "$id" : "#/definitions/status",
+        "type" : "string" },
+      "status-other-description" : 
+      { "title" : "Status Description (if Other)",
+        "description" : "",
+        "$id" : "#/definitions/status-other-description",
+        "type" : "string" },
+      "deployment-model" : 
+      { "title" : "Deployment Model",
+        "description" : "",
+        "$id" : "#/definitions/deployment-model",
+        "type" : "string" },
+      "deployment-model-other-description" : 
+      { "title" : "Deployment Model Description (if Other)",
+        "description" : "",
+        "$id" : "#/definitions/deployment-model-other-description",
+        "type" : "string" },
+      "service-model" : 
+      { "title" : "Service Model",
+        "description" : "",
+        "$id" : "#/definitions/service-model",
+        "type" : "string" },
+      "service-model-other-description" : 
+      { "title" : "Service Model Description Other",
+        "description" : "",
+        "$id" : "#/definitions/service-model-other-description",
+        "type" : "string" },
+      "leveraged-authorizations" : 
+      { "title" : "Leveraged Authorizations",
+        "description" : "All leveraged authorizations for this system.",
+        "$id" : "#/definitions/leveraged-authorizations",
+        "type" : "object",
+        "properties" : 
+        { "ssp-leveraged-authorization" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/leveraged-authorization" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "leveraged-authorization" ] } },
+      "leveraged-authorization" : 
+      { "title" : "Leveraged Authorization",
+        "description" : "The details for a single leveraged authorization",
+        "$id" : "#/definitions/leveraged-authorization",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "leveraged-authorization-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/leveraged-authorization-name" },
+          "leveraged-authorization-service-provider" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/leveraged-authorization-service-provider" },
+          "leveraged-authorization-date-granted" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/leveraged-authorization-date-granted" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "leveraged-authorization-name",
+            "leveraged-authorization-service-provider",
+            "leveraged-authorization-date-granted" ] } },
+      "leveraged-authorization-name" : 
+      { "title" : "Leveraged system Name",
+        "description" : "Name of the leveraged system.",
+        "$id" : "#/definitions/leveraged-authorization-name",
+        "type" : "string" },
+      "leveraged-authorization-service-provider" : 
+      { "title" : "Leveraged System Service Provider Name",
+        "description" : "Name of the service provider that manages the leveraged system.",
+        "$id" : "#/definitions/leveraged-authorization-service-provider",
+        "type" : "string" },
+      "leveraged-authorization-date-granted" : 
+      { "title" : "Leveraged System Authorization Date",
+        "description" : "The date the leveraged system received its authorization.",
+        "$id" : "#/definitions/leveraged-authorization-date-granted",
+        "type" : "string" },
+      "authorization-boundary" : 
+      { "title" : "Authorization Boundary",
+        "description" : "",
+        "$id" : "#/definitions/authorization-boundary",
+        "type" : "object",
+        "properties" : 
+        { "ssp-boundary-diagram" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/boundary-diagram" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "boundary-diagram" ] } },
+      "boundary-diagram" : 
+      { "title" : "Boundary Diagram",
+        "description" : "",
+        "$id" : "#/definitions/boundary-diagram",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "attachment-id" : 
+          { "type" : "string" },
+          "boundary-description" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/boundary-description" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "attachment-id",
+            "boundary-description" ] } },
+      "boundary-description" : 
+      { "title" : "Boundary Description",
+        "description" : "",
+        "$id" : "#/definitions/boundary-description",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "network-architecture" : 
+      { "title" : "Network Architecture Diagrams",
+        "description" : "",
+        "$id" : "#/definitions/network-architecture",
+        "type" : "object",
+        "properties" : 
+        { "ssp-network-boundary" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/network-diagram" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "network-diagram" ] } },
+      "network-diagram" : 
+      { "title" : "Network Diagram",
+        "description" : "",
+        "$id" : "#/definitions/network-diagram",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "attachment-id" : 
+          { "type" : "string" },
+          "network-description" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/network-description" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "attachment-id",
+            "network-description" ] } },
+      "network-description" : 
+      { "title" : "Network Description",
+        "description" : "",
+        "$id" : "#/definitions/network-description",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "data-flow" : 
+      { "title" : "Data Flow",
+        "description" : "",
+        "$id" : "#/definitions/data-flow",
+        "type" : "object",
+        "properties" : 
+        { "ssp-data-flow-diagram" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/data-flow-diagram" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "data-flow-diagram" ] } },
+      "data-flow-diagram" : 
+      { "title" : "Data Flow Diagram",
+        "description" : "",
+        "$id" : "#/definitions/data-flow-diagram",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "attachment-id" : 
+          { "type" : "string" },
+          "data-flow-description" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/data-flow-description" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "attachment-id",
+            "data-flow-description" ] } },
+      "data-flow-description" : 
+      { "title" : "Data Flow Description",
+        "description" : "",
+        "$id" : "#/definitions/data-flow-description",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "users" : 
+      { "title" : "Users",
+        "description" : "Provides all user roles.",
+        "$id" : "#/definitions/users",
+        "type" : "object",
+        "properties" : 
+        { "roles" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/role" } },
+          "statistics" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/statistics" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "role",
+            "statistics" ] } },
+      "role" : 
+      { "title" : "Role",
+        "description" : "Defining a role to be assigned to a party or agent",
+        "$id" : "#/definitions/role",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "name" : 
+          { "type" : "string" },
+          "external" : 
+          { "type" : "string" },
+          "access" : 
+          { "type" : "string" },
+          "sensitivity-level" : 
+          { "type" : "string" },
+          "title" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/title" },
+          "short-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/short-name" },
+          "desc" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/desc" },
+          "privileges" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/privilege" } },
+          "responsibilities" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/responsibility" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "name",
+            "external",
+            "access",
+            "sensitivity-level",
+            "title",
+            "short-name",
+            "desc",
+            "privilege",
+            "responsibility" ] } },
+      "privilege" : 
+      { "title" : "Privilege",
+        "description" : "Identifies the type/level of system privilege for the role. For FedRAMP, the only valid values are \"p\" (Privileged), \"np\" (Non-Privileged), or \"nla\" (No Logical Access).",
+        "$id" : "#/definitions/privilege",
+        "type" : "string" },
+      "responsibility" : 
+      { "title" : "Responsibility",
+        "description" : "Identifies the functions performed by the user role.",
+        "$id" : "#/definitions/responsibility",
+        "type" : "string" },
+      "statistics" : 
+      { "title" : "Statistics",
+        "description" : "Provides a collection of statistics about users of the system.",
+        "$id" : "#/definitions/statistics",
+        "type" : "object",
+        "properties" : 
+        { "internal-user-total-current" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/internal-user-total-current" },
+          "internal-user-total-future" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/internal-user-total-future" },
+          "external-user-total-current" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/external-user-total-current" },
+          "external-user-total-future" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/external-user-total-future" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "internal-user-total-current",
+            "internal-user-total-future",
+            "external-user-total-current",
+            "external-user-total-future" ] } },
+      "internal-user-total-current" : 
+      { "title" : "Total Current Internal Users",
+        "description" : "",
+        "$id" : "#/definitions/internal-user-total-current",
+        "type" : "string" },
+      "internal-user-total-future" : 
+      { "title" : "Total Future Internal Users",
+        "description" : "",
+        "$id" : "#/definitions/internal-user-total-future",
+        "type" : "string" },
+      "external-user-total-current" : 
+      { "title" : "Total Current External Users",
+        "description" : "",
+        "$id" : "#/definitions/external-user-total-current",
+        "type" : "string" },
+      "external-user-total-future" : 
+      { "title" : "Total Future External Users",
+        "description" : "",
+        "$id" : "#/definitions/external-user-total-future",
+        "type" : "string" },
+      "system-implementation" : 
+      { "title" : "System Implementation",
+        "description" : "Provides information as to how the system is implemented.",
+        "$id" : "#/definitions/system-implementation",
+        "type" : "object",
+        "properties" : 
+        { "interconnected" : 
+          { "type" : "string" },
+          "ports-protocols-services" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/ports-protocols-services" },
+          "ssp-interconnection" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/interconnection" } },
+          "components" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/component" } },
+          "system-inventory" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/system-inventory" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "interconnected",
+            "ports-protocols-services",
+            "interconnection",
+            "component",
+            "system-inventory" ] } },
+      "ports-protocols-services" : 
+      { "title" : "Ports, Protocols, and Services",
+        "description" : "A collection of the ports, protocols, and services used within the system.",
+        "$id" : "#/definitions/ports-protocols-services",
+        "type" : "object",
+        "properties" : 
+        { "ssp-service" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/service" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "service" ] } },
+      "service" : 
+      { "title" : "Service",
+        "description" : "A collection of information about an individual service within the system.",
+        "$id" : "#/definitions/service",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "name" : 
+          { "type" : "string" },
+          "ssp-protocol" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/protocol" } },
+          "purpose" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/purpose" },
+          "component-users" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/used-by" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "name",
+            "protocol",
+            "purpose",
+            "used-by" ] } },
+      "protocol" : 
+      { "title" : "Protocol",
+        "description" : "Information about the protocol used to provide a service.",
+        "$id" : "#/definitions/protocol",
+        "type" : "object",
+        "properties" : 
+        { "name" : 
+          { "type" : "string" },
+          "port-ranges" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/port-range" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "name",
+            "port-range" ] } },
+      "port-range" : 
+      { "title" : "Port Range",
+        "description" : "",
+        "$id" : "#/definitions/port-range",
+        "type" : "object",
+        "properties" : 
+        { "start" : 
+          { "type" : "string" },
+          "end" : 
+          { "type" : "string" },
+          "transport" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "start",
+            "end",
+            "transport" ] } },
+      "purpose" : 
+      { "title" : "Purpose",
+        "description" : "Describes the purpose for the service within the system.",
+        "$id" : "#/definitions/purpose",
+        "type" : "string" },
+      "used-by" : 
+      { "title" : "Used By",
+        "description" : "Identifies the types of system component that uses the service. One entry per",
+        "$id" : "#/definitions/used-by",
+        "type" : "string" },
+      "interconnection" : 
+      { "title" : "Interconnection",
+        "description" : "Details on an individual system interconnection.",
+        "$id" : "#/definitions/interconnection",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "external-system-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/external-system-name" },
+          "external-system-org" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/external-system-org" },
+          "isa-authorizations" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/isa-authorization" } },
+          "isa-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/isa-name" },
+          "isa-date" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/isa-date" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "external-system-name",
+            "external-system-org",
+            "isa-authorization",
+            "isa-name",
+            "isa-date" ] } },
+      "external-system-name" : 
+      { "title" : "External System Name",
+        "description" : "",
+        "$id" : "#/definitions/external-system-name",
+        "type" : "string" },
+      "external-system-org" : 
+      { "title" : "External System Organization",
+        "description" : "",
+        "$id" : "#/definitions/external-system-org",
+        "type" : "string" },
+      "isa-authorization" : 
+      { "title" : "ISA Authorization",
+        "description" : "Name of the individual who authorized the Interconnection Security Agreement (ISA).",
+        "$id" : "#/definitions/isa-authorization",
+        "type" : "string" },
+      "isa-name" : 
+      { "title" : "ISA Name",
+        "description" : "Title of the Interconnection Security Agreement (ISA).",
+        "$id" : "#/definitions/isa-name",
+        "type" : "string" },
+      "isa-date" : 
+      { "title" : "ISA Date",
+        "description" : "Date of the Interconnection Security Agreement (ISA).",
+        "$id" : "#/definitions/isa-date",
+        "type" : "string" },
+      "component" : 
+      { "title" : "Component",
+        "description" : ".",
+        "$id" : "#/definitions/component",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "id" : 
+          { "type" : "string" },
+          "ssp-origin" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/origin" } },
+          "ssp-characteristics" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/characteristics" } },
+          "ssp-satisfaction" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/satisfaction" } },
+          "validations" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/validation" } },
+          "ssp-provisioning" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/provisioning" } },
+          "subcomponents" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/subcomponent" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "type",
+            "id",
+            "origin",
+            "characteristics",
+            "satisfaction",
+            "validation",
+            "provisioning",
+            "subcomponent" ] } },
+      "origin" : 
+      { "title" : "Origin",
+        "description" : ".",
+        "$id" : "#/definitions/origin",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "organization" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/organization" },
+          "title" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/title" },
+          "version" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/version" },
+          "release-date" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/release-date" },
+          "model" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/model" },
+          "ssp-part" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/part" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "organization",
+            "title",
+            "version",
+            "release-date",
+            "model",
+            "part" ] } },
+      "vendor" : 
+      { "title" : "Vendor",
+        "description" : ".",
+        "$id" : "#/definitions/vendor",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "type" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "id",
+            "type" ] } },
+      "release-date" : 
+      { "title" : "Release Date",
+        "description" : ".",
+        "$id" : "#/definitions/release-date",
+        "type" : "string" },
+      "model" : 
+      { "title" : "Model",
+        "description" : ".",
+        "$id" : "#/definitions/model",
+        "type" : "string" },
+      "part" : 
+      { "title" : "Part",
+        "description" : ".",
+        "$id" : "#/definitions/part",
+        "type" : "object",
+        "properties" : 
+        { "class" : 
+          { "type" : "string" },
+          "href" : 
+          { "type" : "string" },
+          "telephone-numbers" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
+          "email-addresses" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/email" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "class",
+            "href",
+            "phone",
+            "email" ] } },
+      "characteristics" : 
+      { "title" : "Characteristics",
+        "description" : "Component characteristics, assets and configuration information",
+        "$id" : "#/definitions/characteristics",
+        "type" : "object",
+        "properties" : 
+        { "context" : 
+          { "type" : "string" },
+          "ip-addresses" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/ip-address" } },
+          "ssp-service" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/service" } },
+          "ssp-part" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/part" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "context",
+            "ip-address",
+            "service",
+            "part" ] } },
+      "ip-address" : 
+      { "title" : "Internet Protocol Address",
+        "description" : "Use the @type flag to deisgnate IPv4 or IPv6.",
+        "$id" : "#/definitions/ip-address",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "type" ] } },
+      "satisfaction" : 
+      { "title" : "Satisfaction",
+        "description" : "Describes how the indicated control is satisfied by this component",
+        "$id" : "#/definitions/satisfaction",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "context" : 
+          { "type" : "string" },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "context",
+            "prose" ] } },
+      "system-inventory" : 
+      { "title" : "System Inventory",
+        "description" : ".",
+        "$id" : "#/definitions/system-inventory",
+        "type" : "object",
+        "properties" : 
+        { "inventory-items" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/inventory-item" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "inventory-item" ] } },
+      "inventory-item" : 
+      { "title" : "Inventory Item",
+        "description" : ".",
+        "$id" : "#/definitions/inventory-item",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "component-id" : 
+          { "type" : "string" },
+          "virtual" : 
+          { "type" : "string" },
+          "public" : 
+          { "type" : "string" },
+          "ip-addresses" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/ip-address" } },
+          "dns-names" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/dns-name" } },
+          "ssp-host-item" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/host-item" } },
+          "ssp-software-item" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/software-item" } },
+          "comments" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/comments" },
+          "serial-no" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/serial-no" },
+          "network-ids" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/network-id" } },
+          "asset-owners" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/asset-owner" } },
+          "asset-administrators" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/asset-administrator" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "component-id",
+            "virtual",
+            "public",
+            "ip-address",
+            "dns-name",
+            "host-item",
+            "software-item",
+            "comments",
+            "serial-no",
+            "network-id",
+            "asset-owner",
+            "asset-administrator" ] } },
+      "dns-name" : 
+      { "title" : "Network Name",
+        "description" : "If available, state the DNS name or URL of the inventory item. This can be left blank if one does not exist, or it is a dynamic field.",
+        "$id" : "#/definitions/dns-name",
+        "type" : "string" },
+      "host-item" : 
+      { "title" : "Host Item",
+        "description" : "",
+        "$id" : "#/definitions/host-item",
+        "type" : "object",
+        "properties" : 
+        { "netbios-names" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/netbios-name" } },
+          "mac-addresses" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/mac-address" } },
+          "authenticated-scans" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/authenticated-scan" } },
+          "baseline-templates" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/baseline-template" } },
+          "os-names" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/os-name" } },
+          "os-versions" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/os-version" } },
+          "locations" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/location" } },
+          "asset-types" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/asset-type" } },
+          "vendors" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/vendor" } },
+          "hardware-models" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/hardware-model" } },
+          "ssp-scanned" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/scanned" } },
+          "properties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/prop" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "netbios-name",
+            "mac-address",
+            "authenticated-scan",
+            "baseline-template",
+            "os-name",
+            "os-version",
+            "location",
+            "asset-type",
+            "vendor",
+            "hardware-model",
+            "scanned",
+            "prop" ] } },
+      "netbios-name" : 
+      { "title" : "NetBIOS Name",
+        "description" : "If available, state the NetBIOS name of the inventory item. This can be omitted if one does not exist, or it is a dynamic field.",
+        "$id" : "#/definitions/netbios-name",
+        "type" : "string" },
+      "mac-address" : 
+      { "title" : "Media Access Control (MAC) Address",
+        "description" : "If available, state the MAC Address of the inventory item. This can be left blank if one does not exist, or it is a dynamic field.",
+        "$id" : "#/definitions/mac-address",
+        "type" : "string" },
+      "os-name" : 
+      { "title" : "Operating System Name",
+        "description" : ".",
+        "$id" : "#/definitions/os-name",
+        "type" : "string" },
+      "os-version" : 
+      { "title" : "Operating System Version Number",
+        "description" : ".",
+        "$id" : "#/definitions/os-version",
+        "type" : "string" },
+      "location" : 
+      { "title" : "Location of the Asset",
+        "description" : "Physical location of hardware. Could include Data Center ID, Cage#, Rack# or other meaningful location identifiers.",
+        "$id" : "#/definitions/location",
+        "type" : "string" },
+      "asset-type" : 
+      { "title" : "Asset Type",
+        "description" : "Simple description of the asset's function (e.g., Router, Storage Array, DNS Server, etc.) Do not use vendor or product names here.",
+        "$id" : "#/definitions/asset-type",
+        "type" : "string" },
+      "hardware-model" : 
+      { "title" : "Hardware Model",
+        "description" : "Model number of the hardware.",
+        "$id" : "#/definitions/hardware-model",
+        "type" : "string" },
+      "authenticated-scan" : 
+      { "title" : "Authenticated Scan",
+        "description" : "Indicate whether this asset is planned for authenticated scanning.",
+        "$id" : "#/definitions/authenticated-scan",
+        "type" : "boolean" },
+      "software-item" : 
+      { "title" : "Software Item",
+        "description" : "",
+        "$id" : "#/definitions/software-item",
+        "type" : "object",
+        "properties" : 
+        { "vendors" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/vendor" } },
+          "software-names" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/software-name" } },
+          "software-versions" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/software-version" } },
+          "software-patch-levels" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/software-patch-level" } },
+          "functions" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/function" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "vendor",
+            "software-name",
+            "software-version",
+            "software-patch-level",
+            "function" ] } },
+      "software-name" : 
+      { "title" : "Software Product Name",
+        "description" : ".",
+        "$id" : "#/definitions/software-name",
+        "type" : "string" },
+      "software-version" : 
+      { "title" : "Software Version Number",
+        "description" : ".",
+        "$id" : "#/definitions/software-version",
+        "type" : "string" },
+      "software-patch-level" : 
+      { "title" : "Software Patch Level (If applicable)",
+        "description" : ".",
+        "$id" : "#/definitions/software-patch-level",
+        "type" : "string" },
+      "function" : 
+      { "title" : "Function",
+        "description" : ".",
+        "$id" : "#/definitions/function",
+        "type" : "string" },
+      "comments" : 
+      { "title" : "Comments",
+        "description" : "Any additional information that could be useful to an auditor or reviewer.",
+        "$id" : "#/definitions/comments",
+        "type" : "string" },
+      "serial-no" : 
+      { "title" : "Serial Number",
+        "description" : "Product serial number or internal asset tag number.",
+        "$id" : "#/definitions/serial-no",
+        "type" : "string" },
+      "network-id" : 
+      { "title" : "Network ID",
+        "description" : "Virtual LAN or Network ID.",
+        "$id" : "#/definitions/network-id",
+        "type" : "string" },
+      "asset-owner" : 
+      { "title" : "Asset Owner",
+        "description" : "The individual, title, or role who \"owns\" the asset on behalf of the organization.",
+        "$id" : "#/definitions/asset-owner",
+        "type" : "object",
+        "properties" : 
+        { "poc-id" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "poc-id" ] } },
+      "asset-administrator" : 
+      { "title" : "Asset Administrator",
+        "description" : "The individual, title, role, or team responsible for operating and maintaining the asset.",
+        "$id" : "#/definitions/asset-administrator",
+        "type" : "object",
+        "properties" : 
+        { "poc-id" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "poc-id" ] } },
+      "control-implementation" : 
+      { "title" : "Implementation of Security Control",
+        "description" : "",
+        "$id" : "#/definitions/control-implementation",
+        "type" : "object",
+        "properties" : 
+        { "controls" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/control" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "control" ] } },
+      "control" : 
+      { "title" : "Control Implementation",
+        "description" : "Information related to the implementation of an individual control.",
+        "$id" : "#/definitions/control",
+        "type" : "object",
+        "properties" : 
+        { "class" : 
+          { "type" : "string" },
+          "control-id" : 
+          { "type" : "string" },
+          "href" : 
+          { "type" : "string" },
+          "ssp-responsible-role" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/responsible-role" } },
+          "parameter-settings" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/set-param" } },
+          "properties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "control-responses" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/control-response" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "class",
+            "control-id",
+            "href",
+            "responsible-role",
+            "set-param",
+            "prop",
+            "control-response" ] } },
+      "responsible-role" : 
+      { "title" : "Responsible Role",
+        "description" : "",
+        "$id" : "#/definitions/responsible-role",
+        "type" : "object",
+        "properties" : 
+        { "role-id" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "role-id" ] } },
+      "set-param" : 
+      { "title" : "Set Parameter Value",
+        "description" : "Identifies the parameter that will be filled in by the enclosed value element.",
+        "$id" : "#/definitions/set-param",
+        "type" : "object",
+        "properties" : 
+        { "param-id" : 
+          { "type" : "string" },
+          "target" : 
+          { "type" : "string" },
+          "value" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/value" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "param-id",
+            "target",
+            "value" ] } },
+      "value" : 
+      { "title" : "Value",
+        "description" : "The phrase or string that fills-in the parameter and completes the requirement statement.",
+        "$id" : "#/definitions/value",
+        "type" : "string" },
+      "control-response" : 
+      { "title" : "Control Response",
+        "description" : "Describes how a control is implemented.",
+        "$id" : "#/definitions/control-response",
+        "type" : "object",
+        "properties" : 
+        { "stmt-id" : 
+          { "type" : "string" },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "stmt-id",
+            "prose" ] } },
+      "references" : 
+      { "title" : "References",
+        "description" : "A group of reference descriptions",
+        "$id" : "#/definitions/references",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "links" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "refs" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/ref" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "link",
+            "ref" ] } },
+      "ref" : 
+      { "title" : "Reference",
+        "description" : "A reference, with one or more citations to standards, related documents, or other resources",
+        "$id" : "#/definitions/ref",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "ref-type" : 
+          { "type" : "string" },
+          "citations" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/citation" } },
+          "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "ref-type",
+            "citation",
+            "prose" ] } },
+      "citation" : 
+      { "title" : "Citation",
+        "description" : "Citation of a resource",
+        "$id" : "#/definitions/citation",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "href" : 
+          { "type" : "string" },
+          "RICHTEXT" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "RICHTEXT",
+            "id",
+            "href" ] } },
+      "link" : 
+      { "title" : "Link",
+        "description" : "A line or paragraph with a hypertext link",
+        "$id" : "#/definitions/link",
+        "type" : "object",
+        "properties" : 
+        { "href" : 
+          { "type" : "string" },
+          "rel" : 
+          { "type" : "string" },
+          "RICHTEXT" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "RICHTEXT",
+            "href",
+            "rel" ] } },
+      "attachment" : 
+      { "title" : "Attachments",
+        "description" : ".",
+        "$id" : "#/definitions/attachment",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "title" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/title" },
+          "description" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/description" },
+          "format" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/format" },
+          "date" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/date" },
+          "version" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/version" },
+          "attachment-type" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/attachment-type" },
+          "base64" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/base64" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "title",
+            "description",
+            "format",
+            "date",
+            "version",
+            "attachment-type",
+            "base64" ] } },
+      "format" : 
+      { "title" : "Attachment Format",
+        "description" : "",
+        "$id" : "#/definitions/format",
+        "type" : "string" },
+      "date" : 
+      { "title" : "Date",
+        "description" : "",
+        "$id" : "#/definitions/date",
+        "type" : "string" },
+      "attachment-type" : 
+      { "title" : "Date",
+        "description" : "",
+        "$id" : "#/definitions/attachment-type",
+        "type" : "string" },
+      "base64" : 
+      { "title" : "Date",
+        "description" : "",
+        "$id" : "#/definitions/base64",
+        "type" : "object",
+        "properties" : 
+        { "filename" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "filename" ] } },
+      "validation" : 
+      { "title" : "validation",
+        "description" : ".",
+        "$id" : "#/definitions/validation",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "provisioning" : 
+      { "title" : "provisioning",
+        "description" : ".",
+        "$id" : "#/definitions/provisioning",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "subcomponent" : 
+      { "title" : "sub-component",
+        "description" : ".",
+        "$id" : "#/definitions/subcomponent",
+        "type" : "string" },
+      "organization" : 
+      { "title" : "organization",
+        "description" : ".",
+        "$id" : "#/definitions/organization",
+        "type" : "string" },
+      "baseline-template" : 
+      { "title" : "baseline-template",
+        "description" : ".",
+        "$id" : "#/definitions/baseline-template",
+        "type" : "string" },
+      "scanned" : 
+      { "title" : "scanned",
+        "description" : ".",
+        "$id" : "#/definitions/scanned",
+        "type" : "string" },
+      "metadata" : 
+      { "title" : "Publication metadata",
+        "description" : "Information describing the publication or availability of this document",
+        "$id" : "#/definitions/metadata",
+        "type" : "object",
+        "properties" : 
+        { "title" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/title" },
+          "authors" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/author" } },
+          "publication-date" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/publication-date" },
+          "version" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/version" },
+          "document-ids" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/doc-id" } },
+          "properties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "hashed-links" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/hlink" } },
+          "resources" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/resource" } },
+          "roles" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/role" } },
+          "parties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/party" } },
+          "notes" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/notes" },
+          "extra-meta" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/extra-meta" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "title",
+            "author",
+            "publication-date",
+            "version",
+            "doc-id",
+            "prop",
+            "hlink",
+            "resource",
+            "role",
+            "party",
+            "notes",
+            "extra-meta" ] } },
+      "title" : 
+      { "title" : "Title",
+        "description" : "The title under which this document is formally published",
+        "$id" : "#/definitions/title",
+        "type" : "string" },
+      "author" : 
+      { "title" : "Author",
+        "description" : "A named author",
+        "$id" : "#/definitions/author",
+        "type" : "string" },
+      "publication-date" : 
+      { "title" : "Publication date",
+        "description" : "The official date of publication",
+        "$id" : "#/definitions/publication-date",
+        "type" : "string" },
+      "version" : 
+      { "title" : "version",
+        "description" : "Version information",
+        "$id" : "#/definitions/version",
+        "type" : "object",
+        "properties" : 
+        { "iso-date" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "iso-date" ] } },
+      "doc-id" : 
+      { "title" : "Document Identifier",
+        "description" : "Any sort of document identifier, name, code, path or other indicator of where and how this document may be located, compared or validated. Given appropriate qualification via its type and rel, this value may point to the same or another version of the document.",
+        "$id" : "#/definitions/doc-id",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "type" ] } },
+      "prop" : 
+      { "title" : "Property",
+        "description" : "A property associated with the document",
+        "$id" : "#/definitions/prop",
+        "type" : "object",
+        "properties" : 
+        { "class" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "class" ] } },
+      "party" : 
+      { "title" : "Party (organization or person)",
+        "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
+        "$id" : "#/definitions/party",
+        "type" : "object",
+        "properties" : 
+        { "id" : 
+          { "type" : "string" },
+          "role-id" : 
+          { "type" : "string" },
+          "persons" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/person" } },
+          "org" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/org" },
+          "notes" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/notes" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "id",
+            "role-id",
+            "person",
+            "org",
+            "notes" ] } },
+      "person" : 
+      { "title" : "Person",
+        "description" : "A person, with contact information",
+        "$id" : "#/definitions/person",
+        "type" : "object",
+        "properties" : 
+        { "person-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/person-name" },
+          "short-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/short-name" },
+          "org-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/org-name" },
+          "person-ids" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/person-id" } },
+          "organization-ids" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/org-id" } },
+          "address" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/address" },
+          "email-addresses" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/email" } },
+          "telephone-numbers" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
+          "URLs" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/url" } },
+          "notes" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/notes" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "person-name",
+            "short-name",
+            "org-name",
+            "person-id",
+            "org-id",
+            "address",
+            "email",
+            "phone",
+            "url",
+            "notes" ] } },
+      "org" : 
+      { "title" : "Organization",
+        "description" : "An organization or legal entity (not a person), with contact information",
+        "$id" : "#/definitions/org",
+        "type" : "object",
+        "properties" : 
+        { "org-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/org-name" },
+          "short-name" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/short-name" },
+          "organization-ids" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/org-id" } },
+          "address" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/address" },
+          "email-addresses" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/email" } },
+          "telephone-numbers" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/phone" } },
+          "URLs" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/url" } },
+          "notes" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/notes" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "org-name",
+            "short-name",
+            "org-id",
+            "address",
+            "email",
+            "phone",
+            "url",
+            "notes" ] } },
+      "person-id" : 
+      { "title" : "Personal Identifier",
+        "description" : "An identifier for a person (such as an ORCID) using a designated scheme.",
+        "$id" : "#/definitions/person-id",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "type" ] } },
+      "org-id" : 
+      { "title" : "Organization Identifier",
+        "description" : "An identifier for an organization using a designated scheme.",
+        "$id" : "#/definitions/org-id",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "type" ] } },
+      "hlink" : 
+      { "title" : "Hashed link",
+        "description" : "A pointer to an external document with optional hash for verification",
+        "$id" : "#/definitions/hlink",
+        "type" : "object",
+        "properties" : 
+        { "href" : 
+          { "type" : "string" },
+          "rel" : 
+          { "type" : "string" },
+          "media-type" : 
+          { "type" : "string" },
+          "title" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/title" },
+          "hashes" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/hash" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "href",
+            "rel",
+            "media-type",
+            "title",
+            "hash" ] } },
+      "person-name" : 
+      { "title" : "Person Name",
+        "description" : "Full (legal) name of an individual",
+        "$id" : "#/definitions/person-name",
+        "type" : "string" },
+      "org-name" : 
+      { "title" : "Organization Name",
+        "description" : "Full (legal) name of an organization",
+        "$id" : "#/definitions/org-name",
+        "type" : "string" },
+      "short-name" : 
+      { "title" : "short-name",
+        "description" : "A common name, short name or acronym",
+        "$id" : "#/definitions/short-name",
+        "type" : "string" },
+      "address" : 
+      { "title" : "Address",
+        "description" : "A postal address",
+        "$id" : "#/definitions/address",
+        "type" : "object",
+        "properties" : 
+        { "postal-address" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/addr-line" } },
+          "city" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/city" },
+          "state" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/state" },
+          "postal-code" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/postal-code" },
+          "country" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/country" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "addr-line",
+            "city",
+            "state",
+            "postal-code",
+            "country" ] } },
+      "addr-line" : 
+      { "title" : "Address line",
+        "description" : "A single line of an address",
+        "$id" : "#/definitions/addr-line",
+        "type" : "string" },
+      "city" : 
+      { "title" : "City",
+        "description" : "City, town or geographical region for mailing address",
+        "$id" : "#/definitions/city",
+        "type" : "string" },
+      "state" : 
+      { "title" : "State",
+        "description" : "State, province or analogous geographical region for mailing address",
+        "$id" : "#/definitions/state",
+        "type" : "string" },
+      "postal-code" : 
+      { "title" : "Postal Code",
+        "description" : "Postal or ZIP code for mailing address",
+        "$id" : "#/definitions/postal-code",
+        "type" : "string" },
+      "country" : 
+      { "title" : "Country",
+        "description" : "Country for mailing address",
+        "$id" : "#/definitions/country",
+        "type" : "string" },
+      "email" : 
+      { "title" : "Email",
+        "description" : "Email address",
+        "$id" : "#/definitions/email",
+        "type" : "string" },
+      "phone" : 
+      { "title" : "Telephone",
+        "description" : "Contact number by telephone",
+        "$id" : "#/definitions/phone",
+        "type" : "string" },
+      "url" : 
+      { "title" : "URL",
+        "description" : "URL for web site or Internet presence",
+        "$id" : "#/definitions/url",
+        "type" : "string" },
+      "notes" : 
+      { "title" : "Notes",
+        "description" : "Any notes with further information",
+        "$id" : "#/definitions/notes",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "desc" : 
+      { "title" : "Description",
+        "description" : "A short description",
+        "$id" : "#/definitions/desc",
+        "type" : "string" },
+      "resource" : 
+      { "title" : "Resource",
+        "description" : "A resource to inform or authenticate the present document.",
+        "$id" : "#/definitions/resource",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "media-type" : 
+          { "type" : "string" },
+          "title" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/title" },
+          "authors" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/author" } },
+          "publication-date" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/publication-date" },
+          "version" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/version" },
+          "document-ids" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/doc-id" } },
+          "properties" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/prop" } },
+          "hashed-links" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/hlink" } },
+          "notes" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/notes" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "type",
+            "media-type",
+            "title",
+            "author",
+            "publication-date",
+            "version",
+            "doc-id",
+            "prop",
+            "hlink",
+            "notes" ] } },
+      "hash" : 
+      { "title" : "Hash",
+        "description" : "A document hash or other value subject to cryptographic authentication",
+        "$id" : "#/definitions/hash",
+        "type" : "object",
+        "properties" : 
+        { "algorithm" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "algorithm" ] } },
+      "extra-meta" : 
+      { "title" : "Extra metadata",
+        "description" : "Container for (system-defined) metadata",
+        "$id" : "#/definitions/extra-meta",
+        "type" : "object",
+        "properties" : 
+        { "metadata-groups" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/meta-group" } },
+          "metadata-fields" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/meta" } },
+          "notes" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/notes" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "meta-group",
+            "meta",
+            "notes" ] } },
+      "meta-group" : 
+      { "title" : "Metadata group",
+        "description" : "Custom- or application-defined annotated metadata.",
+        "$id" : "#/definitions/meta-group",
+        "type" : "object",
+        "properties" : 
+        { "term" : 
+          { "type" : "string" },
+          "type" : 
+          { "type" : "string" },
+          "metadata-fields" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/meta" } },
+          "metadata-groups" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/meta-group" } },
+          "notes" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/notes" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "term",
+            "type",
+            "meta",
+            "meta-group",
+            "notes" ] } },
+      "meta" : 
+      { "title" : "Metadata field value",
+        "description" : "Any customized or specialized metadata value.",
+        "$id" : "#/definitions/meta",
+        "type" : "object",
+        "properties" : 
+        { "term" : 
+          { "type" : "string" },
+          "type" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "term",
+            "type" ] } },
+      "import" : 
+      { "title" : "Import resource",
+        "description" : "Makes information from an external component file available to this component file.",
+        "$id" : "#/definitions/import",
+        "type" : "object",
+        "properties" : 
+        { "href" : 
+          { "type" : "string" },
+          "include" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/include" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "href",
+            "include" ] } },
+      "include" : 
+      { "title" : "Include controls",
+        "description" : "Specifies which controls and subcontrols to include from the resource (source catalog) being imported",
+        "$id" : "#/definitions/include",
+        "type" : "object",
+        "properties" : 
+        { "all" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/all" },
+          "calls" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/call" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "all",
+            "call" ] } },
+      "all" : 
+      { "title" : "Include all",
+        "description" : "Include all controls from the imported resource (catalog)",
+        "$id" : "#/definitions/all",
+        "type" : "object",
+        "properties" : 
+        { "with-subcontrols" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "with-subcontrols" ] } },
+      "call" : 
+      { "title" : "Call",
+        "description" : "The call element imports the component definition identified by the @component-id attribute in the external component file.",
+        "$id" : "#/definitions/call",
+        "type" : "object",
+        "properties" : 
+        { "component-id" : 
+          { "type" : "string" },
+          "STRVALUE" : 
+          { "type" : "string" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "STRVALUE",
+            "component-id" ] } },
+      "prose" : 
+      { "type" : "array",
+        "items" : 
+        { "type" : "string" } } },
+    "properties" : 
+    { "system-security-plan" : 
+      { "$ref" : "#/definitions/system-security-plan" } } }
