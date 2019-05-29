@@ -187,6 +187,9 @@ jobs: # a collection of steps
             cp -vr "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
             cd "${OSCAL_REPO_DIR}/docs"
             bundle exec jekyll build
+            mkdir -p _site/.circleci
+            # copy the circleci config
+            cp ../.circleci/config.yml _site/.circleci/config.yml
           environment:
             JEKYLL_ENV: production
       - save_cache:
