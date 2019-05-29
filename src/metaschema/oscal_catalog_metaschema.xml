@@ -24,7 +24,7 @@
   <define-assembly name="catalog" group-as="control-catalog">
     <flag name="id" datatype="ID" required="yes"/>
     <formal-name>Catalog</formal-name>
-    <description>A collection of controls</description>
+    <description>A collection of controls.</description>
     <remarks>
       <p>Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p>
     </remarks>
@@ -37,6 +37,8 @@
         <assemblies named="control"/>
       </choice>
       <assembly named="back-matter"/>
+        <description>Back matter including references and resources.</description>
+      </assembly>
     </model>
     <example>
       <description>A small catalog with a single control</description>
@@ -69,12 +71,23 @@
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Section</formal-name>
-    <description>Allows the inclusion of prose content within a Catalog.</description>
+    <description>Provides a means for the grouping of prose content and controls as a chapter within an OSCAL Catalog.</description>
+    <remarks>
+      <p>Sections are recursive; a given section can contain child (sub)-sections.</p>
+    </remarks>
     <model>
-      <field named="title" required="yes"/>
-      <prose/>
-      <assemblies named="section"/>
-      <assembly named="citation-list"/>
+      <field named="title" required="yes">
+        <description>A meaningful human-readable name for the section.</description>
+      </field>
+      <prose>
+        <description>Prose content allows for the inclusion of human-readable text in the body of the section.</description>
+      </prose>
+      <assemblies named="section">
+        <description>A child sub-section.</description>
+      </assemblies>
+      <assembly named="citation-list">
+        <description>A list of supporting references for the section.</description>
+      </assembly>
       <any/>
     </model>
   </define-assembly>-->
@@ -163,7 +176,7 @@
   </define-field>
 
   <!-- See metadata model for 'prop' element -->
-  
+
   <define-assembly name="param" address="id" group-as="parameters">
     <flag name="id" datatype="ID" required="yes"/>
     <flag name="class"/>
@@ -328,5 +341,5 @@
     <formal-name>Depends on</formal-name>
     <description>Another parameter invoking this one</description>
   </define-flag>
-    
+  
 </METASCHEMA>
