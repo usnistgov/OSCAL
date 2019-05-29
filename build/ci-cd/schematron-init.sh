@@ -38,7 +38,7 @@ validate_with_schematron() {
     xsl_transform "$compiled_schematron" "$source_file" "$svrl_result"
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Processing Schematron '%s' failed for target file '%s'\n' "$ompiled_schematron" "$source_file"
+        printf 'Processing Schematron '%s' failed for target file '%s'.\n' "$ompiled_schematron" "$source_file"
         return 3
     fi
     # check if the SVRL result contains errors
@@ -48,7 +48,7 @@ validate_with_schematron() {
         cat "$svrl_result"
         return 1
     else
-        printf "File '%s' passed Schematron validation:\n" "$source_file"
+        printf "File '%s' passed Schematron validation.\n" "$source_file"
     fi
 }
 
