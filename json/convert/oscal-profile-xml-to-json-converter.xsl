@@ -711,7 +711,6 @@
    <xsl:template match="profile" mode="xml2json">
       <map key="profile">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates select="title" mode="#current"/>
          <xsl:apply-templates select="metadata" mode="#current"/>
          <xsl:if test="exists(import)">
             <array key="imports">

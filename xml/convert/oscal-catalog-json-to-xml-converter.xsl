@@ -490,7 +490,6 @@
                  mode="json2xml">
       <xsl:element name="catalog" namespace="http://csrc.nist.gov/ns/oscal/1.0">
          <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('metadata')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('section', 'sections')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('group', 'groups')]"/>

@@ -34,6 +34,8 @@
           "attachment" : 
           { "type" : "object",
             "$ref" : "#/definitions/attachment" } },
+        "required" : 
+        [ "id" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -110,6 +112,9 @@
           "users" : 
           { "type" : "object",
             "$ref" : "#/definitions/users" } },
+        "required" : 
+        [ "system-name",
+          "security-sensitivity-level" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -749,6 +754,8 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/responsibility" } } },
+        "required" : 
+        [ "id" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -1832,6 +1839,8 @@
           "extra-meta" : 
           { "type" : "object",
             "$ref" : "#/definitions/extra-meta" } },
+        "required" : 
+        [ "title" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -2083,6 +2092,8 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/hash" } } },
+        "required" : 
+        [ "href" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -2340,6 +2351,8 @@
           "include" : 
           { "type" : "object",
             "$ref" : "#/definitions/include" } },
+        "required" : 
+        [ "href" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 

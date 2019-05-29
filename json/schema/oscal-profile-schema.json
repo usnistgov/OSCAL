@@ -49,6 +49,8 @@
           "extra-meta" : 
           { "type" : "object",
             "$ref" : "#/definitions/extra-meta" } },
+        "required" : 
+        [ "title" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -362,6 +364,8 @@
           "desc" : 
           { "type" : "string",
             "$ref" : "#/definitions/desc" } },
+        "required" : 
+        [ "id" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -551,6 +555,8 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/hash" } } },
+        "required" : 
+        [ "href" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -742,6 +748,8 @@
           { "type" : "string" },
           "STRVALUE" : 
           { "type" : "string" } },
+        "required" : 
+        [ "class" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -922,9 +930,6 @@
         "properties" : 
         { "id" : 
           { "type" : "string" },
-          "title" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/title" },
           "metadata" : 
           { "type" : "object",
             "$ref" : "#/definitions/metadata" },
@@ -938,11 +943,13 @@
           "modify" : 
           { "type" : "object",
             "$ref" : "#/definitions/modify" } },
+        "required" : 
+        [ "id",
+          "metadata" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
           [ "id",
-            "title",
             "metadata",
             "import",
             "merge",
@@ -961,6 +968,8 @@
           "exclude" : 
           { "type" : "object",
             "$ref" : "#/definitions/exclude" } },
+        "required" : 
+        [ "href" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 

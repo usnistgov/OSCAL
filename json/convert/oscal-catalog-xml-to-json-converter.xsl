@@ -597,7 +597,6 @@
       <map key="catalog">
          <xsl:apply-templates mode="as-string" select="@id"/>
          <xsl:apply-templates mode="as-string" select="@model-version"/>
-         <xsl:apply-templates select="title" mode="#current"/>
          <xsl:apply-templates select="metadata" mode="#current"/>
          <xsl:if test="exists(section)">
             <array key="sections">

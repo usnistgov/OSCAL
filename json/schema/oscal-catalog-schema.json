@@ -49,6 +49,8 @@
           "extra-meta" : 
           { "type" : "object",
             "$ref" : "#/definitions/extra-meta" } },
+        "required" : 
+        [ "title" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -362,6 +364,8 @@
           "desc" : 
           { "type" : "string",
             "$ref" : "#/definitions/desc" } },
+        "required" : 
+        [ "id" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -551,6 +555,8 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/hash" } } },
+        "required" : 
+        [ "href" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -735,9 +741,6 @@
           { "type" : "string" },
           "model-version" : 
           { "type" : "string" },
-          "title" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/title" },
           "metadata" : 
           { "type" : "object",
             "$ref" : "#/definitions/metadata" },
@@ -756,12 +759,15 @@
           "back" : 
           { "type" : "object",
             "$ref" : "#/definitions/back" } },
+        "required" : 
+        [ "id",
+          "model-version",
+          "metadata" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
           [ "id",
             "model-version",
-            "title",
             "metadata",
             "section",
             "group",
@@ -810,6 +816,8 @@
           "ref-list" : 
           { "type" : "object",
             "$ref" : "#/definitions/ref-list" } },
+        "required" : 
+        [ "title" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -854,6 +862,8 @@
           "ref-list" : 
           { "type" : "object",
             "$ref" : "#/definitions/ref-list" } },
+        "required" : 
+        [ "title" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -900,6 +910,9 @@
           "ref-list" : 
           { "type" : "object",
             "$ref" : "#/definitions/ref-list" } },
+        "required" : 
+        [ "id",
+          "title" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -976,6 +989,8 @@
           { "type" : "string" },
           "STRVALUE" : 
           { "type" : "string" } },
+        "required" : 
+        [ "class" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
