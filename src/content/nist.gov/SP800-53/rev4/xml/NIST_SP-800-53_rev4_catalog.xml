@@ -32605,7 +32605,7 @@ Security plans need not be single documents; the plans can be a collection of va
          <title>Privacy Impact Assessment</title>
          <prop class="label">PL-5</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#Appendix J">Appendix J</link>
+         <link rel="incorporated-into" href="https://doi.org/10.6028/NIST.SP.800-53r4">Appendix J</link>
          <link rel="incorporated-into" href="#AR-2">AR-2</link>
       </control>
       <control class="SP800-53" id="pl-6">
@@ -32722,7 +32722,7 @@ In today’s modern architecture, it is becoming less common for organizations t
             <link rel="related" href="#pm-7">PM-7</link>
             <link rel="related" href="#sa-5">SA-5</link>
             <link rel="related" href="#sa-17">SA-17</link>
-            <link rel="related">Appendix J</link>
+            <link rel="related" href="https://doi.org/10.6028/NIST.SP.800-53r4">Appendix J</link>
          </part>
          <part class="objective" id="pl-8_obj">
             <p>Determine if the organization:  </p>

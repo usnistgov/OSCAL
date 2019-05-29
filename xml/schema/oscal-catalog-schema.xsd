@@ -561,7 +561,7 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal-catalog:everything-inline"/>
-         <xs:attribute name="href" type="xs:anyURI">
+         <xs:attribute name="href" type="xs:anyURI" use="required">
             <xs:annotation>
                <xs:documentation>
                   <b>Hypertext reference: </b>A relative or absolute URI indicating a resource available on the Internet.</xs:documentation>

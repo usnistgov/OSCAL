@@ -32722,7 +32722,7 @@ In today’s modern architecture, it is becoming less common for organizations t
             <link rel="related" href="#pm-7">PM-7</link>
             <link rel="related" href="#sa-5">SA-5</link>
             <link rel="related" href="#sa-17">SA-17</link>
-            <link rel="related">Appendix J</link>
+            <link rel="related" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf">Appendix J</link>
          </part>
          <part class="objective" id="pl-8_obj">
             <p>Determine if the organization:  </p>

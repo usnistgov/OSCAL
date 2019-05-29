@@ -263,7 +263,7 @@
 	</define-field>
 	
 	<define-field name="link" group-as="links" as="mixed">
-		<flag name="href" datatype="anyURI"/>
+		<flag name="href" datatype="anyURI" required="yes"/>
 		<flag name="rel" datatype="NCName"/>
 		<formal-name>Link</formal-name>
 		<description>
