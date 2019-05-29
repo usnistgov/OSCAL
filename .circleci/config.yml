@@ -97,6 +97,7 @@ jobs: # a collection of steps
     steps:
       - *checkout
       - install-xmllint
+      - install-saxon
       - install-schematron
       - run:
           name: Validate metaschema instances
