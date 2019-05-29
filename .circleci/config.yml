@@ -103,6 +103,7 @@ jobs: # a collection of steps
           name: Validate metaschema instances
           command: |
             bash "$CICD_DIR/validate-metaschema.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
   job-generate-schema:
     executor: java-executor
     steps: # a collection of executable commands

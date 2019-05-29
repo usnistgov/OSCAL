@@ -54,6 +54,10 @@ while IFS="" read -r path || [[ -n "$path" ]]; do
         svrl_result_dir=${svrl_result%/*}
         mkdir -p "$svrl_result_dir"
         validate_with_schematron "$compiled_schematron" "$file" "$svrl_result"
+        cmd_exitcode=$?
+        if [ $cmd_exitcode -ne 0 ]; then
+            exitcode=1
+        fi
       fi
     done
   fi
