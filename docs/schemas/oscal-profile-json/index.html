@@ -452,6 +452,8 @@
 
 
 
+
+
 <li>
   <a href="#oscal-profile-json_profile"><code>profile (root element)</code></a>
 </li>
@@ -851,6 +853,12 @@
 
 
 <li>
+  <a href="#oscal-profile-json_param-id"><code>param-id</code></a>
+</li>
+
+
+
+<li>
   <a href="#oscal-profile-json_param"><code>param</code></a>
 </li>
 
@@ -973,7 +981,7 @@
 
 
 <li>
-  <a href="#oscal-profile-json_set-param"><code>set-param</code></a>
+  <a href="#oscal-profile-json_set"><code>set</code></a>
 </li>
 
 
@@ -1275,6 +1283,8 @@
 
 
 
+
+
 <h2 xmlns="http://www.w3.org/1999/xhtml">OSCAL Profile Metaschema: Schema Reference</h2>
 <p xmlns="http://www.w3.org/1999/xhtml">The short name (file identifier) for this schema shall be <i>oscal-profile</i>. It is used internally when an
          identifier is called for, and may appear in file names of schema artifacts.</p>
@@ -1366,7 +1376,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="class"><header><h4 id="oscal-profile-json_class" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Class</b>: <code>class</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_class"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>NMTOKENS</code></p><p class="description">Identifies the property or object within the control; a semantic hint</p><div class="remarks"><p class="p">Overloading this attribute with more than one value is permitted, but not recommended.</p></div><p>This object appears as a property on: <a href="#prop">prop</a>, <a href="#param">param</a>, <a href="#part">part</a>, <a href="#set-param">set-param</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="class"><header><h4 id="oscal-profile-json_class" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Class</b>: <code>class</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_class"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>NMTOKENS</code></p><p class="description">Identifies the property or object within the control; a semantic hint</p><div class="remarks"><p class="p">Overloading this attribute with more than one value is permitted, but not recommended.</p></div><p>This object appears as a property on: <a href="#prop">prop</a>, <a href="#param">param</a>, <a href="#part">part</a>, <a href="#set">set</a>.</p></div>
 
 
 
@@ -1375,7 +1385,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="constraint"><header><h4 id="oscal-profile-json_constraint" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Constraint</b>: <code>constraint</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_constraint"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>constraints</code></h5></header><p class="description">A formal or informal expression of a constraint or test</p><div class="model"><p>The constraint object may have a (string) property</p><ul><li><a href="#test"><code>test</code></a> property  (<i>optional</i>)</li></ul></div><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set-param">set-param</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="constraint"><header><h4 id="oscal-profile-json_constraint" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Constraint</b>: <code>constraint</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_constraint"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>constraints</code></h5></header><p class="description">A formal or informal expression of a constraint or test</p><div class="model"><p>The constraint object may have a (string) property</p><ul><li><a href="#test"><code>test</code></a> property  (<i>optional</i>)</li></ul></div><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set">set</a>.</p></div>
 
 
 
@@ -1405,11 +1415,11 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="depends-on"><header><h4 id="oscal-profile-json_depends-on" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Depends on</b>: <code>depends-on</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_depends-on"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>IDREF</code></p><p class="description">Another parameter invoking this one</p><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set-param">set-param</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="depends-on"><header><h4 id="oscal-profile-json_depends-on" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Depends on</b>: <code>depends-on</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_depends-on"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>IDREF</code></p><p class="description">Another parameter invoking this one</p><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set">set</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="desc"><header><h4 id="oscal-profile-json_desc" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter description</b>: <code>desc</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_desc"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>descriptions</code></h5></header><p>Supports Markdown</p><p class="description">Indicates and explains the purpose and use of a parameter</p><div class="model"><p>The desc object may have a (string) property</p><ul><li><a href="#id"><code>id</code></a> property  (<i>optional</i>)</li></ul></div><p>This object appears as a property on: <a href="#role">role</a>, <a href="#param">param</a>, <a href="#set-param">set-param</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="desc"><header><h4 id="oscal-profile-json_desc" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter description</b>: <code>desc</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_desc"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>descriptions</code></h5></header><p>Supports Markdown</p><p class="description">Indicates and explains the purpose and use of a parameter</p><div class="model"><p>The desc object may have a (string) property</p><ul><li><a href="#id"><code>id</code></a> property  (<i>optional</i>)</li></ul></div><p>This object appears as a property on: <a href="#role">role</a>, <a href="#param">param</a>, <a href="#set">set</a>.</p></div>
 
 
 
@@ -1501,7 +1511,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="id"><header><h4 id="oscal-profile-json_id" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">ID / identifier</b>: <code>id</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_id"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>ID</code></p><p class="description">Unique identifier</p><div class="remarks"><p class="p">No mechanism is proposed to ensure that <code>id</code> values do not collide across different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_json">Example</button><div id="id_example1_json" class="usa-accordion-content">
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"xyz2"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"RICHTEXT"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Some **citation** of some sort"</span><span class="w"> </span><span class="p">}</span></code></pre></figure>
-</div></li></ul><p>This object appears as a property on: <a href="#party">party</a>, <a href="#role">role</a>, <a href="#ref-list">ref-list</a>, <a href="#ref">ref</a>, <a href="#citation">citation</a>, <a href="#prop">prop</a>, <a href="#param">param</a>, <a href="#desc">desc</a>, <a href="#part">part</a>, <a href="#profile">profile</a>, <a href="#set-param">set-param</a>.</p></div>
+</div></li></ul><p>This object appears as a property on: <a href="#party">party</a>, <a href="#role">role</a>, <a href="#ref-list">ref-list</a>, <a href="#ref">ref</a>, <a href="#citation">citation</a>, <a href="#prop">prop</a>, <a href="#param">param</a>, <a href="#desc">desc</a>, <a href="#part">part</a>, <a href="#profile">profile</a>.</p></div>
 
 
 
@@ -1536,13 +1546,13 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="label"><header><h4 id="oscal-profile-json_label" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter label</b>: <code>label</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_label"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Supports Markdown</p><p class="description">A placeholder for a missing value, in display.</p><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set-param">set-param</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="label"><header><h4 id="oscal-profile-json_label" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter label</b>: <code>label</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_label"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Supports Markdown</p><p class="description">A placeholder for a missing value, in display.</p><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set">set</a>.</p></div>
 
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="link"><header><h4 id="oscal-profile-json_link" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Link</b>: <code>link</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_link"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>links</code></h5></header><p>Supports Markdown</p><p class="description">
 			A line or paragraph with a hypertext link
-		</p><div class="model"><p>The link object may have (string) properties </p><ul><li><a href="#href"><code>href</code></a> property  (<i>optional</i>)</li><li><a href="#rel"><code>rel</code></a> property  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block) element.</p></div><p>This object appears as a property on: <a href="#ref-list">ref-list</a>, <a href="#param">param</a>, <a href="#part">part</a>, <a href="#set-param">set-param</a>, <a href="#add">add</a>.</p></div>
+		</p><div class="model"><p>The link object may have (string) properties </p><ul><li><a href="#href"><code>href</code></a> property  (<i>optional</i>)</li><li><a href="#rel"><code>rel</code></a> property  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block) element.</p></div><p>This object appears as a property on: <a href="#ref-list">ref-list</a>, <a href="#param">param</a>, <a href="#part">part</a>, <a href="#set">set</a>, <a href="#add">add</a>.</p></div>
 
 
 
@@ -1602,7 +1612,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="modify"><header><h4 id="oscal-profile-json_modify" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Modify controls</b>: <code>modify</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_modify"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>modifys</code></h5></header><p class="description">Set parameters or amend controls in resolution</p><div class="model"><p class="usa-font-lead">The <code>modify</code> object has the following members (properties):</p><ul><li>An array labelled
          
          <b></b>, containing
-         <a href="#set-param"><code>set-param</code></a> objects  (<i>optional</i>)</li><li>An array labelled
+         <a href="#set"><code>set</code></a> objects  (<i>optional</i>)</li><li>An array labelled
          
          <b></b>, containing
          <a href="#alter"><code>alter</code></a> objects  (<i>optional</i>)</li></ul></div><p>This object appears as a property on: <a href="#profile">profile</a>.</p></div>
@@ -1613,7 +1623,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="order"><header><h4 id="oscal-profile-json_order" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Pattern</b>: <code>order</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_order"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>NCName</code></p><p class="description">A regular expression matching the IDs of one or more controls or subcontrols to be selected</p><p>This object appears as a property on: <a href="#match">match</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="order"><header><h4 id="oscal-profile-json_order" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Order</b>: <code>order</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_order"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>NCName</code></p><p class="description">A designation of how a selection of controls in a profile is to be ordered.</p><p>This object appears as a property on: <a href="#match">match</a>.</p></div>
 
 
 
@@ -1644,6 +1654,10 @@
 
 
 
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="param-id"><header><h4 id="oscal-profile-json_param-id" class="usa-color-text usa-color-primary-alt-lightest usa-color-text"><b class="formal-name">Parameter ID</b>: <code>param-id</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_param-id"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Object of type <code>NCName</code></p><p class="description">Value of the 'id' flag on a target parameter</p><p>This object appears as a property on: <a href="#set">set</a>.</p></div>
+
+
+
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="param"><header><h4 id="oscal-profile-json_param" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter</b>: <code>param</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_param"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>parameters</code></h5></header><p class="description">Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</p><div class="model"><p class="usa-font-lead">The <code>param</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li><li><a href="#depends-on"><code>depends-on</code></a> property  (<i>optional</i>)</li><li><a href="#label"><code>label</code></a> object  (<i>optional</i>): A short name for the parameter.<br />The label value should be suitable for inline display in a rendered catalog.</li><li>An array labelled
          
          <b></b>, containing
@@ -1670,7 +1684,7 @@
          <a href="#part"><code>part</code></a> objects  (<i>optional</i>)</li><li>An array labelled
          
          <b></b>, containing
-         <a href="#link"><code>link</code></a> objects  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be distinguished from other elements within their controls by their assigned <code>class</code>, such that they may be subjected to <q>declarations logic</q> using these values as bindings (and thereby getting open-ended extensibility).</p><p class="p">An assigned class may frequently provide for a header in display, such that <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc. Parts may also however have their own titles (<code>title</code> elements).</p><p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally constructed out of properties (<code>prop</code> elements) and/or their own parts. Such structured objects may, at the extreme, function virtually as control extensions or subcontrol-like objects (<q>enhancements</q>).</p></div><p>This object appears as a property on: <a href="#part">part</a>, <a href="#set-param">set-param</a>, <a href="#add">add</a>.</p></div>
+         <a href="#link"><code>link</code></a> objects  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be distinguished from other elements within their controls by their assigned <code>class</code>, such that they may be subjected to <q>declarations logic</q> using these values as bindings (and thereby getting open-ended extensibility).</p><p class="p">An assigned class may frequently provide for a header in display, such that <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc. Parts may also however have their own titles (<code>title</code> elements).</p><p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally constructed out of properties (<code>prop</code> elements) and/or their own parts. Such structured objects may, at the extreme, function virtually as control extensions or subcontrol-like objects (<q>enhancements</q>).</p></div><p>This object appears as a property on: <a href="#part">part</a>, <a href="#set">set</a>, <a href="#add">add</a>.</p></div>
 
 
 
@@ -1806,12 +1820,12 @@
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="select"><header><h4 id="oscal-profile-json_select" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Selection</b>: <code>select</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_select"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p class="description">Presenting a choice among alternatives</p><div class="model"><p class="usa-font-lead">The <code>select</code> object has the following members (properties):</p><ul><li><a href="#how-many"><code>how-many</code></a> property  (<i>optional</i>)</li><li>An array labelled
          
          <b></b>, containing
-         <a href="#choice"><code>choice</code></a> objects  (<i>optional</i>)</li></ul></div><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set-param">set-param</a>.</p></div>
+         <a href="#choice"><code>choice</code></a> objects  (<i>optional</i>)</li></ul></div><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set">set</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="set-param"><header><h4 id="oscal-profile-json_set-param" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter Setting</b>: <code>set-param</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_set-param"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>param-settings</code></h5></header><p class="description"> A parameter setting, to be propagated to points of insertion
-      </p><div class="model"><p class="usa-font-lead">The <code>set-param</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li><li><a href="#depends-on"><code>depends-on</code></a> property  (<i>optional</i>)</li><li><a href="#label"><code>label</code></a> object  (<i>optional</i>)</li><li>An array labelled
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="set"><header><h4 id="oscal-profile-json_set" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Parameter Setting</b>: <code>set</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_set"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>settings</code></h5></header><p class="description"> A parameter setting, to be propagated to points of insertion
+      </p><div class="model"><p class="usa-font-lead">The <code>set</code> object has the following members (properties):</p><ul><li><a href="#param-id"><code>param-id</code></a> property <i> (required)</i></li><li><a href="#class"><code>class</code></a> property  (<i>optional</i>)</li><li><a href="#depends-on"><code>depends-on</code></a> property  (<i>optional</i>)</li><li><a href="#label"><code>label</code></a> object  (<i>optional</i>)</li><li>An array labelled
          
          <b></b>, containing
          <a href="#desc"><code>desc</code></a> objects  (<i>optional</i>)</li><li>An array labelled
@@ -1860,7 +1874,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="value"><header><h4 id="oscal-profile-json_value" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Value constraint</b>: <code>value</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_value"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Supports Markdown</p><p class="description">Indicates a permissible value for a parameter or property</p><div class="remarks"><p class="p">In a declaration, <code>value</code> will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values).</p><p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned <q>lower down the stack</q>.</p></div><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set-param">set-param</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="value"><header><h4 id="oscal-profile-json_value" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Value constraint</b>: <code>value</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-profile-xml/#oscal-profile-xml_value"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Supports Markdown</p><p class="description">Indicates a permissible value for a parameter or property</p><div class="remarks"><p class="p">In a declaration, <code>value</code> will commonly be given in groups, indicating a set of enumerated permissible values (i.e., for an element to be valid to a value constraint, it must equal one of the given values).</p><p class="p">In a parameter, a value represents a value assignment to the parameter, overriding any value given at the point of insertion. When parameters are provided in OSCAL profiles, their values will override any values assigned <q>lower down the stack</q>.</p></div><p>This object appears as a property on: <a href="#param">param</a>, <a href="#set">set</a>.</p></div>
 
 
 
