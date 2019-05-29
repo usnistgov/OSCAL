@@ -39,6 +39,8 @@
       <assembly named="back-matter">
         <description>Back matter including references and resources.</description>
       </assembly>
+        <description>Back matter including references and resources.</description>
+      </assembly>
     </model>
     <example>
       <description>A small catalog with a single control</description>
@@ -50,7 +52,7 @@
       </catalog>
     </example>
   </define-assembly>
-  
+
   <!--<define-field name="declarations" as="empty">
     <flag name="href" datatype="anyURI"/>
     <formal-name>Declarations</formal-name>
