@@ -1,9 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- XML produced by extraction/mapping from NVD XML :2018-11-02T16:55:46.916-04:00 -->
-<!-- Then modified by hand (2018-12-10, 2019-05-16, 2019-05-28) to add metadata and align with current schema -->
-<!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) -->
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   id="uuid-20adaaec-6c75-47ba-ba6c-da589e1e5598"
-         model-version="0.9.14">
+<!-- Then modified by hand (2018-12-10, 2019-05-16, 2019-05-29) to add metadata, align with current schema, correct broken links -->
+<!-- Valid against the OSCAL catalog schema (project path schema/xml/oscal-catalog-schema.xsd) --><catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-20adaaec-6c75-47ba-ba6c-da589e1e5598" model-version="0.9.14">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
       <publication-date>April 2013</publication-date>
@@ -1336,7 +1334,7 @@
             <title>Restricted Access to Privileged Functions</title>
             <prop class="label">AC-3(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-6">AC-6</link>
+            <link rel="incorporated-into" href="#ac-6">AC-6</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-3.2">
             <title>Dual Authorization</title>
@@ -1728,8 +1726,8 @@
             <title>Protection of User and System Information</title>
             <prop class="label">AC-3(6)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-4">MP-4</link>
-            <link rel="incorporated-into" href="#SC-28">SC-28</link>
+            <link rel="incorporated-into" href="#mp-4">MP-4</link>
+            <link rel="incorporated-into" href="#sc-28">SC-28</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-3.7">
             <title>Role-based Access Control</title>
@@ -2900,7 +2898,7 @@ Organizations commonly employ information flow control policies and enforcement 
             <title>Information Transfers On Interconnected Systems</title>
             <prop class="label">AC-4(16)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-4">AC-4</link>
+            <link rel="incorporated-into" href="#ac-4">AC-4</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-4.17">
             <title>Domain Authentication</title>
@@ -4010,7 +4008,7 @@ Organizations commonly employ information flow control policies and enforcement 
             <title>Automatic Account Lock</title>
             <prop class="label">AC-7(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-7">AC-7</link>
+            <link rel="incorporated-into" href="#ac-7">AC-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-7.2">
             <title>Purge / Wipe Mobile Device</title>
@@ -4755,8 +4753,8 @@ Organizations commonly employ information flow control policies and enforcement 
          <title>Supervision and Review - Access Control</title>
          <prop class="label">AC-13</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#AC-2">AC-2</link>
-         <link rel="incorporated-into" href="#AU-6">AU-6</link>
+         <link rel="incorporated-into" href="#ac-2">AC-2</link>
+         <link rel="incorporated-into" href="#au-6">AU-6</link>
       </control>
       <control class="SP800-53" id="ac-14">
          <title>Permitted Actions Without Identification or Authentication</title>
@@ -4821,14 +4819,14 @@ Organizations commonly employ information flow control policies and enforcement 
             <title>Necessary Uses</title>
             <prop class="label">AC-14(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-14">AC-14</link>
+            <link rel="incorporated-into" href="#ac-14">AC-14</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="ac-15">
          <title>Automated Marking</title>
          <prop class="label">AC-15</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#MP-3">MP-3</link>
+         <link rel="incorporated-into" href="#mp-3">MP-3</link>
       </control>
       <control class="SP800-53" id="ac-16">
          <title>Security Attributes</title>
@@ -5794,7 +5792,7 @@ Organizations can define the types of attributes needed for selected information
             <title>Monitoring for Unauthorized Connections</title>
             <prop class="label">AC-17(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-4">SI-4</link>
+            <link rel="incorporated-into" href="#si-4">SI-4</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-17.6">
             <title>Protection of Information</title>
@@ -5831,13 +5829,13 @@ Organizations can define the types of attributes needed for selected information
             <title>Additional Protection for Security Function Access</title>
             <prop class="label">AC-17(7)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-3 (10)">AC-3 (10)</link>
+            <link rel="incorporated-into" href="#ac-3.10">AC-3 (10)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-17.8">
             <title>Disable Nonsecure Network Protocols</title>
             <prop class="label">AC-17(8)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CM-7">CM-7</link>
+            <link rel="incorporated-into" href="#cm-7">CM-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-17.9">
             <title>Disconnect / Disable Access</title>
@@ -6036,7 +6034,7 @@ Organizations can define the types of attributes needed for selected information
             <title>Monitoring Unauthorized Connections</title>
             <prop class="label">AC-18(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-4">SI-4</link>
+            <link rel="incorporated-into" href="#si-4">SI-4</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-18.3">
             <title>Disable Wireless Networking</title>
@@ -6264,19 +6262,19 @@ Organizations can define the types of attributes needed for selected information
             <title>Use of  Writable / Portable Storage Devices</title>
             <prop class="label">AC-19(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-7">MP-7</link>
+            <link rel="incorporated-into" href="#mp-7">MP-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-19.2">
             <title>Use of Personally Owned Portable Storage Devices</title>
             <prop class="label">AC-19(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-7">MP-7</link>
+            <link rel="incorporated-into" href="#mp-7">MP-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-19.3">
             <title>Use of Portable Storage Devices with No Identifiable Owner</title>
             <prop class="label">AC-19(3)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-7">MP-7</link>
+            <link rel="incorporated-into" href="#mp-7">MP-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ac-19.4">
             <title>Restrictions for Classified Information</title>
@@ -7967,7 +7965,7 @@ This control does not apply to the use of external information systems to access
          <title>Contacts with Security Groups and Associations</title>
          <prop class="label">AT-5</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#PM-15">PM-15</link>
+         <link rel="incorporated-into" href="#pm-15">PM-15</link>
       </control>
    </group>
    <group class="family" id="au">
@@ -8231,13 +8229,13 @@ This control does not apply to the use of external information systems to access
             <title>Compilation of Audit Records from Multiple Sources</title>
             <prop class="label">AU-2(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AU-12">AU-12</link>
+            <link rel="incorporated-into" href="#au-12">AU-12</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="au-2.2">
             <title>Selection of Audit Events by Component</title>
             <prop class="label">AU-2(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AU-12">AU-12</link>
+            <link rel="incorporated-into" href="#au-12">AU-12</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="au-2.3">
             <title>Reviews and Updates</title>
@@ -8293,7 +8291,7 @@ This control does not apply to the use of external information systems to access
             <title>Privileged Functions</title>
             <prop class="label">AU-2(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-6 (9)">AC-6 (9)</link>
+            <link rel="incorporated-into" href="#ac-6.9">AC-6 (9)</link>
          </subcontrol>
          <ref-list>
                 <link href="#ref099" rel="reference">NIST Special Publication 800-92</link>
@@ -9130,7 +9128,7 @@ This control does not apply to the use of external information systems to access
             <title>Automated Security Alerts</title>
             <prop class="label">AU-6(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-4">SI-4</link>
+            <link rel="incorporated-into" href="#si-4">SI-4</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="au-6.3">
             <title>Correlate Audit Repositories</title>
@@ -10634,7 +10632,7 @@ This control does not apply to the use of external information systems to access
             <title>Digital Signatures</title>
             <prop class="label">AU-10(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-7">SI-7</link>
+            <link rel="incorporated-into" href="#si-7">SI-7</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="au-11">
@@ -12421,7 +12419,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
          <title>Security Certification</title>
          <prop class="label">CA-4</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#CA-2">CA-2</link>
+         <link rel="incorporated-into" href="#ca-2">CA-2</link>
       </control>
       <control class="SP800-53" id="ca-5">
          <title>Plan of Action and Milestones</title>
@@ -12891,7 +12889,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <title>Types of Assessments</title>
             <prop class="label">CA-7(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CA-2">CA-2</link>
+            <link rel="incorporated-into" href="#ca-2">CA-2</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ca-7.3">
             <title>Trend Analyses</title>
@@ -13653,13 +13651,13 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <title>Unauthorized Software</title>
             <prop class="label">CM-2(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CM-7">CM-7</link>
+            <link rel="incorporated-into" href="#cm-7">CM-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cm-2.5">
             <title>Authorized Software</title>
             <prop class="label">CM-2(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CM-7">CM-7</link>
+            <link rel="incorporated-into" href="#cm-7">CM-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cm-2.6">
             <title>Development and Test Environments</title>
@@ -14948,7 +14946,7 @@ To satisfy annual assessment requirements, organizations can use assessment resu
             <title>Automatic Implementation of Security Safeguards</title>
             <prop class="label">CM-5(7)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-7">SI-7</link>
+            <link rel="incorporated-into" href="#si-7">SI-7</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="cm-6">
@@ -15250,13 +15248,13 @@ Common secure configurations (also referred to as security configuration checkli
             <title>Unauthorized Change Detection</title>
             <prop class="label">CM-6(3)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-7">SI-7</link>
+            <link rel="incorporated-into" href="#si-7">SI-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cm-6.4">
             <title>Conformance Demonstration</title>
             <prop class="label">CM-6(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CM-4">CM-4</link>
+            <link rel="incorporated-into" href="#cm-4">CM-4</link>
          </subcontrol>
          <ref-list>
                 <link href="#ref109" rel="reference">OMB Memorandum 07-11</link>
@@ -18196,7 +18194,7 @@ Common secure configurations (also referred to as security configuration checkli
          <title>Contingency Plan Update</title>
          <prop class="label">CP-5</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#CP-2">CP-2</link>
+         <link rel="incorporated-into" href="#cp-2">CP-2</link>
       </control>
       <control class="SP800-53" id="cp-6">
          <title>Alternate Storage Site</title>
@@ -18623,7 +18621,7 @@ Common secure configurations (also referred to as security configuration checkli
             <title>Equivalent Information Security Safeguards</title>
             <prop class="label">CP-7(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CP-7">CP-7</link>
+            <link rel="incorporated-into" href="#cp-7">CP-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cp-7.6">
             <title>Inability to Return to Primary Site</title>
@@ -19217,7 +19215,7 @@ Common secure configurations (also referred to as security configuration checkli
             <title>Protection from Unauthorized Modification</title>
             <prop class="label">CP-9(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CP-9">CP-9</link>
+            <link rel="incorporated-into" href="#cp-9">CP-9</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cp-9.5">
             <title>Transfer to Alternate Storage Site</title>
@@ -19467,7 +19465,7 @@ Common secure configurations (also referred to as security configuration checkli
             <title>Contingency Plan Testing</title>
             <prop class="label">CP-10(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CP-4">CP-4</link>
+            <link rel="incorporated-into" href="#cp-4">CP-4</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cp-10.2">
             <title>Transaction Recovery</title>
@@ -19514,7 +19512,7 @@ Common secure configurations (also referred to as security configuration checkli
             <title>Compensating Security Controls</title>
             <prop class="label">CP-10(3)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#Chapter 3">Chapter 3</link>
+            <link rel="incorporated-into" href="https://doi.org/10.6028/NIST.SP.800-53r4">Chapter 3</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cp-10.4">
             <title>Restore Within Time Period</title>
@@ -19572,7 +19570,7 @@ Common secure configurations (also referred to as security configuration checkli
             <title>Failover Capability</title>
             <prop class="label">CP-10(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-13">SI-13</link>
+            <link rel="incorporated-into" href="#si-13">SI-13</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="cp-10.6">
             <title>Component Protection</title>
@@ -20859,7 +20857,7 @@ Organizations can satisfy the identification and authentication requirements in 
             <title>Cryptographic Bidirectional Network Authentication</title>
             <prop class="label">IA-3(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#IA-3 (1)">IA-3 (1)</link>
+            <link rel="incorporated-into" href="#ia-3.1">IA-3 (1)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ia-3.3">
             <title>Dynamic Address Allocation</title>
@@ -25713,7 +25711,7 @@ Organizations can satisfy the identification and authentication requirements in 
             <title>Record Content</title>
             <prop class="label">MA-2(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MA-2">MA-2</link>
+            <link rel="incorporated-into" href="#ma-2">MA-2</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ma-2.2">
             <title>Automated Maintenance Activities</title>
@@ -27474,13 +27472,13 @@ Organizations can satisfy the identification and authentication requirements in 
             <title>Automated Restricted Access</title>
             <prop class="label">MP-2(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-4 (2)">MP-4 (2)</link>
+            <link rel="incorporated-into" href="#mp-4.2">MP-4 (2)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="mp-2.2">
             <title>Cryptographic Protection</title>
             <prop class="label">MP-2(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-28 (1)">SC-28 (1)</link>
+            <link rel="incorporated-into" href="#sc-28.1">SC-28 (1)</link>
          </subcontrol>
          <ref-list>
                 <link href="#ref015" rel="reference">FIPS Publication 199</link>
@@ -27663,7 +27661,7 @@ Organizations can satisfy the identification and authentication requirements in 
             <title>Cryptographic Protection</title>
             <prop class="label">MP-4(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-28 (1)">SC-28 (1)</link>
+            <link rel="incorporated-into" href="#sc-28.1">SC-28 (1)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="mp-4.2">
             <title>Automated Restricted Access</title>
@@ -27837,13 +27835,13 @@ Physical and technical safeguards for media are commensurate with the security c
             <title>Protection Outside of Controlled Areas</title>
             <prop class="label">MP-5(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-5">MP-5</link>
+            <link rel="incorporated-into" href="#mp-5">MP-5</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="mp-5.2">
             <title>Documentation of Activities</title>
             <prop class="label">MP-5(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-5">MP-5</link>
+            <link rel="incorporated-into" href="#mp-5">MP-5</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="mp-5.3">
             <title>Custodians</title>
@@ -28188,19 +28186,19 @@ Physical and technical safeguards for media are commensurate with the security c
             <title>Controlled Unclassified Information</title>
             <prop class="label">MP-6(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-6">MP-6</link>
+            <link rel="incorporated-into" href="#mp-6">MP-6</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="mp-6.5">
             <title>Classified Information</title>
             <prop class="label">MP-6(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-6">MP-6</link>
+            <link rel="incorporated-into" href="#mp-6">MP-6</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="mp-6.6">
             <title>Media Destruction</title>
             <prop class="label">MP-6(6)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-6">MP-6</link>
+            <link rel="incorporated-into" href="#mp-6">MP-6</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="mp-6.7">
             <title>Dual Authorization</title>
@@ -30428,8 +30426,8 @@ Physical and technical safeguards for media are commensurate with the security c
          <title>Visitor Control</title>
          <prop class="label">PE-7</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#PE-2">PE-2</link>
-         <link rel="incorporated-into" href="#PE-3">PE-3</link>
+         <link rel="incorporated-into" href="#pe-2">PE-2</link>
+         <link rel="incorporated-into" href="#pe-3">PE-3</link>
       </control>
       <control class="SP800-53" id="pe-8">
          <title>Visitor Access Records</title>
@@ -30542,7 +30540,7 @@ Physical and technical safeguards for media are commensurate with the security c
             <title>Physical Access Records</title>
             <prop class="label">PE-8(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#PE-2">PE-2</link>
+            <link rel="incorporated-into" href="#pe-2">PE-2</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="pe-9">
@@ -30748,7 +30746,7 @@ Physical and technical safeguards for media are commensurate with the security c
             <title>Accidental / Unauthorized Activation</title>
             <prop class="label">PE-10(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#PE-10">PE-10</link>
+            <link rel="incorporated-into" href="#pe-10">PE-10</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="pe-11">
@@ -32382,13 +32380,13 @@ Security plans need not be single documents; the plans can be a collection of va
             <title>Concept of Operations</title>
             <prop class="label">PL-2(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#PL-7">PL-7</link>
+            <link rel="incorporated-into" href="#pl-7">PL-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="pl-2.2">
             <title>Functional Architecture</title>
             <prop class="label">PL-2(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#PL-8">PL-8</link>
+            <link rel="incorporated-into" href="#pl-8">PL-8</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="pl-2.3">
             <title>Plan / Coordinate with Other Organizational Entities</title>
@@ -32445,7 +32443,7 @@ Security plans need not be single documents; the plans can be a collection of va
          <title>System Security Plan Update</title>
          <prop class="label">PL-3</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#PL-2">PL-2</link>
+         <link rel="incorporated-into" href="#pl-2">PL-2</link>
       </control>
       <control class="SP800-53" id="pl-4">
          <title>Rules of Behavior</title>
@@ -32606,13 +32604,13 @@ Security plans need not be single documents; the plans can be a collection of va
          <prop class="label">PL-5</prop>
          <prop class="status">Withdrawn</prop>
          <link rel="incorporated-into" href="https://doi.org/10.6028/NIST.SP.800-53r4">Appendix J</link>
-         <link rel="incorporated-into" href="#AR-2">AR-2</link>
+         <link rel="incorporated-into" href="https://doi.org/10.6028/NIST.SP.800-53r4">AR-2</link>
       </control>
       <control class="SP800-53" id="pl-6">
          <title>Security-related Activity Planning</title>
          <prop class="label">PL-6</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#PL-2">PL-2</link>
+         <link rel="incorporated-into" href="#pl-2">PL-2</link>
       </control>
       <control class="SP800-53" id="pl-7">
          <title>Security Concept of Operations</title>
@@ -33915,7 +33913,7 @@ In today’s modern architecture, it is becoming less common for organizations t
             <title>Information Requiring Special Protection</title>
             <prop class="label">PS-6(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#PS-3">PS-3</link>
+            <link rel="incorporated-into" href="#ps-3">PS-3</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ps-6.2">
             <title>Classified Information Requiring Special Protection</title>
@@ -34631,7 +34629,7 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
          <title>Risk Assessment Update</title>
          <prop class="label">RA-4</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#RA-3">RA-3</link>
+         <link rel="incorporated-into" href="#ra-3">RA-3</link>
       </control>
       <control class="SP800-53" id="ra-5">
          <title>Vulnerability Scanning</title>
@@ -35170,7 +35168,7 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
             <title>Automated Detection and Notification of Unauthorized Components</title>
             <prop class="label">RA-5(7)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CM-8">CM-8</link>
+            <link rel="incorporated-into" href="#cm-8">CM-8</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ra-5.8">
             <title>Review Historic Audit Logs</title>
@@ -35220,7 +35218,7 @@ Risk assessments (either formal or informal) can be conducted at all three tiers
             <title>Penetration Testing and Analyses</title>
             <prop class="label">RA-5(9)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CA-8">CA-8</link>
+            <link rel="incorporated-into" href="#ca-8">CA-8</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="ra-5.10">
             <title>Correlate Scanning Information</title>
@@ -36019,7 +36017,7 @@ Security functionality, assurance, and documentation requirements are expressed 
             <title>Assignment of Components to Systems</title>
             <prop class="label">SA-4(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#CM-8 (9)">CM-8 (9)</link>
+            <link rel="incorporated-into" href="#cm-8.9">CM-8 (9)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-4.5">
             <title>System / Component / Service Configurations</title>
@@ -36588,46 +36586,46 @@ Security functionality, assurance, and documentation requirements are expressed 
             <title>Functional Properties of Security Controls</title>
             <prop class="label">SA-5(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-4 (1)">SA-4 (1)</link>
+            <link rel="incorporated-into" href="#sa-4.1">SA-4 (1)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-5.2">
             <title>Security-relevant External System Interfaces</title>
             <prop class="label">SA-5(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-4 (2)">SA-4 (2)</link>
+            <link rel="incorporated-into" href="#sa-4.2">SA-4 (2)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-5.3">
             <title>High-level Design</title>
             <prop class="label">SA-5(3)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-4 (2)">SA-4 (2)</link>
+            <link rel="incorporated-into" href="#sa-4.2">SA-4 (2)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-5.4">
             <title>Low-level Design</title>
             <prop class="label">SA-5(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-4 (2)">SA-4 (2)</link>
+            <link rel="incorporated-into" href="#sa-4.2">SA-4 (2)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-5.5">
             <title>Source Code</title>
             <prop class="label">SA-5(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-4 (2)">SA-4 (2)</link>
+            <link rel="incorporated-into" href="#sa-4.2">SA-4 (2)</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="sa-6">
          <title>Software Usage Restrictions</title>
          <prop class="label">SA-6</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#CM-10">CM-10</link>
-         <link rel="incorporated-into" href="#SI-7">SI-7</link>
+         <link rel="incorporated-into" href="#cm-10">CM-10</link>
+         <link rel="incorporated-into" href="#si-7">SI-7</link>
       </control>
       <control class="SP800-53" id="sa-7">
          <title>User-installed Software</title>
          <prop class="label">SA-7</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#CM-11">CM-11</link>
-         <link rel="incorporated-into" href="#SI-7">SI-7</link>
+         <link rel="incorporated-into" href="#cm-11">CM-11</link>
+         <link rel="incorporated-into" href="#si-7">SI-7</link>
       </control>
       <control class="SP800-53" id="sa-8">
          <title>Security Engineering Principles</title>
@@ -38398,13 +38396,13 @@ Security functionality, assurance, and documentation requirements are expressed 
             <title>Trusted Shipping and Warehousing</title>
             <prop class="label">SA-12(3)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-12 (1)">SA-12 (1)</link>
+            <link rel="incorporated-into" href="#sa-12.1">SA-12 (1)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-12.4">
             <title>Diversity of Suppliers</title>
             <prop class="label">SA-12(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-12 (13)">SA-12 (13)</link>
+            <link rel="incorporated-into" href="#sa-12.13">SA-12 (13)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-12.5">
             <title>Limitation of Harm</title>
@@ -38467,7 +38465,7 @@ Security functionality, assurance, and documentation requirements are expressed 
             <title>Minimizing Procurement Time</title>
             <prop class="label">SA-12(6)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-12 (1)">SA-12 (1)</link>
+            <link rel="incorporated-into" href="#sa-12.1">SA-12 (1)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sa-12.7">
             <title>Assessments Prior to Selection / Acceptance / Update</title>
@@ -39126,7 +39124,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Critical Components with  No Viable Alternative Sourcing</title>
             <prop class="label">SA-14(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-20">SA-20</link>
+            <link rel="incorporated-into" href="#sa-20">SA-20</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="sa-15">
@@ -41900,7 +41898,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Security Levels</title>
             <prop class="label">SC-4(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-4">SC-4</link>
+            <link rel="incorporated-into" href="#sc-4">SC-4</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-4.2">
             <title>Periods Processing</title>
@@ -42381,13 +42379,13 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Physically Separated Subnetworks</title>
             <prop class="label">SC-7(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-7">SC-7</link>
+            <link rel="incorporated-into" href="#sc-7">SC-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-7.2">
             <title>Public Access</title>
             <prop class="label">SC-7(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-7">SC-7</link>
+            <link rel="incorporated-into" href="#sc-7">SC-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-7.3">
             <title>Access Points</title>
@@ -42596,7 +42594,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Response to Recognized Failures</title>
             <prop class="label">SC-7(6)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-7 (18)">SC-7 (18)</link>
+            <link rel="incorporated-into" href="#sc-7.18">SC-7 (18)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-7.7">
             <title>Prevent Split Tunneling for Remote Devices</title>
@@ -43795,7 +43793,7 @@ Assurance is also based on the assessment of evidence produced during the system
          <title>Transmission Confidentiality</title>
          <prop class="label">SC-9</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#SC-8">SC-8</link>
+         <link rel="incorporated-into" href="#sc-8">SC-8</link>
       </control>
       <control class="SP800-53" id="sc-10">
          <title>Network Disconnect</title>
@@ -44172,13 +44170,13 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>PKI Certificates</title>
             <prop class="label">SC-12(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-12">SC-12</link>
+            <link rel="incorporated-into" href="#sc-12">SC-12</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-12.5">
             <title>PKI Certificates / Hardware Tokens</title>
             <prop class="label">SC-12(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-12">SC-12</link>
+            <link rel="incorporated-into" href="#sc-12">SC-12</link>
          </subcontrol>
          <ref-list>
                 <link href="#ref082" rel="reference">NIST Special Publication 800-56</link>
@@ -44265,25 +44263,25 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Fips-validated Cryptography</title>
             <prop class="label">SC-13(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-13">SC-13</link>
+            <link rel="incorporated-into" href="#sc-13">SC-13</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-13.2">
             <title>Nsa-approved Cryptography</title>
             <prop class="label">SC-13(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-13">SC-13</link>
+            <link rel="incorporated-into" href="#sc-13">SC-13</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-13.3">
             <title>Individuals Without Formal Access  Approvals</title>
             <prop class="label">SC-13(3)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-13">SC-13</link>
+            <link rel="incorporated-into" href="#sc-13">SC-13</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-13.4">
             <title>Digital Signatures</title>
             <prop class="label">SC-13(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-13">SC-13</link>
+            <link rel="incorporated-into" href="#sc-13">SC-13</link>
          </subcontrol>
          <ref-list>
                 <link href="#ref012" rel="reference">FIPS Publication 140</link>
@@ -44297,15 +44295,15 @@ Assurance is also based on the assessment of evidence produced during the system
          <title>Public Access Protections</title>
          <prop class="label">SC-14</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#AC-2">AC-2</link>
-         <link rel="incorporated-into" href="#AC-3">AC-3</link>
-         <link rel="incorporated-into" href="#AC-5">AC-5</link>
-         <link rel="incorporated-into" href="#AC-6">AC-6</link>
-         <link rel="incorporated-into" href="#SI-3">SI-3</link>
-         <link rel="incorporated-into" href="#SI-4">SI-4</link>
-         <link rel="incorporated-into" href="#SI-5">SI-5</link>
-         <link rel="incorporated-into" href="#SI-7">SI-7</link>
-         <link rel="incorporated-into" href="#SI-10">SI-10</link>
+         <link rel="incorporated-into" href="#ac-2">AC-2</link>
+         <link rel="incorporated-into" href="#ac-3">AC-3</link>
+         <link rel="incorporated-into" href="#ac-5">AC-5</link>
+         <link rel="incorporated-into" href="#ac-6">AC-6</link>
+         <link rel="incorporated-into" href="#si-3">SI-3</link>
+         <link rel="incorporated-into" href="#si-4">SI-4</link>
+         <link rel="incorporated-into" href="#si-5">SI-5</link>
+         <link rel="incorporated-into" href="#si-7">SI-7</link>
+         <link rel="incorporated-into" href="#si-10">SI-10</link>
       </control>
       <control class="SP800-53" id="sc-15">
          <title>Collaborative Computing Devices</title>
@@ -44418,7 +44416,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Blocking Inbound / Outbound Communications Traffic</title>
             <prop class="label">SC-15(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-7">SC-7</link>
+            <link rel="incorporated-into" href="#sc-7">SC-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-15.3">
             <title>Disabling / Removal in Secure Work Areas</title>
@@ -45240,7 +45238,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Child Subspaces</title>
             <prop class="label">SC-20(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-20">SC-20</link>
+            <link rel="incorporated-into" href="#sc-20">SC-20</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-20.2">
             <title>Data Origin / Integrity</title>
@@ -45342,7 +45340,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Data Origin / Integrity</title>
             <prop class="label">SC-21(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-21">SC-21</link>
+            <link rel="incorporated-into" href="#sc-21">SC-21</link>
          </subcontrol>
          <ref-list>
                 <link href="#ref095" rel="reference">NIST Special Publication 800-81</link>
@@ -45483,7 +45481,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>User-initiated Logouts / Message Displays</title>
             <prop class="label">SC-23(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-12 (1)">AC-12 (1)</link>
+            <link rel="incorporated-into" href="#ac-12.1">AC-12 (1)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-23.3">
             <title>Unique Session Identifiers with Randomization</title>
@@ -45543,7 +45541,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Unique Session Identifiers with Randomization</title>
             <prop class="label">SC-23(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-23 (3)">SC-23 (3)</link>
+            <link rel="incorporated-into" href="#sc-23.3">SC-23 (3)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-23.5">
             <title>Allowed Certificate Authorities</title>
@@ -45772,7 +45770,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Detection of Malicious Code</title>
             <prop class="label">SC-26(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-35">SC-35</link>
+            <link rel="incorporated-into" href="#sc-35">SC-35</link>
          </subcontrol>
       </control>
       <control class="SP800-53" id="sc-27">
@@ -46208,7 +46206,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Virtualization Techniques</title>
             <prop class="label">SC-30(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SC-29 (1)">SC-29 (1)</link>
+            <link rel="incorporated-into" href="#sc-29.1">SC-29 (1)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="sc-30.2">
             <title>Randomness</title>
@@ -46752,7 +46750,7 @@ Assurance is also based on the assessment of evidence produced during the system
          <title>Transmission Preparation Integrity</title>
          <prop class="label">SC-33</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#SC-8">SC-8</link>
+         <link rel="incorporated-into" href="#sc-8">SC-8</link>
       </control>
       <control class="SP800-53" id="sc-34">
          <title>Non-modifiable Executable Programs</title>
@@ -48722,7 +48720,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Automated Patch Management Tools</title>
             <prop class="label">SI-2(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-2">SI-2</link>
+            <link rel="incorporated-into" href="#si-2">SI-2</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-2.5">
             <title>Automatic Software / Firmware Updates</title>
@@ -49144,7 +49142,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Non-privileged Users</title>
             <prop class="label">SI-3(3)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-6 (10)">AC-6 (10)</link>
+            <link rel="incorporated-into" href="#ac-6.10">AC-6 (10)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-3.4">
             <title>Updates Only by Privileged Users</title>
@@ -49194,7 +49192,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Portable Storage Devices</title>
             <prop class="label">SI-3(5)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#MP-7">MP-7</link>
+            <link rel="incorporated-into" href="#mp-7">MP-7</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-3.6">
             <title>Testing / Verification</title>
@@ -50063,7 +50061,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Restrict Non-privileged Users</title>
             <prop class="label">SI-4(6)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#AC-6 (10)">AC-6 (10)</link>
+            <link rel="incorporated-into" href="#ac-6.10">AC-6 (10)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-4.7">
             <title>Automated Response to Suspicious Events</title>
@@ -50138,7 +50136,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Protection of Monitoring Information</title>
             <prop class="label">SI-4(8)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-4">SI-4</link>
+            <link rel="incorporated-into" href="#si-4">SI-4</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-4.9">
             <title>Testing of Monitoring Tools</title>
@@ -51457,7 +51455,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Notification of Failed Security Tests</title>
             <prop class="label">SI-6(1)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-6">SI-6</link>
+            <link rel="incorporated-into" href="#si-6">SI-6</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-6.2">
             <title>Automation Support for Distributed Testing</title>
@@ -51851,7 +51849,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Tamper-evident Packaging</title>
             <prop class="label">SI-7(4)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SA-12">SA-12</link>
+            <link rel="incorporated-into" href="#sa-12">SA-12</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-7.5">
             <title>Automated Response to Integrity Violations</title>
@@ -52819,10 +52817,10 @@ Assurance is also based on the assessment of evidence produced during the system
          <title>Information Input Restrictions</title>
          <prop class="label">SI-9</prop>
          <prop class="status">Withdrawn</prop>
-         <link rel="incorporated-into" href="#AC-2">AC-2</link>
-         <link rel="incorporated-into" href="#AC-3">AC-3</link>
-         <link rel="incorporated-into" href="#AC-5">AC-5</link>
-         <link rel="incorporated-into" href="#AC-6">AC-6</link>
+         <link rel="incorporated-into" href="#ac-2">AC-2</link>
+         <link rel="incorporated-into" href="#ac-3">AC-3</link>
+         <link rel="incorporated-into" href="#ac-5">AC-5</link>
+         <link rel="incorporated-into" href="#ac-6">AC-6</link>
       </control>
       <control class="SP800-53" id="si-10">
          <title>Information Input Validation</title>
@@ -53433,7 +53431,7 @@ Assurance is also based on the assessment of evidence produced during the system
             <title>Time Limit On Process Execution Without Supervision</title>
             <prop class="label">SI-13(2)</prop>
             <prop class="status">Withdrawn</prop>
-            <link rel="incorporated-into" href="#SI-7 (16)">SI-7 (16)</link>
+            <link rel="incorporated-into" href="#si-7.16">SI-7 (16)</link>
          </subcontrol>
          <subcontrol class="SP800-53-enhancement" id="si-13.3">
             <title>Manual Transfer Between Components</title>
