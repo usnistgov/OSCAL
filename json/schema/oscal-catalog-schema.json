@@ -725,6 +725,8 @@
           { "type" : "string" },
           "RICHTEXT" : 
           { "type" : "string" } },
+        "required" : 
+        [ "href" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
