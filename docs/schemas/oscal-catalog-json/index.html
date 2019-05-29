@@ -1068,7 +1068,7 @@
 <h2 xmlns="http://www.w3.org/1999/xhtml">OSCAL Control Catalog Format: Schema Reference</h2>
 <p xmlns="http://www.w3.org/1999/xhtml">The short name (file identifier) for this schema shall be <i>oscal-catalog</i>. It is used internally when an
          identifier is called for, and may appear in file names of schema artifacts.</p>
-<div xmlns="http://www.w3.org/1999/xhtml" class="remarks"><p class="p">The OSCAL Control Catalog format can be used to describe a collection of security controls and related sub-controls, along with a variety of control metadata. The root of the Control Catalog format is <code>catalog</code>.</p><p class="p">An XML Schema is provided for the OSCAL Catalog XML model.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="remarks"><p class="p">The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p><p class="p">An XML Schema is provided for the OSCAL Catalog XML model.</p></div>
 
 
 
@@ -1103,7 +1103,7 @@
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="catalog"><header><h4 id="oscal-catalog-json_catalog" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Catalog</b>: <code>catalog</code> object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_catalog"><button>XML</button></a><button disabled="disabled">JSON</button></div><h5>This object appears <i>unlabelled</i> in any array called <code>control-catalog</code></h5></header><h5><code>catalog</code> is the root (containing) object of
-               this schema. </h5><p class="description">A collection of controls</p><div class="model"><p class="usa-font-lead">The <code>catalog</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#model-version"><code>model-version</code></a> property <i> (required)</i></li><li><a href="#title"><code>title</code></a> object  (<i>required</i>)</li><li><a href="#metadata"><code>metadata</code></a> object  (<i>optional</i>)</li><li>An array labelled
+               this schema. </h5><p class="description">A collection of controls</p><div class="model"><p class="usa-font-lead">The <code>catalog</code> object has the following members (properties):</p><ul><li><a href="#id"><code>id</code></a> property <i> (required)</i></li><li><a href="#model-version"><code>model-version</code></a> property <i> (required)</i></li><li><a href="#metadata"><code>metadata</code></a> object  (<i>required</i>)</li><li>An array labelled
          
          <b></b>, containing
          <a href="#section"><code>section</code></a> objects  (<i>optional</i>)</li><li class="choice">A choice between
@@ -1116,7 +1116,6 @@
          <a href="#control"><code>control</code></a> objects  (<i>optional</i>)</li></ul></li><li><a href="#back"><code>back</code></a> object  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_json">Example: A small catalog with a single control</button><div id="catalog_example1_json" class="usa-accordion-content">
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"simple-example"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"model-version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.99"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"A Miniature Catalog"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"controls"</span><span class="w"> </span><span class="p">:</span><span class="w"> 
     </span><span class="p">[</span><span class="w"> 
       </span><span class="p">{</span><span class="w"> </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
@@ -1556,7 +1555,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="title"><header><h4 id="oscal-catalog-json_title" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Title</b>: <code>title</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_title"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Supports Markdown</p><p class="description">A title for display and navigation, exclusive of more specific properties</p><p>This object appears as a property on: <a href="#metadata">metadata</a>, <a href="#role">role</a>, <a href="#resource">resource</a>, <a href="#hlink">hlink</a>, <a href="#ref-list">ref-list</a>, <a href="#catalog">catalog</a>, <a href="#section">section</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="title"><header><h4 id="oscal-catalog-json_title" class="usa-color-text usa-color-primary-alt-lightest"><b class="formal-name">Title</b>: <code>title</code> string object</h4><div style="float:right"><a href="/OSCAL/docs/schemas/oscal-catalog-xml/#oscal-catalog-xml_title"><button>XML</button></a><button disabled="disabled">JSON</button></div></header><p>Supports Markdown</p><p class="description">A title for display and navigation, exclusive of more specific properties</p><div class="remarks"><p class="p">A title given to a control or subcontrol will be its name or whatever human-readable string it is known by. Given to other objects (sections, groups, parts) it is the title as it should appear in a formatted document.</p></div><p>This object appears as a property on: <a href="#metadata">metadata</a>, <a href="#role">role</a>, <a href="#resource">resource</a>, <a href="#hlink">hlink</a>, <a href="#ref-list">ref-list</a>, <a href="#section">section</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
 
 
 
