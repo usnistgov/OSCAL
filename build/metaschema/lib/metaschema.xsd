@@ -154,6 +154,7 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="assemblies">
@@ -164,6 +165,7 @@
       </xs:sequence>
       <xs:attribute name="address" type="xs:NCName"/>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="field">
@@ -183,6 +185,7 @@
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
+      <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
   

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../../lib/CSS/oscal.css"?>
-<?xml-model href="../../schema/xml/Schematron/oscal-links.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../schema/xml/oscal-catalog-schema.xsd"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../xml/schema/oscal-catalog-schema.xsd"
  xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="xyz" model-version="abc">
-    <title>Skeleton catalog</title>
+    <metadata>
+        <title>Dinosaur Testing Catalog</title>
+    </metadata>
     <section>
         <title>This catalog</title>
         <p>For use in testing, especially structural transformations.</p>
@@ -45,14 +46,25 @@
                     <prop class="trans">King Tyrant Lizard</prop>
                 </subcontrol>
             </control>
-            <control id="velociraptor"/>
+            <control id="velociraptor">
+                <title>Velociraptor</title>
+            </control>
         </group>
         <group><title>Herbivores</title>
-            <control id="stegosaur"/>
-            <control id="triceratops"/>
+            <control id="stegosaur">
+                <title>Stegosaurus</title>
+            </control>
+            <control id="triceratops">
+                <title>Triceratops</title>
+            </control>
         </group>
         <group><title>Proto-avians</title>
-            <control id="archeopteryx"/>
+            <control id="archeopteryx">
+                <title>Archaeopteryx</title>
+                <part>
+                    <p><img src="unoh" /></p>
+                </part>
+            </control>
         </group>
     </group>
     

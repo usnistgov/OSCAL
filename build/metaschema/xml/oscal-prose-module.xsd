@@ -139,6 +139,7 @@
         <xs:element ref="oscal-prose:b"/>
         <xs:element ref="oscal-prose:sub"/>
         <xs:element ref="oscal-prose:sup"/>
+        <xs:element ref="oscal-prose:img"/>
       </xs:choice>
     </xs:sequence>
   </xs:group>
@@ -207,6 +208,12 @@
   <xs:element name="sup">
     <xs:complexType mixed="true">
       <xs:attributeGroup ref="oscal-prose:optionalClass"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="img">
+    <xs:complexType>
+      <xs:attribute name="alt"/>
+      <xs:attribute name="src" use="required" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <!-- Using HTML for this -->
