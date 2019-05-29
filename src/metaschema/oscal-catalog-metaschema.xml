@@ -19,7 +19,6 @@
   </remarks>
   
   <import href="oscal-metadata-metaschema.xml"/>
-  <import href="oscal-resources-metaschema.xml"/>
   
   <define-assembly name="catalog" group-as="control-catalog">
     <flag name="id" datatype="ID" required="yes"/>
@@ -32,12 +31,12 @@
     <model>
       <assembly named="metadata" required="yes"/>
       <!--<field named="declarations"/>-->
-      <assemblies named="section"/>
+      <!--<assemblies named="section"/>-->
       <choice>
         <assemblies named="group"/>
         <assemblies named="control"/>
       </choice>
-      <assembly named="back"/>
+      <assembly named="back-matter"/>
     </model>
     <example>
       <description>A small catalog with a single control</description>
@@ -50,12 +49,12 @@
     </example>
   </define-assembly>
 
-  <define-assembly name="back">
-    <flag name="id" datatype="ID"/>
-    <formal-name>Assets</formal-name>
+  <define-assembly name="back-matter">
+    <formal-name>Back matter</formal-name>
     <description>References, resources and attachments</description>
     <model>
-      <assembly   named="ref-list"/>
+      <!--<assemblies named="section"/>-->
+      <assembly named="citation-list"/>
       <assemblies named="resource"/>
     </model>
   </define-assembly>
@@ -68,7 +67,7 @@
     <description>Either a reference to a declarations file, or a set of declarations</description>
   </define-field>-->
 
-  <define-assembly name="section" group-as="sections">
+  <!--<define-assembly name="section" group-as="sections">
     <flag name="id" datatype="ID"/>
     <flag name="class"/>
     <formal-name>Section</formal-name>
@@ -77,10 +76,10 @@
       <field named="title" required="yes"/>
       <prose/>
       <assemblies named="section"/>
-      <assembly named="ref-list"/>
+      <assembly named="citation-list"/>
       <any/>
     </model>
-  </define-assembly>
+  </define-assembly>-->
 
   <define-assembly name="group" group-as="groups">
     <flag name="id" datatype="ID"/>
@@ -99,7 +98,7 @@
         <assemblies named="group"/>
         <assemblies named="control"/>
       </choice>
-      <assembly named="ref-list"/>
+      <!--<assembly named="ref-list"/>-->
       <any/>
     </model>
     <example>
@@ -129,7 +128,7 @@
       <fields named="link"/>
       <assemblies named="part"/>
       <assemblies named="subcontrol" address="id"/>
-      <assembly named="ref-list"/>
+      <!--<assembly named="ref-list"/>-->
       <any/>
     </model>
     <example>
@@ -150,7 +149,7 @@
       <fields named="prop"/>
       <fields named="link"/>
       <assemblies named="part"/>
-      <assembly named="ref-list"/>
+      <!--<assembly named="ref-list"/>-->
       <any/>
     </model>
   </define-assembly>
