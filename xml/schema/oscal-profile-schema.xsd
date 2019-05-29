@@ -949,7 +949,7 @@
          <xs:attribute name="order" type="xs:NCName">
             <xs:annotation>
                <xs:documentation>
-                  <b>Pattern: </b>A regular expression matching the IDs of one or more controls or subcontrols to be selected</xs:documentation>
+                  <b>Order: </b>A designation of how a selection of controls in a profile is to be ordered.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="with-control" type="xs:NCName">

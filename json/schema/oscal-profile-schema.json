@@ -1062,10 +1062,10 @@
         "$id" : "#/definitions/modify",
         "type" : "object",
         "properties" : 
-        { "param-settings" : 
+        { "settings" : 
           { "type" : "array",
             "items" : 
-            { "$ref" : "#/definitions/set-param" } },
+            { "$ref" : "#/definitions/set" } },
           "alterations" : 
           { "type" : "array",
             "items" : 
@@ -1073,7 +1073,7 @@
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
-          [ "set-param",
+          [ "set",
             "alter" ] } },
       "include" : 
       { "title" : "Include controls",
@@ -1180,19 +1180,19 @@
         { "enum" : 
           [ "call",
             "match" ] } },
-      "param-settings" : 
-      { "$id" : "#/definitions/param-settings",
+      "settings" : 
+      { "$id" : "#/definitions/settings",
         "type" : "object",
         "additionalProperties" : 
         { "type" : "object",
-          "$ref" : "#/definitions/set-param" } },
-      "set-param" : 
+          "$ref" : "#/definitions/set" } },
+      "set" : 
       { "title" : "Parameter Setting",
         "description" : "A parameter setting, to be propagated to points of insertion",
-        "$id" : "#/definitions/set-param",
+        "$id" : "#/definitions/set",
         "type" : "object",
         "properties" : 
-        { "id" : 
+        { "param-id" : 
           { "type" : "string" },
           "class" : 
           { "type" : "string" },
@@ -1225,7 +1225,7 @@
             { "$ref" : "#/definitions/part" } } },
         "propertyNames" : 
         { "enum" : 
-          [ "id",
+          [ "param-id",
             "class",
             "depends-on",
             "label",

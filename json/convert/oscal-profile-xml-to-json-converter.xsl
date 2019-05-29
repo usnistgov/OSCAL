@@ -789,9 +789,9 @@
    </xsl:template>
    <xsl:template match="modify" mode="xml2json">
       <map key="modify">
-         <xsl:if test="exists(set-param)">
-            <array key="param-settings">
-               <xsl:apply-templates select="set-param" mode="#current"/>
+         <xsl:if test="exists(set)">
+            <array key="settings">
+               <xsl:apply-templates select="set" mode="#current"/>
             </array>
          </xsl:if>
          <xsl:if test="exists(alter)">
@@ -860,9 +860,9 @@
          </xsl:if>
       </map>
    </xsl:template>
-   <xsl:template match="set-param" mode="xml2json">
-      <map key="{@id}">
-         <xsl:apply-templates mode="as-string" select="@id"/>
+   <xsl:template match="set" mode="xml2json">
+      <map key="{@param-id}">
+         <xsl:apply-templates mode="as-string" select="@param-id"/>
          <xsl:apply-templates mode="as-string" select="@class"/>
          <xsl:apply-templates mode="as-string" select="@depends-on"/>
          <xsl:apply-templates select="label" mode="#current"/>
