@@ -363,20 +363,18 @@
         
         <XSLT:key name="element-by-id" match="*[exists(@id)]" use="@id"/>
         
-        
-        <XSLT:template mode="md" match="a[starts-with(@href,'#')]">
-            <XSLT:variable name="link-target" select="key('element-by-id',substring-after(@href,'#'))"/>
+        <XSLT:template mode="md" match="a">
             <XSLT:text>[</XSLT:text>
-            <XSLT:value-of select="replace(.,'&lt;','&amp;lt;')"/>
+            <XSLT:value-of select="."/>
             <XSLT:text>]</XSLT:text>
-            <XSLT:text>(#</XSLT:text>
-            <XSLT:value-of select="$link-target/*[1] => normalize-space() => lower-case() => replace('\s+','-') => replace('[^a-z\-\d]','')"/>
+            <XSLT:text>(</XSLT:text>
+            <XSLT:value-of select="@href"/>
             <XSLT:text>)</XSLT:text>
         </XSLT:template>
         
         <XSLT:template match="text()" mode="md">
             <!-- Escapes go here       -->
-            <XSLT:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\$1')"/>
+            <XSLT:value-of select="replace(.,'\s+',' ') ! replace(.,'([`~\^\*])','\\$1')"/>
         </XSLT:template>
         
         

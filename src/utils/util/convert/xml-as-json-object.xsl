@@ -10,11 +10,18 @@
     <!--<xsl:output method="xml" indent="yes"/>-->
     <xsl:output method="text"/>
     
+    <xsl:variable name="json-indent">yes</xsl:variable>
+    <xsl:variable name="write-options" as="map(*)" expand-text="true">
+        <xsl:map>
+            <xsl:map-entry key="'indent'">{ $json-indent='yes' }</xsl:map-entry>
+        </xsl:map>
+    </xsl:variable>
+    
     <xsl:template match="/">
         <xsl:variable name="xpath-json">
             <xsl:apply-templates select="*" mode="cast"/>
         </xsl:variable>
-        <xsl:value-of select="xml-to-json($xpath-json)"/>
+        <xsl:value-of select="xml-to-json($xpath-json,$write-options)"/>
     </xsl:template>    
     
     <xsl:template match="/" mode="hide">
