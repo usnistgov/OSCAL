@@ -137,7 +137,7 @@ jobs: # a collection of steps
     steps: 
       - *checkout
       - *attach_build_workspace
-      #- install-saxon #using local JAR file for now
+      - install-saxon #using local JAR file for now
       - install-ajv
       - run:
           name: Generate round trip XML and JSON conversions
