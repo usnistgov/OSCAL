@@ -11,6 +11,18 @@ references:
   attach_build_workspace: &attach_build_workspace
     attach_workspace:
         at: build_artifacts
+<<<<<<< HEAD
+=======
+  persist_to_build_workspace: &persist_to_build_workspace
+    persist_to_workspace:
+      root: build_artifacts
+      paths:
+        - content # not needed?
+        - xml
+        - json
+        - docs
+        - build/ci-cd/temp
+>>>>>>> Temp Directory
   checkout: &checkout
     checkout:
       path: git-oscal
