@@ -10,9 +10,17 @@ yellow=$'\e[1;33m'
 blue=$'\e[1;34m'
 end=$'\e[0m'
 
+# set the OSCAL directory and pass in common environment
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
+fi
+
+# in CI/CD use the build directory for artifacts when passed in
+if [ -z "$1" ]; then
+  working_dir=$OSCALDIR
+else
+  working_dir=$1
 fi
 
 ###################################################################################################################
@@ -61,9 +69,9 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # transformation from source XML to target JSON
           if [ "$type" = "profile" ]; then
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
           else
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
@@ -76,9 +84,9 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # transformation of JSON back to XML
           if [ "$type" = "profile" ]; then
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
           else
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
@@ -90,8 +98,8 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           fi
 
           # compare the XML files to see if there is data loss
-          printf "Checking XML->JSON->XML conversion"
-          python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml"
+          printf "Checking XML->JSON->XML conversion \n"
+          python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "${working_dir}/build/ci-cd/temp/${baseName}-composed.xml"
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
               printf "${red}ERROR: XML roundtrip comparison failed for file: %s.\n${end}" "$baseName"
@@ -103,10 +111,10 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           #validate JSON schemas
           if [ "$type" = "profile" ]; then
               #validate the profile JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose 
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${working_dir}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose 
           else
               #validate the catalog JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${working_dir}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose
           fi
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
