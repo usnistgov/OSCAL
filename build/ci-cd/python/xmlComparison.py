@@ -1,27 +1,15 @@
 # imports
 import sys
 from lxml import etree
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
 from printColors import bcolors
 
 # get the file names from the command line arguments
 xml1 = sys.argv[1]
 xml2 = sys.argv[2]
 
-# open and read xml file 1
-with open(xml1, 'r') as xml1_file:
-    xml1_to_parse = xml1_file.read().encode('utf-8')
-
-# open and read xml file 2
-with open(xml2, 'r') as xml2_file:
-    xml2_to_parse = xml2_file.read().encode('utf-8')
-
 # parse the documents
-doc1 = etree.parse(StringIO(xml1_to_parse))
-doc2 = etree.parse(StringIO(xml2_to_parse))
+doc1 = etree.parse(xml1)
+doc2 = etree.parse(xml2)
 
 # get the root element
 root1 = doc1.getroot()
