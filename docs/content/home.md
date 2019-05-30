@@ -25,27 +25,27 @@ intro: |
   OSCAL is being developed through a collaborative approach with the public. It is designed to improve system security planning, assessment, and monitoring, with a technology that is both user- and developer-friendly.
   
   The [OSCAL GitHub repository](https://github.com/usnistgov/OSCAL) holds the current OSCAL schemas, examples, documentation source files, and other resources.
-  They are free to inspect, experiment with and use. Our [Resources page](/resources/) has links to off-site projects and toolkits relating to OSCAL. The NIST team welcomes public contributions to this project; if you are interested, please [contact us](/getinvolved/) to get started.
+  They are free to inspect, experiment with and use. Our [Resources page](resources/) has links to off-site projects and toolkits relating to OSCAL. The NIST team welcomes public contributions to this project; if you are interested, please [contact us](contact/) to get started.
 
 graphics:
   - image:
       src: /assets/uswds/img/dataCentric.png
-      alt: ''
+      alt: 'data centric'
     title: Data-centric
     description: Transitions the legacy approach to security plan generation and management (Word and Excel documents) to a data-centric approach based on common data standards such as XML/JSON.
   - image:
       src: /assets/uswds/img/extensible.png
-      alt: ''
+      alt: 'extensible'
     title: Extensible
     description: Puts security compliance data to work by allowing an extensible architecture that expresses security controls in both machine and human readable formats.
   - image:
       src: /assets/uswds/img/integrated.png
-      alt: ''
+      alt: 'integrated'
     title: Integrated
     description: Allows tool developers to implement APIs and provide a standards-based foundation for next generation compliance tools.
   - image:
       src: /assets/uswds/img/automated.png
-      alt: ''
+      alt: 'automated'
     title: Automated
     description: Apply the benefits of the data-centric approach to automate existing processes that are resource intensive.
 ---
