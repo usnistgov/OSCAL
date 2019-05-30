@@ -66,7 +66,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
       case $format in
       xml)
           # XML -> JSON -> XML round trip testing
-
+          printf "Working Dir1: %s\n" "$working_dir"
           # transformation from source XML to target JSON
           if [ "$type" = "profile" ]; then
               java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
@@ -83,6 +83,8 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           fi
 
           # transformation of JSON back to XML
+          printf "Working Dir2: %s\n" "$working_dir"
+          printf "Working Dir3: %s\n" "${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
           if [ "$type" = "profile" ]; then
               java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
           else
