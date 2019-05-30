@@ -210,6 +210,7 @@ jobs: # a collection of
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
+            sudo apt-get install maven
             sudo pip install lxml
             bash "$CICD_DIR/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
