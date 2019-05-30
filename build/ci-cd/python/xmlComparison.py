@@ -13,11 +13,11 @@ xml2 = sys.argv[2]
 
 # open and read xml file 1
 with open(xml1, 'r') as xml1_file:
-    xml1_to_parse = xml1_file.read()
+    xml1_to_parse = xml1_file.read().encode('utf-8')
 
 # open and read xml file 2
 with open(xml2, 'r') as xml2_file:
-    xml2_to_parse = xml2_file.read()
+    xml2_to_parse = xml2_file.read().encode('utf-8')
 
 # parse the documents
 doc1 = etree.parse(StringIO(xml1_to_parse))
