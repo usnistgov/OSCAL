@@ -93,7 +93,7 @@ executors:
     <<: *common_environment
   python-executor:
     docker: #run the python steps with Docker
-      - image: circleci/python:3.7.3-node-browser
+      - image: circleci/python:3.7.3-node-browsers
     <<: *common_environment 
 jobs: # a collection of 
   job-ci-skip-check:

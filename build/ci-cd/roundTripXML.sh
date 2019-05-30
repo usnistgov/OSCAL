@@ -58,7 +58,6 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
       case $format in
       xml)
           # XML -> JSON -> XML round trip testing
-          #file="/Users/jaredhowerton/oscalMaster/src/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml"
 
           # transformation from source XML to target JSON
           if [ "$type" = "profile" ]; then
