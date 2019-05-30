@@ -132,6 +132,19 @@ jobs: # a collection of steps
           name: Validate content instances
           command: |
             bash "${CICD_DIR}/validate-content.sh" "$OSCAL_BUILD_DIR"
+  job-roundtrip-conversions:
+    executor: python-executor
+    steps: 
+      - *checkout
+      - *attach_build_workspace
+      - install-saxon
+      - install-ajv
+      - run:
+          name: Generate round trip XML and JSON conversions
+          command: |
+            bash "$CICD_DIR/roundTripXML.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
+      - *persist_to_build_workspace
   job-generate-docs:
     executor: java-executor
     steps:
@@ -228,6 +241,9 @@ workflows:
            requires:
             - job-generate-converters
             - job-validate-content
+      - job-roundtrip-conversions:
+            requires:
+            - job-copy-and-convert-content
       - job-deploy-artifacts:
           requires:
             - job-copy-and-convert-content
