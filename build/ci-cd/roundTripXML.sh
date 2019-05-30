@@ -61,9 +61,9 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # transformation from source XML to target JSON
           if [ "$type" = "profile" ]; then
-              java -jar python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
           else
-              java -jar python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
@@ -76,9 +76,9 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # transformation of JSON back to XML
           if [ "$type" = "profile" ]; then
-              java -jar python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
           else
-              java -jar python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
+              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
@@ -91,7 +91,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # compare the XML files to see if there is data loss
           printf "Checking XML->JSON->XML conversion"
-          python python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml"
+          python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml"
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
               printf "${red}XML roundtrip comparison failed for file: %s.\n${end}" "$file"
