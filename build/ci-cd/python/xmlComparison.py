@@ -1,7 +1,10 @@
 # imports
-from lxml import etree
-from StringIO import StringIO
 import sys
+from lxml import etree
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 from printColors import bcolors
 
 # get the file names from the command line arguments
