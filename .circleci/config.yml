@@ -142,6 +142,7 @@ jobs: # a collection of steps
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
+            sudo pip install lxml
             bash "$CICD_DIR/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - *persist_to_build_workspace

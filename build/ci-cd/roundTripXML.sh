@@ -83,10 +83,10 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           # check the exit code for the conversion
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
-              printf "${red}JSON->XML conversion failed for file: %s\n${end}" "$file"
+              printf "${red}ERROR: JSON->XML conversion failed for file: %s\n${end}" "$file"
               exitcode=1
           else
-              printf "${green}JSON converted back to XML. \n${end}"
+              printf "${green}SUCCESS: JSON converted back to XML. \n${end}"
           fi
 
           # compare the XML files to see if there is data loss
@@ -94,10 +94,10 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml"
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
-              printf "${red}XML roundtrip comparison failed for file: %s.\n${end}" "$file"
+              printf "${red}ERROR: XML roundtrip comparison failed for file: %s.\n${end}" "$file"
               exitcode=1
           else
-              printf "${green}XML round trip comparison was successful.\n${end}"
+              printf "${green}SUCCESS: XML round trip comparison was successful.\n${end}"
           fi
 
           #validate JSON schemas
@@ -110,10 +110,10 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           fi
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-              printf "${red}Comparison of the converted JSON file to the original failed for file: %s.\n${end}" "$file"
+              printf "${red}ERROR: Comparison of the converted JSON file to the original failed for file: %s.\n${end}" "$file"
               exitcode=1
           else
-              printf "${green}Comparison of the converted JSON file to the original was successful.\n${end}"
+              printf "${green}SUCCESS: Comparison of the converted JSON file to the original was successful.\n${end}"
           fi
         ;;
       json)
