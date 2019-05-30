@@ -58,9 +58,9 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # transformation from source XML to target JSON
           if [ "$type" = "profile" ]; then
-              java -jar python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:composedJSON.json
+              java -jar python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/composedJSON.json
           else
-              java -jar python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:composedJSON.json
+              java -jar python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/composedJSON.json
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
@@ -73,9 +73,9 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # transformation of JSON back to XML
           if [ "$type" = "profile" ]; then
-              java -jar python/saxon9he.jar  -o:composedXML.xml -it:start -xsl:"$profileXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/composedJSON.json"
+              java -jar python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/composedXML.xml -it:start -xsl:"$profileXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/composedJSON.json"
           else
-              java -jar python/saxon9he.jar  -o:composedXML.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/composedJSON.json"
+              java -jar python/saxon9he.jar  -o:${OSCALDIR}/build/ci-cd/temp/composedXML.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/composedJSON.json"
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
@@ -88,7 +88,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # compare the XML files to see if there is data loss
           printf "Checking XML->JSON->XML conversion"
-          python python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/composedXML.xml"
+          python python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/temp/composedXML.xml"
           cmd_exitcode=$?
           if [ $cmd_exitcode != 0 ]; then
               printf "${red}XML roundtrip comparison failed for file: %s.\n${end}" "$file"
@@ -100,10 +100,10 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           #validate JSON schemas
           if [ "$type" = "profile" ]; then
               #validate the profile JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${OSCALDIR}/build/ci-cd/composedJSON.json"  --extend-refs=true --verbose 
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/composedJSON.json"  --extend-refs=true --verbose 
           else
               #validate the catalog JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/composedJSON.json"  --extend-refs=true --verbose
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/composedJSON.json"  --extend-refs=true --verbose
           fi
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
