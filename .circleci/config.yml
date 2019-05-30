@@ -18,7 +18,7 @@ references:
         - xml
         - json
         - docs
-        - build/ci-cd/temp
+        - build # for roundtrip artifacts
   checkout: &checkout
     checkout:
       path: git-checkout
