@@ -21,8 +21,12 @@ references:
         - xml
         - json
         - docs
+<<<<<<< HEAD
         - build/ci-cd/temp
 >>>>>>> Temp Directory
+=======
+        - build # for roundtrip artifacts
+>>>>>>> Shorten FileNames
   checkout: &checkout
     checkout:
       path: git-oscal
