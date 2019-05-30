@@ -92,9 +92,9 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
 
           # transformation of JSON back to XML
           if [ "$type" = "profile" ]; then
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
+              java -jar "$classpath"  -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
           else
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar  -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
+              java -jar "$classpath" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${working_dir}/build/ci-cd/temp/${baseName}-composed.json"
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
