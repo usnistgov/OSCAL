@@ -36,6 +36,12 @@ profileXMLConvertor=${OSCALDIR}/xml/convert/oscal-profile-json-to-xml-converter.
 catalogJSONConvertor=${OSCALDIR}/json/convert/oscal-catalog-xml-to-json-converter.xsl
 catalogXMLConvertor=${OSCALDIR}/xml/convert/oscal-catalog-json-to-xml-converter.xsl
 
+# initialize Saxon and get the path
+source $OSCALDIR/build/ci-cd/saxon-init.sh
+printf "SAXON: %s\n" "$SAXON_HOME"
+classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
+printf "ClassPath: %s\n" "$classpath"
+
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
@@ -69,9 +75,11 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           printf "Working Dir1: %s\n" "$working_dir"
           # transformation from source XML to target JSON
           if [ "$type" = "profile" ]; then
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
+              java -jar "$classpath" -s:"$file" -xsl:"$profileJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
+              #java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$profileJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
           else
-              java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
+              java -jar "$classpath" -s:"$file" -xsl:"$catalogJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
+              #java -jar ${OSCALDIR}/build/ci-cd/python/saxon9he.jar -s:"$file" -xsl:"$catalogJSONConvertor" -o:${working_dir}/build/ci-cd/temp/${baseName}-composed.json
           fi
           # check the exit code for the conversion
           cmd_exitcode=$?
