@@ -205,12 +205,12 @@ jobs: # a collection of
     steps: 
       - *checkout
       - *attach_build_workspace
-      - install-saxon #using local JAR file for now
       - install-ajv
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
             sudo apt-get install maven
+            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
             sudo pip install lxml
             bash "$CICD_DIR/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
