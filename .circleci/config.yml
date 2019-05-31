@@ -167,6 +167,35 @@ jobs: # a collection of steps
             mv docs "${OSCAL_BUILD_DIR}"/docs
       - *publish_artifacts
       - *persist_to_build_workspace
+  job-validate-site-content:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ .Branch }}
+            - gem-cache
+      - run:
+          name: Install Bundler
+          command: |
+            cd "${OSCAL_REPO_DIR}/docs"
+            echo gem install bundler
+            bundle install --path ~/jekyll-bundle
+      - run:
+          name: Build jekyll site
+          command: |
+            cp -vr "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
+            cd "${OSCAL_REPO_DIR}/docs"
+            bundle exec jekyll build -d _site/OSCAL
+            htmlproofer --assume-extension ./_site
+          environment:
+            JEKYLL_ENV: production
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ .Branch }}
+          paths:
+            - ~/jekyll-bundle
+      - *publish_artifacts
   job-build-and-deploy-site:
     executor: ruby-node-executor
     steps:
@@ -251,6 +280,19 @@ workflows:
            requires:
             - job-generate-converters
             - job-validate-content
+      - job-generate-docs:
+          requires:
+            - job-validate-metaschema
+            - job-generate-converters
+      - job-validate-site-content:
+          requires:
+            - job-generate-docs
+          filters:
+            branches:
+              # only from PRs
+              ignore:
+                - master
+                - nist-pages
       - job-deploy-artifacts:
           requires:
             - job-copy-and-convert-content

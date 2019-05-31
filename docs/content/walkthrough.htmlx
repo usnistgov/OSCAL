@@ -8,11 +8,11 @@ layout: post
 <div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
 
 <!-- OR ANY OTHER AMD LOADER HERE INSTEAD OF loader.js -->
-<script src="/node_modules/monaco-editor/min/vs/loader.js"></script>
+<script src="{{ site.baseurl }}/node_modules/monaco-editor/min/vs/loader.js"></script>
 <script>
     require.config({
         paths: {
-            'vs': '/node_modules/monaco-editor/min/vs'
+            'vs': '{{ site.baseurl }}/node_modules/monaco-editor/min/vs'
         }
     });
     require(['vs/editor/editor.main'], function() {
