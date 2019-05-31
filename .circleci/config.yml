@@ -11,17 +11,6 @@ references:
   attach_build_workspace: &attach_build_workspace
     attach_workspace:
         at: build_artifacts
-  persist_to_build_workspace: &persist_to_build_workspace
-    persist_to_workspace:
-      root: build_artifacts
-      paths:
-        - content # not needed?
-        - xml
-        - json
-        - docs
-        - svrl
-        - .runbuild
-        - .skipbuild
   checkout: &checkout
     checkout:
       path: git-oscal
@@ -136,7 +125,11 @@ jobs: # a collection of
             else
               touch "$OSCAL_BUILD_DIR/.runbuild"
             fi
-      - *persist_to_build_workspace
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - .runbuild
+            - .skipbuild
   job-validate-metaschema:
     executor: java-executor
     steps:
@@ -151,7 +144,10 @@ jobs: # a collection of
           command: |
             bash "$CICD_DIR/validate-metaschema.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
-      - *persist_to_build_workspace
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - svrl
   job-generate-schema:
     executor: java-executor
     steps: # a collection of executable commands
@@ -165,7 +161,11 @@ jobs: # a collection of
           command: |
             bash "$CICD_DIR/generate-schema.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
-      - *persist_to_build_workspace
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - xml
+            - json
   job-generate-converters:
     executor: java-executor
     steps: # a collection of executable commands
@@ -178,7 +178,11 @@ jobs: # a collection of
           command: |
             bash "$CICD_DIR/generate-content-converters.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
-      - *persist_to_build_workspace
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - xml
+            - json
   job-copy-and-convert-content:
     executor: java-executor
     steps: # a collection of executable commands
@@ -191,7 +195,10 @@ jobs: # a collection of
           command: |
             bash "$CICD_DIR/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
-      - *persist_to_build_workspace
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - content # not needed?
   job-validate-content:
     executor: java-executor
     steps:
@@ -219,7 +226,10 @@ jobs: # a collection of
             echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
             mv docs "$OSCAL_BUILD_DIR"/docs
       - *publish_artifacts
-      - *persist_to_build_workspace
+      - persist_to_workspace:
+          root: build_artifacts
+          paths:
+            - docs
   job-deploy-artifacts:
     executor: java-executor
     steps: # a collection of executable commands
