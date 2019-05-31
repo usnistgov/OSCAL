@@ -69,10 +69,10 @@ code {  display: inline; font-family: monospace }
 q {  display: inline; background-color: lemonchiffon }
 em {  display: inline; font-style: italic }
 
-example { background-color: lavender }
+example { background-color: lavender; white-space: pre; }
 
-example *:before { content: '<' oxy_name() '>'; font-size: 80%  }
-example *:after { content: '</' oxy_name() '>'; font-size: 80%  }
+example *:before { content: '<' oxy_name() '>'; font-family: monospace; font-size: 80%  }
+example *:after { content: '</' oxy_name() '>'; font-family: monospace; font-size: 80%  }
 
 model { padding-left: 0.5em; border-left: medium solid blue; font-size: 80%; padding-right: 2em }
 

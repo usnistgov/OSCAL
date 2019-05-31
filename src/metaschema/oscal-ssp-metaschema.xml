@@ -29,8 +29,8 @@
 
 	<!-- IMPORT STATEMENTS -->
 
-	<import href="oscal-catalog-metaschema.xml" />
-	<import href="oscal-profile-metaschema.xml" />
+	<!--<import href="oscal-catalog-metaschema.xml" />
+	<import href="oscal-profile-metaschema.xml" />-->
 
 	<!-- TOP LEVEL ASSEMBLY -->
 

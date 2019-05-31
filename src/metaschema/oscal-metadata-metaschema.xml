@@ -22,6 +22,7 @@
     <model>
       <assembly named="metadata"/>
       <assembly named="citation-list"/>
+      <assembly named="resource"/>
     </model>
   </define-assembly>
   
@@ -36,7 +37,6 @@
       <fields     named="doc-id"/>
       <fields     named="prop"/>
       <fields     named="link"/>
-      <assemblies named="resource"/>
       <assemblies named="role"/>
       <assemblies named="party"/>
       <assembly   named="notes"/>
@@ -95,11 +95,13 @@
   </define-flag>
 
   <define-field name="doc-id" group-as="document-ids">
-    <flag name="type"/>
+    <flag name="type" required="yes"/>
     <formal-name>Document Identifier</formal-name>
     <description>Any sort of document identifier, name, code, path or other indicator of where and how this document
       may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <code>rel</code>, this value may point to <q>the same</q> or <q>another version</q> of the document.</description>
     <remarks>
+      <p>DOIs (digital object identifiers) are preferred. By means of a DOI or other document ID
+      lookup, a full bibliographic record for an item should be retrievable.</p>
       <p>Flags <code>rel</code> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p>
       <p>Specific usage rules, nomenclatures and recognized file types e.g. DOIs, CMS locators, etc
         etc., may be defined at application level. The value of this field may also be a hash or check sum.</p>
@@ -191,18 +193,16 @@
     <description>An identifier for an organization using a designated scheme.</description>
   </define-field>
   
-  <define-assembly name="hlink" group-as="hashed-links">
+  <define-assembly name="rlink" group-as="rlinks">
     <flag name="href" datatype="anyURI" required="yes"/>
-    <!--<flag name="rel"  datatype="NCName"/>-->
     <flag name="media-type"/>
-    <formal-name>Hashed link</formal-name>
-    <description>A pointer to an external document with optional hash for verification</description>
+    <formal-name>Related link</formal-name>
+    <description>A pointer to an external copy of a document with optional hash for verification</description>
     <remarks>
       <p>This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p>
     </remarks>
     <model>
-      <field  named="title"/>
-      <fields named="hash"/>
+      <field named="hash"/>
     </model>
   </define-assembly>
   
@@ -338,13 +338,13 @@
       <!--<field    named="title"/>-->
       <!--<fields   named="author"/>-->
       <!--<field    named="format"/>-->
-      <assembly named="description" />
+      <field named="desc" />
       <!--<field    named="date"/>-->
       <!--<field    named="version"/>-->
       <!--<fields   named="doc-id"/>-->
       <!--<fields   named="prop"/>-->
       <choice>
-        <assemblies named="hlink"/>
+        <assemblies named="rlink"/>
         <field      named="base64" />
       </choice>
       <assembly named="notes"/>
@@ -352,7 +352,7 @@
   </define-assembly>
   
   <define-field name="hash" group-as="hashes">
-    <flag name="algorithm"/>
+    <flag name="algorithm" required="yes"/>
     <formal-name>Hash</formal-name>
     <description>A document hash or other value subject to cryptographic authentication</description>
     <remarks>
@@ -548,13 +548,6 @@
     <description>A title for display and navigation, exclusive of more specific properties</description>
   </define-field>
   
-  <define-assembly name="description">
-    <formal-name>Description</formal-name>
-    <description>A free-text description of the system.</description>
-    <model>
-      <prose/>
-    </model>
-  </define-assembly>
   
   
   
@@ -591,7 +584,7 @@
       <!--<fields named="link"/>-->
       <!--<assemblies named="ref"/>
 			<assemblies named="ref-list"/>-->
-      <fields named="citation"/>
+      <assemblies named="citation"/>
     </model>		
   </define-assembly>
   
@@ -607,18 +600,34 @@
 		</model>
 	</define-assembly>-->
   
-  <define-field name="citation" group-as="citations" as="mixed">
+  <define-assembly name="citation" group-as="citations">
     <flag name="id" datatype="ID"/>
-    <flag name="href" datatype="anyURI"/>
     <formal-name>Citation</formal-name>
     <description>Citation of a resource</description>
     <remarks>
-      <p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin
-        matches with bibliograpical databases, it is recommended a canonical
+      <p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishing matches with bibliograpical databases, it is recommended a canonical
         identifier such as a DOI be provided for any citation.</p>
+      <p>Within this element, a generic <code>title</code> can cite a title, or if citation information takes the form of a bibliographic entry, <code>p</code> can be deployed.</p>
+    </remarks>
+    <model>
+      <fields named="target"/>
+      <field named="title"/>
+      <field named="desc"/>
+      <fields named="doc-id"/>
+      <any/>
+    </model>
+  </define-assembly>
+  
+  <define-field name="target" group-as="targets">
+    <formal-name>Citation target</formal-name>
+    <description>An address for retrieval of a citation</description>
+    <remarks>
+      <p>Semantically equivalent to an <code>href</code> (flag), this is represented as a field in order to permit citations to carry an extra target (for cross-check or fallback) and to permit further qualification (with flags of its own) in future.</p>
+      <p>This value is expected to be a URI, and may be an internal link to
+      another object such as a <code>resource</code> documented in back matter.</p>
+      <p>When a citation is given as a full (but unparsed) bibliographic citation, use <code>desc</code> instead
+      of <code>title</code> inside this object.</p>
     </remarks>
   </define-field>
   
-  
-
 </METASCHEMA>
