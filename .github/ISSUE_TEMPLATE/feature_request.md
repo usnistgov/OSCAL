@@ -7,14 +7,18 @@ assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+# User Story:
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+As an OSCAL {stakeholder}, I ... provide a clear and concise description of what the problem is. Ex. I need to be able to do [...]
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## Goals:
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+A clear and concise description of what you want to happen. This should be outcome focused. Include concise description of any alternative solutions or features you've considered. Feel free to include screenshots or examples about the feature request here.
+
+## Dependencies:
+
+Describe any previous issues or related work that must be completed to start or complete this issue.
+
+## Acceptance Criteria
+
+Describe what must be completed for this issue to be considered resolved.

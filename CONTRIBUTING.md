@@ -22,8 +22,8 @@ Contributions are welcome in any of these areas. For information on the project'
 ## Issue reporting and handling
 
 All requests for changes and enhancements to OSCAL are initiated through the project's [GitHub issue tracker](https://github.com/usnistgov/OSCAL/issues). To initiate a request, please [create a new issue](https://help.github.com/articles/creating-an-issue/). The following issue templates exist for creating a new issue:
-* [User Story](https://github.com/usnistgov/OSCAL/issues/new?template=user-story_template.md&labels=User+Story): Use to describe a new feature or capability to be added to OSCAL.
-* [Defect Report](https://github.com/usnistgov/OSCAL/issues/new?template=defect-template.md&labels=bug): Use to report a problem with an existing OSCAL feature or capability.
+* [User Story](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md): Use to describe a new feature or capability to be added to OSCAL.
+* [Defect Report](https://github.com/usnistgov/OSCAL/issues/new?template=bug_report.md): Use to report a problem with an existing OSCAL feature or capability.
 * [Question](https://github.com/usnistgov/OSCAL/issues/new?template=question_template.md&labels=question): Use to ask a question about OSCAL.
 
 The core OSCAL project team regularly reviews the open issues, prioritizes their handling, and updates the issue statuses and comments as needed.
