@@ -240,22 +240,31 @@ jobs: # a collection of
           name: Commit Artifacts
           command: |
             cd "${OSCAL_REPO_DIR}"
+            # Remove existing generated files
             git rm -r --ignore-unmatch xml/convert/*.xsl
             git rm -r --ignore-unmatch xml/schema/*.xsd
             git rm -r --ignore-unmatch json/convert/*.xsl
             git rm -r --ignore-unmatch json/schema/*.json
             git rm -r --ignore-unmatch content/**/*.json
             git rm -r --ignore-unmatch content/**/*.xml
+            # Copy new built files to repo
             cd -
             cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             cd "$OSCAL_REPO_DIR"
+            # add the new files
             git add -f --all xml
             git add -f --all json
             git add -f --all content
+            # check for changes
+            echo "Changed files:"
+            git diff --name-only $(git merge-base origin/master HEAD)
+            # Setup deployment
             git config user.name "Deployment Bot"
             git commit --allow-empty -m "Deploying content [ci deploy skip]"
+            # Ensure we are deploying against the latest
             git fetch
             git rebase origin/master
+            # deploy
             git push
       - *publish_artifacts
   job-validate-site-content:
