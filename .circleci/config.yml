@@ -121,9 +121,9 @@ jobs: # a collection of
             COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
             if [[ $COMMIT_MSG == *"[ci deploy skip]"* ]]; then
               echo "[ci deploy skip] detected. Stopping."
-              touch "$OSCAL_BUILD_DIR/.skipbuild"
+              echo "branch: $CIRCLE_BRANCH" > "$OSCAL_BUILD_DIR/.skipbuild"
             else
-              touch "$OSCAL_BUILD_DIR/.runbuild"
+              echo "branch: $CIRCLE_BRANCH" > "$OSCAL_BUILD_DIR/.runbuild"
             fi
       - persist_to_workspace:
           root: build_artifacts
