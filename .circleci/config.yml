@@ -71,17 +71,23 @@ commands:
     description: "Installs Maven"
     steps:
       - run:
-        name: Get Maven
-        command: |
-          sudo apt-get install maven
+          name: Get Maven
+          command: |
+            sudo apt-get install maven
   install-lxml:
     description: "Installs Python lxml package"
     steps:
       - run:
+<<<<<<< HEAD
         name: Get lxml
         command: |
           sudo pip install lxml
 >>>>>>> Refactor CI/CD
+=======
+          name: Get lxml
+          command: |
+            sudo pip install lxml
+>>>>>>> CI/CD Bug Fix
   install-xmllint:
     description: "Retrieve xmllint and setup the environment to run it"
     steps:
