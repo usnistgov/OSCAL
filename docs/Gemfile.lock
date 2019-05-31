@@ -18,6 +18,15 @@ GEM
     eventmachine (1.2.7)
     ffi (1.10.0)
     forwardable-extended (2.6.0)
+    html-proofer (3.10.2)
+      activesupport (>= 4.2, < 6.0)
+      addressable (~> 2.3)
+      colorize (~> 0.8)
+      mercenary (~> 0.3.2)
+      nokogiri (~> 1.9)
+      parallel (~> 1.3)
+      typhoeus (~> 1.3)
+      yell (~> 2.0)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -74,4 +83,4 @@ DEPENDENCIES
   uswds-jekyll!
 
 BUNDLED WITH
-   1.17.1
+  1.17.1

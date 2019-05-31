@@ -53,7 +53,7 @@ NIST's Open Security Controls Assessment Language (OSCAL) serves as a "Standard 
 
 ## The OSCAL approach
 
-OSCAL is being developed leveraging an incremental and agile approach. Through a series of development sprints, increased value is provided with a focus on an 80% solution (Minimally Viable Product (MVP)) that can be implemented in 20% of the time. OSCAL is a community-driven, NIST-led project, with an open invition to the community to participate in the framing and development of OSCAL. User stories can be created and submitted directly into GitHub per the requirements defined in the OSCAL CONTRIBUTING.MD. To learn more, [contact us](contact).
+OSCAL is being developed leveraging an incremental and agile approach. Through a series of development sprints, increased value is provided with a focus on an 80% solution (Minimally Viable Product (MVP)) that can be implemented in 20% of the time. OSCAL is a community-driven, NIST-led project, with an open invition to the community to participate in the framing and development of OSCAL. User stories can be created and submitted directly into GitHub per the requirements defined in the OSCAL CONTRIBUTING.MD. To learn more, [contact us]({{ site.baseurl }}/contact/).
 <!-- Include link to CONTRIBUTING.MD -->
 
 ### OSCAL Guiding Principles

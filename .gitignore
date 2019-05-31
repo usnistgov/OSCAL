@@ -24,6 +24,9 @@ content
 xml
 json
 svrl
+.skipbuild
+.runbuild
+
 # but allow markdown files
 !content/**/*.md
 !xml/**/*.md

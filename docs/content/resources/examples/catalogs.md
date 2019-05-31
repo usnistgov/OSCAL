@@ -14,7 +14,7 @@ subnav:
 
 ## NIST 800-53
 
-A complete representation of [NIST 800-53 encoded in OSCAL](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_catalog.xml) including materials from Appendix A (Assessments and Objectives), is available on the OSCAL web site.
+A complete representation of [NIST 800-53 encoded in OSCAL](https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml) including materials from Appendix A (Assessments and Objectives), is available on the OSCAL web site.
 
 Here is a (non-normative, partial) copy showing how control **AC1** from NIST SP800-53 can be rendered in OSCAL in XML with a `<control>` element. A short walkthrough follows.
 
