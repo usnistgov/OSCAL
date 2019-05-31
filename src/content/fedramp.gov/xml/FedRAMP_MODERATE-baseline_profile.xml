@@ -1234,7 +1234,7 @@
 		<!-- - - AC-2 (5) - -  -->
 		<alter subcontrol-id="ac-2.5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: should use a shorter timeframe than AC-12.</p>
 				</part>
 			</add>
@@ -1243,7 +1243,7 @@
 		<!-- - - AC-2 (9) - -  -->
 		<alter subcontrol-id="ac-2.9">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Required if shared/group accounts are deployed</p>
 				</part>
 			</add>
@@ -1251,7 +1251,7 @@
 		<!-- - - AC-2 (10) - -  -->
 		<alter subcontrol-id="ac-2.10">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Required if shared/group accounts are deployed</p>
 				</part>
 			</add>
@@ -1259,7 +1259,7 @@
 		<!-- - - AC-2 (12) - -  -->
 		<alter subcontrol-id="ac-2.12">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Guidance: Required for privileged accounts.</p>
 					<p>(b) Guidance: Required for privileged accounts.</p>
 				</part>
@@ -1271,7 +1271,7 @@
 		<!-- - - AC-5 - -  -->
 		<alter control-id="ac-5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Additional FedRAMP Requirements and Guidance:</p>
 					<p>Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.</p>
 				</part>
@@ -1282,7 +1282,7 @@
 		<!-- - - AC-6 (2) - -  -->
 		<alter subcontrol-id="ac-6.2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.</p>
 				</part>
 			</add>
@@ -1294,7 +1294,7 @@
 		<!-- - - AC-8 - -  -->
 		<alter control-id="ac-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB.</p>
 					<p>Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB.</p>
 					<p>Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. AC-8 Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB.</p>
@@ -1330,7 +1330,7 @@
 		<!-- - - AU-2 - -  -->
 		<alter control-id="au-2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
 				</part>
 			</add>
@@ -1338,7 +1338,7 @@
 		<!-- - - AU-2 (3) - -  -->
 		<alter subcontrol-id="au-2.3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the JAB.</p>
 				</part>
 			</add>
@@ -1347,7 +1347,7 @@
 		<!-- - - AU-3 (1) - -  -->
 		<alter subcontrol-id="au-3.1">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider defines audit record types. The audit record types are approved and accepted by the JAB/AO. Guidance: For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.</p>
 				</part>
 			</add>
@@ -1357,7 +1357,7 @@
 		<!-- - - AU-6 - -  -->
 		<alter control-id="au-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
 				</part>
 			</add>
@@ -1370,7 +1370,7 @@
 		<!-- - - AU-8 (1) - -  -->
 		<alter subcontrol-id="au-8.1">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.</p>
 					<p>Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.</p>
 					<p>Guidance: Synchronization of system clocks improves the accuracy of log analysis.</p>
@@ -1383,7 +1383,7 @@
 		<!-- - - AU-11 - -  -->
 		<alter control-id="au-11">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
 				</part>
 			</add>
@@ -1394,7 +1394,7 @@
 		<!-- - - CA-2 (1) - -  -->
 		<alter subcontrol-id="ca-2.1">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Must use an accredited 3PAO for JAB authorization</p>
 				</part>
 			</add>
@@ -1402,7 +1402,7 @@
 		<!-- - - CA-2 (2) - -  -->
 		<alter subcontrol-id="ca-2.2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: To include 'announced', 'vulnerability scanning'</p>
 				</part>
 			</add>
@@ -1412,7 +1412,7 @@
 		<!-- - - CA-3 (3) - -  -->
 		<alter subcontrol-id="ca-3.3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.</p>
 				</part>
 			</add>
@@ -1420,7 +1420,7 @@
 		<!-- - - CA-3 (5) - -  -->
 		<alter subcontrol-id="ca-3.5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</p>
 				</part>
 			</add>
@@ -1428,7 +1428,7 @@
 		<!-- - - CA-5 - -  -->
 		<alter control-id="ca-5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
 				</part>
 			</add>
@@ -1436,7 +1436,7 @@
 		<!-- - - CA-6 - -  -->
 		<alter control-id="ca-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>-c. Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
 				</part>
 			</add>
@@ -1444,7 +1444,7 @@
 		<!-- - - CA-7 - -  -->
 		<alter control-id="ca-7">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually</p>
 					<p>Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
 					<p>Operating System Scans: at least monthly</p>
@@ -1466,7 +1466,7 @@
 		<!-- - - CM-3 - -  -->
 		<alter control-id="cm-3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.</p>
 					<p>-e Guidance: In accordance with record retention policies and procedures.</p>
 				</part>
@@ -1478,7 +1478,7 @@
 		<!-- - - CM-5 (3) - -  -->
 		<alter subcontrol-id="cm-5.3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</p>
 				</part>
 			</add>
@@ -1487,7 +1487,7 @@
 		<!-- - - CM-6 - -  -->
 		<alter control-id="cm-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.</p>
 					<p>(a) Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).</p>
 					<p>(a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
@@ -1498,7 +1498,7 @@
 		<!-- - - CM-7 - -  -->
 		<alter control-id="cm-7">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
 					<p>Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
 					<p>(Partially derived from AC-17(8).)</p>
@@ -1509,7 +1509,7 @@
 		<!-- - - CM-7 (2) - -  -->
 		<alter subcontrol-id="cm-7.2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.</p>
 				</part>
 			</add>
@@ -1518,7 +1518,7 @@
 		<!-- - - CM-8 - -  -->
 		<alter control-id="cm-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: must be provided at least monthly or when there is a change.</p>
 				</part>
 			</add>
@@ -1534,7 +1534,7 @@
 		<!-- - - CP-2 - -  -->
 		<alter control-id="cp-2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
 				</part>
 			</add>
@@ -1547,7 +1547,7 @@
 		<!-- - - CP-4 - -  -->
 		<alter control-id="cp-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a). Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
 				</part>
 			</add>
@@ -1559,7 +1559,7 @@
 		<!-- - - CP-7 - -  -->
 		<alter control-id="cp-7">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a). Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
 				</part>
 			</add>
@@ -1567,7 +1567,7 @@
 		<!-- - - CP-7 (1) - -  -->
 		<alter subcontrol-id="cp-7.1">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.</p>
 				</part>
 			</add>
@@ -1577,7 +1577,7 @@
 		<!-- - - CP-8 - -  -->
 		<alter control-id="cp-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
 				</part>
 			</add>
@@ -1587,7 +1587,7 @@
 		<!-- - - CP-9 - -  -->
 		<alter control-id="cp-9">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
 					<p>(a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.</p>
 					<p>(b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.</p>
@@ -1609,7 +1609,7 @@
 		<!-- - - IA-2 (11) - -  -->
 		<alter subcontrol-id="ia-2.11">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.</p>
 				</part>
 			</add>
@@ -1617,7 +1617,7 @@
 		<!-- - - IA-2 (12) - -  -->
 		<alter subcontrol-id="ia-2.12">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
 				</part>
 			</add>
@@ -1626,7 +1626,7 @@
 		<!-- - - IA-4 - -  -->
 		<alter control-id="ia-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(e) Requirement: The service provider defines time period of inactivity for device identifiers.</p>
 					<p>Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
 				</part>
@@ -1640,7 +1640,7 @@
 		<!-- - - IA-5 (4) - -  -->
 		<alter subcontrol-id="ia-5.4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Additional FedRAMP Requirements and Guidance: Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.</p>
 				</part>
 			</add>
@@ -1660,7 +1660,7 @@
 		<!-- - - IR-3 - -  -->
 		<alter control-id="ir-3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>-2 Requirement 1: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended).</p>
 					<p>-2 Requirement 2: For JAB Authorization, the service provider provides test plans to the JAB/AO annually.</p>
 					<p>-2 Requirement 3: Test plans are approved and accepted by the Authorizing Official (AO) prior to test commencing.</p>
@@ -1671,7 +1671,7 @@
 		<!-- - - IR-4 - -  -->
 		<alter control-id="ir-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
 				</part>
 			</add>
@@ -1681,7 +1681,7 @@
 		<!-- - - IR-6 - -  -->
 		<alter control-id="ir-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Reports security incident information according to FedRAMP Incident Communications Procedure.</p>
 				</part>
 			</add>
@@ -1693,7 +1693,7 @@
 		<!-- - - IR-8 - -  -->
 		<alter control-id="ir-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
 					<p>(e) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
 				</part>
@@ -1716,7 +1716,7 @@
 		<!-- - - MA-5 (1) - -  -->
 		<alter subcontrol-id="ma-5.1">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Only MA-5 (1)(a)(1) is required by FedRAMP Moderate Baseline</p>
 				</part>
 			</add>
@@ -1727,7 +1727,7 @@
 		<!-- - - MP-3 - -  -->
 		<alter control-id="mp-3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Guidance: Second parameter not-applicable</p>
 				</part>
 			</add>
@@ -1735,7 +1735,7 @@
 		<!-- - - MP-4 - -  -->
 		<alter control-id="mp-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Additional FedRAMP Requirements and Guidance: Requirement: The service provider defines controlled areas within facilities where the information and information system reside.</p>
 				</part>
 			</add>
@@ -1743,7 +1743,7 @@
 		<!-- - - MP-5 - -  -->
 		<alter control-id="mp-5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Additional FedRAMP Requirements and Guidance:</p>
 					<p>Requirement: The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.</p>
 				</part>
@@ -1754,7 +1754,7 @@
 		<!-- - - MP-6 (2) - -  -->
 		<alter subcontrol-id="mp-6.2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Equipment and procedures may be tested or validated for effectiveness</p>
 				</part>
 			</add>
@@ -1779,7 +1779,7 @@
 		<!-- - - PE-14 - -  -->
 		<alter control-id="pe-14">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a). Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
 				</part>
 			</add>
@@ -1796,7 +1796,7 @@
 		<!-- - - PL-8 - -  -->
 		<alter control-id="pl-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
 				</part>
 			</add>
@@ -1815,7 +1815,7 @@
 		<!-- - - RA-3 - -  -->
 		<alter control-id="ra-3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.</p>
 					<p>(d) Requirement: Include all Authoring Officials and FedRAMP ISSOs.</p>
 				</part>
@@ -1824,7 +1824,7 @@
 		<!-- - - RA-5 - -  -->
 		<alter control-id="ra-5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
 					<p>(e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
 				</part>
@@ -1837,7 +1837,7 @@
 		<!-- - - RA-5 (6) - -  -->
 		<alter subcontrol-id="ra-5.6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: include in Continuous Monitoring ISSO digest/report to JAB/AO</p>
 				</part>
 			</add>
@@ -1845,7 +1845,7 @@
 		<!-- - - RA-5 (8) - -  -->
 		<alter subcontrol-id="ra-5.8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirements: This enhancement is required for all high vulnerability scan findings. Guidance: While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
 				</part>
 			</add>
@@ -1856,7 +1856,7 @@
 		<!-- - - SA-4 - -  -->
 		<alter control-id="sa-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.</p>
 					<p>See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html.</p>
 				</part>
@@ -1867,7 +1867,7 @@
 		<!-- - - SA-4 (8) - -  -->
 		<alter subcontrol-id="sa-4.8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: CSP must use the same security standards regardless of where the system component or information system service is acquired.</p>
 				</part>
 			</add>
@@ -1884,7 +1884,7 @@
 		<!-- - - SA-10 - -  -->
 		<alter control-id="sa-10">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(e)  Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.</p>
 				</part>
 			</add>
@@ -1894,7 +1894,7 @@
 		<!-- - - SA-11 (1) - -  -->
 		<alter subcontrol-id="sa-11.1">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
 				</part>
 			</add>
@@ -1903,7 +1903,7 @@
 		<!-- - - SA-11 (8) - -  -->
 		<alter subcontrol-id="sa-11.8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
 				</part>
 			</add>
@@ -1923,7 +1923,7 @@
 		<!-- - - SC-7 (13) - -  -->
 		<alter subcontrol-id="sc-7.13">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</p>
 				</part>
 			</add>
@@ -1935,7 +1935,7 @@
 		<!-- - - SC-12 - -  -->
 		<alter control-id="sc-12">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Federally approved cryptography</p>
 				</part>
 			</add>
@@ -1946,7 +1946,7 @@
 		<!-- - - SC-15 - -  -->
 		<alter control-id="sc-15">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Additional FedRAMP Requirements and Guidance:</p>
 					<p>Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
 				</part>
@@ -1962,7 +1962,7 @@
 		<!-- - - SC-28 - -  -->
 		<alter control-id="sc-28">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest.</p>
 				</part>
 			</add>
@@ -1980,7 +1980,7 @@
 		<!-- - - SI-4 - -  -->
 		<alter control-id="si-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
 				</part>
 			</add>
@@ -1991,7 +1991,7 @@
 		<!-- - - SI-4 (5) - -  -->
 		<alter subcontrol-id="si-4.5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: In accordance with the incident response plan.</p>
 				</part>
 			</add>

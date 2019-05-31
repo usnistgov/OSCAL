@@ -97,6 +97,40 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
+   <xs:element name="prop">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Property: </b>A value with a name, attributed to the containing control, subcontrol, part,
+      or group.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Name: </b>Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="ns" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Namespace: </b>A namespace qualifying the name.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class" type="xs:NMTOKENS">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of a property, part or other
+      object</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
    <xs:element name="party">
       <xs:annotation>
          <xs:documentation>
@@ -543,27 +577,6 @@
          <xs:group ref="oscal-profile:everything-inline"/>
       </xs:complexType>
    </xs:element>
-   <xs:element name="prop">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Property: </b>A value with a name, attributed to the containing control, subcontrol, part,
-          or group.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="id" type="xs:ID">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="class" type="xs:NMTOKENS" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
    <xs:element name="param">
       <xs:annotation>
          <xs:documentation>
@@ -590,7 +603,8 @@
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of a property, part or other
+      object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="depends-on" type="xs:IDREF">
@@ -704,10 +718,23 @@
                   <b>ID / identifier: </b>Unique identifier</xs:documentation>
             </xs:annotation>
          </xs:attribute>
+         <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Name: </b>Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="ns" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Namespace: </b>A namespace qualifying the name.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of a property, part or other
+      object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -967,7 +994,8 @@
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+                  <b>Class: </b>Indicating the type or classification of a property, part or other
+      object</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="depends-on" type="xs:IDREF">

@@ -1618,7 +1618,7 @@
 		<!-- - - AC-1 - -  -->
 		<alter control-id="ac-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1626,7 +1626,7 @@
 		<!-- - - AC-2 - -  -->
 		<alter control-id="ac-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1634,7 +1634,7 @@
 		<!-- - - AC-2 (1) - -  -->
 		<alter subcontrol-id="ac-2.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1642,7 +1642,7 @@
 		<!-- - - AC-2 (2) - -  -->
 		<alter subcontrol-id="ac-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1650,10 +1650,10 @@
 		<!-- - - AC-2 (3) - -  -->
 		<alter subcontrol-id="ac-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider defines the time period for non-user accounts (e.g., accounts associated with devices).  The time periods are approved and accepted by the JAB/AO. Where user management is a function of the service, reports of activity of consumer users shall be made available.</p>
 				</part>
 			</add>
@@ -1661,7 +1661,7 @@
 		<!-- - - AC-2 (4) - -  -->
 		<alter subcontrol-id="ac-2.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1669,10 +1669,10 @@
 		<!-- - - AC-2 (5) - -  -->
 		<alter subcontrol-id="ac-2.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Should use a shorter timeframe than AC-12.</p>
 				</part>
 			</add>
@@ -1680,7 +1680,7 @@
 		<!-- - - AC-2 (7) - -  -->
 		<alter subcontrol-id="ac-2.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1688,10 +1688,10 @@
 		<!-- - - AC-2 (9) - -  -->
 		<alter subcontrol-id="ac-2.9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Required if shared/group accounts are deployed</p>
 				</part>
 			</add>
@@ -1699,10 +1699,10 @@
 		<!-- - - AC-2 (10) - -  -->
 		<alter subcontrol-id="ac-2.10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Required if shared/group accounts are deployed</p>
 				</part>
 			</add>
@@ -1710,7 +1710,7 @@
 		<!-- - - AC-2 (11) - -  -->
 		<alter subcontrol-id="ac-2.11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NIST added this control to the NIST High Baseline during the 1/15/2015</p>
 				</part>
 			</add>
@@ -1718,10 +1718,10 @@
 		<!-- - - AC-2 (12) - -  -->
 		<alter subcontrol-id="ac-2.12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Guidance: Required for privileged accounts.</p>
 					<p>(b) Guidance: Required for privileged accounts.</p>
 				</part>
@@ -1730,7 +1730,7 @@
 		<!-- - - AC-2 (13) - -  -->
 		<alter subcontrol-id="ac-2.13">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1738,7 +1738,7 @@
 		<!-- - - AC-3 - -  -->
 		<alter control-id="ac-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1746,7 +1746,7 @@
 		<!-- - - AC-4 - -  -->
 		<alter control-id="ac-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1754,7 +1754,7 @@
 		<!-- - - AC-4 (8) - -  -->
 		<alter subcontrol-id="ac-4.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. If there is a significant high-impact risk of inadvertent or intentional data leakage with a system deployed in a shared-service environment, this control is justified to mitigate that risk. Similar justification applies when an organization needs to ensure data isolation between different types of information enclaves within the organization.</p>
 					<p>ANALYSIS. Although this control is usually employed to control flows between different classified enclaves, it  can also apply to non-classified scenarios (e.g., the need to isolate legal, personnel, health-related, financial, or other information or files deemed sensitive.</p>
 					<p>SAMPLE THREAT VECTORS.  Sensitive free-text information passes from the personnel department to the rest of the organization. Law-enforcement sensitive information is inadvertently pulled from the organization's general counsel case management system and passed outside the department to users without authorization to view that information. HIPAA-protected health information flows freely from the HR department to all employees. Privacy-Act information flows from an HR system into a publicly released report.</p>
@@ -1765,7 +1765,7 @@
 		<!-- - - AC-4 (21) - -  -->
 		<alter subcontrol-id="ac-4.21">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1773,10 +1773,10 @@
 		<!-- - - AC-5 - -  -->
 		<alter control-id="ac-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: CSPs have the option to provide a separation of duties matrix as an attachment to the SSP.</p>
 				</part>
 			</add>
@@ -1784,7 +1784,7 @@
 		<!-- - - AC-6 - -  -->
 		<alter control-id="ac-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1792,7 +1792,7 @@
 		<!-- - - AC-6 (1) - -  -->
 		<alter subcontrol-id="ac-6.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1800,10 +1800,10 @@
 		<!-- - - AC-6 (2) - -  -->
 		<alter subcontrol-id="ac-6.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance:  Examples of security functions include but are not limited to: establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters, system programming, system and security administration, other privileged functions.</p>
 				</part>
 			</add>
@@ -1811,7 +1811,7 @@
 		<!-- - - AC-6 (3) - -  -->
 		<alter subcontrol-id="ac-6.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1819,7 +1819,7 @@
 		<!-- - - AC-6 (5) - -  -->
 		<alter subcontrol-id="ac-6.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1827,7 +1827,7 @@
 		<!-- - - AC-6 (7) - -  -->
 		<alter subcontrol-id="ac-6.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>CSP Insider Threat mitigation; Good housekeeping and a best business practice for the protection of the CSP and customer alike. In a cloud environment, the power (and potentially harm) of the privileged users is greatly magnified because of the scale. For that reason periodic review of privileges is important.</p>
 					<p>Priority for adding to FedRAMP-M: HIGH</p>
 				</part>
@@ -1836,7 +1836,7 @@
 		<!-- - - AC-6 (8) - -  -->
 		<alter subcontrol-id="ac-6.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>This control is not part of the NIST high baseline and was added for FedRAMP at the recommendation of DoD and NIST. This is a CNSSI 1253 control.</p>
 				</part>
 			</add>
@@ -1844,7 +1844,7 @@
 		<!-- - - AC-6 (9) - -  -->
 		<alter subcontrol-id="ac-6.9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1852,7 +1852,7 @@
 		<!-- - - AC-6 (10) - -  -->
 		<alter subcontrol-id="ac-6.10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1860,7 +1860,7 @@
 		<!-- - - AC-7 - -  -->
 		<alter control-id="ac-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1868,7 +1868,7 @@
 		<!-- - - AC-7 (2) - -  -->
 		<alter subcontrol-id="ac-7.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. If an organization's mobile devices carry information whose loss would have a high impact, this control is warranted in order to mitigate the risk of such loss.</p>
 					<p>ANALYSIS. The technologies associated with this control are well established COTS hardware and software.</p>
 					<p>SAMPLE THREAT VECTORS.  Mobile device is lost, falls into the hands of people without authorization to view the information contained on the device.</p>
@@ -1879,10 +1879,10 @@
 		<!-- - - AC-8 - -  -->
 		<alter control-id="ac-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB/AO.</p>
 					<p>Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB/AO.</p>
 					<p>Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided.</p>
@@ -1893,7 +1893,7 @@
 		<!-- - - AC-10 - -  -->
 		<alter control-id="ac-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1901,7 +1901,7 @@
 		<!-- - - AC-11 - -  -->
 		<alter control-id="ac-11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1909,7 +1909,7 @@
 		<!-- - - AC-11 (1) - -  -->
 		<alter subcontrol-id="ac-11.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1917,7 +1917,7 @@
 		<!-- - - AC-12 - -  -->
 		<alter control-id="ac-12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1925,10 +1925,10 @@
 		<!-- - - AC-12 (1) - -  -->
 		<alter subcontrol-id="ac-12.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Recommended by High Baseline Tiger Team. vulnerabilities associated with not having a logout button are well-documented.</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: https://www.owasp.org/index.php/Testing_for_logout_functionality_%28OTG-SESS-006%29</p>
 				</part>
 			</add>
@@ -1936,7 +1936,7 @@
 		<!-- - - AC-14 - -  -->
 		<alter control-id="ac-14">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1944,7 +1944,7 @@
 		<!-- - - AC-17 - -  -->
 		<alter control-id="ac-17">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1952,7 +1952,7 @@
 		<!-- - - AC-17 (1) - -  -->
 		<alter subcontrol-id="ac-17.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1960,7 +1960,7 @@
 		<!-- - - AC-17 (2) - -  -->
 		<alter subcontrol-id="ac-17.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1968,7 +1968,7 @@
 		<!-- - - AC-17 (3) - -  -->
 		<alter subcontrol-id="ac-17.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1976,7 +1976,7 @@
 		<!-- - - AC-17 (4) - -  -->
 		<alter subcontrol-id="ac-17.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1984,7 +1984,7 @@
 		<!-- - - AC-17 (9) - -  -->
 		<alter subcontrol-id="ac-17.9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -1992,7 +1992,7 @@
 		<!-- - - AC-18 - -  -->
 		<alter control-id="ac-18">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2000,7 +2000,7 @@
 		<!-- - - AC-18 (1) - -  -->
 		<alter subcontrol-id="ac-18.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2008,7 +2008,7 @@
 		<!-- - - AC-18 (3) - -  -->
 		<alter subcontrol-id="ac-18.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for Selection: Best business practice for the protection of the CSP and customer alike  " when not intended for use". This is an unanticipated vector for attack if present and active. While probably not an issue with data center servers and networking devices, wireless is becoming embedded in many  components and devices such as printers, fax devices, copiers, scanners, communications devices, etc. There is the additional potential that wireless capabilities may become available in air conditioners, power centers, power controllers, lighting, alarm systems, etc. There is a potential that these capabilities could exist without organizational awareness. Selection drivedsawareness. It's better to perform the check than to make assumptions about what devices are in the IS.</p>
 					<p>ECSB Supplemental Guidance as the C/CE relates to CSPs</p>
 					<p>The application of this control enchancement should include all systems and devices in the CSP facility such as printers, fax devices, copiers, scanners, communications devices, air conditioners, power centers, power controllers, lighting, alarm systems,  etc. Wireless networking capabilities should be disabled when they are near or networked with systems supporting customer's services.</p>
@@ -2020,7 +2020,7 @@
 		<!-- - - AC-18 (4) - -  -->
 		<alter subcontrol-id="ac-18.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2028,7 +2028,7 @@
 		<!-- - - AC-18 (5) - -  -->
 		<alter subcontrol-id="ac-18.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2036,7 +2036,7 @@
 		<!-- - - AC-19 - -  -->
 		<alter control-id="ac-19">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2044,7 +2044,7 @@
 		<!-- - - AC-19 (5) - -  -->
 		<alter subcontrol-id="ac-19.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2052,7 +2052,7 @@
 		<!-- - - AC-20 - -  -->
 		<alter control-id="ac-20">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2060,7 +2060,7 @@
 		<!-- - - AC-20 (1) - -  -->
 		<alter subcontrol-id="ac-20.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2068,7 +2068,7 @@
 		<!-- - - AC-20 (2) - -  -->
 		<alter subcontrol-id="ac-20.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2076,7 +2076,7 @@
 		<!-- - - AC-21 - -  -->
 		<alter control-id="ac-21">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2084,7 +2084,7 @@
 		<!-- - - AC-22 - -  -->
 		<alter control-id="ac-22">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2092,7 +2092,7 @@
 		<!-- - - AT-1 - -  -->
 		<alter control-id="at-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2100,7 +2100,7 @@
 		<!-- - - AT-2 - -  -->
 		<alter control-id="at-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2108,7 +2108,7 @@
 		<!-- - - AT-2 (2) - -  -->
 		<alter subcontrol-id="at-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2116,7 +2116,7 @@
 		<!-- - - AT-3 - -  -->
 		<alter control-id="at-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2124,7 +2124,7 @@
 		<!-- - - AT-3 (3) - -  -->
 		<alter subcontrol-id="at-3.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. High-impact systems warrant significantly elevated protection; one of these elevated protections is provided through simulated no-notice attacks that exercise users' ability to detect and respond correctly to attempts to steal internal information in their possession.</p>
 					<p>ANALYSIS. These controls are well understood and widely installed; COTS components keep implementation time and cost low.</p>
 					<p>SAMPLE THREAT VECTORS.  Cybersecurity staff do not know how to monitor, respond, and manage complex enforcement systems and subsystems. Cybersecurity staff is not properly trained to understand how the controls are to operate. Staff does not understand the event alarms/logs. Staff is not able to protect from unauthorized disclosure. Staff is careless with handling data, or unwilling to follow the established security protocols, or willing to cut corners to save time.</p>
@@ -2135,7 +2135,7 @@
 		<!-- - - AT-3 (4) - -  -->
 		<alter subcontrol-id="at-3.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. High-impact systems warrant significantly elevated protection.</p>
 					<p>ANALYSIS. These controls are well understood and widely installed.</p>
 					<p>THREAT VECTORS ADDRESSED.  Staff does not know how to monitor or manage complex systems in a way that supports effective management decision or control. Malicious actors manipulate the system to appear as if functioning normally when in reality, it is not. People fail to review event logs. People make unauthorized changes to event logger.</p>
@@ -2146,7 +2146,7 @@
 		<!-- - - AT-4 - -  -->
 		<alter control-id="at-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2154,7 +2154,7 @@
 		<!-- - - AU-1 - -  -->
 		<alter control-id="au-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2162,10 +2162,10 @@
 		<!-- - - AU-2 - -  -->
 		<alter control-id="au-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
 				</part>
 			</add>
@@ -2173,10 +2173,10 @@
 		<!-- - - AU-2 (3) - -  -->
 		<alter subcontrol-id="au-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Annually or whenever changes in the threat environment are communicated to the service provider by the JAB/AO.</p>
 				</part>
 			</add>
@@ -2184,7 +2184,7 @@
 		<!-- - - AU-3 - -  -->
 		<alter control-id="au-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2192,10 +2192,10 @@
 		<!-- - - AU-3 (1) - -  -->
 		<alter subcontrol-id="au-3.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: For client-server transactions, the number of bytes sent and received gives bidirectional transfer information that can be helpful during an investigation or inquiry.</p>
 				</part>
 			</add>
@@ -2203,7 +2203,7 @@
 		<!-- - - AU-3 (2) - -  -->
 		<alter subcontrol-id="au-3.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2211,7 +2211,7 @@
 		<!-- - - AU-4 - -  -->
 		<alter control-id="au-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2219,7 +2219,7 @@
 		<!-- - - AU-5 - -  -->
 		<alter control-id="au-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2227,7 +2227,7 @@
 		<!-- - - AU-5 (1) - -  -->
 		<alter subcontrol-id="au-5.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2235,7 +2235,7 @@
 		<!-- - - AU-5 (2) - -  -->
 		<alter subcontrol-id="au-5.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2243,10 +2243,10 @@
 		<!-- - - AU-6 - -  -->
 		<alter control-id="au-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
 				</part>
 			</add>
@@ -2254,7 +2254,7 @@
 		<!-- - - AU-6 (1) - -  -->
 		<alter subcontrol-id="au-6.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2262,7 +2262,7 @@
 		<!-- - - AU-6 (3) - -  -->
 		<alter subcontrol-id="au-6.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2270,7 +2270,7 @@
 		<!-- - - AU-6 (4) - -  -->
 		<alter subcontrol-id="au-6.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. Due to the complexity of independent systems exchanging security-related monitoring data, and high-impact systems implemented in shared-service environments, the responsible organization needs a centralized capability that integrates these various data sources into a unified whole permitting central review and analysis of diverse log data relevant to security audits.</p>
 					<p>ANALYSIS. This control permits analysts and auditors to focus on their primary duty of analyzing log data, and relieves them of the usual burden of discovery, collection, validation, aggregation, and indexing of large log datasets relevant to system security. Since these latter collection tasks have been automated under this control, less time and funding will be required to execute this core audit/analysis activity.</p>
 					<p>SAMPLE THREAT VECTORS. Staff does not know how to monitor or manage complex systems in a way that supports effective management decision or control. Malicious actors manipulate the system to appear as if functioning normally, when it is not. People fail to review event logs. People make unauthorized changes to event logger."</p>
@@ -2281,7 +2281,7 @@
 		<!-- - - AU-6 (5) - -  -->
 		<alter subcontrol-id="au-6.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2289,10 +2289,10 @@
 		<!-- - - AU-6 (6) - -  -->
 		<alter subcontrol-id="au-6.6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
 				</part>
 			</add>
@@ -2300,7 +2300,7 @@
 		<!-- - - AU-6 (7) - -  -->
 		<alter subcontrol-id="au-6.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>This control is not part of the NIST high baseline and was added for FedRAMP.</p>
 				</part>
 			</add>
@@ -2308,7 +2308,7 @@
 		<!-- - - AU-6 (10) - -  -->
 		<alter subcontrol-id="au-6.10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for Selection L3-6: In support of cyber security threat / incident response activities. Supports flexibility in auditing levels based on threat level. Supports CSP integration with DoD security architecture. The sensitivity of the information at  levels 3-6 warrents the adjustment of auditing levels based on threat level.</p>
 					<p>ECSB Supplemental Guidance as the C/CE relates to CSPs: This CE supports  cyber security threat / incident response activities and  flexibility in auditing levels based on threat level. This CE also supports CSP integration with DoD security architecture and the ability to respond to  USCYBERCOM and DoD CNDSP alerts and directives.</p>
 					<p>NOTE L1/2: The handling of alerts from US-CERT and other credible sources is sufficient to change auditing activities if this CE is tailored in via an SLA.</p>
@@ -2320,7 +2320,7 @@
 		<!-- - - AU-7 - -  -->
 		<alter control-id="au-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2328,7 +2328,7 @@
 		<!-- - - AU-7 (1) - -  -->
 		<alter subcontrol-id="au-7.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2336,7 +2336,7 @@
 		<!-- - - AU-8 - -  -->
 		<alter control-id="au-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2344,10 +2344,10 @@
 		<!-- - - AU-8 (1) - -  -->
 		<alter subcontrol-id="au-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider selects primary and secondary time servers used by the NIST Internet time service. The secondary server is selected from a different geographic region than the primary server.</p>
 					<p>Requirement: The service provider synchronizes the system clocks of network computers that run operating systems other than Windows to the Windows Server Domain Controller emulator or to the same time source for that server.</p>
 					<p>Guidance: Synchronization of system clocks improves the accuracy of log analysis.</p>
@@ -2357,7 +2357,7 @@
 		<!-- - - AU-9 - -  -->
 		<alter control-id="au-9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2365,7 +2365,7 @@
 		<!-- - - AU-9 (2) - -  -->
 		<alter subcontrol-id="au-9.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2373,7 +2373,7 @@
 		<!-- - - AU-9 (3) - -  -->
 		<alter subcontrol-id="au-9.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2381,7 +2381,7 @@
 		<!-- - - AU-9 (4) - -  -->
 		<alter subcontrol-id="au-9.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2389,7 +2389,7 @@
 		<!-- - - AU-10 - -  -->
 		<alter control-id="au-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2397,10 +2397,10 @@
 		<!-- - - AU-11 - -  -->
 		<alter control-id="au-11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
 				</part>
 			</add>
@@ -2408,7 +2408,7 @@
 		<!-- - - AU-12 - -  -->
 		<alter control-id="au-12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2416,7 +2416,7 @@
 		<!-- - - AU-12 (1) - -  -->
 		<alter subcontrol-id="au-12.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Non-repudiation</p>
 				</part>
 			</add>
@@ -2424,7 +2424,7 @@
 		<!-- - - AU-12 (3) - -  -->
 		<alter subcontrol-id="au-12.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Non-repudiation</p>
 				</part>
 			</add>
@@ -2432,7 +2432,7 @@
 		<!-- - - CA-1 - -  -->
 		<alter control-id="ca-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2440,7 +2440,7 @@
 		<!-- - - CA-2 - -  -->
 		<alter control-id="ca-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2448,10 +2448,10 @@
 		<!-- - - CA-2 (1) - -  -->
 		<alter subcontrol-id="ca-2.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: For JAB Authorization, must use an accredited 3PAO.</p>
 				</part>
 			</add>
@@ -2459,10 +2459,10 @@
 		<!-- - - CA-2 (2) - -  -->
 		<alter subcontrol-id="ca-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: To include 'announced', 'vulnerability scanning'</p>
 				</part>
 			</add>
@@ -2470,7 +2470,7 @@
 		<!-- - - CA-2 (3) - -  -->
 		<alter subcontrol-id="ca-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2478,7 +2478,7 @@
 		<!-- - - CA-3 - -  -->
 		<alter control-id="ca-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2486,10 +2486,10 @@
 		<!-- - - CA-3 (3) - -  -->
 		<alter subcontrol-id="ca-3.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Refer to Appendix H - Cloud Considerations of the TIC 2.0 Reference Architecture document.</p>
 				</part>
 			</add>
@@ -2497,10 +2497,10 @@
 		<!-- - - CA-3 (5) - -  -->
 		<alter subcontrol-id="ca-3.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: For JAB Authorization, CSPs shall include details of this control in their Architecture Briefing</p>
 				</part>
 			</add>
@@ -2508,10 +2508,10 @@
 		<!-- - - CA-5 - -  -->
 		<alter control-id="ca-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
 				</part>
 			</add>
@@ -2519,10 +2519,10 @@
 		<!-- - - CA-6 - -  -->
 		<alter control-id="ca-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(c) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
 				</part>
 			</add>
@@ -2530,10 +2530,10 @@
 		<!-- - - CA-7 - -  -->
 		<alter control-id="ca-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually</p>
 					<p>Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
 					<p>Operating System Scans: at least monthly</p>
@@ -2545,7 +2545,7 @@
 		<!-- - - CA-7 (1) - -  -->
 		<alter subcontrol-id="ca-7.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2553,7 +2553,7 @@
 		<!-- - - CA-7 (3) - -  -->
 		<alter subcontrol-id="ca-7.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. Organization requires independent data to validate that current security monitoring continues to target the right data, and that no gaps have opened between what is currently measured and what needs to be measured given the constantly evolving threat environment. In particular, the organization determines that security management will need trend analytics tuned to the current security climate to ensure the organization's security officials maintain general situational awareness of larger security trends that may pose a threat to the organization's high-impact systems fielded in shared-service environments.</p>
 					<p>ANALYSIS. Implementation of this control should provide security management with a technical advantage by forcing them to maintain continual current awareness of the larger security threat-scape, rather than become lost in the lower-level details of specific security metrics.</p>
 					<p>SAMPLE THREAT VECTORS ADDRESSED. Stakeholders do not have the information they need to make sound decisions due to technology capability. System fails to send alarms, logs, and other pertinent data to the event manager. Control processes involve too many layers of review, concurrence, and revision to support effective and timely conveyance of relevant information to decision-makers. Monitoring not effectively linked to control processes.</p>
@@ -2564,7 +2564,7 @@
 		<!-- - - CA-8 - -  -->
 		<alter control-id="ca-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2572,7 +2572,7 @@
 		<!-- - - CA-8 (1) - -  -->
 		<alter subcontrol-id="ca-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2580,7 +2580,7 @@
 		<!-- - - CA-9 - -  -->
 		<alter control-id="ca-9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2588,7 +2588,7 @@
 		<!-- - - CM-1 - -  -->
 		<alter control-id="cm-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2596,7 +2596,7 @@
 		<!-- - - CM-2 - -  -->
 		<alter control-id="cm-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2604,10 +2604,10 @@
 		<!-- - - CM-2 (1) - -  -->
 		<alter subcontrol-id="cm-2.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
 				</part>
 			</add>
@@ -2615,7 +2615,7 @@
 		<!-- - - CM-2 (2) - -  -->
 		<alter subcontrol-id="cm-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2623,7 +2623,7 @@
 		<!-- - - CM-2 (3) - -  -->
 		<alter subcontrol-id="cm-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2631,7 +2631,7 @@
 		<!-- - - CM-2 (7) - -  -->
 		<alter subcontrol-id="cm-2.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2639,10 +2639,10 @@
 		<!-- - - CM-3 - -  -->
 		<alter control-id="cm-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider establishes a central means of communicating major changes to or developments in the information system or environment of operations that may affect its services to the federal government and associated service consumers (e.g., electronic bulletin board, web status page). The means of communication are approved and accepted by the JAB/AO.</p>
 					<p>(e) Guidance: In accordance with record retention policies and procedures.</p>
 				</part>
@@ -2651,7 +2651,7 @@
 		<!-- - - CM-3 (1) - -  -->
 		<alter subcontrol-id="cm-3.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2659,7 +2659,7 @@
 		<!-- - - CM-3 (2) - -  -->
 		<alter subcontrol-id="cm-3.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2667,7 +2667,7 @@
 		<!-- - - CM-3 (4) - -  -->
 		<alter subcontrol-id="cm-3.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for De-Selection L1/2: The sensitivity of the information at these levels may not require a  information security representative to be a member of the  organization-defined configuration change control element.</p>
 					<p>Rationale for Selection L3-6: This is a best business practice for the protection of the CSP and customer alike in that the security representative will be more aware of IA issues that configuration changes can introduce and he/she can more easily provide IA guidance for issues spotted.</p>
 				</part>
@@ -2676,7 +2676,7 @@
 		<!-- - - CM-3 (6) - -  -->
 		<alter subcontrol-id="cm-3.6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for SA L1: Cryptographic mechanisms are only required at this level for priviledged user (system administrator / SA) access control and the transport of privileged commands or configuration files. Not the publicly released information served at this level.</p>
 					<p>Rationale for Selection L2-6: Best practice. Supplemental guidance for this CE refers primarily to the processes surrounding the management of the cryptographic mechanisms used. These processes need to be under change management that addresses security concerns to ensure they remain secure.</p>
 					<p>CE supplemental guidance.</p>
@@ -2688,7 +2688,7 @@
 		<!-- - - CM-4 - -  -->
 		<alter control-id="cm-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2696,7 +2696,7 @@
 		<!-- - - CM-4 (1) - -  -->
 		<alter subcontrol-id="cm-4.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2704,7 +2704,7 @@
 		<!-- - - CM-5 - -  -->
 		<alter control-id="cm-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2712,7 +2712,7 @@
 		<!-- - - CM-5 (1) - -  -->
 		<alter subcontrol-id="cm-5.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2720,7 +2720,7 @@
 		<!-- - - CM-5 (2) - -  -->
 		<alter subcontrol-id="cm-5.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2728,10 +2728,10 @@
 		<!-- - - CM-5 (3) - -  -->
 		<alter subcontrol-id="cm-5.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: If digital signatures/certificates are unavailable, alternative cryptographic integrity checks (hashes, self-signed certs, etc.) can be utilized.</p>
 				</part>
 			</add>
@@ -2739,7 +2739,7 @@
 		<!-- - - CM-5 (5) - -  -->
 		<alter subcontrol-id="cm-5.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2747,10 +2747,10 @@
 		<!-- - - CM-6 - -  -->
 		<alter control-id="cm-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a)-1 Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.</p>
 					<p>(a)-2 Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).</p>
 					<p>(a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
@@ -2760,7 +2760,7 @@
 		<!-- - - CM-6 (1) - -  -->
 		<alter subcontrol-id="cm-6.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2768,7 +2768,7 @@
 		<!-- - - CM-6 (2) - -  -->
 		<alter subcontrol-id="cm-6.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2776,10 +2776,10 @@
 		<!-- - - CM-7 - -  -->
 		<alter control-id="cm-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
 					<p>Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
 					<p>(Partially derived from AC-17(8).</p>
@@ -2789,7 +2789,7 @@
 		<!-- - - CM-7 (1) - -  -->
 		<alter subcontrol-id="cm-7.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2797,10 +2797,10 @@
 		<!-- - - CM-7 (2) - -  -->
 		<alter subcontrol-id="cm-7.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: This control shall be implemented in a technical manner on the information system to only allow programs to run that adhere to the policy (i.e. white listing). This control is not to be based off of strictly written policy on what is allowed or not allowed to run.</p>
 				</part>
 			</add>
@@ -2808,7 +2808,7 @@
 		<!-- - - CM-7 (5) - -  -->
 		<alter subcontrol-id="cm-7.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2816,10 +2816,10 @@
 		<!-- - - CM-8 - -  -->
 		<alter control-id="cm-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: must be provided at least monthly or when there is a change.</p>
 				</part>
 			</add>
@@ -2827,7 +2827,7 @@
 		<!-- - - CM-8 (1) - -  -->
 		<alter subcontrol-id="cm-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2835,7 +2835,7 @@
 		<!-- - - CM-8 (2) - -  -->
 		<alter subcontrol-id="cm-8.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2843,7 +2843,7 @@
 		<!-- - - CM-8 (3) - -  -->
 		<alter subcontrol-id="cm-8.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2851,7 +2851,7 @@
 		<!-- - - CM-8 (4) - -  -->
 		<alter subcontrol-id="cm-8.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2859,7 +2859,7 @@
 		<!-- - - CM-8 (5) - -  -->
 		<alter subcontrol-id="cm-8.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2867,7 +2867,7 @@
 		<!-- - - CM-9 - -  -->
 		<alter control-id="cm-9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2875,7 +2875,7 @@
 		<!-- - - CM-10 - -  -->
 		<alter control-id="cm-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2883,7 +2883,7 @@
 		<!-- - - CM-10 (1) - -  -->
 		<alter subcontrol-id="cm-10.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2891,7 +2891,7 @@
 		<!-- - - CM-11 - -  -->
 		<alter control-id="cm-11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2899,7 +2899,7 @@
 		<!-- - - CM-11 (1) - -  -->
 		<alter subcontrol-id="cm-11.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. High-impact systems will require special measures to ensure users cannot place the overall system at risk by installing unauthorized software. This control supports that need.</p>
 					<p>ANALYSIS. Implementation of these controls is well understood, and relies on capabilities provided in COTS operating systems.</p>
 					<p>SAMPLE THREAT VECTORS.  The system executes malicious and harmful software. Software updates could render the system unstable or cause it to function incorrectly. Software is not designed with adequate safeguards to protect PII and other sensitive information. Users could make mistakes in following policy. Users could intentionally install unapproved/unvetted software.</p>
@@ -2910,7 +2910,7 @@
 		<!-- - - CP-1 - -  -->
 		<alter control-id="cp-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2918,10 +2918,10 @@
 		<!-- - - CP-2 - -  -->
 		<alter control-id="cp-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
 				</part>
 			</add>
@@ -2929,7 +2929,7 @@
 		<!-- - - CP-2 (1) - -  -->
 		<alter subcontrol-id="cp-2.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2937,7 +2937,7 @@
 		<!-- - - CP-2 (2) - -  -->
 		<alter subcontrol-id="cp-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2945,7 +2945,7 @@
 		<!-- - - CP-2 (3) - -  -->
 		<alter subcontrol-id="cp-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2953,7 +2953,7 @@
 		<!-- - - CP-2 (4) - -  -->
 		<alter subcontrol-id="cp-2.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2961,7 +2961,7 @@
 		<!-- - - CP-2 (5) - -  -->
 		<alter subcontrol-id="cp-2.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2969,7 +2969,7 @@
 		<!-- - - CP-2 (8) - -  -->
 		<alter subcontrol-id="cp-2.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2977,7 +2977,7 @@
 		<!-- - - CP-3 - -  -->
 		<alter control-id="cp-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2985,7 +2985,7 @@
 		<!-- - - CP-3 (1) - -  -->
 		<alter subcontrol-id="cp-3.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -2993,10 +2993,10 @@
 		<!-- - - CP-4 - -  -->
 		<alter control-id="cp-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
 				</part>
 			</add>
@@ -3004,7 +3004,7 @@
 		<!-- - - CP-4 (1) - -  -->
 		<alter subcontrol-id="cp-4.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3012,7 +3012,7 @@
 		<!-- - - CP-4 (2) - -  -->
 		<alter subcontrol-id="cp-4.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3020,7 +3020,7 @@
 		<!-- - - CP-6 - -  -->
 		<alter control-id="cp-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3028,7 +3028,7 @@
 		<!-- - - CP-6 (1) - -  -->
 		<alter subcontrol-id="cp-6.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3036,7 +3036,7 @@
 		<!-- - - CP-6 (2) - -  -->
 		<alter subcontrol-id="cp-6.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3044,7 +3044,7 @@
 		<!-- - - CP-6 (3) - -  -->
 		<alter subcontrol-id="cp-6.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3052,10 +3052,10 @@
 		<!-- - - CP-7 - -  -->
 		<alter control-id="cp-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
 				</part>
 			</add>
@@ -3063,10 +3063,10 @@
 		<!-- - - CP-7 (1) - -  -->
 		<alter subcontrol-id="cp-7.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: The service provider may determine what is considered a sufficient degree of separation between the primary and alternate processing sites, based on the types of threats that are of concern. For one particular type of threat (i.e., hostile cyber attack), the degree of separation between sites will be less relevant.</p>
 				</part>
 			</add>
@@ -3074,7 +3074,7 @@
 		<!-- - - CP-7 (2) - -  -->
 		<alter subcontrol-id="cp-7.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3082,7 +3082,7 @@
 		<!-- - - CP-7 (3) - -  -->
 		<alter subcontrol-id="cp-7.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3090,7 +3090,7 @@
 		<!-- - - CP-7 (4) - -  -->
 		<alter subcontrol-id="cp-7.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3098,10 +3098,10 @@
 		<!-- - - CP-8 - -  -->
 		<alter control-id="cp-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider defines a time period consistent with the recovery time objectives and business impact analysis.</p>
 				</part>
 			</add>
@@ -3109,7 +3109,7 @@
 		<!-- - - CP-8 (1) - -  -->
 		<alter subcontrol-id="cp-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3117,7 +3117,7 @@
 		<!-- - - CP-8 (2) - -  -->
 		<alter subcontrol-id="cp-8.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3125,7 +3125,7 @@
 		<!-- - - CP-8 (3) - -  -->
 		<alter subcontrol-id="cp-8.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3133,7 +3133,7 @@
 		<!-- - - CP-8 (4) - -  -->
 		<alter subcontrol-id="cp-8.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3141,10 +3141,10 @@
 		<!-- - - CP-9 - -  -->
 		<alter control-id="cp-9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control.  The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
 					<p>(a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.</p>
 					<p>(b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.</p>
@@ -3155,7 +3155,7 @@
 		<!-- - - CP-9 (1) - -  -->
 		<alter subcontrol-id="cp-9.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3163,7 +3163,7 @@
 		<!-- - - CP-9 (2) - -  -->
 		<alter subcontrol-id="cp-9.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3171,7 +3171,7 @@
 		<!-- - - CP-9 (3) - -  -->
 		<alter subcontrol-id="cp-9.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3179,7 +3179,7 @@
 		<!-- - - CP-9 (5) - -  -->
 		<alter subcontrol-id="cp-9.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3187,7 +3187,7 @@
 		<!-- - - CP-10 - -  -->
 		<alter control-id="cp-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3195,7 +3195,7 @@
 		<!-- - - CP-10 (2) - -  -->
 		<alter subcontrol-id="cp-10.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3203,7 +3203,7 @@
 		<!-- - - CP-10 (4) - -  -->
 		<alter subcontrol-id="cp-10.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3211,7 +3211,7 @@
 		<!-- - - IA-1 - -  -->
 		<alter control-id="ia-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3219,7 +3219,7 @@
 		<!-- - - IA-2 - -  -->
 		<alter control-id="ia-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3227,7 +3227,7 @@
 		<!-- - - IA-2 (1) - -  -->
 		<alter subcontrol-id="ia-2.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3235,7 +3235,7 @@
 		<!-- - - IA-2 (2) - -  -->
 		<alter subcontrol-id="ia-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3243,7 +3243,7 @@
 		<!-- - - IA-2 (3) - -  -->
 		<alter subcontrol-id="ia-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3251,7 +3251,7 @@
 		<!-- - - IA-2 (4) - -  -->
 		<alter subcontrol-id="ia-2.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3259,7 +3259,7 @@
 		<!-- - - IA-2 (5) - -  -->
 		<alter subcontrol-id="ia-2.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3267,7 +3267,7 @@
 		<!-- - - IA-2 (8) - -  -->
 		<alter subcontrol-id="ia-2.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3275,7 +3275,7 @@
 		<!-- - - IA-2 (9) - -  -->
 		<alter subcontrol-id="ia-2.9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3283,10 +3283,10 @@
 		<!-- - - IA-2 (11) - -  -->
 		<alter subcontrol-id="ia-2.11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: PIV=separate device. Please refer to NIST SP 800-157 Guidelines for Derived Personal Identity Verification (PIV) Credentials.</p>
 				</part>
 			</add>
@@ -3294,10 +3294,10 @@
 		<!-- - - IA-2 (12) - -  -->
 		<alter subcontrol-id="ia-2.12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
 				</part>
 			</add>
@@ -3305,7 +3305,7 @@
 		<!-- - - IA-3 - -  -->
 		<alter control-id="ia-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3313,10 +3313,10 @@
 		<!-- - - IA-4 - -  -->
 		<alter control-id="ia-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(e) Requirement: The service provider defines the time period of inactivity for device identifiers.</p>
 					<p>Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
 				</part>
@@ -3325,7 +3325,7 @@
 		<!-- - - IA-4 (4) - -  -->
 		<alter subcontrol-id="ia-4.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3333,10 +3333,10 @@
 		<!-- - - IA-5 - -  -->
 		<alter control-id="ia-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Authenticators must be compliant with NIST SP 800-63-2 Electronic Authentication Guideline assurance Level 4 (Link http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-2.pdf)</p>
 				</part>
 			</add>
@@ -3344,7 +3344,7 @@
 		<!-- - - IA-5 (1) - -  -->
 		<alter subcontrol-id="ia-5.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3352,7 +3352,7 @@
 		<!-- - - IA-5 (2) - -  -->
 		<alter subcontrol-id="ia-5.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3360,7 +3360,7 @@
 		<!-- - - IA-5 (3) - -  -->
 		<alter subcontrol-id="ia-5.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3368,10 +3368,10 @@
 		<!-- - - IA-5 (4) - -  -->
 		<alter subcontrol-id="ia-5.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: If automated mechanisms which enforce password authenticator strength at creation are not used, automated mechanisms must be used to audit strength of created password authenticators.</p>
 				</part>
 			</add>
@@ -3379,7 +3379,7 @@
 		<!-- - - IA-5 (6) - -  -->
 		<alter subcontrol-id="ia-5.6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3387,7 +3387,7 @@
 		<!-- - - IA-5 (7) - -  -->
 		<alter subcontrol-id="ia-5.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3395,7 +3395,7 @@
 		<!-- - - IA-5 (8) - -  -->
 		<alter subcontrol-id="ia-5.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. In those cases where an organization's user accounts authenticate to more than one system, and at least one of those systems is a high-impact system implemented in a shared-service environment, then this control is warranted as a baseline capability to guard against loss of high-impact, sensitive information.</p>
 					<p>ANALYSIS. Organizations can use COTS tools and techniques to implement this control in many ways. Agencies should be prepared to document their plan and approach to this control technique.</p>
 					<p>THREAT VECTORS ADDRESSED. A user's account password is cracked, permitting attackers to identify all systems to which the user has access, and to gain access to the information in those systems.</p>
@@ -3406,7 +3406,7 @@
 		<!-- - - IA-5 (11) - -  -->
 		<alter subcontrol-id="ia-5.11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3414,7 +3414,7 @@
 		<!-- - - IA-5 (13) - -  -->
 		<alter subcontrol-id="ia-5.13">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for Selection:  Best practice for authenticated web services and best business practice for the protection of the CSP and customer alike.  ECSB sees this as a significant value add toward the protection of customer accounts on SaaS or customer service / managent interfaces/portals.</p>
 					<p>L1 Rationale for SA: No authenticators are required for user access to public informationl. Info sensitivity does not warrant. However this CE would be required priviledged user access to manage the system server(s) containing public information.</p>
 					<p>ECSB Supplemental Guidance as the C/CE relates to CSPs: CSP must minimally implement this control enhancement on all SaaS offerings and customer service / managent interfaces. The time period can be negotiated in the SLA.</p>
@@ -3426,7 +3426,7 @@
 		<!-- - - IA-6 - -  -->
 		<alter control-id="ia-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3434,7 +3434,7 @@
 		<!-- - - IA-7 - -  -->
 		<alter control-id="ia-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3442,7 +3442,7 @@
 		<!-- - - IA-8 - -  -->
 		<alter control-id="ia-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3450,7 +3450,7 @@
 		<!-- - - IA-8 (1) - -  -->
 		<alter subcontrol-id="ia-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3458,7 +3458,7 @@
 		<!-- - - IA-8 (2) - -  -->
 		<alter subcontrol-id="ia-8.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3466,7 +3466,7 @@
 		<!-- - - IA-8 (3) - -  -->
 		<alter subcontrol-id="ia-8.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3474,7 +3474,7 @@
 		<!-- - - IA-8 (4) - -  -->
 		<alter subcontrol-id="ia-8.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3482,7 +3482,7 @@
 		<!-- - - IR-1 - -  -->
 		<alter control-id="ir-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3490,7 +3490,7 @@
 		<!-- - - IR-2 - -  -->
 		<alter control-id="ir-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3498,7 +3498,7 @@
 		<!-- - - IR-2 (1) - -  -->
 		<alter subcontrol-id="ir-2.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3506,7 +3506,7 @@
 		<!-- - - IR-2 (2) - -  -->
 		<alter subcontrol-id="ir-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3514,10 +3514,10 @@
 		<!-- - - IR-3 - -  -->
 		<alter control-id="ir-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>-2 Requirement: The service provider defines tests and/or exercises in accordance with NIST Special Publication 800-61 (as amended). For JAB authorization, the service provider provides test plans to the JAB/AO annually. Test plans are approved and accepted by the JAB/AO prior to test commencing.</p>
 				</part>
 			</add>
@@ -3525,7 +3525,7 @@
 		<!-- - - IR-3 (2) - -  -->
 		<alter subcontrol-id="ir-3.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3533,10 +3533,10 @@
 		<!-- - - IR-4 - -  -->
 		<alter control-id="ir-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
 				</part>
 			</add>
@@ -3544,7 +3544,7 @@
 		<!-- - - IR-4 (1) - -  -->
 		<alter subcontrol-id="ir-4.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3552,7 +3552,7 @@
 		<!-- - - IR-4 (2) - -  -->
 		<alter subcontrol-id="ir-4.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. Organization requires near real-time subsystem reconfiguration for high-impact systems, especially those deployed wholly or partially into shared-service environments. This dynamic reconfiguration is required for core infrastructure components such as routers, firewalls, messaging gateways, or access control/authentication servers, especially when these core components are under cyber-attack.</p>
 					<p>ANALYSIS. These critical cyber controls are well understood, and to some extent their automated capability has been established. Other aspects still require human decisions. Since this technology area is rapidly changing to meet new cyber-threat scenarios, it is expected that implementation of this control will be subject to significant change for the foreseeable future. Even so, its technology advantages are clear, especially for high-impact systems infrastructure.</p>
 					<p>SAMPLE THREAT VECTORS. System does not have error-correcting or self-recovery capabilities. The system is not designed to allow for quick remediation of threats that will impact the system.</p>
@@ -3563,7 +3563,7 @@
 		<!-- - - IR-4 (3) - -  -->
 		<alter subcontrol-id="ir-4.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. Due to the direct connection between system function and critical mission/business capability, the system requires Continuity-of-Operations (COOP) controls.</p>
 					<p>ANALYSIS. These critical cyber controls are well understood, and to some extent their automated capability has been established. Other aspects still require human decisions. Since this technology area is rapidly changing to meet new cyber-threat scenarios and also changes in subsystem technology, it is expected that implementation of this control will be subject to significant change for the foreseeable future. Even so, its technology advantages are fundamental, especially for high-impact systems infrastructure.</p>
 					<p>SAMPLE THREAT VECTORS. The system does not have error-correcting or self-recovery capabilities. The system is not designed to allow for quick remediation of threats that will impact the system. Time does not allow for the design in error handling, self-recovery, or to capitalize on system diversity to restore a system.  Also, the organization lacks the expertise to develop or implement a plan for restoring system. A malicious change may be implemented to counter the ability to restore the system.</p>
@@ -3574,7 +3574,7 @@
 		<!-- - - IR-4 (4) - -  -->
 		<alter subcontrol-id="ir-4.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3582,7 +3582,7 @@
 		<!-- - - IR-4 (6) - -  -->
 		<alter subcontrol-id="ir-4.6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. High-impact systems will require special measures to ensure security incidents are correctly and effectively handled in a timely manner. This high-level control supports that need, and is therefore warranted as a baseline for high-impact systems in shared-service environments.</p>
 					<p>ANALYSIS. Implementation of this general control is well understood among Departments and Agencies. However, it may require special funding and time to implement in a shared service environment, where response roles and responsibilities demand vigilant analysis and definition.</p>
 					<p>SAMPLE THREAT VECTORS.  Insiders gain access to information for which they have no authorization. Insiders push sensitive information to outside networks not authorized to receive it. Insiders violate agency information-security policies. Insider actions are not monitored.</p>
@@ -3593,7 +3593,7 @@
 		<!-- - - IR-4 (8) - -  -->
 		<alter subcontrol-id="ir-4.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>This control was recommended ecommended by the High Baseline Tiger Team.</p>
 				</part>
 			</add>
@@ -3601,7 +3601,7 @@
 		<!-- - - IR-5 - -  -->
 		<alter control-id="ir-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3609,7 +3609,7 @@
 		<!-- - - IR-5 (1) - -  -->
 		<alter subcontrol-id="ir-5.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3617,10 +3617,10 @@
 		<!-- - - IR-6 - -  -->
 		<alter control-id="ir-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Reports security incident information according to FedRAMP Incident Communications Procedure.</p>
 				</part>
 			</add>
@@ -3628,7 +3628,7 @@
 		<!-- - - IR-6 (1) - -  -->
 		<alter subcontrol-id="ir-6.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3636,7 +3636,7 @@
 		<!-- - - IR-7 - -  -->
 		<alter control-id="ir-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3644,7 +3644,7 @@
 		<!-- - - IR-7 (1) - -  -->
 		<alter subcontrol-id="ir-7.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3652,7 +3652,7 @@
 		<!-- - - IR-7 (2) - -  -->
 		<alter subcontrol-id="ir-7.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3660,10 +3660,10 @@
 		<!-- - - IR-8 - -  -->
 		<alter control-id="ir-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
 					<p>(e) Requirement: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
 				</part>
@@ -3672,7 +3672,7 @@
 		<!-- - - IR-9 - -  -->
 		<alter control-id="ir-9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3680,7 +3680,7 @@
 		<!-- - - IR-9 (1) - -  -->
 		<alter subcontrol-id="ir-9.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3688,7 +3688,7 @@
 		<!-- - - IR-9 (2) - -  -->
 		<alter subcontrol-id="ir-9.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3696,7 +3696,7 @@
 		<!-- - - IR-9 (3) - -  -->
 		<alter subcontrol-id="ir-9.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3704,7 +3704,7 @@
 		<!-- - - IR-9 (4) - -  -->
 		<alter subcontrol-id="ir-9.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3712,7 +3712,7 @@
 		<!-- - - MA-1 - -  -->
 		<alter control-id="ma-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3720,7 +3720,7 @@
 		<!-- - - MA-2 - -  -->
 		<alter control-id="ma-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3728,7 +3728,7 @@
 		<!-- - - MA-2 (2) - -  -->
 		<alter subcontrol-id="ma-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3736,7 +3736,7 @@
 		<!-- - - MA-3 - -  -->
 		<alter control-id="ma-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3744,7 +3744,7 @@
 		<!-- - - MA-3 (1) - -  -->
 		<alter subcontrol-id="ma-3.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3752,7 +3752,7 @@
 		<!-- - - MA-3 (2) - -  -->
 		<alter subcontrol-id="ma-3.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3760,7 +3760,7 @@
 		<!-- - - MA-3 (3) - -  -->
 		<alter subcontrol-id="ma-3.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3768,7 +3768,7 @@
 		<!-- - - MA-4 - -  -->
 		<alter control-id="ma-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3776,7 +3776,7 @@
 		<!-- - - MA-4 (2) - -  -->
 		<alter subcontrol-id="ma-4.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3784,7 +3784,7 @@
 		<!-- - - MA-4 (3) - -  -->
 		<alter subcontrol-id="ma-4.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3792,7 +3792,7 @@
 		<!-- - - MA-4 (6) - -  -->
 		<alter subcontrol-id="ma-4.6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for Selection:    Best practice business practice for the protection of the CSP and customer alike.  Protects against unauthorized access and compromise of the CSP infrastructure. See Supplemental Guidance</p>
 					<p>ECSB Supplemental Guidance as the C/CE relates to CSPs:  While AC-17(2) is similar to this CE and implements cryptographic mechanisms to protect the confidentiality and integrity of remote access sessions, System configuration, maintenance and diagnostic communications can be considered sensitive information and it is in DoD. Maintaining the confidrntiality and integrity of nonlocal maintenance and diagnostic communications helps maintain the health of the system, prevents unauthorized access from sniffing and MITM atacks, etc. While beneficial this selection may not be required for nonlocal maintenance and diagnostic communications over the CSP's private network and particularly if that network is out of band. Encryption is required if such communications are over a network external to the CSP (e.g., the Internet).</p>
 					<p>Priority for adding to  FedRAMP-M: High</p>
@@ -3802,7 +3802,7 @@
 		<!-- - - MA-5 - -  -->
 		<alter control-id="ma-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3810,7 +3810,7 @@
 		<!-- - - MA-5 (1) - -  -->
 		<alter subcontrol-id="ma-5.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3818,7 +3818,7 @@
 		<!-- - - MA-6 - -  -->
 		<alter control-id="ma-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3826,7 +3826,7 @@
 		<!-- - - MP-1 - -  -->
 		<alter control-id="mp-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3834,7 +3834,7 @@
 		<!-- - - MP-2 - -  -->
 		<alter control-id="mp-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3842,10 +3842,10 @@
 		<!-- - - MP-3 - -  -->
 		<alter control-id="mp-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Guidance: Second parameter not-applicable</p>
 				</part>
 			</add>
@@ -3853,10 +3853,10 @@
 		<!-- - - MP-4 - -  -->
 		<alter control-id="mp-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement: The service provider defines controlled areas within facilities where the information and information system reside.</p>
 				</part>
 			</add>
@@ -3864,10 +3864,10 @@
 		<!-- - - MP-5 - -  -->
 		<alter control-id="mp-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement: The service provider defines security measures to protect digital and non-digital media in transport.  The security measures are approved and accepted by the JAB.</p>
 				</part>
 			</add>
@@ -3875,7 +3875,7 @@
 		<!-- - - MP-5 (4) - -  -->
 		<alter subcontrol-id="mp-5.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3883,7 +3883,7 @@
 		<!-- - - MP-6 - -  -->
 		<alter control-id="mp-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3891,7 +3891,7 @@
 		<!-- - - MP-6 (1) - -  -->
 		<alter subcontrol-id="mp-6.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3899,10 +3899,10 @@
 		<!-- - - MP-6 (2) - -  -->
 		<alter subcontrol-id="mp-6.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Equipment and procedures may be tested or validated for effectiveness</p>
 				</part>
 			</add>
@@ -3910,7 +3910,7 @@
 		<!-- - - MP-6 (3) - -  -->
 		<alter subcontrol-id="mp-6.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3918,7 +3918,7 @@
 		<!-- - - MP-7 - -  -->
 		<alter control-id="mp-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3926,7 +3926,7 @@
 		<!-- - - MP-7 (1) - -  -->
 		<alter subcontrol-id="mp-7.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3934,7 +3934,7 @@
 		<!-- - - PE-1 - -  -->
 		<alter control-id="pe-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3942,7 +3942,7 @@
 		<!-- - - PE-2 - -  -->
 		<alter control-id="pe-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3950,7 +3950,7 @@
 		<!-- - - PE-3 - -  -->
 		<alter control-id="pe-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3958,7 +3958,7 @@
 		<!-- - - PE-3 (1) - -  -->
 		<alter subcontrol-id="pe-3.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3966,7 +3966,7 @@
 		<!-- - - PE-4 - -  -->
 		<alter control-id="pe-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3974,7 +3974,7 @@
 		<!-- - - PE-5 - -  -->
 		<alter control-id="pe-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3982,7 +3982,7 @@
 		<!-- - - PE-6 - -  -->
 		<alter control-id="pe-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3990,7 +3990,7 @@
 		<!-- - - PE-6 (1) - -  -->
 		<alter subcontrol-id="pe-6.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -3998,7 +3998,7 @@
 		<!-- - - PE-6 (4) - -  -->
 		<alter subcontrol-id="pe-6.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4006,7 +4006,7 @@
 		<!-- - - PE-8 - -  -->
 		<alter control-id="pe-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4014,7 +4014,7 @@
 		<!-- - - PE-8 (1) - -  -->
 		<alter subcontrol-id="pe-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4022,7 +4022,7 @@
 		<!-- - - PE-9 - -  -->
 		<alter control-id="pe-9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4030,7 +4030,7 @@
 		<!-- - - PE-10 - -  -->
 		<alter control-id="pe-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4038,7 +4038,7 @@
 		<!-- - - PE-11 - -  -->
 		<alter control-id="pe-11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4046,7 +4046,7 @@
 		<!-- - - PE-11 (1) - -  -->
 		<alter subcontrol-id="pe-11.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4054,7 +4054,7 @@
 		<!-- - - PE-12 - -  -->
 		<alter control-id="pe-12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4062,7 +4062,7 @@
 		<!-- - - PE-13 - -  -->
 		<alter control-id="pe-13">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4070,7 +4070,7 @@
 		<!-- - - PE-13 (1) - -  -->
 		<alter subcontrol-id="pe-13.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4078,7 +4078,7 @@
 		<!-- - - PE-13 (2) - -  -->
 		<alter subcontrol-id="pe-13.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4086,7 +4086,7 @@
 		<!-- - - PE-13 (3) - -  -->
 		<alter subcontrol-id="pe-13.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4094,10 +4094,10 @@
 		<!-- - - PE-14 - -  -->
 		<alter control-id="pe-14">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
 				</part>
 			</add>
@@ -4105,7 +4105,7 @@
 		<!-- - - PE-14 (2) - -  -->
 		<alter subcontrol-id="pe-14.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4113,7 +4113,7 @@
 		<!-- - - PE-15 - -  -->
 		<alter control-id="pe-15">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4121,7 +4121,7 @@
 		<!-- - - PE-15 (1) - -  -->
 		<alter subcontrol-id="pe-15.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4129,7 +4129,7 @@
 		<!-- - - PE-16 - -  -->
 		<alter control-id="pe-16">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4137,7 +4137,7 @@
 		<!-- - - PE-17 - -  -->
 		<alter control-id="pe-17">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4145,7 +4145,7 @@
 		<!-- - - PE-18 - -  -->
 		<alter control-id="pe-18">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4153,7 +4153,7 @@
 		<!-- - - PL-1 - -  -->
 		<alter control-id="pl-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4161,7 +4161,7 @@
 		<!-- - - PL-2 - -  -->
 		<alter control-id="pl-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4169,7 +4169,7 @@
 		<!-- - - PL-2 (3) - -  -->
 		<alter subcontrol-id="pl-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4177,7 +4177,7 @@
 		<!-- - - PL-4 - -  -->
 		<alter control-id="pl-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4185,7 +4185,7 @@
 		<!-- - - PL-4 (1) - -  -->
 		<alter subcontrol-id="pl-4.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4193,10 +4193,10 @@
 		<!-- - - PL-8 - -  -->
 		<alter control-id="pl-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F, page F-7.</p>
 				</part>
 			</add>
@@ -4204,7 +4204,7 @@
 		<!-- - - PS-1 - -  -->
 		<alter control-id="ps-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4212,7 +4212,7 @@
 		<!-- - - PS-2 - -  -->
 		<alter control-id="ps-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4220,7 +4220,7 @@
 		<!-- - - PS-3 - -  -->
 		<alter control-id="ps-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4228,7 +4228,7 @@
 		<!-- - - PS-3 (3) - -  -->
 		<alter subcontrol-id="ps-3.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4236,7 +4236,7 @@
 		<!-- - - PS-4 - -  -->
 		<alter control-id="ps-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4244,7 +4244,7 @@
 		<!-- - - PS-4 (2) - -  -->
 		<alter subcontrol-id="ps-4.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4252,7 +4252,7 @@
 		<!-- - - PS-5 - -  -->
 		<alter control-id="ps-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4260,7 +4260,7 @@
 		<!-- - - PS-6 - -  -->
 		<alter control-id="ps-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4268,7 +4268,7 @@
 		<!-- - - PS-7 - -  -->
 		<alter control-id="ps-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4276,7 +4276,7 @@
 		<!-- - - PS-8 - -  -->
 		<alter control-id="ps-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4284,7 +4284,7 @@
 		<!-- - - RA-1 - -  -->
 		<alter control-id="ra-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4292,7 +4292,7 @@
 		<!-- - - RA-2 - -  -->
 		<alter control-id="ra-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4300,10 +4300,10 @@
 		<!-- - - RA-3 - -  -->
 		<alter control-id="ra-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.</p>
 					<p>(d) Requirement: Include all Authoring Officials and FedRAMP ISSOs.</p>
 				</part>
@@ -4312,10 +4312,10 @@
 		<!-- - - RA-5 - -  -->
 		<alter control-id="ra-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
 					<p>(e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
 				</part>
@@ -4324,7 +4324,7 @@
 		<!-- - - RA-5 (1) - -  -->
 		<alter subcontrol-id="ra-5.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4332,7 +4332,7 @@
 		<!-- - - RA-5 (2) - -  -->
 		<alter subcontrol-id="ra-5.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4340,7 +4340,7 @@
 		<!-- - - RA-5 (3) - -  -->
 		<alter subcontrol-id="ra-5.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4348,7 +4348,7 @@
 		<!-- - - RA-5 (4) - -  -->
 		<alter subcontrol-id="ra-5.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4356,7 +4356,7 @@
 		<!-- - - RA-5 (5) - -  -->
 		<alter subcontrol-id="ra-5.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4364,10 +4364,10 @@
 		<!-- - - RA-5 (6) - -  -->
 		<alter subcontrol-id="ra-5.6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: include in Continuous Monitoring ISSO digest/report to JAB/AO</p>
 				</part>
 			</add>
@@ -4375,10 +4375,10 @@
 		<!-- - - RA-5 (8) - -  -->
 		<alter subcontrol-id="ra-5.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirements: This enhancement is required for all high vulnerability scan findings.</p>
 					<p>Guidance: While scanning tools may label findings as high or critical, the intent of the control is based around NIST's definition of high vulnerability.</p>
 				</part>
@@ -4387,13 +4387,13 @@
 		<!-- - - RA-5 (10) - -  -->
 		<alter subcontrol-id="ra-5.10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. Organizations commonly run vulnerability scanning tools against diverse enterprise systems and subsystems. These tools are often attuned to the specific subsystems, and often provided by different manufacturers. Because there is no single-vendor consolidation of all scanning tools, organizations need to correlate the outputs of these tools in order to triangulate on potential threats that may be related, or identical at their source. When the security impact is high a shared-service environment may increase the number of independent scanning tools, implementation of this control is warranted.</p>
 					<p>ANALYSIS. Although this control is well understood by vendors, its implementation takes many forms, depending on the scanning tools adopted by a particular organization.</p>
 					<p>SAMPLE THREAT VECTORS. Different scanning tools discover low-impact vulnerabilities in multiple subsystems of a system. Considered individually, none of them warrants immediate action,; yet when considered together, they constitute a significant attack pattern.</p>
 					<p>RELEVANT SECURITY CONTROL ATTRIBUTES. Interoperable, Change Managed, Agile, Supported, Assessed, Monitored</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: If multiple tools are not used, this control is not applicable.</p>
 				</part>
 			</add>
@@ -4401,7 +4401,7 @@
 		<!-- - - SA-1 - -  -->
 		<alter control-id="sa-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4409,7 +4409,7 @@
 		<!-- - - SA-2 - -  -->
 		<alter control-id="sa-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4417,7 +4417,7 @@
 		<!-- - - SA-3 - -  -->
 		<alter control-id="sa-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4425,10 +4425,10 @@
 		<!-- - - SA-4 - -  -->
 		<alter control-id="sa-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.</p>
 					<p>See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html.</p>
 				</part>
@@ -4437,7 +4437,7 @@
 		<!-- - - SA-4 (1) - -  -->
 		<alter subcontrol-id="sa-4.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4445,7 +4445,7 @@
 		<!-- - - SA-4 (2) - -  -->
 		<alter subcontrol-id="sa-4.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4453,10 +4453,10 @@
 		<!-- - - SA-4 (8) - -  -->
 		<alter subcontrol-id="sa-4.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: CSP must use the same security standards regardless of where the system component or information system service is acquired.</p>
 				</part>
 			</add>
@@ -4464,7 +4464,7 @@
 		<!-- - - SA-4 (9) - -  -->
 		<alter subcontrol-id="sa-4.9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4472,7 +4472,7 @@
 		<!-- - - SA-4 (10) - -  -->
 		<alter subcontrol-id="sa-4.10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4480,7 +4480,7 @@
 		<!-- - - SA-5 - -  -->
 		<alter control-id="sa-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4488,7 +4488,7 @@
 		<!-- - - SA-8 - -  -->
 		<alter control-id="sa-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4496,7 +4496,7 @@
 		<!-- - - SA-9 - -  -->
 		<alter control-id="sa-9">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4504,7 +4504,7 @@
 		<!-- - - SA-9 (1) - -  -->
 		<alter subcontrol-id="sa-9.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4512,7 +4512,7 @@
 		<!-- - - SA-9 (2) - -  -->
 		<alter subcontrol-id="sa-9.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4520,7 +4520,7 @@
 		<!-- - - SA-9 (4) - -  -->
 		<alter subcontrol-id="sa-9.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4528,7 +4528,7 @@
 		<!-- - - SA-9 (5) - -  -->
 		<alter subcontrol-id="sa-9.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4536,10 +4536,10 @@
 		<!-- - - SA-10 - -  -->
 		<alter control-id="sa-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(e)  Requirement: for JAB authorizations, track security flaws and flaw resolution within the system, component, or service and report findings to organization-defined personnel, to include FedRAMP.</p>
 				</part>
 			</add>
@@ -4547,7 +4547,7 @@
 		<!-- - - SA-10 (1) - -  -->
 		<alter subcontrol-id="sa-10.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4555,7 +4555,7 @@
 		<!-- - - SA-11 - -  -->
 		<alter control-id="sa-11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4563,10 +4563,10 @@
 		<!-- - - SA-11 (1) - -  -->
 		<alter subcontrol-id="sa-11.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
 				</part>
 			</add>
@@ -4574,7 +4574,7 @@
 		<!-- - - SA-11 (2) - -  -->
 		<alter subcontrol-id="sa-11.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4582,10 +4582,10 @@
 		<!-- - - SA-11 (8) - -  -->
 		<alter subcontrol-id="sa-11.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider documents in the Continuous Monitoring Plan, how newly developed code for the information system is reviewed.</p>
 				</part>
 			</add>
@@ -4593,7 +4593,7 @@
 		<!-- - - SA-12 - -  -->
 		<alter control-id="sa-12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4601,7 +4601,7 @@
 		<!-- - - SA-15 - -  -->
 		<alter control-id="sa-15">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4609,7 +4609,7 @@
 		<!-- - - SA-16 - -  -->
 		<alter control-id="sa-16">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4617,7 +4617,7 @@
 		<!-- - - SA-17 - -  -->
 		<alter control-id="sa-17">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4625,7 +4625,7 @@
 		<!-- - - SC-1 - -  -->
 		<alter control-id="sc-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4633,7 +4633,7 @@
 		<!-- - - SC-2 - -  -->
 		<alter control-id="sc-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4641,7 +4641,7 @@
 		<!-- - - SC-3 - -  -->
 		<alter control-id="sc-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4649,7 +4649,7 @@
 		<!-- - - SC-4 - -  -->
 		<alter control-id="sc-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4657,7 +4657,7 @@
 		<!-- - - SC-5 - -  -->
 		<alter control-id="sc-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4665,7 +4665,7 @@
 		<!-- - - SC-6 - -  -->
 		<alter control-id="sc-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4673,7 +4673,7 @@
 		<!-- - - SC-7 - -  -->
 		<alter control-id="sc-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4681,7 +4681,7 @@
 		<!-- - - SC-7 (3) - -  -->
 		<alter subcontrol-id="sc-7.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4689,7 +4689,7 @@
 		<!-- - - SC-7 (4) - -  -->
 		<alter subcontrol-id="sc-7.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4697,7 +4697,7 @@
 		<!-- - - SC-7 (5) - -  -->
 		<alter subcontrol-id="sc-7.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4705,7 +4705,7 @@
 		<!-- - - SC-7 (7) - -  -->
 		<alter subcontrol-id="sc-7.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4713,7 +4713,7 @@
 		<!-- - - SC-7 (8) - -  -->
 		<alter subcontrol-id="sc-7.8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4721,7 +4721,7 @@
 		<!-- - - SC-7 (10) - -  -->
 		<alter subcontrol-id="sc-7.10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. High-impact systems warrant careful attention to scenarios associated with exfiltration of sensitive organizational information. Different systems and implementation will trigger different scenarios, but regardless of the specific system context, organizations are warranted in establishing this control for high-impact systems with subsystems deployed into shared-service environments.</p>
 					<p>ANALYSIS. Organizations should devote careful attention to design considerations relative to this control.</p>
 					<p>SAMPLE THREAT VECTORS. Authorized processes push very large volumes of data to external networks. Internal devices send address/status/security information to external networks.</p>
@@ -4732,7 +4732,7 @@
 		<!-- - - SC-7 (12) - -  -->
 		<alter subcontrol-id="sc-7.12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4740,10 +4740,10 @@
 		<!-- - - SC-7 (13) - -  -->
 		<alter subcontrol-id="sc-7.13">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider defines key information security tools, mechanisms, and support components associated with system and security administration and isolates those tools, mechanisms, and support components from other internal information system components via physically or logically separate subnets.</p>
 					<p>Guidance: Examples include: information security tools, mechanisms, and support components such as, but not limited to PKI, patching infrastructure, cyber defense tools, special purpose gateway, vulnerability tracking systems, internet access points (IAPs); network element and data center administrative/management traffic; Demilitarized Zones (DMZs), Server farms/computing centers,  centralized audit log servers etc.</p>
 				</part>
@@ -4752,7 +4752,7 @@
 		<!-- - - SC-7 (18) - -  -->
 		<alter subcontrol-id="sc-7.18">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4760,7 +4760,7 @@
 		<!-- - - SC-7 (20) - -  -->
 		<alter subcontrol-id="sc-7.20">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. High-impact systems warrant careful attention to situations where specific sources or methods become suspect. Such situations can involve specific user accounts, messages, message payloads, data, applications, or even entire subsystems. Under these circumstances, a capability for dynamic segregation is highly justified.</p>
 					<p>ANALYSIS. Isolation techniques are well understood in the cyber market, and constantly evolving. Example techniques include honey pots and honey nets. Both techniques can isolate a user, an autonomous application, or an entire subsystem.</p>
 					<p>SAMPLE THREAT VECTORS. Anomalous user behavior is detected Messages arrive from suspect domains. Messages arrive with suspect attachments. Applications begin to behave anomalously. Subsystems begin moving data anomalously.</p>
@@ -4771,7 +4771,7 @@
 		<!-- - - SC-7 (21) - -  -->
 		<alter subcontrol-id="sc-7.21">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4779,7 +4779,7 @@
 		<!-- - - SC-8 - -  -->
 		<alter control-id="sc-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4787,7 +4787,7 @@
 		<!-- - - SC-8 (1) - -  -->
 		<alter subcontrol-id="sc-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4795,7 +4795,7 @@
 		<!-- - - SC-10 - -  -->
 		<alter control-id="sc-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4803,10 +4803,10 @@
 		<!-- - - SC-12 - -  -->
 		<alter control-id="sc-12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Federally approved cryptography</p>
 				</part>
 			</add>
@@ -4814,7 +4814,7 @@
 		<!-- - - SC-12 (1) - -  -->
 		<alter subcontrol-id="sc-12.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4822,7 +4822,7 @@
 		<!-- - - SC-12 (2) - -  -->
 		<alter subcontrol-id="sc-12.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4830,7 +4830,7 @@
 		<!-- - - SC-12 (3) - -  -->
 		<alter subcontrol-id="sc-12.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4838,7 +4838,7 @@
 		<!-- - - SC-13 - -  -->
 		<alter control-id="sc-13">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4846,10 +4846,10 @@
 		<!-- - - SC-15 - -  -->
 		<alter control-id="sc-15">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
 				</part>
 			</add>
@@ -4857,7 +4857,7 @@
 		<!-- - - SC-17 - -  -->
 		<alter control-id="sc-17">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4865,7 +4865,7 @@
 		<!-- - - SC-18 - -  -->
 		<alter control-id="sc-18">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4873,7 +4873,7 @@
 		<!-- - - SC-19 - -  -->
 		<alter control-id="sc-19">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4881,7 +4881,7 @@
 		<!-- - - SC-20 - -  -->
 		<alter control-id="sc-20">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4889,7 +4889,7 @@
 		<!-- - - SC-21 - -  -->
 		<alter control-id="sc-21">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4897,7 +4897,7 @@
 		<!-- - - SC-22 - -  -->
 		<alter control-id="sc-22">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4905,7 +4905,7 @@
 		<!-- - - SC-23 - -  -->
 		<alter control-id="sc-23">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4913,7 +4913,7 @@
 		<!-- - - SC-23 (1) - -  -->
 		<alter subcontrol-id="sc-23.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for Selection:    Rationale for Selection for SA L1: At L1 this CE is only applicable to privileged user sessions.</p>
 					<p>Rationale for Selection L1-6: Best Practice; APT. This CE  mitigates the threat/vulnerability inherant in authenticated sessions whereby If an adversary captures a session identifier that remains valid after the session is terminated, the adversary could use it to reinitiate the session thus gaining unauthorized access to CSP and CSP customer resources and information/data.</p>
 					<p>ECSB Supplemental Guidance as the C/CE relates to CSPs:  If an adversary captures a session identifier that remains valid after the session is terminated, the adversary could use it to reinitiate the session thus gaining unauthorized access to CSP and/or CSP customer resources and information/data. While unnessary for user sessions at L1, this enhancement is selected for System Administrator sessions.</p>
@@ -4924,7 +4924,7 @@
 		<!-- - - SC-24 - -  -->
 		<alter control-id="sc-24">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4932,10 +4932,10 @@
 		<!-- - - SC-28 - -  -->
 		<alter control-id="sc-28">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: The organization supports the capability to use cryptographic mechanisms to protect information at rest.</p>
 				</part>
 			</add>
@@ -4943,7 +4943,7 @@
 		<!-- - - SC-28 (1) - -  -->
 		<alter subcontrol-id="sc-28.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4951,7 +4951,7 @@
 		<!-- - - SC-39 - -  -->
 		<alter control-id="sc-39">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4959,7 +4959,7 @@
 		<!-- - - SI-1 - -  -->
 		<alter control-id="si-1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4967,7 +4967,7 @@
 		<!-- - - SI-2 - -  -->
 		<alter control-id="si-2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4975,7 +4975,7 @@
 		<!-- - - SI-2 (1) - -  -->
 		<alter subcontrol-id="si-2.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4983,7 +4983,7 @@
 		<!-- - - SI-2 (2) - -  -->
 		<alter subcontrol-id="si-2.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4991,7 +4991,7 @@
 		<!-- - - SI-2 (3) - -  -->
 		<alter subcontrol-id="si-2.3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -4999,7 +4999,7 @@
 		<!-- - - SI-3 - -  -->
 		<alter control-id="si-3">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5007,7 +5007,7 @@
 		<!-- - - SI-3 (1) - -  -->
 		<alter subcontrol-id="si-3.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5015,7 +5015,7 @@
 		<!-- - - SI-3 (2) - -  -->
 		<alter subcontrol-id="si-3.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5023,7 +5023,7 @@
 		<!-- - - SI-3 (7) - -  -->
 		<alter subcontrol-id="si-3.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5031,10 +5031,10 @@
 		<!-- - - SI-4 - -  -->
 		<alter control-id="si-4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
 				</part>
 			</add>
@@ -5042,7 +5042,7 @@
 		<!-- - - SI-4 (1) - -  -->
 		<alter subcontrol-id="si-4.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5050,7 +5050,7 @@
 		<!-- - - SI-4 (2) - -  -->
 		<alter subcontrol-id="si-4.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5058,7 +5058,7 @@
 		<!-- - - SI-4 (4) - -  -->
 		<alter subcontrol-id="si-4.4">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5066,10 +5066,10 @@
 		<!-- - - SI-4 (5) - -  -->
 		<alter subcontrol-id="si-4.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: In accordance with the incident response plan.</p>
 				</part>
 			</add>
@@ -5077,7 +5077,7 @@
 		<!-- - - SI-4 (11) - -  -->
 		<alter subcontrol-id="si-4.11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. When a high-impact system is implemented in a shared-service environment, organizations should ensure their sensitive data is properly protected against classic threats to the confidentiality of its sensitive information. This control partially meets that need.</p>
 					<p>ANALYSIS. The tools and techniques for implementing this monitoring control are now well understood and embedded in COTS operating systems and software.</p>
 					<p>SAMPLE THREAT VECTORS. Large outbound file transfers execute without being detected. External malware network sites are accessed from within the organization without detection. Network sessions remain connected for long periods of time without detection. Esoteric protocols are active and undetected on ports not defined by the organization.</p>
@@ -5088,7 +5088,7 @@
 		<!-- - - SI-4 (14) - -  -->
 		<alter subcontrol-id="si-4.14">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5096,7 +5096,7 @@
 		<!-- - - SI-4 (16) - -  -->
 		<alter subcontrol-id="si-4.16">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5104,7 +5104,7 @@
 		<!-- - - SI-4 (18) - -  -->
 		<alter subcontrol-id="si-4.18">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. When a high-impact system is implemented in a shared-service environment, organizations should ensure their sensitive data is properly protected against classic threats to the confidentiality of sensitive information. This control partially meets that need.</p>
 					<p>ANALYSIS. The tools and techniques for implementing this monitoring control are now well understood, and embedded in COTS operating systems and software.</p>
 					<p>SAMPLE THREAT VECTORS. Large outbound files are disguised to transfer without being detected. Communications with external malware network sites are embedded to avoid detection.</p>
@@ -5115,7 +5115,7 @@
 		<!-- - - SI-4 (19) - -  -->
 		<alter subcontrol-id="si-4.19">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for De-Selection L1-3: The information sensitivity at these levels does not seem to warrant implementation of this CE. The costs for instituting fine-grained monitoring per individual far may outweigh the risks</p>
 					<p>Rationale for selection L4-6: SP Insider Threat mitigation; The information sensitivity at these levels warrants implementation of this CE.Best business practice for the protection of the CSP and customer alike.  This enhancement works in conjunction with AC-2 (13) account disablement for such individuals and IR-4 (6).</p>
 					<p>ECSB Supplemental Guidance as the C/CE relates to CSPs:  This enhancement works in conjunction with or opposite of AC-2 (13) which requires acount disablement within a specific time frame of discovering or identifying an individual posing a significant insider threat. In some instances the best action is not to terminate the individual's account, but rather to monitor their actions. This allows for the ability to collect evidence (for prosecution) and obtain insight into the TTPs that they may be using  and others they may working with. Termination of the account is often best left as a final act.</p>
@@ -5126,7 +5126,7 @@
 		<!-- - - SI-4 (20) - -  -->
 		<alter subcontrol-id="si-4.20">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Rationale for Selection: Best business practice for the protection of the CSP and customer alike.  Given the scale of a cloud, the possible harm by an malicious insider is greatly magnified over normal systems.</p>
 					<p>ECSB Supplemental Guidance as the C/CE relates to CSPs:  his CE is on a par with SI-4 (9), IR-4 (6) and the various other insider threat Cs/CEs. Supports the mitigation of insider threat from those that can do the most damage. While CSPs typically claim they only have privileged users in their infrastructure (other than customers), this CEadds value for privilege users that have higher privilege than others. These higher privileged users should be subject to additional monitoring.</p>
 					<p>Priority for adding to  FedRAMP-M: High</p>
@@ -5136,7 +5136,7 @@
 		<!-- - - SI-4 (22) - -  -->
 		<alter subcontrol-id="si-4.22">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. When a high-impact system is implemented across networks in a shared-service environment, organizations should monitor network services to protect against unauthorized services capable of exfiltrating sensitive information. This control meets that monitoring need.</p>
 					<p>ANALYSIS. The tools and techniques for implementing this monitoring control are well understood, and embedded in COTS operating systems and software.</p>
 					<p>SAMPLE THREAT VECTORS. Systems daemons and application services running in the background, exfiltrating sensitive information to external networks.</p>
@@ -5147,7 +5147,7 @@
 		<!-- - - SI-4 (23) - -  -->
 		<alter subcontrol-id="si-4.23">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5155,7 +5155,7 @@
 		<!-- - - SI-4 (24) - -  -->
 		<alter subcontrol-id="si-4.24">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>NEED. When a high-impact system is implemented across networks in a shared-service environment, organizations should aggressively monitor for symptoms that system integrity has been compromised. This control addresses that monitoring need.</p>
 					<p>ANALYSIS. The tools and techniques for implementing this monitoring control are no longer unusual, but their implementation still requires careful initial analysis of tools, standards, and sources for indicators of compromise (IOC) data. This capability is not a simple matter of installing COTS software and watching for alerts. Rather, it requires staff to maintain a keen understanding of the threat-scape in order to properly understand the alerts coming from the IOC subsystem.</p>
 					<p>SAMPLE THREAT VECTORS. Temporary files appear but are not associated with any known system processes; independent security services warn of new surveillance techniques appearing globally; evidence of those new techniques appears in an organization's event logs. Reports on the payload of a new botnet indicate that the system has been touched by the botnet.</p>
@@ -5166,7 +5166,7 @@
 		<!-- - - SI-5 - -  -->
 		<alter control-id="si-5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5174,7 +5174,7 @@
 		<!-- - - SI-5 (1) - -  -->
 		<alter subcontrol-id="si-5.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5182,7 +5182,7 @@
 		<!-- - - SI-6 - -  -->
 		<alter control-id="si-6">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5190,7 +5190,7 @@
 		<!-- - - SI-7 - -  -->
 		<alter control-id="si-7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5198,7 +5198,7 @@
 		<!-- - - SI-7 (1) - -  -->
 		<alter subcontrol-id="si-7.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5206,7 +5206,7 @@
 		<!-- - - SI-7 (2) - -  -->
 		<alter subcontrol-id="si-7.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5214,7 +5214,7 @@
 		<!-- - - SI-7 (5) - -  -->
 		<alter subcontrol-id="si-7.5">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5222,7 +5222,7 @@
 		<!-- - - SI-7 (7) - -  -->
 		<alter subcontrol-id="si-7.7">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5230,7 +5230,7 @@
 		<!-- - - SI-7 (14) - -  -->
 		<alter subcontrol-id="si-7.14">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5238,7 +5238,7 @@
 		<!-- - - SI-8 - -  -->
 		<alter control-id="si-8">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5246,7 +5246,7 @@
 		<!-- - - SI-8 (1) - -  -->
 		<alter subcontrol-id="si-8.1">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5254,7 +5254,7 @@
 		<!-- - - SI-8 (2) - -  -->
 		<alter subcontrol-id="si-8.2">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5262,7 +5262,7 @@
 		<!-- - - SI-10 - -  -->
 		<alter control-id="si-10">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5270,7 +5270,7 @@
 		<!-- - - SI-11 - -  -->
 		<alter control-id="si-11">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5278,7 +5278,7 @@
 		<!-- - - SI-12 - -  -->
 		<alter control-id="si-12">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
@@ -5286,7 +5286,7 @@
 		<!-- - - SI-16 - -  -->
 		<alter control-id="si-16">
 			<add position="starting">
-				<part class="justification">
+				<part name="justification" ns="FedRAMP">
 					<p>Included in NIST High Baseline, Rev 4 and FedRAMP Moderate Baseline, Rev 4</p>
 				</part>
 			</add>
