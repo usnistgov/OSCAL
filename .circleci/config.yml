@@ -39,6 +39,20 @@ commands:
           key: maven-m2
           paths:
             - ~/.m2
+  install-maven:
+    description: "Installs Maven"
+    steps:
+      - run:
+        name: Get Maven
+        command: |
+          sudo apt-get install maven
+  install-lxml:
+    description: "Installs Python lxml package"
+    steps:
+      - run:
+        name: Get lxml
+        command: |
+          sudo pip install lxml
   install-xmllint:
     description: "Retrieve xmllint and setup the environment to run it"
     steps:
@@ -137,13 +151,13 @@ jobs: # a collection of steps
     steps: 
       - *checkout
       - *attach_build_workspace
+      - install-maven
+      - install-saxon
       - install-ajv
+      - install-lxml
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
-            sudo apt-get install maven
-            mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
-            sudo pip install lxml
             bash "$CICD_DIR/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - *persist_to_build_workspace
