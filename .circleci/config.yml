@@ -20,10 +20,10 @@ references:
   restore_gem_cache: &restore_gem_cache
     restore_cache:
       keys:
-        - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+        - v2-gem-cache-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
   save_gem_cache: &save_gem_cache
     save_cache:
-      key: v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      key: v2-gem-cache-{{ arch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
       paths:
         - ~/jekyll-bundle
 commands:
