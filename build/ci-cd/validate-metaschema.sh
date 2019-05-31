@@ -21,7 +21,7 @@ compiled_schematron="${schematron}-compiled.xsl"
 build_schematron "$schematron" "$compiled_schematron"
 cmd_exitcode=$?
 if [ $cmd_exitcode -ne 0 ]; then
-  printf "Compilation of Schematron '%s' failed" "$schematron"
+  echo "${P_ERROR}Compilation of Schematron '$schematron' failed.${P_END}"
   exit 1
 fi
 
@@ -43,11 +43,11 @@ while IFS="" read -r path || [[ -n "$path" ]]; do
     IFS= # disable word splitting    
     for file in $files_to_process
     do
-      printf 'Validating: '%s'\n' "$file"
+      echo "${P_INFO}Validating metaschema '$file'${P_END}"
       xmllint --noout --schema "$metaschema_lib/metaschema.xsd" "$file"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'XML schema validation failed for %s\n' "$file"
+        echo "${P_ERROR}Metaschema '$file' is not valid.${P_END}"
         exitcode=1
       else
         svrl_result="$working_dir/svrl/${file/$OSCALDIR\/src\//}.svrl"
