@@ -20,6 +20,8 @@ references:
         - json
         - docs
         - svrl
+        - .runbuild
+        - .skipbuild
   checkout: &checkout
     checkout:
       path: git-oscal
@@ -35,7 +37,6 @@ references:
       key: v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
       paths:
         - ~/jekyll-bundle
- 
 commands:
   install-saxon:
     description: "Retrieve Saxon-HE and setup the environment to run it"
@@ -98,6 +99,15 @@ commands:
             echo gem install bundler
             bundle install --path ~/jekyll-bundle
             gem install html-proofer
+  check-skip-build:
+    steps:
+      - run:
+          name: Check if job should be skipped
+          command: |
+            if [[ -f "$OSCAL_BUILD_DIR/.skipbuild" ]]; then
+              echo "Skipping job."
+              circleci step halt
+            fi
 executors:
   java-executor:
     docker: # run the steps with Docker
@@ -111,11 +121,28 @@ executors:
     docker:
       - image: circleci/python:3.7.3-node-browser
     <<: *common_environment 
-jobs: # a collection of steps
+jobs: # a collection of 
+  job-ci-skip-check:
+    executor: java-executor
+    steps:
+      - checkout
+      - run:
+          command: |
+            mkdir -p "$OSCAL_BUILD_DIR/state"
+            COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
+            if [[ $COMMIT_MSG == *"[ci deploy skip]"* ]]; then
+              echo "[ci deploy skip] detected. Stopping."
+              touch "$OSCAL_BUILD_DIR/.skipbuild"
+            else
+              touch "$OSCAL_BUILD_DIR/.runbuild"
+            fi
+      - *persist_to_build_workspace
   job-validate-metaschema:
     executor: java-executor
     steps:
       - *checkout
+      - *attach_build_workspace
+      - check-skip-build
       - install-xmllint
       - install-saxon
       - install-schematron
@@ -124,11 +151,13 @@ jobs: # a collection of steps
           command: |
             bash "$CICD_DIR/validate-metaschema.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
+      - *persist_to_build_workspace
   job-generate-schema:
     executor: java-executor
     steps: # a collection of executable commands
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - install-saxon
       - install-ajv
       - run:
@@ -142,6 +171,7 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - install-saxon
       - run:
           name: Generate OSCAL schemas
@@ -154,6 +184,7 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - install-saxon
       - run:
           name: Generate OSCAL converters
@@ -166,6 +197,7 @@ jobs: # a collection of steps
     steps:
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - install-xmllint
       - install-ajv
       - run:
@@ -177,6 +209,7 @@ jobs: # a collection of steps
     steps:
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - install-saxon
       - run:
           name: Generate schema documentation
@@ -192,6 +225,7 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - deploy: # delete and copy artifacts before deploy
           name: Commit Artifacts
           command: |
@@ -209,7 +243,7 @@ jobs: # a collection of steps
             git add -f --all json
             git add -f --all content
             git config user.name "Deployment Bot"
-            git commit --allow-empty -m "Deploying content [ci skip]"
+            git commit --allow-empty -m "Deploying content [ci deploy skip]"
             git fetch
             git rebase origin/master
             git push
@@ -219,6 +253,7 @@ jobs: # a collection of steps
     steps:
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - *restore_gem_cache
       - install-bundler
       - run:
@@ -237,6 +272,7 @@ jobs: # a collection of steps
     steps:
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - *restore_gem_cache
       - install-bundler
       - run:
@@ -256,13 +292,16 @@ jobs: # a collection of steps
           command: |
             cd "$OSCAL_REPO_DIR/docs"
             git config user.name "Deployment Bot"
-            bash ./deploy.sh --push-only -v -m "Deploying website [ci skip]"
+            bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
       - *publish_artifacts
 workflows:
   version: 2
   build:
     jobs:
+      - job-ci-skip-check
       - job-validate-metaschema:
+          requires:
+            - job-ci-skip-check
           filters:
             branches:
               ignore: nist-pages
