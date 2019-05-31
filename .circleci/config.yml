@@ -88,6 +88,16 @@ commands:
           command: |
             sudo pip install 'jsonschema>=3.0.1'
             sudo pip install simplejson
+  install-bundler:
+    description: "Install bundler and html-proofer"
+    steps:
+      - run:
+          name: Install Bundler
+          command: |
+            cd "$OSCAL_REPO_DIR/docs"
+            echo gem install bundler
+            bundle install --path ~/jekyll-bundle
+            gem install html-proofer
 executors:
   java-executor:
     docker: # run the steps with Docker
@@ -210,12 +220,7 @@ jobs: # a collection of steps
       - *checkout
       - *attach_build_workspace
       - *restore_gem_cache
-      - run:
-          name: Install Bundler
-          command: |
-            cd "$OSCAL_REPO_DIR/docs"
-            echo gem install bundler
-            bundle install --path ~/jekyll-bundle
+      - install-bundler
       - run:
           name: Build jekyll site
           command: |
@@ -233,12 +238,7 @@ jobs: # a collection of steps
       - *checkout
       - *attach_build_workspace
       - *restore_gem_cache
-      - run:
-          name: Install Bundler
-          command: |
-            cd "$OSCAL_REPO_DIR/docs"
-            echo gem install bundler
-            bundle install --path ~/jekyll-bundle
+      - install-bundler
       - run:
           name: Build jekyll site
           command: |
