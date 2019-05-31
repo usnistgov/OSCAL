@@ -32,7 +32,7 @@ while IFS="|" read path format type converttoformats || [[ -n "$path" ]]; do
     do
       dest="$working_dir/${file/$OSCALDIR\/src\//}"
       dest_dir=${dest%/*}
-      printf 'Copying %s to %s\n' "$file" "$dest"
+      echo "${P_INFO}Copying '$file' to '$dest'.${P_END}"
       mkdir -p "$dest_dir"
       cp "$file" "$dest"
 
@@ -44,11 +44,11 @@ while IFS="|" read path format type converttoformats || [[ -n "$path" ]]; do
         dest="$working_dir/$newpath"
         converter="$working_dir/$altformat/convert/oscal-$type-$format-to-$altformat-converter.xsl"
 
-        printf 'Generating %s file %s from %s\n' "$altformat" "$dest" "$file"
+        echo "${P_INFO}Generating $altformat file '$dest' from '$file'.${P_END}"
         xsl_transform "$converter" "$file" "$dest"
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
-          printf 'Content conversion to %s failed for %s\n' "$altformat" "$file"
+          echo "${P_ERROR}Content conversion to $altformat failed for '$file'.${P_END}"
           exitcode=1
         fi
       done

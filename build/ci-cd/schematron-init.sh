@@ -6,7 +6,7 @@ fi
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
 if [[ -z "$SCHEMATRON_HOME" ]]; then
-    echo "SCHEMATRON_HOME is not set or is empty. Please set SCHEMATRON_HOME to indicate the location of the schematron skeleton. The schematron skeleton can be cloned using git clone https://github.com/Schematron/schematron <schematron_home_dir>"
+    echo "${P_ERROR}SCHEMATRON_HOME is not set or is empty.${P_END} ${P_INFO}Please set SCHEMATRON_HOME to indicate the location of the schematron skeleton. The schematron skeleton can be cloned using git clone https://github.com/Schematron/schematron <schematron_home_dir>.${P_END}"
 fi
 
 SCHEMATRON_DIR="$SCHEMATRON_HOME/trunk/schematron/code"
@@ -23,7 +23,7 @@ build_schematron() {
     xsl_transform "$SCHEMATRON_DIR/iso_svrl_for_xslt2.xsl" "-" "$compiled_schematron" "generate-paths=true diagnose=true allow-foreign=true"
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Generating compiled Schematron failed for '%s'\n' "$schematron"
+        echo "${P_ERROR}Generating compiled Schematron failed for '$schematron'${P_END}"
         return 1
     fi
     return 0
@@ -38,17 +38,18 @@ validate_with_schematron() {
     xsl_transform "$compiled_schematron" "$source_file" "$svrl_result"
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Processing Schematron '%s' failed for target file '%s'.\n' "$ompiled_schematron" "$source_file"
+        echo "${P_ERROR}Processing Schematron '$compiled_schematron' failed for target file '$source_file'${P_END}"
         return 3
     fi
     # check if the SVRL result contains errors
     if grep --quiet "failed-assert" "$svrl_result"; then
-        printf "The file '%s' has the following Schematron errors:\n" "$source_file"
+        echo "${P_ERROR}The file '$source_file' has the following Schematron errors:"
         # display the errors
         xsl_transform "$OSCALDIR/build/ci-cd/svrl-to-plaintext.xsl" "$svrl_result"
+        echo -n "${P_END}"
         return 1
     else
-        printf "File '%s' passed Schematron validation.\n" "$source_file"
+        echo "${P_OK}File '$source_file' passed Schematron validation.${P_END}"
     fi
 }
 

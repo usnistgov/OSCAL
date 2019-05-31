@@ -7,7 +7,7 @@ fi
 
 if [[ -z "$SAXON_HOME" ]]; then
     if [[ -z "$SAXON_VERSION" ]]; then
-        echo "SAXON_VERSION is not set or is empty. Please set SAXON_VERSION to indicate the library version"
+        echo "${P_ERROR}SAXON_VERSION is not set or is empty.${P_END} ${P_INFO}Please set SAXON_VERSION to indicate the library version${P_END}"
     fi
     SAXON_HOME=~/.m2/repository/net/sf/saxon/Saxon-HE/$SAXON_VERSION
 fi
@@ -34,7 +34,7 @@ xsl_transform() {
     fi
 
     if [ "$?" -ne 0 ]; then
-        echo "Error running Saxon"
+        echo "${P_ERROR}Error running Saxon.${P_END}"
         return 3
     fi
     return 0

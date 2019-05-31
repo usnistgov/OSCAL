@@ -29,10 +29,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
     IFS= # disable word splitting    
     for file in $files_to_process
     do
-      printf 'Validating %s file %s as %s\n' "$format" "$file" "$type"
-      printf 'format: %s\n' "$format"
-      printf 'type: %s\n' "$type"
-      printf 'convert-to: %s\n' "$converttoformats"
+      echo "${P_INFO}Validating $type $format file '$file'.${P_END}"
 
       case $format in
       xml)
@@ -40,7 +37,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           xmllint --noout --schema "$schema" "$file"
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-            printf 'XML schema validation failed for %s\n' "$file"
+            echo "${P_ERROR}XML schema validation failed for '$file'.${P_END}"
             exitcode=1
           fi
         ;;
@@ -49,7 +46,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           ajv validate -s "$schema" -d "$file" --extend-refs=true --verbose
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
-            printf 'JSON schema validation failed for %s\n' "$file"
+            echo "${P_ERROR}JSON schema validation failed for '$file'.${P_END}"
             exitcode=1
           fi
         ;;

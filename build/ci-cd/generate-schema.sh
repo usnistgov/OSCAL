@@ -38,26 +38,27 @@ while IFS="" read -r path || [[ -n "$path" ]]; do
       base="${filename/-metaschema/}"
 
       schema="$working_dir/xml/schema/$base-schema.xsd"
-      printf 'Generating XML schema for %s as %s\n' "$metaschema" "$schema"
+      echo "${P_INFO}Generating XML schema for '$metaschema' as '$schema'.${P_END}"
       xsl_transform "$OSCALDIR/build/metaschema/xml/produce-xsd.xsl" "$metaschema" "$schema"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Generating XML schema failed for %s\n' "$metaschema"
+        echo "${P_ERROR}Generating XML schema failed for '$metaschema'.${P_END}"
         exitcode=1
       fi
+      # TODO: Validate XML schema
 
       schema="$working_dir/json/schema/$base-schema.json"
-      printf 'Generating JSON schema for %s as %s\n' "$metaschema" "$schema"
+      echo "${P_INFO}Generating JSON schema for '$metaschema' as '$schema'.${P_END}"
       xsl_transform "$OSCALDIR/build/metaschema/json/produce-json-schema.xsl" "$metaschema" "$schema"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Generating JSON schema failed for %s\n' "$metaschema"
+        echo "${P_ERROR}Generating JSON schema failed for '$metaschema'.${P_END}"
         exitcode=1
       fi
       ajv compile -s "$schema" --extend-refs=true --verbose
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Invalid JSON schema: %s\n' "$schema"
+        echo "${P_ERROR}Invalid JSON schema: '$schema'.${P_END}"
         exitcode=1
       fi
     done
