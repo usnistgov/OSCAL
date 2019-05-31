@@ -26,6 +26,16 @@ references:
   publish_artifacts: &publish_artifacts
     store_artifacts:
       path: build_artifacts
+  restore_gem_cache: &restore_gem_cache
+    restore_cache:
+      keys:
+        - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+  save_gem_cache: &save_gem_cache
+    save_cache:
+      key: v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "git-oscal/docs/Gemfile.lock" }}
+      paths:
+        - ~/jekyll-bundle
+ 
 commands:
   install-saxon:
     description: "Retrieve Saxon-HE and setup the environment to run it"
@@ -126,7 +136,7 @@ jobs: # a collection of steps
       - run:
           name: Generate OSCAL schemas
           command: |
-            bash "${CICD_DIR}/generate-content-converters.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/generate-content-converters.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - *persist_to_build_workspace
   job-copy-and-convert-content:
@@ -138,7 +148,7 @@ jobs: # a collection of steps
       - run:
           name: Generate OSCAL converters
           command: |
-            bash "${CICD_DIR}/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/copy-and-convert-content.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
       - *persist_to_build_workspace
   job-validate-content:
@@ -151,7 +161,7 @@ jobs: # a collection of steps
       - run:
           name: Validate content instances
           command: |
-            bash "${CICD_DIR}/validate-content.sh" "$OSCAL_BUILD_DIR"
+            bash "$CICD_DIR/validate-content.sh" "$OSCAL_BUILD_DIR"
   job-generate-docs:
     executor: java-executor
     steps:
@@ -161,77 +171,12 @@ jobs: # a collection of steps
       - run:
           name: Generate schema documentation
           command: |
-            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
-            bash "${CICD_DIR}/generate-schema-documentation.sh" "${OSCAL_BUILD_DIR}"
+            cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            bash "$CICD_DIR/generate-schema-documentation.sh" "$OSCAL_BUILD_DIR"
             echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
-            mv docs "${OSCAL_BUILD_DIR}"/docs
+            mv docs "$OSCAL_BUILD_DIR"/docs
       - *publish_artifacts
       - *persist_to_build_workspace
-  job-validate-site-content:
-    executor: ruby-node-executor
-    steps:
-      - *checkout
-      - *attach_build_workspace
-      - restore_cache:
-          keys:
-            - gem-cache-{{ arch }}-{{ .Branch }}
-            - gem-cache
-      - run:
-          name: Install Bundler
-          command: |
-            cd "${OSCAL_REPO_DIR}/docs"
-            echo gem install bundler
-            bundle install --path ~/jekyll-bundle
-      - run:
-          name: Build jekyll site
-          command: |
-            cp -vr "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
-            cd "${OSCAL_REPO_DIR}/docs"
-            bundle exec jekyll build -d _site/OSCAL
-            htmlproofer --assume-extension ./_site
-          environment:
-            JEKYLL_ENV: production
-      - save_cache:
-          key: gem-cache-{{ arch }}-{{ .Branch }}
-          paths:
-            - ~/jekyll-bundle
-      - *publish_artifacts
-  job-build-and-deploy-site:
-    executor: ruby-node-executor
-    steps:
-      - *checkout
-      - *attach_build_workspace
-      - restore_cache:
-          keys:
-            - gem-cache-{{ arch }}-{{ .Branch }}
-            - gem-cache
-      - run:
-          name: Install Bundler
-          command: |
-            cd "${OSCAL_REPO_DIR}/docs"
-            echo gem install bundler
-            bundle install --path ~/jekyll-bundle
-      - run:
-          name: Build jekyll site
-          command: |
-            cp -vr "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
-            cd "${OSCAL_REPO_DIR}/docs"
-            bundle exec jekyll build
-            mkdir -p _site/.circleci
-            # copy the circleci config
-            cp ../.circleci/config.yml _site/.circleci/config.yml
-          environment:
-            JEKYLL_ENV: production
-      - save_cache:
-          key: gem-cache-{{ arch }}-{{ .Branch }}
-          paths:
-            - ~/jekyll-bundle
-      - run:
-          name: Run deploy script
-          command: |
-            cd "${OSCAL_REPO_DIR}/docs"
-            bash ./deploy.sh --push-only -v -m "Deploying site [ci skip]"
-      - *publish_artifacts
   job-deploy-artifacts:
     executor: java-executor
     steps: # a collection of executable commands
@@ -248,16 +193,70 @@ jobs: # a collection of steps
             git rm -r --ignore-unmatch content/**/*.json
             git rm -r --ignore-unmatch content/**/*.xml
             cd -
-            cp -r "${OSCAL_BUILD_DIR}"/* "${OSCAL_REPO_DIR}"
-            cd "${OSCAL_REPO_DIR}"
+            cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            cd "$OSCAL_REPO_DIR"
             git add -f --all xml
             git add -f --all json
             git add -f --all content
             git config user.name "Deployment Bot"
-            git commit --allow-empty -m "Deploying site [ci skip]"
+            git commit --allow-empty -m "Deploying content [ci skip]"
             git fetch
             git rebase origin/master
             git push
+      - *publish_artifacts
+  job-validate-site-content:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - *restore_gem_cache
+      - run:
+          name: Install Bundler
+          command: |
+            cd "$OSCAL_REPO_DIR/docs"
+            echo gem install bundler
+            bundle install --path ~/jekyll-bundle
+      - run:
+          name: Build jekyll site
+          command: |
+            cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            cd "$OSCAL_REPO_DIR/docs"
+            bundle exec jekyll build -d _site/OSCAL
+            htmlproofer --assume-extension ./_site
+          environment:
+            JEKYLL_ENV: production
+      - *save_gem_cache
+      - *publish_artifacts
+  job-build-and-deploy-website:
+    executor: ruby-node-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - *restore_gem_cache
+      - run:
+          name: Install Bundler
+          command: |
+            cd "$OSCAL_REPO_DIR/docs"
+            echo gem install bundler
+            bundle install --path ~/jekyll-bundle
+      - run:
+          name: Build jekyll site
+          command: |
+            cp -vr "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            cd "$OSCAL_REPO_DIR/docs"
+            bundle exec jekyll build
+            mkdir -p _site/.circleci
+            # copy the circleci config
+            cp ../.circleci/config.yml _site/.circleci/config.yml
+          environment:
+            JEKYLL_ENV: production
+      - *save_gem_cache
+      - run:
+          name: Run deploy script
+          command: |
+            cd "$OSCAL_REPO_DIR/docs"
+            git config user.name "Deployment Bot"
+            bash ./deploy.sh --push-only -v -m "Deploying website [ci skip]"
       - *publish_artifacts
 workflows:
   version: 2
@@ -299,29 +298,10 @@ workflows:
           filters:
             branches:
               only: master
-  build-and-deploy-site:
-    jobs:
-      - job-validate-metaschema:
-          filters:
-            branches:
-              only: master
-      - job-generate-converters:
-          requires:
-            - job-validate-metaschema
-          filters:
-            branches:
-              only: master
-      - job-generate-docs:
-          requires:
-            - job-validate-metaschema
-            - job-generate-converters
-          filters:
-            branches:
-              only: master
-      - job-build-and-deploy-site:
+      - job-build-and-deploy-website:
           requires:
             - job-generate-docs
+            - job-deploy-artifacts
           filters:
             branches:
               only: master
-
