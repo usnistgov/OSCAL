@@ -41,10 +41,10 @@ source $OSCALDIR/build/ci-cd/saxon-init.sh
 printf "SAXON: %s\n" "$SAXON_HOME"
 classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
 printf "ClassPath: %s\n" "$classpath"
-
-exitcode=0
 shopt -s nullglob
 shopt -s globstar
+
+#parse the files
 while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
   shopt -s extglob
   # skip if line starts with comment
@@ -58,12 +58,15 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
   if [[ ! -z "$path" ]]; then
     files_to_process="$OSCALDIR/$path"
     IFS= # disable word splitting    
+
+    #loop through the files
     for file in $files_to_process
     do
       # get the base file name
       baseName=$(basename $file)
 
       # debuggging statements, shows what is processing
+      printf 'path: %s\n' "$file"
       printf 'file name: %s\n' "$baseName" 
       printf 'format: %s\n' "$format"
       printf 'type: %s\n' "$type"
@@ -123,7 +126,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
               ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose
           fi
           cmd_exitcode=$?
-          if [ $cmd_exitcode -ne 0 ]; then
+          if [ $cmd_exitcode != 0 ]; then
               printf "${red}ERROR: Comparison of the converted JSON file to the original failed for file: %s.\n${end}" "$baseName"
               exitcode=1
           else
@@ -132,6 +135,55 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
         ;;
       json)
           #reverse the process, JSON->XML->JSON
+          
+          # transformation of JSON to XML
+          if [ "$type" = "profile" ]; then
+              java -jar "$classpath"  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${file}"
+          else
+              java -jar "$classpath" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${file}"
+          fi
+          # check the exit code for the conversion
+          cmd_exitcode=$?
+          if [ $cmd_exitcode != 0 ]; then
+              printf "${red}ERROR: JSON->XML conversion failed for file: %s\n${end}" "$baseName"
+              exitcode=1
+          else
+              printf "${green}SUCCESS: JSON converted to XML. \n${end}"
+          fi
+
+          # transformation from source XML to target JSON
+          if [ "$type" = "profile" ]; then
+              java -jar "$classpath" -s:"${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml" -xsl:"$profileJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
+          else
+              java -jar "$classpath" -s:"${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml" -xsl:"$catalogJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
+          fi
+          # check the exit code for the conversion
+          cmd_exitcode=$?
+          if [ $cmd_exitcode != 0 ]; then
+              printf "${red}ERROR: XML->JSON conversion failed for file: %s\n${end}" "$baseName" 
+              exitcode=1
+          else
+              printf "${green}SUCCESS: XML converted to JSON. \n${end}" 
+          fi
+
+          #validate JSON schemas
+          if [ "$type" = "profile" ]; then
+              #validate the profile JSON
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose 
+          else
+              #validate the catalog JSON
+              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose
+          fi
+          cmd_exitcode=$?
+          if [ $cmd_exitcode != 0 ]; then
+              printf "${red}ERROR: Comparison of the converted JSON file to the original failed for file: %s.\n${end}" "$baseName"
+              exitcode=1
+          else
+              printf "${green}SUCCESS: Comparison of the converted JSON file to the original was successful.\n${end}"
+          fi
+
+          #compare the two json files
+          #diff --unified $file "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
 
         ;;
       esac
