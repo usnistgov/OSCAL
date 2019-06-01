@@ -35,9 +35,9 @@ while IFS="" read -r path || [[ -n "$path" ]]; do
       filename=$(basename -- "$metaschema")
       extension="${filename##*.}"
       filename="${filename%.*}"
-      base="${filename/-metaschema/}"
+      base="${filename/_metaschema/}"
 
-      schema="$working_dir/xml/schema/$base-schema.xsd"
+      schema="$working_dir/xml/schema/$base_schema.xsd"
       echo "${P_INFO}Generating XML schema for '$metaschema' as '$schema'.${P_END}"
       xsl_transform "$OSCALDIR/build/metaschema/xml/produce-xsd.xsl" "$metaschema" "$schema"
       cmd_exitcode=$?
