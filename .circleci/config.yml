@@ -236,8 +236,7 @@ jobs: # a collection of
           name: Generate round trip XML and JSON conversions
           command: |
             bash "$CICD_DIR/roundTripXML.sh" "$OSCAL_BUILD_DIR"
-            mkdir "${OSCAL_BUILD_DIR}"/build
-            mv "${OSCALDIR}"/build/ci-cd/temp "${OSCAL_BUILD_DIR}"/build
+            mv "${OSCALDIR}"/build/ci-cd/temp/* "${OSCAL_BUILD_DIR}"/build
       - *publish_artifacts
       - *persist_to_build_workspace
   job-generate-docs:
