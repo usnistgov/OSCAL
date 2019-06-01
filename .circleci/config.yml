@@ -238,9 +238,7 @@ jobs: # a collection of
             bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - store_artifacts:
           path: "git-checkout/build/ci-cd/temp/"
-          destination: build
-      - *publish_artifacts
-      - *persist_to_build_workspace
+          destination: home/circleci/oscal/build_artifacts/build
   job-generate-docs:
     executor: java-executor
     steps:
