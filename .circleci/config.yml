@@ -160,8 +160,8 @@ jobs: # a collection of steps
           command: |
             bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - store_artifacts:
-        path: "${CICD_DIR}/temp/*"
-        destination: build
+          path: "${CICD_DIR}/temp/*"
+          destination: build
   job-generate-docs:
     executor: java-executor
     steps:
