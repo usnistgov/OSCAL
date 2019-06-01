@@ -158,14 +158,10 @@ jobs: # a collection of steps
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
-            bash "$CICD_DIR/roundTripXML.sh" "$OSCAL_BUILD_DIR"
-      - run:
-          name: Copy files as artifacts in CI/CD
-          command: |
-            echo "Trying to move files to the %s directory" "${OSCAL_BUILD_DIR)"
-            mv "${OSCALDIR}"/build/ci-cd/temp/* "${OSCAL_BUILD_DIR}"/build
-      - *publish_artifacts
-      - *persist_to_build_workspace
+            bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
+      - store_artifacts:
+        path: "${CICD_DIR}/temp/*"
+        destination: build
   job-generate-docs:
     executor: java-executor
     steps:
