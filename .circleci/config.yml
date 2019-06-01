@@ -237,7 +237,7 @@ jobs: # a collection of
           command: |
             bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - store_artifacts:
-          path: "build/ci-cd/temp/*"
+          path: "git-checkout/build/ci-cd/temp/*"
           destination: build
   job-generate-docs:
     executor: java-executor
