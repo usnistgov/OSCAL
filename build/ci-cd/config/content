@@ -6,6 +6,6 @@
 src/content/nist.gov/SP800-53/rev4/xml/*catalog.xml|xml|catalog|json
 src/content/nist.gov/SP800-53/rev4/xml/*profile.xml|xml|profile|json
 #### Not yet ready for JSON round trips
-# content/**/*catalog.json|json|catalog|xml
-# content/**/*profile.json|json|profile|xml
+content/nist.gov/SP800-53/rev4/json/*catalog.json|json|catalog|xml
+content/nist.gov/SP800-53/rev4/json/*profile.json|json|profile|xml
 
