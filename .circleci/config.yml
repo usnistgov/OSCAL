@@ -93,6 +93,16 @@ commands:
           name: Get hub
           command: |
             sudo brew install hub
+  install-bundler:
+    description: "Install bundler and html-proofer"
+    steps:
+      - run:
+          name: Install Bundler
+          command: |
+            cd "$OSCAL_REPO_DIR/docs"
+            echo gem install bundler
+            bundle install --path ~/jekyll-bundle
+            gem install html-proofer
   check-skip-build:
     steps:
       - run:
