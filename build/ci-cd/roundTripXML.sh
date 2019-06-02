@@ -182,9 +182,6 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
               printf "${green}SUCCESS: Comparison of the converted JSON file to the original was successful.\n${end}"
           fi
 
-          #compare the two json files
-          #diff --unified $file "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
-
         ;;
       esac
     done
