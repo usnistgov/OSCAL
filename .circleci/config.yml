@@ -93,6 +93,15 @@ commands:
           name: Get hub
           command: |
             sudo brew install hub
+  check-skip-build:
+    steps:
+      - run:
+          name: Check if job should be skipped
+          command: |
+            if [[ -f "$OSCAL_BUILD_DIR/.skipbuild" ]]; then
+              echo "Skipping job."
+              circleci step halt
+            fi
 executors:
   java-executor:
     docker: # run the java steps with Docker
