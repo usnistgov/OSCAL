@@ -240,7 +240,7 @@ jobs: # a collection of
           command: |
             bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
       - store_artifacts:
-          path: "git-checkout/build/ci-cd/temp/"
+          path: "git-oscal/build/ci-cd/temp/"
           destination: home/circleci/oscal/build_artifacts/build
   job-generate-docs:
     executor: java-executor
@@ -354,6 +354,7 @@ workflows:
   build:
     jobs:
       - job-ci-skip-check
+      - job-roundtrip-conversions
       - job-validate-metaschema:
           requires:
             - job-ci-skip-check
@@ -373,7 +374,6 @@ workflows:
            requires:
             - job-generate-converters
             - job-validate-content
-      - job-roundtrip-conversions
       - job-generate-docs:
           requires:
             - job-validate-metaschema
