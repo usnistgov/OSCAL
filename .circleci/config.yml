@@ -373,9 +373,7 @@ workflows:
            requires:
             - job-generate-converters
             - job-validate-content
-      - job-roundtrip-conversions:
-          requires:
-            - job-copy-and-convert-content
+      - job-roundtrip-conversions
       - job-generate-docs:
           requires:
             - job-validate-metaschema
