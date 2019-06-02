@@ -11,8 +11,6 @@ references:
   attach_build_workspace: &attach_build_workspace
     attach_workspace:
         at: build_artifacts
-<<<<<<< HEAD
-=======
   persist_to_build_workspace: &persist_to_build_workspace
     persist_to_workspace:
       root: build_artifacts
@@ -21,12 +19,7 @@ references:
         - xml
         - json
         - docs
-<<<<<<< HEAD
-        - build/ci-cd/temp
->>>>>>> Temp Directory
-=======
-        - build # for roundtrip artifacts
->>>>>>> Shorten FileNames
+        - build 
   checkout: &checkout
     checkout:
       path: git-oscal
@@ -56,7 +49,6 @@ commands:
           key: maven-m2
           paths:
             - ~/.m2
-<<<<<<< HEAD
   install-schematron:
     description: "Retrieve the schematron skeleton and setup the environment to run it"
     steps:
@@ -66,7 +58,6 @@ commands:
             git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
             cd "$SCHEMATRON_HOME"
             git checkout master -- trunk/schematron/code
-=======
   install-maven:
     description: "Installs Maven"
     steps:
@@ -78,16 +69,9 @@ commands:
     description: "Installs Python lxml package"
     steps:
       - run:
-<<<<<<< HEAD
         name: Get lxml
         command: |
           sudo pip install lxml
->>>>>>> Refactor CI/CD
-=======
-          name: Get lxml
-          command: |
-            sudo pip install lxml
->>>>>>> CI/CD Bug Fix
   install-xmllint:
     description: "Retrieve xmllint and setup the environment to run it"
     steps:
@@ -370,7 +354,6 @@ workflows:
            requires:
             - job-generate-converters
             - job-validate-content
-<<<<<<< HEAD
       - job-generate-docs:
           requires:
             - job-validate-metaschema
@@ -384,11 +367,6 @@ workflows:
               ignore:
                 - master
                 - nist-pages
-=======
-      - job-roundtrip-conversions:
-            requires:
-            - job-copy-and-convert-content
->>>>>>> Add Roundtrip Check to CI/CD
       - job-deploy-artifacts:
           requires:
             - job-copy-and-convert-content

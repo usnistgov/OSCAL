@@ -17,6 +17,7 @@ The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of 
 1. [validate-content.sh](validate-content.sh): Validates OSCAL content in the repository's [src](https://github.com/usnistgov/OSCAL/tree/master/src) against the content's respective OSCAL model and format.
 1. [generate-content-converters.sh](generate-content-converters.sh): Generates [JSON to XML](https://github.com/usnistgov/OSCAL/tree/master/xml/convert) and [XML to JSON](https://github.com/usnistgov/OSCAL/tree/master/json/convert) content conversion scripts for each OSCAL model based on their [respective metaschemas](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema).
 1. [copy-and-convert-content.sh](copy-and-convert-content.sh): Copies selective content from the [src/content](https://github.com/usnistgov/OSCAL/tree/master/src/content) directory, and generates instance of this content in alternate OSCAL formats using the appropriate content converters. Note __This script requires that the process have write access to the Git repository branch that the CI/CD is operating on to work completely.__
+1. [roundTripXML.sh](roundTripXML.sh): Performs round trip validations of the content from XML->JSON->XML to confirm that the conversions are lossless and that converted files comply with their schemas.  The same conversions are done in the inverse: JSON->XML->JSON.
 
 Additional scripts are provided that generate content for the OSCAL project website, supported by the CircleCI ```build-and-deploy-site``` workflow.
 1. [generate-schema-documentation.sh](generate-schema-documentation.sh): This is used as part of the site generation pipeline to build HTML documentation for the OSCAL models.
@@ -38,13 +39,10 @@ NodeJS Packages:
 
 ```
 npm install -g ajv-cli
-```
 
-Python packages:
+Python Packages:
 
-```
-pip install 'jsonschema>=3.0.1'
-pip install simplejson
+pip install lxml
 ```
 
 The Saxon jar file needs to be retrieved. This can be two ways:
