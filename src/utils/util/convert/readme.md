@@ -4,7 +4,7 @@ XSLT stylesheets offer bi-directional conversion between XML and JSON versions o
 
 Run your XML through an XML converter to produce JSON. Run the JSON through the XML converter to produce equivalent XML.
 
-These are XSLT 3.0 stylesheets; they have been tested under SaxonHE. They are produced by automated means from metaschema source (found in [the metaschema directory](../../schema/metaschema), and are not intended to be maintained by hand.
+These are XSLT 3.0 stylesheets; they have been tested under SaxonHE. They are produced by automated means from metaschema source (found in [the metaschema directory](../../../metaschema), and are not intended to be maintained by hand.
 
 ## Invocation from the command line:
 

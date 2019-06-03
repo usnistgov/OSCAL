@@ -38,15 +38,15 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
     model="${filename/_metaschema/}"
 
     #split on commas
-    IFS=, read -a formats <<< "$gen_docs"
-    for format in "${formats[@]}"; do
-      if [ -z "$format" ]; then
+    IFS=, read -a formats <<< "$gen_converter"
+    for target_format in "${formats[@]}"; do
+      if [ -z "$target_format" ]; then
         # skip blanks
         continue;
       fi
     
       # Run the XSL template for the format
-      case $format in
+      case $target_format in
       xml)
         source_format="json"
         ;;
@@ -54,18 +54,18 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
         source_format="xml"
         ;;
       *)
-        echo "${P_WARN}Generating converter to the '${format^^}' format is unsupported for '$metaschema'.${P_END}"
+        echo "${P_WARN}Generating converter to the '${target_format^^}' format is unsupported for '$metaschema'.${P_END}"
         continue;
         ;;
       esac
 
-      converter="$working_dir/${format}/convert/${model}_${source_format}-to-${format}-converter.xsl"
+      converter="$working_dir/${target_format}/convert/${model}_${source_format}-to-${target_format}-converter.xsl"
 
-      echo "${P_INFO}Generating ${source_format^^} to ${format^^} converter for '$metaschema' as '$converter'.${P_END}"
-      xsl_transform "$OSCALDIR/build/metaschema/$format/produce-$format-converter.xsl" "$metaschema" "$converter"
+      echo "${P_INFO}Generating ${source_format^^} to ${target_format^^} converter for '$metaschema' as '$converter'.${P_END}"
+      xsl_transform "$OSCALDIR/build/metaschema/$source_format/produce-${source_format}-converter.xsl" "$metaschema" "$converter"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        echo "${P_ERROR}Generating ${source_format^^} to ${format^^} converter failed for '$metaschema'.${P_END}"
+        echo "${P_ERROR}Generating ${source_format^^} to ${target_format^^} converter failed for '$metaschema'.${P_END}"
         exitcode=1
       fi
     done

@@ -28,39 +28,39 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="" read -r path || [[ -n "$path" ]]; do
+while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; do
   shopt -s extglob
-  # skip if line starts with comment
   [[ "$path" =~ ^[[:space:]]*# ]] && continue
   # remove leading space
   path="${path##+([[:space:]])}"
   # remove trailing space
-  path="${path%%+([[:space:]])}"
+  gen_docs="${gen_docs%%+([[:space:]])}"
   shopt -u extglob
 
-  if [[ ! -z "$path" ]]; then
-    files_to_process="$OSCALDIR"/"$path"
-    IFS= # disable word splitting    
-    for file in $files_to_process
-    do
-      echo "${P_INFO}Validating metaschema '$file'${P_END}"
-      xmllint --noout --schema "$metaschema_lib/metaschema.xsd" "$file"
+  [ -z "$path" ] && continue;
+  
+  files_to_process="$OSCALDIR"/"$path"
+
+  IFS= # disable word splitting    
+  for metaschema in $files_to_process
+  do
+    echo "${P_INFO}Validating metaschema '$metaschema'${P_END}"
+    xmllint --noout --schema "$metaschema_lib/metaschema.xsd" "$metaschema"
+    cmd_exitcode=$?
+    if [ $cmd_exitcode -ne 0 ]; then
+      echo "${P_ERROR}Metaschema '$metaschema' is not valid.${P_END}"
+      exitcode=1
+    else
+      svrl_result="$working_dir/svrl/${file/$OSCALDIR\/src\//}.svrl"
+      svrl_result_dir=${svrl_result%/*}
+      mkdir -p "$svrl_result_dir"
+      validate_with_schematron "$compiled_schematron" "$metaschema" "$svrl_result"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        echo "${P_ERROR}Metaschema '$file' is not valid.${P_END}"
-        exitcode=1
-      else
-        svrl_result="$working_dir/svrl/${file/$OSCALDIR\/src\//}.svrl"
-        svrl_result_dir=${svrl_result%/*}
-        mkdir -p "$svrl_result_dir"
-        validate_with_schematron "$compiled_schematron" "$file" "$svrl_result"
-        cmd_exitcode=$?
-        if [ $cmd_exitcode -ne 0 ]; then
-            exitcode=1
-        fi
+          exitcode=1
       fi
-    done
-  fi
+    fi
+  done
 done < $OSCALDIR/build/ci-cd/config/metaschema
 shopt -u nullglob
 shopt -u globstar

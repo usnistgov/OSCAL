@@ -14,7 +14,7 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
+while IFS="|" read path format model converttoformats || [ -n "$path" ]; do
   shopt -s extglob
   # skip if line starts with comment
   [[ "$path" =~ ^[[:space:]]*# ]] && continue
@@ -29,11 +29,11 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
     IFS= # disable word splitting    
     for file in $files_to_process
     do
-      echo "${P_INFO}Validating $type $format file '$file'.${P_END}"
+      echo "${P_INFO}Validating $model $format file '$file'.${P_END}"
 
       case $format in
       xml)
-          schema="$working_dir/xml/schema/oscal-$type-schema.xsd"
+          schema="$working_dir/xml/schema/oscal_${model}_schema.xsd"
           xmllint --noout --schema "$schema" "$file"
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then
@@ -42,7 +42,7 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
           fi
         ;;
       json)
-          schema="$working_dir/json/schema/oscal-$type-schema.json"
+          schema="$working_dir/json/schema/oscal_${model}_schema.json"
           ajv validate -s "$schema" -d "$file" --extend-refs=true --verbose
           cmd_exitcode=$?
           if [ $cmd_exitcode -ne 0 ]; then

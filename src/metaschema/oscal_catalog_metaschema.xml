@@ -15,10 +15,10 @@
 
   <remarks>
     <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
-    <p>An XML Schema is <a href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal-catalog-schema.xsd">provided</a> for the OSCAL Catalog XML model.</p>
+    <p>An XML Schema is <a href="https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_catalog_schema.xsd">provided</a> for the OSCAL Catalog XML model.</p>
   </remarks>
   
-  <import href="oscal-metadata-metaschema.xml"/>
+  <import href="oscal_metadata_metaschema.xml"/>
   
   <define-assembly name="catalog" group-as="control-catalog">
     <flag name="id" datatype="ID" required="yes"/>

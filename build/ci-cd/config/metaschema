@@ -1,4 +1,4 @@
-# path to metaschema source|generate schema format(s)|generate converter format(s)|generate docs format(s)
-src/metaschema/oscal_catalog_metaschema.xml|xml,json,yaml|xml,json|xml,json
+# path to metaschema source|generate schema format(s)|generate converter target format(s)|generate docs format(s)
+src/metaschema/oscal_catalog_metaschema.xml|xml,json|xml,json|xml,json
 src/metaschema/oscal_profile_metaschema.xml|xml,json|xml,json|xml,json
 src/metaschema/oscal_ssp_metaschema.xml|xml,json|xml,json|

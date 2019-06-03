@@ -30,7 +30,7 @@
 	<!-- IMPORT STATEMENTS -->
 
 	<!--<import href="oscal-catalog-metaschema.xml" />
-	<import href="oscal-profile-metaschema.xml" />-->
+	<import href="oscal_profile_metaschema.xml" />-->
 
 	<!-- TOP LEVEL ASSEMBLY -->
 

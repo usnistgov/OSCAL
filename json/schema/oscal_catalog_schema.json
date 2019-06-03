@@ -4,736 +4,7 @@
     "$comment" : "OSCAL Control Catalog Format: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "metadata" : 
-      { "title" : "Publication metadata",
-        "description" : "Information describing the publication or availability of this document",
-        "$id" : "#/definitions/metadata",
-        "type" : "object",
-        "properties" : 
-        { "title" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/title" },
-          "authors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/author" } },
-          "publication-date" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/publication-date" },
-          "version" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/version" },
-          "document-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/doc-id" } },
-          "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "resources" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/resource" } },
-          "roles" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/role" } },
-          "parties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/party" } },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" },
-          "extra-meta" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/extra-meta" } },
-        "required" : 
-        [ "title" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "title",
-            "author",
-            "publication-date",
-            "version",
-            "doc-id",
-            "prop",
-            "resource",
-            "role",
-            "party",
-            "notes",
-            "extra-meta" ] } },
-      "publication-date" : 
-      { "title" : "Publication date",
-        "description" : "The official date of publication",
-        "$id" : "#/definitions/publication-date",
-        "type" : "string" },
-      "party" : 
-      { "title" : "Party (organization or person)",
-        "description" : "A responsible entity, either singular (an organization or person) or collective (multiple persons)",
-        "$id" : "#/definitions/party",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string" },
-          "role-id" : 
-          { "type" : "string" },
-          "persons" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/person" } },
-          "org" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/org" },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "role-id",
-            "person",
-            "org",
-            "notes" ] } },
-      "person" : 
-      { "title" : "Person",
-        "description" : "A person, with contact information",
-        "$id" : "#/definitions/person",
-        "type" : "object",
-        "properties" : 
-        { "person-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/person-name" },
-          "short-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/short-name" },
-          "org-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/org-name" },
-          "person-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/person-id" } },
-          "organization-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
-          "addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
-          "email-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
-          "URLs" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "person-name",
-            "short-name",
-            "org-name",
-            "person-id",
-            "org-id",
-            "address",
-            "email",
-            "phone",
-            "url",
-            "notes" ] } },
-      "org" : 
-      { "title" : "Organization",
-        "description" : "An organization or legal entity (not a person), with contact information",
-        "$id" : "#/definitions/org",
-        "type" : "object",
-        "properties" : 
-        { "org-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/org-name" },
-          "short-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/short-name" },
-          "organization-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/org-id" } },
-          "addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/address" } },
-          "email-addresses" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/email" } },
-          "telephone-numbers" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/phone" } },
-          "URLs" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/url" } },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "org-name",
-            "short-name",
-            "org-id",
-            "address",
-            "email",
-            "phone",
-            "url",
-            "notes" ] } },
-      "person-id" : 
-      { "title" : "Personal Identifier",
-        "description" : "An identifier for a person (such as an ORCID) using a designated scheme.",
-        "$id" : "#/definitions/person-id",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
-      "org-id" : 
-      { "title" : "Organization Identifier",
-        "description" : "An identifier for an organization using a designated scheme.",
-        "$id" : "#/definitions/org-id",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
-      "person-name" : 
-      { "title" : "Person Name",
-        "description" : "Full (legal) name of an individual",
-        "$id" : "#/definitions/person-name",
-        "type" : "string" },
-      "org-name" : 
-      { "title" : "Organization Name",
-        "description" : "Full (legal) name of an organization",
-        "$id" : "#/definitions/org-name",
-        "type" : "string" },
-      "short-name" : 
-      { "title" : "short-name",
-        "description" : "A common name, short name or acronym",
-        "$id" : "#/definitions/short-name",
-        "type" : "string" },
-      "address" : 
-      { "title" : "Address",
-        "description" : "A postal address",
-        "$id" : "#/definitions/address",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "postal-address" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/addr-line" } },
-          "city" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/city" },
-          "state" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/state" },
-          "postal-code" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/postal-code" },
-          "country" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/country" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "type",
-            "addr-line",
-            "city",
-            "state",
-            "postal-code",
-            "country" ] } },
-      "addr-line" : 
-      { "title" : "Address line",
-        "description" : "A single line of an address",
-        "$id" : "#/definitions/addr-line",
-        "type" : "string" },
-      "city" : 
-      { "title" : "City",
-        "description" : "City, town or geographical region for mailing address",
-        "$id" : "#/definitions/city",
-        "type" : "string" },
-      "state" : 
-      { "title" : "State",
-        "description" : "State, province or analogous geographical region for mailing address",
-        "$id" : "#/definitions/state",
-        "type" : "string" },
-      "postal-code" : 
-      { "title" : "Postal Code",
-        "description" : "Postal or ZIP code for mailing address",
-        "$id" : "#/definitions/postal-code",
-        "type" : "string" },
-      "country" : 
-      { "title" : "Country",
-        "description" : "Country for mailing address",
-        "$id" : "#/definitions/country",
-        "type" : "string" },
-      "email" : 
-      { "title" : "Email",
-        "description" : "Email address",
-        "$id" : "#/definitions/email",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
-      "phone" : 
-      { "title" : "Telephone",
-        "description" : "Contact number by telephone",
-        "$id" : "#/definitions/phone",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
-      "url" : 
-      { "title" : "URL",
-        "description" : "URL for web site or Internet presence",
-        "$id" : "#/definitions/url",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
-      "role" : 
-      { "title" : "Role",
-        "description" : "Defining a role to be assigned to a party or agent",
-        "$id" : "#/definitions/role",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string" },
-          "title" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/title" },
-          "short-name" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/short-name" },
-          "desc" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/desc" } },
-        "required" : 
-        [ "id" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "title",
-            "short-name",
-            "desc" ] } },
-      "extra-meta" : 
-      { "title" : "Extra metadata",
-        "description" : "Container for (system-defined) metadata",
-        "$id" : "#/definitions/extra-meta",
-        "type" : "object",
-        "properties" : 
-        { "metadata-groups" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta-group" } },
-          "metadata-fields" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta" } },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "meta-group",
-            "meta",
-            "notes" ] } },
-      "meta-group" : 
-      { "title" : "Metadata group",
-        "description" : "Custom- or application-defined annotated metadata.",
-        "$id" : "#/definitions/meta-group",
-        "type" : "object",
-        "properties" : 
-        { "term" : 
-          { "type" : "string" },
-          "type" : 
-          { "type" : "string" },
-          "metadata-fields" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta" } },
-          "metadata-groups" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/meta-group" } },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "term",
-            "type",
-            "meta",
-            "meta-group",
-            "notes" ] } },
-      "meta" : 
-      { "title" : "Metadata field value",
-        "description" : "Any customized or specialized metadata value.",
-        "$id" : "#/definitions/meta",
-        "type" : "object",
-        "properties" : 
-        { "term" : 
-          { "type" : "string" },
-          "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "term",
-            "type" ] } },
-      "resource" : 
-      { "title" : "Resource",
-        "description" : "A resource to inform or authenticate the present document, or to supplement it as an attachment",
-        "$id" : "#/definitions/resource",
-        "type" : "object",
-        "properties" : 
-        { "rel" : 
-          { "type" : "string" },
-          "media-type" : 
-          { "type" : "string" },
-          "title" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/title" },
-          "authors" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/author" } },
-          "format" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/format" },
-          "description" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/description" },
-          "date" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/date" },
-          "version" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/version" },
-          "document-ids" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/doc-id" } },
-          "properties" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/prop" } },
-          "hashed-links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/hlink" } },
-          "base64" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/base64" },
-          "notes" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/notes" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "rel",
-            "media-type",
-            "title",
-            "author",
-            "format",
-            "description",
-            "date",
-            "version",
-            "doc-id",
-            "prop",
-            "hlink",
-            "base64",
-            "notes" ] } },
-      "author" : 
-      { "title" : "Author",
-        "description" : "A named author",
-        "$id" : "#/definitions/author",
-        "type" : "string" },
-      "doc-id" : 
-      { "title" : "Document Identifier",
-        "description" : "Any sort of document identifier, name, code, path or other indicator of where and how this document may be located, compared or validated. Given appropriate qualification via its type and rel, this value may point to the same or another version of the document.",
-        "$id" : "#/definitions/doc-id",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
-      "notes" : 
-      { "title" : "Notes",
-        "description" : "Any notes with further information",
-        "$id" : "#/definitions/notes",
-        "type" : "object",
-        "properties" : 
-        { "prose" : 
-          { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
-      "hlink" : 
-      { "title" : "Hashed link",
-        "description" : "A pointer to an external document with optional hash for verification",
-        "$id" : "#/definitions/hlink",
-        "type" : "object",
-        "properties" : 
-        { "href" : 
-          { "type" : "string" },
-          "media-type" : 
-          { "type" : "string" },
-          "title" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/title" },
-          "hashes" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/hash" } } },
-        "required" : 
-        [ "href" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "href",
-            "media-type",
-            "title",
-            "hash" ] } },
-      "hash" : 
-      { "title" : "Hash",
-        "description" : "A document hash or other value subject to cryptographic authentication",
-        "$id" : "#/definitions/hash",
-        "type" : "object",
-        "properties" : 
-        { "algorithm" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "algorithm" ] } },
-      "description" : 
-      { "title" : "Description",
-        "description" : "A free-text description of the system.",
-        "$id" : "#/definitions/description",
-        "type" : "object",
-        "properties" : 
-        { "prose" : 
-          { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "prose" ] } },
-      "version" : 
-      { "title" : "version",
-        "description" : "Version information",
-        "$id" : "#/definitions/version",
-        "type" : "object",
-        "properties" : 
-        { "iso-date" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "iso-date" ] } },
-      "format" : 
-      { "title" : "Resource or attachment Format",
-        "description" : "For use when no mime-type is available or additional information is required.",
-        "$id" : "#/definitions/format",
-        "type" : "string" },
-      "date" : 
-      { "title" : "Date",
-        "description" : "",
-        "$id" : "#/definitions/date",
-        "type" : "object",
-        "properties" : 
-        { "iso-date" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "iso-date" ] } },
-      "base64" : 
-      { "title" : "Date",
-        "description" : "",
-        "$id" : "#/definitions/base64",
-        "type" : "object",
-        "properties" : 
-        { "filename" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "filename" ] } },
-      "ref-list" : 
-      { "title" : "Reference",
-        "description" : "A list of references to external resources. This object may be nested for reference lists composed of reference lists.",
-        "$id" : "#/definitions/ref-list",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string" },
-          "title" : 
-          { "type" : "string",
-            "$ref" : "#/definitions/title" },
-          "prose" : 
-          { "$ref" : "#/definitions/prose" },
-          "links" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "references" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/ref" } },
-          "reference-lists" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/ref-list" } } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "title",
-            "prose",
-            "link",
-            "ref",
-            "ref-list" ] } },
-      "ref" : 
-      { "title" : "Reference",
-        "description" : "A reference, with one or more citations to standards, related documents, or other resources",
-        "$id" : "#/definitions/ref",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string" },
-          "citations" : 
-          { "type" : "array",
-            "items" : 
-            { "$ref" : "#/definitions/citation" } },
-          "prose" : 
-          { "$ref" : "#/definitions/prose" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "id",
-            "citation",
-            "prose" ] } },
-      "citation" : 
-      { "title" : "Citation",
-        "description" : "Citation of a resource",
-        "$id" : "#/definitions/citation",
-        "type" : "object",
-        "properties" : 
-        { "id" : 
-          { "type" : "string" },
-          "href" : 
-          { "type" : "string" },
-          "RICHTEXT" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "RICHTEXT",
-            "id",
-            "href" ] } },
-      "link" : 
-      { "title" : "Link",
-        "description" : "A line or paragraph with a hypertext link",
-        "$id" : "#/definitions/link",
-        "type" : "object",
-        "properties" : 
-        { "href" : 
-          { "type" : "string" },
-          "rel" : 
-          { "type" : "string" },
-          "RICHTEXT" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "href" ],
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "RICHTEXT",
-            "href",
-            "rel" ] } },
-      "catalog" : 
+    { "catalog" : 
       { "title" : "Catalog",
         "description" : "A collection of controls",
         "$id" : "#/definitions/catalog",
@@ -744,8 +15,7 @@
           "model-version" : 
           { "type" : "string" },
           "metadata" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/metadata" },
+          { "$ref" : "#/definitions/metadata" },
           "sections" : 
           { "type" : "array",
             "items" : 
@@ -784,9 +54,8 @@
         { "id" : 
           { "type" : "string" },
           "ref-list" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/ref-list" },
-          "resources" : 
+          { "$ref" : "#/definitions/ref-list" },
+          "" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/resource" } } },
@@ -816,8 +85,7 @@
             "items" : 
             { "$ref" : "#/definitions/section" } },
           "ref-list" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/ref-list" } },
+          { "$ref" : "#/definitions/ref-list" } },
         "required" : 
         [ "title" ],
         "additionalProperties" : false,
@@ -862,8 +130,7 @@
             "items" : 
             { "$ref" : "#/definitions/control" } },
           "ref-list" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/ref-list" } },
+          { "$ref" : "#/definitions/ref-list" } },
         "required" : 
         [ "title" ],
         "additionalProperties" : false,
@@ -898,7 +165,7 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/prop" } },
-          "links" : 
+          "" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/link" } },
@@ -910,8 +177,7 @@
           { "type" : "object",
             "$ref" : "#/definitions/subcontrols" },
           "ref-list" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/ref-list" } },
+          { "$ref" : "#/definitions/ref-list" } },
         "required" : 
         [ "id",
           "title" ],
@@ -953,7 +219,7 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/prop" } },
-          "links" : 
+          "" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/link" } },
@@ -962,8 +228,7 @@
             "items" : 
             { "$ref" : "#/definitions/part" } },
           "ref-list" : 
-          { "type" : "object",
-            "$ref" : "#/definitions/ref-list" } },
+          { "$ref" : "#/definitions/ref-list" } },
         "propertyNames" : 
         { "enum" : 
           [ "id",
@@ -1038,7 +303,7 @@
           "select" : 
           { "type" : "object",
             "$ref" : "#/definitions/select" },
-          "links" : 
+          "" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/link" } } },
@@ -1151,7 +416,7 @@
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/part" } },
-          "links" : 
+          "" : 
           { "type" : "array",
             "items" : 
             { "$ref" : "#/definitions/link" } } },

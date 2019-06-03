@@ -222,9 +222,9 @@ jobs: # a collection of
           name: Generate schema documentation
           command: |
             cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
-            bash "$CICD_DIR/generate-schema-documentation.sh" "$OSCAL_BUILD_DIR"
-            echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
-            mv docs "$OSCAL_BUILD_DIR"/docs
+            bash -x "$CICD_DIR/generate-model-documentation.sh" "$OSCAL_BUILD_DIR"
+            # echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
+            # mv docs "$OSCAL_BUILD_DIR"/docs
       - *publish_artifacts
       - persist_to_workspace:
           root: build_artifacts

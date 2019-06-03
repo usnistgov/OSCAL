@@ -7,7 +7,7 @@ fi
 
 CIDIR=$OSCALDIR/build/ci-cd
 
-bash $CIDIR/validate-metaschema.sh
-bash $CIDIR/generate-schema.sh
-bash $CIDIR/generate-content-converters.sh
-bash $CIDIR/copy-and-convert-content.sh
+bash $CIDIR/validate-metaschema.sh || ("Failed to validate Metaschema" && exit 1)
+bash $CIDIR/generate-schema.sh || ("Failed to generate schema files" && exit 2)
+bash $CIDIR/generate-content-converters.sh || ("Failed to generate content converters" && exit 3)
+bash $CIDIR/copy-and-convert-content.sh || ("Failed to convert content" && exit 4)

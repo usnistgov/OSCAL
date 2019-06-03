@@ -16,7 +16,7 @@ fi
 exitcode=0
 shopt -s nullglob
 shopt -s globstar
-while IFS="|" read path format type converttoformats || [[ -n "$path" ]]; do
+while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
   shopt -s extglob
   [[ "$path" =~ ^[[:space:]]*# ]] && continue
   # remove leading space
@@ -42,15 +42,16 @@ while IFS="|" read path format type converttoformats || [[ -n "$path" ]]; do
         newpath="${newpath/\/$format\///$altformat/}"
         newpath="${newpath%.$format}.$altformat"
         dest="$working_dir/$newpath"
-        converter="$working_dir/$altformat/convert/oscal-$type-$format-to-$altformat-converter.xsl"
+        converter="$working_dir/$altformat/convert/oscal_${model}_${format}-to-${altformat}-converter.xsl"
 
-        echo "${P_INFO}Generating $altformat file '$dest' from '$file'.${P_END}"
+        echo "${P_INFO}Generating ${altformat^^} file '$dest' from '$file' using converter '$converter'.${P_END}"
         xsl_transform "$converter" "$file" "$dest"
         cmd_exitcode=$?
         if [ $cmd_exitcode -ne 0 ]; then
-          echo "${P_ERROR}Content conversion to $altformat failed for '$file'.${P_END}"
+          echo "${P_ERROR}Content conversion to ${altformat^^} failed for '$file'.${P_END}"
           exitcode=1
         fi
+        # TODO: validate generated file
       done
     done
   fi
