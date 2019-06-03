@@ -17,7 +17,7 @@
             <xs:element minOccurs="0" ref="oscal-profile:version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:doc-id"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:resource"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:role"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:party"/>
             <xs:element minOccurs="0" ref="oscal-profile:notes"/>
@@ -25,111 +25,12 @@
          </xs:sequence>
       </xs:complexType>
    </xs:element>
-   <xs:element name="link">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Link: </b>
-      A line or paragraph with a hypertext link
-    </xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-profile:everything-inline"/>
-         <xs:attribute name="href" type="xs:anyURI" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>hypertext reference: </b>A link to a document or document fragment (actual, nominal or projected)</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="rel" type="xs:NCName">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Relation: </b>Purpose of the link</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="media-type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Media type: </b>Describes the media type of a linked resource</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="author">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Author: </b>A named author</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true"/>
-   </xs:element>
    <xs:element name="publication-date">
       <xs:annotation>
          <xs:documentation>
             <b>Publication date: </b>The official date of publication</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
-   </xs:element>
-   <xs:element name="version">
-      <xs:annotation>
-         <xs:documentation>
-            <b>version: </b>Version information</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="iso-date" type="xs:date">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>ISO (standard) date: </b>Please use YYYY-MM-DD syntax.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="doc-id">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Document Identifier: </b>Any sort of document identifier, name, code, path or other indicator of where and how this document
-      may be located, compared or validated. Given appropriate qualification via its type and rel, this value may point to the same or another version of the document.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="prop">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Property: </b>A value with a name, attributed to the containing control, subcontrol, part,
-      or group.</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="id" type="xs:ID">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="name" type="xs:string" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Name: </b>Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="ns" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Namespace: </b>A namespace qualifying the name.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="class" type="xs:NMTOKENS">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
    </xs:element>
    <xs:element name="party">
       <xs:annotation>
@@ -203,7 +104,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -217,30 +118,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="rlink">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Related link: </b>A pointer to an external copy of a document with optional hash for verification</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-profile:hash"/>
-         </xs:sequence>
-         <xs:attribute name="href" type="xs:anyURI" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>hypertext reference: </b>A link to a document or document fragment (actual, nominal or projected)</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="media-type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Media type: </b>Describes the media type of a linked resource</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -282,7 +160,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -331,7 +209,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -345,7 +223,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -359,60 +237,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="notes">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Notes: </b>Any notes with further information</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
-         </xs:sequence>
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="resource">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Resource: </b>A resource to inform or authenticate the present document, or to supplement it as an attachment</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-profile:desc"/>
-            <xs:choice>
-               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:rlink"/>
-               <xs:element minOccurs="0" ref="oscal-profile:base64"/>
-            </xs:choice>
-            <xs:element minOccurs="0" ref="oscal-profile:notes"/>
-         </xs:sequence>
-         <xs:attribute name="id" type="xs:ID" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="hash">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Hash: </b>A document hash or other value subject to cryptographic authentication</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="algorithm" type="xs:string" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Hash algorithm: </b>Method by which a hash is derived</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -471,7 +296,7 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -491,7 +316,160 @@
          <xs:attribute name="type" type="xs:string">
             <xs:annotation>
                <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="resource">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Resource: </b>A resource to inform or authenticate the present document, or to supplement it as an attachment</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-profile:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:author"/>
+            <xs:element minOccurs="0" ref="oscal-profile:format"/>
+            <xs:element minOccurs="0" ref="oscal-profile:description"/>
+            <xs:element minOccurs="0" ref="oscal-profile:date"/>
+            <xs:element minOccurs="0" ref="oscal-profile:version"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:doc-id"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
+            <xs:choice>
+               <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:hlink"/>
+               <xs:element minOccurs="0" ref="oscal-profile:base64"/>
+            </xs:choice>
+            <xs:element minOccurs="0" ref="oscal-profile:notes"/>
+         </xs:sequence>
+         <xs:attribute name="rel" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Relation: </b>Purpose of the link</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="media-type" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Media type: </b>Describes the media or MIME type of a linked resource</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="author">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Author: </b>A named author</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="doc-id">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Document Identifier: </b>Any sort of document identifier, name, code, path or other indicator of where and how this document
+			may be located, compared or validated. Given appropriate qualification via its type and rel, this value may point to the same or another version of the document.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="type" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Type: </b>Indicating the type of identifier or other data item.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="notes">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Notes: </b>Any notes with further information</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hlink">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Hashed link: </b>A pointer to an external document with optional hash for verification</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element minOccurs="0" ref="oscal-profile:title"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:hash"/>
+         </xs:sequence>
+         <xs:attribute name="href" type="xs:anyURI" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Hypertext reference: </b>A relative or absolute URI indicating a resource available on the Internet.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="media-type" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Media type: </b>Describes the media or MIME type of a linked resource</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="hash">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Hash: </b>A document hash or other value subject to cryptographic authentication</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="algorithm" type="xs:string">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Hash algorithm: </b>Method by which a hash is derived</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="description">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Description: </b>A free-text description of the system.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:sequence>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="version">
+      <xs:annotation>
+         <xs:documentation>
+            <b>version: </b>Version information</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="iso-date" type="xs:date">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ISO (standard) date: </b>Please use YYYY-MM-DD syntax.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="format">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Resource or attachment Format: </b>For use when no mime-type is available or additional information is required.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="date">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Date: </b>
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="iso-date" type="xs:date">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ISO (standard) date: </b>Please use YYYY-MM-DD syntax.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -499,7 +477,7 @@
    <xs:element name="base64">
       <xs:annotation>
          <xs:documentation>
-            <b>Base64: </b>
+            <b>Date: </b>
          </xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true">
@@ -509,37 +487,22 @@
                   <b>File Name: </b>Name of the file before it was converted to Base-64. This is the name that will be assigned to the file when converted back to binary.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="media-type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Media type: </b>Describes the media type of a linked resource</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="citation-list">
+   <xs:element name="ref-list">
       <xs:annotation>
          <xs:documentation>
-            <b>Citation list: </b>A list of citations to resources, either external or (by means of internal cross-reference)
-      saved or documented internally.</xs:documentation>
+            <b>Reference: </b>A list of references to external resources. This object may be nested
+			for reference lists composed of reference lists.
+		</xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:citation"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="citation">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Citation: </b>Citation of a resource</xs:documentation>
-      </xs:annotation>
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:target"/>
             <xs:element minOccurs="0" ref="oscal-profile:title"/>
-            <xs:element minOccurs="0" ref="oscal-profile:desc"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:doc-id"/>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:ref"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:ref-list"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID">
             <xs:annotation>
@@ -549,23 +512,67 @@
          </xs:attribute>
       </xs:complexType>
    </xs:element>
-   <xs:element name="target">
+   <xs:element name="ref">
       <xs:annotation>
          <xs:documentation>
-            <b>Citation target: </b>An address for retrieval of a citation</xs:documentation>
-      </xs:annotation>
-      <xs:complexType mixed="true"/>
-   </xs:element>
-   <xs:element name="back-matter">
-      <xs:annotation>
-         <xs:documentation>
-            <b>Back matter: </b>References, resources and attachments</xs:documentation>
+            <b>Reference: </b> A reference, with one or more citations to standards, related documents, or
+			other resources </xs:documentation>
       </xs:annotation>
       <xs:complexType>
          <xs:sequence>
-            <xs:element minOccurs="0" ref="oscal-profile:citation-list"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:resource"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:citation"/>
+            <xs:group ref="oscal-profile:prose" maxOccurs="unbounded" minOccurs="0"/>
          </xs:sequence>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="citation">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Citation: </b>Citation of a resource</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-profile:everything-inline"/>
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="href" type="xs:anyURI">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Hypertext reference: </b>A relative or absolute URI indicating a resource available on the Internet.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="link">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Link: </b>
+			A line or paragraph with a hypertext link
+		</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:group ref="oscal-profile:everything-inline"/>
+         <xs:attribute name="href" type="xs:anyURI" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Hypertext reference: </b>A relative or absolute URI indicating a resource available on the Internet.</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="rel" type="xs:NCName">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Relation: </b>Purpose of the link</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="title">
@@ -575,6 +582,27 @@
       </xs:annotation>
       <xs:complexType mixed="true">
          <xs:group ref="oscal-profile:everything-inline"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="prop">
+      <xs:annotation>
+         <xs:documentation>
+            <b>Property: </b>A value with a name, attributed to the containing control, subcontrol, part,
+          or group.</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true">
+         <xs:attribute name="id" type="xs:ID">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>ID / identifier: </b>Unique identifier</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
+         <xs:attribute name="class" type="xs:NMTOKENS" use="required">
+            <xs:annotation>
+               <xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
+            </xs:annotation>
+         </xs:attribute>
       </xs:complexType>
    </xs:element>
    <xs:element name="param">
@@ -603,8 +631,7 @@
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="depends-on" type="xs:IDREF">
@@ -718,23 +745,10 @@
                   <b>ID / identifier: </b>Unique identifier</xs:documentation>
             </xs:annotation>
          </xs:attribute>
-         <xs:attribute name="name" type="xs:string" use="required">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Name: </b>Identifying the purpose and intended use of the property, part or other object.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-         <xs:attribute name="ns" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Namespace: </b>A namespace qualifying the name.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -750,7 +764,6 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:import"/>
             <xs:element minOccurs="0" ref="oscal-profile:merge"/>
             <xs:element minOccurs="0" ref="oscal-profile:modify"/>
-            <xs:element minOccurs="0" ref="oscal-profile:back-matter"/>
          </xs:sequence>
          <xs:attribute name="id" type="xs:ID" use="required">
             <xs:annotation>
@@ -774,7 +787,7 @@
          <xs:attribute name="href" type="xs:anyURI" use="required">
             <xs:annotation>
                <xs:documentation>
-                  <b>hypertext reference: </b>A link to a document or document fragment (actual, nominal or projected)</xs:documentation>
+                  <b>Hypertext reference: </b>A relative or absolute URI indicating a resource available on the Internet.</xs:documentation>
             </xs:annotation>
          </xs:attribute>
       </xs:complexType>
@@ -994,8 +1007,7 @@
          <xs:attribute name="class" type="xs:NMTOKENS">
             <xs:annotation>
                <xs:documentation>
-                  <b>Class: </b>Indicating the type or classification of a property, part or other
-      object</xs:documentation>
+                  <b>Class: </b>Identifies the property or object within the control; a semantic hint</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="depends-on" type="xs:IDREF">
@@ -1045,7 +1057,7 @@
          <xs:attribute name="id-ref" type="xs:NCName">
             <xs:annotation>
                <xs:documentation>
-                  <b>References by ID: </b>Items to remove, indicated by their IDs</xs:documentation>
+                  <b>References by ID: </b>Items to remove, by ID</xs:documentation>
             </xs:annotation>
          </xs:attribute>
          <xs:attribute name="item-name" type="xs:NMTOKENS">
@@ -1068,7 +1080,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:part"/>
-            <xs:element minOccurs="0" ref="oscal-profile:citation-list"/>
+            <xs:element minOccurs="0" ref="oscal-profile:ref-list"/>
          </xs:sequence>
          <xs:attribute name="position" type="xs:NCName">
             <xs:annotation>
