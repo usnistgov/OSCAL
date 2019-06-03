@@ -1,27 +1,11 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
-        runtime parameter settings: $baseline='HIGH'
-     Adjusted by hand 2019-05-28. -->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   id="uuid-56285eb5-54a4-4b56-ba03-45d1b78e9dfc">
+        runtime parameter settings: $baseline='HIGH' -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-65730d33-d3d9-433c-95b0-ce341005d442">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 HIGH IMPACT BASELINE</title>
-      <publication-date>September 2018</publication-date>
       
-      <resource rel="self">
-         <hlink media-type="application/xml" href="...">
-            <hash> or signature </hash>
-         </hlink>
-      </resource>
-      
-      <resource rel="catalog">
-         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
-            Information Systems and Organizations</title>
-         <doc-id type="root-id">uuid-71c1a30f-27d6-499f-a6d1-3c6167f9c716</doc-id>
-         <hlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/x-xml+oscal.metaschema"/>
-      </resource>
-      <resource rel="metaschema">
-         <hlink href="oscal-profile-metaschema.xml"/>
-      </resource>
+      <last-modified-date>2019-06-03T11:27:50.543-04:00</last-modified-date>
+      <version>2015-01-22</version>
       
       <role id="creator"><title>Document Creator</title></role>
       <role id="contact"><title>Contact</title></role>
@@ -43,7 +27,7 @@
       </party>
       
    </metadata>
-   <import href="NIST_SP-800-53_rev4_catalog.xml">
+   <import href="#catalog">
       <include>
          <call control-id="ac-1"/>
          <call control-id="ac-2"/>
@@ -1245,4 +1229,9 @@
          </add>
       </alter>
    </modify>
+   <back-matter>
+      <resource id="catalog">
+         <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.catalog+xml"/>
+      </resource>
+   </back-matter>
 </profile>

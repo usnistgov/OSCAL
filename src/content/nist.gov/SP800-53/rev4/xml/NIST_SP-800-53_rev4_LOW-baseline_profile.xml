@@ -1,26 +1,11 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='LOW'-->
-<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-   id="uuid-818283dc-f635-4d36-9352-2349f09881cf">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-818283dc-f635-4d36-9352-2349f09881cf">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE</title>
-      <publication-date>September 2018</publication-date>
       
-      <resource rel="self">
-         <hlink media-type="application/xml" href="...">
-            <hash> or signature </hash>
-         </hlink>
-      </resource>
-      
-      <resource rel="catalog">
-         <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
-            Information Systems and Organizations</title>
-         <doc-id type="root-id">uuid-4dfe11da-68c9-42ae-9646-475987433ef6</doc-id>
-         <hlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/x-xml+oscal.metaschema"/>
-      </resource>
-      <resource rel="metaschema">
-         <hlink href="oscal-profile-metaschema.xml"/>
-      </resource>
+      <last-modified-date>2019-06-03T11:29:15.432-04:00</last-modified-date>
+      <version>2015-01-22</version>
       
       <role id="creator"><title>Document Creator</title></role>
       <role id="contact"><title>Contact</title></role>
@@ -42,7 +27,7 @@
       </party>
       
    </metadata>
-   <import href="NIST_SP-800-53_rev4_catalog.xml">
+   <import href="#catalog">
       <include>
          <call control-id="ac-1"/>
          <call control-id="ac-2"/>
@@ -750,4 +735,11 @@
          </add>
       </alter>
    </modify>
+   <back-matter>
+      <resource id="catalog">
+         <desc>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal
+            Information Systems and Organizations</desc>
+         <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.catalog+xml"/>
+      </resource>
+   </back-matter>
 </profile>

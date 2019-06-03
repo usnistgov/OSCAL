@@ -35,6 +35,7 @@
             <assemblies named="import"/>
             <assembly   named="merge"/>
             <assembly   named="modify"/>
+            <assembly   named="back-matter"/>
       </model>
    </define-assembly>
 
@@ -358,7 +359,7 @@
          <fields named="prop"/>
          <fields named="link"/>
          <assemblies named="part"/>
-         <assembly named="ref-list"/>
+         <assembly named="citation-list"/>
       </model>
    </define-assembly>
    <define-flag datatype="NCName" name="control-id">
@@ -415,7 +416,7 @@
    </define-flag>
    <define-flag datatype="NCName" name="id-ref">
       <formal-name>References by ID</formal-name>
-      <description>Items to remove, by ID</description>
+      <description>Items to remove, indicated by their IDs</description>
    </define-flag>
    <define-flag datatype="NMTOKENS" name="item-name">
       <formal-name>References by name</formal-name>
