@@ -1,7 +1,12 @@
+# OSCAL Metaschema
+
+An OSCAL Metaschema defines the *information model* of a given OSCAL model. A Metaschema describes the information structures that define an OSCAL model in a format-neutral form. Documentation about the meaning (semantics) and use of a given structure (abstract syntax) is also provided in a Metaschema.
+
 # Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [OSCAL Metaschema](#oscal-metaschema)
+- [Table of Contents](#table-of-contents)
+- [OSCAL Metaschema Usage](#oscal-metaschema-usage)
   - [Metaschema Architecture](#metaschema-architecture)
   - [Metaschema Design Goals](#metaschema-design-goals)
   - [The Overall Approach](#the-overall-approach)
@@ -18,10 +23,8 @@
     - [Metaschema modeling](#metaschema-modeling)
     - [Use of @address](#use-of--address)
 
-# OSCAL Metaschema
-
-An OSCAL Metaschema defines the *information model* of a given OSCAL model. A Metaschema describes the information structures that define an OSCAL model in a format-neutral form. Documentation about the meaning (semantics) and use of a given structure (abstract syntax) is also provided in a Metaschema.
-
+# OSCAL Metaschema Usage
+    
 OSCAL Metaschemas are used to generate other OSCAL artifacts based on the metaschema description. These artifacts include:
 
 - XML and JSON Schemas, or *data models*, are derived from the metaschema, expressed as XSD and JSON Schema;
