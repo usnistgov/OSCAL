@@ -39,20 +39,20 @@ while IFS="" read -r path || [[ -n "$path" ]]; do
 #      model="${base/oscal-/}"
 
       converter="$working_dir/json/convert/$model-xml-to-json-converter.xsl"
-      printf 'Generating XML to JSON converter for %s as %s\n' "$metaschema" "$converter"
+      echo "${P_INFO}Generating XML to JSON converter for '$metaschema' as '$converter'.${P_END}"
       xsl_transform "$OSCALDIR/build/metaschema/xml/produce-xml-converter.xsl" "$metaschema" "$converter"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Generating XML to JSON converter failed for %s\n' "$metaschema"
+        echo "${P_ERROR}Generating XML to JSON converter failed for '$metaschema'.${P_END}"
         exitcode=1
       fi
 
       converter="$working_dir/xml/convert/$model-json-to-xml-converter.xsl"
-      printf 'Generating JSON to XML converter for %s as %s\n' "$metaschema" "$converter"
+      echo "${P_INFO}Generating JSON to XML converter for '$metaschema' as '$converter'.${P_END}"
       xsl_transform "$OSCALDIR/build/metaschema/json/produce-json-converter.xsl" "$metaschema" "$converter"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Generating JSON to XML converter failed for %s\n' "$metaschema"
+        echo "${P_ERROR}Generating JSON to XML converter failed for '$metaschema'.${P_END}"
         exitcode=1
       fi
     done

@@ -37,19 +37,19 @@ while IFS="" read -r path || [[ -n "$path" ]]; do
       filename="${filename%.*}"
       base="${filename/-metaschema/}"
 
-      printf 'Generating XML documentation for metaschema %s\n' "$metaschema"
+      echo "${P_INFO}Generating XML model documentation for metaschema '$metaschema'.${P_END}"
       xsl_transform "$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl" "$metaschema" "" "target-format=xml" "output-path=$working_dir/docs/content/documentation/schemas"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Generating XML schema failed for %s\n' "$metaschema"
+        echo "${P_ERROR}Generating XML model documentation failed for '$metaschema'.${P_END}"
         exitcode=1
       fi
 
-      printf 'Generating JSON documentation for metaschema %s\n' "$metaschema"
+      echo "${P_INFO}Generating JSON model documentation for metaschema '$metaschema'.${P_END}"
       xsl_transform "$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl" "$metaschema" "" "target-format=json" "output-path=$working_dir/docs/content/documentation/schemas"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
-        printf 'Generating XML schema failed for %s\n' "$metaschema"
+        echo "${P_ERROR}Generating JSON model documentation failed for '$metaschema'.${P_END}"
         exitcode=1
       fi
     done
