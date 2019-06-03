@@ -645,7 +645,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - AC-8 - -  -->
 		<alter control-id="ac-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider shall determine elements of the cloud environment that require the System Use Notification control. The elements of the cloud environment that require System Use Notification are approved and accepted by the JAB.</p>
 					<p>Requirement: The service provider shall determine how System Use Notification is going to be verified and provide appropriate periodicity of the check. The System Use Notification verification and periodicity are approved and accepted by the JAB.</p>
 					<p>Guidance: If performed as part of a Configuration Baseline check, then the % of items requiring setting that are checked and that pass (or fail) check can be provided. AC-8 Requirement: If not performed as part of a Configuration Baseline check, then there must be documented agreement on how to provide results of verification and the necessary periodicity of the verification by the service provider. The documented agreement on how to provide verification of the results are approved and accepted by the JAB.</p>
@@ -666,7 +666,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - AU-2 - -  -->
 		<alter control-id="au-2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO.</p>
 				</part>
 			</add>
@@ -677,7 +677,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - AU-6 - -  -->
 		<alter control-id="au-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Coordination between service provider and consumer shall be documented and accepted by the JAB/AO. In multi-tennant environments, capability and means for providing review, analysis, and reporting to consumer for data pertaining to consumer shall be documented.</p>
 				</part>
 			</add>
@@ -687,7 +687,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - AU-11 - -  -->
 		<alter control-id="au-11">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider retains audit records on-line for at least ninety days and further preserves audit records off-line for a period that is in accordance with NARA requirements.</p>
 				</part>
 			</add>
@@ -698,7 +698,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CA-2 (1) - -  -->
 		<alter subcontrol-id="ca-2.1">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Must use an accredited 3PAO for JAB authorization</p>
 				</part>
 			</add>
@@ -707,7 +707,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CA-5 - -  -->
 		<alter control-id="ca-5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Requirement: POA&amp;Ms must be provided at least monthly.</p>
 				</part>
 			</add>
@@ -715,7 +715,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CA-6 - -  -->
 		<alter control-id="ca-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>-c. Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F. The service provider describes the types of changes to the information system or the environment of operations that would impact the risk posture. The types of changes are approved and accepted by the JAB/AO.</p>
 				</part>
 			</add>
@@ -723,7 +723,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CA-7 - -  -->
 		<alter control-id="ca-7">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Operating System Scans: at least monthly Database and Web Application Scans: at least monthly All scans performed by Independent Assessor: at least annually</p>
 					<p>Guidance: CSPs must provide evidence of closure and remediation of high vulnerabilities within the timeframe for standard POA&amp;M updates.</p>
 					<p>Operating System Scans: at least monthly</p>
@@ -739,7 +739,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CM-6 - -  -->
 		<alter control-id="cm-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement 1: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish configuration settings or establishes its own configuration settings if USGCB is not available.</p>
 					<p>(a) Requirement 2: The service provider shall ensure that checklists for configuration settings are Security Content Automation Protocol (SCAP) validated or SCAP compatible (if validated checklists are not available).</p>
 					<p>(a) Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
@@ -749,7 +749,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CM-7 - -  -->
 		<alter control-id="cm-7">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Requirement: The service provider shall use the Center for Internet Security guidelines (Level 1) to establish list of prohibited or restricted functions, ports, protocols, and/or services or establishes its own list of prohibited or restricted functions, ports, protocols, and/or services if USGCB is not available.</p>
 					<p>Guidance: Information on the USGCB checklists can be found at: http://usgcb.nist.gov/usgcb_faq.html#usgcbfaq_usgcbfdcc</p>
 					<p>(Partially derived from AC-17(8).)</p>
@@ -759,7 +759,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CM-8 - -  -->
 		<alter control-id="cm-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: must be provided at least monthly or when there is a change.</p>
 				</part>
 			</add>
@@ -770,7 +770,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CP-2 - -  -->
 		<alter control-id="cp-2">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: For JAB authorizations the contingency lists include designated FedRAMP personnel.</p>
 				</part>
 			</add>
@@ -779,7 +779,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CP-4 - -  -->
 		<alter control-id="cp-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a). Requirement: The service provider develops test plans in accordance with NIST Special Publication 800-34 (as amended); plans are approved by the JAB/AO prior to initiating testing.</p>
 				</part>
 			</add>
@@ -787,7 +787,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - CP-9 - -  -->
 		<alter control-id="cp-9">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider shall determine what elements of the cloud environment require the Information System Backup control. The service provider shall determine how Information System Backup is going to be verified and appropriate periodicity of the check.</p>
 					<p>(a) Requirement: The service provider maintains at least three backup copies of user-level information (at least one of which is available online) or provides an equivalent alternative.</p>
 					<p>(b) Requirement: The service provider maintains at least three backup copies of system-level information (at least one of which is available online) or provides an equivalent alternative.</p>
@@ -802,7 +802,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - IA-2 (12) - -  -->
 		<alter subcontrol-id="ia-2.12">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Include Common Access Card (CAC), i.e., the DoD technical implementation of PIV/FIPS 201/HSPD-12.</p>
 				</part>
 			</add>
@@ -810,7 +810,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - IA-4 - -  -->
 		<alter control-id="ia-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(e) Requirement: The service provider defines time period of inactivity for device identifiers.</p>
 					<p>Guidance: For DoD clouds, see DoD cloud website for specific DoD requirements that go above and beyond FedRAMP http://iase.disa.mil/cloud_security/Pages/index.aspx.</p>
 				</part>
@@ -831,7 +831,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - IR-4 - -  -->
 		<alter control-id="ir-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: The service provider ensures that individuals conducting incident handling meet personnel security requirements commensurate with the criticality/sensitivity of the information being processed, stored, and transmitted by the information system.</p>
 				</part>
 			</add>
@@ -840,7 +840,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - IR-6 - -  -->
 		<alter control-id="ir-6">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Requirement: Reports security incident information according to FedRAMP Incident Communications Procedure.</p>
 				</part>
 			</add>
@@ -849,7 +849,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - IR-8 - -  -->
 		<alter control-id="ir-8">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(b) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
 					<p>(e) Additional FedRAMP Requirements and Guidance: The service provider defines a list of incident response personnel (identified by name and/or by role) and organizational elements. The incident response list includes designated FedRAMP personnel.</p>
 				</part>
@@ -873,7 +873,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - PE-14 - -  -->
 		<alter control-id="pe-14">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a). Requirements:  The service provider measures temperature at server inlets and humidity levels by dew point.</p>
 				</part>
 			</add>
@@ -896,7 +896,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - RA-3 - -  -->
 		<alter control-id="ra-3">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Significant change is defined in NIST Special Publication 800-37 Revision 1, Appendix F.</p>
 				</part>
 			</add>
@@ -904,7 +904,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - RA-5 - -  -->
 		<alter control-id="ra-5">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>(a) Requirement: an accredited independent assessor scans operating systems/infrastructure, web applications, and databases once annually.</p>
 					<p>(e) Requirement: to include the Risk Executive; for JAB authorizations to include FedRAMP</p>
 				</part>
@@ -916,7 +916,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - SA-4 - -  -->
 		<alter control-id="sa-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: The use of Common Criteria (ISO/IEC 15408) evaluated products is strongly preferred.</p>
 					<p>See http://www.niap-ccevs.org/vpl or http://www.commoncriteriaportal.org/products.html.</p>
 				</part>
@@ -930,7 +930,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - SC-12 - -  -->
 		<alter control-id="sc-12">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: Federally approved cryptography</p>
 				</part>
 			</add>
@@ -939,7 +939,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - SC-15 - -  -->
 		<alter control-id="sc-15">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Additional FedRAMP Requirements and Guidance:</p>
 					<p>Requirement: The information system provides disablement (instead of physical disconnect) of collaborative computing devices in a manner that supports ease of use.</p>
 				</part>
@@ -955,7 +955,7 @@ For moderate risk law enforcement and high impact public trust level, a reinvest
 		<!-- - - SI-4 - -  -->
 		<alter control-id="si-4">
 			<add position="starting">
-				<part class="guidance">
+				<part name="guidance" ns="FedRAMP">
 					<p>Guidance: See US-CERT Incident Response Reporting Guidelines.</p>
 				</part>
 			</add>
