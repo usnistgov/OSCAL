@@ -32,7 +32,7 @@
     <model>
       <field      named="title"    required="yes"/>
       <fields     named="author"/>
-      <field      named="publication-date"/>
+      <field      named="last-modified-date"/>
       <field      named="version"/>
       <fields     named="doc-id"/>
       <fields     named="prop"/>
@@ -43,11 +43,6 @@
       <assembly   named="extra-meta"/>
     </model>
   </define-assembly>
-
-  <!--<define-field name="title">
-    <formal-name>Title</formal-name>
-    <description>The title under which this document is formally published</description>
-  </define-field>-->
 
   <define-field name="link" group-as="links" as="mixed">
     <flag name="href" datatype="anyURI" required="yes"/>
@@ -73,26 +68,21 @@
   </define-field>
   
   
-  <define-field name="publication-date">
-    <formal-name>Publication date</formal-name>
-    <description>The official date of publication</description>
+  <define-field name="last-modified-date">
+    <formal-name>Last modified date</formal-name>
+    <description>Date of last modification</description>
+    <remarks>
+      <p>This value represents the point in time when the OSCAL document was last updated. The date value should be in an ISO 8601 format with full time and time zone indicated. Ordinarily
+      the value should be machine generated at time of creation or modification.</p>
+      <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
+    </remarks>
   </define-field>
 
   <define-field name="version">
-    <flag name="iso-date"/>
     <formal-name>version</formal-name>
-    <description>Version information</description>
+    <description>Document version</description>
+    <remarks><p>A string indicating version, by release number, date, or other identifier.</p></remarks>
   </define-field>
-  
-  <define-flag name="iso-date" datatype="date">
-    <formal-name>ISO (standard) date</formal-name>
-    <description>Please use YYYY-MM-DD syntax.</description>
-    <remarks>
-      <p>The syntax may be validated in back. The date given should presumably be the same as the
-        (human-readable) <code>date</code> given above it (and such a discrepancy is also be
-        detectable).</p>
-    </remarks>
-  </define-flag>
 
   <define-field name="doc-id" group-as="document-ids">
     <flag name="type" required="yes"/>

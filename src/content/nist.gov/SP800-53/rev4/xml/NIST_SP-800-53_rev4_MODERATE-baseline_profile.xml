@@ -1,11 +1,11 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='MODERATE'-->
-<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../xml/schema/oscal-profile-schema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-f0bf2c99-ed39-4cb4-88b7-dc673098c671">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-7b54a247-030c-4956-bbdc-ef63dddf9f8e">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE</title>
-      <publication-date>September 2018</publication-date>
+
+      <last-modified-date>2019-06-03T11:28:26.842-04:00</last-modified-date>
+      <version>2015-01-22</version>
       
       <link rel="catalog"    href="#catalog"/>
        

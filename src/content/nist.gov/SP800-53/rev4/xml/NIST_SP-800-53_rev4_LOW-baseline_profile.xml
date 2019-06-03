@@ -1,11 +1,11 @@
 <!-- Produced by SP800-53-profile-with-filter.xsl 2018-05-14-04:00
         runtime parameter settings: $baseline='LOW'-->
-<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../xml/schema/oscal-profile-schema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-818283dc-f635-4d36-9352-2349f09881cf">
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-818283dc-f635-4d36-9352-2349f09881cf">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE</title>
-      <publication-date>September 2018</publication-date>
+      
+      <last-modified-date>2019-06-03T11:29:15.432-04:00</last-modified-date>
+      <version>2015-01-22</version>
       
       <link rel="catalog"    href="#catalog"/>
       
