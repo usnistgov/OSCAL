@@ -57,21 +57,6 @@
         element.</p>
       <p>TO DO: need to address link/hlink relations to support hashes.</p>
     </remarks>
-  </define-field>-->
-
-  <define-field name="link" group-as="links" as="mixed">
-    <flag name="href" datatype="anyURI" required="yes"/>
-    <flag name="rel" datatype="NCName"/>
-    <flag name="media-type" datatype="string"/>
-    <formal-name>Link</formal-name>
-    <description>
-      A line or paragraph with a hypertext link
-    </description>
-    <remarks>
-      <p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
-        element.</p>
-      <p>TO DO: need to address link/hlink relations to support hashes.</p>
-    </remarks>
   </define-field>
     
   <define-field name="author" group-as="authors">
