@@ -7,8 +7,6 @@
       <last-modified-date>2019-06-03T11:27:50.543-04:00</last-modified-date>
       <version>2015-01-22</version>
       
-      <link rel="catalog"    href="#catalog"/>
-      
       <role id="creator"><title>Document Creator</title></role>
       <role id="contact"><title>Contact</title></role>
       
@@ -29,7 +27,7 @@
       </party>
       
    </metadata>
-   <import href="NIST_SP-800-53_rev4_catalog.xml">
+   <import href="#catalog">
       <include>
          <call control-id="ac-1"/>
          <call control-id="ac-2"/>
@@ -1233,7 +1231,7 @@
    </modify>
    <back-matter>
       <resource id="catalog">
-         <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.metaschema+xml"/>
+         <rlink href="NIST_SP-800-53_rev4_catalog.xml" media-type="application/oscal.catalog+xml"/>
       </resource>
    </back-matter>
 </profile>
