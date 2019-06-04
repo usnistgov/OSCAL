@@ -37,9 +37,9 @@
 
     <xsl:param name="schema-path" as="xs:string" select="document-uri(/)"/>
 
-    <xsl:param name="example-converter-xslt-path" as="xs:string">blah2</xsl:param>
+    <xsl:param name="example-converter-xslt" as="xs:string" required="yes"/>
     
-    <xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,$schema-path)"/>
+    <!--<xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,$schema-path)"/>-->
     
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     

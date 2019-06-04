@@ -7,6 +7,7 @@ references:
       OSCAL_REPO_DIR: git-oscal
       OSCAL_BUILD_DIR: build_artifacts
       SCHEMATRON_HOME: git-schematron
+      TERM: xterm
     working_directory: ~/oscal
   attach_build_workspace: &attach_build_workspace
     attach_workspace:
@@ -63,6 +64,13 @@ commands:
           name: Get ajv
           command: |
             sudo npm install -g ajv-cli
+  install-markdown-link-check:
+    description: "Retrieve markdown-link-check and setup the environment to run it"
+    steps:
+      - run:
+          name: Get markdown-link-check
+          command: |
+            sudo npm install -g markdown-link-check
   install-hub:
     description: "Retrieve hub and setup the environment to run it"
     steps:
@@ -199,6 +207,17 @@ jobs: # a collection of
           root: build_artifacts
           paths:
             - content # not needed?
+  job-validate-markdown:
+    executor: java-executor
+    steps:
+      - *checkout
+      - *attach_build_workspace
+      - check-skip-build
+      - install-markdown-link-check
+      - run:
+          name: Validate content instances
+          command: |
+            find "$OSCAL_REPO_DIR" -path ./docs -prune -o -name \*.md -exec markdown-link-check -q {} \;
   job-validate-content:
     executor: java-executor
     steps:
@@ -221,7 +240,7 @@ jobs: # a collection of
       - run:
           name: Generate schema documentation
           command: |
-            cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
+            #cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"
             bash -x "$CICD_DIR/generate-model-documentation.sh" "$OSCAL_BUILD_DIR"
             # echo "-- fix the fact that we cannot generate directly to the build directory due to a bug"
             # mv docs "$OSCAL_BUILD_DIR"/docs
@@ -323,6 +342,14 @@ workflows:
   build:
     jobs:
       - job-ci-skip-check
+      - job-validate-markdown:
+          requires:
+            - job-ci-skip-check
+          filters:
+            branches:
+              ignore:
+                - master
+                - nist-pages
       - job-validate-metaschema:
           requires:
             - job-ci-skip-check

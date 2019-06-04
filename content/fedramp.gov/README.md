@@ -2,9 +2,9 @@
 
 The following representations of the "High", "Moderate" and "Low" baselines (profiles) are derived from [source data](https://www.fedramp.gov/documents/) defined by FedRAMP:
 
-* [FedRAMP High Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_High_Security_Controls.xlsx)
-* [FedRAMP MODERATE Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_Moderate_Security_Controls.xlsx)
-* [FedRAMP LOW Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_Low_Security_Controls.xlsx)
+- [FedRAMP High Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_High_Security_Controls.xlsx)
+- [FedRAMP MODERATE Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_Moderate_Security_Controls.xlsx)
+- [FedRAMP LOW Security Controls](https://www.fedramp.gov/assets/resources/documents/FedRAMP_Low_Security_Controls.xlsx)
 
 Machine made OSCAL Profile versions:
 

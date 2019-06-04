@@ -8,6 +8,7 @@ OSCALDIR=$(cd "$DIR/../.."; pwd)
 
 ## Setup color codes
 # check if stdout is a terminal...
+export TERM=${TERM:-dumb}
 colorize=0
 if [ -t 1 ]; then
   # does the terminal support colors?

@@ -7,11 +7,12 @@ fi
 
 source $OSCALDIR/build/ci-cd/saxon-init.sh
 
-if [[ -z "$1" ]]; then
-  working_dir=$OSCALDIR
+if [ -z "$1" ]; then
+  working_dir="$OSCALDIR"
 else
-  working_dir=$1
+  working_dir="$1"
 fi
+echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
 exitcode=0
 shopt -s nullglob
@@ -40,8 +41,8 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
       for altformat in "$converttoformats"; do
         newpath="${file/$OSCALDIR\/src\//}"
         newpath="${newpath/\/$format\///$altformat/}"
-        newpath="${newpath%.$format}.$altformat"
-        dest="$working_dir/$newpath"
+
+        dest="$working_dir/${newpath}.${altformat}"
         converter="$working_dir/$altformat/convert/oscal_${model}_${format}-to-${altformat}-converter.xsl"
 
         echo "${P_INFO}Generating ${altformat^^} file '$dest' from '$file' using converter '$converter'.${P_END}"
@@ -52,6 +53,14 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
           exitcode=1
         fi
         # TODO: validate generated file
+
+        case $altformat in
+        json)
+          # produce pretty JSON
+          # produce yaml
+          ;;
+        esac
+
       done
     done
   fi
