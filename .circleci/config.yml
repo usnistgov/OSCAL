@@ -71,6 +71,20 @@ commands:
           name: Get markdown-link-check
           command: |
             sudo npm install -g markdown-link-check
+  install-jsome:
+    description: "Retrieve jsome and setup the environment to run it"
+    steps:
+      - run:
+          name: Get jsome
+          command: |
+            sudo npm install -g jsome
+  install-prettyjson:
+    description: "Retrieve prettyjson and setup the environment to run it"
+    steps:
+      - run:
+          name: Get prettyjson
+          command: |
+            sudo npm install -g prettyjson
   install-hub:
     description: "Retrieve hub and setup the environment to run it"
     steps:
@@ -198,6 +212,8 @@ jobs: # a collection of
       - *attach_build_workspace
       - check-skip-build
       - install-saxon
+      - install-jsome
+      - install-prettyjson
       - run:
           name: Generate OSCAL converters
           command: |
@@ -264,8 +280,9 @@ jobs: # a collection of
             git rm -r --ignore-unmatch xml/schema/*.xsd
             git rm -r --ignore-unmatch json/convert/*.xsl
             git rm -r --ignore-unmatch json/schema/*.json
-            git rm -r --ignore-unmatch content/**/*.json
             git rm -r --ignore-unmatch content/**/*.xml
+            git rm -r --ignore-unmatch content/**/*.json
+            git rm -r --ignore-unmatch content/**/*.yaml
             # Copy new built files to repo
             cd -
             cp -r "$OSCAL_BUILD_DIR"/* "$OSCAL_REPO_DIR"

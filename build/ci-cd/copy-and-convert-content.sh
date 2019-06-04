@@ -32,17 +32,18 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
     for file in $files_to_process
     do
       dest="$working_dir/${file/$OSCALDIR\/src\//}"
-      dest_dir=${dest%/*}
+      dest_dir=${dest%/*} # remove filename
       echo "${P_INFO}Copying '$file' to '$dest'.${P_END}"
       mkdir -p "$dest_dir"
       cp "$file" "$dest"
 
       IFS=","
       for altformat in "$converttoformats"; do
-        newpath="${file/$OSCALDIR\/src\//}"
-        newpath="${newpath/\/$format\///$altformat/}"
+        newpath="${file/$OSCALDIR\/src\//}" # strip off src
+        newpath="${newpath/\/$format\///$altformat/}" # change path from old to new format dir
+        newpath="${newpath%.*}" # strip extension
 
-        dest="$working_dir/${newpath}.${altformat}"
+        dest="$working_dir/${newpath}-min.${altformat}"
         converter="$working_dir/$altformat/convert/oscal_${model}_${format}-to-${altformat}-converter.xsl"
 
         echo "${P_INFO}Generating ${altformat^^} file '$dest' from '$file' using converter '$converter'.${P_END}"
@@ -57,7 +58,15 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         case $altformat in
         json)
           # produce pretty JSON
+          dest_pretty="$working_dir/${newpath}.${altformat}"
+          jsome -c false -s 2 "$dest" > "$dest_pretty"
+
           # produce yaml
+          newpath="${newpath/\/json\///yaml/}" # change path 
+          dest_pretty="$working_dir/${newpath}.yaml"
+          dest_pretty_dir=${dest_pretty%/*} # remove filename
+          mkdir -p "$dest_pretty_dir"
+          prettyjson --nocolor=1 --indent=2 --inline-arrays=1 "$dest" > "$dest_pretty"
           ;;
         esac
 

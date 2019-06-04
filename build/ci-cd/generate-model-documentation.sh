@@ -10,11 +10,16 @@ source $OSCALDIR/build/ci-cd/saxon-init.sh
 if [ -z "$1" ]; then
   working_dir="$OSCALDIR"
 else
-  working_dir="$1"
+  working_dir=$(readlink -f "$1")
 fi
 echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
-stylesheet=$(realpath --relative-to="$working_dir" "$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl")
+# the stylesheet used to generate the documentation
+stylesheet="$OSCALDIR/build/metaschema/xml/produce-and-run-either-documentor.xsl"
+
+# the directory to generate the documentation in
+schema_doc_dir="${working_dir}/docs/content/documentation/schemas"
+mkdir -p "$schema_doc_dir" # ensure this directory exists
 
 exitcode=0
 shopt -s nullglob
@@ -40,7 +45,12 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
     filename="${filename%.*}"
     base="${filename/_metaschema/}"
     converter="$working_dir/json/convert/${base}_xml-to-json-converter.xsl"
-    metaschema_path=$(realpath --relative-to="$working_dir" "$metaschema")
+
+    # Make xslt paths relative to current directory
+    metaschema_path=$(realpath --relative-to="$PWD" "$metaschema")
+    stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
+    output_path=$(realpath --relative-to="$PWD" "$schema_doc_dir")
+    # Make converter path relative to the stylesheet
     stylesheet_dir=$(dirname "$stylesheet")
     converter_path=$(realpath --relative-to="$stylesheet_dir" "$converter")
 
@@ -65,10 +75,10 @@ while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; d
       esac
 
       echo "${P_INFO}Generating ${format^^} model documentation for metaschema '${P_END}${metaschema_path}${P_INFO}'.${P_END}"
-      xsl_transform "$stylesheet" "$metaschema_path" "" \
+      xsl_transform "$stylesheet_path" "$metaschema_path" "" \
         "target-format=${format}" \
         "example-converter-xslt-path=${converter_path}" \
-        "output-path=docs/content/documentation/schemas"
+        "output-path=${output_path}"
       cmd_exitcode=$?
       if [ $cmd_exitcode -ne 0 ]; then
         echo "${P_ERROR}Generating ${format^^} model documentation failed for '${P_END}${metaschema_path}${P_ERROR}'.${P_END}"
