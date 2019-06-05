@@ -447,12 +447,6 @@
 
 
 
-
-
-
-
-
-
 <li>
   <a href="#oscal-catalog-xml_addr-line"><code>addr-line</code></a>
 </li>
@@ -478,7 +472,7 @@
 
 
 <li>
-  <a href="#oscal-catalog-xml_back"><code>back</code></a>
+  <a href="#oscal-catalog-xml_back-matter"><code>back-matter</code></a>
 </li>
 
 
@@ -493,6 +487,12 @@
 
 <li>
   <a href="#oscal-catalog-xml_choice"><code>choice</code></a>
+</li>
+
+
+
+<li>
+  <a href="#oscal-catalog-xml_citation-list"><code>citation-list</code></a>
 </li>
 
 
@@ -534,12 +534,6 @@
 
 
 <li>
-  <a href="#oscal-catalog-xml_date"><code>date</code></a>
-</li>
-
-
-
-<li>
   <a href="#oscal-catalog-xml_depends-on"><code>depends-on</code></a>
 </li>
 
@@ -547,12 +541,6 @@
 
 <li>
   <a href="#oscal-catalog-xml_desc"><code>desc</code></a>
-</li>
-
-
-
-<li>
-  <a href="#oscal-catalog-xml_description"><code>description</code></a>
 </li>
 
 
@@ -582,12 +570,6 @@
 
 
 <li>
-  <a href="#oscal-catalog-xml_format"><code>format</code></a>
-</li>
-
-
-
-<li>
   <a href="#oscal-catalog-xml_group"><code>group</code></a>
 </li>
 
@@ -601,12 +583,6 @@
 
 <li>
   <a href="#oscal-catalog-xml_hash"><code>hash</code></a>
-</li>
-
-
-
-<li>
-  <a href="#oscal-catalog-xml_hlink"><code>hlink</code></a>
 </li>
 
 
@@ -630,13 +606,13 @@
 
 
 <li>
-  <a href="#oscal-catalog-xml_iso-date"><code>iso-date</code></a>
+  <a href="#oscal-catalog-xml_label"><code>label</code></a>
 </li>
 
 
 
 <li>
-  <a href="#oscal-catalog-xml_label"><code>label</code></a>
+  <a href="#oscal-catalog-xml_last-modified-date"><code>last-modified-date</code></a>
 </li>
 
 
@@ -678,7 +654,19 @@
 
 
 <li>
+  <a href="#oscal-catalog-xml_name"><code>name</code></a>
+</li>
+
+
+
+<li>
   <a href="#oscal-catalog-xml_notes"><code>notes</code></a>
+</li>
+
+
+
+<li>
+  <a href="#oscal-catalog-xml_ns"><code>ns</code></a>
 </li>
 
 
@@ -756,24 +744,6 @@
 
 
 <li>
-  <a href="#oscal-catalog-xml_publication-date"><code>publication-date</code></a>
-</li>
-
-
-
-<li>
-  <a href="#oscal-catalog-xml_ref-list"><code>ref-list</code></a>
-</li>
-
-
-
-<li>
-  <a href="#oscal-catalog-xml_ref"><code>ref</code></a>
-</li>
-
-
-
-<li>
   <a href="#oscal-catalog-xml_rel"><code>rel</code></a>
 </li>
 
@@ -786,6 +756,12 @@
 
 
 <li>
+  <a href="#oscal-catalog-xml_rlink"><code>rlink</code></a>
+</li>
+
+
+
+<li>
   <a href="#oscal-catalog-xml_role-id"><code>role-id</code></a>
 </li>
 
@@ -793,12 +769,6 @@
 
 <li>
   <a href="#oscal-catalog-xml_role"><code>role</code></a>
-</li>
-
-
-
-<li>
-  <a href="#oscal-catalog-xml_section"><code>section</code></a>
 </li>
 
 
@@ -823,6 +793,12 @@
 
 <li>
   <a href="#oscal-catalog-xml_subcontrol"><code>subcontrol</code></a>
+</li>
+
+
+
+<li>
+  <a href="#oscal-catalog-xml_target"><code>target</code></a>
 </li>
 
 
@@ -1059,12 +1035,6 @@
 
 
 
-
-
-
-
-
-
 <h2 xmlns="http://www.w3.org/1999/xhtml">OSCAL Control Catalog Format: Schema Reference</h2>
 <p xmlns="http://www.w3.org/1999/xhtml">The short name (file identifier) for this schema shall be <i>oscal-catalog</i>. It is used internally when an
          identifier is called for, and may appear in file names of schema artifacts.</p>
@@ -1086,21 +1056,21 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="author"><header><h4 id="oscal-catalog-xml_author" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Author</b>: <code>author</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_author"><button>JSON</button></a></div></header><p class="description">A named author</p><div class="remarks"><p class="p">Note this information may be duplicative of information given in a <code>party</code> element with appropriate <code>role-id</code> flags, along with more a more complete structured listing. This element provides a value for display as well as an additional point of comparison.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#resource">resource</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="author"><header><h4 id="oscal-catalog-xml_author" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Author</b>: <code>author</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_author"><button>JSON</button></a></div></header><p class="description">A named author</p><div class="remarks"><p class="p">Note this information may be duplicative of information given in a <code>party</code> element with appropriate <code>role-id</code> flags, along with more a more complete structured listing. This element provides a value for display as well as an additional point of comparison.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="back"><header><h4 id="oscal-catalog-xml_back" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Assets</b>: <code>back</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_back"><button>JSON</button></a></div></header><p class="description">References, resources and attachments</p><div class="model"><p class="usa-font-lead">The <code>back</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#ref-list"><code>ref-list</code></a> element  (<i>zero or one</i>)</li><li><a href="#resource"><code>resource</code></a> element  (<i>zero or more</i>)</li></ul></div><p>This element appears inside: <a href="#catalog">catalog</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="back-matter"><header><h4 id="oscal-catalog-xml_back-matter" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Back matter</b>: <code>back-matter</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_back-matter"><button>JSON</button></a></div></header><p class="description">References, resources and attachments</p><div class="model"><p class="usa-font-lead">The <code>back-matter</code> element has the following contents  (in order):</p><ul><li><a href="#citation-list"><code>citation-list</code></a> element  (<i>zero or one</i>)</li><li><a href="#resource"><code>resource</code></a> element  (<i>zero or more</i>)</li></ul></div><p>This element appears inside: <a href="#catalog">catalog</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="base64"><header><h4 id="oscal-catalog-xml_base64" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Date</b>: <code>base64</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_base64"><button>JSON</button></a></div></header><p class="description"></p><div class="model"><p>The base64 element may have an attribute</p><ul><li><a href="#filename"><code>filename</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#resource">resource</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="base64"><header><h4 id="oscal-catalog-xml_base64" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Base64</b>: <code>base64</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_base64"><button>JSON</button></a></div></header><p class="description"></p><div class="model"><p>The base64 element may have attributes</p><ul><li><a href="#filename"><code>filename</code></a> attribute  (<i>optional</i>)</li><li><a href="#media-type"><code>media-type</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#resource">resource</a>.</p></div>
 
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="catalog"><header><h4 id="oscal-catalog-xml_catalog" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Catalog</b>: <code>catalog</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_catalog"><button>JSON</button></a></div></header><h5><code>catalog</code> is the root (containing) element of
-               this schema. </h5><p class="description">A collection of controls</p><div class="model"><p class="usa-font-lead">The <code>catalog</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#model-version"><code>model-version</code></a> attribute <i> (required)</i></li><li><a href="#metadata"><code>metadata</code></a> element  (<i>one</i>)</li><li><a href="#section"><code>section</code></a> element  (<i>zero or more</i>)</li><li class="choice">A choice between
-         <ul><li><a href="#group"><code>group</code></a> element  (<i>zero or more</i>)</li><li><a href="#control"><code>control</code></a> element  (<i>zero or more</i>)</li></ul></li><li><a href="#back"><code>back</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_xml">Example: A small catalog with a single control</button><div id="catalog_example1_xml" class="usa-accordion-content"><pre>
+               this schema. </h5><p class="description">A collection of controls</p><div class="model"><p class="usa-font-lead">The <code>catalog</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#model-version"><code>model-version</code></a> attribute <i> (required)</i></li><li><a href="#metadata"><code>metadata</code></a> element  (<i>one</i>)</li><li class="choice">A choice between
+         <ul><li><a href="#group"><code>group</code></a> element  (<i>zero or more</i>)</li><li><a href="#control"><code>control</code></a> element  (<i>zero or more</i>)</li></ul></li><li><a href="#back-matter"><code>back-matter</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">Catalogs may use <code>section</code> to subdivide the textual contents of a catalog.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="catalog_example1_xml">Example: A small catalog with a single control</button><div id="catalog_example1_xml" class="usa-accordion-content"><pre>
 &lt;catalog id="simple-example" model-version="0.99"&gt;
 &lt;title&gt;A Miniature Catalog&lt;/title&gt;
 &lt;control id="single"&gt;
@@ -1112,11 +1082,12 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="citation"><header><h4 id="oscal-catalog-xml_citation" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Citation</b>: <code>citation</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_citation"><button>JSON</button></a></div></header><p>Supports inline encoding</p><p class="description">Citation of a resource</p><div class="model"><p>The citation element may have attributes</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#href"><code>href</code></a> attribute  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishin matches with bibliograpical databases, it is recommended a canonical identifier such as a DOI be provided for any citation.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="citation_example1_xml">Example</button><div id="citation_example1_xml" class="usa-accordion-content"><pre>
-&lt;ref&gt;
-&lt;citation&gt;Here is a work cited&lt;/citation&gt;
-&lt;citation&gt;Some 
-&lt;strong&gt;citation&lt;/strong&gt; of some sort&lt;/citation&gt;&lt;/ref&gt;</pre></div></li></ul><p>This element appears inside: <a href="#ref">ref</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="citation-list"><header><h4 id="oscal-catalog-xml_citation-list" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Citation list</b>: <code>citation-list</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_citation-list"><button>JSON</button></a></div></header><p class="description">A list of citations to resources, either external or (by means of internal cross-reference)
+      saved or documented internally.</p><div class="model"><p class="usa-font-lead">The <code>citation-list</code> element has the following contents :</p><ul><li><a href="#citation"><code>citation</code></a> element  (<i>zero or more</i>)</li></ul></div><p>This element appears inside: <a href="#back-matter">back-matter</a>.</p></div>
+
+
+
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="citation"><header><h4 id="oscal-catalog-xml_citation" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Citation</b>: <code>citation</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_citation"><button>JSON</button></a></div></header><p class="description">Citation of a resource</p><div class="model"><p class="usa-font-lead">The <code>citation</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#target"><code>target</code></a> element  (<i>zero or more</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li><li><a href="#desc"><code>desc</code></a> element  (<i>zero or one</i>)</li><li><a href="#doc-id"><code>doc-id</code></a> element  (<i>zero or more</i>)</li></ul></div><div class="remarks"><p class="p">Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishing matches with bibliograpical databases, it is recommended a canonical identifier such as a DOI be provided for any citation.</p><p class="p">Within this element, a generic <code>title</code> can cite a title, or if citation information takes the form of a bibliographic entry, <code>p</code> can be deployed.</p></div><p>This element appears inside: <a href="#citation-list">citation-list</a>.</p></div>
 
 
 
@@ -1124,7 +1095,8 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="class"><header><h4 id="oscal-catalog-xml_class" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Class</b>: <code>class</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_class"><button>JSON</button></a></div></header><p class="description">Identifies the property or object within the control; a semantic hint</p><div class="remarks"><p class="p">Overloading this attribute with more than one value is permitted, but not recommended.</p></div><p>This attribute appears on: <a href="#section">section</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#prop">prop</a>, <a href="#param">param</a>, <a href="#part">part</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="class"><header><h4 id="oscal-catalog-xml_class" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Class</b>: <code>class</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_class"><button>JSON</button></a></div></header><p class="description">Indicating the type or classification of a property, part or other
+      object</p><div class="remarks"><p class="p">Extra constraints, expressed as validation rules, may be applied to items based on the assigned <code>class</code>.</p><p class="p">Some objects where this flag appears also permit a <code>name</code> to be assigned, providing more rigor in validation.</p></div><p>This attribute appears on: <a href="#prop">prop</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#param">param</a>, <a href="#part">part</a>.</p></div>
 
 
 
@@ -1132,7 +1104,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="control"><header><h4 id="oscal-catalog-xml_control" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Control</b>: <code>control</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_control"><button>JSON</button></a></div></header><p class="description">A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</p><div class="model"><p class="usa-font-lead">The <code>control</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#param"><code>param</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li><li><a href="#subcontrol"><code>subcontrol</code></a> element  (<i>zero or more</i>)</li><li><a href="#ref-list"><code>ref-list</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">Controls may be grouped using <code>group</code>, and controls may be partitioned using <code>part</code> or enhanced using <code>subcontrol</code>.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="control_example1_xml">Example</button><div id="control_example1_xml" class="usa-accordion-content"><pre>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="control"><header><h4 id="oscal-catalog-xml_control" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Control</b>: <code>control</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_control"><button>JSON</button></a></div></header><p class="description">A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</p><div class="model"><p class="usa-font-lead">The <code>control</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#param"><code>param</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li><li><a href="#subcontrol"><code>subcontrol</code></a> element  (<i>zero or more</i>)</li></ul></div><div class="remarks"><p class="p">Controls may be grouped using <code>group</code>, and controls may be partitioned using <code>part</code> or enhanced using <code>subcontrol</code>.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="control_example1_xml">Example</button><div id="control_example1_xml" class="usa-accordion-content"><pre>
 &lt;control id="x"&gt;
 &lt;title&gt;Control 1&lt;/title&gt;&lt;/control&gt;</pre></div></li></ul><p>This element appears inside: <a href="#catalog">catalog</a>, <a href="#group">group</a>.</p></div>
 
@@ -1142,24 +1114,16 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="date"><header><h4 id="oscal-catalog-xml_date" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Date</b>: <code>date</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_date"><button>JSON</button></a></div></header><p class="description"></p><div class="model"><p>The date element may have an attribute</p><ul><li><a href="#iso-date"><code>iso-date</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#resource">resource</a>.</p></div>
-
-
-
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="depends-on"><header><h4 id="oscal-catalog-xml_depends-on" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Depends on</b>: <code>depends-on</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_depends-on"><button>JSON</button></a></div></header><p class="description">Another parameter invoking this one</p><p>This attribute appears on: <a href="#param">param</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="desc"><header><h4 id="oscal-catalog-xml_desc" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Parameter description</b>: <code>desc</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_desc"><button>JSON</button></a></div></header><p>Supports inline encoding</p><p class="description">Indicates and explains the purpose and use of a parameter</p><div class="model"><p>The desc element may have an attribute</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#role">role</a>, <a href="#param">param</a>.</p></div>
-
-
-
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="description"><header><h4 id="oscal-catalog-xml_description" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Description</b>: <code>description</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_description"><button>JSON</button></a></div></header><p class="description">A free-text description of the system.</p><div class="model"><p class="usa-font-lead">The <code>description</code> element has the following contents :</p><ul><li class="prose">Prose contents (paragraphs and lists)</li></ul></div><p>This element appears inside: <a href="#resource">resource</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="desc"><header><h4 id="oscal-catalog-xml_desc" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Parameter description</b>: <code>desc</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_desc"><button>JSON</button></a></div></header><p>Supports inline encoding</p><p class="description">Indicates and explains the purpose and use of a parameter</p><div class="model"><p>The desc element may have an attribute</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#resource">resource</a>, <a href="#role">role</a>, <a href="#citation">citation</a>, <a href="#param">param</a>.</p></div>
 
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="doc-id"><header><h4 id="oscal-catalog-xml_doc-id" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Document Identifier</b>: <code>doc-id</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_doc-id"><button>JSON</button></a></div></header><p class="description">Any sort of document identifier, name, code, path or other indicator of where and how this document
-			may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <code>rel</code>, this value may point to <q>the same</q> or <q>another version</q> of the document.</p><div class="model"><p>The doc-id element may have an attribute</p><ul><li><a href="#type"><code>type</code></a> attribute  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Flags <code>rel</code> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p><p class="p">Specific usage rules, nomenclatures and recognized file types e.g. DOIs, CMS locators, etc etc., may be defined at application level. The value of this field may also be a hash or check sum.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#resource">resource</a>.</p></div>
+      may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <code>rel</code>, this value may point to <q>the same</q> or <q>another version</q> of the document.</p><div class="model"><p>The doc-id element must have an attribute</p><ul><li><a href="#type"><code>type</code></a> attribute <i> (required)</i></li></ul></div><div class="remarks"><p class="p">DOIs (digital object identifiers) are preferred. By means of a DOI or other document ID lookup, a full bibliographic record for an item should be retrievable.</p><p class="p">Flags <code>rel</code> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p><p class="p">Specific usage rules, nomenclatures and recognized file types e.g. DOIs, CMS locators, etc etc., may be defined at application level. The value of this field may also be a hash or check sum.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#citation">citation</a>.</p></div>
 
 
 
@@ -1176,12 +1140,8 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="format"><header><h4 id="oscal-catalog-xml_format" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Resource or attachment Format</b>: <code>format</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_format"><button>JSON</button></a></div></header><p class="description">For use when no mime-type is available or additional information is required.</p><p>This element appears inside: <a href="#resource">resource</a>.</p></div>
-
-
-
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="group"><header><h4 id="oscal-catalog-xml_group" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Control Group</b>: <code>group</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_group"><button>JSON</button></a></div></header><p class="description">A group of controls, or of groups of controls.</p><div class="model"><p class="usa-font-lead">The <code>group</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#param"><code>param</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li><li class="choice">A choice between
-         <ul><li><a href="#group"><code>group</code></a> element  (<i>zero or more</i>)</li><li><a href="#control"><code>control</code></a> element  (<i>zero or more</i>)</li></ul></li><li><a href="#ref-list"><code>ref-list</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose directly, only inside its <code>part</code> or <code>control</code> components.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">Example</button><div id="group_example1_xml" class="usa-accordion-content"><pre>
+         <ul><li><a href="#group"><code>group</code></a> element  (<i>zero or more</i>)</li><li><a href="#control"><code>control</code></a> element  (<i>zero or more</i>)</li></ul></li></ul></div><div class="remarks"><p class="p">Catalogs can use groups to provide collections of related controls or Control Groups. A <code>group</code> may have its own properties, statements, parameters, and references, which are inherited by all members of that group. Unlike a <code>section</code>, a <code>group</code> may not contain arbitrary prose directly, only inside its <code>part</code> or <code>control</code> components.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="group_example1_xml">Example</button><div id="group_example1_xml" class="usa-accordion-content"><pre>
 &lt;group id="xyz"&gt;
 &lt;title&gt;My Group&lt;/title&gt;
 &lt;prop class="required"&gt;some property&lt;/prop&gt;
@@ -1194,11 +1154,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="hash"><header><h4 id="oscal-catalog-xml_hash" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Hash</b>: <code>hash</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_hash"><button>JSON</button></a></div></header><p class="description">A document hash or other value subject to cryptographic authentication</p><div class="model"><p>The hash element may have an attribute</p><ul><li><a href="#algorithm"><code>algorithm</code></a> attribute  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">When appearing as part of a resource (data object), the hash should apply to the referenced object.</p></div><p>This element appears inside: <a href="#hlink">hlink</a>.</p></div>
-
-
-
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="hlink"><header><h4 id="oscal-catalog-xml_hlink" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Hashed link</b>: <code>hlink</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_hlink"><button>JSON</button></a></div></header><p class="description">A pointer to an external document with optional hash for verification</p><div class="model"><p class="usa-font-lead">The <code>hlink</code> element has the following contents  (in order):</p><ul><li><a href="#href"><code>href</code></a> attribute <i> (required)</i></li><li><a href="#media-type"><code>media-type</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li><li><a href="#hash"><code>hash</code></a> element  (<i>zero or more</i>)</li></ul></div><div class="remarks"><p class="p">This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p></div><p>This element appears inside: <a href="#resource">resource</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="hash"><header><h4 id="oscal-catalog-xml_hash" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Hash</b>: <code>hash</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_hash"><button>JSON</button></a></div></header><p class="description">A document hash or other value subject to cryptographic authentication</p><div class="model"><p>The hash element must have an attribute</p><ul><li><a href="#algorithm"><code>algorithm</code></a> attribute <i> (required)</i></li></ul></div><div class="remarks"><p class="p">When appearing as part of a resource (data object), the hash should apply to the referenced object.</p></div><p>This element appears inside: <a href="#rlink">rlink</a>.</p></div>
 
 
 
@@ -1206,17 +1162,13 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="href"><header><h4 id="oscal-catalog-xml_href" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Hypertext reference</b>: <code>href</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_href"><button>JSON</button></a></div></header><p class="description">A relative or absolute URI indicating a resource available on the Internet.</p><p>This attribute appears on: <a href="#hlink">hlink</a>, <a href="#citation">citation</a>, <a href="#link">link</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="href"><header><h4 id="oscal-catalog-xml_href" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">hypertext reference</b>: <code>href</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_href"><button>JSON</button></a></div></header><p class="description">A link to a document or document fragment (actual, nominal or projected)</p><div class="remarks"><p class="p">Note in particular that <code>href</code> targets include elements (locations) in representations of documents that exist only by virtue of dynamic application, such as (for example) the results of profile resolution.</p></div><p>This attribute appears on: <a href="#link">link</a>, <a href="#rlink">rlink</a>.</p></div>
 
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="id"><header><h4 id="oscal-catalog-xml_id" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">ID / identifier</b>: <code>id</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_id"><button>JSON</button></a></div></header><p class="description">Unique identifier</p><div class="remarks"><p class="p">No mechanism is proposed to ensure that <code>id</code> values do not collide across different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="id_example1_xml">Example</button><div id="id_example1_xml" class="usa-accordion-content"><pre>
 &lt;citation id="xyz2"&gt;Some 
-&lt;strong&gt;citation&lt;/strong&gt; of some sort&lt;/citation&gt;</pre></div></li></ul><p>This attribute appears on: <a href="#party">party</a>, <a href="#role">role</a>, <a href="#ref-list">ref-list</a>, <a href="#ref">ref</a>, <a href="#citation">citation</a>, <a href="#catalog">catalog</a>, <a href="#back">back</a>, <a href="#section">section</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#prop">prop</a>, <a href="#param">param</a>, <a href="#desc">desc</a>, <a href="#part">part</a>.</p></div>
-
-
-
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="iso-date"><header><h4 id="oscal-catalog-xml_iso-date" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">ISO (standard) date</b>: <code>iso-date</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_iso-date"><button>JSON</button></a></div></header><p class="description">Please use YYYY-MM-DD syntax.</p><div class="remarks"><p class="p">The syntax may be validated in back. The date given should presumably be the same as the (human-readable) <code>date</code> given above it (and such a discrepancy is also be detectable).</p></div><p>This attribute appears on: <a href="#version">version</a>, <a href="#date">date</a>.</p></div>
+&lt;strong&gt;citation&lt;/strong&gt; of some sort&lt;/citation&gt;</pre></div></li></ul><p>This attribute appears on: <a href="#prop">prop</a>, <a href="#party">party</a>, <a href="#resource">resource</a>, <a href="#role">role</a>, <a href="#citation">citation</a>, <a href="#catalog">catalog</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#param">param</a>, <a href="#desc">desc</a>, <a href="#part">part</a>.</p></div>
 
 
 
@@ -1224,13 +1176,17 @@
 
 
 
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="last-modified-date"><header><h4 id="oscal-catalog-xml_last-modified-date" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Last modified date</b>: <code>last-modified-date</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_last-modified-date"><button>JSON</button></a></div></header><p class="description">Date of last modification</p><div class="remarks"><p class="p">This value represents the point in time when the OSCAL document was last updated. The date value should be in an ISO 8601 format with full time and time zone indicated. Ordinarily the value should be machine generated at time of creation or modification.</p><p class="p">In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
+
+
+
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="link"><header><h4 id="oscal-catalog-xml_link" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Link</b>: <code>link</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_link"><button>JSON</button></a></div></header><p>Supports inline encoding</p><p class="description">
-			A line or paragraph with a hypertext link
-		</p><div class="model"><p>The link element may have attributes</p><ul><li><a href="#href"><code>href</code></a> attribute <i> (required)</i></li><li><a href="#rel"><code>rel</code></a> attribute  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block) element.</p></div><p>This element appears inside: <a href="#ref-list">ref-list</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#param">param</a>, <a href="#part">part</a>.</p></div>
+      A line or paragraph with a hypertext link
+    </p><div class="model"><p>The link element may have attributes</p><ul><li><a href="#href"><code>href</code></a> attribute <i> (required)</i></li><li><a href="#rel"><code>rel</code></a> attribute  (<i>optional</i>)</li><li><a href="#media-type"><code>media-type</code></a> attribute  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block) element.</p><p class="p">TO DO: need to address link/hlink relations to support hashes.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#param">param</a>, <a href="#part">part</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="media-type"><header><h4 id="oscal-catalog-xml_media-type" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Media type</b>: <code>media-type</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_media-type"><button>JSON</button></a></div></header><p class="description">Describes the media or MIME type of a linked resource</p><p>This attribute appears on: <a href="#resource">resource</a>, <a href="#hlink">hlink</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="media-type"><header><h4 id="oscal-catalog-xml_media-type" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Media type</b>: <code>media-type</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_media-type"><button>JSON</button></a></div></header><p class="description">Describes the media type of a linked resource</p><div class="remarks"><p class="p">TO DO: discuss IANA media type registry.</p></div><p>This attribute appears on: <a href="#link">link</a>, <a href="#rlink">rlink</a>, <a href="#base64">base64</a>.</p></div>
 
 
 
@@ -1242,7 +1198,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="metadata"><header><h4 id="oscal-catalog-xml_metadata" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Publication metadata</b>: <code>metadata</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_metadata"><button>JSON</button></a></div></header><p class="description">Information describing the publication or availability of this document</p><div class="model"><p class="usa-font-lead">The <code>metadata</code> element has the following contents  (in order):</p><ul><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#author"><code>author</code></a> element  (<i>zero or more</i>)</li><li><a href="#publication-date"><code>publication-date</code></a> element  (<i>zero or one</i>)</li><li><a href="#version"><code>version</code></a> element  (<i>zero or one</i>)</li><li><a href="#doc-id"><code>doc-id</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#resource"><code>resource</code></a> element  (<i>zero or more</i>)</li><li><a href="#role"><code>role</code></a> element  (<i>zero or more</i>)</li><li><a href="#party"><code>party</code></a> element  (<i>zero or more</i>)</li><li><a href="#notes"><code>notes</code></a> element  (<i>zero or one</i>)</li><li><a href="#extra-meta"><code>extra-meta</code></a> element  (<i>zero or one</i>)</li></ul></div><p>This element appears inside: <a href="#catalog">catalog</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="metadata"><header><h4 id="oscal-catalog-xml_metadata" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Publication metadata</b>: <code>metadata</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_metadata"><button>JSON</button></a></div></header><p class="description">Information describing the publication or availability of this document</p><div class="model"><p class="usa-font-lead">The <code>metadata</code> element has the following contents  (in order):</p><ul><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#author"><code>author</code></a> element  (<i>zero or more</i>)</li><li><a href="#last-modified-date"><code>last-modified-date</code></a> element  (<i>zero or one</i>)</li><li><a href="#version"><code>version</code></a> element  (<i>zero or one</i>)</li><li><a href="#doc-id"><code>doc-id</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#role"><code>role</code></a> element  (<i>zero or more</i>)</li><li><a href="#party"><code>party</code></a> element  (<i>zero or more</i>)</li><li><a href="#notes"><code>notes</code></a> element  (<i>zero or one</i>)</li><li><a href="#extra-meta"><code>extra-meta</code></a> element  (<i>zero or one</i>)</li></ul></div><p>This element appears inside: <a href="#catalog">catalog</a>.</p></div>
 
 
 
@@ -1250,7 +1206,15 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="notes"><header><h4 id="oscal-catalog-xml_notes" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Notes</b>: <code>notes</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_notes"><button>JSON</button></a></div></header><p class="description">Any notes with further information</p><div class="model"><p class="usa-font-lead">The <code>notes</code> element has the following contents :</p><ul><li class="prose">Prose contents (paragraphs and lists)</li></ul></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#party">party</a>, <a href="#person">person</a>, <a href="#org">org</a>, <a href="#extra-meta">extra-meta</a>, <a href="#meta-group">meta-group</a>, <a href="#resource">resource</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="name"><header><h4 id="oscal-catalog-xml_name" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Name</b>: <code>name</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_name"><button>JSON</button></a></div></header><p class="description">Identifying the purpose and intended use of the property, part or other object.</p><div class="remarks"><p class="p">This flag is intended to be used as a control point for validation of properties and parts with respect to constraints related to local semantics. A name is not necessarily expected to be unique, even within the scope of the parent (containing) structure -- while if it is (given local application semantics), such uniqueness should be validable.</p><p class="p">The definition of a name is subject to its namespace, offered by an <code>ns</code> flag (q.v.). When <code>ns</code> is not given, the namespace is assumed to be <q>oscal</q> and the name should be one of the recognized values for names in OSCAL.</p></div><p>This attribute appears on: <a href="#prop">prop</a>, <a href="#part">part</a>.</p></div>
+
+
+
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="notes"><header><h4 id="oscal-catalog-xml_notes" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Notes</b>: <code>notes</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_notes"><button>JSON</button></a></div></header><p class="description">Any notes with further information</p><div class="model"><p class="usa-font-lead">The <code>notes</code> element has the following contents :</p><ul><li><a href="#type"><code>type</code></a> attribute  (<i>optional</i>)</li><li class="prose">Prose contents (paragraphs and lists)</li></ul></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#party">party</a>, <a href="#person">person</a>, <a href="#org">org</a>, <a href="#resource">resource</a>, <a href="#extra-meta">extra-meta</a>, <a href="#meta-group">meta-group</a>.</p></div>
+
+
+
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="ns"><header><h4 id="oscal-catalog-xml_ns" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Namespace</b>: <code>ns</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_ns"><button>JSON</button></a></div></header><p class="description">A namespace qualifying the name.</p><div class="remarks"><p class="p">Identifies an organization or compliance regime defining the information needs (requirements) addressed by an object. When this attribute is not given, its value should be assumed to be <code>oscal</code> and the name should be a name defined by this specification.</p></div><p>This attribute appears on: <a href="#prop">prop</a>, <a href="#part">part</a>.</p></div>
 
 
 
@@ -1271,7 +1235,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="part"><header><h4 id="oscal-catalog-xml_part" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Part</b>: <code>part</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_part"><button>JSON</button></a></div></header><p class="description">A partition or component of a control, subcontrol or part</p><div class="model"><p class="usa-font-lead">The <code>part</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li class="prose">Prose contents (paragraphs and lists)</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li></ul></div><div class="remarks"><p class="p">Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be distinguished from other elements within their controls by their assigned <code>class</code>, such that they may be subjected to <q>declarations logic</q> using these values as bindings (and thereby getting open-ended extensibility).</p><p class="p">An assigned class may frequently provide for a header in display, such that <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc. Parts may also however have their own titles (<code>title</code> elements).</p><p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally constructed out of properties (<code>prop</code> elements) and/or their own parts. Such structured objects may, at the extreme, function virtually as control extensions or subcontrol-like objects (<q>enhancements</q>).</p></div><p>This element appears inside: <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="part"><header><h4 id="oscal-catalog-xml_part" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Part</b>: <code>part</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_part"><button>JSON</button></a></div></header><p class="description">A partition or component of a control, subcontrol or part</p><div class="model"><p class="usa-font-lead">The <code>part</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#name"><code>name</code></a> attribute <i> (required)</i></li><li><a href="#ns"><code>ns</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li class="prose">Prose contents (paragraphs and lists)</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li></ul></div><div class="remarks"><p class="p">Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be distinguished from other elements within their controls by their assigned <code>class</code>, such that they may be subjected to <q>declarations logic</q> using these values as bindings (and thereby getting open-ended extensibility).</p><p class="p">An assigned class may frequently provide for a header in display, such that <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc. Parts may also however have their own titles (<code>title</code> elements).</p><p class="p">Many parts are logical partitions or sections for prose. Other parts may be more formally constructed out of properties (<code>prop</code> elements) and/or their own parts. Such structured objects may, at the extreme, function virtually as control extensions or subcontrol-like objects (<q>enhancements</q>).</p></div><p>This element appears inside: <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
 
 
 
@@ -1300,32 +1264,20 @@
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="prop"><header><h4 id="oscal-catalog-xml_prop" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Property</b>: <code>prop</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_prop"><button>JSON</button></a></div></header><p class="description">A value with a name, attributed to the containing control, subcontrol, part,
-          or group.</p><div class="model"><p>The prop element may have attributes</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute <i> (required)</i></li></ul></div><div class="remarks"><p class="p">Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p><p class="p">The value of a property is a simple scalar value or list of values.</p><p class="p">The lexical composition of properties may be constrained by declarations including matching to regular expressions or by declaring a known datatype.</p><p class="p">Because properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be normalized (e.g., with respect to whitespace) in use; however, this is application defined.</p><p class="p">For singletons (that is, the only element among siblings with its <code>class</code>), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf <code>declare-prop</code> in the declarations model (which also supports other constraints over property values).</p></div><ul class="usa-accordion-bordered"><li><button class="usa-accordion-button" aria-expanded="true" aria-controls="prop_example1_xml">Example</button><div id="prop_example1_xml" class="usa-accordion-content"><pre>
-&lt;prop class="name"&gt;A1&lt;/prop&gt;</pre></div></li></ul><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#resource">resource</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
+      or group.</p><div class="model"><p>The prop element may have attributes</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#name"><code>name</code></a> attribute <i> (required)</i></li><li><a href="#ns"><code>ns</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li></ul></div><div class="remarks"><p class="p">Properties permit the deployment and management of arbitrary controlled values, with and among control objects (controls, parts, and extensions), for any purpose useful to an application or implementation of those controls. Typically, properties will be used to sort, select, order, and arrange controls or relate them to one another or to class hierarchies, taxonomies, or external authorities.</p><p class="p">The value of a property is a simple scalar value or list of values.</p><p class="p">The lexical composition of properties may be constrained by declarations including matching to regular expressions or by declaring a known datatype.</p><p class="p">Because properties are often used as selectors or identifiers for OSCAL operations, their values can be expected frequently to be normalized (e.g., with respect to whitespace) in use; however, this is application defined.</p><p class="p">For singletons (that is, the only element among siblings with its <code>class</code>), properties are especially useful as proxies (unique identifiers) for their controls, such that controls may be returned one for one on queries for properties (name and value). The robustness of such queries can be ensured by appropriate property declarations (as singletons and as identifiers); cf <code>declare-prop</code> in the declarations model (which also supports other constraints over property values).</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="publication-date"><header><h4 id="oscal-catalog-xml_publication-date" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Publication date</b>: <code>publication-date</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_publication-date"><button>JSON</button></a></div></header><p class="description">The official date of publication</p><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="rel"><header><h4 id="oscal-catalog-xml_rel" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Relation</b>: <code>rel</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_rel"><button>JSON</button></a></div></header><p class="description">Purpose of the link</p><div class="remarks"><p class="p">TO DO: discuss IANA link relation registry.</p></div><p>This attribute appears on: <a href="#link">link</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="ref-list"><header><h4 id="oscal-catalog-xml_ref-list" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Reference</b>: <code>ref-list</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_ref-list"><button>JSON</button></a></div></header><p class="description">A list of references to external resources. This object may be nested
-			for reference lists composed of reference lists.
-		</p><div class="model"><p class="usa-font-lead">The <code>ref-list</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li><li class="prose">Prose contents (paragraphs and lists)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#ref"><code>ref</code></a> element  (<i>zero or more</i>)</li><li><a href="#ref-list"><code>ref-list</code></a> element  (<i>zero or more</i>)</li></ul></div><p>This element appears inside: <a href="#ref-list">ref-list</a>, <a href="#back">back</a>, <a href="#section">section</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="resource"><header><h4 id="oscal-catalog-xml_resource" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Resource</b>: <code>resource</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_resource"><button>JSON</button></a></div></header><p class="description">A resource to inform or authenticate the present document, or to supplement it as an attachment</p><div class="model"><p class="usa-font-lead">The <code>resource</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#desc"><code>desc</code></a> element  (<i>zero or one</i>)</li><li class="choice">A choice between
+         <ul><li><a href="#rlink"><code>rlink</code></a> element  (<i>zero or more</i>)</li><li><a href="#base64"><code>base64</code></a> element  (<i>zero or one</i>)</li></ul></li><li><a href="#notes"><code>notes</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">This element is used in two ways. In document metadata, it may describe and point to a mirror or other (authoritative or informative) copy of a document, or of a resouce helpful (necessary) for interpreting it, such as its metaschema or documentation. It may offer a (persistent) link to a <q>best available</q> version, or to an outdated version, as indicated by its <code>rel</code>.</p><p class="p">In back matter or within sections, a resource may be an attachment or any external document.</p><p class="p">The <code>rel</code> flag should be used to indicate the relation of the resource to the document referencing it, such as <q>catalog</q>, <q>baseline</q>, <q>metaschema</q> or <q>attachment</q>.</p></div><p>This element appears inside: <a href="#back-matter">back-matter</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="ref"><header><h4 id="oscal-catalog-xml_ref" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Reference</b>: <code>ref</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_ref"><button>JSON</button></a></div></header><p class="description"> A reference, with one or more citations to standards, related documents, or
-			other resources </p><div class="model"><p class="usa-font-lead">The <code>ref</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#citation"><code>citation</code></a> element  (<i>zero or more</i>)</li><li class="prose">Prose contents (paragraphs and lists)</li></ul></div><p>This element appears inside: <a href="#ref-list">ref-list</a>.</p></div>
-
-
-
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="rel"><header><h4 id="oscal-catalog-xml_rel" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Relation</b>: <code>rel</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_rel"><button>JSON</button></a></div></header><p class="description">Purpose of the link</p><p>This attribute appears on: <a href="#resource">resource</a>, <a href="#link">link</a>.</p></div>
-
-
-
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="resource"><header><h4 id="oscal-catalog-xml_resource" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Resource</b>: <code>resource</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_resource"><button>JSON</button></a></div></header><p class="description">A resource to inform or authenticate the present document, or to supplement it as an attachment</p><div class="model"><p class="usa-font-lead">The <code>resource</code> element has the following contents  (in order):</p><ul><li><a href="#rel"><code>rel</code></a> attribute  (<i>optional</i>)</li><li><a href="#media-type"><code>media-type</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li><li><a href="#author"><code>author</code></a> element  (<i>zero or more</i>)</li><li><a href="#format"><code>format</code></a> element  (<i>zero or one</i>)</li><li><a href="#description"><code>description</code></a> element  (<i>zero or one</i>)</li><li><a href="#date"><code>date</code></a> element  (<i>zero or one</i>)</li><li><a href="#version"><code>version</code></a> element  (<i>zero or one</i>)</li><li><a href="#doc-id"><code>doc-id</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li class="choice">A choice between
-         <ul><li><a href="#hlink"><code>hlink</code></a> element  (<i>zero or more</i>)</li><li><a href="#base64"><code>base64</code></a> element  (<i>zero or one</i>)</li></ul></li><li><a href="#notes"><code>notes</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">This element is used in two ways. In document metadata, it may describe and point to a mirror or other (authoritative or informative) copy of a document, or of a resouce helpful (necessary) for interpreting it, such as its metaschema or documentation. It may offer a (persistent) link to a <q>best available</q> version, or to an outdated version, as indicated by its <code>rel</code>.</p><p class="p">In back matter or within sections, a resource may be an attachment or any external document.</p><p class="p">The <code>rel</code> flag should be used to indicate the relation of the resource to the document referencing it, such as <q>catalog</q>, <q>baseline</q>, <q>metaschema</q> or <q>attachment</q>.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#back">back</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="rlink"><header><h4 id="oscal-catalog-xml_rlink" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Related link</b>: <code>rlink</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_rlink"><button>JSON</button></a></div></header><p class="description">A pointer to an external copy of a document with optional hash for verification</p><div class="model"><p class="usa-font-lead">The <code>rlink</code> element has the following contents :</p><ul><li><a href="#href"><code>href</code></a> attribute <i> (required)</i></li><li><a href="#media-type"><code>media-type</code></a> attribute  (<i>optional</i>)</li><li><a href="#hash"><code>hash</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">This is different from unstructured <code>link</code>, which makes no provision for a hash or formal title. It is also different from the element of the same name once proposed for HTML.</p></div><p>This element appears inside: <a href="#resource">resource</a>.</p></div>
 
 
 
@@ -1334,10 +1286,6 @@
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="role"><header><h4 id="oscal-catalog-xml_role" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Role</b>: <code>role</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_role"><button>JSON</button></a></div></header><p class="description">Defining a role to be assigned to a party or agent</p><div class="model"><p class="usa-font-lead">The <code>role</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#title"><code>title</code></a> element  (<i>zero or one</i>)</li><li><a href="#short-name"><code>short-name</code></a> element  (<i>zero or one</i>)</li><li><a href="#desc"><code>desc</code></a> element  (<i>zero or one</i>)</li></ul></div><div class="remarks"><p class="p">Permissible values to be determined closer to the application (e.g. by a receiving authority).</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
-
-
-
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="section"><header><h4 id="oscal-catalog-xml_section" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Section</b>: <code>section</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_section"><button>JSON</button></a></div></header><p class="description">Allows the inclusion of prose content within a Catalog.</p><div class="model"><p class="usa-font-lead">The <code>section</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute  (<i>optional</i>)</li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li class="prose">Prose contents (paragraphs and lists)</li><li><a href="#section"><code>section</code></a> element  (<i>zero or more</i>)</li><li><a href="#ref-list"><code>ref-list</code></a> element  (<i>zero or one</i>)</li></ul></div><p>This element appears inside: <a href="#catalog">catalog</a>, <a href="#section">section</a>.</p></div>
 
 
 
@@ -1353,7 +1301,11 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="subcontrol"><header><h4 id="oscal-catalog-xml_subcontrol" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Sub-Control</b>: <code>subcontrol</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_subcontrol"><button>JSON</button></a></div></header><p class="description">A control extension or enhancement</p><div class="model"><p class="usa-font-lead">The <code>subcontrol</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#param"><code>param</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li><li><a href="#ref-list"><code>ref-list</code></a> element  (<i>zero or one</i>)</li></ul></div><p>This element appears inside: <a href="#control">control</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="subcontrol"><header><h4 id="oscal-catalog-xml_subcontrol" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Sub-Control</b>: <code>subcontrol</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_subcontrol"><button>JSON</button></a></div></header><p class="description">A control extension or enhancement</p><div class="model"><p class="usa-font-lead">The <code>subcontrol</code> element has the following contents  (in order):</p><ul><li><a href="#id"><code>id</code></a> attribute <i> (required)</i></li><li><a href="#class"><code>class</code></a> attribute  (<i>optional</i>)</li><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#param"><code>param</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#part"><code>part</code></a> element  (<i>zero or more</i>)</li></ul></div><p>This element appears inside: <a href="#control">control</a>.</p></div>
+
+
+
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="target"><header><h4 id="oscal-catalog-xml_target" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Citation target</b>: <code>target</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_target"><button>JSON</button></a></div></header><p class="description">An address for retrieval of a citation</p><div class="remarks"><p class="p">Semantically equivalent to an <code>href</code> (flag), this is represented as a field in order to permit citations to carry an extra target (for cross-check or fallback) and to permit further qualification (with flags of its own) in future.</p><p class="p">This value is expected to be a URI, and may be an internal link to another object such as a <code>resource</code> documented in back matter.</p><p class="p">When a citation is given as a full (but unparsed) bibliographic citation, use <code>desc</code> instead of <code>title</code> inside this object.</p></div><p>This element appears inside: <a href="#citation">citation</a>.</p></div>
 
 
 
@@ -1365,11 +1317,11 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="title"><header><h4 id="oscal-catalog-xml_title" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Title</b>: <code>title</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_title"><button>JSON</button></a></div></header><p>Supports inline encoding</p><p class="description">A title for display and navigation, exclusive of more specific properties</p><div class="remarks"><p class="p">A title given to a control or subcontrol will be its name or whatever human-readable string it is known by. Given to other objects (sections, groups, parts) it is the title as it should appear in a formatted document.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#role">role</a>, <a href="#resource">resource</a>, <a href="#hlink">hlink</a>, <a href="#ref-list">ref-list</a>, <a href="#section">section</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="title"><header><h4 id="oscal-catalog-xml_title" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Title</b>: <code>title</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_title"><button>JSON</button></a></div></header><p>Supports inline encoding</p><p class="description">A title for display and navigation, exclusive of more specific properties</p><div class="remarks"><p class="p">A title given to a control or subcontrol will be its name or whatever human-readable string it is known by. Given to other objects (sections, groups, parts) it is the title as it should appear in a formatted document.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#role">role</a>, <a href="#citation">citation</a>, <a href="#group">group</a>, <a href="#control">control</a>, <a href="#subcontrol">subcontrol</a>, <a href="#part">part</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="type"><header><h4 id="oscal-catalog-xml_type" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Type</b>: <code>type</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_type"><button>JSON</button></a></div></header><p class="description">Indicating the type of identifier or other data item.</p><div class="remarks"><p class="p">Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up.</p></div><p>This attribute appears on: <a href="#person-id">person-id</a>, <a href="#org-id">org-id</a>, <a href="#address">address</a>, <a href="#email">email</a>, <a href="#phone">phone</a>, <a href="#url">url</a>, <a href="#meta-group">meta-group</a>, <a href="#meta">meta</a>, <a href="#doc-id">doc-id</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="type"><header><h4 id="oscal-catalog-xml_type" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Type</b>: <code>type</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_type"><button>JSON</button></a></div></header><p class="description">Indicating the type of identifier, address, email or other data item.</p><div class="remarks"><p class="p">Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up. The values may be constrained to a locally defined list.</p></div><p>This attribute appears on: <a href="#doc-id">doc-id</a>, <a href="#person-id">person-id</a>, <a href="#org-id">org-id</a>, <a href="#address">address</a>, <a href="#email">email</a>, <a href="#phone">phone</a>, <a href="#url">url</a>, <a href="#notes">notes</a>, <a href="#meta-group">meta-group</a>, <a href="#meta">meta</a>.</p></div>
 
 
 
@@ -1381,7 +1333,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="version"><header><h4 id="oscal-catalog-xml_version" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">version</b>: <code>version</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_version"><button>JSON</button></a></div></header><p class="description">Version information</p><div class="model"><p>The version element may have an attribute</p><ul><li><a href="#iso-date"><code>iso-date</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#metadata">metadata</a>, <a href="#resource">resource</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="version"><header><h4 id="oscal-catalog-xml_version" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">version</b>: <code>version</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-catalog-json/#oscal-catalog-json_version"><button>JSON</button></a></div></header><p class="description">Document version</p><div class="remarks"><p class="p">A string indicating version, by release number, date, or other identifier.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
 
 
 
