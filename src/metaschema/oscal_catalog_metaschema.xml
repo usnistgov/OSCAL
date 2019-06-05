@@ -327,10 +327,5 @@
     <formal-name>Depends on</formal-name>
     <description>Another parameter invoking this one</description>
   </define-flag>
-  
-  <define-flag name="model-version" datatype="string">
-    <formal-name>Model version</formal-name>
-    <description>Declares a major/minor version for this metaschema</description>
-  </define-flag>
-  
+    
 </METASCHEMA>
