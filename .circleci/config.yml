@@ -293,8 +293,8 @@ jobs: # a collection of
             git add -f --all content
             # check for changes
             echo "Changed files:"
-            git diff --exit-code --name-only HEAD~1 xml json content
-            if [ $? -ne 0 ]; then
+            
+            if ! $(git diff --exit-code --name-only HEAD~1 xml json content); then
               # Only deploy if something relevant has changed
               # Setup deployment
               git config user.name "Deployment Bot"
