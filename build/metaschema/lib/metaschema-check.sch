@@ -74,6 +74,9 @@
         <sch:rule context="m:flag">
             <sch:let name="decl" value="key('definition-by-name',@name,$composed-metaschema)"/>
             
+            <sch:assert test="empty(@primary) or (count(../*[@primary]) eq 1)">Only one flag may be marked as "primary".</sch:assert>
+            <sch:report test="@primary != 'yes'">Value of @primary should be "yes"</sch:report>
+            <sch:assert test="not(@primary = 'yes') or (@required = 'yes')">Flag must be required when designated as primary (required="yes" primary="yes")</sch:assert>
             <sch:assert test="exists($decl)" role="warning">No definition found for '<sch:value-of select="@name"/>' <sch:value-of select="local-name()"/></sch:assert>
             <sch:assert test="empty($decl) or empty(@datatype) or (@datatype = $decl/@datatype)" role="warning">Flag data type doesn't match: the definition has '<sch:value-of select="$decl/@datatype"/>'</sch:assert>
             <sch:assert test="not(@name=../@address) or @required='yes'">Definition set to address by '<sch:value-of select="@name"/>', but its flag is not required.</sch:assert>

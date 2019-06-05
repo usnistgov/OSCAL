@@ -106,7 +106,7 @@
 
   <define-field name="prop" group-as="properties">
     <flag name="id" datatype="ID"/>
-    <flag name="name" required="yes"/>
+    <flag name="name" required="yes" primary="yes"/>
     <flag name="ns"/>
     <flag name="class"/>
     <formal-name>Property</formal-name>
@@ -320,19 +320,17 @@
   </define-field>
 
   <define-field name="email" group-as="email-addresses">
-    <flag name="type"/>
     <formal-name>Email</formal-name>
     <description>Email address</description>
   </define-field>
 
   <define-field name="phone" group-as="telephone-numbers">
-    <flag name="type"/>
+    <flag name="type"/><!-- mobile, work, etc. -->
     <formal-name>Telephone</formal-name>
     <description>Contact number by telephone</description>
   </define-field>
 
   <define-field name="url" group-as="URLs">
-    <flag name="type"/>
     <formal-name>URL</formal-name>
     <description>URL for web site or Internet presence</description>
   </define-field>
@@ -449,7 +447,7 @@
   </define-assembly>
   
   <define-field name="meta" group-as="metadata-fields">
-    <flag name="term"/>
+    <flag name="term" required="yes" primary="yes"/>
     <flag name="type"/>
     <formal-name>Metadata field value</formal-name>
     <description>Any customized or specialized metadata value.</description>
