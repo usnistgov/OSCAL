@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns="http://www.w3.org/2005/xpath-functions">
+    <string key="$schema">http://json-schema.org/draft-07/schema#</string>
+    <string key="$id">http://csrc.nist.gov/ns/oscal/1.0/oscal-mini-schema.json</string>
+    <string key="$comment">MINI Testing Schema: JSON Schema</string>
+    <string key="type">object</string>
+    <map key="definitions">
+        <map key="lunch">
+            <string key="title">Lunch</string>
+            <string key="description">lunch</string>
+            <string key="$id">#/definitions/lunch</string>
+            <string key="type">object</string>
+            <map key="properties">
+                <map key="sandwich">
+                    <string key="type">object</string>
+                    <string key="$ref">#/definitions/sandwich</string>
+                </map>
+                <map key="chips">
+                    <string key="type">array</string>
+                    <map key="items">
+                        <string key="$ref">#/definitions/chip</string>
+                    </map>
+                </map>
+                <map key="cookies">
+                    <array key="oneOf">
+                        <map>
+                            <string key="type">array</string>
+                            <map key="items">
+                                <string key="$ref">#/definitions/cookie</string>
+                            </map>
+                        </map>
+                        <map>
+                            <string key="$ref">#/definitions/cookie</string>
+                        </map>
+                    </array>
+                </map>
+            </map>
+            <boolean key="additionalProperties">false</boolean>
+            <map key="propertyNames">
+                <array key="enum">
+                    <string>sandwich</string>
+                    <string>chip</string>
+                    <string>cookie</string>
+                    <string>cookies</string>
+                </array>
+            </map>
+        </map>
+        <map key="sandwich">
+            <string key="title">Sandwich</string>
+            <string key="description">Yeah....</string>
+            <string key="$id">#/definitions/sandwich</string>
+            <string key="type">object</string>
+            <map key="properties">
+                <map key="prose">
+                    <string key="$ref">#/definitions/prose</string>
+                </map>
+            </map>
+            <boolean key="additionalProperties">false</boolean>
+            <map key="propertyNames">
+                <array key="enum">
+                    <string>prose</string>
+                </array>
+            </map>
+        </map>
+        <map key="chip">
+            <string key="title">Chip</string>
+            <string key="description">Only one?</string>
+            <string key="$id">#/definitions/chip</string>
+            <string key="type">string</string>
+        </map>
+        <map key="cookie">
+            <string key="title">Cookie</string>
+            <string key="description">Have several.</string>
+            <string key="$id">#/definitions/cookie</string>
+            <string key="type">string</string>
+        </map>
+        <map key="prose">
+            <string key="type">array</string>
+            <map key="items">
+                <string key="type">string</string>
+            </map>
+        </map>
+    </map>
+    <map key="properties">
+        <map key="lunch">
+            <string key="$ref">#/definitions/lunch</string>
+        </map>
+    </map>
+</map>

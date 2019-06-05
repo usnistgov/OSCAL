@@ -1,0 +1,58 @@
+
+  { "$schema" : "http://json-schema.org/draft-07/schema#",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0/oscal-mini-schema.json",
+    "$comment" : "MINI Testing Schema: JSON Schema",
+    "type" : "object",
+    "definitions" : 
+    { "lunch" : 
+      { "title" : "Lunch",
+        "description" : "lunch",
+        "$id" : "#/definitions/lunch",
+        "type" : "object",
+        "properties" : 
+        { "sandwich" : 
+          { "type" : "object",
+            "$ref" : "#/definitions/sandwich" },
+          "chips" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/chip" } },
+          "cookies" : 
+          { "type" : "array",
+            "items" : 
+            { "$ref" : "#/definitions/cookie" } } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "sandwich",
+            "chip",
+            "cookie" ] } },
+      "sandwich" : 
+      { "title" : "Sandwich",
+        "description" : "Yeah....",
+        "$id" : "#/definitions/sandwich",
+        "type" : "object",
+        "properties" : 
+        { "prose" : 
+          { "$ref" : "#/definitions/prose" } },
+        "additionalProperties" : false,
+        "propertyNames" : 
+        { "enum" : 
+          [ "prose" ] } },
+      "chip" : 
+      { "title" : "Chip",
+        "description" : "Only one?",
+        "$id" : "#/definitions/chip",
+        "type" : "string" },
+      "cookie" : 
+      { "title" : "Cookie",
+        "description" : "Have several.",
+        "$id" : "#/definitions/cookie",
+        "type" : "string" },
+      "prose" : 
+      { "type" : "array",
+        "items" : 
+        { "type" : "string" } } },
+    "properties" : 
+    { "lunch" : 
+      { "$ref" : "#/definitions/lunch" } } }

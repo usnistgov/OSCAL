@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" root="lunch">
+
+  
+  <schema-name>MINI Testing Schema</schema-name>
+  <short-name>oscal-mini</short-name>
+  <namespace>urn:mini</namespace>
+  <remarks>
+    <p>A test schema for prototyping and demonstrating the metaschema feature set.</p>
+  </remarks>
+
+  
+ <define-assembly name="lunch">
+    <formal-name>Lunch</formal-name>
+    <description>lunch</description>
+    <model>
+      <assembly named="sandwich"/>
+      <fields   named="chip"/>
+      <fields   named="cookie"/>
+    </model>    
+  </define-assembly>
+
+  <define-assembly name="sandwich" group-as="sandwiches">
+    <formal-name>Sandwich</formal-name>
+    <description>Yeah....</description>
+    <model>
+      <prose/>
+    </model>
+  </define-assembly>
+  
+  <define-field name="chip" group-as="chips">
+    <formal-name>Chip</formal-name>
+    <description>Only one?</description>
+  </define-field>
+  
+  <define-field name="cookie" group-as="cookies">
+    <formal-name>Cookie</formal-name>
+    <description>Have several.</description>
+  </define-field>
+  
+  
+</METASCHEMA>

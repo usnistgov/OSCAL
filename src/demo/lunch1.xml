@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lunch xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:mini mini-schema.xsd" xmlns="urn:mini">
+    <sandwich><p>Ham and cheese</p></sandwich>
+    <chip>malt vinegar</chip>
+    <chip>malt vinegar</chip>
+    <chip>malt vinegar</chip>
+    <cookie>chocolate chip</cookie>
+</lunch>
