@@ -18,19 +18,19 @@ SAXON_MAIN="net.sf.saxon.Transform"
 # ( set -o posix ; set )
 
 xsl_transform() {
-    local stylesheet="$1"
-    local source_file="$2"
-    local output_file="$3"
-    local extra_params="$4"
+    local stylesheet="$1"; shift
+    local source_file="$1"; shift
+    local output_file="$1"; shift
+    local extra_params=($@)
     
     local classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
 
     if [[ ! -z "$output_file" ]]; then
         java -cp "$classpath" net.sf.saxon.Transform \
-            $extra_params "-warnings:silent" "-o:$output_file" "-s:$source_file" "$stylesheet"
+            "-warnings:silent" "-o:${output_file}" "-s:${source_file}" "-xsl:${stylesheet}" "${extra_params[@]}"
     else
         java -cp "$classpath" net.sf.saxon.Transform \
-            $extra_params "-warnings:silent" "-s:$source_file" "$stylesheet"
+            "-warnings:silent" "-s:${source_file}" "-xsl:${stylesheet}" "${extra_params[@]}"
     fi
 
     if [ "$?" -ne 0 ]; then

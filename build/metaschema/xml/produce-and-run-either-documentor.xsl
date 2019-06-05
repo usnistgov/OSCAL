@@ -11,24 +11,29 @@
 
     <!-- for development -->
     <!--<xsl:param name="target-format" select="()"/>-->
-    <xsl:param name="target-format" as="xs:string">xml</xsl:param>
+    <xsl:param name="target-format" as="xs:string">json</xsl:param>
     <xsl:param name="output-path"   as="xs:string">docs/content/documentation/schemas</xsl:param>
 
     <xsl:import href="../lib/metaschema-compose.xsl"/>
     <xsl:variable name="source" select="$composed-metaschema"/>
     
     <xsl:variable name="metaschema-code" select="$source/*/short-name"/>
+   
+    <xsl:param name="example-converter-xslt-path" as="xs:string" required="yes"/>
     <!--"C:\Users\wap1\Documents\OSCAL\docs_jekyll_uswds\content\documentation\schemas\oscal-catalog\catalog.md"-->
+    
     <xsl:variable name="result-path" select="($output-path || '/_' || $metaschema-code || '-' || $target-format)"/>
 
     <!-- This template produces an XSLT dynamically by running an XSLT with a parameter set. -->
     <xsl:variable name="xslt">
         <xsl:variable name="runtime"   select="map {
-            'xslt-version'        : 3.0,
-            'stylesheet-location' : 'produce-either-documentor.xsl',
-            'source-node'         : $source,
-            'stylesheet-params'   : map { xs:QName('target-format'): $target-format,
-                                          xs:QName('schema-path'):   document-uri(/) } }" />
+            'xslt-version'               : 3.0,
+            'stylesheet-location'        : 'produce-either-documentor.xsl',
+            'source-node'                : $source,
+            'stylesheet-params'          : map { xs:QName('target-format'): $target-format,
+                                                 xs:QName('schema-path'):   document-uri(/),
+                                                 xs:QName('example-converter-xslt'): $example-converter-xslt-path
+                                                 } }" />
 
         <!-- The function fn:transform() returns a map, whose primary results are under 'output'
          unless a base output URI is given
@@ -50,7 +55,6 @@
     </xsl:variable>
     
     <xsl:template match="/">
-        <!--<xsl:message expand-text="true"> { resolve-uri($result-path, document-uri(/)) }</xsl:message>-->
         <xsl:result-document href="{$result-path}/{ $metaschema-code }.html" method="xhtml">
               
             <xsl:call-template name="yaml-header">

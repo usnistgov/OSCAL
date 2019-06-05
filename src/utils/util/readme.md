@@ -8,7 +8,7 @@ At present, contains CSS applicable to OSCAL in an authoring environment (such a
 
 ## [convert](convert)
 
-XSLT transformations for converting XML OSCAL into JSON OSCAL and vice versa. These transformations are machine-written from metaschema inputs. See [../schema/metaschema](../schema/metaschema) for the metaschema inputs and [../build/metaschema](../build/metaschema) for the mechanics.
+XSLT transformations for converting XML OSCAL into JSON OSCAL and vice versa. These transformations are machine-written from metaschema inputs. See [metaschema source](../../metaschema) for the metaschema inputs and [metaschema build support](../../../build/metaschema) for the mechanics.
 
 ## [lib](lib)
 

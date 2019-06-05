@@ -31,10 +31,8 @@
     
     <xsl:variable name="target-namespace" select="string(/METASCHEMA/namespace)"/>
     
-    <xsl:param name="example-converter-xslt-path" as="xs:string" expand-text="true">../../util/convert/{/METASCHEMA/short-name}-xml-converter.xsl</xsl:param>
-    
-    <xsl:variable name="example-converter-xslt" select="resolve-uri($example-converter-xslt-path,document-uri(/))"/>
-    
+    <xsl:param name="example-converter-xslt" as="xs:string" required="yes"/>
+
     <xsl:template match="METASCHEMA">
         
         <xslt:stylesheet version="3.0"
