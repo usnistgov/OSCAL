@@ -30,10 +30,11 @@
     <formal-name>Publication metadata</formal-name>
     <description>Information describing the publication or availability of this document</description>
     <model>
-      <field      named="title"    required="yes"/>
+      <field      named="title"         required="yes"/>
       <fields     named="author"/>
       <field      named="last-modified-date"/>
       <field      named="version"/>
+      <field      named="oscal-version" required="yes"/>
       <fields     named="doc-id"/>
       <fields     named="prop"/>
       <fields     named="link"/>
@@ -67,7 +68,6 @@
     listing. This element provides a value for display as well as an additional point of comparison.</p></remarks>
   </define-field>
   
-  
   <define-field name="last-modified-date">
     <formal-name>Last modified date</formal-name>
     <description>Date of last modification</description>
@@ -79,11 +79,18 @@
   </define-field>
 
   <define-field name="version">
-    <formal-name>version</formal-name>
-    <description>Document version</description>
+    <formal-name>Document version</formal-name>
+    <description>Provided by document owner</description>
     <remarks><p>A string indicating version, by release number, date, or other identifier.</p></remarks>
   </define-field>
-
+  
+  <define-field name="oscal-version">
+    <formal-name>OSCAL version</formal-name>
+    <description>OSCAL model version</description>
+    <remarks><p>Indicates the version of the OSCAL model to which this data set conforms, for example
+      <q>1.0-M1</q>.</p></remarks>
+  </define-field>
+  
   <define-field name="doc-id" group-as="document-ids">
     <flag name="type" required="yes"/>
     <formal-name>Document Identifier</formal-name>
@@ -447,7 +454,7 @@
   </define-assembly>
   
   <define-field name="meta" group-as="metadata-fields">
-    <flag name="term" required="yes" primary="yes"/>
+    <flag name="term"/>
     <flag name="type"/>
     <formal-name>Metadata field value</formal-name>
     <description>Any customized or specialized metadata value.</description>

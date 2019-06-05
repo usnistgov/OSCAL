@@ -22,7 +22,6 @@
   
   <define-assembly name="catalog" group-as="control-catalog">
     <flag name="id" datatype="ID" required="yes"/>
-    <flag name="model-version" required="yes"/>
     <formal-name>Catalog</formal-name>
     <description>A collection of controls</description>
     <remarks>

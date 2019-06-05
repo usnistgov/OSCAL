@@ -1,10 +1,11 @@
 <!-- Created: 5/16/2019 9:05:18 PM -->
-<profile id="uuid-fedramp-moderate-20190528-125656" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<profile id="uuid-fedramp-moderate-20190605-163939" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
 	<metadata>
 		<title>FedRAMP Moderate Baseline</title>
 		<author>FedRAMP PMO</author>
 		<last-modified-date>2019-06-03T11:40:38.576-04:00</last-modified-date>
 		<version>1.1</version>
+		<oscal-version>1.0-M1</oscal-version>
 		<party>
 			<org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
@@ -12,9 +13,6 @@
 				<url>https://fedramp.gov</url>
 			</org>
 		</party>
-		<notes>
-			<p>No notes.</p>
-		</notes>
 	</metadata>
 	<import href="../nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_MODERATE-baseline_profile.xml">
 		<include>
