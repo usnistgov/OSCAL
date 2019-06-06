@@ -22,7 +22,6 @@
   
   <define-assembly name="catalog" group-as="control-catalog">
     <flag name="id" datatype="ID" required="yes"/>
-    <flag name="model-version" required="yes"/>
     <formal-name>Catalog</formal-name>
     <description>A collection of controls</description>
     <remarks>
@@ -328,10 +327,5 @@
     <formal-name>Depends on</formal-name>
     <description>Another parameter invoking this one</description>
   </define-flag>
-  
-  <define-flag name="model-version" datatype="string">
-    <formal-name>Model version</formal-name>
-    <description>Declares a major/minor version for this metaschema</description>
-  </define-flag>
-  
+    
 </METASCHEMA>

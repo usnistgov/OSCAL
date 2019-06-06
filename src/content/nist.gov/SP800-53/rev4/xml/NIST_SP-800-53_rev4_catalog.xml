@@ -1,10 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- XML produced by extraction/mapping from NVD XML :2018-11-02T16:55:46.916-04:00 --><!-- Then modified by hand (2018-12-10, 2019-05-16, 2019-05-29) to add metadata, align with current schema, correct broken links --><!-- Valid against the OSCAL catalog schema (project path /xml/schema/oscal-catalog-schema.xsd) --><catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-40b2570a-01e4-4040-9b31-3583d495043a" model-version="0.9.14">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML produced by extraction/mapping from NVD XML :2018-11-02T16:55:46.916-04:00 -->
+<!-- Then modified by hand (2018-12-10, 2019-05-16, 2019-05-29) to add metadata, align with current schema, correct broken links -->
+<!-- Valid against the OSCAL catalog schema (project path /xml/schema/oscal-catalog-schema.xsd) -->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-926328ea-0ab8-4e41-8929-e162fa514e5c">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
       
-      <last-modified-date>2019-06-03T11:12:59.98-04:00</last-modified-date>
+      <last-modified-date>2019-06-05T17:36:38.803-04:00</last-modified-date>
       <version>2015-01-22</version>
-
+      <oscal-version>1.0-M1</oscal-version>
+      
       <link rel="alternate" href="#resource-pdf-sp-800-53r4"/>
       <link rel="canonical" href="#resource-doi-sp-800-53r4"/>
 
