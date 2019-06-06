@@ -454,6 +454,8 @@
 
 
 
+
+
 <li>
   <a href="#oscal-profile-xml_profile"><code>profile (root element)</code></a>
 </li>
@@ -846,6 +848,12 @@
 
 <li>
   <a href="#oscal-profile-xml_org"><code>org</code></a>
+</li>
+
+
+
+<li>
+  <a href="#oscal-profile-xml_oscal-version"><code>oscal-version</code></a>
 </li>
 
 
@@ -1275,6 +1283,8 @@
 
 
 
+
+
 <h2 xmlns="http://www.w3.org/1999/xhtml">OSCAL Profile Metaschema: Schema Reference</h2>
 <p xmlns="http://www.w3.org/1999/xhtml">The short name (file identifier) for this schema shall be <i>oscal-profile</i>. It is used internally when an
          identifier is called for, and may appear in file names of schema artifacts.</p>
@@ -1390,7 +1400,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="email"><header><h4 id="oscal-profile-xml_email" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Email</b>: <code>email</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_email"><button>JSON</button></a></div></header><p class="description">Email address</p><div class="model"><p>The email element may have an attribute</p><ul><li><a href="#type"><code>type</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="email"><header><h4 id="oscal-profile-xml_email" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Email</b>: <code>email</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_email"><button>JSON</button></a></div></header><p class="description">Email address</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p></div>
 
 
 
@@ -1493,7 +1503,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="metadata"><header><h4 id="oscal-profile-xml_metadata" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Publication metadata</b>: <code>metadata</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_metadata"><button>JSON</button></a></div></header><p class="description">Information describing the publication or availability of this document</p><div class="model"><p class="usa-font-lead">The <code>metadata</code> element has the following contents  (in order):</p><ul><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#author"><code>author</code></a> element  (<i>zero or more</i>)</li><li><a href="#last-modified-date"><code>last-modified-date</code></a> element  (<i>zero or one</i>)</li><li><a href="#version"><code>version</code></a> element  (<i>zero or one</i>)</li><li><a href="#doc-id"><code>doc-id</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#role"><code>role</code></a> element  (<i>zero or more</i>)</li><li><a href="#party"><code>party</code></a> element  (<i>zero or more</i>)</li><li><a href="#notes"><code>notes</code></a> element  (<i>zero or one</i>)</li><li><a href="#extra-meta"><code>extra-meta</code></a> element  (<i>zero or one</i>)</li></ul></div><p>This element appears inside: <a href="#profile">profile</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="metadata"><header><h4 id="oscal-profile-xml_metadata" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Publication metadata</b>: <code>metadata</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_metadata"><button>JSON</button></a></div></header><p class="description">Information describing the publication or availability of this document</p><div class="model"><p class="usa-font-lead">The <code>metadata</code> element has the following contents  (in order):</p><ul><li><a href="#title"><code>title</code></a> element  (<i>one</i>)</li><li><a href="#author"><code>author</code></a> element  (<i>zero or more</i>)</li><li><a href="#last-modified-date"><code>last-modified-date</code></a> element  (<i>zero or one</i>)</li><li><a href="#version"><code>version</code></a> element  (<i>zero or one</i>)</li><li><a href="#oscal-version"><code>oscal-version</code></a> element  (<i>one</i>)</li><li><a href="#doc-id"><code>doc-id</code></a> element  (<i>zero or more</i>)</li><li><a href="#prop"><code>prop</code></a> element  (<i>zero or more</i>)</li><li><a href="#link"><code>link</code></a> element  (<i>zero or more</i>)</li><li><a href="#role"><code>role</code></a> element  (<i>zero or more</i>)</li><li><a href="#party"><code>party</code></a> element  (<i>zero or more</i>)</li><li><a href="#notes"><code>notes</code></a> element  (<i>zero or one</i>)</li><li><a href="#extra-meta"><code>extra-meta</code></a> element  (<i>zero or one</i>)</li></ul></div><p>This element appears inside: <a href="#profile">profile</a>.</p></div>
 
 
 
@@ -1530,6 +1540,10 @@
 
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="definition define-assembly" id="org"><header><h4 id="oscal-profile-xml_org" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Organization</b>: <code>org</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_org"><button>JSON</button></a></div></header><p class="description">An organization or legal entity (not a person), with contact information</p><div class="model"><p class="usa-font-lead">The <code>org</code> element has the following contents  (in order):</p><ul><li><a href="#org-name"><code>org-name</code></a> element  (<i>zero or one</i>)</li><li><a href="#short-name"><code>short-name</code></a> element  (<i>zero or one</i>)</li><li><a href="#org-id"><code>org-id</code></a> element  (<i>zero or more</i>)</li><li><a href="#address"><code>address</code></a> element  (<i>zero or more</i>)</li><li><a href="#email"><code>email</code></a> element  (<i>zero or more</i>)</li><li><a href="#phone"><code>phone</code></a> element  (<i>zero or more</i>)</li><li><a href="#url"><code>url</code></a> element  (<i>zero or more</i>)</li><li><a href="#notes"><code>notes</code></a> element  (<i>zero or one</i>)</li></ul></div><p>This element appears inside: <a href="#party">party</a>.</p></div>
+
+
+
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="oscal-version"><header><h4 id="oscal-profile-xml_oscal-version" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">OSCAL version</b>: <code>oscal-version</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_oscal-version"><button>JSON</button></a></div></header><p class="description">OSCAL model version</p><div class="remarks"><p class="p">Indicates the version of the OSCAL model to which this data set conforms, for example <q>1.0-M1</q>.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
 
 
 
@@ -1651,11 +1665,11 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="type"><header><h4 id="oscal-profile-xml_type" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Type</b>: <code>type</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_type"><button>JSON</button></a></div></header><p class="description">Indicating the type of identifier, address, email or other data item.</p><div class="remarks"><p class="p">Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up. The values may be constrained to a locally defined list.</p></div><p>This attribute appears on: <a href="#doc-id">doc-id</a>, <a href="#person-id">person-id</a>, <a href="#org-id">org-id</a>, <a href="#address">address</a>, <a href="#email">email</a>, <a href="#phone">phone</a>, <a href="#url">url</a>, <a href="#notes">notes</a>, <a href="#meta-group">meta-group</a>, <a href="#meta">meta</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-flag" id="type"><header><h4 id="oscal-profile-xml_type" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Type</b>: <code>type</code> attribute</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_type"><button>JSON</button></a></div></header><p class="description">Indicating the type of identifier, address, email or other data item.</p><div class="remarks"><p class="p">Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up. The values may be constrained to a locally defined list.</p></div><p>This attribute appears on: <a href="#doc-id">doc-id</a>, <a href="#person-id">person-id</a>, <a href="#org-id">org-id</a>, <a href="#address">address</a>, <a href="#phone">phone</a>, <a href="#notes">notes</a>, <a href="#meta-group">meta-group</a>, <a href="#meta">meta</a>.</p></div>
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="url"><header><h4 id="oscal-profile-xml_url" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">URL</b>: <code>url</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_url"><button>JSON</button></a></div></header><p class="description">URL for web site or Internet presence</p><div class="model"><p>The url element may have an attribute</p><ul><li><a href="#type"><code>type</code></a> attribute  (<i>optional</i>)</li></ul></div><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="url"><header><h4 id="oscal-profile-xml_url" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">URL</b>: <code>url</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_url"><button>JSON</button></a></div></header><p class="description">URL for web site or Internet presence</p><p>This element appears inside: <a href="#person">person</a>, <a href="#org">org</a>.</p></div>
 
 
 
@@ -1663,7 +1677,7 @@
 
 
 
-<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="version"><header><h4 id="oscal-profile-xml_version" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">version</b>: <code>version</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_version"><button>JSON</button></a></div></header><p class="description">Document version</p><div class="remarks"><p class="p">A string indicating version, by release number, date, or other identifier.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
+<div xmlns="http://www.w3.org/1999/xhtml" class="definition define-field" id="version"><header><h4 id="oscal-profile-xml_version" class="usa-color-text usa-color-primary-darkest usa-color-text-white"><b class="formal-name">Document version</b>: <code>version</code> element</h4><div style="float:right"><button disabled="disabled">XML</button><a href="/OSCAL/docs/schemas/oscal-profile-json/#oscal-profile-json_version"><button>JSON</button></a></div></header><p class="description">Provided by document owner</p><div class="remarks"><p class="p">A string indicating version, by release number, date, or other identifier.</p></div><p>This element appears inside: <a href="#metadata">metadata</a>.</p></div>
 
 
 
