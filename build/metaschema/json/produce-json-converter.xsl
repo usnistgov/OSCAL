@@ -151,7 +151,7 @@
         
         <XSLT:variable name="json-xml" select="unparsed-text($json-file) ! json-to-xml(.)"/>
         
-        <XSLT:template match="/">
+        <XSLT:template name="xsl:initial-template" match="/">
             <XSLT:choose>
                 <XSLT:when test="exists($json-xml/map)">
                     <XSLT:apply-templates select="$json-xml" mode="json2xml"/>
