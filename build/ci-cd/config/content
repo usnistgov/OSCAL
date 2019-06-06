@@ -1,11 +1,4 @@
 # path to source|format of source|model of source|format(s) to convert to
-#### FedRAMP Round Trips (throwing errors)
-# src/content/fedramp.gov/xml/*catalog.xml|xml|catalog|json
-# src/content/fedramp.gov/xml/*profile.xml|xml|profile|json
-#### NIST 800-53 round trips
+src/content/fedramp.gov/xml/*profile.xml|xml|profile|json
 src/content/nist.gov/SP800-53/rev4/xml/*catalog.xml|xml|catalog|json
 src/content/nist.gov/SP800-53/rev4/xml/*profile.xml|xml|profile|json
-#### Not yet ready for JSON round trips
-content/nist.gov/SP800-53/rev4/json/*catalog.json|json|catalog|xml
-content/nist.gov/SP800-53/rev4/json/*profile.json|json|profile|xml
-
