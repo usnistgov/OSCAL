@@ -83,7 +83,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         converter_dir=$(dirname "$converter_path")
         json_file_path=$(realpath --relative-to="$converter_dir" "$to_json")
 
-        xsl_transform "$converter_path" "" "$output_path" "-it:start" "json-file=${json_file_path}"
+        xsl_transform "$converter_path" "" "$output_path" "-it" "json-file=${json_file_path}"
 
         # check the exit code for the conversion
         cmd_exitcode=$?
@@ -102,6 +102,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         if [ $cmd_exitcode -ne 0 ]; then
           echo "${P_ERROR}XML schema validation failed for '$output_path'.${P_END}"
           exitcode=1
+          continue;
         fi
 
         # compare the XML files to see if there is data loss
