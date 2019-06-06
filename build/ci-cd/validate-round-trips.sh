@@ -107,7 +107,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
 
         # compare the XML files to see if there is data loss
         echo "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file}${P_ERROR}'.${P_END}\n"
-        python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "$back_to_xml"
+        python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$back_to_xml" "$file"
         cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then
             echo "${P_ERROR}XML round-trip comparison failed.${P_END}"

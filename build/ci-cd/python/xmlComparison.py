@@ -76,5 +76,5 @@ root1 = doc1.getroot()
 root2 = doc2.getroot()
 
 if not compare(root1, root2):
-    print "compare failed"
+    print ("compare failed")
     sys.exit(1)

@@ -32,3 +32,5 @@ svrl
 !content/**/*.md
 !xml/**/*.md
 !json/**/*.md
+/roundtrip
+__pycache__
