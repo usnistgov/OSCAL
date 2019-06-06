@@ -9,7 +9,7 @@ Using a CI/CD process ensures that all artifacts in [pull requests](https://gith
 
 # Provided Scripts
 
-The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of bash scripts. The following scripts are used in this workflow:
+The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of bash scripts. The following scripts are used in this workflow for all PRs that are submitted:
 
 1. [run-all.sh](run-all.sh): Runs all of the scripts in workflow order.
 1. [validate-metaschema.sh](validate-metaschema.sh): Ensures that all [metaschema](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema) are valid according to the [metaschema XML schema](https://github.com/usnistgov/OSCAL/blob/master/build/metaschema/lib/metaschema.xsd).
@@ -17,11 +17,10 @@ The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of 
 1. [validate-content.sh](validate-content.sh): Validates OSCAL content in the repository's [src](https://github.com/usnistgov/OSCAL/tree/master/src) against the content's respective OSCAL model and format.
 1. [generate-content-converters.sh](generate-content-converters.sh): Generates [JSON to XML](https://github.com/usnistgov/OSCAL/tree/master/xml/convert) and [XML to JSON](https://github.com/usnistgov/OSCAL/tree/master/json/convert) content conversion scripts for each OSCAL model based on their [respective metaschemas](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema).
 1. [copy-and-convert-content.sh](copy-and-convert-content.sh): Copies selective content from the [src/content](https://github.com/usnistgov/OSCAL/tree/master/src/content) directory, and generates instance of this content in alternate OSCAL formats using the appropriate content converters. Note __This script requires that the process have write access to the Git repository branch that the CI/CD is operating on to work completely.__
-1. [roundTripXML.sh](roundTripXML.sh): Performs round trip validations of the content from XML->JSON->XML to confirm that the conversions are lossless and that converted files comply with their schemas.  The same conversions are done in the inverse: JSON->XML->JSON.
+1. [validate-round-trips.sh](validate-round-trips.sh): Performs round trip validations of the content from XML->JSON->XML to confirm that the conversions are lossless and that resulting files comply with their schemas.
 
-Additional scripts are provided that generate content for the OSCAL project website, supported by the CircleCI ```build-and-deploy-site``` workflow.
+Additional scripts are provided that generate content for the OSCAL project website, supported by the CircleCI ```build``` workflow on the ```master``` branch.
 1. [generate-schema-documentation.sh](generate-schema-documentation.sh): This is used as part of the site generation pipeline to build HTML documentation for the OSCAL models.
-
 
 # Running the Scripts Locally
 
