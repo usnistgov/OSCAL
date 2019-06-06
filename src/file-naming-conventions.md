@@ -142,7 +142,7 @@ oscal_{OSCAL Model}_{Source Format}-to-{Destination Format}_converter[_{File Rev
 The following XSL template converts an OSCAL catalog in JSON format to the OSCAL catalog XML format:
 
 ```
-oscal-catalog-json-to-xml-converter.xsl
+oscal_catalog_json-to-xml-converter.xsl
 ```
 
 Uses the following fields:
