@@ -1,8 +1,8 @@
 ---
-name: User Story
+name: Feature request
 about: Suggest an idea for this project
 title: ''
-labels: User Story
+labels: enhancement
 assignees: ''
 
 ---
