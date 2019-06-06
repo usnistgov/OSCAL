@@ -343,11 +343,11 @@
     <h1>Catalogs</h1>
     
   
-  <h2 id="nist-800-53">NIST 800-53</h2>
+  <h2 id="nist-sp-800-53">NIST SP 800-53</h2>
 
-<p>A complete representation of <a href="https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">NIST 800-53 encoded in OSCAL</a> including materials from Appendix A (Assessments and Objectives), is available on the OSCAL web site.</p>
+<p>A complete representation of <a href="https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">NIST SP 800-53 encoded in OSCAL</a> including materials from Appendix A (Assessments and Objectives), is available on the OSCAL web site.</p>
 
-<p>Here is a (non-normative, partial) copy showing how control <strong>AC1</strong> from NIST SP800-53 can be rendered in OSCAL in XML with a <code class="highlighter-rouge">&lt;control&gt;</code> element. A short walkthrough follows.</p>
+<p>Here is a (non-normative, partial) copy showing how control <strong>AC1</strong> from NIST SP 800-53 can be rendered in OSCAL in XML with a <code class="highlighter-rouge">&lt;control&gt;</code> element. A short walkthrough follows.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;control</span> <span class="na">class=</span><span class="s">"SP800-53"</span> <span class="na">id=</span><span class="s">"ac-1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;title&gt;</span>Access Control Policy and Procedures<span class="nt">&lt;/title&gt;</span>
@@ -407,7 +407,7 @@ structured.</li>
   <li>The control ID is “ac.1”. All <code class="highlighter-rouge">id</code> values are unique within the document and serve for addressing and linking. In the case of controls and subcontrols, the lexical form of the <code class="highlighter-rouge">id</code> is designed to be consistent with its formal name or label, which is <strong>also</strong> encoded within the control (in this case, “AC-1”). A discrepancy between these values indicates degradation in the data.</li>
   <li><code class="highlighter-rouge">&lt;param&gt;</code> elements define parameter values for the control that permit (and may require) setting in context. Typically, a catalog will expose parameters where profiling applications are expected either to provide values themselves (appropriate to each profile) or to permit setting at higher levels of implementation. These values are available for assignment wherever indicated in the language of the control, using corresponding <code class="highlighter-rouge">&lt;insert/&gt;</code> elements.</li>
   <li><code class="highlighter-rouge">&lt;prop&gt;</code> elements specify properties appropriate to this control. Here only a <code class="highlighter-rouge">label</code> property is given, for the control’s canonical label. For other catalogs, other properties may assign values to controls according to any system of labels or associations.</li>
-  <li><code class="highlighter-rouge">&lt;part&gt;</code> elements indicate larger articulated structures. Here the part provides the <em>statement</em> for the control (as shown by its class). In SP800-53, control statements give the text (formal prose definition and description) of the control. As the example shows, statements can also be articulated into subparts, with each discrete piece of the statement handled separately and assigned its own identifier.</li>
+  <li><code class="highlighter-rouge">&lt;part&gt;</code> elements indicate larger articulated structures. Here the part provides the <em>statement</em> for the control (as shown by its class). In SP 800-53, control statements give the text (formal prose definition and description) of the control. As the example shows, statements can also be articulated into subparts, with each discrete piece of the statement handled separately and assigned its own identifier.</li>
   <li><code class="highlighter-rouge">&lt;insert&gt;</code> elements reference parameters (<code class="highlighter-rouge">param-id</code> referencing parameter IDs) to bring in user-defined values.</li>
 </ul>
 
@@ -429,7 +429,7 @@ structured.</li>
 <span class="nt">&lt;/part&gt;</span>
 </code></pre></div></div>
 
-<p>Note that unlike the control statement, which has a structure whose parts are labelled and addressable, the supplemental guidance is a simple paragraph. Where catalogs do not provide structure, OSCAL does not impose any.</p>
+<p>Note that unlike the control statement, which has a structure whose parts are labeled and addressable, the supplemental guidance is a simple paragraph. Where catalogs do not provide structure, OSCAL does not impose any.</p>
 
 <p>Finally, the control description gives references for the control:</p>
 
