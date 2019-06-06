@@ -95,6 +95,15 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
             echo "${P_OK}JSON converted to XML for '${P_END}${to_json}${P_OK}'.${P_END}"
         fi
 
+        # Validate the resulting XML
+        schema="$working_dir/xml/schema/oscal_${model}_schema.xsd"
+        xmllint --noout --schema "$schema" "$output_path"
+        cmd_exitcode=$?
+        if [ $cmd_exitcode -ne 0 ]; then
+          echo "${P_ERROR}XML schema validation failed for '$output_path'.${P_END}"
+          exitcode=1
+        fi
+
         # compare the XML files to see if there is data loss
         echo "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file}${P_ERROR}'.${P_END}\n"
         python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "$back_to_xml"
