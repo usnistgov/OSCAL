@@ -22,8 +22,7 @@
     </remarks>
     <model>
       <assembly named="metadata"/>
-      <assembly named="citation-list"/>
-      <assembly named="resource"/>
+      <assembly named="back-matter"/>
     </model>
   </define-assembly>
   
@@ -43,6 +42,16 @@
       <assemblies named="party"/>
       <assembly   named="notes"/>
       <assembly   named="extra-meta"/>
+    </model>
+  </define-assembly>
+
+  <define-assembly name="back-matter">
+    <formal-name>Back matter</formal-name>
+    <description>References, resources and attachments</description>
+    <model>
+      <!--<assemblies named="section"/>-->
+      <assembly named="citation-list"/>
+      <assemblies named="resource"/>
     </model>
   </define-assembly>
 
@@ -473,6 +482,9 @@
       <p>No mechanism is proposed to ensure that <code>id</code> values do not collide across
         different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
     </remarks>
+      <example>
+        <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
+      </example>
   </define-flag>
   
   <define-flag name="role-id" datatype="IDREFS">
@@ -580,14 +592,13 @@
 		<remarks><p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up.</p></remarks>
 	</define-flag>-->
   
-  
-  
   <define-field name="title" as="mixed">
     <formal-name>Title</formal-name>
     <description>A title for display and navigation, exclusive of more specific properties</description>
+    <remarks>
+      <p>A title for the containing object as it should appear in a formatted document.</p>
+    </remarks>
   </define-field>
-  
-  
   
   
   <!--<define-field name="format" as="string">

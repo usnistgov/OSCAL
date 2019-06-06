@@ -36,7 +36,7 @@
         <assemblies named="group"/>
         <assemblies named="control"/>
       </choice>
-      <assembly named="back-matter"/>
+      <assembly named="back-matter">
         <description>Back matter including references and resources.</description>
       </assembly>
     </model>
@@ -49,16 +49,6 @@
         </control>
       </catalog>
     </example>
-  </define-assembly>
-
-  <define-assembly name="back-matter">
-    <formal-name>Back matter</formal-name>
-    <description>References, resources and attachments</description>
-    <model>
-      <!--<assemblies named="section"/>-->
-      <assembly named="citation-list"/>
-      <assemblies named="resource"/>
-    </model>
   </define-assembly>
   
   <!--<define-field name="declarations" as="empty">
@@ -154,8 +144,13 @@
     <flag name="class"/>
     <formal-name>Sub-Control</formal-name>
     <description>A control extension or enhancement</description>
+    <remarks>
+      <p></p>
+    </remarks>
     <model>
-      <field named="title" required="yes"/>
+      <field named="title" required="yes">
+        <description>The subcontrol's human-readable name.</description>
+      </field>
       <assemblies named="param" address="id"/>
       <fields named="prop"/>
       <fields named="link"/>
@@ -165,16 +160,6 @@
     </model>
   </define-assembly>
   
-  <define-field name="title" as="mixed">
-    <formal-name>Title</formal-name>
-    <description>A title for display and navigation, exclusive of more specific properties</description>
-    <remarks>
-      <p>A title given to a control or subcontrol will be its name or whatever
-      human-readable string it is known by. Given to other objects (sections,
-      groups, parts) it is the title as it should appear in a formatted document.</p>
-    </remarks>
-  </define-field>
-
   <!-- See metadata model for 'prop' element -->
 
   <define-assembly name="param" address="id" group-as="parameters">
@@ -314,18 +299,6 @@
       <any/>
     </model>
   </define-assembly>
-
-  <define-flag name="id" datatype="ID">
-    <formal-name>ID / identifier</formal-name>
-    <description>Unique identifier</description>
-    <remarks>
-      <p>No mechanism is proposed to ensure that <code>id</code> values do not collide across
-        different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
-    </remarks>
-    <example>
-      <o:citation id="xyz2">Some <o:strong>citation</o:strong> of some sort</o:citation>
-    </example>
-  </define-flag>
 
   <define-flag name="test" datatype="string">
     <formal-name>Constraint test</formal-name>
