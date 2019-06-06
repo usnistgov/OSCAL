@@ -3,9 +3,10 @@
 # Proprietary files not to be propagated
 vault
 
-# oXygen XML Editor IDE file
+# IDE files
 *.xpr
 /OSCAL-dev.xpr
+.vscode
 
 # Working files
 scratch
