@@ -1,10 +1,11 @@
 {
   profile: {
-    id: "uuid-65730d33-d3d9-433c-95b0-ce341005d442",
+    id: "uuid-cc326dab-8a99-424a-b721-6cd9ad5a89df",
     metadata: {
       title: "NIST Special Publication 800-53 Revision 4 HIGH IMPACT BASELINE",
-      last-modified-date: "2019-06-03T11:27:50.543-04:00",
+      last-modified-date: "2019-06-05T17:42:25.71-04:00",
       version: "2015-01-22",
+      oscal-version: "1.0-M1",
       roles: [
         {
           id: "creator",
@@ -29,11 +30,7 @@
                 postal-code: "20899-8930"
               }
             ],
-            email-addresses: [
-              {
-                STRVALUE: "sec-cert@nist.gov"
-              }
-            ]
+            email-addresses: ["sec-cert@nist.gov"]
           }
         }
       ]

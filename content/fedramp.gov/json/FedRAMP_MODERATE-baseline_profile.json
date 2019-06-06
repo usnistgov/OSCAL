@@ -1,31 +1,21 @@
 {
   profile: {
-    id: "uuid-fedramp-moderate-20190528-125656",
+    id: "uuid-fedramp-moderate-20190605-163939",
     metadata: {
       title: "FedRAMP Moderate Baseline",
       authors: ["FedRAMP PMO"],
       last-modified-date: "2019-06-03T11:40:38.576-04:00",
       version: "1.1",
+      oscal-version: "1.0-M1",
       parties: [
         {
           org: {
             org-name: "Federal Risk and Authorization Management Program (FedRAMP)",
-            email-addresses: [
-              {
-                STRVALUE: "info@fedramp.gov"
-              }
-            ],
-            URLs: [
-              {
-                STRVALUE: "https://fedramp.gov"
-              }
-            ]
+            email-addresses: ["info@fedramp.gov"],
+            URLs: ["https://fedramp.gov"]
           }
         }
-      ],
-      notes: {
-        prose: ["No notes."]
-      }
+      ]
     },
     imports: [
       {

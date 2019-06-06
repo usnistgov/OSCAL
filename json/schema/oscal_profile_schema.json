@@ -23,6 +23,9 @@
           "version" : 
           { "type" : "string",
             "$ref" : "#/definitions/version" },
+          "oscal-version" : 
+          { "type" : "string",
+            "$ref" : "#/definitions/oscal-version" },
           "document-ids" : 
           { "type" : "array",
             "items" : 
@@ -50,7 +53,8 @@
           { "type" : "object",
             "$ref" : "#/definitions/extra-meta" } },
         "required" : 
-        [ "title" ],
+        [ "title",
+          "oscal-version" ],
         "additionalProperties" : false,
         "propertyNames" : 
         { "enum" : 
@@ -58,6 +62,7 @@
             "author",
             "last-modified-date",
             "version",
+            "oscal-version",
             "doc-id",
             "prop",
             "link",
@@ -99,9 +104,14 @@
         "$id" : "#/definitions/last-modified-date",
         "type" : "string" },
       "version" : 
-      { "title" : "version",
-        "description" : "Document version",
+      { "title" : "Document version",
+        "description" : "Provided by document owner",
         "$id" : "#/definitions/version",
+        "type" : "string" },
+      "oscal-version" : 
+      { "title" : "OSCAL version",
+        "description" : "OSCAL model version",
+        "$id" : "#/definitions/oscal-version",
         "type" : "string" },
       "doc-id" : 
       { "title" : "Document Identifier",
@@ -403,17 +413,7 @@
       { "title" : "Email",
         "description" : "Email address",
         "$id" : "#/definitions/email",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+        "type" : "string" },
       "phone" : 
       { "title" : "Telephone",
         "description" : "Contact number by telephone",
@@ -433,17 +433,7 @@
       { "title" : "URL",
         "description" : "URL for web site or Internet presence",
         "$id" : "#/definitions/url",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "type" : "string" },
-          "STRVALUE" : 
-          { "type" : "string" } },
-        "additionalProperties" : false,
-        "propertyNames" : 
-        { "enum" : 
-          [ "STRVALUE",
-            "type" ] } },
+        "type" : "string" },
       "notes" : 
       { "title" : "Notes",
         "description" : "Any notes with further information",

@@ -171,6 +171,7 @@
          </xsl:if>
          <xsl:apply-templates select="last-modified-date" mode="#current"/>
          <xsl:apply-templates select="version" mode="#current"/>
+         <xsl:apply-templates select="oscal-version" mode="#current"/>
          <xsl:if test="exists(doc-id)">
             <array key="document-ids">
                <xsl:apply-templates select="doc-id" mode="#current"/>
@@ -224,6 +225,11 @@
    </xsl:template>
    <xsl:template match="version" mode="xml2json">
       <string key="version">
+         <xsl:apply-templates mode="md"/>
+      </string>
+   </xsl:template>
+   <xsl:template match="oscal-version" mode="xml2json">
+      <string key="oscal-version">
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
@@ -407,12 +413,9 @@
       </string>
    </xsl:template>
    <xsl:template match="email" mode="xml2json">
-      <map key="email">
-         <xsl:apply-templates mode="as-string" select="@type"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
-         </xsl:apply-templates>
-      </map>
+      <string key="email">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
    <xsl:template match="phone" mode="xml2json">
       <map key="phone">
@@ -423,12 +426,9 @@
       </map>
    </xsl:template>
    <xsl:template match="url" mode="xml2json">
-      <map key="url">
-         <xsl:apply-templates mode="as-string" select="@type"/>
-         <xsl:apply-templates mode="as-string" select=".">
-            <xsl:with-param name="key">STRVALUE</xsl:with-param>
-         </xsl:apply-templates>
-      </map>
+      <string key="url">
+         <xsl:apply-templates mode="md"/>
+      </string>
    </xsl:template>
    <xsl:template match="notes" mode="xml2json">
       <map key="notes">
@@ -549,7 +549,6 @@
    <xsl:template match="catalog" mode="xml2json">
       <map key="catalog">
          <xsl:apply-templates mode="as-string" select="@id"/>
-         <xsl:apply-templates mode="as-string" select="@model-version"/>
          <xsl:apply-templates select="metadata" mode="#current"/>
          <xsl:if test="exists(group)">
             <array key="groups">

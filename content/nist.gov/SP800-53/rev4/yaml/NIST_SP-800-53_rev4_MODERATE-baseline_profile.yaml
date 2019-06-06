@@ -1,9 +1,10 @@
 profile: 
-  id:          uuid-7b54a247-030c-4956-bbdc-ef63dddf9f8e
+  id:          uuid-1354e0ac-05e5-4143-b576-4b9ae1f4025f
   metadata: 
     title:              NIST Special Publication 800-53 Revision 4 MODERATE IMPACT BASELINE
-    last-modified-date: 2019-06-03T11:28:26.842-04:00
+    last-modified-date: 2019-06-05T17:41:23.252-04:00
     version:            2015-01-22
+    oscal-version:      1.0-M1
     roles: 
       - 
         id:    creator
@@ -23,9 +24,7 @@ profile:
               city:           Gaithersburg
               state:          MD
               postal-code:    20899-8930
-          email-addresses: 
-            - 
-              STRVALUE: sec-cert@nist.gov
+          email-addresses: sec-cert@nist.gov
   imports: 
     - 
       href:    #catalog

@@ -1,10 +1,11 @@
 {
   profile: {
-    id: "uuid-818283dc-f635-4d36-9352-2349f09881cf",
+    id: "uuid-2e442c15-157c-4cfb-a26e-c281becf6326",
     metadata: {
       title: "NIST Special Publication 800-53 Revision 4 LOW IMPACT BASELINE",
-      last-modified-date: "2019-06-03T11:29:15.432-04:00",
+      last-modified-date: "2019-06-05T17:40:49.331-04:00",
       version: "2015-01-22",
+      oscal-version: "1.0-M1",
       roles: [
         {
           id: "creator",
@@ -29,11 +30,7 @@
                 postal-code: "20899-8930"
               }
             ],
-            email-addresses: [
-              {
-                STRVALUE: "sec-cert@nist.gov"
-              }
-            ]
+            email-addresses: ["sec-cert@nist.gov"]
           }
         }
       ]

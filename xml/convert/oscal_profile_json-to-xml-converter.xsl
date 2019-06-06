@@ -64,6 +64,7 @@
          <xsl:apply-templates mode="#current" select="*[@key=('author', 'authors')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('last-modified-date')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('version')]"/>
+         <xsl:apply-templates mode="#current" select="*[@key=('oscal-version')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('doc-id', 'document-ids')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
          <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
@@ -105,6 +106,13 @@
          <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
       </xsl:element>
    </xsl:template>
+   <!-- 000 Handling field "oscal-version" 000 -->
+   <xsl:template match="*[@key='oscal-version']" priority="2" mode="json2xml">
+      <xsl:element name="oscal-version" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:apply-templates mode="as-attribute"/>
+         <xsl:apply-templates mode="json2xml" select="*[@key='STRVALUE']"/>
+      </xsl:element>
+   </xsl:template>
    <!-- 000 Handling field "doc-id" 000 -->
    <xsl:template match="*[@key='doc-id'] | *[@key='document-ids']/*"
                  priority="2"
@@ -116,7 +124,7 @@
    </xsl:template>
    <!-- 000 Handling flag "type" 000 -->
    <xsl:template match="*[@key='type']" mode="json2xml"/>
-   <xsl:template match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*/*[@key='type'] | *[@key='email']/*[@key='type'] | *[@key='email-addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*/*[@key='type'] | *[@key='url']/*[@key='type'] | *[@key='URLs']/*/*[@key='type'] | *[@key='notes']/*[@key='type'] | *[@key='meta-group']/*[@key='type'] | *[@key='metadata-groups']/*/*[@key='type'] | *[@key='meta']/*[@key='type'] | *[@key='metadata-fields']/*/*[@key='type']"
+   <xsl:template match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*/*[@key='type'] | *[@key='notes']/*[@key='type'] | *[@key='meta-group']/*[@key='type'] | *[@key='metadata-groups']/*/*[@key='type'] | *[@key='meta']/*[@key='type'] | *[@key='metadata-fields']/*/*[@key='type']"
                  mode="as-attribute">
       <xsl:attribute name="type">
          <xsl:apply-templates mode="#current"/>

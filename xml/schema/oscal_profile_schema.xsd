@@ -15,6 +15,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:author"/>
             <xs:element minOccurs="0" ref="oscal-profile:last-modified-date"/>
             <xs:element minOccurs="0" ref="oscal-profile:version"/>
+            <xs:element minOccurs="1" ref="oscal-profile:oscal-version"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:doc-id"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:prop"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" ref="oscal-profile:link"/>
@@ -71,7 +72,14 @@
    <xs:element name="version">
       <xs:annotation>
          <xs:documentation>
-            <b>version: </b>Document version</xs:documentation>
+            <b>Document version: </b>Provided by document owner</xs:documentation>
+      </xs:annotation>
+      <xs:complexType mixed="true"/>
+   </xs:element>
+   <xs:element name="oscal-version">
+      <xs:annotation>
+         <xs:documentation>
+            <b>OSCAL version: </b>OSCAL model version</xs:documentation>
       </xs:annotation>
       <xs:complexType mixed="true"/>
    </xs:element>
@@ -320,14 +328,7 @@
          <xs:documentation>
             <b>Email: </b>Email address</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
+      <xs:complexType mixed="true"/>
    </xs:element>
    <xs:element name="phone">
       <xs:annotation>
@@ -348,14 +349,7 @@
          <xs:documentation>
             <b>URL: </b>URL for web site or Internet presence</xs:documentation>
       </xs:annotation>
-      <xs:complexType mixed="true">
-         <xs:attribute name="type" type="xs:string">
-            <xs:annotation>
-               <xs:documentation>
-                  <b>Type: </b>Indicating the type of identifier, address, email or other data item.</xs:documentation>
-            </xs:annotation>
-         </xs:attribute>
-      </xs:complexType>
+      <xs:complexType mixed="true"/>
    </xs:element>
    <xs:element name="notes">
       <xs:annotation>
