@@ -3,25 +3,22 @@
 #!/bin/bash
 #source common-environment.sh
 
-#setup print colors
-red=$'\e[1;31m'
-green=$'\e[1;32m'
-yellow=$'\e[1;33m'
-blue=$'\e[1;34m'
-end=$'\e[0m'
-
 # set the OSCAL directory and pass in common environment
 if [[ -z "$OSCALDIR" ]]; then
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
     source "$DIR/common-environment.sh"
 fi
 
+# initialize Saxon and get the path
+source $OSCALDIR/build/ci-cd/saxon-init.sh
+
 # in CI/CD use the build directory for artifacts when passed in
 if [ -z "$1" ]; then
-  working_dir=$OSCALDIR
+  working_dir="$OSCALDIR"
 else
-  working_dir=$1
+  working_dir=$(readlink -f "$1")
 fi
+echo "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
 ###################################################################################################################
 #   XML->JSON Roundtrip conversions tests
@@ -29,25 +26,10 @@ fi
 
 # default to test passed at zero
 exitcode=0
-
-# config for convertors
-profileJSONConvertor=${OSCALDIR}/json/convert/oscal-profile-xml-to-json-converter.xsl
-profileXMLConvertor=${OSCALDIR}/xml/convert/oscal-profile-json-to-xml-converter.xsl
-catalogJSONConvertor=${OSCALDIR}/json/convert/oscal-catalog-xml-to-json-converter.xsl
-catalogXMLConvertor=${OSCALDIR}/xml/convert/oscal-catalog-json-to-xml-converter.xsl
-
-# initialize Saxon and get the path
-source $OSCALDIR/build/ci-cd/saxon-init.sh
-printf "SAXON: %s\n" "$SAXON_HOME"
-classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
-printf "ClassPath: %s\n" "$classpath"
 shopt -s nullglob
 shopt -s globstar
-
-#parse the files
-while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
+while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
   shopt -s extglob
-  # skip if line starts with comment
   [[ "$path" =~ ^[[:space:]]*# ]] && continue
   # remove leading space
   path="${path##+([[:space:]])}"
@@ -69,121 +51,61 @@ while IFS="|" read path format type converttoformats || [ -n "$path" ]; do
       printf 'path: %s\n' "$file"
       printf 'file name: %s\n' "$baseName" 
       printf 'format: %s\n' "$format"
-      printf 'type: %s\n' "$type"
+      printf 'model: %s\n' "$model"
       printf 'convert-to: %s\n' "$converttoformats"
 
-      case $format in
-      xml)
-          # XML -> JSON -> XML round trip testing
+      if [ "$format" == "xml" ]; then
+        # XML -> JSON -> XML round trip testing
+        # transformation from source XML to target JSON
+        converter="$working_dir/json/convert/oscal_${model}_xml-to-json-converter.xsl"
 
-          # transformation from source XML to target JSON
-          if [ "$type" = "profile" ]; then
-              java -jar "$classpath" -s:"$file" -xsl:"$profileJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
-          else
-              java -jar "$classpath" -s:"$file" -xsl:"$catalogJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
-          fi
-          # check the exit code for the conversion
-          cmd_exitcode=$?
-          if [ $cmd_exitcode != 0 ]; then
-              printf "${red}ERROR: XML->JSON conversion failed for file: %s\n${end}" "$baseName" 
-              exitcode=1
-          else
-              printf "${green}SUCCESS: XML converted to JSON. \n${end}" 
-          fi
+        to_json="$working_dir/roundtrip/${baseName}-to.json"
+        xsl_transform "$converter" "$file" "$to_json"
 
-          # transformation of JSON back to XML
-          if [ "$type" = "profile" ]; then
-              java -jar "$classpath"  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
-          else
-              java -jar "$classpath" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"
-          fi
-          # check the exit code for the conversion
-          cmd_exitcode=$?
-          if [ $cmd_exitcode != 0 ]; then
-              printf "${red}ERROR: JSON->XML conversion failed for file: %s\n${end}" "$baseName"
-              exitcode=1
-          else
-              printf "${green}SUCCESS: JSON converted back to XML. \n${end}"
-          fi
+        # check the exit code for the conversion
+        cmd_exitcode=$?
+        if [ $cmd_exitcode != 0 ]; then
+            echo "${P_ERROR}XML->JSON conversion failed for '${P_END}${file}${P_ERROR}'.${P_END}"
+            exitcode=1
+            continue;
+        else
+            echo "${P_OK}XML converted to JSON for '${P_END}${file}${P_OK}'.${P_END}"
+        fi
 
-          # compare the XML files to see if there is data loss
-          printf "Checking XML->JSON->XML conversion \n"
-          python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml"
-          cmd_exitcode=$?
-          if [ $cmd_exitcode != 0 ]; then
-              printf "${red}ERROR: XML roundtrip comparison failed for file: %s.\n${end}" "$baseName"
-              exitcode=1
-          else
-              printf "${green}SUCCESS: XML round trip comparison was successful.\n${end}"
-          fi
+        back_to_xml="$working_dir/roundtrip/${baseName}-back-to.xml"
 
-          #validate JSON schemas
-          if [ "$type" = "profile" ]; then
-              #validate the profile JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose 
-          else
-              #validate the catalog JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose
-          fi
-          cmd_exitcode=$?
-          if [ $cmd_exitcode != 0 ]; then
-              printf "${red}ERROR: Comparison of the converted JSON file to the original failed for file: %s.\n${end}" "$baseName"
-              exitcode=1
-          else
-              printf "${green}SUCCESS: Comparison of the converted JSON file to the original was successful.\n${end}"
-          fi
-        ;;
-      json)
-          #reverse the process, JSON->XML->JSON
-          
-          # transformation of JSON to XML
-          if [ "$type" = "profile" ]; then
-              java -jar "$classpath"  -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$profileXMLConvertor" json-file="${file}"
-          else
-              java -jar "$classpath" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml -it:start -xsl:"$catalogXMLConvertor" json-file="${file}"
-          fi
-          # check the exit code for the conversion
-          cmd_exitcode=$?
-          if [ $cmd_exitcode != 0 ]; then
-              printf "${red}ERROR: JSON->XML conversion failed for file: %s\n${end}" "$baseName"
-              exitcode=1
-          else
-              printf "${green}SUCCESS: JSON converted to XML. \n${end}"
-          fi
+        # transformation of JSON back to XML
+        converter="$working_dir/xml/convert/oscal_${model}_json-to-xml-converter.xsl"
+        converter_path=$(realpath --relative-to="$PWD" "$converter")
+        output_path=$(realpath --relative-to="$PWD" "$back_to_xml")
 
-          # transformation from source XML to target JSON
-          if [ "$type" = "profile" ]; then
-              java -jar "$classpath" -s:"${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml" -xsl:"$profileJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
-          else
-              java -jar "$classpath" -s:"${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.xml" -xsl:"$catalogJSONConvertor" -o:${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json
-          fi
-          # check the exit code for the conversion
-          cmd_exitcode=$?
-          if [ $cmd_exitcode != 0 ]; then
-              printf "${red}ERROR: XML->JSON conversion failed for file: %s\n${end}" "$baseName" 
-              exitcode=1
-          else
-              printf "${green}SUCCESS: XML converted to JSON. \n${end}" 
-          fi
+        # Make the json file relative to the converter
+        converter_dir=$(dirname "$converter_path")
+        json_file_path=$(realpath --relative-to="$converter_dir" "$to_json")
 
-          #validate JSON schemas
-          if [ "$type" = "profile" ]; then
-              #validate the profile JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-profile-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose 
-          else
-              #validate the catalog JSON
-              ajv validate -s "${OSCALDIR}/json/schema/oscal-catalog-schema.json" -d "${OSCALDIR}/build/ci-cd/temp/${baseName}-composed.json"  --extend-refs=true --verbose
-          fi
-          cmd_exitcode=$?
-          if [ $cmd_exitcode != 0 ]; then
-              printf "${red}ERROR: Comparison of the converted JSON file to the original failed for file: %s.\n${end}" "$baseName"
-              exitcode=1
-          else
-              printf "${green}SUCCESS: Comparison of the converted JSON file to the original was successful.\n${end}"
-          fi
+        xsl_transform "$converter_path" "" "$output_path" "-it:start" "json-file=${json_file_path}"
 
-        ;;
-      esac
+        # check the exit code for the conversion
+        cmd_exitcode=$?
+        if [ $cmd_exitcode != 0 ]; then
+            echo "${P_ERROR}JSON->XML conversion failed for '${P_END}${to_json}${P_ERROR}'.${P_END}"
+            exitcode=1
+            continue;
+        else
+            echo "${P_OK}JSON converted to XML for '${P_END}${to_json}${P_OK}'.${P_END}"
+        fi
+
+        # compare the XML files to see if there is data loss
+        echo "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file}${P_ERROR}'.${P_END}\n"
+        python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$file" "$back_to_xml"
+        cmd_exitcode=$?
+        if [ $cmd_exitcode != 0 ]; then
+            echo "${P_ERROR}XML round-trip comparison failed.${P_END}"
+            exitcode=1
+        else
+            echo "${P_OK}XML round-trip comparison was successful.${P_END}"
+        fi
+      fi
     done
   fi
 done < "$OSCALDIR/build/ci-cd/config/content" #inserts the config of files to parse
