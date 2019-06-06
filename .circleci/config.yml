@@ -260,10 +260,11 @@ jobs: # a collection of
       - install-maven
       - install-saxon
       - install-lxml
+      - install-xmllint
       - run:
           name: Generate round trip XML and JSON conversions
           command: |
-            bash "${CICD_DIR}/roundTripXML.sh" "$OSCAL_BUILD_DIR"
+            bash "${CICD_DIR}/validate-round-trips.sh" "$OSCAL_BUILD_DIR"
       - *publish_artifacts
   job-generate-docs:
     executor: java-executor
