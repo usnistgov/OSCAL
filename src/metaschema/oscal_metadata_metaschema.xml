@@ -28,10 +28,9 @@
   
   <define-assembly name="metadata">
     <formal-name>Publication metadata</formal-name>
-    <description>Information describing the publication or availability of this document</description>
+    <description>Provides information about the publication and availability of the containing document.</description>
     <model>
       <field      named="title"         required="yes"/>
-      <fields     named="author"/>
       <field      named="last-modified-date"/>
       <field      named="version"/>
       <field      named="oscal-version" required="yes"/>
@@ -41,18 +40,38 @@
       <assemblies named="role"/>
       <assemblies named="party"/>
       <assembly   named="notes"/>
-      <assembly   named="extra-meta"/>
     </model>
   </define-assembly>
 
   <define-assembly name="back-matter">
     <formal-name>Back matter</formal-name>
-    <description>References, resources and attachments</description>
+    <description>A collection of citations and resource references.</description>
+    <remarks>
+      <p>Provides a collection of identified <code>citation</code> and <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a citation identifier. A <code>citation</code> can reference a <code>resource</code> by specifying a local target value using the same fragment-identifier approach.</p>
+    </remarks>
     <model>
       <!--<assemblies named="section"/>-->
-      <assembly named="citation-list"/>
+      <assemblies named="citation"/>
       <assemblies named="resource"/>
     </model>
+    <example>
+      <description>Use of link, citation, and resource</description>
+      <remarks>
+        <p>The following is a contrived example to show the use of link, citation, and resource.</p>
+      </remarks>
+      <o:oscal>
+        <o:link rel="reference" href="#citation1">My citation</o:link>
+        ...snip...
+        <o:back-matter>
+          <o:citation id="citation1">
+            <o:target>#resource1</o:target>
+          </o:citation>
+          <o:resource id="resource1">
+            <o:rlink href="https://example.org/some-resource"/>
+          </o:resource>
+        </o:back-matter>
+      </o:oscal>
+    </example>
   </define-assembly>
 
   <define-field name="link" group-as="links" as="mixed">
@@ -60,43 +79,51 @@
     <flag name="rel" datatype="NCName"/>
     <flag name="media-type" datatype="string"/>
     <formal-name>Link</formal-name>
-    <description>
-      A line or paragraph with a hypertext link
-    </description>
+    <description>A reference to a local or remote resource, with associated markup.</description>
     <remarks>
-      <p>Works like an HTML anchor (<code>a</code>) except this is a line-oriented (block)
+      <p>This is a rough analog to an HTML anchor (<code>a</code>), except this is a line-oriented (block)
         element.</p>
-      <p>TO DO: need to address link/hlink relations to support hashes.</p>
+      <p>The <code>href</code> must point to a local or remote resource. If a local resource is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>citation</code> or <code>resource</code> in the document's <code>back-matter</code>. If a remote resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI can be resolved relative to the location of the document conatining the link.</p>
+      <p>To provide a cryptographic hash for a remote target resource, a local reference to a <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink</code> <code>hash</code> object.</p>
+      <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a></p>
     </remarks>
-  </define-field>
-    
-  <define-field name="author" group-as="authors">
-    <formal-name>Author</formal-name>
-    <description>A named author</description>
-    <remarks><p>Note this information may be duplicative of information given in a <code>party</code>
-    element with appropriate <code>role-id</code> flags, along with more a more complete structured
-    listing. This element provides a value for display as well as an additional point of comparison.</p></remarks>
+    <example>
+      <description>Providing for link integrity</description>
+      <remarks>
+        <p>The following is a contrived example to show the use of link, citation, and resource.</p>
+      </remarks>
+      <o:oscal>
+        <o:link rel="reference" href="#resource1">My Hashed Resource</o:link>
+        ...snip...
+        <o:back-matter>
+          <o:resource id="resource1">
+            <o:rlink href="https://example.org/some-resource">
+              <o:hash algorithm="sha512">C2E9C1..snip..F88D2E</o:hash>
+            </o:rlink>
+          </o:resource>
+        </o:back-matter>
+      </o:oscal>
+    </example>
   </define-field>
   
   <define-field name="last-modified-date">
     <formal-name>Last modified date</formal-name>
-    <description>Date of last modification</description>
+    <description>Date of last modification.</description>
     <remarks>
-      <p>This value represents the point in time when the OSCAL document was last updated. The date value should be in an ISO 8601 format with full time and time zone indicated. Ordinarily
-      the value should be machine generated at time of creation or modification.</p>
+      <p>This value represents the point in time when the OSCAL document was last updated. The date value must be an ISO 8601 formatted date with full time and time zone indicated. Ordinarily, a date value will be machine generated at time of creation or modification.</p>
       <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the last-modified-date value should indicate the modification time of the OSCAL document, not the source material.</p>
     </remarks>
   </define-field>
 
   <define-field name="version">
     <formal-name>Document version</formal-name>
-    <description>Provided by document owner</description>
-    <remarks><p>A string indicating version, by release number, date, or other identifier.</p></remarks>
+    <description>The version of the document content.</description>
+    <remarks><p>A string indicating the document's version, by release number, date, or other identifier. This version is typically set by the document owner or by the tool used to maintain the content.</p></remarks>
   </define-field>
   
   <define-field name="oscal-version">
     <formal-name>OSCAL version</formal-name>
-    <description>OSCAL model version</description>
+    <description>OSCAL model version.</description>
     <remarks><p>Indicates the version of the OSCAL model to which this data set conforms, for example
       <q>1.0-M1</q>.</p></remarks>
   </define-field>
@@ -104,9 +131,9 @@
   <define-field name="doc-id" group-as="document-ids">
     <flag name="type" required="yes"/>
     <formal-name>Document Identifier</formal-name>
-    <description>Any sort of document identifier, name, code, path or other indicator of where and how this document
-      may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <code>rel</code>, this value may point to <q>the same</q> or <q>another version</q> of the document.</description>
+    <description>A document identifier qualified by an identifier <code>type</code>.</description>
     <remarks>
+      <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistant location of <q>the same</q> or <q>another version</q> of the document.</p>
       <p>DOIs (digital object identifiers) are preferred. By means of a DOI or other document ID
       lookup, a full bibliographic record for an item should be retrievable.</p>
       <p>Flags <code>rel</code> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p>
@@ -368,8 +395,6 @@
   
   <define-assembly name="resource" group-as="resources">
     <flag name="id" datatype="ID" required="yes"/>
-    <!--<flag name="rel"/>
-		<flag name="media-type"/>-->
     <formal-name>Resource</formal-name>
     <description>A resource to inform or authenticate the present document, or to supplement it as an attachment</description>
     <remarks>
@@ -383,14 +408,7 @@
         referencing it, such as <q>catalog</q>, <q>baseline</q>, <q>metaschema</q> or <q>attachment</q>.</p>
     </remarks>
     <model>
-      <!--<field    named="title"/>-->
-      <!--<fields   named="author"/>-->
-      <!--<field    named="format"/>-->
       <field named="desc" />
-      <!--<field    named="date"/>-->
-      <!--<field    named="version"/>-->
-      <!--<fields   named="doc-id"/>-->
-      <!--<fields   named="prop"/>-->
       <choice>
         <assemblies named="rlink"/>
         <field      named="base64" />
@@ -438,38 +456,7 @@
         example) the results of profile resolution.</p>
     </remarks>
   </define-flag>
-  
-  <define-assembly name="extra-meta">
-    <formal-name>Extra metadata</formal-name>
-    <description>Container for (system-defined) metadata</description>
-    <model>
-      <choice>
-        <assemblies named="meta-group"/>
-        <fields named="meta"/>
-      </choice>
-      <assembly named="notes"/>
-    </model>
-  </define-assembly>
-  
-  <define-assembly name="meta-group" group-as="metadata-groups">
-    <flag name="term"/>
-    <flag name="type"/>
-    <formal-name>Metadata group</formal-name>
-    <description>Custom- or application-defined annotated metadata.</description>
-    <model>
-      <fields     named="meta"/>
-      <assemblies named="meta-group"/>
-      <assembly   named="notes"/>
-    </model>
-  </define-assembly>
-  
-  <define-field name="meta" group-as="metadata-fields">
-    <flag name="term"/>
-    <flag name="type"/>
-    <formal-name>Metadata field value</formal-name>
-    <description>Any customized or specialized metadata value.</description>
-  </define-field>
-  
+
   <define-flag name="term" datatype="string">
     <formal-name>Metadata term</formal-name>
     <description>A classification (according to any schema or taxonomy) of a metadata value or set of values.</description>
@@ -491,106 +478,6 @@
     <formal-name>Role identifier</formal-name>
     <description>References a <code>role</code> element defined in metadata.</description>
   </define-flag>
-
-  <!--<define-assembly name="preparation">
-    <formal-name>Preparation</formal-name>
-    <description>Naming organizations playing roles in the preparation.</description>
-    <remarks>
-      <p>May be used in place of or in addition to <code>history</code>.</p>
-      <p>Values for <code>role</code> may include "prepared-by", "prepared-for" etc.</p>
-    </remarks>
-    <model>
-      <assemblies group-as="organizations" named="organization"/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="attachment">
-    <flag name="href"/>
-    <formal-name>Attachment</formal-name>
-    <description>File attachment: ancillary information kept in a separate file.</description>
-    <model>
-      <field    named="title"/>
-      <field    named="desc"/>
-      <fields   named="doc-id" group-as="document-identifiers"/>
-      <fields   named="pub-id" group-as="publication-ids"/>
-      <assembly named="file"/>
-      <assembly named="notes"/>
-      <assemblies named="meta-group" group-as="meta-groups"/>
-    </model>
-  </define-assembly>
--->
-  <!--<define-assembly name="file">
-    <formal-name>File</formal-name>
-    <description>Information about an attached file.</description>
-    <model>
-      <field named="format"/>
-      <field named="timestamp"/>
-      <field named="url">
-        <description>When describing an attachment this element may be used to indicate
-          an original or reference version.</description>
-      </field>
-
-    </model>
-  </define-assembly>-->
-  
-  <!--<define-field name="format">
-    <formal-name>Format</formal-name>
-    <description>Describes a file format or MIME type.</description>
-  </define-field>
-
-  <define-field name="timestamp">
-    <formal-name>Timestamp</formal-name>
-    <description>A timestamp on a file, offered as corroborating information regarding a file attachment.</description>
-  </define-field>
-  
-  <define-assembly name="system">
-    <formal-name>System</formal-name>
-    <description>A description of the system for which this specification is intended</description>
-    <model>
-      <field named="full-name"/>
-      <field named="short-name"/>
-      <field named="system-id"/>
-      <field named="desc"/>
-      <assembly named="notes"/> 
-      <assemblies named="meta-group" group-as="metadata-groups"/>
-    </model>
-  </define-assembly>
-  
-  <define-field name="system-id">
-    <flag name="type"/>
-    <formal-name>System ID</formal-name>
-    <description>A unique identifier for the system</description>
-  </define-field>
-
-  
-  -->
-  
-  
-  <!--<define-field name="author" group-as="authors">
-		<formal-name>Author</formal-name>
-		<description>A named author</description>
-		<remarks><p>Note this information may be duplicative of information given in a <code>party</code>
-			element with appropriate <code>role-id</code> flags, along with more a more complete structured
-			listing. This element provides a value for display as well as an additional point of comparison.</p></remarks>
-	</define-field>-->
-  
-  <!--<define-field name="doc-id" group-as="document-ids">
-		<flag name="type"/>
-		<formal-name>Document Identifier</formal-name>
-		<description>Any sort of document identifier, name, code, path or other indicator of where and how this document
-			may be located, compared or validated. Given appropriate qualification via its <code>type</code> and <code>rel</code>, this value may point to <q>the same</q> or <q>another version</q> of the document.</description>
-		<remarks>
-			<p>Flags <code>rel</code> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p>
-			<p>Specific usage rules, nomenclatures and recognized file types e.g. DOIs, CMS locators, etc
-				etc., may be defined at application level. The value of this field may also be a hash or check sum.</p>
-		</remarks>
-	</define-field>-->
-  
-  <!--<define-flag name="type" datatype="string">
-		<formal-name>Type</formal-name>
-		<description>Indicating the type of identifier or other data item.</description>
-		<remarks><p>Generally, this flag is used to relate to schemes and taxonomies defined outside the OSCAL application in some public form; i.e. they can be looked up.</p></remarks>
-	</define-flag>-->
   
   <define-field name="title" as="mixed">
     <formal-name>Title</formal-name>
@@ -599,18 +486,6 @@
       <p>A title for the containing object as it should appear in a formatted document.</p>
     </remarks>
   </define-field>
-  
-  
-  <!--<define-field name="format" as="string">
-    <formal-name>Resource or attachment Format</formal-name>
-    <description>For use when no mime-type is available or additional information is required.</description>
-  </define-field>-->
-  
-  <!--<define-field name="date" as="string">
-    <flag name="iso-date"/>
-    <formal-name>Date</formal-name>
-    <description></description>
-  </define-field>-->
   
   <define-field name="base64" as="string">
     <flag name="filename" datatype="string"/>
@@ -623,37 +498,11 @@
     <formal-name>File Name</formal-name>
     <description>Name of the file before it was converted to Base-64. This is the name that will be assigned to the file when converted back to binary.</description>
   </define-flag>
-  
-  <define-assembly name="citation-list">
-    <formal-name>Citation list</formal-name>
-    <description>A list of citations to resources, either external or (by means of internal cross-reference)
-      saved or documented internally.</description>
-    <model>
-      <!--<field named="title"/>-->
-      <!--<prose/>-->
-      <!--<fields named="link"/>-->
-      <!--<assemblies named="ref"/>
-			<assemblies named="ref-list"/>-->
-      <assemblies named="citation"/>
-    </model>		
-  </define-assembly>
-  
-  <!--<define-assembly name="ref" group-as="references">
-		<flag name="id" datatype="ID"/>
-		<formal-name>Reference</formal-name>
-		<description> A reference, with one or more citations to standards, related documents, or
-			other resources </description>
-		<model>
-			<fields named="citation"/>
-			<prose/>
-			<any/>
-		</model>
-	</define-assembly>-->
-  
+ 
   <define-assembly name="citation" group-as="citations">
-    <flag name="id" datatype="ID"/>
+    <flag name="id" datatype="ID" required="yes"/>
     <formal-name>Citation</formal-name>
-    <description>Citation of a resource</description>
+    <description>A citation to resources, either external or (by means of internal cross-reference) saved or documented internally.</description>
     <remarks>
       <p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishing matches with bibliograpical databases, it is recommended a canonical
         identifier such as a DOI be provided for any citation.</p>
