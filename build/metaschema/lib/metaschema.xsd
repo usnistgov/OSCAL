@@ -66,6 +66,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:flag"/>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
@@ -89,6 +90,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:formal-name"/>
         <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:remarks"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:example"/>
       </xs:sequence>
@@ -99,8 +101,8 @@
   </xs:element>
   <xs:element name="formal-name" type="xs:string"/>
   <xs:element name="namespace"   type="xs:anyURI"/>
-  <xs:element name="description">
-    <xs:complexType mixed="true">
+  <xs:group name="markup-elements">
+    <xs:sequence>
       <xs:choice maxOccurs="unbounded">
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:a"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
@@ -108,6 +110,11 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:em"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:strong"/>
       </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="description">
+    <xs:complexType mixed="true">
+      <xs:group ref="m:markup-elements"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="remarks">
@@ -176,6 +183,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
+        <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
       </xs:sequence>
       <xs:attribute name="named" use="required" type="xs:NCName"/>
@@ -192,19 +200,23 @@
       <xs:attribute name="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
-  
+  <xs:element name="valid-values">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="m:value"/>
+      </xs:sequence>
+      <xs:attribute name="allow-other" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="value">
-    <xs:complexType mixed="true"/>
+    <xs:complexType mixed="true">
+      <xs:group ref="m:markup-elements"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
   </xs:element>
   <xs:element name="p">
     <xs:complexType mixed="true">
-      <xs:choice maxOccurs="unbounded">
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:a"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:code"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:q"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:em"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:strong"/>
-      </xs:choice>
+      <xs:group ref="m:markup-elements"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="a">
@@ -221,6 +233,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="m:description"/>
         <xs:element minOccurs="0" ref="m:remarks"/>
+        <xs:element minOccurs="0" ref="m:valid-values"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:value"/>
       </xs:sequence>
       <xs:attribute name="datatype" type="xs:NCName"/>

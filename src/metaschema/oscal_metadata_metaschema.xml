@@ -6,7 +6,7 @@
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+ xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/example"
  root="VALIDATION_root">
 
   <schema-name>OSCAL Document Metadata Description</schema-name>
@@ -129,16 +129,18 @@
   </define-field>
   
   <define-field name="doc-id" group-as="document-ids">
-    <flag name="type" required="yes"/>
+    <flag name="type" required="yes">
+      <description>Qualifies the kind of document identifier.</description>
+      <valid-values allow-other="yes">
+        <value name="doi">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</value>
+      </valid-values>
+    </flag>
     <formal-name>Document Identifier</formal-name>
     <description>A document identifier qualified by an identifier <code>type</code>.</description>
     <remarks>
       <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistant location of <q>the same</q> or <q>another version</q> of the document.</p>
-      <p>DOIs (digital object identifiers) are preferred. By means of a DOI or other document ID
-      lookup, a full bibliographic record for an item should be retrievable.</p>
-      <p>Flags <code>rel</code> and <code>type</code> can qualify the kind and use of document identifier, in particular whether the value is to be attributed to the given instance, or to another instance, source or resource.</p>
-      <p>Specific usage rules, nomenclatures and recognized file types e.g. DOIs, CMS locators, etc
-        etc., may be defined at application level. The value of this field may also be a hash or check sum.</p>
+
+      <p>Specific usage rules, nomenclatures, and recognized file types (e.g., DOIs, CMS locators, etc.) may be defined at application level. The value of this field may also be a hash or checksum.</p>
     </remarks>
   </define-field>
 
@@ -195,8 +197,7 @@
   
   <define-flag name="class" datatype="NMTOKENS">
     <formal-name>Class</formal-name>
-    <description>Indicating the type or classification of a property, part or other
-      object</description>
+    <description>Indicating the type or classification of the containing object</description>
     <remarks>
       <p>Extra constraints, expressed as validation rules, may be applied to items based on the
         assigned <code>class</code>.</p>
@@ -324,9 +325,15 @@
   </define-field>
 
   <define-assembly name="address" group-as="addresses">
-    <flag name="type"/>
+    <flag name="type">
+      <description>Indicates the type of address.</description>
+      <valid-values allow-other="yes">
+        <value name="home">A home address.</value>
+        <value name="work">A work address.</value>
+      </valid-values>
+    </flag>
     <formal-name>Address</formal-name>
-    <description>A postal address</description>
+    <description>A postal address.</description>
     <model>
       <fields named="addr-line"/>
       <field  named="city"/>
@@ -340,7 +347,7 @@
 
   <define-field name="addr-line" group-as="postal-address">
     <formal-name>Address line</formal-name>
-    <description>A single line of an address</description>
+    <description>A single line of an address.</description>
   </define-field>
 
   <define-field name="city">
@@ -369,7 +376,14 @@
   </define-field>
 
   <define-field name="phone" group-as="telephone-numbers">
-    <flag name="type"/><!-- mobile, work, etc. -->
+    <flag name="type">
+      <description>Indicates the type of phone number.</description>
+      <valid-values allow-other="yes">
+        <value name="home">A home phone number.</value>
+        <value name="office">An office phone number.</value>
+        <value name="mobibe">A mobile phone number.</value>
+      </valid-values>
+    </flag>
     <formal-name>Telephone</formal-name>
     <description>Contact number by telephone</description>
   </define-field>
@@ -380,7 +394,9 @@
   </define-field>
 
   <define-assembly name="notes">
-    <flag name="type"/>
+    <flag name="type">
+      <description>Indicates the type of note.</description>
+    </flag>
     <formal-name>Notes</formal-name>
     <description>Any notes with further information</description>
     <model>
@@ -390,22 +406,16 @@
 
   <define-field name="desc">
     <formal-name>Description</formal-name>
-    <description>A short description</description>
+    <description>A short textual description</description>
   </define-field>
   
   <define-assembly name="resource" group-as="resources">
     <flag name="id" datatype="ID" required="yes"/>
     <formal-name>Resource</formal-name>
-    <description>A resource to inform or authenticate the present document, or to supplement it as an attachment</description>
+    <description>A resource associated with the present document.</description>
     <remarks>
-      <p>This element is used in two ways. In document metadata, it may describe and point to a mirror or other (authoritative or
-        informative) copy of a document, or of a resouce helpful (necessary) for interpreting it,
-        such as its metaschema or documentation. It may offer a (persistent) link to a
-        <q>best available</q> version, or to an outdated version, as indicated by its
-        <code>rel</code>.</p>
-      <p>In back matter or within sections, a resource may be an attachment or any external document.</p>
-      <p>The <code>rel</code> flag should be used to indicate the relation of the resource to the document
-        referencing it, such as <q>catalog</q>, <q>baseline</q>, <q>metaschema</q> or <q>attachment</q>.</p>
+      <p>Use of resource allows for information that pertains to, authenticates, or supplements the document it is included in.</p>
+      <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource, or 2) be included as an attachment.</p>
     </remarks>
     <model>
       <field named="desc" />
@@ -429,7 +439,14 @@
   <define-flag name="algorithm" datatype="string">
     <formal-name>Hash algorithm</formal-name>
     <description>Method by which a hash is derived</description>
-    <remarks><p>One of the following is recognized: MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, RIPEMD-160. See <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> (W3C, April 2013) for more information.</p></remarks>
+    <valid-values allow-other="yes">
+      <value name="SHA-224"/>
+      <value name="SHA-256"/>
+      <value name="SHA-384"/>
+      <value name="SHA-512"/>
+      <value name="RIPEMD-160"/>
+    </valid-values>
+    <remarks><p>Valid values MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013).</p></remarks>
   </define-flag>
   
   <define-assembly name="role" group-as="roles">
@@ -456,15 +473,10 @@
         example) the results of profile resolution.</p>
     </remarks>
   </define-flag>
-
-  <define-flag name="term" datatype="string">
-    <formal-name>Metadata term</formal-name>
-    <description>A classification (according to any schema or taxonomy) of a metadata value or set of values.</description>
-  </define-flag>
   
   <define-flag name="id" datatype="ID">
     <formal-name>Identifier</formal-name>
-    <description>Unique identifier</description>
+    <description>Unique identifier of the containing object</description>
     <remarks>
       <p>No mechanism is proposed to ensure that <code>id</code> values do not collide across
         different catalogs. Use profiling without <q>merge</q> to detect such clashes.</p>
@@ -477,6 +489,11 @@
   <define-flag name="role-id" datatype="IDREFS">
     <formal-name>Role identifier</formal-name>
     <description>References a <code>role</code> element defined in metadata.</description>
+    <valid-values allow-other="yes">
+      <value name="content-creator">Identifies a party responsible for creating the content.</value>
+      <value name="content-maintainer">Identifies a party responsible for maintainer the content on an ongoing basis.</value>
+      <!-- TODO: Need to add others -->
+    </valid-values>
   </define-flag>
   
   <define-field name="title" as="mixed">

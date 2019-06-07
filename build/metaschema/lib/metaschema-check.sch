@@ -19,6 +19,7 @@
     
     <sch:ns uri="http://csrc.nist.gov/ns/oscal/metaschema/1.0" prefix="m"/>
     
+    <xsl:variable name="example-ns" select="'http://csrc.nist.gov/ns/oscal/example'"/>
     <sch:let name="home" value="/m:METASCHEMA"/>
     
     <sch:let name="prose-names" value="document('../xml/oscal-prose-module.xsd')/*/xs:element/@name"/>
@@ -106,7 +107,7 @@
             
         <sch:rule context="m:example/*">
             <sch:let name="ns" value="/m:METASCHEMA/m:namespace"/>
-            <sch:assert test="empty($ns) or namespace-uri(.) eq $ns">Unexpected namespace: examples should use namespace '<sch:value-of select="$ns"/>'</sch:assert>
+          <sch:assert test="empty($example-ns) or namespace-uri(.) eq $example-ns">Unexpected namespace: examples should use namespace '<sch:value-of select="$example-ns"/>'</sch:assert>
         </sch:rule>
     </sch:pattern>
 
