@@ -142,7 +142,7 @@
     <!-- no special provision made for addressing by @id that happens at the other end -->
     <xsl:template match="define-assembly">
         <XSLT:template match="{@name}" mode="xml2json">
-            <map  key="{@name}">
+            <map key="{@name}">
                 <xsl:for-each select="@address">
                     <xsl:attribute name="key">{@<xsl:value-of select="."/>}</xsl:attribute>
                 </xsl:for-each>
@@ -154,11 +154,14 @@
         </XSLT:template>
     </xsl:template>
     
+    <!-- dropping a flag that has been used as an address -->
+    <xsl:template match="flag[@name=../@address]"/>
+    
     <xsl:template match="flag">
         <!-- no datatyping support yet -->
         <XSLT:apply-templates mode="as-string" select="@{@name}"/>
     </xsl:template>
-        
+    
     <xsl:template match="model">
         <xsl:apply-templates/>
     </xsl:template>
@@ -251,13 +254,23 @@
         
         <!--<XSLT:key name="parameters" match="param" use="@id"/>-->
         
+        <XSLT:template name="conditional-lf">
+            <XSLT:variable name="predecessor"
+                select="preceding-sibling::p | preceding-sibling::ul | preceding-sibling::ol | preceding-sibling::table | preceding-sibling::pre"/>
+            <XSLT:if test="exists($predecessor)">
+                <string/>
+            </XSLT:if>
+        </XSLT:template>
+        
         <XSLT:template mode="md" match="p | link | part/*">
+            <XSLT:call-template name="conditional-lf"/>
             <string>
                 <XSLT:apply-templates mode="md"/>
             </string>
         </XSLT:template>
         
         <XSLT:template mode="md" match="h1 | h2 | h3 | h4 | h5 | h6">
+            <XSLT:call-template name="conditional-lf"/>
             <string>
                 <XSLT:apply-templates select="." mode="mark"/>
                 <XSLT:apply-templates mode="md"/>
@@ -272,6 +285,7 @@
         <XSLT:template mode="mark" match="h6">###### </XSLT:template>
         
         <XSLT:template mode="md" match="table">
+            <XSLT:call-template name="conditional-lf"/>
             <XSLT:apply-templates  select="*"  mode="md"/>
         </XSLT:template>
         
@@ -297,6 +311,7 @@
         </XSLT:template>
         
         <XSLT:template mode="md" priority="1" match="pre">
+            <XSLT:call-template name="conditional-lf"/>
             <string>```</string>
             <string>
                 <XSLT:apply-templates mode="md"/>
@@ -305,7 +320,7 @@
         </XSLT:template>
 
         <XSLT:template mode="md" priority="1" match="ul | ol">
-            <string/>
+            <XSLT:call-template name="conditional-lf"/>
             <XSLT:apply-templates mode="md"/>
             <string/>
         </XSLT:template>
@@ -359,6 +374,13 @@
             <XSLT:text>"</XSLT:text>
             <XSLT:apply-templates mode="md"/>
             <XSLT:text>"</XSLT:text>
+        </XSLT:template>
+        
+        <!-- <insert param-id="ac-1_prm_1"/> -->
+        <XSLT:template mode="md" match="insert">
+            <XSLT:text>{ </XSLT:text>
+            <XSLT:value-of select="@param-id"/>
+            <XSLT:text> }</XSLT:text>
         </XSLT:template>
         
         <XSLT:key name="element-by-id" match="*[exists(@id)]" use="@id"/>

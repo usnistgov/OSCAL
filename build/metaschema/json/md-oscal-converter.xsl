@@ -9,7 +9,16 @@
     <xsl:output indent="yes"/>
 
     <xsl:param name="target-ns" as="xs:string?">http://csrc.nist.gov/ns/oscal/1.0</xsl:param>
-    <!-- TO DO: Test numbered and mixed lists; implement tables -->
+
+    <xsl:template name="xsl:initial-template" match="/">
+        <!--<xsl:copy-of select="$tag-replacements"/>-->
+        <!--<xsl:call-template name="parse">
+            <xsl:with-param name="str" select="string($examples)"/>
+        </xsl:call-template>-->
+        <xsl:for-each select="$line-example">
+            <xsl:apply-templates select="text()" mode="infer-inlines"/>
+        </xsl:for-each>
+    </xsl:template>
 
     <!-- Markdown pseudoparser in XSLT  -->
 
@@ -268,13 +277,13 @@
     </xsl:template>
         
     <xsl:template match="text()" mode="infer-inlines">
-        <xsl:variable name="markup" expand-text="true">
+        <xsl:variable name="markup">
             <xsl:apply-templates select="$tag-replacements/m:rules">
                 <xsl:with-param name="original" tunnel="yes" as="text()" select="."/>
             </xsl:apply-templates>
         </xsl:variable>
         <xsl:try select="parse-xml-fragment($markup)">
-            <xsl:catch expand-text="yes" select="."/>
+            <xsl:catch select="."/>
         </xsl:try>
     </xsl:template>
     
@@ -352,7 +361,9 @@
             <!-- Note that text contents are regex notation for matching so * must be \* -->
             <q>"<text/>"</q>
             
-            <img alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+            <img         alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
+            <insert param-id="\{{{{$nws}}\}}"/>
+            
             <a href="\[{{$text}}\]">\(<text/>\)</a>
             <code>`<text/>`</code>
             <strong>
@@ -371,7 +382,7 @@
         <xsl:text>&lt;</xsl:text>
         <xsl:value-of select="local-name()"/>
         <!-- coercing the order to ensure correct formation of regegex       -->
-        <xsl:apply-templates mode="#current" select="@href, @alt, @src"/>
+        <xsl:apply-templates mode="#current" select="@*"/>
         <xsl:text>&gt;</xsl:text>
 
         <xsl:apply-templates mode="#current" select="*"/>
@@ -389,8 +400,18 @@
         <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
     </xsl:template>
     
+    <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match">
+        <!--<xsl:value-of select="."/>-->
+        <!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
+        <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
+    </xsl:template>
+    
     <xsl:template match="m:text" mode="write-replace">
         <xsl:text>$1</xsl:text>
+    </xsl:template>
+    
+    <xsl:template match="m:insert/@param-id" mode="write-replace">
+        <xsl:text> param-id="$1"</xsl:text>
     </xsl:template>
     
     <xsl:template match="m:a/@href" mode="write-replace">
@@ -412,16 +433,24 @@
         <xsl:text>(.*?)</xsl:text>
     </xsl:template>
     
-    <!--<xsl:variable name="examples" xml:space="preserve">
+    <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
+    
+     <xsl:variable name="examples" xml:space="preserve">
         <p>**Markdown**</p>
         <p>
 ## My test file!            
-            
+
+
+ { ac-4.4_prm_2 } 
+ 
+ 
 Extra long x
             y and z
             
-            
-            
+
+Here's a text with a parameter insertion: { insert }
+
+{insert-me}            
 
 And interesting.
 
@@ -465,6 +494,6 @@ And stuff.
         <p>`code` may occasionally turn up `in the middle`.</p>
         <p>Here's a ***really interesting*** markdown string.</p>
         <p>Some paragraphs might have [links elsewhere](https://link.org).</p>
-    </xsl:variable>-->
+    </xsl:variable>
     
 </xsl:stylesheet>
