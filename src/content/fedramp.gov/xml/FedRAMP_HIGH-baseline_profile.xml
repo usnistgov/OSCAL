@@ -1,5 +1,8 @@
 <!-- Created: 5/16/2019 9:05:15 PM -->
-<profile id="uuid-fedramp-high-20190605-164040" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+<profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+ id="uuid-fedramp-high-20190605-164040">
 	<metadata>
 		<title>FedRAMP High Baseline</title>
 		<author>FedRAMP PMO</author>
@@ -14,7 +17,7 @@
 			</org>
 		</party>
 	</metadata>
-	<import href="../nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_HIGH-baseline_profile.xml">
+  <import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_HIGH-baseline_profile.xml">
 		<include>
 			<call control-id="ac-1"/>
 			<call control-id="ac-2"/>
@@ -359,7 +362,7 @@
 			<call control-id="si-16"/>
 		</include>
 	</import>
-	<import href="../nist.gov/SP800-53/rev4/NIST_SP-800-53_rev4_catalog.xml">
+  <import href="../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml">
 		<include>
 			<call subcontrol-id="ac-2.7"/>
 			<call subcontrol-id="ac-2.9"/>

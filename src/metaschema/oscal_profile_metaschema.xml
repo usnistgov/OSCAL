@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <?xml-model href="../../build/metaschema/lib/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-stylesheet type="text/xsl" href="metaschema-html.xsl"?>
+<?xml-stylesheet type="text/xsl" href="metaschema-browser.xsl"?>
 <?xml-stylesheet type="text/css" href="../../build/metaschema/lib/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
- root="profile">
+  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/lib/metaschema.xsd"
+  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+  root="profile">
    <schema-name>OSCAL Profile Metaschema</schema-name>
    <schema-version>1.0-M1</schema-version>
    <short-name>oscal-profile</short-name>
@@ -62,7 +61,7 @@
          <assembly named="exclude"/>
       </model>
       <example>
-         <import xmlns="http://csrc.nist.gov/ns/oscal/1.0" href="catalog.xml">
+         <import xmlns="http://csrc.nist.gov/ns/oscal/example" href="catalog.xml">
             <include>
                <call control-id="ac-1"/>
             </include>
@@ -90,11 +89,7 @@
       </model>
    </define-assembly>
    <define-field name="combine" as="empty">
-      <flag name="method">
-         <value>use-first</value>
-         <value>merge</value>
-         <value>keep</value>
-      </flag>
+      <flag name="method"/>
       <formal-name>Combination rule</formal-name>
       <description>A Combine element defines whether and how to combine multiple (competing)
         versions of the same control</description>
@@ -114,9 +109,12 @@
    <define-flag name="method" datatype="string">
       <formal-name>Combination method</formal-name>
       <description>How clashing controls and subcontrols should be handled</description>
-      <!--<value>use-first</value>
-      <value>merge</value>
-      <value>keep</value>-->
+     <!-- TODO: define these better -->
+       <valid-values>
+         <value name="use-first">Use the first definition.</value>
+         <value name="merge">Merge</value>
+         <value name="keep">keep</value>
+       </valid-values>
    </define-flag>
    <define-assembly name="custom" group-as="customs">
       <formal-name>Custom grouping</formal-name>
@@ -180,9 +178,8 @@
   -->
    <!-- Only 'yes' should have any effect; processors should assume 'no' when implicit -->
    <define-field name="all" as="empty">
-      <flag name="with-subcontrols">
-         <value>yes</value>
-      </flag>
+      <flag name="with-subcontrols"/>
+      
       <formal-name>Include all</formal-name>
       <description>Include all controls from the imported resource (catalog)</description>
       <remarks>
@@ -228,12 +225,8 @@
       <flag name="control-id" datatype="NCName"/>
       <flag name="subcontrol-id" datatype="NCName"/>
       <!-- with-control has to be (un)settable for odd configurations of composite profiles -->
-      <flag name="with-control" datatype="NCName">
-         <value>no</value><value>yes</value>
-      </flag>
-      <flag name="with-subcontrols" datatype="NCName">
-         <value>no</value><value>yes</value>
-      </flag>
+      <flag name="with-control" datatype="NCName"/>
+      <flag name="with-subcontrols" datatype="NCName"/>
 
       <formal-name>Call (control or subcontrol)</formal-name>
       <description>Call a control or subcontrol by its ID</description>
@@ -256,17 +249,10 @@
   -->
    <define-field name="match" group-as="pattern-selectors" as="empty">
       <flag name="pattern"/>
-      <flag name="order">
-         <value>keep</value>
-         <value>ascending</value>
-         <value>descending</value>
-      </flag>
-      <flag name="with-control" datatype="NCName">
-         <value>no</value><value>yes</value>
-      </flag>
-      <flag name="with-subcontrols" datatype="NCName">
-         <value>no</value><value>yes</value>
-      </flag><formal-name>Match controls and subcontrols by identifier</formal-name>
+      <flag name="order"/>
+      <flag name="with-control" datatype="NCName"/>
+      <flag name="with-subcontrols" datatype="NCName"/>
+      <formal-name>Match controls and subcontrols by identifier</formal-name>
       <description>Select controls by (regular expression) match on ID</description>
    </define-field>
    <define-assembly name="exclude" group-as="excludes">
@@ -296,7 +282,7 @@
       <model>
          <!-- declarations tbf in the imported schema and to be aligned with it -->
          <field named="label"/>
-         <fields named="desc"/>
+         <fields named="usage"/>
          <fields named="constraint"/>
          <choice>
             <field named="value"/>
@@ -346,42 +332,36 @@
       </remarks>
    </define-field>
    <define-assembly name="add" group-as="additions">
-      <flag name="position">
-         <value>before</value>
-         <value>after</value>
-         <value>starting</value>
-         <value>ending</value>
-      </flag>
+      <flag name="position"/>
       <formal-name>Addition</formal-name>
       <description>Specifies contents to be added into controls or subcontrols, in resolution</description>
       <model>
-         <field      named="title"/>
+         <field named="title"/>
          <assemblies named="param" address="id"/>
-         <fields     named="prop"/>
-         <fields     named="link"/>
+         <fields named="prop"/>
+         <fields named="link"/>
          <assemblies named="part"/>
-         <assembly   named="citation-list"/>
       </model>
    </define-assembly>
    <define-flag datatype="NCName" name="control-id">
       <formal-name>Control ID</formal-name>
       <description>Value of the 'id' flag on a target control</description>
-      <!--<value>before</value>
-      <value>after</value>
-      <value>starting</value>
-      <value>ending</value>-->
    </define-flag>
    <define-flag datatype="NCName" name="with-control">
       <formal-name>Include control with subcontrol</formal-name>
       <description>Whether a control should be implicitly included, if not called.</description>
-      <!--<value>yes</value>
-      <value>no</value>-->
+     <valid-values>
+       <value name="yes">Include the parent control when a subcontrol is imported.</value>
+       <value name="no">Exclude the parent control when a subcontrol is imported.</value>
+     </valid-values>
    </define-flag>
    <define-flag datatype="NCName" name="with-subcontrols">
       <formal-name>Include subcontrols with control</formal-name>
       <description>Whether subcontrols should be implicitly included, if not called.</description>
-      <!--<value>yes</value>
-      <value>no</value>-->
+     <valid-values>
+       <value name="yes">Include all subcontrols for a control during the import.</value>
+       <value name="no">Exclude all subcontrols for a control during the import.</value>
+     </valid-values>
    </define-flag>
 
    <define-flag datatype="NCName" name="subcontrol-id">
@@ -399,17 +379,23 @@
    <define-flag datatype="NCName" name="order">
       <formal-name>Order</formal-name>
       <description>A designation of how a selection of controls in a profile is to be ordered.</description>
-      <!--<value>keep</value>
-      <value>ascending</value>
-      <value>descending</value>-->
+     <!-- TODO: define these -->
+     <valid-values>
+       <value name="keep"/>
+       <value name="ascending"/>
+       <value name="descending"/>
+     </valid-values>
    </define-flag>
    <define-flag datatype="NCName" name="position">
       <formal-name>Position</formal-name>
       <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
-      <!--<value>before</value>
-      <value>after</value>
-      <value>starting</value>
-      <value>ending</value>-->
+      <valid-values>
+        <!-- TODO: define these -->
+        <value name="before"/>
+        <value name="after"/>
+        <value name="starting"/>
+        <value name="ending"/>
+      </valid-values>
    </define-flag>
    <define-flag datatype="NMTOKENS" name="class-ref">
       <formal-name>References by class</formal-name>

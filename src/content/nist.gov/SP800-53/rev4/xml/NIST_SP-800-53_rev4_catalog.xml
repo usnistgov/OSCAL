@@ -2,14 +2,17 @@
 <!-- XML produced by extraction/mapping from NVD XML :2018-11-02T16:55:46.916-04:00 -->
 <!-- Then modified by hand (2018-12-10, 2019-05-16, 2019-05-29) to add metadata, align with current schema, correct broken links -->
 <!-- Valid against the OSCAL catalog schema (project path /xml/schema/oscal-catalog-schema.xsd) -->
-<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-926328ea-0ab8-4e41-8929-e162fa514e5c">
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../xml/schema/oscal_catalog_schema.xsd"
+ xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+ id="uuid-926328ea-0ab8-4e41-8929-e162fa514e5c">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
       
       <last-modified-date>2019-06-05T17:36:38.803-04:00</last-modified-date>
       <version>2015-01-22</version>
       <oscal-version>1.0-M1</oscal-version>
-      
+      <prop name="keywords">Assurance, computer security, FISMA, Privacy Act, Risk Management Framework, security controls, security requirements</prop>
       <link rel="alternate" href="#resource-pdf-sp-800-53r4"/>
       <link rel="canonical" href="#resource-doi-sp-800-53r4"/>
 
@@ -34,19 +37,6 @@
             <email>sec-cert@nist.gov</email>
          </org>
       </party>
-      <extra-meta>
-         <meta-group type="keywords">
-            <meta>Assurance</meta>
-            <meta>computer security</meta>
-            <meta>FIPS Publication 199</meta>
-            <meta>FIPS Publication 200</meta>
-            <meta>FISMA</meta>
-            <meta>Privacy Act</meta>
-            <meta>Risk Management Framework</meta>
-            <meta>security controls</meta>
-            <meta>security requirements</meta>
-         </meta-group>
-      </extra-meta>
    </metadata>
    <group class="family" id="ac">
       <title>Access Control</title>

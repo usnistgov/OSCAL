@@ -152,7 +152,14 @@
 
   <define-field name="prop" group-as="properties">
     <flag name="id" datatype="ID"/>
-    <flag name="name" required="yes" primary="yes"/>
+    <flag name="name" required="yes" primary="yes">
+      <valid-values allow-other="yes">
+        <value name="keywords">Used to provide a listing of keywords. This is typically used on a <code>prop</code> in the <code>metadata</code> to provide keywords for the document.</value>
+        <value name="label">A human-readable label for the parent context.</value>
+        <value name="method">An assessment method.</value>
+        <value name="status">The status of a <code>control</code> or <code>subcontrol</code>. The value can be 'withdrawn' to indicate that the <code>control</code> or <code>subcontrol</code> has been withdrawn and should no longer be used.</value>
+      </valid-values>
+    </flag>
     <flag name="ns"/>
     <flag name="class"/>
     <formal-name>Property</formal-name>
@@ -181,7 +188,7 @@
     <description>Identifying the purpose and intended use of the property, part or other object.</description>
     <remarks><p>This flag is intended to be used as a control point for validation of properties and parts
       with respect to constraints related to local semantics. A name is not necessarily expected to be unique,
-      even within the scope of the parent (containing) structure -- while if it is (given local application semantics), such uniqueness should be validable.</p>
+      even within the scope of the parent (containing) structure. In some local applications, it is possible for a name to be unique and uniqueness of a name can be validated in such cases.</p>
       <p>The definition of a name is subject to its namespace, offered by an <code>ns</code> flag (q.v.). When <code>ns</code> is not given, the namespace is assumed to be <q>oscal</q> and the name should be one of the recognized values for names
       in OSCAL.</p></remarks>
   </define-flag>
@@ -199,10 +206,7 @@
     <formal-name>Class</formal-name>
     <description>Indicating the type or classification of the containing object</description>
     <remarks>
-      <p>Extra constraints, expressed as validation rules, may be applied to items based on the
-        assigned <code>class</code>.</p>
-      <p>Some objects where this flag appears also permit a <code>name</code> to be assigned,
-        providing more rigor in validation.</p>
+      <p>A <code>class</code> can be used in validation rules to express extra constraints over items of a specific <code>class</code> value. Some objects where this flag appears also permit a <code>name</code> and a <code>ns</code> to be assigned, which can provide for more rigor in validation.</p>
     </remarks>
   </define-flag>
   
@@ -430,8 +434,9 @@
   <define-field name="hash" group-as="hashes">
     <flag name="algorithm" required="yes"/>
     <formal-name>Hash</formal-name>
-    <description>A document hash or other value subject to cryptographic authentication</description>
+    <description>A representation of a cryptographic digest generated over a resource using a hash algorithm.</description>
     <remarks>
+      <p>A hash value can be used to authenticate that a referenced resource is the same resources as was pointed to by the author of the reference.</p>
       <p>When appearing as part of a resource (data object), the hash should apply to the referenced object.</p>
     </remarks>
   </define-field>
@@ -439,6 +444,7 @@
   <define-flag name="algorithm" datatype="string">
     <formal-name>Hash algorithm</formal-name>
     <description>Method by which a hash is derived</description>
+    <!-- FIX: valid values are not displaying -->
     <valid-values allow-other="yes">
       <value name="SHA-224"/>
       <value name="SHA-256"/>
@@ -473,7 +479,7 @@
         example) the results of profile resolution.</p>
     </remarks>
   </define-flag>
-  
+
   <define-flag name="id" datatype="ID">
     <formal-name>Identifier</formal-name>
     <description>Unique identifier of the containing object</description>
@@ -513,17 +519,16 @@
   
   <define-flag name="filename" datatype="string">
     <formal-name>File Name</formal-name>
-    <description>Name of the file before it was converted to Base-64. This is the name that will be assigned to the file when converted back to binary.</description>
+    <description>Name of the file before it was encoded as Base64 to be embedded in a <code>resource</code>. This is the name that will be assigned to the file when the file is decoded.</description>
   </define-flag>
  
   <define-assembly name="citation" group-as="citations">
     <flag name="id" datatype="ID" required="yes"/>
     <formal-name>Citation</formal-name>
-    <description>A citation to resources, either external or (by means of internal cross-reference) saved or documented internally.</description>
+    <description>A citation to resources, either external or internal (by means of internal cross-reference).</description>
     <remarks>
-      <p>Semantics of any contents within citation are implicit, not encoded. To mitigate problems establishing matches with bibliograpical databases, it is recommended a canonical
-        identifier such as a DOI be provided for any citation.</p>
-      <p>Within this element, a generic <code>title</code> can cite a title, or if citation information takes the form of a bibliographic entry, <code>p</code> can be deployed.</p>
+      <p>The structure of a <code>citation</code> is not intended to be a full biblographic representation of a cited resource. Instead, it is expected that matching to a source of bibliograpical information (e.g., database) will be handled by use of a <code>doc-id</code>. Use of a canonical identifier such as a DOI is recommended for any citation.</p>
+      <p>Within this element, a generic <code>title</code> can cite a title. If citation information takes the form of a bibliographic entry, then <code>desc</code> can be used to provide a bibliographic entry.</p>
     </remarks>
     <model>
       <fields named="target"/>
