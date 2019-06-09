@@ -1,5 +1,6 @@
 # imports
 import sys
+import re
 from lxml import etree
 from printColors import bcolors
 
@@ -35,7 +36,11 @@ def compareElements(e1, e2, xpath, position):
                 print(bcolors.FAIL + "Different attribute values at path: "+xpath+"/@"+ attrKey + bcolors.ENDC)
                 retval = False
     # check text
-    if e1.text != e2.text:
+    xstr = lambda s: s or ""
+    pattern = "\s+"
+    text1 = re.sub(pattern, xstr(e1.text), "")
+    text2 = re.sub(pattern, xstr(e2.text), "")
+    if text1 != text2:
         print(bcolors.FAIL + "Different text at path: "+xpath+"/text()" + bcolors.ENDC)
         retval = False
 
@@ -68,8 +73,9 @@ xml1 = sys.argv[1]
 xml2 = sys.argv[2]
 
 # parse the documents
-doc1 = etree.parse(xml1)
-doc2 = etree.parse(xml2)
+parser = etree.XMLParser(remove_comments=True,remove_blank_text=True,collect_ids=False)
+doc1 = etree.parse(xml1, parser)
+doc2 = etree.parse(xml2, parser)
 
 # get the root element
 root1 = doc1.getroot()
