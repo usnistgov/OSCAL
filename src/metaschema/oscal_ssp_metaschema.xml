@@ -15,6 +15,7 @@
 	root="system-security-plan">
 
 	<schema-name>OSCAL System Security Plan (SSP) Format</schema-name>
+	<schema-version>1.0-M1</schema-version>
 	<short-name>oscal-ssp</short-name>
 	<namespace>urn:OSCAL-SSP-metaschema</namespace>
 
