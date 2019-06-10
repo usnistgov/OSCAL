@@ -150,7 +150,7 @@
       <formal-name>Modify controls</formal-name>
       <description>Set parameters or amend controls in resolution</description>
       <model>
-         <assemblies named="set"/>
+         <assemblies named="set" address="param-id"/>
          <assemblies named="alter"/>
       </model>
    </define-assembly>
@@ -355,12 +355,12 @@
       <formal-name>Addition</formal-name>
       <description>Specifies contents to be added into controls or subcontrols, in resolution</description>
       <model>
-         <field named="title"/>
+         <field      named="title"/>
          <assemblies named="param" address="id"/>
-         <fields named="prop"/>
-         <fields named="link"/>
+         <fields     named="prop"/>
+         <fields     named="link"/>
          <assemblies named="part"/>
-         <assembly named="citation-list"/>
+         <assembly   named="citation-list"/>
       </model>
    </define-assembly>
    <define-flag datatype="NCName" name="control-id">
