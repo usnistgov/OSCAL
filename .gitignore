@@ -29,6 +29,8 @@ xspec/*.html
 svrl
 /.skipbuild
 /.runbuild
+/archive
+/roundtrip
 
 # but allow markdown files
 !/content/**/*.md

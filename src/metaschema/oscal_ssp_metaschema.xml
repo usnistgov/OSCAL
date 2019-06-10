@@ -30,8 +30,8 @@
 
 	<!-- IMPORT STATEMENTS -->
 
-	<!--<import href="oscal-catalog-metaschema.xml" />
-	<import href="oscal_profile_metaschema.xml" />-->
+	<import href="oscal_metadata_metaschema.xml" />
+  <import href="oscal_profile_metaschema.xml" />
 
 	<!-- TOP LEVEL ASSEMBLY -->
 
@@ -52,6 +52,7 @@
 			<assembly named="control-implementation"/>
 			<assembly named="references"/>
 			<assembly named="attachment"/>
+		  <assembly named="back-matter"/>
 		</model>
 		<example> </example>
 	</define-assembly>
@@ -136,7 +137,7 @@
 			<assemblies named="designation"/>
 		</model>
 		<example>
-			<designations xmlns="urn:OSCAL-SSP-metaschema">
+		  <designations xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<designation id="pii"><declaration>true</declaration></designation>
 				<designation id="pci"><declaration>false</declaration></designation>
 				<designation id="hipaa"><declaration>false</declaration></designation>
@@ -155,7 +156,7 @@
 			<assemblies named="qualifiers"/>
 		</model>
 		<example>
-			<designation id="pii" xmlns="urn:OSCAL-SSP-metaschema">
+			<designation id="pii" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<title>A Privacy Sensitive System</title>
 				<declaration>false</declaration>
 			</designation>
@@ -166,7 +167,7 @@
 		<formal-name>Declaration</formal-name>
 		<description>Identifies whether a specific designation applies to this system.</description>
 		<example>
-			<designation id="pii" xmlns="urn:OSCAL-SSP-metaschema">
+			<designation id="pii" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<title>A Privacy Sensitive System</title>
 				<declaration>false</declaration>
 			</designation>
@@ -180,7 +181,7 @@
 			<assemblies named="qualifier"/>
 		</model>
 		<example>
-			<qualifiers xmlns="urn:OSCAL-SSP-metaschema">
+			<qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<qualifier id="pta-01">
 					<question>Does the ISA collect, maintain, or share PII in any identifiable form?</question>
 					<response>no</response>
@@ -199,7 +200,7 @@
 			<field named="qual-notes"/>
 		</model>
 		<example>
-			<qualifiers xmlns="urn:OSCAL-SSP-metaschema">
+			<qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<qualifier id="pta-01">
 					<qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
 					<qual-response>yes</qual-response>
@@ -213,7 +214,7 @@
 		<formal-name>Qualifier Question</formal-name>
 		<description>A question that must be answered about this system.</description>
 		<example>
-			<qualifiers xmlns="urn:OSCAL-SSP-metaschema">
+			<qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<qualifier id="pta-01">
 					<qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
 					<qual-response>yes</qual-response>
@@ -227,7 +228,7 @@
 		<formal-name>Qualifier Question Response</formal-name>
 		<description>The response to the question.</description>
 		<example>
-			<qualifiers xmlns="urn:OSCAL-SSP-metaschema">
+			<qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<qualifier id="pta-01">
 					<qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
 					<qual-response>yes</qual-response>
@@ -241,7 +242,7 @@
 		<formal-name>Qualifier Question Response Notes</formal-name>
 		<description>Additional information about the response to the question.</description>
 		<example>
-			<qualifiers xmlns="urn:OSCAL-SSP-metaschema">
+			<qualifiers xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<qualifier id="pta-01">
 					<qual-question>Is there a Privacy Act System of Records Notice (SORN) for this ISA system?</qual-question>
 					<qual-response>yes</qual-response>
@@ -1162,7 +1163,7 @@
 			<prose/>
 		</model>
 		<example>
-			<response target="ac-2_smt.g" xmlns="urn:OSCAL-SSP-metaschema">
+			<response target="ac-2_smt.g" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<p>Response to AC-2 part g.</p>
 			</response>
 		</example>
@@ -1266,7 +1267,7 @@
 				clashes.</p>
 		</remarks>
 		<example>
-			<boundary-diagram attachment-id="xyz2" xmlns="urn:OSCAL-SSP-metaschema"/>
+			<boundary-diagram attachment-id="xyz2" xmlns="http://csrc.nist.gov/ns/oscal/example"/>
 		</example>
 	</define-flag>
 
@@ -1284,7 +1285,7 @@
 				listed in the inventory. Each instance points to the same web server component.</p>
 		</remarks>
 		<example>
-			<import href="../vendor/components/component_file.xml" xmlns="urn:OSCAL-SSP-metaschema">
+			<import href="../vendor/components/component_file.xml" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<include>
 					<call component-id="comp02"/>
 				</include>
@@ -1314,7 +1315,7 @@
 		<description>Identifies the unique identifier for an individual, title, role, or
 			team.</description>
 		<example>
-			<asset-owner poc-id="xyz2" xmlns="urn:OSCAL-SSP-metaschema"/>
+			<asset-owner poc-id="xyz2" xmlns="http://csrc.nist.gov/ns/oscal/example"/>
 		</example>
 	</define-flag>
 
@@ -1324,7 +1325,7 @@
 			assigned.</description>
 		
 		<example>
-			<set-param param-id="ac-2_prm_2" xmlns="urn:OSCAL-SSP-metaschema">
+			<set-param param-id="ac-2_prm_2" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<value>System ISSO</value>
 			</set-param>
 		</example>
@@ -1349,7 +1350,7 @@
 		<formal-name>Role ID</formal-name>
 		<description>In the context of a responsibility element, this points to a role in the users element responsible for this control</description>
 		<example>
-			<group class="family" id="ac" xmlns="urn:OSCAL-SSP-metaschema">
+			<group class="family" id="ac" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<implementation class="SP800-53 control" control-id="ac-2">
 					<responsibility role-id="isso"/>
 					<responsibility role-id="cloud_system_manager"/>
@@ -1366,7 +1367,7 @@
 			<p>I'd like to call this control-id or subcontrol-id - wap</p>
 		</remarks>
 		<example>
-			<response xmlns="urn:OSCAL-SSP-metaschema" target="ac-2_smt.g">Response to AC-2 part
+			<response xmlns="http://csrc.nist.gov/ns/oscal/example" target="ac-2_smt.g">Response to AC-2 part
 				g.</response>
 		</example>
 	</define-flag>-->
@@ -1405,7 +1406,7 @@
         	<p>Should be a number within a permitted range</p>
         </remarks>
 		<example>
-			<service id="svc-01" name="Domain Name Service (DNS) Lookup" xmlns="urn:OSCAL-SSP-metaschema">
+			<service id="svc-01" name="Domain Name Service (DNS) Lookup" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<protocol name="dns">
 					<port-range start="53" end="53" transport="tcp"/>
 				</protocol>
@@ -1420,7 +1421,7 @@
 			<p>Should be a number within a permitted range</p>
 		</remarks>
 		<example>
-			<service id="svc-01" name="Domain Name Service (DNS) Lookup" xmlns="urn:OSCAL-SSP-metaschema">
+			<service id="svc-01" name="Domain Name Service (DNS) Lookup" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<protocol name="dns">
 					<port-range start="53" end="53" transport="tcp"/>
 				</protocol>
@@ -1433,7 +1434,7 @@
 		<description>Indicates the transport type.</description>
 
 		<example>
-			<service id="svc-01" name="Domain Name Service (DNS) Lookup" xmlns="urn:OSCAL-SSP-metaschema">
+			<service id="svc-01" name="Domain Name Service (DNS) Lookup" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<protocol name="dns">
 					<port-range start="53" end="53" transport="tcp"/>
 				</protocol>
@@ -1521,7 +1522,7 @@
 	IT WILL BE DELETED (REPLACED WITH REFERENCES) AND LOST.
 -->
   
-  <define-assembly name="metadata">
+<!--  <define-assembly name="metadata">
     <formal-name>Publication metadata</formal-name>
     <description>Information describing the publication or availability of this document</description>
     <model>
@@ -1717,7 +1718,7 @@
       <field  named="state"/>
       <field  named="postal-code"/>
       <field  named="country"/>
-      <!-- More address stuff -->
+      <!-\- More address stuff -\->
     </model>
   </define-assembly>
 
@@ -1813,9 +1814,9 @@
     <formal-name>Hash algorithm</formal-name>
     <description>Method by which a hash is derived</description>
     <remarks><p>One of the following is recognized: MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, RIPEMD-160. See <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> (W3C, April 2013) for more information.</p></remarks>
-  </define-flag>
+  </define-flag>-->
   
-<!-- 
+<!-- previously removed
 	<define-assembly name="role" group-as="roles">
     <flag name="id" datatype="ID" required="yes"/>
     <formal-name>Role</formal-name>
@@ -1832,7 +1833,7 @@
   </define-assembly>
  -->
 	
-  <define-flag name="href" datatype="anyURI">
+<!--  <define-flag name="href" datatype="anyURI">
     <formal-name>Hypertext reference</formal-name>
     <description>A relative or absolute URI indicating a resource available on the Internet.</description>
   </define-flag>
@@ -1872,11 +1873,11 @@
     <formal-name>Metadata term</formal-name>
     <description>A classification (according to any schema or taxonomy) of a metadata value or set of values.</description>
   </define-flag>
-  
+-->  
 <!--      BORROWED FROM PROFILE METASCHEMA AND MODIFIED    -->
 <!-- The following needs discussion/attention. It may not be the final solution. -->
 
-	<define-assembly name="import" group-as="imports">
+<!--	<define-assembly name="import" group-as="imports">
 		<flag name="href" datatype="anyURI" required="yes"/>
 		<formal-name>Import resource</formal-name>
 		<description>Makes information from an external component file available to this component
@@ -1889,10 +1890,10 @@
 		</remarks>
 		<model>
 			<assembly named="include"/>
-			<!-- assembly named="exclude"/ -->
+			<!-\- assembly named="exclude"/ -\->
 		</model>
 		<example>
-			<import href="../vendor/components/component_file.xml" xmlns="urn:OSCAL-SSP-metaschema">
+			<import href="../vendor/components/component_file.xml" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<include>
 					<call component-id="comp02"/>
 				</include>
@@ -1915,15 +1916,13 @@
 			<choice>
 				<field named="all"/>
 				<fields named="call"/>
-				<!-- assemblies named="match" group-as="pattern-selectors"/-->
+				<!-\- assemblies named="match" group-as="pattern-selectors"/-\->
 			</choice>
 		</model>
 	</define-assembly>
 	
 	<define-field name="all" as="empty">
-		<flag name="with-subcontrols">
-			<value>yes</value>
-		</flag>
+		<flag name="with-subcontrols"/>
 		<formal-name>Include all</formal-name>
 		<description>Include all controls from the imported resource (catalog)</description>
 		<remarks>
@@ -1947,7 +1946,7 @@
 				multiple sources. </p>
 		</remarks>
 		<example>
-			<import href="../vendor/components/component_file.xml" xmlns="urn:OSCAL-SSP-metaschema">
+			<import href="../vendor/components/component_file.xml" xmlns="http://csrc.nist.gov/ns/oscal/example">
 				<include>
 					<call component-id="comp02"/>
 				</include>
@@ -1959,5 +1958,5 @@
 		<formal-name>Include subcontrols with control</formal-name>
 		<description>Whether subcontrols should be implicitly included, if not called.</description>
 	</define-flag>
-	
+-->	
 </METASCHEMA>
