@@ -51,7 +51,9 @@
     
     <xsl:template match="/METASCHEMA">
         <xs:schema elementFormDefault="qualified" targetNamespace="{ $target-namespace }">
-
+            <xsl:for-each select="$composed-metaschema/METASCHEMA/schema-version">
+                <xsl:attribute name="version" select="normalize-space(.)"/>
+            </xsl:for-each>
             <xsl:apply-templates select="$composed-metaschema/METASCHEMA/*"/>
             <!--<xsl:apply-templates select="*"/>-->
             
