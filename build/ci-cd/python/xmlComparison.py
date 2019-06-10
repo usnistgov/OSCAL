@@ -36,10 +36,12 @@ def compareElements(e1, e2, xpath, position):
                 print(bcolors.FAIL + "Different attribute values at path: "+xpath+"/@"+ attrKey + bcolors.ENDC)
                 retval = False
     # check text
-    xstr = lambda s: s or ""
-    pattern = "\s+"
-    text1 = re.sub(pattern, xstr(e1.text), "")
-    text2 = re.sub(pattern, xstr(e2.text), "")
+    #xstr = lambda s: s or ""
+    #pattern = "\s+"
+    #text1 = re.sub(pattern, xstr(e1.text), "")
+    #text2 = re.sub(pattern, xstr(e2.text), "")
+    text1 = e1.text
+    text2 = e2.text
     if text1 != text2:
         print(bcolors.FAIL + "Different text at path: "+xpath+"/text()" + bcolors.ENDC)
         retval = False
