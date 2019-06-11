@@ -2,10 +2,8 @@
 <!-- XML produced by extraction/mapping from NVD XML :2018-11-02T16:55:46.916-04:00 -->
 <!-- Then modified by hand (2018-12-10, 2019-05-16, 2019-05-29) to add metadata, align with current schema, correct broken links -->
 <!-- Valid against the OSCAL catalog schema (project path /xml/schema/oscal-catalog-schema.xsd) -->
-<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../../xml/schema/oscal_catalog_schema.xsd"
- xmlns="http://csrc.nist.gov/ns/oscal/1.0"
- id="uuid-926328ea-0ab8-4e41-8929-e162fa514e5c">
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         id="uuid-926328ea-0ab8-4e41-8929-e162fa514e5c">
    <metadata>
       <title>NIST Special Publication 800-53 Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations</title>
       

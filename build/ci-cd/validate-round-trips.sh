@@ -48,11 +48,11 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
       baseName=$(basename $file)
 
       # debuggging statements, shows what is processing
-      printf 'path: %s\n' "$file"
-      printf 'file name: %s\n' "$baseName" 
-      printf 'format: %s\n' "$format"
-      printf 'model: %s\n' "$model"
-      printf 'convert-to: %s\n' "$converttoformats"
+      #printf 'path: %s\n' "$file"
+      #printf 'file name: %s\n' "$baseName" 
+      #printf 'format: %s\n' "$format"
+      #printf 'model: %s\n' "$model"
+      #printf 'convert-to: %s\n' "$converttoformats"
 
       if [ "$format" == "xml" ]; then
         # XML -> JSON -> XML round trip testing
@@ -106,7 +106,7 @@ while IFS="|" read path format model converttoformats || [[ -n "$path" ]]; do
         fi
 
         # compare the XML files to see if there is data loss
-        echo "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file}${P_ERROR}'.${P_END}"
+        echo "${P_INFO}Checking XML->JSON->XML conversion for '${P_END}${file}${P_INFO}'.${P_END}"
         python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$back_to_xml" "$file"
         cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then
