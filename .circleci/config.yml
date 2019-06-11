@@ -257,6 +257,7 @@ jobs: # a collection of
     steps: 
       - *checkout
       - *attach_build_workspace
+      - check-skip-build
       - install-maven
       - install-saxon
       - install-lxml
