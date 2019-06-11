@@ -5,11 +5,11 @@
  id="uuid-fedramp-high-20190605-164040">
 	<metadata>
 		<title>FedRAMP High Baseline</title>
-		<author>FedRAMP PMO</author>
 		<last-modified-date>2019-06-03T11:39:45.032-04:00</last-modified-date>
 		<version>1.1</version>
-		<oscal-version>1.0-M1</oscal-version>		
-		<party>
+		<oscal-version>1.0-M1</oscal-version>
+	  <role id="author"><title>Author</title></role>
+		<party role-id="author">
 			<org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
 				<email>info@fedramp.gov</email>

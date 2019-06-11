@@ -4,12 +4,13 @@
   xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="uuid-fedramp-low-20190605-163838">
 	<metadata>
 		<title>FedRAMP Low Baseline</title>
-		<author>FedRAMP PMO</author>
 		<last-modified-date>2019-06-03T11:41:23.26-04:00</last-modified-date>
 		<version>1.1</version>
 		<oscal-version>1.0-M1</oscal-version>
-		<party>
-			<org>
+	  
+	  <role id="author"><title>Author</title></role>
+	  <party role-id="author">
+	    <org>
 				<org-name>Federal Risk and Authorization Management Program (FedRAMP)</org-name>
 				<email>info@fedramp.gov</email>
 				<url>https://fedramp.gov</url>
