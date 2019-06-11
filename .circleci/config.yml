@@ -50,6 +50,20 @@ commands:
             git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
             cd "$SCHEMATRON_HOME"
             git checkout master -- trunk/schematron/code
+  install-maven:
+    description: "Installs Maven"
+    steps:
+      - run:
+          name: Get Maven
+          command: |
+            sudo apt-get install maven
+  install-lxml:
+    description: "Installs Python lxml package"
+    steps:
+      - run:
+          name: Get lxml
+          command: |
+            sudo pip install lxml
   install-xmllint:
     description: "Retrieve xmllint and setup the environment to run it"
     steps:
@@ -92,14 +106,6 @@ commands:
           name: Get hub
           command: |
             sudo brew install hub
-  install-python-libs:
-    description: "Retrieve python libs and setup the environment to run it"
-    steps:
-      - run:
-          name: Get Python Libs
-          command: |
-            sudo pip install 'jsonschema>=3.0.1'
-            sudo pip install simplejson
   install-bundler:
     description: "Install bundler and html-proofer"
     steps:
@@ -121,16 +127,16 @@ commands:
             fi
 executors:
   java-executor:
-    docker: # run the steps with Docker
+    docker: # run the java jobs with Docker
       - image: circleci/openjdk:8-jdk-node-browsers
     <<: *common_environment 
   ruby-node-executor:
-    docker: # run the steps with Docker
+    docker: # run the ruby jobs with Docker
       - image: circleci/ruby:2.4.6-node-browsers
     <<: *common_environment 
   python-executor:
-    docker:
-      - image: circleci/python:3.7.3-node-browser
+    docker: #run the python jobs with Docker
+      - image: circleci/python:3.7.3-node-browsers
     <<: *common_environment 
 jobs: # a collection of 
   job-ci-skip-check:
@@ -246,6 +252,20 @@ jobs: # a collection of
           name: Validate content instances
           command: |
             bash "$CICD_DIR/validate-content.sh" "$OSCAL_BUILD_DIR"
+  job-roundtrip-conversions:
+    executor: python-executor
+    steps: 
+      - *checkout
+      - *attach_build_workspace
+      - install-maven
+      - install-saxon
+      - install-lxml
+      - install-xmllint
+      - run:
+          name: Generate round trip XML and JSON conversions
+          command: |
+            bash "${CICD_DIR}/validate-round-trips.sh" "$OSCAL_BUILD_DIR"
+      - *publish_artifacts
   job-generate-docs:
     executor: java-executor
     steps:
@@ -382,6 +402,10 @@ workflows:
       - job-validate-content:
           requires:
             - job-generate-schema
+      - job-roundtrip-conversions:
+          requires:
+            - job-generate-converters
+            - job-validate-content
       - job-copy-and-convert-content:
            requires:
             - job-generate-converters
