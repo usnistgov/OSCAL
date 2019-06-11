@@ -1,18 +1,18 @@
-# Using OSCAL
+# The Open Security Controls Assessment Language (OSCAL)
 
-NIST developed the Open Security Controls Assessment Language (OSCAL) as a machine-readable data exchange format. It enables organizations to express and exchange detailed cybersecurity content in either Extensible Markup Language (XML) or JavaScript Object Notation (JSON).
+NIST is developing OSCAL as a set of machine-readable data exchange formats. These formats enable organizations to express and exchange detailed, security and privacy control-related cybersecurity content in either Extensible Markup Language (XML) or JavaScript Object Notation (JSON).
 
-NIST defined and governs the core OSCAL syntax, which includes cyber security content that is universal across industries and compliance regimes. NIST further designed OSCAL to be extended by other organizations to address industry-specific, compliance-specific, or organization-specific content. Please see the _Extending OSCAL_ section for more information.
+NIST is defining and governs the core OSCAL syntax, which is intended to support expressing control-related information in a neutral way that spans the needs of multiple industries and compliance regimes. OSCAL has been designed to be extended by other organizations to address industry-specific, compliance-specific, or organization-specific content. Please see the _Extending OSCAL_ section for more information.
 
 ## OSCAL Adoption
 
 For OSCAL compliance, mechanisms interpreting or generating OSCAL content _must_ honor the core syntax described at [https://pages.nist.gov/OSCAL/docs/schemas/](https://pages.nist.gov/OSCAL/docs/schemas/).
 
-While not mandatory, organizations adopting OSCAL are encouraged to use NIST-published validation and translation mechanisms. The validation mechanism ensures XML and JSON files are OSCAL-compliant, while the translation mechanism converts OSCAL content from either format to the other. An automated governance process enables NIST to ensure these mechanisms remain aligned with the latest OSCAL syntax.
+While not mandatory, organizations adopting OSCAL are encouraged to use NIST-published validation and translation mechanisms. These validation mechanisms ensure XML and JSON files are OSCAL-compliant, while the translation mechanisms allow OSCAL content to be converted to and from XML and JSON. An automated validation process enables NIST to ensure these mechanisms remain aligned with the latest OSCAL syntax.
 
 ## Standards
 
-NIST makes validation and conversion mechanisms available using the following established standards:
+NIST uses the following established standards to support the available validation and conversion mechanisms:
 
 |   | **OSCAL Syntax Validation**|
 | --- | :---: |
@@ -23,11 +23,11 @@ NIST makes validation and conversion mechanisms available using the following es
 | --- | :---: |
 | **XML & JSON** | Extensible Stylesheet Language Transformation (XSLT) 3.0 <br /> [ [https://www.w3.org/TR/2017/REC-xslt-30-20170608/](https://www.w3.org/TR/2017/REC-xslt-30-20170608/)]<br /><br />XPath 3.1<br />[[https://www.w3.org/TR/xpath-31/](https://www.w3.org/TR/xpath-31/) ] |
 
-**IMPORTANT** : XSLT 3.0 and XPath 3.1 are only required when using NIST published tools to convert OSCAL files between JSON and XML. Any version of XSLT or XPath may be used when transforming or querying OSCAL files for other reasons. Later versions offer more robust capabilities. There are several JSON query capabilities available, such as JSONPath [[https://restfulapi.net/json-jsonpath/](https://restfulapi.net/json-jsonpath/)]; however, no one capability has emerged as a clear standard as of this publication.
+**IMPORTANT** : XSLT 3.0 and XPath 3.1 are only required when using the NIST provided tools for converting OSCAL content between JSON and XML. Any version of XSLT or XPath may be used when transforming or querying OSCAL files for other reasons. Later versions XSLT and XPath offer more robust capabilities. There are several JSON query capabilities available, such as JSONPath [[https://restfulapi.net/json-jsonpath/](https://restfulapi.net/json-jsonpath/)]; however, no one capability has emerged as a clear standard as of this publication.
 
 ## Available Tools and Resources
 
-There are many tools available to validate and manipulate XML and JSON content using these standards. This includes both open source and commercial tools, as well as standard capabilities available in many programming languages.
+There are many open source and commercial tools available to validate and manipulate XML and JSON content, as well as support for these formats in many programming languages.
 
 The following tools are used by the NIST OSCAL Team and are known to work with OSCAL. This is neither an exhaustive list of available tools, nor an endorsement. OSCAL adopters are encouraged to do their own research and select the resources that are best for their specific needs and budget. OSCAL adopters are also responsible for ensuring their compliance with any licensing requirements.
 
@@ -38,25 +38,24 @@ The following tools are used by the NIST OSCAL Team and are known to work with O
 | **Saxon-HE (Home Edition)** |   | Yes | [http://www.saxonica.com/](http://www.saxonica.com/)<br />Saxon-HE offers the latest XSLT processing, and is fully open-source without technical support.<br /><br />Saxon-HE is available via [SourceForge](https://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/) and Maven. It supports XSLT 3.0 and XPath 3.1.Java and .NET modules are available, which can be run from the command line or integrated into applications.<br /><br />Saxonica also offers Saxon PE and EE versions, which are commercial products with technical support and redistribution rights. |
 | **Another JSON Schema Validator (AJV)** |   | Yes | [https://ajv.js.org/](https://ajv.js.org/)<br />Java-based open source tool for validating JSON files are compliant with JSON schema files.|
 | **node.js** |   | Yes | [https://nodejs.org](https://nodejs.org)<br />An asynchronous event driven JavaScript runtime, required to run AJV above.|
-| **Document Object Model (DOM) (aka DOMDocument) ** |   | Yes | [https://www.w3.org/DOM/](https://www.w3.org/DOM/)<br />A standard object-oriented model for manipulating XML files, which is built into many modern programming languages.DOM can manipulate XML content. Most implementations can also perform OSCAL syntax validation using OSCAL-published XSD files; however. Unfortunately, most implementations can only process XSLT and XPath 1.0 transformations, which is insufficient to use OSCAL&#39;s XSLT 3.0-based transformation files. |
+
+Many programming languages provide an implementation of the [Document Object Model (DOM)](https://www.w3.org/DOM/), which provides a standard object-oriented model for manipulating XML content. Most DOM implementations can also perform OSCAL syntax validation using OSCAL-published XSD files. Unfortunately, most implementations can only process XSLT and XPath 1.0 transformations, which is insufficient to use many of the OSCAL XSLT 3.0-based transformation files.
 
 OSCAL Usage Examples
 ====================
 
-The following examples demonstrate the use of OSCAL.
+The following examples demonstrate the use of XML and JSON schema to validate and convert OSCAL content.
 
 Syntax Validation
 -----------------
 
-This examples uses **xmllint** to perform validation of the XML syntax within an OSCAL file using a NIST-published [XML Schema file](https://github.com/usnistgov/OSCAL/tree/master/xml/schema). Each layer has its own XSD file for validation.
+The following example uses **xmllint** to perform validation of the XML syntax within an OSCAL file using one of the NIST-provided [XML Schema files](https://github.com/usnistgov/OSCAL/tree/master/xml/schema). Each [OSCAL model](https://pages.nist.gov/OSCAL/docs/architecture/) has its own XSD file for validation.
 
 ```
-export schema="./oscal_catalog_schema.xsd"
-export file="./catalog.xml"
-xmllint --noout --schema schema file
+xmllint --noout --schema "oscal_catalog_schema.xsd" "catalog.xml"
 ```
 
-This examples uses the **DOMDocument** model to perform validation of the XML syntax within an OSCAL file using a NIST-published [XML Schema file](https://github.com/usnistgov/OSCAL/tree/master/xml/schema). Each layer has its own XSD file for validation. (Example PHP code provided. Similar DOMDocument syntax is available in many popular programming languages, including VisualBasic/VBscript, PHP, and Python.)
+The following example uses the **DOMDocument** model in PHP to perform validation of the XML syntax within an OSCAL file using one of the NIST-provided [XML Schema files](https://github.com/usnistgov/OSCAL/tree/master/xml/schema). Similar DOM APIs are available in many popular programming languages, including Java, VisualBasic/VBscript, PHP, and Python.
 
 ```
 // Enable user error handling
@@ -109,20 +108,18 @@ if (! $oscal->load($oscal_file) === false) {
         libxml_clear_errors();
     }
 }
-
 ```
 
-This examples uses **AJV** to perform validation of the **JSON** syntax within an OSCAL file using a NIST-published [JSON Schema file](https://github.com/usnistgov/OSCAL/tree/master/json/schema). Each layer has its own XSD file for validation.
+The following example uses **AJV** to perform validation of the **JSON** syntax within an OSCAL file using one of the NIST-provided [JSON Schema files](https://github.com/usnistgov/OSCAL/tree/master/json/schema). Each OSCAL model has its own JSON schema for validation.
 
 ```
-export schema="./oscal_catalog_schema.xsd"
-export file="./catalog.xml"
-ajv validate -s $schema -d $file --extend-refs=true --verbose
+ajv validate -s "oscal_catalog_schema.xsd" -d "catalog.xml" --extend-refs=true --verbose
 ```
 
 Conversion
 ----------
-This example uses Saxon HE to convert an OSCAL XML file to JSON using a NIST published [XML to JSON XSLT file](https://github.com/usnistgov/OSCAL/tree/master/json/convert).
+
+The following Windows batch script example uses Saxon HE to convert an OSCAL XML file to JSON using one of the NIST-provided [XML to JSON XSLT converters](https://github.com/usnistgov/OSCAL/tree/master/json/convert).
 
 ```
 @echo off
@@ -139,7 +136,7 @@ set xslfile=".\oscal-catalog-xml-to-json-converter.xsl"
 %javaprocessor% -jar %xmlprocessor% -s:%1 -o:%2 -xsl:%xslfile% json-indent=yes
 ```
 
-This example uses Saxon HE to convert an OSCAL JSON file to XML using a NIST-published [JSON to XML XSLT file](https://github.com/usnistgov/OSCAL/tree/master/xml/convert).
+The follwoing Windows batch script example uses Saxon HE to convert an OSCAL JSON file to XML using one of the NIST-provided [JSON to XML XSLT converters](https://github.com/usnistgov/OSCAL/tree/master/xml/convert).
 
 ```
 @echo off
@@ -160,7 +157,7 @@ REM JSON file is a runtime parameter to the XSLT processor
 
 # Extending OSCAL
 
-OSCAL is designed to meet common cybersecurity information needs across multiple compliance regimes. It also provides organizations the ability to add information fields where OSCAL does not natively have an appropriate field. Always try to use a native OSCAL field first, and only extend OSCAL when no native syntax meets your organization&#39;s needs.
+OSCAL is designed to meet common cybersecurity information needs across multiple compliance regimes. It also provides organizations the ability to add information fields where OSCAL does not natively have an appropriate field. Always try to use a native OSCAL field first, and only extend OSCAL when no native syntax meets your organization's needs.
 
 Extending OSCAL is accomplished through the use of &quot;prop&quot; and &quot;part&quot; elements. These may be added as child elements under any OSCAL element. &quot;prop&quot; should be used where there is one data item to represent, such as a title or date. &quot;part&quot; should be used where there is more than one piece of data that must be represented, such as an address containing street, city, state, and zip code.
 
