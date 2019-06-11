@@ -280,17 +280,11 @@
     <formal-name>Part</formal-name>
     <description>A partition or component of a control, subcontrol or part</description>
     <remarks>
-      <p>Like properties (<code>prop</code>) and parameters (<code>param</code>), parts can be
-        distinguished from other elements within their controls by their assigned
-        <code>class</code>, such that they may be subjected to <q>declarations logic</q> using
-        these values as bindings (and thereby getting open-ended extensibility).</p>
-      <p>An assigned class may frequently provide for a header in display, such that
-        <code>part</code><code>[@class='objectives']</code> is displayed under a header <em>Objectives</em>, etc.
-        Parts may also however have their own titles (<code>title</code> elements).</p>
-      <p>Many parts are logical partitions or sections for prose. Other parts may be more formally
-        constructed out of properties (<code>prop</code> elements) and/or their own parts. Such
-        structured objects may, at the extreme, function virtually as control extensions or
-        subcontrol-like objects (<q>enhancements</q>).</p>
+      <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
+      <p>A <code>part</code> can be assigned an optional <code>id</code>>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+      <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
+      <p>To ensure a <code>ns</code> is unqiue to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+      <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
     </remarks>
     <model>
       <field named="title"/>
@@ -300,6 +294,11 @@
       <fields named="link"/>
       <any/>
     </model>
+    <example>
+      <description>Multiple Parts with Different Organization-Specific Names</description>
+      <part xmlns="http://csrc.nist.gov/ns/oscal/example" ns="https://fedramp.gov" name="status">Something FedRAMP Cares About</part>
+      <part xmlns="http://csrc.nist.gov/ns/oscal/example" ns="https://defense.gov" name="status">Something DoD Cares About</part>
+    </example>
   </define-assembly>
 
   <define-flag name="id" datatype="ID">
