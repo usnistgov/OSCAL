@@ -3,7 +3,8 @@
            xmlns:oscal-catalog="http://csrc.nist.gov/ns/oscal/1.0"
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
-           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"><!--OSCAL Control Catalog Format--><!--short name: oscal-catalog--><!--The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.--><!--An XML Schema is provided for the OSCAL Catalog XML model.-->
+           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
+           version="1.0-M1"><!--OSCAL Control Catalog Format--><!--short name: oscal-catalog--><!--The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements (subcontrols), along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.--><!--An XML Schema is provided for the OSCAL Catalog XML model.-->
    <xs:element name="metadata">
       <xs:annotation>
          <xs:documentation>

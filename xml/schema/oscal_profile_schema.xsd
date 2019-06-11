@@ -3,7 +3,8 @@
            xmlns:oscal-profile="http://csrc.nist.gov/ns/oscal/1.0"
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
-           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"><!--OSCAL Profile Metaschema--><!--short name: oscal-profile--><!--A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is profile.-->
+           targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
+           version="1.0-M1"><!--OSCAL Profile Metaschema--><!--short name: oscal-profile--><!--A profile designates a selection and configuration of controls and subcontrols from one or more catalogs, along with a series of operations over the controls and subcontrols. The topmost element in the OSCAL profile XML schema is profile.-->
    <xs:element name="metadata">
       <xs:annotation>
          <xs:documentation>
