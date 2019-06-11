@@ -8,9 +8,6 @@ vault
 .vscode
 .DS_Store
 
-# VSCode Editor Files
-.vscode/
-
 # Working files
 scratch
 wendell
@@ -24,6 +21,7 @@ target/
 xspec/*.html
 
 # ignore generated content
+archive
 roundtrip
 content
 xml
@@ -31,7 +29,6 @@ json
 svrl
 .skipbuild
 .runbuild
-roundtrip
 
 # but allow markdown files
 !content/**/*.md
