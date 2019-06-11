@@ -1,5 +1,3 @@
-.DS_Store
-
 # Proprietary files not to be propagated
 vault
 
@@ -7,20 +5,22 @@ vault
 *.xpr
 /OSCAL-dev.xpr
 .vscode
+.DS_Store
 
 # Working files
 scratch
 wendell
 backup*
 working/
+__pycache__
 
 # Production outputs
 pub/
-roundtripped/
 target/
 xspec/*.html
 
 # ignore generated content
+roundtrip
 content
 xml
 json

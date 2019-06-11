@@ -11,9 +11,6 @@ if [[ -z "$SAXON_HOME" ]]; then
     fi
     SAXON_HOME=~/.m2/repository/net/sf/saxon/Saxon-HE/$SAXON_VERSION
 fi
-SAXON_MAIN="net.sf.saxon.Transform"
-
-# Saxon CL documented here: http://www.saxonica.com/documentation9.8/using-xsl/commandline.html
 
 # ( set -o posix ; set )
 
@@ -25,13 +22,17 @@ xsl_transform() {
     
     local classpath=$(JARS=("$SAXON_HOME"/*.jar); IFS=:; echo "${JARS[*]}")
 
-    if [[ ! -z "$output_file" ]]; then
-        java -cp "$classpath" net.sf.saxon.Transform \
-            "-warnings:silent" "-o:${output_file}" "-s:${source_file}" "-xsl:${stylesheet}" "${extra_params[@]}"
-    else
-        java -cp "$classpath" net.sf.saxon.Transform \
-            "-warnings:silent" "-s:${source_file}" "-xsl:${stylesheet}" "${extra_params[@]}"
+    set -- "-warnings:silent" "-xsl:${stylesheet}"
+    
+    if [ ! -z "$output_file" ]; then
+      set -- "$@" "-o:${output_file}"
     fi
+    
+    if [ ! -z "$source_file" ]; then
+      set -- "$@" "-s:${source_file}"
+    fi
+
+    java -cp "$classpath" net.sf.saxon.Transform "$@" "${extra_params[@]}"
 
     if [ "$?" -ne 0 ]; then
         echo "${P_ERROR}Error running Saxon.${P_END}"
