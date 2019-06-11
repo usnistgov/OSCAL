@@ -12,12 +12,12 @@
 
     <xsl:template name="xsl:initial-template" match="/">
         <!--<xsl:copy-of select="$tag-replacements"/>-->
-        <!--<xsl:call-template name="parse">
+        <xsl:call-template name="parse">
             <xsl:with-param name="str" select="string($examples)"/>
-        </xsl:call-template>-->
-        <xsl:for-each select="$line-example">
+        </xsl:call-template>
+        <!--<xsl:for-each select="$line-example">
             <xsl:apply-templates select="text()" mode="infer-inlines"/>
-        </xsl:for-each>
+        </xsl:for-each>-->
     </xsl:template>
 
     <!-- Markdown pseudoparser in XSLT  -->
@@ -331,6 +331,7 @@
             <replace match="&lt;"   >&amp;lt;</replace>
             <!-- next, explicit escape sequences -->
             <replace match="\\&#34;">&amp;quot;</replace>
+            <replace match="\\&#39;">&amp;apos;</replace>
             <replace match="\\\*"   >&amp;#2A;</replace>
             <replace match="\\`"    >&amp;#60;</replace>
             <replace match="\\~"    >&amp;#7E;</replace>
@@ -359,6 +360,7 @@
         <tag-spec>
             <!-- The XML notation represents the substitution by showing both delimiters and tags  -->
             <!-- Note that text contents are regex notation for matching so * must be \* -->
+            
             <q>"<text/>"</q>
             
             <img         alt="!\[{{$text}}\]" src="\({{$text}}\)"/>
@@ -411,21 +413,21 @@
     </xsl:template>
     
     <xsl:template match="m:insert/@param-id" mode="write-replace">
-        <xsl:text> param-id="$1"</xsl:text>
+        <xsl:text> param-id='$1'</xsl:text>
     </xsl:template>
     
     <xsl:template match="m:a/@href" mode="write-replace">
-        <xsl:text> href="$2"</xsl:text>
+        <xsl:text> href='$2'</xsl:text>
         <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
     </xsl:template>
     
     <xsl:template match="m:img/@alt" mode="write-replace">
-        <xsl:text> alt="$1"</xsl:text>
+        <xsl:text> alt='$1'</xsl:text>
         <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
     </xsl:template>
     
     <xsl:template match="m:img/@src" mode="write-replace">
-        <xsl:text> src="$2"</xsl:text>
+        <xsl:text> src='$2'</xsl:text>
         <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
     </xsl:template>
     
@@ -436,7 +438,7 @@
     <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
     
      <xsl:variable name="examples" xml:space="preserve">
-        <p>**Markdown**</p>
+        <p>**Markdown** and even " quoted text"</p>
         <p>
 ## My test file!            
 
@@ -456,7 +458,7 @@ And interesting.
 
 And many paragraphs!
 
-* One item in a list
+* One item in a list, with "quoted text"
 * Another item in a list
   * Sublist
    * subsublist
