@@ -31,8 +31,12 @@ json
 svrl
 .skipbuild
 .runbuild
+roundtrip
 
 # but allow markdown files
 !content/**/*.md
+!xml/*.md
 !xml/**/*.md
+!json/*.md
 !json/**/*.md
+

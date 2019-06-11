@@ -8,5 +8,5 @@ content/nist.gov/**/*.yaml
 xml/convert/*.xsl
 xml/schema/*.xsd
 json/convert/*.xsl
-xml/schema/*.json
-
+json/schema/*.json
+src/release/*.txt|/
