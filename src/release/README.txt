@@ -10,7 +10,7 @@ This release provides 3 types of resources, each located in a different subdirec
 
 - xml: Provides the XML schemas and content converters that are needed to support the OSCAL model XML-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/xml.
 - json: Provides the XML schemas and content converters that are needed to support the OSCAL model JSON-based formats. Instructions for using this information can be found at: https://github.com/usnistgov/OSCAL/tree/master/json.
-- content: Offers OSCAL XML and JSON content for NIST SP 800-53 Revision 4 and FedRAMP Baselines.
+- content: Offers OSCAL XML, JSON, and experimental YAML content for NIST SP 800-53 Revision 4 and FedRAMP Baselines.
 
 These directories provide stable, released versions of the resources provided on the OSCAL GitHub repository: https://github.com/usnistgov/OSCAL.
 
